@@ -411,14 +411,14 @@ override method @templateLexiqueComponentAST semanticAnalysis
       !self.mTemplateReplacementList
     ]
   //--- Swift Cocoa implementation
-    let swiftCocoaImplementation = [filewrapper templateLexiqueGenerationTemplates.swiftCocoaImplementationZone
-      !"lexique-" + [self.mLexiqueComponentName.string fileNameRepresentation] + "-cocoa"
-      !self.mLexiqueComponentName.string
-      !self.mLexiqueSuperComponentName.string
-      !terminalList
-      !templateDelimitorList
-      !self.mTemplateReplacementList
-    ]
+//    let swiftCocoaImplementation = [filewrapper templateLexiqueGenerationTemplates.swiftCocoaImplementationZone
+//      !"lexique-" + [self.mLexiqueComponentName.string fileNameRepresentation] + "-cocoa"
+//      !self.mLexiqueComponentName.string
+//      !self.mLexiqueSuperComponentName.string
+//      !terminalList
+//      !templateDelimitorList
+//      !self.mTemplateReplacementList
+//    ]
   //--- SwiftUI implementation
     let swiftuiImplementation = [filewrapper templateLexiqueGenerationTemplates.swiftuiImplementationZone
       !"lexique-" + [self.mLexiqueComponentName.string fileNameRepresentation] + "-swiftui"
@@ -441,7 +441,7 @@ override method @templateLexiqueComponentAST semanticAnalysis
         !cppContents
 //        !objcCocoaHeader
 //        !objcCocoaImplementation
-        !swiftCocoaImplementation
+//        !swiftCocoaImplementation
         !swiftuiImplementation
       }
   end

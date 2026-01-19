@@ -11,14 +11,11 @@ struct CompileLogView : NSViewRepresentable {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private let mAttributedString : NSAttributedString
-  private let mIssueArray : [CompilationIssue]
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  init (attributedString inAttributedString : NSAttributedString,
-        issueArray inIssueArray : [CompilationIssue]) {
+  init (attributedString inAttributedString : NSAttributedString) {
     self.mAttributedString = inAttributedString
-    self.mIssueArray = inIssueArray
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

@@ -42,8 +42,6 @@
       <array>
         <string>$(PRODUCT_BUNDLE_IDENTIFIER).%!key%</string>
       </array>
-      <key>NSDocumentClass</key>
-      <string>%!DOCUMENT_CLASS%</string>
   </dict>
 %end%
  </array>

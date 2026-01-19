@@ -11,7 +11,7 @@ final class RootDirectoryNode : ObservableObject {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  @Published var mURL : URL
+  @Published var mProjectURL : URL
   @Published private(set) var mChildren : [SourceFileNode]
   @Published var mSelectedFileNodeID : SourceFileNodeID? = nil
   private var mStream : FSEventStreamRef? = nil
@@ -22,7 +22,7 @@ final class RootDirectoryNode : ObservableObject {
 
   init (url inURL : URL,
         issuesBinding inIssuesBinding : Binding <[CompilationIssue]>) {
-    self.mURL = inURL
+    self.mProjectURL = inURL
     self.mChildren = []
     self._mIssuesBinding = inIssuesBinding
     noteObjectAllocation (self)
@@ -40,18 +40,17 @@ final class RootDirectoryNode : ObservableObject {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   fileprivate func loadChildren () {
-    do{
-      let contents = try FileManager.default.contentsOfDirectory (
-        at: self.mURL,
+    let fm = FileManager ()
+    if let contents = try? fm.contentsOfDirectory (
+        at: self.mProjectURL,
         includingPropertiesForKeys: nil,
         options: [.skipsHiddenFiles]
-      )
+      ) {
       let sortedContents = contents.sorted {
         $0.lastPathComponent.localizedCompare ($1.lastPathComponent) == .orderedAscending
       }
       self.mChildren = sortedContents.map { SourceFileNode (url: $0, rootNode: self) }
-    }catch{
-      print("Erreur lors de la lecture du dossier: \(error)")
+    }else{
       self.mChildren = []
     }
     var nodeIDSet = Set <SourceFileNodeID> ()
@@ -93,7 +92,7 @@ final class RootDirectoryNode : ObservableObject {
 
   private func startMonitoring () {
   //--- Use an FSEvent for tracking Canari System Library changes
-    let pathsToWatch : [String] = [self.mURL.path]
+    let pathsToWatch : [String] = [self.mProjectURL.path]
   //--- Latency
     let latency : CFTimeInterval = 0.25 // Latency in seconds
     var context = FSEventStreamContext ()

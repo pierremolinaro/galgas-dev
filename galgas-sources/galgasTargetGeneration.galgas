@@ -75,7 +75,7 @@ private filewrapper targetGalgas3GenerationFileWrapper in "+generation-templates
     ?verboseOption:@bool VERBOSE_OPTION
     ?buildDirName: @string BUILD_DIR_NAME
 
-  template makefile_info_plist "project-xcode-objc/Info.plist.txt"
+  template makefile_info_plist "project-xcode-objc/Info.plist.galgasTemplate"
     ?@string PROJECT_NAME
     ?@string APPLICATION_BUNDLE_BASE
     ?@string VERSION_STRING
@@ -355,7 +355,7 @@ proc updateGalgasTargets
       MACOSX_DEPLOYMENT_TARGET = entry.mFeatureValue
     end
   else
-    MACOSX_DEPLOYMENT_TARGET = ["10.15" nowhere]
+    MACOSX_DEPLOYMENT_TARGET = ["14.6" nowhere]
   end
 //---------------------------------------------------------- LIBPM path
   let @string libpmPath
@@ -516,7 +516,7 @@ proc updateGalgasTargets
       !inProjectVersionString
       !inHandledExtensionSet
       !MACOSX_DEPLOYMENT_TARGET
-      !"$(PRODUCT_MODULE_NAME).SWIFT_SingleDocument"
+      !"$(PRODUCT_MODULE_NAME).ProjectDocument"
     ]
     [InfoPlistContents writeToFileWhenDifferentContents !dir +"/Info.plist" ?*]
   //--- Build.command
@@ -612,7 +612,7 @@ proc updateGalgasTargets
       @("SWIFT_INSTALL_MODULE = YES"),
       @("SWIFT_INSTALL_OBJC_HEADER = NO"),
       @("SWIFT_PRECOMPILE_BRIDGING_HEADER = NO"),
-      @("SWIFT_REFLECTION_METADATA_LEVEL = none"),
+      @("SWIFT_REFLECTION_METADATA_LEVEL = all"),
       @("SWIFT_STRICT_CONCURRENCY = complete"),
       @("SWIFT_TREAT_WARNINGS_AS_ERRORS = NO"),
       @("SWIFT_UPCOMING_FEATURE_CONCISE_MAGIC_FILE = NO"),
@@ -809,152 +809,192 @@ proc updateGalgasTargets
     ]
     libpmReferenceGroupList += !groupRef
   //--- Add "Auto Layout Kit" group
-    [!?xcodeProject addGroupWithFiles
-      !groupName:"Auto Layout Kit"
-      !groupPath:"auto-layout-kit"
-      !fileNames: @[
-        "base/BaseControl.swift",
-        "base/BaseView.swift",
-        "base/HorizontalAlignmentInVerticalStack.swift",
-        "base/HorizontalStretchingResistance.swift",
-        "base/InvalidatedLayoutDelegate.swift",
-        "base/LayoutFeatures.swift",
-        "base/Margin.swift",
-        "base/SimpleBlockView.swift",
-        "base/Spacing.swift",
-        "base/VerticalAlignmentInHorizontalStack.swift",
-        "base/VerticalStretchingResistance.swift",
-        "binding-controllers/EBGenericReadWritePropertyController.swift",
-        "binding-controllers/EBObservablePropertyController.swift",
-        "binding-controllers/multiple-binding-controllers.swift",
-        "binding-controllers/outlet-events.swift",
-        "button/AutoLayoutButton.swift",
-        "button/AutoLayoutFontButton.swift",
-        "button/AutoLayoutCheckbox.swift",
-        "button/AutoLayoutSheetCancelButton.swift",
-        "button/AutoLayoutSheetDefaultOkButton.swift",
-        "color-well/AutoLayoutColorWell.swift",
-        "debug/AutoLayout-debug-menu.swift",
-        "debug/EBAllocationDebug-debug-with-actor.swift",
-        "debug/EBAllocationDebug-release.swift",
-        "debug/NSWindow+rootView.swift",
-        "debug/debug-menu.swift",
-        "extension-for-property-protocol/ASCII.swift",
-        "extension-for-property-protocol/extension-Bool-EBPropertyProtocol.swift",
-        "extension-for-property-protocol/extension-Data-EBPropertyProtocol.swift",
-        "extension-for-property-protocol/extension-Data-base62.swift",
-        "extension-for-property-protocol/extension-Date-EBPropertyProtocol.swift",
-        "extension-for-property-protocol/extension-Double-EBPropertyProtocol.swift",
-        "extension-for-property-protocol/extension-Int-EBPropertyProtocol.swift",
-        "extension-for-property-protocol/extension-NSBezierPath-EBPropertyProtocol.swift",
-        "extension-for-property-protocol/extension-NSColor-EBPropertyProtocol.swift",
-        "extension-for-property-protocol/extension-NSFont-EBPropertyProtocol.swift",
-        "extension-for-property-protocol/extension-String-EBPropertyProtocol.swift",
-        "extension-for-property-protocol/extension-UInt32-EBPropertyProtocol.swift",
-        "extension-for-property-protocol/extension-UInt32-crc32.swift",
-        "grid/AutoLayoutGridView.swift",
-        "outline-view/AutoLayoutOutlineView.swift",
-        "outline-view/OutlineViewClickableChildProtocol.swift",
-        "outline-view/OutlineViewChildProtocol.swift",
-        "outline-view/OutlineViewNodeProtocol.swift",
-        "popup-button/AutoLayoutPopUpButton.swift",
-        "popup-button/AutoLayoutTaggedPopUpButton.swift",
-        "popup-button/AutoLayoutPullDownButton.swift",
-        "progress-indicator/SpinningProgressIndicator.swift",
-        "property-generic-classes/EBComputedProperty.swift",
-        "property-generic-classes/EBPreferenceProperty.swift",
-        "property-generic-classes/EBObservableMutableProperty.swift",
-        "property-generic-classes/EBPropertyProtocol.swift",
-        "property-generic-classes/EBObservableObjectProtocol.swift",
-        "property-generic-classes/EBSelection.swift",
-        "property-generic-classes/EBObservableProperty.swift",
-        "property-generic-classes/EBSimpleObserver.swift",
-        "property-generic-classes/EBObservedObject.swift",
-        "property-generic-classes/EBStandAloneProperty.swift",
-        "property-generic-classes/EBObservedObserver.swift",
-        "property-generic-classes/EBTransientProperty.swift",
-        "property-generic-classes/EBObserverProtocol.swift",
-        "scroll-view/BaseScrollView.swift",
-        "scroll-view/InternalCocoaScrollView.swift",
-        "segmented-control/AutoLayoutSegmentedControl.swift",
-        "split-view/AutoLayoutHorizontalSplitView.swift",
-        "stack-view/AutoLayoutHorizontalStackView.swift",
-        "stack-view/HorizontalStackGutter.swift",
-        "stack-view/AutoLayoutVerticalStackView.swift",
-        "stack-view/HorizontalStackSeparator.swift",
-        "stack-view/BaseStackView.swift",
-        "stack-view/VerticalStackSeparator.swift",
-        "swift-extensions/StringArray.swift",
-        "swift-extensions/extension-NSRect.swift",
-        "swift-extensions/extension-NSBezierPath.swift",
-        "swift-extensions/extension-String.swift",
-        "swift-extensions/extension-NSPoint.swift",
-        "tab-view/AutoLayoutBorderLessTabView.swift",
-        "tab-view/BaseTabView.swift",
-        "table-view/AutoLayoutTableView-column-AttributedString.swift",
-        "table-view/AutoLayoutTableView-column-Bool.swift",
-        "table-view/AutoLayoutTableView-column-ButtonImage.swift",
-        "table-view/AutoLayoutTableView-column-Int.swift",
-        "table-view/AutoLayoutTableView-column-NSColor.swift",
-        "table-view/AutoLayoutTableView-column-NSImage-Int.swift",
-        "table-view/AutoLayoutTableView-column-NSImage.swift",
-        "table-view/AutoLayoutTableView-column-String.swift",
-        "table-view/AutoLayoutTableView-column.swift",
-        "table-view/AutoLayoutTableView.swift",
-        "table-view/AutoLayoutTableViewDelegate.swift",
-        "text-field/AutoLayoutDoubleField.swift",
-        "text-field/AutoLayoutSignatureField.swift",
-        "text-field/AutoLayoutDoubleObserverField.swift",
-        "text-field/AutoLayoutStaticLabel.swift",
-        "text-field/AutoLayoutIntField.swift",
-        "text-field/AutoLayoutStaticLabels.swift",
-        "text-field/AutoLayoutIntObserverField.swift",
-        "text-field/AutoLayoutTextField.swift",
-        "text-field/AutoLayoutLabel.swift",
-        "text-field/AutoLayoutVersionField.swift",
-        "text-field/AutoLayoutSearchField.swift",
-        "text-field/BaseTextField.swift",
-        "text-view/AutoLayoutStaticTextView.swift",
-        "text-view/BaseTextView.swift",
-        "text-view/AutoLayoutTextObserverView.swift",
-        "text-view/BaseTextViewDelegate.swift"
-      ]
-      !?cFileRefs:buildCFileRefListForTool
-      !?cppFileRefs:buildCppFileRefListForTool
-      !?mFileRefs: m_FileRefList
-      !?mmFileRefs:mm_FileRefList
-      !?swiftFileRefs: swift_FileRefList
-      !?frameworkFileRefs:frameworksFileRefList
-      !?resourceFileRefs:resourceFileBuildRefs
-      ?groupRef:groupRef
-    ]
-    libpmReferenceGroupList += !groupRef
- //--- Add "Swift app" group
+//    [!?xcodeProject addGroupWithFiles
+//      !groupName:"Auto Layout Kit"
+//      !groupPath:"auto-layout-kit"
+//      !fileNames: @[
+//        "base/BaseControl.swift",
+//        "base/BaseView.swift",
+//        "base/HorizontalAlignmentInVerticalStack.swift",
+//        "base/HorizontalStretchingResistance.swift",
+//        "base/InvalidatedLayoutDelegate.swift",
+//        "base/LayoutFeatures.swift",
+//        "base/Margin.swift",
+//        "base/SimpleBlockView.swift",
+//        "base/Spacing.swift",
+//        "base/VerticalAlignmentInHorizontalStack.swift",
+//        "base/VerticalStretchingResistance.swift",
+//        "binding-controllers/EBGenericReadWritePropertyController.swift",
+//        "binding-controllers/EBObservablePropertyController.swift",
+//        "binding-controllers/multiple-binding-controllers.swift",
+//        "binding-controllers/outlet-events.swift",
+//        "button/AutoLayoutButton.swift",
+//        "button/AutoLayoutFontButton.swift",
+//        "button/AutoLayoutCheckbox.swift",
+//        "button/AutoLayoutSheetCancelButton.swift",
+//        "button/AutoLayoutSheetDefaultOkButton.swift",
+//        "color-well/AutoLayoutColorWell.swift",
+//        "debug/AutoLayout-debug-menu.swift",
+//        "debug/EBAllocationDebug-debug-with-actor.swift",
+//        "debug/EBAllocationDebug-release.swift",
+//        "debug/NSWindow+rootView.swift",
+//        "debug/debug-menu.swift",
+//        "extension-for-property-protocol/ASCII.swift",
+//        "extension-for-property-protocol/extension-Bool-EBPropertyProtocol.swift",
+//        "extension-for-property-protocol/extension-Data-EBPropertyProtocol.swift",
+//        "extension-for-property-protocol/extension-Data-base62.swift",
+//        "extension-for-property-protocol/extension-Date-EBPropertyProtocol.swift",
+//        "extension-for-property-protocol/extension-Double-EBPropertyProtocol.swift",
+//        "extension-for-property-protocol/extension-Int-EBPropertyProtocol.swift",
+//        "extension-for-property-protocol/extension-NSBezierPath-EBPropertyProtocol.swift",
+//        "extension-for-property-protocol/extension-NSColor-EBPropertyProtocol.swift",
+//        "extension-for-property-protocol/extension-NSFont-EBPropertyProtocol.swift",
+//        "extension-for-property-protocol/extension-String-EBPropertyProtocol.swift",
+//        "extension-for-property-protocol/extension-UInt32-EBPropertyProtocol.swift",
+//        "extension-for-property-protocol/extension-UInt32-crc32.swift",
+//        "grid/AutoLayoutGridView.swift",
+//        "outline-view/AutoLayoutOutlineView.swift",
+//        "outline-view/OutlineViewClickableChildProtocol.swift",
+//        "outline-view/OutlineViewChildProtocol.swift",
+//        "outline-view/OutlineViewNodeProtocol.swift",
+//        "popup-button/AutoLayoutPopUpButton.swift",
+//        "popup-button/AutoLayoutTaggedPopUpButton.swift",
+//        "popup-button/AutoLayoutPullDownButton.swift",
+//        "progress-indicator/SpinningProgressIndicator.swift",
+//        "property-generic-classes/EBComputedProperty.swift",
+//        "property-generic-classes/EBPreferenceProperty.swift",
+//        "property-generic-classes/EBObservableMutableProperty.swift",
+//        "property-generic-classes/EBPropertyProtocol.swift",
+//        "property-generic-classes/EBObservableObjectProtocol.swift",
+//        "property-generic-classes/EBSelection.swift",
+//        "property-generic-classes/EBObservableProperty.swift",
+//        "property-generic-classes/EBSimpleObserver.swift",
+//        "property-generic-classes/EBObservedObject.swift",
+//        "property-generic-classes/EBStandAloneProperty.swift",
+//        "property-generic-classes/EBObservedObserver.swift",
+//        "property-generic-classes/EBTransientProperty.swift",
+//        "property-generic-classes/EBObserverProtocol.swift",
+//        "scroll-view/BaseScrollView.swift",
+//        "scroll-view/InternalCocoaScrollView.swift",
+//        "segmented-control/AutoLayoutSegmentedControl.swift",
+//        "split-view/AutoLayoutHorizontalSplitView.swift",
+//        "stack-view/AutoLayoutHorizontalStackView.swift",
+//        "stack-view/HorizontalStackGutter.swift",
+//        "stack-view/AutoLayoutVerticalStackView.swift",
+//        "stack-view/HorizontalStackSeparator.swift",
+//        "stack-view/BaseStackView.swift",
+//        "stack-view/VerticalStackSeparator.swift",
+//        "swift-extensions/StringArray.swift",
+//        "swift-extensions/extension-NSRect.swift",
+//        "swift-extensions/extension-NSBezierPath.swift",
+//        "swift-extensions/extension-String.swift",
+//        "swift-extensions/extension-NSPoint.swift",
+//        "tab-view/AutoLayoutBorderLessTabView.swift",
+//        "tab-view/BaseTabView.swift",
+//        "table-view/AutoLayoutTableView-column-AttributedString.swift",
+//        "table-view/AutoLayoutTableView-column-Bool.swift",
+//        "table-view/AutoLayoutTableView-column-ButtonImage.swift",
+//        "table-view/AutoLayoutTableView-column-Int.swift",
+//        "table-view/AutoLayoutTableView-column-NSColor.swift",
+//        "table-view/AutoLayoutTableView-column-NSImage-Int.swift",
+//        "table-view/AutoLayoutTableView-column-NSImage.swift",
+//        "table-view/AutoLayoutTableView-column-String.swift",
+//        "table-view/AutoLayoutTableView-column.swift",
+//        "table-view/AutoLayoutTableView.swift",
+//        "table-view/AutoLayoutTableViewDelegate.swift",
+//        "text-field/AutoLayoutDoubleField.swift",
+//        "text-field/AutoLayoutSignatureField.swift",
+//        "text-field/AutoLayoutDoubleObserverField.swift",
+//        "text-field/AutoLayoutStaticLabel.swift",
+//        "text-field/AutoLayoutIntField.swift",
+//        "text-field/AutoLayoutStaticLabels.swift",
+//        "text-field/AutoLayoutIntObserverField.swift",
+//        "text-field/AutoLayoutTextField.swift",
+//        "text-field/AutoLayoutLabel.swift",
+//        "text-field/AutoLayoutVersionField.swift",
+//        "text-field/AutoLayoutSearchField.swift",
+//        "text-field/BaseTextField.swift",
+//        "text-view/AutoLayoutStaticTextView.swift",
+//        "text-view/BaseTextView.swift",
+//        "text-view/AutoLayoutTextObserverView.swift",
+//        "text-view/BaseTextViewDelegate.swift"
+//      ]
+//      !?cFileRefs:buildCFileRefListForTool
+//      !?cppFileRefs:buildCppFileRefListForTool
+//      !?mFileRefs: m_FileRefList
+//      !?mmFileRefs:mm_FileRefList
+//      !?swiftFileRefs: swift_FileRefList
+//      !?frameworkFileRefs:frameworksFileRefList
+//      !?resourceFileRefs:resourceFileBuildRefs
+//      ?groupRef:groupRef
+//    ]
+//    libpmReferenceGroupList += !groupRef
+ //--- Add "SwiftUI app" group
     [!?xcodeProject addGroupWithFiles
       !groupName:"Swift App"
-      !groupPath:"swift-app"
+      !groupPath:"swiftui-app"
       !fileNames: @[
-        "Base.lproj/MainMenu.xib",
-        "AutoLayoutSourceTextPresentationView.swift",
-        "SWIFT-common-command-line-options.swift",
-        "SWIFT_AppDelegate+new-document.swift",
-        "SWIFT_AppDelegate.swift",
-        "SWIFT_BuildLogViewRuler.swift",
-        "SWIFT_CommandLineOption.swift",
-        "SWIFT_DisplayDescriptor.swift",
-        "SWIFT_DocumentController.swift",
-        "SWIFT_Issue.swift",
-        "SWIFT_Lexique.swift",
-        "SWIFT_SingleDocument+syntax-coloring.swift",
-        "SWIFT_SingleDocument+update-entry-popup.swift",
-        "SWIFT_SingleDocument.swift",
-        "SWIFT_SingleWindow.swift",
-        "SWIFT_String+extension.swift",
-        "SWIFT_TemplateDelimiter.swift",
-        "SWIFT_TextViewRulerView.swift",
-        "SWIFT_Token.swift",
-        "SWIFT_Tokenizer_Protocol.swift",
-        "SWIFT_WeakElement.swift"
+//        "Base.lproj/MainMenu.xib",
+//        "AutoLayoutSourceTextPresentationView.swift",
+//        "SWIFT-common-command-line-options.swift",
+//        "SWIFT_AppDelegate+new-document.swift",
+//        "SWIFT_AppDelegate.swift",
+//        "SWIFT_BuildLogViewRuler.swift",
+//        "SWIFT_CommandLineOption.swift",
+//        "SWIFT_DisplayDescriptor.swift",
+//        "SWIFT_DocumentController.swift",
+//        "SWIFT_Issue.swift",
+//        "SWIFT_Lexique.swift",
+//        "SWIFT_SingleDocument+syntax-coloring.swift",
+//        "SWIFT_SingleDocument+update-entry-popup.swift",
+//        "SWIFT_SingleDocument.swift",
+//        "SWIFT_SingleWindow.swift",
+//        "SWIFT_String+extension.swift",
+//        "SWIFT_TemplateDelimiter.swift",
+//        "SWIFT_TextViewRulerView.swift",
+//        "SWIFT_Token.swift",
+//        "SWIFT_Tokenizer_Protocol.swift",
+//        "SWIFT_WeakElement.swift"
+        "AbstractScanner.swift",
+        "AllocationDebugView.swift",
+        "Application.swift",
+        "ASCII.swift",
+        "Color+RawRepresentable.swift",
+        "CommandLineOption.swift",
+        "common-command-line-options.swift",
+        "CompilationIssue.swift",
+        "CompileLogView.swift",
+        "CustomFont.swift",
+        "CustomFontPicker.swift",
+        "FocusedValues+extension.swift",
+        "IdentifiableAttributedString.swift",
+        "IndexingOperation.swift",
+        "lexical-functions.swift",
+        "LexicalToken.swift",
+        "Notification+names.swift",
+        "ProjectCompiler.swift",
+        "ProjectDocument.swift",
+        "ProjectDocumentView.swift",
+        "ProjectDocumentView+compile.swift",
+        "ProjectDocumentView+populateContextualMenu.swift",
+        "ProjectDocumentView+search.swift",
+        "ProjectWindowManagerView.swift",
+        "RootDirectoryNode.swift",
+        "ScrollSourceToLineNotification.swift",
+        "SearchResultItem.swift",
+        "SearchResultItemView.swift",
+        "SearchResultNode.swift",
+        "SearchResultNodeView.swift",
+        "SharedTextModel.swift",
+        "SourceFileNode.swift",
+        "SourceFileNodeID.swift",
+        "SourceFileNodeView.swift",
+        "String+LineAndColumn.swift",
+        "String+LineRangeForLineNumber.swift",
+        "String+LineStartAndEndLocations.swift",
+        "TemplateDelimiter.swift",
+        "TextSyntaxColoringView.swift",
+        "UInt64+displayString.swift"
       ]
       !?cFileRefs:buildCFileRefListForTool
       !?cppFileRefs:buildCppFileRefListForTool

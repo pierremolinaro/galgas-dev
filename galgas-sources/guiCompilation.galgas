@@ -555,23 +555,23 @@ proc generateAllGuiComponentsGalgas3 ?let @optionComponentMapForGeneration inOpt
 //                                      ?!objc: @stringlist ioObjcAllProductFileList
                                       ?!swift: @stringlist ioSwiftAllProductFileList {
   for (lkey guiComponentContext) in inOptionComponentMapForGeneration do
-    let swiftFileName = "gui-" + lkey + ".swift"
-    ioSwiftAllProductFileList += !swiftFileName
-    let @string swift_string = [filewrapper guiGenerationTemplates.swift_gui_implementation
-      !guiComponentContext
-      !inQuietOutputByDefault
-    ]
-    [@string generateFileWithPattern
-      !startPath:inOutputDirectory
-      !fileName: swiftFileName
-      !lineComment:"//"
-      !header:"" // Header
-      !defaultUserZone1:"\n\n" // Defaut user zone1
-      !generatedZone2: swift_string
-      !defaultUserZone2:"\n\n" // Defaut user zone2
-      !generatedZone3:"\n\n" // Zone 3
-      !makeExecutable:false
-    ]
+//    let swiftFileName = "gui-" + lkey + ".swift"
+//    ioSwiftAllProductFileList += !swiftFileName
+//    let @string swift_string = [filewrapper guiGenerationTemplates.swift_gui_implementation
+//      !guiComponentContext
+//      !inQuietOutputByDefault
+//    ]
+//    [@string generateFileWithPattern
+//      !startPath:inOutputDirectory
+//      !fileName: swiftFileName
+//      !lineComment:"//"
+//      !header:"" // Header
+//      !defaultUserZone1:"\n\n" // Defaut user zone1
+//      !generatedZone2: swift_string
+//      !defaultUserZone2:"\n\n" // Defaut user zone2
+//      !generatedZone3:"\n\n" // Zone 3
+//      !makeExecutable:false
+//    ]
     let swiftuiFileName = "gui-swiftui-" + lkey + ".swift"
     ioSwiftAllProductFileList += !swiftuiFileName
     let @string swiftui_string = [filewrapper guiGenerationTemplates.swiftui_gui_implementation
@@ -620,9 +620,9 @@ filewrapper guiGenerationTemplates in "+generation-templates/gui_generation" {
 //    ?@guiAnalysisContext GUI_CONTEXT
 //    ?@bool QUIET_OUTPUT_BY_DEFAULT
 
-  template swift_gui_implementation "gui-implementation.swift.galgasTemplate"
-    ?@guiAnalysisContext GUI_CONTEXT
-    ?@bool QUIET_OUTPUT_BY_DEFAULT
+//  template swift_gui_implementation "gui-implementation.swift.galgasTemplate"
+//    ?@guiAnalysisContext GUI_CONTEXT
+//    ?@bool QUIET_OUTPUT_BY_DEFAULT
 
   template swiftui_gui_implementation "gui-implementation-swiftui.swift.galgasTemplate"
     ?@guiAnalysisContext GUI_CONTEXT

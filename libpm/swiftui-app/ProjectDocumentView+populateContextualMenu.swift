@@ -96,7 +96,7 @@ extension ProjectDocumentView {
       let opq = OperationQueue ()
       for subpath in subpaths {
         let sourceFileURL = sourceDirectoryURL.appending (path: subpath)
-        if projectFileExtensions.contains (sourceFileURL.pathExtension) {
+        if projectFileExtensions.contains (sourceFileURL.pathExtension.lowercased()) {
           let indexFileURL = indexingDirURL.appending (path: subpath).appendingPathExtension ("plist")
           if let indexDate = modificationDate (of: indexFileURL) {
             let sourceDate = modificationDate (of: sourceFileURL)!

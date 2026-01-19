@@ -10,61 +10,6 @@
 
 //--------------------------------------------------------------------------------------------------
 //
-//Filewrapper 'sortedListGenerationTemplate'
-//
-//--------------------------------------------------------------------------------------------------
-
-
-//--------------------------------------------------------------------------------------------------
-
-
-//--------------------------------------------------------------------------------------------------
-
-
-//--------------------------------------------------------------------------------------------------
-
-extern const cDirectoryWrapper gWrapperDirectory_0_sortedListGenerationTemplate ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'sortedListGenerationTemplate sortedlistTypeHeader1'
-//
-//--------------------------------------------------------------------------------------------------
-
-GGS_string filewrapperTemplate_sortedListGenerationTemplate_sortedlistTypeHeader_31_ (class Compiler * inCompiler,
-                                                                                      const class GGS_string & in_TYPE_5F_NAME,
-                                                                                      const class GGS_string & in_TYPE_5F_IDENTIFIER,
-                                                                                      const class GGS_typedPropertyList & in_ATTRIBUTE_5F_LIST,
-                                                                                      const class GGS_enumerationDescriptorList & in_ENUMERATION_5F_DESCRIPTOR_5F_LIST,
-                                                                                      const class GGS_unifiedTypeMapEntry & in_ENUMERATED_5F_OBJECT_5F_TYPE,
-                                                                                      const class GGS_string & in_ELEMENT_5F_TYPE_5F_IDENTIFIER
-                                                                                      COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'sortedListGenerationTemplate sortedlistTypeSpecificImplementation'
-//
-//--------------------------------------------------------------------------------------------------
-
-GGS_string filewrapperTemplate_sortedListGenerationTemplate_sortedlistTypeSpecificImplementation (class Compiler * inCompiler,
-                                                                                                  const class GGS_string & in_TYPE_5F_IDENTIFIER,
-                                                                                                  const class GGS_typedPropertyList & in_ATTRIBUTE_5F_LIST,
-                                                                                                  const class GGS_sortDescriptorListForGeneration & in_SORT_5F_ATTRIBUTE_5F_LIST,
-                                                                                                  const class GGS_string & in_ELEMENT_5F_TYPE_5F_IDENTIFIER,
-                                                                                                  const class GGS_bool & in_GENERATE_5F_COMPARISON
-                                                                                                  COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Function 'forbiddenKeysForStruct'
-//
-//--------------------------------------------------------------------------------------------------
-
-class GGS_stringset function_forbiddenKeysForStruct (class Compiler * inCompiler
-                                                     COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
 //Filewrapper 'structureGenerationTemplate'
 //
 //--------------------------------------------------------------------------------------------------
@@ -767,4 +712,84 @@ class GGS_lstring function_procedureNameForUsefulEntitiesGraph (const class GGS_
 
 class GGS_bool function_generateFewHeaderFiles (class Compiler * inCompiler
                                                 COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Function 'syntaxDirectedTranslationResultVarName'
+//
+//--------------------------------------------------------------------------------------------------
+
+class GGS_string function_syntaxDirectedTranslationResultVarName (class Compiler * inCompiler
+                                                                  COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Routine 'recursivelyEnumerateDirectories????!!&&'
+//
+//--------------------------------------------------------------------------------------------------
+
+void routine_recursivelyEnumerateDirectories_3F__3F__3F__3F__21__21__26__26_ (const class GGS_string constinArgument0,
+                                                                              const class GGS_string constinArgument1,
+                                                                              const class GGS_wrapperExtensionMap constinArgument2,
+                                                                              const class GGS_wrapperExtensionMap constinArgument3,
+                                                                              class GGS_wrapperFileMap & outArgument4,
+                                                                              class GGS_wrapperDirectoryMap & outArgument5,
+                                                                              class GGS_uint & ioArgument6,
+                                                                              class GGS_uint & ioArgument7,
+                                                                              class Compiler * inCompiler
+                                                                              COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Routine 'generateInstructionList&?&&?&'
+//
+//--------------------------------------------------------------------------------------------------
+
+void routine_generateInstructionList_26__3F__26__26__3F__26_ (class GGS_stringset & ioArgument0,
+                                                              const class GGS_semanticInstructionListForGeneration constinArgument1,
+                                                              class GGS_uint & ioArgument2,
+                                                              class GGS_stringset & ioArgument3,
+                                                              const class GGS_bool constinArgument4,
+                                                              class GGS_string & ioArgument5,
+                                                              class Compiler * inCompiler
+                                                              COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Routine 'analyzeSemanticInstructionList?&?&?localConstantList?localInitializedVariableListWarnsIfNotMutated?localInitializedVariableListNoWarnsIfNotMutated??&!'
+//
+//--------------------------------------------------------------------------------------------------
+
+void routine_analyzeSemanticInstructionList_3F__26__3F__26__3F_localConstantList_3F_localInitializedVariableListWarnsIfNotMutated_3F_localInitializedVariableListNoWarnsIfNotMutated_3F__3F__26__21_ (const class GGS_lstring constinArgument0,
+                                                                                                                                                                                                      class GGS_usefulEntitiesGraph & ioArgument1,
+                                                                                                                                                                                                      const class GGS_analysisContext constinArgument2,
+                                                                                                                                                                                                      class GGS_unifiedTypeMap & ioArgument3,
+                                                                                                                                                                                                      const class GGS_localConstantList constinArgument4,
+                                                                                                                                                                                                      const class GGS_localInitializedVariableList constinArgument5,
+                                                                                                                                                                                                      const class GGS_localInitializedVariableList constinArgument6,
+                                                                                                                                                                                                      const class GGS_semanticInstructionListAST constinArgument7,
+                                                                                                                                                                                                      const class GGS_location constinArgument8,
+                                                                                                                                                                                                      class GGS_localVarManager & ioArgument9,
+                                                                                                                                                                                                      class GGS_semanticInstructionListForGeneration & outArgument10,
+                                                                                                                                                                                                      class Compiler * inCompiler
+                                                                                                                                                                                                      COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Routine 'analyzeSemanticInstructionListWithoutBranch?&?&?localConstantList?localInitializedVariableListWarnsIfNotMutated?localInitializedVariableListNoWarnsIfNotMutated?&!'
+//
+//--------------------------------------------------------------------------------------------------
+
+void routine_analyzeSemanticInstructionListWithoutBranch_3F__26__3F__26__3F_localConstantList_3F_localInitializedVariableListWarnsIfNotMutated_3F_localInitializedVariableListNoWarnsIfNotMutated_3F__26__21_ (const class GGS_lstring constinArgument0,
+                                                                                                                                                                                                               class GGS_usefulEntitiesGraph & ioArgument1,
+                                                                                                                                                                                                               const class GGS_analysisContext constinArgument2,
+                                                                                                                                                                                                               class GGS_unifiedTypeMap & ioArgument3,
+                                                                                                                                                                                                               const class GGS_localConstantList constinArgument4,
+                                                                                                                                                                                                               const class GGS_localInitializedVariableList constinArgument5,
+                                                                                                                                                                                                               const class GGS_localInitializedVariableList constinArgument6,
+                                                                                                                                                                                                               const class GGS_semanticInstructionListAST constinArgument7,
+                                                                                                                                                                                                               class GGS_localVarManager & ioArgument8,
+                                                                                                                                                                                                               class GGS_semanticInstructionListForGeneration & outArgument9,
+                                                                                                                                                                                                               class Compiler * inCompiler
+                                                                                                                                                                                                               COMMA_LOCATION_ARGS) ;
 

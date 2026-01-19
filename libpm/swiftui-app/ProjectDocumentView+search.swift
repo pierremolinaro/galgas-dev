@@ -26,7 +26,7 @@ extension ProjectDocumentView {
         if let subpaths = try? fm.subpathsOfDirectory (atPath: directoryURL.path()) {
           for subpath in subpaths.sorted () {
             let url = directoryURL.appendingPathComponent (subpath)
-            if projectFileExtensions.contains (url.pathExtension) {
+            if projectFileExtensions.contains (url.pathExtension.lowercased()) {
               self.search (inFileURL: url, fileNodeID: SourceFileNodeID (url: url))
             }
           }

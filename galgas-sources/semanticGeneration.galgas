@@ -1079,7 +1079,7 @@ final class @lexiqueDeclarationForGeneration : @semanticDeclarationWithHeaderFor
   public let @string mCppContents
 //  public let @string mObjcCocoaHeader
 //  public let @string mObjcCocoaImplementation
-  public let @string mSwiftCocoaImplementation
+//  public let @string mSwiftCocoaImplementation
   public let @string mSwiftUIImplementation
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -1143,22 +1143,22 @@ final class @lexiqueDeclarationForGeneration : @semanticDeclarationWithHeaderFor
 //      !makeExecutable:false
 //    ]
   //--- Generate Swift Cocoa implementation file
-    ioAllProductFileSet ++= "lexique-" + [self.mLexiqueName fileNameRepresentation] + "-cocoa.swift"
-    ioSwiftAppProductFileList += !"lexique-" + [self.mLexiqueName fileNameRepresentation] + "-cocoa.swift"
-    [@string generateFileWithPattern
-      !startPath:inProductDirectory
-      !fileName:"lexique-" + [self.mLexiqueName fileNameRepresentation] + "-cocoa.swift"
-      !lineComment:"//"
-      !header:"" // Header
-      !defaultUserZone1:"\n\n" // Defaut user zone1
-      !generatedZone2:self.mSwiftCocoaImplementation
-      !defaultUserZone2:"\n\n" // Defaut user zone2
-      !generatedZone3:"\n\n" // Zone 3
-      !makeExecutable:false
-    ]
+//    ioAllProductFileSet ++= "lexique-" + [self.mLexiqueName fileNameRepresentation] + "-cocoa.swift"
+//    ioSwiftAppProductFileList += !"lexique-" + [self.mLexiqueName fileNameRepresentation] + "-cocoa.swift"
+//    [@string generateFileWithPattern
+//      !startPath:inProductDirectory
+//      !fileName:"lexique-" + [self.mLexiqueName fileNameRepresentation] + "-cocoa.swift"
+//      !lineComment:"//"
+//      !header:"" // Header
+//      !defaultUserZone1:"\n\n" // Defaut user zone1
+//      !generatedZone2:self.mSwiftCocoaImplementation
+//      !defaultUserZone2:"\n\n" // Defaut user zone2
+//      !generatedZone3:"\n\n" // Zone 3
+//      !makeExecutable:false
+//    ]
   //--- Generate SwiftUI implementation file
     ioAllProductFileSet ++= "lexique-" + [self.mLexiqueName fileNameRepresentation] + "-swiftui.swift"
-  // §  ioSwiftAppProductFileList += !"lexique-" + [self.mLexiqueName fileNameRepresentation] + "-swiftui.swift"
+    ioSwiftAppProductFileList += !"lexique-" + [self.mLexiqueName fileNameRepresentation] + "-swiftui.swift"
     [@string generateFileWithPattern
       !startPath:inProductDirectory
       !fileName:"lexique-" + [self.mLexiqueName fileNameRepresentation] + "-swiftui.swift"

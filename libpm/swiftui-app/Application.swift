@@ -4,7 +4,7 @@
 
 import SwiftUI
 import Combine
-import AppKit
+import UniformTypeIdentifiers
 
 //--------------------------------------------------------------------------------------------------
 
@@ -12,7 +12,17 @@ let AUTOMATIC_SAVE_DELAY : TimeInterval = 5.0
 
 //--------------------------------------------------------------------------------------------------
 
+extension UTType {
+  nonisolated static let projectDocument = UTType (exportedAs: Bundle.main.bundleIdentifier! + ".projectDocument")
+}
+
+//--------------------------------------------------------------------------------------------------
+
 @main struct Application : App {
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  static var readableContentTypes : [UTType] { [.projectDocument] }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

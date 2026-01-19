@@ -4,6 +4,24 @@
 //--- END OF USER ZONE 1
 
 import SwiftUI
+import UniformTypeIdentifiers
+
+//--------------------------------------------------------------------------------------------------
+
+extension UTType {
+  nonisolated static let galgas = UTType (exportedAs: Bundle.main.bundleIdentifier! + ".galgas")
+  nonisolated static let galgasProject = UTType (exportedAs: Bundle.main.bundleIdentifier! + ".galgasproject")
+  nonisolated static let galgasTemplate = UTType (exportedAs: Bundle.main.bundleIdentifier! + ".galgastemplate")
+  nonisolated static let ggs = UTType (exportedAs: Bundle.main.bundleIdentifier! + ".ggs")
+  nonisolated static let ggsTemplate = UTType (exportedAs: Bundle.main.bundleIdentifier! + ".ggstemplate")
+  nonisolated static let ggsproject = UTType (exportedAs: Bundle.main.bundleIdentifier! + ".ggsproject")
+}
+
+//--------------------------------------------------------------------------------------------------
+
+extension ProjectDocument {
+  static let readableContentTypes : [UTType] = [.galgas, .galgasProject, .galgasTemplate, .ggs, .ggsTemplate, .ggsproject]
+}
 
 //--------------------------------------------------------------------------------------------------
 //    Project file extensions
@@ -55,9 +73,9 @@ struct SettingsView : View {
 
   enum SidebarItem {
     case commandLineOptions
-    case galgasScanner3
-    case galgasScanner4
-    case galgasTemplateScanner
+    case galgasScanner3_0
+    case galgasScanner4_1
+    case galgasTemplateScanner_2
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -71,17 +89,17 @@ struct SettingsView : View {
       List(selection: self.$mSelection) {
         Text ("Options").tag (SidebarItem.commandLineOptions)
 
-        Text ("Source GALGAS 3").tag (SidebarItem.galgasScanner3)
-        Text ("Source GALGAS 4").tag (SidebarItem.galgasScanner4)
-        Text ("Template").tag (SidebarItem.galgasTemplateScanner)
+        Text ("Source GALGAS 3").tag (SidebarItem.galgasScanner3_0)
+        Text ("Source GALGAS 4").tag (SidebarItem.galgasScanner4_1)
+        Text ("Template").tag (SidebarItem.galgasTemplateScanner_2)
       }
       .toolbar (removing: .sidebarToggle)
     } detail: {
       switch self.mSelection {
         case .commandLineOptions : OptionView ()
-        case .galgasScanner3 : SettingViewFor_galgasScanner3 ()
-        case .galgasScanner4 : SettingViewFor_galgasScanner4 ()
-        case .galgasTemplateScanner : SettingViewFor_galgasTemplateScanner ()
+        case .galgasScanner3_0 : SettingViewFor_galgasScanner3 ()
+        case .galgasScanner4_1 : SettingViewFor_galgasScanner4 ()
+        case .galgasTemplateScanner_2 : SettingViewFor_galgasTemplateScanner ()
       }
     }
   }

@@ -155,10 +155,7 @@ struct ProjectDocumentView : View {
           }
         }
       case .compileLog :
-        CompileLogView (
-          attributedString: self.mProjectCompiler.compileLog,
-          issueArray: self.mIssues
-        )
+        CompileLogView (attributedString: self.mProjectCompiler.compileLog)
       case .issues:
         if self.mIssues.isEmpty {
           Text ("No Issue").frame (maxHeight: .infinity).foregroundStyle (.secondary)
@@ -168,7 +165,7 @@ struct ProjectDocumentView : View {
               self.mSelectedIssue = issue.id
               self.showSelectedIssueInSource ()
             } label: {
-              issue.view.frame(maxWidth: .infinity, alignment: .leading)
+              issue.view.frame (maxWidth: .infinity, alignment: .leading)
             }
             .buttonStyle (.plain)
           }

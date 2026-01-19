@@ -49,18 +49,16 @@ final class SourceFileNode : Identifiable, ObservableObject {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   fileprivate func loadChildren () {
-    do{
-      let contents = try FileManager.default.contentsOfDirectory (
+    if let contents = try? FileManager.default.contentsOfDirectory (
         at: self.mURL,
         includingPropertiesForKeys: nil,
         options: [.skipsHiddenFiles]
-      )
+      ) {
       let sortedContents = contents.sorted {
         $0.lastPathComponent.localizedCompare ($1.lastPathComponent) == .orderedAscending
       }
       self.mChildren = sortedContents.map { SourceFileNode (url: $0, rootNode: self.mRootNode) }
-    }catch{
-      print("Erreur lors de la lecture du dossier: \(error)")
+    }else{
       self.mChildren = []
     }
   }

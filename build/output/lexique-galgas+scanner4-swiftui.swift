@@ -1435,7 +1435,7 @@ class ScannerFor_galgasScanner4 : AbstractScanner {
     //--- Apply styles
       for token in self.mTokenArray {
         let idx = Int (self.styleIndexFor (token: token.tokenCode))
-        if idx > 0, let attributes = self.mTokenAttributeArray [idx - 1] {
+        if idx > 0, idx < (self.mTokenAttributeArray.count - 1), let attributes = self.mTokenAttributeArray [idx - 1] {
           inTextStorage.addAttributes (attributes, range: token.range)
         }
       }
@@ -1566,7 +1566,7 @@ class ScannerFor_galgasScanner4 : AbstractScanner {
           stop = true
         }else if token.range.upperBound > modifiedRange.lowerBound {
           let styleIndex = Int (self.styleIndexFor (token: token.tokenCode))
-          if styleIndex > 0, let attributes = self.mTokenAttributeArray [styleIndex - 1] {
+          if styleIndex > 0, styleIndex < (self.mTokenAttributeArray.count - 1), let attributes = self.mTokenAttributeArray [styleIndex - 1] {
             inTextStorage.addAttributes (attributes, range: token.range)
           }
         }

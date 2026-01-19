@@ -462,29 +462,29 @@ final class @optionComponentForGeneration : @semanticDeclarationWithHeaderForGen
 //        !makeExecutable:false
 //      ]
     //--- Generate Swift Cocoa Implementation
-      ioAllProductFileSet ++= "option-" + [self.mOptionComponentName fileNameRepresentation] + "-cocoa.swift"
-      ioSwiftAppProductFileList += !"option-" + [self.mOptionComponentName fileNameRepresentation] + "-cocoa.swift"
-      [@string generateFileWithPattern
-        !startPath:inProductDirectory
-        !fileName:"option-" + [self.mOptionComponentName fileNameRepresentation] + "-cocoa.swift"
-        !lineComment:"//"
-        !header:"" // Header
-        !defaultUserZone1:"\n\n" // Defaut user zone1
-        !generatedZone2:[filewrapper optionGenerationTemplates.optionImplementationSwiftCocoa
-          !"option-" + [self.mOptionComponentName fileNameRepresentation] + "-swift-cocoa"
-          !self.mOptionComponentName
-          !self.mBoolOptionSortedList
-          !self.mUIntOptionSortedList
-          !self.mStringOptionSortedList
-          !self.mStringListSortedList
-        ]
-        !defaultUserZone2:"\n\n" // Defaut user zone2
-        !generatedZone3:"\n\n" // User Zone 3
-        !makeExecutable:false
-      ]
+//      ioAllProductFileSet ++= "option-" + [self.mOptionComponentName fileNameRepresentation] + "-cocoa.swift"
+//      ioSwiftAppProductFileList += !"option-" + [self.mOptionComponentName fileNameRepresentation] + "-cocoa.swift"
+//      [@string generateFileWithPattern
+//        !startPath:inProductDirectory
+//        !fileName:"option-" + [self.mOptionComponentName fileNameRepresentation] + "-cocoa.swift"
+//        !lineComment:"//"
+//        !header:"" // Header
+//        !defaultUserZone1:"\n\n" // Defaut user zone1
+//        !generatedZone2:[filewrapper optionGenerationTemplates.optionImplementationSwiftCocoa
+//          !"option-" + [self.mOptionComponentName fileNameRepresentation] + "-swift-cocoa"
+//          !self.mOptionComponentName
+//          !self.mBoolOptionSortedList
+//          !self.mUIntOptionSortedList
+//          !self.mStringOptionSortedList
+//          !self.mStringListSortedList
+//        ]
+//        !defaultUserZone2:"\n\n" // Defaut user zone2
+//        !generatedZone3:"\n\n" // User Zone 3
+//        !makeExecutable:false
+//      ]
     //--- Generate Swift Cocoa Implementation
       ioAllProductFileSet ++= "option-" + [self.mOptionComponentName fileNameRepresentation] + "-swiftui.swift"
-  //    ioSwiftAppProductFileList += !"option-" + [self.mOptionComponentName fileNameRepresentation] + "-cocoa.swift"
+      ioSwiftAppProductFileList += !"option-" + [self.mOptionComponentName fileNameRepresentation] + "-swiftui.swift"
       [@string generateFileWithPattern
         !startPath:inProductDirectory
         !fileName:"option-" + [self.mOptionComponentName fileNameRepresentation] + "-swiftui.swift"
@@ -554,13 +554,13 @@ filewrapper optionGenerationTemplates in "+generation-templates/option_generatio
     ?@commandLineOptionSortedList STRING_OPTION_SORTED_LIST
     ?@commandLineOptionSortedList STRING_LIST_OPTION_SORTED_LIST
 
-  template optionImplementationSwiftCocoa "option-implementation-swift-cocoa.galgasTemplate"
-    ?@string OPTION_HEADER_FILE_NAME
-    ?@string OPTION_COMPONENT_NAME
-    ?@commandLineOptionSortedList BOOL_OPTION_SORTED_LIST
-    ?@commandLineOptionSortedList UINT_OPTION_SORTED_LIST
-    ?@commandLineOptionSortedList STRING_OPTION_SORTED_LIST
-    ?@commandLineOptionSortedList STRING_LIST_OPTION_SORTED_LIST
+//  template optionImplementationSwiftCocoa "option-implementation-swift-cocoa.galgasTemplate"
+//    ?@string OPTION_HEADER_FILE_NAME
+//    ?@string OPTION_COMPONENT_NAME
+//    ?@commandLineOptionSortedList BOOL_OPTION_SORTED_LIST
+//    ?@commandLineOptionSortedList UINT_OPTION_SORTED_LIST
+//    ?@commandLineOptionSortedList STRING_OPTION_SORTED_LIST
+//    ?@commandLineOptionSortedList STRING_LIST_OPTION_SORTED_LIST
 
   template optionImplementationSwiftUI "option-implementation-swiftui.galgasTemplate"
     ?@string OPTION_HEADER_FILE_NAME

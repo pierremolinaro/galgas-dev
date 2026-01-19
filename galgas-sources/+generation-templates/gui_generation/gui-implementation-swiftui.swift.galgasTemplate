@@ -1,5 +1,25 @@
 
 import SwiftUI
+import UniformTypeIdentifiers
+
+//--------------------------------------------------------------------------------------------------
+
+extension UTType {
+%for (lkey 2*) in GUI_CONTEXT.mExtensionMap do
+%  nonisolated static let %![lkey identifierRepresentation]% = UTType (exportedAs: Bundle.main.bundleIdentifier! + ".%![lkey lowercaseString]%")\n%
+end
+%}
+
+//--------------------------------------------------------------------------------------------------
+
+extension ProjectDocument {
+  static let readableContentTypes : [UTType] = [%
+for (lkey 2*) in GUI_CONTEXT.mExtensionMap
+  do %.%![lkey identifierRepresentation]
+  between %, %
+end
+%]
+}
 
 //--------------------------------------------------------------------------------------------------
 //    Project file extensions
@@ -57,8 +77,8 @@ struct SettingsView : View {
 
   enum SidebarItem {
     case commandLineOptions
-%for (lexiqueClassName 2* title 3*) in GUI_CONTEXT.mWithLexiqueList
-  do %    case %!lexiqueClassName%\n%
+%for (lexiqueClassName lexiqueIndex * title 3*) in GUI_CONTEXT.mWithLexiqueList
+  do %    case %!lexiqueClassName%_%![lexiqueIndex string]%\n%
 end
 %  }
 
@@ -72,16 +92,16 @@ end
     NavigationSplitView {
       List(selection: self.$mSelection) {
         Text ("Options").tag (SidebarItem.commandLineOptions)\n
-%for (lexiqueClassName 2* title 3*) in GUI_CONTEXT.mWithLexiqueList
-  do %        Text ("%!title%").tag (SidebarItem.%!lexiqueClassName%)\n%
+%for (lexiqueClassName lexiqueIndex * title 3*) in GUI_CONTEXT.mWithLexiqueList
+  do %        Text ("%!title%").tag (SidebarItem.%!lexiqueClassName%_%![lexiqueIndex string]%)\n%
 end
 %      }
       .toolbar (removing: .sidebarToggle)
     } detail: {
       switch self.mSelection {
         case .commandLineOptions : OptionView ()
-%for (lexiqueClassName 2* title 3*) in GUI_CONTEXT.mWithLexiqueList
-  do %        case .%!lexiqueClassName% : SettingViewFor_%!lexiqueClassName% ()\n%
+%for (lexiqueClassName lexiqueIndex * title 3*) in GUI_CONTEXT.mWithLexiqueList
+  do %        case .%!lexiqueClassName%_%![lexiqueIndex string]% : SettingViewFor_%!lexiqueClassName% ()\n%
 end
 %      }
     }
