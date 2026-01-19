@@ -71,7 +71,7 @@ extension ProjectDocumentView {
         let startLocation : Int = contents.distance (from: contents.startIndex, to: foundRange.lowerBound)
         let endLocation : Int = contents.distance (from: contents.startIndex, to: foundRange.upperBound)
         let rangeInSourceString = NSRange (location: startLocation, length: endLocation - startLocation)
-        let lineAndColumn = LineAndColumn (for: contents, at: startLocation)
+        let lineAndColumn = contents.lineAndColumn (forLocation:  startLocation)
         var lineContents = String (contents [lineRange])
         lineContents.removeLast ()
         let startLineLocation : Int = contents.distance (from: contents.startIndex, to: lineRange.lowerBound)

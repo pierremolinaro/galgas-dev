@@ -105,7 +105,7 @@ struct CompilationIssue : Identifiable {
       }else if issueRange.location >= (previousRange.location + previousRange.length) {
       //--- Edition occurs before issue range : translate it
         self.mStartLocation += inChangeInLength
-        let lineColumn = LineAndColumn (for: inString, at: self.mStartLocation)
+        let lineColumn = inString.lineAndColumn (forLocation: self.mStartLocation)
         self.mLine = lineColumn.line
         self.mStartColumn = lineColumn.column
       }

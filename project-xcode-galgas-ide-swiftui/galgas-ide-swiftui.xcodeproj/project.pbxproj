@@ -169,19 +169,20 @@
 		CF515AE22EAA341D002A816B /* RootDirectoryNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF515AE12EAA340C002A816B /* RootDirectoryNode.swift */; };
 		CF515B062EAA4F8E002A816B /* UInt64+displayString.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF515B052EAA4F8E002A816B /* UInt64+displayString.swift */; };
 		CF515B082EAA593E002A816B /* SourceFileNodeID.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF515B072EAA5939002A816B /* SourceFileNodeID.swift */; };
+		CF559AD62F1E334B00752B9C /* String+LineRangeForLineNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF559AD52F1E334B00752B9C /* String+LineRangeForLineNumber.swift */; };
 		CF5959892F1CE85900BD83C0 /* ProjectDocumentView+search.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5959882F1CE85200BD83C0 /* ProjectDocumentView+search.swift */; };
 		CF59598B2F1CECFA00BD83C0 /* ProjectDocumentView+compile.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF59598A2F1CECF000BD83C0 /* ProjectDocumentView+compile.swift */; };
 		CF59598D2F1D208900BD83C0 /* ProjectDocumentView+populateContextualMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF59598C2F1D207100BD83C0 /* ProjectDocumentView+populateContextualMenu.swift */; };
 		CF5959962F1D2B8700BD83C0 /* IndexingOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5959952F1D2B8000BD83C0 /* IndexingOperation.swift */; };
 		CF5A52632EBBC47100CE55E3 /* gui-swiftui-cocoa.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5A52622EBBC47100CE55E3 /* gui-swiftui-cocoa.swift */; };
-		CF5BCBAE2F14F069006F8E83 /* LineAndColumn.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5BCBAD2F14F069006F8E83 /* LineAndColumn.swift */; };
+		CF5BCBAE2F14F069006F8E83 /* String+LineAndColumn.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5BCBAD2F14F069006F8E83 /* String+LineAndColumn.swift */; };
 		CF6E4A852F1BA32D002A96A5 /* IdentifiableAttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6E4A842F1BA329002A96A5 /* IdentifiableAttributedString.swift */; };
 		CF74330D2EA80ECC009ACE8E /* SourceFileNodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF74330C2EA80ECC009ACE8E /* SourceFileNodeView.swift */; };
 		CF74330E2EA80ECC009ACE8E /* SourceFileNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF74330B2EA80ECC009ACE8E /* SourceFileNode.swift */; };
 		CF7507522F0FB197005FAE3E /* utf32.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF7507512F0FB197005FAE3E /* utf32.cpp */; };
 		CF7507532F0FB197005FAE3E /* utf32.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF7507512F0FB197005FAE3E /* utf32.cpp */; };
 		CF7508422F0FB686005FAE3E /* ProjectCompiler.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7508412F0FB680005FAE3E /* ProjectCompiler.swift */; };
-		CF764BED2F1BC69B0096899F /* LineStartAndEndLocations.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF764BEC2F1BC6880096899F /* LineStartAndEndLocations.swift */; };
+		CF764BED2F1BC69B0096899F /* String+LineStartAndEndLocations.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF764BEC2F1BC6880096899F /* String+LineStartAndEndLocations.swift */; };
 		CF859AFD2F0FDDE0003A3F74 /* common-command-line-options.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF859AFC2F0FDDE0003A3F74 /* common-command-line-options.swift */; };
 		CF859AFF2F0FDE0F003A3F74 /* CommandLineOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF859AFE2F0FDE0F003A3F74 /* CommandLineOption.swift */; };
 		CF874F242F100930004A5162 /* option-galgas-5Fcli-5Foptions-swiftui.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF874F232F100930004A5162 /* option-galgas-5Fcli-5Foptions-swiftui.swift */; };
@@ -723,12 +724,13 @@
 		CF515AE12EAA340C002A816B /* RootDirectoryNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootDirectoryNode.swift; sourceTree = "<group>"; };
 		CF515B052EAA4F8E002A816B /* UInt64+displayString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UInt64+displayString.swift"; sourceTree = "<group>"; };
 		CF515B072EAA5939002A816B /* SourceFileNodeID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceFileNodeID.swift; sourceTree = "<group>"; };
+		CF559AD52F1E334B00752B9C /* String+LineRangeForLineNumber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+LineRangeForLineNumber.swift"; sourceTree = "<group>"; };
 		CF5959882F1CE85200BD83C0 /* ProjectDocumentView+search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProjectDocumentView+search.swift"; sourceTree = "<group>"; };
 		CF59598A2F1CECF000BD83C0 /* ProjectDocumentView+compile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProjectDocumentView+compile.swift"; sourceTree = "<group>"; };
 		CF59598C2F1D207100BD83C0 /* ProjectDocumentView+populateContextualMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProjectDocumentView+populateContextualMenu.swift"; sourceTree = "<group>"; };
 		CF5959952F1D2B8000BD83C0 /* IndexingOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndexingOperation.swift; sourceTree = "<group>"; };
 		CF5A52622EBBC47100CE55E3 /* gui-swiftui-cocoa.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "gui-swiftui-cocoa.swift"; sourceTree = "<group>"; };
-		CF5BCBAD2F14F069006F8E83 /* LineAndColumn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineAndColumn.swift; sourceTree = "<group>"; };
+		CF5BCBAD2F14F069006F8E83 /* String+LineAndColumn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+LineAndColumn.swift"; sourceTree = "<group>"; };
 		CF6E4A842F1BA329002A96A5 /* IdentifiableAttributedString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentifiableAttributedString.swift; sourceTree = "<group>"; };
 		CF74330B2EA80ECC009ACE8E /* SourceFileNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceFileNode.swift; sourceTree = "<group>"; };
 		CF74330C2EA80ECC009ACE8E /* SourceFileNodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceFileNodeView.swift; sourceTree = "<group>"; };
@@ -736,7 +738,7 @@
 		CF7507502F0FB197005FAE3E /* utf32.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = utf32.h; sourceTree = "<group>"; };
 		CF7507512F0FB197005FAE3E /* utf32.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = utf32.cpp; sourceTree = "<group>"; };
 		CF7508412F0FB680005FAE3E /* ProjectCompiler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectCompiler.swift; sourceTree = "<group>"; };
-		CF764BEC2F1BC6880096899F /* LineStartAndEndLocations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineStartAndEndLocations.swift; sourceTree = "<group>"; };
+		CF764BEC2F1BC6880096899F /* String+LineStartAndEndLocations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+LineStartAndEndLocations.swift"; sourceTree = "<group>"; };
 		CF859AFC2F0FDDE0003A3F74 /* common-command-line-options.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "common-command-line-options.swift"; sourceTree = "<group>"; };
 		CF859AFE2F0FDE0F003A3F74 /* CommandLineOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandLineOption.swift; sourceTree = "<group>"; };
 		CF874F232F100930004A5162 /* option-galgas-5Fcli-5Foptions-swiftui.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "option-galgas-5Fcli-5Foptions-swiftui.swift"; sourceTree = "<group>"; };
@@ -1304,8 +1306,6 @@
 				CF6E4A842F1BA329002A96A5 /* IdentifiableAttributedString.swift */,
 				CF5959952F1D2B8000BD83C0 /* IndexingOperation.swift */,
 				CFD719C22E730970007736B6 /* LexicalToken.swift */,
-				CF5BCBAD2F14F069006F8E83 /* LineAndColumn.swift */,
-				CF764BEC2F1BC6880096899F /* LineStartAndEndLocations.swift */,
 				CFBA582B2F1BBCDC00899D11 /* Notification+names.swift */,
 				CF7508412F0FB680005FAE3E /* ProjectCompiler.swift */,
 				CFD71A472E730CF8007736B6 /* ProjectDocument.swift */,
@@ -1324,6 +1324,9 @@
 				CF74330B2EA80ECC009ACE8E /* SourceFileNode.swift */,
 				CF515B072EAA5939002A816B /* SourceFileNodeID.swift */,
 				CF74330C2EA80ECC009ACE8E /* SourceFileNodeView.swift */,
+				CF5BCBAD2F14F069006F8E83 /* String+LineAndColumn.swift */,
+				CF559AD52F1E334B00752B9C /* String+LineRangeForLineNumber.swift */,
+				CF764BEC2F1BC6880096899F /* String+LineStartAndEndLocations.swift */,
 				CFD719BF2E73096C007736B6 /* TemplateDelimiter.swift */,
 				CFD719C52E73099F007736B6 /* TextSyntaxColoringView.swift */,
 				CF515B052EAA4F8E002A816B /* UInt64+displayString.swift */,
@@ -1659,10 +1662,11 @@
 				CFADC2FC2F1CD8E100E13336 /* SearchResultNodeView.swift in Sources */,
 				CFADC2FE2F1CDA8400E13336 /* SearchResultItemView.swift in Sources */,
 				CF59598B2F1CECFA00BD83C0 /* ProjectDocumentView+compile.swift in Sources */,
+				CF559AD62F1E334B00752B9C /* String+LineRangeForLineNumber.swift in Sources */,
 				CFD71AE82E731366007736B6 /* CustomFontPicker.swift in Sources */,
 				CF515AE22EAA341D002A816B /* RootDirectoryNode.swift in Sources */,
 				CFE3BB822F10FF760045FA2E /* CompileLogView.swift in Sources */,
-				CF764BED2F1BC69B0096899F /* LineStartAndEndLocations.swift in Sources */,
+				CF764BED2F1BC69B0096899F /* String+LineStartAndEndLocations.swift in Sources */,
 				CF6E4A852F1BA32D002A96A5 /* IdentifiableAttributedString.swift in Sources */,
 				CF25EA192F14172F0086A184 /* ProjectWindowManagerView.swift in Sources */,
 				CF515B062EAA4F8E002A816B /* UInt64+displayString.swift in Sources */,
@@ -1682,7 +1686,7 @@
 				CF7508422F0FB686005FAE3E /* ProjectCompiler.swift in Sources */,
 				CF5959962F1D2B8700BD83C0 /* IndexingOperation.swift in Sources */,
 				CFD71A482E730D07007736B6 /* ProjectDocument.swift in Sources */,
-				CF5BCBAE2F14F069006F8E83 /* LineAndColumn.swift in Sources */,
+				CF5BCBAE2F14F069006F8E83 /* String+LineAndColumn.swift in Sources */,
 				CFD719CE2E730A10007736B6 /* SharedTextModel.swift in Sources */,
 				CF5A52632EBBC47100CE55E3 /* gui-swiftui-cocoa.swift in Sources */,
 				CF74330D2EA80ECC009ACE8E /* SourceFileNodeView.swift in Sources */,

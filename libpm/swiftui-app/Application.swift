@@ -50,7 +50,7 @@ let AUTOMATIC_SAVE_DELAY : TimeInterval = 5.0
       .frame (minWidth: 800, minHeight: 400)
     }
   //--- Undo / Redo commands
-    .commands { MyUndoRedoCommands () }
+    .commands { UndoRedoCommands () }
   //--- Quit COMMAND
     .commands {
       CommandGroup (replacing: .appTermination) {
@@ -161,6 +161,7 @@ struct ActionMenuCommands : Commands {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @FocusedValue(\.activeDocument) var activeDocument
+  @FocusedValue(\.activeView) var activeView
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -171,6 +172,11 @@ struct ActionMenuCommands : Commands {
       }
       .keyboardShortcut ("b", modifiers: .command)
       .disabled (self.activeDocument == nil)
+      Button ("Goto Line…") {
+        self.activeView?.presentGotoLineSheet ()
+      }
+      .keyboardShortcut ("g", modifiers: [.option, .command])
+      .disabled (self.activeView == nil)
     }
   }
 
@@ -180,7 +186,7 @@ struct ActionMenuCommands : Commands {
 
 //--------------------------------------------------------------------------------------------------
 
-struct MyUndoRedoCommands : Commands {
+struct UndoRedoCommands : Commands {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -205,28 +211,29 @@ struct MyUndoRedoCommands : Commands {
 
 //--------------------------------------------------------------------------------------------------
 
-struct ActiveDocumentStructValue {
+struct ActiveDocumentFocusedValue {
   let projectURL : URL
 }
 
 //--------------------------------------------------------------------------------------------------
 
-struct ActiveDocumentKey : FocusedValueKey {
-  typealias Value = ActiveDocumentStructValue
+struct ActiveDocumentFocusedValueKey : FocusedValueKey {
+  typealias Value = ActiveDocumentFocusedValue
 }
 
 //--------------------------------------------------------------------------------------------------
 
-struct ActiveViewKeyStructValue {
-  let sharedTextModel: SharedTextModel
+struct ActiveViewFocusedValue {
+  let sharedTextModel : SharedTextModel
   let canUndo : Bool
   let canRedo : Bool
+  let presentGotoLineSheet : () -> Void
 }
 
 //--------------------------------------------------------------------------------------------------
 
-struct ActiveViewKey : FocusedValueKey {
-  typealias Value = ActiveViewKeyStructValue
+struct ActiveViewFocusedValueKey : FocusedValueKey {
+  typealias Value = ActiveViewFocusedValue
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -235,16 +242,16 @@ extension FocusedValues {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  var activeView : ActiveViewKeyStructValue? {
-    get { self [ActiveViewKey.self] }
-    set { self [ActiveViewKey.self] = newValue }
+  var activeView : ActiveViewFocusedValue? {
+    get { self [ActiveViewFocusedValueKey.self] }
+    set { self [ActiveViewFocusedValueKey.self] = newValue }
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  var activeDocument : ActiveDocumentStructValue? {
-    get { self [ActiveDocumentKey.self] }
-    set { self [ActiveDocumentKey.self] = newValue }
+  var activeDocument : ActiveDocumentFocusedValue? {
+    get { self [ActiveDocumentFocusedValueKey.self] }
+    set { self [ActiveDocumentFocusedValueKey.self] = newValue }
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

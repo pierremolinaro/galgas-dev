@@ -15,6 +15,10 @@ struct TextSyntaxColoringView : View {
   private let mPopulateContextualMenuCallBack : (NSMenu, String, [String]) -> Void
   @ObservedObject private var mSharedTextModel : SharedTextModel
 
+  @State private var mIsPresentingGotoLineSheetForTopView : Bool = false
+  @State private var mIsPresentingGotoLineSheetForBottomView : Bool = false
+  @State private var mCurrentLine : Int = 0
+
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @State var mTopViewSelection = NSRange ()
@@ -75,11 +79,13 @@ struct TextSyntaxColoringView : View {
       VStack {
         Spacer ().frame (height: 6)
         HStack {
+          Spacer ().frame (width: 6)
+          Button ("G") { self.mIsPresentingGotoLineSheetForTopView = true }
           Picker ("", selection: self.mUserTopViewSelectedPopUp) {
             ForEach (self.mTopViewPopUpMenuItems, id: \.id) { entry in
               Text (entry.attributedString).tag (entry.id)
             }
-          }.pickerStyle (.menu)
+          }.pickerStyle (.menu).labelsHidden ()
           Button ("+") { self.mSharedTextModel.mBottomViewIsVisible = true }
           .disabled (self.mSharedTextModel.mBottomViewIsVisible)
           Spacer ().frame (width: 6)
@@ -108,10 +114,11 @@ struct TextSyntaxColoringView : View {
         }
         .focusedValue (
           \.activeView,
-          ActiveViewKeyStructValue (
+          ActiveViewFocusedValue (
             sharedTextModel: self.mSharedTextModel,
             canUndo: self.mSharedTextModel.canUndo,
-            canRedo: self.mSharedTextModel.canRedo
+            canRedo: self.mSharedTextModel.canRedo,
+            presentGotoLineSheet: { self.mIsPresentingGotoLineSheetForTopView = true }
           )
         )
       }
@@ -119,11 +126,13 @@ struct TextSyntaxColoringView : View {
         VStack {
           Spacer ().frame (height: 6)
           HStack {
+            Spacer ().frame (width: 6)
+            Button ("G") { self.mIsPresentingGotoLineSheetForBottomView = true }
             Picker ("", selection: self.mUserBottomViewSelectedPopUp) {
               ForEach (self.mBottomViewPopUpMenuItems, id: \.id) {
                 Text ($0.attributedString).tag ($0.id)
               }
-            }.pickerStyle (.automatic)
+            }.pickerStyle (.automatic).labelsHidden ()
             Button ("-") { self.mSharedTextModel.mBottomViewIsVisible = false }
             Spacer ().frame (width: 6)
           }
@@ -135,29 +144,109 @@ struct TextSyntaxColoringView : View {
             popUpMenuItemsBinding: self.$mBottomViewPopUpMenuItems,
             populateContextualMenuCallBack: self.mPopulateContextualMenuCallBack
           )
-        .onChange (of: self.mBottomViewSelection.location) {
-          let currentLocation = self.mBottomViewSelection.location
-          var newSelectedID = 0
-          for item in self.mBottomViewPopUpMenuItems {
-            if currentLocation < item.id {
-              self.mBottomViewSelectedPopUp = newSelectedID
-              return
-            }else{
-              newSelectedID = item.id
+          .onChange (of: self.mBottomViewSelection.location) {
+            let currentLocation = self.mBottomViewSelection.location
+            var newSelectedID = 0
+            for item in self.mBottomViewPopUpMenuItems {
+              if currentLocation < item.id {
+                self.mBottomViewSelectedPopUp = newSelectedID
+                return
+              }else{
+                newSelectedID = item.id
+              }
             }
+            self.mBottomViewSelectedPopUp = newSelectedID
           }
-          self.mBottomViewSelectedPopUp = newSelectedID
-        }
           .focusedValue (
             \.activeView,
-            ActiveViewKeyStructValue (
+            ActiveViewFocusedValue (
               sharedTextModel: self.mSharedTextModel,
               canUndo: self.mSharedTextModel.canUndo,
-              canRedo: self.mSharedTextModel.canRedo
+              canRedo: self.mSharedTextModel.canRedo,
+              presentGotoLineSheet: { self.mIsPresentingGotoLineSheetForBottomView = true }
             )
           )
         }
       }
+    }
+    .sheet (isPresented: self.$mIsPresentingGotoLineSheetForTopView) { self.presentGotoLineSheetForTopView () }
+    .sheet (isPresented: self.$mIsPresentingGotoLineSheetForBottomView) { self.presentGotoLineSheetForBottomView () }
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  private func presentGotoLineSheetForTopView () -> some View {
+    VStack {
+      Text (self.mSharedTextModel.mBottomViewIsVisible ? "Goto Line (top view)" : "Goto Line")
+      .bold().controlSize (.large)
+      HStack {
+        Spacer ()
+        TextField (
+          "",
+          value: self.$mCurrentLine,
+          format: .number.precision (.fractionLength (0))
+        )
+        .labelsHidden ()
+        .frame (width: 48)
+        Text ("1-\(self.mSharedTextModel.lineCount)")
+        Spacer ()
+      }
+      HStack {
+        Button ("Cancel") {
+          self.mIsPresentingGotoLineSheetForTopView = false
+        }
+        .keyboardShortcut (.cancelAction)
+        Spacer ()
+        Button ("Ok") {
+          self.mIsPresentingGotoLineSheetForTopView = false
+          let range = self.mSharedTextModel.mDocumentString.lineRange (forLineNumber: self.mCurrentLine)
+          self.mTopViewSelection = NSRange (location: range.location, length: 0)
+        }
+        .keyboardShortcut (.defaultAction)
+        .disabled ((self.mCurrentLine < 1) || (self.mCurrentLine > self.mSharedTextModel.lineCount))
+      }
+    }.padding (12).frame (width: 250)
+    .onAppear {
+      let lc = self.mSharedTextModel.mDocumentString.lineAndColumn (forLocation: self.mTopViewSelection.location)
+      self.mCurrentLine = lc.line
+    }
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  private func presentGotoLineSheetForBottomView () -> some View {
+    VStack {
+      Text ("Goto Line (bottom view)").bold().controlSize (.large)
+      HStack {
+        Spacer ()
+        TextField (
+          "",
+          value: self.$mCurrentLine,
+          format: .number.precision (.fractionLength (0))
+        )
+        .labelsHidden ()
+        .frame (width: 48)
+        Text ("1-\(self.mSharedTextModel.lineCount)")
+        Spacer ()
+      }
+      HStack {
+        Button ("Cancel") {
+          self.mIsPresentingGotoLineSheetForBottomView = false
+        }
+        .keyboardShortcut (.cancelAction)
+        Spacer ()
+        Button ("Ok") {
+          self.mIsPresentingGotoLineSheetForBottomView = false
+          let range = self.mSharedTextModel.mDocumentString.lineRange (forLineNumber: self.mCurrentLine)
+          self.mBottomViewSelection = NSRange (location: range.location, length: 0)
+        }
+        .keyboardShortcut (.defaultAction)
+        .disabled ((self.mCurrentLine < 1) || (self.mCurrentLine > self.mSharedTextModel.lineCount))
+      }
+    }.padding (12).frame (width: 250)
+    .onAppear {
+      let lc = self.mSharedTextModel.mDocumentString.lineAndColumn (forLocation: self.mBottomViewSelection.location)
+      self.mCurrentLine = lc.line
     }
   }
 

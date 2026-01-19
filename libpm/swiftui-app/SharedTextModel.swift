@@ -18,6 +18,7 @@ final class SharedTextModel : NSObject, ObservableObject, Identifiable, NSTextSt
   private var mScanner : AbstractScanner?
   let mFileURL : URL
   private let mTextStorage = NSTextStorage ()
+
   var mDocumentString : String {
     didSet {
       self.mWriteFileCallback? (self.mTextStorage.string)
@@ -133,6 +134,17 @@ final class SharedTextModel : NSObject, ObservableObject, Identifiable, NSTextSt
 
   func indexingTitles () -> [String] {
     return self.mScanner?.indexingTitles() ?? []
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  var lineCount : Int {
+    let str = self.mDocumentString as NSString
+    var n = 0
+    str.enumerateSubstrings (in: NSRange (location: 0, length: str.length), options: .byLines) { (_, range, _, stopPtr) in
+      n += 1
+    }
+    return n
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -263,7 +275,7 @@ final class SharedTextModel : NSObject, ObservableObject, Identifiable, NSTextSt
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func compileProject () {
+  func gotoLine () {
     NSSound.beep ()
   }
 
@@ -556,7 +568,7 @@ fileprivate final class InternalNSTextView : NSTextView, NSTextFinderClient {
     super.draw (inDirtyRect)
   //---
     if self.selectedRange.length == 0 {
-      let startEnd = LineStartAndEndLocations (for: self.string, at: self.selectedRange.location)
+      let startEnd = self.string.lineStartAndEndLocations (forLocation: self.selectedRange.location)
       if let startRect = self.rectForCharacter (atIndex: startEnd.startLocation),
          let endRect = self.rectForCharacter (atIndex: startEnd.endLocation) {
         let r = startRect.union (endRect)
