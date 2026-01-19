@@ -21,7 +21,6 @@ struct TextSyntaxColoringView : View {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  @State var mTopViewSelection = NSRange ()
   @State private var mTopViewPopUpMenuItems : [IdentifiableAttributedString] = []
 
   @State private var mTopViewSelectedPopUp : Int = 0
@@ -31,7 +30,7 @@ struct TextSyntaxColoringView : View {
       set: { newValue in
         if self.mTopViewSelectedPopUp != newValue {
           self.mTopViewSelectedPopUp = newValue
-          self.mTopViewSelection = NSRange (location: newValue, length: 0)
+          self.mSharedTextModel.mTopViewSelection = NSRange (location: newValue, length: 0)
         }
       }
     )
@@ -40,7 +39,6 @@ struct TextSyntaxColoringView : View {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @State private var mBottomViewPopUpMenuItems : [IdentifiableAttributedString] = []
-  @State var mBottomViewSelection = NSRange ()
 
   @State private var mBottomViewSelectedPopUp : Int = 0
   private var mUserBottomViewSelectedPopUp : Binding<Int> {
@@ -49,7 +47,7 @@ struct TextSyntaxColoringView : View {
       set: { newValue in
         if self.mBottomViewSelectedPopUp != newValue {
           self.mBottomViewSelectedPopUp = newValue
-          self.mBottomViewSelection = NSRange (location: newValue, length: 0)
+          self.mSharedTextModel.mBottomViewSelection = NSRange (location: newValue, length: 0)
         }
       }
     )
@@ -84,11 +82,11 @@ struct TextSyntaxColoringView : View {
             Button ("Goto Line…") { self.mIsPresentingGotoLineSheetForTopView = true }
             .keyboardShortcut ("g", modifiers: [.option, .command])
             Button ("Comment Selection") {
-               self.mTopViewSelection = self.mSharedTextModel.performBlockComment (forSelection: self.mTopViewSelection)
+               self.mSharedTextModel.mTopViewSelection = self.mSharedTextModel.performBlockComment (forSelection: self.mSharedTextModel.mTopViewSelection)
              }
             .keyboardShortcut ("k", modifiers: [.command])
             Button ("Uncomment Selection") {
-               self.mTopViewSelection = self.mSharedTextModel.performBlockUncomment (forSelection: self.mTopViewSelection)
+               self.mSharedTextModel.mTopViewSelection = self.mSharedTextModel.performBlockUncomment (forSelection: self.mSharedTextModel.mTopViewSelection)
              }
             .keyboardShortcut ("k", modifiers: [.option, .command])
           } label: {
@@ -105,15 +103,15 @@ struct TextSyntaxColoringView : View {
         }
         LexicalHilitingTextEditor (
           model: self.mSharedTextModel,
-          selectionBinding: self.$mTopViewSelection,
+          selectionBinding: self.$mSharedTextModel.mTopViewSelection,
           issueArray: self.mIssueArray,
           installScrollToLineNotificationObserver: true,
           popUpMenuItemsBinding: self.$mTopViewPopUpMenuItems,
           populateContextualMenuCallBack: self.mPopulateContextualMenuCallBack
         )
-        .onChange (of: self.mTopViewSelection.location) {
+        .onChange (of: self.mSharedTextModel.mTopViewSelection.location) {
         //--- Select popup menu according to current selection staret
-          let currentLocation = self.mTopViewSelection.location
+          let currentLocation = self.mSharedTextModel.mTopViewSelection.location
           var newSelectedID = 0
           for item in self.mTopViewPopUpMenuItems {
             if currentLocation < item.id {
@@ -133,10 +131,10 @@ struct TextSyntaxColoringView : View {
             canRedo: self.mSharedTextModel.canRedo,
             presentGotoLineSheet: { self.mIsPresentingGotoLineSheetForTopView = true },
             commentSelection: {
-              self.mTopViewSelection = self.mSharedTextModel.performBlockComment (forSelection: self.mTopViewSelection)
+              self.mSharedTextModel.mTopViewSelection = self.mSharedTextModel.performBlockComment (forSelection: self.mSharedTextModel.mTopViewSelection)
             },
             uncommentSelection: {
-              self.mTopViewSelection = self.mSharedTextModel.performBlockUncomment (forSelection: self.mTopViewSelection)
+              self.mSharedTextModel.mTopViewSelection = self.mSharedTextModel.performBlockUncomment (forSelection: self.mSharedTextModel.mTopViewSelection)
             }
           )
         )
@@ -150,11 +148,11 @@ struct TextSyntaxColoringView : View {
               Button ("Goto Line…") { self.mIsPresentingGotoLineSheetForBottomView = true }
               .keyboardShortcut ("g", modifiers: [.option, .command])
               Button ("Comment Selection") {
-                self.mBottomViewSelection = self.mSharedTextModel.performBlockComment (forSelection: self.mBottomViewSelection)
+                self.mSharedTextModel.mBottomViewSelection = self.mSharedTextModel.performBlockComment (forSelection: self.mSharedTextModel.mBottomViewSelection)
               }
               .keyboardShortcut ("k", modifiers: [.command])
               Button ("Uncomment Selection") {
-                self.mBottomViewSelection = self.mSharedTextModel.performBlockUncomment (forSelection: self.mBottomViewSelection)
+                self.mSharedTextModel.mBottomViewSelection = self.mSharedTextModel.performBlockUncomment (forSelection: self.mSharedTextModel.mBottomViewSelection)
               }
               .keyboardShortcut ("k", modifiers: [.option, .command])
             } label: {
@@ -170,14 +168,14 @@ struct TextSyntaxColoringView : View {
           }
           LexicalHilitingTextEditor (
             model: self.mSharedTextModel,
-            selectionBinding: self.$mBottomViewSelection,
+            selectionBinding: self.$mSharedTextModel.mBottomViewSelection,
             issueArray: self.mIssueArray,
             installScrollToLineNotificationObserver: false,
             popUpMenuItemsBinding: self.$mBottomViewPopUpMenuItems,
             populateContextualMenuCallBack: self.mPopulateContextualMenuCallBack
           )
-          .onChange (of: self.mBottomViewSelection.location) {
-            let currentLocation = self.mBottomViewSelection.location
+          .onChange (of: self.mSharedTextModel.mBottomViewSelection.location) {
+            let currentLocation = self.mSharedTextModel.mBottomViewSelection.location
             var newSelectedID = 0
             for item in self.mBottomViewPopUpMenuItems {
               if currentLocation < item.id {
@@ -197,10 +195,10 @@ struct TextSyntaxColoringView : View {
               canRedo: self.mSharedTextModel.canRedo,
               presentGotoLineSheet: { self.mIsPresentingGotoLineSheetForBottomView = true },
               commentSelection: {
-                self.mBottomViewSelection = self.mSharedTextModel.performBlockComment (forSelection: self.mBottomViewSelection)
+                self.mSharedTextModel.mBottomViewSelection = self.mSharedTextModel.performBlockComment (forSelection: self.mSharedTextModel.mBottomViewSelection)
               },
               uncommentSelection: {
-                self.mBottomViewSelection = self.mSharedTextModel.performBlockUncomment (forSelection: self.mBottomViewSelection)
+                self.mSharedTextModel.mBottomViewSelection = self.mSharedTextModel.performBlockUncomment (forSelection: self.mSharedTextModel.mBottomViewSelection)
               }
             )
           )
@@ -238,14 +236,14 @@ struct TextSyntaxColoringView : View {
         Button ("Ok") {
           self.mIsPresentingGotoLineSheetForTopView = false
           let range = self.mSharedTextModel.mDocumentString.lineRange (forLineNumber: self.mCurrentLine)
-          self.mTopViewSelection = NSRange (location: range.location, length: 0)
+          self.mSharedTextModel.mTopViewSelection = NSRange (location: range.location, length: 0)
         }
         .keyboardShortcut (.defaultAction)
         .disabled ((self.mCurrentLine < 1) || (self.mCurrentLine > self.mSharedTextModel.lineCount))
       }
     }.padding (12).frame (width: 250)
     .onAppear {
-      let lc = self.mSharedTextModel.mDocumentString.lineAndColumn (forLocation: self.mTopViewSelection.location)
+      let lc = self.mSharedTextModel.mDocumentString.lineAndColumn (forLocation: self.mSharedTextModel.mTopViewSelection.location)
       self.mCurrentLine = lc.line
     }
   }
@@ -276,14 +274,14 @@ struct TextSyntaxColoringView : View {
         Button ("Ok") {
           self.mIsPresentingGotoLineSheetForBottomView = false
           let range = self.mSharedTextModel.mDocumentString.lineRange (forLineNumber: self.mCurrentLine)
-          self.mBottomViewSelection = NSRange (location: range.location, length: 0)
+          self.mSharedTextModel.mBottomViewSelection = NSRange (location: range.location, length: 0)
         }
         .keyboardShortcut (.defaultAction)
         .disabled ((self.mCurrentLine < 1) || (self.mCurrentLine > self.mSharedTextModel.lineCount))
       }
     }.padding (12).frame (width: 250)
     .onAppear {
-      let lc = self.mSharedTextModel.mDocumentString.lineAndColumn (forLocation: self.mBottomViewSelection.location)
+      let lc = self.mSharedTextModel.mDocumentString.lineAndColumn (forLocation: self.mSharedTextModel.mBottomViewSelection.location)
       self.mCurrentLine = lc.line
     }
   }

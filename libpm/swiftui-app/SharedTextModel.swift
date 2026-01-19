@@ -39,6 +39,9 @@ final class SharedTextModel : NSObject, ObservableObject, Identifiable, NSTextSt
   private var mWriteFileCallback : ((String) -> Void)? = nil
   private var mPopUpMenuItems = [IdentifiableAttributedString] ()
 
+  @Published var mTopViewSelection = NSRange ()
+  @Published var mBottomViewSelection = NSRange ()
+
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @Binding var mIssues : [CompilationIssue]
