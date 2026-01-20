@@ -212,7 +212,7 @@ private proc compileProject ?let @lstring inProjectSourceFile
   end
 //--------------------------------- Hand coded source files
   var @stringlist handCodedLinkToolFileList = @()
-  var @stringlist handCodedSourceAppFileList = @()
+//  var @stringlist handCodedSourceAppFileList = @()
   let @stringlist handCodedSourceToolFileList = inProjectComponentAST.mToolCppSourceList
   var @stringlist frameworkToolFileList = @()
   var @stringset handCodedSourceDirectorySet = @()
@@ -221,16 +221,16 @@ private proc compileProject ?let @lstring inProjectSourceFile
       handCodedSourceDirectorySet ++= featureValue
     elsif featureName.string == "tool-framework" then
       frameworkToolFileList += ![featureValue lastPathComponent]
-    elsif featureName.string == "app-source" then
-      handCodedSourceAppFileList += !featureValue.string
-      let directory = [featureValue stringByDeletingLastPathComponent]
-      if directory == "" then
-        handCodedSourceDirectorySet ++= "../"
-      elsif [directory characterAtIndex !0] != '/' then
-        handCodedSourceDirectorySet ++= "../" + directory
-      else
-        handCodedSourceDirectorySet ++= directory
-      end
+//    elsif featureName.string == "app-source" then
+//      handCodedSourceAppFileList += !featureValue.string
+//      let directory = [featureValue stringByDeletingLastPathComponent]
+//      if directory == "" then
+//        handCodedSourceDirectorySet ++= "../"
+//      elsif [directory characterAtIndex !0] != '/' then
+//        handCodedSourceDirectorySet ++= "../" + directory
+//      else
+//        handCodedSourceDirectorySet ++= directory
+//      end
     elsif featureName.string == "tool-link" then
       handCodedLinkToolFileList += !featureValue.string
     elsif featureName.string == "libpmAtPath" then
@@ -367,7 +367,6 @@ private proc compileProject ?let @lstring inProjectSourceFile
       !"../sources/tool-sources"
       !handCodedSourceToolFileList
       !frameworkToolFileList
-      !handCodedSourceAppFileList
       !handCodedLinkToolFileList
     )
   end
@@ -392,7 +391,6 @@ private proc projectGeneration
               ?let @string inHandCodedSourceDirectory
               ?let @stringlist inHandCodedSourceToolFileList
               ?let @stringlist inFrameworkToolFileList
-              ?let @stringlist inHandCodedSourceAppFileList
               ?let @stringlist inHandCodedLinkAppFileList
 {
   let appProductFileList = inAppProductFileList
@@ -450,7 +448,7 @@ private proc projectGeneration
     ignoredFeatureSet ++= "tool-framework"
     ignoredFeatureSet ++= "tool-source"
     ignoredFeatureSet ++= "tool-link"
-    ignoredFeatureSet ++= "app-source"
+//    ignoredFeatureSet ++= "app-source"
     var @projectQualifiedFeatureMap projectQualifiedFeatureMap = @()
     for (mFeatureName mFeatureValue) in inProjectComponentAST.mQualifiedFeatureList do
       if not [ignoredFeatureSet hasKey !mFeatureName.string] then
@@ -481,7 +479,6 @@ private proc projectGeneration
       !inHandCodedSourceDirectory
       !handledExtensionSet
       !?allProductFileSet
-      !inHandCodedSourceAppFileList
       !inHandCodedLinkAppFileList
     )
   end

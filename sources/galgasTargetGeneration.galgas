@@ -316,7 +316,6 @@ proc updateGalgasTargets
   ?let @string inHandCodedSourceDirectory
   ?let @stringset inHandledExtensionSet
   ?!@stringset ioAllProductFileSet
-  ?let @stringlist inHandCodedSourceAppFileList
   ?let @stringlist inHandCodedLinkAppFileList {
   ioAllProductFileSet += .setWithStringList {!inSwiftAppProductFileList}
   let projectDirectory = [inProjectSourceFilePath stringByDeletingLastPathComponent]
@@ -632,21 +631,21 @@ proc updateGalgasTargets
     end
     [!?xcodeProject addSettingsToDefaultConfiguration !settingList: xcodeSettingList]
   //--- Add "Hand coded sources (App)" group
-    var @stringlist resource_handCodedResourceFileRefForAppList = @()
-    if [inHandCodedSourceAppFileList count] > 0 then
-      [!?xcodeProject addGroupWithFiles
-        !groupName:"Hand Coded Sources (App)"
-        !groupPath:"../"
-        !fileNames:@stringset.setWithStringList {!inHandCodedSourceAppFileList}
-        !?cFileRefs: %from @()
-        !?cppFileRefs: %from @()
-        !?swiftFileRefs: %from @()
-        !?frameworkFileRefs: %from @()
-        !?resourceFileRefs: resource_handCodedResourceFileRefForAppList
-        ?groupRef:let @string groupRef
-      ]
-      [!?xcodeProject placeGroupAsMainGroup !groupRef:groupRef]
-    end
+//    var @stringlist resource_handCodedResourceFileRefForAppList = @()
+//    if [inHandCodedSourceAppFileList count] > 0 then
+//      [!?xcodeProject addGroupWithFiles
+//        !groupName:"Hand Coded Sources (App)"
+//        !groupPath:"../"
+//        !fileNames:@stringset.setWithStringList {!inHandCodedSourceAppFileList}
+//        !?cFileRefs: %from @()
+//        !?cppFileRefs: %from @()
+//        !?swiftFileRefs: %from @()
+//        !?frameworkFileRefs: %from @()
+//        !?resourceFileRefs: resource_handCodedResourceFileRefForAppList
+//        ?groupRef:let @string groupRef
+//      ]
+//      [!?xcodeProject placeGroupAsMainGroup !groupRef:groupRef]
+//    end
   //--- Add "Frameworks for App" group
     var @stringlist appFrameworksFileRefList = @()
     if [inHandCodedLinkAppFileList count] > 0 then
@@ -1252,7 +1251,7 @@ proc updateGalgasTargets
       !productFileName: [inTargetName capitalizingFirstCharacter] + " IDE"
       !sources: swift_FileRefList
       !frameworkFileRefs: frameworksFileRefList + appFrameworksFileRefList
-      !resourceFileRefs: resourceFileBuildRefs + resource_handCodedResourceFileRefForAppList
+      !resourceFileRefs: resourceFileBuildRefs // + resource_handCodedResourceFileRefForAppList
       !buildConfigurationSettingList: cocoaConfigurationSettingList
       !dependantTargetList: @[@(releaseTargetRef), @(debugTargetRef)]
       !productCopyList: @[@(releaseProductFileRef, inTargetName), @(debugProductFileRef, inTargetName + "-debug")]
