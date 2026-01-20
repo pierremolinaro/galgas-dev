@@ -13458,39 +13458,32 @@ void cParser_galgas_33_ProjectSyntax::rule_galgas_33_ProjectSyntax_project_5F_co
       var_qualifiedFeatureList_3343.addAssignOperation (GGS_string ("tool-source").getter_here (inCompiler COMMA_SOURCE_FILE ("galgasProject.galgas", 138)), var_featureValue_4955  COMMA_SOURCE_FILE ("galgasProject.galgas", 138)) ;
     } break ;
     case 17: {
-      inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__25_MacOSDeployment COMMA_SOURCE_FILE ("galgasProject.galgas", 140)) ;
-      inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__3A_ COMMA_SOURCE_FILE ("galgasProject.galgas", 141)) ;
-      GGS_lstring var_featureValue_5110 = inCompiler->synthetizedAttribute_tokenString () ;
-      inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__22_string_22_ COMMA_SOURCE_FILE ("galgasProject.galgas", 142)) ;
-      var_qualifiedFeatureList_3343.addAssignOperation (GGS_string ("MacOSDeployment").getter_here (inCompiler COMMA_SOURCE_FILE ("galgasProject.galgas", 143)), var_featureValue_5110  COMMA_SOURCE_FILE ("galgasProject.galgas", 143)) ;
-    } break ;
-    case 18: {
       inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__25_macCodeSign COMMA_SOURCE_FILE ("galgasProject.galgas", 145)) ;
       inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__3A_ COMMA_SOURCE_FILE ("galgasProject.galgas", 146)) ;
-      GGS_lstring var_featureValue_5265 = inCompiler->synthetizedAttribute_tokenString () ;
+      GGS_lstring var_featureValue_5275 = inCompiler->synthetizedAttribute_tokenString () ;
       inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__22_string_22_ COMMA_SOURCE_FILE ("galgasProject.galgas", 147)) ;
-      var_qualifiedFeatureList_3343.addAssignOperation (GGS_string ("macCodeSign").getter_here (inCompiler COMMA_SOURCE_FILE ("galgasProject.galgas", 148)), var_featureValue_5265  COMMA_SOURCE_FILE ("galgasProject.galgas", 148)) ;
+      var_qualifiedFeatureList_3343.addAssignOperation (GGS_string ("macCodeSign").getter_here (inCompiler COMMA_SOURCE_FILE ("galgasProject.galgas", 148)), var_featureValue_5275  COMMA_SOURCE_FILE ("galgasProject.galgas", 148)) ;
     } break ;
-    case 19: {
+    case 18: {
       inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__25_app_2D_source COMMA_SOURCE_FILE ("galgasProject.galgas", 150)) ;
       inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__3A_ COMMA_SOURCE_FILE ("galgasProject.galgas", 151)) ;
-      GGS_lstring var_featureValue_5415 = inCompiler->synthetizedAttribute_tokenString () ;
+      GGS_lstring var_featureValue_5425 = inCompiler->synthetizedAttribute_tokenString () ;
       inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__22_string_22_ COMMA_SOURCE_FILE ("galgasProject.galgas", 152)) ;
-      var_qualifiedFeatureList_3343.addAssignOperation (GGS_string ("app-source").getter_here (inCompiler COMMA_SOURCE_FILE ("galgasProject.galgas", 153)), var_featureValue_5415  COMMA_SOURCE_FILE ("galgasProject.galgas", 153)) ;
+      var_qualifiedFeatureList_3343.addAssignOperation (GGS_string ("app-source").getter_here (inCompiler COMMA_SOURCE_FILE ("galgasProject.galgas", 153)), var_featureValue_5425  COMMA_SOURCE_FILE ("galgasProject.galgas", 153)) ;
     } break ;
-    case 20: {
+    case 19: {
       inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__25_app_2D_link COMMA_SOURCE_FILE ("galgasProject.galgas", 155)) ;
       inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__3A_ COMMA_SOURCE_FILE ("galgasProject.galgas", 156)) ;
-      GGS_lstring var_featureValue_5562 = inCompiler->synthetizedAttribute_tokenString () ;
+      GGS_lstring var_featureValue_5572 = inCompiler->synthetizedAttribute_tokenString () ;
       inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__22_string_22_ COMMA_SOURCE_FILE ("galgasProject.galgas", 157)) ;
-      var_qualifiedFeatureList_3343.addAssignOperation (GGS_string ("app-link").getter_here (inCompiler COMMA_SOURCE_FILE ("galgasProject.galgas", 158)), var_featureValue_5562  COMMA_SOURCE_FILE ("galgasProject.galgas", 158)) ;
+      var_qualifiedFeatureList_3343.addAssignOperation (GGS_string ("app-link").getter_here (inCompiler COMMA_SOURCE_FILE ("galgasProject.galgas", 158)), var_featureValue_5572  COMMA_SOURCE_FILE ("galgasProject.galgas", 158)) ;
+    } break ;
+    case 20: {
+      GGS_lstring var_filePath_5689 = inCompiler->synthetizedAttribute_tokenString () ;
+      inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__22_string_22_ COMMA_SOURCE_FILE ("galgasProject.galgas", 160)) ;
+      var_projectSourceList_3235.addAssignOperation (var_filePath_5689  COMMA_SOURCE_FILE ("galgasProject.galgas", 161)) ;
     } break ;
     case 21: {
-      GGS_lstring var_filePath_5679 = inCompiler->synthetizedAttribute_tokenString () ;
-      inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__22_string_22_ COMMA_SOURCE_FILE ("galgasProject.galgas", 160)) ;
-      var_projectSourceList_3235.addAssignOperation (var_filePath_5679  COMMA_SOURCE_FILE ("galgasProject.galgas", 161)) ;
-    } break ;
-    case 22: {
       inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_in COMMA_SOURCE_FILE ("galgasProject.galgas", 163)) ;
       nt_folderDirectory_ (GGS_string::makeEmptyString (), var_projectSourceList_3235, inCompiler) ;
     } break ;
@@ -13563,29 +13556,24 @@ void cParser_galgas_33_ProjectSyntax::rule_galgas_33_ProjectSyntax_project_5F_co
       inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__22_string_22_ COMMA_SOURCE_FILE ("galgasProject.galgas", 137)) ;
     } break ;
     case 17: {
-      inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__25_MacOSDeployment COMMA_SOURCE_FILE ("galgasProject.galgas", 140)) ;
-      inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__3A_ COMMA_SOURCE_FILE ("galgasProject.galgas", 141)) ;
-      inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__22_string_22_ COMMA_SOURCE_FILE ("galgasProject.galgas", 142)) ;
-    } break ;
-    case 18: {
       inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__25_macCodeSign COMMA_SOURCE_FILE ("galgasProject.galgas", 145)) ;
       inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__3A_ COMMA_SOURCE_FILE ("galgasProject.galgas", 146)) ;
       inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__22_string_22_ COMMA_SOURCE_FILE ("galgasProject.galgas", 147)) ;
     } break ;
-    case 19: {
+    case 18: {
       inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__25_app_2D_source COMMA_SOURCE_FILE ("galgasProject.galgas", 150)) ;
       inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__3A_ COMMA_SOURCE_FILE ("galgasProject.galgas", 151)) ;
       inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__22_string_22_ COMMA_SOURCE_FILE ("galgasProject.galgas", 152)) ;
     } break ;
-    case 20: {
+    case 19: {
       inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__25_app_2D_link COMMA_SOURCE_FILE ("galgasProject.galgas", 155)) ;
       inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__3A_ COMMA_SOURCE_FILE ("galgasProject.galgas", 156)) ;
       inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__22_string_22_ COMMA_SOURCE_FILE ("galgasProject.galgas", 157)) ;
     } break ;
-    case 21: {
+    case 20: {
       inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__22_string_22_ COMMA_SOURCE_FILE ("galgasProject.galgas", 160)) ;
     } break ;
-    case 22: {
+    case 21: {
       inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_in COMMA_SOURCE_FILE ("galgasProject.galgas", 163)) ;
       nt_folderDirectory_parse (inCompiler) ;
     } break ;
@@ -13658,29 +13646,24 @@ void cParser_galgas_33_ProjectSyntax::rule_galgas_33_ProjectSyntax_project_5F_co
       inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__22_string_22_ COMMA_SOURCE_FILE ("galgasProject.galgas", 137)) ;
     } break ;
     case 17: {
-      inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__25_MacOSDeployment COMMA_SOURCE_FILE ("galgasProject.galgas", 140)) ;
-      inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__3A_ COMMA_SOURCE_FILE ("galgasProject.galgas", 141)) ;
-      inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__22_string_22_ COMMA_SOURCE_FILE ("galgasProject.galgas", 142)) ;
-    } break ;
-    case 18: {
       inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__25_macCodeSign COMMA_SOURCE_FILE ("galgasProject.galgas", 145)) ;
       inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__3A_ COMMA_SOURCE_FILE ("galgasProject.galgas", 146)) ;
       inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__22_string_22_ COMMA_SOURCE_FILE ("galgasProject.galgas", 147)) ;
     } break ;
-    case 19: {
+    case 18: {
       inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__25_app_2D_source COMMA_SOURCE_FILE ("galgasProject.galgas", 150)) ;
       inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__3A_ COMMA_SOURCE_FILE ("galgasProject.galgas", 151)) ;
       inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__22_string_22_ COMMA_SOURCE_FILE ("galgasProject.galgas", 152)) ;
     } break ;
-    case 20: {
+    case 19: {
       inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__25_app_2D_link COMMA_SOURCE_FILE ("galgasProject.galgas", 155)) ;
       inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__3A_ COMMA_SOURCE_FILE ("galgasProject.galgas", 156)) ;
       inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__22_string_22_ COMMA_SOURCE_FILE ("galgasProject.galgas", 157)) ;
     } break ;
-    case 21: {
+    case 20: {
       inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__22_string_22_ COMMA_SOURCE_FILE ("galgasProject.galgas", 160)) ;
     } break ;
-    case 22: {
+    case 21: {
       inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_in COMMA_SOURCE_FILE ("galgasProject.galgas", 163)) ;
       nt_folderDirectory_indexing (inCompiler) ;
     } break ;
@@ -13697,17 +13680,17 @@ void cParser_galgas_33_ProjectSyntax::rule_galgas_33_ProjectSyntax_project_5F_co
 void cParser_galgas_33_ProjectSyntax::rule_galgas_33_ProjectSyntax_folderDirectory_i2_ (const GGS_string constinArgument_inCurrentRelativePath,
                                                                                         GGS_lstringlist & ioArgument_ioProjectSourceList,
                                                                                         Lexique_galgasScanner_33_ * inCompiler) {
-  GGS_lstring var_relativeDirectory_6276 = inCompiler->synthetizedAttribute_tokenString () ;
+  GGS_lstring var_relativeDirectory_6286 = inCompiler->synthetizedAttribute_tokenString () ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__22_string_22_ COMMA_SOURCE_FILE ("galgasProject.galgas", 182)) ;
   GalgasBool test_0 = GalgasBool::boolTrue ;
   if (GalgasBool::boolTrue == test_0) {
-    GGS_bool test_1 = GGS_bool (ComparisonKind::greaterThan, var_relativeDirectory_6276.readProperty_string ().getter_count (SOURCE_FILE ("galgasProject.galgas", 183)).objectCompare (GGS_uint (uint32_t (0U)))) ;
+    GGS_bool test_1 = GGS_bool (ComparisonKind::greaterThan, var_relativeDirectory_6286.readProperty_string ().getter_count (SOURCE_FILE ("galgasProject.galgas", 183)).objectCompare (GGS_uint (uint32_t (0U)))) ;
     if (GalgasBool::boolTrue == test_1.boolEnum ()) {
-      test_1 = GGS_bool (ComparisonKind::notEqual, var_relativeDirectory_6276.readProperty_string ().getter_lastCharacter (inCompiler COMMA_SOURCE_FILE ("galgasProject.galgas", 183)).objectCompare (GGS_char (utf32 (47)))) ;
+      test_1 = GGS_bool (ComparisonKind::notEqual, var_relativeDirectory_6286.readProperty_string ().getter_lastCharacter (inCompiler COMMA_SOURCE_FILE ("galgasProject.galgas", 183)).objectCompare (GGS_char (utf32 (47)))) ;
     }
     test_0 = test_1.boolEnum () ;
     if (GalgasBool::boolTrue == test_0) {
-      var_relativeDirectory_6276.mProperty_string.plusAssignOperation(GGS_string ("/"), inCompiler  COMMA_SOURCE_FILE ("galgasProject.galgas", 184)) ;
+      var_relativeDirectory_6286.mProperty_string.plusAssignOperation(GGS_string ("/"), inCompiler  COMMA_SOURCE_FILE ("galgasProject.galgas", 184)) ;
     }
   }
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__7B_ COMMA_SOURCE_FILE ("galgasProject.galgas", 186)) ;
@@ -13716,12 +13699,12 @@ void cParser_galgas_33_ProjectSyntax::rule_galgas_33_ProjectSyntax_folderDirecto
     switch (select_galgas_33_ProjectSyntax_1 (inCompiler)) {
     case 2: {
       inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_in COMMA_SOURCE_FILE ("galgasProject.galgas", 189)) ;
-      nt_folderDirectory_ (constinArgument_inCurrentRelativePath.add_operation (var_relativeDirectory_6276.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("galgasProject.galgas", 190)), ioArgument_ioProjectSourceList, inCompiler) ;
+      nt_folderDirectory_ (constinArgument_inCurrentRelativePath.add_operation (var_relativeDirectory_6286.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("galgasProject.galgas", 190)), ioArgument_ioProjectSourceList, inCompiler) ;
     } break ;
     case 3: {
-      GGS_lstring var_relativePath_6609 = inCompiler->synthetizedAttribute_tokenString () ;
+      GGS_lstring var_relativePath_6619 = inCompiler->synthetizedAttribute_tokenString () ;
       inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__22_string_22_ COMMA_SOURCE_FILE ("galgasProject.galgas", 192)) ;
-      ioArgument_ioProjectSourceList.addAssignOperation (GGS_lstring::init_21__21_ (constinArgument_inCurrentRelativePath.add_operation (var_relativeDirectory_6276.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("galgasProject.galgas", 194)).add_operation (var_relativePath_6609.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("galgasProject.galgas", 194)), var_relativePath_6609.readProperty_location (), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("galgasProject.galgas", 193)) ;
+      ioArgument_ioProjectSourceList.addAssignOperation (GGS_lstring::init_21__21_ (constinArgument_inCurrentRelativePath.add_operation (var_relativeDirectory_6286.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("galgasProject.galgas", 194)).add_operation (var_relativePath_6619.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("galgasProject.galgas", 194)), var_relativePath_6619.readProperty_location (), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("galgasProject.galgas", 193)) ;
     } break ;
     default:
       repeatFlag_2 = false ;

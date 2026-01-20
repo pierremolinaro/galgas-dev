@@ -434,3 +434,13 @@ void routine_checkUsefulEntities_3F__3F__3F_ (const class GGS_usefulEntitiesGrap
                                               class Compiler * inCompiler
                                               COMMA_LOCATION_ARGS) ;
 
+//--------------------------------------------------------------------------------------------------
+//
+//Function 'afterNameForUsefulEntitiesGraph'
+//
+//--------------------------------------------------------------------------------------------------
+
+class GGS_lstring function_afterNameForUsefulEntitiesGraph (const class GGS_location & constinArgument0,
+                                                            class Compiler * inCompiler
+                                                            COMMA_LOCATION_ARGS) ;
+

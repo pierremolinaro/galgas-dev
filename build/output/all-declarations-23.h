@@ -520,8 +520,6 @@ void extensionSetter_addGroupWithFiles (class GGS_XcodeProjectDescriptor & ioObj
                                         const class GGS_stringset constin_inFileNames,
                                         class GGS_stringlist & io_ioCFileBuildRefs,
                                         class GGS_stringlist & io_ioCppFileBuildRefs,
-                                        class GGS_stringlist & io_ioMFileBuildRefs,
-                                        class GGS_stringlist & io_ioMMFileBuildRefs,
                                         class GGS_stringlist & io_ioSwiftFileBuildRefs,
                                         class GGS_stringlist & io_ioFrameWorkFileBuildRefs,
                                         class GGS_stringlist & io_ioResourceFileBuildRefs,

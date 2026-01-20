@@ -468,13 +468,13 @@ private filewrapper templateLexiqueGenerationTemplates in "+generation-templates
     ?@string LEXIQUE_COMPONENT_NAME
     ?@templateReplacementListAST TEMPLATE_REPLACEMENT_LIST
 
-  template swiftCocoaImplementationZone "template_lexique_cocoa_implementation.swift.galgasTemplate"
-    ?@string LEXIQUE_HEADER_FILE_NAME
-    ?@string LEXIQUE_CLASS_NAME
-    ?@string SUPER_LEXIQUE_CLASS_NAME
-    ?@terminalList TERMINAL_LIST
-    ?@templateDelimitorList TEMPLATE_DELIMITOR_LIST
-    ?@templateReplacementListAST TEMPLATE_REPLACEMENT_LIST
+//  template swiftCocoaImplementationZone "template_lexique_cocoa_implementation.swift.galgasTemplate"
+//    ?@string LEXIQUE_HEADER_FILE_NAME
+//    ?@string LEXIQUE_CLASS_NAME
+//    ?@string SUPER_LEXIQUE_CLASS_NAME
+//    ?@terminalList TERMINAL_LIST
+//    ?@templateDelimitorList TEMPLATE_DELIMITOR_LIST
+//    ?@templateReplacementListAST TEMPLATE_REPLACEMENT_LIST
 
   template swiftuiImplementationZone "template_lexique_swiftui_implementation.swift.galgasTemplate"
     ?@string LEXIQUE_HEADER_FILE_NAME

@@ -10,16 +10,6 @@
 
 //--------------------------------------------------------------------------------------------------
 //
-//Function 'afterNameForUsefulEntitiesGraph'
-//
-//--------------------------------------------------------------------------------------------------
-
-class GGS_lstring function_afterNameForUsefulEntitiesGraph (const class GGS_location & constinArgument0,
-                                                            class Compiler * inCompiler
-                                                            COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
 //Function 'beforeNameForUsefulEntitiesGraph'
 //
 //--------------------------------------------------------------------------------------------------

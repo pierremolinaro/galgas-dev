@@ -238,8 +238,8 @@ setter @XcodeProjectDescriptor addGroupWithFiles
   ?fileNames:let @stringset inFileNames
   ?!cFileRefs:@stringlist ioCFileBuildRefs
   ?!cppFileRefs:@stringlist ioCppFileBuildRefs
-  ?!mFileRefs:@stringlist ioMFileBuildRefs
-  ?!mmFileRefs:@stringlist ioMMFileBuildRefs
+//  ?!mFileRefs:@stringlist ioMFileBuildRefs
+//  ?!mmFileRefs:@stringlist ioMMFileBuildRefs
   ?!swiftFileRefs:@stringlist ioSwiftFileBuildRefs
   ?!frameworkFileRefs:@stringlist ioFrameWorkFileBuildRefs
   ?!resourceFileRefs:@stringlist ioResourceFileBuildRefs
@@ -270,16 +270,16 @@ setter @XcodeProjectDescriptor addGroupWithFiles
     elsif [f pathExtension] == "h" then
       [!?self addHeaderFile !fileName:f ?fileRef:let @string headerFileRef]
       childrenRefs += !headerFileRef
-    elsif [f pathExtension] == "m" then
-      [!?self addMFile !fileName:f ?fileRef:let @string m_FileRef]
-      [!?self addBuildFile !fileRef:m_FileRef !fileName:f ?buildRef:let @string buildRef]
-      childrenRefs += !m_FileRef
-      ioMFileBuildRefs += !buildRef
-    elsif [f pathExtension] == "mm" then
-      [!?self addMMFile !fileName:f ?fileRef:let @string m_FileRef]
-      [!?self addBuildFile !fileRef:m_FileRef !fileName:f ?buildRef:let @string buildRef]
-      childrenRefs += !m_FileRef
-      ioMMFileBuildRefs += !buildRef
+//    elsif [f pathExtension] == "m" then
+//      [!?self addMFile !fileName:f ?fileRef:let @string m_FileRef]
+//      [!?self addBuildFile !fileRef:m_FileRef !fileName:f ?buildRef:let @string buildRef]
+//      childrenRefs += !m_FileRef
+//      ioMFileBuildRefs += !buildRef
+//    elsif [f pathExtension] == "mm" then
+//      [!?self addMMFile !fileName:f ?fileRef:let @string m_FileRef]
+//      [!?self addBuildFile !fileRef:m_FileRef !fileName:f ?buildRef:let @string buildRef]
+//      childrenRefs += !m_FileRef
+//      ioMMFileBuildRefs += !buildRef
     elsif [f pathExtension] == "framework" then
       [!?self addFrameworkFile !fileName:f ?fileRef:let @string framework_FileRef]
       [!?self addBuildFile !fileRef:framework_FileRef !fileName:f ?buildRef:let @string buildRef]

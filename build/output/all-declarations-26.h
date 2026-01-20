@@ -1224,3 +1224,17 @@ GGS_string filewrapperTemplate_classGenerationTemplate_referenceClassTypeSpecifi
                                                                                                  const class GGS_bool & in_CLONABLE
                                                                                                  COMMA_LOCATION_ARGS) ;
 
+//--------------------------------------------------------------------------------------------------
+//
+//Function 'generateClassGetterDeclaration'
+//
+//--------------------------------------------------------------------------------------------------
+
+class GGS_string function_generateClassGetterDeclaration (const class GGS_lstring & constinArgument0,
+                                                          const class GGS_functionSignature & constinArgument1,
+                                                          const class GGS_bool & constinArgument2,
+                                                          const class GGS_unifiedTypeMapEntry & constinArgument3,
+                                                          const class GGS_methodQualifier & constinArgument4,
+                                                          class Compiler * inCompiler
+                                                          COMMA_LOCATION_ARGS) ;
+

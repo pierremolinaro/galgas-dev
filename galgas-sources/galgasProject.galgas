@@ -136,11 +136,11 @@ syntax galgas3ProjectSyntax (galgasScanner3) {
       $:$
       $"string"$ ?let @lstring featureValue
       qualifiedFeatureList += !["tool-source" here] !featureValue
-    while
-      $%MacOSDeployment$
-      $:$
-      $"string"$ ?let @lstring featureValue
-      qualifiedFeatureList += !["MacOSDeployment" here] !featureValue
+//    while
+//      $%MacOSDeployment$
+//      $:$
+//      $"string"$ ?let @lstring featureValue
+//      qualifiedFeatureList += !["MacOSDeployment" here] !featureValue
     while
       $%macCodeSign$
       $:$

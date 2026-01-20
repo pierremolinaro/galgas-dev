@@ -8,170 +8,6 @@
 #include "all-declarations-26.h"
 
 //--------------------------------------------------------------------------------------------------
-//Overriding extension method '@lexicalAttributeInputArgumentAST checkLexicalRoutineCallArgument'
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_lexicalAttributeInputArgumentAST::method_checkLexicalRoutineCallArgument (GGS_lexiqueAnalysisContext & ioArgument_ioLexiqueAnalysisContext,
-                                                                                    const GGS_lexicalTypeEnum constinArgument_inLexicalRoutineFormalArgumentType,
-                                                                                    Compiler * inCompiler
-                                                                                    COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_lexicalTypeEnum var_attributeLexicalType_16746 ;
-  const GGS_lexicalAttributeInputArgumentAST temp_0 = this ;
-  ioArgument_ioLexiqueAnalysisContext.readProperty_mLexicalAttributeMap ().method_searchKey (temp_0.readProperty_mAttributeName (), var_attributeLexicalType_16746, inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 388)) ;
-  GalgasBool test_1 = GalgasBool::boolTrue ;
-  if (GalgasBool::boolTrue == test_1) {
-    test_1 = GGS_bool (ComparisonKind::notEqual, var_attributeLexicalType_16746.objectCompare (constinArgument_inLexicalRoutineFormalArgumentType)).boolEnum () ;
-    if (GalgasBool::boolTrue == test_1) {
-      const GGS_lexicalAttributeInputArgumentAST temp_2 = this ;
-      GenericArray <FixItDescription> fixItArray3 ;
-      inCompiler->emitSemanticError (temp_2.readProperty_mAttributeName ().readProperty_location (), GGS_string ("type error, attribute type is @").add_operation (extensionGetter_lexicalTypeBaseName (var_attributeLexicalType_16746, inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 395)), inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 394)).add_operation (GGS_string (" type, but lexical routine prototype requires @"), inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 395)).add_operation (extensionGetter_lexicalTypeBaseName (constinArgument_inLexicalRoutineFormalArgumentType, inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 397)), inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 396)).add_operation (GGS_string (" type"), inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 397)), fixItArray3  COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 394)) ;
-    }
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-//Overriding extension method '@lexicalCharacterInputArgumentAST checkLexicalRoutineCallArgument'
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_lexicalCharacterInputArgumentAST::method_checkLexicalRoutineCallArgument (GGS_lexiqueAnalysisContext & /* ioArgument_ioLexiqueAnalysisContext */,
-                                                                                    const GGS_lexicalTypeEnum constinArgument_inLexicalRoutineFormalArgumentType,
-                                                                                    Compiler * inCompiler
-                                                                                    COMMA_UNUSED_LOCATION_ARGS) {
-  GalgasBool test_0 = GalgasBool::boolTrue ;
-  if (GalgasBool::boolTrue == test_0) {
-    test_0 = GGS_bool (ComparisonKind::notEqual, GGS_lexicalTypeEnum::class_func_lexicalType_5F_char (SOURCE_FILE ("lexiqueCompilation.galgas", 408)).objectCompare (constinArgument_inLexicalRoutineFormalArgumentType)).boolEnum () ;
-    if (GalgasBool::boolTrue == test_0) {
-      const GGS_lexicalCharacterInputArgumentAST temp_1 = this ;
-      GenericArray <FixItDescription> fixItArray2 ;
-      inCompiler->emitSemanticError (temp_1.readProperty_mCharacter ().readProperty_location (), GGS_string ("type error, a literal character has @char").add_operation (GGS_string (" type, but lexical routine prototype requires an @"), inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 409)).add_operation (extensionGetter_lexicalTypeBaseName (constinArgument_inLexicalRoutineFormalArgumentType, inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 411)), inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 410)).add_operation (GGS_string (" type value"), inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 411)), fixItArray2  COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 409)) ;
-    }
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-//Overriding extension method '@lexicalUnsignedInputArgumentAST checkLexicalRoutineCallArgument'
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_lexicalUnsignedInputArgumentAST::method_checkLexicalRoutineCallArgument (GGS_lexiqueAnalysisContext & /* ioArgument_ioLexiqueAnalysisContext */,
-                                                                                   const GGS_lexicalTypeEnum constinArgument_inLexicalRoutineFormalArgumentType,
-                                                                                   Compiler * inCompiler
-                                                                                   COMMA_UNUSED_LOCATION_ARGS) {
-  GalgasBool test_0 = GalgasBool::boolTrue ;
-  if (GalgasBool::boolTrue == test_0) {
-    test_0 = GGS_bool (ComparisonKind::notEqual, GGS_lexicalTypeEnum::class_func_lexicalType_5F_uint (SOURCE_FILE ("lexiqueCompilation.galgas", 422)).objectCompare (constinArgument_inLexicalRoutineFormalArgumentType)).boolEnum () ;
-    if (GalgasBool::boolTrue == test_0) {
-      const GGS_lexicalUnsignedInputArgumentAST temp_1 = this ;
-      GenericArray <FixItDescription> fixItArray2 ;
-      inCompiler->emitSemanticError (temp_1.readProperty_mUnsigned ().readProperty_location (), GGS_string ("type error, a literal unsigned value has @uint").add_operation (GGS_string (" type, but lexical routine prototype requires an @"), inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 423)).add_operation (extensionGetter_lexicalTypeBaseName (constinArgument_inLexicalRoutineFormalArgumentType, inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 425)), inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 424)).add_operation (GGS_string (" type value"), inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 425)), fixItArray2  COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 423)) ;
-    }
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-//Overriding extension method '@lexicalCurrentCharacterInputArgumentAST checkLexicalRoutineCallArgument'
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_lexicalCurrentCharacterInputArgumentAST::method_checkLexicalRoutineCallArgument (GGS_lexiqueAnalysisContext & /* ioArgument_ioLexiqueAnalysisContext */,
-                                                                                           const GGS_lexicalTypeEnum constinArgument_inLexicalRoutineFormalArgumentType,
-                                                                                           Compiler * inCompiler
-                                                                                           COMMA_UNUSED_LOCATION_ARGS) {
-  GalgasBool test_0 = GalgasBool::boolTrue ;
-  if (GalgasBool::boolTrue == test_0) {
-    test_0 = GGS_bool (ComparisonKind::notEqual, GGS_lexicalTypeEnum::class_func_lexicalType_5F_char (SOURCE_FILE ("lexiqueCompilation.galgas", 436)).objectCompare (constinArgument_inLexicalRoutineFormalArgumentType)).boolEnum () ;
-    if (GalgasBool::boolTrue == test_0) {
-      const GGS_lexicalCurrentCharacterInputArgumentAST temp_1 = this ;
-      GenericArray <FixItDescription> fixItArray2 ;
-      inCompiler->emitSemanticError (temp_1.readProperty_mLocation (), GGS_string ("type error, current character value has @char").add_operation (GGS_string (" type, but lexical routine prototype requires an @"), inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 437)).add_operation (extensionGetter_lexicalTypeBaseName (constinArgument_inLexicalRoutineFormalArgumentType, inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 439)), inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 438)).add_operation (GGS_string (" type value"), inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 439)), fixItArray2  COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 437)) ;
-    }
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-//Overriding extension method '@lexicalFunctionInputArgumentAST checkLexicalRoutineCallArgument'
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_lexicalFunctionInputArgumentAST::method_checkLexicalRoutineCallArgument (GGS_lexiqueAnalysisContext & ioArgument_ioLexiqueAnalysisContext,
-                                                                                   const GGS_lexicalTypeEnum constinArgument_inLexicalRoutineFormalArgumentType,
-                                                                                   Compiler * inCompiler
-                                                                                   COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_lexicalFunctionFormalArgumentList var_lexicalFormalTypeList_19408 ;
-  GGS_lexicalTypeEnum var_returnedLexicalFormalType_19439 ;
-  GGS_string var_replacementFunctionName_19474 ;
-  const GGS_lexicalFunctionInputArgumentAST temp_0 = this ;
-  GGS_bool joker_19502 ; // Joker input parameter
-  ioArgument_ioLexiqueAnalysisContext.readProperty_mLexicalFunctionMap ().method_searchKey (temp_0.readProperty_mFunctionName (), var_lexicalFormalTypeList_19408, var_returnedLexicalFormalType_19439, var_replacementFunctionName_19474, joker_19502, inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 450)) ;
-  GalgasBool test_1 = GalgasBool::boolTrue ;
-  if (GalgasBool::boolTrue == test_1) {
-    test_1 = GGS_bool (ComparisonKind::notEqual, var_replacementFunctionName_19474.objectCompare (GGS_string::makeEmptyString ())).boolEnum () ;
-    if (GalgasBool::boolTrue == test_1) {
-      const GGS_lexicalFunctionInputArgumentAST temp_2 = this ;
-      GenericArray <FixItDescription> fixItArray3 ;
-      inCompiler->emitSemanticWarning (temp_2.readProperty_mFunctionName ().readProperty_location (), GGS_string ("obsolete lexical function, replaced by '").add_operation (var_replacementFunctionName_19474, inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 459)).add_operation (GGS_string ("'"), inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 459)), fixItArray3  COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 459)) ;
-    }
-  }
-  GalgasBool test_4 = GalgasBool::boolTrue ;
-  if (GalgasBool::boolTrue == test_4) {
-    test_4 = GGS_bool (ComparisonKind::notEqual, var_returnedLexicalFormalType_19439.objectCompare (constinArgument_inLexicalRoutineFormalArgumentType)).boolEnum () ;
-    if (GalgasBool::boolTrue == test_4) {
-      const GGS_lexicalFunctionInputArgumentAST temp_5 = this ;
-      GenericArray <FixItDescription> fixItArray6 ;
-      inCompiler->emitSemanticError (temp_5.readProperty_mFunctionName ().readProperty_location (), GGS_string ("type error, the function returns an @").add_operation (extensionGetter_lexicalTypeBaseName (var_returnedLexicalFormalType_19439, inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 464)), inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 463)).add_operation (GGS_string (" value, but lexical routine prototype requires an @"), inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 464)).add_operation (extensionGetter_lexicalTypeBaseName (constinArgument_inLexicalRoutineFormalArgumentType, inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 466)), inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 465)).add_operation (GGS_string (" value"), inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 466)), fixItArray6  COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 463)) ;
-    }
-  }
-  GalgasBool test_7 = GalgasBool::boolTrue ;
-  if (GalgasBool::boolTrue == test_7) {
-    const GGS_lexicalFunctionInputArgumentAST temp_8 = this ;
-    test_7 = GGS_bool (ComparisonKind::notEqual, var_lexicalFormalTypeList_19408.getter_count (SOURCE_FILE ("lexiqueCompilation.galgas", 470)).objectCompare (temp_8.readProperty_mFunctionActualArgumentList ().getter_count (SOURCE_FILE ("lexiqueCompilation.galgas", 470)))).boolEnum () ;
-    if (GalgasBool::boolTrue == test_7) {
-      const GGS_lexicalFunctionInputArgumentAST temp_9 = this ;
-      const GGS_lexicalFunctionInputArgumentAST temp_10 = this ;
-      GenericArray <FixItDescription> fixItArray11 ;
-      inCompiler->emitSemanticError (temp_9.readProperty_mFunctionName ().readProperty_location (), GGS_string ("this lexical function names ").add_operation (temp_10.readProperty_mFunctionActualArgumentList ().getter_count (SOURCE_FILE ("lexiqueCompilation.galgas", 472)).getter_string (SOURCE_FILE ("lexiqueCompilation.galgas", 472)), inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 471)).add_operation (GGS_string (" actual argument(s), but the prototype requires "), inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 472)).add_operation (var_lexicalFormalTypeList_19408.getter_count (SOURCE_FILE ("lexiqueCompilation.galgas", 474)).getter_string (SOURCE_FILE ("lexiqueCompilation.galgas", 474)), inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 473)).add_operation (GGS_string (" actual argument(s)"), inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 474)), fixItArray11  COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 471)) ;
-    }
-  }
-  const GGS_lexicalFunctionInputArgumentAST temp_12 = this ;
-  UpEnumerator_lexicalFunctionFormalArgumentList enumerator_20495 (var_lexicalFormalTypeList_19408) ;
-  UpEnumerator_lexicalFunctionCallActualArgumentListAST enumerator_20525 (temp_12.readProperty_mFunctionActualArgumentList ()) ;
-  while (enumerator_20495.hasCurrentObject () && enumerator_20525.hasCurrentObject ()) {
-    callExtensionMethod_checkLexicalFunctionCallArgument ((cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST *) enumerator_20525.current_mLexicalActualInputArgument (HERE).ptr (), ioArgument_ioLexiqueAnalysisContext, enumerator_20495.current_mLexicalType (HERE), inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 478)) ;
-    enumerator_20495.gotoNextObject () ;
-    enumerator_20525.gotoNextObject () ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-//Overriding extension method '@lexicalImplicitRuleAST checkLexicalRule'
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_lexicalImplicitRuleAST::method_checkLexicalRule (GGS_lexiqueAnalysisContext & ioArgument_ioLexiqueAnalysisContext,
-                                                           Compiler * inCompiler
-                                                           COMMA_UNUSED_LOCATION_ARGS) {
-  const GGS_lexicalImplicitRuleAST temp_0 = this ;
-  GGS_lexicalExplicitTokenListMap joker_21792 ; // Joker input parameter
-  GGS_tokenSortedlist joker_21795 ; // Joker input parameter
-  GGS_bool joker_21798 ; // Joker input parameter
-  ioArgument_ioLexiqueAnalysisContext.readProperty_mLexicalTokenListMap ().method_searchKey (temp_0.readProperty_mListName (), joker_21792, joker_21795, joker_21798, inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 504)) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//Overriding extension method '@lexicalExplicitRuleAST checkLexicalRule'
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_lexicalExplicitRuleAST::method_checkLexicalRule (GGS_lexiqueAnalysisContext & ioArgument_ioLexiqueAnalysisContext,
-                                                           Compiler * inCompiler
-                                                           COMMA_UNUSED_LOCATION_ARGS) {
-  const GGS_lexicalExplicitRuleAST temp_0 = this ;
-  callExtensionMethod_checkLexicalExpression ((cPtr_lexicalExpressionAST *) temp_0.readProperty_mLexicalRuleExpression ().ptr (), ioArgument_ioLexiqueAnalysisContext, inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 511)) ;
-  GGS_lexicalTagMap var_tagMap_22122 = GGS_lexicalTagMap::init (inCompiler COMMA_HERE) ;
-  const GGS_lexicalExplicitRuleAST temp_1 = this ;
-  UpEnumerator_lexicalInstructionListAST enumerator_22142 (temp_1.readProperty_mInstructionList ()) ;
-  while (enumerator_22142.hasCurrentObject ()) {
-    callExtensionMethod_checkLexicalInstruction ((cPtr_lexicalInstructionAST *) enumerator_22142.current_mInstruction (HERE).ptr (), ioArgument_ioLexiqueAnalysisContext, var_tagMap_22122, inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 514)) ;
-    enumerator_22142.gotoNextObject () ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
 //Overriding extension method '@lexicalStructuredSendInstructionAST checkLexicalInstruction'
 //--------------------------------------------------------------------------------------------------
 
@@ -8284,4 +8120,220 @@ void cPtr_classTypeForGeneration::method_appendDeclaration_32_ (const GGS_string
     }
   }
 }
+
+//--------------------------------------------------------------------------------------------------
+//Overriding extension method '@classTypeForGeneration appendSpecificImplementation'
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_classTypeForGeneration::method_appendSpecificImplementation (const GGS_unifiedTypeMap /* constinArgument_inTypeMap */,
+                                                                       GGS_stringset & ioArgument_ioInclusionSet,
+                                                                       GGS_string & outArgument_outImplementation,
+                                                                       Compiler * inCompiler
+                                                                       COMMA_UNUSED_LOCATION_ARGS) {
+  const GGS_classTypeForGeneration temp_0 = this ;
+  extensionMethod_addHeaderFileName (temp_0.readProperty_mSelfTypeEntry (), ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("declaration-type-class.galgas", 816)) ;
+  const GGS_classTypeForGeneration temp_1 = this ;
+  GGS_unifiedTypeDefinition var_selfTypeDefinition_32790 = extensionGetter_definition (temp_1.readProperty_mSelfTypeEntry (), inCompiler COMMA_SOURCE_FILE ("declaration-type-class.galgas", 817)) ;
+  const GGS_classTypeForGeneration temp_2 = this ;
+  const GGS_classTypeForGeneration temp_3 = this ;
+  const GGS_classTypeForGeneration temp_4 = this ;
+  GGS_typedPropertyList var_at_32852 = temp_2.readProperty_mAllTypedAttributeList ().getter_subListWithRange (GGS_range::init_21__21_ (GGS_uint (uint32_t (0U)), temp_3.readProperty_mAllTypedAttributeList ().getter_count (SOURCE_FILE ("declaration-type-class.galgas", 819)).substract_operation (temp_4.readProperty_mCurrentTypedAttributeList ().getter_count (SOURCE_FILE ("declaration-type-class.galgas", 819)), inCompiler COMMA_SOURCE_FILE ("declaration-type-class.galgas", 819)), inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("declaration-type-class.galgas", 818)) ;
+  GalgasBool test_5 = GalgasBool::boolTrue ;
+  if (GalgasBool::boolTrue == test_5) {
+    const GGS_classTypeForGeneration temp_6 = this ;
+    test_5 = temp_6.readProperty_mIsReference ().boolEnum () ;
+    if (GalgasBool::boolTrue == test_5) {
+      const GGS_classTypeForGeneration temp_7 = this ;
+      const GGS_classTypeForGeneration temp_8 = this ;
+      GGS_string temp_9 ;
+      const GalgasBool test_10 = temp_8.readProperty_mSuperClass ().getter_isNull (SOURCE_FILE ("declaration-type-class.galgas", 825)).boolEnum () ;
+      if (GalgasBool::boolTrue == test_10) {
+        temp_9 = GGS_string::makeEmptyString () ;
+      }else if (GalgasBool::boolFalse == test_10) {
+        const GGS_classTypeForGeneration temp_11 = this ;
+        temp_9 = extensionGetter_identifierRepresentation (temp_11.readProperty_mSuperClass (), inCompiler COMMA_SOURCE_FILE ("declaration-type-class.galgas", 825)) ;
+      }
+      const GGS_classTypeForGeneration temp_12 = this ;
+      const GGS_classTypeForGeneration temp_13 = this ;
+      const GGS_classTypeForGeneration temp_14 = this ;
+      const GGS_classTypeForGeneration temp_15 = this ;
+      const GGS_classTypeForGeneration temp_16 = this ;
+      const GGS_classTypeForGeneration temp_17 = this ;
+      const GGS_classTypeForGeneration temp_18 = this ;
+      const GGS_classTypeForGeneration temp_19 = this ;
+      outArgument_outImplementation = GGS_string (filewrapperTemplate_classGenerationTemplate_referenceClassTypeSpecificImplementation (inCompiler, var_selfTypeDefinition_32790.readProperty_typeName ().readProperty_string (), extensionGetter_identifierRepresentation (temp_7.readProperty_mSelfTypeEntry (), inCompiler COMMA_SOURCE_FILE ("declaration-type-class.galgas", 824)), temp_9, temp_12.readProperty_mCurrentTypedAttributeList (), temp_13.readProperty_mAllTypedAttributeList (), var_at_32852, temp_14.readProperty_mIsAbstract (), temp_15.readProperty_initializerNeedsCompilerVariable (), temp_16.readProperty_propertyInitializationCode (), var_selfTypeDefinition_32790.readProperty_features ().getter_contains (GGS_typeFeatures::class_func_generateSynthetizedInitializer (SOURCE_FILE ("declaration-type-class.galgas", 832)) COMMA_SOURCE_FILE ("declaration-type-class.galgas", 832)), temp_17.readProperty_synthetizedInitializerArgumentList (), temp_18.readProperty_inheritedSynthetizedInitializerArgumentList (), var_selfTypeDefinition_32790.readProperty_initializerMap (), temp_19.readProperty_clonable () COMMA_SOURCE_FILE ("declaration-type-class.galgas", 822))) ;
+    }
+  }
+  if (GalgasBool::boolFalse == test_5) {
+    const GGS_classTypeForGeneration temp_20 = this ;
+    const GGS_classTypeForGeneration temp_21 = this ;
+    GGS_string temp_22 ;
+    const GalgasBool test_23 = temp_21.readProperty_mSuperClass ().getter_isNull (SOURCE_FILE ("declaration-type-class.galgas", 842)).boolEnum () ;
+    if (GalgasBool::boolTrue == test_23) {
+      temp_22 = GGS_string::makeEmptyString () ;
+    }else if (GalgasBool::boolFalse == test_23) {
+      const GGS_classTypeForGeneration temp_24 = this ;
+      temp_22 = extensionGetter_identifierRepresentation (temp_24.readProperty_mSuperClass (), inCompiler COMMA_SOURCE_FILE ("declaration-type-class.galgas", 842)) ;
+    }
+    const GGS_classTypeForGeneration temp_25 = this ;
+    const GGS_classTypeForGeneration temp_26 = this ;
+    const GGS_classTypeForGeneration temp_27 = this ;
+    outArgument_outImplementation = GGS_string (filewrapperTemplate_classGenerationTemplate_valueClassTypeSpecificImplementation (inCompiler, var_selfTypeDefinition_32790.readProperty_typeName ().readProperty_string (), extensionGetter_identifierRepresentation (temp_20.readProperty_mSelfTypeEntry (), inCompiler COMMA_SOURCE_FILE ("declaration-type-class.galgas", 841)), temp_22, temp_25.readProperty_mCurrentTypedAttributeList (), temp_26.readProperty_mAllTypedAttributeList (), var_at_32852, temp_27.readProperty_mIsAbstract () COMMA_SOURCE_FILE ("declaration-type-class.galgas", 839))) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//Function 'generateClassGetterDeclaration'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_string function_generateClassGetterDeclaration (const GGS_lstring & constinArgument_inGetterName,
+                                                    const GGS_functionSignature & constinArgument_inArgumentTypeList,
+                                                    const GGS_bool & constinArgument_inHasCompilerArgument,
+                                                    const GGS_unifiedTypeMapEntry & constinArgument_inReturnedType,
+                                                    const GGS_methodQualifier & constinArgument_inQualifier,
+                                                    Compiler * inCompiler
+                                                    COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_string result_result ; // Returned variable
+  GGS_bool var_generateMethodDeclaration_34890 = GGS_bool (true) ;
+  GGS_string var_suffix_34929 = GGS_string::makeEmptyString () ;
+  switch (constinArgument_inQualifier.enumValue ()) {
+  case GGS_methodQualifier::Enumeration::invalid:
+    break ;
+  case GGS_methodQualifier::Enumeration::enum_isVirtualAbstract:
+    {
+      var_suffix_34929 = GGS_string (" = 0") ;
+    }
+    break ;
+  case GGS_methodQualifier::Enumeration::enum_isVirtual:
+    break ;
+  case GGS_methodQualifier::Enumeration::enum_isBasic:
+  case GGS_methodQualifier::Enumeration::enum_isBasicFinal:
+    {
+      var_generateMethodDeclaration_34890 = GGS_bool (false) ;
+    }
+    break ;
+  case GGS_methodQualifier::Enumeration::enum_isInherited:
+    {
+      var_generateMethodDeclaration_34890 = GGS_bool (false) ;
+    }
+    break ;
+  case GGS_methodQualifier::Enumeration::enum_isVirtualOverriding:
+    {
+      var_suffix_34929 = GGS_string (" override") ;
+    }
+    break ;
+  case GGS_methodQualifier::Enumeration::enum_isVirtualOverridingAbstract:
+    {
+      var_suffix_34929 = GGS_string (" override = 0") ;
+    }
+    break ;
+  }
+  result_result = GGS_string::makeEmptyString () ;
+  GalgasBool test_0 = GalgasBool::boolTrue ;
+  if (GalgasBool::boolTrue == test_0) {
+    test_0 = var_generateMethodDeclaration_34890.boolEnum () ;
+    if (GalgasBool::boolTrue == test_0) {
+      result_result = GGS_string ("//--- Extension getter ").add_operation (constinArgument_inGetterName.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("declaration-type-class.galgas", 881)).add_operation (GGS_string ("\n"), inCompiler COMMA_SOURCE_FILE ("declaration-type-class.galgas", 881)) ;
+      result_result.plusAssignOperation(GGS_string ("  public: virtual class GGS_").add_operation (extensionGetter_identifierRepresentation (constinArgument_inReturnedType, inCompiler COMMA_SOURCE_FILE ("declaration-type-class.galgas", 882)), inCompiler COMMA_SOURCE_FILE ("declaration-type-class.galgas", 882)), inCompiler  COMMA_SOURCE_FILE ("declaration-type-class.galgas", 882)) ;
+      result_result.plusAssignOperation(GGS_string (" getter_").add_operation (constinArgument_inGetterName.readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("declaration-type-class.galgas", 883)), inCompiler COMMA_SOURCE_FILE ("declaration-type-class.galgas", 883)).add_operation (GGS_string (" ("), inCompiler COMMA_SOURCE_FILE ("declaration-type-class.galgas", 883)), inCompiler  COMMA_SOURCE_FILE ("declaration-type-class.galgas", 883)) ;
+      GGS_bool var_first_35576 = GGS_bool (true) ;
+      UpEnumerator_functionSignature enumerator_35615 (constinArgument_inArgumentTypeList) ;
+      while (enumerator_35615.hasCurrentObject ()) {
+        GalgasBool test_1 = GalgasBool::boolTrue ;
+        if (GalgasBool::boolTrue == test_1) {
+          test_1 = var_first_35576.boolEnum () ;
+          if (GalgasBool::boolTrue == test_1) {
+            var_first_35576 = GGS_bool (false) ;
+          }
+        }
+        if (GalgasBool::boolFalse == test_1) {
+          result_result.plusAssignOperation(GGS_string (",\n           "), inCompiler  COMMA_SOURCE_FILE ("declaration-type-class.galgas", 890)) ;
+        }
+        result_result.plusAssignOperation(GGS_string ("const class GGS_").add_operation (extensionGetter_identifierRepresentation (enumerator_35615.current (HERE).readProperty_mFormalArgumentType (), inCompiler COMMA_SOURCE_FILE ("declaration-type-class.galgas", 892)), inCompiler COMMA_SOURCE_FILE ("declaration-type-class.galgas", 892)), inCompiler  COMMA_SOURCE_FILE ("declaration-type-class.galgas", 892)) ;
+        result_result.plusAssignOperation(GGS_string (" ").add_operation (enumerator_35615.current (HERE).readProperty_mFormalArgumentName (), inCompiler COMMA_SOURCE_FILE ("declaration-type-class.galgas", 893)), inCompiler  COMMA_SOURCE_FILE ("declaration-type-class.galgas", 893)) ;
+        enumerator_35615.gotoNextObject () ;
+      }
+      GalgasBool test_2 = GalgasBool::boolTrue ;
+      if (GalgasBool::boolTrue == test_2) {
+        test_2 = constinArgument_inHasCompilerArgument.boolEnum () ;
+        if (GalgasBool::boolTrue == test_2) {
+          GalgasBool test_3 = GalgasBool::boolTrue ;
+          if (GalgasBool::boolTrue == test_3) {
+            test_3 = var_first_35576.operator_not (SOURCE_FILE ("declaration-type-class.galgas", 896)).boolEnum () ;
+            if (GalgasBool::boolTrue == test_3) {
+              result_result.plusAssignOperation(GGS_string (",\n           "), inCompiler  COMMA_SOURCE_FILE ("declaration-type-class.galgas", 897)) ;
+            }
+          }
+          result_result.plusAssignOperation(GGS_string ("Compiler *"), inCompiler  COMMA_SOURCE_FILE ("declaration-type-class.galgas", 899)) ;
+          var_first_35576 = GGS_bool (false) ;
+        }
+      }
+      GGS_string temp_4 ;
+      const GalgasBool test_5 = var_first_35576.boolEnum () ;
+      if (GalgasBool::boolTrue == test_5) {
+        temp_4 = GGS_string ("LOCATION_ARGS") ;
+      }else if (GalgasBool::boolFalse == test_5) {
+        temp_4 = GGS_string (" COMMA_LOCATION_ARGS") ;
+      }
+      result_result.plusAssignOperation(temp_4.add_operation (GGS_string (") const"), inCompiler COMMA_SOURCE_FILE ("declaration-type-class.galgas", 902)), inCompiler  COMMA_SOURCE_FILE ("declaration-type-class.galgas", 902)) ;
+      result_result.plusAssignOperation(var_suffix_34929.add_operation (GGS_string (" ;\n\n"), inCompiler COMMA_SOURCE_FILE ("declaration-type-class.galgas", 903)), inCompiler  COMMA_SOURCE_FILE ("declaration-type-class.galgas", 903)) ;
+    }
+  }
+//---
+  return result_result ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+//  Function introspection                                                                       
+//--------------------------------------------------------------------------------------------------
+
+static const GALGAS_TypeDescriptor * functionArgs_generateClassGetterDeclaration [6] = {
+  & kTypeDescriptor_GALGAS_lstring,
+  & kTypeDescriptor_GALGAS_functionSignature,
+  & kTypeDescriptor_GALGAS_bool,
+  & kTypeDescriptor_GALGAS_unifiedTypeMapEntry,
+  & kTypeDescriptor_GALGAS_methodQualifier,
+  nullptr
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+static GGS_object functionWithGenericHeader_generateClassGetterDeclaration (Compiler * inCompiler,
+                                                                            const cObjectArray & inEffectiveParameterArray,
+                                                                            const GGS_location & /* inErrorLocation */
+                                                                            COMMA_LOCATION_ARGS) {
+  const GGS_lstring operand0 = GGS_lstring::extractObject (inEffectiveParameterArray.objectAtIndex (0 COMMA_HERE),
+                                                           inCompiler
+                                                           COMMA_THERE) ;
+  const GGS_functionSignature operand1 = GGS_functionSignature::extractObject (inEffectiveParameterArray.objectAtIndex (1 COMMA_HERE),
+                                                                               inCompiler
+                                                                               COMMA_THERE) ;
+  const GGS_bool operand2 = GGS_bool::extractObject (inEffectiveParameterArray.objectAtIndex (2 COMMA_HERE),
+                                                     inCompiler
+                                                     COMMA_THERE) ;
+  const GGS_unifiedTypeMapEntry operand3 = GGS_unifiedTypeMapEntry::extractObject (inEffectiveParameterArray.objectAtIndex (3 COMMA_HERE),
+                                                                                   inCompiler
+                                                                                   COMMA_THERE) ;
+  const GGS_methodQualifier operand4 = GGS_methodQualifier::extractObject (inEffectiveParameterArray.objectAtIndex (4 COMMA_HERE),
+                                                                           inCompiler
+                                                                           COMMA_THERE) ;
+  return function_generateClassGetterDeclaration (operand0,
+                                                  operand1,
+                                                  operand2,
+                                                  operand3,
+                                                  operand4,
+                                                  inCompiler
+                                                  COMMA_THERE).getter_object (THERE) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+C_galgas_function_descriptor functionDescriptor_generateClassGetterDeclaration ("generateClassGetterDeclaration",
+                                                                                functionWithGenericHeader_generateClassGetterDeclaration,
+                                                                                & kTypeDescriptor_GALGAS_string,
+                                                                                5,
+                                                                                functionArgs_generateClassGetterDeclaration) ;
 

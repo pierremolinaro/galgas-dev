@@ -289,7 +289,7 @@ list attributeKeyWordList style attributeStyle error message "the '%K' keyword" 
   "libpmAtPath" -> $%libpmAtPath$,
   "MacOS" -> $%MacOS$,
   "MacSwiftApp" -> $%MacSwiftApp$,
-  "MacOSDeployment" -> $%MacOSDeployment$,
+//  "MacOSDeployment" -> $%MacOSDeployment$,
   "macCodeSign" -> $%macCodeSign$,
   "makefile-macosx" -> $%makefile-macosx$,
   "makefile-unix" -> $%makefile-unix$,

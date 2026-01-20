@@ -8,129 +8,6 @@
 #include "all-declarations-29.h"
 
 //--------------------------------------------------------------------------------------------------
-//Overriding extension method '@grammarInstructionSyntaxDirectedTranslationResultNone analyzeGrammarInstructionSDT'
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_grammarInstructionSyntaxDirectedTranslationResultNone::method_analyzeGrammarInstructionSDT (const GGS_analysisContext /* constinArgument_inAnalysisContext */,
-                                                                                                      GGS_unifiedTypeMap & /* ioArgument_ioTypeMap */,
-                                                                                                      const GGS_bool /* constinArgument_inHasTranslateFeature */,
-                                                                                                      const GGS_string /* constinArgument_inSyntaxDirectedTranslationResultVarName */,
-                                                                                                      GGS_stringlist & /* ioArgument_ioAssignementList */,
-                                                                                                      GGS_localVarManager & /* ioArgument_ioVariableMap */,
-                                                                                                      Compiler * /* inCompiler */
-                                                                                                      COMMA_UNUSED_LOCATION_ARGS) {
-}
-
-//--------------------------------------------------------------------------------------------------
-//Overriding extension method '@grammarInstructionSyntaxDirectedTranslationDropResult analyzeGrammarInstructionSDT'
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_grammarInstructionSyntaxDirectedTranslationDropResult::method_analyzeGrammarInstructionSDT (const GGS_analysisContext /* constinArgument_inAnalysisContext */,
-                                                                                                      GGS_unifiedTypeMap & /* ioArgument_ioTypeMap */,
-                                                                                                      const GGS_bool constinArgument_inHasTranslateFeature,
-                                                                                                      const GGS_string /* constinArgument_inSyntaxDirectedTranslationResultVarName */,
-                                                                                                      GGS_stringlist & /* ioArgument_ioAssignementList */,
-                                                                                                      GGS_localVarManager & /* ioArgument_ioVariableMap */,
-                                                                                                      Compiler * inCompiler
-                                                                                                      COMMA_UNUSED_LOCATION_ARGS) {
-  GalgasBool test_0 = GalgasBool::boolTrue ;
-  if (GalgasBool::boolTrue == test_0) {
-    test_0 = constinArgument_inHasTranslateFeature.operator_not (SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 247)).boolEnum () ;
-    if (GalgasBool::boolTrue == test_0) {
-      const GGS_grammarInstructionSyntaxDirectedTranslationDropResult temp_1 = this ;
-      GenericArray <FixItDescription> fixItArray2 ;
-      inCompiler->emitSemanticError (temp_1.readProperty_mLocation (), GGS_string ("the ':>' construct requires the grammar to be declared with 'translate' feature"), fixItArray2  COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 248)) ;
-    }
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-//Overriding extension method '@grammarInstructionSyntaxDirectedTranslationResultInVar analyzeGrammarInstructionSDT'
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_grammarInstructionSyntaxDirectedTranslationResultInVar::method_analyzeGrammarInstructionSDT (const GGS_analysisContext constinArgument_inAnalysisContext,
-                                                                                                       GGS_unifiedTypeMap & /* ioArgument_ioTypeMap */,
-                                                                                                       const GGS_bool constinArgument_inHasTranslateFeature,
-                                                                                                       const GGS_string constinArgument_inSyntaxDirectedTranslationResultVarName,
-                                                                                                       GGS_stringlist & ioArgument_ioAssignementList,
-                                                                                                       GGS_localVarManager & ioArgument_ioVariableMap,
-                                                                                                       Compiler * inCompiler
-                                                                                                       COMMA_UNUSED_LOCATION_ARGS) {
-  GalgasBool test_0 = GalgasBool::boolTrue ;
-  if (GalgasBool::boolTrue == test_0) {
-    test_0 = constinArgument_inHasTranslateFeature.operator_not (SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 261)).boolEnum () ;
-    if (GalgasBool::boolTrue == test_0) {
-      const GGS_grammarInstructionSyntaxDirectedTranslationResultInVar temp_1 = this ;
-      GenericArray <FixItDescription> fixItArray2 ;
-      inCompiler->emitSemanticError (temp_1.readProperty_mActualParameterName ().readProperty_location (), GGS_string ("the ':>' construct requires the grammar to be declared with 'translate' feature"), fixItArray2  COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 262)) ;
-    }
-  }
-  GGS_unifiedTypeMapEntry var_type_11466 ;
-  GGS_string var_cppName_11484 ;
-  {
-  const GGS_grammarInstructionSyntaxDirectedTranslationResultInVar temp_3 = this ;
-  GGS_string joker_11492 ; // Joker input parameter
-  extensionSetter_searchForWriteAccess (ioArgument_ioVariableMap, temp_3.readProperty_mActualParameterName (), var_type_11466, var_cppName_11484, joker_11492, inCompiler COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 264)) ;
-  }
-  GGS_unifiedTypeMapEntry var_expectedType_11502 = constinArgument_inAnalysisContext.readProperty_predefinedTypes ().readProperty_mStringType () ;
-  GalgasBool test_4 = GalgasBool::boolTrue ;
-  if (GalgasBool::boolTrue == test_4) {
-    test_4 = GGS_bool (ComparisonKind::notEqual, var_expectedType_11502.objectCompare (var_type_11466)).boolEnum () ;
-    if (GalgasBool::boolTrue == test_4) {
-      const GGS_grammarInstructionSyntaxDirectedTranslationResultInVar temp_5 = this ;
-      const GGS_grammarInstructionSyntaxDirectedTranslationResultInVar temp_6 = this ;
-      GenericArray <FixItDescription> fixItArray7 ;
-      inCompiler->emitSemanticError (temp_5.readProperty_mActualParameterName ().readProperty_location (), GGS_string ("the '").add_operation (temp_6.readProperty_mActualParameterName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 268)).add_operation (GGS_string ("' parameter has the '@"), inCompiler COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 268)).add_operation (extensionGetter_identifierRepresentation (var_type_11466, inCompiler COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 268)), inCompiler COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 268)).add_operation (GGS_string (", bit an '@"), inCompiler COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 268)).add_operation (extensionGetter_identifierRepresentation (var_expectedType_11502, inCompiler COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 269)), inCompiler COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 269)).add_operation (GGS_string ("' parameter is required here"), inCompiler COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 269)), fixItArray7  COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 267)) ;
-    }
-  }
-  ioArgument_ioAssignementList.addAssignOperation (var_cppName_11484.add_operation (GGS_string (" = GGS_string ("), inCompiler COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 271)).add_operation (constinArgument_inSyntaxDirectedTranslationResultVarName, inCompiler COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 271)).add_operation (GGS_string (") ;"), inCompiler COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 271))  COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 271)) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//Overriding extension method '@grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar analyzeGrammarInstructionSDT'
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar::method_analyzeGrammarInstructionSDT (const GGS_analysisContext constinArgument_inAnalysisContext,
-                                                                                                               GGS_unifiedTypeMap & ioArgument_ioTypeMap,
-                                                                                                               const GGS_bool constinArgument_inHasTranslateFeature,
-                                                                                                               const GGS_string constinArgument_inSyntaxDirectedTranslationResultVarName,
-                                                                                                               GGS_stringlist & ioArgument_ioAssignementList,
-                                                                                                               GGS_localVarManager & ioArgument_ioVariableMap,
-                                                                                                               Compiler * inCompiler
-                                                                                                               COMMA_UNUSED_LOCATION_ARGS) {
-  GalgasBool test_0 = GalgasBool::boolTrue ;
-  if (GalgasBool::boolTrue == test_0) {
-    test_0 = constinArgument_inHasTranslateFeature.operator_not (SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 283)).boolEnum () ;
-    if (GalgasBool::boolTrue == test_0) {
-      const GGS_grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar temp_1 = this ;
-      GenericArray <FixItDescription> fixItArray2 ;
-      inCompiler->emitSemanticError (temp_1.readProperty_mActualParameterName ().readProperty_location (), GGS_string ("the ':>' construct requires the grammar to be declared with 'translate' feature"), fixItArray2  COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 284)) ;
-    }
-  }
-  const GGS_grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar temp_3 = this ;
-  const GGS_grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar temp_4 = this ;
-  GGS_string var_cppName_12554 = GGS_string ("var_").add_operation (temp_3.readProperty_mActualParameterName ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 286)), inCompiler COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 286)).add_operation (GGS_string ("_"), inCompiler COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 286)).add_operation (temp_4.readProperty_mActualParameterName ().readProperty_location ().getter_startLocationIndex (inCompiler COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 286)).getter_string (SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 286)), inCompiler COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 286)) ;
-  const GGS_grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar temp_5 = this ;
-  GGS_unifiedTypeMapEntry var_type_12696 = extensionGetter_typeMapEntryForLKey (ioArgument_ioTypeMap, temp_5.readProperty_mActualParameterTypeName (), inCompiler COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 287)) ;
-  {
-  const GGS_grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar temp_6 = this ;
-  extensionSetter_insertInitializedLocalVariable (ioArgument_ioVariableMap, temp_6.readProperty_mActualParameterName (), GGS_bool (true), var_type_12696, var_cppName_12554, var_cppName_12554, inCompiler COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 288)) ;
-  }
-  GGS_unifiedTypeMapEntry var_expectedType_12899 = constinArgument_inAnalysisContext.readProperty_predefinedTypes ().readProperty_mStringType () ;
-  GalgasBool test_7 = GalgasBool::boolTrue ;
-  if (GalgasBool::boolTrue == test_7) {
-    test_7 = GGS_bool (ComparisonKind::notEqual, var_expectedType_12899.objectCompare (var_type_12696)).boolEnum () ;
-    if (GalgasBool::boolTrue == test_7) {
-      const GGS_grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar temp_8 = this ;
-      const GGS_grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar temp_9 = this ;
-      GenericArray <FixItDescription> fixItArray10 ;
-      inCompiler->emitSemanticError (temp_8.readProperty_mActualParameterName ().readProperty_location (), GGS_string ("the '").add_operation (temp_9.readProperty_mActualParameterName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 292)).add_operation (GGS_string ("' parameter has the '@"), inCompiler COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 292)).add_operation (extensionGetter_identifierRepresentation (var_type_12696, inCompiler COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 292)), inCompiler COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 292)).add_operation (GGS_string (", bit an '@"), inCompiler COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 292)).add_operation (extensionGetter_identifierRepresentation (var_expectedType_12899, inCompiler COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 293)), inCompiler COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 293)).add_operation (GGS_string ("' parameter is required here"), inCompiler COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 293)), fixItArray10  COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 291)) ;
-    }
-  }
-  ioArgument_ioAssignementList.addAssignOperation (GGS_string ("GGS_string ").add_operation (var_cppName_12554, inCompiler COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 295)).add_operation (GGS_string (" ("), inCompiler COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 295)).add_operation (constinArgument_inSyntaxDirectedTranslationResultVarName, inCompiler COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 295)).add_operation (GGS_string (") ;"), inCompiler COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 295))  COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 295)) ;
-}
-
-//--------------------------------------------------------------------------------------------------
 //Overriding extension method '@grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst analyzeGrammarInstructionSDT'
 //--------------------------------------------------------------------------------------------------
 
@@ -9343,4 +9220,192 @@ C_galgas_function_descriptor functionDescriptor_filewrapperTemplateNameForUseful
                                                                                                & kTypeDescriptor_GALGAS_lstring,
                                                                                                2,
                                                                                                functionArgs_filewrapperTemplateNameForUsefulEntitiesGraph) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Function 'functionNameForUsefulEntitiesGraph'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstring function_functionNameForUsefulEntitiesGraph (const GGS_lstring & constinArgument_inFunctionName,
+                                                         Compiler * inCompiler
+                                                         COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_lstring result_result ; // Returned variable
+  result_result = GGS_lstring::init_21__21_ (GGS_string ("function ").add_operation (constinArgument_inFunctionName.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 146)), constinArgument_inFunctionName.readProperty_location (), inCompiler COMMA_HERE) ;
+//---
+  return result_result ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+//  Function introspection                                                                       
+//--------------------------------------------------------------------------------------------------
+
+static const GALGAS_TypeDescriptor * functionArgs_functionNameForUsefulEntitiesGraph [2] = {
+  & kTypeDescriptor_GALGAS_lstring,
+  nullptr
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+static GGS_object functionWithGenericHeader_functionNameForUsefulEntitiesGraph (Compiler * inCompiler,
+                                                                                const cObjectArray & inEffectiveParameterArray,
+                                                                                const GGS_location & /* inErrorLocation */
+                                                                                COMMA_LOCATION_ARGS) {
+  const GGS_lstring operand0 = GGS_lstring::extractObject (inEffectiveParameterArray.objectAtIndex (0 COMMA_HERE),
+                                                           inCompiler
+                                                           COMMA_THERE) ;
+  return function_functionNameForUsefulEntitiesGraph (operand0,
+                                                      inCompiler
+                                                      COMMA_THERE).getter_object (THERE) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+C_galgas_function_descriptor functionDescriptor_functionNameForUsefulEntitiesGraph ("functionNameForUsefulEntitiesGraph",
+                                                                                    functionWithGenericHeader_functionNameForUsefulEntitiesGraph,
+                                                                                    & kTypeDescriptor_GALGAS_lstring,
+                                                                                    1,
+                                                                                    functionArgs_functionNameForUsefulEntitiesGraph) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Function 'procedureNameForUsefulEntitiesGraph'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstring function_procedureNameForUsefulEntitiesGraph (const GGS_lstring & constinArgument_inProcName,
+                                                          Compiler * inCompiler
+                                                          COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_lstring result_result ; // Returned variable
+  result_result = GGS_lstring::init_21__21_ (GGS_string ("procedure ").add_operation (constinArgument_inProcName.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 152)), constinArgument_inProcName.readProperty_location (), inCompiler COMMA_HERE) ;
+//---
+  return result_result ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+//  Function introspection                                                                       
+//--------------------------------------------------------------------------------------------------
+
+static const GALGAS_TypeDescriptor * functionArgs_procedureNameForUsefulEntitiesGraph [2] = {
+  & kTypeDescriptor_GALGAS_lstring,
+  nullptr
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+static GGS_object functionWithGenericHeader_procedureNameForUsefulEntitiesGraph (Compiler * inCompiler,
+                                                                                 const cObjectArray & inEffectiveParameterArray,
+                                                                                 const GGS_location & /* inErrorLocation */
+                                                                                 COMMA_LOCATION_ARGS) {
+  const GGS_lstring operand0 = GGS_lstring::extractObject (inEffectiveParameterArray.objectAtIndex (0 COMMA_HERE),
+                                                           inCompiler
+                                                           COMMA_THERE) ;
+  return function_procedureNameForUsefulEntitiesGraph (operand0,
+                                                       inCompiler
+                                                       COMMA_THERE).getter_object (THERE) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+C_galgas_function_descriptor functionDescriptor_procedureNameForUsefulEntitiesGraph ("procedureNameForUsefulEntitiesGraph",
+                                                                                     functionWithGenericHeader_procedureNameForUsefulEntitiesGraph,
+                                                                                     & kTypeDescriptor_GALGAS_lstring,
+                                                                                     1,
+                                                                                     functionArgs_procedureNameForUsefulEntitiesGraph) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Function 'typeNameForUsefulEntitiesGraph'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstring function_typeNameForUsefulEntitiesGraph (const GGS_lstring & constinArgument_inTypeName,
+                                                     Compiler * inCompiler
+                                                     COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_lstring result_result ; // Returned variable
+  result_result = GGS_lstring::init_21__21_ (GGS_string ("type @").add_operation (constinArgument_inTypeName.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 158)), constinArgument_inTypeName.readProperty_location (), inCompiler COMMA_HERE) ;
+//---
+  return result_result ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+//  Function introspection                                                                       
+//--------------------------------------------------------------------------------------------------
+
+static const GALGAS_TypeDescriptor * functionArgs_typeNameForUsefulEntitiesGraph [2] = {
+  & kTypeDescriptor_GALGAS_lstring,
+  nullptr
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+static GGS_object functionWithGenericHeader_typeNameForUsefulEntitiesGraph (Compiler * inCompiler,
+                                                                            const cObjectArray & inEffectiveParameterArray,
+                                                                            const GGS_location & /* inErrorLocation */
+                                                                            COMMA_LOCATION_ARGS) {
+  const GGS_lstring operand0 = GGS_lstring::extractObject (inEffectiveParameterArray.objectAtIndex (0 COMMA_HERE),
+                                                           inCompiler
+                                                           COMMA_THERE) ;
+  return function_typeNameForUsefulEntitiesGraph (operand0,
+                                                  inCompiler
+                                                  COMMA_THERE).getter_object (THERE) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+C_galgas_function_descriptor functionDescriptor_typeNameForUsefulEntitiesGraph ("typeNameForUsefulEntitiesGraph",
+                                                                                functionWithGenericHeader_typeNameForUsefulEntitiesGraph,
+                                                                                & kTypeDescriptor_GALGAS_lstring,
+                                                                                1,
+                                                                                functionArgs_typeNameForUsefulEntitiesGraph) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Function 'afterNameForUsefulEntitiesGraph'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstring function_afterNameForUsefulEntitiesGraph (const GGS_location & constinArgument_inLocation,
+                                                      Compiler * inCompiler
+                                                      COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_lstring result_result ; // Returned variable
+  result_result = GGS_lstring::init_21__21_ (GGS_string ("after"), constinArgument_inLocation, inCompiler COMMA_HERE) ;
+//---
+  return result_result ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+//  Function introspection                                                                       
+//--------------------------------------------------------------------------------------------------
+
+static const GALGAS_TypeDescriptor * functionArgs_afterNameForUsefulEntitiesGraph [2] = {
+  & kTypeDescriptor_GALGAS_location,
+  nullptr
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+static GGS_object functionWithGenericHeader_afterNameForUsefulEntitiesGraph (Compiler * inCompiler,
+                                                                             const cObjectArray & inEffectiveParameterArray,
+                                                                             const GGS_location & /* inErrorLocation */
+                                                                             COMMA_LOCATION_ARGS) {
+  const GGS_location operand0 = GGS_location::extractObject (inEffectiveParameterArray.objectAtIndex (0 COMMA_HERE),
+                                                             inCompiler
+                                                             COMMA_THERE) ;
+  return function_afterNameForUsefulEntitiesGraph (operand0,
+                                                   inCompiler
+                                                   COMMA_THERE).getter_object (THERE) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+C_galgas_function_descriptor functionDescriptor_afterNameForUsefulEntitiesGraph ("afterNameForUsefulEntitiesGraph",
+                                                                                 functionWithGenericHeader_afterNameForUsefulEntitiesGraph,
+                                                                                 & kTypeDescriptor_GALGAS_lstring,
+                                                                                 1,
+                                                                                 functionArgs_afterNameForUsefulEntitiesGraph) ;
 

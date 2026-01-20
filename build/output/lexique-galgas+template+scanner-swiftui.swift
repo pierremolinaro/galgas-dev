@@ -158,7 +158,6 @@ fileprivate let kEndOfScriptInTemplateArray_galgasTemplateScanner : [Bool] = [
   false /* %libpmAtPath */,
   false /* %MacOS */,
   false /* %MacSwiftApp */,
-  false /* %MacOSDeployment */,
   false /* %macCodeSign */,
   false /* %makefile-macosx */,
   false /* %makefile-unix */,

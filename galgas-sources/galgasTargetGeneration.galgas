@@ -310,7 +310,6 @@ proc updateGalgasTargets
   ?let @stringlist inToolCppFileList
   ?let @stringlist inToolHeaderFileList
   ?appProductFileList: let @stringlist inAppProductFileList
-//  ?objcAppProductFileList: let @stringlist inObjcAppProductFileList
   ?swiftAppProductFileList: let @stringlist inSwiftAppProductFileList
   ?let @stringlist inHandCodedSourceToolFileList
   ?let @stringlist inFrameworkToolFileList
@@ -347,16 +346,17 @@ proc updateGalgasTargets
     macCodeSign = ["" nowhere]
   end
 //---------------------------------------------------------- MacOSDeployment
-  let @string MACOSX_DEPLOYMENT_TARGET
-  if let entry = inProjectQualifiedFeatureMap @["MacOSDeployment"] then
-    if entry.mFeatureValue.string == "" then
-      error entry.mFeatureValue:"the %MacOSDeployment attribute should not be empty" : MACOSX_DEPLOYMENT_TARGET
-    else
-      MACOSX_DEPLOYMENT_TARGET = entry.mFeatureValue
-    end
-  else
-    MACOSX_DEPLOYMENT_TARGET = ["14.6" nowhere]
-  end
+//  let @string MACOSX_DEPLOYMENT_TARGET
+//  if let entry = inProjectQualifiedFeatureMap @["MacOSDeployment"] then
+//    if entry.mFeatureValue.string == "" then
+//      error entry.mFeatureValue:"the %MacOSDeployment attribute should not be empty" : MACOSX_DEPLOYMENT_TARGET
+//    else
+//      MACOSX_DEPLOYMENT_TARGET = entry.mFeatureValue
+//    end
+//  else
+//    MACOSX_DEPLOYMENT_TARGET = ["14.6" nowhere]
+//  end
+  let MACOSX_DEPLOYMENT_TARGET = "14.6"
 //---------------------------------------------------------- LIBPM path
   let @string libpmPath
   if let entry = inProjectQualifiedFeatureMap @["libpmAtPath"] then
@@ -633,7 +633,7 @@ proc updateGalgasTargets
     end
     [!?xcodeProject addSettingsToDefaultConfiguration !settingList: xcodeSettingList]
   //--- Add "Hand coded sources (App)" group
-    var @stringlist m_handCodedSourceFileRefForAppList = @()
+//    var @stringlist m_handCodedSourceFileRefForAppList = @()
     var @stringlist resource_handCodedResourceFileRefForAppList = @()
     if [inHandCodedSourceAppFileList count] > 0 then
       [!?xcodeProject addGroupWithFiles
@@ -642,8 +642,8 @@ proc updateGalgasTargets
         !fileNames:@stringset.setWithStringList {!inHandCodedSourceAppFileList}
         !?cFileRefs: %from @()
         !?cppFileRefs: %from @()
-        !?mFileRefs: m_handCodedSourceFileRefForAppList
-        !?mmFileRefs: %from @()
+//        !?mFileRefs: m_handCodedSourceFileRefForAppList
+//        !?mmFileRefs: %from @()
         !?swiftFileRefs: %from @()
         !?frameworkFileRefs: %from @()
         !?resourceFileRefs: resource_handCodedResourceFileRefForAppList
@@ -660,8 +660,8 @@ proc updateGalgasTargets
         !fileNames: .setWithStringList {!inHandCodedLinkAppFileList}
         !?cFileRefs: %from @()
         !?cppFileRefs: %from @()
-        !?mFileRefs: %from @()
-        !?mmFileRefs: %from @()
+//        !?mFileRefs: %from @()
+//        !?mmFileRefs: %from @()
         !?swiftFileRefs: %from @()
         !?frameworkFileRefs: appFrameworksFileRefList
         !?resourceFileRefs: %from @()
@@ -672,8 +672,8 @@ proc updateGalgasTargets
   //--- Mach O target
     var @stringlist buildCFileRefListForTool = @()
     var @stringlist buildCppFileRefListForTool = @()
-    var @stringlist m_FileRefList = @()
-    var @stringlist mm_FileRefList = @()
+//    var @stringlist m_FileRefList = @()
+//    var @stringlist mm_FileRefList = @()
     var @stringlist swift_FileRefList = @()
     var @stringlist frameworksFileRefList = @()
     var @stringlist resourceFileBuildRefs = @()
@@ -685,8 +685,8 @@ proc updateGalgasTargets
         !fileNames:@stringset.setWithStringList {!inHandCodedSourceToolFileList}
         !?cFileRefs:buildCFileRefListForTool
         !?cppFileRefs:buildCppFileRefListForTool
-        !?mFileRefs: m_FileRefList
-        !?mmFileRefs:mm_FileRefList
+//        !?mFileRefs: m_FileRefList
+//        !?mmFileRefs:mm_FileRefList
         !?swiftFileRefs: swift_FileRefList
         !?frameworkFileRefs:frameworksFileRefList
         !?resourceFileRefs:resourceFileBuildRefs
@@ -703,8 +703,8 @@ proc updateGalgasTargets
         !fileNames:@stringset.setWithStringList {!inFrameworkToolFileList}
         !?cFileRefs: %from @()
         !?cppFileRefs: %from @()
-        !?mFileRefs: %from @()
-        !?mmFileRefs: %from @()
+//        !?mFileRefs: %from @()
+//        !?mmFileRefs: %from @()
         !?swiftFileRefs: %from @()
         !?frameworkFileRefs:toolFrameworksFileRefList
         !?resourceFileRefs: %from @()
@@ -721,8 +721,8 @@ proc updateGalgasTargets
       !fileNames: .setWithStringList {!outputGroupFileList}
       !?cFileRefs:buildCFileRefListForTool
       !?cppFileRefs:buildCppFileRefListForTool
-      !?mFileRefs: m_FileRefList
-      !?mmFileRefs: mm_FileRefList
+//      !?mFileRefs: m_FileRefList
+//      !?mmFileRefs: mm_FileRefList
       !?swiftFileRefs: swift_FileRefList
       !?frameworkFileRefs:frameworksFileRefList
       !?resourceFileRefs:resourceFileBuildRefs
@@ -747,8 +747,8 @@ proc updateGalgasTargets
       ]
       !?cFileRefs:buildCFileRefListForTool
       !?cppFileRefs:buildCppFileRefListForTool
-      !?mFileRefs: m_FileRefList
-      !?mmFileRefs:mm_FileRefList
+//      !?mFileRefs: m_FileRefList
+//      !?mmFileRefs:mm_FileRefList
       !?swiftFileRefs: swift_FileRefList
       !?frameworkFileRefs:frameworksFileRefList
       !?resourceFileRefs:resourceFileBuildRefs
@@ -800,8 +800,8 @@ proc updateGalgasTargets
       ]
       !?cFileRefs:buildCFileRefListForTool
       !?cppFileRefs:buildCppFileRefListForTool
-      !?mFileRefs: m_FileRefList
-      !?mmFileRefs:mm_FileRefList
+//      !?mFileRefs: m_FileRefList
+//      !?mmFileRefs:mm_FileRefList
       !?swiftFileRefs: swift_FileRefList
       !?frameworkFileRefs:frameworksFileRefList
       !?resourceFileRefs:resourceFileBuildRefs
@@ -998,8 +998,8 @@ proc updateGalgasTargets
       ]
       !?cFileRefs:buildCFileRefListForTool
       !?cppFileRefs:buildCppFileRefListForTool
-      !?mFileRefs: m_FileRefList
-      !?mmFileRefs:mm_FileRefList
+//      !?mFileRefs: m_FileRefList
+//      !?mmFileRefs:mm_FileRefList
       !?swiftFileRefs: swift_FileRefList
       !?frameworkFileRefs:frameworksFileRefList
       !?resourceFileRefs:resourceFileBuildRefs
@@ -1017,8 +1017,8 @@ proc updateGalgasTargets
       ]
       !?cFileRefs:buildCFileRefListForTool
       !?cppFileRefs:buildCppFileRefListForTool
-      !?mFileRefs: m_FileRefList
-      !?mmFileRefs:mm_FileRefList
+//      !?mFileRefs: m_FileRefList
+//      !?mmFileRefs:mm_FileRefList
       !?swiftFileRefs: swift_FileRefList
       !?frameworkFileRefs:frameworksFileRefList
       !?resourceFileRefs:resourceFileBuildRefs
@@ -1049,8 +1049,8 @@ proc updateGalgasTargets
       ]
       !?cFileRefs:buildCFileRefListForTool
       !?cppFileRefs:buildCppFileRefListForTool
-      !?mFileRefs: m_FileRefList
-      !?mmFileRefs:mm_FileRefList
+//      !?mFileRefs: m_FileRefList
+//      !?mmFileRefs:mm_FileRefList
       !?swiftFileRefs: swift_FileRefList
       !?frameworkFileRefs:frameworksFileRefList
       !?resourceFileRefs:resourceFileBuildRefs
@@ -1075,8 +1075,8 @@ proc updateGalgasTargets
       ]
       !?cFileRefs:buildCFileRefListForTool
       !?cppFileRefs:buildCppFileRefListForTool
-      !?mFileRefs: m_FileRefList
-      !?mmFileRefs:mm_FileRefList
+//      !?mFileRefs: m_FileRefList
+//      !?mmFileRefs:mm_FileRefList
       !?swiftFileRefs: swift_FileRefList
       !?frameworkFileRefs:frameworksFileRefList
       !?resourceFileRefs:resourceFileBuildRefs
@@ -1184,8 +1184,8 @@ proc updateGalgasTargets
       ]
       !?cFileRefs:buildCFileRefListForTool
       !?cppFileRefs:buildCppFileRefListForTool
-      !?mFileRefs: m_FileRefList
-      !?mmFileRefs:mm_FileRefList
+//      !?mFileRefs: m_FileRefList
+//      !?mmFileRefs:mm_FileRefList
       !?swiftFileRefs: swift_FileRefList
       !?frameworkFileRefs:frameworksFileRefList
       !?resourceFileRefs:resourceFileBuildRefs
@@ -1206,8 +1206,8 @@ proc updateGalgasTargets
       ]
       !?cFileRefs:buildCFileRefListForTool
       !?cppFileRefs:buildCppFileRefListForTool
-      !?mFileRefs: m_FileRefList
-      !?mmFileRefs:mm_FileRefList
+//      !?mFileRefs: m_FileRefList
+//      !?mmFileRefs:mm_FileRefList
       !?swiftFileRefs: swift_FileRefList
       !?frameworkFileRefs:frameworksFileRefList
       !?resourceFileRefs:resourceFileBuildRefs
@@ -1231,8 +1231,8 @@ proc updateGalgasTargets
       ]
       !?cFileRefs:buildCFileRefListForTool
       !?cppFileRefs:buildCppFileRefListForTool
-      !?mFileRefs: m_FileRefList
-      !?mmFileRefs:mm_FileRefList
+//      !?mFileRefs: m_FileRefList
+//      !?mmFileRefs:mm_FileRefList
       !?swiftFileRefs: swift_FileRefList
       !?frameworkFileRefs:frameworksFileRefList
       !?resourceFileRefs:resourceFileBuildRefs
@@ -1251,8 +1251,8 @@ proc updateGalgasTargets
       ]
       !?cFileRefs:buildCFileRefListForTool
       !?cppFileRefs:buildCppFileRefListForTool
-      !?mFileRefs: m_FileRefList
-      !?mmFileRefs:mm_FileRefList
+//      !?mFileRefs: m_FileRefList
+//      !?mmFileRefs:mm_FileRefList
       !?swiftFileRefs: swift_FileRefList
       !?frameworkFileRefs:frameworksFileRefList
       !?resourceFileRefs:resourceFileBuildRefs
@@ -1297,8 +1297,8 @@ proc updateGalgasTargets
       ]
       !?cFileRefs:buildCFileRefListForTool
       !?cppFileRefs:buildCppFileRefListForTool
-      !?mFileRefs: m_FileRefList
-      !?mmFileRefs:mm_FileRefList
+//      !?mFileRefs: m_FileRefList
+//      !?mmFileRefs:mm_FileRefList
       !?swiftFileRefs: swift_FileRefList
       !?frameworkFileRefs:frameworksFileRefList
       !?resourceFileRefs:resourceFileBuildRefs
@@ -1315,8 +1315,8 @@ proc updateGalgasTargets
       !fileNames: @["Info.plist"]
       !?cFileRefs:buildCFileRefListForTool
       !?cppFileRefs:buildCppFileRefListForTool
-      !?mFileRefs: m_FileRefList
-      !?mmFileRefs:mm_FileRefList
+//      !?mFileRefs: m_FileRefList
+//      !?mmFileRefs:mm_FileRefList
       !?swiftFileRefs: swift_FileRefList
       !?frameworkFileRefs:frameworksFileRefList
       !?resourceFileRefs:resourceFileBuildRefs
@@ -1330,8 +1330,8 @@ proc updateGalgasTargets
       !fileNames: .setWithStringList {!resourceFiles}
       !?cFileRefs: buildCFileRefListForTool
       !?cppFileRefs: buildCppFileRefListForTool
-      !?mFileRefs: m_FileRefList
-      !?mmFileRefs: mm_FileRefList
+//      !?mFileRefs: m_FileRefList
+//      !?mmFileRefs: mm_FileRefList
       !?swiftFileRefs: swift_FileRefList
       !?frameworkFileRefs: frameworksFileRefList
       !?resourceFileRefs: resourceFileBuildRefs
@@ -1348,8 +1348,8 @@ proc updateGalgasTargets
       ]
       !?cFileRefs: buildCFileRefListForTool
       !?cppFileRefs: buildCppFileRefListForTool
-      !?mFileRefs: m_FileRefList
-      !?mmFileRefs: mm_FileRefList
+//      !?mFileRefs: m_FileRefList
+//      !?mmFileRefs: mm_FileRefList
       !?swiftFileRefs: swift_FileRefList
       !?frameworkFileRefs: frameworksFileRefList
       !?resourceFileRefs: resourceFileBuildRefs
@@ -1394,7 +1394,7 @@ proc updateGalgasTargets
     [!?xcodeProject addToolTarget
       !targetName:inTargetName + " tool"
       !productFileName:inTargetName
-      !sources:buildCFileRefListForTool + buildCppFileRefListForTool + mm_FileRefList
+      !sources:buildCFileRefListForTool + buildCppFileRefListForTool // + mm_FileRefList
       !frameworkRefs:toolFrameworksFileRefList
       !buildConfigurationSettingList: settingList
       ?targetRef:let releaseTargetRef
@@ -1420,7 +1420,7 @@ proc updateGalgasTargets
     [!?xcodeProject addToolTarget
       !targetName:inTargetName + " tool debug"
       !productFileName:inTargetName+"-debug"
-      !sources:buildCFileRefListForTool + buildCppFileRefListForTool + mm_FileRefList
+      !sources:buildCFileRefListForTool + buildCppFileRefListForTool // + mm_FileRefList
       !frameworkRefs:toolFrameworksFileRefList
       !buildConfigurationSettingList: settingList
       ?targetRef:let debugTargetRef

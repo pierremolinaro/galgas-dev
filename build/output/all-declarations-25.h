@@ -861,21 +861,6 @@ GGS_string filewrapperTemplate_templateLexiqueGenerationTemplates_cppImplementat
 
 //--------------------------------------------------------------------------------------------------
 //
-//Filewrapper template 'templateLexiqueGenerationTemplates swiftCocoaImplementationZone'
-//
-//--------------------------------------------------------------------------------------------------
-
-GGS_string filewrapperTemplate_templateLexiqueGenerationTemplates_swiftCocoaImplementationZone (class Compiler * inCompiler,
-                                                                                                const class GGS_string & in_LEXIQUE_5F_HEADER_5F_FILE_5F_NAME,
-                                                                                                const class GGS_string & in_LEXIQUE_5F_CLASS_5F_NAME,
-                                                                                                const class GGS_string & in_SUPER_5F_LEXIQUE_5F_CLASS_5F_NAME,
-                                                                                                const class GGS_terminalList & in_TERMINAL_5F_LIST,
-                                                                                                const class GGS_templateDelimitorList & in_TEMPLATE_5F_DELIMITOR_5F_LIST,
-                                                                                                const class GGS_templateReplacementListAST & in_TEMPLATE_5F_REPLACEMENT_5F_LIST
-                                                                                                COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
 //Filewrapper template 'templateLexiqueGenerationTemplates swiftuiImplementationZone'
 //
 //--------------------------------------------------------------------------------------------------

@@ -17,7 +17,7 @@ abstract class @abstractTestExtensionSetter {
   public var @uint mInteger
 }
 
-final class @TestExtensionSetter : @abstractTestExtensionSetter {
+class @TestExtensionSetter : @abstractTestExtensionSetter {
   public var @string mString
 }
 
@@ -64,9 +64,9 @@ private proc typeCastInSetterCall () {
 
 }
 
-final class @baseClassForTypeCastInSetterCall { }
+class @baseClassForTypeCastInSetterCall { }
 
-final class @inheritedClassForTypeCastInSetterCall : @baseClassForTypeCastInSetterCall { }
+class @inheritedClassForTypeCastInSetterCall : @baseClassForTypeCastInSetterCall { }
 
 proc @inheritedClassForTypeCastInSetterCall.unSetter() {
   println ("Appel @inheritedClassForTypeCastInSetterCall unSetter")
