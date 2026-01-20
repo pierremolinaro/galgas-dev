@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+ <FileVersion major="1" minor="6" />
+ <Project>
+  <Option title="logo" />
+  <Option pch_mode="0" />
+  <Option compiler="gcc" />
+  <Build>
+   <Target title="Release">
+    <Option platforms="Windows;" />
+    <Option output="logo.exe" prefix_auto="0" extension_auto="0" />
+    <Option object_output="objects" />
+    <Option type="1" />
+    <Option compiler="gcc" />
+    <Option projectResourceIncludeDirsRelation="1" />
+    <Compiler>
+     <Add option="-fomit-frame-pointer" />
+     <Add option="-O2" />
+     <Add option="-Wnon-virtual-dtor" />
+     <Add option="-Winit-self" />
+     <Add option="-Wredundant-decls" />
+     <Add option="-Wundef" />
+     <Add option="-Wmissing-include-dirs" />
+     <Add option="-Weffc++" />
+     <Add option="-std=c++17" />
+     <Add option="-Wshadow" />
+     <Add option="-Wall" />
+     <Add option="-W" />
+     <Add option="-DDO_NOT_GENERATE_CHECKINGS" />
+     <Add option="-D_WIN32_WINNT=0x501" />
+    </Compiler>
+   </Target>
+   <Target title="Debug">
+    <Option platforms="Windows;" />
+    <Option output="logo-debug.exe" prefix_auto="0" extension_auto="0" />
+    <Option object_output="objects_debug" />
+    <Option deps_output=".deps_debug" />
+    <Option type="1" />
+    <Option compiler="gcc" />
+    <Option projectResourceIncludeDirsRelation="1" />
+    <Compiler>
+     <Add option="-g" />
+     <Add option="-Wnon-virtual-dtor" />
+     <Add option="-Winit-self" />
+     <Add option="-Wredundant-decls" />
+     <Add option="-Wundef" />
+     <Add option="-Winline" />
+     <Add option="-Wmissing-include-dirs" />
+     <Add option="-Weffc++" />
+     <Add option="-std=c++17" />
+     <Add option="-Wshadow" />
+     <Add option="-Wall" />
+     <Add option="-W" />
+     <Add option="-D_WIN32_WINNT=0x501" />
+    </Compiler>
+   </Target>
+  </Build>
+  <VirtualTargets>
+   <Add alias="All" targets="Release;Debug;" />
+  </VirtualTargets>
+  <Compiler>
+   <Add directory="../build/libpm/bdd" />
+   <Add directory="../build/libpm/big-integers" />
+   <Add directory="../build/libpm/command_line_interface" />
+   <Add directory="../build/libpm/files" />
+   <Add directory="../build/libpm/galgas" />
+   <Add directory="../build/libpm/generic-arraies" />
+   <Add directory="../build/libpm/streams" />
+   <Add directory="../build/libpm/strings" />
+   <Add directory="../build/libpm/time" />
+   <Add directory="../build/libpm/utilities" />
+   <Add directory="../build/user-headers" />
+   <Add directory="../build/output" />
+   <Add directory="../sources/tool-sources" />
+  </Compiler>
+  <Linker>
+   <Add option="-static" />
+   <Add library="Comdlg32" />
+  </Linker>
+  <Unit filename="../build/libpm/galgas/C_galgas_quiet_option.cpp" />
+  <Unit filename="../build/output/all-predefined-types.cpp" />
+  <Unit filename="../build/output/list-2lstringlist.cpp" />
+  <Unit filename="../build/output/map-routine+map.cpp" />
+  <Unit filename="../build/output/list-instruction+list.cpp" />
+  <Unit filename="../build/output/class-instruction.cpp" />
+  <Unit filename="../build/output/weak-reference-instruction-2Eweak.cpp" />
+  <Unit filename="../build/output/method-instruction-code+display.cpp" />
+  <Unit filename="../build/output/class-pen+up.cpp" />
+  <Unit filename="../build/output/weak-reference-pen+up-2Eweak.cpp" />
+  <Unit filename="../build/output/class-pen+down.cpp" />
+  <Unit filename="../build/output/weak-reference-pen+down-2Eweak.cpp" />
+  <Unit filename="../build/output/weak-reference-rotate-2Eweak.cpp" />
+  <Unit filename="../build/output/weak-reference-forward-2Eweak.cpp" />
+  <Unit filename="../build/output/lexique-logo-5Flexique.cpp" />
+  <Unit filename="../build/output/struct-instruction+list-2Eelement.cpp" />
+  <Unit filename="../build/output/class-forward.cpp" />
+  <Unit filename="../build/output/syntax-logo-5Fsyntax.cpp" />
+  <Unit filename="../build/output/struct-2lstringlist-2Eelement.cpp" />
+  <Unit filename="../build/output/struct-routine+map-2Eelement.cpp" />
+  <Unit filename="../build/output/optional-routine+map-2Eelement-3F.cpp" />
+  <Unit filename="../build/output/class-rotate.cpp" />
+  <Unit filename="../build/output/grammar-logo-5Fgrammar.cpp" />
+  <Unit filename="../build/output/proc-println-3F.cpp" />
+  <Unit filename="../build/output/proc-print-3F.cpp" />
+  <Unit filename="../build/output/option-logo-5Foptions.cpp" />
+  <Unit filename="../build/output/filewrapper-generationTemplate.cpp" />
+  <Unit filename="../build/output/method-pen+up-code+display.cpp" />
+  <Unit filename="../build/output/method-pen+down-code+display.cpp" />
+  <Unit filename="../build/output/method-rotate-code+display.cpp" />
+  <Unit filename="../build/output/method-forward-code+display.cpp" />
+  <Unit filename="../build/output/program.cpp" />
+   <Unit filename="../build/libpm/command_line_interface/AbstractCommandLineOption.cpp" />
+   <Unit filename="../build/libpm/command_line_interface/BoolCommandLineOption.cpp" />
+   <Unit filename="../build/libpm/command_line_interface/UIntCommandLineOption.cpp" />
+   <Unit filename="../build/libpm/command_line_interface/StringCommandLineOption.cpp" />
+   <Unit filename="../build/libpm/command_line_interface/StringListCommandLineOption.cpp" />
+   <Unit filename="../build/libpm/command_line_interface/builtin-command-line-options.cpp" />
+   <Unit filename="../build/libpm/command_line_interface/analyzeCommandLineOptions.cpp" />
+   <Unit filename="../build/libpm/command_line_interface/F_mainForLIBPM.cpp" />
+   <Unit filename="../build/libpm/big-integers/BigSigned-add.cpp" />
+   <Unit filename="../build/libpm/big-integers/BigSigned-bit.cpp" />
+   <Unit filename="../build/libpm/big-integers/BigSigned-chunk-operations.cpp" />
+   <Unit filename="../build/libpm/big-integers/BigSigned-constructors.cpp" />
+   <Unit filename="../build/libpm/big-integers/BigSigned-conversions.cpp" />
+   <Unit filename="../build/libpm/big-integers/BigSigned-divide.cpp" />
+   <Unit filename="../build/libpm/big-integers/BigSigned-logic-operations.cpp" />
+   <Unit filename="../build/libpm/big-integers/BigSigned-multiply.cpp" />
+   <Unit filename="../build/libpm/big-integers/BigSigned-print.cpp" />
+   <Unit filename="../build/libpm/big-integers/BigSigned-shifts.cpp" />
+   <Unit filename="../build/libpm/big-integers/BigSigned-subtract.cpp" />
+   <Unit filename="../build/libpm/big-integers/BigSigned-utilities.cpp" />
+   <Unit filename="../build/libpm/big-integers/BigSigned.cpp" />
+   <Unit filename="../build/libpm/big-integers/BigUnsigned-add.cpp" />
+   <Unit filename="../build/libpm/big-integers/BigUnsigned-bit.cpp" />
+   <Unit filename="../build/libpm/big-integers/BigUnsigned-chunk-operations.cpp" />
+   <Unit filename="../build/libpm/big-integers/BigUnsigned-constructors.cpp" />
+   <Unit filename="../build/libpm/big-integers/BigUnsigned-conversions.cpp" />
+   <Unit filename="../build/libpm/big-integers/BigUnsigned-divide-naive.cpp" />
+   <Unit filename="../build/libpm/big-integers/BigUnsigned-divide.cpp" />
+   <Unit filename="../build/libpm/big-integers/BigUnsigned-logic-operations.cpp" />
+   <Unit filename="../build/libpm/big-integers/BigUnsigned-multiply.cpp" />
+   <Unit filename="../build/libpm/big-integers/BigUnsigned-print.cpp" />
+   <Unit filename="../build/libpm/big-integers/BigUnsigned-shifts.cpp" />
+   <Unit filename="../build/libpm/big-integers/BigUnsigned-subtract.cpp" />
+   <Unit filename="../build/libpm/big-integers/BigUnsigned-utilities.cpp" />
+   <Unit filename="../build/libpm/big-integers/ChunkSharedArray.cpp" />
+   <Unit filename="../build/libpm/big-integers/UInt128.cpp" />
+   <Unit filename="../build/libpm/bdd/BinaryDecisionDiagram.cpp" />
+   <Unit filename="../build/libpm/bdd/BinaryDecisionDiagramRelationSingleType.cpp" />
+   <Unit filename="../build/libpm/bdd/BinaryDecisionDiagramRelationConfiguration.cpp" />
+   <Unit filename="../build/libpm/bdd/BinaryDecisionDiagramRelation.cpp" />
+   <Unit filename="../build/libpm/files/FileManager.cpp" />
+   <Unit filename="../build/libpm/files/AbstractFileHandle.cpp" />
+   <Unit filename="../build/libpm/files/TextFileWrite.cpp" />
+   <Unit filename="../build/libpm/files/HTMLFileWrite.cpp" />
+   <Unit filename="../build/libpm/files/BinaryFileWrite.cpp" />
+   <Unit filename="../build/libpm/streams/AbstractOutputStream.cpp" />
+   <Unit filename="../build/libpm/streams/ColoredConsole.cpp" />
+   <Unit filename="../build/libpm/streams/ConsoleOut.cpp" />
+   <Unit filename="../build/libpm/strings/utf32.cpp" />
+   <Unit filename="../build/libpm/strings/String-class-getters.cpp" />
+   <Unit filename="../build/libpm/strings/String-class.cpp" />
+   <Unit filename="../build/libpm/strings/HTMLString.cpp" />
+   <Unit filename="../build/libpm/strings/print.cpp" />
+   <Unit filename="../build/libpm/time/Timer.cpp" />
+   <Unit filename="../build/libpm/time/DateTime.cpp" />
+   <Unit filename="../build/libpm/utilities/PrologueEpilogue.cpp" />
+   <Unit filename="../build/libpm/utilities/SharedObject.cpp" />
+   <Unit filename="../build/libpm/utilities/U8Data.cpp" />
+   <Unit filename="../build/libpm/utilities/F_DisplayException.cpp" />
+   <Unit filename="../build/libpm/utilities/macroAssert.cpp" />
+   <Unit filename="../build/libpm/utilities/F_GetPrime.cpp" />
+   <Unit filename="../build/libpm/utilities/MF_MemoryControl.cpp" />
+   <Unit filename="../build/libpm/utilities/cpp-allocation.cpp" />
+   <Unit filename="../build/libpm/utilities/basic-allocation.cpp" />
+   <Unit filename="../build/libpm/utilities/UInt32Set.cpp" />
+   <Unit filename="../build/libpm/utilities/DirectedGraph.cpp" />
+   <Unit filename="../build/libpm/utilities/md5.cpp" />
+   <Unit filename="../build/libpm/utilities/SHA256.cpp" />
+   <Unit filename="../build/libpm/utilities/galgas-random.cpp" />
+   <Unit filename="../build/libpm/galgas/C_galgas_CLI_Options.cpp" />
+   <Unit filename="../build/libpm/galgas/Compiler.cpp" />
+   <Unit filename="../build/libpm/galgas/Lexique.cpp" />
+   <Unit filename="../build/libpm/galgas/Lexique-parsing.cpp" />
+   <Unit filename="../build/libpm/galgas/LocationInSource.cpp" />
+   <Unit filename="../build/libpm/galgas/SourceTextInString.cpp" />
+   <Unit filename="../build/libpm/galgas/GALGAS_TypeDescriptor.cpp" />
+   <Unit filename="../build/libpm/galgas/C_galgas_function_descriptor.cpp" />
+   <Unit filename="../build/libpm/galgas/galgas-input-output.cpp" />
+   <Unit filename="../build/libpm/galgas/C_galgas_class_inspector.cpp" />
+   <Unit filename="../build/libpm/galgas/IssueWithFixIt.cpp" />
+   <Unit filename="../build/libpm/galgas/cObjectArray.cpp" />
+   <Unit filename="../build/libpm/galgas/cCollectionElement.cpp" />
+   <Unit filename="../build/libpm/galgas/capCollectionElement.cpp" />
+   <Unit filename="../build/libpm/galgas/capCollectionElementArray.cpp" />
+   <Unit filename="../build/libpm/galgas/cGenericAbstractEnumerator.cpp" />
+   <Unit filename="../build/libpm/galgas/Enumerator_range.cpp" />
+   <Unit filename="../build/libpm/galgas/IndexingDictionary.cpp" />
+   <Unit filename="../build/libpm/galgas/IssueDescriptor.cpp" />
+   <Unit filename="../build/libpm/galgas/LexiqueIntrospection.cpp" />
+   <Unit filename="../build/libpm/galgas/AC_GALGAS_root.cpp" />
+   <Unit filename="../build/libpm/galgas/AC_GALGAS_reference_class.cpp" />
+   <Unit filename="../build/libpm/galgas/AC_GALGAS_value_class.cpp" />
+   <Unit filename="../build/libpm/galgas/AC_GALGAS_graph.cpp" />
+   <Unit filename="../build/libpm/galgas/AC_GALGAS_enumAssociatedValues.cpp" />
+   <Unit filename="../build/libpm/galgas/acPtr_class.cpp" />
+   <Unit filename="../build/libpm/galgas/acStrongPtr_class.cpp" />
+   <Unit filename="../build/libpm/galgas/cPtr_weakReference_proxy.cpp" />
+   <Unit filename="../build/libpm/galgas/AC_GALGAS_weak_reference.cpp" />
+   <Unit filename="../build/libpm/galgas/cPtr_object.cpp" />
+   <Unit filename="../build/libpm/galgas/scanner_actions.cpp" />
+   <Unit filename="../build/libpm/galgas/GGS_application.cpp" />
+   <Unit filename="../build/libpm/galgas/GGS_bigint.cpp" />
+   <Unit filename="../build/libpm/galgas/GGS_binaryset.cpp" />
+   <Unit filename="../build/libpm/galgas/GGS_bool.cpp" />
+   <Unit filename="../build/libpm/galgas/GGS_char.cpp" />
+   <Unit filename="../build/libpm/galgas/GGS_data.cpp" />
+   <Unit filename="../build/libpm/galgas/GGS_double.cpp" />
+   <Unit filename="../build/libpm/galgas/GGS_filewrapper.cpp" />
+   <Unit filename="../build/libpm/galgas/GGS_function.cpp" />
+   <Unit filename="../build/libpm/galgas/GGS_location.cpp" />
+   <Unit filename="../build/libpm/galgas/GGS_sint.cpp" />
+   <Unit filename="../build/libpm/galgas/GGS_sint64.cpp" />
+   <Unit filename="../build/libpm/galgas/GGS_string.cpp" />
+   <Unit filename="../build/libpm/galgas/GGS_string-getters.cpp" />
+   <Unit filename="../build/libpm/galgas/GGS_stringset.cpp" />
+   <Unit filename="../build/libpm/galgas/GGS_type.cpp" />
+   <Unit filename="../build/libpm/galgas/GGS_object.cpp" />
+   <Unit filename="../build/libpm/galgas/GGS_uint.cpp" />
+   <Unit filename="../build/libpm/galgas/GGS_timer.cpp" />
+   <Unit filename="../build/libpm/galgas/GGS_uint64.cpp" />
+  <Extensions>
+   <code_completion />
+   <envvars />
+   <debugger />
+   <lib_finder disable_auto="1" />
+  </Extensions>
+ </Project>
+</CodeBlocks_project_file>

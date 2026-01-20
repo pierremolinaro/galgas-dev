@@ -1,0 +1,16 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" version="1.1"
+xmlns="http://www.w3.org/2000/svg">
+<title>etoile.logo</title>
+<line x1="200" y1="300" x2="270" y2="300" style="stroke:#1F56D2" stroke-linecap="round" />
+<line x1="270" y1="300" x2="204.222" y2="323.941" style="stroke:#1F56D2" stroke-linecap="round" />
+<line x1="204.222" y1="323.941" x2="257.845" y2="278.946" style="stroke:#1F56D2" stroke-linecap="round" />
+<line x1="257.845" y1="278.946" x2="222.845" y2="339.568" style="stroke:#1F56D2" stroke-linecap="round" />
+<line x1="222.845" y1="339.568" x2="235" y2="270.632" style="stroke:#1F56D2" stroke-linecap="round" />
+<line x1="235" y1="270.632" x2="247.155" y2="339.568" style="stroke:#1F56D2" stroke-linecap="round" />
+<line x1="247.155" y1="339.568" x2="212.155" y2="278.946" style="stroke:#1F56D2" stroke-linecap="round" />
+<line x1="212.155" y1="278.946" x2="265.778" y2="323.941" style="stroke:#1F56D2" stroke-linecap="round" />
+<line x1="265.778" y1="323.941" x2="200" y2="300" style="stroke:#1F56D2" stroke-linecap="round" />
+</svg>

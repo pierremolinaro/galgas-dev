@@ -1,0 +1,489 @@
+//--------------------------------------------------------------------------------------------------
+//
+//   GGS_data : this class implements the GALGAS 'data' native type
+//
+//  This file is part of libpm library
+//
+//  Copyright (C) 2009, ..., 2024 Pierre Molinaro.
+//
+//  e-mail : pierre@pcmolinaro.name
+//
+//  This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General
+//  Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option)
+//  any later version.
+//
+//  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied
+//  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for
+//  more details.
+//
+//--------------------------------------------------------------------------------------------------
+
+#include "all-predefined-types.h"
+#include "cCollectionElement.h"
+#include "Compiler.h"
+#include "galgas-input-output.h"
+#include "utf32.h"
+#include "C_galgas_CLI_Options.h"
+#include "BinaryFileWrite.h"
+#include "F_verbose_output.h"
+
+//--------------------------------------------------------------------------------------------------
+//   GGS_data
+//--------------------------------------------------------------------------------------------------
+
+GGS_data::GGS_data (void) :
+AC_GALGAS_root (),
+mIsValid (false),
+mData () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_data::GGS_data (const U8Data & inData) :
+AC_GALGAS_root (),
+mIsValid (true),
+mData (inData) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_data GGS_data::class_func_emptyData (UNUSED_LOCATION_ARGS) {
+  return GGS_data (U8Data ()) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_data GGS_data::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
+  return GGS_data (U8Data ()) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_data GGS_data::class_func_dataWithContentsOfFile (const GGS_string & inFilePath,
+                                                      Compiler * inCompiler
+                                                      COMMA_LOCATION_ARGS) {
+  GGS_data result ;
+  if (inFilePath.isValid()){
+    U8Data binaryData ;
+    const bool ok = FileManager::binaryDataWithContentOfFile (inFilePath.stringValue (), binaryData) ;
+    if (ok) {
+
+      result = GGS_data (binaryData) ;
+    }else{
+      String s = "cannot read binary file at path '" ;
+      s.appendString (inFilePath.stringValue ()) ;
+      s.appendCString ("'") ;
+      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GGS_data::objectCompare (const GGS_data & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    const int32_t r = mData.compareWithData (inOperand.mData) ;
+    if (r < 0) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (r > 0) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_data::description (String & ioString,
+                            const int32_t /* inIndentation */) const {
+  ioString.appendCString ("<@data:") ;
+  if (isValid ()) {
+    ioString.appendCString ("length=") ;
+    ioString.appendSigned (mData.count ()) ;
+  }else{
+    ioString.appendCString ("not built") ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_uint GGS_data::getter_count (UNUSED_LOCATION_ARGS) const {
+  GGS_uint result ;
+  if (isValid ()) {
+    result = GGS_uint (uint32_t (mData.count ())) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_string GGS_data::getter_cStringRepresentation (UNUSED_LOCATION_ARGS) const {
+  GGS_string result ;
+  if (isValid ()) {
+    String s ;
+    s.appendUnsigned (mData (0 COMMA_HERE)) ;
+    for (int32_t i=1 ; i<mData.count () ; i++) {
+      s.appendCString (", ") ;
+      s.appendUnsigned (mData (i COMMA_HERE)) ;
+      if ((i % 16) == 0) {
+        s.appendCString ("\n") ;
+      }
+    }
+    result = GGS_string (s) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_data::setter_appendByte (GGS_uint inArgument0,
+                                  Compiler * inCompiler
+                                  COMMA_LOCATION_ARGS) {
+  if (inArgument0.isValid ()) {
+    if (inArgument0.uintValue () > 255) {
+      inCompiler->onTheFlyRunTimeError ("'@data appendByte' modifier invoked with value greater than 255" COMMA_THERE) ;
+    }else{
+      const uint8_t byte = (uint8_t) (inArgument0.uintValue () & UINT8_MAX) ;
+      mData.appendByte (byte) ;
+    }
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_data::setter_appendShortBE (GGS_uint inArgument0,
+                                     Compiler * inCompiler
+                                     COMMA_LOCATION_ARGS) {
+  if (inArgument0.isValid ()) {
+    if (inArgument0.uintValue () > 0xFFFF) {
+      inCompiler->onTheFlyRunTimeError ("'@data appendShortBE' modifier invoked with value greater than 0xFFFF" COMMA_THERE) ;
+    }else{
+      const uint32_t value = inArgument0.uintValue () & 0xFFFFU ;
+      mData.appendByte ((uint8_t) ((value >> 8) & UINT8_MAX)) ;
+      mData.appendByte ((uint8_t) (value & 255)) ;
+    }
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_data::setter_appendShortLE (GGS_uint inArgument0,
+                                     Compiler * inCompiler
+                                     COMMA_LOCATION_ARGS) {
+  if (inArgument0.isValid ()) {
+    if (inArgument0.uintValue () > 0xFFFF) {
+      inCompiler->onTheFlyRunTimeError ("'@data appendShortLE' modifier invoked with value greater than 0xFFFF" COMMA_THERE) ;
+    }else{
+      const uint32_t value = inArgument0.uintValue () & 0xFFFFU ;
+      mData.appendByte ((uint8_t) (value & 255)) ;
+      mData.appendByte ((uint8_t) ((value >> 8) & UINT8_MAX)) ;
+    }
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_data::setter_appendUIntBE (GGS_uint inArgument0
+                                    COMMA_UNUSED_LOCATION_ARGS) {
+  if (inArgument0.isValid ()) {
+    const uint32_t value = inArgument0.uintValue () ;
+    mData.appendByte ((uint8_t) (value >> 24)) ;
+    mData.appendByte ((uint8_t) ((value >> 16) & 255)) ;
+    mData.appendByte ((uint8_t) ((value >> 8) & 255)) ;
+    mData.appendByte ((uint8_t) (value & 255)) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_data::setter_appendUIntLE (GGS_uint inArgument0
+                                    COMMA_UNUSED_LOCATION_ARGS) {
+  if (inArgument0.isValid ()) {
+    const uint32_t value = inArgument0.uintValue () ;
+    mData.appendByte ((uint8_t) (value & 255)) ;
+    mData.appendByte ((uint8_t) ((value >> 8) & 255)) ;
+    mData.appendByte ((uint8_t) ((value >> 16) & 255)) ;
+    mData.appendByte ((uint8_t) (value >> 24)) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_data::setter_appendUTF_38_String (GGS_string inString
+                                           COMMA_UNUSED_LOCATION_ARGS) {
+  if (inString.isValid ()) {
+    const String s = inString.stringValue () ;
+    for (int32_t i=0 ; i<s.length () ; i++) {
+      const utf32 c = s.charAtIndex (i COMMA_HERE) ;
+      char sequence [5] ;
+      const int32_t n = UTF8StringFromUTF32Character (c, sequence) ;
+      for (int32_t j=0 ; j<n ; j++) {
+        mData.appendByte ((uint8_t) sequence [j]) ;
+      }
+    }
+    mData.appendByte (0) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_data::setter_appendData (GGS_data inData
+                                  COMMA_UNUSED_LOCATION_ARGS) {
+  if (inData.isValid ()) {
+    mData.appendData (inData.mData) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_data::method_writeToFileWhenDifferentContents (GGS_string inFilePath,
+                                                        GGS_bool & outFileWritten,
+                                                        Compiler * inCompiler
+                                                        COMMA_LOCATION_ARGS) const {
+  outFileWritten.drop () ;
+  if (inFilePath.isValid ()) {
+    bool needToWrite = true ;
+    const bool fileAlreadyExists = FileManager::fileExistsAtPath (inFilePath.stringValue ()) ;
+    if (fileAlreadyExists) {
+      inCompiler->logFileRead (inFilePath.stringValue ()) ;
+      U8Data binaryData ;
+      FileManager::binaryDataWithContentOfFile (inFilePath.stringValue (), binaryData) ;
+      needToWrite = mData != binaryData ;
+    }
+    outFileWritten = GGS_bool (needToWrite) ;
+    if (needToWrite) {
+      if (Compiler::performGeneration ()) {
+        const bool verboseOptionOn = verboseOutput () ;
+        bool ok = FileManager::makeDirectoryIfDoesNotExist (inFilePath.stringValue ().deletingLastPathComponent ()) ;
+        if (! ok) {
+          String message ;
+          message.appendCString ("cannot create '") ;
+          message.appendString (inFilePath.stringValue ()) ;
+          message.appendCString ("' directory") ;
+          inCompiler->onTheFlyRunTimeError (message COMMA_THERE) ;
+          outFileWritten.drop () ;
+        }else{
+          ok = FileManager::writeBinaryDataToFile (mData, inFilePath.stringValue ()) ;
+          if (ok && verboseOptionOn && fileAlreadyExists) {
+            ggs_printFileOperationSuccess (String ("Replaced '") + inFilePath.stringValue () + "'.\n") ;
+          }else if (ok && verboseOptionOn && ! fileAlreadyExists) {
+            ggs_printFileCreationSuccess (String ("Created '") + inFilePath.stringValue () + "'.\n") ;
+          }else if (! ok) {
+            String message ;
+            message.appendCString ("cannot write '") ;
+            message.appendString (inFilePath.stringValue ()) ;
+            message.appendCString ("' file") ;
+            inCompiler->onTheFlyRunTimeError (message COMMA_THERE) ;
+            outFileWritten.drop () ;
+          }
+        }
+      }else{
+        ggs_printWarning (inCompiler, SourceTextInString (), IssueWithFixIt (), String ("Need to write '") + inFilePath.stringValue () + "'." COMMA_HERE) ;
+      }
+    }
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_data::method_writeToFile (GGS_string inFilePath,
+                                   Compiler * inCompiler
+                                   COMMA_LOCATION_ARGS) const {
+  if (inFilePath.isValid ()) {
+    const String filePath = inFilePath.stringValue () ;
+    if (filePath.length () == 0) {
+      inCompiler->onTheFlyRunTimeError ("'@data writeToFile' modifier invoked with empty file path argument" COMMA_THERE) ;
+    }else if (! Compiler::performGeneration ()) {
+      ggs_printWarning (inCompiler, SourceTextInString (), IssueWithFixIt (), String ("Need to write '") + filePath + "'." COMMA_HERE) ;
+    }else{
+      const bool fileAlreadyExists = FileManager::fileExistsAtPath (filePath) ;
+      const bool verboseOptionOn = verboseOutput () ;
+      FileManager::makeDirectoryIfDoesNotExist (filePath.deletingLastPathComponent()) ;
+      BinaryFileWrite binaryFile (filePath) ;
+      if (! binaryFile.isOpened ()) {
+        String s ;
+        s.appendCString ("'@data writeToFile': cannot open '") ;
+        s.appendString (filePath) ;
+        s.appendCString ("' file in write mode") ;
+        inCompiler->onTheFlyRunTimeError (s.cString () COMMA_THERE) ;
+      }else{
+        binaryFile.appendData (mData) ;
+        const bool ok = binaryFile.close () ;
+        if (ok && verboseOptionOn && fileAlreadyExists) {
+          ggs_printFileOperationSuccess (String ("Replaced '") + filePath + "'.\n") ;
+        }else if (ok && verboseOptionOn && ! fileAlreadyExists) {
+          ggs_printFileCreationSuccess (String ("Created '") + filePath + "'.\n") ;
+        }else if (! ok) {
+          String message ;
+          message.appendCString ("cannot write '") ;
+          message.appendString (filePath) ;
+          message.appendCString ("' file") ;
+          inCompiler->onTheFlyRunTimeError (message COMMA_THERE) ;
+        }
+      }
+    }
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_data::method_writeToExecutableFile (GGS_string inFilePath,
+                                             Compiler * inCompiler
+                                             COMMA_LOCATION_ARGS) const {
+  if (inFilePath.isValid ()) {
+    const String filePath = inFilePath.stringValue () ;
+    if (filePath.length () == 0) {
+      inCompiler->onTheFlyRunTimeError ("'@data writeToFile' modifier invoked with empty file path argument" COMMA_THERE) ;
+    }else if (! Compiler::performGeneration ()) {
+      ggs_printWarning (inCompiler, SourceTextInString (), IssueWithFixIt (), String ("Need to write '") + filePath + "'." COMMA_HERE) ;
+    }else{
+      const bool fileAlreadyExists = FileManager::fileExistsAtPath (filePath) ;
+      const bool verboseOptionOn = verboseOutput () ;
+      FileManager::makeDirectoryIfDoesNotExist (filePath.deletingLastPathComponent()) ;
+      BinaryFileWrite binaryFile (filePath) ;
+      if (! binaryFile.isOpened ()) {
+        String s ;
+        s.appendCString ("'@data writeToExecutableFile': cannot open '") ;
+        s.appendString (filePath) ;
+        s.appendCString ("' file in write mode") ;
+        inCompiler->onTheFlyRunTimeError (s.cString () COMMA_THERE) ;
+      }else{
+        binaryFile.appendData (mData) ;
+        const bool ok = binaryFile.close () ;
+        FileManager::makeFileExecutable (filePath) ;
+        if (ok && verboseOptionOn && fileAlreadyExists) {
+          ggs_printFileOperationSuccess (String ("Replaced '") + filePath + "'.\n") ;
+        }else if (ok && verboseOptionOn && ! fileAlreadyExists) {
+          ggs_printFileOperationSuccess (String ("Created '") + filePath + "'.\n") ;
+        }else if (! ok) {
+          String message ;
+          message.appendCString ("cannot write '") ;
+          message.appendString (filePath) ;
+          message.appendCString ("' file") ;
+          inCompiler->onTheFlyRunTimeError (message COMMA_THERE) ;
+        }
+      }
+    }
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//   cCollectionElement_data
+//--------------------------------------------------------------------------------------------------
+
+class cCollectionElement_data : public cCollectionElement {
+//--- Private member
+  protected: GGS_uint mProperty_data ;
+  public: inline GGS_uint attribute_data (void) const { return mProperty_data ; }
+
+//--- Default constructor
+  public: cCollectionElement_data (const GGS_uint & inData
+                                   COMMA_LOCATION_ARGS) ;
+
+//--- No copy
+  private: cCollectionElement_data (const cCollectionElement_data &) = delete ;
+  private: cCollectionElement_data & operator = (const cCollectionElement_data &) = delete ;
+
+//--- Virtual method that checks that all attributes are valid
+  public: virtual bool isValid (void) const ;
+
+//--- Virtual method for comparing elements
+  public: virtual ComparisonResult compare (const cCollectionElement * inOperand) const ;
+
+//--- Virtual method that returns a copy of current object
+  public: virtual cCollectionElement * copy (void) ;
+
+//--- Description
+ public: virtual void description (String & ioString, const int32_t inIndentation) const ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+cCollectionElement_data::cCollectionElement_data (const GGS_uint & inData
+                                                  COMMA_LOCATION_ARGS) :
+cCollectionElement (THERE),
+mProperty_data (inData) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool cCollectionElement_data::isValid (void) const {
+  return mProperty_data.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult cCollectionElement_data::compare (const cCollectionElement * inOperand) const {
+  const cCollectionElement_data * operand = (const cCollectionElement_data *) inOperand ;
+  macroValidSharedObject (operand, cCollectionElement_data) ;
+  return mProperty_data.objectCompare (operand->mProperty_data) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+cCollectionElement * cCollectionElement_data::copy (void) {
+  cCollectionElement_data * p = nullptr ;
+  macroMyNew (p, cCollectionElement_data (mProperty_data COMMA_HERE)) ;
+  return p ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void cCollectionElement_data::description (String & ioString, const int32_t inIndentation) const {
+  mProperty_data.description (ioString, inIndentation) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//     Enumerator_data class
+//
+//--------------------------------------------------------------------------------------------------
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark Enumerator_data
+#endif
+
+//--------------------------------------------------------------------------------------------------
+
+UpEnumerator_data::UpEnumerator_data (const GGS_data & inOperand) :
+mArray (inOperand.mData),
+mIndex (0) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_uint UpEnumerator_data::current_data (LOCATION_ARGS) const {
+  return GGS_uint (mArray (mIndex COMMA_THERE)) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_uint UpEnumerator_data::current (LOCATION_ARGS) const {
+  return GGS_uint (mArray (mIndex COMMA_THERE)) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+DownEnumerator_data::DownEnumerator_data (const GGS_data & inOperand) :
+mArray (inOperand.mData),
+mIndex (inOperand.mData.count () - 1) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_uint DownEnumerator_data::current_data (LOCATION_ARGS) const {
+  return GGS_uint (mArray (mIndex COMMA_THERE)) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_uint DownEnumerator_data::current (LOCATION_ARGS) const {
+  return GGS_uint (mArray (mIndex COMMA_THERE)) ;
+}
+
+//--------------------------------------------------------------------------------------------------

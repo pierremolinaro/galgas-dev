@@ -51,7 +51,6 @@ final class @enumeratedCollectionVarInExpAST : @abstractEnumeratedCollectionAST 
 
 final class @enumeratedCollectionCstListInExpAST : @abstractEnumeratedCollectionAST {
   private let @forInstructionEnumeratedObjectElementListAST mElementList
-  private let @bool mEndsWithEllipsis %initArgLabel
   private let @semanticExpressionAST mEnumeratedExpression
   private let @location mEndOfEnumerationExpression
 }
@@ -135,21 +134,9 @@ syntax extension galgas3InstructionsSyntax {
                                            !@abstractEnumeratedCollectionAST outEnumeratedObject {
     $($
     var elementList = @forInstructionEnumeratedObjectElementListAST ()
-    let @bool endsWithEllipsis
-    select
-      $...$
-      endsWithEllipsis = true
-    or
-      repeat
-        <for_instruction_element> !?ioDeclarations !?elementList
-      while
-      end
-      select
-        endsWithEllipsis = false
-      or
-        $...$
-        endsWithEllipsis = true
-      end
+    repeat
+      <for_instruction_element> !?ioDeclarations !?elementList
+    while
     end
     let location = @location.here
     $)$
@@ -157,7 +144,6 @@ syntax extension galgas3InstructionsSyntax {
     <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST enumeratedExpression
     outEnumeratedObject = @enumeratedCollectionCstListInExpAST {
       !elementList
-      !mEndsWithEllipsis: endsWithEllipsis
       !enumeratedExpression
       !location
     }
@@ -363,7 +349,6 @@ syntax extension galgas4InstructionsSyntax {
     <expression> !?ioDeclarations ?let @semanticExpressionAST enumeratedExpression
     outEnumeratedObject = @enumeratedCollectionCstListInExpAST {
       !elementList
-      !mEndsWithEllipsis: false
       !enumeratedExpression
       !location
     }
@@ -634,7 +619,7 @@ override method @enumeratedCollectionCstListInExpAST analyzeEnumeration
     error self.mEndOfEnumerationExpression : "an '@" + [outEnumerationExpression.mResultType definition].typeName.string + "' object cannot be enumerated"
   else
 //--- Arguments
-    if ([self.mElementList count] == 0) & not self.mEndsWithEllipsis then
+    if [self.mElementList count] == 0 then
       let currentTypedAttributeList = [outEnumerationExpression.mResultType definition].enumerationDescriptorList
       for (mEnumeratedType mEnumerationName) in currentTypedAttributeList do
        [!?ioVariableMap insertUsedLocalConstant
@@ -644,20 +629,20 @@ override method @enumeratedCollectionCstListInExpAST analyzeEnumeration
          !outEnumeratorCppName +".current_" + [mEnumerationName identifierRepresentation] + " (HERE)"
        ]
       end
-    elsif (not self.mEndsWithEllipsis) & ([self.mElementList count] != [enumerationDescriptorList count]) then
+    elsif [self.mElementList count] != [enumerationDescriptorList count] then
       error self.mEndOfEnumerationExpression
       :"the '@" + [outEnumerationExpression.mResultType definition].typeName.string + "' type requires "
       + [[enumerationDescriptorList count] string] + " argument"
       + if ([enumerationDescriptorList count] > 1) then "s" else "" end
       + " for enumeration: this list provides "
       + [[self.mElementList count] string]
-    elsif (self.mEndsWithEllipsis) & ([self.mElementList count] > [enumerationDescriptorList count]) then
-      error self.mEndOfEnumerationExpression
-      :"the '@" + [outEnumerationExpression.mResultType definition].typeName.string + "' type requires "
-      + [[enumerationDescriptorList count] string] + " argument"
-      + if ([enumerationDescriptorList count] > 1) then "s" else "" end
-      + " or less for enumeration: this list provides "
-      + [[self.mElementList count] string]
+//    elsif (self.mEndsWithEllipsis) & ([self.mElementList count] > [enumerationDescriptorList count]) then
+//      error self.mEndOfEnumerationExpression
+//      :"the '@" + [outEnumerationExpression.mResultType definition].typeName.string + "' type requires "
+//      + [[enumerationDescriptorList count] string] + " argument"
+//      + if ([enumerationDescriptorList count] > 1) then "s" else "" end
+//      + " or less for enumeration: this list provides "
+//      + [[self.mElementList count] string]
     else
       if [enumerationDescriptorList count] > [self.mElementList count] then
         let missingArgumentCount = [enumerationDescriptorList count] - [self.mElementList count]

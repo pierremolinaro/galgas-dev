@@ -1,0 +1,45 @@
+//--------------------------------------------------------------------------------------------------
+//
+//  GALGAS introspection classes                                                                 
+//
+//  This file is part of libpm library                                                           
+//
+//  Copyright (C) 2009, ..., 2009 Pierre Molinaro.
+//
+//  e-mail : pierre@pcmolinaro.name
+//
+//  This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General
+//  Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option)
+//  any later version.
+//
+//  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied
+//  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for
+//  more details.
+//
+//--------------------------------------------------------------------------------------------------
+
+#include "C_galgas_class_inspector.h"
+
+//--------------------------------------------------------------------------------------------------
+
+static C_galgas_class_inspector * gClassListRoot = nullptr ;
+
+//--------------------------------------------------------------------------------------------------
+
+C_galgas_class_inspector::C_galgas_class_inspector (const std::type_info * inClassID,
+                                                    const std::type_info * inSuperClassID,
+                                                    const char * inClassMessage) :
+mNextClass (gClassListRoot),
+mClassID (inClassID),
+mSuperClassID (inSuperClassID),
+mClassMessage (inClassMessage) {
+  gClassListRoot = this ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+C_galgas_class_inspector * C_galgas_class_inspector::root (void) {
+  return gClassListRoot ;
+}
+
+//--------------------------------------------------------------------------------------------------

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+ <key>CFBundleDevelopmentRegion</key>
+ <string>English</string>
+ <key>CFBundleExecutable</key>
+ <string>${EXECUTABLE_NAME}</string>
+ <key>CFBundleIconFile</key>
+ <string>application_icns</string>
+ <key>CFBundleIdentifier</key>
+ <string>fr.what.logo</string>
+ <key>CFBundleInfoDictionaryVersion</key>
+ <string>6.0</string>
+ <key>CFBundleName</key>
+ <string>${PRODUCT_NAME}</string>
+ <key>CFBundlePackageType</key>
+ <string>APPL</string>
+ <key>LSMinimumSystemVersion</key>
+ <string>14.6</string>
+ <key>CFBundleShortVersionString</key>
+ <string>0.0.1</string>
+ <key>NSMainNibFile</key>
+ <string>MainMenu</string>
+ <key>NSPrincipalClass</key>
+ <string>NSApplication</string>
+ <key>CFBundleDocumentTypes</key>
+ <array>
+  <dict>
+			<key>CFBundleTypeIconFile</key>
+			<string>logo_icns</string>
+      <key>CFBundleTypeIconSystemGenerated</key>
+      <integer>0</integer>
+      <key>CFBundleTypeName</key>
+      <string>logo Source</string>
+      <key>CFBundleTypeRole</key>
+      <string>Editor</string>
+      <key>LSHandlerRank</key>
+      <string>Default</string>
+      <key>LSItemContentTypes</key>
+      <array>
+        <string>$(PRODUCT_BUNDLE_IDENTIFIER).logo</string>
+      </array>
+  </dict>
+
+ </array>
+ <key>UTExportedTypeDeclarations</key>
+ <array>
+  <dict>
+    <key>UTTypeConformsTo</key>
+    <array>
+      <string>public.text</string>
+    </array>
+    <key>UTTypeDescription</key>
+    <string>logo</string>
+    <key>UTTypeIcons</key>
+    <dict>
+      <key>UTTypeIconBadgeName</key>
+      <string>logo_icns</string>
+    </dict>
+    <key>UTTypeIdentifier</key>
+    <string>$(PRODUCT_BUNDLE_IDENTIFIER).logo</string>
+    <key>UTTypeTagSpecification</key>
+    <dict>
+      <key>public.filename-extension</key>
+      <array>
+        <string>logo</string>
+      </array>
+    </dict>
+  </dict>
+
+ </array>
+</dict>
+</plist>

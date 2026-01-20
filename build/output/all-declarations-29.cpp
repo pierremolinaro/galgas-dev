@@ -8,47 +8,6 @@
 #include "all-declarations-29.h"
 
 //--------------------------------------------------------------------------------------------------
-//Overriding extension method '@messageInstructionForGeneration generateInstruction'
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_messageInstructionForGeneration::method_generateInstruction (GGS_stringset & ioArgument_ioInclusionSet,
-                                                                       GGS_uint & ioArgument_ioTemporaryVariableIndex,
-                                                                       GGS_stringset & ioArgument_ioUnusedVariableCppNameSet,
-                                                                       const GGS_bool /* constinArgument_inGenerateSyntaxDirectedTranslationString */,
-                                                                       GGS_string & ioArgument_ioGeneratedCode,
-                                                                       Compiler * inCompiler
-                                                                       COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_string var_messageCppVarName_5728 ;
-  const GGS_messageInstructionForGeneration temp_0 = this ;
-  callExtensionMethod_generateExpression ((cPtr_semanticExpressionForGeneration *) temp_0.readProperty_mExpression ().ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_messageCppVarName_5728, inCompiler COMMA_SOURCE_FILE ("instruction-message.galgas", 126)) ;
-  ioArgument_ioGeneratedCode.plusAssignOperation(function_compilerCppName (inCompiler COMMA_SOURCE_FILE ("instruction-message.galgas", 134)).add_operation (GGS_string ("->printMessage ("), inCompiler COMMA_SOURCE_FILE ("instruction-message.galgas", 134)).add_operation (var_messageCppVarName_5728, inCompiler COMMA_SOURCE_FILE ("instruction-message.galgas", 134)), inCompiler  COMMA_SOURCE_FILE ("instruction-message.galgas", 134)) ;
-  const GGS_messageInstructionForGeneration temp_1 = this ;
-  ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string (" ").add_operation (extensionGetter_commaSourceFile (temp_1.readProperty_mInstructionLocation (), inCompiler COMMA_SOURCE_FILE ("instruction-message.galgas", 135)), inCompiler COMMA_SOURCE_FILE ("instruction-message.galgas", 135)).add_operation (GGS_string (") ;\n"), inCompiler COMMA_SOURCE_FILE ("instruction-message.galgas", 135)), inCompiler  COMMA_SOURCE_FILE ("instruction-message.galgas", 135)) ;
-  {
-  ioArgument_ioUnusedVariableCppNameSet.setter_removeKey (function_compilerCppName (inCompiler COMMA_SOURCE_FILE ("instruction-message.galgas", 136)) COMMA_SOURCE_FILE ("instruction-message.galgas", 136)) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-//Overriding extension method '@nonterminalCallInstruction transformInstructionForGrammarAnalysis'
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_nonterminalCallInstruction::method_transformInstructionForGrammarAnalysis (GGS_terminalSymbolsMapForGrammarAnalysis & /* ioArgument_ioActuallyUsedTerminalSymbolMap */,
-                                                                                     const GGS_nonTerminalSymbolMapForGrammarAnalysis constinArgument_inNonTerminalSymbolMap,
-                                                                                     GGS_uint & /* ioArgument_ioAddedNonTerminalIndex */,
-                                                                                     GGS_syntaxInstructionListForGrammarAnalysis & ioArgument_ioSyntaxInstructionList,
-                                                                                     Compiler * inCompiler
-                                                                                     COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_uint var_nonTerminalSymbolIndex_5443 ;
-  const GGS_nonterminalCallInstruction temp_0 = this ;
-  GGS_nonterminalSymbolLabelMapForGrammarAnalysis joker_5466 ; // Joker input parameter
-  constinArgument_inNonTerminalSymbolMap.method_searchKey (temp_0.readProperty_mNonterminalName (), var_nonTerminalSymbolIndex_5443, joker_5466, inCompiler COMMA_SOURCE_FILE ("instruction-non-terminal.galgas", 117)) ;
-  const GGS_nonterminalCallInstruction temp_1 = this ;
-  const GGS_nonterminalCallInstruction temp_2 = this ;
-  ioArgument_ioSyntaxInstructionList.addAssignOperation (GGS_nonTerminalInstructionForGrammarAnalysis::init_21__21__21_ (temp_1.readProperty_mInstructionLocation (), temp_2.readProperty_mNonterminalName (), var_nonTerminalSymbolIndex_5443, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("instruction-non-terminal.galgas", 118)) ;
-}
-
-//--------------------------------------------------------------------------------------------------
 //Overriding extension method '@nonterminalCallInstruction analyzeSyntaxInstruction'
 //--------------------------------------------------------------------------------------------------
 
@@ -7841,5 +7800,79 @@ void cPtr_leftShiftExpressionAST::method_enterExpressionInSemanticContext (GGS_u
   callExtensionMethod_enterExpressionInSemanticContext ((cPtr_semanticExpressionAST *) temp_0.readProperty_mLeftExpression ().ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("expression-additive.galgas", 255)) ;
   const GGS_leftShiftExpressionAST temp_1 = this ;
   callExtensionMethod_enterExpressionInSemanticContext ((cPtr_semanticExpressionAST *) temp_1.readProperty_mRightExpression ().ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("expression-additive.galgas", 256)) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//Overriding extension method '@leftShiftExpressionAST analyzeSemanticExpression'
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_leftShiftExpressionAST::method_analyzeSemanticExpression (const GGS_lstring constinArgument_inUsefulnessCallerEntityName,
+                                                                    GGS_usefulEntitiesGraph & ioArgument_ioUsefulEntitiesGraph,
+                                                                    const GGS_unifiedTypeMapEntry constinArgument_inInferenceType,
+                                                                    const GGS_analysisContext constinArgument_inAnalysisContext,
+                                                                    GGS_unifiedTypeMap & ioArgument_ioTypeMap,
+                                                                    GGS_localVarManager & ioArgument_ioVariableMap,
+                                                                    GGS_semanticExpressionForGeneration & outArgument_outExpression,
+                                                                    Compiler * inCompiler
+                                                                    COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_semanticExpressionForGeneration var_leftExpression_11407 ;
+  const GGS_leftShiftExpressionAST temp_0 = this ;
+  callExtensionMethod_analyzeSemanticExpression ((cPtr_semanticExpressionAST *) temp_0.readProperty_mLeftExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inInferenceType, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, ioArgument_ioVariableMap, var_leftExpression_11407, inCompiler COMMA_SOURCE_FILE ("expression-additive.galgas", 271)) ;
+  GGS_semanticExpressionForGeneration var_rightExpression_11766 ;
+  const GGS_leftShiftExpressionAST temp_1 = this ;
+  callExtensionMethod_analyzeSemanticExpression ((cPtr_semanticExpressionAST *) temp_1.readProperty_mRightExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext.readProperty_predefinedTypes ().readProperty_mBigIntType (), constinArgument_inAnalysisContext, ioArgument_ioTypeMap, ioArgument_ioVariableMap, var_rightExpression_11766, inCompiler COMMA_SOURCE_FILE ("expression-additive.galgas", 281)) ;
+  GGS_unifiedTypeMapEntry var_leftType_11847 = var_leftExpression_11407.readProperty_mResultType () ;
+  GalgasBool test_2 = GalgasBool::boolTrue ;
+  if (GalgasBool::boolTrue == test_2) {
+    GGS_literalBigIntExpressionForGeneration var_left_11894 (dynamic_cast <const cPtr_literalBigIntExpressionForGeneration *> (var_leftExpression_11407.ptr ())) ;
+    if (nullptr == var_left_11894.ptr ()) {
+      test_2 = GalgasBool::boolFalse ;
+    }
+    if (GalgasBool::boolTrue == test_2) {
+      GGS_literalUIntExpressionForGeneration var_right_11967 (dynamic_cast <const cPtr_literalUIntExpressionForGeneration *> (var_rightExpression_11766.ptr ())) ;
+      if (nullptr == var_right_11967.ptr ()) {
+        test_2 = GalgasBool::boolFalse ;
+      }
+      if (GalgasBool::boolTrue == test_2) {
+        const GGS_leftShiftExpressionAST temp_3 = this ;
+        outArgument_outExpression = GGS_literalBigIntExpressionForGeneration::init_21__21__21_ (constinArgument_inAnalysisContext.readProperty_predefinedTypes ().readProperty_mBigIntType (), temp_3.readProperty_mOperatorLocation (), var_left_11894.readProperty_mValue ().left_shift_operation (var_right_11967.readProperty_mValue (), inCompiler COMMA_SOURCE_FILE ("expression-additive.galgas", 297)), inCompiler COMMA_HERE) ;
+      }
+    }
+  }
+  if (GalgasBool::boolFalse == test_2) {
+    GalgasBool test_4 = GalgasBool::boolTrue ;
+    if (GalgasBool::boolTrue == test_4) {
+      GGS_literalBigIntExpressionForGeneration var_left_12236 (dynamic_cast <const cPtr_literalBigIntExpressionForGeneration *> (var_leftExpression_11407.ptr ())) ;
+      if (nullptr == var_left_12236.ptr ()) {
+        test_4 = GalgasBool::boolFalse ;
+      }
+      if (GalgasBool::boolTrue == test_4) {
+        GGS_literalBigIntExpressionForGeneration var_right_12309 (dynamic_cast <const cPtr_literalBigIntExpressionForGeneration *> (var_rightExpression_11766.ptr ())) ;
+        if (nullptr == var_right_12309.ptr ()) {
+          test_4 = GalgasBool::boolFalse ;
+        }
+        if (GalgasBool::boolTrue == test_4) {
+          const GGS_leftShiftExpressionAST temp_5 = this ;
+          outArgument_outExpression = GGS_literalBigIntExpressionForGeneration::init_21__21__21_ (constinArgument_inAnalysisContext.readProperty_predefinedTypes ().readProperty_mBigIntType (), temp_5.readProperty_mOperatorLocation (), var_left_12236.readProperty_mValue ().left_shift_operation (var_right_12309.readProperty_mValue ().getter_uint (inCompiler COMMA_SOURCE_FILE ("expression-additive.galgas", 304)), inCompiler COMMA_SOURCE_FILE ("expression-additive.galgas", 304)), inCompiler COMMA_HERE) ;
+        }
+      }
+    }
+    if (GalgasBool::boolFalse == test_4) {
+      GalgasBool test_6 = GalgasBool::boolTrue ;
+      if (GalgasBool::boolTrue == test_6) {
+        test_6 = extensionGetter_definition (var_leftType_11847, inCompiler COMMA_SOURCE_FILE ("expression-additive.galgas", 306)).readProperty_features ().getter_contains (GGS_typeFeatures::class_func_infixShiftOperator (SOURCE_FILE ("expression-additive.galgas", 306)) COMMA_SOURCE_FILE ("expression-additive.galgas", 306)).operator_not (SOURCE_FILE ("expression-additive.galgas", 306)).boolEnum () ;
+        if (GalgasBool::boolTrue == test_6) {
+          const GGS_leftShiftExpressionAST temp_7 = this ;
+          GenericArray <FixItDescription> fixItArray8 ;
+          inCompiler->emitSemanticError (temp_7.readProperty_mOperatorLocation (), GGS_string ("left operand type is '@").add_operation (extensionGetter_definition (var_leftType_11847, inCompiler COMMA_SOURCE_FILE ("expression-additive.galgas", 308)).readProperty_typeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("expression-additive.galgas", 308)).add_operation (GGS_string ("' and does not support a shift operator"), inCompiler COMMA_SOURCE_FILE ("expression-additive.galgas", 308)), fixItArray8  COMMA_SOURCE_FILE ("expression-additive.galgas", 307)) ;
+          outArgument_outExpression.drop () ; // Release error dropped variable
+        }
+      }
+      if (GalgasBool::boolFalse == test_6) {
+        const GGS_leftShiftExpressionAST temp_9 = this ;
+        outArgument_outExpression = GGS_binaryOperatorExpressionForGeneration::init_21__21__21__21__21_ (var_leftType_11847, temp_9.readProperty_mOperatorLocation (), var_leftExpression_11407, GGS_binaryOperator::class_func_leftShift (SOURCE_FILE ("expression-additive.galgas", 316)), var_rightExpression_11766, inCompiler COMMA_HERE) ;
+      }
+    }
+  }
 }
 

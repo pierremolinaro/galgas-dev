@@ -1,0 +1,12 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" version="1.1"
+xmlns="http://www.w3.org/2000/svg">
+<title>pentagone.logo</title>
+<line x1="200" y1="300" x2="270" y2="300" style="stroke:#1F56D2" stroke-linecap="round" />
+<line x1="270" y1="300" x2="291.631" y2="366.574" style="stroke:#1F56D2" stroke-linecap="round" />
+<line x1="291.631" y1="366.574" x2="235" y2="407.719" style="stroke:#1F56D2" stroke-linecap="round" />
+<line x1="235" y1="407.719" x2="178.369" y2="366.574" style="stroke:#1F56D2" stroke-linecap="round" />
+<line x1="178.369" y1="366.574" x2="200" y2="300" style="stroke:#1F56D2" stroke-linecap="round" />
+</svg>

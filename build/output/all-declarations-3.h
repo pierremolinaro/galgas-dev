@@ -2989,10 +2989,6 @@ class cParser_galgas_33_InstructionsSyntax {
 
   protected: virtual int32_t select_galgas_33_InstructionsSyntax_75 (Lexique_galgasScanner_33_ *) = 0 ;
 
-  protected: virtual int32_t select_galgas_33_InstructionsSyntax_76 (Lexique_galgasScanner_33_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_33_InstructionsSyntax_77 (Lexique_galgasScanner_33_ *) = 0 ;
-
 
 } ;
 
@@ -3615,8 +3611,6 @@ class GGS_enumeratedCollectionCstListInExpAST : public GGS_abstractEnumeratedCol
 //--------------------------------- Property access
   public: class GGS_forInstructionEnumeratedObjectElementListAST readProperty_mElementList (void) const ;
 
-  public: class GGS_bool readProperty_mEndsWithEllipsis (void) const ;
-
   public: class GGS_semanticExpressionAST readProperty_mEnumeratedExpression (void) const ;
 
   public: class GGS_location readProperty_mEndOfEnumerationExpression (void) const ;
@@ -3624,12 +3618,11 @@ class GGS_enumeratedCollectionCstListInExpAST : public GGS_abstractEnumeratedCol
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GGS_enumeratedCollectionCstListInExpAST init_21__21_mEndsWithEllipsis_21__21_ (const class GGS_forInstructionEnumeratedObjectElementListAST & inOperand0,
-                                                                                                const class GGS_bool & inOperand1,
-                                                                                                const class GGS_semanticExpressionAST & inOperand2,
-                                                                                                const class GGS_location & inOperand3,
-                                                                                                Compiler * inCompiler
-                                                                                                COMMA_LOCATION_ARGS) ;
+  public: static GGS_enumeratedCollectionCstListInExpAST init_21__21__21_ (const class GGS_forInstructionEnumeratedObjectElementListAST & inOperand0,
+                                                                           const class GGS_semanticExpressionAST & inOperand1,
+                                                                           const class GGS_location & inOperand2,
+                                                                           Compiler * inCompiler
+                                                                           COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -3641,9 +3634,8 @@ class GGS_enumeratedCollectionCstListInExpAST : public GGS_abstractEnumeratedCol
 
 //--------------------------------- GALGAS class functions
   public: static class GGS_enumeratedCollectionCstListInExpAST class_func_new (const class GGS_forInstructionEnumeratedObjectElementListAST & inOperand0,
-                                                                               const class GGS_bool & inOperand1,
-                                                                               const class GGS_semanticExpressionAST & inOperand2,
-                                                                               const class GGS_location & inOperand3,
+                                                                               const class GGS_semanticExpressionAST & inOperand1,
+                                                                               const class GGS_location & inOperand2,
                                                                                class Compiler * inCompiler
                                                                                COMMA_LOCATION_ARGS) ;
 
@@ -3942,11 +3934,10 @@ class cPtr_enumeratedCollectionCstListInExpAST : public cPtr_abstractEnumeratedC
   #endif
 
 //--------------------------------- Initializers
-  public: void enumeratedCollectionCstListInExpAST_init_21__21_mEndsWithEllipsis_21__21_ (const class GGS_forInstructionEnumeratedObjectElementListAST & inOperand0,
-                                                                                          const class GGS_bool & inOperand1,
-                                                                                          const class GGS_semanticExpressionAST & inOperand2,
-                                                                                          const class GGS_location & inOperand3,
-                                                                                          Compiler * inCompiler) ;
+  public: void enumeratedCollectionCstListInExpAST_init_21__21__21_ (const class GGS_forInstructionEnumeratedObjectElementListAST & inOperand0,
+                                                                     const class GGS_semanticExpressionAST & inOperand1,
+                                                                     const class GGS_location & inOperand2,
+                                                                     Compiler * inCompiler) ;
 
 
 //--- Extension method analyzeEnumeration
@@ -3966,7 +3957,6 @@ class cPtr_enumeratedCollectionCstListInExpAST : public cPtr_abstractEnumeratedC
 
 //--- Properties
   public: GGS_forInstructionEnumeratedObjectElementListAST mProperty_mElementList ;
-  public: GGS_bool mProperty_mEndsWithEllipsis ;
   public: GGS_semanticExpressionAST mProperty_mEnumeratedExpression ;
   public: GGS_location mProperty_mEndOfEnumerationExpression ;
 
@@ -3976,7 +3966,6 @@ class cPtr_enumeratedCollectionCstListInExpAST : public cPtr_abstractEnumeratedC
 
 //--- Constructor
   public: cPtr_enumeratedCollectionCstListInExpAST (const GGS_forInstructionEnumeratedObjectElementListAST & in_mElementList,
-                                                    const GGS_bool & in_mEndsWithEllipsis,
                                                     const GGS_semanticExpressionAST & in_mEnumeratedExpression,
                                                     const GGS_location & in_mEndOfEnumerationExpression,
                                                     Compiler * inCompiler

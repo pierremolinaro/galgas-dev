@@ -8,80 +8,6 @@
 #include "all-declarations-30.h"
 
 //--------------------------------------------------------------------------------------------------
-//Overriding extension method '@leftShiftExpressionAST analyzeSemanticExpression'
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_leftShiftExpressionAST::method_analyzeSemanticExpression (const GGS_lstring constinArgument_inUsefulnessCallerEntityName,
-                                                                    GGS_usefulEntitiesGraph & ioArgument_ioUsefulEntitiesGraph,
-                                                                    const GGS_unifiedTypeMapEntry constinArgument_inInferenceType,
-                                                                    const GGS_analysisContext constinArgument_inAnalysisContext,
-                                                                    GGS_unifiedTypeMap & ioArgument_ioTypeMap,
-                                                                    GGS_localVarManager & ioArgument_ioVariableMap,
-                                                                    GGS_semanticExpressionForGeneration & outArgument_outExpression,
-                                                                    Compiler * inCompiler
-                                                                    COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_semanticExpressionForGeneration var_leftExpression_11407 ;
-  const GGS_leftShiftExpressionAST temp_0 = this ;
-  callExtensionMethod_analyzeSemanticExpression ((cPtr_semanticExpressionAST *) temp_0.readProperty_mLeftExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inInferenceType, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, ioArgument_ioVariableMap, var_leftExpression_11407, inCompiler COMMA_SOURCE_FILE ("expression-additive.galgas", 271)) ;
-  GGS_semanticExpressionForGeneration var_rightExpression_11766 ;
-  const GGS_leftShiftExpressionAST temp_1 = this ;
-  callExtensionMethod_analyzeSemanticExpression ((cPtr_semanticExpressionAST *) temp_1.readProperty_mRightExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext.readProperty_predefinedTypes ().readProperty_mBigIntType (), constinArgument_inAnalysisContext, ioArgument_ioTypeMap, ioArgument_ioVariableMap, var_rightExpression_11766, inCompiler COMMA_SOURCE_FILE ("expression-additive.galgas", 281)) ;
-  GGS_unifiedTypeMapEntry var_leftType_11847 = var_leftExpression_11407.readProperty_mResultType () ;
-  GalgasBool test_2 = GalgasBool::boolTrue ;
-  if (GalgasBool::boolTrue == test_2) {
-    GGS_literalBigIntExpressionForGeneration var_left_11894 (dynamic_cast <const cPtr_literalBigIntExpressionForGeneration *> (var_leftExpression_11407.ptr ())) ;
-    if (nullptr == var_left_11894.ptr ()) {
-      test_2 = GalgasBool::boolFalse ;
-    }
-    if (GalgasBool::boolTrue == test_2) {
-      GGS_literalUIntExpressionForGeneration var_right_11967 (dynamic_cast <const cPtr_literalUIntExpressionForGeneration *> (var_rightExpression_11766.ptr ())) ;
-      if (nullptr == var_right_11967.ptr ()) {
-        test_2 = GalgasBool::boolFalse ;
-      }
-      if (GalgasBool::boolTrue == test_2) {
-        const GGS_leftShiftExpressionAST temp_3 = this ;
-        outArgument_outExpression = GGS_literalBigIntExpressionForGeneration::init_21__21__21_ (constinArgument_inAnalysisContext.readProperty_predefinedTypes ().readProperty_mBigIntType (), temp_3.readProperty_mOperatorLocation (), var_left_11894.readProperty_mValue ().left_shift_operation (var_right_11967.readProperty_mValue (), inCompiler COMMA_SOURCE_FILE ("expression-additive.galgas", 297)), inCompiler COMMA_HERE) ;
-      }
-    }
-  }
-  if (GalgasBool::boolFalse == test_2) {
-    GalgasBool test_4 = GalgasBool::boolTrue ;
-    if (GalgasBool::boolTrue == test_4) {
-      GGS_literalBigIntExpressionForGeneration var_left_12236 (dynamic_cast <const cPtr_literalBigIntExpressionForGeneration *> (var_leftExpression_11407.ptr ())) ;
-      if (nullptr == var_left_12236.ptr ()) {
-        test_4 = GalgasBool::boolFalse ;
-      }
-      if (GalgasBool::boolTrue == test_4) {
-        GGS_literalBigIntExpressionForGeneration var_right_12309 (dynamic_cast <const cPtr_literalBigIntExpressionForGeneration *> (var_rightExpression_11766.ptr ())) ;
-        if (nullptr == var_right_12309.ptr ()) {
-          test_4 = GalgasBool::boolFalse ;
-        }
-        if (GalgasBool::boolTrue == test_4) {
-          const GGS_leftShiftExpressionAST temp_5 = this ;
-          outArgument_outExpression = GGS_literalBigIntExpressionForGeneration::init_21__21__21_ (constinArgument_inAnalysisContext.readProperty_predefinedTypes ().readProperty_mBigIntType (), temp_5.readProperty_mOperatorLocation (), var_left_12236.readProperty_mValue ().left_shift_operation (var_right_12309.readProperty_mValue ().getter_uint (inCompiler COMMA_SOURCE_FILE ("expression-additive.galgas", 304)), inCompiler COMMA_SOURCE_FILE ("expression-additive.galgas", 304)), inCompiler COMMA_HERE) ;
-        }
-      }
-    }
-    if (GalgasBool::boolFalse == test_4) {
-      GalgasBool test_6 = GalgasBool::boolTrue ;
-      if (GalgasBool::boolTrue == test_6) {
-        test_6 = extensionGetter_definition (var_leftType_11847, inCompiler COMMA_SOURCE_FILE ("expression-additive.galgas", 306)).readProperty_features ().getter_contains (GGS_typeFeatures::class_func_infixShiftOperator (SOURCE_FILE ("expression-additive.galgas", 306)) COMMA_SOURCE_FILE ("expression-additive.galgas", 306)).operator_not (SOURCE_FILE ("expression-additive.galgas", 306)).boolEnum () ;
-        if (GalgasBool::boolTrue == test_6) {
-          const GGS_leftShiftExpressionAST temp_7 = this ;
-          GenericArray <FixItDescription> fixItArray8 ;
-          inCompiler->emitSemanticError (temp_7.readProperty_mOperatorLocation (), GGS_string ("left operand type is '@").add_operation (extensionGetter_definition (var_leftType_11847, inCompiler COMMA_SOURCE_FILE ("expression-additive.galgas", 308)).readProperty_typeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("expression-additive.galgas", 308)).add_operation (GGS_string ("' and does not support a shift operator"), inCompiler COMMA_SOURCE_FILE ("expression-additive.galgas", 308)), fixItArray8  COMMA_SOURCE_FILE ("expression-additive.galgas", 307)) ;
-          outArgument_outExpression.drop () ; // Release error dropped variable
-        }
-      }
-      if (GalgasBool::boolFalse == test_6) {
-        const GGS_leftShiftExpressionAST temp_9 = this ;
-        outArgument_outExpression = GGS_binaryOperatorExpressionForGeneration::init_21__21__21__21__21_ (var_leftType_11847, temp_9.readProperty_mOperatorLocation (), var_leftExpression_11407, GGS_binaryOperator::class_func_leftShift (SOURCE_FILE ("expression-additive.galgas", 316)), var_rightExpression_11766, inCompiler COMMA_HERE) ;
-      }
-    }
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
 //Overriding extension method '@addExpressionNoOverflowAST enterExpressionInSemanticContext'
 //--------------------------------------------------------------------------------------------------
 
@@ -8340,6 +8266,140 @@ void routine_projectCreation_3F_ (const GGS_string constinArgument_inProjectPath
         if (GalgasBool::boolTrue == test_4) {
           {
           routine_performProjectCreation_3F_ (constinArgument_inProjectPath, inCompiler  COMMA_SOURCE_FILE ("projectCreation.galgas", 90)) ;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+//--------------------------------------------------------------------------------------------------
+//Overriding extension method '@lexicalLogInstructionAST checkLexicalInstruction'
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_lexicalLogInstructionAST::method_checkLexicalInstruction (GGS_lexiqueAnalysisContext & /* ioArgument_ioLexiqueAnalysisContext */,
+                                                                    GGS_lexicalTagMap & /* ioArgument_ioTagMap */,
+                                                                    Compiler * /* inCompiler */
+                                                                    COMMA_UNUSED_LOCATION_ARGS) {
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//Overriding extension getter '@lexicalLogInstructionAST generateSwiftCocoaInstructionCode'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_string cPtr_lexicalLogInstructionAST::getter_generateSwiftCocoaInstructionCode (const GGS_string /* constinArgument_inScannerClassName */,
+                                                                                    const GGS_lexiqueAnalysisContext /* constinArgument_inLexiqueAnalysisContext */,
+                                                                                    Compiler */* inCompiler */
+                                                                                    COMMA_UNUSED_LOCATION_ARGS) const {
+  GGS_string result_outGeneratedCode ; // Returned variable
+  result_outGeneratedCode = GGS_string ("/* lexicalLog (LINE_AND_SOURCE_FILE) */\n") ;
+//---
+  return result_outGeneratedCode ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+//
+//Overriding extension getter '@lexicalLogInstructionAST lexicalInstructionUsesLoopLocalVariable'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_bool cPtr_lexicalLogInstructionAST::getter_lexicalInstructionUsesLoopLocalVariable (Compiler */* inCompiler */
+                                                                                        COMMA_UNUSED_LOCATION_ARGS) const {
+  GGS_bool result_result ; // Returned variable
+  result_result = GGS_bool (false) ;
+//---
+  return result_result ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+//
+//Overriding extension getter '@lexicalLogInstructionAST generateLexicalInstructionCode'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_string cPtr_lexicalLogInstructionAST::getter_generateLexicalInstructionCode (const GGS_string /* constinArgument_inScannerClassName */,
+                                                                                 const GGS_lexiqueAnalysisContext /* constinArgument_inLexiqueAnalysisContext */,
+                                                                                 Compiler */* inCompiler */
+                                                                                 COMMA_UNUSED_LOCATION_ARGS) const {
+  GGS_string result_result ; // Returned variable
+  result_result = GGS_string ("lexicalLog (LINE_AND_SOURCE_FILE) ;\n") ;
+//---
+  return result_result ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+//
+//Routine 'checkUsefulEntities???'
+//
+//--------------------------------------------------------------------------------------------------
+
+void routine_checkUsefulEntities_3F__3F__3F_ (const GGS_usefulEntitiesGraph constinArgument_inUsefulEntitiesGraph,
+                                              const GGS_lstringlist constinArgument_inRootEntities,
+                                              const GGS_string /* constinArgument_inProductDirectory */,
+                                              Compiler * inCompiler
+                                              COMMA_UNUSED_LOCATION_ARGS) {
+  GalgasBool test_0 = GalgasBool::boolTrue ;
+  if (GalgasBool::boolTrue == test_0) {
+    test_0 = GGS_bool (gOption_galgas_5F_cli_5F_options_checkEntityUsefulness.readProperty_value ()).boolEnum () ;
+    if (GalgasBool::boolTrue == test_0) {
+      test_0 = GGS_bool (ComparisonKind::equal, GGS_uint::class_func_errorCount (SOURCE_FILE ("useful-entities-computation.galgas", 42)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
+      if (GalgasBool::boolTrue == test_0) {
+        GGS_stringlist var_undefinedNodeList_2190 = constinArgument_inUsefulEntitiesGraph.getter_undefinedNodeKeyList (SOURCE_FILE ("useful-entities-computation.galgas", 44)) ;
+        GalgasBool test_1 = GalgasBool::boolTrue ;
+        if (GalgasBool::boolTrue == test_1) {
+          test_1 = GGS_bool (ComparisonKind::greaterThan, var_undefinedNodeList_2190.getter_count (SOURCE_FILE ("useful-entities-computation.galgas", 45)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
+          if (GalgasBool::boolTrue == test_1) {
+            GGS_string var_s_2307 = GGS_string ("usefulness computation, ").add_operation (var_undefinedNodeList_2190.getter_count (SOURCE_FILE ("useful-entities-computation.galgas", 46)).getter_string (SOURCE_FILE ("useful-entities-computation.galgas", 46)), inCompiler COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 46)).add_operation (GGS_string (" undefined nodes:"), inCompiler COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 46)) ;
+            UpEnumerator_stringlist enumerator_2399 (var_undefinedNodeList_2190) ;
+            while (enumerator_2399.hasCurrentObject ()) {
+              var_s_2307.plusAssignOperation(GGS_string ("\n  - ").add_operation (enumerator_2399.current_mValue (HERE), inCompiler COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 48)), inCompiler  COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 48)) ;
+              enumerator_2399.gotoNextObject () ;
+            }
+            GenericArray <FixItDescription> fixItArray2 ;
+            inCompiler->emitSemanticError (GGS_location::class_func_nowhere (SOURCE_FILE ("useful-entities-computation.galgas", 50)), var_s_2307, fixItArray2  COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 50)) ;
+          }
+        }
+        if (GalgasBool::boolFalse == test_1) {
+          GGS_lstringlist var_usefullEntityList_2566 = constinArgument_inUsefulEntitiesGraph.getter_accessibleNodesFrom (constinArgument_inRootEntities, GGS_stringset::init (inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 53)) ;
+          GGS_stringset var_usefullEntitySet_2661 = GGS_stringset::class_func_setWithLStringList (var_usefullEntityList_2566  COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 54)) ;
+          GGS_stringset var_allEntitySet_2741 = GGS_stringset::class_func_setWithStringList (constinArgument_inUsefulEntitiesGraph.getter_keyList (SOURCE_FILE ("useful-entities-computation.galgas", 55))  COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 55)) ;
+          GGS_stringset var_unusedEntities_2830 = var_allEntitySet_2741.substract_operation (var_usefullEntitySet_2661, inCompiler COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 56)) ;
+          GGS_uselessEntityLocationMap var_uselessEntityLocationMap_2915 = GGS_uselessEntityLocationMap::init (inCompiler COMMA_HERE) ;
+          UpEnumerator_stringset enumerator_2957 (var_unusedEntities_2830) ;
+          while (enumerator_2957.hasCurrentObject ()) {
+            GGS_location var_l_3004 = constinArgument_inUsefulEntitiesGraph.getter_locationForKey (enumerator_2957.current_key (HERE), inCompiler COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 59)) ;
+            GalgasBool test_3 = GalgasBool::boolTrue ;
+            if (GalgasBool::boolTrue == test_3) {
+              test_3 = GGS_bool (ComparisonKind::equal, var_l_3004.objectCompare (GGS_location::class_func_nowhere (SOURCE_FILE ("useful-entities-computation.galgas", 60)))).boolEnum () ;
+              if (GalgasBool::boolTrue == test_3) {
+                GenericArray <FixItDescription> fixItArray4 ;
+                inCompiler->emitSemanticWarning (GGS_location::class_func_nowhere (SOURCE_FILE ("useful-entities-computation.galgas", 61)), GGS_string ("unused entity, '").add_operation (enumerator_2957.current_key (HERE), inCompiler COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 61)).add_operation (GGS_string ("' (due to option --"), inCompiler COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 61)).add_operation (GGS_string (gOption_galgas_5F_cli_5F_options_checkEntityUsefulness.readProperty_string ()), inCompiler COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 62)).add_operation (GGS_string (")"), inCompiler COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 62)), fixItArray4  COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 61)) ;
+              }
+            }
+            if (GalgasBool::boolFalse == test_3) {
+              GalgasBool test_5 = GalgasBool::boolTrue ;
+              if (GalgasBool::boolTrue == test_5) {
+                test_5 = var_uselessEntityLocationMap_2915.getter_hasKey (var_l_3004.getter_startLocationString (inCompiler COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 63)) COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 63)).operator_not (SOURCE_FILE ("useful-entities-computation.galgas", 63)).boolEnum () ;
+                if (GalgasBool::boolTrue == test_5) {
+                  {
+                  var_uselessEntityLocationMap_2915.setter_insertKey (var_l_3004.getter_startLocationString (inCompiler COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 64)).getter_nowhere (SOURCE_FILE ("useful-entities-computation.galgas", 64)), enumerator_2957.current_key (HERE), var_l_3004, inCompiler COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 64)) ;
+                  }
+                }
+              }
+            }
+            enumerator_2957.gotoNextObject () ;
+          }
+          UpEnumerator_uselessEntityLocationMap enumerator_3490 (var_uselessEntityLocationMap_2915) ;
+          while (enumerator_3490.hasCurrentObject ()) {
+            GenericArray <FixItDescription> fixItArray6 ;
+            inCompiler->emitSemanticWarning (enumerator_3490.current_mLocation (HERE), GGS_string ("unused '").add_operation (enumerator_3490.current_mUnusedEntityName (HERE), inCompiler COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 68)).add_operation (GGS_string ("' entity, due to option --"), inCompiler COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 68)).add_operation (GGS_string (gOption_galgas_5F_cli_5F_options_checkEntityUsefulness.readProperty_string ()), inCompiler COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 68)).add_operation (GGS_string (")"), inCompiler COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 69)), fixItArray6  COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 68)) ;
+            enumerator_3490.gotoNextObject () ;
           }
         }
       }

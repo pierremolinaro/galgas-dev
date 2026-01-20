@@ -13473,15 +13473,14 @@ GGS_abstractEnumeratedCollectionAST () {
 //--- Synthetized initializer ----------------------------------------------------------------------
 
 GGS_enumeratedCollectionCstListInExpAST GGS_enumeratedCollectionCstListInExpAST::
-init_21__21_mEndsWithEllipsis_21__21_ (const GGS_forInstructionEnumeratedObjectElementListAST & in_mElementList,
-                                       const GGS_bool & in_mEndsWithEllipsis,
-                                       const GGS_semanticExpressionAST & in_mEnumeratedExpression,
-                                       const GGS_location & in_mEndOfEnumerationExpression,
-                                       Compiler * inCompiler
-                                       COMMA_LOCATION_ARGS) {
+init_21__21__21_ (const GGS_forInstructionEnumeratedObjectElementListAST & in_mElementList,
+                  const GGS_semanticExpressionAST & in_mEnumeratedExpression,
+                  const GGS_location & in_mEndOfEnumerationExpression,
+                  Compiler * inCompiler
+                  COMMA_LOCATION_ARGS) {
   cPtr_enumeratedCollectionCstListInExpAST * object = nullptr ;
   macroMyNew (object, cPtr_enumeratedCollectionCstListInExpAST (inCompiler COMMA_THERE)) ;
-  object->enumeratedCollectionCstListInExpAST_init_21__21_mEndsWithEllipsis_21__21_ (in_mElementList, in_mEndsWithEllipsis, in_mEnumeratedExpression, in_mEndOfEnumerationExpression, inCompiler) ;
+  object->enumeratedCollectionCstListInExpAST_init_21__21__21_ (in_mElementList, in_mEnumeratedExpression, in_mEndOfEnumerationExpression, inCompiler) ;
   const GGS_enumeratedCollectionCstListInExpAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
@@ -13490,13 +13489,11 @@ init_21__21_mEndsWithEllipsis_21__21_ (const GGS_forInstructionEnumeratedObjectE
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_enumeratedCollectionCstListInExpAST::
-enumeratedCollectionCstListInExpAST_init_21__21_mEndsWithEllipsis_21__21_ (const GGS_forInstructionEnumeratedObjectElementListAST & in_mElementList,
-                                                                           const GGS_bool & in_mEndsWithEllipsis,
-                                                                           const GGS_semanticExpressionAST & in_mEnumeratedExpression,
-                                                                           const GGS_location & in_mEndOfEnumerationExpression,
-                                                                           Compiler * /* inCompiler */) {
+enumeratedCollectionCstListInExpAST_init_21__21__21_ (const GGS_forInstructionEnumeratedObjectElementListAST & in_mElementList,
+                                                      const GGS_semanticExpressionAST & in_mEnumeratedExpression,
+                                                      const GGS_location & in_mEndOfEnumerationExpression,
+                                                      Compiler * /* inCompiler */) {
   mProperty_mElementList = in_mElementList ;
-  mProperty_mEndsWithEllipsis = in_mEndsWithEllipsis ;
   mProperty_mEnumeratedExpression = in_mEnumeratedExpression ;
   mProperty_mEndOfEnumerationExpression = in_mEndOfEnumerationExpression ;
 }
@@ -13510,13 +13507,12 @@ GGS_abstractEnumeratedCollectionAST (inSourcePtr) {
 //--------------------------------------------------------------------------------------------------
 
 GGS_enumeratedCollectionCstListInExpAST GGS_enumeratedCollectionCstListInExpAST::class_func_new (const GGS_forInstructionEnumeratedObjectElementListAST & in_mElementList,
-                                                                                                 const GGS_bool & in_mEndsWithEllipsis,
                                                                                                  const GGS_semanticExpressionAST & in_mEnumeratedExpression,
                                                                                                  const GGS_location & in_mEndOfEnumerationExpression,
                                                                                                  Compiler * inCompiler
                                                                                                  COMMA_LOCATION_ARGS) {
   GGS_enumeratedCollectionCstListInExpAST result ;
-  macroMyNew (result.mObjectPtr, cPtr_enumeratedCollectionCstListInExpAST (in_mElementList, in_mEndsWithEllipsis, in_mEnumeratedExpression, in_mEndOfEnumerationExpression,  inCompiler COMMA_THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_enumeratedCollectionCstListInExpAST (in_mElementList, in_mEnumeratedExpression, in_mEndOfEnumerationExpression,  inCompiler COMMA_THERE)) ;
   return result ;
 }
 
@@ -13529,18 +13525,6 @@ GGS_forInstructionEnumeratedObjectElementListAST GGS_enumeratedCollectionCstList
     cPtr_enumeratedCollectionCstListInExpAST * p = (cPtr_enumeratedCollectionCstListInExpAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_enumeratedCollectionCstListInExpAST) ;
     return p->mProperty_mElementList ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_bool GGS_enumeratedCollectionCstListInExpAST::readProperty_mEndsWithEllipsis (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_bool () ;
-  }else{
-    cPtr_enumeratedCollectionCstListInExpAST * p = (cPtr_enumeratedCollectionCstListInExpAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_enumeratedCollectionCstListInExpAST) ;
-    return p->mProperty_mEndsWithEllipsis ;
   }
 }
 
@@ -13575,7 +13559,6 @@ GGS_location GGS_enumeratedCollectionCstListInExpAST::readProperty_mEndOfEnumera
 cPtr_enumeratedCollectionCstListInExpAST::cPtr_enumeratedCollectionCstListInExpAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
 cPtr_abstractEnumeratedCollectionAST (inCompiler COMMA_THERE),
 mProperty_mElementList (),
-mProperty_mEndsWithEllipsis (),
 mProperty_mEnumeratedExpression (),
 mProperty_mEndOfEnumerationExpression () {
 }
@@ -13583,18 +13566,15 @@ mProperty_mEndOfEnumerationExpression () {
 //--------------------------------------------------------------------------------------------------
 
 cPtr_enumeratedCollectionCstListInExpAST::cPtr_enumeratedCollectionCstListInExpAST (const GGS_forInstructionEnumeratedObjectElementListAST & in_mElementList,
-                                                                                    const GGS_bool & in_mEndsWithEllipsis,
                                                                                     const GGS_semanticExpressionAST & in_mEnumeratedExpression,
                                                                                     const GGS_location & in_mEndOfEnumerationExpression,
                                                                                     Compiler * inCompiler
                                                                                     COMMA_LOCATION_ARGS) :
 cPtr_abstractEnumeratedCollectionAST (inCompiler COMMA_THERE),
 mProperty_mElementList (),
-mProperty_mEndsWithEllipsis (),
 mProperty_mEnumeratedExpression (),
 mProperty_mEndOfEnumerationExpression () {
   mProperty_mElementList = in_mElementList ;
-  mProperty_mEndsWithEllipsis = in_mEndsWithEllipsis ;
   mProperty_mEnumeratedExpression = in_mEnumeratedExpression ;
   mProperty_mEndOfEnumerationExpression = in_mEndOfEnumerationExpression ;
 }
@@ -13610,8 +13590,6 @@ void cPtr_enumeratedCollectionCstListInExpAST::description (String & ioString,
   ioString.appendCString ("[@enumeratedCollectionCstListInExpAST:") ;
   mProperty_mElementList.description (ioString, inIndentation+1) ;
   ioString.appendCString (", ") ;
-  mProperty_mEndsWithEllipsis.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
   mProperty_mEnumeratedExpression.description (ioString, inIndentation+1) ;
   ioString.appendCString (", ") ;
   mProperty_mEndOfEnumerationExpression.description (ioString, inIndentation+1) ;
@@ -13622,7 +13600,7 @@ void cPtr_enumeratedCollectionCstListInExpAST::description (String & ioString,
 
 acPtr_class * cPtr_enumeratedCollectionCstListInExpAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_enumeratedCollectionCstListInExpAST (mProperty_mElementList, mProperty_mEndsWithEllipsis, mProperty_mEnumeratedExpression, mProperty_mEndOfEnumerationExpression, inCompiler COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_enumeratedCollectionCstListInExpAST (mProperty_mElementList, mProperty_mEnumeratedExpression, mProperty_mEndOfEnumerationExpression, inCompiler COMMA_THERE)) ;
   return ptr ;
 }
 
@@ -13633,7 +13611,6 @@ acPtr_class * cPtr_enumeratedCollectionCstListInExpAST::duplicate (Compiler * in
   void cPtr_enumeratedCollectionCstListInExpAST::printNonNullClassInstanceProperties (void) const {
     cPtr_abstractEnumeratedCollectionAST::printNonNullClassInstanceProperties () ;
     mProperty_mElementList.printNonNullClassInstanceProperties ("mElementList") ;
-    mProperty_mEndsWithEllipsis.printNonNullClassInstanceProperties ("mEndsWithEllipsis") ;
     mProperty_mEnumeratedExpression.printNonNullClassInstanceProperties ("mEnumeratedExpression") ;
     mProperty_mEndOfEnumerationExpression.printNonNullClassInstanceProperties ("mEndOfEnumerationExpression") ;
   }
@@ -14411,6 +14388,128 @@ GGS_forInstructionEnumeratedObjectListAST GGS_forInstructionEnumeratedObjectList
       result = *p ;
     }else{
       inCompiler->castError ("forInstructionEnumeratedObjectListAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GGS_forInstructionAST_2E_weak::objectCompare (const GGS_forInstructionAST_2E_weak & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    cPtr_weakReference_proxy * myPtr = mProxyPtr ;
+    const size_t myObjectPtr = size_t (myPtr) ;
+    cPtr_weakReference_proxy * operandPtr = inOperand.mProxyPtr ;
+    const size_t operandObjectPtr = size_t (operandPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_forInstructionAST_2E_weak::GGS_forInstructionAST_2E_weak (void) :
+GGS_semanticInstructionAST_2E_weak () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_forInstructionAST_2E_weak & GGS_forInstructionAST_2E_weak::operator = (const GGS_forInstructionAST & inSource) {
+  cPtr_weakReference_proxy * proxyPtr = nullptr ;
+  acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
+  if (p != nullptr) {
+    proxyPtr = p->getProxy () ;
+  }
+  macroAssignSharedObject (mProxyPtr, proxyPtr) ;
+  return *this ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_forInstructionAST_2E_weak::GGS_forInstructionAST_2E_weak (const GGS_forInstructionAST & inSource) :
+GGS_semanticInstructionAST_2E_weak (inSource) {
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_forInstructionAST_2E_weak GGS_forInstructionAST_2E_weak::class_func_nil (LOCATION_ARGS) {
+  GGS_forInstructionAST_2E_weak result ;
+  macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_forInstructionAST GGS_forInstructionAST_2E_weak::unwrappedValue (void) const {
+  GGS_forInstructionAST result ;
+  if (isValid ()) {
+    const cPtr_forInstructionAST * p = (cPtr_forInstructionAST *) ptr () ;
+    if (nullptr != p) {
+      result = GGS_forInstructionAST (p) ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_forInstructionAST GGS_forInstructionAST_2E_weak::bang_forInstructionAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  GGS_forInstructionAST result ;
+  if (mProxyPtr != nullptr) {
+    acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
+    if (strongPtr == nullptr) {
+      inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
+    }else{
+      macroValidSharedObject (strongPtr, cPtr_forInstructionAST) ;
+      result = GGS_forInstructionAST ((cPtr_forInstructionAST *) strongPtr) ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @forInstructionAST.weak generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_forInstructionAST_2E_weak ("forInstructionAST.weak",
+                                                                              & kTypeDescriptor_GALGAS_semanticInstructionAST_2E_weak) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_forInstructionAST_2E_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_forInstructionAST_2E_weak ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_forInstructionAST_2E_weak::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_forInstructionAST_2E_weak (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_forInstructionAST_2E_weak GGS_forInstructionAST_2E_weak::extractObject (const GGS_object & inObject,
+                                                                            Compiler * inCompiler
+                                                                            COMMA_LOCATION_ARGS) {
+  GGS_forInstructionAST_2E_weak result ;
+  const GGS_forInstructionAST_2E_weak * p = (const GGS_forInstructionAST_2E_weak *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_forInstructionAST_2E_weak *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("forInstructionAST.weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
