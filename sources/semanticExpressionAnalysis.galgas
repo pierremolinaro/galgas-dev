@@ -69,7 +69,6 @@ struct @analysisContext {
   public let @string selfObjectCppName %initArgLabel
   public let @selfAvailability selfAvailability %initArgLabel
   public let @string selfObjectCppPrefixForAccessingProperty %initArgLabel // i.e. "ioObject->", ...
-  public let @bool requiresSelfForAccessingProperty %initArgLabel
 }
 
 //--------------------------------------------------------------------------------------------------

@@ -12231,18 +12231,17 @@ GGS_semanticDeclarationAST () {
 //--- Synthetized initializer ----------------------------------------------------------------------
 
 GGS_overridingExtensionSetterAST GGS_overridingExtensionSetterAST::
-init_21_isPredefined_21_requiresSelfForAccessingProperty_21__21__21__21__21_ (const GGS_bool & in_isPredefined,
-                                                                              const GGS_bool & in_requiresSelfForAccessingProperty,
-                                                                              const GGS_lstring & in_mTypeName,
-                                                                              const GGS_lstring & in_mOverridingExtensionSetterName,
-                                                                              const GGS_formalParameterListAST & in_mOverridingExtensionSetterFormalParameterList,
-                                                                              const GGS_semanticInstructionListAST & in_mOverridingExtensionSetterInstructionList,
-                                                                              const GGS_location & in_mEndOfSetterDeclarationLocation,
-                                                                              Compiler * inCompiler
-                                                                              COMMA_LOCATION_ARGS) {
+init_21_isPredefined_21__21__21__21__21_ (const GGS_bool & in_isPredefined,
+                                          const GGS_lstring & in_mTypeName,
+                                          const GGS_lstring & in_mOverridingExtensionSetterName,
+                                          const GGS_formalParameterListAST & in_mOverridingExtensionSetterFormalParameterList,
+                                          const GGS_semanticInstructionListAST & in_mOverridingExtensionSetterInstructionList,
+                                          const GGS_location & in_mEndOfSetterDeclarationLocation,
+                                          Compiler * inCompiler
+                                          COMMA_LOCATION_ARGS) {
   cPtr_overridingExtensionSetterAST * object = nullptr ;
   macroMyNew (object, cPtr_overridingExtensionSetterAST (inCompiler COMMA_THERE)) ;
-  object->overridingExtensionSetterAST_init_21_isPredefined_21_requiresSelfForAccessingProperty_21__21__21__21__21_ (in_isPredefined, in_requiresSelfForAccessingProperty, in_mTypeName, in_mOverridingExtensionSetterName, in_mOverridingExtensionSetterFormalParameterList, in_mOverridingExtensionSetterInstructionList, in_mEndOfSetterDeclarationLocation, inCompiler) ;
+  object->overridingExtensionSetterAST_init_21_isPredefined_21__21__21__21__21_ (in_isPredefined, in_mTypeName, in_mOverridingExtensionSetterName, in_mOverridingExtensionSetterFormalParameterList, in_mOverridingExtensionSetterInstructionList, in_mEndOfSetterDeclarationLocation, inCompiler) ;
   const GGS_overridingExtensionSetterAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
@@ -12251,16 +12250,14 @@ init_21_isPredefined_21_requiresSelfForAccessingProperty_21__21__21__21__21_ (co
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_overridingExtensionSetterAST::
-overridingExtensionSetterAST_init_21_isPredefined_21_requiresSelfForAccessingProperty_21__21__21__21__21_ (const GGS_bool & in_isPredefined,
-                                                                                                           const GGS_bool & in_requiresSelfForAccessingProperty,
-                                                                                                           const GGS_lstring & in_mTypeName,
-                                                                                                           const GGS_lstring & in_mOverridingExtensionSetterName,
-                                                                                                           const GGS_formalParameterListAST & in_mOverridingExtensionSetterFormalParameterList,
-                                                                                                           const GGS_semanticInstructionListAST & in_mOverridingExtensionSetterInstructionList,
-                                                                                                           const GGS_location & in_mEndOfSetterDeclarationLocation,
-                                                                                                           Compiler * /* inCompiler */) {
+overridingExtensionSetterAST_init_21_isPredefined_21__21__21__21__21_ (const GGS_bool & in_isPredefined,
+                                                                       const GGS_lstring & in_mTypeName,
+                                                                       const GGS_lstring & in_mOverridingExtensionSetterName,
+                                                                       const GGS_formalParameterListAST & in_mOverridingExtensionSetterFormalParameterList,
+                                                                       const GGS_semanticInstructionListAST & in_mOverridingExtensionSetterInstructionList,
+                                                                       const GGS_location & in_mEndOfSetterDeclarationLocation,
+                                                                       Compiler * /* inCompiler */) {
   mProperty_isPredefined = in_isPredefined ;
-  mProperty_requiresSelfForAccessingProperty = in_requiresSelfForAccessingProperty ;
   mProperty_mTypeName = in_mTypeName ;
   mProperty_mOverridingExtensionSetterName = in_mOverridingExtensionSetterName ;
   mProperty_mOverridingExtensionSetterFormalParameterList = in_mOverridingExtensionSetterFormalParameterList ;
@@ -12277,7 +12274,6 @@ GGS_semanticDeclarationAST (inSourcePtr) {
 //--------------------------------------------------------------------------------------------------
 
 GGS_overridingExtensionSetterAST GGS_overridingExtensionSetterAST::class_func_new (const GGS_bool & in_isPredefined,
-                                                                                   const GGS_bool & in_requiresSelfForAccessingProperty,
                                                                                    const GGS_lstring & in_mTypeName,
                                                                                    const GGS_lstring & in_mOverridingExtensionSetterName,
                                                                                    const GGS_formalParameterListAST & in_mOverridingExtensionSetterFormalParameterList,
@@ -12286,20 +12282,8 @@ GGS_overridingExtensionSetterAST GGS_overridingExtensionSetterAST::class_func_ne
                                                                                    Compiler * inCompiler
                                                                                    COMMA_LOCATION_ARGS) {
   GGS_overridingExtensionSetterAST result ;
-  macroMyNew (result.mObjectPtr, cPtr_overridingExtensionSetterAST (in_isPredefined, in_requiresSelfForAccessingProperty, in_mTypeName, in_mOverridingExtensionSetterName, in_mOverridingExtensionSetterFormalParameterList, in_mOverridingExtensionSetterInstructionList, in_mEndOfSetterDeclarationLocation,  inCompiler COMMA_THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_overridingExtensionSetterAST (in_isPredefined, in_mTypeName, in_mOverridingExtensionSetterName, in_mOverridingExtensionSetterFormalParameterList, in_mOverridingExtensionSetterInstructionList, in_mEndOfSetterDeclarationLocation,  inCompiler COMMA_THERE)) ;
   return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_bool GGS_overridingExtensionSetterAST::readProperty_requiresSelfForAccessingProperty (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_bool () ;
-  }else{
-    cPtr_overridingExtensionSetterAST * p = (cPtr_overridingExtensionSetterAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_overridingExtensionSetterAST) ;
-    return p->mProperty_requiresSelfForAccessingProperty ;
-  }
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -12368,7 +12352,6 @@ GGS_location GGS_overridingExtensionSetterAST::readProperty_mEndOfSetterDeclarat
 
 cPtr_overridingExtensionSetterAST::cPtr_overridingExtensionSetterAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
 cPtr_semanticDeclarationAST (inCompiler COMMA_THERE),
-mProperty_requiresSelfForAccessingProperty (),
 mProperty_mTypeName (),
 mProperty_mOverridingExtensionSetterName (),
 mProperty_mOverridingExtensionSetterFormalParameterList (),
@@ -12379,7 +12362,6 @@ mProperty_mEndOfSetterDeclarationLocation () {
 //--------------------------------------------------------------------------------------------------
 
 cPtr_overridingExtensionSetterAST::cPtr_overridingExtensionSetterAST (const GGS_bool & in_isPredefined,
-                                                                      const GGS_bool & in_requiresSelfForAccessingProperty,
                                                                       const GGS_lstring & in_mTypeName,
                                                                       const GGS_lstring & in_mOverridingExtensionSetterName,
                                                                       const GGS_formalParameterListAST & in_mOverridingExtensionSetterFormalParameterList,
@@ -12388,14 +12370,12 @@ cPtr_overridingExtensionSetterAST::cPtr_overridingExtensionSetterAST (const GGS_
                                                                       Compiler * inCompiler
                                                                       COMMA_LOCATION_ARGS) :
 cPtr_semanticDeclarationAST (in_isPredefined, inCompiler COMMA_THERE),
-mProperty_requiresSelfForAccessingProperty (),
 mProperty_mTypeName (),
 mProperty_mOverridingExtensionSetterName (),
 mProperty_mOverridingExtensionSetterFormalParameterList (),
 mProperty_mOverridingExtensionSetterInstructionList (),
 mProperty_mEndOfSetterDeclarationLocation () {
   mProperty_isPredefined = in_isPredefined ;
-  mProperty_requiresSelfForAccessingProperty = in_requiresSelfForAccessingProperty ;
   mProperty_mTypeName = in_mTypeName ;
   mProperty_mOverridingExtensionSetterName = in_mOverridingExtensionSetterName ;
   mProperty_mOverridingExtensionSetterFormalParameterList = in_mOverridingExtensionSetterFormalParameterList ;
@@ -12414,8 +12394,6 @@ void cPtr_overridingExtensionSetterAST::description (String & ioString,
   ioString.appendCString ("[@overridingExtensionSetterAST:") ;
   mProperty_isPredefined.description (ioString, inIndentation+1) ;
   ioString.appendCString (", ") ;
-  mProperty_requiresSelfForAccessingProperty.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
   mProperty_mTypeName.description (ioString, inIndentation+1) ;
   ioString.appendCString (", ") ;
   mProperty_mOverridingExtensionSetterName.description (ioString, inIndentation+1) ;
@@ -12432,7 +12410,7 @@ void cPtr_overridingExtensionSetterAST::description (String & ioString,
 
 acPtr_class * cPtr_overridingExtensionSetterAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_overridingExtensionSetterAST (mProperty_isPredefined, mProperty_requiresSelfForAccessingProperty, mProperty_mTypeName, mProperty_mOverridingExtensionSetterName, mProperty_mOverridingExtensionSetterFormalParameterList, mProperty_mOverridingExtensionSetterInstructionList, mProperty_mEndOfSetterDeclarationLocation, inCompiler COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_overridingExtensionSetterAST (mProperty_isPredefined, mProperty_mTypeName, mProperty_mOverridingExtensionSetterName, mProperty_mOverridingExtensionSetterFormalParameterList, mProperty_mOverridingExtensionSetterInstructionList, mProperty_mEndOfSetterDeclarationLocation, inCompiler COMMA_THERE)) ;
   return ptr ;
 }
 
@@ -12442,7 +12420,6 @@ acPtr_class * cPtr_overridingExtensionSetterAST::duplicate (Compiler * inCompile
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_overridingExtensionSetterAST::printNonNullClassInstanceProperties (void) const {
     cPtr_semanticDeclarationAST::printNonNullClassInstanceProperties () ;
-    mProperty_requiresSelfForAccessingProperty.printNonNullClassInstanceProperties ("requiresSelfForAccessingProperty") ;
     mProperty_mTypeName.printNonNullClassInstanceProperties ("mTypeName") ;
     mProperty_mOverridingExtensionSetterName.printNonNullClassInstanceProperties ("mOverridingExtensionSetterName") ;
     mProperty_mOverridingExtensionSetterFormalParameterList.printNonNullClassInstanceProperties ("mOverridingExtensionSetterFormalParameterList") ;

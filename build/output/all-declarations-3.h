@@ -14928,8 +14928,6 @@ class GGS_extensionGetterAST : public GGS_semanticDeclarationAST {
   public: GGS_extensionGetterAST (const class cPtr_extensionGetterAST * inSourcePtr) ;
 
 //--------------------------------- Property access
-  public: class GGS_bool readProperty_requiresSelfForAccessingProperty (void) const ;
-
   public: class GGS_lstring readProperty_mTypeName (void) const ;
 
   public: class GGS_lstring readProperty_mExtensionGetterName (void) const ;
@@ -14947,17 +14945,16 @@ class GGS_extensionGetterAST : public GGS_semanticDeclarationAST {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GGS_extensionGetterAST init_21_isPredefined_21_requiresSelfForAccessingProperty_21__21__21__21__21__21__21_ (const class GGS_bool & inOperand0,
-                                                                                                                              const class GGS_bool & inOperand1,
-                                                                                                                              const class GGS_lstring & inOperand2,
-                                                                                                                              const class GGS_lstring & inOperand3,
-                                                                                                                              const class GGS_formalInputParameterListAST & inOperand4,
-                                                                                                                              const class GGS_lstring & inOperand5,
-                                                                                                                              const class GGS_lstring & inOperand6,
-                                                                                                                              const class GGS_semanticInstructionListAST & inOperand7,
-                                                                                                                              const class GGS_location & inOperand8,
-                                                                                                                              Compiler * inCompiler
-                                                                                                                              COMMA_LOCATION_ARGS) ;
+  public: static GGS_extensionGetterAST init_21_isPredefined_21__21__21__21__21__21__21_ (const class GGS_bool & inOperand0,
+                                                                                          const class GGS_lstring & inOperand1,
+                                                                                          const class GGS_lstring & inOperand2,
+                                                                                          const class GGS_formalInputParameterListAST & inOperand3,
+                                                                                          const class GGS_lstring & inOperand4,
+                                                                                          const class GGS_lstring & inOperand5,
+                                                                                          const class GGS_semanticInstructionListAST & inOperand6,
+                                                                                          const class GGS_location & inOperand7,
+                                                                                          Compiler * inCompiler
+                                                                                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -14969,14 +14966,13 @@ class GGS_extensionGetterAST : public GGS_semanticDeclarationAST {
 
 //--------------------------------- GALGAS class functions
   public: static class GGS_extensionGetterAST class_func_new (const class GGS_bool & inOperand0,
-                                                              const class GGS_bool & inOperand1,
+                                                              const class GGS_lstring & inOperand1,
                                                               const class GGS_lstring & inOperand2,
-                                                              const class GGS_lstring & inOperand3,
-                                                              const class GGS_formalInputParameterListAST & inOperand4,
+                                                              const class GGS_formalInputParameterListAST & inOperand3,
+                                                              const class GGS_lstring & inOperand4,
                                                               const class GGS_lstring & inOperand5,
-                                                              const class GGS_lstring & inOperand6,
-                                                              const class GGS_semanticInstructionListAST & inOperand7,
-                                                              const class GGS_location & inOperand8,
+                                                              const class GGS_semanticInstructionListAST & inOperand6,
+                                                              const class GGS_location & inOperand7,
                                                               class Compiler * inCompiler
                                                               COMMA_LOCATION_ARGS) ;
 
@@ -15013,16 +15009,15 @@ class cPtr_extensionGetterAST : public cPtr_semanticDeclarationAST {
   #endif
 
 //--------------------------------- Initializers
-  public: void extensionGetterAST_init_21_isPredefined_21_requiresSelfForAccessingProperty_21__21__21__21__21__21__21_ (const class GGS_bool & inOperand0,
-                                                                                                                        const class GGS_bool & inOperand1,
-                                                                                                                        const class GGS_lstring & inOperand2,
-                                                                                                                        const class GGS_lstring & inOperand3,
-                                                                                                                        const class GGS_formalInputParameterListAST & inOperand4,
-                                                                                                                        const class GGS_lstring & inOperand5,
-                                                                                                                        const class GGS_lstring & inOperand6,
-                                                                                                                        const class GGS_semanticInstructionListAST & inOperand7,
-                                                                                                                        const class GGS_location & inOperand8,
-                                                                                                                        Compiler * inCompiler) ;
+  public: void extensionGetterAST_init_21_isPredefined_21__21__21__21__21__21__21_ (const class GGS_bool & inOperand0,
+                                                                                    const class GGS_lstring & inOperand1,
+                                                                                    const class GGS_lstring & inOperand2,
+                                                                                    const class GGS_formalInputParameterListAST & inOperand3,
+                                                                                    const class GGS_lstring & inOperand4,
+                                                                                    const class GGS_lstring & inOperand5,
+                                                                                    const class GGS_semanticInstructionListAST & inOperand6,
+                                                                                    const class GGS_location & inOperand7,
+                                                                                    Compiler * inCompiler) ;
 
 
 //--- Extension getter keyRepresentation
@@ -15074,7 +15069,6 @@ class cPtr_extensionGetterAST : public cPtr_semanticDeclarationAST {
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
-  public: GGS_bool mProperty_requiresSelfForAccessingProperty ;
   public: GGS_lstring mProperty_mTypeName ;
   public: GGS_lstring mProperty_mExtensionGetterName ;
   public: GGS_formalInputParameterListAST mProperty_mExtensionGetterFormalInputParameterList ;
@@ -15089,7 +15083,6 @@ class cPtr_extensionGetterAST : public cPtr_semanticDeclarationAST {
 
 //--- Constructor
   public: cPtr_extensionGetterAST (const GGS_bool & in_isPredefined,
-                                   const GGS_bool & in_requiresSelfForAccessingProperty,
                                    const GGS_lstring & in_mTypeName,
                                    const GGS_lstring & in_mExtensionGetterName,
                                    const GGS_formalInputParameterListAST & in_mExtensionGetterFormalInputParameterList,
@@ -15125,8 +15118,6 @@ class GGS_extensionMethodAST : public GGS_semanticDeclarationAST {
   public: GGS_extensionMethodAST (const class cPtr_extensionMethodAST * inSourcePtr) ;
 
 //--------------------------------- Property access
-  public: class GGS_bool readProperty_requiresSelfForAccessingProperty (void) const ;
-
   public: class GGS_lstring readProperty_mTypeName (void) const ;
 
   public: class GGS_lstring readProperty_mExtensionMethodName (void) const ;
@@ -15140,15 +15131,14 @@ class GGS_extensionMethodAST : public GGS_semanticDeclarationAST {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GGS_extensionMethodAST init_21_isPredefined_21_requiresSelfForAccessingProperty_21__21__21__21__21_ (const class GGS_bool & inOperand0,
-                                                                                                                      const class GGS_bool & inOperand1,
-                                                                                                                      const class GGS_lstring & inOperand2,
-                                                                                                                      const class GGS_lstring & inOperand3,
-                                                                                                                      const class GGS_formalParameterListAST & inOperand4,
-                                                                                                                      const class GGS_semanticInstructionListAST & inOperand5,
-                                                                                                                      const class GGS_location & inOperand6,
-                                                                                                                      Compiler * inCompiler
-                                                                                                                      COMMA_LOCATION_ARGS) ;
+  public: static GGS_extensionMethodAST init_21_isPredefined_21__21__21__21__21_ (const class GGS_bool & inOperand0,
+                                                                                  const class GGS_lstring & inOperand1,
+                                                                                  const class GGS_lstring & inOperand2,
+                                                                                  const class GGS_formalParameterListAST & inOperand3,
+                                                                                  const class GGS_semanticInstructionListAST & inOperand4,
+                                                                                  const class GGS_location & inOperand5,
+                                                                                  Compiler * inCompiler
+                                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -15160,12 +15150,11 @@ class GGS_extensionMethodAST : public GGS_semanticDeclarationAST {
 
 //--------------------------------- GALGAS class functions
   public: static class GGS_extensionMethodAST class_func_new (const class GGS_bool & inOperand0,
-                                                              const class GGS_bool & inOperand1,
+                                                              const class GGS_lstring & inOperand1,
                                                               const class GGS_lstring & inOperand2,
-                                                              const class GGS_lstring & inOperand3,
-                                                              const class GGS_formalParameterListAST & inOperand4,
-                                                              const class GGS_semanticInstructionListAST & inOperand5,
-                                                              const class GGS_location & inOperand6,
+                                                              const class GGS_formalParameterListAST & inOperand3,
+                                                              const class GGS_semanticInstructionListAST & inOperand4,
+                                                              const class GGS_location & inOperand5,
                                                               class Compiler * inCompiler
                                                               COMMA_LOCATION_ARGS) ;
 
@@ -15202,14 +15191,13 @@ class cPtr_extensionMethodAST : public cPtr_semanticDeclarationAST {
   #endif
 
 //--------------------------------- Initializers
-  public: void extensionMethodAST_init_21_isPredefined_21_requiresSelfForAccessingProperty_21__21__21__21__21_ (const class GGS_bool & inOperand0,
-                                                                                                                const class GGS_bool & inOperand1,
-                                                                                                                const class GGS_lstring & inOperand2,
-                                                                                                                const class GGS_lstring & inOperand3,
-                                                                                                                const class GGS_formalParameterListAST & inOperand4,
-                                                                                                                const class GGS_semanticInstructionListAST & inOperand5,
-                                                                                                                const class GGS_location & inOperand6,
-                                                                                                                Compiler * inCompiler) ;
+  public: void extensionMethodAST_init_21_isPredefined_21__21__21__21__21_ (const class GGS_bool & inOperand0,
+                                                                            const class GGS_lstring & inOperand1,
+                                                                            const class GGS_lstring & inOperand2,
+                                                                            const class GGS_formalParameterListAST & inOperand3,
+                                                                            const class GGS_semanticInstructionListAST & inOperand4,
+                                                                            const class GGS_location & inOperand5,
+                                                                            Compiler * inCompiler) ;
 
 
 //--- Extension getter keyRepresentation
@@ -15261,7 +15249,6 @@ class cPtr_extensionMethodAST : public cPtr_semanticDeclarationAST {
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
-  public: GGS_bool mProperty_requiresSelfForAccessingProperty ;
   public: GGS_lstring mProperty_mTypeName ;
   public: GGS_lstring mProperty_mExtensionMethodName ;
   public: GGS_formalParameterListAST mProperty_mExtensionMethodFormalParameterList ;
@@ -15274,7 +15261,6 @@ class cPtr_extensionMethodAST : public cPtr_semanticDeclarationAST {
 
 //--- Constructor
   public: cPtr_extensionMethodAST (const GGS_bool & in_isPredefined,
-                                   const GGS_bool & in_requiresSelfForAccessingProperty,
                                    const GGS_lstring & in_mTypeName,
                                    const GGS_lstring & in_mExtensionMethodName,
                                    const GGS_formalParameterListAST & in_mExtensionMethodFormalParameterList,
@@ -18261,8 +18247,6 @@ class GGS_overridingExtensionMethodAST : public GGS_semanticDeclarationAST {
   public: GGS_overridingExtensionMethodAST (const class cPtr_overridingExtensionMethodAST * inSourcePtr) ;
 
 //--------------------------------- Property access
-  public: class GGS_bool readProperty_requiresSelfForAccessingProperty (void) const ;
-
   public: class GGS_lstring readProperty_mTypeName (void) const ;
 
   public: class GGS_lstring readProperty_mOverridingExtensionMethodName (void) const ;
@@ -18276,15 +18260,14 @@ class GGS_overridingExtensionMethodAST : public GGS_semanticDeclarationAST {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GGS_overridingExtensionMethodAST init_21_isPredefined_21_requiresSelfForAccessingProperty_21__21__21__21__21_ (const class GGS_bool & inOperand0,
-                                                                                                                                const class GGS_bool & inOperand1,
-                                                                                                                                const class GGS_lstring & inOperand2,
-                                                                                                                                const class GGS_lstring & inOperand3,
-                                                                                                                                const class GGS_formalParameterListAST & inOperand4,
-                                                                                                                                const class GGS_semanticInstructionListAST & inOperand5,
-                                                                                                                                const class GGS_location & inOperand6,
-                                                                                                                                Compiler * inCompiler
-                                                                                                                                COMMA_LOCATION_ARGS) ;
+  public: static GGS_overridingExtensionMethodAST init_21_isPredefined_21__21__21__21__21_ (const class GGS_bool & inOperand0,
+                                                                                            const class GGS_lstring & inOperand1,
+                                                                                            const class GGS_lstring & inOperand2,
+                                                                                            const class GGS_formalParameterListAST & inOperand3,
+                                                                                            const class GGS_semanticInstructionListAST & inOperand4,
+                                                                                            const class GGS_location & inOperand5,
+                                                                                            Compiler * inCompiler
+                                                                                            COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -18296,12 +18279,11 @@ class GGS_overridingExtensionMethodAST : public GGS_semanticDeclarationAST {
 
 //--------------------------------- GALGAS class functions
   public: static class GGS_overridingExtensionMethodAST class_func_new (const class GGS_bool & inOperand0,
-                                                                        const class GGS_bool & inOperand1,
+                                                                        const class GGS_lstring & inOperand1,
                                                                         const class GGS_lstring & inOperand2,
-                                                                        const class GGS_lstring & inOperand3,
-                                                                        const class GGS_formalParameterListAST & inOperand4,
-                                                                        const class GGS_semanticInstructionListAST & inOperand5,
-                                                                        const class GGS_location & inOperand6,
+                                                                        const class GGS_formalParameterListAST & inOperand3,
+                                                                        const class GGS_semanticInstructionListAST & inOperand4,
+                                                                        const class GGS_location & inOperand5,
                                                                         class Compiler * inCompiler
                                                                         COMMA_LOCATION_ARGS) ;
 
@@ -18338,14 +18320,13 @@ class cPtr_overridingExtensionMethodAST : public cPtr_semanticDeclarationAST {
   #endif
 
 //--------------------------------- Initializers
-  public: void overridingExtensionMethodAST_init_21_isPredefined_21_requiresSelfForAccessingProperty_21__21__21__21__21_ (const class GGS_bool & inOperand0,
-                                                                                                                          const class GGS_bool & inOperand1,
-                                                                                                                          const class GGS_lstring & inOperand2,
-                                                                                                                          const class GGS_lstring & inOperand3,
-                                                                                                                          const class GGS_formalParameterListAST & inOperand4,
-                                                                                                                          const class GGS_semanticInstructionListAST & inOperand5,
-                                                                                                                          const class GGS_location & inOperand6,
-                                                                                                                          Compiler * inCompiler) ;
+  public: void overridingExtensionMethodAST_init_21_isPredefined_21__21__21__21__21_ (const class GGS_bool & inOperand0,
+                                                                                      const class GGS_lstring & inOperand1,
+                                                                                      const class GGS_lstring & inOperand2,
+                                                                                      const class GGS_formalParameterListAST & inOperand3,
+                                                                                      const class GGS_semanticInstructionListAST & inOperand4,
+                                                                                      const class GGS_location & inOperand5,
+                                                                                      Compiler * inCompiler) ;
 
 
 //--- Extension getter keyRepresentation
@@ -18397,7 +18378,6 @@ class cPtr_overridingExtensionMethodAST : public cPtr_semanticDeclarationAST {
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
-  public: GGS_bool mProperty_requiresSelfForAccessingProperty ;
   public: GGS_lstring mProperty_mTypeName ;
   public: GGS_lstring mProperty_mOverridingExtensionMethodName ;
   public: GGS_formalParameterListAST mProperty_mOverridingExtensionMethodFormalParameterList ;
@@ -18410,7 +18390,6 @@ class cPtr_overridingExtensionMethodAST : public cPtr_semanticDeclarationAST {
 
 //--- Constructor
   public: cPtr_overridingExtensionMethodAST (const GGS_bool & in_isPredefined,
-                                             const GGS_bool & in_requiresSelfForAccessingProperty,
                                              const GGS_lstring & in_mTypeName,
                                              const GGS_lstring & in_mOverridingExtensionMethodName,
                                              const GGS_formalParameterListAST & in_mOverridingExtensionMethodFormalParameterList,
@@ -18444,8 +18423,6 @@ class GGS_overridingExtensionSetterAST : public GGS_semanticDeclarationAST {
   public: GGS_overridingExtensionSetterAST (const class cPtr_overridingExtensionSetterAST * inSourcePtr) ;
 
 //--------------------------------- Property access
-  public: class GGS_bool readProperty_requiresSelfForAccessingProperty (void) const ;
-
   public: class GGS_lstring readProperty_mTypeName (void) const ;
 
   public: class GGS_lstring readProperty_mOverridingExtensionSetterName (void) const ;
@@ -18459,15 +18436,14 @@ class GGS_overridingExtensionSetterAST : public GGS_semanticDeclarationAST {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GGS_overridingExtensionSetterAST init_21_isPredefined_21_requiresSelfForAccessingProperty_21__21__21__21__21_ (const class GGS_bool & inOperand0,
-                                                                                                                                const class GGS_bool & inOperand1,
-                                                                                                                                const class GGS_lstring & inOperand2,
-                                                                                                                                const class GGS_lstring & inOperand3,
-                                                                                                                                const class GGS_formalParameterListAST & inOperand4,
-                                                                                                                                const class GGS_semanticInstructionListAST & inOperand5,
-                                                                                                                                const class GGS_location & inOperand6,
-                                                                                                                                Compiler * inCompiler
-                                                                                                                                COMMA_LOCATION_ARGS) ;
+  public: static GGS_overridingExtensionSetterAST init_21_isPredefined_21__21__21__21__21_ (const class GGS_bool & inOperand0,
+                                                                                            const class GGS_lstring & inOperand1,
+                                                                                            const class GGS_lstring & inOperand2,
+                                                                                            const class GGS_formalParameterListAST & inOperand3,
+                                                                                            const class GGS_semanticInstructionListAST & inOperand4,
+                                                                                            const class GGS_location & inOperand5,
+                                                                                            Compiler * inCompiler
+                                                                                            COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -18479,12 +18455,11 @@ class GGS_overridingExtensionSetterAST : public GGS_semanticDeclarationAST {
 
 //--------------------------------- GALGAS class functions
   public: static class GGS_overridingExtensionSetterAST class_func_new (const class GGS_bool & inOperand0,
-                                                                        const class GGS_bool & inOperand1,
+                                                                        const class GGS_lstring & inOperand1,
                                                                         const class GGS_lstring & inOperand2,
-                                                                        const class GGS_lstring & inOperand3,
-                                                                        const class GGS_formalParameterListAST & inOperand4,
-                                                                        const class GGS_semanticInstructionListAST & inOperand5,
-                                                                        const class GGS_location & inOperand6,
+                                                                        const class GGS_formalParameterListAST & inOperand3,
+                                                                        const class GGS_semanticInstructionListAST & inOperand4,
+                                                                        const class GGS_location & inOperand5,
                                                                         class Compiler * inCompiler
                                                                         COMMA_LOCATION_ARGS) ;
 
@@ -18521,14 +18496,13 @@ class cPtr_overridingExtensionSetterAST : public cPtr_semanticDeclarationAST {
   #endif
 
 //--------------------------------- Initializers
-  public: void overridingExtensionSetterAST_init_21_isPredefined_21_requiresSelfForAccessingProperty_21__21__21__21__21_ (const class GGS_bool & inOperand0,
-                                                                                                                          const class GGS_bool & inOperand1,
-                                                                                                                          const class GGS_lstring & inOperand2,
-                                                                                                                          const class GGS_lstring & inOperand3,
-                                                                                                                          const class GGS_formalParameterListAST & inOperand4,
-                                                                                                                          const class GGS_semanticInstructionListAST & inOperand5,
-                                                                                                                          const class GGS_location & inOperand6,
-                                                                                                                          Compiler * inCompiler) ;
+  public: void overridingExtensionSetterAST_init_21_isPredefined_21__21__21__21__21_ (const class GGS_bool & inOperand0,
+                                                                                      const class GGS_lstring & inOperand1,
+                                                                                      const class GGS_lstring & inOperand2,
+                                                                                      const class GGS_formalParameterListAST & inOperand3,
+                                                                                      const class GGS_semanticInstructionListAST & inOperand4,
+                                                                                      const class GGS_location & inOperand5,
+                                                                                      Compiler * inCompiler) ;
 
 
 //--- Extension getter keyRepresentation
@@ -18580,7 +18554,6 @@ class cPtr_overridingExtensionSetterAST : public cPtr_semanticDeclarationAST {
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
-  public: GGS_bool mProperty_requiresSelfForAccessingProperty ;
   public: GGS_lstring mProperty_mTypeName ;
   public: GGS_lstring mProperty_mOverridingExtensionSetterName ;
   public: GGS_formalParameterListAST mProperty_mOverridingExtensionSetterFormalParameterList ;
@@ -18593,7 +18566,6 @@ class cPtr_overridingExtensionSetterAST : public cPtr_semanticDeclarationAST {
 
 //--- Constructor
   public: cPtr_overridingExtensionSetterAST (const GGS_bool & in_isPredefined,
-                                             const GGS_bool & in_requiresSelfForAccessingProperty,
                                              const GGS_lstring & in_mTypeName,
                                              const GGS_lstring & in_mOverridingExtensionSetterName,
                                              const GGS_formalParameterListAST & in_mOverridingExtensionSetterFormalParameterList,

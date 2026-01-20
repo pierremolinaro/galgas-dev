@@ -20,7 +20,6 @@
 //--------------------------------------------------------------------------------------------------
 
 final class @overridingExtensionGetterAST : @semanticDeclarationAST {
-  private let @bool requiresSelfForAccessingProperty %initArgLabel
   private let @lstring mTypeName
   private let @lstring mOverridingExtensionGetterName
   private let @formalInputParameterListAST mOverridingExtensionGetterFormalInputParameterList
@@ -69,7 +68,6 @@ syntax extension galgas3DeclarationsSyntax {
     $}$
     ioDeclarations.mDeclarationList += !@overridingExtensionGetterAST {
       !isPredefined: false // Is not predefined
-      !requiresSelfForAccessingProperty: [option galgas_cli_options.propertyAccessRequiresSelf value]
       !typeName
       !getterName
       !formalInputParameterList
@@ -113,7 +111,6 @@ syntax extension galgas3DeclarationsSyntax {
     $}$
     ioDeclarations.mDeclarationList += !@overridingExtensionGetterAST {
       !isPredefined: false // Is not predefined
-      !requiresSelfForAccessingProperty: [option galgas_cli_options.propertyAccessRequiresSelf value]
       !typeName
       !getterName
       !formalInputParameterList
@@ -161,7 +158,6 @@ syntax extension galgas4DeclarationsSyntax {
     $}$
     ioDeclarations.mDeclarationList += !@overridingExtensionGetterAST {
       !isPredefined: false
-      !requiresSelfForAccessingProperty: true
       !typeName
       !getterName
       !formalInputParameterList
@@ -194,7 +190,6 @@ syntax extension galgas4DeclarationsSyntax {
     $}$
     ioDeclarations.mDeclarationList += !@overridingExtensionGetterAST {
       !isPredefined: false
-      !requiresSelfForAccessingProperty: true
       !inTypeName
       !getterName
       !formalInputParameterList
@@ -329,19 +324,13 @@ override method @overridingExtensionGetterAST semanticAnalysis
     !selfObjectCppName: "this"
     !selfAvailability: .available {!type: selfType !selfMutability: .propertiesAreMutableSelfIsNot}
     !selfObjectCppPrefixForAccessingProperty: "object."
-    !requiresSelfForAccessingProperty: self.requiresSelfForAccessingProperty
   }
   analyzeFunctionBody (
     !nameForUsefulness
     !?ioUsefulEntitiesGraph
     !analysisContext
     !?ioTypeMap
-    !self.mOverridingExtensionGetterFormalInputParameterList
-    !if [[selfType definition].typeKind isClassType] | ([selfType definition].typeKind == .structType)
-       then [selfType definition].allTypedPropertyList
-       else @()
-     end
-    !"this->"
+    ! self.mOverridingExtensionGetterFormalInputParameterList
     !self.mOverridingExtensionGetterInstructionList
     !self.mOverridingExtensionGetterReturnedVariableName
     !self.mOverridingExtensionGetterReturnedTypeName

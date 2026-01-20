@@ -20,7 +20,6 @@
 //--------------------------------------------------------------------------------------------------
 
 final class @extensionSetterAST : @semanticDeclarationAST {
-  private let @bool requiresSelfForAccessingProperty %initArgLabel
   private let @lstring mTypeName
   private let @lstring mExtensionSetterName
   private let @formalParameterListAST mExtensionSetterFormalParameterList
@@ -53,7 +52,6 @@ syntax extension galgas3DeclarationsSyntax {
     $}$
     ioDeclarations.mDeclarationList += !@extensionSetterAST {
       !isPredefined: false
-      !requiresSelfForAccessingProperty: [option galgas_cli_options.propertyAccessRequiresSelf value]
       !typeName
       !setterName
       !formalParameterList
@@ -81,7 +79,6 @@ syntax extension galgas3DeclarationsSyntax {
     $}$
     ioDeclarations.mDeclarationList += !@extensionSetterAST {
       !isPredefined: false
-      !requiresSelfForAccessingProperty: [option galgas_cli_options.propertyAccessRequiresSelf value]
       !typeName
       !setterName
       !formalParameterList
@@ -119,7 +116,6 @@ syntax extension galgas4DeclarationsSyntax {
     $}$
     ioDeclarations.mDeclarationList += !@extensionSetterAST {
       !isPredefined: false // Is not predefined
-      !requiresSelfForAccessingProperty: true
       !typeName
       !setterName
       !formalParameterList
@@ -142,7 +138,6 @@ syntax extension galgas4DeclarationsSyntax {
     $}$
     ioDeclarations.mDeclarationList += !@extensionSetterAST {
       !isPredefined: false // Is not predefined
-      !requiresSelfForAccessingProperty: true
       !inTypeName
       !setterName
       !formalParameterList
@@ -256,7 +251,6 @@ override method @extensionSetterAST semanticAnalysis
     !selfObjectCppName: selfObjectName
     !selfAvailability: .available {!type: selfType !selfMutability: .selfAndPropertiesAreMutable}
     !selfObjectCppPrefixForAccessingProperty: selfObjectAccessor
-    !requiresSelfForAccessingProperty: self.requiresSelfForAccessingProperty
   }
   analyzeRoutineBody (
     !nameForUsefulness
@@ -264,8 +258,6 @@ override method @extensionSetterAST semanticAnalysis
     !analysisContext
     !?ioTypeMap
     !self.mExtensionSetterFormalParameterList
-    !nonMutablePropertyList: @()
-    !mutablePropertyList: [selfType definition].allTypedPropertyList
     !self.mExtensionSetterInstructionList
     !self.mEndOfSetterDeclarationLocation
     ?let semanticInstructionListForGeneration

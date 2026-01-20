@@ -12127,11 +12127,6 @@ class GGS_analysisContext : public AC_GALGAS_root {
     return mProperty_selfObjectCppPrefixForAccessingProperty ;
   }
 
-  public: GGS_bool mProperty_requiresSelfForAccessingProperty ;
-  public: inline GGS_bool readProperty_requiresSelfForAccessingProperty (void) const {
-    return mProperty_requiresSelfForAccessingProperty ;
-  }
-
 //--------------------------------- Accessors
   public: VIRTUAL_IN_DEBUG bool isValid (void) const override ;
   public: VIRTUAL_IN_DEBUG void drop (void) override ;
@@ -12160,10 +12155,6 @@ class GGS_analysisContext : public AC_GALGAS_root {
     mProperty_selfObjectCppPrefixForAccessingProperty = inValue ;
   }
 
-  public: inline void setter_setRequiresSelfForAccessingProperty (const GGS_bool & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_requiresSelfForAccessingProperty = inValue ;
-  }
-
 //--------------------------------- Set initialized properties
   private: void setInitializedProperties (Compiler * inCompiler) ;
 
@@ -12172,8 +12163,7 @@ class GGS_analysisContext : public AC_GALGAS_root {
                                const GGS_predefinedTypes & in_predefinedTypes,
                                const GGS_string & in_selfObjectCppName,
                                const GGS_selfAvailability & in_selfAvailability,
-                               const GGS_string & in_selfObjectCppPrefixForAccessingProperty,
-                               const GGS_bool & in_requiresSelfForAccessingProperty) ;
+                               const GGS_string & in_selfObjectCppPrefixForAccessingProperty) ;
 
 //--------------------------------- Copy constructor
   public: GGS_analysisContext (const GGS_analysisContext & inSource) ;
@@ -12184,14 +12174,13 @@ class GGS_analysisContext : public AC_GALGAS_root {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GGS_analysisContext init_21__21__21_selfObjectCppName_21_selfAvailability_21_selfObjectCppPrefixForAccessingProperty_21_requiresSelfForAccessingProperty (const class GGS_semanticContext & inOperand0,
-                                                                                                                                                                           const class GGS_predefinedTypes & inOperand1,
-                                                                                                                                                                           const class GGS_string & inOperand2,
-                                                                                                                                                                           const class GGS_selfAvailability & inOperand3,
-                                                                                                                                                                           const class GGS_string & inOperand4,
-                                                                                                                                                                           const class GGS_bool & inOperand5,
-                                                                                                                                                                           Compiler * inCompiler
-                                                                                                                                                                           COMMA_LOCATION_ARGS) ;
+  public: static GGS_analysisContext init_21__21__21_selfObjectCppName_21_selfAvailability_21_selfObjectCppPrefixForAccessingProperty (const class GGS_semanticContext & inOperand0,
+                                                                                                                                       const class GGS_predefinedTypes & inOperand1,
+                                                                                                                                       const class GGS_string & inOperand2,
+                                                                                                                                       const class GGS_selfAvailability & inOperand3,
+                                                                                                                                       const class GGS_string & inOperand4,
+                                                                                                                                       Compiler * inCompiler
+                                                                                                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -12207,7 +12196,6 @@ class GGS_analysisContext : public AC_GALGAS_root {
                                                            const class GGS_string & inOperand2,
                                                            const class GGS_selfAvailability & inOperand3,
                                                            const class GGS_string & inOperand4,
-                                                           const class GGS_bool & inOperand5,
                                                            class Compiler * inCompiler
                                                            COMMA_LOCATION_ARGS) ;
 

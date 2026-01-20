@@ -20,7 +20,6 @@
 //--------------------------------------------------------------------------------------------------
 
 final class @overridingExtensionSetterAST : @semanticDeclarationAST {
-  private let @bool requiresSelfForAccessingProperty %initArgLabel
   private let @lstring mTypeName
   private let @lstring mOverridingExtensionSetterName
   private let @formalParameterListAST mOverridingExtensionSetterFormalParameterList
@@ -54,7 +53,6 @@ syntax extension galgas3DeclarationsSyntax {
     $}$
     ioDeclarations.mDeclarationList += !@overridingExtensionSetterAST {
       !isPredefined: false
-      !requiresSelfForAccessingProperty: [option galgas_cli_options.propertyAccessRequiresSelf value]
       !typeName
       !setterName
       !formalParameterList
@@ -84,7 +82,6 @@ syntax extension galgas3DeclarationsSyntax {
     $}$
     ioDeclarations.mDeclarationList += !@overridingExtensionSetterAST {
       !isPredefined: false // Is not predefined
-      !requiresSelfForAccessingProperty: [option galgas_cli_options.propertyAccessRequiresSelf value]
       !typeName
       !setterName
       !formalParameterList
@@ -184,7 +181,6 @@ override method @overridingExtensionSetterAST semanticAnalysis
     !selfObjectCppName: "object"
     !selfAvailability: .available {!type: selfType !selfMutability: .selfAndPropertiesAreMutable}
     !selfObjectCppPrefixForAccessingProperty: "object->"
-    !requiresSelfForAccessingProperty: self.requiresSelfForAccessingProperty
   }
   analyzeRoutineBody (
     !nameForUsefulness
@@ -192,8 +188,6 @@ override method @overridingExtensionSetterAST semanticAnalysis
     !analysisContext
     !?ioTypeMap
     !self.mOverridingExtensionSetterFormalParameterList
-    !nonMutablePropertyList: @typedPropertyList ()
-    !mutablePropertyList: [selfType definition].allTypedPropertyList
     !self.mOverridingExtensionSetterInstructionList
     !self.mEndOfSetterDeclarationLocation
     ?let semanticInstructionListForGeneration

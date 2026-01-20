@@ -38,7 +38,6 @@ syntax extension galgas3DeclarationsSyntax {
     $}$
     ioDeclarations.mDeclarationList += !@extensionMethodAST {
       !isPredefined: false // Is not predefined
-      !requiresSelfForAccessingProperty: [option galgas_cli_options.propertyAccessRequiresSelf value]
       !typeName
       !methodName
       !formalParameterList
@@ -67,7 +66,6 @@ syntax extension galgas3DeclarationsSyntax {
     $}$
     ioDeclarations.mDeclarationList += !@extensionMethodAST {
       !isPredefined: false // Is not predefined
-      !requiresSelfForAccessingProperty: [option galgas_cli_options.propertyAccessRequiresSelf value]
       !typeName
       !methodName
       !formalParameterList
@@ -104,7 +102,6 @@ syntax extension galgas4DeclarationsSyntax {
     $}$
     ioDeclarations.mDeclarationList += !@extensionMethodAST {
       !isPredefined: false // Is not predefined
-      !requiresSelfForAccessingProperty: true
       !typeName
       !methodName
       !formalParameterList
@@ -126,7 +123,6 @@ syntax extension galgas4DeclarationsSyntax {
     $}$
     ioDeclarations.mDeclarationList += !@extensionMethodAST {
       !isPredefined: false
-      !requiresSelfForAccessingProperty: true
       !inTypeName
       !methodName
       !formalParameterList
@@ -142,7 +138,6 @@ syntax extension galgas4DeclarationsSyntax {
 //--------------------------------------------------------------------------------------------------
 
 final class @extensionMethodAST : @semanticDeclarationAST {
-  private let @bool requiresSelfForAccessingProperty %initArgLabel
   private let @lstring mTypeName
   private let @lstring mExtensionMethodName
   private let @formalParameterListAST mExtensionMethodFormalParameterList
@@ -245,22 +240,10 @@ final class @extensionMethodAST : @semanticDeclarationAST {
       !selfObjectCppName: selfObjectNameString
       !selfAvailability: .available {!type: selfType !selfMutability: if isReferenceClass then .propertiesAreMutableSelfIsNot else .none end}
       !selfObjectCppPrefixForAccessingProperty: selfObjectPropertyAccessorString
-      !requiresSelfForAccessingProperty: self.requiresSelfForAccessingProperty
     }
     var isclass = false
     if let classType = [[selfType definition].typeKind getClassType] then
       isclass = classType.isReference
-    end
-    var mutableProperties = @typedPropertyList ()
-    var nonMutableProperties = @typedPropertyList ()
-    if [selfType definition].typeKind == .structType then
-      nonMutableProperties = [selfType definition].allTypedPropertyList
-    elsif let classType = [[selfType definition].typeKind getClassType] then
-      if classType.isReference then
-        mutableProperties = [selfType definition].allTypedPropertyList
-      else
-        nonMutableProperties = [selfType definition].allTypedPropertyList
-      end
     end
     analyzeRoutineBody (
       !nameForUsefulness
@@ -268,8 +251,6 @@ final class @extensionMethodAST : @semanticDeclarationAST {
       !analysisContextNew
       !?ioTypeMap
       !self.mExtensionMethodFormalParameterList
-      !nonMutablePropertyList: nonMutableProperties
-      !mutablePropertyList: mutableProperties
       !self.mExtensionMethodInstructionList
       !self.mEndOfMethodLocation
       ?let semanticInstructionListForGeneration

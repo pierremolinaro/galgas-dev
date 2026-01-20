@@ -53,7 +53,6 @@ syntax extension galgas3DeclarationsSyntax {
     $}$
     ioDeclarations.mDeclarationList += !@extensionGetterAST {
       !isPredefined: false // Is not predefined
-      !requiresSelfForAccessingProperty: [option galgas_cli_options.propertyAccessRequiresSelf value]
       !typeName
       !getterName
       !formalInputParameterList
@@ -89,7 +88,6 @@ syntax extension galgas3DeclarationsSyntax {
     $}$
     ioDeclarations.mDeclarationList += !@extensionGetterAST {
       !isPredefined: false // Is not predefined
-      !requiresSelfForAccessingProperty: [option galgas_cli_options.propertyAccessRequiresSelf value]
       !inTypeName
       !getterName
       !formalInputParameterList
@@ -136,7 +134,6 @@ syntax extension galgas4DeclarationsSyntax {
     $}$
     ioDeclarations.mDeclarationList += !@extensionGetterAST {
       !isPredefined: false // Is not predefined
-      !requiresSelfForAccessingProperty: true
       !typeName
       !getterName
       !formalInputParameterList
@@ -170,7 +167,6 @@ syntax extension galgas4DeclarationsSyntax {
     $}$
     ioDeclarations.mDeclarationList += !@extensionGetterAST {
       !isPredefined: false // Is not predefined
-      !requiresSelfForAccessingProperty: true
       !typeName
       !getterName
       !formalInputParameterList
@@ -190,7 +186,6 @@ syntax extension galgas4DeclarationsSyntax {
 //--------------------------------------------------------------------------------------------------
 
 final class @extensionGetterAST : @semanticDeclarationAST {
-  private let @bool requiresSelfForAccessingProperty %initArgLabel
   private let @lstring mTypeName
   private let @lstring mExtensionGetterName
   private let @formalInputParameterListAST mExtensionGetterFormalInputParameterList
@@ -299,7 +294,6 @@ override method @extensionGetterAST semanticAnalysis
     !selfObjectCppName: selfObjectNameNew
     !selfAvailability: .available {!type: selfType !selfMutability: .none}
     !selfObjectCppPrefixForAccessingProperty: selfObjectAccessorNew
-    !requiresSelfForAccessingProperty: self.requiresSelfForAccessingProperty
   }
   analyzeFunctionBody (
     !nameForUsefulness
@@ -307,11 +301,6 @@ override method @extensionGetterAST semanticAnalysis
     !analysisContextNew
     !?ioTypeMap
     !self.mExtensionGetterFormalInputParameterList
-    !if [[selfType definition].typeKind isClassType] | ([selfType definition].typeKind == .structType) | ([selfType definition].typeKind == .sharedMapEntryType)
-       then [selfType definition].allTypedPropertyList
-       else @typedPropertyList ()
-     end
-    !selfObjectAccessorNew
     !self.mExtensionGetterInstructionList
     !self.mExtensionGetterReturnedVariableName
     !self.mExtensionGetterReturnedTypeName

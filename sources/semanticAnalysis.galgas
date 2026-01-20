@@ -202,37 +202,11 @@ proc analyzeRoutineBody ?let @lstring inUsefulnessCallerEntityName
                         ?let @analysisContext inAnalysisContext
                         ?!@unifiedTypeMap ioTypeMap
                         ?let @formalParameterListAST inRoutineSignatureAST
-                        ?nonMutablePropertyList: let @typedPropertyList inNonMutableTypedAttributeList
-                        ?mutablePropertyList: let @typedPropertyList inMutableTypedAttributeList
                         ?let @semanticInstructionListAST inInstructionList
                         ?let @location inEndOfMethodLocation
                         !@semanticInstructionListForGeneration outSemanticInstructionListForGeneration
                         !@formalParameterListForGeneration outRoutineSignature {
   var variableMap = @localVarManager {}
-//--- Enter non mutable instance properties
-  if not inAnalysisContext.requiresSelfForAccessingProperty then
-    for property in inNonMutableTypedAttributeList do
-      [!?variableMap insertNonMutableProperty
-        !property.name
-        !property.typeEntry
-        !inAnalysisContext.selfObjectCppPrefixForAccessingProperty
-           + "mProperty_" + [property.name.string identifierRepresentation]
-        !inAnalysisContext.selfObjectCppName
-      ]
-    end
-  end
-//--- Enter mutable instance properties
-  if not inAnalysisContext.requiresSelfForAccessingProperty then
-    for property in inMutableTypedAttributeList do
-      [!?variableMap insertMutableProperty
-        !property.name
-        !property.typeEntry
-        !inAnalysisContext.selfObjectCppPrefixForAccessingProperty
-           + "mProperty_" + [property.name.string identifierRepresentation]
-        !inAnalysisContext.selfObjectCppName
-      ]
-    end
-  end
 //--- Enter properties that should be explicitly initialized
   if let selfAvailable = [inAnalysisContext.selfAvailability getAvailable] then
     for property in [selfAvailable.type definition].allTypedPropertyList do
@@ -320,8 +294,6 @@ proc analyzeFunctionBody
   ?let @analysisContext inAnalysisContext
   ?!@unifiedTypeMap ioTypeMap
   ?let @formalInputParameterListAST inFunctionSignature
-  ?let @typedPropertyList inTypedAttributeList
-  ?let @string inAttributeVariableNamePrefix
   ?let @semanticInstructionListAST inInstructionList
   ?let @lstring inReturnVariableName
   ?let @lstring inResultTypeName
@@ -332,17 +304,6 @@ proc analyzeFunctionBody
   !@semanticInstructionListForGeneration outSemanticInstructionListForGeneration
 {
   var variableMap = @localVarManager {}
-//--- Enter instance properties
-  if not inAnalysisContext.requiresSelfForAccessingProperty then
-    for (typeEntry name 3*) in inTypedAttributeList do
-      [!?variableMap insertNonMutableProperty
-        !name
-        !typeEntry
-        !inAttributeVariableNamePrefix + "mProperty_"+ [name.string identifierRepresentation]
-        !inAnalysisContext.selfObjectCppName
-      ]
-    end
-  end
 //--- Enter formal parameters
   outSignatureForGeneration = @formalInputParameterListForGeneration ()
   for formalArg in inFunctionSignature do
@@ -432,7 +393,6 @@ override method @functionDeclarationAST semanticAnalysis
     !selfObjectCppName: ""
     !selfAvailability: .none
     !selfObjectCppPrefixForAccessingProperty: ""
-    !requiresSelfForAccessingProperty: true // self.requiresSelfForAccessingProperty
   }
   analyzeFunctionBody (
     !nameForUsefulness
@@ -440,8 +400,6 @@ override method @functionDeclarationAST semanticAnalysis
     !analysisContext
     !?ioTypeMap
     !self.mFormalArgumentList
-    !@typedPropertyList ()
-    !""
     !self.mFunctionInstructionList
     !self.mResultVariableName
     !self.mResultTypeName
@@ -488,7 +446,6 @@ override method @onceFunctionDeclarationAST semanticAnalysis
     !selfObjectCppName: ""
     !selfAvailability: .none
     !selfObjectCppPrefixForAccessingProperty: ""
-    !requiresSelfForAccessingProperty: true // self.requiresSelfForAccessingProperty
   }
   analyzeFunctionBody (
     !nameForUsefulness
@@ -496,8 +453,6 @@ override method @onceFunctionDeclarationAST semanticAnalysis
     !analysisContext
     !?ioTypeMap
     !@formalInputParameterListAST ()
-    !@typedPropertyList ()
-    !""
     !self.mFunctionInstructionList
     !self.mResultVariableName
     !self.mResultTypeName
@@ -1544,7 +1499,6 @@ private proc semanticAnalysisOfSyntaxComponent
     !selfObjectCppName: ""
     !selfAvailability: .none
     !selfObjectCppPrefixForAccessingProperty: ""
-    !requiresSelfForAccessingProperty: false
   }
 //--- Rule list
   var @uint selectMethodCount = 0

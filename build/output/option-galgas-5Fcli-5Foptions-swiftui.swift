@@ -10,7 +10,6 @@ import SwiftUI
 //--------------------------------------------------------------------------------------------------
 
 fileprivate let SELECTED_COMPILER_TOOL_INDEX_PREFKEY = "selected.compiler.tool.index"
-fileprivate let propertyAccessRequiresSelf_PREFKEY = "galgas_cli_options:propertyAccessRequiresSelf"
 fileprivate let checkEntityUsefulness_PREFKEY = "galgas_cli_options:checkEntityUsefulness"
 fileprivate let displayUnicodeLexicalTestFunctions_PREFKEY = "galgas_cli_options:displayUnicodeLexicalTestFunctions"
 fileprivate let emitClassGraph_PREFKEY = "galgas_cli_options:emitClassGraph"
@@ -18,7 +17,6 @@ fileprivate let emitSyntaxDiagrams_PREFKEY = "galgas_cli_options:emitSyntaxDiagr
 fileprivate let errorAnomynousForInstructionEnumeratedObject_PREFKEY = "galgas_cli_options:errorAnomynousForInstructionEnumeratedObject"
 fileprivate let errorObsoleteGetterCall_PREFKEY = "galgas_cli_options:errorObsoleteGetterCall"
 fileprivate let errorPropertyGetterCall_PREFKEY = "galgas_cli_options:errorPropertyGetterCall"
-fileprivate let errorEllipsisInEnumeratedObject_PREFKEY = "galgas_cli_options:errorEllipsisInEnumeratedObject"
 fileprivate let errorOnGetterCallWithNoArgument_PREFKEY = "galgas_cli_options:errorOnGetterCallWithNoArgument"
 fileprivate let errorOldStyleCollectionInitializer_PREFKEY = "galgas_cli_options:errorOldStyleCollectionInitializer"
 fileprivate let errorOldStyleLocalVarDeclaration_PREFKEY = "galgas_cli_options:errorOldStyleLocalVarDeclaration"
@@ -55,7 +53,6 @@ struct OptionView : View {
   // Bool options
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  @AppStorage(propertyAccessRequiresSelf_PREFKEY) private var propertyAccessRequiresSelf : Bool = false
   @AppStorage(checkEntityUsefulness_PREFKEY) private var checkEntityUsefulness : Bool = false
   @AppStorage(displayUnicodeLexicalTestFunctions_PREFKEY) private var displayUnicodeLexicalTestFunctions : Bool = false
   @AppStorage(emitClassGraph_PREFKEY) private var emitClassGraph : Bool = false
@@ -63,7 +60,6 @@ struct OptionView : View {
   @AppStorage(errorAnomynousForInstructionEnumeratedObject_PREFKEY) private var errorAnomynousForInstructionEnumeratedObject : Bool = false
   @AppStorage(errorObsoleteGetterCall_PREFKEY) private var errorObsoleteGetterCall : Bool = false
   @AppStorage(errorPropertyGetterCall_PREFKEY) private var errorPropertyGetterCall : Bool = false
-  @AppStorage(errorEllipsisInEnumeratedObject_PREFKEY) private var errorEllipsisInEnumeratedObject : Bool = false
   @AppStorage(errorOnGetterCallWithNoArgument_PREFKEY) private var errorOnGetterCallWithNoArgument : Bool = false
   @AppStorage(errorOldStyleCollectionInitializer_PREFKEY) private var errorOldStyleCollectionInitializer : Bool = false
   @AppStorage(errorOldStyleLocalVarDeclaration_PREFKEY) private var errorOldStyleLocalVarDeclaration : Bool = false
@@ -112,7 +108,6 @@ struct OptionView : View {
       }
       ScrollView {
         VStack (alignment: .leading) {
-          Toggle ("'self' is required for accessing properties in getter, setter and methods", isOn: self.$propertyAccessRequiresSelf)
           Toggle ("Check Entity Usefulness", isOn: self.$checkEntityUsefulness)
           Toggle ("Display Unicode Lexical Test Functions", isOn: self.$displayUnicodeLexicalTestFunctions)
           Toggle ("Emit class graph in dot file", isOn: self.$emitClassGraph)
@@ -120,7 +115,6 @@ struct OptionView : View {
           Toggle ("Error on anonymous 'for' instruction enumerated object ('for () in ...')", isOn: self.$errorAnomynousForInstructionEnumeratedObject)
           Toggle ("Error on call of an obsolete getter", isOn: self.$errorObsoleteGetterCall)
           Toggle ("Error on calling property getter (instead of dot notation)", isOn: self.$errorPropertyGetterCall)
-          Toggle ("Error on ellipsis in enumerated object ('for (x y ...) in xxx')", isOn: self.$errorEllipsisInEnumeratedObject)
           Toggle ("Error on getter call; with no argument (GGS4, suppress parenthesis)", isOn: self.$errorOnGetterCallWithNoArgument)
           Toggle ("Error on old style collection initializer", isOn: self.$errorOldStyleCollectionInitializer)
           Toggle ("Error on old style local variable declaration", isOn: self.$errorOldStyleLocalVarDeclaration)
@@ -178,9 +172,6 @@ func commandLineToolInvocation () -> CommandLineToolInvocation {
   let selectedCompilerIndex : Int = ud.integer (forKey: SELECTED_COMPILER_TOOL_INDEX_PREFKEY)
   let tool = compilerTools [selectedCompilerIndex].url
   var arguments = [String] ()
-  if ud.bool (forKey: propertyAccessRequiresSelf_PREFKEY) {
-    arguments.append ("--error-property-access-without-self")
-  }
   if ud.bool (forKey: checkEntityUsefulness_PREFKEY) {
     arguments.append ("--check-usefulness")
   }
@@ -201,9 +192,6 @@ func commandLineToolInvocation () -> CommandLineToolInvocation {
   }
   if ud.bool (forKey: errorPropertyGetterCall_PREFKEY) {
     arguments.append ("--error-property-getter-call")
-  }
-  if ud.bool (forKey: errorEllipsisInEnumeratedObject_PREFKEY) {
-    arguments.append ("--error-ellipsis-in-for-instruction")
   }
   if ud.bool (forKey: errorOnGetterCallWithNoArgument_PREFKEY) {
     arguments.append ("--error-on-getter-call-with-no-argument")

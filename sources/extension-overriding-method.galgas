@@ -41,7 +41,6 @@ syntax extension galgas3DeclarationsSyntax {
     $}$
     ioDeclarations.mDeclarationList += !@overridingExtensionMethodAST {
       !isPredefined: false // Is not predefined
-      !requiresSelfForAccessingProperty: [option galgas_cli_options.propertyAccessRequiresSelf value]
       !typeName
       !methodName
       !formalParameterList
@@ -70,7 +69,6 @@ syntax extension galgas3DeclarationsSyntax {
     $}$
     ioDeclarations.mDeclarationList += !@overridingExtensionMethodAST {
       !isPredefined: false // Is not predefined
-      !requiresSelfForAccessingProperty: [option galgas_cli_options.propertyAccessRequiresSelf value]
       !typeName
       !methodName
       !formalParameterList
@@ -108,7 +106,6 @@ syntax extension galgas4DeclarationsSyntax {
     $}$
     ioDeclarations.mDeclarationList += !@overridingExtensionMethodAST {
       !isPredefined: false
-      !requiresSelfForAccessingProperty: true
       !typeName
       !methodName
       !formalParameterList
@@ -131,7 +128,6 @@ syntax extension galgas4DeclarationsSyntax {
     $}$
     ioDeclarations.mDeclarationList += !@overridingExtensionMethodAST {
       !isPredefined: false // Is not predefined
-      !requiresSelfForAccessingProperty: true
       !inTypeName
       !methodName
       !formalParameterList
@@ -149,7 +145,6 @@ syntax extension galgas4DeclarationsSyntax {
 //--------------------------------------------------------------------------------------------------
 
 final class @overridingExtensionMethodAST : @semanticDeclarationAST {
-  private let @bool requiresSelfForAccessingProperty %initArgLabel
   private let @lstring mTypeName
   private let @lstring mOverridingExtensionMethodName
   private let @formalParameterListAST mOverridingExtensionMethodFormalParameterList
@@ -272,22 +267,10 @@ override method @overridingExtensionMethodAST semanticAnalysis
     !selfObjectCppName: "this"
     !selfAvailability: .available {!type: selfType !selfMutability: .propertiesAreMutableSelfIsNot}
     !selfObjectCppPrefixForAccessingProperty: "this->"
-    !requiresSelfForAccessingProperty: self.requiresSelfForAccessingProperty
   }
   var isclass = false
   if let classType = [[selfType definition].typeKind getClassType] then
     isclass = classType.isReference
-  end
-  var mutableProperties = @typedPropertyList ()
-  var nonMutableProperties = @typedPropertyList ()
-  if [selfType definition].typeKind == .structType then
-    nonMutableProperties = [selfType definition].allTypedPropertyList
-  elsif let classType = [[selfType definition].typeKind getClassType] then
-    if classType.isReference then
-      mutableProperties = [selfType definition].allTypedPropertyList
-    else
-      nonMutableProperties = [selfType definition].allTypedPropertyList
-    end
   end
   analyzeRoutineBody (
     !nameForUsefulness
@@ -295,8 +278,6 @@ override method @overridingExtensionMethodAST semanticAnalysis
     !analysisContext
     !?ioTypeMap
     !self.mOverridingExtensionMethodFormalParameterList
-    !nonMutablePropertyList: nonMutableProperties
-    !mutablePropertyList: mutableProperties
     !self.mOverridingExtensionMethodInstructionList
     !self.mEndOfMethodLocation
     ?let semanticInstructionListForGeneration

@@ -69,14 +69,8 @@ option galgas_cli_options {
     -> "Error on getter call; with no argument (GGS4, suppress parenthesis)"
 
 //--- Deprecated constructions
-  @bool propertyAccessRequiresSelf : '\0', "error-property-access-without-self"
-    -> "'self' is required for accessing properties in getter, setter and methods"
-
   @bool errorAnomynousForInstructionEnumeratedObject : '\0', "error-anonymous-for-instruction"
     -> "Error on anonymous 'for' instruction enumerated object ('for () in ...')"
-
-  @bool errorEllipsisInEnumeratedObject : '\0', "error-ellipsis-in-for-instruction"
-    -> "Error on ellipsis in enumerated object ('for (x y ...) in xxx')"
 
   @bool errorOldStylePropertyDeclaration : '\0', "error-old-style-property-declaration"
     -> "Error on old style property declaration"

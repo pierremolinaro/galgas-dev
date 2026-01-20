@@ -77,23 +77,21 @@ class GGS_lstring function_typeNameForUsefulEntitiesGraph (const class GGS_lstri
 
 //--------------------------------------------------------------------------------------------------
 //
-//Routine 'analyzeRoutineBody?&?&??nonMutablePropertyList?mutablePropertyList??!!'
+//Routine 'analyzeRoutineBody?&?&???!!'
 //
 //--------------------------------------------------------------------------------------------------
 
-void routine_analyzeRoutineBody_3F__26__3F__26__3F__3F_nonMutablePropertyList_3F_mutablePropertyList_3F__3F__21__21_ (const class GGS_lstring constinArgument0,
-                                                                                                                      class GGS_usefulEntitiesGraph & ioArgument1,
-                                                                                                                      const class GGS_analysisContext constinArgument2,
-                                                                                                                      class GGS_unifiedTypeMap & ioArgument3,
-                                                                                                                      const class GGS_formalParameterListAST constinArgument4,
-                                                                                                                      const class GGS_typedPropertyList constinArgument5,
-                                                                                                                      const class GGS_typedPropertyList constinArgument6,
-                                                                                                                      const class GGS_semanticInstructionListAST constinArgument7,
-                                                                                                                      const class GGS_location constinArgument8,
-                                                                                                                      class GGS_semanticInstructionListForGeneration & outArgument9,
-                                                                                                                      class GGS_formalParameterListForGeneration & outArgument10,
-                                                                                                                      class Compiler * inCompiler
-                                                                                                                      COMMA_LOCATION_ARGS) ;
+void routine_analyzeRoutineBody_3F__26__3F__26__3F__3F__3F__21__21_ (const class GGS_lstring constinArgument0,
+                                                                     class GGS_usefulEntitiesGraph & ioArgument1,
+                                                                     const class GGS_analysisContext constinArgument2,
+                                                                     class GGS_unifiedTypeMap & ioArgument3,
+                                                                     const class GGS_formalParameterListAST constinArgument4,
+                                                                     const class GGS_semanticInstructionListAST constinArgument5,
+                                                                     const class GGS_location constinArgument6,
+                                                                     class GGS_semanticInstructionListForGeneration & outArgument7,
+                                                                     class GGS_formalParameterListForGeneration & outArgument8,
+                                                                     class Compiler * inCompiler
+                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -859,27 +857,25 @@ class GGS_lstring function_getterNameForUsefulEntitiesGraph (const class GGS_str
 
 //--------------------------------------------------------------------------------------------------
 //
-//Routine 'analyzeFunctionBody?&?&???????!!!!'
+//Routine 'analyzeFunctionBody?&?&?????!!!!'
 //
 //--------------------------------------------------------------------------------------------------
 
-void routine_analyzeFunctionBody_3F__26__3F__26__3F__3F__3F__3F__3F__3F__3F__21__21__21__21_ (const class GGS_lstring constinArgument0,
-                                                                                              class GGS_usefulEntitiesGraph & ioArgument1,
-                                                                                              const class GGS_analysisContext constinArgument2,
-                                                                                              class GGS_unifiedTypeMap & ioArgument3,
-                                                                                              const class GGS_formalInputParameterListAST constinArgument4,
-                                                                                              const class GGS_typedPropertyList constinArgument5,
-                                                                                              const class GGS_string constinArgument6,
-                                                                                              const class GGS_semanticInstructionListAST constinArgument7,
-                                                                                              const class GGS_lstring constinArgument8,
-                                                                                              const class GGS_lstring constinArgument9,
-                                                                                              const class GGS_location constinArgument10,
-                                                                                              class GGS_formalInputParameterListForGeneration & outArgument11,
-                                                                                              class GGS_unifiedTypeMapEntry & outArgument12,
-                                                                                              class GGS_string & outArgument13,
-                                                                                              class GGS_semanticInstructionListForGeneration & outArgument14,
-                                                                                              class Compiler * inCompiler
-                                                                                              COMMA_LOCATION_ARGS) ;
+void routine_analyzeFunctionBody_3F__26__3F__26__3F__3F__3F__3F__3F__21__21__21__21_ (const class GGS_lstring constinArgument0,
+                                                                                      class GGS_usefulEntitiesGraph & ioArgument1,
+                                                                                      const class GGS_analysisContext constinArgument2,
+                                                                                      class GGS_unifiedTypeMap & ioArgument3,
+                                                                                      const class GGS_formalInputParameterListAST constinArgument4,
+                                                                                      const class GGS_semanticInstructionListAST constinArgument5,
+                                                                                      const class GGS_lstring constinArgument6,
+                                                                                      const class GGS_lstring constinArgument7,
+                                                                                      const class GGS_location constinArgument8,
+                                                                                      class GGS_formalInputParameterListForGeneration & outArgument9,
+                                                                                      class GGS_unifiedTypeMapEntry & outArgument10,
+                                                                                      class GGS_string & outArgument11,
+                                                                                      class GGS_semanticInstructionListForGeneration & outArgument12,
+                                                                                      class Compiler * inCompiler
+                                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //

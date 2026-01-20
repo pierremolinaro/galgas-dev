@@ -69,8 +69,6 @@ proc compileBeforeClauseGalgas3
       !inAnalysisContext
       !?ioTypeMap
       !@formalParameterListAST () // Routine signature : no argument
-      !nonMutablePropertyList: @typedPropertyList () // No attribute (not a method)
-      !mutablePropertyList: @typedPropertyList () // No attribute (not a method)
       !mInstructionList
       !mEndOfInstructionList
       ?let @semanticInstructionListForGeneration blockSemanticInstructionListForGeneration
@@ -119,8 +117,6 @@ private proc compileProgramRulesGalgas3
       !inAnalysisContext
       !?ioTypeMap
       !argumentList
-      !nonMutablePropertyList: @typedPropertyList () // No attribute (not a method)
-      !mutablePropertyList: @typedPropertyList () // No attribute (not a method)
       !mInstructionList
       !mEndOfInstructionList
       ?let semanticInstructionListForGeneration
@@ -165,9 +161,6 @@ proc compileAfterClauseGalgas3
       !inAnalysisContext
       !?ioTypeMap
       !@formalParameterListAST () // Routine signature : no argument
-//      !localConstantList: () // No local constant
-      !nonMutablePropertyList: @typedPropertyList () // No attribute (not a method)
-      !mutablePropertyList: @typedPropertyList () // No attribute (not a method)
       !mInstructionList
       !mEndOfInstructionList
       ?let @semanticInstructionListForGeneration blockSemanticInstructionListForGeneration
@@ -210,7 +203,6 @@ proc compileProgramComponentGalgas3
     !selfObjectCppName: ""
     !selfAvailability: .none
     !selfObjectCppPrefixForAccessingProperty: ""
-    !requiresSelfForAccessingProperty: false // self.requiresSelfForAccessingProperty
   }
 //--- Analyse 'before' instructions
   var @programListForGeneration decoratedDeclarationListForGeneration = @()

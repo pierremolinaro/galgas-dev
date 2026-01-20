@@ -659,10 +659,10 @@ override method @enumeratedCollectionCstListInExpAST analyzeEnumeration
       + " or less for enumeration: this list provides "
       + [[self.mElementList count] string]
     else
-      if [option galgas_cli_options.errorEllipsisInEnumeratedObject value] && ([enumerationDescriptorList count] > [self.mElementList count]) then
+      if [enumerationDescriptorList count] > [self.mElementList count] then
         let missingArgumentCount = [enumerationDescriptorList count] - [self.mElementList count]
         error self.mEndOfEnumerationExpression
-        : "enumerated object ends with '...' (due to '--error-ellipsis-in-for-instruction' option)"
+        : "enumerated object has " + missingArgumentCount + "more properties"
         fixit { replace if missingArgumentCount == 1 then "*" else " " + missingArgumentCount + "*" end }
       end
       for (mOptionalTypeName mDeclaredAsUnused mOptionalConstantName) in self.mElementList, (mEnumeratedType mEnumerationName) in enumerationDescriptorList do

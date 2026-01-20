@@ -6156,18 +6156,17 @@ GGS_semanticDeclarationAST () {
 //--- Synthetized initializer ----------------------------------------------------------------------
 
 GGS_extensionMethodAST GGS_extensionMethodAST::
-init_21_isPredefined_21_requiresSelfForAccessingProperty_21__21__21__21__21_ (const GGS_bool & in_isPredefined,
-                                                                              const GGS_bool & in_requiresSelfForAccessingProperty,
-                                                                              const GGS_lstring & in_mTypeName,
-                                                                              const GGS_lstring & in_mExtensionMethodName,
-                                                                              const GGS_formalParameterListAST & in_mExtensionMethodFormalParameterList,
-                                                                              const GGS_semanticInstructionListAST & in_mExtensionMethodInstructionList,
-                                                                              const GGS_location & in_mEndOfMethodLocation,
-                                                                              Compiler * inCompiler
-                                                                              COMMA_LOCATION_ARGS) {
+init_21_isPredefined_21__21__21__21__21_ (const GGS_bool & in_isPredefined,
+                                          const GGS_lstring & in_mTypeName,
+                                          const GGS_lstring & in_mExtensionMethodName,
+                                          const GGS_formalParameterListAST & in_mExtensionMethodFormalParameterList,
+                                          const GGS_semanticInstructionListAST & in_mExtensionMethodInstructionList,
+                                          const GGS_location & in_mEndOfMethodLocation,
+                                          Compiler * inCompiler
+                                          COMMA_LOCATION_ARGS) {
   cPtr_extensionMethodAST * object = nullptr ;
   macroMyNew (object, cPtr_extensionMethodAST (inCompiler COMMA_THERE)) ;
-  object->extensionMethodAST_init_21_isPredefined_21_requiresSelfForAccessingProperty_21__21__21__21__21_ (in_isPredefined, in_requiresSelfForAccessingProperty, in_mTypeName, in_mExtensionMethodName, in_mExtensionMethodFormalParameterList, in_mExtensionMethodInstructionList, in_mEndOfMethodLocation, inCompiler) ;
+  object->extensionMethodAST_init_21_isPredefined_21__21__21__21__21_ (in_isPredefined, in_mTypeName, in_mExtensionMethodName, in_mExtensionMethodFormalParameterList, in_mExtensionMethodInstructionList, in_mEndOfMethodLocation, inCompiler) ;
   const GGS_extensionMethodAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
@@ -6176,16 +6175,14 @@ init_21_isPredefined_21_requiresSelfForAccessingProperty_21__21__21__21__21_ (co
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_extensionMethodAST::
-extensionMethodAST_init_21_isPredefined_21_requiresSelfForAccessingProperty_21__21__21__21__21_ (const GGS_bool & in_isPredefined,
-                                                                                                 const GGS_bool & in_requiresSelfForAccessingProperty,
-                                                                                                 const GGS_lstring & in_mTypeName,
-                                                                                                 const GGS_lstring & in_mExtensionMethodName,
-                                                                                                 const GGS_formalParameterListAST & in_mExtensionMethodFormalParameterList,
-                                                                                                 const GGS_semanticInstructionListAST & in_mExtensionMethodInstructionList,
-                                                                                                 const GGS_location & in_mEndOfMethodLocation,
-                                                                                                 Compiler * /* inCompiler */) {
+extensionMethodAST_init_21_isPredefined_21__21__21__21__21_ (const GGS_bool & in_isPredefined,
+                                                             const GGS_lstring & in_mTypeName,
+                                                             const GGS_lstring & in_mExtensionMethodName,
+                                                             const GGS_formalParameterListAST & in_mExtensionMethodFormalParameterList,
+                                                             const GGS_semanticInstructionListAST & in_mExtensionMethodInstructionList,
+                                                             const GGS_location & in_mEndOfMethodLocation,
+                                                             Compiler * /* inCompiler */) {
   mProperty_isPredefined = in_isPredefined ;
-  mProperty_requiresSelfForAccessingProperty = in_requiresSelfForAccessingProperty ;
   mProperty_mTypeName = in_mTypeName ;
   mProperty_mExtensionMethodName = in_mExtensionMethodName ;
   mProperty_mExtensionMethodFormalParameterList = in_mExtensionMethodFormalParameterList ;
@@ -6202,7 +6199,6 @@ GGS_semanticDeclarationAST (inSourcePtr) {
 //--------------------------------------------------------------------------------------------------
 
 GGS_extensionMethodAST GGS_extensionMethodAST::class_func_new (const GGS_bool & in_isPredefined,
-                                                               const GGS_bool & in_requiresSelfForAccessingProperty,
                                                                const GGS_lstring & in_mTypeName,
                                                                const GGS_lstring & in_mExtensionMethodName,
                                                                const GGS_formalParameterListAST & in_mExtensionMethodFormalParameterList,
@@ -6211,20 +6207,8 @@ GGS_extensionMethodAST GGS_extensionMethodAST::class_func_new (const GGS_bool & 
                                                                Compiler * inCompiler
                                                                COMMA_LOCATION_ARGS) {
   GGS_extensionMethodAST result ;
-  macroMyNew (result.mObjectPtr, cPtr_extensionMethodAST (in_isPredefined, in_requiresSelfForAccessingProperty, in_mTypeName, in_mExtensionMethodName, in_mExtensionMethodFormalParameterList, in_mExtensionMethodInstructionList, in_mEndOfMethodLocation,  inCompiler COMMA_THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_extensionMethodAST (in_isPredefined, in_mTypeName, in_mExtensionMethodName, in_mExtensionMethodFormalParameterList, in_mExtensionMethodInstructionList, in_mEndOfMethodLocation,  inCompiler COMMA_THERE)) ;
   return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_bool GGS_extensionMethodAST::readProperty_requiresSelfForAccessingProperty (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_bool () ;
-  }else{
-    cPtr_extensionMethodAST * p = (cPtr_extensionMethodAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_extensionMethodAST) ;
-    return p->mProperty_requiresSelfForAccessingProperty ;
-  }
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -6293,7 +6277,6 @@ GGS_location GGS_extensionMethodAST::readProperty_mEndOfMethodLocation (void) co
 
 cPtr_extensionMethodAST::cPtr_extensionMethodAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
 cPtr_semanticDeclarationAST (inCompiler COMMA_THERE),
-mProperty_requiresSelfForAccessingProperty (),
 mProperty_mTypeName (),
 mProperty_mExtensionMethodName (),
 mProperty_mExtensionMethodFormalParameterList (),
@@ -6304,7 +6287,6 @@ mProperty_mEndOfMethodLocation () {
 //--------------------------------------------------------------------------------------------------
 
 cPtr_extensionMethodAST::cPtr_extensionMethodAST (const GGS_bool & in_isPredefined,
-                                                  const GGS_bool & in_requiresSelfForAccessingProperty,
                                                   const GGS_lstring & in_mTypeName,
                                                   const GGS_lstring & in_mExtensionMethodName,
                                                   const GGS_formalParameterListAST & in_mExtensionMethodFormalParameterList,
@@ -6313,14 +6295,12 @@ cPtr_extensionMethodAST::cPtr_extensionMethodAST (const GGS_bool & in_isPredefin
                                                   Compiler * inCompiler
                                                   COMMA_LOCATION_ARGS) :
 cPtr_semanticDeclarationAST (in_isPredefined, inCompiler COMMA_THERE),
-mProperty_requiresSelfForAccessingProperty (),
 mProperty_mTypeName (),
 mProperty_mExtensionMethodName (),
 mProperty_mExtensionMethodFormalParameterList (),
 mProperty_mExtensionMethodInstructionList (),
 mProperty_mEndOfMethodLocation () {
   mProperty_isPredefined = in_isPredefined ;
-  mProperty_requiresSelfForAccessingProperty = in_requiresSelfForAccessingProperty ;
   mProperty_mTypeName = in_mTypeName ;
   mProperty_mExtensionMethodName = in_mExtensionMethodName ;
   mProperty_mExtensionMethodFormalParameterList = in_mExtensionMethodFormalParameterList ;
@@ -6339,8 +6319,6 @@ void cPtr_extensionMethodAST::description (String & ioString,
   ioString.appendCString ("[@extensionMethodAST:") ;
   mProperty_isPredefined.description (ioString, inIndentation+1) ;
   ioString.appendCString (", ") ;
-  mProperty_requiresSelfForAccessingProperty.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
   mProperty_mTypeName.description (ioString, inIndentation+1) ;
   ioString.appendCString (", ") ;
   mProperty_mExtensionMethodName.description (ioString, inIndentation+1) ;
@@ -6357,7 +6335,7 @@ void cPtr_extensionMethodAST::description (String & ioString,
 
 acPtr_class * cPtr_extensionMethodAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_extensionMethodAST (mProperty_isPredefined, mProperty_requiresSelfForAccessingProperty, mProperty_mTypeName, mProperty_mExtensionMethodName, mProperty_mExtensionMethodFormalParameterList, mProperty_mExtensionMethodInstructionList, mProperty_mEndOfMethodLocation, inCompiler COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_extensionMethodAST (mProperty_isPredefined, mProperty_mTypeName, mProperty_mExtensionMethodName, mProperty_mExtensionMethodFormalParameterList, mProperty_mExtensionMethodInstructionList, mProperty_mEndOfMethodLocation, inCompiler COMMA_THERE)) ;
   return ptr ;
 }
 
@@ -6367,7 +6345,6 @@ acPtr_class * cPtr_extensionMethodAST::duplicate (Compiler * inCompiler COMMA_LO
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_extensionMethodAST::printNonNullClassInstanceProperties (void) const {
     cPtr_semanticDeclarationAST::printNonNullClassInstanceProperties () ;
-    mProperty_requiresSelfForAccessingProperty.printNonNullClassInstanceProperties ("requiresSelfForAccessingProperty") ;
     mProperty_mTypeName.printNonNullClassInstanceProperties ("mTypeName") ;
     mProperty_mExtensionMethodName.printNonNullClassInstanceProperties ("mExtensionMethodName") ;
     mProperty_mExtensionMethodFormalParameterList.printNonNullClassInstanceProperties ("mExtensionMethodFormalParameterList") ;
@@ -11967,20 +11944,19 @@ GGS_semanticDeclarationAST () {
 //--- Synthetized initializer ----------------------------------------------------------------------
 
 GGS_overridingExtensionGetterAST GGS_overridingExtensionGetterAST::
-init_21_isPredefined_21_requiresSelfForAccessingProperty_21__21__21__21__21__21__21_ (const GGS_bool & in_isPredefined,
-                                                                                      const GGS_bool & in_requiresSelfForAccessingProperty,
-                                                                                      const GGS_lstring & in_mTypeName,
-                                                                                      const GGS_lstring & in_mOverridingExtensionGetterName,
-                                                                                      const GGS_formalInputParameterListAST & in_mOverridingExtensionGetterFormalInputParameterList,
-                                                                                      const GGS_lstring & in_mOverridingExtensionGetterReturnedTypeName,
-                                                                                      const GGS_lstring & in_mOverridingExtensionGetterReturnedVariableName,
-                                                                                      const GGS_semanticInstructionListAST & in_mOverridingExtensionGetterInstructionList,
-                                                                                      const GGS_location & in_mEndOfReaderLocation,
-                                                                                      Compiler * inCompiler
-                                                                                      COMMA_LOCATION_ARGS) {
+init_21_isPredefined_21__21__21__21__21__21__21_ (const GGS_bool & in_isPredefined,
+                                                  const GGS_lstring & in_mTypeName,
+                                                  const GGS_lstring & in_mOverridingExtensionGetterName,
+                                                  const GGS_formalInputParameterListAST & in_mOverridingExtensionGetterFormalInputParameterList,
+                                                  const GGS_lstring & in_mOverridingExtensionGetterReturnedTypeName,
+                                                  const GGS_lstring & in_mOverridingExtensionGetterReturnedVariableName,
+                                                  const GGS_semanticInstructionListAST & in_mOverridingExtensionGetterInstructionList,
+                                                  const GGS_location & in_mEndOfReaderLocation,
+                                                  Compiler * inCompiler
+                                                  COMMA_LOCATION_ARGS) {
   cPtr_overridingExtensionGetterAST * object = nullptr ;
   macroMyNew (object, cPtr_overridingExtensionGetterAST (inCompiler COMMA_THERE)) ;
-  object->overridingExtensionGetterAST_init_21_isPredefined_21_requiresSelfForAccessingProperty_21__21__21__21__21__21__21_ (in_isPredefined, in_requiresSelfForAccessingProperty, in_mTypeName, in_mOverridingExtensionGetterName, in_mOverridingExtensionGetterFormalInputParameterList, in_mOverridingExtensionGetterReturnedTypeName, in_mOverridingExtensionGetterReturnedVariableName, in_mOverridingExtensionGetterInstructionList, in_mEndOfReaderLocation, inCompiler) ;
+  object->overridingExtensionGetterAST_init_21_isPredefined_21__21__21__21__21__21__21_ (in_isPredefined, in_mTypeName, in_mOverridingExtensionGetterName, in_mOverridingExtensionGetterFormalInputParameterList, in_mOverridingExtensionGetterReturnedTypeName, in_mOverridingExtensionGetterReturnedVariableName, in_mOverridingExtensionGetterInstructionList, in_mEndOfReaderLocation, inCompiler) ;
   const GGS_overridingExtensionGetterAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
@@ -11989,18 +11965,16 @@ init_21_isPredefined_21_requiresSelfForAccessingProperty_21__21__21__21__21__21_
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_overridingExtensionGetterAST::
-overridingExtensionGetterAST_init_21_isPredefined_21_requiresSelfForAccessingProperty_21__21__21__21__21__21__21_ (const GGS_bool & in_isPredefined,
-                                                                                                                   const GGS_bool & in_requiresSelfForAccessingProperty,
-                                                                                                                   const GGS_lstring & in_mTypeName,
-                                                                                                                   const GGS_lstring & in_mOverridingExtensionGetterName,
-                                                                                                                   const GGS_formalInputParameterListAST & in_mOverridingExtensionGetterFormalInputParameterList,
-                                                                                                                   const GGS_lstring & in_mOverridingExtensionGetterReturnedTypeName,
-                                                                                                                   const GGS_lstring & in_mOverridingExtensionGetterReturnedVariableName,
-                                                                                                                   const GGS_semanticInstructionListAST & in_mOverridingExtensionGetterInstructionList,
-                                                                                                                   const GGS_location & in_mEndOfReaderLocation,
-                                                                                                                   Compiler * /* inCompiler */) {
+overridingExtensionGetterAST_init_21_isPredefined_21__21__21__21__21__21__21_ (const GGS_bool & in_isPredefined,
+                                                                               const GGS_lstring & in_mTypeName,
+                                                                               const GGS_lstring & in_mOverridingExtensionGetterName,
+                                                                               const GGS_formalInputParameterListAST & in_mOverridingExtensionGetterFormalInputParameterList,
+                                                                               const GGS_lstring & in_mOverridingExtensionGetterReturnedTypeName,
+                                                                               const GGS_lstring & in_mOverridingExtensionGetterReturnedVariableName,
+                                                                               const GGS_semanticInstructionListAST & in_mOverridingExtensionGetterInstructionList,
+                                                                               const GGS_location & in_mEndOfReaderLocation,
+                                                                               Compiler * /* inCompiler */) {
   mProperty_isPredefined = in_isPredefined ;
-  mProperty_requiresSelfForAccessingProperty = in_requiresSelfForAccessingProperty ;
   mProperty_mTypeName = in_mTypeName ;
   mProperty_mOverridingExtensionGetterName = in_mOverridingExtensionGetterName ;
   mProperty_mOverridingExtensionGetterFormalInputParameterList = in_mOverridingExtensionGetterFormalInputParameterList ;
@@ -12019,7 +11993,6 @@ GGS_semanticDeclarationAST (inSourcePtr) {
 //--------------------------------------------------------------------------------------------------
 
 GGS_overridingExtensionGetterAST GGS_overridingExtensionGetterAST::class_func_new (const GGS_bool & in_isPredefined,
-                                                                                   const GGS_bool & in_requiresSelfForAccessingProperty,
                                                                                    const GGS_lstring & in_mTypeName,
                                                                                    const GGS_lstring & in_mOverridingExtensionGetterName,
                                                                                    const GGS_formalInputParameterListAST & in_mOverridingExtensionGetterFormalInputParameterList,
@@ -12030,20 +12003,8 @@ GGS_overridingExtensionGetterAST GGS_overridingExtensionGetterAST::class_func_ne
                                                                                    Compiler * inCompiler
                                                                                    COMMA_LOCATION_ARGS) {
   GGS_overridingExtensionGetterAST result ;
-  macroMyNew (result.mObjectPtr, cPtr_overridingExtensionGetterAST (in_isPredefined, in_requiresSelfForAccessingProperty, in_mTypeName, in_mOverridingExtensionGetterName, in_mOverridingExtensionGetterFormalInputParameterList, in_mOverridingExtensionGetterReturnedTypeName, in_mOverridingExtensionGetterReturnedVariableName, in_mOverridingExtensionGetterInstructionList, in_mEndOfReaderLocation,  inCompiler COMMA_THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_overridingExtensionGetterAST (in_isPredefined, in_mTypeName, in_mOverridingExtensionGetterName, in_mOverridingExtensionGetterFormalInputParameterList, in_mOverridingExtensionGetterReturnedTypeName, in_mOverridingExtensionGetterReturnedVariableName, in_mOverridingExtensionGetterInstructionList, in_mEndOfReaderLocation,  inCompiler COMMA_THERE)) ;
   return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_bool GGS_overridingExtensionGetterAST::readProperty_requiresSelfForAccessingProperty (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_bool () ;
-  }else{
-    cPtr_overridingExtensionGetterAST * p = (cPtr_overridingExtensionGetterAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_overridingExtensionGetterAST) ;
-    return p->mProperty_requiresSelfForAccessingProperty ;
-  }
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -12136,7 +12097,6 @@ GGS_location GGS_overridingExtensionGetterAST::readProperty_mEndOfReaderLocation
 
 cPtr_overridingExtensionGetterAST::cPtr_overridingExtensionGetterAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
 cPtr_semanticDeclarationAST (inCompiler COMMA_THERE),
-mProperty_requiresSelfForAccessingProperty (),
 mProperty_mTypeName (),
 mProperty_mOverridingExtensionGetterName (),
 mProperty_mOverridingExtensionGetterFormalInputParameterList (),
@@ -12149,7 +12109,6 @@ mProperty_mEndOfReaderLocation () {
 //--------------------------------------------------------------------------------------------------
 
 cPtr_overridingExtensionGetterAST::cPtr_overridingExtensionGetterAST (const GGS_bool & in_isPredefined,
-                                                                      const GGS_bool & in_requiresSelfForAccessingProperty,
                                                                       const GGS_lstring & in_mTypeName,
                                                                       const GGS_lstring & in_mOverridingExtensionGetterName,
                                                                       const GGS_formalInputParameterListAST & in_mOverridingExtensionGetterFormalInputParameterList,
@@ -12160,7 +12119,6 @@ cPtr_overridingExtensionGetterAST::cPtr_overridingExtensionGetterAST (const GGS_
                                                                       Compiler * inCompiler
                                                                       COMMA_LOCATION_ARGS) :
 cPtr_semanticDeclarationAST (in_isPredefined, inCompiler COMMA_THERE),
-mProperty_requiresSelfForAccessingProperty (),
 mProperty_mTypeName (),
 mProperty_mOverridingExtensionGetterName (),
 mProperty_mOverridingExtensionGetterFormalInputParameterList (),
@@ -12169,7 +12127,6 @@ mProperty_mOverridingExtensionGetterReturnedVariableName (),
 mProperty_mOverridingExtensionGetterInstructionList (),
 mProperty_mEndOfReaderLocation () {
   mProperty_isPredefined = in_isPredefined ;
-  mProperty_requiresSelfForAccessingProperty = in_requiresSelfForAccessingProperty ;
   mProperty_mTypeName = in_mTypeName ;
   mProperty_mOverridingExtensionGetterName = in_mOverridingExtensionGetterName ;
   mProperty_mOverridingExtensionGetterFormalInputParameterList = in_mOverridingExtensionGetterFormalInputParameterList ;
@@ -12189,8 +12146,6 @@ void cPtr_overridingExtensionGetterAST::description (String & ioString,
                                                      const int32_t inIndentation) const {
   ioString.appendCString ("[@overridingExtensionGetterAST:") ;
   mProperty_isPredefined.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_requiresSelfForAccessingProperty.description (ioString, inIndentation+1) ;
   ioString.appendCString (", ") ;
   mProperty_mTypeName.description (ioString, inIndentation+1) ;
   ioString.appendCString (", ") ;
@@ -12212,7 +12167,7 @@ void cPtr_overridingExtensionGetterAST::description (String & ioString,
 
 acPtr_class * cPtr_overridingExtensionGetterAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_overridingExtensionGetterAST (mProperty_isPredefined, mProperty_requiresSelfForAccessingProperty, mProperty_mTypeName, mProperty_mOverridingExtensionGetterName, mProperty_mOverridingExtensionGetterFormalInputParameterList, mProperty_mOverridingExtensionGetterReturnedTypeName, mProperty_mOverridingExtensionGetterReturnedVariableName, mProperty_mOverridingExtensionGetterInstructionList, mProperty_mEndOfReaderLocation, inCompiler COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_overridingExtensionGetterAST (mProperty_isPredefined, mProperty_mTypeName, mProperty_mOverridingExtensionGetterName, mProperty_mOverridingExtensionGetterFormalInputParameterList, mProperty_mOverridingExtensionGetterReturnedTypeName, mProperty_mOverridingExtensionGetterReturnedVariableName, mProperty_mOverridingExtensionGetterInstructionList, mProperty_mEndOfReaderLocation, inCompiler COMMA_THERE)) ;
   return ptr ;
 }
 
@@ -12222,7 +12177,6 @@ acPtr_class * cPtr_overridingExtensionGetterAST::duplicate (Compiler * inCompile
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_overridingExtensionGetterAST::printNonNullClassInstanceProperties (void) const {
     cPtr_semanticDeclarationAST::printNonNullClassInstanceProperties () ;
-    mProperty_requiresSelfForAccessingProperty.printNonNullClassInstanceProperties ("requiresSelfForAccessingProperty") ;
     mProperty_mTypeName.printNonNullClassInstanceProperties ("mTypeName") ;
     mProperty_mOverridingExtensionGetterName.printNonNullClassInstanceProperties ("mOverridingExtensionGetterName") ;
     mProperty_mOverridingExtensionGetterFormalInputParameterList.printNonNullClassInstanceProperties ("mOverridingExtensionGetterFormalInputParameterList") ;
@@ -13549,18 +13503,17 @@ GGS_semanticDeclarationAST () {
 //--- Synthetized initializer ----------------------------------------------------------------------
 
 GGS_extensionSetterAST GGS_extensionSetterAST::
-init_21_isPredefined_21_requiresSelfForAccessingProperty_21__21__21__21__21_ (const GGS_bool & in_isPredefined,
-                                                                              const GGS_bool & in_requiresSelfForAccessingProperty,
-                                                                              const GGS_lstring & in_mTypeName,
-                                                                              const GGS_lstring & in_mExtensionSetterName,
-                                                                              const GGS_formalParameterListAST & in_mExtensionSetterFormalParameterList,
-                                                                              const GGS_semanticInstructionListAST & in_mExtensionSetterInstructionList,
-                                                                              const GGS_location & in_mEndOfSetterDeclarationLocation,
-                                                                              Compiler * inCompiler
-                                                                              COMMA_LOCATION_ARGS) {
+init_21_isPredefined_21__21__21__21__21_ (const GGS_bool & in_isPredefined,
+                                          const GGS_lstring & in_mTypeName,
+                                          const GGS_lstring & in_mExtensionSetterName,
+                                          const GGS_formalParameterListAST & in_mExtensionSetterFormalParameterList,
+                                          const GGS_semanticInstructionListAST & in_mExtensionSetterInstructionList,
+                                          const GGS_location & in_mEndOfSetterDeclarationLocation,
+                                          Compiler * inCompiler
+                                          COMMA_LOCATION_ARGS) {
   cPtr_extensionSetterAST * object = nullptr ;
   macroMyNew (object, cPtr_extensionSetterAST (inCompiler COMMA_THERE)) ;
-  object->extensionSetterAST_init_21_isPredefined_21_requiresSelfForAccessingProperty_21__21__21__21__21_ (in_isPredefined, in_requiresSelfForAccessingProperty, in_mTypeName, in_mExtensionSetterName, in_mExtensionSetterFormalParameterList, in_mExtensionSetterInstructionList, in_mEndOfSetterDeclarationLocation, inCompiler) ;
+  object->extensionSetterAST_init_21_isPredefined_21__21__21__21__21_ (in_isPredefined, in_mTypeName, in_mExtensionSetterName, in_mExtensionSetterFormalParameterList, in_mExtensionSetterInstructionList, in_mEndOfSetterDeclarationLocation, inCompiler) ;
   const GGS_extensionSetterAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
@@ -13569,16 +13522,14 @@ init_21_isPredefined_21_requiresSelfForAccessingProperty_21__21__21__21__21_ (co
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_extensionSetterAST::
-extensionSetterAST_init_21_isPredefined_21_requiresSelfForAccessingProperty_21__21__21__21__21_ (const GGS_bool & in_isPredefined,
-                                                                                                 const GGS_bool & in_requiresSelfForAccessingProperty,
-                                                                                                 const GGS_lstring & in_mTypeName,
-                                                                                                 const GGS_lstring & in_mExtensionSetterName,
-                                                                                                 const GGS_formalParameterListAST & in_mExtensionSetterFormalParameterList,
-                                                                                                 const GGS_semanticInstructionListAST & in_mExtensionSetterInstructionList,
-                                                                                                 const GGS_location & in_mEndOfSetterDeclarationLocation,
-                                                                                                 Compiler * /* inCompiler */) {
+extensionSetterAST_init_21_isPredefined_21__21__21__21__21_ (const GGS_bool & in_isPredefined,
+                                                             const GGS_lstring & in_mTypeName,
+                                                             const GGS_lstring & in_mExtensionSetterName,
+                                                             const GGS_formalParameterListAST & in_mExtensionSetterFormalParameterList,
+                                                             const GGS_semanticInstructionListAST & in_mExtensionSetterInstructionList,
+                                                             const GGS_location & in_mEndOfSetterDeclarationLocation,
+                                                             Compiler * /* inCompiler */) {
   mProperty_isPredefined = in_isPredefined ;
-  mProperty_requiresSelfForAccessingProperty = in_requiresSelfForAccessingProperty ;
   mProperty_mTypeName = in_mTypeName ;
   mProperty_mExtensionSetterName = in_mExtensionSetterName ;
   mProperty_mExtensionSetterFormalParameterList = in_mExtensionSetterFormalParameterList ;
@@ -13595,7 +13546,6 @@ GGS_semanticDeclarationAST (inSourcePtr) {
 //--------------------------------------------------------------------------------------------------
 
 GGS_extensionSetterAST GGS_extensionSetterAST::class_func_new (const GGS_bool & in_isPredefined,
-                                                               const GGS_bool & in_requiresSelfForAccessingProperty,
                                                                const GGS_lstring & in_mTypeName,
                                                                const GGS_lstring & in_mExtensionSetterName,
                                                                const GGS_formalParameterListAST & in_mExtensionSetterFormalParameterList,
@@ -13604,20 +13554,8 @@ GGS_extensionSetterAST GGS_extensionSetterAST::class_func_new (const GGS_bool & 
                                                                Compiler * inCompiler
                                                                COMMA_LOCATION_ARGS) {
   GGS_extensionSetterAST result ;
-  macroMyNew (result.mObjectPtr, cPtr_extensionSetterAST (in_isPredefined, in_requiresSelfForAccessingProperty, in_mTypeName, in_mExtensionSetterName, in_mExtensionSetterFormalParameterList, in_mExtensionSetterInstructionList, in_mEndOfSetterDeclarationLocation,  inCompiler COMMA_THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_extensionSetterAST (in_isPredefined, in_mTypeName, in_mExtensionSetterName, in_mExtensionSetterFormalParameterList, in_mExtensionSetterInstructionList, in_mEndOfSetterDeclarationLocation,  inCompiler COMMA_THERE)) ;
   return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_bool GGS_extensionSetterAST::readProperty_requiresSelfForAccessingProperty (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_bool () ;
-  }else{
-    cPtr_extensionSetterAST * p = (cPtr_extensionSetterAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_extensionSetterAST) ;
-    return p->mProperty_requiresSelfForAccessingProperty ;
-  }
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -13686,7 +13624,6 @@ GGS_location GGS_extensionSetterAST::readProperty_mEndOfSetterDeclarationLocatio
 
 cPtr_extensionSetterAST::cPtr_extensionSetterAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
 cPtr_semanticDeclarationAST (inCompiler COMMA_THERE),
-mProperty_requiresSelfForAccessingProperty (),
 mProperty_mTypeName (),
 mProperty_mExtensionSetterName (),
 mProperty_mExtensionSetterFormalParameterList (),
@@ -13697,7 +13634,6 @@ mProperty_mEndOfSetterDeclarationLocation () {
 //--------------------------------------------------------------------------------------------------
 
 cPtr_extensionSetterAST::cPtr_extensionSetterAST (const GGS_bool & in_isPredefined,
-                                                  const GGS_bool & in_requiresSelfForAccessingProperty,
                                                   const GGS_lstring & in_mTypeName,
                                                   const GGS_lstring & in_mExtensionSetterName,
                                                   const GGS_formalParameterListAST & in_mExtensionSetterFormalParameterList,
@@ -13706,14 +13642,12 @@ cPtr_extensionSetterAST::cPtr_extensionSetterAST (const GGS_bool & in_isPredefin
                                                   Compiler * inCompiler
                                                   COMMA_LOCATION_ARGS) :
 cPtr_semanticDeclarationAST (in_isPredefined, inCompiler COMMA_THERE),
-mProperty_requiresSelfForAccessingProperty (),
 mProperty_mTypeName (),
 mProperty_mExtensionSetterName (),
 mProperty_mExtensionSetterFormalParameterList (),
 mProperty_mExtensionSetterInstructionList (),
 mProperty_mEndOfSetterDeclarationLocation () {
   mProperty_isPredefined = in_isPredefined ;
-  mProperty_requiresSelfForAccessingProperty = in_requiresSelfForAccessingProperty ;
   mProperty_mTypeName = in_mTypeName ;
   mProperty_mExtensionSetterName = in_mExtensionSetterName ;
   mProperty_mExtensionSetterFormalParameterList = in_mExtensionSetterFormalParameterList ;
@@ -13732,8 +13666,6 @@ void cPtr_extensionSetterAST::description (String & ioString,
   ioString.appendCString ("[@extensionSetterAST:") ;
   mProperty_isPredefined.description (ioString, inIndentation+1) ;
   ioString.appendCString (", ") ;
-  mProperty_requiresSelfForAccessingProperty.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
   mProperty_mTypeName.description (ioString, inIndentation+1) ;
   ioString.appendCString (", ") ;
   mProperty_mExtensionSetterName.description (ioString, inIndentation+1) ;
@@ -13750,7 +13682,7 @@ void cPtr_extensionSetterAST::description (String & ioString,
 
 acPtr_class * cPtr_extensionSetterAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_extensionSetterAST (mProperty_isPredefined, mProperty_requiresSelfForAccessingProperty, mProperty_mTypeName, mProperty_mExtensionSetterName, mProperty_mExtensionSetterFormalParameterList, mProperty_mExtensionSetterInstructionList, mProperty_mEndOfSetterDeclarationLocation, inCompiler COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_extensionSetterAST (mProperty_isPredefined, mProperty_mTypeName, mProperty_mExtensionSetterName, mProperty_mExtensionSetterFormalParameterList, mProperty_mExtensionSetterInstructionList, mProperty_mEndOfSetterDeclarationLocation, inCompiler COMMA_THERE)) ;
   return ptr ;
 }
 
@@ -13760,7 +13692,6 @@ acPtr_class * cPtr_extensionSetterAST::duplicate (Compiler * inCompiler COMMA_LO
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_extensionSetterAST::printNonNullClassInstanceProperties (void) const {
     cPtr_semanticDeclarationAST::printNonNullClassInstanceProperties () ;
-    mProperty_requiresSelfForAccessingProperty.printNonNullClassInstanceProperties ("requiresSelfForAccessingProperty") ;
     mProperty_mTypeName.printNonNullClassInstanceProperties ("mTypeName") ;
     mProperty_mExtensionSetterName.printNonNullClassInstanceProperties ("mExtensionSetterName") ;
     mProperty_mExtensionSetterFormalParameterList.printNonNullClassInstanceProperties ("mExtensionSetterFormalParameterList") ;
