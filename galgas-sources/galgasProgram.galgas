@@ -250,7 +250,6 @@ private proc compileProject ?let @lstring inProjectSourceFile
     elsif featureName.string == "libpmAtPath" then
     elsif featureName.string == "applicationBundleBase" then
     elsif featureName.string == "macCodeSign" then
-//    elsif featureName.string == "MacOSDeployment" then
     else
       error featureName : "unknown feature"
     end

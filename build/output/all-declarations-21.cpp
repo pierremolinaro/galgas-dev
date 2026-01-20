@@ -7933,7 +7933,7 @@ static const int32_t gProductions_galgas3ProjectGrammar [] = {
 , TOP_DOWN_NONTERMINAL (3) // <select_galgas_33_ProjectSyntax_0>
 , TOP_DOWN_TERMINAL (Lexique_galgasScanner_33_::kToken__7D_) // $}$
 , TOP_DOWN_END_PRODUCTION ()
-// At index 16 : <folderDirectory>, in file 'galgas3ProjectSyntax.ggs', line 181
+// At index 16 : <folderDirectory>, in file 'galgas3ProjectSyntax.ggs', line 176
 , TOP_DOWN_TERMINAL (Lexique_galgasScanner_33_::kToken__22_string_22_) // $"string"$
 , TOP_DOWN_TERMINAL (Lexique_galgasScanner_33_::kToken__7B_) // ${$
 , TOP_DOWN_NONTERMINAL (4) // <select_galgas_33_ProjectSyntax_1>
@@ -8035,14 +8035,14 @@ static const int32_t gProductions_galgas3ProjectGrammar [] = {
 , TOP_DOWN_NONTERMINAL (2) // <folderDirectory>
 , TOP_DOWN_NONTERMINAL (3) // <select_galgas_33_ProjectSyntax_0>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 95 : <select_galgas_33_ProjectSyntax_1>, in file 'galgas3ProjectSyntax.ggs', line 187
+// At index 95 : <select_galgas_33_ProjectSyntax_1>, in file 'galgas3ProjectSyntax.ggs', line 182
 , TOP_DOWN_END_PRODUCTION ()
-// At index 96 : <select_galgas_33_ProjectSyntax_1>, in file 'galgas3ProjectSyntax.ggs', line 187
+// At index 96 : <select_galgas_33_ProjectSyntax_1>, in file 'galgas3ProjectSyntax.ggs', line 182
 , TOP_DOWN_TERMINAL (Lexique_galgasScanner_33_::kToken_in) // $in$
 , TOP_DOWN_NONTERMINAL (2) // <folderDirectory>
 , TOP_DOWN_NONTERMINAL (4) // <select_galgas_33_ProjectSyntax_1>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 100 : <select_galgas_33_ProjectSyntax_1>, in file 'galgas3ProjectSyntax.ggs', line 187
+// At index 100 : <select_galgas_33_ProjectSyntax_1>, in file 'galgas3ProjectSyntax.ggs', line 182
 , TOP_DOWN_TERMINAL (Lexique_galgasScanner_33_::kToken__22_string_22_) // $"string"$
 , TOP_DOWN_NONTERMINAL (4) // <select_galgas_33_ProjectSyntax_1>
 , TOP_DOWN_END_PRODUCTION ()
@@ -8097,7 +8097,7 @@ static const ProductionNameDescriptor gProductionNames_galgas3ProjectGrammar [28
 static const int32_t gProductionIndexes_galgas3ProjectGrammar [28] = {
 0, // index 0 : <project_header>, in file 'galgas3ProjectSyntax.ggs', line 59
 11, // index 1 : <project_component_start_symbol>, in file 'galgas3ProjectSyntax.ggs', line 77
-16, // index 2 : <folderDirectory>, in file 'galgas3ProjectSyntax.ggs', line 181
+16, // index 2 : <folderDirectory>, in file 'galgas3ProjectSyntax.ggs', line 176
 21, // index 3 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 87
 22, // index 4 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 87
 25, // index 5 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 87
@@ -8119,9 +8119,9 @@ static const int32_t gProductionIndexes_galgas3ProjectGrammar [28] = {
 83, // index 21 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 87
 88, // index 22 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 87
 91, // index 23 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 87
-95, // index 24 : <select_galgas_33_ProjectSyntax_1>, in file 'galgas3ProjectSyntax.ggs', line 187
-96, // index 25 : <select_galgas_33_ProjectSyntax_1>, in file 'galgas3ProjectSyntax.ggs', line 187
-100, // index 26 : <select_galgas_33_ProjectSyntax_1>, in file 'galgas3ProjectSyntax.ggs', line 187
+95, // index 24 : <select_galgas_33_ProjectSyntax_1>, in file 'galgas3ProjectSyntax.ggs', line 182
+96, // index 25 : <select_galgas_33_ProjectSyntax_1>, in file 'galgas3ProjectSyntax.ggs', line 182
+100, // index 26 : <select_galgas_33_ProjectSyntax_1>, in file 'galgas3ProjectSyntax.ggs', line 182
 103 // index 27 : <>, in file '.ggs', line 0
 } ;
 

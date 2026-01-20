@@ -346,16 +346,6 @@ proc updateGalgasTargets
     macCodeSign = ["" nowhere]
   end
 //---------------------------------------------------------- MacOSDeployment
-//  let @string MACOSX_DEPLOYMENT_TARGET
-//  if let entry = inProjectQualifiedFeatureMap @["MacOSDeployment"] then
-//    if entry.mFeatureValue.string == "" then
-//      error entry.mFeatureValue:"the %MacOSDeployment attribute should not be empty" : MACOSX_DEPLOYMENT_TARGET
-//    else
-//      MACOSX_DEPLOYMENT_TARGET = entry.mFeatureValue
-//    end
-//  else
-//    MACOSX_DEPLOYMENT_TARGET = ["14.6" nowhere]
-//  end
   let MACOSX_DEPLOYMENT_TARGET = "14.6"
 //---------------------------------------------------------- LIBPM path
   let @string libpmPath
