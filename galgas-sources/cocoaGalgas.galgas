@@ -203,7 +203,7 @@ gui cocoa {
 
   with lexique galgasTemplateScanner {
     fileExtension : "galgasTemplate"
-    fileExtension : "ggsTemplate"
+//    fileExtension : "ggsTemplate"
     title: "Template"
 
   }

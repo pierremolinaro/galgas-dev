@@ -191,10 +191,6 @@ struct ProjectDocumentView : View {
           self.mRootDirectoryNode.mSelectedFileNodeID = SourceFileNodeID (url: fileURL)
         }
         ScrollSourceToLineNotification.notify (location: self.mIssues [idx].mStartLocation)
-//        let object = ScrollSourceToLineNotificationObject (location: self.mIssues [idx].mStartLocation)
-//        DispatchQueue.main.async {
-//          NotificationCenter.default.post (name: .myScrollSourceToLocation, object: object)
-//        }
       }
     }
   }

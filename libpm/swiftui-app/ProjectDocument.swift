@@ -7,13 +7,6 @@ import UniformTypeIdentifiers
 
 //--------------------------------------------------------------------------------------------------
 
-//extension UTType {
-//  nonisolated static let galgas3Project = UTType (exportedAs: "name.pcmolinaro.pierre.galgas-ide.galgas3Project")
-//  nonisolated static let galgas4Project = UTType (exportedAs: "name.pcmolinaro.pierre.galgas-ide.galgas4Project")
-//}
-
-//--------------------------------------------------------------------------------------------------
-
 struct ProjectDocument : FileDocument {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

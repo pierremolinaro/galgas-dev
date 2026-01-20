@@ -13,21 +13,20 @@ extension UTType {
   nonisolated static let galgasProject = UTType (exportedAs: Bundle.main.bundleIdentifier! + ".galgasproject")
   nonisolated static let galgasTemplate = UTType (exportedAs: Bundle.main.bundleIdentifier! + ".galgastemplate")
   nonisolated static let ggs = UTType (exportedAs: Bundle.main.bundleIdentifier! + ".ggs")
-  nonisolated static let ggsTemplate = UTType (exportedAs: Bundle.main.bundleIdentifier! + ".ggstemplate")
   nonisolated static let ggsproject = UTType (exportedAs: Bundle.main.bundleIdentifier! + ".ggsproject")
 }
 
 //--------------------------------------------------------------------------------------------------
 
 extension ProjectDocument {
-  static let readableContentTypes : [UTType] = [.galgas, .galgasProject, .galgasTemplate, .ggs, .ggsTemplate, .ggsproject]
+  static let readableContentTypes : [UTType] = [.galgas, .galgasProject, .galgasTemplate, .ggs, .ggsproject]
 }
 
 //--------------------------------------------------------------------------------------------------
 //    Project file extensions
 //--------------------------------------------------------------------------------------------------
 
-let projectFileExtensions = Set (["galgas", "galgasproject", "galgastemplate", "ggs", "ggstemplate", "ggsproject"])
+let projectFileExtensions = Set (["galgas", "galgasproject", "galgastemplate", "ggs", "ggsproject"])
 
 //--------------------------------------------------------------------------------------------------
 //    Indexing dictionary
@@ -55,8 +54,6 @@ func indexingDescriptorDictionary () -> [String : String] {
     result = ScannerFor_galgasTemplateScanner ()
   }else if fileExtension == "ggs" {
     result = ScannerFor_galgasScanner4 ()
-  }else if fileExtension == "ggstemplate" {
-    result = ScannerFor_galgasTemplateScanner ()
   }else if fileExtension == "ggsproject" {
     result = ScannerFor_galgasScanner4 ()
   }
