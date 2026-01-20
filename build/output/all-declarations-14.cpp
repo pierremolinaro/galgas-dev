@@ -10501,30 +10501,23 @@ void cParser_galgas_33_ProjectSyntax::rule_galgas_33_ProjectSyntax_project_5F_co
       inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__22_string_22_ COMMA_SOURCE_FILE ("galgasProject.galgas", 140)) ;
       var_qualifiedFeatureList_3457.addAssignOperation (GGS_string ("app-source").getter_here (inCompiler COMMA_SOURCE_FILE ("galgasProject.galgas", 141)), var_featureValue_5149  COMMA_SOURCE_FILE ("galgasProject.galgas", 141)) ;
     } break ;
-    case 17: {
-      inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__25_app_2D_link COMMA_SOURCE_FILE ("galgasProject.galgas", 143)) ;
-      inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__3A_ COMMA_SOURCE_FILE ("galgasProject.galgas", 144)) ;
-      GGS_lstring var_featureValue_5296 = inCompiler->synthetizedAttribute_tokenString () ;
-      inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__22_string_22_ COMMA_SOURCE_FILE ("galgasProject.galgas", 145)) ;
-      var_qualifiedFeatureList_3457.addAssignOperation (GGS_string ("app-link").getter_here (inCompiler COMMA_SOURCE_FILE ("galgasProject.galgas", 146)), var_featureValue_5296  COMMA_SOURCE_FILE ("galgasProject.galgas", 146)) ;
-    } break ;
     default:
       repeatFlag_0 = false ;
       break ;
     }
   }
-  inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__7D_ COMMA_SOURCE_FILE ("galgasProject.galgas", 148)) ;
-  GGS_string var_sourceDirectory_5462 = constinArgument_inProjectSourceFilePath.readProperty_string ().getter_stringByDeletingLastPathComponent (SOURCE_FILE ("galgasProject.galgas", 150)).add_operation (GGS_string ("/sources"), inCompiler COMMA_SOURCE_FILE ("galgasProject.galgas", 150)) ;
-  GGS_stringlist var_extensionList_5562 = GGS_stringlist::init (inCompiler COMMA_HERE) ;
-  var_extensionList_5562.addAssignOperation (GGS_string ("galgas")  COMMA_SOURCE_FILE ("galgasProject.galgas", 152)) ;
-  var_extensionList_5562.addAssignOperation (GGS_string ("ggs")  COMMA_SOURCE_FILE ("galgasProject.galgas", 153)) ;
-  GGS_stringlist var_projectSourceList_5663 = var_sourceDirectory_5462.getter_regularFilesWithExtensions (GGS_bool (true), var_extensionList_5562 COMMA_SOURCE_FILE ("galgasProject.galgas", 154)) ;
-  GGS_string var_toolCppDirectory_5803 = var_sourceDirectory_5462.add_operation (GGS_string ("/tool-sources"), inCompiler COMMA_SOURCE_FILE ("galgasProject.galgas", 156)) ;
-  GGS_stringlist var_cppExtensionList_5865 = GGS_stringlist::init (inCompiler COMMA_HERE) ;
-  var_cppExtensionList_5865.addAssignOperation (GGS_string ("cpp")  COMMA_SOURCE_FILE ("galgasProject.galgas", 158)) ;
-  var_cppExtensionList_5865.addAssignOperation (GGS_string ("h")  COMMA_SOURCE_FILE ("galgasProject.galgas", 159)) ;
-  GGS_stringlist var_toolCppSourceList_5970 = var_toolCppDirectory_5803.getter_regularFilesWithExtensions (GGS_bool (true), var_cppExtensionList_5865 COMMA_SOURCE_FILE ("galgasProject.galgas", 160)) ;
-  outArgument_outProjectComponentAST = GGS_galgas_33_ProjectComponentAST::init_21__21__21__21__21__21__21__21__21_ (var_projectSourceList_5663, var_toolCppSourceList_5970, var_majorVersion_3252, var_minorVersion_3285, var_revisionVersion_3318, var_generateFeatureList_3394, var_qualifiedFeatureList_3457, var_targetName_3354, GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("galgasProject.galgas", 171)), inCompiler COMMA_HERE) ;
+  inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__7D_ COMMA_SOURCE_FILE ("galgasProject.galgas", 143)) ;
+  GGS_string var_sourceDirectory_5317 = constinArgument_inProjectSourceFilePath.readProperty_string ().getter_stringByDeletingLastPathComponent (SOURCE_FILE ("galgasProject.galgas", 145)).add_operation (GGS_string ("/sources"), inCompiler COMMA_SOURCE_FILE ("galgasProject.galgas", 145)) ;
+  GGS_stringlist var_extensionList_5417 = GGS_stringlist::init (inCompiler COMMA_HERE) ;
+  var_extensionList_5417.addAssignOperation (GGS_string ("galgas")  COMMA_SOURCE_FILE ("galgasProject.galgas", 147)) ;
+  var_extensionList_5417.addAssignOperation (GGS_string ("ggs")  COMMA_SOURCE_FILE ("galgasProject.galgas", 148)) ;
+  GGS_stringlist var_projectSourceList_5518 = var_sourceDirectory_5317.getter_regularFilesWithExtensions (GGS_bool (true), var_extensionList_5417 COMMA_SOURCE_FILE ("galgasProject.galgas", 149)) ;
+  GGS_string var_toolCppDirectory_5658 = var_sourceDirectory_5317.add_operation (GGS_string ("/tool-sources"), inCompiler COMMA_SOURCE_FILE ("galgasProject.galgas", 151)) ;
+  GGS_stringlist var_cppExtensionList_5720 = GGS_stringlist::init (inCompiler COMMA_HERE) ;
+  var_cppExtensionList_5720.addAssignOperation (GGS_string ("cpp")  COMMA_SOURCE_FILE ("galgasProject.galgas", 153)) ;
+  var_cppExtensionList_5720.addAssignOperation (GGS_string ("h")  COMMA_SOURCE_FILE ("galgasProject.galgas", 154)) ;
+  GGS_stringlist var_toolCppSourceList_5825 = var_toolCppDirectory_5658.getter_regularFilesWithExtensions (GGS_bool (true), var_cppExtensionList_5720 COMMA_SOURCE_FILE ("galgasProject.galgas", 155)) ;
+  outArgument_outProjectComponentAST = GGS_galgas_33_ProjectComponentAST::init_21__21__21__21__21__21__21__21__21_ (var_projectSourceList_5518, var_toolCppSourceList_5825, var_majorVersion_3252, var_minorVersion_3285, var_revisionVersion_3318, var_generateFeatureList_3394, var_qualifiedFeatureList_3457, var_targetName_3354, GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("galgasProject.galgas", 166)), inCompiler COMMA_HERE) ;
 }
 
 //------------------------------------------------------------------------------------------------
@@ -10588,17 +10581,12 @@ void cParser_galgas_33_ProjectSyntax::rule_galgas_33_ProjectSyntax_project_5F_co
       inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__3A_ COMMA_SOURCE_FILE ("galgasProject.galgas", 139)) ;
       inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__22_string_22_ COMMA_SOURCE_FILE ("galgasProject.galgas", 140)) ;
     } break ;
-    case 17: {
-      inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__25_app_2D_link COMMA_SOURCE_FILE ("galgasProject.galgas", 143)) ;
-      inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__3A_ COMMA_SOURCE_FILE ("galgasProject.galgas", 144)) ;
-      inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__22_string_22_ COMMA_SOURCE_FILE ("galgasProject.galgas", 145)) ;
-    } break ;
     default:
       repeatFlag_0 = false ;
       break ;
     }
   }
-  inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__7D_ COMMA_SOURCE_FILE ("galgasProject.galgas", 148)) ;
+  inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__7D_ COMMA_SOURCE_FILE ("galgasProject.galgas", 143)) ;
   inCompiler->resetTemplateString () ;
 }
 
@@ -10663,17 +10651,12 @@ void cParser_galgas_33_ProjectSyntax::rule_galgas_33_ProjectSyntax_project_5F_co
       inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__3A_ COMMA_SOURCE_FILE ("galgasProject.galgas", 139)) ;
       inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__22_string_22_ COMMA_SOURCE_FILE ("galgasProject.galgas", 140)) ;
     } break ;
-    case 17: {
-      inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__25_app_2D_link COMMA_SOURCE_FILE ("galgasProject.galgas", 143)) ;
-      inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__3A_ COMMA_SOURCE_FILE ("galgasProject.galgas", 144)) ;
-      inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__22_string_22_ COMMA_SOURCE_FILE ("galgasProject.galgas", 145)) ;
-    } break ;
     default:
       repeatFlag_0 = false ;
       break ;
     }
   }
-  inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__7D_ COMMA_SOURCE_FILE ("galgasProject.galgas", 148)) ;
+  inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__7D_ COMMA_SOURCE_FILE ("galgasProject.galgas", 143)) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -11133,8 +11116,8 @@ static const char * gLexicalMessage_galgasScanner_34__undefinedAttribute = "unde
 
 String Lexique_galgasScanner_34_::getMessageForTerminal (const int32_t inTerminalIndex) const {
   String result = "<unknown>" ;
-  if ((inTerminalIndex >= 0) && (inTerminalIndex < 199)) {
-    static const char * syntaxErrorMessageArray [199] = {kEndOfSourceLexicalErrorMessage,
+  if ((inTerminalIndex >= 0) && (inTerminalIndex < 198)) {
+    static const char * syntaxErrorMessageArray [198] = {kEndOfSourceLexicalErrorMessage,
         "an identifier",
         "a float number",
         "a literal integer",
@@ -11240,7 +11223,6 @@ String Lexique_galgasScanner_34_::getMessageForTerminal (const int32_t inTermina
         "the 'weak' keyword",
         "the 'while' keyword",
         "the 'with' keyword",
-        "the '%app-link' keyword",
         "the '%app-source' keyword",
         "the '%applicationBundleBase' keyword",
         "the '%clonable' keyword",
@@ -11679,18 +11661,6 @@ static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__afte
   utf32 ('t'),
   utf32 ('e'),
   utf32 ('r'),
-} ;
-
-//--- Unicode string for '$app-link$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__app_2D_link = {
-  utf32 ('a'),
-  utf32 ('p'),
-  utf32 ('p'),
-  utf32 ('-'),
-  utf32 ('l'),
-  utf32 ('i'),
-  utf32 ('n'),
-  utf32 ('k'),
 } ;
 
 //--- Unicode string for '$app-source$'
@@ -13196,14 +13166,13 @@ static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___7E_
 //             Key words table 'attributeKeyWordList'      
 //--------------------------------------------------------------------------------------------------
 
-static const int32_t ktable_size_galgasScanner_34__attributeKeyWordList = 41 ;
+static const int32_t ktable_size_galgasScanner_34__attributeKeyWordList = 40 ;
 
 static const C_unicode_lexique_table_entry ktable_for_galgasScanner_34__attributeKeyWordList [ktable_size_galgasScanner_34__attributeKeyWordList] = {
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_34__from, Lexique_galgasScanner_34_::kToken__25_from),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_34__once, Lexique_galgasScanner_34_::kToken__25_once),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_34__remove, Lexique_galgasScanner_34_::kToken__25_remove),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_34__usefull, Lexique_galgasScanner_34_::kToken__25_usefull),
-  C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_34__app_2D_link, Lexique_galgasScanner_34_::kToken__25_app_2D_link),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_34__clonable, Lexique_galgasScanner_34_::kToken__25_clonable),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_34__equatable, Lexique_galgasScanner_34_::kToken__25_equatable),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_34__preserved, Lexique_galgasScanner_34_::kToken__25_preserved),
@@ -13972,11 +13941,6 @@ String Lexique_galgasScanner_34_::getCurrentTokenString (const cToken * inTokenP
     case kToken_with:
       s.appendChar (utf32 ('$')) ;
       s.appendCString ("with") ;
-      s.appendChar (utf32 ('$')) ;
-      break ;
-    case kToken__25_app_2D_link:
-      s.appendChar (utf32 ('$')) ;
-      s.appendCString ("%app-link") ;
       s.appendChar (utf32 ('$')) ;
       break ;
     case kToken__25_app_2D_source:
@@ -15429,7 +15393,6 @@ GGS_stringlist Lexique_galgasScanner_34_::symbols (LOCATION_ARGS) {
   result.addAssignOperation (GGS_string ("weak") COMMA_HERE) ;
   result.addAssignOperation (GGS_string ("while") COMMA_HERE) ;
   result.addAssignOperation (GGS_string ("with") COMMA_HERE) ;
-  result.addAssignOperation (GGS_string ("%app-link") COMMA_HERE) ;
   result.addAssignOperation (GGS_string ("%app-source") COMMA_HERE) ;
   result.addAssignOperation (GGS_string ("%applicationBundleBase") COMMA_HERE) ;
   result.addAssignOperation (GGS_string ("%clonable") COMMA_HERE) ;
@@ -15544,7 +15507,6 @@ static void getKeywordsForIdentifier_galgasScanner_34_ (const String & inIdentif
     ioList.appendObject ("once") ;
     ioList.appendObject ("remove") ;
     ioList.appendObject ("usefull") ;
-    ioList.appendObject ("app-link") ;
     ioList.appendObject ("clonable") ;
     ioList.appendObject ("equatable") ;
     ioList.appendObject ("preserved") ;
@@ -15740,7 +15702,7 @@ __attribute__ ((unused)) (getKeywordLists_galgasScanner_34_, getKeywordsForIdent
 //--------------------------------------------------------------------------------------------------
 
 uint32_t Lexique_galgasScanner_34_::styleIndexForTerminal (const int32_t inTerminalIndex) const {
-  static const uint32_t kTerminalSymbolStyles [199] = {0,
+  static const uint32_t kTerminalSymbolStyles [198] = {0,
     0 /* galgasScanner4_1_identifier */,
     7 /* galgasScanner4_1_double_2E_xxx */,
     6 /* galgasScanner4_1_literalInt */,
@@ -15846,7 +15808,6 @@ uint32_t Lexique_galgasScanner_34_::styleIndexForTerminal (const int32_t inTermi
     1 /* galgasScanner4_1_weak */,
     1 /* galgasScanner4_1_while */,
     1 /* galgasScanner4_1_with */,
-    11 /* galgasScanner4_1__25_app_2D_link */,
     11 /* galgasScanner4_1__25_app_2D_source */,
     11 /* galgasScanner4_1__25_applicationBundleBase */,
     11 /* galgasScanner4_1__25_clonable */,

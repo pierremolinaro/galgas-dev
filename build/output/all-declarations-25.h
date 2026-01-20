@@ -1625,33 +1625,32 @@ void routine_generateArm_36__34_LinuxMakefileTarget_3F__3F_buildDirName_3F_ (con
 
 //--------------------------------------------------------------------------------------------------
 //
-//Routine 'updateGalgasTargets?absoluteBuildDir?buildDirName??????????appProductFileList?swiftAppProductFileList????&???'
+//Routine 'updateGalgasTargets?absoluteBuildDir?buildDirName??????????appProductFileList?swiftAppProductFileList????&??'
 //
 //--------------------------------------------------------------------------------------------------
 
-void routine_updateGalgasTargets_3F_absoluteBuildDir_3F_buildDirName_3F__3F__3F__3F__3F__3F__3F__3F__3F__3F_appProductFileList_3F_swiftAppProductFileList_3F__3F__3F__3F__26__3F__3F__3F_ (const class GGS_string constinArgument0,
-                                                                                                                                                                                           const class GGS_string constinArgument1,
-                                                                                                                                                                                           const class GGS_string constinArgument2,
-                                                                                                                                                                                           const class GGS_string constinArgument3,
-                                                                                                                                                                                           const class GGS_location constinArgument4,
-                                                                                                                                                                                           const class GGS_string constinArgument5,
-                                                                                                                                                                                           const class GGS_projectQualifiedFeatureMap constinArgument6,
-                                                                                                                                                                                           const class GGS_lstringlist constinArgument7,
-                                                                                                                                                                                           const class GGS_bool constinArgument8,
-                                                                                                                                                                                           const class GGS_stringlist constinArgument9,
-                                                                                                                                                                                           const class GGS_stringlist constinArgument10,
-                                                                                                                                                                                           const class GGS_stringlist constinArgument11,
-                                                                                                                                                                                           const class GGS_stringlist constinArgument12,
-                                                                                                                                                                                           const class GGS_stringlist constinArgument13,
-                                                                                                                                                                                           const class GGS_stringlist constinArgument14,
-                                                                                                                                                                                           const class GGS_string constinArgument15,
-                                                                                                                                                                                           const class GGS_stringset constinArgument16,
-                                                                                                                                                                                           class GGS_stringset & ioArgument17,
-                                                                                                                                                                                           const class GGS_stringlist constinArgument18,
-                                                                                                                                                                                           const class GGS_stringlist constinArgument19,
-                                                                                                                                                                                           const class GGS_stringlist constinArgument20,
-                                                                                                                                                                                           class Compiler * inCompiler
-                                                                                                                                                                                           COMMA_LOCATION_ARGS) ;
+void routine_updateGalgasTargets_3F_absoluteBuildDir_3F_buildDirName_3F__3F__3F__3F__3F__3F__3F__3F__3F__3F_appProductFileList_3F_swiftAppProductFileList_3F__3F__3F__3F__26__3F__3F_ (const class GGS_string constinArgument0,
+                                                                                                                                                                                       const class GGS_string constinArgument1,
+                                                                                                                                                                                       const class GGS_string constinArgument2,
+                                                                                                                                                                                       const class GGS_string constinArgument3,
+                                                                                                                                                                                       const class GGS_location constinArgument4,
+                                                                                                                                                                                       const class GGS_string constinArgument5,
+                                                                                                                                                                                       const class GGS_projectQualifiedFeatureMap constinArgument6,
+                                                                                                                                                                                       const class GGS_lstringlist constinArgument7,
+                                                                                                                                                                                       const class GGS_bool constinArgument8,
+                                                                                                                                                                                       const class GGS_stringlist constinArgument9,
+                                                                                                                                                                                       const class GGS_stringlist constinArgument10,
+                                                                                                                                                                                       const class GGS_stringlist constinArgument11,
+                                                                                                                                                                                       const class GGS_stringlist constinArgument12,
+                                                                                                                                                                                       const class GGS_stringlist constinArgument13,
+                                                                                                                                                                                       const class GGS_stringlist constinArgument14,
+                                                                                                                                                                                       const class GGS_string constinArgument15,
+                                                                                                                                                                                       const class GGS_stringset constinArgument16,
+                                                                                                                                                                                       class GGS_stringset & ioArgument17,
+                                                                                                                                                                                       const class GGS_stringlist constinArgument18,
+                                                                                                                                                                                       const class GGS_stringlist constinArgument19,
+                                                                                                                                                                                       class Compiler * inCompiler
+                                                                                                                                                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //

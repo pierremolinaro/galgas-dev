@@ -262,8 +262,6 @@ message attributeError : "in an attribute name, a letter or a digit should follo
 message undefinedAttribute : "undefined attribute"
 
 list attributeKeyWordList style attributeStyle error message "the '%K' keyword" {
-//  "aliasOf" -> $%aliasOf$,
-  "app-link" -> $%app-link$,
   "app-source" -> $%app-source$,
   "applicationBundleBase" -> $%applicationBundleBase$,
   "clonable" -> $%clonable$,

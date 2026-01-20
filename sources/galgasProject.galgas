@@ -139,11 +139,6 @@ syntax galgas3ProjectSyntax (galgasScanner3) {
       $:$
       $"string"$ ?let @lstring featureValue
       qualifiedFeatureList += !["app-source" here] !featureValue
-    while
-      $%app-link$
-      $:$
-      $"string"$ ?let @lstring featureValue
-      qualifiedFeatureList += !["app-link" here] !featureValue
     end
     $}$
   //--- Enumerate sources directory for getting all source files

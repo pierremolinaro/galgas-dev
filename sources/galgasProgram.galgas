@@ -212,7 +212,6 @@ private proc compileProject ?let @lstring inProjectSourceFile
   end
 //--------------------------------- Hand coded source files
   var @stringlist handCodedLinkToolFileList = @()
-  var @stringlist handCodedLinkAppFileList = @()
   var @stringlist handCodedSourceAppFileList = @()
   let @stringlist handCodedSourceToolFileList = inProjectComponentAST.mToolCppSourceList
   var @stringlist frameworkToolFileList = @()
@@ -234,8 +233,6 @@ private proc compileProject ?let @lstring inProjectSourceFile
       end
     elsif featureName.string == "tool-link" then
       handCodedLinkToolFileList += !featureValue.string
-    elsif featureName.string == "app-link" then
-      handCodedLinkAppFileList += !featureValue.string
     elsif featureName.string == "libpmAtPath" then
     elsif featureName.string == "applicationBundleBase" then
     elsif featureName.string == "macCodeSign" then
@@ -371,7 +368,6 @@ private proc compileProject ?let @lstring inProjectSourceFile
       !handCodedSourceToolFileList
       !frameworkToolFileList
       !handCodedSourceAppFileList
-      !handCodedLinkAppFileList
       !handCodedLinkToolFileList
     )
   end
@@ -398,7 +394,6 @@ private proc projectGeneration
               ?let @stringlist inFrameworkToolFileList
               ?let @stringlist inHandCodedSourceAppFileList
               ?let @stringlist inHandCodedLinkAppFileList
-              ?let @stringlist inHandCodedLinkToolFileList
 {
   let appProductFileList = inAppProductFileList
 //--------------------------------- File generation
@@ -488,7 +483,6 @@ private proc projectGeneration
       !?allProductFileSet
       !inHandCodedSourceAppFileList
       !inHandCodedLinkAppFileList
-      !inHandCodedLinkToolFileList
     )
   end
 //--------------------------------- Remove useless files

@@ -317,8 +317,7 @@ proc updateGalgasTargets
   ?let @stringset inHandledExtensionSet
   ?!@stringset ioAllProductFileSet
   ?let @stringlist inHandCodedSourceAppFileList
-  ?let @stringlist inHandCodedLinkAppFileList
-  ?let @stringlist inHandCodedLinkToolFileList {
+  ?let @stringlist inHandCodedLinkAppFileList {
   ioAllProductFileSet += .setWithStringList {!inSwiftAppProductFileList}
   let projectDirectory = [inProjectSourceFilePath stringByDeletingLastPathComponent]
 //--- Update project header
@@ -489,7 +488,7 @@ proc updateGalgasTargets
     !handCodedSourceDirectorySet
     !handCodedSourceToolFileList
     !toolCppFileList
-    !linkOptionForLinkingFrameworkWithTool + inHandCodedLinkToolFileList
+    !linkOptionForLinkingFrameworkWithTool
     !libpmPath
     !inBuildDirectoryName
   ]
@@ -1199,15 +1198,15 @@ proc updateGalgasTargets
       @("GCC_WARN_UNUSED_PARAMETER = YES"),
       @("PRODUCT_BUNDLE_IDENTIFIER = \"" + applicationBundleBase + "." + inTargetName + ".tool\"")
     ] + codeSigningSettingList
-    if [inHandCodedLinkToolFileList count] > 0 then
-      var s = "OTHER_LDFLAGS=("
-      for (toolLink) in inHandCodedLinkToolFileList
-        do s += "\"" + toolLink + "\""
-        between s += ","
-      end
-      s += ")"
-      settingList += !s
-    end
+//    if [inHandCodedLinkToolFileList count] > 0 then
+//      var s = "OTHER_LDFLAGS=("
+//      for (toolLink) in inHandCodedLinkToolFileList
+//        do s += "\"" + toolLink + "\""
+//        between s += ","
+//      end
+//      s += ")"
+//      settingList += !s
+//    end
     [!?xcodeProject addToolTarget
       !targetName:inTargetName + " tool"
       !productFileName:inTargetName
@@ -1225,15 +1224,15 @@ proc updateGalgasTargets
       @("GCC_WARN_UNUSED_PARAMETER = YES"),
       @("PRODUCT_BUNDLE_IDENTIFIER = \"" + applicationBundleBase + "." + inTargetName + ".tooldebug\"")
     ] + codeSigningSettingList
-    if [inHandCodedLinkToolFileList count] > 0 then
-      var s = "OTHER_LDFLAGS=("
-      for (toolLink) in inHandCodedLinkToolFileList
-        do s += "\"" + toolLink + "\""
-        between s += ","
-      end
-      s += ")"
-      settingList += !s
-    end
+//    if [inHandCodedLinkToolFileList count] > 0 then
+//      var s = "OTHER_LDFLAGS=("
+//      for (toolLink) in inHandCodedLinkToolFileList
+//        do s += "\"" + toolLink + "\""
+//        between s += ","
+//      end
+//      s += ")"
+//      settingList += !s
+//    end
     [!?xcodeProject addToolTarget
       !targetName:inTargetName + " tool debug"
       !productFileName:inTargetName+"-debug"
