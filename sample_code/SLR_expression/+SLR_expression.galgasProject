@@ -3,14 +3,6 @@ project (1:0:0) -> "SLRExpression" {
   %makefile-unix
   %MacSwiftApp
   %applicationBundleBase : "fr.what"
-#--- Sources
-  "sources/SLR_expression_lexique.galgas"
-  "sources/SLR_expression_options.galgas"
-  "sources/SLR_expression_semantics.galgas"
-  "sources/SLR_expression_syntax.galgas"
-  "sources/SLR_expression_grammar.galgas"
-  "sources/SLR_expression_cocoa.galgas"
-  "sources/SLR_expression_program.galgas"
 }
 
 

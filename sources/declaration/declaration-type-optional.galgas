@@ -238,7 +238,7 @@ final class @optionalTypeForGeneration : @semanticTypeForGeneration {
 
 //--------------------------------------------------------------------------------------------------
 
-private filewrapper optionalTypeGenerationTemplate in "+generation-templates/type_generation" {
+private filewrapper optionalTypeGenerationTemplate in "../+generation-templates/type_generation" {
 }{
 }{
   template optionalTypeHeader1 "GALGAS_optional.h1.galgasTemplate"

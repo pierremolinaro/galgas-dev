@@ -71,11 +71,8 @@
    <Add directory="%!LIBPM_PATH%/utilities" />
    <Add directory="../%!BUILD_DIR_NAME%/user-headers" />
    <Add directory="../%!BUILD_DIR_NAME%/output" />
-%
-for (key) in HAND_CODED_SOURCE_TOOL_DIRECTORY_SET do
-%  <Add directory="%!key%" />\n%
-end
-%  </Compiler>
+   <Add directory="%!HAND_CODED_SOURCE_TOOL_DIRECTORY%" />
+  </Compiler>
   <Linker>
 %if GENERATE_FOR_WINDOWS then !"   <Add option=\"-static\" />\n   <Add library=\"Comdlg32\" />\n" else end
 %  </Linker>

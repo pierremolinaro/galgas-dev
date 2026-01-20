@@ -170,7 +170,6 @@ fileprivate let kEndOfScriptInTemplateArray_galgasTemplateScanner : [Bool] = [
   false /* %quietOutputByDefault */,
   false /* %searchSubscript */,
   false /* %templateEndMark */,
-  false /* %tool-source */,
   false /* %translate */,
   false /* %usefull */,
   false /* * */,

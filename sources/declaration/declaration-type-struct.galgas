@@ -468,7 +468,7 @@ final class @structTypeForGeneration : @semanticTypeForGeneration {
 
 //--------------------------------------------------------------------------------------------------
 
-filewrapper structureGenerationTemplate in "+generation-templates/type_generation" {
+filewrapper structureGenerationTemplate in "../+generation-templates/type_generation" {
 }{
 }{
   template structTypeHeader1 "GALGAS_struct.h1.galgasTemplate"

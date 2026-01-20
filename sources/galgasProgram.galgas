@@ -208,29 +208,17 @@ private proc compileProject ?let @lstring inProjectSourceFile
     elsif [mValue pathExtension] == "ggs" then
       let absoluteSourcePath = [mValue absolutePathFromPath !sourcesDir]
       grammar galgas4Grammar (!?declarationAST) in @lstring {!absoluteSourcePath !.nowhere}
-//    else
-//      error mValue: "only \".galgas\" or \".ggs\" extensions are allowed here"
     end
   end
 //--------------------------------- Hand coded source files
   var @stringlist handCodedLinkToolFileList = @()
   var @stringlist handCodedLinkAppFileList = @()
   var @stringlist handCodedSourceAppFileList = @()
-  var @stringlist handCodedSourceToolFileList = @()
+  let @stringlist handCodedSourceToolFileList = inProjectComponentAST.mToolCppSourceList
   var @stringlist frameworkToolFileList = @()
   var @stringset handCodedSourceDirectorySet = @()
   for (featureName featureValue) in inProjectComponentAST.mQualifiedFeatureList do
-    if "tool-source" == featureName then
-      handCodedSourceToolFileList += !featureValue.string
-      let directory = [featureValue stringByDeletingLastPathComponent]
-      if directory == "" then
-        handCodedSourceDirectorySet ++= "../"
-      elsif [directory characterAtIndex !0] != '/' then
-        handCodedSourceDirectorySet ++= "../" + directory
-      else
-        handCodedSourceDirectorySet ++= directory
-      end
-    elsif featureName.string == "tool-include" then
+    if featureName.string == "tool-include" then
       handCodedSourceDirectorySet ++= featureValue
     elsif featureName.string == "tool-framework" then
       frameworkToolFileList += ![featureValue lastPathComponent]
@@ -379,7 +367,7 @@ private proc compileProject ?let @lstring inProjectSourceFile
       !declarationAST.mSourceRuleList
       !inProjectComponentAST
       !inProjectSourceFile.string
-      !handCodedSourceDirectorySet
+      !"../sources/tool-sources"
       !handCodedSourceToolFileList
       !frameworkToolFileList
       !handCodedSourceAppFileList
@@ -405,7 +393,7 @@ private proc projectGeneration
               ?let @programRuleList inSourceRuleList
               ?let @galgas3ProjectComponentAST inProjectComponentAST
               ?let @string inProjectSourceFile
-              ?let @stringset inHandCodedSourceDirectorySet
+              ?let @string inHandCodedSourceDirectory
               ?let @stringlist inHandCodedSourceToolFileList
               ?let @stringlist inFrameworkToolFileList
               ?let @stringlist inHandCodedSourceAppFileList
@@ -495,7 +483,7 @@ private proc projectGeneration
       !swiftAppProductFileList: swiftAppProductFileList
       !inHandCodedSourceToolFileList
       !inFrameworkToolFileList
-      !inHandCodedSourceDirectorySet
+      !inHandCodedSourceDirectory
       !handledExtensionSet
       !?allProductFileSet
       !inHandCodedSourceAppFileList

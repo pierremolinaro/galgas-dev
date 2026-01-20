@@ -3,14 +3,4 @@ project (1:0:0) -> "XMLParsing" {
   %makefile-unix
   %MacSwiftApp
   %applicationBundleBase : "fr.what"
-#--- Sources
-  "sources/xml_types.galgas"
-  "sources/xml_parsing_lexique.galgas"
-  "sources/xml_parsing_syntax.galgas"
-  "sources/xml_parsing_grammar.galgas"
-
-  "sources/xml_parsing_semantics.galgas"
-  "sources/xml_parsing_options.galgas"
-  "sources/xml_parsing_cocoa.galgas"
-  "sources/xml_parsing_program.galgas"
 }

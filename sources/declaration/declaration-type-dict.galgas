@@ -614,7 +614,7 @@ final class @dictTypeForGeneration : @semanticTypeForGeneration {
 //! Generation Filewrappers
 //--------------------------------------------------------------------------------------------------
 
-private filewrapper dictGenerationTemplate in "+generation-templates/type_generation" {
+private filewrapper dictGenerationTemplate in "../+generation-templates/type_generation" {
 }{
 }{
 

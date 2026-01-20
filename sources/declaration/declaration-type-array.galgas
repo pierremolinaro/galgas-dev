@@ -429,7 +429,7 @@ final class @arrayTypeForGeneration : @semanticTypeForGeneration {
 
 //--------------------------------------------------------------------------------------------------
 
-filewrapper arrayTypeGenerationTemplate in "+generation-templates/type_generation" {
+filewrapper arrayTypeGenerationTemplate in "../+generation-templates/type_generation" {
 }{
 }{
   template arrayTypeHeader1 "GALGAS_array.h1.galgasTemplate"

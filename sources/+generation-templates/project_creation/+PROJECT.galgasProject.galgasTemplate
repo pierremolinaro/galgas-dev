@@ -13,12 +13,12 @@ project (0:0:1) -> %![PROJECT_NAME utf8RepresentationEscapingQuestionMark]% {
   \%codeblocks-linux64
 
 #--- Source files
-  "galgas-sources/%!PROJECT_NAME%-lexique.galgas"
-  "galgas-sources/%!PROJECT_NAME%-options.galgas"
-  "galgas-sources/%!PROJECT_NAME%-semantics.galgas"
-  "galgas-sources/%!PROJECT_NAME%-syntax.galgas"
-  "galgas-sources/%!PROJECT_NAME%-grammar.galgas"
-  "galgas-sources/%!PROJECT_NAME%-cocoa.galgas"
-  "galgas-sources/%!PROJECT_NAME%-program.galgas"
+  "sources/%!PROJECT_NAME%-lexique.galgas"
+  "sources/%!PROJECT_NAME%-options.galgas"
+  "sources/%!PROJECT_NAME%-semantics.galgas"
+  "sources/%!PROJECT_NAME%-syntax.galgas"
+  "sources/%!PROJECT_NAME%-grammar.galgas"
+  "sources/%!PROJECT_NAME%-cocoa.galgas"
+  "sources/%!PROJECT_NAME%-program.galgas"
 }
 

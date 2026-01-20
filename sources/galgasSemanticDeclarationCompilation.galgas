@@ -656,7 +656,9 @@ private proc generateFewImplementationFilesWithFewHeaders
     end
   end
 //--- Last file
-  if implementationString != "" then
+  if implementationString == "" then
+    fileIdx -= 1
+  else
     let header = [filewrapper semanticFileGenerationTemplate.semanticFileImplementation
       !@[@("all-declarations-" + fileIdx)]
     ]

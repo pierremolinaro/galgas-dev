@@ -7,13 +7,13 @@
   objects = {
 
   /*------------------------------------------------------------------ PBXBuildFile */
-  5A880FAF6FB5E6087EB1B2DC /* hand_coded_sources/extern_type_implementation.cpp */ = {
+  5A880FAF6FB5E6087EB1B2DC /* extern_type_implementation.cpp */ = {
     isa = PBXBuildFile;
     fileRef = BBCE2345D7772B0674A318D5 ;
     settings = {ATTRIBUTES = (); };
   };
 
-  FB98AB9159F51FD0297E236D /* hand_coded_sources/testsuite_hand_coded.cpp */ = {
+  FB98AB9159F51FD0297E236D /* testsuite_hand_coded.cpp */ = {
     isa = PBXBuildFile;
     fileRef = CEEA167A5A36DEDD4BEA2543 ;
     settings = {ATTRIBUTES = (); };
@@ -1730,21 +1730,21 @@
   };
 
   /*------------------------------------------------------------------ PBXFileReference */
-  BBCE2345D7772B0674A318D5 /* hand_coded_sources/extern_type_implementation.cpp */ = {
+  BBCE2345D7772B0674A318D5 /* extern_type_implementation.cpp */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.cpp.cpp;
     name = "extern_type_implementation.cpp";
-    path = "hand_coded_sources/extern_type_implementation.cpp";
+    path = "extern_type_implementation.cpp";
     sourceTree = "<group>";
   };
 
-  CEEA167A5A36DEDD4BEA2543 /* hand_coded_sources/testsuite_hand_coded.cpp */ = {
+  CEEA167A5A36DEDD4BEA2543 /* testsuite_hand_coded.cpp */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.cpp.cpp;
     name = "testsuite_hand_coded.cpp";
-    path = "hand_coded_sources/testsuite_hand_coded.cpp";
+    path = "testsuite_hand_coded.cpp";
     sourceTree = "<group>";
   };
 
@@ -7720,7 +7720,7 @@
       GCC_WARN_UNUSED_LABEL = YES ;
       GCC_WARN_UNUSED_VALUE = YES ;
       GCC_WARN_UNUSED_VARIABLE = YES ;
-      HEADER_SEARCH_PATHS = ("../build/output", "../build/libpm", "../build/user-headers", "../hand_coded_sources") ;
+      HEADER_SEARCH_PATHS = ("../build/output", "../build/libpm", "../build/user-headers", "../sources/tool-sources") ;
       SDKROOT = macosx ;
       COPY_PHASE_STRIP = NO ;
       CLANG_ENABLE_OBJC_ARC = YES ;

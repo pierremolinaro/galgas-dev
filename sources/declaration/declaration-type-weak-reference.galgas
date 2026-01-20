@@ -292,7 +292,7 @@ override method @weakReferenceTypeForGeneration appendSpecificImplementation
 //! Generation Filewrappers
 //--------------------------------------------------------------------------------------------------
 
-filewrapper weakClassGenerationTemplate in "+generation-templates/type_generation" {
+filewrapper weakClassGenerationTemplate in "../+generation-templates/type_generation" {
   "ggs"
 }{
 }{

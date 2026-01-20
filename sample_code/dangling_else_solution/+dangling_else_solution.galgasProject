@@ -3,14 +3,6 @@ project (1:0:0) -> "allDanglingElseSolution" {
   %makefile-unix
   %MacSwiftApp
   %applicationBundleBase : "fr.what"
-#--- Sources
-  "sources/dangling_else_solution_lexique.galgas"
-  "sources/dangling_else_solution_options.galgas"
-  "sources/dangling_else_solution_semantics.galgas"
-  "sources/dangling_else_solution_syntax.galgas"
-  "sources/dangling_else_solution_grammar.galgas"
-  "sources/dangling_else_solution_cocoa.galgas"
-  "sources/dangling_else_solution_program.galgas"
 }
 
 

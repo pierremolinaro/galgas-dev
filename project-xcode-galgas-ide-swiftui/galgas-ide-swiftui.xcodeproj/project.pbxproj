@@ -1287,7 +1287,7 @@
 				CF93BABE2D0D8CFD006DF788 /* useful_symbols_computations.cpp */,
 			);
 			name = "Hand Coded Sources";
-			path = ../hand_coded_sources;
+			path = "../sources/tool-sources";
 			sourceTree = "<group>";
 		};
 		CFD719922E730780007736B6 /* swiftui-app */ = {

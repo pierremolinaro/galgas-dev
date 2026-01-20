@@ -3,35 +3,4 @@ project (1:0:0) -> "testsuite" {
   %makefile-win32-on-macosx
   %MacSwiftApp
   %applicationBundleBase : "fr.what"
-
-  "sources/testsuite_lexique.ggs"
-  "sources/testsuite_syntax.ggs"
-  "sources/testsuite_cocoa.ggs"
-  "sources/testsuite_grammar.ggs"
-  "sources/testsuite_reference-classes.ggs"
-  "sources/testsuite_foreach_instruction.ggs"
-  "sources/testsuite_for_instruction.ggs"
-  "sources/testsuite_sortedlist.ggs"
-  "sources/testsuite_list.ggs"
-  "sources/testsuite_struct.ggs"
-  "sources/testsuite_map.ggs"
-  "sources/testsuite_functions.ggs"
-  "sources/testsuite_introspection.ggs"
-  "sources/testsuite_extension_readers.ggs"
-  "sources/testsuite_extension_methods.ggs"
-  "sources/testsuite_extension_setters.ggs"
-  "sources/testsuite_extension_mutating_proc.ggs"
-  "sources/testsuite_type_categories.ggs"
-  "sources/testsuite_strings.ggs"
-  "sources/testsuite_range.ggs"
-  "sources/testsuite_bigint.ggs"
-  "sources/testsuite_bugMap.ggs"
-
-  "sources/testsuite_extern_type.ggs"
-
-   %tool-source : "hand_coded_sources/extern_type_implementation.cpp"
-
-  "sources/testsuite_program.ggs"
-
-  %tool-source : "hand_coded_sources/testsuite_hand_coded.cpp"
 }

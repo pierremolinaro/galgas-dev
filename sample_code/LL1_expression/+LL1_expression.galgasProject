@@ -3,13 +3,5 @@ project (1:0:0) -> "LL1Expression" {
   %makefile-unix
   %MacSwiftApp
   %applicationBundleBase : "fr.what"
-#--- Sources
-  "sources/LL1_expression_lexique.galgas"
-  "sources/LL1_expression_options.galgas"
-  "sources/LL1_expression_semantics.galgas"
-  "sources/LL1_expression_syntax.galgas"
-  "sources/LL1_expression_grammar.galgas"
-  "sources/LL1_expression_cocoa.galgas"
-  "sources/LL1_expression_program.galgas"
 }
 

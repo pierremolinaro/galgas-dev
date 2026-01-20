@@ -45,10 +45,10 @@ filewrapper projectCreationFileWrapper in "+generation-templates/project_creatio
 
 proc performProjectCreation ?let @string inProjectPath {
   let @string projectName = [inProjectPath lastPathComponent]
-//--- galgas_sources
-  let @string galgas_sources_DIR = inProjectPath + "/galgas-sources"
-  [galgas_sources_DIR makeDirectory]
   [[filewrapper projectCreationFileWrapper.PROJECT_project !projectName] writeToFile !inProjectPath +"/+" +projectName +".galgasProject"]
+//--- galgas_sources
+  let @string galgas_sources_DIR = inProjectPath + "/sources"
+  [galgas_sources_DIR makeDirectory]
   [[filewrapper projectCreationFileWrapper.PROJECT_cocoa !projectName] writeToFile !galgas_sources_DIR +"/" +projectName +"-cocoa.galgas"]
   [[filewrapper projectCreationFileWrapper.PROJECT_grammar !projectName] writeToFile !galgas_sources_DIR +"/" +projectName +"-grammar.galgas"]
   [[filewrapper projectCreationFileWrapper.PROJECT_lexique !projectName] writeToFile !galgas_sources_DIR +"/" +projectName +"-lexique.galgas"]

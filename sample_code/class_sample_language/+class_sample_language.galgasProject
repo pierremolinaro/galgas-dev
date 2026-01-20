@@ -3,12 +3,5 @@ project (1:0:0) -> "classSampleLanguage" {
   %makefile-unix
   %MacSwiftApp
   %applicationBundleBase : "fr.what"
-#--- Sources
-  "sources/class_sample_language_lexique.galgas"
-  "sources/class_sample_language_semantics.galgas"
-  "sources/class_sample_language_syntax.galgas"
-  "sources/class_sample_language_grammar.galgas"
-  "sources/class_sample_language_cocoa.galgas"
-  "sources/class_sample_language_program.galgas"
 }
 

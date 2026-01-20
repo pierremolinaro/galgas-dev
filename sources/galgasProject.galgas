@@ -32,6 +32,7 @@ list @galgas3QualifiedFeatureList {
 
 struct @galgas3ProjectComponentAST {
   public let @stringlist mProjectSourceList
+  public let @stringlist mToolCppSourceList
   public let @lbigint mMajorVersion
   public let @lbigint mMinorVersion
   public let @lbigint mRevisionVersion
@@ -82,7 +83,6 @@ syntax galgas3ProjectSyntax (galgasScanner3) {
       ?let @lbigint revisionVersion
       ?let @lstring targetName
     ${$
-    var @stringlist projectSourceList = @()
     var @lstringlist generateFeatureList = @()
     var @galgas3QualifiedFeatureList qualifiedFeatureList = @()
     repeat
@@ -130,11 +130,6 @@ syntax galgas3ProjectSyntax (galgasScanner3) {
       $"string"$ ?let @lstring featureValue
       qualifiedFeatureList += !["libpmAtPath" here] !featureValue
     while
-      $%tool-source$
-      $:$
-      $"string"$ ?let @lstring featureValue
-      qualifiedFeatureList += !["tool-source" here] !featureValue
-    while
       $%macCodeSign$
       $:$
       $"string"$ ?let @lstring featureValue
@@ -149,9 +144,6 @@ syntax galgas3ProjectSyntax (galgasScanner3) {
       $:$
       $"string"$ ?let @lstring featureValue
       qualifiedFeatureList += !["app-link" here] !featureValue
-    while
-      $"string"$ ?let @lstring filePath
-      projectSourceList += !filePath.string
     end
     $}$
   //--- Enumerate sources directory for getting all source files
@@ -159,10 +151,17 @@ syntax galgas3ProjectSyntax (galgasScanner3) {
      var extensionList = @stringlist ()
      extensionList += !"galgas"
      extensionList += !"ggs"
-     projectSourceList = [sourceDirectory regularFilesWithExtensions !true !extensionList]
+     let projectSourceList = [sourceDirectory regularFilesWithExtensions !true !extensionList]
+  //--- Enumerate tool C++ sources directory
+     let toolCppDirectory = sourceDirectory + "/tool-sources"
+     var cppExtensionList = @stringlist ()
+     cppExtensionList += !"cpp"
+     cppExtensionList += !"h"
+     let toolCppSourceList = [toolCppDirectory regularFilesWithExtensions !true !cppExtensionList]
   //---
     outProjectComponentAST = @galgas3ProjectComponentAST {
       !projectSourceList
+      !toolCppSourceList
       !majorVersion
       !minorVersion
       !revisionVersion

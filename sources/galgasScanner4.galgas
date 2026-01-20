@@ -300,7 +300,6 @@ list attributeKeyWordList style attributeStyle error message "the '%K' keyword" 
   "searchMethod" -> $%searchMethod$,
   "searchSubscript" -> $%searchSubscript$,
   "searchString" -> $%searchString$,
-  "tool-source" -> $%tool-source$,
   "templateEndMark" -> $%templateEndMark$,
   "templateReplacement" -> $%templateReplacement$,
   "translate" -> $%translate$,

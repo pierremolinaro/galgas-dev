@@ -69,7 +69,7 @@ private filewrapper targetGalgas3GenerationFileWrapper in "+generation-templates
     ?@stringlist TOOL_CPP_FILE_LIST
     ?@string LIBPM_PATH
     ?@stringlist HAND_CODED_SOURCE_TOOL_FILE_LIST
-    ?@stringset HAND_CODED_SOURCE_TOOL_DIRECTORY_SET
+    ?@string HAND_CODED_SOURCE_TOOL_DIRECTORY
     ?windows:@bool GENERATE_FOR_WINDOWS
     ?platform:@string PLATFORM
     ?verboseOption:@bool VERBOSE_OPTION
@@ -108,7 +108,7 @@ private proc generateGalgasCodeBlocksWindowsTarget
   ?let @stringlist inToolCppFileList
   ?libpmPath: let @string inLIBPMpath
   ?let @stringlist inHandCodedSourceToolFileList
-  ?let @stringset inHandCodedSourceDirectorySet
+  ?let @string inHandCodedSourceDirectory
   ?let @bool inVerboseOption
 {
   let @string dir = inProjectDirectory + "/project-codeblocks-windows"
@@ -118,7 +118,7 @@ private proc generateGalgasCodeBlocksWindowsTarget
     !inToolCppFileList
     !inLIBPMpath
     !inHandCodedSourceToolFileList
-    !inHandCodedSourceDirectorySet
+    !inHandCodedSourceDirectory
     !windows:true
     !platform:"Windows"
     !verboseOption:inVerboseOption
@@ -136,7 +136,7 @@ private proc generateGalgasCodeBlocksLinuxI686Target
   ?let @stringlist inToolCppFileList
   ?let @string inLIBPMpath
   ?let @stringlist inHandCodedSourceToolFileList
-  ?let @stringset inHandCodedSourceDirectorySet
+  ?let @string inHandCodedSourceDirectory
   ?let @bool inVerboseOption
  {
   let @string dir = inProjectDirectory + "/project-codeblocks-linux32"
@@ -146,7 +146,7 @@ private proc generateGalgasCodeBlocksLinuxI686Target
     !inToolCppFileList
     !inLIBPMpath
     !inHandCodedSourceToolFileList
-    !inHandCodedSourceDirectorySet
+    !inHandCodedSourceDirectory
     !windows:false
     !platform:"Unix"
     !verboseOption:inVerboseOption
@@ -164,7 +164,7 @@ private proc generateGalgasCodeBlocksLinuxX86_64Target
   ?let @stringlist inToolCppFileList
   ?let @string inLIBPMpath
   ?let @stringlist inHandCodedSourceToolFileList
-  ?let @stringset inHandCodedSourceDirectorySet
+  ?let @string inHandCodedSourceDirectory
   ?let @bool inVerboseOption
 {
   let @string dir = inProjectDirectory + "/project-codeblocks-linux64"
@@ -174,7 +174,7 @@ private proc generateGalgasCodeBlocksLinuxX86_64Target
     !inToolCppFileList
     !inLIBPMpath
     !inHandCodedSourceToolFileList
-    !inHandCodedSourceDirectorySet
+    !inHandCodedSourceDirectory
     !windows:false
     !platform:"Unix"
     !verboseOption:inVerboseOption
@@ -313,7 +313,7 @@ proc updateGalgasTargets
   ?swiftAppProductFileList: let @stringlist inSwiftAppProductFileList
   ?let @stringlist inHandCodedSourceToolFileList
   ?let @stringlist inFrameworkToolFileList
-  ?let @stringset inHandCodedSourceDirectorySet
+  ?let @string inHandCodedSourceDirectory
   ?let @stringset inHandledExtensionSet
   ?!@stringset ioAllProductFileSet
   ?let @stringlist inHandCodedSourceAppFileList
@@ -435,7 +435,7 @@ proc updateGalgasTargets
       !inToolCppFileList
       !libpmPath: libpmPath
       !inHandCodedSourceToolFileList
-      !inHandCodedSourceDirectorySet
+      !inHandCodedSourceDirectory
       !inQuietOutputByDefault
     )
   end
@@ -447,7 +447,7 @@ proc updateGalgasTargets
       !inToolCppFileList
       !libpmPath
       !inHandCodedSourceToolFileList
-      !inHandCodedSourceDirectorySet
+      !inHandCodedSourceDirectory
       !inQuietOutputByDefault
     )
   end
@@ -459,7 +459,7 @@ proc updateGalgasTargets
       !inToolCppFileList
       !libpmPath
       !inHandCodedSourceToolFileList
-      !inHandCodedSourceDirectorySet
+      !inHandCodedSourceDirectory
       !inQuietOutputByDefault
     )
   end
@@ -476,8 +476,17 @@ proc updateGalgasTargets
       handCodedSourceToolFileList += ![f lastPathComponent]
     end
   end
+  var handCodedSourceDirectorySet = @stringset ()
+  for sourcePath in inHandCodedSourceToolFileList do
+    let subDir = [sourcePath.mValue stringByDeletingLastPathComponent]
+    if subDir == "" then
+      handCodedSourceDirectorySet ++= "../sources/tool-sources"
+    else
+      handCodedSourceDirectorySet ++= "../sources/tool-sources/" + subDir
+    end
+  end
   let jsonFileListContents = [filewrapper targetGalgas3GenerationFileWrapper.json_file_list
-    !inHandCodedSourceDirectorySet
+    !handCodedSourceDirectorySet
     !handCodedSourceToolFileList
     !toolCppFileList
     !linkOptionForLinkingFrameworkWithTool + inHandCodedLinkToolFileList
@@ -537,9 +546,10 @@ proc updateGalgasTargets
       + inBuildDirectoryName + "/output\", \"../" + inBuildDirectoryName
       + "/libpm\", \"../"
       + inBuildDirectoryName + "/user-headers\""
-    for directory in inHandCodedSourceDirectorySet do
-      headerSearchPaths += ", \"" + directory + "\""
-    end
+//    for directory in inHandCodedSourceDirectory do
+//      headerSearchPaths += ", \"" + directory + "\""
+//    end
+    headerSearchPaths += ", \"" + inHandCodedSourceDirectory + "\""
     headerSearchPaths += ")"
   //--- Default build configuration
     var @stringlist xcodeSettingList = @[
@@ -623,7 +633,6 @@ proc updateGalgasTargets
     end
     [!?xcodeProject addSettingsToDefaultConfiguration !settingList: xcodeSettingList]
   //--- Add "Hand coded sources (App)" group
-//    var @stringlist m_handCodedSourceFileRefForAppList = @()
     var @stringlist resource_handCodedResourceFileRefForAppList = @()
     if [inHandCodedSourceAppFileList count] > 0 then
       [!?xcodeProject addGroupWithFiles
@@ -632,8 +641,6 @@ proc updateGalgasTargets
         !fileNames:@stringset.setWithStringList {!inHandCodedSourceAppFileList}
         !?cFileRefs: %from @()
         !?cppFileRefs: %from @()
-//        !?mFileRefs: m_handCodedSourceFileRefForAppList
-//        !?mmFileRefs: %from @()
         !?swiftFileRefs: %from @()
         !?frameworkFileRefs: %from @()
         !?resourceFileRefs: resource_handCodedResourceFileRefForAppList
@@ -650,8 +657,6 @@ proc updateGalgasTargets
         !fileNames: .setWithStringList {!inHandCodedLinkAppFileList}
         !?cFileRefs: %from @()
         !?cppFileRefs: %from @()
-//        !?mFileRefs: %from @()
-//        !?mmFileRefs: %from @()
         !?swiftFileRefs: %from @()
         !?frameworkFileRefs: appFrameworksFileRefList
         !?resourceFileRefs: %from @()
@@ -662,8 +667,6 @@ proc updateGalgasTargets
   //--- Mach O target
     var @stringlist buildCFileRefListForTool = @()
     var @stringlist buildCppFileRefListForTool = @()
-//    var @stringlist m_FileRefList = @()
-//    var @stringlist mm_FileRefList = @()
     var @stringlist swift_FileRefList = @()
     var @stringlist frameworksFileRefList = @()
     var @stringlist resourceFileBuildRefs = @()
@@ -671,12 +674,10 @@ proc updateGalgasTargets
     if [inHandCodedSourceToolFileList count] > 0 then
       [!?xcodeProject addGroupWithFiles
         !groupName:"Hand Coded Sources (Tool)"
-        !groupPath:"../"
+        !groupPath:"../sources/tool-sources/"
         !fileNames:@stringset.setWithStringList {!inHandCodedSourceToolFileList}
         !?cFileRefs:buildCFileRefListForTool
         !?cppFileRefs:buildCppFileRefListForTool
-//        !?mFileRefs: m_FileRefList
-//        !?mmFileRefs:mm_FileRefList
         !?swiftFileRefs: swift_FileRefList
         !?frameworkFileRefs:frameworksFileRefList
         !?resourceFileRefs:resourceFileBuildRefs
@@ -693,8 +694,6 @@ proc updateGalgasTargets
         !fileNames:@stringset.setWithStringList {!inFrameworkToolFileList}
         !?cFileRefs: %from @()
         !?cppFileRefs: %from @()
-//        !?mFileRefs: %from @()
-//        !?mmFileRefs: %from @()
         !?swiftFileRefs: %from @()
         !?frameworkFileRefs:toolFrameworksFileRefList
         !?resourceFileRefs: %from @()
@@ -711,8 +710,6 @@ proc updateGalgasTargets
       !fileNames: .setWithStringList {!outputGroupFileList}
       !?cFileRefs:buildCFileRefListForTool
       !?cppFileRefs:buildCppFileRefListForTool
-//      !?mFileRefs: m_FileRefList
-//      !?mmFileRefs: mm_FileRefList
       !?swiftFileRefs: swift_FileRefList
       !?frameworkFileRefs:frameworksFileRefList
       !?resourceFileRefs:resourceFileBuildRefs
@@ -737,8 +734,6 @@ proc updateGalgasTargets
       ]
       !?cFileRefs:buildCFileRefListForTool
       !?cppFileRefs:buildCppFileRefListForTool
-//      !?mFileRefs: m_FileRefList
-//      !?mmFileRefs:mm_FileRefList
       !?swiftFileRefs: swift_FileRefList
       !?frameworkFileRefs:frameworksFileRefList
       !?resourceFileRefs:resourceFileBuildRefs
@@ -790,161 +785,17 @@ proc updateGalgasTargets
       ]
       !?cFileRefs:buildCFileRefListForTool
       !?cppFileRefs:buildCppFileRefListForTool
-//      !?mFileRefs: m_FileRefList
-//      !?mmFileRefs:mm_FileRefList
       !?swiftFileRefs: swift_FileRefList
       !?frameworkFileRefs:frameworksFileRefList
       !?resourceFileRefs:resourceFileBuildRefs
       ?groupRef:groupRef
     ]
     libpmReferenceGroupList += !groupRef
-  //--- Add "Auto Layout Kit" group
-//    [!?xcodeProject addGroupWithFiles
-//      !groupName:"Auto Layout Kit"
-//      !groupPath:"auto-layout-kit"
-//      !fileNames: @[
-//        "base/BaseControl.swift",
-//        "base/BaseView.swift",
-//        "base/HorizontalAlignmentInVerticalStack.swift",
-//        "base/HorizontalStretchingResistance.swift",
-//        "base/InvalidatedLayoutDelegate.swift",
-//        "base/LayoutFeatures.swift",
-//        "base/Margin.swift",
-//        "base/SimpleBlockView.swift",
-//        "base/Spacing.swift",
-//        "base/VerticalAlignmentInHorizontalStack.swift",
-//        "base/VerticalStretchingResistance.swift",
-//        "binding-controllers/EBGenericReadWritePropertyController.swift",
-//        "binding-controllers/EBObservablePropertyController.swift",
-//        "binding-controllers/multiple-binding-controllers.swift",
-//        "binding-controllers/outlet-events.swift",
-//        "button/AutoLayoutButton.swift",
-//        "button/AutoLayoutFontButton.swift",
-//        "button/AutoLayoutCheckbox.swift",
-//        "button/AutoLayoutSheetCancelButton.swift",
-//        "button/AutoLayoutSheetDefaultOkButton.swift",
-//        "color-well/AutoLayoutColorWell.swift",
-//        "debug/AutoLayout-debug-menu.swift",
-//        "debug/EBAllocationDebug-debug-with-actor.swift",
-//        "debug/EBAllocationDebug-release.swift",
-//        "debug/NSWindow+rootView.swift",
-//        "debug/debug-menu.swift",
-//        "extension-for-property-protocol/ASCII.swift",
-//        "extension-for-property-protocol/extension-Bool-EBPropertyProtocol.swift",
-//        "extension-for-property-protocol/extension-Data-EBPropertyProtocol.swift",
-//        "extension-for-property-protocol/extension-Data-base62.swift",
-//        "extension-for-property-protocol/extension-Date-EBPropertyProtocol.swift",
-//        "extension-for-property-protocol/extension-Double-EBPropertyProtocol.swift",
-//        "extension-for-property-protocol/extension-Int-EBPropertyProtocol.swift",
-//        "extension-for-property-protocol/extension-NSBezierPath-EBPropertyProtocol.swift",
-//        "extension-for-property-protocol/extension-NSColor-EBPropertyProtocol.swift",
-//        "extension-for-property-protocol/extension-NSFont-EBPropertyProtocol.swift",
-//        "extension-for-property-protocol/extension-String-EBPropertyProtocol.swift",
-//        "extension-for-property-protocol/extension-UInt32-EBPropertyProtocol.swift",
-//        "extension-for-property-protocol/extension-UInt32-crc32.swift",
-//        "grid/AutoLayoutGridView.swift",
-//        "outline-view/AutoLayoutOutlineView.swift",
-//        "outline-view/OutlineViewClickableChildProtocol.swift",
-//        "outline-view/OutlineViewChildProtocol.swift",
-//        "outline-view/OutlineViewNodeProtocol.swift",
-//        "popup-button/AutoLayoutPopUpButton.swift",
-//        "popup-button/AutoLayoutTaggedPopUpButton.swift",
-//        "popup-button/AutoLayoutPullDownButton.swift",
-//        "progress-indicator/SpinningProgressIndicator.swift",
-//        "property-generic-classes/EBComputedProperty.swift",
-//        "property-generic-classes/EBPreferenceProperty.swift",
-//        "property-generic-classes/EBObservableMutableProperty.swift",
-//        "property-generic-classes/EBPropertyProtocol.swift",
-//        "property-generic-classes/EBObservableObjectProtocol.swift",
-//        "property-generic-classes/EBSelection.swift",
-//        "property-generic-classes/EBObservableProperty.swift",
-//        "property-generic-classes/EBSimpleObserver.swift",
-//        "property-generic-classes/EBObservedObject.swift",
-//        "property-generic-classes/EBStandAloneProperty.swift",
-//        "property-generic-classes/EBObservedObserver.swift",
-//        "property-generic-classes/EBTransientProperty.swift",
-//        "property-generic-classes/EBObserverProtocol.swift",
-//        "scroll-view/BaseScrollView.swift",
-//        "scroll-view/InternalCocoaScrollView.swift",
-//        "segmented-control/AutoLayoutSegmentedControl.swift",
-//        "split-view/AutoLayoutHorizontalSplitView.swift",
-//        "stack-view/AutoLayoutHorizontalStackView.swift",
-//        "stack-view/HorizontalStackGutter.swift",
-//        "stack-view/AutoLayoutVerticalStackView.swift",
-//        "stack-view/HorizontalStackSeparator.swift",
-//        "stack-view/BaseStackView.swift",
-//        "stack-view/VerticalStackSeparator.swift",
-//        "swift-extensions/StringArray.swift",
-//        "swift-extensions/extension-NSRect.swift",
-//        "swift-extensions/extension-NSBezierPath.swift",
-//        "swift-extensions/extension-String.swift",
-//        "swift-extensions/extension-NSPoint.swift",
-//        "tab-view/AutoLayoutBorderLessTabView.swift",
-//        "tab-view/BaseTabView.swift",
-//        "table-view/AutoLayoutTableView-column-AttributedString.swift",
-//        "table-view/AutoLayoutTableView-column-Bool.swift",
-//        "table-view/AutoLayoutTableView-column-ButtonImage.swift",
-//        "table-view/AutoLayoutTableView-column-Int.swift",
-//        "table-view/AutoLayoutTableView-column-NSColor.swift",
-//        "table-view/AutoLayoutTableView-column-NSImage-Int.swift",
-//        "table-view/AutoLayoutTableView-column-NSImage.swift",
-//        "table-view/AutoLayoutTableView-column-String.swift",
-//        "table-view/AutoLayoutTableView-column.swift",
-//        "table-view/AutoLayoutTableView.swift",
-//        "table-view/AutoLayoutTableViewDelegate.swift",
-//        "text-field/AutoLayoutDoubleField.swift",
-//        "text-field/AutoLayoutSignatureField.swift",
-//        "text-field/AutoLayoutDoubleObserverField.swift",
-//        "text-field/AutoLayoutStaticLabel.swift",
-//        "text-field/AutoLayoutIntField.swift",
-//        "text-field/AutoLayoutStaticLabels.swift",
-//        "text-field/AutoLayoutIntObserverField.swift",
-//        "text-field/AutoLayoutTextField.swift",
-//        "text-field/AutoLayoutLabel.swift",
-//        "text-field/AutoLayoutVersionField.swift",
-//        "text-field/AutoLayoutSearchField.swift",
-//        "text-field/BaseTextField.swift",
-//        "text-view/AutoLayoutStaticTextView.swift",
-//        "text-view/BaseTextView.swift",
-//        "text-view/AutoLayoutTextObserverView.swift",
-//        "text-view/BaseTextViewDelegate.swift"
-//      ]
-//      !?cFileRefs:buildCFileRefListForTool
-//      !?cppFileRefs:buildCppFileRefListForTool
-//      !?mFileRefs: m_FileRefList
-//      !?mmFileRefs:mm_FileRefList
-//      !?swiftFileRefs: swift_FileRefList
-//      !?frameworkFileRefs:frameworksFileRefList
-//      !?resourceFileRefs:resourceFileBuildRefs
-//      ?groupRef:groupRef
-//    ]
-//    libpmReferenceGroupList += !groupRef
  //--- Add "SwiftUI app" group
     [!?xcodeProject addGroupWithFiles
       !groupName:"Swift App"
       !groupPath:"swiftui-app"
       !fileNames: @[
-//        "Base.lproj/MainMenu.xib",
-//        "AutoLayoutSourceTextPresentationView.swift",
-//        "SWIFT-common-command-line-options.swift",
-//        "SWIFT_AppDelegate+new-document.swift",
-//        "SWIFT_AppDelegate.swift",
-//        "SWIFT_BuildLogViewRuler.swift",
-//        "SWIFT_CommandLineOption.swift",
-//        "SWIFT_DisplayDescriptor.swift",
-//        "SWIFT_DocumentController.swift",
-//        "SWIFT_Issue.swift",
-//        "SWIFT_Lexique.swift",
-//        "SWIFT_SingleDocument+syntax-coloring.swift",
-//        "SWIFT_SingleDocument+update-entry-popup.swift",
-//        "SWIFT_SingleDocument.swift",
-//        "SWIFT_SingleWindow.swift",
-//        "SWIFT_String+extension.swift",
-//        "SWIFT_TemplateDelimiter.swift",
-//        "SWIFT_TextViewRulerView.swift",
-//        "SWIFT_Token.swift",
-//        "SWIFT_Tokenizer_Protocol.swift",
-//        "SWIFT_WeakElement.swift"
         "AbstractScanner.swift",
         "AllocationDebugView.swift",
         "Application.swift",
@@ -988,8 +839,6 @@ proc updateGalgasTargets
       ]
       !?cFileRefs:buildCFileRefListForTool
       !?cppFileRefs:buildCppFileRefListForTool
-//      !?mFileRefs: m_FileRefList
-//      !?mmFileRefs:mm_FileRefList
       !?swiftFileRefs: swift_FileRefList
       !?frameworkFileRefs:frameworksFileRefList
       !?resourceFileRefs:resourceFileBuildRefs
@@ -1007,8 +856,6 @@ proc updateGalgasTargets
       ]
       !?cFileRefs:buildCFileRefListForTool
       !?cppFileRefs:buildCppFileRefListForTool
-//      !?mFileRefs: m_FileRefList
-//      !?mmFileRefs:mm_FileRefList
       !?swiftFileRefs: swift_FileRefList
       !?frameworkFileRefs:frameworksFileRefList
       !?resourceFileRefs:resourceFileBuildRefs
@@ -1039,8 +886,6 @@ proc updateGalgasTargets
       ]
       !?cFileRefs:buildCFileRefListForTool
       !?cppFileRefs:buildCppFileRefListForTool
-//      !?mFileRefs: m_FileRefList
-//      !?mmFileRefs:mm_FileRefList
       !?swiftFileRefs: swift_FileRefList
       !?frameworkFileRefs:frameworksFileRefList
       !?resourceFileRefs:resourceFileBuildRefs
@@ -1065,8 +910,6 @@ proc updateGalgasTargets
       ]
       !?cFileRefs:buildCFileRefListForTool
       !?cppFileRefs:buildCppFileRefListForTool
-//      !?mFileRefs: m_FileRefList
-//      !?mmFileRefs:mm_FileRefList
       !?swiftFileRefs: swift_FileRefList
       !?frameworkFileRefs:frameworksFileRefList
       !?resourceFileRefs:resourceFileBuildRefs
@@ -1174,8 +1017,6 @@ proc updateGalgasTargets
       ]
       !?cFileRefs:buildCFileRefListForTool
       !?cppFileRefs:buildCppFileRefListForTool
-//      !?mFileRefs: m_FileRefList
-//      !?mmFileRefs:mm_FileRefList
       !?swiftFileRefs: swift_FileRefList
       !?frameworkFileRefs:frameworksFileRefList
       !?resourceFileRefs:resourceFileBuildRefs
@@ -1196,8 +1037,6 @@ proc updateGalgasTargets
       ]
       !?cFileRefs:buildCFileRefListForTool
       !?cppFileRefs:buildCppFileRefListForTool
-//      !?mFileRefs: m_FileRefList
-//      !?mmFileRefs:mm_FileRefList
       !?swiftFileRefs: swift_FileRefList
       !?frameworkFileRefs:frameworksFileRefList
       !?resourceFileRefs:resourceFileBuildRefs
@@ -1221,8 +1060,6 @@ proc updateGalgasTargets
       ]
       !?cFileRefs:buildCFileRefListForTool
       !?cppFileRefs:buildCppFileRefListForTool
-//      !?mFileRefs: m_FileRefList
-//      !?mmFileRefs:mm_FileRefList
       !?swiftFileRefs: swift_FileRefList
       !?frameworkFileRefs:frameworksFileRefList
       !?resourceFileRefs:resourceFileBuildRefs
@@ -1241,8 +1078,6 @@ proc updateGalgasTargets
       ]
       !?cFileRefs:buildCFileRefListForTool
       !?cppFileRefs:buildCppFileRefListForTool
-//      !?mFileRefs: m_FileRefList
-//      !?mmFileRefs:mm_FileRefList
       !?swiftFileRefs: swift_FileRefList
       !?frameworkFileRefs:frameworksFileRefList
       !?resourceFileRefs:resourceFileBuildRefs
@@ -1287,8 +1122,6 @@ proc updateGalgasTargets
       ]
       !?cFileRefs:buildCFileRefListForTool
       !?cppFileRefs:buildCppFileRefListForTool
-//      !?mFileRefs: m_FileRefList
-//      !?mmFileRefs:mm_FileRefList
       !?swiftFileRefs: swift_FileRefList
       !?frameworkFileRefs:frameworksFileRefList
       !?resourceFileRefs:resourceFileBuildRefs
@@ -1305,8 +1138,6 @@ proc updateGalgasTargets
       !fileNames: @["Info.plist"]
       !?cFileRefs:buildCFileRefListForTool
       !?cppFileRefs:buildCppFileRefListForTool
-//      !?mFileRefs: m_FileRefList
-//      !?mmFileRefs:mm_FileRefList
       !?swiftFileRefs: swift_FileRefList
       !?frameworkFileRefs:frameworksFileRefList
       !?resourceFileRefs:resourceFileBuildRefs
@@ -1320,8 +1151,6 @@ proc updateGalgasTargets
       !fileNames: .setWithStringList {!resourceFiles}
       !?cFileRefs: buildCFileRefListForTool
       !?cppFileRefs: buildCppFileRefListForTool
-//      !?mFileRefs: m_FileRefList
-//      !?mmFileRefs: mm_FileRefList
       !?swiftFileRefs: swift_FileRefList
       !?frameworkFileRefs: frameworksFileRefList
       !?resourceFileRefs: resourceFileBuildRefs
@@ -1338,8 +1167,6 @@ proc updateGalgasTargets
       ]
       !?cFileRefs: buildCFileRefListForTool
       !?cppFileRefs: buildCppFileRefListForTool
-//      !?mFileRefs: m_FileRefList
-//      !?mmFileRefs: mm_FileRefList
       !?swiftFileRefs: swift_FileRefList
       !?frameworkFileRefs: frameworksFileRefList
       !?resourceFileRefs: resourceFileBuildRefs

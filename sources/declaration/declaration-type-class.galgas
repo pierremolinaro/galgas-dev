@@ -967,7 +967,7 @@ func generateClassInstanceMethodDeclaration ?let @lstring inMethodName
 //! Generation Filewrappers
 //--------------------------------------------------------------------------------------------------
 
-filewrapper classGenerationTemplate in "+generation-templates/type_generation" {
+filewrapper classGenerationTemplate in "../+generation-templates/type_generation" {
   "ggs"
 }{
 }{
