@@ -99,6 +99,7 @@ extension ProjectDocumentView {
 
   func searchViewForSidebar () -> some View {
     VStack {
+      Text ("Find in project").font (.caption)
       HStack {
         Spacer ().frame (width: 6)
         Text ("Find").controlSize (.small)

@@ -287,7 +287,6 @@ list attributeKeyWordList style attributeStyle error message "the '%K' keyword" 
   "generatedInSeparateFile" -> $%generatedInSeparateFile$,
   "initArgLabel" -> $%initArgLabel$,
   "libpmAtPath" -> $%libpmAtPath$,
-  "MacOS" -> $%MacOS$,
   "MacSwiftApp" -> $%MacSwiftApp$,
   "macCodeSign" -> $%macCodeSign$,
   "makefile-macosx" -> $%makefile-macosx$,

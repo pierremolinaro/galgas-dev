@@ -402,7 +402,7 @@ proc updateGalgasTargets
 //--- Codesign without selecting OSX ?
   if (macCodeSign.string != "") && (xcodeProject == .none) then
     error macCodeSign
-    : "the %macCodeSign attribute implies the definition of an OS X target system: \"%MacOS\""
+    : "the %macCodeSign attribute implies the definition of an OS X target system: \"%MacSwiftApp\""
   end
 //--- Check Cocoa features
   if xcodeProject != .none, not [inProjectQualifiedFeatureMap hasKey !"applicationBundleBase"] then

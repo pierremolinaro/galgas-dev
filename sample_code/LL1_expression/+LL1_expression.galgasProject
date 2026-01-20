@@ -1,7 +1,7 @@
 project (1:0:0) -> "LL1Expression" {
 #--- Targets
   %makefile-unix
-  %MacOS
+  %MacSwiftApp
   %applicationBundleBase : "fr.what"
 #--- Sources
   "galgas-sources/LL1_expression_lexique.galgas"

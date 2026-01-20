@@ -1,7 +1,7 @@
 project (1:0:0) -> "testsuite" {
   %makefile-unix
   %makefile-win32-on-macosx
-  %MacOS
+  %MacSwiftApp
   %applicationBundleBase : "fr.what"
 
   "galgas-sources/testsuite_lexique.ggs"

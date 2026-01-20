@@ -1,7 +1,7 @@
 project (1:0:0) -> "allDanglingElseSolution" {
 #--- Targets
   %makefile-unix
-  %MacOS
+  %MacSwiftApp
   %applicationBundleBase : "fr.what"
 #--- Sources
   "galgas-sources/dangling_else_solution_lexique.galgas"

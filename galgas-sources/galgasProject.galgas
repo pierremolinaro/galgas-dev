@@ -89,9 +89,6 @@ syntax galgas3ProjectSyntax (galgasScanner3) {
       $%quietOutputByDefault$
       generateFeatureList += !["quietOutputByDefault" here]
     while
-      $%MacOS$
-      generateFeatureList += !["MacOS" here]
-    while
       $%MacSwiftApp$
       generateFeatureList += !["MacSwiftApp" here]
     while

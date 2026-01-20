@@ -137,12 +137,13 @@ struct ProjectDocumentView : View {
       switch self.mSidebarSelectedItem {
       case .fileList :
         VStack {
+          Text ("Source files").font (.caption)
           HStack {
             Spacer ().frame (width: 8)
             Button ("Project \(self.mProjectFileURL.lastPathComponent)") { self.mRootDirectoryNode.mSelectedFileNodeID = nil }
             Spacer ()
           }
-          Divider ()
+//          Divider ()
           ScrollViewReader { (proxy : ScrollViewProxy) in
             List (selection: self.$mRootDirectoryNode.mSelectedFileNodeID) {
               ForEach (self.mRootDirectoryNode.mChildren, id: \.self.id) { child in
@@ -155,8 +156,10 @@ struct ProjectDocumentView : View {
           }
         }
       case .compileLog :
+        Text ("Compile log").font (.caption)
         CompileLogView (attributedString: self.mProjectCompiler.compileLog)
       case .issues:
+        Text ("Issues").font (.caption)
         if self.mIssues.isEmpty {
           Text ("No Issue").frame (maxHeight: .infinity).foregroundStyle (.secondary)
         }else{

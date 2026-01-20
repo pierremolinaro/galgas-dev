@@ -1,7 +1,7 @@
 project (1:0:0) -> "classSampleLanguage" {
 #--- Targets
   %makefile-unix
-  %MacOS
+  %MacSwiftApp
   %applicationBundleBase : "fr.what"
 #--- Sources
   "galgas-sources/class_sample_language_lexique.galgas"

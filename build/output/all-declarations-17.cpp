@@ -1252,7 +1252,7 @@ static const TemplateDelimiter galgasTemplateScanner_kTemplateReplacementArray [
 //            Terminal Symbols as end of script in template mark
 //--------------------------------------------------------------------------------------------------
 
-static const bool galgasTemplateScanner_kEndOfScriptInTemplateArray [200] = {
+static const bool galgasTemplateScanner_kEndOfScriptInTemplateArray [199] = {
   false /* identifier */,
   false /* double.xxx */,
   false /* literalInt */,
@@ -1381,7 +1381,6 @@ static const bool galgasTemplateScanner_kEndOfScriptInTemplateArray [200] = {
   false /* %generatedInSeparateFile */,
   false /* %initArgLabel */,
   false /* %libpmAtPath */,
-  false /* %MacOS */,
   false /* %MacSwiftApp */,
   false /* %macCodeSign */,
   false /* %makefile-macosx */,
@@ -1644,7 +1643,6 @@ GGS_stringlist Lexique_galgasTemplateScanner::symbols (LOCATION_ARGS) {
   result.addAssignOperation (GGS_string ("%generatedInSeparateFile") COMMA_HERE) ;
   result.addAssignOperation (GGS_string ("%initArgLabel") COMMA_HERE) ;
   result.addAssignOperation (GGS_string ("%libpmAtPath") COMMA_HERE) ;
-  result.addAssignOperation (GGS_string ("%MacOS") COMMA_HERE) ;
   result.addAssignOperation (GGS_string ("%MacSwiftApp") COMMA_HERE) ;
   result.addAssignOperation (GGS_string ("%macCodeSign") COMMA_HERE) ;
   result.addAssignOperation (GGS_string ("%makefile-macosx") COMMA_HERE) ;
