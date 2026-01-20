@@ -378,8 +378,6 @@
 		CFADC2FC2F1CD8E100E13336 /* SearchResultNodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFADC2FB2F1CD8DA00E13336 /* SearchResultNodeView.swift */; };
 		CFADC2FE2F1CDA8400E13336 /* SearchResultItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFADC2FD2F1CDA7F00E13336 /* SearchResultItemView.swift */; };
 		CFBA582C2F1BBCE800899D11 /* Notification+names.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBA582B2F1BBCDC00899D11 /* Notification+names.swift */; };
-		CFCCF1AA2E1A7D7A00B0A689 /* all-declarations-33.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCCF1A52E1A7D7A00B0A689 /* all-declarations-33.cpp */; };
-		CFCCF1AD2E1A7D7A00B0A689 /* all-declarations-33.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCCF1A52E1A7D7A00B0A689 /* all-declarations-33.cpp */; };
 		CFD719B62E7308E8007736B6 /* lexique-galgas+scanner3-swiftui.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD719B32E7308E8007736B6 /* lexique-galgas+scanner3-swiftui.swift */; };
 		CFD719B82E7308E8007736B6 /* lexique-galgas+scanner4-swiftui.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD719B42E7308E8007736B6 /* lexique-galgas+scanner4-swiftui.swift */; };
 		CFD719C82E7309F6007736B6 /* Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD719AD2E7307FB007736B6 /* Application.swift */; };
@@ -790,8 +788,6 @@
 		CFADC2FB2F1CD8DA00E13336 /* SearchResultNodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultNodeView.swift; sourceTree = "<group>"; };
 		CFADC2FD2F1CDA7F00E13336 /* SearchResultItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultItemView.swift; sourceTree = "<group>"; };
 		CFBA582B2F1BBCDC00899D11 /* Notification+names.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+names.swift"; sourceTree = "<group>"; };
-		CFCCF1A42E1A7D7A00B0A689 /* all-declarations-33.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "all-declarations-33.h"; sourceTree = "<group>"; };
-		CFCCF1A52E1A7D7A00B0A689 /* all-declarations-33.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "all-declarations-33.cpp"; sourceTree = "<group>"; };
 		CFD719AD2E7307FB007736B6 /* Application.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Application.swift; sourceTree = "<group>"; };
 		CFD719B02E73085C007736B6 /* AllocationDebugView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllocationDebugView.swift; sourceTree = "<group>"; };
 		CFD719B32E7308E8007736B6 /* lexique-galgas+scanner3-swiftui.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "lexique-galgas+scanner3-swiftui.swift"; sourceTree = "<group>"; };
@@ -1231,8 +1227,6 @@
 				CF3060722D0D8B2B000A5F79 /* all-declarations-31.cpp */,
 				CF1612462D74891000CCF20D /* all-declarations-32.h */,
 				CF1612472D74891000CCF20D /* all-declarations-32.cpp */,
-				CFCCF1A42E1A7D7A00B0A689 /* all-declarations-33.h */,
-				CFCCF1A52E1A7D7A00B0A689 /* all-declarations-33.cpp */,
 				CF3060732D0D8B2B000A5F79 /* all-predefined-types.h */,
 				CF3060742D0D8B2B000A5F79 /* all-predefined-types.cpp */,
 				CF874F232F100930004A5162 /* option-galgas-5Fcli-5Foptions-swiftui.swift */,
@@ -1525,7 +1519,6 @@
 				CF8F81052D0D91490095170B /* UInt32Set.cpp in Sources */,
 				CF8F81062D0D91490095170B /* C_galgas_quiet_option.cpp in Sources */,
 				CF8F81072D0D91490095170B /* BigUnsigned-subtract.cpp in Sources */,
-				CFCCF1AD2E1A7D7A00B0A689 /* all-declarations-33.cpp in Sources */,
 				CF8F81082D0D91490095170B /* AC_GALGAS_enumAssociatedValues.cpp in Sources */,
 				CF8F81092D0D91490095170B /* GGS_uint.cpp in Sources */,
 				CF8F810A2D0D91490095170B /* BigSigned-print.cpp in Sources */,
@@ -1755,7 +1748,6 @@
 				CF305FC22D0D8A2E000A5F79 /* UInt32Set.cpp in Sources */,
 				CF305FC32D0D8A2E000A5F79 /* C_galgas_quiet_option.cpp in Sources */,
 				CF305FC42D0D8A2E000A5F79 /* BigUnsigned-subtract.cpp in Sources */,
-				CFCCF1AA2E1A7D7A00B0A689 /* all-declarations-33.cpp in Sources */,
 				CF305FC62D0D8A2E000A5F79 /* AC_GALGAS_enumAssociatedValues.cpp in Sources */,
 				CF305FC72D0D8A2E000A5F79 /* GGS_uint.cpp in Sources */,
 				CF305FC82D0D8A2E000A5F79 /* BigSigned-print.cpp in Sources */,

@@ -157,15 +157,15 @@ grammar galgas3ProjectGrammar
 //
 //--------------------------------------------------------------------------------------------------
 
-private proc parseAndAnalyzeProject ?let @lstring inProjectSourceFile
+private proc parseAndAnalyzeProject ?let @lstring inProjectSourceFilePath
                                     ?galgas4: let @bool inGalgas4
                                     ?let @string inSourceToAnalyze {
   if @application.verboseOutput then
     println (!"*** Parsing project files")
   end
-  grammar galgas3ProjectGrammar (?let @galgas3ProjectComponentAST projectComponentAST) in inProjectSourceFile
+  grammar galgas3ProjectGrammar (!inProjectSourceFilePath ?let @galgas3ProjectComponentAST projectComponentAST) in inProjectSourceFilePath
   if [option.mode value] == "" then
-    compileProject (!inProjectSourceFile !inSourceToAnalyze !galgas4: inGalgas4 !projectComponentAST)
+    compileProject (!inProjectSourceFilePath !inSourceToAnalyze !galgas4: inGalgas4 !projectComponentAST)
   //--- C++ compilation
     if 0 == @uint.errorCount then
       let cppCompilationTarget = [option galgas_cli_options.cppCompile value]
@@ -173,7 +173,7 @@ private proc parseAndAnalyzeProject ?let @lstring inProjectSourceFile
         if @application.verboseOutput then
           println (!"*** Perform C++ compilation")
         end
-        let buildFile = [inProjectSourceFile stringByDeletingLastPathComponent] + "/" + cppCompilationTarget + "/build.py"
+        let buildFile = [inProjectSourceFilePath stringByDeletingLastPathComponent] + "/" + cppCompilationTarget + "/build.py"
         if [buildFile fileExists] then
           let resultCode = ["python " + buildFile system]
           if resultCode != 0 then
@@ -197,18 +197,19 @@ private proc compileProject ?let @lstring inProjectSourceFile
   var @galgasDeclarationAST declarationAST = @()
 //--- Parse predefined type definitions
   grammar galgas4Grammar (!?declarationAST) on
-  [[filewrapper typeGenerationTemplate] textFileContentsAtPath !"galgas-predefined-types.ggs"]
+  [[filewrapper typeGenerationTemplate] textFileContentsAtPath !"galgas-predefined-entities.txt"]
   : "GALGAS predefined types"
  //--- Parse source file
+  let sourcesDir = [inProjectSourceFile stringByDeletingLastPathComponent] + "/sources"
   for (mValue) in inProjectComponentAST.mProjectSourceList do
     if [mValue pathExtension] == "galgas" then
-      let absoluteSourcePath = [mValue absolutePathFromPath ![inProjectSourceFile stringByDeletingLastPathComponent]]
-      grammar galgas3Grammar (!?declarationAST) in @lstring {!absoluteSourcePath !mValue.location}
+      let absoluteSourcePath = [mValue absolutePathFromPath !sourcesDir]
+      grammar galgas3Grammar (!?declarationAST) in @lstring {!absoluteSourcePath !.nowhere}
     elsif [mValue pathExtension] == "ggs" then
-      let absoluteSourcePath = [mValue absolutePathFromPath ![inProjectSourceFile stringByDeletingLastPathComponent]]
-      grammar galgas4Grammar (!?declarationAST) in @lstring {!absoluteSourcePath !mValue.location}
-    else
-      error mValue: "only \".galgas\" or \".ggs\" extensions are allowed here"
+      let absoluteSourcePath = [mValue absolutePathFromPath !sourcesDir]
+      grammar galgas4Grammar (!?declarationAST) in @lstring {!absoluteSourcePath !.nowhere}
+//    else
+//      error mValue: "only \".galgas\" or \".ggs\" extensions are allowed here"
     end
   end
 //--------------------------------- Hand coded source files

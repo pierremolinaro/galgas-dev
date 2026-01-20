@@ -720,7 +720,7 @@ proc generateExtensionMethodNew ?let @unifiedTypeMapEntry inReceiverType
 //--------------------------------------------------------------------------------------------------
 
 filewrapper typeGenerationTemplate in "+generation-templates/type_generation" {
-  "ggs"
+  "txt"
 }{
 }{
   template unifiedClassBodyForType "unified-class-body-for-type.h.galgasTemplate"

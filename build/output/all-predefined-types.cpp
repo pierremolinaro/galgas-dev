@@ -17,6 +17,86 @@ mProperty_lkey (inLKey) {
 }
 
 //--------------------------------------------------------------------------------------------------
+//     @bool generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_bool ("bool",
+                                                         nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_bool::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_bool ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_bool::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_bool (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_bool GGS_bool::extractObject (const GGS_object & inObject,
+                                  Compiler * inCompiler
+                                  COMMA_LOCATION_ARGS) {
+  GGS_bool result ;
+  const GGS_bool * p = (const GGS_bool *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_bool *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("bool", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @string generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_string ("string",
+                                                           nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_string::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_string ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_string::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_string (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_string GGS_string::extractObject (const GGS_object & inObject,
+                                      Compiler * inCompiler
+                                      COMMA_LOCATION_ARGS) {
+  GGS_string result ;
+  const GGS_string * p = (const GGS_string *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_string *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("string", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
 //     @location generic code implementation
 //--------------------------------------------------------------------------------------------------
 
@@ -616,166 +696,6 @@ GGS_string UpEnumerator_stringlist::current_mValue (LOCATION_ARGS) const {
 
 
 //--------------------------------------------------------------------------------------------------
-//     @string generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_string ("string",
-                                                           nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_string::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_string ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_string::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_string (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_string GGS_string::extractObject (const GGS_object & inObject,
-                                      Compiler * inCompiler
-                                      COMMA_LOCATION_ARGS) {
-  GGS_string result ;
-  const GGS_string * p = (const GGS_string *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_string *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("string", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//     @bool generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_bool ("bool",
-                                                         nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_bool::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_bool ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_bool::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_bool (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_bool GGS_bool::extractObject (const GGS_object & inObject,
-                                  Compiler * inCompiler
-                                  COMMA_LOCATION_ARGS) {
-  GGS_bool result ;
-  const GGS_bool * p = (const GGS_bool *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_bool *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("bool", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//     @uint generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_uint ("uint",
-                                                         nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_uint::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_uint ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_uint::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_uint (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_uint GGS_uint::extractObject (const GGS_object & inObject,
-                                  Compiler * inCompiler
-                                  COMMA_LOCATION_ARGS) {
-  GGS_uint result ;
-  const GGS_uint * p = (const GGS_uint *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_uint *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("uint", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//     @stringset generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_stringset ("stringset",
-                                                              nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_stringset::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_stringset ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_stringset::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_stringset (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_stringset GGS_stringset::extractObject (const GGS_object & inObject,
-                                            Compiler * inCompiler
-                                            COMMA_LOCATION_ARGS) {
-  GGS_stringset result ;
-  const GGS_stringset * p = (const GGS_stringset *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_stringset *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("stringset", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
 //     @lstringlist generic code implementation
 //--------------------------------------------------------------------------------------------------
 
@@ -1335,46 +1255,6 @@ GGS_lstring UpEnumerator_lstringlist::current_mValue (LOCATION_ARGS) const {
 
 
 //--------------------------------------------------------------------------------------------------
-//     @char generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_char ("char",
-                                                         nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_char::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_char ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_char::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_char (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_char GGS_char::extractObject (const GGS_object & inObject,
-                                  Compiler * inCompiler
-                                  COMMA_LOCATION_ARGS) {
-  GGS_char result ;
-  const GGS_char * p = (const GGS_char *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_char *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("char", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
 //     @lbool generic code implementation
 //--------------------------------------------------------------------------------------------------
 
@@ -1510,6 +1390,268 @@ void GGS_lbool::description (String & ioString,
     ioString.appendCString (" not built") ;
   }else{
     mProperty_bool.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_location.description (ioString, inIndentation+1) ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @stringset generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_stringset ("stringset",
+                                                              nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_stringset::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_stringset ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_stringset::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_stringset (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_stringset GGS_stringset::extractObject (const GGS_object & inObject,
+                                            Compiler * inCompiler
+                                            COMMA_LOCATION_ARGS) {
+  GGS_stringset result ;
+  const GGS_stringset * p = (const GGS_stringset *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_stringset *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("stringset", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @uint generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_uint ("uint",
+                                                         nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_uint::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_uint ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_uint::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_uint (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_uint GGS_uint::extractObject (const GGS_object & inObject,
+                                  Compiler * inCompiler
+                                  COMMA_LOCATION_ARGS) {
+  GGS_uint result ;
+  const GGS_uint * p = (const GGS_uint *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_uint *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("uint", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @char generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_char ("char",
+                                                         nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_char::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_char ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_char::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_char (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_char GGS_char::extractObject (const GGS_object & inObject,
+                                  Compiler * inCompiler
+                                  COMMA_LOCATION_ARGS) {
+  GGS_char result ;
+  const GGS_char * p = (const GGS_char *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_char *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("char", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @lchar generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lchar ("lchar",
+                                                          nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_lchar::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_lchar ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_lchar::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_lchar (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lchar GGS_lchar::extractObject (const GGS_object & inObject,
+                                    Compiler * inCompiler
+                                    COMMA_LOCATION_ARGS) {
+  GGS_lchar result ;
+  const GGS_lchar * p = (const GGS_lchar *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_lchar *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("lchar", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lchar::GGS_lchar (void) :
+mProperty_char (),
+mProperty_location () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lchar::GGS_lchar (const GGS_lchar & inSource) :
+mProperty_char (inSource.mProperty_char),
+mProperty_location (inSource.mProperty_location) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lchar & GGS_lchar::operator = (const GGS_lchar & inSource) {
+  mProperty_char = inSource.mProperty_char ;
+  mProperty_location = inSource.mProperty_location ;
+  return *this ;
+}
+
+//---Synthetized initializer -----------------------------------------------------------------------
+
+GGS_lchar GGS_lchar::init_21__21_ (const GGS_char & in_char,
+                                   const GGS_location & in_location,
+                                   Compiler * inCompiler
+                                   COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_lchar result ;
+  result.setInitializedProperties (inCompiler) ;
+  result.mProperty_char = in_char ;
+  result.mProperty_location = in_location ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_lchar::setInitializedProperties (Compiler * /* inCompiler */) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lchar::GGS_lchar (const GGS_char & inOperand0,
+                      const GGS_location & inOperand1) :
+mProperty_char (inOperand0),
+mProperty_location (inOperand1) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lchar GGS_lchar::class_func_new (const GGS_char & in_char,
+                                     const GGS_location & in_location,
+                                     Compiler * inCompiler
+                                     COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_lchar result ;
+  result.setInitializedProperties (inCompiler) ;
+  result.mProperty_char = in_char ;
+  result.mProperty_location = in_location ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GGS_lchar::objectCompare (const GGS_lchar & inOperand) const {
+   ComparisonResult result = ComparisonResult::operandEqual ;
+  if (result == ComparisonResult::operandEqual) {
+    result = mProperty_char.objectCompare (inOperand.mProperty_char) ;
+  }
+  if (result == ComparisonResult::operandEqual) {
+    result = mProperty_location.objectCompare (inOperand.mProperty_location) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_lchar::isValid (void) const {
+  return mProperty_char.isValid () && mProperty_location.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_lchar::drop (void) {
+  mProperty_char.drop () ;
+  mProperty_location.drop () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_lchar::description (String & ioString,
+                              const int32_t inIndentation) const {
+  ioString.appendCString ("<struct @lchar:") ;
+  if (! isValid ()) {
+    ioString.appendCString (" not built") ;
+  }else{
+    mProperty_char.description (ioString, inIndentation+1) ;
     ioString.appendCString (", ") ;
     mProperty_location.description (ioString, inIndentation+1) ;
   }
@@ -2153,46 +2295,6 @@ GGS_string UpEnumerator__32_stringlist::current_mValue_31_ (LOCATION_ARGS) const
 
 
 //--------------------------------------------------------------------------------------------------
-//     @double generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_double ("double",
-                                                           nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_double::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_double ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_double::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_double (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_double GGS_double::extractObject (const GGS_object & inObject,
-                                      Compiler * inCompiler
-                                      COMMA_LOCATION_ARGS) {
-  GGS_double result ;
-  const GGS_double * p = (const GGS_double *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_double *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("double", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
 //     @uint64 generic code implementation
 //--------------------------------------------------------------------------------------------------
 
@@ -2347,6 +2449,46 @@ GGS_bigint GGS_bigint::extractObject (const GGS_object & inObject,
       result = *p ;
     }else{
       inCompiler->castError ("bigint", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @double generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_double ("double",
+                                                           nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_double::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_double ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_double::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_double (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_double GGS_double::extractObject (const GGS_object & inObject,
+                                      Compiler * inCompiler
+                                      COMMA_LOCATION_ARGS) {
+  GGS_double result ;
+  const GGS_double * p = (const GGS_double *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_double *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("double", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
@@ -9385,148 +9527,6 @@ void GGS_lbigint::description (String & ioString,
     ioString.appendCString (" not built") ;
   }else{
     mProperty_bigint.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_location.description (ioString, inIndentation+1) ;
-  }
-  ioString.appendCString (">") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//     @lchar generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lchar ("lchar",
-                                                          nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_lchar::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_lchar ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_lchar::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_lchar (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lchar GGS_lchar::extractObject (const GGS_object & inObject,
-                                    Compiler * inCompiler
-                                    COMMA_LOCATION_ARGS) {
-  GGS_lchar result ;
-  const GGS_lchar * p = (const GGS_lchar *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_lchar *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("lchar", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lchar::GGS_lchar (void) :
-mProperty_char (),
-mProperty_location () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lchar::GGS_lchar (const GGS_lchar & inSource) :
-mProperty_char (inSource.mProperty_char),
-mProperty_location (inSource.mProperty_location) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lchar & GGS_lchar::operator = (const GGS_lchar & inSource) {
-  mProperty_char = inSource.mProperty_char ;
-  mProperty_location = inSource.mProperty_location ;
-  return *this ;
-}
-
-//---Synthetized initializer -----------------------------------------------------------------------
-
-GGS_lchar GGS_lchar::init_21__21_ (const GGS_char & in_char,
-                                   const GGS_location & in_location,
-                                   Compiler * inCompiler
-                                   COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_lchar result ;
-  result.setInitializedProperties (inCompiler) ;
-  result.mProperty_char = in_char ;
-  result.mProperty_location = in_location ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_lchar::setInitializedProperties (Compiler * /* inCompiler */) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lchar::GGS_lchar (const GGS_char & inOperand0,
-                      const GGS_location & inOperand1) :
-mProperty_char (inOperand0),
-mProperty_location (inOperand1) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lchar GGS_lchar::class_func_new (const GGS_char & in_char,
-                                     const GGS_location & in_location,
-                                     Compiler * inCompiler
-                                     COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_lchar result ;
-  result.setInitializedProperties (inCompiler) ;
-  result.mProperty_char = in_char ;
-  result.mProperty_location = in_location ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult GGS_lchar::objectCompare (const GGS_lchar & inOperand) const {
-   ComparisonResult result = ComparisonResult::operandEqual ;
-  if (result == ComparisonResult::operandEqual) {
-    result = mProperty_char.objectCompare (inOperand.mProperty_char) ;
-  }
-  if (result == ComparisonResult::operandEqual) {
-    result = mProperty_location.objectCompare (inOperand.mProperty_location) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GGS_lchar::isValid (void) const {
-  return mProperty_char.isValid () && mProperty_location.isValid () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_lchar::drop (void) {
-  mProperty_char.drop () ;
-  mProperty_location.drop () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_lchar::description (String & ioString,
-                              const int32_t inIndentation) const {
-  ioString.appendCString ("<struct @lchar:") ;
-  if (! isValid ()) {
-    ioString.appendCString (" not built") ;
-  }else{
-    mProperty_char.description (ioString, inIndentation+1) ;
     ioString.appendCString (", ") ;
     mProperty_location.description (ioString, inIndentation+1) ;
   }

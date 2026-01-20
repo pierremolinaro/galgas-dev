@@ -31,7 +31,7 @@ list @galgas3QualifiedFeatureList {
 //--------------------------------------------------------------------------------------------------
 
 struct @galgas3ProjectComponentAST {
-  public let @lstringlist mProjectSourceList
+  public let @stringlist mProjectSourceList
   public let @lbigint mMajorVersion
   public let @lbigint mMinorVersion
   public let @lbigint mRevisionVersion
@@ -46,7 +46,7 @@ struct @galgas3ProjectComponentAST {
 indexing grammar galgas3ProjectGrammar "LL1" {
   syntax galgas3ProjectSyntax
 
-  <project_component_start_symbol> !@galgas3ProjectComponentAST outComponent
+  <project_component_start_symbol> ?let @lstring inProjectSourceFilePath !@galgas3ProjectComponentAST outComponent
 
 }
 
@@ -74,14 +74,15 @@ syntax galgas3ProjectSyntax (galgasScanner3) {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <project_component_start_symbol> !@galgas3ProjectComponentAST outProjectComponentAST {
+  rule <project_component_start_symbol> ?let @lstring inProjectSourceFilePath
+                                        !@galgas3ProjectComponentAST outProjectComponentAST {
     <project_header>
       ?let @lbigint majorVersion
       ?let @lbigint minorVersion
       ?let @lbigint revisionVersion
       ?let @lstring targetName
     ${$
-    var @lstringlist projectSourceList = @()
+    var @stringlist projectSourceList = @()
     var @lstringlist generateFeatureList = @()
     var @galgas3QualifiedFeatureList qualifiedFeatureList = @()
     repeat
@@ -150,12 +151,16 @@ syntax galgas3ProjectSyntax (galgasScanner3) {
       qualifiedFeatureList += !["app-link" here] !featureValue
     while
       $"string"$ ?let @lstring filePath
-      projectSourceList += !filePath
-    while
-      $in$
-      <folderDirectory> !"" !?projectSourceList
+      projectSourceList += !filePath.string
     end
     $}$
+  //--- Enumerate sources directory for getting all source files
+     let sourceDirectory = [inProjectSourceFilePath stringByDeletingLastPathComponent] + "/sources"
+     var extensionList = @stringlist ()
+     extensionList += !"galgas"
+     extensionList += !"ggs"
+     projectSourceList = [sourceDirectory regularFilesWithExtensions !true !extensionList]
+  //---
     outProjectComponentAST = @galgas3ProjectComponentAST {
       !projectSourceList
       !majorVersion
@@ -166,28 +171,6 @@ syntax galgas3ProjectSyntax (galgasScanner3) {
       !targetName
       !@location.here
     }
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  rule <folderDirectory> ?@string inCurrentRelativePath ?!@lstringlist ioProjectSourceList {
-    $"string"$ ?var relativeDirectory
-    if (relativeDirectory.string.length > 0) && (relativeDirectory.string.lastCharacter != '/') then
-      relativeDirectory.string += "/"
-    end
-    ${$
-    repeat
-    while
-      $in$
-      <folderDirectory> !inCurrentRelativePath + relativeDirectory.string !?ioProjectSourceList
-    while
-      $"string"$ ?let relativePath
-      ioProjectSourceList += !@(
-        inCurrentRelativePath + relativeDirectory.string + relativePath.string,
-        relativePath.location
-      )
-    end
-    $}$
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
