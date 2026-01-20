@@ -68,7 +68,7 @@ struct ProjectDocumentView : View {
     )
     self._mSharedTextModel = StateObject (wrappedValue: projectSharedTextModel)
     let rootDirectoryNode = RootDirectoryNode (
-      url: inProjectFileURL.deletingLastPathComponent ().appendingPathComponent ("galgas-sources"),
+      url: inProjectFileURL.deletingLastPathComponent ().appendingPathComponent ("sources"),
       issuesBinding: inIssuesBinding
     )
     self._mRootDirectoryNode = StateObject (wrappedValue: rootDirectoryNode)

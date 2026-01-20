@@ -4,12 +4,12 @@ project (1:0:0) -> "LL1Expression" {
   %MacSwiftApp
   %applicationBundleBase : "fr.what"
 #--- Sources
-  "galgas-sources/LL1_expression_lexique.galgas"
-  "galgas-sources/LL1_expression_options.galgas"
-  "galgas-sources/LL1_expression_semantics.galgas"
-  "galgas-sources/LL1_expression_syntax.galgas"
-  "galgas-sources/LL1_expression_grammar.galgas"
-  "galgas-sources/LL1_expression_cocoa.galgas"
-  "galgas-sources/LL1_expression_program.galgas"
+  "sources/LL1_expression_lexique.galgas"
+  "sources/LL1_expression_options.galgas"
+  "sources/LL1_expression_semantics.galgas"
+  "sources/LL1_expression_syntax.galgas"
+  "sources/LL1_expression_grammar.galgas"
+  "sources/LL1_expression_cocoa.galgas"
+  "sources/LL1_expression_program.galgas"
 }
 

@@ -4,13 +4,13 @@ project (1:0:0) -> "allDanglingElseSolution" {
   %MacSwiftApp
   %applicationBundleBase : "fr.what"
 #--- Sources
-  "galgas-sources/dangling_else_solution_lexique.galgas"
-  "galgas-sources/dangling_else_solution_options.galgas"
-  "galgas-sources/dangling_else_solution_semantics.galgas"
-  "galgas-sources/dangling_else_solution_syntax.galgas"
-  "galgas-sources/dangling_else_solution_grammar.galgas"
-  "galgas-sources/dangling_else_solution_cocoa.galgas"
-  "galgas-sources/dangling_else_solution_program.galgas"
+  "sources/dangling_else_solution_lexique.galgas"
+  "sources/dangling_else_solution_options.galgas"
+  "sources/dangling_else_solution_semantics.galgas"
+  "sources/dangling_else_solution_syntax.galgas"
+  "sources/dangling_else_solution_grammar.galgas"
+  "sources/dangling_else_solution_cocoa.galgas"
+  "sources/dangling_else_solution_program.galgas"
 }
 
 

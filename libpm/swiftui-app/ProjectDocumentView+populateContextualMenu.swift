@@ -88,7 +88,7 @@ extension ProjectDocumentView {
       attributes: nil
     )
   //--- Project file path directory
-    let sourceDirectoryURL = self.mProjectFileURL.deletingLastPathComponent ().appending (path: "galgas-sources")
+    let sourceDirectoryURL = self.mProjectFileURL.deletingLastPathComponent ().appending (path: "sources")
     if let subpaths = try? fm.subpathsOfDirectory (atPath: sourceDirectoryURL.path()) {
       let commandLineToolInvocation : CommandLineToolInvocation = commandLineToolInvocation ()
       let compilerToolURL = commandLineToolInvocation.tool

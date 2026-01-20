@@ -4,12 +4,12 @@ project (1:0:0) -> "LR1Grammar"{
   %MacSwiftApp
   %applicationBundleBase : "fr.what"
 #--- Sources
-  "galgas-sources/LR1_grammar_lexique.galgas"
-  "galgas-sources/LR1_grammar_options.galgas"
-  "galgas-sources/LR1_grammar_semantics.galgas"
-  "galgas-sources/LR1_grammar_syntax.galgas"
-  "galgas-sources/LR1_grammar_grammar.galgas"
-  "galgas-sources/LR1_grammar_cocoa.galgas"
-  "galgas-sources/LR1_grammar_program.galgas"
+  "sources/LR1_grammar_lexique.galgas"
+  "sources/LR1_grammar_options.galgas"
+  "sources/LR1_grammar_semantics.galgas"
+  "sources/LR1_grammar_syntax.galgas"
+  "sources/LR1_grammar_grammar.galgas"
+  "sources/LR1_grammar_cocoa.galgas"
+  "sources/LR1_grammar_program.galgas"
 }
 

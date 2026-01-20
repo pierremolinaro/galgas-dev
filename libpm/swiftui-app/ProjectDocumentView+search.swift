@@ -22,7 +22,7 @@ extension ProjectDocumentView {
         self.search (inFileURL: self.mProjectFileURL, fileNodeID: nil)
       //---
         let fm = FileManager ()
-        let directoryURL = self.mProjectFileURL.deletingLastPathComponent ().appending (path: "galgas-sources")
+        let directoryURL = self.mProjectFileURL.deletingLastPathComponent ().appending (path: "sources")
         if let subpaths = try? fm.subpathsOfDirectory (atPath: directoryURL.path()) {
           for subpath in subpaths.sorted () {
             let url = directoryURL.appendingPathComponent (subpath)

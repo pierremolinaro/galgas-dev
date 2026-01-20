@@ -4,11 +4,11 @@ project (1:0:0) -> "classSampleLanguage" {
   %MacSwiftApp
   %applicationBundleBase : "fr.what"
 #--- Sources
-  "galgas-sources/class_sample_language_lexique.galgas"
-  "galgas-sources/class_sample_language_semantics.galgas"
-  "galgas-sources/class_sample_language_syntax.galgas"
-  "galgas-sources/class_sample_language_grammar.galgas"
-  "galgas-sources/class_sample_language_cocoa.galgas"
-  "galgas-sources/class_sample_language_program.galgas"
+  "sources/class_sample_language_lexique.galgas"
+  "sources/class_sample_language_semantics.galgas"
+  "sources/class_sample_language_syntax.galgas"
+  "sources/class_sample_language_grammar.galgas"
+  "sources/class_sample_language_cocoa.galgas"
+  "sources/class_sample_language_program.galgas"
 }
 

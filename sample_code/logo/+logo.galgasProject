@@ -11,12 +11,12 @@ project (0:0:1) -> "logo" {
   %codeblocks-linux64
 
 #--- Source files
-  "galgas-sources/logo-lexique.galgas"
-  "galgas-sources/logo-options.galgas"
-  "galgas-sources/logo-semantics.galgas"
-  "galgas-sources/logo-syntax.galgas"
-  "galgas-sources/logo-grammar.galgas"
-  "galgas-sources/logo-cocoa.galgas"
-  "galgas-sources/logo-program.galgas"
+  "sources/logo-lexique.galgas"
+  "sources/logo-options.galgas"
+  "sources/logo-semantics.galgas"
+  "sources/logo-syntax.galgas"
+  "sources/logo-grammar.galgas"
+  "sources/logo-cocoa.galgas"
+  "sources/logo-program.galgas"
 }
 
