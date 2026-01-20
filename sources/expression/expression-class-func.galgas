@@ -197,7 +197,7 @@ private proc analyzeConstructorInvocation ?let @lstring inUsefulnessCallerEntity
                       ?let @lstring inTypeName
                       ?let @lstring inConstructorName
                       ?let @actualOutputArgumentList inInitializerEffectiveParameterExpressions
-                      ?let @location inLocationForOldStyleCollectionInitializerError
+                      ?let @location unused inLocationForOldStyleCollectionInitializerError //§
                       !@unifiedTypeMapEntry outReturnedType
                       !@unifiedTypeMapEntry outConstructorType
                       !@semanticExpressionListForGeneration outConstructorEffectiveParameterList
@@ -215,16 +215,6 @@ private proc analyzeConstructorInvocation ?let @lstring inUsefulnessCallerEntity
   else
   //--- Get constructor map from type map
     let @classFunctionMap classFunctionMap = [outConstructorType definition].classFunctionMap
-  //--- Search initializer
-    if (inConstructorName.string == "new") && ([outConstructorType definition].typeKind == .structType) then
-      let initializerSignature = [inInitializerEffectiveParameterExpressions initializerSignature]
-      let initializerMap = [outConstructorType definition].initializerMap
-      if not [initializerMap hasKey !initializerSignature] then
-        warning inConstructorName
-        : "initializer @" + [outConstructorType definition].typeName
-        + "." + initializerSignature + " does not exist"
-      end
-    end
   //--- Search contructor
     let @functionSignature constructorFormalArgumentTypeList
     if let entry = classFunctionMap @[inConstructorName.string] then
@@ -281,16 +271,6 @@ private proc analyzeConstructorInvocation ?let @lstring inUsefulnessCallerEntity
         error effectiveParameter.mActualSelector
         : "the selector should be '" + s + "'" fixit { replace s }
       end
-    end
-  end
-//---
-  if [option galgas_cli_options.errorOldStyleCollectionInitializer value] && 
-     ([inInitializerEffectiveParameterExpressions count] == 0) then
-    let oldCollectionInitializers = @stringset @["emptyList", "emptyMap", "emptySortedList", "emptyDict"]
-    if [oldCollectionInitializers hasKey !inConstructorName.string] then
-      error inLocationForOldStyleCollectionInitializerError
-      : "old style collection initializer call (due to '--error-old-syle-collection-initializer' option)"
-      fixit { replace " ()" }
     end
   end
 }

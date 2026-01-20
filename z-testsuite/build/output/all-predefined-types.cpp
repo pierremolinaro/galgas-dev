@@ -307,14 +307,6 @@ void GGS_uintlist::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uintlist GGS_uintlist::class_func_emptyList (UNUSED_LOCATION_ARGS) {
-  GGS_uintlist result ;
-  result.mArray.setCapacity (16) ; // Build
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 GGS_uintlist GGS_uintlist::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
   GGS_uintlist result ;
   result.mArray.setCapacity (16) ; // Build
@@ -862,14 +854,6 @@ void GGS_uint_36__34_list::description (String & ioString,
     ioString.appendCString (" not built") ;
   }
   ioString.appendCString (">") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_uint_36__34_list GGS_uint_36__34_list::class_func_emptyList (UNUSED_LOCATION_ARGS) {
-  GGS_uint_36__34_list result ;
-  result.mArray.setCapacity (16) ; // Build
-  return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -2025,14 +2009,6 @@ void GGS_functionlist::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_functionlist GGS_functionlist::class_func_emptyList (UNUSED_LOCATION_ARGS) {
-  GGS_functionlist result ;
-  result.mArray.setCapacity (16) ; // Build
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 GGS_functionlist GGS_functionlist::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
   GGS_functionlist result ;
   result.mArray.setCapacity (16) ; // Build
@@ -2584,14 +2560,6 @@ void GGS_luintlist::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_luintlist GGS_luintlist::class_func_emptyList (UNUSED_LOCATION_ARGS) {
-  GGS_luintlist result ;
-  result.mArray.setCapacity (16) ; // Build
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 GGS_luintlist GGS_luintlist::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
   GGS_luintlist result ;
   result.mArray.setCapacity (16) ; // Build
@@ -3062,19 +3030,6 @@ mProperty_location (inOperand1) {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_luint GGS_luint::class_func_new (const GGS_uint & in_uint,
-                                     const GGS_location & in_location,
-                                     Compiler * inCompiler
-                                     COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_luint result ;
-  result.setInitializedProperties (inCompiler) ;
-  result.mProperty_uint = in_uint ;
-  result.mProperty_location = in_location ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 ComparisonResult GGS_luint::objectCompare (const GGS_luint & inOperand) const {
    ComparisonResult result = ComparisonResult::operandEqual ;
   if (result == ComparisonResult::operandEqual) {
@@ -3281,14 +3236,6 @@ void GGS_lstringlist::description (String & ioString,
     ioString.appendCString (" not built") ;
   }
   ioString.appendCString (">") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lstringlist GGS_lstringlist::class_func_emptyList (UNUSED_LOCATION_ARGS) {
-  GGS_lstringlist result ;
-  result.mArray.setCapacity (16) ; // Build
-  return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -3844,14 +3791,6 @@ void GGS_objectlist::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_objectlist GGS_objectlist::class_func_emptyList (UNUSED_LOCATION_ARGS) {
-  GGS_objectlist result ;
-  result.mArray.setCapacity (16) ; // Build
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 GGS_objectlist GGS_objectlist::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
   GGS_objectlist result ;
   result.mArray.setCapacity (16) ; // Build
@@ -4399,14 +4338,6 @@ void GGS_stringlist::description (String & ioString,
     ioString.appendCString (" not built") ;
   }
   ioString.appendCString (">") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_stringlist GGS_stringlist::class_func_emptyList (UNUSED_LOCATION_ARGS) {
-  GGS_stringlist result ;
-  result.mArray.setCapacity (16) ; // Build
-  return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -4962,14 +4893,6 @@ void GGS_typelist::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_typelist GGS_typelist::class_func_emptyList (UNUSED_LOCATION_ARGS) {
-  GGS_typelist result ;
-  result.mArray.setCapacity (16) ; // Build
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 GGS_typelist GGS_typelist::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
   GGS_typelist result ;
   result.mArray.setCapacity (16) ; // Build
@@ -5517,14 +5440,6 @@ void GGS_bigintlist::description (String & ioString,
     ioString.appendCString (" not built") ;
   }
   ioString.appendCString (">") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_bigintlist GGS_bigintlist::class_func_emptyList (UNUSED_LOCATION_ARGS) {
-  GGS_bigintlist result ;
-  result.mArray.setCapacity (16) ; // Build
-  return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -6080,14 +5995,6 @@ void GGS_lbigintlist::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_lbigintlist GGS_lbigintlist::class_func_emptyList (UNUSED_LOCATION_ARGS) {
-  GGS_lbigintlist result ;
-  result.mArray.setCapacity (16) ; // Build
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 GGS_lbigintlist GGS_lbigintlist::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
   GGS_lbigintlist result ;
   result.mArray.setCapacity (16) ; // Build
@@ -6558,19 +6465,6 @@ mProperty_location (inOperand1) {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_lbigint GGS_lbigint::class_func_new (const GGS_bigint & in_bigint,
-                                         const GGS_location & in_location,
-                                         Compiler * inCompiler
-                                         COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_lbigint result ;
-  result.setInitializedProperties (inCompiler) ;
-  result.mProperty_bigint = in_bigint ;
-  result.mProperty_location = in_location ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 ComparisonResult GGS_lbigint::objectCompare (const GGS_lbigint & inOperand) const {
    ComparisonResult result = ComparisonResult::operandEqual ;
   if (result == ComparisonResult::operandEqual) {
@@ -6696,19 +6590,6 @@ GGS_lbool::GGS_lbool (const GGS_bool & inOperand0,
                       const GGS_location & inOperand1) :
 mProperty_bool (inOperand0),
 mProperty_location (inOperand1) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lbool GGS_lbool::class_func_new (const GGS_bool & in_bool,
-                                     const GGS_location & in_location,
-                                     Compiler * inCompiler
-                                     COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_lbool result ;
-  result.setInitializedProperties (inCompiler) ;
-  result.mProperty_bool = in_bool ;
-  result.mProperty_location = in_location ;
-  return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -6842,19 +6723,6 @@ mProperty_location (inOperand1) {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_lchar GGS_lchar::class_func_new (const GGS_char & in_char,
-                                     const GGS_location & in_location,
-                                     Compiler * inCompiler
-                                     COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_lchar result ;
-  result.setInitializedProperties (inCompiler) ;
-  result.mProperty_char = in_char ;
-  result.mProperty_location = in_location ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 ComparisonResult GGS_lchar::objectCompare (const GGS_lchar & inOperand) const {
    ComparisonResult result = ComparisonResult::operandEqual ;
   if (result == ComparisonResult::operandEqual) {
@@ -6980,19 +6848,6 @@ GGS_ldouble::GGS_ldouble (const GGS_double & inOperand0,
                           const GGS_location & inOperand1) :
 mProperty_double (inOperand0),
 mProperty_location (inOperand1) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_ldouble GGS_ldouble::class_func_new (const GGS_double & in_double,
-                                         const GGS_location & in_location,
-                                         Compiler * inCompiler
-                                         COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_ldouble result ;
-  result.setInitializedProperties (inCompiler) ;
-  result.mProperty_double = in_double ;
-  result.mProperty_location = in_location ;
-  return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -7126,19 +6981,6 @@ mProperty_location (inOperand1) {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_lsint GGS_lsint::class_func_new (const GGS_sint & in_sint,
-                                     const GGS_location & in_location,
-                                     Compiler * inCompiler
-                                     COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_lsint result ;
-  result.setInitializedProperties (inCompiler) ;
-  result.mProperty_sint = in_sint ;
-  result.mProperty_location = in_location ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 ComparisonResult GGS_lsint::objectCompare (const GGS_lsint & inOperand) const {
    ComparisonResult result = ComparisonResult::operandEqual ;
   if (result == ComparisonResult::operandEqual) {
@@ -7268,19 +7110,6 @@ mProperty_location (inOperand1) {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_lsint_36__34_ GGS_lsint_36__34_::class_func_new (const GGS_sint_36__34_ & in_sint64,
-                                                     const GGS_location & in_location,
-                                                     Compiler * inCompiler
-                                                     COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_lsint_36__34_ result ;
-  result.setInitializedProperties (inCompiler) ;
-  result.mProperty_sint_36__34_ = in_sint64 ;
-  result.mProperty_location = in_location ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 ComparisonResult GGS_lsint_36__34_::objectCompare (const GGS_lsint_36__34_ & inOperand) const {
    ComparisonResult result = ComparisonResult::operandEqual ;
   if (result == ComparisonResult::operandEqual) {
@@ -7406,19 +7235,6 @@ GGS_luint_36__34_::GGS_luint_36__34_ (const GGS_uint_36__34_ & inOperand0,
                                       const GGS_location & inOperand1) :
 mProperty_uint_36__34_ (inOperand0),
 mProperty_location (inOperand1) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_luint_36__34_ GGS_luint_36__34_::class_func_new (const GGS_uint_36__34_ & in_uint64,
-                                                     const GGS_location & in_location,
-                                                     Compiler * inCompiler
-                                                     COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_luint_36__34_ result ;
-  result.setInitializedProperties (inCompiler) ;
-  result.mProperty_uint_36__34_ = in_uint64 ;
-  result.mProperty_location = in_location ;
-  return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -7636,14 +7452,6 @@ void GGS__32_stringlist::description (String & ioString,
     ioString.appendCString (" not built") ;
   }
   ioString.appendCString (">") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS__32_stringlist GGS__32_stringlist::class_func_emptyList (UNUSED_LOCATION_ARGS) {
-  GGS__32_stringlist result ;
-  result.mArray.setCapacity (16) ; // Build
-  return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -8188,19 +7996,6 @@ mProperty_length (inOperand1) {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_range GGS_range::class_func_new (const GGS_uint & in_start,
-                                     const GGS_uint & in_length,
-                                     Compiler * inCompiler
-                                     COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_range result ;
-  result.setInitializedProperties (inCompiler) ;
-  result.mProperty_start = in_start ;
-  result.mProperty_length = in_length ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 ComparisonResult GGS_range::objectCompare (const GGS_range & inOperand) const {
    ComparisonResult result = ComparisonResult::operandEqual ;
   if (result == ComparisonResult::operandEqual) {
@@ -8458,17 +8253,6 @@ mProperty_mValue (inOperand0) {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_functionlist_2E_element GGS_functionlist_2E_element::class_func_new (const GGS_function & in_mValue,
-                                                                         Compiler * inCompiler
-                                                                         COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_functionlist_2E_element result ;
-  result.setInitializedProperties (inCompiler) ;
-  result.mProperty_mValue = in_mValue ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 ComparisonResult GGS_functionlist_2E_element::objectCompare (const GGS_functionlist_2E_element & inOperand) const {
    ComparisonResult result = ComparisonResult::operandEqual ;
   if (result == ComparisonResult::operandEqual) {
@@ -8581,17 +8365,6 @@ void GGS_luintlist_2E_element::setInitializedProperties (Compiler * /* inCompile
 
 GGS_luintlist_2E_element::GGS_luintlist_2E_element (const GGS_luint & inOperand0) :
 mProperty_mValue (inOperand0) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_luintlist_2E_element GGS_luintlist_2E_element::class_func_new (const GGS_luint & in_mValue,
-                                                                   Compiler * inCompiler
-                                                                   COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_luintlist_2E_element result ;
-  result.setInitializedProperties (inCompiler) ;
-  result.mProperty_mValue = in_mValue ;
-  return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -8712,17 +8485,6 @@ mProperty_mValue (inOperand0) {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_objectlist_2E_element GGS_objectlist_2E_element::class_func_new (const GGS_object & in_mValue,
-                                                                     Compiler * inCompiler
-                                                                     COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_objectlist_2E_element result ;
-  result.setInitializedProperties (inCompiler) ;
-  result.mProperty_mValue = in_mValue ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 ComparisonResult GGS_objectlist_2E_element::objectCompare (const GGS_objectlist_2E_element & inOperand) const {
    ComparisonResult result = ComparisonResult::operandEqual ;
   if (result == ComparisonResult::operandEqual) {
@@ -8835,17 +8597,6 @@ void GGS_stringlist_2E_element::setInitializedProperties (Compiler * /* inCompil
 
 GGS_stringlist_2E_element::GGS_stringlist_2E_element (const GGS_string & inOperand0) :
 mProperty_mValue (inOperand0) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_stringlist_2E_element GGS_stringlist_2E_element::class_func_new (const GGS_string & in_mValue,
-                                                                     Compiler * inCompiler
-                                                                     COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_stringlist_2E_element result ;
-  result.setInitializedProperties (inCompiler) ;
-  result.mProperty_mValue = in_mValue ;
-  return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -8966,17 +8717,6 @@ mProperty_mValue (inOperand0) {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_typelist_2E_element GGS_typelist_2E_element::class_func_new (const GGS_type & in_mValue,
-                                                                 Compiler * inCompiler
-                                                                 COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_typelist_2E_element result ;
-  result.setInitializedProperties (inCompiler) ;
-  result.mProperty_mValue = in_mValue ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 ComparisonResult GGS_typelist_2E_element::objectCompare (const GGS_typelist_2E_element & inOperand) const {
    ComparisonResult result = ComparisonResult::operandEqual ;
   if (result == ComparisonResult::operandEqual) {
@@ -9089,17 +8829,6 @@ void GGS_uintlist_2E_element::setInitializedProperties (Compiler * /* inCompiler
 
 GGS_uintlist_2E_element::GGS_uintlist_2E_element (const GGS_uint & inOperand0) :
 mProperty_mValue (inOperand0) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_uintlist_2E_element GGS_uintlist_2E_element::class_func_new (const GGS_uint & in_mValue,
-                                                                 Compiler * inCompiler
-                                                                 COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_uintlist_2E_element result ;
-  result.setInitializedProperties (inCompiler) ;
-  result.mProperty_mValue = in_mValue ;
-  return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -9220,17 +8949,6 @@ mProperty_mValue (inOperand0) {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint_36__34_list_2E_element GGS_uint_36__34_list_2E_element::class_func_new (const GGS_uint_36__34_ & in_mValue,
-                                                                                 Compiler * inCompiler
-                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_uint_36__34_list_2E_element result ;
-  result.setInitializedProperties (inCompiler) ;
-  result.mProperty_mValue = in_mValue ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 ComparisonResult GGS_uint_36__34_list_2E_element::objectCompare (const GGS_uint_36__34_list_2E_element & inOperand) const {
    ComparisonResult result = ComparisonResult::operandEqual ;
   if (result == ComparisonResult::operandEqual) {
@@ -9347,17 +9065,6 @@ mProperty_mValue (inOperand0) {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_bigintlist_2E_element GGS_bigintlist_2E_element::class_func_new (const GGS_bigint & in_mValue,
-                                                                     Compiler * inCompiler
-                                                                     COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_bigintlist_2E_element result ;
-  result.setInitializedProperties (inCompiler) ;
-  result.mProperty_mValue = in_mValue ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 ComparisonResult GGS_bigintlist_2E_element::objectCompare (const GGS_bigintlist_2E_element & inOperand) const {
    ComparisonResult result = ComparisonResult::operandEqual ;
   if (result == ComparisonResult::operandEqual) {
@@ -9470,17 +9177,6 @@ void GGS_lbigintlist_2E_element::setInitializedProperties (Compiler * /* inCompi
 
 GGS_lbigintlist_2E_element::GGS_lbigintlist_2E_element (const GGS_lbigint & inOperand0) :
 mProperty_mValue (inOperand0) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lbigintlist_2E_element GGS_lbigintlist_2E_element::class_func_new (const GGS_lbigint & in_mValue,
-                                                                       Compiler * inCompiler
-                                                                       COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_lbigintlist_2E_element result ;
-  result.setInitializedProperties (inCompiler) ;
-  result.mProperty_mValue = in_mValue ;
-  return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -9604,19 +9300,6 @@ GGS__32_stringlist_2E_element::GGS__32_stringlist_2E_element (const GGS_string &
                                                               const GGS_string & inOperand1) :
 mProperty_mValue_30_ (inOperand0),
 mProperty_mValue_31_ (inOperand1) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS__32_stringlist_2E_element GGS__32_stringlist_2E_element::class_func_new (const GGS_string & in_mValue0,
-                                                                             const GGS_string & in_mValue1,
-                                                                             Compiler * inCompiler
-                                                                             COMMA_UNUSED_LOCATION_ARGS) {
-  GGS__32_stringlist_2E_element result ;
-  result.setInitializedProperties (inCompiler) ;
-  result.mProperty_mValue_30_ = in_mValue0 ;
-  result.mProperty_mValue_31_ = in_mValue1 ;
-  return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -9750,19 +9433,6 @@ mProperty_location (inOperand1) {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_lstring GGS_lstring::class_func_new (const GGS_string & in_string,
-                                         const GGS_location & in_location,
-                                         Compiler * inCompiler
-                                         COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_lstring result ;
-  result.setInitializedProperties (inCompiler) ;
-  result.mProperty_string = in_string ;
-  result.mProperty_location = in_location ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 ComparisonResult GGS_lstring::objectCompare (const GGS_lstring & inOperand) const {
    ComparisonResult result = ComparisonResult::operandEqual ;
   if (result == ComparisonResult::operandEqual) {
@@ -9881,17 +9551,6 @@ void GGS_lstringlist_2E_element::setInitializedProperties (Compiler * /* inCompi
 
 GGS_lstringlist_2E_element::GGS_lstringlist_2E_element (const GGS_lstring & inOperand0) :
 mProperty_mValue (inOperand0) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lstringlist_2E_element GGS_lstringlist_2E_element::class_func_new (const GGS_lstring & in_mValue,
-                                                                       Compiler * inCompiler
-                                                                       COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_lstringlist_2E_element result ;
-  result.setInitializedProperties (inCompiler) ;
-  result.mProperty_mValue = in_mValue ;
-  return result ;
 }
 
 //--------------------------------------------------------------------------------------------------

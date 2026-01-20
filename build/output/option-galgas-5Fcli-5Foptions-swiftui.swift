@@ -18,7 +18,6 @@ fileprivate let errorAnomynousForInstructionEnumeratedObject_PREFKEY = "galgas_c
 fileprivate let errorObsoleteGetterCall_PREFKEY = "galgas_cli_options:errorObsoleteGetterCall"
 fileprivate let errorPropertyGetterCall_PREFKEY = "galgas_cli_options:errorPropertyGetterCall"
 fileprivate let errorOnGetterCallWithNoArgument_PREFKEY = "galgas_cli_options:errorOnGetterCallWithNoArgument"
-fileprivate let errorOldStyleCollectionInitializer_PREFKEY = "galgas_cli_options:errorOldStyleCollectionInitializer"
 fileprivate let errorOldStyleLocalVarDeclaration_PREFKEY = "galgas_cli_options:errorOldStyleLocalVarDeclaration"
 fileprivate let errorOldStylePropertyDeclaration_PREFKEY = "galgas_cli_options:errorOldStylePropertyDeclaration"
 fileprivate let generateManyFiles_PREFKEY = "galgas_cli_options:generateManyFiles"
@@ -27,7 +26,6 @@ fileprivate let outputHTMLgrammarFile_PREFKEY = "galgas_cli_options:outputHTMLgr
 fileprivate let outputHTMLTypeListFile_PREFKEY = "galgas_cli_options:outputHTMLTypeListFile"
 fileprivate let printPredefinedLexicalActions_PREFKEY = "galgas_cli_options:printPredefinedLexicalActions"
 fileprivate let check_big_int_PREFKEY = "galgas_cli_options:check_big_int"
-fileprivate let warningNotGalgas4Feature_PREFKEY = "galgas_cli_options:warningNotGalgas4Feature"
 fileprivate let create_project_PREFKEY = "galgas_cli_options:create_project"
 fileprivate let extractLIBPMOption_PREFKEY = "galgas_cli_options:extractLIBPMOption"
 fileprivate let cppCompile_PREFKEY = "galgas_cli_options:cppCompile"
@@ -60,7 +58,6 @@ struct OptionView : View {
   @AppStorage(errorObsoleteGetterCall_PREFKEY) private var errorObsoleteGetterCall : Bool = false
   @AppStorage(errorPropertyGetterCall_PREFKEY) private var errorPropertyGetterCall : Bool = false
   @AppStorage(errorOnGetterCallWithNoArgument_PREFKEY) private var errorOnGetterCallWithNoArgument : Bool = false
-  @AppStorage(errorOldStyleCollectionInitializer_PREFKEY) private var errorOldStyleCollectionInitializer : Bool = false
   @AppStorage(errorOldStyleLocalVarDeclaration_PREFKEY) private var errorOldStyleLocalVarDeclaration : Bool = false
   @AppStorage(errorOldStylePropertyDeclaration_PREFKEY) private var errorOldStylePropertyDeclaration : Bool = false
   @AppStorage(generateManyFiles_PREFKEY) private var generateManyFiles : Bool = false
@@ -69,7 +66,6 @@ struct OptionView : View {
   @AppStorage(outputHTMLTypeListFile_PREFKEY) private var outputHTMLTypeListFile : Bool = false
   @AppStorage(printPredefinedLexicalActions_PREFKEY) private var printPredefinedLexicalActions : Bool = false
   @AppStorage(check_big_int_PREFKEY) private var check_big_int : Bool = false
-  @AppStorage(warningNotGalgas4Feature_PREFKEY) private var warningNotGalgas4Feature : Bool = false
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   // UInt options
@@ -114,7 +110,6 @@ struct OptionView : View {
           Toggle ("Error on call of an obsolete getter", isOn: self.$errorObsoleteGetterCall)
           Toggle ("Error on calling property getter (instead of dot notation)", isOn: self.$errorPropertyGetterCall)
           Toggle ("Error on getter call; with no argument (GGS4, suppress parenthesis)", isOn: self.$errorOnGetterCallWithNoArgument)
-          Toggle ("Error on old style collection initializer", isOn: self.$errorOldStyleCollectionInitializer)
           Toggle ("Error on old style local variable declaration", isOn: self.$errorOldStyleLocalVarDeclaration)
           Toggle ("Error on old style property declaration", isOn: self.$errorOldStylePropertyDeclaration)
           Toggle ("Generate many C++ implementation files", isOn: self.$generateManyFiles)
@@ -123,7 +118,6 @@ struct OptionView : View {
           Toggle ("Output a HTML file that contains all defined types", isOn: self.$outputHTMLTypeListFile)
           Toggle ("Print the list of predefined lexical routines and functions", isOn: self.$printPredefinedLexicalActions)
           Toggle ("Run bit integers checks", isOn: self.$check_big_int)
-          Toggle ("Warns on feature not handled in galgas 4", isOn: self.$warningNotGalgas4Feature)
           HStack { Text ("Create a new GALGAS Project") ; TextField ("", text: self.$create_project) }
           HStack { Text ("Extract embedded LIBPM at given path") ; TextField ("", text: self.$extractLIBPMOption) }
           HStack { Text ("Perform C++ compilation on 'string' target") ; TextField ("", text: self.$cppCompile) }
@@ -193,9 +187,6 @@ func commandLineToolInvocation () -> CommandLineToolInvocation {
   if ud.bool (forKey: errorOnGetterCallWithNoArgument_PREFKEY) {
     arguments.append ("--error-on-getter-call-with-no-argument")
   }
-  if ud.bool (forKey: errorOldStyleCollectionInitializer_PREFKEY) {
-    arguments.append ("--error-old-syle-collection-initializer")
-  }
   if ud.bool (forKey: errorOldStyleLocalVarDeclaration_PREFKEY) {
     arguments.append ("--error-old-style-local-var-declaration")
   }
@@ -219,9 +210,6 @@ func commandLineToolInvocation () -> CommandLineToolInvocation {
   }
   if ud.bool (forKey: check_big_int_PREFKEY) {
     arguments.append ("--check-big-int")
-  }
-  if ud.bool (forKey: warningNotGalgas4Feature_PREFKEY) {
-    arguments.append ("--warns-on-feature-not-handled-in-galgas4")
   }
   do{
     let v : String = ud.string (forKey: create_project_PREFKEY) ?? ""

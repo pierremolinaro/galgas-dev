@@ -433,7 +433,7 @@ GGS_location SharedGraph::locationForKey (const String & inKey,
 //--------------------------------------------------------------------------------------------------
 
 GGS_stringlist SharedGraph::keyList (void) const {
-  GGS_stringlist result = GGS_stringlist::class_func_emptyList (HERE) ;
+  GGS_stringlist result = GGS_stringlist::init (nullptr COMMA_HERE) ;
   for (int32_t i=0 ; i<mNodeArray.count () ; i++) {
     result.addAssignOperation (mNodeArray (i COMMA_HERE)->mKey COMMA_HERE) ;
   }
@@ -459,7 +459,7 @@ GGS_stringlist AC_GALGAS_graph::getter_keyList (UNUSED_LOCATION_ARGS) const {
 //--------------------------------------------------------------------------------------------------
 
 GGS_lstringlist SharedGraph::lkeyList (void) const {
-  GGS_lstringlist result = GGS_lstringlist::class_func_emptyList (HERE) ;
+  GGS_lstringlist result = GGS_lstringlist::init (nullptr COMMA_HERE) ;
   for (int32_t i=0 ; i<mNodeArray.count () ; i++) {
     const GraphNode * p = mNodeArray (i COMMA_HERE) ;
     GGS_location loc = p->mDefinitionLocation ;
@@ -993,7 +993,7 @@ void SharedGraph::edges (GGS__32_stringlist & ioList) const {
 GGS__32_stringlist AC_GALGAS_graph::getter_edges (LOCATION_ARGS) const {
   GGS__32_stringlist result ;
   if (isValid ()) {
-    result = GGS__32_stringlist::class_func_emptyList (THERE) ;
+    result = GGS__32_stringlist::init (nullptr COMMA_THERE) ;
     mSharedGraph->edges (result) ;
   }
   return result ;
@@ -1052,7 +1052,7 @@ static void buildUndefinedNodeKeyList (const GraphNode * inNode, GGS_stringlist 
 GGS_stringlist AC_GALGAS_graph::getter_undefinedNodeKeyList (LOCATION_ARGS) const {
   GGS_stringlist result ;
   if (isValid ()) {
-    result = GGS_stringlist::class_func_emptyList (THERE) ;
+    result = GGS_stringlist::init (nullptr COMMA_THERE) ;
     buildUndefinedNodeKeyList (mSharedGraph->root (), result) ;
   }
   return result ;
@@ -1071,7 +1071,7 @@ void SharedGraph::internalFindCircularities (capCollectionElementArray & outInfo
   GenericUniqueArray <uint32_t> nodeArray ; mDirectedGraph.getNodesInvolvedInCircularities (nodeArray) ;
 //--- Add nodes
   outInfoList.removeAllObjects() ;
-  outNodeKeyList = GGS_lstringlist::class_func_emptyList (HERE) ;
+  outNodeKeyList = GGS_lstringlist::init (nullptr COMMA_HERE) ;
   for (int32_t i=0 ; i<nodeArray.count () ; i++) {
     const uint32_t nodeIndex = nodeArray (i COMMA_HERE) ;
     const GraphNode * nodePtr = mNodeArray ((int32_t) nodeIndex COMMA_HERE) ;
@@ -1107,7 +1107,7 @@ void SharedGraph::internalNodesWithNoPredecessor (capCollectionElementArray & ou
   GenericUniqueArray <uint32_t> nodeArray ; mDirectedGraph.getNodesWithNoPredecessor (nodeArray) ;
 //--- Add nodes
   outInfoList.removeAllObjects() ;
-  outNodeKeyList = GGS_lstringlist::class_func_emptyList (HERE) ;
+  outNodeKeyList = GGS_lstringlist::init (nullptr COMMA_HERE) ;
   for (int32_t i=0 ; i<nodeArray.count () ; i++) {
     const uint32_t nodeIndex = nodeArray (i COMMA_HERE) ;
     const GraphNode * nodePtr = mNodeArray ((int32_t) nodeIndex COMMA_HERE) ;
@@ -1143,7 +1143,7 @@ void SharedGraph::internalNodesWithNoSuccessor (capCollectionElementArray & outI
   GenericUniqueArray <uint32_t> nodeArray ; mDirectedGraph.getNodesWithNoSuccessor (nodeArray) ;
 //--- Add nodes
   outInfoList.removeAllObjects() ;
-  outNodeKeyList = GGS_lstringlist::class_func_emptyList (HERE) ;
+  outNodeKeyList = GGS_lstringlist::init (nullptr COMMA_HERE) ;
   for (int32_t i=0 ; i<nodeArray.count () ; i++) {
     const uint32_t nodeIndex = nodeArray (i COMMA_HERE) ;
     const GraphNode * nodePtr = mNodeArray ((int32_t) nodeIndex COMMA_HERE) ;
@@ -1183,7 +1183,7 @@ void SharedGraph::internalTopologicalSort (capCollectionElementArray & outSorted
   mDirectedGraph.topologicalSort (sortedNodes, unsortedNodes) ;
 //--- Add sorted nodes
   outSortedList.removeAllObjects() ;
-  outSortedNodeKeyList = GGS_lstringlist::class_func_emptyList (HERE) ;
+  outSortedNodeKeyList = GGS_lstringlist::init (nullptr COMMA_HERE) ;
   for (int32_t i=0 ; i<sortedNodes.count () ; i++) {
     const uint32_t nodeIndex = sortedNodes (i COMMA_HERE) ;
     const GraphNode * nodePtr = mNodeArray ((int32_t) nodeIndex COMMA_HERE) ;
@@ -1195,7 +1195,7 @@ void SharedGraph::internalTopologicalSort (capCollectionElementArray & outSorted
   }
 //--- Add unsorted nodes
   outUnsortedList.removeAllObjects() ;
-  outUnsortedNodeKeyList = GGS_lstringlist::class_func_emptyList (HERE) ;
+  outUnsortedNodeKeyList = GGS_lstringlist::init (nullptr COMMA_HERE) ;
   for (int32_t i=0 ; i<unsortedNodes.count () ; i++) {
     const uint32_t nodeIndex = unsortedNodes (i COMMA_HERE) ;
     const GraphNode * nodePtr = mNodeArray ((int32_t) nodeIndex COMMA_HERE) ;
@@ -1253,7 +1253,7 @@ void SharedGraph::internalDepthFirstTopologicalSort (capCollectionElementArray &
   mDirectedGraph.depthFirstTopologicalSort (sortedNodes, unsortedNodes) ;
 //--- Add sorted nodes
   outSortedList.removeAllObjects() ;
-  outSortedNodeKeyList = GGS_lstringlist::class_func_emptyList (HERE) ;
+  outSortedNodeKeyList = GGS_lstringlist::init (nullptr COMMA_HERE) ;
   for (int32_t i=0 ; i<sortedNodes.count () ; i++) {
     const uint32_t nodeIndex = sortedNodes (i COMMA_HERE) ;
     const GraphNode * nodePtr = mNodeArray ((int32_t) nodeIndex COMMA_HERE) ;
@@ -1265,7 +1265,7 @@ void SharedGraph::internalDepthFirstTopologicalSort (capCollectionElementArray &
   }
 //--- Add unsorted nodes
   outUnsortedList.removeAllObjects() ;
-  outUnsortedNodeKeyList = GGS_lstringlist::class_func_emptyList (HERE) ;
+  outUnsortedNodeKeyList = GGS_lstringlist::init (nullptr COMMA_HERE) ;
   for (int32_t i=0 ; i<unsortedNodes.count () ; i++) {
     const uint32_t nodeIndex = unsortedNodes (i COMMA_HERE) ;
     const GraphNode * nodePtr = mNodeArray ((int32_t) nodeIndex COMMA_HERE) ;
@@ -1335,7 +1335,7 @@ static void buildUndefinedNodeReferenceList (const GraphNode * inNode,
 GGS_lstringlist AC_GALGAS_graph::getter_undefinedNodeReferenceList (LOCATION_ARGS) const {
   GGS_lstringlist result ;
   if (isValid ()) {
-    result = GGS_lstringlist::class_func_emptyList (THERE) ;
+    result = GGS_lstringlist::init (nullptr COMMA_THERE) ;
     buildUndefinedNodeReferenceList (mSharedGraph->root (), result) ;
   }
   return result ;

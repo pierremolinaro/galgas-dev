@@ -69,14 +69,6 @@ void GGS_%!TYPE_IDENTIFIER%::plusPlusAssignOperation (%?^%const GGS_%!ELEMENT_TY
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_%!TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::class_func_emptySortedList (UNUSED_LOCATION_ARGS) {
-  GGS_%!TYPE_IDENTIFIER% result ;
-  result.mSharedArray.setCapacity (16) ; // Build
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 GGS_%!TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
   GGS_%!TYPE_IDENTIFIER% result ;
   result.mSharedArray.setCapacity (16) ; // Build
@@ -91,7 +83,7 @@ GGS_%!TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::class_func_sortedListWithValue (%
   between %,\n%!^
   end
   %\n%!^%COMMA_LOCATION_ARGS) {
-  GGS_%!TYPE_IDENTIFIER% result = class_func_emptySortedList (THERE) ;
+  GGS_%!TYPE_IDENTIFIER% result = init (nullptr COMMA_THERE) ;
   const GGS_%!ELEMENT_TYPE_IDENTIFIER% newElement (%
   for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in ATTRIBUTE_LIST
   do (IDX) %inOperand%![IDX string]

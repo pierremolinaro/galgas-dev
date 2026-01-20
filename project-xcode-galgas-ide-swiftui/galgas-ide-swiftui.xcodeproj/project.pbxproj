@@ -10,8 +10,6 @@
 		CF00A2C42EBBE643002D9B0F /* lexique-galgas+template+scanner-swiftui.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD719B52E7308E8007736B6 /* lexique-galgas+template+scanner-swiftui.swift */; };
 		CF00BE0A2E116075007B987F /* SharedObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF00BE072E116075007B987F /* SharedObject.cpp */; };
 		CF00BE0C2E116075007B987F /* SharedObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF00BE072E116075007B987F /* SharedObject.cpp */; };
-		CF16124B2D74891000CCF20D /* all-declarations-32.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF1612472D74891000CCF20D /* all-declarations-32.cpp */; };
-		CF16124D2D74891000CCF20D /* all-declarations-32.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF1612472D74891000CCF20D /* all-declarations-32.cpp */; };
 		CF25EA192F14172F0086A184 /* ProjectWindowManagerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF25EA182F1417220086A184 /* ProjectWindowManagerView.swift */; };
 		CF305F972D0D8A2E000A5F79 /* BigUnsigned-conversions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305E692D0D8A2E000A5F79 /* BigUnsigned-conversions.cpp */; };
 		CF305F982D0D8A2E000A5F79 /* cGenericAbstractEnumerator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305F022D0D8A2E000A5F79 /* cGenericAbstractEnumerator.cpp */; };
@@ -440,8 +438,6 @@
 		CF00BE052E116075007B987F /* SharedGenericPtrWithValueSemantics.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SharedGenericPtrWithValueSemantics.h; sourceTree = "<group>"; };
 		CF00BE062E116075007B987F /* SharedObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SharedObject.h; sourceTree = "<group>"; };
 		CF00BE072E116075007B987F /* SharedObject.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SharedObject.cpp; sourceTree = "<group>"; };
-		CF1612462D74891000CCF20D /* all-declarations-32.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "all-declarations-32.h"; sourceTree = "<group>"; };
-		CF1612472D74891000CCF20D /* all-declarations-32.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "all-declarations-32.cpp"; sourceTree = "<group>"; };
 		CF25EA182F1417220086A184 /* ProjectWindowManagerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectWindowManagerView.swift; sourceTree = "<group>"; };
 		CF305E4C2D0D8A2E000A5F79 /* BinaryDecisionDiagram.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BinaryDecisionDiagram.h; sourceTree = "<group>"; };
 		CF305E4D2D0D8A2E000A5F79 /* BinaryDecisionDiagram.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = BinaryDecisionDiagram.cpp; sourceTree = "<group>"; };
@@ -1225,8 +1221,6 @@
 				CF3060702D0D8B2B000A5F79 /* all-declarations-30.cpp */,
 				CF3060712D0D8B2B000A5F79 /* all-declarations-31.h */,
 				CF3060722D0D8B2B000A5F79 /* all-declarations-31.cpp */,
-				CF1612462D74891000CCF20D /* all-declarations-32.h */,
-				CF1612472D74891000CCF20D /* all-declarations-32.cpp */,
 				CF3060732D0D8B2B000A5F79 /* all-predefined-types.h */,
 				CF3060742D0D8B2B000A5F79 /* all-predefined-types.cpp */,
 				CF874F232F100930004A5162 /* option-galgas-5Fcli-5Foptions-swiftui.swift */,
@@ -1632,7 +1626,6 @@
 				CF8F81782D0D91490095170B /* AbstractFileHandle.cpp in Sources */,
 				CF8F81792D0D91490095170B /* C_galgas_class_inspector.cpp in Sources */,
 				CF8F817A2D0D91490095170B /* cPtr_weakReference_proxy.cpp in Sources */,
-				CF16124B2D74891000CCF20D /* all-declarations-32.cpp in Sources */,
 				CF8F817B2D0D91490095170B /* cCollectionElement.cpp in Sources */,
 				CF8F817C2D0D91490095170B /* GGS_function.cpp in Sources */,
 				CF8F817D2D0D91490095170B /* SourceTextInString.cpp in Sources */,
@@ -1861,7 +1854,6 @@
 				CF3060122D0D8A2E000A5F79 /* AbstractFileHandle.cpp in Sources */,
 				CF3060132D0D8A2E000A5F79 /* C_galgas_class_inspector.cpp in Sources */,
 				CF3060142D0D8A2E000A5F79 /* cPtr_weakReference_proxy.cpp in Sources */,
-				CF16124D2D74891000CCF20D /* all-declarations-32.cpp in Sources */,
 				CF3060152D0D8A2E000A5F79 /* cCollectionElement.cpp in Sources */,
 				CF3060162D0D8A2E000A5F79 /* GGS_function.cpp in Sources */,
 				CF3060172D0D8A2E000A5F79 /* SourceTextInString.cpp in Sources */,

@@ -77,7 +77,7 @@ void GGS_type::description (String & ioString,
 GGS_typelist GGS_type::class_func_typeList (LOCATION_ARGS) {
   GenericUniqueArray <GALGAS_TypeDescriptor *> typeList ;
   GALGAS_TypeDescriptor::typeListRoot (typeList) ;
-  GGS_typelist result = GGS_typelist::class_func_emptyList (THERE) ;
+  GGS_typelist result = GGS_typelist::init (nullptr COMMA_THERE) ;
   for (int32_t i=0 ; i<typeList.count () ; i++) {
     result.addAssignOperation (GGS_type (typeList (i COMMA_THERE)) COMMA_HERE) ;
   }

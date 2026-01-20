@@ -161,7 +161,6 @@ final class @structDeclarationAST : @semanticDeclarationAST {
     [!?ioTypeMap makeEntry !self.structTypeName ?let structTypeIndex]
   //--- Class functions and property map
     var @propertyMap propertyMap = @()
-    var @classFunctionMap classFunctionMap = @()
     var @functionSignature constructorPropertyTypeList = @()
     var @typedPropertyList typedPropertyList = @()
     var @unifiedTypeMapEntryList typesToIncludeInHeaderCompilation = @()
@@ -185,12 +184,6 @@ final class @structDeclarationAST : @semanticDeclarationAST {
         !propertyTypeEntry
       ]
     end
-    [!?classFunctionMap insertKey
-      !@lstring {!"new" !.here}
-      !constructorPropertyTypeList
-      !true
-      !structTypeIndex
-    ]
   //--- Getters
     commonGetterMapForAllTypes (!?ioTypeMap ?var @getterMap getterMap)
   //--- Add Extensions
@@ -256,7 +249,7 @@ final class @structDeclarationAST : @semanticDeclarationAST {
       !propertyMap: propertyMap
       !currentTypedPropertyList: typedPropertyList
       !initializerMap: initializerMap
-      !classFunctionMap: classFunctionMap
+      !classFunctionMap: @()
       !getterMap: getterMap
       !setterMap: setterMap
       !instanceMethodMap: instanceMethodMap

@@ -38,14 +38,6 @@ GGS_%!TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::init (Compiler * COMMA_LOCATION_A
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_%!TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::class_func_emptyMap (LOCATION_ARGS) {
-  GGS_%!TYPE_IDENTIFIER% result ;
-  result.build (THERE) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 GGS_bool GGS_%!TYPE_IDENTIFIER%::getter_hasKey (%?^%const GGS_string & inKey
             %!^%COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_bool result ;

@@ -87,7 +87,7 @@ void GGS_function::description (String & ioString,
 //--------------------------------------------------------------------------------------------------
 
 GGS_functionlist GGS_function::class_func_functionList (LOCATION_ARGS) {
-  GGS_functionlist result = GGS_functionlist::class_func_emptyList (THERE) ;
+  GGS_functionlist result = GGS_functionlist:: init (nullptr COMMA_THERE) ;
   const C_galgas_function_descriptor * p = C_galgas_function_descriptor::functionListRoot () ;
   while (nullptr != p) {
     result.addAssignOperation (GGS_function (p) COMMA_HERE) ;
@@ -135,7 +135,7 @@ GGS_function GGS_function::class_func_functionWithName (const GGS_string & inFun
 //--------------------------------------------------------------------------------------------------
 
 GGS_typelist GGS_function::getter_formalParameterTypeList (LOCATION_ARGS) const {
-  GGS_typelist result = GGS_typelist::class_func_emptyList (THERE) ;
+  GGS_typelist result = GGS_typelist::init (nullptr COMMA_THERE) ;
   for (uint32_t i=0 ; i<mFunctionDescriptor->mParameterCount ; i++) {
     result.addAssignOperation (GGS_type (mFunctionDescriptor->mFormalParameterTypeList [i]) COMMA_HERE) ;
   }

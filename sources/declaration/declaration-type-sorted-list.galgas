@@ -227,13 +227,6 @@ final class @sortedListDeclarationAST : @semanticDeclarationAST {
     end
   //--- Class functions
     var @classFunctionMap classFunctionMap = @()
-    enterClassFunctionWithoutArgument (
-      !?classFunctionMap
-      !?ioTypeMap
-      !name:"emptySortedList"
-      !resultTypeName:self.mSortedListTypeName.string
-      !hasLexiqueArg:false
-    )
     [!?classFunctionMap insertKey
       !@lstring {!"sortedListWithValue" !@location.here}
       !constructorAttributeTypeList

@@ -183,7 +183,7 @@ GGS_stringset GGS_stringset::substract_operation (const GGS_stringset & inOperan
 GGS_stringlist GGS_stringset::getter_stringList (LOCATION_ARGS) const {
   GGS_stringlist result ;
   if (isValid ()) {
-    result = GGS_stringlist::class_func_emptyList (THERE) ;
+    result = GGS_stringlist::init (nullptr COMMA_THERE) ;
     const GenericArray <String> array = mSharedMap.sortedKeyArray () ;
     for (int32_t i=0 ; i<array.count () ; i++) {
       result.plusPlusAssignOperation (GGS_string (array (i COMMA_HERE)) COMMA_HERE) ;

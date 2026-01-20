@@ -705,7 +705,7 @@ GGS_stringlist GGS_string::getter_componentsSeparatedByString (const GGS_string 
                                                                     COMMA_LOCATION_ARGS) const {
   GGS_stringlist result ;
   if (inSeparator.isValid ()) {
-    result = GGS_stringlist::class_func_emptyList (THERE) ;
+    result = GGS_stringlist::init (nullptr COMMA_THERE) ;
     GenericUniqueArray <String> components ;
     mString.componentsSeparatedByString (inSeparator.mString, components) ;
     for (int32_t i=0 ; i<components.count () ; i++) {
@@ -800,11 +800,13 @@ GGS_stringlist GGS_string::getter_regularFiles (const GGS_bool & inRecursiveSear
                                                       COMMA_LOCATION_ARGS) const {
   GGS_stringlist result ;
   if (inRecursiveSearch.isValid ()) {
-    result = GGS_stringlist::class_func_emptyList (THERE) ;
-    recursiveSearchForRegularFiles (mString,
-                                    inRecursiveSearch.boolValue (),
-                                    "",
-                                    result) ;
+    result = GGS_stringlist::init (nullptr COMMA_THERE) ;
+    recursiveSearchForRegularFiles (
+      mString,
+      inRecursiveSearch.boolValue (),
+      "",
+      result
+    ) ;
   }
   return result ;
 }
@@ -848,11 +850,13 @@ GGS_stringlist GGS_string::getter_hiddenFiles (const GGS_bool & inRecursiveSearc
                                                      COMMA_LOCATION_ARGS) const {
   GGS_stringlist result ;
   if (inRecursiveSearch.isValid ()) {
-    result = GGS_stringlist::class_func_emptyList (THERE) ;
-    recursiveSearchForHiddenFiles (mString,
-                                   inRecursiveSearch.boolValue (),
-                                   "",
-                                   result) ;
+    result = GGS_stringlist::init (nullptr COMMA_THERE) ;
+    recursiveSearchForHiddenFiles (
+      mString,
+      inRecursiveSearch.boolValue (),
+      "",
+      result
+    ) ;
   }
   return result ;
 }
@@ -895,12 +899,14 @@ GGS_stringlist GGS_string::getter_directories (const GGS_bool & inRecursiveSearc
                                                      COMMA_LOCATION_ARGS) const {
   GGS_stringlist result ;
   if (inRecursiveSearch.isValid ()) {
-    result = GGS_stringlist::class_func_emptyList (THERE) ;
+    result = GGS_stringlist::init (nullptr COMMA_THERE) ;
     if (FileManager::directoryExists (mString)) {
-      recursiveSearchForDirectories (mString,
-                                     inRecursiveSearch.boolValue (),
-                                     "",
-                                     result) ;
+      recursiveSearchForDirectories (
+        mString,
+        inRecursiveSearch.boolValue (),
+        "",
+        result
+      ) ;
     }
   }
   return result ;
@@ -957,13 +963,15 @@ GGS_stringlist GGS_string::getter_regularFilesWithExtensions (const GGS_bool & i
                                                                     COMMA_LOCATION_ARGS) const {
   GGS_stringlist result ;
   if ((inRecursiveSearch.isValid ()) && (inExtensionList.isValid ())) {
-    result = GGS_stringlist::class_func_emptyList (THERE) ;
+    result = GGS_stringlist::init (nullptr COMMA_THERE) ;
     if (FileManager::directoryExists (mString)) {
-      recursiveSearchForRegularFiles (mString,
-                                      inExtensionList,
-                                      inRecursiveSearch.boolValue (),
-                                      "",
-                                      result) ;
+      recursiveSearchForRegularFiles (
+        mString,
+        inExtensionList,
+        inRecursiveSearch.boolValue (),
+        "",
+        result
+      ) ;
     }
   }
   return result ;
@@ -1021,13 +1029,15 @@ GGS_stringlist GGS_string::getter_directoriesWithExtensions (const GGS_bool & in
                                                                    COMMA_LOCATION_ARGS) const {
   GGS_stringlist result ;
   if (isValid () && inRecursiveSearch.isValid () && inExtensionList.isValid ()) {
-    result = GGS_stringlist::class_func_emptyList (THERE) ;
+    result = GGS_stringlist::init (nullptr COMMA_THERE) ;
     if (FileManager::directoryExists (mString)) {
-      recursiveSearchForDirectories (mString,
-                                     inExtensionList,
-                                     inRecursiveSearch.boolValue (),
-                                     "",
-                                     result) ;
+      recursiveSearchForDirectories (
+        mString,
+        inExtensionList,
+        inRecursiveSearch.boolValue (),
+        "",
+        result
+      ) ;
     }
   }
   return result ;

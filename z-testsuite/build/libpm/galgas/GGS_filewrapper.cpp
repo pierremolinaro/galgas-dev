@@ -114,7 +114,7 @@ static void internalEnumerateFiles (const cDirectoryWrapper & inDirectory,
 GGS_stringlist GGS_filewrapper::getter_allTextFilePathes (LOCATION_ARGS) const {
   GGS_stringlist result ;
   if (mRootDirectoryPtr != nullptr) {
-    result = GGS_stringlist::class_func_emptyList (THERE) ;
+    result = GGS_stringlist::init (nullptr COMMA_THERE) ;
     internalEnumerateFiles (* mRootDirectoryPtr, "/", true, result) ;
   }
   return result ;
@@ -125,7 +125,7 @@ GGS_stringlist GGS_filewrapper::getter_allTextFilePathes (LOCATION_ARGS) const {
 GGS_stringlist GGS_filewrapper::getter_allBinaryFilePathes (LOCATION_ARGS) const {
   GGS_stringlist result ;
   if (mRootDirectoryPtr != nullptr) {
-    result = GGS_stringlist::class_func_emptyList (THERE) ;
+    result = GGS_stringlist::init (nullptr COMMA_THERE) ;
     internalEnumerateFiles (* mRootDirectoryPtr, "/", false, result) ;
   }
   return result ;
@@ -154,7 +154,7 @@ static void internalEnumerateDirectories (const cDirectoryWrapper & inDirectory,
 GGS_stringlist GGS_filewrapper::getter_allDirectoryPathes (LOCATION_ARGS) const {
   GGS_stringlist result ;
   if (mRootDirectoryPtr != nullptr) {
-    result = GGS_stringlist::class_func_emptyList (THERE) ;
+    result = GGS_stringlist::init (nullptr COMMA_THERE) ;
     internalEnumerateDirectories (* mRootDirectoryPtr, "/", result) ;
   }
   return result ;
@@ -193,7 +193,7 @@ GGS_stringlist GGS_filewrapper::getter_allFilePathesWithExtension (const GGS_str
                                                                          COMMA_LOCATION_ARGS) const {
   GGS_stringlist result ;
   if ((mRootDirectoryPtr != nullptr) && inExtension.isValid ()) {
-    result = GGS_stringlist::class_func_emptyList (THERE) ;
+    result = GGS_stringlist::init (nullptr COMMA_THERE) ;
     internalEnumerateFilesWithExtension (* mRootDirectoryPtr, "/", result, inExtension.stringValue ()) ;
   }
   return result ;
@@ -500,7 +500,7 @@ GGS_stringlist GGS_filewrapper::getter_directoriesAtPath (const GGS_string & inP
     if (path.isValid ()) {
       const cDirectoryWrapper * dir = getDirectory (path.stringValue (), mRootDirectoryPtr) ;
       if (nullptr != dir) {
-        result = GGS_stringlist::class_func_emptyList (THERE) ;
+        result = GGS_stringlist::init (nullptr COMMA_THERE) ;
         const cDirectoryWrapper * * dirs = dir->mDirectories ;
         while ((*dirs) != nullptr) {
           result.addAssignOperation (GGS_string ((*dirs)->mDirectoryName) COMMA_HERE) ;
@@ -523,7 +523,7 @@ GGS_stringlist GGS_filewrapper::getter_textFilesAtPath (const GGS_string & inPat
     if (path.isValid ()) {
       const cDirectoryWrapper * dir = getDirectory (path.stringValue (), mRootDirectoryPtr) ;
       if (nullptr != dir) {
-        result = GGS_stringlist::class_func_emptyList (THERE) ;
+        result = GGS_stringlist::init (nullptr COMMA_THERE) ;
         const cRegularFileWrapper * * files = dir->mFiles ;
         while ((*files) != nullptr) {
           if ((*files)->mIsTextFile) {
@@ -548,7 +548,7 @@ GGS_stringlist GGS_filewrapper::getter_binaryFilesAtPath (const GGS_string & inP
     if (path.isValid ()) {
       const cDirectoryWrapper * dir = getDirectory (path.stringValue (), mRootDirectoryPtr) ;
       if (nullptr != dir) {
-        result = GGS_stringlist::class_func_emptyList (THERE) ;
+        result = GGS_stringlist::init (nullptr COMMA_THERE) ;
         const cRegularFileWrapper * * files = dir->mFiles ;
         while ((*files) != nullptr) {
           if (! (*files)->mIsTextFile) {

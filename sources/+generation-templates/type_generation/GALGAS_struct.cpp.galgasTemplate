@@ -74,29 +74,6 @@ end
 % {
 }
 
-//--------------------------------------------------------------------------------------------------
-
-GGS_%!TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::class_func_new (%?^
-if [INITIALIZER_ARGUMENT_LIST count] == 0 then
-  %Compiler * inCompiler\n%
-  !^%COMMA_UNUSED_LOCATION_ARGS) {
-%else
-for (propertyTypeEntry propertyName 3*) in INITIALIZER_ARGUMENT_LIST
-  do %const GGS_%![propertyTypeEntry identifierRepresentation]% & in_%!propertyName.string%,\n%!^
-end
-  %Compiler * inCompiler\n%
-  !^%COMMA_UNUSED_LOCATION_ARGS) {
-%
-end
-%  GGS_%!TYPE_IDENTIFIER% result ;
-  result.setInitializedProperties (inCompiler) ;
-%
-for (mPropertyTypeEntry propertyName 3*) in INITIALIZER_ARGUMENT_LIST do
-   %  result.mProperty_%![propertyName identifierRepresentation]% = in_%!propertyName.string% ;
-%end
-%  return result ;
-}
-
 %if GENERATE_COMPARISON then%//--------------------------------------------------------------------------------------------------
 
 ComparisonResult GGS_%!TYPE_IDENTIFIER%::objectCompare (const GGS_%!TYPE_IDENTIFIER% & inOperand) const {

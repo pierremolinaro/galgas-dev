@@ -170,14 +170,6 @@ for (* mPropertyName 3*) in PROPERTY_LIST do
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_%!TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::class_func_emptyList (UNUSED_LOCATION_ARGS) {
-  GGS_%!TYPE_IDENTIFIER% result ;
-  result.mArray.setCapacity (16) ; // Build
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 GGS_%!TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
   GGS_%!TYPE_IDENTIFIER% result ;
   result.mArray.setCapacity (16) ; // Build

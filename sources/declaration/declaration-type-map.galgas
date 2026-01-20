@@ -404,13 +404,6 @@ final class @mapDeclarationAST : @semanticDeclarationAST {
     var @setterMap setterMap = @()
     var @instanceMethodMap instanceMethodMap = @()
   //--- Class functions
-    enterClassFunctionWithoutArgument (
-      !?classFunctionMap
-      !?ioTypeMap
-      !name:"emptyMap"
-      !resultTypeName:self.mMapTypeName.string
-      !hasLexiqueArg:false
-    )
     enterClassFunctionWithArgument (
       !?classFunctionMap
       !?ioTypeMap

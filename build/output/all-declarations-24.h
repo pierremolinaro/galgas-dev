@@ -9,2018 +9,1670 @@
 #include "all-declarations-23.h"
 
 //--------------------------------------------------------------------------------------------------
-// Phase 1: @extensionMethodForGeneration reference class
-//--------------------------------------------------------------------------------------------------
-
-class GGS_extensionMethodForGeneration : public GGS_semanticDeclarationWithHeaderForGeneration {
-//--------------------------------- Default constructor
-  public: GGS_extensionMethodForGeneration (void) ;
-
-//--------------------------------- Constructor from pointer
-  public: GGS_extensionMethodForGeneration (const class cPtr_extensionMethodForGeneration * inSourcePtr) ;
-
-//--------------------------------- Property access
-  public: class GGS_unifiedTypeMapEntry readProperty_mReceiverType (void) const ;
-
-  public: class GGS_string readProperty_mExtensionMethodName (void) const ;
-
-  public: class GGS_bool readProperty_mImplementedAsFunction (void) const ;
-
-  public: class GGS_formalParameterListForGeneration readProperty_mExtensionMethodFormalParameterList (void) const ;
-
-  public: class GGS_typedPropertyList readProperty_mTypedAttributeList (void) const ;
-
-  public: class GGS_semanticInstructionListForGeneration readProperty_mSemanticInstructionListForGeneration (void) const ;
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-  public: static GGS_extensionMethodForGeneration init_21_generateHeader_21_implementationCppFileName_21__21__21__21__21__21_ (const class GGS_bool & inOperand0,
-                                                                                                                               const class GGS_string & inOperand1,
-                                                                                                                               const class GGS_unifiedTypeMapEntry & inOperand2,
-                                                                                                                               const class GGS_string & inOperand3,
-                                                                                                                               const class GGS_bool & inOperand4,
-                                                                                                                               const class GGS_formalParameterListForGeneration & inOperand5,
-                                                                                                                               const class GGS_typedPropertyList & inOperand6,
-                                                                                                                               const class GGS_semanticInstructionListForGeneration & inOperand7,
-                                                                                                                               Compiler * inCompiler
-                                                                                                                               COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
-//--------------------------------- Object extraction
-  public: static GGS_extensionMethodForGeneration extractObject (const GGS_object & inObject,
-                                                                 Compiler * inCompiler
-                                                                 COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS class functions
-  public: static class GGS_extensionMethodForGeneration class_func_new (const class GGS_bool & inOperand0,
-                                                                        const class GGS_string & inOperand1,
-                                                                        const class GGS_unifiedTypeMapEntry & inOperand2,
-                                                                        const class GGS_string & inOperand3,
-                                                                        const class GGS_bool & inOperand4,
-                                                                        const class GGS_formalParameterListForGeneration & inOperand5,
-                                                                        const class GGS_typedPropertyList & inOperand6,
-                                                                        const class GGS_semanticInstructionListForGeneration & inOperand7,
-                                                                        class Compiler * inCompiler
-                                                                        COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GGS_extensionMethodForGeneration & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Read subscripts
-
-
-//--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
- 
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_extensionMethodForGeneration ;
-
-//--------------------------------------------------------------------------------------------------
-// Phase 2: pointer class for @extensionMethodForGeneration class
-//--------------------------------------------------------------------------------------------------
-
-class cPtr_extensionMethodForGeneration : public cPtr_semanticDeclarationWithHeaderForGeneration {
-
-  #ifndef DO_NOT_GENERATE_CHECKINGS
-    public: virtual void printNonNullClassInstanceProperties (void) const override ;
-  #endif
-
-//--------------------------------- Initializers
-  public: void extensionMethodForGeneration_init_21_generateHeader_21_implementationCppFileName_21__21__21__21__21__21_ (const class GGS_bool & inOperand0,
-                                                                                                                         const class GGS_string & inOperand1,
-                                                                                                                         const class GGS_unifiedTypeMapEntry & inOperand2,
-                                                                                                                         const class GGS_string & inOperand3,
-                                                                                                                         const class GGS_bool & inOperand4,
-                                                                                                                         const class GGS_formalParameterListForGeneration & inOperand5,
-                                                                                                                         const class GGS_typedPropertyList & inOperand6,
-                                                                                                                         const class GGS_semanticInstructionListForGeneration & inOperand7,
-                                                                                                                         Compiler * inCompiler) ;
-
-
-//--- Extension getter headerKind
-  public: virtual class GGS_headerKind getter_headerKind (Compiler * COMMA_LOCATION_ARGS) const override ;
-
-//--- Extension method appendDeclaration1
-  public: virtual void method_appendDeclaration_31_ (class GGS_stringset & arg_ioInclusionSet,
-           class GGS_string & arg_outHeader,
-           Compiler * COMMA_LOCATION_ARGS) override ;
-
-//--- Extension method appendSpecificImplementation
-  public: virtual void method_appendSpecificImplementation (const class GGS_unifiedTypeMap arg_inUnifiedTypeMap,
-           class GGS_stringset & arg_ioInclusionSet,
-           class GGS_string & arg_outImplementation,
-           Compiler * COMMA_LOCATION_ARGS) override ;
-
-//--- Properties
-  public: GGS_unifiedTypeMapEntry mProperty_mReceiverType ;
-  public: GGS_string mProperty_mExtensionMethodName ;
-  public: GGS_bool mProperty_mImplementedAsFunction ;
-  public: GGS_formalParameterListForGeneration mProperty_mExtensionMethodFormalParameterList ;
-  public: GGS_typedPropertyList mProperty_mTypedAttributeList ;
-  public: GGS_semanticInstructionListForGeneration mProperty_mSemanticInstructionListForGeneration ;
-
-
-//--- Default constructor
-  public: cPtr_extensionMethodForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
-
-//--- Constructor
-  public: cPtr_extensionMethodForGeneration (const GGS_bool & in_generateHeader,
-                                             const GGS_string & in_implementationCppFileName,
-                                             const GGS_unifiedTypeMapEntry & in_mReceiverType,
-                                             const GGS_string & in_mExtensionMethodName,
-                                             const GGS_bool & in_mImplementedAsFunction,
-                                             const GGS_formalParameterListForGeneration & in_mExtensionMethodFormalParameterList,
-                                             const GGS_typedPropertyList & in_mTypedAttributeList,
-                                             const GGS_semanticInstructionListForGeneration & in_mSemanticInstructionListForGeneration,
-                                             Compiler * inCompiler
-                                             COMMA_LOCATION_ARGS) ;
-
-//--- Duplication
-  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
-
-//--- Attribute accessors
-//--- Description
-  public: virtual void description (String & ioString,
-                                    const int32_t inIndentation) const override ;
-
-//--- Class descriptor
-  public: virtual const GALGAS_TypeDescriptor * classDescriptor (void) const override ;
-
-} ;
-
-//--------------------------------------------------------------------------------------------------
-// Phase 1: @extensionMethodForGeneration_2E_weak weak reference class
-//--------------------------------------------------------------------------------------------------
-
-class GGS_extensionMethodForGeneration_2E_weak : public GGS_semanticDeclarationWithHeaderForGeneration_2E_weak {
-//--------------------------------- Default constructor
-  public: GGS_extensionMethodForGeneration_2E_weak (void) ;
-
-//--------------------------------- Constructor and assignment from strong reference
-  public: GGS_extensionMethodForGeneration_2E_weak (const class GGS_extensionMethodForGeneration & inSource) ;
-
-  public: GGS_extensionMethodForGeneration_2E_weak & operator = (const class GGS_extensionMethodForGeneration & inSource) ;
-
-//--------------------------------- Constructor and assignment from optional reference
-
-//--------------------------------- nil initializer
-  public: inline static GGS_extensionMethodForGeneration_2E_weak init_nil (void) {
-    GGS_extensionMethodForGeneration_2E_weak result ;
-    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
-    return result ;
-  }
-
-//--------------------------------- Bang operator
-  public: GGS_extensionMethodForGeneration bang_extensionMethodForGeneration_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- isValuated
-  public: inline bool isValuated (void) const {
-    return isValid () && (ptr () != nullptr) ;
-  }
-
-//--------------------------------- Unwrapped value
-  public: GGS_extensionMethodForGeneration unwrappedValue (void) const ;
-
-//--------------------------------- GALGAS read only properties
-  public: inline GGS_bool readProperty_isNil (void) const {
-    return GGS_bool (isValid (), ptr () == nullptr) ;
-  }
-
-  public: inline GGS_bool readProperty_isSome (void) const {
-    return GGS_bool (isValid (), ptr () != nullptr) ;
-  }
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
-//--------------------------------- Object extraction
-  public: static GGS_extensionMethodForGeneration_2E_weak extractObject (const GGS_object & inObject,
-                                                                         Compiler * inCompiler
-                                                                         COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS class functions
-  public: static class GGS_extensionMethodForGeneration_2E_weak class_func_nil (LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GGS_extensionMethodForGeneration_2E_weak & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Read subscripts
-
-
-//--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
- 
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_extensionMethodForGeneration_2E_weak ;
-
-//--------------------------------------------------------------------------------------------------
 //
-//Extension setter '@routineMap insertKey'
+//Extension setter '@localVarManager insertDeclaredLocalVariable'
 //
 //--------------------------------------------------------------------------------------------------
 
-void extensionSetter_insertKey (class GGS_routineMap & ioObject,
-                                const class GGS_lstring constin_inRoutineName,
-                                const class GGS_formalParameterSignature constin_inRoutineSignature,
-                                const class GGS_bool constin_inIsFilePrivate,
-                                class Compiler * inCompiler
-                                COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Function 'makeOptionalTypeLName'
-//
-//--------------------------------------------------------------------------------------------------
-
-class GGS_lstring function_makeOptionalTypeLName (const class GGS_lstring & constinArgument0,
+void extensionSetter_insertDeclaredLocalVariable (class GGS_localVarManager & ioObject,
+                                                  const class GGS_lstring constin_inVarName,
+                                                  const class GGS_unifiedTypeMapEntry constin_inType,
+                                                  const class GGS_string constin_inCppName,
+                                                  const class GGS_string constin_inNameForCheckingFormalParameterUsing,
                                                   class Compiler * inCompiler
                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
-// Phase 1: @routineImplementationForGeneration reference class
+//
+//Extension method '@productionRuleListForGrammarAnalysis.element displayRule'
+//
 //--------------------------------------------------------------------------------------------------
 
-class GGS_routineImplementationForGeneration : public GGS_routinePrototypeDeclarationForGeneration {
-//--------------------------------- Default constructor
-  public: GGS_routineImplementationForGeneration (void) ;
+void extensionMethod_displayRule (const class GGS_productionRuleListForGrammarAnalysis_2E_element inObject,
+                                  const class GGS_string constin_inSyntaxComponentName,
+                                  class GGS_string & io_ioGeneratedCode,
+                                  class Compiler * inCompiler
+                                  COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Constructor from pointer
-  public: GGS_routineImplementationForGeneration (const class cPtr_routineImplementationForGeneration * inSourcePtr) ;
+//--------------------------------------------------------------------------------------------------
+//
+//Routine 'println?'
+//
+//--------------------------------------------------------------------------------------------------
 
-//--------------------------------- Property access
-  public: class GGS_bool readProperty_mGenerateStatic (void) const ;
+void routine_println_3F_ (const class GGS_string constinArgument0,
+                          class Compiler * inCompiler
+                          COMMA_LOCATION_ARGS) ;
 
-  public: class GGS_semanticInstructionListForGeneration readProperty_mRoutineInstructionList (void) const ;
+//--------------------------------------------------------------------------------------------------
+//
+//Routine 'print?'
+//
+//--------------------------------------------------------------------------------------------------
 
-//-- Start of type generic part
+void routine_print_3F_ (const class GGS_string constinArgument0,
+                        class Compiler * inCompiler
+                        COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Initializers
-  public: static GGS_routineImplementationForGeneration init_21_generateHeader_21_implementationCppFileName_21_routineMangledName_21__21__21_ (const class GGS_bool & inOperand0,
-                                                                                                                                               const class GGS_string & inOperand1,
-                                                                                                                                               const class GGS_string & inOperand2,
-                                                                                                                                               const class GGS_formalParameterListForGeneration & inOperand3,
-                                                                                                                                               const class GGS_bool & inOperand4,
-                                                                                                                                               const class GGS_semanticInstructionListForGeneration & inOperand5,
-                                                                                                                                               Compiler * inCompiler
-                                                                                                                                               COMMA_LOCATION_ARGS) ;
+//--------------------------------------------------------------------------------------------------
+//
+//Routine 'enterClassFunctionWithoutArgument&&?name?resultTypeName?hasLexiqueArg'
+//
+//--------------------------------------------------------------------------------------------------
 
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+void routine_enterClassFunctionWithoutArgument_26__26__3F_name_3F_resultTypeName_3F_hasLexiqueArg (class GGS_classFunctionMap & ioArgument0,
+                                                                                                   class GGS_unifiedTypeMap & ioArgument1,
+                                                                                                   const class GGS_string constinArgument2,
+                                                                                                   const class GGS_string constinArgument3,
+                                                                                                   const class GGS_bool constinArgument4,
+                                                                                                   class Compiler * inCompiler
+                                                                                                   COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Object extraction
-  public: static GGS_routineImplementationForGeneration extractObject (const GGS_object & inObject,
-                                                                       Compiler * inCompiler
+//--------------------------------------------------------------------------------------------------
+//
+//Routine 'enterClassFunctionWithArgument&&?name?argTypeName?argName?resultTypeName?hasLexiqueArg'
+//
+//--------------------------------------------------------------------------------------------------
+
+void routine_enterClassFunctionWithArgument_26__26__3F_name_3F_argTypeName_3F_argName_3F_resultTypeName_3F_hasLexiqueArg (class GGS_classFunctionMap & ioArgument0,
+                                                                                                                          class GGS_unifiedTypeMap & ioArgument1,
+                                                                                                                          const class GGS_string constinArgument2,
+                                                                                                                          const class GGS_string constinArgument3,
+                                                                                                                          const class GGS_string constinArgument4,
+                                                                                                                          const class GGS_string constinArgument5,
+                                                                                                                          const class GGS_bool constinArgument6,
+                                                                                                                          class Compiler * inCompiler
+                                                                                                                          COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Routine 'enterClassFunctionWith2Arguments&&?name?argTypeName1?argName1?argTypeName2?argName2?resultTypeName?hasLexiqueArg'
+//
+//--------------------------------------------------------------------------------------------------
+
+void routine_enterClassFunctionWith_32_Arguments_26__26__3F_name_3F_argTypeName_31__3F_argName_31__3F_argTypeName_32__3F_argName_32__3F_resultTypeName_3F_hasLexiqueArg (class GGS_classFunctionMap & ioArgument0,
+                                                                                                                                                                         class GGS_unifiedTypeMap & ioArgument1,
+                                                                                                                                                                         const class GGS_string constinArgument2,
+                                                                                                                                                                         const class GGS_string constinArgument3,
+                                                                                                                                                                         const class GGS_string constinArgument4,
+                                                                                                                                                                         const class GGS_string constinArgument5,
+                                                                                                                                                                         const class GGS_string constinArgument6,
+                                                                                                                                                                         const class GGS_string constinArgument7,
+                                                                                                                                                                         const class GGS_bool constinArgument8,
+                                                                                                                                                                         class Compiler * inCompiler
+                                                                                                                                                                         COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Routine 'enterClassFunctionWith3Arguments&&?name?argTypeName1?argName1?argTypeName2?argName2?argTypeName3?argName3?resultTypeName?hasLexiqueArg'
+//
+//--------------------------------------------------------------------------------------------------
+
+void routine_enterClassFunctionWith_33_Arguments_26__26__3F_name_3F_argTypeName_31__3F_argName_31__3F_argTypeName_32__3F_argName_32__3F_argTypeName_33__3F_argName_33__3F_resultTypeName_3F_hasLexiqueArg (class GGS_classFunctionMap & ioArgument0,
+                                                                                                                                                                                                           class GGS_unifiedTypeMap & ioArgument1,
+                                                                                                                                                                                                           const class GGS_string constinArgument2,
+                                                                                                                                                                                                           const class GGS_string constinArgument3,
+                                                                                                                                                                                                           const class GGS_string constinArgument4,
+                                                                                                                                                                                                           const class GGS_string constinArgument5,
+                                                                                                                                                                                                           const class GGS_string constinArgument6,
+                                                                                                                                                                                                           const class GGS_string constinArgument7,
+                                                                                                                                                                                                           const class GGS_string constinArgument8,
+                                                                                                                                                                                                           const class GGS_string constinArgument9,
+                                                                                                                                                                                                           const class GGS_bool constinArgument10,
+                                                                                                                                                                                                           class Compiler * inCompiler
+                                                                                                                                                                                                           COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Routine 'enterInstanceMethodWithoutArgument&?methodName?'
+//
+//--------------------------------------------------------------------------------------------------
+
+void routine_enterInstanceMethodWithoutArgument_26__3F_methodName_3F_ (class GGS_instanceMethodMap & ioArgument0,
+                                                                       const class GGS_string constinArgument1,
+                                                                       const class GGS_bool constinArgument2,
+                                                                       class Compiler * inCompiler
                                                                        COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- GALGAS class functions
-  public: static class GGS_routineImplementationForGeneration class_func_new (const class GGS_bool & inOperand0,
-                                                                              const class GGS_string & inOperand1,
-                                                                              const class GGS_string & inOperand2,
-                                                                              const class GGS_formalParameterListForGeneration & inOperand3,
-                                                                              const class GGS_bool & inOperand4,
-                                                                              const class GGS_semanticInstructionListForGeneration & inOperand5,
-                                                                              class Compiler * inCompiler
-                                                                              COMMA_LOCATION_ARGS) ;
+//--------------------------------------------------------------------------------------------------
+//
+//Routine 'enterInstanceMethodWithInputArgument&&?inputArgTypeName?inputArgName?methodName?'
+//
+//--------------------------------------------------------------------------------------------------
 
-//--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GGS_routineImplementationForGeneration & inOperand) const ;
+void routine_enterInstanceMethodWithInputArgument_26__26__3F_inputArgTypeName_3F_inputArgName_3F_methodName_3F_ (class GGS_instanceMethodMap & ioArgument0,
+                                                                                                                 class GGS_unifiedTypeMap & ioArgument1,
+                                                                                                                 const class GGS_string constinArgument2,
+                                                                                                                 const class GGS_string constinArgument3,
+                                                                                                                 const class GGS_string constinArgument4,
+                                                                                                                 const class GGS_bool constinArgument5,
+                                                                                                                 class Compiler * inCompiler
+                                                                                                                 COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Setters
+//--------------------------------------------------------------------------------------------------
+//
+//Routine 'enterModifierWithInputArgument&&?argTypeName?argName?setterName?compilerArg'
+//
+//--------------------------------------------------------------------------------------------------
 
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
+void routine_enterModifierWithInputArgument_26__26__3F_argTypeName_3F_argName_3F_setterName_3F_compilerArg (class GGS_setterMap & ioArgument0,
+                                                                                                            class GGS_unifiedTypeMap & ioArgument1,
+                                                                                                            const class GGS_string constinArgument2,
+                                                                                                            const class GGS_string constinArgument3,
+                                                                                                            const class GGS_string constinArgument4,
+                                                                                                            const class GGS_bool constinArgument5,
+                                                                                                            class Compiler * inCompiler
+                                                                                                            COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Getters
+//--------------------------------------------------------------------------------------------------
+//
+//Routine 'enterModifierWithOutputAndInputArguments&&?outputArgTypeName?outputArgName?inputArgTypeName?inputArgName?setterName?compilerArg'
+//
+//--------------------------------------------------------------------------------------------------
 
-//--------------------------------- Read subscripts
+void routine_enterModifierWithOutputAndInputArguments_26__26__3F_outputArgTypeName_3F_outputArgName_3F_inputArgTypeName_3F_inputArgName_3F_setterName_3F_compilerArg (class GGS_setterMap & ioArgument0,
+                                                                                                                                                                      class GGS_unifiedTypeMap & ioArgument1,
+                                                                                                                                                                      const class GGS_string constinArgument2,
+                                                                                                                                                                      const class GGS_string constinArgument3,
+                                                                                                                                                                      const class GGS_string constinArgument4,
+                                                                                                                                                                      const class GGS_string constinArgument5,
+                                                                                                                                                                      const class GGS_string constinArgument6,
+                                                                                                                                                                      const class GGS_bool constinArgument7,
+                                                                                                                                                                      class Compiler * inCompiler
+                                                                                                                                                                      COMMA_LOCATION_ARGS) ;
 
+//--------------------------------------------------------------------------------------------------
+//
+//Routine 'enterModifierWith2InputArguments&&?arg1TypeName?arg1Name?arg2TypeName?arg2Name?setterName?compilerArg'
+//
+//--------------------------------------------------------------------------------------------------
 
-//--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
- 
-} ;
+void routine_enterModifierWith_32_InputArguments_26__26__3F_arg_31_TypeName_3F_arg_31_Name_3F_arg_32_TypeName_3F_arg_32_Name_3F_setterName_3F_compilerArg (class GGS_setterMap & ioArgument0,
+                                                                                                                                                           class GGS_unifiedTypeMap & ioArgument1,
+                                                                                                                                                           const class GGS_string constinArgument2,
+                                                                                                                                                           const class GGS_string constinArgument3,
+                                                                                                                                                           const class GGS_string constinArgument4,
+                                                                                                                                                           const class GGS_string constinArgument5,
+                                                                                                                                                           const class GGS_string constinArgument6,
+                                                                                                                                                           const class GGS_bool constinArgument7,
+                                                                                                                                                           class Compiler * inCompiler
+                                                                                                                                                           COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Routine 'enterModifierWithoutArgument&??compilerArg'
+//
+//--------------------------------------------------------------------------------------------------
+
+void routine_enterModifierWithoutArgument_26__3F__3F_compilerArg (class GGS_setterMap & ioArgument0,
+                                                                  const class GGS_string constinArgument1,
+                                                                  const class GGS_bool constinArgument2,
+                                                                  class Compiler * inCompiler
+                                                                  COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Function 'methodNameForUsefulEntitiesGraph'
+//
+//--------------------------------------------------------------------------------------------------
+
+class GGS_lstring function_methodNameForUsefulEntitiesGraph (const class GGS_string & constinArgument0,
+                                                             const class GGS_lstring & constinArgument1,
+                                                             class Compiler * inCompiler
+                                                             COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Function 'typeNameForUsefulEntitiesGraph'
+//
+//--------------------------------------------------------------------------------------------------
+
+class GGS_lstring function_typeNameForUsefulEntitiesGraph (const class GGS_lstring & constinArgument0,
+                                                           class Compiler * inCompiler
+                                                           COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Routine 'analyzeRoutineBody?&?&???!!'
+//
+//--------------------------------------------------------------------------------------------------
+
+void routine_analyzeRoutineBody_3F__26__3F__26__3F__3F__3F__21__21_ (const class GGS_lstring constinArgument0,
+                                                                     class GGS_usefulEntitiesGraph & ioArgument1,
+                                                                     const class GGS_analysisContext constinArgument2,
+                                                                     class GGS_unifiedTypeMap & ioArgument3,
+                                                                     const class GGS_formalParameterListAST constinArgument4,
+                                                                     const class GGS_semanticInstructionListAST constinArgument5,
+                                                                     const class GGS_location constinArgument6,
+                                                                     class GGS_semanticInstructionListForGeneration & outArgument7,
+                                                                     class GGS_formalParameterListForGeneration & outArgument8,
+                                                                     class Compiler * inCompiler
+                                                                     COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper 'semanticComponentGenerationTemplate'
+//
+//--------------------------------------------------------------------------------------------------
+
 
 //--------------------------------------------------------------------------------------------------
 
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_routineImplementationForGeneration ;
-
-//--------------------------------------------------------------------------------------------------
-// Phase 2: pointer class for @routineImplementationForGeneration class
-//--------------------------------------------------------------------------------------------------
-
-class cPtr_routineImplementationForGeneration : public cPtr_routinePrototypeDeclarationForGeneration {
-
-  #ifndef DO_NOT_GENERATE_CHECKINGS
-    public: virtual void printNonNullClassInstanceProperties (void) const override ;
-  #endif
-
-//--------------------------------- Initializers
-  public: void routineImplementationForGeneration_init_21_generateHeader_21_implementationCppFileName_21_routineMangledName_21__21__21_ (const class GGS_bool & inOperand0,
-                                                                                                                                         const class GGS_string & inOperand1,
-                                                                                                                                         const class GGS_string & inOperand2,
-                                                                                                                                         const class GGS_formalParameterListForGeneration & inOperand3,
-                                                                                                                                         const class GGS_bool & inOperand4,
-                                                                                                                                         const class GGS_semanticInstructionListForGeneration & inOperand5,
-                                                                                                                                         Compiler * inCompiler) ;
-
-
-//--- Extension method appendSpecificImplementation
-  public: virtual void method_appendSpecificImplementation (const class GGS_unifiedTypeMap arg_inUnifiedTypeMap,
-           class GGS_stringset & arg_ioInclusionSet,
-           class GGS_string & arg_outImplementation,
-           Compiler * COMMA_LOCATION_ARGS) override ;
-
-//--- Properties
-  public: GGS_bool mProperty_mGenerateStatic ;
-  public: GGS_semanticInstructionListForGeneration mProperty_mRoutineInstructionList ;
-
-
-//--- Default constructor
-  public: cPtr_routineImplementationForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
-
-//--- Constructor
-  public: cPtr_routineImplementationForGeneration (const GGS_bool & in_generateHeader,
-                                                   const GGS_string & in_implementationCppFileName,
-                                                   const GGS_string & in_routineMangledName,
-                                                   const GGS_formalParameterListForGeneration & in_mFormalArgumentList,
-                                                   const GGS_bool & in_mGenerateStatic,
-                                                   const GGS_semanticInstructionListForGeneration & in_mRoutineInstructionList,
-                                                   Compiler * inCompiler
-                                                   COMMA_LOCATION_ARGS) ;
-
-//--- Duplication
-  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
-
-//--- Attribute accessors
-//--- Description
-  public: virtual void description (String & ioString,
-                                    const int32_t inIndentation) const override ;
-
-//--- Class descriptor
-  public: virtual const GALGAS_TypeDescriptor * classDescriptor (void) const override ;
-
-} ;
-
-//--------------------------------------------------------------------------------------------------
-// Phase 1: @routineImplementationForGeneration_2E_weak weak reference class
-//--------------------------------------------------------------------------------------------------
-
-class GGS_routineImplementationForGeneration_2E_weak : public GGS_routinePrototypeDeclarationForGeneration_2E_weak {
-//--------------------------------- Default constructor
-  public: GGS_routineImplementationForGeneration_2E_weak (void) ;
-
-//--------------------------------- Constructor and assignment from strong reference
-  public: GGS_routineImplementationForGeneration_2E_weak (const class GGS_routineImplementationForGeneration & inSource) ;
-
-  public: GGS_routineImplementationForGeneration_2E_weak & operator = (const class GGS_routineImplementationForGeneration & inSource) ;
-
-//--------------------------------- Constructor and assignment from optional reference
-
-//--------------------------------- nil initializer
-  public: inline static GGS_routineImplementationForGeneration_2E_weak init_nil (void) {
-    GGS_routineImplementationForGeneration_2E_weak result ;
-    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
-    return result ;
-  }
-
-//--------------------------------- Bang operator
-  public: GGS_routineImplementationForGeneration bang_routineImplementationForGeneration_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- isValuated
-  public: inline bool isValuated (void) const {
-    return isValid () && (ptr () != nullptr) ;
-  }
-
-//--------------------------------- Unwrapped value
-  public: GGS_routineImplementationForGeneration unwrappedValue (void) const ;
-
-//--------------------------------- GALGAS read only properties
-  public: inline GGS_bool readProperty_isNil (void) const {
-    return GGS_bool (isValid (), ptr () == nullptr) ;
-  }
-
-  public: inline GGS_bool readProperty_isSome (void) const {
-    return GGS_bool (isValid (), ptr () != nullptr) ;
-  }
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
-//--------------------------------- Object extraction
-  public: static GGS_routineImplementationForGeneration_2E_weak extractObject (const GGS_object & inObject,
-                                                                               Compiler * inCompiler
-                                                                               COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS class functions
-  public: static class GGS_routineImplementationForGeneration_2E_weak class_func_nil (LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GGS_routineImplementationForGeneration_2E_weak & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Read subscripts
-
-
-//--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
- 
-} ;
 
 //--------------------------------------------------------------------------------------------------
 
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_routineImplementationForGeneration_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//  GRAMMAR galgas4Grammar
+
+extern const cDirectoryWrapper gWrapperDirectory_0_semanticComponentGenerationTemplate ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'semanticComponentGenerationTemplate initializerImplementation'
+//
 //--------------------------------------------------------------------------------------------------
 
-class cGrammar_galgas_34_Grammar : public cParser_galgas_34_ExpressionSyntax,
-                                   public cParser_galgas_34_ParameterArgumentSyntax,
-                                   public cParser_galgas_34_InstructionsSyntax,
-                                   public cParser_galgas_34_DeclarationsSyntax,
-                                   public cParser_galgas_34_LexiqueComponentSyntax,
-                                   public cParser_galgas_34_OptionComponentSyntax,
-                                   public cParser_galgas_34_GuiComponentSyntax,
-                                   public cParser_galgas_34_SyntaxComponentSyntax,
-                                   public cParser_galgas_34_GrammarComponentSyntax,
-                                   public cParser_galgas_34_ProgramDeclarations {
-//------------------------------------- 'acces_control' non terminal
-//--- 'parse' label
-  public: virtual void nt_acces_5F_control_parse (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//--- indexing
-  public: virtual void nt_acces_5F_control_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//----------- '' label
-  public: virtual void nt_acces_5F_control_ (GGS_AccessControlAST & outArgument0,
-                                             Lexique_galgasScanner_34_ * inCompiler) ;
-
-//------------------------------------- 'actual_input_parameter_list' non terminal
-//--- 'parse' label
-  public: virtual void nt_actual_5F_input_5F_parameter_5F_list_parse (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//--- indexing
-  public: virtual void nt_actual_5F_input_5F_parameter_5F_list_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//----------- '' label
-  public: virtual void nt_actual_5F_input_5F_parameter_5F_list_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                                 GGS_actualInputParameterListAST & outArgument1,
-                                                                 Lexique_galgasScanner_34_ * inCompiler) ;
-
-//------------------------------------- 'actual_parameter' non terminal
-//--- 'parse' label
-  public: virtual void nt_actual_5F_parameter_parse (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//--- indexing
-  public: virtual void nt_actual_5F_parameter_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//----------- '' label
-  public: virtual void nt_actual_5F_parameter_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                GGS_actualParameterListAST & ioArgument1,
-                                                Lexique_galgasScanner_34_ * inCompiler) ;
-
-//------------------------------------- 'actual_parameter_list_within_parenthesis' non terminal
-//--- 'parse' label
-  public: virtual void nt_actual_5F_parameter_5F_list_5F_within_5F_parenthesis_parse (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//--- indexing
-  public: virtual void nt_actual_5F_parameter_5F_list_5F_within_5F_parenthesis_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//----------- '' label
-  public: virtual void nt_actual_5F_parameter_5F_list_5F_within_5F_parenthesis_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                                                 GGS_actualParameterListAST & outArgument1,
-                                                                                 Lexique_galgasScanner_34_ * inCompiler) ;
-
-//------------------------------------- 'branchOfParseWhithInstruction' non terminal
-//--- 'parse' label
-  public: virtual void nt_branchOfParseWhithInstruction_parse (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//--- indexing
-  public: virtual void nt_branchOfParseWhithInstruction_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//----------- '' label
-  public: virtual void nt_branchOfParseWhithInstruction_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                          GGS_syntaxInstructionList & outArgument1,
-                                                          Lexique_galgasScanner_34_ * inCompiler) ;
-
-//------------------------------------- 'comma_separated_expression' non terminal
-//--- 'parse' label
-  public: virtual void nt_comma_5F_separated_5F_expression_parse (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//--- indexing
-  public: virtual void nt_comma_5F_separated_5F_expression_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//----------- '' label
-  public: virtual void nt_comma_5F_separated_5F_expression_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                             GGS_CommaSeparatedExpressionList & outArgument1,
-                                                             Lexique_galgasScanner_34_ * inCompiler) ;
-
-//------------------------------------- 'declaration' non terminal
-//--- 'parse' label
-  public: virtual void nt_declaration_parse (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//--- indexing
-  public: virtual void nt_declaration_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//----------- '' label
-  public: virtual void nt_declaration_ (GGS_galgasDeclarationAST & ioArgument0,
-                                        Lexique_galgasScanner_34_ * inCompiler) ;
-
-//------------------------------------- 'expression' non terminal
-//--- 'parse' label
-  public: virtual void nt_expression_parse (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//--- indexing
-  public: virtual void nt_expression_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//----------- '' label
-  public: virtual void nt_expression_ (GGS_galgasDeclarationAST & ioArgument0,
-                                       GGS_semanticExpressionAST & outArgument1,
-                                       Lexique_galgasScanner_34_ * inCompiler) ;
-
-//------------------------------------- 'expression_and' non terminal
-//--- 'parse' label
-  public: virtual void nt_expression_5F_and_parse (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//--- indexing
-  public: virtual void nt_expression_5F_and_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//----------- '' label
-  public: virtual void nt_expression_5F_and_ (GGS_galgasDeclarationAST & ioArgument0,
-                                              GGS_semanticExpressionAST & outArgument1,
-                                              Lexique_galgasScanner_34_ * inCompiler) ;
-
-//------------------------------------- 'expression_or' non terminal
-//--- 'parse' label
-  public: virtual void nt_expression_5F_or_parse (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//--- indexing
-  public: virtual void nt_expression_5F_or_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//----------- '' label
-  public: virtual void nt_expression_5F_or_ (GGS_galgasDeclarationAST & ioArgument0,
-                                             GGS_semanticExpressionAST & outArgument1,
-                                             Lexique_galgasScanner_34_ * inCompiler) ;
-
-//------------------------------------- 'externtype_constructor' non terminal
-//--- 'parse' label
-  public: virtual void nt_externtype_5F_constructor_parse (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//--- indexing
-  public: virtual void nt_externtype_5F_constructor_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//----------- '' label
-  public: virtual void nt_externtype_5F_constructor_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                      GGS_externTypeConstructorList & ioArgument1,
-                                                      Lexique_galgasScanner_34_ * inCompiler) ;
-
-//------------------------------------- 'externtype_cpp_classdeclaration' non terminal
-//--- 'parse' label
-  public: virtual void nt_externtype_5F_cpp_5F_classdeclaration_parse (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//--- indexing
-  public: virtual void nt_externtype_5F_cpp_5F_classdeclaration_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//----------- '' label
-  public: virtual void nt_externtype_5F_cpp_5F_classdeclaration_ (GGS_string & outArgument0,
-                                                                  Lexique_galgasScanner_34_ * inCompiler) ;
-
-//------------------------------------- 'externtype_cpp_predeclaration' non terminal
-//--- 'parse' label
-  public: virtual void nt_externtype_5F_cpp_5F_predeclaration_parse (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//--- indexing
-  public: virtual void nt_externtype_5F_cpp_5F_predeclaration_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//----------- '' label
-  public: virtual void nt_externtype_5F_cpp_5F_predeclaration_ (GGS_string & outArgument0,
-                                                                Lexique_galgasScanner_34_ * inCompiler) ;
-
-//------------------------------------- 'externtype_getter' non terminal
-//--- 'parse' label
-  public: virtual void nt_externtype_5F_getter_parse (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//--- indexing
-  public: virtual void nt_externtype_5F_getter_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//----------- '' label
-  public: virtual void nt_externtype_5F_getter_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                 GGS_externTypeGetterList & ioArgument1,
-                                                 Lexique_galgasScanner_34_ * inCompiler) ;
-
-//------------------------------------- 'externtype_method' non terminal
-//--- 'parse' label
-  public: virtual void nt_externtype_5F_method_parse (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//--- indexing
-  public: virtual void nt_externtype_5F_method_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//----------- '' label
-  public: virtual void nt_externtype_5F_method_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                 GGS_externTypeMethodList & ioArgument1,
-                                                 Lexique_galgasScanner_34_ * inCompiler) ;
-
-//------------------------------------- 'externtype_setter' non terminal
-//--- 'parse' label
-  public: virtual void nt_externtype_5F_setter_parse (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//--- indexing
-  public: virtual void nt_externtype_5F_setter_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//----------- '' label
-  public: virtual void nt_externtype_5F_setter_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                 GGS_externTypeSetterList & ioArgument1,
-                                                 Lexique_galgasScanner_34_ * inCompiler) ;
-
-//------------------------------------- 'factor' non terminal
-//--- 'parse' label
-  public: virtual void nt_factor_parse (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//--- indexing
-  public: virtual void nt_factor_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//----------- '' label
-  public: virtual void nt_factor_ (GGS_galgasDeclarationAST & ioArgument0,
-                                   GGS_semanticExpressionAST & outArgument1,
-                                   Lexique_galgasScanner_34_ * inCompiler) ;
-
-//------------------------------------- 'filewrapper_binary_files' non terminal
-//--- 'parse' label
-  public: virtual void nt_filewrapper_5F_binary_5F_files_parse (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//--- indexing
-  public: virtual void nt_filewrapper_5F_binary_5F_files_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//----------- '' label
-  public: virtual void nt_filewrapper_5F_binary_5F_files_ (GGS_lstringlist & outArgument0,
-                                                           Lexique_galgasScanner_34_ * inCompiler) ;
-
-//------------------------------------- 'filewrapper_templates' non terminal
-//--- 'parse' label
-  public: virtual void nt_filewrapper_5F_templates_parse (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//--- indexing
-  public: virtual void nt_filewrapper_5F_templates_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//----------- '' label
-  public: virtual void nt_filewrapper_5F_templates_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                     GGS_filewrapperTemplateListAST & outArgument1,
-                                                     Lexique_galgasScanner_34_ * inCompiler) ;
-
-//------------------------------------- 'filewrapper_text_files' non terminal
-//--- 'parse' label
-  public: virtual void nt_filewrapper_5F_text_5F_files_parse (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//--- indexing
-  public: virtual void nt_filewrapper_5F_text_5F_files_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//----------- '' label
-  public: virtual void nt_filewrapper_5F_text_5F_files_ (GGS_lstringlist & outArgument0,
-                                                         Lexique_galgasScanner_34_ * inCompiler) ;
-
-//------------------------------------- 'for_instruction_element' non terminal
-//--- 'parse' label
-  public: virtual void nt_for_5F_instruction_5F_element_parse (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//--- indexing
-  public: virtual void nt_for_5F_instruction_5F_element_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//----------- '' label
-  public: virtual void nt_for_5F_instruction_5F_element_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                          GGS_forInstructionEnumeratedObjectElementListAST & ioArgument1,
-                                                          Lexique_galgasScanner_34_ * inCompiler) ;
-
-//------------------------------------- 'for_instruction_enumerated_object' non terminal
-//--- 'parse' label
-  public: virtual void nt_for_5F_instruction_5F_enumerated_5F_object_parse (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//--- indexing
-  public: virtual void nt_for_5F_instruction_5F_enumerated_5F_object_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//----------- '' label
-  public: virtual void nt_for_5F_instruction_5F_enumerated_5F_object_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                                       GGS_abstractEnumeratedCollectionAST & outArgument1,
-                                                                       Lexique_galgasScanner_34_ * inCompiler) ;
-
-//------------------------------------- 'formal_input_parameter_list' non terminal
-//--- 'parse' label
-  public: virtual void nt_formal_5F_input_5F_parameter_5F_list_parse (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//--- indexing
-  public: virtual void nt_formal_5F_input_5F_parameter_5F_list_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//----------- '' label
-  public: virtual void nt_formal_5F_input_5F_parameter_5F_list_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                                 GGS_formalInputParameterListAST & outArgument1,
-                                                                 Lexique_galgasScanner_34_ * inCompiler) ;
-
-//------------------------------------- 'formal_parameter_list' non terminal
-//--- 'parse' label
-  public: virtual void nt_formal_5F_parameter_5F_list_parse (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//--- indexing
-  public: virtual void nt_formal_5F_parameter_5F_list_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//----------- '' label
-  public: virtual void nt_formal_5F_parameter_5F_list_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                        GGS_formalParameterListAST & outArgument1,
-                                                        Lexique_galgasScanner_34_ * inCompiler) ;
-
-//------------------------------------- 'grammar_instruction_core' non terminal
-//--- 'parse' label
-  public: virtual void nt_grammar_5F_instruction_5F_core_parse (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//--- indexing
-  public: virtual void nt_grammar_5F_instruction_5F_core_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//----------- '' label
-  public: virtual void nt_grammar_5F_instruction_5F_core_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                           const GGS_location inArgument1,
-                                                           const GGS_actualParameterListAST inArgument2,
-                                                           const GGS_lstring inArgument3,
-                                                           const GGS_lstring inArgument4,
-                                                           GGS_semanticInstructionAST & outArgument5,
-                                                           Lexique_galgasScanner_34_ * inCompiler) ;
-
-//------------------------------------- 'grammar_start_symbol_label' non terminal
-//--- 'parse' label
-  public: virtual void nt_grammar_5F_start_5F_symbol_5F_label_parse (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//--- indexing
-  public: virtual void nt_grammar_5F_start_5F_symbol_5F_label_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//----------- '' label
-  public: virtual void nt_grammar_5F_start_5F_symbol_5F_label_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                                const GGS_lstring inArgument1,
-                                                                GGS_nonTerminalLabelListAST & ioArgument2,
-                                                                Lexique_galgasScanner_34_ * inCompiler) ;
-
-//------------------------------------- 'gui_attributes' non terminal
-//--- 'parse' label
-  public: virtual void nt_gui_5F_attributes_parse (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//--- indexing
-  public: virtual void nt_gui_5F_attributes_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//----------- '' label
-  public: virtual void nt_gui_5F_attributes_ (GGS_guiSimpleAttributeListAST & ioArgument0,
-                                              Lexique_galgasScanner_34_ * inCompiler) ;
-
-//------------------------------------- 'gui_with_lexique_declaration' non terminal
-//--- 'parse' label
-  public: virtual void nt_gui_5F_with_5F_lexique_5F_declaration_parse (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//--- indexing
-  public: virtual void nt_gui_5F_with_5F_lexique_5F_declaration_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//----------- '' label
-  public: virtual void nt_gui_5F_with_5F_lexique_5F_declaration_ (GGS_withLexiqueListAST & ioArgument0,
-                                                                  Lexique_galgasScanner_34_ * inCompiler) ;
-
-//------------------------------------- 'gui_with_option_declaration' non terminal
-//--- 'parse' label
-  public: virtual void nt_gui_5F_with_5F_option_5F_declaration_parse (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//--- indexing
-  public: virtual void nt_gui_5F_with_5F_option_5F_declaration_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//----------- '' label
-  public: virtual void nt_gui_5F_with_5F_option_5F_declaration_ (GGS_lstringlist & ioArgument0,
-                                                                 Lexique_galgasScanner_34_ * inCompiler) ;
-
-//------------------------------------- 'if_instruction_core' non terminal
-//--- 'parse' label
-  public: virtual void nt_if_5F_instruction_5F_core_parse (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//--- indexing
-  public: virtual void nt_if_5F_instruction_5F_core_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//----------- '' label
-  public: virtual void nt_if_5F_instruction_5F_core_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                      GGS_semanticInstructionAST & outArgument1,
-                                                      Lexique_galgasScanner_34_ * inCompiler) ;
-
-//------------------------------------- 'insert_or_replace_declaration' non terminal
-//--- 'parse' label
-  public: virtual void nt_insert_5F_or_5F_replace_5F_declaration_parse (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//--- indexing
-  public: virtual void nt_insert_5F_or_5F_replace_5F_declaration_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//----------- '' label
-  public: virtual void nt_insert_5F_or_5F_replace_5F_declaration_ (GGS_insertOrReplaceDeclarationListAST & ioArgument0,
-                                                                   Lexique_galgasScanner_34_ * inCompiler) ;
-
-//------------------------------------- 'issue_fixit' non terminal
-//--- 'parse' label
-  public: virtual void nt_issue_5F_fixit_parse (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//--- indexing
-  public: virtual void nt_issue_5F_fixit_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//----------- '' label
-  public: virtual void nt_issue_5F_fixit_ (GGS_galgasDeclarationAST & ioArgument0,
-                                           GGS_fixitListAST & outArgument1,
-                                           Lexique_galgasScanner_34_ * inCompiler) ;
-
-//------------------------------------- 'label_formal_parameter' non terminal
-//--- 'parse' label
-  public: virtual void nt_label_5F_formal_5F_parameter_parse (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//--- indexing
-  public: virtual void nt_label_5F_formal_5F_parameter_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//----------- '' label
-  public: virtual void nt_label_5F_formal_5F_parameter_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                         GGS_lstring & outArgument1,
-                                                         GGS_formalParameterListAST & ioArgument2,
-                                                         Lexique_galgasScanner_34_ * inCompiler) ;
-
-//------------------------------------- 'lexical_attribute_declaration' non terminal
-//--- 'parse' label
-  public: virtual void nt_lexical_5F_attribute_5F_declaration_parse (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//--- indexing
-  public: virtual void nt_lexical_5F_attribute_5F_declaration_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//----------- '' label
-  public: virtual void nt_lexical_5F_attribute_5F_declaration_ (GGS_lexicalAttributeListAST & ioArgument0,
-                                                                Lexique_galgasScanner_34_ * inCompiler) ;
-
-//------------------------------------- 'lexical_explicit_rule' non terminal
-//--- 'parse' label
-  public: virtual void nt_lexical_5F_explicit_5F_rule_parse (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//--- indexing
-  public: virtual void nt_lexical_5F_explicit_5F_rule_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//----------- '' label
-  public: virtual void nt_lexical_5F_explicit_5F_rule_ (GGS_lexicalRuleListAST & ioArgument0,
-                                                        Lexique_galgasScanner_34_ * inCompiler) ;
-
-//------------------------------------- 'lexical_expression' non terminal
-//--- 'parse' label
-  public: virtual void nt_lexical_5F_expression_parse (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//--- indexing
-  public: virtual void nt_lexical_5F_expression_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//----------- '' label
-  public: virtual void nt_lexical_5F_expression_ (GGS_lexicalExpressionAST & outArgument0,
-                                                  Lexique_galgasScanner_34_ * inCompiler) ;
-
-//------------------------------------- 'lexical_factor' non terminal
-//--- 'parse' label
-  public: virtual void nt_lexical_5F_factor_parse (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//--- indexing
-  public: virtual void nt_lexical_5F_factor_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//----------- '' label
-  public: virtual void nt_lexical_5F_factor_ (GGS_lexicalExpressionAST & outArgument0,
-                                              Lexique_galgasScanner_34_ * inCompiler) ;
-
-//------------------------------------- 'lexical_implicit_rule' non terminal
-//--- 'parse' label
-  public: virtual void nt_lexical_5F_implicit_5F_rule_parse (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//--- indexing
-  public: virtual void nt_lexical_5F_implicit_5F_rule_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//----------- '' label
-  public: virtual void nt_lexical_5F_implicit_5F_rule_ (GGS_lexicalRuleListAST & ioArgument0,
-                                                        Lexique_galgasScanner_34_ * inCompiler) ;
-
-//------------------------------------- 'lexical_indexing_declaration' non terminal
-//--- 'parse' label
-  public: virtual void nt_lexical_5F_indexing_5F_declaration_parse (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//--- indexing
-  public: virtual void nt_lexical_5F_indexing_5F_declaration_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//----------- '' label
-  public: virtual void nt_lexical_5F_indexing_5F_declaration_ (GGS_indexingListAST & ioArgument0,
-                                                               Lexique_galgasScanner_34_ * inCompiler) ;
-
-//------------------------------------- 'lexical_instruction' non terminal
-//--- 'parse' label
-  public: virtual void nt_lexical_5F_instruction_parse (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//--- indexing
-  public: virtual void nt_lexical_5F_instruction_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//----------- '' label
-  public: virtual void nt_lexical_5F_instruction_ (GGS_lexicalInstructionListAST & ioArgument0,
-                                                   Lexique_galgasScanner_34_ * inCompiler) ;
-
-//------------------------------------- 'lexical_list_declaration' non terminal
-//--- 'parse' label
-  public: virtual void nt_lexical_5F_list_5F_declaration_parse (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//--- indexing
-  public: virtual void nt_lexical_5F_list_5F_declaration_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//----------- '' label
-  public: virtual void nt_lexical_5F_list_5F_declaration_ (GGS_lexicalListDeclarationListAST & ioArgument0,
-                                                           Lexique_galgasScanner_34_ * inCompiler) ;
-
-//------------------------------------- 'lexical_list_entry' non terminal
-//--- 'parse' label
-  public: virtual void nt_lexical_5F_list_5F_entry_parse (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//--- indexing
-  public: virtual void nt_lexical_5F_list_5F_entry_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//----------- '' label
-  public: virtual void nt_lexical_5F_list_5F_entry_ (GGS_lexicalListEntryListAST & ioArgument0,
-                                                     Lexique_galgasScanner_34_ * inCompiler) ;
-
-//------------------------------------- 'lexical_message_declaration' non terminal
-//--- 'parse' label
-  public: virtual void nt_lexical_5F_message_5F_declaration_parse (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//--- indexing
-  public: virtual void nt_lexical_5F_message_5F_declaration_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//----------- '' label
-  public: virtual void nt_lexical_5F_message_5F_declaration_ (GGS_lexicalMessageDeclarationListAST & ioArgument0,
-                                                              Lexique_galgasScanner_34_ * inCompiler) ;
-
-//------------------------------------- 'lexical_output_effective_argument' non terminal
-//--- 'parse' label
-  public: virtual void nt_lexical_5F_output_5F_effective_5F_argument_parse (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//--- indexing
-  public: virtual void nt_lexical_5F_output_5F_effective_5F_argument_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//----------- '' label
-  public: virtual void nt_lexical_5F_output_5F_effective_5F_argument_ (GGS_lexicalRoutineOrFunctionFormalInputArgumentAST & outArgument0,
-                                                                       Lexique_galgasScanner_34_ * inCompiler) ;
-
-//------------------------------------- 'lexical_send_instruction' non terminal
-//--- 'parse' label
-  public: virtual void nt_lexical_5F_send_5F_instruction_parse (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//--- indexing
-  public: virtual void nt_lexical_5F_send_5F_instruction_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//----------- '' label
-  public: virtual void nt_lexical_5F_send_5F_instruction_ (GGS_lexicalInstructionAST & outArgument0,
-                                                           Lexique_galgasScanner_34_ * inCompiler) ;
-
-//------------------------------------- 'lexical_term' non terminal
-//--- 'parse' label
-  public: virtual void nt_lexical_5F_term_parse (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//--- indexing
-  public: virtual void nt_lexical_5F_term_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//----------- '' label
-  public: virtual void nt_lexical_5F_term_ (GGS_lexicalExpressionAST & outArgument0,
-                                            Lexique_galgasScanner_34_ * inCompiler) ;
-
-//------------------------------------- 'map_insert_setter_declaration' non terminal
-//--- 'parse' label
-  public: virtual void nt_map_5F_insert_5F_setter_5F_declaration_parse (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//--- indexing
-  public: virtual void nt_map_5F_insert_5F_setter_5F_declaration_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//----------- '' label
-  public: virtual void nt_map_5F_insert_5F_setter_5F_declaration_ (GGS_insertSetterListAST & ioArgument0,
-                                                                   Lexique_galgasScanner_34_ * inCompiler) ;
-
-//------------------------------------- 'method_declaration' non terminal
-//--- 'parse' label
-  public: virtual void nt_method_5F_declaration_parse (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//--- indexing
-  public: virtual void nt_method_5F_declaration_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//----------- '' label
-  public: virtual void nt_method_5F_declaration_ (const GGS_lstring inArgument0,
-                                                  GGS_galgasDeclarationAST & ioArgument1,
-                                                  Lexique_galgasScanner_34_ * inCompiler) ;
-
-//------------------------------------- 'non_empty_output_expression_list' non terminal
-//--- 'parse' label
-  public: virtual void nt_non_5F_empty_5F_output_5F_expression_5F_list_parse (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//--- indexing
-  public: virtual void nt_non_5F_empty_5F_output_5F_expression_5F_list_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//----------- '' label
-  public: virtual void nt_non_5F_empty_5F_output_5F_expression_5F_list_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                                         GGS_actualOutputArgumentList & outArgument1,
-                                                                         Lexique_galgasScanner_34_ * inCompiler) ;
-
-//------------------------------------- 'nonterminal_declaration' non terminal
-//--- 'parse' label
-  public: virtual void nt_nonterminal_5F_declaration_parse (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//--- indexing
-  public: virtual void nt_nonterminal_5F_declaration_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//----------- '' label
-  public: virtual void nt_nonterminal_5F_declaration_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                       GGS_nonterminalDeclarationListAST & ioArgument1,
-                                                       Lexique_galgasScanner_34_ * inCompiler) ;
-
-//------------------------------------- 'option_declaration_ggs3' non terminal
-//--- 'parse' label
-  public: virtual void nt_option_5F_declaration_5F_ggs_33__parse (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//--- indexing
-  public: virtual void nt_option_5F_declaration_5F_ggs_33__indexing (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//----------- '' label
-  public: virtual void nt_option_5F_declaration_5F_ggs_33__ (GGS_commandLineOptionListAST & ioArgument0,
-                                                             Lexique_galgasScanner_34_ * inCompiler) ;
-
-//------------------------------------- 'output_expression_list' non terminal
-//--- 'parse' label
-  public: virtual void nt_output_5F_expression_5F_list_parse (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//--- indexing
-  public: virtual void nt_output_5F_expression_5F_list_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//----------- '' label
-  public: virtual void nt_output_5F_expression_5F_list_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                         GGS_actualOutputArgumentList & outArgument1,
-                                                         Lexique_galgasScanner_34_ * inCompiler) ;
-
-//------------------------------------- 'poisoned_var_list' non terminal
-//--- 'parse' label
-  public: virtual void nt_poisoned_5F_var_5F_list_parse (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//--- indexing
-  public: virtual void nt_poisoned_5F_var_5F_list_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//----------- '' label
-  public: virtual void nt_poisoned_5F_var_5F_list_ (GGS_lstringlist & outArgument0,
-                                                    Lexique_galgasScanner_34_ * inCompiler) ;
-
-//------------------------------------- 'primary' non terminal
-//--- 'parse' label
-  public: virtual void nt_primary_parse (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//--- indexing
-  public: virtual void nt_primary_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//----------- '' label
-  public: virtual void nt_primary_ (GGS_galgasDeclarationAST & ioArgument0,
-                                    GGS_semanticExpressionAST & outArgument1,
-                                    Lexique_galgasScanner_34_ * inCompiler) ;
-
-//------------------------------------- 'primary_beginning_by_dot' non terminal
-//--- 'parse' label
-  public: virtual void nt_primary_5F_beginning_5F_by_5F_dot_parse (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//--- indexing
-  public: virtual void nt_primary_5F_beginning_5F_by_5F_dot_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//----------- '' label
-  public: virtual void nt_primary_5F_beginning_5F_by_5F_dot_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                              GGS_semanticExpressionAST & outArgument1,
-                                                              Lexique_galgasScanner_34_ * inCompiler) ;
-
-//------------------------------------- 'primary_beginning_by_type' non terminal
-//--- 'parse' label
-  public: virtual void nt_primary_5F_beginning_5F_by_5F_type_parse (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//--- indexing
-  public: virtual void nt_primary_5F_beginning_5F_by_5F_type_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//----------- '' label
-  public: virtual void nt_primary_5F_beginning_5F_by_5F_type_ (const GGS_lstring inArgument0,
-                                                               GGS_galgasDeclarationAST & ioArgument1,
-                                                               GGS_semanticExpressionAST & outArgument2,
-                                                               Lexique_galgasScanner_34_ * inCompiler) ;
-
-//------------------------------------- 'primary_beginning_by_type_dot_name' non terminal
-//--- 'parse' label
-  public: virtual void nt_primary_5F_beginning_5F_by_5F_type_5F_dot_5F_name_parse (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//--- indexing
-  public: virtual void nt_primary_5F_beginning_5F_by_5F_type_5F_dot_5F_name_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//----------- '' label
-  public: virtual void nt_primary_5F_beginning_5F_by_5F_type_5F_dot_5F_name_ (const GGS_lstring inArgument0,
-                                                                              const GGS_lstring inArgument1,
-                                                                              GGS_galgasDeclarationAST & ioArgument2,
-                                                                              GGS_semanticExpressionAST & outArgument3,
-                                                                              Lexique_galgasScanner_34_ * inCompiler) ;
-
-//------------------------------------- 'property_declaration' non terminal
-//--- 'parse' label
-  public: virtual void nt_property_5F_declaration_parse (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//--- indexing
-  public: virtual void nt_property_5F_declaration_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//----------- '' label
-  public: virtual void nt_property_5F_declaration_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                    GGS_propertyInCollectionListAST & ioArgument1,
-                                                    Lexique_galgasScanner_34_ * inCompiler) ;
-
-//------------------------------------- 'relation_factor' non terminal
-//--- 'parse' label
-  public: virtual void nt_relation_5F_factor_parse (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//--- indexing
-  public: virtual void nt_relation_5F_factor_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//----------- '' label
-  public: virtual void nt_relation_5F_factor_ (GGS_galgasDeclarationAST & ioArgument0,
-                                               GGS_semanticExpressionAST & outArgument1,
-                                               Lexique_galgasScanner_34_ * inCompiler) ;
-
-//------------------------------------- 'remove_setter_declaration' non terminal
-//--- 'parse' label
-  public: virtual void nt_remove_5F_setter_5F_declaration_parse (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//--- indexing
-  public: virtual void nt_remove_5F_setter_5F_declaration_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//----------- '' label
-  public: virtual void nt_remove_5F_setter_5F_declaration_ (GGS_mapAccessorListAST & ioArgument0,
-                                                            Lexique_galgasScanner_34_ * inCompiler) ;
-
-//------------------------------------- 'repeat_while_branch' non terminal
-//--- 'parse' label
-  public: virtual void nt_repeat_5F_while_5F_branch_parse (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//--- indexing
-  public: virtual void nt_repeat_5F_while_5F_branch_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//----------- '' label
-  public: virtual void nt_repeat_5F_while_5F_branch_ (GGS_lexicalWhileBranchListAST & ioArgument0,
-                                                      Lexique_galgasScanner_34_ * inCompiler) ;
-
-//------------------------------------- 'replace_setter_declaration' non terminal
-//--- 'parse' label
-  public: virtual void nt_replace_5F_setter_5F_declaration_parse (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//--- indexing
-  public: virtual void nt_replace_5F_setter_5F_declaration_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//----------- '' label
-  public: virtual void nt_replace_5F_setter_5F_declaration_ (GGS_mapAccessorListAST & ioArgument0,
-                                                             Lexique_galgasScanner_34_ * inCompiler) ;
-
-//------------------------------------- 'search_method_declaration' non terminal
-//--- 'parse' label
-  public: virtual void nt_search_5F_method_5F_declaration_parse (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//--- indexing
-  public: virtual void nt_search_5F_method_5F_declaration_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//----------- '' label
-  public: virtual void nt_search_5F_method_5F_declaration_ (GGS_mapAccessorListAST & ioArgument0,
-                                                            Lexique_galgasScanner_34_ * inCompiler) ;
-
-//------------------------------------- 'search_subscript_declaration' non terminal
-//--- 'parse' label
-  public: virtual void nt_search_5F_subscript_5F_declaration_parse (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//--- indexing
-  public: virtual void nt_search_5F_subscript_5F_declaration_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//----------- '' label
-  public: virtual void nt_search_5F_subscript_5F_declaration_ (GGS_mapAccessorListAST & ioArgument0,
-                                                               Lexique_galgasScanner_34_ * inCompiler) ;
-
-//------------------------------------- 'semantic_instruction' non terminal
-//--- 'parse' label
-  public: virtual void nt_semantic_5F_instruction_parse (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//--- indexing
-  public: virtual void nt_semantic_5F_instruction_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//----------- '' label
-  public: virtual void nt_semantic_5F_instruction_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                    GGS_semanticInstructionAST & outArgument1,
-                                                    Lexique_galgasScanner_34_ * inCompiler) ;
-
-//------------------------------------- 'semantic_instruction_beginning_with_identifier' non terminal
-//--- 'parse' label
-  public: virtual void nt_semantic_5F_instruction_5F_beginning_5F_with_5F_identifier_parse (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//--- indexing
-  public: virtual void nt_semantic_5F_instruction_5F_beginning_5F_with_5F_identifier_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//----------- '' label
-  public: virtual void nt_semantic_5F_instruction_5F_beginning_5F_with_5F_identifier_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                                                       const GGS_bool inArgument1,
-                                                                                       GGS_semanticInstructionAST & outArgument2,
-                                                                                       Lexique_galgasScanner_34_ * inCompiler) ;
-
-//------------------------------------- 'semantic_instruction_list' non terminal
-//--- 'parse' label
-  public: virtual void nt_semantic_5F_instruction_5F_list_parse (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//--- indexing
-  public: virtual void nt_semantic_5F_instruction_5F_list_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//----------- '' label
-  public: virtual void nt_semantic_5F_instruction_5F_list_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                            GGS_semanticInstructionListAST & outArgument1,
-                                                            Lexique_galgasScanner_34_ * inCompiler) ;
-
-//------------------------------------- 'simple_expression' non terminal
-//--- 'parse' label
-  public: virtual void nt_simple_5F_expression_parse (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//--- indexing
-  public: virtual void nt_simple_5F_expression_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//----------- '' label
-  public: virtual void nt_simple_5F_expression_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                 GGS_semanticExpressionAST & outArgument1,
-                                                 Lexique_galgasScanner_34_ * inCompiler) ;
-
-//------------------------------------- 'simple_type_definition' non terminal
-//--- 'parse' label
-  public: virtual void nt_simple_5F_type_5F_definition_parse (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//--- indexing
-  public: virtual void nt_simple_5F_type_5F_definition_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//----------- '' label
-  public: virtual void nt_simple_5F_type_5F_definition_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                         GGS_lstring & outArgument1,
-                                                         Lexique_galgasScanner_34_ * inCompiler) ;
-
-//------------------------------------- 'simple_type_followed_by_dot_type' non terminal
-//--- 'parse' label
-  public: virtual void nt_simple_5F_type_5F_followed_5F_by_5F_dot_5F_type_parse (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//--- indexing
-  public: virtual void nt_simple_5F_type_5F_followed_5F_by_5F_dot_5F_type_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//----------- '' label
-  public: virtual void nt_simple_5F_type_5F_followed_5F_by_5F_dot_5F_type_ (const GGS_lstring inArgument0,
-                                                                            GGS_galgasDeclarationAST & ioArgument1,
-                                                                            GGS_semanticExpressionAST & outArgument2,
-                                                                            Lexique_galgasScanner_34_ * inCompiler) ;
-
-//------------------------------------- 'sortedlist_sort_descriptor' non terminal
-//--- 'parse' label
-  public: virtual void nt_sortedlist_5F_sort_5F_descriptor_parse (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//--- indexing
-  public: virtual void nt_sortedlist_5F_sort_5F_descriptor_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//----------- '' label
-  public: virtual void nt_sortedlist_5F_sort_5F_descriptor_ (GGS_sortedListSortDescriptorListAST & ioArgument0,
-                                                             Lexique_galgasScanner_34_ * inCompiler) ;
-
-//------------------------------------- 'start_symbol' non terminal
-//--- 'parse' label
-  public: virtual void nt_start_5F_symbol_parse (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//--- indexing
-  public: virtual void nt_start_5F_symbol_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//----------- '' label
-  public: virtual void nt_start_5F_symbol_ (GGS_galgasDeclarationAST & ioArgument0,
-                                            Lexique_galgasScanner_34_ * inCompiler) ;
-
-//--- Start symbol
-  public: static void _performSourceFileParsing_ (Compiler * inCompiler,
-                                                  GGS_lstring inFileName,
-                                                  GGS_galgasDeclarationAST & ioArgument0
-                                                  COMMA_LOCATION_ARGS) ;
-
-  public: static void _performSourceStringParsing_ (Compiler * inCompiler,
-                                                    GGS_string inSourceString,
-                                                    GGS_string inNameString,
-                                                    GGS_galgasDeclarationAST & ioArgument0
+GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_initializerImplementation (class Compiler * inCompiler,
+                                                                                              const class GGS_string & in_CLASS_5F_NAME,
+                                                                                              const class GGS_string & in_INITIALIZER_5F_NAME,
+                                                                                              const class GGS_formalInputParameterListForGeneration & in_FORMAL_5F_ARGUMENT_5F_LIST,
+                                                                                              const class GGS_string & in_INITIALIZER_5F_IMPLEMENTATION
+                                                                                              COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'semanticComponentGenerationTemplate abstractExtensionGetterDeclaration'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_abstractExtensionGetterDeclaration (class Compiler * inCompiler,
+                                                                                                       const class GGS_string & in_CLASS_5F_NAME,
+                                                                                                       const class GGS_string & in_GETTER_5F_NAME,
+                                                                                                       const class GGS_formalInputParameterListForGeneration & in_FORMAL_5F_ARGUMENT_5F_LIST,
+                                                                                                       const class GGS_unifiedTypeMapEntry & in_RETURN_5F_TYPE
+                                                                                                       COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'semanticComponentGenerationTemplate abstractExtensionGetterImplementation'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_abstractExtensionGetterImplementation (class Compiler * inCompiler,
+                                                                                                          const class GGS_string & in_CLASS_5F_NAME,
+                                                                                                          const class GGS_string & in_GETTER_5F_NAME,
+                                                                                                          const class GGS_formalInputParameterListForGeneration & in_FORMAL_5F_ARGUMENT_5F_LIST,
+                                                                                                          const class GGS_unifiedTypeMapEntry & in_RETURN_5F_TYPE
+                                                                                                          COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'semanticComponentGenerationTemplate extensionGetterDeclaration'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionGetterDeclaration (class Compiler * inCompiler,
+                                                                                               const class GGS_string & in_CLASS_5F_NAME,
+                                                                                               const class GGS_string & in_GETTER_5F_NAME,
+                                                                                               const class GGS_formalInputParameterListForGeneration & in_FORMAL_5F_ARGUMENT_5F_LIST,
+                                                                                               const class GGS_unifiedTypeMapEntry & in_RETURN_5F_TYPE
+                                                                                               COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'semanticComponentGenerationTemplate extensionGetterImplementation'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionGetterImplementation (class Compiler * inCompiler,
+                                                                                                  const class GGS_string & in_CLASS_5F_NAME,
+                                                                                                  const class GGS_string & in_GETTER_5F_NAME,
+                                                                                                  const class GGS_formalInputParameterListForGeneration & in_FORMAL_5F_ARGUMENT_5F_LIST,
+                                                                                                  const class GGS_string & in_GETTER_5F_IMPLEMENTATION,
+                                                                                                  const class GGS_unifiedTypeMapEntry & in_RETURN_5F_TYPE
+                                                                                                  COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'semanticComponentGenerationTemplate overridingExtensionGetterImplementation'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_overridingExtensionGetterImplementation (class Compiler * inCompiler,
+                                                                                                            const class GGS_string & in_CLASS_5F_NAME,
+                                                                                                            const class GGS_string & in_GETTER_5F_NAME,
+                                                                                                            const class GGS_string & in_GETTER_5F_IMPLEMENTATION,
+                                                                                                            const class GGS_unifiedTypeMapEntry & in_RETURN_5F_TYPE
+                                                                                                            COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'semanticComponentGenerationTemplate abstractExtensionSetterDeclaration'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_abstractExtensionSetterDeclaration (class Compiler * inCompiler,
+                                                                                                       const class GGS_string & in_CLASS_5F_NAME,
+                                                                                                       const class GGS_string & in_MODIFIER_5F_NAME,
+                                                                                                       const class GGS_formalParameterListForGeneration & in_FORMAL_5F_ARGUMENT_5F_LIST
+                                                                                                       COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'semanticComponentGenerationTemplate abstractExtensionSetterImplementation'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_abstractExtensionSetterImplementation (class Compiler * inCompiler,
+                                                                                                          const class GGS_string & in_CLASS_5F_NAME,
+                                                                                                          const class GGS_string & in_MODIFIER_5F_NAME,
+                                                                                                          const class GGS_formalParameterListForGeneration & in_FORMAL_5F_ARGUMENT_5F_LIST
+                                                                                                          COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'semanticComponentGenerationTemplate extensionSetterDeclaration'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionSetterDeclaration (class Compiler * inCompiler,
+                                                                                               const class GGS_string & in_CLASS_5F_NAME,
+                                                                                               const class GGS_string & in_MODIFIER_5F_NAME,
+                                                                                               const class GGS_formalParameterListForGeneration & in_FORMAL_5F_ARGUMENT_5F_LIST
+                                                                                               COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'semanticComponentGenerationTemplate extensionsetterImplementation'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionsetterImplementation (class Compiler * inCompiler,
+                                                                                                  const class GGS_string & in_CLASS_5F_NAME,
+                                                                                                  const class GGS_string & in_MODIFIER_5F_NAME,
+                                                                                                  const class GGS_formalParameterListForGeneration & in_FORMAL_5F_ARGUMENT_5F_LIST,
+                                                                                                  const class GGS_string & in_MODIFIER_5F_IMPLEMENTATION
+                                                                                                  COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'semanticComponentGenerationTemplate overridingExtensionSetterImplementation'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_overridingExtensionSetterImplementation (class Compiler * inCompiler,
+                                                                                                            const class GGS_string & in_CLASS_5F_NAME,
+                                                                                                            const class GGS_string & in_MODIFIER_5F_NAME,
+                                                                                                            const class GGS_string & in_MODIFIER_5F_IMPLEMENTATION
+                                                                                                            COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'semanticComponentGenerationTemplate abstractExtensionMethodDeclaration'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_abstractExtensionMethodDeclaration (class Compiler * inCompiler,
+                                                                                                       const class GGS_string & in_CLASS_5F_NAME,
+                                                                                                       const class GGS_string & in_METHOD_5F_NAME,
+                                                                                                       const class GGS_formalParameterListForGeneration & in_FORMAL_5F_ARGUMENT_5F_LIST
+                                                                                                       COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'semanticComponentGenerationTemplate abstractExtensionMethodImplementation'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_abstractExtensionMethodImplementation (class Compiler * inCompiler,
+                                                                                                          const class GGS_unifiedTypeMapEntry & in_RECEIVER_5F_TYPE,
+                                                                                                          const class GGS_string & in_METHOD_5F_NAME,
+                                                                                                          const class GGS_formalParameterListForGeneration & in_FORMAL_5F_ARGUMENT_5F_LIST
+                                                                                                          COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'semanticComponentGenerationTemplate extensionMethodDeclaration'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionMethodDeclaration (class Compiler * inCompiler,
+                                                                                               const class GGS_string & in_CLASS_5F_NAME,
+                                                                                               const class GGS_string & in_METHOD_5F_NAME,
+                                                                                               const class GGS_formalParameterListForGeneration & in_FORMAL_5F_ARGUMENT_5F_LIST
+                                                                                               COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'semanticComponentGenerationTemplate extensionMethodImplementation'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionMethodImplementation (class Compiler * inCompiler,
+                                                                                                  const class GGS_string & in_CLASS_5F_NAME,
+                                                                                                  const class GGS_string & in_METHOD_5F_NAME,
+                                                                                                  const class GGS_formalParameterListForGeneration & in_FORMAL_5F_ARGUMENT_5F_LIST,
+                                                                                                  const class GGS_string & in_METHOD_5F_IMPLEMENTATION
+                                                                                                  COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'semanticComponentGenerationTemplate overridingExtensionMethodImplementation'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_overridingExtensionMethodImplementation (class Compiler * inCompiler,
+                                                                                                            const class GGS_string & in_CLASS_5F_NAME,
+                                                                                                            const class GGS_string & in_METHOD_5F_NAME,
+                                                                                                            const class GGS_string & in_METHOD_5F_IMPLEMENTATION
+                                                                                                            COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'semanticComponentGenerationTemplate filewrapperDeclaration'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_filewrapperDeclaration (class Compiler * inCompiler,
+                                                                                           const class GGS_stringlist & in_FILE_5F_INDEX_5F_STRING_5F_LIST,
+                                                                                           const class GGS_stringlist & in_DIRECTORY_5F_INDEX_5F_STRING_5F_LIST,
+                                                                                           const class GGS_stringlist & in_TEXT_5F_CONTENT_5F_INDEX_5F_STRING_5F_LIST,
+                                                                                           const class GGS_stringlist & in_BINARY_5F_CONTENT_5F_INDEX_5F_STRING_5F_LIST,
+                                                                                           const class GGS_string & in_FILEWRAPPER_5F_NAME
+                                                                                           COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'semanticComponentGenerationTemplate filewrapperImplementation'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_filewrapperImplementation (class Compiler * inCompiler,
+                                                                                              const class GGS_string & in_FILEWRAPPER_5F_NAME,
+                                                                                              const class GGS_string & in_FILEWRAPPER_5F_IMPLEMENTATION
+                                                                                              COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'semanticComponentGenerationTemplate extensionGetterAsFunctionDeclaration'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionGetterAsFunctionDeclaration (class Compiler * inCompiler,
+                                                                                                         const class GGS_string & in_TYPE_5F_NAME,
+                                                                                                         const class GGS_string & in_GETTER_5F_NAME,
+                                                                                                         const class GGS_formalInputParameterListForGeneration & in_FORMAL_5F_ARGUMENT_5F_LIST,
+                                                                                                         const class GGS_string & in_RETURN_5F_TYPE_5F_IDENTIFIER
+                                                                                                         COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'semanticComponentGenerationTemplate extensionGetterAsFunctionImplementation'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionGetterAsFunctionImplementation (class Compiler * inCompiler,
+                                                                                                            const class GGS_string & in_TYPE_5F_NAME,
+                                                                                                            const class GGS_string & in_GETTER_5F_NAME,
+                                                                                                            const class GGS_string & in_FUNCTION_5F_IMPLEMENTATION
+                                                                                                            COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'semanticComponentGenerationTemplate extensionMethodAsFunctionDeclaration'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionMethodAsFunctionDeclaration (class Compiler * inCompiler,
+                                                                                                         const class GGS_string & in_TYPE_5F_NAME,
+                                                                                                         const class GGS_string & in_METHOD_5F_NAME,
+                                                                                                         const class GGS_formalParameterListForGeneration & in_FORMAL_5F_ARGUMENT_5F_LIST
+                                                                                                         COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'semanticComponentGenerationTemplate extensionMethodAsFunctionImplementation'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionMethodAsFunctionImplementation (class Compiler * inCompiler,
+                                                                                                            const class GGS_string & in_TYPE_5F_NAME,
+                                                                                                            const class GGS_string & in_METHOD_5F_NAME,
+                                                                                                            const class GGS_string & in_METHOD_5F_IMPLEMENTATION
+                                                                                                            COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'semanticComponentGenerationTemplate extensionSetterAsFunctionDeclaration'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionSetterAsFunctionDeclaration (class Compiler * inCompiler,
+                                                                                                         const class GGS_string & in_TYPE_5F_NAME,
+                                                                                                         const class GGS_string & in_MODIFIER_5F_NAME,
+                                                                                                         const class GGS_formalParameterListForGeneration & in_FORMAL_5F_ARGUMENT_5F_LIST
+                                                                                                         COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'semanticComponentGenerationTemplate functionDeclaration'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_functionDeclaration (class Compiler * inCompiler,
+                                                                                        const class GGS_string & in_FUNCTION_5F_NAME,
+                                                                                        const class GGS_formalInputParameterListForGeneration & in_FORMAL_5F_ARGUMENT_5F_LIST,
+                                                                                        const class GGS_string & in_RETURN_5F_TYPE_5F_IDENTIFIER
+                                                                                        COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'semanticComponentGenerationTemplate functionImplementation'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_functionImplementation (class Compiler * inCompiler,
+                                                                                           const class GGS_string & in_FUNCTION_5F_NAME,
+                                                                                           const class GGS_string & in_FUNCTION_5F_IMPLEMENTATION,
+                                                                                           const class GGS_formalInputParameterListForGeneration & in_FORMAL_5F_ARGUMENT_5F_LIST,
+                                                                                           const class GGS_string & in_RETURN_5F_TYPE_5F_IDENTIFIER
+                                                                                           COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'semanticComponentGenerationTemplate routineDeclaration'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_routineDeclaration (class Compiler * inCompiler,
+                                                                                       const class GGS_string & in_ROUTINE_5F_NAME,
+                                                                                       const class GGS_formalParameterListForGeneration & in_FORMAL_5F_ARGUMENT_5F_LIST
+                                                                                       COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'semanticComponentGenerationTemplate routineImplementation'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_routineImplementation (class Compiler * inCompiler,
+                                                                                          const class GGS_string & in_ROUTINE_5F_NAME,
+                                                                                          const class GGS_string & in_ROUTINE_5F_IMPLEMENTATION
+                                                                                          COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'semanticComponentGenerationTemplate onceFunctionImplementation'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_onceFunctionImplementation (class Compiler * inCompiler,
+                                                                                               const class GGS_string & in_FUNCTION_5F_NAME,
+                                                                                               const class GGS_string & in_FUNCTION_5F_IMPLEMENTATION,
+                                                                                               const class GGS_formalInputParameterListForGeneration & in_FORMAL_5F_ARGUMENT_5F_LIST,
+                                                                                               const class GGS_string & in_RETURN_5F_TYPE_5F_IDENTIFIER
+                                                                                               COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'semanticComponentGenerationTemplate filewrapperTemplateDeclaration'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_filewrapperTemplateDeclaration (class Compiler * inCompiler,
+                                                                                                   const class GGS_string & in_FILEWRAPPER_5F_NAME,
+                                                                                                   const class GGS_string & in_TEMPLATE_5F_NAME,
+                                                                                                   const class GGS_formalInputParameterListForGeneration & in_FORMAL_5F_ARGUMENT_5F_LIST
+                                                                                                   COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'semanticComponentGenerationTemplate filewrapperTemplateImplementation'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_filewrapperTemplateImplementation (class Compiler * inCompiler,
+                                                                                                      const class GGS_string & in_FILEWRAPPER_5F_NAME,
+                                                                                                      const class GGS_string & in_TEMPLATE_5F_NAME,
+                                                                                                      const class GGS_formalInputParameterListForGeneration & in_FORMAL_5F_ARGUMENT_5F_LIST,
+                                                                                                      const class GGS_stringset & in_UNUSED_5F_VAR_5F_SET,
+                                                                                                      const class GGS_bool & in_USES_5F_COLUMN_5F_MARKER,
+                                                                                                      const class GGS_string & in_GENERATED_5F_INSTRUCTION_5F_STRING
+                                                                                                      COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Routine 'generateExtensionMethodNew?&???!'
+//
+//--------------------------------------------------------------------------------------------------
+
+void routine_generateExtensionMethodNew_3F__26__3F__3F__3F__21_ (const class GGS_unifiedTypeMapEntry constinArgument0,
+                                                                 class GGS_stringset & ioArgument1,
+                                                                 const class GGS_string constinArgument2,
+                                                                 const class GGS_formalParameterListForGeneration constinArgument3,
+                                                                 const class GGS_semanticInstructionListForGeneration constinArgument4,
+                                                                 class GGS_string & outArgument5,
+                                                                 class Compiler * inCompiler
+                                                                 COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Routine 'generateProcedure?static?&???????!'
+//
+//--------------------------------------------------------------------------------------------------
+
+void routine_generateProcedure_3F_static_3F__26__3F__3F__3F__3F__3F__3F__3F__21_ (const class GGS_bool constinArgument0,
+                                                                                  const class GGS_string constinArgument1,
+                                                                                  class GGS_stringset & ioArgument2,
+                                                                                  const class GGS_formalParameterListForGeneration constinArgument3,
+                                                                                  const class GGS_semanticInstructionListForGeneration constinArgument4,
+                                                                                  const class GGS_bool constinArgument5,
+                                                                                  const class GGS_string constinArgument6,
+                                                                                  const class GGS_bool constinArgument7,
+                                                                                  const class GGS_bool constinArgument8,
+                                                                                  const class GGS_bool constinArgument9,
+                                                                                  class GGS_string & outArgument10,
+                                                                                  class Compiler * inCompiler
+                                                                                  COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Function 'initializerNameForUsefulEntitiesGraph'
+//
+//--------------------------------------------------------------------------------------------------
+
+class GGS_lstring function_initializerNameForUsefulEntitiesGraph (const class GGS_lstring & constinArgument0,
+                                                                  const class GGS_string & constinArgument1,
+                                                                  class Compiler * inCompiler
+                                                                  COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Routine 'analyzeInitializerBody?&?&???!!'
+//
+//--------------------------------------------------------------------------------------------------
+
+void routine_analyzeInitializerBody_3F__26__3F__26__3F__3F__3F__21__21_ (const class GGS_lstring constinArgument0,
+                                                                         class GGS_usefulEntitiesGraph & ioArgument1,
+                                                                         const class GGS_analysisContext constinArgument2,
+                                                                         class GGS_unifiedTypeMap & ioArgument3,
+                                                                         const class GGS_formalInputParameterListAST constinArgument4,
+                                                                         const class GGS_semanticInstructionListAST constinArgument5,
+                                                                         const class GGS_location constinArgument6,
+                                                                         class GGS_semanticInstructionListForGeneration & outArgument7,
+                                                                         class GGS_formalInputParameterListForGeneration & outArgument8,
+                                                                         class Compiler * inCompiler
+                                                                         COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Routine 'generateInitializer??&??!'
+//
+//--------------------------------------------------------------------------------------------------
+
+void routine_generateInitializer_3F__3F__26__3F__3F__21_ (const class GGS_unifiedTypeMapEntry constinArgument0,
+                                                          const class GGS_string constinArgument1,
+                                                          class GGS_stringset & ioArgument2,
+                                                          const class GGS_formalInputParameterListForGeneration constinArgument3,
+                                                          const class GGS_semanticInstructionListForGeneration constinArgument4,
+                                                          class GGS_string & outArgument5,
+                                                          class Compiler * inCompiler
+                                                          COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Routine 'handleEquatableComparableExtension&?&?acceptEquatable?acceptComparable'
+//
+//--------------------------------------------------------------------------------------------------
+
+void routine_handleEquatableComparableExtension_26__3F__26__3F_acceptEquatable_3F_acceptComparable (class GGS_equatableExtensionMap & ioArgument0,
+                                                                                                    const class GGS_lstring constinArgument1,
+                                                                                                    class GGS_typeFeatures & ioArgument2,
+                                                                                                    const class GGS_bool constinArgument3,
+                                                                                                    const class GGS_bool constinArgument4,
+                                                                                                    class Compiler * inCompiler
+                                                                                                    COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Function 'equatableNameForUsefulEntitiesGraph'
+//
+//--------------------------------------------------------------------------------------------------
+
+class GGS_lstring function_equatableNameForUsefulEntitiesGraph (const class GGS_lstring & constinArgument0,
+                                                                class Compiler * inCompiler
+                                                                COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Routine 'buildLocalVariableMapAndSignature?&?&!'
+//
+//--------------------------------------------------------------------------------------------------
+
+void routine_buildLocalVariableMapAndSignature_3F__26__3F__26__21_ (const class GGS_semanticContext constinArgument0,
+                                                                    class GGS_unifiedTypeMap & ioArgument1,
+                                                                    const class GGS_formalParameterListAST constinArgument2,
+                                                                    class GGS_localVarManager & ioArgument3,
+                                                                    class GGS_formalParameterListForGeneration & outArgument4,
+                                                                    class Compiler * inCompiler
+                                                                    COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Routine 'checkMethodSignatures????'
+//
+//--------------------------------------------------------------------------------------------------
+
+void routine_checkMethodSignatures_3F__3F__3F__3F_ (const class GGS_formalParameterListForGeneration constinArgument0,
+                                                    const class GGS_location constinArgument1,
+                                                    const class GGS_formalParameterSignature constinArgument2,
+                                                    const class GGS_location constinArgument3,
+                                                    class Compiler * inCompiler
                                                     COMMA_LOCATION_ARGS) ;
 
-//--- Indexing
-  public: static void performIndexing (Compiler * inCompiler,
-                                       const String & inSourceFilePath) ;
-
-//--- Only lexical analysis
-  public: static void performOnlyLexicalAnalysis (Compiler * inCompiler,
-                                                  const String & inSourceFilePath) ;
-
-//--- Only syntax analysis
-  public: static void performOnlySyntaxAnalysis (Compiler * inCompiler,
-                                                 const String & inSourceFilePath) ;
-
-//------------------------------------- 'style_declaration' non terminal
-//--- 'parse' label
-  public: virtual void nt_style_5F_declaration_parse (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//--- indexing
-  public: virtual void nt_style_5F_declaration_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//----------- '' label
-  public: virtual void nt_style_5F_declaration_ (GGS_lexicalStyleListAST & ioArgument0,
-                                                 Lexique_galgasScanner_34_ * inCompiler) ;
-
-//------------------------------------- 'switch_case' non terminal
-//--- 'parse' label
-  public: virtual void nt_switch_5F_case_parse (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//--- indexing
-  public: virtual void nt_switch_5F_case_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//----------- '' label
-  public: virtual void nt_switch_5F_case_ (GGS_galgasDeclarationAST & ioArgument0,
-                                           GGS__5B_lstring_5D_ & outArgument1,
-                                           GGS_switchExtractedValuesListAST & outArgument2,
-                                           Lexique_galgasScanner_34_ * inCompiler) ;
-
-//------------------------------------- 'syntax_directed_translation_result' non terminal
-//--- 'parse' label
-  public: virtual void nt_syntax_5F_directed_5F_translation_5F_result_parse (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//--- indexing
-  public: virtual void nt_syntax_5F_directed_5F_translation_5F_result_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//----------- '' label
-  public: virtual void nt_syntax_5F_directed_5F_translation_5F_result_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                                        GGS_abstractGrammarInstructionSyntaxDirectedTranslationResult & outArgument1,
-                                                                        Lexique_galgasScanner_34_ * inCompiler) ;
-
-//------------------------------------- 'syntax_instruction' non terminal
-//--- 'parse' label
-  public: virtual void nt_syntax_5F_instruction_parse (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//--- indexing
-  public: virtual void nt_syntax_5F_instruction_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//----------- '' label
-  public: virtual void nt_syntax_5F_instruction_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                  GGS_syntaxInstructionAST & outArgument1,
-                                                  Lexique_galgasScanner_34_ * inCompiler) ;
-
-//------------------------------------- 'syntax_instruction_list' non terminal
-//--- 'parse' label
-  public: virtual void nt_syntax_5F_instruction_5F_list_parse (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//--- indexing
-  public: virtual void nt_syntax_5F_instruction_5F_list_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//----------- '' label
-  public: virtual void nt_syntax_5F_instruction_5F_list_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                          GGS_syntaxInstructionList & outArgument1,
-                                                          Lexique_galgasScanner_34_ * inCompiler) ;
-
-//------------------------------------- 'syntax_rule_declaration' non terminal
-//--- 'parse' label
-  public: virtual void nt_syntax_5F_rule_5F_declaration_parse (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//--- indexing
-  public: virtual void nt_syntax_5F_rule_5F_declaration_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//----------- '' label
-  public: virtual void nt_syntax_5F_rule_5F_declaration_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                          GGS_syntaxRuleListAST & ioArgument1,
-                                                          Lexique_galgasScanner_34_ * inCompiler) ;
-
-//------------------------------------- 'syntax_rule_label' non terminal
-//--- 'parse' label
-  public: virtual void nt_syntax_5F_rule_5F_label_parse (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//--- indexing
-  public: virtual void nt_syntax_5F_rule_5F_label_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//----------- '' label
-  public: virtual void nt_syntax_5F_rule_5F_label_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                    const GGS_lstring inArgument1,
-                                                    GGS_syntaxRuleLabelListAST & ioArgument2,
-                                                    Lexique_galgasScanner_34_ * inCompiler) ;
-
-//------------------------------------- 'template_delimitor' non terminal
-//--- 'parse' label
-  public: virtual void nt_template_5F_delimitor_parse (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//--- indexing
-  public: virtual void nt_template_5F_delimitor_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//----------- '' label
-  public: virtual void nt_template_5F_delimitor_ (GGS_templateDelimitorListAST & ioArgument0,
-                                                  Lexique_galgasScanner_34_ * inCompiler) ;
-
-//------------------------------------- 'template_replacement' non terminal
-//--- 'parse' label
-  public: virtual void nt_template_5F_replacement_parse (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//--- indexing
-  public: virtual void nt_template_5F_replacement_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//----------- '' label
-  public: virtual void nt_template_5F_replacement_ (GGS_templateReplacementListAST & ioArgument0,
-                                                    Lexique_galgasScanner_34_ * inCompiler) ;
-
-//------------------------------------- 'term' non terminal
-//--- 'parse' label
-  public: virtual void nt_term_parse (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//--- indexing
-  public: virtual void nt_term_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//----------- '' label
-  public: virtual void nt_term_ (GGS_galgasDeclarationAST & ioArgument0,
-                                 GGS_semanticExpressionAST & outArgument1,
-                                 Lexique_galgasScanner_34_ * inCompiler) ;
-
-//------------------------------------- 'terminal_declaration' non terminal
-//--- 'parse' label
-  public: virtual void nt_terminal_5F_declaration_parse (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//--- indexing
-  public: virtual void nt_terminal_5F_declaration_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//----------- '' label
-  public: virtual void nt_terminal_5F_declaration_ (GGS_terminalDeclarationListAST & ioArgument0,
-                                                    Lexique_galgasScanner_34_ * inCompiler) ;
-
-//------------------------------------- 'terminal_instruction_indexing' non terminal
-//--- 'parse' label
-  public: virtual void nt_terminal_5F_instruction_5F_indexing_parse (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//--- indexing
-  public: virtual void nt_terminal_5F_instruction_5F_indexing_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//----------- '' label
-  public: virtual void nt_terminal_5F_instruction_5F_indexing_ (GGS__32_lstringlist & outArgument0,
-                                                                Lexique_galgasScanner_34_ * inCompiler) ;
-
-//------------------------------------- 'type_definition' non terminal
-//--- 'parse' label
-  public: virtual void nt_type_5F_definition_parse (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//--- indexing
-  public: virtual void nt_type_5F_definition_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//----------- '' label
-  public: virtual void nt_type_5F_definition_ (GGS_galgasDeclarationAST & ioArgument0,
-                                               GGS_lstring & outArgument1,
-                                               Lexique_galgasScanner_34_ * inCompiler) ;
-
-  public: virtual int32_t select_galgas_34_ExpressionSyntax_0 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_ExpressionSyntax_1 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_ExpressionSyntax_2 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_ExpressionSyntax_3 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_ExpressionSyntax_4 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_ExpressionSyntax_5 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_ExpressionSyntax_6 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_ExpressionSyntax_7 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_ExpressionSyntax_8 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_ExpressionSyntax_9 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_ExpressionSyntax_10 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_ExpressionSyntax_11 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_ExpressionSyntax_12 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_ExpressionSyntax_13 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_ExpressionSyntax_14 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_ExpressionSyntax_15 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_ExpressionSyntax_16 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_ExpressionSyntax_17 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_ExpressionSyntax_18 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_ExpressionSyntax_19 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_ExpressionSyntax_20 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_ExpressionSyntax_21 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_ExpressionSyntax_22 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_ExpressionSyntax_23 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_ExpressionSyntax_24 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_ExpressionSyntax_25 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_ParameterArgumentSyntax_0 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_ParameterArgumentSyntax_1 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_ParameterArgumentSyntax_2 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_ParameterArgumentSyntax_3 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_ParameterArgumentSyntax_4 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_ParameterArgumentSyntax_5 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_ParameterArgumentSyntax_6 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_ParameterArgumentSyntax_7 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_ParameterArgumentSyntax_8 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_ParameterArgumentSyntax_9 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_ParameterArgumentSyntax_10 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_ParameterArgumentSyntax_11 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_ParameterArgumentSyntax_12 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_ParameterArgumentSyntax_13 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_ParameterArgumentSyntax_14 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_ParameterArgumentSyntax_15 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_ParameterArgumentSyntax_16 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_ParameterArgumentSyntax_17 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_ParameterArgumentSyntax_18 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_ParameterArgumentSyntax_19 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_ParameterArgumentSyntax_20 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_ParameterArgumentSyntax_21 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_ParameterArgumentSyntax_22 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_InstructionsSyntax_0 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_InstructionsSyntax_1 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_InstructionsSyntax_2 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_InstructionsSyntax_3 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_InstructionsSyntax_4 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_InstructionsSyntax_5 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_InstructionsSyntax_6 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_InstructionsSyntax_7 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_InstructionsSyntax_8 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_InstructionsSyntax_9 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_InstructionsSyntax_10 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_InstructionsSyntax_11 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_InstructionsSyntax_12 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_InstructionsSyntax_13 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_InstructionsSyntax_14 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_InstructionsSyntax_15 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_InstructionsSyntax_16 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_InstructionsSyntax_17 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_InstructionsSyntax_18 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_InstructionsSyntax_19 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_InstructionsSyntax_20 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_InstructionsSyntax_21 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_InstructionsSyntax_22 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_InstructionsSyntax_23 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_InstructionsSyntax_24 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_InstructionsSyntax_25 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_InstructionsSyntax_26 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_InstructionsSyntax_27 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_InstructionsSyntax_28 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_InstructionsSyntax_29 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_InstructionsSyntax_30 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_InstructionsSyntax_31 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_InstructionsSyntax_32 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_InstructionsSyntax_33 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_InstructionsSyntax_34 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_InstructionsSyntax_35 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_InstructionsSyntax_36 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_InstructionsSyntax_37 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_InstructionsSyntax_38 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_InstructionsSyntax_39 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_InstructionsSyntax_40 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_InstructionsSyntax_41 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_InstructionsSyntax_42 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_InstructionsSyntax_43 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_InstructionsSyntax_44 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_InstructionsSyntax_45 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_InstructionsSyntax_46 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_InstructionsSyntax_47 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_InstructionsSyntax_48 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_InstructionsSyntax_49 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_InstructionsSyntax_50 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_InstructionsSyntax_51 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_InstructionsSyntax_52 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_InstructionsSyntax_53 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_InstructionsSyntax_54 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_InstructionsSyntax_55 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_InstructionsSyntax_56 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_InstructionsSyntax_57 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_InstructionsSyntax_58 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_InstructionsSyntax_59 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_InstructionsSyntax_60 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_InstructionsSyntax_61 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_InstructionsSyntax_62 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_InstructionsSyntax_63 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_InstructionsSyntax_64 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_InstructionsSyntax_65 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_InstructionsSyntax_66 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_DeclarationsSyntax_0 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_DeclarationsSyntax_1 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_DeclarationsSyntax_2 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_DeclarationsSyntax_3 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_DeclarationsSyntax_4 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_DeclarationsSyntax_5 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_DeclarationsSyntax_6 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_DeclarationsSyntax_7 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_DeclarationsSyntax_8 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_DeclarationsSyntax_9 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_DeclarationsSyntax_10 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_DeclarationsSyntax_11 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_DeclarationsSyntax_12 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_DeclarationsSyntax_13 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_DeclarationsSyntax_14 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_DeclarationsSyntax_15 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_DeclarationsSyntax_16 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_DeclarationsSyntax_17 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_DeclarationsSyntax_18 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_DeclarationsSyntax_19 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_DeclarationsSyntax_20 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_DeclarationsSyntax_21 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_DeclarationsSyntax_22 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_DeclarationsSyntax_23 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_DeclarationsSyntax_24 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_DeclarationsSyntax_25 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_DeclarationsSyntax_26 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_DeclarationsSyntax_27 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_DeclarationsSyntax_28 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_DeclarationsSyntax_29 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_DeclarationsSyntax_30 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_DeclarationsSyntax_31 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_DeclarationsSyntax_32 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_DeclarationsSyntax_33 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_DeclarationsSyntax_34 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_DeclarationsSyntax_35 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_DeclarationsSyntax_36 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_DeclarationsSyntax_37 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_DeclarationsSyntax_38 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_DeclarationsSyntax_39 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_DeclarationsSyntax_40 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_DeclarationsSyntax_41 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_DeclarationsSyntax_42 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_DeclarationsSyntax_43 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_DeclarationsSyntax_44 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_DeclarationsSyntax_45 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_DeclarationsSyntax_46 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_DeclarationsSyntax_47 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_DeclarationsSyntax_48 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_DeclarationsSyntax_49 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_DeclarationsSyntax_50 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_DeclarationsSyntax_51 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_DeclarationsSyntax_52 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_DeclarationsSyntax_53 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_DeclarationsSyntax_54 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_DeclarationsSyntax_55 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_DeclarationsSyntax_56 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_DeclarationsSyntax_57 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_DeclarationsSyntax_58 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_DeclarationsSyntax_59 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_DeclarationsSyntax_60 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_DeclarationsSyntax_61 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_DeclarationsSyntax_62 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_DeclarationsSyntax_63 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_DeclarationsSyntax_64 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_DeclarationsSyntax_65 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_DeclarationsSyntax_66 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_DeclarationsSyntax_67 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_DeclarationsSyntax_68 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_DeclarationsSyntax_69 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_DeclarationsSyntax_70 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_DeclarationsSyntax_71 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_DeclarationsSyntax_72 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_LexiqueComponentSyntax_0 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_LexiqueComponentSyntax_1 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_LexiqueComponentSyntax_2 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_LexiqueComponentSyntax_3 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_LexiqueComponentSyntax_4 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_LexiqueComponentSyntax_5 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_LexiqueComponentSyntax_6 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_LexiqueComponentSyntax_7 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_LexiqueComponentSyntax_8 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_LexiqueComponentSyntax_9 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_LexiqueComponentSyntax_10 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_LexiqueComponentSyntax_11 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_LexiqueComponentSyntax_12 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_LexiqueComponentSyntax_13 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_LexiqueComponentSyntax_14 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_LexiqueComponentSyntax_15 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_LexiqueComponentSyntax_16 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_LexiqueComponentSyntax_17 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_LexiqueComponentSyntax_18 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_LexiqueComponentSyntax_19 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_LexiqueComponentSyntax_20 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_LexiqueComponentSyntax_21 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_LexiqueComponentSyntax_22 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_LexiqueComponentSyntax_23 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_LexiqueComponentSyntax_24 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_LexiqueComponentSyntax_25 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_LexiqueComponentSyntax_26 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_OptionComponentSyntax_0 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_OptionComponentSyntax_1 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_OptionComponentSyntax_2 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_GuiComponentSyntax_0 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_GuiComponentSyntax_1 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_GuiComponentSyntax_2 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_GuiComponentSyntax_3 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_GuiComponentSyntax_4 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_GuiComponentSyntax_5 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_GuiComponentSyntax_6 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_SyntaxComponentSyntax_0 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_SyntaxComponentSyntax_1 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_SyntaxComponentSyntax_2 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_SyntaxComponentSyntax_3 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_SyntaxComponentSyntax_4 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_SyntaxComponentSyntax_5 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_SyntaxComponentSyntax_6 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_SyntaxComponentSyntax_7 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_SyntaxComponentSyntax_8 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_SyntaxComponentSyntax_9 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_SyntaxComponentSyntax_10 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_SyntaxComponentSyntax_11 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_SyntaxComponentSyntax_12 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_SyntaxComponentSyntax_13 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_SyntaxComponentSyntax_14 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_SyntaxComponentSyntax_15 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_SyntaxComponentSyntax_16 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_SyntaxComponentSyntax_17 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_SyntaxComponentSyntax_18 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_GrammarComponentSyntax_0 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_GrammarComponentSyntax_1 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_GrammarComponentSyntax_2 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_GrammarComponentSyntax_3 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_GrammarComponentSyntax_4 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_GrammarComponentSyntax_5 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_GrammarComponentSyntax_6 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_GrammarComponentSyntax_7 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_GrammarComponentSyntax_8 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_GrammarComponentSyntax_9 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_GrammarComponentSyntax_10 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_GrammarComponentSyntax_11 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_GrammarComponentSyntax_12 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_ProgramDeclarations_0 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_ProgramDeclarations_1 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_ProgramDeclarations_2 (Lexique_galgasScanner_34_ *) ;
-} ;
+//--------------------------------------------------------------------------------------------------
+//
+//Function 'getterNameForUsefulEntitiesGraph'
+//
+//--------------------------------------------------------------------------------------------------
+
+class GGS_lstring function_getterNameForUsefulEntitiesGraph (const class GGS_string & constinArgument0,
+                                                             const class GGS_lstring & constinArgument1,
+                                                             class Compiler * inCompiler
+                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
+//
+//Routine 'analyzeFunctionBody?&?&?????!!!!'
+//
+//--------------------------------------------------------------------------------------------------
+
+void routine_analyzeFunctionBody_3F__26__3F__26__3F__3F__3F__3F__3F__21__21__21__21_ (const class GGS_lstring constinArgument0,
+                                                                                      class GGS_usefulEntitiesGraph & ioArgument1,
+                                                                                      const class GGS_analysisContext constinArgument2,
+                                                                                      class GGS_unifiedTypeMap & ioArgument3,
+                                                                                      const class GGS_formalInputParameterListAST constinArgument4,
+                                                                                      const class GGS_semanticInstructionListAST constinArgument5,
+                                                                                      const class GGS_lstring constinArgument6,
+                                                                                      const class GGS_lstring constinArgument7,
+                                                                                      const class GGS_location constinArgument8,
+                                                                                      class GGS_formalInputParameterListForGeneration & outArgument9,
+                                                                                      class GGS_unifiedTypeMapEntry & outArgument10,
+                                                                                      class GGS_string & outArgument11,
+                                                                                      class GGS_semanticInstructionListForGeneration & outArgument12,
+                                                                                      class Compiler * inCompiler
+                                                                                      COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Routine 'checkGetterSignatures??????'
+//
+//--------------------------------------------------------------------------------------------------
+
+void routine_checkGetterSignatures_3F__3F__3F__3F__3F__3F_ (const class GGS_formalInputParameterListForGeneration constinArgument0,
+                                                            const class GGS_unifiedTypeMapEntry constinArgument1,
+                                                            const class GGS_location constinArgument2,
+                                                            const class GGS_functionSignature constinArgument3,
+                                                            const class GGS_unifiedTypeMapEntry constinArgument4,
+                                                            const class GGS_location constinArgument5,
+                                                            class Compiler * inCompiler
+                                                            COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Routine 'generateExtensionGetter?&?????!'
+//
+//--------------------------------------------------------------------------------------------------
+
+void routine_generateExtensionGetter_3F__26__3F__3F__3F__3F__3F__21_ (const class GGS_string constinArgument0,
+                                                                      class GGS_stringset & ioArgument1,
+                                                                      const class GGS_formalInputParameterListForGeneration constinArgument2,
+                                                                      const class GGS_semanticInstructionListForGeneration constinArgument3,
+                                                                      const class GGS_string constinArgument4,
+                                                                      const class GGS_unifiedTypeMapEntry constinArgument5,
+                                                                      const class GGS_string constinArgument6,
+                                                                      class GGS_string & outArgument7,
+                                                                      class Compiler * inCompiler
+                                                                      COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Function 'setterNameForUsefulEntitiesGraph'
+//
+//--------------------------------------------------------------------------------------------------
+
+class GGS_lstring function_setterNameForUsefulEntitiesGraph (const class GGS_string & constinArgument0,
+                                                             const class GGS_lstring & constinArgument1,
+                                                             class Compiler * inCompiler
+                                                             COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Routine 'generateExtensionSetter???&??!'
+//
+//--------------------------------------------------------------------------------------------------
+
+void routine_generateExtensionSetter_3F__3F__3F__26__3F__3F__21_ (const class GGS_string constinArgument0,
+                                                                  const class GGS_string constinArgument1,
+                                                                  const class GGS_string constinArgument2,
+                                                                  class GGS_stringset & ioArgument3,
+                                                                  const class GGS_formalParameterListForGeneration constinArgument4,
+                                                                  const class GGS_semanticInstructionListForGeneration constinArgument5,
+                                                                  class GGS_string & outArgument6,
+                                                                  class Compiler * inCompiler
+                                                                  COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Routine 'generateFunction?&??????static?const!'
+//
+//--------------------------------------------------------------------------------------------------
+
+void routine_generateFunction_3F__26__3F__3F__3F__3F__3F__3F_static_3F_const_21_ (const class GGS_string constinArgument0,
+                                                                                  class GGS_stringset & ioArgument1,
+                                                                                  const class GGS_formalInputParameterListForGeneration constinArgument2,
+                                                                                  const class GGS_semanticInstructionListForGeneration constinArgument3,
+                                                                                  const class GGS_string constinArgument4,
+                                                                                  const class GGS_unifiedTypeMapEntry constinArgument5,
+                                                                                  const class GGS_string constinArgument6,
+                                                                                  const class GGS_bool constinArgument7,
+                                                                                  const class GGS_bool constinArgument8,
+                                                                                  class GGS_string & outArgument9,
+                                                                                  class Compiler * inCompiler
+                                                                                  COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Function 'generateFewHeaderFiles'
+//
+//--------------------------------------------------------------------------------------------------
+
+class GGS_bool function_generateFewHeaderFiles (class Compiler * inCompiler
+                                                COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Routine 'compileAllGuiComponentFromASTGalgas3??!'
+//
+//--------------------------------------------------------------------------------------------------
+
+void routine_compileAllGuiComponentFromASTGalgas_33__3F__3F__21_ (const class GGS_galgasGUIComponentListAST constinArgument0,
+                                                                  const class GGS_semanticContext constinArgument1,
+                                                                  class GGS_optionComponentMapForGeneration & outArgument2,
+                                                                  class Compiler * inCompiler
+                                                                  COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Routine 'guiComponentSemanticAnalysis??&'
+//
+//--------------------------------------------------------------------------------------------------
+
+void routine_guiComponentSemanticAnalysis_3F__3F__26_ (const class GGS_galgasGUIComponentListAST_2E_element constinArgument0,
+                                                       const class GGS_semanticContext constinArgument1,
+                                                       class GGS_optionComponentMapForGeneration & ioArgument2,
+                                                       class Compiler * inCompiler
+                                                       COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Routine 'generateAllGuiComponentsGalgas3???&swift'
+//
+//--------------------------------------------------------------------------------------------------
+
+void routine_generateAllGuiComponentsGalgas_33__3F__3F__3F__26_swift (const class GGS_optionComponentMapForGeneration constinArgument0,
+                                                                      const class GGS_string constinArgument1,
+                                                                      const class GGS_bool constinArgument2,
+                                                                      class GGS_stringlist & ioArgument3,
+                                                                      class Compiler * inCompiler
+                                                                      COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper 'guiGenerationTemplates'
+//
+//--------------------------------------------------------------------------------------------------
+
+
+//--------------------------------------------------------------------------------------------------
+
+
+//--------------------------------------------------------------------------------------------------
+
+
+//--------------------------------------------------------------------------------------------------
+
+extern const cDirectoryWrapper gWrapperDirectory_0_guiGenerationTemplates ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'guiGenerationTemplates swiftui_gui_implementation'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_string filewrapperTemplate_guiGenerationTemplates_swiftui_5F_gui_5F_implementation (class Compiler * inCompiler,
+                                                                                        const class GGS_guiAnalysisContext & in_GUI_5F_CONTEXT,
+                                                                                        const class GGS_bool & in_QUIET_5F_OUTPUT_5F_BY_5F_DEFAULT
+                                                                                        COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Function 'optionNameForUsefulEntitiesGraph'
+//
+//--------------------------------------------------------------------------------------------------
+
+class GGS_lstring function_optionNameForUsefulEntitiesGraph (const class GGS_lstring & constinArgument0,
+                                                             class Compiler * inCompiler
+                                                             COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper 'optionGenerationTemplates'
+//
+//--------------------------------------------------------------------------------------------------
+
+
+//--------------------------------------------------------------------------------------------------
+
+
+//--------------------------------------------------------------------------------------------------
+
+
+//--------------------------------------------------------------------------------------------------
+
+extern const cDirectoryWrapper gWrapperDirectory_0_optionGenerationTemplates ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'optionGenerationTemplates optionHeaderZone3'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_string filewrapperTemplate_optionGenerationTemplates_optionHeaderZone_33_ (class Compiler * inCompiler,
+                                                                               const class GGS_string & in_OPTION_5F_COMPONENT_5F_NAME,
+                                                                               const class GGS_commandLineOptionSortedList & in_BOOL_5F_OPTION_5F_SORTED_5F_LIST,
+                                                                               const class GGS_commandLineOptionSortedList & in_UINT_5F_OPTION_5F_SORTED_5F_LIST,
+                                                                               const class GGS_commandLineOptionSortedList & in_STRING_5F_OPTION_5F_SORTED_5F_LIST,
+                                                                               const class GGS_commandLineOptionSortedList & in_STRING_5F_LIST_5F_OPTION_5F_SORTED_5F_LIST
+                                                                               COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'optionGenerationTemplates optionImplementationGalgas3'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_string filewrapperTemplate_optionGenerationTemplates_optionImplementationGalgas_33_ (class Compiler * inCompiler,
+                                                                                         const class GGS_string & in_OPTION_5F_COMPONENT_5F_NAME,
+                                                                                         const class GGS_commandLineOptionSortedList & in_BOOL_5F_OPTION_5F_SORTED_5F_LIST,
+                                                                                         const class GGS_commandLineOptionSortedList & in_UINT_5F_OPTION_5F_SORTED_5F_LIST,
+                                                                                         const class GGS_commandLineOptionSortedList & in_STRING_5F_OPTION_5F_SORTED_5F_LIST,
+                                                                                         const class GGS_commandLineOptionSortedList & in_STRING_5F_LIST_5F_OPTION_5F_SORTED_5F_LIST
+                                                                                         COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'optionGenerationTemplates optionImplementationSwiftUI'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_string filewrapperTemplate_optionGenerationTemplates_optionImplementationSwiftUI (class Compiler * inCompiler,
+                                                                                      const class GGS_string & in_OPTION_5F_HEADER_5F_FILE_5F_NAME,
+                                                                                      const class GGS_string & in_OPTION_5F_COMPONENT_5F_NAME,
+                                                                                      const class GGS_commandLineOptionSortedList & in_BOOL_5F_OPTION_5F_SORTED_5F_LIST,
+                                                                                      const class GGS_commandLineOptionSortedList & in_UINT_5F_OPTION_5F_SORTED_5F_LIST,
+                                                                                      const class GGS_commandLineOptionSortedList & in_STRING_5F_OPTION_5F_SORTED_5F_LIST,
+                                                                                      const class GGS_commandLineOptionSortedList & in_STRING_5F_LIST_5F_OPTION_5F_SORTED_5F_LIST
+                                                                                      COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Function 'procedureNameForUsefulEntitiesGraph'
+//
+//--------------------------------------------------------------------------------------------------
+
+class GGS_lstring function_procedureNameForUsefulEntitiesGraph (const class GGS_lstring & constinArgument0,
+                                                                class Compiler * inCompiler
+                                                                COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Function 'syntaxSignatureOfInstructionList'
+//
+//--------------------------------------------------------------------------------------------------
+
+class GGS_semanticInstructionListForGeneration function_syntaxSignatureOfInstructionList (const class GGS_string & constinArgument0,
+                                                                                          const class GGS_semanticInstructionListForGeneration & constinArgument1,
+                                                                                          class Compiler * inCompiler
+                                                                                          COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Function 'compareSyntaxSignature'
+//
+//--------------------------------------------------------------------------------------------------
+
+class GGS_bool function_compareSyntaxSignature (const class GGS_semanticInstructionListForGeneration & constinArgument0,
+                                                const class GGS_semanticInstructionListForGeneration & constinArgument1,
+                                                const class GGS_location & constinArgument2,
+                                                class Compiler * inCompiler
+                                                COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper 'targetGalgas3GenerationFileWrapper'
+//
+//--------------------------------------------------------------------------------------------------
+
+extern const char * gWrapperFileContent_0_targetGalgas_33_GenerationFileWrapper ;
+extern const char * gWrapperFileContent_1_targetGalgas_33_GenerationFileWrapper ;
+
+//--------------------------------------------------------------------------------------------------
+
+
+//--------------------------------------------------------------------------------------------------
+
+extern const cRegularFileWrapper gWrapperFile_0_targetGalgas_33_GenerationFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_1_targetGalgas_33_GenerationFileWrapper ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const cDirectoryWrapper gWrapperDirectory_0_targetGalgas_33_GenerationFileWrapper ;
+extern const cDirectoryWrapper gWrapperDirectory_1_targetGalgas_33_GenerationFileWrapper ;
+extern const cDirectoryWrapper gWrapperDirectory_2_targetGalgas_33_GenerationFileWrapper ;
+extern const cDirectoryWrapper gWrapperDirectory_3_targetGalgas_33_GenerationFileWrapper ;
+extern const cDirectoryWrapper gWrapperDirectory_4_targetGalgas_33_GenerationFileWrapper ;
+extern const cDirectoryWrapper gWrapperDirectory_5_targetGalgas_33_GenerationFileWrapper ;
+extern const cDirectoryWrapper gWrapperDirectory_6_targetGalgas_33_GenerationFileWrapper ;
+extern const cDirectoryWrapper gWrapperDirectory_7_targetGalgas_33_GenerationFileWrapper ;
+extern const cDirectoryWrapper gWrapperDirectory_8_targetGalgas_33_GenerationFileWrapper ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'targetGalgas3GenerationFileWrapper clean_macosx'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_clean_5F_macosx (class Compiler * inCompiler,
+                                                                                      const class GGS_string & in_PROJECT_5F_NAME
+                                                                                      COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'targetGalgas3GenerationFileWrapper build_macosx'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_macosx (class Compiler * inCompiler,
+                                                                                      const class GGS_string & in_PROJECT_5F_NAME,
+                                                                                      const class GGS_string & in_BUILD_5F_DIR_5F_NAME
+                                                                                      COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'targetGalgas3GenerationFileWrapper build_verbose_macosx'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_verbose_5F_macosx (class Compiler * inCompiler
+                                                                                                 COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'targetGalgas3GenerationFileWrapper build_debug_macosx'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_debug_5F_macosx (class Compiler * inCompiler
+                                                                                               COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'targetGalgas3GenerationFileWrapper build_release_macosx'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_release_5F_macosx (class Compiler * inCompiler
+                                                                                                 COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'targetGalgas3GenerationFileWrapper build_lto_macosx'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_lto_5F_macosx (class Compiler * inCompiler
+                                                                                             COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'targetGalgas3GenerationFileWrapper clean_unix'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_clean_5F_unix (class Compiler * inCompiler,
+                                                                                    const class GGS_string & in_PROJECT_5F_NAME
+                                                                                    COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'targetGalgas3GenerationFileWrapper build_unix'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_unix (class Compiler * inCompiler,
+                                                                                    const class GGS_string & in_PROJECT_5F_NAME,
+                                                                                    const class GGS_string & in_BUILD_5F_DIR_5F_NAME
+                                                                                    COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'targetGalgas3GenerationFileWrapper build_verbose_unix'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_verbose_5F_unix (class Compiler * inCompiler
+                                                                                               COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'targetGalgas3GenerationFileWrapper build_debug_unix'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_debug_5F_unix (class Compiler * inCompiler
+                                                                                             COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'targetGalgas3GenerationFileWrapper build_release_unix'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_release_5F_unix (class Compiler * inCompiler
+                                                                                               COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'targetGalgas3GenerationFileWrapper build_lto_unix'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_lto_5F_unix (class Compiler * inCompiler
+                                                                                           COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'targetGalgas3GenerationFileWrapper install_unix'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_install_5F_unix (class Compiler * inCompiler
+                                                                                      COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'targetGalgas3GenerationFileWrapper clean_x86linux32_on_mac'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_clean_5F_x_38__36_linux_33__32__5F_on_5F_mac (class Compiler * inCompiler,
+                                                                                                                   const class GGS_string & in_PROJECT_5F_NAME
+                                                                                                                   COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'targetGalgas3GenerationFileWrapper build_x86linux32_on_mac'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_x_38__36_linux_33__32__5F_on_5F_mac (class Compiler * inCompiler,
+                                                                                                                   const class GGS_string & in_PROJECT_5F_NAME,
+                                                                                                                   const class GGS_string & in_BUILD_5F_DIR_5F_NAME
+                                                                                                                   COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'targetGalgas3GenerationFileWrapper build_verbose_x86linux32_on_mac'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_verbose_5F_x_38__36_linux_33__32__5F_on_5F_mac (class Compiler * inCompiler
+                                                                                                                              COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'targetGalgas3GenerationFileWrapper build_debug_x86linux32_on_mac'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_debug_5F_x_38__36_linux_33__32__5F_on_5F_mac (class Compiler * inCompiler
+                                                                                                                            COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'targetGalgas3GenerationFileWrapper build_release_x86linux32_on_mac'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_release_5F_x_38__36_linux_33__32__5F_on_5F_mac (class Compiler * inCompiler
+                                                                                                                              COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'targetGalgas3GenerationFileWrapper build_lto_x86linux32_on_mac'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_lto_5F_x_38__36_linux_33__32__5F_on_5F_mac (class Compiler * inCompiler
+                                                                                                                          COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'targetGalgas3GenerationFileWrapper clean_x86linux64_on_mac'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_clean_5F_x_38__36_linux_36__34__5F_on_5F_mac (class Compiler * inCompiler,
+                                                                                                                   const class GGS_string & in_PROJECT_5F_NAME
+                                                                                                                   COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'targetGalgas3GenerationFileWrapper build_x86linux64_on_mac'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_x_38__36_linux_36__34__5F_on_5F_mac (class Compiler * inCompiler,
+                                                                                                                   const class GGS_string & in_PROJECT_5F_NAME,
+                                                                                                                   const class GGS_string & in_BUILD_5F_DIR_5F_NAME
+                                                                                                                   COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'targetGalgas3GenerationFileWrapper build_verbose_x86linux64_on_mac'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_verbose_5F_x_38__36_linux_36__34__5F_on_5F_mac (class Compiler * inCompiler
+                                                                                                                              COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'targetGalgas3GenerationFileWrapper build_debug_x86linux64_on_mac'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_debug_5F_x_38__36_linux_36__34__5F_on_5F_mac (class Compiler * inCompiler
+                                                                                                                            COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'targetGalgas3GenerationFileWrapper build_release_x86linux64_on_mac'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_release_5F_x_38__36_linux_36__34__5F_on_5F_mac (class Compiler * inCompiler
+                                                                                                                              COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'targetGalgas3GenerationFileWrapper build_lto_x86linux64_on_mac'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_lto_5F_x_38__36_linux_36__34__5F_on_5F_mac (class Compiler * inCompiler
+                                                                                                                          COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'targetGalgas3GenerationFileWrapper clean_win32_on_mac'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_clean_5F_win_33__32__5F_on_5F_mac (class Compiler * inCompiler,
+                                                                                                        const class GGS_string & in_PROJECT_5F_NAME
+                                                                                                        COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'targetGalgas3GenerationFileWrapper build_win32_on_mac'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_win_33__32__5F_on_5F_mac (class Compiler * inCompiler,
+                                                                                                        const class GGS_string & in_PROJECT_5F_NAME,
+                                                                                                        const class GGS_string & in_BUILD_5F_DIR_5F_NAME
+                                                                                                        COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'targetGalgas3GenerationFileWrapper build_verbose_win32_on_mac'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_verbose_5F_win_33__32__5F_on_5F_mac (class Compiler * inCompiler
+                                                                                                                   COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'targetGalgas3GenerationFileWrapper build_debug_win32_on_mac'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_debug_5F_win_33__32__5F_on_5F_mac (class Compiler * inCompiler
+                                                                                                                 COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'targetGalgas3GenerationFileWrapper build_release_win32_on_mac'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_release_5F_win_33__32__5F_on_5F_mac (class Compiler * inCompiler
+                                                                                                                   COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'targetGalgas3GenerationFileWrapper build_lto_win32_on_mac'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_lto_5F_win_33__32__5F_on_5F_mac (class Compiler * inCompiler
+                                                                                                               COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'targetGalgas3GenerationFileWrapper clean_arm64_linux_on_mac'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_clean_5F_arm_36__34__5F_linux_5F_on_5F_mac (class Compiler * inCompiler,
+                                                                                                                 const class GGS_string & in_PROJECT_5F_NAME
+                                                                                                                 COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'targetGalgas3GenerationFileWrapper build_arm64_linux_on_mac'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_arm_36__34__5F_linux_5F_on_5F_mac (class Compiler * inCompiler,
+                                                                                                                 const class GGS_string & in_PROJECT_5F_NAME,
+                                                                                                                 const class GGS_string & in_BUILD_5F_DIR_5F_NAME
+                                                                                                                 COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'targetGalgas3GenerationFileWrapper build_verbose_arm64_linux_on_mac'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_verbose_5F_arm_36__34__5F_linux_5F_on_5F_mac (class Compiler * inCompiler
+                                                                                                                            COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'targetGalgas3GenerationFileWrapper build_debug_arm64_linux_on_mac'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_debug_5F_arm_36__34__5F_linux_5F_on_5F_mac (class Compiler * inCompiler
+                                                                                                                          COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'targetGalgas3GenerationFileWrapper build_release_arm64_linux_on_mac'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_release_5F_arm_36__34__5F_linux_5F_on_5F_mac (class Compiler * inCompiler
+                                                                                                                            COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'targetGalgas3GenerationFileWrapper build_lto_arm64_linux_on_mac'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_lto_5F_arm_36__34__5F_linux_5F_on_5F_mac (class Compiler * inCompiler
+                                                                                                                        COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'targetGalgas3GenerationFileWrapper codeblocks_project'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_codeblocks_5F_project (class Compiler * inCompiler,
+                                                                                            const class GGS_string & in_PROJECT_5F_NAME,
+                                                                                            const class GGS_stringlist & in_TOOL_5F_CPP_5F_FILE_5F_LIST,
+                                                                                            const class GGS_string & in_LIBPM_5F_PATH,
+                                                                                            const class GGS_stringlist & in_HAND_5F_CODED_5F_SOURCE_5F_TOOL_5F_FILE_5F_LIST,
+                                                                                            const class GGS_string & in_HAND_5F_CODED_5F_SOURCE_5F_TOOL_5F_DIRECTORY,
+                                                                                            const class GGS_bool & in_GENERATE_5F_FOR_5F_WINDOWS,
+                                                                                            const class GGS_string & in_PLATFORM,
+                                                                                            const class GGS_bool & in_VERBOSE_5F_OPTION,
+                                                                                            const class GGS_string & in_BUILD_5F_DIR_5F_NAME
+                                                                                            COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'targetGalgas3GenerationFileWrapper makefile_info_plist'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_makefile_5F_info_5F_plist (class Compiler * inCompiler,
+                                                                                                const class GGS_string & in_PROJECT_5F_NAME,
+                                                                                                const class GGS_string & in_APPLICATION_5F_BUNDLE_5F_BASE,
+                                                                                                const class GGS_string & in_VERSION_5F_STRING,
+                                                                                                const class GGS_stringset & in_HANDLED_5F_EXTENSION_5F_SET,
+                                                                                                const class GGS_string & in_MACOSX_5F_DEPLOYMENT_5F_TARGET,
+                                                                                                const class GGS_string & in_DOCUMENT_5F_CLASS
+                                                                                                COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'targetGalgas3GenerationFileWrapper makefile_build_xcode'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_makefile_5F_build_5F_xcode (class Compiler * inCompiler
+                                                                                                 COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'targetGalgas3GenerationFileWrapper makefile_info_plist_strings'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_makefile_5F_info_5F_plist_5F_strings (class Compiler * inCompiler,
+                                                                                                           const class GGS_string & in_PROJECT_5F_NAME
+                                                                                                           COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'targetGalgas3GenerationFileWrapper json_file_list'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_json_5F_file_5F_list (class Compiler * inCompiler,
+                                                                                           const class GGS_stringset & in_HAND_5F_CODED_5F_SOURCE_5F_DIR_5F_SET,
+                                                                                           const class GGS_stringlist & in_HAND_5F_CODED_5F_SOURCE_5F_FILE_5F_LIST,
+                                                                                           const class GGS_stringlist & in_MAKEFILE_5F_FILE_5F_LIST,
+                                                                                           const class GGS_stringlist & in_TOOL_5F_LINK_5F_LIST,
+                                                                                           const class GGS_string & in_LIBPM_5F_DIRECTORY_5F_PATH,
+                                                                                           const class GGS_string & in_RELATIVE_5F_BUILD_5F_DIR
+                                                                                           COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'targetGalgas3GenerationFileWrapper project_header'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_project_5F_header (class Compiler * inCompiler,
+                                                                                        const class GGS_string & in_VERSION_5F_STRING
+                                                                                        COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Routine 'generateGalgasCodeBlocksWindowsTarget??buildDirName???libpmPath???'
+//
+//--------------------------------------------------------------------------------------------------
+
+void routine_generateGalgasCodeBlocksWindowsTarget_3F__3F_buildDirName_3F__3F__3F_libpmPath_3F__3F__3F_ (const class GGS_string constinArgument0,
+                                                                                                         const class GGS_string constinArgument1,
+                                                                                                         const class GGS_string constinArgument2,
+                                                                                                         const class GGS_stringlist constinArgument3,
+                                                                                                         const class GGS_string constinArgument4,
+                                                                                                         const class GGS_stringlist constinArgument5,
+                                                                                                         const class GGS_string constinArgument6,
+                                                                                                         const class GGS_bool constinArgument7,
+                                                                                                         class Compiler * inCompiler
+                                                                                                         COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Routine 'generateGalgasCodeBlocksLinuxI686Target??buildDirName??????'
+//
+//--------------------------------------------------------------------------------------------------
+
+void routine_generateGalgasCodeBlocksLinuxI_36__38__36_Target_3F__3F_buildDirName_3F__3F__3F__3F__3F__3F_ (const class GGS_string constinArgument0,
+                                                                                                           const class GGS_string constinArgument1,
+                                                                                                           const class GGS_string constinArgument2,
+                                                                                                           const class GGS_stringlist constinArgument3,
+                                                                                                           const class GGS_string constinArgument4,
+                                                                                                           const class GGS_stringlist constinArgument5,
+                                                                                                           const class GGS_string constinArgument6,
+                                                                                                           const class GGS_bool constinArgument7,
+                                                                                                           class Compiler * inCompiler
+                                                                                                           COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Routine 'generateGalgasCodeBlocksLinuxX86_64Target??buildDirName??????'
+//
+//--------------------------------------------------------------------------------------------------
+
+void routine_generateGalgasCodeBlocksLinuxX_38__36__5F__36__34_Target_3F__3F_buildDirName_3F__3F__3F__3F__3F__3F_ (const class GGS_string constinArgument0,
+                                                                                                                   const class GGS_string constinArgument1,
+                                                                                                                   const class GGS_string constinArgument2,
+                                                                                                                   const class GGS_stringlist constinArgument3,
+                                                                                                                   const class GGS_string constinArgument4,
+                                                                                                                   const class GGS_stringlist constinArgument5,
+                                                                                                                   const class GGS_string constinArgument6,
+                                                                                                                   const class GGS_bool constinArgument7,
+                                                                                                                   class Compiler * inCompiler
+                                                                                                                   COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Routine 'generateMakefileMinGWOnMacOSXTarget??buildDirName?'
+//
+//--------------------------------------------------------------------------------------------------
+
+void routine_generateMakefileMinGWOnMacOSXTarget_3F__3F_buildDirName_3F_ (const class GGS_string constinArgument0,
+                                                                          const class GGS_string constinArgument1,
+                                                                          const class GGS_string constinArgument2,
+                                                                          class Compiler * inCompiler
+                                                                          COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Routine 'generateMakefileUnixTarget??buildDirName?'
+//
+//--------------------------------------------------------------------------------------------------
+
+void routine_generateMakefileUnixTarget_3F__3F_buildDirName_3F_ (const class GGS_string constinArgument0,
+                                                                 const class GGS_string constinArgument1,
+                                                                 const class GGS_string constinArgument2,
+                                                                 class Compiler * inCompiler
+                                                                 COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Routine 'generateMakefileMacTarget??buildDirName?'
+//
+//--------------------------------------------------------------------------------------------------
+
+void routine_generateMakefileMacTarget_3F__3F_buildDirName_3F_ (const class GGS_string constinArgument0,
+                                                                const class GGS_string constinArgument1,
+                                                                const class GGS_string constinArgument2,
+                                                                class Compiler * inCompiler
+                                                                COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Routine 'generateMakefileLinux32OnMacOSXTarget??buildDirName?'
+//
+//--------------------------------------------------------------------------------------------------
+
+void routine_generateMakefileLinux_33__32_OnMacOSXTarget_3F__3F_buildDirName_3F_ (const class GGS_string constinArgument0,
+                                                                                  const class GGS_string constinArgument1,
+                                                                                  const class GGS_string constinArgument2,
+                                                                                  class Compiler * inCompiler
+                                                                                  COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Routine 'generateMakefileLinux64OnMacOSXTarget??buildDirName?'
+//
+//--------------------------------------------------------------------------------------------------
+
+void routine_generateMakefileLinux_36__34_OnMacOSXTarget_3F__3F_buildDirName_3F_ (const class GGS_string constinArgument0,
+                                                                                  const class GGS_string constinArgument1,
+                                                                                  const class GGS_string constinArgument2,
+                                                                                  class Compiler * inCompiler
+                                                                                  COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Routine 'generateArm64LinuxMakefileTarget??buildDirName?'
+//
+//--------------------------------------------------------------------------------------------------
+
+void routine_generateArm_36__34_LinuxMakefileTarget_3F__3F_buildDirName_3F_ (const class GGS_string constinArgument0,
+                                                                             const class GGS_string constinArgument1,
+                                                                             const class GGS_string constinArgument2,
+                                                                             class Compiler * inCompiler
+                                                                             COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Routine 'updateGalgasTargets?absoluteBuildDir?buildDirName??????????appProductFileList?swiftAppProductFileList????&?'
+//
+//--------------------------------------------------------------------------------------------------
+
+void routine_updateGalgasTargets_3F_absoluteBuildDir_3F_buildDirName_3F__3F__3F__3F__3F__3F__3F__3F__3F__3F_appProductFileList_3F_swiftAppProductFileList_3F__3F__3F__3F__26__3F_ (const class GGS_string constinArgument0,
+                                                                                                                                                                                   const class GGS_string constinArgument1,
+                                                                                                                                                                                   const class GGS_string constinArgument2,
+                                                                                                                                                                                   const class GGS_string constinArgument3,
+                                                                                                                                                                                   const class GGS_location constinArgument4,
+                                                                                                                                                                                   const class GGS_string constinArgument5,
+                                                                                                                                                                                   const class GGS_projectQualifiedFeatureMap constinArgument6,
+                                                                                                                                                                                   const class GGS_lstringlist constinArgument7,
+                                                                                                                                                                                   const class GGS_bool constinArgument8,
+                                                                                                                                                                                   const class GGS_stringlist constinArgument9,
+                                                                                                                                                                                   const class GGS_stringlist constinArgument10,
+                                                                                                                                                                                   const class GGS_stringlist constinArgument11,
+                                                                                                                                                                                   const class GGS_stringlist constinArgument12,
+                                                                                                                                                                                   const class GGS_stringlist constinArgument13,
+                                                                                                                                                                                   const class GGS_stringlist constinArgument14,
+                                                                                                                                                                                   const class GGS_string constinArgument15,
+                                                                                                                                                                                   const class GGS_stringset constinArgument16,
+                                                                                                                                                                                   class GGS_stringset & ioArgument17,
+                                                                                                                                                                                   const class GGS_stringlist constinArgument18,
+                                                                                                                                                                                   class Compiler * inCompiler
+                                                                                                                                                                                   COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Routine 'updateLIBPMatPath?'
+//
+//--------------------------------------------------------------------------------------------------
+
+void routine_updateLIBPMatPath_3F_ (const class GGS_string constinArgument0,
+                                    class Compiler * inCompiler
+                                    COMMA_LOCATION_ARGS) ;
+

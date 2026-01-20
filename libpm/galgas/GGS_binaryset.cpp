@@ -615,7 +615,7 @@ GGS_uint_36__34_list GGS_binaryset::getter_uint_36__34_ValueList (const GGS_uint
   if (isValid () && inVariableCount.isValid ()) {
     GenericUniqueArray <uint64_t> valuesArray ;
     mBDD.buildValue64Array (valuesArray, inVariableCount.uintValue ()) ;
-    result = GGS_uint_36__34_list::class_func_emptyList (THERE) ;
+    result = GGS_uint_36__34_list::init (nullptr COMMA_THERE) ;
     for (int32_t i=0 ; i<valuesArray.count () ; i++) {
       const uint64_t v = valuesArray (i COMMA_HERE) ;
       result.addAssignOperation (GGS_uint_36__34_ (v) COMMA_HERE) ;
@@ -634,7 +634,7 @@ GGS_stringlist GGS_binaryset::getter_stringValueListWithNameList (const GGS_uint
   if (isValid () && inVariableCount.isValid () && inStringList.isValid ()) {
     GenericUniqueArray <uint64_t> valuesArray ;
     mBDD.buildValue64Array (valuesArray, inVariableCount.uintValue ()) ;
-    result = GGS_stringlist::class_func_emptyList (THERE) ;
+    result = GGS_stringlist::init (nullptr COMMA_THERE) ;
     for (int32_t i=0 ; i<valuesArray.count () ; i++) {
       const uint32_t v = (uint32_t) (valuesArray (i COMMA_HERE) & UINT32_MAX) ;
       GGS_uint object = GGS_uint (v) ;
@@ -664,7 +664,7 @@ GGS_stringlist GGS_binaryset::getter_compressedStringValueList (const GGS_uint &
     }else{
       GenericUniqueArray <String> valuesArray ;
       mBDD.buildCompressedBigEndianStringValueArray (valuesArray, variableCount COMMA_THERE) ;
-      result = GGS_stringlist::class_func_emptyList (THERE) ;
+      result = GGS_stringlist::init (nullptr COMMA_THERE) ;
       for (int32_t i=0 ; i<valuesArray.count () ; i++) {
         const String v = valuesArray (i COMMA_HERE) ;
         result.addAssignOperation (GGS_string (v) COMMA_HERE) ;
@@ -682,7 +682,7 @@ GGS_stringlist GGS_binaryset::getter_stringValueList (const GGS_uint & inVariabl
   if (isValid () && inVariableCount.isValid ()) {
     GenericUniqueArray <String> valuesArray ;
     mBDD.buildBigEndianStringValueArray (valuesArray, inVariableCount.uintValue ()) ;
-    result = GGS_stringlist::class_func_emptyList (THERE) ;
+    result = GGS_stringlist::init (nullptr COMMA_THERE) ;
     for (int32_t i=0 ; i<valuesArray.count () ; i++) {
       const String v = valuesArray (i COMMA_HERE) ;
       result.addAssignOperation (GGS_string (v) COMMA_HERE) ;

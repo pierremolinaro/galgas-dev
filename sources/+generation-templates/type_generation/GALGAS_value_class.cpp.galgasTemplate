@@ -62,40 +62,6 @@ GGS_%!TYPE_IDENTIFIER%::GGS_%!TYPE_IDENTIFIER% (const cPtr_%!TYPE_IDENTIFIER% * 
   macroNullOrValidSharedObject (inSourcePtr, cPtr_%!TYPE_IDENTIFIER%) ;
 }
 %
-if (not IS_ABSTRACT) & ([ALL_PROPERTY_LIST count] == 0) then
-  %//--------------------------------------------------------------------------------------------------\n\n%
-  %GGS_%!TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::class_func_new (LOCATION_ARGS) {\n%
-  %  GGS_%!TYPE_IDENTIFIER% result ;\n%
-  %  macroMyNew (result.mObjectPtr, cPtr_%!TYPE_IDENTIFIER% (THERE)) ;\n%
-  %  return result ;\n%
-  %}\n\n%
-end
-
-if (not IS_ABSTRACT) & ([ALL_PROPERTY_LIST count] > 0) then
-  %//--------------------------------------------------------------------------------------------------\n\n%
-  %GGS_%!TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::class_func_new (%?^
-  for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in ALL_PROPERTY_LIST do
-    %const GGS_%![mPropertyTypeEntry identifierRepresentation]% & inAttribute_%![mPropertyName identifierRepresentation]
-    %,\n%!^
-  end
-  %Compiler * inCompiler%
-  %\n%!^%COMMA_LOCATION_ARGS) {
-  GGS_%!TYPE_IDENTIFIER% result ;
-  if (%
-    for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in ALL_PROPERTY_LIST
-      do %inAttribute_%![mPropertyName identifierRepresentation]%.isValid ()%
-      between % && %
-    end
-  %) {
-    macroMyNew (result.mObjectPtr, cPtr_%!TYPE_IDENTIFIER% (%
-    for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in ALL_PROPERTY_LIST
-      do %inAttribute_%![mPropertyName identifierRepresentation]%, %
-    end
-    %inCompiler COMMA_THERE)) ;\n%
-  %  }\n%
-  %  return result ;\n%
-  %}\n\n%
-end
 
 for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in CURRENT_PROPERTY_LIST do
   %//--------------------------------------------------------------------------------------------------\n\n%

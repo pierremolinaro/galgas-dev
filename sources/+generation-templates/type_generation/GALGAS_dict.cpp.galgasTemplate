@@ -8,12 +8,6 @@ GGS_%!TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::builtDictionary (LOCATION_ARGS) {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_%!TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::class_func_emptyDict (LOCATION_ARGS) {
-  return GGS_%!TYPE_IDENTIFIER%::builtDictionary (THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 GGS_%!TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::init (Compiler * COMMA_LOCATION_ARGS) {
   return GGS_%!TYPE_IDENTIFIER%::builtDictionary (THERE) ;
 }

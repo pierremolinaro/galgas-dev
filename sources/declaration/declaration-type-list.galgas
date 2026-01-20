@@ -208,13 +208,6 @@ override method @listDeclarationAST enterDeclarationInSemanticContext
   end
 //--- Class functions
   var @classFunctionMap classFunctionMap = @()
-  enterClassFunctionWithoutArgument (
-    !?classFunctionMap
-    !?ioTypeMap
-    !name:"emptyList"
-    !resultTypeName:self.mListTypeName.string
-    !hasLexiqueArg:false
-  )
   [!?classFunctionMap insertKey
     !@lstring {!"listWithValue" !@location.here}
     !constructorAttributeTypeList

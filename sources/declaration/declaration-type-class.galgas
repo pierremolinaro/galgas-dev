@@ -355,16 +355,6 @@ final class @classDeclarationAST : @semanticDeclarationAST {
         : "'" + property.name + "' is the name of a prefefined or a user defined getter"
       end
     end
-  //--- Class functions
-    var @classFunctionMap classFunctionMap = @()
-    if not self.mIsAbstract then
-      [!?classFunctionMap insertKey
-        !@lstring {!"new" !@location.here}
-        !synthetizedInitializerArgumentList
-        !true
-        !classIndex
-      ]
-    end
   //--- Typed attribute list
     var @typedPropertyList currentClassTypedPropertyList = @()
     var @typedPropertyList allTypedAttributeList = inheritedTypedPropertyList
@@ -458,7 +448,7 @@ final class @classDeclarationAST : @semanticDeclarationAST {
       !propertyMap: attributeMap
       !currentTypedPropertyList: currentClassTypedPropertyList
       !initializerMap: initializerMap
-      !classFunctionMap: classFunctionMap
+      !classFunctionMap: @()
       !getterMap: getterMap
       !setterMap: setterMap
       !instanceMethodMap: instanceMethodMap
