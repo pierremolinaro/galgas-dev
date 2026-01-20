@@ -21,7 +21,6 @@ fileprivate let errorOnGetterCallWithNoArgument_PREFKEY = "galgas_cli_options:er
 fileprivate let errorOldStyleCollectionInitializer_PREFKEY = "galgas_cli_options:errorOldStyleCollectionInitializer"
 fileprivate let errorOldStyleLocalVarDeclaration_PREFKEY = "galgas_cli_options:errorOldStyleLocalVarDeclaration"
 fileprivate let errorOldStylePropertyDeclaration_PREFKEY = "galgas_cli_options:errorOldStylePropertyDeclaration"
-fileprivate let errorUsingNewInsteadOfInit_PREFKEY = "galgas_cli_options:errorUsingNewInsteadOfInit"
 fileprivate let generateManyFiles_PREFKEY = "galgas_cli_options:generateManyFiles"
 fileprivate let generateOneHeader_PREFKEY = "galgas_cli_options:generateOneHeader"
 fileprivate let outputHTMLgrammarFile_PREFKEY = "galgas_cli_options:outputHTMLgrammarFile"
@@ -64,7 +63,6 @@ struct OptionView : View {
   @AppStorage(errorOldStyleCollectionInitializer_PREFKEY) private var errorOldStyleCollectionInitializer : Bool = false
   @AppStorage(errorOldStyleLocalVarDeclaration_PREFKEY) private var errorOldStyleLocalVarDeclaration : Bool = false
   @AppStorage(errorOldStylePropertyDeclaration_PREFKEY) private var errorOldStylePropertyDeclaration : Bool = false
-  @AppStorage(errorUsingNewInsteadOfInit_PREFKEY) private var errorUsingNewInsteadOfInit : Bool = false
   @AppStorage(generateManyFiles_PREFKEY) private var generateManyFiles : Bool = false
   @AppStorage(generateOneHeader_PREFKEY) private var generateOneHeader : Bool = false
   @AppStorage(outputHTMLgrammarFile_PREFKEY) private var outputHTMLgrammarFile : Bool = false
@@ -119,7 +117,6 @@ struct OptionView : View {
           Toggle ("Error on old style collection initializer", isOn: self.$errorOldStyleCollectionInitializer)
           Toggle ("Error on old style local variable declaration", isOn: self.$errorOldStyleLocalVarDeclaration)
           Toggle ("Error on old style property declaration", isOn: self.$errorOldStylePropertyDeclaration)
-          Toggle ("GGS3: error on using 'new' instead of 'init'", isOn: self.$errorUsingNewInsteadOfInit)
           Toggle ("Generate many C++ implementation files", isOn: self.$generateManyFiles)
           Toggle ("Generate one C++ header file for all declarations", isOn: self.$generateOneHeader)
           Toggle ("Output a HTML file for every grammar component", isOn: self.$outputHTMLgrammarFile)
@@ -204,9 +201,6 @@ func commandLineToolInvocation () -> CommandLineToolInvocation {
   }
   if ud.bool (forKey: errorOldStylePropertyDeclaration_PREFKEY) {
     arguments.append ("--error-old-style-property-declaration")
-  }
-  if ud.bool (forKey: errorUsingNewInsteadOfInit_PREFKEY) {
-    arguments.append ("--error-using-new-instead-of-init")
   }
   if ud.bool (forKey: generateManyFiles_PREFKEY) {
     arguments.append ("--generate-many-cpp-files")

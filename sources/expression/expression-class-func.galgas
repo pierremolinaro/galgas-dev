@@ -293,12 +293,6 @@ private proc analyzeConstructorInvocation ?let @lstring inUsefulnessCallerEntity
       fixit { replace " ()" }
     end
   end
-  if [option galgas_cli_options.errorUsingNewInsteadOfInit value] then
-    let oldInitializers = @stringset @["emptyGraph", "new"]
-    if [oldInitializers hasKey !inConstructorName.string]  then
-      error inConstructorName : "old style constructor, use initializer '@(...)'"
-    end
-  end
 }
 
 //--------------------------------------------------------------------------------------------------

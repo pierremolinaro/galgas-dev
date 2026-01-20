@@ -9541,14 +9541,6 @@ AC_GALGAS_graph () {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_semanticTypePrecedenceGraph GGS_semanticTypePrecedenceGraph::class_func_emptyGraph (LOCATION_ARGS) {
-  GGS_semanticTypePrecedenceGraph result ;
-  result.makeNewEmptyGraph (THERE) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 GGS_semanticTypePrecedenceGraph GGS_semanticTypePrecedenceGraph::init (Compiler * COMMA_LOCATION_ARGS) {
   GGS_semanticTypePrecedenceGraph result ;
   result.makeNewEmptyGraph (THERE) ;
@@ -15896,14 +15888,6 @@ String Lexique_galgasScanner_34_::styleNameForIndex (const uint32_t inStyleIndex
 
 GGS_usefulEntitiesGraph::GGS_usefulEntitiesGraph (void) :
 AC_GALGAS_graph () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_usefulEntitiesGraph GGS_usefulEntitiesGraph::class_func_emptyGraph (LOCATION_ARGS) {
-  GGS_usefulEntitiesGraph result ;
-  result.makeNewEmptyGraph (THERE) ;
-  return result ;
 }
 
 //--------------------------------------------------------------------------------------------------

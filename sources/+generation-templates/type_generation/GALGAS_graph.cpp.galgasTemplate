@@ -8,14 +8,6 @@ AC_GALGAS_graph () {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_%!TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::class_func_emptyGraph (LOCATION_ARGS) {
-  GGS_%!TYPE_IDENTIFIER% result ;
-  result.makeNewEmptyGraph (THERE) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 GGS_%!TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::init (Compiler * COMMA_LOCATION_ARGS) {
   GGS_%!TYPE_IDENTIFIER% result ;
   result.makeNewEmptyGraph (THERE) ;

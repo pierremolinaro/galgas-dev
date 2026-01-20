@@ -146,7 +146,7 @@ final class @graphDeclarationAST : @semanticDeclarationAST {
   //--- Graph type Entry
     [!?ioTypeMap makeEntry
       !self.mGraphTypeName
-      ?let @unifiedTypeMapEntry graphTypeEntry
+      ?* // let @unifiedTypeMapEntry graphTypeEntry
     ]
   //--- Associated list type Entry
     [!?ioTypeMap makeEntry
@@ -160,7 +160,6 @@ final class @graphDeclarationAST : @semanticDeclarationAST {
     ]
   //---
     commonGetterMapForAllTypes (!?ioTypeMap ?var @getterMap getterMap )
-    var @classFunctionMap classFunctionMap = @()
     var @setterMap setterMap = @()
     var @instanceMethodMap instanceMethodMap = @()
   //--- Methods 'topologicalSort', 'depthFirstTopologicalSort'
@@ -367,13 +366,6 @@ final class @graphDeclarationAST : @semanticDeclarationAST {
       !returnedTypeName: "lstringlist"
       !hasCompilerArgument: true // has compiler argument
     )
-  //--- Constructor 'emptyGraph'
-    [!?classFunctionMap insertKey
-      !@("emptyGraph", .here)
-      !@()
-      !false // No compiler argument
-      !graphTypeEntry
-    ]
   //--- setter 'enterNode'
     formalParameterList = @()
     formalParameterList +=
@@ -489,7 +481,7 @@ final class @graphDeclarationAST : @semanticDeclarationAST {
       !propertyMap: @()
       !currentTypedPropertyList: @()
       !initializerMap: initializerMap
-      !classFunctionMap: classFunctionMap
+      !classFunctionMap: @()
       !getterMap: getterMap
       !setterMap: setterMap
       !instanceMethodMap: instanceMethodMap

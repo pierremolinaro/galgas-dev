@@ -11019,9 +11019,6 @@ class GGS_semanticTypePrecedenceGraph : public AC_GALGAS_graph {
                                                                 Compiler * inCompiler
                                                                 COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- GALGAS class functions
-  public: static class GGS_semanticTypePrecedenceGraph class_func_emptyGraph (LOCATION_ARGS) ;
-
 
 //--------------------------------- Setters
   public: VIRTUAL_IN_DEBUG void setter_addNode (class GGS_lstring inArgument0,
@@ -14512,9 +14509,6 @@ class GGS_usefulEntitiesGraph : public AC_GALGAS_graph {
   public: static GGS_usefulEntitiesGraph extractObject (const GGS_object & inObject,
                                                         Compiler * inCompiler
                                                         COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS class functions
-  public: static class GGS_usefulEntitiesGraph class_func_emptyGraph (LOCATION_ARGS) ;
 
 
 //--------------------------------- Setters
