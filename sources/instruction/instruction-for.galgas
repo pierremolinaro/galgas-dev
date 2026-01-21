@@ -32,14 +32,6 @@ abstract class @abstractEnumeratedCollectionAST {
 
 //································································································*
 
-final class @enumeratedCollectionImplicitVarInExpAST : @abstractEnumeratedCollectionAST {
-  private let @lstring mPrefix
-  private let @semanticExpressionAST mEnumeratedExpression
-  private let @location mEndOfAnonymousEnumeration
-}
-
-//································································································*
-
 final class @enumeratedCollectionVarInExpAST : @abstractEnumeratedCollectionAST {
   private let @lstring mEnumerationOptionalTypeName // Empty string if implicit
   private let @lstring mEnumerationVariable  // Empty string if joker
@@ -173,29 +165,6 @@ syntax extension galgas3InstructionsSyntax {
       !enumerationVariable
       !enumeratedExpression
       !@location.here
-    }
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  rule <for_instruction_enumerated_object> ?!@galgasDeclarationAST ioDeclarations
-                                           !@abstractEnumeratedCollectionAST outEnumeratedObject {
-    $($
-    let startLocation = @location.here
-    $)$
-    let @lstring prefix
-    select
-      prefix = ["" nowhere]
-    or
-      $identifier$ ?prefix
-    end
-    let endLocation = @location.here
-    $in$
-    <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST enumeratedExpression
-    outEnumeratedObject = @enumeratedCollectionImplicitVarInExpAST {
-      !prefix
-      !enumeratedExpression
-      ![startLocation union !endLocation]
     }
   }
 
@@ -383,29 +352,6 @@ syntax extension galgas4InstructionsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <for_instruction_enumerated_object> ?!@galgasDeclarationAST ioDeclarations
-                                           !@abstractEnumeratedCollectionAST outEnumeratedObject {
-    $($
-    let startLocation = @location.here
-    $)$
-    let @lstring prefix
-    select
-      prefix = ["" nowhere]
-    or
-      $identifier$ ?prefix
-    end
-    let endLocation = @location.here
-    $in$
-    <expression> !?ioDeclarations ?let @semanticExpressionAST enumeratedExpression
-    outEnumeratedObject = @enumeratedCollectionImplicitVarInExpAST {
-      !prefix
-      !enumeratedExpression
-      ![startLocation union !endLocation]
-    }
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
   rule <semantic_instruction> ?!@galgasDeclarationAST ioDeclarations
                               !@semanticInstructionAST outInstruction {
     $for$
@@ -512,12 +458,6 @@ abstract method @abstractEnumeratedCollectionAST enterInSemanticContext ?!@unifi
 
 //································································································*
 
-override method @enumeratedCollectionImplicitVarInExpAST enterInSemanticContext ?!@unifiedTypeMap ioTypeMap {
-  [self.mEnumeratedExpression enterExpressionInSemanticContext !?ioTypeMap]
-}
-
-//································································································*
-
 override method @enumeratedCollectionCstListInExpAST enterInSemanticContext ?!@unifiedTypeMap ioTypeMap {
   [self.mEnumeratedExpression enterExpressionInSemanticContext !?ioTypeMap]
 }
@@ -542,54 +482,6 @@ abstract method @abstractEnumeratedCollectionAST analyzeEnumeration
   ?!@localConstantList ioLocalConstantListForDoBranch
   !@string outEnumeratorCppName
   !@semanticExpressionForGeneration outEnumerationExpression
-
-//································································································*
-
-override method @enumeratedCollectionImplicitVarInExpAST analyzeEnumeration
-  ?let @lstring inUsefulnessCallerEntityName
-  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-  ?let @analysisContext inAnalysisContext
-                                ?!@unifiedTypeMap ioTypeMap
-  ?!@localVarManager ioVariableMap
-  ?!@localConstantList ioLocalConstantListForDoBranch
-  !@string outEnumeratorCppName
-  !@semanticExpressionForGeneration outEnumerationExpression
-{
-  [self.mEnumeratedExpression analyzeSemanticExpression
-    !usefulnessCallerEntityName: inUsefulnessCallerEntityName
-    !?ioUsefulEntitiesGraph
-    !inferenceType: @unifiedTypeMapEntry.null
-    !inAnalysisContext
-    !?ioTypeMap
-    !?ioVariableMap
-    ?outEnumerationExpression
-  ]
-//--- Check object can be enumerated
-  outEnumeratorCppName = "enumerator_" + [self.mEndOfAnonymousEnumeration startLocationIndex]
-  let enumerationDescriptorList = [outEnumerationExpression.mResultType definition].enumerationDescriptorList
-  if [enumerationDescriptorList count] == 0 then
-    error self.mEndOfAnonymousEnumeration : "an '@" + [outEnumerationExpression.mResultType definition].typeName.string + "' object cannot be enumerated"
-  end
-//--- Declare implicit constants
-  var suggestion = "("
-  for (mEnumeratedType mEnumerationName) in enumerationDescriptorList
-  do
-    suggestion += self.mPrefix.string + mEnumerationName
-    ioLocalConstantListForDoBranch +=
-      !mEnumeratedType
-      !@lstring {!self.mPrefix.string + mEnumerationName !self.mEndOfAnonymousEnumeration}
-      !true // No warning if unused
-      !outEnumeratorCppName + ".current_" + [mEnumerationName identifierRepresentation]+ " (HERE)"
-  between
-    suggestion += " "
-  end
-  suggestion += ")"
-  if [option galgas_cli_options.errorAnomynousForInstructionEnumeratedObject value] then
-    error self.mEndOfAnonymousEnumeration
-    : "anonymous 'for' enumerated object (due to '--error-anonymous-for-instruction' option)"
-    fixit { replace suggestion }
-  end
-}
 
 //································································································*
 
@@ -636,13 +528,6 @@ override method @enumeratedCollectionCstListInExpAST analyzeEnumeration
       + if ([enumerationDescriptorList count] > 1) then "s" else "" end
       + " for enumeration: this list provides "
       + [[self.mElementList count] string]
-//    elsif (self.mEndsWithEllipsis) & ([self.mElementList count] > [enumerationDescriptorList count]) then
-//      error self.mEndOfEnumerationExpression
-//      :"the '@" + [outEnumerationExpression.mResultType definition].typeName.string + "' type requires "
-//      + [[enumerationDescriptorList count] string] + " argument"
-//      + if ([enumerationDescriptorList count] > 1) then "s" else "" end
-//      + " or less for enumeration: this list provides "
-//      + [[self.mElementList count] string]
     else
       if [enumerationDescriptorList count] > [self.mElementList count] then
         let missingArgumentCount = [enumerationDescriptorList count] - [self.mElementList count]

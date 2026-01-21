@@ -14,7 +14,6 @@ fileprivate let checkEntityUsefulness_PREFKEY = "galgas_cli_options:checkEntityU
 fileprivate let displayUnicodeLexicalTestFunctions_PREFKEY = "galgas_cli_options:displayUnicodeLexicalTestFunctions"
 fileprivate let emitClassGraph_PREFKEY = "galgas_cli_options:emitClassGraph"
 fileprivate let emitSyntaxDiagrams_PREFKEY = "galgas_cli_options:emitSyntaxDiagrams"
-fileprivate let errorAnomynousForInstructionEnumeratedObject_PREFKEY = "galgas_cli_options:errorAnomynousForInstructionEnumeratedObject"
 fileprivate let errorObsoleteGetterCall_PREFKEY = "galgas_cli_options:errorObsoleteGetterCall"
 fileprivate let errorPropertyGetterCall_PREFKEY = "galgas_cli_options:errorPropertyGetterCall"
 fileprivate let errorOnGetterCallWithNoArgument_PREFKEY = "galgas_cli_options:errorOnGetterCallWithNoArgument"
@@ -52,7 +51,6 @@ struct OptionView : View {
   @AppStorage(displayUnicodeLexicalTestFunctions_PREFKEY) private var displayUnicodeLexicalTestFunctions : Bool = false
   @AppStorage(emitClassGraph_PREFKEY) private var emitClassGraph : Bool = false
   @AppStorage(emitSyntaxDiagrams_PREFKEY) private var emitSyntaxDiagrams : Bool = false
-  @AppStorage(errorAnomynousForInstructionEnumeratedObject_PREFKEY) private var errorAnomynousForInstructionEnumeratedObject : Bool = false
   @AppStorage(errorObsoleteGetterCall_PREFKEY) private var errorObsoleteGetterCall : Bool = false
   @AppStorage(errorPropertyGetterCall_PREFKEY) private var errorPropertyGetterCall : Bool = false
   @AppStorage(errorOnGetterCallWithNoArgument_PREFKEY) private var errorOnGetterCallWithNoArgument : Bool = false
@@ -102,7 +100,6 @@ struct OptionView : View {
           Toggle ("Display Unicode Lexical Test Functions", isOn: self.$displayUnicodeLexicalTestFunctions)
           Toggle ("Emit class graph in dot file", isOn: self.$emitClassGraph)
           Toggle ("Emit grammar syntax diagrams in TEX files", isOn: self.$emitSyntaxDiagrams)
-          Toggle ("Error on anonymous 'for' instruction enumerated object ('for () in ...')", isOn: self.$errorAnomynousForInstructionEnumeratedObject)
           Toggle ("Error on call of an obsolete getter", isOn: self.$errorObsoleteGetterCall)
           Toggle ("Error on calling property getter (instead of dot notation)", isOn: self.$errorPropertyGetterCall)
           Toggle ("Error on getter call; with no argument (GGS4, suppress parenthesis)", isOn: self.$errorOnGetterCallWithNoArgument)
@@ -168,9 +165,6 @@ func commandLineToolInvocation () -> CommandLineToolInvocation {
   }
   if ud.bool (forKey: emitSyntaxDiagrams_PREFKEY) {
     arguments.append ("--emit-syntax-diagrams")
-  }
-  if ud.bool (forKey: errorAnomynousForInstructionEnumeratedObject_PREFKEY) {
-    arguments.append ("--error-anonymous-for-instruction")
   }
   if ud.bool (forKey: errorObsoleteGetterCall_PREFKEY) {
     arguments.append ("--error-on-obsolete-getter-call")

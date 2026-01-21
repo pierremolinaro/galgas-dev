@@ -20,17 +20,19 @@
 //! AST
 //--------------------------------------------------------------------------------------------------
 
-enum @templateInstructionForEnumerationAST {
-  case implicit (@string prefix @location remplacementRange)
-  case explicit (@lstringlist enumeration @location endOfProperties)
-}
+//enum @templateInstructionForEnumerationAST {
+//  case implicit (@string prefix @location remplacementRange)
+//  case explicit (@lstringlist enumeration @location endOfProperties)
+//}
 
 //································································································
 
 final class @templateInstructionForeachAST : @templateInstructionAST {
   private let @bool mIsAscending
   private let @templateExpressionAST mExpression
-  private let @templateInstructionForEnumerationAST mEnumeratedObjectProperties
+  private let @lstringlist mEnumeration
+  private let @location mEndOfProperties
+//  private let @templateInstructionForEnumerationAST mEnumeratedObjectProperties
   private let @templateInstructionListAST mBeforeInstructionList
   private let @templateInstructionListAST mDoInstructionList
   private let @lstring mIndexIdentifier
@@ -75,36 +77,37 @@ syntax extension templateSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <for_instruction_enumerated_object> !@templateInstructionForEnumerationAST outEnumeratedObject
-                                           !@templateExpressionAST outExpression {
-    $($
-    let start = @location.here
-    $)$
-    let endLocation = @location.here
-    $in$
-    <expression_tpl> ?outExpression
-    let @string foreachPrefix
-    select
-      foreachPrefix = ""
-    or
-      $:$
-      $identifier$ ?let @lstring prefixString
-      foreachPrefix = prefixString.string
-    end
-    outEnumeratedObject = .implicit {!prefix: foreachPrefix !remplacementRange: [start union !endLocation]}
-  }
+//  rule <for_instruction_enumerated_object> !@templateInstructionForEnumerationAST outEnumeratedObject
+//                                           !@templateExpressionAST outExpression {
+//    $($
+//    let start = @location.here
+//    $)$
+//    let endLocation = @location.here
+//    $in$
+//    <expression_tpl> ?outExpression
+//    let @string foreachPrefix
+//    select
+//      foreachPrefix = ""
+//    or
+//      $:$
+//      $identifier$ ?let @lstring prefixString
+//      foreachPrefix = prefixString.string
+//    end
+//    outEnumeratedObject = .implicit {!prefix: foreachPrefix !remplacementRange: [start union !endLocation]}
+//  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <for_instruction_enumerated_object> !@templateInstructionForEnumerationAST outEnumeratedObject
+  rule <for_instruction_enumerated_object> !@lstringlist outEnumeration
+                                           !@location outEndOfProperties
                                            !@templateExpressionAST outExpression {
-    var enumeration = @lstringlist ()
+    outEnumeration = @lstringlist ()
     $($
     repeat
-      <for_instruction_element> !?enumeration
+      <for_instruction_element> !?outEnumeration
     while
     end
-    let endOfProperties = @location.here
+    outEndOfProperties = @location.here
     $)$
     $in$
     <expression_tpl> ?outExpression
@@ -116,7 +119,6 @@ syntax extension templateSyntax {
       error [prefixString.location union !startLocation]
       : "useless prefix" fixit { replace "" }
     end
-    outEnumeratedObject = .explicit {!enumeration: enumeration !endOfProperties: endOfProperties}
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -133,7 +135,7 @@ syntax extension templateSyntax {
       $>$
       ascending = false
     end
-    <for_instruction_enumerated_object> ?let enumeratedProperties ?let expression
+    <for_instruction_enumerated_object> ?let enumeration ?let endOfProperties ?let expression
   //--- before block
     var @templateInstructionListAST beforeInstructionList = @()
     select
@@ -188,7 +190,8 @@ syntax extension templateSyntax {
     ioResultingInstructionList += !@templateInstructionForeachAST {
       !ascending
       !expression
-      !enumeratedProperties
+      !enumeration
+      !endOfProperties
       !beforeInstructionList
       !doInstructionList
       !indexIdentifier
@@ -243,41 +246,19 @@ override method @templateInstructionForeachAST templateInstructionAnalysis
   if self.mIndexIdentifier.string != "" then
     [!?doVariableMap insertKey !self.mIndexIdentifier !inAnalysisContext.mPredefinedTypes.mUIntType !cppIndexVarName]
   end
-  switch self.mEnumeratedObjectProperties
-  case implicit (@string prefix @location remplacementRange) :
-    var suggestion = "("
-    for (enumeratedType enumerationName) in enumerationDescriptor
-    do
-      [!?doVariableMap insertKey
-        !@lstring {!prefix + enumerationName !expression.mLocation}
-        !enumeratedType
-        !enumeratorCppName +".current_" + [enumerationName identifierRepresentation] + " (HERE)"
-      ]
-      suggestion += prefix + enumerationName
-    between
-      suggestion += " "
-    end
-    suggestion += ")"
-    if [option galgas_cli_options.errorAnomynousForInstructionEnumeratedObject value] then
-      error remplacementRange
-      : "anonymous 'for' enumerated object (due to '--error-anonymous-for-instruction' option)"
-      fixit { replace suggestion }
-    end
-  case explicit (@lstringlist enumeration @location errorLocation) :
-    if [enumeration count] != [enumerationDescriptor count] then
-      error errorLocation
-      : [[enumerationDescriptor count] string] + " variables are required here ("
-      + [enumeration count] + " provided)"
-    else
-      for (enumeratedType enumerationName) in enumerationDescriptor,
-          (optionalConstantName) in enumeration do
-        if optionalConstantName.string != "" then // Empty string for joker
-          [!?doVariableMap insertKey
-            !optionalConstantName
-            !enumeratedType
-            !enumeratorCppName +".current_" + [enumerationName identifierRepresentation] + " (HERE)"
-          ]
-        end
+  if [self.mEnumeration count] != [enumerationDescriptor count] then
+    error self.mEndOfProperties
+    : [[enumerationDescriptor count] string] + " variables are required here ("
+    + [self.mEnumeration count] + " provided)"
+  else
+    for (enumeratedType enumerationName) in enumerationDescriptor,
+        (optionalConstantName) in self.mEnumeration do
+      if optionalConstantName.string != "" then // Empty string for joker
+        [!?doVariableMap insertKey
+          !optionalConstantName
+          !enumeratedType
+          !enumeratorCppName +".current_" + [enumerationName identifierRepresentation] + " (HERE)"
+        ]
       end
     end
   end

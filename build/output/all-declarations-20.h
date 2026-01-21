@@ -404,8 +404,9 @@ class cGrammar_templateGrammar : public cParser_templateSyntax {
   public: virtual void nt_for_5F_instruction_5F_enumerated_5F_object_indexing (Lexique_galgasTemplateScanner * inCompiler) ;
 
 //----------- '' label
-  public: virtual void nt_for_5F_instruction_5F_enumerated_5F_object_ (GGS_templateInstructionForEnumerationAST & outArgument0,
-                                                                       GGS_templateExpressionAST & outArgument1,
+  public: virtual void nt_for_5F_instruction_5F_enumerated_5F_object_ (GGS_lstringlist & outArgument0,
+                                                                       GGS_location & outArgument1,
+                                                                       GGS_templateExpressionAST & outArgument2,
                                                                        Lexique_galgasTemplateScanner * inCompiler) ;
 
 //------------------------------------- 'output_expression_list_tpl' non terminal
@@ -603,8 +604,6 @@ class cGrammar_templateGrammar : public cParser_templateSyntax {
   public: virtual int32_t select_templateSyntax_34 (Lexique_galgasTemplateScanner *) ;
 
   public: virtual int32_t select_templateSyntax_35 (Lexique_galgasTemplateScanner *) ;
-
-  public: virtual int32_t select_templateSyntax_36 (Lexique_galgasTemplateScanner *) ;
 } ;
 
 //--------------------------------------------------------------------------------------------------

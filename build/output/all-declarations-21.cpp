@@ -36,19 +36,20 @@ GGS_templateInstructionAST () {
 //--- Synthetized initializer ----------------------------------------------------------------------
 
 GGS_templateInstructionForeachAST GGS_templateInstructionForeachAST::
-init_21__21__21__21__21__21__21__21_ (const GGS_bool & in_mIsAscending,
-                                      const GGS_templateExpressionAST & in_mExpression,
-                                      const GGS_templateInstructionForEnumerationAST & in_mEnumeratedObjectProperties,
-                                      const GGS_templateInstructionListAST & in_mBeforeInstructionList,
-                                      const GGS_templateInstructionListAST & in_mDoInstructionList,
-                                      const GGS_lstring & in_mIndexIdentifier,
-                                      const GGS_templateInstructionListAST & in_mBetweenInstructionList,
-                                      const GGS_templateInstructionListAST & in_mAfterInstructionList,
-                                      Compiler * inCompiler
-                                      COMMA_LOCATION_ARGS) {
+init_21__21__21__21__21__21__21__21__21_ (const GGS_bool & in_mIsAscending,
+                                          const GGS_templateExpressionAST & in_mExpression,
+                                          const GGS_lstringlist & in_mEnumeration,
+                                          const GGS_location & in_mEndOfProperties,
+                                          const GGS_templateInstructionListAST & in_mBeforeInstructionList,
+                                          const GGS_templateInstructionListAST & in_mDoInstructionList,
+                                          const GGS_lstring & in_mIndexIdentifier,
+                                          const GGS_templateInstructionListAST & in_mBetweenInstructionList,
+                                          const GGS_templateInstructionListAST & in_mAfterInstructionList,
+                                          Compiler * inCompiler
+                                          COMMA_LOCATION_ARGS) {
   cPtr_templateInstructionForeachAST * object = nullptr ;
   macroMyNew (object, cPtr_templateInstructionForeachAST (inCompiler COMMA_THERE)) ;
-  object->templateInstructionForeachAST_init_21__21__21__21__21__21__21__21_ (in_mIsAscending, in_mExpression, in_mEnumeratedObjectProperties, in_mBeforeInstructionList, in_mDoInstructionList, in_mIndexIdentifier, in_mBetweenInstructionList, in_mAfterInstructionList, inCompiler) ;
+  object->templateInstructionForeachAST_init_21__21__21__21__21__21__21__21__21_ (in_mIsAscending, in_mExpression, in_mEnumeration, in_mEndOfProperties, in_mBeforeInstructionList, in_mDoInstructionList, in_mIndexIdentifier, in_mBetweenInstructionList, in_mAfterInstructionList, inCompiler) ;
   const GGS_templateInstructionForeachAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
@@ -57,18 +58,20 @@ init_21__21__21__21__21__21__21__21_ (const GGS_bool & in_mIsAscending,
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_templateInstructionForeachAST::
-templateInstructionForeachAST_init_21__21__21__21__21__21__21__21_ (const GGS_bool & in_mIsAscending,
-                                                                    const GGS_templateExpressionAST & in_mExpression,
-                                                                    const GGS_templateInstructionForEnumerationAST & in_mEnumeratedObjectProperties,
-                                                                    const GGS_templateInstructionListAST & in_mBeforeInstructionList,
-                                                                    const GGS_templateInstructionListAST & in_mDoInstructionList,
-                                                                    const GGS_lstring & in_mIndexIdentifier,
-                                                                    const GGS_templateInstructionListAST & in_mBetweenInstructionList,
-                                                                    const GGS_templateInstructionListAST & in_mAfterInstructionList,
-                                                                    Compiler * /* inCompiler */) {
+templateInstructionForeachAST_init_21__21__21__21__21__21__21__21__21_ (const GGS_bool & in_mIsAscending,
+                                                                        const GGS_templateExpressionAST & in_mExpression,
+                                                                        const GGS_lstringlist & in_mEnumeration,
+                                                                        const GGS_location & in_mEndOfProperties,
+                                                                        const GGS_templateInstructionListAST & in_mBeforeInstructionList,
+                                                                        const GGS_templateInstructionListAST & in_mDoInstructionList,
+                                                                        const GGS_lstring & in_mIndexIdentifier,
+                                                                        const GGS_templateInstructionListAST & in_mBetweenInstructionList,
+                                                                        const GGS_templateInstructionListAST & in_mAfterInstructionList,
+                                                                        Compiler * /* inCompiler */) {
   mProperty_mIsAscending = in_mIsAscending ;
   mProperty_mExpression = in_mExpression ;
-  mProperty_mEnumeratedObjectProperties = in_mEnumeratedObjectProperties ;
+  mProperty_mEnumeration = in_mEnumeration ;
+  mProperty_mEndOfProperties = in_mEndOfProperties ;
   mProperty_mBeforeInstructionList = in_mBeforeInstructionList ;
   mProperty_mDoInstructionList = in_mDoInstructionList ;
   mProperty_mIndexIdentifier = in_mIndexIdentifier ;
@@ -108,13 +111,25 @@ GGS_templateExpressionAST GGS_templateInstructionForeachAST::readProperty_mExpre
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_templateInstructionForEnumerationAST GGS_templateInstructionForeachAST::readProperty_mEnumeratedObjectProperties (void) const {
+GGS_lstringlist GGS_templateInstructionForeachAST::readProperty_mEnumeration (void) const {
   if (nullptr == mObjectPtr) {
-    return GGS_templateInstructionForEnumerationAST () ;
+    return GGS_lstringlist () ;
   }else{
     cPtr_templateInstructionForeachAST * p = (cPtr_templateInstructionForeachAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_templateInstructionForeachAST) ;
-    return p->mProperty_mEnumeratedObjectProperties ;
+    return p->mProperty_mEnumeration ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_location GGS_templateInstructionForeachAST::readProperty_mEndOfProperties (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_location () ;
+  }else{
+    cPtr_templateInstructionForeachAST * p = (cPtr_templateInstructionForeachAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_templateInstructionForeachAST) ;
+    return p->mProperty_mEndOfProperties ;
   }
 }
 
@@ -186,7 +201,8 @@ cPtr_templateInstructionForeachAST::cPtr_templateInstructionForeachAST (Compiler
 cPtr_templateInstructionAST (inCompiler COMMA_THERE),
 mProperty_mIsAscending (),
 mProperty_mExpression (),
-mProperty_mEnumeratedObjectProperties (),
+mProperty_mEnumeration (),
+mProperty_mEndOfProperties (),
 mProperty_mBeforeInstructionList (),
 mProperty_mDoInstructionList (),
 mProperty_mIndexIdentifier (),
@@ -198,7 +214,8 @@ mProperty_mAfterInstructionList () {
 
 cPtr_templateInstructionForeachAST::cPtr_templateInstructionForeachAST (const GGS_bool & in_mIsAscending,
                                                                         const GGS_templateExpressionAST & in_mExpression,
-                                                                        const GGS_templateInstructionForEnumerationAST & in_mEnumeratedObjectProperties,
+                                                                        const GGS_lstringlist & in_mEnumeration,
+                                                                        const GGS_location & in_mEndOfProperties,
                                                                         const GGS_templateInstructionListAST & in_mBeforeInstructionList,
                                                                         const GGS_templateInstructionListAST & in_mDoInstructionList,
                                                                         const GGS_lstring & in_mIndexIdentifier,
@@ -209,7 +226,8 @@ cPtr_templateInstructionForeachAST::cPtr_templateInstructionForeachAST (const GG
 cPtr_templateInstructionAST (inCompiler COMMA_THERE),
 mProperty_mIsAscending (),
 mProperty_mExpression (),
-mProperty_mEnumeratedObjectProperties (),
+mProperty_mEnumeration (),
+mProperty_mEndOfProperties (),
 mProperty_mBeforeInstructionList (),
 mProperty_mDoInstructionList (),
 mProperty_mIndexIdentifier (),
@@ -217,7 +235,8 @@ mProperty_mBetweenInstructionList (),
 mProperty_mAfterInstructionList () {
   mProperty_mIsAscending = in_mIsAscending ;
   mProperty_mExpression = in_mExpression ;
-  mProperty_mEnumeratedObjectProperties = in_mEnumeratedObjectProperties ;
+  mProperty_mEnumeration = in_mEnumeration ;
+  mProperty_mEndOfProperties = in_mEndOfProperties ;
   mProperty_mBeforeInstructionList = in_mBeforeInstructionList ;
   mProperty_mDoInstructionList = in_mDoInstructionList ;
   mProperty_mIndexIdentifier = in_mIndexIdentifier ;
@@ -238,7 +257,9 @@ void cPtr_templateInstructionForeachAST::description (String & ioString,
   ioString.appendCString (", ") ;
   mProperty_mExpression.description (ioString, inIndentation+1) ;
   ioString.appendCString (", ") ;
-  mProperty_mEnumeratedObjectProperties.description (ioString, inIndentation+1) ;
+  mProperty_mEnumeration.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mEndOfProperties.description (ioString, inIndentation+1) ;
   ioString.appendCString (", ") ;
   mProperty_mBeforeInstructionList.description (ioString, inIndentation+1) ;
   ioString.appendCString (", ") ;
@@ -256,7 +277,7 @@ void cPtr_templateInstructionForeachAST::description (String & ioString,
 
 acPtr_class * cPtr_templateInstructionForeachAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_templateInstructionForeachAST (mProperty_mIsAscending, mProperty_mExpression, mProperty_mEnumeratedObjectProperties, mProperty_mBeforeInstructionList, mProperty_mDoInstructionList, mProperty_mIndexIdentifier, mProperty_mBetweenInstructionList, mProperty_mAfterInstructionList, inCompiler COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_templateInstructionForeachAST (mProperty_mIsAscending, mProperty_mExpression, mProperty_mEnumeration, mProperty_mEndOfProperties, mProperty_mBeforeInstructionList, mProperty_mDoInstructionList, mProperty_mIndexIdentifier, mProperty_mBetweenInstructionList, mProperty_mAfterInstructionList, inCompiler COMMA_THERE)) ;
   return ptr ;
 }
 
@@ -268,7 +289,8 @@ acPtr_class * cPtr_templateInstructionForeachAST::duplicate (Compiler * inCompil
     cPtr_templateInstructionAST::printNonNullClassInstanceProperties () ;
     mProperty_mIsAscending.printNonNullClassInstanceProperties ("mIsAscending") ;
     mProperty_mExpression.printNonNullClassInstanceProperties ("mExpression") ;
-    mProperty_mEnumeratedObjectProperties.printNonNullClassInstanceProperties ("mEnumeratedObjectProperties") ;
+    mProperty_mEnumeration.printNonNullClassInstanceProperties ("mEnumeration") ;
+    mProperty_mEndOfProperties.printNonNullClassInstanceProperties ("mEndOfProperties") ;
     mProperty_mBeforeInstructionList.printNonNullClassInstanceProperties ("mBeforeInstructionList") ;
     mProperty_mDoInstructionList.printNonNullClassInstanceProperties ("mDoInstructionList") ;
     mProperty_mIndexIdentifier.printNonNullClassInstanceProperties ("mIndexIdentifier") ;
