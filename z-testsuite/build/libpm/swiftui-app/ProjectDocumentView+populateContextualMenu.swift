@@ -81,7 +81,7 @@ extension ProjectDocumentView {
     let fm = FileManager ()
     var result = [[String : [String]]] ()
   //--- Create indexing directory
-    let indexingDirURL = self.mProjectFileURL.deletingLastPathComponent().appending (path: "build/indexes-new")
+    let indexingDirURL = self.mProjectFileURL.deletingLastPathComponent().appending (path: "build/indexes")
     try? fm.createDirectory (
       at: indexingDirURL,
       withIntermediateDirectories: true,

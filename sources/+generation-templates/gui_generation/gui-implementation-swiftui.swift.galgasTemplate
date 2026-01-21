@@ -33,24 +33,6 @@ end
 %])
 
 //--------------------------------------------------------------------------------------------------
-//    Indexing dictionary
-//--------------------------------------------------------------------------------------------------
-
-func indexingDescriptorDictionary () -> [String : String] {
-%if [GUI_CONTEXT.mProjectIndexingDescriptorList count] == 0 then
-% return [:]
-%
-else
-%  return [\n%
-for (projectFileExtension indexingPathSuffix) in GUI_CONTEXT.mProjectIndexingDescriptorList
-  do %    "%![projectFileExtension.string lowercaseString]%" : "%!indexingPathSuffix.string%"%
-  between %,\n%
-end
-%\n  ]\n%
-end
-%}
-
-//--------------------------------------------------------------------------------------------------
 //   Scanner for a given extension
 //--------------------------------------------------------------------------------------------------
 

@@ -29,17 +29,6 @@ extension ProjectDocument {
 let projectFileExtensions = Set (["galgas", "galgasproject", "galgastemplate", "ggs", "ggsproject"])
 
 //--------------------------------------------------------------------------------------------------
-//    Indexing dictionary
-//--------------------------------------------------------------------------------------------------
-
-func indexingDescriptorDictionary () -> [String : String] {
-  return [
-    "galgasproject" : "build/indexes",
-    "ggsproject" : "build/indexes"
-  ]
-}
-
-//--------------------------------------------------------------------------------------------------
 //   Scanner for a given extension
 //--------------------------------------------------------------------------------------------------
 

@@ -189,7 +189,7 @@ struct CompilationIssue : Identifiable {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  @ViewBuilder var view : some View {
+  @ViewBuilder func view () -> some View {
     HStack {
       Spacer ().frame (width: ISSUE_MARK_WIDTH)
       Circle ()

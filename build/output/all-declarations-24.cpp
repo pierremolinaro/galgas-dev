@@ -5210,166 +5210,137 @@ GGS_string filewrapperTemplate_guiGenerationTemplates_swiftui_5F_gui_5F_implemen
       index_974_.increment () ;
     }
   }
-  result.appendString ("])\n\n//--------------------------------------------------------------------------------------------------\n//    Indexing dictionary\n//--------------------------------------------------------------------------------------------------\n\nfunc indexingDescriptorDictionary () -> [String : String] {\n") ;
-  const GalgasBool test_0 = GGS_bool (ComparisonKind::equal, in_GUI_5F_CONTEXT.readProperty_mProjectIndexingDescriptorList ().getter_count (SOURCE_FILE ("gui-implementation-swiftui.swift.galgasTemplate", 40)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
-  switch (test_0) {
-  case GalgasBool::boolTrue : {
-    result.appendString (" return [:]\n") ;
-    } break ;
-  case GalgasBool::boolFalse : {
-    result.appendString ("  return [\n") ;
-    GGS_uint index_1549_ (0) ;
-    if (in_GUI_5F_CONTEXT.readProperty_mProjectIndexingDescriptorList ().isValid ()) {
-      UpEnumerator_projectIndexingDescriptorList enumerator_1549 (in_GUI_5F_CONTEXT.readProperty_mProjectIndexingDescriptorList ()) ;
-      while (enumerator_1549.hasCurrentObject ()) {
-        result.appendString ("    \"") ;
-        result.appendString (enumerator_1549.current_mProjectFileExtension (HERE).readProperty_string ().getter_lowercaseString (SOURCE_FILE ("gui-implementation-swiftui.swift.galgasTemplate", 46)).stringValue ()) ;
-        result.appendString ("\" : \"") ;
-        result.appendString (enumerator_1549.current_indexingPathSuffix (HERE).readProperty_string ().stringValue ()) ;
-        result.appendString ("\"") ;
-        enumerator_1549.gotoNextObject () ;
-        if (enumerator_1549.hasCurrentObject ()) {
-          result.appendString (",\n") ;
-        }
-        index_1549_.increment () ;
-      }
-    }
-    result.appendString ("\n  ]\n") ;
-    } break ;
-  case GalgasBool::boolNotValid :
-    break ;
-  }
-  result.appendString ("}\n\n//--------------------------------------------------------------------------------------------------\n//   Scanner for a given extension\n//--------------------------------------------------------------------------------------------------\n\n@MainActor func scannerFor (extension inExtension : String) -> AbstractScanner\? {\n  var result : AbstractScanner\? = nil\n  let fileExtension = inExtension.lowercased ()\n") ;
-  GGS_uint index_2162_ (0) ;
+  result.appendString ("])\n\n//--------------------------------------------------------------------------------------------------\n//   Scanner for a given extension\n//--------------------------------------------------------------------------------------------------\n\n@MainActor func scannerFor (extension inExtension : String) -> AbstractScanner\? {\n  var result : AbstractScanner\? = nil\n  let fileExtension = inExtension.lowercased ()\n") ;
+  GGS_uint index_1548_ (0) ;
   if (in_GUI_5F_CONTEXT.readProperty_mExtensionMap ().isValid ()) {
-    UpEnumerator_extensionMap enumerator_2162 (in_GUI_5F_CONTEXT.readProperty_mExtensionMap ()) ;
-    const bool nonEmpty_enumerator_2162 = enumerator_2162.hasCurrentObject () ;
-    if (nonEmpty_enumerator_2162) {
+    UpEnumerator_extensionMap enumerator_1548 (in_GUI_5F_CONTEXT.readProperty_mExtensionMap ()) ;
+    const bool nonEmpty_enumerator_1548 = enumerator_1548.hasCurrentObject () ;
+    if (nonEmpty_enumerator_1548) {
       result.appendString ("  if") ;
     }
-    while (enumerator_2162.hasCurrentObject ()) {
+    while (enumerator_1548.hasCurrentObject ()) {
       result.appendString (" fileExtension == ") ;
-      result.appendString (enumerator_2162.current_lkey (HERE).readProperty_string ().getter_lowercaseString (SOURCE_FILE ("gui-implementation-swiftui.swift.galgasTemplate", 62)).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("gui-implementation-swiftui.swift.galgasTemplate", 62)).stringValue ()) ;
+      result.appendString (enumerator_1548.current_lkey (HERE).readProperty_string ().getter_lowercaseString (SOURCE_FILE ("gui-implementation-swiftui.swift.galgasTemplate", 44)).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("gui-implementation-swiftui.swift.galgasTemplate", 44)).stringValue ()) ;
       result.appendString (" {\n    result = ScannerFor_") ;
-      result.appendString (enumerator_2162.current_mLexiqueName (HERE).stringValue ()) ;
+      result.appendString (enumerator_1548.current_mLexiqueName (HERE).stringValue ()) ;
       result.appendString (" ()\n") ;
-      enumerator_2162.gotoNextObject () ;
-      if (enumerator_2162.hasCurrentObject ()) {
+      enumerator_1548.gotoNextObject () ;
+      if (enumerator_1548.hasCurrentObject ()) {
         result.appendString ("  }else if") ;
       }
-      index_2162_.increment () ;
+      index_1548_.increment () ;
     }
-    if (nonEmpty_enumerator_2162) {
+    if (nonEmpty_enumerator_1548) {
       result.appendString ("  }\n") ;
     }
   }
   result.appendString ("  return result\n}\n\n//--------------------------------------------------------------------------------------------------\n// Setting View\n//--------------------------------------------------------------------------------------------------\n\nstruct SettingsView : View {\n\n  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n\n  enum SidebarItem {\n    case commandLineOptions\n") ;
-  GGS_uint index_2853_ (0) ;
+  GGS_uint index_2239_ (0) ;
   if (in_GUI_5F_CONTEXT.readProperty_mWithLexiqueList ().isValid ()) {
-    UpEnumerator_importedLexiqueList enumerator_2853 (in_GUI_5F_CONTEXT.readProperty_mWithLexiqueList ()) ;
-    while (enumerator_2853.hasCurrentObject ()) {
+    UpEnumerator_importedLexiqueList enumerator_2239 (in_GUI_5F_CONTEXT.readProperty_mWithLexiqueList ()) ;
+    while (enumerator_2239.hasCurrentObject ()) {
       result.appendString ("    case ") ;
-      result.appendString (enumerator_2853.current_mLexiqueClassName (HERE).stringValue ()) ;
+      result.appendString (enumerator_2239.current_mLexiqueClassName (HERE).stringValue ()) ;
       result.appendString ("_") ;
-      result.appendString (enumerator_2853.current_mIndex (HERE).getter_string (SOURCE_FILE ("gui-implementation-swiftui.swift.galgasTemplate", 81)).stringValue ()) ;
+      result.appendString (enumerator_2239.current_mIndex (HERE).getter_string (SOURCE_FILE ("gui-implementation-swiftui.swift.galgasTemplate", 63)).stringValue ()) ;
       result.appendString ("\n") ;
-      enumerator_2853.gotoNextObject () ;
-      index_2853_.increment () ;
+      enumerator_2239.gotoNextObject () ;
+      index_2239_.increment () ;
     }
   }
   result.appendString ("  }\n\n  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n\n  @State private var mSelection : SidebarItem = .commandLineOptions\n\n  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n\n  @ViewBuilder var body : some View {\n    NavigationSplitView {\n      List(selection: self.$mSelection) {\n        Text (\"Options\").tag (SidebarItem.commandLineOptions)\n\n") ;
-  GGS_uint index_3449_ (0) ;
+  GGS_uint index_2835_ (0) ;
   if (in_GUI_5F_CONTEXT.readProperty_mWithLexiqueList ().isValid ()) {
-    UpEnumerator_importedLexiqueList enumerator_3449 (in_GUI_5F_CONTEXT.readProperty_mWithLexiqueList ()) ;
-    while (enumerator_3449.hasCurrentObject ()) {
+    UpEnumerator_importedLexiqueList enumerator_2835 (in_GUI_5F_CONTEXT.readProperty_mWithLexiqueList ()) ;
+    while (enumerator_2835.hasCurrentObject ()) {
       result.appendString ("        Text (\"") ;
-      result.appendString (enumerator_3449.current_mTitle (HERE).stringValue ()) ;
+      result.appendString (enumerator_2835.current_mTitle (HERE).stringValue ()) ;
       result.appendString ("\").tag (SidebarItem.") ;
-      result.appendString (enumerator_3449.current_mLexiqueClassName (HERE).stringValue ()) ;
+      result.appendString (enumerator_2835.current_mLexiqueClassName (HERE).stringValue ()) ;
       result.appendString ("_") ;
-      result.appendString (enumerator_3449.current_mIndex (HERE).getter_string (SOURCE_FILE ("gui-implementation-swiftui.swift.galgasTemplate", 96)).stringValue ()) ;
+      result.appendString (enumerator_2835.current_mIndex (HERE).getter_string (SOURCE_FILE ("gui-implementation-swiftui.swift.galgasTemplate", 78)).stringValue ()) ;
       result.appendString (")\n") ;
-      enumerator_3449.gotoNextObject () ;
-      index_3449_.increment () ;
+      enumerator_2835.gotoNextObject () ;
+      index_2835_.increment () ;
     }
   }
   result.appendString ("      }\n      .toolbar (removing: .sidebarToggle)\n    } detail: {\n      switch self.mSelection {\n        case .commandLineOptions : OptionView ()\n") ;
-  GGS_uint index_3778_ (0) ;
+  GGS_uint index_3164_ (0) ;
   if (in_GUI_5F_CONTEXT.readProperty_mWithLexiqueList ().isValid ()) {
-    UpEnumerator_importedLexiqueList enumerator_3778 (in_GUI_5F_CONTEXT.readProperty_mWithLexiqueList ()) ;
-    while (enumerator_3778.hasCurrentObject ()) {
+    UpEnumerator_importedLexiqueList enumerator_3164 (in_GUI_5F_CONTEXT.readProperty_mWithLexiqueList ()) ;
+    while (enumerator_3164.hasCurrentObject ()) {
       result.appendString ("        case .") ;
-      result.appendString (enumerator_3778.current_mLexiqueClassName (HERE).stringValue ()) ;
+      result.appendString (enumerator_3164.current_mLexiqueClassName (HERE).stringValue ()) ;
       result.appendString ("_") ;
-      result.appendString (enumerator_3778.current_mIndex (HERE).getter_string (SOURCE_FILE ("gui-implementation-swiftui.swift.galgasTemplate", 104)).stringValue ()) ;
+      result.appendString (enumerator_3164.current_mIndex (HERE).getter_string (SOURCE_FILE ("gui-implementation-swiftui.swift.galgasTemplate", 86)).stringValue ()) ;
       result.appendString (" : SettingViewFor_") ;
-      result.appendString (enumerator_3778.current_mLexiqueClassName (HERE).stringValue ()) ;
+      result.appendString (enumerator_3164.current_mLexiqueClassName (HERE).stringValue ()) ;
       result.appendString (" ()\n") ;
-      enumerator_3778.gotoNextObject () ;
-      index_3778_.increment () ;
+      enumerator_3164.gotoNextObject () ;
+      index_3164_.increment () ;
     }
   }
   result.appendString ("      }\n    }\n  }\n\n  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n\n}\n\n\n") ;
-  GGS_uint index_4140_ (0) ;
+  GGS_uint index_3526_ (0) ;
   if (in_GUI_5F_CONTEXT.readProperty_mWithLexiqueList ().isValid ()) {
-    UpEnumerator_importedLexiqueList enumerator_4140 (in_GUI_5F_CONTEXT.readProperty_mWithLexiqueList ()) ;
-    while (enumerator_4140.hasCurrentObject ()) {
+    UpEnumerator_importedLexiqueList enumerator_3526 (in_GUI_5F_CONTEXT.readProperty_mWithLexiqueList ()) ;
+    while (enumerator_3526.hasCurrentObject ()) {
       result.appendString ("//--------------------------------------------------------------------------------------------------\n//   Popup list data for '") ;
-      result.appendString (enumerator_4140.current_mLexiqueClassName (HERE).stringValue ()) ;
+      result.appendString (enumerator_3526.current_mLexiqueClassName (HERE).stringValue ()) ;
       result.appendString ("' lexique\n//--------------------------------------------------------------------------------------------------\n\nlet gPopUpData_") ;
-      result.appendString (enumerator_4140.current_mLexiqueClassName (HERE).stringValue ()) ;
+      result.appendString (enumerator_3526.current_mLexiqueClassName (HERE).stringValue ()) ;
       result.appendString (" : [[UInt16]] = [\n") ;
-      GGS_uint index_4528_ (0) ;
-      if (enumerator_4140.current_mLabels (HERE).isValid ()) {
-        UpEnumerator_guiLabelListAST enumerator_4528 (enumerator_4140.current_mLabels (HERE)) ;
-        while (enumerator_4528.hasCurrentObject ()) {
+      GGS_uint index_3914_ (0) ;
+      if (enumerator_3526.current_mLabels (HERE).isValid ()) {
+        UpEnumerator_guiLabelListAST enumerator_3914 (enumerator_3526.current_mLabels (HERE)) ;
+        while (enumerator_3914.hasCurrentObject ()) {
           result.appendString ("  [") ;
-          result.appendString (enumerator_4528.current_mLeadingCharacterStrippedCount (HERE).getter_string (SOURCE_FILE ("gui-implementation-swiftui.swift.galgasTemplate", 122)).stringValue ()) ;
+          result.appendString (enumerator_3914.current_mLeadingCharacterStrippedCount (HERE).getter_string (SOURCE_FILE ("gui-implementation-swiftui.swift.galgasTemplate", 104)).stringValue ()) ;
           result.appendString (", // Leading character count to strip\n") ;
-          GGS_uint index_4677_ (0) ;
-          if (enumerator_4528.current_mTerminalList (HERE).isValid ()) {
-            UpEnumerator_terminalLabelListAST enumerator_4677 (enumerator_4528.current_mTerminalList (HERE)) ;
-            while (enumerator_4677.hasCurrentObject ()) {
+          GGS_uint index_4063_ (0) ;
+          if (enumerator_3914.current_mTerminalList (HERE).isValid ()) {
+            UpEnumerator_terminalLabelListAST enumerator_4063 (enumerator_3914.current_mTerminalList (HERE)) ;
+            while (enumerator_4063.hasCurrentObject ()) {
               result.appendString ("    ") ;
-              result.appendString (enumerator_4140.current_mLexiqueClassName (HERE).stringValue ()) ;
+              result.appendString (enumerator_3526.current_mLexiqueClassName (HERE).stringValue ()) ;
               result.appendString ("_1_") ;
-              result.appendString (enumerator_4677.current_mTerminal (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("gui-implementation-swiftui.swift.galgasTemplate", 124)).stringValue ()) ;
+              result.appendString (enumerator_4063.current_mTerminal (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("gui-implementation-swiftui.swift.galgasTemplate", 106)).stringValue ()) ;
               result.appendString (", ") ;
-              result.appendString (enumerator_4677.current_mDisplayFlags (HERE).getter_string (SOURCE_FILE ("gui-implementation-swiftui.swift.galgasTemplate", 124)).stringValue ()) ;
-              enumerator_4677.gotoNextObject () ;
-              if (enumerator_4677.hasCurrentObject ()) {
+              result.appendString (enumerator_4063.current_mDisplayFlags (HERE).getter_string (SOURCE_FILE ("gui-implementation-swiftui.swift.galgasTemplate", 106)).stringValue ()) ;
+              enumerator_4063.gotoNextObject () ;
+              if (enumerator_4063.hasCurrentObject ()) {
                 result.appendString (",\n") ;
               }
-              index_4677_.increment () ;
+              index_4063_.increment () ;
             }
           }
           result.appendString ("\n  ]") ;
-          enumerator_4528.gotoNextObject () ;
-          if (enumerator_4528.hasCurrentObject ()) {
+          enumerator_3914.gotoNextObject () ;
+          if (enumerator_3914.hasCurrentObject ()) {
             result.appendString (",\n") ;
           }
-          index_4528_.increment () ;
+          index_3914_.increment () ;
         }
       }
       result.appendString ("\n]\n\n//--------------------------------------------------------------------------------------------------\n//   Block Comment for '") ;
-      result.appendString (enumerator_4140.current_mLexiqueClassName (HERE).stringValue ()) ;
+      result.appendString (enumerator_3526.current_mLexiqueClassName (HERE).stringValue ()) ;
       result.appendString ("' lexique\n//--------------------------------------------------------------------------------------------------\n\nlet gBlockComment_") ;
-      result.appendString (enumerator_4140.current_mLexiqueClassName (HERE).stringValue ()) ;
+      result.appendString (enumerator_3526.current_mLexiqueClassName (HERE).stringValue ()) ;
       result.appendString (" : String\? = ") ;
-      const GalgasBool test_1 = GGS_bool (ComparisonKind::equal, enumerator_4140.current_mBlockComment (HERE).getter_count (SOURCE_FILE ("gui-implementation-swiftui.swift.galgasTemplate", 137)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
-      switch (test_1) {
+      const GalgasBool test_0 = GGS_bool (ComparisonKind::equal, enumerator_3526.current_mBlockComment (HERE).getter_count (SOURCE_FILE ("gui-implementation-swiftui.swift.galgasTemplate", 119)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
+      switch (test_0) {
       case GalgasBool::boolTrue : {
         result.appendString ("nil") ;
         } break ;
       case GalgasBool::boolFalse : {
-        result.appendString (enumerator_4140.current_mBlockComment (HERE).getter_utf_38_Representation (SOURCE_FILE ("gui-implementation-swiftui.swift.galgasTemplate", 137)).stringValue ()) ;
+        result.appendString (enumerator_3526.current_mBlockComment (HERE).getter_utf_38_Representation (SOURCE_FILE ("gui-implementation-swiftui.swift.galgasTemplate", 119)).stringValue ()) ;
         } break ;
       case GalgasBool::boolNotValid :
         break ;
       }
       result.appendString ("\n\n") ;
-      enumerator_4140.gotoNextObject () ;
-      index_4140_.increment () ;
+      enumerator_3526.gotoNextObject () ;
+      index_3526_.increment () ;
     }
   }
   result.appendString ("\n//--------------------------------------------------------------------------------------------------\n\n") ;

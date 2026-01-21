@@ -40,7 +40,7 @@ struct ProjectDocumentView : View {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  @ObservedObject var mProjectDocumentSaveScheduler = ProjectDocumentSaveScheduler ()
+  @StateObject var mProjectDocumentSaveScheduler = ProjectDocumentSaveScheduler ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   // Search
@@ -51,6 +51,7 @@ struct ProjectDocumentView : View {
   @State var mSearchMessage = "No Result"
   @State var mSearchResults : [SearchResultNode] = []
   @State var mSelectedSearchResultID : UUID? = nil
+  @State var mSearchResultSections : Set <UUID> = []
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -79,7 +80,9 @@ struct ProjectDocumentView : View {
 
   private func projectDocumentStringDidChange (_ inString : String) {
     self.mDocument.mString = inString
-    self.mProjectDocumentSaveScheduler.scheduleProjectDocumentSaveOperation ()
+    DispatchQueue.main.async {
+      self.mProjectDocumentSaveScheduler.scheduleProjectDocumentSaveOperation ()
+    }
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -143,7 +146,6 @@ struct ProjectDocumentView : View {
             Button ("Project \(self.mProjectFileURL.lastPathComponent)") { self.mRootDirectoryNode.mSelectedFileNodeID = nil }
             Spacer ()
           }
-//          Divider ()
           ScrollViewReader { (proxy : ScrollViewProxy) in
             List (selection: self.$mRootDirectoryNode.mSelectedFileNodeID) {
               ForEach (self.mRootDirectoryNode.mChildren, id: \.self.id) { child in
@@ -168,7 +170,7 @@ struct ProjectDocumentView : View {
               self.mSelectedIssue = issue.id
               self.showSelectedIssueInSource ()
             } label: {
-              issue.view.frame (maxWidth: .infinity, alignment: .leading)
+              issue.view ().frame (maxWidth: .infinity, alignment: .leading)
             }
             .buttonStyle (.plain)
           }
@@ -261,11 +263,12 @@ final class ProjectDocumentSaveScheduler : ObservableObject {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private var mSaveScheduled = false
+  @Published private var mSaveScheduled = false
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func scheduleProjectDocumentSaveOperation () {
+    print ("scheduleProjectDocumentSaveOperation \(self.mSaveScheduled)")
     if !self.mSaveScheduled {
       self.mSaveScheduled = true
       DispatchQueue.main.asyncAfter (deadline: .now () + AUTOMATIC_SAVE_DELAY) {
@@ -277,6 +280,7 @@ final class ProjectDocumentSaveScheduler : ObservableObject {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func saveProjectDocument (completionHandler inCompletionHandler: (() -> Void)?) {
+    print ("saveProjectDocument \(self.mSaveScheduled)")
     if self.mSaveScheduled {
       self.mSaveScheduled = false
       if let doc = NSDocumentController.shared.currentDocument {
@@ -288,12 +292,14 @@ final class ProjectDocumentSaveScheduler : ObservableObject {
           if let error = error {
             print ("Erreur:", error)
           }else{
-            DispatchQueue.main.async { inCompletionHandler? () }
+            print ("Document sauvegardé.")
+            inCompletionHandler? ()
           }
         }
       }
     }else{
-      DispatchQueue.main.async { inCompletionHandler? () }
+      print ("Document déjà sauvegardé.")
+      inCompletionHandler? ()
     }
   }
 
