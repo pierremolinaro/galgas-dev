@@ -6,14 +6,14 @@ proc testsuite_introspection() {
 println ("*************************************** begin of introspection test")
 //--- List of types
   let @typelist typeList = @type.typeList
-  println ("--- Type list (" + typeList.length.string + " types)")
+  println ("--- Type list (" + typeList.count.string + " types)")
   for (mValue) in typeList do
     println ("  @" + mValue.name + "")
   end
 //--- List of functions
   let @functionlist functionList = @function.functionList
-  println ("--- Function list (" + functionList.length.string
-  + " function" + if functionList.length > 1 then "s" else "" end + ")")
+  println ("--- Function list (" + functionList.count.string
+  + " function" + if functionList.count > 1 then "s" else "" end + ")")
   for (mValue) in functionList do
     var @string s = ""
     for (mValue) in mValue.formalParameterTypeList

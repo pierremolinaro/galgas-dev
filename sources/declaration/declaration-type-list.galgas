@@ -220,7 +220,7 @@ override method @listDeclarationAST enterDeclarationInSemanticContext
     !?getterMap
     !?ioTypeMap
     !getterName:"count"
-    !obsoleteName: "length"
+    !obsoleteName: ""
     !returnedTypeName:"uint"
     !hasCompilerArgument:false
   )

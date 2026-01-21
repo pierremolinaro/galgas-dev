@@ -360,7 +360,7 @@ private proc appendStructASTForRangeType ?!@semanticDeclarationListAST ioDeclara
     !initialization: .none
   attributeList +=
     !mutability: .mutableProperty
-    ! @lstring {!"uint" !@location.here}
+    !@lstring {!"uint" !@location.here}
     !@lstring {!"length" !@location.here}
     !.publicAccess
     !hasSelector: false

@@ -239,7 +239,7 @@ final class @sortedListDeclarationAST : @semanticDeclarationAST {
       !?getterMap
       !?ioTypeMap
       !getterName:"count"
-      !obsoleteName: "length"
+      !obsoleteName: ""
       !returnedTypeName:"uint"
       !hasCompilerArgument:false
     )

@@ -116,7 +116,7 @@ final class @dataPredefinedTypeAST : @predefinedTypeAST {
       !?outMap
       !?ioUnifiedTypeMap
       !getterName:"count"
-      !obsoleteName: "length"
+      !obsoleteName: ""
       !returnedTypeName:"uint"
       !hasCompilerArgument:false
     )
