@@ -39,20 +39,6 @@ syntax extension galgas3InstructionsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <semantic_instruction_ggs3> ?!@galgasDeclarationAST unused ioDeclarations
-                                   !@semanticInstructionAST outInstruction {
-    $@type$ ?let typeName // Obsolete, dont't use <type_definition_ggs3>
-    $identifier$ ?let variableName
-    outInstruction = @localVariableDeclarationNoAssignmentAST {!typeName.location !typeName !variableName}
-    if [option galgas_cli_options.errorOldStyleLocalVarDeclaration value] then
-      error typeName
-      : "old style local variable declaration (due to '--error-old-style-local-var-declaration' option)"
-      fixit { replace "var @" + typeName }
-    end
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
   rule <semantic_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
                                    !@semanticInstructionAST outInstruction {
     $var$
@@ -89,27 +75,6 @@ syntax extension galgas3InstructionsSyntax {
         !variableName
         !sourceExpression
       }
-    end
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  rule <semantic_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
-                                   !@semanticInstructionAST outInstruction {
-    $@type$ ?let typeName // Obsolete, dont't use <type_definition_ggs3>
-    $identifier$ ?let variableName
-    $=$
-    <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST sourceExpression
-    outInstruction = @localVariableOrConstantDeclarationWithAssignmentAST {
-      !typeName.location
-      !false
-      !typeName
-      !variableName
-      !sourceExpression
-    }
-    if [option galgas_cli_options.errorOldStyleLocalVarDeclaration value] then
-      error typeName : "old style local variable declaration (due to '--error-old-style-local-var-declaration' option)"
-      fixit { replace "var @" + typeName }
     end
   }
 

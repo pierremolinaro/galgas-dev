@@ -18,7 +18,6 @@ fileprivate let errorAnomynousForInstructionEnumeratedObject_PREFKEY = "galgas_c
 fileprivate let errorObsoleteGetterCall_PREFKEY = "galgas_cli_options:errorObsoleteGetterCall"
 fileprivate let errorPropertyGetterCall_PREFKEY = "galgas_cli_options:errorPropertyGetterCall"
 fileprivate let errorOnGetterCallWithNoArgument_PREFKEY = "galgas_cli_options:errorOnGetterCallWithNoArgument"
-fileprivate let errorOldStyleLocalVarDeclaration_PREFKEY = "galgas_cli_options:errorOldStyleLocalVarDeclaration"
 fileprivate let generateManyFiles_PREFKEY = "galgas_cli_options:generateManyFiles"
 fileprivate let generateOneHeader_PREFKEY = "galgas_cli_options:generateOneHeader"
 fileprivate let outputHTMLgrammarFile_PREFKEY = "galgas_cli_options:outputHTMLgrammarFile"
@@ -57,7 +56,6 @@ struct OptionView : View {
   @AppStorage(errorObsoleteGetterCall_PREFKEY) private var errorObsoleteGetterCall : Bool = false
   @AppStorage(errorPropertyGetterCall_PREFKEY) private var errorPropertyGetterCall : Bool = false
   @AppStorage(errorOnGetterCallWithNoArgument_PREFKEY) private var errorOnGetterCallWithNoArgument : Bool = false
-  @AppStorage(errorOldStyleLocalVarDeclaration_PREFKEY) private var errorOldStyleLocalVarDeclaration : Bool = false
   @AppStorage(generateManyFiles_PREFKEY) private var generateManyFiles : Bool = false
   @AppStorage(generateOneHeader_PREFKEY) private var generateOneHeader : Bool = false
   @AppStorage(outputHTMLgrammarFile_PREFKEY) private var outputHTMLgrammarFile : Bool = false
@@ -108,7 +106,6 @@ struct OptionView : View {
           Toggle ("Error on call of an obsolete getter", isOn: self.$errorObsoleteGetterCall)
           Toggle ("Error on calling property getter (instead of dot notation)", isOn: self.$errorPropertyGetterCall)
           Toggle ("Error on getter call; with no argument (GGS4, suppress parenthesis)", isOn: self.$errorOnGetterCallWithNoArgument)
-          Toggle ("Error on old style local variable declaration", isOn: self.$errorOldStyleLocalVarDeclaration)
           Toggle ("Generate many C++ implementation files", isOn: self.$generateManyFiles)
           Toggle ("Generate one C++ header file for all declarations", isOn: self.$generateOneHeader)
           Toggle ("Output a HTML file for every grammar component", isOn: self.$outputHTMLgrammarFile)
@@ -183,9 +180,6 @@ func commandLineToolInvocation () -> CommandLineToolInvocation {
   }
   if ud.bool (forKey: errorOnGetterCallWithNoArgument_PREFKEY) {
     arguments.append ("--error-on-getter-call-with-no-argument")
-  }
-  if ud.bool (forKey: errorOldStyleLocalVarDeclaration_PREFKEY) {
-    arguments.append ("--error-old-style-local-var-declaration")
   }
   if ud.bool (forKey: generateManyFiles_PREFKEY) {
     arguments.append ("--generate-many-cpp-files")

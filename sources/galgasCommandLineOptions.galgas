@@ -72,9 +72,6 @@ option galgas_cli_options {
   @bool errorAnomynousForInstructionEnumeratedObject : '\0', "error-anonymous-for-instruction"
     -> "Error on anonymous 'for' instruction enumerated object ('for () in ...')"
 
-  @bool errorOldStyleLocalVarDeclaration : '\0', "error-old-style-local-var-declaration"
-    -> "Error on old style local variable declaration"
-
   @bool errorPropertyGetterCall : '\0', "error-property-getter-call"
     -> "Error on calling property getter (instead of dot notation)"
 
