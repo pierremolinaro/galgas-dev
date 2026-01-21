@@ -268,7 +268,7 @@ final class ProjectDocumentSaveScheduler : ObservableObject {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func scheduleProjectDocumentSaveOperation () {
-    print ("scheduleProjectDocumentSaveOperation \(self.mSaveScheduled)")
+//    print ("scheduleProjectDocumentSaveOperation \(self.mSaveScheduled)")
     if !self.mSaveScheduled {
       self.mSaveScheduled = true
       DispatchQueue.main.asyncAfter (deadline: .now () + AUTOMATIC_SAVE_DELAY) {
@@ -280,7 +280,7 @@ final class ProjectDocumentSaveScheduler : ObservableObject {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func saveProjectDocument (completionHandler inCompletionHandler: (() -> Void)?) {
-    print ("saveProjectDocument \(self.mSaveScheduled)")
+//    print ("saveProjectDocument \(self.mSaveScheduled)")
     if self.mSaveScheduled {
       self.mSaveScheduled = false
       if let doc = NSDocumentController.shared.currentDocument {
@@ -292,13 +292,13 @@ final class ProjectDocumentSaveScheduler : ObservableObject {
           if let error = error {
             print ("Erreur:", error)
           }else{
-            print ("Document sauvegardé.")
+//            print ("Document sauvegardé.")
             inCompletionHandler? ()
           }
         }
       }
     }else{
-      print ("Document déjà sauvegardé.")
+//      print ("Document déjà sauvegardé.")
       inCompletionHandler? ()
     }
   }

@@ -75,7 +75,7 @@ private filewrapper targetGalgas3GenerationFileWrapper in "+generation-templates
     ?verboseOption:@bool VERBOSE_OPTION
     ?buildDirName: @string BUILD_DIR_NAME
 
-  template makefile_info_plist "project-xcode-objc/Info.plist.galgasTemplate"
+  template makefile_info_plist "project-xcode-swiftui/Info.plist.galgasTemplate"
     ?@string PROJECT_NAME
     ?@string APPLICATION_BUNDLE_BASE
     ?@string VERSION_STRING
@@ -83,11 +83,11 @@ private filewrapper targetGalgas3GenerationFileWrapper in "+generation-templates
     ?@string MACOSX_DEPLOYMENT_TARGET
     ?@string DOCUMENT_CLASS
 
-  template makefile_build_xcode "project-xcode-objc/build.command"
+  template makefile_build_xcode "project-xcode-swiftui/build.command"
 
-  template makefile_info_plist_strings "project-xcode-objc/Base.lproj/InfoPlist.strings" ?@string PROJECT_NAME
+  template makefile_info_plist_strings "project-xcode-swiftui/Base.lproj/InfoPlist.strings" ?@string PROJECT_NAME
 
-  template json_file_list "json-file-list-galgas3.galgasTemplate"
+  template json_file_list "json-file-list.galgasTemplate"
     ?@stringset HAND_CODED_SOURCE_DIR_SET
     ?@stringlist HAND_CODED_SOURCE_FILE_LIST
     ?@stringlist MAKEFILE_FILE_LIST
@@ -526,7 +526,7 @@ proc updateGalgasTargets
     [[filewrapper targetGalgas3GenerationFileWrapper.makefile_info_plist_strings !inTargetName] writeToFileWhenDifferentContents !InfoPlist_strings_path ?*]
     let Credits_rtf_path = dir + "/Base.lproj/Credits.rtf"
     if not [Credits_rtf_path fileExists] then
-      [[filewrapper targetGalgas3GenerationFileWrapper."project-xcode-objc/Base.lproj/Credits.rtf"] writeToFile !Credits_rtf_path]
+      [[filewrapper targetGalgas3GenerationFileWrapper."project-xcode-swiftui/Base.lproj/Credits.rtf"] writeToFile !Credits_rtf_path]
     end
   //--- Enumerate icons files in "userResources" directory
     let userResourceDir = projectDirectory + "/xcode-project/userResources"
@@ -544,9 +544,6 @@ proc updateGalgasTargets
       + inBuildDirectoryName + "/output\", \"../" + inBuildDirectoryName
       + "/libpm\", \"../"
       + inBuildDirectoryName + "/user-headers\""
-//    for directory in inHandCodedSourceDirectory do
-//      headerSearchPaths += ", \"" + directory + "\""
-//    end
     headerSearchPaths += ", \"" + inHandCodedSourceDirectory + "\""
     headerSearchPaths += ")"
   //--- Default build configuration
@@ -630,22 +627,6 @@ proc updateGalgasTargets
       xcodeSettingList += !"MACOSX_DEPLOYMENT_TARGET = \"" + MACOSX_DEPLOYMENT_TARGET + "\""
     end
     [!?xcodeProject addSettingsToDefaultConfiguration !settingList: xcodeSettingList]
-  //--- Add "Hand coded sources (App)" group
-//    var @stringlist resource_handCodedResourceFileRefForAppList = @()
-//    if [inHandCodedSourceAppFileList count] > 0 then
-//      [!?xcodeProject addGroupWithFiles
-//        !groupName:"Hand Coded Sources (App)"
-//        !groupPath:"../"
-//        !fileNames:@stringset.setWithStringList {!inHandCodedSourceAppFileList}
-//        !?cFileRefs: %from @()
-//        !?cppFileRefs: %from @()
-//        !?swiftFileRefs: %from @()
-//        !?frameworkFileRefs: %from @()
-//        !?resourceFileRefs: resource_handCodedResourceFileRefForAppList
-//        ?groupRef:let @string groupRef
-//      ]
-//      [!?xcodeProject placeGroupAsMainGroup !groupRef:groupRef]
-//    end
   //--- Add "Frameworks for App" group
     var @stringlist appFrameworksFileRefList = @()
     if [inHandCodedLinkAppFileList count] > 0 then
@@ -1197,15 +1178,6 @@ proc updateGalgasTargets
       @("GCC_WARN_UNUSED_PARAMETER = YES"),
       @("PRODUCT_BUNDLE_IDENTIFIER = \"" + applicationBundleBase + "." + inTargetName + ".tool\"")
     ] + codeSigningSettingList
-//    if [inHandCodedLinkToolFileList count] > 0 then
-//      var s = "OTHER_LDFLAGS=("
-//      for (toolLink) in inHandCodedLinkToolFileList
-//        do s += "\"" + toolLink + "\""
-//        between s += ","
-//      end
-//      s += ")"
-//      settingList += !s
-//    end
     [!?xcodeProject addToolTarget
       !targetName:inTargetName + " tool"
       !productFileName:inTargetName
@@ -1223,15 +1195,6 @@ proc updateGalgasTargets
       @("GCC_WARN_UNUSED_PARAMETER = YES"),
       @("PRODUCT_BUNDLE_IDENTIFIER = \"" + applicationBundleBase + "." + inTargetName + ".tooldebug\"")
     ] + codeSigningSettingList
-//    if [inHandCodedLinkToolFileList count] > 0 then
-//      var s = "OTHER_LDFLAGS=("
-//      for (toolLink) in inHandCodedLinkToolFileList
-//        do s += "\"" + toolLink + "\""
-//        between s += ","
-//      end
-//      s += ")"
-//      settingList += !s
-//    end
     [!?xcodeProject addToolTarget
       !targetName:inTargetName + " tool debug"
       !productFileName:inTargetName+"-debug"

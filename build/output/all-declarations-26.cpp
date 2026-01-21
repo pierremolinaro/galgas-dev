@@ -3438,23 +3438,23 @@ const cDirectoryWrapper gWrapperDirectory_4_typeDumpGenerationTemplate (
   gWrapperAllDirectories_typeDumpGenerationTemplate_4
 ) ;
 
-//--- All files of 'project-xcode-objc' directory
+//--- All files of 'project-xcode-swiftui' directory
 
 static const cRegularFileWrapper * gWrapperAllFiles_typeDumpGenerationTemplate_3 [1] = {
   nullptr
 } ;
 
-//--- All sub-directories of 'project-xcode-objc' directory
+//--- All sub-directories of 'project-xcode-swiftui' directory
 
 static const cDirectoryWrapper * gWrapperAllDirectories_typeDumpGenerationTemplate_3 [2] = {
   & gWrapperDirectory_4_typeDumpGenerationTemplate,
   nullptr
 } ;
 
-//--- Directory 'project-xcode-objc'
+//--- Directory 'project-xcode-swiftui'
 
 const cDirectoryWrapper gWrapperDirectory_3_typeDumpGenerationTemplate (
-  "project-xcode-objc",
+  "project-xcode-swiftui",
   0,
   gWrapperAllFiles_typeDumpGenerationTemplate_3,
   1,
