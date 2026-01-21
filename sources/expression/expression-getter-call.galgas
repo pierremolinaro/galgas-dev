@@ -89,7 +89,7 @@ final class @getterCallExpressionAST : @semanticExpressionAST {
     let @unifiedTypeMapEntry receiverType = receiverExpression.mResultType
   //-------------------------------------- Search getter
     if let aGetter = [receiverType definition].getterMap @[self.mGetterName] then
-      if (aGetter.mGetterNameThatObsoletesInvokationName != "") && [option galgas_cli_options.errorObsoleteGetterCall value] then
+      if aGetter.mGetterNameThatObsoletesInvokationName != "" then
         error self.mGetterName : "obsolete getter" fixit {
           replace aGetter.mGetterNameThatObsoletesInvokationName
         }
@@ -222,7 +222,7 @@ final class @getterCallExpressionAST : @semanticExpressionAST {
             checkAssignmentTypeWithImplicitGetterCall (!mFormalArgumentType !exp.mResultType !mEndOfExpressionLocation !?exp)
             constructorEffectiveParameterList += !exp
           end
-          if (obsoletedByGetter != "") && [option galgas_cli_options.errorObsoleteGetterCall value] then
+          if obsoletedByGetter != "" then
             error self.mGetterName : "obsolete getter" fixit { replace obsoletedByGetter }
           end
           outExpression = @getterCallExpressionForGeneration {

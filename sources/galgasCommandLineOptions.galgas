@@ -67,10 +67,6 @@ option galgas_cli_options {
 
   @bool errorOnGetterCallWithNoArgument : '\0', "error-on-getter-call-with-no-argument"
     -> "Error on getter call; with no argument (GGS4, suppress parenthesis)"
-
-//--- Deprecated constructions
-  @bool errorObsoleteGetterCall : '\0', "error-on-obsolete-getter-call"
-    -> "Error on call of an obsolete getter"
 }
 
 //--------------------------------------------------------------------------------------------------

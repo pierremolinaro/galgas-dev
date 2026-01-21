@@ -297,7 +297,7 @@ end
   for (5*) in PROPERTY_LIST do (IDX) %, inArgument%![IDX string] end%) ;
   const char * kInsertErrorMessage = %![errorMessage utf8RepresentationEscapingQuestionMark]% ;
 %
-if [shadowErrorMessage length] == 0 then
+if [shadowErrorMessage count] == 0 then
 %  const char * kShadowErrorMessage = nullptr ;
 %else
 %  const char * kShadowErrorMessage = %![shadowErrorMessage utf8RepresentationEscapingQuestionMark]% ;

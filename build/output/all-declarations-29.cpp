@@ -2480,301 +2480,293 @@ void cPtr_getterCallExpressionAST::method_analyzeSemanticExpression (const GGS_l
     if (GalgasBool::boolTrue == test_4) {
       GalgasBool test_6 = GalgasBool::boolTrue ;
       if (GalgasBool::boolTrue == test_6) {
-        GGS_bool test_7 = GGS_bool (ComparisonKind::notEqual, var_aGetter_4299.readProperty_mGetterNameThatObsoletesInvokationName ().objectCompare (GGS_string::makeEmptyString ())) ;
-        if (GalgasBool::boolTrue == test_7.boolEnum ()) {
-          test_7 = GGS_bool (gOption_galgas_5F_cli_5F_options_errorObsoleteGetterCall.readProperty_value ()) ;
-        }
-        test_6 = test_7.boolEnum () ;
+        test_6 = GGS_bool (ComparisonKind::notEqual, var_aGetter_4299.readProperty_mGetterNameThatObsoletesInvokationName ().objectCompare (GGS_string::makeEmptyString ())).boolEnum () ;
         if (GalgasBool::boolTrue == test_6) {
-          const GGS_getterCallExpressionAST temp_8 = this ;
-          GenericArray <FixItDescription> fixItArray9 ;
-          appendFixItActions (fixItArray9, EnumFixItKind::fixItReplace, var_aGetter_4299.readProperty_mGetterNameThatObsoletesInvokationName ()) ;
-          inCompiler->emitSemanticError (temp_8.readProperty_mGetterName ().readProperty_location (), GGS_string ("obsolete getter"), fixItArray9  COMMA_SOURCE_FILE ("expression-getter-call.galgas", 93)) ;
+          const GGS_getterCallExpressionAST temp_7 = this ;
+          GenericArray <FixItDescription> fixItArray8 ;
+          appendFixItActions (fixItArray8, EnumFixItKind::fixItReplace, var_aGetter_4299.readProperty_mGetterNameThatObsoletesInvokationName ()) ;
+          inCompiler->emitSemanticError (temp_7.readProperty_mGetterName ().readProperty_location (), GGS_string ("obsolete getter"), fixItArray8  COMMA_SOURCE_FILE ("expression-getter-call.galgas", 93)) ;
         }
       }
-      GalgasBool test_10 = GalgasBool::boolTrue ;
-      if (GalgasBool::boolTrue == test_10) {
-        const GGS_getterCallExpressionAST temp_11 = this ;
-        GGS_bool test_12 = extensionGetter_definition (var_receiverType_4185, inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 97)).readProperty_propertyMap ().getter_hasKey (temp_11.readProperty_mGetterName ().readProperty_string () COMMA_SOURCE_FILE ("expression-getter-call.galgas", 97)) ;
-        if (GalgasBool::boolTrue == test_12.boolEnum ()) {
+      GalgasBool test_9 = GalgasBool::boolTrue ;
+      if (GalgasBool::boolTrue == test_9) {
+        const GGS_getterCallExpressionAST temp_10 = this ;
+        GGS_bool test_11 = extensionGetter_definition (var_receiverType_4185, inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 97)).readProperty_propertyMap ().getter_hasKey (temp_10.readProperty_mGetterName ().readProperty_string () COMMA_SOURCE_FILE ("expression-getter-call.galgas", 97)) ;
+        if (GalgasBool::boolTrue == test_11.boolEnum ()) {
+          const GGS_getterCallExpressionAST temp_12 = this ;
+          test_11 = GGS_bool (ComparisonKind::equal, temp_12.readProperty_mActualArgumentList ().getter_count (SOURCE_FILE ("expression-getter-call.galgas", 98)).objectCompare (GGS_uint (uint32_t (0U)))) ;
+        }
+        test_9 = test_11.boolEnum () ;
+        if (GalgasBool::boolTrue == test_9) {
           const GGS_getterCallExpressionAST temp_13 = this ;
-          test_12 = GGS_bool (ComparisonKind::equal, temp_13.readProperty_mActualArgumentList ().getter_count (SOURCE_FILE ("expression-getter-call.galgas", 98)).objectCompare (GGS_uint (uint32_t (0U)))) ;
-        }
-        test_10 = test_12.boolEnum () ;
-        if (GalgasBool::boolTrue == test_10) {
-          const GGS_getterCallExpressionAST temp_14 = this ;
-          GenericArray <FixItDescription> fixItArray15 ;
-          inCompiler->emitSemanticError (temp_14.readProperty_mExpressionLocation (), GGS_string ("use dot notation, instead of getter call"), fixItArray15  COMMA_SOURCE_FILE ("expression-getter-call.galgas", 99)) ;
+          GenericArray <FixItDescription> fixItArray14 ;
+          inCompiler->emitSemanticError (temp_13.readProperty_mExpressionLocation (), GGS_string ("use dot notation, instead of getter call"), fixItArray14  COMMA_SOURCE_FILE ("expression-getter-call.galgas", 99)) ;
         }
       }
-      GalgasBool test_16 = GalgasBool::boolTrue ;
-      if (GalgasBool::boolTrue == test_16) {
-        const GGS_getterCallExpressionAST temp_17 = this ;
-        test_16 = GGS_bool (ComparisonKind::notEqual, temp_17.readProperty_mActualArgumentList ().getter_count (SOURCE_FILE ("expression-getter-call.galgas", 102)).objectCompare (var_aGetter_4299.readProperty_mArgumentTypeList ().getter_count (SOURCE_FILE ("expression-getter-call.galgas", 102)))).boolEnum () ;
-        if (GalgasBool::boolTrue == test_16) {
+      GalgasBool test_15 = GalgasBool::boolTrue ;
+      if (GalgasBool::boolTrue == test_15) {
+        const GGS_getterCallExpressionAST temp_16 = this ;
+        test_15 = GGS_bool (ComparisonKind::notEqual, temp_16.readProperty_mActualArgumentList ().getter_count (SOURCE_FILE ("expression-getter-call.galgas", 102)).objectCompare (var_aGetter_4299.readProperty_mArgumentTypeList ().getter_count (SOURCE_FILE ("expression-getter-call.galgas", 102)))).boolEnum () ;
+        if (GalgasBool::boolTrue == test_15) {
+          const GGS_getterCallExpressionAST temp_17 = this ;
           const GGS_getterCallExpressionAST temp_18 = this ;
           const GGS_getterCallExpressionAST temp_19 = this ;
-          const GGS_getterCallExpressionAST temp_20 = this ;
-          GenericArray <FixItDescription> fixItArray21 ;
-          inCompiler->emitSemanticError (temp_18.readProperty_mGetterName ().readProperty_location (), GGS_string ("calling the '").add_operation (temp_19.readProperty_mGetterName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 104)).add_operation (GGS_string ("' getter of '@"), inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 104)).add_operation (extensionGetter_definition (var_receiverType_4185, inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 104)).readProperty_typeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 104)).add_operation (GGS_string ("' requires "), inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 104)).add_operation (var_aGetter_4299.readProperty_mArgumentTypeList ().getter_count (SOURCE_FILE ("expression-getter-call.galgas", 105)).getter_string (SOURCE_FILE ("expression-getter-call.galgas", 104)), inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 104)).add_operation (GGS_string (" parameter(s), while this call has "), inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 105)).add_operation (temp_20.readProperty_mActualArgumentList ().getter_count (SOURCE_FILE ("expression-getter-call.galgas", 106)).getter_string (SOURCE_FILE ("expression-getter-call.galgas", 105)), inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 105)).add_operation (GGS_string (" parameter(s)"), inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 106)), fixItArray21  COMMA_SOURCE_FILE ("expression-getter-call.galgas", 103)) ;
+          GenericArray <FixItDescription> fixItArray20 ;
+          inCompiler->emitSemanticError (temp_17.readProperty_mGetterName ().readProperty_location (), GGS_string ("calling the '").add_operation (temp_18.readProperty_mGetterName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 104)).add_operation (GGS_string ("' getter of '@"), inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 104)).add_operation (extensionGetter_definition (var_receiverType_4185, inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 104)).readProperty_typeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 104)).add_operation (GGS_string ("' requires "), inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 104)).add_operation (var_aGetter_4299.readProperty_mArgumentTypeList ().getter_count (SOURCE_FILE ("expression-getter-call.galgas", 105)).getter_string (SOURCE_FILE ("expression-getter-call.galgas", 104)), inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 104)).add_operation (GGS_string (" parameter(s), while this call has "), inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 105)).add_operation (temp_19.readProperty_mActualArgumentList ().getter_count (SOURCE_FILE ("expression-getter-call.galgas", 106)).getter_string (SOURCE_FILE ("expression-getter-call.galgas", 105)), inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 105)).add_operation (GGS_string (" parameter(s)"), inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 106)), fixItArray20  COMMA_SOURCE_FILE ("expression-getter-call.galgas", 103)) ;
           outArgument_outExpression.drop () ; // Release error dropped variable
         }
       }
-      if (GalgasBool::boolFalse == test_16) {
-        GGS_semanticExpressionListForGeneration var_constructorEffectiveParameterList_5364 = GGS_semanticExpressionListForGeneration::init (inCompiler COMMA_HERE) ;
-        const GGS_getterCallExpressionAST temp_22 = this ;
-        UpEnumerator_actualOutputArgumentList enumerator_5445 (temp_22.readProperty_mActualArgumentList ()) ;
-        UpEnumerator_functionSignature enumerator_5550 (var_aGetter_4299.readProperty_mArgumentTypeList ()) ;
-        while (enumerator_5445.hasCurrentObject () && enumerator_5550.hasCurrentObject ()) {
-          GGS_semanticExpressionForGeneration var_exp_5917 ;
-          callExtensionMethod_analyzeSemanticExpression ((cPtr_semanticExpressionAST *) enumerator_5445.current_mExpression (HERE).ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, enumerator_5550.current_mFormalArgumentType (HERE), constinArgument_inAnalysisContext, ioArgument_ioTypeMap, ioArgument_ioVariableMap, var_exp_5917, inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 111)) ;
-          GalgasBool test_23 = GalgasBool::boolTrue ;
-          if (GalgasBool::boolTrue == test_23) {
-            test_23 = GGS_bool (ComparisonKind::notEqual, enumerator_5550.current_mFormalSelector (HERE).readProperty_string ().objectCompare (enumerator_5445.current_mActualSelector (HERE).readProperty_string ())).boolEnum () ;
-            if (GalgasBool::boolTrue == test_23) {
-              GGS_string temp_24 ;
-              const GalgasBool test_25 = GGS_bool (ComparisonKind::notEqual, enumerator_5550.current_mFormalSelector (HERE).readProperty_string ().objectCompare (GGS_string::makeEmptyString ())).boolEnum () ;
-              if (GalgasBool::boolTrue == test_25) {
-                temp_24 = enumerator_5550.current_mFormalSelector (HERE).readProperty_string ().add_operation (GGS_string (":"), inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 121)) ;
-              }else if (GalgasBool::boolFalse == test_25) {
-                temp_24 = GGS_string::makeEmptyString () ;
+      if (GalgasBool::boolFalse == test_15) {
+        GGS_semanticExpressionListForGeneration var_constructorEffectiveParameterList_5301 = GGS_semanticExpressionListForGeneration::init (inCompiler COMMA_HERE) ;
+        const GGS_getterCallExpressionAST temp_21 = this ;
+        UpEnumerator_actualOutputArgumentList enumerator_5382 (temp_21.readProperty_mActualArgumentList ()) ;
+        UpEnumerator_functionSignature enumerator_5487 (var_aGetter_4299.readProperty_mArgumentTypeList ()) ;
+        while (enumerator_5382.hasCurrentObject () && enumerator_5487.hasCurrentObject ()) {
+          GGS_semanticExpressionForGeneration var_exp_5854 ;
+          callExtensionMethod_analyzeSemanticExpression ((cPtr_semanticExpressionAST *) enumerator_5382.current_mExpression (HERE).ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, enumerator_5487.current_mFormalArgumentType (HERE), constinArgument_inAnalysisContext, ioArgument_ioTypeMap, ioArgument_ioVariableMap, var_exp_5854, inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 111)) ;
+          GalgasBool test_22 = GalgasBool::boolTrue ;
+          if (GalgasBool::boolTrue == test_22) {
+            test_22 = GGS_bool (ComparisonKind::notEqual, enumerator_5487.current_mFormalSelector (HERE).readProperty_string ().objectCompare (enumerator_5382.current_mActualSelector (HERE).readProperty_string ())).boolEnum () ;
+            if (GalgasBool::boolTrue == test_22) {
+              GGS_string temp_23 ;
+              const GalgasBool test_24 = GGS_bool (ComparisonKind::notEqual, enumerator_5487.current_mFormalSelector (HERE).readProperty_string ().objectCompare (GGS_string::makeEmptyString ())).boolEnum () ;
+              if (GalgasBool::boolTrue == test_24) {
+                temp_23 = enumerator_5487.current_mFormalSelector (HERE).readProperty_string ().add_operation (GGS_string (":"), inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 121)) ;
+              }else if (GalgasBool::boolFalse == test_24) {
+                temp_23 = GGS_string::makeEmptyString () ;
               }
-              GGS_string var_s_6024 = GGS_string ("!").add_operation (temp_24, inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 121)) ;
-              GenericArray <FixItDescription> fixItArray26 ;
-              appendFixItActions (fixItArray26, EnumFixItKind::fixItReplace, var_s_6024) ;
-              inCompiler->emitSemanticError (enumerator_5445.current_mActualSelector (HERE).readProperty_location (), GGS_string ("the selector should be '").add_operation (var_s_6024, inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 122)).add_operation (GGS_string ("'"), inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 122)), fixItArray26  COMMA_SOURCE_FILE ("expression-getter-call.galgas", 122)) ;
+              GGS_string var_s_5961 = GGS_string ("!").add_operation (temp_23, inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 121)) ;
+              GenericArray <FixItDescription> fixItArray25 ;
+              appendFixItActions (fixItArray25, EnumFixItKind::fixItReplace, var_s_5961) ;
+              inCompiler->emitSemanticError (enumerator_5382.current_mActualSelector (HERE).readProperty_location (), GGS_string ("the selector should be '").add_operation (var_s_5961, inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 122)).add_operation (GGS_string ("'"), inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 122)), fixItArray25  COMMA_SOURCE_FILE ("expression-getter-call.galgas", 122)) ;
             }
           }
           {
-          routine_checkAssignmentTypeWithImplicitGetterCall_3F__3F__3F__26_ (enumerator_5550.current_mFormalArgumentType (HERE), var_exp_5917.readProperty_mResultType (), enumerator_5445.current_mEndOfExpressionLocation (HERE), var_exp_5917, inCompiler  COMMA_SOURCE_FILE ("expression-getter-call.galgas", 124)) ;
+          routine_checkAssignmentTypeWithImplicitGetterCall_3F__3F__3F__26_ (enumerator_5487.current_mFormalArgumentType (HERE), var_exp_5854.readProperty_mResultType (), enumerator_5382.current_mEndOfExpressionLocation (HERE), var_exp_5854, inCompiler  COMMA_SOURCE_FILE ("expression-getter-call.galgas", 124)) ;
           }
-          var_constructorEffectiveParameterList_5364.addAssignOperation (var_exp_5917  COMMA_SOURCE_FILE ("expression-getter-call.galgas", 125)) ;
-          enumerator_5445.gotoNextObject () ;
-          enumerator_5550.gotoNextObject () ;
+          var_constructorEffectiveParameterList_5301.addAssignOperation (var_exp_5854  COMMA_SOURCE_FILE ("expression-getter-call.galgas", 125)) ;
+          enumerator_5382.gotoNextObject () ;
+          enumerator_5487.gotoNextObject () ;
         }
-        const GGS_getterCallExpressionAST temp_27 = this ;
-        GGS_string temp_28 ;
-        const GalgasBool test_29 = GGS_bool (ComparisonKind::equal, var_aGetter_4299.readProperty_mGetterNameThatObsoletesInvokationName ().objectCompare (GGS_string::makeEmptyString ())).boolEnum () ;
-        if (GalgasBool::boolTrue == test_29) {
-          const GGS_getterCallExpressionAST temp_30 = this ;
-          temp_28 = temp_30.readProperty_mGetterName ().readProperty_string () ;
-        }else if (GalgasBool::boolFalse == test_29) {
-          temp_28 = var_aGetter_4299.readProperty_mGetterNameThatObsoletesInvokationName () ;
+        const GGS_getterCallExpressionAST temp_26 = this ;
+        GGS_string temp_27 ;
+        const GalgasBool test_28 = GGS_bool (ComparisonKind::equal, var_aGetter_4299.readProperty_mGetterNameThatObsoletesInvokationName ().objectCompare (GGS_string::makeEmptyString ())).boolEnum () ;
+        if (GalgasBool::boolTrue == test_28) {
+          const GGS_getterCallExpressionAST temp_29 = this ;
+          temp_27 = temp_29.readProperty_mGetterName ().readProperty_string () ;
+        }else if (GalgasBool::boolFalse == test_28) {
+          temp_27 = var_aGetter_4299.readProperty_mGetterNameThatObsoletesInvokationName () ;
         }
-        outArgument_outExpression = GGS_getterCallExpressionForGeneration::init_21__21__21__21__21__21__21__21_ (var_aGetter_4299.readProperty_mReturnedType (), temp_27.readProperty_mGetterName ().readProperty_location (), var_aGetter_4299.readProperty_mKind (), var_receiverExpression_4131, GGS_stringlist::init (inCompiler COMMA_HERE), temp_28, var_constructorEffectiveParameterList_5364, var_aGetter_4299.readProperty_mHasCompilerArgument (), inCompiler COMMA_HERE) ;
-        GalgasBool test_31 = GalgasBool::boolTrue ;
-        if (GalgasBool::boolTrue == test_31) {
-          GGS_bool test_32 = constinArgument_inAnalysisContext.readProperty_semanticContext ().readProperty_galgas_34_ () ;
-          if (GalgasBool::boolTrue == test_32.boolEnum ()) {
-            const GGS_getterCallExpressionAST temp_33 = this ;
-            test_32 = GGS_bool (ComparisonKind::equal, temp_33.readProperty_mActualArgumentList ().getter_count (SOURCE_FILE ("expression-getter-call.galgas", 138)).objectCompare (GGS_uint (uint32_t (0U)))) ;
+        outArgument_outExpression = GGS_getterCallExpressionForGeneration::init_21__21__21__21__21__21__21__21_ (var_aGetter_4299.readProperty_mReturnedType (), temp_26.readProperty_mGetterName ().readProperty_location (), var_aGetter_4299.readProperty_mKind (), var_receiverExpression_4131, GGS_stringlist::init (inCompiler COMMA_HERE), temp_27, var_constructorEffectiveParameterList_5301, var_aGetter_4299.readProperty_mHasCompilerArgument (), inCompiler COMMA_HERE) ;
+        GalgasBool test_30 = GalgasBool::boolTrue ;
+        if (GalgasBool::boolTrue == test_30) {
+          GGS_bool test_31 = constinArgument_inAnalysisContext.readProperty_semanticContext ().readProperty_galgas_34_ () ;
+          if (GalgasBool::boolTrue == test_31.boolEnum ()) {
+            const GGS_getterCallExpressionAST temp_32 = this ;
+            test_31 = GGS_bool (ComparisonKind::equal, temp_32.readProperty_mActualArgumentList ().getter_count (SOURCE_FILE ("expression-getter-call.galgas", 138)).objectCompare (GGS_uint (uint32_t (0U)))) ;
           }
-          GGS_bool test_34 = test_32 ;
-          if (GalgasBool::boolTrue == test_34.boolEnum ()) {
-            test_34 = GGS_bool (gOption_galgas_5F_cli_5F_options_errorOnGetterCallWithNoArgument.readProperty_value ()) ;
+          GGS_bool test_33 = test_31 ;
+          if (GalgasBool::boolTrue == test_33.boolEnum ()) {
+            test_33 = GGS_bool (gOption_galgas_5F_cli_5F_options_errorOnGetterCallWithNoArgument.readProperty_value ()) ;
           }
-          test_31 = test_34.boolEnum () ;
-          if (GalgasBool::boolTrue == test_31) {
-            const GGS_getterCallExpressionAST temp_35 = this ;
-            GenericArray <FixItDescription> fixItArray36 ;
-            fixItArray36.appendObject (FixItDescription (EnumFixItKind::fixItRemove, "")) ;
-            inCompiler->emitSemanticError (temp_35.readProperty_mExpressionLocation (), GGS_string ("getter with no argument, remove parenthesis"), fixItArray36  COMMA_SOURCE_FILE ("expression-getter-call.galgas", 140)) ;
+          test_30 = test_33.boolEnum () ;
+          if (GalgasBool::boolTrue == test_30) {
+            const GGS_getterCallExpressionAST temp_34 = this ;
+            GenericArray <FixItDescription> fixItArray35 ;
+            fixItArray35.appendObject (FixItDescription (EnumFixItKind::fixItRemove, "")) ;
+            inCompiler->emitSemanticError (temp_34.readProperty_mExpressionLocation (), GGS_string ("getter with no argument, remove parenthesis"), fixItArray35  COMMA_SOURCE_FILE ("expression-getter-call.galgas", 140)) ;
           }
         }
       }
     }
   }
   if (GalgasBool::boolFalse == test_4) {
-    GalgasBool test_37 = GalgasBool::boolTrue ;
-    if (GalgasBool::boolTrue == test_37) {
-      const GGS_getterCallExpressionAST temp_38 = this ;
-      test_37 = GGS_bool (ComparisonKind::equal, temp_38.readProperty_mActualArgumentList ().getter_count (SOURCE_FILE ("expression-getter-call.galgas", 144)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
-      if (GalgasBool::boolTrue == test_37) {
-        const GGS_getterCallExpressionAST temp_39 = this ;
-        const GGS_propertyMap_2E_element var_prop_7313 = extensionGetter_definition (var_receiverType_4185, inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 144)).readProperty_propertyMap ().readSubscript__3F_ (temp_39.readProperty_mGetterName ().readProperty_string (), inCompiler COMMA_HERE).unwrappedValue () ;
-        if (!extensionGetter_definition (var_receiverType_4185, inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 144)).readProperty_propertyMap ().readSubscript__3F_ (temp_39.readProperty_mGetterName ().readProperty_string (), inCompiler COMMA_HERE).isValuated ()) {
-          test_37 = GalgasBool::boolFalse ;
+    GalgasBool test_36 = GalgasBool::boolTrue ;
+    if (GalgasBool::boolTrue == test_36) {
+      const GGS_getterCallExpressionAST temp_37 = this ;
+      test_36 = GGS_bool (ComparisonKind::equal, temp_37.readProperty_mActualArgumentList ().getter_count (SOURCE_FILE ("expression-getter-call.galgas", 144)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
+      if (GalgasBool::boolTrue == test_36) {
+        const GGS_getterCallExpressionAST temp_38 = this ;
+        const GGS_propertyMap_2E_element var_prop_7250 = extensionGetter_definition (var_receiverType_4185, inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 144)).readProperty_propertyMap ().readSubscript__3F_ (temp_38.readProperty_mGetterName ().readProperty_string (), inCompiler COMMA_HERE).unwrappedValue () ;
+        if (!extensionGetter_definition (var_receiverType_4185, inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 144)).readProperty_propertyMap ().readSubscript__3F_ (temp_38.readProperty_mGetterName ().readProperty_string (), inCompiler COMMA_HERE).isValuated ()) {
+          test_36 = GalgasBool::boolFalse ;
         }
-        if (GalgasBool::boolTrue == test_37) {
+        if (GalgasBool::boolTrue == test_36) {
+          const GGS_getterCallExpressionAST temp_39 = this ;
+          extensionMethod_checkGetAccess (var_prop_7250.readProperty_mAccessControl (), constinArgument_inAnalysisContext.readProperty_selfAvailability (), temp_39.readProperty_mGetterName ().readProperty_location (), inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 145)) ;
           const GGS_getterCallExpressionAST temp_40 = this ;
-          extensionMethod_checkGetAccess (var_prop_7313.readProperty_mAccessControl (), constinArgument_inAnalysisContext.readProperty_selfAvailability (), temp_40.readProperty_mGetterName ().readProperty_location (), inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 145)) ;
-          const GGS_getterCallExpressionAST temp_41 = this ;
-          GenericArray <FixItDescription> fixItArray42 ;
-          inCompiler->emitSemanticError (temp_41.readProperty_mExpressionLocation (), GGS_string ("use dot notation, instead of getter call"), fixItArray42  COMMA_SOURCE_FILE ("expression-getter-call.galgas", 152)) ;
+          GenericArray <FixItDescription> fixItArray41 ;
+          inCompiler->emitSemanticError (temp_40.readProperty_mExpressionLocation (), GGS_string ("use dot notation, instead of getter call"), fixItArray41  COMMA_SOURCE_FILE ("expression-getter-call.galgas", 152)) ;
           outArgument_outExpression.drop () ; // Release error dropped variable
         }
       }
     }
-    if (GalgasBool::boolFalse == test_37) {
-      GGS_uint var_matchingReaderCount_7881 = GGS_uint (uint32_t (0U)) ;
-      GalgasBool test_43 = GalgasBool::boolTrue ;
-      if (GalgasBool::boolTrue == test_43) {
-        test_43 = GGS_bool (ComparisonKind::equal, extensionGetter_definition (var_receiverType_4185, inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 156)).readProperty_typeKind ().objectCompare (GGS_typeKindEnum::class_func_structType (SOURCE_FILE ("expression-getter-call.galgas", 156)))).boolEnum () ;
-        if (GalgasBool::boolTrue == test_43) {
-          GGS_functionSignature var_getterFormalArgumentTypeList_8000 = GGS_functionSignature::init (inCompiler COMMA_HERE) ;
-          GGS_bool var_hasCompilerArgument_8047 = GGS_bool (true) ;
-          GGS_unifiedTypeMapEntry var_returnedType_8086 = GGS_unifiedTypeMapEntry::class_func_null (SOURCE_FILE ("expression-getter-call.galgas", 159)) ;
-          GGS_methodKind var_kind_8139 = GGS_methodKind::class_func_definedAsExtension (SOURCE_FILE ("expression-getter-call.galgas", 160)) ;
-          GGS_stringlist var_fieldList_8201 = GGS_stringlist::init (inCompiler COMMA_HERE) ;
-          GGS_string var_obsoletedByGetter_8229 = GGS_string::makeEmptyString () ;
-          UpEnumerator_typedPropertyList enumerator_8297 (extensionGetter_definition (var_receiverType_4185, inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 163)).readProperty_currentTypedPropertyList ()) ;
-          while (enumerator_8297.hasCurrentObject ()) {
-            GGS_unifiedTypeMapEntry var_propertyType_8371 = extensionGetter_typeMapEntryForLKey (ioArgument_ioTypeMap, GGS_lstring::init_21__21_ (extensionGetter_definition (enumerator_8297.current_typeEntry (HERE), inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 164)).readProperty_typeName ().readProperty_string (), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("expression-getter-call.galgas", 164)), inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 164)) ;
-            GGS_getterMap var_aMap_8491 = extensionGetter_definition (var_propertyType_8371, inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 165)).readProperty_getterMap () ;
-            GalgasBool test_44 = GalgasBool::boolTrue ;
-            if (GalgasBool::boolTrue == test_44) {
-              const GGS_getterCallExpressionAST temp_45 = this ;
-              const GGS_getterMap_2E_element var_entry_8551 = var_aMap_8491.readSubscript__3F_ (temp_45.readProperty_mGetterName ().readProperty_string (), inCompiler COMMA_HERE).unwrappedValue () ;
-              if (!var_aMap_8491.readSubscript__3F_ (temp_45.readProperty_mGetterName ().readProperty_string (), inCompiler COMMA_HERE).isValuated ()) {
-                test_44 = GalgasBool::boolFalse ;
+    if (GalgasBool::boolFalse == test_36) {
+      GGS_uint var_matchingReaderCount_7818 = GGS_uint (uint32_t (0U)) ;
+      GalgasBool test_42 = GalgasBool::boolTrue ;
+      if (GalgasBool::boolTrue == test_42) {
+        test_42 = GGS_bool (ComparisonKind::equal, extensionGetter_definition (var_receiverType_4185, inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 156)).readProperty_typeKind ().objectCompare (GGS_typeKindEnum::class_func_structType (SOURCE_FILE ("expression-getter-call.galgas", 156)))).boolEnum () ;
+        if (GalgasBool::boolTrue == test_42) {
+          GGS_functionSignature var_getterFormalArgumentTypeList_7937 = GGS_functionSignature::init (inCompiler COMMA_HERE) ;
+          GGS_bool var_hasCompilerArgument_7984 = GGS_bool (true) ;
+          GGS_unifiedTypeMapEntry var_returnedType_8023 = GGS_unifiedTypeMapEntry::class_func_null (SOURCE_FILE ("expression-getter-call.galgas", 159)) ;
+          GGS_methodKind var_kind_8076 = GGS_methodKind::class_func_definedAsExtension (SOURCE_FILE ("expression-getter-call.galgas", 160)) ;
+          GGS_stringlist var_fieldList_8138 = GGS_stringlist::init (inCompiler COMMA_HERE) ;
+          GGS_string var_obsoletedByGetter_8166 = GGS_string::makeEmptyString () ;
+          UpEnumerator_typedPropertyList enumerator_8234 (extensionGetter_definition (var_receiverType_4185, inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 163)).readProperty_currentTypedPropertyList ()) ;
+          while (enumerator_8234.hasCurrentObject ()) {
+            GGS_unifiedTypeMapEntry var_propertyType_8308 = extensionGetter_typeMapEntryForLKey (ioArgument_ioTypeMap, GGS_lstring::init_21__21_ (extensionGetter_definition (enumerator_8234.current_typeEntry (HERE), inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 164)).readProperty_typeName ().readProperty_string (), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("expression-getter-call.galgas", 164)), inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 164)) ;
+            GGS_getterMap var_aMap_8428 = extensionGetter_definition (var_propertyType_8308, inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 165)).readProperty_getterMap () ;
+            GalgasBool test_43 = GalgasBool::boolTrue ;
+            if (GalgasBool::boolTrue == test_43) {
+              const GGS_getterCallExpressionAST temp_44 = this ;
+              const GGS_getterMap_2E_element var_entry_8488 = var_aMap_8428.readSubscript__3F_ (temp_44.readProperty_mGetterName ().readProperty_string (), inCompiler COMMA_HERE).unwrappedValue () ;
+              if (!var_aMap_8428.readSubscript__3F_ (temp_44.readProperty_mGetterName ().readProperty_string (), inCompiler COMMA_HERE).isValuated ()) {
+                test_43 = GalgasBool::boolFalse ;
               }
-              if (GalgasBool::boolTrue == test_44) {
-                GalgasBool test_46 = GalgasBool::boolTrue ;
-                if (GalgasBool::boolTrue == test_46) {
-                  test_46 = GGS_bool (ComparisonKind::equal, extensionGetter_definition (var_propertyType_8371, inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 167)).readProperty_typeName ().readProperty_string ().objectCompare (enumerator_8297.current_name (HERE).readProperty_string ())).boolEnum () ;
-                  if (GalgasBool::boolTrue == test_46) {
-                    var_matchingReaderCount_7881.plusAssignOperation(GGS_uint (uint32_t (1U)), inCompiler  COMMA_SOURCE_FILE ("expression-getter-call.galgas", 168)) ;
-                    var_getterFormalArgumentTypeList_8000 = var_entry_8551.readProperty_mArgumentTypeList () ;
-                    var_hasCompilerArgument_8047 = var_entry_8551.readProperty_mHasCompilerArgument () ;
-                    var_returnedType_8086 = var_entry_8551.readProperty_mReturnedType () ;
-                    const GGS_getterCallExpressionAST temp_47 = this ;
-                    var_receiverExpression_4131 = GGS_propertyAccessExpressionForGeneration::init_21__21__21__21_ (var_returnedType_8086, temp_47.readProperty_mGetterName ().readProperty_location (), var_receiverExpression_4131, enumerator_8297.current_name (HERE).readProperty_string (), inCompiler COMMA_HERE) ;
-                    var_kind_8139 = var_entry_8551.readProperty_mKind () ;
-                    var_obsoletedByGetter_8229 = var_entry_8551.readProperty_mGetterNameThatObsoletesInvokationName () ;
+              if (GalgasBool::boolTrue == test_43) {
+                GalgasBool test_45 = GalgasBool::boolTrue ;
+                if (GalgasBool::boolTrue == test_45) {
+                  test_45 = GGS_bool (ComparisonKind::equal, extensionGetter_definition (var_propertyType_8308, inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 167)).readProperty_typeName ().readProperty_string ().objectCompare (enumerator_8234.current_name (HERE).readProperty_string ())).boolEnum () ;
+                  if (GalgasBool::boolTrue == test_45) {
+                    var_matchingReaderCount_7818.plusAssignOperation(GGS_uint (uint32_t (1U)), inCompiler  COMMA_SOURCE_FILE ("expression-getter-call.galgas", 168)) ;
+                    var_getterFormalArgumentTypeList_7937 = var_entry_8488.readProperty_mArgumentTypeList () ;
+                    var_hasCompilerArgument_7984 = var_entry_8488.readProperty_mHasCompilerArgument () ;
+                    var_returnedType_8023 = var_entry_8488.readProperty_mReturnedType () ;
+                    const GGS_getterCallExpressionAST temp_46 = this ;
+                    var_receiverExpression_4131 = GGS_propertyAccessExpressionForGeneration::init_21__21__21__21_ (var_returnedType_8023, temp_46.readProperty_mGetterName ().readProperty_location (), var_receiverExpression_4131, enumerator_8234.current_name (HERE).readProperty_string (), inCompiler COMMA_HERE) ;
+                    var_kind_8076 = var_entry_8488.readProperty_mKind () ;
+                    var_obsoletedByGetter_8166 = var_entry_8488.readProperty_mGetterNameThatObsoletesInvokationName () ;
                   }
                 }
               }
             }
-            enumerator_8297.gotoNextObject () ;
+            enumerator_8234.gotoNextObject () ;
           }
-          GalgasBool test_48 = GalgasBool::boolTrue ;
-          if (GalgasBool::boolTrue == test_48) {
-            test_48 = GGS_bool (ComparisonKind::equal, var_matchingReaderCount_7881.objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
-            if (GalgasBool::boolTrue == test_48) {
+          GalgasBool test_47 = GalgasBool::boolTrue ;
+          if (GalgasBool::boolTrue == test_47) {
+            test_47 = GGS_bool (ComparisonKind::equal, var_matchingReaderCount_7818.objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
+            if (GalgasBool::boolTrue == test_47) {
+              const GGS_getterCallExpressionAST temp_48 = this ;
               const GGS_getterCallExpressionAST temp_49 = this ;
-              const GGS_getterCallExpressionAST temp_50 = this ;
-              GenericArray <FixItDescription> fixItArray51 ;
-              inCompiler->emitSemanticError (temp_49.readProperty_mGetterName ().readProperty_location (), GGS_string ("the '@").add_operation (extensionGetter_definition (var_receiverType_4185, inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 185)).readProperty_typeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 185)).add_operation (GGS_string ("' struct type does not define the '"), inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 185)).add_operation (temp_50.readProperty_mGetterName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 185)).add_operation (GGS_string ("' getter, and none of its fields defines it"), inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 185)), fixItArray51  COMMA_SOURCE_FILE ("expression-getter-call.galgas", 184)) ;
-              var_getterFormalArgumentTypeList_8000.drop () ; // Release error dropped variable
-              var_hasCompilerArgument_8047.drop () ; // Release error dropped variable
-              var_returnedType_8086.drop () ; // Release error dropped variable
-              var_kind_8139.drop () ; // Release error dropped variable
+              GenericArray <FixItDescription> fixItArray50 ;
+              inCompiler->emitSemanticError (temp_48.readProperty_mGetterName ().readProperty_location (), GGS_string ("the '@").add_operation (extensionGetter_definition (var_receiverType_4185, inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 185)).readProperty_typeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 185)).add_operation (GGS_string ("' struct type does not define the '"), inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 185)).add_operation (temp_49.readProperty_mGetterName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 185)).add_operation (GGS_string ("' getter, and none of its fields defines it"), inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 185)), fixItArray50  COMMA_SOURCE_FILE ("expression-getter-call.galgas", 184)) ;
+              var_getterFormalArgumentTypeList_7937.drop () ; // Release error dropped variable
+              var_hasCompilerArgument_7984.drop () ; // Release error dropped variable
+              var_returnedType_8023.drop () ; // Release error dropped variable
+              var_kind_8076.drop () ; // Release error dropped variable
             }
           }
-          if (GalgasBool::boolFalse == test_48) {
-            GalgasBool test_52 = GalgasBool::boolTrue ;
-            if (GalgasBool::boolTrue == test_52) {
-              test_52 = GGS_bool (ComparisonKind::greaterThan, var_matchingReaderCount_7881.objectCompare (GGS_uint (uint32_t (1U)))).boolEnum () ;
-              if (GalgasBool::boolTrue == test_52) {
-                GGS_string var_s_9702 = GGS_string::makeEmptyString () ;
-                UpEnumerator_stringlist enumerator_9724 (var_fieldList_8201) ;
-                while (enumerator_9724.hasCurrentObject ()) {
-                  var_s_9702.plusAssignOperation(enumerator_9724.current_mValue (HERE), inCompiler  COMMA_SOURCE_FILE ("expression-getter-call.galgas", 191)) ;
-                  enumerator_9724.gotoNextObject () ;
-                  if (enumerator_9724.hasCurrentObject ()) {
-                    var_s_9702.plusAssignOperation(GGS_string (", "), inCompiler  COMMA_SOURCE_FILE ("expression-getter-call.galgas", 192)) ;
+          if (GalgasBool::boolFalse == test_47) {
+            GalgasBool test_51 = GalgasBool::boolTrue ;
+            if (GalgasBool::boolTrue == test_51) {
+              test_51 = GGS_bool (ComparisonKind::greaterThan, var_matchingReaderCount_7818.objectCompare (GGS_uint (uint32_t (1U)))).boolEnum () ;
+              if (GalgasBool::boolTrue == test_51) {
+                GGS_string var_s_9639 = GGS_string::makeEmptyString () ;
+                UpEnumerator_stringlist enumerator_9661 (var_fieldList_8138) ;
+                while (enumerator_9661.hasCurrentObject ()) {
+                  var_s_9639.plusAssignOperation(enumerator_9661.current_mValue (HERE), inCompiler  COMMA_SOURCE_FILE ("expression-getter-call.galgas", 191)) ;
+                  enumerator_9661.gotoNextObject () ;
+                  if (enumerator_9661.hasCurrentObject ()) {
+                    var_s_9639.plusAssignOperation(GGS_string (", "), inCompiler  COMMA_SOURCE_FILE ("expression-getter-call.galgas", 192)) ;
                   }
                 }
+                const GGS_getterCallExpressionAST temp_52 = this ;
                 const GGS_getterCallExpressionAST temp_53 = this ;
-                const GGS_getterCallExpressionAST temp_54 = this ;
-                GenericArray <FixItDescription> fixItArray55 ;
-                inCompiler->emitSemanticError (temp_53.readProperty_mGetterName ().readProperty_location (), GGS_string ("the '@").add_operation (extensionGetter_definition (var_receiverType_4185, inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 195)).readProperty_typeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 195)).add_operation (GGS_string ("' struct type does not define the '"), inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 195)).add_operation (temp_54.readProperty_mGetterName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 195)).add_operation (GGS_string ("' getter, and several of its fields defines it:"), inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 195)).add_operation (var_s_9702, inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 196)).add_operation (GGS_string (" (exactly one field should define it)"), inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 196)), fixItArray55  COMMA_SOURCE_FILE ("expression-getter-call.galgas", 194)) ;
-                var_getterFormalArgumentTypeList_8000.drop () ; // Release error dropped variable
-                var_hasCompilerArgument_8047.drop () ; // Release error dropped variable
-                var_returnedType_8086.drop () ; // Release error dropped variable
-                var_kind_8139.drop () ; // Release error dropped variable
+                GenericArray <FixItDescription> fixItArray54 ;
+                inCompiler->emitSemanticError (temp_52.readProperty_mGetterName ().readProperty_location (), GGS_string ("the '@").add_operation (extensionGetter_definition (var_receiverType_4185, inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 195)).readProperty_typeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 195)).add_operation (GGS_string ("' struct type does not define the '"), inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 195)).add_operation (temp_53.readProperty_mGetterName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 195)).add_operation (GGS_string ("' getter, and several of its fields defines it:"), inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 195)).add_operation (var_s_9639, inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 196)).add_operation (GGS_string (" (exactly one field should define it)"), inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 196)), fixItArray54  COMMA_SOURCE_FILE ("expression-getter-call.galgas", 194)) ;
+                var_getterFormalArgumentTypeList_7937.drop () ; // Release error dropped variable
+                var_hasCompilerArgument_7984.drop () ; // Release error dropped variable
+                var_returnedType_8023.drop () ; // Release error dropped variable
+                var_kind_8076.drop () ; // Release error dropped variable
               }
             }
           }
-          GalgasBool test_56 = GalgasBool::boolTrue ;
-          if (GalgasBool::boolTrue == test_56) {
-            const GGS_getterCallExpressionAST temp_57 = this ;
-            test_56 = GGS_bool (ComparisonKind::notEqual, temp_57.readProperty_mActualArgumentList ().getter_count (SOURCE_FILE ("expression-getter-call.galgas", 200)).objectCompare (var_getterFormalArgumentTypeList_8000.getter_count (SOURCE_FILE ("expression-getter-call.galgas", 200)))).boolEnum () ;
-            if (GalgasBool::boolTrue == test_56) {
+          GalgasBool test_55 = GalgasBool::boolTrue ;
+          if (GalgasBool::boolTrue == test_55) {
+            const GGS_getterCallExpressionAST temp_56 = this ;
+            test_55 = GGS_bool (ComparisonKind::notEqual, temp_56.readProperty_mActualArgumentList ().getter_count (SOURCE_FILE ("expression-getter-call.galgas", 200)).objectCompare (var_getterFormalArgumentTypeList_7937.getter_count (SOURCE_FILE ("expression-getter-call.galgas", 200)))).boolEnum () ;
+            if (GalgasBool::boolTrue == test_55) {
+              const GGS_getterCallExpressionAST temp_57 = this ;
               const GGS_getterCallExpressionAST temp_58 = this ;
               const GGS_getterCallExpressionAST temp_59 = this ;
-              const GGS_getterCallExpressionAST temp_60 = this ;
-              GenericArray <FixItDescription> fixItArray61 ;
-              inCompiler->emitSemanticError (temp_58.readProperty_mGetterName ().readProperty_location (), GGS_string ("calling the '").add_operation (temp_59.readProperty_mGetterName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 202)).add_operation (GGS_string ("' getter of '@"), inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 202)).add_operation (extensionGetter_definition (var_receiverType_4185, inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 202)).readProperty_typeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 202)).add_operation (GGS_string ("' requires "), inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 202)).add_operation (var_getterFormalArgumentTypeList_8000.getter_count (SOURCE_FILE ("expression-getter-call.galgas", 203)).getter_string (SOURCE_FILE ("expression-getter-call.galgas", 203)), inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 202)).add_operation (GGS_string (" parameter(s), while this call has "), inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 203)).add_operation (temp_60.readProperty_mActualArgumentList ().getter_count (SOURCE_FILE ("expression-getter-call.galgas", 204)).getter_string (SOURCE_FILE ("expression-getter-call.galgas", 204)), inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 203)).add_operation (GGS_string (" parameter(s)"), inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 204)), fixItArray61  COMMA_SOURCE_FILE ("expression-getter-call.galgas", 201)) ;
+              GenericArray <FixItDescription> fixItArray60 ;
+              inCompiler->emitSemanticError (temp_57.readProperty_mGetterName ().readProperty_location (), GGS_string ("calling the '").add_operation (temp_58.readProperty_mGetterName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 202)).add_operation (GGS_string ("' getter of '@"), inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 202)).add_operation (extensionGetter_definition (var_receiverType_4185, inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 202)).readProperty_typeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 202)).add_operation (GGS_string ("' requires "), inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 202)).add_operation (var_getterFormalArgumentTypeList_7937.getter_count (SOURCE_FILE ("expression-getter-call.galgas", 203)).getter_string (SOURCE_FILE ("expression-getter-call.galgas", 203)), inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 202)).add_operation (GGS_string (" parameter(s), while this call has "), inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 203)).add_operation (temp_59.readProperty_mActualArgumentList ().getter_count (SOURCE_FILE ("expression-getter-call.galgas", 204)).getter_string (SOURCE_FILE ("expression-getter-call.galgas", 204)), inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 203)).add_operation (GGS_string (" parameter(s)"), inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 204)), fixItArray60  COMMA_SOURCE_FILE ("expression-getter-call.galgas", 201)) ;
               outArgument_outExpression.drop () ; // Release error dropped variable
             }
           }
-          if (GalgasBool::boolFalse == test_56) {
-            GGS_semanticExpressionListForGeneration var_constructorEffectiveParameterList_10710 = GGS_semanticExpressionListForGeneration::init (inCompiler COMMA_HERE) ;
-            const GGS_getterCallExpressionAST temp_62 = this ;
-            UpEnumerator_actualOutputArgumentList enumerator_10793 (temp_62.readProperty_mActualArgumentList ()) ;
-            UpEnumerator_functionSignature enumerator_10900 (var_getterFormalArgumentTypeList_8000) ;
-            while (enumerator_10793.hasCurrentObject () && enumerator_10900.hasCurrentObject ()) {
-              GGS_semanticExpressionForGeneration var_exp_11286 ;
-              callExtensionMethod_analyzeSemanticExpression ((cPtr_semanticExpressionAST *) enumerator_10793.current_mExpression (HERE).ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, enumerator_10900.current_mFormalArgumentType (HERE), constinArgument_inAnalysisContext, ioArgument_ioTypeMap, ioArgument_ioVariableMap, var_exp_11286, inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 209)) ;
-              GalgasBool test_63 = GalgasBool::boolTrue ;
-              if (GalgasBool::boolTrue == test_63) {
-                test_63 = GGS_bool (ComparisonKind::notEqual, enumerator_10900.current_mFormalSelector (HERE).readProperty_string ().objectCompare (enumerator_10793.current_mActualSelector (HERE).readProperty_string ())).boolEnum () ;
-                if (GalgasBool::boolTrue == test_63) {
-                  GGS_string temp_64 ;
-                  const GalgasBool test_65 = GGS_bool (ComparisonKind::notEqual, enumerator_10900.current_mFormalSelector (HERE).readProperty_string ().objectCompare (GGS_string::makeEmptyString ())).boolEnum () ;
-                  if (GalgasBool::boolTrue == test_65) {
-                    temp_64 = enumerator_10900.current_mFormalSelector (HERE).readProperty_string ().add_operation (GGS_string (":"), inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 219)) ;
-                  }else if (GalgasBool::boolFalse == test_65) {
-                    temp_64 = GGS_string::makeEmptyString () ;
+          if (GalgasBool::boolFalse == test_55) {
+            GGS_semanticExpressionListForGeneration var_constructorEffectiveParameterList_10647 = GGS_semanticExpressionListForGeneration::init (inCompiler COMMA_HERE) ;
+            const GGS_getterCallExpressionAST temp_61 = this ;
+            UpEnumerator_actualOutputArgumentList enumerator_10730 (temp_61.readProperty_mActualArgumentList ()) ;
+            UpEnumerator_functionSignature enumerator_10837 (var_getterFormalArgumentTypeList_7937) ;
+            while (enumerator_10730.hasCurrentObject () && enumerator_10837.hasCurrentObject ()) {
+              GGS_semanticExpressionForGeneration var_exp_11223 ;
+              callExtensionMethod_analyzeSemanticExpression ((cPtr_semanticExpressionAST *) enumerator_10730.current_mExpression (HERE).ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, enumerator_10837.current_mFormalArgumentType (HERE), constinArgument_inAnalysisContext, ioArgument_ioTypeMap, ioArgument_ioVariableMap, var_exp_11223, inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 209)) ;
+              GalgasBool test_62 = GalgasBool::boolTrue ;
+              if (GalgasBool::boolTrue == test_62) {
+                test_62 = GGS_bool (ComparisonKind::notEqual, enumerator_10837.current_mFormalSelector (HERE).readProperty_string ().objectCompare (enumerator_10730.current_mActualSelector (HERE).readProperty_string ())).boolEnum () ;
+                if (GalgasBool::boolTrue == test_62) {
+                  GGS_string temp_63 ;
+                  const GalgasBool test_64 = GGS_bool (ComparisonKind::notEqual, enumerator_10837.current_mFormalSelector (HERE).readProperty_string ().objectCompare (GGS_string::makeEmptyString ())).boolEnum () ;
+                  if (GalgasBool::boolTrue == test_64) {
+                    temp_63 = enumerator_10837.current_mFormalSelector (HERE).readProperty_string ().add_operation (GGS_string (":"), inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 219)) ;
+                  }else if (GalgasBool::boolFalse == test_64) {
+                    temp_63 = GGS_string::makeEmptyString () ;
                   }
-                  GGS_string var_s_11399 = GGS_string ("!").add_operation (temp_64, inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 219)) ;
-                  GenericArray <FixItDescription> fixItArray66 ;
-                  appendFixItActions (fixItArray66, EnumFixItKind::fixItReplace, var_s_11399) ;
-                  inCompiler->emitSemanticError (enumerator_10793.current_mActualSelector (HERE).readProperty_location (), GGS_string ("the selector should be '").add_operation (var_s_11399, inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 220)).add_operation (GGS_string ("'"), inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 220)), fixItArray66  COMMA_SOURCE_FILE ("expression-getter-call.galgas", 220)) ;
+                  GGS_string var_s_11336 = GGS_string ("!").add_operation (temp_63, inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 219)) ;
+                  GenericArray <FixItDescription> fixItArray65 ;
+                  appendFixItActions (fixItArray65, EnumFixItKind::fixItReplace, var_s_11336) ;
+                  inCompiler->emitSemanticError (enumerator_10730.current_mActualSelector (HERE).readProperty_location (), GGS_string ("the selector should be '").add_operation (var_s_11336, inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 220)).add_operation (GGS_string ("'"), inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 220)), fixItArray65  COMMA_SOURCE_FILE ("expression-getter-call.galgas", 220)) ;
                 }
               }
               {
-              routine_checkAssignmentTypeWithImplicitGetterCall_3F__3F__3F__26_ (enumerator_10900.current_mFormalArgumentType (HERE), var_exp_11286.readProperty_mResultType (), enumerator_10793.current_mEndOfExpressionLocation (HERE), var_exp_11286, inCompiler  COMMA_SOURCE_FILE ("expression-getter-call.galgas", 222)) ;
+              routine_checkAssignmentTypeWithImplicitGetterCall_3F__3F__3F__26_ (enumerator_10837.current_mFormalArgumentType (HERE), var_exp_11223.readProperty_mResultType (), enumerator_10730.current_mEndOfExpressionLocation (HERE), var_exp_11223, inCompiler  COMMA_SOURCE_FILE ("expression-getter-call.galgas", 222)) ;
               }
-              var_constructorEffectiveParameterList_10710.addAssignOperation (var_exp_11286  COMMA_SOURCE_FILE ("expression-getter-call.galgas", 223)) ;
-              enumerator_10793.gotoNextObject () ;
-              enumerator_10900.gotoNextObject () ;
+              var_constructorEffectiveParameterList_10647.addAssignOperation (var_exp_11223  COMMA_SOURCE_FILE ("expression-getter-call.galgas", 223)) ;
+              enumerator_10730.gotoNextObject () ;
+              enumerator_10837.gotoNextObject () ;
             }
-            GalgasBool test_67 = GalgasBool::boolTrue ;
-            if (GalgasBool::boolTrue == test_67) {
-              GGS_bool test_68 = GGS_bool (ComparisonKind::notEqual, var_obsoletedByGetter_8229.objectCompare (GGS_string::makeEmptyString ())) ;
-              if (GalgasBool::boolTrue == test_68.boolEnum ()) {
-                test_68 = GGS_bool (gOption_galgas_5F_cli_5F_options_errorObsoleteGetterCall.readProperty_value ()) ;
-              }
-              test_67 = test_68.boolEnum () ;
-              if (GalgasBool::boolTrue == test_67) {
-                const GGS_getterCallExpressionAST temp_69 = this ;
-                GenericArray <FixItDescription> fixItArray70 ;
-                appendFixItActions (fixItArray70, EnumFixItKind::fixItReplace, var_obsoletedByGetter_8229) ;
-                inCompiler->emitSemanticError (temp_69.readProperty_mGetterName ().readProperty_location (), GGS_string ("obsolete getter"), fixItArray70  COMMA_SOURCE_FILE ("expression-getter-call.galgas", 226)) ;
+            GalgasBool test_66 = GalgasBool::boolTrue ;
+            if (GalgasBool::boolTrue == test_66) {
+              test_66 = GGS_bool (ComparisonKind::notEqual, var_obsoletedByGetter_8166.objectCompare (GGS_string::makeEmptyString ())).boolEnum () ;
+              if (GalgasBool::boolTrue == test_66) {
+                const GGS_getterCallExpressionAST temp_67 = this ;
+                GenericArray <FixItDescription> fixItArray68 ;
+                appendFixItActions (fixItArray68, EnumFixItKind::fixItReplace, var_obsoletedByGetter_8166) ;
+                inCompiler->emitSemanticError (temp_67.readProperty_mGetterName ().readProperty_location (), GGS_string ("obsolete getter"), fixItArray68  COMMA_SOURCE_FILE ("expression-getter-call.galgas", 226)) ;
               }
             }
-            const GGS_getterCallExpressionAST temp_71 = this ;
-            GGS_string temp_72 ;
-            const GalgasBool test_73 = GGS_bool (ComparisonKind::equal, var_obsoletedByGetter_8229.objectCompare (GGS_string::makeEmptyString ())).boolEnum () ;
-            if (GalgasBool::boolTrue == test_73) {
-              const GGS_getterCallExpressionAST temp_74 = this ;
-              temp_72 = temp_74.readProperty_mGetterName ().readProperty_string () ;
-            }else if (GalgasBool::boolFalse == test_73) {
-              temp_72 = var_obsoletedByGetter_8229 ;
+            const GGS_getterCallExpressionAST temp_69 = this ;
+            GGS_string temp_70 ;
+            const GalgasBool test_71 = GGS_bool (ComparisonKind::equal, var_obsoletedByGetter_8166.objectCompare (GGS_string::makeEmptyString ())).boolEnum () ;
+            if (GalgasBool::boolTrue == test_71) {
+              const GGS_getterCallExpressionAST temp_72 = this ;
+              temp_70 = temp_72.readProperty_mGetterName ().readProperty_string () ;
+            }else if (GalgasBool::boolFalse == test_71) {
+              temp_70 = var_obsoletedByGetter_8166 ;
             }
-            outArgument_outExpression = GGS_getterCallExpressionForGeneration::init_21__21__21__21__21__21__21__21_ (var_returnedType_8086, temp_71.readProperty_mGetterName ().readProperty_location (), var_kind_8139, var_receiverExpression_4131, var_fieldList_8201, temp_72, var_constructorEffectiveParameterList_10710, var_hasCompilerArgument_8047, inCompiler COMMA_HERE) ;
+            outArgument_outExpression = GGS_getterCallExpressionForGeneration::init_21__21__21__21__21__21__21__21_ (var_returnedType_8023, temp_69.readProperty_mGetterName ().readProperty_location (), var_kind_8076, var_receiverExpression_4131, var_fieldList_8138, temp_70, var_constructorEffectiveParameterList_10647, var_hasCompilerArgument_7984, inCompiler COMMA_HERE) ;
           }
         }
       }
-      if (GalgasBool::boolFalse == test_43) {
-        GalgasBool test_75 = GalgasBool::boolTrue ;
-        if (GalgasBool::boolTrue == test_75) {
-          test_75 = GGS_bool (ComparisonKind::equal, extensionGetter_definition (var_receiverType_4185, inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 239)).readProperty_getterMap ().getter_count (SOURCE_FILE ("expression-getter-call.galgas", 239)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
-          if (GalgasBool::boolTrue == test_75) {
-            const GGS_getterCallExpressionAST temp_76 = this ;
-            GenericArray <FixItDescription> fixItArray77 ;
-            inCompiler->emitSemanticError (temp_76.readProperty_mGetterName ().readProperty_location (), GGS_string ("the '@").add_operation (extensionGetter_definition (var_receiverType_4185, inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 241)).readProperty_typeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 241)).add_operation (GGS_string ("' type does not define any getter"), inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 241)), fixItArray77  COMMA_SOURCE_FILE ("expression-getter-call.galgas", 240)) ;
+      if (GalgasBool::boolFalse == test_42) {
+        GalgasBool test_73 = GalgasBool::boolTrue ;
+        if (GalgasBool::boolTrue == test_73) {
+          test_73 = GGS_bool (ComparisonKind::equal, extensionGetter_definition (var_receiverType_4185, inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 239)).readProperty_getterMap ().getter_count (SOURCE_FILE ("expression-getter-call.galgas", 239)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
+          if (GalgasBool::boolTrue == test_73) {
+            const GGS_getterCallExpressionAST temp_74 = this ;
+            GenericArray <FixItDescription> fixItArray75 ;
+            inCompiler->emitSemanticError (temp_74.readProperty_mGetterName ().readProperty_location (), GGS_string ("the '@").add_operation (extensionGetter_definition (var_receiverType_4185, inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 241)).readProperty_typeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 241)).add_operation (GGS_string ("' type does not define any getter"), inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 241)), fixItArray75  COMMA_SOURCE_FILE ("expression-getter-call.galgas", 240)) ;
             outArgument_outExpression.drop () ; // Release error dropped variable
           }
         }
-        if (GalgasBool::boolFalse == test_75) {
-          const GGS_getterCallExpressionAST temp_78 = this ;
-          const GGS_getterCallExpressionAST temp_79 = this ;
-          GenericArray <FixItDescription> fixItArray80 ;
-          appendFixItActions (fixItArray80, EnumFixItKind::fixItReplace, extensionGetter_definition (var_receiverType_4185, inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 247)).readProperty_getterMap ().getter_keyList (inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 247))) ;
-          inCompiler->emitSemanticError (temp_78.readProperty_mGetterName ().readProperty_location (), GGS_string ("the '@").add_operation (extensionGetter_definition (var_receiverType_4185, inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 245)).readProperty_typeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 245)).add_operation (GGS_string ("' type does not define the '"), inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 245)).add_operation (temp_79.readProperty_mGetterName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 245)).add_operation (GGS_string ("' getter "), inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 245)), fixItArray80  COMMA_SOURCE_FILE ("expression-getter-call.galgas", 244)) ;
+        if (GalgasBool::boolFalse == test_73) {
+          const GGS_getterCallExpressionAST temp_76 = this ;
+          const GGS_getterCallExpressionAST temp_77 = this ;
+          GenericArray <FixItDescription> fixItArray78 ;
+          appendFixItActions (fixItArray78, EnumFixItKind::fixItReplace, extensionGetter_definition (var_receiverType_4185, inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 247)).readProperty_getterMap ().getter_keyList (inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 247))) ;
+          inCompiler->emitSemanticError (temp_76.readProperty_mGetterName ().readProperty_location (), GGS_string ("the '@").add_operation (extensionGetter_definition (var_receiverType_4185, inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 245)).readProperty_typeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 245)).add_operation (GGS_string ("' type does not define the '"), inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 245)).add_operation (temp_77.readProperty_mGetterName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 245)).add_operation (GGS_string ("' getter "), inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 245)), fixItArray78  COMMA_SOURCE_FILE ("expression-getter-call.galgas", 244)) ;
           outArgument_outExpression.drop () ; // Release error dropped variable
         }
       }
@@ -2795,17 +2787,17 @@ void cPtr_getterCallExpressionForGeneration::method_generateExpression (GGS_stri
                                                                         COMMA_UNUSED_LOCATION_ARGS) {
   const GGS_getterCallExpressionForGeneration temp_0 = this ;
   extensionMethod_addHeaderFileName (temp_0.readProperty_mResultType (), ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 278)) ;
-  GGS_string var_receiverCppName_14218 ;
+  GGS_string var_receiverCppName_14092 ;
   const GGS_getterCallExpressionForGeneration temp_1 = this ;
-  callExtensionMethod_generateExpression ((cPtr_semanticExpressionForGeneration *) temp_1.readProperty_mReceiverExpression ().ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_receiverCppName_14218, inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 280)) ;
-  GGS_stringlist var_getterArgumentCppNameList_14284 = GGS_stringlist::init (inCompiler COMMA_HERE) ;
+  callExtensionMethod_generateExpression ((cPtr_semanticExpressionForGeneration *) temp_1.readProperty_mReceiverExpression ().ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_receiverCppName_14092, inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 280)) ;
+  GGS_stringlist var_getterArgumentCppNameList_14158 = GGS_stringlist::init (inCompiler COMMA_HERE) ;
   const GGS_getterCallExpressionForGeneration temp_2 = this ;
-  UpEnumerator_semanticExpressionListForGeneration enumerator_14325 (temp_2.readProperty_mActualArgumentList ()) ;
-  while (enumerator_14325.hasCurrentObject ()) {
-    GGS_string var_argumentCppName_14543 ;
-    callExtensionMethod_generateExpression ((cPtr_semanticExpressionForGeneration *) enumerator_14325.current_mExpression (HERE).ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_argumentCppName_14543, inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 290)) ;
-    var_getterArgumentCppNameList_14284.addAssignOperation (var_argumentCppName_14543  COMMA_SOURCE_FILE ("expression-getter-call.galgas", 297)) ;
-    enumerator_14325.gotoNextObject () ;
+  UpEnumerator_semanticExpressionListForGeneration enumerator_14199 (temp_2.readProperty_mActualArgumentList ()) ;
+  while (enumerator_14199.hasCurrentObject ()) {
+    GGS_string var_argumentCppName_14417 ;
+    callExtensionMethod_generateExpression ((cPtr_semanticExpressionForGeneration *) enumerator_14199.current_mExpression (HERE).ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_argumentCppName_14417, inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 290)) ;
+    var_getterArgumentCppNameList_14158.addAssignOperation (var_argumentCppName_14417  COMMA_SOURCE_FILE ("expression-getter-call.galgas", 297)) ;
+    enumerator_14199.gotoNextObject () ;
   }
   const GGS_getterCallExpressionForGeneration temp_3 = this ;
   switch (temp_3.readProperty_mKind ().enumValue ()) {
@@ -2814,50 +2806,50 @@ void cPtr_getterCallExpressionForGeneration::method_generateExpression (GGS_stri
   case GGS_methodKind::Enumeration::enum_definedAsExtension:
     {
       const GGS_getterCallExpressionForGeneration temp_4 = this ;
-      GGS_unifiedTypeMapEntry var_baseType_14739 = temp_4.readProperty_mReceiverExpression ().readProperty_mResultType () ;
-      extensionMethod_addHeaderFileName (var_baseType_14739, ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 303)) ;
-      GGS_bool var_searching_14854 = GGS_bool (true) ;
+      GGS_unifiedTypeMapEntry var_baseType_14613 = temp_4.readProperty_mReceiverExpression ().readProperty_mResultType () ;
+      extensionMethod_addHeaderFileName (var_baseType_14613, ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 303)) ;
+      GGS_bool var_searching_14728 = GGS_bool (true) ;
       if (GGS_uint::class_func_max (SOURCE_FILE ("expression-getter-call.galgas", 305)).isValid ()) {
-        uint32_t variant_14877 = GGS_uint::class_func_max (SOURCE_FILE ("expression-getter-call.galgas", 305)).uintValue () ;
-        bool loop_14877 = true ;
-        while (loop_14877) {
-          loop_14877 = var_searching_14854.isValid () ;
-          if (loop_14877) {
-            loop_14877 = var_searching_14854.boolValue () ;
+        uint32_t variant_14751 = GGS_uint::class_func_max (SOURCE_FILE ("expression-getter-call.galgas", 305)).uintValue () ;
+        bool loop_14751 = true ;
+        while (loop_14751) {
+          loop_14751 = var_searching_14728.isValid () ;
+          if (loop_14751) {
+            loop_14751 = var_searching_14728.boolValue () ;
           }
-          if (loop_14877 && (0 == variant_14877)) {
-            loop_14877 = false ;
+          if (loop_14751 && (0 == variant_14751)) {
+            loop_14751 = false ;
             inCompiler->loopRunTimeVariantError (SOURCE_FILE ("expression-getter-call.galgas", 305)) ;
           }
-          if (loop_14877) {
-            variant_14877 -= 1 ;
+          if (loop_14751) {
+            variant_14751 -= 1 ;
             GalgasBool test_5 = GalgasBool::boolTrue ;
             if (GalgasBool::boolTrue == test_5) {
-              test_5 = extensionGetter_definition (var_baseType_14739, inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 306)).readProperty_superType ().getter_isNull (SOURCE_FILE ("expression-getter-call.galgas", 306)).operator_not (SOURCE_FILE ("expression-getter-call.galgas", 306)).boolEnum () ;
+              test_5 = extensionGetter_definition (var_baseType_14613, inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 306)).readProperty_superType ().getter_isNull (SOURCE_FILE ("expression-getter-call.galgas", 306)).operator_not (SOURCE_FILE ("expression-getter-call.galgas", 306)).boolEnum () ;
               if (GalgasBool::boolTrue == test_5) {
                 GalgasBool test_6 = GalgasBool::boolTrue ;
                 if (GalgasBool::boolTrue == test_6) {
                   const GGS_getterCallExpressionForGeneration temp_7 = this ;
-                  test_6 = extensionGetter_definition (extensionGetter_definition (var_baseType_14739, inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 307)).readProperty_superType (), inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 307)).readProperty_getterMap ().getter_hasKey (temp_7.readProperty_mGetterName () COMMA_SOURCE_FILE ("expression-getter-call.galgas", 307)).boolEnum () ;
+                  test_6 = extensionGetter_definition (extensionGetter_definition (var_baseType_14613, inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 307)).readProperty_superType (), inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 307)).readProperty_getterMap ().getter_hasKey (temp_7.readProperty_mGetterName () COMMA_SOURCE_FILE ("expression-getter-call.galgas", 307)).boolEnum () ;
                   if (GalgasBool::boolTrue == test_6) {
-                    var_baseType_14739 = extensionGetter_definition (var_baseType_14739, inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 308)).readProperty_superType () ;
+                    var_baseType_14613 = extensionGetter_definition (var_baseType_14613, inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 308)).readProperty_superType () ;
                   }
                 }
                 if (GalgasBool::boolFalse == test_6) {
-                  var_searching_14854 = GGS_bool (false) ;
+                  var_searching_14728 = GGS_bool (false) ;
                 }
               }
             }
             if (GalgasBool::boolFalse == test_5) {
-              var_searching_14854 = GGS_bool (false) ;
+              var_searching_14728 = GGS_bool (false) ;
             }
           }
         }
       }
       const GGS_getterCallExpressionForGeneration temp_8 = this ;
-      ioArgument_ioInclusionSet.plusPlusAssignOperation (GGS_string ("getter-").add_operation (extensionGetter_definition (var_baseType_14739, inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 316)).readProperty_typeName ().readProperty_string ().getter_fileNameRepresentation (SOURCE_FILE ("expression-getter-call.galgas", 316)), inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 316)).add_operation (GGS_string ("-"), inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 316)).add_operation (temp_8.readProperty_mGetterName ().getter_fileNameRepresentation (SOURCE_FILE ("expression-getter-call.galgas", 316)), inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 316))  COMMA_SOURCE_FILE ("expression-getter-call.galgas", 316)) ;
+      ioArgument_ioInclusionSet.plusPlusAssignOperation (GGS_string ("getter-").add_operation (extensionGetter_definition (var_baseType_14613, inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 316)).readProperty_typeName ().readProperty_string ().getter_fileNameRepresentation (SOURCE_FILE ("expression-getter-call.galgas", 316)), inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 316)).add_operation (GGS_string ("-"), inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 316)).add_operation (temp_8.readProperty_mGetterName ().getter_fileNameRepresentation (SOURCE_FILE ("expression-getter-call.galgas", 316)), inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 316))  COMMA_SOURCE_FILE ("expression-getter-call.galgas", 316)) ;
       {
-      ioArgument_ioUnusedVariableCppNameSet.setter_removeKey (var_receiverCppName_14218 COMMA_SOURCE_FILE ("expression-getter-call.galgas", 317)) ;
+      ioArgument_ioUnusedVariableCppNameSet.setter_removeKey (var_receiverCppName_14092 COMMA_SOURCE_FILE ("expression-getter-call.galgas", 317)) ;
       }
       GalgasBool test_9 = GalgasBool::boolTrue ;
       if (GalgasBool::boolTrue == test_9) {
@@ -2866,25 +2858,25 @@ void cPtr_getterCallExpressionForGeneration::method_generateExpression (GGS_stri
         if (GalgasBool::boolTrue == test_9) {
           const GGS_getterCallExpressionForGeneration temp_11 = this ;
           const GGS_getterCallExpressionForGeneration temp_12 = this ;
-          outArgument_outCppExpression = GGS_string ("callExtensionGetter_").add_operation (temp_11.readProperty_mGetterName ().getter_identifierRepresentation (SOURCE_FILE ("expression-getter-call.galgas", 319)), inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 319)).add_operation (GGS_string (" ((const cPtr_"), inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 319)).add_operation (extensionGetter_identifierRepresentation (temp_12.readProperty_mReceiverExpression ().readProperty_mResultType (), inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 320)), inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 320)).add_operation (GGS_string (" *) "), inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 320)).add_operation (var_receiverCppName_14218, inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 320)).add_operation (GGS_string (".ptr (), "), inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 320)) ;
+          outArgument_outCppExpression = GGS_string ("callExtensionGetter_").add_operation (temp_11.readProperty_mGetterName ().getter_identifierRepresentation (SOURCE_FILE ("expression-getter-call.galgas", 319)), inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 319)).add_operation (GGS_string (" ((const cPtr_"), inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 319)).add_operation (extensionGetter_identifierRepresentation (temp_12.readProperty_mReceiverExpression ().readProperty_mResultType (), inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 320)), inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 320)).add_operation (GGS_string (" *) "), inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 320)).add_operation (var_receiverCppName_14092, inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 320)).add_operation (GGS_string (".ptr (), "), inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 320)) ;
         }
       }
       if (GalgasBool::boolFalse == test_9) {
         const GGS_getterCallExpressionForGeneration temp_13 = this ;
         extensionMethod_addHeaderFileName (temp_13.readProperty_mReceiverExpression ().readProperty_mResultType (), ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 322)) ;
         const GGS_getterCallExpressionForGeneration temp_14 = this ;
-        outArgument_outCppExpression = GGS_string ("extensionGetter_").add_operation (temp_14.readProperty_mGetterName ().getter_identifierRepresentation (SOURCE_FILE ("expression-getter-call.galgas", 323)), inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 323)).add_operation (GGS_string (" ("), inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 323)).add_operation (var_receiverCppName_14218, inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 323)).add_operation (GGS_string (", "), inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 323)) ;
+        outArgument_outCppExpression = GGS_string ("extensionGetter_").add_operation (temp_14.readProperty_mGetterName ().getter_identifierRepresentation (SOURCE_FILE ("expression-getter-call.galgas", 323)), inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 323)).add_operation (GGS_string (" ("), inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 323)).add_operation (var_receiverCppName_14092, inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 323)).add_operation (GGS_string (", "), inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 323)) ;
       }
     }
     break ;
   case GGS_methodKind::Enumeration::enum_definedAsMember:
     {
-      outArgument_outCppExpression = var_receiverCppName_14218 ;
+      outArgument_outCppExpression = var_receiverCppName_14092 ;
       const GGS_getterCallExpressionForGeneration temp_15 = this ;
-      UpEnumerator_stringlist enumerator_16091 (temp_15.readProperty_mFieldList ()) ;
-      while (enumerator_16091.hasCurrentObject ()) {
-        outArgument_outCppExpression.plusAssignOperation(GGS_string (".readProperty_").add_operation (enumerator_16091.current_mValue (HERE).getter_identifierRepresentation (SOURCE_FILE ("expression-getter-call.galgas", 328)), inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 328)).add_operation (GGS_string (" ()"), inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 328)), inCompiler  COMMA_SOURCE_FILE ("expression-getter-call.galgas", 328)) ;
-        enumerator_16091.gotoNextObject () ;
+      UpEnumerator_stringlist enumerator_15965 (temp_15.readProperty_mFieldList ()) ;
+      while (enumerator_15965.hasCurrentObject ()) {
+        outArgument_outCppExpression.plusAssignOperation(GGS_string (".readProperty_").add_operation (enumerator_15965.current_mValue (HERE).getter_identifierRepresentation (SOURCE_FILE ("expression-getter-call.galgas", 328)), inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 328)).add_operation (GGS_string (" ()"), inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 328)), inCompiler  COMMA_SOURCE_FILE ("expression-getter-call.galgas", 328)) ;
+        enumerator_15965.gotoNextObject () ;
       }
       const GGS_getterCallExpressionForGeneration temp_16 = this ;
       extensionMethod_addHeaderFileName (temp_16.readProperty_mResultType (), ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 330)) ;
@@ -2893,17 +2885,17 @@ void cPtr_getterCallExpressionForGeneration::method_generateExpression (GGS_stri
     }
     break ;
   }
-  UpEnumerator_stringlist enumerator_16388 (var_getterArgumentCppNameList_14284) ;
-  while (enumerator_16388.hasCurrentObject ()) {
-    outArgument_outCppExpression.plusAssignOperation(enumerator_16388.current_mValue (HERE), inCompiler  COMMA_SOURCE_FILE ("expression-getter-call.galgas", 334)) ;
-    enumerator_16388.gotoNextObject () ;
-    if (enumerator_16388.hasCurrentObject ()) {
+  UpEnumerator_stringlist enumerator_16262 (var_getterArgumentCppNameList_14158) ;
+  while (enumerator_16262.hasCurrentObject ()) {
+    outArgument_outCppExpression.plusAssignOperation(enumerator_16262.current_mValue (HERE), inCompiler  COMMA_SOURCE_FILE ("expression-getter-call.galgas", 334)) ;
+    enumerator_16262.gotoNextObject () ;
+    if (enumerator_16262.hasCurrentObject ()) {
       outArgument_outCppExpression.plusAssignOperation(GGS_string (", "), inCompiler  COMMA_SOURCE_FILE ("expression-getter-call.galgas", 335)) ;
     }
   }
   GalgasBool test_18 = GalgasBool::boolTrue ;
   if (GalgasBool::boolTrue == test_18) {
-    test_18 = GGS_bool (ComparisonKind::equal, var_getterArgumentCppNameList_14284.getter_count (SOURCE_FILE ("expression-getter-call.galgas", 337)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
+    test_18 = GGS_bool (ComparisonKind::equal, var_getterArgumentCppNameList_14158.getter_count (SOURCE_FILE ("expression-getter-call.galgas", 337)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
     if (GalgasBool::boolTrue == test_18) {
       GalgasBool test_19 = GalgasBool::boolTrue ;
       if (GalgasBool::boolTrue == test_19) {
