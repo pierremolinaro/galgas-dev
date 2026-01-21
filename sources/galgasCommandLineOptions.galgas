@@ -62,11 +62,6 @@ option galgas_cli_options {
 
   @bool checkEntityUsefulness : '\0', "check-usefulness"
     -> "Check Entity Usefulness"
-
-//--- GGS4 optimization
-
-  @bool errorOnGetterCallWithNoArgument : '\0', "error-on-getter-call-with-no-argument"
-    -> "Error on getter call; with no argument (GGS4, suppress parenthesis)"
 }
 
 //--------------------------------------------------------------------------------------------------

@@ -134,21 +134,12 @@ final class @getterCallExpressionAST : @semanticExpressionAST {
           !constructorEffectiveParameterList
           !aGetter.mHasCompilerArgument
         }
-        if inAnalysisContext.semanticContext.galgas4
-         && ([self.mActualArgumentList count] == 0)
-         && [option galgas_cli_options.errorOnGetterCallWithNoArgument value] then
+        if inAnalysisContext.semanticContext.galgas4, [self.mActualArgumentList count] == 0 then
           error self.mExpressionLocation : "getter with no argument, remove parenthesis" fixit { remove }
         end
       end
   //-------------------------------------- The getter does not exist, it is a property ?
-    elsif [self.mActualArgumentList count] == 0, let prop = [receiverType definition].propertyMap @[self.mGetterName] then
-      [prop.mAccessControl checkGetAccess !inAnalysisContext.selfAvailability !self.mGetterName]
-//      outExpression = @propertyAccessExpressionForGeneration {
-//        !prop.mPropertyType
-//        !self.mGetterName.location
-//        !receiverExpression
-//        !self.mGetterName.string
-//      }
+    elsif [self.mActualArgumentList count] == 0, [[receiverType definition].propertyMap hasKey !self.mGetterName] then
       error self.mExpressionLocation : "use dot notation, instead of getter call" : outExpression
   //-------------------------------------- not found, old style search
     else
