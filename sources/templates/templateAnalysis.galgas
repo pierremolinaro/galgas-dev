@@ -86,17 +86,8 @@ override method @templateGetterCallInExpressionAST templateExpressionAnalysis
   //-------------------------------------- Property ?
   if [[receiverType definition].typeKind isStructType] || [[receiverType definition].typeKind isClassType],
      [self.mExpressionList count] == 0,
-     let theGetter = [receiverType definition].propertyMap @[self.mGetterName] then
-    if [option galgas_cli_options.errorPropertyGetterCall value] then
-      error self.mExpressionLocation : "property getter call (due to '--error-property-getter-call' option)"
-    end
-    [theGetter.mAccessControl checkSetAccess !.none !self.mGetterName]
-    outExpression = @propertyAccessExpressionForGeneration {
-      !theGetter.mPropertyType
-      !self.mGetterName.location
-      !receiverExpression
-      !self.mGetterName.string
-    }
+     [[receiverType definition].propertyMap hasKey !self.mGetterName] then
+    error self.mExpressionLocation : "use dot notation, instead og getter call" : outExpression
   else
   //--- Get getter map
     let @getterMap getterMap = [receiverType definition].getterMap

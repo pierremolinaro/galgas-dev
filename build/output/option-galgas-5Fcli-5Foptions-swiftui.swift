@@ -15,7 +15,6 @@ fileprivate let displayUnicodeLexicalTestFunctions_PREFKEY = "galgas_cli_options
 fileprivate let emitClassGraph_PREFKEY = "galgas_cli_options:emitClassGraph"
 fileprivate let emitSyntaxDiagrams_PREFKEY = "galgas_cli_options:emitSyntaxDiagrams"
 fileprivate let errorObsoleteGetterCall_PREFKEY = "galgas_cli_options:errorObsoleteGetterCall"
-fileprivate let errorPropertyGetterCall_PREFKEY = "galgas_cli_options:errorPropertyGetterCall"
 fileprivate let errorOnGetterCallWithNoArgument_PREFKEY = "galgas_cli_options:errorOnGetterCallWithNoArgument"
 fileprivate let generateManyFiles_PREFKEY = "galgas_cli_options:generateManyFiles"
 fileprivate let generateOneHeader_PREFKEY = "galgas_cli_options:generateOneHeader"
@@ -52,7 +51,6 @@ struct OptionView : View {
   @AppStorage(emitClassGraph_PREFKEY) private var emitClassGraph : Bool = false
   @AppStorage(emitSyntaxDiagrams_PREFKEY) private var emitSyntaxDiagrams : Bool = false
   @AppStorage(errorObsoleteGetterCall_PREFKEY) private var errorObsoleteGetterCall : Bool = false
-  @AppStorage(errorPropertyGetterCall_PREFKEY) private var errorPropertyGetterCall : Bool = false
   @AppStorage(errorOnGetterCallWithNoArgument_PREFKEY) private var errorOnGetterCallWithNoArgument : Bool = false
   @AppStorage(generateManyFiles_PREFKEY) private var generateManyFiles : Bool = false
   @AppStorage(generateOneHeader_PREFKEY) private var generateOneHeader : Bool = false
@@ -101,7 +99,6 @@ struct OptionView : View {
           Toggle ("Emit class graph in dot file", isOn: self.$emitClassGraph)
           Toggle ("Emit grammar syntax diagrams in TEX files", isOn: self.$emitSyntaxDiagrams)
           Toggle ("Error on call of an obsolete getter", isOn: self.$errorObsoleteGetterCall)
-          Toggle ("Error on calling property getter (instead of dot notation)", isOn: self.$errorPropertyGetterCall)
           Toggle ("Error on getter call; with no argument (GGS4, suppress parenthesis)", isOn: self.$errorOnGetterCallWithNoArgument)
           Toggle ("Generate many C++ implementation files", isOn: self.$generateManyFiles)
           Toggle ("Generate one C++ header file for all declarations", isOn: self.$generateOneHeader)
@@ -168,9 +165,6 @@ func commandLineToolInvocation () -> CommandLineToolInvocation {
   }
   if ud.bool (forKey: errorObsoleteGetterCall_PREFKEY) {
     arguments.append ("--error-on-obsolete-getter-call")
-  }
-  if ud.bool (forKey: errorPropertyGetterCall_PREFKEY) {
-    arguments.append ("--error-property-getter-call")
   }
   if ud.bool (forKey: errorOnGetterCallWithNoArgument_PREFKEY) {
     arguments.append ("--error-on-getter-call-with-no-argument")

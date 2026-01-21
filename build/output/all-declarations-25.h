@@ -205,6 +205,63 @@ void routine_commonGetterMapForAllTypes_26__21_ (class GGS_unifiedTypeMap & ioAr
                                                  class Compiler * inCompiler
                                                  COMMA_LOCATION_ARGS) ;
 
+
+//--------------------------------------------------------------------------------------------------
+//
+//                               Bool options                                                    
+//
+//--------------------------------------------------------------------------------------------------
+
+extern BoolCommandLineOption gOption_galgas_5F_cli_5F_options_checkEntityUsefulness ;
+
+extern BoolCommandLineOption gOption_galgas_5F_cli_5F_options_displayUnicodeLexicalTestFunctions ;
+
+extern BoolCommandLineOption gOption_galgas_5F_cli_5F_options_emitClassGraph ;
+
+extern BoolCommandLineOption gOption_galgas_5F_cli_5F_options_emitSyntaxDiagrams ;
+
+extern BoolCommandLineOption gOption_galgas_5F_cli_5F_options_errorObsoleteGetterCall ;
+
+extern BoolCommandLineOption gOption_galgas_5F_cli_5F_options_errorOnGetterCallWithNoArgument ;
+
+extern BoolCommandLineOption gOption_galgas_5F_cli_5F_options_generateManyFiles ;
+
+extern BoolCommandLineOption gOption_galgas_5F_cli_5F_options_generateOneHeader ;
+
+extern BoolCommandLineOption gOption_galgas_5F_cli_5F_options_outputHTMLgrammarFile ;
+
+extern BoolCommandLineOption gOption_galgas_5F_cli_5F_options_outputHTMLTypeListFile ;
+
+extern BoolCommandLineOption gOption_galgas_5F_cli_5F_options_printPredefinedLexicalActions ;
+
+extern BoolCommandLineOption gOption_galgas_5F_cli_5F_options_check_5F_big_5F_int ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//                               UInt options                                                    
+//
+//--------------------------------------------------------------------------------------------------
+
+//--------------------------------------------------------------------------------------------------
+//
+//                              String options                                                   
+//
+//--------------------------------------------------------------------------------------------------
+
+extern StringCommandLineOption gOption_galgas_5F_cli_5F_options_create_5F_project ;
+
+extern StringCommandLineOption gOption_galgas_5F_cli_5F_options_extractLIBPMOption ;
+
+extern StringCommandLineOption gOption_galgas_5F_cli_5F_options_cppCompile ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//                              String List options                                              
+//
+//--------------------------------------------------------------------------------------------------
+
+//--------------------------------------------------------------------------------------------------
+
 //--------------------------------------------------------------------------------------------------
 //
 //Filewrapper 'templateLexiqueGenerationTemplates'

@@ -7,7 +7,7 @@ import Combine
 
 //--------------------------------------------------------------------------------------------------
 
-class SearchResultNode : Identifiable, ObservableObject {
+struct SearchResultNode : Identifiable { // , ObservableObject {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -17,7 +17,6 @@ class SearchResultNode : Identifiable, ObservableObject {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private(set) var mEntries : [SearchResultItem]
-  @Published var mIsExpanded : Bool = false
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

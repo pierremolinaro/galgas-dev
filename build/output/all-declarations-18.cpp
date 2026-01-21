@@ -1830,7 +1830,7 @@ void cParser_galgas_34_ExpressionSyntax::rule_galgas_34_ExpressionSyntax_factor_
         nt_output_5F_expression_5F_list_ (ioArgument_ioDeclarations, var_expressionList_3874, inCompiler) ;
         GGS_location var_endLocation_3901 = GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas", 107)) ;
         inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__29_ COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas", 108)) ;
-        outArgument_outExpression = GGS_getterCallExpressionAST::init_21_errorOnGetterCallInsteadOfPropertyRead_21__21__21__21_ (GGS_bool (true), outArgument_outExpression, var_getterName_3709, var_expressionList_3874, var_startLocation_3750.getter_union (var_endLocation_3901, inCompiler COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas", 114)), inCompiler COMMA_HERE) ;
+        outArgument_outExpression = GGS_getterCallExpressionAST::init_21__21__21__21_ (outArgument_outExpression, var_getterName_3709, var_expressionList_3874, var_startLocation_3750.getter_union (var_endLocation_3901, inCompiler COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas", 113)), inCompiler COMMA_HERE) ;
       } break ;
       default:
         break ;

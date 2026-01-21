@@ -107,7 +107,6 @@ syntax extension galgas4ExpressionSyntax {
         let endLocation = @location.here
         $)$
         outExpression = @getterCallExpressionAST {
-          !errorOnGetterCallInsteadOfPropertyRead: true
           !outExpression
           !getterName
           !expressionList

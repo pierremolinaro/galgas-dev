@@ -69,9 +69,6 @@ option galgas_cli_options {
     -> "Error on getter call; with no argument (GGS4, suppress parenthesis)"
 
 //--- Deprecated constructions
-  @bool errorPropertyGetterCall : '\0', "error-property-getter-call"
-    -> "Error on calling property getter (instead of dot notation)"
-
   @bool errorObsoleteGetterCall : '\0', "error-on-obsolete-getter-call"
     -> "Error on call of an obsolete getter"
 }

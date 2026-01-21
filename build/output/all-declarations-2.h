@@ -16779,8 +16779,6 @@ class GGS_getterCallExpressionAST : public GGS_semanticExpressionAST {
   public: GGS_getterCallExpressionAST (const class cPtr_getterCallExpressionAST * inSourcePtr) ;
 
 //--------------------------------- Property access
-  public: class GGS_bool readProperty_errorOnGetterCallInsteadOfPropertyRead (void) const ;
-
   public: class GGS_semanticExpressionAST readProperty_mReceiver (void) const ;
 
   public: class GGS_lstring readProperty_mGetterName (void) const ;
@@ -16792,13 +16790,12 @@ class GGS_getterCallExpressionAST : public GGS_semanticExpressionAST {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GGS_getterCallExpressionAST init_21_errorOnGetterCallInsteadOfPropertyRead_21__21__21__21_ (const class GGS_bool & inOperand0,
-                                                                                                             const class GGS_semanticExpressionAST & inOperand1,
-                                                                                                             const class GGS_lstring & inOperand2,
-                                                                                                             const class GGS_actualOutputArgumentList & inOperand3,
-                                                                                                             const class GGS_location & inOperand4,
-                                                                                                             Compiler * inCompiler
-                                                                                                             COMMA_LOCATION_ARGS) ;
+  public: static GGS_getterCallExpressionAST init_21__21__21__21_ (const class GGS_semanticExpressionAST & inOperand0,
+                                                                   const class GGS_lstring & inOperand1,
+                                                                   const class GGS_actualOutputArgumentList & inOperand2,
+                                                                   const class GGS_location & inOperand3,
+                                                                   Compiler * inCompiler
+                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -16841,12 +16838,11 @@ class cPtr_getterCallExpressionAST : public cPtr_semanticExpressionAST {
   #endif
 
 //--------------------------------- Initializers
-  public: void getterCallExpressionAST_init_21_errorOnGetterCallInsteadOfPropertyRead_21__21__21__21_ (const class GGS_bool & inOperand0,
-                                                                                                       const class GGS_semanticExpressionAST & inOperand1,
-                                                                                                       const class GGS_lstring & inOperand2,
-                                                                                                       const class GGS_actualOutputArgumentList & inOperand3,
-                                                                                                       const class GGS_location & inOperand4,
-                                                                                                       Compiler * inCompiler) ;
+  public: void getterCallExpressionAST_init_21__21__21__21_ (const class GGS_semanticExpressionAST & inOperand0,
+                                                             const class GGS_lstring & inOperand1,
+                                                             const class GGS_actualOutputArgumentList & inOperand2,
+                                                             const class GGS_location & inOperand3,
+                                                             Compiler * inCompiler) ;
 
 
 //--- Extension method analyzeSemanticExpression
@@ -16864,7 +16860,6 @@ class cPtr_getterCallExpressionAST : public cPtr_semanticExpressionAST {
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
-  public: GGS_bool mProperty_errorOnGetterCallInsteadOfPropertyRead ;
   public: GGS_semanticExpressionAST mProperty_mReceiver ;
   public: GGS_lstring mProperty_mGetterName ;
   public: GGS_actualOutputArgumentList mProperty_mActualArgumentList ;
@@ -16875,8 +16870,7 @@ class cPtr_getterCallExpressionAST : public cPtr_semanticExpressionAST {
   public: cPtr_getterCallExpressionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
-  public: cPtr_getterCallExpressionAST (const GGS_bool & in_errorOnGetterCallInsteadOfPropertyRead,
-                                        const GGS_semanticExpressionAST & in_mReceiver,
+  public: cPtr_getterCallExpressionAST (const GGS_semanticExpressionAST & in_mReceiver,
                                         const GGS_lstring & in_mGetterName,
                                         const GGS_actualOutputArgumentList & in_mActualArgumentList,
                                         const GGS_location & in_mExpressionLocation,
@@ -20595,65 +20589,6 @@ class cPtr_xorExpressionAST : public cPtr_semanticExpressionAST {
   public: virtual const GALGAS_TypeDescriptor * classDescriptor (void) const override ;
 
 } ;
-
-
-//--------------------------------------------------------------------------------------------------
-//
-//                               Bool options                                                    
-//
-//--------------------------------------------------------------------------------------------------
-
-extern BoolCommandLineOption gOption_galgas_5F_cli_5F_options_checkEntityUsefulness ;
-
-extern BoolCommandLineOption gOption_galgas_5F_cli_5F_options_displayUnicodeLexicalTestFunctions ;
-
-extern BoolCommandLineOption gOption_galgas_5F_cli_5F_options_emitClassGraph ;
-
-extern BoolCommandLineOption gOption_galgas_5F_cli_5F_options_emitSyntaxDiagrams ;
-
-extern BoolCommandLineOption gOption_galgas_5F_cli_5F_options_errorObsoleteGetterCall ;
-
-extern BoolCommandLineOption gOption_galgas_5F_cli_5F_options_errorPropertyGetterCall ;
-
-extern BoolCommandLineOption gOption_galgas_5F_cli_5F_options_errorOnGetterCallWithNoArgument ;
-
-extern BoolCommandLineOption gOption_galgas_5F_cli_5F_options_generateManyFiles ;
-
-extern BoolCommandLineOption gOption_galgas_5F_cli_5F_options_generateOneHeader ;
-
-extern BoolCommandLineOption gOption_galgas_5F_cli_5F_options_outputHTMLgrammarFile ;
-
-extern BoolCommandLineOption gOption_galgas_5F_cli_5F_options_outputHTMLTypeListFile ;
-
-extern BoolCommandLineOption gOption_galgas_5F_cli_5F_options_printPredefinedLexicalActions ;
-
-extern BoolCommandLineOption gOption_galgas_5F_cli_5F_options_check_5F_big_5F_int ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//                               UInt options                                                    
-//
-//--------------------------------------------------------------------------------------------------
-
-//--------------------------------------------------------------------------------------------------
-//
-//                              String options                                                   
-//
-//--------------------------------------------------------------------------------------------------
-
-extern StringCommandLineOption gOption_galgas_5F_cli_5F_options_create_5F_project ;
-
-extern StringCommandLineOption gOption_galgas_5F_cli_5F_options_extractLIBPMOption ;
-
-extern StringCommandLineOption gOption_galgas_5F_cli_5F_options_cppCompile ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//                              String List options                                              
-//
-//--------------------------------------------------------------------------------------------------
-
-//--------------------------------------------------------------------------------------------------
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @galgasDeclarationAST struct

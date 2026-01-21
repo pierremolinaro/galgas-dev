@@ -10,7 +10,8 @@ struct SearchResultNodeView : View {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  @ObservedObject var mNode : SearchResultNode
+  @State var mNode : SearchResultNode
+  @State var mIsExpanded : Bool = false
   @Binding private var mSelectedResultItemID : UUID?
   @Binding var mSelectedFileNodeID : SourceFileNodeID?
 
@@ -27,7 +28,7 @@ struct SearchResultNodeView : View {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   var body : some View {
-    DisclosureGroup (isExpanded: self.$mNode.mIsExpanded) {
+    DisclosureGroup (isExpanded: self.$mIsExpanded) {
       ForEach (self.mNode.mEntries, id: \.self.id) { entry in
         SearchResultItemView (
           entry: entry,

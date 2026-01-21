@@ -36,7 +36,6 @@ syntax extension galgas3ExpressionSyntax {
     $]$
     let endLocation = @location.here
     outExpression = @getterCallExpressionAST {
-      !errorOnGetterCallInsteadOfPropertyRead: [option galgas_cli_options.errorPropertyGetterCall value]
       !receiverExpression
       !getterName
       !expressionList
@@ -51,7 +50,6 @@ syntax extension galgas3ExpressionSyntax {
 //--------------------------------------------------------------------------------------------------
 
 final class @getterCallExpressionAST : @semanticExpressionAST {
-  private let @bool errorOnGetterCallInsteadOfPropertyRead %initArgLabel
   private let @semanticExpressionAST mReceiver
   private let @lstring mGetterName
   private let @actualOutputArgumentList mActualArgumentList
@@ -96,10 +94,9 @@ final class @getterCallExpressionAST : @semanticExpressionAST {
           replace aGetter.mGetterNameThatObsoletesInvokationName
         }
       end
-      if self.errorOnGetterCallInsteadOfPropertyRead
-        && [[receiverType definition].propertyMap hasKey !self.mGetterName.string]
+      if [[receiverType definition].propertyMap hasKey !self.mGetterName.string]
         && ([self.mActualArgumentList count] == 0) then
-        error self.mExpressionLocation : "property getter call (due to '--error-property-getter-call' option)"
+        error self.mExpressionLocation : "use dot notation, instead of getter call"
       end
     //--- Analysis arguments
       if [self.mActualArgumentList count] != [aGetter.mArgumentTypeList count] then
@@ -146,15 +143,13 @@ final class @getterCallExpressionAST : @semanticExpressionAST {
   //-------------------------------------- The getter does not exist, it is a property ?
     elsif [self.mActualArgumentList count] == 0, let prop = [receiverType definition].propertyMap @[self.mGetterName] then
       [prop.mAccessControl checkGetAccess !inAnalysisContext.selfAvailability !self.mGetterName]
-      outExpression = @propertyAccessExpressionForGeneration {
-        !prop.mPropertyType
-        !self.mGetterName.location
-        !receiverExpression
-        !self.mGetterName.string
-      }
-      if self.errorOnGetterCallInsteadOfPropertyRead then // [option galgas_cli_options.errorPropertyGetterCall value] then
-        error self.mExpressionLocation : "property getter call (due to '--error-property-getter-call' option)"
-      end
+//      outExpression = @propertyAccessExpressionForGeneration {
+//        !prop.mPropertyType
+//        !self.mGetterName.location
+//        !receiverExpression
+//        !self.mGetterName.string
+//      }
+      error self.mExpressionLocation : "use dot notation, instead of getter call" : outExpression
   //-------------------------------------- not found, old style search
     else
       var @uint matchingReaderCount = 0
