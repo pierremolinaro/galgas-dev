@@ -167,7 +167,7 @@ final class @structDeclarationAST : @semanticDeclarationAST {
     for property in self.mStructurePropertyListAST do
       [!?ioTypeMap makeEntry !property.typeName ?let propertyTypeEntry]
       let selector = (if property.hasSelector then property.name.string else "" end).nowhere
-      if [property.initialization isNone] then
+      if property.initialization.isNone then
         constructorPropertyTypeList += !selector !propertyTypeEntry !property.name.string !true
       end
       typesToIncludeInHeaderCompilation += !propertyTypeEntry
@@ -175,12 +175,12 @@ final class @structDeclarationAST : @semanticDeclarationAST {
         !propertyTypeEntry
         !property.name
         !property.initialization
-        !hasSetter: not [property.mutability isConstantProperty]
+        !hasSetter: not property.mutability.isConstantProperty
         !hasSelector: property.hasSelector
       [!?propertyMap insertKey
         !property.name
         ![property.accessControl accessControl !forDeclaringType: structTypeIndex]
-        ![property.mutability isConstantProperty]
+        !property.mutability.isConstantProperty
         !propertyTypeEntry
       ]
     end
@@ -298,7 +298,7 @@ final class @structDeclarationAST : @semanticDeclarationAST {
         m += "; theses names are reserved"
         error property.name : m
       end
-      if [property.mutability isWeakProperty] then
+      if property.mutability.isWeakProperty then
         switch t.definition.unwrappedType
         case null :
           error property.name : "the weak property type should be an optional class"
@@ -319,7 +319,7 @@ final class @structDeclarationAST : @semanticDeclarationAST {
           !t
           !property.name
           !property.initialization
-          !hasSetter: not [property.mutability isConstantProperty]
+          !hasSetter: not property.mutability.isConstantProperty
           !hasSelector: property.hasSelector
       case some (*) :
       end
@@ -327,7 +327,7 @@ final class @structDeclarationAST : @semanticDeclarationAST {
         !t
         !property.name
         !property.initialization
-        !hasSetter: not [property.mutability isConstantProperty]
+        !hasSetter: not property.mutability.isConstantProperty
         !hasSelector: property.hasSelector
     //--- Check comparison
       switch self.comparison
@@ -451,7 +451,7 @@ final class @structTypeForGeneration : @semanticTypeForGeneration {
       !self.mConstructorInitializationCode
       !self.mConstructorNeedsCompilerVar
       !self.synthetizeAnInitializer
-      ![selfTypeDefinition.features generateCppObjectComparison]
+      !selfTypeDefinition.features.generateCppObjectComparison
     ]
   }
 

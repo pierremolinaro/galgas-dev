@@ -75,7 +75,7 @@ proc emitProductionRulesInTexFile
 {
 //--------------------------------------------------------- Print an tex file for grammar rule list
   let texDocumentFilePath = inProductDirectory + "/../tex/" + inGrammarComponentName + ".document.tex"
-  [[texDocumentFilePath stringByDeletingLastPathComponent] makeDirectory]
+  [texDocumentFilePath.stringByDeletingLastPathComponent makeDirectory]
   let document = [filewrapper grammarRulesInTexDocumentTemplate.document
     !inGrammarComponentName
     !escapeForTex (!inGrammarComponentName)
@@ -96,7 +96,7 @@ proc emitProductionRulesInTexFile
     for syntaxComponent in inSyntaxComponentListForGrammarAnalysis do
       for productionRule in syntaxComponent.mProductionRulesList do
         if productionRule.mLeftNonterminalSymbol.string == nonterminal.lkey then
-          if [productionRule.mInstructionList displayVertically] then
+          if productionRule.mInstructionList.displayVertically then
             [productionRule displayRuleVertically !syntaxComponent.mSyntaxComponentName.string !?s]
           else
             [productionRule displayRule !syntaxComponent.mSyntaxComponentName.string !?s]

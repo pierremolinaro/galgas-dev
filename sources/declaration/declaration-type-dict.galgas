@@ -305,7 +305,7 @@ override method @dictDeclarationAST enterDeclarationInSemanticContext
 //--------- Enter "set...Attribute...forKey" setters, and 'with' accessor
   for (* typeName mPropertyName 3*) in self.mPropertyList do
     let accessorName = @lstring {
-      !"set" + [mPropertyName.string capitalizingFirstCharacter] + "ForKey"
+      !"set" + mPropertyName.string.capitalizingFirstCharacter + "ForKey"
       !mPropertyName.location
     }
     [!?ioTypeMap makeEntry
@@ -375,7 +375,7 @@ override method @dictDeclarationAST enterDeclarationInSemanticContext
   var @subscriptMap readSubscriptMap = @()
   let @functionSignature argumentTypeList = @[@("".nowhere, keyTypeIndex, "inKey", true)]
   [!?readSubscriptMap insertKey
-    !@([argumentTypeList subcriptSignature], .nowhere)
+    !@(argumentTypeList.subcriptSignature, .nowhere)
     !argumentTypeList
     !optionalElementTypeEntry
   ]
@@ -591,7 +591,7 @@ final class @dictTypeForGeneration : @semanticTypeForGeneration {
       !selfTypeDefinition.enumerationDescriptorList
       !selfTypeDefinition.typeForEnumeratedElement
       !self.mKeyTypeName.string.identifierRepresentation
-      ![selfTypeDefinition.features generateCppObjectComparison]
+      !selfTypeDefinition.features.generateCppObjectComparison
       !self.mElementTypeEntry.identifierRepresentation
       !self.mOptionalElementTypeEntry.identifierRepresentation
     ]

@@ -348,7 +348,7 @@ override method @castInExpressionForGeneration generateExpression
     compilerCppName () + "->castError (\""
   + self.mTypeName.identifierRepresentation
   + "\", " + receiverExpression + ".ptr ()->classDescriptor ()"
-  + [self.mLocation commaSourceFile] + ") ;\n"
+  + self.mLocation.commaSourceFile + ") ;\n"
   [!?ioGeneratedCode decIndentation !2]
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
   ioGeneratedCode += "}\n"
@@ -385,7 +385,7 @@ override method @extractObjectInExpressionForGeneration generateExpression
   outCppExpression = "GGS_" + self.mResultType.identifierRepresentation
   + "::extractObject (" + receiverExpression
   + ", " + compilerCppName ()
-  + [self.mLocation commaSourceFile] + ")"
+  + self.mLocation.commaSourceFile + ")"
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
 }
 

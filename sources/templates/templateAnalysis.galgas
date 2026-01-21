@@ -84,7 +84,7 @@ override method @templateGetterCallInExpressionAST templateExpressionAnalysis
   let @unifiedTypeMapEntry receiverType = receiverExpression.mResultType
   let receiverTypeName = receiverType.definition.typeName.string
   //-------------------------------------- Property ?
-  if [receiverType.definition.typeKind isStructType] || receiverType.definition.typeKind.isClassType,
+  if receiverType.definition.typeKind.isStructType || receiverType.definition.typeKind.isClassType,
      self.mExpressionList.count == 0,
      [receiverType.definition.propertyMap hasKey !self.mGetterName] then
     error self.mExpressionLocation : "use dot notation, instead og getter call" : outExpression
@@ -156,7 +156,7 @@ override method @templateGetterCallInExpressionAST templateExpressionAnalysis
         error self.mGetterName
         : "the '@"+ receiverTypeName + "' type does not define the '" + self.mGetterName + "' getter"
         : getterFormalArgumentTypeList, hasCompilerArgument, returnedType, kind
-        fixit { replace [getterMap keyList] }
+        fixit { replace getterMap.keyList }
       end
     end
   //--- Analysis arguments
@@ -230,7 +230,7 @@ override method @templateClassFunctionAST templateExpressionAnalysis
       error self.mClassFunctionName
       : "the '@"+ self.mTypeName + "' type does not define the '" + self.mClassFunctionName + "' constructor"
       : classFuncFormalArgumentTypeList, hasCompilerArgument, returnedType
-      fixit { replace [classFunctionMap keyList] }
+      fixit { replace classFunctionMap.keyList }
     end
   end
 //--- Analysis arguments
@@ -725,8 +725,8 @@ override method @templateFunctionCallAST templateExpressionAnalysis
 //--- Check internal
   if isInternal then
     let procDeclarationLocation = [inAnalysisContext.mSemanticContext.mFunctionMap locationForKey !self.mFunctionName.string]
-    if [self.mFunctionName.location file] != [procDeclarationLocation file] then
-      error self.mFunctionName : "this proc is internal to '" + [procDeclarationLocation file] + "' file"
+    if self.mFunctionName.location.file != procDeclarationLocation.file then
+      error self.mFunctionName : "this proc is internal to '" + procDeclarationLocation.file + "' file"
     end
   end
 //--- Analyze effective parameters

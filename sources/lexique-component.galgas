@@ -1041,7 +1041,7 @@ override method @lexiqueComponentAST semanticAnalysis
   //--- Cpp
     let cppContents =  [filewrapper lexiqueGenerationTemplates.implementationZone2Galgas3
       !self.mLexiqueComponentName.string.identifierRepresentation
-      ![self.mLexicalRuleListAST useLoopLocalVar]
+      !self.mLexicalRuleListAST.useLoopLocalVar
       !lexiqueAnalysisContext.mLexicalAttributeMap
       !lexiqueAnalysisContext.mLexicalMessageMap
       !lexiqueAnalysisContext.mTerminalList

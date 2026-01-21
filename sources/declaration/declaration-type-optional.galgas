@@ -227,7 +227,7 @@ final class @optionalTypeForGeneration : @semanticTypeForGeneration {
       !selfTypeDefinition.typeName.string
       !self.mSelfTypeEntry.identifierRepresentation
       !self.unwrappedType.identifierRepresentation
-      ![selfTypeDefinition.features generateCppObjectComparison]
+      !selfTypeDefinition.features.generateCppObjectComparison
       !if self.weakType.isNull then "" else self.weakType.identifierRepresentation end
     ]
   }

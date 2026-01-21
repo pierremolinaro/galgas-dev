@@ -74,7 +74,7 @@ message "a GALGAS 3 source file"
 grammar galgas3Grammar
 ?sourceFilePath: @lstring inSourceFile {
 //--- Search for a project file in parent directory
-  let parentDirectory = [[inSourceFile.string stringByDeletingLastPathComponent] stringByDeletingLastPathComponent]
+  let parentDirectory = inSourceFile.string.stringByDeletingLastPathComponent.stringByDeletingLastPathComponent
   let candidateProjectFiles = [parentDirectory regularFilesWithExtensions !false !@[@("galgasProject")]]
   if candidateProjectFiles.count == 0 then
     error inSourceFile : "no project file in parent directory of source file"
@@ -100,7 +100,7 @@ case . "ggs"
 message "a GALGAS 4 source file"
 grammar galgas4Grammar ?sourceFilePath: @lstring inSourceFile {
 //--- Search for a project file in parent directory
-  let parentDirectory = [[inSourceFile.string stringByDeletingLastPathComponent] stringByDeletingLastPathComponent]
+  let parentDirectory = inSourceFile.string.stringByDeletingLastPathComponent.stringByDeletingLastPathComponent
   let candidateProjectFiles = [parentDirectory regularFilesWithExtensions !false !@[@("ggsProject")]]
   if candidateProjectFiles.count == 0 then
     error inSourceFile : "no project file in parent directory of source file"
@@ -173,9 +173,9 @@ private proc parseAndAnalyzeProject ?let @lstring inProjectSourceFilePath
         if @application.verboseOutput then
           println (!"*** Perform C++ compilation")
         end
-        let buildFile = [inProjectSourceFilePath stringByDeletingLastPathComponent] + "/" + cppCompilationTarget + "/build.py"
+        let buildFile = inProjectSourceFilePath.string.stringByDeletingLastPathComponent + "/" + cppCompilationTarget + "/build.py"
         if buildFile.fileExists then
-          let resultCode = ["python " + buildFile system]
+          let resultCode = ("python " + buildFile).system
           if resultCode != 0 then
           error "".nowhere : "Running '" + buildFile + "' returns " + resultCode
           end
@@ -200,12 +200,12 @@ private proc compileProject ?let @lstring inProjectSourceFile
   [[filewrapper typeGenerationTemplate] textFileContentsAtPath !"galgas-predefined-entities.txt"]
   : "GALGAS predefined types"
  //--- Parse source file
-  let sourcesDir = [inProjectSourceFile stringByDeletingLastPathComponent] + "/sources"
+  let sourcesDir = inProjectSourceFile.string.stringByDeletingLastPathComponent + "/sources"
   for (mValue) in inProjectComponentAST.mProjectSourceList do
-    if [mValue pathExtension] == "galgas" then
+    if mValue.pathExtension == "galgas" then
       let absoluteSourcePath = [mValue absolutePathFromPath !sourcesDir]
       grammar galgas3Grammar (!?declarationAST) in @lstring {!absoluteSourcePath !.nowhere}
-    elsif [mValue pathExtension] == "ggs" then
+    elsif mValue.pathExtension == "ggs" then
       let absoluteSourcePath = [mValue absolutePathFromPath !sourcesDir]
       grammar galgas4Grammar (!?declarationAST) in @lstring {!absoluteSourcePath !.nowhere}
     end
@@ -248,7 +248,7 @@ private proc compileProject ?let @lstring inProjectSourceFile
 //--------------------------------- Compile semantic declarations
   var usefulEntitiesGraph = @usefulEntitiesGraph ()
   let @string buildDirectoryName = "build"
-  let absoluteBuildDirectory = [inProjectSourceFile stringByDeletingLastPathComponent] + "/" + buildDirectoryName
+  let absoluteBuildDirectory = inProjectSourceFile.string.stringByDeletingLastPathComponent + "/" + buildDirectoryName
   let productDirectory = absoluteBuildDirectory + "/output"
   let @stringlist appProductFileList = @()
   let @semanticContext semanticContext

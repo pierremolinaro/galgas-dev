@@ -151,8 +151,8 @@ override method @filewrapperObjectInstanciationInExpressionAST analyzeSemanticEx
 //--- Check internal
   if isInternal then
     let filewrapperDeclarationLocation = [inAnalysisContext.semanticContext.mFilewrapperMap locationForKey !self.mFilewrapperName.string]
-    if [self.mFilewrapperName.location file] != [filewrapperDeclarationLocation file] then
-      error self.mFilewrapperName : "this filewrapper is internal to '" + [filewrapperDeclarationLocation file] + "' file"
+    if self.mFilewrapperName.location.file != filewrapperDeclarationLocation.file then
+      error self.mFilewrapperName : "this filewrapper is internal to '" + filewrapperDeclarationLocation.file + "' file"
     end
   end
 //---
@@ -196,8 +196,8 @@ override method @filewrapperTemplateInExpressionAST analyzeSemanticExpression
 //--- Check internal
   if isInternal then
     let filewrapperDeclarationLocation = [inAnalysisContext.semanticContext.mFilewrapperMap locationForKey !self.mFilewrapperName.string]
-    if [self.mFilewrapperName.location file] != [filewrapperDeclarationLocation file] then
-      error self.mFilewrapperName : "this filewrapper is internal to '" + [filewrapperDeclarationLocation file] + "' file"
+    if self.mFilewrapperName.location.file != filewrapperDeclarationLocation.file then
+      error self.mFilewrapperName : "this filewrapper is internal to '" + filewrapperDeclarationLocation.file + "' file"
     end
   end
 //---
@@ -264,7 +264,7 @@ override method @filewrapperInExpressionAST analyzeSemanticExpression
   let @string fileName
   if [self.mFilewrapperPath count] == 0 then
     error self.mFilewrapperPath : "path is empty" : directoryList, fileName
-  elsif [self.mFilewrapperPath firstCharacterOrNul] == '/' then
+  elsif self.mFilewrapperPath.string.firstCharacterOrNul == '/' then
     error self.mFilewrapperPath : "the path should not begin with '/'" : directoryList, fileName
   else
     directoryList = [self.mFilewrapperPath componentsSeparatedByString !"/"]
@@ -283,8 +283,8 @@ override method @filewrapperInExpressionAST analyzeSemanticExpression
 //--- Check internal
   if isInternal then
     let filewrapperDeclarationLocation = [inAnalysisContext.semanticContext.mFilewrapperMap locationForKey !self.mFilewrapperName.string]
-    if [self.mFilewrapperName.location file] != [filewrapperDeclarationLocation file] then
-      error self.mFilewrapperName : "this filewrapper is internal to '" + [filewrapperDeclarationLocation file] + "' file"
+    if self.mFilewrapperName.location.file != filewrapperDeclarationLocation.file then
+      error self.mFilewrapperName : "this filewrapper is internal to '" + filewrapperDeclarationLocation.file + "' file"
     end
   end
 //--- Search for file
@@ -382,7 +382,7 @@ override method @filewrapperTemplateInExpressionForGeneration generateExpression
     outCppExpression += ", " + mValue
   end
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
-  outCppExpression += [self.mLocation commaSourceFile] + "))"
+  outCppExpression += self.mLocation.commaSourceFile + "))"
 }
 
 //--------------------------------------------------------------------------------------------------

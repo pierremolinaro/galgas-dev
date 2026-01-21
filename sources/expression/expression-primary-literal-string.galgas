@@ -114,7 +114,7 @@ override method @literalStringExpressionForGeneration generateExpression
   if self.mString == "" then
     outCppExpression = "GGS_string::makeEmptyString ()"
   else
-    outCppExpression = "GGS_string (" + [self.mString utf8RepresentationEscapingQuestionMark] + ")"
+    outCppExpression = "GGS_string (" + self.mString.utf8RepresentationEscapingQuestionMark + ")"
   end
 }
 

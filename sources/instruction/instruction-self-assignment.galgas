@@ -92,7 +92,7 @@ override method @selfAssignmentInstructionAST analyzeSemanticInstruction
   ?!@localVarManager ioVariableMap
 {
   if let selfAvailable = inAnalysisContext.selfAvailability.getAvailable then
-    if not [selfAvailable.selfMutability selfIsMutable] then
+    if not selfAvailable.selfMutability.selfIsMutable then
       error self.mInstructionLocation : "'self' not mutable in this context"
     end
   //--- Analyze source expression

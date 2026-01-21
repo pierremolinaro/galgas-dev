@@ -140,7 +140,7 @@ override method @unaryMinusExpressionForGeneration generateExpression ?!@string 
     ?let operand
   ]
 //--- Generate Comparison
-  outCppExpression = operand + ".operator_unary_minus (" + compilerCppName () + [self.mLocation commaSourceFile] + ")"
+  outCppExpression = operand + ".operator_unary_minus (" + compilerCppName () + self.mLocation.commaSourceFile + ")"
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
 }
 

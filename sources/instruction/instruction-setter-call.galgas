@@ -203,7 +203,7 @@ override method @setterCallInstructionAST analyzeSemanticInstruction
     if let selfAvailability = inAnalysisContext.selfAvailability.getAvailable then
     //--- Check self is not inkoed before full initialization
       if let classTypeKind = selfAvailability.type.definition.typeKind.getClassType, classTypeKind.isReference then
-      elsif not [selfAvailability.selfMutability selfIsMutable] then
+      elsif not selfAvailability.selfMutability.selfIsMutable then
         error self.mSetterName : "'self' not mutable in this context"
       end
       let propertyMap = selfAvailability.type.definition.propertyMap
@@ -231,7 +231,7 @@ override method @setterCallInstructionAST analyzeSemanticInstruction
   var ok = true
   var errorLocation = self.mReceiverName.location
   for (value) in self.mReceiverStructProperties while ok do
-    ok = [receiverType.definition.typeKind isStructType]
+    ok = receiverType.definition.typeKind.isStructType
     if not ok then
       error errorLocation : "a structure is required for '.' access"
     else
@@ -320,7 +320,7 @@ override method @selfSetterCallInstructionAST analyzeSemanticInstruction
   ?!@localVarManager ioVariableMap {
 //--- Analyze "self", as receiver expression
   if let selfAvailable = inAnalysisContext.selfAvailability.getAvailable then
-    if not [selfAvailable.selfMutability selfIsMutable] then
+    if not selfAvailable.selfMutability.selfIsMutable then
       error self.mSetterName : "'self' not mutable in this context"
     end
   //--- Check self is not invoked before full initialization
@@ -432,7 +432,7 @@ override method @setterCallInstructionForGeneration generateInstruction
                         + pointerUniqueName + ") == nullptr)) {\n"
         [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
         ioGeneratedCode += "  " + compilerCppName () + "->onTheFlyRunTimeError (\"cannot cast to '@"
-                        + self.mCastType.definition.typeName.string + "'\"" + [self.mInstructionLocation commaSourceFile] + ") ;\n"
+                        + self.mCastType.definition.typeName.string + "'\"" + self.mInstructionLocation.commaSourceFile + ") ;\n"
         ioGeneratedCode += "  " + pointerUniqueName + " = nullptr ;\n"
         ioGeneratedCode += "}\n"
       end

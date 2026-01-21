@@ -90,7 +90,7 @@ abstract class @predefinedTypeAST : @semanticDeclarationAST {
     end
   //--- Add Extensions
     var @initializerMap initializerMap = @()
-    for initializer in [self initializers] do
+    for initializer in self.initializers do
       var @functionSignature formalParameterList = @()
       for (mFormalSelector mFormalArgumentTypeName mFormalArgumentName * mIsConstant) in initializer do
         formalParameterList ++= @(
@@ -124,8 +124,8 @@ abstract class @predefinedTypeAST : @semanticDeclarationAST {
       !isConcrete: true // Concrete Type
       !isFinal: true
       !superType: .null
-      !typeKind: [self typeKind]
-      !supportCollectionValue: [self supportsCollectionValue]
+      !typeKind: self.typeKind
+      !supportCollectionValue: self.supportsCollectionValue
       !allTypedPropertyList: @()
       !propertyMap: @()
       !currentTypedPropertyList: @()
@@ -138,7 +138,7 @@ abstract class @predefinedTypeAST : @semanticDeclarationAST {
       !unwrappedType: .null
       !readSubscriptMap: @()
       !enumerationDescriptorList: enumerationList
-      !features: [self getSupportedOperatorFlags]
+      !features: self.getSupportedOperatorFlags
       !addAssignOperatorArguments: addAssignArgumentList
       !generateHeaderInSeparateFile: false // Do not generate header in separate file
       !typeForEnumeratedElement: enumeratedTypeEntry
@@ -178,8 +178,8 @@ abstract class @predefinedTypeAST : @semanticDeclarationAST {
       !@primitiveTypeForGeneration {
         !selfType
         !self.mPredefinedTypeName
-        ![self cppDeclarationString]
-        !isPackage: [self typeKind] == .packageType
+        !self.cppDeclarationString
+        !isPackage: self.typeKind == .packageType
       }
   }
 

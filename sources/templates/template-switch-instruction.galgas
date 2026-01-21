@@ -143,7 +143,7 @@ override method @templateInstructionSwitchAST templateInstructionAnalysis
     !?ioTypeMap
     ?let switchExpression
   ]
-  if let enumType = [switchExpression.mResultType.definition.typeKind getEnumType] then
+  if let enumType = switchExpression.mResultType.definition.typeKind.getEnumType then
     var @stringset constantsNamedInSwitchInstruction = @()
   //--- Analyze branches
     var @templateInstructionSwitchBranchListForGeneration templateInstructionSwitchBranchList = @()
@@ -212,7 +212,7 @@ override method @templateInstructionSwitchAST templateInstructionAnalysis
         !instructionList
     end
   //--- Check all constants have been named
-    let forgottenConstants = [enumType.constantMap keySet] - constantsNamedInSwitchInstruction
+    let forgottenConstants = enumType.constantMap.keySet - constantsNamedInSwitchInstruction
     if forgottenConstants.count > 0 then
       var @string s = ""
       for (key) in forgottenConstants do

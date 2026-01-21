@@ -98,8 +98,8 @@ final class @procCallInstructionAST : @semanticInstructionAST {
   //--- Check internal
     if isFilePrivate then
       let procDeclarationLocation = [inAnalysisContext.semanticContext.routineMap locationForKey !self.mRoutineName.string]
-      if [self.mRoutineName.location file] != [procDeclarationLocation file] then
-        error self.mRoutineName : "this proc is internal to '" + [procDeclarationLocation file] + "' file"
+      if self.mRoutineName.location.file != procDeclarationLocation.file then
+        error self.mRoutineName : "this proc is internal to '" + procDeclarationLocation.file + "' file"
       end
     end
   //--- Check effective parameters
@@ -165,7 +165,7 @@ final class @procCallInstructionForGeneration : @semanticInstructionForGeneratio
       ioGeneratedCode += mValue + ", "
     end
     [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
-    ioGeneratedCode += compilerCppName () + " " + [self.routineMangledName.location commaSourceFile] + ") ;\n"
+    ioGeneratedCode += compilerCppName () + " " + self.routineMangledName.location.commaSourceFile + ") ;\n"
     ioGeneratedCode += "}\n"
   //--- Generate poisoned variables
     for (actualParameter) in self.mActualParameterList do

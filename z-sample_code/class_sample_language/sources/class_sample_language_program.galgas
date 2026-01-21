@@ -15,8 +15,8 @@ grammar class_sample_language_grammar
     [mDeclaration buildGraph !?inheritanceGraph]
   end
 //--- Undefined classes ?
-  if [inheritanceGraph undefinedNodeCount] > 0 then
-    for (mValue) in  [inheritanceGraph undefinedNodeReferenceList] do
+  if inheritanceGraph.undefinedNodeCount > 0 then
+    for (mValue) in inheritanceGraph.undefinedNodeReferenceList do
       error mValue : "the '" + mValue + "' class is not declared"
     end
   else
@@ -27,7 +27,7 @@ grammar class_sample_language_grammar
       ?*
       ?let @lstringlist circularDefinitionClassNameList
     ]
-    if [circularDefinitionClassNameList count] > 0 then
+    if circularDefinitionClassNameList.count > 0 then
       for (mValue) in  circularDefinitionClassNameList do
         error mValue : "the '" + mValue + "' class is involved in a circular definition"
       end

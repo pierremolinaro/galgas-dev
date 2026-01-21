@@ -197,7 +197,7 @@ final class @selfDivEqualExpressionInstructionAST : @semanticInstructionAST {
                                              ?!@localVarManager ioVariableMap {
   //--- Analyze "self", as receiver expression
     if let selfAvailable = inAnalysisContext.selfAvailability.getAvailable then
-      if not [selfAvailable.selfMutability selfIsMutable] then
+      if not selfAvailable.selfMutability.selfIsMutable then
         error self.mInstructionLocation : "'self' not mutable in this context"
       end
     //--- Check target variable type support '/= exp' operator
@@ -265,7 +265,7 @@ final class @selfPlusEqualExpressionInstructionAST : @semanticInstructionAST {
                                              ?!@localVarManager ioVariableMap {
   //--- Analyze "self", as receiver expression
     if let selfAvailable = inAnalysisContext.selfAvailability.getAvailable then
-      if not [selfAvailable.selfMutability selfIsMutable] then
+      if not selfAvailable.selfMutability.selfIsMutable then
         error self.mInstructionLocation : "'self' not mutable in this context"
       end
     //--- Check target variable type support '+= exp' operator
@@ -333,7 +333,7 @@ final class @selfMinusEqualExpressionInstructionAST : @semanticInstructionAST {
                                              ?!@localVarManager ioVariableMap {
   //--- Analyze "self", as receiver expression
     if let selfAvailable = inAnalysisContext.selfAvailability.getAvailable then
-      if not [selfAvailable.selfMutability selfIsMutable] then
+      if not selfAvailable.selfMutability.selfIsMutable then
         error self.mInstructionLocation : "'self' not mutable in this context"
       end
     //--- Check target variable type support '-= exp' operator
@@ -401,7 +401,7 @@ final class @selfMulEqualExpressionInstructionAST : @semanticInstructionAST {
                                              ?!@localVarManager ioVariableMap {
   //--- Analyze "self", as receiver expression
     if let selfAvailable = inAnalysisContext.selfAvailability.getAvailable then
-      if not [selfAvailable.selfMutability selfIsMutable] then
+      if not selfAvailable.selfMutability.selfIsMutable then
         error self.mInstructionLocation : "'self' not mutable in this context"
       end
     //--- Check target variable type support '*= exp' operator
@@ -469,7 +469,7 @@ final class @selfPlusEqualElementsInstructionAST : @semanticInstructionAST {
                                              ?!@localVarManager ioVariableMap {
   //--- Analyze "self", as receiver expression
     if let selfAvailable = inAnalysisContext.selfAvailability.getAvailable then
-      if not [selfAvailable.selfMutability selfIsMutable] then
+      if not selfAvailable.selfMutability.selfIsMutable then
         error self.mInstructionLocation : "'self' not mutable in this context"
       end
     //--- Check target variable type support '+=' operator

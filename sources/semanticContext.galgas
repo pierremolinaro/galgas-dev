@@ -559,7 +559,7 @@ proc recursivelyEnumerateDirectories
   let @stringlist files = [inAbsoluteSourcePath regularFiles !false]
   outWrapperFileMap = @()
   for (mValue) in files do
-    if [inTextFileExtensionMap hasKey ![mValue pathExtension]] then
+    if [inTextFileExtensionMap hasKey !mValue.pathExtension] then
       let @string absoluteFilePath = inAbsoluteSourcePath + "/" + mValue
       [!?outWrapperFileMap insertKey
         !@lstring {!mValue !@location.here}
@@ -569,7 +569,7 @@ proc recursivelyEnumerateDirectories
         !ioWrapperFileIndex
       ]
       ioWrapperFileIndex += 1
-    elsif [inBinaryFileExtensionMap hasKey ![mValue pathExtension]] then
+    elsif [inBinaryFileExtensionMap hasKey !mValue.pathExtension] then
       let @string absoluteFilePath = inAbsoluteSourcePath + "/" + mValue
       [!?outWrapperFileMap insertKey
         !@lstring {!mValue !@location.here}
@@ -652,12 +652,12 @@ override method @filewrapperDeclarationAST enterDeclarationInSemanticContext
   let @wrapperFileMap regularRootFileMap
   let @wrapperDirectoryMap wrapperDirectoryMap
   let @string absoluteSourcePath
-  if [self.mFilewrapperPath.string firstCharacterOrNul] == '/' then
+  if self.mFilewrapperPath.string.firstCharacterOrNul == '/' then
     absoluteSourcePath = self.mFilewrapperPath.string
   else
-    absoluteSourcePath = [self.mSourceFileAbsolutePath stringByDeletingLastPathComponent] + "/" + self.mFilewrapperPath.string
+    absoluteSourcePath = self.mSourceFileAbsolutePath.stringByDeletingLastPathComponent + "/" + self.mFilewrapperPath.string
   end
-  if not [absoluteSourcePath directoryExists] then
+  if not absoluteSourcePath.directoryExists then
     error self.mFilewrapperPath: "The '" + absoluteSourcePath + "' directory does not exist"
     : regularRootFileMap, wrapperDirectoryMap
   else

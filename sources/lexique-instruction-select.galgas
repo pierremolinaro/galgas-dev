@@ -199,11 +199,11 @@ override getter @lexicalSelectInstructionAST lexicalInstructionUsesLoopLocalVari
   result = false
   for (* selectInstructionList) in self.mLexicalSelectBranchList while not result do
     for (instruction) in selectInstructionList while not result do
-      result = [instruction lexicalInstructionUsesLoopLocalVariable]
+      result = instruction.lexicalInstructionUsesLoopLocalVariable
     end
   end
   for (instruction) in self.mDefaultInstructionList while not result do
-    result = [instruction lexicalInstructionUsesLoopLocalVariable]
+    result = instruction.lexicalInstructionUsesLoopLocalVariable
   end
 }
 

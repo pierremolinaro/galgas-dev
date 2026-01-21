@@ -213,7 +213,7 @@ final class @expressionCollectionForGeneration : @semanticExpressionForGeneratio
   //--- Declare variable and apply default constructor
     ioGeneratedCode += "GGS_" + self.mResultType.identifierRepresentation + " " + outCppExpression
     ioGeneratedCode += " = GGS_" + self.mResultType.identifierRepresentation
-    ioGeneratedCode += "::init (" + compilerCppName () + [self.mLocation commaSourceFile] + ") ;\n"
+    ioGeneratedCode += "::init (" + compilerCppName () + self.mLocation.commaSourceFile + ") ;\n"
     [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
   //--- Add Elements
     for (expression location) in self.expressionList do
@@ -226,7 +226,7 @@ final class @expressionCollectionForGeneration : @semanticExpressionForGeneratio
       ]
       ioGeneratedCode += outCppExpression + ".plusPlusAssignOperation ("
       ioGeneratedCode += argumentCppName + " "
-      ioGeneratedCode += [location commaSourceFile] + ") ;\n"
+      ioGeneratedCode += location.commaSourceFile + ") ;\n"
     end
   }
 

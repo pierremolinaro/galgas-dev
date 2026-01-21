@@ -501,7 +501,7 @@ override method @errorInstructionForGeneration generateInstruction
     + receiverCppVarName + ", "
     + messageCppVarName + ", "
     + fixItArrayCppName + " "
-    + [self.mInstructionLocation commaSourceFile] + ") ;\n"
+    + self.mInstructionLocation.commaSourceFile + ") ;\n"
 //--- Release dropped variables
   for (mValue) in self.mBuiltVariableCppNameList do
     [!?ioUnusedVariableCppNameSet removeKey !mValue]

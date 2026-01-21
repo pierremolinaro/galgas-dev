@@ -617,7 +617,7 @@ override method @grammarInStringInstructionAST analyzeSemanticInstruction
     for (mValue) in parameterCppNameList do
       ioGeneratedCode += ", " + mValue
     end
-    ioGeneratedCode += " " + [self.mInstructionLocation commaSourceFile] + ") ;\n"
+    ioGeneratedCode += " " + self.mInstructionLocation.commaSourceFile + ") ;\n"
     [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
     for s in self.mAssignementList do
       ioGeneratedCode += s.mValue + "\n"
@@ -696,7 +696,7 @@ override method @grammarInStringInstructionAST analyzeSemanticInstruction
     for (mValue) in parameterCppNameList do
       ioGeneratedCode += ", " + mValue
     end
-    ioGeneratedCode += " " + [self.mInstructionLocation commaSourceFile] + ") ;\n"
+    ioGeneratedCode += " " + self.mInstructionLocation.commaSourceFile + ") ;\n"
     [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
     for s in self.mAssignementList do
       ioGeneratedCode += s.mValue + "\n"

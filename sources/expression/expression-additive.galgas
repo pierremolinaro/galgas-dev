@@ -680,7 +680,7 @@ override method @binaryOperatorExpressionForGeneration generateExpression
     outCppExpression += ", " + compilerCppName ()
     [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
   end
-  outCppExpression += [self.mLocation commaSourceFile] + ")"
+  outCppExpression += self.mLocation.commaSourceFile + ")"
 }
 
 //--------------------------------------------------------------------------------------------------

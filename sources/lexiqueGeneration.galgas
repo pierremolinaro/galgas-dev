@@ -46,9 +46,9 @@ override getter @lexicalCharacterIntervalMatchAST generateConditionCode
   -> @string {
   result = ""
   result = "testForInputUTF32CharRange ("
-  result += [self.mLowerBound.char utf32CharConstantRepresentation]
+  result += self.mLowerBound.char.utf32CharConstantRepresentation
   result += ", "
-  result += [self.mUpperBound.char utf32CharConstantRepresentation]
+  result += self.mUpperBound.char.utf32CharConstantRepresentation
   result += ")"
 }
 
@@ -80,7 +80,7 @@ override getter @lexicalCharacterMatchAST generateConditionCode
   ?context:let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
   -> @string {
   result = "testForInputUTF32Char ("
-  result += [self.mCharacter.char utf32CharConstantRepresentation]
+  result += self.mCharacter.char.utf32CharConstantRepresentation
   result += ")"
 }
 
@@ -110,7 +110,7 @@ override getter @lexicalAttributeInputArgumentAST generateRoutineOrFunctionArgum
 
 override getter @lexicalCharacterInputArgumentAST generateRoutineOrFunctionArgument
   -> @string {
-  result = [self.mCharacter.char utf32CharConstantRepresentation]
+  result = self.mCharacter.char.utf32CharConstantRepresentation
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -132,7 +132,7 @@ override getter @lexicalFunctionInputArgumentAST generateRoutineOrFunctionArgume
   -> @string {
   result = "::scanner_function_" + self.mFunctionName + " (*this"
   for (mLexicalActualInputArgument) in self.mFunctionActualArgumentList do
-    result += ", " + [mLexicalActualInputArgument generateRoutineOrFunctionArgument]
+    result += ", " + mLexicalActualInputArgument.generateRoutineOrFunctionArgument
   end
   result += ")"
 }
@@ -234,7 +234,7 @@ override getter @lexicalExplicitRuleAST generateLexicalRuleCode
 override getter @lexicalExplicitRuleAST lexicalRuleUsesLoopLocalVar -> @bool {
   result = false
   for (instruction) in self.mInstructionList while not result do
-    result = [instruction lexicalInstructionUsesLoopLocalVariable]
+    result = instruction.lexicalInstructionUsesLoopLocalVariable
   end
 }
 

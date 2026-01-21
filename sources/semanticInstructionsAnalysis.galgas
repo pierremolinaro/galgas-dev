@@ -208,7 +208,7 @@ proc checkExpressionIsBoolean
         error inErrorLocation
         : "the expression type is not '@bool', but '@"+ expressionType.definition.typeName.string + "', and this type does not define the 'bool' getter "
         : outExpression
-        fixit { replace [expressionType.definition.getterMap keyList] }
+        fixit { replace expressionType.definition.getterMap.keyList }
       end
     end
   end

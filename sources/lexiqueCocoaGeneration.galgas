@@ -57,7 +57,7 @@ override getter @lexicalCharacterIntervalMatchAST generateSwiftCocoaConditionCod
 override getter @lexicalStringMatchAST generateSwiftCocoaConditionCode
   ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
   -> @string outGeneratedCode {
-  outGeneratedCode = "self.testForInputString (" + [self.mString.string utf8Representation]
+  outGeneratedCode = "self.testForInputString (" + self.mString.string.utf8Representation
   outGeneratedCode += ", advance: true)"
 }
 
@@ -67,7 +67,7 @@ override getter @lexicalStringNotMatchAST generateSwiftCocoaConditionCode
   ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
   -> @string outGeneratedCode {
   outGeneratedCode = "self.notTestForInputString ("
-  outGeneratedCode += [self.mString.string utf8RepresentationEscapingQuestionMark]
+  outGeneratedCode += self.mString.string.utf8RepresentationEscapingQuestionMark
   outGeneratedCode += ", error: &scanningOk)"
 }
 
@@ -126,7 +126,7 @@ override getter @lexicalFunctionInputArgumentAST generateSwiftCocoaRoutineOrFunc
   -> @string outGeneratedCode {
   outGeneratedCode = "scanner_cocoa_function_" + self.mFunctionName + " ("
   for (mLexicalActualInputArgument) in self.mFunctionActualArgumentList
-  do outGeneratedCode += [mLexicalActualInputArgument generateSwiftCocoaRoutineOrFunctionArgument]
+  do outGeneratedCode += mLexicalActualInputArgument.generateSwiftCocoaRoutineOrFunctionArgument
   between outGeneratedCode += ", "
   end
   outGeneratedCode += ")"
@@ -180,7 +180,7 @@ override getter @lexicalImplicitRuleAST generateSwiftCocoaCode
   outGeneratedCode = ""
   for > (* mName mTerminalName) in tokenSortedList do
     outGeneratedCode += "if scanningOk && self.testForInputString ("
-    outGeneratedCode += [mName utf8Representation]
+    outGeneratedCode += mName.utf8Representation
     outGeneratedCode += ", advance: true) {\n"
     outGeneratedCode += "  tokenCode = " + inScannerClassName + "_1_" + mTerminalName.identifierRepresentation + "\n"
     outGeneratedCode += "}else "

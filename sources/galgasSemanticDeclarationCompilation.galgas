@@ -88,7 +88,7 @@ proc compileSemanticDeclarationsGalgas ?!@lstringlist ioUsefulnessRootEntities
     println (!"*** Semantic analysis")
   end
 //----- Check there is no undefined types
-  for entry in [outTypeMap unsolvedEntryList] do
+  for entry in outTypeMap.unsolvedEntryList do
     error entry.mValue : "the '@" + entry.mValue + "' type is undefined"
   end
 //----- Semantic Analysis
@@ -149,14 +149,14 @@ private proc buildGalgasSemanticContext ?let @galgasDeclarationAST inDeclaration
     ]
   end
 //--- Add optional declarations
-  for node in [semanticTypePrecedenceGraph undefinedNodeReferenceList] do
+  for node in semanticTypePrecedenceGraph.undefinedNodeReferenceList do
     if [node.mValue lastCharacter] == '?' then
       println (!"Optional '" + node.mValue + "'")
     end
   end
 //---
-  if [semanticTypePrecedenceGraph undefinedNodeCount] > 0 then
-    for node in [semanticTypePrecedenceGraph undefinedNodeReferenceList] do
+  if semanticTypePrecedenceGraph.undefinedNodeCount > 0 then
+    for node in semanticTypePrecedenceGraph.undefinedNodeReferenceList do
       error node.mValue : "the '" + node.mValue + "' type is not defined"
     end
     error inEndOfProjectSourceFile
@@ -303,12 +303,12 @@ private proc generateManyHeaders
   var @stringlist headerInclusionList1 = @()
   var @stringlist headerInclusionList2 = @()
   for declaration in inSemanticDeclarationSortedListForGeneration do
-    if not [declaration.mDeclaration isPredefined] then
+    if not declaration.mDeclaration.isPredefined then
       var @stringset inclusionSet1 = @()
       [declaration.mDeclaration appendDeclaration1 !?inclusionSet1 ?let @string headerDef1]
       var headerIncludes1 = ""
       if [inclusionSet1 hasKey !""] then
-        println (!"Empty inclusion in " + [declaration.mDeclaration getImplementationCppFileName] + "headers 1")
+        println (!"Empty inclusion in " + declaration.mDeclaration.getImplementationCppFileName + "headers 1")
       end
       for (s) in inclusionSet1 do
         headerIncludes1 += "#include \"" + s + ".h\"\n"
@@ -318,14 +318,14 @@ private proc generateManyHeaders
       [declaration.mDeclaration appendDeclaration2 !inProductDirectory !?inclusionSet2 ?let @string headerDef2]
       var headerIncludes2 = ""
       if [inclusionSet2 hasKey !""] then
-        println (!"Empty inclusion in " + [declaration.mDeclaration getImplementationCppFileName] + "headers 2")
+        println (!"Empty inclusion in " + declaration.mDeclaration.getImplementationCppFileName + "headers 2")
       end
       for (s) in inclusionSet2 do
         headerIncludes2 += "#include \"" + s + ".h\"\n"
       end
       headerIncludes2 += headerDef2
     //---
-      switch [declaration.mDeclaration headerKind]
+      switch declaration.mDeclaration.headerKind
       case noHeader :
         if headerIncludes1 != "" then
           error "".nowhere
@@ -355,7 +355,7 @@ private proc generateManyHeaders
         end
       end
     //--- Header 1
-      if [declaration.mDeclaration headerKind] != @headerKind.noHeader then
+      if declaration.mDeclaration.headerKind != @headerKind.noHeader then
         var headerString = "#pragma once\n"
         headerString += "//" + @string.stringByRepeatingString {!"-" !118} + "\n\n"
         headerString += "#include \"all-predefined-types.h\"\n\n"
@@ -363,8 +363,8 @@ private proc generateManyHeaders
         headerString += headerIncludes1
         headerString += "\n"
         headerString += "//" + @string.stringByRepeatingString {!"-" !118} + "\n\n"
-        let headerFileName = [declaration.mDeclaration getImplementationCppFileName]
-           + if [declaration.mDeclaration headerKind] == @headerKind.twoHeaders then "-1" else "" end
+        let headerFileName = declaration.mDeclaration.getImplementationCppFileName
+           + if declaration.mDeclaration.headerKind == @headerKind.twoHeaders then "-1" else "" end
         headerInclusionList1 += !headerFileName
         ioAllProductFileSet ++= headerFileName + ".h"
         ioToolHeaderFileList += !headerFileName + ".h"
@@ -375,22 +375,22 @@ private proc generateManyHeaders
         ]
       end
     //--- Header 2
-      if [declaration.mDeclaration headerKind] == @headerKind.twoHeaders then
+      if declaration.mDeclaration.headerKind == @headerKind.twoHeaders then
         var headerString = "#ifndef " + declaration.mDeclaration.getImplementationCppFileName.identifierRepresentation + "_DEFINED\n"
         headerString += "#define " + declaration.mDeclaration.getImplementationCppFileName.identifierRepresentation + "_DEFINED\n\n"
         headerString += "//" + @string.stringByRepeatingString {!"-" !118} + "\n\n"
-        headerString += "#include \"" + [declaration.mDeclaration getImplementationCppFileName] + "-1.h\"\n"
+        headerString += "#include \"" + declaration.mDeclaration.getImplementationCppFileName + "-1.h\"\n"
         headerString += "\n//" + @string.stringByRepeatingString {!"-" !118} + "\n\n"
         headerString += headerIncludes2
         headerString += "\n"
         headerString += "//" + @string.stringByRepeatingString {!"-" !118} + "\n\n"
         headerString += "#endif\n\n"
-        headerInclusionList2 += ![declaration.mDeclaration getImplementationCppFileName]
-        ioAllProductFileSet ++= [declaration.mDeclaration getImplementationCppFileName] + ".h"
-        ioToolHeaderFileList += ![declaration.mDeclaration getImplementationCppFileName] + ".h"
+        headerInclusionList2 += !declaration.mDeclaration.getImplementationCppFileName
+        ioAllProductFileSet ++= declaration.mDeclaration.getImplementationCppFileName + ".h"
+        ioToolHeaderFileList += !declaration.mDeclaration.getImplementationCppFileName + ".h"
         [@string generateFile
           !inProductDirectory
-          ![declaration.mDeclaration getImplementationCppFileName] + ".h"
+          !declaration.mDeclaration.getImplementationCppFileName + ".h"
           !headerString
         ]
       end
@@ -423,14 +423,14 @@ private proc generateOneBigHeader
   ]
 //--- Declaration 1
   for declaration in inSemanticDeclarationSortedListForGeneration do
-    if not [declaration.mDeclaration isPredefined] then
+    if not declaration.mDeclaration.isPredefined then
       [declaration.mDeclaration appendDeclaration1 !? %from @() ?let @string headerString1]
       headerString += headerString1
     end
   end
 //--- Declaration 2
   for declaration in inSemanticDeclarationSortedListForGeneration do
-    if not [declaration.mDeclaration isPredefined] then
+    if not declaration.mDeclaration.isPredefined then
       [declaration.mDeclaration appendDeclaration2 !inProductDirectory !? %from @() ?let @string headerString2]
       headerString += headerString2
     end
@@ -517,20 +517,20 @@ private proc generateFewImplementationFiles
   var implementationString = ""
   var @stringset inclusionSet = @()
   for declaration in inSemanticDeclarationSortedListForGeneration do
-    if not [declaration.mDeclaration isPredefined] then
+    if not declaration.mDeclaration.isPredefined then
       [declaration.mDeclaration appendSpecificImplementation !inUnifiedTypeMap !?inclusionSet ?let @string code]
       if [inclusionSet hasKey !""] then
-        println (!"Empty inclusion in " + [declaration.mDeclaration getImplementationCppFileName] + " cpp headers")
+        println (!"Empty inclusion in " + declaration.mDeclaration.getImplementationCppFileName + " cpp headers")
       end
       implementationString += code
-      implementationString += [declaration.mDeclaration appendTypeGenericImplementation]
+      implementationString += declaration.mDeclaration.appendTypeGenericImplementation
       n += 1
       if n >= definitionGroupAmount () then
         if useOneHugeHeader then
           inclusionSet = @["all-declarations"]
         end
         let header = [filewrapper semanticFileGenerationTemplate.semanticFileImplementation
-          ![inclusionSet stringList]
+          !inclusionSet.stringList
         ]
         let fileName = "all-declarations-" + fileIdx + ".cpp"
         ioToolProductFileList = @stringlist @[@(fileName)] + ioToolProductFileList
@@ -553,7 +553,7 @@ private proc generateFewImplementationFiles
       inclusionSet = @["all-declarations"]
     end
     let header = [filewrapper semanticFileGenerationTemplate.semanticFileImplementation
-      ![inclusionSet stringList]
+      !inclusionSet.stringList
     ]
     let fileName = "all-declarations-" + fileIdx + ".cpp"
     ioToolProductFileList = @stringlist @[@(fileName)] + ioToolProductFileList
@@ -577,23 +577,23 @@ private proc generateFewImplementationFilesWithFewHeaders
   ?!@stringlist ioToolHeaderFileList {
   var @headerCompositionMap headerCompositionMap = @()
   for declaration in inSemanticDeclarationSortedListForGeneration do
-    if not [declaration.mDeclaration isPredefined] then
+    if not declaration.mDeclaration.isPredefined then
       var @stringset inclusionSet1 = @()
       [declaration.mDeclaration appendDeclaration1 !?inclusionSet1 ?let @string headerString1]
       var @stringset inclusionSet2 = @()
       [declaration.mDeclaration appendDeclaration2 !inProductDirectory !?inclusionSet2 ?let @string headerString2]
-      if [declaration.mDeclaration headerKind] != .noHeader then
-        let headerFileName = [declaration.mDeclaration getImplementationCppFileName] + if [declaration.mDeclaration headerKind] == .twoHeaders then "-1" else "" end
+      if declaration.mDeclaration.headerKind != .noHeader then
+        let headerFileName = declaration.mDeclaration.getImplementationCppFileName + if declaration.mDeclaration.headerKind == .twoHeaders then "-1" else "" end
         [!?headerCompositionMap insertKey
           !headerFileName.nowhere
           !inclusionSet1
           !headerString1
         ]
       end
-      if [declaration.mDeclaration headerKind] == .twoHeaders then
+      if declaration.mDeclaration.headerKind == .twoHeaders then
         [!?headerCompositionMap insertKey
           !declaration.mDeclaration.getImplementationCppFileName.nowhere
-          !inclusionSet2 | @stringset @[[declaration.mDeclaration getImplementationCppFileName] + "-1"]
+          !inclusionSet2 | @stringset @[declaration.mDeclaration.getImplementationCppFileName + "-1"]
           !headerString2
         ]
       end
@@ -606,13 +606,13 @@ private proc generateFewImplementationFilesWithFewHeaders
   var @stringset inclusionSet = @()
   var headerFileName = "all-declarations-" + fileIdx
   for declaration in inSemanticDeclarationSortedListForGeneration do
-    if not [declaration.mDeclaration isPredefined] then
-      if not [declaration.mDeclaration isPredefined] then
-        if [declaration.mDeclaration headerKind] == .twoHeaders then
-          buildHeader (!headerCompositionMap !headerFileName ![declaration.mDeclaration getImplementationCppFileName] +"-1" !?headerRepartitionMap !?headerString)
-          buildHeader (!headerCompositionMap !headerFileName ![declaration.mDeclaration getImplementationCppFileName] !?headerRepartitionMap !?headerString)
-        elsif [declaration.mDeclaration headerKind] == .oneHeader then
-          buildHeader (!headerCompositionMap !headerFileName ![declaration.mDeclaration getImplementationCppFileName] !?headerRepartitionMap !?headerString)
+    if not declaration.mDeclaration.isPredefined then
+      if not declaration.mDeclaration.isPredefined then
+        if declaration.mDeclaration.headerKind == .twoHeaders then
+          buildHeader (!headerCompositionMap !headerFileName !declaration.mDeclaration.getImplementationCppFileName +"-1" !?headerRepartitionMap !?headerString)
+          buildHeader (!headerCompositionMap !headerFileName !declaration.mDeclaration.getImplementationCppFileName !?headerRepartitionMap !?headerString)
+        elsif declaration.mDeclaration.headerKind == .oneHeader then
+          buildHeader (!headerCompositionMap !headerFileName !declaration.mDeclaration.getImplementationCppFileName !?headerRepartitionMap !?headerString)
         end
       end
       [declaration.mDeclaration appendSpecificImplementation !inUnifiedTypeMap !?inclusionSet ?let @string code]
@@ -620,11 +620,11 @@ private proc generateFewImplementationFilesWithFewHeaders
         buildHeader (!headerCompositionMap !headerFileName !s !?headerRepartitionMap !?headerString)
       end
       implementationString += code
-      implementationString += [declaration.mDeclaration appendTypeGenericImplementation]
+      implementationString += declaration.mDeclaration.appendTypeGenericImplementation
       if implementationString.count > 786432 then
         inclusionSet = @["all-declarations-" + fileIdx]
         let cppHeader = [filewrapper semanticFileGenerationTemplate.semanticFileImplementation
-          ![inclusionSet stringList]
+          !inclusionSet.stringList
         ]
         let fileName = "all-declarations-" + fileIdx + ".cpp"
         ioToolProductFileList = @stringlist @[@(fileName)] + ioToolProductFileList
@@ -710,19 +710,19 @@ private proc generateManyImplementationFiles
 //--- Generation
   for declaration in inSemanticDeclarationSortedListForGeneration do
     var @stringset inclusionSet = @()
-    if not [declaration.mDeclaration isPredefined] then
+    if not declaration.mDeclaration.isPredefined then
       [declaration.mDeclaration appendSpecificImplementation !inUnifiedTypeMap !?inclusionSet ?var @string implementationString]
-      if [declaration.mDeclaration hasCppHeaderFile] then
-       inclusionSet ++= [declaration.mDeclaration getImplementationCppFileName]
+      if declaration.mDeclaration.hasCppHeaderFile then
+       inclusionSet ++= declaration.mDeclaration.getImplementationCppFileName
       end
       if useOneHugeHeader then
         inclusionSet = @["all-declarations"]
       end
       let header = [filewrapper semanticFileGenerationTemplate.semanticFileImplementation
-        ![inclusionSet stringList]
+        !inclusionSet.stringList
       ]
-      implementationString += [declaration.mDeclaration appendTypeGenericImplementation]
-      let fileName = [declaration.mDeclaration getImplementationCppFileName] + ".cpp"
+      implementationString += declaration.mDeclaration.appendTypeGenericImplementation
+      let fileName = declaration.mDeclaration.getImplementationCppFileName + ".cpp"
       ioAllProductFileSet ++= fileName
       [@string generateFile
         !inProductDirectory

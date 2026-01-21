@@ -38,8 +38,8 @@ proc checkMethodSignatures
     for (ref_mFormalSelector ref_mFormalArgumentType ref_mFormalArgumentPassingMode *) in inReferenceSignature, (mFormalSelector mFormalArgumentPassingMode mFormalArgumentType mFormalArgumentName *) in inTestedSignature do
       if ref_mFormalArgumentPassingMode != mFormalArgumentPassingMode then
         error mFormalArgumentName : "the '" + mFormalArgumentName + "' formal parameter is declared as "
-        + [mFormalArgumentPassingMode formalArgumentMessage] + ", but overriden method declares it as "
-        + [ref_mFormalArgumentPassingMode formalArgumentMessage]
+        + mFormalArgumentPassingMode.formalArgumentMessage + ", but overriden method declares it as "
+        + ref_mFormalArgumentPassingMode.formalArgumentMessage
         error inReferenceLocation:"overriden method is declared here"
       end
       if mFormalSelector.string != ref_mFormalSelector.string then
@@ -502,12 +502,12 @@ override method @filewrapperDeclarationAST semanticAnalysis
   ]
 //--- Build absolute path
   let @string absoluteSourcePath
-  if [self.mFilewrapperPath.string firstCharacterOrNul] == '/' then
+  if self.mFilewrapperPath.string.firstCharacterOrNul == '/' then
     absoluteSourcePath = self.mFilewrapperPath.string
   else
-    absoluteSourcePath = [self.mSourceFileAbsolutePath stringByDeletingLastPathComponent] + "/" + self.mFilewrapperPath.string
+    absoluteSourcePath = self.mSourceFileAbsolutePath.stringByDeletingLastPathComponent + "/" + self.mFilewrapperPath.string
   end
-  if not [absoluteSourcePath directoryExists] then
+  if not absoluteSourcePath.directoryExists then
     error self.mFilewrapperPath: "The '" + absoluteSourcePath + "' directory does not exist"
   else
   //--- Analyze filewrapper templates
@@ -519,7 +519,7 @@ override method @filewrapperDeclarationAST semanticAnalysis
       )
       [!?ioUsefulEntitiesGraph addNode !filewrapperTemplateNameForUsefulness !filewrapperTemplateNameForUsefulness]
       [!?ioUsefulEntitiesGraph addEdge !from: filewrapperTemplateNameForUsefulness !to: filewrapperNameForUsefulness]
-      if [filewrapperTemplate.mFilewrapperTemplatePath.string firstCharacterOrNul] == '/' then
+      if filewrapperTemplate.mFilewrapperTemplatePath.string.firstCharacterOrNul == '/' then
         error filewrapperTemplate.mFilewrapperTemplatePath
          : "the path should not begin with a '/'; it is relative to filewrapper path '" + absoluteSourcePath + "'"
       end
@@ -799,7 +799,7 @@ override method @galgas3GrammarComponentAST semanticAnalysis
   )
 //--------------------------------------------------------- Generate HTML grammer helper file
   if [option galgas_cli_options.outputHTMLgrammarFile value] then
-    [[HTMLFilePath stringByDeletingLastPathComponent] makeDirectory]
+    [HTMLFilePath.stringByDeletingLastPathComponent makeDirectory]
     [grammarHTMLHelperContents writeToFileWhenDifferentContents !HTMLFilePath ?*]
   else
     [@string deleteFileIfExists !HTMLFilePath]
@@ -928,8 +928,8 @@ proc enterNonterminalNonTerminalInMapAndCheck
   ?let @nonterminalLabelMap inNonterminalLabelMap
   ?!@nonterminalMap ioNonterminalDeclarationMap {
   if let entry = ioNonterminalDeclarationMap @[inNonTerminalName.string] then
-    let @stringset firstDeclarationLabelSet = [entry.mLabelMap keySet]
-    let @stringset reDeclarationLabelSet = [inNonterminalLabelMap keySet]
+    let @stringset firstDeclarationLabelSet = entry.mLabelMap.keySet
+    let @stringset reDeclarationLabelSet = inNonterminalLabelMap.keySet
     let @stringset missingLabelSet = firstDeclarationLabelSet - reDeclarationLabelSet
     if missingLabelSet.count > 0 then
       var @string s = ""
@@ -1559,7 +1559,7 @@ private proc semanticAnalysisOfSyntaxComponent
 
 private proc emitClassGraphFile ?let @string inDotDocumentFilePath
                                 ?let @unifiedTypeMap inTypeMap {
-  [[inDotDocumentFilePath stringByDeletingLastPathComponent] makeDirectory]
+  [inDotDocumentFilePath.stringByDeletingLastPathComponent makeDirectory]
   var document = "digraph G {\n"
   document += "  rankdir=LR ;\n"
   document += "  node [shape=record fontname=helvetica style=rounded] ;\n"
@@ -1572,7 +1572,7 @@ private proc emitClassGraphFile ?let @string inDotDocumentFilePath
         case null :
           document += "  \"@" + definition.typeName + "\" ;\n"
         case element (superType) :
-          if let t = superType, let solvedType = [t.mDefinition getSolved] then
+          if let t = superType, let solvedType = t.mDefinition.getSolved then
             document += "  \"@" + definition.typeName + "\" ;\n"
             document += "  \"@" + definition.typeName + "\" -> \"@"
             document += solvedType.definition.typeName.string + "\" ;\n"

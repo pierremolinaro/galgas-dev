@@ -184,11 +184,6 @@ override getter @lexicalAttributeInputOutputArgumentAST generateSwiftCocoaRoutin
   ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
   -> @string outGeneratedCode
 {
-//  [inLexiqueAnalysisContext.mLexicalAttributeMap searchKey !self.mAttributeName ?let lexicalType]
-//  outGeneratedCode = ""
-//  if [lexicalType needsReferenceInInputOutputInCocoa] then
-//    outGeneratedCode += "& "
-//  end
   outGeneratedCode = "&self.mLexicalAttribute_" + self.mAttributeName
 }
 
@@ -197,7 +192,7 @@ override getter @lexicalAttributeInputOutputArgumentAST generateSwiftCocoaRoutin
 override getter @lexicalFormalInputArgumentAST generateSwiftCocoaRoutineArgument
   ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
   -> @string outGeneratedCode {
-  outGeneratedCode = [self.mRoutineOrFunctionFormalInputArgument generateSwiftCocoaRoutineOrFunctionArgument]
+  outGeneratedCode = self.mRoutineOrFunctionFormalInputArgument.generateSwiftCocoaRoutineOrFunctionArgument
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -221,9 +216,9 @@ override method @lexicalAttributeInputOutputArgumentAST checkLexicalRoutineCallA
 //--- Type check
   if attributeLexicalType != inLexicalRoutineFormalArgumentType then
     error self.mAttributeName:"type error, attribute type is @"
-    + [attributeLexicalType lexicalTypeBaseName]
+    + attributeLexicalType.lexicalTypeBaseName
     + " type, but lexical routine prototype requires @"
-    + [inLexicalRoutineFormalArgumentType lexicalTypeBaseName]
+    + inLexicalRoutineFormalArgumentType.lexicalTypeBaseName
     + " type"
   end
 //--- Passing mode check
@@ -339,7 +334,7 @@ override getter @lexicalAttributeInputOutputArgumentAST generateRoutineArgument
 
 override getter @lexicalFormalInputArgumentAST generateRoutineArgument
   -> @string {
-  result = [self.mRoutineOrFunctionFormalInputArgument generateRoutineOrFunctionArgument]
+  result = self.mRoutineOrFunctionFormalInputArgument.generateRoutineOrFunctionArgument
 }
 
 //·································································································
@@ -356,7 +351,7 @@ override getter @lexicalRoutineCallInstructionAST generateLexicalInstructionCode
   -> @string {
   result = "::scanner_routine_" + self.mRoutineName + " (*this"
   for (mLexicalRoutineActualArgument) in self.mActualArgumentList do
-    result += ", " + [mLexicalRoutineActualArgument generateRoutineArgument]
+    result += ", " + mLexicalRoutineActualArgument.generateRoutineArgument
   end
   for (mValue) in self.mErrorMessageList do
     result += ", gLexicalMessage_" + inScannerClassName + "_" + mValue

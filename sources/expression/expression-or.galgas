@@ -530,7 +530,7 @@ override method @closedSliceExpressionForGeneration generateExpression
 //--- Generate Comparison
   outCppExpression =
    "GGS_range (" + leftTemporaryOperand + ", "
-   +  rightTemporaryOperand + ".substract_operation (" + leftTemporaryOperand + ", " + compilerCppName () + [self.mLocation commaSourceFile] + ").add_operation (GGS_uint (1), " + compilerCppName () + [self.mLocation commaSourceFile] + "))"
+   +  rightTemporaryOperand + ".substract_operation (" + leftTemporaryOperand + ", " + compilerCppName () + self.mLocation.commaSourceFile + ").add_operation (GGS_uint (1), " + compilerCppName () + self.mLocation.commaSourceFile + "))"
 }
 
 //································································································
@@ -564,7 +564,7 @@ override method @openedSliceExpressionForGeneration generateExpression
   outCppExpression =
    "GGS_range (" + leftTemporaryOperand + ", "
    +  rightTemporaryOperand + ".substract_operation (" + leftTemporaryOperand + ", " + compilerCppName ()
-   + [self.mLocation commaSourceFile] + "))"
+   + self.mLocation.commaSourceFile + "))"
 }
 
 //--------------------------------------------------------------------------------------------------

@@ -135,7 +135,7 @@ final class @getterCallExpressionAST : @semanticExpressionAST {
           !aGetter.mHasCompilerArgument
         }
         if inAnalysisContext.semanticContext.galgas4 || [option galgas_cli_options.errorOnOldStyleGetterCall value],
-           [self.mActualArgumentList count] == 0 then
+           self.mActualArgumentList.count == 0 then
           error self.mExpressionLocation : "getter with no argument, remove parenthesis" fixit { remove }
         end
       end
@@ -236,7 +236,7 @@ final class @getterCallExpressionAST : @semanticExpressionAST {
         error self.mGetterName
         : "the '@"+ receiverType.definition.typeName.string + "' type does not define the '" + self.mGetterName + "' getter "
         : outExpression
-        fixit { replace [receiverType.definition.getterMap keyList] }
+        fixit { replace receiverType.definition.getterMap.keyList }
       end
     end
   }

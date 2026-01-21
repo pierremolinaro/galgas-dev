@@ -170,7 +170,7 @@ override method @warningInstructionForGeneration generateInstruction
     + receiverCppVarName + ", "
     + messageCppVarName + ", "
     + fixItArrayCppName + " "
-    + [self.mInstructionLocation commaSourceFile] + ") ;\n"
+    + self.mInstructionLocation.commaSourceFile + ") ;\n"
 }
 
 //--------------------------------------------------------------------------------------------------

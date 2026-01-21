@@ -318,7 +318,7 @@ proc updateGalgasTargets
   ?!@stringset ioAllProductFileSet
   ?let @stringlist inHandCodedLinkAppFileList {
   ioAllProductFileSet += .setWithStringList {!inSwiftAppProductFileList}
-  let projectDirectory = [inProjectSourceFilePath stringByDeletingLastPathComponent]
+  let projectDirectory = inProjectSourceFilePath.stringByDeletingLastPathComponent
 //--- Update project header
   [[filewrapper targetGalgas3GenerationFileWrapper.project_header !inProjectVersionString] writeToFileWhenDifferentContents
     !inAbsoluteBuildDirectory + "/output/project_header.h"
@@ -470,13 +470,13 @@ proc updateGalgasTargets
 //--- Update json file list
   var @stringlist handCodedSourceToolFileList = @()
   for (f) in inHandCodedSourceToolFileList do
-    if [f pathExtension] != "h" then
+    if f.pathExtension != "h" then
       handCodedSourceToolFileList += !f.lastPathComponent
     end
   end
   var handCodedSourceDirectorySet = @stringset ()
   for sourcePath in inHandCodedSourceToolFileList do
-    let subDir = [sourcePath.mValue stringByDeletingLastPathComponent]
+    let subDir = sourcePath.mValue.stringByDeletingLastPathComponent
     if subDir == "" then
       handCodedSourceDirectorySet ++= "../sources/tool-sources"
     else
@@ -1211,7 +1211,7 @@ proc updateGalgasTargets
     ] + codeSigningSettingList
     [!?xcodeProject addAppTarget
       !targetName: inTargetName + " IDE"
-      !productFileName: [inTargetName capitalizingFirstCharacter] + " IDE"
+      !productFileName: inTargetName.capitalizingFirstCharacter + " IDE"
       !sources: swift_FileRefList
       !frameworkFileRefs: frameworksFileRefList + appFrameworksFileRefList
       !resourceFileRefs: resourceFileBuildRefs // + resource_handCodedResourceFileRefForAppList

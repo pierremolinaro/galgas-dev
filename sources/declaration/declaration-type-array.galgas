@@ -222,7 +222,7 @@ final class @arrayTypeDeclarationAST : @semanticDeclarationAST {
     var @subscriptMap readSubscriptMap = @()
     let @functionSignature argumentTypeList = @[@("".nowhere, uintType, "inIndex", true)]
     [!?readSubscriptMap insertKey
-      !@([argumentTypeList subcriptSignature], .nowhere)
+      !@(argumentTypeList.subcriptSignature, .nowhere)
       !argumentTypeList
       !elementType
     ]
@@ -383,7 +383,7 @@ final class @arrayTypeForGeneration : @semanticTypeForGeneration {
       !selfTypeDefinition.typeName.string
       !self.mSelfTypeEntry.identifierRepresentation
       !selfTypeDefinition.typeForEnumeratedElement.identifierRepresentation
-      ![selfTypeDefinition.features generateCppObjectComparison]
+      !selfTypeDefinition.features.generateCppObjectComparison
     ]
   }
 

@@ -84,7 +84,7 @@ override method @rotate codeDisplay
   ?!@double ioAngle
   ?!@string unused SVG
 {
-  ioAngle = ioAngle + [self.mAngle.uint double]
+  ioAngle = ioAngle + self.mAngle.uint.double
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -102,8 +102,8 @@ override method @forward codeDisplay
   ?!@double ioAngle
   ?!@string SVG
 {
-  let @double x = ioX + [self.mLength double] * [ioAngle cosDegree]
-  let @double y = ioY + [self.mLength double] * [ioAngle sinDegree]
+  let @double x = ioX + [self.mLength double] * ioAngle.cosDegree
+  let @double y = ioY + [self.mLength double] * ioAngle.sinDegree
   if ioPenDown then
     SVG += "<line x1=\"" + ioX + "\" y1=\"" + ioY + "\" x2=\"" + x + "\" y2=\""
         + y + "\" style=\"stroke:#1F56D2\" stroke-linecap=\"round\" />\n"

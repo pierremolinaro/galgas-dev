@@ -132,7 +132,7 @@ override method @messageInstructionForGeneration generateInstruction
   ]
 //--- Invoke 'printMessage' method of Compiler
   ioGeneratedCode += compilerCppName () + "->printMessage (" + messageCppVarName
-  ioGeneratedCode += " " + [self.mInstructionLocation commaSourceFile] + ") ;\n"
+  ioGeneratedCode += " " + self.mInstructionLocation.commaSourceFile + ") ;\n"
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
 }
 

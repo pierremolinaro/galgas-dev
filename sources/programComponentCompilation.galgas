@@ -236,7 +236,7 @@ proc compileProgramComponentGalgas3
   var @stringset inclusionSet = @()
   var beforeAfterRulesString = ""
   for (mDeclaration) in decoratedDeclarationListForGeneration do
-    beforeAfterRulesString += [mDeclaration appendTypeGenericImplementation]
+    beforeAfterRulesString += mDeclaration.appendTypeGenericImplementation
     [mDeclaration appendSpecificImplementation !ioTypeMap !?inclusionSet ?let @string code]
     beforeAfterRulesString += code
   end
@@ -247,7 +247,7 @@ proc compileProgramComponentGalgas3
   end
   let cppContents = [filewrapper programFileGenerationTemplate.programFileImplementation
     !"program"
-    !@() // [inclusionSet stringList]
+    !@()
     !beforeAfterRulesString
     !inProgramRules
     !inProjectVersionString

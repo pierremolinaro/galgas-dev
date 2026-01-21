@@ -417,7 +417,7 @@ private proc generateInitializer ?let @unifiedTypeMapEntry inReceiverType
     outGeneratedCode = "GGS_" + className.identifierRepresentation
        + " GGS_" + className.identifierRepresentation 
        + "::" + inInitializerName.identifierRepresentation + " ("
-    let @uint colRef = [outGeneratedCode currentColumn]
+    let @uint colRef = outGeneratedCode.currentColumn
   //---
     for formalArg in inFormalArgumentList do
       if formalArg.mIsConstant then
@@ -447,7 +447,7 @@ private proc generateInitializer ?let @unifiedTypeMapEntry inReceiverType
     outGeneratedCode = "GGS_" + className.identifierRepresentation
        + " GGS_" + className.identifierRepresentation 
        + "::" + inInitializerName.identifierRepresentation + " ("
-    let @uint colRef = [outGeneratedCode currentColumn]
+    let @uint colRef = outGeneratedCode.currentColumn
   //---
     for formalArg in inFormalArgumentList do
       if formalArg.mIsConstant then

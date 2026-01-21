@@ -239,7 +239,7 @@ override method @literalBigIntExpressionForGeneration generateExpression
   outCppExpression = "GGS_bigint (\"" + self.mValue.string + "\", "
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
   outCppExpression += compilerCppName ()
-  outCppExpression += " " + [self.mLocation commaSourceFile] + ")"
+  outCppExpression += " " + self.mLocation.commaSourceFile + ")"
 }
 
 //--------------------------------------------------------------------------------------------------

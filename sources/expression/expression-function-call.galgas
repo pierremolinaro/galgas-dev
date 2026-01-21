@@ -131,8 +131,8 @@ final class @functionCallExpressionAST : @semanticExpressionAST {
   //--- Check internal
     if isInternal then
       let procDeclarationLocation = [inAnalysisContext.semanticContext.mFunctionMap locationForKey !self.mFunctionName.string]
-      if [self.mFunctionName.location file] != [procDeclarationLocation file] then
-        error self.mFunctionName : "this proc is internal to '" + [procDeclarationLocation file] + "' file"
+      if self.mFunctionName.location.file != procDeclarationLocation.file then
+        error self.mFunctionName : "this proc is internal to '" + procDeclarationLocation.file + "' file"
       end
     end
   //--- Analyze effective parameters
@@ -214,7 +214,7 @@ final class @functionCallExpressionForGeneration : @semanticExpressionForGenerat
     end
     [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
     outCppExpression += compilerCppName ()
-    outCppExpression += [self.mLocation commaSourceFile] + ")"
+    outCppExpression += self.mLocation.commaSourceFile + ")"
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

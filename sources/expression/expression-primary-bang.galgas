@@ -138,7 +138,7 @@ override method @bangExpressionForGeneration generateExpression ?!@string ioGene
 //--- Generate
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
   outCppExpression = operand + ".bang_" + self.mReceiverTypeName.identifierRepresentation
-  outCppExpression += " (" + compilerCppName () + [self.mLocation commaSourceFile] + ")"
+  outCppExpression += " (" + compilerCppName () + self.mLocation.commaSourceFile + ")"
 }
 
 //--------------------------------------------------------------------------------------------------

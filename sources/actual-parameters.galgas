@@ -154,7 +154,7 @@ final class @outputActualParameterAST : @actualParameterAST {
       error self.mActualSelector
       :"the corresponding formal argument has the '" + inFormalArgumentPassingMode.string
       + "' passing mode: this parameter should be passed with '"
-      + [inFormalArgumentPassingMode correspondingEffectiveParameterString] + "'"
+      + inFormalArgumentPassingMode.correspondingEffectiveParameterString + "'"
     else
       if inFormalSelector.string != self.mActualSelector.string then
         let @string s = "!" + if inFormalSelector.string != "" then inFormalSelector.string + ":" else "" end
@@ -234,7 +234,7 @@ final class @outputInputActualParameterAST : @actualParameterAST {
       error self.mActualSelector
       :"the corresponding formal argument has the '" + inFormalArgumentPassingMode.string
       + "' passing mode: this parameter should be passed with '"
-      + [inFormalArgumentPassingMode correspondingEffectiveParameterString] + "'"
+      + inFormalArgumentPassingMode.correspondingEffectiveParameterString + "'"
     elsif inFormalSelector.string != self.mActualSelector.string then
       let @string s = "!?" + if inFormalSelector.string != "" then inFormalSelector.string + ":" else "" end
       error self.mActualSelector : "the selector should be '" + s + "'" fixit { replace s }
@@ -333,7 +333,7 @@ final class @outputInputJokerParameterAST : @actualParameterAST {
       error self.mActualSelector
       : "the corresponding formal argument has the '" + inFormalArgumentPassingMode.string
       + "' passing mode: this parameter should be passed with '"
-      + [inFormalArgumentPassingMode correspondingEffectiveParameterString] + "'"
+      + inFormalArgumentPassingMode.correspondingEffectiveParameterString + "'"
     elsif inFormalSelector.string != self.mActualSelector.string then
       let @string s = "!?" + if inFormalSelector.string != "" then inFormalSelector.string + ":" else "" end
       error self.mActualSelector : "the selector should be '" + s + "'" fixit { replace s }
@@ -419,14 +419,14 @@ final class @outputInputSelfParameterAST : @actualParameterAST {
       error self.mActualSelector
       :"the corresponding formal argument has the '" + inFormalArgumentPassingMode.string
       + "' passing mode: this parameter should be passed with '"
-      + [inFormalArgumentPassingMode correspondingEffectiveParameterString] + "'"
+      + inFormalArgumentPassingMode.correspondingEffectiveParameterString + "'"
     elsif inFormalSelector.string != self.mActualSelector.string then
       let @string s = "!?" + if inFormalSelector.string != "" then inFormalSelector.string + ":" else "" end
       error self.mActualSelector : "the selector should be '" + s + "'" fixit { replace s }
     end
   //--- Analyze self
     if let selfAvailable = inAnalysisContext.selfAvailability.getAvailable then
-      if not [selfAvailable.selfMutability selfIsMutable] then
+      if not selfAvailable.selfMutability.selfIsMutable then
         error self.mActualSelector : "'self' not mutable in this context"
       end
     //--- Check type
@@ -496,7 +496,7 @@ final class @inputActualExistingVariableParameterAST : @actualParameterAST {
     if inFormalArgumentPassingMode != @formalArgumentPassingModeAST. argumentOut then
       error self.mActualSelector
       :"the corresponding formal argument has the '" + inFormalArgumentPassingMode.string
-      + "' passing mode: this parameter should be passed with '" + [inFormalArgumentPassingMode correspondingEffectiveParameterString] + "'"
+      + "' passing mode: this parameter should be passed with '" + inFormalArgumentPassingMode.correspondingEffectiveParameterString + "'"
     elsif inFormalSelector.string != self.mActualSelector.string then
       let @string s = "?" + if inFormalSelector.string != "" then inFormalSelector.string + ":" else "" end
       error self.mActualSelector : "the selector should be '" + s + "'" fixit { replace s }
@@ -588,14 +588,14 @@ final class @inputActualSelfPropertyParameterAST : @actualParameterAST {
     if inFormalArgumentPassingMode != .argumentOut then
       error self.mActualSelector
       :"the corresponding formal argument has the '" + inFormalArgumentPassingMode.string
-      + "' passing mode: this parameter should be passed with '" + [inFormalArgumentPassingMode correspondingEffectiveParameterString] + "'"
+      + "' passing mode: this parameter should be passed with '" + inFormalArgumentPassingMode.correspondingEffectiveParameterString + "'"
     elsif inFormalSelector.string != self.mActualSelector.string then
       let @string s = "?" + if inFormalSelector.string != "" then inFormalSelector.string + ":" else "" end
       error self.mActualSelector : "the selector should be '" + s + "'" fixit { replace s }
     end
 
     if let selfAvailable = inAnalysisContext.selfAvailability.getAvailable then
-      if not [selfAvailable.selfMutability propertiesAreMutable] then
+      if not selfAvailable.selfMutability.propertiesAreMutable then
         error self.mInputActualSelfPropertyName : "'self' not mutable in this context"
       end
       let propertyMap = selfAvailable.type.definition.propertyMap
@@ -680,14 +680,14 @@ final class @inputActualSelfParameterAST : @actualParameterAST {
     if inFormalArgumentPassingMode != .argumentOut then
       error self.mActualSelector
       :"the corresponding formal argument has the '" + inFormalArgumentPassingMode.string
-      + "' passing mode: this parameter should be passed with '" + [inFormalArgumentPassingMode correspondingEffectiveParameterString] + "'"
+      + "' passing mode: this parameter should be passed with '" + inFormalArgumentPassingMode.correspondingEffectiveParameterString + "'"
     elsif inFormalSelector.string != self.mActualSelector.string then
       let @string s = "?" + if inFormalSelector.string != "" then inFormalSelector.string + ":" else "" end
       error self.mActualSelector : "the selector should be '" + s + "'" fixit { replace s }
     end
 
     if let selfAvailable = inAnalysisContext.selfAvailability.getAvailable then
-      if not [selfAvailable.selfMutability selfIsMutable] then
+      if not selfAvailable.selfMutability.selfIsMutable then
         error self.mSelfLocation : "'self' not mutable in this context"
       end
       let targetVariableCppName = inAnalysisContext.selfObjectCppName
@@ -773,7 +773,7 @@ final class @inputActualNewVariableParameterAST : @actualParameterAST {
       error self.mActualSelector
       :"the corresponding formal argument has the '" + inFormalArgumentPassingMode.string
       + "' passing mode: this parameter should be passed with '"
-      + [inFormalArgumentPassingMode correspondingEffectiveParameterString] + "'"
+      + inFormalArgumentPassingMode.correspondingEffectiveParameterString + "'"
     elsif inFormalSelector.string != self.mActualSelector.string then
       let @string s = "?" + if inFormalSelector.string != "" then inFormalSelector.string + ":" else "" end
       error self.mActualSelector : "the selector should be '" + s + "'" fixit { replace s }
@@ -879,7 +879,7 @@ final class @inputActualNewConstantParameterAST : @actualParameterAST {
       error self.mActualSelector
       :"the corresponding formal argument has the '" + inFormalArgumentPassingMode.string
       + "' passing mode: this parameter should be passed with '"
-      + [inFormalArgumentPassingMode correspondingEffectiveParameterString] + "'"
+      + inFormalArgumentPassingMode.correspondingEffectiveParameterString + "'"
     elsif inFormalSelector.string != self.mActualSelector.string then
       let @string s = "?" + if inFormalSelector.string != "" then inFormalSelector.string + ":" else "" end
       error self.mActualSelector : "the selector should be '" + s + "'" fixit { replace s }
@@ -988,7 +988,7 @@ final class @inputSingleJokerActualParameterAST : @actualParameterAST {
       error self.mActualSelector
       :"the corresponding formal argument has the '" + inFormalArgumentPassingMode.string
       + "' passing mode: this parameter should be passed with '"
-      + [inFormalArgumentPassingMode correspondingEffectiveParameterString] + "'"
+      + inFormalArgumentPassingMode.correspondingEffectiveParameterString + "'"
     elsif inFormalSelector.string != self.mActualSelector.string then
       let @string s = "?" + if inFormalSelector.string != "" then inFormalSelector.string + ":" else "" end
       error self.mActualSelector : "the selector should be '" + s + "'" fixit { replace s }
@@ -1061,7 +1061,7 @@ final class @inputJokerActualParameterAST : @actualParameterAST {
     if inFormalArgumentPassingMode != @formalArgumentPassingModeAST.argumentOut then
       error self.mQualifierLocation
       :"the corresponding formal argument has the '" + inFormalArgumentPassingMode.string
-      + "' passing mode: this parameter should be passed with '" + [inFormalArgumentPassingMode correspondingEffectiveParameterString] + "'"
+      + "' passing mode: this parameter should be passed with '" + inFormalArgumentPassingMode.correspondingEffectiveParameterString + "'"
     else
       let cppVarName = "joker_" + self.mQualifierLocation.startLocationIndex + "_" + self.mJokerIndex
     //--- Generate actual parameter

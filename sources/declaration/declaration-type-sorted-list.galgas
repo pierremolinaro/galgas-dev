@@ -500,7 +500,7 @@ override method @sortedListTypeForGeneration appendSpecificImplementation
     !self.mTypedAttributeList
     !self.mSortDescriptorList
     !elementTypeDefinition.typeName.string.identifierRepresentation
-    ![elementTypeDefinition.features generateCppObjectComparison]
+    !elementTypeDefinition.features.generateCppObjectComparison
   ]
  }
 

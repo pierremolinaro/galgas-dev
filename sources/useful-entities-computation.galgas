@@ -41,7 +41,7 @@ proc checkUsefulEntities ?let @usefulEntitiesGraph inUsefulEntitiesGraph
                         ?let @string unused inProductDirectory {
   if [option galgas_cli_options.checkEntityUsefulness value], @uint.errorCount == 0 then
   //--- Undefined nodes
-    let undefinedNodeList = [inUsefulEntitiesGraph undefinedNodeKeyList]
+    let undefinedNodeList = inUsefulEntitiesGraph.undefinedNodeKeyList
     if undefinedNodeList.count > 0 then
       var s = "usefulness computation, " + undefinedNodeList.count + " undefined nodes:"
       for (name) in undefinedNodeList do
@@ -52,7 +52,7 @@ proc checkUsefulEntities ?let @usefulEntitiesGraph inUsefulEntitiesGraph
     //--- No undefined node, compute usefull entities
       let usefullEntityList = [inUsefulEntitiesGraph accessibleNodesFrom !inRootEntities !@()]
       let usefullEntitySet = @stringset.setWithLStringList {!usefullEntityList}
-      let allEntitySet = @stringset.setWithStringList {![inUsefulEntitiesGraph keyList]}
+      let allEntitySet = @stringset.setWithStringList {!inUsefulEntitiesGraph.keyList}
       let unusedEntities = allEntitySet - usefullEntitySet
       var @uselessEntityLocationMap uselessEntityLocationMap = @()
       for (unusedEntity) in unusedEntities do
@@ -60,8 +60,8 @@ proc checkUsefulEntities ?let @usefulEntitiesGraph inUsefulEntitiesGraph
         if l == .nowhere then
           warning .nowhere : "unused entity, '" + unusedEntity
             + "' (due to option --" + [option galgas_cli_options.checkEntityUsefulness string] + ")"
-        elsif not [uselessEntityLocationMap hasKey ![l startLocationString]] then
-          [!?uselessEntityLocationMap insertKey ![l startLocationString].nowhere !unusedEntity !l]
+        elsif not [uselessEntityLocationMap hasKey !l.startLocationString] then
+          [!?uselessEntityLocationMap insertKey !l.startLocationString.nowhere !unusedEntity !l]
         end
       end
       for (* unusedEntityName loc) in uselessEntityLocationMap do

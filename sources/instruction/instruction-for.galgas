@@ -798,7 +798,7 @@ override method @forInstructionForGeneration generateInstruction
     ioGeneratedCode += " " + enumerated.mEnumeratorCppName + " (" + mValue + ") ;\n"
   end
 //--- Analyse 'while' expression
-  let whileExpressionIsAllwaysTrue = [self.mWhileExpression isTrueExpression]
+  let whileExpressionIsAllwaysTrue = self.mWhileExpression.isTrueExpression
 //--- Has 'before', 'after' or expression ? If yes, generate 'before' instructions
   if ((self.mBeforeInstructionList.count + self.mAfterInstructionList.count) > 0) | not whileExpressionIsAllwaysTrue then
   //--- Index
@@ -945,7 +945,7 @@ override method @forInstructionForGeneration generateInstruction
     if self.mIndexVariableCppName != "" then
       [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
       ioGeneratedCode += "  " + self.mIndexVariableCppName + ".increment_operation (" + compilerCppName ()
-      + " " + [self.mInstructionLocation commaSourceFile] + ") ;\n"
+      + " " + self.mInstructionLocation.commaSourceFile + ") ;\n"
     end
     ioGeneratedCode += "}\n"
   end

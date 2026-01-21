@@ -250,7 +250,7 @@ final class @switchInstructionAST : @semanticInstructionAST {
       ?let switchExpression
     ]
   //--- Check switch expression type is and enum instance
-    if let enumType = [switchExpression.mResultType.definition.typeKind getEnumType] then
+    if let enumType = switchExpression.mResultType.definition.typeKind.getEnumType then
     //--- Enum constant map
       var @stringset constantsNamedInSwitchInstruction = @()
     //--- Analyze branches
@@ -340,7 +340,7 @@ final class @switchInstructionAST : @semanticInstructionAST {
       end
       [!?ioVariableMap closeOverride !self.mEndOf_switch_instruction]
     //--- Check all constants have been named
-      let forgottenConstants = [enumType.constantMap keySet] - constantsNamedInSwitchInstruction
+      let forgottenConstants = enumType.constantMap.keySet - constantsNamedInSwitchInstruction
       if forgottenConstants.count > 0 then
         var @string s = ""
         for (key) in forgottenConstants do

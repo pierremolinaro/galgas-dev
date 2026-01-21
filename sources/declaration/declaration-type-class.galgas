@@ -347,7 +347,7 @@ final class @classDeclarationAST : @semanticDeclarationAST {
       [!?attributeMap insertKey
         !property.name
         ![property.accessControl accessControl !forDeclaringType: classIndex]
-        ![property.mutability isConstantProperty]
+        !property.mutability.isConstantProperty
         !attributeTypeIndex
       ]
       if [getterMap hasKey !property.name.string] then
@@ -364,13 +364,13 @@ final class @classDeclarationAST : @semanticDeclarationAST {
         !attributeTypeIndex
         !property.name
         !property.initialization
-        !hasSetter: not [property.mutability isConstantProperty]
+        !hasSetter: not property.mutability.isConstantProperty
         !hasSelector: property.hasSelector
       allTypedAttributeList +=
         !attributeTypeIndex
         !property.name
         !property.initialization
-        !hasSetter: not [property.mutability isConstantProperty]
+        !hasSetter: not property.mutability.isConstantProperty
         !hasSelector: property.hasSelector
     end
   //--- set...attribute setter
@@ -378,7 +378,7 @@ final class @classDeclarationAST : @semanticDeclarationAST {
       for property in currentClassTypedPropertyList do
         if property.hasSetter then
           [!?setterMap insertKey
-            !@{!"setProperty_"+ [property.name.string capitalizingFirstCharacter] !.here}
+            !@{!"setProperty_"+ property.name.string.capitalizingFirstCharacter !.here}
             !@methodKind.definedAsMember
             !@[@("".nowhere, property.typeEntry, .argumentVarIn, property.name.string)]
             !true // Compiler argument
@@ -544,13 +544,13 @@ final class @classDeclarationAST : @semanticDeclarationAST {
         !t
         !property.name
         !property.initialization
-        !hasSetter: not [property.mutability isConstantProperty]
+        !hasSetter: not property.mutability.isConstantProperty
         !hasSelector: property.hasSelector
       allAttributeList +=
         !t
         !property.name
         !property.initialization
-        !hasSetter: not [property.mutability isConstantProperty]
+        !hasSetter: not property.mutability.isConstantProperty
         !hasSelector: property.hasSelector
       [!?attributeMap insertKey !property.name !t]
     end

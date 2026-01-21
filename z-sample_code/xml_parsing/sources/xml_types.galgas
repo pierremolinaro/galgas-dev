@@ -42,13 +42,13 @@ proc internal_logXMLNodes
       ioString+= "ELEMENT '" + node.name + "' {"
       for (lkey value) in  node.attributeMap do
         ioString += "'" + lkey + "' "
-        ioString += [[lkey.location endLine] string]
-        ioString += ":" + [[lkey.location endColumn] string]
-        ioString += ":" + [[lkey.location endLocationIndex] string]
+        ioString += lkey.location.endLine.string
+        ioString += ":" + lkey.location.endColumn.string
+        ioString += ":" + lkey.location.endLocationIndex.string
         ioString += " -> '" + value + "' "
-        ioString += [[value.location endLine] string]
-        ioString += ":" + [[value.location endColumn] string]
-        ioString += ":" + [[value.location endLocationIndex] string]
+        ioString += value.location.endLine.string
+        ioString += ":" + value.location.endColumn.string
+        ioString += ":" + value.location.endLocationIndex.string
       between ioString += ", "
       end
       ioString += "}\n"

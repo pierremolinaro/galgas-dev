@@ -330,7 +330,7 @@ final class @enumDeclarationAST : @semanticDeclarationAST {
           hasAssociatedValues = true
         end
         [!?instanceMethodMap insertKey
-          !@("extract" + [constant.name capitalizingFirstCharacter], constant.name)
+          !@("extract" + constant.name.string.capitalizingFirstCharacter, constant.name)
           !.definedAsMember
           !argumentTypeList
           !constant.name.location
@@ -349,7 +349,7 @@ final class @enumDeclarationAST : @semanticDeclarationAST {
         enterBaseGetterWithoutArgument (
           !?getterMap
           !?ioTypeMap
-          !getterName: "get" + [constant.name capitalizingFirstCharacter]
+          !getterName: "get" + constant.name.string.capitalizingFirstCharacter
           !obsoleteName: ""
           !returnedTypeName: optionalTypeName
           !hasCompilerArgument: false
@@ -361,7 +361,7 @@ final class @enumDeclarationAST : @semanticDeclarationAST {
       enterBaseGetterWithoutArgument (
         !?getterMap
         !?ioTypeMap
-        !getterName: "is" + [constant.name capitalizingFirstCharacter]
+        !getterName: "is" + constant.name.string.capitalizingFirstCharacter
         !obsoleteName: ""
         !returnedTypeName: "bool"
         !hasCompilerArgument:false
@@ -575,7 +575,7 @@ final class @enumTypeForGeneration : @semanticTypeForGeneration {
       !selfTypeDefinition.typeName.string.identifierRepresentation
       !self.constantList
       !hasAssociatedValues
-      ![selfTypeDefinition.features generateCppObjectComparison]
+      !selfTypeDefinition.features.generateCppObjectComparison
     ]
   }
 

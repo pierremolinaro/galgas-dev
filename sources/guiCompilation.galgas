@@ -472,7 +472,7 @@ private proc guiComponentSemanticAnalysis ?let @galgasGUIComponentListAST.@eleme
       ?*
     ]
   //--- Build terminal symbol set
-    let terminalSymbolSet = [terminalMap keySet]
+    let terminalSymbolSet = terminalMap.keySet
   //--- Check labels
     for (* mTerminalList *) in labels do
       for (mTerminal *) in mTerminalList do

@@ -94,10 +94,10 @@ syntax logo_syntax (logo_lexique) {
   //--- Output file
     let @string sourceFilePath = @string.stringWithSourceFilePath
     let @string code = [filewrapper generationTemplate.svg
-      ![sourceFilePath lastPathComponent]
+      !sourceFilePath.lastPathComponent
       !SVG
     ]
-    [code writeToFile ![sourceFilePath deletingPathExtension] + ".svg"]
+    [code writeToFile !sourceFilePath.deletingPathExtension + ".svg"]
   }
 
   //----------------------------------------------------------------------------------------------

@@ -540,7 +540,7 @@ proc printPredefinedLexicalActions {
   for (lkey mLexicalRoutineFormalArgumentList mErrorMessageList *) in lexicalRoutineMap do
     s += lkey.string
     for (mLexicalFormalArgumentMode mLexicalFormalArgumentType mArgumentNameForComment) in mLexicalRoutineFormalArgumentList do
-      s += " " + [mLexicalFormalArgumentMode lexicalFormalModeName] + "@" + [mLexicalFormalArgumentType lexicalTypeBaseName] + " " + mArgumentNameForComment
+      s += " " + mLexicalFormalArgumentMode.lexicalFormalModeName + "@" + mLexicalFormalArgumentType.lexicalTypeBaseName + " " + mArgumentNameForComment
     end
     for (mValue) in mErrorMessageList
     before s += " error"
@@ -556,9 +556,9 @@ proc printPredefinedLexicalActions {
   for (lkey mLexicalTypeList mReturnedLexicalType mReplacementFunctionName *) in lexicalFunctionMap do
     s += lkey.string
     for (mLexicalType mArgumentNameForComment) in mLexicalTypeList do
-      s += " ?@" + [mLexicalType lexicalTypeBaseName]+ " " + mArgumentNameForComment
+      s += " ?@" + mLexicalType.lexicalTypeBaseName + " " + mArgumentNameForComment
     end
-    s += " -> @" + [mReturnedLexicalType lexicalTypeBaseName] + " ;\n"
+    s += " -> @" + mReturnedLexicalType.lexicalTypeBaseName + " ;\n"
     if mReplacementFunctionName != "" then
       s += "Note: the '" + lkey + "' function is obsolete: use '" + mReplacementFunctionName + "' function.\n"
     end

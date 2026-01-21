@@ -167,7 +167,7 @@ override method @listDeclarationAST enterDeclarationInSemanticContext
 //--- Handle attributes
   var @typedPropertyList typedAttributeList = @()
   for (* propertyTypeName mPropertyName unused accessControl hasSelector initExpression) in self.mPropertyList do
-    if [initExpression isSome] then
+    if initExpression.isSome then
       error mPropertyName : "property initialization is not handled for a list"
     end
     [!?ioTypeMap makeEntry !propertyTypeName ?let attributeTypeIndex]
@@ -329,7 +329,7 @@ override method @listDeclarationAST enterDeclarationInSemanticContext
       setterFormalArgumentList += !"".nowhere !mPropertyTypeEntry !.argumentConstantIn !mPropertyName.string
       setterFormalArgumentList += !"".nowhere !uintType !.argumentConstantIn !mPropertyName.string
       [!?setterMap insertOrReplace
-        !@lstring {!"set" + [mPropertyName.string capitalizingFirstCharacter] + "AtIndex" !mPropertyName.location}
+        !@lstring {!"set" + mPropertyName.string.capitalizingFirstCharacter + "AtIndex" !mPropertyName.location}
         !@methodKind.definedAsMember
         !setterFormalArgumentList
         !true
@@ -479,7 +479,7 @@ override method @listDeclarationAST semanticAnalysis
   var @typedPropertyList typedAttributeList = @()
   var @propertyIndexMap attributeMap = @()
   for (* propertyTypeName propertyName unused accessControl hasSelector initExpression) in self.mPropertyList do
-    if [initExpression isSome] then
+    if initExpression.isSome then
       error propertyName : "property initialization is not handled for a list"
     end
     let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!propertyTypeName)
@@ -527,7 +527,7 @@ override method @listTypeForGeneration appendDeclaration1
     !selfTypeDefinition.enumerationDescriptorList
     !selfTypeDefinition.typeForEnumeratedElement
     !selfTypeDefinition.typeForEnumeratedElement.identifierRepresentation
-    ![selfTypeDefinition.features generateCppObjectComparison]
+    !selfTypeDefinition.features.generateCppObjectComparison
   ]
   outHeader += [filewrapper typeGenerationTemplate.unifiedClassBodyForType
     !selfTypeDefinition.typeName.string
@@ -565,7 +565,7 @@ override method @listTypeForGeneration appendSpecificImplementation
     !self.mSelfTypeEntry.identifierRepresentation
     !self.mTypedAttributeList
     !selfTypeDefinition.typeForEnumeratedElement.identifierRepresentation
-    ![selfTypeDefinition.features generateCppObjectComparison]
+    !selfTypeDefinition.features.generateCppObjectComparison
   ]
  }
 

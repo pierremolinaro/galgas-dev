@@ -232,7 +232,7 @@ private proc analyzeConstructorInvocation ?let @lstring inUsefulnessCallerEntity
         : "the '@"+ outConstructorType.definition.typeName.string
         + "' type does not define the '" + inConstructorName + "' constructor"
         : constructorFormalArgumentTypeList, outHasCompilerArgument, outReturnedType
-        fixit { replace [classFunctionMap keyList] }
+        fixit { replace classFunctionMap.keyList }
       end
     end
   //--- Analysis arguments
@@ -325,7 +325,7 @@ final class @classFuncExpressionForGeneration : @semanticExpressionForGeneration
       needsComma = true
     end
     if needsComma then
-      outCppExpression += " " + [self.mLocation commaSourceFile] + ")"
+      outCppExpression += " " + self.mLocation.commaSourceFile + ")"
     else
       outCppExpression += self.mLocation.sourceFile + ")"
     end

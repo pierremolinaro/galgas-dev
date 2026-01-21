@@ -365,7 +365,7 @@ override method @terminalCheckInstructionForGeneration generateInstruction
     ioGeneratedCode += compilerCppName ()
     ioGeneratedCode += "->enterIndexing (Lexique_" + self.mLexiqueIdentifier + "::kIndexing_"
     ioGeneratedCode += mValue0.string.identifierRepresentation
-    ioGeneratedCode += ", " + [mValue1 utf8RepresentationEscapingQuestionMark] + ") ;\n"
+    ioGeneratedCode += ", " + mValue1.string.utf8RepresentationEscapingQuestionMark + ") ;\n"
   end
 //--- Syntax directed translation
   [self.mGrammarInstructionSyntaxDirectedTranslationPreceedingDelimitor generateCode
@@ -384,7 +384,7 @@ override method @terminalCheckInstructionForGeneration generateInstruction
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
   ioGeneratedCode += compilerCppName () + "->acceptTerminal (Lexique_"
   ioGeneratedCode += self.mLexiqueIdentifier + "::kToken_" + self.mTerminalName.string.identifierRepresentation
-  ioGeneratedCode += [self.mInstructionLocation commaSourceFile] + ") ;\n"
+  ioGeneratedCode += self.mInstructionLocation.commaSourceFile + ") ;\n"
 }
 
 //--------------------------------------------------------------------------------------------------

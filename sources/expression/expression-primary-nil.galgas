@@ -69,11 +69,11 @@ final class @nilExpressionAST : @semanticExpressionAST {
                     ?!@unifiedTypeMap unused ioTypeMap
                     ?!@localVarManager unused ioVariableMap
                     !@semanticExpressionForGeneration outExpression {
-    if [inType isNull] then
+    if inType.isNull then
       error self.mLocation : "cannot infer type" : outExpression
     else
       let unwrappedType = inType.definition.unwrappedType
-      if [unwrappedType isNull] then
+      if unwrappedType.isNull then
         error self.mLocation : "the inferred type @" + unwrappedType.typeName
          + " is not an optional type" : outExpression
       else

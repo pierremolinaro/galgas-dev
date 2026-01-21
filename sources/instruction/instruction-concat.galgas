@@ -432,7 +432,7 @@ final class @opAssignExpressionInstructionAST : @semanticInstructionAST {
     let @string nameForCheckingFormalParameterUsing
     if self.mPrefixedBySelf then
       if let selfAvailable = inAnalysisContext.selfAvailability.getAvailable then
-        if not [selfAvailable.selfMutability propertiesAreMutable] then
+        if not selfAvailable.selfMutability.propertiesAreMutable then
           error self.mInstructionLocation : "property not mutable in this context"
         end
         let propertyMap = selfAvailable.type.definition.propertyMap
@@ -443,7 +443,7 @@ final class @opAssignExpressionInstructionAST : @semanticInstructionAST {
         if isConstant then
           error self.mReceiverName : "a constant property cannot be modified"
         end
-        if not [selfAvailable.selfMutability propertiesAreMutable] then
+        if not selfAvailable.selfMutability.propertiesAreMutable then
           error self.mReceiverName : "the property is not mutable in this context"
         end
       else
@@ -468,7 +468,7 @@ final class @opAssignExpressionInstructionAST : @semanticInstructionAST {
       end
     end
   //--- Check target variable type support 'X= exp' operator
-    if not [targetType.definition.features contains ![self.mOperator features]] then
+    if not [targetType.definition.features contains !self.mOperator.features] then
       error self.mInstructionLocation
       :"the target object has the '@" + targetType.definition.typeName.string
       + "' type, but this type does not support the '" + self.mOperator.string + "' operator"
@@ -493,7 +493,7 @@ final class @opAssignExpressionInstructionAST : @semanticInstructionAST {
       !nameForCheckingFormalParameterUsing
       !self.mStructAttributeList
       !expression
-      ![self.mOperator cppFunctionName]
+      !self.mOperator.cppFunctionName
     }
   }
 
@@ -538,7 +538,7 @@ final class @plusEqualElementsInstructionAST : @semanticInstructionAST {
         if isConstant then
           error self.mReceiverName : "a constant property cannot be modified"
         end
-        if not [selfAvailable.selfMutability propertiesAreMutable] then
+        if not selfAvailable.selfMutability.propertiesAreMutable then
           error self.mReceiverName : "the property cannot be mutated in this context"
         end
       else
@@ -647,7 +647,7 @@ final class @plusPlusEqualElementInstructionAST : @semanticInstructionAST {
         if isConstant then
           error self.mReceiverName : "a constant property cannot be modified"
         end
-        if not [selfAvailable.selfMutability propertiesAreMutable] then
+        if not selfAvailable.selfMutability.propertiesAreMutable then
           error self.mReceiverName : "the property cannot be mutated in this context"
         end
       else
@@ -760,7 +760,7 @@ final class @plusEqualnstructionForGeneration : @semanticInstructionForGeneratio
       ioGeneratedCode  += ", " + compilerCppName ()
       [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
     end
-    ioGeneratedCode += " " + [self.mInstructionLocation commaSourceFile] + ") ;\n"
+    ioGeneratedCode += " " + self.mInstructionLocation.commaSourceFile + ") ;\n"
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -801,7 +801,7 @@ final class @opAssignInstructionForGeneration : @semanticInstructionForGeneratio
     end
     ioGeneratedCode += "." + self.mGeneratedMethod + "(" + sourceVar
     ioGeneratedCode += ", " + compilerCppName ()
-    ioGeneratedCode += " " + [self.mInstructionLocation commaSourceFile] + ") ;\n"
+    ioGeneratedCode += " " + self.mInstructionLocation.commaSourceFile + ") ;\n"
     [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
     [!?ioUnusedVariableCppNameSet removeKey !self.mTargetVariableCppName]
   }
@@ -842,7 +842,7 @@ final class @plusPlusAssignInstructionForGeneration : @semanticInstructionForGen
       ioGeneratedCode += ".mProperty_" + mValue
     end
     ioGeneratedCode += ".plusPlusAssignOperation (" + sourceVar + " "
-    ioGeneratedCode += [self.mInstructionLocation commaSourceFile] + ") ;\n"
+    ioGeneratedCode += self.mInstructionLocation.commaSourceFile + ") ;\n"
     [!?ioUnusedVariableCppNameSet removeKey !self.mTargetVariableCppName]
   }
 
