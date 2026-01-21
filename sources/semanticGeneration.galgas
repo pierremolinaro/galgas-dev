@@ -39,7 +39,7 @@ final class @grammarForGeneration : @semanticDeclarationWithHeaderForGeneration 
   override method appendDeclaration1 ?!@stringset ioInclusionSet
                                      !@string outHeader {
     for (s) in self.mSyntaxComponents do
-      ioInclusionSet ++= "syntax-" + [s fileNameRepresentation]
+      ioInclusionSet ++= "syntax-" + s.string.fileNameRepresentation
     end
     outHeader = [filewrapper grammarGenerationTemplate.grammarZone3HeaderGalgas3
       !self.mLexiqueName.identifierRepresentation
@@ -57,7 +57,7 @@ final class @grammarForGeneration : @semanticDeclarationWithHeaderForGeneration 
   override method appendSpecificImplementation ?let @unifiedTypeMap inUnifiedTypeMap
                                                 ?!@stringset ioInclusionSet
                                                 !@string outImplementation {
-    ioInclusionSet ++= "grammar-" + [self.mGrammarName fileNameRepresentation]
+    ioInclusionSet ++= "grammar-" + self.mGrammarName.fileNameRepresentation
     for nonTerminal in self.mNonTerminalMapForGrammarAnalysis do
       for (* mFormalParametersList) in nonTerminal.mNonterminalSymbolParametersMap do
         for (mFormalArgumentPassingModeForGrammarAnalysis mGalgasTypeNameForGrammarAnalysis) in mFormalParametersList do
@@ -76,7 +76,7 @@ final class @grammarForGeneration : @semanticDeclarationWithHeaderForGeneration 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override getter getImplementationCppFileName -> @string {
-    result = "grammar-" + [self.mGrammarName fileNameRepresentation]
+    result = "grammar-" + self.mGrammarName.fileNameRepresentation
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -115,7 +115,7 @@ final class @syntaxDeclarationForGeneration : @semanticDeclarationForGeneration 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override getter getImplementationCppFileName -> @string {
-    result = "syntax-" + [self.mSyntaxComponentName fileNameRepresentation]
+    result = "syntax-" + self.mSyntaxComponentName.fileNameRepresentation
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -140,7 +140,7 @@ final class @syntaxDeclarationForGeneration : @semanticDeclarationForGeneration 
 
   override method appendDeclaration1 ?!@stringset ioInclusionSet
                                      !@string outHeader {
-    ioInclusionSet ++= "lexique-" + [self.mLexiqueName fileNameRepresentation]
+    ioInclusionSet ++= "lexique-" + self.mLexiqueName.fileNameRepresentation
     var selectMethodList = @uintlist ()
     var @uint idx = 0
     loop (self.mSelectMethodCount + 1)
@@ -164,7 +164,7 @@ final class @syntaxDeclarationForGeneration : @semanticDeclarationForGeneration 
   override method appendSpecificImplementation ?let @unifiedTypeMap unused inTypeMap
                                               ?!@stringset ioInclusionSet
                                               !@string outImplementation {
-    ioInclusionSet ++= "syntax-" + [self.mSyntaxComponentName fileNameRepresentation]
+    ioInclusionSet ++= "syntax-" + self.mSyntaxComponentName.fileNameRepresentation
     outImplementation = [filewrapper syntaxFileGenerationTemplate.syntaxFileImplementationGalgas3
       !@()
     ]
@@ -670,7 +670,7 @@ proc generateExtensionMethodNew ?let @unifiedTypeMapEntry inReceiverType
       searching = false
     end
   end
-  ioInclusionSet ++= "method-" + [baseType.definition.typeName.string fileNameRepresentation] + "-" + [inMethodName fileNameRepresentation]
+  ioInclusionSet ++= "method-" + baseType.definition.typeName.string.fileNameRepresentation + "-" + inMethodName.fileNameRepresentation
   [inReceiverType addHeaderFileName !?ioInclusionSet]
   for (* * mFormalArgumentType * *) in inFormalArgumentList do
     [mFormalArgumentType addHeaderFileName !?ioInclusionSet]
@@ -1019,7 +1019,7 @@ override method @functionImplementationForGeneration appendSpecificImplementatio
   ?let @unifiedTypeMap unused inTypeMap
   ?!@stringset ioInclusionSet
   !@string outImplementation {
-  ioInclusionSet ++= "func-" + [self.mFunctionName fileNameRepresentation]
+  ioInclusionSet ++= "func-" + self.mFunctionName.fileNameRepresentation
   generateFunction (
     !"function_" + self.mFunctionName.identifierRepresentation
     !?ioInclusionSet
@@ -1047,7 +1047,7 @@ override method @onceFunctionDeclarationForGeneration appendSpecificImplementati
   ?!@stringset ioInclusionSet
   !@string outImplementation
 {
-  ioInclusionSet ++= "func-" + [self.mFunctionName fileNameRepresentation]
+  ioInclusionSet ++= "func-" + self.mFunctionName.fileNameRepresentation
   generateFunction (
     !"onceFunction_" + self.mFunctionName.identifierRepresentation
     !?ioInclusionSet
@@ -1095,7 +1095,7 @@ final class @lexiqueDeclarationForGeneration : @semanticDeclarationWithHeaderFor
     !@string outHeader {
     outHeader = self.mHeaderContents
     if self.mSuperLexiqueName != "" then
-      ioInclusionSet ++= "lexique-" + [self.mSuperLexiqueName fileNameRepresentation]
+      ioInclusionSet ++= "lexique-" + self.mSuperLexiqueName.fileNameRepresentation
     end
   }
 
@@ -1105,7 +1105,7 @@ final class @lexiqueDeclarationForGeneration : @semanticDeclarationWithHeaderFor
     ?let @unifiedTypeMap unused inTypeMap
     ?!@stringset ioInclusionSet
     !@string outHeader {
-    ioInclusionSet ++= "lexique-" + [self.mLexiqueName fileNameRepresentation]
+    ioInclusionSet ++= "lexique-" + self.mLexiqueName.fileNameRepresentation
     outHeader = self.mCppContents
   }
 
@@ -1115,53 +1115,12 @@ final class @lexiqueDeclarationForGeneration : @semanticDeclarationWithHeaderFor
     ?let @string inProductDirectory
     ?!@stringset ioAllProductFileSet
     ?!swift: @stringlist ioSwiftAppProductFileList {
-  //--- Generate cocoa header file
-//    ioAllProductFileSet ++= "lexique-" + [self.mLexiqueName fileNameRepresentation] + "-cocoa.h"
-//    [@string generateFileWithPattern
-//      !startPath:inProductDirectory
-//      !fileName:"lexique-" + [self.mLexiqueName fileNameRepresentation] + "-cocoa.h"
-//      !lineComment:"//"
-//      !header:"" // Header
-//      !defaultUserZone1:"\n\n" // Defaut user zone1
-//      !generatedZone2: self.mObjcCocoaHeader
-//      !defaultUserZone2:"\n\n" // Defaut user zone2
-//      !generatedZone3:"\n"
-//      !makeExecutable:false
-//    ]
-  //--- Generate Objc Cocoa implementation file
-//    ioAllProductFileSet ++= "lexique-" + [self.mLexiqueName fileNameRepresentation] + "-cocoa.m"
-//    ioObjcAppProductFileList += !"lexique-" + [self.mLexiqueName fileNameRepresentation] + "-cocoa.m"
-//    [@string generateFileWithPattern
-//      !startPath:inProductDirectory
-//      !fileName:"lexique-" + [self.mLexiqueName fileNameRepresentation] + "-cocoa.m"
-//      !lineComment:"//"
-//      !header:"" // Header
-//      !defaultUserZone1:"\n\n" // Defaut user zone1
-//      !generatedZone2:self.mObjcCocoaImplementation
-//      !defaultUserZone2:"\n\n" // Defaut user zone2
-//      !generatedZone3:"\n\n" // Zone 3
-//      !makeExecutable:false
-//    ]
-  //--- Generate Swift Cocoa implementation file
-//    ioAllProductFileSet ++= "lexique-" + [self.mLexiqueName fileNameRepresentation] + "-cocoa.swift"
-//    ioSwiftAppProductFileList += !"lexique-" + [self.mLexiqueName fileNameRepresentation] + "-cocoa.swift"
-//    [@string generateFileWithPattern
-//      !startPath:inProductDirectory
-//      !fileName:"lexique-" + [self.mLexiqueName fileNameRepresentation] + "-cocoa.swift"
-//      !lineComment:"//"
-//      !header:"" // Header
-//      !defaultUserZone1:"\n\n" // Defaut user zone1
-//      !generatedZone2:self.mSwiftCocoaImplementation
-//      !defaultUserZone2:"\n\n" // Defaut user zone2
-//      !generatedZone3:"\n\n" // Zone 3
-//      !makeExecutable:false
-//    ]
   //--- Generate SwiftUI implementation file
-    ioAllProductFileSet ++= "lexique-" + [self.mLexiqueName fileNameRepresentation] + "-swiftui.swift"
-    ioSwiftAppProductFileList += !"lexique-" + [self.mLexiqueName fileNameRepresentation] + "-swiftui.swift"
+    ioAllProductFileSet ++= "lexique-" + self.mLexiqueName.fileNameRepresentation + "-swiftui.swift"
+    ioSwiftAppProductFileList += !"lexique-" + self.mLexiqueName.fileNameRepresentation + "-swiftui.swift"
     [@string generateFileWithPattern
       !startPath:inProductDirectory
-      !fileName:"lexique-" + [self.mLexiqueName fileNameRepresentation] + "-swiftui.swift"
+      !fileName:"lexique-" + self.mLexiqueName.fileNameRepresentation + "-swiftui.swift"
       !lineComment:"//"
       !header:"" // Header
       !defaultUserZone1:"\n\n" // Defaut user zone1

@@ -401,7 +401,7 @@ final class @externTypeDeclarationAST : @semanticDeclarationAST {
         arguments += !parameter.mFormalSelector !argumentTypeEntry !parameter.mFormalParameterName.string !true
       end
     //---
-      let initializerName = @lstring {![initializer.mParameterList initializerSignature] !self.mExternTypeName}
+      let initializerName = @lstring {!initializer.mParameterList.initializerSignature !self.mExternTypeName}
       [!?initializerMap insertKey !initializerName !arguments]
     end
   //--- Getters
@@ -499,7 +499,7 @@ final class @externTypeDeclarationAST : @semanticDeclarationAST {
       !addAssignOperatorArguments: @()
       !generateHeaderInSeparateFile: false // Do not generate header in separate file
       !typeForEnumeratedElement: .null
-      !headerFileName: "externtype-" + [self.mExternTypeName fileNameRepresentation]
+      !headerFileName: "externtype-" + self.mExternTypeName.string.fileNameRepresentation
       !headerKind: .oneHeader
     }
     [!?ioTypeMap insertType !typeDefinition.typeName !typeDefinition]
@@ -532,7 +532,7 @@ override method @externTypeDeclarationAST semanticAnalysis
   for initializer in self.externTypeInitializerList do
     let initializerNameForUsefulness = initializerNameForUsefulEntitiesGraph (
       !self.mExternTypeName
-      ![initializer.mParameterList initializerSignature]
+      !initializer.mParameterList.initializerSignature
     )
     [!?ioUsefulEntitiesGraph addNode !initializerNameForUsefulness !initializerNameForUsefulness]
     [!?ioUsefulEntitiesGraph addEdge !from: initializerNameForUsefulness !to: nameForUsefulness]

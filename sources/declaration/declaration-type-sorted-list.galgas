@@ -293,7 +293,7 @@ final class @sortedListDeclarationAST : @semanticDeclarationAST {
     var @initializerMap initializerMap = @()
     let @functionSignature emptyArgumentList = @()
     [!?initializerMap insertKey
-      !@{![emptyArgumentList initializerSignature] !self.mSortedListTypeName}
+      !@{!emptyArgumentList.initializerSignature !self.mSortedListTypeName}
       !emptyArgumentList
     ]
   //--- Add extensions
@@ -349,7 +349,7 @@ final class @sortedListDeclarationAST : @semanticDeclarationAST {
       !addAssignOperatorArguments: constructorAttributeTypeList
       !generateHeaderInSeparateFile: false // Do not generate header in separate file
       !typeForEnumeratedElement: listElementTypeIndex
-      !headerFileName: "-sortedlist-" + [self.mSortedListTypeName fileNameRepresentation]
+      !headerFileName: "-sortedlist-" + self.mSortedListTypeName.string.fileNameRepresentation
       !headerKind: .oneHeader
     }
     [!?ioTypeMap insertType !typeDefinition.typeName !typeDefinition]
@@ -379,7 +379,7 @@ final class @sortedListDeclarationAST : @semanticDeclarationAST {
   //--- Useful entities graph for initializer without any argument
     let initializerNameForUsefulness = initializerNameForUsefulEntitiesGraph (
       !self.mSortedListTypeName
-      ![@formalInputParameterListAST () initializerSignature]
+      !@formalInputParameterListAST ().initializerSignature
     )
     [!?ioUsefulEntitiesGraph addNode !initializerNameForUsefulness !initializerNameForUsefulness]
     [!?ioUsefulEntitiesGraph addEdge !from: initializerNameForUsefulness !to: sortedListNameForUsefulness]

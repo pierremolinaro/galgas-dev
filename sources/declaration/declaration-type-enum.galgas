@@ -426,7 +426,7 @@ final class @enumDeclarationAST : @semanticDeclarationAST {
       !addAssignOperatorArguments: @()
       !generateHeaderInSeparateFile: false // Do not generate header in separate file
       !typeForEnumeratedElement: .null
-      !headerFileName: "enum-" + [self.enumTypeName fileNameRepresentation]
+      !headerFileName: "enum-" + self.enumTypeName.string.fileNameRepresentation
       !headerKind: .oneHeader
     }
     [!?ioTypeMap insertType !typeDefinition.typeName !typeDefinition]

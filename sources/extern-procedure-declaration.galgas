@@ -113,7 +113,7 @@ class @externProcedureDeclarationAST : @semanticDeclarationAST { // §§
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override getter keyRepresentation -> @string {
-    result = "routine " + self.mRoutineName + [self.mFormalArgumentListAST keyRepresentation]
+    result = "routine " + self.mRoutineName + self.mFormalArgumentListAST.keyRepresentation
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -182,7 +182,7 @@ class @externProcedureDeclarationAST : @semanticDeclarationAST { // §§
       !infoMessage: "proc " + mangledName
       !@routinePrototypeDeclarationForGeneration {
         !generateHeader: true // Generate Cpp header file
-        !implementationCppFileName: "proc-" + [mangledName fileNameRepresentation]
+        !implementationCppFileName: "proc-" + mangledName.string.fileNameRepresentation
         !routineMangledName: mangledName.string // self.mRoutineName.string
         !formalArgumentList
        }

@@ -216,7 +216,7 @@ final class @abstractExtensionMethodAST : @semanticDeclarationAST {
       !infoMessage: "abstract extension method " + self.mAbstractExtensionMethodName
       !@abstractExtensionMethodForGeneration {
         !generateHeader: true // Generate Cpp header file
-        !implementationCppFileName: "method-" + [selfType.definition.typeName.string fileNameRepresentation] + "-" + [self.mAbstractExtensionMethodName fileNameRepresentation]
+        !implementationCppFileName: "method-" + selfType.definition.typeName.string.fileNameRepresentation + "-" + self.mAbstractExtensionMethodName.string.fileNameRepresentation
         !selfType
         !self.mAbstractExtensionMethodName.string
         !formalParameterListForGeneration
@@ -284,8 +284,8 @@ final class @abstractExtensionMethodForGeneration : @semanticDeclarationWithHead
                                                 ?!@stringset ioInclusionSet
                                                 !@string outImplementation {
     ioInclusionSet ++= "method-"
-         + [self.mReceiverType.definition.typeName.string fileNameRepresentation]
-         + "-" + [self.mAbstractExtensionMethodName fileNameRepresentation]
+         + self.mReceiverType.definition.typeName.string.fileNameRepresentation
+         + "-" + self.mAbstractExtensionMethodName.fileNameRepresentation
     [self.mReceiverType addHeaderFileName !?ioInclusionSet]
     for (* * mFormalArgumentType * *) in self.mAbstractExtensionMethodFormalParameterList do
       [mFormalArgumentType addHeaderFileName !?ioInclusionSet]

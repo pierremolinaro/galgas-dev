@@ -412,8 +412,8 @@ final class @graphDeclarationAST : @semanticDeclarationAST {
     ]
   //--- setter 'addEdge'
     formalParameterList = @formalParameterSignature ()
-    formalParameterList += !["from" nowhere] !lstringTypeEntry !.argumentVarIn !"inSourceNodeLKey"
-    formalParameterList += !["to" nowhere] !lstringTypeEntry !.argumentVarIn !"inTargetNodeLKey"
+    formalParameterList += !"from".nowhere !lstringTypeEntry !.argumentVarIn !"inSourceNodeLKey"
+    formalParameterList += !"to".nowhere !lstringTypeEntry !.argumentVarIn !"inTargetNodeLKey"
     [!?setterMap insertKey
       !"addEdge".here
       !.definedAsMember
@@ -441,7 +441,7 @@ final class @graphDeclarationAST : @semanticDeclarationAST {
     var @initializerMap initializerMap = @()
     let @functionSignature constructorPropertyTypeList = @()
     [!?initializerMap insertKey
-      !@([constructorPropertyTypeList initializerSignature], self.mGraphTypeName)
+      !@(constructorPropertyTypeList.initializerSignature, self.mGraphTypeName)
       !constructorPropertyTypeList
     ]
   //--- Add Extensions
@@ -493,7 +493,7 @@ final class @graphDeclarationAST : @semanticDeclarationAST {
       !addAssignOperatorArguments: @()
       !generateHeaderInSeparateFile: false // Do not generate header in separate file
       !typeForEnumeratedElement: .null // Type for enumerated element for "for" instruction
-      !headerFileName: "graph-" + [self.mGraphTypeName fileNameRepresentation]
+      !headerFileName: "graph-" + self.mGraphTypeName.string.fileNameRepresentation
       !headerKind: .oneHeader
     }
     [!?ioTypeMap insertType !typeDefinition.typeName !typeDefinition]
@@ -523,7 +523,7 @@ final class @graphDeclarationAST : @semanticDeclarationAST {
   //--- Useful entities graph for initializer without any argument
     let initializerNameForUsefulness = initializerNameForUsefulEntitiesGraph (
       !self.mGraphTypeName
-      ![@formalInputParameterListAST () initializerSignature]
+      !@formalInputParameterListAST ().initializerSignature
     )
     [!?ioUsefulEntitiesGraph addNode !initializerNameForUsefulness !initializerNameForUsefulness]
     if self.isPredefined  then

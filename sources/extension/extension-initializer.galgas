@@ -140,7 +140,7 @@ final class @initializerAST : @semanticDeclarationAST {
   override getter keyRepresentation -> @string {
     result = initializerNameForUsefulEntitiesGraph (
       self.mTypeName,
-      [self.mFormalParameterList initializerSignature]
+      self.mFormalParameterList.initializerSignature
     )
   }
 
@@ -154,7 +154,7 @@ final class @initializerAST : @semanticDeclarationAST {
           ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
           ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
           ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList {
-    let key = @lstring {![self keyRepresentation] !self.mTypeName.location}
+    let key = @lstring {!self.keyRepresentation !self.mTypeName.location}
     [!?ioSemanticTypePrecedenceGraph addNode !key !self]
     [!?ioSemanticTypePrecedenceGraph addEdge !from: key !to: @("@" + self.mTypeName, self.mTypeName)]
   //---
@@ -166,16 +166,10 @@ final class @initializerAST : @semanticDeclarationAST {
     end
     var entry = ioExtensionInitializerForBuildingContext @[!searchKey: self.mTypeName]
     [!?entry.mExtensionInitializerMapForType insertKey
-      !@lstring {![self.mFormalParameterList initializerSignature] !self.mTypeName.location}
+      !@lstring {!self.mFormalParameterList.initializerSignature !self.mTypeName.location}
       !self.mFormalParameterList
     ]
     [!?ioExtensionInitializerForBuildingContext replaceKey !with: entry]
-//    with %aliasOf ioExtensionInitializerForBuildingContext [!searchKey: self.mTypeName] do
-//      [!?mExtensionInitializerMapForType insertKey
-//        !@lstring {![self.mFormalParameterList initializerSignature] !self.mTypeName.location}
-//        !self.mFormalParameterList
-//      ]
-//    end
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -203,7 +197,7 @@ final class @initializerAST : @semanticDeclarationAST {
   //--- Useful entities graph
     let nameForUsefulness = initializerNameForUsefulEntitiesGraph (
       !self.mTypeName
-      ![self.mFormalParameterList initializerSignature]
+      !self.mFormalParameterList.initializerSignature
     )
     [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
   //--- Self type
@@ -212,7 +206,7 @@ final class @initializerAST : @semanticDeclarationAST {
     let @string selfObjectAccessorString
   //--- Check self type is a class
     var isReferenceClass = false
-    if let classType = [selfType.definition.typeKind getClassType] then
+    if let classType = selfType.definition.typeKind.getClassType then
       isReferenceClass = classType.isReference
       selfObjectNameString = "this"
       selfObjectAccessorString = ""
@@ -240,12 +234,12 @@ final class @initializerAST : @semanticDeclarationAST {
       ?let formalParameterListForGeneration
     )
   //---
-    let initializerName = [self.mFormalParameterList initializerSignature]
+    let initializerName = self.mFormalParameterList.initializerSignature
     ioSemanticDeclarationListForGeneration +=
       !infoMessage: "initializer @" + self.mTypeName + "." + initializerName
       !@extensionInitializerForGeneration {
         !generateHeader: false // Generate Cpp header file
-        !implementationCppFileName: "initializer-" + [selfType.definition.typeName.string fileNameRepresentation] + "-" + [initializerName fileNameRepresentation]
+        !implementationCppFileName: "initializer-" + selfType.definition.typeName.string.fileNameRepresentation + "-" + initializerName.fileNameRepresentation
         !selfType
         !initializerName
         !formalParameterListForGeneration
@@ -271,7 +265,7 @@ private proc analyzeInitializerBody ?let @lstring inUsefulnessCallerEntityName
                         !@formalInputParameterListForGeneration outSignatureForGeneration {
   var variableMap = @localVarManager {}
 //--- Enter properties that should be explicitly initialized
-  if let selfAvailable = [inAnalysisContext.selfAvailability getAvailable] then
+  if let selfAvailable = inAnalysisContext.selfAvailability.getAvailable then
     for property in selfAvailable.type.definition.allTypedPropertyList do
       let initialized = if selfAvailable.selfMutability == .initializer
         then property.initialization != .none

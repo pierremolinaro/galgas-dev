@@ -159,7 +159,7 @@ override method @weakReferenceDeclarationAST enterDeclarationInSemanticContext
     !addAssignOperatorArguments: @()
     !generateHeaderInSeparateFile: generateHeaderInSeparateFile
     !typeForEnumeratedElement: .null
-    !headerFileName: "weak-reference-" + [self.mWeakReferenceTypeName fileNameRepresentation]
+    !headerFileName: "weak-reference-" + self.mWeakReferenceTypeName.string.fileNameRepresentation
     !headerKind: .oneHeader
   }
   [!?ioTypeMap insertType !typeDefinition.typeName !typeDefinition]

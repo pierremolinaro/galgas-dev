@@ -71,7 +71,7 @@ list @lexicalRuleListAST {
 getter @lexicalRuleListAST useLoopLocalVar -> @bool {
   result = false
   for (lexicalRule) in self while not result do
-    result = [lexicalRule lexicalRuleUsesLoopLocalVar]
+    result = lexicalRule.lexicalRuleUsesLoopLocalVar
   end
 }
 

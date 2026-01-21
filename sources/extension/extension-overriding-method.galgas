@@ -269,7 +269,7 @@ override method @overridingExtensionMethodAST semanticAnalysis
     !selfObjectCppPrefixForAccessingProperty: "this->"
   }
   var isclass = false
-  if let classType = [selfType.definition.typeKind getClassType] then
+  if let classType = selfType.definition.typeKind.getClassType then
     isclass = classType.isReference
   end
   analyzeRoutineBody (
@@ -297,7 +297,7 @@ override method @overridingExtensionMethodAST semanticAnalysis
     !infoMessage: "override extension method " + self.mOverridingExtensionMethodName
     !@overridingExtensionMethodForGeneration {
       !generateHeader: false // Do not generate Cpp header file
-      !implementationCppFileName: "method-" + [selfType.definition.typeName.string fileNameRepresentation] + "-" + [self.mOverridingExtensionMethodName fileNameRepresentation]
+      !implementationCppFileName: "method-" + selfType.definition.typeName.string.fileNameRepresentation + "-" + self.mOverridingExtensionMethodName.string.fileNameRepresentation
       !selfType
       !baseTypeName
       !self.mOverridingExtensionMethodName.string

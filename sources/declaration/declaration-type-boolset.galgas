@@ -181,7 +181,7 @@ override method @boolsetDeclarationAST enterDeclarationInSemanticContext
   var @initializerMap initializerMap = @()
   let @functionSignature emptyArgumentList = @()
   [!?initializerMap insertKey
-    !@{![emptyArgumentList initializerSignature] !self.mBoolsetTypeName}
+    !@{!emptyArgumentList.initializerSignature !self.mBoolsetTypeName}
     !emptyArgumentList
   ]
 //--- Add extensions
@@ -245,7 +245,7 @@ override method @boolsetDeclarationAST enterDeclarationInSemanticContext
     !addAssignOperatorArguments: @()
     !generateHeaderInSeparateFile: false // Do not generate header in separate file
     !typeForEnumeratedElement: .null
-    !headerFileName: "boolset-" + [self.mBoolsetTypeName fileNameRepresentation]
+    !headerFileName: "boolset-" + self.mBoolsetTypeName.string.fileNameRepresentation
     !headerKind: .oneHeader
   }
   [!?ioTypeMap insertType !typeDefinition.typeName !typeDefinition]
@@ -279,7 +279,7 @@ override method @boolsetDeclarationAST semanticAnalysis
 //--- Useful entities graph for initializer without any argument
   let initializerNameForUsefulness = initializerNameForUsefulEntitiesGraph (
     !self.mBoolsetTypeName
-    ![@formalInputParameterListAST () initializerSignature]
+    !@formalInputParameterListAST ().initializerSignature
   )
   [!?ioUsefulEntitiesGraph addNode !initializerNameForUsefulness !initializerNameForUsefulness]
   if self.isPredefined  then

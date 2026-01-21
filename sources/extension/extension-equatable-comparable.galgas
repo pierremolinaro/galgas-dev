@@ -147,7 +147,7 @@ final class @equatableExtensionAST : @semanticDeclarationAST {
           ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
           ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
           ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList {
-    let key = @lstring {![self keyRepresentation] !self.mTypeName.location}
+    let key = @lstring {!self.keyRepresentation !self.mTypeName.location}
     [!?ioSemanticTypePrecedenceGraph addNode !key !self]
     [!?ioSemanticTypePrecedenceGraph addEdge !from: key !to: @("@" + self.mTypeName, self.mTypeName)]
   //---

@@ -23,10 +23,10 @@
 //--------------------------------------------------------------------------------------------------
 
 getter @location sourceFile -> @string {
-  if [self isNowhere] then
+  if self.isNowhere then
     result = "SOURCE_FILE (\"\", 0)"
   else
-    result = "SOURCE_FILE (" + [[[self file] lastPathComponent] utf8RepresentationEscapingQuestionMark] + ", " + [self startLine] + ")"
+    result = "SOURCE_FILE (" + self.file.lastPathComponent.utf8RepresentationEscapingQuestionMark + ", " + self.startLine + ")"
   end
 }
 

@@ -44,7 +44,7 @@ filewrapper projectCreationFileWrapper in "+generation-templates/project_creatio
 //--------------------------------------------------------------------------------------------------
 
 proc performProjectCreation ?let @string inProjectPath {
-  let @string projectName = [inProjectPath lastPathComponent]
+  let @string projectName = inProjectPath.lastPathComponent
   [[filewrapper projectCreationFileWrapper.PROJECT_project !projectName] writeToFile !inProjectPath +"/+" +projectName +".galgasProject"]
 //--- galgas_sources
   let @string galgas_sources_DIR = inProjectPath + "/sources"
@@ -66,7 +66,7 @@ proc projectCreation ?let @string inProjectPath {
   if inProjectPath.count > 0 then
     println (!"*** PERFORM PROJECT CREATION (--create-project=" + inProjectPath +" option) ***")
   //--- First check the project name is correct (not empty, only letters, digits and '_')
-    let @string projectName = [inProjectPath lastPathComponent]
+    let @string projectName = inProjectPath.lastPathComponent
     var @bool ok = [[projectName characterAtIndex !0] isalpha]
     var @uint idx = 1
     loop (projectName.count)

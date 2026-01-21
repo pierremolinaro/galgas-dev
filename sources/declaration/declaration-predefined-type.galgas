@@ -100,7 +100,7 @@ abstract class @predefinedTypeAST : @semanticDeclarationAST {
           mIsConstant
         )
       end      
-      [!?initializerMap insertKey !@([initializer initializerSignature], .nowhere) !formalParameterList]
+      [!?initializerMap insertKey !@(initializer.initializerSignature, .nowhere) !formalParameterList]
     end
     addExtensions (
       !inExtensionInitializerMapForBuildingContext
@@ -167,7 +167,7 @@ abstract class @predefinedTypeAST : @semanticDeclarationAST {
     for initializer in selfType.definition.initializerMap do
       let initializerNameForUsefulness = initializerNameForUsefulEntitiesGraph (
         !@{!self.mPredefinedTypeName !.here}
-        ![initializer.mArgumentTypeList initializerSignature]
+        !initializer.mArgumentTypeList.initializerSignature
       )
       [!?ioUsefulEntitiesGraph addNode !initializerNameForUsefulness !initializerNameForUsefulness]
       ioUsefulnessRootEntities += !initializerNameForUsefulness
@@ -332,18 +332,9 @@ private proc appendStructASTForTypeWithLocation ?!@semanticDeclarationListAST io
     !isUsefullStruct: true
   }
   ioDeclarationListASTs += !type
-//  insertInUsefulnessEntities (!?ioUsefulnessRootEntities !"l" + inElementTypeName)
 //--- Mark it as usefull
   let typeUsefulnessName = typeNameForUsefulEntitiesGraph (!type.structTypeName)
   ioUsefulnessRootEntities += !typeUsefulnessName
-//--- Mark its initializers as usefull
-//  for initializer in typeinit ializers do
-//    let initializerNameForUsefulness = initializerNameForUsefulEntitiesGraph (
-//      !type.structTypeName
-//      ![initializerinit ializer initializerSignature]
-//    )
-//    ioUsefulnessRootEntities += !initializerNameForUsefulness
-//  end
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -401,7 +392,7 @@ private proc insertPredefinedType
   for initializer in inPredefinedTypeAST.initializers do
     let initializerNameForUsefulness = initializerNameForUsefulEntitiesGraph (
       !@{!inPredefinedTypeAST.mPredefinedTypeName !.nowhere}
-      ![initializer initializerSignature]
+      !initializer.initializerSignature
     )
     ioUsefulnessRootEntities += !initializerNameForUsefulness
   end

@@ -465,13 +465,13 @@ proc updateGalgasTargets
   var @stringlist linkOptionForLinkingFrameworkWithTool = @()
   for (s) in inFrameworkToolFileList do
     linkOptionForLinkingFrameworkWithTool += !"-framework"
-    linkOptionForLinkingFrameworkWithTool += ![s deletingPathExtension]
+    linkOptionForLinkingFrameworkWithTool += !s.deletingPathExtension
   end
 //--- Update json file list
   var @stringlist handCodedSourceToolFileList = @()
   for (f) in inHandCodedSourceToolFileList do
     if [f pathExtension] != "h" then
-      handCodedSourceToolFileList += ![f lastPathComponent]
+      handCodedSourceToolFileList += !f.lastPathComponent
     end
   end
   var handCodedSourceDirectorySet = @stringset ()
@@ -517,7 +517,7 @@ proc updateGalgasTargets
     ]
     [InfoPlistContents writeToFileWhenDifferentContents !dir +"/Info.plist" ?*]
   //--- Build.command
-    if not [dir + "/build.command" fileExists] then
+    if not (dir + "/build.command").fileExists then
       [[filewrapper targetGalgas3GenerationFileWrapper.makefile_build_xcode] writeToExecutableFile !dir +"/build.command"]
     end
 
@@ -525,7 +525,7 @@ proc updateGalgasTargets
     let InfoPlist_strings_path = dir + "/Base.lproj/InfoPlist.strings"
     [[filewrapper targetGalgas3GenerationFileWrapper.makefile_info_plist_strings !inTargetName] writeToFileWhenDifferentContents !InfoPlist_strings_path ?*]
     let Credits_rtf_path = dir + "/Base.lproj/Credits.rtf"
-    if not [Credits_rtf_path fileExists] then
+    if not Credits_rtf_path.fileExists then
       [[filewrapper targetGalgas3GenerationFileWrapper."project-xcode-swiftui/Base.lproj/Credits.rtf"] writeToFile !Credits_rtf_path]
     end
   //--- Enumerate icons files in "userResources" directory

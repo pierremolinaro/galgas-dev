@@ -412,7 +412,7 @@ override method @templateLexiqueComponentAST semanticAnalysis
     ]
   //--- SwiftUI implementation
     let swiftuiImplementation = [filewrapper templateLexiqueGenerationTemplates.swiftuiImplementationZone
-      !"lexique-" + [self.mLexiqueComponentName.string fileNameRepresentation] + "-swiftui"
+      !"lexique-" + self.mLexiqueComponentName.string.fileNameRepresentation + "-swiftui"
       !self.mLexiqueComponentName.string
       !self.mLexiqueSuperComponentName.string
       !terminalList
@@ -425,7 +425,7 @@ override method @templateLexiqueComponentAST semanticAnalysis
       !infoMessage: ""
       !@lexiqueDeclarationForGeneration {
         !generateHeader: true // has header
-        !implementationCppFileName: "lexique-" + [self.mLexiqueComponentName.string fileNameRepresentation]
+        !implementationCppFileName: "lexique-" + self.mLexiqueComponentName.string.fileNameRepresentation
         !self.mLexiqueComponentName.string
         !self.mLexiqueSuperComponentName.string
         !headerContents

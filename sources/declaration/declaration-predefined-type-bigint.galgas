@@ -55,8 +55,8 @@ final class @bigintPredefinedTypeAST : @predefinedTypeAST {
     [!?ioUnifiedTypeMap makeEntryFromString !"bigint" ?let bigIntType]
     var @formalParameterSignature argList = @()
     argList += !"".nowhere !bigIntType !.argumentConstantIn !"inDivisor"
-    argList += !["quotient" nowhere] !bigIntType !.argumentOut !"outQuotient"
-    argList += !["remainder" nowhere] !bigIntType !.argumentOut !"outRemainder"
+    argList += !"quotient".nowhere !bigIntType !.argumentOut !"outQuotient"
+    argList += !"remainder".nowhere !bigIntType !.argumentOut !"outRemainder"
     [!?outInstanceMethodMap insertKey
       !@{!"divideBy" !.here}
       !.definedAsMember

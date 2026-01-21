@@ -2136,15 +2136,6 @@ class cParser_galgas_33_InstructionsSyntax {
 
   protected: virtual void nt_semantic_5F_instruction_5F_ggs_33__indexing (class Lexique_galgasScanner_33_ * inLexique) = 0 ;
 
-  protected: virtual void nt_semantic_5F_instruction_5F_inc_5F_dec_ (class GGS_galgasDeclarationAST & ioArgument0,
-                                                                     const class GGS_bool constinArgument1,
-                                                                     class GGS_semanticInstructionAST & outArgument2,
-                                                                     class Lexique_galgasScanner_33_ * inLexique) = 0 ;
-
-  protected: virtual void nt_semantic_5F_instruction_5F_inc_5F_dec_parse (class Lexique_galgasScanner_33_ * inLexique) = 0 ;
-
-  protected: virtual void nt_semantic_5F_instruction_5F_inc_5F_dec_indexing (class Lexique_galgasScanner_33_ * inLexique) = 0 ;
-
   protected: virtual void nt_semantic_5F_instruction_5F_list_5F_ggs_33__ (class GGS_galgasDeclarationAST & ioArgument0,
                                                                           class GGS_semanticInstructionListAST & outArgument1,
                                                                           class Lexique_galgasScanner_33_ * inLexique) = 0 ;
@@ -2316,13 +2307,13 @@ class cParser_galgas_33_InstructionsSyntax {
 
   protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i16_indexing (Lexique_galgasScanner_33_ * inLexique) ;
 
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i17_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                                                             GGS_semanticInstructionAST & outArgument1,
-                                                                                             Lexique_galgasScanner_33_ * inLexique) ;
+  protected: void rule_galgas_33_InstructionsSyntax_if_5F_instruction_5F_core_i17_ (GGS_galgasDeclarationAST & ioArgument0,
+                                                                                    GGS_semanticInstructionAST & outArgument1,
+                                                                                    Lexique_galgasScanner_33_ * inLexique) ;
 
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i17_parse (Lexique_galgasScanner_33_ * inLexique) ;
+  protected: void rule_galgas_33_InstructionsSyntax_if_5F_instruction_5F_core_i17_parse (Lexique_galgasScanner_33_ * inLexique) ;
 
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i17_indexing (Lexique_galgasScanner_33_ * inLexique) ;
+  protected: void rule_galgas_33_InstructionsSyntax_if_5F_instruction_5F_core_i17_indexing (Lexique_galgasScanner_33_ * inLexique) ;
 
   protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i18_ (GGS_galgasDeclarationAST & ioArgument0,
                                                                                              GGS_semanticInstructionAST & outArgument1,
@@ -2332,14 +2323,13 @@ class cParser_galgas_33_InstructionsSyntax {
 
   protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i18_indexing (Lexique_galgasScanner_33_ * inLexique) ;
 
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_inc_5F_dec_i19_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                                                                const GGS_bool constinArgument1,
-                                                                                                GGS_semanticInstructionAST & outArgument2,
-                                                                                                Lexique_galgasScanner_33_ * inLexique) ;
+  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i19_ (GGS_galgasDeclarationAST & ioArgument0,
+                                                                                             GGS_semanticInstructionAST & outArgument1,
+                                                                                             Lexique_galgasScanner_33_ * inLexique) ;
 
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_inc_5F_dec_i19_parse (Lexique_galgasScanner_33_ * inLexique) ;
+  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i19_parse (Lexique_galgasScanner_33_ * inLexique) ;
 
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_inc_5F_dec_i19_indexing (Lexique_galgasScanner_33_ * inLexique) ;
+  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i19_indexing (Lexique_galgasScanner_33_ * inLexique) ;
 
   protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i20_ (GGS_galgasDeclarationAST & ioArgument0,
                                                                                              GGS_semanticInstructionAST & outArgument1,
@@ -2349,21 +2339,22 @@ class cParser_galgas_33_InstructionsSyntax {
 
   protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i20_indexing (Lexique_galgasScanner_33_ * inLexique) ;
 
-  protected: void rule_galgas_33_InstructionsSyntax_if_5F_instruction_5F_core_i21_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                                                    GGS_semanticInstructionAST & outArgument1,
-                                                                                    Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_if_5F_instruction_5F_core_i21_parse (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_if_5F_instruction_5F_core_i21_indexing (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i22_ (GGS_galgasDeclarationAST & ioArgument0,
+  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i21_ (GGS_galgasDeclarationAST & ioArgument0,
                                                                                              GGS_semanticInstructionAST & outArgument1,
                                                                                              Lexique_galgasScanner_33_ * inLexique) ;
 
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i22_parse (Lexique_galgasScanner_33_ * inLexique) ;
+  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i21_parse (Lexique_galgasScanner_33_ * inLexique) ;
 
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i22_indexing (Lexique_galgasScanner_33_ * inLexique) ;
+  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i21_indexing (Lexique_galgasScanner_33_ * inLexique) ;
+
+  protected: void rule_galgas_33_InstructionsSyntax_switch_5F_case_i22_ (GGS_galgasDeclarationAST & ioArgument0,
+                                                                         GGS__5B_lstring_5D_ & outArgument1,
+                                                                         GGS_switchExtractedValuesListAST & outArgument2,
+                                                                         Lexique_galgasScanner_33_ * inLexique) ;
+
+  protected: void rule_galgas_33_InstructionsSyntax_switch_5F_case_i22_parse (Lexique_galgasScanner_33_ * inLexique) ;
+
+  protected: void rule_galgas_33_InstructionsSyntax_switch_5F_case_i22_indexing (Lexique_galgasScanner_33_ * inLexique) ;
 
   protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i23_ (GGS_galgasDeclarationAST & ioArgument0,
                                                                                              GGS_semanticInstructionAST & outArgument1,
@@ -2389,14 +2380,13 @@ class cParser_galgas_33_InstructionsSyntax {
 
   protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i25_indexing (Lexique_galgasScanner_33_ * inLexique) ;
 
-  protected: void rule_galgas_33_InstructionsSyntax_switch_5F_case_i26_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                                         GGS__5B_lstring_5D_ & outArgument1,
-                                                                         GGS_switchExtractedValuesListAST & outArgument2,
+  protected: void rule_galgas_33_InstructionsSyntax_issue_5F_fixit_i26_ (GGS_galgasDeclarationAST & ioArgument0,
+                                                                         GGS_fixitListAST & outArgument1,
                                                                          Lexique_galgasScanner_33_ * inLexique) ;
 
-  protected: void rule_galgas_33_InstructionsSyntax_switch_5F_case_i26_parse (Lexique_galgasScanner_33_ * inLexique) ;
+  protected: void rule_galgas_33_InstructionsSyntax_issue_5F_fixit_i26_parse (Lexique_galgasScanner_33_ * inLexique) ;
 
-  protected: void rule_galgas_33_InstructionsSyntax_switch_5F_case_i26_indexing (Lexique_galgasScanner_33_ * inLexique) ;
+  protected: void rule_galgas_33_InstructionsSyntax_issue_5F_fixit_i26_indexing (Lexique_galgasScanner_33_ * inLexique) ;
 
   protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i27_ (GGS_galgasDeclarationAST & ioArgument0,
                                                                                              GGS_semanticInstructionAST & outArgument1,
@@ -2422,21 +2412,21 @@ class cParser_galgas_33_InstructionsSyntax {
 
   protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i29_indexing (Lexique_galgasScanner_33_ * inLexique) ;
 
-  protected: void rule_galgas_33_InstructionsSyntax_issue_5F_fixit_i30_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                                         GGS_fixitListAST & outArgument1,
-                                                                         Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_issue_5F_fixit_i30_parse (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_issue_5F_fixit_i30_indexing (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i31_ (GGS_galgasDeclarationAST & ioArgument0,
+  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i30_ (GGS_galgasDeclarationAST & ioArgument0,
                                                                                              GGS_semanticInstructionAST & outArgument1,
                                                                                              Lexique_galgasScanner_33_ * inLexique) ;
 
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i31_parse (Lexique_galgasScanner_33_ * inLexique) ;
+  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i30_parse (Lexique_galgasScanner_33_ * inLexique) ;
 
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i31_indexing (Lexique_galgasScanner_33_ * inLexique) ;
+  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i30_indexing (Lexique_galgasScanner_33_ * inLexique) ;
+
+  protected: void rule_galgas_33_InstructionsSyntax_comma_5F_separated_5F_expression_5F_ggs_33__i31_ (GGS_galgasDeclarationAST & ioArgument0,
+                                                                                                      GGS_CommaSeparatedExpressionList & outArgument1,
+                                                                                                      Lexique_galgasScanner_33_ * inLexique) ;
+
+  protected: void rule_galgas_33_InstructionsSyntax_comma_5F_separated_5F_expression_5F_ggs_33__i31_parse (Lexique_galgasScanner_33_ * inLexique) ;
+
+  protected: void rule_galgas_33_InstructionsSyntax_comma_5F_separated_5F_expression_5F_ggs_33__i31_indexing (Lexique_galgasScanner_33_ * inLexique) ;
 
   protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i32_ (GGS_galgasDeclarationAST & ioArgument0,
                                                                                              GGS_semanticInstructionAST & outArgument1,
@@ -2462,29 +2452,37 @@ class cParser_galgas_33_InstructionsSyntax {
 
   protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i34_indexing (Lexique_galgasScanner_33_ * inLexique) ;
 
-  protected: void rule_galgas_33_InstructionsSyntax_comma_5F_separated_5F_expression_5F_ggs_33__i35_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                                                                      GGS_CommaSeparatedExpressionList & outArgument1,
-                                                                                                      Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_comma_5F_separated_5F_expression_5F_ggs_33__i35_parse (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_comma_5F_separated_5F_expression_5F_ggs_33__i35_indexing (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i36_ (GGS_galgasDeclarationAST & ioArgument0,
+  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i35_ (GGS_galgasDeclarationAST & ioArgument0,
                                                                                              GGS_semanticInstructionAST & outArgument1,
                                                                                              Lexique_galgasScanner_33_ * inLexique) ;
 
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i36_parse (Lexique_galgasScanner_33_ * inLexique) ;
+  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i35_parse (Lexique_galgasScanner_33_ * inLexique) ;
 
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i36_indexing (Lexique_galgasScanner_33_ * inLexique) ;
+  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i35_indexing (Lexique_galgasScanner_33_ * inLexique) ;
 
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i37_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                                                             GGS_semanticInstructionAST & outArgument1,
-                                                                                             Lexique_galgasScanner_33_ * inLexique) ;
+  protected: void rule_galgas_33_InstructionsSyntax_grammar_5F_instruction_5F_core_i36_ (GGS_galgasDeclarationAST & ioArgument0,
+                                                                                         const GGS_location constinArgument1,
+                                                                                         const GGS_actualParameterListAST constinArgument2,
+                                                                                         const GGS_lstring constinArgument3,
+                                                                                         const GGS_lstring constinArgument4,
+                                                                                         GGS_semanticInstructionAST & outArgument5,
+                                                                                         Lexique_galgasScanner_33_ * inLexique) ;
 
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i37_parse (Lexique_galgasScanner_33_ * inLexique) ;
+  protected: void rule_galgas_33_InstructionsSyntax_grammar_5F_instruction_5F_core_i36_parse (Lexique_galgasScanner_33_ * inLexique) ;
 
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i37_indexing (Lexique_galgasScanner_33_ * inLexique) ;
+  protected: void rule_galgas_33_InstructionsSyntax_grammar_5F_instruction_5F_core_i36_indexing (Lexique_galgasScanner_33_ * inLexique) ;
+
+  protected: void rule_galgas_33_InstructionsSyntax_grammar_5F_instruction_5F_core_i37_ (GGS_galgasDeclarationAST & ioArgument0,
+                                                                                         const GGS_location constinArgument1,
+                                                                                         const GGS_actualParameterListAST constinArgument2,
+                                                                                         const GGS_lstring constinArgument3,
+                                                                                         const GGS_lstring constinArgument4,
+                                                                                         GGS_semanticInstructionAST & outArgument5,
+                                                                                         Lexique_galgasScanner_33_ * inLexique) ;
+
+  protected: void rule_galgas_33_InstructionsSyntax_grammar_5F_instruction_5F_core_i37_parse (Lexique_galgasScanner_33_ * inLexique) ;
+
+  protected: void rule_galgas_33_InstructionsSyntax_grammar_5F_instruction_5F_core_i37_indexing (Lexique_galgasScanner_33_ * inLexique) ;
 
   protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i38_ (GGS_galgasDeclarationAST & ioArgument0,
                                                                                              GGS_semanticInstructionAST & outArgument1,
@@ -2494,99 +2492,91 @@ class cParser_galgas_33_InstructionsSyntax {
 
   protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i38_indexing (Lexique_galgasScanner_33_ * inLexique) ;
 
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i39_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                                                             GGS_semanticInstructionAST & outArgument1,
-                                                                                             Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i39_parse (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i39_indexing (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_grammar_5F_instruction_5F_core_i40_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                                                         const GGS_location constinArgument1,
-                                                                                         const GGS_actualParameterListAST constinArgument2,
-                                                                                         const GGS_lstring constinArgument3,
-                                                                                         const GGS_lstring constinArgument4,
-                                                                                         GGS_semanticInstructionAST & outArgument5,
-                                                                                         Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_grammar_5F_instruction_5F_core_i40_parse (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_grammar_5F_instruction_5F_core_i40_indexing (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_grammar_5F_instruction_5F_core_i41_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                                                         const GGS_location constinArgument1,
-                                                                                         const GGS_actualParameterListAST constinArgument2,
-                                                                                         const GGS_lstring constinArgument3,
-                                                                                         const GGS_lstring constinArgument4,
-                                                                                         GGS_semanticInstructionAST & outArgument5,
-                                                                                         Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_grammar_5F_instruction_5F_core_i41_parse (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_grammar_5F_instruction_5F_core_i41_indexing (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i42_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                                                             GGS_semanticInstructionAST & outArgument1,
-                                                                                             Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i42_parse (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i42_indexing (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_grammar_5F_instruction_5F_core_5F_obsolete_i43_ (GGS_galgasDeclarationAST & ioArgument0,
+  protected: void rule_galgas_33_InstructionsSyntax_grammar_5F_instruction_5F_core_5F_obsolete_i39_ (GGS_galgasDeclarationAST & ioArgument0,
                                                                                                      const GGS_location constinArgument1,
                                                                                                      const GGS_lstring constinArgument2,
                                                                                                      const GGS_lstring constinArgument3,
                                                                                                      GGS_semanticInstructionAST & outArgument4,
                                                                                                      Lexique_galgasScanner_33_ * inLexique) ;
 
-  protected: void rule_galgas_33_InstructionsSyntax_grammar_5F_instruction_5F_core_5F_obsolete_i43_parse (Lexique_galgasScanner_33_ * inLexique) ;
+  protected: void rule_galgas_33_InstructionsSyntax_grammar_5F_instruction_5F_core_5F_obsolete_i39_parse (Lexique_galgasScanner_33_ * inLexique) ;
 
-  protected: void rule_galgas_33_InstructionsSyntax_grammar_5F_instruction_5F_core_5F_obsolete_i43_indexing (Lexique_galgasScanner_33_ * inLexique) ;
+  protected: void rule_galgas_33_InstructionsSyntax_grammar_5F_instruction_5F_core_5F_obsolete_i39_indexing (Lexique_galgasScanner_33_ * inLexique) ;
 
-  protected: void rule_galgas_33_InstructionsSyntax_grammar_5F_instruction_5F_core_5F_obsolete_i44_ (GGS_galgasDeclarationAST & ioArgument0,
+  protected: void rule_galgas_33_InstructionsSyntax_grammar_5F_instruction_5F_core_5F_obsolete_i40_ (GGS_galgasDeclarationAST & ioArgument0,
                                                                                                      const GGS_location constinArgument1,
                                                                                                      const GGS_lstring constinArgument2,
                                                                                                      const GGS_lstring constinArgument3,
                                                                                                      GGS_semanticInstructionAST & outArgument4,
                                                                                                      Lexique_galgasScanner_33_ * inLexique) ;
 
-  protected: void rule_galgas_33_InstructionsSyntax_grammar_5F_instruction_5F_core_5F_obsolete_i44_parse (Lexique_galgasScanner_33_ * inLexique) ;
+  protected: void rule_galgas_33_InstructionsSyntax_grammar_5F_instruction_5F_core_5F_obsolete_i40_parse (Lexique_galgasScanner_33_ * inLexique) ;
 
-  protected: void rule_galgas_33_InstructionsSyntax_grammar_5F_instruction_5F_core_5F_obsolete_i44_indexing (Lexique_galgasScanner_33_ * inLexique) ;
+  protected: void rule_galgas_33_InstructionsSyntax_grammar_5F_instruction_5F_core_5F_obsolete_i40_indexing (Lexique_galgasScanner_33_ * inLexique) ;
 
-  protected: void rule_galgas_33_InstructionsSyntax_for_5F_instruction_5F_element_i45_ (GGS_galgasDeclarationAST & ioArgument0,
+  protected: void rule_galgas_33_InstructionsSyntax_for_5F_instruction_5F_element_i41_ (GGS_galgasDeclarationAST & ioArgument0,
                                                                                         GGS_forInstructionEnumeratedObjectElementListAST & ioArgument1,
                                                                                         Lexique_galgasScanner_33_ * inLexique) ;
 
-  protected: void rule_galgas_33_InstructionsSyntax_for_5F_instruction_5F_element_i45_parse (Lexique_galgasScanner_33_ * inLexique) ;
+  protected: void rule_galgas_33_InstructionsSyntax_for_5F_instruction_5F_element_i41_parse (Lexique_galgasScanner_33_ * inLexique) ;
 
-  protected: void rule_galgas_33_InstructionsSyntax_for_5F_instruction_5F_element_i45_indexing (Lexique_galgasScanner_33_ * inLexique) ;
+  protected: void rule_galgas_33_InstructionsSyntax_for_5F_instruction_5F_element_i41_indexing (Lexique_galgasScanner_33_ * inLexique) ;
 
-  protected: void rule_galgas_33_InstructionsSyntax_for_5F_instruction_5F_element_i46_ (GGS_galgasDeclarationAST & ioArgument0,
+  protected: void rule_galgas_33_InstructionsSyntax_for_5F_instruction_5F_element_i42_ (GGS_galgasDeclarationAST & ioArgument0,
                                                                                         GGS_forInstructionEnumeratedObjectElementListAST & ioArgument1,
                                                                                         Lexique_galgasScanner_33_ * inLexique) ;
 
-  protected: void rule_galgas_33_InstructionsSyntax_for_5F_instruction_5F_element_i46_parse (Lexique_galgasScanner_33_ * inLexique) ;
+  protected: void rule_galgas_33_InstructionsSyntax_for_5F_instruction_5F_element_i42_parse (Lexique_galgasScanner_33_ * inLexique) ;
 
-  protected: void rule_galgas_33_InstructionsSyntax_for_5F_instruction_5F_element_i46_indexing (Lexique_galgasScanner_33_ * inLexique) ;
+  protected: void rule_galgas_33_InstructionsSyntax_for_5F_instruction_5F_element_i42_indexing (Lexique_galgasScanner_33_ * inLexique) ;
 
-  protected: void rule_galgas_33_InstructionsSyntax_for_5F_instruction_5F_enumerated_5F_object_i47_ (GGS_galgasDeclarationAST & ioArgument0,
+  protected: void rule_galgas_33_InstructionsSyntax_for_5F_instruction_5F_enumerated_5F_object_i43_ (GGS_galgasDeclarationAST & ioArgument0,
                                                                                                      GGS_abstractEnumeratedCollectionAST & outArgument1,
                                                                                                      Lexique_galgasScanner_33_ * inLexique) ;
 
-  protected: void rule_galgas_33_InstructionsSyntax_for_5F_instruction_5F_enumerated_5F_object_i47_parse (Lexique_galgasScanner_33_ * inLexique) ;
+  protected: void rule_galgas_33_InstructionsSyntax_for_5F_instruction_5F_enumerated_5F_object_i43_parse (Lexique_galgasScanner_33_ * inLexique) ;
 
-  protected: void rule_galgas_33_InstructionsSyntax_for_5F_instruction_5F_enumerated_5F_object_i47_indexing (Lexique_galgasScanner_33_ * inLexique) ;
+  protected: void rule_galgas_33_InstructionsSyntax_for_5F_instruction_5F_enumerated_5F_object_i43_indexing (Lexique_galgasScanner_33_ * inLexique) ;
 
-  protected: void rule_galgas_33_InstructionsSyntax_for_5F_instruction_5F_enumerated_5F_object_i48_ (GGS_galgasDeclarationAST & ioArgument0,
+  protected: void rule_galgas_33_InstructionsSyntax_for_5F_instruction_5F_enumerated_5F_object_i44_ (GGS_galgasDeclarationAST & ioArgument0,
                                                                                                      GGS_abstractEnumeratedCollectionAST & outArgument1,
                                                                                                      Lexique_galgasScanner_33_ * inLexique) ;
 
-  protected: void rule_galgas_33_InstructionsSyntax_for_5F_instruction_5F_enumerated_5F_object_i48_parse (Lexique_galgasScanner_33_ * inLexique) ;
+  protected: void rule_galgas_33_InstructionsSyntax_for_5F_instruction_5F_enumerated_5F_object_i44_parse (Lexique_galgasScanner_33_ * inLexique) ;
 
-  protected: void rule_galgas_33_InstructionsSyntax_for_5F_instruction_5F_enumerated_5F_object_i48_indexing (Lexique_galgasScanner_33_ * inLexique) ;
+  protected: void rule_galgas_33_InstructionsSyntax_for_5F_instruction_5F_enumerated_5F_object_i44_indexing (Lexique_galgasScanner_33_ * inLexique) ;
+
+  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i45_ (GGS_galgasDeclarationAST & ioArgument0,
+                                                                                             GGS_semanticInstructionAST & outArgument1,
+                                                                                             Lexique_galgasScanner_33_ * inLexique) ;
+
+  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i45_parse (Lexique_galgasScanner_33_ * inLexique) ;
+
+  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i45_indexing (Lexique_galgasScanner_33_ * inLexique) ;
+
+  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i46_ (GGS_galgasDeclarationAST & ioArgument0,
+                                                                                             GGS_semanticInstructionAST & outArgument1,
+                                                                                             Lexique_galgasScanner_33_ * inLexique) ;
+
+  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i46_parse (Lexique_galgasScanner_33_ * inLexique) ;
+
+  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i46_indexing (Lexique_galgasScanner_33_ * inLexique) ;
+
+  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i47_ (GGS_galgasDeclarationAST & ioArgument0,
+                                                                                             GGS_semanticInstructionAST & outArgument1,
+                                                                                             Lexique_galgasScanner_33_ * inLexique) ;
+
+  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i47_parse (Lexique_galgasScanner_33_ * inLexique) ;
+
+  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i47_indexing (Lexique_galgasScanner_33_ * inLexique) ;
+
+  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i48_ (GGS_galgasDeclarationAST & ioArgument0,
+                                                                                             GGS_semanticInstructionAST & outArgument1,
+                                                                                             Lexique_galgasScanner_33_ * inLexique) ;
+
+  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i48_parse (Lexique_galgasScanner_33_ * inLexique) ;
+
+  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i48_indexing (Lexique_galgasScanner_33_ * inLexique) ;
 
   protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i49_ (GGS_galgasDeclarationAST & ioArgument0,
                                                                                              GGS_semanticInstructionAST & outArgument1,
@@ -2596,21 +2586,22 @@ class cParser_galgas_33_InstructionsSyntax {
 
   protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i49_indexing (Lexique_galgasScanner_33_ * inLexique) ;
 
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i50_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                                                             GGS_semanticInstructionAST & outArgument1,
-                                                                                             Lexique_galgasScanner_33_ * inLexique) ;
+  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_beginning_5F_with_5F_identifier_i50_ (GGS_galgasDeclarationAST & ioArgument0,
+                                                                                                                     const GGS_bool constinArgument1,
+                                                                                                                     GGS_semanticInstructionAST & outArgument2,
+                                                                                                                     Lexique_galgasScanner_33_ * inLexique) ;
 
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i50_parse (Lexique_galgasScanner_33_ * inLexique) ;
+  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_beginning_5F_with_5F_identifier_i50_parse (Lexique_galgasScanner_33_ * inLexique) ;
 
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i50_indexing (Lexique_galgasScanner_33_ * inLexique) ;
+  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_beginning_5F_with_5F_identifier_i50_indexing (Lexique_galgasScanner_33_ * inLexique) ;
 
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i51_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                                                             GGS_semanticInstructionAST & outArgument1,
-                                                                                             Lexique_galgasScanner_33_ * inLexique) ;
+  protected: void rule_galgas_33_InstructionsSyntax_non_5F_empty_5F_output_5F_expression_5F_list_5F_ggs_33__i51_ (GGS_galgasDeclarationAST & ioArgument0,
+                                                                                                                  GGS_actualOutputArgumentList & outArgument1,
+                                                                                                                  Lexique_galgasScanner_33_ * inLexique) ;
 
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i51_parse (Lexique_galgasScanner_33_ * inLexique) ;
+  protected: void rule_galgas_33_InstructionsSyntax_non_5F_empty_5F_output_5F_expression_5F_list_5F_ggs_33__i51_parse (Lexique_galgasScanner_33_ * inLexique) ;
 
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i51_indexing (Lexique_galgasScanner_33_ * inLexique) ;
+  protected: void rule_galgas_33_InstructionsSyntax_non_5F_empty_5F_output_5F_expression_5F_list_5F_ggs_33__i51_indexing (Lexique_galgasScanner_33_ * inLexique) ;
 
   protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i52_ (GGS_galgasDeclarationAST & ioArgument0,
                                                                                              GGS_semanticInstructionAST & outArgument1,
@@ -2628,22 +2619,21 @@ class cParser_galgas_33_InstructionsSyntax {
 
   protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i53_indexing (Lexique_galgasScanner_33_ * inLexique) ;
 
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_beginning_5F_with_5F_identifier_i54_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                                                                                     const GGS_bool constinArgument1,
-                                                                                                                     GGS_semanticInstructionAST & outArgument2,
-                                                                                                                     Lexique_galgasScanner_33_ * inLexique) ;
+  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i54_ (GGS_galgasDeclarationAST & ioArgument0,
+                                                                                             GGS_semanticInstructionAST & outArgument1,
+                                                                                             Lexique_galgasScanner_33_ * inLexique) ;
 
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_beginning_5F_with_5F_identifier_i54_parse (Lexique_galgasScanner_33_ * inLexique) ;
+  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i54_parse (Lexique_galgasScanner_33_ * inLexique) ;
 
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_beginning_5F_with_5F_identifier_i54_indexing (Lexique_galgasScanner_33_ * inLexique) ;
+  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i54_indexing (Lexique_galgasScanner_33_ * inLexique) ;
 
-  protected: void rule_galgas_33_InstructionsSyntax_non_5F_empty_5F_output_5F_expression_5F_list_5F_ggs_33__i55_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                                                                                  GGS_actualOutputArgumentList & outArgument1,
-                                                                                                                  Lexique_galgasScanner_33_ * inLexique) ;
+  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i55_ (GGS_galgasDeclarationAST & ioArgument0,
+                                                                                             GGS_semanticInstructionAST & outArgument1,
+                                                                                             Lexique_galgasScanner_33_ * inLexique) ;
 
-  protected: void rule_galgas_33_InstructionsSyntax_non_5F_empty_5F_output_5F_expression_5F_list_5F_ggs_33__i55_parse (Lexique_galgasScanner_33_ * inLexique) ;
+  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i55_parse (Lexique_galgasScanner_33_ * inLexique) ;
 
-  protected: void rule_galgas_33_InstructionsSyntax_non_5F_empty_5F_output_5F_expression_5F_list_5F_ggs_33__i55_indexing (Lexique_galgasScanner_33_ * inLexique) ;
+  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i55_indexing (Lexique_galgasScanner_33_ * inLexique) ;
 
   protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i56_ (GGS_galgasDeclarationAST & ioArgument0,
                                                                                              GGS_semanticInstructionAST & outArgument1,
@@ -2660,38 +2650,6 @@ class cParser_galgas_33_InstructionsSyntax {
   protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i57_parse (Lexique_galgasScanner_33_ * inLexique) ;
 
   protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i57_indexing (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i58_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                                                             GGS_semanticInstructionAST & outArgument1,
-                                                                                             Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i58_parse (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i58_indexing (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i59_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                                                             GGS_semanticInstructionAST & outArgument1,
-                                                                                             Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i59_parse (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i59_indexing (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i60_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                                                             GGS_semanticInstructionAST & outArgument1,
-                                                                                             Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i60_parse (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i60_indexing (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i61_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                                                             GGS_semanticInstructionAST & outArgument1,
-                                                                                             Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i61_parse (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i61_indexing (Lexique_galgasScanner_33_ * inLexique) ;
 
 
 
@@ -2831,12 +2789,6 @@ class cParser_galgas_33_InstructionsSyntax {
   protected: virtual int32_t select_galgas_33_InstructionsSyntax_66 (Lexique_galgasScanner_33_ *) = 0 ;
 
   protected: virtual int32_t select_galgas_33_InstructionsSyntax_67 (Lexique_galgasScanner_33_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_33_InstructionsSyntax_68 (Lexique_galgasScanner_33_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_33_InstructionsSyntax_69 (Lexique_galgasScanner_33_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_33_InstructionsSyntax_70 (Lexique_galgasScanner_33_ *) = 0 ;
 
 
 } ;
@@ -5905,333 +5857,6 @@ class cPtr_ifInstructionAST : public cPtr_semanticInstructionAST {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-// Phase 1: @incDecInstructionAST reference class
-//--------------------------------------------------------------------------------------------------
-
-class GGS_incDecInstructionAST : public GGS_semanticInstructionAST {
-//--------------------------------- Default constructor
-  public: GGS_incDecInstructionAST (void) ;
-
-//--------------------------------- Constructor from pointer
-  public: GGS_incDecInstructionAST (const class cPtr_incDecInstructionAST * inSourcePtr) ;
-
-//--------------------------------- Property access
-  public: class GGS_bool readProperty_mPrefixedBySelf (void) const ;
-
-  public: class GGS_lstring readProperty_mReceiverName (void) const ;
-
-  public: class GGS_lstringlist readProperty_mStructAttributeList (void) const ;
-
-  public: class GGS_incDecKind readProperty_mKind (void) const ;
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-  public: static GGS_incDecInstructionAST init_21__21__21__21__21_ (const class GGS_location & inOperand0,
-                                                                    const class GGS_bool & inOperand1,
-                                                                    const class GGS_lstring & inOperand2,
-                                                                    const class GGS_lstringlist & inOperand3,
-                                                                    const class GGS_incDecKind & inOperand4,
-                                                                    Compiler * inCompiler
-                                                                    COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
-//--------------------------------- Object extraction
-  public: static GGS_incDecInstructionAST extractObject (const GGS_object & inObject,
-                                                         Compiler * inCompiler
-                                                         COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GGS_incDecInstructionAST & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Read subscripts
-
-
-//--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
- 
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_incDecInstructionAST ;
-
-//--------------------------------------------------------------------------------------------------
-//   enum incDecKind
-//--------------------------------------------------------------------------------------------------
-
-class GGS_incDecKind : public AC_GALGAS_root {
-//--------------------------------- Default constructor
-  public: GGS_incDecKind (void) ;
-
-//--------------------------------- Enumeration
-  public: enum class Enumeration {
-    invalid,
-    enum_increment,
-    enum_decrement
-  } ;
-  
-//--------------------------------- Private properties
-  private: Enumeration mEnum ;
-
-//--------------------------------- Associated value extraction
-
-//--------------------------------- Accessors
-  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override {
-    return Enumeration::invalid != mEnum ;
-  }
-
-  public: VIRTUAL_IN_DEBUG inline void drop (void) override {
-    mEnum = Enumeration::invalid ;
-  }
-
-  public: inline Enumeration enumValue (void) const {
-    return mEnum ;
-  }
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
-//--------------------------------- Object extraction
-  public: static GGS_incDecKind extractObject (const GGS_object & inObject,
-                                               Compiler * inCompiler
-                                               COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS class functions
-  public: static class GGS_incDecKind class_func_decrement (LOCATION_ARGS) ;
-
-  public: static class GGS_incDecKind class_func_increment (LOCATION_ARGS) ;
-
-//--------------------------------- Implementation of getter 'description'
-  public: VIRTUAL_IN_DEBUG void description (String & ioString,
-                                             const int32_t inIndentation) const override ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-  public: VIRTUAL_IN_DEBUG class GGS_bool getter_isDecrement (LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG class GGS_bool getter_isIncrement (LOCATION_ARGS) const ;
-
-
-//--------------------------------- Read subscripts
-
-
-//--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
- 
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_incDecKind ;
-
-//--------------------------------------------------------------------------------------------------
-// Phase 2: pointer class for @incDecInstructionAST class
-//--------------------------------------------------------------------------------------------------
-
-class cPtr_incDecInstructionAST : public cPtr_semanticInstructionAST {
-
-  #ifndef DO_NOT_GENERATE_CHECKINGS
-    public: virtual void printNonNullClassInstanceProperties (void) const override ;
-  #endif
-
-//--------------------------------- Initializers
-  public: void incDecInstructionAST_init_21__21__21__21__21_ (const class GGS_location & inOperand0,
-                                                              const class GGS_bool & inOperand1,
-                                                              const class GGS_lstring & inOperand2,
-                                                              const class GGS_lstringlist & inOperand3,
-                                                              const class GGS_incDecKind & inOperand4,
-                                                              Compiler * inCompiler) ;
-
-
-//--- Extension method analyzeSemanticInstruction
-  public: virtual void method_analyzeSemanticInstruction (const class GGS_lstring arg_inUsefulnessCallerEntityName,
-           class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
-           const class GGS_analysisContext arg_inAnalysisContext,
-           class GGS_unifiedTypeMap & arg_ioTypeMap,
-           class GGS_semanticInstructionListForGeneration & arg_ioInstructionListForGeneration,
-           class GGS_localVarManager & arg_ioVariableMap,
-           Compiler * COMMA_LOCATION_ARGS) override ;
-
-//--- Extension method enterInstructionInSemanticContext
-  public: virtual void method_enterInstructionInSemanticContext (class GGS_unifiedTypeMap & arg_ioTypeMap,
-           Compiler * COMMA_LOCATION_ARGS) override ;
-
-//--- Properties
-  public: GGS_bool mProperty_mPrefixedBySelf ;
-  public: GGS_lstring mProperty_mReceiverName ;
-  public: GGS_lstringlist mProperty_mStructAttributeList ;
-  public: GGS_incDecKind mProperty_mKind ;
-
-
-//--- Default constructor
-  public: cPtr_incDecInstructionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
-
-//--- Constructor
-  public: cPtr_incDecInstructionAST (const GGS_location & in_mInstructionLocation,
-                                     const GGS_bool & in_mPrefixedBySelf,
-                                     const GGS_lstring & in_mReceiverName,
-                                     const GGS_lstringlist & in_mStructAttributeList,
-                                     const GGS_incDecKind & in_mKind,
-                                     Compiler * inCompiler
-                                     COMMA_LOCATION_ARGS) ;
-
-//--- Duplication
-  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
-
-//--- Attribute accessors
-//--- Description
-  public: virtual void description (String & ioString,
-                                    const int32_t inIndentation) const override ;
-
-//--- Class descriptor
-  public: virtual const GALGAS_TypeDescriptor * classDescriptor (void) const override ;
-
-} ;
-
-//--------------------------------------------------------------------------------------------------
-// Phase 1: @incDecNoOVFInstructionAST reference class
-//--------------------------------------------------------------------------------------------------
-
-class GGS_incDecNoOVFInstructionAST : public GGS_semanticInstructionAST {
-//--------------------------------- Default constructor
-  public: GGS_incDecNoOVFInstructionAST (void) ;
-
-//--------------------------------- Constructor from pointer
-  public: GGS_incDecNoOVFInstructionAST (const class cPtr_incDecNoOVFInstructionAST * inSourcePtr) ;
-
-//--------------------------------- Property access
-  public: class GGS_bool readProperty_mPrefixedBySelf (void) const ;
-
-  public: class GGS_lstring readProperty_mReceiverName (void) const ;
-
-  public: class GGS_lstringlist readProperty_mStructAttributeList (void) const ;
-
-  public: class GGS_incDecKind readProperty_mKind (void) const ;
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-  public: static GGS_incDecNoOVFInstructionAST init_21__21__21__21__21_ (const class GGS_location & inOperand0,
-                                                                         const class GGS_bool & inOperand1,
-                                                                         const class GGS_lstring & inOperand2,
-                                                                         const class GGS_lstringlist & inOperand3,
-                                                                         const class GGS_incDecKind & inOperand4,
-                                                                         Compiler * inCompiler
-                                                                         COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
-//--------------------------------- Object extraction
-  public: static GGS_incDecNoOVFInstructionAST extractObject (const GGS_object & inObject,
-                                                              Compiler * inCompiler
-                                                              COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GGS_incDecNoOVFInstructionAST & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Read subscripts
-
-
-//--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
- 
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_incDecNoOVFInstructionAST ;
-
-//--------------------------------------------------------------------------------------------------
-// Phase 2: pointer class for @incDecNoOVFInstructionAST class
-//--------------------------------------------------------------------------------------------------
-
-class cPtr_incDecNoOVFInstructionAST : public cPtr_semanticInstructionAST {
-
-  #ifndef DO_NOT_GENERATE_CHECKINGS
-    public: virtual void printNonNullClassInstanceProperties (void) const override ;
-  #endif
-
-//--------------------------------- Initializers
-  public: void incDecNoOVFInstructionAST_init_21__21__21__21__21_ (const class GGS_location & inOperand0,
-                                                                   const class GGS_bool & inOperand1,
-                                                                   const class GGS_lstring & inOperand2,
-                                                                   const class GGS_lstringlist & inOperand3,
-                                                                   const class GGS_incDecKind & inOperand4,
-                                                                   Compiler * inCompiler) ;
-
-
-//--- Extension method analyzeSemanticInstruction
-  public: virtual void method_analyzeSemanticInstruction (const class GGS_lstring arg_inUsefulnessCallerEntityName,
-           class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
-           const class GGS_analysisContext arg_inAnalysisContext,
-           class GGS_unifiedTypeMap & arg_ioTypeMap,
-           class GGS_semanticInstructionListForGeneration & arg_ioInstructionListForGeneration,
-           class GGS_localVarManager & arg_ioVariableMap,
-           Compiler * COMMA_LOCATION_ARGS) override ;
-
-//--- Extension method enterInstructionInSemanticContext
-  public: virtual void method_enterInstructionInSemanticContext (class GGS_unifiedTypeMap & arg_ioTypeMap,
-           Compiler * COMMA_LOCATION_ARGS) override ;
-
-//--- Properties
-  public: GGS_bool mProperty_mPrefixedBySelf ;
-  public: GGS_lstring mProperty_mReceiverName ;
-  public: GGS_lstringlist mProperty_mStructAttributeList ;
-  public: GGS_incDecKind mProperty_mKind ;
-
-
-//--- Default constructor
-  public: cPtr_incDecNoOVFInstructionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
-
-//--- Constructor
-  public: cPtr_incDecNoOVFInstructionAST (const GGS_location & in_mInstructionLocation,
-                                          const GGS_bool & in_mPrefixedBySelf,
-                                          const GGS_lstring & in_mReceiverName,
-                                          const GGS_lstringlist & in_mStructAttributeList,
-                                          const GGS_incDecKind & in_mKind,
-                                          Compiler * inCompiler
-                                          COMMA_LOCATION_ARGS) ;
-
-//--- Duplication
-  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
-
-//--- Attribute accessors
-//--- Description
-  public: virtual void description (String & ioString,
-                                    const int32_t inIndentation) const override ;
-
-//--- Class descriptor
-  public: virtual const GALGAS_TypeDescriptor * classDescriptor (void) const override ;
-
-} ;
-
-//--------------------------------------------------------------------------------------------------
 // Phase 1: @localConstantDeclarationWithAssignmentAST reference class
 //--------------------------------------------------------------------------------------------------
 
@@ -8493,220 +8118,6 @@ class cPtr_selfDivEqualExpressionInstructionAST : public cPtr_semanticInstructio
                                                      const GGS_semanticExpressionAST & in_mExpression,
                                                      Compiler * inCompiler
                                                      COMMA_LOCATION_ARGS) ;
-
-//--- Duplication
-  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
-
-//--- Attribute accessors
-//--- Description
-  public: virtual void description (String & ioString,
-                                    const int32_t inIndentation) const override ;
-
-//--- Class descriptor
-  public: virtual const GALGAS_TypeDescriptor * classDescriptor (void) const override ;
-
-} ;
-
-//--------------------------------------------------------------------------------------------------
-// Phase 1: @selfIncDecInstructionAST reference class
-//--------------------------------------------------------------------------------------------------
-
-class GGS_selfIncDecInstructionAST : public GGS_semanticInstructionAST {
-//--------------------------------- Default constructor
-  public: GGS_selfIncDecInstructionAST (void) ;
-
-//--------------------------------- Constructor from pointer
-  public: GGS_selfIncDecInstructionAST (const class cPtr_selfIncDecInstructionAST * inSourcePtr) ;
-
-//--------------------------------- Property access
-  public: class GGS_incDecKind readProperty_mKind (void) const ;
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-  public: static GGS_selfIncDecInstructionAST init_21__21_ (const class GGS_location & inOperand0,
-                                                            const class GGS_incDecKind & inOperand1,
-                                                            Compiler * inCompiler
-                                                            COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
-//--------------------------------- Object extraction
-  public: static GGS_selfIncDecInstructionAST extractObject (const GGS_object & inObject,
-                                                             Compiler * inCompiler
-                                                             COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GGS_selfIncDecInstructionAST & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Read subscripts
-
-
-//--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
- 
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_selfIncDecInstructionAST ;
-
-//--------------------------------------------------------------------------------------------------
-// Phase 2: pointer class for @selfIncDecInstructionAST class
-//--------------------------------------------------------------------------------------------------
-
-class cPtr_selfIncDecInstructionAST : public cPtr_semanticInstructionAST {
-
-  #ifndef DO_NOT_GENERATE_CHECKINGS
-    public: virtual void printNonNullClassInstanceProperties (void) const override ;
-  #endif
-
-//--------------------------------- Initializers
-  public: void selfIncDecInstructionAST_init_21__21_ (const class GGS_location & inOperand0,
-                                                      const class GGS_incDecKind & inOperand1,
-                                                      Compiler * inCompiler) ;
-
-
-//--- Extension method analyzeSemanticInstruction
-  public: virtual void method_analyzeSemanticInstruction (const class GGS_lstring arg_inUsefulnessCallerEntityName,
-           class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
-           const class GGS_analysisContext arg_inAnalysisContext,
-           class GGS_unifiedTypeMap & arg_ioTypeMap,
-           class GGS_semanticInstructionListForGeneration & arg_ioInstructionListForGeneration,
-           class GGS_localVarManager & arg_ioVariableMap,
-           Compiler * COMMA_LOCATION_ARGS) override ;
-
-//--- Extension method enterInstructionInSemanticContext
-  public: virtual void method_enterInstructionInSemanticContext (class GGS_unifiedTypeMap & arg_ioTypeMap,
-           Compiler * COMMA_LOCATION_ARGS) override ;
-
-//--- Properties
-  public: GGS_incDecKind mProperty_mKind ;
-
-
-//--- Default constructor
-  public: cPtr_selfIncDecInstructionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
-
-//--- Constructor
-  public: cPtr_selfIncDecInstructionAST (const GGS_location & in_mInstructionLocation,
-                                         const GGS_incDecKind & in_mKind,
-                                         Compiler * inCompiler
-                                         COMMA_LOCATION_ARGS) ;
-
-//--- Duplication
-  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
-
-//--- Attribute accessors
-//--- Description
-  public: virtual void description (String & ioString,
-                                    const int32_t inIndentation) const override ;
-
-//--- Class descriptor
-  public: virtual const GALGAS_TypeDescriptor * classDescriptor (void) const override ;
-
-} ;
-
-//--------------------------------------------------------------------------------------------------
-// Phase 1: @selfIncDecNoOVFInstructionAST reference class
-//--------------------------------------------------------------------------------------------------
-
-class GGS_selfIncDecNoOVFInstructionAST : public GGS_semanticInstructionAST {
-//--------------------------------- Default constructor
-  public: GGS_selfIncDecNoOVFInstructionAST (void) ;
-
-//--------------------------------- Constructor from pointer
-  public: GGS_selfIncDecNoOVFInstructionAST (const class cPtr_selfIncDecNoOVFInstructionAST * inSourcePtr) ;
-
-//--------------------------------- Property access
-  public: class GGS_incDecKind readProperty_mKind (void) const ;
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-  public: static GGS_selfIncDecNoOVFInstructionAST init_21__21_ (const class GGS_location & inOperand0,
-                                                                 const class GGS_incDecKind & inOperand1,
-                                                                 Compiler * inCompiler
-                                                                 COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
-//--------------------------------- Object extraction
-  public: static GGS_selfIncDecNoOVFInstructionAST extractObject (const GGS_object & inObject,
-                                                                  Compiler * inCompiler
-                                                                  COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GGS_selfIncDecNoOVFInstructionAST & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Read subscripts
-
-
-//--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
- 
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_selfIncDecNoOVFInstructionAST ;
-
-//--------------------------------------------------------------------------------------------------
-// Phase 2: pointer class for @selfIncDecNoOVFInstructionAST class
-//--------------------------------------------------------------------------------------------------
-
-class cPtr_selfIncDecNoOVFInstructionAST : public cPtr_semanticInstructionAST {
-
-  #ifndef DO_NOT_GENERATE_CHECKINGS
-    public: virtual void printNonNullClassInstanceProperties (void) const override ;
-  #endif
-
-//--------------------------------- Initializers
-  public: void selfIncDecNoOVFInstructionAST_init_21__21_ (const class GGS_location & inOperand0,
-                                                           const class GGS_incDecKind & inOperand1,
-                                                           Compiler * inCompiler) ;
-
-
-//--- Extension method analyzeSemanticInstruction
-  public: virtual void method_analyzeSemanticInstruction (const class GGS_lstring arg_inUsefulnessCallerEntityName,
-           class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
-           const class GGS_analysisContext arg_inAnalysisContext,
-           class GGS_unifiedTypeMap & arg_ioTypeMap,
-           class GGS_semanticInstructionListForGeneration & arg_ioInstructionListForGeneration,
-           class GGS_localVarManager & arg_ioVariableMap,
-           Compiler * COMMA_LOCATION_ARGS) override ;
-
-//--- Extension method enterInstructionInSemanticContext
-  public: virtual void method_enterInstructionInSemanticContext (class GGS_unifiedTypeMap & arg_ioTypeMap,
-           Compiler * COMMA_LOCATION_ARGS) override ;
-
-//--- Properties
-  public: GGS_incDecKind mProperty_mKind ;
-
-
-//--- Default constructor
-  public: cPtr_selfIncDecNoOVFInstructionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
-
-//--- Constructor
-  public: cPtr_selfIncDecNoOVFInstructionAST (const GGS_location & in_mInstructionLocation,
-                                              const GGS_incDecKind & in_mKind,
-                                              Compiler * inCompiler
-                                              COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
   public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;

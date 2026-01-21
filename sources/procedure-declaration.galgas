@@ -246,7 +246,7 @@ final class @procDeclarationAST : @externProcedureDeclarationAST {
       !infoMessage: "proc " + mangledName
       !@routineImplementationForGeneration {
         !generateHeader: true // Generate Cpp header file
-        !implementationCppFileName: "proc-" + [mangledName fileNameRepresentation]
+        !implementationCppFileName: "proc-" + mangledName.string.fileNameRepresentation
         !routineMangledName: mangledName.string
         !formalArgumentList
         !false // Do not generate static
@@ -276,7 +276,7 @@ final class @routineImplementationForGeneration : @routinePrototypeDeclarationFo
     !@string outImplementation
   {
     if self.generateHeader then
-      ioInclusionSet ++= "proc-" + [self.routineMangledName fileNameRepresentation]
+      ioInclusionSet ++= "proc-" + self.routineMangledName.fileNameRepresentation
     end
     generateProcedure (
       !static: self.mGenerateStatic

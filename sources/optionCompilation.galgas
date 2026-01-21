@@ -338,7 +338,7 @@ final class @optionComponentDeclarationAST : @semanticDeclarationAST {
       !infoMessage: "option " + self.mOptionComponentName
       !@optionComponentForGeneration {
         !generateHeader: true // Generate Cpp header file
-        !implementationCppFileName: "option-" + [self.mOptionComponentName fileNameRepresentation]
+        !implementationCppFileName: "option-" + self.mOptionComponentName.string.fileNameRepresentation
         !optionIsPredefined
         !self.mOptionComponentName.string
         !boolOptionSortedList
@@ -403,7 +403,7 @@ final class @optionComponentForGeneration : @semanticDeclarationWithHeaderForGen
     if self.mIsPredefined then
       outImplementation = ""
     else
-      ioInclusionSet ++= "option-" + [self.mOptionComponentName fileNameRepresentation]
+      ioInclusionSet ++= "option-" + self.mOptionComponentName.fileNameRepresentation
       outImplementation = [filewrapper optionGenerationTemplates.optionImplementationGalgas3
         !self.mOptionComponentName
         !self.mBoolOptionSortedList
@@ -424,75 +424,17 @@ final class @optionComponentForGeneration : @semanticDeclarationWithHeaderForGen
   {
   //--- Generate Cocoa header
     if @uint.errorCount == 0 && not self.mIsPredefined then
- //     ioAllProductFileSet ++= "option-" + [self.mOptionComponentName fileNameRepresentation] + "-cocoa.h"
-//      [@string generateFileWithPattern
-//        !startPath:inProductDirectory
-//        !fileName:"option-" + [self.mOptionComponentName fileNameRepresentation] + "-cocoa.h"
-//        !lineComment:"//"
-//        !header:"" // Header
-//        !defaultUserZone1:"\n\n" // Defaut user zone1
-//        !generatedZone2:[filewrapper optionGenerationTemplates.optionHeaderCocoaZone2
-//          !self.mOptionComponentName
-//        ]
-//        !defaultUserZone2:"\n\n" // Defaut user zone2
-//        !generatedZone3:[filewrapper optionGenerationTemplates.optionHeaderCocoaZone3
-//          !self.mOptionComponentName
-//        ]
-//        !makeExecutable:false
-//      ]
-    //--- Generate Cocoa Implementation
-//      ioAllProductFileSet ++= "option-" + [self.mOptionComponentName fileNameRepresentation] + "-cocoa.m"
-//      ioObjcAppProductFileList += !"option-" + [self.mOptionComponentName fileNameRepresentation] + "-cocoa.m"
-//      [@string generateFileWithPattern
-//        !startPath:inProductDirectory
-//        !fileName:"option-" + [self.mOptionComponentName fileNameRepresentation] + "-cocoa.m"
-//        !lineComment:"//"
-//        !header:"" // Header
-//        !defaultUserZone1:"\n\n" // Defaut user zone1
-//        !generatedZone2:[filewrapper optionGenerationTemplates.optionImplementationCocoa
-//          !"option-" + [self.mOptionComponentName fileNameRepresentation] + "-cocoa"
-//          !self.mOptionComponentName
-//          !self.mBoolOptionSortedList
-//          !self.mUIntOptionSortedList
-//          !self.mStringOptionSortedList
-//          !self.mStringListSortedList
-//        ]
-//        !defaultUserZone2:"\n\n" // Defaut user zone2
-//        !generatedZone3:"\n\n" // User Zone 3
-//        !makeExecutable:false
-//      ]
     //--- Generate Swift Cocoa Implementation
-//      ioAllProductFileSet ++= "option-" + [self.mOptionComponentName fileNameRepresentation] + "-cocoa.swift"
-//      ioSwiftAppProductFileList += !"option-" + [self.mOptionComponentName fileNameRepresentation] + "-cocoa.swift"
-//      [@string generateFileWithPattern
-//        !startPath:inProductDirectory
-//        !fileName:"option-" + [self.mOptionComponentName fileNameRepresentation] + "-cocoa.swift"
-//        !lineComment:"//"
-//        !header:"" // Header
-//        !defaultUserZone1:"\n\n" // Defaut user zone1
-//        !generatedZone2:[filewrapper optionGenerationTemplates.optionImplementationSwiftCocoa
-//          !"option-" + [self.mOptionComponentName fileNameRepresentation] + "-swift-cocoa"
-//          !self.mOptionComponentName
-//          !self.mBoolOptionSortedList
-//          !self.mUIntOptionSortedList
-//          !self.mStringOptionSortedList
-//          !self.mStringListSortedList
-//        ]
-//        !defaultUserZone2:"\n\n" // Defaut user zone2
-//        !generatedZone3:"\n\n" // User Zone 3
-//        !makeExecutable:false
-//      ]
-    //--- Generate Swift Cocoa Implementation
-      ioAllProductFileSet ++= "option-" + [self.mOptionComponentName fileNameRepresentation] + "-swiftui.swift"
-      ioSwiftAppProductFileList += !"option-" + [self.mOptionComponentName fileNameRepresentation] + "-swiftui.swift"
+      ioAllProductFileSet ++= "option-" + self.mOptionComponentName.fileNameRepresentation + "-swiftui.swift"
+      ioSwiftAppProductFileList += !"option-" + self.mOptionComponentName.fileNameRepresentation + "-swiftui.swift"
       [@string generateFileWithPattern
         !startPath:inProductDirectory
-        !fileName:"option-" + [self.mOptionComponentName fileNameRepresentation] + "-swiftui.swift"
+        !fileName:"option-" + self.mOptionComponentName.fileNameRepresentation + "-swiftui.swift"
         !lineComment:"//"
         !header:"" // Header
         !defaultUserZone1:"\n\n" // Defaut user zone1
         !generatedZone2:[filewrapper optionGenerationTemplates.optionImplementationSwiftUI
-          !"option-" + [self.mOptionComponentName fileNameRepresentation] + "-swiftui"
+          !"option-" + self.mOptionComponentName.fileNameRepresentation + "-swiftui"
           !self.mOptionComponentName
           !self.mBoolOptionSortedList
           !self.mUIntOptionSortedList

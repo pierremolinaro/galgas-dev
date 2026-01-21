@@ -223,7 +223,7 @@ final class @extensionMethodAST : @semanticDeclarationAST {
     let @bool implementedAsFunction
   //--- Check self type is a class
     var isReferenceClass = false
-    if let selfClassType = [selfType.definition.typeKind getClassType] then
+    if let selfClassType = selfType.definition.typeKind.getClassType then
       isReferenceClass = selfClassType.isReference
       selfObjectNameString = "this"
       selfObjectPropertyAccessorString = "this->"
@@ -242,7 +242,7 @@ final class @extensionMethodAST : @semanticDeclarationAST {
       !selfObjectCppPrefixForAccessingProperty: selfObjectPropertyAccessorString
     }
     var isclass = false
-    if let classType = [selfType.definition.typeKind getClassType] then
+    if let classType = selfType.definition.typeKind.getClassType then
       isclass = classType.isReference
     end
     analyzeRoutineBody (
@@ -261,7 +261,7 @@ final class @extensionMethodAST : @semanticDeclarationAST {
       !infoMessage:"extension method " + self.mExtensionMethodName
       !@extensionMethodForGeneration {
         !generateHeader: true // Generate Cpp header file
-        !implementationCppFileName: "method-" + [selfType.definition.typeName.string fileNameRepresentation] + "-" + [self.mExtensionMethodName fileNameRepresentation]
+        !implementationCppFileName: "method-" + selfType.definition.typeName.string.fileNameRepresentation + "-" + self.mExtensionMethodName.string.fileNameRepresentation
         !selfType
         !self.mExtensionMethodName.string
         !implementedAsFunction
@@ -353,7 +353,7 @@ override method @extensionMethodForGeneration appendSpecificImplementation
       !"inObject"
       !0
     ]
-    ioInclusionSet ++= "method-" + [self.mReceiverType.definition.typeName.string fileNameRepresentation] + "-" + [self.mExtensionMethodName fileNameRepresentation]
+    ioInclusionSet ++= "method-" + self.mReceiverType.definition.typeName.string.fileNameRepresentation + "-" + self.mExtensionMethodName.fileNameRepresentation
     generateProcedure (
       !static:false
       !"extensionMethod_" + self.mExtensionMethodName.identifierRepresentation
@@ -391,8 +391,8 @@ override method @extensionMethodForGeneration appendSpecificImplementation
       end
     end
     ioInclusionSet ++=
-      "method-" + [baseType.definition.typeName.string fileNameRepresentation]
-      + "-" + [self.mExtensionMethodName fileNameRepresentation]
+      "method-" + baseType.definition.typeName.string.fileNameRepresentation
+      + "-" + self.mExtensionMethodName.fileNameRepresentation
     generateExtensionMethodNew (
       !self.mReceiverType
       !?ioInclusionSet

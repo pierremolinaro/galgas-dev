@@ -207,7 +207,7 @@ proc analyzeRoutineBody ?let @lstring inUsefulnessCallerEntityName
                         !@formalParameterListForGeneration outRoutineSignature {
   var variableMap = @localVarManager {}
 //--- Enter properties that should be explicitly initialized
-  if let selfAvailable = [inAnalysisContext.selfAvailability getAvailable] then
+  if let selfAvailable = inAnalysisContext.selfAvailability.getAvailable then
     for property in selfAvailable.type.definition.allTypedPropertyList do
       let initialized = if selfAvailable.selfMutability == .initializer
         then property.initialization != .none
@@ -278,7 +278,7 @@ override method @externFunctionDeclarationAST semanticAnalysis
     !infoMessage: "extern func " + self.mFunctionName
     !@functionPrototypeDeclarationForGeneration {
       !generateHeader: true // Generate Cpp header file
-      !implementationCppFileName: "func-" + [self.mFunctionName fileNameRepresentation]
+      !implementationCppFileName: "func-" + self.mFunctionName.string.fileNameRepresentation
       !self.mFunctionName.string
       !formalArgumentList
       ![ioTypeMap typeMapEntryForLKey !self.mResultTypeName]
@@ -340,7 +340,7 @@ proc analyzeFunctionBody
   outResultVariableCppName = "result_" + inReturnVariableName.string.identifierRepresentation
   [!?variableMap insertOutputFormalArgument !inReturnVariableName !outReturnedType !outResultVariableCppName !outResultVariableCppName]
 //--- Enter properties that should be explicitly initialized
-  if let selfAvailable = [inAnalysisContext.selfAvailability getAvailable] then
+  if let selfAvailable = inAnalysisContext.selfAvailability.getAvailable then
     for property in selfAvailable.type.definition.allTypedPropertyList do
       [!?variableMap insertInitializerSelfProperty
         !property.name.string
@@ -413,7 +413,7 @@ override method @functionDeclarationAST semanticAnalysis
     !infoMessage: "function " + self.mFunctionName
     !@functionImplementationForGeneration {
       !generateHeader: true // Generate Cpp header file
-      !implementationCppFileName: "func-" + [self.mFunctionName fileNameRepresentation]
+      !implementationCppFileName: "func-" + self.mFunctionName.string.fileNameRepresentation
       !self.mFunctionName.string
       !formalInputParameterList
       !returnType
@@ -466,7 +466,7 @@ override method @onceFunctionDeclarationAST semanticAnalysis
     !infoMessage: "once function " + self.mFunctionName
     !@onceFunctionDeclarationForGeneration {
       !generateHeader: true // Generate Cpp header file
-      !implementationCppFileName: "func-" + [self.mFunctionName fileNameRepresentation]
+      !implementationCppFileName: "func-" + self.mFunctionName.string.fileNameRepresentation
       !self.mFunctionName.string
       !returnType
       !resultVariableCppName
@@ -809,7 +809,7 @@ override method @galgas3GrammarComponentAST semanticAnalysis
     !infoMessage: ""
     !@grammarForGeneration {
       !generateHeader:  true // has header
-      !implementationCppFileName: "grammar-" + [self.mGrammarComponentName fileNameRepresentation]
+      !implementationCppFileName: "grammar-" + self.mGrammarComponentName.string.fileNameRepresentation
       !self.mGrammarComponentName.string
       !lexiqueComponentName.string
       !nonTerminalMapForGrammarAnalysis

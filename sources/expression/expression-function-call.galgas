@@ -201,7 +201,7 @@ final class @functionCallExpressionForGeneration : @semanticExpressionForGenerat
   //--- Add return type header
     [self.mResultType addHeaderFileName !?ioInclusionSet]
   //--- Add function header
-    ioInclusionSet ++= "func-" + [self.mFunctionName fileNameRepresentation]
+    ioInclusionSet ++= "func-" + self.mFunctionName.fileNameRepresentation
   //---
     var parameterList = @stringlist ()
     for (mExpression) in self.mExpressions do

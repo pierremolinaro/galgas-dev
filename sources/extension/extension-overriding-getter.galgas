@@ -356,7 +356,7 @@ override method @overridingExtensionGetterAST semanticAnalysis
     !infoMessage: "override extension getter " + self.mOverridingExtensionGetterName
     !@overrideExtensionGetterForGeneration {
       !generateHeader: false // Do not generate Cpp header file
-      !implementationCppFileName: "getter-" + [self.mTypeName fileNameRepresentation] + "-" + [self.mOverridingExtensionGetterName fileNameRepresentation]
+      !implementationCppFileName: "getter-" + self.mTypeName.string.fileNameRepresentation + "-" + self.mOverridingExtensionGetterName.string.fileNameRepresentation
       !selfType
       !baseTypeName
       !self.mOverridingExtensionGetterName.string
@@ -421,7 +421,7 @@ override method @overrideExtensionGetterForGeneration appendSpecificImplementati
                                                               ?let @unifiedTypeMap unused inTypeMap
                                                               ?!@stringset ioInclusionSet
                                                               !@string outImplementation {
-  ioInclusionSet ++= "class-" + [self.mReceiverType.definition.typeName.string fileNameRepresentation]
+  ioInclusionSet ++= "class-" + self.mReceiverType.definition.typeName.string.fileNameRepresentation
   generateExtensionGetter (
     !"cPtr_" + self.mReceiverType.definition.typeName.string.identifierRepresentation + "::getter_" + self.mOverridingExtensionGetterName.identifierRepresentation
     !?ioInclusionSet

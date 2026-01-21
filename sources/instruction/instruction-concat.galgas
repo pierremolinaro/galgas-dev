@@ -431,7 +431,7 @@ final class @opAssignExpressionInstructionAST : @semanticInstructionAST {
     let @string targetVariableCppName
     let @string nameForCheckingFormalParameterUsing
     if self.mPrefixedBySelf then
-      if let selfAvailable = [inAnalysisContext.selfAvailability getAvailable] then
+      if let selfAvailable = inAnalysisContext.selfAvailability.getAvailable then
         if not [selfAvailable.selfMutability propertiesAreMutable] then
           error self.mInstructionLocation : "property not mutable in this context"
         end
@@ -529,7 +529,7 @@ final class @plusEqualElementsInstructionAST : @semanticInstructionAST {
     let @string targetVariableCppName
     let @string nameForCheckingFormalParameterUsing
     if self.mPrefixedBySelf then
-      if let selfAvailable = [inAnalysisContext.selfAvailability getAvailable] then
+      if let selfAvailable = inAnalysisContext.selfAvailability.getAvailable then
         let propertyMap = selfAvailable.type.definition.propertyMap
         [propertyMap searchKey !self.mReceiverName ?* ?let isConstant ?targetType]
         nameForCheckingFormalParameterUsing = inAnalysisContext.selfObjectCppName
@@ -638,7 +638,7 @@ final class @plusPlusEqualElementInstructionAST : @semanticInstructionAST {
     let @string targetVariableCppName
     let @string nameForCheckingFormalParameterUsing
     if self.mPrefixedBySelf then
-      if let selfAvailable = [inAnalysisContext.selfAvailability getAvailable] then
+      if let selfAvailable = inAnalysisContext.selfAvailability.getAvailable then
         let propertyMap = selfAvailable.type.definition.propertyMap
         [propertyMap searchKey !self.mReceiverName ?* ?let isConstant ?targetType]
         nameForCheckingFormalParameterUsing = inAnalysisContext.selfObjectCppName

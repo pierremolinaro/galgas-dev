@@ -140,8 +140,8 @@ method @productionRuleListForGrammarAnalysis.@element displayRule
   ioGeneratedCode += "\\ruleSubsection{"
     + escapeForTex (!inSyntaxComponentName)
     + "}{"
-    + escapeForTex (![[[loc file] lastPathComponent] deletingPathExtension])
-    + "}{" + escapeForTex (![loc startLine])
+    + escapeForTex (!loc.file.lastPathComponent.deletingPathExtension)
+    + "}{" + escapeForTex (!loc.startLine)
     + "}\n\n"
     + "\\begin{tikzpicture}\n"
     + "  \\matrix[column sep=\\ruleMatrixColumnSeparation, row sep=\\ruleMatrixRowSeparation] {\n"
@@ -200,8 +200,8 @@ method @productionRuleListForGrammarAnalysis.@element displayRuleVertically
   ioGeneratedCode += "\\ruleSubsection{"
     + escapeForTex (!inSyntaxComponentName)
     + "}{"
-    + escapeForTex (![[[loc file] lastPathComponent] deletingPathExtension])
-    + "}{" + escapeForTex (![loc startLine])
+    + escapeForTex (!loc.file.lastPathComponent.deletingPathExtension)
+    + "}{" + escapeForTex (!loc.startLine)
     + "}\n\n"
     + "\\begin{tikzpicture}\n"
     + "  \\matrix[column sep=\\ruleMatrixColumnSeparation, row sep=\\ruleMatrixRowSeparation] {\n"
@@ -546,7 +546,7 @@ override method @repeatInstructionForGrammarAnalysis tikzNodeForSyntaxInstructio
 getter @syntaxInstructionListForGrammarAnalysis displayVertically -> @bool {
   result = self.count > 4
   for (instruction) in self while result do
-    result = [instruction isLinear]
+    result = instruction.isLinear
   end
 }
 

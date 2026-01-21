@@ -88,52 +88,52 @@ syntax galgas3ProjectSyntax (galgasScanner3) {
     repeat
     while
       $%quietOutputByDefault$
-      generateFeatureList += !["quietOutputByDefault" here]
+      generateFeatureList += !"quietOutputByDefault".here
     while
       $%MacSwiftApp$
-      generateFeatureList += !["MacSwiftApp" here]
+      generateFeatureList += !"MacSwiftApp".here
     while
       $%makefile-macosx$
-      generateFeatureList += !["makefile-macosx" here]
+      generateFeatureList += !"makefile-macosx".here
     while
       $%makefile-unix$
-      generateFeatureList += !["makefile-unix" here]
+      generateFeatureList += !"makefile-unix".here
     while
       $%makefile-x86linux32-on-macosx$
-      generateFeatureList += !["makefile-x86linux32-on-macosx" here]
+      generateFeatureList += !"makefile-x86linux32-on-macosx".here
     while
       $%makefile-x86linux64-on-macosx$
-      generateFeatureList += !["makefile-x86linux64-on-macosx" here]
+      generateFeatureList += !"makefile-x86linux64-on-macosx".here
     while
       $%makefile-arm64-linux-on-macosx$
-      generateFeatureList += !["makefile-arm64-linux-on-macosx" here]
+      generateFeatureList += !"makefile-arm64-linux-on-macosx".here
     while
       $%makefile-win32-on-macosx$
-      generateFeatureList += !["makefile-win32-on-macosx" here]
+      generateFeatureList += !"makefile-win32-on-macosx".here
     while
       $%codeblocks-windows$
-      generateFeatureList += !["codeblocks-windows" here]
+      generateFeatureList += !"codeblocks-windows".here
     while
       $%codeblocks-linux32$
-      generateFeatureList += !["codeblocks-linux32" here]
+      generateFeatureList += !"codeblocks-linux32".here
     while
       $%codeblocks-linux64$
-      generateFeatureList += !["codeblocks-linux64" here]
+      generateFeatureList += !"codeblocks-linux64".here
     while
       $%applicationBundleBase$
       $:$
       $"string"$ ?let @lstring featureValue
-      qualifiedFeatureList += !["applicationBundleBase" here] !featureValue
+      qualifiedFeatureList += !"applicationBundleBase".here !featureValue
     while
       $%libpmAtPath$
       $:$
       $"string"$ ?let @lstring featureValue
-      qualifiedFeatureList += !["libpmAtPath" here] !featureValue
+      qualifiedFeatureList += !"libpmAtPath".here !featureValue
     while
       $%macCodeSign$
       $:$
       $"string"$ ?let @lstring featureValue
-      qualifiedFeatureList += !["macCodeSign" here] !featureValue
+      qualifiedFeatureList += !"macCodeSign".here !featureValue
     end
     $}$
   //--- Enumerate sources directory for getting all source files

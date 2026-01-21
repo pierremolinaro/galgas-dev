@@ -57,7 +57,7 @@ final class @optionalTypeDeclarationAST : @semanticDeclarationAST {
   //--- Getters
     commonGetterMapForAllTypes (!?ioTypeMap ?var @getterMap getterMap)
   //--- Properties
-    [!?ioTypeMap makeEntry !["bool" nowhere] ?let boolTypeEntry]
+    [!?ioTypeMap makeEntry !"bool".nowhere ?let boolTypeEntry]
     var @propertyMap propertyMap = @()
     [!?propertyMap insertKey
       !@("isSome", self.optionalTypeName)
@@ -129,7 +129,7 @@ final class @optionalTypeDeclarationAST : @semanticDeclarationAST {
       !addAssignOperatorArguments: @()
       !generateHeaderInSeparateFile: false
       !typeForEnumeratedElement: .null
-      !headerFileName: "optional-" + [self.optionalTypeName fileNameRepresentation]
+      !headerFileName: "optional-" + self.optionalTypeName.string.fileNameRepresentation
       !headerKind: .oneHeader
     }
     [!?ioTypeMap insertType !typeDefinition.typeName !typeDefinition]

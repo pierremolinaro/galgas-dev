@@ -250,7 +250,7 @@ proc enterBaseGetterWithArgument
   [!?ioUnifiedTypeMap makeEntryFromString !inReturnedTypeName ?let returnedTypeIndex]
   var @functionSignature argList = @()
   [!?ioUnifiedTypeMap makeEntryFromString !inArgument1TypeName ?let t]
-  argList += ![inArgument1Selector nowhere] !t !inArgument1Name !true
+  argList += !inArgument1Selector.nowhere !t !inArgument1Name !true
   [!?ioGetterMap insertOrReplace
     !@lstring {!inGetterName !@location.here}
     !@methodKind. definedAsMember
@@ -308,9 +308,9 @@ proc enterBaseGetterWith2Arguments
   [!?ioUnifiedTypeMap makeEntryFromString !inReturnedTypeName ?let returnedTypeIndex]
   var @functionSignature argList = @()
   [!?ioUnifiedTypeMap makeEntryFromString !inArgument1TypeName ?@unifiedTypeMapEntry t]
-  argList += ![inArgument1Selector nowhere] !t !inArgument1Name !true
+  argList += !inArgument1Selector.nowhere !t !inArgument1Name !true
   [!?ioUnifiedTypeMap makeEntryFromString !inArgument2TypeName ?t]
-  argList += ![inArgument2Selector nowhere] !t !inArgument2Name !true
+  argList += !inArgument2Selector.nowhere !t !inArgument2Name !true
   [!?ioGetterMap insertOrReplace
     !@lstring {!inGetterName !@location.here}
     !@methodKind. definedAsMember

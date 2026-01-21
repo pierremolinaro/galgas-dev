@@ -196,7 +196,7 @@ final class @selfDivEqualExpressionInstructionAST : @semanticInstructionAST {
                                              ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
                                              ?!@localVarManager ioVariableMap {
   //--- Analyze "self", as receiver expression
-    if let selfAvailable = [inAnalysisContext.selfAvailability getAvailable] then
+    if let selfAvailable = inAnalysisContext.selfAvailability.getAvailable then
       if not [selfAvailable.selfMutability selfIsMutable] then
         error self.mInstructionLocation : "'self' not mutable in this context"
       end
@@ -264,7 +264,7 @@ final class @selfPlusEqualExpressionInstructionAST : @semanticInstructionAST {
                                              ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
                                              ?!@localVarManager ioVariableMap {
   //--- Analyze "self", as receiver expression
-    if let selfAvailable = [inAnalysisContext.selfAvailability getAvailable] then
+    if let selfAvailable = inAnalysisContext.selfAvailability.getAvailable then
       if not [selfAvailable.selfMutability selfIsMutable] then
         error self.mInstructionLocation : "'self' not mutable in this context"
       end
@@ -332,7 +332,7 @@ final class @selfMinusEqualExpressionInstructionAST : @semanticInstructionAST {
                                              ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
                                              ?!@localVarManager ioVariableMap {
   //--- Analyze "self", as receiver expression
-    if let selfAvailable = [inAnalysisContext.selfAvailability getAvailable] then
+    if let selfAvailable = inAnalysisContext.selfAvailability.getAvailable then
       if not [selfAvailable.selfMutability selfIsMutable] then
         error self.mInstructionLocation : "'self' not mutable in this context"
       end
@@ -400,7 +400,7 @@ final class @selfMulEqualExpressionInstructionAST : @semanticInstructionAST {
                                              ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
                                              ?!@localVarManager ioVariableMap {
   //--- Analyze "self", as receiver expression
-    if let selfAvailable = [inAnalysisContext.selfAvailability getAvailable] then
+    if let selfAvailable = inAnalysisContext.selfAvailability.getAvailable then
       if not [selfAvailable.selfMutability selfIsMutable] then
         error self.mInstructionLocation : "'self' not mutable in this context"
       end
@@ -468,7 +468,7 @@ final class @selfPlusEqualElementsInstructionAST : @semanticInstructionAST {
                                              ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
                                              ?!@localVarManager ioVariableMap {
   //--- Analyze "self", as receiver expression
-    if let selfAvailable = [inAnalysisContext.selfAvailability getAvailable] then
+    if let selfAvailable = inAnalysisContext.selfAvailability.getAvailable then
       if not [selfAvailable.selfMutability selfIsMutable] then
         error self.mInstructionLocation : "'self' not mutable in this context"
       end

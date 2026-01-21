@@ -166,7 +166,7 @@ final class @structDeclarationAST : @semanticDeclarationAST {
     var @unifiedTypeMapEntryList typesToIncludeInHeaderCompilation = @()
     for property in self.mStructurePropertyListAST do
       [!?ioTypeMap makeEntry !property.typeName ?let propertyTypeEntry]
-      let selector = [if property.hasSelector then property.name.string else "" end nowhere]
+      let selector = (if property.hasSelector then property.name.string else "" end).nowhere
       if [property.initialization isNone] then
         constructorPropertyTypeList += !selector !propertyTypeEntry !property.name.string !true
       end
@@ -210,7 +210,7 @@ final class @structDeclarationAST : @semanticDeclarationAST {
     if initializerMap.count == 0 then
       features |= .generateSynthetizedInitializer
       [!?initializerMap insertKey
-        !@{![constructorPropertyTypeList initializerSignature] !self.structTypeName}
+        !@{!constructorPropertyTypeList.initializerSignature !self.structTypeName}
         !constructorPropertyTypeList
       ]
     end
@@ -261,7 +261,7 @@ final class @structDeclarationAST : @semanticDeclarationAST {
       !addAssignOperatorArguments: @()
       !generateHeaderInSeparateFile: false
       !typeForEnumeratedElement: enumeratedType // Type for enumerated element for "for" instruction
-      !headerFileName: "struct-" + [self.structTypeName fileNameRepresentation]
+      !headerFileName: "struct-" + self.structTypeName.string.fileNameRepresentation
       !headerKind: .oneHeader
     }
     [!?ioTypeMap insertType !typeDefinition.typeName !typeDefinition]
@@ -303,7 +303,7 @@ final class @structDeclarationAST : @semanticDeclarationAST {
         case null :
           error property.name : "the weak property type should be an optional class"
         case element (aWeakType) :
-          if let aType = aWeakType, let ref = [aType.definition.typeKind getClassType] then
+          if let aType = aWeakType, let ref = aType.definition.typeKind.getClassType then
             if not ref.isReference then
               error property.name : "the weak property type should be an optional refclass"
             end
@@ -378,7 +378,7 @@ final class @structDeclarationAST : @semanticDeclarationAST {
     if [structType.definition.features contains !.generateSynthetizedInitializer] then
       let initializerForUsefulness = initializerNameForUsefulEntitiesGraph (
         !self.structTypeName
-        ![constructorArgumentList initializerSignature]
+        !constructorArgumentList.initializerSignature
       )
       [!?ioUsefulEntitiesGraph addNode !initializerForUsefulness !initializerForUsefulness]
       [!?ioUsefulEntitiesGraph addEdge !from: initializerForUsefulness !to: structNameForUsefulness]

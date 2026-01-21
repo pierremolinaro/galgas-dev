@@ -395,12 +395,12 @@ final class @classDeclarationAST : @semanticDeclarationAST {
       features |= .clonable
       var @functionSignature cloneInitializerArgumentList = @()
       cloneInitializerArgumentList +=
-        !["cloned" nowhere]
+        !"cloned".nowhere
         !classIndex
         !"inObject"
         !true
       [!?initializerMap insertKey
-        !@{![cloneInitializerArgumentList initializerSignature] !self.mClassTypeName}
+        !@{!cloneInitializerArgumentList.initializerSignature !self.mClassTypeName}
         !cloneInitializerArgumentList
       ]
     end
@@ -424,7 +424,7 @@ final class @classDeclarationAST : @semanticDeclarationAST {
     if initializerMap.count == if self.clonable then 1 else 0 end then
       features |= .generateSynthetizedInitializer
       [!?initializerMap insertKey
-        !@{![synthetizedInitializerArgumentList initializerSignature] !self.mClassTypeName}
+        !@{!synthetizedInitializerArgumentList.initializerSignature !self.mClassTypeName}
         !synthetizedInitializerArgumentList
       ]
     end
@@ -460,7 +460,7 @@ final class @classDeclarationAST : @semanticDeclarationAST {
       !addAssignOperatorArguments: @()
       !generateHeaderInSeparateFile: generateHeaderInSeparateFile
       !typeForEnumeratedElement: .null
-      !headerFileName: "class-" + [self.mClassTypeName fileNameRepresentation]
+      !headerFileName: "class-" + self.mClassTypeName.string.fileNameRepresentation
       !headerKind: .twoHeaders
     }
     [!?ioTypeMap insertType !typeDefinition.typeName !typeDefinition]
@@ -598,7 +598,7 @@ final class @classDeclarationAST : @semanticDeclarationAST {
     if [selfType.definition.features contains !.generateSynthetizedInitializer] then
       let initializerForUsefulness = initializerNameForUsefulEntitiesGraph (
         !self.mClassTypeName
-        ![synthetizedInitialzerArgumentList initializerSignature]
+        !synthetizedInitialzerArgumentList.initializerSignature
       )
       [!?ioUsefulEntitiesGraph addNode !initializerForUsefulness !initializerForUsefulness]
       if self.isPredefined then

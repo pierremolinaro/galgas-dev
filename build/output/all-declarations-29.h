@@ -247,3 +247,86 @@ class GGS_lstring function_makeEmbeddedElementTypeLName (const class GGS_lstring
                                                          class Compiler * inCompiler
                                                          COMMA_LOCATION_ARGS) ;
 
+//--------------------------------------------------------------------------------------------------
+//
+//Function 'forbiddenKeysForMapAndDict'
+//
+//--------------------------------------------------------------------------------------------------
+
+class GGS_stringset function_forbiddenKeysForMapAndDict (class Compiler * inCompiler
+                                                         COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Routine 'check_K_L_escapeCharacters?'
+//
+//--------------------------------------------------------------------------------------------------
+
+void routine_check_5F_K_5F_L_5F_escapeCharacters_3F_ (const class GGS_lstring constinArgument0,
+                                                      class Compiler * inCompiler
+                                                      COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Routine 'check_K_escapeCharacters?'
+//
+//--------------------------------------------------------------------------------------------------
+
+void routine_check_5F_K_5F_escapeCharacters_3F_ (const class GGS_lstring constinArgument0,
+                                                 class Compiler * inCompiler
+                                                 COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper 'mapGenerationTemplate'
+//
+//--------------------------------------------------------------------------------------------------
+
+
+//--------------------------------------------------------------------------------------------------
+
+
+//--------------------------------------------------------------------------------------------------
+
+
+//--------------------------------------------------------------------------------------------------
+
+extern const cDirectoryWrapper gWrapperDirectory_0_mapGenerationTemplate ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'mapGenerationTemplate mapTypeHeader1'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_string filewrapperTemplate_mapGenerationTemplate_mapTypeHeader_31_ (class Compiler * inCompiler,
+                                                                        const class GGS_string & in_TYPE_5F_NAME,
+                                                                        const class GGS_string & in_TYPE_5F_IDENTIFIER,
+                                                                        const class GGS_typedPropertyList & in_CURRENT_5F_PROPERTY_5F_LIST,
+                                                                        const class GGS_mapAccessorListAST & in_SEARCH_5F_METHOD_5F_LIST,
+                                                                        const class GGS_enumerationDescriptorList & in_ENUMERATION_5F_DESCRIPTOR_5F_LIST,
+                                                                        const class GGS_unifiedTypeMapEntry & in_ENUMERATED_5F_OBJECT_5F_TYPE,
+                                                                        const class GGS_string & in_ELEMENT_5F_TYPE_5F_IDENTIFIER,
+                                                                        const class GGS_bool & in_GENERATE_5F_COMPARISON
+                                                                        COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'mapGenerationTemplate mapTypeSpecificImplementation'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_string filewrapperTemplate_mapGenerationTemplate_mapTypeSpecificImplementation (class Compiler * inCompiler,
+                                                                                    const class GGS_string & in_TYPE_5F_IDENTIFIER,
+                                                                                    const class GGS_typedPropertyList & in_PROPERTY_5F_LIST,
+                                                                                    const class GGS_string & in_ELEMENT_5F_TYPE_5F_IDENTIFIER,
+                                                                                    const class GGS_insertSetterListAST & in_INSERT_5F_SETTER_5F_LIST,
+                                                                                    const class GGS_string & in_OPTIONAL_5F_ELEMENT_5F_TYPE_5F_IDENTIFIER,
+                                                                                    const class GGS_mapAccessorListAST & in_SEARCH_5F_METHOD_5F_LIST,
+                                                                                    const class GGS_mapAccessorListAST & in_SEARCH_5F_SUBSCRIPT_5F_LIST,
+                                                                                    const class GGS_mapAccessorListAST & in_REMOVE_5F_SETTER_5F_LIST,
+                                                                                    const class GGS_mapAccessorListAST & in_REPLACE_5F_SETTER_5F_LIST,
+                                                                                    const class GGS_bool & in_HAS_5F_INSERT_5F_OR_5F_REPLACE,
+                                                                                    const class GGS_bool & in_GENERATE_5F_COMPARISON
+                                                                                    COMMA_LOCATION_ARGS) ;
+

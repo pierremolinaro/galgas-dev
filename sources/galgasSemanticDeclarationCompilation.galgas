@@ -39,40 +39,40 @@ proc compileSemanticDeclarationsGalgas ?!@lstringlist ioUsefulnessRootEntities
   var @commandLineOptionListAST options = @()
   for name in @application.boolOptionNameList do
     options +=
-      !["bool" nowhere]
+      !"bool".nowhere
       !@{!name.mValue1 !.here}
       !@{!@application.boolOptionInvocationCharacter {!name.mValue0 !name.mValue1} !.nowhere}
-      ![@application.boolOptionInvocationString {!name.mValue0 !name.mValue1} nowhere]
-      ![@application.boolOptionCommentString {!name.mValue0 !name.mValue1} nowhere]
+      !@application.boolOptionInvocationString {!name.mValue0 !name.mValue1}.nowhere
+      !@application.boolOptionCommentString {!name.mValue0 !name.mValue1}.nowhere
       !"".nowhere
       !.noDefaultValue
   end
   for name in @application.uintOptionNameList do
     options +=
-      !["uint" nowhere]
+      !"uint".nowhere
       !@{!name.mValue1 !.here}
       !@lchar {!@application.uintOptionInvocationCharacter {!name.mValue0 !name.mValue1} !.nowhere}
-      ![@application.uintOptionInvocationString {!name.mValue0 !name.mValue1} nowhere]
-      ![@application.uintOptionCommentString {!name.mValue0 !name.mValue1} nowhere]
+      !@application.uintOptionInvocationString {!name.mValue0 !name.mValue1}.nowhere
+      !@application.uintOptionCommentString {!name.mValue0 !name.mValue1}.nowhere
       !"".nowhere
       !.noDefaultValue
   end
   for name in @application.stringOptionNameList do
     options +=
-      !["string" nowhere]
+      !"string".nowhere
       !@{!name.mValue1 !.here}
       !@lchar {!@application.stringOptionInvocationCharacter {!name.mValue0 !name.mValue1} !.nowhere}
-      ![@application.stringOptionInvocationString {!name.mValue0 !name.mValue1} nowhere]
-      ![@application.stringOptionCommentString {!name.mValue0 !name.mValue1} nowhere]
+      !@application.stringOptionInvocationString {!name.mValue0 !name.mValue1}.nowhere
+      !@application.stringOptionCommentString {!name.mValue0 !name.mValue1}.nowhere
       !"".nowhere
       !.noDefaultValue
   end
   semanticDeclarations.mDeclarationList += !@optionComponentDeclarationAST {
     !isPredefined: true // Is predefined
-    !["galgas_builtin_options" nowhere]
+    !"galgas_builtin_options".nowhere
     !options
   }
-  let galgas_builtin_optionsUsefulnessName = optionNameForUsefulEntitiesGraph (!["galgas_builtin_options" nowhere])
+  let galgas_builtin_optionsUsefulnessName = optionNameForUsefulEntitiesGraph (!"galgas_builtin_options".nowhere)
   ioUsefulnessRootEntities += !galgas_builtin_optionsUsefulnessName
 //----- Build semantic context
   buildGalgasSemanticContext (
@@ -172,7 +172,7 @@ private proc buildGalgasSemanticContext ?let @galgasDeclarationAST inDeclaration
     if unsortedSemanticDeclarationListAST.count > 0 then
       var s = "semantic analysis not performed, " + unsortedSemanticDeclarationListAST.count.string + " declarations are involved in circular definition:"
       for declaration in unsortedSemanticDeclarationListAST do
-        s += "\n-  " + [declaration.mSemanticDeclaration keyRepresentation]
+        s += "\n-  " + declaration.mSemanticDeclaration.keyRepresentation
       end
       error inEndOfProjectSourceFile : s : outSemanticContext, outTypeMap
     else
@@ -471,10 +471,10 @@ private proc buildHeader
   ?!@string ioHeaderString {
 //---
   if not [ioHeaderRepartitionMap hasKey !inDeclarationName] then
-    [!?ioHeaderRepartitionMap insertKey ![inDeclarationName nowhere] !inHeaderFileName]
+    [!?ioHeaderRepartitionMap insertKey !inDeclarationName.nowhere !inHeaderFileName]
     if [inHeaderCompositionMap hasKey !inDeclarationName] then
       [inHeaderCompositionMap searchKey
-        ![inDeclarationName nowhere]
+        !inDeclarationName.nowhere
         ?let @stringset inclusionSet
         ?let @string headerString
       ]
@@ -585,14 +585,14 @@ private proc generateFewImplementationFilesWithFewHeaders
       if [declaration.mDeclaration headerKind] != .noHeader then
         let headerFileName = [declaration.mDeclaration getImplementationCppFileName] + if [declaration.mDeclaration headerKind] == .twoHeaders then "-1" else "" end
         [!?headerCompositionMap insertKey
-          ![headerFileName nowhere]
+          !headerFileName.nowhere
           !inclusionSet1
           !headerString1
         ]
       end
       if [declaration.mDeclaration headerKind] == .twoHeaders then
         [!?headerCompositionMap insertKey
-          ![[declaration.mDeclaration getImplementationCppFileName] nowhere]
+          !declaration.mDeclaration.getImplementationCppFileName.nowhere
           !inclusionSet2 | @stringset @[[declaration.mDeclaration getImplementationCppFileName] + "-1"]
           !headerString2
         ]

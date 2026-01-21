@@ -200,9 +200,9 @@ override method @setterCallInstructionAST analyzeSemanticInstruction
   let @string targetVariableCppName
   let @string nameForCheckingFormalParameterUsing
   if self.mPrefixedBySelf then
-    if let selfAvailability = [inAnalysisContext.selfAvailability getAvailable] then
+    if let selfAvailability = inAnalysisContext.selfAvailability.getAvailable then
     //--- Check self is not inkoed before full initialization
-      if let classTypeKind = [selfAvailability.type.definition.typeKind getClassType], classTypeKind.isReference then
+      if let classTypeKind = selfAvailability.type.definition.typeKind.getClassType, classTypeKind.isReference then
       elsif not [selfAvailability.selfMutability selfIsMutable] then
         error self.mSetterName : "'self' not mutable in this context"
       end
@@ -319,7 +319,7 @@ override method @selfSetterCallInstructionAST analyzeSemanticInstruction
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@localVarManager ioVariableMap {
 //--- Analyze "self", as receiver expression
-  if let selfAvailable = [inAnalysisContext.selfAvailability getAvailable] then
+  if let selfAvailable = inAnalysisContext.selfAvailability.getAvailable then
     if not [selfAvailable.selfMutability selfIsMutable] then
       error self.mSetterName : "'self' not mutable in this context"
     end
@@ -416,7 +416,7 @@ override method @setterCallInstructionForGeneration generateInstruction
 //--- Generate method call
   switch self.mKind
   case definedAsExtension :
-    ioInclusionSet ++= "setter-" + [self.mMethodBaseType.definition.typeName.string fileNameRepresentation] + "-" + [self.mSetterName fileNameRepresentation]
+    ioInclusionSet ++= "setter-" + self.mMethodBaseType.definition.typeName.string.fileNameRepresentation + "-" + self.mSetterName.string.fileNameRepresentation
     if self.mReceiverType.definition.typeKind.isClassType then
       if (self.mReceiverType.definition.allTypedPropertyList.count > 0) then //  & [mReceiverType mIsConcrete] then
         ioGeneratedCode += receiverCppName + ".insulate (" + compilerCppName () + " COMMA_HERE) ;\n"
@@ -426,7 +426,7 @@ override method @setterCallInstructionForGeneration generateInstruction
       ioGeneratedCode += "cPtr_" + self.mReceiverType.identifierRepresentation + " * " + pointerUniqueName
       ioGeneratedCode += " = (cPtr_" + self.mReceiverType.identifierRepresentation + " *) " + receiverCppName + ".ptr () ;\n"
       if self.mCastType.definition.typeName.string != self.mReceiverType.definition.typeName.string then
-        ioInclusionSet ++= "class-" + [self.mCastType.definition.typeName.string fileNameRepresentation]
+        ioInclusionSet ++= "class-" + self.mCastType.definition.typeName.string.fileNameRepresentation
         ioGeneratedCode += "if ((nullptr != " + pointerUniqueName
                         + ") && (dynamic_cast <cPtr_" + self.mCastType.identifierRepresentation + " *> ("
                         + pointerUniqueName + ") == nullptr)) {\n"
@@ -491,7 +491,7 @@ override method @selfSetterCallInstructionForGeneration generateInstruction
 //--- Generate setter call
   switch self.mKind
   case definedAsExtension :
-    ioInclusionSet ++= "setter-" + [self.mReceiverType.definition.typeName.string fileNameRepresentation] + "-" + [self.mSetterName fileNameRepresentation]
+    ioInclusionSet ++= "setter-" + self.mReceiverType.definition.typeName.string.fileNameRepresentation + "-" + self.mSetterName.string.fileNameRepresentation
     if self.mReceiverType.definition.typeKind.isClassType then
       ioGeneratedCode += "callExtensionSetter_" + self.mSetterName.string.identifierRepresentation + " (" + self.mSelfCppName + ", "
     else

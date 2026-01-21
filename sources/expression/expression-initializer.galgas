@@ -272,11 +272,11 @@ private proc analyzeInitializerInvocation ?let @lstring inUsefulnessCallerEntity
     //--- Usefull entity graph
       let nameForUsefulness = initializerNameForUsefulEntitiesGraph (
         !instanciedTypeDefinition.typeName
-        ![inInvocationArguments initializerSignature]
+        !inInvocationArguments.initializerSignature
       )
       [!?ioUsefulEntitiesGraph addEdge !from: inUsefulnessCallerEntityName !to: nameForUsefulness]
     //--- Search initializer
-      outInitializerName = @{![inInvocationArguments initializerSignature] !inEndOfExpressions}
+      outInitializerName = @{!inInvocationArguments.initializerSignature !inEndOfExpressions}
       let initializerMap = instanciedTypeDefinition.initializerMap
       let @functionSignature formalSignature
       if [initializerMap hasKey !outInitializerName] then

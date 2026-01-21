@@ -757,7 +757,7 @@ syntax galgas4LexiqueComponentSyntax (galgasScanner4) {
       $identifier$ ?let sentAttribute
       sentAttributeList += !selector !sentAttribute
     end
-    var @lstring theStyle = [""nowhere] // Empty string if no style
+    var @lstring theStyle = "".nowhere // Empty string if no style
     var nonAtomicSelection = false
     var templateEndMark = false
     repeat
@@ -1054,44 +1054,9 @@ override method @lexiqueComponentAST semanticAnalysis
       !self.mTemplateReplacementListAST
       !self.mLexicalStyleListAST
     ]
-  //--- Cocoa header
-//    let objCocoaHeader = [filewrapper lexiqueGenerationTemplates.cocoaHeaderZone2
-//      !self.mLexiqueComponentName.string
-//      !lexiqueAnalysisContext
-//    ]
-  //--- Objc Cocoa implementation
-//    let objCocoaImplementation = [filewrapper lexiqueGenerationTemplates.cocoaImplementationZone2
-//      !"lexique-" + [self.mLexiqueComponentName.string fileNameRepresentation] + "-cocoa"
-//      !self.mLexiqueComponentName.string
-//      !lexiqueAnalysisContext.mLexicalAttributeMap
-//      !lexiqueAnalysisContext.mLexicalMessageMap
-//      !lexiqueAnalysisContext.mTerminalList
-//      !lexiqueAnalysisContext.mUnicodeStringToGenerate
-//      !self.mLexicalRuleListAST
-//      !lexiqueAnalysisContext
-//      !self.mTemplateReplacementListAST
-//      !self.mIndexingListAST
-//      !self.mLexicalStyleListAST
-//      !self.mTemplateDelimitorListAST
-//    ]
-  //--- Swift Cocoa implementation
-//    let swiftCocoaImplementation = [filewrapper lexiqueGenerationTemplates.swiftCocoaImplementationZone2
-//      !"lexique-" + [self.mLexiqueComponentName.string fileNameRepresentation] + "-cocoa"
-//      !self.mLexiqueComponentName.string
-//      !lexiqueAnalysisContext.mLexicalAttributeMap
-//      !lexiqueAnalysisContext.mLexicalMessageMap
-//      !lexiqueAnalysisContext.mTerminalList
-//      !lexiqueAnalysisContext.mUnicodeStringToGenerate
-//      !self.mLexicalRuleListAST
-//      !lexiqueAnalysisContext
-//      !self.mTemplateReplacementListAST
-//      !self.mIndexingListAST
-//      !self.mLexicalStyleListAST
-//      !self.mTemplateDelimitorListAST
-//    ]
   //--- SwiftUI implementation
     let swiftUIImplementation = [filewrapper lexiqueGenerationTemplates.swiftUIImplementationZone2
-      !"lexique-" + [self.mLexiqueComponentName.string fileNameRepresentation] + "-swiftui"
+      !"lexique-" + self.mLexiqueComponentName.string.fileNameRepresentation + "-swiftui"
       !self.mLexiqueComponentName.string
       !lexiqueAnalysisContext.mLexicalAttributeMap
       !lexiqueAnalysisContext.mLexicalMessageMap
@@ -1109,7 +1074,7 @@ override method @lexiqueComponentAST semanticAnalysis
       !infoMessage: ""
       !@lexiqueDeclarationForGeneration {
         !generateHeader: true // has header
-        !implementationCppFileName: "lexique-" + [self.mLexiqueComponentName.string fileNameRepresentation]
+        !implementationCppFileName: "lexique-" + self.mLexiqueComponentName.string.fileNameRepresentation
         !self.mLexiqueComponentName.string
         !""
         !headerContents

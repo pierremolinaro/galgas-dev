@@ -243,15 +243,15 @@ final class @stringPredefinedTypeAST : @predefinedTypeAST {
     ]
   //--- Generate file with pattern
     argList = @()
-    argList += !["startPath" nowhere] !stringType !.argumentConstantIn !"inStartPath"
-    argList += !["fileName" nowhere] !stringType !.argumentConstantIn !"inFileName"
-    argList += !["lineComment" nowhere] !stringType !.argumentConstantIn !"inLineCommentPrefix"
-    argList += !["header" nowhere] !stringType !.argumentConstantIn !"inHeader"
-    argList += !["defaultUserZone1" nowhere] !stringType !.argumentConstantIn !"inDefaultUserZone1"
-    argList += !["generatedZone2" nowhere] !stringType !.argumentConstantIn !"inGeneratedZone2"
-    argList += !["defaultUserZone2" nowhere] !stringType !.argumentConstantIn !"inDefaultUserZone2"
-    argList += !["generatedZone3" nowhere] !stringType !.argumentConstantIn !"inGeneratedZone3"
-    argList += !["makeExecutable" nowhere] !boolType !.argumentConstantIn !"inMakeExecutable"
+    argList += !"startPath".nowhere !stringType !.argumentConstantIn !"inStartPath"
+    argList += !"fileName".nowhere !stringType !.argumentConstantIn !"inFileName"
+    argList += !"lineComment".nowhere !stringType !.argumentConstantIn !"inLineCommentPrefix"
+    argList += !"header".nowhere !stringType !.argumentConstantIn !"inHeader"
+    argList += !"defaultUserZone1".nowhere !stringType !.argumentConstantIn !"inDefaultUserZone1"
+    argList += !"generatedZone2".nowhere !stringType !.argumentConstantIn !"inGeneratedZone2"
+    argList += !"defaultUserZone2".nowhere !stringType !.argumentConstantIn !"inDefaultUserZone2"
+    argList += !"generatedZone3".nowhere !stringType !.argumentConstantIn !"inGeneratedZone3"
+    argList += !"makeExecutable".nowhere !boolType !.argumentConstantIn !"inMakeExecutable"
     [!?outClassMethodMap insertOrReplace
       !@lstring {!"generateFileWithPattern" !@location.here}
       !argList

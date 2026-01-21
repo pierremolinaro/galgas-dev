@@ -268,7 +268,7 @@ override method @extensionSetterAST semanticAnalysis
     !infoMessage:"extension setter " + self.mExtensionSetterName
     !@extensionSetterForGeneration {
       !generateHeader: true // Generate Cpp header file
-      !implementationCppFileName: "setter-" + [selfType.definition.typeName.string fileNameRepresentation] + "-" + [self.mExtensionSetterName fileNameRepresentation]
+      !implementationCppFileName: "setter-" + selfType.definition.typeName.string.fileNameRepresentation + "-" + self.mExtensionSetterName.string.fileNameRepresentation
       !selfType
       !self.mExtensionSetterName.string
       !implementedAsFunction
@@ -363,7 +363,7 @@ override method @extensionSetterForGeneration appendSpecificImplementation
       !"ioObject"
       !0
     ]
-    ioInclusionSet ++= "setter-" + [self.mReceiverType.definition.typeName.string fileNameRepresentation] + "-" + [self.mExtensionSetterName fileNameRepresentation]
+    ioInclusionSet ++= "setter-" + self.mReceiverType.definition.typeName.string.fileNameRepresentation + "-" + self.mExtensionSetterName.fileNameRepresentation
     generateProcedure (
       !static:false
       !"extensionSetter_" + self.mExtensionSetterName.identifierRepresentation
@@ -396,7 +396,7 @@ override method @extensionSetterForGeneration appendSpecificImplementation
         searching = false
       end
     end
-    ioInclusionSet ++= "setter-" + [baseType.definition.typeName.string fileNameRepresentation] + "-" + [self.mExtensionSetterName fileNameRepresentation]
+    ioInclusionSet ++= "setter-" + baseType.definition.typeName.string.fileNameRepresentation + "-" + self.mExtensionSetterName.fileNameRepresentation
     [baseType addHeaderFileName !?ioInclusionSet]
     generateExtensionSetter (
       !self.mReceiverType.definition.typeName.string

@@ -101,7 +101,7 @@ override method @lexiqueIntrospectionExpressionAST analyzeSemanticExpression
   end
 //---
   outExpression = @lexiqueIntrospectionForGeneration {
-    ![ioTypeMap typeMapEntryForLKey !["stringlist" nowhere]]
+    ![ioTypeMap typeMapEntryForLKey !"stringlist".nowhere]
     !self.mLexiqueComponentName.location
     !self.mLexiqueComponentName.string
     !self.mLexiqueGetterName.string}
@@ -125,7 +125,7 @@ override method @lexiqueIntrospectionForGeneration generateExpression
   ?!@stringset unused ioUnusedVariableCppNameSet
   !@string outCppExpression {
 //---
-  ioInclusionSet ++= "lexique-" + [self.mLexiqueComponentName fileNameRepresentation]
+  ioInclusionSet ++= "lexique-" + self.mLexiqueComponentName.fileNameRepresentation
   outCppExpression = "Lexique_" + self.mLexiqueComponentName.identifierRepresentation + "::"
   + self.mLexiqueGetterName.identifierRepresentation
   + "(" + self.mLocation.sourceFile + ")"

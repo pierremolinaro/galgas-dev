@@ -215,7 +215,7 @@ final class @arrayTypeDeclarationAST : @semanticDeclarationAST {
     var @initializerMap initializerMap = @()
     let @functionSignature emptyArgumentList = @()
     [!?initializerMap insertKey
-      !@{![emptyArgumentList initializerSignature] !self.arrayTypeName}
+      !@{!emptyArgumentList.initializerSignature !self.arrayTypeName}
       !emptyArgumentList
     ]
   //--- Read subscripts
@@ -279,7 +279,7 @@ final class @arrayTypeDeclarationAST : @semanticDeclarationAST {
       !addAssignOperatorArguments: @()
       !generateHeaderInSeparateFile: false
       !typeForEnumeratedElement: elementType
-      !headerFileName: "array-" + [self.arrayTypeName fileNameRepresentation]
+      !headerFileName: "array-" + self.arrayTypeName.string.fileNameRepresentation
       !headerKind: .oneHeader
     }
     [!?ioTypeMap insertType !typeDefinition.typeName !typeDefinition]
@@ -287,25 +287,7 @@ final class @arrayTypeDeclarationAST : @semanticDeclarationAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method addAssociatedElement
-    ?!@galgasDeclarationAST unused ioDeclarations {
-//    var @propertyInCollectionListAST structAttributeList = @()
-//    for (isConstant qualifiedTypeAST mPropertyName * hasSelector initExpression) in self.mPropertyList do
-//      structAttributeList +=
-//        !isConstant: isConstant
-//        !qualifiedTypeAST
-//        !mPropertyName
-//        !.publicAccess
-//        !hasSelector: hasSelector
-//        !initialization: initExpression
-//    end
-//    ioSemanticDeclarationList += !@structDeclarationAST {
-//      !isPredefined: self.isPredefined
-//      !@{!self.arrayTypeName.string + elementTypeNameSuffix () !self.arrayTypeName.location}
-//      !structAttributeList
-//      !enumeratedElementTypeName: ""
-//      !comparison: if self.equatable then .equatable else .none end
-//    }
+  override method addAssociatedElement ?!@galgasDeclarationAST unused ioDeclarations {
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -333,30 +315,12 @@ final class @arrayTypeDeclarationAST : @semanticDeclarationAST {
   //--- Useful entities graph for initializer without any argument
     let initializerNameForUsefulness = initializerNameForUsefulEntitiesGraph (
       !self.arrayTypeName
-      ![@formalInputParameterListAST () initializerSignature]
+      !@formalInputParameterListAST ().initializerSignature
     )
     [!?ioUsefulEntitiesGraph addNode !initializerNameForUsefulness !initializerNameForUsefulness]
     if self.isUsefull || self.isPredefined then
       ioUsefulnessRootEntities += !initializerNameForUsefulness
     end
-  //---
-//    var @typedPropertyList typedAttributeList = @()
-//    var @propertyIndexMap attributeMap = @()
-//    for (* propertyTypeName propertyName unused accessControl hasSelector initExpression) in self.mPropertyList do
-//      if [initExpression isSome] then
-//        error propertyName : "property initialization is not handled for a list"
-//      end
-//      let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!propertyTypeName)
-//      [!?ioUsefulEntitiesGraph addEdge !from: nameForUsefulness !propertyTypeNameForUsefulness]
-//      let t = [ioTypeMap typeMapEntryForLKey !propertyTypeName]
-//      typedAttributeList +=
-//        !t
-//        !propertyName
-//        !initExpression
-//        !hasSetter: true // not isConstant
-//        !hasSelector: hasSelector
-//      [!?attributeMap insertKey !propertyName !t]
-//    end
   //---
     let selfType = [ioTypeMap typeMapEntryForLKey !self.arrayTypeName]
     ioSemanticDeclarationListForGeneration +=

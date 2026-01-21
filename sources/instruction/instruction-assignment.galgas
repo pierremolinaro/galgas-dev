@@ -264,7 +264,7 @@ final class @selfPropertyAssignmentInstructionAST : @semanticInstructionAST {
                           ?!@unifiedTypeMap ioTypeMap
                           ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
                           ?!@localVarManager ioVariableMap {
-    if let selfAvailable = [inAnalysisContext.selfAvailability getAvailable] then
+    if let selfAvailable = inAnalysisContext.selfAvailability.getAvailable then
       if not [selfAvailable.selfMutability propertiesAreMutable] then
         error self.mInstructionLocation : "'self' property not mutable in this context"
       end

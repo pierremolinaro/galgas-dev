@@ -191,17 +191,17 @@ override method @listDeclarationAST enterDeclarationInSemanticContext
     let selector = if mHasSelector then mPropertyName.string else "" end
     enumerationDescriptor += !mPropertyTypeEntry !mPropertyName.string
     constructorAttributeTypeList +=
-      ![selector nowhere]
+      !selector.nowhere
       !mPropertyTypeEntry
       !mPropertyName.string
       !true
     setterOutputFormalArgumentList +=
-      ![selector nowhere]
+      !selector.nowhere
       !mPropertyTypeEntry
       !.argumentOut
       !mPropertyName.string
     setterInputFormalArgumentList +=
-      ![selector nowhere]
+      !selector.nowhere
       !mPropertyTypeEntry
       !.argumentConstantIn
       !mPropertyName.string
@@ -352,7 +352,7 @@ override method @listDeclarationAST enterDeclarationInSemanticContext
   var @initializerMap initializerMap = @()
   let @functionSignature emptyArgumentList = @()
   [!?initializerMap insertKey
-    !@{![emptyArgumentList initializerSignature] !self.mListTypeName}
+    !@{!emptyArgumentList.initializerSignature !self.mListTypeName}
     !emptyArgumentList
   ]
 //--- Add extensions
@@ -408,7 +408,7 @@ override method @listDeclarationAST enterDeclarationInSemanticContext
     !addAssignOperatorArguments: constructorAttributeTypeList
     !generateHeaderInSeparateFile: false
     !typeForEnumeratedElement: listElementType
-    !headerFileName: "list-" + [self.mListTypeName fileNameRepresentation]
+    !headerFileName: "list-" + self.mListTypeName.string.fileNameRepresentation
     !headerKind: .oneHeader
   }
   [!?ioTypeMap insertType !typeDefinition.typeName !typeDefinition]
@@ -468,7 +468,7 @@ override method @listDeclarationAST semanticAnalysis
 //--- Useful entities graph for initializer without any argument
   let initializerNameForUsefulness = initializerNameForUsefulEntitiesGraph (
     !self.mListTypeName
-    ![@formalInputParameterListAST () initializerSignature]
+    !@formalInputParameterListAST ().initializerSignature
   )
   [!?ioUsefulEntitiesGraph addNode !initializerNameForUsefulness !initializerNameForUsefulness]
   [!?ioUsefulEntitiesGraph addEdge !from: initializerNameForUsefulness !to: nameForUsefulness]

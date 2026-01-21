@@ -193,7 +193,7 @@ final class @abstractExtensionSetterAST : @semanticDeclarationAST {
       !infoMessage: " abstract extension setter " + self.mAbstractExtensionSetterName
       !@abstractExtensionSetterForGeneration {
         !generateHeader: true // Generate Cpp header file
-        !implementationCppFileName: "setter-" + [self.mTypeName fileNameRepresentation] + "-" + [self.mAbstractExtensionSetterName fileNameRepresentation]
+        !implementationCppFileName: "setter-" + self.mTypeName.string.fileNameRepresentation + "-" + self.mAbstractExtensionSetterName.string.fileNameRepresentation
         !selfType
         !self.mAbstractExtensionSetterName.string
         !formalParameterListForGeneration
@@ -257,7 +257,7 @@ final class @abstractExtensionSetterForGeneration : @semanticDeclarationWithHead
     ?!@stringset ioInclusionSet
     !@string outImplementation
   {
-    ioInclusionSet ++= "setter-" + [self.mReceiverType.definition.typeName.string fileNameRepresentation] + "-" + [self.mAbstractExtensionSetterName fileNameRepresentation]
+    ioInclusionSet ++= "setter-" + self.mReceiverType.definition.typeName.string.fileNameRepresentation + "-" + self.mAbstractExtensionSetterName.fileNameRepresentation
     [self.mReceiverType addHeaderFileName !?ioInclusionSet]
     for (* * mFormalArgumentType * *) in self.mAbstractExtensionSetterFormalParameterList do
       [mFormalArgumentType addHeaderFileName !?ioInclusionSet]

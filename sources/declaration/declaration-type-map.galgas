@@ -337,8 +337,8 @@ final class @mapDeclarationAST : @semanticDeclarationAST {
     var structAttributeList = @propertyInCollectionListAST ()
     structAttributeList +=
       !mutability: .constantProperty
-      !["lstring" nowhere]
-      !["lkey" nowhere]
+      !"lstring".nowhere
+      !"lkey".nowhere
       !.publicAccess
       !hasSelector: false
       !initialization: .none
@@ -652,7 +652,7 @@ final class @mapDeclarationAST : @semanticDeclarationAST {
     var @initializerMap initializerMap = @()
     let @functionSignature emptyArgumentList = @()
     [!?initializerMap insertKey
-      !@{![emptyArgumentList initializerSignature] !self.mMapTypeName}
+      !@{!emptyArgumentList.initializerSignature !self.mMapTypeName}
       !emptyArgumentList
     ]
   //--- Features
@@ -731,7 +731,7 @@ final class @mapDeclarationAST : @semanticDeclarationAST {
       !addAssignOperatorArguments: @() // argumentTypeListForAddAssignWithFieldExpressionList
       !generateHeaderInSeparateFile: false
       !typeForEnumeratedElement: elementTypeEntry // Type for enumerated element for "for" instruction
-      !headerFileName: "map-" + [self.mMapTypeName fileNameRepresentation]
+      !headerFileName: "map-" + self.mMapTypeName.string.fileNameRepresentation
       !headerKind: .oneHeader
     }
     [!?ioTypeMap insertType !typeDefinition.typeName !typeDefinition]
@@ -761,7 +761,7 @@ final class @mapDeclarationAST : @semanticDeclarationAST {
   //--- Useful entities graph for initializer without any argument
     let initializerNameForUsefulness = initializerNameForUsefulEntitiesGraph (
       !self.mMapTypeName
-      ![@formalInputParameterListAST () initializerSignature]
+      !@formalInputParameterListAST ().initializerSignature
     )
     [!?ioUsefulEntitiesGraph addNode !initializerNameForUsefulness !initializerNameForUsefulness]
     [!?ioUsefulEntitiesGraph addEdge !from: initializerNameForUsefulness !to: nameForUsefulness]

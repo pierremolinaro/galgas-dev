@@ -174,7 +174,7 @@ private proc parseAndAnalyzeProject ?let @lstring inProjectSourceFilePath
           println (!"*** Perform C++ compilation")
         end
         let buildFile = [inProjectSourceFilePath stringByDeletingLastPathComponent] + "/" + cppCompilationTarget + "/build.py"
-        if [buildFile fileExists] then
+        if buildFile.fileExists then
           let resultCode = ["python " + buildFile system]
           if resultCode != 0 then
           error "".nowhere : "Running '" + buildFile + "' returns " + resultCode
@@ -220,17 +220,7 @@ private proc compileProject ?let @lstring inProjectSourceFile
     if featureName.string == "tool-include" then
       handCodedSourceDirectorySet ++= featureValue
     elsif featureName.string == "tool-framework" then
-      frameworkToolFileList += ![featureValue lastPathComponent]
-//    elsif featureName.string == "app-source" then
-//      handCodedSourceAppFileList += !featureValue.string
-//      let directory = [featureValue stringByDeletingLastPathComponent]
-//      if directory == "" then
-//        handCodedSourceDirectorySet ++= "../"
-//      elsif [directory characterAtIndex !0] != '/' then
-//        handCodedSourceDirectorySet ++= "../" + directory
-//      else
-//        handCodedSourceDirectorySet ++= directory
-//      end
+      frameworkToolFileList += !featureValue.string.lastPathComponent
     elsif featureName.string == "tool-link" then
       handCodedLinkToolFileList += !featureValue.string
     elsif featureName.string == "libpmAtPath" then
@@ -314,7 +304,7 @@ private proc compileProject ?let @lstring inProjectSourceFile
 //----------------------------------- Check entity usefulness
   checkUsefulEntities (!usefulEntitiesGraph !usefulnessRootEntities !productDirectory)
 //----------------------------------- Build an HTML file that contains all declared types
-  let typeDumpFilePath = productDirectory + "/../helpers/" + [inProjectSourceFile lastPathComponent] + ".html"
+  let typeDumpFilePath = productDirectory + "/../helpers/" + inProjectSourceFile.string.lastPathComponent + ".html"
   if [option galgas_cli_options.outputHTMLTypeListFile value] then
     var @stringset firstLetterSet = @()
     for (lkey *) in typeMap do
@@ -331,7 +321,7 @@ private proc compileProject ?let @lstring inProjectSourceFile
       tableOfTypeString += linkForType (!type_lkey.string) + "<br>"
     end
     let typeDumpString = [filewrapper typeDumpGenerationTemplate.typeDump
-      ![inProjectSourceFile lastPathComponent]
+      !inProjectSourceFile.string.lastPathComponent
       !typeMap
       !firstLetterSet
       !tableOfTypeString

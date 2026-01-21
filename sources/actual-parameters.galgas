@@ -425,7 +425,7 @@ final class @outputInputSelfParameterAST : @actualParameterAST {
       error self.mActualSelector : "the selector should be '" + s + "'" fixit { replace s }
     end
   //--- Analyze self
-    if let selfAvailable = [inAnalysisContext.selfAvailability getAvailable] then
+    if let selfAvailable = inAnalysisContext.selfAvailability.getAvailable then
       if not [selfAvailable.selfMutability selfIsMutable] then
         error self.mActualSelector : "'self' not mutable in this context"
       end
@@ -594,7 +594,7 @@ final class @inputActualSelfPropertyParameterAST : @actualParameterAST {
       error self.mActualSelector : "the selector should be '" + s + "'" fixit { replace s }
     end
 
-    if let selfAvailable = [inAnalysisContext.selfAvailability getAvailable] then
+    if let selfAvailable = inAnalysisContext.selfAvailability.getAvailable then
       if not [selfAvailable.selfMutability propertiesAreMutable] then
         error self.mInputActualSelfPropertyName : "'self' not mutable in this context"
       end
@@ -686,7 +686,7 @@ final class @inputActualSelfParameterAST : @actualParameterAST {
       error self.mActualSelector : "the selector should be '" + s + "'" fixit { replace s }
     end
 
-    if let selfAvailable = [inAnalysisContext.selfAvailability getAvailable] then
+    if let selfAvailable = inAnalysisContext.selfAvailability.getAvailable then
       if not [selfAvailable.selfMutability selfIsMutable] then
         error self.mSelfLocation : "'self' not mutable in this context"
       end

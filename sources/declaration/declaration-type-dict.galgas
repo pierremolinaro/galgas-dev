@@ -128,7 +128,7 @@ override method @dictDeclarationAST addAssociatedElement ?!@galgasDeclarationAST
   structAttributeList +=
     !mutability: .constantProperty
     !self.mKeyTypeName
-    !["key" nowhere]
+    !"key".nowhere
     !.publicAccess
     !hasSelector: false
     !initialization: .none
@@ -328,7 +328,7 @@ override method @dictDeclarationAST enterDeclarationInSemanticContext
   var @initializerMap initializerMap = @()
   let @functionSignature emptyArgumentList = @()
   [!?initializerMap insertKey
-    !@{![emptyArgumentList initializerSignature] !self.mDictTypeName}
+    !@{!emptyArgumentList.initializerSignature !self.mDictTypeName}
     !emptyArgumentList
   ]
 //--- Add extensions
@@ -404,7 +404,7 @@ override method @dictDeclarationAST enterDeclarationInSemanticContext
     !addAssignOperatorArguments: argumentTypeListForAddAssignWithFieldExpressionList
     !generateHeaderInSeparateFile: false // Do not generate header in separate file
     !typeForEnumeratedElement: elementTypeEntry
-    !headerFileName: "dict-" + [self.mDictTypeName fileNameRepresentation]
+    !headerFileName: "dict-" + self.mDictTypeName.string.fileNameRepresentation
     !headerKind: .oneHeader
   }
   [!?ioTypeMap insertType !typeDefinition.typeName !typeDefinition]
@@ -484,7 +484,7 @@ override method @dictDeclarationAST semanticAnalysis
 //--- Useful entities graph for initializer without any argument
   let initializerNameForUsefulness = initializerNameForUsefulEntitiesGraph (
     !self.mDictTypeName
-    ![@formalInputParameterListAST () initializerSignature]
+    !@formalInputParameterListAST ().initializerSignature
   )
   [!?ioUsefulEntitiesGraph addNode !initializerNameForUsefulness !initializerNameForUsefulness]
   if self.isPredefined then

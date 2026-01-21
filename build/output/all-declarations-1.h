@@ -6646,14 +6646,10 @@ class Lexique_galgasScanner_33_ : public Lexique {
   public: static const int32_t kToken__5E_ = 185 ;
   public: static const int32_t kToken__3E__3E_ = 186 ;
   public: static const int32_t kToken__7E_ = 187 ;
-  public: static const int32_t kToken__2D__2D_ = 188 ;
-  public: static const int32_t kToken__2B__2B_ = 189 ;
-  public: static const int32_t kToken__26__2D__2D_ = 190 ;
-  public: static const int32_t kToken__26__2B__2B_ = 191 ;
-  public: static const int32_t kToken__3D__3D__3D_ = 192 ;
-  public: static const int32_t kToken__21__3D__3D_ = 193 ;
-  public: static const int32_t kToken__3F__5E_ = 194 ;
-  public: static const int32_t kToken__21__5E_ = 195 ;
+  public: static const int32_t kToken__3D__3D__3D_ = 188 ;
+  public: static const int32_t kToken__21__3D__3D_ = 189 ;
+  public: static const int32_t kToken__3F__5E_ = 190 ;
+  public: static const int32_t kToken__21__5E_ = 191 ;
 
 //--- Key words table 'galgasKeyWordList'
   public: static int32_t search_into_galgasKeyWordList (const String & inSearchedString) ;
@@ -6745,7 +6741,7 @@ public: static const uint32_t kIndexing_indexingNameReference = 51 ;
   protected: virtual String getMessageForTerminal (const int32_t inTerminalSymbol) const override ;
 
 //--- Get terminal count
-  public: virtual int32_t terminalVocabularyCount (void) const override { return 195 ; }
+  public: virtual int32_t terminalVocabularyCount (void) const override { return 191 ; }
 
 //--- Get Token String
   public: virtual String getCurrentTokenString (const cToken * inTokenPtr) const override ;

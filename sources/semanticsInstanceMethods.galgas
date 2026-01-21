@@ -28,7 +28,7 @@ proc enterInstanceMethodWithoutArgument
   ?let @bool inHasCompilerArgument
 {
   [!?ioInstanceMethodMap insertKey
-    ![inInstanceMethodName nowhere]
+    !inInstanceMethodName.nowhere
     !@methodKind.definedAsMember
     !@()
     !.nowhere
@@ -50,7 +50,7 @@ proc enterInstanceMethodWithInputArgument ?!@instanceMethodMap ioInstanceMethodM
   var @formalParameterSignature argList = @()
   argList += !"".nowhere !argumentTypeIndex !@formalArgumentPassingModeAST. argumentConstantIn !inInputArgumentName
   [!?ioInstanceMethodMap insertKey
-    ![inInstanceMethodName nowhere]
+    !inInstanceMethodName.nowhere
     !@methodKind. definedAsMember
     !argList
     !.nowhere

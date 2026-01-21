@@ -140,13 +140,13 @@ final class @collectionValueAST : @semanticExpressionAST {
     else
       let initializerMap = targetType.definition.initializerMap
       let @functionSignature emptyArgumentList = @()
-      if not [initializerMap hasKey ![emptyArgumentList initializerSignature]] then
+      if not [initializerMap hasKey !emptyArgumentList.initializerSignature] then
         error self.mTypeName : "the @" + self.mTypeName + " has no @() initializer"
       end
     //--- Usefull entity graph
       let nameForUsefulness = initializerNameForUsefulEntitiesGraph (
         !targetType.definition.typeName
-        ![emptyArgumentList initializerSignature]
+        !emptyArgumentList.initializerSignature
       )
       [!?ioUsefulEntitiesGraph addEdge !from: inUsefulnessCallerEntityName !to: nameForUsefulness]
     //---
