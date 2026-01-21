@@ -288,12 +288,12 @@ final class ProjectDocumentSaveScheduler : ObservableObject {
           if let error = error {
             print ("Erreur:", error)
           }else{
-            inCompletionHandler? ()
+            DispatchQueue.main.async { inCompletionHandler? () }
           }
         }
       }
     }else{
-      inCompletionHandler? ()
+      DispatchQueue.main.async { inCompletionHandler? () }
     }
   }
 

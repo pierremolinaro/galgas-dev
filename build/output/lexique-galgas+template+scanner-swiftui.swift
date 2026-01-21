@@ -57,7 +57,6 @@ fileprivate let kEndOfScriptInTemplateArray_galgasTemplateScanner : [Bool] = [
   false /* between */,
   false /* block */,
   false /* boolset */,
-  false /* cast */,
   false /* case */,
   false /* class */,
   false /* default */,

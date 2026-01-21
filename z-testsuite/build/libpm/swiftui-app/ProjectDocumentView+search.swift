@@ -17,7 +17,6 @@ extension ProjectDocumentView {
       self.mSearchResults.removeAll ()
       self.mRootDirectoryNode.saveAllEditedFiles ()
       self.mProjectDocumentSaveScheduler.saveProjectDocument {
-        RunLoop.main.run (until: Date ()) // For updating UI
       //--- Search in project file
         self.search (inFileURL: self.mProjectFileURL, fileNodeID: nil)
       //---

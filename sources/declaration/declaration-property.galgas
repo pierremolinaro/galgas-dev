@@ -109,26 +109,6 @@ syntax extension galgas3DeclarationsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <property_declaration_ggs3> ?!@galgasDeclarationAST unused ioDeclarations
-                                   ?!@propertyInCollectionListAST ioAttributeInCollectionList {
-    $@type$ ?let propertyTypeName // Ne pas utiliser <type_definition_ggs3>
-    $identifier$ ?let propertyName
-    ioAttributeInCollectionList +=
-      !mutability: .mutableProperty
-      !propertyTypeName
-      !propertyName
-      !.publicAccess
-      !hasSelector: false
-      !initialization: .none
-    if [option galgas_cli_options.errorOldStylePropertyDeclaration value] then
-      let errorLocation = [propertyTypeName.location union !propertyName.location]
-      error errorLocation
-      : "old style property declaration (due to '--error-old-style-property-declaration' option)"
-    end
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
 }
 
 //--------------------------------------------------------------------------------------------------

@@ -9919,152 +9919,6 @@ GGS_nonTerminalSymbolMapForGrammarAnalysis_2E_element_3F_ GGS_nonTerminalSymbolM
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_castInstructionBranchListAST_2E_element::GGS_castInstructionBranchListAST_2E_element (void) :
-mProperty_mTypeName (),
-mProperty_mConstantVarName (),
-mProperty_mInstructionList (),
-mProperty_mTypeComparisonKind (),
-mProperty_mEndOfInstructions () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_castInstructionBranchListAST_2E_element::GGS_castInstructionBranchListAST_2E_element (const GGS_castInstructionBranchListAST_2E_element & inSource) :
-mProperty_mTypeName (inSource.mProperty_mTypeName),
-mProperty_mConstantVarName (inSource.mProperty_mConstantVarName),
-mProperty_mInstructionList (inSource.mProperty_mInstructionList),
-mProperty_mTypeComparisonKind (inSource.mProperty_mTypeComparisonKind),
-mProperty_mEndOfInstructions (inSource.mProperty_mEndOfInstructions) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_castInstructionBranchListAST_2E_element & GGS_castInstructionBranchListAST_2E_element::operator = (const GGS_castInstructionBranchListAST_2E_element & inSource) {
-  mProperty_mTypeName = inSource.mProperty_mTypeName ;
-  mProperty_mConstantVarName = inSource.mProperty_mConstantVarName ;
-  mProperty_mInstructionList = inSource.mProperty_mInstructionList ;
-  mProperty_mTypeComparisonKind = inSource.mProperty_mTypeComparisonKind ;
-  mProperty_mEndOfInstructions = inSource.mProperty_mEndOfInstructions ;
-  return *this ;
-}
-
-//---Synthetized initializer -----------------------------------------------------------------------
-
-GGS_castInstructionBranchListAST_2E_element GGS_castInstructionBranchListAST_2E_element::init_21__21__21__21__21_ (const GGS_lstring & in_mTypeName,
-                                                                                                                   const GGS_lstring & in_mConstantVarName,
-                                                                                                                   const GGS_semanticInstructionListAST & in_mInstructionList,
-                                                                                                                   const GGS_dynamicTypeComparisonKind & in_mTypeComparisonKind,
-                                                                                                                   const GGS_location & in_mEndOfInstructions,
-                                                                                                                   Compiler * inCompiler
-                                                                                                                   COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_castInstructionBranchListAST_2E_element result ;
-  result.setInitializedProperties (inCompiler) ;
-  result.mProperty_mTypeName = in_mTypeName ;
-  result.mProperty_mConstantVarName = in_mConstantVarName ;
-  result.mProperty_mInstructionList = in_mInstructionList ;
-  result.mProperty_mTypeComparisonKind = in_mTypeComparisonKind ;
-  result.mProperty_mEndOfInstructions = in_mEndOfInstructions ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_castInstructionBranchListAST_2E_element::setInitializedProperties (Compiler * /* inCompiler */) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_castInstructionBranchListAST_2E_element::GGS_castInstructionBranchListAST_2E_element (const GGS_lstring & inOperand0,
-                                                                                          const GGS_lstring & inOperand1,
-                                                                                          const GGS_semanticInstructionListAST & inOperand2,
-                                                                                          const GGS_dynamicTypeComparisonKind & inOperand3,
-                                                                                          const GGS_location & inOperand4) :
-mProperty_mTypeName (inOperand0),
-mProperty_mConstantVarName (inOperand1),
-mProperty_mInstructionList (inOperand2),
-mProperty_mTypeComparisonKind (inOperand3),
-mProperty_mEndOfInstructions (inOperand4) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GGS_castInstructionBranchListAST_2E_element::isValid (void) const {
-  return mProperty_mTypeName.isValid () && mProperty_mConstantVarName.isValid () && mProperty_mInstructionList.isValid () && mProperty_mTypeComparisonKind.isValid () && mProperty_mEndOfInstructions.isValid () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_castInstructionBranchListAST_2E_element::drop (void) {
-  mProperty_mTypeName.drop () ;
-  mProperty_mConstantVarName.drop () ;
-  mProperty_mInstructionList.drop () ;
-  mProperty_mTypeComparisonKind.drop () ;
-  mProperty_mEndOfInstructions.drop () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_castInstructionBranchListAST_2E_element::description (String & ioString,
-                                                               const int32_t inIndentation) const {
-  ioString.appendCString ("<struct @castInstructionBranchListAST.element:") ;
-  if (! isValid ()) {
-    ioString.appendCString (" not built") ;
-  }else{
-    mProperty_mTypeName.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_mConstantVarName.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_mInstructionList.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_mTypeComparisonKind.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_mEndOfInstructions.description (ioString, inIndentation+1) ;
-  }
-  ioString.appendCString (">") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//     @castInstructionBranchListAST.element generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_castInstructionBranchListAST_2E_element ("castInstructionBranchListAST.element",
-                                                                                            nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_castInstructionBranchListAST_2E_element::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_castInstructionBranchListAST_2E_element ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_castInstructionBranchListAST_2E_element::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_castInstructionBranchListAST_2E_element (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_castInstructionBranchListAST_2E_element GGS_castInstructionBranchListAST_2E_element::extractObject (const GGS_object & inObject,
-                                                                                                        Compiler * inCompiler
-                                                                                                        COMMA_LOCATION_ARGS) {
-  GGS_castInstructionBranchListAST_2E_element result ;
-  const GGS_castInstructionBranchListAST_2E_element * p = (const GGS_castInstructionBranchListAST_2E_element *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_castInstructionBranchListAST_2E_element *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("castInstructionBranchListAST.element", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 GGS_logListAST_2E_element::GGS_logListAST_2E_element (void) :
 mProperty_mLogMessage (),
 mProperty_mLogExpression () {
@@ -16334,6 +16188,124 @@ GGS_lexicalExplicitTokenListMapMap_2E_element GGS_lexicalExplicitTokenListMapMap
       result = *p ;
     }else{
       inCompiler->castError ("lexicalExplicitTokenListMapMap.element", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//Optional @lexicalExplicitTokenListMapMap_2E_element_3F_
+//--------------------------------------------------------------------------------------------------
+
+GGS_lexicalExplicitTokenListMapMap_2E_element_3F_::GGS_lexicalExplicitTokenListMapMap_2E_element_3F_ (void) :
+AC_GALGAS_root (),
+mValue (),
+mState (OptionalState::invalid) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lexicalExplicitTokenListMapMap_2E_element_3F_::GGS_lexicalExplicitTokenListMapMap_2E_element_3F_ (const GGS_lexicalExplicitTokenListMapMap_2E_element & inSource) :
+AC_GALGAS_root (),
+mValue (inSource),
+mState (OptionalState::valuated) {
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lexicalExplicitTokenListMapMap_2E_element_3F_ GGS_lexicalExplicitTokenListMapMap_2E_element_3F_::init_nil (void) {
+  GGS_lexicalExplicitTokenListMapMap_2E_element_3F_ result ;
+  result.mState = OptionalState::isNil ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_lexicalExplicitTokenListMapMap_2E_element_3F_::isValid (void) const {
+  bool result = false ;
+  switch (mState) {
+  case OptionalState::invalid :
+    break ;
+  case OptionalState::isNil :
+    result = true ;
+    break ;
+  case OptionalState::valuated :
+    result = mValue.isValid () ;
+    break ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_lexicalExplicitTokenListMapMap_2E_element_3F_::isValuated (void) const {
+  return (mState == OptionalState::valuated) && mValue.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_lexicalExplicitTokenListMapMap_2E_element_3F_::drop (void) {
+  mState = OptionalState::invalid ;
+  mValue = GGS_lexicalExplicitTokenListMapMap_2E_element () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_lexicalExplicitTokenListMapMap_2E_element_3F_::description (String & ioString,
+                                                                     const int32_t inIndentation) const {
+  ioString.appendCString ("<optional @") ;
+  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
+  ioString.appendCString (": ") ;
+  switch (mState) {
+  case OptionalState::invalid :
+    ioString.appendCString ("invalid") ;
+    break ;
+  case OptionalState::isNil :
+    ioString.appendCString ("nil") ;
+    break ;
+  case OptionalState::valuated :
+    mValue.description (ioString, inIndentation) ;
+    break ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @lexicalExplicitTokenListMapMap.element? generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lexicalExplicitTokenListMapMap_2E_element_3F_ ("lexicalExplicitTokenListMapMap.element?",
+                                                                                                  nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_lexicalExplicitTokenListMapMap_2E_element_3F_::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_lexicalExplicitTokenListMapMap_2E_element_3F_ ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_lexicalExplicitTokenListMapMap_2E_element_3F_::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_lexicalExplicitTokenListMapMap_2E_element_3F_ (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lexicalExplicitTokenListMapMap_2E_element_3F_ GGS_lexicalExplicitTokenListMapMap_2E_element_3F_::extractObject (const GGS_object & inObject,
+                                                                                                                    Compiler * inCompiler
+                                                                                                                    COMMA_LOCATION_ARGS) {
+  GGS_lexicalExplicitTokenListMapMap_2E_element_3F_ result ;
+  const GGS_lexicalExplicitTokenListMapMap_2E_element_3F_ * p = (const GGS_lexicalExplicitTokenListMapMap_2E_element_3F_ *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_lexicalExplicitTokenListMapMap_2E_element_3F_ *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("lexicalExplicitTokenListMapMap.element?", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
