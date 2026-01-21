@@ -126,7 +126,7 @@ final class @methodCallInstructionAST : @semanticInstructionAST {
       ?let @semanticExpressionForGeneration receiverExpression
     ]
   //--- Get type method signature
-    [[receiverExpression.mResultType definition].instanceMethodMap searchKey
+    [receiverExpression.mResultType.definition.instanceMethodMap searchKey
       !self.mMethodName
       ?let kind
       ?let routineSignature
@@ -156,11 +156,11 @@ final class @methodCallInstructionAST : @semanticInstructionAST {
     var searching = true
     if @uint.errorCount == 0 then
       loop (@uint.max) while searching do
-        if [[baseType definition].superType isNull] then
+        if baseType.definition.superType.isNull then
           searching = false
         else
-          if [[[baseType definition].superType definition].instanceMethodMap hasKey !self.mMethodName.string] then
-            baseType = [baseType definition].superType
+          if [baseType.definition.superType.definition.instanceMethodMap hasKey !self.mMethodName.string] then
+            baseType = baseType.definition.superType
           else
             searching = false
           end
@@ -221,23 +221,23 @@ override method @methodCallInstructionForGeneration generateInstruction
 //--- Generate method call
   switch self.mKind
   case definedAsExtension :
-    ioInclusionSet ++= "method-" + [[self.mMethodBaseType definition].typeName.string fileNameRepresentation] + "-" + [self.mMethodName fileNameRepresentation]
-    if [[self.mReceiverType definition].typeKind isClassType] then
-      ioGeneratedCode += "callExtensionMethod_" + [self.mMethodName identifierRepresentation]
-                      + " ((cPtr_" + [self.mReceiverExpression.mResultType identifierRepresentation]
+    ioInclusionSet ++= "method-" + [self.mMethodBaseType.definition.typeName.string fileNameRepresentation] + "-" + [self.mMethodName fileNameRepresentation]
+    if self.mReceiverType.definition.typeKind.isClassType then
+      ioGeneratedCode += "callExtensionMethod_" + self.mMethodName.identifierRepresentation
+                      + " ((cPtr_" + self.mReceiverExpression.mResultType.identifierRepresentation
                       + " *) " + receiverCppName + ".ptr (), "
     else
-      ioGeneratedCode += "extensionMethod_" + [self.mMethodName identifierRepresentation]
+      ioGeneratedCode += "extensionMethod_" + self.mMethodName.identifierRepresentation
                       + " (" + receiverCppName + ", "
     end
   case definedAsMember :
-    ioGeneratedCode += receiverCppName + ".method_" + [self.mMethodName identifierRepresentation] + " ("
+    ioGeneratedCode += receiverCppName + ".method_" + self.mMethodName.identifierRepresentation + " ("
   end
   for (mValue) in parameterCppNameList
     do ioGeneratedCode += mValue
     between ioGeneratedCode += ", "
   end
-  if [parameterCppNameList count] == 0 then
+  if parameterCppNameList.count == 0 then
     if self.mHasCompilerArgument then
       [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
       ioGeneratedCode += compilerCppName ()
@@ -250,7 +250,7 @@ override method @methodCallInstructionForGeneration generateInstruction
   else
     ioGeneratedCode += " COMMA_"
   end
-  ioGeneratedCode += [self.mInstructionLocation sourceFile] + ") ;\n"
+  ioGeneratedCode += self.mInstructionLocation.sourceFile + ") ;\n"
 //--- Generate poisoned variables
   for (actualParameter) in self.mActualParameterList do
     [actualParameter generatePoisonedVariables

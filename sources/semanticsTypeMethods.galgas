@@ -32,7 +32,7 @@ proc enterClassMethodWithInputArgument
 {
   [!?ioUnifiedTypeMap makeEntryFromString !inArgumentTypeName ?let argumentTypeIndex]
   var @formalParameterSignature argList = @()
-  argList += !["" nowhere] !argumentTypeIndex !.argumentConstantIn !inArgumentName
+  argList += !"".nowhere !argumentTypeIndex !.argumentConstantIn !inArgumentName
   [!?ioClassMethodMap insertOrReplace
     !@{!inClassMethodName !.here}
     !argList
@@ -57,13 +57,13 @@ proc enterClassMethodWith3InputArguments
   var @formalParameterSignature argList = @()
 //--- Argument 1
   [!?ioUnifiedTypeMap makeEntryFromString !inArgumentTypeName1 ?let argumentTypeIndex1]
-  argList += !["" nowhere] !argumentTypeIndex1 !.argumentConstantIn !inArgumentName1
+  argList += !"".nowhere !argumentTypeIndex1 !.argumentConstantIn !inArgumentName1
 //--- Argument 2
   [!?ioUnifiedTypeMap makeEntryFromString !inArgumentTypeName2 ?let argumentTypeIndex2]
-  argList += !["" nowhere] !argumentTypeIndex2 !.argumentConstantIn !inArgumentName2
+  argList += !"".nowhere !argumentTypeIndex2 !.argumentConstantIn !inArgumentName2
 //--- Argument 3
   [!?ioUnifiedTypeMap makeEntryFromString !inArgumentTypeName3 ?let argumentTypeIndex3]
-  argList += !["" nowhere] !argumentTypeIndex3 !.argumentConstantIn !inArgumentName3
+  argList += !"".nowhere !argumentTypeIndex3 !.argumentConstantIn !inArgumentName3
 //---
   [!?ioClassMethodMap insertOrReplace !@{!inClassMethodName !.here} !argList !inHasCompilerArgument]
 }
@@ -79,7 +79,7 @@ proc enterClassMethodWithStringInputArgument
 {
   [!?ioUnifiedTypeMap makeEntryFromString !"string" ?let argumentTypeIndex]
   var @formalParameterSignature argList = @()
-  argList += !["" nowhere] !argumentTypeIndex !.argumentConstantIn !inStringArgumentName
+  argList += !"".nowhere !argumentTypeIndex !.argumentConstantIn !inStringArgumentName
   [!?ioClassMethodMap insertOrReplace
     !@{!inClassMethodName !.here}
     !argList

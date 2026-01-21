@@ -44,7 +44,7 @@ syntax extension galgas3DeclarationsSyntax {
       <method_declaration_ggs3> !boolsetTypeName !?ioDeclarations
     end
     $}$
-    if [slotList count] == 0 then
+    if slotList.count == 0 then
       error boolsetTypeName : "a boolset type must define at least one case constant"
     end
     ioDeclarations.mDeclarationList += !@boolsetDeclarationAST {
@@ -86,7 +86,7 @@ syntax extension galgas4DeclarationsSyntax {
       <method_declaration> !boolsetTypeName !?ioDeclarations
     end
     $}$
-    if [slotList count] == 0 then
+    if slotList.count == 0 then
       error boolsetTypeName : "a boolset type must define at least one case constant"
     end
     ioDeclarations.mDeclarationList += !@boolsetDeclarationAST {
@@ -266,9 +266,9 @@ override method @boolsetDeclarationAST semanticAnalysis
   ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
 {
 //--- Check flags count
-  if [self.mFlagList count] > 64 then
+  if self.mFlagList.count > 64 then
     let @location s = [self.mFlagList mValueAtIndex !64]
-    error s : "max flags count is 64 (here: " + [self.mFlagList count] + ")"
+    error s : "max flags count is 64 (here: " + self.mFlagList.count + ")"
   end
 //--- Useful entities graph
   let boolsetNameForUsefulness = typeNameForUsefulEntitiesGraph (!self.mBoolsetTypeName)
@@ -328,15 +328,15 @@ override method @boolsetTypeForGeneration appendDeclaration1
   ?!@stringset unused ioInclusionSet
   !@string outHeader
 {
-  let selfTypeDefinition = [self.mSelfTypeEntry definition]
+  let selfTypeDefinition = self.mSelfTypeEntry.definition
   outHeader = [filewrapper structGenerationTemplate.boolsetTypeHeader1
     !selfTypeDefinition.typeName.string
-    ![selfTypeDefinition.typeName.string identifierRepresentation]
+    !selfTypeDefinition.typeName.string.identifierRepresentation
     !self.mFlagList
   ]
   outHeader += [filewrapper typeGenerationTemplate.unifiedClassBodyForType
     !selfTypeDefinition.typeName.string
-    ![selfTypeDefinition.typeName.string identifierRepresentation]
+    !selfTypeDefinition.typeName.string.identifierRepresentation
     !selfTypeDefinition.isConcrete
     !selfTypeDefinition.initializerMap
     !selfTypeDefinition.classFunctionMap
@@ -362,10 +362,10 @@ override method @boolsetTypeForGeneration appendSpecificImplementation
 {
   [self.mSelfTypeEntry  addHeaderFileName !?ioInclusionSet]
   outImplementation = [filewrapper structGenerationTemplate.boolsetTypeSpecificImplementation
-    ![self.mSelfTypeEntry  definition].typeName.string
-    ![self.mSelfTypeEntry  identifierRepresentation]
+    !self.mSelfTypeEntry.definition.typeName.string
+    !self.mSelfTypeEntry.identifierRepresentation
     !self.mFlagList
-    !(1 << [self.mFlagList count]) - 1
+    !(1 << self.mFlagList.count) - 1
     !self.equatable
   ]
  }

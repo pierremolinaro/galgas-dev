@@ -386,10 +386,10 @@ list @BuildFileList {
 setter @XcodeProjectDescriptor getReferenceKey
   !ref:@string outRef {
   if self.mProjectObjectReference == "" then
-    self.mProjectObjectReference = [[[self.mSequenceNumber string] md5] rightSubString!24]
+    self.mProjectObjectReference = [[self.mSequenceNumber.string md5] rightSubString!24]
     self.mSequenceNumber += 1
   end
-  outRef = [[[self.mSequenceNumber string] md5] rightSubString!24]
+  outRef = [[self.mSequenceNumber.string md5] rightSubString!24]
   self.mSequenceNumber += 1
 }
 

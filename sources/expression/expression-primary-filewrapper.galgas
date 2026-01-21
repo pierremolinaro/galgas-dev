@@ -204,11 +204,11 @@ override method @filewrapperTemplateInExpressionAST analyzeSemanticExpression
   [filewrapperTemplateMap searchKey !self.mFilewrapperTemplateName ?let @functionSignature templateSignature ?*]
 //--- Analysis arguments
   var @semanticExpressionListForGeneration effectiveParameterList
-  if [self.mExpressions count] != [templateSignature count] then
+  if self.mExpressions.count != templateSignature.count then
     error self.mFilewrapperTemplateName
     : "calling the '" + self.mFilewrapperTemplateName + "' template of '" + self.mFilewrapperName + "' filewrapper requires "
-    + [[templateSignature count] string] + " parameter(s), while this call has "
-    + [[self.mExpressions count] string] + " parameter(s)"
+    + templateSignature.count.string + " parameter(s), while this call has "
+    + self.mExpressions.count.string + " parameter(s)"
     : effectiveParameterList
   else
     effectiveParameterList = @()
@@ -289,8 +289,8 @@ override method @filewrapperInExpressionAST analyzeSemanticExpression
   end
 //--- Search for file
   var @string builtPath = ""
-  loop ([filewrapperDirectoryMap count] + 1)
-  while [directoryList count] > 0 do
+  loop (filewrapperDirectoryMap.count + 1)
+  while directoryList.count > 0 do
     [!?directoryList popFirst ?let directoryName]
     builtPath += directoryName + "/"
     if [filewrapperDirectoryMap hasKey !directoryName] then
@@ -344,7 +344,7 @@ override method @filewrapperInExpressionForGeneration generateExpression
   ?!@stringset unused ioUnusedVariableCppNameSet
   !@string outCppExpression {
   ioInclusionSet ++= "filewrapper-" + self.mFilewrapperName
-  outCppExpression = "GGS_filewrapper (gWrapperDirectory_0_" + [self.mFilewrapperName identifierRepresentation] + ")"
+  outCppExpression = "GGS_filewrapper (gWrapperDirectory_0_" + self.mFilewrapperName.identifierRepresentation + ")"
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -376,7 +376,7 @@ override method @filewrapperTemplateInExpressionForGeneration generateExpression
     ]
     parameterList += !parameter
   end
-  outCppExpression = "GGS_string (filewrapperTemplate_" + [self.mFilewrapperName identifierRepresentation] + "_" + [self.mFilewrapperTemplateName identifierRepresentation]
+  outCppExpression = "GGS_string (filewrapperTemplate_" + self.mFilewrapperName.identifierRepresentation + "_" + self.mFilewrapperTemplateName.identifierRepresentation
                   + " (" + compilerCppName ()
   for (mValue) in parameterList do
     outCppExpression += ", " + mValue
@@ -404,7 +404,7 @@ override method @filewrapperStaticPathInExpressionForGeneration generateExpressi
 //---
   ioInclusionSet ++= "filewrapper-" + self.mFilewrapperName
   outCppExpression = if self.mIsTextFile then "GGS_string" else "GGS_data" end
-  outCppExpression += " (gWrapperFileContent_" + [self.mFilewrapperFileIndex string] + "_" + [self.mFilewrapperName identifierRepresentation] + ")"
+  outCppExpression += " (gWrapperFileContent_" + self.mFilewrapperFileIndex.string + "_" + self.mFilewrapperName.identifierRepresentation + ")"
 }
 
 //--------------------------------------------------------------------------------------------------

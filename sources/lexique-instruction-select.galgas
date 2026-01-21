@@ -147,7 +147,7 @@ override method @lexicalSelectInstructionAST checkLexicalInstruction
 //    outGeneratedCode += "}else "
 //  end
 ////--- Default branch
-//  if [self.mDefaultInstructionList count] > 0 then
+//  if self.mDefaultInstructionList.count > 0 then
 //    outGeneratedCode += "}else{\n"
 //    [!?outGeneratedCode incIndentation !2]
 //    for (mInstruction) in self.mDefaultInstructionList do
@@ -180,7 +180,7 @@ override getter @lexicalSelectInstructionAST generateSwiftCocoaInstructionCode
     outGeneratedCode += "}else "
   end
 //--- Default branch
-  if [self.mDefaultInstructionList count] > 0 then
+  if self.mDefaultInstructionList.count > 0 then
     outGeneratedCode += "}else{\n"
     [!?outGeneratedCode incIndentation !2]
     for (mInstruction) in self.mDefaultInstructionList do
@@ -229,7 +229,7 @@ override getter @lexicalSelectInstructionAST generateLexicalInstructionCode
     result += "}else "
   end
 //--- Default branch
-  if [self.mDefaultInstructionList count] > 0 then
+  if self.mDefaultInstructionList.count > 0 then
     result += "}else{\n"
     [!?result incIndentation !2]
     for (instruction) in self.mDefaultInstructionList do

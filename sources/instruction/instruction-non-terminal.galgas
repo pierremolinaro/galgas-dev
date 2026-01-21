@@ -261,11 +261,11 @@ override method @nonterminalInstructionForGeneration generateInstruction
     parameterCppNameList += !parameterCppName
   end
 //--- Generate method call
-  let sdtResultVarName = "syntaxDirectedTranslationResult_" + [self.mInstructionLocation startLocationIndex]
+  let sdtResultVarName = "syntaxDirectedTranslationResult_" + self.mInstructionLocation.startLocationIndex
   if inGenerateSyntaxDirectedTranslationString then
     ioGeneratedCode += "String " + sdtResultVarName + " ;\n"
   end
-  ioGeneratedCode += "nt_" + [self.mNonterminalName identifierRepresentation] + "_" + [self.mLabelName identifierRepresentation] + " ("
+  ioGeneratedCode += "nt_" + self.mNonterminalName.identifierRepresentation + "_" + self.mLabelName.identifierRepresentation + " ("
   for (mValue) in parameterCppNameList do
     ioGeneratedCode += mValue + ", "
   end

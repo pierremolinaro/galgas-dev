@@ -221,9 +221,9 @@ final class @sortedListDeclarationAST : @semanticDeclarationAST {
       let hasSelector = false
       typedAttributeList += !attributeTypeIndex !mPropertyName !initExpression !hasSetter: true !hasSelector: hasSelector
       enumerationDescriptor += !attributeTypeIndex !mPropertyName.string
-      constructorAttributeTypeList += !["" nowhere] !attributeTypeIndex !mPropertyName.string !true
-      setterFormalOutputArgumentList += !["" nowhere] !attributeTypeIndex !.argumentOut !mPropertyName.string
-      setterFormalInputArgumentList += !["" nowhere] !attributeTypeIndex !.argumentVarIn !mPropertyName.string
+      constructorAttributeTypeList += !"".nowhere !attributeTypeIndex !mPropertyName.string !true
+      setterFormalOutputArgumentList += !"".nowhere !attributeTypeIndex !.argumentOut !mPropertyName.string
+      setterFormalInputArgumentList += !"".nowhere !attributeTypeIndex !.argumentVarIn !mPropertyName.string
     end
   //--- Class functions
     var @classFunctionMap classFunctionMap = @()
@@ -412,8 +412,8 @@ final class @sortedListDeclarationAST : @semanticDeclarationAST {
         error mSortedAttributeName : "the '" + mSortedAttributeName + "' is already used for sorting"
       end
       attributesUsedForSorting ++= mSortedAttributeName.string
-      if not [[type definition].features contains !.comparable] then
-        error mSortedAttributeName : "the @" + [type definition].typeName + " type is not comparable"
+      if not [type.definition.features contains !.comparable] then
+        error mSortedAttributeName : "the @" + type.definition.typeName + " type is not comparable"
       end
     end
   //--- Generate type
@@ -454,19 +454,19 @@ final class @sortedListTypeForGeneration : @semanticTypeForGeneration {
 override method @sortedListTypeForGeneration appendDeclaration1
   ?!@stringset unused ioInclusionSet
   !@string outHeader {
-  let selfTypeDefinition = [self.mSelfTypeEntry definition]
-  let elementTypeDefinition = [self.mListElementTypeIndex definition]
+  let selfTypeDefinition = self.mSelfTypeEntry.definition
+  let elementTypeDefinition = self.mListElementTypeIndex.definition
   outHeader = [filewrapper sortedListGenerationTemplate.sortedlistTypeHeader1
     !selfTypeDefinition.typeName.string
-    ![self.mSelfTypeEntry identifierRepresentation]
+    !self.mSelfTypeEntry.identifierRepresentation
     !self.mTypedAttributeList
     !selfTypeDefinition.enumerationDescriptorList
     !selfTypeDefinition.typeForEnumeratedElement
-    ![elementTypeDefinition.typeName identifierRepresentation]
+    !elementTypeDefinition.typeName.string.identifierRepresentation
   ]
   outHeader += [filewrapper typeGenerationTemplate.unifiedClassBodyForType
     !selfTypeDefinition.typeName.string
-    ![self.mSelfTypeEntry identifierRepresentation]
+    !self.mSelfTypeEntry.identifierRepresentation
     !selfTypeDefinition.isConcrete
     !selfTypeDefinition.initializerMap
     !selfTypeDefinition.classFunctionMap
@@ -494,12 +494,12 @@ override method @sortedListTypeForGeneration appendSpecificImplementation
   end
   [self.mListElementTypeIndex addHeaderFileName !?ioInclusionSet]
   [self.mSelfTypeEntry addHeaderFileName !?ioInclusionSet]
-  let elementTypeDefinition = [self.mListElementTypeIndex definition]
+  let elementTypeDefinition = self.mListElementTypeIndex.definition
   outImplementation = [filewrapper sortedListGenerationTemplate.sortedlistTypeSpecificImplementation
-    ![self.mSelfTypeEntry identifierRepresentation]
+    !self.mSelfTypeEntry.identifierRepresentation
     !self.mTypedAttributeList
     !self.mSortDescriptorList
-    ![elementTypeDefinition.typeName identifierRepresentation]
+    !elementTypeDefinition.typeName.string.identifierRepresentation
     ![elementTypeDefinition.features generateCppObjectComparison]
   ]
  }

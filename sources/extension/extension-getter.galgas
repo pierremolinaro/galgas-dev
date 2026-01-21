@@ -278,7 +278,7 @@ override method @extensionGetterAST semanticAnalysis
   let @string selfObjectNameNew
   let @string selfObjectAccessorNew
   let @bool implementedAsFunctionNew
-  if [[selfType definition].typeKind isClassType] then
+  if selfType.definition.typeKind.isClassType then
     selfObjectNameNew = "this"
     selfObjectAccessorNew = "this->"
     implementedAsFunctionNew = false
@@ -315,14 +315,14 @@ override method @extensionGetterAST semanticAnalysis
     !infoMessage:"extension getter " + self.mExtensionGetterName
     !@extensionGetterForGeneration {
       !generateHeader: true // Generate Cpp header file
-      !implementationCppFileName: "getter-" + [[selfType definition].typeName.string fileNameRepresentation] + "-" + [self.mExtensionGetterName fileNameRepresentation]
+      !implementationCppFileName: "getter-" + [selfType.definition.typeName.string fileNameRepresentation] + "-" + [self.mExtensionGetterName fileNameRepresentation]
       !selfType
       !self.mExtensionGetterName.string
       !implementedAsFunctionNew
       !returnType
       !returnVariableCppName
       !formalParameterListForGeneration
-      ![selfType definition].allTypedPropertyList
+      !selfType.definition.allTypedPropertyList
       !semanticInstructionListForGeneration
     }
 }
@@ -374,14 +374,14 @@ final class @extensionGetterForGeneration : @semanticDeclarationWithHeaderForGen
                                      !@string outHeader {
     if self.mImplementedAsFunction then
       outHeader = [filewrapper semanticComponentGenerationTemplate.extensionGetterAsFunctionDeclaration
-        ![self.mReceiverType definition].typeName.string
+        !self.mReceiverType.definition.typeName.string
         !self.mExtensionGetterName
         !self.mExtensionGetterFormalParameterList
-        ![self.mResultType identifierRepresentation]
+        !self.mResultType.identifierRepresentation
       ]
     else
       outHeader = [filewrapper semanticComponentGenerationTemplate.extensionGetterDeclaration
-        ![self.mReceiverType definition].typeName.string
+        !self.mReceiverType.definition.typeName.string
         !self.mExtensionGetterName
         !self.mExtensionGetterFormalParameterList
         !self.mResultType
@@ -401,7 +401,7 @@ final class @extensionGetterForGeneration : @semanticDeclarationWithHeaderForGen
     var extensionReaderFormalParameterList = self.mExtensionGetterFormalParameterList
     if self.mImplementedAsFunction then
       [!?extensionReaderFormalParameterList insertAtIndex
-        !["" nowhere]
+        !"".nowhere
         !self.mReceiverType
         !"inObject"
         !@lstring {!"self" !@location.here}
@@ -409,10 +409,10 @@ final class @extensionGetterForGeneration : @semanticDeclarationWithHeaderForGen
         !0
       ]
       ioInclusionSet ++= "getter-"
-        + [[self.mReceiverType definition].typeName.string fileNameRepresentation]
+        + [self.mReceiverType.definition.typeName.string fileNameRepresentation]
         + "-" + [self.mExtensionGetterName fileNameRepresentation]
       generateFunction (
-        !"extensionGetter_" + [self.mExtensionGetterName identifierRepresentation]
+        !"extensionGetter_" + self.mExtensionGetterName.identifierRepresentation
         !?ioInclusionSet
         !extensionReaderFormalParameterList
         !self.mSemanticInstructionListForGeneration
@@ -424,7 +424,7 @@ final class @extensionGetterForGeneration : @semanticDeclarationWithHeaderForGen
         ?let @string code
       )
       outImplementation = [filewrapper semanticComponentGenerationTemplate.extensionGetterAsFunctionImplementation
-        ![self.mReceiverType definition].typeName.string
+        !self.mReceiverType.definition.typeName.string
         !self.mExtensionGetterName
         !code
       ]
@@ -433,9 +433,9 @@ final class @extensionGetterForGeneration : @semanticDeclarationWithHeaderForGen
       var @unifiedTypeMapEntry baseType = self.mReceiverType
       var @bool searching = true
       loop (@uint.max) while searching do
-        if not [[baseType definition].superType isNull] then
-          if [[[baseType definition].superType definition].getterMap hasKey !self.mExtensionGetterName] then
-            baseType = [baseType definition].superType
+        if not baseType.definition.superType.isNull then
+          if [baseType.definition.superType.definition.getterMap hasKey !self.mExtensionGetterName] then
+            baseType = baseType.definition.superType
           else
             searching = false
           end
@@ -444,10 +444,10 @@ final class @extensionGetterForGeneration : @semanticDeclarationWithHeaderForGen
         end
       end
       ioInclusionSet ++= "getter-"
-        + [[baseType definition].typeName.string fileNameRepresentation]
+        + [baseType.definition.typeName.string fileNameRepresentation]
         + "-" + [self.mExtensionGetterName fileNameRepresentation]
       generateExtensionGetter (
-        !"cPtr_" + [[self.mReceiverType definition].typeName.string identifierRepresentation] + "::getter_" + [self.mExtensionGetterName identifierRepresentation]
+        !"cPtr_" + self.mReceiverType.definition.typeName.string.identifierRepresentation + "::getter_" + self.mExtensionGetterName.identifierRepresentation
         !?ioInclusionSet
         !extensionReaderFormalParameterList
         !self.mSemanticInstructionListForGeneration
@@ -457,7 +457,7 @@ final class @extensionGetterForGeneration : @semanticDeclarationWithHeaderForGen
         ?let @string extensionGetterCode
       )
       outImplementation = [filewrapper semanticComponentGenerationTemplate.extensionGetterImplementation
-        ![self.mReceiverType definition].typeName.string
+        !self.mReceiverType.definition.typeName.string
         !self.mExtensionGetterName
         !self.mExtensionGetterFormalParameterList
         !extensionGetterCode

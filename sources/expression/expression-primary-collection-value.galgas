@@ -133,24 +133,24 @@ final class @collectionValueAST : @semanticExpressionAST {
   //---
     if targetType == .null then
       error self.mTypeName : "Cannot infer type" : outExpression
-    elsif not [targetType definition].supportCollectionValue then
+    elsif not targetType.definition.supportCollectionValue then
       error self.mTypeName
-      : "the @" + [targetType definition].typeName.string
+      : "the @" + targetType.definition.typeName.string
       + " type does not support collection value" : outExpression
     else
-      let initializerMap = [targetType definition].initializerMap
+      let initializerMap = targetType.definition.initializerMap
       let @functionSignature emptyArgumentList = @()
       if not [initializerMap hasKey ![emptyArgumentList initializerSignature]] then
         error self.mTypeName : "the @" + self.mTypeName + " has no @() initializer"
       end
     //--- Usefull entity graph
       let nameForUsefulness = initializerNameForUsefulEntitiesGraph (
-        ![targetType definition].typeName
+        !targetType.definition.typeName
         ![emptyArgumentList initializerSignature]
       )
       [!?ioUsefulEntitiesGraph addEdge !from: inUsefulnessCallerEntityName !to: nameForUsefulness]
     //---
-      let elementType = [targetType definition].typeForEnumeratedElement
+      let elementType = targetType.definition.typeForEnumeratedElement
       var @collectionValueElementListForGeneration expressionListForGeneration = @()
       for (expression location) in self.mExpressionList do
         [expression analyzeSemanticExpression
@@ -177,7 +177,7 @@ final class @collectionValueAST : @semanticExpressionAST {
         !expressionListForGeneration
       }
     //--- Usefull entity graph
-      let typeUsefulnessName = typeNameForUsefulEntitiesGraph ([targetType definition].typeName)
+      let typeUsefulnessName = typeNameForUsefulEntitiesGraph (targetType.definition.typeName)
       [!?ioUsefulEntitiesGraph addEdge !from: inUsefulnessCallerEntityName !to: typeUsefulnessName]
     end
   }
@@ -208,11 +208,11 @@ final class @expressionCollectionForGeneration : @semanticExpressionForGeneratio
   //---
     [self.mResultType addHeaderFileName !?ioInclusionSet]
   //--- Create temporary variable variable
-    outCppExpression = "temp_" + [ioTemporaryVariableIndex string]
+    outCppExpression = "temp_" + ioTemporaryVariableIndex.string
     ioTemporaryVariableIndex += 1
   //--- Declare variable and apply default constructor
-    ioGeneratedCode += "GGS_" + [self.mResultType identifierRepresentation] + " " + outCppExpression
-    ioGeneratedCode += " = GGS_" +  [self.mResultType identifierRepresentation]
+    ioGeneratedCode += "GGS_" + self.mResultType.identifierRepresentation + " " + outCppExpression
+    ioGeneratedCode += " = GGS_" + self.mResultType.identifierRepresentation
     ioGeneratedCode += "::init (" + compilerCppName () + [self.mLocation commaSourceFile] + ") ;\n"
     [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
   //--- Add Elements

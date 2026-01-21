@@ -113,7 +113,7 @@ override method @selfAssignmentInstructionAST analyzeSemanticInstruction
       !selfAvailable.type
       !inAnalysisContext.selfObjectCppName
       !inAnalysisContext.selfObjectCppName
-      !["" nowhere]
+      !"".nowhere
       !expression
       !self.mInstructionLocation
     }

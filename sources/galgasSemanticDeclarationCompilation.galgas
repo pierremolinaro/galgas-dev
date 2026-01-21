@@ -44,7 +44,7 @@ proc compileSemanticDeclarationsGalgas ?!@lstringlist ioUsefulnessRootEntities
       !@{!@application.boolOptionInvocationCharacter {!name.mValue0 !name.mValue1} !.nowhere}
       ![@application.boolOptionInvocationString {!name.mValue0 !name.mValue1} nowhere]
       ![@application.boolOptionCommentString {!name.mValue0 !name.mValue1} nowhere]
-      !["" nowhere]
+      !"".nowhere
       !.noDefaultValue
   end
   for name in @application.uintOptionNameList do
@@ -54,7 +54,7 @@ proc compileSemanticDeclarationsGalgas ?!@lstringlist ioUsefulnessRootEntities
       !@lchar {!@application.uintOptionInvocationCharacter {!name.mValue0 !name.mValue1} !.nowhere}
       ![@application.uintOptionInvocationString {!name.mValue0 !name.mValue1} nowhere]
       ![@application.uintOptionCommentString {!name.mValue0 !name.mValue1} nowhere]
-      !["" nowhere]
+      !"".nowhere
       !.noDefaultValue
   end
   for name in @application.stringOptionNameList do
@@ -64,7 +64,7 @@ proc compileSemanticDeclarationsGalgas ?!@lstringlist ioUsefulnessRootEntities
       !@lchar {!@application.stringOptionInvocationCharacter {!name.mValue0 !name.mValue1} !.nowhere}
       ![@application.stringOptionInvocationString {!name.mValue0 !name.mValue1} nowhere]
       ![@application.stringOptionCommentString {!name.mValue0 !name.mValue1} nowhere]
-      !["" nowhere]
+      !"".nowhere
       !.noDefaultValue
   end
   semanticDeclarations.mDeclarationList += !@optionComponentDeclarationAST {
@@ -169,8 +169,8 @@ private proc buildGalgasSemanticContext ?let @galgasDeclarationAST inDeclaration
       ?let @semanticDeclarationListAST unsortedSemanticDeclarationListAST
       ?*
     ]
-    if [unsortedSemanticDeclarationListAST count] > 0 then
-      var s = "semantic analysis not performed, " + [[unsortedSemanticDeclarationListAST count] string] + " declarations are involved in circular definition:"
+    if unsortedSemanticDeclarationListAST.count > 0 then
+      var s = "semantic analysis not performed, " + unsortedSemanticDeclarationListAST.count.string + " declarations are involved in circular definition:"
       for declaration in unsortedSemanticDeclarationListAST do
         s += "\n-  " + [declaration.mSemanticDeclaration keyRepresentation]
       end
@@ -328,29 +328,29 @@ private proc generateManyHeaders
       switch [declaration.mDeclaration headerKind]
       case noHeader :
         if headerIncludes1 != "" then
-          error ["" nowhere]
+          error "".nowhere
           : "'noHeader' setting for the '" + declaration.infoMessage + "' declaration, and 'headerIncludes1' string is not empty"
         end
         if headerIncludes2 != "" then
-          error ["" nowhere]
+          error "".nowhere
           : "'noHeader' setting for the '" + declaration.infoMessage + "' declaration, and 'headerIncludes2' string is not empty"
         end
       case oneHeader :
         if headerIncludes1 == "" then
-          error ["" nowhere]
+          error "".nowhere
           : "'oneHeader' setting for the '" + declaration.infoMessage + "' declaration, and 'headerIncludes1' string is empty"
         end
         if headerIncludes2 != "" then
-          warning ["" nowhere]
+          warning "".nowhere
           : "'oneHeader' setting for the '" + declaration.infoMessage + "' declaration, and 'headerIncludes2' string is not empty"
         end
       case twoHeaders :
         if headerIncludes1 == "" then
-          warning ["" nowhere]
+          warning "".nowhere
           : "'twoHeaders' setting for the '" + declaration.infoMessage + "' declaration, and 'headerIncludes1' string is empty"
         end
         if headerIncludes2 == "" then
-          warning ["" nowhere]
+          warning "".nowhere
           : "'twoHeaders' setting for the '" + declaration.infoMessage + "' declaration, and 'headerIncludes2' string is empty"
         end
       end
@@ -376,8 +376,8 @@ private proc generateManyHeaders
       end
     //--- Header 2
       if [declaration.mDeclaration headerKind] == @headerKind.twoHeaders then
-        var headerString = "#ifndef " + [[declaration.mDeclaration getImplementationCppFileName] identifierRepresentation] + "_DEFINED\n"
-        headerString += "#define " + [[declaration.mDeclaration getImplementationCppFileName] identifierRepresentation] + "_DEFINED\n\n"
+        var headerString = "#ifndef " + declaration.mDeclaration.getImplementationCppFileName.identifierRepresentation + "_DEFINED\n"
+        headerString += "#define " + declaration.mDeclaration.getImplementationCppFileName.identifierRepresentation + "_DEFINED\n\n"
         headerString += "//" + @string.stringByRepeatingString {!"-" !118} + "\n\n"
         headerString += "#include \"" + [declaration.mDeclaration getImplementationCppFileName] + "-1.h\"\n"
         headerString += "\n//" + @string.stringByRepeatingString {!"-" !118} + "\n\n"
@@ -621,7 +621,7 @@ private proc generateFewImplementationFilesWithFewHeaders
       end
       implementationString += code
       implementationString += [declaration.mDeclaration appendTypeGenericImplementation]
-      if [implementationString count] > 786432 then
+      if implementationString.count > 786432 then
         inclusionSet = @["all-declarations-" + fileIdx]
         let cppHeader = [filewrapper semanticFileGenerationTemplate.semanticFileImplementation
           ![inclusionSet stringList]

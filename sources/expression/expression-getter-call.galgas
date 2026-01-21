@@ -88,22 +88,22 @@ final class @getterCallExpressionAST : @semanticExpressionAST {
     ]
     let @unifiedTypeMapEntry receiverType = receiverExpression.mResultType
   //-------------------------------------- Search getter
-    if let aGetter = [receiverType definition].getterMap @[self.mGetterName] then
+    if let aGetter = receiverType.definition.getterMap @[self.mGetterName] then
       if aGetter.mGetterNameThatObsoletesInvokationName != "" then
         error self.mGetterName : "obsolete getter" fixit {
           replace aGetter.mGetterNameThatObsoletesInvokationName
         }
       end
-      if [[receiverType definition].propertyMap hasKey !self.mGetterName.string]
-        && ([self.mActualArgumentList count] == 0) then
+      if [receiverType.definition.propertyMap hasKey !self.mGetterName.string]
+        && (self.mActualArgumentList.count == 0) then
         error self.mExpressionLocation : "use dot notation, instead of getter call"
       end
     //--- Analysis arguments
-      if [self.mActualArgumentList count] != [aGetter.mArgumentTypeList count] then
+      if self.mActualArgumentList.count != aGetter.mArgumentTypeList.count then
         error self.mGetterName
-        : "calling the '" + self.mGetterName + "' getter of '@" + [receiverType definition].typeName.string + "' requires "
-        + [aGetter.mArgumentTypeList count] + " parameter(s), while this call has "
-        + [self.mActualArgumentList count] + " parameter(s)" : outExpression
+        : "calling the '" + self.mGetterName + "' getter of '@" + receiverType.definition.typeName.string + "' requires "
+        + aGetter.mArgumentTypeList.count + " parameter(s), while this call has "
+        + self.mActualArgumentList.count + " parameter(s)" : outExpression
       else
         var @semanticExpressionListForGeneration constructorEffectiveParameterList = @()
         for (mActualSelector mExpression mEndOfExpressionLocation) in self.mActualArgumentList,
@@ -134,28 +134,29 @@ final class @getterCallExpressionAST : @semanticExpressionAST {
           !constructorEffectiveParameterList
           !aGetter.mHasCompilerArgument
         }
-        if inAnalysisContext.semanticContext.galgas4, [self.mActualArgumentList count] == 0 then
+        if inAnalysisContext.semanticContext.galgas4 || [option galgas_cli_options.errorOnOldStyleGetterCall value],
+           [self.mActualArgumentList count] == 0 then
           error self.mExpressionLocation : "getter with no argument, remove parenthesis" fixit { remove }
         end
       end
   //-------------------------------------- The getter does not exist, it is a property ?
-    elsif [self.mActualArgumentList count] == 0, [[receiverType definition].propertyMap hasKey !self.mGetterName] then
+    elsif self.mActualArgumentList.count == 0, [receiverType.definition.propertyMap hasKey !self.mGetterName] then
       error self.mExpressionLocation : "use dot notation, instead of getter call" : outExpression
   //-------------------------------------- not found, old style search
     else
       var @uint matchingReaderCount = 0
-      if [receiverType definition].typeKind == .structType then
+      if receiverType.definition.typeKind == .structType then
         var @functionSignature getterFormalArgumentTypeList = @()
         var hasCompilerArgument = true
         var returnedType = @unifiedTypeMapEntry.null
         var kind = @methodKind.definedAsExtension
         let @stringlist fieldList = @()
         var obsoletedByGetter = ""
-        for (propertyTypeEntry propertyName 3*) in [receiverType definition].currentTypedPropertyList do
-          let propertyType = [ioTypeMap typeMapEntryForLKey !@{![propertyTypeEntry definition].typeName.string !.here}]
-          let aMap = [propertyType definition].getterMap
+        for (propertyTypeEntry propertyName 3*) in receiverType.definition.currentTypedPropertyList do
+          let propertyType = [ioTypeMap typeMapEntryForLKey !@{!propertyTypeEntry.definition.typeName.string !.here}]
+          let aMap = propertyType.definition.getterMap
           if let entry = aMap @[self.mGetterName.string] then
-            if [propertyType definition].typeName.string == propertyName.string then
+            if propertyType.definition.typeName.string == propertyName.string then
               matchingReaderCount += 1
               getterFormalArgumentTypeList = entry.mArgumentTypeList
               hasCompilerArgument = entry.mHasCompilerArgument
@@ -173,7 +174,7 @@ final class @getterCallExpressionAST : @semanticExpressionAST {
         end
         if matchingReaderCount == 0 then
           error self.mGetterName
-          : "the '@"+ [receiverType definition].typeName.string + "' struct type does not define the '" + self.mGetterName.string
+          : "the '@"+ receiverType.definition.typeName.string + "' struct type does not define the '" + self.mGetterName.string
           + "' getter, and none of its fields defines it"
           : getterFormalArgumentTypeList, hasCompilerArgument, returnedType, kind
         elsif matchingReaderCount > 1 then
@@ -183,16 +184,16 @@ final class @getterCallExpressionAST : @semanticExpressionAST {
             between s += ", "
           end
           error self.mGetterName
-          : "the '@"+ [receiverType definition].typeName.string + "' struct type does not define the '" + self.mGetterName.string
+          : "the '@"+ receiverType.definition.typeName.string + "' struct type does not define the '" + self.mGetterName.string
           + "' getter, and several of its fields defines it:" + s + " (exactly one field should define it)"
           : getterFormalArgumentTypeList, hasCompilerArgument, returnedType, kind
         end
       //--- Analysis arguments
-        if [self.mActualArgumentList count] != [getterFormalArgumentTypeList count] then
+        if self.mActualArgumentList.count != getterFormalArgumentTypeList.count then
           error self.mGetterName
-          : "calling the '" + self.mGetterName + "' getter of '@" + [receiverType definition].typeName.string + "' requires "
-          + [[getterFormalArgumentTypeList count] string] + " parameter(s), while this call has "
-          + [[self.mActualArgumentList count] string] + " parameter(s)" : outExpression
+          : "calling the '" + self.mGetterName + "' getter of '@" + receiverType.definition.typeName.string + "' requires "
+          + getterFormalArgumentTypeList.count.string + " parameter(s), while this call has "
+          + self.mActualArgumentList.count.string + " parameter(s)" : outExpression
         else
           var @semanticExpressionListForGeneration constructorEffectiveParameterList = @()
           for (mActualSelector mExpression mEndOfExpressionLocation) in self.mActualArgumentList,
@@ -227,15 +228,15 @@ final class @getterCallExpressionAST : @semanticExpressionAST {
             !hasCompilerArgument
           }
         end
-      elsif [[receiverType definition].getterMap count] == 0 then
+      elsif receiverType.definition.getterMap.count == 0 then
         error self.mGetterName
-        : "the '@"+ [receiverType definition].typeName.string + "' type does not define any getter"
+        : "the '@"+ receiverType.definition.typeName.string + "' type does not define any getter"
         : outExpression
       else
         error self.mGetterName
-        : "the '@"+ [receiverType definition].typeName.string + "' type does not define the '" + self.mGetterName + "' getter "
+        : "the '@"+ receiverType.definition.typeName.string + "' type does not define the '" + self.mGetterName + "' getter "
         : outExpression
-        fixit { replace [[receiverType definition].getterMap keyList] }
+        fixit { replace [receiverType.definition.getterMap keyList] }
       end
     end
   }
@@ -294,9 +295,9 @@ final class @getterCallExpressionForGeneration : @semanticExpressionForGeneratio
      [baseType addHeaderFileName !?ioInclusionSet]
       var @bool searching = true
       loop (@uint.max) while searching do
-        if not [[baseType definition].superType isNull] then
-          if [[[baseType definition].superType definition].getterMap hasKey !self.mGetterName] then
-            baseType = [baseType definition].superType
+        if not baseType.definition.superType.isNull then
+          if [baseType.definition.superType.definition.getterMap hasKey !self.mGetterName] then
+            baseType = baseType.definition.superType
           else
             searching = false
           end
@@ -304,28 +305,28 @@ final class @getterCallExpressionForGeneration : @semanticExpressionForGeneratio
           searching = false
         end
       end
-      ioInclusionSet ++= "getter-" + [[baseType definition].typeName.string fileNameRepresentation] + "-" + [self.mGetterName fileNameRepresentation]
+      ioInclusionSet ++= "getter-" + [baseType.definition.typeName.string fileNameRepresentation] + "-" + [self.mGetterName fileNameRepresentation]
       [!?ioUnusedVariableCppNameSet removeKey !receiverCppName]
-      if [[self.mReceiverExpression.mResultType definition].typeKind isClassType] then
-        outCppExpression = "callExtensionGetter_" + [self.mGetterName identifierRepresentation]
-           + " ((const cPtr_" + [self.mReceiverExpression.mResultType identifierRepresentation] + " *) " + receiverCppName + ".ptr (), "
+      if self.mReceiverExpression.mResultType.definition.typeKind.isClassType then
+        outCppExpression = "callExtensionGetter_" + self.mGetterName.identifierRepresentation
+           + " ((const cPtr_" + self.mReceiverExpression.mResultType.identifierRepresentation + " *) " + receiverCppName + ".ptr (), "
       else
         [self.mReceiverExpression.mResultType addHeaderFileName !?ioInclusionSet]
-        outCppExpression = "extensionGetter_" + [self.mGetterName identifierRepresentation] + " (" + receiverCppName + ", "
+        outCppExpression = "extensionGetter_" + self.mGetterName.identifierRepresentation + " (" + receiverCppName + ", "
       end
     case definedAsMember :
       outCppExpression = receiverCppName
       for (mValue) in self.mFieldList do
-        outCppExpression += ".readProperty_" + [mValue identifierRepresentation] + " ()"
+        outCppExpression += ".readProperty_" + mValue.identifierRepresentation + " ()"
       end
       [self.mResultType addHeaderFileName !?ioInclusionSet]
-      outCppExpression +=  ".getter_" + [self.mGetterName identifierRepresentation] + " ("
+      outCppExpression +=  ".getter_" + self.mGetterName.identifierRepresentation + " ("
     end
     for (mValue) in getterArgumentCppNameList
       do outCppExpression += mValue
       between outCppExpression += ", "
     end
-    if [getterArgumentCppNameList count] == 0 then
+    if getterArgumentCppNameList.count == 0 then
       if self.mHasCompilerArgument then
         [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
         outCppExpression += compilerCppName () + " COMMA_"
@@ -336,7 +337,7 @@ final class @getterCallExpressionForGeneration : @semanticExpressionForGeneratio
     else
       outCppExpression += " COMMA_"
     end
-    outCppExpression += [self.mLocation sourceFile] + ")"
+    outCppExpression += self.mLocation.sourceFile + ")"
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

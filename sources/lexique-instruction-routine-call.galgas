@@ -261,11 +261,11 @@ override method @lexicalRoutineCallInstructionAST checkLexicalInstruction
     ?*
   ]
 //--- Check actual argument count
-  if [lexicalRoutineFormalArgumentList count] != [self.mActualArgumentList count] then
+  if lexicalRoutineFormalArgumentList.count != self.mActualArgumentList.count then
     error self.mRoutineName : "this lexical routine call names "
-    + [[self.mActualArgumentList count] string]
+    + self.mActualArgumentList.count.string
     + " actual argument(s), but the lexical routine prototype requires "
-    + [lexicalRoutineFormalArgumentList count] + " actual argument(s)"
+    + lexicalRoutineFormalArgumentList.count + " actual argument(s)"
   end
 //--- Check actual argument against formal parameters
   for (mLexicalFormalArgumentMode mLexicalFormalArgumentType *) in lexicalRoutineFormalArgumentList, (mLexicalRoutineActualArgument) in self.mActualArgumentList do
@@ -276,11 +276,11 @@ override method @lexicalRoutineCallInstructionAST checkLexicalInstruction
     ]
   end
 //--- Check error message count
-  if [routineErrorMessageList count] != [self.mErrorMessageList count] then
+  if routineErrorMessageList.count != self.mErrorMessageList.count then
     error self.mRoutineName: "this lexical routine call names "
-    + [[self.mErrorMessageList count] string]
+    + self.mErrorMessageList.count.string
     + " error message(s), but the lexical routine prototype requires "
-    + [[routineErrorMessageList count] string] + " error message(s)"
+    + routineErrorMessageList.count.string + " error message(s)"
   end
 //--- Check error messages are actually defined
   for (mValue) in self.mErrorMessageList do
@@ -332,7 +332,7 @@ abstract getter @abstractLexicalRoutineActualArgumentAST generateRoutineArgument
 
 override getter @lexicalAttributeInputOutputArgumentAST generateRoutineArgument
   -> @string {
-  result = "token.mLexicalAttribute_" + [self.mAttributeName identifierRepresentation]
+  result = "token.mLexicalAttribute_" + self.mAttributeName.string.identifierRepresentation
 }
 
 //·································································································

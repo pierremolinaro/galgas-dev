@@ -340,7 +340,7 @@ override method @templateLexiqueComponentAST semanticAnalysis
   var @terminalList terminalList = @()
   for (mName mSentAttributeList mSyntaxErrorMessage mStyle nonAtomicSelection isEndOfTemplateMark) in terminalListAST do
     var @uint terminalStyleIndex = 0
-    if [mStyle.string count] > 0 then
+    if mStyle.string.count > 0 then
       [lexiqueAnalysisContext.mStyleMap searchKey !mStyle ?* ?terminalStyleIndex]
     end
     var argumentTypeList = @lexicalSentValueList ()
@@ -359,7 +359,7 @@ override method @templateLexiqueComponentAST semanticAnalysis
   end
   for (* mStyle mSyntaxErrorMessage mSentAttributeList mEntryList) in lexicalListDeclarationListAST do
     var @uint terminalStyleIndex = 0
-    if [mStyle.string count] > 0 then
+    if mStyle.string.count > 0 then
       [lexiqueAnalysisContext.mStyleMap searchKey !mStyle ?* ?terminalStyleIndex]
     end
     var argumentTypeList = @lexicalSentValueList ()
@@ -396,13 +396,13 @@ override method @templateLexiqueComponentAST semanticAnalysis
   if @uint.errorCount == 0 then
   //--- Header
     let headerContents = [filewrapper templateLexiqueGenerationTemplates.cppHeader
-       ![self.mLexiqueComponentName.string identifierRepresentation]
-       ![self.mLexiqueSuperComponentName.string identifierRepresentation]
+       !self.mLexiqueComponentName.string.identifierRepresentation
+       !self.mLexiqueSuperComponentName.string.identifierRepresentation
     ]
   //--- Cpp
     let cppContents =  [filewrapper templateLexiqueGenerationTemplates.cppImplementation
-      ![self.mLexiqueComponentName.string identifierRepresentation]
-      ![self.mLexiqueSuperComponentName.string identifierRepresentation]
+      !self.mLexiqueComponentName.string.identifierRepresentation
+      !self.mLexiqueSuperComponentName.string.identifierRepresentation
       !lexiqueAnalysisContext.mLexicalTokenListMap
       !unicodeStringToGenerate
       !templateDelimitorList
@@ -410,15 +410,6 @@ override method @templateLexiqueComponentAST semanticAnalysis
       !self.mLexiqueComponentName.string
       !self.mTemplateReplacementList
     ]
-  //--- Swift Cocoa implementation
-//    let swiftCocoaImplementation = [filewrapper templateLexiqueGenerationTemplates.swiftCocoaImplementationZone
-//      !"lexique-" + [self.mLexiqueComponentName.string fileNameRepresentation] + "-cocoa"
-//      !self.mLexiqueComponentName.string
-//      !self.mLexiqueSuperComponentName.string
-//      !terminalList
-//      !templateDelimitorList
-//      !self.mTemplateReplacementList
-//    ]
   //--- SwiftUI implementation
     let swiftuiImplementation = [filewrapper templateLexiqueGenerationTemplates.swiftuiImplementationZone
       !"lexique-" + [self.mLexiqueComponentName.string fileNameRepresentation] + "-swiftui"

@@ -177,8 +177,8 @@ override method @undefinedLocalConstantDeclarationAST analyzeSemanticInstruction
                                           ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
                                           ?!@localVarManager ioVariableMap {
   let targetType = [ioTypeMap typeMapEntryForLKey !self.mConstantTypeName]
-  let targetVariableCppName = "var_" + [self.mConstantName identifierRepresentation]
-                            + "_" + [self.mConstantName.location startLocationIndex]
+  let targetVariableCppName = "var_" + self.mConstantName.string.identifierRepresentation
+                            + "_" + self.mConstantName.location.startLocationIndex
   [!?ioVariableMap insertDeclaredLocalConstant
     !self.mConstantName
     !targetType
@@ -212,8 +212,8 @@ override method @localConstantDeclarationWithAssignmentAST analyzeSemanticInstru
     ?let @semanticExpressionForGeneration expression
   ]
 //--- Enter target variable
-  let targetVariableCppName = "var_" + [self.mVariableName identifierRepresentation]
-                                     + "_" + [self.mVariableName.location startLocationIndex]
+  let targetVariableCppName = "var_" + self.mVariableName.string.identifierRepresentation
+                                     + "_" + self.mVariableName.location.startLocationIndex
   [!?ioVariableMap insertInitializedLocalConstant
     !self.mVariableName
     !expression.mResultType
@@ -249,8 +249,8 @@ override method @localVariableOrConstantDeclarationWithAssignmentAST analyzeSema
     ?@semanticExpressionForGeneration expression
   ]
 //--- Check target variable
-  let targetVariableCppName = "var_" + [self.mVariableName identifierRepresentation]
-                            + "_" + [self.mVariableName.location startLocationIndex]
+  let targetVariableCppName = "var_" + self.mVariableName.string.identifierRepresentation
+                            + "_" + self.mVariableName.location.startLocationIndex
   if self.mIsConstant then
     [!?ioVariableMap insertInitializedLocalConstant
       !self.mVariableName
@@ -306,7 +306,7 @@ override method @undefinedLocalConstantDeclarationForGeneration generateInstruct
   ?!@string ioGeneratedCode
 {
   [self.mTargetType addHeaderFileName !?ioInclusionSet]
-  ioGeneratedCode += "GGS_" + [self.mTargetType identifierRepresentation] + " " + self.mCppVariableName + " ;\n"
+  ioGeneratedCode += "GGS_" + self.mTargetType.identifierRepresentation + " " + self.mCppVariableName + " ;\n"
 }
 
 //·································································································
@@ -325,7 +325,7 @@ override method @localVariableOrConstantDeclarationWithSourceExpressionForGenera
      !?ioUnusedVariableCppNameSet
      ?let @string sourceVar
   ]
-  ioGeneratedCode += "GGS_" + [self.mTargetType identifierRepresentation] + " " + self.mCppVariableName + " = " + sourceVar + " ;\n"
+  ioGeneratedCode += "GGS_" + self.mTargetType.identifierRepresentation + " " + self.mCppVariableName + " = " + sourceVar + " ;\n"
 }
 
 //--------------------------------------------------------------------------------------------------

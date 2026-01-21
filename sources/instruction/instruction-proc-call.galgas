@@ -160,7 +160,7 @@ final class @procCallInstructionForGeneration : @semanticInstructionForGeneratio
       parameterCppNameList += !parameterCppName
     end
   //--- Generate method call
-    ioGeneratedCode += "routine_" + [self.routineMangledName.string identifierRepresentation] + " ("
+    ioGeneratedCode += "routine_" + self.routineMangledName.string.identifierRepresentation + " ("
     for (mValue) in parameterCppNameList do
       ioGeneratedCode += mValue + ", "
     end

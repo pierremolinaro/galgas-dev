@@ -160,7 +160,7 @@ override method @localVariableDeclarationWithAssignmentAST analyzeSemanticInstru
     ?let @semanticExpressionForGeneration expression
   ]
 //--- Check target variable
-  let targetVariableCppName = "var_" + [self.mVariableName identifierRepresentation] + "_" + [self.mVariableName.location startLocationIndex]
+  let targetVariableCppName = "var_" + self.mVariableName.string.identifierRepresentation + "_" + self.mVariableName.location.startLocationIndex
   [!?ioVariableMap insertInitializedLocalVariable
     !self.mVariableName
     !warnsIfNotMutated: true
@@ -199,7 +199,7 @@ override method @localVariableDeclarationNoAssignmentAST analyzeSemanticInstruct
 {
 //--- Check target variable
   let targetType = [ioTypeMap typeMapEntryForLKey !self.mTypeName]
-  let targetVariableCppName = "var_" + [self.mVariableName identifierRepresentation] + "_" + [self.mVariableName.location startLocationIndex]
+  let targetVariableCppName = "var_" + self.mVariableName.string.identifierRepresentation + "_" + self.mVariableName.location.startLocationIndex
   [!?ioVariableMap insertDeclaredLocalVariable
     !self.mVariableName
     !targetType
@@ -232,7 +232,7 @@ override method @localVariableDeclarationForGeneration generateInstruction
   ?!@string ioGeneratedCode
 {
   [self.mVariableType addHeaderFileName !?ioInclusionSet]
-  ioGeneratedCode += "GGS_" + [self.mVariableType identifierRepresentation] + " " + self.mCppVariableName + " ;\n"
+  ioGeneratedCode += "GGS_" + self.mVariableType.identifierRepresentation + " " + self.mCppVariableName + " ;\n"
 }
 
 //--------------------------------------------------------------------------------------------------

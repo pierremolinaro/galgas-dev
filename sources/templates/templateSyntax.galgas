@@ -495,7 +495,7 @@ rule <output_expression_list_tpl> !@templateExpressionListAST outExpressionList 
     outExpressionList += !selector !expression !@location.here
   while
     $!$
-    let selector = ["" here]
+    let selector = "".here
     <expression_tpl> ?let @templateExpressionAST expression
     outExpressionList += !selector !expression !@location.here
   end
@@ -603,7 +603,7 @@ rule <template_parser_start_symbol> !@templateInstructionListAST outResultingIns
 
 proc enterTemplateString ?!@templateInstructionListAST outResultingInstructionList {
   let @string s = @string.retrieveAndResetTemplateString
-  if [s count] > 0 then
+  if s.count > 0 then
     outResultingInstructionList += !@templateInstructionStringAST {!s}
   end
 }

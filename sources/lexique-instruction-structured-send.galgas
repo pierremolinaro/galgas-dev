@@ -116,26 +116,6 @@ override method @lexicalStructuredSendInstructionAST checkLexicalInstruction
 }
 
 //--------------------------------------------------------------------------------------------------
-//! COCOA GENERATION
-//--------------------------------------------------------------------------------------------------
-
-//override getter @lexicalStructuredSendInstructionAST generateObjcCocoaInstructionCode
-//  ?let @string inScannerClassName
-//  ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
-//  -> @string outGeneratedCode {
-//  outGeneratedCode = ""
-//  for (mAttributeName mSearchListName) in self.mLexicalSendSearchList do
-//    outGeneratedCode += "if (mTokenCode == 0) {\n"
-//    outGeneratedCode += "  mTokenCode = search_into_" + [inScannerClassName identifierRepresentation]
-//    outGeneratedCode += "_" + mSearchListName + " (mLexicalAttribute_" + mAttributeName + ") ;\n"
-//    outGeneratedCode += "}\n"
-//  end
-//  outGeneratedCode += "if (mTokenCode == 0) {\n"
-//  outGeneratedCode += "  " + [self.mLexicalSendDefaultAction generateObjcCocoaDefaultSendCode !inScannerClassName]
-//  outGeneratedCode += "}\n"
-//}
-
-//--------------------------------------------------------------------------------------------------
 
 override getter @lexicalStructuredSendInstructionAST generateSwiftCocoaInstructionCode
   ?let @string inScannerClassName
@@ -144,7 +124,7 @@ override getter @lexicalStructuredSendInstructionAST generateSwiftCocoaInstructi
   outGeneratedCode = ""
   for (mAttributeName mSearchListName) in self.mLexicalSendSearchList do
     outGeneratedCode += "if (tokenCode == 0) {\n"
-    outGeneratedCode += "  tokenCode = search_into_" + [inScannerClassName identifierRepresentation]
+    outGeneratedCode += "  tokenCode = search_into_" + inScannerClassName.identifierRepresentation
     outGeneratedCode += "_" + mSearchListName + " (mLexicalAttribute_" + mAttributeName + ") ;\n"
     outGeneratedCode += "}\n"
   end
@@ -170,7 +150,7 @@ override getter @lexicalStructuredSendInstructionAST generateLexicalInstructionC
   result = ""
   for (mAttributeName mSearchListName) in self.mLexicalSendSearchList do
     result += "if (token.mTokenCode == -1) {\n"
-    result += "  token.mTokenCode = search_into_" + mSearchListName + " (token.mLexicalAttribute_" + [mAttributeName identifierRepresentation] + ") ;\n"
+    result += "  token.mTokenCode = search_into_" + mSearchListName + " (token.mLexicalAttribute_" + mAttributeName.string.identifierRepresentation + ") ;\n"
     result += "}\n"
   end
   result += "if (token.mTokenCode == -1) {\n"

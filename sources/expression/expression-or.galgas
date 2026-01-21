@@ -196,7 +196,7 @@ override method @orExpressionAST analyzeSemanticExpression
   ]
 //--- Check operator availability
   checkDiadicOperator (
-    !operatorIsHandled: [[leftExpression.mResultType definition].features contains !.infixOrOperator]
+    !operatorIsHandled: [leftExpression.mResultType.definition.features contains !.infixOrOperator]
     !"|"
     !self.mOperatorLocation
     !?leftExpression
@@ -252,7 +252,7 @@ override method @orShortExpressionAST analyzeSemanticExpression
   ]
 //--- Check operator availability
   checkDiadicOperator (
-    !operatorIsHandled: [[leftExpression.mResultType definition].features contains !.infixOrOperator]
+    !operatorIsHandled: [leftExpression.mResultType.definition.features contains !.infixOrOperator]
     !"|"
     !self.mOperatorLocation
     !?leftExpression
@@ -307,7 +307,7 @@ override method @xorExpressionAST analyzeSemanticExpression
   ]
 //--- Check operator availability
   checkDiadicOperator (
-    !operatorIsHandled: [[leftExpression.mResultType definition].features contains !.infixXorOperator]
+    !operatorIsHandled: [leftExpression.mResultType.definition.features contains !.infixXorOperator]
     !"^"
     !self.mOperatorLocation
     !?leftExpression
@@ -365,11 +365,11 @@ override method @closedSliceExpressionAST analyzeSemanticExpression
   ]
 //--- Check operator availability
   let @unifiedTypeMapEntry leftType = leftExpression.mResultType
-  if [leftType definition].typeName.string != "uint" then
+  if leftType.definition.typeName.string != "uint" then
     error leftExpression.mLocation : "the left expression or '...' operator should an @uint"
   end
   let @unifiedTypeMapEntry rightType = rightExpression.mResultType
-  if [rightType definition].typeName.string != "uint" then
+  if rightType.definition.typeName.string != "uint" then
     error rightExpression.mLocation : "the right expression or '...' operator should an @uint"
   end
 //--- Generate expression
@@ -427,20 +427,12 @@ override method @openedSliceExpressionAST analyzeSemanticExpression
     !leftExpression.mLocation
     !?leftExpression
   )
-//  let @unifiedTypeMapEntry leftType = leftExpression.mResultType
-//  if [leftType definition].mTypeName.string != "uint" then
-//    error leftExpression.mLocation : "the left expression of '..<' operator should an @uint"
-//  end
   checkAssignmentTypeWithImplicitGetterCall (
     !inAnalysisContext.predefinedTypes.mUIntType
     !rightExpression.mResultType
     !rightExpression.mLocation
     !?rightExpression
   )
-//  let @unifiedTypeMapEntry rightType = rightExpression.mResultType
-//  if [rightType definition].mTypeName.string != "uint" then
-//    error rightExpression.mLocation : "the right expression of '..<' operator should an @uint"
-//  end
 //--- Generate expression
   outExpression = @openedSliceExpressionForGeneration {
     ![ioTypeMap typeMapEntryForLKey !@{!"range" !leftExpression.mLocation}]
@@ -491,7 +483,7 @@ override method @orShortExpressionForGeneration generateExpression
     ?let @string leftTemporaryOperand
   ]
 //--- Generate Comparison
-  let testVar = "test_" + [ioTemporaryVariableIndex string]
+  let testVar = "test_" + ioTemporaryVariableIndex.string
   ioTemporaryVariableIndex += 1
   ioGeneratedCode += "GGS_bool " + testVar + " = " + leftTemporaryOperand + " ;\n"
   ioGeneratedCode += "if (GalgasBool::boolTrue != " + testVar + ".boolEnum ()) {\n"

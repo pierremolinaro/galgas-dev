@@ -30,9 +30,9 @@ proc checkMethodSignatures
   ?let @formalParameterSignature inReferenceSignature
   ?let @location inReferenceLocation
 {
-  if [inTestedSignature count] != [inReferenceSignature count] then
-    error inErrorLocation:"this method declares " + [[inTestedSignature count] string]
-    + " formal parameter(s), but overriden method declares " + [[inReferenceSignature count] string]
+  if inTestedSignature.count != inReferenceSignature.count then
+    error inErrorLocation:"this method declares " + inTestedSignature.count.string
+    + " formal parameter(s), but overriden method declares " + inReferenceSignature.count.string
     error inReferenceLocation:"overriden method is declared here"
   else
     for (ref_mFormalSelector ref_mFormalArgumentType ref_mFormalArgumentPassingMode *) in inReferenceSignature, (mFormalSelector mFormalArgumentPassingMode mFormalArgumentType mFormalArgumentName *) in inTestedSignature do
@@ -54,12 +54,11 @@ proc checkMethodSignatures
         end
         s += if ref_mFormalSelector.string != "" then ref_mFormalSelector.string + ":" else "" end
         error mFormalSelector : "the selector should be '" + s + "'" fixit { replace s }
-//        error mFormalSelector : "the selector should be '" + [ref_mFormalArgumentPassingMode string] + ref_mFormalSelector + if ref_mFormalSelector.string != "" then ":" else "" end + "'"
       end
-      if [mFormalArgumentType definition].typeName.string != [ref_mFormalArgumentType definition].typeName.string then
+      if mFormalArgumentType.definition.typeName.string != ref_mFormalArgumentType.definition.typeName.string then
         error mFormalArgumentName : "the '" + mFormalArgumentName + "' formal parameter has the '@"
-        + [mFormalArgumentType definition].typeName.string + "' type, but overriden method declares with the '@"
-        + [ref_mFormalArgumentType definition].typeName.string + "' type"
+        + mFormalArgumentType.definition.typeName.string + "' type, but overriden method declares with the '@"
+        + ref_mFormalArgumentType.definition.typeName.string + "' type"
         error inReferenceLocation:"overriden method is declared here"
       end
     end
@@ -79,15 +78,15 @@ proc checkGetterSignatures
   ?let @functionSignature inReferenceSignature
   ?let @unifiedTypeMapEntry inInheritedReturnType
   ?let @location inReferenceLocation {
-  if [inReturnType definition].typeName.string != [inInheritedReturnType definition].typeName.string then
+  if inReturnType.definition.typeName.string != inInheritedReturnType.definition.typeName.string then
     error inErrorLocation : "the return type is '@"
-    + [inReturnType definition].typeName.string + "', but overriden getter names '@"
-    + [inInheritedReturnType definition].typeName.string + "' as return type"
+    + inReturnType.definition.typeName.string + "', but overriden getter names '@"
+    + inInheritedReturnType.definition.typeName.string + "' as return type"
     error inReferenceLocation:"overriden getter is declared here"
   end
-  if [inTestedSignature count] != [inReferenceSignature count] then
-    error inErrorLocation:"this getter declares " + [[inTestedSignature count] string]
-    + " formal parameter(s), but overriden getter declares " + [[inReferenceSignature count] string]
+  if inTestedSignature.count != inReferenceSignature.count then
+    error inErrorLocation:"this getter declares " + inTestedSignature.count.string
+    + " formal parameter(s), but overriden getter declares " + inReferenceSignature.count.string
     error inReferenceLocation:"overriden getter is declared here"
   else
     for (ref_mFormalSelector ref_mFormalArgumentType 2*) in inReferenceSignature, (mFormalSelector mFormalArgumentType * mFormalArgumentName *) in inTestedSignature do
@@ -95,10 +94,10 @@ proc checkGetterSignatures
         let @string s = "?" + if ref_mFormalSelector.string != "" then ref_mFormalSelector.string + ":" else "" end
         error mFormalSelector : "the selector should be '" + s + "'" fixit { replace s }
       end
-      if [mFormalArgumentType definition].typeName.string != [ref_mFormalArgumentType definition].typeName.string then
+      if mFormalArgumentType.definition.typeName.string != ref_mFormalArgumentType.definition.typeName.string then
         error mFormalArgumentName : "the '" + mFormalArgumentName + "' formal parameter has the '@"
-        + [mFormalArgumentType definition].typeName.string + "' type, but overriden getter declares with the '@"
-        + [ref_mFormalArgumentType definition].typeName.string + "' type"
+        + mFormalArgumentType.definition.typeName.string + "' type, but overriden getter declares with the '@"
+        + ref_mFormalArgumentType.definition.typeName.string + "' type"
         error inReferenceLocation:"overriden getter is declared here"
       end
     end
@@ -129,7 +128,7 @@ proc buildLocalVariableMapAndSignature ?let @semanticContext unused inSemanticCo
     switch formalArgument.mFormalArgumentPassingMode
     case argumentVarIn :
       formalArgumentCppName = "inArgument_"
-         + [formalArgument.mFormalArgumentName.string identifierRepresentation]
+         + formalArgument.mFormalArgumentName.string.identifierRepresentation
       if formalArgument.mIsUnused then
         [!?ioVariableMap insertInputFormalArgumentDeclaredAsUnused
           !formalArgument.mFormalArgumentName
@@ -147,7 +146,7 @@ proc buildLocalVariableMapAndSignature ?let @semanticContext unused inSemanticCo
       end
     case argumentOut :
       formalArgumentCppName = "outArgument_"
-        + [formalArgument.mFormalArgumentName.string identifierRepresentation]
+        + formalArgument.mFormalArgumentName.string.identifierRepresentation
       [!?ioVariableMap insertOutputFormalArgument
         !formalArgument.mFormalArgumentName
         !type
@@ -156,7 +155,7 @@ proc buildLocalVariableMapAndSignature ?let @semanticContext unused inSemanticCo
       ]
     case argumentInOut :
       formalArgumentCppName = "ioArgument_"
-         + [formalArgument.mFormalArgumentName.string identifierRepresentation]
+         + formalArgument.mFormalArgumentName.string.identifierRepresentation
       if formalArgument.mIsUnused then
         [!?ioVariableMap insertInputOutputFormalArgumentDeclaredAsUnused
           !formalArgument.mFormalArgumentName
@@ -174,7 +173,7 @@ proc buildLocalVariableMapAndSignature ?let @semanticContext unused inSemanticCo
       end
     case argumentConstantIn :
       formalArgumentCppName = "constinArgument_"
-        + [formalArgument.mFormalArgumentName.string identifierRepresentation]
+        + formalArgument.mFormalArgumentName.string.identifierRepresentation
       if formalArgument.mIsUnused then
         [!?ioVariableMap insertConstantInputFormalArgumentDeclaredAsUnused
           !formalArgument.mFormalArgumentName
@@ -209,7 +208,7 @@ proc analyzeRoutineBody ?let @lstring inUsefulnessCallerEntityName
   var variableMap = @localVarManager {}
 //--- Enter properties that should be explicitly initialized
   if let selfAvailable = [inAnalysisContext.selfAvailability getAvailable] then
-    for property in [selfAvailable.type definition].allTypedPropertyList do
+    for property in selfAvailable.type.definition.allTypedPropertyList do
       let initialized = if selfAvailable.selfMutability == .initializer
         then property.initialization != .none
         else true
@@ -309,7 +308,7 @@ proc analyzeFunctionBody
   for formalArg in inFunctionSignature do
     let parameterType = [ioTypeMap typeMapEntryForLKey !formalArg.mFormalArgumentTypeName]
     if formalArg.mIsConstant then
-      let @string cppName = "constinArgument_" + [formalArg.mFormalArgumentName.string identifierRepresentation]
+      let @string cppName = "constinArgument_" + formalArg.mFormalArgumentName.string.identifierRepresentation
       outSignatureForGeneration +=
         !formalArg.mFormalSelector
         !parameterType
@@ -322,7 +321,7 @@ proc analyzeFunctionBody
         [!?variableMap insertConstantInputFormalArgument !formalArg.mFormalArgumentName !parameterType !cppName !cppName]
       end
     else
-      let @string cppName = "inArgument_" + [formalArg.mFormalArgumentName.string identifierRepresentation]
+      let @string cppName = "inArgument_" + formalArg.mFormalArgumentName.string.identifierRepresentation
       outSignatureForGeneration +=
         !formalArg.mFormalSelector
         !parameterType
@@ -338,11 +337,11 @@ proc analyzeFunctionBody
   end
 //--- Enter return variable
   outReturnedType = [ioTypeMap typeMapEntryForLKey !inResultTypeName]
-  outResultVariableCppName = "result_" + [inReturnVariableName identifierRepresentation]
+  outResultVariableCppName = "result_" + inReturnVariableName.string.identifierRepresentation
   [!?variableMap insertOutputFormalArgument !inReturnVariableName !outReturnedType !outResultVariableCppName !outResultVariableCppName]
 //--- Enter properties that should be explicitly initialized
   if let selfAvailable = [inAnalysisContext.selfAvailability getAvailable] then
-    for property in [selfAvailable.type definition].allTypedPropertyList do
+    for property in selfAvailable.type.definition.allTypedPropertyList do
       [!?variableMap insertInitializerSelfProperty
         !property.name.string
         !inEndOfFunctionLocation
@@ -533,7 +532,7 @@ override method @filewrapperDeclarationAST semanticAnalysis
       var @formalInputParameterListForGeneration filewrapperTemplateFormalInputParameters = @()
       for (mFormalTemplateSelector mFormalArgumentTypeName mFormalArgumentName *) in filewrapperTemplate.mFilewrapperTemplateFormalInputParameters do
         let type = [ioTypeMap typeMapEntryForLKey !mFormalArgumentTypeName]
-        let @string cppVarName = "in_" + [mFormalArgumentName.string identifierRepresentation]
+        let @string cppVarName = "in_" + mFormalArgumentName.string.identifierRepresentation
         [!?templateVariableMap insertKey !mFormalArgumentName !type !cppVarName]
         filewrapperTemplateFormalInputParameters += !mFormalTemplateSelector !type !cppVarName !mFormalArgumentName !true
       end
@@ -647,7 +646,7 @@ override method @galgas3GrammarComponentAST semanticAnalysis
 //--------------------------------------------------------- Parse syntax components
   var @terminalSymbolsMapForGrammarAnalysis actuallyUsedTerminalSymbolMap = @()
   var @nonTerminalSymbolMapForGrammarAnalysis nonTerminalMapForGrammarAnalysis = @()
-  var @lstring lexiqueComponentName =  ["" nowhere] // Empty string means unknown
+  var @lstring lexiqueComponentName =  "".nowhere // Empty string means unknown
   var @syntaxComponentListForGrammarAnalysis syntaxComponentListForGrammarAnalysis = @()
   var @nonTerminalToAddList nonTerminalToAddList = @()
   var @uint addedNonTerminalCount = 0
@@ -932,7 +931,7 @@ proc enterNonterminalNonTerminalInMapAndCheck
     let @stringset firstDeclarationLabelSet = [entry.mLabelMap keySet]
     let @stringset reDeclarationLabelSet = [inNonterminalLabelMap keySet]
     let @stringset missingLabelSet = firstDeclarationLabelSet - reDeclarationLabelSet
-    if [missingLabelSet count] > 0 then
+    if missingLabelSet.count > 0 then
       var @string s = ""
       for (key) in missingLabelSet do
         s += "\n-  " + key
@@ -941,7 +940,7 @@ proc enterNonterminalNonTerminalInMapAndCheck
       : "the '" + inNonTerminalName + "' nonterminal is redeclared without the following label(s):" + s
     end
     let @stringset newLabelSet = reDeclarationLabelSet - firstDeclarationLabelSet
-    if [newLabelSet count] > 0 then
+    if newLabelSet.count > 0 then
       var s = ""
       for (key) in newLabelSet do
         s += "\n-  " + key
@@ -949,7 +948,7 @@ proc enterNonterminalNonTerminalInMapAndCheck
       error inNonTerminalName
       : "the '" + inNonTerminalName + "' nonterminal is redeclared with the new label(s):" + s
     end
-    if ([missingLabelSet count] == 0) & ([newLabelSet count] == 0) then
+    if (missingLabelSet.count == 0) & (newLabelSet.count == 0) then
       for aLabel in entry.mLabelMap, (* * new_mSignature new_mEndOfArgumentLocation) in inNonterminalLabelMap do
         var @formalParameterSignature newSignature = @()
         for (mFormalSelector mFormalArgumentType mFormalArgumentPassingMode mFormalArgumentName) in new_mSignature do
@@ -1085,8 +1084,8 @@ override method @inputParameterVariable analyzeInputParameter
   end
   if expectedType != type then
     error self.mActualParameterName
-    : "the '" + self.mActualParameterName + "' parameter has the '@" + [type identifierRepresentation]
-    + ", bit an '@" + [expectedType identifierRepresentation] + "' parameter is required here"
+    : "the '" + self.mActualParameterName + "' parameter has the '@" + type.identifierRepresentation
+    + ", bit an '@" + expectedType.identifierRepresentation + "' parameter is required here"
   end
   ioTerminalCheckAssignementList +=
     !"" // Do not declare variable
@@ -1120,12 +1119,12 @@ override method @inputParameterDeclaredVariable analyzeInputParameter
     let type = [ioTypeMap typeMapEntryForLKey !self.mActualParameterTypeName]
     if expectedType != type then
       error self.mActualParameterName
-      : "the '" + self.mActualParameterName + "' formal argument has the '@" + [type definition].typeName.string
-      + ", bit an '@" + [expectedType definition].typeName.string + "' parameter is required here"
+      : "the '" + self.mActualParameterName + "' formal argument has the '@" + type.definition.typeName.string
+      + ", bit an '@" + expectedType.definition.typeName.string + "' parameter is required here"
     end
   end
 //--- Create local variable
-  let cppName = "var_" + [self.mActualParameterName identifierRepresentation] + "_" + [self.mActualParameterName.location startLocationIndex]
+  let cppName = "var_" + self.mActualParameterName.string.identifierRepresentation + "_" + self.mActualParameterName.location.startLocationIndex
   [!?ioVariableMap insertInitializedLocalVariable
     !self.mActualParameterName
     !warnsIfNotMutated: true
@@ -1134,7 +1133,7 @@ override method @inputParameterDeclaredVariable analyzeInputParameter
     !cppName
   ]
   ioTerminalCheckAssignementList +=
-    ![expectedType definition].typeName.string
+    !expectedType.definition.typeName.string
     !cppName
     !inLexicalAttributeName
 }
@@ -1165,16 +1164,16 @@ override method @inputParameterDeclaredConstant analyzeInputParameter
     let type = [ioTypeMap typeMapEntryForLKey !self.mActualParameterTypeName]
     if expectedType != type then
       error self.mActualParameterName
-      : "the '" + self.mActualParameterName + "' formal argument has the '@" + [type definition].typeName.string
-      + ", bit an '@" + [expectedType definition].typeName.string + "' parameter is required here"
+      : "the '" + self.mActualParameterName + "' formal argument has the '@" + type.definition.typeName.string
+      + ", bit an '@" + expectedType.definition.typeName.string + "' parameter is required here"
     end
   end
 //--- Create local constant
-  let cppName = "var_" + [self.mActualParameterName identifierRepresentation] + "_" + [self.mActualParameterName.location startLocationIndex]
+  let cppName = "var_" + self.mActualParameterName.string.identifierRepresentation + "_" + self.mActualParameterName.location.startLocationIndex
   [!?ioVariableMap insertInitializedLocalConstant !self.mActualParameterName !expectedType !cppName !cppName]
 //---
   ioTerminalCheckAssignementList +=
-    ![expectedType definition].typeName.string
+    !expectedType.definition.typeName.string
     !cppName
     !inLexicalAttributeName
 }
@@ -1222,8 +1221,8 @@ override method @grammarInstructionSyntaxDirectedTranslationResultInVar  analyze
   let expectedType = inAnalysisContext.predefinedTypes.mStringType
   if expectedType != type then
     error self.mActualParameterName
-    : "the '" + self.mActualParameterName + "' parameter has the '@" + [type identifierRepresentation]
-    + ", bit an '@" + [expectedType identifierRepresentation] + "' parameter is required here"
+    : "the '" + self.mActualParameterName + "' parameter has the '@" + type.identifierRepresentation
+    + ", bit an '@" + expectedType.identifierRepresentation + "' parameter is required here"
   end
 }
 
@@ -1237,7 +1236,7 @@ override method @grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar 
   if not inHasTranslateFeature then
     error self.mActualParameterName : "the ':>' construct requires the syntax component to be declared with 'translate' feature"
   end
-  let cppName = "var_" + [self.mActualParameterName identifierRepresentation] + "_" + [self.mActualParameterName.location startLocationIndex]
+  let cppName = "var_" + self.mActualParameterName.string.identifierRepresentation + "_" + self.mActualParameterName.location.startLocationIndex
   let type = [ioTypeMap typeMapEntryForLKey !self.mActualParameterTypeName]
   [!?ioVariableMap insertInitializedLocalVariable
     !self.mActualParameterName
@@ -1249,8 +1248,8 @@ override method @grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar 
   let expectedType = inAnalysisContext.predefinedTypes.mStringType
   if expectedType != type then
     error self.mActualParameterName
-    : "the '" + self.mActualParameterName + "' parameter has the '@" + [type identifierRepresentation]
-    + ", bit an '@" + [expectedType identifierRepresentation] + "' parameter is required here"
+    : "the '" + self.mActualParameterName + "' parameter has the '@" + type.identifierRepresentation
+    + ", bit an '@" + expectedType.identifierRepresentation + "' parameter is required here"
   end
 }
 
@@ -1264,14 +1263,14 @@ override method @grammarInstructionSyntaxDirectedTranslationResultInDeclaredCons
   if not inHasTranslateFeature then
     error self.mActualParameterName : "the ':>' construct requires the grammar to be declared with 'translate' feature"
   end
-  let cppName = "var_" + [self.mActualParameterName identifierRepresentation] + "_" + [self.mActualParameterName.location startLocationIndex]
+  let cppName = "var_" + self.mActualParameterName.string.identifierRepresentation + "_" + self.mActualParameterName.location.startLocationIndex
   let type = [ioTypeMap typeMapEntryForLKey !self.mActualParameterTypeName]
   [!?ioVariableMap insertInitializedLocalConstant !self.mActualParameterName !type !cppName !cppName]
   let expectedType = inAnalysisContext.predefinedTypes.mStringType
   if expectedType != type then
     error self.mActualParameterName
-    : "the '" + self.mActualParameterName + "' parameter has the '@" + [type identifierRepresentation]
-    + ", bit an '@" + [expectedType identifierRepresentation] + "' parameter is required here"
+    : "the '" + self.mActualParameterName + "' parameter has the '@" + type.identifierRepresentation
+    + ", bit an '@" + expectedType.identifierRepresentation + "' parameter is required here"
   end
 }
 
@@ -1312,7 +1311,7 @@ override method @grammarInstructionSyntaxDirectedTranslationResultInVar  generat
   ?let @string inAccessMethodName
   ?!@stringset unused ioUnusedVariableCppNameSet
   ?!@string ioGeneratedCode {
-  let cppName = "var_" + [self.mActualParameterName identifierRepresentation] + "_" + [self.mActualParameterName.location startLocationIndex]
+  let cppName = "var_" + self.mActualParameterName.string.identifierRepresentation + "_" + self.mActualParameterName.location.startLocationIndex
   ioGeneratedCode += cppName + " = GGS_string (" + inAccessMethodName + ") ;\n"
 }
 
@@ -1323,7 +1322,7 @@ override method @grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar 
   ?let @string inAccessMethodName
   ?!@stringset unused ioUnusedVariableCppNameSet
   ?!@string ioGeneratedCode {
-  let cppName = "var_" + [self.mActualParameterName identifierRepresentation] + "_" + [self.mActualParameterName.location startLocationIndex]
+  let cppName = "var_" + self.mActualParameterName.string.identifierRepresentation + "_" + self.mActualParameterName.location.startLocationIndex
   ioGeneratedCode += "GGS_string " + cppName + " (" + inAccessMethodName + ") ;\n"
 }
 
@@ -1334,7 +1333,7 @@ override method @grammarInstructionSyntaxDirectedTranslationResultInDeclaredCons
   ?let @string inAccessMethodName
   ?!@stringset unused ioUnusedVariableCppNameSet
   ?!@string ioGeneratedCode {
-  let cppName = "var_" + [self.mActualParameterName identifierRepresentation] + "_" + [self.mActualParameterName.location startLocationIndex]
+  let cppName = "var_" + self.mActualParameterName.string.identifierRepresentation + "_" + self.mActualParameterName.location.startLocationIndex
   ioGeneratedCode += "const GGS_string " + cppName + " (" + inAccessMethodName + ") ;\n"
 }
 
@@ -1520,7 +1519,7 @@ private proc semanticAnalysisOfSyntaxComponent
         !?ioTypeMap
         !inTerminalMap
         !inHasTranslateFeature
-        ![inLexiqueName identifierRepresentation]
+        !inLexiqueName.identifierRepresentation
         !nonterminalMap
         !inSyntaxComponentName
         !mEndOfInstructionList
@@ -1568,7 +1567,7 @@ private proc emitClassGraphFile ?let @string inDotDocumentFilePath
     switch entry.mDefinition
     case unsolved :
     case solved (@unifiedTypeDefinition definition) :
-      if [definition.typeKind isClassType] then
+      if definition.typeKind.isClassType then
         switch definition.superType
         case null :
           document += "  \"@" + definition.typeName + "\" ;\n"

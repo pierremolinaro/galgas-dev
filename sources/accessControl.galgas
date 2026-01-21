@@ -210,10 +210,10 @@ enum @AccessControl {
         error inErrorLocation : "inaccessible property (due to 'protected' qualifier)"
       case available (t *) :
         var currentType = t
-        var ok = [declaringType typeName] == [currentType typeName]
-        loop while (not ok) && (not [[currentType definition].superType isNull]) do
-          currentType = [currentType definition].superType
-          ok = [declaringType typeName] == [currentType typeName]
+        var ok = declaringType.typeName == currentType.typeName
+        loop while (not ok) && (not currentType.definition.superType.isNull) do
+          currentType = currentType.definition.superType
+          ok = declaringType.typeName == currentType.typeName
         end
         if not ok then
           error inErrorLocation : "inaccessible property (due to 'protected' qualifier)"
@@ -225,10 +225,10 @@ enum @AccessControl {
          warning inErrorLocation : "inaccessible property (due to 'protected(set)' qualifier)"
       case available (t *) :
         var currentType = t
-        var ok = [declaringType typeName] == [currentType typeName]
-        loop while (not ok) && (not [[currentType definition].superType isNull]) do
-          currentType = [currentType definition].superType
-          ok = [declaringType typeName] == [currentType typeName]
+        var ok = declaringType.typeName == currentType.typeName
+        loop while (not ok) && (not currentType.definition.superType.isNull) do
+          currentType = currentType.definition.superType
+          ok = declaringType.typeName == currentType.typeName
         end
         if not ok then
           warning inErrorLocation : "inaccessible property (due to 'protected(set)' qualifier)"
@@ -239,7 +239,7 @@ enum @AccessControl {
       case none :
         error inErrorLocation : "inaccessible property (due to 'private' qualifier)"
       case available (currentType *) :
-        if [declaringType typeName] != [currentType typeName] then
+        if declaringType.typeName != currentType.typeName then
           error inErrorLocation : "inaccessible property (due to 'private' qualifier)"
         end
       end
@@ -248,16 +248,16 @@ enum @AccessControl {
       case none :
          warning inErrorLocation : "inaccessible property (due to 'private(set)' qualifier)"
       case available (currentType *) :
-        if [declaringType typeName] != [currentType typeName] then
+        if declaringType.typeName != currentType.typeName then
           error inErrorLocation : "inaccessible property (due to 'private(set)' qualifier)"
         end
       end
     case fileprivateAccess (declaringLocation) :
-      if [declaringLocation sourceFile] != [inErrorLocation sourceFile] then
+      if declaringLocation.sourceFile != inErrorLocation.sourceFile then
         error inErrorLocation : "inaccessible property (due to 'fileprivate' qualifier)"
       end
     case fileprivateSetAccess (declaringLocation) :
-      if [declaringLocation sourceFile] != [inErrorLocation sourceFile] then
+      if declaringLocation.sourceFile != inErrorLocation.sourceFile then
         error inErrorLocation : "inaccessible property (due to 'fileprivate(set)' qualifier)"
       end
     end
@@ -277,10 +277,10 @@ enum @AccessControl {
         error inErrorLocation : "inaccessible property (due to 'private' qualifier)"
       case available (t *) :
         var currentType = t
-        var ok = [declaringType typeName] == [currentType typeName]
-        loop while (not ok) && (not [[currentType definition].superType isNull]) do
-          currentType = [currentType definition].superType
-          ok = [declaringType typeName] == [currentType typeName]
+        var ok = declaringType.typeName == currentType.typeName
+        loop while (not ok) && (not currentType.definition.superType.isNull) do
+          currentType = currentType.definition.superType
+          ok = declaringType.typeName == currentType.typeName
         end
         if not ok then
           error inErrorLocation : "inaccessible property (due to 'protected' qualifier)"
@@ -291,12 +291,12 @@ enum @AccessControl {
       case none :
         error inErrorLocation : "inaccessible property (due to 'private' qualifier)"
       case available (currentType *) :
-        if [declaringType typeName] != [currentType typeName] then
+        if declaringType.typeName != currentType.typeName then
           error inErrorLocation : "inaccessible property (due to 'private' qualifier)"
         end
       end
     case fileprivateAccess (declaringLocation) :
-      if [declaringLocation sourceFile] != [inErrorLocation sourceFile] then
+      if declaringLocation.sourceFile != inErrorLocation.sourceFile then
         error inErrorLocation : "inaccessible property (due to 'fileprivate' qualifier)"
       end
     case fileprivateSetAccess (*) :

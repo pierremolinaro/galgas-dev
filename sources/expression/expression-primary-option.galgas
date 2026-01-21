@@ -214,8 +214,8 @@ override method @optionValueExpressionForGeneration generateExpression
   if not self.mOptionComponentIsPredefined then
     ioInclusionSet ++= "option-" + [self.mOptionComponentName fileNameRepresentation]
   end
-  outCppExpression = "GGS_" + [self.mResultType identifierRepresentation] + " (gOption_" + [self.mOptionComponentName identifierRepresentation]
-                   + "_" + [self.mOptionEntryName identifierRepresentation] + ".readProperty_value ())"
+  outCppExpression = "GGS_" + self.mResultType.identifierRepresentation + " (gOption_" + self.mOptionComponentName.identifierRepresentation
+                   + "_" + self.mOptionEntryName.identifierRepresentation + ".readProperty_value ())"
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -237,8 +237,8 @@ override method @optionCharExpressionForGeneration generateExpression
   if not self.mOptionComponentIsPredefined then
     ioInclusionSet ++= "option-" + [self.mOptionComponentName fileNameRepresentation]
   end
-  outCppExpression = "GGS_char (gOption_" + [self.mOptionComponentName identifierRepresentation]
-                  + "_" + [self.mOptionEntryName identifierRepresentation] + ".readProperty_char ())"
+  outCppExpression = "GGS_char (gOption_" + self.mOptionComponentName.identifierRepresentation
+                  + "_" + self.mOptionEntryName.identifierRepresentation + ".readProperty_char ())"
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -260,8 +260,8 @@ override method @optionStringExpressionForGeneration generateExpression
   if not self.mOptionComponentIsPredefined then
     ioInclusionSet ++= "option-" + [self.mOptionComponentName fileNameRepresentation]
   end
-  outCppExpression = "GGS_string (gOption_" + [self.mOptionComponentName identifierRepresentation]
-                  + "_" + [self.mOptionEntryName identifierRepresentation] + ".readProperty_string ())"
+  outCppExpression = "GGS_string (gOption_" + self.mOptionComponentName.identifierRepresentation
+                  + "_" + self.mOptionEntryName.identifierRepresentation + ".readProperty_string ())"
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -275,8 +275,8 @@ override method @optionCommentExpressionForGeneration generateExpression
   if not self.mOptionComponentIsPredefined then
     ioInclusionSet ++= "option-" + [self.mOptionComponentName fileNameRepresentation]
   end
-  outCppExpression = "gOption_" + [self.mOptionComponentName identifierRepresentation]
-                  + "_" + [self.mOptionEntryName identifierRepresentation] + ".readProperty_comment ()"
+  outCppExpression = "gOption_" + self.mOptionComponentName.identifierRepresentation
+                  + "_" + self.mOptionEntryName.identifierRepresentation + ".readProperty_comment ()"
 }
 
 //································································································

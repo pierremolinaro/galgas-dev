@@ -93,17 +93,17 @@ syntax extension templateSyntax {
           $literalInt$ ?let n
           $*$
           for * in 0 ..< n.bigint do
-            outAssociatedValuesExtraction += !["" here] !["" here] !false
+            outAssociatedValuesExtraction += !"".here !"".here !false
           end
          or
           $*$
-          outAssociatedValuesExtraction += !["" here] !["" here] !false
+          outAssociatedValuesExtraction += !"".here !"".here !false
          or
           let @lstring typeName
           select
             $@type$ ?typeName
           or
-            typeName = ["" here]
+            typeName = "".here
           end
           let @bool constantMarkedAsUnused
           select
@@ -143,7 +143,7 @@ override method @templateInstructionSwitchAST templateInstructionAnalysis
     !?ioTypeMap
     ?let switchExpression
   ]
-  if let enumType = [[switchExpression.mResultType definition].typeKind getEnumType] then
+  if let enumType = [switchExpression.mResultType.definition.typeKind getEnumType] then
     var @stringset constantsNamedInSwitchInstruction = @()
   //--- Analyze branches
     var @templateInstructionSwitchBranchListForGeneration templateInstructionSwitchBranchList = @()
@@ -158,24 +158,24 @@ override method @templateInstructionSwitchAST templateInstructionAnalysis
           end
           constantsNamedInSwitchInstruction ++= constantName.string
           [enumType.constantMap searchKey !constantName ?* ?let @associatedValueDescriptorList associatedTypeList]
-          if ([associatedTypeList count] > 0) & ([mAssociatedValuesExtraction count] == 0) then
+          if (associatedTypeList.count > 0) & (mAssociatedValuesExtraction.count == 0) then
             error constantName
               :"the associated values of '" + constantName + "' constant should be extracted"
-          elsif ([associatedTypeList count] == 0) & ([mAssociatedValuesExtraction count] > 0) then
+          elsif (associatedTypeList.count == 0) & (mAssociatedValuesExtraction.count > 0) then
             error constantName
               :"the '" + constantName + "' constant has no associated value"
-          elsif [associatedTypeList count]  != [mAssociatedValuesExtraction count] then
+          elsif associatedTypeList.count  != mAssociatedValuesExtraction.count then
             error constantName
-              :"the '" + constantName + "' constant requires " + [associatedTypeList count] + "  associated value"
-              + if [associatedTypeList count] > 1 then "s" else "" end
+              :"the '" + constantName + "' constant requires " + associatedTypeList.count + "  associated value"
+              + if associatedTypeList.count > 1 then "s" else "" end
           else
             for descriptor in associatedTypeList, (mExtractedValueTypeName mExtractedValueName *) in mAssociatedValuesExtraction do (IDX)
               if mExtractedValueTypeName.string != "" then // Explicit type ?
-                if [descriptor.type definition].typeName.string != mExtractedValueTypeName.string then
-                  error mExtractedValueTypeName : "the required type is '@" + [descriptor.type definition].typeName.string + "'"
+                if descriptor.type.definition.typeName.string != mExtractedValueTypeName.string then
+                  error mExtractedValueTypeName : "the required type is '@" + descriptor.type.definition.typeName.string + "'"
                 end
               end
-              let cppName = "extractedValue_" + [mExtractedValueName.location startLocationIndex]
+              let cppName = "extractedValue_" + mExtractedValueName.location.startLocationIndex
                 + "_" + mExtractedValueName + "_" + IDX
               extractedAssociatedValuesForGeneration +=
                 !descriptor.type
@@ -193,7 +193,7 @@ override method @templateInstructionSwitchAST templateInstructionAnalysis
         else
           error constantName
           :"'" + constantName + "' is not a constant of '@"
-          + [switchExpression.mResultType definition].typeName.string + "' enumeration type"
+          + switchExpression.mResultType.definition.typeName.string + "' enumeration type"
         end
       end
       var @templateInstructionListForGeneration instructionList = @()
@@ -208,12 +208,12 @@ override method @templateInstructionSwitchAST templateInstructionAnalysis
       templateInstructionSwitchBranchList +=
         !mConstantList
         !extractedAssociatedValuesForGeneration
-        ![mEndOfBranch startLocationIndex]
+        !mEndOfBranch.startLocationIndex
         !instructionList
     end
   //--- Check all constants have been named
     let forgottenConstants = [enumType.constantMap keySet] - constantsNamedInSwitchInstruction
-    if [forgottenConstants count] > 0 then
+    if forgottenConstants.count > 0 then
       var @string s = ""
       for (key) in forgottenConstants do
         s += "\n  - " + key
@@ -229,7 +229,7 @@ override method @templateInstructionSwitchAST templateInstructionAnalysis
     }
   else
     error switchExpression.mLocation : "'switch' expression type should be an enumeration (it is a "
-       + [switchExpression.mResultType definition].typeKind + " type)"
+       + switchExpression.mResultType.definition.typeKind + " type)"
   end
 }
 
@@ -272,34 +272,34 @@ override method @templateInstructionSwitchForGeneration templateCodeGeneration
 //---
   ioGeneratedCode += "switch (" + switchVarCppName + ".enumValue ()) {\n"
   ioGeneratedCode += "case GGS_"
-  ioGeneratedCode += [self.switchExpression.mResultType identifierRepresentation]
+  ioGeneratedCode += self.switchExpression.mResultType.identifierRepresentation
   ioGeneratedCode += "::Enumeration::invalid :\n"
   ioGeneratedCode += "  break ;\n"
 //---
   for branch in self.templateInstructionSwitchBranchList do
     for constantName in branch.mConstantList do
       ioGeneratedCode += "case GGS_"
-      ioGeneratedCode += [self.switchExpression.mResultType identifierRepresentation]
+      ioGeneratedCode += self.switchExpression.mResultType.identifierRepresentation
       ioGeneratedCode += "::Enumeration::enum_"
-      ioGeneratedCode += [constantName.string identifierRepresentation] + " :\n"
+      ioGeneratedCode += constantName.string.identifierRepresentation + " :\n"
     end
     [!?ioGeneratedCode incIndentation !2]
     ioGeneratedCode += "{\n"
-    if [branch.mExtractedAssociatedValuesForGeneration count] > 0 then
+    if branch.mExtractedAssociatedValuesForGeneration.count > 0 then
       for associatedValue in branch.mExtractedAssociatedValuesForGeneration do
         [associatedValue.mType addHeaderFileName !?ioInclusionSet]
-        ioGeneratedCode += "  GGS_" + [associatedValue.mType identifierRepresentation]
+        ioGeneratedCode += "  GGS_" + associatedValue.mType.identifierRepresentation
         ioGeneratedCode += " " + associatedValue.mCppName + " ;\n"
       end
       ioGeneratedCode += "  " + switchVarCppName + ".getAssociatedValuesFor_"
-      ioGeneratedCode += [branch.mConstantList @[0] identifierRepresentation] + " ("
+      ioGeneratedCode += branch.mConstantList @[0].string.identifierRepresentation + " ("
       for associatedValue in branch.mExtractedAssociatedValuesForGeneration
         do ioGeneratedCode += associatedValue.mCppName
         between ioGeneratedCode += ", "
       end
       ioGeneratedCode += ") ;\n"
     end
-    if [branch.mInstructionList count] > 0 then
+    if branch.mInstructionList.count > 0 then
       [!?ioGeneratedCode incIndentation !2]
       templateCodeGenerationForListInstruction (
         !branch.mInstructionList

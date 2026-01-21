@@ -227,29 +227,26 @@ override method @overridingAbstractExtensionGetterAST semanticAnalysis
   ?let @predefinedTypes unused inPredefinedTypes
   ?!@semanticDeclarationListForGeneration unused ioSemanticDeclarationListForGeneration
 {
-//--- Useful entities graph
-//  let nameForUsefulness = getterNameForUsefulEntitiesGraph (!self.mTypeName !mAbstractExtensionGetterReturnedTypeName)
-//  [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
 //--- Self type
   let @unifiedTypeMapEntry selfType = [ioTypeMap typeMapEntryForLKey !self.mTypeName]
 //--- Return type
   let returnType = [ioTypeMap typeMapEntryForLKey !self.mAbstractExtensionGetterReturnedTypeName]
 //--- Check type is an abstract class
-  if not [[selfType definition].typeKind isClassType] then
-    error self.mAbstractExtensionGetterName: "cannot declare a extension getter: '@" + [selfType definition].typeName.string + "' is not a class"
-  elsif [selfType definition].isConcrete then
-    error self.mAbstractExtensionGetterName: "cannot declare an abstract extension getter: '@" + [selfType definition].typeName.string + "' is not an abstract class"
+  if not selfType.definition.typeKind.isClassType then
+    error self.mAbstractExtensionGetterName: "cannot declare a extension getter: '@" + selfType.definition.typeName.string + "' is not a class"
+  elsif selfType.definition.isConcrete then
+    error self.mAbstractExtensionGetterName: "cannot declare an abstract extension getter: '@" + selfType.definition.typeName.string + "' is not an abstract class"
   end
 //--- Find base type name
   var @string baseTypeName = ""
-  var @unifiedTypeMapEntry superType = [selfType definition].superType
+  var @unifiedTypeMapEntry superType = selfType.definition.superType
   var @functionSignature inheritedSignature = @()
   var @unifiedTypeMapEntry inheritedReturnType = .null
   var @location inheritedDeclarationLocation = @location.here
-  loop ([ioTypeMap count] + 1)
-  while (not [superType isNull]) & (baseTypeName == "") do
-    if [[superType definition].getterMap hasKey !self.mAbstractExtensionGetterName.string] then
-      [[superType definition].getterMap searchKey
+  loop (ioTypeMap.count + 1)
+  while (not superType.isNull) & (baseTypeName == "") do
+    if [superType.definition.getterMap hasKey !self.mAbstractExtensionGetterName.string] then
+       [superType.definition.getterMap searchKey
         !self.mAbstractExtensionGetterName
         ?*
         ?inheritedSignature
@@ -260,10 +257,10 @@ override method @overridingAbstractExtensionGetterAST semanticAnalysis
         ?*
       ]
       if qualifier <= @methodQualifier. isBasicFinal then
-        baseTypeName = [superType definition].typeName.string
+        baseTypeName = superType.definition.typeName.string
       end
     end
-    superType = [superType definition].superType
+    superType = superType.definition.superType
   end
   if baseTypeName == "" then
     error self.mAbstractExtensionGetterName:"this getter is not declared by a super class"

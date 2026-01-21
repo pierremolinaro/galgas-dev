@@ -392,11 +392,11 @@ syntax galgas3LexiqueComponentSyntax (galgasScanner3) {
     repeat
     while
       $!$
-      let selector = ["" here]
+      let selector = "".here
       $identifier$ ?let sentAttribute
       sentAttributeList += !selector !sentAttribute
     end
-    var @lstring theStyle = [""nowhere] // Empty string if no style
+    var @lstring theStyle = "".nowhere // Empty string if no style
     var nonAtomicSelection = false
     var templateEndMark = false
     repeat
@@ -681,7 +681,7 @@ syntax galgas4LexiqueComponentSyntax (galgasScanner4) {
       sentAttributeList += !selector !sentAttribute
     while
       $!$
-      let selector = ["" here]
+      let selector = "".here
       $identifier$ ?let sentAttribute
       sentAttributeList += !selector !sentAttribute
     end
@@ -753,7 +753,7 @@ syntax galgas4LexiqueComponentSyntax (galgasScanner4) {
       sentAttributeList += !selector !sentAttribute
     while
       $!$
-      let selector = ["" here]
+      let selector = "".here
       $identifier$ ?let sentAttribute
       sentAttributeList += !selector !sentAttribute
     end
@@ -928,7 +928,7 @@ override method @lexiqueComponentAST semanticAnalysis
 //-------------------------------------- Build terminal map
   for (mName mSentAttributeList mSyntaxErrorMessage mStyle nonAtomicSelection isEndOfTemplateMark) in self.mTerminalDeclarationListAST do
     var @uint terminalStyleIndex = 0
-    if [mStyle.string count] > 0 then
+    if mStyle.string.count > 0 then
       [lexiqueAnalysisContext.mStyleMap searchKey !mStyle ?* ?terminalStyleIndex]
     end
     var argumentTypeList = @lexicalSentValueList ()
@@ -964,7 +964,7 @@ override method @lexiqueComponentAST semanticAnalysis
   end
   for (mName mStyle mSyntaxErrorMessage mSentAttributeList mEntryList) in self.mLexicalListDeclarationListAST do
     var @uint terminalStyleIndex = 0
-    if [mStyle.string count] > 0 then
+    if mStyle.string.count > 0 then
       [lexiqueAnalysisContext.mStyleMap searchKey !mStyle ?* ?terminalStyleIndex]
     end
     var argumentTypeList = @lexicalSentValueList ()
@@ -990,7 +990,7 @@ override method @lexiqueComponentAST semanticAnalysis
         !atomicSelection: nonAtomicSelection
         !isEndOfTemplateMark: isTemplateEndMark
       ]
-      tokenSortedlist += ![mEntrySpelling.string count] !mEntrySpelling.string !mTerminalSpelling.string
+      tokenSortedlist += !mEntrySpelling.string.count !mEntrySpelling.string !mTerminalSpelling.string
       lexiqueAnalysisContext.mUnicodeStringToGenerate ++= mEntrySpelling.string
     end
     [!?lexiqueAnalysisContext.mLexicalTokenListMap insertKey !mName !lexicalTokenListMap !tokenSortedlist !false]
@@ -1032,7 +1032,7 @@ override method @lexiqueComponentAST semanticAnalysis
   if @uint.errorCount == 0 then
   //--- Header
     let headerContents = [filewrapper lexiqueGenerationTemplates.headerZone2
-      ![self.mLexiqueComponentName.string identifierRepresentation]
+      !self.mLexiqueComponentName.string.identifierRepresentation
       !self.mLexicalListDeclarationListAST
       !lexiqueAnalysisContext
       !self.mTemplateDelimitorListAST
@@ -1040,7 +1040,7 @@ override method @lexiqueComponentAST semanticAnalysis
     ]
   //--- Cpp
     let cppContents =  [filewrapper lexiqueGenerationTemplates.implementationZone2Galgas3
-      ![self.mLexiqueComponentName.string identifierRepresentation]
+      !self.mLexiqueComponentName.string.identifierRepresentation
       ![self.mLexicalRuleListAST useLoopLocalVar]
       !lexiqueAnalysisContext.mLexicalAttributeMap
       !lexiqueAnalysisContext.mLexicalMessageMap

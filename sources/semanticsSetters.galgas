@@ -32,7 +32,7 @@ proc enterModifierWithInputArgument
 {
   [!?ioUnifiedTypeMap makeEntryFromString !inInputArgumentTypeName ?let argumentTypeIndex]
   var @formalParameterSignature argList = @()
-  argList += !["" nowhere] !argumentTypeIndex !.argumentConstantIn !inInputArgumentName
+  argList += !"".nowhere !argumentTypeIndex !.argumentConstantIn !inInputArgumentName
   [!?ioSetterMap insertOrReplace
     !@lstring {!inSetterName !@location.here}
     !@methodKind. definedAsMember
@@ -58,8 +58,8 @@ proc enterModifierWithOutputAndInputArguments
   [!?ioUnifiedTypeMap makeEntryFromString !inOutputArgumentTypeName ?let outputArgumentTypeIndex]
   [!?ioUnifiedTypeMap makeEntryFromString !inInputArgumentTypeName ?let inputArgumentTypeIndex]
   var @formalParameterSignature argList = @()
-  argList += !["" nowhere] !outputArgumentTypeIndex !.argumentOut !inOutputArgumentName
-  argList += !["" nowhere] !inputArgumentTypeIndex !.argumentConstantIn !inInputArgumentName
+  argList += !"".nowhere !outputArgumentTypeIndex !.argumentOut !inOutputArgumentName
+  argList += !"".nowhere !inputArgumentTypeIndex !.argumentConstantIn !inInputArgumentName
   [!?ioSetterMap insertOrReplace
     !@lstring {!inSetterName !@location.here}
     !@methodKind.definedAsMember
@@ -84,9 +84,9 @@ proc enterModifierWith2InputArguments
 {
   var @formalParameterSignature argList = @()
   [!?ioUnifiedTypeMap makeEntryFromString !inInputArgument1TypeName ?@unifiedTypeMapEntry argumentTypeIndex]
-  argList += !["" nowhere] !argumentTypeIndex !.argumentConstantIn !inInputArgument1Name
+  argList += !"".nowhere !argumentTypeIndex !.argumentConstantIn !inInputArgument1Name
   [!?ioUnifiedTypeMap makeEntryFromString !inInputArgument2TypeName ?argumentTypeIndex]
-  argList += !["" nowhere] !argumentTypeIndex !.argumentConstantIn !inInputArgument2Name
+  argList += !"".nowhere !argumentTypeIndex !.argumentConstantIn !inInputArgument2Name
   [!?ioSetterMap insertOrReplace
     !@lstring {!inSetterName !.here}
     !@methodKind. definedAsMember

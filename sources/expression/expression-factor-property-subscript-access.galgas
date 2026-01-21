@@ -37,11 +37,11 @@ syntax extension galgas3ExpressionSyntax {
           expressionList += !selector !expression !.here
         or
           $!$
-          let selector = ["" here]
+          let selector = "".here
           <expression_ggs3> !?ioDeclarations ?let expression
           expressionList += !selector !expression !.here
         or
-          let selector = ["" here]
+          let selector = "".here
           <expression_ggs3> !?ioDeclarations ?let expression
           expressionList += !selector !expression !.here
         end
@@ -156,7 +156,7 @@ final class @structPropertyAccessExpressionAST : @semanticExpressionAST {
     ]
   //--- Check field access availability
     let @unifiedTypeMapEntry expressionType = exprGeneration.mResultType
-    let propertyMap = [expressionType definition].propertyMap
+    let propertyMap = expressionType.definition.propertyMap
     if let prop = propertyMap @[self.propertyName] then
       if exprGeneration is @selfInExpressionForGeneration then
         [!?ioVariableMap searchForReadAccess 
@@ -173,12 +173,12 @@ final class @structPropertyAccessExpressionAST : @semanticExpressionAST {
         !self.propertyName.string
       }
     else
-      let getterMap = [expressionType definition].getterMap
+      let getterMap = expressionType.definition.getterMap
       if let theGetter = getterMap @[self.propertyName] then
-        if [theGetter.mArgumentTypeList count] != 0 then
+        if theGetter.mArgumentTypeList.count != 0 then
           error self.propertyName
           : "for being called as a property read, the getter should have no formal argument (has "
-          + [theGetter.mArgumentTypeList count] + ")"
+          + theGetter.mArgumentTypeList.count + ")"
           : outExpressionGeneration
         else
           outExpressionGeneration = @getterCallExpressionForGeneration {
@@ -201,7 +201,7 @@ final class @structPropertyAccessExpressionAST : @semanticExpressionAST {
           s += "\n  -- property: " + property.lkey
         end
         for aGetter in getterMap do
-         if [aGetter.mArgumentTypeList count] == 0 then
+         if aGetter.mArgumentTypeList.count == 0 then
            s += "\n  -- getter: " + aGetter.lkey
          end
         end
@@ -238,7 +238,7 @@ final class @propertyAccessExpressionForGeneration : @semanticExpressionForGener
     ]
   //--- Generate
     outCppExpression = operand + ".readProperty_"
-    outCppExpression += [self.structFieldName identifierRepresentation] + " ()"
+    outCppExpression += self.structFieldName.identifierRepresentation + " ()"
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -286,7 +286,7 @@ final class @subscriptReadAccessExpressionAST : @semanticExpressionAST {
   //--- subscript invocation signature
     let invocationSignature = [self.actualArgumentList subscriptSignature]
   //--- Check subscript availability
-    let subscriptMap = [expressionType definition].readSubscriptMap
+    let subscriptMap = expressionType.definition.readSubscriptMap
     if let aSubscript = subscriptMap @[invocationSignature] then
     //--- Check effective argument list
       var semanticExpressionListForGeneration = @semanticExpressionListForGeneration ()
@@ -370,7 +370,7 @@ final class @subscriptReadAccessExpressionForGeneration : @semanticExpressionFor
     end
   //--- Generate
     outCppExpression = operand + ".readSubscript_"
-    outCppExpression += [self.subscriptInvocationName identifierRepresentation]
+    outCppExpression += self.subscriptInvocationName.identifierRepresentation
     outCppExpression += " ("
     for operand in subscriptArgumentList do
       outCppExpression += operand + ", "

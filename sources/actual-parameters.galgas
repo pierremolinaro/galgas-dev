@@ -35,12 +35,12 @@ list @actualParameterListAST {
                                 ?!@localVarManager ioVariableMap
                                 ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
                                 !@actualParameterListForGeneration outActualParameterListForGeneration {
-    if [inRoutineSignature count] != [self count] then
+    if inRoutineSignature.count != self.count then
       error inRoutineName
-      : "the " + inInvokedEntityName + " defines " + [inRoutineSignature count]
-      + " formal argument" + if [inRoutineSignature count] > 1 then "s" else "" end
+      : "the " + inInvokedEntityName + " defines " + inRoutineSignature.count
+      + " formal argument" + if inRoutineSignature.count > 1 then "s" else "" end
       + " but this invocation names "
-      + [self count] + " argument" + if [self count] > 1 then "s" else "" end
+      + self.count + " argument" + if self.count > 1 then "s" else "" end
       : outActualParameterListForGeneration
     else
       outActualParameterListForGeneration = @()
@@ -152,7 +152,7 @@ final class @outputActualParameterAST : @actualParameterAST {
     if (inFormalArgumentPassingMode != .argumentVarIn)
      & (inFormalArgumentPassingMode != .argumentConstantIn) then
       error self.mActualSelector
-      :"the corresponding formal argument has the '" + [inFormalArgumentPassingMode string]
+      :"the corresponding formal argument has the '" + inFormalArgumentPassingMode.string
       + "' passing mode: this parameter should be passed with '"
       + [inFormalArgumentPassingMode correspondingEffectiveParameterString] + "'"
     else
@@ -232,7 +232,7 @@ final class @outputInputActualParameterAST : @actualParameterAST {
                               ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration {
     if inFormalArgumentPassingMode != .argumentInOut then
       error self.mActualSelector
-      :"the corresponding formal argument has the '" + [inFormalArgumentPassingMode string]
+      :"the corresponding formal argument has the '" + inFormalArgumentPassingMode.string
       + "' passing mode: this parameter should be passed with '"
       + [inFormalArgumentPassingMode correspondingEffectiveParameterString] + "'"
     elsif inFormalSelector.string != self.mActualSelector.string then
@@ -248,7 +248,7 @@ final class @outputInputActualParameterAST : @actualParameterAST {
     ]
     var typeList = @unifiedTypeMapEntryList.listWithValue {!parameterType}
     for (value) in self.mStructAttributeList do
-      let propertyMap = [parameterType definition].propertyMap
+      let propertyMap = parameterType.definition.propertyMap
       [propertyMap searchKey
         !value
         ?let accessControl
@@ -264,9 +264,9 @@ final class @outputInputActualParameterAST : @actualParameterAST {
   //--- Check type
     if inFormalArgumentType != parameterType then
       error self.mOutputInputActualParameterName
-      :"the parameter object has the '@" + [parameterType definition].typeName.string
+      :"the parameter object has the '@" + parameterType.definition.typeName.string
       + "', it should be the same as the corresponding formal argument: '@"
-      + [inFormalArgumentType definition].typeName.string + "'"
+      + inFormalArgumentType.definition.typeName.string + "'"
     end
   //--- Check for exclusive access
     if [ioExclusiveVariableSet hasKey !self.mOutputInputActualParameterName.string] then
@@ -331,7 +331,7 @@ final class @outputInputJokerParameterAST : @actualParameterAST {
                                   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration {
     if inFormalArgumentPassingMode != .argumentInOut then
       error self.mActualSelector
-      : "the corresponding formal argument has the '" + [inFormalArgumentPassingMode string]
+      : "the corresponding formal argument has the '" + inFormalArgumentPassingMode.string
       + "' passing mode: this parameter should be passed with '"
       + [inFormalArgumentPassingMode correspondingEffectiveParameterString] + "'"
     elsif inFormalSelector.string != self.mActualSelector.string then
@@ -356,7 +356,7 @@ final class @outputInputJokerParameterAST : @actualParameterAST {
     !?expressionGeneration
   )
   //--- Generate actual parameter
-    let cppVarName = "joker_" + [self.mActualSelector.location startLocationIndex]
+    let cppVarName = "joker_" + self.mActualSelector.location.startLocationIndex
     ioInstructionListForGeneration += !@localVariableOrConstantDeclarationWithSourceExpressionForGeneration {
       !inFormalArgumentType
       !false // Is not constant
@@ -417,7 +417,7 @@ final class @outputInputSelfParameterAST : @actualParameterAST {
                             ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration {
     if inFormalArgumentPassingMode != .argumentInOut then
       error self.mActualSelector
-      :"the corresponding formal argument has the '" + [inFormalArgumentPassingMode string]
+      :"the corresponding formal argument has the '" + inFormalArgumentPassingMode.string
       + "' passing mode: this parameter should be passed with '"
       + [inFormalArgumentPassingMode correspondingEffectiveParameterString] + "'"
     elsif inFormalSelector.string != self.mActualSelector.string then
@@ -432,9 +432,9 @@ final class @outputInputSelfParameterAST : @actualParameterAST {
     //--- Check type
       if inFormalArgumentType != selfAvailable.type then
         error self.mActualSelector
-        :"the parameter object has the '@" + [selfAvailable.type definition].typeName.string
+        :"the parameter object has the '@" + selfAvailable.type.definition.typeName.string
         + "', it should be the same as the corresponding formal argument: '@"
-        + [inFormalArgumentType definition].typeName.string + "'"
+        + inFormalArgumentType.definition.typeName.string + "'"
     end
       ioActualParameterListForGeneration += !@outputInputActualParameterForGeneration {
         !inFormalArgumentType
@@ -495,7 +495,7 @@ final class @inputActualExistingVariableParameterAST : @actualParameterAST {
     ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration {
     if inFormalArgumentPassingMode != @formalArgumentPassingModeAST. argumentOut then
       error self.mActualSelector
-      :"the corresponding formal argument has the '" + [inFormalArgumentPassingMode string]
+      :"the corresponding formal argument has the '" + inFormalArgumentPassingMode.string
       + "' passing mode: this parameter should be passed with '" + [inFormalArgumentPassingMode correspondingEffectiveParameterString] + "'"
     elsif inFormalSelector.string != self.mActualSelector.string then
       let @string s = "?" + if inFormalSelector.string != "" then inFormalSelector.string + ":" else "" end
@@ -511,8 +511,8 @@ final class @inputActualExistingVariableParameterAST : @actualParameterAST {
   //--- Check type
     if inFormalArgumentType != parameterType then
       error self.mInputActualParameterName
-      :"the parameter object has the '@" + [parameterType definition].typeName.string
-      + "', it should be the same as the corresponding formal argument: '@" + [inFormalArgumentType definition].typeName.string + "'"
+      :"the parameter object has the '@" + parameterType.definition.typeName.string
+      + "', it should be the same as the corresponding formal argument: '@" + inFormalArgumentType.definition.typeName.string + "'"
     end
   //--- Check for exclusive access
     if [ioExclusiveVariableSet hasKey !self.mInputActualParameterName.string] then
@@ -587,7 +587,7 @@ final class @inputActualSelfPropertyParameterAST : @actualParameterAST {
   {
     if inFormalArgumentPassingMode != .argumentOut then
       error self.mActualSelector
-      :"the corresponding formal argument has the '" + [inFormalArgumentPassingMode string]
+      :"the corresponding formal argument has the '" + inFormalArgumentPassingMode.string
       + "' passing mode: this parameter should be passed with '" + [inFormalArgumentPassingMode correspondingEffectiveParameterString] + "'"
     elsif inFormalSelector.string != self.mActualSelector.string then
       let @string s = "?" + if inFormalSelector.string != "" then inFormalSelector.string + ":" else "" end
@@ -598,15 +598,15 @@ final class @inputActualSelfPropertyParameterAST : @actualParameterAST {
       if not [selfAvailable.selfMutability propertiesAreMutable] then
         error self.mInputActualSelfPropertyName : "'self' not mutable in this context"
       end
-      let propertyMap = [selfAvailable.type definition].propertyMap
+      let propertyMap = selfAvailable.type.definition.propertyMap
       [propertyMap searchKey !self.mInputActualSelfPropertyName ?2* ?let parameterType]
       let targetVariableCppName = inAnalysisContext.selfObjectCppPrefixForAccessingProperty
-       + "mProperty_"+ [self.mInputActualSelfPropertyName.string identifierRepresentation]
+       + "mProperty_"+ self.mInputActualSelfPropertyName.string.identifierRepresentation
     //--- Check type
       if inFormalArgumentType != parameterType then
         error self.mInputActualSelfPropertyName
-        :"the parameter object has the '@" + [parameterType definition].typeName.string
-        + "', it should be the same as the corresponding formal argument: '@" + [inFormalArgumentType definition].typeName.string + "'"
+        :"the parameter object has the '@" + parameterType.definition.typeName.string
+        + "', it should be the same as the corresponding formal argument: '@" + inFormalArgumentType.definition.typeName.string + "'"
       end
     //--- Generate actual parameter
       var @2stringlist poisonedVarCppNameList = @()
@@ -679,7 +679,7 @@ final class @inputActualSelfParameterAST : @actualParameterAST {
   {
     if inFormalArgumentPassingMode != .argumentOut then
       error self.mActualSelector
-      :"the corresponding formal argument has the '" + [inFormalArgumentPassingMode string]
+      :"the corresponding formal argument has the '" + inFormalArgumentPassingMode.string
       + "' passing mode: this parameter should be passed with '" + [inFormalArgumentPassingMode correspondingEffectiveParameterString] + "'"
     elsif inFormalSelector.string != self.mActualSelector.string then
       let @string s = "?" + if inFormalSelector.string != "" then inFormalSelector.string + ":" else "" end
@@ -694,9 +694,9 @@ final class @inputActualSelfParameterAST : @actualParameterAST {
     //--- Check type
       if inFormalArgumentType != selfAvailable.type then
         error self.mSelfLocation
-        :"the parameter object has the '@" + [selfAvailable.type definition].typeName.string
+        :"the parameter object has the '@" + selfAvailable.type.definition.typeName.string
         + "', it should be the same as the corresponding formal argument: '@"
-        + [inFormalArgumentType definition].typeName.string + "'"
+        + inFormalArgumentType.definition.typeName.string + "'"
       end
     //--- Generate actual parameter
       var @2stringlist poisonedVarCppNameList = @()
@@ -771,7 +771,7 @@ final class @inputActualNewVariableParameterAST : @actualParameterAST {
   //--- Check passing mode
     if inFormalArgumentPassingMode != @formalArgumentPassingModeAST.argumentOut then
       error self.mActualSelector
-      :"the corresponding formal argument has the '" + [inFormalArgumentPassingMode string]
+      :"the corresponding formal argument has the '" + inFormalArgumentPassingMode.string
       + "' passing mode: this parameter should be passed with '"
       + [inFormalArgumentPassingMode correspondingEffectiveParameterString] + "'"
     elsif inFormalSelector.string != self.mActualSelector.string then
@@ -783,13 +783,13 @@ final class @inputActualNewVariableParameterAST : @actualParameterAST {
       let parameterType = [ioTypeMap typeMapEntryForLKey !self.mInputOptionalActualTypeName]
       if inFormalArgumentType != parameterType then
         error self.mInputActualParameterName
-        :"the parameter object has the '@" + [parameterType definition].typeName.string
+        :"the parameter object has the '@" + parameterType.definition.typeName.string
         + "', it should be the same as the corresponding formal argument: '@"
-        + [inFormalArgumentType definition].typeName.string + "'"
+        + inFormalArgumentType.definition.typeName.string + "'"
       end
     end
   //--- Declare local variable
-    let targetVariableCppName = "var_" + [self.mInputActualParameterName identifierRepresentation] + "_" + [self.mInputActualParameterName.location startLocationIndex]
+    let targetVariableCppName = "var_" + self.mInputActualParameterName.string.identifierRepresentation + "_" + self.mInputActualParameterName.location.startLocationIndex
     [!?ioVariableMap insertInitializedLocalVariable
       !self.mInputActualParameterName
       !warnsIfNotMutated: true
@@ -877,7 +877,7 @@ final class @inputActualNewConstantParameterAST : @actualParameterAST {
   //--- Check passing mode
     if inFormalArgumentPassingMode != @formalArgumentPassingModeAST. argumentOut then
       error self.mActualSelector
-      :"the corresponding formal argument has the '" + [inFormalArgumentPassingMode string]
+      :"the corresponding formal argument has the '" + inFormalArgumentPassingMode.string
       + "' passing mode: this parameter should be passed with '"
       + [inFormalArgumentPassingMode correspondingEffectiveParameterString] + "'"
     elsif inFormalSelector.string != self.mActualSelector.string then
@@ -889,12 +889,12 @@ final class @inputActualNewConstantParameterAST : @actualParameterAST {
       let parameterType = [ioTypeMap typeMapEntryForLKey !self.mInputOptionalActualTypeName]
       if inFormalArgumentType != parameterType then
         error self.mInputActualParameterName
-        :"the parameter object has the '@" + [parameterType definition].typeName.string
-        + "', it should be the same as the corresponding formal argument: '@" + [inFormalArgumentType definition].typeName.string + "'"
+        :"the parameter object has the '@" + parameterType.definition.typeName.string
+        + "', it should be the same as the corresponding formal argument: '@" + inFormalArgumentType.definition.typeName.string + "'"
       end
     end
   //--- Declare local constant
-    let targetVariableCppName = "var_" + [self.mInputActualParameterName identifierRepresentation] + "_" + [self.mInputActualParameterName.location startLocationIndex]
+    let targetVariableCppName = "var_" + self.mInputActualParameterName.string.identifierRepresentation + "_" + self.mInputActualParameterName.location.startLocationIndex
     if self.mMarkedAsUnused then
       [!?ioVariableMap insertUsedLocalConstant
         !self.mInputActualParameterName
@@ -986,14 +986,14 @@ final class @inputSingleJokerActualParameterAST : @actualParameterAST {
     ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration {
     if inFormalArgumentPassingMode != @formalArgumentPassingModeAST. argumentOut then
       error self.mActualSelector
-      :"the corresponding formal argument has the '" + [inFormalArgumentPassingMode string]
+      :"the corresponding formal argument has the '" + inFormalArgumentPassingMode.string
       + "' passing mode: this parameter should be passed with '"
       + [inFormalArgumentPassingMode correspondingEffectiveParameterString] + "'"
     elsif inFormalSelector.string != self.mActualSelector.string then
       let @string s = "?" + if inFormalSelector.string != "" then inFormalSelector.string + ":" else "" end
       error self.mActualSelector : "the selector should be '" + s + "'" fixit { replace s }
     else
-      let cppVarName = "joker_" + [self.mActualSelector.location startLocationIndex]
+      let cppVarName = "joker_" + self.mActualSelector.location.startLocationIndex
     //--- Generate actual parameter
       var @2stringlist poisonedVarCppNameList = @()
       for (varName) in self.mPoisonedVarNameList do
@@ -1060,10 +1060,10 @@ final class @inputJokerActualParameterAST : @actualParameterAST {
     ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration {
     if inFormalArgumentPassingMode != @formalArgumentPassingModeAST.argumentOut then
       error self.mQualifierLocation
-      :"the corresponding formal argument has the '" + [inFormalArgumentPassingMode string]
+      :"the corresponding formal argument has the '" + inFormalArgumentPassingMode.string
       + "' passing mode: this parameter should be passed with '" + [inFormalArgumentPassingMode correspondingEffectiveParameterString] + "'"
     else
-      let cppVarName = "joker_" + [self.mQualifierLocation startLocationIndex] + "_" + self.mJokerIndex
+      let cppVarName = "joker_" + self.mQualifierLocation.startLocationIndex + "_" + self.mJokerIndex
     //--- Generate actual parameter
       ioActualParameterListForGeneration += !@inputJokerParameterForGeneration {
         !inFormalArgumentType

@@ -167,31 +167,28 @@ final class @overridingAbstractExtensionSetterAST : @semanticDeclarationAST {
     ?let @predefinedTypes unused inPredefinedTypes
     ?!@semanticDeclarationListForGeneration unused ioSemanticDeclarationListForGeneration
   {
-  //--- Useful entities graph
-  //  let nameForUsefulness = setterNameForUsefulEntitiesGraph (!self.mTypeName !mOverridingExtensionSetterName)
-  //  [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
   //--- Self type
     let @unifiedTypeMapEntry selfType = [ioTypeMap typeMapEntryForLKey !self.mTypeName]
   //--- Check type is an abstract class
-    if not [[selfType definition].typeKind isClassType] then
-      error self.mOverridingExtensionSetterName: "cannot declare a extension setter: '@" + [selfType definition].typeName.string + "' is not a class"
-    elsif [selfType definition].isConcrete then
-      error self.mOverridingExtensionSetterName: "cannot declare an abstract extension setter: '@" + [selfType definition].typeName.string + "' is not an abstract class"
+    if not selfType.definition.typeKind.isClassType then
+      error self.mOverridingExtensionSetterName: "cannot declare a extension setter: '@" + selfType.definition.typeName.string + "' is not a class"
+    elsif selfType.definition.isConcrete then
+      error self.mOverridingExtensionSetterName: "cannot declare an abstract extension setter: '@" + selfType.definition.typeName.string + "' is not an abstract class"
     end
   //--- Find base type name
     var @string baseTypeName = ""
-    var @unifiedTypeMapEntry superType = [selfType definition].superType
+    var @unifiedTypeMapEntry superType = selfType.definition.superType
     var inheritedSignature = @formalParameterSignature ()
     let inheritedDeclarationLocation = @location.here
-    loop ([ioTypeMap count] + 1)
-    while (not [superType isNull]) & (baseTypeName == "") do
-      if [[superType definition].setterMap hasKey !self.mOverridingExtensionSetterName.string] then
-        [[superType definition].setterMap searchKey !self.mOverridingExtensionSetterName ?* ?inheritedSignature ?* ?let qualifier ?*]
+    loop (ioTypeMap.count + 1)
+    while (not superType.isNull) & (baseTypeName == "") do
+      if [superType.definition.setterMap hasKey !self.mOverridingExtensionSetterName.string] then
+        [superType.definition.setterMap searchKey !self.mOverridingExtensionSetterName ?* ?inheritedSignature ?* ?let qualifier ?*]
         if qualifier <= @methodQualifier.isBasicFinal then
-          baseTypeName = [superType definition].typeName.string
+          baseTypeName = superType.definition.typeName.string
         end
       end
-      superType = [superType definition].superType
+      superType = superType.definition.superType
     end
     if baseTypeName == "" then
       error self.mOverridingExtensionSetterName:"this setter is not declared by a super class"

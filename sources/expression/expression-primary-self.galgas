@@ -101,9 +101,9 @@ override method @selfInExpressionForGeneration generateExpression
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
   !@string outCppExpression {
-  outCppExpression = "temp_" + [ioTemporaryVariableIndex string]
+  outCppExpression = "temp_" + ioTemporaryVariableIndex.string
   ioTemporaryVariableIndex += 1
-  ioGeneratedCode += "const GGS_" + [self.mResultType identifierRepresentation] + " " + outCppExpression + " = " + self.mSelfCppName + " ;\n"
+  ioGeneratedCode += "const GGS_" + self.mResultType.identifierRepresentation + " " + outCppExpression + " = " + self.mSelfCppName + " ;\n"
   [!?ioUnusedVariableCppNameSet removeKey !self.mSelfCppName]
 }
 

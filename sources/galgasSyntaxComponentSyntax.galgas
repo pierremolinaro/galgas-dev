@@ -48,7 +48,7 @@ syntax galgas3SyntaxComponentSyntax (galgasScanner3) {
   //--- Imported lexique
     let @lstring importedLexiqueReference
     select
-      importedLexiqueReference = ["" nowhere]
+      importedLexiqueReference = "".nowhere
     or
       $($
       $identifier$ ?importedLexiqueReference
@@ -250,7 +250,7 @@ syntax galgas4SyntaxComponentSyntax (galgasScanner4) {
   //--- Imported lexique
     let @lstring importedLexiqueReference
     select
-      importedLexiqueReference = ["" nowhere]
+      importedLexiqueReference = "".nowhere
     or
       $($
       $identifier$ ?importedLexiqueReference

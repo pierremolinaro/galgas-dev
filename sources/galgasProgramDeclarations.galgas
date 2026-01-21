@@ -73,7 +73,7 @@ syntax galgas3ProgramDeclarations (galgasScanner3) {
   //--- Reference grammar
     let @lstring referenceGrammar
     select
-      referenceGrammar = ["" nowhere]
+      referenceGrammar = "".nowhere
     or
       $grammar$
       $identifier$ ?referenceGrammar
@@ -169,7 +169,7 @@ syntax galgas4ProgramDeclarations (galgasScanner4) {
   //--- Reference grammar
     let @lstring referenceGrammar
     select
-      referenceGrammar = ["" nowhere]
+      referenceGrammar = "".nowhere
     or
       $grammar$
       $identifier$ ?referenceGrammar

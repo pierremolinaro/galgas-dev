@@ -72,7 +72,7 @@ final class @nilExpressionAST : @semanticExpressionAST {
     if [inType isNull] then
       error self.mLocation : "cannot infer type" : outExpression
     else
-      let unwrappedType = [inType definition].unwrappedType
+      let unwrappedType = inType.definition.unwrappedType
       if [unwrappedType isNull] then
         error self.mLocation : "the inferred type @" + unwrappedType.typeName
          + " is not an optional type" : outExpression
@@ -99,7 +99,7 @@ final class @nilExpressionForGeneration : @semanticExpressionForGeneration {
                                       ?!@uint unused ioTemporaryVariableIndex
                                       ?!@stringset unused ioUnusedVariableCppNameSet
                                       !@string outCppExpression {
-    outCppExpression = "GGS_" + [self.mResultType identifierRepresentation] + "::init_nil ()"
+    outCppExpression = "GGS_" + self.mResultType.identifierRepresentation + "::init_nil ()"
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

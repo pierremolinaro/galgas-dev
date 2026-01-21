@@ -36,7 +36,7 @@ filewrapper grammarRulesInTexDocumentTemplate in "+generation-templates/grammar_
 
 private func escapeForTex (let @string inString) -> @string {
   result = ""
-  for @uint idx in 0 ..< [inString count] do
+  for @uint idx in 0 ..< inString.count do
     let c = [inString characterAtIndex !idx]
     if c == '_' then
       result += "\\_"
@@ -170,14 +170,14 @@ method @productionRuleListForGrammarAnalysis.@element displayRuleVertically
 {
   var @string currentNode = "P0start"
   var @rowList rowArray = @()
-  for * in 1 ..< [self.mInstructionList count] do
+  for * in 1 ..< self.mInstructionList.count do
     rowArray += !@[@("", "")]
   end
   rowArray += !@[@(currentNode, "[firstPoint] ()")]
   var @string arrows = ""
   var @string arrowStyle = "--"
   var @uint unusedMaxUsedRowIndex = 0 // Unused
-  var row = [self.mInstructionList count]
+  var row = self.mInstructionList.count
   for (instruction) in self.mInstructionList do
     row -= 1
     var @uint column = 1
@@ -236,7 +236,7 @@ method @syntaxInstructionListForGrammarAnalysis tikzNodeForSyntaxInstruction
   ?!@uint ioMaxUsedRowIndex
   ?debug:let @bool inDebug
 {
-  if [self count] == 0 then
+  if self.count == 0 then
     [!?ioRowList appendRow
       !nodeDefinition:"[point] ()"
       !row:inRow
@@ -278,7 +278,7 @@ setter @rowList appendRow
   !nodeName:@string outNodeName
 {
 //--- Add rows ?
-  let length = [self count]
+  let length = self.count
   if length <= inRow then
     for * in length ... inRow do
       self += !@()
@@ -287,13 +287,13 @@ setter @rowList appendRow
 //--- Get row
   var cols = [self columnsAtIndex !inRow]
 //--- add column pads in row
-  if [cols count] <= inColumn then
-    for * in [cols count] ... inColumn do
+  if cols.count <= inColumn then
+    for * in cols.count ... inColumn do
       cols += !"" !""
     end
   end
 //--- Add node
-  outNodeName = "p" + inRow + "-" + [cols count]
+  outNodeName = "p" + inRow + "-" + cols.count
   cols += !outNodeName !inNodeDefinition
 //--- Set new row
   [!?self setColumnsAtIndex !cols !inRow]
@@ -352,7 +352,7 @@ override method @selectInstructionForGrammarAnalysis tikzNodeForSyntaxInstructio
 //--- Trace ?
   if inDebug then
     [!?ioRowList appendRow
-      !nodeDefinition:"[nonterminal] {SS" + [self.mSelectBranchList count] + "}"
+      !nodeDefinition:"[nonterminal] {SS" + self.mSelectBranchList.count + "}"
       !row:inRow
       !column:ioColumn
       ?nodeName:let markerStartNodeName
@@ -420,7 +420,7 @@ override method @selectInstructionForGrammarAnalysis tikzNodeForSyntaxInstructio
 //--- Trace ?
   if inDebug then
     [!?ioRowList appendRow
-      !nodeDefinition:"[nonterminal] {SE" + [self.mSelectBranchList count] + "}"
+      !nodeDefinition:"[nonterminal] {SE" + self.mSelectBranchList.count + "}"
       !row:inRow
       !column:ioColumn
       ?nodeName:let markerEndNodeName
@@ -446,7 +446,7 @@ override method @repeatInstructionForGrammarAnalysis tikzNodeForSyntaxInstructio
 //--- Trace ?
   if inDebug then
     [!?ioRowList appendRow
-      !nodeDefinition:"[nonterminal] {RS" + [self.mRepeatBranchList count] + "}"
+      !nodeDefinition:"[nonterminal] {RS" + self.mRepeatBranchList.count + "}"
       !row:inRow
       !column:ioColumn
       ?nodeName:let markerStartNodeName
@@ -478,10 +478,10 @@ override method @repeatInstructionForGrammarAnalysis tikzNodeForSyntaxInstructio
   [!?ioRowList appendRow !nodeDefinition:"[point] ()" !row:inRow !column:ioColumn ?nodeName:let startNodeName]
   ioColumn += 1
 //--- Enter following branches; particular case: one empty branch
-  var oneEmptyBranch = [branches count] == 1
+  var oneEmptyBranch = branches.count == 1
   if oneEmptyBranch then
     [branches first ?let firstBranch]
-    oneEmptyBranch = [firstBranch count] == 0
+    oneEmptyBranch = firstBranch.count == 0
   end
 //--- Enter branches
   var @stringlist endingNodes = @()
@@ -528,7 +528,7 @@ override method @repeatInstructionForGrammarAnalysis tikzNodeForSyntaxInstructio
 //--- Trace ?
   if inDebug then
     [!?ioRowList appendRow
-      !nodeDefinition:"[nonterminal] {RE" + [self.mRepeatBranchList count] + "}"
+      !nodeDefinition:"[nonterminal] {RE" + self.mRepeatBranchList.count + "}"
       !row:inRow
       !column:ioColumn
       ?nodeName:let markerEndNodeName
@@ -544,7 +544,7 @@ override method @repeatInstructionForGrammarAnalysis tikzNodeForSyntaxInstructio
 //--------------------------------------------------------------------------------------------------
 
 getter @syntaxInstructionListForGrammarAnalysis displayVertically -> @bool {
-  result = [self count] > 4
+  result = self.count > 4
   for (instruction) in self while result do
     result = [instruction isLinear]
   end

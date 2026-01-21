@@ -287,7 +287,7 @@ final class @ifInstructionForGeneration : @semanticInstructionForGeneration {
       ioGeneratedCode += "}\n"
     end
   //--- else branch
-    if [self.m_else_instructionList count] > 0 then
+    if self.m_else_instructionList.count > 0 then
       ioGeneratedCode += "if (GalgasBool::boolFalse == " + testVar + ") {\n"
       generateInstructionList (
         !?ioInclusionSet

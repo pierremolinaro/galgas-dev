@@ -107,10 +107,10 @@ final class @superInitInstructionAST : @semanticInstructionAST {
   //--- Check the call occurs in an class initializer
    if let selfAvailable = [inAnalysisContext.selfAvailability getAvailable],
         selfAvailable.selfMutability == .initializer,
-        [[selfAvailable.type definition].typeKind isClassType] then
-      switch [selfAvailable.type definition].superType
+        selfAvailable.type.definition.typeKind.isClassType then
+      switch selfAvailable.type.definition.superType
       case element (superType) :
-        let superTypeDefinition = [superType.bang definition]
+        let superTypeDefinition = superType.bang.definition
       //--- Check super initializer is defined
         let superClassInitializerMap = superTypeDefinition.initializerMap
         let signature = @lstring {![self.mActualParameterList initializerSignature] !self.mInstructionLocation}
@@ -202,8 +202,8 @@ final class @superInitInstructionForGeneration : @semanticInstructionForGenerati
       ]
       getterArgumentCppNameList += !argumentCppName
     end
-    ioGeneratedCode += [self.mSuperTypeName identifierRepresentation] + "_"
-    ioGeneratedCode += [self.mSuperInitializerSignature identifierRepresentation]
+    ioGeneratedCode += self.mSuperTypeName.identifierRepresentation + "_"
+    ioGeneratedCode += self.mSuperInitializerSignature.identifierRepresentation
     ioGeneratedCode += " (" 
     for (mValue) in getterArgumentCppNameList do
       ioGeneratedCode += mValue + ", "

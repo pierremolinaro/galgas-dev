@@ -116,11 +116,11 @@ final class @superMethodCallInstructionAST : @semanticInstructionAST {
       selfType = type
     end
   //--- Check self type is a class
-    if not [[selfType definition].typeKind isClassType] then
+    if not selfType.definition.typeKind.isClassType then
       error self.mMethodName : "self type is not a class"
     end
   //--- Get type method signature
-    [[selfType definition].instanceMethodMap searchKey
+    [selfType.definition.instanceMethodMap searchKey
       !self.mMethodName
       ?* // let kind
       ?let routineSignature
@@ -150,11 +150,11 @@ final class @superMethodCallInstructionAST : @semanticInstructionAST {
     var searching = true
     if @uint.errorCount == 0 then
       loop (@uint.max) while searching do
-        if [[baseType definition].superType isNull] then
+        if baseType.definition.superType.isNull then
           searching = false
         else
-          if [[[baseType definition].superType definition].instanceMethodMap hasKey !self.mMethodName.string] then
-            baseType = [baseType definition].superType
+          if [baseType.definition.superType.definition.instanceMethodMap hasKey !self.mMethodName.string] then
+            baseType = baseType.definition.superType
           else
             searching = false
           end
@@ -204,14 +204,14 @@ final class @superMethodCallInstructionForGeneration : @semanticInstructionForGe
       parameterCppNameList += !parameterCppName
     end
   //--- Generate method call
-    ioInclusionSet ++= "method-" + [[self.mBaseType definition].typeName.string fileNameRepresentation] + "-" + [self.mMethodName fileNameRepresentation]
-    ioGeneratedCode += "cPtr_" + [[self.mBaseType definition].typeName identifierRepresentation]
-    ioGeneratedCode += "::method_" + [self.mMethodName identifierRepresentation] + " ("
+    ioInclusionSet ++= "method-" + [self.mBaseType.definition.typeName.string fileNameRepresentation] + "-" + [self.mMethodName fileNameRepresentation]
+    ioGeneratedCode += "cPtr_" + self.mBaseType.definition.typeName.string.identifierRepresentation
+    ioGeneratedCode += "::method_" + self.mMethodName.identifierRepresentation + " ("
     for (mValue) in parameterCppNameList
       do ioGeneratedCode += mValue
       between ioGeneratedCode += ", "
     end
-    if [parameterCppNameList count] == 0 then
+    if parameterCppNameList.count == 0 then
       if self.mHasCompilerArgument then
         [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
         ioGeneratedCode += compilerCppName ()
@@ -224,7 +224,7 @@ final class @superMethodCallInstructionForGeneration : @semanticInstructionForGe
     else
       ioGeneratedCode += " COMMA_"
     end
-    ioGeneratedCode += [self.mInstructionLocation sourceFile] + ") ;\n"
+    ioGeneratedCode += self.mInstructionLocation.sourceFile + ") ;\n"
   //--- Generate poisoned variables
     for (actualParameter) in self.mActualParameterList do
       [actualParameter generatePoisonedVariables
@@ -232,28 +232,6 @@ final class @superMethodCallInstructionForGeneration : @semanticInstructionForGe
         !?ioUnusedVariableCppNameSet
       ]
     end
-
-
-
-//    var @stringlist getterArgumentCppNameList = @()
-//    for (mExpression) in self.mActualParameterList do
-//      [mExpression generateExpression
-//        !?ioGeneratedCode
-//        !?ioInclusionSet
-//        !?ioTemporaryVariableIndex
-//        !?ioUnusedVariableCppNameSet
-//        ?let argumentCppName
-//      ]
-//      getterArgumentCppNameList += !argumentCppName
-//    end
-//    ioGeneratedCode += [self.mSuperTypeName identifierRepresentation] + "_"
-//    ioGeneratedCode += [self.mSuperInitializerSignature identifierRepresentation]
-//    ioGeneratedCode += " (" 
-//    for (mValue) in getterArgumentCppNameList do
-//      ioGeneratedCode += mValue + ", "
-//    end
-//    [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
-//    ioGeneratedCode += compilerCppName () + ") ; \n" 
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

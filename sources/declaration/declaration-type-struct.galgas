@@ -207,7 +207,7 @@ final class @structDeclarationAST : @semanticDeclarationAST {
     )
     var features = @typeFeatures.generateDescriptionGetterUtilityMethod
   //--- Synthetize an initializer, if the structure defines none
-    if [initializerMap count] == 0 then
+    if initializerMap.count == 0 then
       features |= .generateSynthetizedInitializer
       [!?initializerMap insertKey
         !@{![constructorPropertyTypeList initializerSignature] !self.structTypeName}
@@ -280,7 +280,7 @@ final class @structDeclarationAST : @semanticDeclarationAST {
     let structType = [ioTypeMap typeMapEntryForLKey !self.structTypeName]
     let structNameForUsefulness = typeNameForUsefulEntitiesGraph (!self.structTypeName)
   //---
-    if [self.mStructurePropertyListAST count] == 0 then
+    if self.mStructurePropertyListAST.count == 0 then
       error self.structTypeName: "a structure cannot be empty: it must have at least one property"
     end
     var @typedPropertyList typedPropertyList = @()
@@ -299,11 +299,11 @@ final class @structDeclarationAST : @semanticDeclarationAST {
         error property.name : m
       end
       if [property.mutability isWeakProperty] then
-        switch [t definition].unwrappedType
+        switch t.definition.unwrappedType
         case null :
           error property.name : "the weak property type should be an optional class"
         case element (aWeakType) :
-          if let aType = aWeakType, let ref = [[aType definition].typeKind getClassType] then
+          if let aType = aWeakType, let ref = [aType.definition.typeKind getClassType] then
             if not ref.isReference then
               error property.name : "the weak property type should be an optional refclass"
             end
@@ -333,7 +333,7 @@ final class @structDeclarationAST : @semanticDeclarationAST {
       switch self.comparison
       case none :
       case equatable :
-        let propertyFeatures = [t definition].features
+        let propertyFeatures = t.definition.features
         if (not [propertyFeatures contains !.equatable])
            & not [propertyFeatures contains !.comparable]
            & not [propertyFeatures contains !.referenceEquatable] then
@@ -341,7 +341,7 @@ final class @structDeclarationAST : @semanticDeclarationAST {
           : "the structure is not equatable, because '" + property.name + "' is not"
         end
       case comparable :
-        if not [[t definition].features contains !.comparable] then
+        if not [t.definition.features contains !.comparable] then
           error property.name
           : "the structure is not comparable, because '" + property.name + "' is not"
         end
@@ -367,7 +367,7 @@ final class @structDeclarationAST : @semanticDeclarationAST {
         !constructorArgumentList
         !initializationCode
         !constructorNeedsCompilerVar
-        ![[structType definition].features contains !.generateSynthetizedInitializer]
+        ![structType.definition.features contains !.generateSynthetizedInitializer]
       }
   //--- Useful entities graph
     [!?ioUsefulEntitiesGraph addNode !structNameForUsefulness !structNameForUsefulness]
@@ -375,7 +375,7 @@ final class @structDeclarationAST : @semanticDeclarationAST {
       ioUsefulnessRootEntities += !structNameForUsefulness
     end
   //--- Add synthetized initializer ?
-    if [[structType definition].features contains !.generateSynthetizedInitializer] then
+    if [structType.definition.features contains !.generateSynthetizedInitializer] then
       let initializerForUsefulness = initializerNameForUsefulEntitiesGraph (
         !self.structTypeName
         ![constructorArgumentList initializerSignature]
@@ -409,15 +409,15 @@ final class @structTypeForGeneration : @semanticTypeForGeneration {
     for property in self.mTypedPropertyList do
       [property.typeEntry addHeaderFileName1 !?ioInclusionSet]
     end
-    let selfTypeDefinition = [self.mSelfTypeEntry definition]
+    let selfTypeDefinition = self.mSelfTypeEntry.definition
     outHeader = [filewrapper structureGenerationTemplate.structTypeHeader1
       !selfTypeDefinition.typeName.string
-      ![self.mSelfTypeEntry  identifierRepresentation]
+      !self.mSelfTypeEntry.identifierRepresentation
       !self.mTypedPropertyList
     ]
     outHeader += [filewrapper typeGenerationTemplate.unifiedClassBodyForType
       !selfTypeDefinition.typeName.string
-      ![self.mSelfTypeEntry identifierRepresentation]
+      !self.mSelfTypeEntry.identifierRepresentation
       !selfTypeDefinition.isConcrete
       !selfTypeDefinition.initializerMap
       !selfTypeDefinition.classFunctionMap
@@ -442,10 +442,10 @@ final class @structTypeForGeneration : @semanticTypeForGeneration {
     !@string outImplementation
   {
     [self.mSelfTypeEntry addHeaderFileName !?ioInclusionSet]
-    let selfTypeDefinition = [self.mSelfTypeEntry definition]
+    let selfTypeDefinition = self.mSelfTypeEntry.definition
     outImplementation = [filewrapper structureGenerationTemplate.structTypeSpecificImplementation
       !selfTypeDefinition.typeName.string
-      ![self.mSelfTypeEntry  identifierRepresentation]
+      !self.mSelfTypeEntry.identifierRepresentation
       !self.mTypedPropertyList
       !self.mConstructorArgumentList
       !self.mConstructorInitializationCode

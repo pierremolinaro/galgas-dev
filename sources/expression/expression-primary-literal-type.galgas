@@ -110,7 +110,7 @@ override method @literalTypeInExpressionForGeneration generateExpression
 {
   [self.mLiteralType addHeaderFileName !?ioInclusionSet]
   outCppExpression = "GGS_type (& kTypeDescriptor_GALGAS_"
-                  + [[self.mLiteralType definition].typeName.string identifierRepresentation] + ")"
+                  + self.mLiteralType.definition.typeName.string.identifierRepresentation + ")"
 }
 
 //--------------------------------------------------------------------------------------------------

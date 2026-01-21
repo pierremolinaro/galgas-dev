@@ -94,9 +94,9 @@ override method @unaryWrappingMinusExpressionAST analyzeSemanticExpression
   ]
 //--- Check operator availability
   let @unifiedTypeMapEntry type = expression.mResultType
-  if not [[type definition].features contains !.prefixMinusOperatorNoOVF] then
+  if not [type.definition.features contains !.prefixMinusOperatorNoOVF] then
     error self.mOperatorLocation
-    : "operand type is '@" + [type definition].typeName.string + "' and does not support the prefix minus operator"
+    : "operand type is '@" + type.definition.typeName.string + "' and does not support the prefix minus operator"
     :outExpression
   else
   //--- Generate expression

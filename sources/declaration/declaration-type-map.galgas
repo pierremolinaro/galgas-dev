@@ -494,18 +494,18 @@ final class @mapDeclarationAST : @semanticDeclarationAST {
       !"inKey"
     var @functionSignature argumentTypeListForAddAssignWithFieldExpressionList = @()
     argumentTypeListForAddAssignWithFieldExpressionList +=
-      !["" nowhere]
+      !"".nowhere
       !lstringTypeIndex
       !"lkey"
       !true
     insertMethodFormalArgumentList +=
-      !["" nowhere]
+      !"".nowhere
       !lstringTypeIndex
       !@formalArgumentPassingModeAST.argumentConstantIn
       !"inLKey"
     var @formalParameterSignature removeMethodFormalArgumentList = @()
     removeMethodFormalArgumentList +=
-      !["" nowhere]
+      !"".nowhere
       !lstringTypeIndex
       !@formalArgumentPassingModeAST.argumentConstantIn
       !"inLKey"
@@ -515,23 +515,23 @@ final class @mapDeclarationAST : @semanticDeclarationAST {
         error mPropertyName : "property initialization is not handled for a map"
       end
       [!?ioTypeMap makeEntry !propertyTypeName ?let attributeTypeIndex]
-      argumentTypeListForAddAssignWithFieldExpressionList += !["" nowhere] !attributeTypeIndex !mPropertyName.string !true
+      argumentTypeListForAddAssignWithFieldExpressionList += !"".nowhere !attributeTypeIndex !mPropertyName.string !true
       typedPropertyList += !attributeTypeIndex !mPropertyName !initExpression !hasSetter: true !hasSelector: hasSelector
       typesToIncludeInHeaderCompilation += !attributeTypeIndex
       enumerationDescriptor += !attributeTypeIndex !mPropertyName.string
       insertMethodFormalArgumentList +=
-        !if hasSelector then mPropertyName else ["" nowhere] end
+        !if hasSelector then mPropertyName else "".nowhere end
         !attributeTypeIndex
         !.argumentConstantIn
         !mPropertyName.string
       removeMethodFormalArgumentList +=
-        !if hasSelector then mPropertyName else ["" nowhere] end
+        !if hasSelector then mPropertyName else "".nowhere end
         !attributeTypeIndex
         !.argumentOut
         !mPropertyName.string
       optionalMethodSignature +=
         !false
-        !if hasSelector then mPropertyName else ["" nowhere] end
+        !if hasSelector then mPropertyName else "".nowhere end
         !attributeTypeIndex
         !mPropertyName.string
     end
@@ -606,7 +606,7 @@ final class @mapDeclarationAST : @semanticDeclarationAST {
       [!?getterMap insertOrReplace
         !accessorName
         !.definedAsMember
-        !@functionSignature @[@(["" nowhere], stringTypeIndex, "inKey", true)]
+        !@functionSignature @[@("".nowhere, stringTypeIndex, "inKey", true)]
         !.here
         !true
         !attributeTypeIndex
@@ -615,7 +615,7 @@ final class @mapDeclarationAST : @semanticDeclarationAST {
       ]
     end
   //--------- Handle "insertOrReplace" setter
-    if [self.mInsertOrReplaceDeclarationListAST count] >= 1 then
+    if self.mInsertOrReplaceDeclarationListAST.count >= 1 then
       [self.mInsertOrReplaceDeclarationListAST first ?let insertOrReplaceLocation]
       [!?setterMap insertOrReplace
         !@lstring {!"insertOrReplace" !insertOrReplaceLocation}
@@ -637,8 +637,8 @@ final class @mapDeclarationAST : @semanticDeclarationAST {
         ?let @unifiedTypeMapEntry attributeTypeIndex
       ]
       var @formalParameterSignature accessorFormalArgumentList = @()
-      accessorFormalArgumentList += !["" nowhere] !attributeTypeIndex !.argumentConstantIn !property.name.string
-      accessorFormalArgumentList += !["" nowhere] !stringTypeIndex !.argumentConstantIn !"key"
+      accessorFormalArgumentList += !"".nowhere !attributeTypeIndex !.argumentConstantIn !property.name.string
+      accessorFormalArgumentList += !"".nowhere !stringTypeIndex !.argumentConstantIn !"key"
       [!?setterMap insertOrReplace
         !accessorName
         !@methodKind.definedAsMember
@@ -692,7 +692,7 @@ final class @mapDeclarationAST : @semanticDeclarationAST {
     ]
   //--- Read subscripts
     var @subscriptMap readSubscriptMap = @()
-    let @functionSignature argumentTypeList = @[@(["" nowhere], stringTypeIndex, "inKey", true)]
+    let @functionSignature argumentTypeList = @[@("".nowhere, stringTypeIndex, "inKey", true)]
     [!?readSubscriptMap insertKey
       !@([argumentTypeList subcriptSignature], .nowhere)
       !argumentTypeList
@@ -816,7 +816,7 @@ final class @mapDeclarationAST : @semanticDeclarationAST {
         warning mInsertOrReplaceDeclarationLocation: "the 'insertOrReplace' setter is already declared"
       end
     end
-    let @bool hasInsertOrReplaceModifier = [self.mInsertOrReplaceDeclarationListAST count] > 0
+    let @bool hasInsertOrReplaceModifier = self.mInsertOrReplaceDeclarationListAST.count > 0
     if hasInsertOrReplaceModifier & [insertMethodMap hasKey !"insertOrReplace"] then
       [self.mInsertOrReplaceDeclarationListAST first ?let insertOrReplaceDeclarationLocation]
       error insertOrReplaceDeclarationLocation
@@ -869,20 +869,20 @@ final class @mapTypeForGeneration : @semanticTypeForGeneration {
 
   override method appendDeclaration1 ?!@stringset unused ioInclusionSet
                                       !@string outHeader {
-    let selfTypeDefinition = [self.mSelfTypeEntry definition]
+    let selfTypeDefinition = self.mSelfTypeEntry.definition
     outHeader = [filewrapper mapGenerationTemplate.mapTypeHeader1
       !selfTypeDefinition.typeName.string
-      ![self.mSelfTypeEntry identifierRepresentation]
+      !self.mSelfTypeEntry.identifierRepresentation
       !self.mTypedAttributeList
       !self.mSearchMethodList
       !selfTypeDefinition.enumerationDescriptorList
       !selfTypeDefinition.typeForEnumeratedElement
-      ![self.mElementTypeEntry identifierRepresentation]
+      !self.mElementTypeEntry.identifierRepresentation
       ![selfTypeDefinition.features generateCppObjectComparison]
     ]
     outHeader += [filewrapper typeGenerationTemplate.unifiedClassBodyForType
       !selfTypeDefinition.typeName.string
-      ![self.mSelfTypeEntry identifierRepresentation]
+      !self.mSelfTypeEntry.identifierRepresentation
       !selfTypeDefinition.isConcrete
       !selfTypeDefinition.initializerMap
       !selfTypeDefinition.classFunctionMap
@@ -907,13 +907,13 @@ final class @mapTypeForGeneration : @semanticTypeForGeneration {
     [self.mElementTypeEntry addHeaderFileName !?ioInclusionSet]
     [self.mOptionalElementTypeEntry addHeaderFileName !?ioInclusionSet]
     [self.mSelfTypeEntry  addHeaderFileName !?ioInclusionSet]
-    let selfTypeDefinition = [self.mSelfTypeEntry definition]
+    let selfTypeDefinition = self.mSelfTypeEntry.definition
     outImplementation = [filewrapper mapGenerationTemplate.mapTypeSpecificImplementation
-      ![selfTypeDefinition.typeName.string identifierRepresentation]
+      !selfTypeDefinition.typeName.string.identifierRepresentation
       !self.mTypedAttributeList
-      ![self.mElementTypeEntry identifierRepresentation]
+      !self.mElementTypeEntry.identifierRepresentation
       !insertSetters: self.mInsertSetterList
-      !optionalElementTypeIdentifier: [self.mOptionalElementTypeEntry identifierRepresentation]
+      !optionalElementTypeIdentifier: self.mOptionalElementTypeEntry.identifierRepresentation
       !searchMethods: self.mSearchMethodList
       !searchSubscripts: self.mSearchSubscriptList
       !removeSetters: self.mRemoveSetterList

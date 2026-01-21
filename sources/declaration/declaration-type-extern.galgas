@@ -97,7 +97,7 @@ syntax extension galgas3DeclarationsSyntax {
       argumentTypeList += !selector !argumentTypeName !argumentName
     while
       $?$
-      let selector = ["" here]
+      let selector = "".here
       <type_definition_ggs3> !?ioDeclarations ?let argumentTypeName
       $identifier$ ?let @lstring argumentName
       argumentTypeList += !selector !argumentTypeName !argumentName
@@ -121,7 +121,7 @@ syntax extension galgas3DeclarationsSyntax {
       argumentTypeList += !selector !argumentTypeName !argumentName
     while
       $?$
-      let selector = ["" here]
+      let selector = "".here
       <type_definition_ggs3> !?ioDeclarations ?let argumentTypeName
       $identifier$ ?let @lstring argumentName
       argumentTypeList += !selector !argumentTypeName !argumentName
@@ -237,7 +237,7 @@ syntax extension galgas4DeclarationsSyntax {
           argumentTypeList += !selector !argumentTypeName !argumentName
         or
           $?$
-          let selector = ["" here]
+          let selector = "".here
           <type_definition> !?ioDeclarations ?let argumentTypeName
           $identifier$ ?let argumentName
           argumentTypeList += !selector !argumentTypeName !argumentName
@@ -265,7 +265,7 @@ syntax extension galgas4DeclarationsSyntax {
       argumentTypeList += !selector !argumentTypeName !argumentName
     while
       $?$
-      let selector = ["" here]
+      let selector = "".here
       <type_definition> !?ioDeclarations ?let argumentTypeName
       $identifier$ ?let @lstring argumentName
       argumentTypeList += !selector !argumentTypeName !argumentName
@@ -563,16 +563,16 @@ final class @externTypeDeclarationForGeneration : @semanticTypeForGeneration {
 override method @externTypeDeclarationForGeneration appendDeclaration1
   ?!@stringset unused ioInclusionSet
   !@string outHeader {
-  let selfTypeDefinition = [self.mSelfTypeEntry definition]
+  let selfTypeDefinition = self.mSelfTypeEntry.definition
   outHeader = [filewrapper typeGenerationTemplate.externTypeHeader1
     !selfTypeDefinition.typeName.string
-    ![self.mSelfTypeEntry identifierRepresentation]
+    !self.mSelfTypeEntry.identifierRepresentation
     !self.mCppPreDeclarationCode
     !self.mCppClassCode
   ]
   outHeader += [filewrapper typeGenerationTemplate.unifiedClassBodyForType
     !selfTypeDefinition.typeName.string
-    ![self.mSelfTypeEntry identifierRepresentation]
+    !self.mSelfTypeEntry.identifierRepresentation
     !selfTypeDefinition.isConcrete
     !selfTypeDefinition.initializerMap
     !selfTypeDefinition.classFunctionMap

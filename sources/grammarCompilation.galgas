@@ -51,14 +51,14 @@ proc checkLabelMap
   for (mLabelName mFormalArgumentList *) in inLabels do
     labelStringSet ++= mLabelName.string
     [inNonterminalSymbolLabelMapForGrammarAnalysis searchKey !mLabelName ?let formalParametersList]
-    if [mFormalArgumentList count] != [formalParametersList count] then
-      error mLabelName: [[mFormalArgumentList count] string]
+    if mFormalArgumentList.count != formalParametersList.count then
+      error mLabelName: mFormalArgumentList.count.string
         + " formal parameter"
-        + if [mFormalArgumentList count] > 1 then "s" else "" end
+        + if mFormalArgumentList.count > 1 then "s" else "" end
         + " declared here, but declaration at "
         + [[inNonterminalSymbolLabelMapForGrammarAnalysis locationForKey !mLabelName.string] startLocationString]
-        + " names " + [[formalParametersList count] string] + " parameter"
-        + if [formalParametersList count] > 1 then "s" else "" end
+        + " names " + formalParametersList.count.string + " parameter"
+        + if formalParametersList.count > 1 then "s" else "" end
     else
       for (* mFormalArgumentPassingMode mFormalArgumentTypeName * *) in mFormalArgumentList, (mFormalArgumentPassingModeForGrammarAnalysis mGalgasTypeNameForGrammarAnalysis) in formalParametersList do
         if mFormalArgumentPassingModeForGrammarAnalysis != mFormalArgumentPassingMode then
@@ -107,7 +107,7 @@ proc handleNonTerminalDeclarations
     else
       [!?ioNonTerminalMapForGrammarAnalysis insertKey
         !mNonterminalName
-        ![ioNonTerminalMapForGrammarAnalysis count]
+        !ioNonTerminalMapForGrammarAnalysis.count
         !transformLabelMap (!mLabels)
       ]
     end
@@ -137,7 +137,7 @@ proc handleNonTerminalDeclarationsFromRuleList
     else
       [!?ioNonTerminalMapForGrammarAnalysis insertKey
         !mNonterminalName
-        ![ioNonTerminalMapForGrammarAnalysis count]
+        !ioNonTerminalMapForGrammarAnalysis.count
         !transformLabelMap (!nonTerminalLabelListAST)
       ]
     end
@@ -210,7 +210,7 @@ proc buildRuleList
       !mNonterminalName
       !nonTerminalIndex
       !instructionList
-      ![productionRulesList count]
+      !productionRulesList.count
   end
   ioSyntaxComponentListForGrammarAnalysis +=
     !productionRulesList

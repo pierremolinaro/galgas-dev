@@ -258,15 +258,13 @@ override method @repeatInstructionForGeneration appendSyntaxSignature
 override getter @repeatInstructionForGeneration compareInstructionSyntaxSignature
   ?let @semanticInstructionForGeneration inTestedInstruction ->@bool {
   if let si = inTestedInstruction as @repeatInstructionForGeneration then
-//  cast inTestedInstruction
-//  case >= @repeatInstructionForGeneration si :
     result = compareSyntaxSignature (!self.m_repeated_instructionList !si.m_repeated_instructionList !si.mEndOfRepeatedInstructions)
-    if result & ([self.mListOfSemanticInstructionListForGeneration count] != [si.mListOfSemanticInstructionListForGeneration count]) then
+    if result & (self.mListOfSemanticInstructionListForGeneration.count != si.mListOfSemanticInstructionListForGeneration.count) then
       error si.mInstructionLocation
         :"syntax signature error; the reference 'repeat' instruction has "
-        + [[self.mListOfSemanticInstructionListForGeneration count] string]
+        + self.mListOfSemanticInstructionListForGeneration.count.string
         + " 'while' branche(s), but this instruction has "
-        + [[si.mListOfSemanticInstructionListForGeneration count] string]
+        + si.mListOfSemanticInstructionListForGeneration.count.string
       result = false
     end
     for (ref_mInstructionList *) in self.mListOfSemanticInstructionListForGeneration, (test_mInstructionList test_mEndOfInstructionList) in si.mListOfSemanticInstructionListForGeneration while result do
@@ -298,7 +296,7 @@ override method @repeatInstructionForGeneration generateInstruction
   ?let @bool inGenerateSyntaxDirectedTranslationString
   ?!@string ioGeneratedCode
 {
-  let @string repeatFlagCppName = "repeatFlag_" + [ioTemporaryVariableIndex string]
+  let @string repeatFlagCppName = "repeatFlag_" + ioTemporaryVariableIndex.string
   ioTemporaryVariableIndex += 1
   ioGeneratedCode += "bool " + repeatFlagCppName + " = true ;\n"
   ioGeneratedCode += "while (" + repeatFlagCppName + ") {\n"
@@ -311,9 +309,9 @@ override method @repeatInstructionForGeneration generateInstruction
     !?ioGeneratedCode
   )
   [!?ioGeneratedCode incIndentation !2]
-  if [self.mListOfSemanticInstructionListForGeneration count] == 1 then
-    ioGeneratedCode += "if (select_" + [self.mSyntaxComponentName identifierRepresentation]
-    ioGeneratedCode += "_" + [self.mChoiceIndex string] + " (" + compilerCppName () + ") == 2) {\n"
+  if self.mListOfSemanticInstructionListForGeneration.count == 1 then
+    ioGeneratedCode += "if (select_" + self.mSyntaxComponentName.identifierRepresentation
+    ioGeneratedCode += "_" + self.mChoiceIndex.string + " (" + compilerCppName () + ") == 2) {\n"
     let instructionList = [self.mListOfSemanticInstructionListForGeneration mInstructionListAtIndex !0]
     generateInstructionList (
       !?ioInclusionSet
@@ -327,10 +325,10 @@ override method @repeatInstructionForGeneration generateInstruction
     ioGeneratedCode += "  " + repeatFlagCppName + " = false ;\n"
     ioGeneratedCode += "}\n"
   else
-    ioGeneratedCode += "switch (select_" + [self.mSyntaxComponentName identifierRepresentation]
-    ioGeneratedCode += "_" + [self.mChoiceIndex string] + " (" + compilerCppName () + ")) {\n"
+    ioGeneratedCode += "switch (select_" + self.mSyntaxComponentName.identifierRepresentation
+    ioGeneratedCode += "_" + self.mChoiceIndex.string + " (" + compilerCppName () + ")) {\n"
     for (mInstructionList *) in self.mListOfSemanticInstructionListForGeneration do(IDX)
-      ioGeneratedCode += "case " + [IDX + 2 string] + ": {\n"
+      ioGeneratedCode += "case " + (IDX + 2).string + ": {\n"
       generateInstructionList (
         !?ioInclusionSet
         !mInstructionList

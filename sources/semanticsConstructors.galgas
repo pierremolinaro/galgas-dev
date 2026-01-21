@@ -56,7 +56,7 @@ proc enterClassFunctionWithArgument
   [!?ioUnifiedTypeMap makeEntryFromString !inArgument1TypeName ?let t]
   [!?ioClassFunctionMap insertOrReplace
     !@lstring {!inClassFunctionName !@location.here}
-    !@functionSignature @[@(["" nowhere], t, inArgument1Name, true)]
+    !@functionSignature @[@("".nowhere, t, inArgument1Name, true)]
     !inHasLexiqueArgument
     !returnedTypeIndex
   ]
@@ -79,9 +79,9 @@ proc enterClassFunctionWith2Arguments
   var argumentTypeList = @functionSignature ()
   var @unifiedTypeMapEntry t
   [!?ioUnifiedTypeMap makeEntryFromString !inArgument1TypeName ?t]
-  argumentTypeList += !["" nowhere] !t !inArgument1Name !true
+  argumentTypeList += !"".nowhere !t !inArgument1Name !true
   [!?ioUnifiedTypeMap makeEntryFromString !inArgument2TypeName ?t]
-  argumentTypeList += !["" nowhere] !t !inArgument2Name !true
+  argumentTypeList += !"".nowhere !t !inArgument2Name !true
   [!?ioClassFunctionMap insertOrReplace
     !@lstring {!inClassFunctionName !@location.here}
     !argumentTypeList
@@ -108,11 +108,11 @@ proc enterClassFunctionWith3Arguments
   [!?ioUnifiedTypeMap makeEntryFromString !inReturnedTypeName ?let returnedTypeIndex]
   [!?ioUnifiedTypeMap makeEntryFromString !inArgument1TypeName ?var t]
   var @functionSignature argumentTypeList = @()
-  argumentTypeList += !["" nowhere] !t !inArgument1Name !true
+  argumentTypeList += !"".nowhere !t !inArgument1Name !true
   [!?ioUnifiedTypeMap makeEntryFromString !inArgument2TypeName ?t]
-  argumentTypeList += !["" nowhere] !t !inArgument2Name !true
+  argumentTypeList += !"".nowhere !t !inArgument2Name !true
   [!?ioUnifiedTypeMap makeEntryFromString !inArgument3TypeName ?t]
-  argumentTypeList += !["" nowhere] !t !inArgument3Name !true
+  argumentTypeList += !"".nowhere !t !inArgument3Name !true
   [!?ioClassFunctionMap insertOrReplace
     !@lstring {!inClassFunctionName !@location.here}
     !argumentTypeList

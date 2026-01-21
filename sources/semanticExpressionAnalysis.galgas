@@ -78,21 +78,21 @@ proc checkAssignmentTypes ?let @unifiedTypeMapEntry inTargetType
                           ?let @location inErrorLocation {
   var @unifiedTypeMapEntry sourceType = inSourceType
   var @bool ok = inTargetType == sourceType
-  loop (@uint.max) while (not ok) & (not [[sourceType definition].superType isNull]) do
-    sourceType = [sourceType definition].superType
+  loop (@uint.max) while (not ok) & (not sourceType.definition.superType.isNull) do
+    sourceType = sourceType.definition.superType
     ok = inTargetType == sourceType
   end
-  if not ok, let weakRefType = [[inTargetType definition].typeKind getWeakReferenceType] then
+  if not ok, let weakRefType = inTargetType.definition.typeKind.getWeakReferenceType then
     sourceType = inSourceType
     ok = weakRefType.referenceType == sourceType
-    loop (@uint.max) while (not ok) & (not [[sourceType definition].superType isNull]) do
-      sourceType = [sourceType definition].superType
+    loop (@uint.max) while (not ok) & (not sourceType.definition.superType.isNull) do
+      sourceType = sourceType.definition.superType
       ok = weakRefType.referenceType == sourceType
     end
   end
   if not ok then
     error inErrorLocation
-     : "target object type is '@" + [inTargetType definition].typeName.string + "' and cannot be assigned from an '@" + [inSourceType definition].typeName.string + "' object"
+     : "target object type is '@" + inTargetType.definition.typeName.string + "' and cannot be assigned from an '@" + inSourceType.definition.typeName.string + "' object"
   end
 }
 
@@ -102,11 +102,9 @@ proc checkAssignmentTypeWithImplicitGetterCall ?let @unifiedTypeMapEntry inTarge
                                                 ?let @unifiedTypeMapEntry inSourceType
                                                 ?let @location inErrorLocation
                                                 ?!@semanticExpressionForGeneration ioExpression {
-//  println (!"Target " + [inTargetType definition].typeName)
-//  println (!"Source " + [inSourceType definition].typeName)
 //--- Target is optional ?
-  let targetTypeDef = [inTargetType definition]
-  let targetTypeForBigIntAssignment = if not [targetTypeDef.unwrappedType isNull]
+  let targetTypeDef = inTargetType.definition
+  let targetTypeForBigIntAssignment = if not targetTypeDef.unwrappedType.isNull
     then targetTypeDef.unwrappedType
     else inTargetType
   end
@@ -121,7 +119,7 @@ proc checkAssignmentTypeWithImplicitGetterCall ?let @unifiedTypeMapEntry inTarge
       ioExpression = @literalUIntExpressionForGeneration {
         !targetTypeForBigIntAssignment
         !ioExpression.mLocation
-        ![bigIntValue uint]
+        !bigIntValue.uint
       }
       handled = true
     elsif "sint" == targetTypeForBigIntAssignment.typeName then
@@ -161,40 +159,40 @@ proc checkAssignmentTypeWithImplicitGetterCall ?let @unifiedTypeMapEntry inTarge
   end
 //--- Assignment to optional from weak ?
   if not handled,
-        not [targetTypeDef.unwrappedType isNull], // Target is optional
-        not [[inSourceType definition].unwrappedType isNull] then
+        not targetTypeDef.unwrappedType.isNull, // Target is optional
+        not inSourceType.definition.unwrappedType.isNull then
     let targetUnwrappedType = targetTypeDef.unwrappedType
-    let sourceUnwrappedType = [inSourceType definition].unwrappedType
-    handled = [targetUnwrappedType typeName] == [sourceUnwrappedType typeName]
+    let sourceUnwrappedType = inSourceType.definition.unwrappedType
+    handled = targetUnwrappedType.typeName == sourceUnwrappedType.typeName
   end
 //--- Assignment to optional from strong ?
-  if not handled, not [[inTargetType definition].unwrappedType isNull] then // Target is optional
-    let targetUnwrappedTypeName = [[inTargetType definition].unwrappedType typeName]
-    handled = targetUnwrappedTypeName == [inSourceType typeName]
+  if not handled, not inTargetType.definition.unwrappedType.isNull then // Target is optional
+    let targetUnwrappedTypeName = inTargetType.definition.unwrappedType.typeName
+    handled = targetUnwrappedTypeName == inSourceType.typeName
     var sourceType = inSourceType
-    loop (@uint.max) while (not handled) & (not [[sourceType definition].superType isNull]) do
-      sourceType = [sourceType definition].superType
-      handled = targetUnwrappedTypeName == [sourceType typeName]
+    loop (@uint.max) while (not handled) & (not sourceType.definition.superType.isNull) do
+      sourceType = sourceType.definition.superType
+      handled = targetUnwrappedTypeName == sourceType.typeName
     end
   end
 //--- Polymorphic assignment ?
   if not handled then
     var sourceType = inSourceType
-    var ok = [inTargetType typeName] == [inSourceType typeName]
-    loop (@uint.max) while (not ok) & (not [[sourceType definition].superType isNull]) do
-      sourceType = [sourceType definition].superType
+    var ok = inTargetType.typeName == inSourceType.typeName
+    loop (@uint.max) while (not ok) & (not sourceType.definition.superType.isNull) do
+      sourceType = sourceType.definition.superType
       ok = inTargetType == sourceType
     end
-    if not ok, let targetWeakRef = [targetTypeDef.typeKind getWeakReferenceType] then
+    if not ok, let targetWeakRef = targetTypeDef.typeKind.getWeakReferenceType then
       sourceType = inSourceType
-      ok = [targetWeakRef.referenceType typeName] == [sourceType typeName]
-      loop (@uint.max) while (not ok) & (not [[sourceType definition].superType isNull]) do
-        sourceType = [sourceType definition].superType
-        ok = [targetWeakRef.referenceType typeName] == [sourceType typeName]
+      ok = targetWeakRef.referenceType.typeName == sourceType.typeName
+      loop (@uint.max) while (not ok) & (not sourceType.definition.superType.isNull) do
+        sourceType = sourceType.definition.superType
+        ok = targetWeakRef.referenceType.typeName == sourceType.typeName
       end
     end
   //--- Check for a direct property access or for a conversion getter
-    if not ok, let prop = [inSourceType definition].propertyMap @[targetTypeDef.typeName.string] then
+    if not ok, let prop = inSourceType.definition.propertyMap @[targetTypeDef.typeName.string] then
       [prop.mAccessControl checkSetAccess !.none !inErrorLocation]
       let conversionExpression = @propertyAccessExpressionForGeneration {
         !prop.mPropertyType
@@ -204,8 +202,8 @@ proc checkAssignmentTypeWithImplicitGetterCall ?let @unifiedTypeMapEntry inTarge
       }
       ioExpression = conversionExpression
       ok = prop.mPropertyType == inTargetType
-    elsif (not ok) && [[inSourceType definition].getterMap hasKey !targetTypeDef.typeName.string] then
-      [[inSourceType definition].getterMap searchKey
+    elsif (not ok) && [inSourceType.definition.getterMap hasKey !targetTypeDef.typeName.string] then
+      [inSourceType.definition.getterMap searchKey
         !targetTypeDef.typeName
         ?let kind
         ?let @functionSignature argumentTypeList
@@ -214,7 +212,7 @@ proc checkAssignmentTypeWithImplicitGetterCall ?let @unifiedTypeMapEntry inTarge
         ?let returnedType
         ?2*
       ]
-      ok = ([argumentTypeList count] == 0) & (returnedType == inTargetType)
+      ok = (argumentTypeList.count == 0) & (returnedType == inTargetType)
    //--- Add conversion expression
       let conversionExpression = @getterCallExpressionForGeneration {
         !inTargetType
@@ -231,7 +229,7 @@ proc checkAssignmentTypeWithImplicitGetterCall ?let @unifiedTypeMapEntry inTarge
     if not ok then
       error inErrorLocation
        : "target object type is @" + targetTypeDef.typeName.string
-       + " and cannot be assigned from an @" + [inSourceType definition].typeName.string
+       + " and cannot be assigned from an @" + inSourceType.definition.typeName.string
        + " object; this type have no "
        + targetTypeDef.typeName
        + " getter without argument that returns a @"
@@ -251,40 +249,40 @@ proc checkDiadicOperator ?operatorIsHandled: let @bool inOperandIsHandled
   let rightResultType = ioRightExpression.mResultType
   if not inOperandIsHandled then
     error inErrorLocation
-    : "left operand type is '@" + [leftResultType definition].typeName.string + "' and does not accept '"
+    : "left operand type is '@" + leftResultType.definition.typeName.string + "' and does not accept '"
       + inOperatorNameForErrorMessage
-      + "' operator (right operand type is '@" + [rightResultType definition].typeName.string + ")"
+      + "' operator (right operand type is '@" + rightResultType.definition.typeName.string + ")"
   else
     var @unifiedTypeMapEntry rightType = rightResultType
     var @bool ok = leftResultType == rightType
-    loop (@uint.max) while (not ok) & (not [[rightType definition].superType isNull]) do
-      rightType = [rightType definition].superType
+    loop (@uint.max) while (not ok) & (not rightType.definition.superType.isNull) do
+      rightType = rightType.definition.superType
       ok = leftResultType == rightType
     end
   //--- convert right bigint ?
     if not ok, let bigIntSource = ioRightExpression as @literalBigIntExpressionForGeneration then
-      if "uint" == [leftResultType definition].typeName then
+      if "uint" == leftResultType.definition.typeName then
         let bigIntValue = bigIntSource.mValue
         if (bigIntValue < 0) | (bigIntValue >= (1 << 32)) then
           error ioRightExpression.mLocation : "literal value (" + bigIntValue + ") does not fit in an @uint"
         end
-        ioRightExpression = @literalUIntExpressionForGeneration {!leftResultType !ioRightExpression.mLocation ![bigIntValue uint]}
+        ioRightExpression = @literalUIntExpressionForGeneration {!leftResultType !ioRightExpression.mLocation !bigIntValue.uint}
         ok = true
-      elsif "sint" == [leftResultType definition].typeName then
+      elsif "sint" == leftResultType.definition.typeName then
         let bigIntValue = bigIntSource.mValue
         if (bigIntValue < -(1 << 31)) | (bigIntValue >= (1 << 31)) then
           error ioRightExpression.mLocation : "literal value (" + bigIntValue + ") does not fit in an @sint"
         end
         ioRightExpression = @literalSIntExpressionForGeneration {!leftResultType !ioRightExpression.mLocation ![bigIntValue sint]}
         ok = true
-      elsif "uint64" == [leftResultType definition].typeName then
+      elsif "uint64" == leftResultType.definition.typeName then
         let bigIntValue = bigIntSource.mValue
         if (bigIntValue < 0) | (bigIntValue >= (1 << 64)) then
           error ioRightExpression.mLocation : "literal value (" + bigIntValue + ") does not fit in an @uint64"
         end
         ioRightExpression = @literalUInt64ExpressionForGeneration {!leftResultType !ioRightExpression.mLocation ![bigIntValue uint64]}
         ok = true
-      elsif "sint64" == [leftResultType definition].typeName then
+      elsif "sint64" == leftResultType.definition.typeName then
         let bigIntValue = bigIntSource.mValue
         if (bigIntValue < -(1 << 63)) | (bigIntValue >= (1 << 63)) then
           error ioRightExpression.mLocation : "literal value (" + bigIntValue + ") does not fit in an @sint64"
@@ -295,28 +293,28 @@ proc checkDiadicOperator ?operatorIsHandled: let @bool inOperandIsHandled
     end
   //--- convert left bigint ?
     if not ok, let bigIntSource = ioLeftExpression as @literalBigIntExpressionForGeneration then
-      if "uint" == [rightType definition].typeName then
+      if "uint" == rightType.definition.typeName then
         let bigIntValue = bigIntSource.mValue
         if (bigIntValue < 0) | (bigIntValue >= (1 << 32)) then
           error ioLeftExpression.mLocation : "literal value (" + bigIntValue + ") does not fit in an @uint"
         end
-        ioLeftExpression = @literalUIntExpressionForGeneration {!rightType !ioLeftExpression.mLocation ![bigIntValue uint]}
+        ioLeftExpression = @literalUIntExpressionForGeneration {!rightType !ioLeftExpression.mLocation !bigIntValue.uint}
         ok = true
-      elsif "sint" == [rightType definition].typeName then
+      elsif "sint" == rightType.definition.typeName then
         let bigIntValue = bigIntSource.mValue
         if (bigIntValue < -(1 << 31)) | (bigIntValue >= (1 << 31)) then
           error ioLeftExpression.mLocation : "literal value (" + bigIntValue + ") does not fit in an @sint"
         end
         ioLeftExpression = @literalSIntExpressionForGeneration {!rightType !ioLeftExpression.mLocation ![bigIntValue sint]}
         ok = true
-      elsif "uint64" == [rightType definition].typeName then
+      elsif "uint64" == rightType.definition.typeName then
         let bigIntValue = bigIntSource.mValue
         if (bigIntValue < 0) | (bigIntValue >= (1 << 64)) then
           error ioLeftExpression.mLocation : "literal value (" + bigIntValue + ") does not fit in an @uint64"
         end
         ioLeftExpression = @literalUInt64ExpressionForGeneration {!rightType !ioLeftExpression.mLocation ![bigIntValue uint64]}
         ok = true
-      elsif "sint64" == [rightType definition].typeName then
+      elsif "sint64" == rightType.definition.typeName then
         let bigIntValue = bigIntSource.mValue
         if (bigIntValue < -(1 << 63)) | (bigIntValue >= (1 << 63)) then
           error ioLeftExpression.mLocation : "literal value (" + bigIntValue + ") does not fit in an @sint64"
@@ -326,19 +324,19 @@ proc checkDiadicOperator ?operatorIsHandled: let @bool inOperandIsHandled
       end
     end
   //--- Check for a direct property access or for a conversion getter
-    if not ok, let prop = [rightType definition].propertyMap @[[leftResultType definition].typeName] then
+    if not ok, let prop = rightType.definition.propertyMap @[leftResultType.definition.typeName] then
       [prop.mAccessControl checkSetAccess !.none !inErrorLocation]
       let conversionExpression = @propertyAccessExpressionForGeneration {
         !prop.mPropertyType
         !inErrorLocation
         !ioRightExpression
-        ![leftResultType definition].typeName.string
+        !leftResultType.definition.typeName.string
       }
       ioRightExpression = conversionExpression
       ok = prop.mPropertyType == leftResultType
-    elsif (not ok) && [[rightType definition].getterMap hasKey ![leftResultType definition].typeName.string] then
-      [[rightType definition].getterMap searchKey
-        ![leftResultType definition].typeName
+    elsif (not ok) && [rightType.definition.getterMap hasKey !leftResultType.definition.typeName.string] then
+      [rightType.definition.getterMap searchKey
+        !leftResultType.definition.typeName
         ?let kind
         ?let @functionSignature argumentTypeList
         ?*
@@ -346,7 +344,7 @@ proc checkDiadicOperator ?operatorIsHandled: let @bool inOperandIsHandled
         ?let returnedType
         ?2*
       ]
-      ok = ([argumentTypeList count] == 0) & (returnedType == leftResultType)
+      ok = (argumentTypeList.count == 0) & (returnedType == leftResultType)
    //--- Add conversion expression
       let conversionExpression = @getterCallExpressionForGeneration {
         !leftResultType
@@ -354,7 +352,7 @@ proc checkDiadicOperator ?operatorIsHandled: let @bool inOperandIsHandled
         !kind
         !ioRightExpression
         !@()
-        ![leftResultType definition].typeName.string
+        !leftResultType.definition.typeName.string
         !@()
         !hasCompilerArgument
       }
@@ -362,10 +360,10 @@ proc checkDiadicOperator ?operatorIsHandled: let @bool inOperandIsHandled
     end
     if not ok then
       error inErrorLocation
-      : "left operand type of '" + inOperatorNameForErrorMessage + "' operator is '@" + [leftResultType definition].typeName.string
-      + "', right operand type is '@" + [rightType definition].typeName.string
+      : "left operand type of '" + inOperatorNameForErrorMessage + "' operator is '@" + leftResultType.definition.typeName.string
+      + "', right operand type is '@" + rightType.definition.typeName.string
       + "', it should be either the same, either inherits from left operand type, either have a '"
-      + [leftResultType definition].typeName.string + "' getter without argument that returns a '@" + [leftResultType definition].typeName.string + "' object"
+      + leftResultType.definition.typeName.string + "' getter without argument that returns a '@" + leftResultType.definition.typeName.string + "' object"
     end
   end
 }

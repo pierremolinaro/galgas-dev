@@ -98,9 +98,9 @@ override method @notExpressionAST analyzeSemanticExpression
     outExpression = @falseExpressionForGeneration {!inAnalysisContext.predefinedTypes.mBoolType !self.mOperatorLocation}
   elsif expression is == @falseExpressionForGeneration then
     outExpression = @trueExpressionForGeneration {!inAnalysisContext.predefinedTypes.mBoolType !self.mOperatorLocation}
-  elsif not [[type definition].features contains !.prefixNotOperator] then
+  elsif not [type.definition.features contains !.prefixNotOperator] then
     error self.mOperatorLocation
-    : "operand type is '@" + [type definition].typeName.string + "' and does not support the 'not' operator"
+    : "operand type is '@" + type.definition.typeName.string + "' and does not support the 'not' operator"
     :outExpression
   else
   //--- Generate expression
@@ -132,7 +132,7 @@ override method @notExpressionForGeneration generateExpression
 //--- Operand
   [self.mExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?let operand]
 //--- Generate
-  outCppExpression = operand + ".operator_not (" + [self.mLocation sourceFile] + ")"
+  outCppExpression = operand + ".operator_not (" + self.mLocation.sourceFile + ")"
 }
 
 //--------------------------------------------------------------------------------------------------

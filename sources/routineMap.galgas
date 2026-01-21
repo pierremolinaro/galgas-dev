@@ -103,7 +103,7 @@ struct @routineMap {
       end
       var @acceptableParameterList acceptableParameterList = @()
       for entry in routine.mArgumentMap do
-        var accept = [inActualParameterList count] == [entry.mRoutineSignature count]
+        var accept = inActualParameterList.count == entry.mRoutineSignature.count
         for formalParameter in entry.mRoutineSignature, (actualParameter) in inActualParameterList while accept do
           accept = [actualParameter isCompatibleWith
             !formalParameter.mFormalArgumentPassingMode
@@ -114,10 +114,10 @@ struct @routineMap {
           acceptableParameterList += !entry.mRoutineSignature !entry.mIsFilePrivate
         end
       end
-      if [acceptableParameterList count] == 1 then
+      if acceptableParameterList.count == 1 then
         [acceptableParameterList first ?outRoutineSignature ?outIsFilePrivate]
         outRoutineMangledName = routineMangledName (!inRoutineName !outRoutineSignature)
-      elsif [acceptableParameterList count] == 0 then
+      elsif acceptableParameterList.count == 0 then
         error inRoutineName
         : "cannot find any procedure with compatible formal argument list"
         : outRoutineSignature, outIsFilePrivate, outRoutineMangledName

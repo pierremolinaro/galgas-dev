@@ -209,11 +209,11 @@ override method @incDecInstructionAST analyzeSemanticInstruction
       if not [selfAvailable.selfMutability selfIsMutable] then
         error self.mInstructionLocation : "'self' not mutable in this context"
       end
-      let propertyMap = [selfAvailable.type definition].propertyMap
+      let propertyMap = selfAvailable.type.definition.propertyMap
       [propertyMap searchKey !self.mReceiverName ?* ?let isConstant ?targetType]
 //      nameForCheckingFormalParameterUsing = inAnalysisContext.selfObjectCppName
       targetVariableCppName = inAnalysisContext.selfObjectCppPrefixForAccessingProperty
-       + "mProperty_"+ [self.mReceiverName.string identifierRepresentation]
+       + "mProperty_"+ self.mReceiverName.string.identifierRepresentation
       if isConstant then
         error self.mReceiverName : "a constant property cannot be modified"
       end
@@ -234,7 +234,7 @@ override method @incDecInstructionAST analyzeSemanticInstruction
   end
 //---
   for (value) in self.mStructAttributeList do
-    let propertyMap = [targetType definition].propertyMap
+    let propertyMap = targetType.definition.propertyMap
     [propertyMap searchKey !value ?let accessControl ?let isConstant ?targetType]
     [accessControl checkSetAccess !inAnalysisContext.selfAvailability !value.location]
 //    if not isPublic then
@@ -245,9 +245,9 @@ override method @incDecInstructionAST analyzeSemanticInstruction
     end
   end
 //--- Check target type accepts incrementation
-  if not [[targetType definition].features contains !.incDecOperator] then
+  if not [targetType.definition.features contains !.incDecOperator] then
     error self.mInstructionLocation
-    :"the target object has the '@" + [targetType definition].typeName.string + "' type, but this type does not support the '++', '--' operators"
+    :"the target object has the '@" + targetType.definition.typeName.string + "' type, but this type does not support the '++', '--' operators"
   end
 //--- Generate instruction
   ioInstructionListForGeneration += !@incDecInstructionForGeneration {
@@ -273,7 +273,7 @@ override method @incDecNoOVFInstructionAST analyzeSemanticInstruction
   var @unifiedTypeMapEntry targetType
   [!?ioVariableMap searchForReadWriteAccess !self.mReceiverName ?targetType ?let targetVariableCppName ?*]
   for (value) in self.mStructAttributeList do
-    let propertyMap = [targetType definition].propertyMap
+    let propertyMap = targetType.definition.propertyMap
     [propertyMap searchKey !value ?let accessControl ?let isConstant ?targetType]
     [accessControl checkSetAccess !inAnalysisContext.selfAvailability !value.location]
 //    if not isPublic then
@@ -284,9 +284,9 @@ override method @incDecNoOVFInstructionAST analyzeSemanticInstruction
     end
   end
 //--- Check target type accepts incrementation
-  if not [[targetType definition].features contains !.incDecOperator] then
+  if not [targetType.definition.features contains !.incDecOperator] then
     error self.mInstructionLocation
-    :"the target object has the '@" + [targetType definition].typeName.string + "' type, but this type does not support the '&++', '&--' operators"
+    :"the target object has the '@" + targetType.definition.typeName.string + "' type, but this type does not support the '&++', '&--' operators"
   end
 //--- Generate instruction
   ioInstructionListForGeneration += !@incDecNoOVFInstructionForGeneration {
@@ -313,9 +313,9 @@ override method @selfIncDecNoOVFInstructionAST analyzeSemanticInstruction
       error self.mInstructionLocation : "'self' not mutable in this context"
     end
   //--- Check target type accepts incrementation
-    if not [[selfAvailable.type definition].features contains !.incDecOperator] then
+    if not [selfAvailable.type.definition.features contains !.incDecOperator] then
       error self.mInstructionLocation
-      :"the target object has the '@" + [selfAvailable.type definition].typeName.string + "' type, but this type does not support the '&++' and  '&--' operators"
+      :"the target object has the '@" + selfAvailable.type.definition.typeName.string + "' type, but this type does not support the '&++' and  '&--' operators"
     end
   //--- Generate instruction
     ioInstructionListForGeneration += !@incDecNoOVFInstructionForGeneration {
@@ -345,9 +345,9 @@ override method @selfIncDecInstructionAST analyzeSemanticInstruction
       error self.mInstructionLocation : "'self' not mutable in this context"
     end
   //--- Check target type accepts incrementation
-    if not [[selfAvailable.type definition].features contains !.incDecOperator] then
+    if not [selfAvailable.type.definition.features contains !.incDecOperator] then
       error self.mInstructionLocation
-      :"the target object has the '@" + [selfAvailable.type definition].typeName.string + "' type, but this type does not support the '++' and  '--' operators"
+      :"the target object has the '@" + selfAvailable.type.definition.typeName.string + "' type, but this type does not support the '++' and  '--' operators"
     end
   //--- Generate instruction
     ioInstructionListForGeneration += !@incDecInstructionForGeneration {
@@ -397,7 +397,7 @@ override method @incDecInstructionForGeneration generateInstruction
   [!?ioUnusedVariableCppNameSet removeKey !self.mReceiverCppName]
   var @string receiverCppName = self.mReceiverCppName
   for (mValue) in self.mStructAttributeList do
-    receiverCppName += ".mProperty_" + [mValue.string identifierRepresentation]
+    receiverCppName += ".mProperty_" + mValue.string.identifierRepresentation
   end
 //--- Invoke incrementation
   switch self.mKind
@@ -425,7 +425,7 @@ override method @incDecNoOVFInstructionForGeneration generateInstruction
   [!?ioUnusedVariableCppNameSet removeKey !self.mReceiverCppName]
   var @string receiverCppName = self.mReceiverCppName
   for (mValue) in self.mStructAttributeList do
-    receiverCppName += ".mProperty_" + [mValue.string identifierRepresentation]
+    receiverCppName += ".mProperty_" + mValue.string.identifierRepresentation
   end
 //--- Invoke incrementation
   switch self.mKind

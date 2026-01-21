@@ -73,17 +73,17 @@ syntax extension galgas3InstructionsSyntax {
           $literalInt$ ?let n
           $*$
           for * in 0 ..< n.bigint do
-            outAssociatedValuesExtraction += !["" here] !["" here] !false
+            outAssociatedValuesExtraction += !"".here !"".here !false
           end
          or
           $*$
-          outAssociatedValuesExtraction += !["" here] !["" here] !false
+          outAssociatedValuesExtraction += !"".here !"".here !false
          or
           let @lstring typeName
           select
             <type_definition_ggs3> !?ioDeclarations ?typeName
           or
-            typeName = ["" here]
+            typeName = "".here
           end
           let @bool constantMarkedAsUnused
           select
@@ -161,17 +161,17 @@ syntax extension galgas4InstructionsSyntax {
           $literalInt$ ?let n
           $*$
           for * in 0 ..< n.bigint do
-            outAssociatedValuesExtraction += !["" here] !["" here] !false
+            outAssociatedValuesExtraction += !"".here !"".here !false
           end
          or
           $*$
-          outAssociatedValuesExtraction += !["" here] !["" here] !false
+          outAssociatedValuesExtraction += !"".here !"".here !false
          or
           let @lstring typeName
           select
             <type_definition> !?ioDeclarations ?typeName
           or
-            typeName = ["" here]
+            typeName = "".here
           end
           let @bool constantMarkedAsUnused
           select
@@ -250,7 +250,7 @@ final class @switchInstructionAST : @semanticInstructionAST {
       ?let switchExpression
     ]
   //--- Check switch expression type is and enum instance
-    if let enumType = [[switchExpression.mResultType definition].typeKind getEnumType] then
+    if let enumType = [switchExpression.mResultType.definition.typeKind getEnumType] then
     //--- Enum constant map
       var @stringset constantsNamedInSwitchInstruction = @()
     //--- Analyze branches
@@ -267,28 +267,28 @@ final class @switchInstructionAST : @semanticInstructionAST {
             end
             constantsNamedInSwitchInstruction ++= constantName.string
             [enumType.constantMap searchKey !constantName ?* ?let associatedTypeList]
-            if ([associatedTypeList count] > 0) & ([branch.mAssociatedValuesExtraction count] == 0) then
+            if (associatedTypeList.count > 0) & (branch.mAssociatedValuesExtraction.count == 0) then
               error constantName
                 :"the associated values of '" + constantName + "' constant should be extracted"
-            elsif ([associatedTypeList count] == 0) & ([branch.mAssociatedValuesExtraction count] > 0) then
+            elsif (associatedTypeList.count == 0) & (branch.mAssociatedValuesExtraction.count > 0) then
               error constantName
                 :"the '" + constantName + "' constant has no associated value"
-            elsif [associatedTypeList count] != [branch.mAssociatedValuesExtraction count] then
+            elsif associatedTypeList.count != branch.mAssociatedValuesExtraction.count then
               error constantName
-                :"the '" + constantName + "' constant requires " + [associatedTypeList count]
+                :"the '" + constantName + "' constant requires " + associatedTypeList.count
                 + "  associated value"
-                + if [associatedTypeList count] > 1 then "s" else "" end
+                + if associatedTypeList.count > 1 then "s" else "" end
             else
               for descriptor in associatedTypeList, associatedValue in branch.mAssociatedValuesExtraction do (IDX)
                 if associatedValue.mExtractedValueTypeName.string != "" then // Explicit type ?
-                  if [descriptor.type definition].typeName.string
+                  if descriptor.type.definition.typeName.string
                            != associatedValue.mExtractedValueTypeName.string then
                     error associatedValue.mExtractedValueTypeName
-                    : "the required type is '@" + [descriptor.type definition].typeName.string + "'"
+                    : "the required type is '@" + descriptor.type.definition.typeName.string + "'"
                   end
                 end
                 let cppName = "extractedValue_"
-                  + [associatedValue.mExtractedValueName.location startLocationIndex]
+                  + associatedValue.mExtractedValueName.location.startLocationIndex
                   + "_" + associatedValue.mExtractedValueName + "_" + IDX
                 extractedAssociatedValuesForGeneration +=
                   !descriptor.type
@@ -316,7 +316,7 @@ final class @switchInstructionAST : @semanticInstructionAST {
           else
             error constantName
             :"'" + constantName + "' is not a constant of '@"
-            + [switchExpression.mResultType definition].typeName.string + "' enumeration type"
+            + switchExpression.mResultType.definition.typeName.string + "' enumeration type"
           end
         end
         analyzeSemanticInstructionListWithoutBranch (
@@ -335,13 +335,13 @@ final class @switchInstructionAST : @semanticInstructionAST {
         switchBranchesForGeneration +=
           !branch.mSwitchConstantList
           !extractedAssociatedValuesForGeneration
-          ![branch.mEndOfBranch startLocationIndex]
+          !branch.mEndOfBranch.startLocationIndex
           !instructionList
       end
       [!?ioVariableMap closeOverride !self.mEndOf_switch_instruction]
     //--- Check all constants have been named
       let forgottenConstants = [enumType.constantMap keySet] - constantsNamedInSwitchInstruction
-      if [forgottenConstants count] > 0 then
+      if forgottenConstants.count > 0 then
         var @string s = ""
         for (key) in forgottenConstants do
           s += "\n  - " + key
@@ -358,7 +358,7 @@ final class @switchInstructionAST : @semanticInstructionAST {
     else
       error self.mEndOfSwitchExpression
       : "the switch expression type should be an instance of an enumeration type (the '@"
-      + [switchExpression.mResultType definition].typeName.string
+      + switchExpression.mResultType.definition.typeName.string
       + "' type is not an enumeration type)"
     end
   }
@@ -411,28 +411,28 @@ final class @switchInstructionForGeneration : @semanticInstructionForGeneration 
     ]
     ioGeneratedCode += "switch (" + switchVar + ".enumValue ()) {\n"
     ioGeneratedCode += "case GGS_"
-    ioGeneratedCode += [self.mSwitchExpression.mResultType identifierRepresentation] 
+    ioGeneratedCode += self.mSwitchExpression.mResultType.identifierRepresentation 
     ioGeneratedCode += "::Enumeration::invalid:\n"
     ioGeneratedCode += "  break ;\n"
     for branch in self.mBranches do
       for constantName in branch.mSwitchConstantList do
         ioGeneratedCode += "case GGS_"
-        ioGeneratedCode += [self.mSwitchExpression.mResultType identifierRepresentation]
+        ioGeneratedCode += self.mSwitchExpression.mResultType.identifierRepresentation
         ioGeneratedCode += "::Enumeration::enum_" 
-        ioGeneratedCode += [constantName.string identifierRepresentation]
+        ioGeneratedCode += constantName.string.identifierRepresentation
         ioGeneratedCode += ":\n"
       end
       [!?ioGeneratedCode incIndentation !2]
-      if [branch.mInstructions count] > 0 then
+      if branch.mInstructions.count > 0 then
         ioGeneratedCode += "{\n"
-        if [branch.mExtractedAssociatedValuesForGeneration count] > 0 then
+        if branch.mExtractedAssociatedValuesForGeneration.count > 0 then
           for associatedValue in branch.mExtractedAssociatedValuesForGeneration do
             [associatedValue.mType addHeaderFileName !?ioInclusionSet]
-            ioGeneratedCode += "  GGS_" + [associatedValue.mType identifierRepresentation]
+            ioGeneratedCode += "  GGS_" + associatedValue.mType.identifierRepresentation
             ioGeneratedCode += " " + associatedValue.mCppName + " ;\n"
           end
           ioGeneratedCode += "  " + switchVar + ".getAssociatedValuesFor_"
-          ioGeneratedCode += [branch.mSwitchConstantList @[0] identifierRepresentation] + " ("
+          ioGeneratedCode += branch.mSwitchConstantList @[0].string.identifierRepresentation + " ("
           for associatedValue in branch.mExtractedAssociatedValuesForGeneration
             do ioGeneratedCode += associatedValue.mCppName
             between ioGeneratedCode += ", "

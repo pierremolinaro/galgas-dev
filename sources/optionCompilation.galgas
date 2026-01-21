@@ -64,7 +64,7 @@ syntax galgas3OptionComponentSyntax (galgasScanner3) {
         optionDefaultValueKind = .stringDefaultValue
       or
         $literalInt$ ?let v
-        defaultValue = @{![v.bigint string] !v.location}
+        defaultValue = @{!v.bigint.string !v.location}
         optionDefaultValueKind = .unsignedDefaultValue
       end
     end
@@ -128,7 +128,7 @@ syntax galgas4OptionComponentSyntax (galgasScanner4) {
         optionDefaultValueKind = @optionDefaultValueEnumAST. stringDefaultValue
       or
         $literalInt$ ?let v
-        defaultValue = @lstring {![v.bigint string] !v.location}
+        defaultValue = @lstring {!v.bigint.string !v.location}
         optionDefaultValueKind = @optionDefaultValueEnumAST. unsignedDefaultValue
       end
     end

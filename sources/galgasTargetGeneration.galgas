@@ -341,7 +341,7 @@ proc updateGalgasTargets
       macCodeSign = entry.mFeatureValue
     end
   else
-    macCodeSign = ["" nowhere]
+    macCodeSign = "".nowhere
   end
 //---------------------------------------------------------- MacOSDeployment
   let MACOSX_DEPLOYMENT_TARGET = "14.6"
@@ -629,7 +629,7 @@ proc updateGalgasTargets
     [!?xcodeProject addSettingsToDefaultConfiguration !settingList: xcodeSettingList]
   //--- Add "Frameworks for App" group
     var @stringlist appFrameworksFileRefList = @()
-    if [inHandCodedLinkAppFileList count] > 0 then
+    if inHandCodedLinkAppFileList.count > 0 then
       [!?xcodeProject addGroupWithFiles
         !groupName: "Frameworks (App)"
         !groupPath: "/System/Library/Frameworks"
@@ -650,7 +650,7 @@ proc updateGalgasTargets
     var @stringlist frameworksFileRefList = @()
     var @stringlist resourceFileBuildRefs = @()
   //--- Add "Hand coded sources (Tool)" group
-    if [inHandCodedSourceToolFileList count] > 0 then
+    if inHandCodedSourceToolFileList.count > 0 then
       [!?xcodeProject addGroupWithFiles
         !groupName:"Hand Coded Sources (Tool)"
         !groupPath:"../sources/tool-sources/"
@@ -666,7 +666,7 @@ proc updateGalgasTargets
     end
   //--- Add "Frameworks for tool" group
     var @stringlist toolFrameworksFileRefList = @()
-    if [inFrameworkToolFileList count] > 0 then
+    if inFrameworkToolFileList.count > 0 then
       [!?xcodeProject addGroupWithFiles
         !groupName:"Frameworks (Tool)"
         !groupPath:"/System/Library/Frameworks"
@@ -1158,7 +1158,7 @@ proc updateGalgasTargets
       codeSigningSettingList = @[@("CODE_SIGN_IDENTITY = \"-\"")]
     else
       let components = [macCodeSign.string componentsSeparatedByString !":"]
-      if [components count] != 2 then
+      if components.count != 2 then
         error macCodeSign : "the %macCodeSign attribute associated string should be \"key:value\"" : codeSigningSettingList
       elsif [components mValueAtIndex !0] == "MacDeveloper" then
         codeSigningSettingList = @[

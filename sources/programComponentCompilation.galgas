@@ -109,7 +109,7 @@ private proc compileProgramRulesGalgas3
     [!?ioUsefulEntitiesGraph addNode !usefulnessName !usefulnessName]
     ioUsefulnessRootEntities += !usefulnessName
     let @formalParameterListAST argumentList = @[
-      @(["" nowhere], .argumentConstantIn, @lstring {!"lstring" !@location.here}, mSourceFileVariableName, mSourceFileVariableNameIsUnused)
+      @("".nowhere, .argumentConstantIn, @lstring {!"lstring" !@location.here}, mSourceFileVariableName, mSourceFileVariableNameIsUnused)
     ]
     analyzeRoutineBody (
       !usefulnessName
@@ -126,7 +126,7 @@ private proc compileProgramRulesGalgas3
       !@routineImplementationForGeneration {
         !generateHeader: false // Has no header
         !implementationCppFileName: "proc-programrule"
-        !routineMangledName: "programRule_" + [ruleIndex string]
+        !routineMangledName: "programRule_" + ruleIndex.string
         !routineSignature
         !true // Generate static
         !semanticInstructionListForGeneration

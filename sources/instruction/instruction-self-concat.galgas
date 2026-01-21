@@ -201,9 +201,9 @@ final class @selfDivEqualExpressionInstructionAST : @semanticInstructionAST {
         error self.mInstructionLocation : "'self' not mutable in this context"
       end
     //--- Check target variable type support '/= exp' operator
-      if [[selfAvailable.type definition].features contains !.divAssignOperatorWithExpression] then
+      if [selfAvailable.type.definition.features contains !.divAssignOperatorWithExpression] then
         error self.mInstructionLocation
-        :"the target object has the '@" + [selfAvailable.type definition].typeName.string
+        :"the target object has the '@" + selfAvailable.type.definition.typeName.string
         + "' type, but this type does not support the '/=' operator"
       end
     //--- Analyze source expression
@@ -269,9 +269,9 @@ final class @selfPlusEqualExpressionInstructionAST : @semanticInstructionAST {
         error self.mInstructionLocation : "'self' not mutable in this context"
       end
     //--- Check target variable type support '+= exp' operator
-      if not [[selfAvailable.type definition].features contains !.plusAssignOperatorWithExpression] then
+      if not [selfAvailable.type.definition.features contains !.plusAssignOperatorWithExpression] then
         error self.mInstructionLocation
-        : "the target object has the '@" + [selfAvailable.type definition].typeName.string
+        : "the target object has the '@" + selfAvailable.type.definition.typeName.string
         + "' type, but this type does not support the '+=' operator"
       end
     //--- Analyze source expression
@@ -337,9 +337,9 @@ final class @selfMinusEqualExpressionInstructionAST : @semanticInstructionAST {
         error self.mInstructionLocation : "'self' not mutable in this context"
       end
     //--- Check target variable type support '-= exp' operator
-      if not [[selfAvailable.type definition].features contains !.minusAssignOperatorWithExpression] then
+      if not [selfAvailable.type.definition.features contains !.minusAssignOperatorWithExpression] then
         error self.mInstructionLocation
-        : "the target object has the '@" + [selfAvailable.type definition].typeName.string
+        : "the target object has the '@" + selfAvailable.type.definition.typeName.string
         + "' type, but this type does not support the '-=' operator"
       end
     //--- Analyze source expression
@@ -405,9 +405,9 @@ final class @selfMulEqualExpressionInstructionAST : @semanticInstructionAST {
         error self.mInstructionLocation : "'self' not mutable in this context"
       end
     //--- Check target variable type support '*= exp' operator
-      if [[selfAvailable.type definition].features contains !.mulAssignOperatorWithExpression] then
+      if [selfAvailable.type.definition.features contains !.mulAssignOperatorWithExpression] then
         error self.mInstructionLocation
-        : "the target object has the '@" + [selfAvailable.type definition].typeName.string
+        : "the target object has the '@" + selfAvailable.type.definition.typeName.string
         + "' type, but this type does not support the '*=' operator"
       end
     //--- Analyze source expression
@@ -473,18 +473,18 @@ final class @selfPlusEqualElementsInstructionAST : @semanticInstructionAST {
         error self.mInstructionLocation : "'self' not mutable in this context"
       end
     //--- Check target variable type support '+=' operator
-      let addAssignOperatorArguments= [selfAvailable.type definition].addAssignOperatorArguments // Empty list if += operator is not supported
-      if [addAssignOperatorArguments count] == 0 then
+      let addAssignOperatorArguments= selfAvailable.type.definition.addAssignOperatorArguments // Empty list if += operator is not supported
+      if addAssignOperatorArguments.count == 0 then
         error self.mInstructionLocation
-        : "the target object has the '@" + [selfAvailable.type definition].typeName.string
+        : "the target object has the '@" + selfAvailable.type.definition.typeName.string
         + "' type, but this type does not support the '+=' operator"
     //--- Analyze source expressions
-      elsif [self.mExpressions count] != [addAssignOperatorArguments count] then
+      elsif self.mExpressions.count != addAssignOperatorArguments.count then
         error self.mInstructionLocation
-        : "calling the '+=' operator on an '@" + [selfAvailable.type definition].typeName.string
+        : "calling the '+=' operator on an '@" + selfAvailable.type.definition.typeName.string
         + "' object requires "
-        + [[addAssignOperatorArguments count] string] + " parameter(s), while this invocation has "
-        + [[self.mExpressions count] string] + " parameter(s)"
+        + addAssignOperatorArguments.count.string + " parameter(s), while this invocation has "
+        + self.mExpressions.count.string + " parameter(s)"
       else
         var effectiveParameterList = @semanticExpressionListForGeneration ()
         for expressionAST in self.mExpressions, addAssignArgument in addAssignOperatorArguments do

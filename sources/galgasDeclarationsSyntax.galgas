@@ -159,7 +159,7 @@ syntax galgas3DeclarationsSyntax (galgasScanner3) {
         filewrapperTemplateFormalInputParameters += !selector !typeName !argumentName !isUnused
       while
         $?$
-        let selector = ["" here]
+        let selector = "".here
         <type_definition_ggs3> !?ioDeclarations ?let typeName
         let @bool isUnused
         select
@@ -316,10 +316,10 @@ syntax galgas4DeclarationsSyntax (galgasScanner4) {
         repeat
           let @lstring selector
           select
-            selector = ["" nowhere]
+            selector = "".nowhere
           or
             $?$
-            selector = ["" nowhere]
+            selector = "".nowhere
           or
             $?selector:$ ?selector
           end

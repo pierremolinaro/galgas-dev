@@ -75,25 +75,13 @@ override method @lexicalRewindInstructionAST checkLexicalInstruction
 }
 
 //--------------------------------------------------------------------------------------------------
-//! COCOA GENERATION
-//--------------------------------------------------------------------------------------------------
-
-//override getter @lexicalRewindInstructionAST generateObjcCocoaInstructionCode
-//  ?let @string inScannerClassName
-//  ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
-//  -> @string outGeneratedCode {
-//  outGeneratedCode = "[self restoreScanningPoint: & locationForTag_" + self.mLexicalTagName + "] ;\n"
-//  outGeneratedCode += "mTokenCode = " + inScannerClassName + "_1_" + [self.mTerminalName.string identifierRepresentation] + " ;\n"
-//}
-
-//--------------------------------------------------------------------------------------------------
 
 override getter @lexicalRewindInstructionAST generateSwiftCocoaInstructionCode
   ?let @string inScannerClassName
   ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
   -> @string outGeneratedCode {
   outGeneratedCode = "self.restoreScanningPoint (locationForTag_" + self.mLexicalTagName + ")\n"
-  outGeneratedCode += "tokenCode = " + inScannerClassName + "_1_" + [self.mTerminalName.string identifierRepresentation] + "\n"
+  outGeneratedCode += "tokenCode = " + inScannerClassName + "_1_" + self.mTerminalName.string.identifierRepresentation + "\n"
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -113,7 +101,7 @@ override getter @lexicalRewindInstructionAST generateLexicalInstructionCode
   result  = "mCurrentLocation = currentLocationForTag_" + self.mLexicalTagName + " ;\n"
   result += "mTokenEndLocation = endLocationForTag_" + self.mLexicalTagName + " ;\n"
   result += "mCurrentChar = currentCharForTag_" + self.mLexicalTagName + " ;\n"
-  result += "token.mTokenCode = kToken_" + [self.mTerminalName identifierRepresentation] + " ;\n"
+  result += "token.mTokenCode = kToken_" + self.mTerminalName.string.identifierRepresentation + " ;\n"
   result += "enterToken (token) ;\n"
 }
 

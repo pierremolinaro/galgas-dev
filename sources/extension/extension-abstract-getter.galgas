@@ -221,12 +221,12 @@ final class @abstractExtensionGetterAST : @semanticDeclarationAST {
   //--- Self type
     let @unifiedTypeMapEntry selfType = [ioTypeMap typeMapEntryForLKey !self.mTypeName]
   //--- Check self type is an abstract class
-    if not [[selfType definition].typeKind isClassType] then
+    if not selfType.definition.typeKind.isClassType then
       error self.mAbstractExtensionGetterName
-        : "cannot declare an extension getter: '@" + [selfType definition].typeName.string + "' is not a class"
-    elsif [selfType definition].isConcrete then
+        : "cannot declare an extension getter: '@" + selfType.definition.typeName.string + "' is not a class"
+    elsif selfType.definition.isConcrete then
       error self.mAbstractExtensionGetterName
-        : "cannot declare an abstract extension getter: '@" + [selfType definition].typeName.string + "' is not an abstract class"
+        : "cannot declare an abstract extension getter: '@" + selfType.definition.typeName.string + "' is not an abstract class"
     end
   //--- Compute method signature
     var @formalInputParameterListForGeneration formalParameterListForGeneration = @()
@@ -297,7 +297,7 @@ final class @abstractExtensionGetterForGeneration : @semanticDeclarationWithHead
     ?!@stringset unused ioInclusionSet
     !@string outHeader {
     outHeader = [filewrapper semanticComponentGenerationTemplate.abstractExtensionGetterDeclaration
-      ![self.mReceiverType definition].typeName.string
+      !self.mReceiverType.definition.typeName.string
       !self.mAbstractExtensionGetterName
       !self.mAbstractExtensionGetterFormalParameterList
       !self.mResultType
@@ -310,7 +310,7 @@ final class @abstractExtensionGetterForGeneration : @semanticDeclarationWithHead
                                                 ?!@stringset ioInclusionSet
                                                 !@string outImplementation {
     ioInclusionSet ++= "getter-"
-      + [[self.mReceiverType definition].typeName.string fileNameRepresentation]
+      + [self.mReceiverType.definition.typeName.string fileNameRepresentation]
       + "-" + [self.mAbstractExtensionGetterName fileNameRepresentation]
     [self.mResultType addHeaderFileName !?ioInclusionSet]
     [self.mReceiverType addHeaderFileName !?ioInclusionSet]
@@ -318,7 +318,7 @@ final class @abstractExtensionGetterForGeneration : @semanticDeclarationWithHead
       [mFormalArgumentType addHeaderFileName !?ioInclusionSet]
     end
     outImplementation = [filewrapper semanticComponentGenerationTemplate.abstractExtensionGetterImplementation
-      ![self.mReceiverType definition].typeName.string
+      !self.mReceiverType.definition.typeName.string
       !self.mAbstractExtensionGetterName
       !self.mAbstractExtensionGetterFormalParameterList
       !self.mResultType

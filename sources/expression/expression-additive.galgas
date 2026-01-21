@@ -229,11 +229,11 @@ override method @rightShiftExpressionAST analyzeSemanticExpression
      outExpression = @literalBigIntExpressionForGeneration {
        !inAnalysisContext.predefinedTypes.mBigIntType
        !self.mOperatorLocation
-       !left.mValue >> [right.mValue uint]
+       !left.mValue >> right.mValue.uint
      }
-  elsif not [[leftType definition].features contains !.infixShiftOperator] then
+  elsif not [leftType.definition.features contains !.infixShiftOperator] then
     error self.mOperatorLocation
-    : "left operand type is '@" + [leftType definition].typeName.string + "' and does not support a shift operator"
+    : "left operand type is '@" + leftType.definition.typeName.string + "' and does not support a shift operator"
     :outExpression
   else
   //--- Generate expression
@@ -301,11 +301,11 @@ override method @leftShiftExpressionAST analyzeSemanticExpression
      outExpression = @literalBigIntExpressionForGeneration {
        !inAnalysisContext.predefinedTypes.mBigIntType
        !self.mOperatorLocation
-       !left.mValue << [right.mValue uint]
+       !left.mValue << right.mValue.uint
      }
-  elsif not [[leftType definition].features contains !.infixShiftOperator] then
+  elsif not [leftType.definition.features contains !.infixShiftOperator] then
     error self.mOperatorLocation
-    : "left operand type is '@" + [leftType definition].typeName.string + "' and does not support a shift operator"
+    : "left operand type is '@" + leftType.definition.typeName.string + "' and does not support a shift operator"
     :outExpression
   else
   //--- Generate expression
@@ -361,7 +361,7 @@ override method @addExpressionNoOverflowAST analyzeSemanticExpression
   ]
 //--- Check operator availability
   checkDiadicOperator (
-    !operatorIsHandled: [[leftExpression.mResultType definition].features contains !.infixAddOperatorNoOVF]
+    !operatorIsHandled: [leftExpression.mResultType.definition.features contains !.infixAddOperatorNoOVF]
     !"&+"
     !self.mOperatorLocation
     !?leftExpression
@@ -427,7 +427,7 @@ override method @addExpressionAST analyzeSemanticExpression
   ]
 //--- Check operator availability
   checkDiadicOperator (
-    !operatorIsHandled: [[leftExpression.mResultType definition].features contains !.infixAddOperator]
+    !operatorIsHandled: [leftExpression.mResultType.definition.features contains !.infixAddOperator]
     !"+"
     !self.mOperatorLocation
     !?leftExpression
@@ -494,7 +494,7 @@ override method @subExpressionNoOverflowAST analyzeSemanticExpression
   ]
 //--- Check operator availability
   checkDiadicOperator (
-    !operatorIsHandled: [[leftExpression.mResultType definition].features contains !.infixSubOperatorNoOVF]
+    !operatorIsHandled: [leftExpression.mResultType.definition.features contains !.infixSubOperatorNoOVF]
     !"&-"
     !self.mOperatorLocation
     !?leftExpression
@@ -560,7 +560,7 @@ override method @subExpressionAST analyzeSemanticExpression
   ]
 //--- Check operator availability
   checkDiadicOperator (
-    !operatorIsHandled: [[leftExpression.mResultType definition].features contains !.infixSubOperator]
+    !operatorIsHandled: [leftExpression.mResultType.definition.features contains !.infixSubOperator]
     !"-"
     !self.mOperatorLocation
     !?leftExpression

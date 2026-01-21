@@ -216,22 +216,22 @@ override method @dictDeclarationAST enterDeclarationInSemanticContext
   var @formalParameterSignature insertSetterFormalArgumentList = @()
   var @typedPropertyList typedPropertyList = @()
   var @functionSignature argumentTypeListForAddAssignWithFieldExpressionList = @()
-  argumentTypeListForAddAssignWithFieldExpressionList += !["" nowhere] !keyTypeIndex !"key" !true
+  argumentTypeListForAddAssignWithFieldExpressionList += !"".nowhere !keyTypeIndex !"key" !true
   insertSetterFormalArgumentList +=
-    !["" nowhere]
+    !"".nowhere
     !keyTypeIndex
     !.argumentConstantIn
     !"inKey"
   var @formalParameterSignature removeMethodFormalArgumentList = @()
   removeMethodFormalArgumentList +=
-    !["" nowhere]
+    !"".nowhere
     !keyTypeIndex
     !.argumentConstantIn
     !"inKey"
   var @optionalMethodSignature optionalMethodSignature = @()
   optionalMethodSignature +=
     !true
-    !["" nowhere]
+    !"".nowhere
     !keyTypeIndex
     !"inKey"
   var typesToIncludeInHeaderCompilation = @unifiedTypeMapEntryList ()
@@ -239,23 +239,23 @@ override method @dictDeclarationAST enterDeclarationInSemanticContext
     [!?ioTypeMap makeEntry !typeName ?let attributeTypeIndex]
     let hasSetter = true
     let hasSelector = false
-    argumentTypeListForAddAssignWithFieldExpressionList += !["" nowhere] !attributeTypeIndex !mPropertyName.string !true
+    argumentTypeListForAddAssignWithFieldExpressionList += !"".nowhere !attributeTypeIndex !mPropertyName.string !true
     typedPropertyList += !attributeTypeIndex !mPropertyName !initExpression !hasSetter: hasSetter !hasSelector: hasSelector
     typesToIncludeInHeaderCompilation += !attributeTypeIndex
     enumerationDescriptor += !attributeTypeIndex !mPropertyName.string
     insertSetterFormalArgumentList +=
-      !["" nowhere]
+      !"".nowhere
       !attributeTypeIndex
       !@formalArgumentPassingModeAST.argumentConstantIn
       !mPropertyName.string
     removeMethodFormalArgumentList +=
-      !["" nowhere]
+      !"".nowhere
       !attributeTypeIndex
       !@formalArgumentPassingModeAST.argumentOut
       !mPropertyName.string
     optionalMethodSignature +=
       !false
-      !["" nowhere]
+      !"".nowhere
       !attributeTypeIndex
       !mPropertyName.string
   end
@@ -294,7 +294,7 @@ override method @dictDeclarationAST enterDeclarationInSemanticContext
     [!?getterMap insertOrReplace
       !accessorName
       !.definedAsMember
-      !@functionSignature @[@(["" nowhere], keyTypeIndex, "inKey", true)]
+      !@functionSignature @[@("".nowhere, keyTypeIndex, "inKey", true)]
       !.here
       !true
       !attributeTypeIndex
@@ -313,8 +313,8 @@ override method @dictDeclarationAST enterDeclarationInSemanticContext
       ?let @unifiedTypeMapEntry attributeTypeIndex
     ]
     var accessorFormalArgumentList = @formalParameterSignature ()
-    accessorFormalArgumentList += !["" nowhere] !attributeTypeIndex !.argumentConstantIn !mPropertyName.string
-    accessorFormalArgumentList += !["" nowhere] !keyTypeIndex !.argumentConstantIn !"key"
+    accessorFormalArgumentList += !"".nowhere !attributeTypeIndex !.argumentConstantIn !mPropertyName.string
+    accessorFormalArgumentList += !"".nowhere !keyTypeIndex !.argumentConstantIn !"key"
     [!?setterMap insertOrReplace
       !accessorName
       !@methodKind.definedAsMember
@@ -373,7 +373,7 @@ override method @dictDeclarationAST enterDeclarationInSemanticContext
   ]
 //--- Read subscripts
   var @subscriptMap readSubscriptMap = @()
-  let @functionSignature argumentTypeList = @[@(["" nowhere], keyTypeIndex, "inKey", true)]
+  let @functionSignature argumentTypeList = @[@("".nowhere, keyTypeIndex, "inKey", true)]
   [!?readSubscriptMap insertKey
     !@([argumentTypeList subcriptSignature], .nowhere)
     !argumentTypeList
@@ -419,7 +419,7 @@ proc check_K_escapeCharacters ?let @lstring inString {  //--- Check escape seque
     var @stringlist explodedArray = [components.mValue componentsSeparatedByString !"%"]
     [!?explodedArray popFirst ?*]
     for (mValue) in explodedArray do
-      if [mValue count] > 0 then
+      if mValue.count > 0 then
         let @char c = [mValue characterAtIndex !0]
         if c != 'K' then
           error inString: "only '%K' and '%%' escape sequences are allowed in this error message "
@@ -436,7 +436,7 @@ proc check_K_L_escapeCharacters ?let @lstring inString {  //--- Check escape seq
     var @stringlist explodedArray = [components.mValue componentsSeparatedByString !"%"]
     [!?explodedArray popFirst ?*]
     for (mValue) in explodedArray do
-      if [mValue count] > 0 then
+      if mValue.count > 0 then
         let @char c = [mValue characterAtIndex !0]
         if (c != 'K') & (c != 'L') then
           error inString: "only '%K', '%L' and '%%' escape sequences are allowed in this error message "
@@ -465,7 +465,7 @@ override method @dictDeclarationAST semanticAnalysis
 {
 //--- Check key is comparable
   let keyType = [ioTypeMap typeMapEntryForLKey !self.mKeyTypeName]
-  if not [[keyType definition].features contains !.comparable] then
+  if not [keyType.definition.features contains !.comparable] then
     error self.mKeyTypeName : "the @" + self.mKeyTypeName + " type is not comparable"
   end
 //--- Useful entities graph
@@ -548,19 +548,19 @@ final class @dictTypeForGeneration : @semanticTypeForGeneration {
                                      !@string outHeader {
     [self.mElementTypeEntry addHeaderFileName1 !?ioInclusionSet]
     [self.mOptionalElementTypeEntry addHeaderFileName1 !?ioInclusionSet]
-    let selfTypeDefinition = [self.mSelfTypeEntry definition]
+    let selfTypeDefinition = self.mSelfTypeEntry.definition
     outHeader = [filewrapper dictGenerationTemplate.dictTypeHeader1
       !selfTypeDefinition.typeName.string
-      ![self.mSelfTypeEntry identifierRepresentation]
+      !self.mSelfTypeEntry.identifierRepresentation
       !self.mTypedAttributeList
       !selfTypeDefinition.enumerationDescriptorList
       !selfTypeDefinition.typeForEnumeratedElement
-      ![self.mKeyTypeName identifierRepresentation]
-      ![self.mElementTypeEntry identifierRepresentation]
+      !self.mKeyTypeName.string.identifierRepresentation
+      !self.mElementTypeEntry.identifierRepresentation
    ]
     outHeader += [filewrapper typeGenerationTemplate.unifiedClassBodyForType
       !selfTypeDefinition.typeName.string
-      ![self.mSelfTypeEntry identifierRepresentation]
+      !self.mSelfTypeEntry.identifierRepresentation
       !selfTypeDefinition.isConcrete
       !selfTypeDefinition.initializerMap
       !selfTypeDefinition.classFunctionMap
@@ -584,16 +584,16 @@ final class @dictTypeForGeneration : @semanticTypeForGeneration {
                                           ?!@stringset ioInclusionSet
                                           !@string outImplementation {
     [self.mSelfTypeEntry addHeaderFileName !?ioInclusionSet]
-    let selfTypeDefinition = [self.mSelfTypeEntry definition]
+    let selfTypeDefinition = self.mSelfTypeEntry.definition
     outImplementation = [filewrapper dictGenerationTemplate.dictTypeSpecificImplementation
-      ![self.mSelfTypeEntry identifierRepresentation]
+      !self.mSelfTypeEntry.identifierRepresentation
       !self.mTypedAttributeList
       !selfTypeDefinition.enumerationDescriptorList
       !selfTypeDefinition.typeForEnumeratedElement
-      ![self.mKeyTypeName identifierRepresentation]
+      !self.mKeyTypeName.string.identifierRepresentation
       ![selfTypeDefinition.features generateCppObjectComparison]
-      ![self.mElementTypeEntry identifierRepresentation]
-      ![self.mOptionalElementTypeEntry identifierRepresentation]
+      !self.mElementTypeEntry.identifierRepresentation
+      !self.mOptionalElementTypeEntry.identifierRepresentation
     ]
   }
 

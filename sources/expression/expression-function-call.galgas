@@ -29,7 +29,7 @@ syntax extension galgas3ExpressionSyntax {
     $($
     var @actualOutputArgumentList expressionList = @()
     select
-      let selector = ["" here]
+      let selector = "".here
       <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST expression
       expressionList += !selector !expression !.here
     or
@@ -40,7 +40,7 @@ syntax extension galgas3ExpressionSyntax {
         expressionList += !selector !expression !.here
       while
         $!$
-        let selector = ["" here]
+        let selector = "".here
         <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST expression
         expressionList += !selector !expression !.here
       end
@@ -54,11 +54,11 @@ syntax extension galgas3ExpressionSyntax {
         expressionList += !selector !expression !.here
       or
         $!$
-        let selector = ["" here]
+        let selector = "".here
         <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST expression
         expressionList += !selector !expression !.here
       or
-        let selector = ["" here]
+        let selector = "".here
         <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST expression
         expressionList += !selector !expression !.here
       end
@@ -136,10 +136,10 @@ final class @functionCallExpressionAST : @semanticExpressionAST {
       end
     end
   //--- Analyze effective parameters
-    if [functionSignature count] != [self.mExpressionList count] then
+    if functionSignature.count != self.mExpressionList.count then
       error self.mFunctionName
-      :"the '" + self.mFunctionName + "' function header declares " + [[functionSignature count] string]
-        + " formal parameter(s), but this function call names " + [[self.mExpressionList count] string]
+      :"the '" + self.mFunctionName + "' function header declares " + functionSignature.count.string
+        + " formal parameter(s), but this function call names " + self.mExpressionList.count.string
         + " effective argument(s)"
       : outExpression
     else
@@ -208,7 +208,7 @@ final class @functionCallExpressionForGeneration : @semanticExpressionForGenerat
       [mExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?let parameter]
       parameterList += !parameter
     end
-    outCppExpression = "function_" + [self.mFunctionName identifierRepresentation] + " ("
+    outCppExpression = "function_" + self.mFunctionName.identifierRepresentation + " ("
     for (mValue) in parameterList
       do outCppExpression += mValue + ", "
     end

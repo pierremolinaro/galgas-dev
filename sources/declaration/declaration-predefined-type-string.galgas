@@ -233,9 +233,9 @@ final class @stringPredefinedTypeAST : @predefinedTypeAST {
     [!?ioUnifiedTypeMap makeEntryFromString !"bool" ?let @unifiedTypeMapEntry boolType]
   //--- Generate file
     var @formalParameterSignature argList = @()
-    argList += !["" nowhere] !stringType !@formalArgumentPassingModeAST. argumentConstantIn !"inStartPath"
-    argList += !["" nowhere] !stringType !@formalArgumentPassingModeAST. argumentConstantIn !"inFileName"
-    argList += !["" nowhere] !stringType !@formalArgumentPassingModeAST. argumentConstantIn !"inContents"
+    argList += !"".nowhere !stringType !@formalArgumentPassingModeAST. argumentConstantIn !"inStartPath"
+    argList += !"".nowhere !stringType !@formalArgumentPassingModeAST. argumentConstantIn !"inFileName"
+    argList += !"".nowhere !stringType !@formalArgumentPassingModeAST. argumentConstantIn !"inContents"
     [!?outClassMethodMap insertOrReplace
       !@{!"generateFile" !.here}
       !argList
@@ -312,9 +312,9 @@ final class @stringPredefinedTypeAST : @predefinedTypeAST {
   //--- writeToFileWhenDifferentContents, writeToExecutableFileWhenDifferentContents
     var @formalParameterSignature argList = @()
     [!?ioUnifiedTypeMap makeEntryFromString !"string" ?@unifiedTypeMapEntry t]
-    argList += !["" nowhere] !t !@formalArgumentPassingModeAST. argumentConstantIn !"inFilePath"
+    argList += !"".nowhere !t !@formalArgumentPassingModeAST. argumentConstantIn !"inFilePath"
     [!?ioUnifiedTypeMap makeEntryFromString !"bool" ?t]
-    argList += !["" nowhere] !t !@formalArgumentPassingModeAST. argumentOut !"outFileModified"
+    argList += !"".nowhere !t !@formalArgumentPassingModeAST. argumentOut !"outFileModified"
     [!?outInstanceMethodMap insertKey
       !@lstring {!"writeToFileWhenDifferentContents" !@location.here}
       !@methodKind.definedAsMember

@@ -41,7 +41,7 @@ syntax extension galgas3InstructionsSyntax {
             $identifier$ ?varName
            or
              $*$
-             varName = ["" here]
+             varName = "".here
           end
         end
         $=$
@@ -53,7 +53,7 @@ syntax extension galgas3InstructionsSyntax {
             !isConstant: isConstant
             !exp: expression
             !endOfExp: endOfReceiverExpression
-            !typeName: ["" here]
+            !typeName: "".here
           }
         or
           $as$
@@ -103,7 +103,7 @@ syntax extension galgas4InstructionsSyntax {
             $identifier$ ?varName
            or
              $*$
-             varName = ["" here]
+             varName = "".here
           end
         end
         $=$
@@ -115,7 +115,7 @@ syntax extension galgas4InstructionsSyntax {
             !isConstant: isConstant
             !exp: expression
             !endOfExp: endOfReceiverExpression
-            !typeName: ["" here]
+            !typeName: "".here
           }
         or
           $as$
@@ -216,12 +216,12 @@ list @CommaSeparatedExpressionList {
         var castType = @unifiedTypeMapEntry.null
         var testType = @unifiedTypeMapEntry.null
       //--- Check this is an optional
-        let unwrappedType = [analyzedExpression.mResultType definition].unwrappedType 
-        if not [unwrappedType isNull] then
+        let unwrappedType = analyzedExpression.mResultType.definition.unwrappedType 
+        if not unwrappedType.isNull then
           [!?ioVariableMap openOverrideForSelectBlock]
           [!?ioVariableMap openBranch]
-          let targetVariableCppName = "var_" + [varName identifierRepresentation]
-                + "_" + [varName.location startLocationIndex]
+          let targetVariableCppName = "var_" + varName.string.identifierRepresentation
+                + "_" + varName.location.startLocationIndex
           if varName.string != "" then
             if isConstant then
               [!?ioVariableMap insertInitializedLocalConstant
@@ -249,7 +249,7 @@ list @CommaSeparatedExpressionList {
             !targetType: unwrappedType
           }
       //--- Check this is a class
-        elsif [[analyzedExpression.mResultType definition].typeKind isClassType] then
+        elsif analyzedExpression.mResultType.definition.typeKind.isClassType then
           if typeName.string == "" then
             error typeName.location : "on a class object, the 'as' clause is required" : castType, testType
           else
@@ -258,22 +258,22 @@ list @CommaSeparatedExpressionList {
           //--- Check expression type is a descendant of named type
             var @unifiedTypeMapEntry t = castType
             var @bool found = t == analyzedExpression.mResultType
-            loop ([ioTypeMap count] + 1)
-            while (not found) & not [[t definition].superType isNull] do
-              t = [t definition].superType
+            loop (ioTypeMap.count + 1)
+            while (not found) & not t.definition.superType.isNull do
+              t = t.definition.superType
               found = t == analyzedExpression.mResultType
             end
             if not found then
               error typeName
               : "the '@" + typeName + "' type is not a descendant of the '@"
-              + [analyzedExpression.mResultType definition].typeName.string
+              + analyzedExpression.mResultType.definition.typeName.string
               + "' type of the cast expression"
             end
           end
           [!?ioVariableMap openOverrideForSelectBlock]
           [!?ioVariableMap openBranch]
-          let targetVariableCppName = "var_" + [varName identifierRepresentation]
-                + "_" + [varName.location startLocationIndex]
+          let targetVariableCppName = "var_" + varName.string.identifierRepresentation
+                + "_" + varName.location.startLocationIndex
           if varName.string != "" then
              if isConstant then
               [!?ioVariableMap insertInitializedLocalConstant
@@ -298,7 +298,7 @@ list @CommaSeparatedExpressionList {
             !targetType: castType
             !testType: testType
           }
-        elsif let weakRefType = [[analyzedExpression.mResultType definition].typeKind getWeakReferenceType] then
+        elsif let weakRefType = analyzedExpression.mResultType.definition.typeKind.getWeakReferenceType then
           if typeName.string == "" then
             castType = weakRefType.referenceType
           else
@@ -308,30 +308,30 @@ list @CommaSeparatedExpressionList {
           var @unifiedTypeMapEntry t = castType
           var @bool found = t == analyzedExpression.mResultType
           if found then
-            [[castType definition].typeKind extractWeakReferenceType ?referenceType: castType]
+            [castType.definition.typeKind extractWeakReferenceType ?referenceType: castType]
           elsif t == weakRefType.referenceType then
             found = true
           end
-          loop ([ioTypeMap count] + 1)
-          while (not found) & not [[t definition].superType isNull] do
-            t = [t definition].superType
+          loop (ioTypeMap.count + 1)
+          while (not found) & not t.definition.superType.isNull do
+            t = t.definition.superType
             if t == analyzedExpression.mResultType then
               found = true
-              [[castType definition].typeKind extractWeakReferenceType ?referenceType: castType]
+              [castType.definition.typeKind extractWeakReferenceType ?referenceType: castType]
             elsif t == weakRefType.referenceType then
               found = true
             end
           end
           if not found then
             error typeName
-            : "the '@" + [castType definition].typeName.string
+            : "the '@" + castType.definition.typeName.string
             + "' type is not compatible with the '@"
-            + [analyzedExpression.mResultType definition].typeName.string + "' type"
+            + analyzedExpression.mResultType.definition.typeName.string + "' type"
           end
           [!?ioVariableMap openOverrideForSelectBlock]
           [!?ioVariableMap openBranch]
-          let targetVariableCppName = "var_" + [varName identifierRepresentation]
-                + "_" + [varName.location startLocationIndex]
+          let targetVariableCppName = "var_" + varName.string.identifierRepresentation
+                + "_" + varName.location.startLocationIndex
           if varName.string != "" then
            if isConstant then
               [!?ioVariableMap insertInitializedLocalConstant
@@ -359,7 +359,7 @@ list @CommaSeparatedExpressionList {
         else
           error analyzedExpression.mLocation
            : "expression should be a class instance, or a weak reference: it is an @"
-           +  [analyzedExpression.mResultType definition].typeName.string + " instance"
+           + analyzedExpression.mResultType.definition.typeName.string + " instance"
         end
       end
     end
@@ -401,7 +401,7 @@ list @ifTestListForGeneration {
                              ?!@string ioGeneratedCode
                              !@string outTestVar {
   //--- Generate test expression
-    outTestVar = "test_" + [ioTemporaryVariableIndex string]
+    outTestVar = "test_" + ioTemporaryVariableIndex.string
     ioTemporaryVariableIndex += 1
     ioGeneratedCode += "GalgasBool " + outTestVar + " = GalgasBool::boolTrue ;\n"
     for (expression) in self do
@@ -420,8 +420,8 @@ list @ifTestListForGeneration {
       case letVarExp (targetVarCppName exp targetType testType) :
         [targetType addHeaderFileName !?ioInclusionSet]
         [testType addHeaderFileName !?ioInclusionSet]
-        let targetTypeName = [targetType identifierRepresentation]
-        let testTypeName = [testType identifierRepresentation]
+        let targetTypeName = targetType.identifierRepresentation
+        let testTypeName = testType.identifierRepresentation
         [exp generateExpression
           !?ioGeneratedCode
           !?ioInclusionSet
@@ -435,7 +435,7 @@ list @ifTestListForGeneration {
         ioGeneratedCode += "  " + outTestVar + " = GalgasBool::boolFalse ;\n"
         ioGeneratedCode += "}\n"
       case optionalExp (targetVarCppName isConstant exp targetType) :
-        let targetTypeName = [targetType identifierRepresentation]
+        let targetTypeName = targetType.identifierRepresentation
         [exp generateExpression
           !?ioGeneratedCode
           !?ioInclusionSet

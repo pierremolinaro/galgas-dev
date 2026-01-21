@@ -223,7 +223,7 @@ final class @extensionMethodAST : @semanticDeclarationAST {
     let @bool implementedAsFunction
   //--- Check self type is a class
     var isReferenceClass = false
-    if let selfClassType = [[selfType definition].typeKind getClassType] then
+    if let selfClassType = [selfType.definition.typeKind getClassType] then
       isReferenceClass = selfClassType.isReference
       selfObjectNameString = "this"
       selfObjectPropertyAccessorString = "this->"
@@ -242,7 +242,7 @@ final class @extensionMethodAST : @semanticDeclarationAST {
       !selfObjectCppPrefixForAccessingProperty: selfObjectPropertyAccessorString
     }
     var isclass = false
-    if let classType = [[selfType definition].typeKind getClassType] then
+    if let classType = [selfType.definition.typeKind getClassType] then
       isclass = classType.isReference
     end
     analyzeRoutineBody (
@@ -261,12 +261,12 @@ final class @extensionMethodAST : @semanticDeclarationAST {
       !infoMessage:"extension method " + self.mExtensionMethodName
       !@extensionMethodForGeneration {
         !generateHeader: true // Generate Cpp header file
-        !implementationCppFileName: "method-" + [[selfType definition].typeName.string fileNameRepresentation] + "-" + [self.mExtensionMethodName fileNameRepresentation]
+        !implementationCppFileName: "method-" + [selfType.definition.typeName.string fileNameRepresentation] + "-" + [self.mExtensionMethodName fileNameRepresentation]
         !selfType
         !self.mExtensionMethodName.string
         !implementedAsFunction
         !formalParameterListForGeneration
-        ![selfType definition].allTypedPropertyList
+        !selfType.definition.allTypedPropertyList
         !semanticInstructionListForGeneration
       }
   }
@@ -323,13 +323,13 @@ override method @extensionMethodForGeneration appendDeclaration1
   !@string outHeader {
   if self.mImplementedAsFunction then
     outHeader = [filewrapper semanticComponentGenerationTemplate.extensionMethodAsFunctionDeclaration
-      ![self.mReceiverType definition].typeName.string
+      !self.mReceiverType.definition.typeName.string
       !self.mExtensionMethodName
       !self.mExtensionMethodFormalParameterList
     ]
   else
     outHeader = [filewrapper semanticComponentGenerationTemplate.extensionMethodDeclaration
-      ![self.mReceiverType definition].typeName.string
+      !self.mReceiverType.definition.typeName.string
       !self.mExtensionMethodName
       !self.mExtensionMethodFormalParameterList
     ]
@@ -346,17 +346,17 @@ override method @extensionMethodForGeneration appendSpecificImplementation
   if self.mImplementedAsFunction then
     var @formalParameterListForGeneration extensionMethodFormalParameterList = self.mExtensionMethodFormalParameterList
     [!?extensionMethodFormalParameterList insertAtIndex
-      !["" nowhere]
+      !"".nowhere
       !@formalArgumentPassingModeAST.argumentConstantIn
       !self.mReceiverType
       !@lstring {!"self" !@location.here}
       !"inObject"
       !0
     ]
-    ioInclusionSet ++= "method-" + [[self.mReceiverType definition].typeName.string fileNameRepresentation] + "-" + [self.mExtensionMethodName fileNameRepresentation]
+    ioInclusionSet ++= "method-" + [self.mReceiverType.definition.typeName.string fileNameRepresentation] + "-" + [self.mExtensionMethodName fileNameRepresentation]
     generateProcedure (
       !static:false
-      !"extensionMethod_" + [self.mExtensionMethodName identifierRepresentation]
+      !"extensionMethod_" + self.mExtensionMethodName.identifierRepresentation
       !?ioInclusionSet
       !extensionMethodFormalParameterList
       !self.mSemanticInstructionListForGeneration
@@ -368,7 +368,7 @@ override method @extensionMethodForGeneration appendSpecificImplementation
       ?let @string code
     )
     outImplementation = [filewrapper semanticComponentGenerationTemplate.extensionMethodAsFunctionImplementation
-      ![self.mReceiverType definition].typeName.string
+      !self.mReceiverType.definition.typeName.string
       !self.mExtensionMethodName
       !code
     ]
@@ -380,9 +380,9 @@ override method @extensionMethodForGeneration appendSpecificImplementation
     var @unifiedTypeMapEntry baseType = self.mReceiverType
     var @bool searching = true
     loop (@uint.max) while searching do
-      if not [[baseType definition].superType isNull] then
-        if [[[baseType definition].superType definition].instanceMethodMap hasKey !self.mExtensionMethodName] then
-          baseType = [baseType definition].superType
+      if not baseType.definition.superType.isNull then
+        if [baseType.definition.superType.definition.instanceMethodMap hasKey !self.mExtensionMethodName] then
+          baseType = baseType.definition.superType
         else
           searching = false
         end
@@ -391,7 +391,7 @@ override method @extensionMethodForGeneration appendSpecificImplementation
       end
     end
     ioInclusionSet ++=
-      "method-" + [[baseType definition].typeName.string fileNameRepresentation]
+      "method-" + [baseType.definition.typeName.string fileNameRepresentation]
       + "-" + [self.mExtensionMethodName fileNameRepresentation]
     generateExtensionMethodNew (
       !self.mReceiverType
@@ -402,7 +402,7 @@ override method @extensionMethodForGeneration appendSpecificImplementation
       ?let @string methodImplementation
     )
     outImplementation = [filewrapper semanticComponentGenerationTemplate.extensionMethodImplementation
-      ![self.mReceiverType definition].typeName.string
+      !self.mReceiverType.definition.typeName.string
       !self.mExtensionMethodName
       !self.mExtensionMethodFormalParameterList
       !methodImplementation

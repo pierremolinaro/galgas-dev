@@ -29,7 +29,7 @@ syntax extension galgas3InstructionsSyntax {
     $identifier$ ?let mTargetVariableName
     let @lstring optionalProperty
     select
-      optionalProperty = ["" nowhere]
+      optionalProperty = "".nowhere
     or
       $.$
       $identifier$ ?let attributeName
@@ -54,7 +54,7 @@ syntax extension galgas3InstructionsSyntax {
     $identifier$ ?let mTargetVariableName
     let @lstring optionalProperty
     select
-      optionalProperty = ["" nowhere]
+      optionalProperty = "".nowhere
     or
       $.$
       $identifier$ ?let attributeName
@@ -85,7 +85,7 @@ syntax extension galgas4InstructionsSyntax {
     $identifier$ ?let mTargetVariableName
     let @lstring optionalProperty
     select
-      optionalProperty = ["" nowhere]
+      optionalProperty = "".nowhere
     or
       $[$
       <non_empty_output_expression_list>
@@ -117,7 +117,7 @@ syntax extension galgas4InstructionsSyntax {
     $identifier$ ?let mTargetVariableName
     let @lstring optionalProperty
     select
-      optionalProperty = ["" nowhere]
+      optionalProperty = "".nowhere
     or
       $[$
       <non_empty_output_expression_list>
@@ -180,7 +180,7 @@ final class @assignmentInstructionAST : @semanticInstructionAST {
     ]
     var targetType = receiverType
     if self.mOptionalProperty.string != "" then
-      let propertyMap = [targetType definition].propertyMap
+      let propertyMap = targetType.definition.propertyMap
       [propertyMap searchKey !self.mOptionalProperty ?let accessControl ?let isConstant ?targetType]
       [accessControl checkSetAccess !inAnalysisContext.selfAvailability !self.mOptionalProperty]
       if isConstant then
@@ -268,16 +268,16 @@ final class @selfPropertyAssignmentInstructionAST : @semanticInstructionAST {
       if not [selfAvailable.selfMutability propertiesAreMutable] then
         error self.mInstructionLocation : "'self' property not mutable in this context"
       end
-      let propertyMap = [selfAvailable.type definition].propertyMap
+      let propertyMap = selfAvailable.type.definition.propertyMap
       [propertyMap searchKey !self.mTargetSelfPropertyName ?* ?let isConstant ?var targetType]
       if isConstant & not [selfAvailable.selfMutability isInitializer] then
         error self.mTargetSelfPropertyName : "a constant property cannot be modified"
       end
       let targetVariableCppName = inAnalysisContext.selfObjectCppPrefixForAccessingProperty
-         + "mProperty_"+ [self.mTargetSelfPropertyName.string identifierRepresentation]
+         + "mProperty_"+ self.mTargetSelfPropertyName.string.identifierRepresentation
     //--- Get target variable type
       if self.mOptionalProperty.string != "" then
-        let propertyMap = [targetType definition].propertyMap
+        let propertyMap = targetType.definition.propertyMap
         [propertyMap searchKey !self.mOptionalProperty ?let accessControl ?let isConstant ?targetType]
         [accessControl checkSetAccess !inAnalysisContext.selfAvailability !self.mOptionalProperty.location]
         if isConstant then
@@ -351,21 +351,21 @@ class @assignmentInstructionForGeneration : @semanticInstructionForGeneration {
     [self.mTargetType addHeaderFileName !?ioInclusionSet]
     if self.mOptionalProperty == "" then
       ioGeneratedCode += self.mTargetCppName + " = " + sourceVar + " ;\n"
-    elsif [[self.mReceiverType definition].typeKind isClassType] then
-      [[self.mReceiverType definition].typeKind extractClassType ?isReference: let isReference]
+    elsif self.mReceiverType.definition.typeKind.isClassType then
+      [self.mReceiverType.definition.typeKind extractClassType ?isReference: let isReference]
       if isReference then
         ioGeneratedCode += self.mTargetCppName + ".setProperty_"
-        ioGeneratedCode += [self.mOptionalProperty identifierRepresentation]
+        ioGeneratedCode += self.mOptionalProperty.identifierRepresentation
         ioGeneratedCode += " (" + sourceVar + ") ;\n"
       else
         ioGeneratedCode += self.mTargetCppName + ".setter_setProperty_5F_"
-        ioGeneratedCode += [[self.mOptionalProperty identifierRepresentation] capitalizingFirstCharacter]
+        ioGeneratedCode += self.mOptionalProperty.identifierRepresentation.capitalizingFirstCharacter
         ioGeneratedCode += " (" + sourceVar + ", " + compilerCppName () + " COMMA_HERE) ;\n"
         [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
       end
     else
       ioGeneratedCode += self.mTargetCppName + ".mProperty_"
-      ioGeneratedCode += [self.mOptionalProperty identifierRepresentation]
+      ioGeneratedCode += self.mOptionalProperty.identifierRepresentation
       ioGeneratedCode += " = " + sourceVar + " ;\n"
     end
     [!?ioUnusedVariableCppNameSet removeKey !self.mTargetCppName]

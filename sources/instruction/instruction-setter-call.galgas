@@ -66,7 +66,7 @@ syntax extension galgas3InstructionsSyntax {
     end
     let @lstring typeNameForCasting
     select
-      typeNameForCasting = ["" nowhere]
+      typeNameForCasting = "".nowhere
     or
       $as$
       <type_definition_ggs3> !?ioDeclarations ?typeNameForCasting
@@ -111,46 +111,7 @@ syntax extension galgas3InstructionsSyntax {
 
 syntax extension galgas4InstructionsSyntax {
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-//  rule <semantic_instruction> !@semanticInstructionAST outInstruction {
-//    $[$
-//    let instructionLocation = @location.here
-//    $!?selector:$ ?let selector
-//    if selector.string != "" then
-//      error selector : "an empty selector '!?' is required here"
-//    end
-//    let @bool prefixedBySelf
-//    select
-//      prefixedBySelf = false
-//    or
-//      $self$
-//      $.$
-//      prefixedBySelf = true
-//    end
-//    $identifier$ ?let mReceiverName
-//    var mReceiverStructAttributes = @lstringlist ()
-//    repeat
-//    while
-//      $.$
-//      $identifier$ ?let structAttribute
-//      mReceiverStructAttributes += !structAttribute
-//    end
-//    $identifier$ ?let mSetterName
-//    <actual_parameter_list> ?let @actualParameterListAST actualParameterList
-//    outInstruction = @setterCallInstructionAST {
-//      !instructionLocation
-//      !prefixedBySelf
-//      !mReceiverName
-//      !mReceiverStructAttributes
-//      !["" here] // typeNameForCasting
-//      !mSetterName
-//      !actualParameterList
-//    }
-//    $]$
-//  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <semantic_instruction> ?!@galgasDeclarationAST ioDeclarations
                               !@semanticInstructionAST outInstruction {
@@ -191,7 +152,7 @@ syntax extension galgas4InstructionsSyntax {
         !prefixedBySelf
         !mReceiverName
         !receiverStructProperties
-        !["" here] // typeNameForCasting
+        !"".here // typeNameForCasting
         !setterName
         !actualParameterList
       }
@@ -241,18 +202,18 @@ override method @setterCallInstructionAST analyzeSemanticInstruction
   if self.mPrefixedBySelf then
     if let selfAvailability = [inAnalysisContext.selfAvailability getAvailable] then
     //--- Check self is not inkoed before full initialization
-      if let classTypeKind = [[selfAvailability.type definition].typeKind getClassType], classTypeKind.isReference then
+      if let classTypeKind = [selfAvailability.type.definition.typeKind getClassType], classTypeKind.isReference then
       elsif not [selfAvailability.selfMutability selfIsMutable] then
         error self.mSetterName : "'self' not mutable in this context"
       end
-      let propertyMap = [selfAvailability.type definition].propertyMap
+      let propertyMap = selfAvailability.type.definition.propertyMap
       [propertyMap searchKey !self.mReceiverName ?* ?let isConstant ?receiverType]
       if isConstant then
         error self.mReceiverName: "a constant property cannot be modified"
       end
       nameForCheckingFormalParameterUsing = inAnalysisContext.selfObjectCppName
       targetVariableCppName = inAnalysisContext.selfObjectCppPrefixForAccessingProperty
-        + "mProperty_"+ [self.mReceiverName.string identifierRepresentation]
+        + "mProperty_"+ self.mReceiverName.string.identifierRepresentation
     else
       error self.mSetterName
       : "'self' not available in this context"
@@ -270,11 +231,11 @@ override method @setterCallInstructionAST analyzeSemanticInstruction
   var ok = true
   var errorLocation = self.mReceiverName.location
   for (value) in self.mReceiverStructProperties while ok do
-    ok = [[receiverType definition].typeKind isStructType]
+    ok = [receiverType.definition.typeKind isStructType]
     if not ok then
       error errorLocation : "a structure is required for '.' access"
     else
-      let propertyMap = [receiverType definition].propertyMap
+      let propertyMap = receiverType.definition.propertyMap
       [propertyMap searchKey !value ?let accessControl ?let isConstant ?receiverType]
       [accessControl checkSetAccess !inAnalysisContext.selfAvailability !value.location]
       errorLocation = value.location
@@ -292,7 +253,7 @@ override method @setterCallInstructionAST analyzeSemanticInstruction
     castType = receiverType
   end
 //--- Get setter signature
-  [[castType definition].setterMap searchKey
+  [castType.definition.setterMap searchKey
     !self.mSetterName
     ?let kind
     ?let routineSignature
@@ -321,11 +282,11 @@ override method @setterCallInstructionAST analyzeSemanticInstruction
   var searching = true
   if @uint.errorCount == 0 then
     loop (@uint.max) while searching do
-      if [[baseType definition].superType isNull] then
+      if baseType.definition.superType.isNull then
         searching = false
       else
-        if [[[baseType definition].superType definition].setterMap hasKey !self.mSetterName.string] then
-          baseType = [baseType definition].superType
+        if [baseType.definition.superType.definition.setterMap hasKey !self.mSetterName.string] then
+          baseType = baseType.definition.superType
         else
           searching = false
         end
@@ -365,7 +326,7 @@ override method @selfSetterCallInstructionAST analyzeSemanticInstruction
   //--- Check self is not invoked before full initialization
     [ioVariableMap checkSelfObjectIsFullyInitialized !self.mSetterName.location]
   //--- Get setter signature
-    [[selfAvailable.type definition].setterMap searchKey !self.mSetterName ?let kind ?let routineSignature ?let hasCompilerArgument ?* ?*]
+    [selfAvailable.type.definition.setterMap searchKey !self.mSetterName ?let kind ?let routineSignature ?let hasCompilerArgument ?* ?*]
   //--- Check effective parameters
     [self.mActualParameterList analyzeRoutineArguments
       !inUsefulnessCallerEntityName
@@ -433,7 +394,7 @@ override method @setterCallInstructionForGeneration generateInstruction
   ioGeneratedCode += "{\n"
   var receiverCppName = self.mReceiverCppName
   for (mValue) in self.mReceiverStructAttributes do
-    receiverCppName += ".mProperty_" + [mValue.string identifierRepresentation]
+    receiverCppName += ".mProperty_" + mValue.string.identifierRepresentation
   end
   [!?ioUnusedVariableCppNameSet removeKey !self.mReceiverBaseName]
 //--- Parameters
@@ -455,50 +416,50 @@ override method @setterCallInstructionForGeneration generateInstruction
 //--- Generate method call
   switch self.mKind
   case definedAsExtension :
-    ioInclusionSet ++= "setter-" + [[self.mMethodBaseType definition].typeName.string fileNameRepresentation] + "-" + [self.mSetterName fileNameRepresentation]
-    if [[self.mReceiverType definition].typeKind isClassType] then
-      if ([[self.mReceiverType definition].allTypedPropertyList count] > 0) then //  & [mReceiverType mIsConcrete] then
+    ioInclusionSet ++= "setter-" + [self.mMethodBaseType.definition.typeName.string fileNameRepresentation] + "-" + [self.mSetterName fileNameRepresentation]
+    if self.mReceiverType.definition.typeKind.isClassType then
+      if (self.mReceiverType.definition.allTypedPropertyList.count > 0) then //  & [mReceiverType mIsConcrete] then
         ioGeneratedCode += receiverCppName + ".insulate (" + compilerCppName () + " COMMA_HERE) ;\n"
         [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
      end
-      let pointerUniqueName = "ptr_" + [self.mInstructionLocation startLocationIndex]
-      ioGeneratedCode += "cPtr_" + [self.mReceiverType identifierRepresentation] + " * " + pointerUniqueName
-      ioGeneratedCode += " = (cPtr_" + [self.mReceiverType identifierRepresentation] + " *) " + receiverCppName + ".ptr () ;\n"
-      if [self.mCastType definition].typeName.string != [self.mReceiverType definition].typeName.string then
-        ioInclusionSet ++= "class-" + [[self.mCastType definition].typeName.string fileNameRepresentation]
+      let pointerUniqueName = "ptr_" + self.mInstructionLocation.startLocationIndex
+      ioGeneratedCode += "cPtr_" + self.mReceiverType.identifierRepresentation + " * " + pointerUniqueName
+      ioGeneratedCode += " = (cPtr_" + self.mReceiverType.identifierRepresentation + " *) " + receiverCppName + ".ptr () ;\n"
+      if self.mCastType.definition.typeName.string != self.mReceiverType.definition.typeName.string then
+        ioInclusionSet ++= "class-" + [self.mCastType.definition.typeName.string fileNameRepresentation]
         ioGeneratedCode += "if ((nullptr != " + pointerUniqueName
-                        + ") && (dynamic_cast <cPtr_" + [self.mCastType identifierRepresentation] + " *> ("
+                        + ") && (dynamic_cast <cPtr_" + self.mCastType.identifierRepresentation + " *> ("
                         + pointerUniqueName + ") == nullptr)) {\n"
         [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
         ioGeneratedCode += "  " + compilerCppName () + "->onTheFlyRunTimeError (\"cannot cast to '@"
-                        + [self.mCastType definition].typeName.string + "'\"" + [self.mInstructionLocation commaSourceFile] + ") ;\n"
+                        + self.mCastType.definition.typeName.string + "'\"" + [self.mInstructionLocation commaSourceFile] + ") ;\n"
         ioGeneratedCode += "  " + pointerUniqueName + " = nullptr ;\n"
         ioGeneratedCode += "}\n"
       end
-      ioGeneratedCode += "callExtensionSetter_" + [self.mSetterName identifierRepresentation]
-                      +  " ((cPtr_" + [self.mCastType identifierRepresentation] + " *) " + pointerUniqueName + ", "
+      ioGeneratedCode += "callExtensionSetter_" + self.mSetterName.string.identifierRepresentation
+                      +  " ((cPtr_" + self.mCastType.identifierRepresentation + " *) " + pointerUniqueName + ", "
     else
-      ioGeneratedCode += "extensionSetter_" + [self.mSetterName identifierRepresentation] + " (" + receiverCppName + ", "
+      ioGeneratedCode += "extensionSetter_" + self.mSetterName.string.identifierRepresentation + " (" + receiverCppName + ", "
     end
   case definedAsMember :
     [self.mReceiverType addHeaderFileName !?ioInclusionSet]
-    ioGeneratedCode += receiverCppName + ".setter_" + [self.mSetterName.string identifierRepresentation] + " ("
+    ioGeneratedCode += receiverCppName + ".setter_" + self.mSetterName.string.identifierRepresentation + " ("
   end
   for (mValue) in parameterCppNameList
     do ioGeneratedCode += mValue
     between ioGeneratedCode += ", "
   end
   if self.mHasCompilerArgument then
-    if [parameterCppNameList count] != 0 then
+    if parameterCppNameList.count != 0 then
       ioGeneratedCode +=  ", "
     end
     [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
     ioGeneratedCode +=  compilerCppName ()
     ioGeneratedCode += " COMMA_"
-  elsif [parameterCppNameList count] != 0 then
+  elsif parameterCppNameList.count != 0 then
     ioGeneratedCode += " COMMA_"
   end
-  ioGeneratedCode += [self.mSetterName.location sourceFile] + ") ;\n"
+  ioGeneratedCode += self.mSetterName.location.sourceFile + ") ;\n"
   ioGeneratedCode += "}\n"
 }
 
@@ -530,17 +491,17 @@ override method @selfSetterCallInstructionForGeneration generateInstruction
 //--- Generate setter call
   switch self.mKind
   case definedAsExtension :
-    ioInclusionSet ++= "setter-" + [[self.mReceiverType definition].typeName.string fileNameRepresentation] + "-" + [self.mSetterName fileNameRepresentation]
-    if [[self.mReceiverType definition].typeKind isClassType] then
-      ioGeneratedCode += "callExtensionSetter_" + [self.mSetterName identifierRepresentation] + " (" + self.mSelfCppName + ", "
+    ioInclusionSet ++= "setter-" + [self.mReceiverType.definition.typeName.string fileNameRepresentation] + "-" + [self.mSetterName fileNameRepresentation]
+    if self.mReceiverType.definition.typeKind.isClassType then
+      ioGeneratedCode += "callExtensionSetter_" + self.mSetterName.string.identifierRepresentation + " (" + self.mSelfCppName + ", "
     else
-      ioGeneratedCode += "extensionSetter_" + [self.mSetterName identifierRepresentation] + " (" + self.mSelfCppName + ", "
+      ioGeneratedCode += "extensionSetter_" + self.mSetterName.string.identifierRepresentation + " (" + self.mSelfCppName + ", "
     end
   case definedAsMember :
-    if [[self.mReceiverType definition].typeKind isClassType] then
-      ioGeneratedCode += self.mSelfCppName + "->setter_" + [self.mSetterName identifierRepresentation] + " ("
+    if self.mReceiverType.definition.typeKind.isClassType then
+      ioGeneratedCode += self.mSelfCppName + "->setter_" + self.mSetterName.string.identifierRepresentation + " ("
     else
-      ioGeneratedCode += self.mSelfCppName + ".setter_" + [self.mSetterName identifierRepresentation] + " ("
+      ioGeneratedCode += self.mSelfCppName + ".setter_" + self.mSetterName.string.identifierRepresentation + " ("
     end
   end
   for (mValue) in parameterCppNameList
@@ -548,16 +509,16 @@ override method @selfSetterCallInstructionForGeneration generateInstruction
     between ioGeneratedCode += ", "
   end
   if self.mHasCompilerArgument then
-    if [parameterCppNameList count] != 0 then
+    if parameterCppNameList.count != 0 then
       ioGeneratedCode +=  ", "
     end
     [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
     ioGeneratedCode +=  compilerCppName ()
     ioGeneratedCode += " COMMA_"
-  elsif [parameterCppNameList count] != 0 then
+  elsif parameterCppNameList.count != 0 then
     ioGeneratedCode += " COMMA_"
   end
-  ioGeneratedCode += [self.mSetterName.location sourceFile] + ") ;\n"
+  ioGeneratedCode += self.mSetterName.location.sourceFile + ") ;\n"
   ioGeneratedCode += "}\n"
 }
 

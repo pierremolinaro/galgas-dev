@@ -102,7 +102,7 @@ override method @typeMethodCallInstructionAST analyzeSemanticInstruction
 //--- Get type method map for the named type
   let type = [ioTypeMap typeMapEntryForLKey !self.mTypeName]
 //--- Get type method signature
-  [[type definition].classMethodMap searchKey !self.mMethodName ?let routineSignature ?let hasCompilerArgument]
+  [type.definition.classMethodMap searchKey !self.mMethodName ?let routineSignature ?let hasCompilerArgument]
 //--- Check effective parameters
   [self.mActualParameterList analyzeRoutineArguments
     !inUsefulnessCallerEntityName
@@ -160,23 +160,23 @@ override method @typeMethodCallInstructionForGeneration generateInstruction
     parameterCppNameList += !parameterCppName
   end
 //--- Generate method call
-  ioGeneratedCode += "GGS_" + [self.mTypeName.string identifierRepresentation]
-                  + "::class_method_" + [self.mMethodName.string identifierRepresentation] + " ("
+  ioGeneratedCode += "GGS_" + self.mTypeName.string.identifierRepresentation
+                  + "::class_method_" + self.mMethodName.string.identifierRepresentation + " ("
   for (mValue) in parameterCppNameList
     do ioGeneratedCode += mValue
     between ioGeneratedCode += ", "
   end
   if self.mHasCompilerArgument then
     [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
-    if [parameterCppNameList count] > 0 then
+    if parameterCppNameList.count > 0 then
       ioGeneratedCode += ", "
     end
     ioGeneratedCode +=  compilerCppName ()
   end
-  if self.mHasCompilerArgument | ([parameterCppNameList count] > 0) then
+  if self.mHasCompilerArgument | (parameterCppNameList.count > 0) then
     ioGeneratedCode += " COMMA_"
   end
-  ioGeneratedCode += [self.mMethodName.location sourceFile] + ") ;\n"
+  ioGeneratedCode += self.mMethodName.location.sourceFile + ") ;\n"
   ioGeneratedCode += "}\n"
 }
 

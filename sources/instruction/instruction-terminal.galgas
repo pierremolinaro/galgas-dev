@@ -56,10 +56,9 @@ syntax extension galgas3SyntaxComponentSyntax {
       $indexing$
       repeat
         $identifier$ ?let @lstring indexName indexing indexingNameReference
-//        let indexing indexingNameReference : indexName
         let @lstring postfixName
         select
-          postfixName = ["" nowhere]
+          postfixName = "".nowhere
         or
           $"string"$ ?postfixName
         end
@@ -118,7 +117,7 @@ syntax extension galgas4SyntaxComponentSyntax {
         $identifier$ ?let @lstring indexName indexing indexingNameReference
         let @lstring postfixName
         select
-          postfixName = ["" nowhere]
+          postfixName = "".nowhere
         or
           $"string"$ ?postfixName
         end
@@ -156,7 +155,7 @@ final class @terminalCheckInstructionAST : @syntaxInstructionAST {
     if let entry = ioActuallyUsedTerminalSymbolMap @[self.mTerminalName.string] then
       terminalSymbolIndex = entry.mTerminalIndex
     else
-      terminalSymbolIndex = [ioActuallyUsedTerminalSymbolMap count]
+      terminalSymbolIndex = ioActuallyUsedTerminalSymbolMap.count
       [!?ioActuallyUsedTerminalSymbolMap insertKey !self.mTerminalName !terminalSymbolIndex]
     end
     ioSyntaxInstructionList += !@terminalInstructionForGrammarAnalysis {
@@ -184,13 +183,13 @@ final class @terminalCheckInstructionAST : @syntaxInstructionAST {
     ?!@uint unused ioSelectMethodCount {
     [inTerminalMap searchKey !self.mTerminalName ?let @lexicalSentValueList sentAttributeList]
   //---
-    if [self.mActualInputParameterList count] != [sentAttributeList count] then
+    if self.mActualInputParameterList.count != sentAttributeList.count then
       error self.mTerminalName
-      : "naming the '$" + self.mTerminalName + "$' terminal requires " + [[sentAttributeList count] string]
-      + " input parameter" + if [sentAttributeList count] > 1 then "s" else "" end
+      : "naming the '$" + self.mTerminalName + "$' terminal requires " + sentAttributeList.count.string
+      + " input parameter" + if sentAttributeList.count > 1 then "s" else "" end
       + ", but this instruction names "
-      + [[self.mActualInputParameterList count] string] + " input parameter"
-      + if [self.mActualInputParameterList count] > 1 then "s" else "" end
+      + self.mActualInputParameterList.count.string + " input parameter"
+      + if self.mActualInputParameterList.count > 1 then "s" else "" end
     end
   //---
     var terminalCheckAssignementList = @terminalCheckAssignementList ()
@@ -354,18 +353,18 @@ override method @terminalCheckInstructionForGeneration generateInstruction
 //--- Get synthetized attributes
   for (mTypeName mTargetVarCppName mSourceLexicalAttributeName) in self.mTerminalCheckAssignementList do
     if mTypeName != "" then
-      ioGeneratedCode += "GGS_" + [mTypeName identifierRepresentation] + " "
+      ioGeneratedCode += "GGS_" + mTypeName.identifierRepresentation + " "
     else
     end
     ioGeneratedCode += mTargetVarCppName + " = " + compilerCppName () + "->synthetizedAttribute_"
-    ioGeneratedCode += [mSourceLexicalAttributeName identifierRepresentation]
+    ioGeneratedCode += mSourceLexicalAttributeName.identifierRepresentation
     ioGeneratedCode += " () ;\n"
   end
 //--- Indexing
   for (mValue0 mValue1) in self.mIndexingKeyList do
     ioGeneratedCode += compilerCppName ()
     ioGeneratedCode += "->enterIndexing (Lexique_" + self.mLexiqueIdentifier + "::kIndexing_"
-    ioGeneratedCode += [mValue0 identifierRepresentation]
+    ioGeneratedCode += mValue0.string.identifierRepresentation
     ioGeneratedCode += ", " + [mValue1 utf8RepresentationEscapingQuestionMark] + ") ;\n"
   end
 //--- Syntax directed translation
@@ -384,7 +383,7 @@ override method @terminalCheckInstructionForGeneration generateInstruction
 //--- Check terminal symbol
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
   ioGeneratedCode += compilerCppName () + "->acceptTerminal (Lexique_"
-  ioGeneratedCode += self.mLexiqueIdentifier + "::kToken_" + [self.mTerminalName identifierRepresentation]
+  ioGeneratedCode += self.mLexiqueIdentifier + "::kToken_" + self.mTerminalName.string.identifierRepresentation
   ioGeneratedCode += [self.mInstructionLocation commaSourceFile] + ") ;\n"
 }
 

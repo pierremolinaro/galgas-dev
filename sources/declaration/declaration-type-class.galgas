@@ -58,7 +58,7 @@ syntax extension galgas3DeclarationsSyntax {
     $@type$ ?let @lstring className indexing classDefinition
     let @lstring superClassName // Empty if no super class
     select
-      superClassName = ["" nowhere]
+      superClassName = "".nowhere
     or
       $:$
       $@type$ ? superClassName indexing classReferencedAsSuperClass
@@ -143,7 +143,7 @@ syntax extension galgas4DeclarationsSyntax {
     $@type$ ?let @lstring className indexing classDefinition
     let @lstring superClassName // Empty if no super class
     select
-      superClassName = ["" nowhere]
+      superClassName = "".nowhere
     or
       $:$
       $@type$ ? superClassName indexing classReferencedAsSuperClass
@@ -276,7 +276,7 @@ final class @classDeclarationAST : @semanticDeclarationAST {
       attributeMap = superTypeDefinition.propertyMap
       generateHeaderInSeparateFile = superTypeDefinition.generateHeaderInSeparateFile
     //---
-      if not [superTypeDefinition.typeKind isClassType] then
+      if not superTypeDefinition.typeKind.isClassType then
         error self.mSuperClassName : "the @" + self.mSuperClassName + " should be a class type"
       end
       if superTypeDefinition.isFinal then
@@ -329,7 +329,7 @@ final class @classDeclarationAST : @semanticDeclarationAST {
     for property in inheritedTypedPropertyList do
       if property.initialization == .none then
         synthetizedInitializerArgumentList +=
-          !if property.hasSelector then property.name else ["" nowhere] end
+          !if property.hasSelector then property.name else "".nowhere end
           !property.typeEntry
           !property.name.string
           !true
@@ -339,7 +339,7 @@ final class @classDeclarationAST : @semanticDeclarationAST {
       [!?ioTypeMap makeEntry !property.typeName ?let attributeTypeIndex]
       if property.initialization == .none then
         synthetizedInitializerArgumentList +=
-          !if property.hasSelector then property.name else ["" nowhere] end
+          !if property.hasSelector then property.name else "".nowhere end
           !attributeTypeIndex
           !property.name.string
           !true
@@ -380,7 +380,7 @@ final class @classDeclarationAST : @semanticDeclarationAST {
           [!?setterMap insertKey
             !@{!"setProperty_"+ [property.name.string capitalizingFirstCharacter] !.here}
             !@methodKind.definedAsMember
-            !@[@(["" nowhere], property.typeEntry, .argumentVarIn, property.name.string)]
+            !@[@("".nowhere, property.typeEntry, .argumentVarIn, property.name.string)]
             !true // Compiler argument
             !.isBasicFinal
             !"" // No error message
@@ -421,7 +421,7 @@ final class @classDeclarationAST : @semanticDeclarationAST {
       !acceptSetters: not self.mIsReference
     )
   //--- Synthetize an initializer, if the structure defines none
-    if [initializerMap count] == if self.clonable then 1 else 0 end then
+    if initializerMap.count == if self.clonable then 1 else 0 end then
       features |= .generateSynthetizedInitializer
       [!?initializerMap insertKey
         !@{![synthetizedInitializerArgumentList initializerSignature] !self.mClassTypeName}
@@ -503,7 +503,7 @@ final class @classDeclarationAST : @semanticDeclarationAST {
   // a base class can be freely declared as shared or not
   // a class should the same 'reference' status as its super class
     if superClassEntry != .null then
-      [[superClassEntry definition].typeKind extractClassType ?isReference: let superClassIsReference]
+      [superClassEntry.definition.typeKind extractClassType ?isReference: let superClassIsReference]
       if superClassIsReference & not self.mIsReference then
         error self.mClassTypeName : "this class should be declared by 'refClass', as its super class"
       elsif not superClassIsReference & self.mIsReference then
@@ -517,7 +517,7 @@ final class @classDeclarationAST : @semanticDeclarationAST {
     if superClassEntry == .null then
       allAttributeList = @()
     else
-      allAttributeList = [superClassEntry definition].allTypedPropertyList
+      allAttributeList = superClassEntry.definition.allTypedPropertyList
       if self.mGenerateInSeparateFile then
         error self.mClassTypeName : "a class that has a super class does not accept any feature"
       end
@@ -556,7 +556,7 @@ final class @classDeclarationAST : @semanticDeclarationAST {
     end
   //--- Build property initialization code
     var @typedPropertyList synthetizedInitialzerArgumentList = @()
-    for property in [selfType definition].allTypedPropertyList do
+    for property in selfType.definition.allTypedPropertyList do
     if property.initialization == .none then
       synthetizedInitialzerArgumentList +=
         !property.typeEntry
@@ -586,16 +586,16 @@ final class @classDeclarationAST : @semanticDeclarationAST {
         !superClassEntry
         !allAttributeList
         !typedAttributeList
-        ![selfType definition].generateHeaderInSeparateFile
+        !selfType.definition.generateHeaderInSeparateFile
         !constructorNeedsCompilerVar
         !initializationCode
         !synthetizedInitialzerArgumentList
         !synthetizedInheritedInitializerArgumentList
-        ![selfType definition].initializerMap
+        !selfType.definition.initializerMap
         !self.clonable
       }
   //--- Add synthetized initializer ?
-    if [[selfType definition].features contains !.generateSynthetizedInitializer] then
+    if [selfType.definition.features contains !.generateSynthetizedInitializer] then
       let initializerForUsefulness = initializerNameForUsefulEntitiesGraph (
         !self.mClassTypeName
         ![synthetizedInitialzerArgumentList initializerSignature]
@@ -638,30 +638,30 @@ final class @classTypeForGeneration : @semanticTypeForGeneration {
 
   override method appendDeclaration1 ?!@stringset ioInclusionSet
                                      !@string outHeader {
-    if not [self.mSuperClass isNull] then
+    if not self.mSuperClass.isNull then
       [self.mSuperClass addHeaderFileName !?ioInclusionSet]
     end
-    let selfTypeDefinition = [self.mSelfTypeEntry definition]
+    let selfTypeDefinition = self.mSelfTypeEntry.definition
     if self.mIsReference then
       outHeader = [filewrapper classGenerationTemplate.referenceClassTypeHeader1
         !selfTypeDefinition.typeName.string
-        ![self.mSelfTypeEntry identifierRepresentation]
-        !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
+        !self.mSelfTypeEntry.identifierRepresentation
+        !if self.mSuperClass.isNull then "" else self.mSuperClass.identifierRepresentation end
         !self.mIsAbstract
         !self.mCurrentTypedAttributeList
       ]
     else
       outHeader = [filewrapper classGenerationTemplate.valueClassTypeHeader1
         !selfTypeDefinition.typeName.string
-        ![self.mSelfTypeEntry identifierRepresentation]
-        !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
+        !self.mSelfTypeEntry.identifierRepresentation
+        !if self.mSuperClass.isNull then "" else self.mSuperClass.identifierRepresentation end
         !self.mIsAbstract
         !self.mCurrentTypedAttributeList
       ]
     end
     outHeader += [filewrapper typeGenerationTemplate.unifiedClassBodyForType
       !selfTypeDefinition.typeName.string
-      ![self.mSelfTypeEntry identifierRepresentation]
+      !self.mSelfTypeEntry.identifierRepresentation
       !selfTypeDefinition.isConcrete
       !selfTypeDefinition.initializerMap
       !selfTypeDefinition.classFunctionMap
@@ -686,30 +686,30 @@ final class @classTypeForGeneration : @semanticTypeForGeneration {
     for (t 4*) in self.mCurrentTypedAttributeList do
       [t addHeaderFileName !?ioInclusionSet]
     end
-    let selfTypeDefinition = [self.mSelfTypeEntry definition]
+    let selfTypeDefinition = self.mSelfTypeEntry.definition
     if self.mIsReference then
       if self.generateHeaderInSeparateFile then
         let @string part1 = [filewrapper classGenerationTemplate.referenceClassTypeHeader2part1
           !selfTypeDefinition.typeName.string
-          ![self.mSelfTypeEntry identifierRepresentation]
-          !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
+          !self.mSelfTypeEntry.identifierRepresentation
+          !if self.mSuperClass.isNull then "" else self.mSuperClass.identifierRepresentation end
           !self.mCurrentTypedAttributeList
           !self.mAllTypedAttributeList
           !self.mIsAbstract
-          ![self.mSelfTypeEntry definition].getterMap
-          ![self.mSelfTypeEntry definition].instanceMethodMap
+          !self.mSelfTypeEntry.definition.getterMap
+          !self.mSelfTypeEntry.definition.instanceMethodMap
           !self.initializerMap
         ]
         let @string part2 = [filewrapper classGenerationTemplate.referenceClassTypeHeader2part2
           !selfTypeDefinition.typeName.string
-          ![self.mSelfTypeEntry identifierRepresentation]
-          !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
+          !self.mSelfTypeEntry.identifierRepresentation
+          !if self.mSuperClass.isNull then "" else self.mSuperClass.identifierRepresentation end
           !self.mCurrentTypedAttributeList
           !self.mAllTypedAttributeList
           !self.mIsAbstract
           !self.synthetizedInitializerArgumentList
         ]
-        let @string headerFileName = "separateHeaderFor_" + [self.mSelfTypeEntry identifierRepresentation] + ".h"
+        let @string headerFileName = "separateHeaderFor_" + self.mSelfTypeEntry.identifierRepresentation + ".h"
         [@string generateFileWithPattern
           !startPath:inOutputDirectory + "/../user-headers"
           !fileName:headerFileName
@@ -725,19 +725,19 @@ final class @classTypeForGeneration : @semanticTypeForGeneration {
       else
         outHeader = [filewrapper classGenerationTemplate.referenceClassTypeHeader2part1
           !selfTypeDefinition.typeName.string
-          ![self.mSelfTypeEntry identifierRepresentation]
-          !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
+          !self.mSelfTypeEntry.identifierRepresentation
+          !if self.mSuperClass.isNull then "" else self.mSuperClass.identifierRepresentation end
           !self.mCurrentTypedAttributeList
           !self.mAllTypedAttributeList
           !self.mIsAbstract
-          ![self.mSelfTypeEntry definition].getterMap
-          ![self.mSelfTypeEntry definition].instanceMethodMap
+          !self.mSelfTypeEntry.definition.getterMap
+          !self.mSelfTypeEntry.definition.instanceMethodMap
           !self.initializerMap
         ]
         outHeader += [filewrapper classGenerationTemplate.referenceClassTypeHeader2part2
           !selfTypeDefinition.typeName.string
-          ![self.mSelfTypeEntry identifierRepresentation]
-          !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
+          !self.mSelfTypeEntry.identifierRepresentation
+          !if self.mSuperClass.isNull then "" else self.mSuperClass.identifierRepresentation end
           !self.mCurrentTypedAttributeList
           !self.mAllTypedAttributeList
           !self.mIsAbstract
@@ -747,23 +747,23 @@ final class @classTypeForGeneration : @semanticTypeForGeneration {
     elsif self.generateHeaderInSeparateFile then
       let part1 = [filewrapper classGenerationTemplate.valueClassTypeHeader2part1
         !selfTypeDefinition.typeName.string
-        ![self.mSelfTypeEntry identifierRepresentation]
-        !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
+        !self.mSelfTypeEntry.identifierRepresentation
+        !if self.mSuperClass.isNull then "" else self.mSuperClass.identifierRepresentation end
         !self.mCurrentTypedAttributeList
         !self.mAllTypedAttributeList
         !self.mIsAbstract
-        ![self.mSelfTypeEntry definition].getterMap
-        ![self.mSelfTypeEntry definition].instanceMethodMap
+        !self.mSelfTypeEntry.definition.getterMap
+        !self.mSelfTypeEntry.definition.instanceMethodMap
       ]
       let part2 = [filewrapper classGenerationTemplate.valueClassTypeHeader2part2
         !selfTypeDefinition.typeName.string
-        ![self.mSelfTypeEntry identifierRepresentation]
-        !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
+        !self.mSelfTypeEntry.identifierRepresentation
+        !if self.mSuperClass.isNull then "" else self.mSuperClass.identifierRepresentation end
         !self.mCurrentTypedAttributeList
         !self.mAllTypedAttributeList
         !self.mIsAbstract
       ]
-      let @string headerFileName = "separateHeaderFor_" + [self.mSelfTypeEntry identifierRepresentation] + ".h"
+      let @string headerFileName = "separateHeaderFor_" + self.mSelfTypeEntry.identifierRepresentation + ".h"
       [@string generateFileWithPattern
         !startPath:inOutputDirectory + "/../user-headers"
         !fileName:headerFileName
@@ -779,18 +779,18 @@ final class @classTypeForGeneration : @semanticTypeForGeneration {
     else
       outHeader = [filewrapper classGenerationTemplate.valueClassTypeHeader2part1
         !selfTypeDefinition.typeName.string
-        ![self.mSelfTypeEntry identifierRepresentation]
-        !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
+        !self.mSelfTypeEntry.identifierRepresentation
+        !if self.mSuperClass.isNull then "" else self.mSuperClass.identifierRepresentation end
         !self.mCurrentTypedAttributeList
         !self.mAllTypedAttributeList
         !self.mIsAbstract
-        ![self.mSelfTypeEntry definition].getterMap
-        ![self.mSelfTypeEntry definition].instanceMethodMap
+        !self.mSelfTypeEntry.definition.getterMap
+        !self.mSelfTypeEntry.definition.instanceMethodMap
       ]
       outHeader += [filewrapper classGenerationTemplate.valueClassTypeHeader2part2
         !selfTypeDefinition.typeName.string
-        ![self.mSelfTypeEntry identifierRepresentation]
-        !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
+        !self.mSelfTypeEntry.identifierRepresentation
+        !if self.mSuperClass.isNull then "" else self.mSuperClass.identifierRepresentation end
         !self.mCurrentTypedAttributeList
         !self.mAllTypedAttributeList
         !self.mIsAbstract
@@ -804,15 +804,15 @@ final class @classTypeForGeneration : @semanticTypeForGeneration {
                                                ?!@stringset ioInclusionSet
                                                !@string outImplementation {
     [self.mSelfTypeEntry addHeaderFileName !?ioInclusionSet]
-    let selfTypeDefinition = [self.mSelfTypeEntry definition]
+    let selfTypeDefinition = self.mSelfTypeEntry.definition
     let at = [self.mAllTypedAttributeList subListWithRange
-      !@{!0 ![self.mAllTypedAttributeList count] - [self.mCurrentTypedAttributeList count]}
+      !@{!0 !self.mAllTypedAttributeList.count - self.mCurrentTypedAttributeList.count}
     ]
     if self.mIsReference then
       outImplementation = [filewrapper classGenerationTemplate.referenceClassTypeSpecificImplementation
         !selfTypeDefinition.typeName.string
-        ![self.mSelfTypeEntry identifierRepresentation]
-        !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
+        !self.mSelfTypeEntry.identifierRepresentation
+        !if self.mSuperClass.isNull then "" else self.mSuperClass.identifierRepresentation end
         !currentPropertyList: self.mCurrentTypedAttributeList
         !allPropertyList: self.mAllTypedAttributeList
         !inheritedPropertyList: at
@@ -828,8 +828,8 @@ final class @classTypeForGeneration : @semanticTypeForGeneration {
     else
       outImplementation = [filewrapper classGenerationTemplate.valueClassTypeSpecificImplementation
         !selfTypeDefinition.typeName.string
-        ![self.mSelfTypeEntry identifierRepresentation]
-        !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
+        !self.mSelfTypeEntry.identifierRepresentation
+        !if self.mSuperClass.isNull then "" else self.mSuperClass.identifierRepresentation end
         !self.mCurrentTypedAttributeList
         !self.mAllTypedAttributeList
         !at
@@ -869,8 +869,8 @@ func generateClassGetterDeclaration ?let @lstring inGetterName
   result = ""
   if generateMethodDeclaration then
     result = "//--- Extension getter " + inGetterName + "\n"
-    result += "  public: virtual class GGS_" + [inReturnedType identifierRepresentation]
-    result += " getter_" + [inGetterName identifierRepresentation] + " ("
+    result += "  public: virtual class GGS_" + inReturnedType.identifierRepresentation
+    result += " getter_" + inGetterName.string.identifierRepresentation + " ("
     var first = true
     for formalArgument in inArgumentTypeList
     do
@@ -879,7 +879,7 @@ func generateClassGetterDeclaration ?let @lstring inGetterName
       else
         result += ",\n           "
       end
-      result += "const class GGS_" + [formalArgument.mFormalArgumentType identifierRepresentation]
+      result += "const class GGS_" + formalArgument.mFormalArgumentType.identifierRepresentation
       result += " " + formalArgument.mFormalArgumentName
     end
     if inHasCompilerArgument then
@@ -920,7 +920,7 @@ func generateClassInstanceMethodDeclaration ?let @lstring inMethodName
   result = ""
   if generateMethodDeclaration then
     result += "//--- Extension method " + inMethodName + "\n"
-    result += "  public: virtual void method_" + [inMethodName identifierRepresentation] + " ("
+    result += "  public: virtual void method_" + inMethodName.string.identifierRepresentation + " ("
     var first = true
     for formalArgument in inArgumentTypeList
     do
@@ -931,13 +931,13 @@ func generateClassInstanceMethodDeclaration ?let @lstring inMethodName
       end
       switch formalArgument.mFormalArgumentPassingMode
       case argumentConstantIn :
-        result += "const class GGS_" + [formalArgument.mFormalArgumentType identifierRepresentation]
+        result += "const class GGS_" + formalArgument.mFormalArgumentType.identifierRepresentation
       case argumentInOut :
-        result += "class GGS_" + [formalArgument.mFormalArgumentType identifierRepresentation] + " &"
+        result += "class GGS_" + formalArgument.mFormalArgumentType.identifierRepresentation + " &"
       case argumentOut :
-        result += "class GGS_" + [formalArgument.mFormalArgumentType identifierRepresentation] + " &"
+        result += "class GGS_" + formalArgument.mFormalArgumentType.identifierRepresentation + " &"
       case argumentVarIn :
-        result += "class GGS_" + [formalArgument.mFormalArgumentType identifierRepresentation]
+        result += "class GGS_" + formalArgument.mFormalArgumentType.identifierRepresentation
       end
       result += " arg_" + formalArgument.mFormalArgumentName
     end

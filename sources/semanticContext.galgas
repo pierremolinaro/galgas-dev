@@ -33,7 +33,7 @@ getter @location sourceFile -> @string {
 //--------------------------------------------------------------------------------------------------
 
 getter @location commaSourceFile -> @string {
-  result = " COMMA_" + [self sourceFile]
+  result = " COMMA_" + self.sourceFile
 }
 
 //--------------------------------------------------------------------------------------------------

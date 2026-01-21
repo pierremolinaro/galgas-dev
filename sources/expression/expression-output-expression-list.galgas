@@ -72,7 +72,7 @@ syntax extension galgas3ExpressionSyntax {
       outExpressionList += !selector !expression !.here
     while
       $!$
-      let selector = ["" here]
+      let selector = "".here
       <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST expression
       outExpressionList += !selector !expression !.here
     end
@@ -92,11 +92,11 @@ syntax extension galgas3ExpressionSyntax {
           outExpressionList += !selector !expression !.here
         or
           $!$
-          let selector = ["" here]
+          let selector = "".here
           <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST expression
           outExpressionList += !selector !expression !.here
         or
-          let selector = ["" here]
+          let selector = "".here
           <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST expression
           outExpressionList += !selector !expression !.here
         end
@@ -126,9 +126,9 @@ syntax extension galgas4ExpressionSyntax {
           $!selector:$ ?selector
         or
           $!$
-          selector = ["" here]
+          selector = "".here
         or
-          selector = ["" here]
+          selector = "".here
         end
         <expression> !?ioDeclarations ?let @semanticExpressionAST expression
         outExpressionList += !selector !expression !.here
@@ -150,9 +150,9 @@ syntax extension galgas4ExpressionSyntax {
         $!selector:$ ?selector
       or
         $!$
-        selector = ["" here]
+        selector = "".here
       or
-        selector = ["" here]
+        selector = "".here
       end
       <expression> !?ioDeclarations ?let @semanticExpressionAST expression
       outExpressionList += !selector !expression !.here

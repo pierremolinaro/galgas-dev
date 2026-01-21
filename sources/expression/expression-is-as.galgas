@@ -168,22 +168,22 @@ override method @testDynamicClassInExpressionAST analyzeSemanticExpression
 //--- Get type information
    let castType = [ioTypeMap typeMapEntryForLKey !self.mTypeName]
 //--- This type is either a class
-  if [[expression.mResultType definition].typeKind isClassType] then
+  if expression.mResultType.definition.typeKind.isClassType then
   //--- Check expression type is a descendant of named type
     var @unifiedTypeMapEntry t = castType
     var @bool found = t == expression.mResultType
-    loop ([ioTypeMap count] + 1)
-    while (not found) & not [[t definition].superType isNull] do
-      t = [t definition].superType
+    loop (ioTypeMap.count + 1)
+    while (not found) & not t.definition.superType.isNull do
+      t = t.definition.superType
       found = t == expression.mResultType
     end
     if not found then
       error self.mTypeName
-      :"the '@" + self.mTypeName + "' is not a descendant of the '@" + [expression.mResultType definition].typeName.string + "' type of the cast expression"
+      :"the '@" + self.mTypeName + "' is not a descendant of the '@" + expression.mResultType.definition.typeName.string + "' type of the cast expression"
     end
   else
     error expression.mLocation: "expression should be a class instance: it is an @"
-     +  [expression.mResultType definition].typeName.string + " instance"
+     + expression.mResultType.definition.typeName.string + " instance"
   end
 //--- Generate expression
   outExpression = @testDynamicClassInExpressionForGeneration {
@@ -226,27 +226,27 @@ override method @castInExpressionAST analyzeSemanticExpression
 //--- Get type information
    let type = [ioTypeMap typeMapEntryForLKey !self.mTypeName]
 //--- This type is an @object type
-  if [[expression.mResultType definition].typeKind isClassType]then
+  if expression.mResultType.definition.typeKind.isClassType then
   //--- Check expression type is a descendant of named type
     var @unifiedTypeMapEntry t = type
     var @bool found = t == expression.mResultType
-    loop ([ioTypeMap count] + 1)
-    while (not found) & not [[t definition].superType isNull] do
-      t = [t definition].superType
+    loop (ioTypeMap.count + 1)
+    while (not found) & not t.definition.superType.isNull do
+      t = t.definition.superType
       found = t == expression.mResultType
     end
     if not found then
       error self.mTypeName
       :"the '@" + self.mTypeName + "' is not a descendant of the '@"
-      + [expression.mResultType definition].typeName.string + "' type of the cast expression"
+      + expression.mResultType.definition.typeName.string + "' type of the cast expression"
     end
-  elsif [expression.mResultType definition].typeName.string != "object" then
+  elsif expression.mResultType.definition.typeName.string != "object" then
     error expression.mLocation:
       "cast expression should be a class instance or an @object instance: it is an @"
-     +  [expression.mResultType definition].typeName.string + " instance"
+     + expression.mResultType.definition.typeName.string + " instance"
   end
 //--- Generate expression
-  if [expression.mResultType definition].typeName.string == "object" then
+  if expression.mResultType.definition.typeName.string == "object" then
     outExpression = @extractObjectInExpressionForGeneration {
       !type
       !self.mEndOfReceiverExpression
@@ -281,7 +281,7 @@ override method @testDynamicClassInExpressionForGeneration generateExpression
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
   !@string outCppExpression {
-  let typeNameRepresentation = [[self.mCastType definition].typeName.string identifierRepresentation]
+  let typeNameRepresentation = self.mCastType.definition.typeName.string.identifierRepresentation
 //--- Receiver expression
   [self.mReceiverExpression generateExpression
     !?ioGeneratedCode
@@ -320,7 +320,7 @@ override method @castInExpressionForGeneration generateExpression
   !@string outCppExpression
 {
   [self.mCastType addHeaderFileName !?ioInclusionSet]
-  outCppExpression = "temp_" + [ioTemporaryVariableIndex string]
+  outCppExpression = "temp_" + ioTemporaryVariableIndex.string
   ioTemporaryVariableIndex += 1
 //--- Receiver expression
   [self.mReceiverExpression generateExpression
@@ -331,22 +331,22 @@ override method @castInExpressionForGeneration generateExpression
     ?let @string receiverExpression
   ]
 //---
-  ioGeneratedCode += "GGS_" + [self.mTypeName identifierRepresentation]
+  ioGeneratedCode += "GGS_" + self.mTypeName.identifierRepresentation
   + " " + outCppExpression + " ;\n"
   + "if (" + receiverExpression + ".isValid ()) {\n"
   [!?ioGeneratedCode incIndentation !2]
 //---
   ioGeneratedCode +=
     "if (nullptr != dynamic_cast <const cPtr_"
-  + [self.mTypeName identifierRepresentation]
+  + self.mTypeName.identifierRepresentation
   + " *> (" + receiverExpression + ".ptr ())) {\n"
-  + "  " + outCppExpression + " = (cPtr_" + [self.mTypeName identifierRepresentation] + " *) "
+  + "  " + outCppExpression + " = (cPtr_" + self.mTypeName.identifierRepresentation + " *) "
   + receiverExpression + ".ptr () ;\n"
   + "}else{\n"
   [!?ioGeneratedCode incIndentation !2]
   ioGeneratedCode +=
     compilerCppName () + "->castError (\""
-  + [self.mTypeName identifierRepresentation]
+  + self.mTypeName.identifierRepresentation
   + "\", " + receiverExpression + ".ptr ()->classDescriptor ()"
   + [self.mLocation commaSourceFile] + ") ;\n"
   [!?ioGeneratedCode decIndentation !2]
@@ -371,7 +371,7 @@ override method @extractObjectInExpressionForGeneration generateExpression
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
   !@string outCppExpression {
-  outCppExpression = "temp_" + [ioTemporaryVariableIndex string]
+  outCppExpression = "temp_" + ioTemporaryVariableIndex.string
   ioTemporaryVariableIndex += 1
 //--- Receiver expression
   [self.mReceiverExpression generateExpression
@@ -382,7 +382,7 @@ override method @extractObjectInExpressionForGeneration generateExpression
     ?let @string receiverExpression
   ]
 //--- Generate code
-  outCppExpression = "GGS_" + [self.mResultType identifierRepresentation]
+  outCppExpression = "GGS_" + self.mResultType.identifierRepresentation
   + "::extractObject (" + receiverExpression
   + ", " + compilerCppName ()
   + [self.mLocation commaSourceFile] + ")"

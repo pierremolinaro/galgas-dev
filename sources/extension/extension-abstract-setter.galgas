@@ -170,16 +170,13 @@ final class @abstractExtensionSetterAST : @semanticDeclarationAST {
     ?let @predefinedTypes unused inPredefinedTypes
     ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
   {
-  //--- Useful entities graph
-  //  let nameForUsefulness = setterNameForUsefulEntitiesGraph (!self.mTypeName !self.mAbstractExtensionSetterName)
-  //  [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
   //--- Self type
     let @unifiedTypeMapEntry selfType = [ioTypeMap typeMapEntryForLKey !self.mTypeName]
   //--- Check self type is an abstract class
-    if not [[selfType definition].typeKind isClassType] then
-      error self.mAbstractExtensionSetterName: "cannot declare a extension setter: '@" + [selfType definition].typeName.string + "' is not a class"
-    elsif [selfType definition].isConcrete then
-      error self.mAbstractExtensionSetterName: "cannot declare an abstract extension setter: '@" + [selfType definition].typeName.string + "' is not an abstract class"
+    if not selfType.definition.typeKind.isClassType then
+      error self.mAbstractExtensionSetterName: "cannot declare a extension setter: '@" + selfType.definition.typeName.string + "' is not a class"
+    elsif selfType.definition.isConcrete then
+      error self.mAbstractExtensionSetterName: "cannot declare an abstract extension setter: '@" + selfType.definition.typeName.string + "' is not an abstract class"
     end
   //--- Compute setter signature
     var formalParameterListForGeneration = @formalParameterListForGeneration ()
@@ -247,7 +244,7 @@ final class @abstractExtensionSetterForGeneration : @semanticDeclarationWithHead
   override method appendDeclaration1 ?!@stringset unused ioInclusionSet
                                      !@string outHeader {
     outHeader = [filewrapper semanticComponentGenerationTemplate.abstractExtensionSetterDeclaration
-      ![self.mReceiverType definition].typeName.string
+      !self.mReceiverType.definition.typeName.string
       !self.mAbstractExtensionSetterName
       !self.mAbstractExtensionSetterFormalParameterList
     ]
@@ -260,13 +257,13 @@ final class @abstractExtensionSetterForGeneration : @semanticDeclarationWithHead
     ?!@stringset ioInclusionSet
     !@string outImplementation
   {
-    ioInclusionSet ++= "setter-" + [[self.mReceiverType definition].typeName.string fileNameRepresentation] + "-" + [self.mAbstractExtensionSetterName fileNameRepresentation]
+    ioInclusionSet ++= "setter-" + [self.mReceiverType.definition.typeName.string fileNameRepresentation] + "-" + [self.mAbstractExtensionSetterName fileNameRepresentation]
     [self.mReceiverType addHeaderFileName !?ioInclusionSet]
     for (* * mFormalArgumentType * *) in self.mAbstractExtensionSetterFormalParameterList do
       [mFormalArgumentType addHeaderFileName !?ioInclusionSet]
     end
     outImplementation = [filewrapper semanticComponentGenerationTemplate.abstractExtensionSetterImplementation
-      ![self.mReceiverType definition].typeName.string
+      !self.mReceiverType.definition.typeName.string
       !self.mAbstractExtensionSetterName
       !self.mAbstractExtensionSetterFormalParameterList
     ]

@@ -94,7 +94,7 @@ final class @optionalTypeDeclarationAST : @semanticDeclarationAST {
     [!?ioTypeMap makeEntry !self.unwrappedTypeName ?let unwrappedType]
   //--- features
     var features = @typeFeatures ()
-    if [[unwrappedType definition].features contains !(.equatable | .comparable | .referenceEquatable)] then
+    if [unwrappedType.definition.features contains !(.equatable | .comparable | .referenceEquatable)] then
       features |= .equatable
     end
     handleEquatableComparableExtension (
@@ -162,7 +162,7 @@ final class @optionalTypeDeclarationAST : @semanticDeclarationAST {
   //---
     let optionalType = [ioTypeMap typeMapEntryForLKey !self.optionalTypeName]
     let unwrappedType = [ioTypeMap typeMapEntryForLKey !self.unwrappedTypeName]
-    let correspondingWeakTypeName = makeWeakTypeLName (![unwrappedType definition].typeName)
+    let correspondingWeakTypeName = makeWeakTypeLName (!unwrappedType.definition.typeName)
     let correspondingWeakTypeOrNull = [ioTypeMap typeMapEntryOrNullForLKey !correspondingWeakTypeName]
     ioSemanticDeclarationListForGeneration +=
       !infoMessage: "optional type " + self.optionalTypeName
@@ -186,16 +186,16 @@ final class @optionalTypeForGeneration : @semanticTypeForGeneration {
   override method appendDeclaration1 ?!@stringset ioInclusionSet
                                      !@string outHeader {
     [self.unwrappedType addHeaderFileName1 !?ioInclusionSet]
-    let selfTypeDefinition = [self.mSelfTypeEntry definition]
+    let selfTypeDefinition = self.mSelfTypeEntry.definition
     outHeader = [filewrapper optionalTypeGenerationTemplate.optionalTypeHeader1
       !selfTypeDefinition.typeName.string
-      ![self.mSelfTypeEntry identifierRepresentation]
-      ![self.unwrappedType identifierRepresentation]
-      !if [self.weakType isNull] then "" else [self.weakType identifierRepresentation] end
+      !self.mSelfTypeEntry.identifierRepresentation
+      !self.unwrappedType.identifierRepresentation
+      !if self.weakType.isNull then "" else self.weakType.identifierRepresentation end
     ]
     outHeader += [filewrapper typeGenerationTemplate.unifiedClassBodyForType
       !selfTypeDefinition.typeName.string
-      ![self.mSelfTypeEntry identifierRepresentation]
+      !self.mSelfTypeEntry.identifierRepresentation
       !selfTypeDefinition.isConcrete
       !selfTypeDefinition.initializerMap
       !selfTypeDefinition.classFunctionMap
@@ -219,16 +219,16 @@ final class @optionalTypeForGeneration : @semanticTypeForGeneration {
                                           !@string outImplementation {
     [self.unwrappedType addHeaderFileName !?ioInclusionSet]
     [self.mSelfTypeEntry addHeaderFileName !?ioInclusionSet]
-    if not [self.weakType isNull] then
+    if not self.weakType.isNull then
       [self.weakType addHeaderFileName !?ioInclusionSet]
     end
-    let selfTypeDefinition = [self.mSelfTypeEntry definition]
+    let selfTypeDefinition = self.mSelfTypeEntry.definition
     outImplementation = [filewrapper optionalTypeGenerationTemplate.optionalTypeSpecificImplementation
       !selfTypeDefinition.typeName.string
-      ![self.mSelfTypeEntry identifierRepresentation]
-      ![self.unwrappedType identifierRepresentation]
+      !self.mSelfTypeEntry.identifierRepresentation
+      !self.unwrappedType.identifierRepresentation
       ![selfTypeDefinition.features generateCppObjectComparison]
-      !if [self.weakType isNull] then "" else [self.weakType identifierRepresentation] end
+      !if self.weakType.isNull then "" else self.weakType.identifierRepresentation end
     ]
   }
 

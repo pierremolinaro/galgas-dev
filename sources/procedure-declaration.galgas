@@ -280,7 +280,7 @@ final class @routineImplementationForGeneration : @routinePrototypeDeclarationFo
     end
     generateProcedure (
       !static: self.mGenerateStatic
-      !"routine_" + [self.routineMangledName identifierRepresentation]
+      !"routine_" + self.routineMangledName.identifierRepresentation
       !?ioInclusionSet
       !self.mFormalArgumentList
       !self.mRoutineInstructionList

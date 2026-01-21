@@ -225,7 +225,7 @@ final class @initializerCallAST : @semanticExpressionAST {
       ?let @semanticExpressionListForGeneration constructorEffectiveParameterList
     )
   //--- Usefull entity graph
-    let typeUsefulnessName = typeNameForUsefulEntitiesGraph ([instanciedType definition].typeName)
+    let typeUsefulnessName = typeNameForUsefulEntitiesGraph (instanciedType.definition.typeName)
     [!?ioUsefulEntitiesGraph addEdge !from: inUsefulnessCallerEntityName !to: typeUsefulnessName]
   //---
     outExpression = @initializerCallForGeneration {
@@ -258,12 +258,12 @@ private proc analyzeInitializerInvocation ?let @lstring inUsefulnessCallerEntity
   if inTypeName.string != "" then
     outInstanciedType = [ioTypeMap typeMapEntryForLKey !inTypeName]
   end
-  if [outInstanciedType isNull] then
+  if outInstanciedType.isNull then
     error inTypeName
     : "cannot infer type"
     : outInstanciedType, outConstructorEffectiveParameterList, outInitializerName
   else
-    let instanciedTypeDefinition = [outInstanciedType definition]
+    let instanciedTypeDefinition = outInstanciedType.definition
     if not instanciedTypeDefinition.isConcrete then
       error inTypeName
       : "cannot instanciate an abstract class"
@@ -357,8 +357,8 @@ final class @initializerCallForGeneration : @semanticExpressionForGeneration {
       ]
       parameterList += !parameter
     end
-    outCppExpression = "GGS_"  + [self.mResultType identifierRepresentation]
-                     + "::" + [self.initializerName identifierRepresentation]
+    outCppExpression = "GGS_"  + self.mResultType.identifierRepresentation
+                     + "::" + self.initializerName.identifierRepresentation
                      + " ("
     for (mValue) in parameterList do
       outCppExpression += mValue + ", "

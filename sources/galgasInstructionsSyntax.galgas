@@ -131,7 +131,7 @@ syntax galgas3InstructionsSyntax (galgasScanner3) {
                                    ?let @lstring inFunctionName
                                    ?!@galgasDeclarationAST ioDeclarations {
     <formal_input_parameter_list_ggs3> !?ioDeclarations ?let formalInputParameterList
-    if inIsOnce, ([formalInputParameterList count] > 0) then
+    if inIsOnce, (formalInputParameterList.count > 0) then
       error inFunctionName: "an 'once' function should has no argument"
     end
     $->$
@@ -180,7 +180,7 @@ syntax galgas3InstructionsSyntax (galgasScanner3) {
                                    ?let @lstring inFunctionName
                                    ?!@galgasDeclarationAST ioDeclarations {
     <formal_input_parameter_list_ggs34> !?ioDeclarations ?let formalInputParameterList
-    if inIsOnce, ([formalInputParameterList count] > 0) then
+    if inIsOnce, (formalInputParameterList.count > 0) then
       error inFunctionName: "an 'once' function should has no argument"
     end
     $->$
@@ -313,7 +313,7 @@ syntax galgas3InstructionsSyntax (galgasScanner3) {
         $?selector:$ ?selector
       or
         $?$
-        selector = ["" here]
+        selector = "".here
       end
       select
         $*$
@@ -322,7 +322,7 @@ syntax galgas3InstructionsSyntax (galgasScanner3) {
         $var$
         let @lstring actualParameterTypeName
         select
-          actualParameterTypeName = ["" nowhere]
+          actualParameterTypeName = "".nowhere
         or
          <type_definition_ggs3> !?ioDeclarations ?actualParameterTypeName
         end
@@ -334,7 +334,7 @@ syntax galgas3InstructionsSyntax (galgasScanner3) {
         $let$
         let @lstring actualParameterTypeName
         select
-          actualParameterTypeName = ["" nowhere]
+          actualParameterTypeName = "".nowhere
         or
           <type_definition_ggs3> !?ioDeclarations ?actualParameterTypeName
         end
@@ -452,7 +452,7 @@ syntax galgas4InstructionsSyntax (galgasScanner4) {
     end
     $identifier$ ?let functionName indexing functionDefinition
     <formal_input_parameter_list> !?ioDeclarations ?let @formalInputParameterListAST formalInputParameterList
-    if isOnce, ([formalInputParameterList count] > 0) then
+    if isOnce, (formalInputParameterList.count > 0) then
       error functionName: "an 'once' function should has no argument"
     end
     $->$
@@ -516,7 +516,7 @@ syntax galgas4InstructionsSyntax (galgasScanner4) {
     end
     $identifier$ ?let functionName indexing functionDefinition
     <formal_input_parameter_list> !?ioDeclarations ?let @formalInputParameterListAST formalInputParameterList
-    if isOnce, ([formalInputParameterList count] > 0) then
+    if isOnce, (formalInputParameterList.count > 0) then
       error functionName: "an 'once' function should has no argument"
     end
     $->$
@@ -629,7 +629,7 @@ syntax galgas4InstructionsSyntax (galgasScanner4) {
       repeat
         select
           $?$
-          let selector = ["" here]
+          let selector = "".here
           $*$
           outActualInputParameterList += !selector !@inputParameterAnonymousVariable {}
         or
@@ -641,7 +641,7 @@ syntax galgas4InstructionsSyntax (galgasScanner4) {
           $var$
           let @lstring actualParameterTypeName
           select
-            actualParameterTypeName = ["" nowhere]
+            actualParameterTypeName = "".nowhere
           or
            <type_definition> !?ioDeclarations ?actualParameterTypeName
           end
@@ -651,11 +651,11 @@ syntax galgas4InstructionsSyntax (galgasScanner4) {
             !@inputParameterDeclaredVariable {!actualParameterTypeName !actualParameterName}
         or
           $?$
-          let selector = ["" here]
+          let selector = "".here
           $var$
           let @lstring actualParameterTypeName
           select
-            actualParameterTypeName = ["" nowhere]
+            actualParameterTypeName = "".nowhere
           or
            <type_definition> !?ioDeclarations ?actualParameterTypeName
           end
@@ -668,7 +668,7 @@ syntax galgas4InstructionsSyntax (galgasScanner4) {
           $let$
           let @lstring actualParameterTypeName
           select
-            actualParameterTypeName = ["" nowhere]
+            actualParameterTypeName = "".nowhere
           or
             <type_definition> !?ioDeclarations ?actualParameterTypeName
           end
@@ -678,11 +678,11 @@ syntax galgas4InstructionsSyntax (galgasScanner4) {
             !@inputParameterDeclaredConstant {!actualParameterTypeName !actualParameterName}
         or
           $?$
-          let selector = ["" here]
+          let selector = "".here
           $let$
           let @lstring actualParameterTypeName
           select
-            actualParameterTypeName = ["" nowhere]
+            actualParameterTypeName = "".nowhere
           or
             <type_definition> !?ioDeclarations ?actualParameterTypeName
           end
@@ -696,7 +696,7 @@ syntax galgas4InstructionsSyntax (galgasScanner4) {
           outActualInputParameterList += !selector !@inputParameterVariable {!actualParameterName}
         or
           $?$
-          let selector = ["" here]
+          let selector = "".here
           $identifier$ ?let actualParameterName
           outActualInputParameterList += !selector !@inputParameterVariable {!actualParameterName}
         end

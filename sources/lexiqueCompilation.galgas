@@ -356,11 +356,11 @@ override method @lexicalFunctionInputArgumentAST checkLexicalFunctionCallArgumen
     + " value"
   end
 //--- Check actual argument count
-  if [lexicalFormalTypeList count] != [self.mFunctionActualArgumentList count] then
+  if lexicalFormalTypeList.count != self.mFunctionActualArgumentList.count then
     error self.mFunctionName: "this lexical function names "
-    + [[self.mFunctionActualArgumentList count] string]
+    + self.mFunctionActualArgumentList.count.string
     + " actual argument(s), but the prototype requires "
-    + [[lexicalFormalTypeList count] string] + " actual argument(s)"
+    + lexicalFormalTypeList.count.string + " actual argument(s)"
   end
 //--- Check actual argument against formal parameters
   for (mLexicalType *) in lexicalFormalTypeList, (mLexicalActualInputArgument) in self.mFunctionActualArgumentList do
@@ -467,11 +467,11 @@ override method @lexicalFunctionInputArgumentAST checkLexicalRoutineCallArgument
     + " value"
   end
 //--- Check actual argument count
-  if [lexicalFormalTypeList count] != [self.mFunctionActualArgumentList count] then
+  if lexicalFormalTypeList.count != self.mFunctionActualArgumentList.count then
     error self.mFunctionName: "this lexical function names "
-    + [[self.mFunctionActualArgumentList count] string]
+    + self.mFunctionActualArgumentList.count.string
     + " actual argument(s), but the prototype requires "
-    + [[lexicalFormalTypeList count] string] + " actual argument(s)"
+    + lexicalFormalTypeList.count.string + " actual argument(s)"
   end
 //--- Check actual argument against formal parameters
   for (mLexicalType *) in lexicalFormalTypeList, (mLexicalActualInputArgument) in self.mFunctionActualArgumentList do

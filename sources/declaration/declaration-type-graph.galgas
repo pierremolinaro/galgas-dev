@@ -165,22 +165,22 @@ final class @graphDeclarationAST : @semanticDeclarationAST {
   //--- Methods 'topologicalSort', 'depthFirstTopologicalSort'
     var formalParameterList = @formalParameterSignature ()
     formalParameterList +=
-      !["" nowhere]
+      !"".nowhere
       !associatedListTypeEntry
       !.argumentOut
       !"outSortedInformationList"
     formalParameterList +=
-      !["" nowhere]
+      !"".nowhere
       !lstringListTypeEntry
       !.argumentOut
       !"outSortedLKeyList"
     formalParameterList +=
-      !["" nowhere]
+      !"".nowhere
       !associatedListTypeEntry
       !.argumentOut
       !"outUnsortedInformationList"
     formalParameterList +=
-      !["" nowhere]
+      !"".nowhere
       !lstringListTypeEntry
       !.argumentOut
       !"outUnsortedLKeyList"
@@ -205,12 +205,12 @@ final class @graphDeclarationAST : @semanticDeclarationAST {
   //--- Methods 'nodesWithNoSuccessor', 'nodesWithNoPredecessor'
     formalParameterList = @()
     formalParameterList +=
-      !["" nowhere]
+      !"".nowhere
       !associatedListTypeEntry
       !.argumentOut
       !"outInformationList"
     formalParameterList +=
-      !["" nowhere]
+      !"".nowhere
       !lstringListTypeEntry
       !.argumentOut
       !"outLKeyList"
@@ -369,13 +369,13 @@ final class @graphDeclarationAST : @semanticDeclarationAST {
   //--- setter 'enterNode'
     formalParameterList = @()
     formalParameterList +=
-      !["" nowhere]
+      !"".nowhere
       !lstringTypeEntry
       !.argumentVarIn
       !"inLKey"
-    for formalArg in [associatedListTypeEntry definition].addAssignOperatorArguments do
+    for formalArg in associatedListTypeEntry.definition.addAssignOperatorArguments do
       formalParameterList +=
-        !["" nowhere]
+        !"".nowhere
         !formalArg.mFormalArgumentType
         !.argumentVarIn
         !formalArg.mFormalArgumentName
@@ -401,7 +401,7 @@ final class @graphDeclarationAST : @semanticDeclarationAST {
     ]
   //--- setter 'removeEdgesToNode'
     formalParameterList = @formalParameterSignature ()
-    formalParameterList += !["" nowhere] !stringTypeEntry !.argumentVarIn !"inNodeName"
+    formalParameterList += !"".nowhere !stringTypeEntry !.argumentVarIn !"inNodeName"
     [!?setterMap insertKey
       !@("removeEdgesToNode", .here)
       !.definedAsMember
@@ -425,7 +425,7 @@ final class @graphDeclarationAST : @semanticDeclarationAST {
   //--- setter 'noteNode'
     formalParameterList = @formalParameterSignature ()
     formalParameterList +=
-       !["" nowhere]
+       !"".nowhere
        !lstringTypeEntry
        !.argumentVarIn
        !"inNodeLKey"
@@ -535,7 +535,7 @@ final class @graphDeclarationAST : @semanticDeclarationAST {
     let associatedListElementTypeEntry = [ioTypeMap typeMapEntryForLKey
       !makeEmbeddedElementTypeLName (!self.mAssociatedListTypeName)
     ]
-    if [associatedListTypeEntry definition].typeKind != .listType then
+    if associatedListTypeEntry.definition.typeKind != .listType then
       error self.mAssociatedListTypeName 
       : "the '@" + self.mAssociatedListTypeName + "' type should be a list"
     end
@@ -576,14 +576,14 @@ final class @graphDeclarationForGeneration : @semanticTypeForGeneration {
 
   override method appendDeclaration1 ?!@stringset unused ioInclusionSet
                                      !@string outHeader {
-    let selfTypeDefinition = [self.mSelfTypeEntry definition]
+    let selfTypeDefinition = self.mSelfTypeEntry.definition
     outHeader = [filewrapper typeGenerationTemplate.graphTypeHeader1
       !selfTypeDefinition.typeName.string
-      ![self.mSelfTypeEntry identifierRepresentation]
+      !self.mSelfTypeEntry.identifierRepresentation
     ]
     outHeader += [filewrapper typeGenerationTemplate.unifiedClassBodyForType
       !selfTypeDefinition.typeName.string
-      ![self.mSelfTypeEntry identifierRepresentation]
+      !self.mSelfTypeEntry.identifierRepresentation
       !selfTypeDefinition.isConcrete
       !selfTypeDefinition.initializerMap
       !selfTypeDefinition.classFunctionMap
@@ -610,7 +610,7 @@ final class @graphDeclarationForGeneration : @semanticTypeForGeneration {
     [self.mAssociatedListElementTypeEntry addHeaderFileName !?ioInclusionSet]
     outImplementation = [filewrapper typeGenerationTemplate.graphTypeSpecificImplementation
       !self.mSelfTypeEntry
-      ![self.mSelfTypeEntry identifierRepresentation]
+      !self.mSelfTypeEntry.identifierRepresentation
       !self.mAssociatedListTypeEntry
       !self.mInsertModifierList
     ]

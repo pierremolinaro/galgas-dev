@@ -166,9 +166,9 @@ final class @classFuncExpressionAST : @semanticExpressionAST {
       ?let @bool hasCompilerArgument
       ?let [@unifiedTypeMapEntry] requiredTypes
     )
-    let constructorTypeUsefulnessName = typeNameForUsefulEntitiesGraph (!@{![classFuncType definition].typeName.string !self.typeName})
+    let constructorTypeUsefulnessName = typeNameForUsefulEntitiesGraph (!@{!classFuncType.definition.typeName.string !self.typeName})
     [!?ioUsefulEntitiesGraph addEdge !from: inUsefulnessCallerEntityName !to: constructorTypeUsefulnessName]
-    let returnedTypeUsefulnessName = typeNameForUsefulEntitiesGraph (!@{![returnedType definition].typeName.string !self.typeName})
+    let returnedTypeUsefulnessName = typeNameForUsefulEntitiesGraph (!@{!returnedType.definition.typeName.string !self.typeName})
     [!?ioUsefulEntitiesGraph addEdge !from: inUsefulnessCallerEntityName !to: returnedTypeUsefulnessName]
   //---
     outExpression = @classFuncExpressionForGeneration {
@@ -208,13 +208,13 @@ private proc analyzeConstructorInvocation ?let @lstring inUsefulnessCallerEntity
   if inTypeName.string != "" then
     outConstructorType = [ioTypeMap typeMapEntryForLKey !inTypeName]
   end
-  if [outConstructorType isNull] then
+  if outConstructorType.isNull then
     error inTypeName
     : "cannot infer type"
     : outReturnedType, outConstructorType, outConstructorEffectiveParameterList, outHasCompilerArgument
   else
   //--- Get constructor map from type map
-    let @classFunctionMap classFunctionMap = [outConstructorType definition].classFunctionMap
+    let @classFunctionMap classFunctionMap = outConstructorType.definition.classFunctionMap
   //--- Search contructor
     let @functionSignature constructorFormalArgumentTypeList
     if let entry = classFunctionMap @[inConstructorName.string] then
@@ -222,26 +222,26 @@ private proc analyzeConstructorInvocation ?let @lstring inUsefulnessCallerEntity
       outHasCompilerArgument = entry.mHasCompilerArgument
       outReturnedType = entry.mReturnedType
     else
-      if [classFunctionMap count] == 0 then
+      if classFunctionMap.count == 0 then
         error inConstructorName
-        : "the '@"+ [outConstructorType definition].typeName.string 
+        : "the '@"+ outConstructorType.definition.typeName.string 
         + "' type does not define any constructor"
         : constructorFormalArgumentTypeList, outHasCompilerArgument, outReturnedType
       else
         error inConstructorName
-        : "the '@"+ [outConstructorType definition].typeName.string
+        : "the '@"+ outConstructorType.definition.typeName.string
         + "' type does not define the '" + inConstructorName + "' constructor"
         : constructorFormalArgumentTypeList, outHasCompilerArgument, outReturnedType
         fixit { replace [classFunctionMap keyList] }
       end
     end
   //--- Analysis arguments
-    if [inInitializerEffectiveParameterExpressions count] != [constructorFormalArgumentTypeList count] then
+    if inInitializerEffectiveParameterExpressions.count != constructorFormalArgumentTypeList.count then
       error inConstructorName
       : "calling the '" + inConstructorName + "' constructor of '@"
-      + [outConstructorType definition].typeName.string + "' requires "
-      + [[constructorFormalArgumentTypeList count] string] + " parameter(s), while this call has "
-      + [[inInitializerEffectiveParameterExpressions count] string] + " parameter(s)"
+      + outConstructorType.definition.typeName.string + "' requires "
+      + constructorFormalArgumentTypeList.count.string + " parameter(s), while this call has "
+      + inInitializerEffectiveParameterExpressions.count.string + " parameter(s)"
     end
     outConstructorEffectiveParameterList = @()
     for effectiveParameter in inInitializerEffectiveParameterExpressions,
@@ -308,14 +308,14 @@ final class @classFuncExpressionForGeneration : @semanticExpressionForGeneration
       ]
       parameterList += !parameter
     end
-    outCppExpression =  "GGS_"  + [self.classFuncType identifierRepresentation]
-    outCppExpression += "::class_func_" + [self.classFuncName identifierRepresentation]
+    outCppExpression =  "GGS_"  + self.classFuncType.identifierRepresentation
+    outCppExpression += "::class_func_" + self.classFuncName.identifierRepresentation
     outCppExpression += " ("
     for (mValue) in parameterList
       do outCppExpression += mValue
       between outCppExpression += ", "
     end
-    var @bool needsComma = [parameterList count] > 0
+    var @bool needsComma = parameterList.count > 0
     if self.mHasCompilerArgument then
       if needsComma then
         outCppExpression += ", "
@@ -327,7 +327,7 @@ final class @classFuncExpressionForGeneration : @semanticExpressionForGeneration
     if needsComma then
       outCppExpression += " " + [self.mLocation commaSourceFile] + ")"
     else
-      outCppExpression += [self.mLocation sourceFile] + ")"
+      outCppExpression += self.mLocation.sourceFile + ")"
     end
   }
 

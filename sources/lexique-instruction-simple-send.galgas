@@ -67,23 +67,12 @@ override method @lexicalSimpleSendInstructionAST checkLexicalInstruction
 }
 
 //--------------------------------------------------------------------------------------------------
-//! COCOA GENERATION
-//--------------------------------------------------------------------------------------------------
-
-//override getter @lexicalSimpleSendInstructionAST generateObjcCocoaInstructionCode
-//  ?let @string inScannerClassName
-//  ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
-//  -> @string outGeneratedCode {
-//  outGeneratedCode = "mTokenCode = " + inScannerClassName + "_1_" + [self.mSentTerminal.string identifierRepresentation] + " ;\n"
-//}
-
-//--------------------------------------------------------------------------------------------------
 
 override getter @lexicalSimpleSendInstructionAST generateSwiftCocoaInstructionCode
   ?let @string inScannerClassName
   ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
   -> @string outGeneratedCode {
-  outGeneratedCode = "tokenCode = " + inScannerClassName + "_1_" + [self.mSentTerminal.string identifierRepresentation] + "\n"
+  outGeneratedCode = "tokenCode = " + inScannerClassName + "_1_" + self.mSentTerminal.string.identifierRepresentation + "\n"
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -101,7 +90,7 @@ override getter @lexicalSimpleSendInstructionAST generateLexicalInstructionCode
   ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
   -> @string
 {
-  result  = "token.mTokenCode = kToken_" + [self.mSentTerminal identifierRepresentation] + " ;\n"
+  result  = "token.mTokenCode = kToken_" + self.mSentTerminal.string.identifierRepresentation + " ;\n"
   result += "enterToken (token) ;\n"
 }
 

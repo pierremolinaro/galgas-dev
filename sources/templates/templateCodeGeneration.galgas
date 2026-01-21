@@ -140,7 +140,7 @@ override method @templateInstructionIfForGeneration templateCodeGeneration
       !?ioUnusedVariableCppNameSet
       ?let ifVarCppName
     ]
-    let testVar = "test_" + [ioTemporaryVariableIndex string]
+    let testVar = "test_" + ioTemporaryVariableIndex.string
     ioTemporaryVariableIndex += 1
     ioGeneratedCode += "const GalgasBool " + testVar + " = " + ifVarCppName + ".boolEnum () ;\n"
     ioGeneratedCode += "switch (" + testVar + ") {\n"

@@ -14,6 +14,7 @@ fileprivate let checkEntityUsefulness_PREFKEY = "galgas_cli_options:checkEntityU
 fileprivate let displayUnicodeLexicalTestFunctions_PREFKEY = "galgas_cli_options:displayUnicodeLexicalTestFunctions"
 fileprivate let emitClassGraph_PREFKEY = "galgas_cli_options:emitClassGraph"
 fileprivate let emitSyntaxDiagrams_PREFKEY = "galgas_cli_options:emitSyntaxDiagrams"
+fileprivate let errorOnOldStyleGetterCall_PREFKEY = "galgas_cli_options:errorOnOldStyleGetterCall"
 fileprivate let generateManyFiles_PREFKEY = "galgas_cli_options:generateManyFiles"
 fileprivate let generateOneHeader_PREFKEY = "galgas_cli_options:generateOneHeader"
 fileprivate let outputHTMLgrammarFile_PREFKEY = "galgas_cli_options:outputHTMLgrammarFile"
@@ -48,6 +49,7 @@ struct OptionView : View {
   @AppStorage(displayUnicodeLexicalTestFunctions_PREFKEY) private var displayUnicodeLexicalTestFunctions : Bool = false
   @AppStorage(emitClassGraph_PREFKEY) private var emitClassGraph : Bool = false
   @AppStorage(emitSyntaxDiagrams_PREFKEY) private var emitSyntaxDiagrams : Bool = false
+  @AppStorage(errorOnOldStyleGetterCall_PREFKEY) private var errorOnOldStyleGetterCall : Bool = false
   @AppStorage(generateManyFiles_PREFKEY) private var generateManyFiles : Bool = false
   @AppStorage(generateOneHeader_PREFKEY) private var generateOneHeader : Bool = false
   @AppStorage(outputHTMLgrammarFile_PREFKEY) private var outputHTMLgrammarFile : Bool = false
@@ -94,6 +96,7 @@ struct OptionView : View {
           Toggle ("Display Unicode Lexical Test Functions", isOn: self.$displayUnicodeLexicalTestFunctions)
           Toggle ("Emit class graph in dot file", isOn: self.$emitClassGraph)
           Toggle ("Emit grammar syntax diagrams in TEX files", isOn: self.$emitSyntaxDiagrams)
+          Toggle ("GGS3: error on old style getter with no argument call", isOn: self.$errorOnOldStyleGetterCall)
           Toggle ("Generate many C++ implementation files", isOn: self.$generateManyFiles)
           Toggle ("Generate one C++ header file for all declarations", isOn: self.$generateOneHeader)
           Toggle ("Output a HTML file for every grammar component", isOn: self.$outputHTMLgrammarFile)
@@ -156,6 +159,9 @@ func commandLineToolInvocation () -> CommandLineToolInvocation {
   }
   if ud.bool (forKey: emitSyntaxDiagrams_PREFKEY) {
     arguments.append ("--emit-syntax-diagrams")
+  }
+  if ud.bool (forKey: errorOnOldStyleGetterCall_PREFKEY) {
+    arguments.append ("--error-on-old-style-getter-call")
   }
   if ud.bool (forKey: generateManyFiles_PREFKEY) {
     arguments.append ("--generate-many-cpp-files")

@@ -61,7 +61,7 @@ syntax extension galgas3DeclarationsSyntax {
     while
       <method_declaration_ggs3> !listTypeName !?ioDeclarations
     end
-    if [propertyList count] == 0 then
+    if propertyList.count == 0 then
       error .here : "a list declaration must declare at least one property"
     end
     $}$
@@ -260,7 +260,7 @@ override method @listDeclarationAST enterDeclarationInSemanticContext
     [!?getterMap insertOrReplace
       !@lstring {!mPropertyName.string + "AtIndex" !mPropertyName.location}
       !@methodKind.definedAsMember
-      !@functionSignature @[@(["" nowhere], uintType, "inIndex", true)]
+      !@functionSignature @[@("".nowhere, uintType, "inIndex", true)]
       !@location.here
       !true
       !mPropertyTypeEntry
@@ -314,7 +314,7 @@ override method @listDeclarationAST enterDeclarationInSemanticContext
     !@methodQualifier.isBasic
     !""
   ]
-  setterOutputFormalArgumentList += !["" nowhere] !uintType !.argumentConstantIn !"inIndex"
+  setterOutputFormalArgumentList += !"".nowhere !uintType !.argumentConstantIn !"inIndex"
   [!?setterMap insertOrReplace
     !@lstring {!"removeAtIndex" !@location.here}
     !@methodKind.definedAsMember
@@ -326,8 +326,8 @@ override method @listDeclarationAST enterDeclarationInSemanticContext
   for (mPropertyTypeEntry mPropertyName * mHasSetter *) in typedAttributeList do
     if mHasSetter then
       var setterFormalArgumentList = @formalParameterSignature ()
-      setterFormalArgumentList += !["" nowhere] !mPropertyTypeEntry !.argumentConstantIn !mPropertyName.string
-      setterFormalArgumentList += !["" nowhere] !uintType !.argumentConstantIn !mPropertyName.string
+      setterFormalArgumentList += !"".nowhere !mPropertyTypeEntry !.argumentConstantIn !mPropertyName.string
+      setterFormalArgumentList += !"".nowhere !uintType !.argumentConstantIn !mPropertyName.string
       [!?setterMap insertOrReplace
         !@lstring {!"set" + [mPropertyName.string capitalizingFirstCharacter] + "AtIndex" !mPropertyName.location}
         !@methodKind.definedAsMember
@@ -339,7 +339,7 @@ override method @listDeclarationAST enterDeclarationInSemanticContext
     end
   end
 //--- setter 'insertAtIndex'
-  setterInputFormalArgumentList += !["" nowhere] !uintType !@formalArgumentPassingModeAST.argumentConstantIn !"inInsertionIndex"
+  setterInputFormalArgumentList += !"".nowhere !uintType !@formalArgumentPassingModeAST.argumentConstantIn !"inInsertionIndex"
   [!?setterMap insertOrReplace
     !@lstring {!"insertAtIndex" !@location.here}
     !@methodKind.definedAsMember
@@ -519,19 +519,19 @@ override method @listTypeForGeneration appendDeclaration1
   ?!@stringset unused ioInclusionSet
   !@string outHeader
 {
-  let selfTypeDefinition = [self.mSelfTypeEntry definition]
+  let selfTypeDefinition = self.mSelfTypeEntry.definition
   outHeader = [filewrapper listGenerationTemplate.listTypeHeader1
     !selfTypeDefinition.typeName.string
-    ![self.mSelfTypeEntry identifierRepresentation]
+    !self.mSelfTypeEntry.identifierRepresentation
     !self.mTypedAttributeList
     !selfTypeDefinition.enumerationDescriptorList
     !selfTypeDefinition.typeForEnumeratedElement
-    ![selfTypeDefinition.typeForEnumeratedElement identifierRepresentation]
+    !selfTypeDefinition.typeForEnumeratedElement.identifierRepresentation
     ![selfTypeDefinition.features generateCppObjectComparison]
   ]
   outHeader += [filewrapper typeGenerationTemplate.unifiedClassBodyForType
     !selfTypeDefinition.typeName.string
-    ![self.mSelfTypeEntry identifierRepresentation]
+    !self.mSelfTypeEntry.identifierRepresentation
     !selfTypeDefinition.isConcrete
     !selfTypeDefinition.initializerMap
     !selfTypeDefinition.classFunctionMap
@@ -559,12 +559,12 @@ override method @listTypeForGeneration appendSpecificImplementation
   end
   [self.mListElementTypeIndex addHeaderFileName !?ioInclusionSet]
   [self.mSelfTypeEntry addHeaderFileName !?ioInclusionSet]
-  let selfTypeDefinition = [self.mSelfTypeEntry definition]
+  let selfTypeDefinition = self.mSelfTypeEntry.definition
   outImplementation = [filewrapper listGenerationTemplate.listTypeSpecificImplementation
     !selfTypeDefinition.typeName.string
-    ![self.mSelfTypeEntry identifierRepresentation]
+    !self.mSelfTypeEntry.identifierRepresentation
     !self.mTypedAttributeList
-    ![selfTypeDefinition.typeForEnumeratedElement identifierRepresentation]
+    !selfTypeDefinition.typeForEnumeratedElement.identifierRepresentation
     ![selfTypeDefinition.features generateCppObjectComparison]
   ]
  }

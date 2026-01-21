@@ -147,8 +147,8 @@ override method @parseLoopInstruction analyzeSyntaxInstruction
   ]
   if variant_expression.mResultType != inAnalysisContext.predefinedTypes.mUIntType then
     error self.mEndOfVariantExpression
-    :"the variant expression type is '@" + [variant_expression.mResultType definition].typeName.string
-    + "', but it should be '@" + [inAnalysisContext.predefinedTypes.mUIntType definition].typeName.string + "' type"
+    :"the variant expression type is '@" + variant_expression.mResultType.definition.typeName.string
+    + "', but it should be '@" + inAnalysisContext.predefinedTypes.mUIntType.definition.typeName.string + "' type"
   end
 //--- While expression
   [self.mWhileExpression analyzeSemanticExpression
@@ -162,8 +162,8 @@ override method @parseLoopInstruction analyzeSyntaxInstruction
   ]
   if while_expression.mResultType != inAnalysisContext.predefinedTypes.mBoolType then
     error self.mEndOfWhileExpression
-    :"the variant expression type is '@" + [variant_expression.mResultType definition].typeName.string
-    + "', but it should be '@" + [inAnalysisContext.predefinedTypes.mBoolType definition].typeName.string + "' type"
+    :"the variant expression type is '@" + variant_expression.mResultType.definition.typeName.string
+    + "', but it should be '@" + inAnalysisContext.predefinedTypes.mBoolType.definition.typeName.string + "' type"
   end
 //--- 'do' instructions
 //--- Begin block
@@ -234,11 +234,11 @@ override method @parseLoopInstructionForGeneration generateInstruction
 //--- Loop variable
   ioGeneratedCode += "if (" + variantVarCppName + ".isValid ()) {\n"
   [!?ioGeneratedCode incIndentation !2]
-  let @string variantVar = "variant_" + [ioTemporaryVariableIndex string]
+  let @string variantVar = "variant_" + ioTemporaryVariableIndex.string
   ioTemporaryVariableIndex += 1
   ioGeneratedCode += "uint32_t " + variantVar + " = " + variantVarCppName + ".uintValue () ;\n"
 //--- loop
-  let @string loopVar = "loop_" + [ioTemporaryVariableIndex string]
+  let @string loopVar = "loop_" + ioTemporaryVariableIndex.string
   ioTemporaryVariableIndex += 1
   ioGeneratedCode += "bool " + loopVar + " = true ;\n"
   ioGeneratedCode += "while (" + loopVar + ") {\n"

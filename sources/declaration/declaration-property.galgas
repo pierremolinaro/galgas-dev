@@ -274,7 +274,7 @@ list @propertyInCollectionListAST {
           !?outUnusedVariableCppNameSet
           ?let sourceVar
         ]
-        outInitializationCode += "  mProperty_" + [propertyName identifierRepresentation]
+        outInitializationCode += "  mProperty_" + propertyName.string.identifierRepresentation
         outInitializationCode += " = " + sourceVar + " ;\n"
       end
     end

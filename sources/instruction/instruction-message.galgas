@@ -96,7 +96,7 @@ override method @messageInstructionAST analyzeSemanticInstruction
 //--- Check message type is @string
   if expression.mResultType != inAnalysisContext.predefinedTypes.mStringType then
     error self.mInstructionLocation
-    :"the expression has the '@" + [expression.mResultType definition].typeName.string + "' type, but the 'message' instruction requires an '@string' expression"
+    :"the expression has the '@" + expression.mResultType.definition.typeName.string + "' type, but the 'message' instruction requires an '@string' expression"
   end
 //--- Generate instruction
   ioInstructionListForGeneration += !@messageInstructionForGeneration {

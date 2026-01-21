@@ -231,18 +231,18 @@ override method @overridingExtensionMethodAST semanticAnalysis
 //--- Self type
   let @unifiedTypeMapEntry selfType = [ioTypeMap typeMapEntryForLKey !self.mTypeName]
 //--- Check self type is a class
-  if not [[selfType definition].typeKind isClassType] then
-    error self.mOverridingExtensionMethodName: "cannot declare a extension method: '@" + [selfType definition].typeName.string + "' is not a class"
+  if not selfType.definition.typeKind.isClassType then
+    error self.mOverridingExtensionMethodName: "cannot declare a extension method: '@" + selfType.definition.typeName.string + "' is not a class"
   end
 //--- Find base type name
   var @string baseTypeName = ""
-  var @unifiedTypeMapEntry superType = [selfType definition].superType
+  var @unifiedTypeMapEntry superType = selfType.definition.superType
   var inheritedSignature = @formalParameterSignature ()
   var @location inheritedDeclarationLocation = @location.here
-  loop ([ioTypeMap count] + 1)
-  while (not [superType isNull]) & (baseTypeName == "") do
-    if [[superType definition].instanceMethodMap hasKey !self.mOverridingExtensionMethodName.string] then
-      [[superType definition].instanceMethodMap searchKey
+  loop (ioTypeMap.count + 1)
+  while (not superType.isNull) & (baseTypeName == "") do
+    if [superType.definition.instanceMethodMap hasKey !self.mOverridingExtensionMethodName.string] then
+      [superType.definition.instanceMethodMap searchKey
         !self.mOverridingExtensionMethodName
         ?*
         ?inheritedSignature
@@ -252,10 +252,10 @@ override method @overridingExtensionMethodAST semanticAnalysis
         ?*
       ]
       if qualifier <= @methodQualifier.isBasicFinal then
-        baseTypeName = [superType definition].typeName.string
+        baseTypeName = superType.definition.typeName.string
       end
     end
-    superType = [superType definition].superType
+    superType = superType.definition.superType
   end
   if baseTypeName == "" then
     error self.mOverridingExtensionMethodName:"this method is not declared by a super class"
@@ -269,7 +269,7 @@ override method @overridingExtensionMethodAST semanticAnalysis
     !selfObjectCppPrefixForAccessingProperty: "this->"
   }
   var isclass = false
-  if let classType = [[selfType definition].typeKind getClassType] then
+  if let classType = [selfType.definition.typeKind getClassType] then
     isclass = classType.isReference
   end
   analyzeRoutineBody (
@@ -297,12 +297,12 @@ override method @overridingExtensionMethodAST semanticAnalysis
     !infoMessage: "override extension method " + self.mOverridingExtensionMethodName
     !@overridingExtensionMethodForGeneration {
       !generateHeader: false // Do not generate Cpp header file
-      !implementationCppFileName: "method-" + [[selfType definition].typeName.string fileNameRepresentation] + "-" + [self.mOverridingExtensionMethodName fileNameRepresentation]
+      !implementationCppFileName: "method-" + [selfType.definition.typeName.string fileNameRepresentation] + "-" + [self.mOverridingExtensionMethodName fileNameRepresentation]
       !selfType
       !baseTypeName
       !self.mOverridingExtensionMethodName.string
       !formalParameterListForGeneration
-      ![selfType definition].allTypedPropertyList
+      !selfType.definition.allTypedPropertyList
       !semanticInstructionListForGeneration
     }
 }
@@ -367,7 +367,7 @@ override method @overridingExtensionMethodForGeneration appendSpecificImplementa
     ?let @string methodImplementation
   )
   outImplementation = [filewrapper semanticComponentGenerationTemplate.overridingExtensionMethodImplementation
-    ![self.mReceiverType definition].typeName.string
+    !self.mReceiverType.definition.typeName.string
     !self.mExtensionMethodName
     !methodImplementation
   ]

@@ -220,6 +220,8 @@ extern BoolCommandLineOption gOption_galgas_5F_cli_5F_options_emitClassGraph ;
 
 extern BoolCommandLineOption gOption_galgas_5F_cli_5F_options_emitSyntaxDiagrams ;
 
+extern BoolCommandLineOption gOption_galgas_5F_cli_5F_options_errorOnOldStyleGetterCall ;
+
 extern BoolCommandLineOption gOption_galgas_5F_cli_5F_options_generateManyFiles ;
 
 extern BoolCommandLineOption gOption_galgas_5F_cli_5F_options_generateOneHeader ;

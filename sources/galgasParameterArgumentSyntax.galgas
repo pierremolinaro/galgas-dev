@@ -47,7 +47,7 @@ syntax galgas3ParameterArgumentSyntax (galgasScanner3) {
             $?selector:$ ?selector
           or
             $?$
-            selector = ["" here]
+            selector = "".here
           end
           select
             $var$
@@ -63,7 +63,7 @@ syntax galgas3ParameterArgumentSyntax (galgasScanner3) {
             $?!selector:$ ?selector
           or
             $?!$
-            selector = ["" here]
+            selector = "".here
           end
           formalParameterPassingMode = @formalArgumentPassingModeAST.argumentInOut
         or
@@ -71,7 +71,7 @@ syntax galgas3ParameterArgumentSyntax (galgasScanner3) {
             $!selector:$ ?selector
           or
             $!$
-            selector = ["" here]
+            selector = "".here
           end
           formalParameterPassingMode = @formalArgumentPassingModeAST.argumentOut
         end
@@ -103,9 +103,9 @@ syntax galgas3ParameterArgumentSyntax (galgasScanner3) {
               $?selector:$ ?selector
             or
               $?$
-              selector = ["" here]
+              selector = "".here
             or
-              selector = ["" here]
+              selector = "".here
             end
             select
               formalParameterPassingMode = .argumentConstantIn
@@ -121,7 +121,7 @@ syntax galgas3ParameterArgumentSyntax (galgasScanner3) {
               $?!selector:$ ?selector
             or
               $?!$
-              selector = ["" here]
+              selector = "".here
             end
             formalParameterPassingMode = .argumentInOut
           or
@@ -129,7 +129,7 @@ syntax galgas3ParameterArgumentSyntax (galgasScanner3) {
               $!selector:$ ?selector
             or
               $!$
-              selector = ["" here]
+              selector = "".here
             end
             formalParameterPassingMode = .argumentOut
           end
@@ -170,7 +170,7 @@ syntax galgas3ParameterArgumentSyntax (galgasScanner3) {
         $!selector:$ ?selector
       or
         $!$
-        selector = ["" here]
+        selector = "".here
       end
       <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST e
       let @location endOfExpressionLocation = @location.here
@@ -185,7 +185,7 @@ syntax galgas3ParameterArgumentSyntax (galgasScanner3) {
         $?selector:$ ?selector
       or
         $?$
-        selector = ["" here]
+        selector = "".here
       end
       select
         $*$
@@ -194,7 +194,7 @@ syntax galgas3ParameterArgumentSyntax (galgasScanner3) {
       or
         $literalInt$ ?let count
         $*$
-        var n = [count.bigint uint]
+        var n = count.bigint.uint
         if selector.string != "" then
           error selector : "the selector should be '?'" fixit { replace "?" }
         end
@@ -214,7 +214,7 @@ syntax galgas3ParameterArgumentSyntax (galgasScanner3) {
         $!?selector:$ ?selector
       or
         $!?$
-        selector = ["" here]
+        selector = "".here
       end
       select
         $self$
@@ -244,7 +244,7 @@ syntax galgas3ParameterArgumentSyntax (galgasScanner3) {
         $?selector:$ ?selector
       or
         $?$
-        selector = ["" here]
+        selector = "".here
       end
       select // input parameter, self.property
         $self$
@@ -268,7 +268,7 @@ syntax galgas3ParameterArgumentSyntax (galgasScanner3) {
         $var$
         let @lstring declarationTypeName
         select
-          declarationTypeName = ["" nowhere]
+          declarationTypeName = "".nowhere
         or
           <type_definition_ggs3> !?ioDeclarations ?declarationTypeName
         end
@@ -294,7 +294,7 @@ syntax galgas3ParameterArgumentSyntax (galgasScanner3) {
         $let$
         let @lstring declarationTypeName
         select
-          declarationTypeName = ["" nowhere]
+          declarationTypeName = "".nowhere
         or
           <type_definition_ggs3> !?ioDeclarations ?declarationTypeName
         end
@@ -341,7 +341,7 @@ syntax galgas3ParameterArgumentSyntax (galgasScanner3) {
         $?selector:$ ?selector
       or
         $?$
-        selector = ["" here]
+        selector = "".here
       end
       select
         isConstant = true
@@ -386,9 +386,9 @@ syntax galgas3ParameterArgumentSyntax (galgasScanner3) {
           $?selector:$ ?selector
         or
           $?$
-          selector = ["" here]
+          selector = "".here
         or
-          selector = ["" here]
+          selector = "".here
         end
         let @bool isConstant
         select
@@ -486,7 +486,7 @@ syntax galgas4ParameterArgumentSyntax (galgasScanner4) {
           end
         or
           $?$
-          selector = ["" here]
+          selector = "".here
           select
             formalParameterPassingMode = .argumentConstantIn
           or
@@ -498,28 +498,28 @@ syntax galgas4ParameterArgumentSyntax (galgasScanner4) {
           end
         or
           $let$
-          selector = ["" here]
+          selector = "".here
           formalParameterPassingMode = .argumentConstantIn
         or
           $var$
-          selector = ["" here]
+          selector = "".here
           formalParameterPassingMode = .argumentVarIn
         or
-          selector = ["" here]
+          selector = "".here
           formalParameterPassingMode = .argumentConstantIn
         or
           $?!selector:$ ?selector
           formalParameterPassingMode = .argumentInOut
         or
           $?!$ 
-          selector = ["" here]
+          selector = "".here
           formalParameterPassingMode = .argumentInOut
         or
           $!selector:$ ?selector
           formalParameterPassingMode = .argumentOut
         or
           $!$
-          selector = ["" here]
+          selector = "".here
           formalParameterPassingMode = .argumentOut
         end
         <type_definition> !?ioDeclarations ?let formalParameterTypeName
@@ -574,7 +574,7 @@ syntax galgas4ParameterArgumentSyntax (galgasScanner4) {
       $?selector:$ ?selector
     or
       $?$
-      selector = ["" here]
+      selector = "".here
     end
     select
       $*$
@@ -583,7 +583,7 @@ syntax galgas4ParameterArgumentSyntax (galgasScanner4) {
     or
       $literalInt$ ?let count
       $*$
-      var n = [count.bigint uint]
+      var n = count.bigint.uint
       if selector.string != "" then
         error selector : "the selector should be '?'" fixit { replace "?" }
       end
@@ -626,7 +626,7 @@ syntax galgas4ParameterArgumentSyntax (galgasScanner4) {
       $var$
       let @lstring declarationTypeName
       select
-        declarationTypeName = ["" nowhere]
+        declarationTypeName = "".nowhere
       or
         <type_definition> !?ioDeclarations ?declarationTypeName
       end
@@ -652,7 +652,7 @@ syntax galgas4ParameterArgumentSyntax (galgasScanner4) {
       $let$
       let @lstring declarationTypeName
       select
-        declarationTypeName = ["" nowhere]
+        declarationTypeName = "".nowhere
       or
         <type_definition> !?ioDeclarations ?declarationTypeName
       end
@@ -686,7 +686,7 @@ syntax galgas4ParameterArgumentSyntax (galgasScanner4) {
       $!?selector:$ ?selector
     or
       $!?$
-      selector = ["" here]
+      selector = "".here
     end
     select
       $identifier$ ?let outputInputActualParameterName
@@ -723,7 +723,7 @@ syntax galgas4ParameterArgumentSyntax (galgasScanner4) {
       $!selector:$ ?selector
     or
       $!$
-      selector = ["" here]
+      selector = "".here
     end
     <expression> !?ioDeclarations ?let @semanticExpressionAST e
     let @location endOfExpressionLocation = @location.here
@@ -738,7 +738,7 @@ syntax galgas4ParameterArgumentSyntax (galgasScanner4) {
 
   rule <actual_parameter> ?!@galgasDeclarationAST ioDeclarations
                           ?!@actualParameterListAST ioActualParameterList {
-    let selector = ["" here]
+    let selector = "".here
     <expression> !?ioDeclarations ?let @semanticExpressionAST e
     let @location endOfExpressionLocation = @location.here
     ioActualParameterList += !@outputActualParameterAST {
@@ -764,9 +764,9 @@ syntax galgas4ParameterArgumentSyntax (galgasScanner4) {
           $?selector:$ ?selector
         or
           $?$
-          selector = ["" here]
+          selector = "".here
         or
-          selector = ["" here]
+          selector = "".here
         end
         let @bool isConstant
         select

@@ -57,7 +57,7 @@ override getter @lexicalCharacterIntervalMatchAST generateConditionCode
 override getter @lexicalStringMatchAST generateConditionCode
   ?context:let @lexiqueAnalysisContext inLexiqueAnalysisContext
   -> @string {
-  result = "testForInputUTF32String (kUnicodeString_" + [inLexiqueAnalysisContext.mLexiqueName identifierRepresentation] + "_" + [self.mString.string identifierRepresentation]
+  result = "testForInputUTF32String (kUnicodeString_" + inLexiqueAnalysisContext.mLexiqueName.identifierRepresentation + "_" + self.mString.string.identifierRepresentation
   result += ", true)"
 }
 
@@ -66,10 +66,10 @@ override getter @lexicalStringMatchAST generateConditionCode
 override getter @lexicalStringNotMatchAST generateConditionCode
   ?context:let @lexiqueAnalysisContext inLexiqueAnalysisContext
   -> @string {
-  result = "notTestForInputUTF32String (kUnicodeString_" + [inLexiqueAnalysisContext.mLexiqueName identifierRepresentation] + "_"
-  result += [self.mString identifierRepresentation]
+  result = "notTestForInputUTF32String (kUnicodeString_" + inLexiqueAnalysisContext.mLexiqueName.identifierRepresentation + "_"
+  result += self.mString.string.identifierRepresentation
   result += ", gLexicalMessage_"
-  result += [inLexiqueAnalysisContext.mLexiqueName identifierRepresentation] + "_"
+  result += inLexiqueAnalysisContext.mLexiqueName.identifierRepresentation + "_"
   result += self.mErrorMessage.string
   result += " COMMA_LINE_AND_SOURCE_FILE)"
 }
@@ -103,7 +103,7 @@ abstract getter @lexicalRoutineOrFunctionFormalInputArgumentAST generateRoutineO
 
 override getter @lexicalAttributeInputArgumentAST generateRoutineOrFunctionArgument
   -> @string {
-  result = "token.mLexicalAttribute_" + [self.mAttributeName identifierRepresentation]
+  result = "token.mLexicalAttribute_" + self.mAttributeName.string.identifierRepresentation
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -116,7 +116,7 @@ override getter @lexicalCharacterInputArgumentAST generateRoutineOrFunctionArgum
 //--------------------------------------------------------------------------------------------------
 
 override getter @lexicalUnsignedInputArgumentAST generateRoutineOrFunctionArgument -> @string {
-  result = [self.mUnsigned.bigint string]
+  result = self.mUnsigned.bigint.string
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -151,7 +151,7 @@ override getter @lexicalSendTerminalByDefaultAST generateDefaultSendCode
   ?let @string unused inScannerClassName
   -> @string
 {
-  result = "token.mTokenCode = kToken_" + [self.mDefaultSentTerminal identifierRepresentation] + " ;\n"
+  result = "token.mTokenCode = kToken_" + self.mDefaultSentTerminal.string.identifierRepresentation + " ;\n"
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -198,9 +198,9 @@ override getter @lexicalImplicitRuleAST generateLexicalRuleCode
   result = ""
   for > (* mName mTerminalName) in tokenSortedList do
     result += "if (testForInputUTF32String (kUnicodeString_" + inScannerClassName + "_"
-    result += [mName identifierRepresentation]
+    result += mName.identifierRepresentation
     result += ", true)) {\n"
-    result += "  token.mTokenCode = kToken_" + [mTerminalName identifierRepresentation] + " ;\n"
+    result += "  token.mTokenCode = kToken_" + mTerminalName.identifierRepresentation + " ;\n"
     result += "  enterToken (token) ;\n"
     result += "}else "
   end

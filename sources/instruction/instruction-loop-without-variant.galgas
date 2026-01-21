@@ -129,19 +129,6 @@ final class @loopInstructionWithoutVariantAST : @semanticInstructionAST {
      !?ioVariableMap
      ?let @ifTestListForGeneration testListForGeneration
    ]
-  //--- Check loop expression type is @bool
-//    if loopExpression.mResultType != inAnalysisContext.predefinedTypes.mBoolType then
-//      error self.mEndOfLoopExpression
-//      : "the loop expression type should be '@" 
-//      + [inAnalysisContext.predefinedTypes.mBoolType definition].typeName.string + "', but it has '@" + [loopExpression.mResultType definition].typeName.string + "' type"
-//    end
-//    var expressions = self.mLoopExpression
-//    [!?expressions popLast ?*]
-//    for (*) in expressions do
-//      [!?ioVariableMap closeBranch !self.mEndOf_then_branch]
-//      [!?ioVariableMap closeOverride !self.mEndOf_then_branch]
-//    end
-//    [!?ioVariableMap closeBranch !self.mEndOf_then_branch]
   //--- Begin override for analyze loop instruction list
     [!?ioVariableMap openOverrideForRepeatBlock]
   //--- First branch
@@ -204,7 +191,7 @@ final class @loopInstructionWithoutVariantForGeneration : @semanticInstructionFo
                                       ?!@stringset ioUnusedVariableCppNameSet
                                       ?let @bool inGenerateSyntaxDirectedTranslationString
                                       ?!@string ioGeneratedCode {
-    let loopVar = "loop_" + [self.mInstructionLocation startLocationIndex]
+    let loopVar = "loop_" + self.mInstructionLocation.startLocationIndex
     ioGeneratedCode += "bool " + loopVar + " = true ;\n"
     ioGeneratedCode += "while (" + loopVar + ") {\n"
     [!?ioGeneratedCode incIndentation !2]

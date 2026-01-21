@@ -93,9 +93,9 @@ final class @dataPredefinedTypeAST : @predefinedTypeAST {
     )
     var @formalParameterSignature argList = @()
     [!?ioUnifiedTypeMap makeEntryFromString !"string" ?@unifiedTypeMapEntry t]
-    argList += !["" nowhere] !t !@formalArgumentPassingModeAST. argumentConstantIn !"inFilePath"
+    argList += !"".nowhere !t !@formalArgumentPassingModeAST. argumentConstantIn !"inFilePath"
     [!?ioUnifiedTypeMap makeEntryFromString !"bool" ?t]
-    argList += !["" nowhere] !t !@formalArgumentPassingModeAST. argumentOut !"outFileModified"
+    argList += !"".nowhere !t !@formalArgumentPassingModeAST. argumentOut !"outFileModified"
     [!?outInstanceMethodMap insertKey
       !@lstring {!"writeToFileWhenDifferentContents" !@location.here}
       !@methodKind. definedAsMember

@@ -260,7 +260,7 @@ abstract class @semanticTypeForGeneration : @semanticDeclarationForGeneration {
 //--------------------------------------------------------------------------------------------------
 
 override getter @semanticTypeForGeneration getImplementationCppFileName -> @string {
-  result = [self.mSelfTypeEntry definition].headerFileName
+  result = self.mSelfTypeEntry.definition.headerFileName
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -272,13 +272,13 @@ override getter @semanticTypeForGeneration hasCppHeaderFile -> @bool {
 //--------------------------------------------------------------------------------------------------
 
 override getter @semanticTypeForGeneration isPredefined -> @bool {
-  result = [self.mSelfTypeEntry definition].isPredefined
+  result = self.mSelfTypeEntry.definition.isPredefined
 }
 
 //--------------------------------------------------------------------------------------------------
 
 override getter @semanticTypeForGeneration headerKind -> @headerKind {
-  result = [self.mSelfTypeEntry definition].headerKind
+  result = self.mSelfTypeEntry.definition.headerKind
 }
 
 //--------------------------------------------------------------------------------------------------

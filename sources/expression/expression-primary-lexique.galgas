@@ -126,9 +126,9 @@ override method @lexiqueIntrospectionForGeneration generateExpression
   !@string outCppExpression {
 //---
   ioInclusionSet ++= "lexique-" + [self.mLexiqueComponentName fileNameRepresentation]
-  outCppExpression = "Lexique_" + [self.mLexiqueComponentName identifierRepresentation] + "::"
-  + [self.mLexiqueGetterName identifierRepresentation]
-  + "(" + [self.mLocation sourceFile] + ")"
+  outCppExpression = "Lexique_" + self.mLexiqueComponentName.identifierRepresentation + "::"
+  + self.mLexiqueGetterName.identifierRepresentation
+  + "(" + self.mLocation.sourceFile + ")"
 }
 
 //--------------------------------------------------------------------------------------------------

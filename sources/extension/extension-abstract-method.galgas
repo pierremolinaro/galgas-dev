@@ -193,16 +193,13 @@ final class @abstractExtensionMethodAST : @semanticDeclarationAST {
     ?let @predefinedTypes unused inPredefinedTypes
     ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
   {
-  //--- Useful entities graph
-  //  let nameForUsefulness = methodNameForUsefulEntitiesGraph (!self.mTypeName !self.mAbstractExtensionMethodName)
-  //  [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
   //--- Self type
     let @unifiedTypeMapEntry selfType = [ioTypeMap typeMapEntryForLKey !self.mTypeName]
   //--- Check self type is an abstract class
-    if not [[selfType definition].typeKind isClassType]then
-      error self.mAbstractExtensionMethodName: "cannot declare a extension method: '@" + [selfType definition].typeName.string + "' is not a class"
-    elsif [selfType definition].isConcrete then
-      error self.mAbstractExtensionMethodName: "cannot declare an abstract extension method: '@" + [selfType definition].typeName.string + "' is not an abstract class"
+    if not selfType.definition.typeKind.isClassType then
+      error self.mAbstractExtensionMethodName: "cannot declare a extension method: '@" + selfType.definition.typeName.string + "' is not a class"
+    elsif selfType.definition.isConcrete then
+      error self.mAbstractExtensionMethodName: "cannot declare an abstract extension method: '@" + selfType.definition.typeName.string + "' is not an abstract class"
     end
   //--- Compute method signature
     var formalParameterListForGeneration = @formalParameterListForGeneration ()
@@ -219,7 +216,7 @@ final class @abstractExtensionMethodAST : @semanticDeclarationAST {
       !infoMessage: "abstract extension method " + self.mAbstractExtensionMethodName
       !@abstractExtensionMethodForGeneration {
         !generateHeader: true // Generate Cpp header file
-        !implementationCppFileName: "method-" + [[selfType definition].typeName.string fileNameRepresentation] + "-" + [self.mAbstractExtensionMethodName fileNameRepresentation]
+        !implementationCppFileName: "method-" + [selfType.definition.typeName.string fileNameRepresentation] + "-" + [self.mAbstractExtensionMethodName fileNameRepresentation]
         !selfType
         !self.mAbstractExtensionMethodName.string
         !formalParameterListForGeneration
@@ -269,7 +266,7 @@ final class @abstractExtensionMethodForGeneration : @semanticDeclarationWithHead
     ?!@stringset unused ioInclusionSet
     !@string outHeader {
     outHeader = [filewrapper semanticComponentGenerationTemplate.abstractExtensionMethodDeclaration
-      ![self.mReceiverType definition].typeName.string
+      !self.mReceiverType.definition.typeName.string
       !self.mAbstractExtensionMethodName
       !self.mAbstractExtensionMethodFormalParameterList
     ]
@@ -287,7 +284,7 @@ final class @abstractExtensionMethodForGeneration : @semanticDeclarationWithHead
                                                 ?!@stringset ioInclusionSet
                                                 !@string outImplementation {
     ioInclusionSet ++= "method-"
-         + [[self.mReceiverType definition].typeName.string fileNameRepresentation]
+         + [self.mReceiverType.definition.typeName.string fileNameRepresentation]
          + "-" + [self.mAbstractExtensionMethodName fileNameRepresentation]
     [self.mReceiverType addHeaderFileName !?ioInclusionSet]
     for (* * mFormalArgumentType * *) in self.mAbstractExtensionMethodFormalParameterList do

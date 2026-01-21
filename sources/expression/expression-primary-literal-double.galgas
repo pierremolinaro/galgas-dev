@@ -102,7 +102,7 @@ override method @literalDoubleExpressionForGeneration generateExpression
   ?!@uint unused ioTemporaryVariableIndex
   ?!@stringset unused ioUnusedVariableCppNameSet
   !@string outCppExpression {
-  outCppExpression = "GGS_double (" + [self.mValue string]+ ")"
+  outCppExpression = "GGS_double (" + self.mValue.string + ")"
 }
 
 

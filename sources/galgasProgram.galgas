@@ -76,9 +76,9 @@ grammar galgas3Grammar
 //--- Search for a project file in parent directory
   let parentDirectory = [[inSourceFile.string stringByDeletingLastPathComponent] stringByDeletingLastPathComponent]
   let candidateProjectFiles = [parentDirectory regularFilesWithExtensions !false !@[@("galgasProject")]]
-  if [candidateProjectFiles count] == 0 then
+  if candidateProjectFiles.count == 0 then
     error inSourceFile : "no project file in parent directory of source file"
-  elsif [candidateProjectFiles count] > 1 then
+  elsif candidateProjectFiles.count > 1 then
     var s = "several project files in source file parent directory:"
     for (mValue) in candidateProjectFiles do
       s += "\n  - " + mValue
@@ -102,9 +102,9 @@ grammar galgas4Grammar ?sourceFilePath: @lstring inSourceFile {
 //--- Search for a project file in parent directory
   let parentDirectory = [[inSourceFile.string stringByDeletingLastPathComponent] stringByDeletingLastPathComponent]
   let candidateProjectFiles = [parentDirectory regularFilesWithExtensions !false !@[@("ggsProject")]]
-  if [candidateProjectFiles count] == 0 then
+  if candidateProjectFiles.count == 0 then
     error inSourceFile : "no project file in parent directory of source file"
-  elsif [candidateProjectFiles count] > 1 then
+  elsif candidateProjectFiles.count > 1 then
     var s = "several project files in source file parent directory:"
     for (mValue) in candidateProjectFiles do
       s += "\n  - " + mValue
@@ -177,10 +177,10 @@ private proc parseAndAnalyzeProject ?let @lstring inProjectSourceFilePath
         if [buildFile fileExists] then
           let resultCode = ["python " + buildFile system]
           if resultCode != 0 then
-          error ["" nowhere] : "Running '" + buildFile + "' returns " + resultCode
+          error "".nowhere : "Running '" + buildFile + "' returns " + resultCode
           end
         else
-          error ["" nowhere] : "Cannot perform C++ compilation of '" + cppCompilationTarget
+          error "".nowhere : "Cannot perform C++ compilation of '" + cppCompilationTarget
               + "' : the '" + buildFile + "' file does not exist"
         end
       end
@@ -242,12 +242,12 @@ private proc compileProject ?let @lstring inProjectSourceFile
   end
 //--------------------------------- Display result
 //  if @uint.errorCount == 0 then
-//    message "  Declarations: " + [declarationAST.mDeclarationList count] + "\n"
-//    message "  Syntax components: " + [declarationAST.mSyntaxComponentList count] + "\n" ;
-//    message "  GUI components: " + [declarationAST.mGUIComponentList count] + "\n"
-//    message "  Source rules: " + [declarationAST.mSourceRuleList count] + "\n" ;
-//    message "  Prologue procs: " + [declarationAST.mPrologueDeclarationList count] + "\n"
-//    message "  Epilogue procs: " + [declarationAST.mEpilogueDeclarationList count] + "\n"
+//    message "  Declarations: " + declarationAST.mDeclarationList.count + "\n"
+//    message "  Syntax components: " + declarationAST.mSyntaxComponentList.count + "\n" ;
+//    message "  GUI components: " + declarationAST.mGUIComponentList.count + "\n"
+//    message "  Source rules: " + declarationAST.mSourceRuleList.count + "\n" ;
+//    message "  Prologue procs: " + declarationAST.mPrologueDeclarationList.count + "\n"
+//    message "  Epilogue procs: " + declarationAST.mEpilogueDeclarationList.count + "\n"
 //  end
 //--------------------------------- Group syntax components and their extensions
   groupSyntaxComponentsGalgas3 (
@@ -258,11 +258,6 @@ private proc compileProject ?let @lstring inProjectSourceFile
 //--------------------------------- Compile semantic declarations
   var usefulEntitiesGraph = @usefulEntitiesGraph ()
   let @string buildDirectoryName = "build"
-//  if inGalgas4 then
-//    buildDirectoryName = [[inProjectSourceFile lastPathComponent] stringByReplacingStringByString !"." !"+"] + "+BUILD"
-//  else
-//    buildDirectoryName = "build"
-//  end
   let absoluteBuildDirectory = [inProjectSourceFile stringByDeletingLastPathComponent] + "/" + buildDirectoryName
   let productDirectory = absoluteBuildDirectory + "/output"
   let @stringlist appProductFileList = @()
@@ -300,7 +295,7 @@ private proc compileProject ?let @lstring inProjectSourceFile
   end
 //--------------------------------- Compile program declarations
   if @uint.errorCount == 0 then
-    let projectVersionString = [inProjectComponentAST.mMajorVersion.bigint string]
+    let projectVersionString = inProjectComponentAST.mMajorVersion.bigint.string
       + "." + inProjectComponentAST.mMinorVersion.bigint
       + "." + inProjectComponentAST.mRevisionVersion.bigint
     compileProgramComponentGalgas3 (
@@ -323,14 +318,14 @@ private proc compileProject ?let @lstring inProjectSourceFile
   if [option galgas_cli_options.outputHTMLTypeListFile value] then
     var @stringset firstLetterSet = @()
     for (lkey *) in typeMap do
-      firstLetterSet ++= [[lkey.string characterAtIndex!0] string]
+      firstLetterSet ++= [lkey.string characterAtIndex!0].string
     end
     var @string tableOfTypeString = ""
     var @char currentFirstLetter = ' '
     for (type_lkey *) in typeMap do
       if currentFirstLetter != [type_lkey.string characterAtIndex !0] then
         currentFirstLetter = [type_lkey.string characterAtIndex !0]
-        tableOfTypeString += "<br><a name=\"" + [currentFirstLetter uint]
+        tableOfTypeString += "<br><a name=\"" + currentFirstLetter.uint
         tableOfTypeString += "\"><b>" + currentFirstLetter + "</b></a><br>"
       end
       tableOfTypeString += linkForType (!type_lkey.string) + "<br>"
@@ -464,7 +459,7 @@ private proc projectGeneration
       !inProjectSourceFile
       !inProjectComponentAST.mTargetName.string
       !inProjectComponentAST.mEndOfSourceFile
-      ![inProjectComponentAST.mMajorVersion.bigint string]
+      !inProjectComponentAST.mMajorVersion.bigint.string
          + "." + inProjectComponentAST.mMinorVersion.bigint
          + "." + inProjectComponentAST.mRevisionVersion.bigint
       !projectQualifiedFeatureMap

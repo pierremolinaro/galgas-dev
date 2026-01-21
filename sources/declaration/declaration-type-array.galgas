@@ -99,10 +99,10 @@ final class @arrayTypeDeclarationAST : @semanticDeclarationAST {
     [!?ioTypeMap makeEntry !self.elementTypeName ?let elementType]
   //--- Setter argument list
     var @formalParameterSignature setterInputFormalArgumentList = @[
-      @(["" nowhere], elementType, .argumentConstantIn, "inElement")
+      @("".nowhere, elementType, .argumentConstantIn, "inElement")
     ]
     var @formalParameterSignature setterOutputFormalArgumentList = @[
-      @(["" nowhere], elementType, .argumentOut, "outElement")
+      @("".nowhere, elementType, .argumentOut, "outElement")
     ]
   //--- Getters
     commonGetterMapForAllTypes (!?ioTypeMap ?var @getterMap getterMap )
@@ -171,7 +171,7 @@ final class @arrayTypeDeclarationAST : @semanticDeclarationAST {
     [!?setterMap insertKey
       !@lstring {!"append" !.here}
       !.definedAsMember
-      !@[@(["" nowhere], elementType, .argumentConstantIn, "inElement")]
+      !@[@("".nowhere, elementType, .argumentConstantIn, "inElement")]
       !true
       !@methodQualifier.isBasic
       !""
@@ -192,7 +192,7 @@ final class @arrayTypeDeclarationAST : @semanticDeclarationAST {
       !@methodQualifier.isBasic
       !""
     ]
-    setterOutputFormalArgumentList += !["" nowhere] !uintType !.argumentConstantIn !"inIndex"
+    setterOutputFormalArgumentList += !"".nowhere !uintType !.argumentConstantIn !"inIndex"
     [!?setterMap insertKey
       !@lstring {!"removeAtIndex" !@location.here}
       !@methodKind.definedAsMember
@@ -202,7 +202,7 @@ final class @arrayTypeDeclarationAST : @semanticDeclarationAST {
       !""
     ]
   //--- setter 'insertAtIndex'
-    setterInputFormalArgumentList += !["" nowhere] !uintType !.argumentConstantIn !"inInsertionIndex"
+    setterInputFormalArgumentList += !"".nowhere !uintType !.argumentConstantIn !"inInsertionIndex"
     [!?setterMap insertKey
       !@lstring {!"insertAtIndex" !@location.here}
       !@methodKind.definedAsMember
@@ -220,7 +220,7 @@ final class @arrayTypeDeclarationAST : @semanticDeclarationAST {
     ]
   //--- Read subscripts
     var @subscriptMap readSubscriptMap = @()
-    let @functionSignature argumentTypeList = @[@(["" nowhere], uintType, "inIndex", true)]
+    let @functionSignature argumentTypeList = @[@("".nowhere, uintType, "inIndex", true)]
     [!?readSubscriptMap insertKey
       !@([argumentTypeList subcriptSignature], .nowhere)
       !argumentTypeList
@@ -382,15 +382,15 @@ final class @arrayTypeForGeneration : @semanticTypeForGeneration {
 
   override method appendDeclaration1 ?!@stringset unused ioInclusionSet
                                      !@string outHeader {
-    let selfTypeDefinition = [self.mSelfTypeEntry definition]
+    let selfTypeDefinition = self.mSelfTypeEntry.definition
     outHeader = [filewrapper arrayTypeGenerationTemplate.arrayTypeHeader1
       !selfTypeDefinition.typeName.string
-      ![self.mSelfTypeEntry identifierRepresentation]
-      ![selfTypeDefinition.typeForEnumeratedElement identifierRepresentation]
+      !self.mSelfTypeEntry.identifierRepresentation
+      !selfTypeDefinition.typeForEnumeratedElement.identifierRepresentation
     ]
     outHeader += [filewrapper typeGenerationTemplate.unifiedClassBodyForType
       !selfTypeDefinition.typeName.string
-      ![self.mSelfTypeEntry identifierRepresentation]
+      !self.mSelfTypeEntry.identifierRepresentation
       !selfTypeDefinition.isConcrete
       !selfTypeDefinition.initializerMap
       !selfTypeDefinition.classFunctionMap
@@ -414,11 +414,11 @@ final class @arrayTypeForGeneration : @semanticTypeForGeneration {
                                           !@string outImplementation {
     [self.elementType addHeaderFileName !?ioInclusionSet]
     [self.mSelfTypeEntry addHeaderFileName !?ioInclusionSet]
-    let selfTypeDefinition = [self.mSelfTypeEntry definition]
+    let selfTypeDefinition = self.mSelfTypeEntry.definition
     outImplementation = [filewrapper arrayTypeGenerationTemplate.arrayTypeSpecificImplementation
       !selfTypeDefinition.typeName.string
-      ![self.mSelfTypeEntry identifierRepresentation]
-      ![selfTypeDefinition.typeForEnumeratedElement identifierRepresentation]
+      !self.mSelfTypeEntry.identifierRepresentation
+      !selfTypeDefinition.typeForEnumeratedElement.identifierRepresentation
       ![selfTypeDefinition.features generateCppObjectComparison]
     ]
   }

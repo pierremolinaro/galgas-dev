@@ -96,16 +96,16 @@ override method @bangExpressionAST analyzeSemanticExpression
   ]
 //--- Check operator availability
   let @unifiedTypeMapEntry type = expression.mResultType
-  if let weakRef = [[type definition].typeKind getWeakReferenceType] then
+  if let weakRef = type.definition.typeKind.getWeakReferenceType then
     outExpression = @bangExpressionForGeneration {
       !weakRef.referenceType
       !self.mOperatorLocation
       !expression
-      ![type definition].typeName.string
+      !type.definition.typeName.string
     }
   else
     error self.mOperatorLocation
-    : "operand type is '@" + [type definition].typeName.string + "' and does not support the 'bang' operator"
+    : "operand type is '@" + type.definition.typeName.string + "' and does not support the 'bang' operator"
     : outExpression
   end
 }
@@ -137,7 +137,7 @@ override method @bangExpressionForGeneration generateExpression ?!@string ioGene
   ]
 //--- Generate
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
-  outCppExpression = operand + ".bang_" + [self.mReceiverTypeName identifierRepresentation]
+  outCppExpression = operand + ".bang_" + self.mReceiverTypeName.identifierRepresentation
   outCppExpression += " (" + compilerCppName () + [self.mLocation commaSourceFile] + ")"
 }
 

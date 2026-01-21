@@ -159,13 +159,13 @@ override method @ifExpressionAST analyzeSemanticExpression
     ?let else_expression
   ]
 //--- Check 'if' expression is boolean
-  if [if_expression.mResultType definition].typeName.string != "bool" then
+  if if_expression.mResultType.definition.typeName.string != "bool" then
     error self.mOperatorLocation
-    :"the test expression type is '@" + [if_expression.mResultType definition].typeName.string + "', it should be '@bool'"
+    :"the test expression type is '@" + if_expression.mResultType.definition.typeName.string + "', it should be '@bool'"
     :outExpression
   elsif then_expression.mResultType != else_expression.mResultType then
     error self.mOperatorLocation
-    :"operand expression types are '@" + [then_expression.mResultType definition].typeName.string + "' and '@"+ [else_expression.mResultType definition].typeName.string + "': they should be the same"
+    :"operand expression types are '@" + then_expression.mResultType.definition.typeName.string + "' and '@" + else_expression.mResultType.definition.typeName.string + "': they should be the same"
     :outExpression
   else
   //--- Generate expression
@@ -207,10 +207,10 @@ override method @ifExpressionForGeneration generateExpression
     ?let ifExpression
   ]
 //--- Result variable
-  outCppExpression = "temp_" + [ioTemporaryVariableIndex string]
+  outCppExpression = "temp_" + ioTemporaryVariableIndex.string
   ioTemporaryVariableIndex += 1
-  ioGeneratedCode += "GGS_" + [self.mThenExpression.mResultType identifierRepresentation] + " " + outCppExpression + " ;\n"
-  let testVar = "test_" + [ioTemporaryVariableIndex string]
+  ioGeneratedCode += "GGS_" + self.mThenExpression.mResultType.identifierRepresentation + " " + outCppExpression + " ;\n"
+  let testVar = "test_" + ioTemporaryVariableIndex.string
   ioTemporaryVariableIndex += 1
   ioGeneratedCode += "const GalgasBool " + testVar + " = " + ifExpression + ".boolEnum () ;\n"
   ioGeneratedCode += "if (GalgasBool::boolTrue == " + testVar + ") {\n"

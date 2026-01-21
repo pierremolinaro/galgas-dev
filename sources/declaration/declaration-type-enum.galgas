@@ -79,7 +79,7 @@ syntax extension galgas3DeclarationsSyntax {
       <method_declaration_ggs3> !enumTypeName !?ioDeclarations
     end
     $}$
-    if [constantList count] == 0 then
+    if constantList.count == 0 then
       error enumTypeName : "an enumerated type must define at least one case constant"
     end
     ioDeclarations.mDeclarationList += !@enumDeclarationAST {
@@ -157,7 +157,7 @@ syntax extension galgas4DeclarationsSyntax {
       <method_declaration> !enumTypeName !?ioDeclarations
     end
     $}$
-    if [constantList count] == 0 then
+    if constantList.count == 0 then
       error enumTypeName : "an enumerated type must define at least one case constant"
     end
     ioDeclarations.mDeclarationList += !@enumDeclarationAST {
@@ -206,7 +206,7 @@ final class @enumDeclarationAST : @semanticDeclarationAST {
 
   override method addAssociatedElement ?!@galgasDeclarationAST ioDeclarations {
     for constant in self.mConstantList do
-      if [constant.associatedValueTypeList count] > 0 then
+      if constant.associatedValueTypeList.count > 0 then
         let associatedTypeName = @lstring (
           makeEmbeddedTypeName (!outer: self.enumTypeName !inner: constant.name),
           constant.name
@@ -309,7 +309,7 @@ final class @enumDeclarationAST : @semanticDeclarationAST {
         associatedTypeList += !associatedTypeEntry !associatedValue.valueName
         hasAssociatedValues = true
       end
-      [!?constantMap insertKey !constant.name ![constantMap count] !associatedTypeList]
+      [!?constantMap insertKey !constant.name !constantMap.count !associatedTypeList]
       [!?classFunctionMap insertOrReplace
         !constant.name
         !argumentTypeList
@@ -320,7 +320,7 @@ final class @enumDeclarationAST : @semanticDeclarationAST {
   //--- Methods
     var @instanceMethodMap instanceMethodMap = @()
     for constant in self.mConstantList do
-      if [constant.associatedValueTypeList count] > 0 then
+      if constant.associatedValueTypeList.count > 0 then
         var @unifiedTypeMapEntryList associatedTypeList = @()
         var @formalParameterSignature argumentTypeList = @()
         for associatedValue in constant.associatedValueTypeList do
@@ -343,7 +343,7 @@ final class @enumDeclarationAST : @semanticDeclarationAST {
   //--- getters
     commonGetterMapForAllTypes (!?ioTypeMap ?var @getterMap getterMap)
     for constant in self.mConstantList do
-      if [constant.associatedValueTypeList count] > 0 then
+      if constant.associatedValueTypeList.count > 0 then
         let associatedTypeName = makeEmbeddedTypeName (!outer: self.enumTypeName !inner: constant.name)
         let optionalTypeName = makeOptionalTypeName (!forTypeNamed: associatedTypeName)
         enterBaseGetterWithoutArgument (
@@ -454,7 +454,7 @@ final class @enumDeclarationAST : @semanticDeclarationAST {
     var @enumConstantListForGeneration enumConstantListForGeneration = @()
     var constantMap = @constantIndexMap ()
     for constant in self.mConstantList do
-      if [constant.associatedValueTypeList count] > 0 then
+      if constant.associatedValueTypeList.count > 0 then
         let associatedTypeName = makeEmbeddedTypeName (!outer: self.enumTypeName !inner: constant.name)
         let optionalTypeName = makeOptionalTypeName (!forTypeNamed: associatedTypeName)
         let associatedType = [ioTypeMap typeMapEntryForLKey !@(optionalTypeName, constant.name)]
@@ -476,20 +476,20 @@ final class @enumDeclarationAST : @semanticDeclarationAST {
         switch self.comparison
         case none :
         case equatable :
-          let associatedType = [associatedTypeEntry definition]
+          let associatedType = associatedTypeEntry.definition
           if (not [associatedType.features contains !.comparable])
             & not [associatedType.features contains !.equatable]
             & not [associatedType.features contains !.referenceEquatable] then
             error associatedValue.typeName : "the @" + associatedValue.typeName + " should be equatable"
           end
         case comparable :
-          let associatedType = [associatedTypeEntry definition]
+          let associatedType = associatedTypeEntry.definition
           if not [associatedType.features contains !.comparable] then
             error associatedValue.typeName : "the @" + associatedValue.typeName + " should be comparable"
           end
         end  
       end
-      [!?constantMap insertKey !constant.name ![constantMap count] !associatedTypeList]
+      [!?constantMap insertKey !constant.name !constantMap.count !associatedTypeList]
       enumConstantListForGeneration += !constant.name.string !associatedTypeList
     end
   //---
@@ -528,18 +528,18 @@ final class @enumTypeForGeneration : @semanticTypeForGeneration {
                                      !@string outHeader {
     var @bool hasAssociatedValues = false
     for constant in self.constantList while not hasAssociatedValues do
-      hasAssociatedValues = [constant.associatedValueTypeList count] > 0
+      hasAssociatedValues = constant.associatedValueTypeList.count > 0
     end
-    let selfTypeDefinition = [self.mSelfTypeEntry definition]
+    let selfTypeDefinition = self.mSelfTypeEntry.definition
     outHeader = [filewrapper enumGenerationTemplate.enumTypeHeader1
       !selfTypeDefinition.typeName.string
-      ![selfTypeDefinition.typeName.string identifierRepresentation]
+      !selfTypeDefinition.typeName.string.identifierRepresentation
       !self.constantList
       !hasAssociatedValues
     ]
     outHeader += [filewrapper typeGenerationTemplate.unifiedClassBodyForType
       !selfTypeDefinition.typeName.string
-      ![selfTypeDefinition.typeName.string identifierRepresentation]
+      !selfTypeDefinition.typeName.string.identifierRepresentation
       !selfTypeDefinition.isConcrete
       !selfTypeDefinition.initializerMap
       !selfTypeDefinition.classFunctionMap
@@ -566,13 +566,13 @@ final class @enumTypeForGeneration : @semanticTypeForGeneration {
     end
     var @bool hasAssociatedValues = false
     for constant in self.constantList while not hasAssociatedValues do
-      hasAssociatedValues = [constant.associatedValueTypeList count] > 0
+      hasAssociatedValues = constant.associatedValueTypeList.count > 0
     end
     [self.mSelfTypeEntry addHeaderFileName !?ioInclusionSet]
-    let selfTypeDefinition = [self.mSelfTypeEntry definition]
+    let selfTypeDefinition = self.mSelfTypeEntry.definition
     outImplementation = [filewrapper enumGenerationTemplate.enumTypeSpecificImplementation
       !selfTypeDefinition.typeName.string
-      ![selfTypeDefinition.typeName.string identifierRepresentation]
+      !selfTypeDefinition.typeName.string.identifierRepresentation
       !self.constantList
       !hasAssociatedValues
       ![selfTypeDefinition.features generateCppObjectComparison]

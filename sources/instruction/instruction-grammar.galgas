@@ -433,10 +433,10 @@ override method @grammarInFileInstructionAST analyzeSemanticInstruction
   if sourceExpression.mResultType != inAnalysisContext.predefinedTypes.mLStringType then
     error self.mEndOfSourceExpression
     :"this expression is the source file path and its type should be '@lstring', but it is '@"
-     + [sourceExpression.mResultType definition].typeName.string + "'"
+     + sourceExpression.mResultType.definition.typeName.string + "'"
   end
 //--- Check syntax directed translation result parameter
-  let syntaxDirectedTranslationResultVarName = "syntaxDirectedTranslationResult_" + [self.mGrammarComponentName.location startLocationIndex]
+  let syntaxDirectedTranslationResultVarName = "syntaxDirectedTranslationResult_" + self.mGrammarComponentName.location.startLocationIndex
   var assignementList = @stringlist ()
   [self.mAbstractGrammarInstructionSyntaxDirectedTranslationResult analyzeGrammarInstructionSDT
     !inAnalysisContext
@@ -510,7 +510,7 @@ override method @grammarInStringInstructionAST analyzeSemanticInstruction
   if sourceExpression.mResultType != inAnalysisContext.predefinedTypes.mStringType then
     error self.mEndOfSourceExpression
     :"this expression is the source string and its type should be '@string', but it is '@"
-     + [sourceExpression.mResultType definition].typeName.string + "'"
+     + sourceExpression.mResultType.definition.typeName.string + "'"
   end
 //--- Parse name expression
   [self.mNameExpression analyzeSemanticExpression
@@ -526,10 +526,10 @@ override method @grammarInStringInstructionAST analyzeSemanticInstruction
   if nameExpression.mResultType != inAnalysisContext.predefinedTypes.mStringType then
     error self.mEndOfNameExpression
     :"this expression is the name string and its type should be '@string', but it is '@"
-     + [sourceExpression.mResultType definition].typeName.string + "'"
+     + sourceExpression.mResultType.definition.typeName.string + "'"
   end
 //--- Check syntax directed translation result parameter
-  let syntaxDirectedTranslationResultVarName = "syntaxDirectedTranslationResult_" + [self.mGrammarComponentName.location startLocationIndex]
+  let syntaxDirectedTranslationResultVarName = "syntaxDirectedTranslationResult_" + self.mGrammarComponentName.location.startLocationIndex
   var assignementList = @stringlist ()
   [self.mAbstractGrammarInstructionSyntaxDirectedTranslationResult analyzeGrammarInstructionSDT
     !inAnalysisContext
@@ -608,8 +608,8 @@ override method @grammarInStringInstructionAST analyzeSemanticInstruction
     if self.mGrammarHasTranslateFeature then
       ioGeneratedCode += "String " + self.mSyntaxDirectedTranslationResultVarName + " ;\n"
     end
-    ioGeneratedCode += "cGrammar_" + [self.mGrammarName identifierRepresentation]
-                    +  "::_performSourceFileParsing_" + [self.mLabelName identifierRepresentation]
+    ioGeneratedCode += "cGrammar_" + self.mGrammarName.identifierRepresentation
+                    +  "::_performSourceFileParsing_" + self.mLabelName.identifierRepresentation
                     +  " ("
                     + compilerCppName () + ", "
                     + if self.mGrammarHasTranslateFeature then self.mSyntaxDirectedTranslationResultVarName + ", " else "" end
@@ -687,8 +687,8 @@ override method @grammarInStringInstructionAST analyzeSemanticInstruction
     if self.mGrammarHasTranslateFeature then
       ioGeneratedCode += "String " + self.mSyntaxDirectedTranslationResultVarName + " ;\n"
     end
-    ioGeneratedCode += "cGrammar_" + [self.mGrammarName identifierRepresentation]
-                    +  "::_performSourceStringParsing_" + [self.mLabelName identifierRepresentation]
+    ioGeneratedCode += "cGrammar_" + self.mGrammarName.identifierRepresentation
+                    +  "::_performSourceStringParsing_" + self.mLabelName.identifierRepresentation
                     +  " (" + compilerCppName () + ", "
                     + if self.mGrammarHasTranslateFeature then self.mSyntaxDirectedTranslationResultVarName + ", " else "" end
                     + sourceVar

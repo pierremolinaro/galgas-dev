@@ -163,7 +163,7 @@ syntax extension galgas3InstructionsSyntax {
         $!selector:$ ?selector
       or
         $!$
-        selector = ["" here]
+        selector = "".here
       end
       <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST expression
       outExpressionList += !selector !expression !@location.here
@@ -298,7 +298,7 @@ syntax extension galgas4InstructionsSyntax {
     or
       <actual_parameter_list_within_parenthesis> !?ioDeclarations ?let @actualParameterListAST actualParameterList
       if inHasSelfPrefix then
-        if [propertyList count] == 0 then
+        if propertyList.count == 0 then
           outInstruction = @methodCallInstructionAST {
             !instructionLocation
             !@selfInExpressionAST {!instructionLocation}
@@ -319,7 +319,7 @@ syntax extension galgas4InstructionsSyntax {
             !actualParameterList
           }
         end
-      elsif [propertyList count] == 0 then
+      elsif propertyList.count == 0 then
         outInstruction = @procCallInstructionAST {
           !receiverName.location
           !receiverName // Proc name
@@ -435,14 +435,11 @@ final class @opAssignExpressionInstructionAST : @semanticInstructionAST {
         if not [selfAvailable.selfMutability propertiesAreMutable] then
           error self.mInstructionLocation : "property not mutable in this context"
         end
-//        if not [selfAvailable.selfMutability selfIsMutable] then
-//          error self.mInstructionLocation : "'self' not mutable in this context"
-//        end
-        let propertyMap = [selfAvailable.type definition].propertyMap
+        let propertyMap = selfAvailable.type.definition.propertyMap
         [propertyMap searchKey !self.mReceiverName ?* ?let isConstant ?targetType]
         nameForCheckingFormalParameterUsing = inAnalysisContext.selfObjectCppName
         targetVariableCppName = inAnalysisContext.selfObjectCppPrefixForAccessingProperty
-          + "mProperty_"+ [self.mReceiverName.string identifierRepresentation]
+          + "mProperty_"+ self.mReceiverName.string.identifierRepresentation
         if isConstant then
           error self.mReceiverName : "a constant property cannot be modified"
         end
@@ -463,7 +460,7 @@ final class @opAssignExpressionInstructionAST : @semanticInstructionAST {
     end
   //--- Check target variable
     for (value) in self.mStructAttributeList do
-      let propertyMap = [targetType definition].propertyMap
+      let propertyMap = targetType.definition.propertyMap
       [propertyMap searchKey !value ?let accessControl ?let isConstant ?targetType]
       [accessControl checkSetAccess !inAnalysisContext.selfAvailability !value.location]
       if isConstant then
@@ -471,10 +468,10 @@ final class @opAssignExpressionInstructionAST : @semanticInstructionAST {
       end
     end
   //--- Check target variable type support 'X= exp' operator
-    if not [[targetType definition].features contains ![self.mOperator features]] then
+    if not [targetType.definition.features contains ![self.mOperator features]] then
       error self.mInstructionLocation
-      :"the target object has the '@" + [targetType definition].typeName.string
-      + "' type, but this type does not support the '" + [self.mOperator string] + "' operator"
+      :"the target object has the '@" + targetType.definition.typeName.string
+      + "' type, but this type does not support the '" + self.mOperator.string + "' operator"
     end
   //--- Analyze source expression
     [self.mExpression analyzeSemanticExpression
@@ -533,11 +530,11 @@ final class @plusEqualElementsInstructionAST : @semanticInstructionAST {
     let @string nameForCheckingFormalParameterUsing
     if self.mPrefixedBySelf then
       if let selfAvailable = [inAnalysisContext.selfAvailability getAvailable] then
-        let propertyMap = [selfAvailable.type definition].propertyMap
+        let propertyMap = selfAvailable.type.definition.propertyMap
         [propertyMap searchKey !self.mReceiverName ?* ?let isConstant ?targetType]
         nameForCheckingFormalParameterUsing = inAnalysisContext.selfObjectCppName
         targetVariableCppName = inAnalysisContext.selfObjectCppPrefixForAccessingProperty
-          + "mProperty_"+ [self.mReceiverName.string identifierRepresentation]
+          + "mProperty_"+ self.mReceiverName.string.identifierRepresentation
         if isConstant then
           error self.mReceiverName : "a constant property cannot be modified"
         end
@@ -558,7 +555,7 @@ final class @plusEqualElementsInstructionAST : @semanticInstructionAST {
     end
   //--- Check target variable
     for (value) in self.mStructAttributeList do
-      let propertyMap = [targetType definition].propertyMap
+      let propertyMap = targetType.definition.propertyMap
       [propertyMap searchKey !value ?let accessControl ?let isConstant ?targetType]
       [accessControl checkSetAccess !inAnalysisContext.selfAvailability !value]
        if isConstant then
@@ -566,17 +563,17 @@ final class @plusEqualElementsInstructionAST : @semanticInstructionAST {
       end
     end
   //--- Check target variable type support '+=' operator
-    let addAssignOperatorArguments= [targetType definition].addAssignOperatorArguments // Empty list if += operator is not supported
-    if [addAssignOperatorArguments count] == 0 then
+    let addAssignOperatorArguments= targetType.definition.addAssignOperatorArguments // Empty list if += operator is not supported
+    if addAssignOperatorArguments.count == 0 then
       error self.mInstructionLocation
-      :"the target object has the '@" + [targetType definition].typeName.string
+      :"the target object has the '@" + targetType.definition.typeName.string
       + "' type, but this type does not support the '+=' operator"
   //--- Analyze source expressions
-    elsif [self.mExpressions count] != [addAssignOperatorArguments count] then
+    elsif self.mExpressions.count != addAssignOperatorArguments.count then
       error self.mInstructionLocation
-      : "calling the '+=' operator on an '@" + [targetType definition].typeName.string + "' object requires "
-      + [[addAssignOperatorArguments count] string] + " parameter(s), while this invocation has "
-      + [[self.mExpressions count] string] + " parameter(s)"
+      : "calling the '+=' operator on an '@" + targetType.definition.typeName.string + "' object requires "
+      + addAssignOperatorArguments.count.string + " parameter(s), while this invocation has "
+      + self.mExpressions.count.string + " parameter(s)"
     else
       var @semanticExpressionListForGeneration effectiveParameterList = @()
       for (mActualSelector mExpression mEndOfExpressionLocation) in self.mExpressions, (mFormalSelector mFormalArgumentType 2*) in addAssignOperatorArguments do
@@ -642,11 +639,11 @@ final class @plusPlusEqualElementInstructionAST : @semanticInstructionAST {
     let @string nameForCheckingFormalParameterUsing
     if self.mPrefixedBySelf then
       if let selfAvailable = [inAnalysisContext.selfAvailability getAvailable] then
-        let propertyMap = [selfAvailable.type definition].propertyMap
+        let propertyMap = selfAvailable.type.definition.propertyMap
         [propertyMap searchKey !self.mReceiverName ?* ?let isConstant ?targetType]
         nameForCheckingFormalParameterUsing = inAnalysisContext.selfObjectCppName
         targetVariableCppName = inAnalysisContext.selfObjectCppPrefixForAccessingProperty
-          + "mProperty_"+ [self.mReceiverName.string identifierRepresentation]
+          + "mProperty_"+ self.mReceiverName.string.identifierRepresentation
         if isConstant then
           error self.mReceiverName : "a constant property cannot be modified"
         end
@@ -667,7 +664,7 @@ final class @plusPlusEqualElementInstructionAST : @semanticInstructionAST {
     end
   //--- Check target variable
     for (value) in self.mStructAttributeList do
-      let propertyMap = [targetType definition].propertyMap
+      let propertyMap = targetType.definition.propertyMap
       [propertyMap searchKey !value ?let accessControl ?let isConstant ?targetType]
       [accessControl checkSetAccess !inAnalysisContext.selfAvailability !value]
       if isConstant then
@@ -675,12 +672,12 @@ final class @plusPlusEqualElementInstructionAST : @semanticInstructionAST {
       end
     end
   //--- Check target variable type support '++=' operator
-    if not [targetType definition].supportCollectionValue then
+    if not targetType.definition.supportCollectionValue then
       error self.mInstructionLocation
-      :"the target object has the '@" + [targetType definition].typeName.string
+      :"the target object has the '@" + targetType.definition.typeName.string
       + "' type, but this type does not support the '++=' operator"
     end
-    let rightExpressionType = [targetType definition].typeForEnumeratedElement
+    let rightExpressionType = targetType.definition.typeForEnumeratedElement
   //--- Analyze source expression
     [self.mExpression analyzeSemanticExpression
       !usefulnessCallerEntityName: inUsefulnessCallerEntityName
@@ -750,7 +747,7 @@ final class @plusEqualnstructionForGeneration : @semanticInstructionForGeneratio
     [!?ioUnusedVariableCppNameSet removeKey !self.mNameForCheckingFormalParameterUsing]
     ioGeneratedCode += self.mReceiverCppName
     for (mValue) in self.mStructAttributeList do
-      ioGeneratedCode += ".mProperty_" + [mValue.string identifierRepresentation]
+      ioGeneratedCode += ".mProperty_" + mValue.string.identifierRepresentation
     end
   //--- Call add assign (+=) operator
     ioGeneratedCode += ".addAssignOperation ("
@@ -759,7 +756,7 @@ final class @plusEqualnstructionForGeneration : @semanticInstructionForGeneratio
       do ioGeneratedCode += mValue
       between ioGeneratedCode += ", "
     end
-    if [[self.mTargetType definition].features contains !.plusEqualOperatorWithFieldListNeedsCompilerArg] then
+    if [self.mTargetType.definition.features contains !.plusEqualOperatorWithFieldListNeedsCompilerArg] then
       ioGeneratedCode  += ", " + compilerCppName ()
       [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
     end
