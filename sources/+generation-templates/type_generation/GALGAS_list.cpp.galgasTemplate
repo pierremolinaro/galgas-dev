@@ -158,7 +158,7 @@ void GGS_%!TYPE_IDENTIFIER%::description (%?^%String & ioString,
 for (* mPropertyName 3*) in PROPERTY_LIST do
 %      ioString.appendNewLine () ;
       ioString.appendStringMultiple ("| ", inIndentation + 1) ;
-      ioString.appendString ("%![mPropertyName string]%:") ;
+      ioString.appendString ("%!mPropertyName.string%:") ;
       mArray (int32_t (i) COMMA_HERE).mProperty_%![mPropertyName identifierRepresentation]%.description (ioString, inIndentation + 1) ;
 %end
 %    }

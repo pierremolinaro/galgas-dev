@@ -279,7 +279,7 @@ final class @classDeclarationAST : @semanticDeclarationAST {
       if not [superTypeDefinition.typeKind isClassType] then
         error self.mSuperClassName : "the @" + self.mSuperClassName + " should be a class type"
       end
-      if [superTypeDefinition isFinal] then
+      if superTypeDefinition.isFinal then
         error self.mSuperClassName : "cannot inherit from the @" + self.mSuperClassName + " final class"
       end
     //--- Mark all setters as inherited

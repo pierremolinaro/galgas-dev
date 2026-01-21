@@ -304,7 +304,7 @@ final class @structDeclarationAST : @semanticDeclarationAST {
           error property.name : "the weak property type should be an optional class"
         case element (aWeakType) :
           if let aType = aWeakType, let ref = [[aType definition].typeKind getClassType] then
-            if not [ref isReference] then
+            if not ref.isReference then
               error property.name : "the weak property type should be an optional refclass"
             end
           else

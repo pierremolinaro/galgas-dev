@@ -492,7 +492,7 @@ static void GGS_%!TYPE_IDENTIFIER%_internalDescription (const GenericArray <Shar
 for (* mPropertyName 3*) in PROPERTY_LIST do
 %    ioString.appendNewLine () ;
     ioString.appendStringMultiple ("| ", inIndentation + 2) ;
-    ioString.appendString ("%![mPropertyName string]%:") ;
+    ioString.appendString ("%!mPropertyName.string%:") ;
     inArray (i COMMA_HERE)->mProperty_%![mPropertyName identifierRepresentation]%.description (ioString, inIndentation + 1) ;
 %end
 %  }
