@@ -69,18 +69,6 @@ override method @lexicalTagInstructionAST checkLexicalInstruction
 }
 
 //--------------------------------------------------------------------------------------------------
-//! COCOA GENERATION
-//--------------------------------------------------------------------------------------------------
-
-//override getter @lexicalTagInstructionAST generateObjcCocoaInstructionCode
-//  ?let @string unused inScannerClassName
-//  ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
-//  -> @string outGeneratedCode {
-//  outGeneratedCode = "scanningPointStructForCocoa locationForTag_" + self.mLexicalTagName + " ;\n"
-//  outGeneratedCode += "[self saveScanningPoint: & locationForTag_" + self.mLexicalTagName + "] ;\n"
-//}
-
-//--------------------------------------------------------------------------------------------------
 
 override getter @lexicalTagInstructionAST generateSwiftCocoaInstructionCode
   ?let @string unused inScannerClassName
@@ -97,8 +85,7 @@ override getter @lexicalTagInstructionAST lexicalInstructionUsesLoopLocalVariabl
   result = false
 }
 
-//·································································································
-
+//--------------------------------------------------------------------------------------------------
 override getter @lexicalTagInstructionAST generateLexicalInstructionCode
   ?let @string unused inScannerClassName
   ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext

@@ -8,7546 +8,6 @@
 #include "all-declarations-20.h"
 
 //--------------------------------------------------------------------------------------------------
-// @lexicalStringMatchAST reference class
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult GGS_lexicalStringMatchAST::objectCompare (const GGS_lexicalStringMatchAST & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    const size_t myObjectPtr = size_t (mObjectPtr) ;
-    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lexicalStringMatchAST::GGS_lexicalStringMatchAST (void) :
-GGS_lexicalExpressionAST () {
-}
-
-//--- Synthetized initializer ----------------------------------------------------------------------
-
-GGS_lexicalStringMatchAST GGS_lexicalStringMatchAST::
-init_21_ (const GGS_lstring & in_mString,
-          Compiler * inCompiler
-          COMMA_LOCATION_ARGS) {
-  cPtr_lexicalStringMatchAST * object = nullptr ;
-  macroMyNew (object, cPtr_lexicalStringMatchAST (inCompiler COMMA_THERE)) ;
-  object->lexicalStringMatchAST_init_21_ (in_mString, inCompiler) ;
-  const GGS_lexicalStringMatchAST result (object) ;
-  macroDetachSharedObject (object) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_lexicalStringMatchAST::
-lexicalStringMatchAST_init_21_ (const GGS_lstring & in_mString,
-                                Compiler * /* inCompiler */) {
-  mProperty_mString = in_mString ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lexicalStringMatchAST::GGS_lexicalStringMatchAST (const cPtr_lexicalStringMatchAST * inSourcePtr) :
-GGS_lexicalExpressionAST (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_lexicalStringMatchAST) ;
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_lstring GGS_lexicalStringMatchAST::readProperty_mString (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_lstring () ;
-  }else{
-    cPtr_lexicalStringMatchAST * p = (cPtr_lexicalStringMatchAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_lexicalStringMatchAST) ;
-    return p->mProperty_mString ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-//Pointer class for @lexicalStringMatchAST class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_lexicalStringMatchAST::cPtr_lexicalStringMatchAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_lexicalExpressionAST (inCompiler COMMA_THERE),
-mProperty_mString () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cPtr_lexicalStringMatchAST::cPtr_lexicalStringMatchAST (const GGS_lstring & in_mString,
-                                                        Compiler * inCompiler
-                                                        COMMA_LOCATION_ARGS) :
-cPtr_lexicalExpressionAST (inCompiler COMMA_THERE),
-mProperty_mString () {
-  mProperty_mString = in_mString ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * cPtr_lexicalStringMatchAST::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_lexicalStringMatchAST ;
-}
-
-void cPtr_lexicalStringMatchAST::description (String & ioString,
-                                              const int32_t inIndentation) const {
-  ioString.appendCString ("[@lexicalStringMatchAST:") ;
-  mProperty_mString.description (ioString, inIndentation+1) ;
-  ioString.appendCString ("]") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-acPtr_class * cPtr_lexicalStringMatchAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_lexicalStringMatchAST (mProperty_mString, inCompiler COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_lexicalStringMatchAST::printNonNullClassInstanceProperties (void) const {
-    cPtr_lexicalExpressionAST::printNonNullClassInstanceProperties () ;
-    mProperty_mString.printNonNullClassInstanceProperties ("mString") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-//     @lexicalStringMatchAST generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lexicalStringMatchAST ("lexicalStringMatchAST",
-                                                                          & kTypeDescriptor_GALGAS_lexicalExpressionAST) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_lexicalStringMatchAST::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_lexicalStringMatchAST ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_lexicalStringMatchAST::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_lexicalStringMatchAST (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lexicalStringMatchAST GGS_lexicalStringMatchAST::extractObject (const GGS_object & inObject,
-                                                                    Compiler * inCompiler
-                                                                    COMMA_LOCATION_ARGS) {
-  GGS_lexicalStringMatchAST result ;
-  const GGS_lexicalStringMatchAST * p = (const GGS_lexicalStringMatchAST *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_lexicalStringMatchAST *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("lexicalStringMatchAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-// @lexicalStringNotMatchAST reference class
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult GGS_lexicalStringNotMatchAST::objectCompare (const GGS_lexicalStringNotMatchAST & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    const size_t myObjectPtr = size_t (mObjectPtr) ;
-    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lexicalStringNotMatchAST::GGS_lexicalStringNotMatchAST (void) :
-GGS_lexicalExpressionAST () {
-}
-
-//--- Synthetized initializer ----------------------------------------------------------------------
-
-GGS_lexicalStringNotMatchAST GGS_lexicalStringNotMatchAST::
-init_21__21_ (const GGS_lstring & in_mString,
-              const GGS_lstring & in_mErrorMessage,
-              Compiler * inCompiler
-              COMMA_LOCATION_ARGS) {
-  cPtr_lexicalStringNotMatchAST * object = nullptr ;
-  macroMyNew (object, cPtr_lexicalStringNotMatchAST (inCompiler COMMA_THERE)) ;
-  object->lexicalStringNotMatchAST_init_21__21_ (in_mString, in_mErrorMessage, inCompiler) ;
-  const GGS_lexicalStringNotMatchAST result (object) ;
-  macroDetachSharedObject (object) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_lexicalStringNotMatchAST::
-lexicalStringNotMatchAST_init_21__21_ (const GGS_lstring & in_mString,
-                                       const GGS_lstring & in_mErrorMessage,
-                                       Compiler * /* inCompiler */) {
-  mProperty_mString = in_mString ;
-  mProperty_mErrorMessage = in_mErrorMessage ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lexicalStringNotMatchAST::GGS_lexicalStringNotMatchAST (const cPtr_lexicalStringNotMatchAST * inSourcePtr) :
-GGS_lexicalExpressionAST (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_lexicalStringNotMatchAST) ;
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_lstring GGS_lexicalStringNotMatchAST::readProperty_mString (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_lstring () ;
-  }else{
-    cPtr_lexicalStringNotMatchAST * p = (cPtr_lexicalStringNotMatchAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_lexicalStringNotMatchAST) ;
-    return p->mProperty_mString ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lstring GGS_lexicalStringNotMatchAST::readProperty_mErrorMessage (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_lstring () ;
-  }else{
-    cPtr_lexicalStringNotMatchAST * p = (cPtr_lexicalStringNotMatchAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_lexicalStringNotMatchAST) ;
-    return p->mProperty_mErrorMessage ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-//Pointer class for @lexicalStringNotMatchAST class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_lexicalStringNotMatchAST::cPtr_lexicalStringNotMatchAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_lexicalExpressionAST (inCompiler COMMA_THERE),
-mProperty_mString (),
-mProperty_mErrorMessage () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cPtr_lexicalStringNotMatchAST::cPtr_lexicalStringNotMatchAST (const GGS_lstring & in_mString,
-                                                              const GGS_lstring & in_mErrorMessage,
-                                                              Compiler * inCompiler
-                                                              COMMA_LOCATION_ARGS) :
-cPtr_lexicalExpressionAST (inCompiler COMMA_THERE),
-mProperty_mString (),
-mProperty_mErrorMessage () {
-  mProperty_mString = in_mString ;
-  mProperty_mErrorMessage = in_mErrorMessage ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * cPtr_lexicalStringNotMatchAST::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_lexicalStringNotMatchAST ;
-}
-
-void cPtr_lexicalStringNotMatchAST::description (String & ioString,
-                                                 const int32_t inIndentation) const {
-  ioString.appendCString ("[@lexicalStringNotMatchAST:") ;
-  mProperty_mString.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mErrorMessage.description (ioString, inIndentation+1) ;
-  ioString.appendCString ("]") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-acPtr_class * cPtr_lexicalStringNotMatchAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_lexicalStringNotMatchAST (mProperty_mString, mProperty_mErrorMessage, inCompiler COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_lexicalStringNotMatchAST::printNonNullClassInstanceProperties (void) const {
-    cPtr_lexicalExpressionAST::printNonNullClassInstanceProperties () ;
-    mProperty_mString.printNonNullClassInstanceProperties ("mString") ;
-    mProperty_mErrorMessage.printNonNullClassInstanceProperties ("mErrorMessage") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-//     @lexicalStringNotMatchAST generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lexicalStringNotMatchAST ("lexicalStringNotMatchAST",
-                                                                             & kTypeDescriptor_GALGAS_lexicalExpressionAST) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_lexicalStringNotMatchAST::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_lexicalStringNotMatchAST ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_lexicalStringNotMatchAST::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_lexicalStringNotMatchAST (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lexicalStringNotMatchAST GGS_lexicalStringNotMatchAST::extractObject (const GGS_object & inObject,
-                                                                          Compiler * inCompiler
-                                                                          COMMA_LOCATION_ARGS) {
-  GGS_lexicalStringNotMatchAST result ;
-  const GGS_lexicalStringNotMatchAST * p = (const GGS_lexicalStringNotMatchAST *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_lexicalStringNotMatchAST *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("lexicalStringNotMatchAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-// @lexicalSendTerminalByDefaultAST reference class
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult GGS_lexicalSendTerminalByDefaultAST::objectCompare (const GGS_lexicalSendTerminalByDefaultAST & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    const size_t myObjectPtr = size_t (mObjectPtr) ;
-    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lexicalSendTerminalByDefaultAST::GGS_lexicalSendTerminalByDefaultAST (void) :
-GGS_lexicalSendDefaultActionAST () {
-}
-
-//--- Synthetized initializer ----------------------------------------------------------------------
-
-GGS_lexicalSendTerminalByDefaultAST GGS_lexicalSendTerminalByDefaultAST::
-init_21_ (const GGS_lstring & in_mDefaultSentTerminal,
-          Compiler * inCompiler
-          COMMA_LOCATION_ARGS) {
-  cPtr_lexicalSendTerminalByDefaultAST * object = nullptr ;
-  macroMyNew (object, cPtr_lexicalSendTerminalByDefaultAST (inCompiler COMMA_THERE)) ;
-  object->lexicalSendTerminalByDefaultAST_init_21_ (in_mDefaultSentTerminal, inCompiler) ;
-  const GGS_lexicalSendTerminalByDefaultAST result (object) ;
-  macroDetachSharedObject (object) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_lexicalSendTerminalByDefaultAST::
-lexicalSendTerminalByDefaultAST_init_21_ (const GGS_lstring & in_mDefaultSentTerminal,
-                                          Compiler * /* inCompiler */) {
-  mProperty_mDefaultSentTerminal = in_mDefaultSentTerminal ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lexicalSendTerminalByDefaultAST::GGS_lexicalSendTerminalByDefaultAST (const cPtr_lexicalSendTerminalByDefaultAST * inSourcePtr) :
-GGS_lexicalSendDefaultActionAST (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_lexicalSendTerminalByDefaultAST) ;
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_lstring GGS_lexicalSendTerminalByDefaultAST::readProperty_mDefaultSentTerminal (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_lstring () ;
-  }else{
-    cPtr_lexicalSendTerminalByDefaultAST * p = (cPtr_lexicalSendTerminalByDefaultAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_lexicalSendTerminalByDefaultAST) ;
-    return p->mProperty_mDefaultSentTerminal ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-//Pointer class for @lexicalSendTerminalByDefaultAST class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_lexicalSendTerminalByDefaultAST::cPtr_lexicalSendTerminalByDefaultAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_lexicalSendDefaultActionAST (inCompiler COMMA_THERE),
-mProperty_mDefaultSentTerminal () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cPtr_lexicalSendTerminalByDefaultAST::cPtr_lexicalSendTerminalByDefaultAST (const GGS_lstring & in_mDefaultSentTerminal,
-                                                                            Compiler * inCompiler
-                                                                            COMMA_LOCATION_ARGS) :
-cPtr_lexicalSendDefaultActionAST (inCompiler COMMA_THERE),
-mProperty_mDefaultSentTerminal () {
-  mProperty_mDefaultSentTerminal = in_mDefaultSentTerminal ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * cPtr_lexicalSendTerminalByDefaultAST::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_lexicalSendTerminalByDefaultAST ;
-}
-
-void cPtr_lexicalSendTerminalByDefaultAST::description (String & ioString,
-                                                        const int32_t inIndentation) const {
-  ioString.appendCString ("[@lexicalSendTerminalByDefaultAST:") ;
-  mProperty_mDefaultSentTerminal.description (ioString, inIndentation+1) ;
-  ioString.appendCString ("]") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-acPtr_class * cPtr_lexicalSendTerminalByDefaultAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_lexicalSendTerminalByDefaultAST (mProperty_mDefaultSentTerminal, inCompiler COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_lexicalSendTerminalByDefaultAST::printNonNullClassInstanceProperties (void) const {
-    cPtr_lexicalSendDefaultActionAST::printNonNullClassInstanceProperties () ;
-    mProperty_mDefaultSentTerminal.printNonNullClassInstanceProperties ("mDefaultSentTerminal") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-//     @lexicalSendTerminalByDefaultAST generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lexicalSendTerminalByDefaultAST ("lexicalSendTerminalByDefaultAST",
-                                                                                    & kTypeDescriptor_GALGAS_lexicalSendDefaultActionAST) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_lexicalSendTerminalByDefaultAST::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_lexicalSendTerminalByDefaultAST ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_lexicalSendTerminalByDefaultAST::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_lexicalSendTerminalByDefaultAST (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lexicalSendTerminalByDefaultAST GGS_lexicalSendTerminalByDefaultAST::extractObject (const GGS_object & inObject,
-                                                                                        Compiler * inCompiler
-                                                                                        COMMA_LOCATION_ARGS) {
-  GGS_lexicalSendTerminalByDefaultAST result ;
-  const GGS_lexicalSendTerminalByDefaultAST * p = (const GGS_lexicalSendTerminalByDefaultAST *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_lexicalSendTerminalByDefaultAST *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("lexicalSendTerminalByDefaultAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-// @lexicalErrorByDefaultAST reference class
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult GGS_lexicalErrorByDefaultAST::objectCompare (const GGS_lexicalErrorByDefaultAST & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    const size_t myObjectPtr = size_t (mObjectPtr) ;
-    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lexicalErrorByDefaultAST::GGS_lexicalErrorByDefaultAST (void) :
-GGS_lexicalSendDefaultActionAST () {
-}
-
-//--- Synthetized initializer ----------------------------------------------------------------------
-
-GGS_lexicalErrorByDefaultAST GGS_lexicalErrorByDefaultAST::
-init_21_ (const GGS_lstring & in_mDefaultErrorMessageName,
-          Compiler * inCompiler
-          COMMA_LOCATION_ARGS) {
-  cPtr_lexicalErrorByDefaultAST * object = nullptr ;
-  macroMyNew (object, cPtr_lexicalErrorByDefaultAST (inCompiler COMMA_THERE)) ;
-  object->lexicalErrorByDefaultAST_init_21_ (in_mDefaultErrorMessageName, inCompiler) ;
-  const GGS_lexicalErrorByDefaultAST result (object) ;
-  macroDetachSharedObject (object) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_lexicalErrorByDefaultAST::
-lexicalErrorByDefaultAST_init_21_ (const GGS_lstring & in_mDefaultErrorMessageName,
-                                   Compiler * /* inCompiler */) {
-  mProperty_mDefaultErrorMessageName = in_mDefaultErrorMessageName ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lexicalErrorByDefaultAST::GGS_lexicalErrorByDefaultAST (const cPtr_lexicalErrorByDefaultAST * inSourcePtr) :
-GGS_lexicalSendDefaultActionAST (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_lexicalErrorByDefaultAST) ;
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_lstring GGS_lexicalErrorByDefaultAST::readProperty_mDefaultErrorMessageName (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_lstring () ;
-  }else{
-    cPtr_lexicalErrorByDefaultAST * p = (cPtr_lexicalErrorByDefaultAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_lexicalErrorByDefaultAST) ;
-    return p->mProperty_mDefaultErrorMessageName ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-//Pointer class for @lexicalErrorByDefaultAST class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_lexicalErrorByDefaultAST::cPtr_lexicalErrorByDefaultAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_lexicalSendDefaultActionAST (inCompiler COMMA_THERE),
-mProperty_mDefaultErrorMessageName () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cPtr_lexicalErrorByDefaultAST::cPtr_lexicalErrorByDefaultAST (const GGS_lstring & in_mDefaultErrorMessageName,
-                                                              Compiler * inCompiler
-                                                              COMMA_LOCATION_ARGS) :
-cPtr_lexicalSendDefaultActionAST (inCompiler COMMA_THERE),
-mProperty_mDefaultErrorMessageName () {
-  mProperty_mDefaultErrorMessageName = in_mDefaultErrorMessageName ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * cPtr_lexicalErrorByDefaultAST::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_lexicalErrorByDefaultAST ;
-}
-
-void cPtr_lexicalErrorByDefaultAST::description (String & ioString,
-                                                 const int32_t inIndentation) const {
-  ioString.appendCString ("[@lexicalErrorByDefaultAST:") ;
-  mProperty_mDefaultErrorMessageName.description (ioString, inIndentation+1) ;
-  ioString.appendCString ("]") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-acPtr_class * cPtr_lexicalErrorByDefaultAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_lexicalErrorByDefaultAST (mProperty_mDefaultErrorMessageName, inCompiler COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_lexicalErrorByDefaultAST::printNonNullClassInstanceProperties (void) const {
-    cPtr_lexicalSendDefaultActionAST::printNonNullClassInstanceProperties () ;
-    mProperty_mDefaultErrorMessageName.printNonNullClassInstanceProperties ("mDefaultErrorMessageName") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-//     @lexicalErrorByDefaultAST generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lexicalErrorByDefaultAST ("lexicalErrorByDefaultAST",
-                                                                             & kTypeDescriptor_GALGAS_lexicalSendDefaultActionAST) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_lexicalErrorByDefaultAST::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_lexicalErrorByDefaultAST ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_lexicalErrorByDefaultAST::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_lexicalErrorByDefaultAST (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lexicalErrorByDefaultAST GGS_lexicalErrorByDefaultAST::extractObject (const GGS_object & inObject,
-                                                                          Compiler * inCompiler
-                                                                          COMMA_LOCATION_ARGS) {
-  GGS_lexicalErrorByDefaultAST result ;
-  const GGS_lexicalErrorByDefaultAST * p = (const GGS_lexicalErrorByDefaultAST *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_lexicalErrorByDefaultAST *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("lexicalErrorByDefaultAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-// @lexicalAttributeInputArgumentAST reference class
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult GGS_lexicalAttributeInputArgumentAST::objectCompare (const GGS_lexicalAttributeInputArgumentAST & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    const size_t myObjectPtr = size_t (mObjectPtr) ;
-    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lexicalAttributeInputArgumentAST::GGS_lexicalAttributeInputArgumentAST (void) :
-GGS_lexicalRoutineOrFunctionFormalInputArgumentAST () {
-}
-
-//--- Synthetized initializer ----------------------------------------------------------------------
-
-GGS_lexicalAttributeInputArgumentAST GGS_lexicalAttributeInputArgumentAST::
-init_21_ (const GGS_lstring & in_mAttributeName,
-          Compiler * inCompiler
-          COMMA_LOCATION_ARGS) {
-  cPtr_lexicalAttributeInputArgumentAST * object = nullptr ;
-  macroMyNew (object, cPtr_lexicalAttributeInputArgumentAST (inCompiler COMMA_THERE)) ;
-  object->lexicalAttributeInputArgumentAST_init_21_ (in_mAttributeName, inCompiler) ;
-  const GGS_lexicalAttributeInputArgumentAST result (object) ;
-  macroDetachSharedObject (object) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_lexicalAttributeInputArgumentAST::
-lexicalAttributeInputArgumentAST_init_21_ (const GGS_lstring & in_mAttributeName,
-                                           Compiler * /* inCompiler */) {
-  mProperty_mAttributeName = in_mAttributeName ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lexicalAttributeInputArgumentAST::GGS_lexicalAttributeInputArgumentAST (const cPtr_lexicalAttributeInputArgumentAST * inSourcePtr) :
-GGS_lexicalRoutineOrFunctionFormalInputArgumentAST (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_lexicalAttributeInputArgumentAST) ;
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_lstring GGS_lexicalAttributeInputArgumentAST::readProperty_mAttributeName (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_lstring () ;
-  }else{
-    cPtr_lexicalAttributeInputArgumentAST * p = (cPtr_lexicalAttributeInputArgumentAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_lexicalAttributeInputArgumentAST) ;
-    return p->mProperty_mAttributeName ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-//Pointer class for @lexicalAttributeInputArgumentAST class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_lexicalAttributeInputArgumentAST::cPtr_lexicalAttributeInputArgumentAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST (inCompiler COMMA_THERE),
-mProperty_mAttributeName () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cPtr_lexicalAttributeInputArgumentAST::cPtr_lexicalAttributeInputArgumentAST (const GGS_lstring & in_mAttributeName,
-                                                                              Compiler * inCompiler
-                                                                              COMMA_LOCATION_ARGS) :
-cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST (inCompiler COMMA_THERE),
-mProperty_mAttributeName () {
-  mProperty_mAttributeName = in_mAttributeName ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * cPtr_lexicalAttributeInputArgumentAST::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_lexicalAttributeInputArgumentAST ;
-}
-
-void cPtr_lexicalAttributeInputArgumentAST::description (String & ioString,
-                                                         const int32_t inIndentation) const {
-  ioString.appendCString ("[@lexicalAttributeInputArgumentAST:") ;
-  mProperty_mAttributeName.description (ioString, inIndentation+1) ;
-  ioString.appendCString ("]") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-acPtr_class * cPtr_lexicalAttributeInputArgumentAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_lexicalAttributeInputArgumentAST (mProperty_mAttributeName, inCompiler COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_lexicalAttributeInputArgumentAST::printNonNullClassInstanceProperties (void) const {
-    cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST::printNonNullClassInstanceProperties () ;
-    mProperty_mAttributeName.printNonNullClassInstanceProperties ("mAttributeName") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-//     @lexicalAttributeInputArgumentAST generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lexicalAttributeInputArgumentAST ("lexicalAttributeInputArgumentAST",
-                                                                                     & kTypeDescriptor_GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_lexicalAttributeInputArgumentAST::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_lexicalAttributeInputArgumentAST ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_lexicalAttributeInputArgumentAST::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_lexicalAttributeInputArgumentAST (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lexicalAttributeInputArgumentAST GGS_lexicalAttributeInputArgumentAST::extractObject (const GGS_object & inObject,
-                                                                                          Compiler * inCompiler
-                                                                                          COMMA_LOCATION_ARGS) {
-  GGS_lexicalAttributeInputArgumentAST result ;
-  const GGS_lexicalAttributeInputArgumentAST * p = (const GGS_lexicalAttributeInputArgumentAST *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_lexicalAttributeInputArgumentAST *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("lexicalAttributeInputArgumentAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-// @lexicalUnsignedInputArgumentAST reference class
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult GGS_lexicalUnsignedInputArgumentAST::objectCompare (const GGS_lexicalUnsignedInputArgumentAST & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    const size_t myObjectPtr = size_t (mObjectPtr) ;
-    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lexicalUnsignedInputArgumentAST::GGS_lexicalUnsignedInputArgumentAST (void) :
-GGS_lexicalRoutineOrFunctionFormalInputArgumentAST () {
-}
-
-//--- Synthetized initializer ----------------------------------------------------------------------
-
-GGS_lexicalUnsignedInputArgumentAST GGS_lexicalUnsignedInputArgumentAST::
-init_21_ (const GGS_lbigint & in_mUnsigned,
-          Compiler * inCompiler
-          COMMA_LOCATION_ARGS) {
-  cPtr_lexicalUnsignedInputArgumentAST * object = nullptr ;
-  macroMyNew (object, cPtr_lexicalUnsignedInputArgumentAST (inCompiler COMMA_THERE)) ;
-  object->lexicalUnsignedInputArgumentAST_init_21_ (in_mUnsigned, inCompiler) ;
-  const GGS_lexicalUnsignedInputArgumentAST result (object) ;
-  macroDetachSharedObject (object) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_lexicalUnsignedInputArgumentAST::
-lexicalUnsignedInputArgumentAST_init_21_ (const GGS_lbigint & in_mUnsigned,
-                                          Compiler * /* inCompiler */) {
-  mProperty_mUnsigned = in_mUnsigned ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lexicalUnsignedInputArgumentAST::GGS_lexicalUnsignedInputArgumentAST (const cPtr_lexicalUnsignedInputArgumentAST * inSourcePtr) :
-GGS_lexicalRoutineOrFunctionFormalInputArgumentAST (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_lexicalUnsignedInputArgumentAST) ;
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_lbigint GGS_lexicalUnsignedInputArgumentAST::readProperty_mUnsigned (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_lbigint () ;
-  }else{
-    cPtr_lexicalUnsignedInputArgumentAST * p = (cPtr_lexicalUnsignedInputArgumentAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_lexicalUnsignedInputArgumentAST) ;
-    return p->mProperty_mUnsigned ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-//Pointer class for @lexicalUnsignedInputArgumentAST class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_lexicalUnsignedInputArgumentAST::cPtr_lexicalUnsignedInputArgumentAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST (inCompiler COMMA_THERE),
-mProperty_mUnsigned () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cPtr_lexicalUnsignedInputArgumentAST::cPtr_lexicalUnsignedInputArgumentAST (const GGS_lbigint & in_mUnsigned,
-                                                                            Compiler * inCompiler
-                                                                            COMMA_LOCATION_ARGS) :
-cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST (inCompiler COMMA_THERE),
-mProperty_mUnsigned () {
-  mProperty_mUnsigned = in_mUnsigned ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * cPtr_lexicalUnsignedInputArgumentAST::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_lexicalUnsignedInputArgumentAST ;
-}
-
-void cPtr_lexicalUnsignedInputArgumentAST::description (String & ioString,
-                                                        const int32_t inIndentation) const {
-  ioString.appendCString ("[@lexicalUnsignedInputArgumentAST:") ;
-  mProperty_mUnsigned.description (ioString, inIndentation+1) ;
-  ioString.appendCString ("]") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-acPtr_class * cPtr_lexicalUnsignedInputArgumentAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_lexicalUnsignedInputArgumentAST (mProperty_mUnsigned, inCompiler COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_lexicalUnsignedInputArgumentAST::printNonNullClassInstanceProperties (void) const {
-    cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST::printNonNullClassInstanceProperties () ;
-    mProperty_mUnsigned.printNonNullClassInstanceProperties ("mUnsigned") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-//     @lexicalUnsignedInputArgumentAST generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lexicalUnsignedInputArgumentAST ("lexicalUnsignedInputArgumentAST",
-                                                                                    & kTypeDescriptor_GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_lexicalUnsignedInputArgumentAST::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_lexicalUnsignedInputArgumentAST ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_lexicalUnsignedInputArgumentAST::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_lexicalUnsignedInputArgumentAST (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lexicalUnsignedInputArgumentAST GGS_lexicalUnsignedInputArgumentAST::extractObject (const GGS_object & inObject,
-                                                                                        Compiler * inCompiler
-                                                                                        COMMA_LOCATION_ARGS) {
-  GGS_lexicalUnsignedInputArgumentAST result ;
-  const GGS_lexicalUnsignedInputArgumentAST * p = (const GGS_lexicalUnsignedInputArgumentAST *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_lexicalUnsignedInputArgumentAST *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("lexicalUnsignedInputArgumentAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-// @lexicalFunctionInputArgumentAST reference class
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult GGS_lexicalFunctionInputArgumentAST::objectCompare (const GGS_lexicalFunctionInputArgumentAST & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    const size_t myObjectPtr = size_t (mObjectPtr) ;
-    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lexicalFunctionInputArgumentAST::GGS_lexicalFunctionInputArgumentAST (void) :
-GGS_lexicalRoutineOrFunctionFormalInputArgumentAST () {
-}
-
-//--- Synthetized initializer ----------------------------------------------------------------------
-
-GGS_lexicalFunctionInputArgumentAST GGS_lexicalFunctionInputArgumentAST::
-init_21__21_ (const GGS_lstring & in_mFunctionName,
-              const GGS_lexicalFunctionCallActualArgumentListAST & in_mFunctionActualArgumentList,
-              Compiler * inCompiler
-              COMMA_LOCATION_ARGS) {
-  cPtr_lexicalFunctionInputArgumentAST * object = nullptr ;
-  macroMyNew (object, cPtr_lexicalFunctionInputArgumentAST (inCompiler COMMA_THERE)) ;
-  object->lexicalFunctionInputArgumentAST_init_21__21_ (in_mFunctionName, in_mFunctionActualArgumentList, inCompiler) ;
-  const GGS_lexicalFunctionInputArgumentAST result (object) ;
-  macroDetachSharedObject (object) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_lexicalFunctionInputArgumentAST::
-lexicalFunctionInputArgumentAST_init_21__21_ (const GGS_lstring & in_mFunctionName,
-                                              const GGS_lexicalFunctionCallActualArgumentListAST & in_mFunctionActualArgumentList,
-                                              Compiler * /* inCompiler */) {
-  mProperty_mFunctionName = in_mFunctionName ;
-  mProperty_mFunctionActualArgumentList = in_mFunctionActualArgumentList ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lexicalFunctionInputArgumentAST::GGS_lexicalFunctionInputArgumentAST (const cPtr_lexicalFunctionInputArgumentAST * inSourcePtr) :
-GGS_lexicalRoutineOrFunctionFormalInputArgumentAST (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_lexicalFunctionInputArgumentAST) ;
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_lstring GGS_lexicalFunctionInputArgumentAST::readProperty_mFunctionName (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_lstring () ;
-  }else{
-    cPtr_lexicalFunctionInputArgumentAST * p = (cPtr_lexicalFunctionInputArgumentAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_lexicalFunctionInputArgumentAST) ;
-    return p->mProperty_mFunctionName ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lexicalFunctionCallActualArgumentListAST GGS_lexicalFunctionInputArgumentAST::readProperty_mFunctionActualArgumentList (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_lexicalFunctionCallActualArgumentListAST () ;
-  }else{
-    cPtr_lexicalFunctionInputArgumentAST * p = (cPtr_lexicalFunctionInputArgumentAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_lexicalFunctionInputArgumentAST) ;
-    return p->mProperty_mFunctionActualArgumentList ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-//Pointer class for @lexicalFunctionInputArgumentAST class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_lexicalFunctionInputArgumentAST::cPtr_lexicalFunctionInputArgumentAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST (inCompiler COMMA_THERE),
-mProperty_mFunctionName (),
-mProperty_mFunctionActualArgumentList () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cPtr_lexicalFunctionInputArgumentAST::cPtr_lexicalFunctionInputArgumentAST (const GGS_lstring & in_mFunctionName,
-                                                                            const GGS_lexicalFunctionCallActualArgumentListAST & in_mFunctionActualArgumentList,
-                                                                            Compiler * inCompiler
-                                                                            COMMA_LOCATION_ARGS) :
-cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST (inCompiler COMMA_THERE),
-mProperty_mFunctionName (),
-mProperty_mFunctionActualArgumentList () {
-  mProperty_mFunctionName = in_mFunctionName ;
-  mProperty_mFunctionActualArgumentList = in_mFunctionActualArgumentList ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * cPtr_lexicalFunctionInputArgumentAST::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_lexicalFunctionInputArgumentAST ;
-}
-
-void cPtr_lexicalFunctionInputArgumentAST::description (String & ioString,
-                                                        const int32_t inIndentation) const {
-  ioString.appendCString ("[@lexicalFunctionInputArgumentAST:") ;
-  mProperty_mFunctionName.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mFunctionActualArgumentList.description (ioString, inIndentation+1) ;
-  ioString.appendCString ("]") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-acPtr_class * cPtr_lexicalFunctionInputArgumentAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_lexicalFunctionInputArgumentAST (mProperty_mFunctionName, mProperty_mFunctionActualArgumentList, inCompiler COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_lexicalFunctionInputArgumentAST::printNonNullClassInstanceProperties (void) const {
-    cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST::printNonNullClassInstanceProperties () ;
-    mProperty_mFunctionName.printNonNullClassInstanceProperties ("mFunctionName") ;
-    mProperty_mFunctionActualArgumentList.printNonNullClassInstanceProperties ("mFunctionActualArgumentList") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-//     @lexicalFunctionInputArgumentAST generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lexicalFunctionInputArgumentAST ("lexicalFunctionInputArgumentAST",
-                                                                                    & kTypeDescriptor_GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_lexicalFunctionInputArgumentAST::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_lexicalFunctionInputArgumentAST ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_lexicalFunctionInputArgumentAST::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_lexicalFunctionInputArgumentAST (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lexicalFunctionInputArgumentAST GGS_lexicalFunctionInputArgumentAST::extractObject (const GGS_object & inObject,
-                                                                                        Compiler * inCompiler
-                                                                                        COMMA_LOCATION_ARGS) {
-  GGS_lexicalFunctionInputArgumentAST result ;
-  const GGS_lexicalFunctionInputArgumentAST * p = (const GGS_lexicalFunctionInputArgumentAST *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_lexicalFunctionInputArgumentAST *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("lexicalFunctionInputArgumentAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-// @lexiqueComponentAST reference class
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult GGS_lexiqueComponentAST::objectCompare (const GGS_lexiqueComponentAST & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    const size_t myObjectPtr = size_t (mObjectPtr) ;
-    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lexiqueComponentAST::GGS_lexiqueComponentAST (void) :
-GGS_semanticDeclarationAST () {
-}
-
-//--- Synthetized initializer ----------------------------------------------------------------------
-
-GGS_lexiqueComponentAST GGS_lexiqueComponentAST::
-init_21_isPredefined_21__21__21__21__21__21__21__21__21__21__21_ (const GGS_bool & in_isPredefined,
-                                                                  const GGS_lstring & in_mLexiqueComponentName,
-                                                                  const GGS_bool & in_mIsTemplate,
-                                                                  const GGS_templateDelimitorListAST & in_mTemplateDelimitorListAST,
-                                                                  const GGS_templateReplacementListAST & in_mTemplateReplacementListAST,
-                                                                  const GGS_lexicalAttributeListAST & in_mLexicalAttributeListAST,
-                                                                  const GGS_lexicalStyleListAST & in_mLexicalStyleListAST,
-                                                                  const GGS_terminalDeclarationListAST & in_mTerminalDeclarationListAST,
-                                                                  const GGS_lexicalMessageDeclarationListAST & in_mLexicalMessageDeclarationListAST,
-                                                                  const GGS_lexicalListDeclarationListAST & in_mLexicalListDeclarationListAST,
-                                                                  const GGS_lexicalRuleListAST & in_mLexicalRuleListAST,
-                                                                  const GGS_indexingListAST & in_mIndexingListAST,
-                                                                  Compiler * inCompiler
-                                                                  COMMA_LOCATION_ARGS) {
-  cPtr_lexiqueComponentAST * object = nullptr ;
-  macroMyNew (object, cPtr_lexiqueComponentAST (inCompiler COMMA_THERE)) ;
-  object->lexiqueComponentAST_init_21_isPredefined_21__21__21__21__21__21__21__21__21__21__21_ (in_isPredefined, in_mLexiqueComponentName, in_mIsTemplate, in_mTemplateDelimitorListAST, in_mTemplateReplacementListAST, in_mLexicalAttributeListAST, in_mLexicalStyleListAST, in_mTerminalDeclarationListAST, in_mLexicalMessageDeclarationListAST, in_mLexicalListDeclarationListAST, in_mLexicalRuleListAST, in_mIndexingListAST, inCompiler) ;
-  const GGS_lexiqueComponentAST result (object) ;
-  macroDetachSharedObject (object) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_lexiqueComponentAST::
-lexiqueComponentAST_init_21_isPredefined_21__21__21__21__21__21__21__21__21__21__21_ (const GGS_bool & in_isPredefined,
-                                                                                      const GGS_lstring & in_mLexiqueComponentName,
-                                                                                      const GGS_bool & in_mIsTemplate,
-                                                                                      const GGS_templateDelimitorListAST & in_mTemplateDelimitorListAST,
-                                                                                      const GGS_templateReplacementListAST & in_mTemplateReplacementListAST,
-                                                                                      const GGS_lexicalAttributeListAST & in_mLexicalAttributeListAST,
-                                                                                      const GGS_lexicalStyleListAST & in_mLexicalStyleListAST,
-                                                                                      const GGS_terminalDeclarationListAST & in_mTerminalDeclarationListAST,
-                                                                                      const GGS_lexicalMessageDeclarationListAST & in_mLexicalMessageDeclarationListAST,
-                                                                                      const GGS_lexicalListDeclarationListAST & in_mLexicalListDeclarationListAST,
-                                                                                      const GGS_lexicalRuleListAST & in_mLexicalRuleListAST,
-                                                                                      const GGS_indexingListAST & in_mIndexingListAST,
-                                                                                      Compiler * /* inCompiler */) {
-  mProperty_isPredefined = in_isPredefined ;
-  mProperty_mLexiqueComponentName = in_mLexiqueComponentName ;
-  mProperty_mIsTemplate = in_mIsTemplate ;
-  mProperty_mTemplateDelimitorListAST = in_mTemplateDelimitorListAST ;
-  mProperty_mTemplateReplacementListAST = in_mTemplateReplacementListAST ;
-  mProperty_mLexicalAttributeListAST = in_mLexicalAttributeListAST ;
-  mProperty_mLexicalStyleListAST = in_mLexicalStyleListAST ;
-  mProperty_mTerminalDeclarationListAST = in_mTerminalDeclarationListAST ;
-  mProperty_mLexicalMessageDeclarationListAST = in_mLexicalMessageDeclarationListAST ;
-  mProperty_mLexicalListDeclarationListAST = in_mLexicalListDeclarationListAST ;
-  mProperty_mLexicalRuleListAST = in_mLexicalRuleListAST ;
-  mProperty_mIndexingListAST = in_mIndexingListAST ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lexiqueComponentAST::GGS_lexiqueComponentAST (const cPtr_lexiqueComponentAST * inSourcePtr) :
-GGS_semanticDeclarationAST (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_lexiqueComponentAST) ;
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_lstring GGS_lexiqueComponentAST::readProperty_mLexiqueComponentName (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_lstring () ;
-  }else{
-    cPtr_lexiqueComponentAST * p = (cPtr_lexiqueComponentAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_lexiqueComponentAST) ;
-    return p->mProperty_mLexiqueComponentName ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_bool GGS_lexiqueComponentAST::readProperty_mIsTemplate (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_bool () ;
-  }else{
-    cPtr_lexiqueComponentAST * p = (cPtr_lexiqueComponentAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_lexiqueComponentAST) ;
-    return p->mProperty_mIsTemplate ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_templateDelimitorListAST GGS_lexiqueComponentAST::readProperty_mTemplateDelimitorListAST (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_templateDelimitorListAST () ;
-  }else{
-    cPtr_lexiqueComponentAST * p = (cPtr_lexiqueComponentAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_lexiqueComponentAST) ;
-    return p->mProperty_mTemplateDelimitorListAST ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_templateReplacementListAST GGS_lexiqueComponentAST::readProperty_mTemplateReplacementListAST (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_templateReplacementListAST () ;
-  }else{
-    cPtr_lexiqueComponentAST * p = (cPtr_lexiqueComponentAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_lexiqueComponentAST) ;
-    return p->mProperty_mTemplateReplacementListAST ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lexicalAttributeListAST GGS_lexiqueComponentAST::readProperty_mLexicalAttributeListAST (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_lexicalAttributeListAST () ;
-  }else{
-    cPtr_lexiqueComponentAST * p = (cPtr_lexiqueComponentAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_lexiqueComponentAST) ;
-    return p->mProperty_mLexicalAttributeListAST ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lexicalStyleListAST GGS_lexiqueComponentAST::readProperty_mLexicalStyleListAST (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_lexicalStyleListAST () ;
-  }else{
-    cPtr_lexiqueComponentAST * p = (cPtr_lexiqueComponentAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_lexiqueComponentAST) ;
-    return p->mProperty_mLexicalStyleListAST ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_terminalDeclarationListAST GGS_lexiqueComponentAST::readProperty_mTerminalDeclarationListAST (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_terminalDeclarationListAST () ;
-  }else{
-    cPtr_lexiqueComponentAST * p = (cPtr_lexiqueComponentAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_lexiqueComponentAST) ;
-    return p->mProperty_mTerminalDeclarationListAST ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lexicalMessageDeclarationListAST GGS_lexiqueComponentAST::readProperty_mLexicalMessageDeclarationListAST (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_lexicalMessageDeclarationListAST () ;
-  }else{
-    cPtr_lexiqueComponentAST * p = (cPtr_lexiqueComponentAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_lexiqueComponentAST) ;
-    return p->mProperty_mLexicalMessageDeclarationListAST ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lexicalListDeclarationListAST GGS_lexiqueComponentAST::readProperty_mLexicalListDeclarationListAST (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_lexicalListDeclarationListAST () ;
-  }else{
-    cPtr_lexiqueComponentAST * p = (cPtr_lexiqueComponentAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_lexiqueComponentAST) ;
-    return p->mProperty_mLexicalListDeclarationListAST ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lexicalRuleListAST GGS_lexiqueComponentAST::readProperty_mLexicalRuleListAST (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_lexicalRuleListAST () ;
-  }else{
-    cPtr_lexiqueComponentAST * p = (cPtr_lexiqueComponentAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_lexiqueComponentAST) ;
-    return p->mProperty_mLexicalRuleListAST ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_indexingListAST GGS_lexiqueComponentAST::readProperty_mIndexingListAST (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_indexingListAST () ;
-  }else{
-    cPtr_lexiqueComponentAST * p = (cPtr_lexiqueComponentAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_lexiqueComponentAST) ;
-    return p->mProperty_mIndexingListAST ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-//Pointer class for @lexiqueComponentAST class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_lexiqueComponentAST::cPtr_lexiqueComponentAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_semanticDeclarationAST (inCompiler COMMA_THERE),
-mProperty_mLexiqueComponentName (),
-mProperty_mIsTemplate (),
-mProperty_mTemplateDelimitorListAST (),
-mProperty_mTemplateReplacementListAST (),
-mProperty_mLexicalAttributeListAST (),
-mProperty_mLexicalStyleListAST (),
-mProperty_mTerminalDeclarationListAST (),
-mProperty_mLexicalMessageDeclarationListAST (),
-mProperty_mLexicalListDeclarationListAST (),
-mProperty_mLexicalRuleListAST (),
-mProperty_mIndexingListAST () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cPtr_lexiqueComponentAST::cPtr_lexiqueComponentAST (const GGS_bool & in_isPredefined,
-                                                    const GGS_lstring & in_mLexiqueComponentName,
-                                                    const GGS_bool & in_mIsTemplate,
-                                                    const GGS_templateDelimitorListAST & in_mTemplateDelimitorListAST,
-                                                    const GGS_templateReplacementListAST & in_mTemplateReplacementListAST,
-                                                    const GGS_lexicalAttributeListAST & in_mLexicalAttributeListAST,
-                                                    const GGS_lexicalStyleListAST & in_mLexicalStyleListAST,
-                                                    const GGS_terminalDeclarationListAST & in_mTerminalDeclarationListAST,
-                                                    const GGS_lexicalMessageDeclarationListAST & in_mLexicalMessageDeclarationListAST,
-                                                    const GGS_lexicalListDeclarationListAST & in_mLexicalListDeclarationListAST,
-                                                    const GGS_lexicalRuleListAST & in_mLexicalRuleListAST,
-                                                    const GGS_indexingListAST & in_mIndexingListAST,
-                                                    Compiler * inCompiler
-                                                    COMMA_LOCATION_ARGS) :
-cPtr_semanticDeclarationAST (in_isPredefined, inCompiler COMMA_THERE),
-mProperty_mLexiqueComponentName (),
-mProperty_mIsTemplate (),
-mProperty_mTemplateDelimitorListAST (),
-mProperty_mTemplateReplacementListAST (),
-mProperty_mLexicalAttributeListAST (),
-mProperty_mLexicalStyleListAST (),
-mProperty_mTerminalDeclarationListAST (),
-mProperty_mLexicalMessageDeclarationListAST (),
-mProperty_mLexicalListDeclarationListAST (),
-mProperty_mLexicalRuleListAST (),
-mProperty_mIndexingListAST () {
-  mProperty_isPredefined = in_isPredefined ;
-  mProperty_mLexiqueComponentName = in_mLexiqueComponentName ;
-  mProperty_mIsTemplate = in_mIsTemplate ;
-  mProperty_mTemplateDelimitorListAST = in_mTemplateDelimitorListAST ;
-  mProperty_mTemplateReplacementListAST = in_mTemplateReplacementListAST ;
-  mProperty_mLexicalAttributeListAST = in_mLexicalAttributeListAST ;
-  mProperty_mLexicalStyleListAST = in_mLexicalStyleListAST ;
-  mProperty_mTerminalDeclarationListAST = in_mTerminalDeclarationListAST ;
-  mProperty_mLexicalMessageDeclarationListAST = in_mLexicalMessageDeclarationListAST ;
-  mProperty_mLexicalListDeclarationListAST = in_mLexicalListDeclarationListAST ;
-  mProperty_mLexicalRuleListAST = in_mLexicalRuleListAST ;
-  mProperty_mIndexingListAST = in_mIndexingListAST ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * cPtr_lexiqueComponentAST::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_lexiqueComponentAST ;
-}
-
-void cPtr_lexiqueComponentAST::description (String & ioString,
-                                            const int32_t inIndentation) const {
-  ioString.appendCString ("[@lexiqueComponentAST:") ;
-  mProperty_isPredefined.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mLexiqueComponentName.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mIsTemplate.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mTemplateDelimitorListAST.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mTemplateReplacementListAST.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mLexicalAttributeListAST.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mLexicalStyleListAST.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mTerminalDeclarationListAST.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mLexicalMessageDeclarationListAST.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mLexicalListDeclarationListAST.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mLexicalRuleListAST.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mIndexingListAST.description (ioString, inIndentation+1) ;
-  ioString.appendCString ("]") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-acPtr_class * cPtr_lexiqueComponentAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_lexiqueComponentAST (mProperty_isPredefined, mProperty_mLexiqueComponentName, mProperty_mIsTemplate, mProperty_mTemplateDelimitorListAST, mProperty_mTemplateReplacementListAST, mProperty_mLexicalAttributeListAST, mProperty_mLexicalStyleListAST, mProperty_mTerminalDeclarationListAST, mProperty_mLexicalMessageDeclarationListAST, mProperty_mLexicalListDeclarationListAST, mProperty_mLexicalRuleListAST, mProperty_mIndexingListAST, inCompiler COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_lexiqueComponentAST::printNonNullClassInstanceProperties (void) const {
-    cPtr_semanticDeclarationAST::printNonNullClassInstanceProperties () ;
-    mProperty_mLexiqueComponentName.printNonNullClassInstanceProperties ("mLexiqueComponentName") ;
-    mProperty_mIsTemplate.printNonNullClassInstanceProperties ("mIsTemplate") ;
-    mProperty_mTemplateDelimitorListAST.printNonNullClassInstanceProperties ("mTemplateDelimitorListAST") ;
-    mProperty_mTemplateReplacementListAST.printNonNullClassInstanceProperties ("mTemplateReplacementListAST") ;
-    mProperty_mLexicalAttributeListAST.printNonNullClassInstanceProperties ("mLexicalAttributeListAST") ;
-    mProperty_mLexicalStyleListAST.printNonNullClassInstanceProperties ("mLexicalStyleListAST") ;
-    mProperty_mTerminalDeclarationListAST.printNonNullClassInstanceProperties ("mTerminalDeclarationListAST") ;
-    mProperty_mLexicalMessageDeclarationListAST.printNonNullClassInstanceProperties ("mLexicalMessageDeclarationListAST") ;
-    mProperty_mLexicalListDeclarationListAST.printNonNullClassInstanceProperties ("mLexicalListDeclarationListAST") ;
-    mProperty_mLexicalRuleListAST.printNonNullClassInstanceProperties ("mLexicalRuleListAST") ;
-    mProperty_mIndexingListAST.printNonNullClassInstanceProperties ("mIndexingListAST") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-//     @lexiqueComponentAST generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lexiqueComponentAST ("lexiqueComponentAST",
-                                                                        & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_lexiqueComponentAST::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_lexiqueComponentAST ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_lexiqueComponentAST::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_lexiqueComponentAST (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lexiqueComponentAST GGS_lexiqueComponentAST::extractObject (const GGS_object & inObject,
-                                                                Compiler * inCompiler
-                                                                COMMA_LOCATION_ARGS) {
-  GGS_lexiqueComponentAST result ;
-  const GGS_lexiqueComponentAST * p = (const GGS_lexiqueComponentAST *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_lexiqueComponentAST *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("lexiqueComponentAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-// @lexicalErrorInstructionAST reference class
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult GGS_lexicalErrorInstructionAST::objectCompare (const GGS_lexicalErrorInstructionAST & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    const size_t myObjectPtr = size_t (mObjectPtr) ;
-    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lexicalErrorInstructionAST::GGS_lexicalErrorInstructionAST (void) :
-GGS_lexicalInstructionAST () {
-}
-
-//--- Synthetized initializer ----------------------------------------------------------------------
-
-GGS_lexicalErrorInstructionAST GGS_lexicalErrorInstructionAST::
-init_21_ (const GGS_lstring & in_mErrorMessageName,
-          Compiler * inCompiler
-          COMMA_LOCATION_ARGS) {
-  cPtr_lexicalErrorInstructionAST * object = nullptr ;
-  macroMyNew (object, cPtr_lexicalErrorInstructionAST (inCompiler COMMA_THERE)) ;
-  object->lexicalErrorInstructionAST_init_21_ (in_mErrorMessageName, inCompiler) ;
-  const GGS_lexicalErrorInstructionAST result (object) ;
-  macroDetachSharedObject (object) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_lexicalErrorInstructionAST::
-lexicalErrorInstructionAST_init_21_ (const GGS_lstring & in_mErrorMessageName,
-                                     Compiler * /* inCompiler */) {
-  mProperty_mErrorMessageName = in_mErrorMessageName ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lexicalErrorInstructionAST::GGS_lexicalErrorInstructionAST (const cPtr_lexicalErrorInstructionAST * inSourcePtr) :
-GGS_lexicalInstructionAST (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_lexicalErrorInstructionAST) ;
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_lstring GGS_lexicalErrorInstructionAST::readProperty_mErrorMessageName (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_lstring () ;
-  }else{
-    cPtr_lexicalErrorInstructionAST * p = (cPtr_lexicalErrorInstructionAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_lexicalErrorInstructionAST) ;
-    return p->mProperty_mErrorMessageName ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-//Pointer class for @lexicalErrorInstructionAST class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_lexicalErrorInstructionAST::cPtr_lexicalErrorInstructionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_lexicalInstructionAST (inCompiler COMMA_THERE),
-mProperty_mErrorMessageName () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cPtr_lexicalErrorInstructionAST::cPtr_lexicalErrorInstructionAST (const GGS_lstring & in_mErrorMessageName,
-                                                                  Compiler * inCompiler
-                                                                  COMMA_LOCATION_ARGS) :
-cPtr_lexicalInstructionAST (inCompiler COMMA_THERE),
-mProperty_mErrorMessageName () {
-  mProperty_mErrorMessageName = in_mErrorMessageName ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * cPtr_lexicalErrorInstructionAST::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_lexicalErrorInstructionAST ;
-}
-
-void cPtr_lexicalErrorInstructionAST::description (String & ioString,
-                                                   const int32_t inIndentation) const {
-  ioString.appendCString ("[@lexicalErrorInstructionAST:") ;
-  mProperty_mErrorMessageName.description (ioString, inIndentation+1) ;
-  ioString.appendCString ("]") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-acPtr_class * cPtr_lexicalErrorInstructionAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_lexicalErrorInstructionAST (mProperty_mErrorMessageName, inCompiler COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_lexicalErrorInstructionAST::printNonNullClassInstanceProperties (void) const {
-    cPtr_lexicalInstructionAST::printNonNullClassInstanceProperties () ;
-    mProperty_mErrorMessageName.printNonNullClassInstanceProperties ("mErrorMessageName") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-//     @lexicalErrorInstructionAST generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lexicalErrorInstructionAST ("lexicalErrorInstructionAST",
-                                                                               & kTypeDescriptor_GALGAS_lexicalInstructionAST) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_lexicalErrorInstructionAST::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_lexicalErrorInstructionAST ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_lexicalErrorInstructionAST::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_lexicalErrorInstructionAST (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lexicalErrorInstructionAST GGS_lexicalErrorInstructionAST::extractObject (const GGS_object & inObject,
-                                                                              Compiler * inCompiler
-                                                                              COMMA_LOCATION_ARGS) {
-  GGS_lexicalErrorInstructionAST result ;
-  const GGS_lexicalErrorInstructionAST * p = (const GGS_lexicalErrorInstructionAST *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_lexicalErrorInstructionAST *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("lexicalErrorInstructionAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-// @outputActualParameterAST reference class
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult GGS_outputActualParameterAST::objectCompare (const GGS_outputActualParameterAST & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    const size_t myObjectPtr = size_t (mObjectPtr) ;
-    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_outputActualParameterAST::GGS_outputActualParameterAST (void) :
-GGS_actualParameterAST () {
-}
-
-//--- Synthetized initializer ----------------------------------------------------------------------
-
-GGS_outputActualParameterAST GGS_outputActualParameterAST::
-init_21__21__21_ (const GGS_lstring & in_mActualSelector,
-                  const GGS_semanticExpressionAST & in_mOutputActualParameterExpression,
-                  const GGS_location & in_mEndOfExpressionLocation,
-                  Compiler * inCompiler
-                  COMMA_LOCATION_ARGS) {
-  cPtr_outputActualParameterAST * object = nullptr ;
-  macroMyNew (object, cPtr_outputActualParameterAST (inCompiler COMMA_THERE)) ;
-  object->outputActualParameterAST_init_21__21__21_ (in_mActualSelector, in_mOutputActualParameterExpression, in_mEndOfExpressionLocation, inCompiler) ;
-  const GGS_outputActualParameterAST result (object) ;
-  macroDetachSharedObject (object) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_outputActualParameterAST::
-outputActualParameterAST_init_21__21__21_ (const GGS_lstring & in_mActualSelector,
-                                           const GGS_semanticExpressionAST & in_mOutputActualParameterExpression,
-                                           const GGS_location & in_mEndOfExpressionLocation,
-                                           Compiler * /* inCompiler */) {
-  mProperty_mActualSelector = in_mActualSelector ;
-  mProperty_mOutputActualParameterExpression = in_mOutputActualParameterExpression ;
-  mProperty_mEndOfExpressionLocation = in_mEndOfExpressionLocation ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_outputActualParameterAST::GGS_outputActualParameterAST (const cPtr_outputActualParameterAST * inSourcePtr) :
-GGS_actualParameterAST (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_outputActualParameterAST) ;
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_lstring GGS_outputActualParameterAST::readProperty_mActualSelector (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_lstring () ;
-  }else{
-    cPtr_outputActualParameterAST * p = (cPtr_outputActualParameterAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_outputActualParameterAST) ;
-    return p->mProperty_mActualSelector ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_semanticExpressionAST GGS_outputActualParameterAST::readProperty_mOutputActualParameterExpression (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_semanticExpressionAST () ;
-  }else{
-    cPtr_outputActualParameterAST * p = (cPtr_outputActualParameterAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_outputActualParameterAST) ;
-    return p->mProperty_mOutputActualParameterExpression ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_location GGS_outputActualParameterAST::readProperty_mEndOfExpressionLocation (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_location () ;
-  }else{
-    cPtr_outputActualParameterAST * p = (cPtr_outputActualParameterAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_outputActualParameterAST) ;
-    return p->mProperty_mEndOfExpressionLocation ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-//Pointer class for @outputActualParameterAST class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_outputActualParameterAST::cPtr_outputActualParameterAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_actualParameterAST (inCompiler COMMA_THERE),
-mProperty_mActualSelector (),
-mProperty_mOutputActualParameterExpression (),
-mProperty_mEndOfExpressionLocation () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cPtr_outputActualParameterAST::cPtr_outputActualParameterAST (const GGS_lstring & in_mActualSelector,
-                                                              const GGS_semanticExpressionAST & in_mOutputActualParameterExpression,
-                                                              const GGS_location & in_mEndOfExpressionLocation,
-                                                              Compiler * inCompiler
-                                                              COMMA_LOCATION_ARGS) :
-cPtr_actualParameterAST (inCompiler COMMA_THERE),
-mProperty_mActualSelector (),
-mProperty_mOutputActualParameterExpression (),
-mProperty_mEndOfExpressionLocation () {
-  mProperty_mActualSelector = in_mActualSelector ;
-  mProperty_mOutputActualParameterExpression = in_mOutputActualParameterExpression ;
-  mProperty_mEndOfExpressionLocation = in_mEndOfExpressionLocation ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * cPtr_outputActualParameterAST::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_outputActualParameterAST ;
-}
-
-void cPtr_outputActualParameterAST::description (String & ioString,
-                                                 const int32_t inIndentation) const {
-  ioString.appendCString ("[@outputActualParameterAST:") ;
-  mProperty_mActualSelector.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mOutputActualParameterExpression.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mEndOfExpressionLocation.description (ioString, inIndentation+1) ;
-  ioString.appendCString ("]") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-acPtr_class * cPtr_outputActualParameterAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_outputActualParameterAST (mProperty_mActualSelector, mProperty_mOutputActualParameterExpression, mProperty_mEndOfExpressionLocation, inCompiler COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_outputActualParameterAST::printNonNullClassInstanceProperties (void) const {
-    cPtr_actualParameterAST::printNonNullClassInstanceProperties () ;
-    mProperty_mActualSelector.printNonNullClassInstanceProperties ("mActualSelector") ;
-    mProperty_mOutputActualParameterExpression.printNonNullClassInstanceProperties ("mOutputActualParameterExpression") ;
-    mProperty_mEndOfExpressionLocation.printNonNullClassInstanceProperties ("mEndOfExpressionLocation") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-//     @outputActualParameterAST generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_outputActualParameterAST ("outputActualParameterAST",
-                                                                             & kTypeDescriptor_GALGAS_actualParameterAST) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_outputActualParameterAST::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_outputActualParameterAST ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_outputActualParameterAST::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_outputActualParameterAST (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_outputActualParameterAST GGS_outputActualParameterAST::extractObject (const GGS_object & inObject,
-                                                                          Compiler * inCompiler
-                                                                          COMMA_LOCATION_ARGS) {
-  GGS_outputActualParameterAST result ;
-  const GGS_outputActualParameterAST * p = (const GGS_outputActualParameterAST *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_outputActualParameterAST *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("outputActualParameterAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-// @outputInputActualParameterAST reference class
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult GGS_outputInputActualParameterAST::objectCompare (const GGS_outputInputActualParameterAST & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    const size_t myObjectPtr = size_t (mObjectPtr) ;
-    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_outputInputActualParameterAST::GGS_outputInputActualParameterAST (void) :
-GGS_actualParameterAST () {
-}
-
-//--- Synthetized initializer ----------------------------------------------------------------------
-
-GGS_outputInputActualParameterAST GGS_outputInputActualParameterAST::
-init_21__21__21_ (const GGS_lstring & in_mActualSelector,
-                  const GGS_lstring & in_mOutputInputActualParameterName,
-                  const GGS_lstringlist & in_mStructAttributeList,
-                  Compiler * inCompiler
-                  COMMA_LOCATION_ARGS) {
-  cPtr_outputInputActualParameterAST * object = nullptr ;
-  macroMyNew (object, cPtr_outputInputActualParameterAST (inCompiler COMMA_THERE)) ;
-  object->outputInputActualParameterAST_init_21__21__21_ (in_mActualSelector, in_mOutputInputActualParameterName, in_mStructAttributeList, inCompiler) ;
-  const GGS_outputInputActualParameterAST result (object) ;
-  macroDetachSharedObject (object) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_outputInputActualParameterAST::
-outputInputActualParameterAST_init_21__21__21_ (const GGS_lstring & in_mActualSelector,
-                                                const GGS_lstring & in_mOutputInputActualParameterName,
-                                                const GGS_lstringlist & in_mStructAttributeList,
-                                                Compiler * /* inCompiler */) {
-  mProperty_mActualSelector = in_mActualSelector ;
-  mProperty_mOutputInputActualParameterName = in_mOutputInputActualParameterName ;
-  mProperty_mStructAttributeList = in_mStructAttributeList ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_outputInputActualParameterAST::GGS_outputInputActualParameterAST (const cPtr_outputInputActualParameterAST * inSourcePtr) :
-GGS_actualParameterAST (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_outputInputActualParameterAST) ;
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_lstring GGS_outputInputActualParameterAST::readProperty_mActualSelector (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_lstring () ;
-  }else{
-    cPtr_outputInputActualParameterAST * p = (cPtr_outputInputActualParameterAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_outputInputActualParameterAST) ;
-    return p->mProperty_mActualSelector ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lstring GGS_outputInputActualParameterAST::readProperty_mOutputInputActualParameterName (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_lstring () ;
-  }else{
-    cPtr_outputInputActualParameterAST * p = (cPtr_outputInputActualParameterAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_outputInputActualParameterAST) ;
-    return p->mProperty_mOutputInputActualParameterName ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lstringlist GGS_outputInputActualParameterAST::readProperty_mStructAttributeList (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_lstringlist () ;
-  }else{
-    cPtr_outputInputActualParameterAST * p = (cPtr_outputInputActualParameterAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_outputInputActualParameterAST) ;
-    return p->mProperty_mStructAttributeList ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-//Pointer class for @outputInputActualParameterAST class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_outputInputActualParameterAST::cPtr_outputInputActualParameterAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_actualParameterAST (inCompiler COMMA_THERE),
-mProperty_mActualSelector (),
-mProperty_mOutputInputActualParameterName (),
-mProperty_mStructAttributeList () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cPtr_outputInputActualParameterAST::cPtr_outputInputActualParameterAST (const GGS_lstring & in_mActualSelector,
-                                                                        const GGS_lstring & in_mOutputInputActualParameterName,
-                                                                        const GGS_lstringlist & in_mStructAttributeList,
-                                                                        Compiler * inCompiler
-                                                                        COMMA_LOCATION_ARGS) :
-cPtr_actualParameterAST (inCompiler COMMA_THERE),
-mProperty_mActualSelector (),
-mProperty_mOutputInputActualParameterName (),
-mProperty_mStructAttributeList () {
-  mProperty_mActualSelector = in_mActualSelector ;
-  mProperty_mOutputInputActualParameterName = in_mOutputInputActualParameterName ;
-  mProperty_mStructAttributeList = in_mStructAttributeList ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * cPtr_outputInputActualParameterAST::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_outputInputActualParameterAST ;
-}
-
-void cPtr_outputInputActualParameterAST::description (String & ioString,
-                                                      const int32_t inIndentation) const {
-  ioString.appendCString ("[@outputInputActualParameterAST:") ;
-  mProperty_mActualSelector.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mOutputInputActualParameterName.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mStructAttributeList.description (ioString, inIndentation+1) ;
-  ioString.appendCString ("]") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-acPtr_class * cPtr_outputInputActualParameterAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_outputInputActualParameterAST (mProperty_mActualSelector, mProperty_mOutputInputActualParameterName, mProperty_mStructAttributeList, inCompiler COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_outputInputActualParameterAST::printNonNullClassInstanceProperties (void) const {
-    cPtr_actualParameterAST::printNonNullClassInstanceProperties () ;
-    mProperty_mActualSelector.printNonNullClassInstanceProperties ("mActualSelector") ;
-    mProperty_mOutputInputActualParameterName.printNonNullClassInstanceProperties ("mOutputInputActualParameterName") ;
-    mProperty_mStructAttributeList.printNonNullClassInstanceProperties ("mStructAttributeList") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-//     @outputInputActualParameterAST generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_outputInputActualParameterAST ("outputInputActualParameterAST",
-                                                                                  & kTypeDescriptor_GALGAS_actualParameterAST) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_outputInputActualParameterAST::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_outputInputActualParameterAST ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_outputInputActualParameterAST::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_outputInputActualParameterAST (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_outputInputActualParameterAST GGS_outputInputActualParameterAST::extractObject (const GGS_object & inObject,
-                                                                                    Compiler * inCompiler
-                                                                                    COMMA_LOCATION_ARGS) {
-  GGS_outputInputActualParameterAST result ;
-  const GGS_outputInputActualParameterAST * p = (const GGS_outputInputActualParameterAST *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_outputInputActualParameterAST *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("outputInputActualParameterAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-// @outputInputJokerParameterAST reference class
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult GGS_outputInputJokerParameterAST::objectCompare (const GGS_outputInputJokerParameterAST & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    const size_t myObjectPtr = size_t (mObjectPtr) ;
-    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_outputInputJokerParameterAST::GGS_outputInputJokerParameterAST (void) :
-GGS_actualParameterAST () {
-}
-
-//--- Synthetized initializer ----------------------------------------------------------------------
-
-GGS_outputInputJokerParameterAST GGS_outputInputJokerParameterAST::
-init_21__21_ (const GGS_lstring & in_mActualSelector,
-              const GGS_semanticExpressionAST & in_expression,
-              Compiler * inCompiler
-              COMMA_LOCATION_ARGS) {
-  cPtr_outputInputJokerParameterAST * object = nullptr ;
-  macroMyNew (object, cPtr_outputInputJokerParameterAST (inCompiler COMMA_THERE)) ;
-  object->outputInputJokerParameterAST_init_21__21_ (in_mActualSelector, in_expression, inCompiler) ;
-  const GGS_outputInputJokerParameterAST result (object) ;
-  macroDetachSharedObject (object) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_outputInputJokerParameterAST::
-outputInputJokerParameterAST_init_21__21_ (const GGS_lstring & in_mActualSelector,
-                                           const GGS_semanticExpressionAST & in_expression,
-                                           Compiler * /* inCompiler */) {
-  mProperty_mActualSelector = in_mActualSelector ;
-  mProperty_expression = in_expression ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_outputInputJokerParameterAST::GGS_outputInputJokerParameterAST (const cPtr_outputInputJokerParameterAST * inSourcePtr) :
-GGS_actualParameterAST (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_outputInputJokerParameterAST) ;
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_lstring GGS_outputInputJokerParameterAST::readProperty_mActualSelector (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_lstring () ;
-  }else{
-    cPtr_outputInputJokerParameterAST * p = (cPtr_outputInputJokerParameterAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_outputInputJokerParameterAST) ;
-    return p->mProperty_mActualSelector ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_semanticExpressionAST GGS_outputInputJokerParameterAST::readProperty_expression (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_semanticExpressionAST () ;
-  }else{
-    cPtr_outputInputJokerParameterAST * p = (cPtr_outputInputJokerParameterAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_outputInputJokerParameterAST) ;
-    return p->mProperty_expression ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-//Pointer class for @outputInputJokerParameterAST class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_outputInputJokerParameterAST::cPtr_outputInputJokerParameterAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_actualParameterAST (inCompiler COMMA_THERE),
-mProperty_mActualSelector (),
-mProperty_expression () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cPtr_outputInputJokerParameterAST::cPtr_outputInputJokerParameterAST (const GGS_lstring & in_mActualSelector,
-                                                                      const GGS_semanticExpressionAST & in_expression,
-                                                                      Compiler * inCompiler
-                                                                      COMMA_LOCATION_ARGS) :
-cPtr_actualParameterAST (inCompiler COMMA_THERE),
-mProperty_mActualSelector (),
-mProperty_expression () {
-  mProperty_mActualSelector = in_mActualSelector ;
-  mProperty_expression = in_expression ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * cPtr_outputInputJokerParameterAST::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_outputInputJokerParameterAST ;
-}
-
-void cPtr_outputInputJokerParameterAST::description (String & ioString,
-                                                     const int32_t inIndentation) const {
-  ioString.appendCString ("[@outputInputJokerParameterAST:") ;
-  mProperty_mActualSelector.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_expression.description (ioString, inIndentation+1) ;
-  ioString.appendCString ("]") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-acPtr_class * cPtr_outputInputJokerParameterAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_outputInputJokerParameterAST (mProperty_mActualSelector, mProperty_expression, inCompiler COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_outputInputJokerParameterAST::printNonNullClassInstanceProperties (void) const {
-    cPtr_actualParameterAST::printNonNullClassInstanceProperties () ;
-    mProperty_mActualSelector.printNonNullClassInstanceProperties ("mActualSelector") ;
-    mProperty_expression.printNonNullClassInstanceProperties ("expression") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-//     @outputInputJokerParameterAST generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_outputInputJokerParameterAST ("outputInputJokerParameterAST",
-                                                                                 & kTypeDescriptor_GALGAS_actualParameterAST) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_outputInputJokerParameterAST::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_outputInputJokerParameterAST ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_outputInputJokerParameterAST::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_outputInputJokerParameterAST (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_outputInputJokerParameterAST GGS_outputInputJokerParameterAST::extractObject (const GGS_object & inObject,
-                                                                                  Compiler * inCompiler
-                                                                                  COMMA_LOCATION_ARGS) {
-  GGS_outputInputJokerParameterAST result ;
-  const GGS_outputInputJokerParameterAST * p = (const GGS_outputInputJokerParameterAST *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_outputInputJokerParameterAST *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("outputInputJokerParameterAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-// @outputInputSelfParameterAST reference class
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult GGS_outputInputSelfParameterAST::objectCompare (const GGS_outputInputSelfParameterAST & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    const size_t myObjectPtr = size_t (mObjectPtr) ;
-    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_outputInputSelfParameterAST::GGS_outputInputSelfParameterAST (void) :
-GGS_actualParameterAST () {
-}
-
-//--- Synthetized initializer ----------------------------------------------------------------------
-
-GGS_outputInputSelfParameterAST GGS_outputInputSelfParameterAST::
-init_21_ (const GGS_lstring & in_mActualSelector,
-          Compiler * inCompiler
-          COMMA_LOCATION_ARGS) {
-  cPtr_outputInputSelfParameterAST * object = nullptr ;
-  macroMyNew (object, cPtr_outputInputSelfParameterAST (inCompiler COMMA_THERE)) ;
-  object->outputInputSelfParameterAST_init_21_ (in_mActualSelector, inCompiler) ;
-  const GGS_outputInputSelfParameterAST result (object) ;
-  macroDetachSharedObject (object) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_outputInputSelfParameterAST::
-outputInputSelfParameterAST_init_21_ (const GGS_lstring & in_mActualSelector,
-                                      Compiler * /* inCompiler */) {
-  mProperty_mActualSelector = in_mActualSelector ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_outputInputSelfParameterAST::GGS_outputInputSelfParameterAST (const cPtr_outputInputSelfParameterAST * inSourcePtr) :
-GGS_actualParameterAST (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_outputInputSelfParameterAST) ;
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_lstring GGS_outputInputSelfParameterAST::readProperty_mActualSelector (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_lstring () ;
-  }else{
-    cPtr_outputInputSelfParameterAST * p = (cPtr_outputInputSelfParameterAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_outputInputSelfParameterAST) ;
-    return p->mProperty_mActualSelector ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-//Pointer class for @outputInputSelfParameterAST class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_outputInputSelfParameterAST::cPtr_outputInputSelfParameterAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_actualParameterAST (inCompiler COMMA_THERE),
-mProperty_mActualSelector () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cPtr_outputInputSelfParameterAST::cPtr_outputInputSelfParameterAST (const GGS_lstring & in_mActualSelector,
-                                                                    Compiler * inCompiler
-                                                                    COMMA_LOCATION_ARGS) :
-cPtr_actualParameterAST (inCompiler COMMA_THERE),
-mProperty_mActualSelector () {
-  mProperty_mActualSelector = in_mActualSelector ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * cPtr_outputInputSelfParameterAST::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_outputInputSelfParameterAST ;
-}
-
-void cPtr_outputInputSelfParameterAST::description (String & ioString,
-                                                    const int32_t inIndentation) const {
-  ioString.appendCString ("[@outputInputSelfParameterAST:") ;
-  mProperty_mActualSelector.description (ioString, inIndentation+1) ;
-  ioString.appendCString ("]") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-acPtr_class * cPtr_outputInputSelfParameterAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_outputInputSelfParameterAST (mProperty_mActualSelector, inCompiler COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_outputInputSelfParameterAST::printNonNullClassInstanceProperties (void) const {
-    cPtr_actualParameterAST::printNonNullClassInstanceProperties () ;
-    mProperty_mActualSelector.printNonNullClassInstanceProperties ("mActualSelector") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-//     @outputInputSelfParameterAST generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_outputInputSelfParameterAST ("outputInputSelfParameterAST",
-                                                                                & kTypeDescriptor_GALGAS_actualParameterAST) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_outputInputSelfParameterAST::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_outputInputSelfParameterAST ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_outputInputSelfParameterAST::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_outputInputSelfParameterAST (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_outputInputSelfParameterAST GGS_outputInputSelfParameterAST::extractObject (const GGS_object & inObject,
-                                                                                Compiler * inCompiler
-                                                                                COMMA_LOCATION_ARGS) {
-  GGS_outputInputSelfParameterAST result ;
-  const GGS_outputInputSelfParameterAST * p = (const GGS_outputInputSelfParameterAST *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_outputInputSelfParameterAST *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("outputInputSelfParameterAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-// @inputActualExistingVariableParameterAST reference class
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult GGS_inputActualExistingVariableParameterAST::objectCompare (const GGS_inputActualExistingVariableParameterAST & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    const size_t myObjectPtr = size_t (mObjectPtr) ;
-    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_inputActualExistingVariableParameterAST::GGS_inputActualExistingVariableParameterAST (void) :
-GGS_actualParameterAST () {
-}
-
-//--- Synthetized initializer ----------------------------------------------------------------------
-
-GGS_inputActualExistingVariableParameterAST GGS_inputActualExistingVariableParameterAST::
-init_21__21__21_ (const GGS_lstring & in_mActualSelector,
-                  const GGS_lstring & in_mInputActualParameterName,
-                  const GGS_lstringlist & in_mPoisonedVarNameList,
-                  Compiler * inCompiler
-                  COMMA_LOCATION_ARGS) {
-  cPtr_inputActualExistingVariableParameterAST * object = nullptr ;
-  macroMyNew (object, cPtr_inputActualExistingVariableParameterAST (inCompiler COMMA_THERE)) ;
-  object->inputActualExistingVariableParameterAST_init_21__21__21_ (in_mActualSelector, in_mInputActualParameterName, in_mPoisonedVarNameList, inCompiler) ;
-  const GGS_inputActualExistingVariableParameterAST result (object) ;
-  macroDetachSharedObject (object) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_inputActualExistingVariableParameterAST::
-inputActualExistingVariableParameterAST_init_21__21__21_ (const GGS_lstring & in_mActualSelector,
-                                                          const GGS_lstring & in_mInputActualParameterName,
-                                                          const GGS_lstringlist & in_mPoisonedVarNameList,
-                                                          Compiler * /* inCompiler */) {
-  mProperty_mActualSelector = in_mActualSelector ;
-  mProperty_mInputActualParameterName = in_mInputActualParameterName ;
-  mProperty_mPoisonedVarNameList = in_mPoisonedVarNameList ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_inputActualExistingVariableParameterAST::GGS_inputActualExistingVariableParameterAST (const cPtr_inputActualExistingVariableParameterAST * inSourcePtr) :
-GGS_actualParameterAST (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_inputActualExistingVariableParameterAST) ;
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_lstring GGS_inputActualExistingVariableParameterAST::readProperty_mActualSelector (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_lstring () ;
-  }else{
-    cPtr_inputActualExistingVariableParameterAST * p = (cPtr_inputActualExistingVariableParameterAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_inputActualExistingVariableParameterAST) ;
-    return p->mProperty_mActualSelector ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lstring GGS_inputActualExistingVariableParameterAST::readProperty_mInputActualParameterName (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_lstring () ;
-  }else{
-    cPtr_inputActualExistingVariableParameterAST * p = (cPtr_inputActualExistingVariableParameterAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_inputActualExistingVariableParameterAST) ;
-    return p->mProperty_mInputActualParameterName ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lstringlist GGS_inputActualExistingVariableParameterAST::readProperty_mPoisonedVarNameList (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_lstringlist () ;
-  }else{
-    cPtr_inputActualExistingVariableParameterAST * p = (cPtr_inputActualExistingVariableParameterAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_inputActualExistingVariableParameterAST) ;
-    return p->mProperty_mPoisonedVarNameList ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-//Pointer class for @inputActualExistingVariableParameterAST class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_inputActualExistingVariableParameterAST::cPtr_inputActualExistingVariableParameterAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_actualParameterAST (inCompiler COMMA_THERE),
-mProperty_mActualSelector (),
-mProperty_mInputActualParameterName (),
-mProperty_mPoisonedVarNameList () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cPtr_inputActualExistingVariableParameterAST::cPtr_inputActualExistingVariableParameterAST (const GGS_lstring & in_mActualSelector,
-                                                                                            const GGS_lstring & in_mInputActualParameterName,
-                                                                                            const GGS_lstringlist & in_mPoisonedVarNameList,
-                                                                                            Compiler * inCompiler
-                                                                                            COMMA_LOCATION_ARGS) :
-cPtr_actualParameterAST (inCompiler COMMA_THERE),
-mProperty_mActualSelector (),
-mProperty_mInputActualParameterName (),
-mProperty_mPoisonedVarNameList () {
-  mProperty_mActualSelector = in_mActualSelector ;
-  mProperty_mInputActualParameterName = in_mInputActualParameterName ;
-  mProperty_mPoisonedVarNameList = in_mPoisonedVarNameList ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * cPtr_inputActualExistingVariableParameterAST::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_inputActualExistingVariableParameterAST ;
-}
-
-void cPtr_inputActualExistingVariableParameterAST::description (String & ioString,
-                                                                const int32_t inIndentation) const {
-  ioString.appendCString ("[@inputActualExistingVariableParameterAST:") ;
-  mProperty_mActualSelector.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mInputActualParameterName.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mPoisonedVarNameList.description (ioString, inIndentation+1) ;
-  ioString.appendCString ("]") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-acPtr_class * cPtr_inputActualExistingVariableParameterAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_inputActualExistingVariableParameterAST (mProperty_mActualSelector, mProperty_mInputActualParameterName, mProperty_mPoisonedVarNameList, inCompiler COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_inputActualExistingVariableParameterAST::printNonNullClassInstanceProperties (void) const {
-    cPtr_actualParameterAST::printNonNullClassInstanceProperties () ;
-    mProperty_mActualSelector.printNonNullClassInstanceProperties ("mActualSelector") ;
-    mProperty_mInputActualParameterName.printNonNullClassInstanceProperties ("mInputActualParameterName") ;
-    mProperty_mPoisonedVarNameList.printNonNullClassInstanceProperties ("mPoisonedVarNameList") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-//     @inputActualExistingVariableParameterAST generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_inputActualExistingVariableParameterAST ("inputActualExistingVariableParameterAST",
-                                                                                            & kTypeDescriptor_GALGAS_actualParameterAST) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_inputActualExistingVariableParameterAST::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_inputActualExistingVariableParameterAST ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_inputActualExistingVariableParameterAST::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_inputActualExistingVariableParameterAST (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_inputActualExistingVariableParameterAST GGS_inputActualExistingVariableParameterAST::extractObject (const GGS_object & inObject,
-                                                                                                        Compiler * inCompiler
-                                                                                                        COMMA_LOCATION_ARGS) {
-  GGS_inputActualExistingVariableParameterAST result ;
-  const GGS_inputActualExistingVariableParameterAST * p = (const GGS_inputActualExistingVariableParameterAST *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_inputActualExistingVariableParameterAST *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("inputActualExistingVariableParameterAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-// @inputActualSelfPropertyParameterAST reference class
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult GGS_inputActualSelfPropertyParameterAST::objectCompare (const GGS_inputActualSelfPropertyParameterAST & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    const size_t myObjectPtr = size_t (mObjectPtr) ;
-    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_inputActualSelfPropertyParameterAST::GGS_inputActualSelfPropertyParameterAST (void) :
-GGS_actualParameterAST () {
-}
-
-//--- Synthetized initializer ----------------------------------------------------------------------
-
-GGS_inputActualSelfPropertyParameterAST GGS_inputActualSelfPropertyParameterAST::
-init_21__21__21_ (const GGS_lstring & in_mActualSelector,
-                  const GGS_lstring & in_mInputActualSelfPropertyName,
-                  const GGS_lstringlist & in_mPoisonedVarNameList,
-                  Compiler * inCompiler
-                  COMMA_LOCATION_ARGS) {
-  cPtr_inputActualSelfPropertyParameterAST * object = nullptr ;
-  macroMyNew (object, cPtr_inputActualSelfPropertyParameterAST (inCompiler COMMA_THERE)) ;
-  object->inputActualSelfPropertyParameterAST_init_21__21__21_ (in_mActualSelector, in_mInputActualSelfPropertyName, in_mPoisonedVarNameList, inCompiler) ;
-  const GGS_inputActualSelfPropertyParameterAST result (object) ;
-  macroDetachSharedObject (object) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_inputActualSelfPropertyParameterAST::
-inputActualSelfPropertyParameterAST_init_21__21__21_ (const GGS_lstring & in_mActualSelector,
-                                                      const GGS_lstring & in_mInputActualSelfPropertyName,
-                                                      const GGS_lstringlist & in_mPoisonedVarNameList,
-                                                      Compiler * /* inCompiler */) {
-  mProperty_mActualSelector = in_mActualSelector ;
-  mProperty_mInputActualSelfPropertyName = in_mInputActualSelfPropertyName ;
-  mProperty_mPoisonedVarNameList = in_mPoisonedVarNameList ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_inputActualSelfPropertyParameterAST::GGS_inputActualSelfPropertyParameterAST (const cPtr_inputActualSelfPropertyParameterAST * inSourcePtr) :
-GGS_actualParameterAST (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_inputActualSelfPropertyParameterAST) ;
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_lstring GGS_inputActualSelfPropertyParameterAST::readProperty_mActualSelector (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_lstring () ;
-  }else{
-    cPtr_inputActualSelfPropertyParameterAST * p = (cPtr_inputActualSelfPropertyParameterAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_inputActualSelfPropertyParameterAST) ;
-    return p->mProperty_mActualSelector ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lstring GGS_inputActualSelfPropertyParameterAST::readProperty_mInputActualSelfPropertyName (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_lstring () ;
-  }else{
-    cPtr_inputActualSelfPropertyParameterAST * p = (cPtr_inputActualSelfPropertyParameterAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_inputActualSelfPropertyParameterAST) ;
-    return p->mProperty_mInputActualSelfPropertyName ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lstringlist GGS_inputActualSelfPropertyParameterAST::readProperty_mPoisonedVarNameList (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_lstringlist () ;
-  }else{
-    cPtr_inputActualSelfPropertyParameterAST * p = (cPtr_inputActualSelfPropertyParameterAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_inputActualSelfPropertyParameterAST) ;
-    return p->mProperty_mPoisonedVarNameList ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-//Pointer class for @inputActualSelfPropertyParameterAST class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_inputActualSelfPropertyParameterAST::cPtr_inputActualSelfPropertyParameterAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_actualParameterAST (inCompiler COMMA_THERE),
-mProperty_mActualSelector (),
-mProperty_mInputActualSelfPropertyName (),
-mProperty_mPoisonedVarNameList () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cPtr_inputActualSelfPropertyParameterAST::cPtr_inputActualSelfPropertyParameterAST (const GGS_lstring & in_mActualSelector,
-                                                                                    const GGS_lstring & in_mInputActualSelfPropertyName,
-                                                                                    const GGS_lstringlist & in_mPoisonedVarNameList,
-                                                                                    Compiler * inCompiler
-                                                                                    COMMA_LOCATION_ARGS) :
-cPtr_actualParameterAST (inCompiler COMMA_THERE),
-mProperty_mActualSelector (),
-mProperty_mInputActualSelfPropertyName (),
-mProperty_mPoisonedVarNameList () {
-  mProperty_mActualSelector = in_mActualSelector ;
-  mProperty_mInputActualSelfPropertyName = in_mInputActualSelfPropertyName ;
-  mProperty_mPoisonedVarNameList = in_mPoisonedVarNameList ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * cPtr_inputActualSelfPropertyParameterAST::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_inputActualSelfPropertyParameterAST ;
-}
-
-void cPtr_inputActualSelfPropertyParameterAST::description (String & ioString,
-                                                            const int32_t inIndentation) const {
-  ioString.appendCString ("[@inputActualSelfPropertyParameterAST:") ;
-  mProperty_mActualSelector.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mInputActualSelfPropertyName.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mPoisonedVarNameList.description (ioString, inIndentation+1) ;
-  ioString.appendCString ("]") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-acPtr_class * cPtr_inputActualSelfPropertyParameterAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_inputActualSelfPropertyParameterAST (mProperty_mActualSelector, mProperty_mInputActualSelfPropertyName, mProperty_mPoisonedVarNameList, inCompiler COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_inputActualSelfPropertyParameterAST::printNonNullClassInstanceProperties (void) const {
-    cPtr_actualParameterAST::printNonNullClassInstanceProperties () ;
-    mProperty_mActualSelector.printNonNullClassInstanceProperties ("mActualSelector") ;
-    mProperty_mInputActualSelfPropertyName.printNonNullClassInstanceProperties ("mInputActualSelfPropertyName") ;
-    mProperty_mPoisonedVarNameList.printNonNullClassInstanceProperties ("mPoisonedVarNameList") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-//     @inputActualSelfPropertyParameterAST generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_inputActualSelfPropertyParameterAST ("inputActualSelfPropertyParameterAST",
-                                                                                        & kTypeDescriptor_GALGAS_actualParameterAST) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_inputActualSelfPropertyParameterAST::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_inputActualSelfPropertyParameterAST ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_inputActualSelfPropertyParameterAST::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_inputActualSelfPropertyParameterAST (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_inputActualSelfPropertyParameterAST GGS_inputActualSelfPropertyParameterAST::extractObject (const GGS_object & inObject,
-                                                                                                Compiler * inCompiler
-                                                                                                COMMA_LOCATION_ARGS) {
-  GGS_inputActualSelfPropertyParameterAST result ;
-  const GGS_inputActualSelfPropertyParameterAST * p = (const GGS_inputActualSelfPropertyParameterAST *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_inputActualSelfPropertyParameterAST *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("inputActualSelfPropertyParameterAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-// @inputActualSelfParameterAST reference class
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult GGS_inputActualSelfParameterAST::objectCompare (const GGS_inputActualSelfParameterAST & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    const size_t myObjectPtr = size_t (mObjectPtr) ;
-    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_inputActualSelfParameterAST::GGS_inputActualSelfParameterAST (void) :
-GGS_actualParameterAST () {
-}
-
-//--- Synthetized initializer ----------------------------------------------------------------------
-
-GGS_inputActualSelfParameterAST GGS_inputActualSelfParameterAST::
-init_21__21__21_ (const GGS_lstring & in_mActualSelector,
-                  const GGS_location & in_mSelfLocation,
-                  const GGS_lstringlist & in_mPoisonedVarNameList,
-                  Compiler * inCompiler
-                  COMMA_LOCATION_ARGS) {
-  cPtr_inputActualSelfParameterAST * object = nullptr ;
-  macroMyNew (object, cPtr_inputActualSelfParameterAST (inCompiler COMMA_THERE)) ;
-  object->inputActualSelfParameterAST_init_21__21__21_ (in_mActualSelector, in_mSelfLocation, in_mPoisonedVarNameList, inCompiler) ;
-  const GGS_inputActualSelfParameterAST result (object) ;
-  macroDetachSharedObject (object) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_inputActualSelfParameterAST::
-inputActualSelfParameterAST_init_21__21__21_ (const GGS_lstring & in_mActualSelector,
-                                              const GGS_location & in_mSelfLocation,
-                                              const GGS_lstringlist & in_mPoisonedVarNameList,
-                                              Compiler * /* inCompiler */) {
-  mProperty_mActualSelector = in_mActualSelector ;
-  mProperty_mSelfLocation = in_mSelfLocation ;
-  mProperty_mPoisonedVarNameList = in_mPoisonedVarNameList ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_inputActualSelfParameterAST::GGS_inputActualSelfParameterAST (const cPtr_inputActualSelfParameterAST * inSourcePtr) :
-GGS_actualParameterAST (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_inputActualSelfParameterAST) ;
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_lstring GGS_inputActualSelfParameterAST::readProperty_mActualSelector (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_lstring () ;
-  }else{
-    cPtr_inputActualSelfParameterAST * p = (cPtr_inputActualSelfParameterAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_inputActualSelfParameterAST) ;
-    return p->mProperty_mActualSelector ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_location GGS_inputActualSelfParameterAST::readProperty_mSelfLocation (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_location () ;
-  }else{
-    cPtr_inputActualSelfParameterAST * p = (cPtr_inputActualSelfParameterAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_inputActualSelfParameterAST) ;
-    return p->mProperty_mSelfLocation ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lstringlist GGS_inputActualSelfParameterAST::readProperty_mPoisonedVarNameList (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_lstringlist () ;
-  }else{
-    cPtr_inputActualSelfParameterAST * p = (cPtr_inputActualSelfParameterAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_inputActualSelfParameterAST) ;
-    return p->mProperty_mPoisonedVarNameList ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-//Pointer class for @inputActualSelfParameterAST class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_inputActualSelfParameterAST::cPtr_inputActualSelfParameterAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_actualParameterAST (inCompiler COMMA_THERE),
-mProperty_mActualSelector (),
-mProperty_mSelfLocation (),
-mProperty_mPoisonedVarNameList () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cPtr_inputActualSelfParameterAST::cPtr_inputActualSelfParameterAST (const GGS_lstring & in_mActualSelector,
-                                                                    const GGS_location & in_mSelfLocation,
-                                                                    const GGS_lstringlist & in_mPoisonedVarNameList,
-                                                                    Compiler * inCompiler
-                                                                    COMMA_LOCATION_ARGS) :
-cPtr_actualParameterAST (inCompiler COMMA_THERE),
-mProperty_mActualSelector (),
-mProperty_mSelfLocation (),
-mProperty_mPoisonedVarNameList () {
-  mProperty_mActualSelector = in_mActualSelector ;
-  mProperty_mSelfLocation = in_mSelfLocation ;
-  mProperty_mPoisonedVarNameList = in_mPoisonedVarNameList ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * cPtr_inputActualSelfParameterAST::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_inputActualSelfParameterAST ;
-}
-
-void cPtr_inputActualSelfParameterAST::description (String & ioString,
-                                                    const int32_t inIndentation) const {
-  ioString.appendCString ("[@inputActualSelfParameterAST:") ;
-  mProperty_mActualSelector.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mSelfLocation.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mPoisonedVarNameList.description (ioString, inIndentation+1) ;
-  ioString.appendCString ("]") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-acPtr_class * cPtr_inputActualSelfParameterAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_inputActualSelfParameterAST (mProperty_mActualSelector, mProperty_mSelfLocation, mProperty_mPoisonedVarNameList, inCompiler COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_inputActualSelfParameterAST::printNonNullClassInstanceProperties (void) const {
-    cPtr_actualParameterAST::printNonNullClassInstanceProperties () ;
-    mProperty_mActualSelector.printNonNullClassInstanceProperties ("mActualSelector") ;
-    mProperty_mSelfLocation.printNonNullClassInstanceProperties ("mSelfLocation") ;
-    mProperty_mPoisonedVarNameList.printNonNullClassInstanceProperties ("mPoisonedVarNameList") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-//     @inputActualSelfParameterAST generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_inputActualSelfParameterAST ("inputActualSelfParameterAST",
-                                                                                & kTypeDescriptor_GALGAS_actualParameterAST) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_inputActualSelfParameterAST::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_inputActualSelfParameterAST ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_inputActualSelfParameterAST::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_inputActualSelfParameterAST (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_inputActualSelfParameterAST GGS_inputActualSelfParameterAST::extractObject (const GGS_object & inObject,
-                                                                                Compiler * inCompiler
-                                                                                COMMA_LOCATION_ARGS) {
-  GGS_inputActualSelfParameterAST result ;
-  const GGS_inputActualSelfParameterAST * p = (const GGS_inputActualSelfParameterAST *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_inputActualSelfParameterAST *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("inputActualSelfParameterAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-// @inputActualNewVariableParameterAST reference class
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult GGS_inputActualNewVariableParameterAST::objectCompare (const GGS_inputActualNewVariableParameterAST & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    const size_t myObjectPtr = size_t (mObjectPtr) ;
-    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_inputActualNewVariableParameterAST::GGS_inputActualNewVariableParameterAST (void) :
-GGS_actualParameterAST () {
-}
-
-//--- Synthetized initializer ----------------------------------------------------------------------
-
-GGS_inputActualNewVariableParameterAST GGS_inputActualNewVariableParameterAST::
-init_21__21__21__21_ (const GGS_lstring & in_mActualSelector,
-                      const GGS_lstring & in_mInputOptionalActualTypeName,
-                      const GGS_lstring & in_mInputActualParameterName,
-                      const GGS_lstringlist & in_mPoisonedVarNameList,
-                      Compiler * inCompiler
-                      COMMA_LOCATION_ARGS) {
-  cPtr_inputActualNewVariableParameterAST * object = nullptr ;
-  macroMyNew (object, cPtr_inputActualNewVariableParameterAST (inCompiler COMMA_THERE)) ;
-  object->inputActualNewVariableParameterAST_init_21__21__21__21_ (in_mActualSelector, in_mInputOptionalActualTypeName, in_mInputActualParameterName, in_mPoisonedVarNameList, inCompiler) ;
-  const GGS_inputActualNewVariableParameterAST result (object) ;
-  macroDetachSharedObject (object) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_inputActualNewVariableParameterAST::
-inputActualNewVariableParameterAST_init_21__21__21__21_ (const GGS_lstring & in_mActualSelector,
-                                                         const GGS_lstring & in_mInputOptionalActualTypeName,
-                                                         const GGS_lstring & in_mInputActualParameterName,
-                                                         const GGS_lstringlist & in_mPoisonedVarNameList,
-                                                         Compiler * /* inCompiler */) {
-  mProperty_mActualSelector = in_mActualSelector ;
-  mProperty_mInputOptionalActualTypeName = in_mInputOptionalActualTypeName ;
-  mProperty_mInputActualParameterName = in_mInputActualParameterName ;
-  mProperty_mPoisonedVarNameList = in_mPoisonedVarNameList ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_inputActualNewVariableParameterAST::GGS_inputActualNewVariableParameterAST (const cPtr_inputActualNewVariableParameterAST * inSourcePtr) :
-GGS_actualParameterAST (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_inputActualNewVariableParameterAST) ;
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_lstring GGS_inputActualNewVariableParameterAST::readProperty_mActualSelector (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_lstring () ;
-  }else{
-    cPtr_inputActualNewVariableParameterAST * p = (cPtr_inputActualNewVariableParameterAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_inputActualNewVariableParameterAST) ;
-    return p->mProperty_mActualSelector ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lstring GGS_inputActualNewVariableParameterAST::readProperty_mInputOptionalActualTypeName (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_lstring () ;
-  }else{
-    cPtr_inputActualNewVariableParameterAST * p = (cPtr_inputActualNewVariableParameterAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_inputActualNewVariableParameterAST) ;
-    return p->mProperty_mInputOptionalActualTypeName ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lstring GGS_inputActualNewVariableParameterAST::readProperty_mInputActualParameterName (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_lstring () ;
-  }else{
-    cPtr_inputActualNewVariableParameterAST * p = (cPtr_inputActualNewVariableParameterAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_inputActualNewVariableParameterAST) ;
-    return p->mProperty_mInputActualParameterName ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lstringlist GGS_inputActualNewVariableParameterAST::readProperty_mPoisonedVarNameList (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_lstringlist () ;
-  }else{
-    cPtr_inputActualNewVariableParameterAST * p = (cPtr_inputActualNewVariableParameterAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_inputActualNewVariableParameterAST) ;
-    return p->mProperty_mPoisonedVarNameList ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-//Pointer class for @inputActualNewVariableParameterAST class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_inputActualNewVariableParameterAST::cPtr_inputActualNewVariableParameterAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_actualParameterAST (inCompiler COMMA_THERE),
-mProperty_mActualSelector (),
-mProperty_mInputOptionalActualTypeName (),
-mProperty_mInputActualParameterName (),
-mProperty_mPoisonedVarNameList () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cPtr_inputActualNewVariableParameterAST::cPtr_inputActualNewVariableParameterAST (const GGS_lstring & in_mActualSelector,
-                                                                                  const GGS_lstring & in_mInputOptionalActualTypeName,
-                                                                                  const GGS_lstring & in_mInputActualParameterName,
-                                                                                  const GGS_lstringlist & in_mPoisonedVarNameList,
-                                                                                  Compiler * inCompiler
-                                                                                  COMMA_LOCATION_ARGS) :
-cPtr_actualParameterAST (inCompiler COMMA_THERE),
-mProperty_mActualSelector (),
-mProperty_mInputOptionalActualTypeName (),
-mProperty_mInputActualParameterName (),
-mProperty_mPoisonedVarNameList () {
-  mProperty_mActualSelector = in_mActualSelector ;
-  mProperty_mInputOptionalActualTypeName = in_mInputOptionalActualTypeName ;
-  mProperty_mInputActualParameterName = in_mInputActualParameterName ;
-  mProperty_mPoisonedVarNameList = in_mPoisonedVarNameList ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * cPtr_inputActualNewVariableParameterAST::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_inputActualNewVariableParameterAST ;
-}
-
-void cPtr_inputActualNewVariableParameterAST::description (String & ioString,
-                                                           const int32_t inIndentation) const {
-  ioString.appendCString ("[@inputActualNewVariableParameterAST:") ;
-  mProperty_mActualSelector.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mInputOptionalActualTypeName.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mInputActualParameterName.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mPoisonedVarNameList.description (ioString, inIndentation+1) ;
-  ioString.appendCString ("]") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-acPtr_class * cPtr_inputActualNewVariableParameterAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_inputActualNewVariableParameterAST (mProperty_mActualSelector, mProperty_mInputOptionalActualTypeName, mProperty_mInputActualParameterName, mProperty_mPoisonedVarNameList, inCompiler COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_inputActualNewVariableParameterAST::printNonNullClassInstanceProperties (void) const {
-    cPtr_actualParameterAST::printNonNullClassInstanceProperties () ;
-    mProperty_mActualSelector.printNonNullClassInstanceProperties ("mActualSelector") ;
-    mProperty_mInputOptionalActualTypeName.printNonNullClassInstanceProperties ("mInputOptionalActualTypeName") ;
-    mProperty_mInputActualParameterName.printNonNullClassInstanceProperties ("mInputActualParameterName") ;
-    mProperty_mPoisonedVarNameList.printNonNullClassInstanceProperties ("mPoisonedVarNameList") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-//     @inputActualNewVariableParameterAST generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_inputActualNewVariableParameterAST ("inputActualNewVariableParameterAST",
-                                                                                       & kTypeDescriptor_GALGAS_actualParameterAST) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_inputActualNewVariableParameterAST::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_inputActualNewVariableParameterAST ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_inputActualNewVariableParameterAST::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_inputActualNewVariableParameterAST (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_inputActualNewVariableParameterAST GGS_inputActualNewVariableParameterAST::extractObject (const GGS_object & inObject,
-                                                                                              Compiler * inCompiler
-                                                                                              COMMA_LOCATION_ARGS) {
-  GGS_inputActualNewVariableParameterAST result ;
-  const GGS_inputActualNewVariableParameterAST * p = (const GGS_inputActualNewVariableParameterAST *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_inputActualNewVariableParameterAST *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("inputActualNewVariableParameterAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-// @inputActualNewConstantParameterAST reference class
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult GGS_inputActualNewConstantParameterAST::objectCompare (const GGS_inputActualNewConstantParameterAST & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    const size_t myObjectPtr = size_t (mObjectPtr) ;
-    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_inputActualNewConstantParameterAST::GGS_inputActualNewConstantParameterAST (void) :
-GGS_actualParameterAST () {
-}
-
-//--- Synthetized initializer ----------------------------------------------------------------------
-
-GGS_inputActualNewConstantParameterAST GGS_inputActualNewConstantParameterAST::
-init_21__21__21__21__21_ (const GGS_lstring & in_mActualSelector,
-                          const GGS_lstring & in_mInputOptionalActualTypeName,
-                          const GGS_lstring & in_mInputActualParameterName,
-                          const GGS_bool & in_mMarkedAsUnused,
-                          const GGS_lstringlist & in_mPoisonedVarNameList,
-                          Compiler * inCompiler
-                          COMMA_LOCATION_ARGS) {
-  cPtr_inputActualNewConstantParameterAST * object = nullptr ;
-  macroMyNew (object, cPtr_inputActualNewConstantParameterAST (inCompiler COMMA_THERE)) ;
-  object->inputActualNewConstantParameterAST_init_21__21__21__21__21_ (in_mActualSelector, in_mInputOptionalActualTypeName, in_mInputActualParameterName, in_mMarkedAsUnused, in_mPoisonedVarNameList, inCompiler) ;
-  const GGS_inputActualNewConstantParameterAST result (object) ;
-  macroDetachSharedObject (object) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_inputActualNewConstantParameterAST::
-inputActualNewConstantParameterAST_init_21__21__21__21__21_ (const GGS_lstring & in_mActualSelector,
-                                                             const GGS_lstring & in_mInputOptionalActualTypeName,
-                                                             const GGS_lstring & in_mInputActualParameterName,
-                                                             const GGS_bool & in_mMarkedAsUnused,
-                                                             const GGS_lstringlist & in_mPoisonedVarNameList,
-                                                             Compiler * /* inCompiler */) {
-  mProperty_mActualSelector = in_mActualSelector ;
-  mProperty_mInputOptionalActualTypeName = in_mInputOptionalActualTypeName ;
-  mProperty_mInputActualParameterName = in_mInputActualParameterName ;
-  mProperty_mMarkedAsUnused = in_mMarkedAsUnused ;
-  mProperty_mPoisonedVarNameList = in_mPoisonedVarNameList ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_inputActualNewConstantParameterAST::GGS_inputActualNewConstantParameterAST (const cPtr_inputActualNewConstantParameterAST * inSourcePtr) :
-GGS_actualParameterAST (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_inputActualNewConstantParameterAST) ;
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_lstring GGS_inputActualNewConstantParameterAST::readProperty_mActualSelector (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_lstring () ;
-  }else{
-    cPtr_inputActualNewConstantParameterAST * p = (cPtr_inputActualNewConstantParameterAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_inputActualNewConstantParameterAST) ;
-    return p->mProperty_mActualSelector ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lstring GGS_inputActualNewConstantParameterAST::readProperty_mInputOptionalActualTypeName (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_lstring () ;
-  }else{
-    cPtr_inputActualNewConstantParameterAST * p = (cPtr_inputActualNewConstantParameterAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_inputActualNewConstantParameterAST) ;
-    return p->mProperty_mInputOptionalActualTypeName ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lstring GGS_inputActualNewConstantParameterAST::readProperty_mInputActualParameterName (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_lstring () ;
-  }else{
-    cPtr_inputActualNewConstantParameterAST * p = (cPtr_inputActualNewConstantParameterAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_inputActualNewConstantParameterAST) ;
-    return p->mProperty_mInputActualParameterName ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_bool GGS_inputActualNewConstantParameterAST::readProperty_mMarkedAsUnused (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_bool () ;
-  }else{
-    cPtr_inputActualNewConstantParameterAST * p = (cPtr_inputActualNewConstantParameterAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_inputActualNewConstantParameterAST) ;
-    return p->mProperty_mMarkedAsUnused ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lstringlist GGS_inputActualNewConstantParameterAST::readProperty_mPoisonedVarNameList (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_lstringlist () ;
-  }else{
-    cPtr_inputActualNewConstantParameterAST * p = (cPtr_inputActualNewConstantParameterAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_inputActualNewConstantParameterAST) ;
-    return p->mProperty_mPoisonedVarNameList ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-//Pointer class for @inputActualNewConstantParameterAST class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_inputActualNewConstantParameterAST::cPtr_inputActualNewConstantParameterAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_actualParameterAST (inCompiler COMMA_THERE),
-mProperty_mActualSelector (),
-mProperty_mInputOptionalActualTypeName (),
-mProperty_mInputActualParameterName (),
-mProperty_mMarkedAsUnused (),
-mProperty_mPoisonedVarNameList () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cPtr_inputActualNewConstantParameterAST::cPtr_inputActualNewConstantParameterAST (const GGS_lstring & in_mActualSelector,
-                                                                                  const GGS_lstring & in_mInputOptionalActualTypeName,
-                                                                                  const GGS_lstring & in_mInputActualParameterName,
-                                                                                  const GGS_bool & in_mMarkedAsUnused,
-                                                                                  const GGS_lstringlist & in_mPoisonedVarNameList,
-                                                                                  Compiler * inCompiler
-                                                                                  COMMA_LOCATION_ARGS) :
-cPtr_actualParameterAST (inCompiler COMMA_THERE),
-mProperty_mActualSelector (),
-mProperty_mInputOptionalActualTypeName (),
-mProperty_mInputActualParameterName (),
-mProperty_mMarkedAsUnused (),
-mProperty_mPoisonedVarNameList () {
-  mProperty_mActualSelector = in_mActualSelector ;
-  mProperty_mInputOptionalActualTypeName = in_mInputOptionalActualTypeName ;
-  mProperty_mInputActualParameterName = in_mInputActualParameterName ;
-  mProperty_mMarkedAsUnused = in_mMarkedAsUnused ;
-  mProperty_mPoisonedVarNameList = in_mPoisonedVarNameList ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * cPtr_inputActualNewConstantParameterAST::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_inputActualNewConstantParameterAST ;
-}
-
-void cPtr_inputActualNewConstantParameterAST::description (String & ioString,
-                                                           const int32_t inIndentation) const {
-  ioString.appendCString ("[@inputActualNewConstantParameterAST:") ;
-  mProperty_mActualSelector.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mInputOptionalActualTypeName.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mInputActualParameterName.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mMarkedAsUnused.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mPoisonedVarNameList.description (ioString, inIndentation+1) ;
-  ioString.appendCString ("]") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-acPtr_class * cPtr_inputActualNewConstantParameterAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_inputActualNewConstantParameterAST (mProperty_mActualSelector, mProperty_mInputOptionalActualTypeName, mProperty_mInputActualParameterName, mProperty_mMarkedAsUnused, mProperty_mPoisonedVarNameList, inCompiler COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_inputActualNewConstantParameterAST::printNonNullClassInstanceProperties (void) const {
-    cPtr_actualParameterAST::printNonNullClassInstanceProperties () ;
-    mProperty_mActualSelector.printNonNullClassInstanceProperties ("mActualSelector") ;
-    mProperty_mInputOptionalActualTypeName.printNonNullClassInstanceProperties ("mInputOptionalActualTypeName") ;
-    mProperty_mInputActualParameterName.printNonNullClassInstanceProperties ("mInputActualParameterName") ;
-    mProperty_mMarkedAsUnused.printNonNullClassInstanceProperties ("mMarkedAsUnused") ;
-    mProperty_mPoisonedVarNameList.printNonNullClassInstanceProperties ("mPoisonedVarNameList") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-//     @inputActualNewConstantParameterAST generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_inputActualNewConstantParameterAST ("inputActualNewConstantParameterAST",
-                                                                                       & kTypeDescriptor_GALGAS_actualParameterAST) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_inputActualNewConstantParameterAST::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_inputActualNewConstantParameterAST ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_inputActualNewConstantParameterAST::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_inputActualNewConstantParameterAST (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_inputActualNewConstantParameterAST GGS_inputActualNewConstantParameterAST::extractObject (const GGS_object & inObject,
-                                                                                              Compiler * inCompiler
-                                                                                              COMMA_LOCATION_ARGS) {
-  GGS_inputActualNewConstantParameterAST result ;
-  const GGS_inputActualNewConstantParameterAST * p = (const GGS_inputActualNewConstantParameterAST *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_inputActualNewConstantParameterAST *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("inputActualNewConstantParameterAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-// @inputSingleJokerActualParameterAST reference class
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult GGS_inputSingleJokerActualParameterAST::objectCompare (const GGS_inputSingleJokerActualParameterAST & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    const size_t myObjectPtr = size_t (mObjectPtr) ;
-    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_inputSingleJokerActualParameterAST::GGS_inputSingleJokerActualParameterAST (void) :
-GGS_actualParameterAST () {
-}
-
-//--- Synthetized initializer ----------------------------------------------------------------------
-
-GGS_inputSingleJokerActualParameterAST GGS_inputSingleJokerActualParameterAST::
-init_21__21_ (const GGS_lstring & in_mActualSelector,
-              const GGS_lstringlist & in_mPoisonedVarNameList,
-              Compiler * inCompiler
-              COMMA_LOCATION_ARGS) {
-  cPtr_inputSingleJokerActualParameterAST * object = nullptr ;
-  macroMyNew (object, cPtr_inputSingleJokerActualParameterAST (inCompiler COMMA_THERE)) ;
-  object->inputSingleJokerActualParameterAST_init_21__21_ (in_mActualSelector, in_mPoisonedVarNameList, inCompiler) ;
-  const GGS_inputSingleJokerActualParameterAST result (object) ;
-  macroDetachSharedObject (object) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_inputSingleJokerActualParameterAST::
-inputSingleJokerActualParameterAST_init_21__21_ (const GGS_lstring & in_mActualSelector,
-                                                 const GGS_lstringlist & in_mPoisonedVarNameList,
-                                                 Compiler * /* inCompiler */) {
-  mProperty_mActualSelector = in_mActualSelector ;
-  mProperty_mPoisonedVarNameList = in_mPoisonedVarNameList ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_inputSingleJokerActualParameterAST::GGS_inputSingleJokerActualParameterAST (const cPtr_inputSingleJokerActualParameterAST * inSourcePtr) :
-GGS_actualParameterAST (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_inputSingleJokerActualParameterAST) ;
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_lstring GGS_inputSingleJokerActualParameterAST::readProperty_mActualSelector (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_lstring () ;
-  }else{
-    cPtr_inputSingleJokerActualParameterAST * p = (cPtr_inputSingleJokerActualParameterAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_inputSingleJokerActualParameterAST) ;
-    return p->mProperty_mActualSelector ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lstringlist GGS_inputSingleJokerActualParameterAST::readProperty_mPoisonedVarNameList (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_lstringlist () ;
-  }else{
-    cPtr_inputSingleJokerActualParameterAST * p = (cPtr_inputSingleJokerActualParameterAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_inputSingleJokerActualParameterAST) ;
-    return p->mProperty_mPoisonedVarNameList ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-//Pointer class for @inputSingleJokerActualParameterAST class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_inputSingleJokerActualParameterAST::cPtr_inputSingleJokerActualParameterAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_actualParameterAST (inCompiler COMMA_THERE),
-mProperty_mActualSelector (),
-mProperty_mPoisonedVarNameList () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cPtr_inputSingleJokerActualParameterAST::cPtr_inputSingleJokerActualParameterAST (const GGS_lstring & in_mActualSelector,
-                                                                                  const GGS_lstringlist & in_mPoisonedVarNameList,
-                                                                                  Compiler * inCompiler
-                                                                                  COMMA_LOCATION_ARGS) :
-cPtr_actualParameterAST (inCompiler COMMA_THERE),
-mProperty_mActualSelector (),
-mProperty_mPoisonedVarNameList () {
-  mProperty_mActualSelector = in_mActualSelector ;
-  mProperty_mPoisonedVarNameList = in_mPoisonedVarNameList ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * cPtr_inputSingleJokerActualParameterAST::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_inputSingleJokerActualParameterAST ;
-}
-
-void cPtr_inputSingleJokerActualParameterAST::description (String & ioString,
-                                                           const int32_t inIndentation) const {
-  ioString.appendCString ("[@inputSingleJokerActualParameterAST:") ;
-  mProperty_mActualSelector.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mPoisonedVarNameList.description (ioString, inIndentation+1) ;
-  ioString.appendCString ("]") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-acPtr_class * cPtr_inputSingleJokerActualParameterAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_inputSingleJokerActualParameterAST (mProperty_mActualSelector, mProperty_mPoisonedVarNameList, inCompiler COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_inputSingleJokerActualParameterAST::printNonNullClassInstanceProperties (void) const {
-    cPtr_actualParameterAST::printNonNullClassInstanceProperties () ;
-    mProperty_mActualSelector.printNonNullClassInstanceProperties ("mActualSelector") ;
-    mProperty_mPoisonedVarNameList.printNonNullClassInstanceProperties ("mPoisonedVarNameList") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-//     @inputSingleJokerActualParameterAST generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_inputSingleJokerActualParameterAST ("inputSingleJokerActualParameterAST",
-                                                                                       & kTypeDescriptor_GALGAS_actualParameterAST) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_inputSingleJokerActualParameterAST::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_inputSingleJokerActualParameterAST ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_inputSingleJokerActualParameterAST::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_inputSingleJokerActualParameterAST (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_inputSingleJokerActualParameterAST GGS_inputSingleJokerActualParameterAST::extractObject (const GGS_object & inObject,
-                                                                                              Compiler * inCompiler
-                                                                                              COMMA_LOCATION_ARGS) {
-  GGS_inputSingleJokerActualParameterAST result ;
-  const GGS_inputSingleJokerActualParameterAST * p = (const GGS_inputSingleJokerActualParameterAST *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_inputSingleJokerActualParameterAST *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("inputSingleJokerActualParameterAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_localVarManager::GGS_localVarManager (void) :
-mProperty_mCurrentManager (),
-mProperty_mOverridenManagers () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_localVarManager::GGS_localVarManager (const GGS_localVarManager & inSource) :
-mProperty_mCurrentManager (inSource.mProperty_mCurrentManager),
-mProperty_mOverridenManagers (inSource.mProperty_mOverridenManagers) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_localVarManager & GGS_localVarManager::operator = (const GGS_localVarManager & inSource) {
-  mProperty_mCurrentManager = inSource.mProperty_mCurrentManager ;
-  mProperty_mOverridenManagers = inSource.mProperty_mOverridenManagers ;
-  return *this ;
-}
-
-//---Synthetized initializer -----------------------------------------------------------------------
-
-GGS_localVarManager GGS_localVarManager::init (Compiler * inCompiler
-                                               COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_localVarManager result ;
-  result.setInitializedProperties (inCompiler) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_localVarManager::setInitializedProperties (Compiler * inCompiler) {
-  mProperty_mCurrentManager = GGS_currentVarManager::init (inCompiler COMMA_HERE) ;
-  mProperty_mOverridenManagers = GGS_openedOverrideList::init (inCompiler COMMA_HERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_localVarManager::GGS_localVarManager (const GGS_currentVarManager & inOperand0,
-                                          const GGS_openedOverrideList & inOperand1) :
-mProperty_mCurrentManager (inOperand0),
-mProperty_mOverridenManagers (inOperand1) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GGS_localVarManager::isValid (void) const {
-  return mProperty_mCurrentManager.isValid () && mProperty_mOverridenManagers.isValid () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_localVarManager::drop (void) {
-  mProperty_mCurrentManager.drop () ;
-  mProperty_mOverridenManagers.drop () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_localVarManager::description (String & ioString,
-                                       const int32_t inIndentation) const {
-  ioString.appendCString ("<struct @localVarManager:") ;
-  if (! isValid ()) {
-    ioString.appendCString (" not built") ;
-  }else{
-    mProperty_mCurrentManager.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_mOverridenManagers.description (ioString, inIndentation+1) ;
-  }
-  ioString.appendCString (">") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//     @localVarManager generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_localVarManager ("localVarManager",
-                                                                    nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_localVarManager::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_localVarManager ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_localVarManager::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_localVarManager (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_localVarManager GGS_localVarManager::extractObject (const GGS_object & inObject,
-                                                        Compiler * inCompiler
-                                                        COMMA_LOCATION_ARGS) {
-  GGS_localVarManager result ;
-  const GGS_localVarManager * p = (const GGS_localVarManager *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_localVarManager *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("localVarManager", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension method '@localVarManager insertInitializedLocalVariable'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionSetter_insertInitializedLocalVariable (GGS_localVarManager & ioObject,
-                                                     const GGS_lstring constinArgument_inVarName,
-                                                     const GGS_bool constinArgument_inWarnsIfNotMutated,
-                                                     const GGS_unifiedTypeMapEntry constinArgument_inType,
-                                                     const GGS_string constinArgument_inCppName,
-                                                     const GGS_string constinArgument_inNameForCheckingFormalParameterUsing,
-                                                     Compiler * inCompiler
-                                                     COMMA_UNUSED_LOCATION_ARGS) {
-  {
-  GGS_localVariableAttributes temp_0 ;
-  const GalgasBool test_1 = constinArgument_inWarnsIfNotMutated.boolEnum () ;
-  if (GalgasBool::boolTrue == test_1) {
-    temp_0 = GGS_localVariableAttributes::init (inCompiler COMMA_HERE) ;
-  }else if (GalgasBool::boolFalse == test_1) {
-    temp_0 = GGS_localVariableAttributes::class_func_acceptInitializedStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 53)).operator_or (GGS_localVariableAttributes::class_func_acceptReadStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 53)) COMMA_SOURCE_FILE ("variable-manager.galgas", 53)) ;
-  }
-  extensionSetter_insertKey (ioObject.mProperty_mCurrentManager, constinArgument_inVarName, constinArgument_inType, constinArgument_inCppName, constinArgument_inNameForCheckingFormalParameterUsing, temp_0, GGS_localVarValuation::class_func_initialized (SOURCE_FILE ("variable-manager.galgas", 54)), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 48)) ;
-  }
-}
-
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension method '@localVarManager insertUsedLocalConstant'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionSetter_insertUsedLocalConstant (GGS_localVarManager & ioObject,
-                                              const GGS_lstring constinArgument_inVarName,
-                                              const GGS_unifiedTypeMapEntry constinArgument_inType,
-                                              const GGS_string constinArgument_inCppName,
-                                              const GGS_string constinArgument_inNameForCheckingFormalParameterUsing,
-                                              Compiler * inCompiler
-                                              COMMA_UNUSED_LOCATION_ARGS) {
-  {
-  extensionSetter_insertKey (ioObject.mProperty_mCurrentManager, constinArgument_inVarName, constinArgument_inType, constinArgument_inCppName, constinArgument_inNameForCheckingFormalParameterUsing, GGS_localVariableAttributes::class_func_rejectWriteInInitializedAndReadStates (SOURCE_FILE ("variable-manager.galgas", 71)).operator_or (GGS_localVariableAttributes::class_func_acceptReadStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 71)) COMMA_SOURCE_FILE ("variable-manager.galgas", 71)), GGS_localVarValuation::class_func_read (SOURCE_FILE ("variable-manager.galgas", 72)), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 66)) ;
-  }
-}
-
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension method '@localVarManager insertInitializedLocalConstant'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionSetter_insertInitializedLocalConstant (GGS_localVarManager & ioObject,
-                                                     const GGS_lstring constinArgument_inVarName,
-                                                     const GGS_unifiedTypeMapEntry constinArgument_inType,
-                                                     const GGS_string constinArgument_inCppName,
-                                                     const GGS_string constinArgument_inNameForCheckingFormalParameterUsing,
-                                                     Compiler * inCompiler
-                                                     COMMA_UNUSED_LOCATION_ARGS) {
-  {
-  extensionSetter_insertKey (ioObject.mProperty_mCurrentManager, constinArgument_inVarName, constinArgument_inType, constinArgument_inCppName, constinArgument_inNameForCheckingFormalParameterUsing, GGS_localVariableAttributes::class_func_rejectWriteInInitializedAndReadStates (SOURCE_FILE ("variable-manager.galgas", 87)).operator_or (GGS_localVariableAttributes::class_func_acceptReadStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 87)) COMMA_SOURCE_FILE ("variable-manager.galgas", 87)), GGS_localVarValuation::class_func_initialized (SOURCE_FILE ("variable-manager.galgas", 88)), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 82)) ;
-  }
-}
-
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension method '@localVarManager insertDeclaredLocalConstant'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionSetter_insertDeclaredLocalConstant (GGS_localVarManager & ioObject,
-                                                  const GGS_lstring constinArgument_inVarName,
-                                                  const GGS_unifiedTypeMapEntry constinArgument_inType,
-                                                  const GGS_string constinArgument_inCppName,
-                                                  const GGS_string constinArgument_inNameForCheckingFormalParameterUsing,
-                                                  Compiler * inCompiler
-                                                  COMMA_UNUSED_LOCATION_ARGS) {
-  {
-  extensionSetter_insertKey (ioObject.mProperty_mCurrentManager, constinArgument_inVarName, constinArgument_inType, constinArgument_inCppName, constinArgument_inNameForCheckingFormalParameterUsing, GGS_localVariableAttributes::class_func_rejectWriteInInitializedAndReadStates (SOURCE_FILE ("variable-manager.galgas", 103)).operator_or (GGS_localVariableAttributes::class_func_acceptReadStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 103)) COMMA_SOURCE_FILE ("variable-manager.galgas", 103)), GGS_localVarValuation::class_func_declared (GGS_bool (false)  COMMA_SOURCE_FILE ("variable-manager.galgas", 104)), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 98)) ;
-  }
-}
-
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension method '@localVarManager insertInputFormalArgumentDeclaredAsUnused'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionSetter_insertInputFormalArgumentDeclaredAsUnused (GGS_localVarManager & ioObject,
-                                                                const GGS_lstring constinArgument_inVarName,
-                                                                const GGS_unifiedTypeMapEntry constinArgument_inType,
-                                                                const GGS_string constinArgument_inCppName,
-                                                                const GGS_string constinArgument_inNameForCheckingFormalParameterUsing,
-                                                                Compiler * inCompiler
-                                                                COMMA_UNUSED_LOCATION_ARGS) {
-  {
-  extensionSetter_insertKey (ioObject.mProperty_mCurrentManager, constinArgument_inVarName, constinArgument_inType, constinArgument_inCppName, constinArgument_inNameForCheckingFormalParameterUsing, GGS_localVariableAttributes::class_func_acceptInitializedStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 121)).operator_or (GGS_localVariableAttributes::class_func_acceptReadStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 121)) COMMA_SOURCE_FILE ("variable-manager.galgas", 121)).operator_or (GGS_localVariableAttributes::class_func_warnsOnAnyAcces (SOURCE_FILE ("variable-manager.galgas", 121)) COMMA_SOURCE_FILE ("variable-manager.galgas", 121)), GGS_localVarValuation::class_func_initialized (SOURCE_FILE ("variable-manager.galgas", 122)), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 116)) ;
-  }
-}
-
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension method '@localVarManager insertInputFormalArgument'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionSetter_insertInputFormalArgument (GGS_localVarManager & ioObject,
-                                                const GGS_lstring constinArgument_inVarName,
-                                                const GGS_unifiedTypeMapEntry constinArgument_inType,
-                                                const GGS_string constinArgument_inCppName,
-                                                const GGS_string constinArgument_inNameForCheckingFormalParameterUsing,
-                                                Compiler * inCompiler
-                                                COMMA_UNUSED_LOCATION_ARGS) {
-  {
-  extensionSetter_insertKey (ioObject.mProperty_mCurrentManager, constinArgument_inVarName, constinArgument_inType, constinArgument_inCppName, constinArgument_inNameForCheckingFormalParameterUsing, GGS_localVariableAttributes::class_func_acceptReadStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 137)).operator_or (GGS_localVariableAttributes::class_func_suggestDeclareUnusedParameterAsUnused (SOURCE_FILE ("variable-manager.galgas", 137)) COMMA_SOURCE_FILE ("variable-manager.galgas", 137)), GGS_localVarValuation::class_func_initialized (SOURCE_FILE ("variable-manager.galgas", 138)), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 132)) ;
-  }
-}
-
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension method '@localVarManager insertConstantInputFormalArgumentDeclaredAsUnused'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionSetter_insertConstantInputFormalArgumentDeclaredAsUnused (GGS_localVarManager & ioObject,
-                                                                        const GGS_lstring constinArgument_inVarName,
-                                                                        const GGS_unifiedTypeMapEntry constinArgument_inType,
-                                                                        const GGS_string constinArgument_inCppName,
-                                                                        const GGS_string constinArgument_inNameForCheckingFormalParameterUsing,
-                                                                        Compiler * inCompiler
-                                                                        COMMA_UNUSED_LOCATION_ARGS) {
-  {
-  extensionSetter_insertKey (ioObject.mProperty_mCurrentManager, constinArgument_inVarName, constinArgument_inType, constinArgument_inCppName, constinArgument_inNameForCheckingFormalParameterUsing, GGS_localVariableAttributes::class_func_rejectWriteInInitializedAndReadStates (SOURCE_FILE ("variable-manager.galgas", 153)).operator_or (GGS_localVariableAttributes::class_func_acceptInitializedStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 153)) COMMA_SOURCE_FILE ("variable-manager.galgas", 153)).operator_or (GGS_localVariableAttributes::class_func_acceptReadStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 153)) COMMA_SOURCE_FILE ("variable-manager.galgas", 153)).operator_or (GGS_localVariableAttributes::class_func_warnsOnAnyAcces (SOURCE_FILE ("variable-manager.galgas", 153)) COMMA_SOURCE_FILE ("variable-manager.galgas", 153)), GGS_localVarValuation::class_func_initialized (SOURCE_FILE ("variable-manager.galgas", 154)), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 148)) ;
-  }
-}
-
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension method '@localVarManager insertConstantInputFormalArgument'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionSetter_insertConstantInputFormalArgument (GGS_localVarManager & ioObject,
-                                                        const GGS_lstring constinArgument_inVarName,
-                                                        const GGS_unifiedTypeMapEntry constinArgument_inType,
-                                                        const GGS_string constinArgument_inCppName,
-                                                        const GGS_string constinArgument_inNameForCheckingFormalParameterUsing,
-                                                        Compiler * inCompiler
-                                                        COMMA_UNUSED_LOCATION_ARGS) {
-  {
-  extensionSetter_insertKey (ioObject.mProperty_mCurrentManager, constinArgument_inVarName, constinArgument_inType, constinArgument_inCppName, constinArgument_inNameForCheckingFormalParameterUsing, GGS_localVariableAttributes::class_func_rejectWriteInInitializedAndReadStates (SOURCE_FILE ("variable-manager.galgas", 169)).operator_or (GGS_localVariableAttributes::class_func_acceptReadStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 169)) COMMA_SOURCE_FILE ("variable-manager.galgas", 169)).operator_or (GGS_localVariableAttributes::class_func_suggestDeclareUnusedParameterAsUnused (SOURCE_FILE ("variable-manager.galgas", 169)) COMMA_SOURCE_FILE ("variable-manager.galgas", 169)), GGS_localVarValuation::class_func_initialized (SOURCE_FILE ("variable-manager.galgas", 170)), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 164)) ;
-  }
-}
-
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension method '@localVarManager insertOutputFormalArgument'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionSetter_insertOutputFormalArgument (GGS_localVarManager & ioObject,
-                                                 const GGS_lstring constinArgument_inVarName,
-                                                 const GGS_unifiedTypeMapEntry constinArgument_inType,
-                                                 const GGS_string constinArgument_inCppName,
-                                                 const GGS_string constinArgument_inNameForCheckingFormalParameterUsing,
-                                                 Compiler * inCompiler
-                                                 COMMA_UNUSED_LOCATION_ARGS) {
-  {
-  extensionSetter_insertKey (ioObject.mProperty_mCurrentManager, constinArgument_inVarName, constinArgument_inType, constinArgument_inCppName, constinArgument_inNameForCheckingFormalParameterUsing, GGS_localVariableAttributes::class_func_rejectDeclaredStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 187)).operator_or (GGS_localVariableAttributes::class_func_acceptInitializedStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 187)) COMMA_SOURCE_FILE ("variable-manager.galgas", 187)).operator_or (GGS_localVariableAttributes::class_func_acceptReadStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 187)) COMMA_SOURCE_FILE ("variable-manager.galgas", 187)), GGS_localVarValuation::class_func_declared (GGS_bool (false)  COMMA_SOURCE_FILE ("variable-manager.galgas", 188)), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 182)) ;
-  }
-}
-
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension method '@localVarManager insertInputOutputFormalArgumentDeclaredAsUnused'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionSetter_insertInputOutputFormalArgumentDeclaredAsUnused (GGS_localVarManager & ioObject,
-                                                                      const GGS_lstring constinArgument_inVarName,
-                                                                      const GGS_unifiedTypeMapEntry constinArgument_inType,
-                                                                      const GGS_string constinArgument_inCppName,
-                                                                      const GGS_string constinArgument_inNameForCheckingFormalParameterUsing,
-                                                                      Compiler * inCompiler
-                                                                      COMMA_UNUSED_LOCATION_ARGS) {
-  {
-  extensionSetter_insertKey (ioObject.mProperty_mCurrentManager, constinArgument_inVarName, constinArgument_inType, constinArgument_inCppName, constinArgument_inNameForCheckingFormalParameterUsing, GGS_localVariableAttributes::class_func_acceptInitializedStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 205)).operator_or (GGS_localVariableAttributes::class_func_warnsOnAnyAcces (SOURCE_FILE ("variable-manager.galgas", 205)) COMMA_SOURCE_FILE ("variable-manager.galgas", 205)), GGS_localVarValuation::class_func_initialized (SOURCE_FILE ("variable-manager.galgas", 206)), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 200)) ;
-  }
-}
-
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension method '@localVarManager insertInputOutputFormalArgument'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionSetter_insertInputOutputFormalArgument (GGS_localVarManager & ioObject,
-                                                      const GGS_lstring constinArgument_inVarName,
-                                                      const GGS_unifiedTypeMapEntry constinArgument_inType,
-                                                      const GGS_string constinArgument_inCppName,
-                                                      const GGS_string constinArgument_inNameForCheckingFormalParameterUsing,
-                                                      Compiler * inCompiler
-                                                      COMMA_UNUSED_LOCATION_ARGS) {
-  {
-  extensionSetter_insertKey (ioObject.mProperty_mCurrentManager, constinArgument_inVarName, constinArgument_inType, constinArgument_inCppName, constinArgument_inNameForCheckingFormalParameterUsing, GGS_localVariableAttributes::class_func_acceptInitializedStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 221)).operator_or (GGS_localVariableAttributes::class_func_acceptReadStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 221)) COMMA_SOURCE_FILE ("variable-manager.galgas", 221)).operator_or (GGS_localVariableAttributes::class_func_suggestDeclareUnusedParameterAsUnused (SOURCE_FILE ("variable-manager.galgas", 222)) COMMA_SOURCE_FILE ("variable-manager.galgas", 221)), GGS_localVarValuation::class_func_initialized (SOURCE_FILE ("variable-manager.galgas", 223)), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 216)) ;
-  }
-}
-
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension method '@localVarManager insertNonMutableProperty'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionSetter_insertNonMutableProperty (GGS_localVarManager & ioObject,
-                                               const GGS_lstring constinArgument_inVarName,
-                                               const GGS_unifiedTypeMapEntry constinArgument_inType,
-                                               const GGS_string constinArgument_inCppName,
-                                               const GGS_string constinArgument_inNameForCheckingFormalParameterUsing,
-                                               Compiler * inCompiler
-                                               COMMA_UNUSED_LOCATION_ARGS) {
-  {
-  extensionSetter_insertKey (ioObject.mProperty_mCurrentManager, constinArgument_inVarName, constinArgument_inType, constinArgument_inCppName, constinArgument_inNameForCheckingFormalParameterUsing, GGS_localVariableAttributes::class_func_rejectWriteInInitializedAndReadStates (SOURCE_FILE ("variable-manager.galgas", 240)).operator_or (GGS_localVariableAttributes::class_func_acceptInitializedStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 241)) COMMA_SOURCE_FILE ("variable-manager.galgas", 240)).operator_or (GGS_localVariableAttributes::class_func_acceptReadStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 241)) COMMA_SOURCE_FILE ("variable-manager.galgas", 241)), GGS_localVarValuation::class_func_initialized (SOURCE_FILE ("variable-manager.galgas", 242)), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 235)) ;
-  }
-}
-
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension method '@localVarManager insertMutableProperty'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionSetter_insertMutableProperty (GGS_localVarManager & ioObject,
-                                            const GGS_lstring constinArgument_inVarName,
-                                            const GGS_unifiedTypeMapEntry constinArgument_inType,
-                                            const GGS_string constinArgument_inCppName,
-                                            const GGS_string constinArgument_inNameForCheckingFormalParameterUsing,
-                                            Compiler * inCompiler
-                                            COMMA_UNUSED_LOCATION_ARGS) {
-  {
-  extensionSetter_insertKey (ioObject.mProperty_mCurrentManager, constinArgument_inVarName, constinArgument_inType, constinArgument_inCppName, constinArgument_inNameForCheckingFormalParameterUsing, GGS_localVariableAttributes::class_func_acceptInitializedStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 257)).operator_or (GGS_localVariableAttributes::class_func_acceptReadStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 257)) COMMA_SOURCE_FILE ("variable-manager.galgas", 257)), GGS_localVarValuation::class_func_initialized (SOURCE_FILE ("variable-manager.galgas", 258)), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 252)) ;
-  }
-}
-
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension method '@localVarManager insertInitializerSelfProperty'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionSetter_insertInitializerSelfProperty (GGS_localVarManager & ioObject,
-                                                    const GGS_string constinArgument_inPropertyName,
-                                                    const GGS_location constinArgument_inErrorLocation,
-                                                    const GGS_unifiedTypeMapEntry constinArgument_inType,
-                                                    const GGS_string constinArgument_inCppName,
-                                                    const GGS_string constinArgument_inNameForCheckingFormalParameterUsing,
-                                                    const GGS_bool constinArgument_inInitialized,
-                                                    Compiler * inCompiler
-                                                    COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_lstring var_varName_12567 = GGS_lstring::init_21__21_ (GGS_string ("self.").add_operation (constinArgument_inPropertyName, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 273)), constinArgument_inErrorLocation, inCompiler COMMA_HERE) ;
-  {
-  GGS_localVarValuation temp_0 ;
-  const GalgasBool test_1 = constinArgument_inInitialized.boolEnum () ;
-  if (GalgasBool::boolTrue == test_1) {
-    temp_0 = GGS_localVarValuation::class_func_initialized (SOURCE_FILE ("variable-manager.galgas", 281)) ;
-  }else if (GalgasBool::boolFalse == test_1) {
-    temp_0 = GGS_localVarValuation::class_func_declared (GGS_bool (false)  COMMA_SOURCE_FILE ("variable-manager.galgas", 281)) ;
-  }
-  extensionSetter_insertKey (ioObject.mProperty_mCurrentManager, var_varName_12567, constinArgument_inType, constinArgument_inCppName, constinArgument_inNameForCheckingFormalParameterUsing, GGS_localVariableAttributes::class_func_rejectDeclaredStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 279)).operator_or (GGS_localVariableAttributes::class_func_acceptInitializedStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 280)) COMMA_SOURCE_FILE ("variable-manager.galgas", 279)).operator_or (GGS_localVariableAttributes::class_func_acceptReadStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 280)) COMMA_SOURCE_FILE ("variable-manager.galgas", 280)), temp_0, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 274)) ;
-  }
-}
-
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension method '@localVarManager openOverrideForSelectBlock'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionSetter_openOverrideForSelectBlock (GGS_localVarManager & ioObject,
-                                                 Compiler * /* inCompiler */
-                                                 COMMA_UNUSED_LOCATION_ARGS) {
-  const GGS_localVarManager temp_0 = ioObject ;
-  ioObject.mProperty_mOverridenManagers.addAssignOperation (GGS_overrideKind::class_func_selectOverrideFirstBranch (temp_0.readProperty_mCurrentManager ()  COMMA_SOURCE_FILE ("variable-manager.galgas", 290))  COMMA_SOURCE_FILE ("variable-manager.galgas", 290)) ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension method '@localVarManager openOverrideForRepeatBlock'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionSetter_openOverrideForRepeatBlock (GGS_localVarManager & ioObject,
-                                                 Compiler * /* inCompiler */
-                                                 COMMA_UNUSED_LOCATION_ARGS) {
-  ioObject.mProperty_mOverridenManagers.addAssignOperation (GGS_overrideKind::class_func_repeatOverride (SOURCE_FILE ("variable-manager.galgas", 296))  COMMA_SOURCE_FILE ("variable-manager.galgas", 296)) ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension method '@localVarManager closeOverride'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionSetter_closeOverride (GGS_localVarManager & ioObject,
-                                    const GGS_location /* constinArgument_inEndOfBranchLocation */,
-                                    Compiler * inCompiler
-                                    COMMA_UNUSED_LOCATION_ARGS) {
-  GalgasBool test_0 = GalgasBool::boolTrue ;
-  if (GalgasBool::boolTrue == test_0) {
-    const GGS_localVarManager temp_1 = ioObject ;
-    test_0 = GGS_bool (ComparisonKind::greaterThan, temp_1.readProperty_mOverridenManagers ().getter_count (SOURCE_FILE ("variable-manager.galgas", 302)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
-    if (GalgasBool::boolTrue == test_0) {
-      GGS_overrideKind var_savedManager_13813 ;
-      {
-      ioObject.mProperty_mOverridenManagers.setter_popLast (var_savedManager_13813, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 303)) ;
-      }
-      switch (var_savedManager_13813.enumValue ()) {
-      case GGS_overrideKind::Enumeration::invalid:
-        break ;
-      case GGS_overrideKind::Enumeration::enum_selectOverrideFirstBranch:
-        break ;
-      case GGS_overrideKind::Enumeration::enum_selectOverrideNextBranches:
-        {
-          GGS_currentVarManager extractedValue_13992_savedManager_0 ;
-          GGS_currentVarManager extractedValue_14024_referenceManager_1 ;
-          var_savedManager_13813.getAssociatedValuesFor_selectOverrideNextBranches (extractedValue_13992_savedManager_0, extractedValue_14024_referenceManager_1) ;
-          ioObject.mProperty_mCurrentManager = extractedValue_14024_referenceManager_1 ;
-        }
-        break ;
-      case GGS_overrideKind::Enumeration::enum_repeatOverride:
-        break ;
-      }
-    }
-  }
-}
-
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension method '@localVarManager openBranch'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionSetter_openBranch (GGS_localVarManager & ioObject,
-                                 Compiler * inCompiler
-                                 COMMA_UNUSED_LOCATION_ARGS) {
-  {
-  extensionSetter_openScope (ioObject.mProperty_mCurrentManager, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 316)) ;
-  }
-}
-
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension method '@localVarManager closeBranch'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionSetter_closeBranch (GGS_localVarManager & ioObject,
-                                  const GGS_location constinArgument_inEndOfBranchLocation,
-                                  Compiler * inCompiler
-                                  COMMA_UNUSED_LOCATION_ARGS) {
-  {
-  extensionSetter_closeScope (ioObject.mProperty_mCurrentManager, constinArgument_inEndOfBranchLocation, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 322)) ;
-  }
-  GalgasBool test_0 = GalgasBool::boolTrue ;
-  if (GalgasBool::boolTrue == test_0) {
-    const GGS_localVarManager temp_1 = ioObject ;
-    test_0 = GGS_bool (ComparisonKind::greaterThan, temp_1.readProperty_mOverridenManagers ().getter_count (SOURCE_FILE ("variable-manager.galgas", 324)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
-    if (GalgasBool::boolTrue == test_0) {
-      GGS_overrideKind var_savedManager_14644 ;
-      {
-      ioObject.mProperty_mOverridenManagers.setter_popLast (var_savedManager_14644, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 325)) ;
-      }
-      switch (var_savedManager_14644.enumValue ()) {
-      case GGS_overrideKind::Enumeration::invalid:
-        break ;
-      case GGS_overrideKind::Enumeration::enum_selectOverrideFirstBranch:
-        {
-          GGS_currentVarManager extractedValue_14737_savedManager_0 ;
-          var_savedManager_14644.getAssociatedValuesFor_selectOverrideFirstBranch (extractedValue_14737_savedManager_0) ;
-          const GGS_localVarManager temp_2 = ioObject ;
-          ioObject.mProperty_mOverridenManagers.addAssignOperation (GGS_overrideKind::class_func_selectOverrideNextBranches (extractedValue_14737_savedManager_0, temp_2.readProperty_mCurrentManager ()  COMMA_SOURCE_FILE ("variable-manager.galgas", 328))  COMMA_SOURCE_FILE ("variable-manager.galgas", 328)) ;
-          ioObject.mProperty_mCurrentManager = extractedValue_14737_savedManager_0 ;
-        }
-        break ;
-      case GGS_overrideKind::Enumeration::enum_selectOverrideNextBranches:
-        {
-          GGS_currentVarManager extractedValue_14983_savedManager_0 ;
-          GGS_currentVarManager extractedValue_15015_referenceManager_1 ;
-          var_savedManager_14644.getAssociatedValuesFor_selectOverrideNextBranches (extractedValue_14983_savedManager_0, extractedValue_15015_referenceManager_1) ;
-          const GGS_localVarManager temp_3 = ioObject ;
-          GGS_currentVarManager var_newReferenceManager_15045 = temp_3.readProperty_mCurrentManager () ;
-          {
-          extensionSetter_combineManagerWith (var_newReferenceManager_15045, extractedValue_15015_referenceManager_1, constinArgument_inEndOfBranchLocation, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 332)) ;
-          }
-          ioObject.mProperty_mOverridenManagers.addAssignOperation (GGS_overrideKind::class_func_selectOverrideNextBranches (extractedValue_14983_savedManager_0, var_newReferenceManager_15045  COMMA_SOURCE_FILE ("variable-manager.galgas", 333))  COMMA_SOURCE_FILE ("variable-manager.galgas", 333)) ;
-          ioObject.mProperty_mCurrentManager = extractedValue_14983_savedManager_0 ;
-        }
-        break ;
-      case GGS_overrideKind::Enumeration::enum_repeatOverride:
-        {
-          ioObject.mProperty_mOverridenManagers.addAssignOperation (var_savedManager_14644  COMMA_SOURCE_FILE ("variable-manager.galgas", 336)) ;
-        }
-        break ;
-      }
-    }
-  }
-}
-
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension method '@localVarManager checkSelfObjectIsFullyInitialized'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionMethod_checkSelfObjectIsFullyInitialized (const GGS_localVarManager inObject,
-                                                        const GGS_location constinArgument_inErrorLocation,
-                                                        Compiler * inCompiler
-                                                        COMMA_UNUSED_LOCATION_ARGS) {
-  const GGS_localVarManager temp_0 = inObject ;
-  extensionMethod_checkSelfObjectIsFullyInitialized (temp_0.readProperty_mCurrentManager (), constinArgument_inErrorLocation, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 416)) ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension method '@localVarManager neutralAccess'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionSetter_neutralAccess (GGS_localVarManager & ioObject,
-                                    const GGS_lstring constinArgument_inVarName,
-                                    GGS_unifiedTypeMapEntry & outArgument_outType,
-                                    GGS_string & outArgument_outCppName,
-                                    GGS_string & outArgument_outNameForCheckingFormalParameterUsing,
-                                    Compiler * inCompiler
-                                    COMMA_UNUSED_LOCATION_ARGS) {
-  outArgument_outType.drop () ; // Release 'out' argument
-  outArgument_outCppName.drop () ; // Release 'out' argument
-  outArgument_outNameForCheckingFormalParameterUsing.drop () ; // Release 'out' argument
-  {
-  extensionSetter_neutralAccess (ioObject.mProperty_mCurrentManager, constinArgument_inVarName, outArgument_outType, outArgument_outCppName, outArgument_outNameForCheckingFormalParameterUsing, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 442)) ;
-  }
-}
-
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension method '@localVarManager searchForDropAccess'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionSetter_searchForDropAccess (GGS_localVarManager & ioObject,
-                                          const GGS_lstring constinArgument_inVarName,
-                                          Compiler * inCompiler
-                                          COMMA_UNUSED_LOCATION_ARGS) {
-  {
-  extensionSetter_searchForDropAccess (ioObject.mProperty_mCurrentManager, constinArgument_inVarName, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 499)) ;
-  }
-}
-
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension method '@localVarManager searchForWriteAccess'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionSetter_searchForWriteAccess (GGS_localVarManager & ioObject,
-                                           const GGS_lstring constinArgument_inVarName,
-                                           GGS_unifiedTypeMapEntry & outArgument_outType,
-                                           GGS_string & outArgument_outCppName,
-                                           GGS_string & outArgument_outNameForCheckingFormalParameterUsing,
-                                           Compiler * inCompiler
-                                           COMMA_UNUSED_LOCATION_ARGS) {
-  outArgument_outType.drop () ; // Release 'out' argument
-  outArgument_outCppName.drop () ; // Release 'out' argument
-  outArgument_outNameForCheckingFormalParameterUsing.drop () ; // Release 'out' argument
-  {
-  extensionSetter_searchForWriteAccess (ioObject.mProperty_mCurrentManager, constinArgument_inVarName, outArgument_outType, outArgument_outCppName, outArgument_outNameForCheckingFormalParameterUsing, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 534)) ;
-  }
-}
-
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension method '@localVarManager searchForReadAccess'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionSetter_searchForReadAccess (GGS_localVarManager & ioObject,
-                                          const GGS_lstring constinArgument_inVarName,
-                                          GGS_unifiedTypeMapEntry & outArgument_outType,
-                                          GGS_string & outArgument_outCppName,
-                                          GGS_string & outArgument_outNameForCheckingFormalParameterUsing,
-                                          Compiler * inCompiler
-                                          COMMA_UNUSED_LOCATION_ARGS) {
-  outArgument_outType.drop () ; // Release 'out' argument
-  outArgument_outCppName.drop () ; // Release 'out' argument
-  outArgument_outNameForCheckingFormalParameterUsing.drop () ; // Release 'out' argument
-  {
-  extensionSetter_searchForReadAccess (ioObject.mProperty_mCurrentManager, constinArgument_inVarName, outArgument_outType, outArgument_outCppName, outArgument_outNameForCheckingFormalParameterUsing, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 646)) ;
-  }
-}
-
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension method '@localVarManager searchForReadWriteAccess'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionSetter_searchForReadWriteAccess (GGS_localVarManager & ioObject,
-                                               const GGS_lstring constinArgument_inVarName,
-                                               GGS_unifiedTypeMapEntry & outArgument_outType,
-                                               GGS_string & outArgument_outCppName,
-                                               GGS_string & outArgument_outNameForCheckingFormalParameterUsing,
-                                               Compiler * inCompiler
-                                               COMMA_UNUSED_LOCATION_ARGS) {
-  outArgument_outType.drop () ; // Release 'out' argument
-  outArgument_outCppName.drop () ; // Release 'out' argument
-  outArgument_outNameForCheckingFormalParameterUsing.drop () ; // Release 'out' argument
-  {
-  extensionSetter_searchForReadWriteAccess (ioObject.mProperty_mCurrentManager, constinArgument_inVarName, outArgument_outType, outArgument_outCppName, outArgument_outNameForCheckingFormalParameterUsing, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 730)) ;
-  }
-}
-
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension method '@localVarManager checkAutomatonStates'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionMethod_checkAutomatonStates (const GGS_localVarManager inObject,
-                                           const GGS_location constinArgument_inErrorLocation,
-                                           Compiler * inCompiler
-                                           COMMA_UNUSED_LOCATION_ARGS) {
-  const GGS_localVarManager temp_0 = inObject ;
-  extensionMethod_checkAutomatonStates (temp_0.readProperty_mCurrentManager (), constinArgument_inErrorLocation, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 886)) ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension method '@genericExtensionMethodListMap insertKey'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionSetter_insertKey (GGS_genericExtensionMethodListMap & ioObject,
-                                const GGS_string constinArgument_inKey,
-                                const GGS_lstring constinArgument_inValue,
-                                Compiler * inCompiler
-                                COMMA_UNUSED_LOCATION_ARGS) {
-  GalgasBool test_0 = GalgasBool::boolTrue ;
-  if (GalgasBool::boolTrue == test_0) {
-    const GGS_genericExtensionMethodListMap temp_1 = ioObject ;
-    test_0 = temp_1.readProperty_dictionary ().getter_hasKey (constinArgument_inKey COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas", 46)).boolEnum () ;
-    if (GalgasBool::boolTrue == test_0) {
-      GGS_lstringlist var_aList_2252 ;
-      const GGS_genericExtensionMethodListMap temp_2 = ioObject ;
-      temp_2.readProperty_dictionary ().method_searchKey (constinArgument_inKey, var_aList_2252, inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas", 47)) ;
-      {
-      var_aList_2252.setter_append (constinArgument_inValue, inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas", 48)) ;
-      }
-      ioObject.mProperty_dictionary.addAssignOperation (constinArgument_inKey, var_aList_2252, inCompiler  COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas", 49)) ;
-    }
-  }
-  if (GalgasBool::boolFalse == test_0) {
-    GGS_lstringlist temp_3 = GGS_lstringlist::init (inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas", 51)) ;
-    temp_3.plusPlusAssignOperation (GGS_lstringlist_2E_element::init_21_ (constinArgument_inValue, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas", 51)) ;
-    ioObject.mProperty_dictionary.addAssignOperation (constinArgument_inKey, temp_3, inCompiler  COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas", 51)) ;
-  }
-}
-
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension method '@descendantClassListMap insertKey'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionSetter_insertKey (GGS_descendantClassListMap & ioObject,
-                                const GGS_string constinArgument_inKey,
-                                const GGS_unifiedTypeMapEntry constinArgument_inType,
-                                Compiler * inCompiler
-                                COMMA_UNUSED_LOCATION_ARGS) {
-  GalgasBool test_0 = GalgasBool::boolTrue ;
-  if (GalgasBool::boolTrue == test_0) {
-    const GGS_descendantClassListMap temp_1 = ioObject ;
-    test_0 = temp_1.readProperty_dictionary ().getter_hasKey (constinArgument_inKey COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas", 115)).boolEnum () ;
-    if (GalgasBool::boolTrue == test_0) {
-      GGS_unifiedTypeMapEntryList var_aList_5068 ;
-      const GGS_descendantClassListMap temp_2 = ioObject ;
-      temp_2.readProperty_dictionary ().method_searchKey (constinArgument_inKey, var_aList_5068, inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas", 116)) ;
-      {
-      var_aList_5068.setter_append (constinArgument_inType, inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas", 117)) ;
-      }
-      ioObject.mProperty_dictionary.addAssignOperation (constinArgument_inKey, var_aList_5068, inCompiler  COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas", 118)) ;
-    }
-  }
-  if (GalgasBool::boolFalse == test_0) {
-    GGS_unifiedTypeMapEntryList temp_3 = GGS_unifiedTypeMapEntryList::init (inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas", 120)) ;
-    temp_3.plusPlusAssignOperation (GGS_unifiedTypeMapEntryList_2E_element::init_21_ (constinArgument_inType, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas", 120)) ;
-    ioObject.mProperty_dictionary.addAssignOperation (constinArgument_inKey, temp_3, inCompiler  COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas", 120)) ;
-  }
-}
-
-
-//--------------------------------------------------------------------------------------------------
-// @lexiqueIntrospectionExpressionAST reference class
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult GGS_lexiqueIntrospectionExpressionAST::objectCompare (const GGS_lexiqueIntrospectionExpressionAST & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    const size_t myObjectPtr = size_t (mObjectPtr) ;
-    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lexiqueIntrospectionExpressionAST::GGS_lexiqueIntrospectionExpressionAST (void) :
-GGS_semanticExpressionAST () {
-}
-
-//--- Synthetized initializer ----------------------------------------------------------------------
-
-GGS_lexiqueIntrospectionExpressionAST GGS_lexiqueIntrospectionExpressionAST::
-init_21__21_ (const GGS_lstring & in_mLexiqueComponentName,
-              const GGS_lstring & in_mLexiqueGetterName,
-              Compiler * inCompiler
-              COMMA_LOCATION_ARGS) {
-  cPtr_lexiqueIntrospectionExpressionAST * object = nullptr ;
-  macroMyNew (object, cPtr_lexiqueIntrospectionExpressionAST (inCompiler COMMA_THERE)) ;
-  object->lexiqueIntrospectionExpressionAST_init_21__21_ (in_mLexiqueComponentName, in_mLexiqueGetterName, inCompiler) ;
-  const GGS_lexiqueIntrospectionExpressionAST result (object) ;
-  macroDetachSharedObject (object) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_lexiqueIntrospectionExpressionAST::
-lexiqueIntrospectionExpressionAST_init_21__21_ (const GGS_lstring & in_mLexiqueComponentName,
-                                                const GGS_lstring & in_mLexiqueGetterName,
-                                                Compiler * /* inCompiler */) {
-  mProperty_mLexiqueComponentName = in_mLexiqueComponentName ;
-  mProperty_mLexiqueGetterName = in_mLexiqueGetterName ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lexiqueIntrospectionExpressionAST::GGS_lexiqueIntrospectionExpressionAST (const cPtr_lexiqueIntrospectionExpressionAST * inSourcePtr) :
-GGS_semanticExpressionAST (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_lexiqueIntrospectionExpressionAST) ;
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_lstring GGS_lexiqueIntrospectionExpressionAST::readProperty_mLexiqueComponentName (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_lstring () ;
-  }else{
-    cPtr_lexiqueIntrospectionExpressionAST * p = (cPtr_lexiqueIntrospectionExpressionAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_lexiqueIntrospectionExpressionAST) ;
-    return p->mProperty_mLexiqueComponentName ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lstring GGS_lexiqueIntrospectionExpressionAST::readProperty_mLexiqueGetterName (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_lstring () ;
-  }else{
-    cPtr_lexiqueIntrospectionExpressionAST * p = (cPtr_lexiqueIntrospectionExpressionAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_lexiqueIntrospectionExpressionAST) ;
-    return p->mProperty_mLexiqueGetterName ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-//Pointer class for @lexiqueIntrospectionExpressionAST class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_lexiqueIntrospectionExpressionAST::cPtr_lexiqueIntrospectionExpressionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_semanticExpressionAST (inCompiler COMMA_THERE),
-mProperty_mLexiqueComponentName (),
-mProperty_mLexiqueGetterName () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cPtr_lexiqueIntrospectionExpressionAST::cPtr_lexiqueIntrospectionExpressionAST (const GGS_lstring & in_mLexiqueComponentName,
-                                                                                const GGS_lstring & in_mLexiqueGetterName,
-                                                                                Compiler * inCompiler
-                                                                                COMMA_LOCATION_ARGS) :
-cPtr_semanticExpressionAST (inCompiler COMMA_THERE),
-mProperty_mLexiqueComponentName (),
-mProperty_mLexiqueGetterName () {
-  mProperty_mLexiqueComponentName = in_mLexiqueComponentName ;
-  mProperty_mLexiqueGetterName = in_mLexiqueGetterName ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * cPtr_lexiqueIntrospectionExpressionAST::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_lexiqueIntrospectionExpressionAST ;
-}
-
-void cPtr_lexiqueIntrospectionExpressionAST::description (String & ioString,
-                                                          const int32_t inIndentation) const {
-  ioString.appendCString ("[@lexiqueIntrospectionExpressionAST:") ;
-  mProperty_mLexiqueComponentName.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mLexiqueGetterName.description (ioString, inIndentation+1) ;
-  ioString.appendCString ("]") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-acPtr_class * cPtr_lexiqueIntrospectionExpressionAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_lexiqueIntrospectionExpressionAST (mProperty_mLexiqueComponentName, mProperty_mLexiqueGetterName, inCompiler COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_lexiqueIntrospectionExpressionAST::printNonNullClassInstanceProperties (void) const {
-    cPtr_semanticExpressionAST::printNonNullClassInstanceProperties () ;
-    mProperty_mLexiqueComponentName.printNonNullClassInstanceProperties ("mLexiqueComponentName") ;
-    mProperty_mLexiqueGetterName.printNonNullClassInstanceProperties ("mLexiqueGetterName") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-//     @lexiqueIntrospectionExpressionAST generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lexiqueIntrospectionExpressionAST ("lexiqueIntrospectionExpressionAST",
-                                                                                      & kTypeDescriptor_GALGAS_semanticExpressionAST) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_lexiqueIntrospectionExpressionAST::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_lexiqueIntrospectionExpressionAST ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_lexiqueIntrospectionExpressionAST::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_lexiqueIntrospectionExpressionAST (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lexiqueIntrospectionExpressionAST GGS_lexiqueIntrospectionExpressionAST::extractObject (const GGS_object & inObject,
-                                                                                            Compiler * inCompiler
-                                                                                            COMMA_LOCATION_ARGS) {
-  GGS_lexiqueIntrospectionExpressionAST result ;
-  const GGS_lexiqueIntrospectionExpressionAST * p = (const GGS_lexiqueIntrospectionExpressionAST *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_lexiqueIntrospectionExpressionAST *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("lexiqueIntrospectionExpressionAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-// @functionCallExpressionAST reference class
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult GGS_functionCallExpressionAST::objectCompare (const GGS_functionCallExpressionAST & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    const size_t myObjectPtr = size_t (mObjectPtr) ;
-    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_functionCallExpressionAST::GGS_functionCallExpressionAST (void) :
-GGS_semanticExpressionAST () {
-}
-
-//--- Synthetized initializer ----------------------------------------------------------------------
-
-GGS_functionCallExpressionAST GGS_functionCallExpressionAST::
-init_21__21_ (const GGS_lstring & in_mFunctionName,
-              const GGS_actualOutputArgumentList & in_mExpressionList,
-              Compiler * inCompiler
-              COMMA_LOCATION_ARGS) {
-  cPtr_functionCallExpressionAST * object = nullptr ;
-  macroMyNew (object, cPtr_functionCallExpressionAST (inCompiler COMMA_THERE)) ;
-  object->functionCallExpressionAST_init_21__21_ (in_mFunctionName, in_mExpressionList, inCompiler) ;
-  const GGS_functionCallExpressionAST result (object) ;
-  macroDetachSharedObject (object) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_functionCallExpressionAST::
-functionCallExpressionAST_init_21__21_ (const GGS_lstring & in_mFunctionName,
-                                        const GGS_actualOutputArgumentList & in_mExpressionList,
-                                        Compiler * /* inCompiler */) {
-  mProperty_mFunctionName = in_mFunctionName ;
-  mProperty_mExpressionList = in_mExpressionList ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_functionCallExpressionAST::GGS_functionCallExpressionAST (const cPtr_functionCallExpressionAST * inSourcePtr) :
-GGS_semanticExpressionAST (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_functionCallExpressionAST) ;
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_lstring GGS_functionCallExpressionAST::readProperty_mFunctionName (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_lstring () ;
-  }else{
-    cPtr_functionCallExpressionAST * p = (cPtr_functionCallExpressionAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_functionCallExpressionAST) ;
-    return p->mProperty_mFunctionName ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_actualOutputArgumentList GGS_functionCallExpressionAST::readProperty_mExpressionList (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_actualOutputArgumentList () ;
-  }else{
-    cPtr_functionCallExpressionAST * p = (cPtr_functionCallExpressionAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_functionCallExpressionAST) ;
-    return p->mProperty_mExpressionList ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-//Pointer class for @functionCallExpressionAST class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_functionCallExpressionAST::cPtr_functionCallExpressionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_semanticExpressionAST (inCompiler COMMA_THERE),
-mProperty_mFunctionName (),
-mProperty_mExpressionList () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cPtr_functionCallExpressionAST::cPtr_functionCallExpressionAST (const GGS_lstring & in_mFunctionName,
-                                                                const GGS_actualOutputArgumentList & in_mExpressionList,
-                                                                Compiler * inCompiler
-                                                                COMMA_LOCATION_ARGS) :
-cPtr_semanticExpressionAST (inCompiler COMMA_THERE),
-mProperty_mFunctionName (),
-mProperty_mExpressionList () {
-  mProperty_mFunctionName = in_mFunctionName ;
-  mProperty_mExpressionList = in_mExpressionList ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * cPtr_functionCallExpressionAST::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_functionCallExpressionAST ;
-}
-
-void cPtr_functionCallExpressionAST::description (String & ioString,
-                                                  const int32_t inIndentation) const {
-  ioString.appendCString ("[@functionCallExpressionAST:") ;
-  mProperty_mFunctionName.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mExpressionList.description (ioString, inIndentation+1) ;
-  ioString.appendCString ("]") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-acPtr_class * cPtr_functionCallExpressionAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_functionCallExpressionAST (mProperty_mFunctionName, mProperty_mExpressionList, inCompiler COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_functionCallExpressionAST::printNonNullClassInstanceProperties (void) const {
-    cPtr_semanticExpressionAST::printNonNullClassInstanceProperties () ;
-    mProperty_mFunctionName.printNonNullClassInstanceProperties ("mFunctionName") ;
-    mProperty_mExpressionList.printNonNullClassInstanceProperties ("mExpressionList") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-//     @functionCallExpressionAST generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_functionCallExpressionAST ("functionCallExpressionAST",
-                                                                              & kTypeDescriptor_GALGAS_semanticExpressionAST) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_functionCallExpressionAST::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_functionCallExpressionAST ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_functionCallExpressionAST::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_functionCallExpressionAST (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_functionCallExpressionAST GGS_functionCallExpressionAST::extractObject (const GGS_object & inObject,
-                                                                            Compiler * inCompiler
-                                                                            COMMA_LOCATION_ARGS) {
-  GGS_functionCallExpressionAST result ;
-  const GGS_functionCallExpressionAST * p = (const GGS_functionCallExpressionAST *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_functionCallExpressionAST *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("functionCallExpressionAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-// @classFuncExpressionAST reference class
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult GGS_classFuncExpressionAST::objectCompare (const GGS_classFuncExpressionAST & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    const size_t myObjectPtr = size_t (mObjectPtr) ;
-    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_classFuncExpressionAST::GGS_classFuncExpressionAST (void) :
-GGS_semanticExpressionAST () {
-}
-
-//--- Synthetized initializer ----------------------------------------------------------------------
-
-GGS_classFuncExpressionAST GGS_classFuncExpressionAST::
-init_21__21__21__21_ (const GGS_lstring & in_typeName,
-                      const GGS_lstring & in_classFuncName,
-                      const GGS_actualOutputArgumentList & in_expressions,
-                      const GGS_location & in_locationForOldStyleCollectionInitializerError,
-                      Compiler * inCompiler
-                      COMMA_LOCATION_ARGS) {
-  cPtr_classFuncExpressionAST * object = nullptr ;
-  macroMyNew (object, cPtr_classFuncExpressionAST (inCompiler COMMA_THERE)) ;
-  object->classFuncExpressionAST_init_21__21__21__21_ (in_typeName, in_classFuncName, in_expressions, in_locationForOldStyleCollectionInitializerError, inCompiler) ;
-  const GGS_classFuncExpressionAST result (object) ;
-  macroDetachSharedObject (object) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_classFuncExpressionAST::
-classFuncExpressionAST_init_21__21__21__21_ (const GGS_lstring & in_typeName,
-                                             const GGS_lstring & in_classFuncName,
-                                             const GGS_actualOutputArgumentList & in_expressions,
-                                             const GGS_location & in_locationForOldStyleCollectionInitializerError,
-                                             Compiler * /* inCompiler */) {
-  mProperty_typeName = in_typeName ;
-  mProperty_classFuncName = in_classFuncName ;
-  mProperty_expressions = in_expressions ;
-  mProperty_locationForOldStyleCollectionInitializerError = in_locationForOldStyleCollectionInitializerError ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_classFuncExpressionAST::GGS_classFuncExpressionAST (const cPtr_classFuncExpressionAST * inSourcePtr) :
-GGS_semanticExpressionAST (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_classFuncExpressionAST) ;
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_lstring GGS_classFuncExpressionAST::readProperty_typeName (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_lstring () ;
-  }else{
-    cPtr_classFuncExpressionAST * p = (cPtr_classFuncExpressionAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_classFuncExpressionAST) ;
-    return p->mProperty_typeName ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lstring GGS_classFuncExpressionAST::readProperty_classFuncName (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_lstring () ;
-  }else{
-    cPtr_classFuncExpressionAST * p = (cPtr_classFuncExpressionAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_classFuncExpressionAST) ;
-    return p->mProperty_classFuncName ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_actualOutputArgumentList GGS_classFuncExpressionAST::readProperty_expressions (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_actualOutputArgumentList () ;
-  }else{
-    cPtr_classFuncExpressionAST * p = (cPtr_classFuncExpressionAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_classFuncExpressionAST) ;
-    return p->mProperty_expressions ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_location GGS_classFuncExpressionAST::readProperty_locationForOldStyleCollectionInitializerError (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_location () ;
-  }else{
-    cPtr_classFuncExpressionAST * p = (cPtr_classFuncExpressionAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_classFuncExpressionAST) ;
-    return p->mProperty_locationForOldStyleCollectionInitializerError ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-//Pointer class for @classFuncExpressionAST class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_classFuncExpressionAST::cPtr_classFuncExpressionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_semanticExpressionAST (inCompiler COMMA_THERE),
-mProperty_typeName (),
-mProperty_classFuncName (),
-mProperty_expressions (),
-mProperty_locationForOldStyleCollectionInitializerError () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cPtr_classFuncExpressionAST::cPtr_classFuncExpressionAST (const GGS_lstring & in_typeName,
-                                                          const GGS_lstring & in_classFuncName,
-                                                          const GGS_actualOutputArgumentList & in_expressions,
-                                                          const GGS_location & in_locationForOldStyleCollectionInitializerError,
-                                                          Compiler * inCompiler
-                                                          COMMA_LOCATION_ARGS) :
-cPtr_semanticExpressionAST (inCompiler COMMA_THERE),
-mProperty_typeName (),
-mProperty_classFuncName (),
-mProperty_expressions (),
-mProperty_locationForOldStyleCollectionInitializerError () {
-  mProperty_typeName = in_typeName ;
-  mProperty_classFuncName = in_classFuncName ;
-  mProperty_expressions = in_expressions ;
-  mProperty_locationForOldStyleCollectionInitializerError = in_locationForOldStyleCollectionInitializerError ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * cPtr_classFuncExpressionAST::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_classFuncExpressionAST ;
-}
-
-void cPtr_classFuncExpressionAST::description (String & ioString,
-                                               const int32_t inIndentation) const {
-  ioString.appendCString ("[@classFuncExpressionAST:") ;
-  mProperty_typeName.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_classFuncName.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_expressions.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_locationForOldStyleCollectionInitializerError.description (ioString, inIndentation+1) ;
-  ioString.appendCString ("]") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-acPtr_class * cPtr_classFuncExpressionAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_classFuncExpressionAST (mProperty_typeName, mProperty_classFuncName, mProperty_expressions, mProperty_locationForOldStyleCollectionInitializerError, inCompiler COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_classFuncExpressionAST::printNonNullClassInstanceProperties (void) const {
-    cPtr_semanticExpressionAST::printNonNullClassInstanceProperties () ;
-    mProperty_typeName.printNonNullClassInstanceProperties ("typeName") ;
-    mProperty_classFuncName.printNonNullClassInstanceProperties ("classFuncName") ;
-    mProperty_expressions.printNonNullClassInstanceProperties ("expressions") ;
-    mProperty_locationForOldStyleCollectionInitializerError.printNonNullClassInstanceProperties ("locationForOldStyleCollectionInitializerError") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-//     @classFuncExpressionAST generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_classFuncExpressionAST ("classFuncExpressionAST",
-                                                                           & kTypeDescriptor_GALGAS_semanticExpressionAST) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_classFuncExpressionAST::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_classFuncExpressionAST ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_classFuncExpressionAST::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_classFuncExpressionAST (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_classFuncExpressionAST GGS_classFuncExpressionAST::extractObject (const GGS_object & inObject,
-                                                                      Compiler * inCompiler
-                                                                      COMMA_LOCATION_ARGS) {
-  GGS_classFuncExpressionAST result ;
-  const GGS_classFuncExpressionAST * p = (const GGS_classFuncExpressionAST *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_classFuncExpressionAST *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("classFuncExpressionAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-// @varInExpressionAST reference class
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult GGS_varInExpressionAST::objectCompare (const GGS_varInExpressionAST & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    const size_t myObjectPtr = size_t (mObjectPtr) ;
-    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_varInExpressionAST::GGS_varInExpressionAST (void) :
-GGS_semanticExpressionAST () {
-}
-
-//--- Synthetized initializer ----------------------------------------------------------------------
-
-GGS_varInExpressionAST GGS_varInExpressionAST::
-init_21_ (const GGS_lstring & in_mVarName,
-          Compiler * inCompiler
-          COMMA_LOCATION_ARGS) {
-  cPtr_varInExpressionAST * object = nullptr ;
-  macroMyNew (object, cPtr_varInExpressionAST (inCompiler COMMA_THERE)) ;
-  object->varInExpressionAST_init_21_ (in_mVarName, inCompiler) ;
-  const GGS_varInExpressionAST result (object) ;
-  macroDetachSharedObject (object) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_varInExpressionAST::
-varInExpressionAST_init_21_ (const GGS_lstring & in_mVarName,
-                             Compiler * /* inCompiler */) {
-  mProperty_mVarName = in_mVarName ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_varInExpressionAST::GGS_varInExpressionAST (const cPtr_varInExpressionAST * inSourcePtr) :
-GGS_semanticExpressionAST (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_varInExpressionAST) ;
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_lstring GGS_varInExpressionAST::readProperty_mVarName (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_lstring () ;
-  }else{
-    cPtr_varInExpressionAST * p = (cPtr_varInExpressionAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_varInExpressionAST) ;
-    return p->mProperty_mVarName ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-//Pointer class for @varInExpressionAST class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_varInExpressionAST::cPtr_varInExpressionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_semanticExpressionAST (inCompiler COMMA_THERE),
-mProperty_mVarName () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cPtr_varInExpressionAST::cPtr_varInExpressionAST (const GGS_lstring & in_mVarName,
-                                                  Compiler * inCompiler
-                                                  COMMA_LOCATION_ARGS) :
-cPtr_semanticExpressionAST (inCompiler COMMA_THERE),
-mProperty_mVarName () {
-  mProperty_mVarName = in_mVarName ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * cPtr_varInExpressionAST::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_varInExpressionAST ;
-}
-
-void cPtr_varInExpressionAST::description (String & ioString,
-                                           const int32_t inIndentation) const {
-  ioString.appendCString ("[@varInExpressionAST:") ;
-  mProperty_mVarName.description (ioString, inIndentation+1) ;
-  ioString.appendCString ("]") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-acPtr_class * cPtr_varInExpressionAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_varInExpressionAST (mProperty_mVarName, inCompiler COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_varInExpressionAST::printNonNullClassInstanceProperties (void) const {
-    cPtr_semanticExpressionAST::printNonNullClassInstanceProperties () ;
-    mProperty_mVarName.printNonNullClassInstanceProperties ("mVarName") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-//     @varInExpressionAST generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_varInExpressionAST ("varInExpressionAST",
-                                                                       & kTypeDescriptor_GALGAS_semanticExpressionAST) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_varInExpressionAST::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_varInExpressionAST ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_varInExpressionAST::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_varInExpressionAST (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_varInExpressionAST GGS_varInExpressionAST::extractObject (const GGS_object & inObject,
-                                                              Compiler * inCompiler
-                                                              COMMA_LOCATION_ARGS) {
-  GGS_varInExpressionAST result ;
-  const GGS_varInExpressionAST * p = (const GGS_varInExpressionAST *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_varInExpressionAST *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("varInExpressionAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-// @optionExpressionAST reference class
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult GGS_optionExpressionAST::objectCompare (const GGS_optionExpressionAST & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    const size_t myObjectPtr = size_t (mObjectPtr) ;
-    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_optionExpressionAST::GGS_optionExpressionAST (void) :
-GGS_semanticExpressionAST () {
-}
-
-//--- Synthetized initializer ----------------------------------------------------------------------
-
-GGS_optionExpressionAST GGS_optionExpressionAST::
-init_21__21__21_ (const GGS_lstring & in_mOptionComponentName,
-                  const GGS_lstring & in_mOptionEntryName,
-                  const GGS_lstring & in_mOptionGetterName,
-                  Compiler * inCompiler
-                  COMMA_LOCATION_ARGS) {
-  cPtr_optionExpressionAST * object = nullptr ;
-  macroMyNew (object, cPtr_optionExpressionAST (inCompiler COMMA_THERE)) ;
-  object->optionExpressionAST_init_21__21__21_ (in_mOptionComponentName, in_mOptionEntryName, in_mOptionGetterName, inCompiler) ;
-  const GGS_optionExpressionAST result (object) ;
-  macroDetachSharedObject (object) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_optionExpressionAST::
-optionExpressionAST_init_21__21__21_ (const GGS_lstring & in_mOptionComponentName,
-                                      const GGS_lstring & in_mOptionEntryName,
-                                      const GGS_lstring & in_mOptionGetterName,
-                                      Compiler * /* inCompiler */) {
-  mProperty_mOptionComponentName = in_mOptionComponentName ;
-  mProperty_mOptionEntryName = in_mOptionEntryName ;
-  mProperty_mOptionGetterName = in_mOptionGetterName ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_optionExpressionAST::GGS_optionExpressionAST (const cPtr_optionExpressionAST * inSourcePtr) :
-GGS_semanticExpressionAST (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_optionExpressionAST) ;
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_lstring GGS_optionExpressionAST::readProperty_mOptionComponentName (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_lstring () ;
-  }else{
-    cPtr_optionExpressionAST * p = (cPtr_optionExpressionAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_optionExpressionAST) ;
-    return p->mProperty_mOptionComponentName ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lstring GGS_optionExpressionAST::readProperty_mOptionEntryName (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_lstring () ;
-  }else{
-    cPtr_optionExpressionAST * p = (cPtr_optionExpressionAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_optionExpressionAST) ;
-    return p->mProperty_mOptionEntryName ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lstring GGS_optionExpressionAST::readProperty_mOptionGetterName (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_lstring () ;
-  }else{
-    cPtr_optionExpressionAST * p = (cPtr_optionExpressionAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_optionExpressionAST) ;
-    return p->mProperty_mOptionGetterName ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-//Pointer class for @optionExpressionAST class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_optionExpressionAST::cPtr_optionExpressionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_semanticExpressionAST (inCompiler COMMA_THERE),
-mProperty_mOptionComponentName (),
-mProperty_mOptionEntryName (),
-mProperty_mOptionGetterName () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cPtr_optionExpressionAST::cPtr_optionExpressionAST (const GGS_lstring & in_mOptionComponentName,
-                                                    const GGS_lstring & in_mOptionEntryName,
-                                                    const GGS_lstring & in_mOptionGetterName,
-                                                    Compiler * inCompiler
-                                                    COMMA_LOCATION_ARGS) :
-cPtr_semanticExpressionAST (inCompiler COMMA_THERE),
-mProperty_mOptionComponentName (),
-mProperty_mOptionEntryName (),
-mProperty_mOptionGetterName () {
-  mProperty_mOptionComponentName = in_mOptionComponentName ;
-  mProperty_mOptionEntryName = in_mOptionEntryName ;
-  mProperty_mOptionGetterName = in_mOptionGetterName ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * cPtr_optionExpressionAST::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_optionExpressionAST ;
-}
-
-void cPtr_optionExpressionAST::description (String & ioString,
-                                            const int32_t inIndentation) const {
-  ioString.appendCString ("[@optionExpressionAST:") ;
-  mProperty_mOptionComponentName.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mOptionEntryName.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mOptionGetterName.description (ioString, inIndentation+1) ;
-  ioString.appendCString ("]") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-acPtr_class * cPtr_optionExpressionAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_optionExpressionAST (mProperty_mOptionComponentName, mProperty_mOptionEntryName, mProperty_mOptionGetterName, inCompiler COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_optionExpressionAST::printNonNullClassInstanceProperties (void) const {
-    cPtr_semanticExpressionAST::printNonNullClassInstanceProperties () ;
-    mProperty_mOptionComponentName.printNonNullClassInstanceProperties ("mOptionComponentName") ;
-    mProperty_mOptionEntryName.printNonNullClassInstanceProperties ("mOptionEntryName") ;
-    mProperty_mOptionGetterName.printNonNullClassInstanceProperties ("mOptionGetterName") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-//     @optionExpressionAST generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_optionExpressionAST ("optionExpressionAST",
-                                                                        & kTypeDescriptor_GALGAS_semanticExpressionAST) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_optionExpressionAST::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_optionExpressionAST ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_optionExpressionAST::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_optionExpressionAST (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_optionExpressionAST GGS_optionExpressionAST::extractObject (const GGS_object & inObject,
-                                                                Compiler * inCompiler
-                                                                COMMA_LOCATION_ARGS) {
-  GGS_optionExpressionAST result ;
-  const GGS_optionExpressionAST * p = (const GGS_optionExpressionAST *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_optionExpressionAST *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("optionExpressionAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-// @filewrapperObjectInstanciationInExpressionAST reference class
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult GGS_filewrapperObjectInstanciationInExpressionAST::objectCompare (const GGS_filewrapperObjectInstanciationInExpressionAST & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    const size_t myObjectPtr = size_t (mObjectPtr) ;
-    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_filewrapperObjectInstanciationInExpressionAST::GGS_filewrapperObjectInstanciationInExpressionAST (void) :
-GGS_semanticExpressionAST () {
-}
-
-//--- Synthetized initializer ----------------------------------------------------------------------
-
-GGS_filewrapperObjectInstanciationInExpressionAST GGS_filewrapperObjectInstanciationInExpressionAST::
-init_21_ (const GGS_lstring & in_mFilewrapperName,
-          Compiler * inCompiler
-          COMMA_LOCATION_ARGS) {
-  cPtr_filewrapperObjectInstanciationInExpressionAST * object = nullptr ;
-  macroMyNew (object, cPtr_filewrapperObjectInstanciationInExpressionAST (inCompiler COMMA_THERE)) ;
-  object->filewrapperObjectInstanciationInExpressionAST_init_21_ (in_mFilewrapperName, inCompiler) ;
-  const GGS_filewrapperObjectInstanciationInExpressionAST result (object) ;
-  macroDetachSharedObject (object) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_filewrapperObjectInstanciationInExpressionAST::
-filewrapperObjectInstanciationInExpressionAST_init_21_ (const GGS_lstring & in_mFilewrapperName,
-                                                        Compiler * /* inCompiler */) {
-  mProperty_mFilewrapperName = in_mFilewrapperName ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_filewrapperObjectInstanciationInExpressionAST::GGS_filewrapperObjectInstanciationInExpressionAST (const cPtr_filewrapperObjectInstanciationInExpressionAST * inSourcePtr) :
-GGS_semanticExpressionAST (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_filewrapperObjectInstanciationInExpressionAST) ;
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_lstring GGS_filewrapperObjectInstanciationInExpressionAST::readProperty_mFilewrapperName (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_lstring () ;
-  }else{
-    cPtr_filewrapperObjectInstanciationInExpressionAST * p = (cPtr_filewrapperObjectInstanciationInExpressionAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_filewrapperObjectInstanciationInExpressionAST) ;
-    return p->mProperty_mFilewrapperName ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-//Pointer class for @filewrapperObjectInstanciationInExpressionAST class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_filewrapperObjectInstanciationInExpressionAST::cPtr_filewrapperObjectInstanciationInExpressionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_semanticExpressionAST (inCompiler COMMA_THERE),
-mProperty_mFilewrapperName () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cPtr_filewrapperObjectInstanciationInExpressionAST::cPtr_filewrapperObjectInstanciationInExpressionAST (const GGS_lstring & in_mFilewrapperName,
-                                                                                                        Compiler * inCompiler
-                                                                                                        COMMA_LOCATION_ARGS) :
-cPtr_semanticExpressionAST (inCompiler COMMA_THERE),
-mProperty_mFilewrapperName () {
-  mProperty_mFilewrapperName = in_mFilewrapperName ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * cPtr_filewrapperObjectInstanciationInExpressionAST::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_filewrapperObjectInstanciationInExpressionAST ;
-}
-
-void cPtr_filewrapperObjectInstanciationInExpressionAST::description (String & ioString,
-                                                                      const int32_t inIndentation) const {
-  ioString.appendCString ("[@filewrapperObjectInstanciationInExpressionAST:") ;
-  mProperty_mFilewrapperName.description (ioString, inIndentation+1) ;
-  ioString.appendCString ("]") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-acPtr_class * cPtr_filewrapperObjectInstanciationInExpressionAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_filewrapperObjectInstanciationInExpressionAST (mProperty_mFilewrapperName, inCompiler COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_filewrapperObjectInstanciationInExpressionAST::printNonNullClassInstanceProperties (void) const {
-    cPtr_semanticExpressionAST::printNonNullClassInstanceProperties () ;
-    mProperty_mFilewrapperName.printNonNullClassInstanceProperties ("mFilewrapperName") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-//     @filewrapperObjectInstanciationInExpressionAST generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_filewrapperObjectInstanciationInExpressionAST ("filewrapperObjectInstanciationInExpressionAST",
-                                                                                                  & kTypeDescriptor_GALGAS_semanticExpressionAST) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_filewrapperObjectInstanciationInExpressionAST::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_filewrapperObjectInstanciationInExpressionAST ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_filewrapperObjectInstanciationInExpressionAST::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_filewrapperObjectInstanciationInExpressionAST (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_filewrapperObjectInstanciationInExpressionAST GGS_filewrapperObjectInstanciationInExpressionAST::extractObject (const GGS_object & inObject,
-                                                                                                                    Compiler * inCompiler
-                                                                                                                    COMMA_LOCATION_ARGS) {
-  GGS_filewrapperObjectInstanciationInExpressionAST result ;
-  const GGS_filewrapperObjectInstanciationInExpressionAST * p = (const GGS_filewrapperObjectInstanciationInExpressionAST *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_filewrapperObjectInstanciationInExpressionAST *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("filewrapperObjectInstanciationInExpressionAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-// @filewrapperInExpressionAST reference class
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult GGS_filewrapperInExpressionAST::objectCompare (const GGS_filewrapperInExpressionAST & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    const size_t myObjectPtr = size_t (mObjectPtr) ;
-    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_filewrapperInExpressionAST::GGS_filewrapperInExpressionAST (void) :
-GGS_semanticExpressionAST () {
-}
-
-//--- Synthetized initializer ----------------------------------------------------------------------
-
-GGS_filewrapperInExpressionAST GGS_filewrapperInExpressionAST::
-init_21__21_ (const GGS_lstring & in_mFilewrapperName,
-              const GGS_lstring & in_mFilewrapperPath,
-              Compiler * inCompiler
-              COMMA_LOCATION_ARGS) {
-  cPtr_filewrapperInExpressionAST * object = nullptr ;
-  macroMyNew (object, cPtr_filewrapperInExpressionAST (inCompiler COMMA_THERE)) ;
-  object->filewrapperInExpressionAST_init_21__21_ (in_mFilewrapperName, in_mFilewrapperPath, inCompiler) ;
-  const GGS_filewrapperInExpressionAST result (object) ;
-  macroDetachSharedObject (object) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_filewrapperInExpressionAST::
-filewrapperInExpressionAST_init_21__21_ (const GGS_lstring & in_mFilewrapperName,
-                                         const GGS_lstring & in_mFilewrapperPath,
-                                         Compiler * /* inCompiler */) {
-  mProperty_mFilewrapperName = in_mFilewrapperName ;
-  mProperty_mFilewrapperPath = in_mFilewrapperPath ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_filewrapperInExpressionAST::GGS_filewrapperInExpressionAST (const cPtr_filewrapperInExpressionAST * inSourcePtr) :
-GGS_semanticExpressionAST (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_filewrapperInExpressionAST) ;
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_lstring GGS_filewrapperInExpressionAST::readProperty_mFilewrapperName (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_lstring () ;
-  }else{
-    cPtr_filewrapperInExpressionAST * p = (cPtr_filewrapperInExpressionAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_filewrapperInExpressionAST) ;
-    return p->mProperty_mFilewrapperName ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lstring GGS_filewrapperInExpressionAST::readProperty_mFilewrapperPath (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_lstring () ;
-  }else{
-    cPtr_filewrapperInExpressionAST * p = (cPtr_filewrapperInExpressionAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_filewrapperInExpressionAST) ;
-    return p->mProperty_mFilewrapperPath ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-//Pointer class for @filewrapperInExpressionAST class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_filewrapperInExpressionAST::cPtr_filewrapperInExpressionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_semanticExpressionAST (inCompiler COMMA_THERE),
-mProperty_mFilewrapperName (),
-mProperty_mFilewrapperPath () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cPtr_filewrapperInExpressionAST::cPtr_filewrapperInExpressionAST (const GGS_lstring & in_mFilewrapperName,
-                                                                  const GGS_lstring & in_mFilewrapperPath,
-                                                                  Compiler * inCompiler
-                                                                  COMMA_LOCATION_ARGS) :
-cPtr_semanticExpressionAST (inCompiler COMMA_THERE),
-mProperty_mFilewrapperName (),
-mProperty_mFilewrapperPath () {
-  mProperty_mFilewrapperName = in_mFilewrapperName ;
-  mProperty_mFilewrapperPath = in_mFilewrapperPath ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * cPtr_filewrapperInExpressionAST::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_filewrapperInExpressionAST ;
-}
-
-void cPtr_filewrapperInExpressionAST::description (String & ioString,
-                                                   const int32_t inIndentation) const {
-  ioString.appendCString ("[@filewrapperInExpressionAST:") ;
-  mProperty_mFilewrapperName.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mFilewrapperPath.description (ioString, inIndentation+1) ;
-  ioString.appendCString ("]") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-acPtr_class * cPtr_filewrapperInExpressionAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_filewrapperInExpressionAST (mProperty_mFilewrapperName, mProperty_mFilewrapperPath, inCompiler COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_filewrapperInExpressionAST::printNonNullClassInstanceProperties (void) const {
-    cPtr_semanticExpressionAST::printNonNullClassInstanceProperties () ;
-    mProperty_mFilewrapperName.printNonNullClassInstanceProperties ("mFilewrapperName") ;
-    mProperty_mFilewrapperPath.printNonNullClassInstanceProperties ("mFilewrapperPath") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-//     @filewrapperInExpressionAST generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_filewrapperInExpressionAST ("filewrapperInExpressionAST",
-                                                                               & kTypeDescriptor_GALGAS_semanticExpressionAST) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_filewrapperInExpressionAST::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_filewrapperInExpressionAST ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_filewrapperInExpressionAST::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_filewrapperInExpressionAST (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_filewrapperInExpressionAST GGS_filewrapperInExpressionAST::extractObject (const GGS_object & inObject,
-                                                                              Compiler * inCompiler
-                                                                              COMMA_LOCATION_ARGS) {
-  GGS_filewrapperInExpressionAST result ;
-  const GGS_filewrapperInExpressionAST * p = (const GGS_filewrapperInExpressionAST *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_filewrapperInExpressionAST *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("filewrapperInExpressionAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-// @filewrapperTemplateInExpressionAST reference class
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult GGS_filewrapperTemplateInExpressionAST::objectCompare (const GGS_filewrapperTemplateInExpressionAST & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    const size_t myObjectPtr = size_t (mObjectPtr) ;
-    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_filewrapperTemplateInExpressionAST::GGS_filewrapperTemplateInExpressionAST (void) :
-GGS_semanticExpressionAST () {
-}
-
-//--- Synthetized initializer ----------------------------------------------------------------------
-
-GGS_filewrapperTemplateInExpressionAST GGS_filewrapperTemplateInExpressionAST::
-init_21__21__21_ (const GGS_lstring & in_mFilewrapperName,
-                  const GGS_lstring & in_mFilewrapperTemplateName,
-                  const GGS_actualOutputArgumentList & in_mExpressions,
-                  Compiler * inCompiler
-                  COMMA_LOCATION_ARGS) {
-  cPtr_filewrapperTemplateInExpressionAST * object = nullptr ;
-  macroMyNew (object, cPtr_filewrapperTemplateInExpressionAST (inCompiler COMMA_THERE)) ;
-  object->filewrapperTemplateInExpressionAST_init_21__21__21_ (in_mFilewrapperName, in_mFilewrapperTemplateName, in_mExpressions, inCompiler) ;
-  const GGS_filewrapperTemplateInExpressionAST result (object) ;
-  macroDetachSharedObject (object) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_filewrapperTemplateInExpressionAST::
-filewrapperTemplateInExpressionAST_init_21__21__21_ (const GGS_lstring & in_mFilewrapperName,
-                                                     const GGS_lstring & in_mFilewrapperTemplateName,
-                                                     const GGS_actualOutputArgumentList & in_mExpressions,
-                                                     Compiler * /* inCompiler */) {
-  mProperty_mFilewrapperName = in_mFilewrapperName ;
-  mProperty_mFilewrapperTemplateName = in_mFilewrapperTemplateName ;
-  mProperty_mExpressions = in_mExpressions ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_filewrapperTemplateInExpressionAST::GGS_filewrapperTemplateInExpressionAST (const cPtr_filewrapperTemplateInExpressionAST * inSourcePtr) :
-GGS_semanticExpressionAST (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_filewrapperTemplateInExpressionAST) ;
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_lstring GGS_filewrapperTemplateInExpressionAST::readProperty_mFilewrapperName (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_lstring () ;
-  }else{
-    cPtr_filewrapperTemplateInExpressionAST * p = (cPtr_filewrapperTemplateInExpressionAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_filewrapperTemplateInExpressionAST) ;
-    return p->mProperty_mFilewrapperName ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lstring GGS_filewrapperTemplateInExpressionAST::readProperty_mFilewrapperTemplateName (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_lstring () ;
-  }else{
-    cPtr_filewrapperTemplateInExpressionAST * p = (cPtr_filewrapperTemplateInExpressionAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_filewrapperTemplateInExpressionAST) ;
-    return p->mProperty_mFilewrapperTemplateName ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_actualOutputArgumentList GGS_filewrapperTemplateInExpressionAST::readProperty_mExpressions (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_actualOutputArgumentList () ;
-  }else{
-    cPtr_filewrapperTemplateInExpressionAST * p = (cPtr_filewrapperTemplateInExpressionAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_filewrapperTemplateInExpressionAST) ;
-    return p->mProperty_mExpressions ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-//Pointer class for @filewrapperTemplateInExpressionAST class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_filewrapperTemplateInExpressionAST::cPtr_filewrapperTemplateInExpressionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_semanticExpressionAST (inCompiler COMMA_THERE),
-mProperty_mFilewrapperName (),
-mProperty_mFilewrapperTemplateName (),
-mProperty_mExpressions () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cPtr_filewrapperTemplateInExpressionAST::cPtr_filewrapperTemplateInExpressionAST (const GGS_lstring & in_mFilewrapperName,
-                                                                                  const GGS_lstring & in_mFilewrapperTemplateName,
-                                                                                  const GGS_actualOutputArgumentList & in_mExpressions,
-                                                                                  Compiler * inCompiler
-                                                                                  COMMA_LOCATION_ARGS) :
-cPtr_semanticExpressionAST (inCompiler COMMA_THERE),
-mProperty_mFilewrapperName (),
-mProperty_mFilewrapperTemplateName (),
-mProperty_mExpressions () {
-  mProperty_mFilewrapperName = in_mFilewrapperName ;
-  mProperty_mFilewrapperTemplateName = in_mFilewrapperTemplateName ;
-  mProperty_mExpressions = in_mExpressions ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * cPtr_filewrapperTemplateInExpressionAST::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_filewrapperTemplateInExpressionAST ;
-}
-
-void cPtr_filewrapperTemplateInExpressionAST::description (String & ioString,
-                                                           const int32_t inIndentation) const {
-  ioString.appendCString ("[@filewrapperTemplateInExpressionAST:") ;
-  mProperty_mFilewrapperName.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mFilewrapperTemplateName.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mExpressions.description (ioString, inIndentation+1) ;
-  ioString.appendCString ("]") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-acPtr_class * cPtr_filewrapperTemplateInExpressionAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_filewrapperTemplateInExpressionAST (mProperty_mFilewrapperName, mProperty_mFilewrapperTemplateName, mProperty_mExpressions, inCompiler COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_filewrapperTemplateInExpressionAST::printNonNullClassInstanceProperties (void) const {
-    cPtr_semanticExpressionAST::printNonNullClassInstanceProperties () ;
-    mProperty_mFilewrapperName.printNonNullClassInstanceProperties ("mFilewrapperName") ;
-    mProperty_mFilewrapperTemplateName.printNonNullClassInstanceProperties ("mFilewrapperTemplateName") ;
-    mProperty_mExpressions.printNonNullClassInstanceProperties ("mExpressions") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-//     @filewrapperTemplateInExpressionAST generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_filewrapperTemplateInExpressionAST ("filewrapperTemplateInExpressionAST",
-                                                                                       & kTypeDescriptor_GALGAS_semanticExpressionAST) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_filewrapperTemplateInExpressionAST::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_filewrapperTemplateInExpressionAST ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_filewrapperTemplateInExpressionAST::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_filewrapperTemplateInExpressionAST (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_filewrapperTemplateInExpressionAST GGS_filewrapperTemplateInExpressionAST::extractObject (const GGS_object & inObject,
-                                                                                              Compiler * inCompiler
-                                                                                              COMMA_LOCATION_ARGS) {
-  GGS_filewrapperTemplateInExpressionAST result ;
-  const GGS_filewrapperTemplateInExpressionAST * p = (const GGS_filewrapperTemplateInExpressionAST *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_filewrapperTemplateInExpressionAST *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("filewrapperTemplateInExpressionAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-// @testDynamicClassInExpressionAST reference class
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult GGS_testDynamicClassInExpressionAST::objectCompare (const GGS_testDynamicClassInExpressionAST & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    const size_t myObjectPtr = size_t (mObjectPtr) ;
-    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_testDynamicClassInExpressionAST::GGS_testDynamicClassInExpressionAST (void) :
-GGS_semanticExpressionAST () {
-}
-
-//--- Synthetized initializer ----------------------------------------------------------------------
-
-GGS_testDynamicClassInExpressionAST GGS_testDynamicClassInExpressionAST::
-init_21__21__21__21_ (const GGS_semanticExpressionAST & in_mReceiverExpression,
-                      const GGS_location & in_mEndOfReceiverExpression,
-                      const GGS_dynamicTypeComparisonKind & in_mTypeComparisonKind,
-                      const GGS_lstring & in_mTypeName,
-                      Compiler * inCompiler
-                      COMMA_LOCATION_ARGS) {
-  cPtr_testDynamicClassInExpressionAST * object = nullptr ;
-  macroMyNew (object, cPtr_testDynamicClassInExpressionAST (inCompiler COMMA_THERE)) ;
-  object->testDynamicClassInExpressionAST_init_21__21__21__21_ (in_mReceiverExpression, in_mEndOfReceiverExpression, in_mTypeComparisonKind, in_mTypeName, inCompiler) ;
-  const GGS_testDynamicClassInExpressionAST result (object) ;
-  macroDetachSharedObject (object) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_testDynamicClassInExpressionAST::
-testDynamicClassInExpressionAST_init_21__21__21__21_ (const GGS_semanticExpressionAST & in_mReceiverExpression,
-                                                      const GGS_location & in_mEndOfReceiverExpression,
-                                                      const GGS_dynamicTypeComparisonKind & in_mTypeComparisonKind,
-                                                      const GGS_lstring & in_mTypeName,
-                                                      Compiler * /* inCompiler */) {
-  mProperty_mReceiverExpression = in_mReceiverExpression ;
-  mProperty_mEndOfReceiverExpression = in_mEndOfReceiverExpression ;
-  mProperty_mTypeComparisonKind = in_mTypeComparisonKind ;
-  mProperty_mTypeName = in_mTypeName ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_testDynamicClassInExpressionAST::GGS_testDynamicClassInExpressionAST (const cPtr_testDynamicClassInExpressionAST * inSourcePtr) :
-GGS_semanticExpressionAST (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_testDynamicClassInExpressionAST) ;
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_semanticExpressionAST GGS_testDynamicClassInExpressionAST::readProperty_mReceiverExpression (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_semanticExpressionAST () ;
-  }else{
-    cPtr_testDynamicClassInExpressionAST * p = (cPtr_testDynamicClassInExpressionAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_testDynamicClassInExpressionAST) ;
-    return p->mProperty_mReceiverExpression ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_location GGS_testDynamicClassInExpressionAST::readProperty_mEndOfReceiverExpression (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_location () ;
-  }else{
-    cPtr_testDynamicClassInExpressionAST * p = (cPtr_testDynamicClassInExpressionAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_testDynamicClassInExpressionAST) ;
-    return p->mProperty_mEndOfReceiverExpression ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_dynamicTypeComparisonKind GGS_testDynamicClassInExpressionAST::readProperty_mTypeComparisonKind (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_dynamicTypeComparisonKind () ;
-  }else{
-    cPtr_testDynamicClassInExpressionAST * p = (cPtr_testDynamicClassInExpressionAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_testDynamicClassInExpressionAST) ;
-    return p->mProperty_mTypeComparisonKind ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lstring GGS_testDynamicClassInExpressionAST::readProperty_mTypeName (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_lstring () ;
-  }else{
-    cPtr_testDynamicClassInExpressionAST * p = (cPtr_testDynamicClassInExpressionAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_testDynamicClassInExpressionAST) ;
-    return p->mProperty_mTypeName ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-//Pointer class for @testDynamicClassInExpressionAST class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_testDynamicClassInExpressionAST::cPtr_testDynamicClassInExpressionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_semanticExpressionAST (inCompiler COMMA_THERE),
-mProperty_mReceiverExpression (),
-mProperty_mEndOfReceiverExpression (),
-mProperty_mTypeComparisonKind (),
-mProperty_mTypeName () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cPtr_testDynamicClassInExpressionAST::cPtr_testDynamicClassInExpressionAST (const GGS_semanticExpressionAST & in_mReceiverExpression,
-                                                                            const GGS_location & in_mEndOfReceiverExpression,
-                                                                            const GGS_dynamicTypeComparisonKind & in_mTypeComparisonKind,
-                                                                            const GGS_lstring & in_mTypeName,
-                                                                            Compiler * inCompiler
-                                                                            COMMA_LOCATION_ARGS) :
-cPtr_semanticExpressionAST (inCompiler COMMA_THERE),
-mProperty_mReceiverExpression (),
-mProperty_mEndOfReceiverExpression (),
-mProperty_mTypeComparisonKind (),
-mProperty_mTypeName () {
-  mProperty_mReceiverExpression = in_mReceiverExpression ;
-  mProperty_mEndOfReceiverExpression = in_mEndOfReceiverExpression ;
-  mProperty_mTypeComparisonKind = in_mTypeComparisonKind ;
-  mProperty_mTypeName = in_mTypeName ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * cPtr_testDynamicClassInExpressionAST::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_testDynamicClassInExpressionAST ;
-}
-
-void cPtr_testDynamicClassInExpressionAST::description (String & ioString,
-                                                        const int32_t inIndentation) const {
-  ioString.appendCString ("[@testDynamicClassInExpressionAST:") ;
-  mProperty_mReceiverExpression.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mEndOfReceiverExpression.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mTypeComparisonKind.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mTypeName.description (ioString, inIndentation+1) ;
-  ioString.appendCString ("]") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-acPtr_class * cPtr_testDynamicClassInExpressionAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_testDynamicClassInExpressionAST (mProperty_mReceiverExpression, mProperty_mEndOfReceiverExpression, mProperty_mTypeComparisonKind, mProperty_mTypeName, inCompiler COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_testDynamicClassInExpressionAST::printNonNullClassInstanceProperties (void) const {
-    cPtr_semanticExpressionAST::printNonNullClassInstanceProperties () ;
-    mProperty_mReceiverExpression.printNonNullClassInstanceProperties ("mReceiverExpression") ;
-    mProperty_mEndOfReceiverExpression.printNonNullClassInstanceProperties ("mEndOfReceiverExpression") ;
-    mProperty_mTypeComparisonKind.printNonNullClassInstanceProperties ("mTypeComparisonKind") ;
-    mProperty_mTypeName.printNonNullClassInstanceProperties ("mTypeName") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-//     @testDynamicClassInExpressionAST generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_testDynamicClassInExpressionAST ("testDynamicClassInExpressionAST",
-                                                                                    & kTypeDescriptor_GALGAS_semanticExpressionAST) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_testDynamicClassInExpressionAST::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_testDynamicClassInExpressionAST ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_testDynamicClassInExpressionAST::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_testDynamicClassInExpressionAST (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_testDynamicClassInExpressionAST GGS_testDynamicClassInExpressionAST::extractObject (const GGS_object & inObject,
-                                                                                        Compiler * inCompiler
-                                                                                        COMMA_LOCATION_ARGS) {
-  GGS_testDynamicClassInExpressionAST result ;
-  const GGS_testDynamicClassInExpressionAST * p = (const GGS_testDynamicClassInExpressionAST *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_testDynamicClassInExpressionAST *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("testDynamicClassInExpressionAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-// @castInExpressionAST reference class
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult GGS_castInExpressionAST::objectCompare (const GGS_castInExpressionAST & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    const size_t myObjectPtr = size_t (mObjectPtr) ;
-    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_castInExpressionAST::GGS_castInExpressionAST (void) :
-GGS_semanticExpressionAST () {
-}
-
-//--- Synthetized initializer ----------------------------------------------------------------------
-
-GGS_castInExpressionAST GGS_castInExpressionAST::
-init_21__21__21_ (const GGS_semanticExpressionAST & in_mReceiverExpression,
-                  const GGS_location & in_mEndOfReceiverExpression,
-                  const GGS_lstring & in_mTypeName,
-                  Compiler * inCompiler
-                  COMMA_LOCATION_ARGS) {
-  cPtr_castInExpressionAST * object = nullptr ;
-  macroMyNew (object, cPtr_castInExpressionAST (inCompiler COMMA_THERE)) ;
-  object->castInExpressionAST_init_21__21__21_ (in_mReceiverExpression, in_mEndOfReceiverExpression, in_mTypeName, inCompiler) ;
-  const GGS_castInExpressionAST result (object) ;
-  macroDetachSharedObject (object) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_castInExpressionAST::
-castInExpressionAST_init_21__21__21_ (const GGS_semanticExpressionAST & in_mReceiverExpression,
-                                      const GGS_location & in_mEndOfReceiverExpression,
-                                      const GGS_lstring & in_mTypeName,
-                                      Compiler * /* inCompiler */) {
-  mProperty_mReceiverExpression = in_mReceiverExpression ;
-  mProperty_mEndOfReceiverExpression = in_mEndOfReceiverExpression ;
-  mProperty_mTypeName = in_mTypeName ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_castInExpressionAST::GGS_castInExpressionAST (const cPtr_castInExpressionAST * inSourcePtr) :
-GGS_semanticExpressionAST (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_castInExpressionAST) ;
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_semanticExpressionAST GGS_castInExpressionAST::readProperty_mReceiverExpression (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_semanticExpressionAST () ;
-  }else{
-    cPtr_castInExpressionAST * p = (cPtr_castInExpressionAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_castInExpressionAST) ;
-    return p->mProperty_mReceiverExpression ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_location GGS_castInExpressionAST::readProperty_mEndOfReceiverExpression (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_location () ;
-  }else{
-    cPtr_castInExpressionAST * p = (cPtr_castInExpressionAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_castInExpressionAST) ;
-    return p->mProperty_mEndOfReceiverExpression ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lstring GGS_castInExpressionAST::readProperty_mTypeName (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_lstring () ;
-  }else{
-    cPtr_castInExpressionAST * p = (cPtr_castInExpressionAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_castInExpressionAST) ;
-    return p->mProperty_mTypeName ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-//Pointer class for @castInExpressionAST class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_castInExpressionAST::cPtr_castInExpressionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_semanticExpressionAST (inCompiler COMMA_THERE),
-mProperty_mReceiverExpression (),
-mProperty_mEndOfReceiverExpression (),
-mProperty_mTypeName () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cPtr_castInExpressionAST::cPtr_castInExpressionAST (const GGS_semanticExpressionAST & in_mReceiverExpression,
-                                                    const GGS_location & in_mEndOfReceiverExpression,
-                                                    const GGS_lstring & in_mTypeName,
-                                                    Compiler * inCompiler
-                                                    COMMA_LOCATION_ARGS) :
-cPtr_semanticExpressionAST (inCompiler COMMA_THERE),
-mProperty_mReceiverExpression (),
-mProperty_mEndOfReceiverExpression (),
-mProperty_mTypeName () {
-  mProperty_mReceiverExpression = in_mReceiverExpression ;
-  mProperty_mEndOfReceiverExpression = in_mEndOfReceiverExpression ;
-  mProperty_mTypeName = in_mTypeName ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * cPtr_castInExpressionAST::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_castInExpressionAST ;
-}
-
-void cPtr_castInExpressionAST::description (String & ioString,
-                                            const int32_t inIndentation) const {
-  ioString.appendCString ("[@castInExpressionAST:") ;
-  mProperty_mReceiverExpression.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mEndOfReceiverExpression.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mTypeName.description (ioString, inIndentation+1) ;
-  ioString.appendCString ("]") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-acPtr_class * cPtr_castInExpressionAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_castInExpressionAST (mProperty_mReceiverExpression, mProperty_mEndOfReceiverExpression, mProperty_mTypeName, inCompiler COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_castInExpressionAST::printNonNullClassInstanceProperties (void) const {
-    cPtr_semanticExpressionAST::printNonNullClassInstanceProperties () ;
-    mProperty_mReceiverExpression.printNonNullClassInstanceProperties ("mReceiverExpression") ;
-    mProperty_mEndOfReceiverExpression.printNonNullClassInstanceProperties ("mEndOfReceiverExpression") ;
-    mProperty_mTypeName.printNonNullClassInstanceProperties ("mTypeName") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-//     @castInExpressionAST generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_castInExpressionAST ("castInExpressionAST",
-                                                                        & kTypeDescriptor_GALGAS_semanticExpressionAST) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_castInExpressionAST::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_castInExpressionAST ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_castInExpressionAST::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_castInExpressionAST (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_castInExpressionAST GGS_castInExpressionAST::extractObject (const GGS_object & inObject,
-                                                                Compiler * inCompiler
-                                                                COMMA_LOCATION_ARGS) {
-  GGS_castInExpressionAST result ;
-  const GGS_castInExpressionAST * p = (const GGS_castInExpressionAST *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_castInExpressionAST *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("castInExpressionAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-// @getterCallExpressionAST reference class
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult GGS_getterCallExpressionAST::objectCompare (const GGS_getterCallExpressionAST & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    const size_t myObjectPtr = size_t (mObjectPtr) ;
-    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_getterCallExpressionAST::GGS_getterCallExpressionAST (void) :
-GGS_semanticExpressionAST () {
-}
-
-//--- Synthetized initializer ----------------------------------------------------------------------
-
-GGS_getterCallExpressionAST GGS_getterCallExpressionAST::
-init_21__21__21__21_ (const GGS_semanticExpressionAST & in_mReceiver,
-                      const GGS_lstring & in_mGetterName,
-                      const GGS_actualOutputArgumentList & in_mActualArgumentList,
-                      const GGS_location & in_mExpressionLocation,
-                      Compiler * inCompiler
-                      COMMA_LOCATION_ARGS) {
-  cPtr_getterCallExpressionAST * object = nullptr ;
-  macroMyNew (object, cPtr_getterCallExpressionAST (inCompiler COMMA_THERE)) ;
-  object->getterCallExpressionAST_init_21__21__21__21_ (in_mReceiver, in_mGetterName, in_mActualArgumentList, in_mExpressionLocation, inCompiler) ;
-  const GGS_getterCallExpressionAST result (object) ;
-  macroDetachSharedObject (object) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_getterCallExpressionAST::
-getterCallExpressionAST_init_21__21__21__21_ (const GGS_semanticExpressionAST & in_mReceiver,
-                                              const GGS_lstring & in_mGetterName,
-                                              const GGS_actualOutputArgumentList & in_mActualArgumentList,
-                                              const GGS_location & in_mExpressionLocation,
-                                              Compiler * /* inCompiler */) {
-  mProperty_mReceiver = in_mReceiver ;
-  mProperty_mGetterName = in_mGetterName ;
-  mProperty_mActualArgumentList = in_mActualArgumentList ;
-  mProperty_mExpressionLocation = in_mExpressionLocation ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_getterCallExpressionAST::GGS_getterCallExpressionAST (const cPtr_getterCallExpressionAST * inSourcePtr) :
-GGS_semanticExpressionAST (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_getterCallExpressionAST) ;
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_semanticExpressionAST GGS_getterCallExpressionAST::readProperty_mReceiver (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_semanticExpressionAST () ;
-  }else{
-    cPtr_getterCallExpressionAST * p = (cPtr_getterCallExpressionAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_getterCallExpressionAST) ;
-    return p->mProperty_mReceiver ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lstring GGS_getterCallExpressionAST::readProperty_mGetterName (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_lstring () ;
-  }else{
-    cPtr_getterCallExpressionAST * p = (cPtr_getterCallExpressionAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_getterCallExpressionAST) ;
-    return p->mProperty_mGetterName ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_actualOutputArgumentList GGS_getterCallExpressionAST::readProperty_mActualArgumentList (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_actualOutputArgumentList () ;
-  }else{
-    cPtr_getterCallExpressionAST * p = (cPtr_getterCallExpressionAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_getterCallExpressionAST) ;
-    return p->mProperty_mActualArgumentList ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_location GGS_getterCallExpressionAST::readProperty_mExpressionLocation (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_location () ;
-  }else{
-    cPtr_getterCallExpressionAST * p = (cPtr_getterCallExpressionAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_getterCallExpressionAST) ;
-    return p->mProperty_mExpressionLocation ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-//Pointer class for @getterCallExpressionAST class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_getterCallExpressionAST::cPtr_getterCallExpressionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_semanticExpressionAST (inCompiler COMMA_THERE),
-mProperty_mReceiver (),
-mProperty_mGetterName (),
-mProperty_mActualArgumentList (),
-mProperty_mExpressionLocation () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cPtr_getterCallExpressionAST::cPtr_getterCallExpressionAST (const GGS_semanticExpressionAST & in_mReceiver,
-                                                            const GGS_lstring & in_mGetterName,
-                                                            const GGS_actualOutputArgumentList & in_mActualArgumentList,
-                                                            const GGS_location & in_mExpressionLocation,
-                                                            Compiler * inCompiler
-                                                            COMMA_LOCATION_ARGS) :
-cPtr_semanticExpressionAST (inCompiler COMMA_THERE),
-mProperty_mReceiver (),
-mProperty_mGetterName (),
-mProperty_mActualArgumentList (),
-mProperty_mExpressionLocation () {
-  mProperty_mReceiver = in_mReceiver ;
-  mProperty_mGetterName = in_mGetterName ;
-  mProperty_mActualArgumentList = in_mActualArgumentList ;
-  mProperty_mExpressionLocation = in_mExpressionLocation ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * cPtr_getterCallExpressionAST::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_getterCallExpressionAST ;
-}
-
-void cPtr_getterCallExpressionAST::description (String & ioString,
-                                                const int32_t inIndentation) const {
-  ioString.appendCString ("[@getterCallExpressionAST:") ;
-  mProperty_mReceiver.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mGetterName.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mActualArgumentList.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mExpressionLocation.description (ioString, inIndentation+1) ;
-  ioString.appendCString ("]") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-acPtr_class * cPtr_getterCallExpressionAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_getterCallExpressionAST (mProperty_mReceiver, mProperty_mGetterName, mProperty_mActualArgumentList, mProperty_mExpressionLocation, inCompiler COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_getterCallExpressionAST::printNonNullClassInstanceProperties (void) const {
-    cPtr_semanticExpressionAST::printNonNullClassInstanceProperties () ;
-    mProperty_mReceiver.printNonNullClassInstanceProperties ("mReceiver") ;
-    mProperty_mGetterName.printNonNullClassInstanceProperties ("mGetterName") ;
-    mProperty_mActualArgumentList.printNonNullClassInstanceProperties ("mActualArgumentList") ;
-    mProperty_mExpressionLocation.printNonNullClassInstanceProperties ("mExpressionLocation") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-//     @getterCallExpressionAST generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_getterCallExpressionAST ("getterCallExpressionAST",
-                                                                            & kTypeDescriptor_GALGAS_semanticExpressionAST) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_getterCallExpressionAST::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_getterCallExpressionAST ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_getterCallExpressionAST::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_getterCallExpressionAST (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_getterCallExpressionAST GGS_getterCallExpressionAST::extractObject (const GGS_object & inObject,
-                                                                        Compiler * inCompiler
-                                                                        COMMA_LOCATION_ARGS) {
-  GGS_getterCallExpressionAST result ;
-  const GGS_getterCallExpressionAST * p = (const GGS_getterCallExpressionAST *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_getterCallExpressionAST *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("getterCallExpressionAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-// @literalBigIntExpressionAST reference class
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult GGS_literalBigIntExpressionAST::objectCompare (const GGS_literalBigIntExpressionAST & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    const size_t myObjectPtr = size_t (mObjectPtr) ;
-    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_literalBigIntExpressionAST::GGS_literalBigIntExpressionAST (void) :
-GGS_semanticExpressionAST () {
-}
-
-//--- Synthetized initializer ----------------------------------------------------------------------
-
-GGS_literalBigIntExpressionAST GGS_literalBigIntExpressionAST::
-init_21_ (const GGS_lbigint & in_mValue,
-          Compiler * inCompiler
-          COMMA_LOCATION_ARGS) {
-  cPtr_literalBigIntExpressionAST * object = nullptr ;
-  macroMyNew (object, cPtr_literalBigIntExpressionAST (inCompiler COMMA_THERE)) ;
-  object->literalBigIntExpressionAST_init_21_ (in_mValue, inCompiler) ;
-  const GGS_literalBigIntExpressionAST result (object) ;
-  macroDetachSharedObject (object) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_literalBigIntExpressionAST::
-literalBigIntExpressionAST_init_21_ (const GGS_lbigint & in_mValue,
-                                     Compiler * /* inCompiler */) {
-  mProperty_mValue = in_mValue ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_literalBigIntExpressionAST::GGS_literalBigIntExpressionAST (const cPtr_literalBigIntExpressionAST * inSourcePtr) :
-GGS_semanticExpressionAST (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_literalBigIntExpressionAST) ;
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_lbigint GGS_literalBigIntExpressionAST::readProperty_mValue (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_lbigint () ;
-  }else{
-    cPtr_literalBigIntExpressionAST * p = (cPtr_literalBigIntExpressionAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_literalBigIntExpressionAST) ;
-    return p->mProperty_mValue ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-//Pointer class for @literalBigIntExpressionAST class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_literalBigIntExpressionAST::cPtr_literalBigIntExpressionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_semanticExpressionAST (inCompiler COMMA_THERE),
-mProperty_mValue () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cPtr_literalBigIntExpressionAST::cPtr_literalBigIntExpressionAST (const GGS_lbigint & in_mValue,
-                                                                  Compiler * inCompiler
-                                                                  COMMA_LOCATION_ARGS) :
-cPtr_semanticExpressionAST (inCompiler COMMA_THERE),
-mProperty_mValue () {
-  mProperty_mValue = in_mValue ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * cPtr_literalBigIntExpressionAST::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_literalBigIntExpressionAST ;
-}
-
-void cPtr_literalBigIntExpressionAST::description (String & ioString,
-                                                   const int32_t inIndentation) const {
-  ioString.appendCString ("[@literalBigIntExpressionAST:") ;
-  mProperty_mValue.description (ioString, inIndentation+1) ;
-  ioString.appendCString ("]") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-acPtr_class * cPtr_literalBigIntExpressionAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_literalBigIntExpressionAST (mProperty_mValue, inCompiler COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_literalBigIntExpressionAST::printNonNullClassInstanceProperties (void) const {
-    cPtr_semanticExpressionAST::printNonNullClassInstanceProperties () ;
-    mProperty_mValue.printNonNullClassInstanceProperties ("mValue") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-//     @literalBigIntExpressionAST generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_literalBigIntExpressionAST ("literalBigIntExpressionAST",
-                                                                               & kTypeDescriptor_GALGAS_semanticExpressionAST) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_literalBigIntExpressionAST::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_literalBigIntExpressionAST ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_literalBigIntExpressionAST::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_literalBigIntExpressionAST (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_literalBigIntExpressionAST GGS_literalBigIntExpressionAST::extractObject (const GGS_object & inObject,
-                                                                              Compiler * inCompiler
-                                                                              COMMA_LOCATION_ARGS) {
-  GGS_literalBigIntExpressionAST result ;
-  const GGS_literalBigIntExpressionAST * p = (const GGS_literalBigIntExpressionAST *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_literalBigIntExpressionAST *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("literalBigIntExpressionAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-// @literalUInt_36__34_ExpressionForGeneration reference class
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult GGS_literalUInt_36__34_ExpressionForGeneration::objectCompare (const GGS_literalUInt_36__34_ExpressionForGeneration & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    const size_t myObjectPtr = size_t (mObjectPtr) ;
-    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_literalUInt_36__34_ExpressionForGeneration::GGS_literalUInt_36__34_ExpressionForGeneration (void) :
-GGS_semanticExpressionForGeneration () {
-}
-
-//--- Synthetized initializer ----------------------------------------------------------------------
-
-GGS_literalUInt_36__34_ExpressionForGeneration GGS_literalUInt_36__34_ExpressionForGeneration::
-init_21__21__21_ (const GGS_unifiedTypeMapEntry & in_mResultType,
-                  const GGS_location & in_mLocation,
-                  const GGS_uint_36__34_ & in_mValue,
-                  Compiler * inCompiler
-                  COMMA_LOCATION_ARGS) {
-  cPtr_literalUInt_36__34_ExpressionForGeneration * object = nullptr ;
-  macroMyNew (object, cPtr_literalUInt_36__34_ExpressionForGeneration (inCompiler COMMA_THERE)) ;
-  object->literalUInt_36__34_ExpressionForGeneration_init_21__21__21_ (in_mResultType, in_mLocation, in_mValue, inCompiler) ;
-  const GGS_literalUInt_36__34_ExpressionForGeneration result (object) ;
-  macroDetachSharedObject (object) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_literalUInt_36__34_ExpressionForGeneration::
-literalUInt_36__34_ExpressionForGeneration_init_21__21__21_ (const GGS_unifiedTypeMapEntry & in_mResultType,
-                                                             const GGS_location & in_mLocation,
-                                                             const GGS_uint_36__34_ & in_mValue,
-                                                             Compiler * /* inCompiler */) {
-  mProperty_mResultType = in_mResultType ;
-  mProperty_mLocation = in_mLocation ;
-  mProperty_mValue = in_mValue ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_literalUInt_36__34_ExpressionForGeneration::GGS_literalUInt_36__34_ExpressionForGeneration (const cPtr_literalUInt_36__34_ExpressionForGeneration * inSourcePtr) :
-GGS_semanticExpressionForGeneration (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_literalUInt_36__34_ExpressionForGeneration) ;
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_uint_36__34_ GGS_literalUInt_36__34_ExpressionForGeneration::readProperty_mValue (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_uint_36__34_ () ;
-  }else{
-    cPtr_literalUInt_36__34_ExpressionForGeneration * p = (cPtr_literalUInt_36__34_ExpressionForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_literalUInt_36__34_ExpressionForGeneration) ;
-    return p->mProperty_mValue ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-//Pointer class for @literalUInt64ExpressionForGeneration class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_literalUInt_36__34_ExpressionForGeneration::cPtr_literalUInt_36__34_ExpressionForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_semanticExpressionForGeneration (inCompiler COMMA_THERE),
-mProperty_mValue () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cPtr_literalUInt_36__34_ExpressionForGeneration::cPtr_literalUInt_36__34_ExpressionForGeneration (const GGS_unifiedTypeMapEntry & in_mResultType,
-                                                                                                  const GGS_location & in_mLocation,
-                                                                                                  const GGS_uint_36__34_ & in_mValue,
-                                                                                                  Compiler * inCompiler
-                                                                                                  COMMA_LOCATION_ARGS) :
-cPtr_semanticExpressionForGeneration (in_mResultType, in_mLocation, inCompiler COMMA_THERE),
-mProperty_mValue () {
-  mProperty_mResultType = in_mResultType ;
-  mProperty_mLocation = in_mLocation ;
-  mProperty_mValue = in_mValue ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * cPtr_literalUInt_36__34_ExpressionForGeneration::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_literalUInt_36__34_ExpressionForGeneration ;
-}
-
-void cPtr_literalUInt_36__34_ExpressionForGeneration::description (String & ioString,
-                                                                   const int32_t inIndentation) const {
-  ioString.appendCString ("[@literalUInt64ExpressionForGeneration:") ;
-  mProperty_mResultType.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mLocation.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mValue.description (ioString, inIndentation+1) ;
-  ioString.appendCString ("]") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-acPtr_class * cPtr_literalUInt_36__34_ExpressionForGeneration::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_literalUInt_36__34_ExpressionForGeneration (mProperty_mResultType, mProperty_mLocation, mProperty_mValue, inCompiler COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_literalUInt_36__34_ExpressionForGeneration::printNonNullClassInstanceProperties (void) const {
-    cPtr_semanticExpressionForGeneration::printNonNullClassInstanceProperties () ;
-    mProperty_mValue.printNonNullClassInstanceProperties ("mValue") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-//     @literalUInt64ExpressionForGeneration generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_literalUInt_36__34_ExpressionForGeneration ("literalUInt64ExpressionForGeneration",
-                                                                                               & kTypeDescriptor_GALGAS_semanticExpressionForGeneration) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_literalUInt_36__34_ExpressionForGeneration::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_literalUInt_36__34_ExpressionForGeneration ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_literalUInt_36__34_ExpressionForGeneration::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_literalUInt_36__34_ExpressionForGeneration (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_literalUInt_36__34_ExpressionForGeneration GGS_literalUInt_36__34_ExpressionForGeneration::extractObject (const GGS_object & inObject,
-                                                                                                              Compiler * inCompiler
-                                                                                                              COMMA_LOCATION_ARGS) {
-  GGS_literalUInt_36__34_ExpressionForGeneration result ;
-  const GGS_literalUInt_36__34_ExpressionForGeneration * p = (const GGS_literalUInt_36__34_ExpressionForGeneration *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_literalUInt_36__34_ExpressionForGeneration *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("literalUInt64ExpressionForGeneration", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-// @literalSIntExpressionForGeneration reference class
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult GGS_literalSIntExpressionForGeneration::objectCompare (const GGS_literalSIntExpressionForGeneration & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    const size_t myObjectPtr = size_t (mObjectPtr) ;
-    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_literalSIntExpressionForGeneration::GGS_literalSIntExpressionForGeneration (void) :
-GGS_semanticExpressionForGeneration () {
-}
-
-//--- Synthetized initializer ----------------------------------------------------------------------
-
-GGS_literalSIntExpressionForGeneration GGS_literalSIntExpressionForGeneration::
-init_21__21__21_ (const GGS_unifiedTypeMapEntry & in_mResultType,
-                  const GGS_location & in_mLocation,
-                  const GGS_sint & in_mValue,
-                  Compiler * inCompiler
-                  COMMA_LOCATION_ARGS) {
-  cPtr_literalSIntExpressionForGeneration * object = nullptr ;
-  macroMyNew (object, cPtr_literalSIntExpressionForGeneration (inCompiler COMMA_THERE)) ;
-  object->literalSIntExpressionForGeneration_init_21__21__21_ (in_mResultType, in_mLocation, in_mValue, inCompiler) ;
-  const GGS_literalSIntExpressionForGeneration result (object) ;
-  macroDetachSharedObject (object) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_literalSIntExpressionForGeneration::
-literalSIntExpressionForGeneration_init_21__21__21_ (const GGS_unifiedTypeMapEntry & in_mResultType,
-                                                     const GGS_location & in_mLocation,
-                                                     const GGS_sint & in_mValue,
-                                                     Compiler * /* inCompiler */) {
-  mProperty_mResultType = in_mResultType ;
-  mProperty_mLocation = in_mLocation ;
-  mProperty_mValue = in_mValue ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_literalSIntExpressionForGeneration::GGS_literalSIntExpressionForGeneration (const cPtr_literalSIntExpressionForGeneration * inSourcePtr) :
-GGS_semanticExpressionForGeneration (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_literalSIntExpressionForGeneration) ;
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_sint GGS_literalSIntExpressionForGeneration::readProperty_mValue (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_sint () ;
-  }else{
-    cPtr_literalSIntExpressionForGeneration * p = (cPtr_literalSIntExpressionForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_literalSIntExpressionForGeneration) ;
-    return p->mProperty_mValue ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-//Pointer class for @literalSIntExpressionForGeneration class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_literalSIntExpressionForGeneration::cPtr_literalSIntExpressionForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_semanticExpressionForGeneration (inCompiler COMMA_THERE),
-mProperty_mValue () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cPtr_literalSIntExpressionForGeneration::cPtr_literalSIntExpressionForGeneration (const GGS_unifiedTypeMapEntry & in_mResultType,
-                                                                                  const GGS_location & in_mLocation,
-                                                                                  const GGS_sint & in_mValue,
-                                                                                  Compiler * inCompiler
-                                                                                  COMMA_LOCATION_ARGS) :
-cPtr_semanticExpressionForGeneration (in_mResultType, in_mLocation, inCompiler COMMA_THERE),
-mProperty_mValue () {
-  mProperty_mResultType = in_mResultType ;
-  mProperty_mLocation = in_mLocation ;
-  mProperty_mValue = in_mValue ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * cPtr_literalSIntExpressionForGeneration::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_literalSIntExpressionForGeneration ;
-}
-
-void cPtr_literalSIntExpressionForGeneration::description (String & ioString,
-                                                           const int32_t inIndentation) const {
-  ioString.appendCString ("[@literalSIntExpressionForGeneration:") ;
-  mProperty_mResultType.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mLocation.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mValue.description (ioString, inIndentation+1) ;
-  ioString.appendCString ("]") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-acPtr_class * cPtr_literalSIntExpressionForGeneration::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_literalSIntExpressionForGeneration (mProperty_mResultType, mProperty_mLocation, mProperty_mValue, inCompiler COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_literalSIntExpressionForGeneration::printNonNullClassInstanceProperties (void) const {
-    cPtr_semanticExpressionForGeneration::printNonNullClassInstanceProperties () ;
-    mProperty_mValue.printNonNullClassInstanceProperties ("mValue") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-//     @literalSIntExpressionForGeneration generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_literalSIntExpressionForGeneration ("literalSIntExpressionForGeneration",
-                                                                                       & kTypeDescriptor_GALGAS_semanticExpressionForGeneration) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_literalSIntExpressionForGeneration::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_literalSIntExpressionForGeneration ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_literalSIntExpressionForGeneration::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_literalSIntExpressionForGeneration (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_literalSIntExpressionForGeneration GGS_literalSIntExpressionForGeneration::extractObject (const GGS_object & inObject,
-                                                                                              Compiler * inCompiler
-                                                                                              COMMA_LOCATION_ARGS) {
-  GGS_literalSIntExpressionForGeneration result ;
-  const GGS_literalSIntExpressionForGeneration * p = (const GGS_literalSIntExpressionForGeneration *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_literalSIntExpressionForGeneration *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("literalSIntExpressionForGeneration", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-// @literalSInt_36__34_ExpressionForGeneration reference class
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult GGS_literalSInt_36__34_ExpressionForGeneration::objectCompare (const GGS_literalSInt_36__34_ExpressionForGeneration & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    const size_t myObjectPtr = size_t (mObjectPtr) ;
-    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_literalSInt_36__34_ExpressionForGeneration::GGS_literalSInt_36__34_ExpressionForGeneration (void) :
-GGS_semanticExpressionForGeneration () {
-}
-
-//--- Synthetized initializer ----------------------------------------------------------------------
-
-GGS_literalSInt_36__34_ExpressionForGeneration GGS_literalSInt_36__34_ExpressionForGeneration::
-init_21__21__21_ (const GGS_unifiedTypeMapEntry & in_mResultType,
-                  const GGS_location & in_mLocation,
-                  const GGS_sint_36__34_ & in_mValue,
-                  Compiler * inCompiler
-                  COMMA_LOCATION_ARGS) {
-  cPtr_literalSInt_36__34_ExpressionForGeneration * object = nullptr ;
-  macroMyNew (object, cPtr_literalSInt_36__34_ExpressionForGeneration (inCompiler COMMA_THERE)) ;
-  object->literalSInt_36__34_ExpressionForGeneration_init_21__21__21_ (in_mResultType, in_mLocation, in_mValue, inCompiler) ;
-  const GGS_literalSInt_36__34_ExpressionForGeneration result (object) ;
-  macroDetachSharedObject (object) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_literalSInt_36__34_ExpressionForGeneration::
-literalSInt_36__34_ExpressionForGeneration_init_21__21__21_ (const GGS_unifiedTypeMapEntry & in_mResultType,
-                                                             const GGS_location & in_mLocation,
-                                                             const GGS_sint_36__34_ & in_mValue,
-                                                             Compiler * /* inCompiler */) {
-  mProperty_mResultType = in_mResultType ;
-  mProperty_mLocation = in_mLocation ;
-  mProperty_mValue = in_mValue ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_literalSInt_36__34_ExpressionForGeneration::GGS_literalSInt_36__34_ExpressionForGeneration (const cPtr_literalSInt_36__34_ExpressionForGeneration * inSourcePtr) :
-GGS_semanticExpressionForGeneration (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_literalSInt_36__34_ExpressionForGeneration) ;
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_sint_36__34_ GGS_literalSInt_36__34_ExpressionForGeneration::readProperty_mValue (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_sint_36__34_ () ;
-  }else{
-    cPtr_literalSInt_36__34_ExpressionForGeneration * p = (cPtr_literalSInt_36__34_ExpressionForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_literalSInt_36__34_ExpressionForGeneration) ;
-    return p->mProperty_mValue ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-//Pointer class for @literalSInt64ExpressionForGeneration class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_literalSInt_36__34_ExpressionForGeneration::cPtr_literalSInt_36__34_ExpressionForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_semanticExpressionForGeneration (inCompiler COMMA_THERE),
-mProperty_mValue () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cPtr_literalSInt_36__34_ExpressionForGeneration::cPtr_literalSInt_36__34_ExpressionForGeneration (const GGS_unifiedTypeMapEntry & in_mResultType,
-                                                                                                  const GGS_location & in_mLocation,
-                                                                                                  const GGS_sint_36__34_ & in_mValue,
-                                                                                                  Compiler * inCompiler
-                                                                                                  COMMA_LOCATION_ARGS) :
-cPtr_semanticExpressionForGeneration (in_mResultType, in_mLocation, inCompiler COMMA_THERE),
-mProperty_mValue () {
-  mProperty_mResultType = in_mResultType ;
-  mProperty_mLocation = in_mLocation ;
-  mProperty_mValue = in_mValue ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * cPtr_literalSInt_36__34_ExpressionForGeneration::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_literalSInt_36__34_ExpressionForGeneration ;
-}
-
-void cPtr_literalSInt_36__34_ExpressionForGeneration::description (String & ioString,
-                                                                   const int32_t inIndentation) const {
-  ioString.appendCString ("[@literalSInt64ExpressionForGeneration:") ;
-  mProperty_mResultType.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mLocation.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mValue.description (ioString, inIndentation+1) ;
-  ioString.appendCString ("]") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-acPtr_class * cPtr_literalSInt_36__34_ExpressionForGeneration::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_literalSInt_36__34_ExpressionForGeneration (mProperty_mResultType, mProperty_mLocation, mProperty_mValue, inCompiler COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_literalSInt_36__34_ExpressionForGeneration::printNonNullClassInstanceProperties (void) const {
-    cPtr_semanticExpressionForGeneration::printNonNullClassInstanceProperties () ;
-    mProperty_mValue.printNonNullClassInstanceProperties ("mValue") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-//     @literalSInt64ExpressionForGeneration generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_literalSInt_36__34_ExpressionForGeneration ("literalSInt64ExpressionForGeneration",
-                                                                                               & kTypeDescriptor_GALGAS_semanticExpressionForGeneration) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_literalSInt_36__34_ExpressionForGeneration::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_literalSInt_36__34_ExpressionForGeneration ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_literalSInt_36__34_ExpressionForGeneration::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_literalSInt_36__34_ExpressionForGeneration (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_literalSInt_36__34_ExpressionForGeneration GGS_literalSInt_36__34_ExpressionForGeneration::extractObject (const GGS_object & inObject,
-                                                                                                              Compiler * inCompiler
-                                                                                                              COMMA_LOCATION_ARGS) {
-  GGS_literalSInt_36__34_ExpressionForGeneration result ;
-  const GGS_literalSInt_36__34_ExpressionForGeneration * p = (const GGS_literalSInt_36__34_ExpressionForGeneration *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_literalSInt_36__34_ExpressionForGeneration *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("literalSInt64ExpressionForGeneration", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-// @literalBigIntExpressionForGeneration reference class
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult GGS_literalBigIntExpressionForGeneration::objectCompare (const GGS_literalBigIntExpressionForGeneration & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    const size_t myObjectPtr = size_t (mObjectPtr) ;
-    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_literalBigIntExpressionForGeneration::GGS_literalBigIntExpressionForGeneration (void) :
-GGS_semanticExpressionForGeneration () {
-}
-
-//--- Synthetized initializer ----------------------------------------------------------------------
-
-GGS_literalBigIntExpressionForGeneration GGS_literalBigIntExpressionForGeneration::
-init_21__21__21_ (const GGS_unifiedTypeMapEntry & in_mResultType,
-                  const GGS_location & in_mLocation,
-                  const GGS_bigint & in_mValue,
-                  Compiler * inCompiler
-                  COMMA_LOCATION_ARGS) {
-  cPtr_literalBigIntExpressionForGeneration * object = nullptr ;
-  macroMyNew (object, cPtr_literalBigIntExpressionForGeneration (inCompiler COMMA_THERE)) ;
-  object->literalBigIntExpressionForGeneration_init_21__21__21_ (in_mResultType, in_mLocation, in_mValue, inCompiler) ;
-  const GGS_literalBigIntExpressionForGeneration result (object) ;
-  macroDetachSharedObject (object) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_literalBigIntExpressionForGeneration::
-literalBigIntExpressionForGeneration_init_21__21__21_ (const GGS_unifiedTypeMapEntry & in_mResultType,
-                                                       const GGS_location & in_mLocation,
-                                                       const GGS_bigint & in_mValue,
-                                                       Compiler * /* inCompiler */) {
-  mProperty_mResultType = in_mResultType ;
-  mProperty_mLocation = in_mLocation ;
-  mProperty_mValue = in_mValue ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_literalBigIntExpressionForGeneration::GGS_literalBigIntExpressionForGeneration (const cPtr_literalBigIntExpressionForGeneration * inSourcePtr) :
-GGS_semanticExpressionForGeneration (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_literalBigIntExpressionForGeneration) ;
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_bigint GGS_literalBigIntExpressionForGeneration::readProperty_mValue (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_bigint () ;
-  }else{
-    cPtr_literalBigIntExpressionForGeneration * p = (cPtr_literalBigIntExpressionForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_literalBigIntExpressionForGeneration) ;
-    return p->mProperty_mValue ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-//Pointer class for @literalBigIntExpressionForGeneration class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_literalBigIntExpressionForGeneration::cPtr_literalBigIntExpressionForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_semanticExpressionForGeneration (inCompiler COMMA_THERE),
-mProperty_mValue () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cPtr_literalBigIntExpressionForGeneration::cPtr_literalBigIntExpressionForGeneration (const GGS_unifiedTypeMapEntry & in_mResultType,
-                                                                                      const GGS_location & in_mLocation,
-                                                                                      const GGS_bigint & in_mValue,
-                                                                                      Compiler * inCompiler
-                                                                                      COMMA_LOCATION_ARGS) :
-cPtr_semanticExpressionForGeneration (in_mResultType, in_mLocation, inCompiler COMMA_THERE),
-mProperty_mValue () {
-  mProperty_mResultType = in_mResultType ;
-  mProperty_mLocation = in_mLocation ;
-  mProperty_mValue = in_mValue ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * cPtr_literalBigIntExpressionForGeneration::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_literalBigIntExpressionForGeneration ;
-}
-
-void cPtr_literalBigIntExpressionForGeneration::description (String & ioString,
-                                                             const int32_t inIndentation) const {
-  ioString.appendCString ("[@literalBigIntExpressionForGeneration:") ;
-  mProperty_mResultType.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mLocation.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mValue.description (ioString, inIndentation+1) ;
-  ioString.appendCString ("]") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-acPtr_class * cPtr_literalBigIntExpressionForGeneration::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_literalBigIntExpressionForGeneration (mProperty_mResultType, mProperty_mLocation, mProperty_mValue, inCompiler COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_literalBigIntExpressionForGeneration::printNonNullClassInstanceProperties (void) const {
-    cPtr_semanticExpressionForGeneration::printNonNullClassInstanceProperties () ;
-    mProperty_mValue.printNonNullClassInstanceProperties ("mValue") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-//     @literalBigIntExpressionForGeneration generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_literalBigIntExpressionForGeneration ("literalBigIntExpressionForGeneration",
-                                                                                         & kTypeDescriptor_GALGAS_semanticExpressionForGeneration) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_literalBigIntExpressionForGeneration::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_literalBigIntExpressionForGeneration ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_literalBigIntExpressionForGeneration::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_literalBigIntExpressionForGeneration (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_literalBigIntExpressionForGeneration GGS_literalBigIntExpressionForGeneration::extractObject (const GGS_object & inObject,
-                                                                                                  Compiler * inCompiler
-                                                                                                  COMMA_LOCATION_ARGS) {
-  GGS_literalBigIntExpressionForGeneration result ;
-  const GGS_literalBigIntExpressionForGeneration * p = (const GGS_literalBigIntExpressionForGeneration *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_literalBigIntExpressionForGeneration *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("literalBigIntExpressionForGeneration", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-// @initializerCallAST reference class
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult GGS_initializerCallAST::objectCompare (const GGS_initializerCallAST & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    const size_t myObjectPtr = size_t (mObjectPtr) ;
-    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_initializerCallAST::GGS_initializerCallAST (void) :
-GGS_semanticExpressionAST () {
-}
-
-//--- Synthetized initializer ----------------------------------------------------------------------
-
-GGS_initializerCallAST GGS_initializerCallAST::
-init_21__21__21_ (const GGS_lstring & in_mTypeName,
-                  const GGS_actualOutputArgumentList & in_mExpressions,
-                  const GGS_location & in_mEndOfExpressions,
-                  Compiler * inCompiler
-                  COMMA_LOCATION_ARGS) {
-  cPtr_initializerCallAST * object = nullptr ;
-  macroMyNew (object, cPtr_initializerCallAST (inCompiler COMMA_THERE)) ;
-  object->initializerCallAST_init_21__21__21_ (in_mTypeName, in_mExpressions, in_mEndOfExpressions, inCompiler) ;
-  const GGS_initializerCallAST result (object) ;
-  macroDetachSharedObject (object) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_initializerCallAST::
-initializerCallAST_init_21__21__21_ (const GGS_lstring & in_mTypeName,
-                                     const GGS_actualOutputArgumentList & in_mExpressions,
-                                     const GGS_location & in_mEndOfExpressions,
-                                     Compiler * /* inCompiler */) {
-  mProperty_mTypeName = in_mTypeName ;
-  mProperty_mExpressions = in_mExpressions ;
-  mProperty_mEndOfExpressions = in_mEndOfExpressions ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_initializerCallAST::GGS_initializerCallAST (const cPtr_initializerCallAST * inSourcePtr) :
-GGS_semanticExpressionAST (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_initializerCallAST) ;
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_lstring GGS_initializerCallAST::readProperty_mTypeName (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_lstring () ;
-  }else{
-    cPtr_initializerCallAST * p = (cPtr_initializerCallAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_initializerCallAST) ;
-    return p->mProperty_mTypeName ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_actualOutputArgumentList GGS_initializerCallAST::readProperty_mExpressions (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_actualOutputArgumentList () ;
-  }else{
-    cPtr_initializerCallAST * p = (cPtr_initializerCallAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_initializerCallAST) ;
-    return p->mProperty_mExpressions ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_location GGS_initializerCallAST::readProperty_mEndOfExpressions (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_location () ;
-  }else{
-    cPtr_initializerCallAST * p = (cPtr_initializerCallAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_initializerCallAST) ;
-    return p->mProperty_mEndOfExpressions ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-//Pointer class for @initializerCallAST class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_initializerCallAST::cPtr_initializerCallAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_semanticExpressionAST (inCompiler COMMA_THERE),
-mProperty_mTypeName (),
-mProperty_mExpressions (),
-mProperty_mEndOfExpressions () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cPtr_initializerCallAST::cPtr_initializerCallAST (const GGS_lstring & in_mTypeName,
-                                                  const GGS_actualOutputArgumentList & in_mExpressions,
-                                                  const GGS_location & in_mEndOfExpressions,
-                                                  Compiler * inCompiler
-                                                  COMMA_LOCATION_ARGS) :
-cPtr_semanticExpressionAST (inCompiler COMMA_THERE),
-mProperty_mTypeName (),
-mProperty_mExpressions (),
-mProperty_mEndOfExpressions () {
-  mProperty_mTypeName = in_mTypeName ;
-  mProperty_mExpressions = in_mExpressions ;
-  mProperty_mEndOfExpressions = in_mEndOfExpressions ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * cPtr_initializerCallAST::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_initializerCallAST ;
-}
-
-void cPtr_initializerCallAST::description (String & ioString,
-                                           const int32_t inIndentation) const {
-  ioString.appendCString ("[@initializerCallAST:") ;
-  mProperty_mTypeName.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mExpressions.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mEndOfExpressions.description (ioString, inIndentation+1) ;
-  ioString.appendCString ("]") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-acPtr_class * cPtr_initializerCallAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_initializerCallAST (mProperty_mTypeName, mProperty_mExpressions, mProperty_mEndOfExpressions, inCompiler COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_initializerCallAST::printNonNullClassInstanceProperties (void) const {
-    cPtr_semanticExpressionAST::printNonNullClassInstanceProperties () ;
-    mProperty_mTypeName.printNonNullClassInstanceProperties ("mTypeName") ;
-    mProperty_mExpressions.printNonNullClassInstanceProperties ("mExpressions") ;
-    mProperty_mEndOfExpressions.printNonNullClassInstanceProperties ("mEndOfExpressions") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-//     @initializerCallAST generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_initializerCallAST ("initializerCallAST",
-                                                                       & kTypeDescriptor_GALGAS_semanticExpressionAST) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_initializerCallAST::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_initializerCallAST ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_initializerCallAST::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_initializerCallAST (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_initializerCallAST GGS_initializerCallAST::extractObject (const GGS_object & inObject,
-                                                              Compiler * inCompiler
-                                                              COMMA_LOCATION_ARGS) {
-  GGS_initializerCallAST result ;
-  const GGS_initializerCallAST * p = (const GGS_initializerCallAST *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_initializerCallAST *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("initializerCallAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
 // @literalTypeInExpressionAST reference class
 //--------------------------------------------------------------------------------------------------
 
@@ -7698,6 +158,176 @@ GGS_literalTypeInExpressionAST GGS_literalTypeInExpressionAST::extractObject (co
       result = *p ;
     }else{
       inCompiler->castError ("literalTypeInExpressionAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+// @literalTypeInExpressionForGeneration reference class
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GGS_literalTypeInExpressionForGeneration::objectCompare (const GGS_literalTypeInExpressionForGeneration & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    const size_t myObjectPtr = size_t (mObjectPtr) ;
+    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_literalTypeInExpressionForGeneration::GGS_literalTypeInExpressionForGeneration (void) :
+GGS_semanticExpressionForGeneration () {
+}
+
+//--- Synthetized initializer ----------------------------------------------------------------------
+
+GGS_literalTypeInExpressionForGeneration GGS_literalTypeInExpressionForGeneration::
+init_21__21__21_ (const GGS_unifiedTypeMapEntry & in_mResultType,
+                  const GGS_location & in_mLocation,
+                  const GGS_unifiedTypeMapEntry & in_mLiteralType,
+                  Compiler * inCompiler
+                  COMMA_LOCATION_ARGS) {
+  cPtr_literalTypeInExpressionForGeneration * object = nullptr ;
+  macroMyNew (object, cPtr_literalTypeInExpressionForGeneration (inCompiler COMMA_THERE)) ;
+  object->literalTypeInExpressionForGeneration_init_21__21__21_ (in_mResultType, in_mLocation, in_mLiteralType, inCompiler) ;
+  const GGS_literalTypeInExpressionForGeneration result (object) ;
+  macroDetachSharedObject (object) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_literalTypeInExpressionForGeneration::
+literalTypeInExpressionForGeneration_init_21__21__21_ (const GGS_unifiedTypeMapEntry & in_mResultType,
+                                                       const GGS_location & in_mLocation,
+                                                       const GGS_unifiedTypeMapEntry & in_mLiteralType,
+                                                       Compiler * /* inCompiler */) {
+  mProperty_mResultType = in_mResultType ;
+  mProperty_mLocation = in_mLocation ;
+  mProperty_mLiteralType = in_mLiteralType ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_literalTypeInExpressionForGeneration::GGS_literalTypeInExpressionForGeneration (const cPtr_literalTypeInExpressionForGeneration * inSourcePtr) :
+GGS_semanticExpressionForGeneration (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_literalTypeInExpressionForGeneration) ;
+}
+//--------------------------------------------------------------------------------------------------
+
+GGS_unifiedTypeMapEntry GGS_literalTypeInExpressionForGeneration::readProperty_mLiteralType (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_unifiedTypeMapEntry () ;
+  }else{
+    cPtr_literalTypeInExpressionForGeneration * p = (cPtr_literalTypeInExpressionForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_literalTypeInExpressionForGeneration) ;
+    return p->mProperty_mLiteralType ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//Pointer class for @literalTypeInExpressionForGeneration class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_literalTypeInExpressionForGeneration::cPtr_literalTypeInExpressionForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_semanticExpressionForGeneration (inCompiler COMMA_THERE),
+mProperty_mLiteralType () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+cPtr_literalTypeInExpressionForGeneration::cPtr_literalTypeInExpressionForGeneration (const GGS_unifiedTypeMapEntry & in_mResultType,
+                                                                                      const GGS_location & in_mLocation,
+                                                                                      const GGS_unifiedTypeMapEntry & in_mLiteralType,
+                                                                                      Compiler * inCompiler
+                                                                                      COMMA_LOCATION_ARGS) :
+cPtr_semanticExpressionForGeneration (in_mResultType, in_mLocation, inCompiler COMMA_THERE),
+mProperty_mLiteralType () {
+  mProperty_mResultType = in_mResultType ;
+  mProperty_mLocation = in_mLocation ;
+  mProperty_mLiteralType = in_mLiteralType ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * cPtr_literalTypeInExpressionForGeneration::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_literalTypeInExpressionForGeneration ;
+}
+
+void cPtr_literalTypeInExpressionForGeneration::description (String & ioString,
+                                                             const int32_t inIndentation) const {
+  ioString.appendCString ("[@literalTypeInExpressionForGeneration:") ;
+  mProperty_mResultType.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mLocation.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mLiteralType.description (ioString, inIndentation+1) ;
+  ioString.appendCString ("]") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+acPtr_class * cPtr_literalTypeInExpressionForGeneration::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  acPtr_class * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_literalTypeInExpressionForGeneration (mProperty_mResultType, mProperty_mLocation, mProperty_mLiteralType, inCompiler COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_literalTypeInExpressionForGeneration::printNonNullClassInstanceProperties (void) const {
+    cPtr_semanticExpressionForGeneration::printNonNullClassInstanceProperties () ;
+    mProperty_mLiteralType.printNonNullClassInstanceProperties ("mLiteralType") ;
+  }
+#endif
+
+//--------------------------------------------------------------------------------------------------
+//     @literalTypeInExpressionForGeneration generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_literalTypeInExpressionForGeneration ("literalTypeInExpressionForGeneration",
+                                                                                         & kTypeDescriptor_GALGAS_semanticExpressionForGeneration) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_literalTypeInExpressionForGeneration::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_literalTypeInExpressionForGeneration ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_literalTypeInExpressionForGeneration::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_literalTypeInExpressionForGeneration (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_literalTypeInExpressionForGeneration GGS_literalTypeInExpressionForGeneration::extractObject (const GGS_object & inObject,
+                                                                                                  Compiler * inCompiler
+                                                                                                  COMMA_LOCATION_ARGS) {
+  GGS_literalTypeInExpressionForGeneration result ;
+  const GGS_literalTypeInExpressionForGeneration * p = (const GGS_literalTypeInExpressionForGeneration *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_literalTypeInExpressionForGeneration *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("literalTypeInExpressionForGeneration", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
@@ -7898,6 +528,412 @@ GGS_structPropertyAccessExpressionAST GGS_structPropertyAccessExpressionAST::ext
       result = *p ;
     }else{
       inCompiler->castError ("structPropertyAccessExpressionAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+// @propertyAccessExpressionForGeneration reference class
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GGS_propertyAccessExpressionForGeneration::objectCompare (const GGS_propertyAccessExpressionForGeneration & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    const size_t myObjectPtr = size_t (mObjectPtr) ;
+    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_propertyAccessExpressionForGeneration::GGS_propertyAccessExpressionForGeneration (void) :
+GGS_semanticExpressionForGeneration () {
+}
+
+//--- Synthetized initializer ----------------------------------------------------------------------
+
+GGS_propertyAccessExpressionForGeneration GGS_propertyAccessExpressionForGeneration::
+init_21__21__21__21_ (const GGS_unifiedTypeMapEntry & in_mResultType,
+                      const GGS_location & in_mLocation,
+                      const GGS_semanticExpressionForGeneration & in_expression,
+                      const GGS_string & in_structFieldName,
+                      Compiler * inCompiler
+                      COMMA_LOCATION_ARGS) {
+  cPtr_propertyAccessExpressionForGeneration * object = nullptr ;
+  macroMyNew (object, cPtr_propertyAccessExpressionForGeneration (inCompiler COMMA_THERE)) ;
+  object->propertyAccessExpressionForGeneration_init_21__21__21__21_ (in_mResultType, in_mLocation, in_expression, in_structFieldName, inCompiler) ;
+  const GGS_propertyAccessExpressionForGeneration result (object) ;
+  macroDetachSharedObject (object) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_propertyAccessExpressionForGeneration::
+propertyAccessExpressionForGeneration_init_21__21__21__21_ (const GGS_unifiedTypeMapEntry & in_mResultType,
+                                                            const GGS_location & in_mLocation,
+                                                            const GGS_semanticExpressionForGeneration & in_expression,
+                                                            const GGS_string & in_structFieldName,
+                                                            Compiler * /* inCompiler */) {
+  mProperty_mResultType = in_mResultType ;
+  mProperty_mLocation = in_mLocation ;
+  mProperty_expression = in_expression ;
+  mProperty_structFieldName = in_structFieldName ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_propertyAccessExpressionForGeneration::GGS_propertyAccessExpressionForGeneration (const cPtr_propertyAccessExpressionForGeneration * inSourcePtr) :
+GGS_semanticExpressionForGeneration (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_propertyAccessExpressionForGeneration) ;
+}
+//--------------------------------------------------------------------------------------------------
+
+GGS_semanticExpressionForGeneration GGS_propertyAccessExpressionForGeneration::readProperty_expression (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_semanticExpressionForGeneration () ;
+  }else{
+    cPtr_propertyAccessExpressionForGeneration * p = (cPtr_propertyAccessExpressionForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_propertyAccessExpressionForGeneration) ;
+    return p->mProperty_expression ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_string GGS_propertyAccessExpressionForGeneration::readProperty_structFieldName (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_string () ;
+  }else{
+    cPtr_propertyAccessExpressionForGeneration * p = (cPtr_propertyAccessExpressionForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_propertyAccessExpressionForGeneration) ;
+    return p->mProperty_structFieldName ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//Pointer class for @propertyAccessExpressionForGeneration class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_propertyAccessExpressionForGeneration::cPtr_propertyAccessExpressionForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_semanticExpressionForGeneration (inCompiler COMMA_THERE),
+mProperty_expression (),
+mProperty_structFieldName () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+cPtr_propertyAccessExpressionForGeneration::cPtr_propertyAccessExpressionForGeneration (const GGS_unifiedTypeMapEntry & in_mResultType,
+                                                                                        const GGS_location & in_mLocation,
+                                                                                        const GGS_semanticExpressionForGeneration & in_expression,
+                                                                                        const GGS_string & in_structFieldName,
+                                                                                        Compiler * inCompiler
+                                                                                        COMMA_LOCATION_ARGS) :
+cPtr_semanticExpressionForGeneration (in_mResultType, in_mLocation, inCompiler COMMA_THERE),
+mProperty_expression (),
+mProperty_structFieldName () {
+  mProperty_mResultType = in_mResultType ;
+  mProperty_mLocation = in_mLocation ;
+  mProperty_expression = in_expression ;
+  mProperty_structFieldName = in_structFieldName ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * cPtr_propertyAccessExpressionForGeneration::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_propertyAccessExpressionForGeneration ;
+}
+
+void cPtr_propertyAccessExpressionForGeneration::description (String & ioString,
+                                                              const int32_t inIndentation) const {
+  ioString.appendCString ("[@propertyAccessExpressionForGeneration:") ;
+  mProperty_mResultType.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mLocation.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_expression.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_structFieldName.description (ioString, inIndentation+1) ;
+  ioString.appendCString ("]") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+acPtr_class * cPtr_propertyAccessExpressionForGeneration::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  acPtr_class * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_propertyAccessExpressionForGeneration (mProperty_mResultType, mProperty_mLocation, mProperty_expression, mProperty_structFieldName, inCompiler COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_propertyAccessExpressionForGeneration::printNonNullClassInstanceProperties (void) const {
+    cPtr_semanticExpressionForGeneration::printNonNullClassInstanceProperties () ;
+    mProperty_expression.printNonNullClassInstanceProperties ("expression") ;
+    mProperty_structFieldName.printNonNullClassInstanceProperties ("structFieldName") ;
+  }
+#endif
+
+//--------------------------------------------------------------------------------------------------
+//     @propertyAccessExpressionForGeneration generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_propertyAccessExpressionForGeneration ("propertyAccessExpressionForGeneration",
+                                                                                          & kTypeDescriptor_GALGAS_semanticExpressionForGeneration) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_propertyAccessExpressionForGeneration::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_propertyAccessExpressionForGeneration ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_propertyAccessExpressionForGeneration::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_propertyAccessExpressionForGeneration (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_propertyAccessExpressionForGeneration GGS_propertyAccessExpressionForGeneration::extractObject (const GGS_object & inObject,
+                                                                                                    Compiler * inCompiler
+                                                                                                    COMMA_LOCATION_ARGS) {
+  GGS_propertyAccessExpressionForGeneration result ;
+  const GGS_propertyAccessExpressionForGeneration * p = (const GGS_propertyAccessExpressionForGeneration *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_propertyAccessExpressionForGeneration *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("propertyAccessExpressionForGeneration", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+// @subscriptReadAccessExpressionForGeneration reference class
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GGS_subscriptReadAccessExpressionForGeneration::objectCompare (const GGS_subscriptReadAccessExpressionForGeneration & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    const size_t myObjectPtr = size_t (mObjectPtr) ;
+    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_subscriptReadAccessExpressionForGeneration::GGS_subscriptReadAccessExpressionForGeneration (void) :
+GGS_semanticExpressionForGeneration () {
+}
+
+//--- Synthetized initializer ----------------------------------------------------------------------
+
+GGS_subscriptReadAccessExpressionForGeneration GGS_subscriptReadAccessExpressionForGeneration::
+init_21__21__21__21__21_ (const GGS_unifiedTypeMapEntry & in_mResultType,
+                          const GGS_location & in_mLocation,
+                          const GGS_semanticExpressionForGeneration & in_expression,
+                          const GGS_string & in_subscriptInvocationName,
+                          const GGS_semanticExpressionListForGeneration & in_actualExpressionList,
+                          Compiler * inCompiler
+                          COMMA_LOCATION_ARGS) {
+  cPtr_subscriptReadAccessExpressionForGeneration * object = nullptr ;
+  macroMyNew (object, cPtr_subscriptReadAccessExpressionForGeneration (inCompiler COMMA_THERE)) ;
+  object->subscriptReadAccessExpressionForGeneration_init_21__21__21__21__21_ (in_mResultType, in_mLocation, in_expression, in_subscriptInvocationName, in_actualExpressionList, inCompiler) ;
+  const GGS_subscriptReadAccessExpressionForGeneration result (object) ;
+  macroDetachSharedObject (object) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_subscriptReadAccessExpressionForGeneration::
+subscriptReadAccessExpressionForGeneration_init_21__21__21__21__21_ (const GGS_unifiedTypeMapEntry & in_mResultType,
+                                                                     const GGS_location & in_mLocation,
+                                                                     const GGS_semanticExpressionForGeneration & in_expression,
+                                                                     const GGS_string & in_subscriptInvocationName,
+                                                                     const GGS_semanticExpressionListForGeneration & in_actualExpressionList,
+                                                                     Compiler * /* inCompiler */) {
+  mProperty_mResultType = in_mResultType ;
+  mProperty_mLocation = in_mLocation ;
+  mProperty_expression = in_expression ;
+  mProperty_subscriptInvocationName = in_subscriptInvocationName ;
+  mProperty_actualExpressionList = in_actualExpressionList ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_subscriptReadAccessExpressionForGeneration::GGS_subscriptReadAccessExpressionForGeneration (const cPtr_subscriptReadAccessExpressionForGeneration * inSourcePtr) :
+GGS_semanticExpressionForGeneration (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_subscriptReadAccessExpressionForGeneration) ;
+}
+//--------------------------------------------------------------------------------------------------
+
+GGS_semanticExpressionForGeneration GGS_subscriptReadAccessExpressionForGeneration::readProperty_expression (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_semanticExpressionForGeneration () ;
+  }else{
+    cPtr_subscriptReadAccessExpressionForGeneration * p = (cPtr_subscriptReadAccessExpressionForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_subscriptReadAccessExpressionForGeneration) ;
+    return p->mProperty_expression ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_string GGS_subscriptReadAccessExpressionForGeneration::readProperty_subscriptInvocationName (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_string () ;
+  }else{
+    cPtr_subscriptReadAccessExpressionForGeneration * p = (cPtr_subscriptReadAccessExpressionForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_subscriptReadAccessExpressionForGeneration) ;
+    return p->mProperty_subscriptInvocationName ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_semanticExpressionListForGeneration GGS_subscriptReadAccessExpressionForGeneration::readProperty_actualExpressionList (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_semanticExpressionListForGeneration () ;
+  }else{
+    cPtr_subscriptReadAccessExpressionForGeneration * p = (cPtr_subscriptReadAccessExpressionForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_subscriptReadAccessExpressionForGeneration) ;
+    return p->mProperty_actualExpressionList ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//Pointer class for @subscriptReadAccessExpressionForGeneration class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_subscriptReadAccessExpressionForGeneration::cPtr_subscriptReadAccessExpressionForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_semanticExpressionForGeneration (inCompiler COMMA_THERE),
+mProperty_expression (),
+mProperty_subscriptInvocationName (),
+mProperty_actualExpressionList () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+cPtr_subscriptReadAccessExpressionForGeneration::cPtr_subscriptReadAccessExpressionForGeneration (const GGS_unifiedTypeMapEntry & in_mResultType,
+                                                                                                  const GGS_location & in_mLocation,
+                                                                                                  const GGS_semanticExpressionForGeneration & in_expression,
+                                                                                                  const GGS_string & in_subscriptInvocationName,
+                                                                                                  const GGS_semanticExpressionListForGeneration & in_actualExpressionList,
+                                                                                                  Compiler * inCompiler
+                                                                                                  COMMA_LOCATION_ARGS) :
+cPtr_semanticExpressionForGeneration (in_mResultType, in_mLocation, inCompiler COMMA_THERE),
+mProperty_expression (),
+mProperty_subscriptInvocationName (),
+mProperty_actualExpressionList () {
+  mProperty_mResultType = in_mResultType ;
+  mProperty_mLocation = in_mLocation ;
+  mProperty_expression = in_expression ;
+  mProperty_subscriptInvocationName = in_subscriptInvocationName ;
+  mProperty_actualExpressionList = in_actualExpressionList ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * cPtr_subscriptReadAccessExpressionForGeneration::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_subscriptReadAccessExpressionForGeneration ;
+}
+
+void cPtr_subscriptReadAccessExpressionForGeneration::description (String & ioString,
+                                                                   const int32_t inIndentation) const {
+  ioString.appendCString ("[@subscriptReadAccessExpressionForGeneration:") ;
+  mProperty_mResultType.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mLocation.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_expression.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_subscriptInvocationName.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_actualExpressionList.description (ioString, inIndentation+1) ;
+  ioString.appendCString ("]") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+acPtr_class * cPtr_subscriptReadAccessExpressionForGeneration::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  acPtr_class * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_subscriptReadAccessExpressionForGeneration (mProperty_mResultType, mProperty_mLocation, mProperty_expression, mProperty_subscriptInvocationName, mProperty_actualExpressionList, inCompiler COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_subscriptReadAccessExpressionForGeneration::printNonNullClassInstanceProperties (void) const {
+    cPtr_semanticExpressionForGeneration::printNonNullClassInstanceProperties () ;
+    mProperty_expression.printNonNullClassInstanceProperties ("expression") ;
+    mProperty_subscriptInvocationName.printNonNullClassInstanceProperties ("subscriptInvocationName") ;
+    mProperty_actualExpressionList.printNonNullClassInstanceProperties ("actualExpressionList") ;
+  }
+#endif
+
+//--------------------------------------------------------------------------------------------------
+//     @subscriptReadAccessExpressionForGeneration generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_subscriptReadAccessExpressionForGeneration ("subscriptReadAccessExpressionForGeneration",
+                                                                                               & kTypeDescriptor_GALGAS_semanticExpressionForGeneration) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_subscriptReadAccessExpressionForGeneration::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_subscriptReadAccessExpressionForGeneration ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_subscriptReadAccessExpressionForGeneration::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_subscriptReadAccessExpressionForGeneration (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_subscriptReadAccessExpressionForGeneration GGS_subscriptReadAccessExpressionForGeneration::extractObject (const GGS_object & inObject,
+                                                                                                              Compiler * inCompiler
+                                                                                                              COMMA_LOCATION_ARGS) {
+  GGS_subscriptReadAccessExpressionForGeneration result ;
+  const GGS_subscriptReadAccessExpressionForGeneration * p = (const GGS_subscriptReadAccessExpressionForGeneration *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_subscriptReadAccessExpressionForGeneration *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("subscriptReadAccessExpressionForGeneration", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
@@ -8230,6 +1266,176 @@ GGS_literalDoubleExpressionForGeneration GGS_literalDoubleExpressionForGeneratio
 }
 
 //--------------------------------------------------------------------------------------------------
+// @notExpressionForGeneration reference class
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GGS_notExpressionForGeneration::objectCompare (const GGS_notExpressionForGeneration & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    const size_t myObjectPtr = size_t (mObjectPtr) ;
+    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_notExpressionForGeneration::GGS_notExpressionForGeneration (void) :
+GGS_semanticExpressionForGeneration () {
+}
+
+//--- Synthetized initializer ----------------------------------------------------------------------
+
+GGS_notExpressionForGeneration GGS_notExpressionForGeneration::
+init_21__21__21_ (const GGS_unifiedTypeMapEntry & in_mResultType,
+                  const GGS_location & in_mLocation,
+                  const GGS_semanticExpressionForGeneration & in_mExpression,
+                  Compiler * inCompiler
+                  COMMA_LOCATION_ARGS) {
+  cPtr_notExpressionForGeneration * object = nullptr ;
+  macroMyNew (object, cPtr_notExpressionForGeneration (inCompiler COMMA_THERE)) ;
+  object->notExpressionForGeneration_init_21__21__21_ (in_mResultType, in_mLocation, in_mExpression, inCompiler) ;
+  const GGS_notExpressionForGeneration result (object) ;
+  macroDetachSharedObject (object) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_notExpressionForGeneration::
+notExpressionForGeneration_init_21__21__21_ (const GGS_unifiedTypeMapEntry & in_mResultType,
+                                             const GGS_location & in_mLocation,
+                                             const GGS_semanticExpressionForGeneration & in_mExpression,
+                                             Compiler * /* inCompiler */) {
+  mProperty_mResultType = in_mResultType ;
+  mProperty_mLocation = in_mLocation ;
+  mProperty_mExpression = in_mExpression ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_notExpressionForGeneration::GGS_notExpressionForGeneration (const cPtr_notExpressionForGeneration * inSourcePtr) :
+GGS_semanticExpressionForGeneration (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_notExpressionForGeneration) ;
+}
+//--------------------------------------------------------------------------------------------------
+
+GGS_semanticExpressionForGeneration GGS_notExpressionForGeneration::readProperty_mExpression (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_semanticExpressionForGeneration () ;
+  }else{
+    cPtr_notExpressionForGeneration * p = (cPtr_notExpressionForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_notExpressionForGeneration) ;
+    return p->mProperty_mExpression ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//Pointer class for @notExpressionForGeneration class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_notExpressionForGeneration::cPtr_notExpressionForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_semanticExpressionForGeneration (inCompiler COMMA_THERE),
+mProperty_mExpression () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+cPtr_notExpressionForGeneration::cPtr_notExpressionForGeneration (const GGS_unifiedTypeMapEntry & in_mResultType,
+                                                                  const GGS_location & in_mLocation,
+                                                                  const GGS_semanticExpressionForGeneration & in_mExpression,
+                                                                  Compiler * inCompiler
+                                                                  COMMA_LOCATION_ARGS) :
+cPtr_semanticExpressionForGeneration (in_mResultType, in_mLocation, inCompiler COMMA_THERE),
+mProperty_mExpression () {
+  mProperty_mResultType = in_mResultType ;
+  mProperty_mLocation = in_mLocation ;
+  mProperty_mExpression = in_mExpression ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * cPtr_notExpressionForGeneration::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_notExpressionForGeneration ;
+}
+
+void cPtr_notExpressionForGeneration::description (String & ioString,
+                                                   const int32_t inIndentation) const {
+  ioString.appendCString ("[@notExpressionForGeneration:") ;
+  mProperty_mResultType.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mLocation.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mExpression.description (ioString, inIndentation+1) ;
+  ioString.appendCString ("]") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+acPtr_class * cPtr_notExpressionForGeneration::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  acPtr_class * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_notExpressionForGeneration (mProperty_mResultType, mProperty_mLocation, mProperty_mExpression, inCompiler COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_notExpressionForGeneration::printNonNullClassInstanceProperties (void) const {
+    cPtr_semanticExpressionForGeneration::printNonNullClassInstanceProperties () ;
+    mProperty_mExpression.printNonNullClassInstanceProperties ("mExpression") ;
+  }
+#endif
+
+//--------------------------------------------------------------------------------------------------
+//     @notExpressionForGeneration generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_notExpressionForGeneration ("notExpressionForGeneration",
+                                                                               & kTypeDescriptor_GALGAS_semanticExpressionForGeneration) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_notExpressionForGeneration::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_notExpressionForGeneration ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_notExpressionForGeneration::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_notExpressionForGeneration (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_notExpressionForGeneration GGS_notExpressionForGeneration::extractObject (const GGS_object & inObject,
+                                                                              Compiler * inCompiler
+                                                                              COMMA_LOCATION_ARGS) {
+  GGS_notExpressionForGeneration result ;
+  const GGS_notExpressionForGeneration * p = (const GGS_notExpressionForGeneration *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_notExpressionForGeneration *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("notExpressionForGeneration", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
 // @collectionValueAST reference class
 //--------------------------------------------------------------------------------------------------
 
@@ -8424,6 +1630,346 @@ GGS_collectionValueAST GGS_collectionValueAST::extractObject (const GGS_object &
       result = *p ;
     }else{
       inCompiler->castError ("collectionValueAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+// @expressionCollectionForGeneration reference class
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GGS_expressionCollectionForGeneration::objectCompare (const GGS_expressionCollectionForGeneration & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    const size_t myObjectPtr = size_t (mObjectPtr) ;
+    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_expressionCollectionForGeneration::GGS_expressionCollectionForGeneration (void) :
+GGS_semanticExpressionForGeneration () {
+}
+
+//--- Synthetized initializer ----------------------------------------------------------------------
+
+GGS_expressionCollectionForGeneration GGS_expressionCollectionForGeneration::
+init_21__21__21_ (const GGS_unifiedTypeMapEntry & in_mResultType,
+                  const GGS_location & in_mLocation,
+                  const GGS_collectionValueElementListForGeneration & in_expressionList,
+                  Compiler * inCompiler
+                  COMMA_LOCATION_ARGS) {
+  cPtr_expressionCollectionForGeneration * object = nullptr ;
+  macroMyNew (object, cPtr_expressionCollectionForGeneration (inCompiler COMMA_THERE)) ;
+  object->expressionCollectionForGeneration_init_21__21__21_ (in_mResultType, in_mLocation, in_expressionList, inCompiler) ;
+  const GGS_expressionCollectionForGeneration result (object) ;
+  macroDetachSharedObject (object) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_expressionCollectionForGeneration::
+expressionCollectionForGeneration_init_21__21__21_ (const GGS_unifiedTypeMapEntry & in_mResultType,
+                                                    const GGS_location & in_mLocation,
+                                                    const GGS_collectionValueElementListForGeneration & in_expressionList,
+                                                    Compiler * /* inCompiler */) {
+  mProperty_mResultType = in_mResultType ;
+  mProperty_mLocation = in_mLocation ;
+  mProperty_expressionList = in_expressionList ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_expressionCollectionForGeneration::GGS_expressionCollectionForGeneration (const cPtr_expressionCollectionForGeneration * inSourcePtr) :
+GGS_semanticExpressionForGeneration (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_expressionCollectionForGeneration) ;
+}
+//--------------------------------------------------------------------------------------------------
+
+GGS_collectionValueElementListForGeneration GGS_expressionCollectionForGeneration::readProperty_expressionList (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_collectionValueElementListForGeneration () ;
+  }else{
+    cPtr_expressionCollectionForGeneration * p = (cPtr_expressionCollectionForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_expressionCollectionForGeneration) ;
+    return p->mProperty_expressionList ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//Pointer class for @expressionCollectionForGeneration class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_expressionCollectionForGeneration::cPtr_expressionCollectionForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_semanticExpressionForGeneration (inCompiler COMMA_THERE),
+mProperty_expressionList () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+cPtr_expressionCollectionForGeneration::cPtr_expressionCollectionForGeneration (const GGS_unifiedTypeMapEntry & in_mResultType,
+                                                                                const GGS_location & in_mLocation,
+                                                                                const GGS_collectionValueElementListForGeneration & in_expressionList,
+                                                                                Compiler * inCompiler
+                                                                                COMMA_LOCATION_ARGS) :
+cPtr_semanticExpressionForGeneration (in_mResultType, in_mLocation, inCompiler COMMA_THERE),
+mProperty_expressionList () {
+  mProperty_mResultType = in_mResultType ;
+  mProperty_mLocation = in_mLocation ;
+  mProperty_expressionList = in_expressionList ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * cPtr_expressionCollectionForGeneration::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_expressionCollectionForGeneration ;
+}
+
+void cPtr_expressionCollectionForGeneration::description (String & ioString,
+                                                          const int32_t inIndentation) const {
+  ioString.appendCString ("[@expressionCollectionForGeneration:") ;
+  mProperty_mResultType.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mLocation.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_expressionList.description (ioString, inIndentation+1) ;
+  ioString.appendCString ("]") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+acPtr_class * cPtr_expressionCollectionForGeneration::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  acPtr_class * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_expressionCollectionForGeneration (mProperty_mResultType, mProperty_mLocation, mProperty_expressionList, inCompiler COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_expressionCollectionForGeneration::printNonNullClassInstanceProperties (void) const {
+    cPtr_semanticExpressionForGeneration::printNonNullClassInstanceProperties () ;
+    mProperty_expressionList.printNonNullClassInstanceProperties ("expressionList") ;
+  }
+#endif
+
+//--------------------------------------------------------------------------------------------------
+//     @expressionCollectionForGeneration generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_expressionCollectionForGeneration ("expressionCollectionForGeneration",
+                                                                                      & kTypeDescriptor_GALGAS_semanticExpressionForGeneration) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_expressionCollectionForGeneration::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_expressionCollectionForGeneration ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_expressionCollectionForGeneration::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_expressionCollectionForGeneration (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_expressionCollectionForGeneration GGS_expressionCollectionForGeneration::extractObject (const GGS_object & inObject,
+                                                                                            Compiler * inCompiler
+                                                                                            COMMA_LOCATION_ARGS) {
+  GGS_expressionCollectionForGeneration result ;
+  const GGS_expressionCollectionForGeneration * p = (const GGS_expressionCollectionForGeneration *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_expressionCollectionForGeneration *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("expressionCollectionForGeneration", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+// @unaryWrappingMinusExpressionForGeneration reference class
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GGS_unaryWrappingMinusExpressionForGeneration::objectCompare (const GGS_unaryWrappingMinusExpressionForGeneration & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    const size_t myObjectPtr = size_t (mObjectPtr) ;
+    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_unaryWrappingMinusExpressionForGeneration::GGS_unaryWrappingMinusExpressionForGeneration (void) :
+GGS_semanticExpressionForGeneration () {
+}
+
+//--- Synthetized initializer ----------------------------------------------------------------------
+
+GGS_unaryWrappingMinusExpressionForGeneration GGS_unaryWrappingMinusExpressionForGeneration::
+init_21__21__21_ (const GGS_unifiedTypeMapEntry & in_mResultType,
+                  const GGS_location & in_mLocation,
+                  const GGS_semanticExpressionForGeneration & in_mExpression,
+                  Compiler * inCompiler
+                  COMMA_LOCATION_ARGS) {
+  cPtr_unaryWrappingMinusExpressionForGeneration * object = nullptr ;
+  macroMyNew (object, cPtr_unaryWrappingMinusExpressionForGeneration (inCompiler COMMA_THERE)) ;
+  object->unaryWrappingMinusExpressionForGeneration_init_21__21__21_ (in_mResultType, in_mLocation, in_mExpression, inCompiler) ;
+  const GGS_unaryWrappingMinusExpressionForGeneration result (object) ;
+  macroDetachSharedObject (object) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_unaryWrappingMinusExpressionForGeneration::
+unaryWrappingMinusExpressionForGeneration_init_21__21__21_ (const GGS_unifiedTypeMapEntry & in_mResultType,
+                                                            const GGS_location & in_mLocation,
+                                                            const GGS_semanticExpressionForGeneration & in_mExpression,
+                                                            Compiler * /* inCompiler */) {
+  mProperty_mResultType = in_mResultType ;
+  mProperty_mLocation = in_mLocation ;
+  mProperty_mExpression = in_mExpression ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_unaryWrappingMinusExpressionForGeneration::GGS_unaryWrappingMinusExpressionForGeneration (const cPtr_unaryWrappingMinusExpressionForGeneration * inSourcePtr) :
+GGS_semanticExpressionForGeneration (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_unaryWrappingMinusExpressionForGeneration) ;
+}
+//--------------------------------------------------------------------------------------------------
+
+GGS_semanticExpressionForGeneration GGS_unaryWrappingMinusExpressionForGeneration::readProperty_mExpression (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_semanticExpressionForGeneration () ;
+  }else{
+    cPtr_unaryWrappingMinusExpressionForGeneration * p = (cPtr_unaryWrappingMinusExpressionForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_unaryWrappingMinusExpressionForGeneration) ;
+    return p->mProperty_mExpression ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//Pointer class for @unaryWrappingMinusExpressionForGeneration class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_unaryWrappingMinusExpressionForGeneration::cPtr_unaryWrappingMinusExpressionForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_semanticExpressionForGeneration (inCompiler COMMA_THERE),
+mProperty_mExpression () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+cPtr_unaryWrappingMinusExpressionForGeneration::cPtr_unaryWrappingMinusExpressionForGeneration (const GGS_unifiedTypeMapEntry & in_mResultType,
+                                                                                                const GGS_location & in_mLocation,
+                                                                                                const GGS_semanticExpressionForGeneration & in_mExpression,
+                                                                                                Compiler * inCompiler
+                                                                                                COMMA_LOCATION_ARGS) :
+cPtr_semanticExpressionForGeneration (in_mResultType, in_mLocation, inCompiler COMMA_THERE),
+mProperty_mExpression () {
+  mProperty_mResultType = in_mResultType ;
+  mProperty_mLocation = in_mLocation ;
+  mProperty_mExpression = in_mExpression ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * cPtr_unaryWrappingMinusExpressionForGeneration::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_unaryWrappingMinusExpressionForGeneration ;
+}
+
+void cPtr_unaryWrappingMinusExpressionForGeneration::description (String & ioString,
+                                                                  const int32_t inIndentation) const {
+  ioString.appendCString ("[@unaryWrappingMinusExpressionForGeneration:") ;
+  mProperty_mResultType.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mLocation.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mExpression.description (ioString, inIndentation+1) ;
+  ioString.appendCString ("]") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+acPtr_class * cPtr_unaryWrappingMinusExpressionForGeneration::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  acPtr_class * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_unaryWrappingMinusExpressionForGeneration (mProperty_mResultType, mProperty_mLocation, mProperty_mExpression, inCompiler COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_unaryWrappingMinusExpressionForGeneration::printNonNullClassInstanceProperties (void) const {
+    cPtr_semanticExpressionForGeneration::printNonNullClassInstanceProperties () ;
+    mProperty_mExpression.printNonNullClassInstanceProperties ("mExpression") ;
+  }
+#endif
+
+//--------------------------------------------------------------------------------------------------
+//     @unaryWrappingMinusExpressionForGeneration generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_unaryWrappingMinusExpressionForGeneration ("unaryWrappingMinusExpressionForGeneration",
+                                                                                              & kTypeDescriptor_GALGAS_semanticExpressionForGeneration) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_unaryWrappingMinusExpressionForGeneration::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_unaryWrappingMinusExpressionForGeneration ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_unaryWrappingMinusExpressionForGeneration::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_unaryWrappingMinusExpressionForGeneration (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_unaryWrappingMinusExpressionForGeneration GGS_unaryWrappingMinusExpressionForGeneration::extractObject (const GGS_object & inObject,
+                                                                                                            Compiler * inCompiler
+                                                                                                            COMMA_LOCATION_ARGS) {
+  GGS_unaryWrappingMinusExpressionForGeneration result ;
+  const GGS_unaryWrappingMinusExpressionForGeneration * p = (const GGS_unaryWrappingMinusExpressionForGeneration *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_unaryWrappingMinusExpressionForGeneration *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("unaryWrappingMinusExpressionForGeneration", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
@@ -14896,6 +8442,2168 @@ GGS__32_lstringlist_2E_element GGS__32_lstringlist_2E_element::extractObject (co
 
 //--------------------------------------------------------------------------------------------------
 
+GGS_logListAST_2E_element::GGS_logListAST_2E_element (void) :
+mProperty_mLogMessage (),
+mProperty_mLogExpression () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_logListAST_2E_element::GGS_logListAST_2E_element (const GGS_logListAST_2E_element & inSource) :
+mProperty_mLogMessage (inSource.mProperty_mLogMessage),
+mProperty_mLogExpression (inSource.mProperty_mLogExpression) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_logListAST_2E_element & GGS_logListAST_2E_element::operator = (const GGS_logListAST_2E_element & inSource) {
+  mProperty_mLogMessage = inSource.mProperty_mLogMessage ;
+  mProperty_mLogExpression = inSource.mProperty_mLogExpression ;
+  return *this ;
+}
+
+//---Synthetized initializer -----------------------------------------------------------------------
+
+GGS_logListAST_2E_element GGS_logListAST_2E_element::init_21__21_ (const GGS_lstring & in_mLogMessage,
+                                                                   const GGS_semanticExpressionAST & in_mLogExpression,
+                                                                   Compiler * inCompiler
+                                                                   COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_logListAST_2E_element result ;
+  result.setInitializedProperties (inCompiler) ;
+  result.mProperty_mLogMessage = in_mLogMessage ;
+  result.mProperty_mLogExpression = in_mLogExpression ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_logListAST_2E_element::setInitializedProperties (Compiler * /* inCompiler */) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_logListAST_2E_element::GGS_logListAST_2E_element (const GGS_lstring & inOperand0,
+                                                      const GGS_semanticExpressionAST & inOperand1) :
+mProperty_mLogMessage (inOperand0),
+mProperty_mLogExpression (inOperand1) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_logListAST_2E_element::isValid (void) const {
+  return mProperty_mLogMessage.isValid () && mProperty_mLogExpression.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_logListAST_2E_element::drop (void) {
+  mProperty_mLogMessage.drop () ;
+  mProperty_mLogExpression.drop () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_logListAST_2E_element::description (String & ioString,
+                                             const int32_t inIndentation) const {
+  ioString.appendCString ("<struct @logListAST.element:") ;
+  if (! isValid ()) {
+    ioString.appendCString (" not built") ;
+  }else{
+    mProperty_mLogMessage.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mLogExpression.description (ioString, inIndentation+1) ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @logListAST.element generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_logListAST_2E_element ("logListAST.element",
+                                                                          nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_logListAST_2E_element::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_logListAST_2E_element ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_logListAST_2E_element::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_logListAST_2E_element (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_logListAST_2E_element GGS_logListAST_2E_element::extractObject (const GGS_object & inObject,
+                                                                    Compiler * inCompiler
+                                                                    COMMA_LOCATION_ARGS) {
+  GGS_logListAST_2E_element result ;
+  const GGS_logListAST_2E_element * p = (const GGS_logListAST_2E_element *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_logListAST_2E_element *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("logListAST.element", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_switchExtractedValuesListAST_2E_element::GGS_switchExtractedValuesListAST_2E_element (void) :
+mProperty_mExtractedValueTypeName (),
+mProperty_mExtractedValueName (),
+mProperty_mMarkedAsUnused () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_switchExtractedValuesListAST_2E_element::GGS_switchExtractedValuesListAST_2E_element (const GGS_switchExtractedValuesListAST_2E_element & inSource) :
+mProperty_mExtractedValueTypeName (inSource.mProperty_mExtractedValueTypeName),
+mProperty_mExtractedValueName (inSource.mProperty_mExtractedValueName),
+mProperty_mMarkedAsUnused (inSource.mProperty_mMarkedAsUnused) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_switchExtractedValuesListAST_2E_element & GGS_switchExtractedValuesListAST_2E_element::operator = (const GGS_switchExtractedValuesListAST_2E_element & inSource) {
+  mProperty_mExtractedValueTypeName = inSource.mProperty_mExtractedValueTypeName ;
+  mProperty_mExtractedValueName = inSource.mProperty_mExtractedValueName ;
+  mProperty_mMarkedAsUnused = inSource.mProperty_mMarkedAsUnused ;
+  return *this ;
+}
+
+//---Synthetized initializer -----------------------------------------------------------------------
+
+GGS_switchExtractedValuesListAST_2E_element GGS_switchExtractedValuesListAST_2E_element::init_21__21__21_ (const GGS_lstring & in_mExtractedValueTypeName,
+                                                                                                           const GGS_lstring & in_mExtractedValueName,
+                                                                                                           const GGS_bool & in_mMarkedAsUnused,
+                                                                                                           Compiler * inCompiler
+                                                                                                           COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_switchExtractedValuesListAST_2E_element result ;
+  result.setInitializedProperties (inCompiler) ;
+  result.mProperty_mExtractedValueTypeName = in_mExtractedValueTypeName ;
+  result.mProperty_mExtractedValueName = in_mExtractedValueName ;
+  result.mProperty_mMarkedAsUnused = in_mMarkedAsUnused ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_switchExtractedValuesListAST_2E_element::setInitializedProperties (Compiler * /* inCompiler */) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_switchExtractedValuesListAST_2E_element::GGS_switchExtractedValuesListAST_2E_element (const GGS_lstring & inOperand0,
+                                                                                          const GGS_lstring & inOperand1,
+                                                                                          const GGS_bool & inOperand2) :
+mProperty_mExtractedValueTypeName (inOperand0),
+mProperty_mExtractedValueName (inOperand1),
+mProperty_mMarkedAsUnused (inOperand2) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_switchExtractedValuesListAST_2E_element::isValid (void) const {
+  return mProperty_mExtractedValueTypeName.isValid () && mProperty_mExtractedValueName.isValid () && mProperty_mMarkedAsUnused.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_switchExtractedValuesListAST_2E_element::drop (void) {
+  mProperty_mExtractedValueTypeName.drop () ;
+  mProperty_mExtractedValueName.drop () ;
+  mProperty_mMarkedAsUnused.drop () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_switchExtractedValuesListAST_2E_element::description (String & ioString,
+                                                               const int32_t inIndentation) const {
+  ioString.appendCString ("<struct @switchExtractedValuesListAST.element:") ;
+  if (! isValid ()) {
+    ioString.appendCString (" not built") ;
+  }else{
+    mProperty_mExtractedValueTypeName.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mExtractedValueName.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mMarkedAsUnused.description (ioString, inIndentation+1) ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @switchExtractedValuesListAST.element generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_switchExtractedValuesListAST_2E_element ("switchExtractedValuesListAST.element",
+                                                                                            nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_switchExtractedValuesListAST_2E_element::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_switchExtractedValuesListAST_2E_element ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_switchExtractedValuesListAST_2E_element::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_switchExtractedValuesListAST_2E_element (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_switchExtractedValuesListAST_2E_element GGS_switchExtractedValuesListAST_2E_element::extractObject (const GGS_object & inObject,
+                                                                                                        Compiler * inCompiler
+                                                                                                        COMMA_LOCATION_ARGS) {
+  GGS_switchExtractedValuesListAST_2E_element result ;
+  const GGS_switchExtractedValuesListAST_2E_element * p = (const GGS_switchExtractedValuesListAST_2E_element *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_switchExtractedValuesListAST_2E_element *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("switchExtractedValuesListAST.element", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_fixitElementForGeneration_2E_fixItReplace::GGS_fixitElementForGeneration_2E_fixItReplace (void) :
+mProperty_exp () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_fixitElementForGeneration_2E_fixItReplace::GGS_fixitElementForGeneration_2E_fixItReplace (const GGS_fixitElementForGeneration_2E_fixItReplace & inSource) :
+mProperty_exp (inSource.mProperty_exp) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_fixitElementForGeneration_2E_fixItReplace & GGS_fixitElementForGeneration_2E_fixItReplace::operator = (const GGS_fixitElementForGeneration_2E_fixItReplace & inSource) {
+  mProperty_exp = inSource.mProperty_exp ;
+  return *this ;
+}
+
+//---Synthetized initializer -----------------------------------------------------------------------
+
+GGS_fixitElementForGeneration_2E_fixItReplace GGS_fixitElementForGeneration_2E_fixItReplace::init_21_ (const GGS_semanticExpressionForGeneration & in_exp,
+                                                                                                       Compiler * inCompiler
+                                                                                                       COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_fixitElementForGeneration_2E_fixItReplace result ;
+  result.setInitializedProperties (inCompiler) ;
+  result.mProperty_exp = in_exp ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_fixitElementForGeneration_2E_fixItReplace::setInitializedProperties (Compiler * /* inCompiler */) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_fixitElementForGeneration_2E_fixItReplace::GGS_fixitElementForGeneration_2E_fixItReplace (const GGS_semanticExpressionForGeneration & inOperand0) :
+mProperty_exp (inOperand0) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_fixitElementForGeneration_2E_fixItReplace::isValid (void) const {
+  return mProperty_exp.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_fixitElementForGeneration_2E_fixItReplace::drop (void) {
+  mProperty_exp.drop () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_fixitElementForGeneration_2E_fixItReplace::description (String & ioString,
+                                                                 const int32_t inIndentation) const {
+  ioString.appendCString ("<struct @fixitElementForGeneration.fixItReplace:") ;
+  if (! isValid ()) {
+    ioString.appendCString (" not built") ;
+  }else{
+    mProperty_exp.description (ioString, inIndentation+1) ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @fixitElementForGeneration.fixItReplace generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_fixitElementForGeneration_2E_fixItReplace ("fixitElementForGeneration.fixItReplace",
+                                                                                              nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_fixitElementForGeneration_2E_fixItReplace::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_fixitElementForGeneration_2E_fixItReplace ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_fixitElementForGeneration_2E_fixItReplace::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_fixitElementForGeneration_2E_fixItReplace (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_fixitElementForGeneration_2E_fixItReplace GGS_fixitElementForGeneration_2E_fixItReplace::extractObject (const GGS_object & inObject,
+                                                                                                            Compiler * inCompiler
+                                                                                                            COMMA_LOCATION_ARGS) {
+  GGS_fixitElementForGeneration_2E_fixItReplace result ;
+  const GGS_fixitElementForGeneration_2E_fixItReplace * p = (const GGS_fixitElementForGeneration_2E_fixItReplace *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_fixitElementForGeneration_2E_fixItReplace *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("fixitElementForGeneration.fixItReplace", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//Optional @fixitElementForGeneration_2E_fixItReplace_3F_
+//--------------------------------------------------------------------------------------------------
+
+GGS_fixitElementForGeneration_2E_fixItReplace_3F_::GGS_fixitElementForGeneration_2E_fixItReplace_3F_ (void) :
+AC_GALGAS_root (),
+mValue (),
+mState (OptionalState::invalid) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_fixitElementForGeneration_2E_fixItReplace_3F_::GGS_fixitElementForGeneration_2E_fixItReplace_3F_ (const GGS_fixitElementForGeneration_2E_fixItReplace & inSource) :
+AC_GALGAS_root (),
+mValue (inSource),
+mState (OptionalState::valuated) {
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_fixitElementForGeneration_2E_fixItReplace_3F_ GGS_fixitElementForGeneration_2E_fixItReplace_3F_::init_nil (void) {
+  GGS_fixitElementForGeneration_2E_fixItReplace_3F_ result ;
+  result.mState = OptionalState::isNil ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_fixitElementForGeneration_2E_fixItReplace_3F_::isValid (void) const {
+  bool result = false ;
+  switch (mState) {
+  case OptionalState::invalid :
+    break ;
+  case OptionalState::isNil :
+    result = true ;
+    break ;
+  case OptionalState::valuated :
+    result = mValue.isValid () ;
+    break ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_fixitElementForGeneration_2E_fixItReplace_3F_::isValuated (void) const {
+  return (mState == OptionalState::valuated) && mValue.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_fixitElementForGeneration_2E_fixItReplace_3F_::drop (void) {
+  mState = OptionalState::invalid ;
+  mValue = GGS_fixitElementForGeneration_2E_fixItReplace () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_fixitElementForGeneration_2E_fixItReplace_3F_::description (String & ioString,
+                                                                     const int32_t inIndentation) const {
+  ioString.appendCString ("<optional @") ;
+  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
+  ioString.appendCString (": ") ;
+  switch (mState) {
+  case OptionalState::invalid :
+    ioString.appendCString ("invalid") ;
+    break ;
+  case OptionalState::isNil :
+    ioString.appendCString ("nil") ;
+    break ;
+  case OptionalState::valuated :
+    mValue.description (ioString, inIndentation) ;
+    break ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @fixitElementForGeneration.fixItReplace? generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_fixitElementForGeneration_2E_fixItReplace_3F_ ("fixitElementForGeneration.fixItReplace?",
+                                                                                                  nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_fixitElementForGeneration_2E_fixItReplace_3F_::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_fixitElementForGeneration_2E_fixItReplace_3F_ ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_fixitElementForGeneration_2E_fixItReplace_3F_::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_fixitElementForGeneration_2E_fixItReplace_3F_ (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_fixitElementForGeneration_2E_fixItReplace_3F_ GGS_fixitElementForGeneration_2E_fixItReplace_3F_::extractObject (const GGS_object & inObject,
+                                                                                                                    Compiler * inCompiler
+                                                                                                                    COMMA_LOCATION_ARGS) {
+  GGS_fixitElementForGeneration_2E_fixItReplace_3F_ result ;
+  const GGS_fixitElementForGeneration_2E_fixItReplace_3F_ * p = (const GGS_fixitElementForGeneration_2E_fixItReplace_3F_ *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_fixitElementForGeneration_2E_fixItReplace_3F_ *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("fixitElementForGeneration.fixItReplace?", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_fixitElementForGeneration_2E_fixItInsertBefore::GGS_fixitElementForGeneration_2E_fixItInsertBefore (void) :
+mProperty_exp () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_fixitElementForGeneration_2E_fixItInsertBefore::GGS_fixitElementForGeneration_2E_fixItInsertBefore (const GGS_fixitElementForGeneration_2E_fixItInsertBefore & inSource) :
+mProperty_exp (inSource.mProperty_exp) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_fixitElementForGeneration_2E_fixItInsertBefore & GGS_fixitElementForGeneration_2E_fixItInsertBefore::operator = (const GGS_fixitElementForGeneration_2E_fixItInsertBefore & inSource) {
+  mProperty_exp = inSource.mProperty_exp ;
+  return *this ;
+}
+
+//---Synthetized initializer -----------------------------------------------------------------------
+
+GGS_fixitElementForGeneration_2E_fixItInsertBefore GGS_fixitElementForGeneration_2E_fixItInsertBefore::init_21_ (const GGS_semanticExpressionForGeneration & in_exp,
+                                                                                                                 Compiler * inCompiler
+                                                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_fixitElementForGeneration_2E_fixItInsertBefore result ;
+  result.setInitializedProperties (inCompiler) ;
+  result.mProperty_exp = in_exp ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_fixitElementForGeneration_2E_fixItInsertBefore::setInitializedProperties (Compiler * /* inCompiler */) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_fixitElementForGeneration_2E_fixItInsertBefore::GGS_fixitElementForGeneration_2E_fixItInsertBefore (const GGS_semanticExpressionForGeneration & inOperand0) :
+mProperty_exp (inOperand0) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_fixitElementForGeneration_2E_fixItInsertBefore::isValid (void) const {
+  return mProperty_exp.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_fixitElementForGeneration_2E_fixItInsertBefore::drop (void) {
+  mProperty_exp.drop () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_fixitElementForGeneration_2E_fixItInsertBefore::description (String & ioString,
+                                                                      const int32_t inIndentation) const {
+  ioString.appendCString ("<struct @fixitElementForGeneration.fixItInsertBefore:") ;
+  if (! isValid ()) {
+    ioString.appendCString (" not built") ;
+  }else{
+    mProperty_exp.description (ioString, inIndentation+1) ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @fixitElementForGeneration.fixItInsertBefore generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_fixitElementForGeneration_2E_fixItInsertBefore ("fixitElementForGeneration.fixItInsertBefore",
+                                                                                                   nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_fixitElementForGeneration_2E_fixItInsertBefore::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_fixitElementForGeneration_2E_fixItInsertBefore ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_fixitElementForGeneration_2E_fixItInsertBefore::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_fixitElementForGeneration_2E_fixItInsertBefore (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_fixitElementForGeneration_2E_fixItInsertBefore GGS_fixitElementForGeneration_2E_fixItInsertBefore::extractObject (const GGS_object & inObject,
+                                                                                                                      Compiler * inCompiler
+                                                                                                                      COMMA_LOCATION_ARGS) {
+  GGS_fixitElementForGeneration_2E_fixItInsertBefore result ;
+  const GGS_fixitElementForGeneration_2E_fixItInsertBefore * p = (const GGS_fixitElementForGeneration_2E_fixItInsertBefore *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_fixitElementForGeneration_2E_fixItInsertBefore *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("fixitElementForGeneration.fixItInsertBefore", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//Optional @fixitElementForGeneration_2E_fixItInsertBefore_3F_
+//--------------------------------------------------------------------------------------------------
+
+GGS_fixitElementForGeneration_2E_fixItInsertBefore_3F_::GGS_fixitElementForGeneration_2E_fixItInsertBefore_3F_ (void) :
+AC_GALGAS_root (),
+mValue (),
+mState (OptionalState::invalid) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_fixitElementForGeneration_2E_fixItInsertBefore_3F_::GGS_fixitElementForGeneration_2E_fixItInsertBefore_3F_ (const GGS_fixitElementForGeneration_2E_fixItInsertBefore & inSource) :
+AC_GALGAS_root (),
+mValue (inSource),
+mState (OptionalState::valuated) {
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_fixitElementForGeneration_2E_fixItInsertBefore_3F_ GGS_fixitElementForGeneration_2E_fixItInsertBefore_3F_::init_nil (void) {
+  GGS_fixitElementForGeneration_2E_fixItInsertBefore_3F_ result ;
+  result.mState = OptionalState::isNil ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_fixitElementForGeneration_2E_fixItInsertBefore_3F_::isValid (void) const {
+  bool result = false ;
+  switch (mState) {
+  case OptionalState::invalid :
+    break ;
+  case OptionalState::isNil :
+    result = true ;
+    break ;
+  case OptionalState::valuated :
+    result = mValue.isValid () ;
+    break ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_fixitElementForGeneration_2E_fixItInsertBefore_3F_::isValuated (void) const {
+  return (mState == OptionalState::valuated) && mValue.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_fixitElementForGeneration_2E_fixItInsertBefore_3F_::drop (void) {
+  mState = OptionalState::invalid ;
+  mValue = GGS_fixitElementForGeneration_2E_fixItInsertBefore () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_fixitElementForGeneration_2E_fixItInsertBefore_3F_::description (String & ioString,
+                                                                          const int32_t inIndentation) const {
+  ioString.appendCString ("<optional @") ;
+  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
+  ioString.appendCString (": ") ;
+  switch (mState) {
+  case OptionalState::invalid :
+    ioString.appendCString ("invalid") ;
+    break ;
+  case OptionalState::isNil :
+    ioString.appendCString ("nil") ;
+    break ;
+  case OptionalState::valuated :
+    mValue.description (ioString, inIndentation) ;
+    break ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @fixitElementForGeneration.fixItInsertBefore? generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_fixitElementForGeneration_2E_fixItInsertBefore_3F_ ("fixitElementForGeneration.fixItInsertBefore?",
+                                                                                                       nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_fixitElementForGeneration_2E_fixItInsertBefore_3F_::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_fixitElementForGeneration_2E_fixItInsertBefore_3F_ ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_fixitElementForGeneration_2E_fixItInsertBefore_3F_::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_fixitElementForGeneration_2E_fixItInsertBefore_3F_ (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_fixitElementForGeneration_2E_fixItInsertBefore_3F_ GGS_fixitElementForGeneration_2E_fixItInsertBefore_3F_::extractObject (const GGS_object & inObject,
+                                                                                                                              Compiler * inCompiler
+                                                                                                                              COMMA_LOCATION_ARGS) {
+  GGS_fixitElementForGeneration_2E_fixItInsertBefore_3F_ result ;
+  const GGS_fixitElementForGeneration_2E_fixItInsertBefore_3F_ * p = (const GGS_fixitElementForGeneration_2E_fixItInsertBefore_3F_ *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_fixitElementForGeneration_2E_fixItInsertBefore_3F_ *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("fixitElementForGeneration.fixItInsertBefore?", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_fixitElementForGeneration_2E_fixItInsertAfter::GGS_fixitElementForGeneration_2E_fixItInsertAfter (void) :
+mProperty_exp () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_fixitElementForGeneration_2E_fixItInsertAfter::GGS_fixitElementForGeneration_2E_fixItInsertAfter (const GGS_fixitElementForGeneration_2E_fixItInsertAfter & inSource) :
+mProperty_exp (inSource.mProperty_exp) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_fixitElementForGeneration_2E_fixItInsertAfter & GGS_fixitElementForGeneration_2E_fixItInsertAfter::operator = (const GGS_fixitElementForGeneration_2E_fixItInsertAfter & inSource) {
+  mProperty_exp = inSource.mProperty_exp ;
+  return *this ;
+}
+
+//---Synthetized initializer -----------------------------------------------------------------------
+
+GGS_fixitElementForGeneration_2E_fixItInsertAfter GGS_fixitElementForGeneration_2E_fixItInsertAfter::init_21_ (const GGS_semanticExpressionForGeneration & in_exp,
+                                                                                                               Compiler * inCompiler
+                                                                                                               COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_fixitElementForGeneration_2E_fixItInsertAfter result ;
+  result.setInitializedProperties (inCompiler) ;
+  result.mProperty_exp = in_exp ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_fixitElementForGeneration_2E_fixItInsertAfter::setInitializedProperties (Compiler * /* inCompiler */) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_fixitElementForGeneration_2E_fixItInsertAfter::GGS_fixitElementForGeneration_2E_fixItInsertAfter (const GGS_semanticExpressionForGeneration & inOperand0) :
+mProperty_exp (inOperand0) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_fixitElementForGeneration_2E_fixItInsertAfter::isValid (void) const {
+  return mProperty_exp.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_fixitElementForGeneration_2E_fixItInsertAfter::drop (void) {
+  mProperty_exp.drop () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_fixitElementForGeneration_2E_fixItInsertAfter::description (String & ioString,
+                                                                     const int32_t inIndentation) const {
+  ioString.appendCString ("<struct @fixitElementForGeneration.fixItInsertAfter:") ;
+  if (! isValid ()) {
+    ioString.appendCString (" not built") ;
+  }else{
+    mProperty_exp.description (ioString, inIndentation+1) ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @fixitElementForGeneration.fixItInsertAfter generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_fixitElementForGeneration_2E_fixItInsertAfter ("fixitElementForGeneration.fixItInsertAfter",
+                                                                                                  nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_fixitElementForGeneration_2E_fixItInsertAfter::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_fixitElementForGeneration_2E_fixItInsertAfter ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_fixitElementForGeneration_2E_fixItInsertAfter::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_fixitElementForGeneration_2E_fixItInsertAfter (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_fixitElementForGeneration_2E_fixItInsertAfter GGS_fixitElementForGeneration_2E_fixItInsertAfter::extractObject (const GGS_object & inObject,
+                                                                                                                    Compiler * inCompiler
+                                                                                                                    COMMA_LOCATION_ARGS) {
+  GGS_fixitElementForGeneration_2E_fixItInsertAfter result ;
+  const GGS_fixitElementForGeneration_2E_fixItInsertAfter * p = (const GGS_fixitElementForGeneration_2E_fixItInsertAfter *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_fixitElementForGeneration_2E_fixItInsertAfter *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("fixitElementForGeneration.fixItInsertAfter", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//Optional @fixitElementForGeneration_2E_fixItInsertAfter_3F_
+//--------------------------------------------------------------------------------------------------
+
+GGS_fixitElementForGeneration_2E_fixItInsertAfter_3F_::GGS_fixitElementForGeneration_2E_fixItInsertAfter_3F_ (void) :
+AC_GALGAS_root (),
+mValue (),
+mState (OptionalState::invalid) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_fixitElementForGeneration_2E_fixItInsertAfter_3F_::GGS_fixitElementForGeneration_2E_fixItInsertAfter_3F_ (const GGS_fixitElementForGeneration_2E_fixItInsertAfter & inSource) :
+AC_GALGAS_root (),
+mValue (inSource),
+mState (OptionalState::valuated) {
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_fixitElementForGeneration_2E_fixItInsertAfter_3F_ GGS_fixitElementForGeneration_2E_fixItInsertAfter_3F_::init_nil (void) {
+  GGS_fixitElementForGeneration_2E_fixItInsertAfter_3F_ result ;
+  result.mState = OptionalState::isNil ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_fixitElementForGeneration_2E_fixItInsertAfter_3F_::isValid (void) const {
+  bool result = false ;
+  switch (mState) {
+  case OptionalState::invalid :
+    break ;
+  case OptionalState::isNil :
+    result = true ;
+    break ;
+  case OptionalState::valuated :
+    result = mValue.isValid () ;
+    break ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_fixitElementForGeneration_2E_fixItInsertAfter_3F_::isValuated (void) const {
+  return (mState == OptionalState::valuated) && mValue.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_fixitElementForGeneration_2E_fixItInsertAfter_3F_::drop (void) {
+  mState = OptionalState::invalid ;
+  mValue = GGS_fixitElementForGeneration_2E_fixItInsertAfter () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_fixitElementForGeneration_2E_fixItInsertAfter_3F_::description (String & ioString,
+                                                                         const int32_t inIndentation) const {
+  ioString.appendCString ("<optional @") ;
+  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
+  ioString.appendCString (": ") ;
+  switch (mState) {
+  case OptionalState::invalid :
+    ioString.appendCString ("invalid") ;
+    break ;
+  case OptionalState::isNil :
+    ioString.appendCString ("nil") ;
+    break ;
+  case OptionalState::valuated :
+    mValue.description (ioString, inIndentation) ;
+    break ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @fixitElementForGeneration.fixItInsertAfter? generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_fixitElementForGeneration_2E_fixItInsertAfter_3F_ ("fixitElementForGeneration.fixItInsertAfter?",
+                                                                                                      nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_fixitElementForGeneration_2E_fixItInsertAfter_3F_::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_fixitElementForGeneration_2E_fixItInsertAfter_3F_ ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_fixitElementForGeneration_2E_fixItInsertAfter_3F_::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_fixitElementForGeneration_2E_fixItInsertAfter_3F_ (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_fixitElementForGeneration_2E_fixItInsertAfter_3F_ GGS_fixitElementForGeneration_2E_fixItInsertAfter_3F_::extractObject (const GGS_object & inObject,
+                                                                                                                            Compiler * inCompiler
+                                                                                                                            COMMA_LOCATION_ARGS) {
+  GGS_fixitElementForGeneration_2E_fixItInsertAfter_3F_ result ;
+  const GGS_fixitElementForGeneration_2E_fixItInsertAfter_3F_ * p = (const GGS_fixitElementForGeneration_2E_fixItInsertAfter_3F_ *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_fixitElementForGeneration_2E_fixItInsertAfter_3F_ *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("fixitElementForGeneration.fixItInsertAfter?", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_ifExpressionKind_2E_letVarExp::GGS_ifExpressionKind_2E_letVarExp (void) :
+mProperty_varName (),
+mProperty_isConstant (),
+mProperty_exp (),
+mProperty_endOfExp (),
+mProperty_typeName () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_ifExpressionKind_2E_letVarExp::GGS_ifExpressionKind_2E_letVarExp (const GGS_ifExpressionKind_2E_letVarExp & inSource) :
+mProperty_varName (inSource.mProperty_varName),
+mProperty_isConstant (inSource.mProperty_isConstant),
+mProperty_exp (inSource.mProperty_exp),
+mProperty_endOfExp (inSource.mProperty_endOfExp),
+mProperty_typeName (inSource.mProperty_typeName) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_ifExpressionKind_2E_letVarExp & GGS_ifExpressionKind_2E_letVarExp::operator = (const GGS_ifExpressionKind_2E_letVarExp & inSource) {
+  mProperty_varName = inSource.mProperty_varName ;
+  mProperty_isConstant = inSource.mProperty_isConstant ;
+  mProperty_exp = inSource.mProperty_exp ;
+  mProperty_endOfExp = inSource.mProperty_endOfExp ;
+  mProperty_typeName = inSource.mProperty_typeName ;
+  return *this ;
+}
+
+//---Synthetized initializer -----------------------------------------------------------------------
+
+GGS_ifExpressionKind_2E_letVarExp GGS_ifExpressionKind_2E_letVarExp::init_21__21__21__21__21_ (const GGS_lstring & in_varName,
+                                                                                               const GGS_bool & in_isConstant,
+                                                                                               const GGS_semanticExpressionAST & in_exp,
+                                                                                               const GGS_location & in_endOfExp,
+                                                                                               const GGS_lstring & in_typeName,
+                                                                                               Compiler * inCompiler
+                                                                                               COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_ifExpressionKind_2E_letVarExp result ;
+  result.setInitializedProperties (inCompiler) ;
+  result.mProperty_varName = in_varName ;
+  result.mProperty_isConstant = in_isConstant ;
+  result.mProperty_exp = in_exp ;
+  result.mProperty_endOfExp = in_endOfExp ;
+  result.mProperty_typeName = in_typeName ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_ifExpressionKind_2E_letVarExp::setInitializedProperties (Compiler * /* inCompiler */) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_ifExpressionKind_2E_letVarExp::GGS_ifExpressionKind_2E_letVarExp (const GGS_lstring & inOperand0,
+                                                                      const GGS_bool & inOperand1,
+                                                                      const GGS_semanticExpressionAST & inOperand2,
+                                                                      const GGS_location & inOperand3,
+                                                                      const GGS_lstring & inOperand4) :
+mProperty_varName (inOperand0),
+mProperty_isConstant (inOperand1),
+mProperty_exp (inOperand2),
+mProperty_endOfExp (inOperand3),
+mProperty_typeName (inOperand4) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_ifExpressionKind_2E_letVarExp::isValid (void) const {
+  return mProperty_varName.isValid () && mProperty_isConstant.isValid () && mProperty_exp.isValid () && mProperty_endOfExp.isValid () && mProperty_typeName.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_ifExpressionKind_2E_letVarExp::drop (void) {
+  mProperty_varName.drop () ;
+  mProperty_isConstant.drop () ;
+  mProperty_exp.drop () ;
+  mProperty_endOfExp.drop () ;
+  mProperty_typeName.drop () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_ifExpressionKind_2E_letVarExp::description (String & ioString,
+                                                     const int32_t inIndentation) const {
+  ioString.appendCString ("<struct @ifExpressionKind.letVarExp:") ;
+  if (! isValid ()) {
+    ioString.appendCString (" not built") ;
+  }else{
+    mProperty_varName.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_isConstant.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_exp.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_endOfExp.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_typeName.description (ioString, inIndentation+1) ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @ifExpressionKind.letVarExp generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_ifExpressionKind_2E_letVarExp ("ifExpressionKind.letVarExp",
+                                                                                  nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_ifExpressionKind_2E_letVarExp::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_ifExpressionKind_2E_letVarExp ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_ifExpressionKind_2E_letVarExp::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_ifExpressionKind_2E_letVarExp (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_ifExpressionKind_2E_letVarExp GGS_ifExpressionKind_2E_letVarExp::extractObject (const GGS_object & inObject,
+                                                                                    Compiler * inCompiler
+                                                                                    COMMA_LOCATION_ARGS) {
+  GGS_ifExpressionKind_2E_letVarExp result ;
+  const GGS_ifExpressionKind_2E_letVarExp * p = (const GGS_ifExpressionKind_2E_letVarExp *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_ifExpressionKind_2E_letVarExp *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("ifExpressionKind.letVarExp", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//Optional @ifExpressionKind_2E_letVarExp_3F_
+//--------------------------------------------------------------------------------------------------
+
+GGS_ifExpressionKind_2E_letVarExp_3F_::GGS_ifExpressionKind_2E_letVarExp_3F_ (void) :
+AC_GALGAS_root (),
+mValue (),
+mState (OptionalState::invalid) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_ifExpressionKind_2E_letVarExp_3F_::GGS_ifExpressionKind_2E_letVarExp_3F_ (const GGS_ifExpressionKind_2E_letVarExp & inSource) :
+AC_GALGAS_root (),
+mValue (inSource),
+mState (OptionalState::valuated) {
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_ifExpressionKind_2E_letVarExp_3F_ GGS_ifExpressionKind_2E_letVarExp_3F_::init_nil (void) {
+  GGS_ifExpressionKind_2E_letVarExp_3F_ result ;
+  result.mState = OptionalState::isNil ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_ifExpressionKind_2E_letVarExp_3F_::isValid (void) const {
+  bool result = false ;
+  switch (mState) {
+  case OptionalState::invalid :
+    break ;
+  case OptionalState::isNil :
+    result = true ;
+    break ;
+  case OptionalState::valuated :
+    result = mValue.isValid () ;
+    break ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_ifExpressionKind_2E_letVarExp_3F_::isValuated (void) const {
+  return (mState == OptionalState::valuated) && mValue.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_ifExpressionKind_2E_letVarExp_3F_::drop (void) {
+  mState = OptionalState::invalid ;
+  mValue = GGS_ifExpressionKind_2E_letVarExp () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_ifExpressionKind_2E_letVarExp_3F_::description (String & ioString,
+                                                         const int32_t inIndentation) const {
+  ioString.appendCString ("<optional @") ;
+  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
+  ioString.appendCString (": ") ;
+  switch (mState) {
+  case OptionalState::invalid :
+    ioString.appendCString ("invalid") ;
+    break ;
+  case OptionalState::isNil :
+    ioString.appendCString ("nil") ;
+    break ;
+  case OptionalState::valuated :
+    mValue.description (ioString, inIndentation) ;
+    break ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @ifExpressionKind.letVarExp? generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_ifExpressionKind_2E_letVarExp_3F_ ("ifExpressionKind.letVarExp?",
+                                                                                      nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_ifExpressionKind_2E_letVarExp_3F_::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_ifExpressionKind_2E_letVarExp_3F_ ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_ifExpressionKind_2E_letVarExp_3F_::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_ifExpressionKind_2E_letVarExp_3F_ (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_ifExpressionKind_2E_letVarExp_3F_ GGS_ifExpressionKind_2E_letVarExp_3F_::extractObject (const GGS_object & inObject,
+                                                                                            Compiler * inCompiler
+                                                                                            COMMA_LOCATION_ARGS) {
+  GGS_ifExpressionKind_2E_letVarExp_3F_ result ;
+  const GGS_ifExpressionKind_2E_letVarExp_3F_ * p = (const GGS_ifExpressionKind_2E_letVarExp_3F_ *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_ifExpressionKind_2E_letVarExp_3F_ *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("ifExpressionKind.letVarExp?", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_ifTestForGeneration_2E_regular::GGS_ifTestForGeneration_2E_regular (void) :
+mProperty_exp () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_ifTestForGeneration_2E_regular::GGS_ifTestForGeneration_2E_regular (const GGS_ifTestForGeneration_2E_regular & inSource) :
+mProperty_exp (inSource.mProperty_exp) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_ifTestForGeneration_2E_regular & GGS_ifTestForGeneration_2E_regular::operator = (const GGS_ifTestForGeneration_2E_regular & inSource) {
+  mProperty_exp = inSource.mProperty_exp ;
+  return *this ;
+}
+
+//---Synthetized initializer -----------------------------------------------------------------------
+
+GGS_ifTestForGeneration_2E_regular GGS_ifTestForGeneration_2E_regular::init_21_ (const GGS_semanticExpressionForGeneration & in_exp,
+                                                                                 Compiler * inCompiler
+                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_ifTestForGeneration_2E_regular result ;
+  result.setInitializedProperties (inCompiler) ;
+  result.mProperty_exp = in_exp ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_ifTestForGeneration_2E_regular::setInitializedProperties (Compiler * /* inCompiler */) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_ifTestForGeneration_2E_regular::GGS_ifTestForGeneration_2E_regular (const GGS_semanticExpressionForGeneration & inOperand0) :
+mProperty_exp (inOperand0) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_ifTestForGeneration_2E_regular::isValid (void) const {
+  return mProperty_exp.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_ifTestForGeneration_2E_regular::drop (void) {
+  mProperty_exp.drop () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_ifTestForGeneration_2E_regular::description (String & ioString,
+                                                      const int32_t inIndentation) const {
+  ioString.appendCString ("<struct @ifTestForGeneration.regular:") ;
+  if (! isValid ()) {
+    ioString.appendCString (" not built") ;
+  }else{
+    mProperty_exp.description (ioString, inIndentation+1) ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @ifTestForGeneration.regular generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_ifTestForGeneration_2E_regular ("ifTestForGeneration.regular",
+                                                                                   nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_ifTestForGeneration_2E_regular::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_ifTestForGeneration_2E_regular ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_ifTestForGeneration_2E_regular::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_ifTestForGeneration_2E_regular (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_ifTestForGeneration_2E_regular GGS_ifTestForGeneration_2E_regular::extractObject (const GGS_object & inObject,
+                                                                                      Compiler * inCompiler
+                                                                                      COMMA_LOCATION_ARGS) {
+  GGS_ifTestForGeneration_2E_regular result ;
+  const GGS_ifTestForGeneration_2E_regular * p = (const GGS_ifTestForGeneration_2E_regular *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_ifTestForGeneration_2E_regular *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("ifTestForGeneration.regular", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//Optional @ifTestForGeneration_2E_regular_3F_
+//--------------------------------------------------------------------------------------------------
+
+GGS_ifTestForGeneration_2E_regular_3F_::GGS_ifTestForGeneration_2E_regular_3F_ (void) :
+AC_GALGAS_root (),
+mValue (),
+mState (OptionalState::invalid) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_ifTestForGeneration_2E_regular_3F_::GGS_ifTestForGeneration_2E_regular_3F_ (const GGS_ifTestForGeneration_2E_regular & inSource) :
+AC_GALGAS_root (),
+mValue (inSource),
+mState (OptionalState::valuated) {
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_ifTestForGeneration_2E_regular_3F_ GGS_ifTestForGeneration_2E_regular_3F_::init_nil (void) {
+  GGS_ifTestForGeneration_2E_regular_3F_ result ;
+  result.mState = OptionalState::isNil ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_ifTestForGeneration_2E_regular_3F_::isValid (void) const {
+  bool result = false ;
+  switch (mState) {
+  case OptionalState::invalid :
+    break ;
+  case OptionalState::isNil :
+    result = true ;
+    break ;
+  case OptionalState::valuated :
+    result = mValue.isValid () ;
+    break ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_ifTestForGeneration_2E_regular_3F_::isValuated (void) const {
+  return (mState == OptionalState::valuated) && mValue.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_ifTestForGeneration_2E_regular_3F_::drop (void) {
+  mState = OptionalState::invalid ;
+  mValue = GGS_ifTestForGeneration_2E_regular () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_ifTestForGeneration_2E_regular_3F_::description (String & ioString,
+                                                          const int32_t inIndentation) const {
+  ioString.appendCString ("<optional @") ;
+  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
+  ioString.appendCString (": ") ;
+  switch (mState) {
+  case OptionalState::invalid :
+    ioString.appendCString ("invalid") ;
+    break ;
+  case OptionalState::isNil :
+    ioString.appendCString ("nil") ;
+    break ;
+  case OptionalState::valuated :
+    mValue.description (ioString, inIndentation) ;
+    break ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @ifTestForGeneration.regular? generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_ifTestForGeneration_2E_regular_3F_ ("ifTestForGeneration.regular?",
+                                                                                       nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_ifTestForGeneration_2E_regular_3F_::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_ifTestForGeneration_2E_regular_3F_ ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_ifTestForGeneration_2E_regular_3F_::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_ifTestForGeneration_2E_regular_3F_ (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_ifTestForGeneration_2E_regular_3F_ GGS_ifTestForGeneration_2E_regular_3F_::extractObject (const GGS_object & inObject,
+                                                                                              Compiler * inCompiler
+                                                                                              COMMA_LOCATION_ARGS) {
+  GGS_ifTestForGeneration_2E_regular_3F_ result ;
+  const GGS_ifTestForGeneration_2E_regular_3F_ * p = (const GGS_ifTestForGeneration_2E_regular_3F_ *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_ifTestForGeneration_2E_regular_3F_ *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("ifTestForGeneration.regular?", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_ifTestForGeneration_2E_letVarExp::GGS_ifTestForGeneration_2E_letVarExp (void) :
+mProperty_targetVarCppName (),
+mProperty_exp (),
+mProperty_targetType (),
+mProperty_testType () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_ifTestForGeneration_2E_letVarExp::GGS_ifTestForGeneration_2E_letVarExp (const GGS_ifTestForGeneration_2E_letVarExp & inSource) :
+mProperty_targetVarCppName (inSource.mProperty_targetVarCppName),
+mProperty_exp (inSource.mProperty_exp),
+mProperty_targetType (inSource.mProperty_targetType),
+mProperty_testType (inSource.mProperty_testType) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_ifTestForGeneration_2E_letVarExp & GGS_ifTestForGeneration_2E_letVarExp::operator = (const GGS_ifTestForGeneration_2E_letVarExp & inSource) {
+  mProperty_targetVarCppName = inSource.mProperty_targetVarCppName ;
+  mProperty_exp = inSource.mProperty_exp ;
+  mProperty_targetType = inSource.mProperty_targetType ;
+  mProperty_testType = inSource.mProperty_testType ;
+  return *this ;
+}
+
+//---Synthetized initializer -----------------------------------------------------------------------
+
+GGS_ifTestForGeneration_2E_letVarExp GGS_ifTestForGeneration_2E_letVarExp::init_21__21__21__21_ (const GGS_string & in_targetVarCppName,
+                                                                                                 const GGS_semanticExpressionForGeneration & in_exp,
+                                                                                                 const GGS_unifiedTypeMapEntry & in_targetType,
+                                                                                                 const GGS_unifiedTypeMapEntry & in_testType,
+                                                                                                 Compiler * inCompiler
+                                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_ifTestForGeneration_2E_letVarExp result ;
+  result.setInitializedProperties (inCompiler) ;
+  result.mProperty_targetVarCppName = in_targetVarCppName ;
+  result.mProperty_exp = in_exp ;
+  result.mProperty_targetType = in_targetType ;
+  result.mProperty_testType = in_testType ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_ifTestForGeneration_2E_letVarExp::setInitializedProperties (Compiler * /* inCompiler */) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_ifTestForGeneration_2E_letVarExp::GGS_ifTestForGeneration_2E_letVarExp (const GGS_string & inOperand0,
+                                                                            const GGS_semanticExpressionForGeneration & inOperand1,
+                                                                            const GGS_unifiedTypeMapEntry & inOperand2,
+                                                                            const GGS_unifiedTypeMapEntry & inOperand3) :
+mProperty_targetVarCppName (inOperand0),
+mProperty_exp (inOperand1),
+mProperty_targetType (inOperand2),
+mProperty_testType (inOperand3) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_ifTestForGeneration_2E_letVarExp::isValid (void) const {
+  return mProperty_targetVarCppName.isValid () && mProperty_exp.isValid () && mProperty_targetType.isValid () && mProperty_testType.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_ifTestForGeneration_2E_letVarExp::drop (void) {
+  mProperty_targetVarCppName.drop () ;
+  mProperty_exp.drop () ;
+  mProperty_targetType.drop () ;
+  mProperty_testType.drop () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_ifTestForGeneration_2E_letVarExp::description (String & ioString,
+                                                        const int32_t inIndentation) const {
+  ioString.appendCString ("<struct @ifTestForGeneration.letVarExp:") ;
+  if (! isValid ()) {
+    ioString.appendCString (" not built") ;
+  }else{
+    mProperty_targetVarCppName.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_exp.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_targetType.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_testType.description (ioString, inIndentation+1) ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @ifTestForGeneration.letVarExp generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_ifTestForGeneration_2E_letVarExp ("ifTestForGeneration.letVarExp",
+                                                                                     nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_ifTestForGeneration_2E_letVarExp::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_ifTestForGeneration_2E_letVarExp ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_ifTestForGeneration_2E_letVarExp::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_ifTestForGeneration_2E_letVarExp (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_ifTestForGeneration_2E_letVarExp GGS_ifTestForGeneration_2E_letVarExp::extractObject (const GGS_object & inObject,
+                                                                                          Compiler * inCompiler
+                                                                                          COMMA_LOCATION_ARGS) {
+  GGS_ifTestForGeneration_2E_letVarExp result ;
+  const GGS_ifTestForGeneration_2E_letVarExp * p = (const GGS_ifTestForGeneration_2E_letVarExp *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_ifTestForGeneration_2E_letVarExp *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("ifTestForGeneration.letVarExp", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//Optional @ifTestForGeneration_2E_letVarExp_3F_
+//--------------------------------------------------------------------------------------------------
+
+GGS_ifTestForGeneration_2E_letVarExp_3F_::GGS_ifTestForGeneration_2E_letVarExp_3F_ (void) :
+AC_GALGAS_root (),
+mValue (),
+mState (OptionalState::invalid) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_ifTestForGeneration_2E_letVarExp_3F_::GGS_ifTestForGeneration_2E_letVarExp_3F_ (const GGS_ifTestForGeneration_2E_letVarExp & inSource) :
+AC_GALGAS_root (),
+mValue (inSource),
+mState (OptionalState::valuated) {
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_ifTestForGeneration_2E_letVarExp_3F_ GGS_ifTestForGeneration_2E_letVarExp_3F_::init_nil (void) {
+  GGS_ifTestForGeneration_2E_letVarExp_3F_ result ;
+  result.mState = OptionalState::isNil ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_ifTestForGeneration_2E_letVarExp_3F_::isValid (void) const {
+  bool result = false ;
+  switch (mState) {
+  case OptionalState::invalid :
+    break ;
+  case OptionalState::isNil :
+    result = true ;
+    break ;
+  case OptionalState::valuated :
+    result = mValue.isValid () ;
+    break ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_ifTestForGeneration_2E_letVarExp_3F_::isValuated (void) const {
+  return (mState == OptionalState::valuated) && mValue.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_ifTestForGeneration_2E_letVarExp_3F_::drop (void) {
+  mState = OptionalState::invalid ;
+  mValue = GGS_ifTestForGeneration_2E_letVarExp () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_ifTestForGeneration_2E_letVarExp_3F_::description (String & ioString,
+                                                            const int32_t inIndentation) const {
+  ioString.appendCString ("<optional @") ;
+  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
+  ioString.appendCString (": ") ;
+  switch (mState) {
+  case OptionalState::invalid :
+    ioString.appendCString ("invalid") ;
+    break ;
+  case OptionalState::isNil :
+    ioString.appendCString ("nil") ;
+    break ;
+  case OptionalState::valuated :
+    mValue.description (ioString, inIndentation) ;
+    break ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @ifTestForGeneration.letVarExp? generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_ifTestForGeneration_2E_letVarExp_3F_ ("ifTestForGeneration.letVarExp?",
+                                                                                         nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_ifTestForGeneration_2E_letVarExp_3F_::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_ifTestForGeneration_2E_letVarExp_3F_ ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_ifTestForGeneration_2E_letVarExp_3F_::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_ifTestForGeneration_2E_letVarExp_3F_ (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_ifTestForGeneration_2E_letVarExp_3F_ GGS_ifTestForGeneration_2E_letVarExp_3F_::extractObject (const GGS_object & inObject,
+                                                                                                  Compiler * inCompiler
+                                                                                                  COMMA_LOCATION_ARGS) {
+  GGS_ifTestForGeneration_2E_letVarExp_3F_ result ;
+  const GGS_ifTestForGeneration_2E_letVarExp_3F_ * p = (const GGS_ifTestForGeneration_2E_letVarExp_3F_ *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_ifTestForGeneration_2E_letVarExp_3F_ *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("ifTestForGeneration.letVarExp?", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_ifTestForGeneration_2E_optionalExp::GGS_ifTestForGeneration_2E_optionalExp (void) :
+mProperty_targetVarCppName (),
+mProperty_isConstant (),
+mProperty_exp (),
+mProperty_targetType () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_ifTestForGeneration_2E_optionalExp::GGS_ifTestForGeneration_2E_optionalExp (const GGS_ifTestForGeneration_2E_optionalExp & inSource) :
+mProperty_targetVarCppName (inSource.mProperty_targetVarCppName),
+mProperty_isConstant (inSource.mProperty_isConstant),
+mProperty_exp (inSource.mProperty_exp),
+mProperty_targetType (inSource.mProperty_targetType) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_ifTestForGeneration_2E_optionalExp & GGS_ifTestForGeneration_2E_optionalExp::operator = (const GGS_ifTestForGeneration_2E_optionalExp & inSource) {
+  mProperty_targetVarCppName = inSource.mProperty_targetVarCppName ;
+  mProperty_isConstant = inSource.mProperty_isConstant ;
+  mProperty_exp = inSource.mProperty_exp ;
+  mProperty_targetType = inSource.mProperty_targetType ;
+  return *this ;
+}
+
+//---Synthetized initializer -----------------------------------------------------------------------
+
+GGS_ifTestForGeneration_2E_optionalExp GGS_ifTestForGeneration_2E_optionalExp::init_21__21__21__21_ (const GGS_string & in_targetVarCppName,
+                                                                                                     const GGS_bool & in_isConstant,
+                                                                                                     const GGS_semanticExpressionForGeneration & in_exp,
+                                                                                                     const GGS_unifiedTypeMapEntry & in_targetType,
+                                                                                                     Compiler * inCompiler
+                                                                                                     COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_ifTestForGeneration_2E_optionalExp result ;
+  result.setInitializedProperties (inCompiler) ;
+  result.mProperty_targetVarCppName = in_targetVarCppName ;
+  result.mProperty_isConstant = in_isConstant ;
+  result.mProperty_exp = in_exp ;
+  result.mProperty_targetType = in_targetType ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_ifTestForGeneration_2E_optionalExp::setInitializedProperties (Compiler * /* inCompiler */) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_ifTestForGeneration_2E_optionalExp::GGS_ifTestForGeneration_2E_optionalExp (const GGS_string & inOperand0,
+                                                                                const GGS_bool & inOperand1,
+                                                                                const GGS_semanticExpressionForGeneration & inOperand2,
+                                                                                const GGS_unifiedTypeMapEntry & inOperand3) :
+mProperty_targetVarCppName (inOperand0),
+mProperty_isConstant (inOperand1),
+mProperty_exp (inOperand2),
+mProperty_targetType (inOperand3) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_ifTestForGeneration_2E_optionalExp::isValid (void) const {
+  return mProperty_targetVarCppName.isValid () && mProperty_isConstant.isValid () && mProperty_exp.isValid () && mProperty_targetType.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_ifTestForGeneration_2E_optionalExp::drop (void) {
+  mProperty_targetVarCppName.drop () ;
+  mProperty_isConstant.drop () ;
+  mProperty_exp.drop () ;
+  mProperty_targetType.drop () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_ifTestForGeneration_2E_optionalExp::description (String & ioString,
+                                                          const int32_t inIndentation) const {
+  ioString.appendCString ("<struct @ifTestForGeneration.optionalExp:") ;
+  if (! isValid ()) {
+    ioString.appendCString (" not built") ;
+  }else{
+    mProperty_targetVarCppName.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_isConstant.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_exp.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_targetType.description (ioString, inIndentation+1) ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @ifTestForGeneration.optionalExp generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_ifTestForGeneration_2E_optionalExp ("ifTestForGeneration.optionalExp",
+                                                                                       nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_ifTestForGeneration_2E_optionalExp::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_ifTestForGeneration_2E_optionalExp ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_ifTestForGeneration_2E_optionalExp::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_ifTestForGeneration_2E_optionalExp (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_ifTestForGeneration_2E_optionalExp GGS_ifTestForGeneration_2E_optionalExp::extractObject (const GGS_object & inObject,
+                                                                                              Compiler * inCompiler
+                                                                                              COMMA_LOCATION_ARGS) {
+  GGS_ifTestForGeneration_2E_optionalExp result ;
+  const GGS_ifTestForGeneration_2E_optionalExp * p = (const GGS_ifTestForGeneration_2E_optionalExp *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_ifTestForGeneration_2E_optionalExp *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("ifTestForGeneration.optionalExp", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//Optional @ifTestForGeneration_2E_optionalExp_3F_
+//--------------------------------------------------------------------------------------------------
+
+GGS_ifTestForGeneration_2E_optionalExp_3F_::GGS_ifTestForGeneration_2E_optionalExp_3F_ (void) :
+AC_GALGAS_root (),
+mValue (),
+mState (OptionalState::invalid) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_ifTestForGeneration_2E_optionalExp_3F_::GGS_ifTestForGeneration_2E_optionalExp_3F_ (const GGS_ifTestForGeneration_2E_optionalExp & inSource) :
+AC_GALGAS_root (),
+mValue (inSource),
+mState (OptionalState::valuated) {
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_ifTestForGeneration_2E_optionalExp_3F_ GGS_ifTestForGeneration_2E_optionalExp_3F_::init_nil (void) {
+  GGS_ifTestForGeneration_2E_optionalExp_3F_ result ;
+  result.mState = OptionalState::isNil ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_ifTestForGeneration_2E_optionalExp_3F_::isValid (void) const {
+  bool result = false ;
+  switch (mState) {
+  case OptionalState::invalid :
+    break ;
+  case OptionalState::isNil :
+    result = true ;
+    break ;
+  case OptionalState::valuated :
+    result = mValue.isValid () ;
+    break ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_ifTestForGeneration_2E_optionalExp_3F_::isValuated (void) const {
+  return (mState == OptionalState::valuated) && mValue.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_ifTestForGeneration_2E_optionalExp_3F_::drop (void) {
+  mState = OptionalState::invalid ;
+  mValue = GGS_ifTestForGeneration_2E_optionalExp () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_ifTestForGeneration_2E_optionalExp_3F_::description (String & ioString,
+                                                              const int32_t inIndentation) const {
+  ioString.appendCString ("<optional @") ;
+  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
+  ioString.appendCString (": ") ;
+  switch (mState) {
+  case OptionalState::invalid :
+    ioString.appendCString ("invalid") ;
+    break ;
+  case OptionalState::isNil :
+    ioString.appendCString ("nil") ;
+    break ;
+  case OptionalState::valuated :
+    mValue.description (ioString, inIndentation) ;
+    break ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @ifTestForGeneration.optionalExp? generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_ifTestForGeneration_2E_optionalExp_3F_ ("ifTestForGeneration.optionalExp?",
+                                                                                           nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_ifTestForGeneration_2E_optionalExp_3F_::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_ifTestForGeneration_2E_optionalExp_3F_ ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_ifTestForGeneration_2E_optionalExp_3F_::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_ifTestForGeneration_2E_optionalExp_3F_ (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_ifTestForGeneration_2E_optionalExp_3F_ GGS_ifTestForGeneration_2E_optionalExp_3F_::extractObject (const GGS_object & inObject,
+                                                                                                      Compiler * inCompiler
+                                                                                                      COMMA_LOCATION_ARGS) {
+  GGS_ifTestForGeneration_2E_optionalExp_3F_ result ;
+  const GGS_ifTestForGeneration_2E_optionalExp_3F_ * p = (const GGS_ifTestForGeneration_2E_optionalExp_3F_ *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_ifTestForGeneration_2E_optionalExp_3F_ *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("ifTestForGeneration.optionalExp?", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_forInstructionEnumeratedObjectElementListAST_2E_element::GGS_forInstructionEnumeratedObjectElementListAST_2E_element (void) :
+mProperty_mOptionalTypeName (),
+mProperty_mDeclaredAsUnused (),
+mProperty_mOptionalConstantName () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_forInstructionEnumeratedObjectElementListAST_2E_element::GGS_forInstructionEnumeratedObjectElementListAST_2E_element (const GGS_forInstructionEnumeratedObjectElementListAST_2E_element & inSource) :
+mProperty_mOptionalTypeName (inSource.mProperty_mOptionalTypeName),
+mProperty_mDeclaredAsUnused (inSource.mProperty_mDeclaredAsUnused),
+mProperty_mOptionalConstantName (inSource.mProperty_mOptionalConstantName) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_forInstructionEnumeratedObjectElementListAST_2E_element & GGS_forInstructionEnumeratedObjectElementListAST_2E_element::operator = (const GGS_forInstructionEnumeratedObjectElementListAST_2E_element & inSource) {
+  mProperty_mOptionalTypeName = inSource.mProperty_mOptionalTypeName ;
+  mProperty_mDeclaredAsUnused = inSource.mProperty_mDeclaredAsUnused ;
+  mProperty_mOptionalConstantName = inSource.mProperty_mOptionalConstantName ;
+  return *this ;
+}
+
+//---Synthetized initializer -----------------------------------------------------------------------
+
+GGS_forInstructionEnumeratedObjectElementListAST_2E_element GGS_forInstructionEnumeratedObjectElementListAST_2E_element::init_21__21__21_ (const GGS_lstring & in_mOptionalTypeName,
+                                                                                                                                           const GGS_bool & in_mDeclaredAsUnused,
+                                                                                                                                           const GGS_lstring & in_mOptionalConstantName,
+                                                                                                                                           Compiler * inCompiler
+                                                                                                                                           COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_forInstructionEnumeratedObjectElementListAST_2E_element result ;
+  result.setInitializedProperties (inCompiler) ;
+  result.mProperty_mOptionalTypeName = in_mOptionalTypeName ;
+  result.mProperty_mDeclaredAsUnused = in_mDeclaredAsUnused ;
+  result.mProperty_mOptionalConstantName = in_mOptionalConstantName ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_forInstructionEnumeratedObjectElementListAST_2E_element::setInitializedProperties (Compiler * /* inCompiler */) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_forInstructionEnumeratedObjectElementListAST_2E_element::GGS_forInstructionEnumeratedObjectElementListAST_2E_element (const GGS_lstring & inOperand0,
+                                                                                                                          const GGS_bool & inOperand1,
+                                                                                                                          const GGS_lstring & inOperand2) :
+mProperty_mOptionalTypeName (inOperand0),
+mProperty_mDeclaredAsUnused (inOperand1),
+mProperty_mOptionalConstantName (inOperand2) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_forInstructionEnumeratedObjectElementListAST_2E_element::isValid (void) const {
+  return mProperty_mOptionalTypeName.isValid () && mProperty_mDeclaredAsUnused.isValid () && mProperty_mOptionalConstantName.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_forInstructionEnumeratedObjectElementListAST_2E_element::drop (void) {
+  mProperty_mOptionalTypeName.drop () ;
+  mProperty_mDeclaredAsUnused.drop () ;
+  mProperty_mOptionalConstantName.drop () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_forInstructionEnumeratedObjectElementListAST_2E_element::description (String & ioString,
+                                                                               const int32_t inIndentation) const {
+  ioString.appendCString ("<struct @forInstructionEnumeratedObjectElementListAST.element:") ;
+  if (! isValid ()) {
+    ioString.appendCString (" not built") ;
+  }else{
+    mProperty_mOptionalTypeName.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mDeclaredAsUnused.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mOptionalConstantName.description (ioString, inIndentation+1) ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @forInstructionEnumeratedObjectElementListAST.element generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_forInstructionEnumeratedObjectElementListAST_2E_element ("forInstructionEnumeratedObjectElementListAST.element",
+                                                                                                            nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_forInstructionEnumeratedObjectElementListAST_2E_element::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_forInstructionEnumeratedObjectElementListAST_2E_element ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_forInstructionEnumeratedObjectElementListAST_2E_element::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_forInstructionEnumeratedObjectElementListAST_2E_element (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_forInstructionEnumeratedObjectElementListAST_2E_element GGS_forInstructionEnumeratedObjectElementListAST_2E_element::extractObject (const GGS_object & inObject,
+                                                                                                                                        Compiler * inCompiler
+                                                                                                                                        COMMA_LOCATION_ARGS) {
+  GGS_forInstructionEnumeratedObjectElementListAST_2E_element result ;
+  const GGS_forInstructionEnumeratedObjectElementListAST_2E_element * p = (const GGS_forInstructionEnumeratedObjectElementListAST_2E_element *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_forInstructionEnumeratedObjectElementListAST_2E_element *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("forInstructionEnumeratedObjectElementListAST.element", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_forInstructionEnumeratedObjectListForGeneration_2E_element::GGS_forInstructionEnumeratedObjectListForGeneration_2E_element (void) :
+mProperty_mEnumerationOrder (),
+mProperty_mEnumeratedExpression (),
+mProperty_mEnumeratorCppName () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_forInstructionEnumeratedObjectListForGeneration_2E_element::GGS_forInstructionEnumeratedObjectListForGeneration_2E_element (const GGS_forInstructionEnumeratedObjectListForGeneration_2E_element & inSource) :
+mProperty_mEnumerationOrder (inSource.mProperty_mEnumerationOrder),
+mProperty_mEnumeratedExpression (inSource.mProperty_mEnumeratedExpression),
+mProperty_mEnumeratorCppName (inSource.mProperty_mEnumeratorCppName) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_forInstructionEnumeratedObjectListForGeneration_2E_element & GGS_forInstructionEnumeratedObjectListForGeneration_2E_element::operator = (const GGS_forInstructionEnumeratedObjectListForGeneration_2E_element & inSource) {
+  mProperty_mEnumerationOrder = inSource.mProperty_mEnumerationOrder ;
+  mProperty_mEnumeratedExpression = inSource.mProperty_mEnumeratedExpression ;
+  mProperty_mEnumeratorCppName = inSource.mProperty_mEnumeratorCppName ;
+  return *this ;
+}
+
+//---Synthetized initializer -----------------------------------------------------------------------
+
+GGS_forInstructionEnumeratedObjectListForGeneration_2E_element GGS_forInstructionEnumeratedObjectListForGeneration_2E_element::init_21__21__21_ (const GGS_string & in_mEnumerationOrder,
+                                                                                                                                                 const GGS_semanticExpressionForGeneration & in_mEnumeratedExpression,
+                                                                                                                                                 const GGS_string & in_mEnumeratorCppName,
+                                                                                                                                                 Compiler * inCompiler
+                                                                                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_forInstructionEnumeratedObjectListForGeneration_2E_element result ;
+  result.setInitializedProperties (inCompiler) ;
+  result.mProperty_mEnumerationOrder = in_mEnumerationOrder ;
+  result.mProperty_mEnumeratedExpression = in_mEnumeratedExpression ;
+  result.mProperty_mEnumeratorCppName = in_mEnumeratorCppName ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_forInstructionEnumeratedObjectListForGeneration_2E_element::setInitializedProperties (Compiler * /* inCompiler */) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_forInstructionEnumeratedObjectListForGeneration_2E_element::GGS_forInstructionEnumeratedObjectListForGeneration_2E_element (const GGS_string & inOperand0,
+                                                                                                                                const GGS_semanticExpressionForGeneration & inOperand1,
+                                                                                                                                const GGS_string & inOperand2) :
+mProperty_mEnumerationOrder (inOperand0),
+mProperty_mEnumeratedExpression (inOperand1),
+mProperty_mEnumeratorCppName (inOperand2) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_forInstructionEnumeratedObjectListForGeneration_2E_element::isValid (void) const {
+  return mProperty_mEnumerationOrder.isValid () && mProperty_mEnumeratedExpression.isValid () && mProperty_mEnumeratorCppName.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_forInstructionEnumeratedObjectListForGeneration_2E_element::drop (void) {
+  mProperty_mEnumerationOrder.drop () ;
+  mProperty_mEnumeratedExpression.drop () ;
+  mProperty_mEnumeratorCppName.drop () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_forInstructionEnumeratedObjectListForGeneration_2E_element::description (String & ioString,
+                                                                                  const int32_t inIndentation) const {
+  ioString.appendCString ("<struct @forInstructionEnumeratedObjectListForGeneration.element:") ;
+  if (! isValid ()) {
+    ioString.appendCString (" not built") ;
+  }else{
+    mProperty_mEnumerationOrder.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mEnumeratedExpression.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mEnumeratorCppName.description (ioString, inIndentation+1) ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @forInstructionEnumeratedObjectListForGeneration.element generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_forInstructionEnumeratedObjectListForGeneration_2E_element ("forInstructionEnumeratedObjectListForGeneration.element",
+                                                                                                               nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_forInstructionEnumeratedObjectListForGeneration_2E_element::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_forInstructionEnumeratedObjectListForGeneration_2E_element ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_forInstructionEnumeratedObjectListForGeneration_2E_element::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_forInstructionEnumeratedObjectListForGeneration_2E_element (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_forInstructionEnumeratedObjectListForGeneration_2E_element GGS_forInstructionEnumeratedObjectListForGeneration_2E_element::extractObject (const GGS_object & inObject,
+                                                                                                                                              Compiler * inCompiler
+                                                                                                                                              COMMA_LOCATION_ARGS) {
+  GGS_forInstructionEnumeratedObjectListForGeneration_2E_element result ;
+  const GGS_forInstructionEnumeratedObjectListForGeneration_2E_element * p = (const GGS_forInstructionEnumeratedObjectListForGeneration_2E_element *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_forInstructionEnumeratedObjectListForGeneration_2E_element *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("forInstructionEnumeratedObjectListForGeneration.element", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GGS_subscriptMap_2E_element::GGS_subscriptMap_2E_element (void) :
 mProperty_lkey (),
 mProperty_argumentTypeList (),
@@ -15367,6 +11075,4594 @@ GGS_internalRoutineMap_2E_element_3F_ GGS_internalRoutineMap_2E_element_3F_::ext
       result = *p ;
     }else{
       inCompiler->castError ("internalRoutineMap.element?", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_routineArgumentMap_2E_element::GGS_routineArgumentMap_2E_element (void) :
+mProperty_lkey (),
+mProperty_mRoutineSignature (),
+mProperty_mIsFilePrivate () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_routineArgumentMap_2E_element::GGS_routineArgumentMap_2E_element (const GGS_routineArgumentMap_2E_element & inSource) :
+mProperty_lkey (inSource.mProperty_lkey),
+mProperty_mRoutineSignature (inSource.mProperty_mRoutineSignature),
+mProperty_mIsFilePrivate (inSource.mProperty_mIsFilePrivate) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_routineArgumentMap_2E_element & GGS_routineArgumentMap_2E_element::operator = (const GGS_routineArgumentMap_2E_element & inSource) {
+  mProperty_lkey = inSource.mProperty_lkey ;
+  mProperty_mRoutineSignature = inSource.mProperty_mRoutineSignature ;
+  mProperty_mIsFilePrivate = inSource.mProperty_mIsFilePrivate ;
+  return *this ;
+}
+
+//---Synthetized initializer -----------------------------------------------------------------------
+
+GGS_routineArgumentMap_2E_element GGS_routineArgumentMap_2E_element::init_21__21__21_ (const GGS_lstring & in_lkey,
+                                                                                       const GGS_formalParameterSignature & in_mRoutineSignature,
+                                                                                       const GGS_bool & in_mIsFilePrivate,
+                                                                                       Compiler * inCompiler
+                                                                                       COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_routineArgumentMap_2E_element result ;
+  result.setInitializedProperties (inCompiler) ;
+  result.mProperty_lkey = in_lkey ;
+  result.mProperty_mRoutineSignature = in_mRoutineSignature ;
+  result.mProperty_mIsFilePrivate = in_mIsFilePrivate ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_routineArgumentMap_2E_element::setInitializedProperties (Compiler * /* inCompiler */) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_routineArgumentMap_2E_element::GGS_routineArgumentMap_2E_element (const GGS_lstring & inOperand0,
+                                                                      const GGS_formalParameterSignature & inOperand1,
+                                                                      const GGS_bool & inOperand2) :
+mProperty_lkey (inOperand0),
+mProperty_mRoutineSignature (inOperand1),
+mProperty_mIsFilePrivate (inOperand2) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_routineArgumentMap_2E_element::isValid (void) const {
+  return mProperty_lkey.isValid () && mProperty_mRoutineSignature.isValid () && mProperty_mIsFilePrivate.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_routineArgumentMap_2E_element::drop (void) {
+  mProperty_lkey.drop () ;
+  mProperty_mRoutineSignature.drop () ;
+  mProperty_mIsFilePrivate.drop () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_routineArgumentMap_2E_element::description (String & ioString,
+                                                     const int32_t inIndentation) const {
+  ioString.appendCString ("<struct @routineArgumentMap.element:") ;
+  if (! isValid ()) {
+    ioString.appendCString (" not built") ;
+  }else{
+    mProperty_lkey.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mRoutineSignature.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mIsFilePrivate.description (ioString, inIndentation+1) ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @routineArgumentMap.element generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_routineArgumentMap_2E_element ("routineArgumentMap.element",
+                                                                                  nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_routineArgumentMap_2E_element::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_routineArgumentMap_2E_element ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_routineArgumentMap_2E_element::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_routineArgumentMap_2E_element (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_routineArgumentMap_2E_element GGS_routineArgumentMap_2E_element::extractObject (const GGS_object & inObject,
+                                                                                    Compiler * inCompiler
+                                                                                    COMMA_LOCATION_ARGS) {
+  GGS_routineArgumentMap_2E_element result ;
+  const GGS_routineArgumentMap_2E_element * p = (const GGS_routineArgumentMap_2E_element *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_routineArgumentMap_2E_element *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("routineArgumentMap.element", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//Optional @routineArgumentMap_2E_element_3F_
+//--------------------------------------------------------------------------------------------------
+
+GGS_routineArgumentMap_2E_element_3F_::GGS_routineArgumentMap_2E_element_3F_ (void) :
+AC_GALGAS_root (),
+mValue (),
+mState (OptionalState::invalid) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_routineArgumentMap_2E_element_3F_::GGS_routineArgumentMap_2E_element_3F_ (const GGS_routineArgumentMap_2E_element & inSource) :
+AC_GALGAS_root (),
+mValue (inSource),
+mState (OptionalState::valuated) {
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_routineArgumentMap_2E_element_3F_ GGS_routineArgumentMap_2E_element_3F_::init_nil (void) {
+  GGS_routineArgumentMap_2E_element_3F_ result ;
+  result.mState = OptionalState::isNil ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_routineArgumentMap_2E_element_3F_::isValid (void) const {
+  bool result = false ;
+  switch (mState) {
+  case OptionalState::invalid :
+    break ;
+  case OptionalState::isNil :
+    result = true ;
+    break ;
+  case OptionalState::valuated :
+    result = mValue.isValid () ;
+    break ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_routineArgumentMap_2E_element_3F_::isValuated (void) const {
+  return (mState == OptionalState::valuated) && mValue.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_routineArgumentMap_2E_element_3F_::drop (void) {
+  mState = OptionalState::invalid ;
+  mValue = GGS_routineArgumentMap_2E_element () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_routineArgumentMap_2E_element_3F_::description (String & ioString,
+                                                         const int32_t inIndentation) const {
+  ioString.appendCString ("<optional @") ;
+  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
+  ioString.appendCString (": ") ;
+  switch (mState) {
+  case OptionalState::invalid :
+    ioString.appendCString ("invalid") ;
+    break ;
+  case OptionalState::isNil :
+    ioString.appendCString ("nil") ;
+    break ;
+  case OptionalState::valuated :
+    mValue.description (ioString, inIndentation) ;
+    break ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @routineArgumentMap.element? generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_routineArgumentMap_2E_element_3F_ ("routineArgumentMap.element?",
+                                                                                      nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_routineArgumentMap_2E_element_3F_::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_routineArgumentMap_2E_element_3F_ ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_routineArgumentMap_2E_element_3F_::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_routineArgumentMap_2E_element_3F_ (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_routineArgumentMap_2E_element_3F_ GGS_routineArgumentMap_2E_element_3F_::extractObject (const GGS_object & inObject,
+                                                                                            Compiler * inCompiler
+                                                                                            COMMA_LOCATION_ARGS) {
+  GGS_routineArgumentMap_2E_element_3F_ result ;
+  const GGS_routineArgumentMap_2E_element_3F_ * p = (const GGS_routineArgumentMap_2E_element_3F_ *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_routineArgumentMap_2E_element_3F_ *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("routineArgumentMap.element?", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_formalParameterListAST_2E_element::GGS_formalParameterListAST_2E_element (void) :
+mProperty_mFormalSelector (),
+mProperty_mFormalArgumentPassingMode (),
+mProperty_mFormalArgumentTypeName (),
+mProperty_mFormalArgumentName (),
+mProperty_mIsUnused () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_formalParameterListAST_2E_element::GGS_formalParameterListAST_2E_element (const GGS_formalParameterListAST_2E_element & inSource) :
+mProperty_mFormalSelector (inSource.mProperty_mFormalSelector),
+mProperty_mFormalArgumentPassingMode (inSource.mProperty_mFormalArgumentPassingMode),
+mProperty_mFormalArgumentTypeName (inSource.mProperty_mFormalArgumentTypeName),
+mProperty_mFormalArgumentName (inSource.mProperty_mFormalArgumentName),
+mProperty_mIsUnused (inSource.mProperty_mIsUnused) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_formalParameterListAST_2E_element & GGS_formalParameterListAST_2E_element::operator = (const GGS_formalParameterListAST_2E_element & inSource) {
+  mProperty_mFormalSelector = inSource.mProperty_mFormalSelector ;
+  mProperty_mFormalArgumentPassingMode = inSource.mProperty_mFormalArgumentPassingMode ;
+  mProperty_mFormalArgumentTypeName = inSource.mProperty_mFormalArgumentTypeName ;
+  mProperty_mFormalArgumentName = inSource.mProperty_mFormalArgumentName ;
+  mProperty_mIsUnused = inSource.mProperty_mIsUnused ;
+  return *this ;
+}
+
+//---Synthetized initializer -----------------------------------------------------------------------
+
+GGS_formalParameterListAST_2E_element GGS_formalParameterListAST_2E_element::init_21__21__21__21__21_ (const GGS_lstring & in_mFormalSelector,
+                                                                                                       const GGS_formalArgumentPassingModeAST & in_mFormalArgumentPassingMode,
+                                                                                                       const GGS_lstring & in_mFormalArgumentTypeName,
+                                                                                                       const GGS_lstring & in_mFormalArgumentName,
+                                                                                                       const GGS_bool & in_mIsUnused,
+                                                                                                       Compiler * inCompiler
+                                                                                                       COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_formalParameterListAST_2E_element result ;
+  result.setInitializedProperties (inCompiler) ;
+  result.mProperty_mFormalSelector = in_mFormalSelector ;
+  result.mProperty_mFormalArgumentPassingMode = in_mFormalArgumentPassingMode ;
+  result.mProperty_mFormalArgumentTypeName = in_mFormalArgumentTypeName ;
+  result.mProperty_mFormalArgumentName = in_mFormalArgumentName ;
+  result.mProperty_mIsUnused = in_mIsUnused ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_formalParameterListAST_2E_element::setInitializedProperties (Compiler * /* inCompiler */) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_formalParameterListAST_2E_element::GGS_formalParameterListAST_2E_element (const GGS_lstring & inOperand0,
+                                                                              const GGS_formalArgumentPassingModeAST & inOperand1,
+                                                                              const GGS_lstring & inOperand2,
+                                                                              const GGS_lstring & inOperand3,
+                                                                              const GGS_bool & inOperand4) :
+mProperty_mFormalSelector (inOperand0),
+mProperty_mFormalArgumentPassingMode (inOperand1),
+mProperty_mFormalArgumentTypeName (inOperand2),
+mProperty_mFormalArgumentName (inOperand3),
+mProperty_mIsUnused (inOperand4) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_formalParameterListAST_2E_element::isValid (void) const {
+  return mProperty_mFormalSelector.isValid () && mProperty_mFormalArgumentPassingMode.isValid () && mProperty_mFormalArgumentTypeName.isValid () && mProperty_mFormalArgumentName.isValid () && mProperty_mIsUnused.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_formalParameterListAST_2E_element::drop (void) {
+  mProperty_mFormalSelector.drop () ;
+  mProperty_mFormalArgumentPassingMode.drop () ;
+  mProperty_mFormalArgumentTypeName.drop () ;
+  mProperty_mFormalArgumentName.drop () ;
+  mProperty_mIsUnused.drop () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_formalParameterListAST_2E_element::description (String & ioString,
+                                                         const int32_t inIndentation) const {
+  ioString.appendCString ("<struct @formalParameterListAST.element:") ;
+  if (! isValid ()) {
+    ioString.appendCString (" not built") ;
+  }else{
+    mProperty_mFormalSelector.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mFormalArgumentPassingMode.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mFormalArgumentTypeName.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mFormalArgumentName.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mIsUnused.description (ioString, inIndentation+1) ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @formalParameterListAST.element generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_formalParameterListAST_2E_element ("formalParameterListAST.element",
+                                                                                      nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_formalParameterListAST_2E_element::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_formalParameterListAST_2E_element ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_formalParameterListAST_2E_element::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_formalParameterListAST_2E_element (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_formalParameterListAST_2E_element GGS_formalParameterListAST_2E_element::extractObject (const GGS_object & inObject,
+                                                                                            Compiler * inCompiler
+                                                                                            COMMA_LOCATION_ARGS) {
+  GGS_formalParameterListAST_2E_element result ;
+  const GGS_formalParameterListAST_2E_element * p = (const GGS_formalParameterListAST_2E_element *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_formalParameterListAST_2E_element *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("formalParameterListAST.element", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_formalInputParameterListAST_2E_element::GGS_formalInputParameterListAST_2E_element (void) :
+mProperty_mFormalSelector (),
+mProperty_mFormalArgumentTypeName (),
+mProperty_mFormalArgumentName (),
+mProperty_mIsUnused (),
+mProperty_mIsConstant () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_formalInputParameterListAST_2E_element::GGS_formalInputParameterListAST_2E_element (const GGS_formalInputParameterListAST_2E_element & inSource) :
+mProperty_mFormalSelector (inSource.mProperty_mFormalSelector),
+mProperty_mFormalArgumentTypeName (inSource.mProperty_mFormalArgumentTypeName),
+mProperty_mFormalArgumentName (inSource.mProperty_mFormalArgumentName),
+mProperty_mIsUnused (inSource.mProperty_mIsUnused),
+mProperty_mIsConstant (inSource.mProperty_mIsConstant) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_formalInputParameterListAST_2E_element & GGS_formalInputParameterListAST_2E_element::operator = (const GGS_formalInputParameterListAST_2E_element & inSource) {
+  mProperty_mFormalSelector = inSource.mProperty_mFormalSelector ;
+  mProperty_mFormalArgumentTypeName = inSource.mProperty_mFormalArgumentTypeName ;
+  mProperty_mFormalArgumentName = inSource.mProperty_mFormalArgumentName ;
+  mProperty_mIsUnused = inSource.mProperty_mIsUnused ;
+  mProperty_mIsConstant = inSource.mProperty_mIsConstant ;
+  return *this ;
+}
+
+//---Synthetized initializer -----------------------------------------------------------------------
+
+GGS_formalInputParameterListAST_2E_element GGS_formalInputParameterListAST_2E_element::init_21__21__21__21__21_ (const GGS_lstring & in_mFormalSelector,
+                                                                                                                 const GGS_lstring & in_mFormalArgumentTypeName,
+                                                                                                                 const GGS_lstring & in_mFormalArgumentName,
+                                                                                                                 const GGS_bool & in_mIsUnused,
+                                                                                                                 const GGS_bool & in_mIsConstant,
+                                                                                                                 Compiler * inCompiler
+                                                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_formalInputParameterListAST_2E_element result ;
+  result.setInitializedProperties (inCompiler) ;
+  result.mProperty_mFormalSelector = in_mFormalSelector ;
+  result.mProperty_mFormalArgumentTypeName = in_mFormalArgumentTypeName ;
+  result.mProperty_mFormalArgumentName = in_mFormalArgumentName ;
+  result.mProperty_mIsUnused = in_mIsUnused ;
+  result.mProperty_mIsConstant = in_mIsConstant ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_formalInputParameterListAST_2E_element::setInitializedProperties (Compiler * /* inCompiler */) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_formalInputParameterListAST_2E_element::GGS_formalInputParameterListAST_2E_element (const GGS_lstring & inOperand0,
+                                                                                        const GGS_lstring & inOperand1,
+                                                                                        const GGS_lstring & inOperand2,
+                                                                                        const GGS_bool & inOperand3,
+                                                                                        const GGS_bool & inOperand4) :
+mProperty_mFormalSelector (inOperand0),
+mProperty_mFormalArgumentTypeName (inOperand1),
+mProperty_mFormalArgumentName (inOperand2),
+mProperty_mIsUnused (inOperand3),
+mProperty_mIsConstant (inOperand4) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_formalInputParameterListAST_2E_element::isValid (void) const {
+  return mProperty_mFormalSelector.isValid () && mProperty_mFormalArgumentTypeName.isValid () && mProperty_mFormalArgumentName.isValid () && mProperty_mIsUnused.isValid () && mProperty_mIsConstant.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_formalInputParameterListAST_2E_element::drop (void) {
+  mProperty_mFormalSelector.drop () ;
+  mProperty_mFormalArgumentTypeName.drop () ;
+  mProperty_mFormalArgumentName.drop () ;
+  mProperty_mIsUnused.drop () ;
+  mProperty_mIsConstant.drop () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_formalInputParameterListAST_2E_element::description (String & ioString,
+                                                              const int32_t inIndentation) const {
+  ioString.appendCString ("<struct @formalInputParameterListAST.element:") ;
+  if (! isValid ()) {
+    ioString.appendCString (" not built") ;
+  }else{
+    mProperty_mFormalSelector.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mFormalArgumentTypeName.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mFormalArgumentName.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mIsUnused.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mIsConstant.description (ioString, inIndentation+1) ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @formalInputParameterListAST.element generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_formalInputParameterListAST_2E_element ("formalInputParameterListAST.element",
+                                                                                           nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_formalInputParameterListAST_2E_element::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_formalInputParameterListAST_2E_element ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_formalInputParameterListAST_2E_element::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_formalInputParameterListAST_2E_element (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_formalInputParameterListAST_2E_element GGS_formalInputParameterListAST_2E_element::extractObject (const GGS_object & inObject,
+                                                                                                      Compiler * inCompiler
+                                                                                                      COMMA_LOCATION_ARGS) {
+  GGS_formalInputParameterListAST_2E_element result ;
+  const GGS_formalInputParameterListAST_2E_element * p = (const GGS_formalInputParameterListAST_2E_element *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_formalInputParameterListAST_2E_element *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("formalInputParameterListAST.element", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_actualInputParameterListAST_2E_element::GGS_actualInputParameterListAST_2E_element (void) :
+mProperty_mActualSelector (),
+mProperty_mInputParameter () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_actualInputParameterListAST_2E_element::GGS_actualInputParameterListAST_2E_element (const GGS_actualInputParameterListAST_2E_element & inSource) :
+mProperty_mActualSelector (inSource.mProperty_mActualSelector),
+mProperty_mInputParameter (inSource.mProperty_mInputParameter) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_actualInputParameterListAST_2E_element & GGS_actualInputParameterListAST_2E_element::operator = (const GGS_actualInputParameterListAST_2E_element & inSource) {
+  mProperty_mActualSelector = inSource.mProperty_mActualSelector ;
+  mProperty_mInputParameter = inSource.mProperty_mInputParameter ;
+  return *this ;
+}
+
+//---Synthetized initializer -----------------------------------------------------------------------
+
+GGS_actualInputParameterListAST_2E_element GGS_actualInputParameterListAST_2E_element::init_21__21_ (const GGS_lstring & in_mActualSelector,
+                                                                                                     const GGS_abstractInputParameter & in_mInputParameter,
+                                                                                                     Compiler * inCompiler
+                                                                                                     COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_actualInputParameterListAST_2E_element result ;
+  result.setInitializedProperties (inCompiler) ;
+  result.mProperty_mActualSelector = in_mActualSelector ;
+  result.mProperty_mInputParameter = in_mInputParameter ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_actualInputParameterListAST_2E_element::setInitializedProperties (Compiler * /* inCompiler */) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_actualInputParameterListAST_2E_element::GGS_actualInputParameterListAST_2E_element (const GGS_lstring & inOperand0,
+                                                                                        const GGS_abstractInputParameter & inOperand1) :
+mProperty_mActualSelector (inOperand0),
+mProperty_mInputParameter (inOperand1) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_actualInputParameterListAST_2E_element::isValid (void) const {
+  return mProperty_mActualSelector.isValid () && mProperty_mInputParameter.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_actualInputParameterListAST_2E_element::drop (void) {
+  mProperty_mActualSelector.drop () ;
+  mProperty_mInputParameter.drop () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_actualInputParameterListAST_2E_element::description (String & ioString,
+                                                              const int32_t inIndentation) const {
+  ioString.appendCString ("<struct @actualInputParameterListAST.element:") ;
+  if (! isValid ()) {
+    ioString.appendCString (" not built") ;
+  }else{
+    mProperty_mActualSelector.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mInputParameter.description (ioString, inIndentation+1) ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @actualInputParameterListAST.element generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_actualInputParameterListAST_2E_element ("actualInputParameterListAST.element",
+                                                                                           nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_actualInputParameterListAST_2E_element::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_actualInputParameterListAST_2E_element ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_actualInputParameterListAST_2E_element::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_actualInputParameterListAST_2E_element (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_actualInputParameterListAST_2E_element GGS_actualInputParameterListAST_2E_element::extractObject (const GGS_object & inObject,
+                                                                                                      Compiler * inCompiler
+                                                                                                      COMMA_LOCATION_ARGS) {
+  GGS_actualInputParameterListAST_2E_element result ;
+  const GGS_actualInputParameterListAST_2E_element * p = (const GGS_actualInputParameterListAST_2E_element *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_actualInputParameterListAST_2E_element *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("actualInputParameterListAST.element", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_semanticInstructionListAST_2E_element::GGS_semanticInstructionListAST_2E_element (void) :
+mProperty_mInstruction () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_semanticInstructionListAST_2E_element::GGS_semanticInstructionListAST_2E_element (const GGS_semanticInstructionListAST_2E_element & inSource) :
+mProperty_mInstruction (inSource.mProperty_mInstruction) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_semanticInstructionListAST_2E_element & GGS_semanticInstructionListAST_2E_element::operator = (const GGS_semanticInstructionListAST_2E_element & inSource) {
+  mProperty_mInstruction = inSource.mProperty_mInstruction ;
+  return *this ;
+}
+
+//---Synthetized initializer -----------------------------------------------------------------------
+
+GGS_semanticInstructionListAST_2E_element GGS_semanticInstructionListAST_2E_element::init_21_ (const GGS_semanticInstructionAST & in_mInstruction,
+                                                                                               Compiler * inCompiler
+                                                                                               COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_semanticInstructionListAST_2E_element result ;
+  result.setInitializedProperties (inCompiler) ;
+  result.mProperty_mInstruction = in_mInstruction ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_semanticInstructionListAST_2E_element::setInitializedProperties (Compiler * /* inCompiler */) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_semanticInstructionListAST_2E_element::GGS_semanticInstructionListAST_2E_element (const GGS_semanticInstructionAST & inOperand0) :
+mProperty_mInstruction (inOperand0) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_semanticInstructionListAST_2E_element::isValid (void) const {
+  return mProperty_mInstruction.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_semanticInstructionListAST_2E_element::drop (void) {
+  mProperty_mInstruction.drop () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_semanticInstructionListAST_2E_element::description (String & ioString,
+                                                             const int32_t inIndentation) const {
+  ioString.appendCString ("<struct @semanticInstructionListAST.element:") ;
+  if (! isValid ()) {
+    ioString.appendCString (" not built") ;
+  }else{
+    mProperty_mInstruction.description (ioString, inIndentation+1) ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @semanticInstructionListAST.element generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_semanticInstructionListAST_2E_element ("semanticInstructionListAST.element",
+                                                                                          nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_semanticInstructionListAST_2E_element::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_semanticInstructionListAST_2E_element ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_semanticInstructionListAST_2E_element::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_semanticInstructionListAST_2E_element (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_semanticInstructionListAST_2E_element GGS_semanticInstructionListAST_2E_element::extractObject (const GGS_object & inObject,
+                                                                                                    Compiler * inCompiler
+                                                                                                    COMMA_LOCATION_ARGS) {
+  GGS_semanticInstructionListAST_2E_element result ;
+  const GGS_semanticInstructionListAST_2E_element * p = (const GGS_semanticInstructionListAST_2E_element *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_semanticInstructionListAST_2E_element *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("semanticInstructionListAST.element", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_formalTemplateInputParameterListAST_2E_element::GGS_formalTemplateInputParameterListAST_2E_element (void) :
+mProperty_mFormalTemplateSelector (),
+mProperty_mFormalArgumentTypeName (),
+mProperty_mFormalArgumentName (),
+mProperty_mIsUnused () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_formalTemplateInputParameterListAST_2E_element::GGS_formalTemplateInputParameterListAST_2E_element (const GGS_formalTemplateInputParameterListAST_2E_element & inSource) :
+mProperty_mFormalTemplateSelector (inSource.mProperty_mFormalTemplateSelector),
+mProperty_mFormalArgumentTypeName (inSource.mProperty_mFormalArgumentTypeName),
+mProperty_mFormalArgumentName (inSource.mProperty_mFormalArgumentName),
+mProperty_mIsUnused (inSource.mProperty_mIsUnused) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_formalTemplateInputParameterListAST_2E_element & GGS_formalTemplateInputParameterListAST_2E_element::operator = (const GGS_formalTemplateInputParameterListAST_2E_element & inSource) {
+  mProperty_mFormalTemplateSelector = inSource.mProperty_mFormalTemplateSelector ;
+  mProperty_mFormalArgumentTypeName = inSource.mProperty_mFormalArgumentTypeName ;
+  mProperty_mFormalArgumentName = inSource.mProperty_mFormalArgumentName ;
+  mProperty_mIsUnused = inSource.mProperty_mIsUnused ;
+  return *this ;
+}
+
+//---Synthetized initializer -----------------------------------------------------------------------
+
+GGS_formalTemplateInputParameterListAST_2E_element GGS_formalTemplateInputParameterListAST_2E_element::init_21__21__21__21_ (const GGS_lstring & in_mFormalTemplateSelector,
+                                                                                                                             const GGS_lstring & in_mFormalArgumentTypeName,
+                                                                                                                             const GGS_lstring & in_mFormalArgumentName,
+                                                                                                                             const GGS_bool & in_mIsUnused,
+                                                                                                                             Compiler * inCompiler
+                                                                                                                             COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_formalTemplateInputParameterListAST_2E_element result ;
+  result.setInitializedProperties (inCompiler) ;
+  result.mProperty_mFormalTemplateSelector = in_mFormalTemplateSelector ;
+  result.mProperty_mFormalArgumentTypeName = in_mFormalArgumentTypeName ;
+  result.mProperty_mFormalArgumentName = in_mFormalArgumentName ;
+  result.mProperty_mIsUnused = in_mIsUnused ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_formalTemplateInputParameterListAST_2E_element::setInitializedProperties (Compiler * /* inCompiler */) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_formalTemplateInputParameterListAST_2E_element::GGS_formalTemplateInputParameterListAST_2E_element (const GGS_lstring & inOperand0,
+                                                                                                        const GGS_lstring & inOperand1,
+                                                                                                        const GGS_lstring & inOperand2,
+                                                                                                        const GGS_bool & inOperand3) :
+mProperty_mFormalTemplateSelector (inOperand0),
+mProperty_mFormalArgumentTypeName (inOperand1),
+mProperty_mFormalArgumentName (inOperand2),
+mProperty_mIsUnused (inOperand3) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_formalTemplateInputParameterListAST_2E_element::isValid (void) const {
+  return mProperty_mFormalTemplateSelector.isValid () && mProperty_mFormalArgumentTypeName.isValid () && mProperty_mFormalArgumentName.isValid () && mProperty_mIsUnused.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_formalTemplateInputParameterListAST_2E_element::drop (void) {
+  mProperty_mFormalTemplateSelector.drop () ;
+  mProperty_mFormalArgumentTypeName.drop () ;
+  mProperty_mFormalArgumentName.drop () ;
+  mProperty_mIsUnused.drop () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_formalTemplateInputParameterListAST_2E_element::description (String & ioString,
+                                                                      const int32_t inIndentation) const {
+  ioString.appendCString ("<struct @formalTemplateInputParameterListAST.element:") ;
+  if (! isValid ()) {
+    ioString.appendCString (" not built") ;
+  }else{
+    mProperty_mFormalTemplateSelector.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mFormalArgumentTypeName.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mFormalArgumentName.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mIsUnused.description (ioString, inIndentation+1) ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @formalTemplateInputParameterListAST.element generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_formalTemplateInputParameterListAST_2E_element ("formalTemplateInputParameterListAST.element",
+                                                                                                   nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_formalTemplateInputParameterListAST_2E_element::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_formalTemplateInputParameterListAST_2E_element ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_formalTemplateInputParameterListAST_2E_element::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_formalTemplateInputParameterListAST_2E_element (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_formalTemplateInputParameterListAST_2E_element GGS_formalTemplateInputParameterListAST_2E_element::extractObject (const GGS_object & inObject,
+                                                                                                                      Compiler * inCompiler
+                                                                                                                      COMMA_LOCATION_ARGS) {
+  GGS_formalTemplateInputParameterListAST_2E_element result ;
+  const GGS_formalTemplateInputParameterListAST_2E_element * p = (const GGS_formalTemplateInputParameterListAST_2E_element *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_formalTemplateInputParameterListAST_2E_element *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("formalTemplateInputParameterListAST.element", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_filewrapperTemplateListAST_2E_element::GGS_filewrapperTemplateListAST_2E_element (void) :
+mProperty_mFilewrapperTemplateName (),
+mProperty_mFilewrapperTemplatePath (),
+mProperty_mFilewrapperTemplateFormalInputParameters () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_filewrapperTemplateListAST_2E_element::GGS_filewrapperTemplateListAST_2E_element (const GGS_filewrapperTemplateListAST_2E_element & inSource) :
+mProperty_mFilewrapperTemplateName (inSource.mProperty_mFilewrapperTemplateName),
+mProperty_mFilewrapperTemplatePath (inSource.mProperty_mFilewrapperTemplatePath),
+mProperty_mFilewrapperTemplateFormalInputParameters (inSource.mProperty_mFilewrapperTemplateFormalInputParameters) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_filewrapperTemplateListAST_2E_element & GGS_filewrapperTemplateListAST_2E_element::operator = (const GGS_filewrapperTemplateListAST_2E_element & inSource) {
+  mProperty_mFilewrapperTemplateName = inSource.mProperty_mFilewrapperTemplateName ;
+  mProperty_mFilewrapperTemplatePath = inSource.mProperty_mFilewrapperTemplatePath ;
+  mProperty_mFilewrapperTemplateFormalInputParameters = inSource.mProperty_mFilewrapperTemplateFormalInputParameters ;
+  return *this ;
+}
+
+//---Synthetized initializer -----------------------------------------------------------------------
+
+GGS_filewrapperTemplateListAST_2E_element GGS_filewrapperTemplateListAST_2E_element::init_21__21__21_ (const GGS_lstring & in_mFilewrapperTemplateName,
+                                                                                                       const GGS_lstring & in_mFilewrapperTemplatePath,
+                                                                                                       const GGS_formalTemplateInputParameterListAST & in_mFilewrapperTemplateFormalInputParameters,
+                                                                                                       Compiler * inCompiler
+                                                                                                       COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_filewrapperTemplateListAST_2E_element result ;
+  result.setInitializedProperties (inCompiler) ;
+  result.mProperty_mFilewrapperTemplateName = in_mFilewrapperTemplateName ;
+  result.mProperty_mFilewrapperTemplatePath = in_mFilewrapperTemplatePath ;
+  result.mProperty_mFilewrapperTemplateFormalInputParameters = in_mFilewrapperTemplateFormalInputParameters ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_filewrapperTemplateListAST_2E_element::setInitializedProperties (Compiler * /* inCompiler */) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_filewrapperTemplateListAST_2E_element::GGS_filewrapperTemplateListAST_2E_element (const GGS_lstring & inOperand0,
+                                                                                      const GGS_lstring & inOperand1,
+                                                                                      const GGS_formalTemplateInputParameterListAST & inOperand2) :
+mProperty_mFilewrapperTemplateName (inOperand0),
+mProperty_mFilewrapperTemplatePath (inOperand1),
+mProperty_mFilewrapperTemplateFormalInputParameters (inOperand2) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_filewrapperTemplateListAST_2E_element::isValid (void) const {
+  return mProperty_mFilewrapperTemplateName.isValid () && mProperty_mFilewrapperTemplatePath.isValid () && mProperty_mFilewrapperTemplateFormalInputParameters.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_filewrapperTemplateListAST_2E_element::drop (void) {
+  mProperty_mFilewrapperTemplateName.drop () ;
+  mProperty_mFilewrapperTemplatePath.drop () ;
+  mProperty_mFilewrapperTemplateFormalInputParameters.drop () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_filewrapperTemplateListAST_2E_element::description (String & ioString,
+                                                             const int32_t inIndentation) const {
+  ioString.appendCString ("<struct @filewrapperTemplateListAST.element:") ;
+  if (! isValid ()) {
+    ioString.appendCString (" not built") ;
+  }else{
+    mProperty_mFilewrapperTemplateName.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mFilewrapperTemplatePath.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mFilewrapperTemplateFormalInputParameters.description (ioString, inIndentation+1) ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @filewrapperTemplateListAST.element generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_filewrapperTemplateListAST_2E_element ("filewrapperTemplateListAST.element",
+                                                                                          nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_filewrapperTemplateListAST_2E_element::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_filewrapperTemplateListAST_2E_element ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_filewrapperTemplateListAST_2E_element::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_filewrapperTemplateListAST_2E_element (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_filewrapperTemplateListAST_2E_element GGS_filewrapperTemplateListAST_2E_element::extractObject (const GGS_object & inObject,
+                                                                                                    Compiler * inCompiler
+                                                                                                    COMMA_LOCATION_ARGS) {
+  GGS_filewrapperTemplateListAST_2E_element result ;
+  const GGS_filewrapperTemplateListAST_2E_element * p = (const GGS_filewrapperTemplateListAST_2E_element *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_filewrapperTemplateListAST_2E_element *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("filewrapperTemplateListAST.element", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_nonTerminalLabelListAST_2E_element::GGS_nonTerminalLabelListAST_2E_element (void) :
+mProperty_mLabelName (),
+mProperty_mFormalArgumentList (),
+mProperty_mEndOfArgumentLocation () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_nonTerminalLabelListAST_2E_element::GGS_nonTerminalLabelListAST_2E_element (const GGS_nonTerminalLabelListAST_2E_element & inSource) :
+mProperty_mLabelName (inSource.mProperty_mLabelName),
+mProperty_mFormalArgumentList (inSource.mProperty_mFormalArgumentList),
+mProperty_mEndOfArgumentLocation (inSource.mProperty_mEndOfArgumentLocation) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_nonTerminalLabelListAST_2E_element & GGS_nonTerminalLabelListAST_2E_element::operator = (const GGS_nonTerminalLabelListAST_2E_element & inSource) {
+  mProperty_mLabelName = inSource.mProperty_mLabelName ;
+  mProperty_mFormalArgumentList = inSource.mProperty_mFormalArgumentList ;
+  mProperty_mEndOfArgumentLocation = inSource.mProperty_mEndOfArgumentLocation ;
+  return *this ;
+}
+
+//---Synthetized initializer -----------------------------------------------------------------------
+
+GGS_nonTerminalLabelListAST_2E_element GGS_nonTerminalLabelListAST_2E_element::init_21__21__21_ (const GGS_lstring & in_mLabelName,
+                                                                                                 const GGS_formalParameterListAST & in_mFormalArgumentList,
+                                                                                                 const GGS_location & in_mEndOfArgumentLocation,
+                                                                                                 Compiler * inCompiler
+                                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_nonTerminalLabelListAST_2E_element result ;
+  result.setInitializedProperties (inCompiler) ;
+  result.mProperty_mLabelName = in_mLabelName ;
+  result.mProperty_mFormalArgumentList = in_mFormalArgumentList ;
+  result.mProperty_mEndOfArgumentLocation = in_mEndOfArgumentLocation ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_nonTerminalLabelListAST_2E_element::setInitializedProperties (Compiler * /* inCompiler */) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_nonTerminalLabelListAST_2E_element::GGS_nonTerminalLabelListAST_2E_element (const GGS_lstring & inOperand0,
+                                                                                const GGS_formalParameterListAST & inOperand1,
+                                                                                const GGS_location & inOperand2) :
+mProperty_mLabelName (inOperand0),
+mProperty_mFormalArgumentList (inOperand1),
+mProperty_mEndOfArgumentLocation (inOperand2) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_nonTerminalLabelListAST_2E_element::isValid (void) const {
+  return mProperty_mLabelName.isValid () && mProperty_mFormalArgumentList.isValid () && mProperty_mEndOfArgumentLocation.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_nonTerminalLabelListAST_2E_element::drop (void) {
+  mProperty_mLabelName.drop () ;
+  mProperty_mFormalArgumentList.drop () ;
+  mProperty_mEndOfArgumentLocation.drop () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_nonTerminalLabelListAST_2E_element::description (String & ioString,
+                                                          const int32_t inIndentation) const {
+  ioString.appendCString ("<struct @nonTerminalLabelListAST.element:") ;
+  if (! isValid ()) {
+    ioString.appendCString (" not built") ;
+  }else{
+    mProperty_mLabelName.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mFormalArgumentList.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mEndOfArgumentLocation.description (ioString, inIndentation+1) ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @nonTerminalLabelListAST.element generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_nonTerminalLabelListAST_2E_element ("nonTerminalLabelListAST.element",
+                                                                                       nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_nonTerminalLabelListAST_2E_element::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_nonTerminalLabelListAST_2E_element ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_nonTerminalLabelListAST_2E_element::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_nonTerminalLabelListAST_2E_element (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_nonTerminalLabelListAST_2E_element GGS_nonTerminalLabelListAST_2E_element::extractObject (const GGS_object & inObject,
+                                                                                              Compiler * inCompiler
+                                                                                              COMMA_LOCATION_ARGS) {
+  GGS_nonTerminalLabelListAST_2E_element result ;
+  const GGS_nonTerminalLabelListAST_2E_element * p = (const GGS_nonTerminalLabelListAST_2E_element *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_nonTerminalLabelListAST_2E_element *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("nonTerminalLabelListAST.element", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_nonterminalDeclarationListAST_2E_element::GGS_nonterminalDeclarationListAST_2E_element (void) :
+mProperty_mNonterminalName (),
+mProperty_mLabels () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_nonterminalDeclarationListAST_2E_element::GGS_nonterminalDeclarationListAST_2E_element (const GGS_nonterminalDeclarationListAST_2E_element & inSource) :
+mProperty_mNonterminalName (inSource.mProperty_mNonterminalName),
+mProperty_mLabels (inSource.mProperty_mLabels) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_nonterminalDeclarationListAST_2E_element & GGS_nonterminalDeclarationListAST_2E_element::operator = (const GGS_nonterminalDeclarationListAST_2E_element & inSource) {
+  mProperty_mNonterminalName = inSource.mProperty_mNonterminalName ;
+  mProperty_mLabels = inSource.mProperty_mLabels ;
+  return *this ;
+}
+
+//---Synthetized initializer -----------------------------------------------------------------------
+
+GGS_nonterminalDeclarationListAST_2E_element GGS_nonterminalDeclarationListAST_2E_element::init_21__21_ (const GGS_lstring & in_mNonterminalName,
+                                                                                                         const GGS_nonTerminalLabelListAST & in_mLabels,
+                                                                                                         Compiler * inCompiler
+                                                                                                         COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_nonterminalDeclarationListAST_2E_element result ;
+  result.setInitializedProperties (inCompiler) ;
+  result.mProperty_mNonterminalName = in_mNonterminalName ;
+  result.mProperty_mLabels = in_mLabels ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_nonterminalDeclarationListAST_2E_element::setInitializedProperties (Compiler * /* inCompiler */) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_nonterminalDeclarationListAST_2E_element::GGS_nonterminalDeclarationListAST_2E_element (const GGS_lstring & inOperand0,
+                                                                                            const GGS_nonTerminalLabelListAST & inOperand1) :
+mProperty_mNonterminalName (inOperand0),
+mProperty_mLabels (inOperand1) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_nonterminalDeclarationListAST_2E_element::isValid (void) const {
+  return mProperty_mNonterminalName.isValid () && mProperty_mLabels.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_nonterminalDeclarationListAST_2E_element::drop (void) {
+  mProperty_mNonterminalName.drop () ;
+  mProperty_mLabels.drop () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_nonterminalDeclarationListAST_2E_element::description (String & ioString,
+                                                                const int32_t inIndentation) const {
+  ioString.appendCString ("<struct @nonterminalDeclarationListAST.element:") ;
+  if (! isValid ()) {
+    ioString.appendCString (" not built") ;
+  }else{
+    mProperty_mNonterminalName.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mLabels.description (ioString, inIndentation+1) ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @nonterminalDeclarationListAST.element generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_nonterminalDeclarationListAST_2E_element ("nonterminalDeclarationListAST.element",
+                                                                                             nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_nonterminalDeclarationListAST_2E_element::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_nonterminalDeclarationListAST_2E_element ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_nonterminalDeclarationListAST_2E_element::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_nonterminalDeclarationListAST_2E_element (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_nonterminalDeclarationListAST_2E_element GGS_nonterminalDeclarationListAST_2E_element::extractObject (const GGS_object & inObject,
+                                                                                                          Compiler * inCompiler
+                                                                                                          COMMA_LOCATION_ARGS) {
+  GGS_nonterminalDeclarationListAST_2E_element result ;
+  const GGS_nonterminalDeclarationListAST_2E_element * p = (const GGS_nonterminalDeclarationListAST_2E_element *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_nonterminalDeclarationListAST_2E_element *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("nonterminalDeclarationListAST.element", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_syntaxRuleLabelListAST_2E_element::GGS_syntaxRuleLabelListAST_2E_element (void) :
+mProperty_mLabelName (),
+mProperty_mFormalArguments (),
+mProperty_mEndOfArgumentLocation (),
+mProperty_mSyntaxInstructionList (),
+mProperty_mEndOfInstructionList () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_syntaxRuleLabelListAST_2E_element::GGS_syntaxRuleLabelListAST_2E_element (const GGS_syntaxRuleLabelListAST_2E_element & inSource) :
+mProperty_mLabelName (inSource.mProperty_mLabelName),
+mProperty_mFormalArguments (inSource.mProperty_mFormalArguments),
+mProperty_mEndOfArgumentLocation (inSource.mProperty_mEndOfArgumentLocation),
+mProperty_mSyntaxInstructionList (inSource.mProperty_mSyntaxInstructionList),
+mProperty_mEndOfInstructionList (inSource.mProperty_mEndOfInstructionList) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_syntaxRuleLabelListAST_2E_element & GGS_syntaxRuleLabelListAST_2E_element::operator = (const GGS_syntaxRuleLabelListAST_2E_element & inSource) {
+  mProperty_mLabelName = inSource.mProperty_mLabelName ;
+  mProperty_mFormalArguments = inSource.mProperty_mFormalArguments ;
+  mProperty_mEndOfArgumentLocation = inSource.mProperty_mEndOfArgumentLocation ;
+  mProperty_mSyntaxInstructionList = inSource.mProperty_mSyntaxInstructionList ;
+  mProperty_mEndOfInstructionList = inSource.mProperty_mEndOfInstructionList ;
+  return *this ;
+}
+
+//---Synthetized initializer -----------------------------------------------------------------------
+
+GGS_syntaxRuleLabelListAST_2E_element GGS_syntaxRuleLabelListAST_2E_element::init_21__21__21__21__21_ (const GGS_lstring & in_mLabelName,
+                                                                                                       const GGS_formalParameterListAST & in_mFormalArguments,
+                                                                                                       const GGS_location & in_mEndOfArgumentLocation,
+                                                                                                       const GGS_syntaxInstructionList & in_mSyntaxInstructionList,
+                                                                                                       const GGS_location & in_mEndOfInstructionList,
+                                                                                                       Compiler * inCompiler
+                                                                                                       COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_syntaxRuleLabelListAST_2E_element result ;
+  result.setInitializedProperties (inCompiler) ;
+  result.mProperty_mLabelName = in_mLabelName ;
+  result.mProperty_mFormalArguments = in_mFormalArguments ;
+  result.mProperty_mEndOfArgumentLocation = in_mEndOfArgumentLocation ;
+  result.mProperty_mSyntaxInstructionList = in_mSyntaxInstructionList ;
+  result.mProperty_mEndOfInstructionList = in_mEndOfInstructionList ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_syntaxRuleLabelListAST_2E_element::setInitializedProperties (Compiler * /* inCompiler */) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_syntaxRuleLabelListAST_2E_element::GGS_syntaxRuleLabelListAST_2E_element (const GGS_lstring & inOperand0,
+                                                                              const GGS_formalParameterListAST & inOperand1,
+                                                                              const GGS_location & inOperand2,
+                                                                              const GGS_syntaxInstructionList & inOperand3,
+                                                                              const GGS_location & inOperand4) :
+mProperty_mLabelName (inOperand0),
+mProperty_mFormalArguments (inOperand1),
+mProperty_mEndOfArgumentLocation (inOperand2),
+mProperty_mSyntaxInstructionList (inOperand3),
+mProperty_mEndOfInstructionList (inOperand4) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_syntaxRuleLabelListAST_2E_element::isValid (void) const {
+  return mProperty_mLabelName.isValid () && mProperty_mFormalArguments.isValid () && mProperty_mEndOfArgumentLocation.isValid () && mProperty_mSyntaxInstructionList.isValid () && mProperty_mEndOfInstructionList.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_syntaxRuleLabelListAST_2E_element::drop (void) {
+  mProperty_mLabelName.drop () ;
+  mProperty_mFormalArguments.drop () ;
+  mProperty_mEndOfArgumentLocation.drop () ;
+  mProperty_mSyntaxInstructionList.drop () ;
+  mProperty_mEndOfInstructionList.drop () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_syntaxRuleLabelListAST_2E_element::description (String & ioString,
+                                                         const int32_t inIndentation) const {
+  ioString.appendCString ("<struct @syntaxRuleLabelListAST.element:") ;
+  if (! isValid ()) {
+    ioString.appendCString (" not built") ;
+  }else{
+    mProperty_mLabelName.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mFormalArguments.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mEndOfArgumentLocation.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mSyntaxInstructionList.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mEndOfInstructionList.description (ioString, inIndentation+1) ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @syntaxRuleLabelListAST.element generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_syntaxRuleLabelListAST_2E_element ("syntaxRuleLabelListAST.element",
+                                                                                      nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_syntaxRuleLabelListAST_2E_element::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_syntaxRuleLabelListAST_2E_element ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_syntaxRuleLabelListAST_2E_element::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_syntaxRuleLabelListAST_2E_element (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_syntaxRuleLabelListAST_2E_element GGS_syntaxRuleLabelListAST_2E_element::extractObject (const GGS_object & inObject,
+                                                                                            Compiler * inCompiler
+                                                                                            COMMA_LOCATION_ARGS) {
+  GGS_syntaxRuleLabelListAST_2E_element result ;
+  const GGS_syntaxRuleLabelListAST_2E_element * p = (const GGS_syntaxRuleLabelListAST_2E_element *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_syntaxRuleLabelListAST_2E_element *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("syntaxRuleLabelListAST.element", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_syntaxRuleListAST_2E_element::GGS_syntaxRuleListAST_2E_element (void) :
+mProperty_mNonterminalName (),
+mProperty_mLabelList () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_syntaxRuleListAST_2E_element::GGS_syntaxRuleListAST_2E_element (const GGS_syntaxRuleListAST_2E_element & inSource) :
+mProperty_mNonterminalName (inSource.mProperty_mNonterminalName),
+mProperty_mLabelList (inSource.mProperty_mLabelList) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_syntaxRuleListAST_2E_element & GGS_syntaxRuleListAST_2E_element::operator = (const GGS_syntaxRuleListAST_2E_element & inSource) {
+  mProperty_mNonterminalName = inSource.mProperty_mNonterminalName ;
+  mProperty_mLabelList = inSource.mProperty_mLabelList ;
+  return *this ;
+}
+
+//---Synthetized initializer -----------------------------------------------------------------------
+
+GGS_syntaxRuleListAST_2E_element GGS_syntaxRuleListAST_2E_element::init_21__21_ (const GGS_lstring & in_mNonterminalName,
+                                                                                 const GGS_syntaxRuleLabelListAST & in_mLabelList,
+                                                                                 Compiler * inCompiler
+                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_syntaxRuleListAST_2E_element result ;
+  result.setInitializedProperties (inCompiler) ;
+  result.mProperty_mNonterminalName = in_mNonterminalName ;
+  result.mProperty_mLabelList = in_mLabelList ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_syntaxRuleListAST_2E_element::setInitializedProperties (Compiler * /* inCompiler */) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_syntaxRuleListAST_2E_element::GGS_syntaxRuleListAST_2E_element (const GGS_lstring & inOperand0,
+                                                                    const GGS_syntaxRuleLabelListAST & inOperand1) :
+mProperty_mNonterminalName (inOperand0),
+mProperty_mLabelList (inOperand1) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_syntaxRuleListAST_2E_element::isValid (void) const {
+  return mProperty_mNonterminalName.isValid () && mProperty_mLabelList.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_syntaxRuleListAST_2E_element::drop (void) {
+  mProperty_mNonterminalName.drop () ;
+  mProperty_mLabelList.drop () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_syntaxRuleListAST_2E_element::description (String & ioString,
+                                                    const int32_t inIndentation) const {
+  ioString.appendCString ("<struct @syntaxRuleListAST.element:") ;
+  if (! isValid ()) {
+    ioString.appendCString (" not built") ;
+  }else{
+    mProperty_mNonterminalName.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mLabelList.description (ioString, inIndentation+1) ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @syntaxRuleListAST.element generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_syntaxRuleListAST_2E_element ("syntaxRuleListAST.element",
+                                                                                 nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_syntaxRuleListAST_2E_element::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_syntaxRuleListAST_2E_element ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_syntaxRuleListAST_2E_element::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_syntaxRuleListAST_2E_element (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_syntaxRuleListAST_2E_element GGS_syntaxRuleListAST_2E_element::extractObject (const GGS_object & inObject,
+                                                                                  Compiler * inCompiler
+                                                                                  COMMA_LOCATION_ARGS) {
+  GGS_syntaxRuleListAST_2E_element result ;
+  const GGS_syntaxRuleListAST_2E_element * p = (const GGS_syntaxRuleListAST_2E_element *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_syntaxRuleListAST_2E_element *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("syntaxRuleListAST.element", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_galgas_33_SyntaxComponentListAST_2E_element::GGS_galgas_33_SyntaxComponentListAST_2E_element (void) :
+mProperty_mSyntaxComponentName (),
+mProperty_mImportedLexiqueFilePath (),
+mProperty_mNonterminalDeclarationList (),
+mProperty_mRuleList (),
+mProperty_mHasTranslateFeature () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_galgas_33_SyntaxComponentListAST_2E_element::GGS_galgas_33_SyntaxComponentListAST_2E_element (const GGS_galgas_33_SyntaxComponentListAST_2E_element & inSource) :
+mProperty_mSyntaxComponentName (inSource.mProperty_mSyntaxComponentName),
+mProperty_mImportedLexiqueFilePath (inSource.mProperty_mImportedLexiqueFilePath),
+mProperty_mNonterminalDeclarationList (inSource.mProperty_mNonterminalDeclarationList),
+mProperty_mRuleList (inSource.mProperty_mRuleList),
+mProperty_mHasTranslateFeature (inSource.mProperty_mHasTranslateFeature) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_galgas_33_SyntaxComponentListAST_2E_element & GGS_galgas_33_SyntaxComponentListAST_2E_element::operator = (const GGS_galgas_33_SyntaxComponentListAST_2E_element & inSource) {
+  mProperty_mSyntaxComponentName = inSource.mProperty_mSyntaxComponentName ;
+  mProperty_mImportedLexiqueFilePath = inSource.mProperty_mImportedLexiqueFilePath ;
+  mProperty_mNonterminalDeclarationList = inSource.mProperty_mNonterminalDeclarationList ;
+  mProperty_mRuleList = inSource.mProperty_mRuleList ;
+  mProperty_mHasTranslateFeature = inSource.mProperty_mHasTranslateFeature ;
+  return *this ;
+}
+
+//---Synthetized initializer -----------------------------------------------------------------------
+
+GGS_galgas_33_SyntaxComponentListAST_2E_element GGS_galgas_33_SyntaxComponentListAST_2E_element::init_21__21__21__21__21_ (const GGS_lstring & in_mSyntaxComponentName,
+                                                                                                                           const GGS_lstring & in_mImportedLexiqueFilePath,
+                                                                                                                           const GGS_nonterminalDeclarationListAST & in_mNonterminalDeclarationList,
+                                                                                                                           const GGS_syntaxRuleListAST & in_mRuleList,
+                                                                                                                           const GGS_bool & in_mHasTranslateFeature,
+                                                                                                                           Compiler * inCompiler
+                                                                                                                           COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_galgas_33_SyntaxComponentListAST_2E_element result ;
+  result.setInitializedProperties (inCompiler) ;
+  result.mProperty_mSyntaxComponentName = in_mSyntaxComponentName ;
+  result.mProperty_mImportedLexiqueFilePath = in_mImportedLexiqueFilePath ;
+  result.mProperty_mNonterminalDeclarationList = in_mNonterminalDeclarationList ;
+  result.mProperty_mRuleList = in_mRuleList ;
+  result.mProperty_mHasTranslateFeature = in_mHasTranslateFeature ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_galgas_33_SyntaxComponentListAST_2E_element::setInitializedProperties (Compiler * /* inCompiler */) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_galgas_33_SyntaxComponentListAST_2E_element::GGS_galgas_33_SyntaxComponentListAST_2E_element (const GGS_lstring & inOperand0,
+                                                                                                  const GGS_lstring & inOperand1,
+                                                                                                  const GGS_nonterminalDeclarationListAST & inOperand2,
+                                                                                                  const GGS_syntaxRuleListAST & inOperand3,
+                                                                                                  const GGS_bool & inOperand4) :
+mProperty_mSyntaxComponentName (inOperand0),
+mProperty_mImportedLexiqueFilePath (inOperand1),
+mProperty_mNonterminalDeclarationList (inOperand2),
+mProperty_mRuleList (inOperand3),
+mProperty_mHasTranslateFeature (inOperand4) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_galgas_33_SyntaxComponentListAST_2E_element::isValid (void) const {
+  return mProperty_mSyntaxComponentName.isValid () && mProperty_mImportedLexiqueFilePath.isValid () && mProperty_mNonterminalDeclarationList.isValid () && mProperty_mRuleList.isValid () && mProperty_mHasTranslateFeature.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_galgas_33_SyntaxComponentListAST_2E_element::drop (void) {
+  mProperty_mSyntaxComponentName.drop () ;
+  mProperty_mImportedLexiqueFilePath.drop () ;
+  mProperty_mNonterminalDeclarationList.drop () ;
+  mProperty_mRuleList.drop () ;
+  mProperty_mHasTranslateFeature.drop () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_galgas_33_SyntaxComponentListAST_2E_element::description (String & ioString,
+                                                                   const int32_t inIndentation) const {
+  ioString.appendCString ("<struct @galgas3SyntaxComponentListAST.element:") ;
+  if (! isValid ()) {
+    ioString.appendCString (" not built") ;
+  }else{
+    mProperty_mSyntaxComponentName.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mImportedLexiqueFilePath.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mNonterminalDeclarationList.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mRuleList.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mHasTranslateFeature.description (ioString, inIndentation+1) ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @galgas3SyntaxComponentListAST.element generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_galgas_33_SyntaxComponentListAST_2E_element ("galgas3SyntaxComponentListAST.element",
+                                                                                                nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_galgas_33_SyntaxComponentListAST_2E_element::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_galgas_33_SyntaxComponentListAST_2E_element ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_galgas_33_SyntaxComponentListAST_2E_element::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_galgas_33_SyntaxComponentListAST_2E_element (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_galgas_33_SyntaxComponentListAST_2E_element GGS_galgas_33_SyntaxComponentListAST_2E_element::extractObject (const GGS_object & inObject,
+                                                                                                                Compiler * inCompiler
+                                                                                                                COMMA_LOCATION_ARGS) {
+  GGS_galgas_33_SyntaxComponentListAST_2E_element result ;
+  const GGS_galgas_33_SyntaxComponentListAST_2E_element * p = (const GGS_galgas_33_SyntaxComponentListAST_2E_element *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_galgas_33_SyntaxComponentListAST_2E_element *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("galgas3SyntaxComponentListAST.element", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_galgas_33_SyntaxExtensionListAST_2E_element::GGS_galgas_33_SyntaxExtensionListAST_2E_element (void) :
+mProperty_mSyntaxComponentName (),
+mProperty_mNonterminalDeclarationList (),
+mProperty_mRuleList () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_galgas_33_SyntaxExtensionListAST_2E_element::GGS_galgas_33_SyntaxExtensionListAST_2E_element (const GGS_galgas_33_SyntaxExtensionListAST_2E_element & inSource) :
+mProperty_mSyntaxComponentName (inSource.mProperty_mSyntaxComponentName),
+mProperty_mNonterminalDeclarationList (inSource.mProperty_mNonterminalDeclarationList),
+mProperty_mRuleList (inSource.mProperty_mRuleList) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_galgas_33_SyntaxExtensionListAST_2E_element & GGS_galgas_33_SyntaxExtensionListAST_2E_element::operator = (const GGS_galgas_33_SyntaxExtensionListAST_2E_element & inSource) {
+  mProperty_mSyntaxComponentName = inSource.mProperty_mSyntaxComponentName ;
+  mProperty_mNonterminalDeclarationList = inSource.mProperty_mNonterminalDeclarationList ;
+  mProperty_mRuleList = inSource.mProperty_mRuleList ;
+  return *this ;
+}
+
+//---Synthetized initializer -----------------------------------------------------------------------
+
+GGS_galgas_33_SyntaxExtensionListAST_2E_element GGS_galgas_33_SyntaxExtensionListAST_2E_element::init_21__21__21_ (const GGS_lstring & in_mSyntaxComponentName,
+                                                                                                                   const GGS_nonterminalDeclarationListAST & in_mNonterminalDeclarationList,
+                                                                                                                   const GGS_syntaxRuleListAST & in_mRuleList,
+                                                                                                                   Compiler * inCompiler
+                                                                                                                   COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_galgas_33_SyntaxExtensionListAST_2E_element result ;
+  result.setInitializedProperties (inCompiler) ;
+  result.mProperty_mSyntaxComponentName = in_mSyntaxComponentName ;
+  result.mProperty_mNonterminalDeclarationList = in_mNonterminalDeclarationList ;
+  result.mProperty_mRuleList = in_mRuleList ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_galgas_33_SyntaxExtensionListAST_2E_element::setInitializedProperties (Compiler * /* inCompiler */) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_galgas_33_SyntaxExtensionListAST_2E_element::GGS_galgas_33_SyntaxExtensionListAST_2E_element (const GGS_lstring & inOperand0,
+                                                                                                  const GGS_nonterminalDeclarationListAST & inOperand1,
+                                                                                                  const GGS_syntaxRuleListAST & inOperand2) :
+mProperty_mSyntaxComponentName (inOperand0),
+mProperty_mNonterminalDeclarationList (inOperand1),
+mProperty_mRuleList (inOperand2) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_galgas_33_SyntaxExtensionListAST_2E_element::isValid (void) const {
+  return mProperty_mSyntaxComponentName.isValid () && mProperty_mNonterminalDeclarationList.isValid () && mProperty_mRuleList.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_galgas_33_SyntaxExtensionListAST_2E_element::drop (void) {
+  mProperty_mSyntaxComponentName.drop () ;
+  mProperty_mNonterminalDeclarationList.drop () ;
+  mProperty_mRuleList.drop () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_galgas_33_SyntaxExtensionListAST_2E_element::description (String & ioString,
+                                                                   const int32_t inIndentation) const {
+  ioString.appendCString ("<struct @galgas3SyntaxExtensionListAST.element:") ;
+  if (! isValid ()) {
+    ioString.appendCString (" not built") ;
+  }else{
+    mProperty_mSyntaxComponentName.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mNonterminalDeclarationList.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mRuleList.description (ioString, inIndentation+1) ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @galgas3SyntaxExtensionListAST.element generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_galgas_33_SyntaxExtensionListAST_2E_element ("galgas3SyntaxExtensionListAST.element",
+                                                                                                nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_galgas_33_SyntaxExtensionListAST_2E_element::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_galgas_33_SyntaxExtensionListAST_2E_element ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_galgas_33_SyntaxExtensionListAST_2E_element::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_galgas_33_SyntaxExtensionListAST_2E_element (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_galgas_33_SyntaxExtensionListAST_2E_element GGS_galgas_33_SyntaxExtensionListAST_2E_element::extractObject (const GGS_object & inObject,
+                                                                                                                Compiler * inCompiler
+                                                                                                                COMMA_LOCATION_ARGS) {
+  GGS_galgas_33_SyntaxExtensionListAST_2E_element result ;
+  const GGS_galgas_33_SyntaxExtensionListAST_2E_element * p = (const GGS_galgas_33_SyntaxExtensionListAST_2E_element *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_galgas_33_SyntaxExtensionListAST_2E_element *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("galgas3SyntaxExtensionListAST.element", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_programRuleList_2E_element::GGS_programRuleList_2E_element (void) :
+mProperty_mSourceFileExtension (),
+mProperty_mSourceFileHelp (),
+mProperty_mSourceFileVariableName (),
+mProperty_mSourceFileVariableNameIsUnused (),
+mProperty_mReferenceGrammar (),
+mProperty_mInstructionList (),
+mProperty_mEndOfInstructionList () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_programRuleList_2E_element::GGS_programRuleList_2E_element (const GGS_programRuleList_2E_element & inSource) :
+mProperty_mSourceFileExtension (inSource.mProperty_mSourceFileExtension),
+mProperty_mSourceFileHelp (inSource.mProperty_mSourceFileHelp),
+mProperty_mSourceFileVariableName (inSource.mProperty_mSourceFileVariableName),
+mProperty_mSourceFileVariableNameIsUnused (inSource.mProperty_mSourceFileVariableNameIsUnused),
+mProperty_mReferenceGrammar (inSource.mProperty_mReferenceGrammar),
+mProperty_mInstructionList (inSource.mProperty_mInstructionList),
+mProperty_mEndOfInstructionList (inSource.mProperty_mEndOfInstructionList) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_programRuleList_2E_element & GGS_programRuleList_2E_element::operator = (const GGS_programRuleList_2E_element & inSource) {
+  mProperty_mSourceFileExtension = inSource.mProperty_mSourceFileExtension ;
+  mProperty_mSourceFileHelp = inSource.mProperty_mSourceFileHelp ;
+  mProperty_mSourceFileVariableName = inSource.mProperty_mSourceFileVariableName ;
+  mProperty_mSourceFileVariableNameIsUnused = inSource.mProperty_mSourceFileVariableNameIsUnused ;
+  mProperty_mReferenceGrammar = inSource.mProperty_mReferenceGrammar ;
+  mProperty_mInstructionList = inSource.mProperty_mInstructionList ;
+  mProperty_mEndOfInstructionList = inSource.mProperty_mEndOfInstructionList ;
+  return *this ;
+}
+
+//---Synthetized initializer -----------------------------------------------------------------------
+
+GGS_programRuleList_2E_element GGS_programRuleList_2E_element::init_21__21__21__21__21__21__21_ (const GGS_lstring & in_mSourceFileExtension,
+                                                                                                 const GGS_lstring & in_mSourceFileHelp,
+                                                                                                 const GGS_lstring & in_mSourceFileVariableName,
+                                                                                                 const GGS_bool & in_mSourceFileVariableNameIsUnused,
+                                                                                                 const GGS_lstring & in_mReferenceGrammar,
+                                                                                                 const GGS_semanticInstructionListAST & in_mInstructionList,
+                                                                                                 const GGS_location & in_mEndOfInstructionList,
+                                                                                                 Compiler * inCompiler
+                                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_programRuleList_2E_element result ;
+  result.setInitializedProperties (inCompiler) ;
+  result.mProperty_mSourceFileExtension = in_mSourceFileExtension ;
+  result.mProperty_mSourceFileHelp = in_mSourceFileHelp ;
+  result.mProperty_mSourceFileVariableName = in_mSourceFileVariableName ;
+  result.mProperty_mSourceFileVariableNameIsUnused = in_mSourceFileVariableNameIsUnused ;
+  result.mProperty_mReferenceGrammar = in_mReferenceGrammar ;
+  result.mProperty_mInstructionList = in_mInstructionList ;
+  result.mProperty_mEndOfInstructionList = in_mEndOfInstructionList ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_programRuleList_2E_element::setInitializedProperties (Compiler * /* inCompiler */) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_programRuleList_2E_element::GGS_programRuleList_2E_element (const GGS_lstring & inOperand0,
+                                                                const GGS_lstring & inOperand1,
+                                                                const GGS_lstring & inOperand2,
+                                                                const GGS_bool & inOperand3,
+                                                                const GGS_lstring & inOperand4,
+                                                                const GGS_semanticInstructionListAST & inOperand5,
+                                                                const GGS_location & inOperand6) :
+mProperty_mSourceFileExtension (inOperand0),
+mProperty_mSourceFileHelp (inOperand1),
+mProperty_mSourceFileVariableName (inOperand2),
+mProperty_mSourceFileVariableNameIsUnused (inOperand3),
+mProperty_mReferenceGrammar (inOperand4),
+mProperty_mInstructionList (inOperand5),
+mProperty_mEndOfInstructionList (inOperand6) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_programRuleList_2E_element::isValid (void) const {
+  return mProperty_mSourceFileExtension.isValid () && mProperty_mSourceFileHelp.isValid () && mProperty_mSourceFileVariableName.isValid () && mProperty_mSourceFileVariableNameIsUnused.isValid () && mProperty_mReferenceGrammar.isValid () && mProperty_mInstructionList.isValid () && mProperty_mEndOfInstructionList.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_programRuleList_2E_element::drop (void) {
+  mProperty_mSourceFileExtension.drop () ;
+  mProperty_mSourceFileHelp.drop () ;
+  mProperty_mSourceFileVariableName.drop () ;
+  mProperty_mSourceFileVariableNameIsUnused.drop () ;
+  mProperty_mReferenceGrammar.drop () ;
+  mProperty_mInstructionList.drop () ;
+  mProperty_mEndOfInstructionList.drop () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_programRuleList_2E_element::description (String & ioString,
+                                                  const int32_t inIndentation) const {
+  ioString.appendCString ("<struct @programRuleList.element:") ;
+  if (! isValid ()) {
+    ioString.appendCString (" not built") ;
+  }else{
+    mProperty_mSourceFileExtension.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mSourceFileHelp.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mSourceFileVariableName.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mSourceFileVariableNameIsUnused.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mReferenceGrammar.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mInstructionList.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mEndOfInstructionList.description (ioString, inIndentation+1) ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @programRuleList.element generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_programRuleList_2E_element ("programRuleList.element",
+                                                                               nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_programRuleList_2E_element::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_programRuleList_2E_element ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_programRuleList_2E_element::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_programRuleList_2E_element (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_programRuleList_2E_element GGS_programRuleList_2E_element::extractObject (const GGS_object & inObject,
+                                                                              Compiler * inCompiler
+                                                                              COMMA_LOCATION_ARGS) {
+  GGS_programRuleList_2E_element result ;
+  const GGS_programRuleList_2E_element * p = (const GGS_programRuleList_2E_element *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_programRuleList_2E_element *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("programRuleList.element", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_equatableExtensionMap_2E_element::GGS_equatableExtensionMap_2E_element (void) :
+mProperty_lkey (),
+mProperty_mExtension () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_equatableExtensionMap_2E_element::GGS_equatableExtensionMap_2E_element (const GGS_equatableExtensionMap_2E_element & inSource) :
+mProperty_lkey (inSource.mProperty_lkey),
+mProperty_mExtension (inSource.mProperty_mExtension) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_equatableExtensionMap_2E_element & GGS_equatableExtensionMap_2E_element::operator = (const GGS_equatableExtensionMap_2E_element & inSource) {
+  mProperty_lkey = inSource.mProperty_lkey ;
+  mProperty_mExtension = inSource.mProperty_mExtension ;
+  return *this ;
+}
+
+//---Synthetized initializer -----------------------------------------------------------------------
+
+GGS_equatableExtensionMap_2E_element GGS_equatableExtensionMap_2E_element::init_21__21_ (const GGS_lstring & in_lkey,
+                                                                                         const GGS_equatableComparableExtension & in_mExtension,
+                                                                                         Compiler * inCompiler
+                                                                                         COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_equatableExtensionMap_2E_element result ;
+  result.setInitializedProperties (inCompiler) ;
+  result.mProperty_lkey = in_lkey ;
+  result.mProperty_mExtension = in_mExtension ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_equatableExtensionMap_2E_element::setInitializedProperties (Compiler * /* inCompiler */) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_equatableExtensionMap_2E_element::GGS_equatableExtensionMap_2E_element (const GGS_lstring & inOperand0,
+                                                                            const GGS_equatableComparableExtension & inOperand1) :
+mProperty_lkey (inOperand0),
+mProperty_mExtension (inOperand1) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_equatableExtensionMap_2E_element::isValid (void) const {
+  return mProperty_lkey.isValid () && mProperty_mExtension.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_equatableExtensionMap_2E_element::drop (void) {
+  mProperty_lkey.drop () ;
+  mProperty_mExtension.drop () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_equatableExtensionMap_2E_element::description (String & ioString,
+                                                        const int32_t inIndentation) const {
+  ioString.appendCString ("<struct @equatableExtensionMap.element:") ;
+  if (! isValid ()) {
+    ioString.appendCString (" not built") ;
+  }else{
+    mProperty_lkey.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mExtension.description (ioString, inIndentation+1) ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @equatableExtensionMap.element generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_equatableExtensionMap_2E_element ("equatableExtensionMap.element",
+                                                                                     nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_equatableExtensionMap_2E_element::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_equatableExtensionMap_2E_element ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_equatableExtensionMap_2E_element::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_equatableExtensionMap_2E_element (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_equatableExtensionMap_2E_element GGS_equatableExtensionMap_2E_element::extractObject (const GGS_object & inObject,
+                                                                                          Compiler * inCompiler
+                                                                                          COMMA_LOCATION_ARGS) {
+  GGS_equatableExtensionMap_2E_element result ;
+  const GGS_equatableExtensionMap_2E_element * p = (const GGS_equatableExtensionMap_2E_element *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_equatableExtensionMap_2E_element *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("equatableExtensionMap.element", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//Optional @equatableExtensionMap_2E_element_3F_
+//--------------------------------------------------------------------------------------------------
+
+GGS_equatableExtensionMap_2E_element_3F_::GGS_equatableExtensionMap_2E_element_3F_ (void) :
+AC_GALGAS_root (),
+mValue (),
+mState (OptionalState::invalid) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_equatableExtensionMap_2E_element_3F_::GGS_equatableExtensionMap_2E_element_3F_ (const GGS_equatableExtensionMap_2E_element & inSource) :
+AC_GALGAS_root (),
+mValue (inSource),
+mState (OptionalState::valuated) {
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_equatableExtensionMap_2E_element_3F_ GGS_equatableExtensionMap_2E_element_3F_::init_nil (void) {
+  GGS_equatableExtensionMap_2E_element_3F_ result ;
+  result.mState = OptionalState::isNil ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_equatableExtensionMap_2E_element_3F_::isValid (void) const {
+  bool result = false ;
+  switch (mState) {
+  case OptionalState::invalid :
+    break ;
+  case OptionalState::isNil :
+    result = true ;
+    break ;
+  case OptionalState::valuated :
+    result = mValue.isValid () ;
+    break ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_equatableExtensionMap_2E_element_3F_::isValuated (void) const {
+  return (mState == OptionalState::valuated) && mValue.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_equatableExtensionMap_2E_element_3F_::drop (void) {
+  mState = OptionalState::invalid ;
+  mValue = GGS_equatableExtensionMap_2E_element () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_equatableExtensionMap_2E_element_3F_::description (String & ioString,
+                                                            const int32_t inIndentation) const {
+  ioString.appendCString ("<optional @") ;
+  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
+  ioString.appendCString (": ") ;
+  switch (mState) {
+  case OptionalState::invalid :
+    ioString.appendCString ("invalid") ;
+    break ;
+  case OptionalState::isNil :
+    ioString.appendCString ("nil") ;
+    break ;
+  case OptionalState::valuated :
+    mValue.description (ioString, inIndentation) ;
+    break ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @equatableExtensionMap.element? generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_equatableExtensionMap_2E_element_3F_ ("equatableExtensionMap.element?",
+                                                                                         nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_equatableExtensionMap_2E_element_3F_::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_equatableExtensionMap_2E_element_3F_ ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_equatableExtensionMap_2E_element_3F_::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_equatableExtensionMap_2E_element_3F_ (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_equatableExtensionMap_2E_element_3F_ GGS_equatableExtensionMap_2E_element_3F_::extractObject (const GGS_object & inObject,
+                                                                                                  Compiler * inCompiler
+                                                                                                  COMMA_LOCATION_ARGS) {
+  GGS_equatableExtensionMap_2E_element_3F_ result ;
+  const GGS_equatableExtensionMap_2E_element_3F_ * p = (const GGS_equatableExtensionMap_2E_element_3F_ *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_equatableExtensionMap_2E_element_3F_ *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("equatableExtensionMap.element?", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_functionSignature_2E_element::GGS_functionSignature_2E_element (void) :
+mProperty_mFormalSelector (),
+mProperty_mFormalArgumentType (),
+mProperty_mFormalArgumentName (),
+mProperty_isConstant () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_functionSignature_2E_element::GGS_functionSignature_2E_element (const GGS_functionSignature_2E_element & inSource) :
+mProperty_mFormalSelector (inSource.mProperty_mFormalSelector),
+mProperty_mFormalArgumentType (inSource.mProperty_mFormalArgumentType),
+mProperty_mFormalArgumentName (inSource.mProperty_mFormalArgumentName),
+mProperty_isConstant (inSource.mProperty_isConstant) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_functionSignature_2E_element & GGS_functionSignature_2E_element::operator = (const GGS_functionSignature_2E_element & inSource) {
+  mProperty_mFormalSelector = inSource.mProperty_mFormalSelector ;
+  mProperty_mFormalArgumentType = inSource.mProperty_mFormalArgumentType ;
+  mProperty_mFormalArgumentName = inSource.mProperty_mFormalArgumentName ;
+  mProperty_isConstant = inSource.mProperty_isConstant ;
+  return *this ;
+}
+
+//---Synthetized initializer -----------------------------------------------------------------------
+
+GGS_functionSignature_2E_element GGS_functionSignature_2E_element::init_21__21__21__21_ (const GGS_lstring & in_mFormalSelector,
+                                                                                         const GGS_unifiedTypeMapEntry & in_mFormalArgumentType,
+                                                                                         const GGS_string & in_mFormalArgumentName,
+                                                                                         const GGS_bool & in_isConstant,
+                                                                                         Compiler * inCompiler
+                                                                                         COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_functionSignature_2E_element result ;
+  result.setInitializedProperties (inCompiler) ;
+  result.mProperty_mFormalSelector = in_mFormalSelector ;
+  result.mProperty_mFormalArgumentType = in_mFormalArgumentType ;
+  result.mProperty_mFormalArgumentName = in_mFormalArgumentName ;
+  result.mProperty_isConstant = in_isConstant ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_functionSignature_2E_element::setInitializedProperties (Compiler * /* inCompiler */) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_functionSignature_2E_element::GGS_functionSignature_2E_element (const GGS_lstring & inOperand0,
+                                                                    const GGS_unifiedTypeMapEntry & inOperand1,
+                                                                    const GGS_string & inOperand2,
+                                                                    const GGS_bool & inOperand3) :
+mProperty_mFormalSelector (inOperand0),
+mProperty_mFormalArgumentType (inOperand1),
+mProperty_mFormalArgumentName (inOperand2),
+mProperty_isConstant (inOperand3) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_functionSignature_2E_element::isValid (void) const {
+  return mProperty_mFormalSelector.isValid () && mProperty_mFormalArgumentType.isValid () && mProperty_mFormalArgumentName.isValid () && mProperty_isConstant.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_functionSignature_2E_element::drop (void) {
+  mProperty_mFormalSelector.drop () ;
+  mProperty_mFormalArgumentType.drop () ;
+  mProperty_mFormalArgumentName.drop () ;
+  mProperty_isConstant.drop () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_functionSignature_2E_element::description (String & ioString,
+                                                    const int32_t inIndentation) const {
+  ioString.appendCString ("<struct @functionSignature.element:") ;
+  if (! isValid ()) {
+    ioString.appendCString (" not built") ;
+  }else{
+    mProperty_mFormalSelector.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mFormalArgumentType.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mFormalArgumentName.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_isConstant.description (ioString, inIndentation+1) ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @functionSignature.element generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_functionSignature_2E_element ("functionSignature.element",
+                                                                                 nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_functionSignature_2E_element::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_functionSignature_2E_element ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_functionSignature_2E_element::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_functionSignature_2E_element (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_functionSignature_2E_element GGS_functionSignature_2E_element::extractObject (const GGS_object & inObject,
+                                                                                  Compiler * inCompiler
+                                                                                  COMMA_LOCATION_ARGS) {
+  GGS_functionSignature_2E_element result ;
+  const GGS_functionSignature_2E_element * p = (const GGS_functionSignature_2E_element *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_functionSignature_2E_element *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("functionSignature.element", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_classFunctionMap_2E_element::GGS_classFunctionMap_2E_element (void) :
+mProperty_lkey (),
+mProperty_mArgumentTypeList (),
+mProperty_mHasCompilerArgument (),
+mProperty_mReturnedType () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_classFunctionMap_2E_element::GGS_classFunctionMap_2E_element (const GGS_classFunctionMap_2E_element & inSource) :
+mProperty_lkey (inSource.mProperty_lkey),
+mProperty_mArgumentTypeList (inSource.mProperty_mArgumentTypeList),
+mProperty_mHasCompilerArgument (inSource.mProperty_mHasCompilerArgument),
+mProperty_mReturnedType (inSource.mProperty_mReturnedType) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_classFunctionMap_2E_element & GGS_classFunctionMap_2E_element::operator = (const GGS_classFunctionMap_2E_element & inSource) {
+  mProperty_lkey = inSource.mProperty_lkey ;
+  mProperty_mArgumentTypeList = inSource.mProperty_mArgumentTypeList ;
+  mProperty_mHasCompilerArgument = inSource.mProperty_mHasCompilerArgument ;
+  mProperty_mReturnedType = inSource.mProperty_mReturnedType ;
+  return *this ;
+}
+
+//---Synthetized initializer -----------------------------------------------------------------------
+
+GGS_classFunctionMap_2E_element GGS_classFunctionMap_2E_element::init_21__21__21__21_ (const GGS_lstring & in_lkey,
+                                                                                       const GGS_functionSignature & in_mArgumentTypeList,
+                                                                                       const GGS_bool & in_mHasCompilerArgument,
+                                                                                       const GGS_unifiedTypeMapEntry & in_mReturnedType,
+                                                                                       Compiler * inCompiler
+                                                                                       COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_classFunctionMap_2E_element result ;
+  result.setInitializedProperties (inCompiler) ;
+  result.mProperty_lkey = in_lkey ;
+  result.mProperty_mArgumentTypeList = in_mArgumentTypeList ;
+  result.mProperty_mHasCompilerArgument = in_mHasCompilerArgument ;
+  result.mProperty_mReturnedType = in_mReturnedType ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_classFunctionMap_2E_element::setInitializedProperties (Compiler * /* inCompiler */) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_classFunctionMap_2E_element::GGS_classFunctionMap_2E_element (const GGS_lstring & inOperand0,
+                                                                  const GGS_functionSignature & inOperand1,
+                                                                  const GGS_bool & inOperand2,
+                                                                  const GGS_unifiedTypeMapEntry & inOperand3) :
+mProperty_lkey (inOperand0),
+mProperty_mArgumentTypeList (inOperand1),
+mProperty_mHasCompilerArgument (inOperand2),
+mProperty_mReturnedType (inOperand3) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_classFunctionMap_2E_element::isValid (void) const {
+  return mProperty_lkey.isValid () && mProperty_mArgumentTypeList.isValid () && mProperty_mHasCompilerArgument.isValid () && mProperty_mReturnedType.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_classFunctionMap_2E_element::drop (void) {
+  mProperty_lkey.drop () ;
+  mProperty_mArgumentTypeList.drop () ;
+  mProperty_mHasCompilerArgument.drop () ;
+  mProperty_mReturnedType.drop () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_classFunctionMap_2E_element::description (String & ioString,
+                                                   const int32_t inIndentation) const {
+  ioString.appendCString ("<struct @classFunctionMap.element:") ;
+  if (! isValid ()) {
+    ioString.appendCString (" not built") ;
+  }else{
+    mProperty_lkey.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mArgumentTypeList.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mHasCompilerArgument.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mReturnedType.description (ioString, inIndentation+1) ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @classFunctionMap.element generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_classFunctionMap_2E_element ("classFunctionMap.element",
+                                                                                nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_classFunctionMap_2E_element::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_classFunctionMap_2E_element ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_classFunctionMap_2E_element::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_classFunctionMap_2E_element (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_classFunctionMap_2E_element GGS_classFunctionMap_2E_element::extractObject (const GGS_object & inObject,
+                                                                                Compiler * inCompiler
+                                                                                COMMA_LOCATION_ARGS) {
+  GGS_classFunctionMap_2E_element result ;
+  const GGS_classFunctionMap_2E_element * p = (const GGS_classFunctionMap_2E_element *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_classFunctionMap_2E_element *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("classFunctionMap.element", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//Optional @classFunctionMap_2E_element_3F_
+//--------------------------------------------------------------------------------------------------
+
+GGS_classFunctionMap_2E_element_3F_::GGS_classFunctionMap_2E_element_3F_ (void) :
+AC_GALGAS_root (),
+mValue (),
+mState (OptionalState::invalid) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_classFunctionMap_2E_element_3F_::GGS_classFunctionMap_2E_element_3F_ (const GGS_classFunctionMap_2E_element & inSource) :
+AC_GALGAS_root (),
+mValue (inSource),
+mState (OptionalState::valuated) {
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_classFunctionMap_2E_element_3F_ GGS_classFunctionMap_2E_element_3F_::init_nil (void) {
+  GGS_classFunctionMap_2E_element_3F_ result ;
+  result.mState = OptionalState::isNil ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_classFunctionMap_2E_element_3F_::isValid (void) const {
+  bool result = false ;
+  switch (mState) {
+  case OptionalState::invalid :
+    break ;
+  case OptionalState::isNil :
+    result = true ;
+    break ;
+  case OptionalState::valuated :
+    result = mValue.isValid () ;
+    break ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_classFunctionMap_2E_element_3F_::isValuated (void) const {
+  return (mState == OptionalState::valuated) && mValue.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_classFunctionMap_2E_element_3F_::drop (void) {
+  mState = OptionalState::invalid ;
+  mValue = GGS_classFunctionMap_2E_element () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_classFunctionMap_2E_element_3F_::description (String & ioString,
+                                                       const int32_t inIndentation) const {
+  ioString.appendCString ("<optional @") ;
+  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
+  ioString.appendCString (": ") ;
+  switch (mState) {
+  case OptionalState::invalid :
+    ioString.appendCString ("invalid") ;
+    break ;
+  case OptionalState::isNil :
+    ioString.appendCString ("nil") ;
+    break ;
+  case OptionalState::valuated :
+    mValue.description (ioString, inIndentation) ;
+    break ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @classFunctionMap.element? generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_classFunctionMap_2E_element_3F_ ("classFunctionMap.element?",
+                                                                                    nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_classFunctionMap_2E_element_3F_::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_classFunctionMap_2E_element_3F_ ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_classFunctionMap_2E_element_3F_::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_classFunctionMap_2E_element_3F_ (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_classFunctionMap_2E_element_3F_ GGS_classFunctionMap_2E_element_3F_::extractObject (const GGS_object & inObject,
+                                                                                        Compiler * inCompiler
+                                                                                        COMMA_LOCATION_ARGS) {
+  GGS_classFunctionMap_2E_element_3F_ result ;
+  const GGS_classFunctionMap_2E_element_3F_ * p = (const GGS_classFunctionMap_2E_element_3F_ *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_classFunctionMap_2E_element_3F_ *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("classFunctionMap.element?", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_initializerMap_2E_element::GGS_initializerMap_2E_element (void) :
+mProperty_lkey (),
+mProperty_mArgumentTypeList () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_initializerMap_2E_element::GGS_initializerMap_2E_element (const GGS_initializerMap_2E_element & inSource) :
+mProperty_lkey (inSource.mProperty_lkey),
+mProperty_mArgumentTypeList (inSource.mProperty_mArgumentTypeList) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_initializerMap_2E_element & GGS_initializerMap_2E_element::operator = (const GGS_initializerMap_2E_element & inSource) {
+  mProperty_lkey = inSource.mProperty_lkey ;
+  mProperty_mArgumentTypeList = inSource.mProperty_mArgumentTypeList ;
+  return *this ;
+}
+
+//---Synthetized initializer -----------------------------------------------------------------------
+
+GGS_initializerMap_2E_element GGS_initializerMap_2E_element::init_21__21_ (const GGS_lstring & in_lkey,
+                                                                           const GGS_functionSignature & in_mArgumentTypeList,
+                                                                           Compiler * inCompiler
+                                                                           COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_initializerMap_2E_element result ;
+  result.setInitializedProperties (inCompiler) ;
+  result.mProperty_lkey = in_lkey ;
+  result.mProperty_mArgumentTypeList = in_mArgumentTypeList ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_initializerMap_2E_element::setInitializedProperties (Compiler * /* inCompiler */) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_initializerMap_2E_element::GGS_initializerMap_2E_element (const GGS_lstring & inOperand0,
+                                                              const GGS_functionSignature & inOperand1) :
+mProperty_lkey (inOperand0),
+mProperty_mArgumentTypeList (inOperand1) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_initializerMap_2E_element::isValid (void) const {
+  return mProperty_lkey.isValid () && mProperty_mArgumentTypeList.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_initializerMap_2E_element::drop (void) {
+  mProperty_lkey.drop () ;
+  mProperty_mArgumentTypeList.drop () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_initializerMap_2E_element::description (String & ioString,
+                                                 const int32_t inIndentation) const {
+  ioString.appendCString ("<struct @initializerMap.element:") ;
+  if (! isValid ()) {
+    ioString.appendCString (" not built") ;
+  }else{
+    mProperty_lkey.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mArgumentTypeList.description (ioString, inIndentation+1) ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @initializerMap.element generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_initializerMap_2E_element ("initializerMap.element",
+                                                                              nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_initializerMap_2E_element::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_initializerMap_2E_element ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_initializerMap_2E_element::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_initializerMap_2E_element (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_initializerMap_2E_element GGS_initializerMap_2E_element::extractObject (const GGS_object & inObject,
+                                                                            Compiler * inCompiler
+                                                                            COMMA_LOCATION_ARGS) {
+  GGS_initializerMap_2E_element result ;
+  const GGS_initializerMap_2E_element * p = (const GGS_initializerMap_2E_element *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_initializerMap_2E_element *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("initializerMap.element", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//Optional @initializerMap_2E_element_3F_
+//--------------------------------------------------------------------------------------------------
+
+GGS_initializerMap_2E_element_3F_::GGS_initializerMap_2E_element_3F_ (void) :
+AC_GALGAS_root (),
+mValue (),
+mState (OptionalState::invalid) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_initializerMap_2E_element_3F_::GGS_initializerMap_2E_element_3F_ (const GGS_initializerMap_2E_element & inSource) :
+AC_GALGAS_root (),
+mValue (inSource),
+mState (OptionalState::valuated) {
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_initializerMap_2E_element_3F_ GGS_initializerMap_2E_element_3F_::init_nil (void) {
+  GGS_initializerMap_2E_element_3F_ result ;
+  result.mState = OptionalState::isNil ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_initializerMap_2E_element_3F_::isValid (void) const {
+  bool result = false ;
+  switch (mState) {
+  case OptionalState::invalid :
+    break ;
+  case OptionalState::isNil :
+    result = true ;
+    break ;
+  case OptionalState::valuated :
+    result = mValue.isValid () ;
+    break ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_initializerMap_2E_element_3F_::isValuated (void) const {
+  return (mState == OptionalState::valuated) && mValue.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_initializerMap_2E_element_3F_::drop (void) {
+  mState = OptionalState::invalid ;
+  mValue = GGS_initializerMap_2E_element () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_initializerMap_2E_element_3F_::description (String & ioString,
+                                                     const int32_t inIndentation) const {
+  ioString.appendCString ("<optional @") ;
+  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
+  ioString.appendCString (": ") ;
+  switch (mState) {
+  case OptionalState::invalid :
+    ioString.appendCString ("invalid") ;
+    break ;
+  case OptionalState::isNil :
+    ioString.appendCString ("nil") ;
+    break ;
+  case OptionalState::valuated :
+    mValue.description (ioString, inIndentation) ;
+    break ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @initializerMap.element? generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_initializerMap_2E_element_3F_ ("initializerMap.element?",
+                                                                                  nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_initializerMap_2E_element_3F_::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_initializerMap_2E_element_3F_ ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_initializerMap_2E_element_3F_::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_initializerMap_2E_element_3F_ (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_initializerMap_2E_element_3F_ GGS_initializerMap_2E_element_3F_::extractObject (const GGS_object & inObject,
+                                                                                    Compiler * inCompiler
+                                                                                    COMMA_LOCATION_ARGS) {
+  GGS_initializerMap_2E_element_3F_ result ;
+  const GGS_initializerMap_2E_element_3F_ * p = (const GGS_initializerMap_2E_element_3F_ *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_initializerMap_2E_element_3F_ *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("initializerMap.element?", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_optionalMethodSignature_2E_element::GGS_optionalMethodSignature_2E_element (void) :
+mProperty_mInputArgument (),
+mProperty_mFormalSelector (),
+mProperty_mFormalArgumentType (),
+mProperty_mFormalArgumentName () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_optionalMethodSignature_2E_element::GGS_optionalMethodSignature_2E_element (const GGS_optionalMethodSignature_2E_element & inSource) :
+mProperty_mInputArgument (inSource.mProperty_mInputArgument),
+mProperty_mFormalSelector (inSource.mProperty_mFormalSelector),
+mProperty_mFormalArgumentType (inSource.mProperty_mFormalArgumentType),
+mProperty_mFormalArgumentName (inSource.mProperty_mFormalArgumentName) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_optionalMethodSignature_2E_element & GGS_optionalMethodSignature_2E_element::operator = (const GGS_optionalMethodSignature_2E_element & inSource) {
+  mProperty_mInputArgument = inSource.mProperty_mInputArgument ;
+  mProperty_mFormalSelector = inSource.mProperty_mFormalSelector ;
+  mProperty_mFormalArgumentType = inSource.mProperty_mFormalArgumentType ;
+  mProperty_mFormalArgumentName = inSource.mProperty_mFormalArgumentName ;
+  return *this ;
+}
+
+//---Synthetized initializer -----------------------------------------------------------------------
+
+GGS_optionalMethodSignature_2E_element GGS_optionalMethodSignature_2E_element::init_21__21__21__21_ (const GGS_bool & in_mInputArgument,
+                                                                                                     const GGS_lstring & in_mFormalSelector,
+                                                                                                     const GGS_unifiedTypeMapEntry & in_mFormalArgumentType,
+                                                                                                     const GGS_string & in_mFormalArgumentName,
+                                                                                                     Compiler * inCompiler
+                                                                                                     COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_optionalMethodSignature_2E_element result ;
+  result.setInitializedProperties (inCompiler) ;
+  result.mProperty_mInputArgument = in_mInputArgument ;
+  result.mProperty_mFormalSelector = in_mFormalSelector ;
+  result.mProperty_mFormalArgumentType = in_mFormalArgumentType ;
+  result.mProperty_mFormalArgumentName = in_mFormalArgumentName ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_optionalMethodSignature_2E_element::setInitializedProperties (Compiler * /* inCompiler */) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_optionalMethodSignature_2E_element::GGS_optionalMethodSignature_2E_element (const GGS_bool & inOperand0,
+                                                                                const GGS_lstring & inOperand1,
+                                                                                const GGS_unifiedTypeMapEntry & inOperand2,
+                                                                                const GGS_string & inOperand3) :
+mProperty_mInputArgument (inOperand0),
+mProperty_mFormalSelector (inOperand1),
+mProperty_mFormalArgumentType (inOperand2),
+mProperty_mFormalArgumentName (inOperand3) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_optionalMethodSignature_2E_element::isValid (void) const {
+  return mProperty_mInputArgument.isValid () && mProperty_mFormalSelector.isValid () && mProperty_mFormalArgumentType.isValid () && mProperty_mFormalArgumentName.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_optionalMethodSignature_2E_element::drop (void) {
+  mProperty_mInputArgument.drop () ;
+  mProperty_mFormalSelector.drop () ;
+  mProperty_mFormalArgumentType.drop () ;
+  mProperty_mFormalArgumentName.drop () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_optionalMethodSignature_2E_element::description (String & ioString,
+                                                          const int32_t inIndentation) const {
+  ioString.appendCString ("<struct @optionalMethodSignature.element:") ;
+  if (! isValid ()) {
+    ioString.appendCString (" not built") ;
+  }else{
+    mProperty_mInputArgument.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mFormalSelector.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mFormalArgumentType.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mFormalArgumentName.description (ioString, inIndentation+1) ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @optionalMethodSignature.element generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_optionalMethodSignature_2E_element ("optionalMethodSignature.element",
+                                                                                       nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_optionalMethodSignature_2E_element::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_optionalMethodSignature_2E_element ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_optionalMethodSignature_2E_element::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_optionalMethodSignature_2E_element (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_optionalMethodSignature_2E_element GGS_optionalMethodSignature_2E_element::extractObject (const GGS_object & inObject,
+                                                                                              Compiler * inCompiler
+                                                                                              COMMA_LOCATION_ARGS) {
+  GGS_optionalMethodSignature_2E_element result ;
+  const GGS_optionalMethodSignature_2E_element * p = (const GGS_optionalMethodSignature_2E_element *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_optionalMethodSignature_2E_element *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("optionalMethodSignature.element", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_getterMap_2E_element::GGS_getterMap_2E_element (void) :
+mProperty_lkey (),
+mProperty_mKind (),
+mProperty_mArgumentTypeList (),
+mProperty_mDeclarationLocation (),
+mProperty_mHasCompilerArgument (),
+mProperty_mReturnedType (),
+mProperty_mQualifier (),
+mProperty_mGetterNameThatObsoletesInvokationName () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_getterMap_2E_element::GGS_getterMap_2E_element (const GGS_getterMap_2E_element & inSource) :
+mProperty_lkey (inSource.mProperty_lkey),
+mProperty_mKind (inSource.mProperty_mKind),
+mProperty_mArgumentTypeList (inSource.mProperty_mArgumentTypeList),
+mProperty_mDeclarationLocation (inSource.mProperty_mDeclarationLocation),
+mProperty_mHasCompilerArgument (inSource.mProperty_mHasCompilerArgument),
+mProperty_mReturnedType (inSource.mProperty_mReturnedType),
+mProperty_mQualifier (inSource.mProperty_mQualifier),
+mProperty_mGetterNameThatObsoletesInvokationName (inSource.mProperty_mGetterNameThatObsoletesInvokationName) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_getterMap_2E_element & GGS_getterMap_2E_element::operator = (const GGS_getterMap_2E_element & inSource) {
+  mProperty_lkey = inSource.mProperty_lkey ;
+  mProperty_mKind = inSource.mProperty_mKind ;
+  mProperty_mArgumentTypeList = inSource.mProperty_mArgumentTypeList ;
+  mProperty_mDeclarationLocation = inSource.mProperty_mDeclarationLocation ;
+  mProperty_mHasCompilerArgument = inSource.mProperty_mHasCompilerArgument ;
+  mProperty_mReturnedType = inSource.mProperty_mReturnedType ;
+  mProperty_mQualifier = inSource.mProperty_mQualifier ;
+  mProperty_mGetterNameThatObsoletesInvokationName = inSource.mProperty_mGetterNameThatObsoletesInvokationName ;
+  return *this ;
+}
+
+//---Synthetized initializer -----------------------------------------------------------------------
+
+GGS_getterMap_2E_element GGS_getterMap_2E_element::init_21__21__21__21__21__21__21__21_ (const GGS_lstring & in_lkey,
+                                                                                         const GGS_methodKind & in_mKind,
+                                                                                         const GGS_functionSignature & in_mArgumentTypeList,
+                                                                                         const GGS_location & in_mDeclarationLocation,
+                                                                                         const GGS_bool & in_mHasCompilerArgument,
+                                                                                         const GGS_unifiedTypeMapEntry & in_mReturnedType,
+                                                                                         const GGS_methodQualifier & in_mQualifier,
+                                                                                         const GGS_string & in_mGetterNameThatObsoletesInvokationName,
+                                                                                         Compiler * inCompiler
+                                                                                         COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_getterMap_2E_element result ;
+  result.setInitializedProperties (inCompiler) ;
+  result.mProperty_lkey = in_lkey ;
+  result.mProperty_mKind = in_mKind ;
+  result.mProperty_mArgumentTypeList = in_mArgumentTypeList ;
+  result.mProperty_mDeclarationLocation = in_mDeclarationLocation ;
+  result.mProperty_mHasCompilerArgument = in_mHasCompilerArgument ;
+  result.mProperty_mReturnedType = in_mReturnedType ;
+  result.mProperty_mQualifier = in_mQualifier ;
+  result.mProperty_mGetterNameThatObsoletesInvokationName = in_mGetterNameThatObsoletesInvokationName ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_getterMap_2E_element::setInitializedProperties (Compiler * /* inCompiler */) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_getterMap_2E_element::GGS_getterMap_2E_element (const GGS_lstring & inOperand0,
+                                                    const GGS_methodKind & inOperand1,
+                                                    const GGS_functionSignature & inOperand2,
+                                                    const GGS_location & inOperand3,
+                                                    const GGS_bool & inOperand4,
+                                                    const GGS_unifiedTypeMapEntry & inOperand5,
+                                                    const GGS_methodQualifier & inOperand6,
+                                                    const GGS_string & inOperand7) :
+mProperty_lkey (inOperand0),
+mProperty_mKind (inOperand1),
+mProperty_mArgumentTypeList (inOperand2),
+mProperty_mDeclarationLocation (inOperand3),
+mProperty_mHasCompilerArgument (inOperand4),
+mProperty_mReturnedType (inOperand5),
+mProperty_mQualifier (inOperand6),
+mProperty_mGetterNameThatObsoletesInvokationName (inOperand7) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_getterMap_2E_element::isValid (void) const {
+  return mProperty_lkey.isValid () && mProperty_mKind.isValid () && mProperty_mArgumentTypeList.isValid () && mProperty_mDeclarationLocation.isValid () && mProperty_mHasCompilerArgument.isValid () && mProperty_mReturnedType.isValid () && mProperty_mQualifier.isValid () && mProperty_mGetterNameThatObsoletesInvokationName.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_getterMap_2E_element::drop (void) {
+  mProperty_lkey.drop () ;
+  mProperty_mKind.drop () ;
+  mProperty_mArgumentTypeList.drop () ;
+  mProperty_mDeclarationLocation.drop () ;
+  mProperty_mHasCompilerArgument.drop () ;
+  mProperty_mReturnedType.drop () ;
+  mProperty_mQualifier.drop () ;
+  mProperty_mGetterNameThatObsoletesInvokationName.drop () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_getterMap_2E_element::description (String & ioString,
+                                            const int32_t inIndentation) const {
+  ioString.appendCString ("<struct @getterMap.element:") ;
+  if (! isValid ()) {
+    ioString.appendCString (" not built") ;
+  }else{
+    mProperty_lkey.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mKind.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mArgumentTypeList.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mDeclarationLocation.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mHasCompilerArgument.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mReturnedType.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mQualifier.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mGetterNameThatObsoletesInvokationName.description (ioString, inIndentation+1) ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @getterMap.element generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_getterMap_2E_element ("getterMap.element",
+                                                                         nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_getterMap_2E_element::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_getterMap_2E_element ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_getterMap_2E_element::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_getterMap_2E_element (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_getterMap_2E_element GGS_getterMap_2E_element::extractObject (const GGS_object & inObject,
+                                                                  Compiler * inCompiler
+                                                                  COMMA_LOCATION_ARGS) {
+  GGS_getterMap_2E_element result ;
+  const GGS_getterMap_2E_element * p = (const GGS_getterMap_2E_element *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_getterMap_2E_element *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("getterMap.element", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//Optional @getterMap_2E_element_3F_
+//--------------------------------------------------------------------------------------------------
+
+GGS_getterMap_2E_element_3F_::GGS_getterMap_2E_element_3F_ (void) :
+AC_GALGAS_root (),
+mValue (),
+mState (OptionalState::invalid) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_getterMap_2E_element_3F_::GGS_getterMap_2E_element_3F_ (const GGS_getterMap_2E_element & inSource) :
+AC_GALGAS_root (),
+mValue (inSource),
+mState (OptionalState::valuated) {
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_getterMap_2E_element_3F_ GGS_getterMap_2E_element_3F_::init_nil (void) {
+  GGS_getterMap_2E_element_3F_ result ;
+  result.mState = OptionalState::isNil ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_getterMap_2E_element_3F_::isValid (void) const {
+  bool result = false ;
+  switch (mState) {
+  case OptionalState::invalid :
+    break ;
+  case OptionalState::isNil :
+    result = true ;
+    break ;
+  case OptionalState::valuated :
+    result = mValue.isValid () ;
+    break ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_getterMap_2E_element_3F_::isValuated (void) const {
+  return (mState == OptionalState::valuated) && mValue.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_getterMap_2E_element_3F_::drop (void) {
+  mState = OptionalState::invalid ;
+  mValue = GGS_getterMap_2E_element () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_getterMap_2E_element_3F_::description (String & ioString,
+                                                const int32_t inIndentation) const {
+  ioString.appendCString ("<optional @") ;
+  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
+  ioString.appendCString (": ") ;
+  switch (mState) {
+  case OptionalState::invalid :
+    ioString.appendCString ("invalid") ;
+    break ;
+  case OptionalState::isNil :
+    ioString.appendCString ("nil") ;
+    break ;
+  case OptionalState::valuated :
+    mValue.description (ioString, inIndentation) ;
+    break ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @getterMap.element? generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_getterMap_2E_element_3F_ ("getterMap.element?",
+                                                                             nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_getterMap_2E_element_3F_::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_getterMap_2E_element_3F_ ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_getterMap_2E_element_3F_::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_getterMap_2E_element_3F_ (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_getterMap_2E_element_3F_ GGS_getterMap_2E_element_3F_::extractObject (const GGS_object & inObject,
+                                                                          Compiler * inCompiler
+                                                                          COMMA_LOCATION_ARGS) {
+  GGS_getterMap_2E_element_3F_ result ;
+  const GGS_getterMap_2E_element_3F_ * p = (const GGS_getterMap_2E_element_3F_ *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_getterMap_2E_element_3F_ *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("getterMap.element?", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_formalParameterSignature_2E_element::GGS_formalParameterSignature_2E_element (void) :
+mProperty_mFormalSelector (),
+mProperty_mFormalArgumentType (),
+mProperty_mFormalArgumentPassingMode (),
+mProperty_mFormalArgumentName () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_formalParameterSignature_2E_element::GGS_formalParameterSignature_2E_element (const GGS_formalParameterSignature_2E_element & inSource) :
+mProperty_mFormalSelector (inSource.mProperty_mFormalSelector),
+mProperty_mFormalArgumentType (inSource.mProperty_mFormalArgumentType),
+mProperty_mFormalArgumentPassingMode (inSource.mProperty_mFormalArgumentPassingMode),
+mProperty_mFormalArgumentName (inSource.mProperty_mFormalArgumentName) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_formalParameterSignature_2E_element & GGS_formalParameterSignature_2E_element::operator = (const GGS_formalParameterSignature_2E_element & inSource) {
+  mProperty_mFormalSelector = inSource.mProperty_mFormalSelector ;
+  mProperty_mFormalArgumentType = inSource.mProperty_mFormalArgumentType ;
+  mProperty_mFormalArgumentPassingMode = inSource.mProperty_mFormalArgumentPassingMode ;
+  mProperty_mFormalArgumentName = inSource.mProperty_mFormalArgumentName ;
+  return *this ;
+}
+
+//---Synthetized initializer -----------------------------------------------------------------------
+
+GGS_formalParameterSignature_2E_element GGS_formalParameterSignature_2E_element::init_21__21__21__21_ (const GGS_lstring & in_mFormalSelector,
+                                                                                                       const GGS_unifiedTypeMapEntry & in_mFormalArgumentType,
+                                                                                                       const GGS_formalArgumentPassingModeAST & in_mFormalArgumentPassingMode,
+                                                                                                       const GGS_string & in_mFormalArgumentName,
+                                                                                                       Compiler * inCompiler
+                                                                                                       COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_formalParameterSignature_2E_element result ;
+  result.setInitializedProperties (inCompiler) ;
+  result.mProperty_mFormalSelector = in_mFormalSelector ;
+  result.mProperty_mFormalArgumentType = in_mFormalArgumentType ;
+  result.mProperty_mFormalArgumentPassingMode = in_mFormalArgumentPassingMode ;
+  result.mProperty_mFormalArgumentName = in_mFormalArgumentName ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_formalParameterSignature_2E_element::setInitializedProperties (Compiler * /* inCompiler */) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_formalParameterSignature_2E_element::GGS_formalParameterSignature_2E_element (const GGS_lstring & inOperand0,
+                                                                                  const GGS_unifiedTypeMapEntry & inOperand1,
+                                                                                  const GGS_formalArgumentPassingModeAST & inOperand2,
+                                                                                  const GGS_string & inOperand3) :
+mProperty_mFormalSelector (inOperand0),
+mProperty_mFormalArgumentType (inOperand1),
+mProperty_mFormalArgumentPassingMode (inOperand2),
+mProperty_mFormalArgumentName (inOperand3) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_formalParameterSignature_2E_element::isValid (void) const {
+  return mProperty_mFormalSelector.isValid () && mProperty_mFormalArgumentType.isValid () && mProperty_mFormalArgumentPassingMode.isValid () && mProperty_mFormalArgumentName.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_formalParameterSignature_2E_element::drop (void) {
+  mProperty_mFormalSelector.drop () ;
+  mProperty_mFormalArgumentType.drop () ;
+  mProperty_mFormalArgumentPassingMode.drop () ;
+  mProperty_mFormalArgumentName.drop () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_formalParameterSignature_2E_element::description (String & ioString,
+                                                           const int32_t inIndentation) const {
+  ioString.appendCString ("<struct @formalParameterSignature.element:") ;
+  if (! isValid ()) {
+    ioString.appendCString (" not built") ;
+  }else{
+    mProperty_mFormalSelector.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mFormalArgumentType.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mFormalArgumentPassingMode.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mFormalArgumentName.description (ioString, inIndentation+1) ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @formalParameterSignature.element generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_formalParameterSignature_2E_element ("formalParameterSignature.element",
+                                                                                        nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_formalParameterSignature_2E_element::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_formalParameterSignature_2E_element ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_formalParameterSignature_2E_element::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_formalParameterSignature_2E_element (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_formalParameterSignature_2E_element GGS_formalParameterSignature_2E_element::extractObject (const GGS_object & inObject,
+                                                                                                Compiler * inCompiler
+                                                                                                COMMA_LOCATION_ARGS) {
+  GGS_formalParameterSignature_2E_element result ;
+  const GGS_formalParameterSignature_2E_element * p = (const GGS_formalParameterSignature_2E_element *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_formalParameterSignature_2E_element *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("formalParameterSignature.element", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_setterMap_2E_element::GGS_setterMap_2E_element (void) :
+mProperty_lkey (),
+mProperty_mKind (),
+mProperty_mParameterList (),
+mProperty_mHasCompilerArgument (),
+mProperty_mQualifier (),
+mProperty_mErrorMessage () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_setterMap_2E_element::GGS_setterMap_2E_element (const GGS_setterMap_2E_element & inSource) :
+mProperty_lkey (inSource.mProperty_lkey),
+mProperty_mKind (inSource.mProperty_mKind),
+mProperty_mParameterList (inSource.mProperty_mParameterList),
+mProperty_mHasCompilerArgument (inSource.mProperty_mHasCompilerArgument),
+mProperty_mQualifier (inSource.mProperty_mQualifier),
+mProperty_mErrorMessage (inSource.mProperty_mErrorMessage) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_setterMap_2E_element & GGS_setterMap_2E_element::operator = (const GGS_setterMap_2E_element & inSource) {
+  mProperty_lkey = inSource.mProperty_lkey ;
+  mProperty_mKind = inSource.mProperty_mKind ;
+  mProperty_mParameterList = inSource.mProperty_mParameterList ;
+  mProperty_mHasCompilerArgument = inSource.mProperty_mHasCompilerArgument ;
+  mProperty_mQualifier = inSource.mProperty_mQualifier ;
+  mProperty_mErrorMessage = inSource.mProperty_mErrorMessage ;
+  return *this ;
+}
+
+//---Synthetized initializer -----------------------------------------------------------------------
+
+GGS_setterMap_2E_element GGS_setterMap_2E_element::init_21__21__21__21__21__21_ (const GGS_lstring & in_lkey,
+                                                                                 const GGS_methodKind & in_mKind,
+                                                                                 const GGS_formalParameterSignature & in_mParameterList,
+                                                                                 const GGS_bool & in_mHasCompilerArgument,
+                                                                                 const GGS_methodQualifier & in_mQualifier,
+                                                                                 const GGS_string & in_mErrorMessage,
+                                                                                 Compiler * inCompiler
+                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_setterMap_2E_element result ;
+  result.setInitializedProperties (inCompiler) ;
+  result.mProperty_lkey = in_lkey ;
+  result.mProperty_mKind = in_mKind ;
+  result.mProperty_mParameterList = in_mParameterList ;
+  result.mProperty_mHasCompilerArgument = in_mHasCompilerArgument ;
+  result.mProperty_mQualifier = in_mQualifier ;
+  result.mProperty_mErrorMessage = in_mErrorMessage ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_setterMap_2E_element::setInitializedProperties (Compiler * /* inCompiler */) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_setterMap_2E_element::GGS_setterMap_2E_element (const GGS_lstring & inOperand0,
+                                                    const GGS_methodKind & inOperand1,
+                                                    const GGS_formalParameterSignature & inOperand2,
+                                                    const GGS_bool & inOperand3,
+                                                    const GGS_methodQualifier & inOperand4,
+                                                    const GGS_string & inOperand5) :
+mProperty_lkey (inOperand0),
+mProperty_mKind (inOperand1),
+mProperty_mParameterList (inOperand2),
+mProperty_mHasCompilerArgument (inOperand3),
+mProperty_mQualifier (inOperand4),
+mProperty_mErrorMessage (inOperand5) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_setterMap_2E_element::isValid (void) const {
+  return mProperty_lkey.isValid () && mProperty_mKind.isValid () && mProperty_mParameterList.isValid () && mProperty_mHasCompilerArgument.isValid () && mProperty_mQualifier.isValid () && mProperty_mErrorMessage.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_setterMap_2E_element::drop (void) {
+  mProperty_lkey.drop () ;
+  mProperty_mKind.drop () ;
+  mProperty_mParameterList.drop () ;
+  mProperty_mHasCompilerArgument.drop () ;
+  mProperty_mQualifier.drop () ;
+  mProperty_mErrorMessage.drop () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_setterMap_2E_element::description (String & ioString,
+                                            const int32_t inIndentation) const {
+  ioString.appendCString ("<struct @setterMap.element:") ;
+  if (! isValid ()) {
+    ioString.appendCString (" not built") ;
+  }else{
+    mProperty_lkey.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mKind.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mParameterList.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mHasCompilerArgument.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mQualifier.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mErrorMessage.description (ioString, inIndentation+1) ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @setterMap.element generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_setterMap_2E_element ("setterMap.element",
+                                                                         nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_setterMap_2E_element::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_setterMap_2E_element ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_setterMap_2E_element::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_setterMap_2E_element (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_setterMap_2E_element GGS_setterMap_2E_element::extractObject (const GGS_object & inObject,
+                                                                  Compiler * inCompiler
+                                                                  COMMA_LOCATION_ARGS) {
+  GGS_setterMap_2E_element result ;
+  const GGS_setterMap_2E_element * p = (const GGS_setterMap_2E_element *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_setterMap_2E_element *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("setterMap.element", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//Optional @setterMap_2E_element_3F_
+//--------------------------------------------------------------------------------------------------
+
+GGS_setterMap_2E_element_3F_::GGS_setterMap_2E_element_3F_ (void) :
+AC_GALGAS_root (),
+mValue (),
+mState (OptionalState::invalid) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_setterMap_2E_element_3F_::GGS_setterMap_2E_element_3F_ (const GGS_setterMap_2E_element & inSource) :
+AC_GALGAS_root (),
+mValue (inSource),
+mState (OptionalState::valuated) {
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_setterMap_2E_element_3F_ GGS_setterMap_2E_element_3F_::init_nil (void) {
+  GGS_setterMap_2E_element_3F_ result ;
+  result.mState = OptionalState::isNil ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_setterMap_2E_element_3F_::isValid (void) const {
+  bool result = false ;
+  switch (mState) {
+  case OptionalState::invalid :
+    break ;
+  case OptionalState::isNil :
+    result = true ;
+    break ;
+  case OptionalState::valuated :
+    result = mValue.isValid () ;
+    break ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_setterMap_2E_element_3F_::isValuated (void) const {
+  return (mState == OptionalState::valuated) && mValue.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_setterMap_2E_element_3F_::drop (void) {
+  mState = OptionalState::invalid ;
+  mValue = GGS_setterMap_2E_element () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_setterMap_2E_element_3F_::description (String & ioString,
+                                                const int32_t inIndentation) const {
+  ioString.appendCString ("<optional @") ;
+  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
+  ioString.appendCString (": ") ;
+  switch (mState) {
+  case OptionalState::invalid :
+    ioString.appendCString ("invalid") ;
+    break ;
+  case OptionalState::isNil :
+    ioString.appendCString ("nil") ;
+    break ;
+  case OptionalState::valuated :
+    mValue.description (ioString, inIndentation) ;
+    break ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @setterMap.element? generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_setterMap_2E_element_3F_ ("setterMap.element?",
+                                                                             nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_setterMap_2E_element_3F_::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_setterMap_2E_element_3F_ ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_setterMap_2E_element_3F_::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_setterMap_2E_element_3F_ (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_setterMap_2E_element_3F_ GGS_setterMap_2E_element_3F_::extractObject (const GGS_object & inObject,
+                                                                          Compiler * inCompiler
+                                                                          COMMA_LOCATION_ARGS) {
+  GGS_setterMap_2E_element_3F_ result ;
+  const GGS_setterMap_2E_element_3F_ * p = (const GGS_setterMap_2E_element_3F_ *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_setterMap_2E_element_3F_ *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("setterMap.element?", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_instanceMethodMap_2E_element::GGS_instanceMethodMap_2E_element (void) :
+mProperty_lkey (),
+mProperty_mKind (),
+mProperty_mParameterList (),
+mProperty_mDeclarationLocation (),
+mProperty_mHasCompilerArgument (),
+mProperty_mQualifier (),
+mProperty_mErrorMessage () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_instanceMethodMap_2E_element::GGS_instanceMethodMap_2E_element (const GGS_instanceMethodMap_2E_element & inSource) :
+mProperty_lkey (inSource.mProperty_lkey),
+mProperty_mKind (inSource.mProperty_mKind),
+mProperty_mParameterList (inSource.mProperty_mParameterList),
+mProperty_mDeclarationLocation (inSource.mProperty_mDeclarationLocation),
+mProperty_mHasCompilerArgument (inSource.mProperty_mHasCompilerArgument),
+mProperty_mQualifier (inSource.mProperty_mQualifier),
+mProperty_mErrorMessage (inSource.mProperty_mErrorMessage) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_instanceMethodMap_2E_element & GGS_instanceMethodMap_2E_element::operator = (const GGS_instanceMethodMap_2E_element & inSource) {
+  mProperty_lkey = inSource.mProperty_lkey ;
+  mProperty_mKind = inSource.mProperty_mKind ;
+  mProperty_mParameterList = inSource.mProperty_mParameterList ;
+  mProperty_mDeclarationLocation = inSource.mProperty_mDeclarationLocation ;
+  mProperty_mHasCompilerArgument = inSource.mProperty_mHasCompilerArgument ;
+  mProperty_mQualifier = inSource.mProperty_mQualifier ;
+  mProperty_mErrorMessage = inSource.mProperty_mErrorMessage ;
+  return *this ;
+}
+
+//---Synthetized initializer -----------------------------------------------------------------------
+
+GGS_instanceMethodMap_2E_element GGS_instanceMethodMap_2E_element::init_21__21__21__21__21__21__21_ (const GGS_lstring & in_lkey,
+                                                                                                     const GGS_methodKind & in_mKind,
+                                                                                                     const GGS_formalParameterSignature & in_mParameterList,
+                                                                                                     const GGS_location & in_mDeclarationLocation,
+                                                                                                     const GGS_bool & in_mHasCompilerArgument,
+                                                                                                     const GGS_methodQualifier & in_mQualifier,
+                                                                                                     const GGS_string & in_mErrorMessage,
+                                                                                                     Compiler * inCompiler
+                                                                                                     COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_instanceMethodMap_2E_element result ;
+  result.setInitializedProperties (inCompiler) ;
+  result.mProperty_lkey = in_lkey ;
+  result.mProperty_mKind = in_mKind ;
+  result.mProperty_mParameterList = in_mParameterList ;
+  result.mProperty_mDeclarationLocation = in_mDeclarationLocation ;
+  result.mProperty_mHasCompilerArgument = in_mHasCompilerArgument ;
+  result.mProperty_mQualifier = in_mQualifier ;
+  result.mProperty_mErrorMessage = in_mErrorMessage ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_instanceMethodMap_2E_element::setInitializedProperties (Compiler * /* inCompiler */) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_instanceMethodMap_2E_element::GGS_instanceMethodMap_2E_element (const GGS_lstring & inOperand0,
+                                                                    const GGS_methodKind & inOperand1,
+                                                                    const GGS_formalParameterSignature & inOperand2,
+                                                                    const GGS_location & inOperand3,
+                                                                    const GGS_bool & inOperand4,
+                                                                    const GGS_methodQualifier & inOperand5,
+                                                                    const GGS_string & inOperand6) :
+mProperty_lkey (inOperand0),
+mProperty_mKind (inOperand1),
+mProperty_mParameterList (inOperand2),
+mProperty_mDeclarationLocation (inOperand3),
+mProperty_mHasCompilerArgument (inOperand4),
+mProperty_mQualifier (inOperand5),
+mProperty_mErrorMessage (inOperand6) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_instanceMethodMap_2E_element::isValid (void) const {
+  return mProperty_lkey.isValid () && mProperty_mKind.isValid () && mProperty_mParameterList.isValid () && mProperty_mDeclarationLocation.isValid () && mProperty_mHasCompilerArgument.isValid () && mProperty_mQualifier.isValid () && mProperty_mErrorMessage.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_instanceMethodMap_2E_element::drop (void) {
+  mProperty_lkey.drop () ;
+  mProperty_mKind.drop () ;
+  mProperty_mParameterList.drop () ;
+  mProperty_mDeclarationLocation.drop () ;
+  mProperty_mHasCompilerArgument.drop () ;
+  mProperty_mQualifier.drop () ;
+  mProperty_mErrorMessage.drop () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_instanceMethodMap_2E_element::description (String & ioString,
+                                                    const int32_t inIndentation) const {
+  ioString.appendCString ("<struct @instanceMethodMap.element:") ;
+  if (! isValid ()) {
+    ioString.appendCString (" not built") ;
+  }else{
+    mProperty_lkey.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mKind.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mParameterList.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mDeclarationLocation.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mHasCompilerArgument.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mQualifier.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mErrorMessage.description (ioString, inIndentation+1) ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @instanceMethodMap.element generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_instanceMethodMap_2E_element ("instanceMethodMap.element",
+                                                                                 nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_instanceMethodMap_2E_element::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_instanceMethodMap_2E_element ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_instanceMethodMap_2E_element::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_instanceMethodMap_2E_element (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_instanceMethodMap_2E_element GGS_instanceMethodMap_2E_element::extractObject (const GGS_object & inObject,
+                                                                                  Compiler * inCompiler
+                                                                                  COMMA_LOCATION_ARGS) {
+  GGS_instanceMethodMap_2E_element result ;
+  const GGS_instanceMethodMap_2E_element * p = (const GGS_instanceMethodMap_2E_element *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_instanceMethodMap_2E_element *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("instanceMethodMap.element", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//Optional @instanceMethodMap_2E_element_3F_
+//--------------------------------------------------------------------------------------------------
+
+GGS_instanceMethodMap_2E_element_3F_::GGS_instanceMethodMap_2E_element_3F_ (void) :
+AC_GALGAS_root (),
+mValue (),
+mState (OptionalState::invalid) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_instanceMethodMap_2E_element_3F_::GGS_instanceMethodMap_2E_element_3F_ (const GGS_instanceMethodMap_2E_element & inSource) :
+AC_GALGAS_root (),
+mValue (inSource),
+mState (OptionalState::valuated) {
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_instanceMethodMap_2E_element_3F_ GGS_instanceMethodMap_2E_element_3F_::init_nil (void) {
+  GGS_instanceMethodMap_2E_element_3F_ result ;
+  result.mState = OptionalState::isNil ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_instanceMethodMap_2E_element_3F_::isValid (void) const {
+  bool result = false ;
+  switch (mState) {
+  case OptionalState::invalid :
+    break ;
+  case OptionalState::isNil :
+    result = true ;
+    break ;
+  case OptionalState::valuated :
+    result = mValue.isValid () ;
+    break ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_instanceMethodMap_2E_element_3F_::isValuated (void) const {
+  return (mState == OptionalState::valuated) && mValue.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_instanceMethodMap_2E_element_3F_::drop (void) {
+  mState = OptionalState::invalid ;
+  mValue = GGS_instanceMethodMap_2E_element () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_instanceMethodMap_2E_element_3F_::description (String & ioString,
+                                                        const int32_t inIndentation) const {
+  ioString.appendCString ("<optional @") ;
+  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
+  ioString.appendCString (": ") ;
+  switch (mState) {
+  case OptionalState::invalid :
+    ioString.appendCString ("invalid") ;
+    break ;
+  case OptionalState::isNil :
+    ioString.appendCString ("nil") ;
+    break ;
+  case OptionalState::valuated :
+    mValue.description (ioString, inIndentation) ;
+    break ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @instanceMethodMap.element? generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_instanceMethodMap_2E_element_3F_ ("instanceMethodMap.element?",
+                                                                                     nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_instanceMethodMap_2E_element_3F_::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_instanceMethodMap_2E_element_3F_ ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_instanceMethodMap_2E_element_3F_::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_instanceMethodMap_2E_element_3F_ (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_instanceMethodMap_2E_element_3F_ GGS_instanceMethodMap_2E_element_3F_::extractObject (const GGS_object & inObject,
+                                                                                          Compiler * inCompiler
+                                                                                          COMMA_LOCATION_ARGS) {
+  GGS_instanceMethodMap_2E_element_3F_ result ;
+  const GGS_instanceMethodMap_2E_element_3F_ * p = (const GGS_instanceMethodMap_2E_element_3F_ *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_instanceMethodMap_2E_element_3F_ *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("instanceMethodMap.element?", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_classMethodMap_2E_element::GGS_classMethodMap_2E_element (void) :
+mProperty_lkey (),
+mProperty_mParameterList (),
+mProperty_mHasCompilerArgument () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_classMethodMap_2E_element::GGS_classMethodMap_2E_element (const GGS_classMethodMap_2E_element & inSource) :
+mProperty_lkey (inSource.mProperty_lkey),
+mProperty_mParameterList (inSource.mProperty_mParameterList),
+mProperty_mHasCompilerArgument (inSource.mProperty_mHasCompilerArgument) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_classMethodMap_2E_element & GGS_classMethodMap_2E_element::operator = (const GGS_classMethodMap_2E_element & inSource) {
+  mProperty_lkey = inSource.mProperty_lkey ;
+  mProperty_mParameterList = inSource.mProperty_mParameterList ;
+  mProperty_mHasCompilerArgument = inSource.mProperty_mHasCompilerArgument ;
+  return *this ;
+}
+
+//---Synthetized initializer -----------------------------------------------------------------------
+
+GGS_classMethodMap_2E_element GGS_classMethodMap_2E_element::init_21__21__21_ (const GGS_lstring & in_lkey,
+                                                                               const GGS_formalParameterSignature & in_mParameterList,
+                                                                               const GGS_bool & in_mHasCompilerArgument,
+                                                                               Compiler * inCompiler
+                                                                               COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_classMethodMap_2E_element result ;
+  result.setInitializedProperties (inCompiler) ;
+  result.mProperty_lkey = in_lkey ;
+  result.mProperty_mParameterList = in_mParameterList ;
+  result.mProperty_mHasCompilerArgument = in_mHasCompilerArgument ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_classMethodMap_2E_element::setInitializedProperties (Compiler * /* inCompiler */) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_classMethodMap_2E_element::GGS_classMethodMap_2E_element (const GGS_lstring & inOperand0,
+                                                              const GGS_formalParameterSignature & inOperand1,
+                                                              const GGS_bool & inOperand2) :
+mProperty_lkey (inOperand0),
+mProperty_mParameterList (inOperand1),
+mProperty_mHasCompilerArgument (inOperand2) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_classMethodMap_2E_element::isValid (void) const {
+  return mProperty_lkey.isValid () && mProperty_mParameterList.isValid () && mProperty_mHasCompilerArgument.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_classMethodMap_2E_element::drop (void) {
+  mProperty_lkey.drop () ;
+  mProperty_mParameterList.drop () ;
+  mProperty_mHasCompilerArgument.drop () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_classMethodMap_2E_element::description (String & ioString,
+                                                 const int32_t inIndentation) const {
+  ioString.appendCString ("<struct @classMethodMap.element:") ;
+  if (! isValid ()) {
+    ioString.appendCString (" not built") ;
+  }else{
+    mProperty_lkey.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mParameterList.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mHasCompilerArgument.description (ioString, inIndentation+1) ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @classMethodMap.element generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_classMethodMap_2E_element ("classMethodMap.element",
+                                                                              nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_classMethodMap_2E_element::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_classMethodMap_2E_element ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_classMethodMap_2E_element::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_classMethodMap_2E_element (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_classMethodMap_2E_element GGS_classMethodMap_2E_element::extractObject (const GGS_object & inObject,
+                                                                            Compiler * inCompiler
+                                                                            COMMA_LOCATION_ARGS) {
+  GGS_classMethodMap_2E_element result ;
+  const GGS_classMethodMap_2E_element * p = (const GGS_classMethodMap_2E_element *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_classMethodMap_2E_element *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("classMethodMap.element", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//Optional @classMethodMap_2E_element_3F_
+//--------------------------------------------------------------------------------------------------
+
+GGS_classMethodMap_2E_element_3F_::GGS_classMethodMap_2E_element_3F_ (void) :
+AC_GALGAS_root (),
+mValue (),
+mState (OptionalState::invalid) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_classMethodMap_2E_element_3F_::GGS_classMethodMap_2E_element_3F_ (const GGS_classMethodMap_2E_element & inSource) :
+AC_GALGAS_root (),
+mValue (inSource),
+mState (OptionalState::valuated) {
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_classMethodMap_2E_element_3F_ GGS_classMethodMap_2E_element_3F_::init_nil (void) {
+  GGS_classMethodMap_2E_element_3F_ result ;
+  result.mState = OptionalState::isNil ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_classMethodMap_2E_element_3F_::isValid (void) const {
+  bool result = false ;
+  switch (mState) {
+  case OptionalState::invalid :
+    break ;
+  case OptionalState::isNil :
+    result = true ;
+    break ;
+  case OptionalState::valuated :
+    result = mValue.isValid () ;
+    break ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_classMethodMap_2E_element_3F_::isValuated (void) const {
+  return (mState == OptionalState::valuated) && mValue.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_classMethodMap_2E_element_3F_::drop (void) {
+  mState = OptionalState::invalid ;
+  mValue = GGS_classMethodMap_2E_element () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_classMethodMap_2E_element_3F_::description (String & ioString,
+                                                     const int32_t inIndentation) const {
+  ioString.appendCString ("<optional @") ;
+  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
+  ioString.appendCString (": ") ;
+  switch (mState) {
+  case OptionalState::invalid :
+    ioString.appendCString ("invalid") ;
+    break ;
+  case OptionalState::isNil :
+    ioString.appendCString ("nil") ;
+    break ;
+  case OptionalState::valuated :
+    mValue.description (ioString, inIndentation) ;
+    break ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @classMethodMap.element? generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_classMethodMap_2E_element_3F_ ("classMethodMap.element?",
+                                                                                  nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_classMethodMap_2E_element_3F_::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_classMethodMap_2E_element_3F_ ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_classMethodMap_2E_element_3F_::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_classMethodMap_2E_element_3F_ (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_classMethodMap_2E_element_3F_ GGS_classMethodMap_2E_element_3F_::extractObject (const GGS_object & inObject,
+                                                                                    Compiler * inCompiler
+                                                                                    COMMA_LOCATION_ARGS) {
+  GGS_classMethodMap_2E_element_3F_ result ;
+  const GGS_classMethodMap_2E_element_3F_ * p = (const GGS_classMethodMap_2E_element_3F_ *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_classMethodMap_2E_element_3F_ *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("classMethodMap.element?", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_typedPropertyList_2E_element::GGS_typedPropertyList_2E_element (void) :
+mProperty_typeEntry (),
+mProperty_name (),
+mProperty_initialization (),
+mProperty_hasSetter (),
+mProperty_hasSelector () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_typedPropertyList_2E_element::GGS_typedPropertyList_2E_element (const GGS_typedPropertyList_2E_element & inSource) :
+mProperty_typeEntry (inSource.mProperty_typeEntry),
+mProperty_name (inSource.mProperty_name),
+mProperty_initialization (inSource.mProperty_initialization),
+mProperty_hasSetter (inSource.mProperty_hasSetter),
+mProperty_hasSelector (inSource.mProperty_hasSelector) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_typedPropertyList_2E_element & GGS_typedPropertyList_2E_element::operator = (const GGS_typedPropertyList_2E_element & inSource) {
+  mProperty_typeEntry = inSource.mProperty_typeEntry ;
+  mProperty_name = inSource.mProperty_name ;
+  mProperty_initialization = inSource.mProperty_initialization ;
+  mProperty_hasSetter = inSource.mProperty_hasSetter ;
+  mProperty_hasSelector = inSource.mProperty_hasSelector ;
+  return *this ;
+}
+
+//---Synthetized initializer -----------------------------------------------------------------------
+
+GGS_typedPropertyList_2E_element GGS_typedPropertyList_2E_element::init_21__21__21__21_hasSetter_21_hasSelector (const GGS_unifiedTypeMapEntry & in_typeEntry,
+                                                                                                                 const GGS_lstring & in_name,
+                                                                                                                 const GGS_propertyInCollectionInitializationAST & in_initialization,
+                                                                                                                 const GGS_bool & in_hasSetter,
+                                                                                                                 const GGS_bool & in_hasSelector,
+                                                                                                                 Compiler * inCompiler
+                                                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_typedPropertyList_2E_element result ;
+  result.setInitializedProperties (inCompiler) ;
+  result.mProperty_typeEntry = in_typeEntry ;
+  result.mProperty_name = in_name ;
+  result.mProperty_initialization = in_initialization ;
+  result.mProperty_hasSetter = in_hasSetter ;
+  result.mProperty_hasSelector = in_hasSelector ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_typedPropertyList_2E_element::setInitializedProperties (Compiler * /* inCompiler */) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_typedPropertyList_2E_element::GGS_typedPropertyList_2E_element (const GGS_unifiedTypeMapEntry & inOperand0,
+                                                                    const GGS_lstring & inOperand1,
+                                                                    const GGS_propertyInCollectionInitializationAST & inOperand2,
+                                                                    const GGS_bool & inOperand3,
+                                                                    const GGS_bool & inOperand4) :
+mProperty_typeEntry (inOperand0),
+mProperty_name (inOperand1),
+mProperty_initialization (inOperand2),
+mProperty_hasSetter (inOperand3),
+mProperty_hasSelector (inOperand4) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_typedPropertyList_2E_element::isValid (void) const {
+  return mProperty_typeEntry.isValid () && mProperty_name.isValid () && mProperty_initialization.isValid () && mProperty_hasSetter.isValid () && mProperty_hasSelector.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_typedPropertyList_2E_element::drop (void) {
+  mProperty_typeEntry.drop () ;
+  mProperty_name.drop () ;
+  mProperty_initialization.drop () ;
+  mProperty_hasSetter.drop () ;
+  mProperty_hasSelector.drop () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_typedPropertyList_2E_element::description (String & ioString,
+                                                    const int32_t inIndentation) const {
+  ioString.appendCString ("<struct @typedPropertyList.element:") ;
+  if (! isValid ()) {
+    ioString.appendCString (" not built") ;
+  }else{
+    mProperty_typeEntry.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_name.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_initialization.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_hasSetter.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_hasSelector.description (ioString, inIndentation+1) ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @typedPropertyList.element generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_typedPropertyList_2E_element ("typedPropertyList.element",
+                                                                                 nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_typedPropertyList_2E_element::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_typedPropertyList_2E_element ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_typedPropertyList_2E_element::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_typedPropertyList_2E_element (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_typedPropertyList_2E_element GGS_typedPropertyList_2E_element::extractObject (const GGS_object & inObject,
+                                                                                  Compiler * inCompiler
+                                                                                  COMMA_LOCATION_ARGS) {
+  GGS_typedPropertyList_2E_element result ;
+  const GGS_typedPropertyList_2E_element * p = (const GGS_typedPropertyList_2E_element *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_typedPropertyList_2E_element *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("typedPropertyList.element", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_propertyMap_2E_element::GGS_propertyMap_2E_element (void) :
+mProperty_lkey (),
+mProperty_mAccessControl (),
+mProperty_mIsConstant (),
+mProperty_mPropertyType () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_propertyMap_2E_element::GGS_propertyMap_2E_element (const GGS_propertyMap_2E_element & inSource) :
+mProperty_lkey (inSource.mProperty_lkey),
+mProperty_mAccessControl (inSource.mProperty_mAccessControl),
+mProperty_mIsConstant (inSource.mProperty_mIsConstant),
+mProperty_mPropertyType (inSource.mProperty_mPropertyType) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_propertyMap_2E_element & GGS_propertyMap_2E_element::operator = (const GGS_propertyMap_2E_element & inSource) {
+  mProperty_lkey = inSource.mProperty_lkey ;
+  mProperty_mAccessControl = inSource.mProperty_mAccessControl ;
+  mProperty_mIsConstant = inSource.mProperty_mIsConstant ;
+  mProperty_mPropertyType = inSource.mProperty_mPropertyType ;
+  return *this ;
+}
+
+//---Synthetized initializer -----------------------------------------------------------------------
+
+GGS_propertyMap_2E_element GGS_propertyMap_2E_element::init_21__21__21__21_ (const GGS_lstring & in_lkey,
+                                                                             const GGS_AccessControl & in_mAccessControl,
+                                                                             const GGS_bool & in_mIsConstant,
+                                                                             const GGS_unifiedTypeMapEntry & in_mPropertyType,
+                                                                             Compiler * inCompiler
+                                                                             COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_propertyMap_2E_element result ;
+  result.setInitializedProperties (inCompiler) ;
+  result.mProperty_lkey = in_lkey ;
+  result.mProperty_mAccessControl = in_mAccessControl ;
+  result.mProperty_mIsConstant = in_mIsConstant ;
+  result.mProperty_mPropertyType = in_mPropertyType ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_propertyMap_2E_element::setInitializedProperties (Compiler * /* inCompiler */) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_propertyMap_2E_element::GGS_propertyMap_2E_element (const GGS_lstring & inOperand0,
+                                                        const GGS_AccessControl & inOperand1,
+                                                        const GGS_bool & inOperand2,
+                                                        const GGS_unifiedTypeMapEntry & inOperand3) :
+mProperty_lkey (inOperand0),
+mProperty_mAccessControl (inOperand1),
+mProperty_mIsConstant (inOperand2),
+mProperty_mPropertyType (inOperand3) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_propertyMap_2E_element::isValid (void) const {
+  return mProperty_lkey.isValid () && mProperty_mAccessControl.isValid () && mProperty_mIsConstant.isValid () && mProperty_mPropertyType.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_propertyMap_2E_element::drop (void) {
+  mProperty_lkey.drop () ;
+  mProperty_mAccessControl.drop () ;
+  mProperty_mIsConstant.drop () ;
+  mProperty_mPropertyType.drop () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_propertyMap_2E_element::description (String & ioString,
+                                              const int32_t inIndentation) const {
+  ioString.appendCString ("<struct @propertyMap.element:") ;
+  if (! isValid ()) {
+    ioString.appendCString (" not built") ;
+  }else{
+    mProperty_lkey.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mAccessControl.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mIsConstant.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mPropertyType.description (ioString, inIndentation+1) ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @propertyMap.element generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_propertyMap_2E_element ("propertyMap.element",
+                                                                           nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_propertyMap_2E_element::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_propertyMap_2E_element ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_propertyMap_2E_element::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_propertyMap_2E_element (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_propertyMap_2E_element GGS_propertyMap_2E_element::extractObject (const GGS_object & inObject,
+                                                                      Compiler * inCompiler
+                                                                      COMMA_LOCATION_ARGS) {
+  GGS_propertyMap_2E_element result ;
+  const GGS_propertyMap_2E_element * p = (const GGS_propertyMap_2E_element *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_propertyMap_2E_element *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("propertyMap.element", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//Optional @propertyMap_2E_element_3F_
+//--------------------------------------------------------------------------------------------------
+
+GGS_propertyMap_2E_element_3F_::GGS_propertyMap_2E_element_3F_ (void) :
+AC_GALGAS_root (),
+mValue (),
+mState (OptionalState::invalid) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_propertyMap_2E_element_3F_::GGS_propertyMap_2E_element_3F_ (const GGS_propertyMap_2E_element & inSource) :
+AC_GALGAS_root (),
+mValue (inSource),
+mState (OptionalState::valuated) {
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_propertyMap_2E_element_3F_ GGS_propertyMap_2E_element_3F_::init_nil (void) {
+  GGS_propertyMap_2E_element_3F_ result ;
+  result.mState = OptionalState::isNil ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_propertyMap_2E_element_3F_::isValid (void) const {
+  bool result = false ;
+  switch (mState) {
+  case OptionalState::invalid :
+    break ;
+  case OptionalState::isNil :
+    result = true ;
+    break ;
+  case OptionalState::valuated :
+    result = mValue.isValid () ;
+    break ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_propertyMap_2E_element_3F_::isValuated (void) const {
+  return (mState == OptionalState::valuated) && mValue.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_propertyMap_2E_element_3F_::drop (void) {
+  mState = OptionalState::invalid ;
+  mValue = GGS_propertyMap_2E_element () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_propertyMap_2E_element_3F_::description (String & ioString,
+                                                  const int32_t inIndentation) const {
+  ioString.appendCString ("<optional @") ;
+  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
+  ioString.appendCString (": ") ;
+  switch (mState) {
+  case OptionalState::invalid :
+    ioString.appendCString ("invalid") ;
+    break ;
+  case OptionalState::isNil :
+    ioString.appendCString ("nil") ;
+    break ;
+  case OptionalState::valuated :
+    mValue.description (ioString, inIndentation) ;
+    break ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @propertyMap.element? generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_propertyMap_2E_element_3F_ ("propertyMap.element?",
+                                                                               nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_propertyMap_2E_element_3F_::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_propertyMap_2E_element_3F_ ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_propertyMap_2E_element_3F_::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_propertyMap_2E_element_3F_ (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_propertyMap_2E_element_3F_ GGS_propertyMap_2E_element_3F_::extractObject (const GGS_object & inObject,
+                                                                              Compiler * inCompiler
+                                                                              COMMA_LOCATION_ARGS) {
+  GGS_propertyMap_2E_element_3F_ result ;
+  const GGS_propertyMap_2E_element_3F_ * p = (const GGS_propertyMap_2E_element_3F_ *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_propertyMap_2E_element_3F_ *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("propertyMap.element?", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;

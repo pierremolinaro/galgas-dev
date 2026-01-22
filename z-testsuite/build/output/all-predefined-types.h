@@ -2207,14 +2207,14 @@ class GGS_filewrapper : public AC_GALGAS_root {
                                                                         Compiler * inCompiler
                                                                         COMMA_LOCATION_ARGS) const ;
 
-  public: VIRTUAL_IN_DEBUG class GGS_stringlist getter_allBinaryFilePathes (LOCATION_ARGS) const ;
+  public: VIRTUAL_IN_DEBUG class GGS_stringlist getter_allBinaryFilePaths (LOCATION_ARGS) const ;
 
-  public: VIRTUAL_IN_DEBUG class GGS_stringlist getter_allDirectoryPathes (LOCATION_ARGS) const ;
+  public: VIRTUAL_IN_DEBUG class GGS_stringlist getter_allDirectoryPaths (LOCATION_ARGS) const ;
 
-  public: VIRTUAL_IN_DEBUG class GGS_stringlist getter_allFilePathesWithExtension (const class GGS_string & constinOperand0
-                                                                                   COMMA_LOCATION_ARGS) const ;
+  public: VIRTUAL_IN_DEBUG class GGS_stringlist getter_allFilePathsWithExtension (const class GGS_string & constinOperand0
+                                                                                  COMMA_LOCATION_ARGS) const ;
 
-  public: VIRTUAL_IN_DEBUG class GGS_stringlist getter_allTextFilePathes (LOCATION_ARGS) const ;
+  public: VIRTUAL_IN_DEBUG class GGS_stringlist getter_allTextFilePaths (LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GGS_data getter_binaryFileContentsAtPath (const class GGS_string & constinOperand0,
                                                                            Compiler * inCompiler

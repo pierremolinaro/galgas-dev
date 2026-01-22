@@ -59,7 +59,7 @@ final class @filewrapperPredefinedTypeAST : @predefinedTypeAST {
     enterBaseFinalGetterWithoutArgument (
       !?outMap
       !?ioUnifiedTypeMap
-      !getterName:"allTextFilePathes"
+      !getterName:"allTextFilePaths"
       !obsoleteName: ""
       !returnedTypeName:"stringlist"
       !hasCompilerArgument:false
@@ -67,7 +67,7 @@ final class @filewrapperPredefinedTypeAST : @predefinedTypeAST {
     enterBaseFinalGetterWithoutArgument (
       !?outMap
       !?ioUnifiedTypeMap
-      !getterName:"allBinaryFilePathes"
+      !getterName:"allBinaryFilePaths"
       !obsoleteName: ""
       !returnedTypeName:"stringlist"
       !hasCompilerArgument:false
@@ -75,7 +75,7 @@ final class @filewrapperPredefinedTypeAST : @predefinedTypeAST {
     enterBaseFinalGetterWithoutArgument (
       !?outMap
       !?ioUnifiedTypeMap
-      !getterName:"allDirectoryPathes"
+      !getterName:"allDirectoryPaths"
       !obsoleteName: ""
       !returnedTypeName:"stringlist"
       !hasCompilerArgument:false
@@ -91,7 +91,7 @@ final class @filewrapperPredefinedTypeAST : @predefinedTypeAST {
     enterBaseFinalGetterWithArgument (
       !?outMap
       !?ioUnifiedTypeMap
-      !getterName:"allFilePathesWithExtension" !"string" !"inExtension"
+      !getterName:"allFilePathsWithExtension" !"string" !"inExtension"
       !returnedTypeName:"stringlist"
       !hasCompilerArgument:false
     )

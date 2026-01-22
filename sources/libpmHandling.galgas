@@ -29,13 +29,13 @@ filewrapper libpmFileWrapper in "../libpm" {
 proc updateLIBPMatPath ?let @string inLIBPMPath {
   let fw = [filewrapper libpmFileWrapper]
 //--- Create directories
-  for (path) in fw.allDirectoryPathes do
+  for (path) in fw.allDirectoryPaths do
     let @string actualDirectory = inLIBPMPath + path
     [actualDirectory makeDirectory]
   end
 //--- Update text files
   var @stringset allNeededFileSet = @()
-  for (path) in fw.allTextFilePathes do
+  for (path) in fw.allTextFilePaths do
     let contents = [fw textFileContentsAtPath !path]
     let actualFilePath = inLIBPMPath + path
     if actualFilePath.pathExtension == "py" then
@@ -46,7 +46,7 @@ proc updateLIBPMatPath ?let @string inLIBPMPath {
     allNeededFileSet ++= path
   end
 //--- Update binary files
-  for (value) in fw.allBinaryFilePathes do
+  for (value) in fw.allBinaryFilePaths do
     let contents = [fw binaryFileContentsAtPath !value]
     let actualFilePath = inLIBPMPath + value
     [contents writeToFileWhenDifferentContents !actualFilePath ?*]

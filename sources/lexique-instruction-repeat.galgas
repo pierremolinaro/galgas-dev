@@ -122,11 +122,11 @@ override method @lexicalRepeatInstructionAST checkLexicalInstruction
 //  outGeneratedCode = "BOOL " + loopVarName + " = YES ;\n"
 //  outGeneratedCode += "do {\n"
 //  [!?outGeneratedCode incIndentation !2]
-////--- Repeated instruction
+//--- Repeated instruction
 //  for (mInstruction) in self.mRepeatedInstructionList do
 //    outGeneratedCode += [mInstruction generateObjcCocoaInstructionCode !inScannerClassName !inLexiqueAnalysisContext]
 //  end
-////---
+//---
 //  for (mWhileExpression mWhileInstructionList) in self.mLexicalWhileBranchList
 //  do
 //    outGeneratedCode += "if (scanningOk && ("
@@ -145,7 +145,7 @@ override method @lexicalRepeatInstructionAST checkLexicalInstruction
 //                      "}\n"
 //  [!?outGeneratedCode decIndentation !2]
 //  outGeneratedCode += "}while (" + loopVarName + " && scanningOk) ;\n"
-////                      "loop = YES ;\n"
+//                      "loop = YES ;\n"
 //}
 
 //--------------------------------------------------------------------------------------------------

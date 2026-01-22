@@ -3262,6 +3262,34 @@ void cParser_galgas_34_SyntaxComponentSyntax::rule_galgas_34_SyntaxComponentSynt
                                                                                                               GGS_syntaxInstructionAST & outArgument_outInstruction,
                                                                                                               Lexique_galgasScanner_34_ * inCompiler) {
   outArgument_outInstruction.drop () ; // Release 'out' argument
+  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_send COMMA_SOURCE_FILE ("instruction-syntax-send.galgas", 47)) ;
+  GGS_location var_instructionLocation_2242 = GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("instruction-syntax-send.galgas", 48)) ;
+  GGS_semanticExpressionAST var_sentExpression_2341 ;
+  nt_expression_ (ioArgument_ioDeclarations, var_sentExpression_2341, inCompiler) ;
+  outArgument_outInstruction = GGS_syntaxSendInstructionAST::init_21__21_ (var_instructionLocation_2242, var_sentExpression_2341, inCompiler COMMA_HERE) ;
+}
+
+//------------------------------------------------------------------------------------------------
+
+void cParser_galgas_34_SyntaxComponentSyntax::rule_galgas_34_SyntaxComponentSyntax_syntax_5F_instruction_i6_parse (Lexique_galgasScanner_34_ * inCompiler) {
+  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_send COMMA_SOURCE_FILE ("instruction-syntax-send.galgas", 47)) ;
+  nt_expression_parse (inCompiler) ;
+  inCompiler->resetTemplateString () ;
+}
+
+//------------------------------------------------------------------------------------------------
+
+void cParser_galgas_34_SyntaxComponentSyntax::rule_galgas_34_SyntaxComponentSyntax_syntax_5F_instruction_i6_indexing (Lexique_galgasScanner_34_ * inCompiler) {
+  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_send COMMA_SOURCE_FILE ("instruction-syntax-send.galgas", 47)) ;
+  nt_expression_indexing (inCompiler) ;
+}
+
+//------------------------------------------------------------------------------------------------
+
+void cParser_galgas_34_SyntaxComponentSyntax::rule_galgas_34_SyntaxComponentSyntax_syntax_5F_instruction_i7_ (GGS_galgasDeclarationAST & ioArgument_ioDeclarations,
+                                                                                                              GGS_syntaxInstructionAST & outArgument_outInstruction,
+                                                                                                              Lexique_galgasScanner_34_ * inCompiler) {
+  outArgument_outInstruction.drop () ; // Release 'out' argument
   inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_repeat COMMA_SOURCE_FILE ("instruction-repeat.galgas", 73)) ;
   GGS_location var_mRepeatInstructionLocation_3371 = GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("instruction-repeat.galgas", 74)) ;
   GGS_syntaxInstructionList var_mRepeatedInstructionList_3489 ;
@@ -3286,7 +3314,7 @@ void cParser_galgas_34_SyntaxComponentSyntax::rule_galgas_34_SyntaxComponentSynt
 
 //------------------------------------------------------------------------------------------------
 
-void cParser_galgas_34_SyntaxComponentSyntax::rule_galgas_34_SyntaxComponentSyntax_syntax_5F_instruction_i6_parse (Lexique_galgasScanner_34_ * inCompiler) {
+void cParser_galgas_34_SyntaxComponentSyntax::rule_galgas_34_SyntaxComponentSyntax_syntax_5F_instruction_i7_parse (Lexique_galgasScanner_34_ * inCompiler) {
   inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_repeat COMMA_SOURCE_FILE ("instruction-repeat.galgas", 73)) ;
   nt_syntax_5F_instruction_5F_list_parse (inCompiler) ;
   bool repeatFlag_0 = true ;
@@ -3304,7 +3332,7 @@ void cParser_galgas_34_SyntaxComponentSyntax::rule_galgas_34_SyntaxComponentSynt
 
 //------------------------------------------------------------------------------------------------
 
-void cParser_galgas_34_SyntaxComponentSyntax::rule_galgas_34_SyntaxComponentSyntax_syntax_5F_instruction_i6_indexing (Lexique_galgasScanner_34_ * inCompiler) {
+void cParser_galgas_34_SyntaxComponentSyntax::rule_galgas_34_SyntaxComponentSyntax_syntax_5F_instruction_i7_indexing (Lexique_galgasScanner_34_ * inCompiler) {
   inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_repeat COMMA_SOURCE_FILE ("instruction-repeat.galgas", 73)) ;
   nt_syntax_5F_instruction_5F_list_indexing (inCompiler) ;
   bool repeatFlag_0 = true ;
@@ -3321,7 +3349,7 @@ void cParser_galgas_34_SyntaxComponentSyntax::rule_galgas_34_SyntaxComponentSynt
 
 //------------------------------------------------------------------------------------------------
 
-void cParser_galgas_34_SyntaxComponentSyntax::rule_galgas_34_SyntaxComponentSyntax_syntax_5F_instruction_i7_ (GGS_galgasDeclarationAST & ioArgument_ioDeclarations,
+void cParser_galgas_34_SyntaxComponentSyntax::rule_galgas_34_SyntaxComponentSyntax_syntax_5F_instruction_i8_ (GGS_galgasDeclarationAST & ioArgument_ioDeclarations,
                                                                                                               GGS_syntaxInstructionAST & outArgument_outInstruction,
                                                                                                               Lexique_galgasScanner_34_ * inCompiler) {
   outArgument_outInstruction.drop () ; // Release 'out' argument
@@ -3349,7 +3377,7 @@ void cParser_galgas_34_SyntaxComponentSyntax::rule_galgas_34_SyntaxComponentSynt
 
 //------------------------------------------------------------------------------------------------
 
-void cParser_galgas_34_SyntaxComponentSyntax::rule_galgas_34_SyntaxComponentSyntax_syntax_5F_instruction_i7_parse (Lexique_galgasScanner_34_ * inCompiler) {
+void cParser_galgas_34_SyntaxComponentSyntax::rule_galgas_34_SyntaxComponentSyntax_syntax_5F_instruction_i8_parse (Lexique_galgasScanner_34_ * inCompiler) {
   inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_select COMMA_SOURCE_FILE ("instruction-select.galgas", 69)) ;
   nt_syntax_5F_instruction_5F_list_parse (inCompiler) ;
   bool repeatFlag_0 = true ;
@@ -3367,7 +3395,7 @@ void cParser_galgas_34_SyntaxComponentSyntax::rule_galgas_34_SyntaxComponentSynt
 
 //------------------------------------------------------------------------------------------------
 
-void cParser_galgas_34_SyntaxComponentSyntax::rule_galgas_34_SyntaxComponentSyntax_syntax_5F_instruction_i7_indexing (Lexique_galgasScanner_34_ * inCompiler) {
+void cParser_galgas_34_SyntaxComponentSyntax::rule_galgas_34_SyntaxComponentSyntax_syntax_5F_instruction_i8_indexing (Lexique_galgasScanner_34_ * inCompiler) {
   inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_select COMMA_SOURCE_FILE ("instruction-select.galgas", 69)) ;
   nt_syntax_5F_instruction_5F_list_indexing (inCompiler) ;
   bool repeatFlag_0 = true ;
@@ -3384,7 +3412,7 @@ void cParser_galgas_34_SyntaxComponentSyntax::rule_galgas_34_SyntaxComponentSynt
 
 //------------------------------------------------------------------------------------------------
 
-void cParser_galgas_34_SyntaxComponentSyntax::rule_galgas_34_SyntaxComponentSyntax_syntax_5F_instruction_i8_ (GGS_galgasDeclarationAST & ioArgument_ioDeclarations,
+void cParser_galgas_34_SyntaxComponentSyntax::rule_galgas_34_SyntaxComponentSyntax_syntax_5F_instruction_i9_ (GGS_galgasDeclarationAST & ioArgument_ioDeclarations,
                                                                                                               GGS_syntaxInstructionAST & outArgument_outInstruction,
                                                                                                               Lexique_galgasScanner_34_ * inCompiler) {
   outArgument_outInstruction.drop () ; // Release 'out' argument
@@ -3415,7 +3443,7 @@ void cParser_galgas_34_SyntaxComponentSyntax::rule_galgas_34_SyntaxComponentSynt
 
 //------------------------------------------------------------------------------------------------
 
-void cParser_galgas_34_SyntaxComponentSyntax::rule_galgas_34_SyntaxComponentSyntax_syntax_5F_instruction_i8_parse (Lexique_galgasScanner_34_ * inCompiler) {
+void cParser_galgas_34_SyntaxComponentSyntax::rule_galgas_34_SyntaxComponentSyntax_syntax_5F_instruction_i9_parse (Lexique_galgasScanner_34_ * inCompiler) {
   inCompiler->enterIndexing (Lexique_galgasScanner_34_::kIndexing_terminalReference, "") ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__24_terminal_24_ COMMA_SOURCE_FILE ("instruction-terminal.galgas", 84)) ;
   nt_actual_5F_input_5F_parameter_5F_list_parse (inCompiler) ;
@@ -3436,7 +3464,7 @@ void cParser_galgas_34_SyntaxComponentSyntax::rule_galgas_34_SyntaxComponentSynt
 
 //------------------------------------------------------------------------------------------------
 
-void cParser_galgas_34_SyntaxComponentSyntax::rule_galgas_34_SyntaxComponentSyntax_syntax_5F_instruction_i8_indexing (Lexique_galgasScanner_34_ * inCompiler) {
+void cParser_galgas_34_SyntaxComponentSyntax::rule_galgas_34_SyntaxComponentSyntax_syntax_5F_instruction_i9_indexing (Lexique_galgasScanner_34_ * inCompiler) {
   inCompiler->enterIndexing (Lexique_galgasScanner_34_::kIndexing_terminalReference, "") ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__24_terminal_24_ COMMA_SOURCE_FILE ("instruction-terminal.galgas", 84)) ;
   nt_actual_5F_input_5F_parameter_5F_list_indexing (inCompiler) ;
@@ -3456,8 +3484,8 @@ void cParser_galgas_34_SyntaxComponentSyntax::rule_galgas_34_SyntaxComponentSynt
 
 //------------------------------------------------------------------------------------------------
 
-void cParser_galgas_34_SyntaxComponentSyntax::rule_galgas_34_SyntaxComponentSyntax_terminal_5F_instruction_5F_indexing_i9_ (GGS__32_lstringlist & outArgument_outIndexNameList,
-                                                                                                                            Lexique_galgasScanner_34_ * inCompiler) {
+void cParser_galgas_34_SyntaxComponentSyntax::rule_galgas_34_SyntaxComponentSyntax_terminal_5F_instruction_5F_indexing_i10_ (GGS__32_lstringlist & outArgument_outIndexNameList,
+                                                                                                                             Lexique_galgasScanner_34_ * inCompiler) {
   outArgument_outIndexNameList.drop () ; // Release 'out' argument
   outArgument_outIndexNameList = GGS__32_lstringlist::init (inCompiler COMMA_HERE) ;
   switch (select_galgas_34_SyntaxComponentSyntax_13 (inCompiler)) {
@@ -3499,7 +3527,7 @@ void cParser_galgas_34_SyntaxComponentSyntax::rule_galgas_34_SyntaxComponentSynt
 
 //------------------------------------------------------------------------------------------------
 
-void cParser_galgas_34_SyntaxComponentSyntax::rule_galgas_34_SyntaxComponentSyntax_terminal_5F_instruction_5F_indexing_i9_parse (Lexique_galgasScanner_34_ * inCompiler) {
+void cParser_galgas_34_SyntaxComponentSyntax::rule_galgas_34_SyntaxComponentSyntax_terminal_5F_instruction_5F_indexing_i10_parse (Lexique_galgasScanner_34_ * inCompiler) {
   switch (select_galgas_34_SyntaxComponentSyntax_13 (inCompiler)) {
   case 1: {
   } break ;
@@ -3535,7 +3563,7 @@ void cParser_galgas_34_SyntaxComponentSyntax::rule_galgas_34_SyntaxComponentSynt
 
 //------------------------------------------------------------------------------------------------
 
-void cParser_galgas_34_SyntaxComponentSyntax::rule_galgas_34_SyntaxComponentSyntax_terminal_5F_instruction_5F_indexing_i9_indexing (Lexique_galgasScanner_34_ * inCompiler) {
+void cParser_galgas_34_SyntaxComponentSyntax::rule_galgas_34_SyntaxComponentSyntax_terminal_5F_instruction_5F_indexing_i10_indexing (Lexique_galgasScanner_34_ * inCompiler) {
   switch (select_galgas_34_SyntaxComponentSyntax_13 (inCompiler)) {
   case 1: {
   } break ;
@@ -3566,34 +3594,6 @@ void cParser_galgas_34_SyntaxComponentSyntax::rule_galgas_34_SyntaxComponentSynt
   default:
     break ;
   }
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_galgas_34_SyntaxComponentSyntax::rule_galgas_34_SyntaxComponentSyntax_syntax_5F_instruction_i10_ (GGS_galgasDeclarationAST & ioArgument_ioDeclarations,
-                                                                                                               GGS_syntaxInstructionAST & outArgument_outInstruction,
-                                                                                                               Lexique_galgasScanner_34_ * inCompiler) {
-  outArgument_outInstruction.drop () ; // Release 'out' argument
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_send COMMA_SOURCE_FILE ("instruction-syntax-send.galgas", 47)) ;
-  GGS_location var_instructionLocation_2242 = GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("instruction-syntax-send.galgas", 48)) ;
-  GGS_semanticExpressionAST var_sentExpression_2341 ;
-  nt_expression_ (ioArgument_ioDeclarations, var_sentExpression_2341, inCompiler) ;
-  outArgument_outInstruction = GGS_syntaxSendInstructionAST::init_21__21_ (var_instructionLocation_2242, var_sentExpression_2341, inCompiler COMMA_HERE) ;
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_galgas_34_SyntaxComponentSyntax::rule_galgas_34_SyntaxComponentSyntax_syntax_5F_instruction_i10_parse (Lexique_galgasScanner_34_ * inCompiler) {
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_send COMMA_SOURCE_FILE ("instruction-syntax-send.galgas", 47)) ;
-  nt_expression_parse (inCompiler) ;
-  inCompiler->resetTemplateString () ;
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_galgas_34_SyntaxComponentSyntax::rule_galgas_34_SyntaxComponentSyntax_syntax_5F_instruction_i10_indexing (Lexique_galgasScanner_34_ * inCompiler) {
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_send COMMA_SOURCE_FILE ("instruction-syntax-send.galgas", 47)) ;
-  nt_expression_indexing (inCompiler) ;
 }
 
 //------------------------------------------------------------------------------------------------
@@ -5512,28 +5512,6 @@ void callExtensionMethod_analyzeSemanticInstruction (cPtr_semanticInstructionAST
 }
 //--------------------------------------------------------------------------------------------------
 //
-//Abstract extension method '@abstractGrammarInstructionSyntaxDirectedTranslationResult analyzeGrammarInstructionSDT'
-//
-//--------------------------------------------------------------------------------------------------
-
-void callExtensionMethod_analyzeGrammarInstructionSDT (cPtr_abstractGrammarInstructionSyntaxDirectedTranslationResult * inObject,
-                                                       const GGS_analysisContext constin_inAnalysisContext,
-                                                       GGS_unifiedTypeMap & io_ioTypeMap,
-                                                       const GGS_bool constin_inHasTranslateFeature,
-                                                       const GGS_string constin_inSyntaxDirectedTranslationResultVarName,
-                                                       GGS_stringlist & io_ioAssignementList,
-                                                       GGS_localVarManager & io_ioVariableMap,
-                                                       Compiler * inCompiler
-                                                       COMMA_LOCATION_ARGS) {
-//--- Drop output arguments
-//--- Find method
-  if (nullptr != inObject) {
-    macroValidSharedObject (inObject, cPtr_abstractGrammarInstructionSyntaxDirectedTranslationResult) ;
-    inObject->method_analyzeGrammarInstructionSDT (constin_inAnalysisContext, io_ioTypeMap, constin_inHasTranslateFeature, constin_inSyntaxDirectedTranslationResultVarName, io_ioAssignementList, io_ioVariableMap, inCompiler COMMA_THERE) ;
-  }
-}
-//--------------------------------------------------------------------------------------------------
-//
 //Extension method '@AccessControlAST checkCompatibilityWithLet'
 //
 //--------------------------------------------------------------------------------------------------
@@ -5578,26 +5556,6 @@ void extensionMethod_checkCompatibilityWithLet (const GGS_AccessControlAST inObj
 }
 
 
-//--------------------------------------------------------------------------------------------------
-//
-//Abstract extension method '@syntaxInstructionAST transformInstructionForGrammarAnalysis'
-//
-//--------------------------------------------------------------------------------------------------
-
-void callExtensionMethod_transformInstructionForGrammarAnalysis (cPtr_syntaxInstructionAST * inObject,
-                                                                 GGS_terminalSymbolsMapForGrammarAnalysis & io_ioActuallyUsedTerminalSymbolMap,
-                                                                 const GGS_nonTerminalSymbolMapForGrammarAnalysis constin_inNonTerminalSymbolMap,
-                                                                 GGS_uint & io_ioAddedNonTerminalIndex,
-                                                                 GGS_syntaxInstructionListForGrammarAnalysis & io_ioSyntaxInstructionList,
-                                                                 Compiler * inCompiler
-                                                                 COMMA_LOCATION_ARGS) {
-//--- Drop output arguments
-//--- Find method
-  if (nullptr != inObject) {
-    macroValidSharedObject (inObject, cPtr_syntaxInstructionAST) ;
-    inObject->method_transformInstructionForGrammarAnalysis (io_ioActuallyUsedTerminalSymbolMap, constin_inNonTerminalSymbolMap, io_ioAddedNonTerminalIndex, io_ioSyntaxInstructionList, inCompiler COMMA_THERE) ;
-  }
-}
 //--------------------------------------------------------------------------------------------------
 // @lexicalDropInstructionAST reference class
 //--------------------------------------------------------------------------------------------------
@@ -5754,35 +5712,6 @@ GGS_lexicalDropInstructionAST GGS_lexicalDropInstructionAST::extractObject (cons
   return result ;
 }
 
-//--------------------------------------------------------------------------------------------------
-//
-//Abstract extension method '@syntaxInstructionAST analyzeSyntaxInstruction'
-//
-//--------------------------------------------------------------------------------------------------
-
-void callExtensionMethod_analyzeSyntaxInstruction (cPtr_syntaxInstructionAST * inObject,
-                                                   const GGS_lstring constin_inUsefulnessCallerEntityName,
-                                                   GGS_usefulEntitiesGraph & io_ioUsefulEntitiesGraph,
-                                                   const GGS_analysisContext constin_inAnalysisContext,
-                                                   GGS_unifiedTypeMap & io_ioTypeMap,
-                                                   const GGS_bool constin_inHasTranslateFeature,
-                                                   const GGS_terminalMap constin_inTerminalMap,
-                                                   const GGS_string constin_inLexiqueName,
-                                                   const GGS_nonterminalMap constin_inNonterminalMap,
-                                                   const GGS_string constin_inComponentName,
-                                                   const GGS_stringset constin_inIndexNameSet,
-                                                   GGS_semanticInstructionListForGeneration & io_ioInstructionListForGeneration,
-                                                   GGS_localVarManager & io_ioVariableMap,
-                                                   GGS_uint & io_ioSelectMethodCount,
-                                                   Compiler * inCompiler
-                                                   COMMA_LOCATION_ARGS) {
-//--- Drop output arguments
-//--- Find method
-  if (nullptr != inObject) {
-    macroValidSharedObject (inObject, cPtr_syntaxInstructionAST) ;
-    inObject->method_analyzeSyntaxInstruction (constin_inUsefulnessCallerEntityName, io_ioUsefulEntitiesGraph, constin_inAnalysisContext, io_ioTypeMap, constin_inHasTranslateFeature, constin_inTerminalMap, constin_inLexiqueName, constin_inNonterminalMap, constin_inComponentName, constin_inIndexNameSet, io_ioInstructionListForGeneration, io_ioVariableMap, io_ioSelectMethodCount, inCompiler COMMA_THERE) ;
-  }
-}
 //--------------------------------------------------------------------------------------------------
 
 #include "MF_MemoryControl.h"
@@ -6197,6 +6126,405 @@ int32_t cGrammar_jsonGrammar::select_jsonSyntax_2 (Lexique_jsonScanner * inLexiq
 }
 
 //--------------------------------------------------------------------------------------------------
+
+//--------------------------------------------------------------------------------------------------
+//
+//Abstract extension method '@semanticExpressionForGeneration generateExpression'
+//
+//--------------------------------------------------------------------------------------------------
+
+void callExtensionMethod_generateExpression (cPtr_semanticExpressionForGeneration * inObject,
+                                             GGS_string & io_ioGeneratedCode,
+                                             GGS_stringset & io_ioInclusionSet,
+                                             GGS_uint & io_ioTemporaryVariableIndex,
+                                             GGS_stringset & io_ioUnusedVariableCppNameSet,
+                                             GGS_string & out_outCppExpression,
+                                             Compiler * inCompiler
+                                             COMMA_LOCATION_ARGS) {
+//--- Drop output arguments
+  out_outCppExpression.drop () ;
+//--- Find method
+  if (nullptr != inObject) {
+    macroValidSharedObject (inObject, cPtr_semanticExpressionForGeneration) ;
+    inObject->method_generateExpression (io_ioGeneratedCode, io_ioInclusionSet, io_ioTemporaryVariableIndex, io_ioUnusedVariableCppNameSet, out_outCppExpression, inCompiler COMMA_THERE) ;
+  }
+}
+//--------------------------------------------------------------------------------------------------
+// @castInExpressionForGeneration reference class
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GGS_castInExpressionForGeneration::objectCompare (const GGS_castInExpressionForGeneration & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    const size_t myObjectPtr = size_t (mObjectPtr) ;
+    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_castInExpressionForGeneration::GGS_castInExpressionForGeneration (void) :
+GGS_semanticExpressionForGeneration () {
+}
+
+//--- Synthetized initializer ----------------------------------------------------------------------
+
+GGS_castInExpressionForGeneration GGS_castInExpressionForGeneration::
+init_21__21__21__21__21_ (const GGS_unifiedTypeMapEntry & in_mResultType,
+                          const GGS_location & in_mLocation,
+                          const GGS_semanticExpressionForGeneration & in_mReceiverExpression,
+                          const GGS_string & in_mTypeName,
+                          const GGS_unifiedTypeMapEntry & in_mCastType,
+                          Compiler * inCompiler
+                          COMMA_LOCATION_ARGS) {
+  cPtr_castInExpressionForGeneration * object = nullptr ;
+  macroMyNew (object, cPtr_castInExpressionForGeneration (inCompiler COMMA_THERE)) ;
+  object->castInExpressionForGeneration_init_21__21__21__21__21_ (in_mResultType, in_mLocation, in_mReceiverExpression, in_mTypeName, in_mCastType, inCompiler) ;
+  const GGS_castInExpressionForGeneration result (object) ;
+  macroDetachSharedObject (object) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_castInExpressionForGeneration::
+castInExpressionForGeneration_init_21__21__21__21__21_ (const GGS_unifiedTypeMapEntry & in_mResultType,
+                                                        const GGS_location & in_mLocation,
+                                                        const GGS_semanticExpressionForGeneration & in_mReceiverExpression,
+                                                        const GGS_string & in_mTypeName,
+                                                        const GGS_unifiedTypeMapEntry & in_mCastType,
+                                                        Compiler * /* inCompiler */) {
+  mProperty_mResultType = in_mResultType ;
+  mProperty_mLocation = in_mLocation ;
+  mProperty_mReceiverExpression = in_mReceiverExpression ;
+  mProperty_mTypeName = in_mTypeName ;
+  mProperty_mCastType = in_mCastType ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_castInExpressionForGeneration::GGS_castInExpressionForGeneration (const cPtr_castInExpressionForGeneration * inSourcePtr) :
+GGS_semanticExpressionForGeneration (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_castInExpressionForGeneration) ;
+}
+//--------------------------------------------------------------------------------------------------
+
+GGS_semanticExpressionForGeneration GGS_castInExpressionForGeneration::readProperty_mReceiverExpression (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_semanticExpressionForGeneration () ;
+  }else{
+    cPtr_castInExpressionForGeneration * p = (cPtr_castInExpressionForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_castInExpressionForGeneration) ;
+    return p->mProperty_mReceiverExpression ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_string GGS_castInExpressionForGeneration::readProperty_mTypeName (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_string () ;
+  }else{
+    cPtr_castInExpressionForGeneration * p = (cPtr_castInExpressionForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_castInExpressionForGeneration) ;
+    return p->mProperty_mTypeName ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_unifiedTypeMapEntry GGS_castInExpressionForGeneration::readProperty_mCastType (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_unifiedTypeMapEntry () ;
+  }else{
+    cPtr_castInExpressionForGeneration * p = (cPtr_castInExpressionForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_castInExpressionForGeneration) ;
+    return p->mProperty_mCastType ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//Pointer class for @castInExpressionForGeneration class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_castInExpressionForGeneration::cPtr_castInExpressionForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_semanticExpressionForGeneration (inCompiler COMMA_THERE),
+mProperty_mReceiverExpression (),
+mProperty_mTypeName (),
+mProperty_mCastType () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+cPtr_castInExpressionForGeneration::cPtr_castInExpressionForGeneration (const GGS_unifiedTypeMapEntry & in_mResultType,
+                                                                        const GGS_location & in_mLocation,
+                                                                        const GGS_semanticExpressionForGeneration & in_mReceiverExpression,
+                                                                        const GGS_string & in_mTypeName,
+                                                                        const GGS_unifiedTypeMapEntry & in_mCastType,
+                                                                        Compiler * inCompiler
+                                                                        COMMA_LOCATION_ARGS) :
+cPtr_semanticExpressionForGeneration (in_mResultType, in_mLocation, inCompiler COMMA_THERE),
+mProperty_mReceiverExpression (),
+mProperty_mTypeName (),
+mProperty_mCastType () {
+  mProperty_mResultType = in_mResultType ;
+  mProperty_mLocation = in_mLocation ;
+  mProperty_mReceiverExpression = in_mReceiverExpression ;
+  mProperty_mTypeName = in_mTypeName ;
+  mProperty_mCastType = in_mCastType ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * cPtr_castInExpressionForGeneration::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_castInExpressionForGeneration ;
+}
+
+void cPtr_castInExpressionForGeneration::description (String & ioString,
+                                                      const int32_t inIndentation) const {
+  ioString.appendCString ("[@castInExpressionForGeneration:") ;
+  mProperty_mResultType.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mLocation.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mReceiverExpression.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mTypeName.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mCastType.description (ioString, inIndentation+1) ;
+  ioString.appendCString ("]") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+acPtr_class * cPtr_castInExpressionForGeneration::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  acPtr_class * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_castInExpressionForGeneration (mProperty_mResultType, mProperty_mLocation, mProperty_mReceiverExpression, mProperty_mTypeName, mProperty_mCastType, inCompiler COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_castInExpressionForGeneration::printNonNullClassInstanceProperties (void) const {
+    cPtr_semanticExpressionForGeneration::printNonNullClassInstanceProperties () ;
+    mProperty_mReceiverExpression.printNonNullClassInstanceProperties ("mReceiverExpression") ;
+    mProperty_mTypeName.printNonNullClassInstanceProperties ("mTypeName") ;
+    mProperty_mCastType.printNonNullClassInstanceProperties ("mCastType") ;
+  }
+#endif
+
+//--------------------------------------------------------------------------------------------------
+//     @castInExpressionForGeneration generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_castInExpressionForGeneration ("castInExpressionForGeneration",
+                                                                                  & kTypeDescriptor_GALGAS_semanticExpressionForGeneration) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_castInExpressionForGeneration::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_castInExpressionForGeneration ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_castInExpressionForGeneration::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_castInExpressionForGeneration (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_castInExpressionForGeneration GGS_castInExpressionForGeneration::extractObject (const GGS_object & inObject,
+                                                                                    Compiler * inCompiler
+                                                                                    COMMA_LOCATION_ARGS) {
+  GGS_castInExpressionForGeneration result ;
+  const GGS_castInExpressionForGeneration * p = (const GGS_castInExpressionForGeneration *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_castInExpressionForGeneration *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("castInExpressionForGeneration", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+// @outputActualParameterForGeneration reference class
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GGS_outputActualParameterForGeneration::objectCompare (const GGS_outputActualParameterForGeneration & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    const size_t myObjectPtr = size_t (mObjectPtr) ;
+    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_outputActualParameterForGeneration::GGS_outputActualParameterForGeneration (void) :
+GGS_actualParameterForGeneration () {
+}
+
+//--- Synthetized initializer ----------------------------------------------------------------------
+
+GGS_outputActualParameterForGeneration GGS_outputActualParameterForGeneration::
+init_21__21_ (const GGS_unifiedTypeMapEntry & in_mFormalArgumentType,
+              const GGS_semanticExpressionForGeneration & in_mOutputActualParameterExpression,
+              Compiler * inCompiler
+              COMMA_LOCATION_ARGS) {
+  cPtr_outputActualParameterForGeneration * object = nullptr ;
+  macroMyNew (object, cPtr_outputActualParameterForGeneration (inCompiler COMMA_THERE)) ;
+  object->outputActualParameterForGeneration_init_21__21_ (in_mFormalArgumentType, in_mOutputActualParameterExpression, inCompiler) ;
+  const GGS_outputActualParameterForGeneration result (object) ;
+  macroDetachSharedObject (object) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_outputActualParameterForGeneration::
+outputActualParameterForGeneration_init_21__21_ (const GGS_unifiedTypeMapEntry & in_mFormalArgumentType,
+                                                 const GGS_semanticExpressionForGeneration & in_mOutputActualParameterExpression,
+                                                 Compiler * /* inCompiler */) {
+  mProperty_mFormalArgumentType = in_mFormalArgumentType ;
+  mProperty_mOutputActualParameterExpression = in_mOutputActualParameterExpression ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_outputActualParameterForGeneration::GGS_outputActualParameterForGeneration (const cPtr_outputActualParameterForGeneration * inSourcePtr) :
+GGS_actualParameterForGeneration (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_outputActualParameterForGeneration) ;
+}
+//--------------------------------------------------------------------------------------------------
+
+GGS_semanticExpressionForGeneration GGS_outputActualParameterForGeneration::readProperty_mOutputActualParameterExpression (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_semanticExpressionForGeneration () ;
+  }else{
+    cPtr_outputActualParameterForGeneration * p = (cPtr_outputActualParameterForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_outputActualParameterForGeneration) ;
+    return p->mProperty_mOutputActualParameterExpression ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//Pointer class for @outputActualParameterForGeneration class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_outputActualParameterForGeneration::cPtr_outputActualParameterForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_actualParameterForGeneration (inCompiler COMMA_THERE),
+mProperty_mOutputActualParameterExpression () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+cPtr_outputActualParameterForGeneration::cPtr_outputActualParameterForGeneration (const GGS_unifiedTypeMapEntry & in_mFormalArgumentType,
+                                                                                  const GGS_semanticExpressionForGeneration & in_mOutputActualParameterExpression,
+                                                                                  Compiler * inCompiler
+                                                                                  COMMA_LOCATION_ARGS) :
+cPtr_actualParameterForGeneration (in_mFormalArgumentType, inCompiler COMMA_THERE),
+mProperty_mOutputActualParameterExpression () {
+  mProperty_mFormalArgumentType = in_mFormalArgumentType ;
+  mProperty_mOutputActualParameterExpression = in_mOutputActualParameterExpression ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * cPtr_outputActualParameterForGeneration::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_outputActualParameterForGeneration ;
+}
+
+void cPtr_outputActualParameterForGeneration::description (String & ioString,
+                                                           const int32_t inIndentation) const {
+  ioString.appendCString ("[@outputActualParameterForGeneration:") ;
+  mProperty_mFormalArgumentType.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mOutputActualParameterExpression.description (ioString, inIndentation+1) ;
+  ioString.appendCString ("]") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+acPtr_class * cPtr_outputActualParameterForGeneration::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  acPtr_class * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_outputActualParameterForGeneration (mProperty_mFormalArgumentType, mProperty_mOutputActualParameterExpression, inCompiler COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_outputActualParameterForGeneration::printNonNullClassInstanceProperties (void) const {
+    cPtr_actualParameterForGeneration::printNonNullClassInstanceProperties () ;
+    mProperty_mOutputActualParameterExpression.printNonNullClassInstanceProperties ("mOutputActualParameterExpression") ;
+  }
+#endif
+
+//--------------------------------------------------------------------------------------------------
+//     @outputActualParameterForGeneration generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_outputActualParameterForGeneration ("outputActualParameterForGeneration",
+                                                                                       & kTypeDescriptor_GALGAS_actualParameterForGeneration) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_outputActualParameterForGeneration::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_outputActualParameterForGeneration ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_outputActualParameterForGeneration::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_outputActualParameterForGeneration (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_outputActualParameterForGeneration GGS_outputActualParameterForGeneration::extractObject (const GGS_object & inObject,
+                                                                                              Compiler * inCompiler
+                                                                                              COMMA_LOCATION_ARGS) {
+  GGS_outputActualParameterForGeneration result ;
+  const GGS_outputActualParameterForGeneration * p = (const GGS_outputActualParameterForGeneration *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_outputActualParameterForGeneration *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("outputActualParameterForGeneration", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
 
 //--------------------------------------------------------------------------------------------------
 // @outputInputActualParameterForGeneration reference class
@@ -9519,1091 +9847,158 @@ GGS_lexiqueDeclarationForGeneration_2E_weak GGS_lexiqueDeclarationForGeneration_
 }
 
 //--------------------------------------------------------------------------------------------------
-// @procCallInstructionAST reference class
+
+GGS_templateAnalysisContext::GGS_templateAnalysisContext (void) :
+mProperty_mSemanticContext (),
+mProperty_mPredefinedTypes (),
+mProperty_mTemplateVariableMap () {
+}
+
 //--------------------------------------------------------------------------------------------------
 
-ComparisonResult GGS_procCallInstructionAST::objectCompare (const GGS_procCallInstructionAST & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    const size_t myObjectPtr = size_t (mObjectPtr) ;
-    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
+GGS_templateAnalysisContext::GGS_templateAnalysisContext (const GGS_templateAnalysisContext & inSource) :
+mProperty_mSemanticContext (inSource.mProperty_mSemanticContext),
+mProperty_mPredefinedTypes (inSource.mProperty_mPredefinedTypes),
+mProperty_mTemplateVariableMap (inSource.mProperty_mTemplateVariableMap) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_templateAnalysisContext & GGS_templateAnalysisContext::operator = (const GGS_templateAnalysisContext & inSource) {
+  mProperty_mSemanticContext = inSource.mProperty_mSemanticContext ;
+  mProperty_mPredefinedTypes = inSource.mProperty_mPredefinedTypes ;
+  mProperty_mTemplateVariableMap = inSource.mProperty_mTemplateVariableMap ;
+  return *this ;
+}
+
+//---Synthetized initializer -----------------------------------------------------------------------
+
+GGS_templateAnalysisContext GGS_templateAnalysisContext::init_21__21__21_ (const GGS_semanticContext & in_mSemanticContext,
+                                                                           const GGS_predefinedTypes & in_mPredefinedTypes,
+                                                                           const GGS_templateVariableMap & in_mTemplateVariableMap,
+                                                                           Compiler * inCompiler
+                                                                           COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_templateAnalysisContext result ;
+  result.setInitializedProperties (inCompiler) ;
+  result.mProperty_mSemanticContext = in_mSemanticContext ;
+  result.mProperty_mPredefinedTypes = in_mPredefinedTypes ;
+  result.mProperty_mTemplateVariableMap = in_mTemplateVariableMap ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_procCallInstructionAST::GGS_procCallInstructionAST (void) :
-GGS_semanticInstructionAST () {
-}
-
-//--- Synthetized initializer ----------------------------------------------------------------------
-
-GGS_procCallInstructionAST GGS_procCallInstructionAST::
-init_21__21__21_ (const GGS_location & in_mInstructionLocation,
-                  const GGS_lstring & in_mRoutineName,
-                  const GGS_actualParameterListAST & in_mActualParameterList,
-                  Compiler * inCompiler
-                  COMMA_LOCATION_ARGS) {
-  cPtr_procCallInstructionAST * object = nullptr ;
-  macroMyNew (object, cPtr_procCallInstructionAST (inCompiler COMMA_THERE)) ;
-  object->procCallInstructionAST_init_21__21__21_ (in_mInstructionLocation, in_mRoutineName, in_mActualParameterList, inCompiler) ;
-  const GGS_procCallInstructionAST result (object) ;
-  macroDetachSharedObject (object) ;
-  return result ;
+void GGS_templateAnalysisContext::setInitializedProperties (Compiler * /* inCompiler */) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void cPtr_procCallInstructionAST::
-procCallInstructionAST_init_21__21__21_ (const GGS_location & in_mInstructionLocation,
-                                         const GGS_lstring & in_mRoutineName,
-                                         const GGS_actualParameterListAST & in_mActualParameterList,
-                                         Compiler * /* inCompiler */) {
-  mProperty_mInstructionLocation = in_mInstructionLocation ;
-  mProperty_mRoutineName = in_mRoutineName ;
-  mProperty_mActualParameterList = in_mActualParameterList ;
+GGS_templateAnalysisContext::GGS_templateAnalysisContext (const GGS_semanticContext & inOperand0,
+                                                          const GGS_predefinedTypes & inOperand1,
+                                                          const GGS_templateVariableMap & inOperand2) :
+mProperty_mSemanticContext (inOperand0),
+mProperty_mPredefinedTypes (inOperand1),
+mProperty_mTemplateVariableMap (inOperand2) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_procCallInstructionAST::GGS_procCallInstructionAST (const cPtr_procCallInstructionAST * inSourcePtr) :
-GGS_semanticInstructionAST (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_procCallInstructionAST) ;
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_lstring GGS_procCallInstructionAST::readProperty_mRoutineName (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_lstring () ;
-  }else{
-    cPtr_procCallInstructionAST * p = (cPtr_procCallInstructionAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_procCallInstructionAST) ;
-    return p->mProperty_mRoutineName ;
-  }
+bool GGS_templateAnalysisContext::isValid (void) const {
+  return mProperty_mSemanticContext.isValid () && mProperty_mPredefinedTypes.isValid () && mProperty_mTemplateVariableMap.isValid () ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_actualParameterListAST GGS_procCallInstructionAST::readProperty_mActualParameterList (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_actualParameterListAST () ;
-  }else{
-    cPtr_procCallInstructionAST * p = (cPtr_procCallInstructionAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_procCallInstructionAST) ;
-    return p->mProperty_mActualParameterList ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-//Pointer class for @procCallInstructionAST class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_procCallInstructionAST::cPtr_procCallInstructionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_semanticInstructionAST (inCompiler COMMA_THERE),
-mProperty_mRoutineName (),
-mProperty_mActualParameterList () {
+void GGS_templateAnalysisContext::drop (void) {
+  mProperty_mSemanticContext.drop () ;
+  mProperty_mPredefinedTypes.drop () ;
+  mProperty_mTemplateVariableMap.drop () ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-cPtr_procCallInstructionAST::cPtr_procCallInstructionAST (const GGS_location & in_mInstructionLocation,
-                                                          const GGS_lstring & in_mRoutineName,
-                                                          const GGS_actualParameterListAST & in_mActualParameterList,
-                                                          Compiler * inCompiler
-                                                          COMMA_LOCATION_ARGS) :
-cPtr_semanticInstructionAST (in_mInstructionLocation, inCompiler COMMA_THERE),
-mProperty_mRoutineName (),
-mProperty_mActualParameterList () {
-  mProperty_mInstructionLocation = in_mInstructionLocation ;
-  mProperty_mRoutineName = in_mRoutineName ;
-  mProperty_mActualParameterList = in_mActualParameterList ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * cPtr_procCallInstructionAST::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_procCallInstructionAST ;
-}
-
-void cPtr_procCallInstructionAST::description (String & ioString,
+void GGS_templateAnalysisContext::description (String & ioString,
                                                const int32_t inIndentation) const {
-  ioString.appendCString ("[@procCallInstructionAST:") ;
-  mProperty_mInstructionLocation.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mRoutineName.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mActualParameterList.description (ioString, inIndentation+1) ;
-  ioString.appendCString ("]") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-acPtr_class * cPtr_procCallInstructionAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_procCallInstructionAST (mProperty_mInstructionLocation, mProperty_mRoutineName, mProperty_mActualParameterList, inCompiler COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_procCallInstructionAST::printNonNullClassInstanceProperties (void) const {
-    cPtr_semanticInstructionAST::printNonNullClassInstanceProperties () ;
-    mProperty_mRoutineName.printNonNullClassInstanceProperties ("mRoutineName") ;
-    mProperty_mActualParameterList.printNonNullClassInstanceProperties ("mActualParameterList") ;
+  ioString.appendCString ("<struct @templateAnalysisContext:") ;
+  if (! isValid ()) {
+    ioString.appendCString (" not built") ;
+  }else{
+    mProperty_mSemanticContext.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mPredefinedTypes.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mTemplateVariableMap.description (ioString, inIndentation+1) ;
   }
-#endif
+  ioString.appendCString (">") ;
+}
 
 //--------------------------------------------------------------------------------------------------
-//     @procCallInstructionAST generic code implementation
+//     @templateAnalysisContext generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_procCallInstructionAST ("procCallInstructionAST",
-                                                                           & kTypeDescriptor_GALGAS_semanticInstructionAST) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_templateAnalysisContext ("templateAnalysisContext",
+                                                                            nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const GALGAS_TypeDescriptor * GGS_procCallInstructionAST::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_procCallInstructionAST ;
+const GALGAS_TypeDescriptor * GGS_templateAnalysisContext::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_templateAnalysisContext ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-AC_GALGAS_root * GGS_procCallInstructionAST::clonedObject (void) const {
+AC_GALGAS_root * GGS_templateAnalysisContext::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
-    macroMyNew (result, GGS_procCallInstructionAST (*this)) ;
+    macroMyNew (result, GGS_templateAnalysisContext (*this)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_procCallInstructionAST GGS_procCallInstructionAST::extractObject (const GGS_object & inObject,
-                                                                      Compiler * inCompiler
-                                                                      COMMA_LOCATION_ARGS) {
-  GGS_procCallInstructionAST result ;
-  const GGS_procCallInstructionAST * p = (const GGS_procCallInstructionAST *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_procCallInstructionAST *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("procCallInstructionAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-// @procCallInstructionForGeneration reference class
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult GGS_procCallInstructionForGeneration::objectCompare (const GGS_procCallInstructionForGeneration & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    const size_t myObjectPtr = size_t (mObjectPtr) ;
-    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_procCallInstructionForGeneration::GGS_procCallInstructionForGeneration (void) :
-GGS_semanticInstructionForGeneration () {
-}
-
-//--- Synthetized initializer ----------------------------------------------------------------------
-
-GGS_procCallInstructionForGeneration GGS_procCallInstructionForGeneration::
-init_21_routineMangledName_21_ (const GGS_lstring & in_routineMangledName,
-                                const GGS_actualParameterListForGeneration & in_mActualParameterList,
-                                Compiler * inCompiler
-                                COMMA_LOCATION_ARGS) {
-  cPtr_procCallInstructionForGeneration * object = nullptr ;
-  macroMyNew (object, cPtr_procCallInstructionForGeneration (inCompiler COMMA_THERE)) ;
-  object->procCallInstructionForGeneration_init_21_routineMangledName_21_ (in_routineMangledName, in_mActualParameterList, inCompiler) ;
-  const GGS_procCallInstructionForGeneration result (object) ;
-  macroDetachSharedObject (object) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_procCallInstructionForGeneration::
-procCallInstructionForGeneration_init_21_routineMangledName_21_ (const GGS_lstring & in_routineMangledName,
-                                                                 const GGS_actualParameterListForGeneration & in_mActualParameterList,
-                                                                 Compiler * /* inCompiler */) {
-  mProperty_routineMangledName = in_routineMangledName ;
-  mProperty_mActualParameterList = in_mActualParameterList ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_procCallInstructionForGeneration::GGS_procCallInstructionForGeneration (const cPtr_procCallInstructionForGeneration * inSourcePtr) :
-GGS_semanticInstructionForGeneration (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_procCallInstructionForGeneration) ;
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_lstring GGS_procCallInstructionForGeneration::readProperty_routineMangledName (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_lstring () ;
-  }else{
-    cPtr_procCallInstructionForGeneration * p = (cPtr_procCallInstructionForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_procCallInstructionForGeneration) ;
-    return p->mProperty_routineMangledName ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_actualParameterListForGeneration GGS_procCallInstructionForGeneration::readProperty_mActualParameterList (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_actualParameterListForGeneration () ;
-  }else{
-    cPtr_procCallInstructionForGeneration * p = (cPtr_procCallInstructionForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_procCallInstructionForGeneration) ;
-    return p->mProperty_mActualParameterList ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-//Pointer class for @procCallInstructionForGeneration class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_procCallInstructionForGeneration::cPtr_procCallInstructionForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_semanticInstructionForGeneration (inCompiler COMMA_THERE),
-mProperty_routineMangledName (),
-mProperty_mActualParameterList () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cPtr_procCallInstructionForGeneration::cPtr_procCallInstructionForGeneration (const GGS_lstring & in_routineMangledName,
-                                                                              const GGS_actualParameterListForGeneration & in_mActualParameterList,
-                                                                              Compiler * inCompiler
-                                                                              COMMA_LOCATION_ARGS) :
-cPtr_semanticInstructionForGeneration (inCompiler COMMA_THERE),
-mProperty_routineMangledName (),
-mProperty_mActualParameterList () {
-  mProperty_routineMangledName = in_routineMangledName ;
-  mProperty_mActualParameterList = in_mActualParameterList ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * cPtr_procCallInstructionForGeneration::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_procCallInstructionForGeneration ;
-}
-
-void cPtr_procCallInstructionForGeneration::description (String & ioString,
-                                                         const int32_t inIndentation) const {
-  ioString.appendCString ("[@procCallInstructionForGeneration:") ;
-  mProperty_routineMangledName.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mActualParameterList.description (ioString, inIndentation+1) ;
-  ioString.appendCString ("]") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-acPtr_class * cPtr_procCallInstructionForGeneration::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_procCallInstructionForGeneration (mProperty_routineMangledName, mProperty_mActualParameterList, inCompiler COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_procCallInstructionForGeneration::printNonNullClassInstanceProperties (void) const {
-    cPtr_semanticInstructionForGeneration::printNonNullClassInstanceProperties () ;
-    mProperty_routineMangledName.printNonNullClassInstanceProperties ("routineMangledName") ;
-    mProperty_mActualParameterList.printNonNullClassInstanceProperties ("mActualParameterList") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-//     @procCallInstructionForGeneration generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_procCallInstructionForGeneration ("procCallInstructionForGeneration",
-                                                                                     & kTypeDescriptor_GALGAS_semanticInstructionForGeneration) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_procCallInstructionForGeneration::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_procCallInstructionForGeneration ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_procCallInstructionForGeneration::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_procCallInstructionForGeneration (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_procCallInstructionForGeneration GGS_procCallInstructionForGeneration::extractObject (const GGS_object & inObject,
-                                                                                          Compiler * inCompiler
-                                                                                          COMMA_LOCATION_ARGS) {
-  GGS_procCallInstructionForGeneration result ;
-  const GGS_procCallInstructionForGeneration * p = (const GGS_procCallInstructionForGeneration *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_procCallInstructionForGeneration *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("procCallInstructionForGeneration", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-// @dropInstructionAST reference class
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult GGS_dropInstructionAST::objectCompare (const GGS_dropInstructionAST & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    const size_t myObjectPtr = size_t (mObjectPtr) ;
-    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_dropInstructionAST::GGS_dropInstructionAST (void) :
-GGS_semanticInstructionAST () {
-}
-
-//--- Synthetized initializer ----------------------------------------------------------------------
-
-GGS_dropInstructionAST GGS_dropInstructionAST::
-init_21__21_ (const GGS_location & in_mInstructionLocation,
-              const GGS_lstringlist & in_mDropList,
-              Compiler * inCompiler
-              COMMA_LOCATION_ARGS) {
-  cPtr_dropInstructionAST * object = nullptr ;
-  macroMyNew (object, cPtr_dropInstructionAST (inCompiler COMMA_THERE)) ;
-  object->dropInstructionAST_init_21__21_ (in_mInstructionLocation, in_mDropList, inCompiler) ;
-  const GGS_dropInstructionAST result (object) ;
-  macroDetachSharedObject (object) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_dropInstructionAST::
-dropInstructionAST_init_21__21_ (const GGS_location & in_mInstructionLocation,
-                                 const GGS_lstringlist & in_mDropList,
-                                 Compiler * /* inCompiler */) {
-  mProperty_mInstructionLocation = in_mInstructionLocation ;
-  mProperty_mDropList = in_mDropList ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_dropInstructionAST::GGS_dropInstructionAST (const cPtr_dropInstructionAST * inSourcePtr) :
-GGS_semanticInstructionAST (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_dropInstructionAST) ;
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_lstringlist GGS_dropInstructionAST::readProperty_mDropList (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_lstringlist () ;
-  }else{
-    cPtr_dropInstructionAST * p = (cPtr_dropInstructionAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_dropInstructionAST) ;
-    return p->mProperty_mDropList ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-//Pointer class for @dropInstructionAST class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_dropInstructionAST::cPtr_dropInstructionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_semanticInstructionAST (inCompiler COMMA_THERE),
-mProperty_mDropList () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cPtr_dropInstructionAST::cPtr_dropInstructionAST (const GGS_location & in_mInstructionLocation,
-                                                  const GGS_lstringlist & in_mDropList,
-                                                  Compiler * inCompiler
-                                                  COMMA_LOCATION_ARGS) :
-cPtr_semanticInstructionAST (in_mInstructionLocation, inCompiler COMMA_THERE),
-mProperty_mDropList () {
-  mProperty_mInstructionLocation = in_mInstructionLocation ;
-  mProperty_mDropList = in_mDropList ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * cPtr_dropInstructionAST::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_dropInstructionAST ;
-}
-
-void cPtr_dropInstructionAST::description (String & ioString,
-                                           const int32_t inIndentation) const {
-  ioString.appendCString ("[@dropInstructionAST:") ;
-  mProperty_mInstructionLocation.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mDropList.description (ioString, inIndentation+1) ;
-  ioString.appendCString ("]") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-acPtr_class * cPtr_dropInstructionAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_dropInstructionAST (mProperty_mInstructionLocation, mProperty_mDropList, inCompiler COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_dropInstructionAST::printNonNullClassInstanceProperties (void) const {
-    cPtr_semanticInstructionAST::printNonNullClassInstanceProperties () ;
-    mProperty_mDropList.printNonNullClassInstanceProperties ("mDropList") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-//     @dropInstructionAST generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_dropInstructionAST ("dropInstructionAST",
-                                                                       & kTypeDescriptor_GALGAS_semanticInstructionAST) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_dropInstructionAST::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_dropInstructionAST ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_dropInstructionAST::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_dropInstructionAST (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_dropInstructionAST GGS_dropInstructionAST::extractObject (const GGS_object & inObject,
-                                                              Compiler * inCompiler
-                                                              COMMA_LOCATION_ARGS) {
-  GGS_dropInstructionAST result ;
-  const GGS_dropInstructionAST * p = (const GGS_dropInstructionAST *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_dropInstructionAST *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("dropInstructionAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-// @repeatInstruction reference class
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult GGS_repeatInstruction::objectCompare (const GGS_repeatInstruction & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    const size_t myObjectPtr = size_t (mObjectPtr) ;
-    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_repeatInstruction::GGS_repeatInstruction (void) :
-GGS_syntaxInstructionAST () {
-}
-
-//--- Synthetized initializer ----------------------------------------------------------------------
-
-GGS_repeatInstruction GGS_repeatInstruction::
-init_21__21__21__21__21_ (const GGS_location & in_mInstructionLocation,
-                          const GGS_syntaxInstructionList & in_mRepeatedInstructionList,
-                          const GGS_location & in_mEndOf_5F_repeated_5F_instructions_5F_branch,
-                          const GGS_listOfSyntaxInstructionList & in_mRepeatBranchList,
-                          const GGS_location & in_mEndOf_5F_repeat_5F_instruction,
-                          Compiler * inCompiler
-                          COMMA_LOCATION_ARGS) {
-  cPtr_repeatInstruction * object = nullptr ;
-  macroMyNew (object, cPtr_repeatInstruction (inCompiler COMMA_THERE)) ;
-  object->repeatInstruction_init_21__21__21__21__21_ (in_mInstructionLocation, in_mRepeatedInstructionList, in_mEndOf_5F_repeated_5F_instructions_5F_branch, in_mRepeatBranchList, in_mEndOf_5F_repeat_5F_instruction, inCompiler) ;
-  const GGS_repeatInstruction result (object) ;
-  macroDetachSharedObject (object) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_repeatInstruction::
-repeatInstruction_init_21__21__21__21__21_ (const GGS_location & in_mInstructionLocation,
-                                            const GGS_syntaxInstructionList & in_mRepeatedInstructionList,
-                                            const GGS_location & in_mEndOf_5F_repeated_5F_instructions_5F_branch,
-                                            const GGS_listOfSyntaxInstructionList & in_mRepeatBranchList,
-                                            const GGS_location & in_mEndOf_5F_repeat_5F_instruction,
-                                            Compiler * /* inCompiler */) {
-  mProperty_mInstructionLocation = in_mInstructionLocation ;
-  mProperty_mRepeatedInstructionList = in_mRepeatedInstructionList ;
-  mProperty_mEndOf_5F_repeated_5F_instructions_5F_branch = in_mEndOf_5F_repeated_5F_instructions_5F_branch ;
-  mProperty_mRepeatBranchList = in_mRepeatBranchList ;
-  mProperty_mEndOf_5F_repeat_5F_instruction = in_mEndOf_5F_repeat_5F_instruction ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_repeatInstruction::GGS_repeatInstruction (const cPtr_repeatInstruction * inSourcePtr) :
-GGS_syntaxInstructionAST (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_repeatInstruction) ;
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_syntaxInstructionList GGS_repeatInstruction::readProperty_mRepeatedInstructionList (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_syntaxInstructionList () ;
-  }else{
-    cPtr_repeatInstruction * p = (cPtr_repeatInstruction *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_repeatInstruction) ;
-    return p->mProperty_mRepeatedInstructionList ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_location GGS_repeatInstruction::readProperty_mEndOf_5F_repeated_5F_instructions_5F_branch (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_location () ;
-  }else{
-    cPtr_repeatInstruction * p = (cPtr_repeatInstruction *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_repeatInstruction) ;
-    return p->mProperty_mEndOf_5F_repeated_5F_instructions_5F_branch ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_listOfSyntaxInstructionList GGS_repeatInstruction::readProperty_mRepeatBranchList (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_listOfSyntaxInstructionList () ;
-  }else{
-    cPtr_repeatInstruction * p = (cPtr_repeatInstruction *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_repeatInstruction) ;
-    return p->mProperty_mRepeatBranchList ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_location GGS_repeatInstruction::readProperty_mEndOf_5F_repeat_5F_instruction (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_location () ;
-  }else{
-    cPtr_repeatInstruction * p = (cPtr_repeatInstruction *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_repeatInstruction) ;
-    return p->mProperty_mEndOf_5F_repeat_5F_instruction ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-//Pointer class for @repeatInstruction class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_repeatInstruction::cPtr_repeatInstruction (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_syntaxInstructionAST (inCompiler COMMA_THERE),
-mProperty_mRepeatedInstructionList (),
-mProperty_mEndOf_5F_repeated_5F_instructions_5F_branch (),
-mProperty_mRepeatBranchList (),
-mProperty_mEndOf_5F_repeat_5F_instruction () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cPtr_repeatInstruction::cPtr_repeatInstruction (const GGS_location & in_mInstructionLocation,
-                                                const GGS_syntaxInstructionList & in_mRepeatedInstructionList,
-                                                const GGS_location & in_mEndOf_5F_repeated_5F_instructions_5F_branch,
-                                                const GGS_listOfSyntaxInstructionList & in_mRepeatBranchList,
-                                                const GGS_location & in_mEndOf_5F_repeat_5F_instruction,
-                                                Compiler * inCompiler
-                                                COMMA_LOCATION_ARGS) :
-cPtr_syntaxInstructionAST (in_mInstructionLocation, inCompiler COMMA_THERE),
-mProperty_mRepeatedInstructionList (),
-mProperty_mEndOf_5F_repeated_5F_instructions_5F_branch (),
-mProperty_mRepeatBranchList (),
-mProperty_mEndOf_5F_repeat_5F_instruction () {
-  mProperty_mInstructionLocation = in_mInstructionLocation ;
-  mProperty_mRepeatedInstructionList = in_mRepeatedInstructionList ;
-  mProperty_mEndOf_5F_repeated_5F_instructions_5F_branch = in_mEndOf_5F_repeated_5F_instructions_5F_branch ;
-  mProperty_mRepeatBranchList = in_mRepeatBranchList ;
-  mProperty_mEndOf_5F_repeat_5F_instruction = in_mEndOf_5F_repeat_5F_instruction ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * cPtr_repeatInstruction::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_repeatInstruction ;
-}
-
-void cPtr_repeatInstruction::description (String & ioString,
-                                          const int32_t inIndentation) const {
-  ioString.appendCString ("[@repeatInstruction:") ;
-  mProperty_mInstructionLocation.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mRepeatedInstructionList.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mEndOf_5F_repeated_5F_instructions_5F_branch.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mRepeatBranchList.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mEndOf_5F_repeat_5F_instruction.description (ioString, inIndentation+1) ;
-  ioString.appendCString ("]") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-acPtr_class * cPtr_repeatInstruction::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_repeatInstruction (mProperty_mInstructionLocation, mProperty_mRepeatedInstructionList, mProperty_mEndOf_5F_repeated_5F_instructions_5F_branch, mProperty_mRepeatBranchList, mProperty_mEndOf_5F_repeat_5F_instruction, inCompiler COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_repeatInstruction::printNonNullClassInstanceProperties (void) const {
-    cPtr_syntaxInstructionAST::printNonNullClassInstanceProperties () ;
-    mProperty_mRepeatedInstructionList.printNonNullClassInstanceProperties ("mRepeatedInstructionList") ;
-    mProperty_mEndOf_5F_repeated_5F_instructions_5F_branch.printNonNullClassInstanceProperties ("mEndOf_repeated_instructions_branch") ;
-    mProperty_mRepeatBranchList.printNonNullClassInstanceProperties ("mRepeatBranchList") ;
-    mProperty_mEndOf_5F_repeat_5F_instruction.printNonNullClassInstanceProperties ("mEndOf_repeat_instruction") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-//     @repeatInstruction generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_repeatInstruction ("repeatInstruction",
-                                                                      & kTypeDescriptor_GALGAS_syntaxInstructionAST) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_repeatInstruction::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_repeatInstruction ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_repeatInstruction::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_repeatInstruction (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_repeatInstruction GGS_repeatInstruction::extractObject (const GGS_object & inObject,
-                                                            Compiler * inCompiler
-                                                            COMMA_LOCATION_ARGS) {
-  GGS_repeatInstruction result ;
-  const GGS_repeatInstruction * p = (const GGS_repeatInstruction *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_repeatInstruction *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("repeatInstruction", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-// @selfAssignmentInstructionAST reference class
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult GGS_selfAssignmentInstructionAST::objectCompare (const GGS_selfAssignmentInstructionAST & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    const size_t myObjectPtr = size_t (mObjectPtr) ;
-    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_selfAssignmentInstructionAST::GGS_selfAssignmentInstructionAST (void) :
-GGS_semanticInstructionAST () {
-}
-
-//--- Synthetized initializer ----------------------------------------------------------------------
-
-GGS_selfAssignmentInstructionAST GGS_selfAssignmentInstructionAST::
-init_21__21_ (const GGS_location & in_mInstructionLocation,
-              const GGS_semanticExpressionAST & in_mSourceExpression,
-              Compiler * inCompiler
-              COMMA_LOCATION_ARGS) {
-  cPtr_selfAssignmentInstructionAST * object = nullptr ;
-  macroMyNew (object, cPtr_selfAssignmentInstructionAST (inCompiler COMMA_THERE)) ;
-  object->selfAssignmentInstructionAST_init_21__21_ (in_mInstructionLocation, in_mSourceExpression, inCompiler) ;
-  const GGS_selfAssignmentInstructionAST result (object) ;
-  macroDetachSharedObject (object) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_selfAssignmentInstructionAST::
-selfAssignmentInstructionAST_init_21__21_ (const GGS_location & in_mInstructionLocation,
-                                           const GGS_semanticExpressionAST & in_mSourceExpression,
-                                           Compiler * /* inCompiler */) {
-  mProperty_mInstructionLocation = in_mInstructionLocation ;
-  mProperty_mSourceExpression = in_mSourceExpression ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_selfAssignmentInstructionAST::GGS_selfAssignmentInstructionAST (const cPtr_selfAssignmentInstructionAST * inSourcePtr) :
-GGS_semanticInstructionAST (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_selfAssignmentInstructionAST) ;
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_semanticExpressionAST GGS_selfAssignmentInstructionAST::readProperty_mSourceExpression (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_semanticExpressionAST () ;
-  }else{
-    cPtr_selfAssignmentInstructionAST * p = (cPtr_selfAssignmentInstructionAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_selfAssignmentInstructionAST) ;
-    return p->mProperty_mSourceExpression ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-//Pointer class for @selfAssignmentInstructionAST class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_selfAssignmentInstructionAST::cPtr_selfAssignmentInstructionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_semanticInstructionAST (inCompiler COMMA_THERE),
-mProperty_mSourceExpression () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cPtr_selfAssignmentInstructionAST::cPtr_selfAssignmentInstructionAST (const GGS_location & in_mInstructionLocation,
-                                                                      const GGS_semanticExpressionAST & in_mSourceExpression,
-                                                                      Compiler * inCompiler
-                                                                      COMMA_LOCATION_ARGS) :
-cPtr_semanticInstructionAST (in_mInstructionLocation, inCompiler COMMA_THERE),
-mProperty_mSourceExpression () {
-  mProperty_mInstructionLocation = in_mInstructionLocation ;
-  mProperty_mSourceExpression = in_mSourceExpression ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * cPtr_selfAssignmentInstructionAST::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_selfAssignmentInstructionAST ;
-}
-
-void cPtr_selfAssignmentInstructionAST::description (String & ioString,
-                                                     const int32_t inIndentation) const {
-  ioString.appendCString ("[@selfAssignmentInstructionAST:") ;
-  mProperty_mInstructionLocation.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mSourceExpression.description (ioString, inIndentation+1) ;
-  ioString.appendCString ("]") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-acPtr_class * cPtr_selfAssignmentInstructionAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_selfAssignmentInstructionAST (mProperty_mInstructionLocation, mProperty_mSourceExpression, inCompiler COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_selfAssignmentInstructionAST::printNonNullClassInstanceProperties (void) const {
-    cPtr_semanticInstructionAST::printNonNullClassInstanceProperties () ;
-    mProperty_mSourceExpression.printNonNullClassInstanceProperties ("mSourceExpression") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-//     @selfAssignmentInstructionAST generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_selfAssignmentInstructionAST ("selfAssignmentInstructionAST",
-                                                                                 & kTypeDescriptor_GALGAS_semanticInstructionAST) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_selfAssignmentInstructionAST::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_selfAssignmentInstructionAST ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_selfAssignmentInstructionAST::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_selfAssignmentInstructionAST (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_selfAssignmentInstructionAST GGS_selfAssignmentInstructionAST::extractObject (const GGS_object & inObject,
-                                                                                  Compiler * inCompiler
-                                                                                  COMMA_LOCATION_ARGS) {
-  GGS_selfAssignmentInstructionAST result ;
-  const GGS_selfAssignmentInstructionAST * p = (const GGS_selfAssignmentInstructionAST *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_selfAssignmentInstructionAST *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("selfAssignmentInstructionAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-// @superInitInstructionAST reference class
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult GGS_superInitInstructionAST::objectCompare (const GGS_superInitInstructionAST & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    const size_t myObjectPtr = size_t (mObjectPtr) ;
-    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_superInitInstructionAST::GGS_superInitInstructionAST (void) :
-GGS_semanticInstructionAST () {
-}
-
-//--- Synthetized initializer ----------------------------------------------------------------------
-
-GGS_superInitInstructionAST GGS_superInitInstructionAST::
-init_21__21_ (const GGS_location & in_mInstructionLocation,
-              const GGS_actualOutputArgumentList & in_mActualParameterList,
-              Compiler * inCompiler
-              COMMA_LOCATION_ARGS) {
-  cPtr_superInitInstructionAST * object = nullptr ;
-  macroMyNew (object, cPtr_superInitInstructionAST (inCompiler COMMA_THERE)) ;
-  object->superInitInstructionAST_init_21__21_ (in_mInstructionLocation, in_mActualParameterList, inCompiler) ;
-  const GGS_superInitInstructionAST result (object) ;
-  macroDetachSharedObject (object) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_superInitInstructionAST::
-superInitInstructionAST_init_21__21_ (const GGS_location & in_mInstructionLocation,
-                                      const GGS_actualOutputArgumentList & in_mActualParameterList,
-                                      Compiler * /* inCompiler */) {
-  mProperty_mInstructionLocation = in_mInstructionLocation ;
-  mProperty_mActualParameterList = in_mActualParameterList ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_superInitInstructionAST::GGS_superInitInstructionAST (const cPtr_superInitInstructionAST * inSourcePtr) :
-GGS_semanticInstructionAST (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_superInitInstructionAST) ;
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_actualOutputArgumentList GGS_superInitInstructionAST::readProperty_mActualParameterList (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_actualOutputArgumentList () ;
-  }else{
-    cPtr_superInitInstructionAST * p = (cPtr_superInitInstructionAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_superInitInstructionAST) ;
-    return p->mProperty_mActualParameterList ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-//Pointer class for @superInitInstructionAST class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_superInitInstructionAST::cPtr_superInitInstructionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_semanticInstructionAST (inCompiler COMMA_THERE),
-mProperty_mActualParameterList () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cPtr_superInitInstructionAST::cPtr_superInitInstructionAST (const GGS_location & in_mInstructionLocation,
-                                                            const GGS_actualOutputArgumentList & in_mActualParameterList,
-                                                            Compiler * inCompiler
-                                                            COMMA_LOCATION_ARGS) :
-cPtr_semanticInstructionAST (in_mInstructionLocation, inCompiler COMMA_THERE),
-mProperty_mActualParameterList () {
-  mProperty_mInstructionLocation = in_mInstructionLocation ;
-  mProperty_mActualParameterList = in_mActualParameterList ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * cPtr_superInitInstructionAST::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_superInitInstructionAST ;
-}
-
-void cPtr_superInitInstructionAST::description (String & ioString,
-                                                const int32_t inIndentation) const {
-  ioString.appendCString ("[@superInitInstructionAST:") ;
-  mProperty_mInstructionLocation.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mActualParameterList.description (ioString, inIndentation+1) ;
-  ioString.appendCString ("]") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-acPtr_class * cPtr_superInitInstructionAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_superInitInstructionAST (mProperty_mInstructionLocation, mProperty_mActualParameterList, inCompiler COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_superInitInstructionAST::printNonNullClassInstanceProperties (void) const {
-    cPtr_semanticInstructionAST::printNonNullClassInstanceProperties () ;
-    mProperty_mActualParameterList.printNonNullClassInstanceProperties ("mActualParameterList") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-//     @superInitInstructionAST generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_superInitInstructionAST ("superInitInstructionAST",
-                                                                            & kTypeDescriptor_GALGAS_semanticInstructionAST) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_superInitInstructionAST::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_superInitInstructionAST ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_superInitInstructionAST::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_superInitInstructionAST (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_superInitInstructionAST GGS_superInitInstructionAST::extractObject (const GGS_object & inObject,
+GGS_templateAnalysisContext GGS_templateAnalysisContext::extractObject (const GGS_object & inObject,
                                                                         Compiler * inCompiler
                                                                         COMMA_LOCATION_ARGS) {
-  GGS_superInitInstructionAST result ;
-  const GGS_superInitInstructionAST * p = (const GGS_superInitInstructionAST *) inObject.embeddedObject () ;
+  GGS_templateAnalysisContext result ;
+  const GGS_templateAnalysisContext * p = (const GGS_templateAnalysisContext *) inObject.embeddedObject () ;
   if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_superInitInstructionAST *> (p)) {
+    if (nullptr != dynamic_cast <const GGS_templateAnalysisContext *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("superInitInstructionAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("templateAnalysisContext", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
-// @warningInstructionAST reference class
+//
+//Abstract extension method '@templateExpressionAST templateExpressionAnalysis'
+//
 //--------------------------------------------------------------------------------------------------
 
-ComparisonResult GGS_warningInstructionAST::objectCompare (const GGS_warningInstructionAST & inOperand) const {
+void callExtensionMethod_templateExpressionAnalysis (cPtr_templateExpressionAST * inObject,
+                                                     const GGS_lstring constin_inUsefulnessCallerEntityName,
+                                                     GGS_usefulEntitiesGraph & io_ioUsefulEntitiesGraph,
+                                                     const GGS_templateAnalysisContext constin_inAnalysisContext,
+                                                     GGS_unifiedTypeMap & io_ioTypeMap,
+                                                     GGS_semanticExpressionForGeneration & out_outExpression,
+                                                     Compiler * inCompiler
+                                                     COMMA_LOCATION_ARGS) {
+//--- Drop output arguments
+  out_outExpression.drop () ;
+//--- Find method
+  if (nullptr != inObject) {
+    macroValidSharedObject (inObject, cPtr_templateExpressionAST) ;
+    inObject->method_templateExpressionAnalysis (constin_inUsefulnessCallerEntityName, io_ioUsefulEntitiesGraph, constin_inAnalysisContext, io_ioTypeMap, out_outExpression, inCompiler COMMA_THERE) ;
+  }
+}
+//--------------------------------------------------------------------------------------------------
+// @templateGetterCallInExpressionAST reference class
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GGS_templateGetterCallInExpressionAST::objectCompare (const GGS_templateGetterCallInExpressionAST & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
     const size_t myObjectPtr = size_t (mObjectPtr) ;
@@ -10621,3345 +10016,150 @@ ComparisonResult GGS_warningInstructionAST::objectCompare (const GGS_warningInst
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_warningInstructionAST::GGS_warningInstructionAST (void) :
-GGS_semanticInstructionAST () {
+GGS_templateGetterCallInExpressionAST::GGS_templateGetterCallInExpressionAST (void) :
+GGS_templateExpressionAST () {
 }
 
 //--- Synthetized initializer ----------------------------------------------------------------------
 
-GGS_warningInstructionAST GGS_warningInstructionAST::
-init_21__21__21__21_ (const GGS_location & in_mInstructionLocation,
-                      const GGS_semanticExpressionAST & in_mLocationExpression,
-                      const GGS_semanticExpressionAST & in_mMessageExpression,
-                      const GGS_fixitListAST & in_mFixitListAST,
+GGS_templateGetterCallInExpressionAST GGS_templateGetterCallInExpressionAST::
+init_21__21__21__21_ (const GGS_templateExpressionAST & in_mReceiverExpression,
+                      const GGS_lstring & in_mGetterName,
+                      const GGS_templateExpressionListAST & in_mExpressionList,
+                      const GGS_location & in_mExpressionLocation,
                       Compiler * inCompiler
                       COMMA_LOCATION_ARGS) {
-  cPtr_warningInstructionAST * object = nullptr ;
-  macroMyNew (object, cPtr_warningInstructionAST (inCompiler COMMA_THERE)) ;
-  object->warningInstructionAST_init_21__21__21__21_ (in_mInstructionLocation, in_mLocationExpression, in_mMessageExpression, in_mFixitListAST, inCompiler) ;
-  const GGS_warningInstructionAST result (object) ;
+  cPtr_templateGetterCallInExpressionAST * object = nullptr ;
+  macroMyNew (object, cPtr_templateGetterCallInExpressionAST (inCompiler COMMA_THERE)) ;
+  object->templateGetterCallInExpressionAST_init_21__21__21__21_ (in_mReceiverExpression, in_mGetterName, in_mExpressionList, in_mExpressionLocation, inCompiler) ;
+  const GGS_templateGetterCallInExpressionAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void cPtr_warningInstructionAST::
-warningInstructionAST_init_21__21__21__21_ (const GGS_location & in_mInstructionLocation,
-                                            const GGS_semanticExpressionAST & in_mLocationExpression,
-                                            const GGS_semanticExpressionAST & in_mMessageExpression,
-                                            const GGS_fixitListAST & in_mFixitListAST,
-                                            Compiler * /* inCompiler */) {
-  mProperty_mInstructionLocation = in_mInstructionLocation ;
-  mProperty_mLocationExpression = in_mLocationExpression ;
-  mProperty_mMessageExpression = in_mMessageExpression ;
-  mProperty_mFixitListAST = in_mFixitListAST ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_warningInstructionAST::GGS_warningInstructionAST (const cPtr_warningInstructionAST * inSourcePtr) :
-GGS_semanticInstructionAST (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_warningInstructionAST) ;
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_semanticExpressionAST GGS_warningInstructionAST::readProperty_mLocationExpression (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_semanticExpressionAST () ;
-  }else{
-    cPtr_warningInstructionAST * p = (cPtr_warningInstructionAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_warningInstructionAST) ;
-    return p->mProperty_mLocationExpression ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_semanticExpressionAST GGS_warningInstructionAST::readProperty_mMessageExpression (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_semanticExpressionAST () ;
-  }else{
-    cPtr_warningInstructionAST * p = (cPtr_warningInstructionAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_warningInstructionAST) ;
-    return p->mProperty_mMessageExpression ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_fixitListAST GGS_warningInstructionAST::readProperty_mFixitListAST (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_fixitListAST () ;
-  }else{
-    cPtr_warningInstructionAST * p = (cPtr_warningInstructionAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_warningInstructionAST) ;
-    return p->mProperty_mFixitListAST ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-//Pointer class for @warningInstructionAST class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_warningInstructionAST::cPtr_warningInstructionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_semanticInstructionAST (inCompiler COMMA_THERE),
-mProperty_mLocationExpression (),
-mProperty_mMessageExpression (),
-mProperty_mFixitListAST () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cPtr_warningInstructionAST::cPtr_warningInstructionAST (const GGS_location & in_mInstructionLocation,
-                                                        const GGS_semanticExpressionAST & in_mLocationExpression,
-                                                        const GGS_semanticExpressionAST & in_mMessageExpression,
-                                                        const GGS_fixitListAST & in_mFixitListAST,
-                                                        Compiler * inCompiler
-                                                        COMMA_LOCATION_ARGS) :
-cPtr_semanticInstructionAST (in_mInstructionLocation, inCompiler COMMA_THERE),
-mProperty_mLocationExpression (),
-mProperty_mMessageExpression (),
-mProperty_mFixitListAST () {
-  mProperty_mInstructionLocation = in_mInstructionLocation ;
-  mProperty_mLocationExpression = in_mLocationExpression ;
-  mProperty_mMessageExpression = in_mMessageExpression ;
-  mProperty_mFixitListAST = in_mFixitListAST ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * cPtr_warningInstructionAST::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_warningInstructionAST ;
-}
-
-void cPtr_warningInstructionAST::description (String & ioString,
-                                              const int32_t inIndentation) const {
-  ioString.appendCString ("[@warningInstructionAST:") ;
-  mProperty_mInstructionLocation.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mLocationExpression.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mMessageExpression.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mFixitListAST.description (ioString, inIndentation+1) ;
-  ioString.appendCString ("]") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-acPtr_class * cPtr_warningInstructionAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_warningInstructionAST (mProperty_mInstructionLocation, mProperty_mLocationExpression, mProperty_mMessageExpression, mProperty_mFixitListAST, inCompiler COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_warningInstructionAST::printNonNullClassInstanceProperties (void) const {
-    cPtr_semanticInstructionAST::printNonNullClassInstanceProperties () ;
-    mProperty_mLocationExpression.printNonNullClassInstanceProperties ("mLocationExpression") ;
-    mProperty_mMessageExpression.printNonNullClassInstanceProperties ("mMessageExpression") ;
-    mProperty_mFixitListAST.printNonNullClassInstanceProperties ("mFixitListAST") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-//     @warningInstructionAST generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_warningInstructionAST ("warningInstructionAST",
-                                                                          & kTypeDescriptor_GALGAS_semanticInstructionAST) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_warningInstructionAST::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_warningInstructionAST ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_warningInstructionAST::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_warningInstructionAST (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_warningInstructionAST GGS_warningInstructionAST::extractObject (const GGS_object & inObject,
-                                                                    Compiler * inCompiler
-                                                                    COMMA_LOCATION_ARGS) {
-  GGS_warningInstructionAST result ;
-  const GGS_warningInstructionAST * p = (const GGS_warningInstructionAST *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_warningInstructionAST *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("warningInstructionAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-// @warningInstructionForGeneration reference class
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult GGS_warningInstructionForGeneration::objectCompare (const GGS_warningInstructionForGeneration & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    const size_t myObjectPtr = size_t (mObjectPtr) ;
-    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_warningInstructionForGeneration::GGS_warningInstructionForGeneration (void) :
-GGS_semanticInstructionForGeneration () {
-}
-
-//--- Synthetized initializer ----------------------------------------------------------------------
-
-GGS_warningInstructionForGeneration GGS_warningInstructionForGeneration::
-init_21__21__21__21_ (const GGS_location & in_mInstructionLocation,
-                      const GGS_semanticExpressionForGeneration & in_mReceiverExpression,
-                      const GGS_semanticExpressionForGeneration & in_mWarningExpression,
-                      const GGS_fixitListForGeneration & in_mFixitListForGeneration,
-                      Compiler * inCompiler
-                      COMMA_LOCATION_ARGS) {
-  cPtr_warningInstructionForGeneration * object = nullptr ;
-  macroMyNew (object, cPtr_warningInstructionForGeneration (inCompiler COMMA_THERE)) ;
-  object->warningInstructionForGeneration_init_21__21__21__21_ (in_mInstructionLocation, in_mReceiverExpression, in_mWarningExpression, in_mFixitListForGeneration, inCompiler) ;
-  const GGS_warningInstructionForGeneration result (object) ;
-  macroDetachSharedObject (object) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_warningInstructionForGeneration::
-warningInstructionForGeneration_init_21__21__21__21_ (const GGS_location & in_mInstructionLocation,
-                                                      const GGS_semanticExpressionForGeneration & in_mReceiverExpression,
-                                                      const GGS_semanticExpressionForGeneration & in_mWarningExpression,
-                                                      const GGS_fixitListForGeneration & in_mFixitListForGeneration,
-                                                      Compiler * /* inCompiler */) {
-  mProperty_mInstructionLocation = in_mInstructionLocation ;
+void cPtr_templateGetterCallInExpressionAST::
+templateGetterCallInExpressionAST_init_21__21__21__21_ (const GGS_templateExpressionAST & in_mReceiverExpression,
+                                                        const GGS_lstring & in_mGetterName,
+                                                        const GGS_templateExpressionListAST & in_mExpressionList,
+                                                        const GGS_location & in_mExpressionLocation,
+                                                        Compiler * /* inCompiler */) {
   mProperty_mReceiverExpression = in_mReceiverExpression ;
-  mProperty_mWarningExpression = in_mWarningExpression ;
-  mProperty_mFixitListForGeneration = in_mFixitListForGeneration ;
+  mProperty_mGetterName = in_mGetterName ;
+  mProperty_mExpressionList = in_mExpressionList ;
+  mProperty_mExpressionLocation = in_mExpressionLocation ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_warningInstructionForGeneration::GGS_warningInstructionForGeneration (const cPtr_warningInstructionForGeneration * inSourcePtr) :
-GGS_semanticInstructionForGeneration (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_warningInstructionForGeneration) ;
+GGS_templateGetterCallInExpressionAST::GGS_templateGetterCallInExpressionAST (const cPtr_templateGetterCallInExpressionAST * inSourcePtr) :
+GGS_templateExpressionAST (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_templateGetterCallInExpressionAST) ;
 }
 //--------------------------------------------------------------------------------------------------
 
-GGS_location GGS_warningInstructionForGeneration::readProperty_mInstructionLocation (void) const {
+GGS_templateExpressionAST GGS_templateGetterCallInExpressionAST::readProperty_mReceiverExpression (void) const {
   if (nullptr == mObjectPtr) {
-    return GGS_location () ;
+    return GGS_templateExpressionAST () ;
   }else{
-    cPtr_warningInstructionForGeneration * p = (cPtr_warningInstructionForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_warningInstructionForGeneration) ;
-    return p->mProperty_mInstructionLocation ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_semanticExpressionForGeneration GGS_warningInstructionForGeneration::readProperty_mReceiverExpression (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_semanticExpressionForGeneration () ;
-  }else{
-    cPtr_warningInstructionForGeneration * p = (cPtr_warningInstructionForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_warningInstructionForGeneration) ;
+    cPtr_templateGetterCallInExpressionAST * p = (cPtr_templateGetterCallInExpressionAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_templateGetterCallInExpressionAST) ;
     return p->mProperty_mReceiverExpression ;
   }
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_semanticExpressionForGeneration GGS_warningInstructionForGeneration::readProperty_mWarningExpression (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_semanticExpressionForGeneration () ;
-  }else{
-    cPtr_warningInstructionForGeneration * p = (cPtr_warningInstructionForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_warningInstructionForGeneration) ;
-    return p->mProperty_mWarningExpression ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_fixitListForGeneration GGS_warningInstructionForGeneration::readProperty_mFixitListForGeneration (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_fixitListForGeneration () ;
-  }else{
-    cPtr_warningInstructionForGeneration * p = (cPtr_warningInstructionForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_warningInstructionForGeneration) ;
-    return p->mProperty_mFixitListForGeneration ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-//Pointer class for @warningInstructionForGeneration class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_warningInstructionForGeneration::cPtr_warningInstructionForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_semanticInstructionForGeneration (inCompiler COMMA_THERE),
-mProperty_mInstructionLocation (),
-mProperty_mReceiverExpression (),
-mProperty_mWarningExpression (),
-mProperty_mFixitListForGeneration () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cPtr_warningInstructionForGeneration::cPtr_warningInstructionForGeneration (const GGS_location & in_mInstructionLocation,
-                                                                            const GGS_semanticExpressionForGeneration & in_mReceiverExpression,
-                                                                            const GGS_semanticExpressionForGeneration & in_mWarningExpression,
-                                                                            const GGS_fixitListForGeneration & in_mFixitListForGeneration,
-                                                                            Compiler * inCompiler
-                                                                            COMMA_LOCATION_ARGS) :
-cPtr_semanticInstructionForGeneration (inCompiler COMMA_THERE),
-mProperty_mInstructionLocation (),
-mProperty_mReceiverExpression (),
-mProperty_mWarningExpression (),
-mProperty_mFixitListForGeneration () {
-  mProperty_mInstructionLocation = in_mInstructionLocation ;
-  mProperty_mReceiverExpression = in_mReceiverExpression ;
-  mProperty_mWarningExpression = in_mWarningExpression ;
-  mProperty_mFixitListForGeneration = in_mFixitListForGeneration ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * cPtr_warningInstructionForGeneration::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_warningInstructionForGeneration ;
-}
-
-void cPtr_warningInstructionForGeneration::description (String & ioString,
-                                                        const int32_t inIndentation) const {
-  ioString.appendCString ("[@warningInstructionForGeneration:") ;
-  mProperty_mInstructionLocation.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mReceiverExpression.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mWarningExpression.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mFixitListForGeneration.description (ioString, inIndentation+1) ;
-  ioString.appendCString ("]") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-acPtr_class * cPtr_warningInstructionForGeneration::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_warningInstructionForGeneration (mProperty_mInstructionLocation, mProperty_mReceiverExpression, mProperty_mWarningExpression, mProperty_mFixitListForGeneration, inCompiler COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_warningInstructionForGeneration::printNonNullClassInstanceProperties (void) const {
-    cPtr_semanticInstructionForGeneration::printNonNullClassInstanceProperties () ;
-    mProperty_mInstructionLocation.printNonNullClassInstanceProperties ("mInstructionLocation") ;
-    mProperty_mReceiverExpression.printNonNullClassInstanceProperties ("mReceiverExpression") ;
-    mProperty_mWarningExpression.printNonNullClassInstanceProperties ("mWarningExpression") ;
-    mProperty_mFixitListForGeneration.printNonNullClassInstanceProperties ("mFixitListForGeneration") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-//     @warningInstructionForGeneration generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_warningInstructionForGeneration ("warningInstructionForGeneration",
-                                                                                    & kTypeDescriptor_GALGAS_semanticInstructionForGeneration) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_warningInstructionForGeneration::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_warningInstructionForGeneration ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_warningInstructionForGeneration::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_warningInstructionForGeneration (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_warningInstructionForGeneration GGS_warningInstructionForGeneration::extractObject (const GGS_object & inObject,
-                                                                                        Compiler * inCompiler
-                                                                                        COMMA_LOCATION_ARGS) {
-  GGS_warningInstructionForGeneration result ;
-  const GGS_warningInstructionForGeneration * p = (const GGS_warningInstructionForGeneration *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_warningInstructionForGeneration *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("warningInstructionForGeneration", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-// @selectInstruction reference class
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult GGS_selectInstruction::objectCompare (const GGS_selectInstruction & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    const size_t myObjectPtr = size_t (mObjectPtr) ;
-    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_selectInstruction::GGS_selectInstruction (void) :
-GGS_syntaxInstructionAST () {
-}
-
-//--- Synthetized initializer ----------------------------------------------------------------------
-
-GGS_selectInstruction GGS_selectInstruction::
-init_21__21__21_ (const GGS_location & in_mInstructionLocation,
-                  const GGS_listOfSyntaxInstructionList & in_mSelectBranchList,
-                  const GGS_location & in_mEndOf_5F_select_5F_instruction,
-                  Compiler * inCompiler
-                  COMMA_LOCATION_ARGS) {
-  cPtr_selectInstruction * object = nullptr ;
-  macroMyNew (object, cPtr_selectInstruction (inCompiler COMMA_THERE)) ;
-  object->selectInstruction_init_21__21__21_ (in_mInstructionLocation, in_mSelectBranchList, in_mEndOf_5F_select_5F_instruction, inCompiler) ;
-  const GGS_selectInstruction result (object) ;
-  macroDetachSharedObject (object) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_selectInstruction::
-selectInstruction_init_21__21__21_ (const GGS_location & in_mInstructionLocation,
-                                    const GGS_listOfSyntaxInstructionList & in_mSelectBranchList,
-                                    const GGS_location & in_mEndOf_5F_select_5F_instruction,
-                                    Compiler * /* inCompiler */) {
-  mProperty_mInstructionLocation = in_mInstructionLocation ;
-  mProperty_mSelectBranchList = in_mSelectBranchList ;
-  mProperty_mEndOf_5F_select_5F_instruction = in_mEndOf_5F_select_5F_instruction ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_selectInstruction::GGS_selectInstruction (const cPtr_selectInstruction * inSourcePtr) :
-GGS_syntaxInstructionAST (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_selectInstruction) ;
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_listOfSyntaxInstructionList GGS_selectInstruction::readProperty_mSelectBranchList (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_listOfSyntaxInstructionList () ;
-  }else{
-    cPtr_selectInstruction * p = (cPtr_selectInstruction *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_selectInstruction) ;
-    return p->mProperty_mSelectBranchList ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_location GGS_selectInstruction::readProperty_mEndOf_5F_select_5F_instruction (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_location () ;
-  }else{
-    cPtr_selectInstruction * p = (cPtr_selectInstruction *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_selectInstruction) ;
-    return p->mProperty_mEndOf_5F_select_5F_instruction ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-//Pointer class for @selectInstruction class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_selectInstruction::cPtr_selectInstruction (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_syntaxInstructionAST (inCompiler COMMA_THERE),
-mProperty_mSelectBranchList (),
-mProperty_mEndOf_5F_select_5F_instruction () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cPtr_selectInstruction::cPtr_selectInstruction (const GGS_location & in_mInstructionLocation,
-                                                const GGS_listOfSyntaxInstructionList & in_mSelectBranchList,
-                                                const GGS_location & in_mEndOf_5F_select_5F_instruction,
-                                                Compiler * inCompiler
-                                                COMMA_LOCATION_ARGS) :
-cPtr_syntaxInstructionAST (in_mInstructionLocation, inCompiler COMMA_THERE),
-mProperty_mSelectBranchList (),
-mProperty_mEndOf_5F_select_5F_instruction () {
-  mProperty_mInstructionLocation = in_mInstructionLocation ;
-  mProperty_mSelectBranchList = in_mSelectBranchList ;
-  mProperty_mEndOf_5F_select_5F_instruction = in_mEndOf_5F_select_5F_instruction ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * cPtr_selectInstruction::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_selectInstruction ;
-}
-
-void cPtr_selectInstruction::description (String & ioString,
-                                          const int32_t inIndentation) const {
-  ioString.appendCString ("[@selectInstruction:") ;
-  mProperty_mInstructionLocation.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mSelectBranchList.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mEndOf_5F_select_5F_instruction.description (ioString, inIndentation+1) ;
-  ioString.appendCString ("]") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-acPtr_class * cPtr_selectInstruction::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_selectInstruction (mProperty_mInstructionLocation, mProperty_mSelectBranchList, mProperty_mEndOf_5F_select_5F_instruction, inCompiler COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_selectInstruction::printNonNullClassInstanceProperties (void) const {
-    cPtr_syntaxInstructionAST::printNonNullClassInstanceProperties () ;
-    mProperty_mSelectBranchList.printNonNullClassInstanceProperties ("mSelectBranchList") ;
-    mProperty_mEndOf_5F_select_5F_instruction.printNonNullClassInstanceProperties ("mEndOf_select_instruction") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-//     @selectInstruction generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_selectInstruction ("selectInstruction",
-                                                                      & kTypeDescriptor_GALGAS_syntaxInstructionAST) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_selectInstruction::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_selectInstruction ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_selectInstruction::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_selectInstruction (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_selectInstruction GGS_selectInstruction::extractObject (const GGS_object & inObject,
-                                                            Compiler * inCompiler
-                                                            COMMA_LOCATION_ARGS) {
-  GGS_selectInstruction result ;
-  const GGS_selectInstruction * p = (const GGS_selectInstruction *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_selectInstruction *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("selectInstruction", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-// @logInstructionAST reference class
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult GGS_logInstructionAST::objectCompare (const GGS_logInstructionAST & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    const size_t myObjectPtr = size_t (mObjectPtr) ;
-    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_logInstructionAST::GGS_logInstructionAST (void) :
-GGS_semanticInstructionAST () {
-}
-
-//--- Synthetized initializer ----------------------------------------------------------------------
-
-GGS_logInstructionAST GGS_logInstructionAST::
-init_21__21_ (const GGS_location & in_mInstructionLocation,
-              const GGS_logListAST & in_mLogList,
-              Compiler * inCompiler
-              COMMA_LOCATION_ARGS) {
-  cPtr_logInstructionAST * object = nullptr ;
-  macroMyNew (object, cPtr_logInstructionAST (inCompiler COMMA_THERE)) ;
-  object->logInstructionAST_init_21__21_ (in_mInstructionLocation, in_mLogList, inCompiler) ;
-  const GGS_logInstructionAST result (object) ;
-  macroDetachSharedObject (object) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_logInstructionAST::
-logInstructionAST_init_21__21_ (const GGS_location & in_mInstructionLocation,
-                                const GGS_logListAST & in_mLogList,
-                                Compiler * /* inCompiler */) {
-  mProperty_mInstructionLocation = in_mInstructionLocation ;
-  mProperty_mLogList = in_mLogList ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_logInstructionAST::GGS_logInstructionAST (const cPtr_logInstructionAST * inSourcePtr) :
-GGS_semanticInstructionAST (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_logInstructionAST) ;
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_logListAST GGS_logInstructionAST::readProperty_mLogList (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_logListAST () ;
-  }else{
-    cPtr_logInstructionAST * p = (cPtr_logInstructionAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_logInstructionAST) ;
-    return p->mProperty_mLogList ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-//Pointer class for @logInstructionAST class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_logInstructionAST::cPtr_logInstructionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_semanticInstructionAST (inCompiler COMMA_THERE),
-mProperty_mLogList () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cPtr_logInstructionAST::cPtr_logInstructionAST (const GGS_location & in_mInstructionLocation,
-                                                const GGS_logListAST & in_mLogList,
-                                                Compiler * inCompiler
-                                                COMMA_LOCATION_ARGS) :
-cPtr_semanticInstructionAST (in_mInstructionLocation, inCompiler COMMA_THERE),
-mProperty_mLogList () {
-  mProperty_mInstructionLocation = in_mInstructionLocation ;
-  mProperty_mLogList = in_mLogList ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * cPtr_logInstructionAST::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_logInstructionAST ;
-}
-
-void cPtr_logInstructionAST::description (String & ioString,
-                                          const int32_t inIndentation) const {
-  ioString.appendCString ("[@logInstructionAST:") ;
-  mProperty_mInstructionLocation.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mLogList.description (ioString, inIndentation+1) ;
-  ioString.appendCString ("]") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-acPtr_class * cPtr_logInstructionAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_logInstructionAST (mProperty_mInstructionLocation, mProperty_mLogList, inCompiler COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_logInstructionAST::printNonNullClassInstanceProperties (void) const {
-    cPtr_semanticInstructionAST::printNonNullClassInstanceProperties () ;
-    mProperty_mLogList.printNonNullClassInstanceProperties ("mLogList") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-//     @logInstructionAST generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_logInstructionAST ("logInstructionAST",
-                                                                      & kTypeDescriptor_GALGAS_semanticInstructionAST) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_logInstructionAST::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_logInstructionAST ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_logInstructionAST::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_logInstructionAST (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_logInstructionAST GGS_logInstructionAST::extractObject (const GGS_object & inObject,
-                                                            Compiler * inCompiler
-                                                            COMMA_LOCATION_ARGS) {
-  GGS_logInstructionAST result ;
-  const GGS_logInstructionAST * p = (const GGS_logInstructionAST *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_logInstructionAST *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("logInstructionAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-// @logInstructionForGeneration reference class
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult GGS_logInstructionForGeneration::objectCompare (const GGS_logInstructionForGeneration & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    const size_t myObjectPtr = size_t (mObjectPtr) ;
-    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_logInstructionForGeneration::GGS_logInstructionForGeneration (void) :
-GGS_semanticInstructionForGeneration () {
-}
-
-//--- Synthetized initializer ----------------------------------------------------------------------
-
-GGS_logInstructionForGeneration GGS_logInstructionForGeneration::
-init_21__21_ (const GGS_lstring & in_mLogMessage,
-              const GGS_semanticExpressionForGeneration & in_mLogExpression,
-              Compiler * inCompiler
-              COMMA_LOCATION_ARGS) {
-  cPtr_logInstructionForGeneration * object = nullptr ;
-  macroMyNew (object, cPtr_logInstructionForGeneration (inCompiler COMMA_THERE)) ;
-  object->logInstructionForGeneration_init_21__21_ (in_mLogMessage, in_mLogExpression, inCompiler) ;
-  const GGS_logInstructionForGeneration result (object) ;
-  macroDetachSharedObject (object) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_logInstructionForGeneration::
-logInstructionForGeneration_init_21__21_ (const GGS_lstring & in_mLogMessage,
-                                          const GGS_semanticExpressionForGeneration & in_mLogExpression,
-                                          Compiler * /* inCompiler */) {
-  mProperty_mLogMessage = in_mLogMessage ;
-  mProperty_mLogExpression = in_mLogExpression ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_logInstructionForGeneration::GGS_logInstructionForGeneration (const cPtr_logInstructionForGeneration * inSourcePtr) :
-GGS_semanticInstructionForGeneration (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_logInstructionForGeneration) ;
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_lstring GGS_logInstructionForGeneration::readProperty_mLogMessage (void) const {
+GGS_lstring GGS_templateGetterCallInExpressionAST::readProperty_mGetterName (void) const {
   if (nullptr == mObjectPtr) {
     return GGS_lstring () ;
   }else{
-    cPtr_logInstructionForGeneration * p = (cPtr_logInstructionForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_logInstructionForGeneration) ;
-    return p->mProperty_mLogMessage ;
+    cPtr_templateGetterCallInExpressionAST * p = (cPtr_templateGetterCallInExpressionAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_templateGetterCallInExpressionAST) ;
+    return p->mProperty_mGetterName ;
   }
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_semanticExpressionForGeneration GGS_logInstructionForGeneration::readProperty_mLogExpression (void) const {
+GGS_templateExpressionListAST GGS_templateGetterCallInExpressionAST::readProperty_mExpressionList (void) const {
   if (nullptr == mObjectPtr) {
-    return GGS_semanticExpressionForGeneration () ;
+    return GGS_templateExpressionListAST () ;
   }else{
-    cPtr_logInstructionForGeneration * p = (cPtr_logInstructionForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_logInstructionForGeneration) ;
-    return p->mProperty_mLogExpression ;
+    cPtr_templateGetterCallInExpressionAST * p = (cPtr_templateGetterCallInExpressionAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_templateGetterCallInExpressionAST) ;
+    return p->mProperty_mExpressionList ;
   }
 }
 
 //--------------------------------------------------------------------------------------------------
-//Pointer class for @logInstructionForGeneration class
-//--------------------------------------------------------------------------------------------------
 
-cPtr_logInstructionForGeneration::cPtr_logInstructionForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_semanticInstructionForGeneration (inCompiler COMMA_THERE),
-mProperty_mLogMessage (),
-mProperty_mLogExpression () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cPtr_logInstructionForGeneration::cPtr_logInstructionForGeneration (const GGS_lstring & in_mLogMessage,
-                                                                    const GGS_semanticExpressionForGeneration & in_mLogExpression,
-                                                                    Compiler * inCompiler
-                                                                    COMMA_LOCATION_ARGS) :
-cPtr_semanticInstructionForGeneration (inCompiler COMMA_THERE),
-mProperty_mLogMessage (),
-mProperty_mLogExpression () {
-  mProperty_mLogMessage = in_mLogMessage ;
-  mProperty_mLogExpression = in_mLogExpression ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * cPtr_logInstructionForGeneration::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_logInstructionForGeneration ;
-}
-
-void cPtr_logInstructionForGeneration::description (String & ioString,
-                                                    const int32_t inIndentation) const {
-  ioString.appendCString ("[@logInstructionForGeneration:") ;
-  mProperty_mLogMessage.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mLogExpression.description (ioString, inIndentation+1) ;
-  ioString.appendCString ("]") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-acPtr_class * cPtr_logInstructionForGeneration::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_logInstructionForGeneration (mProperty_mLogMessage, mProperty_mLogExpression, inCompiler COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_logInstructionForGeneration::printNonNullClassInstanceProperties (void) const {
-    cPtr_semanticInstructionForGeneration::printNonNullClassInstanceProperties () ;
-    mProperty_mLogMessage.printNonNullClassInstanceProperties ("mLogMessage") ;
-    mProperty_mLogExpression.printNonNullClassInstanceProperties ("mLogExpression") ;
+GGS_location GGS_templateGetterCallInExpressionAST::readProperty_mExpressionLocation (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_location () ;
+  }else{
+    cPtr_templateGetterCallInExpressionAST * p = (cPtr_templateGetterCallInExpressionAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_templateGetterCallInExpressionAST) ;
+    return p->mProperty_mExpressionLocation ;
   }
-#endif
+}
 
 //--------------------------------------------------------------------------------------------------
-//     @logInstructionForGeneration generic code implementation
+//Pointer class for @templateGetterCallInExpressionAST class
 //--------------------------------------------------------------------------------------------------
 
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_logInstructionForGeneration ("logInstructionForGeneration",
-                                                                                & kTypeDescriptor_GALGAS_semanticInstructionForGeneration) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_logInstructionForGeneration::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_logInstructionForGeneration ;
+cPtr_templateGetterCallInExpressionAST::cPtr_templateGetterCallInExpressionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_templateExpressionAST (inCompiler COMMA_THERE),
+mProperty_mReceiverExpression (),
+mProperty_mGetterName (),
+mProperty_mExpressionList (),
+mProperty_mExpressionLocation () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-AC_GALGAS_root * GGS_logInstructionForGeneration::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_logInstructionForGeneration (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_logInstructionForGeneration GGS_logInstructionForGeneration::extractObject (const GGS_object & inObject,
+cPtr_templateGetterCallInExpressionAST::cPtr_templateGetterCallInExpressionAST (const GGS_templateExpressionAST & in_mReceiverExpression,
+                                                                                const GGS_lstring & in_mGetterName,
+                                                                                const GGS_templateExpressionListAST & in_mExpressionList,
+                                                                                const GGS_location & in_mExpressionLocation,
                                                                                 Compiler * inCompiler
-                                                                                COMMA_LOCATION_ARGS) {
-  GGS_logInstructionForGeneration result ;
-  const GGS_logInstructionForGeneration * p = (const GGS_logInstructionForGeneration *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_logInstructionForGeneration *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("logInstructionForGeneration", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-// @ifInstructionAST reference class
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult GGS_ifInstructionAST::objectCompare (const GGS_ifInstructionAST & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    const size_t myObjectPtr = size_t (mObjectPtr) ;
-    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_ifInstructionAST::GGS_ifInstructionAST (void) :
-GGS_semanticInstructionAST () {
-}
-
-//--- Synthetized initializer ----------------------------------------------------------------------
-
-GGS_ifInstructionAST GGS_ifInstructionAST::
-init_21__21__21__21__21__21_ (const GGS_location & in_mInstructionLocation,
-                              const GGS_CommaSeparatedExpressionList & in_mExpressions,
-                              const GGS_semanticInstructionListAST & in_m_5F_then_5F_instructionList,
-                              const GGS_location & in_mEndOf_5F_then_5F_branch,
-                              const GGS_semanticInstructionListAST & in_m_5F_else_5F_instructionList,
-                              const GGS_location & in_mEndOf_5F_if_5F_instruction,
-                              Compiler * inCompiler
-                              COMMA_LOCATION_ARGS) {
-  cPtr_ifInstructionAST * object = nullptr ;
-  macroMyNew (object, cPtr_ifInstructionAST (inCompiler COMMA_THERE)) ;
-  object->ifInstructionAST_init_21__21__21__21__21__21_ (in_mInstructionLocation, in_mExpressions, in_m_5F_then_5F_instructionList, in_mEndOf_5F_then_5F_branch, in_m_5F_else_5F_instructionList, in_mEndOf_5F_if_5F_instruction, inCompiler) ;
-  const GGS_ifInstructionAST result (object) ;
-  macroDetachSharedObject (object) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_ifInstructionAST::
-ifInstructionAST_init_21__21__21__21__21__21_ (const GGS_location & in_mInstructionLocation,
-                                               const GGS_CommaSeparatedExpressionList & in_mExpressions,
-                                               const GGS_semanticInstructionListAST & in_m_5F_then_5F_instructionList,
-                                               const GGS_location & in_mEndOf_5F_then_5F_branch,
-                                               const GGS_semanticInstructionListAST & in_m_5F_else_5F_instructionList,
-                                               const GGS_location & in_mEndOf_5F_if_5F_instruction,
-                                               Compiler * /* inCompiler */) {
-  mProperty_mInstructionLocation = in_mInstructionLocation ;
-  mProperty_mExpressions = in_mExpressions ;
-  mProperty_m_5F_then_5F_instructionList = in_m_5F_then_5F_instructionList ;
-  mProperty_mEndOf_5F_then_5F_branch = in_mEndOf_5F_then_5F_branch ;
-  mProperty_m_5F_else_5F_instructionList = in_m_5F_else_5F_instructionList ;
-  mProperty_mEndOf_5F_if_5F_instruction = in_mEndOf_5F_if_5F_instruction ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_ifInstructionAST::GGS_ifInstructionAST (const cPtr_ifInstructionAST * inSourcePtr) :
-GGS_semanticInstructionAST (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_ifInstructionAST) ;
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_CommaSeparatedExpressionList GGS_ifInstructionAST::readProperty_mExpressions (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_CommaSeparatedExpressionList () ;
-  }else{
-    cPtr_ifInstructionAST * p = (cPtr_ifInstructionAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_ifInstructionAST) ;
-    return p->mProperty_mExpressions ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_semanticInstructionListAST GGS_ifInstructionAST::readProperty_m_5F_then_5F_instructionList (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_semanticInstructionListAST () ;
-  }else{
-    cPtr_ifInstructionAST * p = (cPtr_ifInstructionAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_ifInstructionAST) ;
-    return p->mProperty_m_5F_then_5F_instructionList ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_location GGS_ifInstructionAST::readProperty_mEndOf_5F_then_5F_branch (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_location () ;
-  }else{
-    cPtr_ifInstructionAST * p = (cPtr_ifInstructionAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_ifInstructionAST) ;
-    return p->mProperty_mEndOf_5F_then_5F_branch ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_semanticInstructionListAST GGS_ifInstructionAST::readProperty_m_5F_else_5F_instructionList (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_semanticInstructionListAST () ;
-  }else{
-    cPtr_ifInstructionAST * p = (cPtr_ifInstructionAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_ifInstructionAST) ;
-    return p->mProperty_m_5F_else_5F_instructionList ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_location GGS_ifInstructionAST::readProperty_mEndOf_5F_if_5F_instruction (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_location () ;
-  }else{
-    cPtr_ifInstructionAST * p = (cPtr_ifInstructionAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_ifInstructionAST) ;
-    return p->mProperty_mEndOf_5F_if_5F_instruction ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-//Pointer class for @ifInstructionAST class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_ifInstructionAST::cPtr_ifInstructionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_semanticInstructionAST (inCompiler COMMA_THERE),
-mProperty_mExpressions (),
-mProperty_m_5F_then_5F_instructionList (),
-mProperty_mEndOf_5F_then_5F_branch (),
-mProperty_m_5F_else_5F_instructionList (),
-mProperty_mEndOf_5F_if_5F_instruction () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cPtr_ifInstructionAST::cPtr_ifInstructionAST (const GGS_location & in_mInstructionLocation,
-                                              const GGS_CommaSeparatedExpressionList & in_mExpressions,
-                                              const GGS_semanticInstructionListAST & in_m_5F_then_5F_instructionList,
-                                              const GGS_location & in_mEndOf_5F_then_5F_branch,
-                                              const GGS_semanticInstructionListAST & in_m_5F_else_5F_instructionList,
-                                              const GGS_location & in_mEndOf_5F_if_5F_instruction,
-                                              Compiler * inCompiler
-                                              COMMA_LOCATION_ARGS) :
-cPtr_semanticInstructionAST (in_mInstructionLocation, inCompiler COMMA_THERE),
-mProperty_mExpressions (),
-mProperty_m_5F_then_5F_instructionList (),
-mProperty_mEndOf_5F_then_5F_branch (),
-mProperty_m_5F_else_5F_instructionList (),
-mProperty_mEndOf_5F_if_5F_instruction () {
-  mProperty_mInstructionLocation = in_mInstructionLocation ;
-  mProperty_mExpressions = in_mExpressions ;
-  mProperty_m_5F_then_5F_instructionList = in_m_5F_then_5F_instructionList ;
-  mProperty_mEndOf_5F_then_5F_branch = in_mEndOf_5F_then_5F_branch ;
-  mProperty_m_5F_else_5F_instructionList = in_m_5F_else_5F_instructionList ;
-  mProperty_mEndOf_5F_if_5F_instruction = in_mEndOf_5F_if_5F_instruction ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * cPtr_ifInstructionAST::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_ifInstructionAST ;
-}
-
-void cPtr_ifInstructionAST::description (String & ioString,
-                                         const int32_t inIndentation) const {
-  ioString.appendCString ("[@ifInstructionAST:") ;
-  mProperty_mInstructionLocation.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mExpressions.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_m_5F_then_5F_instructionList.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mEndOf_5F_then_5F_branch.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_m_5F_else_5F_instructionList.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mEndOf_5F_if_5F_instruction.description (ioString, inIndentation+1) ;
-  ioString.appendCString ("]") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-acPtr_class * cPtr_ifInstructionAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_ifInstructionAST (mProperty_mInstructionLocation, mProperty_mExpressions, mProperty_m_5F_then_5F_instructionList, mProperty_mEndOf_5F_then_5F_branch, mProperty_m_5F_else_5F_instructionList, mProperty_mEndOf_5F_if_5F_instruction, inCompiler COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_ifInstructionAST::printNonNullClassInstanceProperties (void) const {
-    cPtr_semanticInstructionAST::printNonNullClassInstanceProperties () ;
-    mProperty_mExpressions.printNonNullClassInstanceProperties ("mExpressions") ;
-    mProperty_m_5F_then_5F_instructionList.printNonNullClassInstanceProperties ("m_then_instructionList") ;
-    mProperty_mEndOf_5F_then_5F_branch.printNonNullClassInstanceProperties ("mEndOf_then_branch") ;
-    mProperty_m_5F_else_5F_instructionList.printNonNullClassInstanceProperties ("m_else_instructionList") ;
-    mProperty_mEndOf_5F_if_5F_instruction.printNonNullClassInstanceProperties ("mEndOf_if_instruction") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-//     @ifInstructionAST generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_ifInstructionAST ("ifInstructionAST",
-                                                                     & kTypeDescriptor_GALGAS_semanticInstructionAST) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_ifInstructionAST::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_ifInstructionAST ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_ifInstructionAST::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_ifInstructionAST (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_ifInstructionAST GGS_ifInstructionAST::extractObject (const GGS_object & inObject,
-                                                          Compiler * inCompiler
-                                                          COMMA_LOCATION_ARGS) {
-  GGS_ifInstructionAST result ;
-  const GGS_ifInstructionAST * p = (const GGS_ifInstructionAST *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_ifInstructionAST *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("ifInstructionAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-// @ifInstructionForGeneration reference class
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult GGS_ifInstructionForGeneration::objectCompare (const GGS_ifInstructionForGeneration & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    const size_t myObjectPtr = size_t (mObjectPtr) ;
-    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_ifInstructionForGeneration::GGS_ifInstructionForGeneration (void) :
-GGS_semanticInstructionForGeneration () {
-}
-
-//--- Synthetized initializer ----------------------------------------------------------------------
-
-GGS_ifInstructionForGeneration GGS_ifInstructionForGeneration::
-init_21__21__21__21_ (const GGS_location & in_mInstructionLocation,
-                      const GGS_ifTestListForGeneration & in_mExpressions,
-                      const GGS_semanticInstructionListForGeneration & in_m_5F_then_5F_instructionList,
-                      const GGS_semanticInstructionListForGeneration & in_m_5F_else_5F_instructionList,
-                      Compiler * inCompiler
-                      COMMA_LOCATION_ARGS) {
-  cPtr_ifInstructionForGeneration * object = nullptr ;
-  macroMyNew (object, cPtr_ifInstructionForGeneration (inCompiler COMMA_THERE)) ;
-  object->ifInstructionForGeneration_init_21__21__21__21_ (in_mInstructionLocation, in_mExpressions, in_m_5F_then_5F_instructionList, in_m_5F_else_5F_instructionList, inCompiler) ;
-  const GGS_ifInstructionForGeneration result (object) ;
-  macroDetachSharedObject (object) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_ifInstructionForGeneration::
-ifInstructionForGeneration_init_21__21__21__21_ (const GGS_location & in_mInstructionLocation,
-                                                 const GGS_ifTestListForGeneration & in_mExpressions,
-                                                 const GGS_semanticInstructionListForGeneration & in_m_5F_then_5F_instructionList,
-                                                 const GGS_semanticInstructionListForGeneration & in_m_5F_else_5F_instructionList,
-                                                 Compiler * /* inCompiler */) {
-  mProperty_mInstructionLocation = in_mInstructionLocation ;
-  mProperty_mExpressions = in_mExpressions ;
-  mProperty_m_5F_then_5F_instructionList = in_m_5F_then_5F_instructionList ;
-  mProperty_m_5F_else_5F_instructionList = in_m_5F_else_5F_instructionList ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_ifInstructionForGeneration::GGS_ifInstructionForGeneration (const cPtr_ifInstructionForGeneration * inSourcePtr) :
-GGS_semanticInstructionForGeneration (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_ifInstructionForGeneration) ;
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_location GGS_ifInstructionForGeneration::readProperty_mInstructionLocation (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_location () ;
-  }else{
-    cPtr_ifInstructionForGeneration * p = (cPtr_ifInstructionForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_ifInstructionForGeneration) ;
-    return p->mProperty_mInstructionLocation ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_ifTestListForGeneration GGS_ifInstructionForGeneration::readProperty_mExpressions (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_ifTestListForGeneration () ;
-  }else{
-    cPtr_ifInstructionForGeneration * p = (cPtr_ifInstructionForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_ifInstructionForGeneration) ;
-    return p->mProperty_mExpressions ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_semanticInstructionListForGeneration GGS_ifInstructionForGeneration::readProperty_m_5F_then_5F_instructionList (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_semanticInstructionListForGeneration () ;
-  }else{
-    cPtr_ifInstructionForGeneration * p = (cPtr_ifInstructionForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_ifInstructionForGeneration) ;
-    return p->mProperty_m_5F_then_5F_instructionList ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_semanticInstructionListForGeneration GGS_ifInstructionForGeneration::readProperty_m_5F_else_5F_instructionList (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_semanticInstructionListForGeneration () ;
-  }else{
-    cPtr_ifInstructionForGeneration * p = (cPtr_ifInstructionForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_ifInstructionForGeneration) ;
-    return p->mProperty_m_5F_else_5F_instructionList ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-//Pointer class for @ifInstructionForGeneration class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_ifInstructionForGeneration::cPtr_ifInstructionForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_semanticInstructionForGeneration (inCompiler COMMA_THERE),
-mProperty_mInstructionLocation (),
-mProperty_mExpressions (),
-mProperty_m_5F_then_5F_instructionList (),
-mProperty_m_5F_else_5F_instructionList () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cPtr_ifInstructionForGeneration::cPtr_ifInstructionForGeneration (const GGS_location & in_mInstructionLocation,
-                                                                  const GGS_ifTestListForGeneration & in_mExpressions,
-                                                                  const GGS_semanticInstructionListForGeneration & in_m_5F_then_5F_instructionList,
-                                                                  const GGS_semanticInstructionListForGeneration & in_m_5F_else_5F_instructionList,
-                                                                  Compiler * inCompiler
-                                                                  COMMA_LOCATION_ARGS) :
-cPtr_semanticInstructionForGeneration (inCompiler COMMA_THERE),
-mProperty_mInstructionLocation (),
-mProperty_mExpressions (),
-mProperty_m_5F_then_5F_instructionList (),
-mProperty_m_5F_else_5F_instructionList () {
-  mProperty_mInstructionLocation = in_mInstructionLocation ;
-  mProperty_mExpressions = in_mExpressions ;
-  mProperty_m_5F_then_5F_instructionList = in_m_5F_then_5F_instructionList ;
-  mProperty_m_5F_else_5F_instructionList = in_m_5F_else_5F_instructionList ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * cPtr_ifInstructionForGeneration::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_ifInstructionForGeneration ;
-}
-
-void cPtr_ifInstructionForGeneration::description (String & ioString,
-                                                   const int32_t inIndentation) const {
-  ioString.appendCString ("[@ifInstructionForGeneration:") ;
-  mProperty_mInstructionLocation.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mExpressions.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_m_5F_then_5F_instructionList.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_m_5F_else_5F_instructionList.description (ioString, inIndentation+1) ;
-  ioString.appendCString ("]") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-acPtr_class * cPtr_ifInstructionForGeneration::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_ifInstructionForGeneration (mProperty_mInstructionLocation, mProperty_mExpressions, mProperty_m_5F_then_5F_instructionList, mProperty_m_5F_else_5F_instructionList, inCompiler COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_ifInstructionForGeneration::printNonNullClassInstanceProperties (void) const {
-    cPtr_semanticInstructionForGeneration::printNonNullClassInstanceProperties () ;
-    mProperty_mInstructionLocation.printNonNullClassInstanceProperties ("mInstructionLocation") ;
-    mProperty_mExpressions.printNonNullClassInstanceProperties ("mExpressions") ;
-    mProperty_m_5F_then_5F_instructionList.printNonNullClassInstanceProperties ("m_then_instructionList") ;
-    mProperty_m_5F_else_5F_instructionList.printNonNullClassInstanceProperties ("m_else_instructionList") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-//     @ifInstructionForGeneration generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_ifInstructionForGeneration ("ifInstructionForGeneration",
-                                                                               & kTypeDescriptor_GALGAS_semanticInstructionForGeneration) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_ifInstructionForGeneration::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_ifInstructionForGeneration ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_ifInstructionForGeneration::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_ifInstructionForGeneration (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_ifInstructionForGeneration GGS_ifInstructionForGeneration::extractObject (const GGS_object & inObject,
-                                                                              Compiler * inCompiler
-                                                                              COMMA_LOCATION_ARGS) {
-  GGS_ifInstructionForGeneration result ;
-  const GGS_ifInstructionForGeneration * p = (const GGS_ifInstructionForGeneration *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_ifInstructionForGeneration *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("ifInstructionForGeneration", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-// @assignmentInstructionAST reference class
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult GGS_assignmentInstructionAST::objectCompare (const GGS_assignmentInstructionAST & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    const size_t myObjectPtr = size_t (mObjectPtr) ;
-    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_assignmentInstructionAST::GGS_assignmentInstructionAST (void) :
-GGS_semanticInstructionAST () {
-}
-
-//--- Synthetized initializer ----------------------------------------------------------------------
-
-GGS_assignmentInstructionAST GGS_assignmentInstructionAST::
-init_21__21__21__21_ (const GGS_location & in_mInstructionLocation,
-                      const GGS_lstring & in_mTargetVariableName,
-                      const GGS_lstring & in_mOptionalProperty,
-                      const GGS_semanticExpressionAST & in_mSourceExpression,
-                      Compiler * inCompiler
-                      COMMA_LOCATION_ARGS) {
-  cPtr_assignmentInstructionAST * object = nullptr ;
-  macroMyNew (object, cPtr_assignmentInstructionAST (inCompiler COMMA_THERE)) ;
-  object->assignmentInstructionAST_init_21__21__21__21_ (in_mInstructionLocation, in_mTargetVariableName, in_mOptionalProperty, in_mSourceExpression, inCompiler) ;
-  const GGS_assignmentInstructionAST result (object) ;
-  macroDetachSharedObject (object) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_assignmentInstructionAST::
-assignmentInstructionAST_init_21__21__21__21_ (const GGS_location & in_mInstructionLocation,
-                                               const GGS_lstring & in_mTargetVariableName,
-                                               const GGS_lstring & in_mOptionalProperty,
-                                               const GGS_semanticExpressionAST & in_mSourceExpression,
-                                               Compiler * /* inCompiler */) {
-  mProperty_mInstructionLocation = in_mInstructionLocation ;
-  mProperty_mTargetVariableName = in_mTargetVariableName ;
-  mProperty_mOptionalProperty = in_mOptionalProperty ;
-  mProperty_mSourceExpression = in_mSourceExpression ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_assignmentInstructionAST::GGS_assignmentInstructionAST (const cPtr_assignmentInstructionAST * inSourcePtr) :
-GGS_semanticInstructionAST (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_assignmentInstructionAST) ;
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_lstring GGS_assignmentInstructionAST::readProperty_mTargetVariableName (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_lstring () ;
-  }else{
-    cPtr_assignmentInstructionAST * p = (cPtr_assignmentInstructionAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_assignmentInstructionAST) ;
-    return p->mProperty_mTargetVariableName ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lstring GGS_assignmentInstructionAST::readProperty_mOptionalProperty (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_lstring () ;
-  }else{
-    cPtr_assignmentInstructionAST * p = (cPtr_assignmentInstructionAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_assignmentInstructionAST) ;
-    return p->mProperty_mOptionalProperty ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_semanticExpressionAST GGS_assignmentInstructionAST::readProperty_mSourceExpression (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_semanticExpressionAST () ;
-  }else{
-    cPtr_assignmentInstructionAST * p = (cPtr_assignmentInstructionAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_assignmentInstructionAST) ;
-    return p->mProperty_mSourceExpression ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-//Pointer class for @assignmentInstructionAST class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_assignmentInstructionAST::cPtr_assignmentInstructionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_semanticInstructionAST (inCompiler COMMA_THERE),
-mProperty_mTargetVariableName (),
-mProperty_mOptionalProperty (),
-mProperty_mSourceExpression () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cPtr_assignmentInstructionAST::cPtr_assignmentInstructionAST (const GGS_location & in_mInstructionLocation,
-                                                              const GGS_lstring & in_mTargetVariableName,
-                                                              const GGS_lstring & in_mOptionalProperty,
-                                                              const GGS_semanticExpressionAST & in_mSourceExpression,
-                                                              Compiler * inCompiler
-                                                              COMMA_LOCATION_ARGS) :
-cPtr_semanticInstructionAST (in_mInstructionLocation, inCompiler COMMA_THERE),
-mProperty_mTargetVariableName (),
-mProperty_mOptionalProperty (),
-mProperty_mSourceExpression () {
-  mProperty_mInstructionLocation = in_mInstructionLocation ;
-  mProperty_mTargetVariableName = in_mTargetVariableName ;
-  mProperty_mOptionalProperty = in_mOptionalProperty ;
-  mProperty_mSourceExpression = in_mSourceExpression ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * cPtr_assignmentInstructionAST::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_assignmentInstructionAST ;
-}
-
-void cPtr_assignmentInstructionAST::description (String & ioString,
-                                                 const int32_t inIndentation) const {
-  ioString.appendCString ("[@assignmentInstructionAST:") ;
-  mProperty_mInstructionLocation.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mTargetVariableName.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mOptionalProperty.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mSourceExpression.description (ioString, inIndentation+1) ;
-  ioString.appendCString ("]") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-acPtr_class * cPtr_assignmentInstructionAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_assignmentInstructionAST (mProperty_mInstructionLocation, mProperty_mTargetVariableName, mProperty_mOptionalProperty, mProperty_mSourceExpression, inCompiler COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_assignmentInstructionAST::printNonNullClassInstanceProperties (void) const {
-    cPtr_semanticInstructionAST::printNonNullClassInstanceProperties () ;
-    mProperty_mTargetVariableName.printNonNullClassInstanceProperties ("mTargetVariableName") ;
-    mProperty_mOptionalProperty.printNonNullClassInstanceProperties ("mOptionalProperty") ;
-    mProperty_mSourceExpression.printNonNullClassInstanceProperties ("mSourceExpression") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-//     @assignmentInstructionAST generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_assignmentInstructionAST ("assignmentInstructionAST",
-                                                                             & kTypeDescriptor_GALGAS_semanticInstructionAST) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_assignmentInstructionAST::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_assignmentInstructionAST ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_assignmentInstructionAST::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_assignmentInstructionAST (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_assignmentInstructionAST GGS_assignmentInstructionAST::extractObject (const GGS_object & inObject,
-                                                                          Compiler * inCompiler
-                                                                          COMMA_LOCATION_ARGS) {
-  GGS_assignmentInstructionAST result ;
-  const GGS_assignmentInstructionAST * p = (const GGS_assignmentInstructionAST *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_assignmentInstructionAST *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("assignmentInstructionAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-// @selfPropertyAssignmentInstructionAST reference class
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult GGS_selfPropertyAssignmentInstructionAST::objectCompare (const GGS_selfPropertyAssignmentInstructionAST & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    const size_t myObjectPtr = size_t (mObjectPtr) ;
-    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_selfPropertyAssignmentInstructionAST::GGS_selfPropertyAssignmentInstructionAST (void) :
-GGS_semanticInstructionAST () {
-}
-
-//--- Synthetized initializer ----------------------------------------------------------------------
-
-GGS_selfPropertyAssignmentInstructionAST GGS_selfPropertyAssignmentInstructionAST::
-init_21__21__21__21_ (const GGS_location & in_mInstructionLocation,
-                      const GGS_lstring & in_mTargetSelfPropertyName,
-                      const GGS_lstring & in_mOptionalProperty,
-                      const GGS_semanticExpressionAST & in_mSourceExpression,
-                      Compiler * inCompiler
-                      COMMA_LOCATION_ARGS) {
-  cPtr_selfPropertyAssignmentInstructionAST * object = nullptr ;
-  macroMyNew (object, cPtr_selfPropertyAssignmentInstructionAST (inCompiler COMMA_THERE)) ;
-  object->selfPropertyAssignmentInstructionAST_init_21__21__21__21_ (in_mInstructionLocation, in_mTargetSelfPropertyName, in_mOptionalProperty, in_mSourceExpression, inCompiler) ;
-  const GGS_selfPropertyAssignmentInstructionAST result (object) ;
-  macroDetachSharedObject (object) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_selfPropertyAssignmentInstructionAST::
-selfPropertyAssignmentInstructionAST_init_21__21__21__21_ (const GGS_location & in_mInstructionLocation,
-                                                           const GGS_lstring & in_mTargetSelfPropertyName,
-                                                           const GGS_lstring & in_mOptionalProperty,
-                                                           const GGS_semanticExpressionAST & in_mSourceExpression,
-                                                           Compiler * /* inCompiler */) {
-  mProperty_mInstructionLocation = in_mInstructionLocation ;
-  mProperty_mTargetSelfPropertyName = in_mTargetSelfPropertyName ;
-  mProperty_mOptionalProperty = in_mOptionalProperty ;
-  mProperty_mSourceExpression = in_mSourceExpression ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_selfPropertyAssignmentInstructionAST::GGS_selfPropertyAssignmentInstructionAST (const cPtr_selfPropertyAssignmentInstructionAST * inSourcePtr) :
-GGS_semanticInstructionAST (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_selfPropertyAssignmentInstructionAST) ;
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_lstring GGS_selfPropertyAssignmentInstructionAST::readProperty_mTargetSelfPropertyName (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_lstring () ;
-  }else{
-    cPtr_selfPropertyAssignmentInstructionAST * p = (cPtr_selfPropertyAssignmentInstructionAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_selfPropertyAssignmentInstructionAST) ;
-    return p->mProperty_mTargetSelfPropertyName ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lstring GGS_selfPropertyAssignmentInstructionAST::readProperty_mOptionalProperty (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_lstring () ;
-  }else{
-    cPtr_selfPropertyAssignmentInstructionAST * p = (cPtr_selfPropertyAssignmentInstructionAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_selfPropertyAssignmentInstructionAST) ;
-    return p->mProperty_mOptionalProperty ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_semanticExpressionAST GGS_selfPropertyAssignmentInstructionAST::readProperty_mSourceExpression (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_semanticExpressionAST () ;
-  }else{
-    cPtr_selfPropertyAssignmentInstructionAST * p = (cPtr_selfPropertyAssignmentInstructionAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_selfPropertyAssignmentInstructionAST) ;
-    return p->mProperty_mSourceExpression ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-//Pointer class for @selfPropertyAssignmentInstructionAST class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_selfPropertyAssignmentInstructionAST::cPtr_selfPropertyAssignmentInstructionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_semanticInstructionAST (inCompiler COMMA_THERE),
-mProperty_mTargetSelfPropertyName (),
-mProperty_mOptionalProperty (),
-mProperty_mSourceExpression () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cPtr_selfPropertyAssignmentInstructionAST::cPtr_selfPropertyAssignmentInstructionAST (const GGS_location & in_mInstructionLocation,
-                                                                                      const GGS_lstring & in_mTargetSelfPropertyName,
-                                                                                      const GGS_lstring & in_mOptionalProperty,
-                                                                                      const GGS_semanticExpressionAST & in_mSourceExpression,
-                                                                                      Compiler * inCompiler
-                                                                                      COMMA_LOCATION_ARGS) :
-cPtr_semanticInstructionAST (in_mInstructionLocation, inCompiler COMMA_THERE),
-mProperty_mTargetSelfPropertyName (),
-mProperty_mOptionalProperty (),
-mProperty_mSourceExpression () {
-  mProperty_mInstructionLocation = in_mInstructionLocation ;
-  mProperty_mTargetSelfPropertyName = in_mTargetSelfPropertyName ;
-  mProperty_mOptionalProperty = in_mOptionalProperty ;
-  mProperty_mSourceExpression = in_mSourceExpression ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * cPtr_selfPropertyAssignmentInstructionAST::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_selfPropertyAssignmentInstructionAST ;
-}
-
-void cPtr_selfPropertyAssignmentInstructionAST::description (String & ioString,
-                                                             const int32_t inIndentation) const {
-  ioString.appendCString ("[@selfPropertyAssignmentInstructionAST:") ;
-  mProperty_mInstructionLocation.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mTargetSelfPropertyName.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mOptionalProperty.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mSourceExpression.description (ioString, inIndentation+1) ;
-  ioString.appendCString ("]") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-acPtr_class * cPtr_selfPropertyAssignmentInstructionAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_selfPropertyAssignmentInstructionAST (mProperty_mInstructionLocation, mProperty_mTargetSelfPropertyName, mProperty_mOptionalProperty, mProperty_mSourceExpression, inCompiler COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_selfPropertyAssignmentInstructionAST::printNonNullClassInstanceProperties (void) const {
-    cPtr_semanticInstructionAST::printNonNullClassInstanceProperties () ;
-    mProperty_mTargetSelfPropertyName.printNonNullClassInstanceProperties ("mTargetSelfPropertyName") ;
-    mProperty_mOptionalProperty.printNonNullClassInstanceProperties ("mOptionalProperty") ;
-    mProperty_mSourceExpression.printNonNullClassInstanceProperties ("mSourceExpression") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-//     @selfPropertyAssignmentInstructionAST generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_selfPropertyAssignmentInstructionAST ("selfPropertyAssignmentInstructionAST",
-                                                                                         & kTypeDescriptor_GALGAS_semanticInstructionAST) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_selfPropertyAssignmentInstructionAST::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_selfPropertyAssignmentInstructionAST ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_selfPropertyAssignmentInstructionAST::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_selfPropertyAssignmentInstructionAST (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_selfPropertyAssignmentInstructionAST GGS_selfPropertyAssignmentInstructionAST::extractObject (const GGS_object & inObject,
-                                                                                                  Compiler * inCompiler
-                                                                                                  COMMA_LOCATION_ARGS) {
-  GGS_selfPropertyAssignmentInstructionAST result ;
-  const GGS_selfPropertyAssignmentInstructionAST * p = (const GGS_selfPropertyAssignmentInstructionAST *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_selfPropertyAssignmentInstructionAST *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("selfPropertyAssignmentInstructionAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-// @switchInstructionAST reference class
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult GGS_switchInstructionAST::objectCompare (const GGS_switchInstructionAST & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    const size_t myObjectPtr = size_t (mObjectPtr) ;
-    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_switchInstructionAST::GGS_switchInstructionAST (void) :
-GGS_semanticInstructionAST () {
-}
-
-//--- Synthetized initializer ----------------------------------------------------------------------
-
-GGS_switchInstructionAST GGS_switchInstructionAST::
-init_21__21__21__21__21_ (const GGS_location & in_mInstructionLocation,
-                          const GGS_semanticExpressionAST & in_mSwitchExpression,
-                          const GGS_location & in_mEndOfSwitchExpression,
-                          const GGS_switchBranchesAST & in_mBranches,
-                          const GGS_location & in_mEndOf_5F_switch_5F_instruction,
-                          Compiler * inCompiler
-                          COMMA_LOCATION_ARGS) {
-  cPtr_switchInstructionAST * object = nullptr ;
-  macroMyNew (object, cPtr_switchInstructionAST (inCompiler COMMA_THERE)) ;
-  object->switchInstructionAST_init_21__21__21__21__21_ (in_mInstructionLocation, in_mSwitchExpression, in_mEndOfSwitchExpression, in_mBranches, in_mEndOf_5F_switch_5F_instruction, inCompiler) ;
-  const GGS_switchInstructionAST result (object) ;
-  macroDetachSharedObject (object) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_switchInstructionAST::
-switchInstructionAST_init_21__21__21__21__21_ (const GGS_location & in_mInstructionLocation,
-                                               const GGS_semanticExpressionAST & in_mSwitchExpression,
-                                               const GGS_location & in_mEndOfSwitchExpression,
-                                               const GGS_switchBranchesAST & in_mBranches,
-                                               const GGS_location & in_mEndOf_5F_switch_5F_instruction,
-                                               Compiler * /* inCompiler */) {
-  mProperty_mInstructionLocation = in_mInstructionLocation ;
-  mProperty_mSwitchExpression = in_mSwitchExpression ;
-  mProperty_mEndOfSwitchExpression = in_mEndOfSwitchExpression ;
-  mProperty_mBranches = in_mBranches ;
-  mProperty_mEndOf_5F_switch_5F_instruction = in_mEndOf_5F_switch_5F_instruction ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_switchInstructionAST::GGS_switchInstructionAST (const cPtr_switchInstructionAST * inSourcePtr) :
-GGS_semanticInstructionAST (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_switchInstructionAST) ;
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_semanticExpressionAST GGS_switchInstructionAST::readProperty_mSwitchExpression (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_semanticExpressionAST () ;
-  }else{
-    cPtr_switchInstructionAST * p = (cPtr_switchInstructionAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_switchInstructionAST) ;
-    return p->mProperty_mSwitchExpression ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_location GGS_switchInstructionAST::readProperty_mEndOfSwitchExpression (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_location () ;
-  }else{
-    cPtr_switchInstructionAST * p = (cPtr_switchInstructionAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_switchInstructionAST) ;
-    return p->mProperty_mEndOfSwitchExpression ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_switchBranchesAST GGS_switchInstructionAST::readProperty_mBranches (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_switchBranchesAST () ;
-  }else{
-    cPtr_switchInstructionAST * p = (cPtr_switchInstructionAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_switchInstructionAST) ;
-    return p->mProperty_mBranches ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_location GGS_switchInstructionAST::readProperty_mEndOf_5F_switch_5F_instruction (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_location () ;
-  }else{
-    cPtr_switchInstructionAST * p = (cPtr_switchInstructionAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_switchInstructionAST) ;
-    return p->mProperty_mEndOf_5F_switch_5F_instruction ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-//Pointer class for @switchInstructionAST class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_switchInstructionAST::cPtr_switchInstructionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_semanticInstructionAST (inCompiler COMMA_THERE),
-mProperty_mSwitchExpression (),
-mProperty_mEndOfSwitchExpression (),
-mProperty_mBranches (),
-mProperty_mEndOf_5F_switch_5F_instruction () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cPtr_switchInstructionAST::cPtr_switchInstructionAST (const GGS_location & in_mInstructionLocation,
-                                                      const GGS_semanticExpressionAST & in_mSwitchExpression,
-                                                      const GGS_location & in_mEndOfSwitchExpression,
-                                                      const GGS_switchBranchesAST & in_mBranches,
-                                                      const GGS_location & in_mEndOf_5F_switch_5F_instruction,
-                                                      Compiler * inCompiler
-                                                      COMMA_LOCATION_ARGS) :
-cPtr_semanticInstructionAST (in_mInstructionLocation, inCompiler COMMA_THERE),
-mProperty_mSwitchExpression (),
-mProperty_mEndOfSwitchExpression (),
-mProperty_mBranches (),
-mProperty_mEndOf_5F_switch_5F_instruction () {
-  mProperty_mInstructionLocation = in_mInstructionLocation ;
-  mProperty_mSwitchExpression = in_mSwitchExpression ;
-  mProperty_mEndOfSwitchExpression = in_mEndOfSwitchExpression ;
-  mProperty_mBranches = in_mBranches ;
-  mProperty_mEndOf_5F_switch_5F_instruction = in_mEndOf_5F_switch_5F_instruction ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * cPtr_switchInstructionAST::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_switchInstructionAST ;
-}
-
-void cPtr_switchInstructionAST::description (String & ioString,
-                                             const int32_t inIndentation) const {
-  ioString.appendCString ("[@switchInstructionAST:") ;
-  mProperty_mInstructionLocation.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mSwitchExpression.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mEndOfSwitchExpression.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mBranches.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mEndOf_5F_switch_5F_instruction.description (ioString, inIndentation+1) ;
-  ioString.appendCString ("]") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-acPtr_class * cPtr_switchInstructionAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_switchInstructionAST (mProperty_mInstructionLocation, mProperty_mSwitchExpression, mProperty_mEndOfSwitchExpression, mProperty_mBranches, mProperty_mEndOf_5F_switch_5F_instruction, inCompiler COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_switchInstructionAST::printNonNullClassInstanceProperties (void) const {
-    cPtr_semanticInstructionAST::printNonNullClassInstanceProperties () ;
-    mProperty_mSwitchExpression.printNonNullClassInstanceProperties ("mSwitchExpression") ;
-    mProperty_mEndOfSwitchExpression.printNonNullClassInstanceProperties ("mEndOfSwitchExpression") ;
-    mProperty_mBranches.printNonNullClassInstanceProperties ("mBranches") ;
-    mProperty_mEndOf_5F_switch_5F_instruction.printNonNullClassInstanceProperties ("mEndOf_switch_instruction") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-//     @switchInstructionAST generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_switchInstructionAST ("switchInstructionAST",
-                                                                         & kTypeDescriptor_GALGAS_semanticInstructionAST) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_switchInstructionAST::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_switchInstructionAST ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_switchInstructionAST::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_switchInstructionAST (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_switchInstructionAST GGS_switchInstructionAST::extractObject (const GGS_object & inObject,
-                                                                  Compiler * inCompiler
-                                                                  COMMA_LOCATION_ARGS) {
-  GGS_switchInstructionAST result ;
-  const GGS_switchInstructionAST * p = (const GGS_switchInstructionAST *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_switchInstructionAST *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("switchInstructionAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-// @superMethodCallInstructionAST reference class
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult GGS_superMethodCallInstructionAST::objectCompare (const GGS_superMethodCallInstructionAST & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    const size_t myObjectPtr = size_t (mObjectPtr) ;
-    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_superMethodCallInstructionAST::GGS_superMethodCallInstructionAST (void) :
-GGS_semanticInstructionAST () {
-}
-
-//--- Synthetized initializer ----------------------------------------------------------------------
-
-GGS_superMethodCallInstructionAST GGS_superMethodCallInstructionAST::
-init_21__21__21_ (const GGS_location & in_mInstructionLocation,
-                  const GGS_lstring & in_mMethodName,
-                  const GGS_actualParameterListAST & in_mActualParameterList,
-                  Compiler * inCompiler
-                  COMMA_LOCATION_ARGS) {
-  cPtr_superMethodCallInstructionAST * object = nullptr ;
-  macroMyNew (object, cPtr_superMethodCallInstructionAST (inCompiler COMMA_THERE)) ;
-  object->superMethodCallInstructionAST_init_21__21__21_ (in_mInstructionLocation, in_mMethodName, in_mActualParameterList, inCompiler) ;
-  const GGS_superMethodCallInstructionAST result (object) ;
-  macroDetachSharedObject (object) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_superMethodCallInstructionAST::
-superMethodCallInstructionAST_init_21__21__21_ (const GGS_location & in_mInstructionLocation,
-                                                const GGS_lstring & in_mMethodName,
-                                                const GGS_actualParameterListAST & in_mActualParameterList,
-                                                Compiler * /* inCompiler */) {
-  mProperty_mInstructionLocation = in_mInstructionLocation ;
-  mProperty_mMethodName = in_mMethodName ;
-  mProperty_mActualParameterList = in_mActualParameterList ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_superMethodCallInstructionAST::GGS_superMethodCallInstructionAST (const cPtr_superMethodCallInstructionAST * inSourcePtr) :
-GGS_semanticInstructionAST (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_superMethodCallInstructionAST) ;
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_lstring GGS_superMethodCallInstructionAST::readProperty_mMethodName (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_lstring () ;
-  }else{
-    cPtr_superMethodCallInstructionAST * p = (cPtr_superMethodCallInstructionAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_superMethodCallInstructionAST) ;
-    return p->mProperty_mMethodName ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_actualParameterListAST GGS_superMethodCallInstructionAST::readProperty_mActualParameterList (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_actualParameterListAST () ;
-  }else{
-    cPtr_superMethodCallInstructionAST * p = (cPtr_superMethodCallInstructionAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_superMethodCallInstructionAST) ;
-    return p->mProperty_mActualParameterList ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-//Pointer class for @superMethodCallInstructionAST class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_superMethodCallInstructionAST::cPtr_superMethodCallInstructionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_semanticInstructionAST (inCompiler COMMA_THERE),
-mProperty_mMethodName (),
-mProperty_mActualParameterList () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cPtr_superMethodCallInstructionAST::cPtr_superMethodCallInstructionAST (const GGS_location & in_mInstructionLocation,
-                                                                        const GGS_lstring & in_mMethodName,
-                                                                        const GGS_actualParameterListAST & in_mActualParameterList,
-                                                                        Compiler * inCompiler
-                                                                        COMMA_LOCATION_ARGS) :
-cPtr_semanticInstructionAST (in_mInstructionLocation, inCompiler COMMA_THERE),
-mProperty_mMethodName (),
-mProperty_mActualParameterList () {
-  mProperty_mInstructionLocation = in_mInstructionLocation ;
-  mProperty_mMethodName = in_mMethodName ;
-  mProperty_mActualParameterList = in_mActualParameterList ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * cPtr_superMethodCallInstructionAST::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_superMethodCallInstructionAST ;
-}
-
-void cPtr_superMethodCallInstructionAST::description (String & ioString,
-                                                      const int32_t inIndentation) const {
-  ioString.appendCString ("[@superMethodCallInstructionAST:") ;
-  mProperty_mInstructionLocation.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mMethodName.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mActualParameterList.description (ioString, inIndentation+1) ;
-  ioString.appendCString ("]") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-acPtr_class * cPtr_superMethodCallInstructionAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_superMethodCallInstructionAST (mProperty_mInstructionLocation, mProperty_mMethodName, mProperty_mActualParameterList, inCompiler COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_superMethodCallInstructionAST::printNonNullClassInstanceProperties (void) const {
-    cPtr_semanticInstructionAST::printNonNullClassInstanceProperties () ;
-    mProperty_mMethodName.printNonNullClassInstanceProperties ("mMethodName") ;
-    mProperty_mActualParameterList.printNonNullClassInstanceProperties ("mActualParameterList") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-//     @superMethodCallInstructionAST generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_superMethodCallInstructionAST ("superMethodCallInstructionAST",
-                                                                                  & kTypeDescriptor_GALGAS_semanticInstructionAST) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_superMethodCallInstructionAST::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_superMethodCallInstructionAST ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_superMethodCallInstructionAST::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_superMethodCallInstructionAST (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_superMethodCallInstructionAST GGS_superMethodCallInstructionAST::extractObject (const GGS_object & inObject,
-                                                                                    Compiler * inCompiler
-                                                                                    COMMA_LOCATION_ARGS) {
-  GGS_superMethodCallInstructionAST result ;
-  const GGS_superMethodCallInstructionAST * p = (const GGS_superMethodCallInstructionAST *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_superMethodCallInstructionAST *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("superMethodCallInstructionAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-// @loopInstructionWithoutVariantAST reference class
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult GGS_loopInstructionWithoutVariantAST::objectCompare (const GGS_loopInstructionWithoutVariantAST & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    const size_t myObjectPtr = size_t (mObjectPtr) ;
-    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_loopInstructionWithoutVariantAST::GGS_loopInstructionWithoutVariantAST (void) :
-GGS_semanticInstructionAST () {
-}
-
-//--- Synthetized initializer ----------------------------------------------------------------------
-
-GGS_loopInstructionWithoutVariantAST GGS_loopInstructionWithoutVariantAST::
-init_21__21__21__21__21__21__21__21_ (const GGS_location & in_mInstructionLocation,
-                                      const GGS_semanticInstructionListAST & in_mFirstInstructions,
-                                      const GGS_location & in_mEndOfFirstInstructions,
-                                      const GGS_CommaSeparatedExpressionList & in_mLoopExpression,
-                                      const GGS_location & in_mEndOfLoopExpression,
-                                      const GGS_semanticInstructionListAST & in_mSecondInstructions,
-                                      const GGS_location & in_mEndOfSecondInstructions,
-                                      const GGS_location & in_mEndOfLoopInstruction,
-                                      Compiler * inCompiler
-                                      COMMA_LOCATION_ARGS) {
-  cPtr_loopInstructionWithoutVariantAST * object = nullptr ;
-  macroMyNew (object, cPtr_loopInstructionWithoutVariantAST (inCompiler COMMA_THERE)) ;
-  object->loopInstructionWithoutVariantAST_init_21__21__21__21__21__21__21__21_ (in_mInstructionLocation, in_mFirstInstructions, in_mEndOfFirstInstructions, in_mLoopExpression, in_mEndOfLoopExpression, in_mSecondInstructions, in_mEndOfSecondInstructions, in_mEndOfLoopInstruction, inCompiler) ;
-  const GGS_loopInstructionWithoutVariantAST result (object) ;
-  macroDetachSharedObject (object) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_loopInstructionWithoutVariantAST::
-loopInstructionWithoutVariantAST_init_21__21__21__21__21__21__21__21_ (const GGS_location & in_mInstructionLocation,
-                                                                       const GGS_semanticInstructionListAST & in_mFirstInstructions,
-                                                                       const GGS_location & in_mEndOfFirstInstructions,
-                                                                       const GGS_CommaSeparatedExpressionList & in_mLoopExpression,
-                                                                       const GGS_location & in_mEndOfLoopExpression,
-                                                                       const GGS_semanticInstructionListAST & in_mSecondInstructions,
-                                                                       const GGS_location & in_mEndOfSecondInstructions,
-                                                                       const GGS_location & in_mEndOfLoopInstruction,
-                                                                       Compiler * /* inCompiler */) {
-  mProperty_mInstructionLocation = in_mInstructionLocation ;
-  mProperty_mFirstInstructions = in_mFirstInstructions ;
-  mProperty_mEndOfFirstInstructions = in_mEndOfFirstInstructions ;
-  mProperty_mLoopExpression = in_mLoopExpression ;
-  mProperty_mEndOfLoopExpression = in_mEndOfLoopExpression ;
-  mProperty_mSecondInstructions = in_mSecondInstructions ;
-  mProperty_mEndOfSecondInstructions = in_mEndOfSecondInstructions ;
-  mProperty_mEndOfLoopInstruction = in_mEndOfLoopInstruction ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_loopInstructionWithoutVariantAST::GGS_loopInstructionWithoutVariantAST (const cPtr_loopInstructionWithoutVariantAST * inSourcePtr) :
-GGS_semanticInstructionAST (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_loopInstructionWithoutVariantAST) ;
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_semanticInstructionListAST GGS_loopInstructionWithoutVariantAST::readProperty_mFirstInstructions (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_semanticInstructionListAST () ;
-  }else{
-    cPtr_loopInstructionWithoutVariantAST * p = (cPtr_loopInstructionWithoutVariantAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_loopInstructionWithoutVariantAST) ;
-    return p->mProperty_mFirstInstructions ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_location GGS_loopInstructionWithoutVariantAST::readProperty_mEndOfFirstInstructions (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_location () ;
-  }else{
-    cPtr_loopInstructionWithoutVariantAST * p = (cPtr_loopInstructionWithoutVariantAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_loopInstructionWithoutVariantAST) ;
-    return p->mProperty_mEndOfFirstInstructions ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_CommaSeparatedExpressionList GGS_loopInstructionWithoutVariantAST::readProperty_mLoopExpression (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_CommaSeparatedExpressionList () ;
-  }else{
-    cPtr_loopInstructionWithoutVariantAST * p = (cPtr_loopInstructionWithoutVariantAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_loopInstructionWithoutVariantAST) ;
-    return p->mProperty_mLoopExpression ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_location GGS_loopInstructionWithoutVariantAST::readProperty_mEndOfLoopExpression (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_location () ;
-  }else{
-    cPtr_loopInstructionWithoutVariantAST * p = (cPtr_loopInstructionWithoutVariantAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_loopInstructionWithoutVariantAST) ;
-    return p->mProperty_mEndOfLoopExpression ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_semanticInstructionListAST GGS_loopInstructionWithoutVariantAST::readProperty_mSecondInstructions (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_semanticInstructionListAST () ;
-  }else{
-    cPtr_loopInstructionWithoutVariantAST * p = (cPtr_loopInstructionWithoutVariantAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_loopInstructionWithoutVariantAST) ;
-    return p->mProperty_mSecondInstructions ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_location GGS_loopInstructionWithoutVariantAST::readProperty_mEndOfSecondInstructions (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_location () ;
-  }else{
-    cPtr_loopInstructionWithoutVariantAST * p = (cPtr_loopInstructionWithoutVariantAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_loopInstructionWithoutVariantAST) ;
-    return p->mProperty_mEndOfSecondInstructions ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_location GGS_loopInstructionWithoutVariantAST::readProperty_mEndOfLoopInstruction (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_location () ;
-  }else{
-    cPtr_loopInstructionWithoutVariantAST * p = (cPtr_loopInstructionWithoutVariantAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_loopInstructionWithoutVariantAST) ;
-    return p->mProperty_mEndOfLoopInstruction ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-//Pointer class for @loopInstructionWithoutVariantAST class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_loopInstructionWithoutVariantAST::cPtr_loopInstructionWithoutVariantAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_semanticInstructionAST (inCompiler COMMA_THERE),
-mProperty_mFirstInstructions (),
-mProperty_mEndOfFirstInstructions (),
-mProperty_mLoopExpression (),
-mProperty_mEndOfLoopExpression (),
-mProperty_mSecondInstructions (),
-mProperty_mEndOfSecondInstructions (),
-mProperty_mEndOfLoopInstruction () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cPtr_loopInstructionWithoutVariantAST::cPtr_loopInstructionWithoutVariantAST (const GGS_location & in_mInstructionLocation,
-                                                                              const GGS_semanticInstructionListAST & in_mFirstInstructions,
-                                                                              const GGS_location & in_mEndOfFirstInstructions,
-                                                                              const GGS_CommaSeparatedExpressionList & in_mLoopExpression,
-                                                                              const GGS_location & in_mEndOfLoopExpression,
-                                                                              const GGS_semanticInstructionListAST & in_mSecondInstructions,
-                                                                              const GGS_location & in_mEndOfSecondInstructions,
-                                                                              const GGS_location & in_mEndOfLoopInstruction,
-                                                                              Compiler * inCompiler
-                                                                              COMMA_LOCATION_ARGS) :
-cPtr_semanticInstructionAST (in_mInstructionLocation, inCompiler COMMA_THERE),
-mProperty_mFirstInstructions (),
-mProperty_mEndOfFirstInstructions (),
-mProperty_mLoopExpression (),
-mProperty_mEndOfLoopExpression (),
-mProperty_mSecondInstructions (),
-mProperty_mEndOfSecondInstructions (),
-mProperty_mEndOfLoopInstruction () {
-  mProperty_mInstructionLocation = in_mInstructionLocation ;
-  mProperty_mFirstInstructions = in_mFirstInstructions ;
-  mProperty_mEndOfFirstInstructions = in_mEndOfFirstInstructions ;
-  mProperty_mLoopExpression = in_mLoopExpression ;
-  mProperty_mEndOfLoopExpression = in_mEndOfLoopExpression ;
-  mProperty_mSecondInstructions = in_mSecondInstructions ;
-  mProperty_mEndOfSecondInstructions = in_mEndOfSecondInstructions ;
-  mProperty_mEndOfLoopInstruction = in_mEndOfLoopInstruction ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * cPtr_loopInstructionWithoutVariantAST::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_loopInstructionWithoutVariantAST ;
-}
-
-void cPtr_loopInstructionWithoutVariantAST::description (String & ioString,
-                                                         const int32_t inIndentation) const {
-  ioString.appendCString ("[@loopInstructionWithoutVariantAST:") ;
-  mProperty_mInstructionLocation.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mFirstInstructions.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mEndOfFirstInstructions.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mLoopExpression.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mEndOfLoopExpression.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mSecondInstructions.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mEndOfSecondInstructions.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mEndOfLoopInstruction.description (ioString, inIndentation+1) ;
-  ioString.appendCString ("]") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-acPtr_class * cPtr_loopInstructionWithoutVariantAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_loopInstructionWithoutVariantAST (mProperty_mInstructionLocation, mProperty_mFirstInstructions, mProperty_mEndOfFirstInstructions, mProperty_mLoopExpression, mProperty_mEndOfLoopExpression, mProperty_mSecondInstructions, mProperty_mEndOfSecondInstructions, mProperty_mEndOfLoopInstruction, inCompiler COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_loopInstructionWithoutVariantAST::printNonNullClassInstanceProperties (void) const {
-    cPtr_semanticInstructionAST::printNonNullClassInstanceProperties () ;
-    mProperty_mFirstInstructions.printNonNullClassInstanceProperties ("mFirstInstructions") ;
-    mProperty_mEndOfFirstInstructions.printNonNullClassInstanceProperties ("mEndOfFirstInstructions") ;
-    mProperty_mLoopExpression.printNonNullClassInstanceProperties ("mLoopExpression") ;
-    mProperty_mEndOfLoopExpression.printNonNullClassInstanceProperties ("mEndOfLoopExpression") ;
-    mProperty_mSecondInstructions.printNonNullClassInstanceProperties ("mSecondInstructions") ;
-    mProperty_mEndOfSecondInstructions.printNonNullClassInstanceProperties ("mEndOfSecondInstructions") ;
-    mProperty_mEndOfLoopInstruction.printNonNullClassInstanceProperties ("mEndOfLoopInstruction") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-//     @loopInstructionWithoutVariantAST generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_loopInstructionWithoutVariantAST ("loopInstructionWithoutVariantAST",
-                                                                                     & kTypeDescriptor_GALGAS_semanticInstructionAST) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_loopInstructionWithoutVariantAST::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_loopInstructionWithoutVariantAST ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_loopInstructionWithoutVariantAST::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_loopInstructionWithoutVariantAST (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_loopInstructionWithoutVariantAST GGS_loopInstructionWithoutVariantAST::extractObject (const GGS_object & inObject,
-                                                                                          Compiler * inCompiler
-                                                                                          COMMA_LOCATION_ARGS) {
-  GGS_loopInstructionWithoutVariantAST result ;
-  const GGS_loopInstructionWithoutVariantAST * p = (const GGS_loopInstructionWithoutVariantAST *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_loopInstructionWithoutVariantAST *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("loopInstructionWithoutVariantAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-// @typeMethodCallInstructionAST reference class
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult GGS_typeMethodCallInstructionAST::objectCompare (const GGS_typeMethodCallInstructionAST & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    const size_t myObjectPtr = size_t (mObjectPtr) ;
-    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_typeMethodCallInstructionAST::GGS_typeMethodCallInstructionAST (void) :
-GGS_semanticInstructionAST () {
-}
-
-//--- Synthetized initializer ----------------------------------------------------------------------
-
-GGS_typeMethodCallInstructionAST GGS_typeMethodCallInstructionAST::
-init_21__21__21__21_ (const GGS_location & in_mInstructionLocation,
-                      const GGS_lstring & in_mTypeName,
-                      const GGS_lstring & in_mMethodName,
-                      const GGS_actualParameterListAST & in_mActualParameterList,
-                      Compiler * inCompiler
-                      COMMA_LOCATION_ARGS) {
-  cPtr_typeMethodCallInstructionAST * object = nullptr ;
-  macroMyNew (object, cPtr_typeMethodCallInstructionAST (inCompiler COMMA_THERE)) ;
-  object->typeMethodCallInstructionAST_init_21__21__21__21_ (in_mInstructionLocation, in_mTypeName, in_mMethodName, in_mActualParameterList, inCompiler) ;
-  const GGS_typeMethodCallInstructionAST result (object) ;
-  macroDetachSharedObject (object) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_typeMethodCallInstructionAST::
-typeMethodCallInstructionAST_init_21__21__21__21_ (const GGS_location & in_mInstructionLocation,
-                                                   const GGS_lstring & in_mTypeName,
-                                                   const GGS_lstring & in_mMethodName,
-                                                   const GGS_actualParameterListAST & in_mActualParameterList,
-                                                   Compiler * /* inCompiler */) {
-  mProperty_mInstructionLocation = in_mInstructionLocation ;
-  mProperty_mTypeName = in_mTypeName ;
-  mProperty_mMethodName = in_mMethodName ;
-  mProperty_mActualParameterList = in_mActualParameterList ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_typeMethodCallInstructionAST::GGS_typeMethodCallInstructionAST (const cPtr_typeMethodCallInstructionAST * inSourcePtr) :
-GGS_semanticInstructionAST (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_typeMethodCallInstructionAST) ;
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_lstring GGS_typeMethodCallInstructionAST::readProperty_mTypeName (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_lstring () ;
-  }else{
-    cPtr_typeMethodCallInstructionAST * p = (cPtr_typeMethodCallInstructionAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_typeMethodCallInstructionAST) ;
-    return p->mProperty_mTypeName ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lstring GGS_typeMethodCallInstructionAST::readProperty_mMethodName (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_lstring () ;
-  }else{
-    cPtr_typeMethodCallInstructionAST * p = (cPtr_typeMethodCallInstructionAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_typeMethodCallInstructionAST) ;
-    return p->mProperty_mMethodName ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_actualParameterListAST GGS_typeMethodCallInstructionAST::readProperty_mActualParameterList (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_actualParameterListAST () ;
-  }else{
-    cPtr_typeMethodCallInstructionAST * p = (cPtr_typeMethodCallInstructionAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_typeMethodCallInstructionAST) ;
-    return p->mProperty_mActualParameterList ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-//Pointer class for @typeMethodCallInstructionAST class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_typeMethodCallInstructionAST::cPtr_typeMethodCallInstructionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_semanticInstructionAST (inCompiler COMMA_THERE),
-mProperty_mTypeName (),
-mProperty_mMethodName (),
-mProperty_mActualParameterList () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cPtr_typeMethodCallInstructionAST::cPtr_typeMethodCallInstructionAST (const GGS_location & in_mInstructionLocation,
-                                                                      const GGS_lstring & in_mTypeName,
-                                                                      const GGS_lstring & in_mMethodName,
-                                                                      const GGS_actualParameterListAST & in_mActualParameterList,
-                                                                      Compiler * inCompiler
-                                                                      COMMA_LOCATION_ARGS) :
-cPtr_semanticInstructionAST (in_mInstructionLocation, inCompiler COMMA_THERE),
-mProperty_mTypeName (),
-mProperty_mMethodName (),
-mProperty_mActualParameterList () {
-  mProperty_mInstructionLocation = in_mInstructionLocation ;
-  mProperty_mTypeName = in_mTypeName ;
-  mProperty_mMethodName = in_mMethodName ;
-  mProperty_mActualParameterList = in_mActualParameterList ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * cPtr_typeMethodCallInstructionAST::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_typeMethodCallInstructionAST ;
-}
-
-void cPtr_typeMethodCallInstructionAST::description (String & ioString,
-                                                     const int32_t inIndentation) const {
-  ioString.appendCString ("[@typeMethodCallInstructionAST:") ;
-  mProperty_mInstructionLocation.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mTypeName.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mMethodName.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mActualParameterList.description (ioString, inIndentation+1) ;
-  ioString.appendCString ("]") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-acPtr_class * cPtr_typeMethodCallInstructionAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_typeMethodCallInstructionAST (mProperty_mInstructionLocation, mProperty_mTypeName, mProperty_mMethodName, mProperty_mActualParameterList, inCompiler COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_typeMethodCallInstructionAST::printNonNullClassInstanceProperties (void) const {
-    cPtr_semanticInstructionAST::printNonNullClassInstanceProperties () ;
-    mProperty_mTypeName.printNonNullClassInstanceProperties ("mTypeName") ;
-    mProperty_mMethodName.printNonNullClassInstanceProperties ("mMethodName") ;
-    mProperty_mActualParameterList.printNonNullClassInstanceProperties ("mActualParameterList") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-//     @typeMethodCallInstructionAST generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_typeMethodCallInstructionAST ("typeMethodCallInstructionAST",
-                                                                                 & kTypeDescriptor_GALGAS_semanticInstructionAST) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_typeMethodCallInstructionAST::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_typeMethodCallInstructionAST ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_typeMethodCallInstructionAST::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_typeMethodCallInstructionAST (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_typeMethodCallInstructionAST GGS_typeMethodCallInstructionAST::extractObject (const GGS_object & inObject,
-                                                                                  Compiler * inCompiler
-                                                                                  COMMA_LOCATION_ARGS) {
-  GGS_typeMethodCallInstructionAST result ;
-  const GGS_typeMethodCallInstructionAST * p = (const GGS_typeMethodCallInstructionAST *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_typeMethodCallInstructionAST *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("typeMethodCallInstructionAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-// @typeMethodCallInstructionForGeneration reference class
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult GGS_typeMethodCallInstructionForGeneration::objectCompare (const GGS_typeMethodCallInstructionForGeneration & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    const size_t myObjectPtr = size_t (mObjectPtr) ;
-    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_typeMethodCallInstructionForGeneration::GGS_typeMethodCallInstructionForGeneration (void) :
-GGS_semanticInstructionForGeneration () {
-}
-
-//--- Synthetized initializer ----------------------------------------------------------------------
-
-GGS_typeMethodCallInstructionForGeneration GGS_typeMethodCallInstructionForGeneration::
-init_21__21__21__21_ (const GGS_lstring & in_mTypeName,
-                      const GGS_lstring & in_mMethodName,
-                      const GGS_actualParameterListForGeneration & in_mActualParameterList,
-                      const GGS_bool & in_mHasCompilerArgument,
-                      Compiler * inCompiler
-                      COMMA_LOCATION_ARGS) {
-  cPtr_typeMethodCallInstructionForGeneration * object = nullptr ;
-  macroMyNew (object, cPtr_typeMethodCallInstructionForGeneration (inCompiler COMMA_THERE)) ;
-  object->typeMethodCallInstructionForGeneration_init_21__21__21__21_ (in_mTypeName, in_mMethodName, in_mActualParameterList, in_mHasCompilerArgument, inCompiler) ;
-  const GGS_typeMethodCallInstructionForGeneration result (object) ;
-  macroDetachSharedObject (object) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_typeMethodCallInstructionForGeneration::
-typeMethodCallInstructionForGeneration_init_21__21__21__21_ (const GGS_lstring & in_mTypeName,
-                                                             const GGS_lstring & in_mMethodName,
-                                                             const GGS_actualParameterListForGeneration & in_mActualParameterList,
-                                                             const GGS_bool & in_mHasCompilerArgument,
-                                                             Compiler * /* inCompiler */) {
-  mProperty_mTypeName = in_mTypeName ;
-  mProperty_mMethodName = in_mMethodName ;
-  mProperty_mActualParameterList = in_mActualParameterList ;
-  mProperty_mHasCompilerArgument = in_mHasCompilerArgument ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_typeMethodCallInstructionForGeneration::GGS_typeMethodCallInstructionForGeneration (const cPtr_typeMethodCallInstructionForGeneration * inSourcePtr) :
-GGS_semanticInstructionForGeneration (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_typeMethodCallInstructionForGeneration) ;
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_lstring GGS_typeMethodCallInstructionForGeneration::readProperty_mTypeName (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_lstring () ;
-  }else{
-    cPtr_typeMethodCallInstructionForGeneration * p = (cPtr_typeMethodCallInstructionForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_typeMethodCallInstructionForGeneration) ;
-    return p->mProperty_mTypeName ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lstring GGS_typeMethodCallInstructionForGeneration::readProperty_mMethodName (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_lstring () ;
-  }else{
-    cPtr_typeMethodCallInstructionForGeneration * p = (cPtr_typeMethodCallInstructionForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_typeMethodCallInstructionForGeneration) ;
-    return p->mProperty_mMethodName ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_actualParameterListForGeneration GGS_typeMethodCallInstructionForGeneration::readProperty_mActualParameterList (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_actualParameterListForGeneration () ;
-  }else{
-    cPtr_typeMethodCallInstructionForGeneration * p = (cPtr_typeMethodCallInstructionForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_typeMethodCallInstructionForGeneration) ;
-    return p->mProperty_mActualParameterList ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_bool GGS_typeMethodCallInstructionForGeneration::readProperty_mHasCompilerArgument (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_bool () ;
-  }else{
-    cPtr_typeMethodCallInstructionForGeneration * p = (cPtr_typeMethodCallInstructionForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_typeMethodCallInstructionForGeneration) ;
-    return p->mProperty_mHasCompilerArgument ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-//Pointer class for @typeMethodCallInstructionForGeneration class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_typeMethodCallInstructionForGeneration::cPtr_typeMethodCallInstructionForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_semanticInstructionForGeneration (inCompiler COMMA_THERE),
-mProperty_mTypeName (),
-mProperty_mMethodName (),
-mProperty_mActualParameterList (),
-mProperty_mHasCompilerArgument () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cPtr_typeMethodCallInstructionForGeneration::cPtr_typeMethodCallInstructionForGeneration (const GGS_lstring & in_mTypeName,
-                                                                                          const GGS_lstring & in_mMethodName,
-                                                                                          const GGS_actualParameterListForGeneration & in_mActualParameterList,
-                                                                                          const GGS_bool & in_mHasCompilerArgument,
-                                                                                          Compiler * inCompiler
-                                                                                          COMMA_LOCATION_ARGS) :
-cPtr_semanticInstructionForGeneration (inCompiler COMMA_THERE),
-mProperty_mTypeName (),
-mProperty_mMethodName (),
-mProperty_mActualParameterList (),
-mProperty_mHasCompilerArgument () {
-  mProperty_mTypeName = in_mTypeName ;
-  mProperty_mMethodName = in_mMethodName ;
-  mProperty_mActualParameterList = in_mActualParameterList ;
-  mProperty_mHasCompilerArgument = in_mHasCompilerArgument ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * cPtr_typeMethodCallInstructionForGeneration::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_typeMethodCallInstructionForGeneration ;
-}
-
-void cPtr_typeMethodCallInstructionForGeneration::description (String & ioString,
-                                                               const int32_t inIndentation) const {
-  ioString.appendCString ("[@typeMethodCallInstructionForGeneration:") ;
-  mProperty_mTypeName.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mMethodName.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mActualParameterList.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mHasCompilerArgument.description (ioString, inIndentation+1) ;
-  ioString.appendCString ("]") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-acPtr_class * cPtr_typeMethodCallInstructionForGeneration::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_typeMethodCallInstructionForGeneration (mProperty_mTypeName, mProperty_mMethodName, mProperty_mActualParameterList, mProperty_mHasCompilerArgument, inCompiler COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_typeMethodCallInstructionForGeneration::printNonNullClassInstanceProperties (void) const {
-    cPtr_semanticInstructionForGeneration::printNonNullClassInstanceProperties () ;
-    mProperty_mTypeName.printNonNullClassInstanceProperties ("mTypeName") ;
-    mProperty_mMethodName.printNonNullClassInstanceProperties ("mMethodName") ;
-    mProperty_mActualParameterList.printNonNullClassInstanceProperties ("mActualParameterList") ;
-    mProperty_mHasCompilerArgument.printNonNullClassInstanceProperties ("mHasCompilerArgument") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-//     @typeMethodCallInstructionForGeneration generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_typeMethodCallInstructionForGeneration ("typeMethodCallInstructionForGeneration",
-                                                                                           & kTypeDescriptor_GALGAS_semanticInstructionForGeneration) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_typeMethodCallInstructionForGeneration::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_typeMethodCallInstructionForGeneration ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_typeMethodCallInstructionForGeneration::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_typeMethodCallInstructionForGeneration (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_typeMethodCallInstructionForGeneration GGS_typeMethodCallInstructionForGeneration::extractObject (const GGS_object & inObject,
-                                                                                                      Compiler * inCompiler
-                                                                                                      COMMA_LOCATION_ARGS) {
-  GGS_typeMethodCallInstructionForGeneration result ;
-  const GGS_typeMethodCallInstructionForGeneration * p = (const GGS_typeMethodCallInstructionForGeneration *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_typeMethodCallInstructionForGeneration *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("typeMethodCallInstructionForGeneration", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-// @errorInstructionAST reference class
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult GGS_errorInstructionAST::objectCompare (const GGS_errorInstructionAST & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    const size_t myObjectPtr = size_t (mObjectPtr) ;
-    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_errorInstructionAST::GGS_errorInstructionAST (void) :
-GGS_semanticInstructionAST () {
-}
-
-//--- Synthetized initializer ----------------------------------------------------------------------
-
-GGS_errorInstructionAST GGS_errorInstructionAST::
-init_21__21__21__21__21_ (const GGS_location & in_mInstructionLocation,
-                          const GGS_semanticExpressionAST & in_mLocationExpression,
-                          const GGS_semanticExpressionAST & in_mMessageExpression,
-                          const GGS_lstringlist & in_mBuiltVariableList,
-                          const GGS_fixitListAST & in_mFixitListAST,
-                          Compiler * inCompiler
-                          COMMA_LOCATION_ARGS) {
-  cPtr_errorInstructionAST * object = nullptr ;
-  macroMyNew (object, cPtr_errorInstructionAST (inCompiler COMMA_THERE)) ;
-  object->errorInstructionAST_init_21__21__21__21__21_ (in_mInstructionLocation, in_mLocationExpression, in_mMessageExpression, in_mBuiltVariableList, in_mFixitListAST, inCompiler) ;
-  const GGS_errorInstructionAST result (object) ;
-  macroDetachSharedObject (object) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_errorInstructionAST::
-errorInstructionAST_init_21__21__21__21__21_ (const GGS_location & in_mInstructionLocation,
-                                              const GGS_semanticExpressionAST & in_mLocationExpression,
-                                              const GGS_semanticExpressionAST & in_mMessageExpression,
-                                              const GGS_lstringlist & in_mBuiltVariableList,
-                                              const GGS_fixitListAST & in_mFixitListAST,
-                                              Compiler * /* inCompiler */) {
-  mProperty_mInstructionLocation = in_mInstructionLocation ;
-  mProperty_mLocationExpression = in_mLocationExpression ;
-  mProperty_mMessageExpression = in_mMessageExpression ;
-  mProperty_mBuiltVariableList = in_mBuiltVariableList ;
-  mProperty_mFixitListAST = in_mFixitListAST ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_errorInstructionAST::GGS_errorInstructionAST (const cPtr_errorInstructionAST * inSourcePtr) :
-GGS_semanticInstructionAST (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_errorInstructionAST) ;
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_semanticExpressionAST GGS_errorInstructionAST::readProperty_mLocationExpression (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_semanticExpressionAST () ;
-  }else{
-    cPtr_errorInstructionAST * p = (cPtr_errorInstructionAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_errorInstructionAST) ;
-    return p->mProperty_mLocationExpression ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_semanticExpressionAST GGS_errorInstructionAST::readProperty_mMessageExpression (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_semanticExpressionAST () ;
-  }else{
-    cPtr_errorInstructionAST * p = (cPtr_errorInstructionAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_errorInstructionAST) ;
-    return p->mProperty_mMessageExpression ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lstringlist GGS_errorInstructionAST::readProperty_mBuiltVariableList (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_lstringlist () ;
-  }else{
-    cPtr_errorInstructionAST * p = (cPtr_errorInstructionAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_errorInstructionAST) ;
-    return p->mProperty_mBuiltVariableList ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_fixitListAST GGS_errorInstructionAST::readProperty_mFixitListAST (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_fixitListAST () ;
-  }else{
-    cPtr_errorInstructionAST * p = (cPtr_errorInstructionAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_errorInstructionAST) ;
-    return p->mProperty_mFixitListAST ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-//Pointer class for @errorInstructionAST class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_errorInstructionAST::cPtr_errorInstructionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_semanticInstructionAST (inCompiler COMMA_THERE),
-mProperty_mLocationExpression (),
-mProperty_mMessageExpression (),
-mProperty_mBuiltVariableList (),
-mProperty_mFixitListAST () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cPtr_errorInstructionAST::cPtr_errorInstructionAST (const GGS_location & in_mInstructionLocation,
-                                                    const GGS_semanticExpressionAST & in_mLocationExpression,
-                                                    const GGS_semanticExpressionAST & in_mMessageExpression,
-                                                    const GGS_lstringlist & in_mBuiltVariableList,
-                                                    const GGS_fixitListAST & in_mFixitListAST,
-                                                    Compiler * inCompiler
-                                                    COMMA_LOCATION_ARGS) :
-cPtr_semanticInstructionAST (in_mInstructionLocation, inCompiler COMMA_THERE),
-mProperty_mLocationExpression (),
-mProperty_mMessageExpression (),
-mProperty_mBuiltVariableList (),
-mProperty_mFixitListAST () {
-  mProperty_mInstructionLocation = in_mInstructionLocation ;
-  mProperty_mLocationExpression = in_mLocationExpression ;
-  mProperty_mMessageExpression = in_mMessageExpression ;
-  mProperty_mBuiltVariableList = in_mBuiltVariableList ;
-  mProperty_mFixitListAST = in_mFixitListAST ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * cPtr_errorInstructionAST::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_errorInstructionAST ;
-}
-
-void cPtr_errorInstructionAST::description (String & ioString,
-                                            const int32_t inIndentation) const {
-  ioString.appendCString ("[@errorInstructionAST:") ;
-  mProperty_mInstructionLocation.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mLocationExpression.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mMessageExpression.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mBuiltVariableList.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mFixitListAST.description (ioString, inIndentation+1) ;
-  ioString.appendCString ("]") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-acPtr_class * cPtr_errorInstructionAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_errorInstructionAST (mProperty_mInstructionLocation, mProperty_mLocationExpression, mProperty_mMessageExpression, mProperty_mBuiltVariableList, mProperty_mFixitListAST, inCompiler COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_errorInstructionAST::printNonNullClassInstanceProperties (void) const {
-    cPtr_semanticInstructionAST::printNonNullClassInstanceProperties () ;
-    mProperty_mLocationExpression.printNonNullClassInstanceProperties ("mLocationExpression") ;
-    mProperty_mMessageExpression.printNonNullClassInstanceProperties ("mMessageExpression") ;
-    mProperty_mBuiltVariableList.printNonNullClassInstanceProperties ("mBuiltVariableList") ;
-    mProperty_mFixitListAST.printNonNullClassInstanceProperties ("mFixitListAST") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-//     @errorInstructionAST generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_errorInstructionAST ("errorInstructionAST",
-                                                                        & kTypeDescriptor_GALGAS_semanticInstructionAST) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_errorInstructionAST::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_errorInstructionAST ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_errorInstructionAST::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_errorInstructionAST (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_errorInstructionAST GGS_errorInstructionAST::extractObject (const GGS_object & inObject,
-                                                                Compiler * inCompiler
-                                                                COMMA_LOCATION_ARGS) {
-  GGS_errorInstructionAST result ;
-  const GGS_errorInstructionAST * p = (const GGS_errorInstructionAST *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_errorInstructionAST *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("errorInstructionAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-// @methodCallInstructionAST reference class
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult GGS_methodCallInstructionAST::objectCompare (const GGS_methodCallInstructionAST & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    const size_t myObjectPtr = size_t (mObjectPtr) ;
-    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_methodCallInstructionAST::GGS_methodCallInstructionAST (void) :
-GGS_semanticInstructionAST () {
-}
-
-//--- Synthetized initializer ----------------------------------------------------------------------
-
-GGS_methodCallInstructionAST GGS_methodCallInstructionAST::
-init_21__21__21__21_ (const GGS_location & in_mInstructionLocation,
-                      const GGS_semanticExpressionAST & in_mReceiverExpression,
-                      const GGS_lstring & in_mMethodName,
-                      const GGS_actualParameterListAST & in_mActualParameterList,
-                      Compiler * inCompiler
-                      COMMA_LOCATION_ARGS) {
-  cPtr_methodCallInstructionAST * object = nullptr ;
-  macroMyNew (object, cPtr_methodCallInstructionAST (inCompiler COMMA_THERE)) ;
-  object->methodCallInstructionAST_init_21__21__21__21_ (in_mInstructionLocation, in_mReceiverExpression, in_mMethodName, in_mActualParameterList, inCompiler) ;
-  const GGS_methodCallInstructionAST result (object) ;
-  macroDetachSharedObject (object) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_methodCallInstructionAST::
-methodCallInstructionAST_init_21__21__21__21_ (const GGS_location & in_mInstructionLocation,
-                                               const GGS_semanticExpressionAST & in_mReceiverExpression,
-                                               const GGS_lstring & in_mMethodName,
-                                               const GGS_actualParameterListAST & in_mActualParameterList,
-                                               Compiler * /* inCompiler */) {
-  mProperty_mInstructionLocation = in_mInstructionLocation ;
-  mProperty_mReceiverExpression = in_mReceiverExpression ;
-  mProperty_mMethodName = in_mMethodName ;
-  mProperty_mActualParameterList = in_mActualParameterList ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_methodCallInstructionAST::GGS_methodCallInstructionAST (const cPtr_methodCallInstructionAST * inSourcePtr) :
-GGS_semanticInstructionAST (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_methodCallInstructionAST) ;
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_semanticExpressionAST GGS_methodCallInstructionAST::readProperty_mReceiverExpression (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_semanticExpressionAST () ;
-  }else{
-    cPtr_methodCallInstructionAST * p = (cPtr_methodCallInstructionAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_methodCallInstructionAST) ;
-    return p->mProperty_mReceiverExpression ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lstring GGS_methodCallInstructionAST::readProperty_mMethodName (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_lstring () ;
-  }else{
-    cPtr_methodCallInstructionAST * p = (cPtr_methodCallInstructionAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_methodCallInstructionAST) ;
-    return p->mProperty_mMethodName ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_actualParameterListAST GGS_methodCallInstructionAST::readProperty_mActualParameterList (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_actualParameterListAST () ;
-  }else{
-    cPtr_methodCallInstructionAST * p = (cPtr_methodCallInstructionAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_methodCallInstructionAST) ;
-    return p->mProperty_mActualParameterList ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-//Pointer class for @methodCallInstructionAST class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_methodCallInstructionAST::cPtr_methodCallInstructionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_semanticInstructionAST (inCompiler COMMA_THERE),
+                                                                                COMMA_LOCATION_ARGS) :
+cPtr_templateExpressionAST (inCompiler COMMA_THERE),
 mProperty_mReceiverExpression (),
-mProperty_mMethodName (),
-mProperty_mActualParameterList () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cPtr_methodCallInstructionAST::cPtr_methodCallInstructionAST (const GGS_location & in_mInstructionLocation,
-                                                              const GGS_semanticExpressionAST & in_mReceiverExpression,
-                                                              const GGS_lstring & in_mMethodName,
-                                                              const GGS_actualParameterListAST & in_mActualParameterList,
-                                                              Compiler * inCompiler
-                                                              COMMA_LOCATION_ARGS) :
-cPtr_semanticInstructionAST (in_mInstructionLocation, inCompiler COMMA_THERE),
-mProperty_mReceiverExpression (),
-mProperty_mMethodName (),
-mProperty_mActualParameterList () {
-  mProperty_mInstructionLocation = in_mInstructionLocation ;
+mProperty_mGetterName (),
+mProperty_mExpressionList (),
+mProperty_mExpressionLocation () {
   mProperty_mReceiverExpression = in_mReceiverExpression ;
-  mProperty_mMethodName = in_mMethodName ;
-  mProperty_mActualParameterList = in_mActualParameterList ;
+  mProperty_mGetterName = in_mGetterName ;
+  mProperty_mExpressionList = in_mExpressionList ;
+  mProperty_mExpressionLocation = in_mExpressionLocation ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-const GALGAS_TypeDescriptor * cPtr_methodCallInstructionAST::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_methodCallInstructionAST ;
+const GALGAS_TypeDescriptor * cPtr_templateGetterCallInExpressionAST::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_templateGetterCallInExpressionAST ;
 }
 
-void cPtr_methodCallInstructionAST::description (String & ioString,
-                                                 const int32_t inIndentation) const {
-  ioString.appendCString ("[@methodCallInstructionAST:") ;
-  mProperty_mInstructionLocation.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
+void cPtr_templateGetterCallInExpressionAST::description (String & ioString,
+                                                          const int32_t inIndentation) const {
+  ioString.appendCString ("[@templateGetterCallInExpressionAST:") ;
   mProperty_mReceiverExpression.description (ioString, inIndentation+1) ;
   ioString.appendCString (", ") ;
-  mProperty_mMethodName.description (ioString, inIndentation+1) ;
+  mProperty_mGetterName.description (ioString, inIndentation+1) ;
   ioString.appendCString (", ") ;
-  mProperty_mActualParameterList.description (ioString, inIndentation+1) ;
+  mProperty_mExpressionList.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mExpressionLocation.description (ioString, inIndentation+1) ;
   ioString.appendCString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-acPtr_class * cPtr_methodCallInstructionAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+acPtr_class * cPtr_templateGetterCallInExpressionAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_methodCallInstructionAST (mProperty_mInstructionLocation, mProperty_mReceiverExpression, mProperty_mMethodName, mProperty_mActualParameterList, inCompiler COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_templateGetterCallInExpressionAST (mProperty_mReceiverExpression, mProperty_mGetterName, mProperty_mExpressionList, mProperty_mExpressionLocation, inCompiler COMMA_THERE)) ;
   return ptr ;
 }
 
@@ -13967,63 +10167,64 @@ acPtr_class * cPtr_methodCallInstructionAST::duplicate (Compiler * inCompiler CO
 //--------------------------------------------------------------------------------------------------
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_methodCallInstructionAST::printNonNullClassInstanceProperties (void) const {
-    cPtr_semanticInstructionAST::printNonNullClassInstanceProperties () ;
+  void cPtr_templateGetterCallInExpressionAST::printNonNullClassInstanceProperties (void) const {
+    cPtr_templateExpressionAST::printNonNullClassInstanceProperties () ;
     mProperty_mReceiverExpression.printNonNullClassInstanceProperties ("mReceiverExpression") ;
-    mProperty_mMethodName.printNonNullClassInstanceProperties ("mMethodName") ;
-    mProperty_mActualParameterList.printNonNullClassInstanceProperties ("mActualParameterList") ;
+    mProperty_mGetterName.printNonNullClassInstanceProperties ("mGetterName") ;
+    mProperty_mExpressionList.printNonNullClassInstanceProperties ("mExpressionList") ;
+    mProperty_mExpressionLocation.printNonNullClassInstanceProperties ("mExpressionLocation") ;
   }
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//     @methodCallInstructionAST generic code implementation
+//     @templateGetterCallInExpressionAST generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_methodCallInstructionAST ("methodCallInstructionAST",
-                                                                             & kTypeDescriptor_GALGAS_semanticInstructionAST) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_templateGetterCallInExpressionAST ("templateGetterCallInExpressionAST",
+                                                                                      & kTypeDescriptor_GALGAS_templateExpressionAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const GALGAS_TypeDescriptor * GGS_methodCallInstructionAST::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_methodCallInstructionAST ;
+const GALGAS_TypeDescriptor * GGS_templateGetterCallInExpressionAST::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_templateGetterCallInExpressionAST ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-AC_GALGAS_root * GGS_methodCallInstructionAST::clonedObject (void) const {
+AC_GALGAS_root * GGS_templateGetterCallInExpressionAST::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
-    macroMyNew (result, GGS_methodCallInstructionAST (*this)) ;
+    macroMyNew (result, GGS_templateGetterCallInExpressionAST (*this)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_methodCallInstructionAST GGS_methodCallInstructionAST::extractObject (const GGS_object & inObject,
-                                                                          Compiler * inCompiler
-                                                                          COMMA_LOCATION_ARGS) {
-  GGS_methodCallInstructionAST result ;
-  const GGS_methodCallInstructionAST * p = (const GGS_methodCallInstructionAST *) inObject.embeddedObject () ;
+GGS_templateGetterCallInExpressionAST GGS_templateGetterCallInExpressionAST::extractObject (const GGS_object & inObject,
+                                                                                            Compiler * inCompiler
+                                                                                            COMMA_LOCATION_ARGS) {
+  GGS_templateGetterCallInExpressionAST result ;
+  const GGS_templateGetterCallInExpressionAST * p = (const GGS_templateGetterCallInExpressionAST *) inObject.embeddedObject () ;
   if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_methodCallInstructionAST *> (p)) {
+    if (nullptr != dynamic_cast <const GGS_templateGetterCallInExpressionAST *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("methodCallInstructionAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("templateGetterCallInExpressionAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
-// @localVariableDeclarationWithAssignmentAST reference class
-//--------------------------------------------------------------------------------------------------
 
-ComparisonResult GGS_localVariableDeclarationWithAssignmentAST::objectCompare (const GGS_localVariableDeclarationWithAssignmentAST & inOperand) const {
+ComparisonResult GGS_templateGetterCallInExpressionAST_2E_weak::objectCompare (const GGS_templateGetterCallInExpressionAST_2E_weak & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
-    const size_t myObjectPtr = size_t (mObjectPtr) ;
-    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
+    cPtr_weakReference_proxy * myPtr = mProxyPtr ;
+    const size_t myObjectPtr = size_t (myPtr) ;
+    cPtr_weakReference_proxy * operandPtr = inOperand.mProxyPtr ;
+    const size_t operandObjectPtr = size_t (operandPtr) ;
     if (myObjectPtr < operandObjectPtr) {
       result = ComparisonResult::firstOperandLowerThanSecond ;
     }else if (myObjectPtr > operandObjectPtr) {
@@ -14037,166 +10238,7120 @@ ComparisonResult GGS_localVariableDeclarationWithAssignmentAST::objectCompare (c
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_localVariableDeclarationWithAssignmentAST::GGS_localVariableDeclarationWithAssignmentAST (void) :
-GGS_semanticInstructionAST () {
+GGS_templateGetterCallInExpressionAST_2E_weak::GGS_templateGetterCallInExpressionAST_2E_weak (void) :
+GGS_templateExpressionAST_2E_weak () {
 }
 
-//--- Synthetized initializer ----------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
-GGS_localVariableDeclarationWithAssignmentAST GGS_localVariableDeclarationWithAssignmentAST::
-init_21__21__21_ (const GGS_location & in_mInstructionLocation,
-                  const GGS_lstring & in_mVariableName,
-                  const GGS_semanticExpressionAST & in_mSourceExpression,
-                  Compiler * inCompiler
-                  COMMA_LOCATION_ARGS) {
-  cPtr_localVariableDeclarationWithAssignmentAST * object = nullptr ;
-  macroMyNew (object, cPtr_localVariableDeclarationWithAssignmentAST (inCompiler COMMA_THERE)) ;
-  object->localVariableDeclarationWithAssignmentAST_init_21__21__21_ (in_mInstructionLocation, in_mVariableName, in_mSourceExpression, inCompiler) ;
-  const GGS_localVariableDeclarationWithAssignmentAST result (object) ;
-  macroDetachSharedObject (object) ;
+GGS_templateGetterCallInExpressionAST_2E_weak & GGS_templateGetterCallInExpressionAST_2E_weak::operator = (const GGS_templateGetterCallInExpressionAST & inSource) {
+  cPtr_weakReference_proxy * proxyPtr = nullptr ;
+  acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
+  if (p != nullptr) {
+    proxyPtr = p->getProxy () ;
+  }
+  macroAssignSharedObject (mProxyPtr, proxyPtr) ;
+  return *this ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_templateGetterCallInExpressionAST_2E_weak::GGS_templateGetterCallInExpressionAST_2E_weak (const GGS_templateGetterCallInExpressionAST & inSource) :
+GGS_templateExpressionAST_2E_weak (inSource) {
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_templateGetterCallInExpressionAST_2E_weak GGS_templateGetterCallInExpressionAST_2E_weak::class_func_nil (LOCATION_ARGS) {
+  GGS_templateGetterCallInExpressionAST_2E_weak result ;
+  macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void cPtr_localVariableDeclarationWithAssignmentAST::
-localVariableDeclarationWithAssignmentAST_init_21__21__21_ (const GGS_location & in_mInstructionLocation,
-                                                            const GGS_lstring & in_mVariableName,
-                                                            const GGS_semanticExpressionAST & in_mSourceExpression,
-                                                            Compiler * /* inCompiler */) {
-  mProperty_mInstructionLocation = in_mInstructionLocation ;
-  mProperty_mVariableName = in_mVariableName ;
-  mProperty_mSourceExpression = in_mSourceExpression ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_localVariableDeclarationWithAssignmentAST::GGS_localVariableDeclarationWithAssignmentAST (const cPtr_localVariableDeclarationWithAssignmentAST * inSourcePtr) :
-GGS_semanticInstructionAST (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_localVariableDeclarationWithAssignmentAST) ;
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_lstring GGS_localVariableDeclarationWithAssignmentAST::readProperty_mVariableName (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_lstring () ;
-  }else{
-    cPtr_localVariableDeclarationWithAssignmentAST * p = (cPtr_localVariableDeclarationWithAssignmentAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_localVariableDeclarationWithAssignmentAST) ;
-    return p->mProperty_mVariableName ;
+GGS_templateGetterCallInExpressionAST GGS_templateGetterCallInExpressionAST_2E_weak::unwrappedValue (void) const {
+  GGS_templateGetterCallInExpressionAST result ;
+  if (isValid ()) {
+    const cPtr_templateGetterCallInExpressionAST * p = (cPtr_templateGetterCallInExpressionAST *) ptr () ;
+    if (nullptr != p) {
+      result = GGS_templateGetterCallInExpressionAST (p) ;
+    }
   }
+  return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_semanticExpressionAST GGS_localVariableDeclarationWithAssignmentAST::readProperty_mSourceExpression (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_semanticExpressionAST () ;
-  }else{
-    cPtr_localVariableDeclarationWithAssignmentAST * p = (cPtr_localVariableDeclarationWithAssignmentAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_localVariableDeclarationWithAssignmentAST) ;
-    return p->mProperty_mSourceExpression ;
+GGS_templateGetterCallInExpressionAST GGS_templateGetterCallInExpressionAST_2E_weak::bang_templateGetterCallInExpressionAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  GGS_templateGetterCallInExpressionAST result ;
+  if (mProxyPtr != nullptr) {
+    acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
+    if (strongPtr == nullptr) {
+      inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
+    }else{
+      macroValidSharedObject (strongPtr, cPtr_templateGetterCallInExpressionAST) ;
+      result = GGS_templateGetterCallInExpressionAST ((cPtr_templateGetterCallInExpressionAST *) strongPtr) ;
+    }
   }
+  return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
-//Pointer class for @localVariableDeclarationWithAssignmentAST class
+//     @templateGetterCallInExpressionAST.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-cPtr_localVariableDeclarationWithAssignmentAST::cPtr_localVariableDeclarationWithAssignmentAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_semanticInstructionAST (inCompiler COMMA_THERE),
-mProperty_mVariableName (),
-mProperty_mSourceExpression () {
-}
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_templateGetterCallInExpressionAST_2E_weak ("templateGetterCallInExpressionAST.weak",
+                                                                                              & kTypeDescriptor_GALGAS_templateExpressionAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-cPtr_localVariableDeclarationWithAssignmentAST::cPtr_localVariableDeclarationWithAssignmentAST (const GGS_location & in_mInstructionLocation,
-                                                                                                const GGS_lstring & in_mVariableName,
-                                                                                                const GGS_semanticExpressionAST & in_mSourceExpression,
-                                                                                                Compiler * inCompiler
-                                                                                                COMMA_LOCATION_ARGS) :
-cPtr_semanticInstructionAST (in_mInstructionLocation, inCompiler COMMA_THERE),
-mProperty_mVariableName (),
-mProperty_mSourceExpression () {
-  mProperty_mInstructionLocation = in_mInstructionLocation ;
-  mProperty_mVariableName = in_mVariableName ;
-  mProperty_mSourceExpression = in_mSourceExpression ;
+const GALGAS_TypeDescriptor * GGS_templateGetterCallInExpressionAST_2E_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_templateGetterCallInExpressionAST_2E_weak ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-const GALGAS_TypeDescriptor * cPtr_localVariableDeclarationWithAssignmentAST::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_localVariableDeclarationWithAssignmentAST ;
-}
-
-void cPtr_localVariableDeclarationWithAssignmentAST::description (String & ioString,
-                                                                  const int32_t inIndentation) const {
-  ioString.appendCString ("[@localVariableDeclarationWithAssignmentAST:") ;
-  mProperty_mInstructionLocation.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mVariableName.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mSourceExpression.description (ioString, inIndentation+1) ;
-  ioString.appendCString ("]") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-acPtr_class * cPtr_localVariableDeclarationWithAssignmentAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_localVariableDeclarationWithAssignmentAST (mProperty_mInstructionLocation, mProperty_mVariableName, mProperty_mSourceExpression, inCompiler COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_localVariableDeclarationWithAssignmentAST::printNonNullClassInstanceProperties (void) const {
-    cPtr_semanticInstructionAST::printNonNullClassInstanceProperties () ;
-    mProperty_mVariableName.printNonNullClassInstanceProperties ("mVariableName") ;
-    mProperty_mSourceExpression.printNonNullClassInstanceProperties ("mSourceExpression") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-//     @localVariableDeclarationWithAssignmentAST generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_localVariableDeclarationWithAssignmentAST ("localVariableDeclarationWithAssignmentAST",
-                                                                                              & kTypeDescriptor_GALGAS_semanticInstructionAST) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_localVariableDeclarationWithAssignmentAST::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_localVariableDeclarationWithAssignmentAST ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_localVariableDeclarationWithAssignmentAST::clonedObject (void) const {
+AC_GALGAS_root * GGS_templateGetterCallInExpressionAST_2E_weak::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
-    macroMyNew (result, GGS_localVariableDeclarationWithAssignmentAST (*this)) ;
+    macroMyNew (result, GGS_templateGetterCallInExpressionAST_2E_weak (*this)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_localVariableDeclarationWithAssignmentAST GGS_localVariableDeclarationWithAssignmentAST::extractObject (const GGS_object & inObject,
+GGS_templateGetterCallInExpressionAST_2E_weak GGS_templateGetterCallInExpressionAST_2E_weak::extractObject (const GGS_object & inObject,
                                                                                                             Compiler * inCompiler
                                                                                                             COMMA_LOCATION_ARGS) {
-  GGS_localVariableDeclarationWithAssignmentAST result ;
-  const GGS_localVariableDeclarationWithAssignmentAST * p = (const GGS_localVariableDeclarationWithAssignmentAST *) inObject.embeddedObject () ;
+  GGS_templateGetterCallInExpressionAST_2E_weak result ;
+  const GGS_templateGetterCallInExpressionAST_2E_weak * p = (const GGS_templateGetterCallInExpressionAST_2E_weak *) inObject.embeddedObject () ;
   if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_localVariableDeclarationWithAssignmentAST *> (p)) {
+    if (nullptr != dynamic_cast <const GGS_templateGetterCallInExpressionAST_2E_weak *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("localVariableDeclarationWithAssignmentAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("templateGetterCallInExpressionAST.weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
 }
+
+//--------------------------------------------------------------------------------------------------
+//
+//Abstract extension method '@templateInstructionAST templateInstructionAnalysis'
+//
+//--------------------------------------------------------------------------------------------------
+
+void callExtensionMethod_templateInstructionAnalysis (cPtr_templateInstructionAST * inObject,
+                                                      const GGS_lstring constin_inUsefulnessCallerEntityName,
+                                                      GGS_usefulEntitiesGraph & io_ioUsefulEntitiesGraph,
+                                                      const GGS_templateAnalysisContext constin_inAnalysisContext,
+                                                      GGS_unifiedTypeMap & io_ioTypeMap,
+                                                      GGS_templateInstructionListForGeneration & io_ioInstructionList,
+                                                      Compiler * inCompiler
+                                                      COMMA_LOCATION_ARGS) {
+//--- Drop output arguments
+//--- Find method
+  if (nullptr != inObject) {
+    macroValidSharedObject (inObject, cPtr_templateInstructionAST) ;
+    inObject->method_templateInstructionAnalysis (constin_inUsefulnessCallerEntityName, io_ioUsefulEntitiesGraph, constin_inAnalysisContext, io_ioTypeMap, io_ioInstructionList, inCompiler COMMA_THERE) ;
+  }
+}
+//--------------------------------------------------------------------------------------------------
+// @templateClassFunctionAST reference class
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GGS_templateClassFunctionAST::objectCompare (const GGS_templateClassFunctionAST & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    const size_t myObjectPtr = size_t (mObjectPtr) ;
+    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_templateClassFunctionAST::GGS_templateClassFunctionAST (void) :
+GGS_templateExpressionAST () {
+}
+
+//--- Synthetized initializer ----------------------------------------------------------------------
+
+GGS_templateClassFunctionAST GGS_templateClassFunctionAST::
+init_21__21__21_ (const GGS_lstring & in_mTypeName,
+                  const GGS_lstring & in_mClassFunctionName,
+                  const GGS_templateExpressionListAST & in_mExpressionList,
+                  Compiler * inCompiler
+                  COMMA_LOCATION_ARGS) {
+  cPtr_templateClassFunctionAST * object = nullptr ;
+  macroMyNew (object, cPtr_templateClassFunctionAST (inCompiler COMMA_THERE)) ;
+  object->templateClassFunctionAST_init_21__21__21_ (in_mTypeName, in_mClassFunctionName, in_mExpressionList, inCompiler) ;
+  const GGS_templateClassFunctionAST result (object) ;
+  macroDetachSharedObject (object) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_templateClassFunctionAST::
+templateClassFunctionAST_init_21__21__21_ (const GGS_lstring & in_mTypeName,
+                                           const GGS_lstring & in_mClassFunctionName,
+                                           const GGS_templateExpressionListAST & in_mExpressionList,
+                                           Compiler * /* inCompiler */) {
+  mProperty_mTypeName = in_mTypeName ;
+  mProperty_mClassFunctionName = in_mClassFunctionName ;
+  mProperty_mExpressionList = in_mExpressionList ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_templateClassFunctionAST::GGS_templateClassFunctionAST (const cPtr_templateClassFunctionAST * inSourcePtr) :
+GGS_templateExpressionAST (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_templateClassFunctionAST) ;
+}
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstring GGS_templateClassFunctionAST::readProperty_mTypeName (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_lstring () ;
+  }else{
+    cPtr_templateClassFunctionAST * p = (cPtr_templateClassFunctionAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_templateClassFunctionAST) ;
+    return p->mProperty_mTypeName ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstring GGS_templateClassFunctionAST::readProperty_mClassFunctionName (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_lstring () ;
+  }else{
+    cPtr_templateClassFunctionAST * p = (cPtr_templateClassFunctionAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_templateClassFunctionAST) ;
+    return p->mProperty_mClassFunctionName ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_templateExpressionListAST GGS_templateClassFunctionAST::readProperty_mExpressionList (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_templateExpressionListAST () ;
+  }else{
+    cPtr_templateClassFunctionAST * p = (cPtr_templateClassFunctionAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_templateClassFunctionAST) ;
+    return p->mProperty_mExpressionList ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//Pointer class for @templateClassFunctionAST class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_templateClassFunctionAST::cPtr_templateClassFunctionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_templateExpressionAST (inCompiler COMMA_THERE),
+mProperty_mTypeName (),
+mProperty_mClassFunctionName (),
+mProperty_mExpressionList () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+cPtr_templateClassFunctionAST::cPtr_templateClassFunctionAST (const GGS_lstring & in_mTypeName,
+                                                              const GGS_lstring & in_mClassFunctionName,
+                                                              const GGS_templateExpressionListAST & in_mExpressionList,
+                                                              Compiler * inCompiler
+                                                              COMMA_LOCATION_ARGS) :
+cPtr_templateExpressionAST (inCompiler COMMA_THERE),
+mProperty_mTypeName (),
+mProperty_mClassFunctionName (),
+mProperty_mExpressionList () {
+  mProperty_mTypeName = in_mTypeName ;
+  mProperty_mClassFunctionName = in_mClassFunctionName ;
+  mProperty_mExpressionList = in_mExpressionList ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * cPtr_templateClassFunctionAST::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_templateClassFunctionAST ;
+}
+
+void cPtr_templateClassFunctionAST::description (String & ioString,
+                                                 const int32_t inIndentation) const {
+  ioString.appendCString ("[@templateClassFunctionAST:") ;
+  mProperty_mTypeName.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mClassFunctionName.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mExpressionList.description (ioString, inIndentation+1) ;
+  ioString.appendCString ("]") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+acPtr_class * cPtr_templateClassFunctionAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  acPtr_class * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_templateClassFunctionAST (mProperty_mTypeName, mProperty_mClassFunctionName, mProperty_mExpressionList, inCompiler COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_templateClassFunctionAST::printNonNullClassInstanceProperties (void) const {
+    cPtr_templateExpressionAST::printNonNullClassInstanceProperties () ;
+    mProperty_mTypeName.printNonNullClassInstanceProperties ("mTypeName") ;
+    mProperty_mClassFunctionName.printNonNullClassInstanceProperties ("mClassFunctionName") ;
+    mProperty_mExpressionList.printNonNullClassInstanceProperties ("mExpressionList") ;
+  }
+#endif
+
+//--------------------------------------------------------------------------------------------------
+//     @templateClassFunctionAST generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_templateClassFunctionAST ("templateClassFunctionAST",
+                                                                             & kTypeDescriptor_GALGAS_templateExpressionAST) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_templateClassFunctionAST::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_templateClassFunctionAST ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_templateClassFunctionAST::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_templateClassFunctionAST (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_templateClassFunctionAST GGS_templateClassFunctionAST::extractObject (const GGS_object & inObject,
+                                                                          Compiler * inCompiler
+                                                                          COMMA_LOCATION_ARGS) {
+  GGS_templateClassFunctionAST result ;
+  const GGS_templateClassFunctionAST * p = (const GGS_templateClassFunctionAST *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_templateClassFunctionAST *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("templateClassFunctionAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+// @templateFileWrapperTemplateCallAST reference class
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GGS_templateFileWrapperTemplateCallAST::objectCompare (const GGS_templateFileWrapperTemplateCallAST & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    const size_t myObjectPtr = size_t (mObjectPtr) ;
+    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_templateFileWrapperTemplateCallAST::GGS_templateFileWrapperTemplateCallAST (void) :
+GGS_templateExpressionAST () {
+}
+
+//--- Synthetized initializer ----------------------------------------------------------------------
+
+GGS_templateFileWrapperTemplateCallAST GGS_templateFileWrapperTemplateCallAST::
+init_21__21__21_ (const GGS_lstring & in_mFileWrapperName,
+                  const GGS_lstring & in_mTemplateName,
+                  const GGS_templateExpressionListAST & in_mOutExpressionList,
+                  Compiler * inCompiler
+                  COMMA_LOCATION_ARGS) {
+  cPtr_templateFileWrapperTemplateCallAST * object = nullptr ;
+  macroMyNew (object, cPtr_templateFileWrapperTemplateCallAST (inCompiler COMMA_THERE)) ;
+  object->templateFileWrapperTemplateCallAST_init_21__21__21_ (in_mFileWrapperName, in_mTemplateName, in_mOutExpressionList, inCompiler) ;
+  const GGS_templateFileWrapperTemplateCallAST result (object) ;
+  macroDetachSharedObject (object) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_templateFileWrapperTemplateCallAST::
+templateFileWrapperTemplateCallAST_init_21__21__21_ (const GGS_lstring & in_mFileWrapperName,
+                                                     const GGS_lstring & in_mTemplateName,
+                                                     const GGS_templateExpressionListAST & in_mOutExpressionList,
+                                                     Compiler * /* inCompiler */) {
+  mProperty_mFileWrapperName = in_mFileWrapperName ;
+  mProperty_mTemplateName = in_mTemplateName ;
+  mProperty_mOutExpressionList = in_mOutExpressionList ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_templateFileWrapperTemplateCallAST::GGS_templateFileWrapperTemplateCallAST (const cPtr_templateFileWrapperTemplateCallAST * inSourcePtr) :
+GGS_templateExpressionAST (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_templateFileWrapperTemplateCallAST) ;
+}
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstring GGS_templateFileWrapperTemplateCallAST::readProperty_mFileWrapperName (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_lstring () ;
+  }else{
+    cPtr_templateFileWrapperTemplateCallAST * p = (cPtr_templateFileWrapperTemplateCallAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_templateFileWrapperTemplateCallAST) ;
+    return p->mProperty_mFileWrapperName ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstring GGS_templateFileWrapperTemplateCallAST::readProperty_mTemplateName (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_lstring () ;
+  }else{
+    cPtr_templateFileWrapperTemplateCallAST * p = (cPtr_templateFileWrapperTemplateCallAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_templateFileWrapperTemplateCallAST) ;
+    return p->mProperty_mTemplateName ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_templateExpressionListAST GGS_templateFileWrapperTemplateCallAST::readProperty_mOutExpressionList (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_templateExpressionListAST () ;
+  }else{
+    cPtr_templateFileWrapperTemplateCallAST * p = (cPtr_templateFileWrapperTemplateCallAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_templateFileWrapperTemplateCallAST) ;
+    return p->mProperty_mOutExpressionList ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//Pointer class for @templateFileWrapperTemplateCallAST class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_templateFileWrapperTemplateCallAST::cPtr_templateFileWrapperTemplateCallAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_templateExpressionAST (inCompiler COMMA_THERE),
+mProperty_mFileWrapperName (),
+mProperty_mTemplateName (),
+mProperty_mOutExpressionList () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+cPtr_templateFileWrapperTemplateCallAST::cPtr_templateFileWrapperTemplateCallAST (const GGS_lstring & in_mFileWrapperName,
+                                                                                  const GGS_lstring & in_mTemplateName,
+                                                                                  const GGS_templateExpressionListAST & in_mOutExpressionList,
+                                                                                  Compiler * inCompiler
+                                                                                  COMMA_LOCATION_ARGS) :
+cPtr_templateExpressionAST (inCompiler COMMA_THERE),
+mProperty_mFileWrapperName (),
+mProperty_mTemplateName (),
+mProperty_mOutExpressionList () {
+  mProperty_mFileWrapperName = in_mFileWrapperName ;
+  mProperty_mTemplateName = in_mTemplateName ;
+  mProperty_mOutExpressionList = in_mOutExpressionList ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * cPtr_templateFileWrapperTemplateCallAST::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_templateFileWrapperTemplateCallAST ;
+}
+
+void cPtr_templateFileWrapperTemplateCallAST::description (String & ioString,
+                                                           const int32_t inIndentation) const {
+  ioString.appendCString ("[@templateFileWrapperTemplateCallAST:") ;
+  mProperty_mFileWrapperName.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mTemplateName.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mOutExpressionList.description (ioString, inIndentation+1) ;
+  ioString.appendCString ("]") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+acPtr_class * cPtr_templateFileWrapperTemplateCallAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  acPtr_class * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_templateFileWrapperTemplateCallAST (mProperty_mFileWrapperName, mProperty_mTemplateName, mProperty_mOutExpressionList, inCompiler COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_templateFileWrapperTemplateCallAST::printNonNullClassInstanceProperties (void) const {
+    cPtr_templateExpressionAST::printNonNullClassInstanceProperties () ;
+    mProperty_mFileWrapperName.printNonNullClassInstanceProperties ("mFileWrapperName") ;
+    mProperty_mTemplateName.printNonNullClassInstanceProperties ("mTemplateName") ;
+    mProperty_mOutExpressionList.printNonNullClassInstanceProperties ("mOutExpressionList") ;
+  }
+#endif
+
+//--------------------------------------------------------------------------------------------------
+//     @templateFileWrapperTemplateCallAST generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_templateFileWrapperTemplateCallAST ("templateFileWrapperTemplateCallAST",
+                                                                                       & kTypeDescriptor_GALGAS_templateExpressionAST) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_templateFileWrapperTemplateCallAST::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_templateFileWrapperTemplateCallAST ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_templateFileWrapperTemplateCallAST::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_templateFileWrapperTemplateCallAST (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_templateFileWrapperTemplateCallAST GGS_templateFileWrapperTemplateCallAST::extractObject (const GGS_object & inObject,
+                                                                                              Compiler * inCompiler
+                                                                                              COMMA_LOCATION_ARGS) {
+  GGS_templateFileWrapperTemplateCallAST result ;
+  const GGS_templateFileWrapperTemplateCallAST * p = (const GGS_templateFileWrapperTemplateCallAST *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_templateFileWrapperTemplateCallAST *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("templateFileWrapperTemplateCallAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+// @templateExtensionTemplateCallAST reference class
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GGS_templateExtensionTemplateCallAST::objectCompare (const GGS_templateExtensionTemplateCallAST & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    const size_t myObjectPtr = size_t (mObjectPtr) ;
+    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_templateExtensionTemplateCallAST::GGS_templateExtensionTemplateCallAST (void) :
+GGS_templateExpressionAST () {
+}
+
+//--- Synthetized initializer ----------------------------------------------------------------------
+
+GGS_templateExtensionTemplateCallAST GGS_templateExtensionTemplateCallAST::
+init_21__21__21_ (const GGS_templateExpressionAST & in_mExpressionValue,
+                  const GGS_lstring & in_mTemplateName,
+                  const GGS_templateExpressionListAST & in_mOutExpressionList,
+                  Compiler * inCompiler
+                  COMMA_LOCATION_ARGS) {
+  cPtr_templateExtensionTemplateCallAST * object = nullptr ;
+  macroMyNew (object, cPtr_templateExtensionTemplateCallAST (inCompiler COMMA_THERE)) ;
+  object->templateExtensionTemplateCallAST_init_21__21__21_ (in_mExpressionValue, in_mTemplateName, in_mOutExpressionList, inCompiler) ;
+  const GGS_templateExtensionTemplateCallAST result (object) ;
+  macroDetachSharedObject (object) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_templateExtensionTemplateCallAST::
+templateExtensionTemplateCallAST_init_21__21__21_ (const GGS_templateExpressionAST & in_mExpressionValue,
+                                                   const GGS_lstring & in_mTemplateName,
+                                                   const GGS_templateExpressionListAST & in_mOutExpressionList,
+                                                   Compiler * /* inCompiler */) {
+  mProperty_mExpressionValue = in_mExpressionValue ;
+  mProperty_mTemplateName = in_mTemplateName ;
+  mProperty_mOutExpressionList = in_mOutExpressionList ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_templateExtensionTemplateCallAST::GGS_templateExtensionTemplateCallAST (const cPtr_templateExtensionTemplateCallAST * inSourcePtr) :
+GGS_templateExpressionAST (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_templateExtensionTemplateCallAST) ;
+}
+//--------------------------------------------------------------------------------------------------
+
+GGS_templateExpressionAST GGS_templateExtensionTemplateCallAST::readProperty_mExpressionValue (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_templateExpressionAST () ;
+  }else{
+    cPtr_templateExtensionTemplateCallAST * p = (cPtr_templateExtensionTemplateCallAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_templateExtensionTemplateCallAST) ;
+    return p->mProperty_mExpressionValue ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstring GGS_templateExtensionTemplateCallAST::readProperty_mTemplateName (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_lstring () ;
+  }else{
+    cPtr_templateExtensionTemplateCallAST * p = (cPtr_templateExtensionTemplateCallAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_templateExtensionTemplateCallAST) ;
+    return p->mProperty_mTemplateName ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_templateExpressionListAST GGS_templateExtensionTemplateCallAST::readProperty_mOutExpressionList (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_templateExpressionListAST () ;
+  }else{
+    cPtr_templateExtensionTemplateCallAST * p = (cPtr_templateExtensionTemplateCallAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_templateExtensionTemplateCallAST) ;
+    return p->mProperty_mOutExpressionList ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//Pointer class for @templateExtensionTemplateCallAST class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_templateExtensionTemplateCallAST::cPtr_templateExtensionTemplateCallAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_templateExpressionAST (inCompiler COMMA_THERE),
+mProperty_mExpressionValue (),
+mProperty_mTemplateName (),
+mProperty_mOutExpressionList () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+cPtr_templateExtensionTemplateCallAST::cPtr_templateExtensionTemplateCallAST (const GGS_templateExpressionAST & in_mExpressionValue,
+                                                                              const GGS_lstring & in_mTemplateName,
+                                                                              const GGS_templateExpressionListAST & in_mOutExpressionList,
+                                                                              Compiler * inCompiler
+                                                                              COMMA_LOCATION_ARGS) :
+cPtr_templateExpressionAST (inCompiler COMMA_THERE),
+mProperty_mExpressionValue (),
+mProperty_mTemplateName (),
+mProperty_mOutExpressionList () {
+  mProperty_mExpressionValue = in_mExpressionValue ;
+  mProperty_mTemplateName = in_mTemplateName ;
+  mProperty_mOutExpressionList = in_mOutExpressionList ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * cPtr_templateExtensionTemplateCallAST::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_templateExtensionTemplateCallAST ;
+}
+
+void cPtr_templateExtensionTemplateCallAST::description (String & ioString,
+                                                         const int32_t inIndentation) const {
+  ioString.appendCString ("[@templateExtensionTemplateCallAST:") ;
+  mProperty_mExpressionValue.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mTemplateName.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mOutExpressionList.description (ioString, inIndentation+1) ;
+  ioString.appendCString ("]") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+acPtr_class * cPtr_templateExtensionTemplateCallAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  acPtr_class * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_templateExtensionTemplateCallAST (mProperty_mExpressionValue, mProperty_mTemplateName, mProperty_mOutExpressionList, inCompiler COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_templateExtensionTemplateCallAST::printNonNullClassInstanceProperties (void) const {
+    cPtr_templateExpressionAST::printNonNullClassInstanceProperties () ;
+    mProperty_mExpressionValue.printNonNullClassInstanceProperties ("mExpressionValue") ;
+    mProperty_mTemplateName.printNonNullClassInstanceProperties ("mTemplateName") ;
+    mProperty_mOutExpressionList.printNonNullClassInstanceProperties ("mOutExpressionList") ;
+  }
+#endif
+
+//--------------------------------------------------------------------------------------------------
+//     @templateExtensionTemplateCallAST generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_templateExtensionTemplateCallAST ("templateExtensionTemplateCallAST",
+                                                                                     & kTypeDescriptor_GALGAS_templateExpressionAST) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_templateExtensionTemplateCallAST::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_templateExtensionTemplateCallAST ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_templateExtensionTemplateCallAST::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_templateExtensionTemplateCallAST (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_templateExtensionTemplateCallAST GGS_templateExtensionTemplateCallAST::extractObject (const GGS_object & inObject,
+                                                                                          Compiler * inCompiler
+                                                                                          COMMA_LOCATION_ARGS) {
+  GGS_templateExtensionTemplateCallAST result ;
+  const GGS_templateExtensionTemplateCallAST * p = (const GGS_templateExtensionTemplateCallAST *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_templateExtensionTemplateCallAST *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("templateExtensionTemplateCallAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+// @structFieldAccessTemplateExpressionAST reference class
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GGS_structFieldAccessTemplateExpressionAST::objectCompare (const GGS_structFieldAccessTemplateExpressionAST & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    const size_t myObjectPtr = size_t (mObjectPtr) ;
+    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_structFieldAccessTemplateExpressionAST::GGS_structFieldAccessTemplateExpressionAST (void) :
+GGS_templateExpressionAST () {
+}
+
+//--- Synthetized initializer ----------------------------------------------------------------------
+
+GGS_structFieldAccessTemplateExpressionAST GGS_structFieldAccessTemplateExpressionAST::
+init_21__21__21_ (const GGS_location & in_mOperatorLocation,
+                  const GGS_templateExpressionAST & in_mExpression,
+                  const GGS_lstring & in_mStructFieldName,
+                  Compiler * inCompiler
+                  COMMA_LOCATION_ARGS) {
+  cPtr_structFieldAccessTemplateExpressionAST * object = nullptr ;
+  macroMyNew (object, cPtr_structFieldAccessTemplateExpressionAST (inCompiler COMMA_THERE)) ;
+  object->structFieldAccessTemplateExpressionAST_init_21__21__21_ (in_mOperatorLocation, in_mExpression, in_mStructFieldName, inCompiler) ;
+  const GGS_structFieldAccessTemplateExpressionAST result (object) ;
+  macroDetachSharedObject (object) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_structFieldAccessTemplateExpressionAST::
+structFieldAccessTemplateExpressionAST_init_21__21__21_ (const GGS_location & in_mOperatorLocation,
+                                                         const GGS_templateExpressionAST & in_mExpression,
+                                                         const GGS_lstring & in_mStructFieldName,
+                                                         Compiler * /* inCompiler */) {
+  mProperty_mOperatorLocation = in_mOperatorLocation ;
+  mProperty_mExpression = in_mExpression ;
+  mProperty_mStructFieldName = in_mStructFieldName ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_structFieldAccessTemplateExpressionAST::GGS_structFieldAccessTemplateExpressionAST (const cPtr_structFieldAccessTemplateExpressionAST * inSourcePtr) :
+GGS_templateExpressionAST (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_structFieldAccessTemplateExpressionAST) ;
+}
+//--------------------------------------------------------------------------------------------------
+
+GGS_location GGS_structFieldAccessTemplateExpressionAST::readProperty_mOperatorLocation (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_location () ;
+  }else{
+    cPtr_structFieldAccessTemplateExpressionAST * p = (cPtr_structFieldAccessTemplateExpressionAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_structFieldAccessTemplateExpressionAST) ;
+    return p->mProperty_mOperatorLocation ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_templateExpressionAST GGS_structFieldAccessTemplateExpressionAST::readProperty_mExpression (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_templateExpressionAST () ;
+  }else{
+    cPtr_structFieldAccessTemplateExpressionAST * p = (cPtr_structFieldAccessTemplateExpressionAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_structFieldAccessTemplateExpressionAST) ;
+    return p->mProperty_mExpression ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstring GGS_structFieldAccessTemplateExpressionAST::readProperty_mStructFieldName (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_lstring () ;
+  }else{
+    cPtr_structFieldAccessTemplateExpressionAST * p = (cPtr_structFieldAccessTemplateExpressionAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_structFieldAccessTemplateExpressionAST) ;
+    return p->mProperty_mStructFieldName ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//Pointer class for @structFieldAccessTemplateExpressionAST class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_structFieldAccessTemplateExpressionAST::cPtr_structFieldAccessTemplateExpressionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_templateExpressionAST (inCompiler COMMA_THERE),
+mProperty_mOperatorLocation (),
+mProperty_mExpression (),
+mProperty_mStructFieldName () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+cPtr_structFieldAccessTemplateExpressionAST::cPtr_structFieldAccessTemplateExpressionAST (const GGS_location & in_mOperatorLocation,
+                                                                                          const GGS_templateExpressionAST & in_mExpression,
+                                                                                          const GGS_lstring & in_mStructFieldName,
+                                                                                          Compiler * inCompiler
+                                                                                          COMMA_LOCATION_ARGS) :
+cPtr_templateExpressionAST (inCompiler COMMA_THERE),
+mProperty_mOperatorLocation (),
+mProperty_mExpression (),
+mProperty_mStructFieldName () {
+  mProperty_mOperatorLocation = in_mOperatorLocation ;
+  mProperty_mExpression = in_mExpression ;
+  mProperty_mStructFieldName = in_mStructFieldName ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * cPtr_structFieldAccessTemplateExpressionAST::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_structFieldAccessTemplateExpressionAST ;
+}
+
+void cPtr_structFieldAccessTemplateExpressionAST::description (String & ioString,
+                                                               const int32_t inIndentation) const {
+  ioString.appendCString ("[@structFieldAccessTemplateExpressionAST:") ;
+  mProperty_mOperatorLocation.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mExpression.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mStructFieldName.description (ioString, inIndentation+1) ;
+  ioString.appendCString ("]") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+acPtr_class * cPtr_structFieldAccessTemplateExpressionAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  acPtr_class * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_structFieldAccessTemplateExpressionAST (mProperty_mOperatorLocation, mProperty_mExpression, mProperty_mStructFieldName, inCompiler COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_structFieldAccessTemplateExpressionAST::printNonNullClassInstanceProperties (void) const {
+    cPtr_templateExpressionAST::printNonNullClassInstanceProperties () ;
+    mProperty_mOperatorLocation.printNonNullClassInstanceProperties ("mOperatorLocation") ;
+    mProperty_mExpression.printNonNullClassInstanceProperties ("mExpression") ;
+    mProperty_mStructFieldName.printNonNullClassInstanceProperties ("mStructFieldName") ;
+  }
+#endif
+
+//--------------------------------------------------------------------------------------------------
+//     @structFieldAccessTemplateExpressionAST generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_structFieldAccessTemplateExpressionAST ("structFieldAccessTemplateExpressionAST",
+                                                                                           & kTypeDescriptor_GALGAS_templateExpressionAST) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_structFieldAccessTemplateExpressionAST::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_structFieldAccessTemplateExpressionAST ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_structFieldAccessTemplateExpressionAST::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_structFieldAccessTemplateExpressionAST (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_structFieldAccessTemplateExpressionAST GGS_structFieldAccessTemplateExpressionAST::extractObject (const GGS_object & inObject,
+                                                                                                      Compiler * inCompiler
+                                                                                                      COMMA_LOCATION_ARGS) {
+  GGS_structFieldAccessTemplateExpressionAST result ;
+  const GGS_structFieldAccessTemplateExpressionAST * p = (const GGS_structFieldAccessTemplateExpressionAST *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_structFieldAccessTemplateExpressionAST *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("structFieldAccessTemplateExpressionAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+// @templateOptionAccessAST reference class
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GGS_templateOptionAccessAST::objectCompare (const GGS_templateOptionAccessAST & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    const size_t myObjectPtr = size_t (mObjectPtr) ;
+    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_templateOptionAccessAST::GGS_templateOptionAccessAST (void) :
+GGS_templateExpressionAST () {
+}
+
+//--- Synthetized initializer ----------------------------------------------------------------------
+
+GGS_templateOptionAccessAST GGS_templateOptionAccessAST::
+init_21__21__21_ (const GGS_lstring & in_mOptionComponentName,
+                  const GGS_lstring & in_mOptionName,
+                  const GGS_lstring & in_mGetterName,
+                  Compiler * inCompiler
+                  COMMA_LOCATION_ARGS) {
+  cPtr_templateOptionAccessAST * object = nullptr ;
+  macroMyNew (object, cPtr_templateOptionAccessAST (inCompiler COMMA_THERE)) ;
+  object->templateOptionAccessAST_init_21__21__21_ (in_mOptionComponentName, in_mOptionName, in_mGetterName, inCompiler) ;
+  const GGS_templateOptionAccessAST result (object) ;
+  macroDetachSharedObject (object) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_templateOptionAccessAST::
+templateOptionAccessAST_init_21__21__21_ (const GGS_lstring & in_mOptionComponentName,
+                                          const GGS_lstring & in_mOptionName,
+                                          const GGS_lstring & in_mGetterName,
+                                          Compiler * /* inCompiler */) {
+  mProperty_mOptionComponentName = in_mOptionComponentName ;
+  mProperty_mOptionName = in_mOptionName ;
+  mProperty_mGetterName = in_mGetterName ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_templateOptionAccessAST::GGS_templateOptionAccessAST (const cPtr_templateOptionAccessAST * inSourcePtr) :
+GGS_templateExpressionAST (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_templateOptionAccessAST) ;
+}
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstring GGS_templateOptionAccessAST::readProperty_mOptionComponentName (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_lstring () ;
+  }else{
+    cPtr_templateOptionAccessAST * p = (cPtr_templateOptionAccessAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_templateOptionAccessAST) ;
+    return p->mProperty_mOptionComponentName ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstring GGS_templateOptionAccessAST::readProperty_mOptionName (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_lstring () ;
+  }else{
+    cPtr_templateOptionAccessAST * p = (cPtr_templateOptionAccessAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_templateOptionAccessAST) ;
+    return p->mProperty_mOptionName ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstring GGS_templateOptionAccessAST::readProperty_mGetterName (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_lstring () ;
+  }else{
+    cPtr_templateOptionAccessAST * p = (cPtr_templateOptionAccessAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_templateOptionAccessAST) ;
+    return p->mProperty_mGetterName ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//Pointer class for @templateOptionAccessAST class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_templateOptionAccessAST::cPtr_templateOptionAccessAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_templateExpressionAST (inCompiler COMMA_THERE),
+mProperty_mOptionComponentName (),
+mProperty_mOptionName (),
+mProperty_mGetterName () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+cPtr_templateOptionAccessAST::cPtr_templateOptionAccessAST (const GGS_lstring & in_mOptionComponentName,
+                                                            const GGS_lstring & in_mOptionName,
+                                                            const GGS_lstring & in_mGetterName,
+                                                            Compiler * inCompiler
+                                                            COMMA_LOCATION_ARGS) :
+cPtr_templateExpressionAST (inCompiler COMMA_THERE),
+mProperty_mOptionComponentName (),
+mProperty_mOptionName (),
+mProperty_mGetterName () {
+  mProperty_mOptionComponentName = in_mOptionComponentName ;
+  mProperty_mOptionName = in_mOptionName ;
+  mProperty_mGetterName = in_mGetterName ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * cPtr_templateOptionAccessAST::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_templateOptionAccessAST ;
+}
+
+void cPtr_templateOptionAccessAST::description (String & ioString,
+                                                const int32_t inIndentation) const {
+  ioString.appendCString ("[@templateOptionAccessAST:") ;
+  mProperty_mOptionComponentName.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mOptionName.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mGetterName.description (ioString, inIndentation+1) ;
+  ioString.appendCString ("]") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+acPtr_class * cPtr_templateOptionAccessAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  acPtr_class * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_templateOptionAccessAST (mProperty_mOptionComponentName, mProperty_mOptionName, mProperty_mGetterName, inCompiler COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_templateOptionAccessAST::printNonNullClassInstanceProperties (void) const {
+    cPtr_templateExpressionAST::printNonNullClassInstanceProperties () ;
+    mProperty_mOptionComponentName.printNonNullClassInstanceProperties ("mOptionComponentName") ;
+    mProperty_mOptionName.printNonNullClassInstanceProperties ("mOptionName") ;
+    mProperty_mGetterName.printNonNullClassInstanceProperties ("mGetterName") ;
+  }
+#endif
+
+//--------------------------------------------------------------------------------------------------
+//     @templateOptionAccessAST generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_templateOptionAccessAST ("templateOptionAccessAST",
+                                                                            & kTypeDescriptor_GALGAS_templateExpressionAST) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_templateOptionAccessAST::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_templateOptionAccessAST ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_templateOptionAccessAST::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_templateOptionAccessAST (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_templateOptionAccessAST GGS_templateOptionAccessAST::extractObject (const GGS_object & inObject,
+                                                                        Compiler * inCompiler
+                                                                        COMMA_LOCATION_ARGS) {
+  GGS_templateOptionAccessAST result ;
+  const GGS_templateOptionAccessAST * p = (const GGS_templateOptionAccessAST *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_templateOptionAccessAST *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("templateOptionAccessAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+// @templateTestDynamicClassAST reference class
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GGS_templateTestDynamicClassAST::objectCompare (const GGS_templateTestDynamicClassAST & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    const size_t myObjectPtr = size_t (mObjectPtr) ;
+    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_templateTestDynamicClassAST::GGS_templateTestDynamicClassAST (void) :
+GGS_templateExpressionAST () {
+}
+
+//--- Synthetized initializer ----------------------------------------------------------------------
+
+GGS_templateTestDynamicClassAST GGS_templateTestDynamicClassAST::
+init_21__21__21__21_ (const GGS_templateExpressionAST & in_mReceiverExpression,
+                      const GGS_location & in_mEndOfReceiverExpression,
+                      const GGS_dynamicTypeComparisonKind & in_mTypeComparisonKind,
+                      const GGS_lstring & in_mTypeName,
+                      Compiler * inCompiler
+                      COMMA_LOCATION_ARGS) {
+  cPtr_templateTestDynamicClassAST * object = nullptr ;
+  macroMyNew (object, cPtr_templateTestDynamicClassAST (inCompiler COMMA_THERE)) ;
+  object->templateTestDynamicClassAST_init_21__21__21__21_ (in_mReceiverExpression, in_mEndOfReceiverExpression, in_mTypeComparisonKind, in_mTypeName, inCompiler) ;
+  const GGS_templateTestDynamicClassAST result (object) ;
+  macroDetachSharedObject (object) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_templateTestDynamicClassAST::
+templateTestDynamicClassAST_init_21__21__21__21_ (const GGS_templateExpressionAST & in_mReceiverExpression,
+                                                  const GGS_location & in_mEndOfReceiverExpression,
+                                                  const GGS_dynamicTypeComparisonKind & in_mTypeComparisonKind,
+                                                  const GGS_lstring & in_mTypeName,
+                                                  Compiler * /* inCompiler */) {
+  mProperty_mReceiverExpression = in_mReceiverExpression ;
+  mProperty_mEndOfReceiverExpression = in_mEndOfReceiverExpression ;
+  mProperty_mTypeComparisonKind = in_mTypeComparisonKind ;
+  mProperty_mTypeName = in_mTypeName ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_templateTestDynamicClassAST::GGS_templateTestDynamicClassAST (const cPtr_templateTestDynamicClassAST * inSourcePtr) :
+GGS_templateExpressionAST (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_templateTestDynamicClassAST) ;
+}
+//--------------------------------------------------------------------------------------------------
+
+GGS_templateExpressionAST GGS_templateTestDynamicClassAST::readProperty_mReceiverExpression (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_templateExpressionAST () ;
+  }else{
+    cPtr_templateTestDynamicClassAST * p = (cPtr_templateTestDynamicClassAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_templateTestDynamicClassAST) ;
+    return p->mProperty_mReceiverExpression ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_location GGS_templateTestDynamicClassAST::readProperty_mEndOfReceiverExpression (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_location () ;
+  }else{
+    cPtr_templateTestDynamicClassAST * p = (cPtr_templateTestDynamicClassAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_templateTestDynamicClassAST) ;
+    return p->mProperty_mEndOfReceiverExpression ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_dynamicTypeComparisonKind GGS_templateTestDynamicClassAST::readProperty_mTypeComparisonKind (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_dynamicTypeComparisonKind () ;
+  }else{
+    cPtr_templateTestDynamicClassAST * p = (cPtr_templateTestDynamicClassAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_templateTestDynamicClassAST) ;
+    return p->mProperty_mTypeComparisonKind ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstring GGS_templateTestDynamicClassAST::readProperty_mTypeName (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_lstring () ;
+  }else{
+    cPtr_templateTestDynamicClassAST * p = (cPtr_templateTestDynamicClassAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_templateTestDynamicClassAST) ;
+    return p->mProperty_mTypeName ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//Pointer class for @templateTestDynamicClassAST class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_templateTestDynamicClassAST::cPtr_templateTestDynamicClassAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_templateExpressionAST (inCompiler COMMA_THERE),
+mProperty_mReceiverExpression (),
+mProperty_mEndOfReceiverExpression (),
+mProperty_mTypeComparisonKind (),
+mProperty_mTypeName () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+cPtr_templateTestDynamicClassAST::cPtr_templateTestDynamicClassAST (const GGS_templateExpressionAST & in_mReceiverExpression,
+                                                                    const GGS_location & in_mEndOfReceiverExpression,
+                                                                    const GGS_dynamicTypeComparisonKind & in_mTypeComparisonKind,
+                                                                    const GGS_lstring & in_mTypeName,
+                                                                    Compiler * inCompiler
+                                                                    COMMA_LOCATION_ARGS) :
+cPtr_templateExpressionAST (inCompiler COMMA_THERE),
+mProperty_mReceiverExpression (),
+mProperty_mEndOfReceiverExpression (),
+mProperty_mTypeComparisonKind (),
+mProperty_mTypeName () {
+  mProperty_mReceiverExpression = in_mReceiverExpression ;
+  mProperty_mEndOfReceiverExpression = in_mEndOfReceiverExpression ;
+  mProperty_mTypeComparisonKind = in_mTypeComparisonKind ;
+  mProperty_mTypeName = in_mTypeName ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * cPtr_templateTestDynamicClassAST::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_templateTestDynamicClassAST ;
+}
+
+void cPtr_templateTestDynamicClassAST::description (String & ioString,
+                                                    const int32_t inIndentation) const {
+  ioString.appendCString ("[@templateTestDynamicClassAST:") ;
+  mProperty_mReceiverExpression.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mEndOfReceiverExpression.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mTypeComparisonKind.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mTypeName.description (ioString, inIndentation+1) ;
+  ioString.appendCString ("]") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+acPtr_class * cPtr_templateTestDynamicClassAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  acPtr_class * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_templateTestDynamicClassAST (mProperty_mReceiverExpression, mProperty_mEndOfReceiverExpression, mProperty_mTypeComparisonKind, mProperty_mTypeName, inCompiler COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_templateTestDynamicClassAST::printNonNullClassInstanceProperties (void) const {
+    cPtr_templateExpressionAST::printNonNullClassInstanceProperties () ;
+    mProperty_mReceiverExpression.printNonNullClassInstanceProperties ("mReceiverExpression") ;
+    mProperty_mEndOfReceiverExpression.printNonNullClassInstanceProperties ("mEndOfReceiverExpression") ;
+    mProperty_mTypeComparisonKind.printNonNullClassInstanceProperties ("mTypeComparisonKind") ;
+    mProperty_mTypeName.printNonNullClassInstanceProperties ("mTypeName") ;
+  }
+#endif
+
+//--------------------------------------------------------------------------------------------------
+//     @templateTestDynamicClassAST generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_templateTestDynamicClassAST ("templateTestDynamicClassAST",
+                                                                                & kTypeDescriptor_GALGAS_templateExpressionAST) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_templateTestDynamicClassAST::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_templateTestDynamicClassAST ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_templateTestDynamicClassAST::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_templateTestDynamicClassAST (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_templateTestDynamicClassAST GGS_templateTestDynamicClassAST::extractObject (const GGS_object & inObject,
+                                                                                Compiler * inCompiler
+                                                                                COMMA_LOCATION_ARGS) {
+  GGS_templateTestDynamicClassAST result ;
+  const GGS_templateTestDynamicClassAST * p = (const GGS_templateTestDynamicClassAST *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_templateTestDynamicClassAST *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("templateTestDynamicClassAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+// @templateFunctionCallAST reference class
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GGS_templateFunctionCallAST::objectCompare (const GGS_templateFunctionCallAST & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    const size_t myObjectPtr = size_t (mObjectPtr) ;
+    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_templateFunctionCallAST::GGS_templateFunctionCallAST (void) :
+GGS_templateExpressionAST () {
+}
+
+//--- Synthetized initializer ----------------------------------------------------------------------
+
+GGS_templateFunctionCallAST GGS_templateFunctionCallAST::
+init_21__21_ (const GGS_lstring & in_mFunctionName,
+              const GGS_templateExpressionListAST & in_mExpressionList,
+              Compiler * inCompiler
+              COMMA_LOCATION_ARGS) {
+  cPtr_templateFunctionCallAST * object = nullptr ;
+  macroMyNew (object, cPtr_templateFunctionCallAST (inCompiler COMMA_THERE)) ;
+  object->templateFunctionCallAST_init_21__21_ (in_mFunctionName, in_mExpressionList, inCompiler) ;
+  const GGS_templateFunctionCallAST result (object) ;
+  macroDetachSharedObject (object) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_templateFunctionCallAST::
+templateFunctionCallAST_init_21__21_ (const GGS_lstring & in_mFunctionName,
+                                      const GGS_templateExpressionListAST & in_mExpressionList,
+                                      Compiler * /* inCompiler */) {
+  mProperty_mFunctionName = in_mFunctionName ;
+  mProperty_mExpressionList = in_mExpressionList ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_templateFunctionCallAST::GGS_templateFunctionCallAST (const cPtr_templateFunctionCallAST * inSourcePtr) :
+GGS_templateExpressionAST (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_templateFunctionCallAST) ;
+}
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstring GGS_templateFunctionCallAST::readProperty_mFunctionName (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_lstring () ;
+  }else{
+    cPtr_templateFunctionCallAST * p = (cPtr_templateFunctionCallAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_templateFunctionCallAST) ;
+    return p->mProperty_mFunctionName ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_templateExpressionListAST GGS_templateFunctionCallAST::readProperty_mExpressionList (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_templateExpressionListAST () ;
+  }else{
+    cPtr_templateFunctionCallAST * p = (cPtr_templateFunctionCallAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_templateFunctionCallAST) ;
+    return p->mProperty_mExpressionList ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//Pointer class for @templateFunctionCallAST class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_templateFunctionCallAST::cPtr_templateFunctionCallAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_templateExpressionAST (inCompiler COMMA_THERE),
+mProperty_mFunctionName (),
+mProperty_mExpressionList () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+cPtr_templateFunctionCallAST::cPtr_templateFunctionCallAST (const GGS_lstring & in_mFunctionName,
+                                                            const GGS_templateExpressionListAST & in_mExpressionList,
+                                                            Compiler * inCompiler
+                                                            COMMA_LOCATION_ARGS) :
+cPtr_templateExpressionAST (inCompiler COMMA_THERE),
+mProperty_mFunctionName (),
+mProperty_mExpressionList () {
+  mProperty_mFunctionName = in_mFunctionName ;
+  mProperty_mExpressionList = in_mExpressionList ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * cPtr_templateFunctionCallAST::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_templateFunctionCallAST ;
+}
+
+void cPtr_templateFunctionCallAST::description (String & ioString,
+                                                const int32_t inIndentation) const {
+  ioString.appendCString ("[@templateFunctionCallAST:") ;
+  mProperty_mFunctionName.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mExpressionList.description (ioString, inIndentation+1) ;
+  ioString.appendCString ("]") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+acPtr_class * cPtr_templateFunctionCallAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  acPtr_class * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_templateFunctionCallAST (mProperty_mFunctionName, mProperty_mExpressionList, inCompiler COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_templateFunctionCallAST::printNonNullClassInstanceProperties (void) const {
+    cPtr_templateExpressionAST::printNonNullClassInstanceProperties () ;
+    mProperty_mFunctionName.printNonNullClassInstanceProperties ("mFunctionName") ;
+    mProperty_mExpressionList.printNonNullClassInstanceProperties ("mExpressionList") ;
+  }
+#endif
+
+//--------------------------------------------------------------------------------------------------
+//     @templateFunctionCallAST generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_templateFunctionCallAST ("templateFunctionCallAST",
+                                                                            & kTypeDescriptor_GALGAS_templateExpressionAST) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_templateFunctionCallAST::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_templateFunctionCallAST ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_templateFunctionCallAST::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_templateFunctionCallAST (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_templateFunctionCallAST GGS_templateFunctionCallAST::extractObject (const GGS_object & inObject,
+                                                                        Compiler * inCompiler
+                                                                        COMMA_LOCATION_ARGS) {
+  GGS_templateFunctionCallAST result ;
+  const GGS_templateFunctionCallAST * p = (const GGS_templateFunctionCallAST *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_templateFunctionCallAST *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("templateFunctionCallAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+// @templateVarInExpressionAST reference class
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GGS_templateVarInExpressionAST::objectCompare (const GGS_templateVarInExpressionAST & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    const size_t myObjectPtr = size_t (mObjectPtr) ;
+    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_templateVarInExpressionAST::GGS_templateVarInExpressionAST (void) :
+GGS_templateExpressionAST () {
+}
+
+//--- Synthetized initializer ----------------------------------------------------------------------
+
+GGS_templateVarInExpressionAST GGS_templateVarInExpressionAST::
+init_21_ (const GGS_lstring & in_mVarName,
+          Compiler * inCompiler
+          COMMA_LOCATION_ARGS) {
+  cPtr_templateVarInExpressionAST * object = nullptr ;
+  macroMyNew (object, cPtr_templateVarInExpressionAST (inCompiler COMMA_THERE)) ;
+  object->templateVarInExpressionAST_init_21_ (in_mVarName, inCompiler) ;
+  const GGS_templateVarInExpressionAST result (object) ;
+  macroDetachSharedObject (object) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_templateVarInExpressionAST::
+templateVarInExpressionAST_init_21_ (const GGS_lstring & in_mVarName,
+                                     Compiler * /* inCompiler */) {
+  mProperty_mVarName = in_mVarName ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_templateVarInExpressionAST::GGS_templateVarInExpressionAST (const cPtr_templateVarInExpressionAST * inSourcePtr) :
+GGS_templateExpressionAST (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_templateVarInExpressionAST) ;
+}
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstring GGS_templateVarInExpressionAST::readProperty_mVarName (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_lstring () ;
+  }else{
+    cPtr_templateVarInExpressionAST * p = (cPtr_templateVarInExpressionAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_templateVarInExpressionAST) ;
+    return p->mProperty_mVarName ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//Pointer class for @templateVarInExpressionAST class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_templateVarInExpressionAST::cPtr_templateVarInExpressionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_templateExpressionAST (inCompiler COMMA_THERE),
+mProperty_mVarName () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+cPtr_templateVarInExpressionAST::cPtr_templateVarInExpressionAST (const GGS_lstring & in_mVarName,
+                                                                  Compiler * inCompiler
+                                                                  COMMA_LOCATION_ARGS) :
+cPtr_templateExpressionAST (inCompiler COMMA_THERE),
+mProperty_mVarName () {
+  mProperty_mVarName = in_mVarName ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * cPtr_templateVarInExpressionAST::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_templateVarInExpressionAST ;
+}
+
+void cPtr_templateVarInExpressionAST::description (String & ioString,
+                                                   const int32_t inIndentation) const {
+  ioString.appendCString ("[@templateVarInExpressionAST:") ;
+  mProperty_mVarName.description (ioString, inIndentation+1) ;
+  ioString.appendCString ("]") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+acPtr_class * cPtr_templateVarInExpressionAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  acPtr_class * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_templateVarInExpressionAST (mProperty_mVarName, inCompiler COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_templateVarInExpressionAST::printNonNullClassInstanceProperties (void) const {
+    cPtr_templateExpressionAST::printNonNullClassInstanceProperties () ;
+    mProperty_mVarName.printNonNullClassInstanceProperties ("mVarName") ;
+  }
+#endif
+
+//--------------------------------------------------------------------------------------------------
+//     @templateVarInExpressionAST generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_templateVarInExpressionAST ("templateVarInExpressionAST",
+                                                                               & kTypeDescriptor_GALGAS_templateExpressionAST) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_templateVarInExpressionAST::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_templateVarInExpressionAST ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_templateVarInExpressionAST::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_templateVarInExpressionAST (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_templateVarInExpressionAST GGS_templateVarInExpressionAST::extractObject (const GGS_object & inObject,
+                                                                              Compiler * inCompiler
+                                                                              COMMA_LOCATION_ARGS) {
+  GGS_templateVarInExpressionAST result ;
+  const GGS_templateVarInExpressionAST * p = (const GGS_templateVarInExpressionAST *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_templateVarInExpressionAST *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("templateVarInExpressionAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+#include "MF_MemoryControl.h"
+#include "C_galgas_CLI_Options.h"
+
+#include "FileManager.h"
+
+//--------------------------------------------------------------------------------------------------
+
+
+//--------------------------------------------------------------------------------------------------
+//
+//                             N O N    T E R M I N A L    N A M E S                                
+//
+//--------------------------------------------------------------------------------------------------
+
+static const char * gNonTerminalNames_templateGrammar [50] = {
+  "<expression_tpl>",// Index 0
+  "<relation_term_tpl>",// Index 1
+  "<relation_factor_tpl>",// Index 2
+  "<simple_expression_tpl>",// Index 3
+  "<term_tpl>",// Index 4
+  "<factor_tpl>",// Index 5
+  "<primary_tpl>",// Index 6
+  "<output_expression_list_tpl>",// Index 7
+  "<template_instruction>",// Index 8
+  "<template_parser_start_symbol>",// Index 9
+  "<for_instruction_element>",// Index 10
+  "<for_instruction_enumerated_object>",// Index 11
+  "<switch_case>",// Index 12
+  "<select_templateSyntax_0>",// Index 13
+  "<select_templateSyntax_1>",// Index 14
+  "<select_templateSyntax_2>",// Index 15
+  "<select_templateSyntax_3>",// Index 16
+  "<select_templateSyntax_4>",// Index 17
+  "<select_templateSyntax_5>",// Index 18
+  "<select_templateSyntax_6>",// Index 19
+  "<select_templateSyntax_7>",// Index 20
+  "<select_templateSyntax_8>",// Index 21
+  "<select_templateSyntax_9>",// Index 22
+  "<select_templateSyntax_10>",// Index 23
+  "<select_templateSyntax_11>",// Index 24
+  "<select_templateSyntax_12>",// Index 25
+  "<select_templateSyntax_13>",// Index 26
+  "<select_templateSyntax_14>",// Index 27
+  "<select_templateSyntax_15>",// Index 28
+  "<select_templateSyntax_16>",// Index 29
+  "<select_templateSyntax_17>",// Index 30
+  "<select_templateSyntax_18>",// Index 31
+  "<select_templateSyntax_19>",// Index 32
+  "<select_templateSyntax_20>",// Index 33
+  "<select_templateSyntax_21>",// Index 34
+  "<select_templateSyntax_22>",// Index 35
+  "<select_templateSyntax_23>",// Index 36
+  "<select_templateSyntax_24>",// Index 37
+  "<select_templateSyntax_25>",// Index 38
+  "<select_templateSyntax_26>",// Index 39
+  "<select_templateSyntax_27>",// Index 40
+  "<select_templateSyntax_28>",// Index 41
+  "<select_templateSyntax_29>",// Index 42
+  "<select_templateSyntax_30>",// Index 43
+  "<select_templateSyntax_31>",// Index 44
+  "<select_templateSyntax_32>",// Index 45
+  "<select_templateSyntax_33>",// Index 46
+  "<select_templateSyntax_34>",// Index 47
+  "<select_templateSyntax_35>",// Index 48
+  "<>"// Index 49
+} ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//                      S L R    A N A L Y Z E R    A C T I O N    T A B L E                        
+//
+//--------------------------------------------------------------------------------------------------
+
+// Action tables handle shift and reduce actions:
+//  - a shift action is (terminal_symbol, SHIFT (n)): if shifts to state n;
+//  - the accept action is (terminal_symbol, ACCEPT);
+//  - a reduce action is (terminal_symbol, REDUCE (n)); if reduces to state n.
+
+static const int32_t gActionTable_templateGrammar [] = {
+// State S0 (index = 0)
+  Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_SHIFT (1)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_SHIFT (2)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_SHIFT (3)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_SHIFT (4)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_SHIFT (5)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_SHIFT (6)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_SHIFT (7)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (82)
+, BOTTOM_UP_END
+// State S1 (index = 17)
+, Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_SHIFT (11)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (12)
+, Lexique_galgasTemplateScanner::kToken_not, BOTTOM_UP_SHIFT (13)
+, Lexique_galgasTemplateScanner::kToken__7E_, BOTTOM_UP_SHIFT (14)
+, Lexique_galgasTemplateScanner::kToken__28_, BOTTOM_UP_SHIFT (15)
+, Lexique_galgasTemplateScanner::kToken_true, BOTTOM_UP_SHIFT (16)
+, Lexique_galgasTemplateScanner::kToken_false, BOTTOM_UP_SHIFT (17)
+, Lexique_galgasTemplateScanner::kToken_literalInt, BOTTOM_UP_SHIFT (18)
+, Lexique_galgasTemplateScanner::kToken_double_2E_xxx, BOTTOM_UP_SHIFT (19)
+, Lexique_galgasTemplateScanner::kToken__27_char_27_, BOTTOM_UP_SHIFT (20)
+, Lexique_galgasTemplateScanner::kToken__22_string_22_, BOTTOM_UP_SHIFT (21)
+, Lexique_galgasTemplateScanner::kToken__5B_, BOTTOM_UP_SHIFT (22)
+, BOTTOM_UP_END
+// State S2 (index = 42)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (22)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (22)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (22)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (22)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (22)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_REDUCE (22)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (22)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (22)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_REDUCE (22)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (22)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (22)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (22)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_REDUCE (22)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (22)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (22)
+, BOTTOM_UP_END
+// State S3 (index = 73)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (23)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (23)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (23)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (23)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (23)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_REDUCE (23)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (23)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (23)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_REDUCE (23)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (23)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (23)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (23)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_REDUCE (23)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (23)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (23)
+, BOTTOM_UP_END
+// State S4 (index = 104)
+, Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_SHIFT (11)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (12)
+, Lexique_galgasTemplateScanner::kToken_not, BOTTOM_UP_SHIFT (13)
+, Lexique_galgasTemplateScanner::kToken__7E_, BOTTOM_UP_SHIFT (14)
+, Lexique_galgasTemplateScanner::kToken__28_, BOTTOM_UP_SHIFT (15)
+, Lexique_galgasTemplateScanner::kToken_true, BOTTOM_UP_SHIFT (16)
+, Lexique_galgasTemplateScanner::kToken_false, BOTTOM_UP_SHIFT (17)
+, Lexique_galgasTemplateScanner::kToken_literalInt, BOTTOM_UP_SHIFT (18)
+, Lexique_galgasTemplateScanner::kToken_double_2E_xxx, BOTTOM_UP_SHIFT (19)
+, Lexique_galgasTemplateScanner::kToken__27_char_27_, BOTTOM_UP_SHIFT (20)
+, Lexique_galgasTemplateScanner::kToken__22_string_22_, BOTTOM_UP_SHIFT (21)
+, Lexique_galgasTemplateScanner::kToken__5B_, BOTTOM_UP_SHIFT (22)
+, BOTTOM_UP_END
+// State S5 (index = 129)
+, Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_SHIFT (11)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (12)
+, Lexique_galgasTemplateScanner::kToken_not, BOTTOM_UP_SHIFT (13)
+, Lexique_galgasTemplateScanner::kToken__7E_, BOTTOM_UP_SHIFT (14)
+, Lexique_galgasTemplateScanner::kToken__28_, BOTTOM_UP_SHIFT (15)
+, Lexique_galgasTemplateScanner::kToken_true, BOTTOM_UP_SHIFT (16)
+, Lexique_galgasTemplateScanner::kToken_false, BOTTOM_UP_SHIFT (17)
+, Lexique_galgasTemplateScanner::kToken_literalInt, BOTTOM_UP_SHIFT (18)
+, Lexique_galgasTemplateScanner::kToken_double_2E_xxx, BOTTOM_UP_SHIFT (19)
+, Lexique_galgasTemplateScanner::kToken__27_char_27_, BOTTOM_UP_SHIFT (20)
+, Lexique_galgasTemplateScanner::kToken__22_string_22_, BOTTOM_UP_SHIFT (21)
+, Lexique_galgasTemplateScanner::kToken__5B_, BOTTOM_UP_SHIFT (22)
+, BOTTOM_UP_END
+// State S6 (index = 154)
+, Lexique_galgasTemplateScanner::kToken__3E_, BOTTOM_UP_SHIFT (32)
+, Lexique_galgasTemplateScanner::kToken__3C_, BOTTOM_UP_SHIFT (33)
+, Lexique_galgasTemplateScanner::kToken__28_, BOTTOM_UP_REDUCE (88)
+, BOTTOM_UP_END
+// State S7 (index = 161)
+, Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_SHIFT (11)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (12)
+, Lexique_galgasTemplateScanner::kToken_not, BOTTOM_UP_SHIFT (13)
+, Lexique_galgasTemplateScanner::kToken__7E_, BOTTOM_UP_SHIFT (14)
+, Lexique_galgasTemplateScanner::kToken__28_, BOTTOM_UP_SHIFT (15)
+, Lexique_galgasTemplateScanner::kToken_true, BOTTOM_UP_SHIFT (16)
+, Lexique_galgasTemplateScanner::kToken_false, BOTTOM_UP_SHIFT (17)
+, Lexique_galgasTemplateScanner::kToken_literalInt, BOTTOM_UP_SHIFT (18)
+, Lexique_galgasTemplateScanner::kToken_double_2E_xxx, BOTTOM_UP_SHIFT (19)
+, Lexique_galgasTemplateScanner::kToken__27_char_27_, BOTTOM_UP_SHIFT (20)
+, Lexique_galgasTemplateScanner::kToken__22_string_22_, BOTTOM_UP_SHIFT (21)
+, Lexique_galgasTemplateScanner::kToken__5B_, BOTTOM_UP_SHIFT (22)
+, BOTTOM_UP_END
+// State S8 (index = 186)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_SHIFT (1)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_SHIFT (2)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_SHIFT (3)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_SHIFT (4)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_SHIFT (5)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_SHIFT (6)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_SHIFT (7)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (82)
+, BOTTOM_UP_END
+// State S9 (index = 203)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_ACCEPT
+, BOTTOM_UP_END
+// State S10 (index = 206)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (26)
+, BOTTOM_UP_END
+// State S11 (index = 209)
+, Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_SHIFT (11)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (12)
+, Lexique_galgasTemplateScanner::kToken_not, BOTTOM_UP_SHIFT (13)
+, Lexique_galgasTemplateScanner::kToken__7E_, BOTTOM_UP_SHIFT (14)
+, Lexique_galgasTemplateScanner::kToken__28_, BOTTOM_UP_SHIFT (15)
+, Lexique_galgasTemplateScanner::kToken_true, BOTTOM_UP_SHIFT (16)
+, Lexique_galgasTemplateScanner::kToken_false, BOTTOM_UP_SHIFT (17)
+, Lexique_galgasTemplateScanner::kToken_literalInt, BOTTOM_UP_SHIFT (18)
+, Lexique_galgasTemplateScanner::kToken_double_2E_xxx, BOTTOM_UP_SHIFT (19)
+, Lexique_galgasTemplateScanner::kToken__27_char_27_, BOTTOM_UP_SHIFT (20)
+, Lexique_galgasTemplateScanner::kToken__22_string_22_, BOTTOM_UP_SHIFT (21)
+, Lexique_galgasTemplateScanner::kToken__5B_, BOTTOM_UP_SHIFT (22)
+, BOTTOM_UP_END
+// State S12 (index = 234)
+, Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (9)
+, Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (9)
+, Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (9)
+, Lexique_galgasTemplateScanner::kToken__3D__3D_, BOTTOM_UP_REDUCE (9)
+, Lexique_galgasTemplateScanner::kToken__21__3D_, BOTTOM_UP_REDUCE (9)
+, Lexique_galgasTemplateScanner::kToken__3C__3D_, BOTTOM_UP_REDUCE (9)
+, Lexique_galgasTemplateScanner::kToken__3E__3D_, BOTTOM_UP_REDUCE (9)
+, Lexique_galgasTemplateScanner::kToken__3E_, BOTTOM_UP_REDUCE (9)
+, Lexique_galgasTemplateScanner::kToken__3C_, BOTTOM_UP_REDUCE (9)
+, Lexique_galgasTemplateScanner::kToken__3C__3C_, BOTTOM_UP_REDUCE (9)
+, Lexique_galgasTemplateScanner::kToken__3E__3E_, BOTTOM_UP_REDUCE (9)
+, Lexique_galgasTemplateScanner::kToken__2B_, BOTTOM_UP_REDUCE (9)
+, Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_REDUCE (9)
+, Lexique_galgasTemplateScanner::kToken__2A_, BOTTOM_UP_REDUCE (9)
+, Lexique_galgasTemplateScanner::kToken__2F_, BOTTOM_UP_REDUCE (9)
+, Lexique_galgasTemplateScanner::kToken_mod, BOTTOM_UP_REDUCE (9)
+, Lexique_galgasTemplateScanner::kToken__2E_, BOTTOM_UP_REDUCE (9)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (9)
+, Lexique_galgasTemplateScanner::kToken__28_, BOTTOM_UP_SHIFT (38)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (9)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (9)
+, Lexique_galgasTemplateScanner::kToken_is, BOTTOM_UP_REDUCE (9)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (9)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (9)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (9)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (9)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (9)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (9)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (9)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_REDUCE (9)
+, Lexique_galgasTemplateScanner::kToken_then, BOTTOM_UP_REDUCE (9)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (9)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (9)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_REDUCE (9)
+, Lexique_galgasTemplateScanner::kToken_before, BOTTOM_UP_REDUCE (9)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (9)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (9)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (9)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_REDUCE (9)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (9)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (9)
+, BOTTOM_UP_END
+// State S13 (index = 317)
+, Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_SHIFT (11)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (12)
+, Lexique_galgasTemplateScanner::kToken_not, BOTTOM_UP_SHIFT (13)
+, Lexique_galgasTemplateScanner::kToken__7E_, BOTTOM_UP_SHIFT (14)
+, Lexique_galgasTemplateScanner::kToken__28_, BOTTOM_UP_SHIFT (15)
+, Lexique_galgasTemplateScanner::kToken_true, BOTTOM_UP_SHIFT (16)
+, Lexique_galgasTemplateScanner::kToken_false, BOTTOM_UP_SHIFT (17)
+, Lexique_galgasTemplateScanner::kToken_literalInt, BOTTOM_UP_SHIFT (18)
+, Lexique_galgasTemplateScanner::kToken_double_2E_xxx, BOTTOM_UP_SHIFT (19)
+, Lexique_galgasTemplateScanner::kToken__27_char_27_, BOTTOM_UP_SHIFT (20)
+, Lexique_galgasTemplateScanner::kToken__22_string_22_, BOTTOM_UP_SHIFT (21)
+, Lexique_galgasTemplateScanner::kToken__5B_, BOTTOM_UP_SHIFT (22)
+, BOTTOM_UP_END
+// State S14 (index = 342)
+, Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_SHIFT (11)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (12)
+, Lexique_galgasTemplateScanner::kToken_not, BOTTOM_UP_SHIFT (13)
+, Lexique_galgasTemplateScanner::kToken__7E_, BOTTOM_UP_SHIFT (14)
+, Lexique_galgasTemplateScanner::kToken__28_, BOTTOM_UP_SHIFT (15)
+, Lexique_galgasTemplateScanner::kToken_true, BOTTOM_UP_SHIFT (16)
+, Lexique_galgasTemplateScanner::kToken_false, BOTTOM_UP_SHIFT (17)
+, Lexique_galgasTemplateScanner::kToken_literalInt, BOTTOM_UP_SHIFT (18)
+, Lexique_galgasTemplateScanner::kToken_double_2E_xxx, BOTTOM_UP_SHIFT (19)
+, Lexique_galgasTemplateScanner::kToken__27_char_27_, BOTTOM_UP_SHIFT (20)
+, Lexique_galgasTemplateScanner::kToken__22_string_22_, BOTTOM_UP_SHIFT (21)
+, Lexique_galgasTemplateScanner::kToken__5B_, BOTTOM_UP_SHIFT (22)
+, BOTTOM_UP_END
+// State S15 (index = 367)
+, Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_SHIFT (11)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (12)
+, Lexique_galgasTemplateScanner::kToken_not, BOTTOM_UP_SHIFT (13)
+, Lexique_galgasTemplateScanner::kToken__7E_, BOTTOM_UP_SHIFT (14)
+, Lexique_galgasTemplateScanner::kToken__28_, BOTTOM_UP_SHIFT (15)
+, Lexique_galgasTemplateScanner::kToken_true, BOTTOM_UP_SHIFT (16)
+, Lexique_galgasTemplateScanner::kToken_false, BOTTOM_UP_SHIFT (17)
+, Lexique_galgasTemplateScanner::kToken_literalInt, BOTTOM_UP_SHIFT (18)
+, Lexique_galgasTemplateScanner::kToken_double_2E_xxx, BOTTOM_UP_SHIFT (19)
+, Lexique_galgasTemplateScanner::kToken__27_char_27_, BOTTOM_UP_SHIFT (20)
+, Lexique_galgasTemplateScanner::kToken__22_string_22_, BOTTOM_UP_SHIFT (21)
+, Lexique_galgasTemplateScanner::kToken__5B_, BOTTOM_UP_SHIFT (22)
+, BOTTOM_UP_END
+// State S16 (index = 392)
+, Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (11)
+, Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (11)
+, Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (11)
+, Lexique_galgasTemplateScanner::kToken__3D__3D_, BOTTOM_UP_REDUCE (11)
+, Lexique_galgasTemplateScanner::kToken__21__3D_, BOTTOM_UP_REDUCE (11)
+, Lexique_galgasTemplateScanner::kToken__3C__3D_, BOTTOM_UP_REDUCE (11)
+, Lexique_galgasTemplateScanner::kToken__3E__3D_, BOTTOM_UP_REDUCE (11)
+, Lexique_galgasTemplateScanner::kToken__3E_, BOTTOM_UP_REDUCE (11)
+, Lexique_galgasTemplateScanner::kToken__3C_, BOTTOM_UP_REDUCE (11)
+, Lexique_galgasTemplateScanner::kToken__3C__3C_, BOTTOM_UP_REDUCE (11)
+, Lexique_galgasTemplateScanner::kToken__3E__3E_, BOTTOM_UP_REDUCE (11)
+, Lexique_galgasTemplateScanner::kToken__2B_, BOTTOM_UP_REDUCE (11)
+, Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_REDUCE (11)
+, Lexique_galgasTemplateScanner::kToken__2A_, BOTTOM_UP_REDUCE (11)
+, Lexique_galgasTemplateScanner::kToken__2F_, BOTTOM_UP_REDUCE (11)
+, Lexique_galgasTemplateScanner::kToken_mod, BOTTOM_UP_REDUCE (11)
+, Lexique_galgasTemplateScanner::kToken__2E_, BOTTOM_UP_REDUCE (11)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (11)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (11)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (11)
+, Lexique_galgasTemplateScanner::kToken_is, BOTTOM_UP_REDUCE (11)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (11)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (11)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (11)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (11)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (11)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (11)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (11)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_REDUCE (11)
+, Lexique_galgasTemplateScanner::kToken_then, BOTTOM_UP_REDUCE (11)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (11)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (11)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_REDUCE (11)
+, Lexique_galgasTemplateScanner::kToken_before, BOTTOM_UP_REDUCE (11)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (11)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (11)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (11)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_REDUCE (11)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (11)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (11)
+, BOTTOM_UP_END
+// State S17 (index = 473)
+, Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (12)
+, Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (12)
+, Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (12)
+, Lexique_galgasTemplateScanner::kToken__3D__3D_, BOTTOM_UP_REDUCE (12)
+, Lexique_galgasTemplateScanner::kToken__21__3D_, BOTTOM_UP_REDUCE (12)
+, Lexique_galgasTemplateScanner::kToken__3C__3D_, BOTTOM_UP_REDUCE (12)
+, Lexique_galgasTemplateScanner::kToken__3E__3D_, BOTTOM_UP_REDUCE (12)
+, Lexique_galgasTemplateScanner::kToken__3E_, BOTTOM_UP_REDUCE (12)
+, Lexique_galgasTemplateScanner::kToken__3C_, BOTTOM_UP_REDUCE (12)
+, Lexique_galgasTemplateScanner::kToken__3C__3C_, BOTTOM_UP_REDUCE (12)
+, Lexique_galgasTemplateScanner::kToken__3E__3E_, BOTTOM_UP_REDUCE (12)
+, Lexique_galgasTemplateScanner::kToken__2B_, BOTTOM_UP_REDUCE (12)
+, Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_REDUCE (12)
+, Lexique_galgasTemplateScanner::kToken__2A_, BOTTOM_UP_REDUCE (12)
+, Lexique_galgasTemplateScanner::kToken__2F_, BOTTOM_UP_REDUCE (12)
+, Lexique_galgasTemplateScanner::kToken_mod, BOTTOM_UP_REDUCE (12)
+, Lexique_galgasTemplateScanner::kToken__2E_, BOTTOM_UP_REDUCE (12)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (12)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (12)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (12)
+, Lexique_galgasTemplateScanner::kToken_is, BOTTOM_UP_REDUCE (12)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (12)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (12)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (12)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (12)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (12)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (12)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (12)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_REDUCE (12)
+, Lexique_galgasTemplateScanner::kToken_then, BOTTOM_UP_REDUCE (12)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (12)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (12)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_REDUCE (12)
+, Lexique_galgasTemplateScanner::kToken_before, BOTTOM_UP_REDUCE (12)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (12)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (12)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (12)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_REDUCE (12)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (12)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (12)
+, BOTTOM_UP_END
+// State S18 (index = 554)
+, Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (13)
+, Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (13)
+, Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (13)
+, Lexique_galgasTemplateScanner::kToken__3D__3D_, BOTTOM_UP_REDUCE (13)
+, Lexique_galgasTemplateScanner::kToken__21__3D_, BOTTOM_UP_REDUCE (13)
+, Lexique_galgasTemplateScanner::kToken__3C__3D_, BOTTOM_UP_REDUCE (13)
+, Lexique_galgasTemplateScanner::kToken__3E__3D_, BOTTOM_UP_REDUCE (13)
+, Lexique_galgasTemplateScanner::kToken__3E_, BOTTOM_UP_REDUCE (13)
+, Lexique_galgasTemplateScanner::kToken__3C_, BOTTOM_UP_REDUCE (13)
+, Lexique_galgasTemplateScanner::kToken__3C__3C_, BOTTOM_UP_REDUCE (13)
+, Lexique_galgasTemplateScanner::kToken__3E__3E_, BOTTOM_UP_REDUCE (13)
+, Lexique_galgasTemplateScanner::kToken__2B_, BOTTOM_UP_REDUCE (13)
+, Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_REDUCE (13)
+, Lexique_galgasTemplateScanner::kToken__2A_, BOTTOM_UP_REDUCE (13)
+, Lexique_galgasTemplateScanner::kToken__2F_, BOTTOM_UP_REDUCE (13)
+, Lexique_galgasTemplateScanner::kToken_mod, BOTTOM_UP_REDUCE (13)
+, Lexique_galgasTemplateScanner::kToken__2E_, BOTTOM_UP_REDUCE (13)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (13)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (13)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (13)
+, Lexique_galgasTemplateScanner::kToken_is, BOTTOM_UP_REDUCE (13)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (13)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (13)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (13)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (13)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (13)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (13)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (13)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_REDUCE (13)
+, Lexique_galgasTemplateScanner::kToken_then, BOTTOM_UP_REDUCE (13)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (13)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (13)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_REDUCE (13)
+, Lexique_galgasTemplateScanner::kToken_before, BOTTOM_UP_REDUCE (13)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (13)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (13)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (13)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_REDUCE (13)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (13)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (13)
+, BOTTOM_UP_END
+// State S19 (index = 635)
+, Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (14)
+, Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (14)
+, Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (14)
+, Lexique_galgasTemplateScanner::kToken__3D__3D_, BOTTOM_UP_REDUCE (14)
+, Lexique_galgasTemplateScanner::kToken__21__3D_, BOTTOM_UP_REDUCE (14)
+, Lexique_galgasTemplateScanner::kToken__3C__3D_, BOTTOM_UP_REDUCE (14)
+, Lexique_galgasTemplateScanner::kToken__3E__3D_, BOTTOM_UP_REDUCE (14)
+, Lexique_galgasTemplateScanner::kToken__3E_, BOTTOM_UP_REDUCE (14)
+, Lexique_galgasTemplateScanner::kToken__3C_, BOTTOM_UP_REDUCE (14)
+, Lexique_galgasTemplateScanner::kToken__3C__3C_, BOTTOM_UP_REDUCE (14)
+, Lexique_galgasTemplateScanner::kToken__3E__3E_, BOTTOM_UP_REDUCE (14)
+, Lexique_galgasTemplateScanner::kToken__2B_, BOTTOM_UP_REDUCE (14)
+, Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_REDUCE (14)
+, Lexique_galgasTemplateScanner::kToken__2A_, BOTTOM_UP_REDUCE (14)
+, Lexique_galgasTemplateScanner::kToken__2F_, BOTTOM_UP_REDUCE (14)
+, Lexique_galgasTemplateScanner::kToken_mod, BOTTOM_UP_REDUCE (14)
+, Lexique_galgasTemplateScanner::kToken__2E_, BOTTOM_UP_REDUCE (14)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (14)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (14)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (14)
+, Lexique_galgasTemplateScanner::kToken_is, BOTTOM_UP_REDUCE (14)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (14)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (14)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (14)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (14)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (14)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (14)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (14)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_REDUCE (14)
+, Lexique_galgasTemplateScanner::kToken_then, BOTTOM_UP_REDUCE (14)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (14)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (14)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_REDUCE (14)
+, Lexique_galgasTemplateScanner::kToken_before, BOTTOM_UP_REDUCE (14)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (14)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (14)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (14)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_REDUCE (14)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (14)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (14)
+, BOTTOM_UP_END
+// State S20 (index = 716)
+, Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (15)
+, Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (15)
+, Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (15)
+, Lexique_galgasTemplateScanner::kToken__3D__3D_, BOTTOM_UP_REDUCE (15)
+, Lexique_galgasTemplateScanner::kToken__21__3D_, BOTTOM_UP_REDUCE (15)
+, Lexique_galgasTemplateScanner::kToken__3C__3D_, BOTTOM_UP_REDUCE (15)
+, Lexique_galgasTemplateScanner::kToken__3E__3D_, BOTTOM_UP_REDUCE (15)
+, Lexique_galgasTemplateScanner::kToken__3E_, BOTTOM_UP_REDUCE (15)
+, Lexique_galgasTemplateScanner::kToken__3C_, BOTTOM_UP_REDUCE (15)
+, Lexique_galgasTemplateScanner::kToken__3C__3C_, BOTTOM_UP_REDUCE (15)
+, Lexique_galgasTemplateScanner::kToken__3E__3E_, BOTTOM_UP_REDUCE (15)
+, Lexique_galgasTemplateScanner::kToken__2B_, BOTTOM_UP_REDUCE (15)
+, Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_REDUCE (15)
+, Lexique_galgasTemplateScanner::kToken__2A_, BOTTOM_UP_REDUCE (15)
+, Lexique_galgasTemplateScanner::kToken__2F_, BOTTOM_UP_REDUCE (15)
+, Lexique_galgasTemplateScanner::kToken_mod, BOTTOM_UP_REDUCE (15)
+, Lexique_galgasTemplateScanner::kToken__2E_, BOTTOM_UP_REDUCE (15)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (15)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (15)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (15)
+, Lexique_galgasTemplateScanner::kToken_is, BOTTOM_UP_REDUCE (15)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (15)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (15)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (15)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (15)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (15)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (15)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (15)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_REDUCE (15)
+, Lexique_galgasTemplateScanner::kToken_then, BOTTOM_UP_REDUCE (15)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (15)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (15)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_REDUCE (15)
+, Lexique_galgasTemplateScanner::kToken_before, BOTTOM_UP_REDUCE (15)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (15)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (15)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (15)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_REDUCE (15)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (15)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (15)
+, BOTTOM_UP_END
+// State S21 (index = 797)
+, Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken__3D__3D_, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken__21__3D_, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken__3C__3D_, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken__3E__3D_, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken__3E_, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken__3C_, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken__3C__3C_, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken__3E__3E_, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken__2B_, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken__2A_, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken__2F_, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken_mod, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken__2E_, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken__22_string_22_, BOTTOM_UP_SHIFT (42)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken_is, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken_then, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken_before, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (57)
+, BOTTOM_UP_END
+// State S22 (index = 880)
+, Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_SHIFT (11)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (12)
+, Lexique_galgasTemplateScanner::kToken_not, BOTTOM_UP_SHIFT (13)
+, Lexique_galgasTemplateScanner::kToken__7E_, BOTTOM_UP_SHIFT (14)
+, Lexique_galgasTemplateScanner::kToken__28_, BOTTOM_UP_SHIFT (15)
+, Lexique_galgasTemplateScanner::kToken_true, BOTTOM_UP_SHIFT (16)
+, Lexique_galgasTemplateScanner::kToken_false, BOTTOM_UP_SHIFT (17)
+, Lexique_galgasTemplateScanner::kToken_literalInt, BOTTOM_UP_SHIFT (18)
+, Lexique_galgasTemplateScanner::kToken_double_2E_xxx, BOTTOM_UP_SHIFT (19)
+, Lexique_galgasTemplateScanner::kToken__27_char_27_, BOTTOM_UP_SHIFT (20)
+, Lexique_galgasTemplateScanner::kToken__22_string_22_, BOTTOM_UP_SHIFT (21)
+, Lexique_galgasTemplateScanner::kToken__5B_, BOTTOM_UP_SHIFT (22)
+, Lexique_galgasTemplateScanner::kToken_template, BOTTOM_UP_SHIFT (44)
+, Lexique_galgasTemplateScanner::kToken__40_type, BOTTOM_UP_SHIFT (45)
+, Lexique_galgasTemplateScanner::kToken_filewrapper, BOTTOM_UP_SHIFT (46)
+, Lexique_galgasTemplateScanner::kToken_option, BOTTOM_UP_SHIFT (47)
+, BOTTOM_UP_END
+// State S23 (index = 913)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (21)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (21)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (21)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (21)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (21)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_REDUCE (21)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (21)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (21)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_REDUCE (21)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (21)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (21)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (21)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_REDUCE (21)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (21)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (21)
+, BOTTOM_UP_END
+// State S24 (index = 944)
+, Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_SHIFT (50)
+, Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_SHIFT (51)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (34)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (34)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (34)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (34)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (34)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (34)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (34)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (34)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (34)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (34)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_REDUCE (34)
+, Lexique_galgasTemplateScanner::kToken_then, BOTTOM_UP_REDUCE (34)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (34)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (34)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_REDUCE (34)
+, Lexique_galgasTemplateScanner::kToken_before, BOTTOM_UP_REDUCE (34)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (34)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (34)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (34)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_REDUCE (34)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (34)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (34)
+, BOTTOM_UP_END
+// State S25 (index = 993)
+, Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (37)
+, Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (37)
+, Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_SHIFT (53)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (37)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (37)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (37)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (37)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (37)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (37)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (37)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (37)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (37)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (37)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_REDUCE (37)
+, Lexique_galgasTemplateScanner::kToken_then, BOTTOM_UP_REDUCE (37)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (37)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (37)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_REDUCE (37)
+, Lexique_galgasTemplateScanner::kToken_before, BOTTOM_UP_REDUCE (37)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (37)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (37)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (37)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_REDUCE (37)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (37)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (37)
+, BOTTOM_UP_END
+// State S26 (index = 1044)
+, Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (39)
+, Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (39)
+, Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (39)
+, Lexique_galgasTemplateScanner::kToken__3D__3D_, BOTTOM_UP_SHIFT (55)
+, Lexique_galgasTemplateScanner::kToken__21__3D_, BOTTOM_UP_SHIFT (56)
+, Lexique_galgasTemplateScanner::kToken__3C__3D_, BOTTOM_UP_SHIFT (57)
+, Lexique_galgasTemplateScanner::kToken__3E__3D_, BOTTOM_UP_SHIFT (58)
+, Lexique_galgasTemplateScanner::kToken__3E_, BOTTOM_UP_SHIFT (59)
+, Lexique_galgasTemplateScanner::kToken__3C_, BOTTOM_UP_SHIFT (60)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (39)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (39)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (39)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (39)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (39)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (39)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (39)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (39)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (39)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (39)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_REDUCE (39)
+, Lexique_galgasTemplateScanner::kToken_then, BOTTOM_UP_REDUCE (39)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (39)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (39)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_REDUCE (39)
+, Lexique_galgasTemplateScanner::kToken_before, BOTTOM_UP_REDUCE (39)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (39)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (39)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (39)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_REDUCE (39)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (39)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (39)
+, BOTTOM_UP_END
+// State S27 (index = 1107)
+, Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__3D__3D_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__21__3D_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__3C__3D_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__3E__3D_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__3E_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__3C_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__3C__3C_, BOTTOM_UP_SHIFT (62)
+, Lexique_galgasTemplateScanner::kToken__3E__3E_, BOTTOM_UP_SHIFT (63)
+, Lexique_galgasTemplateScanner::kToken__2B_, BOTTOM_UP_SHIFT (64)
+, Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_SHIFT (65)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken_then, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken_before, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (46)
+, BOTTOM_UP_END
+// State S28 (index = 1178)
+, Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__3D__3D_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__21__3D_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__3C__3D_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__3E__3D_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__3E_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__3C_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__3C__3C_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__3E__3E_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__2B_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__2A_, BOTTOM_UP_SHIFT (67)
+, Lexique_galgasTemplateScanner::kToken__2F_, BOTTOM_UP_SHIFT (68)
+, Lexique_galgasTemplateScanner::kToken_mod, BOTTOM_UP_SHIFT (69)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken_then, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken_before, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (51)
+, BOTTOM_UP_END
+// State S29 (index = 1255)
+, Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken__3D__3D_, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken__21__3D_, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken__3C__3D_, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken__3E__3D_, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken__3E_, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken__3C_, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken__3C__3C_, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken__3E__3E_, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken__2B_, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken__2A_, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken__2F_, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken_mod, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken__2E_, BOTTOM_UP_SHIFT (71)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken_is, BOTTOM_UP_SHIFT (72)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken_then, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken_before, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (55)
+, BOTTOM_UP_END
+// State S30 (index = 1336)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_SHIFT (74)
+, BOTTOM_UP_END
+// State S31 (index = 1339)
+, Lexique_galgasTemplateScanner::kToken_then, BOTTOM_UP_SHIFT (75)
+, BOTTOM_UP_END
+// State S32 (index = 1342)
+, Lexique_galgasTemplateScanner::kToken__28_, BOTTOM_UP_REDUCE (90)
+, BOTTOM_UP_END
+// State S33 (index = 1345)
+, Lexique_galgasTemplateScanner::kToken__28_, BOTTOM_UP_REDUCE (89)
+, BOTTOM_UP_END
+// State S34 (index = 1348)
+, Lexique_galgasTemplateScanner::kToken__28_, BOTTOM_UP_SHIFT (76)
+, BOTTOM_UP_END
+// State S35 (index = 1351)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (107)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_SHIFT (78)
+, BOTTOM_UP_END
+// State S36 (index = 1356)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (83)
+, BOTTOM_UP_END
+// State S37 (index = 1359)
+, Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (6)
+, Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (6)
+, Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (6)
+, Lexique_galgasTemplateScanner::kToken__3D__3D_, BOTTOM_UP_REDUCE (6)
+, Lexique_galgasTemplateScanner::kToken__21__3D_, BOTTOM_UP_REDUCE (6)
+, Lexique_galgasTemplateScanner::kToken__3C__3D_, BOTTOM_UP_REDUCE (6)
+, Lexique_galgasTemplateScanner::kToken__3E__3D_, BOTTOM_UP_REDUCE (6)
+, Lexique_galgasTemplateScanner::kToken__3E_, BOTTOM_UP_REDUCE (6)
+, Lexique_galgasTemplateScanner::kToken__3C_, BOTTOM_UP_REDUCE (6)
+, Lexique_galgasTemplateScanner::kToken__3C__3C_, BOTTOM_UP_REDUCE (6)
+, Lexique_galgasTemplateScanner::kToken__3E__3E_, BOTTOM_UP_REDUCE (6)
+, Lexique_galgasTemplateScanner::kToken__2B_, BOTTOM_UP_REDUCE (6)
+, Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_REDUCE (6)
+, Lexique_galgasTemplateScanner::kToken__2A_, BOTTOM_UP_REDUCE (6)
+, Lexique_galgasTemplateScanner::kToken__2F_, BOTTOM_UP_REDUCE (6)
+, Lexique_galgasTemplateScanner::kToken_mod, BOTTOM_UP_REDUCE (6)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (6)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (6)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (6)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (6)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (6)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (6)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (6)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (6)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (6)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (6)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_REDUCE (6)
+, Lexique_galgasTemplateScanner::kToken_then, BOTTOM_UP_REDUCE (6)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (6)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (6)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_REDUCE (6)
+, Lexique_galgasTemplateScanner::kToken_before, BOTTOM_UP_REDUCE (6)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (6)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (6)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (6)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_REDUCE (6)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (6)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (6)
+, BOTTOM_UP_END
+// State S38 (index = 1436)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (69)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (69)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_SHIFT (80)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_SHIFT (81)
+, BOTTOM_UP_END
+// State S39 (index = 1445)
+, Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (7)
+, Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (7)
+, Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (7)
+, Lexique_galgasTemplateScanner::kToken__3D__3D_, BOTTOM_UP_REDUCE (7)
+, Lexique_galgasTemplateScanner::kToken__21__3D_, BOTTOM_UP_REDUCE (7)
+, Lexique_galgasTemplateScanner::kToken__3C__3D_, BOTTOM_UP_REDUCE (7)
+, Lexique_galgasTemplateScanner::kToken__3E__3D_, BOTTOM_UP_REDUCE (7)
+, Lexique_galgasTemplateScanner::kToken__3E_, BOTTOM_UP_REDUCE (7)
+, Lexique_galgasTemplateScanner::kToken__3C_, BOTTOM_UP_REDUCE (7)
+, Lexique_galgasTemplateScanner::kToken__3C__3C_, BOTTOM_UP_REDUCE (7)
+, Lexique_galgasTemplateScanner::kToken__3E__3E_, BOTTOM_UP_REDUCE (7)
+, Lexique_galgasTemplateScanner::kToken__2B_, BOTTOM_UP_REDUCE (7)
+, Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_REDUCE (7)
+, Lexique_galgasTemplateScanner::kToken__2A_, BOTTOM_UP_REDUCE (7)
+, Lexique_galgasTemplateScanner::kToken__2F_, BOTTOM_UP_REDUCE (7)
+, Lexique_galgasTemplateScanner::kToken_mod, BOTTOM_UP_REDUCE (7)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (7)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (7)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (7)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (7)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (7)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (7)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (7)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (7)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (7)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (7)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_REDUCE (7)
+, Lexique_galgasTemplateScanner::kToken_then, BOTTOM_UP_REDUCE (7)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (7)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (7)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_REDUCE (7)
+, Lexique_galgasTemplateScanner::kToken_before, BOTTOM_UP_REDUCE (7)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (7)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (7)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (7)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_REDUCE (7)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (7)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (7)
+, BOTTOM_UP_END
+// State S40 (index = 1522)
+, Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (8)
+, Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (8)
+, Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (8)
+, Lexique_galgasTemplateScanner::kToken__3D__3D_, BOTTOM_UP_REDUCE (8)
+, Lexique_galgasTemplateScanner::kToken__21__3D_, BOTTOM_UP_REDUCE (8)
+, Lexique_galgasTemplateScanner::kToken__3C__3D_, BOTTOM_UP_REDUCE (8)
+, Lexique_galgasTemplateScanner::kToken__3E__3D_, BOTTOM_UP_REDUCE (8)
+, Lexique_galgasTemplateScanner::kToken__3E_, BOTTOM_UP_REDUCE (8)
+, Lexique_galgasTemplateScanner::kToken__3C_, BOTTOM_UP_REDUCE (8)
+, Lexique_galgasTemplateScanner::kToken__3C__3C_, BOTTOM_UP_REDUCE (8)
+, Lexique_galgasTemplateScanner::kToken__3E__3E_, BOTTOM_UP_REDUCE (8)
+, Lexique_galgasTemplateScanner::kToken__2B_, BOTTOM_UP_REDUCE (8)
+, Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_REDUCE (8)
+, Lexique_galgasTemplateScanner::kToken__2A_, BOTTOM_UP_REDUCE (8)
+, Lexique_galgasTemplateScanner::kToken__2F_, BOTTOM_UP_REDUCE (8)
+, Lexique_galgasTemplateScanner::kToken_mod, BOTTOM_UP_REDUCE (8)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (8)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (8)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (8)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (8)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (8)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (8)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (8)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (8)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (8)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (8)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_REDUCE (8)
+, Lexique_galgasTemplateScanner::kToken_then, BOTTOM_UP_REDUCE (8)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (8)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (8)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_REDUCE (8)
+, Lexique_galgasTemplateScanner::kToken_before, BOTTOM_UP_REDUCE (8)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (8)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (8)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (8)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_REDUCE (8)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (8)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (8)
+, BOTTOM_UP_END
+// State S41 (index = 1599)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_SHIFT (84)
+, BOTTOM_UP_END
+// State S42 (index = 1602)
+, Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken__3D__3D_, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken__21__3D_, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken__3C__3D_, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken__3E__3D_, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken__3E_, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken__3C_, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken__3C__3C_, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken__3E__3E_, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken__2B_, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken__2A_, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken__2F_, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken_mod, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken__2E_, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken__22_string_22_, BOTTOM_UP_SHIFT (42)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken_is, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken_then, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken_before, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (57)
+, BOTTOM_UP_END
+// State S43 (index = 1685)
+, Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (16)
+, Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (16)
+, Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (16)
+, Lexique_galgasTemplateScanner::kToken__3D__3D_, BOTTOM_UP_REDUCE (16)
+, Lexique_galgasTemplateScanner::kToken__21__3D_, BOTTOM_UP_REDUCE (16)
+, Lexique_galgasTemplateScanner::kToken__3C__3D_, BOTTOM_UP_REDUCE (16)
+, Lexique_galgasTemplateScanner::kToken__3E__3D_, BOTTOM_UP_REDUCE (16)
+, Lexique_galgasTemplateScanner::kToken__3E_, BOTTOM_UP_REDUCE (16)
+, Lexique_galgasTemplateScanner::kToken__3C_, BOTTOM_UP_REDUCE (16)
+, Lexique_galgasTemplateScanner::kToken__3C__3C_, BOTTOM_UP_REDUCE (16)
+, Lexique_galgasTemplateScanner::kToken__3E__3E_, BOTTOM_UP_REDUCE (16)
+, Lexique_galgasTemplateScanner::kToken__2B_, BOTTOM_UP_REDUCE (16)
+, Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_REDUCE (16)
+, Lexique_galgasTemplateScanner::kToken__2A_, BOTTOM_UP_REDUCE (16)
+, Lexique_galgasTemplateScanner::kToken__2F_, BOTTOM_UP_REDUCE (16)
+, Lexique_galgasTemplateScanner::kToken_mod, BOTTOM_UP_REDUCE (16)
+, Lexique_galgasTemplateScanner::kToken__2E_, BOTTOM_UP_REDUCE (16)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (16)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (16)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (16)
+, Lexique_galgasTemplateScanner::kToken_is, BOTTOM_UP_REDUCE (16)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (16)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (16)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (16)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (16)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (16)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (16)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (16)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_REDUCE (16)
+, Lexique_galgasTemplateScanner::kToken_then, BOTTOM_UP_REDUCE (16)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (16)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (16)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_REDUCE (16)
+, Lexique_galgasTemplateScanner::kToken_before, BOTTOM_UP_REDUCE (16)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (16)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (16)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (16)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_REDUCE (16)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (16)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (16)
+, BOTTOM_UP_END
+// State S44 (index = 1766)
+, Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_SHIFT (11)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (12)
+, Lexique_galgasTemplateScanner::kToken_not, BOTTOM_UP_SHIFT (13)
+, Lexique_galgasTemplateScanner::kToken__7E_, BOTTOM_UP_SHIFT (14)
+, Lexique_galgasTemplateScanner::kToken__28_, BOTTOM_UP_SHIFT (15)
+, Lexique_galgasTemplateScanner::kToken_true, BOTTOM_UP_SHIFT (16)
+, Lexique_galgasTemplateScanner::kToken_false, BOTTOM_UP_SHIFT (17)
+, Lexique_galgasTemplateScanner::kToken_literalInt, BOTTOM_UP_SHIFT (18)
+, Lexique_galgasTemplateScanner::kToken_double_2E_xxx, BOTTOM_UP_SHIFT (19)
+, Lexique_galgasTemplateScanner::kToken__27_char_27_, BOTTOM_UP_SHIFT (20)
+, Lexique_galgasTemplateScanner::kToken__22_string_22_, BOTTOM_UP_SHIFT (21)
+, Lexique_galgasTemplateScanner::kToken__5B_, BOTTOM_UP_SHIFT (22)
+, BOTTOM_UP_END
+// State S45 (index = 1791)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (87)
+, BOTTOM_UP_END
+// State S46 (index = 1794)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (88)
+, BOTTOM_UP_END
+// State S47 (index = 1797)
+, Lexique_galgasTemplateScanner::kToken__2E_, BOTTOM_UP_SHIFT (89)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (90)
+, BOTTOM_UP_END
+// State S48 (index = 1802)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (92)
+, BOTTOM_UP_END
+// State S49 (index = 1805)
+, Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (17)
+, Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (17)
+, Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (17)
+, Lexique_galgasTemplateScanner::kToken__3D__3D_, BOTTOM_UP_REDUCE (17)
+, Lexique_galgasTemplateScanner::kToken__21__3D_, BOTTOM_UP_REDUCE (17)
+, Lexique_galgasTemplateScanner::kToken__3C__3D_, BOTTOM_UP_REDUCE (17)
+, Lexique_galgasTemplateScanner::kToken__3E__3D_, BOTTOM_UP_REDUCE (17)
+, Lexique_galgasTemplateScanner::kToken__3E_, BOTTOM_UP_REDUCE (17)
+, Lexique_galgasTemplateScanner::kToken__3C_, BOTTOM_UP_REDUCE (17)
+, Lexique_galgasTemplateScanner::kToken__3C__3C_, BOTTOM_UP_REDUCE (17)
+, Lexique_galgasTemplateScanner::kToken__3E__3E_, BOTTOM_UP_REDUCE (17)
+, Lexique_galgasTemplateScanner::kToken__2B_, BOTTOM_UP_REDUCE (17)
+, Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_REDUCE (17)
+, Lexique_galgasTemplateScanner::kToken__2A_, BOTTOM_UP_REDUCE (17)
+, Lexique_galgasTemplateScanner::kToken__2F_, BOTTOM_UP_REDUCE (17)
+, Lexique_galgasTemplateScanner::kToken_mod, BOTTOM_UP_REDUCE (17)
+, Lexique_galgasTemplateScanner::kToken__2E_, BOTTOM_UP_REDUCE (17)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (17)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (17)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (17)
+, Lexique_galgasTemplateScanner::kToken_is, BOTTOM_UP_REDUCE (17)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (17)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (17)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (17)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (17)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (17)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (17)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (17)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_REDUCE (17)
+, Lexique_galgasTemplateScanner::kToken_then, BOTTOM_UP_REDUCE (17)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (17)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (17)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_REDUCE (17)
+, Lexique_galgasTemplateScanner::kToken_before, BOTTOM_UP_REDUCE (17)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (17)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (17)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (17)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_REDUCE (17)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (17)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (17)
+, BOTTOM_UP_END
+// State S50 (index = 1886)
+, Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_SHIFT (11)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (12)
+, Lexique_galgasTemplateScanner::kToken_not, BOTTOM_UP_SHIFT (13)
+, Lexique_galgasTemplateScanner::kToken__7E_, BOTTOM_UP_SHIFT (14)
+, Lexique_galgasTemplateScanner::kToken__28_, BOTTOM_UP_SHIFT (15)
+, Lexique_galgasTemplateScanner::kToken_true, BOTTOM_UP_SHIFT (16)
+, Lexique_galgasTemplateScanner::kToken_false, BOTTOM_UP_SHIFT (17)
+, Lexique_galgasTemplateScanner::kToken_literalInt, BOTTOM_UP_SHIFT (18)
+, Lexique_galgasTemplateScanner::kToken_double_2E_xxx, BOTTOM_UP_SHIFT (19)
+, Lexique_galgasTemplateScanner::kToken__27_char_27_, BOTTOM_UP_SHIFT (20)
+, Lexique_galgasTemplateScanner::kToken__22_string_22_, BOTTOM_UP_SHIFT (21)
+, Lexique_galgasTemplateScanner::kToken__5B_, BOTTOM_UP_SHIFT (22)
+, BOTTOM_UP_END
+// State S51 (index = 1911)
+, Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_SHIFT (11)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (12)
+, Lexique_galgasTemplateScanner::kToken_not, BOTTOM_UP_SHIFT (13)
+, Lexique_galgasTemplateScanner::kToken__7E_, BOTTOM_UP_SHIFT (14)
+, Lexique_galgasTemplateScanner::kToken__28_, BOTTOM_UP_SHIFT (15)
+, Lexique_galgasTemplateScanner::kToken_true, BOTTOM_UP_SHIFT (16)
+, Lexique_galgasTemplateScanner::kToken_false, BOTTOM_UP_SHIFT (17)
+, Lexique_galgasTemplateScanner::kToken_literalInt, BOTTOM_UP_SHIFT (18)
+, Lexique_galgasTemplateScanner::kToken_double_2E_xxx, BOTTOM_UP_SHIFT (19)
+, Lexique_galgasTemplateScanner::kToken__27_char_27_, BOTTOM_UP_SHIFT (20)
+, Lexique_galgasTemplateScanner::kToken__22_string_22_, BOTTOM_UP_SHIFT (21)
+, Lexique_galgasTemplateScanner::kToken__5B_, BOTTOM_UP_SHIFT (22)
+, BOTTOM_UP_END
+// State S52 (index = 1936)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (0)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (0)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (0)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (0)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (0)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (0)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (0)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (0)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (0)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (0)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_REDUCE (0)
+, Lexique_galgasTemplateScanner::kToken_then, BOTTOM_UP_REDUCE (0)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (0)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (0)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_REDUCE (0)
+, Lexique_galgasTemplateScanner::kToken_before, BOTTOM_UP_REDUCE (0)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (0)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (0)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (0)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_REDUCE (0)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (0)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (0)
+, BOTTOM_UP_END
+// State S53 (index = 1981)
+, Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_SHIFT (11)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (12)
+, Lexique_galgasTemplateScanner::kToken_not, BOTTOM_UP_SHIFT (13)
+, Lexique_galgasTemplateScanner::kToken__7E_, BOTTOM_UP_SHIFT (14)
+, Lexique_galgasTemplateScanner::kToken__28_, BOTTOM_UP_SHIFT (15)
+, Lexique_galgasTemplateScanner::kToken_true, BOTTOM_UP_SHIFT (16)
+, Lexique_galgasTemplateScanner::kToken_false, BOTTOM_UP_SHIFT (17)
+, Lexique_galgasTemplateScanner::kToken_literalInt, BOTTOM_UP_SHIFT (18)
+, Lexique_galgasTemplateScanner::kToken_double_2E_xxx, BOTTOM_UP_SHIFT (19)
+, Lexique_galgasTemplateScanner::kToken__27_char_27_, BOTTOM_UP_SHIFT (20)
+, Lexique_galgasTemplateScanner::kToken__22_string_22_, BOTTOM_UP_SHIFT (21)
+, Lexique_galgasTemplateScanner::kToken__5B_, BOTTOM_UP_SHIFT (22)
+, BOTTOM_UP_END
+// State S54 (index = 2006)
+, Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (1)
+, Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (1)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (1)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (1)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (1)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (1)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (1)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (1)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (1)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (1)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (1)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (1)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_REDUCE (1)
+, Lexique_galgasTemplateScanner::kToken_then, BOTTOM_UP_REDUCE (1)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (1)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (1)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_REDUCE (1)
+, Lexique_galgasTemplateScanner::kToken_before, BOTTOM_UP_REDUCE (1)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (1)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (1)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (1)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_REDUCE (1)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (1)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (1)
+, BOTTOM_UP_END
+// State S55 (index = 2055)
+, Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_SHIFT (11)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (12)
+, Lexique_galgasTemplateScanner::kToken_not, BOTTOM_UP_SHIFT (13)
+, Lexique_galgasTemplateScanner::kToken__7E_, BOTTOM_UP_SHIFT (14)
+, Lexique_galgasTemplateScanner::kToken__28_, BOTTOM_UP_SHIFT (15)
+, Lexique_galgasTemplateScanner::kToken_true, BOTTOM_UP_SHIFT (16)
+, Lexique_galgasTemplateScanner::kToken_false, BOTTOM_UP_SHIFT (17)
+, Lexique_galgasTemplateScanner::kToken_literalInt, BOTTOM_UP_SHIFT (18)
+, Lexique_galgasTemplateScanner::kToken_double_2E_xxx, BOTTOM_UP_SHIFT (19)
+, Lexique_galgasTemplateScanner::kToken__27_char_27_, BOTTOM_UP_SHIFT (20)
+, Lexique_galgasTemplateScanner::kToken__22_string_22_, BOTTOM_UP_SHIFT (21)
+, Lexique_galgasTemplateScanner::kToken__5B_, BOTTOM_UP_SHIFT (22)
+, BOTTOM_UP_END
+// State S56 (index = 2080)
+, Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_SHIFT (11)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (12)
+, Lexique_galgasTemplateScanner::kToken_not, BOTTOM_UP_SHIFT (13)
+, Lexique_galgasTemplateScanner::kToken__7E_, BOTTOM_UP_SHIFT (14)
+, Lexique_galgasTemplateScanner::kToken__28_, BOTTOM_UP_SHIFT (15)
+, Lexique_galgasTemplateScanner::kToken_true, BOTTOM_UP_SHIFT (16)
+, Lexique_galgasTemplateScanner::kToken_false, BOTTOM_UP_SHIFT (17)
+, Lexique_galgasTemplateScanner::kToken_literalInt, BOTTOM_UP_SHIFT (18)
+, Lexique_galgasTemplateScanner::kToken_double_2E_xxx, BOTTOM_UP_SHIFT (19)
+, Lexique_galgasTemplateScanner::kToken__27_char_27_, BOTTOM_UP_SHIFT (20)
+, Lexique_galgasTemplateScanner::kToken__22_string_22_, BOTTOM_UP_SHIFT (21)
+, Lexique_galgasTemplateScanner::kToken__5B_, BOTTOM_UP_SHIFT (22)
+, BOTTOM_UP_END
+// State S57 (index = 2105)
+, Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_SHIFT (11)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (12)
+, Lexique_galgasTemplateScanner::kToken_not, BOTTOM_UP_SHIFT (13)
+, Lexique_galgasTemplateScanner::kToken__7E_, BOTTOM_UP_SHIFT (14)
+, Lexique_galgasTemplateScanner::kToken__28_, BOTTOM_UP_SHIFT (15)
+, Lexique_galgasTemplateScanner::kToken_true, BOTTOM_UP_SHIFT (16)
+, Lexique_galgasTemplateScanner::kToken_false, BOTTOM_UP_SHIFT (17)
+, Lexique_galgasTemplateScanner::kToken_literalInt, BOTTOM_UP_SHIFT (18)
+, Lexique_galgasTemplateScanner::kToken_double_2E_xxx, BOTTOM_UP_SHIFT (19)
+, Lexique_galgasTemplateScanner::kToken__27_char_27_, BOTTOM_UP_SHIFT (20)
+, Lexique_galgasTemplateScanner::kToken__22_string_22_, BOTTOM_UP_SHIFT (21)
+, Lexique_galgasTemplateScanner::kToken__5B_, BOTTOM_UP_SHIFT (22)
+, BOTTOM_UP_END
+// State S58 (index = 2130)
+, Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_SHIFT (11)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (12)
+, Lexique_galgasTemplateScanner::kToken_not, BOTTOM_UP_SHIFT (13)
+, Lexique_galgasTemplateScanner::kToken__7E_, BOTTOM_UP_SHIFT (14)
+, Lexique_galgasTemplateScanner::kToken__28_, BOTTOM_UP_SHIFT (15)
+, Lexique_galgasTemplateScanner::kToken_true, BOTTOM_UP_SHIFT (16)
+, Lexique_galgasTemplateScanner::kToken_false, BOTTOM_UP_SHIFT (17)
+, Lexique_galgasTemplateScanner::kToken_literalInt, BOTTOM_UP_SHIFT (18)
+, Lexique_galgasTemplateScanner::kToken_double_2E_xxx, BOTTOM_UP_SHIFT (19)
+, Lexique_galgasTemplateScanner::kToken__27_char_27_, BOTTOM_UP_SHIFT (20)
+, Lexique_galgasTemplateScanner::kToken__22_string_22_, BOTTOM_UP_SHIFT (21)
+, Lexique_galgasTemplateScanner::kToken__5B_, BOTTOM_UP_SHIFT (22)
+, BOTTOM_UP_END
+// State S59 (index = 2155)
+, Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_SHIFT (11)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (12)
+, Lexique_galgasTemplateScanner::kToken_not, BOTTOM_UP_SHIFT (13)
+, Lexique_galgasTemplateScanner::kToken__7E_, BOTTOM_UP_SHIFT (14)
+, Lexique_galgasTemplateScanner::kToken__28_, BOTTOM_UP_SHIFT (15)
+, Lexique_galgasTemplateScanner::kToken_true, BOTTOM_UP_SHIFT (16)
+, Lexique_galgasTemplateScanner::kToken_false, BOTTOM_UP_SHIFT (17)
+, Lexique_galgasTemplateScanner::kToken_literalInt, BOTTOM_UP_SHIFT (18)
+, Lexique_galgasTemplateScanner::kToken_double_2E_xxx, BOTTOM_UP_SHIFT (19)
+, Lexique_galgasTemplateScanner::kToken__27_char_27_, BOTTOM_UP_SHIFT (20)
+, Lexique_galgasTemplateScanner::kToken__22_string_22_, BOTTOM_UP_SHIFT (21)
+, Lexique_galgasTemplateScanner::kToken__5B_, BOTTOM_UP_SHIFT (22)
+, BOTTOM_UP_END
+// State S60 (index = 2180)
+, Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_SHIFT (11)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (12)
+, Lexique_galgasTemplateScanner::kToken_not, BOTTOM_UP_SHIFT (13)
+, Lexique_galgasTemplateScanner::kToken__7E_, BOTTOM_UP_SHIFT (14)
+, Lexique_galgasTemplateScanner::kToken__28_, BOTTOM_UP_SHIFT (15)
+, Lexique_galgasTemplateScanner::kToken_true, BOTTOM_UP_SHIFT (16)
+, Lexique_galgasTemplateScanner::kToken_false, BOTTOM_UP_SHIFT (17)
+, Lexique_galgasTemplateScanner::kToken_literalInt, BOTTOM_UP_SHIFT (18)
+, Lexique_galgasTemplateScanner::kToken_double_2E_xxx, BOTTOM_UP_SHIFT (19)
+, Lexique_galgasTemplateScanner::kToken__27_char_27_, BOTTOM_UP_SHIFT (20)
+, Lexique_galgasTemplateScanner::kToken__22_string_22_, BOTTOM_UP_SHIFT (21)
+, Lexique_galgasTemplateScanner::kToken__5B_, BOTTOM_UP_SHIFT (22)
+, BOTTOM_UP_END
+// State S61 (index = 2205)
+, Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (2)
+, Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (2)
+, Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (2)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (2)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (2)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (2)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (2)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (2)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (2)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (2)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (2)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (2)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (2)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_REDUCE (2)
+, Lexique_galgasTemplateScanner::kToken_then, BOTTOM_UP_REDUCE (2)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (2)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (2)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_REDUCE (2)
+, Lexique_galgasTemplateScanner::kToken_before, BOTTOM_UP_REDUCE (2)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (2)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (2)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (2)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_REDUCE (2)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (2)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (2)
+, BOTTOM_UP_END
+// State S62 (index = 2256)
+, Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_SHIFT (11)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (12)
+, Lexique_galgasTemplateScanner::kToken_not, BOTTOM_UP_SHIFT (13)
+, Lexique_galgasTemplateScanner::kToken__7E_, BOTTOM_UP_SHIFT (14)
+, Lexique_galgasTemplateScanner::kToken__28_, BOTTOM_UP_SHIFT (15)
+, Lexique_galgasTemplateScanner::kToken_true, BOTTOM_UP_SHIFT (16)
+, Lexique_galgasTemplateScanner::kToken_false, BOTTOM_UP_SHIFT (17)
+, Lexique_galgasTemplateScanner::kToken_literalInt, BOTTOM_UP_SHIFT (18)
+, Lexique_galgasTemplateScanner::kToken_double_2E_xxx, BOTTOM_UP_SHIFT (19)
+, Lexique_galgasTemplateScanner::kToken__27_char_27_, BOTTOM_UP_SHIFT (20)
+, Lexique_galgasTemplateScanner::kToken__22_string_22_, BOTTOM_UP_SHIFT (21)
+, Lexique_galgasTemplateScanner::kToken__5B_, BOTTOM_UP_SHIFT (22)
+, BOTTOM_UP_END
+// State S63 (index = 2281)
+, Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_SHIFT (11)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (12)
+, Lexique_galgasTemplateScanner::kToken_not, BOTTOM_UP_SHIFT (13)
+, Lexique_galgasTemplateScanner::kToken__7E_, BOTTOM_UP_SHIFT (14)
+, Lexique_galgasTemplateScanner::kToken__28_, BOTTOM_UP_SHIFT (15)
+, Lexique_galgasTemplateScanner::kToken_true, BOTTOM_UP_SHIFT (16)
+, Lexique_galgasTemplateScanner::kToken_false, BOTTOM_UP_SHIFT (17)
+, Lexique_galgasTemplateScanner::kToken_literalInt, BOTTOM_UP_SHIFT (18)
+, Lexique_galgasTemplateScanner::kToken_double_2E_xxx, BOTTOM_UP_SHIFT (19)
+, Lexique_galgasTemplateScanner::kToken__27_char_27_, BOTTOM_UP_SHIFT (20)
+, Lexique_galgasTemplateScanner::kToken__22_string_22_, BOTTOM_UP_SHIFT (21)
+, Lexique_galgasTemplateScanner::kToken__5B_, BOTTOM_UP_SHIFT (22)
+, BOTTOM_UP_END
+// State S64 (index = 2306)
+, Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_SHIFT (11)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (12)
+, Lexique_galgasTemplateScanner::kToken_not, BOTTOM_UP_SHIFT (13)
+, Lexique_galgasTemplateScanner::kToken__7E_, BOTTOM_UP_SHIFT (14)
+, Lexique_galgasTemplateScanner::kToken__28_, BOTTOM_UP_SHIFT (15)
+, Lexique_galgasTemplateScanner::kToken_true, BOTTOM_UP_SHIFT (16)
+, Lexique_galgasTemplateScanner::kToken_false, BOTTOM_UP_SHIFT (17)
+, Lexique_galgasTemplateScanner::kToken_literalInt, BOTTOM_UP_SHIFT (18)
+, Lexique_galgasTemplateScanner::kToken_double_2E_xxx, BOTTOM_UP_SHIFT (19)
+, Lexique_galgasTemplateScanner::kToken__27_char_27_, BOTTOM_UP_SHIFT (20)
+, Lexique_galgasTemplateScanner::kToken__22_string_22_, BOTTOM_UP_SHIFT (21)
+, Lexique_galgasTemplateScanner::kToken__5B_, BOTTOM_UP_SHIFT (22)
+, BOTTOM_UP_END
+// State S65 (index = 2331)
+, Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_SHIFT (11)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (12)
+, Lexique_galgasTemplateScanner::kToken_not, BOTTOM_UP_SHIFT (13)
+, Lexique_galgasTemplateScanner::kToken__7E_, BOTTOM_UP_SHIFT (14)
+, Lexique_galgasTemplateScanner::kToken__28_, BOTTOM_UP_SHIFT (15)
+, Lexique_galgasTemplateScanner::kToken_true, BOTTOM_UP_SHIFT (16)
+, Lexique_galgasTemplateScanner::kToken_false, BOTTOM_UP_SHIFT (17)
+, Lexique_galgasTemplateScanner::kToken_literalInt, BOTTOM_UP_SHIFT (18)
+, Lexique_galgasTemplateScanner::kToken_double_2E_xxx, BOTTOM_UP_SHIFT (19)
+, Lexique_galgasTemplateScanner::kToken__27_char_27_, BOTTOM_UP_SHIFT (20)
+, Lexique_galgasTemplateScanner::kToken__22_string_22_, BOTTOM_UP_SHIFT (21)
+, Lexique_galgasTemplateScanner::kToken__5B_, BOTTOM_UP_SHIFT (22)
+, BOTTOM_UP_END
+// State S66 (index = 2356)
+, Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (3)
+, Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (3)
+, Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (3)
+, Lexique_galgasTemplateScanner::kToken__3D__3D_, BOTTOM_UP_REDUCE (3)
+, Lexique_galgasTemplateScanner::kToken__21__3D_, BOTTOM_UP_REDUCE (3)
+, Lexique_galgasTemplateScanner::kToken__3C__3D_, BOTTOM_UP_REDUCE (3)
+, Lexique_galgasTemplateScanner::kToken__3E__3D_, BOTTOM_UP_REDUCE (3)
+, Lexique_galgasTemplateScanner::kToken__3E_, BOTTOM_UP_REDUCE (3)
+, Lexique_galgasTemplateScanner::kToken__3C_, BOTTOM_UP_REDUCE (3)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (3)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (3)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (3)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (3)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (3)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (3)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (3)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (3)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (3)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (3)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_REDUCE (3)
+, Lexique_galgasTemplateScanner::kToken_then, BOTTOM_UP_REDUCE (3)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (3)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (3)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_REDUCE (3)
+, Lexique_galgasTemplateScanner::kToken_before, BOTTOM_UP_REDUCE (3)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (3)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (3)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (3)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_REDUCE (3)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (3)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (3)
+, BOTTOM_UP_END
+// State S67 (index = 2419)
+, Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_SHIFT (11)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (12)
+, Lexique_galgasTemplateScanner::kToken_not, BOTTOM_UP_SHIFT (13)
+, Lexique_galgasTemplateScanner::kToken__7E_, BOTTOM_UP_SHIFT (14)
+, Lexique_galgasTemplateScanner::kToken__28_, BOTTOM_UP_SHIFT (15)
+, Lexique_galgasTemplateScanner::kToken_true, BOTTOM_UP_SHIFT (16)
+, Lexique_galgasTemplateScanner::kToken_false, BOTTOM_UP_SHIFT (17)
+, Lexique_galgasTemplateScanner::kToken_literalInt, BOTTOM_UP_SHIFT (18)
+, Lexique_galgasTemplateScanner::kToken_double_2E_xxx, BOTTOM_UP_SHIFT (19)
+, Lexique_galgasTemplateScanner::kToken__27_char_27_, BOTTOM_UP_SHIFT (20)
+, Lexique_galgasTemplateScanner::kToken__22_string_22_, BOTTOM_UP_SHIFT (21)
+, Lexique_galgasTemplateScanner::kToken__5B_, BOTTOM_UP_SHIFT (22)
+, BOTTOM_UP_END
+// State S68 (index = 2444)
+, Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_SHIFT (11)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (12)
+, Lexique_galgasTemplateScanner::kToken_not, BOTTOM_UP_SHIFT (13)
+, Lexique_galgasTemplateScanner::kToken__7E_, BOTTOM_UP_SHIFT (14)
+, Lexique_galgasTemplateScanner::kToken__28_, BOTTOM_UP_SHIFT (15)
+, Lexique_galgasTemplateScanner::kToken_true, BOTTOM_UP_SHIFT (16)
+, Lexique_galgasTemplateScanner::kToken_false, BOTTOM_UP_SHIFT (17)
+, Lexique_galgasTemplateScanner::kToken_literalInt, BOTTOM_UP_SHIFT (18)
+, Lexique_galgasTemplateScanner::kToken_double_2E_xxx, BOTTOM_UP_SHIFT (19)
+, Lexique_galgasTemplateScanner::kToken__27_char_27_, BOTTOM_UP_SHIFT (20)
+, Lexique_galgasTemplateScanner::kToken__22_string_22_, BOTTOM_UP_SHIFT (21)
+, Lexique_galgasTemplateScanner::kToken__5B_, BOTTOM_UP_SHIFT (22)
+, BOTTOM_UP_END
+// State S69 (index = 2469)
+, Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_SHIFT (11)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (12)
+, Lexique_galgasTemplateScanner::kToken_not, BOTTOM_UP_SHIFT (13)
+, Lexique_galgasTemplateScanner::kToken__7E_, BOTTOM_UP_SHIFT (14)
+, Lexique_galgasTemplateScanner::kToken__28_, BOTTOM_UP_SHIFT (15)
+, Lexique_galgasTemplateScanner::kToken_true, BOTTOM_UP_SHIFT (16)
+, Lexique_galgasTemplateScanner::kToken_false, BOTTOM_UP_SHIFT (17)
+, Lexique_galgasTemplateScanner::kToken_literalInt, BOTTOM_UP_SHIFT (18)
+, Lexique_galgasTemplateScanner::kToken_double_2E_xxx, BOTTOM_UP_SHIFT (19)
+, Lexique_galgasTemplateScanner::kToken__27_char_27_, BOTTOM_UP_SHIFT (20)
+, Lexique_galgasTemplateScanner::kToken__22_string_22_, BOTTOM_UP_SHIFT (21)
+, Lexique_galgasTemplateScanner::kToken__5B_, BOTTOM_UP_SHIFT (22)
+, BOTTOM_UP_END
+// State S70 (index = 2494)
+, Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (4)
+, Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (4)
+, Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (4)
+, Lexique_galgasTemplateScanner::kToken__3D__3D_, BOTTOM_UP_REDUCE (4)
+, Lexique_galgasTemplateScanner::kToken__21__3D_, BOTTOM_UP_REDUCE (4)
+, Lexique_galgasTemplateScanner::kToken__3C__3D_, BOTTOM_UP_REDUCE (4)
+, Lexique_galgasTemplateScanner::kToken__3E__3D_, BOTTOM_UP_REDUCE (4)
+, Lexique_galgasTemplateScanner::kToken__3E_, BOTTOM_UP_REDUCE (4)
+, Lexique_galgasTemplateScanner::kToken__3C_, BOTTOM_UP_REDUCE (4)
+, Lexique_galgasTemplateScanner::kToken__3C__3C_, BOTTOM_UP_REDUCE (4)
+, Lexique_galgasTemplateScanner::kToken__3E__3E_, BOTTOM_UP_REDUCE (4)
+, Lexique_galgasTemplateScanner::kToken__2B_, BOTTOM_UP_REDUCE (4)
+, Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_REDUCE (4)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (4)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (4)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (4)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (4)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (4)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (4)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (4)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (4)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (4)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (4)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_REDUCE (4)
+, Lexique_galgasTemplateScanner::kToken_then, BOTTOM_UP_REDUCE (4)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (4)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (4)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_REDUCE (4)
+, Lexique_galgasTemplateScanner::kToken_before, BOTTOM_UP_REDUCE (4)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (4)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (4)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (4)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_REDUCE (4)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (4)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (4)
+, BOTTOM_UP_END
+// State S71 (index = 2565)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (109)
+, BOTTOM_UP_END
+// State S72 (index = 2568)
+, Lexique_galgasTemplateScanner::kToken__3D__3D_, BOTTOM_UP_SHIFT (110)
+, Lexique_galgasTemplateScanner::kToken__3E__3D_, BOTTOM_UP_SHIFT (111)
+, Lexique_galgasTemplateScanner::kToken__3E_, BOTTOM_UP_SHIFT (112)
+, BOTTOM_UP_END
+// State S73 (index = 2575)
+, Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (5)
+, Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (5)
+, Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (5)
+, Lexique_galgasTemplateScanner::kToken__3D__3D_, BOTTOM_UP_REDUCE (5)
+, Lexique_galgasTemplateScanner::kToken__21__3D_, BOTTOM_UP_REDUCE (5)
+, Lexique_galgasTemplateScanner::kToken__3C__3D_, BOTTOM_UP_REDUCE (5)
+, Lexique_galgasTemplateScanner::kToken__3E__3D_, BOTTOM_UP_REDUCE (5)
+, Lexique_galgasTemplateScanner::kToken__3E_, BOTTOM_UP_REDUCE (5)
+, Lexique_galgasTemplateScanner::kToken__3C_, BOTTOM_UP_REDUCE (5)
+, Lexique_galgasTemplateScanner::kToken__3C__3C_, BOTTOM_UP_REDUCE (5)
+, Lexique_galgasTemplateScanner::kToken__3E__3E_, BOTTOM_UP_REDUCE (5)
+, Lexique_galgasTemplateScanner::kToken__2B_, BOTTOM_UP_REDUCE (5)
+, Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_REDUCE (5)
+, Lexique_galgasTemplateScanner::kToken__2A_, BOTTOM_UP_REDUCE (5)
+, Lexique_galgasTemplateScanner::kToken__2F_, BOTTOM_UP_REDUCE (5)
+, Lexique_galgasTemplateScanner::kToken_mod, BOTTOM_UP_REDUCE (5)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (5)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (5)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (5)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (5)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (5)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (5)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (5)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (5)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (5)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (5)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_REDUCE (5)
+, Lexique_galgasTemplateScanner::kToken_then, BOTTOM_UP_REDUCE (5)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (5)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (5)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_REDUCE (5)
+, Lexique_galgasTemplateScanner::kToken_before, BOTTOM_UP_REDUCE (5)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (5)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (5)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (5)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_REDUCE (5)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (5)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (5)
+, BOTTOM_UP_END
+// State S74 (index = 2652)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_SHIFT (1)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_SHIFT (2)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_SHIFT (3)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_SHIFT (4)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (72)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_SHIFT (5)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_SHIFT (6)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_SHIFT (7)
+, BOTTOM_UP_END
+// State S75 (index = 2669)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_SHIFT (1)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_SHIFT (2)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_SHIFT (3)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_SHIFT (4)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (76)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_SHIFT (5)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (76)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (76)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_SHIFT (6)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_SHIFT (7)
+, BOTTOM_UP_END
+// State S76 (index = 2690)
+, Lexique_galgasTemplateScanner::kToken__2A_, BOTTOM_UP_SHIFT (118)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (119)
+, Lexique_galgasTemplateScanner::kToken_literalInt, BOTTOM_UP_SHIFT (120)
+, BOTTOM_UP_END
+// State S77 (index = 2697)
+, Lexique_galgasTemplateScanner::kToken_before, BOTTOM_UP_SHIFT (122)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (91)
+, BOTTOM_UP_END
+// State S78 (index = 2702)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (124)
+, BOTTOM_UP_END
+// State S79 (index = 2705)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_SHIFT (126)
+, BOTTOM_UP_END
+// State S80 (index = 2708)
+, Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_SHIFT (11)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (12)
+, Lexique_galgasTemplateScanner::kToken_not, BOTTOM_UP_SHIFT (13)
+, Lexique_galgasTemplateScanner::kToken__7E_, BOTTOM_UP_SHIFT (14)
+, Lexique_galgasTemplateScanner::kToken__28_, BOTTOM_UP_SHIFT (15)
+, Lexique_galgasTemplateScanner::kToken_true, BOTTOM_UP_SHIFT (16)
+, Lexique_galgasTemplateScanner::kToken_false, BOTTOM_UP_SHIFT (17)
+, Lexique_galgasTemplateScanner::kToken_literalInt, BOTTOM_UP_SHIFT (18)
+, Lexique_galgasTemplateScanner::kToken_double_2E_xxx, BOTTOM_UP_SHIFT (19)
+, Lexique_galgasTemplateScanner::kToken__27_char_27_, BOTTOM_UP_SHIFT (20)
+, Lexique_galgasTemplateScanner::kToken__22_string_22_, BOTTOM_UP_SHIFT (21)
+, Lexique_galgasTemplateScanner::kToken__5B_, BOTTOM_UP_SHIFT (22)
+, BOTTOM_UP_END
+// State S81 (index = 2733)
+, Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_SHIFT (11)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (12)
+, Lexique_galgasTemplateScanner::kToken_not, BOTTOM_UP_SHIFT (13)
+, Lexique_galgasTemplateScanner::kToken__7E_, BOTTOM_UP_SHIFT (14)
+, Lexique_galgasTemplateScanner::kToken__28_, BOTTOM_UP_SHIFT (15)
+, Lexique_galgasTemplateScanner::kToken_true, BOTTOM_UP_SHIFT (16)
+, Lexique_galgasTemplateScanner::kToken_false, BOTTOM_UP_SHIFT (17)
+, Lexique_galgasTemplateScanner::kToken_literalInt, BOTTOM_UP_SHIFT (18)
+, Lexique_galgasTemplateScanner::kToken_double_2E_xxx, BOTTOM_UP_SHIFT (19)
+, Lexique_galgasTemplateScanner::kToken__27_char_27_, BOTTOM_UP_SHIFT (20)
+, Lexique_galgasTemplateScanner::kToken__22_string_22_, BOTTOM_UP_SHIFT (21)
+, Lexique_galgasTemplateScanner::kToken__5B_, BOTTOM_UP_SHIFT (22)
+, BOTTOM_UP_END
+// State S82 (index = 2758)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_SHIFT (129)
+, BOTTOM_UP_END
+// State S83 (index = 2761)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (20)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (20)
+, BOTTOM_UP_END
+// State S84 (index = 2766)
+, Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (10)
+, Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (10)
+, Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (10)
+, Lexique_galgasTemplateScanner::kToken__3D__3D_, BOTTOM_UP_REDUCE (10)
+, Lexique_galgasTemplateScanner::kToken__21__3D_, BOTTOM_UP_REDUCE (10)
+, Lexique_galgasTemplateScanner::kToken__3C__3D_, BOTTOM_UP_REDUCE (10)
+, Lexique_galgasTemplateScanner::kToken__3E__3D_, BOTTOM_UP_REDUCE (10)
+, Lexique_galgasTemplateScanner::kToken__3E_, BOTTOM_UP_REDUCE (10)
+, Lexique_galgasTemplateScanner::kToken__3C_, BOTTOM_UP_REDUCE (10)
+, Lexique_galgasTemplateScanner::kToken__3C__3C_, BOTTOM_UP_REDUCE (10)
+, Lexique_galgasTemplateScanner::kToken__3E__3E_, BOTTOM_UP_REDUCE (10)
+, Lexique_galgasTemplateScanner::kToken__2B_, BOTTOM_UP_REDUCE (10)
+, Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_REDUCE (10)
+, Lexique_galgasTemplateScanner::kToken__2A_, BOTTOM_UP_REDUCE (10)
+, Lexique_galgasTemplateScanner::kToken__2F_, BOTTOM_UP_REDUCE (10)
+, Lexique_galgasTemplateScanner::kToken_mod, BOTTOM_UP_REDUCE (10)
+, Lexique_galgasTemplateScanner::kToken__2E_, BOTTOM_UP_REDUCE (10)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (10)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (10)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (10)
+, Lexique_galgasTemplateScanner::kToken_is, BOTTOM_UP_REDUCE (10)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (10)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (10)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (10)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (10)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (10)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (10)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (10)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_REDUCE (10)
+, Lexique_galgasTemplateScanner::kToken_then, BOTTOM_UP_REDUCE (10)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (10)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (10)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_REDUCE (10)
+, Lexique_galgasTemplateScanner::kToken_before, BOTTOM_UP_REDUCE (10)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (10)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (10)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (10)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_REDUCE (10)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (10)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (10)
+, BOTTOM_UP_END
+// State S85 (index = 2847)
+, Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (58)
+, Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (58)
+, Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (58)
+, Lexique_galgasTemplateScanner::kToken__3D__3D_, BOTTOM_UP_REDUCE (58)
+, Lexique_galgasTemplateScanner::kToken__21__3D_, BOTTOM_UP_REDUCE (58)
+, Lexique_galgasTemplateScanner::kToken__3C__3D_, BOTTOM_UP_REDUCE (58)
+, Lexique_galgasTemplateScanner::kToken__3E__3D_, BOTTOM_UP_REDUCE (58)
+, Lexique_galgasTemplateScanner::kToken__3E_, BOTTOM_UP_REDUCE (58)
+, Lexique_galgasTemplateScanner::kToken__3C_, BOTTOM_UP_REDUCE (58)
+, Lexique_galgasTemplateScanner::kToken__3C__3C_, BOTTOM_UP_REDUCE (58)
+, Lexique_galgasTemplateScanner::kToken__3E__3E_, BOTTOM_UP_REDUCE (58)
+, Lexique_galgasTemplateScanner::kToken__2B_, BOTTOM_UP_REDUCE (58)
+, Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_REDUCE (58)
+, Lexique_galgasTemplateScanner::kToken__2A_, BOTTOM_UP_REDUCE (58)
+, Lexique_galgasTemplateScanner::kToken__2F_, BOTTOM_UP_REDUCE (58)
+, Lexique_galgasTemplateScanner::kToken_mod, BOTTOM_UP_REDUCE (58)
+, Lexique_galgasTemplateScanner::kToken__2E_, BOTTOM_UP_REDUCE (58)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (58)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (58)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (58)
+, Lexique_galgasTemplateScanner::kToken_is, BOTTOM_UP_REDUCE (58)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (58)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (58)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (58)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (58)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (58)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (58)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (58)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_REDUCE (58)
+, Lexique_galgasTemplateScanner::kToken_then, BOTTOM_UP_REDUCE (58)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (58)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (58)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_REDUCE (58)
+, Lexique_galgasTemplateScanner::kToken_before, BOTTOM_UP_REDUCE (58)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (58)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (58)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (58)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_REDUCE (58)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (58)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (58)
+, BOTTOM_UP_END
+// State S86 (index = 2928)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (130)
+, BOTTOM_UP_END
+// State S87 (index = 2931)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (69)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (69)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_SHIFT (80)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_SHIFT (81)
+, BOTTOM_UP_END
+// State S88 (index = 2940)
+, Lexique_galgasTemplateScanner::kToken__2E_, BOTTOM_UP_SHIFT (132)
+, BOTTOM_UP_END
+// State S89 (index = 2943)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (133)
+, BOTTOM_UP_END
+// State S90 (index = 2946)
+, Lexique_galgasTemplateScanner::kToken__2E_, BOTTOM_UP_SHIFT (134)
+, BOTTOM_UP_END
+// State S91 (index = 2949)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_SHIFT (135)
+, BOTTOM_UP_END
+// State S92 (index = 2952)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (69)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (69)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_SHIFT (80)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_SHIFT (81)
+, BOTTOM_UP_END
+// State S93 (index = 2961)
+, Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_SHIFT (50)
+, Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_SHIFT (51)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (34)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (34)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (34)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (34)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (34)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (34)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (34)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (34)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (34)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (34)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_REDUCE (34)
+, Lexique_galgasTemplateScanner::kToken_then, BOTTOM_UP_REDUCE (34)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (34)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (34)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_REDUCE (34)
+, Lexique_galgasTemplateScanner::kToken_before, BOTTOM_UP_REDUCE (34)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (34)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (34)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (34)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_REDUCE (34)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (34)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (34)
+, BOTTOM_UP_END
+// State S94 (index = 3010)
+, Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_SHIFT (50)
+, Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_SHIFT (51)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (34)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (34)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (34)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (34)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (34)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (34)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (34)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (34)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (34)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (34)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_REDUCE (34)
+, Lexique_galgasTemplateScanner::kToken_then, BOTTOM_UP_REDUCE (34)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (34)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (34)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_REDUCE (34)
+, Lexique_galgasTemplateScanner::kToken_before, BOTTOM_UP_REDUCE (34)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (34)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (34)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (34)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_REDUCE (34)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (34)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (34)
+, BOTTOM_UP_END
+// State S95 (index = 3059)
+, Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (37)
+, Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (37)
+, Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_SHIFT (53)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (37)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (37)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (37)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (37)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (37)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (37)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (37)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (37)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (37)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (37)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_REDUCE (37)
+, Lexique_galgasTemplateScanner::kToken_then, BOTTOM_UP_REDUCE (37)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (37)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (37)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_REDUCE (37)
+, Lexique_galgasTemplateScanner::kToken_before, BOTTOM_UP_REDUCE (37)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (37)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (37)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (37)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_REDUCE (37)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (37)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (37)
+, BOTTOM_UP_END
+// State S96 (index = 3110)
+, Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (40)
+, Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (40)
+, Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (40)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (40)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (40)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (40)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (40)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (40)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (40)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (40)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (40)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (40)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (40)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_REDUCE (40)
+, Lexique_galgasTemplateScanner::kToken_then, BOTTOM_UP_REDUCE (40)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (40)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (40)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_REDUCE (40)
+, Lexique_galgasTemplateScanner::kToken_before, BOTTOM_UP_REDUCE (40)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (40)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (40)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (40)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_REDUCE (40)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (40)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (40)
+, BOTTOM_UP_END
+// State S97 (index = 3161)
+, Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (41)
+, Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (41)
+, Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (41)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (41)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (41)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (41)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (41)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (41)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (41)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (41)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (41)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (41)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (41)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_REDUCE (41)
+, Lexique_galgasTemplateScanner::kToken_then, BOTTOM_UP_REDUCE (41)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (41)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (41)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_REDUCE (41)
+, Lexique_galgasTemplateScanner::kToken_before, BOTTOM_UP_REDUCE (41)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (41)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (41)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (41)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_REDUCE (41)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (41)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (41)
+, BOTTOM_UP_END
+// State S98 (index = 3212)
+, Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (42)
+, Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (42)
+, Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (42)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (42)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (42)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (42)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (42)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (42)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (42)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (42)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (42)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (42)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (42)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_REDUCE (42)
+, Lexique_galgasTemplateScanner::kToken_then, BOTTOM_UP_REDUCE (42)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (42)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (42)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_REDUCE (42)
+, Lexique_galgasTemplateScanner::kToken_before, BOTTOM_UP_REDUCE (42)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (42)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (42)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (42)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_REDUCE (42)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (42)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (42)
+, BOTTOM_UP_END
+// State S99 (index = 3263)
+, Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (43)
+, Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (43)
+, Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (43)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (43)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (43)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (43)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (43)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (43)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (43)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (43)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (43)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (43)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (43)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_REDUCE (43)
+, Lexique_galgasTemplateScanner::kToken_then, BOTTOM_UP_REDUCE (43)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (43)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (43)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_REDUCE (43)
+, Lexique_galgasTemplateScanner::kToken_before, BOTTOM_UP_REDUCE (43)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (43)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (43)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (43)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_REDUCE (43)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (43)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (43)
+, BOTTOM_UP_END
+// State S100 (index = 3314)
+, Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (44)
+, Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (44)
+, Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (44)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (44)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (44)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (44)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (44)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (44)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (44)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (44)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (44)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (44)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (44)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_REDUCE (44)
+, Lexique_galgasTemplateScanner::kToken_then, BOTTOM_UP_REDUCE (44)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (44)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (44)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_REDUCE (44)
+, Lexique_galgasTemplateScanner::kToken_before, BOTTOM_UP_REDUCE (44)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (44)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (44)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (44)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_REDUCE (44)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (44)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (44)
+, BOTTOM_UP_END
+// State S101 (index = 3365)
+, Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (45)
+, Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (45)
+, Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (45)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (45)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (45)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (45)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (45)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (45)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (45)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (45)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (45)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (45)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (45)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_REDUCE (45)
+, Lexique_galgasTemplateScanner::kToken_then, BOTTOM_UP_REDUCE (45)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (45)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (45)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_REDUCE (45)
+, Lexique_galgasTemplateScanner::kToken_before, BOTTOM_UP_REDUCE (45)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (45)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (45)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (45)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_REDUCE (45)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (45)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (45)
+, BOTTOM_UP_END
+// State S102 (index = 3416)
+, Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__3D__3D_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__21__3D_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__3C__3D_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__3E__3D_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__3E_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__3C_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__3C__3C_, BOTTOM_UP_SHIFT (62)
+, Lexique_galgasTemplateScanner::kToken__3E__3E_, BOTTOM_UP_SHIFT (63)
+, Lexique_galgasTemplateScanner::kToken__2B_, BOTTOM_UP_SHIFT (64)
+, Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_SHIFT (65)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken_then, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken_before, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (46)
+, BOTTOM_UP_END
+// State S103 (index = 3487)
+, Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__3D__3D_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__21__3D_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__3C__3D_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__3E__3D_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__3E_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__3C_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__3C__3C_, BOTTOM_UP_SHIFT (62)
+, Lexique_galgasTemplateScanner::kToken__3E__3E_, BOTTOM_UP_SHIFT (63)
+, Lexique_galgasTemplateScanner::kToken__2B_, BOTTOM_UP_SHIFT (64)
+, Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_SHIFT (65)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken_then, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken_before, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (46)
+, BOTTOM_UP_END
+// State S104 (index = 3558)
+, Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__3D__3D_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__21__3D_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__3C__3D_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__3E__3D_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__3E_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__3C_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__3C__3C_, BOTTOM_UP_SHIFT (62)
+, Lexique_galgasTemplateScanner::kToken__3E__3E_, BOTTOM_UP_SHIFT (63)
+, Lexique_galgasTemplateScanner::kToken__2B_, BOTTOM_UP_SHIFT (64)
+, Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_SHIFT (65)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken_then, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken_before, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (46)
+, BOTTOM_UP_END
+// State S105 (index = 3629)
+, Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__3D__3D_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__21__3D_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__3C__3D_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__3E__3D_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__3E_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__3C_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__3C__3C_, BOTTOM_UP_SHIFT (62)
+, Lexique_galgasTemplateScanner::kToken__3E__3E_, BOTTOM_UP_SHIFT (63)
+, Lexique_galgasTemplateScanner::kToken__2B_, BOTTOM_UP_SHIFT (64)
+, Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_SHIFT (65)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken_then, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken_before, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (46)
+, BOTTOM_UP_END
+// State S106 (index = 3700)
+, Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__3D__3D_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__21__3D_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__3C__3D_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__3E__3D_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__3E_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__3C_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__3C__3C_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__3E__3E_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__2B_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__2A_, BOTTOM_UP_SHIFT (67)
+, Lexique_galgasTemplateScanner::kToken__2F_, BOTTOM_UP_SHIFT (68)
+, Lexique_galgasTemplateScanner::kToken_mod, BOTTOM_UP_SHIFT (69)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken_then, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken_before, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (51)
+, BOTTOM_UP_END
+// State S107 (index = 3777)
+, Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__3D__3D_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__21__3D_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__3C__3D_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__3E__3D_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__3E_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__3C_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__3C__3C_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__3E__3E_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__2B_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__2A_, BOTTOM_UP_SHIFT (67)
+, Lexique_galgasTemplateScanner::kToken__2F_, BOTTOM_UP_SHIFT (68)
+, Lexique_galgasTemplateScanner::kToken_mod, BOTTOM_UP_SHIFT (69)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken_then, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken_before, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (51)
+, BOTTOM_UP_END
+// State S108 (index = 3854)
+, Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__3D__3D_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__21__3D_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__3C__3D_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__3E__3D_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__3E_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__3C_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__3C__3C_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__3E__3E_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__2B_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__2A_, BOTTOM_UP_SHIFT (67)
+, Lexique_galgasTemplateScanner::kToken__2F_, BOTTOM_UP_SHIFT (68)
+, Lexique_galgasTemplateScanner::kToken_mod, BOTTOM_UP_SHIFT (69)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken_then, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken_before, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (51)
+, BOTTOM_UP_END
+// State S109 (index = 3931)
+, Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken__3D__3D_, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken__21__3D_, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken__3C__3D_, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken__3E__3D_, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken__3E_, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken__3C_, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken__3C__3C_, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken__3E__3E_, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken__2B_, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken__2A_, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken__2F_, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken_mod, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken__2E_, BOTTOM_UP_SHIFT (71)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken_then, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken_before, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (55)
+, BOTTOM_UP_END
+// State S110 (index = 4010)
+, Lexique_galgasTemplateScanner::kToken__40_type, BOTTOM_UP_REDUCE (66)
+, BOTTOM_UP_END
+// State S111 (index = 4013)
+, Lexique_galgasTemplateScanner::kToken__40_type, BOTTOM_UP_REDUCE (67)
+, BOTTOM_UP_END
+// State S112 (index = 4016)
+, Lexique_galgasTemplateScanner::kToken__40_type, BOTTOM_UP_REDUCE (68)
+, BOTTOM_UP_END
+// State S113 (index = 4019)
+, Lexique_galgasTemplateScanner::kToken__40_type, BOTTOM_UP_SHIFT (148)
+, BOTTOM_UP_END
+// State S114 (index = 4022)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_SHIFT (1)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_SHIFT (2)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_SHIFT (3)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_SHIFT (4)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (72)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_SHIFT (5)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_SHIFT (6)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_SHIFT (7)
+, BOTTOM_UP_END
+// State S115 (index = 4039)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_SHIFT (150)
+, BOTTOM_UP_END
+// State S116 (index = 4042)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_SHIFT (1)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_SHIFT (2)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_SHIFT (3)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_SHIFT (4)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (76)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_SHIFT (5)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (76)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (76)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_SHIFT (6)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_SHIFT (7)
+, BOTTOM_UP_END
+// State S117 (index = 4063)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (74)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_SHIFT (152)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (74)
+, BOTTOM_UP_END
+// State S118 (index = 4070)
+, Lexique_galgasTemplateScanner::kToken__2A_, BOTTOM_UP_REDUCE (28)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (28)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (28)
+, Lexique_galgasTemplateScanner::kToken_literalInt, BOTTOM_UP_REDUCE (28)
+, BOTTOM_UP_END
+// State S119 (index = 4079)
+, Lexique_galgasTemplateScanner::kToken__2A_, BOTTOM_UP_REDUCE (29)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (29)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (29)
+, Lexique_galgasTemplateScanner::kToken_literalInt, BOTTOM_UP_REDUCE (29)
+, BOTTOM_UP_END
+// State S120 (index = 4088)
+, Lexique_galgasTemplateScanner::kToken__2A_, BOTTOM_UP_SHIFT (154)
+, BOTTOM_UP_END
+// State S121 (index = 4091)
+, Lexique_galgasTemplateScanner::kToken__2A_, BOTTOM_UP_SHIFT (118)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (119)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (84)
+, Lexique_galgasTemplateScanner::kToken_literalInt, BOTTOM_UP_SHIFT (120)
+, BOTTOM_UP_END
+// State S122 (index = 4100)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_SHIFT (1)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_SHIFT (2)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_SHIFT (3)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_SHIFT (4)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_SHIFT (5)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_SHIFT (6)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (93)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_SHIFT (7)
+, BOTTOM_UP_END
+// State S123 (index = 4117)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_SHIFT (159)
+, BOTTOM_UP_END
+// State S124 (index = 4120)
+, Lexique_galgasTemplateScanner::kToken__28_, BOTTOM_UP_REDUCE (111)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (111)
+, Lexique_galgasTemplateScanner::kToken__2C_, BOTTOM_UP_SHIFT (160)
+, BOTTOM_UP_END
+// State S125 (index = 4127)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_SHIFT (162)
+, BOTTOM_UP_END
+// State S126 (index = 4130)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (32)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (32)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (32)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (32)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (32)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_REDUCE (32)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (32)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (32)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_REDUCE (32)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (32)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (32)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (32)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_REDUCE (32)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (32)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (32)
+, BOTTOM_UP_END
+// State S127 (index = 4161)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (69)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (69)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_SHIFT (80)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_SHIFT (81)
+, BOTTOM_UP_END
+// State S128 (index = 4170)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (69)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (69)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_SHIFT (80)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_SHIFT (81)
+, BOTTOM_UP_END
+// State S129 (index = 4179)
+, Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (18)
+, Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (18)
+, Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (18)
+, Lexique_galgasTemplateScanner::kToken__3D__3D_, BOTTOM_UP_REDUCE (18)
+, Lexique_galgasTemplateScanner::kToken__21__3D_, BOTTOM_UP_REDUCE (18)
+, Lexique_galgasTemplateScanner::kToken__3C__3D_, BOTTOM_UP_REDUCE (18)
+, Lexique_galgasTemplateScanner::kToken__3E__3D_, BOTTOM_UP_REDUCE (18)
+, Lexique_galgasTemplateScanner::kToken__3E_, BOTTOM_UP_REDUCE (18)
+, Lexique_galgasTemplateScanner::kToken__3C_, BOTTOM_UP_REDUCE (18)
+, Lexique_galgasTemplateScanner::kToken__3C__3C_, BOTTOM_UP_REDUCE (18)
+, Lexique_galgasTemplateScanner::kToken__3E__3E_, BOTTOM_UP_REDUCE (18)
+, Lexique_galgasTemplateScanner::kToken__2B_, BOTTOM_UP_REDUCE (18)
+, Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_REDUCE (18)
+, Lexique_galgasTemplateScanner::kToken__2A_, BOTTOM_UP_REDUCE (18)
+, Lexique_galgasTemplateScanner::kToken__2F_, BOTTOM_UP_REDUCE (18)
+, Lexique_galgasTemplateScanner::kToken_mod, BOTTOM_UP_REDUCE (18)
+, Lexique_galgasTemplateScanner::kToken__2E_, BOTTOM_UP_REDUCE (18)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (18)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (18)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (18)
+, Lexique_galgasTemplateScanner::kToken_is, BOTTOM_UP_REDUCE (18)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (18)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (18)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (18)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (18)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (18)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (18)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (18)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_REDUCE (18)
+, Lexique_galgasTemplateScanner::kToken_then, BOTTOM_UP_REDUCE (18)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (18)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (18)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_REDUCE (18)
+, Lexique_galgasTemplateScanner::kToken_before, BOTTOM_UP_REDUCE (18)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (18)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (18)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (18)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_REDUCE (18)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (18)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (18)
+, BOTTOM_UP_END
+// State S130 (index = 4260)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (69)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (69)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_SHIFT (80)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_SHIFT (81)
+, BOTTOM_UP_END
+// State S131 (index = 4269)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_SHIFT (166)
+, BOTTOM_UP_END
+// State S132 (index = 4272)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (167)
+, BOTTOM_UP_END
+// State S133 (index = 4275)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (168)
+, BOTTOM_UP_END
+// State S134 (index = 4278)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (169)
+, BOTTOM_UP_END
+// State S135 (index = 4281)
+, Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (63)
+, Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (63)
+, Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (63)
+, Lexique_galgasTemplateScanner::kToken__3D__3D_, BOTTOM_UP_REDUCE (63)
+, Lexique_galgasTemplateScanner::kToken__21__3D_, BOTTOM_UP_REDUCE (63)
+, Lexique_galgasTemplateScanner::kToken__3C__3D_, BOTTOM_UP_REDUCE (63)
+, Lexique_galgasTemplateScanner::kToken__3E__3D_, BOTTOM_UP_REDUCE (63)
+, Lexique_galgasTemplateScanner::kToken__3E_, BOTTOM_UP_REDUCE (63)
+, Lexique_galgasTemplateScanner::kToken__3C_, BOTTOM_UP_REDUCE (63)
+, Lexique_galgasTemplateScanner::kToken__3C__3C_, BOTTOM_UP_REDUCE (63)
+, Lexique_galgasTemplateScanner::kToken__3E__3E_, BOTTOM_UP_REDUCE (63)
+, Lexique_galgasTemplateScanner::kToken__2B_, BOTTOM_UP_REDUCE (63)
+, Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_REDUCE (63)
+, Lexique_galgasTemplateScanner::kToken__2A_, BOTTOM_UP_REDUCE (63)
+, Lexique_galgasTemplateScanner::kToken__2F_, BOTTOM_UP_REDUCE (63)
+, Lexique_galgasTemplateScanner::kToken_mod, BOTTOM_UP_REDUCE (63)
+, Lexique_galgasTemplateScanner::kToken__2E_, BOTTOM_UP_REDUCE (63)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (63)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (63)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (63)
+, Lexique_galgasTemplateScanner::kToken_is, BOTTOM_UP_REDUCE (63)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (63)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (63)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (63)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (63)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (63)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (63)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (63)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_REDUCE (63)
+, Lexique_galgasTemplateScanner::kToken_then, BOTTOM_UP_REDUCE (63)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (63)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (63)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_REDUCE (63)
+, Lexique_galgasTemplateScanner::kToken_before, BOTTOM_UP_REDUCE (63)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (63)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (63)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (63)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_REDUCE (63)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (63)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (63)
+, BOTTOM_UP_END
+// State S136 (index = 4362)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_SHIFT (170)
+, BOTTOM_UP_END
+// State S137 (index = 4365)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (35)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (35)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (35)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (35)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (35)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (35)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (35)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (35)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (35)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (35)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_REDUCE (35)
+, Lexique_galgasTemplateScanner::kToken_then, BOTTOM_UP_REDUCE (35)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (35)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (35)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_REDUCE (35)
+, Lexique_galgasTemplateScanner::kToken_before, BOTTOM_UP_REDUCE (35)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (35)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (35)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (35)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_REDUCE (35)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (35)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (35)
+, BOTTOM_UP_END
+// State S138 (index = 4410)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (36)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (36)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (36)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (36)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (36)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (36)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (36)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (36)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (36)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (36)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_REDUCE (36)
+, Lexique_galgasTemplateScanner::kToken_then, BOTTOM_UP_REDUCE (36)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (36)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (36)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_REDUCE (36)
+, Lexique_galgasTemplateScanner::kToken_before, BOTTOM_UP_REDUCE (36)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (36)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (36)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (36)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_REDUCE (36)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (36)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (36)
+, BOTTOM_UP_END
+// State S139 (index = 4455)
+, Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (38)
+, Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (38)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (38)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (38)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (38)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (38)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (38)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (38)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (38)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (38)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (38)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (38)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_REDUCE (38)
+, Lexique_galgasTemplateScanner::kToken_then, BOTTOM_UP_REDUCE (38)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (38)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (38)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_REDUCE (38)
+, Lexique_galgasTemplateScanner::kToken_before, BOTTOM_UP_REDUCE (38)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (38)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (38)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (38)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_REDUCE (38)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (38)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (38)
+, BOTTOM_UP_END
+// State S140 (index = 4504)
+, Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (47)
+, Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (47)
+, Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (47)
+, Lexique_galgasTemplateScanner::kToken__3D__3D_, BOTTOM_UP_REDUCE (47)
+, Lexique_galgasTemplateScanner::kToken__21__3D_, BOTTOM_UP_REDUCE (47)
+, Lexique_galgasTemplateScanner::kToken__3C__3D_, BOTTOM_UP_REDUCE (47)
+, Lexique_galgasTemplateScanner::kToken__3E__3D_, BOTTOM_UP_REDUCE (47)
+, Lexique_galgasTemplateScanner::kToken__3E_, BOTTOM_UP_REDUCE (47)
+, Lexique_galgasTemplateScanner::kToken__3C_, BOTTOM_UP_REDUCE (47)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (47)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (47)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (47)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (47)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (47)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (47)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (47)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (47)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (47)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (47)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_REDUCE (47)
+, Lexique_galgasTemplateScanner::kToken_then, BOTTOM_UP_REDUCE (47)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (47)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (47)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_REDUCE (47)
+, Lexique_galgasTemplateScanner::kToken_before, BOTTOM_UP_REDUCE (47)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (47)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (47)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (47)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_REDUCE (47)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (47)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (47)
+, BOTTOM_UP_END
+// State S141 (index = 4567)
+, Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (48)
+, Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (48)
+, Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (48)
+, Lexique_galgasTemplateScanner::kToken__3D__3D_, BOTTOM_UP_REDUCE (48)
+, Lexique_galgasTemplateScanner::kToken__21__3D_, BOTTOM_UP_REDUCE (48)
+, Lexique_galgasTemplateScanner::kToken__3C__3D_, BOTTOM_UP_REDUCE (48)
+, Lexique_galgasTemplateScanner::kToken__3E__3D_, BOTTOM_UP_REDUCE (48)
+, Lexique_galgasTemplateScanner::kToken__3E_, BOTTOM_UP_REDUCE (48)
+, Lexique_galgasTemplateScanner::kToken__3C_, BOTTOM_UP_REDUCE (48)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (48)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (48)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (48)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (48)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (48)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (48)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (48)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (48)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (48)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (48)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_REDUCE (48)
+, Lexique_galgasTemplateScanner::kToken_then, BOTTOM_UP_REDUCE (48)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (48)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (48)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_REDUCE (48)
+, Lexique_galgasTemplateScanner::kToken_before, BOTTOM_UP_REDUCE (48)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (48)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (48)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (48)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_REDUCE (48)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (48)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (48)
+, BOTTOM_UP_END
+// State S142 (index = 4630)
+, Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (49)
+, Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (49)
+, Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (49)
+, Lexique_galgasTemplateScanner::kToken__3D__3D_, BOTTOM_UP_REDUCE (49)
+, Lexique_galgasTemplateScanner::kToken__21__3D_, BOTTOM_UP_REDUCE (49)
+, Lexique_galgasTemplateScanner::kToken__3C__3D_, BOTTOM_UP_REDUCE (49)
+, Lexique_galgasTemplateScanner::kToken__3E__3D_, BOTTOM_UP_REDUCE (49)
+, Lexique_galgasTemplateScanner::kToken__3E_, BOTTOM_UP_REDUCE (49)
+, Lexique_galgasTemplateScanner::kToken__3C_, BOTTOM_UP_REDUCE (49)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (49)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (49)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (49)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (49)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (49)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (49)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (49)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (49)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (49)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (49)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_REDUCE (49)
+, Lexique_galgasTemplateScanner::kToken_then, BOTTOM_UP_REDUCE (49)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (49)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (49)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_REDUCE (49)
+, Lexique_galgasTemplateScanner::kToken_before, BOTTOM_UP_REDUCE (49)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (49)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (49)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (49)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_REDUCE (49)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (49)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (49)
+, BOTTOM_UP_END
+// State S143 (index = 4693)
+, Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (50)
+, Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (50)
+, Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (50)
+, Lexique_galgasTemplateScanner::kToken__3D__3D_, BOTTOM_UP_REDUCE (50)
+, Lexique_galgasTemplateScanner::kToken__21__3D_, BOTTOM_UP_REDUCE (50)
+, Lexique_galgasTemplateScanner::kToken__3C__3D_, BOTTOM_UP_REDUCE (50)
+, Lexique_galgasTemplateScanner::kToken__3E__3D_, BOTTOM_UP_REDUCE (50)
+, Lexique_galgasTemplateScanner::kToken__3E_, BOTTOM_UP_REDUCE (50)
+, Lexique_galgasTemplateScanner::kToken__3C_, BOTTOM_UP_REDUCE (50)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (50)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (50)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (50)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (50)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (50)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (50)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (50)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (50)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (50)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (50)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_REDUCE (50)
+, Lexique_galgasTemplateScanner::kToken_then, BOTTOM_UP_REDUCE (50)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (50)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (50)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_REDUCE (50)
+, Lexique_galgasTemplateScanner::kToken_before, BOTTOM_UP_REDUCE (50)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (50)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (50)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (50)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_REDUCE (50)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (50)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (50)
+, BOTTOM_UP_END
+// State S144 (index = 4756)
+, Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (52)
+, Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (52)
+, Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (52)
+, Lexique_galgasTemplateScanner::kToken__3D__3D_, BOTTOM_UP_REDUCE (52)
+, Lexique_galgasTemplateScanner::kToken__21__3D_, BOTTOM_UP_REDUCE (52)
+, Lexique_galgasTemplateScanner::kToken__3C__3D_, BOTTOM_UP_REDUCE (52)
+, Lexique_galgasTemplateScanner::kToken__3E__3D_, BOTTOM_UP_REDUCE (52)
+, Lexique_galgasTemplateScanner::kToken__3E_, BOTTOM_UP_REDUCE (52)
+, Lexique_galgasTemplateScanner::kToken__3C_, BOTTOM_UP_REDUCE (52)
+, Lexique_galgasTemplateScanner::kToken__3C__3C_, BOTTOM_UP_REDUCE (52)
+, Lexique_galgasTemplateScanner::kToken__3E__3E_, BOTTOM_UP_REDUCE (52)
+, Lexique_galgasTemplateScanner::kToken__2B_, BOTTOM_UP_REDUCE (52)
+, Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_REDUCE (52)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (52)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (52)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (52)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (52)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (52)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (52)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (52)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (52)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (52)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (52)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_REDUCE (52)
+, Lexique_galgasTemplateScanner::kToken_then, BOTTOM_UP_REDUCE (52)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (52)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (52)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_REDUCE (52)
+, Lexique_galgasTemplateScanner::kToken_before, BOTTOM_UP_REDUCE (52)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (52)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (52)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (52)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_REDUCE (52)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (52)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (52)
+, BOTTOM_UP_END
+// State S145 (index = 4827)
+, Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (53)
+, Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (53)
+, Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (53)
+, Lexique_galgasTemplateScanner::kToken__3D__3D_, BOTTOM_UP_REDUCE (53)
+, Lexique_galgasTemplateScanner::kToken__21__3D_, BOTTOM_UP_REDUCE (53)
+, Lexique_galgasTemplateScanner::kToken__3C__3D_, BOTTOM_UP_REDUCE (53)
+, Lexique_galgasTemplateScanner::kToken__3E__3D_, BOTTOM_UP_REDUCE (53)
+, Lexique_galgasTemplateScanner::kToken__3E_, BOTTOM_UP_REDUCE (53)
+, Lexique_galgasTemplateScanner::kToken__3C_, BOTTOM_UP_REDUCE (53)
+, Lexique_galgasTemplateScanner::kToken__3C__3C_, BOTTOM_UP_REDUCE (53)
+, Lexique_galgasTemplateScanner::kToken__3E__3E_, BOTTOM_UP_REDUCE (53)
+, Lexique_galgasTemplateScanner::kToken__2B_, BOTTOM_UP_REDUCE (53)
+, Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_REDUCE (53)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (53)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (53)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (53)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (53)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (53)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (53)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (53)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (53)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (53)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (53)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_REDUCE (53)
+, Lexique_galgasTemplateScanner::kToken_then, BOTTOM_UP_REDUCE (53)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (53)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (53)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_REDUCE (53)
+, Lexique_galgasTemplateScanner::kToken_before, BOTTOM_UP_REDUCE (53)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (53)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (53)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (53)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_REDUCE (53)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (53)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (53)
+, BOTTOM_UP_END
+// State S146 (index = 4898)
+, Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (54)
+, Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (54)
+, Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (54)
+, Lexique_galgasTemplateScanner::kToken__3D__3D_, BOTTOM_UP_REDUCE (54)
+, Lexique_galgasTemplateScanner::kToken__21__3D_, BOTTOM_UP_REDUCE (54)
+, Lexique_galgasTemplateScanner::kToken__3C__3D_, BOTTOM_UP_REDUCE (54)
+, Lexique_galgasTemplateScanner::kToken__3E__3D_, BOTTOM_UP_REDUCE (54)
+, Lexique_galgasTemplateScanner::kToken__3E_, BOTTOM_UP_REDUCE (54)
+, Lexique_galgasTemplateScanner::kToken__3C_, BOTTOM_UP_REDUCE (54)
+, Lexique_galgasTemplateScanner::kToken__3C__3C_, BOTTOM_UP_REDUCE (54)
+, Lexique_galgasTemplateScanner::kToken__3E__3E_, BOTTOM_UP_REDUCE (54)
+, Lexique_galgasTemplateScanner::kToken__2B_, BOTTOM_UP_REDUCE (54)
+, Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_REDUCE (54)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (54)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (54)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (54)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (54)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (54)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (54)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (54)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (54)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (54)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (54)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_REDUCE (54)
+, Lexique_galgasTemplateScanner::kToken_then, BOTTOM_UP_REDUCE (54)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (54)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (54)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_REDUCE (54)
+, Lexique_galgasTemplateScanner::kToken_before, BOTTOM_UP_REDUCE (54)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (54)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (54)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (54)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_REDUCE (54)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (54)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (54)
+, BOTTOM_UP_END
+// State S147 (index = 4969)
+, Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (56)
+, Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (56)
+, Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (56)
+, Lexique_galgasTemplateScanner::kToken__3D__3D_, BOTTOM_UP_REDUCE (56)
+, Lexique_galgasTemplateScanner::kToken__21__3D_, BOTTOM_UP_REDUCE (56)
+, Lexique_galgasTemplateScanner::kToken__3C__3D_, BOTTOM_UP_REDUCE (56)
+, Lexique_galgasTemplateScanner::kToken__3E__3D_, BOTTOM_UP_REDUCE (56)
+, Lexique_galgasTemplateScanner::kToken__3E_, BOTTOM_UP_REDUCE (56)
+, Lexique_galgasTemplateScanner::kToken__3C_, BOTTOM_UP_REDUCE (56)
+, Lexique_galgasTemplateScanner::kToken__3C__3C_, BOTTOM_UP_REDUCE (56)
+, Lexique_galgasTemplateScanner::kToken__3E__3E_, BOTTOM_UP_REDUCE (56)
+, Lexique_galgasTemplateScanner::kToken__2B_, BOTTOM_UP_REDUCE (56)
+, Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_REDUCE (56)
+, Lexique_galgasTemplateScanner::kToken__2A_, BOTTOM_UP_REDUCE (56)
+, Lexique_galgasTemplateScanner::kToken__2F_, BOTTOM_UP_REDUCE (56)
+, Lexique_galgasTemplateScanner::kToken_mod, BOTTOM_UP_REDUCE (56)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (56)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (56)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (56)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (56)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (56)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (56)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (56)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (56)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (56)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (56)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_REDUCE (56)
+, Lexique_galgasTemplateScanner::kToken_then, BOTTOM_UP_REDUCE (56)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (56)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (56)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_REDUCE (56)
+, Lexique_galgasTemplateScanner::kToken_before, BOTTOM_UP_REDUCE (56)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (56)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (56)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (56)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_REDUCE (56)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (56)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (56)
+, BOTTOM_UP_END
+// State S148 (index = 5046)
+, Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (19)
+, Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (19)
+, Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (19)
+, Lexique_galgasTemplateScanner::kToken__3D__3D_, BOTTOM_UP_REDUCE (19)
+, Lexique_galgasTemplateScanner::kToken__21__3D_, BOTTOM_UP_REDUCE (19)
+, Lexique_galgasTemplateScanner::kToken__3C__3D_, BOTTOM_UP_REDUCE (19)
+, Lexique_galgasTemplateScanner::kToken__3E__3D_, BOTTOM_UP_REDUCE (19)
+, Lexique_galgasTemplateScanner::kToken__3E_, BOTTOM_UP_REDUCE (19)
+, Lexique_galgasTemplateScanner::kToken__3C_, BOTTOM_UP_REDUCE (19)
+, Lexique_galgasTemplateScanner::kToken__3C__3C_, BOTTOM_UP_REDUCE (19)
+, Lexique_galgasTemplateScanner::kToken__3E__3E_, BOTTOM_UP_REDUCE (19)
+, Lexique_galgasTemplateScanner::kToken__2B_, BOTTOM_UP_REDUCE (19)
+, Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_REDUCE (19)
+, Lexique_galgasTemplateScanner::kToken__2A_, BOTTOM_UP_REDUCE (19)
+, Lexique_galgasTemplateScanner::kToken__2F_, BOTTOM_UP_REDUCE (19)
+, Lexique_galgasTemplateScanner::kToken_mod, BOTTOM_UP_REDUCE (19)
+, Lexique_galgasTemplateScanner::kToken__2E_, BOTTOM_UP_REDUCE (19)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (19)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (19)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (19)
+, Lexique_galgasTemplateScanner::kToken_is, BOTTOM_UP_REDUCE (19)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (19)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (19)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (19)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (19)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (19)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (19)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (19)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_REDUCE (19)
+, Lexique_galgasTemplateScanner::kToken_then, BOTTOM_UP_REDUCE (19)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (19)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (19)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_REDUCE (19)
+, Lexique_galgasTemplateScanner::kToken_before, BOTTOM_UP_REDUCE (19)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (19)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (19)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (19)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_REDUCE (19)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (19)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (19)
+, BOTTOM_UP_END
+// State S149 (index = 5127)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (73)
+, BOTTOM_UP_END
+// State S150 (index = 5130)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (24)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (24)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (24)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (24)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (24)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_REDUCE (24)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (24)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (24)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_REDUCE (24)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (24)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (24)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (24)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_REDUCE (24)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (24)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (24)
+, BOTTOM_UP_END
+// State S151 (index = 5161)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (77)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (77)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (77)
+, BOTTOM_UP_END
+// State S152 (index = 5168)
+, Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_SHIFT (11)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (12)
+, Lexique_galgasTemplateScanner::kToken_not, BOTTOM_UP_SHIFT (13)
+, Lexique_galgasTemplateScanner::kToken__7E_, BOTTOM_UP_SHIFT (14)
+, Lexique_galgasTemplateScanner::kToken__28_, BOTTOM_UP_SHIFT (15)
+, Lexique_galgasTemplateScanner::kToken_true, BOTTOM_UP_SHIFT (16)
+, Lexique_galgasTemplateScanner::kToken_false, BOTTOM_UP_SHIFT (17)
+, Lexique_galgasTemplateScanner::kToken_literalInt, BOTTOM_UP_SHIFT (18)
+, Lexique_galgasTemplateScanner::kToken_double_2E_xxx, BOTTOM_UP_SHIFT (19)
+, Lexique_galgasTemplateScanner::kToken__27_char_27_, BOTTOM_UP_SHIFT (20)
+, Lexique_galgasTemplateScanner::kToken__22_string_22_, BOTTOM_UP_SHIFT (21)
+, Lexique_galgasTemplateScanner::kToken__5B_, BOTTOM_UP_SHIFT (22)
+, BOTTOM_UP_END
+// State S153 (index = 5193)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (78)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_SHIFT (172)
+, BOTTOM_UP_END
+// State S154 (index = 5198)
+, Lexique_galgasTemplateScanner::kToken__2A_, BOTTOM_UP_REDUCE (27)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (27)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (27)
+, Lexique_galgasTemplateScanner::kToken_literalInt, BOTTOM_UP_REDUCE (27)
+, BOTTOM_UP_END
+// State S155 (index = 5207)
+, Lexique_galgasTemplateScanner::kToken__2A_, BOTTOM_UP_SHIFT (118)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (119)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (84)
+, Lexique_galgasTemplateScanner::kToken_literalInt, BOTTOM_UP_SHIFT (120)
+, BOTTOM_UP_END
+// State S156 (index = 5216)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_SHIFT (175)
+, BOTTOM_UP_END
+// State S157 (index = 5219)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_SHIFT (1)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_SHIFT (2)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_SHIFT (3)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_SHIFT (4)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_SHIFT (5)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_SHIFT (6)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (93)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_SHIFT (7)
+, BOTTOM_UP_END
+// State S158 (index = 5236)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (92)
+, BOTTOM_UP_END
+// State S159 (index = 5239)
+, Lexique_galgasTemplateScanner::kToken__28_, BOTTOM_UP_SHIFT (177)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (95)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (95)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (95)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (95)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (95)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_REDUCE (95)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_REDUCE (95)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (95)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (95)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_REDUCE (95)
+, BOTTOM_UP_END
+// State S160 (index = 5262)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (179)
+, BOTTOM_UP_END
+// State S161 (index = 5265)
+, Lexique_galgasTemplateScanner::kToken__28_, BOTTOM_UP_SHIFT (180)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (113)
+, BOTTOM_UP_END
+// State S162 (index = 5270)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_SHIFT (1)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_SHIFT (2)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_SHIFT (3)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_SHIFT (4)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (109)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_SHIFT (5)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_SHIFT (6)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_SHIFT (7)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (109)
+, BOTTOM_UP_END
+// State S163 (index = 5289)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (70)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (70)
+, BOTTOM_UP_END
+// State S164 (index = 5294)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (71)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (71)
+, BOTTOM_UP_END
+// State S165 (index = 5299)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_SHIFT (184)
+, BOTTOM_UP_END
+// State S166 (index = 5302)
+, Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (60)
+, Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (60)
+, Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (60)
+, Lexique_galgasTemplateScanner::kToken__3D__3D_, BOTTOM_UP_REDUCE (60)
+, Lexique_galgasTemplateScanner::kToken__21__3D_, BOTTOM_UP_REDUCE (60)
+, Lexique_galgasTemplateScanner::kToken__3C__3D_, BOTTOM_UP_REDUCE (60)
+, Lexique_galgasTemplateScanner::kToken__3E__3D_, BOTTOM_UP_REDUCE (60)
+, Lexique_galgasTemplateScanner::kToken__3E_, BOTTOM_UP_REDUCE (60)
+, Lexique_galgasTemplateScanner::kToken__3C_, BOTTOM_UP_REDUCE (60)
+, Lexique_galgasTemplateScanner::kToken__3C__3C_, BOTTOM_UP_REDUCE (60)
+, Lexique_galgasTemplateScanner::kToken__3E__3E_, BOTTOM_UP_REDUCE (60)
+, Lexique_galgasTemplateScanner::kToken__2B_, BOTTOM_UP_REDUCE (60)
+, Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_REDUCE (60)
+, Lexique_galgasTemplateScanner::kToken__2A_, BOTTOM_UP_REDUCE (60)
+, Lexique_galgasTemplateScanner::kToken__2F_, BOTTOM_UP_REDUCE (60)
+, Lexique_galgasTemplateScanner::kToken_mod, BOTTOM_UP_REDUCE (60)
+, Lexique_galgasTemplateScanner::kToken__2E_, BOTTOM_UP_REDUCE (60)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (60)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (60)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (60)
+, Lexique_galgasTemplateScanner::kToken_is, BOTTOM_UP_REDUCE (60)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (60)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (60)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (60)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (60)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (60)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (60)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (60)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_REDUCE (60)
+, Lexique_galgasTemplateScanner::kToken_then, BOTTOM_UP_REDUCE (60)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (60)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (60)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_REDUCE (60)
+, Lexique_galgasTemplateScanner::kToken_before, BOTTOM_UP_REDUCE (60)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (60)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (60)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (60)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_REDUCE (60)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (60)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (60)
+, BOTTOM_UP_END
+// State S167 (index = 5383)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (69)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (69)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_SHIFT (80)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_SHIFT (81)
+, BOTTOM_UP_END
+// State S168 (index = 5392)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (64)
+, BOTTOM_UP_END
+// State S169 (index = 5395)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (186)
+, BOTTOM_UP_END
+// State S170 (index = 5398)
+, Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (62)
+, Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (62)
+, Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (62)
+, Lexique_galgasTemplateScanner::kToken__3D__3D_, BOTTOM_UP_REDUCE (62)
+, Lexique_galgasTemplateScanner::kToken__21__3D_, BOTTOM_UP_REDUCE (62)
+, Lexique_galgasTemplateScanner::kToken__3C__3D_, BOTTOM_UP_REDUCE (62)
+, Lexique_galgasTemplateScanner::kToken__3E__3D_, BOTTOM_UP_REDUCE (62)
+, Lexique_galgasTemplateScanner::kToken__3E_, BOTTOM_UP_REDUCE (62)
+, Lexique_galgasTemplateScanner::kToken__3C_, BOTTOM_UP_REDUCE (62)
+, Lexique_galgasTemplateScanner::kToken__3C__3C_, BOTTOM_UP_REDUCE (62)
+, Lexique_galgasTemplateScanner::kToken__3E__3E_, BOTTOM_UP_REDUCE (62)
+, Lexique_galgasTemplateScanner::kToken__2B_, BOTTOM_UP_REDUCE (62)
+, Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_REDUCE (62)
+, Lexique_galgasTemplateScanner::kToken__2A_, BOTTOM_UP_REDUCE (62)
+, Lexique_galgasTemplateScanner::kToken__2F_, BOTTOM_UP_REDUCE (62)
+, Lexique_galgasTemplateScanner::kToken_mod, BOTTOM_UP_REDUCE (62)
+, Lexique_galgasTemplateScanner::kToken__2E_, BOTTOM_UP_REDUCE (62)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (62)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (62)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (62)
+, Lexique_galgasTemplateScanner::kToken_is, BOTTOM_UP_REDUCE (62)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (62)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (62)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (62)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (62)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (62)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (62)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (62)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_REDUCE (62)
+, Lexique_galgasTemplateScanner::kToken_then, BOTTOM_UP_REDUCE (62)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (62)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (62)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_REDUCE (62)
+, Lexique_galgasTemplateScanner::kToken_before, BOTTOM_UP_REDUCE (62)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (62)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (62)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (62)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_REDUCE (62)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (62)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (62)
+, BOTTOM_UP_END
+// State S171 (index = 5479)
+, Lexique_galgasTemplateScanner::kToken_then, BOTTOM_UP_SHIFT (187)
+, BOTTOM_UP_END
+// State S172 (index = 5482)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_SHIFT (1)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_SHIFT (2)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_SHIFT (3)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_SHIFT (4)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (80)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_SHIFT (5)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_SHIFT (6)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_SHIFT (7)
+, BOTTOM_UP_END
+// State S173 (index = 5499)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_SHIFT (190)
+, BOTTOM_UP_END
+// State S174 (index = 5502)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (85)
+, BOTTOM_UP_END
+// State S175 (index = 5505)
+, Lexique_galgasTemplateScanner::kToken_in, BOTTOM_UP_SHIFT (191)
+, BOTTOM_UP_END
+// State S176 (index = 5508)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (94)
+, BOTTOM_UP_END
+// State S177 (index = 5511)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (192)
+, BOTTOM_UP_END
+// State S178 (index = 5514)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_SHIFT (1)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_SHIFT (2)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_SHIFT (3)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_SHIFT (4)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (97)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_SHIFT (5)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_SHIFT (6)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (97)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (97)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_SHIFT (7)
+, BOTTOM_UP_END
+// State S179 (index = 5535)
+, Lexique_galgasTemplateScanner::kToken__28_, BOTTOM_UP_REDUCE (111)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (111)
+, Lexique_galgasTemplateScanner::kToken__2C_, BOTTOM_UP_SHIFT (160)
+, BOTTOM_UP_END
+// State S180 (index = 5542)
+, Lexique_galgasTemplateScanner::kToken__2A_, BOTTOM_UP_SHIFT (196)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (121)
+, Lexique_galgasTemplateScanner::kToken_literalInt, BOTTOM_UP_SHIFT (197)
+, Lexique_galgasTemplateScanner::kToken__40_type, BOTTOM_UP_SHIFT (198)
+, Lexique_galgasTemplateScanner::kToken_unused, BOTTOM_UP_REDUCE (121)
+, BOTTOM_UP_END
+// State S181 (index = 5553)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (33)
+, BOTTOM_UP_END
+// State S182 (index = 5556)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_SHIFT (1)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_SHIFT (2)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_SHIFT (3)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_SHIFT (4)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (109)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_SHIFT (5)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_SHIFT (6)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_SHIFT (7)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (109)
+, BOTTOM_UP_END
+// State S183 (index = 5575)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (107)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_SHIFT (78)
+, BOTTOM_UP_END
+// State S184 (index = 5580)
+, Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (59)
+, Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (59)
+, Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (59)
+, Lexique_galgasTemplateScanner::kToken__3D__3D_, BOTTOM_UP_REDUCE (59)
+, Lexique_galgasTemplateScanner::kToken__21__3D_, BOTTOM_UP_REDUCE (59)
+, Lexique_galgasTemplateScanner::kToken__3C__3D_, BOTTOM_UP_REDUCE (59)
+, Lexique_galgasTemplateScanner::kToken__3E__3D_, BOTTOM_UP_REDUCE (59)
+, Lexique_galgasTemplateScanner::kToken__3E_, BOTTOM_UP_REDUCE (59)
+, Lexique_galgasTemplateScanner::kToken__3C_, BOTTOM_UP_REDUCE (59)
+, Lexique_galgasTemplateScanner::kToken__3C__3C_, BOTTOM_UP_REDUCE (59)
+, Lexique_galgasTemplateScanner::kToken__3E__3E_, BOTTOM_UP_REDUCE (59)
+, Lexique_galgasTemplateScanner::kToken__2B_, BOTTOM_UP_REDUCE (59)
+, Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_REDUCE (59)
+, Lexique_galgasTemplateScanner::kToken__2A_, BOTTOM_UP_REDUCE (59)
+, Lexique_galgasTemplateScanner::kToken__2F_, BOTTOM_UP_REDUCE (59)
+, Lexique_galgasTemplateScanner::kToken_mod, BOTTOM_UP_REDUCE (59)
+, Lexique_galgasTemplateScanner::kToken__2E_, BOTTOM_UP_REDUCE (59)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (59)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (59)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (59)
+, Lexique_galgasTemplateScanner::kToken_is, BOTTOM_UP_REDUCE (59)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (59)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (59)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (59)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (59)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (59)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (59)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (59)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_REDUCE (59)
+, Lexique_galgasTemplateScanner::kToken_then, BOTTOM_UP_REDUCE (59)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (59)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (59)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_REDUCE (59)
+, Lexique_galgasTemplateScanner::kToken_before, BOTTOM_UP_REDUCE (59)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (59)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (59)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (59)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_REDUCE (59)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (59)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (59)
+, BOTTOM_UP_END
+// State S185 (index = 5661)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_SHIFT (203)
+, BOTTOM_UP_END
+// State S186 (index = 5664)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (65)
+, BOTTOM_UP_END
+// State S187 (index = 5667)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_SHIFT (1)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_SHIFT (2)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_SHIFT (3)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_SHIFT (4)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (76)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_SHIFT (5)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (76)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (76)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_SHIFT (6)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_SHIFT (7)
+, BOTTOM_UP_END
+// State S188 (index = 5688)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_SHIFT (1)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_SHIFT (2)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_SHIFT (3)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_SHIFT (4)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (80)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_SHIFT (5)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_SHIFT (6)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_SHIFT (7)
+, BOTTOM_UP_END
+// State S189 (index = 5705)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (79)
+, BOTTOM_UP_END
+// State S190 (index = 5708)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (25)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (25)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (25)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (25)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (25)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_REDUCE (25)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (25)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (25)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_REDUCE (25)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (25)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (25)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (25)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_REDUCE (25)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (25)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (25)
+, BOTTOM_UP_END
+// State S191 (index = 5739)
+, Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_SHIFT (11)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (12)
+, Lexique_galgasTemplateScanner::kToken_not, BOTTOM_UP_SHIFT (13)
+, Lexique_galgasTemplateScanner::kToken__7E_, BOTTOM_UP_SHIFT (14)
+, Lexique_galgasTemplateScanner::kToken__28_, BOTTOM_UP_SHIFT (15)
+, Lexique_galgasTemplateScanner::kToken_true, BOTTOM_UP_SHIFT (16)
+, Lexique_galgasTemplateScanner::kToken_false, BOTTOM_UP_SHIFT (17)
+, Lexique_galgasTemplateScanner::kToken_literalInt, BOTTOM_UP_SHIFT (18)
+, Lexique_galgasTemplateScanner::kToken_double_2E_xxx, BOTTOM_UP_SHIFT (19)
+, Lexique_galgasTemplateScanner::kToken__27_char_27_, BOTTOM_UP_SHIFT (20)
+, Lexique_galgasTemplateScanner::kToken__22_string_22_, BOTTOM_UP_SHIFT (21)
+, Lexique_galgasTemplateScanner::kToken__5B_, BOTTOM_UP_SHIFT (22)
+, BOTTOM_UP_END
+// State S192 (index = 5764)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_SHIFT (207)
+, BOTTOM_UP_END
+// State S193 (index = 5767)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_SHIFT (1)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_SHIFT (2)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_SHIFT (3)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_SHIFT (4)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (97)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_SHIFT (5)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_SHIFT (6)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (97)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (97)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_SHIFT (7)
+, BOTTOM_UP_END
+// State S194 (index = 5788)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (99)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_SHIFT (209)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (99)
+, BOTTOM_UP_END
+// State S195 (index = 5795)
+, Lexique_galgasTemplateScanner::kToken__28_, BOTTOM_UP_REDUCE (112)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (112)
+, BOTTOM_UP_END
+// State S196 (index = 5800)
+, Lexique_galgasTemplateScanner::kToken__2A_, BOTTOM_UP_REDUCE (118)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (118)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (118)
+, Lexique_galgasTemplateScanner::kToken_literalInt, BOTTOM_UP_REDUCE (118)
+, Lexique_galgasTemplateScanner::kToken__40_type, BOTTOM_UP_REDUCE (118)
+, Lexique_galgasTemplateScanner::kToken_unused, BOTTOM_UP_REDUCE (118)
+, BOTTOM_UP_END
+// State S197 (index = 5813)
+, Lexique_galgasTemplateScanner::kToken__2A_, BOTTOM_UP_SHIFT (211)
+, BOTTOM_UP_END
+// State S198 (index = 5816)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (120)
+, Lexique_galgasTemplateScanner::kToken_unused, BOTTOM_UP_REDUCE (120)
+, BOTTOM_UP_END
+// State S199 (index = 5821)
+, Lexique_galgasTemplateScanner::kToken__2A_, BOTTOM_UP_SHIFT (196)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (121)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (115)
+, Lexique_galgasTemplateScanner::kToken_literalInt, BOTTOM_UP_SHIFT (197)
+, Lexique_galgasTemplateScanner::kToken__40_type, BOTTOM_UP_SHIFT (198)
+, Lexique_galgasTemplateScanner::kToken_unused, BOTTOM_UP_REDUCE (121)
+, BOTTOM_UP_END
+// State S200 (index = 5834)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (122)
+, Lexique_galgasTemplateScanner::kToken_unused, BOTTOM_UP_SHIFT (214)
+, BOTTOM_UP_END
+// State S201 (index = 5839)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (110)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (110)
+, BOTTOM_UP_END
+// State S202 (index = 5844)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (108)
+, BOTTOM_UP_END
+// State S203 (index = 5847)
+, Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (61)
+, Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (61)
+, Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (61)
+, Lexique_galgasTemplateScanner::kToken__3D__3D_, BOTTOM_UP_REDUCE (61)
+, Lexique_galgasTemplateScanner::kToken__21__3D_, BOTTOM_UP_REDUCE (61)
+, Lexique_galgasTemplateScanner::kToken__3C__3D_, BOTTOM_UP_REDUCE (61)
+, Lexique_galgasTemplateScanner::kToken__3E__3D_, BOTTOM_UP_REDUCE (61)
+, Lexique_galgasTemplateScanner::kToken__3E_, BOTTOM_UP_REDUCE (61)
+, Lexique_galgasTemplateScanner::kToken__3C_, BOTTOM_UP_REDUCE (61)
+, Lexique_galgasTemplateScanner::kToken__3C__3C_, BOTTOM_UP_REDUCE (61)
+, Lexique_galgasTemplateScanner::kToken__3E__3E_, BOTTOM_UP_REDUCE (61)
+, Lexique_galgasTemplateScanner::kToken__2B_, BOTTOM_UP_REDUCE (61)
+, Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_REDUCE (61)
+, Lexique_galgasTemplateScanner::kToken__2A_, BOTTOM_UP_REDUCE (61)
+, Lexique_galgasTemplateScanner::kToken__2F_, BOTTOM_UP_REDUCE (61)
+, Lexique_galgasTemplateScanner::kToken_mod, BOTTOM_UP_REDUCE (61)
+, Lexique_galgasTemplateScanner::kToken__2E_, BOTTOM_UP_REDUCE (61)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (61)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (61)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (61)
+, Lexique_galgasTemplateScanner::kToken_is, BOTTOM_UP_REDUCE (61)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (61)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (61)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (61)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (61)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (61)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (61)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (61)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_REDUCE (61)
+, Lexique_galgasTemplateScanner::kToken_then, BOTTOM_UP_REDUCE (61)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (61)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (61)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_REDUCE (61)
+, Lexique_galgasTemplateScanner::kToken_before, BOTTOM_UP_REDUCE (61)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (61)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (61)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (61)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_REDUCE (61)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (61)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (61)
+, BOTTOM_UP_END
+// State S204 (index = 5928)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (74)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_SHIFT (152)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (74)
+, BOTTOM_UP_END
+// State S205 (index = 5935)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (81)
+, BOTTOM_UP_END
+// State S206 (index = 5938)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_SHIFT (217)
+, Lexique_galgasTemplateScanner::kToken_before, BOTTOM_UP_REDUCE (86)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (86)
+, BOTTOM_UP_END
+// State S207 (index = 5945)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (96)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (96)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (96)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (96)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (96)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_REDUCE (96)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_REDUCE (96)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (96)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (96)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_REDUCE (96)
+, BOTTOM_UP_END
+// State S208 (index = 5966)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (98)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (98)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (98)
+, BOTTOM_UP_END
+// State S209 (index = 5973)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_SHIFT (1)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_SHIFT (2)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_SHIFT (3)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_SHIFT (4)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (101)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_SHIFT (5)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_SHIFT (6)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (101)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_SHIFT (7)
+, BOTTOM_UP_END
+// State S210 (index = 5992)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (103)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_SHIFT (221)
+, BOTTOM_UP_END
+// State S211 (index = 5997)
+, Lexique_galgasTemplateScanner::kToken__2A_, BOTTOM_UP_REDUCE (117)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (117)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (117)
+, Lexique_galgasTemplateScanner::kToken_literalInt, BOTTOM_UP_REDUCE (117)
+, Lexique_galgasTemplateScanner::kToken__40_type, BOTTOM_UP_REDUCE (117)
+, Lexique_galgasTemplateScanner::kToken_unused, BOTTOM_UP_REDUCE (117)
+, BOTTOM_UP_END
+// State S212 (index = 6010)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_SHIFT (223)
+, BOTTOM_UP_END
+// State S213 (index = 6013)
+, Lexique_galgasTemplateScanner::kToken__2A_, BOTTOM_UP_SHIFT (196)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (121)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (115)
+, Lexique_galgasTemplateScanner::kToken_literalInt, BOTTOM_UP_SHIFT (197)
+, Lexique_galgasTemplateScanner::kToken__40_type, BOTTOM_UP_SHIFT (198)
+, Lexique_galgasTemplateScanner::kToken_unused, BOTTOM_UP_REDUCE (121)
+, BOTTOM_UP_END
+// State S214 (index = 6026)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (123)
+, BOTTOM_UP_END
+// State S215 (index = 6029)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (225)
+, BOTTOM_UP_END
+// State S216 (index = 6032)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (75)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (75)
+, BOTTOM_UP_END
+// State S217 (index = 6037)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (226)
+, BOTTOM_UP_END
+// State S218 (index = 6040)
+, Lexique_galgasTemplateScanner::kToken_before, BOTTOM_UP_REDUCE (30)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (30)
+, BOTTOM_UP_END
+// State S219 (index = 6045)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_SHIFT (1)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_SHIFT (2)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_SHIFT (3)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_SHIFT (4)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (101)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_SHIFT (5)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_SHIFT (6)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (101)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_SHIFT (7)
+, BOTTOM_UP_END
+// State S220 (index = 6064)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (100)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (100)
+, BOTTOM_UP_END
+// State S221 (index = 6069)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_SHIFT (1)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_SHIFT (2)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_SHIFT (3)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_SHIFT (4)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (105)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_SHIFT (5)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_SHIFT (6)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_SHIFT (7)
+, BOTTOM_UP_END
+// State S222 (index = 6086)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_SHIFT (230)
+, BOTTOM_UP_END
+// State S223 (index = 6089)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (114)
+, BOTTOM_UP_END
+// State S224 (index = 6092)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (116)
+, BOTTOM_UP_END
+// State S225 (index = 6095)
+, Lexique_galgasTemplateScanner::kToken__2A_, BOTTOM_UP_REDUCE (119)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (119)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (119)
+, Lexique_galgasTemplateScanner::kToken_literalInt, BOTTOM_UP_REDUCE (119)
+, Lexique_galgasTemplateScanner::kToken__40_type, BOTTOM_UP_REDUCE (119)
+, Lexique_galgasTemplateScanner::kToken_unused, BOTTOM_UP_REDUCE (119)
+, BOTTOM_UP_END
+// State S226 (index = 6108)
+, Lexique_galgasTemplateScanner::kToken_before, BOTTOM_UP_REDUCE (87)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (87)
+, BOTTOM_UP_END
+// State S227 (index = 6113)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (102)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (102)
+, BOTTOM_UP_END
+// State S228 (index = 6118)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_SHIFT (1)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_SHIFT (2)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_SHIFT (3)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_SHIFT (4)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (105)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_SHIFT (5)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_SHIFT (6)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_SHIFT (7)
+, BOTTOM_UP_END
+// State S229 (index = 6135)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (104)
+, BOTTOM_UP_END
+// State S230 (index = 6138)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (31)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (31)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (31)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (31)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (31)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_REDUCE (31)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (31)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (31)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_REDUCE (31)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (31)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (31)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (31)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_REDUCE (31)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (31)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (31)
+, BOTTOM_UP_END
+// State S231 (index = 6169)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (106)
+, BOTTOM_UP_END} ;
+
+static const uint32_t gActionTableIndex_templateGrammar [232] = {
+  0  // S0
+, 17  // S1
+, 42  // S2
+, 73  // S3
+, 104  // S4
+, 129  // S5
+, 154  // S6
+, 161  // S7
+, 186  // S8
+, 203  // S9
+, 206  // S10
+, 209  // S11
+, 234  // S12
+, 317  // S13
+, 342  // S14
+, 367  // S15
+, 392  // S16
+, 473  // S17
+, 554  // S18
+, 635  // S19
+, 716  // S20
+, 797  // S21
+, 880  // S22
+, 913  // S23
+, 944  // S24
+, 993  // S25
+, 1044  // S26
+, 1107  // S27
+, 1178  // S28
+, 1255  // S29
+, 1336  // S30
+, 1339  // S31
+, 1342  // S32
+, 1345  // S33
+, 1348  // S34
+, 1351  // S35
+, 1356  // S36
+, 1359  // S37
+, 1436  // S38
+, 1445  // S39
+, 1522  // S40
+, 1599  // S41
+, 1602  // S42
+, 1685  // S43
+, 1766  // S44
+, 1791  // S45
+, 1794  // S46
+, 1797  // S47
+, 1802  // S48
+, 1805  // S49
+, 1886  // S50
+, 1911  // S51
+, 1936  // S52
+, 1981  // S53
+, 2006  // S54
+, 2055  // S55
+, 2080  // S56
+, 2105  // S57
+, 2130  // S58
+, 2155  // S59
+, 2180  // S60
+, 2205  // S61
+, 2256  // S62
+, 2281  // S63
+, 2306  // S64
+, 2331  // S65
+, 2356  // S66
+, 2419  // S67
+, 2444  // S68
+, 2469  // S69
+, 2494  // S70
+, 2565  // S71
+, 2568  // S72
+, 2575  // S73
+, 2652  // S74
+, 2669  // S75
+, 2690  // S76
+, 2697  // S77
+, 2702  // S78
+, 2705  // S79
+, 2708  // S80
+, 2733  // S81
+, 2758  // S82
+, 2761  // S83
+, 2766  // S84
+, 2847  // S85
+, 2928  // S86
+, 2931  // S87
+, 2940  // S88
+, 2943  // S89
+, 2946  // S90
+, 2949  // S91
+, 2952  // S92
+, 2961  // S93
+, 3010  // S94
+, 3059  // S95
+, 3110  // S96
+, 3161  // S97
+, 3212  // S98
+, 3263  // S99
+, 3314  // S100
+, 3365  // S101
+, 3416  // S102
+, 3487  // S103
+, 3558  // S104
+, 3629  // S105
+, 3700  // S106
+, 3777  // S107
+, 3854  // S108
+, 3931  // S109
+, 4010  // S110
+, 4013  // S111
+, 4016  // S112
+, 4019  // S113
+, 4022  // S114
+, 4039  // S115
+, 4042  // S116
+, 4063  // S117
+, 4070  // S118
+, 4079  // S119
+, 4088  // S120
+, 4091  // S121
+, 4100  // S122
+, 4117  // S123
+, 4120  // S124
+, 4127  // S125
+, 4130  // S126
+, 4161  // S127
+, 4170  // S128
+, 4179  // S129
+, 4260  // S130
+, 4269  // S131
+, 4272  // S132
+, 4275  // S133
+, 4278  // S134
+, 4281  // S135
+, 4362  // S136
+, 4365  // S137
+, 4410  // S138
+, 4455  // S139
+, 4504  // S140
+, 4567  // S141
+, 4630  // S142
+, 4693  // S143
+, 4756  // S144
+, 4827  // S145
+, 4898  // S146
+, 4969  // S147
+, 5046  // S148
+, 5127  // S149
+, 5130  // S150
+, 5161  // S151
+, 5168  // S152
+, 5193  // S153
+, 5198  // S154
+, 5207  // S155
+, 5216  // S156
+, 5219  // S157
+, 5236  // S158
+, 5239  // S159
+, 5262  // S160
+, 5265  // S161
+, 5270  // S162
+, 5289  // S163
+, 5294  // S164
+, 5299  // S165
+, 5302  // S166
+, 5383  // S167
+, 5392  // S168
+, 5395  // S169
+, 5398  // S170
+, 5479  // S171
+, 5482  // S172
+, 5499  // S173
+, 5502  // S174
+, 5505  // S175
+, 5508  // S176
+, 5511  // S177
+, 5514  // S178
+, 5535  // S179
+, 5542  // S180
+, 5553  // S181
+, 5556  // S182
+, 5575  // S183
+, 5580  // S184
+, 5661  // S185
+, 5664  // S186
+, 5667  // S187
+, 5688  // S188
+, 5705  // S189
+, 5708  // S190
+, 5739  // S191
+, 5764  // S192
+, 5767  // S193
+, 5788  // S194
+, 5795  // S195
+, 5800  // S196
+, 5813  // S197
+, 5816  // S198
+, 5821  // S199
+, 5834  // S200
+, 5839  // S201
+, 5844  // S202
+, 5847  // S203
+, 5928  // S204
+, 5935  // S205
+, 5938  // S206
+, 5945  // S207
+, 5966  // S208
+, 5973  // S209
+, 5992  // S210
+, 5997  // S211
+, 6010  // S212
+, 6013  // S213
+, 6026  // S214
+, 6029  // S215
+, 6032  // S216
+, 6037  // S217
+, 6040  // S218
+, 6045  // S219
+, 6064  // S220
+, 6069  // S221
+, 6086  // S222
+, 6089  // S223
+, 6092  // S224
+, 6095  // S225
+, 6108  // S226
+, 6113  // S227
+, 6118  // S228
+, 6135  // S229
+, 6138  // S230
+, 6169  // S231
+} ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//                                  SLR states successors table                                     
+//
+//--------------------------------------------------------------------------------------------------
+
+// Successor tables handle non terminal successors ;
+// an entry is (non_terminal_symbol, n) ; successor is state n.
+
+static const int32_t gSuccessorTable_templateGrammar_0 [7] = {8, 8,
+  9, 9,
+  29, 10, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_1 [15] = {0, 23,
+  1, 24,
+  2, 25,
+  3, 26,
+  4, 27,
+  5, 28,
+  6, 29, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_4 [15] = {0, 30,
+  1, 24,
+  2, 25,
+  3, 26,
+  4, 27,
+  5, 28,
+  6, 29, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_5 [15] = {0, 31,
+  1, 24,
+  2, 25,
+  3, 26,
+  4, 27,
+  5, 28,
+  6, 29, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_6 [3] = {32, 34, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_7 [15] = {0, 35,
+  1, 24,
+  2, 25,
+  3, 26,
+  4, 27,
+  5, 28,
+  6, 29, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_8 [5] = {8, 8,
+  29, 36, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_11 [5] = {5, 37,
+  6, 29, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_13 [5] = {5, 39,
+  6, 29, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_14 [5] = {5, 40,
+  6, 29, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_15 [15] = {0, 41,
+  1, 24,
+  2, 25,
+  3, 26,
+  4, 27,
+  5, 28,
+  6, 29, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_21 [3] = {19, 43, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_22 [17] = {0, 48,
+  1, 24,
+  2, 25,
+  3, 26,
+  4, 27,
+  5, 28,
+  6, 29,
+  20, 49, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_24 [3] = {13, 52, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_25 [3] = {14, 54, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_26 [3] = {15, 61, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_27 [3] = {16, 66, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_28 [3] = {17, 70, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_29 [3] = {18, 73, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_34 [3] = {11, 77, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_35 [3] = {41, 79, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_38 [5] = {7, 82,
+  23, 83, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_42 [3] = {19, 85, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_44 [15] = {0, 86,
+  1, 24,
+  2, 25,
+  3, 26,
+  4, 27,
+  5, 28,
+  6, 29, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_47 [3] = {21, 91, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_50 [13] = {1, 93,
+  2, 25,
+  3, 26,
+  4, 27,
+  5, 28,
+  6, 29, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_51 [13] = {1, 94,
+  2, 25,
+  3, 26,
+  4, 27,
+  5, 28,
+  6, 29, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_53 [11] = {2, 95,
+  3, 26,
+  4, 27,
+  5, 28,
+  6, 29, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_55 [9] = {3, 96,
+  4, 27,
+  5, 28,
+  6, 29, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_56 [9] = {3, 97,
+  4, 27,
+  5, 28,
+  6, 29, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_57 [9] = {3, 98,
+  4, 27,
+  5, 28,
+  6, 29, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_58 [9] = {3, 99,
+  4, 27,
+  5, 28,
+  6, 29, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_59 [9] = {3, 100,
+  4, 27,
+  5, 28,
+  6, 29, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_60 [9] = {3, 101,
+  4, 27,
+  5, 28,
+  6, 29, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_62 [7] = {4, 102,
+  5, 28,
+  6, 29, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_63 [7] = {4, 103,
+  5, 28,
+  6, 29, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_64 [7] = {4, 104,
+  5, 28,
+  6, 29, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_65 [7] = {4, 105,
+  5, 28,
+  6, 29, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_67 [5] = {5, 106,
+  6, 29, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_68 [5] = {5, 107,
+  6, 29, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_69 [5] = {5, 108,
+  6, 29, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_72 [3] = {22, 113, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_74 [5] = {8, 114,
+  24, 115, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_75 [5] = {8, 116,
+  26, 117, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_76 [3] = {10, 121, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_77 [3] = {33, 123, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_78 [3] = {12, 125, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_80 [15] = {0, 127,
+  1, 24,
+  2, 25,
+  3, 26,
+  4, 27,
+  5, 28,
+  6, 29, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_81 [15] = {0, 128,
+  1, 24,
+  2, 25,
+  3, 26,
+  4, 27,
+  5, 28,
+  6, 29, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_87 [5] = {7, 131,
+  23, 83, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_92 [5] = {7, 136,
+  23, 83, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_93 [3] = {13, 137, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_94 [3] = {13, 138, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_95 [3] = {14, 139, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_102 [3] = {16, 140, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_103 [3] = {16, 141, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_104 [3] = {16, 142, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_105 [3] = {16, 143, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_106 [3] = {17, 144, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_107 [3] = {17, 145, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_108 [3] = {17, 146, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_109 [3] = {18, 147, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_114 [5] = {8, 114,
+  24, 149, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_116 [5] = {8, 116,
+  26, 151, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_117 [3] = {25, 153, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_121 [5] = {10, 155,
+  30, 156, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_122 [5] = {8, 157,
+  34, 158, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_124 [3] = {43, 161, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_127 [3] = {23, 163, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_128 [3] = {23, 164, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_130 [5] = {7, 165,
+  23, 83, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_152 [15] = {0, 171,
+  1, 24,
+  2, 25,
+  3, 26,
+  4, 27,
+  5, 28,
+  6, 29, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_153 [3] = {27, 173, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_155 [5] = {10, 155,
+  30, 174, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_157 [5] = {8, 157,
+  34, 176, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_159 [3] = {35, 178, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_161 [3] = {44, 181, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_162 [5] = {8, 182,
+  42, 183, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_167 [5] = {7, 185,
+  23, 83, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_172 [5] = {8, 188,
+  28, 189, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_178 [5] = {8, 193,
+  36, 194, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_179 [3] = {43, 195, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_180 [5] = {46, 199,
+  47, 200, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_182 [5] = {8, 182,
+  42, 201, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_183 [3] = {41, 202, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_187 [5] = {8, 116,
+  26, 204, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_188 [5] = {8, 188,
+  28, 205, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_191 [15] = {0, 206,
+  1, 24,
+  2, 25,
+  3, 26,
+  4, 27,
+  5, 28,
+  6, 29, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_193 [5] = {8, 193,
+  36, 208, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_194 [3] = {37, 210, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_199 [7] = {45, 212,
+  46, 213,
+  47, 200, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_200 [3] = {48, 215, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_204 [3] = {25, 216, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_206 [3] = {31, 218, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_209 [5] = {8, 219,
+  38, 220, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_210 [3] = {39, 222, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_213 [7] = {45, 224,
+  46, 213,
+  47, 200, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_219 [5] = {8, 219,
+  38, 227, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_221 [5] = {8, 228,
+  40, 229, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_228 [5] = {8, 228,
+  40, 231, -1} ;
+
+static const int32_t * gSuccessorTable_templateGrammar [232] = {
+gSuccessorTable_templateGrammar_0, gSuccessorTable_templateGrammar_1, nullptr, nullptr, 
+  gSuccessorTable_templateGrammar_4, gSuccessorTable_templateGrammar_5, gSuccessorTable_templateGrammar_6, gSuccessorTable_templateGrammar_7, 
+  gSuccessorTable_templateGrammar_8, nullptr, nullptr, gSuccessorTable_templateGrammar_11, 
+  nullptr, gSuccessorTable_templateGrammar_13, gSuccessorTable_templateGrammar_14, gSuccessorTable_templateGrammar_15, 
+  nullptr, nullptr, nullptr, nullptr, 
+  nullptr, gSuccessorTable_templateGrammar_21, gSuccessorTable_templateGrammar_22, nullptr, 
+  gSuccessorTable_templateGrammar_24, gSuccessorTable_templateGrammar_25, gSuccessorTable_templateGrammar_26, gSuccessorTable_templateGrammar_27, 
+  gSuccessorTable_templateGrammar_28, gSuccessorTable_templateGrammar_29, nullptr, nullptr, 
+  nullptr, nullptr, gSuccessorTable_templateGrammar_34, gSuccessorTable_templateGrammar_35, 
+  nullptr, nullptr, gSuccessorTable_templateGrammar_38, nullptr, 
+  nullptr, nullptr, gSuccessorTable_templateGrammar_42, nullptr, 
+  gSuccessorTable_templateGrammar_44, nullptr, nullptr, gSuccessorTable_templateGrammar_47, 
+  nullptr, nullptr, gSuccessorTable_templateGrammar_50, gSuccessorTable_templateGrammar_51, 
+  nullptr, gSuccessorTable_templateGrammar_53, nullptr, gSuccessorTable_templateGrammar_55, 
+  gSuccessorTable_templateGrammar_56, gSuccessorTable_templateGrammar_57, gSuccessorTable_templateGrammar_58, gSuccessorTable_templateGrammar_59, 
+  gSuccessorTable_templateGrammar_60, nullptr, gSuccessorTable_templateGrammar_62, gSuccessorTable_templateGrammar_63, 
+  gSuccessorTable_templateGrammar_64, gSuccessorTable_templateGrammar_65, nullptr, gSuccessorTable_templateGrammar_67, 
+  gSuccessorTable_templateGrammar_68, gSuccessorTable_templateGrammar_69, nullptr, nullptr, 
+  gSuccessorTable_templateGrammar_72, nullptr, gSuccessorTable_templateGrammar_74, gSuccessorTable_templateGrammar_75, 
+  gSuccessorTable_templateGrammar_76, gSuccessorTable_templateGrammar_77, gSuccessorTable_templateGrammar_78, nullptr, 
+  gSuccessorTable_templateGrammar_80, gSuccessorTable_templateGrammar_81, nullptr, nullptr, 
+  nullptr, nullptr, nullptr, gSuccessorTable_templateGrammar_87, 
+  nullptr, nullptr, nullptr, nullptr, 
+  gSuccessorTable_templateGrammar_92, gSuccessorTable_templateGrammar_93, gSuccessorTable_templateGrammar_94, gSuccessorTable_templateGrammar_95, 
+  nullptr, nullptr, nullptr, nullptr, 
+  nullptr, nullptr, gSuccessorTable_templateGrammar_102, gSuccessorTable_templateGrammar_103, 
+  gSuccessorTable_templateGrammar_104, gSuccessorTable_templateGrammar_105, gSuccessorTable_templateGrammar_106, gSuccessorTable_templateGrammar_107, 
+  gSuccessorTable_templateGrammar_108, gSuccessorTable_templateGrammar_109, nullptr, nullptr, 
+  nullptr, nullptr, gSuccessorTable_templateGrammar_114, nullptr, 
+  gSuccessorTable_templateGrammar_116, gSuccessorTable_templateGrammar_117, nullptr, nullptr, 
+  nullptr, gSuccessorTable_templateGrammar_121, gSuccessorTable_templateGrammar_122, nullptr, 
+  gSuccessorTable_templateGrammar_124, nullptr, nullptr, gSuccessorTable_templateGrammar_127, 
+  gSuccessorTable_templateGrammar_128, nullptr, gSuccessorTable_templateGrammar_130, nullptr, 
+  nullptr, nullptr, nullptr, nullptr, 
+  nullptr, nullptr, nullptr, nullptr, 
+  nullptr, nullptr, nullptr, nullptr, 
+  nullptr, nullptr, nullptr, nullptr, 
+  nullptr, nullptr, nullptr, nullptr, 
+  gSuccessorTable_templateGrammar_152, gSuccessorTable_templateGrammar_153, nullptr, gSuccessorTable_templateGrammar_155, 
+  nullptr, gSuccessorTable_templateGrammar_157, nullptr, gSuccessorTable_templateGrammar_159, 
+  nullptr, gSuccessorTable_templateGrammar_161, gSuccessorTable_templateGrammar_162, nullptr, 
+  nullptr, nullptr, nullptr, gSuccessorTable_templateGrammar_167, 
+  nullptr, nullptr, nullptr, nullptr, 
+  gSuccessorTable_templateGrammar_172, nullptr, nullptr, nullptr, 
+  nullptr, nullptr, gSuccessorTable_templateGrammar_178, gSuccessorTable_templateGrammar_179, 
+  gSuccessorTable_templateGrammar_180, nullptr, gSuccessorTable_templateGrammar_182, gSuccessorTable_templateGrammar_183, 
+  nullptr, nullptr, nullptr, gSuccessorTable_templateGrammar_187, 
+  gSuccessorTable_templateGrammar_188, nullptr, nullptr, gSuccessorTable_templateGrammar_191, 
+  nullptr, gSuccessorTable_templateGrammar_193, gSuccessorTable_templateGrammar_194, nullptr, 
+  nullptr, nullptr, nullptr, gSuccessorTable_templateGrammar_199, 
+  gSuccessorTable_templateGrammar_200, nullptr, nullptr, nullptr, 
+  gSuccessorTable_templateGrammar_204, nullptr, gSuccessorTable_templateGrammar_206, nullptr, 
+  nullptr, gSuccessorTable_templateGrammar_209, gSuccessorTable_templateGrammar_210, nullptr, 
+  nullptr, gSuccessorTable_templateGrammar_213, nullptr, nullptr, 
+  nullptr, nullptr, nullptr, gSuccessorTable_templateGrammar_219, 
+  nullptr, gSuccessorTable_templateGrammar_221, nullptr, nullptr, 
+  nullptr, nullptr, nullptr, nullptr, 
+  gSuccessorTable_templateGrammar_228, nullptr, nullptr, nullptr} ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//                Production rules infos (left non terminal, size of right string)                  
+//
+//--------------------------------------------------------------------------------------------------
+
+static const int32_t gProductionsTable_templateGrammar [125 * 2] = {
+  0, 2,
+  1, 2,
+  2, 2,
+  3, 2,
+  4, 2,
+  5, 2,
+  5, 2,
+  5, 2,
+  5, 2,
+  6, 1,
+  6, 3,
+  6, 1,
+  6, 1,
+  6, 1,
+  6, 1,
+  6, 1,
+  6, 2,
+  6, 2,
+  6, 4,
+  6, 4,
+  7, 1,
+  8, 2,
+  8, 1,
+  8, 1,
+  8, 5,
+  8, 7,
+  9, 1,
+  10, 2,
+  10, 1,
+  10, 1,
+  11, 7,
+  8, 10,
+  8, 4,
+  12, 3,
+  13, 0,
+  13, 3,
+  13, 3,
+  14, 0,
+  14, 3,
+  15, 0,
+  15, 2,
+  15, 2,
+  15, 2,
+  15, 2,
+  15, 2,
+  15, 2,
+  16, 0,
+  16, 3,
+  16, 3,
+  16, 3,
+  16, 3,
+  17, 0,
+  17, 3,
+  17, 3,
+  17, 3,
+  18, 0,
+  18, 3,
+  19, 0,
+  19, 2,
+  20, 5,
+  20, 4,
+  20, 6,
+  20, 4,
+  20, 3,
+  21, 3,
+  21, 4,
+  22, 1,
+  22, 1,
+  22, 1,
+  23, 0,
+  23, 3,
+  23, 3,
+  24, 0,
+  24, 2,
+  25, 0,
+  25, 5,
+  26, 0,
+  26, 2,
+  27, 0,
+  27, 2,
+  28, 0,
+  28, 2,
+  29, 0,
+  29, 2,
+  30, 0,
+  30, 2,
+  31, 0,
+  31, 2,
+  32, 0,
+  32, 1,
+  32, 1,
+  33, 0,
+  33, 2,
+  34, 0,
+  34, 2,
+  35, 0,
+  35, 3,
+  36, 0,
+  36, 2,
+  37, 0,
+  37, 2,
+  38, 0,
+  38, 2,
+  39, 0,
+  39, 2,
+  40, 0,
+  40, 2,
+  41, 0,
+  41, 5,
+  42, 0,
+  42, 2,
+  43, 0,
+  43, 3,
+  44, 0,
+  44, 4,
+  45, 0,
+  45, 2,
+  46, 2,
+  46, 1,
+  46, 3,
+  47, 1,
+  47, 0,
+  48, 0,
+  48, 1,
+  49, 1
+} ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//                          'expression_tpl' non terminal implementation                            
+//
+//--------------------------------------------------------------------------------------------------
+
+void cGrammar_templateGrammar::nt_expression_5F_tpl_parse (Lexique_galgasTemplateScanner * inLexique) {
+  if (inLexique->nextProductionIndex () == 0) {
+  rule_templateSyntax_expression_5F_tpl_i0_parse(inLexique) ;
+  }else{
+    inLexique->internalBottomUpParserError (HERE) ;
+  }
+}
+
+void cGrammar_templateGrammar::nt_expression_5F_tpl_indexing (Lexique_galgasTemplateScanner * inLexique) {
+  if (inLexique->nextProductionIndex () == 0) {
+  rule_templateSyntax_expression_5F_tpl_i0_indexing(inLexique) ;
+  }else{
+    inLexique->internalBottomUpParserError (HERE) ;
+  }
+}
+
+void cGrammar_templateGrammar::nt_expression_5F_tpl_ (GGS_templateExpressionAST &  parameter_1,
+                                Lexique_galgasTemplateScanner * inLexique) {
+  if (inLexique->nextProductionIndex () == 0) {
+  rule_templateSyntax_expression_5F_tpl_i0_(parameter_1, inLexique) ;
+  }else{
+    inLexique->internalBottomUpParserError (HERE) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//                        'relation_term_tpl' non terminal implementation                           
+//
+//--------------------------------------------------------------------------------------------------
+
+void cGrammar_templateGrammar::nt_relation_5F_term_5F_tpl_parse (Lexique_galgasTemplateScanner * inLexique) {
+  if (inLexique->nextProductionIndex () == 1) {
+  rule_templateSyntax_relation_5F_term_5F_tpl_i1_parse(inLexique) ;
+  }else{
+    inLexique->internalBottomUpParserError (HERE) ;
+  }
+}
+
+void cGrammar_templateGrammar::nt_relation_5F_term_5F_tpl_indexing (Lexique_galgasTemplateScanner * inLexique) {
+  if (inLexique->nextProductionIndex () == 1) {
+  rule_templateSyntax_relation_5F_term_5F_tpl_i1_indexing(inLexique) ;
+  }else{
+    inLexique->internalBottomUpParserError (HERE) ;
+  }
+}
+
+void cGrammar_templateGrammar::nt_relation_5F_term_5F_tpl_ (GGS_templateExpressionAST &  parameter_1,
+                                Lexique_galgasTemplateScanner * inLexique) {
+  if (inLexique->nextProductionIndex () == 1) {
+  rule_templateSyntax_relation_5F_term_5F_tpl_i1_(parameter_1, inLexique) ;
+  }else{
+    inLexique->internalBottomUpParserError (HERE) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//                       'relation_factor_tpl' non terminal implementation                          
+//
+//--------------------------------------------------------------------------------------------------
+
+void cGrammar_templateGrammar::nt_relation_5F_factor_5F_tpl_parse (Lexique_galgasTemplateScanner * inLexique) {
+  if (inLexique->nextProductionIndex () == 2) {
+  rule_templateSyntax_relation_5F_factor_5F_tpl_i2_parse(inLexique) ;
+  }else{
+    inLexique->internalBottomUpParserError (HERE) ;
+  }
+}
+
+void cGrammar_templateGrammar::nt_relation_5F_factor_5F_tpl_indexing (Lexique_galgasTemplateScanner * inLexique) {
+  if (inLexique->nextProductionIndex () == 2) {
+  rule_templateSyntax_relation_5F_factor_5F_tpl_i2_indexing(inLexique) ;
+  }else{
+    inLexique->internalBottomUpParserError (HERE) ;
+  }
+}
+
+void cGrammar_templateGrammar::nt_relation_5F_factor_5F_tpl_ (GGS_templateExpressionAST &  parameter_1,
+                                Lexique_galgasTemplateScanner * inLexique) {
+  if (inLexique->nextProductionIndex () == 2) {
+  rule_templateSyntax_relation_5F_factor_5F_tpl_i2_(parameter_1, inLexique) ;
+  }else{
+    inLexique->internalBottomUpParserError (HERE) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//                      'simple_expression_tpl' non terminal implementation                         
+//
+//--------------------------------------------------------------------------------------------------
+
+void cGrammar_templateGrammar::nt_simple_5F_expression_5F_tpl_parse (Lexique_galgasTemplateScanner * inLexique) {
+  if (inLexique->nextProductionIndex () == 3) {
+  rule_templateSyntax_simple_5F_expression_5F_tpl_i3_parse(inLexique) ;
+  }else{
+    inLexique->internalBottomUpParserError (HERE) ;
+  }
+}
+
+void cGrammar_templateGrammar::nt_simple_5F_expression_5F_tpl_indexing (Lexique_galgasTemplateScanner * inLexique) {
+  if (inLexique->nextProductionIndex () == 3) {
+  rule_templateSyntax_simple_5F_expression_5F_tpl_i3_indexing(inLexique) ;
+  }else{
+    inLexique->internalBottomUpParserError (HERE) ;
+  }
+}
+
+void cGrammar_templateGrammar::nt_simple_5F_expression_5F_tpl_ (GGS_templateExpressionAST &  parameter_1,
+                                Lexique_galgasTemplateScanner * inLexique) {
+  if (inLexique->nextProductionIndex () == 3) {
+  rule_templateSyntax_simple_5F_expression_5F_tpl_i3_(parameter_1, inLexique) ;
+  }else{
+    inLexique->internalBottomUpParserError (HERE) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//                             'term_tpl' non terminal implementation                               
+//
+//--------------------------------------------------------------------------------------------------
+
+void cGrammar_templateGrammar::nt_term_5F_tpl_parse (Lexique_galgasTemplateScanner * inLexique) {
+  if (inLexique->nextProductionIndex () == 4) {
+  rule_templateSyntax_term_5F_tpl_i4_parse(inLexique) ;
+  }else{
+    inLexique->internalBottomUpParserError (HERE) ;
+  }
+}
+
+void cGrammar_templateGrammar::nt_term_5F_tpl_indexing (Lexique_galgasTemplateScanner * inLexique) {
+  if (inLexique->nextProductionIndex () == 4) {
+  rule_templateSyntax_term_5F_tpl_i4_indexing(inLexique) ;
+  }else{
+    inLexique->internalBottomUpParserError (HERE) ;
+  }
+}
+
+void cGrammar_templateGrammar::nt_term_5F_tpl_ (GGS_templateExpressionAST &  parameter_1,
+                                Lexique_galgasTemplateScanner * inLexique) {
+  if (inLexique->nextProductionIndex () == 4) {
+  rule_templateSyntax_term_5F_tpl_i4_(parameter_1, inLexique) ;
+  }else{
+    inLexique->internalBottomUpParserError (HERE) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//                            'factor_tpl' non terminal implementation                              
+//
+//--------------------------------------------------------------------------------------------------
+
+void cGrammar_templateGrammar::nt_factor_5F_tpl_parse (Lexique_galgasTemplateScanner * inLexique) {
+  switch (inLexique->nextProductionIndex ()) {
+  case 5 :
+      rule_templateSyntax_factor_5F_tpl_i5_parse(inLexique) ;
+    break ;
+  case 6 :
+      rule_templateSyntax_factor_5F_tpl_i6_parse(inLexique) ;
+    break ;
+  case 7 :
+      rule_templateSyntax_factor_5F_tpl_i7_parse(inLexique) ;
+    break ;
+  case 8 :
+      rule_templateSyntax_factor_5F_tpl_i8_parse(inLexique) ;
+    break ;
+  default :
+    inLexique->internalBottomUpParserError (HERE) ;
+    break ;
+  }
+}
+
+void cGrammar_templateGrammar::nt_factor_5F_tpl_indexing (Lexique_galgasTemplateScanner * inLexique) {
+  switch (inLexique->nextProductionIndex ()) {
+  case 5 :
+      rule_templateSyntax_factor_5F_tpl_i5_indexing(inLexique) ;
+    break ;
+  case 6 :
+      rule_templateSyntax_factor_5F_tpl_i6_indexing(inLexique) ;
+    break ;
+  case 7 :
+      rule_templateSyntax_factor_5F_tpl_i7_indexing(inLexique) ;
+    break ;
+  case 8 :
+      rule_templateSyntax_factor_5F_tpl_i8_indexing(inLexique) ;
+    break ;
+  default :
+    inLexique->internalBottomUpParserError (HERE) ;
+    break ;
+  }
+}
+
+void cGrammar_templateGrammar::nt_factor_5F_tpl_ (GGS_templateExpressionAST &  parameter_1,
+                                Lexique_galgasTemplateScanner * inLexique) {
+  switch (inLexique->nextProductionIndex ()) {
+  case 5 :
+      rule_templateSyntax_factor_5F_tpl_i5_(parameter_1, inLexique) ;
+    break ;
+  case 6 :
+      rule_templateSyntax_factor_5F_tpl_i6_(parameter_1, inLexique) ;
+    break ;
+  case 7 :
+      rule_templateSyntax_factor_5F_tpl_i7_(parameter_1, inLexique) ;
+    break ;
+  case 8 :
+      rule_templateSyntax_factor_5F_tpl_i8_(parameter_1, inLexique) ;
+    break ;
+  default :
+    inLexique->internalBottomUpParserError (HERE) ;
+    break ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//                           'primary_tpl' non terminal implementation                              
+//
+//--------------------------------------------------------------------------------------------------
+
+void cGrammar_templateGrammar::nt_primary_5F_tpl_parse (Lexique_galgasTemplateScanner * inLexique) {
+  switch (inLexique->nextProductionIndex ()) {
+  case 9 :
+      rule_templateSyntax_primary_5F_tpl_i9_parse(inLexique) ;
+    break ;
+  case 10 :
+      rule_templateSyntax_primary_5F_tpl_i10_parse(inLexique) ;
+    break ;
+  case 11 :
+      rule_templateSyntax_primary_5F_tpl_i11_parse(inLexique) ;
+    break ;
+  case 12 :
+      rule_templateSyntax_primary_5F_tpl_i12_parse(inLexique) ;
+    break ;
+  case 13 :
+      rule_templateSyntax_primary_5F_tpl_i13_parse(inLexique) ;
+    break ;
+  case 14 :
+      rule_templateSyntax_primary_5F_tpl_i14_parse(inLexique) ;
+    break ;
+  case 15 :
+      rule_templateSyntax_primary_5F_tpl_i15_parse(inLexique) ;
+    break ;
+  case 16 :
+      rule_templateSyntax_primary_5F_tpl_i16_parse(inLexique) ;
+    break ;
+  case 17 :
+      rule_templateSyntax_primary_5F_tpl_i17_parse(inLexique) ;
+    break ;
+  case 18 :
+      rule_templateSyntax_primary_5F_tpl_i18_parse(inLexique) ;
+    break ;
+  case 19 :
+      rule_templateSyntax_primary_5F_tpl_i19_parse(inLexique) ;
+    break ;
+  default :
+    inLexique->internalBottomUpParserError (HERE) ;
+    break ;
+  }
+}
+
+void cGrammar_templateGrammar::nt_primary_5F_tpl_indexing (Lexique_galgasTemplateScanner * inLexique) {
+  switch (inLexique->nextProductionIndex ()) {
+  case 9 :
+      rule_templateSyntax_primary_5F_tpl_i9_indexing(inLexique) ;
+    break ;
+  case 10 :
+      rule_templateSyntax_primary_5F_tpl_i10_indexing(inLexique) ;
+    break ;
+  case 11 :
+      rule_templateSyntax_primary_5F_tpl_i11_indexing(inLexique) ;
+    break ;
+  case 12 :
+      rule_templateSyntax_primary_5F_tpl_i12_indexing(inLexique) ;
+    break ;
+  case 13 :
+      rule_templateSyntax_primary_5F_tpl_i13_indexing(inLexique) ;
+    break ;
+  case 14 :
+      rule_templateSyntax_primary_5F_tpl_i14_indexing(inLexique) ;
+    break ;
+  case 15 :
+      rule_templateSyntax_primary_5F_tpl_i15_indexing(inLexique) ;
+    break ;
+  case 16 :
+      rule_templateSyntax_primary_5F_tpl_i16_indexing(inLexique) ;
+    break ;
+  case 17 :
+      rule_templateSyntax_primary_5F_tpl_i17_indexing(inLexique) ;
+    break ;
+  case 18 :
+      rule_templateSyntax_primary_5F_tpl_i18_indexing(inLexique) ;
+    break ;
+  case 19 :
+      rule_templateSyntax_primary_5F_tpl_i19_indexing(inLexique) ;
+    break ;
+  default :
+    inLexique->internalBottomUpParserError (HERE) ;
+    break ;
+  }
+}
+
+void cGrammar_templateGrammar::nt_primary_5F_tpl_ (GGS_templateExpressionAST &  parameter_1,
+                                Lexique_galgasTemplateScanner * inLexique) {
+  switch (inLexique->nextProductionIndex ()) {
+  case 9 :
+      rule_templateSyntax_primary_5F_tpl_i9_(parameter_1, inLexique) ;
+    break ;
+  case 10 :
+      rule_templateSyntax_primary_5F_tpl_i10_(parameter_1, inLexique) ;
+    break ;
+  case 11 :
+      rule_templateSyntax_primary_5F_tpl_i11_(parameter_1, inLexique) ;
+    break ;
+  case 12 :
+      rule_templateSyntax_primary_5F_tpl_i12_(parameter_1, inLexique) ;
+    break ;
+  case 13 :
+      rule_templateSyntax_primary_5F_tpl_i13_(parameter_1, inLexique) ;
+    break ;
+  case 14 :
+      rule_templateSyntax_primary_5F_tpl_i14_(parameter_1, inLexique) ;
+    break ;
+  case 15 :
+      rule_templateSyntax_primary_5F_tpl_i15_(parameter_1, inLexique) ;
+    break ;
+  case 16 :
+      rule_templateSyntax_primary_5F_tpl_i16_(parameter_1, inLexique) ;
+    break ;
+  case 17 :
+      rule_templateSyntax_primary_5F_tpl_i17_(parameter_1, inLexique) ;
+    break ;
+  case 18 :
+      rule_templateSyntax_primary_5F_tpl_i18_(parameter_1, inLexique) ;
+    break ;
+  case 19 :
+      rule_templateSyntax_primary_5F_tpl_i19_(parameter_1, inLexique) ;
+    break ;
+  default :
+    inLexique->internalBottomUpParserError (HERE) ;
+    break ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//                    'output_expression_list_tpl' non terminal implementation                      
+//
+//--------------------------------------------------------------------------------------------------
+
+void cGrammar_templateGrammar::nt_output_5F_expression_5F_list_5F_tpl_parse (Lexique_galgasTemplateScanner * inLexique) {
+  if (inLexique->nextProductionIndex () == 20) {
+  rule_templateSyntax_output_5F_expression_5F_list_5F_tpl_i20_parse(inLexique) ;
+  }else{
+    inLexique->internalBottomUpParserError (HERE) ;
+  }
+}
+
+void cGrammar_templateGrammar::nt_output_5F_expression_5F_list_5F_tpl_indexing (Lexique_galgasTemplateScanner * inLexique) {
+  if (inLexique->nextProductionIndex () == 20) {
+  rule_templateSyntax_output_5F_expression_5F_list_5F_tpl_i20_indexing(inLexique) ;
+  }else{
+    inLexique->internalBottomUpParserError (HERE) ;
+  }
+}
+
+void cGrammar_templateGrammar::nt_output_5F_expression_5F_list_5F_tpl_ (GGS_templateExpressionListAST &  parameter_1,
+                                Lexique_galgasTemplateScanner * inLexique) {
+  if (inLexique->nextProductionIndex () == 20) {
+  rule_templateSyntax_output_5F_expression_5F_list_5F_tpl_i20_(parameter_1, inLexique) ;
+  }else{
+    inLexique->internalBottomUpParserError (HERE) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//                       'template_instruction' non terminal implementation                         
+//
+//--------------------------------------------------------------------------------------------------
+
+void cGrammar_templateGrammar::nt_template_5F_instruction_parse (Lexique_galgasTemplateScanner * inLexique) {
+  switch (inLexique->nextProductionIndex ()) {
+  case 21 :
+      rule_templateSyntax_template_5F_instruction_i21_parse(inLexique) ;
+    break ;
+  case 22 :
+      rule_templateSyntax_template_5F_instruction_i22_parse(inLexique) ;
+    break ;
+  case 23 :
+      rule_templateSyntax_template_5F_instruction_i23_parse(inLexique) ;
+    break ;
+  case 24 :
+      rule_templateSyntax_template_5F_instruction_i24_parse(inLexique) ;
+    break ;
+  case 25 :
+      rule_templateSyntax_template_5F_instruction_i25_parse(inLexique) ;
+    break ;
+  case 31 :
+      rule_templateSyntax_template_5F_instruction_i31_parse(inLexique) ;
+    break ;
+  case 32 :
+      rule_templateSyntax_template_5F_instruction_i32_parse(inLexique) ;
+    break ;
+  default :
+    inLexique->internalBottomUpParserError (HERE) ;
+    break ;
+  }
+}
+
+void cGrammar_templateGrammar::nt_template_5F_instruction_indexing (Lexique_galgasTemplateScanner * inLexique) {
+  switch (inLexique->nextProductionIndex ()) {
+  case 21 :
+      rule_templateSyntax_template_5F_instruction_i21_indexing(inLexique) ;
+    break ;
+  case 22 :
+      rule_templateSyntax_template_5F_instruction_i22_indexing(inLexique) ;
+    break ;
+  case 23 :
+      rule_templateSyntax_template_5F_instruction_i23_indexing(inLexique) ;
+    break ;
+  case 24 :
+      rule_templateSyntax_template_5F_instruction_i24_indexing(inLexique) ;
+    break ;
+  case 25 :
+      rule_templateSyntax_template_5F_instruction_i25_indexing(inLexique) ;
+    break ;
+  case 31 :
+      rule_templateSyntax_template_5F_instruction_i31_indexing(inLexique) ;
+    break ;
+  case 32 :
+      rule_templateSyntax_template_5F_instruction_i32_indexing(inLexique) ;
+    break ;
+  default :
+    inLexique->internalBottomUpParserError (HERE) ;
+    break ;
+  }
+}
+
+void cGrammar_templateGrammar::nt_template_5F_instruction_ (GGS_templateInstructionListAST &  parameter_1,
+                                Lexique_galgasTemplateScanner * inLexique) {
+  switch (inLexique->nextProductionIndex ()) {
+  case 21 :
+      rule_templateSyntax_template_5F_instruction_i21_(parameter_1, inLexique) ;
+    break ;
+  case 22 :
+      rule_templateSyntax_template_5F_instruction_i22_(parameter_1, inLexique) ;
+    break ;
+  case 23 :
+      rule_templateSyntax_template_5F_instruction_i23_(parameter_1, inLexique) ;
+    break ;
+  case 24 :
+      rule_templateSyntax_template_5F_instruction_i24_(parameter_1, inLexique) ;
+    break ;
+  case 25 :
+      rule_templateSyntax_template_5F_instruction_i25_(parameter_1, inLexique) ;
+    break ;
+  case 31 :
+      rule_templateSyntax_template_5F_instruction_i31_(parameter_1, inLexique) ;
+    break ;
+  case 32 :
+      rule_templateSyntax_template_5F_instruction_i32_(parameter_1, inLexique) ;
+    break ;
+  default :
+    inLexique->internalBottomUpParserError (HERE) ;
+    break ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//                   'template_parser_start_symbol' non terminal implementation                     
+//
+//--------------------------------------------------------------------------------------------------
+
+void cGrammar_templateGrammar::nt_template_5F_parser_5F_start_5F_symbol_parse (Lexique_galgasTemplateScanner * inLexique) {
+  if (inLexique->nextProductionIndex () == 26) {
+  rule_templateSyntax_template_5F_parser_5F_start_5F_symbol_i26_parse(inLexique) ;
+  }else{
+    inLexique->internalBottomUpParserError (HERE) ;
+  }
+}
+
+void cGrammar_templateGrammar::nt_template_5F_parser_5F_start_5F_symbol_indexing (Lexique_galgasTemplateScanner * inLexique) {
+  if (inLexique->nextProductionIndex () == 26) {
+  rule_templateSyntax_template_5F_parser_5F_start_5F_symbol_i26_indexing(inLexique) ;
+  }else{
+    inLexique->internalBottomUpParserError (HERE) ;
+  }
+}
+
+void cGrammar_templateGrammar::nt_template_5F_parser_5F_start_5F_symbol_ (GGS_templateInstructionListAST &  parameter_1,
+                                Lexique_galgasTemplateScanner * inLexique) {
+  if (inLexique->nextProductionIndex () == 26) {
+  rule_templateSyntax_template_5F_parser_5F_start_5F_symbol_i26_(parameter_1, inLexique) ;
+  }else{
+    inLexique->internalBottomUpParserError (HERE) ;
+  }
+}
+
+void cGrammar_templateGrammar::performIndexing (Compiler * inCompiler,
+             const String & inSourceFilePath) {
+  Lexique_galgasTemplateScanner * scanner = nullptr ;
+  macroMyNew (scanner, Lexique_galgasTemplateScanner (inCompiler, inSourceFilePath COMMA_HERE)) ;
+  scanner->enableIndexing () ;
+  if (scanner->sourceText ().isValid ()) {
+    const bool ok = scanner->performBottomUpParsing (gActionTable_templateGrammar, gNonTerminalNames_templateGrammar,
+                                                     gActionTableIndex_templateGrammar, gSuccessorTable_templateGrammar,
+                                                     gProductionsTable_templateGrammar) ;
+    if (ok) {
+      cGrammar_templateGrammar grammar ;
+      grammar.nt_template_5F_parser_5F_start_5F_symbol_indexing (scanner) ;
+    }
+    scanner->generateIndexFile () ;
+  }
+  macroDetachSharedObject (scanner) ;
+}
+
+void cGrammar_templateGrammar::performOnlyLexicalAnalysis (Compiler * inCompiler,
+             const String & inSourceFilePath) {
+  Lexique_galgasTemplateScanner * scanner = nullptr ;
+  macroMyNew (scanner, Lexique_galgasTemplateScanner (inCompiler, inSourceFilePath COMMA_HERE)) ;
+  if (scanner->sourceText ().isValid ()) {
+    scanner->performLexicalAnalysis () ;
+  }
+  macroDetachSharedObject (scanner) ;
+}
+
+void cGrammar_templateGrammar::performOnlySyntaxAnalysis (Compiler * inCompiler,
+             const String & inSourceFilePath) {
+  Lexique_galgasTemplateScanner * scanner = nullptr ;
+  macroMyNew (scanner, Lexique_galgasTemplateScanner (inCompiler, inSourceFilePath COMMA_HERE)) ;
+  if (scanner->sourceText ().isValid ()) {
+    scanner->performBottomUpParsing (gActionTable_templateGrammar, gNonTerminalNames_templateGrammar,
+                                     gActionTableIndex_templateGrammar, gSuccessorTable_templateGrammar,
+                                     gProductionsTable_templateGrammar) ;
+  }
+  macroDetachSharedObject (scanner) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//                              Grammar start symbol implementation                                 
+//
+//--------------------------------------------------------------------------------------------------
+
+void cGrammar_templateGrammar::_performSourceFileParsing_ (Compiler * inCompiler,
+                                GGS_lstring inFilePath,
+                                GGS_templateInstructionListAST &  parameter_1
+                                COMMA_LOCATION_ARGS) {
+  if (inFilePath.isValid ()) {
+    const GGS_string filePathAsString = inFilePath.readProperty_string () ;
+    String filePath = filePathAsString.stringValue () ;
+    if (! FileManager::isAbsolutePath (filePath)) {
+      filePath = inCompiler->sourceFilePath ().deletingLastPathComponent ().appendingPathComponent (filePath) ;
+    }
+    if (FileManager::fileExistsAtPath (filePath)) {
+      Lexique_galgasTemplateScanner * scanner = nullptr ;
+      macroMyNew (scanner, Lexique_galgasTemplateScanner (inCompiler, filePath COMMA_HERE)) ;
+      if (scanner->sourceText ().isValid ()) {
+        const bool ok = scanner->performBottomUpParsing (gActionTable_templateGrammar, gNonTerminalNames_templateGrammar,
+                                                         gActionTableIndex_templateGrammar, gSuccessorTable_templateGrammar,
+                                                         gProductionsTable_templateGrammar) ;
+        if (ok && ! executionModeIsSyntaxAnalysisOnly ()) {
+          cGrammar_templateGrammar grammar ;
+          grammar.nt_template_5F_parser_5F_start_5F_symbol_ (parameter_1, scanner) ;
+        }
+      }else{
+        String message ;
+        message.appendString ("the '") ;
+        message.appendString (filePath) ;
+        message.appendString ("' file exists, but cannot be read") ;
+        const GGS_location errorLocation (inFilePath.readProperty_location ()) ;
+        inCompiler->semanticErrorAtLocation (errorLocation, message, GenericArray <FixItDescription> () COMMA_THERE) ;
+      }
+      macroDetachSharedObject (scanner) ;
+    }else{
+      String message ;
+      message.appendString ("the '") ;
+      message.appendString (filePath) ;
+      message.appendString ("' file does not exist") ;
+      const GGS_location errorLocation (inFilePath.readProperty_location ()) ;
+      inCompiler->semanticErrorAtLocation (errorLocation, message, GenericArray <FixItDescription> () COMMA_THERE) ;
+    }
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void cGrammar_templateGrammar::_performSourceStringParsing_ (Compiler * inCompiler,
+                                GGS_string inSourceString,
+                                GGS_string inNameString,
+                                GGS_templateInstructionListAST &  parameter_1
+                                COMMA_UNUSED_LOCATION_ARGS) {
+  if (inSourceString.isValid () && inNameString.isValid ()) {
+    const String sourceString = inSourceString.stringValue () ;
+    const String nameString = inNameString.stringValue () ;
+    Lexique_galgasTemplateScanner * scanner = nullptr ;
+    macroMyNew (scanner, Lexique_galgasTemplateScanner (inCompiler, sourceString, nameString COMMA_HERE)) ;
+    if (scanner->sourceText ().isValid ()) {
+      const bool ok = scanner->performBottomUpParsing (gActionTable_templateGrammar, gNonTerminalNames_templateGrammar,
+                                                       gActionTableIndex_templateGrammar, gSuccessorTable_templateGrammar,
+                                                       gProductionsTable_templateGrammar) ;
+      if (ok && ! executionModeIsSyntaxAnalysisOnly ()) {
+        cGrammar_templateGrammar grammar ;
+        grammar.nt_template_5F_parser_5F_start_5F_symbol_ (parameter_1, scanner) ;
+      }
+    }
+    macroDetachSharedObject (scanner) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//                     'for_instruction_element' non terminal implementation                        
+//
+//--------------------------------------------------------------------------------------------------
+
+void cGrammar_templateGrammar::nt_for_5F_instruction_5F_element_parse (Lexique_galgasTemplateScanner * inLexique) {
+  switch (inLexique->nextProductionIndex ()) {
+  case 27 :
+      rule_templateSyntax_for_5F_instruction_5F_element_i27_parse(inLexique) ;
+    break ;
+  case 28 :
+      rule_templateSyntax_for_5F_instruction_5F_element_i28_parse(inLexique) ;
+    break ;
+  case 29 :
+      rule_templateSyntax_for_5F_instruction_5F_element_i29_parse(inLexique) ;
+    break ;
+  default :
+    inLexique->internalBottomUpParserError (HERE) ;
+    break ;
+  }
+}
+
+void cGrammar_templateGrammar::nt_for_5F_instruction_5F_element_indexing (Lexique_galgasTemplateScanner * inLexique) {
+  switch (inLexique->nextProductionIndex ()) {
+  case 27 :
+      rule_templateSyntax_for_5F_instruction_5F_element_i27_indexing(inLexique) ;
+    break ;
+  case 28 :
+      rule_templateSyntax_for_5F_instruction_5F_element_i28_indexing(inLexique) ;
+    break ;
+  case 29 :
+      rule_templateSyntax_for_5F_instruction_5F_element_i29_indexing(inLexique) ;
+    break ;
+  default :
+    inLexique->internalBottomUpParserError (HERE) ;
+    break ;
+  }
+}
+
+void cGrammar_templateGrammar::nt_for_5F_instruction_5F_element_ (GGS_lstringlist &  parameter_1,
+                                Lexique_galgasTemplateScanner * inLexique) {
+  switch (inLexique->nextProductionIndex ()) {
+  case 27 :
+      rule_templateSyntax_for_5F_instruction_5F_element_i27_(parameter_1, inLexique) ;
+    break ;
+  case 28 :
+      rule_templateSyntax_for_5F_instruction_5F_element_i28_(parameter_1, inLexique) ;
+    break ;
+  case 29 :
+      rule_templateSyntax_for_5F_instruction_5F_element_i29_(parameter_1, inLexique) ;
+    break ;
+  default :
+    inLexique->internalBottomUpParserError (HERE) ;
+    break ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//                'for_instruction_enumerated_object' non terminal implementation                   
+//
+//--------------------------------------------------------------------------------------------------
+
+void cGrammar_templateGrammar::nt_for_5F_instruction_5F_enumerated_5F_object_parse (Lexique_galgasTemplateScanner * inLexique) {
+  if (inLexique->nextProductionIndex () == 30) {
+  rule_templateSyntax_for_5F_instruction_5F_enumerated_5F_object_i30_parse(inLexique) ;
+  }else{
+    inLexique->internalBottomUpParserError (HERE) ;
+  }
+}
+
+void cGrammar_templateGrammar::nt_for_5F_instruction_5F_enumerated_5F_object_indexing (Lexique_galgasTemplateScanner * inLexique) {
+  if (inLexique->nextProductionIndex () == 30) {
+  rule_templateSyntax_for_5F_instruction_5F_enumerated_5F_object_i30_indexing(inLexique) ;
+  }else{
+    inLexique->internalBottomUpParserError (HERE) ;
+  }
+}
+
+void cGrammar_templateGrammar::nt_for_5F_instruction_5F_enumerated_5F_object_ (GGS_lstringlist &  parameter_1,
+                                GGS_location &  parameter_2,
+                                GGS_templateExpressionAST &  parameter_3,
+                                Lexique_galgasTemplateScanner * inLexique) {
+  if (inLexique->nextProductionIndex () == 30) {
+  rule_templateSyntax_for_5F_instruction_5F_enumerated_5F_object_i30_(parameter_1, parameter_2, parameter_3, inLexique) ;
+  }else{
+    inLexique->internalBottomUpParserError (HERE) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//                           'switch_case' non terminal implementation                              
+//
+//--------------------------------------------------------------------------------------------------
+
+void cGrammar_templateGrammar::nt_switch_5F_case_parse (Lexique_galgasTemplateScanner * inLexique) {
+  if (inLexique->nextProductionIndex () == 33) {
+  rule_templateSyntax_switch_5F_case_i33_parse(inLexique) ;
+  }else{
+    inLexique->internalBottomUpParserError (HERE) ;
+  }
+}
+
+void cGrammar_templateGrammar::nt_switch_5F_case_indexing (Lexique_galgasTemplateScanner * inLexique) {
+  if (inLexique->nextProductionIndex () == 33) {
+  rule_templateSyntax_switch_5F_case_i33_indexing(inLexique) ;
+  }else{
+    inLexique->internalBottomUpParserError (HERE) ;
+  }
+}
+
+void cGrammar_templateGrammar::nt_switch_5F_case_ (GGS__5B_lstring_5D_ &  parameter_1,
+                                GGS_switchExtractedValuesListAST &  parameter_2,
+                                Lexique_galgasTemplateScanner * inLexique) {
+  if (inLexique->nextProductionIndex () == 33) {
+  rule_templateSyntax_switch_5F_case_i33_(parameter_1, parameter_2, inLexique) ;
+  }else{
+    inLexique->internalBottomUpParserError (HERE) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//                     'select_templateSyntax_0' non terminal implementation                        
+//
+//--------------------------------------------------------------------------------------------------
+
+int32_t cGrammar_templateGrammar::select_templateSyntax_0 (Lexique_galgasTemplateScanner * inLexique) {
+// Productions numbers:  34 35 36
+  return inLexique->nextProductionIndex () - 33 ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//                     'select_templateSyntax_1' non terminal implementation                        
+//
+//--------------------------------------------------------------------------------------------------
+
+int32_t cGrammar_templateGrammar::select_templateSyntax_1 (Lexique_galgasTemplateScanner * inLexique) {
+// Productions numbers:  37 38
+  return inLexique->nextProductionIndex () - 36 ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//                     'select_templateSyntax_2' non terminal implementation                        
+//
+//--------------------------------------------------------------------------------------------------
+
+int32_t cGrammar_templateGrammar::select_templateSyntax_2 (Lexique_galgasTemplateScanner * inLexique) {
+// Productions numbers:  39 40 41 42 43 44 45
+  return inLexique->nextProductionIndex () - 38 ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//                     'select_templateSyntax_3' non terminal implementation                        
+//
+//--------------------------------------------------------------------------------------------------
+
+int32_t cGrammar_templateGrammar::select_templateSyntax_3 (Lexique_galgasTemplateScanner * inLexique) {
+// Productions numbers:  46 47 48 49 50
+  return inLexique->nextProductionIndex () - 45 ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//                     'select_templateSyntax_4' non terminal implementation                        
+//
+//--------------------------------------------------------------------------------------------------
+
+int32_t cGrammar_templateGrammar::select_templateSyntax_4 (Lexique_galgasTemplateScanner * inLexique) {
+// Productions numbers:  51 52 53 54
+  return inLexique->nextProductionIndex () - 50 ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//                     'select_templateSyntax_5' non terminal implementation                        
+//
+//--------------------------------------------------------------------------------------------------
+
+int32_t cGrammar_templateGrammar::select_templateSyntax_5 (Lexique_galgasTemplateScanner * inLexique) {
+// Productions numbers:  55 56
+  return inLexique->nextProductionIndex () - 54 ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//                     'select_templateSyntax_6' non terminal implementation                        
+//
+//--------------------------------------------------------------------------------------------------
+
+int32_t cGrammar_templateGrammar::select_templateSyntax_6 (Lexique_galgasTemplateScanner * inLexique) {
+// Productions numbers:  57 58
+  return inLexique->nextProductionIndex () - 56 ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//                     'select_templateSyntax_7' non terminal implementation                        
+//
+//--------------------------------------------------------------------------------------------------
+
+int32_t cGrammar_templateGrammar::select_templateSyntax_7 (Lexique_galgasTemplateScanner * inLexique) {
+// Productions numbers:  59 60 61 62 63
+  return inLexique->nextProductionIndex () - 58 ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//                     'select_templateSyntax_8' non terminal implementation                        
+//
+//--------------------------------------------------------------------------------------------------
+
+int32_t cGrammar_templateGrammar::select_templateSyntax_8 (Lexique_galgasTemplateScanner * inLexique) {
+// Productions numbers:  64 65
+  return inLexique->nextProductionIndex () - 63 ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//                     'select_templateSyntax_9' non terminal implementation                        
+//
+//--------------------------------------------------------------------------------------------------
+
+int32_t cGrammar_templateGrammar::select_templateSyntax_9 (Lexique_galgasTemplateScanner * inLexique) {
+// Productions numbers:  66 67 68
+  return inLexique->nextProductionIndex () - 65 ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//                     'select_templateSyntax_10' non terminal implementation                       
+//
+//--------------------------------------------------------------------------------------------------
+
+int32_t cGrammar_templateGrammar::select_templateSyntax_10 (Lexique_galgasTemplateScanner * inLexique) {
+// Productions numbers:  69 70 71
+  return inLexique->nextProductionIndex () - 68 ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//                     'select_templateSyntax_11' non terminal implementation                       
+//
+//--------------------------------------------------------------------------------------------------
+
+int32_t cGrammar_templateGrammar::select_templateSyntax_11 (Lexique_galgasTemplateScanner * inLexique) {
+// Productions numbers:  72 73
+  return inLexique->nextProductionIndex () - 71 ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//                     'select_templateSyntax_12' non terminal implementation                       
+//
+//--------------------------------------------------------------------------------------------------
+
+int32_t cGrammar_templateGrammar::select_templateSyntax_12 (Lexique_galgasTemplateScanner * inLexique) {
+// Productions numbers:  74 75
+  return inLexique->nextProductionIndex () - 73 ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//                     'select_templateSyntax_13' non terminal implementation                       
+//
+//--------------------------------------------------------------------------------------------------
+
+int32_t cGrammar_templateGrammar::select_templateSyntax_13 (Lexique_galgasTemplateScanner * inLexique) {
+// Productions numbers:  76 77
+  return inLexique->nextProductionIndex () - 75 ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//                     'select_templateSyntax_14' non terminal implementation                       
+//
+//--------------------------------------------------------------------------------------------------
+
+int32_t cGrammar_templateGrammar::select_templateSyntax_14 (Lexique_galgasTemplateScanner * inLexique) {
+// Productions numbers:  78 79
+  return inLexique->nextProductionIndex () - 77 ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//                     'select_templateSyntax_15' non terminal implementation                       
+//
+//--------------------------------------------------------------------------------------------------
+
+int32_t cGrammar_templateGrammar::select_templateSyntax_15 (Lexique_galgasTemplateScanner * inLexique) {
+// Productions numbers:  80 81
+  return inLexique->nextProductionIndex () - 79 ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//                     'select_templateSyntax_16' non terminal implementation                       
+//
+//--------------------------------------------------------------------------------------------------
+
+int32_t cGrammar_templateGrammar::select_templateSyntax_16 (Lexique_galgasTemplateScanner * inLexique) {
+// Productions numbers:  82 83
+  return inLexique->nextProductionIndex () - 81 ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//                     'select_templateSyntax_17' non terminal implementation                       
+//
+//--------------------------------------------------------------------------------------------------
+
+int32_t cGrammar_templateGrammar::select_templateSyntax_17 (Lexique_galgasTemplateScanner * inLexique) {
+// Productions numbers:  84 85
+  return inLexique->nextProductionIndex () - 83 ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//                     'select_templateSyntax_18' non terminal implementation                       
+//
+//--------------------------------------------------------------------------------------------------
+
+int32_t cGrammar_templateGrammar::select_templateSyntax_18 (Lexique_galgasTemplateScanner * inLexique) {
+// Productions numbers:  86 87
+  return inLexique->nextProductionIndex () - 85 ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//                     'select_templateSyntax_19' non terminal implementation                       
+//
+//--------------------------------------------------------------------------------------------------
+
+int32_t cGrammar_templateGrammar::select_templateSyntax_19 (Lexique_galgasTemplateScanner * inLexique) {
+// Productions numbers:  88 89 90
+  return inLexique->nextProductionIndex () - 87 ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//                     'select_templateSyntax_20' non terminal implementation                       
+//
+//--------------------------------------------------------------------------------------------------
+
+int32_t cGrammar_templateGrammar::select_templateSyntax_20 (Lexique_galgasTemplateScanner * inLexique) {
+// Productions numbers:  91 92
+  return inLexique->nextProductionIndex () - 90 ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//                     'select_templateSyntax_21' non terminal implementation                       
+//
+//--------------------------------------------------------------------------------------------------
+
+int32_t cGrammar_templateGrammar::select_templateSyntax_21 (Lexique_galgasTemplateScanner * inLexique) {
+// Productions numbers:  93 94
+  return inLexique->nextProductionIndex () - 92 ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//                     'select_templateSyntax_22' non terminal implementation                       
+//
+//--------------------------------------------------------------------------------------------------
+
+int32_t cGrammar_templateGrammar::select_templateSyntax_22 (Lexique_galgasTemplateScanner * inLexique) {
+// Productions numbers:  95 96
+  return inLexique->nextProductionIndex () - 94 ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//                     'select_templateSyntax_23' non terminal implementation                       
+//
+//--------------------------------------------------------------------------------------------------
+
+int32_t cGrammar_templateGrammar::select_templateSyntax_23 (Lexique_galgasTemplateScanner * inLexique) {
+// Productions numbers:  97 98
+  return inLexique->nextProductionIndex () - 96 ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//                     'select_templateSyntax_24' non terminal implementation                       
+//
+//--------------------------------------------------------------------------------------------------
+
+int32_t cGrammar_templateGrammar::select_templateSyntax_24 (Lexique_galgasTemplateScanner * inLexique) {
+// Productions numbers:  99 100
+  return inLexique->nextProductionIndex () - 98 ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//                     'select_templateSyntax_25' non terminal implementation                       
+//
+//--------------------------------------------------------------------------------------------------
+
+int32_t cGrammar_templateGrammar::select_templateSyntax_25 (Lexique_galgasTemplateScanner * inLexique) {
+// Productions numbers:  101 102
+  return inLexique->nextProductionIndex () - 100 ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//                     'select_templateSyntax_26' non terminal implementation                       
+//
+//--------------------------------------------------------------------------------------------------
+
+int32_t cGrammar_templateGrammar::select_templateSyntax_26 (Lexique_galgasTemplateScanner * inLexique) {
+// Productions numbers:  103 104
+  return inLexique->nextProductionIndex () - 102 ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//                     'select_templateSyntax_27' non terminal implementation                       
+//
+//--------------------------------------------------------------------------------------------------
+
+int32_t cGrammar_templateGrammar::select_templateSyntax_27 (Lexique_galgasTemplateScanner * inLexique) {
+// Productions numbers:  105 106
+  return inLexique->nextProductionIndex () - 104 ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//                     'select_templateSyntax_28' non terminal implementation                       
+//
+//--------------------------------------------------------------------------------------------------
+
+int32_t cGrammar_templateGrammar::select_templateSyntax_28 (Lexique_galgasTemplateScanner * inLexique) {
+// Productions numbers:  107 108
+  return inLexique->nextProductionIndex () - 106 ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//                     'select_templateSyntax_29' non terminal implementation                       
+//
+//--------------------------------------------------------------------------------------------------
+
+int32_t cGrammar_templateGrammar::select_templateSyntax_29 (Lexique_galgasTemplateScanner * inLexique) {
+// Productions numbers:  109 110
+  return inLexique->nextProductionIndex () - 108 ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//                     'select_templateSyntax_30' non terminal implementation                       
+//
+//--------------------------------------------------------------------------------------------------
+
+int32_t cGrammar_templateGrammar::select_templateSyntax_30 (Lexique_galgasTemplateScanner * inLexique) {
+// Productions numbers:  111 112
+  return inLexique->nextProductionIndex () - 110 ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//                     'select_templateSyntax_31' non terminal implementation                       
+//
+//--------------------------------------------------------------------------------------------------
+
+int32_t cGrammar_templateGrammar::select_templateSyntax_31 (Lexique_galgasTemplateScanner * inLexique) {
+// Productions numbers:  113 114
+  return inLexique->nextProductionIndex () - 112 ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//                     'select_templateSyntax_32' non terminal implementation                       
+//
+//--------------------------------------------------------------------------------------------------
+
+int32_t cGrammar_templateGrammar::select_templateSyntax_32 (Lexique_galgasTemplateScanner * inLexique) {
+// Productions numbers:  115 116
+  return inLexique->nextProductionIndex () - 114 ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//                     'select_templateSyntax_33' non terminal implementation                       
+//
+//--------------------------------------------------------------------------------------------------
+
+int32_t cGrammar_templateGrammar::select_templateSyntax_33 (Lexique_galgasTemplateScanner * inLexique) {
+// Productions numbers:  117 118 119
+  return inLexique->nextProductionIndex () - 116 ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//                     'select_templateSyntax_34' non terminal implementation                       
+//
+//--------------------------------------------------------------------------------------------------
+
+int32_t cGrammar_templateGrammar::select_templateSyntax_34 (Lexique_galgasTemplateScanner * inLexique) {
+// Productions numbers:  120 121
+  return inLexique->nextProductionIndex () - 119 ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//                     'select_templateSyntax_35' non terminal implementation                       
+//
+//--------------------------------------------------------------------------------------------------
+
+int32_t cGrammar_templateGrammar::select_templateSyntax_35 (Lexique_galgasTemplateScanner * inLexique) {
+// Productions numbers:  122 123
+  return inLexique->nextProductionIndex () - 121 ;
+}
+
+//--------------------------------------------------------------------------------------------------
 

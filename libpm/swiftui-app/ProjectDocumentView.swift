@@ -48,10 +48,19 @@ struct ProjectDocumentView : View {
 
   @AppStorage("search.string") var mSearchString = ""
   @AppStorage("case.sensitive.search") var mCaseSensitiveSearch = true
+  @AppStorage("recent.searchs") var mRecentSearchData = Data ()
   @State var mSearchMessage = "No Result"
   @State var mSearchResults : [SearchResultNode] = []
   @State var mSelectedSearchResultID : UUID? = nil
   @State var mSearchResultSections : Set <UUID> = []
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  @ObservationTracked var mRecentSearches : [String] {
+    get {
+      return (try? JSONDecoder().decode ([String].self, from: self.mRecentSearchData)) ?? []
+    }
+  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

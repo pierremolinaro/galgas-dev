@@ -440,7 +440,7 @@ proc performGalgas3ProjectGlobalCheckings
       end
     end
   //----- Check Extension getters
-////--- Check that for every abstract extension getter, an overridden extension getter defined in an concrete subclass
+  //--- Check that for every abstract extension getter, an overridden extension getter defined in an concrete subclass
   //--- A given abstract extension getter is defined only once for a class
     for (* mList) in abstractExtensionGetterListMap.dictionary do
       var @extensionGetterMapForGlobalCheckings ExtensionGetterMap = @()

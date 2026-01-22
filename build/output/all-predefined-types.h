@@ -33,11 +33,11 @@
 //--------------------------------------------------------------------------------------------------
 
 class Compiler ;
-class GGS_bool ;
-class GGS_string ;
 class GGS_location ;
-class GGS_stringset ;
+class GGS_string ;
+class GGS_bool ;
 class GGS_uint ;
+class GGS_stringset ;
 class GGS_char ;
 class GGS_uint64 ;
 class GGS_sint ;
@@ -54,37 +54,40 @@ class GGS_timer ;
 class GGS_type ;
 
 //--------------------------------------------------------------------------------------------------
-//  @bool type
+//   @location type
 //--------------------------------------------------------------------------------------------------
 
-enum class GalgasBool {boolNotValid, boolFalse, boolTrue} ;
+#include "LocationInSource.h"
+#include "SourceTextInString.h"
 
 //--------------------------------------------------------------------------------------------------
 
-class GGS_bool : public AC_GALGAS_root {
-//--------------------------------- Private data members
-  private: bool mIsValid ;
-  private: bool mBoolValue ;
+class GGS_location : public AC_GALGAS_root {
+//--------------------------------- Private properties
+  private: class InternalLocation * mInternalLocation ;
 
 //--------------------------------- Accessors
-  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override { return mIsValid ; }
-  public: inline bool isValidAndTrue (void) const { return mIsValid && mBoolValue ; }
-  public: inline bool boolValue (void) const { return mBoolValue ; }
-  public: GalgasBool boolEnum (void) const ;
-
-//--------------------------------- Drop
-  public: VIRTUAL_IN_DEBUG inline void drop (void) override { mIsValid = false ; }
+  public: VIRTUAL_IN_DEBUG bool isValid (void) const override ;
+  public: VIRTUAL_IN_DEBUG bool isValidAndNotNowhere (void) const ;
+  public: VIRTUAL_IN_DEBUG void drop (void) override ;
+  public: LocationInSource startLocation (void) const ;
+  public: LocationInSource endLocation (void) const ;
+  public: SourceTextInString sourceText (void) const ;
 
 //--------------------------------- Default constructor
-  public: GGS_bool (void) ;
+  public: GGS_location (void) ;
 
-//--------------------------------- Native constructors
-  public: GGS_bool (const bool inValue) ; // Is built
-  public: GGS_bool (const bool inBuilt, const bool inValue) ;
+//--------------------------------- Handle copy
+  public: GGS_location (const GGS_location & inSource) ;
+  public: GGS_location & operator = (const GGS_location & inSource) ;
 
-//--------------------------------- Constructor for comparison result
-  public: GGS_bool (const ComparisonKind inComparisonKind,
-                    const ComparisonResult inComparisonResult) ;
+//--------------------------------- Destructor
+  public: virtual ~ GGS_location (void) ;
+
+//--------------------------------- Native constructor
+  public: GGS_location (const LocationInSource & inStartLocationInSource,
+                        const LocationInSource & inEndLocationInSource,
+                        const SourceTextInString & inSourceText) ;
 
 //-- Start of type generic part
 
@@ -94,30 +97,27 @@ class GGS_bool : public AC_GALGAS_root {
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
 //--------------------------------- Object extraction
-  public: static GGS_bool extractObject (const GGS_object & inObject,
-                                         Compiler * inCompiler
-                                         COMMA_LOCATION_ARGS) ;
+  public: static GGS_location extractObject (const GGS_object & inObject,
+                                             Compiler * inCompiler
+                                             COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- & operator
-  public: VIRTUAL_IN_DEBUG GGS_bool operator_and (const GGS_bool & inOperand
-                                                  COMMA_LOCATION_ARGS) const ;
+//--------------------------------- GALGAS class functions
+  public: static class GGS_location class_func_here (Compiler * inCompiler
+                                                     COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- | operator
-  public: VIRTUAL_IN_DEBUG GGS_bool operator_or (const GGS_bool & inOperand
-                                                 COMMA_LOCATION_ARGS) const ;
+  public: static class GGS_location class_func_next (Compiler * inCompiler
+                                                     COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- ^ operator
-  public: VIRTUAL_IN_DEBUG GGS_bool operator_xor (const GGS_bool & inOperand
-                                                  COMMA_LOCATION_ARGS) const ;
+  public: static class GGS_location class_func_nowhere (LOCATION_ARGS) ;
 
-//--------------------------------- not operator
-  public: VIRTUAL_IN_DEBUG GGS_bool operator_not (LOCATION_ARGS) const ;
+  public: static class GGS_location class_func_separator (Compiler * inCompiler
+                                                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
   public: VIRTUAL_IN_DEBUG void description (String & ioString,
                                              const int32_t inIndentation) const override ;
 //--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GGS_bool & inOperand) const ;
+  public: ComparisonResult objectCompare (const GGS_location & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -125,19 +125,38 @@ class GGS_bool : public AC_GALGAS_root {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
-  public: VIRTUAL_IN_DEBUG class GGS_bigint getter_bigint (LOCATION_ARGS) const ;
+  public: VIRTUAL_IN_DEBUG class GGS_uint getter_endColumn (Compiler * inCompiler
+                                                            COMMA_LOCATION_ARGS) const ;
 
-  public: VIRTUAL_IN_DEBUG class GGS_string getter_cString (LOCATION_ARGS) const ;
+  public: VIRTUAL_IN_DEBUG class GGS_uint getter_endLine (Compiler * inCompiler
+                                                          COMMA_LOCATION_ARGS) const ;
 
-  public: VIRTUAL_IN_DEBUG class GGS_string getter_ocString (LOCATION_ARGS) const ;
+  public: VIRTUAL_IN_DEBUG class GGS_uint getter_endLocationIndex (Compiler * inCompiler
+                                                                   COMMA_LOCATION_ARGS) const ;
 
-  public: VIRTUAL_IN_DEBUG class GGS_sint getter_sint (LOCATION_ARGS) const ;
+  public: VIRTUAL_IN_DEBUG class GGS_string getter_endLocationString (Compiler * inCompiler
+                                                                      COMMA_LOCATION_ARGS) const ;
 
-  public: VIRTUAL_IN_DEBUG class GGS_sint_36__34_ getter_sint_36__34_ (LOCATION_ARGS) const ;
+  public: VIRTUAL_IN_DEBUG class GGS_string getter_file (Compiler * inCompiler
+                                                         COMMA_LOCATION_ARGS) const ;
 
-  public: VIRTUAL_IN_DEBUG class GGS_uint getter_uint (LOCATION_ARGS) const ;
+  public: VIRTUAL_IN_DEBUG class GGS_bool getter_isNowhere (LOCATION_ARGS) const ;
 
-  public: VIRTUAL_IN_DEBUG class GGS_uint_36__34_ getter_uint_36__34_ (LOCATION_ARGS) const ;
+  public: VIRTUAL_IN_DEBUG class GGS_uint getter_startColumn (Compiler * inCompiler
+                                                              COMMA_LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GGS_uint getter_startLine (Compiler * inCompiler
+                                                            COMMA_LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GGS_uint getter_startLocationIndex (Compiler * inCompiler
+                                                                     COMMA_LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GGS_string getter_startLocationString (Compiler * inCompiler
+                                                                        COMMA_LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GGS_location getter_union (const class GGS_location & constinOperand0,
+                                                            Compiler * inCompiler
+                                                            COMMA_LOCATION_ARGS) const ;
 
 
 //--------------------------------- Read subscripts
@@ -150,7 +169,7 @@ class GGS_bool : public AC_GALGAS_root {
 
 //--------------------------------------------------------------------------------------------------
 
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_bool ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_location ;
 
 //--------------------------------------------------------------------------------------------------
 //   @string type
@@ -593,40 +612,37 @@ class GGS_string : public AC_GALGAS_root {
 extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_string ;
 
 //--------------------------------------------------------------------------------------------------
-//   @location type
+//  @bool type
 //--------------------------------------------------------------------------------------------------
 
-#include "LocationInSource.h"
-#include "SourceTextInString.h"
+enum class GalgasBool {boolNotValid, boolFalse, boolTrue} ;
 
 //--------------------------------------------------------------------------------------------------
 
-class GGS_location : public AC_GALGAS_root {
-//--------------------------------- Private properties
-  private: class InternalLocation * mInternalLocation ;
+class GGS_bool : public AC_GALGAS_root {
+//--------------------------------- Private data members
+  private: bool mIsValid ;
+  private: bool mBoolValue ;
 
 //--------------------------------- Accessors
-  public: VIRTUAL_IN_DEBUG bool isValid (void) const override ;
-  public: VIRTUAL_IN_DEBUG bool isValidAndNotNowhere (void) const ;
-  public: VIRTUAL_IN_DEBUG void drop (void) override ;
-  public: LocationInSource startLocation (void) const ;
-  public: LocationInSource endLocation (void) const ;
-  public: SourceTextInString sourceText (void) const ;
+  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override { return mIsValid ; }
+  public: inline bool isValidAndTrue (void) const { return mIsValid && mBoolValue ; }
+  public: inline bool boolValue (void) const { return mBoolValue ; }
+  public: GalgasBool boolEnum (void) const ;
+
+//--------------------------------- Drop
+  public: VIRTUAL_IN_DEBUG inline void drop (void) override { mIsValid = false ; }
 
 //--------------------------------- Default constructor
-  public: GGS_location (void) ;
+  public: GGS_bool (void) ;
 
-//--------------------------------- Handle copy
-  public: GGS_location (const GGS_location & inSource) ;
-  public: GGS_location & operator = (const GGS_location & inSource) ;
+//--------------------------------- Native constructors
+  public: GGS_bool (const bool inValue) ; // Is built
+  public: GGS_bool (const bool inBuilt, const bool inValue) ;
 
-//--------------------------------- Destructor
-  public: virtual ~ GGS_location (void) ;
-
-//--------------------------------- Native constructor
-  public: GGS_location (const LocationInSource & inStartLocationInSource,
-                        const LocationInSource & inEndLocationInSource,
-                        const SourceTextInString & inSourceText) ;
+//--------------------------------- Constructor for comparison result
+  public: GGS_bool (const ComparisonKind inComparisonKind,
+                    const ComparisonResult inComparisonResult) ;
 
 //-- Start of type generic part
 
@@ -636,27 +652,30 @@ class GGS_location : public AC_GALGAS_root {
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
 //--------------------------------- Object extraction
-  public: static GGS_location extractObject (const GGS_object & inObject,
-                                             Compiler * inCompiler
-                                             COMMA_LOCATION_ARGS) ;
+  public: static GGS_bool extractObject (const GGS_object & inObject,
+                                         Compiler * inCompiler
+                                         COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- GALGAS class functions
-  public: static class GGS_location class_func_here (Compiler * inCompiler
-                                                     COMMA_LOCATION_ARGS) ;
+//--------------------------------- & operator
+  public: VIRTUAL_IN_DEBUG GGS_bool operator_and (const GGS_bool & inOperand
+                                                  COMMA_LOCATION_ARGS) const ;
 
-  public: static class GGS_location class_func_next (Compiler * inCompiler
-                                                     COMMA_LOCATION_ARGS) ;
+//--------------------------------- | operator
+  public: VIRTUAL_IN_DEBUG GGS_bool operator_or (const GGS_bool & inOperand
+                                                 COMMA_LOCATION_ARGS) const ;
 
-  public: static class GGS_location class_func_nowhere (LOCATION_ARGS) ;
+//--------------------------------- ^ operator
+  public: VIRTUAL_IN_DEBUG GGS_bool operator_xor (const GGS_bool & inOperand
+                                                  COMMA_LOCATION_ARGS) const ;
 
-  public: static class GGS_location class_func_separator (Compiler * inCompiler
-                                                          COMMA_LOCATION_ARGS) ;
+//--------------------------------- not operator
+  public: VIRTUAL_IN_DEBUG GGS_bool operator_not (LOCATION_ARGS) const ;
 
 //--------------------------------- Implementation of getter 'description'
   public: VIRTUAL_IN_DEBUG void description (String & ioString,
                                              const int32_t inIndentation) const override ;
 //--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GGS_location & inOperand) const ;
+  public: ComparisonResult objectCompare (const GGS_bool & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -664,38 +683,19 @@ class GGS_location : public AC_GALGAS_root {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
-  public: VIRTUAL_IN_DEBUG class GGS_uint getter_endColumn (Compiler * inCompiler
-                                                            COMMA_LOCATION_ARGS) const ;
+  public: VIRTUAL_IN_DEBUG class GGS_bigint getter_bigint (LOCATION_ARGS) const ;
 
-  public: VIRTUAL_IN_DEBUG class GGS_uint getter_endLine (Compiler * inCompiler
-                                                          COMMA_LOCATION_ARGS) const ;
+  public: VIRTUAL_IN_DEBUG class GGS_string getter_cString (LOCATION_ARGS) const ;
 
-  public: VIRTUAL_IN_DEBUG class GGS_uint getter_endLocationIndex (Compiler * inCompiler
-                                                                   COMMA_LOCATION_ARGS) const ;
+  public: VIRTUAL_IN_DEBUG class GGS_string getter_ocString (LOCATION_ARGS) const ;
 
-  public: VIRTUAL_IN_DEBUG class GGS_string getter_endLocationString (Compiler * inCompiler
-                                                                      COMMA_LOCATION_ARGS) const ;
+  public: VIRTUAL_IN_DEBUG class GGS_sint getter_sint (LOCATION_ARGS) const ;
 
-  public: VIRTUAL_IN_DEBUG class GGS_string getter_file (Compiler * inCompiler
-                                                         COMMA_LOCATION_ARGS) const ;
+  public: VIRTUAL_IN_DEBUG class GGS_sint_36__34_ getter_sint_36__34_ (LOCATION_ARGS) const ;
 
-  public: VIRTUAL_IN_DEBUG class GGS_bool getter_isNowhere (LOCATION_ARGS) const ;
+  public: VIRTUAL_IN_DEBUG class GGS_uint getter_uint (LOCATION_ARGS) const ;
 
-  public: VIRTUAL_IN_DEBUG class GGS_uint getter_startColumn (Compiler * inCompiler
-                                                              COMMA_LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG class GGS_uint getter_startLine (Compiler * inCompiler
-                                                            COMMA_LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG class GGS_uint getter_startLocationIndex (Compiler * inCompiler
-                                                                     COMMA_LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG class GGS_string getter_startLocationString (Compiler * inCompiler
-                                                                        COMMA_LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG class GGS_location getter_union (const class GGS_location & constinOperand0,
-                                                            Compiler * inCompiler
-                                                            COMMA_LOCATION_ARGS) const ;
+  public: VIRTUAL_IN_DEBUG class GGS_uint_36__34_ getter_uint_36__34_ (LOCATION_ARGS) const ;
 
 
 //--------------------------------- Read subscripts
@@ -708,7 +708,234 @@ class GGS_location : public AC_GALGAS_root {
 
 //--------------------------------------------------------------------------------------------------
 
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_location ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_bool ;
+
+//--------------------------------------------------------------------------------------------------
+//   @uint type
+//--------------------------------------------------------------------------------------------------
+
+class GGS_uint : public AC_GALGAS_root {
+//--------------------------------- Private data members
+  private: bool mIsValid ;
+  private: uint32_t mUIntValue ;
+
+//--------------------------------- Accessors
+  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override { return mIsValid ; }
+  public: VIRTUAL_IN_DEBUG inline void drop (void) override { mIsValid = false ; }
+  public: inline uint32_t uintValue (void) const { return mUIntValue ; }
+  public: inline void increment (void) { mUIntValue += 1 ; }
+
+//--------------------------------- Default constructor
+  public: GGS_uint (void) ;
+
+//--------------------------------- Native constructors
+  public: GGS_uint (const uint32_t inValue) ;
+  public: GGS_uint (const bool inValid, const uint32_t inValue) ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GGS_uint extractObject (const GGS_object & inObject,
+                                         Compiler * inCompiler
+                                         COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS class functions
+  public: static class GGS_uint class_func_compilationMode (LOCATION_ARGS) ;
+
+  public: static class GGS_uint class_func_errorCount (LOCATION_ARGS) ;
+
+  public: static class GGS_uint class_func_max (LOCATION_ARGS) ;
+
+  public: static class GGS_uint class_func_random (LOCATION_ARGS) ;
+
+  public: static class GGS_uint class_func_valueWithMask (const class GGS_uint & inOperand0,
+                                                          const class GGS_uint & inOperand1,
+                                                          class Compiler * inCompiler
+                                                          COMMA_LOCATION_ARGS) ;
+
+  public: static class GGS_uint class_func_warningCount (LOCATION_ARGS) ;
+
+//--------------------------------- << and >> shift operators
+  public: VIRTUAL_IN_DEBUG GGS_uint left_shift_operation (const GGS_uint inShiftOperand,
+                                                          class Compiler * inCompiler
+                                                          COMMA_LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG GGS_uint left_shift_operation (const GGS_bigint inShiftOperand,
+                                                          class Compiler * inCompiler
+                                                          COMMA_LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG GGS_uint right_shift_operation (const GGS_uint inShiftOperand,
+                                                           class Compiler * inCompiler
+                                                           COMMA_LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG GGS_uint right_shift_operation (const GGS_bigint inShiftOperand,
+                                                           class Compiler * inCompiler
+                                                           COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- += operator (with expression)
+  public: VIRTUAL_IN_DEBUG void plusAssignOperation (const GGS_uint inOperand,
+                                                     class Compiler * inCompiler
+                                                     COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- -= operator (with expression)
+  public: VIRTUAL_IN_DEBUG void minusAssignOperation (const GGS_uint inOperand,
+                                                      class Compiler * inCompiler
+                                                      COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- *= operator (with expression)
+  public: VIRTUAL_IN_DEBUG void mulAssignOperation (const GGS_uint inOperand,
+                                                    class Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- /= operator (with expression)
+  public: VIRTUAL_IN_DEBUG void divAssignOperation (const GGS_uint inOperand,
+                                                    class Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- & operator
+  public: VIRTUAL_IN_DEBUG GGS_uint operator_and (const GGS_uint & inOperand
+                                                  COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- | operator
+  public: VIRTUAL_IN_DEBUG GGS_uint operator_or (const GGS_uint & inOperand
+                                                 COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- ^ operator
+  public: VIRTUAL_IN_DEBUG GGS_uint operator_xor (const GGS_uint & inOperand
+                                                  COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- ~ operator
+  public: VIRTUAL_IN_DEBUG GGS_uint operator_tilde (LOCATION_ARGS) const ;
+
+//--------------------------------- + operator
+  public: VIRTUAL_IN_DEBUG GGS_uint add_operation (const GGS_uint & inOperand,
+                                                   Compiler * inCompiler
+                                                   COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- &+ operator
+  public: VIRTUAL_IN_DEBUG GGS_uint add_operation_no_ovf (const GGS_uint & inOperand) const ;
+
+//--------------------------------- &- operator
+  public: VIRTUAL_IN_DEBUG GGS_uint substract_operation_no_ovf (const GGS_uint & inOperand) const ;
+
+//--------------------------------- - operator
+  public: VIRTUAL_IN_DEBUG GGS_uint substract_operation (const GGS_uint & inOperand,
+                                                         Compiler * inCompiler
+                                                         COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- * operator
+  public: VIRTUAL_IN_DEBUG GGS_uint multiply_operation (const GGS_uint & inOperand,
+                                                        Compiler * inCompiler
+                                                        COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- &* operator
+  public: VIRTUAL_IN_DEBUG GGS_uint multiply_operation_no_ovf (const GGS_uint & inOperand) const ;
+
+//--------------------------------- / operator
+  public: VIRTUAL_IN_DEBUG GGS_uint divide_operation (const GGS_uint & inOperand,
+                                                      Compiler * inCompiler
+                                                      COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- &/ operator
+  public: VIRTUAL_IN_DEBUG GGS_uint divide_operation_no_ovf (const GGS_uint & inOperand) const ;
+
+//--------------------------------- mod operator
+  public: VIRTUAL_IN_DEBUG GGS_uint modulo_operation (const GGS_uint & inOperand,
+                                                      Compiler * inCompiler
+                                                      COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- ++, -- operators
+  public: VIRTUAL_IN_DEBUG void increment_operation (Compiler * inCompiler
+                                                     COMMA_LOCATION_ARGS) ;
+
+  public: VIRTUAL_IN_DEBUG void decrement_operation (Compiler * inCompiler
+                                                     COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- &++, &-- operators
+  public: VIRTUAL_IN_DEBUG void increment_operation_no_overflow (void) ;
+
+  public: VIRTUAL_IN_DEBUG void decrement_operation_no_overflow (void) ;
+
+//--------------------------------- Implementation of getter 'description'
+  public: VIRTUAL_IN_DEBUG void description (String & ioString,
+                                             const int32_t inIndentation) const override ;
+//--------------------------------- Comparison
+  public: ComparisonResult objectCompare (const GGS_uint & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+  public: static void class_method_setRandomSeed (class GGS_uint constinArgument0
+                                                  COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- Getters
+  public: VIRTUAL_IN_DEBUG class GGS_string getter_alphaString (LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GGS_bigint getter_bigint (LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GGS_bool getter_canAdd (const class GGS_uint & constinOperand0
+                                                         COMMA_LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GGS_bool getter_canDivide (const class GGS_uint & constinOperand0
+                                                            COMMA_LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GGS_bool getter_canMultiply (const class GGS_uint & constinOperand0
+                                                              COMMA_LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GGS_bool getter_canSubstract (const class GGS_uint & constinOperand0
+                                                               COMMA_LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GGS_double getter_double (LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GGS_string getter_hexString (LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GGS_string getter_hexStringSeparatedBy (const class GGS_char & constinOperand0,
+                                                                         const class GGS_uint & constinOperand1,
+                                                                         Compiler * inCompiler
+                                                                         COMMA_LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GGS_bool getter_isInRange (const class GGS_range & constinOperand0
+                                                            COMMA_LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GGS_bool getter_isUnicodeValueAssigned (LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GGS_uint getter_lsbIndex (Compiler * inCompiler
+                                                           COMMA_LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GGS_uint getter_oneBitCount (LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GGS_uint getter_significantBitCount (LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GGS_sint getter_sint (Compiler * inCompiler
+                                                       COMMA_LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GGS_sint_36__34_ getter_sint_36__34_ (LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GGS_string getter_string (LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GGS_uint_36__34_ getter_uint_36__34_ (LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GGS_string getter_xString (LOCATION_ARGS) const ;
+
+
+//--------------------------------- Read subscripts
+
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
+ 
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_uint ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @stringset
@@ -976,233 +1203,6 @@ class GGS_stringset : public AC_GALGAS_root {
 //--------------------------------------------------------------------------------------------------
 
 extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_stringset ;
-
-//--------------------------------------------------------------------------------------------------
-//   @uint type
-//--------------------------------------------------------------------------------------------------
-
-class GGS_uint : public AC_GALGAS_root {
-//--------------------------------- Private data members
-  private: bool mIsValid ;
-  private: uint32_t mUIntValue ;
-
-//--------------------------------- Accessors
-  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override { return mIsValid ; }
-  public: VIRTUAL_IN_DEBUG inline void drop (void) override { mIsValid = false ; }
-  public: inline uint32_t uintValue (void) const { return mUIntValue ; }
-  public: inline void increment (void) { mUIntValue += 1 ; }
-
-//--------------------------------- Default constructor
-  public: GGS_uint (void) ;
-
-//--------------------------------- Native constructors
-  public: GGS_uint (const uint32_t inValue) ;
-  public: GGS_uint (const bool inValid, const uint32_t inValue) ;
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
-//--------------------------------- Object extraction
-  public: static GGS_uint extractObject (const GGS_object & inObject,
-                                         Compiler * inCompiler
-                                         COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS class functions
-  public: static class GGS_uint class_func_compilationMode (LOCATION_ARGS) ;
-
-  public: static class GGS_uint class_func_errorCount (LOCATION_ARGS) ;
-
-  public: static class GGS_uint class_func_max (LOCATION_ARGS) ;
-
-  public: static class GGS_uint class_func_random (LOCATION_ARGS) ;
-
-  public: static class GGS_uint class_func_valueWithMask (const class GGS_uint & inOperand0,
-                                                          const class GGS_uint & inOperand1,
-                                                          class Compiler * inCompiler
-                                                          COMMA_LOCATION_ARGS) ;
-
-  public: static class GGS_uint class_func_warningCount (LOCATION_ARGS) ;
-
-//--------------------------------- << and >> shift operators
-  public: VIRTUAL_IN_DEBUG GGS_uint left_shift_operation (const GGS_uint inShiftOperand,
-                                                          class Compiler * inCompiler
-                                                          COMMA_LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG GGS_uint left_shift_operation (const GGS_bigint inShiftOperand,
-                                                          class Compiler * inCompiler
-                                                          COMMA_LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG GGS_uint right_shift_operation (const GGS_uint inShiftOperand,
-                                                           class Compiler * inCompiler
-                                                           COMMA_LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG GGS_uint right_shift_operation (const GGS_bigint inShiftOperand,
-                                                           class Compiler * inCompiler
-                                                           COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- += operator (with expression)
-  public: VIRTUAL_IN_DEBUG void plusAssignOperation (const GGS_uint inOperand,
-                                                     class Compiler * inCompiler
-                                                     COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- -= operator (with expression)
-  public: VIRTUAL_IN_DEBUG void minusAssignOperation (const GGS_uint inOperand,
-                                                      class Compiler * inCompiler
-                                                      COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- *= operator (with expression)
-  public: VIRTUAL_IN_DEBUG void mulAssignOperation (const GGS_uint inOperand,
-                                                    class Compiler * inCompiler
-                                                    COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- /= operator (with expression)
-  public: VIRTUAL_IN_DEBUG void divAssignOperation (const GGS_uint inOperand,
-                                                    class Compiler * inCompiler
-                                                    COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- & operator
-  public: VIRTUAL_IN_DEBUG GGS_uint operator_and (const GGS_uint & inOperand
-                                                  COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- | operator
-  public: VIRTUAL_IN_DEBUG GGS_uint operator_or (const GGS_uint & inOperand
-                                                 COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- ^ operator
-  public: VIRTUAL_IN_DEBUG GGS_uint operator_xor (const GGS_uint & inOperand
-                                                  COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- ~ operator
-  public: VIRTUAL_IN_DEBUG GGS_uint operator_tilde (LOCATION_ARGS) const ;
-
-//--------------------------------- + operator
-  public: VIRTUAL_IN_DEBUG GGS_uint add_operation (const GGS_uint & inOperand,
-                                                   Compiler * inCompiler
-                                                   COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- &+ operator
-  public: VIRTUAL_IN_DEBUG GGS_uint add_operation_no_ovf (const GGS_uint & inOperand) const ;
-
-//--------------------------------- &- operator
-  public: VIRTUAL_IN_DEBUG GGS_uint substract_operation_no_ovf (const GGS_uint & inOperand) const ;
-
-//--------------------------------- - operator
-  public: VIRTUAL_IN_DEBUG GGS_uint substract_operation (const GGS_uint & inOperand,
-                                                         Compiler * inCompiler
-                                                         COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- * operator
-  public: VIRTUAL_IN_DEBUG GGS_uint multiply_operation (const GGS_uint & inOperand,
-                                                        Compiler * inCompiler
-                                                        COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- &* operator
-  public: VIRTUAL_IN_DEBUG GGS_uint multiply_operation_no_ovf (const GGS_uint & inOperand) const ;
-
-//--------------------------------- / operator
-  public: VIRTUAL_IN_DEBUG GGS_uint divide_operation (const GGS_uint & inOperand,
-                                                      Compiler * inCompiler
-                                                      COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- &/ operator
-  public: VIRTUAL_IN_DEBUG GGS_uint divide_operation_no_ovf (const GGS_uint & inOperand) const ;
-
-//--------------------------------- mod operator
-  public: VIRTUAL_IN_DEBUG GGS_uint modulo_operation (const GGS_uint & inOperand,
-                                                      Compiler * inCompiler
-                                                      COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- ++, -- operators
-  public: VIRTUAL_IN_DEBUG void increment_operation (Compiler * inCompiler
-                                                     COMMA_LOCATION_ARGS) ;
-
-  public: VIRTUAL_IN_DEBUG void decrement_operation (Compiler * inCompiler
-                                                     COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- &++, &-- operators
-  public: VIRTUAL_IN_DEBUG void increment_operation_no_overflow (void) ;
-
-  public: VIRTUAL_IN_DEBUG void decrement_operation_no_overflow (void) ;
-
-//--------------------------------- Implementation of getter 'description'
-  public: VIRTUAL_IN_DEBUG void description (String & ioString,
-                                             const int32_t inIndentation) const override ;
-//--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GGS_uint & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-  public: static void class_method_setRandomSeed (class GGS_uint constinArgument0
-                                                  COMMA_LOCATION_ARGS) ;
-
-
-//--------------------------------- Getters
-  public: VIRTUAL_IN_DEBUG class GGS_string getter_alphaString (LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG class GGS_bigint getter_bigint (LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG class GGS_bool getter_canAdd (const class GGS_uint & constinOperand0
-                                                         COMMA_LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG class GGS_bool getter_canDivide (const class GGS_uint & constinOperand0
-                                                            COMMA_LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG class GGS_bool getter_canMultiply (const class GGS_uint & constinOperand0
-                                                              COMMA_LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG class GGS_bool getter_canSubstract (const class GGS_uint & constinOperand0
-                                                               COMMA_LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG class GGS_double getter_double (LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG class GGS_string getter_hexString (LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG class GGS_string getter_hexStringSeparatedBy (const class GGS_char & constinOperand0,
-                                                                         const class GGS_uint & constinOperand1,
-                                                                         Compiler * inCompiler
-                                                                         COMMA_LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG class GGS_bool getter_isInRange (const class GGS_range & constinOperand0
-                                                            COMMA_LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG class GGS_bool getter_isUnicodeValueAssigned (LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG class GGS_uint getter_lsbIndex (Compiler * inCompiler
-                                                           COMMA_LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG class GGS_uint getter_oneBitCount (LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG class GGS_uint getter_significantBitCount (LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG class GGS_sint getter_sint (Compiler * inCompiler
-                                                       COMMA_LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG class GGS_sint_36__34_ getter_sint_36__34_ (LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG class GGS_string getter_string (LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG class GGS_uint_36__34_ getter_uint_36__34_ (LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG class GGS_string getter_xString (LOCATION_ARGS) const ;
-
-
-//--------------------------------- Read subscripts
-
-
-//--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
- 
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_uint ;
 
 //--------------------------------------------------------------------------------------------------
 //   @char type
@@ -3003,14 +3003,14 @@ class GGS_filewrapper : public AC_GALGAS_root {
                                                                         Compiler * inCompiler
                                                                         COMMA_LOCATION_ARGS) const ;
 
-  public: VIRTUAL_IN_DEBUG class GGS_stringlist getter_allBinaryFilePathes (LOCATION_ARGS) const ;
+  public: VIRTUAL_IN_DEBUG class GGS_stringlist getter_allBinaryFilePaths (LOCATION_ARGS) const ;
 
-  public: VIRTUAL_IN_DEBUG class GGS_stringlist getter_allDirectoryPathes (LOCATION_ARGS) const ;
+  public: VIRTUAL_IN_DEBUG class GGS_stringlist getter_allDirectoryPaths (LOCATION_ARGS) const ;
 
-  public: VIRTUAL_IN_DEBUG class GGS_stringlist getter_allFilePathesWithExtension (const class GGS_string & constinOperand0
-                                                                                   COMMA_LOCATION_ARGS) const ;
+  public: VIRTUAL_IN_DEBUG class GGS_stringlist getter_allFilePathsWithExtension (const class GGS_string & constinOperand0
+                                                                                  COMMA_LOCATION_ARGS) const ;
 
-  public: VIRTUAL_IN_DEBUG class GGS_stringlist getter_allTextFilePathes (LOCATION_ARGS) const ;
+  public: VIRTUAL_IN_DEBUG class GGS_stringlist getter_allTextFilePaths (LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GGS_data getter_binaryFileContentsAtPath (const class GGS_string & constinOperand0,
                                                                            Compiler * inCompiler
@@ -3576,92 +3576,6 @@ class GGS_lstringlist : public AC_GALGAS_root {
 extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lstringlist ;
 
 //--------------------------------------------------------------------------------------------------
-// Phase 1: @lbool struct
-//--------------------------------------------------------------------------------------------------
-
-class GGS_lbool : public AC_GALGAS_root {
-//--------------------------------- Properties
-  public: GGS_bool mProperty_bool ;
-  public: inline GGS_bool readProperty_bool (void) const {
-    return mProperty_bool ;
-  }
-
-  public: GGS_location mProperty_location ;
-  public: inline GGS_location readProperty_location (void) const {
-    return mProperty_location ;
-  }
-
-//--------------------------------- Accessors
-  public: VIRTUAL_IN_DEBUG bool isValid (void) const override ;
-  public: VIRTUAL_IN_DEBUG void drop (void) override ;
-
-//--------------------------------- Default constructor
-  public: GGS_lbool (void) ;
-
-//--------------------------------- Property setters
-  public: inline void setter_setBool (const GGS_bool & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_bool = inValue ;
-  }
-
-  public: inline void setter_setLocation (const GGS_location & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_location = inValue ;
-  }
-
-//--------------------------------- Set initialized properties
-  private: void setInitializedProperties (Compiler * inCompiler) ;
-
-//--------------------------------- Native constructor
-  public: GGS_lbool (const GGS_bool & in_bool,
-                     const GGS_location & in_location) ;
-
-//--------------------------------- Copy constructor
-  public: GGS_lbool (const GGS_lbool & inSource) ;
-
-//--------------------------------- Assignment operator
-  public: GGS_lbool & operator = (const GGS_lbool & inSource) ;
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-  public: static GGS_lbool init_21__21_ (const class GGS_bool & inOperand0,
-                                         const class GGS_location & inOperand1,
-                                         Compiler * inCompiler
-                                         COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
-//--------------------------------- Object extraction
-  public: static GGS_lbool extractObject (const GGS_object & inObject,
-                                          Compiler * inCompiler
-                                          COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Implementation of getter 'description'
-  public: VIRTUAL_IN_DEBUG void description (String & ioString,
-                                             const int32_t inIndentation) const override ;
-//--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GGS_lbool & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Read subscripts
-
-
-//--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
- 
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lbool ;
-
-//--------------------------------------------------------------------------------------------------
 // Phase 1: @stringlist list enumerator
 //--------------------------------------------------------------------------------------------------
 
@@ -3880,6 +3794,92 @@ class GGS_stringlist : public AC_GALGAS_root {
 //--------------------------------------------------------------------------------------------------
 
 extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_stringlist ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 1: @lbool struct
+//--------------------------------------------------------------------------------------------------
+
+class GGS_lbool : public AC_GALGAS_root {
+//--------------------------------- Properties
+  public: GGS_bool mProperty_bool ;
+  public: inline GGS_bool readProperty_bool (void) const {
+    return mProperty_bool ;
+  }
+
+  public: GGS_location mProperty_location ;
+  public: inline GGS_location readProperty_location (void) const {
+    return mProperty_location ;
+  }
+
+//--------------------------------- Accessors
+  public: VIRTUAL_IN_DEBUG bool isValid (void) const override ;
+  public: VIRTUAL_IN_DEBUG void drop (void) override ;
+
+//--------------------------------- Default constructor
+  public: GGS_lbool (void) ;
+
+//--------------------------------- Property setters
+  public: inline void setter_setBool (const GGS_bool & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_bool = inValue ;
+  }
+
+  public: inline void setter_setLocation (const GGS_location & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_location = inValue ;
+  }
+
+//--------------------------------- Set initialized properties
+  private: void setInitializedProperties (Compiler * inCompiler) ;
+
+//--------------------------------- Native constructor
+  public: GGS_lbool (const GGS_bool & in_bool,
+                     const GGS_location & in_location) ;
+
+//--------------------------------- Copy constructor
+  public: GGS_lbool (const GGS_lbool & inSource) ;
+
+//--------------------------------- Assignment operator
+  public: GGS_lbool & operator = (const GGS_lbool & inSource) ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GGS_lbool init_21__21_ (const class GGS_bool & inOperand0,
+                                         const class GGS_location & inOperand1,
+                                         Compiler * inCompiler
+                                         COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GGS_lbool extractObject (const GGS_object & inObject,
+                                          Compiler * inCompiler
+                                          COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Implementation of getter 'description'
+  public: VIRTUAL_IN_DEBUG void description (String & ioString,
+                                             const int32_t inIndentation) const override ;
+//--------------------------------- Comparison
+  public: ComparisonResult objectCompare (const GGS_lbool & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subscripts
+
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
+ 
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lbool ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @lchar struct

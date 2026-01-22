@@ -33,7 +33,11 @@ struct SearchResultItemView : View {
       ScrollSourceToLineNotification.notify (location: self.mEntry.range.location)
     } label: {
       VStack {
-        Text ("Line \(self.mEntry.startLineAndColumn.line), column \(self.mEntry.startLineAndColumn.column)")
+        HStack {
+          Text ("Line \(self.mEntry.startLineAndColumn.line), column \(self.mEntry.startLineAndColumn.column)")
+          .bold ()
+          Spacer ()
+        }
         Text (self.mEntry.lineContents)
         .frame (maxWidth: .infinity, alignment: .leading)
         .lineLimit (nil)

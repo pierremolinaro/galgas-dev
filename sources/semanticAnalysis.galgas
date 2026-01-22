@@ -702,21 +702,6 @@ override method @galgas3GrammarComponentAST semanticAnalysis
       i += 1
     end
   end
-//----------------------- Get lexique component, for knowing if there are "indexing" declaration
-//  [inSemanticContext.mLexiqueComponentMapForSemanticAnalysis searchKey
-//    !lexiqueComponentName
-//    ?*
-//    ?* // @terminalMap inTerminalMap
-//    ?* // @indexingListAST inIndexingListAST
-////    ?let @lstring inIndexingDirectory
-//    ?4*
-//  ]
-//  let @bool hasIndexing = true // not [inIndexingDirectory isNowhere]
-//  if hasIndexing & not self.mHasIndexing.bool then
-//    error self.mGrammarComponentName : "the grammar does not enable indexing, but the '" + lexiqueComponentName + "' does"
-//  elsif (not hasIndexing) & self.mHasIndexing.bool then
-//    error self.mHasIndexing : "the grammar enables indexing, but the '" + lexiqueComponentName + "' does not"
-//  end
 //--------------------------------------------------------- Start symbol
 //--- Search start symbol in non terminal map
   [nonTerminalMapForGrammarAnalysis searchKey

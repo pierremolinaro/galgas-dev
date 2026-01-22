@@ -10,13 +10,70 @@ extension ProjectDocumentView {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+  func searchViewForSidebar () -> some View {
+    VStack {
+      Text ("Find in project").font (.caption)
+      HStack {
+        Spacer ().frame (width: 6)
+        Text ("Find").controlSize (.small)
+        Spacer ()
+        Toggle ("aA", isOn: self.$mCaseSensitiveSearch)
+        .toggleStyle (.button)
+        .controlSize (.small)
+        Spacer ().frame (width: 6)
+      }
+      HStack {
+        Spacer ().frame (width: 6)
+        HStack (spacing: 1) {
+          Menu ("", systemImage: "magnifyingglass") {
+            Text ("Recent queries")
+            Divider ()
+            ForEach (self.mRecentSearches, id: \.self) { searchString in
+              Button (searchString) { self.performRecentSearch (searchString) }
+            }
+          }.buttonStyle (.borderless)
+          TextField ("", text: self.$mSearchString)
+          .textFieldStyle (.plain)
+          .onSubmit { self.performSearch () }
+        }.controlSize (.small)
+        .padding (2)
+        .background (RoundedRectangle (cornerRadius: 4).fill (.white).stroke(Color(Color.secondary), lineWidth: 1))
+        Spacer ().frame (width: 6)
+      }
+      Text (self.mSearchMessage).foregroundStyle (.secondary).controlSize (.small)
+      List (self.mSearchResults, id: \.id, selection: self.$mSelectedSearchResultID) { node in
+        Divider ()
+        SearchResultNodeView (
+          node: node,
+          selectedResultItemID: self.$mSelectedSearchResultID,
+          selectedFileNodeID: self.$mRootDirectoryNode.mSelectedFileNodeID,
+          searchResultSections: self.$mSearchResultSections
+        )
+      }.controlSize (.small)
+      Spacer ()
+    }
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
   private func performSearch () {
     if !self.mSearchString.isEmpty {
+    //--- Update messages
       self.mSearchMessage = "Searching…"
       self.mSelectedSearchResultID = nil
       self.mSearchResultSections.removeAll ()
       self.mSearchResults.removeAll ()
       self.mRootDirectoryNode.saveAllEditedFiles ()
+    //--- Update recent searches
+      var recentSearches = self.mRecentSearches
+      if let index = recentSearches.firstIndex (of: self.mSearchString) {
+        recentSearches.remove (at: index)
+      }
+      recentSearches.insert (self.mSearchString, at: 0)
+      while recentSearches.count > 10 {
+        recentSearches.removeLast ()
+      }
+      self.mRecentSearchData = (try? JSONEncoder ().encode (recentSearches)) ?? Data()
       self.mProjectDocumentSaveScheduler.saveProjectDocument {
       //--- Search in project file
         self.search (inFileURL: self.mProjectFileURL, fileNodeID: nil)
@@ -50,6 +107,13 @@ extension ProjectDocumentView {
         self.mSearchMessage = s
       }
     }
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  private func performRecentSearch (_ inSearchString : String) {
+    self.mSearchString = inSearchString
+    self.performSearch ()
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -94,49 +158,6 @@ extension ProjectDocumentView {
     }
   }
   
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  func searchViewForSidebar () -> some View {
-    VStack {
-      Text ("Find in project").font (.caption)
-      HStack {
-        Spacer ().frame (width: 6)
-        Text ("Find").controlSize (.small)
-        Spacer ()
-        Toggle ("aA", isOn: self.$mCaseSensitiveSearch)
-        .toggleStyle (.button)
-        .controlSize (.small)
-        Spacer ().frame (width: 6)
-      }
-      HStack {
-        Spacer ().frame (width: 6)
-        TextField ("", text: self.$mSearchString)
-        .multilineTextAlignment (.center)
-        .textFieldStyle (.roundedBorder)
-        .controlSize (.small)
-        .overlay (alignment: .leading) {
-          Image (systemName: "magnifyingglass")
-          .foregroundStyle (.secondary)
-          .padding (.leading, 8)
-        }
-        .onSubmit { self.performSearch () }
-        Spacer ().frame (width: 6)
-      }
-      Divider ()
-      Text (self.mSearchMessage).foregroundStyle (.secondary).controlSize (.small)
-      Divider ()
-      List (self.mSearchResults, id: \.id, selection: self.$mSelectedSearchResultID) { node in
-        SearchResultNodeView (
-          node: node,
-          selectedResultItemID: self.$mSelectedSearchResultID,
-          selectedFileNodeID: self.$mRootDirectoryNode.mSelectedFileNodeID,
-          searchResultSections: self.$mSearchResultSections
-        )
-      }.controlSize (.small)
-      Spacer ()
-    }
-  }
-
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
