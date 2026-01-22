@@ -466,3 +466,16 @@ class GGS_string function_generateClassGetterDeclaration (const class GGS_lstrin
                                                           class Compiler * inCompiler
                                                           COMMA_LOCATION_ARGS) ;
 
+//--------------------------------------------------------------------------------------------------
+//
+//Function 'generateClassInstanceMethodDeclaration'
+//
+//--------------------------------------------------------------------------------------------------
+
+class GGS_string function_generateClassInstanceMethodDeclaration (const class GGS_lstring & constinArgument0,
+                                                                  const class GGS_formalParameterSignature & constinArgument1,
+                                                                  const class GGS_bool & constinArgument2,
+                                                                  const class GGS_methodQualifier & constinArgument3,
+                                                                  class Compiler * inCompiler
+                                                                  COMMA_LOCATION_ARGS) ;
+

@@ -34,7 +34,7 @@ extension ProjectDocumentView {
       }
       var resultCount = 0
       for result in self.mSearchResults {
-        resultCount += result.mEntries.count
+        resultCount += result.count
       }
       if resultCount == 0 {
         self.mSearchMessage = "No result"

@@ -7,23 +7,24 @@ import Combine
 
 //--------------------------------------------------------------------------------------------------
 
-struct SearchResultNode : Identifiable { // , ObservableObject {
+struct SearchResultNode : Identifiable {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   let id : UUID = UUID ()
   let fileName : String
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  private(set) var mEntries : [SearchResultItem]
+  let entries : [SearchResultItem]
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init (fileName inFileName : String, entries inEntries : [SearchResultItem]) {
     self.fileName = inFileName
-    self.mEntries = inEntries
+    self.entries = inEntries
   }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  var count : Int { 1 + self.entries.count }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

@@ -39,7 +39,7 @@ struct SearchResultNodeView : View {
           self.mSearchResultSections.remove (self.mNode.id)
         }
       })) {
-      ForEach (self.mNode.mEntries, id: \.self.id) { entry in
+      ForEach (self.mNode.entries, id: \.self.id) { entry in
         SearchResultItemView (
           entry: entry,
           selectedResultItemID: self.$mSelectedResultItemID,
@@ -49,7 +49,7 @@ struct SearchResultNodeView : View {
     } label: {
       HStack {
         VStack {
-          Text ("\(self.mNode.mEntries.count)")
+          Text ("\(self.mNode.entries.count)")
           Spacer ()
         }
         VStack {
