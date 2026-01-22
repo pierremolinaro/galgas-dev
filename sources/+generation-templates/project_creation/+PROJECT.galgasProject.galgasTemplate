@@ -1,5 +1,4 @@
 project (0:0:1) -> %![PROJECT_NAME utf8RepresentationEscapingQuestionMark]% {
-#--- Targets
   \%makefile-unix
   \%makefile-macosx
   \%makefile-x86linux32-on-macosx

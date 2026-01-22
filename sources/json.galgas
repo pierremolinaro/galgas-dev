@@ -1,20 +1,20 @@
 //--------------------------------------------------------------------------------------------------
-#
-#  GALGAS JSON parser
-#
+//
+//  GALGAS JSON parser
+//
 //  Copyright (C) 2017, ..., 2017 Pierre Molinaro.
-#
+//
 //  MIT License
-#
+//
 // Permission is hereby granted, free of charge, to any person obtaining a copy of this software
 // and associated documentation files (the "Software"), to deal in the Software without
 // restriction, including without limitation the rights to use, copy, modify, merge, publish,
 // distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
 // Software is furnished to do so, subject to the following conditions:
-#
+//
 // The above copyright notice and this permission notice shall be included in all copies or
 // substantial portions of the Software.
-#
+//
 // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
 // BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
 // NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
@@ -24,14 +24,14 @@
 
 template lexique jsonScanner {
 
-  #··· Styles ··········································································································
+  //··· Styles ··········································································································
 
   style keywordsStyle -> "Keywords"
   style delimitersStyle -> "Delimiters"
   style stringStyle -> "String"
   style integerStyle -> "Integer"
 
-  #··· Delimiters ······································································································
+  //··· Delimiters ······································································································
 
   list delimiterList style delimitersStyle error message "the '%K' delimiter" {
     "[", "]", "{", "}", ":", ","
@@ -39,7 +39,7 @@ template lexique jsonScanner {
 
   rule list delimiterList
 
-  #··· Reserved Words ··································································································
+  //··· Reserved Words ··································································································
 
   list reservedWordList style keywordsStyle error message "the '%K' reserved word" {
     "false",     "null",    "true"
@@ -47,7 +47,7 @@ template lexique jsonScanner {
 
   rule list reservedWordList
 
-  #··· String ··········································································································
+  //··· String ··········································································································
 
   @string tokenString
   @uint uint32value
@@ -120,7 +120,7 @@ template lexique jsonScanner {
     end
   }
 
-  #··· Number ··········································································································
+  //··· Number ··········································································································
 
   @bigint bigintValue
   $integer$ ! bigintValue  style integerStyle error message "a decimal number"
@@ -145,7 +145,7 @@ template lexique jsonScanner {
     send $integer$
   }
 
-  #··· Separators ······································································································
+  //··· Separators ······································································································
 
   rule '\u0009' | '\u000A' | '\u000D' | ' ' {
   }

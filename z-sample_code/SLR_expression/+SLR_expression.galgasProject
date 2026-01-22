@@ -1,5 +1,4 @@
 project (1:0:0) -> "SLRExpression" {
-#--- Targets
   %makefile-unix
   %MacSwiftApp
   %applicationBundleBase : "fr.what"

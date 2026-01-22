@@ -1,5 +1,5 @@
 project (1:0:0) -> "allDanglingElseSolution" {
-#--- Targets
+//--- Targets
   %makefile-unix
   %MacSwiftApp
   %applicationBundleBase : "fr.what"

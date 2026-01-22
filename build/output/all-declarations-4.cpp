@@ -15246,24 +15246,24 @@ void cParser_jsonSyntax::rule_jsonSyntax_value_i1_ (GGS_jsonValue & outArgument_
     outArgument_outValue = GGS_jsonValue::class_func_jsonTrue (SOURCE_FILE ("json.galgas", 203)) ;
   } break ;
   case 4: {
-    GGS_jsonObjectValue var_objectValue_7214 ;
-    nt_object_ (var_objectValue_7214, inCompiler) ;
-    outArgument_outValue = GGS_jsonValue::class_func_jsonObject (var_objectValue_7214  COMMA_SOURCE_FILE ("json.galgas", 206)) ;
+    GGS_jsonObjectValue var_objectValue_7227 ;
+    nt_object_ (var_objectValue_7227, inCompiler) ;
+    outArgument_outValue = GGS_jsonValue::class_func_jsonObject (var_objectValue_7227  COMMA_SOURCE_FILE ("json.galgas", 206)) ;
   } break ;
   case 5: {
-    GGS_jsonArrayValue var_arrayValue_7324 ;
-    nt_array_ (var_arrayValue_7324, inCompiler) ;
-    outArgument_outValue = GGS_jsonValue::class_func_jsonArray (var_arrayValue_7324  COMMA_SOURCE_FILE ("json.galgas", 209)) ;
+    GGS_jsonArrayValue var_arrayValue_7337 ;
+    nt_array_ (var_arrayValue_7337, inCompiler) ;
+    outArgument_outValue = GGS_jsonValue::class_func_jsonArray (var_arrayValue_7337  COMMA_SOURCE_FILE ("json.galgas", 209)) ;
   } break ;
   case 6: {
-    GGS_lbigint var_integerValue_7416 = inCompiler->synthetizedAttribute_bigintValue () ;
+    GGS_lbigint var_integerValue_7429 = inCompiler->synthetizedAttribute_bigintValue () ;
     inCompiler->acceptTerminal (Lexique_jsonScanner::kToken_integer COMMA_SOURCE_FILE ("json.galgas", 211)) ;
-    outArgument_outValue = GGS_jsonValue::class_func_jsonInteger (var_integerValue_7416.readProperty_bigint ()  COMMA_SOURCE_FILE ("json.galgas", 212)) ;
+    outArgument_outValue = GGS_jsonValue::class_func_jsonInteger (var_integerValue_7429.readProperty_bigint ()  COMMA_SOURCE_FILE ("json.galgas", 212)) ;
   } break ;
   case 7: {
-    GGS_lstring var_stringValue_7524 = inCompiler->synthetizedAttribute_tokenString () ;
+    GGS_lstring var_stringValue_7537 = inCompiler->synthetizedAttribute_tokenString () ;
     inCompiler->acceptTerminal (Lexique_jsonScanner::kToken__22_string_22_ COMMA_SOURCE_FILE ("json.galgas", 214)) ;
-    outArgument_outValue = GGS_jsonValue::class_func_jsonString (var_stringValue_7524.readProperty_string ()  COMMA_SOURCE_FILE ("json.galgas", 215)) ;
+    outArgument_outValue = GGS_jsonValue::class_func_jsonString (var_stringValue_7537.readProperty_string ()  COMMA_SOURCE_FILE ("json.galgas", 215)) ;
   } break ;
   default:
     break ;
@@ -15340,12 +15340,12 @@ void cParser_jsonSyntax::rule_jsonSyntax_object_i2_ (GGS_jsonObjectValue & outAr
   outArgument_outObjectValue = GGS_jsonObjectValue::init (inCompiler COMMA_HERE) ;
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
-    GGS_lstring var_keyValue_7831 = inCompiler->synthetizedAttribute_tokenString () ;
+    GGS_lstring var_keyValue_7844 = inCompiler->synthetizedAttribute_tokenString () ;
     inCompiler->acceptTerminal (Lexique_jsonScanner::kToken__22_string_22_ COMMA_SOURCE_FILE ("json.galgas", 225)) ;
     inCompiler->acceptTerminal (Lexique_jsonScanner::kToken__3A_ COMMA_SOURCE_FILE ("json.galgas", 226)) ;
-    GGS_jsonValue var_value_7869 ;
-    nt_value_ (var_value_7869, inCompiler) ;
-    outArgument_outObjectValue.addAssignOperation (var_keyValue_7831.readProperty_string (), var_value_7869  COMMA_SOURCE_FILE ("json.galgas", 228)) ;
+    GGS_jsonValue var_value_7882 ;
+    nt_value_ (var_value_7882, inCompiler) ;
+    outArgument_outObjectValue.addAssignOperation (var_keyValue_7844.readProperty_string (), var_value_7882  COMMA_SOURCE_FILE ("json.galgas", 228)) ;
     if (select_jsonSyntax_1 (inCompiler) == 2) {
       inCompiler->acceptTerminal (Lexique_jsonScanner::kToken__2C_ COMMA_SOURCE_FILE ("json.galgas", 230)) ;
     }else{
@@ -15401,9 +15401,9 @@ void cParser_jsonSyntax::rule_jsonSyntax_array_i3_ (GGS_jsonArrayValue & outArgu
   outArgument_outArrayValue = GGS_jsonArrayValue::init (inCompiler COMMA_HERE) ;
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
-    GGS_jsonValue var_value_8169 ;
-    nt_value_ (var_value_8169, inCompiler) ;
-    outArgument_outArrayValue.addAssignOperation (var_value_8169  COMMA_SOURCE_FILE ("json.galgas", 242)) ;
+    GGS_jsonValue var_value_8182 ;
+    nt_value_ (var_value_8182, inCompiler) ;
+    outArgument_outArrayValue.addAssignOperation (var_value_8182  COMMA_SOURCE_FILE ("json.galgas", 242)) ;
     if (select_jsonSyntax_2 (inCompiler) == 2) {
       inCompiler->acceptTerminal (Lexique_jsonScanner::kToken__2C_ COMMA_SOURCE_FILE ("json.galgas", 244)) ;
     }else{

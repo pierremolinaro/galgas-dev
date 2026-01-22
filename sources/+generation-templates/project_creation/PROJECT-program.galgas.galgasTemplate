@@ -1,8 +1,8 @@
-#--- Prologue routine
+//--- Prologue routine
 before {
 }
 
-#--- 'when' clauses
+//--- 'when' clauses
 case . "%!PROJECT_NAME%"
 message "a source text file with the .%!PROJECT_NAME% extension"
 grammar %!PROJECT_NAME%_grammar
@@ -10,6 +10,6 @@ grammar %!PROJECT_NAME%_grammar
   grammar %!PROJECT_NAME%_grammar () in inSourceFile
 }
 
-#--- Epilogue routine
+//--- Epilogue routine
 after {
 }
