@@ -78,7 +78,6 @@
    <Add library="Comdlg32" />
   </Linker>
   <Unit filename="../libpm/galgas/C_galgas_quiet_option.cpp" />
-  <Unit filename="../build/output/all-declarations-31.cpp" />
   <Unit filename="../build/output/all-declarations-30.cpp" />
   <Unit filename="../build/output/all-declarations-29.cpp" />
   <Unit filename="../build/output/all-declarations-28.cpp" />

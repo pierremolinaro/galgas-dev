@@ -141,7 +141,6 @@
 		CF30607D2D0D8B2B000A5F79 /* all-declarations-10.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF3060482D0D8B2B000A5F79 /* all-declarations-10.cpp */; };
 		CF30607E2D0D8B2B000A5F79 /* all-declarations-14.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF3060502D0D8B2B000A5F79 /* all-declarations-14.cpp */; };
 		CF30607F2D0D8B2B000A5F79 /* all-declarations-2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF3060382D0D8B2B000A5F79 /* all-declarations-2.cpp */; };
-		CF3060802D0D8B2B000A5F79 /* all-declarations-31.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF3060722D0D8B2B000A5F79 /* all-declarations-31.cpp */; };
 		CF3060812D0D8B2B000A5F79 /* all-declarations-26.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF3060682D0D8B2B000A5F79 /* all-declarations-26.cpp */; };
 		CF3060822D0D8B2B000A5F79 /* all-declarations-22.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF3060602D0D8B2B000A5F79 /* all-declarations-22.cpp */; };
 		CF3060832D0D8B2B000A5F79 /* all-declarations-4.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF30603C2D0D8B2B000A5F79 /* all-declarations-4.cpp */; };
@@ -309,7 +308,6 @@
 		CF8F815E2D0D91490095170B /* all-declarations-10.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF3060482D0D8B2B000A5F79 /* all-declarations-10.cpp */; };
 		CF8F815F2D0D91490095170B /* all-declarations-14.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF3060502D0D8B2B000A5F79 /* all-declarations-14.cpp */; };
 		CF8F81602D0D91490095170B /* all-declarations-2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF3060382D0D8B2B000A5F79 /* all-declarations-2.cpp */; };
-		CF8F81612D0D91490095170B /* all-declarations-31.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF3060722D0D8B2B000A5F79 /* all-declarations-31.cpp */; };
 		CF8F81622D0D91490095170B /* all-declarations-26.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF3060682D0D8B2B000A5F79 /* all-declarations-26.cpp */; };
 		CF8F81632D0D91490095170B /* all-declarations-22.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF3060602D0D8B2B000A5F79 /* all-declarations-22.cpp */; };
 		CF8F81642D0D91490095170B /* all-declarations-4.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF30603C2D0D8B2B000A5F79 /* all-declarations-4.cpp */; };
@@ -713,8 +711,6 @@
 		CF30606E2D0D8B2B000A5F79 /* all-declarations-29.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "all-declarations-29.cpp"; sourceTree = "<group>"; };
 		CF30606F2D0D8B2B000A5F79 /* all-declarations-30.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "all-declarations-30.h"; sourceTree = "<group>"; };
 		CF3060702D0D8B2B000A5F79 /* all-declarations-30.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "all-declarations-30.cpp"; sourceTree = "<group>"; };
-		CF3060712D0D8B2B000A5F79 /* all-declarations-31.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "all-declarations-31.h"; sourceTree = "<group>"; };
-		CF3060722D0D8B2B000A5F79 /* all-declarations-31.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "all-declarations-31.cpp"; sourceTree = "<group>"; };
 		CF3060732D0D8B2B000A5F79 /* all-predefined-types.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "all-predefined-types.h"; sourceTree = "<group>"; };
 		CF3060742D0D8B2B000A5F79 /* all-predefined-types.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "all-predefined-types.cpp"; sourceTree = "<group>"; };
 		CF43D1D52F1C1E4000ACE60F /* ScrollSourceToLineNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollSourceToLineNotification.swift; sourceTree = "<group>"; };
@@ -1219,8 +1215,6 @@
 				CF30606E2D0D8B2B000A5F79 /* all-declarations-29.cpp */,
 				CF30606F2D0D8B2B000A5F79 /* all-declarations-30.h */,
 				CF3060702D0D8B2B000A5F79 /* all-declarations-30.cpp */,
-				CF3060712D0D8B2B000A5F79 /* all-declarations-31.h */,
-				CF3060722D0D8B2B000A5F79 /* all-declarations-31.cpp */,
 				CF3060732D0D8B2B000A5F79 /* all-predefined-types.h */,
 				CF3060742D0D8B2B000A5F79 /* all-predefined-types.cpp */,
 				CF874F232F100930004A5162 /* option-galgas-5Fcli-5Foptions-swiftui.swift */,
@@ -1600,7 +1594,6 @@
 				CF8F815E2D0D91490095170B /* all-declarations-10.cpp in Sources */,
 				CF8F815F2D0D91490095170B /* all-declarations-14.cpp in Sources */,
 				CF8F81602D0D91490095170B /* all-declarations-2.cpp in Sources */,
-				CF8F81612D0D91490095170B /* all-declarations-31.cpp in Sources */,
 				CF8F81622D0D91490095170B /* all-declarations-26.cpp in Sources */,
 				CF8F81632D0D91490095170B /* all-declarations-22.cpp in Sources */,
 				CF8F81642D0D91490095170B /* all-declarations-4.cpp in Sources */,
@@ -1828,7 +1821,6 @@
 				CF30607D2D0D8B2B000A5F79 /* all-declarations-10.cpp in Sources */,
 				CF30607E2D0D8B2B000A5F79 /* all-declarations-14.cpp in Sources */,
 				CF30607F2D0D8B2B000A5F79 /* all-declarations-2.cpp in Sources */,
-				CF3060802D0D8B2B000A5F79 /* all-declarations-31.cpp in Sources */,
 				CF3060812D0D8B2B000A5F79 /* all-declarations-26.cpp in Sources */,
 				CF3060822D0D8B2B000A5F79 /* all-declarations-22.cpp in Sources */,
 				CF3060832D0D8B2B000A5F79 /* all-declarations-4.cpp in Sources */,
