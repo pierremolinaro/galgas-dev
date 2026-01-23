@@ -23,9 +23,9 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-list @galgas3QualifiedFeatureList {
-  public let @lstring mFeatureName
-  public let @lstring mFeatureValue
+struct @galgasQualifiedFeature {
+  public let @lstring featureName
+  public let @lstring featureValue
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -37,7 +37,7 @@ struct @galgas3ProjectComponentAST {
   public let @lbigint mMinorVersion
   public let @lbigint mRevisionVersion
   public let @lstringlist mGenerationFeatureList
-  public let @galgas3QualifiedFeatureList mQualifiedFeatureList
+  public let [@galgasQualifiedFeature] mQualifiedFeatureList
   public let @lstring mTargetName
   public let @location mEndOfSourceFile
 }
@@ -84,7 +84,7 @@ syntax galgas3ProjectSyntax (galgasScanner3) {
       ?let @lstring targetName
     ${$
     var @lstringlist generateFeatureList = @()
-    var @galgas3QualifiedFeatureList qualifiedFeatureList = @()
+    var [@galgasQualifiedFeature] qualifiedFeatureList = @()
     repeat
     while
       $%quietOutputByDefault$
@@ -123,17 +123,17 @@ syntax galgas3ProjectSyntax (galgasScanner3) {
       $%applicationBundleBase$
       $:$
       $"string"$ ?let @lstring featureValue
-      qualifiedFeatureList += !"applicationBundleBase".here !featureValue
+      qualifiedFeatureList ++= @("applicationBundleBase".here, featureValue)
     while
       $%libpmAtPath$
       $:$
       $"string"$ ?let @lstring featureValue
-      qualifiedFeatureList += !"libpmAtPath".here !featureValue
+      qualifiedFeatureList ++= @("libpmAtPath".here, featureValue)
     while
       $%macCodeSign$
       $:$
       $"string"$ ?let @lstring featureValue
-      qualifiedFeatureList += !"macCodeSign".here !featureValue
+      qualifiedFeatureList ++= @("macCodeSign".here, featureValue)
     end
     $}$
   //--- Enumerate sources directory for getting all source files
@@ -158,7 +158,7 @@ syntax galgas3ProjectSyntax (galgasScanner3) {
       !generateFeatureList
       !qualifiedFeatureList
       !targetName
-      !@location.here
+      !.here
     }
   }
 

@@ -15,7 +15,7 @@ final class SourceFileNode : Identifiable, ObservableObject {
   let id : SourceFileNodeID
   @Published var mURL : URL
   @Published private(set) var mChildren : [SourceFileNode] = []
-  @Published var mIsRenaming : Bool = false
+//  @Published var mIsRenaming : Bool = false
   @Published var mIsEdited : Bool = false
   private(set) weak var mRootNode : RootDirectoryNode?
 

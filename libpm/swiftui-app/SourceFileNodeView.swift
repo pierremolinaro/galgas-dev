@@ -84,7 +84,7 @@ struct SourceFileNodeView : View {
 
   private func presentFileRenameSheet () -> some View {
     VStack {
-      Text ("Rename").bold ()
+      Text ("Rename '\(self.mNode.mURL.lastPathComponent)'").bold ()
       Spacer ()
       TextField ("", text: self.$mTemporaryNameForRenaming)
       Spacer ()
@@ -99,7 +99,9 @@ struct SourceFileNodeView : View {
         .disabled (self.mTemporaryNameForRenaming.isEmpty || self.fileAlreadyExists (forNewName: self.mTemporaryNameForRenaming))
         .keyboardShortcut (.defaultAction)
       }
-    }.padding (12)
+    }
+    .padding (12)
+    .frame (width: 350)
     .onAppear { self.mTemporaryNameForRenaming = self.mNode.mURL.lastPathComponent }
   }
 

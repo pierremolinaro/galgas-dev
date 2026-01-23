@@ -216,18 +216,18 @@ private proc compileProject ?let @lstring inProjectSourceFile
   let @stringlist handCodedSourceToolFileList = inProjectComponentAST.mToolCppSourceList
   var @stringlist frameworkToolFileList = @()
   var @stringset handCodedSourceDirectorySet = @()
-  for (featureName featureValue) in inProjectComponentAST.mQualifiedFeatureList do
-    if featureName.string == "tool-include" then
-      handCodedSourceDirectorySet ++= featureValue
-    elsif featureName.string == "tool-framework" then
-      frameworkToolFileList += !featureValue.string.lastPathComponent
-    elsif featureName.string == "tool-link" then
-      handCodedLinkToolFileList += !featureValue.string
-    elsif featureName.string == "libpmAtPath" then
-    elsif featureName.string == "applicationBundleBase" then
-    elsif featureName.string == "macCodeSign" then
+  for feature in inProjectComponentAST.mQualifiedFeatureList do
+    if feature.featureName.string == "tool-include" then
+      handCodedSourceDirectorySet ++= feature.featureValue
+    elsif feature.featureName.string == "tool-framework" then
+      frameworkToolFileList += !feature.featureValue.string.lastPathComponent
+    elsif feature.featureName.string == "tool-link" then
+      handCodedLinkToolFileList += !feature.featureValue.string
+    elsif feature.featureName.string == "libpmAtPath" then
+    elsif feature.featureName.string == "applicationBundleBase" then
+    elsif feature.featureName.string == "macCodeSign" then
     else
-      error featureName : "unknown feature"
+      error feature.featureName : "unknown feature"
     end
   end
 //--------------------------------- Display result
@@ -433,13 +433,12 @@ private proc projectGeneration
     ignoredFeatureSet ++= "tool-framework"
     ignoredFeatureSet ++= "tool-source"
     ignoredFeatureSet ++= "tool-link"
-//    ignoredFeatureSet ++= "app-source"
     var @projectQualifiedFeatureMap projectQualifiedFeatureMap = @()
-    for (mFeatureName mFeatureValue) in inProjectComponentAST.mQualifiedFeatureList do
-      if not [ignoredFeatureSet hasKey !mFeatureName.string] then
+    for feature in inProjectComponentAST.mQualifiedFeatureList do
+      if not [ignoredFeatureSet hasKey !feature.featureName.string] then
         [!?projectQualifiedFeatureMap insertKey
-          !mFeatureName
-          !mFeatureValue
+          !feature.featureName
+          !feature.featureValue
         ]
       end
     end

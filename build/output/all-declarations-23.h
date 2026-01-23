@@ -963,3 +963,19 @@ class GGS_lstring function_setterNameForUsefulEntitiesGraph (const class GGS_str
                                                              class Compiler * inCompiler
                                                              COMMA_LOCATION_ARGS) ;
 
+//--------------------------------------------------------------------------------------------------
+//
+//Routine 'generateExtensionSetter???&??!'
+//
+//--------------------------------------------------------------------------------------------------
+
+void routine_generateExtensionSetter_3F__3F__3F__26__3F__3F__21_ (const class GGS_string constinArgument0,
+                                                                  const class GGS_string constinArgument1,
+                                                                  const class GGS_string constinArgument2,
+                                                                  class GGS_stringset & ioArgument3,
+                                                                  const class GGS_formalParameterListForGeneration constinArgument4,
+                                                                  const class GGS_semanticInstructionListForGeneration constinArgument5,
+                                                                  class GGS_string & outArgument6,
+                                                                  class Compiler * inCompiler
+                                                                  COMMA_LOCATION_ARGS) ;
+

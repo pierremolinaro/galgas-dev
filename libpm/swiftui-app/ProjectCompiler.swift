@@ -39,11 +39,13 @@ final class ProjectCompiler : ObservableObject  {
   private var mBuildOutputCurrentColor = NSColor.black
   private var mBuildOutputIsBold : Bool = false
   private var mAppendIssueCallBack : ((CompilationIssue) -> Void)? = nil
+  private var mStartTime = Date ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func compile (projectURL inProjectURL : URL,
                 appendIssueCallBack inAppendIssueCallBack : @escaping (CompilationIssue) -> Void ) {
+    self.mStartTime = Date ()
     self.mIsCompilingProject = true
     self.mAppendIssueCallBack = inAppendIssueCallBack
     self.mCompileLog = NSAttributedString ("")
@@ -98,8 +100,15 @@ final class ProjectCompiler : ObservableObject  {
         )
         self.mProcessOutputPipe?.fileHandleForReading.closeFile ()
         self.mProcessOutputPipe = nil
+        let durationMS = Int (Date ().timeIntervalSince (self.mStartTime) * 1000.0)
+        let durationS = durationMS / 1000
+        var s = self.mBuildHasBeenAborted ? "Aborted (" : "Done ("
+        if durationS > 0 {
+          s += "\(durationS) s "
+        }
+        s += "\(durationMS % 1000) ms)."
         self.appendMessageString (
-          string: self.mBuildHasBeenAborted ? "Aborted." : "Done.",
+          string: s,
           color: .systemBlue,
           bold: true
         )

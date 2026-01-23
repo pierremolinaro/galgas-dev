@@ -18,6 +18,8 @@ struct SourceFileNodeView : View {
   @State private var mErrorMessage = ""
   @Binding private var mSelectionBinding : SourceFileNodeID?
 
+  @State var mIsPresentingRenameSheet : Bool = false
+
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init (node inNode : SourceFileNode,
@@ -52,43 +54,69 @@ struct SourceFileNodeView : View {
           Text ("●")
         }
         self.fileIcon (for: self.mNode.mURL)
-        if self.mNode.mIsRenaming {
-          self.fileNameEditor ()
-        }else{
+//        if self.mNode.mIsRenaming {
+//          self.fileNameEditor ()
+//        }else{
           Text (verbatim: "\(self.mNode.mURL.lastPathComponent)")
-        }
+//        }
         Spacer ()
       }
     }
     .onTapGesture (count: 1) {
       if self.mSelectionBinding != self.mNode.id {
-        self.mNode.mIsRenaming = true
+//        self.mNode.mIsRenaming = true
         self.mSelectionBinding = self.mNode.id
-        self.mTemporaryNameForRenaming = self.mNode.mURL.lastPathComponent
+//        self.mTemporaryNameForRenaming = self.mNode.mURL.lastPathComponent
       }
     }
     .contextMenu { self.contextMenuItems () }
-    .sheet (isPresented: self.$mShowFileOperationError) { self.presentFileOperationError () }
     .onDrag { // encode the item ID
       return NSItemProvider (item: self.mNode.mURL as NSURL, typeIdentifier: UTType.fileURL.identifier)
     }
     .onDrop (of: [.fileURL], isTargeted: nil) { providers in
       self.handleDrop (providers: providers)
     }
+    .sheet (isPresented: self.$mShowFileOperationError) { self.presentFileOperationError () }
+    .sheet (isPresented: self.$mIsPresentingRenameSheet) { self.presentFileRenameSheet () }
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  @ViewBuilder private func fileNameEditor () -> some View {
-    TextField ("", text: self.$mTemporaryNameForRenaming, onCommit: {
-      if !self.mTemporaryNameForRenaming.isEmpty,
-             self.mTemporaryNameForRenaming != self.mNode.mURL.lastPathComponent {
-        self.rename (to: self.mTemporaryNameForRenaming)
+  private func presentFileRenameSheet () -> some View {
+    VStack {
+      Text ("Rename '\(self.mNode.mURL.lastPathComponent)'").bold ()
+      Spacer ()
+      TextField ("", text: self.$mTemporaryNameForRenaming)
+      Spacer ()
+      HStack {
+        Button ("Cancel") { self.mIsPresentingRenameSheet = false }
+        .keyboardShortcut (.cancelAction)
+        Spacer ()
+        Button ("Ok") {
+          self.rename (to: self.mTemporaryNameForRenaming)
+          self.mIsPresentingRenameSheet = false
+        }
+        .disabled (self.mTemporaryNameForRenaming.isEmpty || self.fileAlreadyExists (forNewName: self.mTemporaryNameForRenaming))
+        .keyboardShortcut (.defaultAction)
       }
-      self.mNode.mIsRenaming = false
-    })
-    .frame (minWidth: 100)
+    }
+    .padding (12)
+    .frame (width: 350)
+    .onAppear { self.mTemporaryNameForRenaming = self.mNode.mURL.lastPathComponent }
   }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+//  @ViewBuilder private func fileNameEditor () -> some View {
+//    TextField ("", text: self.$mTemporaryNameForRenaming, onCommit: {
+//      if !self.mTemporaryNameForRenaming.isEmpty,
+//             self.mTemporaryNameForRenaming != self.mNode.mURL.lastPathComponent {
+//        self.rename (to: self.mTemporaryNameForRenaming)
+//      }
+//      self.mNode.mIsRenaming = false
+//    })
+//    .frame (minWidth: 100)
+//  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -98,7 +126,7 @@ struct SourceFileNodeView : View {
     Button ("New Empty File" ) { self.newEmptyFile () }
     Button ("New Folder" ) { self.newFolder () }
     Divider ()
-    Button ("Rename…" ) { self.mNode.mIsRenaming = true }
+    Button ("Rename…" ) { self.mIsPresentingRenameSheet = true }
     Button ("Duplicate" ) { self.duplicate () }
     Divider ()
     Button ("Move to Trash", role: .destructive) { self.moveToTrash () }
@@ -182,6 +210,14 @@ struct SourceFileNodeView : View {
       self.mShowFileOperationError = true
       self.mErrorMessage = error.localizedDescription
     }
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  private func fileAlreadyExists (forNewName inNewName : String) -> Bool {
+    let newURL = self.mNode.mURL.deletingLastPathComponent().appendingPathComponent (inNewName)
+    let fm = FileManager ()
+    return fm.fileExists (atPath: newURL.path())
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
