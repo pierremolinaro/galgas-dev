@@ -891,39 +891,28 @@ void cPtr_overridingExtensionMethodAST::method_semanticAnalysis (GGS_lstringlist
     }
   }
   GGS_analysisContext var_analysisContext_11410 = GGS_analysisContext::init_21__21__21_selfObjectCppName_21_selfAvailability_21_selfObjectCppPrefixForAccessingProperty (constinArgument_inSemanticContext, constinArgument_inPredefinedTypes, GGS_string ("this"), GGS_selfAvailability::class_func_available (var_selfType_10092, GGS_selfMutability::class_func_propertiesAreMutableSelfIsNot (SOURCE_FILE ("extension-overriding-method.galgas", 268))  COMMA_SOURCE_FILE ("extension-overriding-method.galgas", 268)), GGS_string ("this->"), inCompiler COMMA_HERE) ;
-  GGS_bool var_isclass_11689 = GGS_bool (false) ;
-  GalgasBool test_14 = GalgasBool::boolTrue ;
-  if (GalgasBool::boolTrue == test_14) {
-    const GGS_typeKindEnum_2E_classType var_classType_11714 = extensionGetter_definition (var_selfType_10092, inCompiler COMMA_SOURCE_FILE ("extension-overriding-method.galgas", 272)).readProperty_typeKind ().getter_getClassType (SOURCE_FILE ("extension-overriding-method.galgas", 272)).unwrappedValue () ;
-    if (!extensionGetter_definition (var_selfType_10092, inCompiler COMMA_SOURCE_FILE ("extension-overriding-method.galgas", 272)).readProperty_typeKind ().getter_getClassType (SOURCE_FILE ("extension-overriding-method.galgas", 272)).isValuated ()) {
-      test_14 = GalgasBool::boolFalse ;
-    }
-    if (GalgasBool::boolTrue == test_14) {
-      var_isclass_11689 = var_classType_11714.readProperty_isReference () ;
-    }
-  }
-  GGS_semanticInstructionListForGeneration var_semanticInstructionListForGeneration_12074 ;
-  GGS_formalParameterListForGeneration var_formalParameterListForGeneration_12120 ;
+  GGS_semanticInstructionListForGeneration var_semanticInstructionListForGeneration_12119 ;
+  GGS_formalParameterListForGeneration var_formalParameterListForGeneration_12165 ;
   {
+  const GGS_overridingExtensionMethodAST temp_14 = this ;
   const GGS_overridingExtensionMethodAST temp_15 = this ;
   const GGS_overridingExtensionMethodAST temp_16 = this ;
-  const GGS_overridingExtensionMethodAST temp_17 = this ;
-  routine_analyzeRoutineBody_3F__26__3F__26__3F__3F__3F__21__21_ (var_nameForUsefulness_9700, ioArgument_ioUsefulEntitiesGraph, var_analysisContext_11410, ioArgument_ioTypeMap, temp_15.readProperty_mOverridingExtensionMethodFormalParameterList (), temp_16.readProperty_mOverridingExtensionMethodInstructionList (), temp_17.readProperty_mEndOfMethodLocation (), var_semanticInstructionListForGeneration_12074, var_formalParameterListForGeneration_12120, inCompiler  COMMA_SOURCE_FILE ("extension-overriding-method.galgas", 275)) ;
+  routine_analyzeRoutineBody_3F__26__3F__26__3F__3F__3F__21__21_ (var_nameForUsefulness_9700, ioArgument_ioUsefulEntitiesGraph, var_analysisContext_11410, ioArgument_ioTypeMap, temp_14.readProperty_mOverridingExtensionMethodFormalParameterList (), temp_15.readProperty_mOverridingExtensionMethodInstructionList (), temp_16.readProperty_mEndOfMethodLocation (), var_semanticInstructionListForGeneration_12119, var_formalParameterListForGeneration_12165, inCompiler  COMMA_SOURCE_FILE ("extension-overriding-method.galgas", 275)) ;
   }
-  GalgasBool test_18 = GalgasBool::boolTrue ;
-  if (GalgasBool::boolTrue == test_18) {
-    test_18 = GGS_bool (ComparisonKind::notEqual, var_baseTypeName_10431.objectCompare (GGS_string::makeEmptyString ())).boolEnum () ;
-    if (GalgasBool::boolTrue == test_18) {
+  GalgasBool test_17 = GalgasBool::boolTrue ;
+  if (GalgasBool::boolTrue == test_17) {
+    test_17 = GGS_bool (ComparisonKind::notEqual, var_baseTypeName_10431.objectCompare (GGS_string::makeEmptyString ())).boolEnum () ;
+    if (GalgasBool::boolTrue == test_17) {
       {
-      const GGS_overridingExtensionMethodAST temp_19 = this ;
-      routine_checkMethodSignatures_3F__3F__3F__3F_ (var_formalParameterListForGeneration_12120, temp_19.readProperty_mOverridingExtensionMethodName ().readProperty_location (), var_inheritedSignature_10524, var_inheritedDeclarationLocation_10590, inCompiler  COMMA_SOURCE_FILE ("extension-overriding-method.galgas", 288)) ;
+      const GGS_overridingExtensionMethodAST temp_18 = this ;
+      routine_checkMethodSignatures_3F__3F__3F__3F_ (var_formalParameterListForGeneration_12165, temp_18.readProperty_mOverridingExtensionMethodName ().readProperty_location (), var_inheritedSignature_10524, var_inheritedDeclarationLocation_10590, inCompiler  COMMA_SOURCE_FILE ("extension-overriding-method.galgas", 288)) ;
       }
     }
   }
+  const GGS_overridingExtensionMethodAST temp_19 = this ;
   const GGS_overridingExtensionMethodAST temp_20 = this ;
   const GGS_overridingExtensionMethodAST temp_21 = this ;
-  const GGS_overridingExtensionMethodAST temp_22 = this ;
-  ioArgument_ioSemanticDeclarationListForGeneration.addAssignOperation (GGS_string ("override extension method ").add_operation (temp_20.readProperty_mOverridingExtensionMethodName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("extension-overriding-method.galgas", 297)), GGS_overridingExtensionMethodForGeneration::init_21_generateHeader_21_implementationCppFileName_21__21__21__21__21__21_ (GGS_bool (false), GGS_string ("method-").add_operation (extensionGetter_definition (var_selfType_10092, inCompiler COMMA_SOURCE_FILE ("extension-overriding-method.galgas", 300)).readProperty_typeName ().readProperty_string ().getter_fileNameRepresentation (SOURCE_FILE ("extension-overriding-method.galgas", 300)), inCompiler COMMA_SOURCE_FILE ("extension-overriding-method.galgas", 300)).add_operation (GGS_string ("-"), inCompiler COMMA_SOURCE_FILE ("extension-overriding-method.galgas", 300)).add_operation (temp_21.readProperty_mOverridingExtensionMethodName ().readProperty_string ().getter_fileNameRepresentation (SOURCE_FILE ("extension-overriding-method.galgas", 300)), inCompiler COMMA_SOURCE_FILE ("extension-overriding-method.galgas", 300)), var_selfType_10092, var_baseTypeName_10431, temp_22.readProperty_mOverridingExtensionMethodName ().readProperty_string (), var_formalParameterListForGeneration_12120, extensionGetter_definition (var_selfType_10092, inCompiler COMMA_SOURCE_FILE ("extension-overriding-method.galgas", 305)).readProperty_allTypedPropertyList (), var_semanticInstructionListForGeneration_12074, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("extension-overriding-method.galgas", 296)) ;
+  ioArgument_ioSemanticDeclarationListForGeneration.addAssignOperation (GGS_string ("override extension method ").add_operation (temp_19.readProperty_mOverridingExtensionMethodName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("extension-overriding-method.galgas", 297)), GGS_overridingExtensionMethodForGeneration::init_21_generateHeader_21_implementationCppFileName_21__21__21__21__21__21_ (GGS_bool (false), GGS_string ("method-").add_operation (extensionGetter_definition (var_selfType_10092, inCompiler COMMA_SOURCE_FILE ("extension-overriding-method.galgas", 300)).readProperty_typeName ().readProperty_string ().getter_fileNameRepresentation (SOURCE_FILE ("extension-overriding-method.galgas", 300)), inCompiler COMMA_SOURCE_FILE ("extension-overriding-method.galgas", 300)).add_operation (GGS_string ("-"), inCompiler COMMA_SOURCE_FILE ("extension-overriding-method.galgas", 300)).add_operation (temp_20.readProperty_mOverridingExtensionMethodName ().readProperty_string ().getter_fileNameRepresentation (SOURCE_FILE ("extension-overriding-method.galgas", 300)), inCompiler COMMA_SOURCE_FILE ("extension-overriding-method.galgas", 300)), var_selfType_10092, var_baseTypeName_10431, temp_21.readProperty_mOverridingExtensionMethodName ().readProperty_string (), var_formalParameterListForGeneration_12165, extensionGetter_definition (var_selfType_10092, inCompiler COMMA_SOURCE_FILE ("extension-overriding-method.galgas", 305)).readProperty_allTypedPropertyList (), var_semanticInstructionListForGeneration_12119, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("extension-overriding-method.galgas", 296)) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -975,17 +964,17 @@ void cPtr_overridingExtensionMethodForGeneration::method_appendSpecificImplement
                                                                                        GGS_string & outArgument_outImplementation,
                                                                                        Compiler * inCompiler
                                                                                        COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_string var_methodImplementation_16077 ;
+  GGS_string var_methodImplementation_16122 ;
   {
   const GGS_overridingExtensionMethodForGeneration temp_0 = this ;
   const GGS_overridingExtensionMethodForGeneration temp_1 = this ;
   const GGS_overridingExtensionMethodForGeneration temp_2 = this ;
   const GGS_overridingExtensionMethodForGeneration temp_3 = this ;
-  routine_generateExtensionMethodNew_3F__26__3F__3F__3F__21_ (temp_0.readProperty_mReceiverType (), ioArgument_ioInclusionSet, temp_1.readProperty_mExtensionMethodName (), temp_2.readProperty_mExtensionMethodFormalParameterList (), temp_3.readProperty_mSemanticInstructionListForGeneration (), var_methodImplementation_16077, inCompiler  COMMA_SOURCE_FILE ("extension-overriding-method.galgas", 361)) ;
+  routine_generateExtensionMethodNew_3F__26__3F__3F__3F__21_ (temp_0.readProperty_mReceiverType (), ioArgument_ioInclusionSet, temp_1.readProperty_mExtensionMethodName (), temp_2.readProperty_mExtensionMethodFormalParameterList (), temp_3.readProperty_mSemanticInstructionListForGeneration (), var_methodImplementation_16122, inCompiler  COMMA_SOURCE_FILE ("extension-overriding-method.galgas", 361)) ;
   }
   const GGS_overridingExtensionMethodForGeneration temp_4 = this ;
   const GGS_overridingExtensionMethodForGeneration temp_5 = this ;
-  outArgument_outImplementation = GGS_string (filewrapperTemplate_semanticComponentGenerationTemplate_overridingExtensionMethodImplementation (inCompiler, extensionGetter_definition (temp_4.readProperty_mReceiverType (), inCompiler COMMA_SOURCE_FILE ("extension-overriding-method.galgas", 370)).readProperty_typeName ().readProperty_string (), temp_5.readProperty_mExtensionMethodName (), var_methodImplementation_16077 COMMA_SOURCE_FILE ("extension-overriding-method.galgas", 369))) ;
+  outArgument_outImplementation = GGS_string (filewrapperTemplate_semanticComponentGenerationTemplate_overridingExtensionMethodImplementation (inCompiler, extensionGetter_definition (temp_4.readProperty_mReceiverType (), inCompiler COMMA_SOURCE_FILE ("extension-overriding-method.galgas", 370)).readProperty_typeName ().readProperty_string (), temp_5.readProperty_mExtensionMethodName (), var_methodImplementation_16122 COMMA_SOURCE_FILE ("extension-overriding-method.galgas", 369))) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -8236,4 +8225,69 @@ void cPtr_nonterminalInstructionForGeneration::method_appendSyntaxSignature (con
   const GGS_nonterminalInstructionForGeneration temp_1 = this ;
   ioArgument_ioInstructionListForGeneration.addAssignOperation (GGS_nonterminalInstructionForGeneration::init_21__21__21__21__21_ (temp_0.readProperty_mInstructionLocation (), temp_1.readProperty_mNonterminalName (), constinArgument_inPosfix, GGS_actualParameterListForGeneration::init (inCompiler COMMA_HERE), GGS_grammarInstructionSyntaxDirectedTranslationResultNone::init (inCompiler COMMA_HERE), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("instruction-non-terminal.galgas", 200)) ;
 }
+
+//--------------------------------------------------------------------------------------------------
+//
+//Overriding extension getter '@nonterminalInstructionForGeneration compareInstructionSyntaxSignature'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_bool cPtr_nonterminalInstructionForGeneration::getter_compareInstructionSyntaxSignature (const GGS_semanticInstructionForGeneration constinArgument_inTestedInstruction,
+                                                                                             Compiler * inCompiler
+                                                                                             COMMA_UNUSED_LOCATION_ARGS) const {
+  GGS_bool result_result ; // Returned variable
+  GalgasBool test_0 = GalgasBool::boolTrue ;
+  if (GalgasBool::boolTrue == test_0) {
+    GGS_nonterminalInstructionForGeneration var_si_9893 (dynamic_cast <const cPtr_nonterminalInstructionForGeneration *> (constinArgument_inTestedInstruction.ptr ())) ;
+    if (nullptr == var_si_9893.ptr ()) {
+      test_0 = GalgasBool::boolFalse ;
+    }
+    if (GalgasBool::boolTrue == test_0) {
+      const GGS_nonterminalInstructionForGeneration temp_1 = this ;
+      result_result = GGS_bool (ComparisonKind::equal, temp_1.readProperty_mNonterminalName ().objectCompare (var_si_9893.readProperty_mNonterminalName ())) ;
+      GalgasBool test_2 = GalgasBool::boolTrue ;
+      if (GalgasBool::boolTrue == test_2) {
+        test_2 = result_result.operator_not (SOURCE_FILE ("instruction-non-terminal.galgas", 218)).boolEnum () ;
+        if (GalgasBool::boolTrue == test_2) {
+          const GGS_nonterminalInstructionForGeneration temp_3 = this ;
+          GenericArray <FixItDescription> fixItArray4 ;
+          inCompiler->emitSemanticError (var_si_9893.readProperty_mInstructionLocation (), GGS_string ("syntax signature error; the expected syntax instruction here is the '<").add_operation (temp_3.readProperty_mNonterminalName (), inCompiler COMMA_SOURCE_FILE ("instruction-non-terminal.galgas", 220)).add_operation (GGS_string (">' nonterminal invocation"), inCompiler COMMA_SOURCE_FILE ("instruction-non-terminal.galgas", 220)), fixItArray4  COMMA_SOURCE_FILE ("instruction-non-terminal.galgas", 219)) ;
+        }
+      }
+    }
+  }
+  if (GalgasBool::boolFalse == test_0) {
+    GalgasBool test_5 = GalgasBool::boolTrue ;
+    if (GalgasBool::boolTrue == test_5) {
+      GGS_syntaxInstructionForGeneration var_si_10234 (dynamic_cast <const cPtr_syntaxInstructionForGeneration *> (constinArgument_inTestedInstruction.ptr ())) ;
+      if (nullptr == var_si_10234.ptr ()) {
+        test_5 = GalgasBool::boolFalse ;
+      }
+      if (GalgasBool::boolTrue == test_5) {
+        const GGS_nonterminalInstructionForGeneration temp_6 = this ;
+        GenericArray <FixItDescription> fixItArray7 ;
+        inCompiler->emitSemanticError (var_si_10234.readProperty_mInstructionLocation (), GGS_string ("syntax signature error; the expected syntax instruction here is the '<").add_operation (temp_6.readProperty_mNonterminalName (), inCompiler COMMA_SOURCE_FILE ("instruction-non-terminal.galgas", 224)).add_operation (GGS_string (">' nonterminal invocation"), inCompiler COMMA_SOURCE_FILE ("instruction-non-terminal.galgas", 224)), fixItArray7  COMMA_SOURCE_FILE ("instruction-non-terminal.galgas", 223)) ;
+        result_result = GGS_bool (false) ;
+      }
+    }
+    if (GalgasBool::boolFalse == test_5) {
+      const GGS_nonterminalInstructionForGeneration temp_8 = this ;
+      GenericArray <FixItDescription> fixItArray9 ;
+      inCompiler->emitSemanticError (temp_8.readProperty_mInstructionLocation (), GGS_string ("internal error"), fixItArray9  COMMA_SOURCE_FILE ("instruction-non-terminal.galgas", 227)) ;
+      result_result = GGS_bool (false) ;
+    }
+  }
+  GalgasBool test_10 = GalgasBool::boolTrue ;
+  if (GalgasBool::boolTrue == test_10) {
+    test_10 = result_result.operator_not (SOURCE_FILE ("instruction-non-terminal.galgas", 230)).boolEnum () ;
+    if (GalgasBool::boolTrue == test_10) {
+      const GGS_nonterminalInstructionForGeneration temp_11 = this ;
+      GenericArray <FixItDescription> fixItArray12 ;
+      inCompiler->emitSemanticError (temp_11.readProperty_mInstructionLocation (), GGS_string ("reference syntax instruction is here"), fixItArray12  COMMA_SOURCE_FILE ("instruction-non-terminal.galgas", 231)) ;
+    }
+  }
+//---
+  return result_result ;
+}
+
 

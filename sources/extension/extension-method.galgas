@@ -222,9 +222,8 @@ final class @extensionMethodAST : @semanticDeclarationAST {
     let @string selfObjectPropertyAccessorString
     let @bool implementedAsFunction
   //--- Check self type is a class
-    var isReferenceClass = false
-    if let selfClassType = selfType.definition.typeKind.getClassType then
-      isReferenceClass = selfClassType.isReference
+    let isClass = selfType.definition.typeKind == .classType
+    if isClass then
       selfObjectNameString = "this"
       selfObjectPropertyAccessorString = "this->"
       implementedAsFunction = false
@@ -238,13 +237,13 @@ final class @extensionMethodAST : @semanticDeclarationAST {
       !inSemanticContext
       !inPredefinedTypes
       !selfObjectCppName: selfObjectNameString
-      !selfAvailability: .available {!type: selfType !selfMutability: if isReferenceClass then .propertiesAreMutableSelfIsNot else .none end}
+      !selfAvailability: .available {!type: selfType !selfMutability: .propertiesAreMutableSelfIsNot}
       !selfObjectCppPrefixForAccessingProperty: selfObjectPropertyAccessorString
     }
-    var isclass = false
-    if let classType = selfType.definition.typeKind.getClassType then
-      isclass = classType.isReference
-    end
+//    var isclass = false
+//    if let classType = selfType.definition.typeKind.getClassType then
+//      isclass = classType.isReference
+//    end
     analyzeRoutineBody (
       !nameForUsefulness
       !?ioUsefulEntitiesGraph

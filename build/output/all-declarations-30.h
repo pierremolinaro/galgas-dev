@@ -27,68 +27,6 @@ extern const cDirectoryWrapper gWrapperDirectory_0_classGenerationTemplate ;
 
 //--------------------------------------------------------------------------------------------------
 //
-//Filewrapper template 'classGenerationTemplate valueClassTypeHeader1'
-//
-//--------------------------------------------------------------------------------------------------
-
-GGS_string filewrapperTemplate_classGenerationTemplate_valueClassTypeHeader_31_ (class Compiler * inCompiler,
-                                                                                 const class GGS_string & in_TYPE_5F_NAME,
-                                                                                 const class GGS_string & in_TYPE_5F_IDENTIFIER,
-                                                                                 const class GGS_string & in_SUPER_5F_TYPE_5F_IDENTIFIER,
-                                                                                 const class GGS_bool & in_IS_5F_ABSTRACT,
-                                                                                 const class GGS_typedPropertyList & in_CURRENT_5F_PROPERTY_5F_LIST
-                                                                                 COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'classGenerationTemplate valueClassTypeHeader2part1'
-//
-//--------------------------------------------------------------------------------------------------
-
-GGS_string filewrapperTemplate_classGenerationTemplate_valueClassTypeHeader_32_part_31_ (class Compiler * inCompiler,
-                                                                                         const class GGS_string & in_TYPE_5F_NAME,
-                                                                                         const class GGS_string & in_TYPE_5F_IDENTIFIER,
-                                                                                         const class GGS_string & in_SUPER_5F_TYPE_5F_IDENTIFIER,
-                                                                                         const class GGS_typedPropertyList & in_CURRENT_5F_PROPERTY_5F_LIST,
-                                                                                         const class GGS_typedPropertyList & in_ALL_5F_PROPERTY_5F_LIST,
-                                                                                         const class GGS_bool & in_IS_5F_ABSTRACT,
-                                                                                         const class GGS_getterMap & in_GETTER_5F_MAP,
-                                                                                         const class GGS_instanceMethodMap & in_INSTANCE_5F_METHOD_5F_MAP
-                                                                                         COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'classGenerationTemplate valueClassTypeHeader2part2'
-//
-//--------------------------------------------------------------------------------------------------
-
-GGS_string filewrapperTemplate_classGenerationTemplate_valueClassTypeHeader_32_part_32_ (class Compiler * inCompiler,
-                                                                                         const class GGS_string & in_TYPE_5F_NAME,
-                                                                                         const class GGS_string & in_TYPE_5F_IDENTIFIER,
-                                                                                         const class GGS_string & in_SUPER_5F_TYPE_5F_IDENTIFIER,
-                                                                                         const class GGS_typedPropertyList & in_CURRENT_5F_PROPERTY_5F_LIST,
-                                                                                         const class GGS_typedPropertyList & in_ALL_5F_PROPERTY_5F_LIST,
-                                                                                         const class GGS_bool & in_IS_5F_ABSTRACT
-                                                                                         COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'classGenerationTemplate valueClassTypeSpecificImplementation'
-//
-//--------------------------------------------------------------------------------------------------
-
-GGS_string filewrapperTemplate_classGenerationTemplate_valueClassTypeSpecificImplementation (class Compiler * inCompiler,
-                                                                                             const class GGS_string & in_TYPE_5F_NAME,
-                                                                                             const class GGS_string & in_TYPE_5F_IDENTIFIER,
-                                                                                             const class GGS_string & in_SUPER_5F_TYPE_5F_IDENTIFIER,
-                                                                                             const class GGS_typedPropertyList & in_CURRENT_5F_PROPERTY_5F_LIST,
-                                                                                             const class GGS_typedPropertyList & in_ALL_5F_PROPERTY_5F_LIST,
-                                                                                             const class GGS_typedPropertyList & in_INHERITED_5F_ATTRIBUTE_5F_LIST,
-                                                                                             const class GGS_bool & in_IS_5F_ABSTRACT
-                                                                                             COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
 //Filewrapper template 'classGenerationTemplate referenceClassTypeHeader1'
 //
 //--------------------------------------------------------------------------------------------------

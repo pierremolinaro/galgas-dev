@@ -4603,16 +4603,9 @@ mEnum (Enumeration::invalid) {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_typeKindEnum GGS_typeKindEnum::class_func_classType (const GGS_bool & inAssociatedValue0
-                                                         COMMA_UNUSED_LOCATION_ARGS) {
+GGS_typeKindEnum GGS_typeKindEnum::class_func_classType (UNUSED_LOCATION_ARGS) {
   GGS_typeKindEnum result ;
   result.mEnum = Enumeration::enum_classType ;
-  AC_GALGAS_root * p = nullptr ;
-  macroMyNew (p, GGS_typeKindEnum_2E_classType (inAssociatedValue0)) ;
-  EnumerationAssociatedValues * eav = nullptr ;
-  macroMyNew (eav, EnumerationAssociatedValues (p COMMA_HERE)) ;
-  result.mAssociatedValues.assignPointer (eav) ; // Ownership is transfered to mAssociatedValues
-  macroDetachSharedObject (eav) ;
   return result ;
 }
 
@@ -4744,22 +4737,6 @@ GGS_typeKindEnum GGS_typeKindEnum::class_func_packageType (UNUSED_LOCATION_ARGS)
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_typeKindEnum::method_extractClassType (GGS_bool & outAssociatedValue_isReference,
-                                                Compiler * inCompiler
-                                                COMMA_LOCATION_ARGS) const {
-  if (mEnum != Enumeration::enum_classType) {
-    outAssociatedValue_isReference.drop () ;
-    String s ;
-    s.appendCString ("method @typeKindEnum.classType invoked with an invalid enum value") ;
-    inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-  }else{
-    const auto ptr = (GGS_typeKindEnum_2E_classType *) mAssociatedValues.associatedValuesPointer () ;
-    outAssociatedValue_isReference = ptr->mProperty_isReference ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
 void GGS_typeKindEnum::method_extractWeakReferenceType (GGS_unifiedTypeMapEntry & outAssociatedValue_referenceType,
                                                         Compiler * inCompiler
                                                         COMMA_LOCATION_ARGS) const {
@@ -4791,22 +4768,6 @@ void GGS_typeKindEnum::method_extractEnumType (GGS_constantIndexMap & outAssocia
 }
 
 //--------------------------------------------------------------------------------------------------
-
-GGS_typeKindEnum_2E_classType_3F_ GGS_typeKindEnum::getter_getClassType (UNUSED_LOCATION_ARGS) const {
-  GGS_typeKindEnum_2E_classType_3F_ result ;
-  if (mEnum == Enumeration::enum_classType) {
-    const auto ptr = (const GGS_typeKindEnum_2E_classType *) mAssociatedValues.associatedValuesPointer () ;
-    result = GGS_typeKindEnum_2E_classType (*ptr) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_typeKindEnum::getAssociatedValuesFor_classType (GGS_bool & out_isReference) const {
-  const auto ptr = (const GGS_typeKindEnum_2E_classType *) mAssociatedValues.associatedValuesPointer () ;
-  out_isReference = ptr->mProperty_isReference ;
-}
 
 //--------------------------------------------------------------------------------------------------
 
@@ -5000,11 +4961,6 @@ ComparisonResult GGS_typeKindEnum::objectCompare (const GGS_typeKindEnum & inOpe
       result = ComparisonResult::firstOperandGreaterThanSecond ;
     }else{
       switch (mEnum) {
-      case Enumeration::enum_classType: {
-        const auto left = (GGS_typeKindEnum_2E_classType *) mAssociatedValues.associatedValuesPointer () ;
-        const auto right = (GGS_typeKindEnum_2E_classType *) inOperand.mAssociatedValues.associatedValuesPointer () ;
-        result = left->objectCompare (*right) ;
-        }break ;
       case Enumeration::enum_weakReferenceType: {
         const auto left = (GGS_typeKindEnum_2E_weakReferenceType *) mAssociatedValues.associatedValuesPointer () ;
         const auto right = (GGS_typeKindEnum_2E_weakReferenceType *) inOperand.mAssociatedValues.associatedValuesPointer () ;
@@ -13201,22 +13157,13 @@ GGS_string extensionGetter_string (const GGS_typeKindEnum & inObject,
     break ;
   case GGS_typeKindEnum::Enumeration::enum_classType:
     {
-      GGS_bool extractedValue_3840_isReference_0 ;
-      temp_0.getAssociatedValuesFor_classType (extractedValue_3840_isReference_0) ;
-      GGS_string temp_1 ;
-      const GalgasBool test_2 = extractedValue_3840_isReference_0.boolEnum () ;
-      if (GalgasBool::boolTrue == test_2) {
-        temp_1 = GGS_string ("reference class") ;
-      }else if (GalgasBool::boolFalse == test_2) {
-        temp_1 = GGS_string ("value class") ;
-      }
-      result_result = temp_1 ;
+      result_result = GGS_string ("class") ;
     }
     break ;
   case GGS_typeKindEnum::Enumeration::enum_enumType:
     {
-      GGS_constantIndexMap extractedValue_3946__0 ;
-      temp_0.getAssociatedValuesFor_enumType (extractedValue_3946__0) ;
+      GGS_constantIndexMap extractedValue_3859__0 ;
+      temp_0.getAssociatedValuesFor_enumType (extractedValue_3859__0) ;
       result_result = GGS_string ("enumeration") ;
     }
     break ;
@@ -13282,8 +13229,8 @@ GGS_string extensionGetter_string (const GGS_typeKindEnum & inObject,
     break ;
   case GGS_typeKindEnum::Enumeration::enum_weakReferenceType:
     {
-      GGS_unifiedTypeMapEntry extractedValue_4535__0 ;
-      temp_0.getAssociatedValuesFor_weakReferenceType (extractedValue_4535__0) ;
+      GGS_unifiedTypeMapEntry extractedValue_4448__0 ;
+      temp_0.getAssociatedValuesFor_weakReferenceType (extractedValue_4448__0) ;
       result_result = GGS_string ("weak reference") ;
     }
     break ;

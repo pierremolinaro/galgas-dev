@@ -202,7 +202,7 @@ override method @setterCallInstructionAST analyzeSemanticInstruction
   if self.mPrefixedBySelf then
     if let selfAvailability = inAnalysisContext.selfAvailability.getAvailable then
     //--- Check self is not inkoed before full initialization
-      if let classTypeKind = selfAvailability.type.definition.typeKind.getClassType, classTypeKind.isReference then
+      if selfAvailability.type.definition.typeKind == .classType then
       elsif not selfAvailability.selfMutability.selfIsMutable then
         error self.mSetterName : "'self' not mutable in this context"
       end

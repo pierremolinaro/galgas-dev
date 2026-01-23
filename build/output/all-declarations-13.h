@@ -2725,8 +2725,6 @@ class GGS_classTypeForGeneration : public GGS_semanticTypeForGeneration {
 //--------------------------------- Property access
   public: class GGS_bool readProperty_mIsAbstract (void) const ;
 
-  public: class GGS_bool readProperty_mIsReference (void) const ;
-
   public: class GGS_unifiedTypeMapEntry readProperty_mSuperClass (void) const ;
 
   public: class GGS_typedPropertyList readProperty_mAllTypedAttributeList (void) const ;
@@ -2750,21 +2748,20 @@ class GGS_classTypeForGeneration : public GGS_semanticTypeForGeneration {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GGS_classTypeForGeneration init_21__21__21__21__21__21__21__21__21__21__21__21__21_ (const class GGS_unifiedTypeMapEntry & inOperand0,
-                                                                                                      const class GGS_bool & inOperand1,
-                                                                                                      const class GGS_bool & inOperand2,
-                                                                                                      const class GGS_unifiedTypeMapEntry & inOperand3,
-                                                                                                      const class GGS_typedPropertyList & inOperand4,
-                                                                                                      const class GGS_typedPropertyList & inOperand5,
-                                                                                                      const class GGS_bool & inOperand6,
-                                                                                                      const class GGS_bool & inOperand7,
-                                                                                                      const class GGS_string & inOperand8,
-                                                                                                      const class GGS_typedPropertyList & inOperand9,
-                                                                                                      const class GGS_typedPropertyList & inOperand10,
-                                                                                                      const class GGS_initializerMap & inOperand11,
-                                                                                                      const class GGS_bool & inOperand12,
-                                                                                                      Compiler * inCompiler
-                                                                                                      COMMA_LOCATION_ARGS) ;
+  public: static GGS_classTypeForGeneration init_21__21__21__21__21__21__21__21__21__21__21__21_ (const class GGS_unifiedTypeMapEntry & inOperand0,
+                                                                                                  const class GGS_bool & inOperand1,
+                                                                                                  const class GGS_unifiedTypeMapEntry & inOperand2,
+                                                                                                  const class GGS_typedPropertyList & inOperand3,
+                                                                                                  const class GGS_typedPropertyList & inOperand4,
+                                                                                                  const class GGS_bool & inOperand5,
+                                                                                                  const class GGS_bool & inOperand6,
+                                                                                                  const class GGS_string & inOperand7,
+                                                                                                  const class GGS_typedPropertyList & inOperand8,
+                                                                                                  const class GGS_typedPropertyList & inOperand9,
+                                                                                                  const class GGS_initializerMap & inOperand10,
+                                                                                                  const class GGS_bool & inOperand11,
+                                                                                                  Compiler * inCompiler
+                                                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -2807,20 +2804,19 @@ class cPtr_classTypeForGeneration : public cPtr_semanticTypeForGeneration {
   #endif
 
 //--------------------------------- Initializers
-  public: void classTypeForGeneration_init_21__21__21__21__21__21__21__21__21__21__21__21__21_ (const class GGS_unifiedTypeMapEntry & inOperand0,
-                                                                                                const class GGS_bool & inOperand1,
-                                                                                                const class GGS_bool & inOperand2,
-                                                                                                const class GGS_unifiedTypeMapEntry & inOperand3,
-                                                                                                const class GGS_typedPropertyList & inOperand4,
-                                                                                                const class GGS_typedPropertyList & inOperand5,
-                                                                                                const class GGS_bool & inOperand6,
-                                                                                                const class GGS_bool & inOperand7,
-                                                                                                const class GGS_string & inOperand8,
-                                                                                                const class GGS_typedPropertyList & inOperand9,
-                                                                                                const class GGS_typedPropertyList & inOperand10,
-                                                                                                const class GGS_initializerMap & inOperand11,
-                                                                                                const class GGS_bool & inOperand12,
-                                                                                                Compiler * inCompiler) ;
+  public: void classTypeForGeneration_init_21__21__21__21__21__21__21__21__21__21__21__21_ (const class GGS_unifiedTypeMapEntry & inOperand0,
+                                                                                            const class GGS_bool & inOperand1,
+                                                                                            const class GGS_unifiedTypeMapEntry & inOperand2,
+                                                                                            const class GGS_typedPropertyList & inOperand3,
+                                                                                            const class GGS_typedPropertyList & inOperand4,
+                                                                                            const class GGS_bool & inOperand5,
+                                                                                            const class GGS_bool & inOperand6,
+                                                                                            const class GGS_string & inOperand7,
+                                                                                            const class GGS_typedPropertyList & inOperand8,
+                                                                                            const class GGS_typedPropertyList & inOperand9,
+                                                                                            const class GGS_initializerMap & inOperand10,
+                                                                                            const class GGS_bool & inOperand11,
+                                                                                            Compiler * inCompiler) ;
 
 
 //--- Extension method appendDeclaration1
@@ -2842,7 +2838,6 @@ class cPtr_classTypeForGeneration : public cPtr_semanticTypeForGeneration {
 
 //--- Properties
   public: GGS_bool mProperty_mIsAbstract ;
-  public: GGS_bool mProperty_mIsReference ;
   public: GGS_unifiedTypeMapEntry mProperty_mSuperClass ;
   public: GGS_typedPropertyList mProperty_mAllTypedAttributeList ;
   public: GGS_typedPropertyList mProperty_mCurrentTypedAttributeList ;
@@ -2861,7 +2856,6 @@ class cPtr_classTypeForGeneration : public cPtr_semanticTypeForGeneration {
 //--- Constructor
   public: cPtr_classTypeForGeneration (const GGS_unifiedTypeMapEntry & in_mSelfTypeEntry,
                                        const GGS_bool & in_mIsAbstract,
-                                       const GGS_bool & in_mIsReference,
                                        const GGS_unifiedTypeMapEntry & in_mSuperClass,
                                        const GGS_typedPropertyList & in_mAllTypedAttributeList,
                                        const GGS_typedPropertyList & in_mCurrentTypedAttributeList,

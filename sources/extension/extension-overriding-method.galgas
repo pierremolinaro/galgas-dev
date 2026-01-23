@@ -268,10 +268,10 @@ override method @overridingExtensionMethodAST semanticAnalysis
     !selfAvailability: .available {!type: selfType !selfMutability: .propertiesAreMutableSelfIsNot}
     !selfObjectCppPrefixForAccessingProperty: "this->"
   }
-  var isclass = false
-  if let classType = selfType.definition.typeKind.getClassType then
-    isclass = classType.isReference
-  end
+//  let isClass = selfType.definition.typeKind == .classType
+//  if let classType = selfType.definition.typeKind.getClassType then
+//    isclass = classType.isReference
+//  end
   analyzeRoutineBody (
     !nameForUsefulness
     !?ioUsefulEntitiesGraph

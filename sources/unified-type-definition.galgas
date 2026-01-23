@@ -54,7 +54,7 @@ struct @unifiedTypeDefinition {
 //--------------------------------------------------------------------------------------------------
 
 enum @typeKindEnum %equatable {
-  case classType (@bool isReference)
+  case classType
   case weakReferenceType (@unifiedTypeMapEntry referenceType)
   case enumType (@constantIndexMap constantMap)
   case listType
@@ -74,7 +74,7 @@ enum @typeKindEnum %equatable {
 
   getter string -> @string {
     switch self
-      case classType (isReference) : result = if isReference then "reference class" else "value class" end
+      case classType : result = "class"
       case enumType (*) : result = "enumeration"
       case listType : result = "list"
       case sortedListType : result = "sorted list"

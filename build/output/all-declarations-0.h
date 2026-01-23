@@ -11130,7 +11130,6 @@ class GGS_typeKindEnum : public AC_GALGAS_root {
   private: Enumeration mEnum ;
 
 //--------------------------------- Associated value extraction
-  public: VIRTUAL_IN_DEBUG void getAssociatedValuesFor_classType (class GGS_bool & out_isReference) const ;
   public: VIRTUAL_IN_DEBUG void getAssociatedValuesFor_weakReferenceType (class GGS_unifiedTypeMapEntry & out_referenceType) const ;
   public: VIRTUAL_IN_DEBUG void getAssociatedValuesFor_enumType (class GGS_constantIndexMap & out_constantMap) const ;
 
@@ -11163,8 +11162,7 @@ class GGS_typeKindEnum : public AC_GALGAS_root {
 //--------------------------------- GALGAS class functions
   public: static class GGS_typeKindEnum class_func_boolsetType (LOCATION_ARGS) ;
 
-  public: static class GGS_typeKindEnum class_func_classType (const class GGS_bool & inOperand0
-                                                              COMMA_LOCATION_ARGS) ;
+  public: static class GGS_typeKindEnum class_func_classType (LOCATION_ARGS) ;
 
   public: static class GGS_typeKindEnum class_func_enumType (const class GGS_constantIndexMap & inOperand0
                                                              COMMA_LOCATION_ARGS) ;
@@ -11203,10 +11201,6 @@ class GGS_typeKindEnum : public AC_GALGAS_root {
 //--------------------------------- Setters
 
 //--------------------------------- Instance Methods
-  public: VIRTUAL_IN_DEBUG void method_extractClassType (class GGS_bool & outArgument0,
-                                                         Compiler * inCompiler
-                                                         COMMA_LOCATION_ARGS) const ;
-
   public: VIRTUAL_IN_DEBUG void method_extractEnumType (class GGS_constantIndexMap & outArgument0,
                                                         Compiler * inCompiler
                                                         COMMA_LOCATION_ARGS) const ;
@@ -11218,8 +11212,6 @@ class GGS_typeKindEnum : public AC_GALGAS_root {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
-  public: VIRTUAL_IN_DEBUG class GGS_typeKindEnum_2E_classType_3F_ getter_getClassType (LOCATION_ARGS) const ;
-
   public: VIRTUAL_IN_DEBUG class GGS_typeKindEnum_2E_enumType_3F_ getter_getEnumType (LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GGS_typeKindEnum_2E_weakReferenceType_3F_ getter_getWeakReferenceType (LOCATION_ARGS) const ;

@@ -6613,20 +6613,19 @@ GGS_semanticDeclarationAST () {
 //--- Synthetized initializer ----------------------------------------------------------------------
 
 GGS_classDeclarationAST GGS_classDeclarationAST::
-init_21_isPredefined_21__21__21__21__21__21__21__21_ (const GGS_bool & in_isPredefined,
-                                                      const GGS_bool & in_mIsAbstract,
-                                                      const GGS_bool & in_mIsReference,
-                                                      const GGS_bool & in_mIsFinal,
-                                                      const GGS_lstring & in_mClassTypeName,
-                                                      const GGS_lstring & in_mSuperClassName,
-                                                      const GGS_bool & in_mGenerateInSeparateFile,
-                                                      const GGS_propertyInCollectionListAST & in_mPropertyList,
-                                                      const GGS_bool & in_clonable,
-                                                      Compiler * inCompiler
-                                                      COMMA_LOCATION_ARGS) {
+init_21_isPredefined_21__21__21__21__21__21__21_ (const GGS_bool & in_isPredefined,
+                                                  const GGS_bool & in_mIsAbstract,
+                                                  const GGS_bool & in_mIsFinal,
+                                                  const GGS_lstring & in_mClassTypeName,
+                                                  const GGS_lstring & in_mSuperClassName,
+                                                  const GGS_bool & in_mGenerateInSeparateFile,
+                                                  const GGS_propertyInCollectionListAST & in_mPropertyList,
+                                                  const GGS_bool & in_clonable,
+                                                  Compiler * inCompiler
+                                                  COMMA_LOCATION_ARGS) {
   cPtr_classDeclarationAST * object = nullptr ;
   macroMyNew (object, cPtr_classDeclarationAST (inCompiler COMMA_THERE)) ;
-  object->classDeclarationAST_init_21_isPredefined_21__21__21__21__21__21__21__21_ (in_isPredefined, in_mIsAbstract, in_mIsReference, in_mIsFinal, in_mClassTypeName, in_mSuperClassName, in_mGenerateInSeparateFile, in_mPropertyList, in_clonable, inCompiler) ;
+  object->classDeclarationAST_init_21_isPredefined_21__21__21__21__21__21__21_ (in_isPredefined, in_mIsAbstract, in_mIsFinal, in_mClassTypeName, in_mSuperClassName, in_mGenerateInSeparateFile, in_mPropertyList, in_clonable, inCompiler) ;
   const GGS_classDeclarationAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
@@ -6635,19 +6634,17 @@ init_21_isPredefined_21__21__21__21__21__21__21__21_ (const GGS_bool & in_isPred
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_classDeclarationAST::
-classDeclarationAST_init_21_isPredefined_21__21__21__21__21__21__21__21_ (const GGS_bool & in_isPredefined,
-                                                                          const GGS_bool & in_mIsAbstract,
-                                                                          const GGS_bool & in_mIsReference,
-                                                                          const GGS_bool & in_mIsFinal,
-                                                                          const GGS_lstring & in_mClassTypeName,
-                                                                          const GGS_lstring & in_mSuperClassName,
-                                                                          const GGS_bool & in_mGenerateInSeparateFile,
-                                                                          const GGS_propertyInCollectionListAST & in_mPropertyList,
-                                                                          const GGS_bool & in_clonable,
-                                                                          Compiler * /* inCompiler */) {
+classDeclarationAST_init_21_isPredefined_21__21__21__21__21__21__21_ (const GGS_bool & in_isPredefined,
+                                                                      const GGS_bool & in_mIsAbstract,
+                                                                      const GGS_bool & in_mIsFinal,
+                                                                      const GGS_lstring & in_mClassTypeName,
+                                                                      const GGS_lstring & in_mSuperClassName,
+                                                                      const GGS_bool & in_mGenerateInSeparateFile,
+                                                                      const GGS_propertyInCollectionListAST & in_mPropertyList,
+                                                                      const GGS_bool & in_clonable,
+                                                                      Compiler * /* inCompiler */) {
   mProperty_isPredefined = in_isPredefined ;
   mProperty_mIsAbstract = in_mIsAbstract ;
-  mProperty_mIsReference = in_mIsReference ;
   mProperty_mIsFinal = in_mIsFinal ;
   mProperty_mClassTypeName = in_mClassTypeName ;
   mProperty_mSuperClassName = in_mSuperClassName ;
@@ -6671,18 +6668,6 @@ GGS_bool GGS_classDeclarationAST::readProperty_mIsAbstract (void) const {
     cPtr_classDeclarationAST * p = (cPtr_classDeclarationAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_classDeclarationAST) ;
     return p->mProperty_mIsAbstract ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_bool GGS_classDeclarationAST::readProperty_mIsReference (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_bool () ;
-  }else{
-    cPtr_classDeclarationAST * p = (cPtr_classDeclarationAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_classDeclarationAST) ;
-    return p->mProperty_mIsReference ;
   }
 }
 
@@ -6765,7 +6750,6 @@ GGS_bool GGS_classDeclarationAST::readProperty_clonable (void) const {
 cPtr_classDeclarationAST::cPtr_classDeclarationAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
 cPtr_semanticDeclarationAST (inCompiler COMMA_THERE),
 mProperty_mIsAbstract (),
-mProperty_mIsReference (),
 mProperty_mIsFinal (),
 mProperty_mClassTypeName (),
 mProperty_mSuperClassName (),
@@ -6778,7 +6762,6 @@ mProperty_clonable () {
 
 cPtr_classDeclarationAST::cPtr_classDeclarationAST (const GGS_bool & in_isPredefined,
                                                     const GGS_bool & in_mIsAbstract,
-                                                    const GGS_bool & in_mIsReference,
                                                     const GGS_bool & in_mIsFinal,
                                                     const GGS_lstring & in_mClassTypeName,
                                                     const GGS_lstring & in_mSuperClassName,
@@ -6789,7 +6772,6 @@ cPtr_classDeclarationAST::cPtr_classDeclarationAST (const GGS_bool & in_isPredef
                                                     COMMA_LOCATION_ARGS) :
 cPtr_semanticDeclarationAST (in_isPredefined, inCompiler COMMA_THERE),
 mProperty_mIsAbstract (),
-mProperty_mIsReference (),
 mProperty_mIsFinal (),
 mProperty_mClassTypeName (),
 mProperty_mSuperClassName (),
@@ -6798,7 +6780,6 @@ mProperty_mPropertyList (),
 mProperty_clonable () {
   mProperty_isPredefined = in_isPredefined ;
   mProperty_mIsAbstract = in_mIsAbstract ;
-  mProperty_mIsReference = in_mIsReference ;
   mProperty_mIsFinal = in_mIsFinal ;
   mProperty_mClassTypeName = in_mClassTypeName ;
   mProperty_mSuperClassName = in_mSuperClassName ;
@@ -6820,8 +6801,6 @@ void cPtr_classDeclarationAST::description (String & ioString,
   ioString.appendCString (", ") ;
   mProperty_mIsAbstract.description (ioString, inIndentation+1) ;
   ioString.appendCString (", ") ;
-  mProperty_mIsReference.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
   mProperty_mIsFinal.description (ioString, inIndentation+1) ;
   ioString.appendCString (", ") ;
   mProperty_mClassTypeName.description (ioString, inIndentation+1) ;
@@ -6840,7 +6819,7 @@ void cPtr_classDeclarationAST::description (String & ioString,
 
 acPtr_class * cPtr_classDeclarationAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_classDeclarationAST (mProperty_isPredefined, mProperty_mIsAbstract, mProperty_mIsReference, mProperty_mIsFinal, mProperty_mClassTypeName, mProperty_mSuperClassName, mProperty_mGenerateInSeparateFile, mProperty_mPropertyList, mProperty_clonable, inCompiler COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_classDeclarationAST (mProperty_isPredefined, mProperty_mIsAbstract, mProperty_mIsFinal, mProperty_mClassTypeName, mProperty_mSuperClassName, mProperty_mGenerateInSeparateFile, mProperty_mPropertyList, mProperty_clonable, inCompiler COMMA_THERE)) ;
   return ptr ;
 }
 
@@ -6851,7 +6830,6 @@ acPtr_class * cPtr_classDeclarationAST::duplicate (Compiler * inCompiler COMMA_L
   void cPtr_classDeclarationAST::printNonNullClassInstanceProperties (void) const {
     cPtr_semanticDeclarationAST::printNonNullClassInstanceProperties () ;
     mProperty_mIsAbstract.printNonNullClassInstanceProperties ("mIsAbstract") ;
-    mProperty_mIsReference.printNonNullClassInstanceProperties ("mIsReference") ;
     mProperty_mIsFinal.printNonNullClassInstanceProperties ("mIsFinal") ;
     mProperty_mClassTypeName.printNonNullClassInstanceProperties ("mClassTypeName") ;
     mProperty_mSuperClassName.printNonNullClassInstanceProperties ("mSuperClassName") ;
@@ -15609,6 +15587,141 @@ GGS_constantIndexMap_2E_element GGS_constantIndexMap_2E_element::extractObject (
       result = *p ;
     }else{
       inCompiler->castError ("constantIndexMap.element", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//Optional @constantIndexMap_2E_element_3F_
+//--------------------------------------------------------------------------------------------------
+
+GGS_constantIndexMap_2E_element_3F_::GGS_constantIndexMap_2E_element_3F_ (void) :
+AC_GALGAS_root (),
+mValue (),
+mState (OptionalState::invalid) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_constantIndexMap_2E_element_3F_::GGS_constantIndexMap_2E_element_3F_ (const GGS_constantIndexMap_2E_element & inSource) :
+AC_GALGAS_root (),
+mValue (inSource),
+mState (OptionalState::valuated) {
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_constantIndexMap_2E_element_3F_ GGS_constantIndexMap_2E_element_3F_::init_nil (void) {
+  GGS_constantIndexMap_2E_element_3F_ result ;
+  result.mState = OptionalState::isNil ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_constantIndexMap_2E_element_3F_::isValid (void) const {
+  bool result = false ;
+  switch (mState) {
+  case OptionalState::invalid :
+    break ;
+  case OptionalState::isNil :
+    result = true ;
+    break ;
+  case OptionalState::valuated :
+    result = mValue.isValid () ;
+    break ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_constantIndexMap_2E_element_3F_::isValuated (void) const {
+  return (mState == OptionalState::valuated) && mValue.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_constantIndexMap_2E_element_3F_::drop (void) {
+  mState = OptionalState::invalid ;
+  mValue = GGS_constantIndexMap_2E_element () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GGS_constantIndexMap_2E_element_3F_::objectCompare (const GGS_constantIndexMap_2E_element_3F_ & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    if (mState < inOperand.mState) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (mState > inOperand.mState) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else if (mState == OptionalState::valuated) {
+      result = mValue.objectCompare (inOperand.mValue) ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+//--------------------------------------------------------------------------------------------------
+
+void GGS_constantIndexMap_2E_element_3F_::description (String & ioString,
+                                                       const int32_t inIndentation) const {
+  ioString.appendCString ("<optional @") ;
+  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
+  ioString.appendCString (": ") ;
+  switch (mState) {
+  case OptionalState::invalid :
+    ioString.appendCString ("invalid") ;
+    break ;
+  case OptionalState::isNil :
+    ioString.appendCString ("nil") ;
+    break ;
+  case OptionalState::valuated :
+    mValue.description (ioString, inIndentation) ;
+    break ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @constantIndexMap.element? generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_constantIndexMap_2E_element_3F_ ("constantIndexMap.element?",
+                                                                                    nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_constantIndexMap_2E_element_3F_::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_constantIndexMap_2E_element_3F_ ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_constantIndexMap_2E_element_3F_::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_constantIndexMap_2E_element_3F_ (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_constantIndexMap_2E_element_3F_ GGS_constantIndexMap_2E_element_3F_::extractObject (const GGS_object & inObject,
+                                                                                        Compiler * inCompiler
+                                                                                        COMMA_LOCATION_ARGS) {
+  GGS_constantIndexMap_2E_element_3F_ result ;
+  const GGS_constantIndexMap_2E_element_3F_ * p = (const GGS_constantIndexMap_2E_element_3F_ *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_constantIndexMap_2E_element_3F_ *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("constantIndexMap.element?", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;

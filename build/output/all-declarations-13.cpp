@@ -6764,24 +6764,23 @@ GGS_semanticTypeForGeneration () {
 //--- Synthetized initializer ----------------------------------------------------------------------
 
 GGS_classTypeForGeneration GGS_classTypeForGeneration::
-init_21__21__21__21__21__21__21__21__21__21__21__21__21_ (const GGS_unifiedTypeMapEntry & in_mSelfTypeEntry,
-                                                          const GGS_bool & in_mIsAbstract,
-                                                          const GGS_bool & in_mIsReference,
-                                                          const GGS_unifiedTypeMapEntry & in_mSuperClass,
-                                                          const GGS_typedPropertyList & in_mAllTypedAttributeList,
-                                                          const GGS_typedPropertyList & in_mCurrentTypedAttributeList,
-                                                          const GGS_bool & in_generateHeaderInSeparateFile,
-                                                          const GGS_bool & in_initializerNeedsCompilerVariable,
-                                                          const GGS_string & in_propertyInitializationCode,
-                                                          const GGS_typedPropertyList & in_synthetizedInitializerArgumentList,
-                                                          const GGS_typedPropertyList & in_inheritedSynthetizedInitializerArgumentList,
-                                                          const GGS_initializerMap & in_initializerMap,
-                                                          const GGS_bool & in_clonable,
-                                                          Compiler * inCompiler
-                                                          COMMA_LOCATION_ARGS) {
+init_21__21__21__21__21__21__21__21__21__21__21__21_ (const GGS_unifiedTypeMapEntry & in_mSelfTypeEntry,
+                                                      const GGS_bool & in_mIsAbstract,
+                                                      const GGS_unifiedTypeMapEntry & in_mSuperClass,
+                                                      const GGS_typedPropertyList & in_mAllTypedAttributeList,
+                                                      const GGS_typedPropertyList & in_mCurrentTypedAttributeList,
+                                                      const GGS_bool & in_generateHeaderInSeparateFile,
+                                                      const GGS_bool & in_initializerNeedsCompilerVariable,
+                                                      const GGS_string & in_propertyInitializationCode,
+                                                      const GGS_typedPropertyList & in_synthetizedInitializerArgumentList,
+                                                      const GGS_typedPropertyList & in_inheritedSynthetizedInitializerArgumentList,
+                                                      const GGS_initializerMap & in_initializerMap,
+                                                      const GGS_bool & in_clonable,
+                                                      Compiler * inCompiler
+                                                      COMMA_LOCATION_ARGS) {
   cPtr_classTypeForGeneration * object = nullptr ;
   macroMyNew (object, cPtr_classTypeForGeneration (inCompiler COMMA_THERE)) ;
-  object->classTypeForGeneration_init_21__21__21__21__21__21__21__21__21__21__21__21__21_ (in_mSelfTypeEntry, in_mIsAbstract, in_mIsReference, in_mSuperClass, in_mAllTypedAttributeList, in_mCurrentTypedAttributeList, in_generateHeaderInSeparateFile, in_initializerNeedsCompilerVariable, in_propertyInitializationCode, in_synthetizedInitializerArgumentList, in_inheritedSynthetizedInitializerArgumentList, in_initializerMap, in_clonable, inCompiler) ;
+  object->classTypeForGeneration_init_21__21__21__21__21__21__21__21__21__21__21__21_ (in_mSelfTypeEntry, in_mIsAbstract, in_mSuperClass, in_mAllTypedAttributeList, in_mCurrentTypedAttributeList, in_generateHeaderInSeparateFile, in_initializerNeedsCompilerVariable, in_propertyInitializationCode, in_synthetizedInitializerArgumentList, in_inheritedSynthetizedInitializerArgumentList, in_initializerMap, in_clonable, inCompiler) ;
   const GGS_classTypeForGeneration result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
@@ -6790,23 +6789,21 @@ init_21__21__21__21__21__21__21__21__21__21__21__21__21_ (const GGS_unifiedTypeM
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_classTypeForGeneration::
-classTypeForGeneration_init_21__21__21__21__21__21__21__21__21__21__21__21__21_ (const GGS_unifiedTypeMapEntry & in_mSelfTypeEntry,
-                                                                                 const GGS_bool & in_mIsAbstract,
-                                                                                 const GGS_bool & in_mIsReference,
-                                                                                 const GGS_unifiedTypeMapEntry & in_mSuperClass,
-                                                                                 const GGS_typedPropertyList & in_mAllTypedAttributeList,
-                                                                                 const GGS_typedPropertyList & in_mCurrentTypedAttributeList,
-                                                                                 const GGS_bool & in_generateHeaderInSeparateFile,
-                                                                                 const GGS_bool & in_initializerNeedsCompilerVariable,
-                                                                                 const GGS_string & in_propertyInitializationCode,
-                                                                                 const GGS_typedPropertyList & in_synthetizedInitializerArgumentList,
-                                                                                 const GGS_typedPropertyList & in_inheritedSynthetizedInitializerArgumentList,
-                                                                                 const GGS_initializerMap & in_initializerMap,
-                                                                                 const GGS_bool & in_clonable,
-                                                                                 Compiler * /* inCompiler */) {
+classTypeForGeneration_init_21__21__21__21__21__21__21__21__21__21__21__21_ (const GGS_unifiedTypeMapEntry & in_mSelfTypeEntry,
+                                                                             const GGS_bool & in_mIsAbstract,
+                                                                             const GGS_unifiedTypeMapEntry & in_mSuperClass,
+                                                                             const GGS_typedPropertyList & in_mAllTypedAttributeList,
+                                                                             const GGS_typedPropertyList & in_mCurrentTypedAttributeList,
+                                                                             const GGS_bool & in_generateHeaderInSeparateFile,
+                                                                             const GGS_bool & in_initializerNeedsCompilerVariable,
+                                                                             const GGS_string & in_propertyInitializationCode,
+                                                                             const GGS_typedPropertyList & in_synthetizedInitializerArgumentList,
+                                                                             const GGS_typedPropertyList & in_inheritedSynthetizedInitializerArgumentList,
+                                                                             const GGS_initializerMap & in_initializerMap,
+                                                                             const GGS_bool & in_clonable,
+                                                                             Compiler * /* inCompiler */) {
   mProperty_mSelfTypeEntry = in_mSelfTypeEntry ;
   mProperty_mIsAbstract = in_mIsAbstract ;
-  mProperty_mIsReference = in_mIsReference ;
   mProperty_mSuperClass = in_mSuperClass ;
   mProperty_mAllTypedAttributeList = in_mAllTypedAttributeList ;
   mProperty_mCurrentTypedAttributeList = in_mCurrentTypedAttributeList ;
@@ -6834,18 +6831,6 @@ GGS_bool GGS_classTypeForGeneration::readProperty_mIsAbstract (void) const {
     cPtr_classTypeForGeneration * p = (cPtr_classTypeForGeneration *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_classTypeForGeneration) ;
     return p->mProperty_mIsAbstract ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_bool GGS_classTypeForGeneration::readProperty_mIsReference (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_bool () ;
-  }else{
-    cPtr_classTypeForGeneration * p = (cPtr_classTypeForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_classTypeForGeneration) ;
-    return p->mProperty_mIsReference ;
   }
 }
 
@@ -6976,7 +6961,6 @@ GGS_bool GGS_classTypeForGeneration::readProperty_clonable (void) const {
 cPtr_classTypeForGeneration::cPtr_classTypeForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) :
 cPtr_semanticTypeForGeneration (inCompiler COMMA_THERE),
 mProperty_mIsAbstract (),
-mProperty_mIsReference (),
 mProperty_mSuperClass (),
 mProperty_mAllTypedAttributeList (),
 mProperty_mCurrentTypedAttributeList (),
@@ -6993,7 +6977,6 @@ mProperty_clonable () {
 
 cPtr_classTypeForGeneration::cPtr_classTypeForGeneration (const GGS_unifiedTypeMapEntry & in_mSelfTypeEntry,
                                                           const GGS_bool & in_mIsAbstract,
-                                                          const GGS_bool & in_mIsReference,
                                                           const GGS_unifiedTypeMapEntry & in_mSuperClass,
                                                           const GGS_typedPropertyList & in_mAllTypedAttributeList,
                                                           const GGS_typedPropertyList & in_mCurrentTypedAttributeList,
@@ -7008,7 +6991,6 @@ cPtr_classTypeForGeneration::cPtr_classTypeForGeneration (const GGS_unifiedTypeM
                                                           COMMA_LOCATION_ARGS) :
 cPtr_semanticTypeForGeneration (in_mSelfTypeEntry, inCompiler COMMA_THERE),
 mProperty_mIsAbstract (),
-mProperty_mIsReference (),
 mProperty_mSuperClass (),
 mProperty_mAllTypedAttributeList (),
 mProperty_mCurrentTypedAttributeList (),
@@ -7021,7 +7003,6 @@ mProperty_initializerMap (),
 mProperty_clonable () {
   mProperty_mSelfTypeEntry = in_mSelfTypeEntry ;
   mProperty_mIsAbstract = in_mIsAbstract ;
-  mProperty_mIsReference = in_mIsReference ;
   mProperty_mSuperClass = in_mSuperClass ;
   mProperty_mAllTypedAttributeList = in_mAllTypedAttributeList ;
   mProperty_mCurrentTypedAttributeList = in_mCurrentTypedAttributeList ;
@@ -7046,8 +7027,6 @@ void cPtr_classTypeForGeneration::description (String & ioString,
   mProperty_mSelfTypeEntry.description (ioString, inIndentation+1) ;
   ioString.appendCString (", ") ;
   mProperty_mIsAbstract.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mIsReference.description (ioString, inIndentation+1) ;
   ioString.appendCString (", ") ;
   mProperty_mSuperClass.description (ioString, inIndentation+1) ;
   ioString.appendCString (", ") ;
@@ -7075,7 +7054,7 @@ void cPtr_classTypeForGeneration::description (String & ioString,
 
 acPtr_class * cPtr_classTypeForGeneration::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_classTypeForGeneration (mProperty_mSelfTypeEntry, mProperty_mIsAbstract, mProperty_mIsReference, mProperty_mSuperClass, mProperty_mAllTypedAttributeList, mProperty_mCurrentTypedAttributeList, mProperty_generateHeaderInSeparateFile, mProperty_initializerNeedsCompilerVariable, mProperty_propertyInitializationCode, mProperty_synthetizedInitializerArgumentList, mProperty_inheritedSynthetizedInitializerArgumentList, mProperty_initializerMap, mProperty_clonable, inCompiler COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_classTypeForGeneration (mProperty_mSelfTypeEntry, mProperty_mIsAbstract, mProperty_mSuperClass, mProperty_mAllTypedAttributeList, mProperty_mCurrentTypedAttributeList, mProperty_generateHeaderInSeparateFile, mProperty_initializerNeedsCompilerVariable, mProperty_propertyInitializationCode, mProperty_synthetizedInitializerArgumentList, mProperty_inheritedSynthetizedInitializerArgumentList, mProperty_initializerMap, mProperty_clonable, inCompiler COMMA_THERE)) ;
   return ptr ;
 }
 
@@ -7086,7 +7065,6 @@ acPtr_class * cPtr_classTypeForGeneration::duplicate (Compiler * inCompiler COMM
   void cPtr_classTypeForGeneration::printNonNullClassInstanceProperties (void) const {
     cPtr_semanticTypeForGeneration::printNonNullClassInstanceProperties () ;
     mProperty_mIsAbstract.printNonNullClassInstanceProperties ("mIsAbstract") ;
-    mProperty_mIsReference.printNonNullClassInstanceProperties ("mIsReference") ;
     mProperty_mSuperClass.printNonNullClassInstanceProperties ("mSuperClass") ;
     mProperty_mAllTypedAttributeList.printNonNullClassInstanceProperties ("mAllTypedAttributeList") ;
     mProperty_mCurrentTypedAttributeList.printNonNullClassInstanceProperties ("mCurrentTypedAttributeList") ;

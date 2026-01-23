@@ -196,7 +196,6 @@ list galgasKeyWordList style keywordsStyle error message "the '%K' keyword" {
   "true",
   "typealias",
   "unused",
-  "valueclass",
   "var",
   "warning",
   "weak",

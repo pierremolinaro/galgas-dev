@@ -47,14 +47,7 @@ syntax extension galgas3DeclarationsSyntax {
       clonable = true
       finalClass = false
     end
-    let @bool isReference
-    select
-      $class$
-      isReference = true
-    or
-      $valueclass$
-      isReference = false
-    end
+    $class$
     $@type$ ?let @lstring className indexing classDefinition
     let @lstring superClassName // Empty if no super class
     select
@@ -83,7 +76,6 @@ syntax extension galgas3DeclarationsSyntax {
     ioDeclarations.mDeclarationList += !@classDeclarationAST {
       !isPredefined: false // Is not predefined
       !isAbstract
-      !isReference
       !finalClass
       !className
       !superClassName // Empty if no super class
@@ -91,18 +83,16 @@ syntax extension galgas3DeclarationsSyntax {
       !propertyList
       !clonable
     }
-    if isReference then
-      ioDeclarations.mDeclarationList += !@weakReferenceDeclarationAST {
-        !isPredefined: false // Is not predefined
-        !className
-        !makeWeakTypeLName (!className)
-        !if superClassName.string == ""
-           then superClassName
-           else makeWeakTypeLName (!superClassName)
-         end
-        !generateInSeparateFile
-      }
-    end
+    ioDeclarations.mDeclarationList += !@weakReferenceDeclarationAST {
+      !isPredefined: false // Is not predefined
+      !className
+      !makeWeakTypeLName (!className)
+      !if superClassName.string == ""
+         then superClassName
+         else makeWeakTypeLName (!superClassName)
+       end
+      !generateInSeparateFile
+    }
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -168,7 +158,6 @@ syntax extension galgas4DeclarationsSyntax {
     ioDeclarations.mDeclarationList += !@classDeclarationAST {
       !isPredefined: false // Is not predefined
       !isAbstract
-      !true
       !finalClass
       !className
       !superClassName // Empty if no super class
@@ -199,7 +188,6 @@ syntax extension galgas4DeclarationsSyntax {
 
 final class @classDeclarationAST : @semanticDeclarationAST {
   private let @bool mIsAbstract
-  private let @bool mIsReference
   private let @bool mIsFinal
   private let @lstring mClassTypeName
   private let @lstring mSuperClassName // Empty if no super class
@@ -373,24 +361,9 @@ final class @classDeclarationAST : @semanticDeclarationAST {
         !hasSetter: not property.mutability.isConstantProperty
         !hasSelector: property.hasSelector
     end
-  //--- set...attribute setter
-    if not self.mIsReference then
-      for property in currentClassTypedPropertyList do
-        if property.hasSetter then
-          [!?setterMap insertKey
-            !@{!"setProperty_"+ property.name.string.capitalizingFirstCharacter !.here}
-            !@methodKind.definedAsMember
-            !@[@("".nowhere, property.typeEntry, .argumentVarIn, property.name.string)]
-            !true // Compiler argument
-            !.isBasicFinal
-            !"" // No error message
-          ]
-        end
-      end
-    end
   //--- Clonable ?
     var @initializerMap initializerMap = @()
-    var @typeFeatures features = if self.mIsReference then .referenceEquatable else .comparable end
+    var @typeFeatures features = .referenceEquatable
     if self.clonable then
       features |= .clonable
       var @functionSignature cloneInitializerArgumentList = @()
@@ -418,7 +391,7 @@ final class @classDeclarationAST : @semanticDeclarationAST {
       !?getterMap
       !?setterMap
       !?instanceMethodMap
-      !acceptSetters: not self.mIsReference
+      !acceptSetters: false
     )
   //--- Synthetize an initializer, if the structure defines none
     if initializerMap.count == if self.clonable then 1 else 0 end then
@@ -442,7 +415,7 @@ final class @classDeclarationAST : @semanticDeclarationAST {
       !isConcrete: not self.mIsAbstract // Concrete Type
       !isFinal: self.mIsFinal
       !superType: superClassIndex
-      !typeKind: .classType {!isReference: self.mIsReference}
+      !typeKind: .classType
       !supportCollectionValue: false // Does not support collection value
       !allTypedPropertyList: allTypedAttributeList
       !propertyMap: attributeMap
@@ -485,12 +458,10 @@ final class @classDeclarationAST : @semanticDeclarationAST {
       let superClassNameForUsefulness = typeNameForUsefulEntitiesGraph (!self.mSuperClassName)
       [!?ioUsefulEntitiesGraph addEdge !from: classTypeNameForUsefulness !to: superClassNameForUsefulness]
     end
-    if self.mIsReference then
-      let weakRefTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!makeWeakTypeLName (!self.mClassTypeName))
-      [!?ioUsefulEntitiesGraph addEdge !from: classTypeNameForUsefulness !to: weakRefTypeNameForUsefulness]
-      if self.isPredefined  then
-        ioUsefulnessRootEntities += !weakRefTypeNameForUsefulness
-      end
+    let weakRefTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!makeWeakTypeLName (!self.mClassTypeName))
+    [!?ioUsefulEntitiesGraph addEdge !from: classTypeNameForUsefulness !to: weakRefTypeNameForUsefulness]
+    if self.isPredefined  then
+      ioUsefulnessRootEntities += !weakRefTypeNameForUsefulness
     end
   //----- Self type
     let @unifiedTypeMapEntry selfType = [ioTypeMap typeMapEntryForLKey !self.mClassTypeName]
@@ -498,17 +469,6 @@ final class @classDeclarationAST : @semanticDeclarationAST {
     let @unifiedTypeMapEntry superClassEntry = if self.mSuperClassName.string == ""
       then @unifiedTypeMapEntry.null
       else [ioTypeMap typeMapEntryForLKey !self.mSuperClassName]
-    end
-  //----- check "reference" status:
-  // a base class can be freely declared as shared or not
-  // a class should the same 'reference' status as its super class
-    if superClassEntry != .null then
-      [superClassEntry.definition.typeKind extractClassType ?isReference: let superClassIsReference]
-      if superClassIsReference & not self.mIsReference then
-        error self.mClassTypeName : "this class should be declared by 'refClass', as its super class"
-      elsif not superClassIsReference & self.mIsReference then
-        error self.mClassTypeName : "this class should be declared by 'valueclass', as its super class"
-      end
     end
   //----- Super type, and class features
   // A class that has a super may not have any feature
@@ -582,7 +542,6 @@ final class @classDeclarationAST : @semanticDeclarationAST {
       !@classTypeForGeneration {
         !selfType
         !self.mIsAbstract
-        !self.mIsReference
         !superClassEntry
         !allAttributeList
         !typedAttributeList
@@ -622,7 +581,6 @@ final class @classDeclarationAST : @semanticDeclarationAST {
 
 final class @classTypeForGeneration : @semanticTypeForGeneration {
   private let @bool mIsAbstract
-  private let @bool mIsReference
   private let @unifiedTypeMapEntry mSuperClass // Null if no super class
   private let @typedPropertyList mAllTypedAttributeList // Inherited followed by current attributes
   private let @typedPropertyList mCurrentTypedAttributeList
@@ -642,23 +600,13 @@ final class @classTypeForGeneration : @semanticTypeForGeneration {
       [self.mSuperClass addHeaderFileName !?ioInclusionSet]
     end
     let selfTypeDefinition = self.mSelfTypeEntry.definition
-    if self.mIsReference then
-      outHeader = [filewrapper classGenerationTemplate.referenceClassTypeHeader1
-        !selfTypeDefinition.typeName.string
-        !self.mSelfTypeEntry.identifierRepresentation
-        !if self.mSuperClass.isNull then "" else self.mSuperClass.identifierRepresentation end
-        !self.mIsAbstract
-        !self.mCurrentTypedAttributeList
-      ]
-    else
-      outHeader = [filewrapper classGenerationTemplate.valueClassTypeHeader1
-        !selfTypeDefinition.typeName.string
-        !self.mSelfTypeEntry.identifierRepresentation
-        !if self.mSuperClass.isNull then "" else self.mSuperClass.identifierRepresentation end
-        !self.mIsAbstract
-        !self.mCurrentTypedAttributeList
-      ]
-    end
+    outHeader = [filewrapper classGenerationTemplate.referenceClassTypeHeader1
+      !selfTypeDefinition.typeName.string
+      !self.mSelfTypeEntry.identifierRepresentation
+      !if self.mSuperClass.isNull then "" else self.mSuperClass.identifierRepresentation end
+      !self.mIsAbstract
+      !self.mCurrentTypedAttributeList
+    ]
     outHeader += [filewrapper typeGenerationTemplate.unifiedClassBodyForType
       !selfTypeDefinition.typeName.string
       !self.mSelfTypeEntry.identifierRepresentation
@@ -687,7 +635,6 @@ final class @classTypeForGeneration : @semanticTypeForGeneration {
       [t addHeaderFileName !?ioInclusionSet]
     end
     let selfTypeDefinition = self.mSelfTypeEntry.definition
-    if self.mIsReference then
       if self.generateHeaderInSeparateFile then
         let @string part1 = [filewrapper classGenerationTemplate.referenceClassTypeHeader2part1
           !selfTypeDefinition.typeName.string
@@ -744,58 +691,6 @@ final class @classTypeForGeneration : @semanticTypeForGeneration {
           !self.synthetizedInitializerArgumentList
         ]
       end
-    elsif self.generateHeaderInSeparateFile then
-      let part1 = [filewrapper classGenerationTemplate.valueClassTypeHeader2part1
-        !selfTypeDefinition.typeName.string
-        !self.mSelfTypeEntry.identifierRepresentation
-        !if self.mSuperClass.isNull then "" else self.mSuperClass.identifierRepresentation end
-        !self.mCurrentTypedAttributeList
-        !self.mAllTypedAttributeList
-        !self.mIsAbstract
-        !self.mSelfTypeEntry.definition.getterMap
-        !self.mSelfTypeEntry.definition.instanceMethodMap
-      ]
-      let part2 = [filewrapper classGenerationTemplate.valueClassTypeHeader2part2
-        !selfTypeDefinition.typeName.string
-        !self.mSelfTypeEntry.identifierRepresentation
-        !if self.mSuperClass.isNull then "" else self.mSuperClass.identifierRepresentation end
-        !self.mCurrentTypedAttributeList
-        !self.mAllTypedAttributeList
-        !self.mIsAbstract
-      ]
-      let @string headerFileName = "separateHeaderFor_" + self.mSelfTypeEntry.identifierRepresentation + ".h"
-      [@string generateFileWithPattern
-        !startPath:inOutputDirectory + "/../user-headers"
-        !fileName:headerFileName
-        !lineComment:"//"
-        !header:"" // Header
-        !defaultUserZone1:"\n\n" // Defaut user zone1
-        !generatedZone2:part1
-        !defaultUserZone2:"\n\n" // Defaut user zone2
-        !generatedZone3:part2
-        !makeExecutable:false
-      ]
-      outHeader = "#include \"" + headerFileName + "\"\n\n"
-    else
-      outHeader = [filewrapper classGenerationTemplate.valueClassTypeHeader2part1
-        !selfTypeDefinition.typeName.string
-        !self.mSelfTypeEntry.identifierRepresentation
-        !if self.mSuperClass.isNull then "" else self.mSuperClass.identifierRepresentation end
-        !self.mCurrentTypedAttributeList
-        !self.mAllTypedAttributeList
-        !self.mIsAbstract
-        !self.mSelfTypeEntry.definition.getterMap
-        !self.mSelfTypeEntry.definition.instanceMethodMap
-      ]
-      outHeader += [filewrapper classGenerationTemplate.valueClassTypeHeader2part2
-        !selfTypeDefinition.typeName.string
-        !self.mSelfTypeEntry.identifierRepresentation
-        !if self.mSuperClass.isNull then "" else self.mSuperClass.identifierRepresentation end
-        !self.mCurrentTypedAttributeList
-        !self.mAllTypedAttributeList
-        !self.mIsAbstract
-      ]
-    end
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -808,7 +703,6 @@ final class @classTypeForGeneration : @semanticTypeForGeneration {
     let at = [self.mAllTypedAttributeList subListWithRange
       !@{!0 !self.mAllTypedAttributeList.count - self.mCurrentTypedAttributeList.count}
     ]
-    if self.mIsReference then
       outImplementation = [filewrapper classGenerationTemplate.referenceClassTypeSpecificImplementation
         !selfTypeDefinition.typeName.string
         !self.mSelfTypeEntry.identifierRepresentation
@@ -825,17 +719,6 @@ final class @classTypeForGeneration : @semanticTypeForGeneration {
         !selfTypeDefinition.initializerMap
         !self.clonable
       ]
-    else
-      outImplementation = [filewrapper classGenerationTemplate.valueClassTypeSpecificImplementation
-        !selfTypeDefinition.typeName.string
-        !self.mSelfTypeEntry.identifierRepresentation
-        !if self.mSuperClass.isNull then "" else self.mSuperClass.identifierRepresentation end
-        !self.mCurrentTypedAttributeList
-        !self.mAllTypedAttributeList
-        !at
-        !self.mIsAbstract
-      ]
-    end
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -961,44 +844,6 @@ filewrapper classGenerationTemplate in "../+generation-templates/type_generation
   "ggs"
 }{
 }{
-
-//--------- Value Class
-  template valueClassTypeHeader1 "GALGAS_value_class.h1.galgasTemplate"
-    ?@string TYPE_NAME
-    ?@string TYPE_IDENTIFIER
-    ?@string SUPER_TYPE_IDENTIFIER
-    ?@bool IS_ABSTRACT
-    ?@typedPropertyList CURRENT_PROPERTY_LIST
-
-  template valueClassTypeHeader2part1 "GALGAS_value_class.h2-part1.galgasTemplate"
-    ?@string TYPE_NAME
-    ?@string TYPE_IDENTIFIER
-    ?@string SUPER_TYPE_IDENTIFIER
-    ?@typedPropertyList CURRENT_PROPERTY_LIST
-    ?@typedPropertyList ALL_PROPERTY_LIST
-    ?@bool IS_ABSTRACT
-    ?@getterMap GETTER_MAP
-    ?@instanceMethodMap INSTANCE_METHOD_MAP
-
-  template valueClassTypeHeader2part2 "GALGAS_value_class.h2-part2.galgasTemplate"
-    ?@string TYPE_NAME
-    ?@string TYPE_IDENTIFIER
-    ?@string SUPER_TYPE_IDENTIFIER
-    ?@typedPropertyList CURRENT_PROPERTY_LIST
-    ?@typedPropertyList ALL_PROPERTY_LIST
-    ?@bool IS_ABSTRACT
-
-  template valueClassTypeSpecificImplementation "GALGAS_value_class.cpp.galgasTemplate"
-    ?@string TYPE_NAME
-    ?@string TYPE_IDENTIFIER
-    ?@string SUPER_TYPE_IDENTIFIER
-    ?@typedPropertyList CURRENT_PROPERTY_LIST
-    ?@typedPropertyList ALL_PROPERTY_LIST
-    ?@typedPropertyList INHERITED_ATTRIBUTE_LIST
-    ?@bool IS_ABSTRACT
-
-
-//--------- Reference Class
   template referenceClassTypeHeader1 "GALGAS_reference_class.h1.galgasTemplate"
     ?@string TYPE_NAME
     ?@string TYPE_IDENTIFIER

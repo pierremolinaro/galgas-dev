@@ -71,7 +71,7 @@ end
   <td>
     %if not [element definition].isConcrete then%abstract %end
     switch [element definition].typeKind
-    case classType (*) : %class%
+    case classType : %class%
     case enumType (*) : %enum%
     case listType : %list%
     case sortedListType : %sorted list%

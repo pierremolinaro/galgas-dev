@@ -3490,15 +3490,13 @@ GGS_string filewrapperTemplate_typeDumpGenerationTemplate_typeDump (Compiler * i
         break ;
       case GGS_typeKindEnum::Enumeration::enum_classType :
         {
-          GGS_bool extractedValue_1568__0 ;
-          callExtensionGetter_definition ((const cPtr_unifiedTypeMapElementClass *) enumerator_1286.current_mElement (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 73)).readProperty_typeKind ().getAssociatedValuesFor_classType (extractedValue_1568__0) ;
           result.appendString ("class") ;
         }
         break ;
       case GGS_typeKindEnum::Enumeration::enum_enumType :
         {
-          GGS_constantIndexMap extractedValue_1600__0 ;
-          callExtensionGetter_definition ((const cPtr_unifiedTypeMapElementClass *) enumerator_1286.current_mElement (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 73)).readProperty_typeKind ().getAssociatedValuesFor_enumType (extractedValue_1600__0) ;
+          GGS_constantIndexMap extractedValue_1596__0 ;
+          callExtensionGetter_definition ((const cPtr_unifiedTypeMapElementClass *) enumerator_1286.current_mElement (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 73)).readProperty_typeKind ().getAssociatedValuesFor_enumType (extractedValue_1596__0) ;
           result.appendString ("enum") ;
         }
         break ;
@@ -3564,8 +3562,8 @@ GGS_string filewrapperTemplate_typeDumpGenerationTemplate_typeDump (Compiler * i
         break ;
       case GGS_typeKindEnum::Enumeration::enum_weakReferenceType :
         {
-          GGS_unifiedTypeMapEntry extractedValue_2049__0 ;
-          callExtensionGetter_definition ((const cPtr_unifiedTypeMapElementClass *) enumerator_1286.current_mElement (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 73)).readProperty_typeKind ().getAssociatedValuesFor_weakReferenceType (extractedValue_2049__0) ;
+          GGS_unifiedTypeMapEntry extractedValue_2045__0 ;
+          callExtensionGetter_definition ((const cPtr_unifiedTypeMapElementClass *) enumerator_1286.current_mElement (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 73)).readProperty_typeKind ().getAssociatedValuesFor_weakReferenceType (extractedValue_2045__0) ;
           result.appendString ("weak reference") ;
         }
         break ;
@@ -3924,15 +3922,15 @@ GGS_string filewrapperTemplate_typeDumpGenerationTemplate_typeDump (Compiler * i
       switch (test_21) {
       case GalgasBool::boolTrue : {
         result.appendString ("<tr class=\"result_line\"><td>+= !... !...</td><td>") ;
-        GGS_uint index_8053_ (0) ;
+        GGS_uint index_8049_ (0) ;
         if (callExtensionGetter_definition ((const cPtr_unifiedTypeMapElementClass *) enumerator_1286.current_mElement (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 167)).readProperty_addAssignOperatorArguments ().isValid ()) {
-          UpEnumerator_functionSignature enumerator_8053 (callExtensionGetter_definition ((const cPtr_unifiedTypeMapElementClass *) enumerator_1286.current_mElement (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 167)).readProperty_addAssignOperatorArguments ()) ;
-          while (enumerator_8053.hasCurrentObject ()) {
+          UpEnumerator_functionSignature enumerator_8049 (callExtensionGetter_definition ((const cPtr_unifiedTypeMapElementClass *) enumerator_1286.current_mElement (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 167)).readProperty_addAssignOperatorArguments ()) ;
+          while (enumerator_8049.hasCurrentObject ()) {
             result.appendString ("<span class=\"selecteur\">\?") ;
-            const GalgasBool test_22 = GGS_bool (ComparisonKind::notEqual, enumerator_8053.current_mFormalSelector (HERE).readProperty_string ().objectCompare (GGS_string::makeEmptyString ())).boolEnum () ;
+            const GalgasBool test_22 = GGS_bool (ComparisonKind::notEqual, enumerator_8049.current_mFormalSelector (HERE).readProperty_string ().objectCompare (GGS_string::makeEmptyString ())).boolEnum () ;
             switch (test_22) {
             case GalgasBool::boolTrue : {
-              result.appendString (enumerator_8053.current_mFormalSelector (HERE).readProperty_string ().add_operation (GGS_string (":"), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 168)).stringValue ()) ;
+              result.appendString (enumerator_8049.current_mFormalSelector (HERE).readProperty_string ().add_operation (GGS_string (":"), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 168)).stringValue ()) ;
               } break ;
             case GalgasBool::boolFalse : {
               } break ;
@@ -3940,12 +3938,12 @@ GGS_string filewrapperTemplate_typeDumpGenerationTemplate_typeDump (Compiler * i
               break ;
             }
             result.appendString ("</span>") ;
-            result.appendString (function_linkForType (extensionGetter_definition (enumerator_8053.current_mFormalArgumentType (HERE), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 169)).readProperty_typeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 169)).stringValue ()) ;
+            result.appendString (function_linkForType (extensionGetter_definition (enumerator_8049.current_mFormalArgumentType (HERE), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 169)).readProperty_typeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 169)).stringValue ()) ;
             result.appendString (" ") ;
-            result.appendString (enumerator_8053.current_mFormalArgumentName (HERE).stringValue ()) ;
+            result.appendString (enumerator_8049.current_mFormalArgumentName (HERE).stringValue ()) ;
             result.appendString ("<br>") ;
-            enumerator_8053.gotoNextObject () ;
-            index_8053_.increment () ;
+            enumerator_8049.gotoNextObject () ;
+            index_8049_.increment () ;
           }
         }
         result.appendString ("</td></tr>") ;
@@ -3959,16 +3957,16 @@ GGS_string filewrapperTemplate_typeDumpGenerationTemplate_typeDump (Compiler * i
       switch (test_23) {
       case GalgasBool::boolTrue : {
         result.appendString ("<tr class=\"result_line\"><td><b>for</b> constants</td><td>") ;
-        GGS_uint index_8512_ (0) ;
+        GGS_uint index_8508_ (0) ;
         if (callExtensionGetter_definition ((const cPtr_unifiedTypeMapElementClass *) enumerator_1286.current_mElement (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 175)).readProperty_enumerationDescriptorList ().isValid ()) {
-          UpEnumerator_enumerationDescriptorList enumerator_8512 (callExtensionGetter_definition ((const cPtr_unifiedTypeMapElementClass *) enumerator_1286.current_mElement (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 175)).readProperty_enumerationDescriptorList ()) ;
-          while (enumerator_8512.hasCurrentObject ()) {
-            result.appendString (function_linkForType (extensionGetter_definition (enumerator_8512.current_mEnumeratedType (HERE), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 176)).readProperty_typeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 176)).stringValue ()) ;
+          UpEnumerator_enumerationDescriptorList enumerator_8508 (callExtensionGetter_definition ((const cPtr_unifiedTypeMapElementClass *) enumerator_1286.current_mElement (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 175)).readProperty_enumerationDescriptorList ()) ;
+          while (enumerator_8508.hasCurrentObject ()) {
+            result.appendString (function_linkForType (extensionGetter_definition (enumerator_8508.current_mEnumeratedType (HERE), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 176)).readProperty_typeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 176)).stringValue ()) ;
             result.appendString (" ") ;
-            result.appendString (enumerator_8512.current_mEnumerationName (HERE).stringValue ()) ;
+            result.appendString (enumerator_8508.current_mEnumerationName (HERE).stringValue ()) ;
             result.appendString ("<br>") ;
-            enumerator_8512.gotoNextObject () ;
-            index_8512_.increment () ;
+            enumerator_8508.gotoNextObject () ;
+            index_8508_.increment () ;
           }
         }
         result.appendString ("</td></tr>") ;
@@ -3994,39 +3992,39 @@ GGS_string filewrapperTemplate_typeDumpGenerationTemplate_typeDump (Compiler * i
       switch (test_25) {
       case GalgasBool::boolTrue : {
         result.appendString ("<tr class=\"result_line\"><td>Class Functions</td><td>") ;
-        GGS_uint index_9117_ (0) ;
+        GGS_uint index_9113_ (0) ;
         if (callExtensionGetter_definition ((const cPtr_unifiedTypeMapElementClass *) enumerator_1286.current_mElement (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 186)).readProperty_classFunctionMap ().isValid ()) {
-          UpEnumerator_classFunctionMap enumerator_9117 (callExtensionGetter_definition ((const cPtr_unifiedTypeMapElementClass *) enumerator_1286.current_mElement (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 186)).readProperty_classFunctionMap ()) ;
-          while (enumerator_9117.hasCurrentObject ()) {
+          UpEnumerator_classFunctionMap enumerator_9113 (callExtensionGetter_definition ((const cPtr_unifiedTypeMapElementClass *) enumerator_1286.current_mElement (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 186)).readProperty_classFunctionMap ()) ;
+          while (enumerator_9113.hasCurrentObject ()) {
             result.appendString ("<b>class function</b> ") ;
-            result.appendString (enumerator_9117.current_lkey (HERE).readProperty_string ().stringValue ()) ;
-            GGS_uint index_9250_ (0) ;
-            if (enumerator_9117.current_mArgumentTypeList (HERE).isValid ()) {
-              UpEnumerator_functionSignature enumerator_9250 (enumerator_9117.current_mArgumentTypeList (HERE)) ;
-              while (enumerator_9250.hasCurrentObject ()) {
+            result.appendString (enumerator_9113.current_lkey (HERE).readProperty_string ().stringValue ()) ;
+            GGS_uint index_9246_ (0) ;
+            if (enumerator_9113.current_mArgumentTypeList (HERE).isValid ()) {
+              UpEnumerator_functionSignature enumerator_9246 (enumerator_9113.current_mArgumentTypeList (HERE)) ;
+              while (enumerator_9246.hasCurrentObject ()) {
                 result.appendString ("<br>&nbsp;&nbsp;&nbsp;&nbsp; <span class=\"selecteur\">\?") ;
-                const GalgasBool test_26 = GGS_bool (ComparisonKind::notEqual, enumerator_9250.current_mFormalSelector (HERE).readProperty_string ().objectCompare (GGS_string::makeEmptyString ())).boolEnum () ;
+                const GalgasBool test_26 = GGS_bool (ComparisonKind::notEqual, enumerator_9246.current_mFormalSelector (HERE).readProperty_string ().objectCompare (GGS_string::makeEmptyString ())).boolEnum () ;
                 switch (test_26) {
                 case GalgasBool::boolTrue : {
-                  result.appendString (enumerator_9250.current_mFormalSelector (HERE).readProperty_string ().add_operation (GGS_string (":"), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 190)).stringValue ()) ;
+                  result.appendString (enumerator_9246.current_mFormalSelector (HERE).readProperty_string ().add_operation (GGS_string (":"), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 190)).stringValue ()) ;
                   } break ;
                 case GalgasBool::boolFalse : {
                   } break ;
                 case GalgasBool::boolNotValid :
                   break ;
                 }
-                result.appendString (function_linkForType (extensionGetter_definition (enumerator_9250.current_mFormalArgumentType (HERE), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 191)).readProperty_typeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 191)).stringValue ()) ;
+                result.appendString (function_linkForType (extensionGetter_definition (enumerator_9246.current_mFormalArgumentType (HERE), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 191)).readProperty_typeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 191)).stringValue ()) ;
                 result.appendString ("</span> ") ;
-                result.appendString (enumerator_9250.current_mFormalArgumentName (HERE).stringValue ()) ;
-                enumerator_9250.gotoNextObject () ;
-                index_9250_.increment () ;
+                result.appendString (enumerator_9246.current_mFormalArgumentName (HERE).stringValue ()) ;
+                enumerator_9246.gotoNextObject () ;
+                index_9246_.increment () ;
               }
             }
             result.appendString (" &rarr; ") ;
-            result.appendString (function_linkForType (extensionGetter_definition (enumerator_9117.current_mReturnedType (HERE), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 193)).readProperty_typeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 193)).stringValue ()) ;
+            result.appendString (function_linkForType (extensionGetter_definition (enumerator_9113.current_mReturnedType (HERE), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 193)).readProperty_typeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 193)).stringValue ()) ;
             result.appendString ("<br><br>") ;
-            enumerator_9117.gotoNextObject () ;
-            index_9117_.increment () ;
+            enumerator_9113.gotoNextObject () ;
+            index_9113_.increment () ;
           }
         }
         } break ;
@@ -4039,11 +4037,11 @@ GGS_string filewrapperTemplate_typeDumpGenerationTemplate_typeDump (Compiler * i
       switch (test_27) {
       case GalgasBool::boolTrue : {
         result.appendString ("<tr class=\"result_line\"><td>Getters</td><td>") ;
-        GGS_uint index_9873_ (0) ;
+        GGS_uint index_9869_ (0) ;
         if (callExtensionGetter_definition ((const cPtr_unifiedTypeMapElementClass *) enumerator_1286.current_mElement (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 199)).readProperty_getterMap ().isValid ()) {
-          UpEnumerator_getterMap enumerator_9873 (callExtensionGetter_definition ((const cPtr_unifiedTypeMapElementClass *) enumerator_1286.current_mElement (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 199)).readProperty_getterMap ()) ;
-          while (enumerator_9873.hasCurrentObject ()) {
-            switch (enumerator_9873.current_mKind (HERE).enumValue ()) {
+          UpEnumerator_getterMap enumerator_9869 (callExtensionGetter_definition ((const cPtr_unifiedTypeMapElementClass *) enumerator_1286.current_mElement (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 199)).readProperty_getterMap ()) ;
+          while (enumerator_9869.hasCurrentObject ()) {
+            switch (enumerator_9869.current_mKind (HERE).enumValue ()) {
             case GGS_methodKind::Enumeration::invalid :
               break ;
             case GGS_methodKind::Enumeration::enum_definedAsMember :
@@ -4056,7 +4054,7 @@ GGS_string filewrapperTemplate_typeDumpGenerationTemplate_typeDump (Compiler * i
               }
               break ;
             }
-            switch (enumerator_9873.current_mQualifier (HERE).enumValue ()) {
+            switch (enumerator_9869.current_mQualifier (HERE).enumValue ()) {
             case GGS_methodQualifier::Enumeration::invalid :
               break ;
             case GGS_methodQualifier::Enumeration::enum_isVirtualAbstract :
@@ -4092,16 +4090,16 @@ GGS_string filewrapperTemplate_typeDumpGenerationTemplate_typeDump (Compiler * i
               break ;
             }
             result.appendString ("<b>getter</b> ") ;
-            result.appendString (enumerator_9873.current_lkey (HERE).readProperty_string ().stringValue ()) ;
-            GGS_uint index_10377_ (0) ;
-            if (enumerator_9873.current_mArgumentTypeList (HERE).isValid ()) {
-              UpEnumerator_functionSignature enumerator_10377 (enumerator_9873.current_mArgumentTypeList (HERE)) ;
-              while (enumerator_10377.hasCurrentObject ()) {
+            result.appendString (enumerator_9869.current_lkey (HERE).readProperty_string ().stringValue ()) ;
+            GGS_uint index_10373_ (0) ;
+            if (enumerator_9869.current_mArgumentTypeList (HERE).isValid ()) {
+              UpEnumerator_functionSignature enumerator_10373 (enumerator_9869.current_mArgumentTypeList (HERE)) ;
+              while (enumerator_10373.hasCurrentObject ()) {
                 result.appendString ("<br>&nbsp;&nbsp;&nbsp;&nbsp; \?<span class=\"selecteur\">") ;
-                const GalgasBool test_28 = GGS_bool (ComparisonKind::notEqual, enumerator_10377.current_mFormalSelector (HERE).readProperty_string ().objectCompare (GGS_string::makeEmptyString ())).boolEnum () ;
+                const GalgasBool test_28 = GGS_bool (ComparisonKind::notEqual, enumerator_10373.current_mFormalSelector (HERE).readProperty_string ().objectCompare (GGS_string::makeEmptyString ())).boolEnum () ;
                 switch (test_28) {
                 case GalgasBool::boolTrue : {
-                  result.appendString (enumerator_10377.current_mFormalSelector (HERE).readProperty_string ().add_operation (GGS_string (":"), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 216)).stringValue ()) ;
+                  result.appendString (enumerator_10373.current_mFormalSelector (HERE).readProperty_string ().add_operation (GGS_string (":"), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 216)).stringValue ()) ;
                   } break ;
                 case GalgasBool::boolFalse : {
                   } break ;
@@ -4109,18 +4107,18 @@ GGS_string filewrapperTemplate_typeDumpGenerationTemplate_typeDump (Compiler * i
                   break ;
                 }
                 result.appendString ("</span>") ;
-                result.appendString (function_linkForType (extensionGetter_definition (enumerator_10377.current_mFormalArgumentType (HERE), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 217)).readProperty_typeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 217)).stringValue ()) ;
+                result.appendString (function_linkForType (extensionGetter_definition (enumerator_10373.current_mFormalArgumentType (HERE), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 217)).readProperty_typeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 217)).stringValue ()) ;
                 result.appendString (" ") ;
-                result.appendString (enumerator_10377.current_mFormalArgumentName (HERE).stringValue ()) ;
-                enumerator_10377.gotoNextObject () ;
-                index_10377_.increment () ;
+                result.appendString (enumerator_10373.current_mFormalArgumentName (HERE).stringValue ()) ;
+                enumerator_10373.gotoNextObject () ;
+                index_10373_.increment () ;
               }
             }
             result.appendString (" &rarr; ") ;
-            result.appendString (function_linkForType (extensionGetter_definition (enumerator_9873.current_mReturnedType (HERE), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 219)).readProperty_typeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 219)).stringValue ()) ;
+            result.appendString (function_linkForType (extensionGetter_definition (enumerator_9869.current_mReturnedType (HERE), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 219)).readProperty_typeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 219)).stringValue ()) ;
             result.appendString ("<br><br>") ;
-            enumerator_9873.gotoNextObject () ;
-            index_9873_.increment () ;
+            enumerator_9869.gotoNextObject () ;
+            index_9869_.increment () ;
           }
         }
         result.appendString ("</td></tr>") ;
@@ -4134,11 +4132,11 @@ GGS_string filewrapperTemplate_typeDumpGenerationTemplate_typeDump (Compiler * i
       switch (test_29) {
       case GalgasBool::boolTrue : {
         result.appendString ("<tr class=\"result_line\"><td>Methods</td><td>") ;
-        GGS_uint index_11009_ (0) ;
+        GGS_uint index_11005_ (0) ;
         if (callExtensionGetter_definition ((const cPtr_unifiedTypeMapElementClass *) enumerator_1286.current_mElement (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 226)).readProperty_instanceMethodMap ().isValid ()) {
-          UpEnumerator_instanceMethodMap enumerator_11009 (callExtensionGetter_definition ((const cPtr_unifiedTypeMapElementClass *) enumerator_1286.current_mElement (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 226)).readProperty_instanceMethodMap ()) ;
-          while (enumerator_11009.hasCurrentObject ()) {
-            switch (enumerator_11009.current_mKind (HERE).enumValue ()) {
+          UpEnumerator_instanceMethodMap enumerator_11005 (callExtensionGetter_definition ((const cPtr_unifiedTypeMapElementClass *) enumerator_1286.current_mElement (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 226)).readProperty_instanceMethodMap ()) ;
+          while (enumerator_11005.hasCurrentObject ()) {
+            switch (enumerator_11005.current_mKind (HERE).enumValue ()) {
             case GGS_methodKind::Enumeration::invalid :
               break ;
             case GGS_methodKind::Enumeration::enum_definedAsMember :
@@ -4151,7 +4149,7 @@ GGS_string filewrapperTemplate_typeDumpGenerationTemplate_typeDump (Compiler * i
               }
               break ;
             }
-            switch (enumerator_11009.current_mQualifier (HERE).enumValue ()) {
+            switch (enumerator_11005.current_mQualifier (HERE).enumValue ()) {
             case GGS_methodQualifier::Enumeration::invalid :
               break ;
             case GGS_methodQualifier::Enumeration::enum_isVirtualAbstract :
@@ -4187,13 +4185,13 @@ GGS_string filewrapperTemplate_typeDumpGenerationTemplate_typeDump (Compiler * i
               break ;
             }
             result.appendString ("<b>method</b> ") ;
-            result.appendString (enumerator_11009.current_lkey (HERE).readProperty_string ().stringValue ()) ;
-            GGS_uint index_11535_ (0) ;
-            if (enumerator_11009.current_mParameterList (HERE).isValid ()) {
-              UpEnumerator_formalParameterSignature enumerator_11535 (enumerator_11009.current_mParameterList (HERE)) ;
-              while (enumerator_11535.hasCurrentObject ()) {
+            result.appendString (enumerator_11005.current_lkey (HERE).readProperty_string ().stringValue ()) ;
+            GGS_uint index_11531_ (0) ;
+            if (enumerator_11005.current_mParameterList (HERE).isValid ()) {
+              UpEnumerator_formalParameterSignature enumerator_11531 (enumerator_11005.current_mParameterList (HERE)) ;
+              while (enumerator_11531.hasCurrentObject ()) {
                 result.appendString ("<br>&nbsp;&nbsp;&nbsp;&nbsp;") ;
-                switch (enumerator_11535.current_mFormalArgumentPassingMode (HERE).enumValue ()) {
+                switch (enumerator_11531.current_mFormalArgumentPassingMode (HERE).enumValue ()) {
                 case GGS_formalArgumentPassingModeAST::Enumeration::invalid :
                   break ;
                 case GGS_formalArgumentPassingModeAST::Enumeration::enum_argumentConstantIn :
@@ -4217,10 +4215,10 @@ GGS_string filewrapperTemplate_typeDumpGenerationTemplate_typeDump (Compiler * i
                   }
                   break ;
                 }
-                const GalgasBool test_30 = GGS_bool (ComparisonKind::notEqual, enumerator_11535.current_mFormalSelector (HERE).readProperty_string ().objectCompare (GGS_string::makeEmptyString ())).boolEnum () ;
+                const GalgasBool test_30 = GGS_bool (ComparisonKind::notEqual, enumerator_11531.current_mFormalSelector (HERE).readProperty_string ().objectCompare (GGS_string::makeEmptyString ())).boolEnum () ;
                 switch (test_30) {
                 case GalgasBool::boolTrue : {
-                  result.appendString (enumerator_11535.current_mFormalSelector (HERE).readProperty_string ().add_operation (GGS_string (":"), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 249)).stringValue ()) ;
+                  result.appendString (enumerator_11531.current_mFormalSelector (HERE).readProperty_string ().add_operation (GGS_string (":"), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 249)).stringValue ()) ;
                   } break ;
                 case GalgasBool::boolFalse : {
                   } break ;
@@ -4228,16 +4226,16 @@ GGS_string filewrapperTemplate_typeDumpGenerationTemplate_typeDump (Compiler * i
                   break ;
                 }
                 result.appendString ("</span>") ;
-                result.appendString (function_linkForType (extensionGetter_definition (enumerator_11535.current_mFormalArgumentType (HERE), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 250)).readProperty_typeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 250)).stringValue ()) ;
+                result.appendString (function_linkForType (extensionGetter_definition (enumerator_11531.current_mFormalArgumentType (HERE), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 250)).readProperty_typeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 250)).stringValue ()) ;
                 result.appendString (" ") ;
-                result.appendString (enumerator_11535.current_mFormalArgumentName (HERE).stringValue ()) ;
-                enumerator_11535.gotoNextObject () ;
-                index_11535_.increment () ;
+                result.appendString (enumerator_11531.current_mFormalArgumentName (HERE).stringValue ()) ;
+                enumerator_11531.gotoNextObject () ;
+                index_11531_.increment () ;
               }
             }
             result.appendString ("<br><br>") ;
-            enumerator_11009.gotoNextObject () ;
-            index_11009_.increment () ;
+            enumerator_11005.gotoNextObject () ;
+            index_11005_.increment () ;
           }
         }
         result.appendString ("</td></tr>") ;
@@ -4251,11 +4249,11 @@ GGS_string filewrapperTemplate_typeDumpGenerationTemplate_typeDump (Compiler * i
       switch (test_31) {
       case GalgasBool::boolTrue : {
         result.appendString ("<tr class=\"result_line\"><td>Setters</td><td>") ;
-        GGS_uint index_12330_ (0) ;
+        GGS_uint index_12326_ (0) ;
         if (callExtensionGetter_definition ((const cPtr_unifiedTypeMapElementClass *) enumerator_1286.current_mElement (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 259)).readProperty_setterMap ().isValid ()) {
-          UpEnumerator_setterMap enumerator_12330 (callExtensionGetter_definition ((const cPtr_unifiedTypeMapElementClass *) enumerator_1286.current_mElement (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 259)).readProperty_setterMap ()) ;
-          while (enumerator_12330.hasCurrentObject ()) {
-            switch (enumerator_12330.current_mKind (HERE).enumValue ()) {
+          UpEnumerator_setterMap enumerator_12326 (callExtensionGetter_definition ((const cPtr_unifiedTypeMapElementClass *) enumerator_1286.current_mElement (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 259)).readProperty_setterMap ()) ;
+          while (enumerator_12326.hasCurrentObject ()) {
+            switch (enumerator_12326.current_mKind (HERE).enumValue ()) {
             case GGS_methodKind::Enumeration::invalid :
               break ;
             case GGS_methodKind::Enumeration::enum_definedAsMember :
@@ -4268,7 +4266,7 @@ GGS_string filewrapperTemplate_typeDumpGenerationTemplate_typeDump (Compiler * i
               }
               break ;
             }
-            switch (enumerator_12330.current_mQualifier (HERE).enumValue ()) {
+            switch (enumerator_12326.current_mQualifier (HERE).enumValue ()) {
             case GGS_methodQualifier::Enumeration::invalid :
               break ;
             case GGS_methodQualifier::Enumeration::enum_isVirtualAbstract :
@@ -4304,13 +4302,13 @@ GGS_string filewrapperTemplate_typeDumpGenerationTemplate_typeDump (Compiler * i
               break ;
             }
             result.appendString ("<b>setter</b> ") ;
-            result.appendString (enumerator_12330.current_lkey (HERE).readProperty_string ().stringValue ()) ;
-            GGS_uint index_12856_ (0) ;
-            if (enumerator_12330.current_mParameterList (HERE).isValid ()) {
-              UpEnumerator_formalParameterSignature enumerator_12856 (enumerator_12330.current_mParameterList (HERE)) ;
-              while (enumerator_12856.hasCurrentObject ()) {
+            result.appendString (enumerator_12326.current_lkey (HERE).readProperty_string ().stringValue ()) ;
+            GGS_uint index_12852_ (0) ;
+            if (enumerator_12326.current_mParameterList (HERE).isValid ()) {
+              UpEnumerator_formalParameterSignature enumerator_12852 (enumerator_12326.current_mParameterList (HERE)) ;
+              while (enumerator_12852.hasCurrentObject ()) {
                 result.appendString ("<br>&nbsp;&nbsp;&nbsp;&nbsp;") ;
-                switch (enumerator_12856.current_mFormalArgumentPassingMode (HERE).enumValue ()) {
+                switch (enumerator_12852.current_mFormalArgumentPassingMode (HERE).enumValue ()) {
                 case GGS_formalArgumentPassingModeAST::Enumeration::invalid :
                   break ;
                 case GGS_formalArgumentPassingModeAST::Enumeration::enum_argumentConstantIn :
@@ -4334,10 +4332,10 @@ GGS_string filewrapperTemplate_typeDumpGenerationTemplate_typeDump (Compiler * i
                   }
                   break ;
                 }
-                const GalgasBool test_32 = GGS_bool (ComparisonKind::notEqual, enumerator_12856.current_mFormalSelector (HERE).readProperty_string ().objectCompare (GGS_string::makeEmptyString ())).boolEnum () ;
+                const GalgasBool test_32 = GGS_bool (ComparisonKind::notEqual, enumerator_12852.current_mFormalSelector (HERE).readProperty_string ().objectCompare (GGS_string::makeEmptyString ())).boolEnum () ;
                 switch (test_32) {
                 case GalgasBool::boolTrue : {
-                  result.appendString (enumerator_12856.current_mFormalSelector (HERE).readProperty_string ().add_operation (GGS_string (":"), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 282)).stringValue ()) ;
+                  result.appendString (enumerator_12852.current_mFormalSelector (HERE).readProperty_string ().add_operation (GGS_string (":"), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 282)).stringValue ()) ;
                   } break ;
                 case GalgasBool::boolFalse : {
                   } break ;
@@ -4345,16 +4343,16 @@ GGS_string filewrapperTemplate_typeDumpGenerationTemplate_typeDump (Compiler * i
                   break ;
                 }
                 result.appendString ("</span>") ;
-                result.appendString (function_linkForType (extensionGetter_definition (enumerator_12856.current_mFormalArgumentType (HERE), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 283)).readProperty_typeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 283)).stringValue ()) ;
+                result.appendString (function_linkForType (extensionGetter_definition (enumerator_12852.current_mFormalArgumentType (HERE), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 283)).readProperty_typeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 283)).stringValue ()) ;
                 result.appendString (" ") ;
-                result.appendString (enumerator_12856.current_mFormalArgumentName (HERE).stringValue ()) ;
-                enumerator_12856.gotoNextObject () ;
-                index_12856_.increment () ;
+                result.appendString (enumerator_12852.current_mFormalArgumentName (HERE).stringValue ()) ;
+                enumerator_12852.gotoNextObject () ;
+                index_12852_.increment () ;
               }
             }
             result.appendString ("<br><br>") ;
-            enumerator_12330.gotoNextObject () ;
-            index_12330_.increment () ;
+            enumerator_12326.gotoNextObject () ;
+            index_12326_.increment () ;
           }
         }
         result.appendString ("</td></tr>") ;
@@ -4368,20 +4366,20 @@ GGS_string filewrapperTemplate_typeDumpGenerationTemplate_typeDump (Compiler * i
       switch (test_33) {
       case GalgasBool::boolTrue : {
         result.appendString ("<tr class=\"result_line\"><td>Type procs</td><td>") ;
-        GGS_uint index_13633_ (0) ;
+        GGS_uint index_13629_ (0) ;
         if (callExtensionGetter_definition ((const cPtr_unifiedTypeMapElementClass *) enumerator_1286.current_mElement (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 292)).readProperty_classMethodMap ().isValid ()) {
-          UpEnumerator_classMethodMap enumerator_13633 (callExtensionGetter_definition ((const cPtr_unifiedTypeMapElementClass *) enumerator_1286.current_mElement (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 292)).readProperty_classMethodMap ()) ;
-          while (enumerator_13633.hasCurrentObject ()) {
+          UpEnumerator_classMethodMap enumerator_13629 (callExtensionGetter_definition ((const cPtr_unifiedTypeMapElementClass *) enumerator_1286.current_mElement (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 292)).readProperty_classMethodMap ()) ;
+          while (enumerator_13629.hasCurrentObject ()) {
             result.appendString ("<b>proc</b> @") ;
-            result.appendString (enumerator_13633.current_lkey (HERE).readProperty_string ().stringValue ()) ;
+            result.appendString (enumerator_13629.current_lkey (HERE).readProperty_string ().stringValue ()) ;
             result.appendString (" ") ;
-            result.appendString (enumerator_13633.current_lkey (HERE).readProperty_string ().stringValue ()) ;
-            GGS_uint index_13794_ (0) ;
-            if (enumerator_13633.current_mParameterList (HERE).isValid ()) {
-              UpEnumerator_formalParameterSignature enumerator_13794 (enumerator_13633.current_mParameterList (HERE)) ;
-              while (enumerator_13794.hasCurrentObject ()) {
+            result.appendString (enumerator_13629.current_lkey (HERE).readProperty_string ().stringValue ()) ;
+            GGS_uint index_13790_ (0) ;
+            if (enumerator_13629.current_mParameterList (HERE).isValid ()) {
+              UpEnumerator_formalParameterSignature enumerator_13790 (enumerator_13629.current_mParameterList (HERE)) ;
+              while (enumerator_13790.hasCurrentObject ()) {
                 result.appendString ("<br>&nbsp;&nbsp;&nbsp;&nbsp;") ;
-                switch (enumerator_13794.current_mFormalArgumentPassingMode (HERE).enumValue ()) {
+                switch (enumerator_13790.current_mFormalArgumentPassingMode (HERE).enumValue ()) {
                 case GGS_formalArgumentPassingModeAST::Enumeration::invalid :
                   break ;
                 case GGS_formalArgumentPassingModeAST::Enumeration::enum_argumentConstantIn :
@@ -4405,10 +4403,10 @@ GGS_string filewrapperTemplate_typeDumpGenerationTemplate_typeDump (Compiler * i
                   }
                   break ;
                 }
-                const GalgasBool test_34 = GGS_bool (ComparisonKind::notEqual, enumerator_13794.current_mFormalSelector (HERE).readProperty_string ().objectCompare (GGS_string::makeEmptyString ())).boolEnum () ;
+                const GalgasBool test_34 = GGS_bool (ComparisonKind::notEqual, enumerator_13790.current_mFormalSelector (HERE).readProperty_string ().objectCompare (GGS_string::makeEmptyString ())).boolEnum () ;
                 switch (test_34) {
                 case GalgasBool::boolTrue : {
-                  result.appendString (enumerator_13794.current_mFormalSelector (HERE).readProperty_string ().add_operation (GGS_string (":"), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 302)).stringValue ()) ;
+                  result.appendString (enumerator_13790.current_mFormalSelector (HERE).readProperty_string ().add_operation (GGS_string (":"), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 302)).stringValue ()) ;
                   } break ;
                 case GalgasBool::boolFalse : {
                   } break ;
@@ -4416,16 +4414,16 @@ GGS_string filewrapperTemplate_typeDumpGenerationTemplate_typeDump (Compiler * i
                   break ;
                 }
                 result.appendString ("</span>") ;
-                result.appendString (function_linkForType (extensionGetter_definition (enumerator_13794.current_mFormalArgumentType (HERE), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 303)).readProperty_typeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 303)).stringValue ()) ;
+                result.appendString (function_linkForType (extensionGetter_definition (enumerator_13790.current_mFormalArgumentType (HERE), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 303)).readProperty_typeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 303)).stringValue ()) ;
                 result.appendString (" ") ;
-                result.appendString (enumerator_13794.current_mFormalArgumentName (HERE).stringValue ()) ;
-                enumerator_13794.gotoNextObject () ;
-                index_13794_.increment () ;
+                result.appendString (enumerator_13790.current_mFormalArgumentName (HERE).stringValue ()) ;
+                enumerator_13790.gotoNextObject () ;
+                index_13790_.increment () ;
               }
             }
             result.appendString ("<br><br>") ;
-            enumerator_13633.gotoNextObject () ;
-            index_13633_.increment () ;
+            enumerator_13629.gotoNextObject () ;
+            index_13629_.increment () ;
           }
         }
         result.appendString ("</td></tr>") ;

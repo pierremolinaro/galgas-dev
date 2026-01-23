@@ -205,9 +205,8 @@ final class @initializerAST : @semanticDeclarationAST {
     let @string selfObjectNameString
     let @string selfObjectAccessorString
   //--- Check self type is a class
-    var isReferenceClass = false
-    if let classType = selfType.definition.typeKind.getClassType then
-      isReferenceClass = classType.isReference
+    let isClass = selfType.definition.typeKind == .classType
+    if isClass then
       selfObjectNameString = "this"
       selfObjectAccessorString = ""
     else
