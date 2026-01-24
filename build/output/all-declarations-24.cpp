@@ -8153,13 +8153,13 @@ void cPtr_nonterminalCallInstruction::method_transformInstructionForGrammarAnaly
                                                                                      GGS_syntaxInstructionListForGrammarAnalysis & ioArgument_ioSyntaxInstructionList,
                                                                                      Compiler * inCompiler
                                                                                      COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_uint var_nonTerminalSymbolIndex_5443 ;
+  GGS_uint var_nonTerminalSymbolIndex_4840 ;
   const GGS_nonterminalCallInstruction temp_0 = this ;
-  GGS_nonterminalSymbolLabelMapForGrammarAnalysis joker_5466 ; // Joker input parameter
-  constinArgument_inNonTerminalSymbolMap.method_searchKey (temp_0.readProperty_mNonterminalName (), var_nonTerminalSymbolIndex_5443, joker_5466, inCompiler COMMA_SOURCE_FILE ("instruction-non-terminal.galgas", 117)) ;
+  GGS_nonterminalSymbolLabelMapForGrammarAnalysis joker_4863 ; // Joker input parameter
+  constinArgument_inNonTerminalSymbolMap.method_searchKey (temp_0.readProperty_mNonterminalName (), var_nonTerminalSymbolIndex_4840, joker_4863, inCompiler COMMA_SOURCE_FILE ("instruction-non-terminal.galgas", 94)) ;
   const GGS_nonterminalCallInstruction temp_1 = this ;
   const GGS_nonterminalCallInstruction temp_2 = this ;
-  ioArgument_ioSyntaxInstructionList.addAssignOperation (GGS_nonTerminalInstructionForGrammarAnalysis::init_21__21__21_ (temp_1.readProperty_mInstructionLocation (), temp_2.readProperty_mNonterminalName (), var_nonTerminalSymbolIndex_5443, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("instruction-non-terminal.galgas", 118)) ;
+  ioArgument_ioSyntaxInstructionList.addAssignOperation (GGS_nonTerminalInstructionForGrammarAnalysis::init_21__21__21_ (temp_1.readProperty_mInstructionLocation (), temp_2.readProperty_mNonterminalName (), var_nonTerminalSymbolIndex_4840, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("instruction-non-terminal.galgas", 95)) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -8181,36 +8181,24 @@ void cPtr_nonterminalCallInstruction::method_analyzeSyntaxInstruction (const GGS
                                                                        GGS_uint & /* ioArgument_ioSelectMethodCount */,
                                                                        Compiler * inCompiler
                                                                        COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_nonterminalLabelMap var_labelMap_6915 ;
+  GGS_nonterminalLabelMap var_labelMap_6312 ;
   const GGS_nonterminalCallInstruction temp_0 = this ;
-  constinArgument_inNonterminalMap.method_searchKey (temp_0.readProperty_mNonterminalName (), var_labelMap_6915, inCompiler COMMA_SOURCE_FILE ("instruction-non-terminal.galgas", 140)) ;
-  GGS_formalParameterSignature var_signature_6959 ;
-  GalgasBool test_1 = GalgasBool::boolTrue ;
-  if (GalgasBool::boolTrue == test_1) {
-    const GGS_nonterminalCallInstruction temp_2 = this ;
-    test_1 = GGS_bool (ComparisonKind::equal, temp_2.readProperty_mLabelName ().readProperty_string ().objectCompare (GGS_string ("parse"))).boolEnum () ;
-    if (GalgasBool::boolTrue == test_1) {
-      var_signature_6959 = GGS_formalParameterSignature::init (inCompiler COMMA_HERE) ;
-    }
-  }
-  if (GalgasBool::boolFalse == test_1) {
-    const GGS_nonterminalCallInstruction temp_3 = this ;
-    GGS_formalParameterListForGeneration joker_7089 ; // Joker input parameter
-    GGS_location joker_7103 ; // Joker input parameter
-    var_labelMap_6915.method_searchKey (temp_3.readProperty_mLabelName (), joker_7089, var_signature_6959, joker_7103, inCompiler COMMA_SOURCE_FILE ("instruction-non-terminal.galgas", 145)) ;
-  }
-  GGS_actualParameterListForGeneration var_actualParameterListForGeneration_7557 ;
+  constinArgument_inNonterminalMap.method_searchKey (temp_0.readProperty_mNonterminalName (), var_labelMap_6312, inCompiler COMMA_SOURCE_FILE ("instruction-non-terminal.galgas", 117)) ;
+  GGS_formalParameterSignature var_signature_6356 ;
+  GGS_formalParameterListForGeneration joker_6402 ; // Joker input parameter
+  GGS_location joker_6416 ; // Joker input parameter
+  var_labelMap_6312.method_searchKey (GGS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("instruction-non-terminal.galgas", 119)), joker_6402, var_signature_6356, joker_6416, inCompiler COMMA_SOURCE_FILE ("instruction-non-terminal.galgas", 119)) ;
+  GGS_actualParameterListForGeneration var_actualParameterListForGeneration_6862 ;
+  const GGS_nonterminalCallInstruction temp_1 = this ;
+  const GGS_nonterminalCallInstruction temp_2 = this ;
+  const GGS_nonterminalCallInstruction temp_3 = this ;
+  extensionMethod_analyzeRoutineArguments (temp_1.readProperty_mActualParameterList (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, temp_2.readProperty_mNonterminalName (), GGS_string ("'<").add_operation (temp_3.readProperty_mNonterminalName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("instruction-non-terminal.galgas", 127)).add_operation (GGS_string (">' nonterminal declaration"), inCompiler COMMA_SOURCE_FILE ("instruction-non-terminal.galgas", 127)), var_signature_6356, ioArgument_ioVariableMap, ioArgument_ioInstructionListForGeneration, var_actualParameterListForGeneration_6862, inCompiler COMMA_SOURCE_FILE ("instruction-non-terminal.galgas", 121)) ;
   const GGS_nonterminalCallInstruction temp_4 = this ;
+  callExtensionMethod_analyzeSDT ((cPtr_abstractGrammarInstructionSyntaxDirectedTranslationResult *) temp_4.readProperty_mGrammarInstructionSyntaxDirectedTranslationResult ().ptr (), constinArgument_inAnalysisContext, ioArgument_ioTypeMap, constinArgument_inHasTranslateFeature, ioArgument_ioVariableMap, inCompiler COMMA_SOURCE_FILE ("instruction-non-terminal.galgas", 134)) ;
   const GGS_nonterminalCallInstruction temp_5 = this ;
   const GGS_nonterminalCallInstruction temp_6 = this ;
-  extensionMethod_analyzeRoutineArguments (temp_4.readProperty_mActualParameterList (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, temp_5.readProperty_mNonterminalName (), GGS_string ("'<").add_operation (temp_6.readProperty_mNonterminalName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("instruction-non-terminal.galgas", 154)).add_operation (GGS_string (">' nonterminal declaration"), inCompiler COMMA_SOURCE_FILE ("instruction-non-terminal.galgas", 154)), var_signature_6959, ioArgument_ioVariableMap, ioArgument_ioInstructionListForGeneration, var_actualParameterListForGeneration_7557, inCompiler COMMA_SOURCE_FILE ("instruction-non-terminal.galgas", 148)) ;
   const GGS_nonterminalCallInstruction temp_7 = this ;
-  callExtensionMethod_analyzeSDT ((cPtr_abstractGrammarInstructionSyntaxDirectedTranslationResult *) temp_7.readProperty_mGrammarInstructionSyntaxDirectedTranslationResult ().ptr (), constinArgument_inAnalysisContext, ioArgument_ioTypeMap, constinArgument_inHasTranslateFeature, ioArgument_ioVariableMap, inCompiler COMMA_SOURCE_FILE ("instruction-non-terminal.galgas", 161)) ;
-  const GGS_nonterminalCallInstruction temp_8 = this ;
-  const GGS_nonterminalCallInstruction temp_9 = this ;
-  const GGS_nonterminalCallInstruction temp_10 = this ;
-  const GGS_nonterminalCallInstruction temp_11 = this ;
-  ioArgument_ioInstructionListForGeneration.addAssignOperation (GGS_nonterminalInstructionForGeneration::init_21__21__21__21__21_ (temp_8.readProperty_mInstructionLocation (), temp_9.readProperty_mNonterminalName ().readProperty_string (), temp_10.readProperty_mLabelName ().readProperty_string (), var_actualParameterListForGeneration_7557, temp_11.readProperty_mGrammarInstructionSyntaxDirectedTranslationResult (), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("instruction-non-terminal.galgas", 168)) ;
+  ioArgument_ioInstructionListForGeneration.addAssignOperation (GGS_nonterminalInstructionForGeneration::init_21__21__21__21__21_ (temp_5.readProperty_mInstructionLocation (), temp_6.readProperty_mNonterminalName ().readProperty_string (), GGS_string::makeEmptyString (), var_actualParameterListForGeneration_6862, temp_7.readProperty_mGrammarInstructionSyntaxDirectedTranslationResult (), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("instruction-non-terminal.galgas", 141)) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -8223,7 +8211,7 @@ void cPtr_nonterminalInstructionForGeneration::method_appendSyntaxSignature (con
                                                                              COMMA_UNUSED_LOCATION_ARGS) {
   const GGS_nonterminalInstructionForGeneration temp_0 = this ;
   const GGS_nonterminalInstructionForGeneration temp_1 = this ;
-  ioArgument_ioInstructionListForGeneration.addAssignOperation (GGS_nonterminalInstructionForGeneration::init_21__21__21__21__21_ (temp_0.readProperty_mInstructionLocation (), temp_1.readProperty_mNonterminalName (), constinArgument_inPosfix, GGS_actualParameterListForGeneration::init (inCompiler COMMA_HERE), GGS_grammarInstructionSyntaxDirectedTranslationResultNone::init (inCompiler COMMA_HERE), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("instruction-non-terminal.galgas", 200)) ;
+  ioArgument_ioInstructionListForGeneration.addAssignOperation (GGS_nonterminalInstructionForGeneration::init_21__21__21__21__21_ (temp_0.readProperty_mInstructionLocation (), temp_1.readProperty_mNonterminalName (), constinArgument_inPosfix, GGS_actualParameterListForGeneration::init (inCompiler COMMA_HERE), GGS_grammarInstructionSyntaxDirectedTranslationResultNone::init (inCompiler COMMA_HERE), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("instruction-non-terminal.galgas", 173)) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -8238,20 +8226,20 @@ GGS_bool cPtr_nonterminalInstructionForGeneration::getter_compareInstructionSynt
   GGS_bool result_result ; // Returned variable
   GalgasBool test_0 = GalgasBool::boolTrue ;
   if (GalgasBool::boolTrue == test_0) {
-    GGS_nonterminalInstructionForGeneration var_si_9893 (dynamic_cast <const cPtr_nonterminalInstructionForGeneration *> (constinArgument_inTestedInstruction.ptr ())) ;
-    if (nullptr == var_si_9893.ptr ()) {
+    GGS_nonterminalInstructionForGeneration var_si_9178 (dynamic_cast <const cPtr_nonterminalInstructionForGeneration *> (constinArgument_inTestedInstruction.ptr ())) ;
+    if (nullptr == var_si_9178.ptr ()) {
       test_0 = GalgasBool::boolFalse ;
     }
     if (GalgasBool::boolTrue == test_0) {
       const GGS_nonterminalInstructionForGeneration temp_1 = this ;
-      result_result = GGS_bool (ComparisonKind::equal, temp_1.readProperty_mNonterminalName ().objectCompare (var_si_9893.readProperty_mNonterminalName ())) ;
+      result_result = GGS_bool (ComparisonKind::equal, temp_1.readProperty_mNonterminalName ().objectCompare (var_si_9178.readProperty_mNonterminalName ())) ;
       GalgasBool test_2 = GalgasBool::boolTrue ;
       if (GalgasBool::boolTrue == test_2) {
-        test_2 = result_result.operator_not (SOURCE_FILE ("instruction-non-terminal.galgas", 218)).boolEnum () ;
+        test_2 = result_result.operator_not (SOURCE_FILE ("instruction-non-terminal.galgas", 191)).boolEnum () ;
         if (GalgasBool::boolTrue == test_2) {
           const GGS_nonterminalInstructionForGeneration temp_3 = this ;
           GenericArray <FixItDescription> fixItArray4 ;
-          inCompiler->emitSemanticError (var_si_9893.readProperty_mInstructionLocation (), GGS_string ("syntax signature error; the expected syntax instruction here is the '<").add_operation (temp_3.readProperty_mNonterminalName (), inCompiler COMMA_SOURCE_FILE ("instruction-non-terminal.galgas", 220)).add_operation (GGS_string (">' nonterminal invocation"), inCompiler COMMA_SOURCE_FILE ("instruction-non-terminal.galgas", 220)), fixItArray4  COMMA_SOURCE_FILE ("instruction-non-terminal.galgas", 219)) ;
+          inCompiler->emitSemanticError (var_si_9178.readProperty_mInstructionLocation (), GGS_string ("syntax signature error; the expected syntax instruction here is the '<").add_operation (temp_3.readProperty_mNonterminalName (), inCompiler COMMA_SOURCE_FILE ("instruction-non-terminal.galgas", 193)).add_operation (GGS_string (">' nonterminal invocation"), inCompiler COMMA_SOURCE_FILE ("instruction-non-terminal.galgas", 193)), fixItArray4  COMMA_SOURCE_FILE ("instruction-non-terminal.galgas", 192)) ;
         }
       }
     }
@@ -8259,31 +8247,31 @@ GGS_bool cPtr_nonterminalInstructionForGeneration::getter_compareInstructionSynt
   if (GalgasBool::boolFalse == test_0) {
     GalgasBool test_5 = GalgasBool::boolTrue ;
     if (GalgasBool::boolTrue == test_5) {
-      GGS_syntaxInstructionForGeneration var_si_10234 (dynamic_cast <const cPtr_syntaxInstructionForGeneration *> (constinArgument_inTestedInstruction.ptr ())) ;
-      if (nullptr == var_si_10234.ptr ()) {
+      GGS_syntaxInstructionForGeneration var_si_9519 (dynamic_cast <const cPtr_syntaxInstructionForGeneration *> (constinArgument_inTestedInstruction.ptr ())) ;
+      if (nullptr == var_si_9519.ptr ()) {
         test_5 = GalgasBool::boolFalse ;
       }
       if (GalgasBool::boolTrue == test_5) {
         const GGS_nonterminalInstructionForGeneration temp_6 = this ;
         GenericArray <FixItDescription> fixItArray7 ;
-        inCompiler->emitSemanticError (var_si_10234.readProperty_mInstructionLocation (), GGS_string ("syntax signature error; the expected syntax instruction here is the '<").add_operation (temp_6.readProperty_mNonterminalName (), inCompiler COMMA_SOURCE_FILE ("instruction-non-terminal.galgas", 224)).add_operation (GGS_string (">' nonterminal invocation"), inCompiler COMMA_SOURCE_FILE ("instruction-non-terminal.galgas", 224)), fixItArray7  COMMA_SOURCE_FILE ("instruction-non-terminal.galgas", 223)) ;
+        inCompiler->emitSemanticError (var_si_9519.readProperty_mInstructionLocation (), GGS_string ("syntax signature error; the expected syntax instruction here is the '<").add_operation (temp_6.readProperty_mNonterminalName (), inCompiler COMMA_SOURCE_FILE ("instruction-non-terminal.galgas", 197)).add_operation (GGS_string (">' nonterminal invocation"), inCompiler COMMA_SOURCE_FILE ("instruction-non-terminal.galgas", 197)), fixItArray7  COMMA_SOURCE_FILE ("instruction-non-terminal.galgas", 196)) ;
         result_result = GGS_bool (false) ;
       }
     }
     if (GalgasBool::boolFalse == test_5) {
       const GGS_nonterminalInstructionForGeneration temp_8 = this ;
       GenericArray <FixItDescription> fixItArray9 ;
-      inCompiler->emitSemanticError (temp_8.readProperty_mInstructionLocation (), GGS_string ("internal error"), fixItArray9  COMMA_SOURCE_FILE ("instruction-non-terminal.galgas", 227)) ;
+      inCompiler->emitSemanticError (temp_8.readProperty_mInstructionLocation (), GGS_string ("internal error"), fixItArray9  COMMA_SOURCE_FILE ("instruction-non-terminal.galgas", 200)) ;
       result_result = GGS_bool (false) ;
     }
   }
   GalgasBool test_10 = GalgasBool::boolTrue ;
   if (GalgasBool::boolTrue == test_10) {
-    test_10 = result_result.operator_not (SOURCE_FILE ("instruction-non-terminal.galgas", 230)).boolEnum () ;
+    test_10 = result_result.operator_not (SOURCE_FILE ("instruction-non-terminal.galgas", 203)).boolEnum () ;
     if (GalgasBool::boolTrue == test_10) {
       const GGS_nonterminalInstructionForGeneration temp_11 = this ;
       GenericArray <FixItDescription> fixItArray12 ;
-      inCompiler->emitSemanticError (temp_11.readProperty_mInstructionLocation (), GGS_string ("reference syntax instruction is here"), fixItArray12  COMMA_SOURCE_FILE ("instruction-non-terminal.galgas", 231)) ;
+      inCompiler->emitSemanticError (temp_11.readProperty_mInstructionLocation (), GGS_string ("reference syntax instruction is here"), fixItArray12  COMMA_SOURCE_FILE ("instruction-non-terminal.galgas", 204)) ;
     }
   }
 //---

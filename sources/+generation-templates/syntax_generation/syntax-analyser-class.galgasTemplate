@@ -29,12 +29,6 @@ class cParser_%![COMPONENT_NAME identifierRepresentation]% {
     end
     %class Lexique_%!LEXIQUE_NAME% * inLexique) = 0 ;\n\n%
   end
-  
-  %  protected: virtual void nt_%![lkey identifierRepresentation]%_parse (%?^
-  if HAS_TRANSLATE_FEATURE then
-    %class String & %!syntaxDirectedTranslationResultVarName ()%,\n%!^ 
-  end
-  %class Lexique_%!LEXIQUE_NAME% * inLexique) = 0 ;\n\n%
 
   if HAS_INDEXING then
     %  protected: virtual void nt_%![lkey identifierRepresentation]%_indexing (class Lexique_%!LEXIQUE_NAME% * inLexique) = 0 ;\n\n%
@@ -61,11 +55,11 @@ end%
     end
     %Lexique_%!LEXIQUE_NAME% * inLexique) ;\n\n%
   end
-  %  protected: void rule_%![COMPONENT_NAME identifierRepresentation]%_%![mNonterminalName identifierRepresentation]%_i%![mRuleIndex string]%_parse (%?^
+  %/*  protected: void rule_%![COMPONENT_NAME identifierRepresentation]%_%![mNonterminalName identifierRepresentation]%_i%![mRuleIndex string]%_parse (%?^
   if HAS_TRANSLATE_FEATURE then
     %String & %!syntaxDirectedTranslationResultVarName ()%,\n%!^ 
   end
-  %Lexique_%!LEXIQUE_NAME% * inLexique) ;\n\n%
+  %Lexique_%!LEXIQUE_NAME% * inLexique) ; */\n\n%
   if HAS_INDEXING then
     %  protected: void rule_%![COMPONENT_NAME identifierRepresentation]%_%![mNonterminalName identifierRepresentation]%_i%![mRuleIndex string]%_indexing (Lexique_%!LEXIQUE_NAME% * inLexique) ;\n\n%
   end

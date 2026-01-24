@@ -23,16 +23,6 @@ syntax extension galgas3SyntaxComponentSyntax {
 
   rule <syntax_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
                                  !@syntaxInstructionAST outInstruction {
-    let @lstring mLabelName // No label : empty string
-    select
-      mLabelName = @lstring {!"" !@location.here}
-    or
-      $parse$
-      mLabelName = @lstring {!"parse" !@location.here}
-    or
-      $parse$
-      $identifier$ ? mLabelName
-    end
     $<non_terminal>$ ?let @lstring mNonterminalName indexing ruleReference
     <actual_parameter_list_ggs3> !?ioDeclarations ?let @actualParameterListAST mActualParameterList
   //--- Get syntax directed translation result string
@@ -46,7 +36,6 @@ syntax extension galgas3SyntaxComponentSyntax {
     outInstruction = @nonterminalCallInstruction {
       !mNonterminalName.location
       !mNonterminalName
-      !mLabelName
       !mActualParameterList
       !grammarInstructionSyntaxDirectedTranslationResult
     }
@@ -64,16 +53,6 @@ syntax extension galgas4SyntaxComponentSyntax {
 
   rule <syntax_instruction> ?!@galgasDeclarationAST ioDeclarations
                             !@syntaxInstructionAST outInstruction {
-    let @lstring mLabelName // No label : empty string
-    select
-      mLabelName = @lstring {!"" !@location.here}
-    or
-      $parse$
-      mLabelName = @lstring {!"parse" !@location.here}
-    or
-      $parse$
-      $identifier$ ? mLabelName
-    end
     $<non_terminal>$ ?let @lstring mNonterminalName indexing ruleReference
     <actual_parameter_list_within_parenthesis> !?ioDeclarations ?let @actualParameterListAST mActualParameterList
   //--- Get syntax directed translation result string
@@ -87,7 +66,6 @@ syntax extension galgas4SyntaxComponentSyntax {
     outInstruction = @nonterminalCallInstruction {
       !mNonterminalName.location
       !mNonterminalName
-      !mLabelName
       !mActualParameterList
       !grammarInstructionSyntaxDirectedTranslationResult
     }
@@ -103,7 +81,6 @@ syntax extension galgas4SyntaxComponentSyntax {
 
 final class @nonterminalCallInstruction : @syntaxInstructionAST {
   private let @lstring mNonterminalName
-  private let @lstring mLabelName // No label : empty string
   private let @actualParameterListAST mActualParameterList
   private let @abstractGrammarInstructionSyntaxDirectedTranslationResult mGrammarInstructionSyntaxDirectedTranslationResult
 
@@ -139,11 +116,7 @@ final class @nonterminalCallInstruction : @syntaxInstructionAST {
                                             ?!@uint unused ioSelectMethodCount {
     [inNonterminalMap searchKey !self.mNonterminalName ?let @nonterminalLabelMap labelMap]
     let @formalParameterSignature signature
-    if self.mLabelName.string == "parse" then
-      signature = @()
-    else
-      [labelMap searchKey !self.mLabelName ?* ?signature ?*]
-    end
+    [labelMap searchKey !"".nowhere ?* ?signature ?*]
   //--- call arguments
     [self.mActualParameterList analyzeRoutineArguments
       !inUsefulnessCallerEntityName
@@ -168,7 +141,7 @@ final class @nonterminalCallInstruction : @syntaxInstructionAST {
     ioInstructionListForGeneration += !@nonterminalInstructionForGeneration {
       !self.mInstructionLocation
       !self.mNonterminalName.string
-      !self.mLabelName.string
+      !""
       !actualParameterListForGeneration
       !self.mGrammarInstructionSyntaxDirectedTranslationResult
     }

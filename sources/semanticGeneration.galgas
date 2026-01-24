@@ -194,26 +194,26 @@ final class @syntaxDeclarationForGeneration : @semanticDeclarationForGeneration 
         outImplementation += code
       end
     //--- Generate "parse" label
-      [mLabelImplementationList first ?* ?* ?* ?* ?let parseInstructionList]
-      let @string parseRuleName = "cParser_" + self.mSyntaxComponentName.identifierRepresentation
-      + "::rule_" + self.mSyntaxComponentName.identifierRepresentation + "_"
-      + mNonterminalName.identifierRepresentation
-      + "_i" + mRuleIndex.string + "_parse"
-      outImplementation += "//------------------------------------------------------------------------------------------------\n\n"
-      generateProcedure (
-        !static:false
-        !parseRuleName
-        !?ioInclusionSet
-        !@formalParameterListForGeneration ()
-        !syntaxSignatureOfInstructionList (!"parse" !parseInstructionList)
-        !false
-        !lexiqueCppName
-        !false // Do not generate location Argument
-        !true // Generate 'resetTemplateString'
-        !self.mHasTranslateFeature
-        ?let @string parseCode
-      )
-      outImplementation += parseCode
+//      [mLabelImplementationList first ?* ?* ?* ?* ?let parseInstructionList]
+//      let @string parseRuleName = "cParser_" + self.mSyntaxComponentName.identifierRepresentation
+//      + "::rule_" + self.mSyntaxComponentName.identifierRepresentation + "_"
+//      + mNonterminalName.identifierRepresentation
+//      + "_i" + mRuleIndex.string + "_parse"
+//      outImplementation += "//------------------------------------------------------------------------------------------------\n\n"
+//      generateProcedure (
+//        !static:false
+//        !parseRuleName
+//        !?ioInclusionSet
+//        !@formalParameterListForGeneration ()
+//        !syntaxSignatureOfInstructionList (!"parse" !parseInstructionList)
+//        !false
+//        !lexiqueCppName
+//        !false // Do not generate location Argument
+//        !true // Generate 'resetTemplateString'
+//        !self.mHasTranslateFeature
+//        ?let @string parseCode
+//      )
+//      outImplementation += parseCode
     //--- Generate indexing code
       if self.mHasIndexing then
         [mLabelImplementationList first ?* ?* ?* ?* ?let instructionList]

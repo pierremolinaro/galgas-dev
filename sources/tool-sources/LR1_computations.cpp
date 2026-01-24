@@ -1320,59 +1320,59 @@ generate_LR1_grammar_cpp_file (const PureBNFproductionsList & inProductionRules,
     const int32_t first = inProductionRules.tableauIndicePremiereProduction (pureBNFleftNonterminalIndex COMMA_HERE) ;
     ioCppFileContents.appendCppTitleComment (String ("'") + nonTerminal.current_mNonTerminalSymbol (HERE).mProperty_string.stringValue () + "' non terminal implementation") ;
   //--- Parse label
-    ioCppFileContents.appendCString ("void cGrammar_") ;
-    ioCppFileContents.appendString (inTargetFileName.identifierRepresentation ()) ;
-    ioCppFileContents.appendCString ("::nt_") ;
-    ioCppFileContents.appendString (nonTerminal.current_mNonTerminalSymbol (HERE).mProperty_string.stringValue ().identifierRepresentation ()) ;
-    ioCppFileContents.appendCString ("_parse (") ;
-    if (inSyntaxDirectedTranslationVarName.length() > 0) {
-      ioCppFileContents.appendCString ("String & ") ;
-      ioCppFileContents.appendString (inSyntaxDirectedTranslationVarName) ;
-      ioCppFileContents.appendCString (",\n                                ") ;
-    }
-    ioCppFileContents.appendCString ("Lexique_") ;
-    ioCppFileContents.appendString (inLexiqueName.identifierRepresentation ()) ;
-    ioCppFileContents.appendCString (" * inLexique") ;
-    ioCppFileContents.appendCString (") {\n") ;
-    if (first < 0) { // first<0 means the non terminal symbol is unuseful
-      ioCppFileContents.appendCString ("  inLexique->internalBottomUpParserError (HERE) ;\n") ;
-    }else{
-      const int32_t last = inProductionRules.tableauIndiceDerniereProduction (pureBNFleftNonterminalIndex COMMA_HERE) ;
-      macroAssert (last >= first, "last (%ld) < first (%ld)", last, first) ;
-      if (first == last) {
-        const int32_t ip = inProductionRules.tableauIndirectionProduction (first COMMA_HERE) ;
-        ioCppFileContents.appendCString ("  if (inLexique->nextProductionIndex () == ") ;
-        ioCppFileContents.appendSigned (ip) ;
-        ioCppFileContents.appendCString (") {\n") ;
-        inProductionRules.mProductionArray (ip COMMA_HERE).engendrerAppelProduction (0,
-                                                                    inVocabulary,
-                                                                    "parse",
-                                                                    ioCppFileContents,
-                                                                    inSyntaxDirectedTranslationVarName) ;
-        ioCppFileContents.appendCString ("  }else{\n"
-                             "    inLexique->internalBottomUpParserError (HERE) ;\n"
-                             "  }\n") ;
-      }else{
-        ioCppFileContents.appendCString ("  switch (inLexique->nextProductionIndex ()) {\n") ;
-        for (int32_t j=first ; j<=last ; j++) {
-          const int32_t ip = inProductionRules.tableauIndirectionProduction (j COMMA_HERE) ;
-          ioCppFileContents.appendCString ("  case ") ;
-          ioCppFileContents.appendSigned (ip) ;
-          ioCppFileContents.appendCString (" :\n    ") ;
-          inProductionRules.mProductionArray (ip COMMA_HERE).engendrerAppelProduction (0,
-                                                                      inVocabulary,
-                                                                      "parse",
-                                                                      ioCppFileContents,
-                                                                      inSyntaxDirectedTranslationVarName) ;
-          ioCppFileContents.appendCString ("    break ;\n") ;
-        }
-        ioCppFileContents.appendCString ("  default :\n"
-                             "    inLexique->internalBottomUpParserError (HERE) ;\n"
-                             "    break ;\n"
-                             "  }\n") ;
-      }
-    }
-    ioCppFileContents.appendCString ("}\n\n") ;
+//    ioCppFileContents.appendCString ("void cGrammar_") ;
+//    ioCppFileContents.appendString (inTargetFileName.identifierRepresentation ()) ;
+//    ioCppFileContents.appendCString ("::nt_") ;
+//    ioCppFileContents.appendString (nonTerminal.current_mNonTerminalSymbol (HERE).mProperty_string.stringValue ().identifierRepresentation ()) ;
+//    ioCppFileContents.appendCString ("_parse (") ;
+//    if (inSyntaxDirectedTranslationVarName.length() > 0) {
+//      ioCppFileContents.appendCString ("String & ") ;
+//      ioCppFileContents.appendString (inSyntaxDirectedTranslationVarName) ;
+//      ioCppFileContents.appendCString (",\n                                ") ;
+//    }
+//    ioCppFileContents.appendCString ("Lexique_") ;
+//    ioCppFileContents.appendString (inLexiqueName.identifierRepresentation ()) ;
+//    ioCppFileContents.appendCString (" * inLexique") ;
+//    ioCppFileContents.appendCString (") {\n") ;
+//    if (first < 0) { // first<0 means the non terminal symbol is unuseful
+//      ioCppFileContents.appendCString ("  inLexique->internalBottomUpParserError (HERE) ;\n") ;
+//    }else{
+//      const int32_t last = inProductionRules.tableauIndiceDerniereProduction (pureBNFleftNonterminalIndex COMMA_HERE) ;
+//      macroAssert (last >= first, "last (%ld) < first (%ld)", last, first) ;
+//      if (first == last) {
+//        const int32_t ip = inProductionRules.tableauIndirectionProduction (first COMMA_HERE) ;
+//        ioCppFileContents.appendCString ("  if (inLexique->nextProductionIndex () == ") ;
+//        ioCppFileContents.appendSigned (ip) ;
+//        ioCppFileContents.appendCString (") {\n") ;
+//        inProductionRules.mProductionArray (ip COMMA_HERE).engendrerAppelProduction (0,
+//                                                                    inVocabulary,
+//                                                                    "parse",
+//                                                                    ioCppFileContents,
+//                                                                    inSyntaxDirectedTranslationVarName) ;
+//        ioCppFileContents.appendCString ("  }else{\n"
+//                             "    inLexique->internalBottomUpParserError (HERE) ;\n"
+//                             "  }\n") ;
+//      }else{
+//        ioCppFileContents.appendCString ("  switch (inLexique->nextProductionIndex ()) {\n") ;
+//        for (int32_t j=first ; j<=last ; j++) {
+//          const int32_t ip = inProductionRules.tableauIndirectionProduction (j COMMA_HERE) ;
+//          ioCppFileContents.appendCString ("  case ") ;
+//          ioCppFileContents.appendSigned (ip) ;
+//          ioCppFileContents.appendCString (" :\n    ") ;
+//          inProductionRules.mProductionArray (ip COMMA_HERE).engendrerAppelProduction (0,
+//                                                                      inVocabulary,
+//                                                                      "parse",
+//                                                                      ioCppFileContents,
+//                                                                      inSyntaxDirectedTranslationVarName) ;
+//          ioCppFileContents.appendCString ("    break ;\n") ;
+//        }
+//        ioCppFileContents.appendCString ("  default :\n"
+//                             "    inLexique->internalBottomUpParserError (HERE) ;\n"
+//                             "    break ;\n"
+//                             "  }\n") ;
+//      }
+//    }
+//    ioCppFileContents.appendCString ("}\n\n") ;
   //--- Indexing ?
     ioCppFileContents.appendCString ("void cGrammar_") ;
     ioCppFileContents.appendString (inTargetFileName.identifierRepresentation ()) ;

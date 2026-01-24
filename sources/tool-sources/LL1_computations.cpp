@@ -596,26 +596,26 @@ generate_LL1_grammar_Cpp_file (const GGS_nonTerminalSymbolSortedListForGrammarAn
     ioCppFileContents.appendCppTitleComment (String ("'") + nonTerminal.current_mNonTerminalSymbol (HERE).mProperty_string.stringValue () + "' non terminal implementation") ;
     const bool existeProduction = inPureBNFproductions.tableauIndicePremiereProduction ((int32_t) nonTerminal.current_mNonTerminalIndex (HERE).uintValue () COMMA_HERE) >= 0 ;
   //--- Parse label
-      ioCppFileContents.appendCString ("void cGrammar_") ;
-      ioCppFileContents.appendString (inTargetFileName.identifierRepresentation ()) ;
-      ioCppFileContents.appendCString ("::nt_") ;
-      ioCppFileContents.appendString (nonTerminal.current_mNonTerminalSymbol (HERE).mProperty_string.stringValue ().identifierRepresentation ()) ;
-      ioCppFileContents.appendCString ("_parse (") ;
-      if (inSyntaxDirectedTranslationVarName.length () > 0) {
-        ioCppFileContents.appendCString ("String & ") ;
-        ioCppFileContents.appendString (inSyntaxDirectedTranslationVarName) ;
-        ioCppFileContents.appendCString (", ") ;
-      }
-      ioCppFileContents.appendCString ("Lexique_") ;
-      ioCppFileContents.appendString (inLexiqueName.identifierRepresentation ()) ;
-      ioCppFileContents.appendCString (" * ") ;
-      ioCppFileContents.appendString (existeProduction ? "inLexique" : "") ;
-      ioCppFileContents.appendCString (") {\n") ;
-     engendrerAiguillageNonTerminaux (inVocabulary, (int32_t) nonTerminal.current_mNonTerminalIndex (HERE).uintValue (), 0,
-                                      inPureBNFproductions, ioCppFileContents,
-                                      "parse",
-                                      inSyntaxDirectedTranslationVarName) ;
-    ioCppFileContents.appendCString ("}\n\n") ;
+//      ioCppFileContents.appendCString ("void cGrammar_") ;
+//      ioCppFileContents.appendString (inTargetFileName.identifierRepresentation ()) ;
+//      ioCppFileContents.appendCString ("::nt_") ;
+//      ioCppFileContents.appendString (nonTerminal.current_mNonTerminalSymbol (HERE).mProperty_string.stringValue ().identifierRepresentation ()) ;
+//      ioCppFileContents.appendCString ("_parse (") ;
+//      if (inSyntaxDirectedTranslationVarName.length () > 0) {
+//        ioCppFileContents.appendCString ("String & ") ;
+//        ioCppFileContents.appendString (inSyntaxDirectedTranslationVarName) ;
+//        ioCppFileContents.appendCString (", ") ;
+//      }
+//      ioCppFileContents.appendCString ("Lexique_") ;
+//      ioCppFileContents.appendString (inLexiqueName.identifierRepresentation ()) ;
+//      ioCppFileContents.appendCString (" * ") ;
+//      ioCppFileContents.appendString (existeProduction ? "inLexique" : "") ;
+//      ioCppFileContents.appendCString (") {\n") ;
+//     engendrerAiguillageNonTerminaux (inVocabulary, (int32_t) nonTerminal.current_mNonTerminalIndex (HERE).uintValue (), 0,
+//                                      inPureBNFproductions, ioCppFileContents,
+//                                      "parse",
+//                                      inSyntaxDirectedTranslationVarName) ;
+//    ioCppFileContents.appendCString ("}\n\n") ;
   //--- Indexing ?
     ioCppFileContents.appendCString ("void cGrammar_") ;
     ioCppFileContents.appendString (inTargetFileName.identifierRepresentation ()) ;
