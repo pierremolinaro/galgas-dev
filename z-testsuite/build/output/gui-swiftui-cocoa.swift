@@ -89,7 +89,7 @@ let gPopUpData_testsuite_lexique : [[UInt16]] = [
 //   Block Comment for 'testsuite_lexique' lexique
 //--------------------------------------------------------------------------------------------------
 
-let gBlockComment_testsuite_lexique : String? = "//"
+let gLineComment_testsuite_lexique : String? = "//"
 
 
 //--------------------------------------------------------------------------------------------------

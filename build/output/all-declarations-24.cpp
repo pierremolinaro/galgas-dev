@@ -3332,7 +3332,7 @@ GGS_string filewrapperTemplate_guiGenerationTemplates_swiftui_5F_gui_5F_implemen
       }
       result.appendString ("\n]\n\n//--------------------------------------------------------------------------------------------------\n//   Block Comment for '") ;
       result.appendString (enumerator_3526.current_mLexiqueClassName (HERE).stringValue ()) ;
-      result.appendString ("' lexique\n//--------------------------------------------------------------------------------------------------\n\nlet gBlockComment_") ;
+      result.appendString ("' lexique\n//--------------------------------------------------------------------------------------------------\n\nlet gLineComment_") ;
       result.appendString (enumerator_3526.current_mLexiqueClassName (HERE).stringValue ()) ;
       result.appendString (" : String\? = ") ;
       const GalgasBool test_0 = GGS_bool (ComparisonKind::equal, enumerator_3526.current_mBlockComment (HERE).getter_count (SOURCE_FILE ("gui-implementation-swiftui.swift.galgasTemplate", 119)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;

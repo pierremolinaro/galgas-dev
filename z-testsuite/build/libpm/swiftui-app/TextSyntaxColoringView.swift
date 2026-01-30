@@ -109,8 +109,10 @@ struct TextSyntaxColoringView : View {
           popUpMenuItemsBinding: self.$mTopViewPopUpMenuItems,
           populateContextualMenuCallBack: self.mPopulateContextualMenuCallBack
         )
-    // ATTENTION : il faut exécuter les actions de manière asynchrone, dans le main thread
-        .onKeyPress (.tab, phases: .down) { _ in return self.hTabKeyAction () }
+      //--- ATTENTION : il faut exécuter les actions de manière asynchrone, dans le main thread
+        .onKeyPress (.tab, phases: .down) { _ in
+          return self.hTabKeyAction (selectedRangeBinding: self.$mSharedTextModel.mTopViewSelection)
+        }
         .onChange (of: self.mSharedTextModel.mTopViewSelection.location) {
         //--- Select popup menu according to current selection staret
           let currentLocation = self.mSharedTextModel.mTopViewSelection.location
@@ -189,6 +191,10 @@ struct TextSyntaxColoringView : View {
             }
             self.mBottomViewSelectedPopUp = newSelectedID
           }
+        //--- ATTENTION : il faut exécuter les actions de manière asynchrone, dans le main thread
+          .onKeyPress (.tab, phases: .down) { _ in
+            return self.hTabKeyAction (selectedRangeBinding: self.$mSharedTextModel.mBottomViewSelection)
+          }
           .focusedValue (
             \.activeView,
             ActiveViewFocusedValue (
@@ -213,10 +219,10 @@ struct TextSyntaxColoringView : View {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private func hTabKeyAction () -> KeyPress.Result {
+  private func hTabKeyAction (selectedRangeBinding inSelectedRangeBinding : Binding <NSRange>) -> KeyPress.Result {
     DispatchQueue.main.async {
       let shift = NSEvent.modifierFlags.contains (.shift)
-
+      self.mSharedTextModel.performHTabKeyAction (selectedRange: inSelectedRangeBinding, shift: shift)
     }
     return .handled
   }

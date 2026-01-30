@@ -159,8 +159,8 @@ class ScannerFor_jsonScanner : AbstractScanner {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final override func blockComment () -> String? {
-    return gBlockComment_jsonScanner
+  final override func lineComment () -> String? {
+    return gLineComment_jsonScanner
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

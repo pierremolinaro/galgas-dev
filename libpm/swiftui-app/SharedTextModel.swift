@@ -157,69 +157,65 @@ final class SharedTextModel : NSObject, ObservableObject, Identifiable, NSTextSt
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //MARK: Undo Operation
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  struct UndoInfo {
+    let initialSelectedRange : NSRange
+    let initialSelectedText : String
+    let modifiedSelectedRange : NSRange
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  @objc private func undoOperation (_ inObject : Any?) {
+    if let info = inObject as? UndoInfo {
+      self.mTextStorage.replaceCharacters (
+        in: info.modifiedSelectedRange,
+        with: info.initialSelectedText
+      )
+    }
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //MARK: Comment / uncomment
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func performBlockComment (forSelection inSelectedRange : NSRange) -> NSRange {
-    var newSelectedRange = inSelectedRange
-    if let blockComment = self.mScanner?.blockComment () {
+  func performBlockComment (forSelection inInitialSelectedRange : NSRange) -> NSRange {
+    var newSelectedRange = inInitialSelectedRange
+    if let blockComment = self.mScanner?.lineComment () {
       let blockCommentAT = NSAttributedString (string: blockComment, attributes: nil)
       let sourceString = self.mTextStorage.string as NSString
-      let lineRange = sourceString.lineRange (for: inSelectedRange)
-      var insertedCharsCount = 0
+      let initialSelectedSourceString = sourceString.substring (with: inInitialSelectedRange)
+      let lineRange = sourceString.lineRange (for: inInitialSelectedRange)
       var currentLineRange = sourceString.lineRange (for: NSRange (location: lineRange.location + lineRange.length - 1, length: 1))
+      if lineRange.location < inInitialSelectedRange.location {
+        newSelectedRange = NSRange (
+          location: lineRange.location,
+          length: inInitialSelectedRange.location - lineRange.location + inInitialSelectedRange.length
+        )
+      }
       self.mTextStorage.beginEditing ()
       repeat {
         self.mTextStorage.insert (blockCommentAT, at: currentLineRange.location)
-        insertedCharsCount += (blockComment as NSString).length
+        newSelectedRange.length += (blockComment as NSString).length
         if currentLineRange.location > 0 {
           currentLineRange = sourceString.lineRange (for: NSRange (location: currentLineRange.location - 1, length: 1))
         }
       }while ((currentLineRange.location > 0) && (currentLineRange.location >= lineRange.location))
       self.mTextStorage.endEditing ()
-    //--- Update selected range
-      newSelectedRange = NSRange (location: inSelectedRange.location, length: inSelectedRange.length + insertedCharsCount)
     //--- Register undo
       self.mSharedUndoManager.registerUndo (
         withTarget: self,
-        selector: #selector (Self.uncommentRangeForUndo(_:)),
-        object: NSValue (range: newSelectedRange)
+        selector: #selector (Self.undoOperation(_:)),
+        object: UndoInfo (
+          initialSelectedRange: inInitialSelectedRange,
+          initialSelectedText: initialSelectedSourceString,
+          modifiedSelectedRange: newSelectedRange
+        )
       )
     }
     return newSelectedRange
-//      self.mTextStorage.beginEditing ()
-//    //---
-//      let blockCommentString = NSAttributedString (string: tokenizer.blockComment (), attributes: nil)
-//      let sourceString = self.mTextStorage.string as NSString
-//      let lineRange = sourceString.lineRange (for: inSelectedRangeValue)
-//      var insertedCharsCount = 0
-//      var currentLineRange = sourceString.lineRange (for: NSRange (location: lineRange.location + lineRange.length - 1, length: 1))
-//      repeat {
-//        self.mTextStorage.insert (blockCommentString, at: currentLineRange.location)
-//        insertedCharsCount += (blockCommentString.string as NSString).length
-//        if currentLineRange.location > 0 {
-//          currentLineRange = sourceString.lineRange (for: NSRange (location: currentLineRange.location - 1, length: 1))
-//        }
-//      }while ((currentLineRange.location > 0) && (currentLineRange.location >= lineRange.location))
-//  //---
-//      self.mTextStorage.endEditing ()
-//  //--- Update selected range
-//      newSelectedRange = NSRange (location: inSelectedRangeValue.location, length: inSelectedRangeValue.length + insertedCharsCount)
-    //--- Register undo
-//      self.mSharedUndoManager.registerUndo (
-//        withTarget: self,
-//        selector: #selector (Self.uncommentRangeForUndo(_:)),
-//        object: NSValue (range: newSelectedRange)
-//      )
-//    }
-//  //---
-//    return newSelectedRange
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  @objc private func commentRangeForUndo (_ inRangeValue : NSValue) { // An NSValue of NSRange
-    _ = self.performBlockComment (forSelection: inRangeValue.rangeValue)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -242,35 +238,42 @@ final class SharedTextModel : NSObject, ObservableObject, Identifiable, NSTextSt
   //
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func performBlockUncomment (forSelection initialSelectedRange : NSRange) -> NSRange {
-    var finalSelectedRange = NSRange ()
-    if let blockCommentString = self.mScanner?.blockComment () {
+  func performBlockUncomment (forSelection inInitialSelectedRange : NSRange) -> NSRange {
+    var newSelectedRange = NSRange ()
+    if let lineCommentString = self.mScanner?.lineComment () {
       self.mTextStorage.beginEditing ()
     //--- Block comment string
-      let blockCommentLength = (blockCommentString as NSString).length
+      let lineCommentLength = (lineCommentString as NSString).length
     //--- Get source string
       let sourceString = self.mTextStorage.string as NSString
+      let initialSelectedSourceString = sourceString.substring(with: inInitialSelectedRange)
     //--- Final selection range
-      finalSelectedRange = initialSelectedRange
+      newSelectedRange = inInitialSelectedRange
     //--- Get line range that is affected by the operation
-      let lineRange = sourceString.lineRange (for: initialSelectedRange)
+      let lineRange = sourceString.lineRange (for: inInitialSelectedRange)
+      if lineRange.location < inInitialSelectedRange.location {
+        newSelectedRange = NSRange (
+          location: lineRange.location,
+          length: inInitialSelectedRange.location - lineRange.location + inInitialSelectedRange.length
+        )
+      }
       var currentLineRange = sourceString.lineRange (for: NSRange (location: lineRange.location + lineRange.length - 1, length: 1))
       repeat {
         let lineString = (self.mTextStorage.string as NSString).substring (with: currentLineRange) as NSString
-        if lineString.compare (blockCommentString, options: .literal, range: NSRange (location: 0, length: blockCommentLength)) == .orderedSame {
-          self.mTextStorage.replaceCharacters (in: NSRange (location: currentLineRange.location, length: blockCommentLength), with: "")
+        if lineString.compare (lineCommentString, options: .literal, range: NSRange (location: 0, length: lineCommentLength)) == .orderedSame {
+          self.mTextStorage.replaceCharacters (in: NSRange (location: currentLineRange.location, length: lineCommentLength), with: "")
         //--- Examen du nombre de caractères à l'intérieur de la sélection
           let withinSelectionCharacterCount =
-            min (currentLineRange.location + blockCommentLength, finalSelectedRange.location + finalSelectedRange.length)
+            min (currentLineRange.location + lineCommentLength, newSelectedRange.location + newSelectedRange.length)
           -
-            max (currentLineRange.location, finalSelectedRange.location)
+            max (currentLineRange.location, newSelectedRange.location)
           if withinSelectionCharacterCount > 0 {
-            finalSelectedRange.length -= withinSelectionCharacterCount
+            newSelectedRange.length -= withinSelectionCharacterCount
           }
         //--- Examen du nombre de caractères avant la sélection
-          let beforeSelectionCharacterCount = finalSelectedRange.location - currentLineRange.location
+          let beforeSelectionCharacterCount = newSelectedRange.location - currentLineRange.location
           if beforeSelectionCharacterCount > 0 {
-            finalSelectedRange.location -= min (blockCommentLength, beforeSelectionCharacterCount)
+            newSelectedRange.location -= min (lineCommentLength, beforeSelectionCharacterCount)
           }
         }
         if currentLineRange.location > 0 {
@@ -282,17 +285,60 @@ final class SharedTextModel : NSObject, ObservableObject, Identifiable, NSTextSt
     //--- Register undo
       self.mSharedUndoManager.registerUndo (
         withTarget: self,
-        selector: #selector (Self.commentRangeForUndo(_:)),
-        object: NSValue (range: finalSelectedRange)
+        selector: #selector (Self.undoOperation(_:)),
+        object: UndoInfo (
+          initialSelectedRange: inInitialSelectedRange,
+          initialSelectedText: initialSelectedSourceString,
+          modifiedSelectedRange: newSelectedRange
+        )
       )
     }
-    return finalSelectedRange
+    return newSelectedRange
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  // HTab Key Action
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  @objc private func uncommentRangeForUndo (_ inRangeValue : NSValue) { // An NSValue of NSRange
-    _ = self.self.performBlockUncomment (forSelection: inRangeValue.rangeValue)
+  func performHTabKeyAction (selectedRange inSelectedRangeBinding : Binding <NSRange>,
+                             shift inShiftKey : Bool) {
+    let prependedString = "  "
+    let prependedStringAT = NSAttributedString (string: prependedString, attributes: nil)
+    let sourceString = self.mTextStorage.string as NSString
+    let initialSelectedRange = inSelectedRangeBinding.wrappedValue
+    let initialSelectedString = sourceString.substring (with: initialSelectedRange)
+    let lineRange = sourceString.lineRange (for: initialSelectedRange)
+    var currentLineRange = sourceString.lineRange (for: NSRange (location: lineRange.location + lineRange.length - 1, length: 1))
+    var newSelectedRange : NSRange
+    if lineRange.location < initialSelectedRange.location {
+      newSelectedRange = NSRange (
+        location: lineRange.location,
+        length: initialSelectedRange.location - lineRange.location + initialSelectedRange.length
+      )
+    }else{
+      newSelectedRange = initialSelectedRange
+    }
+    self.mTextStorage.beginEditing ()
+    repeat {
+      self.mTextStorage.insert (prependedStringAT, at: currentLineRange.location)
+      newSelectedRange.length += (prependedString as NSString).length
+      if currentLineRange.location > 0 {
+        currentLineRange = sourceString.lineRange (for: NSRange (location: currentLineRange.location - 1, length: 1))
+      }
+    }while ((currentLineRange.location > 0) && (currentLineRange.location >= lineRange.location))
+    self.mTextStorage.endEditing ()
+  //--- Register undo
+    self.mSharedUndoManager.registerUndo (
+      withTarget: self,
+      selector: #selector (Self.undoOperation(_:)),
+      object: UndoInfo (
+        initialSelectedRange: initialSelectedRange,
+        initialSelectedText: initialSelectedString,
+        modifiedSelectedRange: newSelectedRange
+      )
+    )
+  //--- Update range
+    inSelectedRangeBinding.wrappedValue = newSelectedRange
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

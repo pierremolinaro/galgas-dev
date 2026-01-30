@@ -287,8 +287,8 @@ class ScannerFor_galgasScanner3 : AbstractScanner {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final override func blockComment () -> String? {
-    return gBlockComment_galgasScanner3
+  final override func lineComment () -> String? {
+    return gLineComment_galgasScanner3
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

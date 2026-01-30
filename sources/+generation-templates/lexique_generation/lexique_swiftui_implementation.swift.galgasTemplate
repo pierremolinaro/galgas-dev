@@ -109,8 +109,8 @@ class ScannerFor_%!LEXIQUE_CLASS_NAME% : AbstractScanner {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final override func blockComment () -> String? {
-    return gBlockComment_%!LEXIQUE_CLASS_NAME%
+  final override func lineComment () -> String? {
+    return gLineComment_%!LEXIQUE_CLASS_NAME%
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

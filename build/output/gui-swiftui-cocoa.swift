@@ -303,7 +303,7 @@ let gPopUpData_galgasScanner3 : [[UInt16]] = [
 //   Block Comment for 'galgasScanner3' lexique
 //--------------------------------------------------------------------------------------------------
 
-let gBlockComment_galgasScanner3 : String? = "//"
+let gLineComment_galgasScanner3 : String? = "//"
 
 //--------------------------------------------------------------------------------------------------
 //   Popup list data for 'galgasScanner4' lexique
@@ -519,7 +519,7 @@ let gPopUpData_galgasScanner4 : [[UInt16]] = [
 //   Block Comment for 'galgasScanner4' lexique
 //--------------------------------------------------------------------------------------------------
 
-let gBlockComment_galgasScanner4 : String? = "//"
+let gLineComment_galgasScanner4 : String? = "//"
 
 //--------------------------------------------------------------------------------------------------
 //   Popup list data for 'galgasTemplateScanner' lexique
@@ -533,7 +533,7 @@ let gPopUpData_galgasTemplateScanner : [[UInt16]] = [
 //   Block Comment for 'galgasTemplateScanner' lexique
 //--------------------------------------------------------------------------------------------------
 
-let gBlockComment_galgasTemplateScanner : String? = nil
+let gLineComment_galgasTemplateScanner : String? = nil
 
 
 //--------------------------------------------------------------------------------------------------

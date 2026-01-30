@@ -116,7 +116,7 @@ let gPopUpData_%!lexiqueClassName% : [[UInt16]] = [
 //   Block Comment for '%!lexiqueClassName%' lexique
 //--------------------------------------------------------------------------------------------------
 
-let gBlockComment_%!lexiqueClassName% : String? = %if [blockComment count] == 0 then %nil% else ![blockComment utf8Representation] end%
+let gLineComment_%!lexiqueClassName% : String? = %if [blockComment count] == 0 then %nil% else ![blockComment utf8Representation] end%
 
 %end%
 //--------------------------------------------------------------------------------------------------
