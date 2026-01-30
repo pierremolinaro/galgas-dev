@@ -147,7 +147,7 @@ struct ActionMenuCommands : Commands {
       Button ("Goto Line…") {
         self.activeView?.presentGotoLineSheet ()
       }
-      .keyboardShortcut ("g", modifiers: [.option, .command])
+      .keyboardShortcut ("l", modifiers: [.command])
       .disabled (self.activeView == nil)
       Button ("Comment") {
         self.activeView?.commentSelection ()

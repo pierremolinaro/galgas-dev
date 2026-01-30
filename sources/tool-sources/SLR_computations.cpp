@@ -1343,10 +1343,10 @@ generate_SLR_grammar_cpp_file (const PureBNFproductionsList & inProductionRules,
           ioCppFileContents.appendCString (") ;\n") ;
         }
         ioCppFileContents.appendCString ("      }\n"
-                                     "    }\n"
-                                     "    macroDetachSharedObject (scanner) ;\n"
-                                     "  }\n"
-                                     "}\n\n") ;
+          "    }\n"
+          "    macroDetachSharedObject (scanner) ;\n"
+          "  }\n"
+          "}\n\n") ;
         currentAltForNonTerminal.gotoNextObject () ;
       }
     }

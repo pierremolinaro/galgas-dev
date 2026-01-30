@@ -12,7 +12,15 @@ struct ProjectDocument : FileDocument {
   // MODEL
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  var mString : String
+  var mString : String {
+    didSet { self.saveDocument () }
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  // PROPERTIES
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  let mUserInterfaceSetting = UserInterfaceSetting ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -34,8 +42,32 @@ struct ProjectDocument : FileDocument {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func fileWrapper (configuration inWriteConfiguration : WriteConfiguration) throws -> FileWrapper {
+    DispatchQueue.main.async {
+      self.mUserInterfaceSetting.writeGUISettings ()
+    }
     let data = self.mString.data (using: .utf8)!
     return FileWrapper (regularFileWithContents: data)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  private func saveDocument () {
+    DispatchQueue.main.async {
+//    print ("Save")
+      if let doc = NSDocumentController.shared.currentDocument {
+        doc.save (
+          to: doc.fileURL!,
+          ofType: doc.fileType!,
+          for: .saveOperation
+        ) { error in
+          if let error = error {
+            print ("Erreur:", error)
+          }else{
+  //          print ("Document sauvegardé.")
+          }
+        }
+      }
+    }
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

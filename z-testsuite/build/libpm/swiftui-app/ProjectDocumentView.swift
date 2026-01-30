@@ -2,7 +2,6 @@
 
 import SwiftUI
 import Combine
-import UniformTypeIdentifiers
 
 //--------------------------------------------------------------------------------------------------
 
@@ -37,10 +36,6 @@ struct ProjectDocumentView : View {
 
   @State private var mSelectedIssue : UUID? = nil
   @Binding var mIssues : [CompilationIssue]
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  @StateObject var mProjectDocumentSaveScheduler = ProjectDocumentSaveScheduler ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   // Search
@@ -89,9 +84,6 @@ struct ProjectDocumentView : View {
 
   private func projectDocumentStringDidChange (_ inString : String) {
     self.mDocument.mString = inString
-    DispatchQueue.main.async {
-      self.mProjectDocumentSaveScheduler.scheduleProjectDocumentSaveOperation ()
-    }
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -122,7 +114,6 @@ struct ProjectDocumentView : View {
   //--- Save all edited files
     .onReceive (NotificationCenter.default.publisher (for: Notification.Name.mySaveAllCommand)) { _ in
       self.mRootDirectoryNode.saveAllEditedFiles ()
-      self.mProjectDocumentSaveScheduler.saveProjectDocument (completionHandler: nil)
     }
   //--- Show issue in sidebar
     .onReceive (NotificationCenter.default.publisher (for: Notification.Name.myShowIssueInSidebar)) {
@@ -259,56 +250,6 @@ struct ProjectDocumentView : View {
   private func fileSelectionDidChange (_ inProxy : ScrollViewProxy) {
     if let selectedID = self.mRootDirectoryNode.mSelectedFileNodeID {
       DispatchQueue.main.async { inProxy.scrollTo (selectedID, anchor: .center) }
-    }
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-}
-
-//--------------------------------------------------------------------------------------------------
-
-final class ProjectDocumentSaveScheduler : ObservableObject {
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  @Published private var mSaveScheduled = false
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  func scheduleProjectDocumentSaveOperation () {
-//    print ("scheduleProjectDocumentSaveOperation \(self.mSaveScheduled)")
-    if !self.mSaveScheduled {
-      self.mSaveScheduled = true
-      DispatchQueue.main.asyncAfter (deadline: .now () + AUTOMATIC_SAVE_DELAY) {
-        self.saveProjectDocument (completionHandler: nil)
-      }
-    }
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  func saveProjectDocument (completionHandler inCompletionHandler: (() -> Void)?) {
-//    print ("saveProjectDocument \(self.mSaveScheduled)")
-    if self.mSaveScheduled {
-      self.mSaveScheduled = false
-      if let doc = NSDocumentController.shared.currentDocument {
-        doc.save (
-          to: doc.fileURL!,
-          ofType: doc.fileType!,
-          for: .saveOperation
-        ) { error in
-          if let error = error {
-            print ("Erreur:", error)
-          }else{
-//            print ("Document sauvegardé.")
-            inCompletionHandler? ()
-          }
-        }
-      }
-    }else{
-//      print ("Document déjà sauvegardé.")
-      inCompletionHandler? ()
     }
   }
 

@@ -74,38 +74,36 @@ extension ProjectDocumentView {
         recentSearches.removeLast ()
       }
       self.mRecentSearchData = (try? JSONEncoder ().encode (recentSearches)) ?? Data()
-      self.mProjectDocumentSaveScheduler.saveProjectDocument {
-      //--- Search in project file
-        self.search (inFileURL: self.mProjectFileURL, fileNodeID: nil)
-      //---
-        let fm = FileManager ()
-        let directoryURL = self.mProjectFileURL.deletingLastPathComponent ().appending (path: "sources")
-        if let subpaths = try? fm.subpathsOfDirectory (atPath: directoryURL.path()) {
-          for subpath in subpaths.sorted () {
-            let url = directoryURL.appendingPathComponent (subpath)
-            if projectFileExtensions.contains (url.pathExtension.lowercased()) {
-              self.search (inFileURL: url, fileNodeID: SourceFileNodeID (url: url))
-            }
+    //--- Search in project file
+      self.search (inFileURL: self.mProjectFileURL, fileNodeID: nil)
+    //---
+      let fm = FileManager ()
+      let directoryURL = self.mProjectFileURL.deletingLastPathComponent ().appending (path: "sources")
+      if let subpaths = try? fm.subpathsOfDirectory (atPath: directoryURL.path()) {
+        for subpath in subpaths.sorted () {
+          let url = directoryURL.appendingPathComponent (subpath)
+          if projectFileExtensions.contains (url.pathExtension.lowercased()) {
+            self.search (inFileURL: url, fileNodeID: SourceFileNodeID (url: url))
           }
         }
       }
-      var resultCount = 0
-      for result in self.mSearchResults {
-        resultCount += result.count
-      }
-      if resultCount == 0 {
-        self.mSearchMessage = "No result"
-      }else if resultCount == 1 {
-        self.mSearchMessage = "1 result in 1 file"
+    }
+    var resultCount = 0
+    for result in self.mSearchResults {
+      resultCount += result.count
+    }
+    if resultCount == 0 {
+      self.mSearchMessage = "No result"
+    }else if resultCount == 1 {
+      self.mSearchMessage = "1 result in 1 file"
+    }else{
+      var s = "\(resultCount) results in "
+      if self.mSearchResults.count == 1 {
+        s += "1 file"
       }else{
-        var s = "\(resultCount) results in "
-        if self.mSearchResults.count == 1 {
-          s += "1 file"
-        }else{
-          s += "\(self.mSearchResults.count) files"
-        }
-        self.mSearchMessage = s
+        s += "\(self.mSearchResults.count) files"
       }
+      self.mSearchMessage = s
     }
   }
 

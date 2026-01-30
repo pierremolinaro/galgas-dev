@@ -109,6 +109,8 @@ struct TextSyntaxColoringView : View {
           popUpMenuItemsBinding: self.$mTopViewPopUpMenuItems,
           populateContextualMenuCallBack: self.mPopulateContextualMenuCallBack
         )
+    // ATTENTION : il faut exécuter les actions de manière asynchrone, dans le main thread
+        .onKeyPress (.tab, phases: .down) { _ in return self.hTabKeyAction () }
         .onChange (of: self.mSharedTextModel.mTopViewSelection.location) {
         //--- Select popup menu according to current selection staret
           let currentLocation = self.mSharedTextModel.mTopViewSelection.location
@@ -207,6 +209,16 @@ struct TextSyntaxColoringView : View {
     }
     .sheet (isPresented: self.$mIsPresentingGotoLineSheetForTopView) { self.presentGotoLineSheetForTopView () }
     .sheet (isPresented: self.$mIsPresentingGotoLineSheetForBottomView) { self.presentGotoLineSheetForBottomView () }
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  private func hTabKeyAction () -> KeyPress.Result {
+    DispatchQueue.main.async {
+      let shift = NSEvent.modifierFlags.contains (.shift)
+
+    }
+    return .handled
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

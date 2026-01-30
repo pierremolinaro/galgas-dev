@@ -14,12 +14,10 @@ extension ProjectDocumentView {
     self.mRootDirectoryNode.saveAllEditedFiles ()
     self.mSidebarSelectedItem = SidebarSelectedItem.compileLog
     self.mIssues.removeAll ()
-    self.mProjectDocumentSaveScheduler.saveProjectDocument {
-      self.mProjectCompiler.compile (
-        projectURL: self.mProjectFileURL,
-        appendIssueCallBack: { self.mIssues.append ($0) }
-      )
-    }
+    self.mProjectCompiler.compile (
+      projectURL: self.mProjectFileURL,
+      appendIssueCallBack: { self.mIssues.append ($0) }
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
