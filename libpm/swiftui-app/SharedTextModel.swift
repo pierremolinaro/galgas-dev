@@ -135,12 +135,6 @@ final class SharedTextModel : NSObject, ObservableObject, Identifiable, NSTextSt
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-//  func blockComment () -> String? {
-//    return self.mScanner?.blockComment ()
-//  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
   func indexingTitles () -> [String] {
     return self.mScanner?.indexingTitles() ?? []
   }
@@ -161,7 +155,8 @@ final class SharedTextModel : NSObject, ObservableObject, Identifiable, NSTextSt
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   struct UndoInfo {
-    let initialSelectedRange : NSRange
+    let initialTopSelectionRange : NSRange
+    let initialBottomSelectionRange : NSRange
     let initialSelectedText : String
     let modifiedSelectedRange : NSRange
   }
@@ -174,6 +169,8 @@ final class SharedTextModel : NSObject, ObservableObject, Identifiable, NSTextSt
         in: info.modifiedSelectedRange,
         with: info.initialSelectedText
       )
+      self.mTopViewSelection = info.initialTopSelectionRange
+      self.mBottomViewSelection = info.initialBottomSelectionRange
     }
   }
 
@@ -183,8 +180,10 @@ final class SharedTextModel : NSObject, ObservableObject, Identifiable, NSTextSt
 
   func performBlockComment (forSelection inInitialSelectedRange : NSRange) -> NSRange {
     var newSelectedRange = inInitialSelectedRange
-    if let blockComment = self.mScanner?.lineComment () {
-      let blockCommentAT = NSAttributedString (string: blockComment, attributes: nil)
+    if let lineComment = self.mScanner?.lineComment () {
+      let initialTopSelectionRange = self.mTopViewSelection
+      let initialBottomSelectionRange = self.mBottomViewSelection
+      let blockCommentAT = NSAttributedString (string: lineComment, attributes: nil)
       let sourceString = self.mTextStorage.string as NSString
       let initialSelectedSourceString = sourceString.substring (with: inInitialSelectedRange)
       let lineRange = sourceString.lineRange (for: inInitialSelectedRange)
@@ -198,7 +197,7 @@ final class SharedTextModel : NSObject, ObservableObject, Identifiable, NSTextSt
       self.mTextStorage.beginEditing ()
       repeat {
         self.mTextStorage.insert (blockCommentAT, at: currentLineRange.location)
-        newSelectedRange.length += (blockComment as NSString).length
+        newSelectedRange.length += (lineComment as NSString).length
         if currentLineRange.location > 0 {
           currentLineRange = sourceString.lineRange (for: NSRange (location: currentLineRange.location - 1, length: 1))
         }
@@ -209,7 +208,8 @@ final class SharedTextModel : NSObject, ObservableObject, Identifiable, NSTextSt
         withTarget: self,
         selector: #selector (Self.undoOperation(_:)),
         object: UndoInfo (
-          initialSelectedRange: inInitialSelectedRange,
+          initialTopSelectionRange: initialTopSelectionRange,
+          initialBottomSelectionRange: initialBottomSelectionRange,
           initialSelectedText: initialSelectedSourceString,
           modifiedSelectedRange: newSelectedRange
         )
@@ -241,6 +241,8 @@ final class SharedTextModel : NSObject, ObservableObject, Identifiable, NSTextSt
   func performBlockUncomment (forSelection inInitialSelectedRange : NSRange) -> NSRange {
     var newSelectedRange = NSRange ()
     if let lineCommentString = self.mScanner?.lineComment () {
+      let initialTopSelectionRange = self.mTopViewSelection
+      let initialBottomSelectionRange = self.mBottomViewSelection
       self.mTextStorage.beginEditing ()
     //--- Block comment string
       let lineCommentLength = (lineCommentString as NSString).length
@@ -287,7 +289,8 @@ final class SharedTextModel : NSObject, ObservableObject, Identifiable, NSTextSt
         withTarget: self,
         selector: #selector (Self.undoOperation(_:)),
         object: UndoInfo (
-          initialSelectedRange: inInitialSelectedRange,
+          initialTopSelectionRange: initialTopSelectionRange,
+          initialBottomSelectionRange: initialBottomSelectionRange,
           initialSelectedText: initialSelectedSourceString,
           modifiedSelectedRange: newSelectedRange
         )
@@ -300,9 +303,10 @@ final class SharedTextModel : NSObject, ObservableObject, Identifiable, NSTextSt
   // HTab Key Action
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func performHTabKeyAction (selectedRange inSelectedRangeBinding : Binding <NSRange>,
-                             shift inShiftKey : Bool) {
+  func performHTabKeyAction (selectedRange inSelectedRangeBinding : Binding <NSRange>) {
     let prependedString = "  "
+    let initialTopSelectionRange = self.mTopViewSelection
+    let initialBottomSelectionRange = self.mBottomViewSelection
     let prependedStringAT = NSAttributedString (string: prependedString, attributes: nil)
     let sourceString = self.mTextStorage.string as NSString
     let initialSelectedRange = inSelectedRangeBinding.wrappedValue
@@ -332,7 +336,55 @@ final class SharedTextModel : NSObject, ObservableObject, Identifiable, NSTextSt
       withTarget: self,
       selector: #selector (Self.undoOperation(_:)),
       object: UndoInfo (
-        initialSelectedRange: initialSelectedRange,
+        initialTopSelectionRange: initialTopSelectionRange,
+        initialBottomSelectionRange: initialBottomSelectionRange,
+        initialSelectedText: initialSelectedString,
+        modifiedSelectedRange: newSelectedRange
+      )
+    )
+  //--- Update range
+    inSelectedRangeBinding.wrappedValue = newSelectedRange
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  func performShiftHTabKeyAction (selectedRange inSelectedRangeBinding : Binding <NSRange>) {
+    let prependedString = "  "
+    let initialTopSelectionRange = self.mTopViewSelection
+    let initialBottomSelectionRange = self.mBottomViewSelection
+    let sourceString = self.mTextStorage.string as NSString
+    let initialSelectedRange = inSelectedRangeBinding.wrappedValue
+    let initialSelectedString = sourceString.substring (with: initialSelectedRange)
+    let lineRange = sourceString.lineRange (for: initialSelectedRange)
+    var currentLineRange = sourceString.lineRange (for: NSRange (location: lineRange.location + lineRange.length - 1, length: 1))
+    var newSelectedRange : NSRange
+    if lineRange.location < initialSelectedRange.location {
+      newSelectedRange = NSRange (
+        location: lineRange.location,
+        length: initialSelectedRange.location - lineRange.location + initialSelectedRange.length
+      )
+    }else{
+      newSelectedRange = initialSelectedRange
+    }
+    self.mTextStorage.beginEditing ()
+    repeat {
+      let line = sourceString.substring (with: currentLineRange) as NSString
+      if line.hasPrefix (prependedString) {
+        self.mTextStorage.deleteCharacters (in: NSRange (location: currentLineRange.location, length: (prependedString as NSString).length))
+        newSelectedRange.length -= (prependedString as NSString).length
+      }
+      if currentLineRange.location > 0 {
+        currentLineRange = sourceString.lineRange (for: NSRange (location: currentLineRange.location - 1, length: 1))
+      }
+    }while ((currentLineRange.location > 0) && (currentLineRange.location >= lineRange.location))
+    self.mTextStorage.endEditing ()
+  //--- Register undo
+    self.mSharedUndoManager.registerUndo (
+      withTarget: self,
+      selector: #selector (Self.undoOperation(_:)),
+      object: UndoInfo (
+        initialTopSelectionRange: initialTopSelectionRange,
+        initialBottomSelectionRange: initialBottomSelectionRange,
         initialSelectedText: initialSelectedString,
         modifiedSelectedRange: newSelectedRange
       )

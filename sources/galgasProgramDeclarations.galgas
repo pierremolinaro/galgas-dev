@@ -34,10 +34,10 @@ syntax galgas3ProgramDeclarations (galgasScanner3) {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
-    $before$
-    ${$
-    <semantic_instruction_list_ggs3> !?ioDeclarations ?let @semanticInstructionListAST prologueInstructionList
-    let endOfPrologue = @location.here
+      $before$
+      ${$
+      <semantic_instruction_list_ggs3> !?ioDeclarations ?let @semanticInstructionListAST prologueInstructionList
+      let endOfPrologue = @location.here
     $}$
     ioDeclarations.mPrologueDeclarationList +=
       !prologueInstructionList

@@ -80,7 +80,7 @@ struct TextSyntaxColoringView : View {
           Spacer ().frame (width: 6)
           Menu {
             Button ("Goto Line…") { self.mIsPresentingGotoLineSheetForTopView = true }
-            .keyboardShortcut ("g", modifiers: [.option, .command])
+            .keyboardShortcut ("l", modifiers: .command)
             Button ("Comment Selection") {
                self.mSharedTextModel.mTopViewSelection = self.mSharedTextModel.performBlockComment (forSelection: self.mSharedTextModel.mTopViewSelection)
              }
@@ -112,6 +112,9 @@ struct TextSyntaxColoringView : View {
       //--- ATTENTION : il faut exécuter les actions de manière asynchrone, dans le main thread
         .onKeyPress (.tab, phases: .down) { _ in
           return self.hTabKeyAction (selectedRangeBinding: self.$mSharedTextModel.mTopViewSelection)
+        }
+        .onKeyPress (KeyEquivalent ("\u{19}"), phases: .down) { _ in
+          return self.shiftHTabKeyAction (selectedRangeBinding: self.$mSharedTextModel.mTopViewSelection)
         }
         .onChange (of: self.mSharedTextModel.mTopViewSelection.location) {
         //--- Select popup menu according to current selection staret
@@ -192,9 +195,12 @@ struct TextSyntaxColoringView : View {
             self.mBottomViewSelectedPopUp = newSelectedID
           }
         //--- ATTENTION : il faut exécuter les actions de manière asynchrone, dans le main thread
-          .onKeyPress (.tab, phases: .down) { _ in
-            return self.hTabKeyAction (selectedRangeBinding: self.$mSharedTextModel.mBottomViewSelection)
-          }
+        .onKeyPress (.tab, phases: .down) { _ in
+          return self.hTabKeyAction (selectedRangeBinding: self.$mSharedTextModel.mBottomViewSelection)
+        }
+        .onKeyPress (KeyEquivalent ("\u{19}"), phases: .down) { _ in
+          return self.shiftHTabKeyAction (selectedRangeBinding: self.$mSharedTextModel.mBottomViewSelection)
+        }
           .focusedValue (
             \.activeView,
             ActiveViewFocusedValue (
@@ -221,8 +227,16 @@ struct TextSyntaxColoringView : View {
 
   private func hTabKeyAction (selectedRangeBinding inSelectedRangeBinding : Binding <NSRange>) -> KeyPress.Result {
     DispatchQueue.main.async {
-      let shift = NSEvent.modifierFlags.contains (.shift)
-      self.mSharedTextModel.performHTabKeyAction (selectedRange: inSelectedRangeBinding, shift: shift)
+      self.mSharedTextModel.performHTabKeyAction (selectedRange: self.$mSharedTextModel.mTopViewSelection)
+    }
+    return .handled
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  private func shiftHTabKeyAction (selectedRangeBinding inSelectedRangeBinding : Binding <NSRange>) -> KeyPress.Result {
+    DispatchQueue.main.async {
+      self.mSharedTextModel.performShiftHTabKeyAction (selectedRange: self.$mSharedTextModel.mTopViewSelection)
     }
     return .handled
   }
