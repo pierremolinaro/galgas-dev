@@ -90,28 +90,27 @@ struct CompilationIssue : Identifiable {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-//  mutating func updateLocationForPreviousRange (editedRange inEditedRange : NSRange,
-//                                                changeInLength inChangeInLength : Int,
-//                                                updatedString inString : String) {
-//    if self.mIsValid {
-//      print ("update \(inEditedRange) \(inChangeInLength)")
-//      let previousRange = NSRange (
-//        location: inEditedRange.location,
-//        length: inEditedRange.length - inChangeInLength
-//      )
-//      let issueRange = NSRange (location: self.mStartLocation, length: self.length)
-//      if let _ = issueRange.intersection (previousRange) {
-//      //--- Edition occurs into issue range : make issue invalid
-//        self.mIsValid = false
-//      }else if issueRange.location >= (previousRange.location + previousRange.length) {
-//      //--- Edition occurs before issue range : translate it
-//        self.mStartLocation += inChangeInLength
-//        let lineColumn = inString.lineAndColumn (forLocation: self.mStartLocation)
-//        self.mLine = lineColumn.line
-//        self.mStartColumn = lineColumn.column
-//      }
-//    }
-//  }
+  mutating func updateLocationForPreviousRange (editedRange inEditedRange : NSRange,
+                                                changeInLength inChangeInLength : Int,
+                                                updatedString inString : String) {
+    if self.mIsValid {
+      let previousRange = NSRange (
+        location: inEditedRange.location,
+        length: inEditedRange.length - inChangeInLength
+      )
+      let issueRange = NSRange (location: self.mStartLocation, length: self.length)
+      if issueRange.intersection (previousRange) != nil {
+      //--- Edition occurs into issue range : make issue invalid
+        self.mIsValid = false
+      }else if issueRange.location >= (previousRange.location + previousRange.length) {
+      //--- Edition occurs before issue range : translate it
+        self.mStartLocation += inChangeInLength
+        let lineColumn = inString.lineAndColumn (forLocation: self.mStartLocation)
+        self.mLine = lineColumn.line
+        self.mStartColumn = lineColumn.column
+      }
+    }
+  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

@@ -7,6 +7,12 @@ import Combine
 
 //--------------------------------------------------------------------------------------------------
 
+extension KeyEquivalent {
+  static let shiftTabKey = KeyEquivalent ("\u{19}")
+}
+
+//--------------------------------------------------------------------------------------------------
+
 struct TextSyntaxColoringView : View {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -113,7 +119,7 @@ struct TextSyntaxColoringView : View {
         .onKeyPress (.tab, phases: .down) { _ in
           return self.hTabKeyAction (selectedRangeBinding: self.$mSharedTextModel.mTopViewSelection)
         }
-        .onKeyPress (KeyEquivalent ("\u{19}"), phases: .down) { _ in
+        .onKeyPress (.shiftTabKey, phases: .down) { _ in
           return self.shiftHTabKeyAction (selectedRangeBinding: self.$mSharedTextModel.mTopViewSelection)
         }
         .onChange (of: self.mSharedTextModel.mTopViewSelection.location) {
@@ -195,12 +201,12 @@ struct TextSyntaxColoringView : View {
             self.mBottomViewSelectedPopUp = newSelectedID
           }
         //--- ATTENTION : il faut exécuter les actions de manière asynchrone, dans le main thread
-        .onKeyPress (.tab, phases: .down) { _ in
-          return self.hTabKeyAction (selectedRangeBinding: self.$mSharedTextModel.mBottomViewSelection)
-        }
-        .onKeyPress (KeyEquivalent ("\u{19}"), phases: .down) { _ in
-          return self.shiftHTabKeyAction (selectedRangeBinding: self.$mSharedTextModel.mBottomViewSelection)
-        }
+          .onKeyPress (.tab, phases: .down) { _ in
+            return self.hTabKeyAction (selectedRangeBinding: self.$mSharedTextModel.mBottomViewSelection)
+          }
+          .onKeyPress (.shiftTabKey, phases: .down) { _ in
+            return self.shiftHTabKeyAction (selectedRangeBinding: self.$mSharedTextModel.mBottomViewSelection)
+          }
           .focusedValue (
             \.activeView,
             ActiveViewFocusedValue (

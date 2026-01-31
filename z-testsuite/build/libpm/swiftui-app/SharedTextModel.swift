@@ -506,18 +506,18 @@ final class SharedTextModel : NSObject, ObservableObject, Identifiable, NSTextSt
         }
       }
     //--- Update issues
-//      for idx in 0 ..< self.mIssues.count {
-//        let issue = self.mIssues [idx]
-//        if issue.mIsValid, issue.fileURL == self.mFileURL {
-//          DispatchQueue.main.async {
-//            self.mIssues [idx].updateLocationForPreviousRange (
-//              editedRange: inEditedRange,
-//              changeInLength: inDelta,
-//              updatedString: self.mDocumentString
-//            )
-//          }
-//        }
-//      }
+      DispatchQueue.main.async {
+        for idx in 0 ..< self.mIssues.count {
+          let issue = self.mIssues [idx]
+          if issue.mIsValid, issue.fileURL == self.mFileURL {
+            self.mIssues [idx].updateLocationForPreviousRange (
+              editedRange: inEditedRange,
+              changeInLength: inDelta,
+              updatedString: self.mDocumentString
+            )
+          }
+        }
+      }
     }
   }
 
