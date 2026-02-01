@@ -11,11 +11,14 @@ struct CompileLogView : NSViewRepresentable {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private let mAttributedString : NSAttributedString
+  private let mCompileLogAutoScroll : Bool
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  init (attributedString inAttributedString : NSAttributedString) {
+  init (attributedString inAttributedString : NSAttributedString,
+        compileLogAutoScroll inCompileLogAutoScroll : Bool) {
     self.mAttributedString = inAttributedString
+    self.mCompileLogAutoScroll = inCompileLogAutoScroll
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -57,7 +60,11 @@ struct CompileLogView : NSViewRepresentable {
     if let textView = inScrollView.documentView as? NSTextView,
           textView.textStorage?.string != self.mAttributedString.string {
       textView.textStorage?.setAttributedString (self.mAttributedString)
-      textView.scrollRangeToVisible (NSRange (location: self.mAttributedString.length, length: 0))
+      if self.mCompileLogAutoScroll {
+        DispatchQueue.main.async {
+          textView.scrollRangeToVisible (NSRange (location: self.mAttributedString.length, length: 0))
+        }
+      }
     }
   }
 

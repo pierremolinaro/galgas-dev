@@ -37,6 +37,8 @@ struct ProjectDocumentView : View {
   @State private var mSelectedIssue : UUID? = nil
   @Binding var mIssues : [CompilationIssue]
 
+  @AppStorage("compile.log.auto.scroll") private var mCompileLogAutoScroll = true
+
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   // Search
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -159,7 +161,11 @@ struct ProjectDocumentView : View {
         }
       case .compileLog :
         Text ("Compile log").font (.caption)
-        CompileLogView (attributedString: self.mProjectCompiler.compileLog)
+        Toggle ("Auto Scroll", isOn: self.$mCompileLogAutoScroll).controlSize (.small)
+        CompileLogView (
+          attributedString: self.mProjectCompiler.compileLog,
+          compileLogAutoScroll: self.mCompileLogAutoScroll
+        )
       case .issues:
         Text ("Issues").font (.caption)
         if self.mIssues.isEmpty {
