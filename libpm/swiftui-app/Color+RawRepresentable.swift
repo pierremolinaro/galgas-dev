@@ -11,7 +11,7 @@ extension Color : @preconcurrency @retroactive RawRepresentable {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  public var rawValue : String {
+  public var rawValue : String { // RawRepresentable
     let nsColor = NSColor (self)
     let rgbColor = nsColor.usingColorSpace (.genericRGB)!
     let red = rgbColor.redComponent
@@ -23,7 +23,7 @@ extension Color : @preconcurrency @retroactive RawRepresentable {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  nonisolated public init? (rawValue inRawValue : String) {
+  nonisolated public init? (rawValue inRawValue : String) { // RawRepresentable
     let components = inRawValue.split (separator: " ")
     if components.count == 4,
        let red = Double (components[0]),
