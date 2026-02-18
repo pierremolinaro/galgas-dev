@@ -505,7 +505,7 @@ override method @filewrapperDeclarationAST semanticAnalysis
   if self.mFilewrapperPath.string.firstCharacterOrNul == '/' then
     absoluteSourcePath = self.mFilewrapperPath.string
   else
-    absoluteSourcePath = self.mSourceFileAbsolutePath.stringByDeletingLastPathComponent + "/" + self.mFilewrapperPath.string
+    absoluteSourcePath = self.mSourceFileAbsolutePath.deletingLastPathComponent + "/" + self.mFilewrapperPath.string
   end
   if not absoluteSourcePath.directoryExists then
     error self.mFilewrapperPath: "The '" + absoluteSourcePath + "' directory does not exist"
@@ -784,7 +784,7 @@ override method @galgas3GrammarComponentAST semanticAnalysis
   )
 //--------------------------------------------------------- Generate HTML grammer helper file
   if [option galgas_cli_options.outputHTMLgrammarFile value] then
-    [HTMLFilePath.stringByDeletingLastPathComponent makeDirectory]
+    [HTMLFilePath.deletingLastPathComponent makeDirectory]
     [grammarHTMLHelperContents writeToFileWhenDifferentContents !HTMLFilePath ?*]
   else
     [@string deleteFileIfExists !HTMLFilePath]
@@ -1544,7 +1544,7 @@ private proc semanticAnalysisOfSyntaxComponent
 
 private proc emitClassGraphFile ?let @string inDotDocumentFilePath
                                 ?let @unifiedTypeMap inTypeMap {
-  [inDotDocumentFilePath.stringByDeletingLastPathComponent makeDirectory]
+  [inDotDocumentFilePath.deletingLastPathComponent makeDirectory]
   var document = "digraph G {\n"
   document += "  rankdir=LR ;\n"
   document += "  node [shape=record fontname=helvetica style=rounded] ;\n"

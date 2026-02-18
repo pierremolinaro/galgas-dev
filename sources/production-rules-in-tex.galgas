@@ -75,7 +75,7 @@ proc emitProductionRulesInTexFile
 {
 //--------------------------------------------------------- Print an tex file for grammar rule list
   let texDocumentFilePath = inProductDirectory + "/../tex/" + inGrammarComponentName + ".document.tex"
-  [texDocumentFilePath.stringByDeletingLastPathComponent makeDirectory]
+  [texDocumentFilePath.deletingLastPathComponent makeDirectory]
   let document = [filewrapper grammarRulesInTexDocumentTemplate.document
     !inGrammarComponentName
     !escapeForTex (!inGrammarComponentName)

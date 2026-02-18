@@ -4,7 +4,7 @@
 //
 //  This file is part of libpm library                                                           
 //
-//  Copyright (C) 2014, ..., 2014 Pierre Molinaro.
+//  Copyright (C) 2014, ..., 2026 Pierre Molinaro.
 //
 //  e-mail : pierre@pcmolinaro.name
 //
@@ -59,13 +59,13 @@ class AC_GALGAS_enumerationAssociatedValues final {
   public: AC_GALGAS_enumerationAssociatedValues & operator = (const AC_GALGAS_enumerationAssociatedValues & inSource) ;
 
 //--- Destructor
-  public: virtual ~ AC_GALGAS_enumerationAssociatedValues (void) ;
+  public: ~ AC_GALGAS_enumerationAssociatedValues (void) ;
 
-  public: VIRTUAL_IN_DEBUG void description (String & ioString, const int32_t inIndentation) const ;
+  public: void description (String & ioString, const int32_t inIndentation) const ;
 
-  public: VIRTUAL_IN_DEBUG void drop (void) ;
+  public: void drop (void) ;
 
-  public: VIRTUAL_IN_DEBUG const AC_GALGAS_root * associatedValuesPointer (void) const {
+  public: const AC_GALGAS_root * associatedValuesPointer (void) const {
     const AC_GALGAS_root * p = (mSharedPtr == nullptr) ? nullptr : mSharedPtr->mValuePtr ;
     macroValidPointer (p) ;
     return p ;

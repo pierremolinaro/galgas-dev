@@ -318,7 +318,7 @@ proc updateGalgasTargets
   ?!@stringset ioAllProductFileSet
   ?let @stringlist inHandCodedLinkAppFileList {
   ioAllProductFileSet += .setWithStringList {!inSwiftAppProductFileList}
-  let projectDirectory = inProjectSourceFilePath.stringByDeletingLastPathComponent
+  let projectDirectory = inProjectSourceFilePath.deletingLastPathComponent
 //--- Update project header
   [[filewrapper targetGalgas3GenerationFileWrapper.project_header !inProjectVersionString] writeToFileWhenDifferentContents
     !inAbsoluteBuildDirectory + "/output/project_header.h"
@@ -476,7 +476,7 @@ proc updateGalgasTargets
   end
   var handCodedSourceDirectorySet = @stringset ()
   for sourcePath in inHandCodedSourceToolFileList do
-    let subDir = sourcePath.mValue.stringByDeletingLastPathComponent
+    let subDir = sourcePath.mValue.deletingLastPathComponent
     if subDir == "" then
       handCodedSourceDirectorySet ++= "../sources/tool-sources"
     else

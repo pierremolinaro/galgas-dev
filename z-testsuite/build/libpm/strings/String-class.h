@@ -176,11 +176,11 @@ class String : public AbstractOutputStream {
 //--- Get character last occurrence (returns -1 if not found)
   public: int32_t lastOccurrenceIndexOfChar (const utf32 inChar) const ;
 
-//--- Trim white spaces ('\n' or ' '):
+//--- Trim spaces (' '):
 //    - at the beginning of the string,
 //    - within the string (replace a sequence of white spaces with a single space),
 //    - at end at the end of string.
-  public: String trimmingSeparators (void) const ;
+  public: String trimmingSpaces (void) const ;
 
 //--- Get a sub string
   public: String subString (const int32_t inStartIndex,
@@ -239,8 +239,8 @@ class String : public AbstractOutputStream {
   public: bool endsWithString (const String & inString) const ;
 
 //--- Return reversed string
-  public: String reversedString (void) const ;
-  public: void reverseStringInPlace (void) ;
+  public: String reversed (void) const ;
+  public: void reverseInPlace (void) ;
 
 //--- Return unsigned integer value
   public: bool isUnsignedInteger (void) const ;

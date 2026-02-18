@@ -195,7 +195,7 @@ proc addText
   ?let @bool inPrintDuringParsing
   ?let @string inIndendation {
   let @string s = @string. retrieveAndResetTemplateString
-  let @string trimmedString = s.stringByTrimmingWhiteSpaces
+  let @string trimmedString = s.trimmingSpaces
   if trimmedString.count > 0 then
     let @string ls
     if inDoNotCondenseWhiteSpaces then

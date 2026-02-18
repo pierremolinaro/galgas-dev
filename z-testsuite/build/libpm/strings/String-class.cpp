@@ -664,7 +664,7 @@ void String::linesArray (GenericUniqueArray <String> & outStringArray) const {
 
 //--------------------------------------------------------------------------------------------------
 
-void String::reverseStringInPlace (void) {
+void String::reverseInPlace (void) {
   if (nullptr != mEmbeddedString) {
     insulateEmbeddedString (capacity ()) ;
     macroUniqueSharedObject (mEmbeddedString) ;

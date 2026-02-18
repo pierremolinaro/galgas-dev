@@ -368,7 +368,7 @@ override method @templateLexiqueComponentAST semanticAnalysis
       argumentTypeList += !mFormalSelector !mAttributeName.string !attributeLexicalType
     end
     for (* mTerminalSpelling nonAtomicSelection isTemplateEndMark) in mEntryList do
-      let syntaxErrorMessage = [mSyntaxErrorMessage.string stringByReplacingStringByString !"%K" !mTerminalSpelling.string]
+      let syntaxErrorMessage = [mSyntaxErrorMessage.string replacing !"%K" !by: mTerminalSpelling.string]
       terminalList +=
         !mTerminalSpelling
         !argumentTypeList

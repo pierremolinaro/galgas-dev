@@ -574,7 +574,7 @@ final class @stringPredefinedTypeAST : @predefinedTypeAST {
     enterBaseGetterWithoutArgument (
       !?outMap
       !?ioUnifiedTypeMap
-      !getterName: "stringByTrimmingWhiteSpaces"
+      !getterName: "trimmingSpaces"
       !obsoleteName: ""
       !returnedTypeName:"string"
       !hasCompilerArgument:false
@@ -808,7 +808,7 @@ final class @stringPredefinedTypeAST : @predefinedTypeAST {
     enterBaseGetterWithoutArgument (
       !?outMap
       !?ioUnifiedTypeMap
-      !getterName: "stringByDeletingLastPathComponent"
+      !getterName: "deletingLastPathComponent"
       !obsoleteName: ""
       !returnedTypeName:"string"
       !hasCompilerArgument:false
@@ -816,7 +816,7 @@ final class @stringPredefinedTypeAST : @predefinedTypeAST {
     enterBaseGetterWithoutArgument (
       !?outMap
       !?ioUnifiedTypeMap
-      !getterName: "stringByStandardizingPath"
+      !getterName: "standardizedPath"
       !obsoleteName: ""
       !returnedTypeName:"string"
       !hasCompilerArgument:false
@@ -824,7 +824,7 @@ final class @stringPredefinedTypeAST : @predefinedTypeAST {
     enterBaseGetterWithoutArgument (
       !?outMap
       !?ioUnifiedTypeMap
-      !getterName: "lowercaseString"
+      !getterName: "lowercased"
       !obsoleteName: ""
       !returnedTypeName:"string"
       !hasCompilerArgument:false
@@ -832,7 +832,7 @@ final class @stringPredefinedTypeAST : @predefinedTypeAST {
     enterBaseGetterWithoutArgument (
       !?outMap
       !?ioUnifiedTypeMap
-      !getterName: "uppercaseString"
+      !getterName: "uppercased"
       !obsoleteName: ""
       !returnedTypeName:"string"
       !hasCompilerArgument:false
@@ -840,7 +840,7 @@ final class @stringPredefinedTypeAST : @predefinedTypeAST {
     enterBaseGetterWithoutArgument (
       !?outMap
       !?ioUnifiedTypeMap
-      !getterName: "reversedString"
+      !getterName: "reversed"
       !obsoleteName: ""
       !returnedTypeName:"string"
       !hasCompilerArgument:false
@@ -930,7 +930,7 @@ final class @stringPredefinedTypeAST : @predefinedTypeAST {
     enterBaseGetterWithArgument (
       !?outMap
       !?ioUnifiedTypeMap
-      !getterName: "stringByRemovingCharacterAtIndex"
+      !getterName: "removingCharacterAtIndex"
       !argSelector: ""
       !argType: "uint" !argName: "inIndex"
       !returnedTypeName:"string"
@@ -1000,7 +1000,7 @@ final class @stringPredefinedTypeAST : @predefinedTypeAST {
     enterBaseGetterWith2Arguments (
       !?outMap
       !?ioUnifiedTypeMap
-      !getterName: "stringByLeftPadding"
+      !getterName: "leftPadding"
       !arg1Selector: "" !arg1TypeName: "uint" !arg1Name: "inPaddedStringLength"
       !arg2Selector: "" !arg2TypeName: "char" !arg2Name: "inPaddingChar"
       !returnedTypeName:"string"
@@ -1009,7 +1009,7 @@ final class @stringPredefinedTypeAST : @predefinedTypeAST {
     enterBaseGetterWith2Arguments (
       !?outMap
       !?ioUnifiedTypeMap
-      !getterName: "stringByRightPadding"
+      !getterName: "rightPadding"
       !arg1Selector: "" !arg1TypeName: "uint" !arg1Name: "inPaddedStringLength"
       !arg2Selector: "" !arg2TypeName: "char" !arg2Name: "inPaddingChar"
       !returnedTypeName:"string"
@@ -1018,7 +1018,7 @@ final class @stringPredefinedTypeAST : @predefinedTypeAST {
     enterBaseGetterWith2Arguments (
       !?outMap
       !?ioUnifiedTypeMap
-      !getterName: "stringByLeftAndRightPadding"
+      !getterName: "leftAndRightPadding"
       !arg1Selector: "" !arg1TypeName: "uint" !arg1Name: "inPaddedStringLength"
       !arg2Selector: "" !arg2TypeName: "char" !arg2Name: "inPaddingChar"
       !returnedTypeName:"string"
@@ -1027,9 +1027,9 @@ final class @stringPredefinedTypeAST : @predefinedTypeAST {
     enterBaseGetterWith2Arguments (
       !?outMap
       !?ioUnifiedTypeMap
-      !getterName: "stringByReplacingStringByString"
+      !getterName: "replacing"
       !arg1Selector: "" !arg1TypeName: "string" !arg1Name: "inSearchedString"
-      !arg2Selector: "" !arg2TypeName: "string" !arg2Name: "inReplacementString"
+      !arg2Selector: "by" !arg2TypeName: "string" !arg2Name: "inReplacementString"
       !returnedTypeName:"string"
       !hasCompilerArgument:true
     )

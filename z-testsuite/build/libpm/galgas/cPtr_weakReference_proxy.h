@@ -4,7 +4,7 @@
 //
 //  This file is part of libpm library
 //
-//  Copyright (C) 2021, ..., 2023 Pierre Molinaro.
+//  Copyright (C) 2021, ..., 2026 Pierre Molinaro.
 //
 //  e-mail : pierre@pcmolinaro.name
 //
@@ -50,7 +50,7 @@ class cPtr_weakReference_proxy final : public acPtr_class {
 
   public: virtual const GALGAS_TypeDescriptor * classDescriptor (void) const ;
 
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
+  public: acPtr_class * duplicate (LOCATION_ARGS) const ;
   public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
 //--- No Copy

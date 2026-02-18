@@ -137,7 +137,7 @@ syntax galgas3ProjectSyntax (galgasScanner3) {
     end
     $}$
   //--- Enumerate sources directory for getting all source files
-     let sourceDirectory = inProjectSourceFilePath.string.stringByDeletingLastPathComponent + "/sources"
+     let sourceDirectory = inProjectSourceFilePath.string.deletingLastPathComponent + "/sources"
      var extensionList = @stringlist ()
      extensionList += !"galgas"
      extensionList += !"ggs"

@@ -655,7 +655,7 @@ override method @filewrapperDeclarationAST enterDeclarationInSemanticContext
   if self.mFilewrapperPath.string.firstCharacterOrNul == '/' then
     absoluteSourcePath = self.mFilewrapperPath.string
   else
-    absoluteSourcePath = self.mSourceFileAbsolutePath.stringByDeletingLastPathComponent + "/" + self.mFilewrapperPath.string
+    absoluteSourcePath = self.mSourceFileAbsolutePath.deletingLastPathComponent + "/" + self.mFilewrapperPath.string
   end
   if not absoluteSourcePath.directoryExists then
     error self.mFilewrapperPath: "The '" + absoluteSourcePath + "' directory does not exist"

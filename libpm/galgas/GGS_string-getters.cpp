@@ -4,7 +4,7 @@
 //
 //  This file is part of libpm library
 //
-//  Copyright (C) 1996, ..., 2024 Pierre Molinaro.
+//  Copyright (C) 1996, ..., 2026 Pierre Molinaro.
 //
 //  e-mail : pierre@pcmolinaro.name
 //
@@ -191,7 +191,7 @@ GGS_string GGS_string::getter_sha_32__35__36_ (UNUSED_LOCATION_ARGS) const {
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_string::getter_utf_33__32_Representation (const GGS_bool & inAppendZeroTerminator
-                                                               COMMA_UNUSED_LOCATION_ARGS) const {
+                                                         COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_string result ;
   if (isValid () && inAppendZeroTerminator.isValid ()) {
     String s ;
@@ -327,7 +327,7 @@ GGS_string GGS_string::getter_assemblerRepresentation (UNUSED_LOCATION_ARGS) con
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_string::getter_decodedStringFromRepresentation (Compiler * inCompiler
-                                                                     COMMA_LOCATION_ARGS) const {
+                                                               COMMA_LOCATION_ARGS) const {
   GGS_string result ;
   if (isValid ()) {
     bool ok = true ;
@@ -347,7 +347,7 @@ GGS_string GGS_string::getter_decodedStringFromRepresentation (Compiler * inComp
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_string::getter_subStringFromIndex (const GGS_uint & inStartIndex
-                                                        COMMA_UNUSED_LOCATION_ARGS) const {
+                                                  COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_string result ;
   if (inStartIndex.isValid ()) {
     result = GGS_string (mString.subStringFromIndex ((int32_t) inStartIndex.uintValue ())) ;
@@ -358,7 +358,7 @@ GGS_string GGS_string::getter_subStringFromIndex (const GGS_uint & inStartIndex
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_string::getter_rightSubString (const GGS_uint & inLength
-                                                    COMMA_UNUSED_LOCATION_ARGS) const {
+                                              COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_string result ;
   if (inLength.isValid ()) {
     result = GGS_string (mString.rightSubString ((int32_t) inLength.uintValue ())) ;
@@ -369,7 +369,7 @@ GGS_string GGS_string::getter_rightSubString (const GGS_uint & inLength
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_string::getter_leftSubString (const GGS_uint & inLength
-                                                   COMMA_UNUSED_LOCATION_ARGS) const {
+                                             COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_string result ;
   if (inLength.isValid ()) {
     result = GGS_string (mString.leftSubString ((int32_t) inLength.uintValue ())) ;
@@ -380,8 +380,8 @@ GGS_string GGS_string::getter_leftSubString (const GGS_uint & inLength
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_string::getter_subString (const GGS_uint & inStart,
-                                               const GGS_uint & inLength
-                                               COMMA_UNUSED_LOCATION_ARGS) const {
+                                         const GGS_uint & inLength
+                                         COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_string result ;
   if ((inStart.isValid ()) && (inLength.isValid ())) {
     const int32_t start = (int32_t) inStart.uintValue () ;
@@ -394,7 +394,7 @@ GGS_string GGS_string::getter_subString (const GGS_uint & inStart,
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_string::getter_absolutePathFromPath (const GGS_string & inBasePath
-                                                          COMMA_UNUSED_LOCATION_ARGS) const {
+                                                    COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_string result ;
   if (inBasePath.isValid ()) {
     const String path = mString ;
@@ -415,7 +415,7 @@ GGS_string GGS_string::getter_absolutePathFromPath (const GGS_string & inBasePat
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_string::getter_relativePathFromPath (const GGS_string & inReferencePath
-                                                          COMMA_UNUSED_LOCATION_ARGS) const {
+                                                    COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_string result ;
   if (isValid () && inReferencePath.isValid ()) {
     result = GGS_string (FileManager::relativePathFromPath (mString, inReferencePath.mString)) ;
@@ -461,7 +461,7 @@ GGS_string GGS_string::getter_removingFirst (Compiler * inCompiler
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_string GGS_string::getter_stringByStandardizingPath (UNUSED_LOCATION_ARGS) const {
+GGS_string GGS_string::getter_standardizedPath (UNUSED_LOCATION_ARGS) const {
   return GGS_string (mString.standardizedPath ()) ;
 }
 
@@ -485,7 +485,7 @@ GGS_string GGS_string::getter_deletingPathExtension (UNUSED_LOCATION_ARGS) const
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_string GGS_string::getter_stringByDeletingLastPathComponent (UNUSED_LOCATION_ARGS) const {
+GGS_string GGS_string::getter_deletingLastPathComponent (UNUSED_LOCATION_ARGS) const {
   return GGS_string (mString.deletingLastPathComponent ()) ;
 }
 
@@ -497,26 +497,26 @@ GGS_string GGS_string::getter_capitalizingFirstCharacter (UNUSED_LOCATION_ARGS) 
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_string GGS_string::getter_uppercaseString (UNUSED_LOCATION_ARGS) const {
+GGS_string GGS_string::getter_uppercased (UNUSED_LOCATION_ARGS) const {
   return GGS_string (mString.uppercasedString ()) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_string GGS_string::getter_lowercaseString (UNUSED_LOCATION_ARGS) const {
+GGS_string GGS_string::getter_lowercased (UNUSED_LOCATION_ARGS) const {
   return GGS_string (mString.lowercasedString ()) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_string GGS_string::getter_reversedString (UNUSED_LOCATION_ARGS) const {
-  return GGS_string (mString.reversedString ()) ;
+GGS_string GGS_string::getter_reversed (UNUSED_LOCATION_ARGS) const {
+  return GGS_string (mString.reversed ()) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_string GGS_string::getter_stringByTrimmingWhiteSpaces (UNUSED_LOCATION_ARGS) const {
-  return GGS_string (mString.trimmingSeparators ()) ;
+GGS_string GGS_string::getter_trimmingSpaces (UNUSED_LOCATION_ARGS) const {
+  return GGS_string (mString.trimmingSpaces ()) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -531,9 +531,9 @@ GGS_uint GGS_string::getter_currentColumn (UNUSED_LOCATION_ARGS) const {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_string GGS_string::getter_stringByLeftPadding (const GGS_uint & inPaddedStringLength,
-                                                         const GGS_char & inPaddingChar
-                                                         COMMA_UNUSED_LOCATION_ARGS) const {
+GGS_string GGS_string::getter_leftPadding (const GGS_uint & inPaddedStringLength,
+                                           const GGS_char & inPaddingChar
+                                           COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_string result ;
   if ((inPaddedStringLength.isValid ()) && (inPaddingChar.isValid ())) {
     const utf32 paddingChar = inPaddingChar.charValue () ;
@@ -551,9 +551,9 @@ GGS_string GGS_string::getter_stringByLeftPadding (const GGS_uint & inPaddedStri
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_string GGS_string::getter_stringByRightPadding (const GGS_uint & inPaddedStringLength,
-                                                          const GGS_char & inPaddingChar
-                                                          COMMA_UNUSED_LOCATION_ARGS) const {
+GGS_string GGS_string::getter_rightPadding (const GGS_uint & inPaddedStringLength,
+                                            const GGS_char & inPaddingChar
+                                            COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_string result ;
   if ((inPaddedStringLength.isValid ()) && (inPaddingChar.isValid ())) {
     const utf32 paddingChar = inPaddingChar.charValue () ;
@@ -571,9 +571,9 @@ GGS_string GGS_string::getter_stringByRightPadding (const GGS_uint & inPaddedStr
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_string GGS_string::getter_stringByLeftAndRightPadding (const GGS_uint & inPaddedStringLength,
-                                                                 const GGS_char & inPaddingChar
-                                                                 COMMA_UNUSED_LOCATION_ARGS) const {
+GGS_string GGS_string::getter_leftAndRightPadding (const GGS_uint & inPaddedStringLength,
+                                                   const GGS_char & inPaddingChar
+                                                   COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_string result ;
   if ((inPaddedStringLength.isValid ()) && (inPaddingChar.isValid ())) {
     const utf32 paddingChar = inPaddingChar.charValue () ;
@@ -600,10 +600,10 @@ GGS_string GGS_string::getter_lastPathComponent (UNUSED_LOCATION_ARGS) const {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_string GGS_string::getter_stringByReplacingStringByString (const GGS_string & inSearchedString,
-                                                                     const GGS_string & inReplacementString,
-                                                                     Compiler * inCompiler
-                                                                     COMMA_LOCATION_ARGS) const {
+GGS_string GGS_string::getter_replacing (const GGS_string & inSearchedString,
+                                         const GGS_string & inReplacementString,
+                                         Compiler * inCompiler
+                                         COMMA_LOCATION_ARGS) const {
   GGS_string result ;
   if ((inSearchedString.isValid ()) && (inReplacementString.isValid ())) {
     if (inSearchedString.mString.length () == 0) {
@@ -622,9 +622,9 @@ GGS_string GGS_string::getter_stringByReplacingStringByString (const GGS_string 
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_string GGS_string::getter_stringByRemovingCharacterAtIndex (const GGS_uint & inIndex,
-                                                                        Compiler * inCompiler
-                                                                        COMMA_LOCATION_ARGS) const {
+GGS_string GGS_string::getter_removingCharacterAtIndex (const GGS_uint & inIndex,
+                                                        Compiler * inCompiler
+                                                        COMMA_LOCATION_ARGS) const {
   GGS_string result ;
   if (inIndex.isValid ()) {
     if (inIndex.uintValue () < (uint32_t) mString.length ()) {
@@ -644,8 +644,8 @@ GGS_string GGS_string::getter_stringByRemovingCharacterAtIndex (const GGS_uint &
 //--------------------------------------------------------------------------------------------------
 
 GGS_char GGS_string::getter_characterAtIndex (const GGS_uint & inIndex,
-                                                      Compiler * inCompiler
-                                                      COMMA_LOCATION_ARGS) const {
+                                              Compiler * inCompiler
+                                              COMMA_LOCATION_ARGS) const {
   GGS_char result ;
   if (isValid () && inIndex.isValid ()) {
     const int32_t idx = (int32_t) inIndex.uintValue () ;
@@ -667,7 +667,7 @@ GGS_char GGS_string::getter_characterAtIndex (const GGS_uint & inIndex,
 //--------------------------------------------------------------------------------------------------
 
 GGS_bool GGS_string::getter_containsCharacter (const GGS_char & inCharacter
-                                                     COMMA_UNUSED_LOCATION_ARGS) const {
+                                               COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_bool result ;
   if (isValid () && inCharacter.isValid ()) {
     result = GGS_bool (mString.containsChar (inCharacter.charValue ())) ;
@@ -678,8 +678,8 @@ GGS_bool GGS_string::getter_containsCharacter (const GGS_char & inCharacter
 //--------------------------------------------------------------------------------------------------
 
 GGS_bool GGS_string::getter_containsCharacterInRange (const GGS_char & inFirstCharacter,
-                                                            const GGS_char & inLastCharacter
-                                                            COMMA_UNUSED_LOCATION_ARGS) const {
+                                                      const GGS_char & inLastCharacter
+                                                      COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_bool result ;
   if (isValid () && inFirstCharacter.isValid () && inLastCharacter.isValid ()) {
     result = GGS_bool (mString.containsCharInRange (inFirstCharacter.charValue (), inLastCharacter.charValue ())) ;
@@ -702,7 +702,7 @@ GGS_string GGS_string::getter_nativePathWithUnixPath (UNUSED_LOCATION_ARGS) cons
 //--------------------------------------------------------------------------------------------------
 
 GGS_stringlist GGS_string::getter_componentsSeparatedByString (const GGS_string & inSeparator
-                                                                    COMMA_LOCATION_ARGS) const {
+                                                               COMMA_LOCATION_ARGS) const {
   GGS_stringlist result ;
   if (inSeparator.isValid ()) {
     result = GGS_stringlist::init (nullptr COMMA_THERE) ;
@@ -728,8 +728,8 @@ GGS_sint GGS_string::getter_system (UNUSED_LOCATION_ARGS) const {
 //--------------------------------------------------------------------------------------------------
 
 GGS_sint GGS_string::getter_commandWithArguments (const GGS_stringlist & inArguments,
-                                                        Compiler * inCompiler
-                                                        COMMA_LOCATION_ARGS) const {
+                                                  Compiler * inCompiler
+                                                  COMMA_LOCATION_ARGS) const {
   GGS_sint result ;
   if (isValid () && inArguments.isValid ()) {
     String command = String ("'") + mString + "'" ;
@@ -746,8 +746,8 @@ GGS_sint GGS_string::getter_commandWithArguments (const GGS_stringlist & inArgum
  //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_string::getter_hiddenCommandWithArguments (const GGS_stringlist & inArguments,
-                                                                Compiler * inCompiler
-                                                                COMMA_LOCATION_ARGS) const {
+                                                          Compiler * inCompiler
+                                                          COMMA_LOCATION_ARGS) const {
   GGS_string result ;
   if (isValid () && inArguments.isValid ()) {
     String command = String ("'") + mString + "'" ;
@@ -797,7 +797,7 @@ static void recursiveSearchForRegularFiles (const String & inUnixStartPath,
 //--------------------------------------------------------------------------------------------------
 
 GGS_stringlist GGS_string::getter_regularFiles (const GGS_bool & inRecursiveSearch
-                                                      COMMA_LOCATION_ARGS) const {
+                                                COMMA_LOCATION_ARGS) const {
   GGS_stringlist result ;
   if (inRecursiveSearch.isValid ()) {
     result = GGS_stringlist::init (nullptr COMMA_THERE) ;
@@ -847,7 +847,7 @@ static void recursiveSearchForHiddenFiles (const String & inUnixStartPath,
 //--------------------------------------------------------------------------------------------------
 
 GGS_stringlist GGS_string::getter_hiddenFiles (const GGS_bool & inRecursiveSearch
-                                                     COMMA_LOCATION_ARGS) const {
+                                               COMMA_LOCATION_ARGS) const {
   GGS_stringlist result ;
   if (inRecursiveSearch.isValid ()) {
     result = GGS_stringlist::init (nullptr COMMA_THERE) ;
@@ -896,7 +896,7 @@ static void recursiveSearchForDirectories (const String & inUnixStartPath,
 //--------------------------------------------------------------------------------------------------
 
 GGS_stringlist GGS_string::getter_directories (const GGS_bool & inRecursiveSearch
-                                                     COMMA_LOCATION_ARGS) const {
+                                               COMMA_LOCATION_ARGS) const {
   GGS_stringlist result ;
   if (inRecursiveSearch.isValid ()) {
     result = GGS_stringlist::init (nullptr COMMA_THERE) ;
@@ -959,8 +959,8 @@ static void recursiveSearchForRegularFiles (const String & inUnixStartPath,
 //--------------------------------------------------------------------------------------------------
 
 GGS_stringlist GGS_string::getter_regularFilesWithExtensions (const GGS_bool & inRecursiveSearch,
-                                                                    const GGS_stringlist & inExtensionList
-                                                                    COMMA_LOCATION_ARGS) const {
+                                                              const GGS_stringlist & inExtensionList
+                                                              COMMA_LOCATION_ARGS) const {
   GGS_stringlist result ;
   if ((inRecursiveSearch.isValid ()) && (inExtensionList.isValid ())) {
     result = GGS_stringlist::init (nullptr COMMA_THERE) ;
@@ -1025,8 +1025,8 @@ static void recursiveSearchForDirectories (const String & inUnixStartPath,
 //--------------------------------------------------------------------------------------------------
 
 GGS_stringlist GGS_string::getter_directoriesWithExtensions (const GGS_bool & inRecursiveSearch,
-                                                                   const GGS_stringlist & inExtensionList
-                                                                   COMMA_LOCATION_ARGS) const {
+                                                             const GGS_stringlist & inExtensionList
+                                                             COMMA_LOCATION_ARGS) const {
   GGS_stringlist result ;
   if (isValid () && inRecursiveSearch.isValid () && inExtensionList.isValid ()) {
     result = GGS_stringlist::init (nullptr COMMA_THERE) ;
@@ -1079,7 +1079,7 @@ GGS_bool GGS_string::getter_isDecimalUnsignedNumber (UNUSED_LOCATION_ARGS) const
 //--------------------------------------------------------------------------------------------------
 
 GGS_uint GGS_string::getter_decimalUnsignedNumber (Compiler * inCompiler
-                                                         COMMA_LOCATION_ARGS) const {
+                                                   COMMA_LOCATION_ARGS) const {
   GGS_uint result ;
   if (isValid ()) {
     uint32_t r = 0 ;
@@ -1110,7 +1110,7 @@ GGS_bool GGS_string::getter_isDecimalUnsigned_36__34_Number (UNUSED_LOCATION_ARG
 //--------------------------------------------------------------------------------------------------
 
 GGS_uint_36__34_ GGS_string::getter_decimalUnsigned_36__34_Number (Compiler * inCompiler
-                                                                         COMMA_LOCATION_ARGS) const {
+                                                                   COMMA_LOCATION_ARGS) const {
   GGS_uint_36__34_ result ;
   if (isValid ()) {
     uint64_t r = 0 ;
@@ -1141,7 +1141,7 @@ GGS_bool GGS_string::getter_isDecimalSignedNumber (UNUSED_LOCATION_ARGS) const {
 //--------------------------------------------------------------------------------------------------
 
 GGS_sint GGS_string::getter_decimalSignedNumber (Compiler * inCompiler
-                                                       COMMA_LOCATION_ARGS) const {
+                                                 COMMA_LOCATION_ARGS) const {
   GGS_sint result ;
   if (isValid ()) {
     int32_t r = 0 ;
@@ -1172,7 +1172,7 @@ GGS_bool GGS_string::getter_isDecimalSigned_36__34_Number (UNUSED_LOCATION_ARGS)
 //--------------------------------------------------------------------------------------------------
 
 GGS_sint_36__34_ GGS_string::getter_decimalSigned_36__34_Number (Compiler * inCompiler
-                                                                       COMMA_LOCATION_ARGS) const {
+                                                                 COMMA_LOCATION_ARGS) const {
   GGS_sint_36__34_ result ;
   if (isValid ()) {
     int64_t r = 0 ;
@@ -1214,7 +1214,7 @@ GGS_bool GGS_string::getter_isDecimalSignedBigInt (UNUSED_LOCATION_ARGS) const {
 //--------------------------------------------------------------------------------------------------
 
 GGS_bigint GGS_string::getter_decimalSignedBigInt (Compiler * inCompiler
-                                                         COMMA_LOCATION_ARGS) const {
+                                                   COMMA_LOCATION_ARGS) const {
   GGS_bigint result ;
   if (isValid ()) {
     bool ok = false ;
@@ -1231,7 +1231,7 @@ GGS_bigint GGS_string::getter_decimalSignedBigInt (Compiler * inCompiler
 //--------------------------------------------------------------------------------------------------
 
 GGS_double GGS_string::getter_doubleNumber (Compiler * inCompiler
-                                                  COMMA_LOCATION_ARGS) const {
+                                            COMMA_LOCATION_ARGS) const {
   GGS_double result ;
   if (isValid ()) {
     double doubleValue = 0.0 ;
@@ -1327,7 +1327,7 @@ GGS_bool GGS_string::getter_isSymbolicLink (UNUSED_LOCATION_ARGS) const {
   }
 
   GGS_string GGS_string::getter_popen (Compiler * inCompiler
-                                             COMMA_LOCATION_ARGS) const {
+                                       COMMA_LOCATION_ARGS) const {
     GGS_string result ;
     if (isValid ()) {
     // Create a pipe for the child process's STDIN.
@@ -1395,7 +1395,7 @@ GGS_bool GGS_string::getter_isSymbolicLink (UNUSED_LOCATION_ARGS) const {
 #else
 
   GGS_string GGS_string::getter_popen (Compiler * /* inCompiler */
-                                             COMMA_UNUSED_LOCATION_ARGS) const {
+                                       COMMA_UNUSED_LOCATION_ARGS) const {
     GGS_string result ;
     if (isValid ()) {
       FILE * f = popen (mString.cString (), "r") ;

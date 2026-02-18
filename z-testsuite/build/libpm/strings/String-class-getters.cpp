@@ -334,7 +334,7 @@ String String::lowercasedString (void) const {
 
 //--------------------------------------------------------------------------------------------------
 
-String String::trimmingSeparators (void) const {
+String String::trimmingSpaces (void) const {
   String s ;
   const int32_t receiver_length = length () ;
   s.setCapacity (receiver_length) ;
@@ -375,9 +375,9 @@ String String::uppercasedString (void) const {
 
 //--------------------------------------------------------------------------------------------------
 
-String String::reversedString (void) const {
+String String::reversed (void) const {
   String s = *this ;
-  s.reverseStringInPlace () ;
+  s.reverseInPlace () ;
   return s ;
 }
 

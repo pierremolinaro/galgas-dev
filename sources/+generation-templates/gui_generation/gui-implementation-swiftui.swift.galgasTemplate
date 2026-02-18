@@ -6,7 +6,7 @@ import UniformTypeIdentifiers
 
 extension UTType {
 %for (lkey 2*) in GUI_CONTEXT.mExtensionMap do
-%  nonisolated static let %![lkey identifierRepresentation]% = UTType (exportedAs: Bundle.main.bundleIdentifier! + ".%![lkey lowercaseString]%")\n%
+%  nonisolated static let %![lkey identifierRepresentation]% = UTType (exportedAs: Bundle.main.bundleIdentifier! + ".%![lkey lowercased]%")\n%
 end
 %}
 
@@ -27,7 +27,7 @@ end
 
 let projectFileExtensions = Set ([%
 for (lkey 2*) in GUI_CONTEXT.mExtensionMap
-  do ![[lkey lowercaseString] utf8RepresentationEscapingQuestionMark]
+  do ![[lkey lowercased] utf8RepresentationEscapingQuestionMark]
   between %, %
 end
 %])
@@ -41,7 +41,7 @@ end
   let fileExtension = inExtension.lowercased ()\n%
 for (lkey mLexiqueName *) in GUI_CONTEXT.mExtensionMap
   before %  if%
-  do % fileExtension == %![[lkey lowercaseString] utf8RepresentationEscapingQuestionMark]% {\n%
+  do % fileExtension == %![[lkey lowercased] utf8RepresentationEscapingQuestionMark]% {\n%
      %    result = ScannerFor_%!mLexiqueName% ()\n%
   between %  }else if%
   after %  }\n%

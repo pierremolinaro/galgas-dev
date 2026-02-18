@@ -4,7 +4,7 @@
 //
 //  This file is part of libpm library                                                           
 //
-//  Copyright (C) 2010, ..., 2023 Pierre Molinaro.
+//  Copyright (C) 2010, ..., 2026 Pierre Molinaro.
 //
 //  e-mail : pierre@pcmolinaro.name
 //
@@ -39,7 +39,7 @@ class cObjectArray final {
                         COMMA_LOCATION_ARGS) ;
 
 //--- Virtual destructor
-  public: virtual ~ cObjectArray (void) ;
+  public: ~ cObjectArray (void) ;
 
 //--- No copy
   private: cObjectArray (const cObjectArray & inSource) ;
