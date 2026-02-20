@@ -16,8 +16,8 @@ final class ProjectCompiler : ObservableObject  {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  @Published private var mCompileLog : NSAttributedString = NSAttributedString ()
-  @ObservationTracked var compileLog : NSAttributedString { self.mCompileLog }
+  @Published private var mCompileLog : AttributedString = AttributedString ()
+  @ObservationTracked var compileLog : AttributedString { self.mCompileLog }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -48,7 +48,7 @@ final class ProjectCompiler : ObservableObject  {
     self.mStartTime = Date ()
     self.mIsCompilingProject = true
     self.mAppendIssueCallBack = inAppendIssueCallBack
-    self.mCompileLog = NSAttributedString ("")
+    self.mCompileLog = AttributedString ()
     self.mBuildHasBeenAborted = false
     self.mBuildOutputCurrentColor = .black
     self.mErrorCount = 0
@@ -276,9 +276,9 @@ final class ProjectCompiler : ObservableObject  {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func appendToLog (string inString : String) {
-    let mat = NSMutableAttributedString (attributedString: self.mCompileLog)
-    mat.append (NSAttributedString (string: inString, attributes: [.font : self.mFont]))
-    self.mCompileLog = NSAttributedString (attributedString: mat)
+    var attributeContainer = AttributeContainer ()
+    attributeContainer.font = Font (self.mFont)
+    self.mCompileLog.append (AttributedString (inString, attributes: attributeContainer))
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -291,9 +291,11 @@ final class ProjectCompiler : ObservableObject  {
       let fontManager = NSFontManager.shared
       font = fontManager.convert (font, toHaveTrait: .boldFontMask)
     }
-    let mat = NSMutableAttributedString (attributedString: self.mCompileLog)
-    mat.append (NSAttributedString (string: inString, attributes: [.font : font, .foregroundColor : inColor]))
-    self.mCompileLog = NSAttributedString (attributedString: mat)
+    var attributeContainer = AttributeContainer ()
+    attributeContainer.font = Font (font)
+    attributeContainer.foregroundColor = Color (inColor)
+    let at = AttributedString (inString, attributes: attributeContainer)
+    self.mCompileLog.append (at)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

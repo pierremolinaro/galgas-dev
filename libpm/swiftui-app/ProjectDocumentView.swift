@@ -164,7 +164,7 @@ struct ProjectDocumentView : View {
         Toggle ("Auto Scroll", isOn: self.$mCompileLogAutoScroll).controlSize (.small)
         CompileLogView (
           attributedString: self.mProjectCompiler.compileLog,
-          compileLogAutoScroll: self.mCompileLogAutoScroll
+          autoScroll: self.mCompileLogAutoScroll
         )
       case .issues:
         Text ("Issues").font (.caption)

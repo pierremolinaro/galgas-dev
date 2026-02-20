@@ -184,6 +184,7 @@
 		CF7507532F0FB197005FAE3E /* utf32.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF7507512F0FB197005FAE3E /* utf32.cpp */; };
 		CF7508422F0FB686005FAE3E /* ProjectCompiler.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7508412F0FB680005FAE3E /* ProjectCompiler.swift */; };
 		CF764BED2F1BC69B0096899F /* String+LineStartAndEndLocations.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF764BEC2F1BC6880096899F /* String+LineStartAndEndLocations.swift */; };
+		CF78623C2F48D2FD00D5E3D3 /* CompileLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF78623B2F48D2FD00D5E3D3 /* CompileLogView.swift */; };
 		CF859AFD2F0FDDE0003A3F74 /* common-command-line-options.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF859AFC2F0FDDE0003A3F74 /* common-command-line-options.swift */; };
 		CF859AFF2F0FDE0F003A3F74 /* CommandLineOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF859AFE2F0FDE0F003A3F74 /* CommandLineOption.swift */; };
 		CF874F242F100930004A5162 /* option-galgas-5Fcli-5Foptions-swiftui.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF874F232F100930004A5162 /* option-galgas-5Fcli-5Foptions-swiftui.swift */; };
@@ -389,7 +390,6 @@
 		CFD71AE82E731366007736B6 /* CustomFontPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD71AE72E731366007736B6 /* CustomFontPicker.swift */; };
 		CFD71AE92E731366007736B6 /* Color+RawRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD71AE52E731366007736B6 /* Color+RawRepresentable.swift */; };
 		CFD71AEA2E731366007736B6 /* CustomFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD71AE62E731366007736B6 /* CustomFont.swift */; };
-		CFE3BB822F10FF760045FA2E /* CompileLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE3BB812F10FF6D0045FA2E /* CompileLogView.swift */; };
 		CFE3BB992F11565B0045FA2E /* CompilationIssue.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE3BB982F11565B0045FA2E /* CompilationIssue.swift */; };
 /* End PBXBuildFile section */
 
@@ -737,6 +737,7 @@
 		CF7507512F0FB197005FAE3E /* utf32.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = utf32.cpp; sourceTree = "<group>"; };
 		CF7508412F0FB680005FAE3E /* ProjectCompiler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectCompiler.swift; sourceTree = "<group>"; };
 		CF764BEC2F1BC6880096899F /* String+LineStartAndEndLocations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+LineStartAndEndLocations.swift"; sourceTree = "<group>"; };
+		CF78623B2F48D2FD00D5E3D3 /* CompileLogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompileLogView.swift; sourceTree = "<group>"; };
 		CF859AFC2F0FDDE0003A3F74 /* common-command-line-options.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "common-command-line-options.swift"; sourceTree = "<group>"; };
 		CF859AFE2F0FDE0F003A3F74 /* CommandLineOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandLineOption.swift; sourceTree = "<group>"; };
 		CF874F232F100930004A5162 /* option-galgas-5Fcli-5Foptions-swiftui.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "option-galgas-5Fcli-5Foptions-swiftui.swift"; sourceTree = "<group>"; };
@@ -798,7 +799,6 @@
 		CFD71AE62E731366007736B6 /* CustomFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFont.swift; sourceTree = "<group>"; };
 		CFD71AE72E731366007736B6 /* CustomFontPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFontPicker.swift; sourceTree = "<group>"; };
 		CFDF0C9C2D0A0EEF0014CD68 /* GalgasIDE.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GalgasIDE.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		CFE3BB812F10FF6D0045FA2E /* CompileLogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompileLogView.swift; sourceTree = "<group>"; };
 		CFE3BB982F11565B0045FA2E /* CompilationIssue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompilationIssue.swift; sourceTree = "<group>"; };
 		CFF8ED3C2D0D81C1006B2A3C /* galgas */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = galgas; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -1291,7 +1291,7 @@
 				CF859AFE2F0FDE0F003A3F74 /* CommandLineOption.swift */,
 				CF859AFC2F0FDDE0003A3F74 /* common-command-line-options.swift */,
 				CFE3BB982F11565B0045FA2E /* CompilationIssue.swift */,
-				CFE3BB812F10FF6D0045FA2E /* CompileLogView.swift */,
+				CF78623B2F48D2FD00D5E3D3 /* CompileLogView.swift */,
 				CFD71AE62E731366007736B6 /* CustomFont.swift */,
 				CFD71AE72E731366007736B6 /* CustomFontPicker.swift */,
 				CF57F9802F1E694F008EB31D /* FocusedValues+extension.swift */,
@@ -1421,7 +1421,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1620;
-				LastUpgradeCheck = 2620;
+				LastUpgradeCheck = 2640;
 				TargetAttributes = {
 					CF8F80E22D0D91490095170B = {
 						LastSwiftMigration = 2600;
@@ -1656,7 +1656,6 @@
 				CF559AD62F1E334B00752B9C /* String+LineRangeForLineNumber.swift in Sources */,
 				CFD71AE82E731366007736B6 /* CustomFontPicker.swift in Sources */,
 				CF515AE22EAA341D002A816B /* RootDirectoryNode.swift in Sources */,
-				CFE3BB822F10FF760045FA2E /* CompileLogView.swift in Sources */,
 				CF764BED2F1BC69B0096899F /* String+LineStartAndEndLocations.swift in Sources */,
 				CF6E4A852F1BA32D002A96A5 /* IdentifiableAttributedString.swift in Sources */,
 				CF25EA192F14172F0086A184 /* ProjectWindowManagerView.swift in Sources */,
@@ -1672,6 +1671,7 @@
 				CF859AFF2F0FDE0F003A3F74 /* CommandLineOption.swift in Sources */,
 				CFD719CB2E730A10007736B6 /* LexicalToken.swift in Sources */,
 				CF559BCF2F1E60B000752B9C /* lexical-functions.swift in Sources */,
+				CF78623C2F48D2FD00D5E3D3 /* CompileLogView.swift in Sources */,
 				CF57F9812F1E6957008EB31D /* FocusedValues+extension.swift in Sources */,
 				CFD71A4A2E730D36007736B6 /* ProjectDocumentView.swift in Sources */,
 				CF874F242F100930004A5162 /* option-galgas-5Fcli-5Foptions-swiftui.swift in Sources */,
@@ -2108,8 +2108,6 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "name.pcmolinaro.pierre.galgas-ide";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				STRIP_INSTALLED_PRODUCT = NO;
-				STRIP_SWIFT_SYMBOLS = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_UPCOMING_FEATURE_EXISTENTIAL_ANY = YES;
 			};

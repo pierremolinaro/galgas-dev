@@ -1,68 +1,47 @@
 //--------------------------------------------------------------------------------------------------
-//  Created by Pierre Molinaro on 09/01/2026.
-//--------------------------------------------------------------------------------------------------
 
 import SwiftUI
 
 //--------------------------------------------------------------------------------------------------
 
-struct CompileLogView : NSViewRepresentable {
+struct CompileLogView : View {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private let mAttributedString : NSAttributedString
-  private let mCompileLogAutoScroll : Bool
+  private let mAttributedString : AttributedString
+  private let mAutoScroll : Bool
+  @State private var mScrollToBottomID = UUID ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  init (attributedString inAttributedString : NSAttributedString,
-        compileLogAutoScroll inCompileLogAutoScroll : Bool) {
+  init (attributedString inAttributedString : AttributedString,
+        autoScroll inAutoScroll : Bool) {
     self.mAttributedString = inAttributedString
-    self.mCompileLogAutoScroll = inCompileLogAutoScroll
+    self.mAutoScroll = inAutoScroll
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func makeNSView (context inContext : Context) -> NSScrollView {
-    let textView = NSTextView ()
-    textView.allowsUndo = false
-    textView.isRichText = true
-    textView.isAutomaticDataDetectionEnabled = false
-    textView.isAutomaticLinkDetectionEnabled = false
-    textView.isAutomaticTextCompletionEnabled = false
-    textView.isAutomaticTextReplacementEnabled = false
-    textView.isAutomaticDashSubstitutionEnabled = false
-    textView.isAutomaticQuoteSubstitutionEnabled = false
-    textView.isAutomaticSpellingCorrectionEnabled = false
-    textView.isEditable = false
-    textView.isSelectable = true
-    textView.minSize = .zero
-    textView.maxSize = NSSize (
-      width: CGFloat.greatestFiniteMagnitude,
-      height: CGFloat.greatestFiniteMagnitude
-    )
-    textView.isHorizontallyResizable = true
-    textView.isVerticallyResizable = true
-    textView.autoresizingMask = [.width]
-    let scrollView = NSScrollView ()
-    scrollView.documentView = textView
-    scrollView.hasVerticalScroller = true
-    scrollView.autohidesScrollers = true
-    textView.usesFindBar = false
-    textView.isIncrementalSearchingEnabled = false
-    return scrollView
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  func updateNSView (_ inScrollView : NSScrollView,
-                     context inContext : Context) {
-    if let textView = inScrollView.documentView as? NSTextView,
-          textView.textStorage?.string != self.mAttributedString.string {
-      textView.textStorage?.setAttributedString (self.mAttributedString)
-      if self.mCompileLogAutoScroll {
-        DispatchQueue.main.async {
-          textView.scrollRangeToVisible (NSRange (location: self.mAttributedString.length, length: 0))
+  var body : some View {
+    ScrollViewReader { proxy in
+      ScrollView {
+        Text (self.mAttributedString)
+        .textSelection (.enabled)
+        .frame (maxWidth: .infinity, alignment: .leading)
+        .id (self.mScrollToBottomID) // unique pour chaque mise à jour
+        .frame (maxWidth: .infinity, alignment: .leading)
+      }
+      .background (Color.black.opacity (0.025))
+      .onChange (of: self.mAutoScroll) {
+        if self.mAutoScroll {
+          proxy.scrollTo (self.mScrollToBottomID, anchor: .bottom)
+        }
+      }
+      .onChange (of: self.mAttributedString) {
+        if mAutoScroll {
+          DispatchQueue.main.async {
+            proxy.scrollTo (self.mScrollToBottomID, anchor: .bottom)
+          }
         }
       }
     }
