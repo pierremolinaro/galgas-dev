@@ -1220,405 +1220,6 @@ void extensionMethod_checkCompatibilityWithLet (const GGS_AccessControlAST inObj
 
 
 //--------------------------------------------------------------------------------------------------
-
-#include "MF_MemoryControl.h"
-#include "C_galgas_CLI_Options.h"
-
-#include "FileManager.h"
-
-//--------------------------------------------------------------------------------------------------
-
-
-//--------------------------------------------------------------------------------------------------
-//
-//                                     LL(1) PRODUCTION RULES                                       
-//
-//--------------------------------------------------------------------------------------------------
-
-static const int32_t gProductions_jsonGrammar [] = {
-// At index 0 : <JSON_text>, in file 'jsonSyntax.ggs', line 188
-  TOP_DOWN_NONTERMINAL (1) // <value>
-, TOP_DOWN_END_PRODUCTION ()
-// At index 2 : <value>, in file 'jsonSyntax.ggs', line 194
-, TOP_DOWN_NONTERMINAL (4) // <select_jsonSyntax_0>
-, TOP_DOWN_END_PRODUCTION ()
-// At index 4 : <object>, in file 'jsonSyntax.ggs', line 221
-, TOP_DOWN_TERMINAL (Lexique_jsonScanner::kToken__7B_) // ${$
-, TOP_DOWN_TERMINAL (Lexique_jsonScanner::kToken__22_string_22_) // $"string"$
-, TOP_DOWN_TERMINAL (Lexique_jsonScanner::kToken__3A_) // $:$
-, TOP_DOWN_NONTERMINAL (1) // <value>
-, TOP_DOWN_NONTERMINAL (5) // <select_jsonSyntax_1>
-, TOP_DOWN_TERMINAL (Lexique_jsonScanner::kToken__7D_) // $}$
-, TOP_DOWN_END_PRODUCTION ()
-// At index 11 : <array>, in file 'jsonSyntax.ggs', line 237
-, TOP_DOWN_TERMINAL (Lexique_jsonScanner::kToken__5B_) // $[$
-, TOP_DOWN_NONTERMINAL (1) // <value>
-, TOP_DOWN_NONTERMINAL (6) // <select_jsonSyntax_2>
-, TOP_DOWN_TERMINAL (Lexique_jsonScanner::kToken__5D_) // $]$
-, TOP_DOWN_END_PRODUCTION ()
-//---- Added productions from 'select' and 'repeat' instructions
-// At index 16 : <select_jsonSyntax_0>, in file 'jsonSyntax.ggs', line 195
-, TOP_DOWN_TERMINAL (Lexique_jsonScanner::kToken_false) // $false$
-, TOP_DOWN_END_PRODUCTION ()
-// At index 18 : <select_jsonSyntax_0>, in file 'jsonSyntax.ggs', line 195
-, TOP_DOWN_TERMINAL (Lexique_jsonScanner::kToken_null) // $null$
-, TOP_DOWN_END_PRODUCTION ()
-// At index 20 : <select_jsonSyntax_0>, in file 'jsonSyntax.ggs', line 195
-, TOP_DOWN_TERMINAL (Lexique_jsonScanner::kToken_true) // $true$
-, TOP_DOWN_END_PRODUCTION ()
-// At index 22 : <select_jsonSyntax_0>, in file 'jsonSyntax.ggs', line 195
-, TOP_DOWN_NONTERMINAL (2) // <object>
-, TOP_DOWN_END_PRODUCTION ()
-// At index 24 : <select_jsonSyntax_0>, in file 'jsonSyntax.ggs', line 195
-, TOP_DOWN_NONTERMINAL (3) // <array>
-, TOP_DOWN_END_PRODUCTION ()
-// At index 26 : <select_jsonSyntax_0>, in file 'jsonSyntax.ggs', line 195
-, TOP_DOWN_TERMINAL (Lexique_jsonScanner::kToken_integer) // $integer$
-, TOP_DOWN_END_PRODUCTION ()
-// At index 28 : <select_jsonSyntax_0>, in file 'jsonSyntax.ggs', line 195
-, TOP_DOWN_TERMINAL (Lexique_jsonScanner::kToken__22_string_22_) // $"string"$
-, TOP_DOWN_END_PRODUCTION ()
-// At index 30 : <select_jsonSyntax_1>, in file 'jsonSyntax.ggs', line 224
-, TOP_DOWN_END_PRODUCTION ()
-// At index 31 : <select_jsonSyntax_1>, in file 'jsonSyntax.ggs', line 224
-, TOP_DOWN_TERMINAL (Lexique_jsonScanner::kToken__2C_) // $,$
-, TOP_DOWN_TERMINAL (Lexique_jsonScanner::kToken__22_string_22_) // $"string"$
-, TOP_DOWN_TERMINAL (Lexique_jsonScanner::kToken__3A_) // $:$
-, TOP_DOWN_NONTERMINAL (1) // <value>
-, TOP_DOWN_NONTERMINAL (5) // <select_jsonSyntax_1>
-, TOP_DOWN_END_PRODUCTION ()
-// At index 37 : <select_jsonSyntax_2>, in file 'jsonSyntax.ggs', line 240
-, TOP_DOWN_END_PRODUCTION ()
-// At index 38 : <select_jsonSyntax_2>, in file 'jsonSyntax.ggs', line 240
-, TOP_DOWN_TERMINAL (Lexique_jsonScanner::kToken__2C_) // $,$
-, TOP_DOWN_NONTERMINAL (1) // <value>
-, TOP_DOWN_NONTERMINAL (6) // <select_jsonSyntax_2>
-, TOP_DOWN_END_PRODUCTION ()
-// At index 42 : <>, in file '.ggs', line 0
-, TOP_DOWN_NONTERMINAL (0) // <JSON_text>
-, TOP_DOWN_END_PRODUCTION ()
-} ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//                                P R O D U C T I O N    N A M E S                                  
-//
-//--------------------------------------------------------------------------------------------------
-
-static const ProductionNameDescriptor gProductionNames_jsonGrammar [16] = {
- {"<JSON_text>", "jsonSyntax", 0}, // at index 0
- {"<value>", "jsonSyntax", 2}, // at index 1
- {"<object>", "jsonSyntax", 4}, // at index 2
- {"<array>", "jsonSyntax", 11}, // at index 3
- {"<select_jsonSyntax_0>", "jsonSyntax", 16}, // at index 4
- {"<select_jsonSyntax_0>", "jsonSyntax", 18}, // at index 5
- {"<select_jsonSyntax_0>", "jsonSyntax", 20}, // at index 6
- {"<select_jsonSyntax_0>", "jsonSyntax", 22}, // at index 7
- {"<select_jsonSyntax_0>", "jsonSyntax", 24}, // at index 8
- {"<select_jsonSyntax_0>", "jsonSyntax", 26}, // at index 9
- {"<select_jsonSyntax_0>", "jsonSyntax", 28}, // at index 10
- {"<select_jsonSyntax_1>", "jsonSyntax", 30}, // at index 11
- {"<select_jsonSyntax_1>", "jsonSyntax", 31}, // at index 12
- {"<select_jsonSyntax_2>", "jsonSyntax", 37}, // at index 13
- {"<select_jsonSyntax_2>", "jsonSyntax", 38}, // at index 14
- {"<>", "", 42} // at index 15
-} ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//                       L L ( 1 )    P R O D U C T I O N    I N D E X E S                          
-//
-//--------------------------------------------------------------------------------------------------
-
-static const int32_t gProductionIndexes_jsonGrammar [16] = {
-0, // index 0 : <JSON_text>, in file 'jsonSyntax.ggs', line 188
-2, // index 1 : <value>, in file 'jsonSyntax.ggs', line 194
-4, // index 2 : <object>, in file 'jsonSyntax.ggs', line 221
-11, // index 3 : <array>, in file 'jsonSyntax.ggs', line 237
-16, // index 4 : <select_jsonSyntax_0>, in file 'jsonSyntax.ggs', line 195
-18, // index 5 : <select_jsonSyntax_0>, in file 'jsonSyntax.ggs', line 195
-20, // index 6 : <select_jsonSyntax_0>, in file 'jsonSyntax.ggs', line 195
-22, // index 7 : <select_jsonSyntax_0>, in file 'jsonSyntax.ggs', line 195
-24, // index 8 : <select_jsonSyntax_0>, in file 'jsonSyntax.ggs', line 195
-26, // index 9 : <select_jsonSyntax_0>, in file 'jsonSyntax.ggs', line 195
-28, // index 10 : <select_jsonSyntax_0>, in file 'jsonSyntax.ggs', line 195
-30, // index 11 : <select_jsonSyntax_1>, in file 'jsonSyntax.ggs', line 224
-31, // index 12 : <select_jsonSyntax_1>, in file 'jsonSyntax.ggs', line 224
-37, // index 13 : <select_jsonSyntax_2>, in file 'jsonSyntax.ggs', line 240
-38, // index 14 : <select_jsonSyntax_2>, in file 'jsonSyntax.ggs', line 240
-42 // index 15 : <>, in file '.ggs', line 0
-} ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//                 L L ( 1 )    F I R S T    P R O D U C T I O N    I N D E X E S                   
-//
-//--------------------------------------------------------------------------------------------------
-
-static const int32_t gFirstProductionIndexes_jsonGrammar [9] = {
-0, // at 0 : <JSON_text>
-1, // at 1 : <value>
-2, // at 2 : <object>
-3, // at 3 : <array>
-4, // at 4 : <select_jsonSyntax_0>
-11, // at 5 : <select_jsonSyntax_1>
-13, // at 6 : <select_jsonSyntax_2>
-15, // at 7 : <>
-0} ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//                          L L ( 1 )    D E C I S I O N    T A B L E S                             
-//
-//--------------------------------------------------------------------------------------------------
-
-static const int32_t gDecision_jsonGrammar [] = {
-// At index 0 : <JSON_text> only one production, no choice
-  -1,
-// At index 1 : <value> only one production, no choice
-  -1,
-// At index 2 : <object> only one production, no choice
-  -1,
-// At index 3 : <array> only one production, no choice
-  -1,
-//---- Added non terminal symbols from 'select' and 'repeat' instructions
-// At index 4 : <select_jsonSyntax_0>
-Lexique_jsonScanner::kToken_false, -1, // Choice 1
-Lexique_jsonScanner::kToken_null, -1, // Choice 2
-Lexique_jsonScanner::kToken_true, -1, // Choice 3
-Lexique_jsonScanner::kToken__7B_, -1, // Choice 4
-Lexique_jsonScanner::kToken__5B_, -1, // Choice 5
-Lexique_jsonScanner::kToken_integer, -1, // Choice 6
-Lexique_jsonScanner::kToken__22_string_22_, -1, // Choice 7
-  -1,
-// At index 19 : <select_jsonSyntax_1>
-Lexique_jsonScanner::kToken__7D_, -1, // Choice 1
-Lexique_jsonScanner::kToken__2C_, -1, // Choice 2
-  -1,
-// At index 24 : <select_jsonSyntax_2>
-Lexique_jsonScanner::kToken__5D_, -1, // Choice 1
-Lexique_jsonScanner::kToken__2C_, -1, // Choice 2
-  -1,
-// At index 29 : <> only one production, no choice
-  -1,
-0} ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//                  L L ( 1 )    D E C I S I O N    T A B L E S    I N D E X E S                    
-//
-//--------------------------------------------------------------------------------------------------
-
-static const int32_t gDecisionIndexes_jsonGrammar [9] = {
-0, // at 0 : <JSON_text>
-1, // at 1 : <value>
-2, // at 2 : <object>
-3, // at 3 : <array>
-4, // at 4 : <select_jsonSyntax_0>
-19, // at 5 : <select_jsonSyntax_1>
-24, // at 6 : <select_jsonSyntax_2>
-29, // at 7 : <>
-0} ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//                            'JSON_text' non terminal implementation                               
-//
-//--------------------------------------------------------------------------------------------------
-
-void cGrammar_jsonGrammar::nt_JSON_5F_text_indexing (Lexique_jsonScanner * inLexique) {
-  rule_jsonSyntax_JSON_5F_text_i0_indexing(inLexique) ;
-}
-
-void cGrammar_jsonGrammar::nt_JSON_5F_text_ (GGS_jsonValue & parameter_1,
-                                Lexique_jsonScanner * inLexique) {
-  rule_jsonSyntax_JSON_5F_text_i0_(parameter_1, inLexique) ;
-}
-
-void cGrammar_jsonGrammar::performIndexing (Compiler * inCompiler,
-             const String & inSourceFilePath) {
-  Lexique_jsonScanner * scanner = nullptr ;
-  macroMyNew (scanner, Lexique_jsonScanner (inCompiler, inSourceFilePath COMMA_HERE)) ;
-  scanner->enableIndexing () ;
-  if (scanner->sourceText ().isValid ()) {
-    const bool ok = scanner->performTopDownParsing (gProductions_jsonGrammar, gProductionNames_jsonGrammar, gProductionIndexes_jsonGrammar,
-                                                    gFirstProductionIndexes_jsonGrammar, gDecision_jsonGrammar, gDecisionIndexes_jsonGrammar, 42) ;
-    if (ok) {
-      cGrammar_jsonGrammar grammar ;
-      grammar.nt_JSON_5F_text_indexing (scanner) ;
-    }
-    scanner->generateIndexFile () ;
-  }
-  macroDetachSharedObject (scanner) ;
-}
-
-void cGrammar_jsonGrammar::performOnlyLexicalAnalysis (Compiler * inCompiler,
-             const String & inSourceFilePath) {
-  Lexique_jsonScanner * scanner = nullptr ;
-  macroMyNew (scanner, Lexique_jsonScanner (inCompiler, inSourceFilePath COMMA_HERE)) ;
-  if (scanner->sourceText ().isValid ()) {
-    scanner->performLexicalAnalysis () ;
-  }
-  macroDetachSharedObject (scanner) ;
-}
-
-void cGrammar_jsonGrammar::performOnlySyntaxAnalysis (Compiler * inCompiler,
-             const String & inSourceFilePath) {
-  Lexique_jsonScanner * scanner = nullptr ;
-  macroMyNew (scanner, Lexique_jsonScanner (inCompiler, inSourceFilePath COMMA_HERE)) ;
-  if (scanner->sourceText ().isValid ()) {
-    scanner->performTopDownParsing (gProductions_jsonGrammar, gProductionNames_jsonGrammar, gProductionIndexes_jsonGrammar,
-                                    gFirstProductionIndexes_jsonGrammar, gDecision_jsonGrammar, gDecisionIndexes_jsonGrammar, 42) ;
-  }
-  macroDetachSharedObject (scanner) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//
-//                              Grammar start symbol implementation                                 
-//
-//--------------------------------------------------------------------------------------------------
-
-void cGrammar_jsonGrammar::_performSourceFileParsing_ (Compiler * inCompiler,
-                                GGS_lstring inFilePath,
-                                GGS_jsonValue &  parameter_1
-                                COMMA_LOCATION_ARGS) {
-  if (inFilePath.isValid ()) {
-    const GGS_string filePathAsString = inFilePath.readProperty_string () ;
-    String filePath = filePathAsString.stringValue () ;
-    if (! FileManager::isAbsolutePath (filePath)) {
-      filePath = inCompiler->sourceFilePath ().deletingLastPathComponent ().appendingPathComponent (filePath) ;
-    }
-    if (FileManager::fileExistsAtPath (filePath)) {
-    Lexique_jsonScanner * scanner = nullptr ;
-    macroMyNew (scanner, Lexique_jsonScanner (inCompiler, filePath COMMA_HERE)) ;
-    if (scanner->sourceText ().isValid ()) {
-      const bool ok = scanner->performTopDownParsing (gProductions_jsonGrammar, gProductionNames_jsonGrammar, gProductionIndexes_jsonGrammar,
-                                                      gFirstProductionIndexes_jsonGrammar, gDecision_jsonGrammar, gDecisionIndexes_jsonGrammar, 42) ;
-      if (ok && ! executionModeIsSyntaxAnalysisOnly ()) {
-        cGrammar_jsonGrammar grammar ;
-        grammar.nt_JSON_5F_text_ (parameter_1, scanner) ;
-        }
-      }else{
-        String message ;
-        message.appendString ("the '") ;
-        message.appendString (filePath) ;
-        message.appendString ("' file exists, but cannot be read") ;
-        const GGS_location errorLocation (inFilePath.readProperty_location ()) ;
-        inCompiler->semanticErrorAtLocation (errorLocation, message, GenericArray <FixItDescription> () COMMA_THERE) ;
-      }
-      macroDetachSharedObject (scanner) ;
-    }else{
-      String message ;
-      message.appendString ("the '") ;
-      message.appendString (filePath) ;
-      message.appendString ("' file does not exist") ;
-      const GGS_location errorLocation (inFilePath.readProperty_location ()) ;
-      inCompiler->semanticErrorAtLocation (errorLocation, message, GenericArray <FixItDescription> () COMMA_THERE) ;
-    }
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cGrammar_jsonGrammar::_performSourceStringParsing_ (Compiler * inCompiler,
-                                GGS_string inSourceString,
-                                GGS_string inNameString,
-                                GGS_jsonValue &  parameter_1
-                                COMMA_UNUSED_LOCATION_ARGS) {
-  if (inSourceString.isValid () && inNameString.isValid ()) {
-    const String sourceString = inSourceString.stringValue () ;
-    const String nameString = inNameString.stringValue () ;
-    Lexique_jsonScanner * scanner = nullptr ;
-    macroMyNew (scanner, Lexique_jsonScanner (inCompiler, sourceString, nameString COMMA_HERE)) ;
-    const bool ok = scanner->performTopDownParsing (gProductions_jsonGrammar, gProductionNames_jsonGrammar, gProductionIndexes_jsonGrammar,
-                                                    gFirstProductionIndexes_jsonGrammar, gDecision_jsonGrammar, gDecisionIndexes_jsonGrammar, 42) ;
-    if (ok && ! executionModeIsSyntaxAnalysisOnly ()) {
-      cGrammar_jsonGrammar grammar ;
-      grammar.nt_JSON_5F_text_ (parameter_1, scanner) ;
-    }
-    macroDetachSharedObject (scanner) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-//
-//                              'value' non terminal implementation                                 
-//
-//--------------------------------------------------------------------------------------------------
-
-void cGrammar_jsonGrammar::nt_value_indexing (Lexique_jsonScanner * inLexique) {
-  rule_jsonSyntax_value_i1_indexing(inLexique) ;
-}
-
-void cGrammar_jsonGrammar::nt_value_ (GGS_jsonValue & parameter_1,
-                                Lexique_jsonScanner * inLexique) {
-  rule_jsonSyntax_value_i1_(parameter_1, inLexique) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//
-//                              'object' non terminal implementation                                
-//
-//--------------------------------------------------------------------------------------------------
-
-void cGrammar_jsonGrammar::nt_object_indexing (Lexique_jsonScanner * inLexique) {
-  rule_jsonSyntax_object_i2_indexing(inLexique) ;
-}
-
-void cGrammar_jsonGrammar::nt_object_ (GGS_jsonObjectValue & parameter_1,
-                                Lexique_jsonScanner * inLexique) {
-  rule_jsonSyntax_object_i2_(parameter_1, inLexique) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//
-//                              'array' non terminal implementation                                 
-//
-//--------------------------------------------------------------------------------------------------
-
-void cGrammar_jsonGrammar::nt_array_indexing (Lexique_jsonScanner * inLexique) {
-  rule_jsonSyntax_array_i3_indexing(inLexique) ;
-}
-
-void cGrammar_jsonGrammar::nt_array_ (GGS_jsonArrayValue & parameter_1,
-                                Lexique_jsonScanner * inLexique) {
-  rule_jsonSyntax_array_i3_(parameter_1, inLexique) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//
-//                    'select_jsonSyntax_0' added non terminal implementation                       
-//
-//--------------------------------------------------------------------------------------------------
-
-int32_t cGrammar_jsonGrammar::select_jsonSyntax_0 (Lexique_jsonScanner * inLexique) {
-  return inLexique->nextProductionIndex () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//
-//                    'select_jsonSyntax_1' added non terminal implementation                       
-//
-//--------------------------------------------------------------------------------------------------
-
-int32_t cGrammar_jsonGrammar::select_jsonSyntax_1 (Lexique_jsonScanner * inLexique) {
-  return inLexique->nextProductionIndex () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//
-//                    'select_jsonSyntax_2' added non terminal implementation                       
-//
-//--------------------------------------------------------------------------------------------------
-
-int32_t cGrammar_jsonGrammar::select_jsonSyntax_2 (Lexique_jsonScanner * inLexique) {
-  return inLexique->nextProductionIndex () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-//--------------------------------------------------------------------------------------------------
 //
 //Abstract extension method '@semanticExpressionForGeneration generateExpression'
 //
@@ -14952,6 +14553,567 @@ GGS_lexicalUnsignedInputArgumentAST GGS_lexicalUnsignedInputArgumentAST::extract
       result = *p ;
     }else{
       inCompiler->castError ("lexicalUnsignedInputArgumentAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+// @lexicalFunctionInputArgumentAST reference class
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GGS_lexicalFunctionInputArgumentAST::objectCompare (const GGS_lexicalFunctionInputArgumentAST & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    const size_t myObjectPtr = size_t (mObjectPtr) ;
+    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lexicalFunctionInputArgumentAST::GGS_lexicalFunctionInputArgumentAST (void) :
+GGS_lexicalRoutineOrFunctionFormalInputArgumentAST () {
+}
+
+//--- Synthetized initializer ----------------------------------------------------------------------
+
+GGS_lexicalFunctionInputArgumentAST GGS_lexicalFunctionInputArgumentAST::
+init_21__21_ (const GGS_lstring & in_mFunctionName,
+              const GGS_lexicalFunctionCallActualArgumentListAST & in_mFunctionActualArgumentList,
+              Compiler * inCompiler
+              COMMA_LOCATION_ARGS) {
+  cPtr_lexicalFunctionInputArgumentAST * object = nullptr ;
+  macroMyNew (object, cPtr_lexicalFunctionInputArgumentAST (inCompiler COMMA_THERE)) ;
+  object->lexicalFunctionInputArgumentAST_init_21__21_ (in_mFunctionName, in_mFunctionActualArgumentList, inCompiler) ;
+  const GGS_lexicalFunctionInputArgumentAST result (object) ;
+  macroDetachSharedObject (object) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_lexicalFunctionInputArgumentAST::
+lexicalFunctionInputArgumentAST_init_21__21_ (const GGS_lstring & in_mFunctionName,
+                                              const GGS_lexicalFunctionCallActualArgumentListAST & in_mFunctionActualArgumentList,
+                                              Compiler * /* inCompiler */) {
+  mProperty_mFunctionName = in_mFunctionName ;
+  mProperty_mFunctionActualArgumentList = in_mFunctionActualArgumentList ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lexicalFunctionInputArgumentAST::GGS_lexicalFunctionInputArgumentAST (const cPtr_lexicalFunctionInputArgumentAST * inSourcePtr) :
+GGS_lexicalRoutineOrFunctionFormalInputArgumentAST (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_lexicalFunctionInputArgumentAST) ;
+}
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstring GGS_lexicalFunctionInputArgumentAST::readProperty_mFunctionName (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_lstring () ;
+  }else{
+    cPtr_lexicalFunctionInputArgumentAST * p = (cPtr_lexicalFunctionInputArgumentAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_lexicalFunctionInputArgumentAST) ;
+    return p->mProperty_mFunctionName ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lexicalFunctionCallActualArgumentListAST GGS_lexicalFunctionInputArgumentAST::readProperty_mFunctionActualArgumentList (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_lexicalFunctionCallActualArgumentListAST () ;
+  }else{
+    cPtr_lexicalFunctionInputArgumentAST * p = (cPtr_lexicalFunctionInputArgumentAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_lexicalFunctionInputArgumentAST) ;
+    return p->mProperty_mFunctionActualArgumentList ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//Pointer class for @lexicalFunctionInputArgumentAST class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_lexicalFunctionInputArgumentAST::cPtr_lexicalFunctionInputArgumentAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST (inCompiler COMMA_THERE),
+mProperty_mFunctionName (),
+mProperty_mFunctionActualArgumentList () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+cPtr_lexicalFunctionInputArgumentAST::cPtr_lexicalFunctionInputArgumentAST (const GGS_lstring & in_mFunctionName,
+                                                                            const GGS_lexicalFunctionCallActualArgumentListAST & in_mFunctionActualArgumentList,
+                                                                            Compiler * inCompiler
+                                                                            COMMA_LOCATION_ARGS) :
+cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST (inCompiler COMMA_THERE),
+mProperty_mFunctionName (),
+mProperty_mFunctionActualArgumentList () {
+  mProperty_mFunctionName = in_mFunctionName ;
+  mProperty_mFunctionActualArgumentList = in_mFunctionActualArgumentList ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * cPtr_lexicalFunctionInputArgumentAST::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_lexicalFunctionInputArgumentAST ;
+}
+
+void cPtr_lexicalFunctionInputArgumentAST::description (String & ioString,
+                                                        const int32_t inIndentation) const {
+  ioString.appendCString ("[@lexicalFunctionInputArgumentAST:") ;
+  mProperty_mFunctionName.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mFunctionActualArgumentList.description (ioString, inIndentation+1) ;
+  ioString.appendCString ("]") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+acPtr_class * cPtr_lexicalFunctionInputArgumentAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  acPtr_class * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_lexicalFunctionInputArgumentAST (mProperty_mFunctionName, mProperty_mFunctionActualArgumentList, inCompiler COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_lexicalFunctionInputArgumentAST::printNonNullClassInstanceProperties (void) const {
+    cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST::printNonNullClassInstanceProperties () ;
+    mProperty_mFunctionName.printNonNullClassInstanceProperties ("mFunctionName") ;
+    mProperty_mFunctionActualArgumentList.printNonNullClassInstanceProperties ("mFunctionActualArgumentList") ;
+  }
+#endif
+
+//--------------------------------------------------------------------------------------------------
+//     @lexicalFunctionInputArgumentAST generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lexicalFunctionInputArgumentAST ("lexicalFunctionInputArgumentAST",
+                                                                                    & kTypeDescriptor_GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_lexicalFunctionInputArgumentAST::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_lexicalFunctionInputArgumentAST ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_lexicalFunctionInputArgumentAST::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_lexicalFunctionInputArgumentAST (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lexicalFunctionInputArgumentAST GGS_lexicalFunctionInputArgumentAST::extractObject (const GGS_object & inObject,
+                                                                                        Compiler * inCompiler
+                                                                                        COMMA_LOCATION_ARGS) {
+  GGS_lexicalFunctionInputArgumentAST result ;
+  const GGS_lexicalFunctionInputArgumentAST * p = (const GGS_lexicalFunctionInputArgumentAST *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_lexicalFunctionInputArgumentAST *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("lexicalFunctionInputArgumentAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+// @lexiqueComponentAST reference class
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GGS_lexiqueComponentAST::objectCompare (const GGS_lexiqueComponentAST & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    const size_t myObjectPtr = size_t (mObjectPtr) ;
+    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lexiqueComponentAST::GGS_lexiqueComponentAST (void) :
+GGS_semanticDeclarationAST () {
+}
+
+//--- Synthetized initializer ----------------------------------------------------------------------
+
+GGS_lexiqueComponentAST GGS_lexiqueComponentAST::
+init_21_isPredefined_21__21__21__21__21__21__21__21__21__21__21_ (const GGS_bool & in_isPredefined,
+                                                                  const GGS_lstring & in_mLexiqueComponentName,
+                                                                  const GGS_bool & in_mIsTemplate,
+                                                                  const GGS_templateDelimitorListAST & in_mTemplateDelimitorListAST,
+                                                                  const GGS_templateReplacementListAST & in_mTemplateReplacementListAST,
+                                                                  const GGS_lexicalAttributeListAST & in_mLexicalAttributeListAST,
+                                                                  const GGS_lexicalStyleListAST & in_mLexicalStyleListAST,
+                                                                  const GGS_terminalDeclarationListAST & in_mTerminalDeclarationListAST,
+                                                                  const GGS_lexicalMessageDeclarationListAST & in_mLexicalMessageDeclarationListAST,
+                                                                  const GGS_lexicalListDeclarationListAST & in_mLexicalListDeclarationListAST,
+                                                                  const GGS_lexicalRuleListAST & in_mLexicalRuleListAST,
+                                                                  const GGS_indexingListAST & in_mIndexingListAST,
+                                                                  Compiler * inCompiler
+                                                                  COMMA_LOCATION_ARGS) {
+  cPtr_lexiqueComponentAST * object = nullptr ;
+  macroMyNew (object, cPtr_lexiqueComponentAST (inCompiler COMMA_THERE)) ;
+  object->lexiqueComponentAST_init_21_isPredefined_21__21__21__21__21__21__21__21__21__21__21_ (in_isPredefined, in_mLexiqueComponentName, in_mIsTemplate, in_mTemplateDelimitorListAST, in_mTemplateReplacementListAST, in_mLexicalAttributeListAST, in_mLexicalStyleListAST, in_mTerminalDeclarationListAST, in_mLexicalMessageDeclarationListAST, in_mLexicalListDeclarationListAST, in_mLexicalRuleListAST, in_mIndexingListAST, inCompiler) ;
+  const GGS_lexiqueComponentAST result (object) ;
+  macroDetachSharedObject (object) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_lexiqueComponentAST::
+lexiqueComponentAST_init_21_isPredefined_21__21__21__21__21__21__21__21__21__21__21_ (const GGS_bool & in_isPredefined,
+                                                                                      const GGS_lstring & in_mLexiqueComponentName,
+                                                                                      const GGS_bool & in_mIsTemplate,
+                                                                                      const GGS_templateDelimitorListAST & in_mTemplateDelimitorListAST,
+                                                                                      const GGS_templateReplacementListAST & in_mTemplateReplacementListAST,
+                                                                                      const GGS_lexicalAttributeListAST & in_mLexicalAttributeListAST,
+                                                                                      const GGS_lexicalStyleListAST & in_mLexicalStyleListAST,
+                                                                                      const GGS_terminalDeclarationListAST & in_mTerminalDeclarationListAST,
+                                                                                      const GGS_lexicalMessageDeclarationListAST & in_mLexicalMessageDeclarationListAST,
+                                                                                      const GGS_lexicalListDeclarationListAST & in_mLexicalListDeclarationListAST,
+                                                                                      const GGS_lexicalRuleListAST & in_mLexicalRuleListAST,
+                                                                                      const GGS_indexingListAST & in_mIndexingListAST,
+                                                                                      Compiler * /* inCompiler */) {
+  mProperty_isPredefined = in_isPredefined ;
+  mProperty_mLexiqueComponentName = in_mLexiqueComponentName ;
+  mProperty_mIsTemplate = in_mIsTemplate ;
+  mProperty_mTemplateDelimitorListAST = in_mTemplateDelimitorListAST ;
+  mProperty_mTemplateReplacementListAST = in_mTemplateReplacementListAST ;
+  mProperty_mLexicalAttributeListAST = in_mLexicalAttributeListAST ;
+  mProperty_mLexicalStyleListAST = in_mLexicalStyleListAST ;
+  mProperty_mTerminalDeclarationListAST = in_mTerminalDeclarationListAST ;
+  mProperty_mLexicalMessageDeclarationListAST = in_mLexicalMessageDeclarationListAST ;
+  mProperty_mLexicalListDeclarationListAST = in_mLexicalListDeclarationListAST ;
+  mProperty_mLexicalRuleListAST = in_mLexicalRuleListAST ;
+  mProperty_mIndexingListAST = in_mIndexingListAST ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lexiqueComponentAST::GGS_lexiqueComponentAST (const cPtr_lexiqueComponentAST * inSourcePtr) :
+GGS_semanticDeclarationAST (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_lexiqueComponentAST) ;
+}
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstring GGS_lexiqueComponentAST::readProperty_mLexiqueComponentName (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_lstring () ;
+  }else{
+    cPtr_lexiqueComponentAST * p = (cPtr_lexiqueComponentAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_lexiqueComponentAST) ;
+    return p->mProperty_mLexiqueComponentName ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_bool GGS_lexiqueComponentAST::readProperty_mIsTemplate (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_bool () ;
+  }else{
+    cPtr_lexiqueComponentAST * p = (cPtr_lexiqueComponentAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_lexiqueComponentAST) ;
+    return p->mProperty_mIsTemplate ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_templateDelimitorListAST GGS_lexiqueComponentAST::readProperty_mTemplateDelimitorListAST (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_templateDelimitorListAST () ;
+  }else{
+    cPtr_lexiqueComponentAST * p = (cPtr_lexiqueComponentAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_lexiqueComponentAST) ;
+    return p->mProperty_mTemplateDelimitorListAST ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_templateReplacementListAST GGS_lexiqueComponentAST::readProperty_mTemplateReplacementListAST (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_templateReplacementListAST () ;
+  }else{
+    cPtr_lexiqueComponentAST * p = (cPtr_lexiqueComponentAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_lexiqueComponentAST) ;
+    return p->mProperty_mTemplateReplacementListAST ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lexicalAttributeListAST GGS_lexiqueComponentAST::readProperty_mLexicalAttributeListAST (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_lexicalAttributeListAST () ;
+  }else{
+    cPtr_lexiqueComponentAST * p = (cPtr_lexiqueComponentAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_lexiqueComponentAST) ;
+    return p->mProperty_mLexicalAttributeListAST ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lexicalStyleListAST GGS_lexiqueComponentAST::readProperty_mLexicalStyleListAST (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_lexicalStyleListAST () ;
+  }else{
+    cPtr_lexiqueComponentAST * p = (cPtr_lexiqueComponentAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_lexiqueComponentAST) ;
+    return p->mProperty_mLexicalStyleListAST ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_terminalDeclarationListAST GGS_lexiqueComponentAST::readProperty_mTerminalDeclarationListAST (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_terminalDeclarationListAST () ;
+  }else{
+    cPtr_lexiqueComponentAST * p = (cPtr_lexiqueComponentAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_lexiqueComponentAST) ;
+    return p->mProperty_mTerminalDeclarationListAST ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lexicalMessageDeclarationListAST GGS_lexiqueComponentAST::readProperty_mLexicalMessageDeclarationListAST (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_lexicalMessageDeclarationListAST () ;
+  }else{
+    cPtr_lexiqueComponentAST * p = (cPtr_lexiqueComponentAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_lexiqueComponentAST) ;
+    return p->mProperty_mLexicalMessageDeclarationListAST ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lexicalListDeclarationListAST GGS_lexiqueComponentAST::readProperty_mLexicalListDeclarationListAST (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_lexicalListDeclarationListAST () ;
+  }else{
+    cPtr_lexiqueComponentAST * p = (cPtr_lexiqueComponentAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_lexiqueComponentAST) ;
+    return p->mProperty_mLexicalListDeclarationListAST ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lexicalRuleListAST GGS_lexiqueComponentAST::readProperty_mLexicalRuleListAST (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_lexicalRuleListAST () ;
+  }else{
+    cPtr_lexiqueComponentAST * p = (cPtr_lexiqueComponentAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_lexiqueComponentAST) ;
+    return p->mProperty_mLexicalRuleListAST ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_indexingListAST GGS_lexiqueComponentAST::readProperty_mIndexingListAST (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_indexingListAST () ;
+  }else{
+    cPtr_lexiqueComponentAST * p = (cPtr_lexiqueComponentAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_lexiqueComponentAST) ;
+    return p->mProperty_mIndexingListAST ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//Pointer class for @lexiqueComponentAST class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_lexiqueComponentAST::cPtr_lexiqueComponentAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_semanticDeclarationAST (inCompiler COMMA_THERE),
+mProperty_mLexiqueComponentName (),
+mProperty_mIsTemplate (),
+mProperty_mTemplateDelimitorListAST (),
+mProperty_mTemplateReplacementListAST (),
+mProperty_mLexicalAttributeListAST (),
+mProperty_mLexicalStyleListAST (),
+mProperty_mTerminalDeclarationListAST (),
+mProperty_mLexicalMessageDeclarationListAST (),
+mProperty_mLexicalListDeclarationListAST (),
+mProperty_mLexicalRuleListAST (),
+mProperty_mIndexingListAST () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+cPtr_lexiqueComponentAST::cPtr_lexiqueComponentAST (const GGS_bool & in_isPredefined,
+                                                    const GGS_lstring & in_mLexiqueComponentName,
+                                                    const GGS_bool & in_mIsTemplate,
+                                                    const GGS_templateDelimitorListAST & in_mTemplateDelimitorListAST,
+                                                    const GGS_templateReplacementListAST & in_mTemplateReplacementListAST,
+                                                    const GGS_lexicalAttributeListAST & in_mLexicalAttributeListAST,
+                                                    const GGS_lexicalStyleListAST & in_mLexicalStyleListAST,
+                                                    const GGS_terminalDeclarationListAST & in_mTerminalDeclarationListAST,
+                                                    const GGS_lexicalMessageDeclarationListAST & in_mLexicalMessageDeclarationListAST,
+                                                    const GGS_lexicalListDeclarationListAST & in_mLexicalListDeclarationListAST,
+                                                    const GGS_lexicalRuleListAST & in_mLexicalRuleListAST,
+                                                    const GGS_indexingListAST & in_mIndexingListAST,
+                                                    Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) :
+cPtr_semanticDeclarationAST (in_isPredefined, inCompiler COMMA_THERE),
+mProperty_mLexiqueComponentName (),
+mProperty_mIsTemplate (),
+mProperty_mTemplateDelimitorListAST (),
+mProperty_mTemplateReplacementListAST (),
+mProperty_mLexicalAttributeListAST (),
+mProperty_mLexicalStyleListAST (),
+mProperty_mTerminalDeclarationListAST (),
+mProperty_mLexicalMessageDeclarationListAST (),
+mProperty_mLexicalListDeclarationListAST (),
+mProperty_mLexicalRuleListAST (),
+mProperty_mIndexingListAST () {
+  mProperty_isPredefined = in_isPredefined ;
+  mProperty_mLexiqueComponentName = in_mLexiqueComponentName ;
+  mProperty_mIsTemplate = in_mIsTemplate ;
+  mProperty_mTemplateDelimitorListAST = in_mTemplateDelimitorListAST ;
+  mProperty_mTemplateReplacementListAST = in_mTemplateReplacementListAST ;
+  mProperty_mLexicalAttributeListAST = in_mLexicalAttributeListAST ;
+  mProperty_mLexicalStyleListAST = in_mLexicalStyleListAST ;
+  mProperty_mTerminalDeclarationListAST = in_mTerminalDeclarationListAST ;
+  mProperty_mLexicalMessageDeclarationListAST = in_mLexicalMessageDeclarationListAST ;
+  mProperty_mLexicalListDeclarationListAST = in_mLexicalListDeclarationListAST ;
+  mProperty_mLexicalRuleListAST = in_mLexicalRuleListAST ;
+  mProperty_mIndexingListAST = in_mIndexingListAST ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * cPtr_lexiqueComponentAST::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_lexiqueComponentAST ;
+}
+
+void cPtr_lexiqueComponentAST::description (String & ioString,
+                                            const int32_t inIndentation) const {
+  ioString.appendCString ("[@lexiqueComponentAST:") ;
+  mProperty_isPredefined.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mLexiqueComponentName.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mIsTemplate.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mTemplateDelimitorListAST.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mTemplateReplacementListAST.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mLexicalAttributeListAST.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mLexicalStyleListAST.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mTerminalDeclarationListAST.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mLexicalMessageDeclarationListAST.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mLexicalListDeclarationListAST.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mLexicalRuleListAST.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mIndexingListAST.description (ioString, inIndentation+1) ;
+  ioString.appendCString ("]") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+acPtr_class * cPtr_lexiqueComponentAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  acPtr_class * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_lexiqueComponentAST (mProperty_isPredefined, mProperty_mLexiqueComponentName, mProperty_mIsTemplate, mProperty_mTemplateDelimitorListAST, mProperty_mTemplateReplacementListAST, mProperty_mLexicalAttributeListAST, mProperty_mLexicalStyleListAST, mProperty_mTerminalDeclarationListAST, mProperty_mLexicalMessageDeclarationListAST, mProperty_mLexicalListDeclarationListAST, mProperty_mLexicalRuleListAST, mProperty_mIndexingListAST, inCompiler COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_lexiqueComponentAST::printNonNullClassInstanceProperties (void) const {
+    cPtr_semanticDeclarationAST::printNonNullClassInstanceProperties () ;
+    mProperty_mLexiqueComponentName.printNonNullClassInstanceProperties ("mLexiqueComponentName") ;
+    mProperty_mIsTemplate.printNonNullClassInstanceProperties ("mIsTemplate") ;
+    mProperty_mTemplateDelimitorListAST.printNonNullClassInstanceProperties ("mTemplateDelimitorListAST") ;
+    mProperty_mTemplateReplacementListAST.printNonNullClassInstanceProperties ("mTemplateReplacementListAST") ;
+    mProperty_mLexicalAttributeListAST.printNonNullClassInstanceProperties ("mLexicalAttributeListAST") ;
+    mProperty_mLexicalStyleListAST.printNonNullClassInstanceProperties ("mLexicalStyleListAST") ;
+    mProperty_mTerminalDeclarationListAST.printNonNullClassInstanceProperties ("mTerminalDeclarationListAST") ;
+    mProperty_mLexicalMessageDeclarationListAST.printNonNullClassInstanceProperties ("mLexicalMessageDeclarationListAST") ;
+    mProperty_mLexicalListDeclarationListAST.printNonNullClassInstanceProperties ("mLexicalListDeclarationListAST") ;
+    mProperty_mLexicalRuleListAST.printNonNullClassInstanceProperties ("mLexicalRuleListAST") ;
+    mProperty_mIndexingListAST.printNonNullClassInstanceProperties ("mIndexingListAST") ;
+  }
+#endif
+
+//--------------------------------------------------------------------------------------------------
+//     @lexiqueComponentAST generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lexiqueComponentAST ("lexiqueComponentAST",
+                                                                        & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_lexiqueComponentAST::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_lexiqueComponentAST ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_lexiqueComponentAST::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_lexiqueComponentAST (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lexiqueComponentAST GGS_lexiqueComponentAST::extractObject (const GGS_object & inObject,
+                                                                Compiler * inCompiler
+                                                                COMMA_LOCATION_ARGS) {
+  GGS_lexiqueComponentAST result ;
+  const GGS_lexiqueComponentAST * p = (const GGS_lexiqueComponentAST *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_lexiqueComponentAST *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("lexiqueComponentAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;

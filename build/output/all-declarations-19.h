@@ -754,3 +754,131 @@ void extensionSetter_addCFile (class GGS_XcodeProjectDescriptor & ioObject,
                                class Compiler * inCompiler
                                COMMA_LOCATION_ARGS) ;
 
+//--------------------------------------------------------------------------------------------------
+//
+//Extension setter '@XcodeProjectDescriptor addHeaderFile'
+//
+//--------------------------------------------------------------------------------------------------
+
+void extensionSetter_addHeaderFile (class GGS_XcodeProjectDescriptor & ioObject,
+                                    const class GGS_string constin_inFileName,
+                                    class GGS_string & out_outFileRef,
+                                    class Compiler * inCompiler
+                                    COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Extension setter '@XcodeProjectDescriptor addBuildFile'
+//
+//--------------------------------------------------------------------------------------------------
+
+void extensionSetter_addBuildFile (class GGS_XcodeProjectDescriptor & ioObject,
+                                   const class GGS_string constin_inFileReference,
+                                   const class GGS_string constin_inFileName,
+                                   class GGS_string & out_outBuildRef,
+                                   class Compiler * inCompiler
+                                   COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Extension setter '@XcodeProjectDescriptor addToolTarget'
+//
+//--------------------------------------------------------------------------------------------------
+
+void extensionSetter_addToolTarget (class GGS_XcodeProjectDescriptor & ioObject,
+                                    const class GGS_string constin_inTargetName,
+                                    const class GGS_string constin_inProductFileName,
+                                    const class GGS_stringlist constin_inSourceList,
+                                    const class GGS_stringlist constin_inToolFrameworksFileRefList,
+                                    const class GGS_stringlist constin_inBuildConfigurationSettingList,
+                                    class GGS_string & out_outTargetRef,
+                                    class GGS_string & out_outProductFileRef,
+                                    class Compiler * inCompiler
+                                    COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Extension setter '@XcodeProjectDescriptor addAppTarget'
+//
+//--------------------------------------------------------------------------------------------------
+
+void extensionSetter_addAppTarget (class GGS_XcodeProjectDescriptor & ioObject,
+                                   const class GGS_string constin_inTargetName,
+                                   const class GGS_string constin_inProductFileName,
+                                   const class GGS_stringlist constin_inSourceList,
+                                   const class GGS_stringlist constin_inFrameworksFileRefList,
+                                   const class GGS_stringlist constin_inResourceFileBuildRefs,
+                                   const class GGS_stringlist constin_inBuildConfigurationSettingList,
+                                   const class GGS_stringlist constin_inDependentTargetRefList,
+                                   const class GGS__32_stringlist constin_inProductCopyList,
+                                   class GGS_string & out_outProductFileRef,
+                                   class Compiler * inCompiler
+                                   COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Extension setter '@XcodeProjectDescriptor addGroup'
+//
+//--------------------------------------------------------------------------------------------------
+
+void extensionSetter_addGroup (class GGS_XcodeProjectDescriptor & ioObject,
+                               const class GGS_string constin_inGroupName,
+                               const class GGS_string constin_inGroupPath,
+                               const class GGS_stringlist constin_inChildrenRefs,
+                               class GGS_string & out_outGroupRef,
+                               class Compiler * inCompiler
+                               COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Extension setter '@XcodeProjectDescriptor addGroupWithFiles'
+//
+//--------------------------------------------------------------------------------------------------
+
+void extensionSetter_addGroupWithFiles (class GGS_XcodeProjectDescriptor & ioObject,
+                                        const class GGS_string constin_inGroupName,
+                                        const class GGS_string constin_inGroupPath,
+                                        const class GGS_stringset constin_inFileNames,
+                                        class GGS_stringlist & io_ioCFileBuildRefs,
+                                        class GGS_stringlist & io_ioCppFileBuildRefs,
+                                        class GGS_stringlist & io_ioSwiftFileBuildRefs,
+                                        class GGS_stringlist & io_ioFrameWorkFileBuildRefs,
+                                        class GGS_stringlist & io_ioResourceFileBuildRefs,
+                                        class GGS_string & out_outGroupRef,
+                                        class Compiler * inCompiler
+                                        COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Extension setter '@XcodeProjectDescriptor addICNS_file'
+//
+//--------------------------------------------------------------------------------------------------
+
+void extensionSetter_addICNS_5F_file (class GGS_XcodeProjectDescriptor & ioObject,
+                                      const class GGS_string constin_inFileName,
+                                      class GGS_string & out_outFileRef,
+                                      class Compiler * inCompiler
+                                      COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Extension setter '@XcodeProjectDescriptor placeGroupAsMainGroup'
+//
+//--------------------------------------------------------------------------------------------------
+
+void extensionSetter_placeGroupAsMainGroup (class GGS_XcodeProjectDescriptor & ioObject,
+                                            const class GGS_string constin_inGroupRef,
+                                            class Compiler * inCompiler
+                                            COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Extension setter '@XcodeProjectDescriptor addSettingsToDefaultConfiguration'
+//
+//--------------------------------------------------------------------------------------------------
+
+void extensionSetter_addSettingsToDefaultConfiguration (class GGS_XcodeProjectDescriptor & ioObject,
+                                                        const class GGS_stringlist constin_inSettingList,
+                                                        class Compiler * inCompiler
+                                                        COMMA_LOCATION_ARGS) ;
+

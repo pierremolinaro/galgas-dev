@@ -38,11 +38,11 @@ extension UTType {
     Settings {
       SettingsView ()
     }
-    WindowGroup (id: "AllocationDebug") {
-      AllocationDebugView ()
-      .navigationTitle ("Allocation Debug")
-      .frame (minWidth: 800, minHeight: 400)
-    }
+//    WindowGroup (id: "AllocationDebug") {
+//      AllocationDebugView ()
+//      .navigationTitle ("Allocation Debug")
+//      .frame (minWidth: 800, minHeight: 400)
+//    }
   //--- Undo / Redo commands
     .commands { UndoRedoCommands () }
   //--- Quit COMMAND
@@ -80,17 +80,17 @@ extension UTType {
   //--- Action Menu
     .commands { ActionMenuCommands () }
   //--- Debug Menu
-    .commands {
-      CommandMenu ("Debug") {
-        Button ("Show Allocation Debug") {
-          if !self.mAllocationWindowIsPresented {
-            self.mAllocationWindowIsPresented = true
-            self.openWindow (id: "AllocationDebug")
-          }
-        }
-        .keyboardShortcut (",", modifiers: [.command, .option])
-      }
-    }
+//    .commands {
+//      CommandMenu ("Debug") {
+//        Button ("Show Allocation Debug") {
+//          if !self.mAllocationWindowIsPresented {
+//            self.mAllocationWindowIsPresented = true
+//            self.openWindow (id: "AllocationDebug")
+//          }
+//        }
+//        .keyboardShortcut (",", modifiers: [.command, .option])
+//      }
+//    }
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

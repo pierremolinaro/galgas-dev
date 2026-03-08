@@ -62,6 +62,7 @@ struct SettingsView : View {
     case galgasScanner3_0
     case galgasScanner4_1
     case galgasTemplateScanner_2
+    case allocationDebugView
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -78,6 +79,7 @@ struct SettingsView : View {
         Text ("Source GALGAS 3").tag (SidebarItem.galgasScanner3_0)
         Text ("Source GALGAS 4").tag (SidebarItem.galgasScanner4_1)
         Text ("Template").tag (SidebarItem.galgasTemplateScanner_2)
+        Text ("Allocation Debug").tag (SidebarItem.allocationDebugView)
       }
       .toolbar (removing: .sidebarToggle)
     } detail: {
@@ -86,6 +88,7 @@ struct SettingsView : View {
         case .galgasScanner3_0 : SettingViewFor_galgasScanner3 ()
         case .galgasScanner4_1 : SettingViewFor_galgasScanner4 ()
         case .galgasTemplateScanner_2 : SettingViewFor_galgasTemplateScanner ()
+        case .allocationDebugView : AllocationDebugView ()
       }
     }
   }

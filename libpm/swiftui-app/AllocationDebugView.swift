@@ -3,14 +3,14 @@
 //--------------------------------------------------------------------------------------------------
 
 import SwiftUI
-import Combine
-import Synchronization
+//import Combine
+//import Synchronization
 
 //--------------------------------------------------------------------------------------------------
 
-let ENABLE_ALLOCATION_DEBUG = "allocationDebug:enabled"
-let ENABLE_ALLOCATION_VISIBLE_AT_LAUNCH = "allocationDebug:visibleAtLaunch"
-let DISPLAY_FILTER = "allocationDebug:statsDisplayFilter"
+fileprivate let ENABLE_ALLOCATION_DEBUG = "allocationDebug:enabled"
+fileprivate let ENABLE_ALLOCATION_VISIBLE_AT_LAUNCH = "allocationDebug:visibleAtLaunch"
+fileprivate let DISPLAY_FILTER = "allocationDebug:statsDisplayFilter"
 
 //--------------------------------------------------------------------------------------------------
 //    Public routines
@@ -163,7 +163,6 @@ final class AllocationState : ObservableObject {
 
 struct EBAllocationItemDisplay : Identifiable {
   let id = UUID ()
-
   let className : String
   let allCount : Int
   let liveCount : Int
@@ -178,7 +177,6 @@ struct AllocationDebugView : View {
 
   @AppStorage(ENABLE_ALLOCATION_DEBUG) private var mEnableAllocationDebug = true
   @AppStorage(DISPLAY_FILTER) private var mDisplayFilter = 0
-  @AppStorage(ENABLE_ALLOCATION_VISIBLE_AT_LAUNCH) private var mVisibleAtLaunch = true
   @ObservedObject var mAllocs = AllocationState.shared
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -187,12 +185,7 @@ struct AllocationDebugView : View {
     VStack {
       HStack {
         Toggle ("Enable Allocation Debug", isOn: self.$mEnableAllocationDebug)
-        Spacer ()
-        Text ("You should restart the application for this setting to take effect.").bold (true)
-      }.padding (8)
-      Divider ()
-      HStack {
-        Toggle ("Visible at Launch", isOn: self.$mVisibleAtLaunch)
+        Text ("You should restart the application for this setting to take effect.").italic().controlSize(.small)
         Spacer ()
         Text ("Total Allocated").bold (true)
         Text ("\(self.mAllocs.mTotalAllocated)").bold (true)

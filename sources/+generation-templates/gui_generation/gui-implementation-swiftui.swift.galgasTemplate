@@ -62,7 +62,8 @@ struct SettingsView : View {
 %for (lexiqueClassName lexiqueIndex * title 3*) in GUI_CONTEXT.mWithLexiqueList
   do %    case %!lexiqueClassName%_%![lexiqueIndex string]%\n%
 end
-%  }
+%    case allocationDebugView
+  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -77,15 +78,17 @@ end
 %for (lexiqueClassName lexiqueIndex * title 3*) in GUI_CONTEXT.mWithLexiqueList
   do %        Text ("%!title%").tag (SidebarItem.%!lexiqueClassName%_%![lexiqueIndex string]%)\n%
 end
-%      }
+%        Text ("Allocation Debug").tag (SidebarItem.allocationDebugView)
+      }
       .toolbar (removing: .sidebarToggle)
     } detail: {
       switch self.mSelection {
         case .commandLineOptions : OptionView ()
-%for (lexiqueClassName lexiqueIndex * title 3*) in GUI_CONTEXT.mWithLexiqueList
+%for (lexiqueClassName lexiqueIndex 5*) in GUI_CONTEXT.mWithLexiqueList
   do %        case .%!lexiqueClassName%_%![lexiqueIndex string]% : SettingViewFor_%!lexiqueClassName% ()\n%
 end
-%      }
+%        case .allocationDebugView : AllocationDebugView ()
+      }
     }
   }
 
