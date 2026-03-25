@@ -10,7 +10,7 @@ struct CompileLogView : View {
 
   private let mAttributedString : AttributedString
   private let mAutoScroll : Bool
-  @State private var mScrollToBottomID = UUID ()
+  @State private var mScrollToBottomID = UUID ()  // unique pour chaque mise à jour
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -38,7 +38,7 @@ struct CompileLogView : View {
         }
       }
       .onChange (of: self.mAttributedString) {
-        if mAutoScroll {
+        if self.mAutoScroll {
           DispatchQueue.main.async {
             proxy.scrollTo (self.mScrollToBottomID, anchor: .bottom)
           }
