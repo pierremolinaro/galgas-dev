@@ -57,7 +57,7 @@ final class @getterCallExpressionAST : @semanticExpressionAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method enterExpressionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
+  override method enterExpressionInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
     [self.mReceiver enterExpressionInSemanticContext !?ioTypeMap]
     [self.mActualArgumentList enterInSemanticContext !?ioTypeMap]
   }

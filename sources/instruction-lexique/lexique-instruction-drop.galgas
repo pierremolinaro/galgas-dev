@@ -32,7 +32,7 @@ syntax extension galgas3LexiqueComponentSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
+  rule <lexical_instruction> (?!@lexicalInstructionListAST ioInstructionList) {
     $drop$
     $\$terminal\$$ ?let terminalName
     ioInstructionList += !@lexicalDropInstructionAST {!terminalName}
@@ -48,7 +48,7 @@ syntax extension galgas4LexiqueComponentSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
+  rule <lexical_instruction> (?!@lexicalInstructionListAST ioInstructionList) {
     $drop$
     $\$terminal\$$ ?let terminalName
     ioInstructionList += !@lexicalDropInstructionAST {!terminalName}
@@ -62,9 +62,9 @@ syntax extension galgas4LexiqueComponentSyntax {
 //! CHECK LEXICAL INSTRUCTION
 //--------------------------------------------------------------------------------------------------
 
-override method @lexicalDropInstructionAST checkLexicalInstruction
-  ?!@lexiqueAnalysisContext  ioLexiqueAnalysisContext
-  ?!@lexicalTagMap unused ioTagMap {
+override method @lexicalDropInstructionAST checkLexicalInstruction (
+                         ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext,
+                         ?!@lexicalTagMap unused ioTagMap) {
   [ioLexiqueAnalysisContext.mTerminalMap searchKey !self.mTerminalName ?*]
 }
 

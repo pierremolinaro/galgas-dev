@@ -3,8 +3,6 @@
 //--------------------------------------------------------------------------------------------------
 
 import SwiftUI
-//import Combine
-//import Synchronization
 
 //--------------------------------------------------------------------------------------------------
 
@@ -38,13 +36,15 @@ fileprivate let DISPLAY_FILTER = "allocationDebug:statsDisplayFilter"
 
 //--------------------------------------------------------------------------------------------------
 
-final class AllocationState : ObservableObject {
-  @AppStorage(ENABLE_ALLOCATION_DEBUG) private var mEnableAllocationAtLaunch : Bool = false
-  @AppStorage(DISPLAY_FILTER) private var mDisplayFilter = 0
+@Observable final class AllocationState {
+// § @AppStorage(ENABLE_ALLOCATION_DEBUG) private var mEnableAllocationAtLaunch : Bool = false
+//  @AppStorage(DISPLAY_FILTER) private var mDisplayFilter = 0
+  private var mEnableAllocationAtLaunch : Bool = false
+  private var mDisplayFilter = 0
 
-  @Published var mCurrentlyAllocated : Int = 0
-  @Published var mTotalAllocated : Int = 0
-  @Published var mAllocationArray = [EBAllocationItemDisplay] ()
+  var mCurrentlyAllocated : Int = 0
+  var mTotalAllocated : Int = 0
+  var mAllocationArray = [EBAllocationItemDisplay] ()
 
   private var mPendingAllocatedObjectClasses = [AnyObject.Type] ([])
   private var mPendingDeallocatedObjectClasses = [AnyObject.Type] ([])
@@ -177,7 +177,7 @@ struct AllocationDebugView : View {
 
   @AppStorage(ENABLE_ALLOCATION_DEBUG) private var mEnableAllocationDebug = true
   @AppStorage(DISPLAY_FILTER) private var mDisplayFilter = 0
-  @ObservedObject var mAllocs = AllocationState.shared
+  @State var mAllocs = AllocationState.shared
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

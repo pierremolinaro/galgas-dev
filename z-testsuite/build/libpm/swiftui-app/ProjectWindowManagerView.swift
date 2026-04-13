@@ -29,7 +29,7 @@ struct ProjectWindowManagerView : View {
     ProjectDocumentView (
       document: self.$mDocument,
       projectFileURL: self.mProjectFileURL,
-      issuesBinding: self.$mIssues
+      issuesBinding: self.mIssues
     )
     .focusedSceneValue (
       \.activeDocument,

@@ -23,7 +23,7 @@ syntax extension galgas3DeclarationsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
+  rule <declaration_ggs3> (?!@galgasDeclarationAST ioDeclarations) {
     $override$
     $abstract$
     $setter$
@@ -46,7 +46,7 @@ syntax extension galgas3DeclarationsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <method_declaration_ggs3> ?let @lstring inTypeName ?!@galgasDeclarationAST ioDeclarations {
+  rule <method_declaration_ggs3> (?let @lstring inTypeName, ?!@galgasDeclarationAST ioDeclarations) {
     $override$
     $abstract$
     $setter$
@@ -71,50 +71,6 @@ syntax extension galgas3DeclarationsSyntax {
 }
 
 //--------------------------------------------------------------------------------------------------
-
-//syntax extension galgas4DeclarationsSyntax {
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
-//    $override$
-//    $abstract$
-//    $mutating$
-//    $proc$
-//    $@type$ ?let @lstring className indexing typeReferenceOverrideAbstractExtensionSetter
-//    $.$
-//    $identifier$ ?let @lstring setterName indexing overrideabstractExtensionSetterDefinition
-//    <formal_parameter_list> !?ioDeclarations ?let @formalParameterListAST formalParameterList
-//    ioDeclarations.mDeclarationList += !@overridingAbstractExtensionSetterAST {
-//      !isPredefined: false // Is not predefined
-//      !className
-//      !setterName
-//      !formalParameterList
-//    }
-//  }
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//  rule <method_declaration> ?let @lstring inClassName ?!@galgasDeclarationAST ioDeclarations {
-//    $override$
-//    $abstract$
-//    $mutating$
-//    $proc$
-//    $identifier$ ?let @lstring setterName indexing overrideabstractExtensionSetterDefinition
-//    <formal_parameter_list> !?ioDeclarations ?let @formalParameterListAST formalParameterList
-//    ioDeclarations.mDeclarationList += !@overridingAbstractExtensionSetterAST {
-//      !isPredefined: false // Is not predefined
-//      !inClassName
-//      !setterName
-//      !formalParameterList
-//    }
-//  }
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//}
-
-//--------------------------------------------------------------------------------------------------
 //   AST
 //--------------------------------------------------------------------------------------------------
 
@@ -131,42 +87,39 @@ final class @overridingAbstractExtensionSetterAST : @semanticDeclarationAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method enterDeclarationInGraph
-    ?!@semanticTypePrecedenceGraph unused ioSemanticTypePrecedenceGraph
-    ?!@equatableExtensionMap unused ioEquatableExtensionMap
-    ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext
-    ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext
-    ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
-    ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
-    ?!@semanticDeclarationListAST ioExtensionOverrideDefinitionList
-  {
+  override method enterDeclarationInGraph (
+    ?!@semanticTypePrecedenceGraph unused ioSemanticTypePrecedenceGraph,
+    ?!@equatableExtensionMap unused ioEquatableExtensionMap,
+    ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext,
+    ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext,
+    ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext,
+    ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext,
+    ?!@semanticDeclarationListAST ioExtensionOverrideDefinitionList) {
     ioExtensionOverrideDefinitionList += !self
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method enterDeclarationInSemanticContext
-    ?!@equatableExtensionMap unused ioEquatableExtensionMap
-    ?let @extensionInitializerForBuildingContext unused inExtensionInitializerMapForBuildingContext
-    ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext
-    ?let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext
-    ?let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext
-    ?!@unifiedTypeMap unused ioTypeMap
-    ?!@semanticContext unused ioSemanticContext
-  {
+  override method enterDeclarationInSemanticContext (
+    ?!@equatableExtensionMap unused ioEquatableExtensionMap,
+    ?let @extensionInitializerForBuildingContext unused inExtensionInitializerMapForBuildingContext,
+    ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext,
+    ?let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext,
+    ?let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext,
+    ?!@unifiedTypeMap unused ioTypeMap,
+    ?!@semanticContext unused ioSemanticContext) {
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method semanticAnalysis
-    ?!@lstringlist unused ioUsefulnessRootEntities
-    ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
-    ?let @string unused inProductDirectory
-    ?let @semanticContext inSemanticContext
-                                  ?!@unifiedTypeMap ioTypeMap
-    ?let @predefinedTypes unused inPredefinedTypes
-    ?!@semanticDeclarationListForGeneration unused ioSemanticDeclarationListForGeneration
-  {
+  override method semanticAnalysis (
+    ?!@lstringlist unused ioUsefulnessRootEntities,
+    ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph,
+    ?let @string unused inProductDirectory,
+    ?let @semanticContext inSemanticContext,
+                                  ?!@unifiedTypeMap ioTypeMap,
+    ?let @predefinedTypes unused inPredefinedTypes,
+    ?!@semanticDeclarationListForGeneration unused ioSemanticDeclarationListForGeneration) {
   //--- Self type
     let @unifiedTypeMapEntry selfType = [ioTypeMap typeMapEntryForLKey !self.mTypeName]
   //--- Check type is an abstract class
@@ -215,22 +168,19 @@ final class @overridingAbstractExtensionSetterAST : @semanticDeclarationAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method buildExtensionListMaps
-    ?!@genericExtensionMethodListMap unused ioAbstractExtensionSetterListMap
-    ?!@genericExtensionMethodListMap unused ioExtensionSetterListMap
-    ?!@genericExtensionMethodListMap unused ioOverridingExtensionSetterListMap
-    ?!@genericExtensionMethodListMap ioOverridingAbstractExtensionSetterListMap
-    ?!@genericExtensionMethodListMap unused ioAbstractExtensionMethodListMapAST
-    ?!@genericExtensionMethodListMap unused ioExtensionMethodListMap
-    ?!@genericExtensionMethodListMap unused ioOverridingExtensionMethodListMap
-    ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionMethodListMap
-    ?!@genericExtensionMethodListMap unused ioAbstractExtensionGetterListMap
-    ?!@genericExtensionMethodListMap unused ioExtensionGetterListMap
-    ?!@genericExtensionMethodListMap unused ioOverridingExtensionGetterListMap
-    ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionGetterListMap {
-//    ioOverridingAbstractExtensionSetterListMap +=
-//      !self.mTypeName.string
-//      !self.mOverridingExtensionSetterName
+  override method buildExtensionListMaps (
+    ?!@genericExtensionMethodListMap unused ioAbstractExtensionSetterListMap,
+    ?!@genericExtensionMethodListMap unused ioExtensionSetterListMap,
+    ?!@genericExtensionMethodListMap unused ioOverridingExtensionSetterListMap,
+    ?!@genericExtensionMethodListMap ioOverridingAbstractExtensionSetterListMap,
+    ?!@genericExtensionMethodListMap unused ioAbstractExtensionMethodListMapAST,
+    ?!@genericExtensionMethodListMap unused ioExtensionMethodListMap,
+    ?!@genericExtensionMethodListMap unused ioOverridingExtensionMethodListMap,
+    ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionMethodListMap,
+    ?!@genericExtensionMethodListMap unused ioAbstractExtensionGetterListMap,
+    ?!@genericExtensionMethodListMap unused ioExtensionGetterListMap,
+    ?!@genericExtensionMethodListMap unused ioOverridingExtensionGetterListMap,
+    ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionGetterListMap) {
     [!? ioOverridingAbstractExtensionSetterListMap insertKey
       !self.mTypeName.string
       !self.mOverridingExtensionSetterName

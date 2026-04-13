@@ -23,8 +23,8 @@ syntax extension galgas3InstructionsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <semantic_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
-                                   !@semanticInstructionAST outInstruction {
+  rule <semantic_instruction_ggs3> (?!@galgasDeclarationAST ioDeclarations,
+                                    !@semanticInstructionAST outInstruction) {
     $loop$
     let instructionLocation = @location.here
     <semantic_instruction_list_ggs3> !?ioDeclarations ?let @semanticInstructionListAST firstInstructions
@@ -60,8 +60,8 @@ syntax extension galgas4InstructionsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <semantic_instruction> ?!@galgasDeclarationAST ioDeclarations
-                              !@semanticInstructionAST outInstruction {
+  rule <semantic_instruction> (?!@galgasDeclarationAST ioDeclarations,
+                               !@semanticInstructionAST outInstruction) {
     $loop$
     let instructionLocation = @location.here
     <semantic_instruction_list> !?ioDeclarations ?let @semanticInstructionListAST firstInstructions
@@ -106,7 +106,7 @@ final class @loopInstructionWithoutVariantAST : @semanticInstructionAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method enterInstructionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
+  override method enterInstructionInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
     [self.mLoopExpression enterExpressionListInSemanticContext !?ioTypeMap]
     [self.mFirstInstructions enterInstructionListInSemanticContext !?ioTypeMap]
     [self.mSecondInstructions enterInstructionListInSemanticContext !?ioTypeMap]
@@ -114,12 +114,13 @@ final class @loopInstructionWithoutVariantAST : @semanticInstructionAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method analyzeSemanticInstruction ?let @lstring inUsefulnessCallerEntityName
-                            ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-                            ?let @analysisContext inAnalysisContext
-                            ?!@unifiedTypeMap ioTypeMap
-                            ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
-                            ?!@localVarManager ioVariableMap {
+  override method analyzeSemanticInstruction  (
+                        ?let @lstring inUsefulnessCallerEntityName,
+                        ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
+                        ?let @analysisContext inAnalysisContext,
+                        ?!@unifiedTypeMap ioTypeMap,
+                        ?!@semanticInstructionListForGeneration ioInstructionListForGeneration,
+                        ?!@localVarManager ioVariableMap) {
   //--- Loop expression
    [self.mLoopExpression analyzeSemanticExpressionList
      !inUsefulnessCallerEntityName
@@ -186,11 +187,11 @@ final class @loopInstructionWithoutVariantForGeneration : @semanticInstructionFo
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method generateInstruction ?!@stringset ioInclusionSet
-                                      ?!@uint ioTemporaryVariableIndex
-                                      ?!@stringset ioUnusedVariableCppNameSet
-                                      ?let @bool inGenerateSyntaxDirectedTranslationString
-                                      ?!@string ioGeneratedCode {
+  override method generateInstruction (?!@stringset ioInclusionSet,
+                                       ?!@uint ioTemporaryVariableIndex,
+                                       ?!@stringset ioUnusedVariableCppNameSet,
+                                       ?let @bool inGenerateSyntaxDirectedTranslationString,
+                                       ?!@string ioGeneratedCode) {
     let loopVar = "loop_" + self.mInstructionLocation.startLocationIndex
     ioGeneratedCode += "bool " + loopVar + " = true ;\n"
     ioGeneratedCode += "while (" + loopVar + ") {\n"

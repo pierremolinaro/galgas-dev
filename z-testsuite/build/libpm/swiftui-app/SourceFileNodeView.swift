@@ -11,7 +11,7 @@ struct SourceFileNodeView : View {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  @ObservedObject var mNode : SourceFileNode
+  @State var mNode : SourceFileNode
   @State private var mTemporaryNameForRenaming = ""
 
   @State private var mShowFileOperationError = false

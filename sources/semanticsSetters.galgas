@@ -22,14 +22,12 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //--------------------------------------------------------------------------------------------------
 
-proc enterModifierWithInputArgument
-  ?!@setterMap ioSetterMap
-  ?!@unifiedTypeMap ioUnifiedTypeMap
-  ?argTypeName:let @string inInputArgumentTypeName
-  ?argName:let @string inInputArgumentName
-  ?setterName:let @string inSetterName
-  ?compilerArg:let @bool inHasCompilerArgument
-{
+proc enterModifierWithInputArgument (?!@setterMap ioSetterMap,
+  ?!@unifiedTypeMap ioUnifiedTypeMap,
+  ?argTypeName:let @string inInputArgumentTypeName,
+  ?argName:let @string inInputArgumentName,
+  ?setterName:let @string inSetterName,
+  ?compilerArg:let @bool inHasCompilerArgument) {
   [!?ioUnifiedTypeMap makeEntryFromString !inInputArgumentTypeName ?let argumentTypeIndex]
   var @formalParameterSignature argList = @()
   argList += !"".nowhere !argumentTypeIndex !.argumentConstantIn !inInputArgumentName
@@ -45,16 +43,14 @@ proc enterModifierWithInputArgument
 
 //--------------------------------------------------------------------------------------------------
 
-proc enterModifierWithOutputAndInputArguments
-  ?!@setterMap ioSetterMap
-  ?!@unifiedTypeMap ioUnifiedTypeMap
-  ?outputArgTypeName:let @string inOutputArgumentTypeName
-  ?outputArgName:let @string inOutputArgumentName
-  ?inputArgTypeName:let @string inInputArgumentTypeName
-  ?inputArgName:let @string inInputArgumentName
-  ?setterName:let @string inSetterName
-  ?compilerArg:let @bool inHasCompilerArgument
-{
+proc enterModifierWithOutputAndInputArguments (?!@setterMap ioSetterMap,
+  ?!@unifiedTypeMap ioUnifiedTypeMap,
+  ?outputArgTypeName:let @string inOutputArgumentTypeName,
+  ?outputArgName:let @string inOutputArgumentName,
+  ?inputArgTypeName:let @string inInputArgumentTypeName,
+  ?inputArgName:let @string inInputArgumentName,
+  ?setterName:let @string inSetterName,
+  ?compilerArg:let @bool inHasCompilerArgument) {
   [!?ioUnifiedTypeMap makeEntryFromString !inOutputArgumentTypeName ?let outputArgumentTypeIndex]
   [!?ioUnifiedTypeMap makeEntryFromString !inInputArgumentTypeName ?let inputArgumentTypeIndex]
   var @formalParameterSignature argList = @()
@@ -72,16 +68,14 @@ proc enterModifierWithOutputAndInputArguments
 
 //--------------------------------------------------------------------------------------------------
 
-proc enterModifierWith2InputArguments
-  ?!@setterMap ioSetterMap
-  ?!@unifiedTypeMap ioUnifiedTypeMap
-  ?arg1TypeName:let @string inInputArgument1TypeName
-  ?arg1Name:let @string inInputArgument1Name
-  ?arg2TypeName:let @string inInputArgument2TypeName
-  ?arg2Name:let @string inInputArgument2Name
-  ?setterName:let @string inSetterName
-  ?compilerArg:let @bool inHasCompilerArgument
-{
+proc enterModifierWith2InputArguments (?!@setterMap ioSetterMap,
+  ?!@unifiedTypeMap ioUnifiedTypeMap,
+  ?arg1TypeName:let @string inInputArgument1TypeName,
+  ?arg1Name:let @string inInputArgument1Name,
+  ?arg2TypeName:let @string inInputArgument2TypeName,
+  ?arg2Name:let @string inInputArgument2Name,
+  ?setterName:let @string inSetterName,
+  ?compilerArg:let @bool inHasCompilerArgument) {
   var @formalParameterSignature argList = @()
   [!?ioUnifiedTypeMap makeEntryFromString !inInputArgument1TypeName ?@unifiedTypeMapEntry argumentTypeIndex]
   argList += !"".nowhere !argumentTypeIndex !.argumentConstantIn !inInputArgument1Name
@@ -99,11 +93,9 @@ proc enterModifierWith2InputArguments
 
 //--------------------------------------------------------------------------------------------------
 
-proc enterModifierWithoutArgument
-  ?!@setterMap ioSetterMap
-  ?let @string inSetterName
-  ?compilerArg:let @bool inHasCompilerArgument
-{
+proc enterModifierWithoutArgument (?!@setterMap ioSetterMap,
+                                   ?let @string inSetterName,
+                                   ?compilerArg:let @bool inHasCompilerArgument) {
   [!?ioSetterMap insertOrReplace
     !@lstring {!inSetterName !@location.here}
     !@methodKind. definedAsMember

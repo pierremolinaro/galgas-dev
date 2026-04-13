@@ -33,7 +33,7 @@ syntax extension galgas3LexiqueComponentSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <lexical_send_instruction> !@lexicalInstructionAST outInstruction {
+  rule <lexical_send_instruction> (!@lexicalInstructionAST outInstruction) {
     var @lexicalSendSearchListAST lexicalSendSearchList = @()
     $search$
     repeat
@@ -70,7 +70,7 @@ syntax extension galgas4LexiqueComponentSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <lexical_send_instruction> !@lexicalInstructionAST outInstruction {
+  rule <lexical_send_instruction> (!@lexicalInstructionAST outInstruction) {
     var @lexicalSendSearchListAST lexicalSendSearchList = @()
     $%searchString$
     repeat
@@ -105,9 +105,9 @@ syntax extension galgas4LexiqueComponentSyntax {
 //! CONTEXT
 //--------------------------------------------------------------------------------------------------
 
-override method @lexicalStructuredSendInstructionAST checkLexicalInstruction
-  ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
-  ?!@lexicalTagMap unused ioTagMap {
+override method @lexicalStructuredSendInstructionAST checkLexicalInstruction (
+                         ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext,
+                         ?!@lexicalTagMap unused ioTagMap) {
   for (mAttributeName mSearchListName) in self.mLexicalSendSearchList do
     [!?ioLexiqueAnalysisContext.mLexicalTokenListMap setMShouldBeGeneratedForKey !true !mSearchListName.string]
     [ioLexiqueAnalysisContext.mLexicalAttributeMap searchKey !mAttributeName ?*]

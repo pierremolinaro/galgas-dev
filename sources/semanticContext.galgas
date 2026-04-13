@@ -50,11 +50,11 @@ func %once syntaxDirectedTranslationResultVarName ->@string outName {
 
 //--------------------------------------------------------------------------------------------------
 
-abstract method @semanticInstructionAST enterInstructionInSemanticContext ?!@unifiedTypeMap ioTypeMap
+abstract method @semanticInstructionAST enterInstructionInSemanticContext (?!@unifiedTypeMap ioTypeMap)
 
 //--------------------------------------------------------------------------------------------------
 
-abstract method @semanticExpressionAST enterExpressionInSemanticContext ?!@unifiedTypeMap ioTypeMap
+abstract method @semanticExpressionAST enterExpressionInSemanticContext (?!@unifiedTypeMap ioTypeMap)
 
 //--------------------------------------------------------------------------------------------------
 

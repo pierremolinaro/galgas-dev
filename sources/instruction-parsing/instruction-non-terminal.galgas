@@ -210,13 +210,11 @@ override getter @nonterminalInstructionForGeneration compareInstructionSyntaxSig
 //! CODE GENERATION
 //--------------------------------------------------------------------------------------------------
 
-override method @nonterminalInstructionForGeneration generateInstruction
-  ?!@stringset ioInclusionSet
-  ?!@uint ioTemporaryVariableIndex
-  ?!@stringset ioUnusedVariableCppNameSet
-  ?let @bool inGenerateSyntaxDirectedTranslationString
-  ?!@string ioGeneratedCode
-{
+override method @nonterminalInstructionForGeneration generateInstruction (?!@stringset ioInclusionSet,
+                            ?!@uint ioTemporaryVariableIndex,
+                            ?!@stringset ioUnusedVariableCppNameSet,
+                            ?let @bool inGenerateSyntaxDirectedTranslationString,
+                            ?!@string ioGeneratedCode) {
 //--- Parameters
   var parameterCppNameList = @stringlist ()
   var jokerParametersToReleaseList = @stringlist ()

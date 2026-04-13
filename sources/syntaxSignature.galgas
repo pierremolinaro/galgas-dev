@@ -26,16 +26,16 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-method @semanticInstructionForGeneration appendSyntaxSignature // Capture all semantic instructions
-  ?let @string unused inPosfix
-  ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration {
+method @semanticInstructionForGeneration appendSyntaxSignature ( // Capture all semantic instructions
+  ?let @string unused inPosfix,
+  ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-func syntaxSignatureOfInstructionList
-  ?let @string inPosfix
-  ?let @semanticInstructionListForGeneration inInstructionList
+func syntaxSignatureOfInstructionList (
+  ?let @string inPosfix,
+  ?let @semanticInstructionListForGeneration inInstructionList)
   -> @semanticInstructionListForGeneration
 {
   result = @()
@@ -51,7 +51,7 @@ func syntaxSignatureOfInstructionList
 //--------------------------------------------------------------------------------------------------
 
 getter @semanticInstructionForGeneration compareInstructionSyntaxSignature
-  ?let @semanticInstructionForGeneration unused inTestedInstruction
+  (?let @semanticInstructionForGeneration unused inTestedInstruction)
   ->@bool
 {
   result = true
@@ -59,17 +59,17 @@ getter @semanticInstructionForGeneration compareInstructionSyntaxSignature
 
 //--------------------------------------------------------------------------------------------------
 
-func compareSyntaxSignature
-  ?let @semanticInstructionListForGeneration inReferenceSignature
-  ?let @semanticInstructionListForGeneration inTestedSignature
-  ?let @location inErrorLocation
-  ->@bool outOk
+func compareSyntaxSignature (
+  ?let @semanticInstructionListForGeneration inReferenceSignature,
+  ?let @semanticInstructionListForGeneration inTestedSignature,
+  ?let @location inErrorLocation)
+  ->@bool
 {
-  outOk = true
-  for (ref_mInstruction) in inReferenceSignature, (test_mInstruction) in inTestedSignature while outOk do
-     outOk = [ref_mInstruction compareInstructionSyntaxSignature !test_mInstruction]
+  result = true
+  for (ref_mInstruction) in inReferenceSignature, (test_mInstruction) in inTestedSignature while result do
+     result = [ref_mInstruction compareInstructionSyntaxSignature !test_mInstruction]
   end
-  if outOk & (inReferenceSignature.count < inTestedSignature.count) then
+  if result & (inReferenceSignature.count < inTestedSignature.count) then
     let @semanticInstructionForGeneration instruction = [inTestedSignature mInstructionAtIndex !inReferenceSignature.count]
     if let si = instruction as @syntaxInstructionForGeneration then
       error si.mInstructionLocation
@@ -77,13 +77,11 @@ func compareSyntaxSignature
     else
       error inErrorLocation : "internal error"
     end
-  elsif outOk & (inReferenceSignature.count > inTestedSignature.count) then
+  elsif result & (inReferenceSignature.count > inTestedSignature.count) then
     error inErrorLocation
     :"syntax signature error, missing instruction; this branch has less syntax instructions than reference branch"
     let @semanticInstructionForGeneration instruction = [inReferenceSignature mInstructionAtIndex !inTestedSignature.count]
     if let si = instruction as @syntaxInstructionForGeneration then
-//    cast instruction
-//    case >= @syntaxInstructionForGeneration si :
       error si.mInstructionLocation
       :"this is the syntax instruction in reference branch that corresponds to the first missing instruction"
     else

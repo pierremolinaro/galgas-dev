@@ -37,10 +37,10 @@ struct @syntaxExtensions {
 
   //·····························································································
 
-  setter insertKey  ?let @string inKey
-                    ?let @lstring inSyntaxComponentName
-                    ?let @nonterminalDeclarationListAST inNonterminalDeclarationList
-                    ?let @syntaxRuleListAST inRuleList {
+  setter insertKey (?let @string inKey,
+                    ?let @lstring inSyntaxComponentName,
+                    ?let @nonterminalDeclarationListAST inNonterminalDeclarationList,
+                    ?let @syntaxRuleListAST inRuleList) {
     if [self.dictionary hasKey !inKey] then
       [self.dictionary searchKey !inKey ?var aList]
       [!?aList append !inSyntaxComponentName !inNonterminalDeclarationList !inRuleList]
@@ -52,7 +52,7 @@ struct @syntaxExtensions {
 
   //·····························································································
 
-  getter listForKey ?let @string inKey -> @galgas3SyntaxExtensionListAST {
+  getter listForKey (?let @string inKey) -> @galgas3SyntaxExtensionListAST {
     if [self.dictionary hasKey !inKey] then
       [self.dictionary searchKey !inKey ?result]
    else
@@ -429,9 +429,9 @@ struct @galgasDeclarationAST {
   
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  setter getOptionalTypeName !@lstring outOptionalTypeName
-                             ?forTypeNamed: @lstring inTypeName
-                             ?isPredefined: let @bool inPredefined {
+  setter getOptionalTypeName (!@lstring outOptionalTypeName,
+                              ?forTypeNamed: @lstring inTypeName,
+                              ?isPredefined: let @bool inPredefined) {
     outOptionalTypeName = makeOptionalTypeLName (!forTypeNamed: inTypeName)
     if not [self.implicitTypeDeclarationSet hasKey !outOptionalTypeName.string] then
       self.implicitTypeDeclarationSet ++= outOptionalTypeName.string

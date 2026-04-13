@@ -39,8 +39,8 @@ syntax extension galgas3InstructionsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <semantic_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
-                                   !@semanticInstructionAST outInstruction {
+  rule <semantic_instruction_ggs3> (?!@galgasDeclarationAST ioDeclarations,
+                                    !@semanticInstructionAST outInstruction) {
     $super$
     let instructionLocation = @location.here
     $.$
@@ -64,8 +64,8 @@ syntax extension galgas4InstructionsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <semantic_instruction> ?!@galgasDeclarationAST ioDeclarations
-                              !@semanticInstructionAST outInstruction {
+  rule <semantic_instruction> (?!@galgasDeclarationAST ioDeclarations,
+                               !@semanticInstructionAST outInstruction) {
     $super$
     $.$
     $init$
@@ -90,7 +90,7 @@ final class @superInitInstructionAST : @semanticInstructionAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method enterInstructionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
+  override method enterInstructionInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
     for expression in self.mActualParameterList do
       [expression.mExpression enterExpressionInSemanticContext !?ioTypeMap]
     end
@@ -98,12 +98,13 @@ final class @superInitInstructionAST : @semanticInstructionAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method analyzeSemanticInstruction ?let @lstring inUsefulnessCallerEntityName
-                          ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-                          ?let @analysisContext inAnalysisContext
-                          ?!@unifiedTypeMap ioTypeMap
-                          ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
-                          ?!@localVarManager ioVariableMap {
+  override method analyzeSemanticInstruction  (
+                        ?let @lstring inUsefulnessCallerEntityName,
+                        ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
+                        ?let @analysisContext inAnalysisContext,
+                        ?!@unifiedTypeMap ioTypeMap,
+                        ?!@semanticInstructionListForGeneration ioInstructionListForGeneration,
+                        ?!@localVarManager ioVariableMap) {
   //--- Check the call occurs in an class initializer
    if let selfAvailable = inAnalysisContext.selfAvailability.getAvailable,
         selfAvailable.selfMutability == .initializer,
@@ -186,11 +187,11 @@ final class @superInitInstructionForGeneration : @semanticInstructionForGenerati
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method generateInstruction ?!@stringset ioInclusionSet
-                                      ?!@uint ioTemporaryVariableIndex
-                                      ?!@stringset ioUnusedVariableCppNameSet
-                                      ?let @bool unused inGenerateSyntaxDirectedTranslationString
-                                      ?!@string ioGeneratedCode {
+  override method generateInstruction (?!@stringset ioInclusionSet,
+                                       ?!@uint ioTemporaryVariableIndex,
+                                       ?!@stringset ioUnusedVariableCppNameSet,
+                                       ?let @bool unused inGenerateSyntaxDirectedTranslationString,
+                                       ?!@string ioGeneratedCode) {
     var @stringlist getterArgumentCppNameList = @()
     for (mExpression) in self.mActualParameterList do
       [mExpression generateExpression

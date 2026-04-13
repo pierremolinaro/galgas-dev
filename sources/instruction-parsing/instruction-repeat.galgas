@@ -289,13 +289,11 @@ override getter @repeatInstructionForGeneration compareInstructionSyntaxSignatur
 //! CODE GENERATION
 //--------------------------------------------------------------------------------------------------
 
-override method @repeatInstructionForGeneration generateInstruction
-  ?!@stringset ioInclusionSet
-  ?!@uint ioTemporaryVariableIndex
-  ?!@stringset ioUnusedVariableCppNameSet
-  ?let @bool inGenerateSyntaxDirectedTranslationString
-  ?!@string ioGeneratedCode
-{
+override method @repeatInstructionForGeneration generateInstruction (?!@stringset ioInclusionSet,
+                            ?!@uint ioTemporaryVariableIndex,
+                            ?!@stringset ioUnusedVariableCppNameSet,
+                            ?let @bool inGenerateSyntaxDirectedTranslationString,
+                            ?!@string ioGeneratedCode) {
   let @string repeatFlagCppName = "repeatFlag_" + ioTemporaryVariableIndex.string
   ioTemporaryVariableIndex += 1
   ioGeneratedCode += "bool " + repeatFlagCppName + " = true ;\n"

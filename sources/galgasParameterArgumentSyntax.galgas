@@ -1,6 +1,6 @@
 //--------------------------------------------------------------------------------------------------
 //
-//  Copyright (C) 2014, ..., 2022 Pierre Molinaro.
+//  Copyright (C) 2014, ..., 2026 Pierre Molinaro.
 //
 //  MIT License
 //
@@ -35,7 +35,7 @@ syntax galgas3ParameterArgumentSyntax (galgasScanner3) {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <formal_parameter_list_ggs34> ?!@galgasDeclarationAST ioDeclarations
-                                    !@formalParameterListAST outFormalParameterList {
+                                     !@formalParameterListAST outFormalParameterList {
     outFormalParameterList = @()
     select // GGS3
       repeat

@@ -193,7 +193,7 @@ final class @initializerCallAST : @semanticExpressionAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method enterExpressionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
+  override method enterExpressionInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
     if self.mTypeName.string != "" then
       [!?ioTypeMap makeEntry !self.mTypeName ?*]
     end

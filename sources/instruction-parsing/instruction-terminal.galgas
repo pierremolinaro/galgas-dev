@@ -21,8 +21,8 @@ syntax extension galgas3SyntaxComponentSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <syntax_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
-                                 !@syntaxInstructionAST outInstruction {
+  rule <syntax_instruction_ggs3> (?!@galgasDeclarationAST ioDeclarations,
+                                  !@syntaxInstructionAST outInstruction) {
     $\$terminal\$$ ?let @lstring terminalName indexing terminalReference
     <actual_input_parameter_list_ggs3> !?ioDeclarations ?let @actualInputParameterListAST actualInputParameterList
     <terminal_instruction_indexing> ?let indexNameList
@@ -49,7 +49,7 @@ syntax extension galgas3SyntaxComponentSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <terminal_instruction_indexing> !@2lstringlist outIndexNameList {
+  rule <terminal_instruction_indexing> (!@2lstringlist outIndexNameList) {
     outIndexNameList = @()
     select
     or
@@ -79,8 +79,8 @@ syntax extension galgas4SyntaxComponentSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <syntax_instruction> ?!@galgasDeclarationAST ioDeclarations
-                            !@syntaxInstructionAST outInstruction {
+  rule <syntax_instruction> (?!@galgasDeclarationAST ioDeclarations,
+                             !@syntaxInstructionAST outInstruction) {
     $\$terminal\$$ ?let @lstring terminalName indexing terminalReference
     <actual_input_parameter_list> !?ioDeclarations ?let actualInputParameterList
     <terminal_instruction_indexing> ?let indexNameList
@@ -107,7 +107,7 @@ syntax extension galgas4SyntaxComponentSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <terminal_instruction_indexing> !@2lstringlist outIndexNameList {
+  rule <terminal_instruction_indexing> (!@2lstringlist outIndexNameList) {
     outIndexNameList = @()
     select
     or
@@ -146,11 +146,11 @@ final class @terminalCheckInstructionAST : @syntaxInstructionAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method transformInstructionForGrammarAnalysis
-    ?!usedTerminalMap:@terminalSymbolsMapForGrammarAnalysis ioActuallyUsedTerminalSymbolMap
-    ?nonTerminalSymbolMap:let @nonTerminalSymbolMapForGrammarAnalysis unused inNonTerminalSymbolMap
-    ?!addedTerminalIndex:@uint unused ioAddedNonTerminalIndex
-    ?!@syntaxInstructionListForGrammarAnalysis ioSyntaxInstructionList {
+  override method transformInstructionForGrammarAnalysis (
+    ?!usedTerminalMap:@terminalSymbolsMapForGrammarAnalysis ioActuallyUsedTerminalSymbolMap,
+    ?nonTerminalSymbolMap:let @nonTerminalSymbolMapForGrammarAnalysis unused inNonTerminalSymbolMap,
+    ?!addedTerminalIndex:@uint unused ioAddedNonTerminalIndex,
+    ?!@syntaxInstructionListForGrammarAnalysis ioSyntaxInstructionList) {
     let @uint terminalSymbolIndex
     if let entry = ioActuallyUsedTerminalSymbolMap @[self.mTerminalName.string] then
       terminalSymbolIndex = entry.mTerminalIndex
@@ -167,20 +167,20 @@ final class @terminalCheckInstructionAST : @syntaxInstructionAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method analyzeSyntaxInstruction
-    ?let @lstring unused inUsefulnessCallerEntityName
-    ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
-    ?let @analysisContext inAnalysisContext
-                                  ?!@unifiedTypeMap ioTypeMap
-    ?let @bool inHasTranslateFeature
-    ?let @terminalMap inTerminalMap
-    ?let @string inLexiqueName
-    ?let @nonterminalMap unused inNonterminalMap
-    ?let @string unused inComponentName
-    ?let @stringset inIndexNameSet
-    ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
-    ?!@localVarManager ioVariableMap
-    ?!@uint unused ioSelectMethodCount {
+  override method analyzeSyntaxInstruction (
+    ?let @lstring unused inUsefulnessCallerEntityName,
+    ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph,
+    ?let @analysisContext inAnalysisContext,
+                                  ?!@unifiedTypeMap ioTypeMap,
+    ?let @bool inHasTranslateFeature,
+    ?let @terminalMap inTerminalMap,
+    ?let @string inLexiqueName,
+    ?let @nonterminalMap unused inNonterminalMap,
+    ?let @string unused inComponentName,
+    ?let @stringset inIndexNameSet,
+    ?!@semanticInstructionListForGeneration ioInstructionListForGeneration,
+    ?!@localVarManager ioVariableMap,
+    ?!@uint unused ioSelectMethodCount) {
     [inTerminalMap searchKey !self.mTerminalName ?let @lexicalSentValueList sentAttributeList]
   //---
     if self.mActualInputParameterList.count != sentAttributeList.count then
@@ -252,14 +252,14 @@ final class @terminalInstructionForGrammarAnalysis : @abstractSyntaxInstructionF
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method tikzNodeForSyntaxInstruction ?!@rowList ioRowList
-                                                ?fromRow:let @uint inRow
-                                                ?!column:@uint ioColumn
-                                                ?!node: @string ioCurrentNode
-                                                ?!arrowShape: @string ioArrowShape
-                                                ?!arrows:@string ioArrows
-                                                ?!@uint unused ioMaxUsedRowIndex
-                                                ?debug:let @bool unused inDebug {
+  override method tikzNodeForSyntaxInstruction (?!@rowList ioRowList,
+                                                ?fromRow:let @uint inRow,
+                                                ?!column:@uint ioColumn,
+                                                ?!node: @string ioCurrentNode,
+                                                ?!arrowShape: @string ioArrowShape,
+                                                ?!arrows:@string ioArrows,
+                                                ?!@uint unused ioMaxUsedRowIndex,
+                                                ?debug:let @bool unused inDebug) {
     [!?ioRowList appendRow
       !nodeDefinition:"[terminal] {" + escapeForTex (!self.mTerminalSymbolName) + "}"
       !row:inRow
@@ -299,10 +299,9 @@ final class @terminalCheckInstructionForGeneration : @syntaxInstructionForGenera
 //! SYNTAX SIGNATURE
 //--------------------------------------------------------------------------------------------------
 
-override method @terminalCheckInstructionForGeneration appendSyntaxSignature
-  ?let @string unused inPosfix
-  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
- {
+override method @terminalCheckInstructionForGeneration appendSyntaxSignature (
+  ?let @string unused inPosfix,
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration) {
   ioInstructionListForGeneration += !@terminalCheckInstructionForGeneration {
     !self.mInstructionLocation
     !self.mTerminalName
@@ -319,7 +318,7 @@ override method @terminalCheckInstructionForGeneration appendSyntaxSignature
 //--------------------------------------------------------------------------------------------------
 
 override getter @terminalCheckInstructionForGeneration compareInstructionSyntaxSignature
-  ?let @semanticInstructionForGeneration inTestedInstruction -> @bool {
+      (?let @semanticInstructionForGeneration inTestedInstruction) -> @bool {
   if let si = inTestedInstruction as @terminalCheckInstructionForGeneration then
     result = self.mTerminalName.string == si.mTerminalName.string
     if not result then
@@ -344,12 +343,11 @@ override getter @terminalCheckInstructionForGeneration compareInstructionSyntaxS
 //! CODE GENERATION
 //--------------------------------------------------------------------------------------------------
 
-override method @terminalCheckInstructionForGeneration generateInstruction
-  ?!@stringset unused ioInclusionSet
-  ?!@uint unused ioTemporaryVariableIndex
-  ?!@stringset ioUnusedVariableCppNameSet
-  ?let @bool inGenerateSyntaxDirectedTranslationString
-  ?!@string ioGeneratedCode {
+override method @terminalCheckInstructionForGeneration generateInstruction (?!@stringset unused ioInclusionSet,
+                                       ?!@uint unused ioTemporaryVariableIndex,
+                                       ?!@stringset ioUnusedVariableCppNameSet,
+                                       ?let @bool inGenerateSyntaxDirectedTranslationString,
+                                       ?!@string ioGeneratedCode) {
 //--- Get synthetized attributes
   for (mTypeName mTargetVarCppName mSourceLexicalAttributeName) in self.mTerminalCheckAssignementList do
     if mTypeName != "" then

@@ -32,7 +32,7 @@ syntax extension galgas3LexiqueComponentSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
+  rule <lexical_instruction> (?!@lexicalInstructionListAST ioInstructionList) {
     $warning$
     $identifier$ ?let warningMessageName
     ioInstructionList += !@lexicalWarningInstructionAST {!warningMessageName}
@@ -48,7 +48,7 @@ syntax extension galgas4LexiqueComponentSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
+  rule <lexical_instruction> (?!@lexicalInstructionListAST ioInstructionList) {
     $warning$
     $identifier$ ?let warningMessageName
     ioInstructionList += !@lexicalWarningInstructionAST {!warningMessageName}
@@ -62,9 +62,9 @@ syntax extension galgas4LexiqueComponentSyntax {
 //! CHECK LEXICAL INSTRUCTION
 //--------------------------------------------------------------------------------------------------
 
-override method @lexicalWarningInstructionAST checkLexicalInstruction
-  ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
-  ?!@lexicalTagMap unused ioTagMap {
+override method @lexicalWarningInstructionAST checkLexicalInstruction (
+  ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext,
+  ?!@lexicalTagMap unused ioTagMap) {
   [!?ioLexiqueAnalysisContext.mLexicalMessageMap setMMessageIsUsedForKey !true !self.mWarningMessageName.string]
 }
 
@@ -72,18 +72,9 @@ override method @lexicalWarningInstructionAST checkLexicalInstruction
 //! COCOA GENERATION
 //--------------------------------------------------------------------------------------------------
 
-//override getter @lexicalWarningInstructionAST generateObjcCocoaInstructionCode
-//  ?let @string unused inScannerClassName
-//  ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
-//  -> @string outGeneratedCode {
-//  outGeneratedCode = "" // No generated code
-//}
-
-//--------------------------------------------------------------------------------------------------
-
-override getter @lexicalWarningInstructionAST generateSwiftCocoaInstructionCode
-  ?let @string unused inScannerClassName
-  ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
+override getter @lexicalWarningInstructionAST generateSwiftCocoaInstructionCode (
+  ?let @string unused inScannerClassName,
+  ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext)
   -> @string outGeneratedCode {
   outGeneratedCode = "" // No generated code
 }
@@ -98,9 +89,9 @@ override getter @lexicalWarningInstructionAST lexicalInstructionUsesLoopLocalVar
 
 //·································································································
 
-override getter @lexicalWarningInstructionAST generateLexicalInstructionCode
-  ?let @string inScannerClassName
-  ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
+override getter @lexicalWarningInstructionAST generateLexicalInstructionCode (
+  ?let @string inScannerClassName,
+  ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext)
   -> @string {
   result = "lexicalWarning (gLexicalMessage_" + inScannerClassName + "_" + self.mWarningMessageName + " COMMA_LINE_AND_SOURCE_FILE) ;\n"
 }

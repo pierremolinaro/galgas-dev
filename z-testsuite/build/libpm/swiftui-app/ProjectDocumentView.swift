@@ -28,14 +28,14 @@ struct ProjectDocumentView : View {
   let mProjectFileURL : URL
 
   @State var mSidebarSelectedItem = SidebarSelectedItem.fileList
-  @StateObject var mSharedTextModel : SharedTextModel
-  @StateObject var mProjectCompiler = ProjectCompiler ()
+  @State var mSharedTextModel : SharedTextModel
+  @State var mProjectCompiler = ProjectCompiler ()
 
   @Binding private var mDocument : ProjectDocument
-  @StateObject var mRootDirectoryNode : RootDirectoryNode
+  @State var mRootDirectoryNode : RootDirectoryNode
 
   @State private var mSelectedIssue : UUID? = nil
-  @Binding var mIssues : [CompilationIssue]
+  @State var mIssues : [CompilationIssue]
 
   @AppStorage("compile.log.auto.scroll") private var mCompileLogAutoScroll = true
 
@@ -63,22 +63,22 @@ struct ProjectDocumentView : View {
 
   init (document inDocumentBinding : Binding <ProjectDocument>,
         projectFileURL inProjectFileURL : URL,
-        issuesBinding inIssuesBinding : Binding <[CompilationIssue]>) {
+        issuesBinding inIssuesBinding : [CompilationIssue]) {
     self._mDocument = inDocumentBinding
     self.mProjectFileURL = inProjectFileURL
-    self._mIssues = inIssuesBinding
+    self.mIssues = inIssuesBinding
     let projectSharedTextModel = SharedTextModel (
       scanner: scannerFor (extension: inProjectFileURL.pathExtension),
       initialString: inDocumentBinding.mString.wrappedValue,
       fileURL: inProjectFileURL,
       issuesBinding: inIssuesBinding
     )
-    self._mSharedTextModel = StateObject (wrappedValue: projectSharedTextModel)
+    self.mSharedTextModel = projectSharedTextModel
     let rootDirectoryNode = RootDirectoryNode (
       url: inProjectFileURL.deletingLastPathComponent ().appendingPathComponent ("sources"),
       issuesBinding: inIssuesBinding
     )
-    self._mRootDirectoryNode = StateObject (wrappedValue: rootDirectoryNode)
+    self.mRootDirectoryNode = rootDirectoryNode
     projectSharedTextModel.setWriteFileCallback (self.projectDocumentStringDidChange)
   }
 

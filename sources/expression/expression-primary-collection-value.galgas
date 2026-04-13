@@ -107,7 +107,7 @@ final class @collectionValueAST : @semanticExpressionAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method enterExpressionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
+  override method enterExpressionInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
     for (expression *) in self.mExpressionList do
       [expression enterExpressionInSemanticContext !?ioTypeMap]
     end

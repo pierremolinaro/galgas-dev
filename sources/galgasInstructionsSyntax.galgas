@@ -101,7 +101,7 @@ syntax galgas3InstructionsSyntax (galgasScanner3) {
   //    F U N C T I O N    D E C L A R A T I O N
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
+  rule <declaration_ggs3> (?!@galgasDeclarationAST ioDeclarations) {
     $func$
     var isOnce = false
     var isUsefull = false
@@ -218,7 +218,7 @@ syntax galgas3InstructionsSyntax (galgasScanner3) {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
+  rule <declaration_ggs3> (?!@galgasDeclarationAST ioDeclarations) {
     $private$
     $func$
     var isOnce = false
@@ -245,7 +245,7 @@ syntax galgas3InstructionsSyntax (galgasScanner3) {
   //    E X T E R N    F U N C T I O N    D E C L A R A T I O N
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
+  rule <declaration_ggs3> (?!@galgasDeclarationAST ioDeclarations) {
     $extern$
     $func$
     var isUsefull = false

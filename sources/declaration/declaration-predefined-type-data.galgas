@@ -32,8 +32,8 @@ final class @dataPredefinedTypeAST : @predefinedTypeAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method getClassFunctionMap ?!@unifiedTypeMap ioUnifiedTypeMap
-                                      !@classFunctionMap outMap {
+  override method getClassFunctionMap (?!@unifiedTypeMap ioUnifiedTypeMap,
+                                       !@classFunctionMap outMap) {
     outMap = @()
     enterClassFunctionWithoutArgument (
       !?outMap
@@ -61,9 +61,9 @@ final class @dataPredefinedTypeAST : @predefinedTypeAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method getEnumerationList ?!@unifiedTypeMap ioUnifiedTypeMap
-                                      !@enumerationDescriptorList outEnumerationList
-                                      !@string outEnumeratedType {
+  override method getEnumerationList (?!@unifiedTypeMap ioUnifiedTypeMap,
+                                      !@enumerationDescriptorList outEnumerationList,
+                                      !@string outEnumeratedType) {
     [!?ioUnifiedTypeMap makeEntryFromString !"uint" ?let uintTypeIndex]
     outEnumerationList = @()
     outEnumerationList += !uintTypeIndex !"data"
@@ -72,8 +72,8 @@ final class @dataPredefinedTypeAST : @predefinedTypeAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method getInstanceMethodMap ?!@unifiedTypeMap ioUnifiedTypeMap
-                                       !@instanceMethodMap outInstanceMethodMap {
+  override method getInstanceMethodMap (?!@unifiedTypeMap ioUnifiedTypeMap,
+                                        !@instanceMethodMap outInstanceMethodMap) {
     outInstanceMethodMap = @()
     enterInstanceMethodWithInputArgument (
       !?outInstanceMethodMap
@@ -109,8 +109,8 @@ final class @dataPredefinedTypeAST : @predefinedTypeAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method getGetterMap ?!@unifiedTypeMap ioUnifiedTypeMap
-                               !@getterMap outMap {
+  override method getGetterMap (?!@unifiedTypeMap ioUnifiedTypeMap,
+                                !@getterMap outMap) {
     commonGetterMapForAllTypes (!?ioUnifiedTypeMap ?outMap)
     enterBaseFinalGetterWithoutArgument (
       !?outMap
@@ -132,8 +132,8 @@ final class @dataPredefinedTypeAST : @predefinedTypeAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method getSetterMap ?!@unifiedTypeMap ioUnifiedTypeMap
-                               !@setterMap outSetterMap {
+  override method getSetterMap (?!@unifiedTypeMap ioUnifiedTypeMap,
+                                !@setterMap outSetterMap) {
     outSetterMap = @()
     enterModifierWithInputArgument (
       !?outSetterMap

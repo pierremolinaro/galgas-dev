@@ -89,12 +89,11 @@ override method @inputJokerParameterForGeneration generateActualParameter
 
 //--------------------------------------------------------------------------------------------------
 
-override method @semanticBlockInstructionForGeneration generateInstruction
-  ?!@stringset ioInclusionSet
-  ?!@uint ioTemporaryVariableIndex
-  ?!@stringset ioUnusedVariableCppNameSet
-  ?let @bool inGenerateSyntaxDirectedTranslationString
-  ?!@string ioGeneratedCode {
+override method @semanticBlockInstructionForGeneration generateInstruction (?!@stringset ioInclusionSet,
+                                     ?!@uint ioTemporaryVariableIndex,
+                                     ?!@stringset ioUnusedVariableCppNameSet,
+                                     ?let @bool inGenerateSyntaxDirectedTranslationString,
+                                     ?!@string ioGeneratedCode) {
   ioGeneratedCode += "{\n"
   generateInstructionList (
     !?ioInclusionSet

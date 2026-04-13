@@ -31,8 +31,8 @@ syntax extension galgas3InstructionsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <semantic_instruction_ggs3>  ?!@galgasDeclarationAST ioDeclarations
-                                    !@semanticInstructionAST outInstruction {
+  rule <semantic_instruction_ggs3>  (?!@galgasDeclarationAST ioDeclarations,
+                                     !@semanticInstructionAST outInstruction) {
     $self$
     let instructionLocation = @location.here
     $=$
@@ -53,8 +53,8 @@ syntax extension galgas4InstructionsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <semantic_instruction> ?!@galgasDeclarationAST ioDeclarations
-                              !@semanticInstructionAST outInstruction {
+  rule <semantic_instruction> (?!@galgasDeclarationAST ioDeclarations,
+                               !@semanticInstructionAST outInstruction) {
     $self$
     let instructionLocation = @location.here
     $=$
@@ -73,9 +73,7 @@ syntax extension galgas4InstructionsSyntax {
 //! CONTEXT
 //--------------------------------------------------------------------------------------------------
 
-override method @selfAssignmentInstructionAST enterInstructionInSemanticContext
-  ?!@unifiedTypeMap ioTypeMap
-{
+override method @selfAssignmentInstructionAST enterInstructionInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
   [self.mSourceExpression enterExpressionInSemanticContext !?ioTypeMap]
 }
 
@@ -83,14 +81,13 @@ override method @selfAssignmentInstructionAST enterInstructionInSemanticContext
 //! SEMANTICS
 //--------------------------------------------------------------------------------------------------
 
-override method @selfAssignmentInstructionAST analyzeSemanticInstruction
-  ?let @lstring inUsefulnessCallerEntityName
-  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-  ?let @analysisContext inAnalysisContext
-                                ?!@unifiedTypeMap ioTypeMap
-  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
-  ?!@localVarManager ioVariableMap
-{
+override method @selfAssignmentInstructionAST analyzeSemanticInstruction (
+                        ?let @lstring inUsefulnessCallerEntityName,
+                        ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
+                        ?let @analysisContext inAnalysisContext,
+                        ?!@unifiedTypeMap ioTypeMap,
+                        ?!@semanticInstructionListForGeneration ioInstructionListForGeneration,
+                        ?!@localVarManager ioVariableMap) {
   if let selfAvailable = inAnalysisContext.selfAvailability.getAvailable then
     if not selfAvailable.selfMutability.selfIsMutable then
       error self.mInstructionLocation : "'self' not mutable in this context"

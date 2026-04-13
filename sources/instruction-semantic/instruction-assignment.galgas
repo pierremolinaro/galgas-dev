@@ -24,8 +24,8 @@ syntax extension galgas3InstructionsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <semantic_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
-                                   !@semanticInstructionAST outInstruction {
+  rule <semantic_instruction_ggs3> (?!@galgasDeclarationAST ioDeclarations,
+                                    !@semanticInstructionAST outInstruction) {
     $identifier$ ?let mTargetVariableName
     let @lstring optionalProperty
     select
@@ -47,8 +47,8 @@ syntax extension galgas3InstructionsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <semantic_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
-                                   !@semanticInstructionAST outInstruction {
+  rule <semantic_instruction_ggs3> (?!@galgasDeclarationAST ioDeclarations,
+                                    !@semanticInstructionAST outInstruction) {
     $self$
     $.$
     $identifier$ ?let mTargetVariableName
@@ -80,8 +80,8 @@ syntax extension galgas4InstructionsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <semantic_instruction> ?!@galgasDeclarationAST ioDeclarations
-                              !@semanticInstructionAST outInstruction {
+  rule <semantic_instruction> (?!@galgasDeclarationAST ioDeclarations,
+                               !@semanticInstructionAST outInstruction) {
     $identifier$ ?let mTargetVariableName
     let @lstring optionalProperty
     select
@@ -110,8 +110,8 @@ syntax extension galgas4InstructionsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <semantic_instruction> ?!@galgasDeclarationAST ioDeclarations
-                              !@semanticInstructionAST outInstruction {
+  rule <semantic_instruction> (?!@galgasDeclarationAST ioDeclarations,
+                               !@semanticInstructionAST outInstruction) {
     $self$
     $.$
     $identifier$ ?let mTargetVariableName
@@ -155,22 +155,19 @@ final class @assignmentInstructionAST : @semanticInstructionAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method enterInstructionInSemanticContext
-    ?!@unifiedTypeMap ioTypeMap
-  {
+  override method enterInstructionInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
     [self.mSourceExpression enterExpressionInSemanticContext !?ioTypeMap]
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method analyzeSemanticInstruction
-    ?let @lstring inUsefulnessCallerEntityName
-    ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-    ?let @analysisContext inAnalysisContext
-                                  ?!@unifiedTypeMap ioTypeMap
-    ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
-    ?!@localVarManager ioVariableMap
-  {
+  override method analyzeSemanticInstruction (
+                        ?let @lstring inUsefulnessCallerEntityName,
+                        ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
+                        ?let @analysisContext inAnalysisContext,
+                        ?!@unifiedTypeMap ioTypeMap,
+                        ?!@semanticInstructionListForGeneration ioInstructionListForGeneration,
+                        ?!@localVarManager ioVariableMap) {
   //--- Get target variable type
     [!?ioVariableMap neutralAccess
       !self.mTargetVariableName
@@ -249,21 +246,19 @@ final class @selfPropertyAssignmentInstructionAST : @semanticInstructionAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method enterInstructionInSemanticContext
-    ?!@unifiedTypeMap ioTypeMap
-  {
+  override method enterInstructionInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
     [self.mSourceExpression enterExpressionInSemanticContext !?ioTypeMap]
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method analyzeSemanticInstruction
-                          ?let @lstring inUsefulnessCallerEntityName
-                          ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-                          ?let @analysisContext inAnalysisContext
-                          ?!@unifiedTypeMap ioTypeMap
-                          ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
-                          ?!@localVarManager ioVariableMap {
+  override method analyzeSemanticInstruction (
+                        ?let @lstring inUsefulnessCallerEntityName,
+                        ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
+                        ?let @analysisContext inAnalysisContext,
+                        ?!@unifiedTypeMap ioTypeMap,
+                        ?!@semanticInstructionListForGeneration ioInstructionListForGeneration,
+                        ?!@localVarManager ioVariableMap) {
     if let selfAvailable = inAnalysisContext.selfAvailability.getAvailable then
       if not selfAvailable.selfMutability.propertiesAreMutable then
         error self.mInstructionLocation : "'self' property not mutable in this context"
@@ -334,11 +329,11 @@ class @assignmentInstructionForGeneration : @semanticInstructionForGeneration {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method generateInstruction ?!@stringset ioInclusionSet
-                                      ?!@uint ioTemporaryVariableIndex
-                                      ?!@stringset ioUnusedVariableCppNameSet
-                                      ?let @bool unused inGenerateSyntaxDirectedTranslationString
-                                      ?!@string ioGeneratedCode {
+  override method generateInstruction (?!@stringset ioInclusionSet,
+                                       ?!@uint ioTemporaryVariableIndex,
+                                       ?!@stringset ioUnusedVariableCppNameSet,
+                                       ?let @bool unused inGenerateSyntaxDirectedTranslationString,
+                                       ?!@string ioGeneratedCode) {
     [self.mSourceExpression generateExpression
       !?ioGeneratedCode
       !?ioInclusionSet

@@ -21,7 +21,7 @@ syntax extension galgas3DeclarationsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
+  rule <declaration_ggs3> (?!@galgasDeclarationAST ioDeclarations) {
     $extension$
     $@type$ ?let @lstring typeName indexing typeReferenceExtensionMethod
     $:$
@@ -50,7 +50,7 @@ syntax extension galgas4DeclarationsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
+  rule <declaration> (?!@galgasDeclarationAST ioDeclarations) {
     $extension$
     <simple_type_definition> !?ioDeclarations ?let typeName
     $:$
@@ -75,11 +75,11 @@ syntax extension galgas4DeclarationsSyntax {
 
 //--------------------------------------------------------------------------------------------------
 
-proc handleEquatableComparableExtension ?!@equatableExtensionMap ioEquatableExtensionMap
-                                        ?let @lstring inTypeName
-                                        ?!@typeFeatures ioFeatures
-                                        ?acceptEquatable: let @bool inAcceptEquatable
-                                        ?acceptComparable: let @bool inAcceptComparable {
+proc handleEquatableComparableExtension (?!@equatableExtensionMap ioEquatableExtensionMap,
+                                         ?let @lstring inTypeName,
+                                         ?!@typeFeatures ioFeatures,
+                                         ?acceptEquatable: let @bool inAcceptEquatable,
+                                         ?acceptComparable: let @bool inAcceptComparable) {
   if let node = ioEquatableExtensionMap @[inTypeName] then
     let location = [ioEquatableExtensionMap locationForKey !inTypeName]
     [!?ioEquatableExtensionMap removeKey !inTypeName ?*]
@@ -139,14 +139,14 @@ final class @equatableExtensionAST : @semanticDeclarationAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method enterDeclarationInGraph
-          ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
-          ?!@equatableExtensionMap ioEquatableExtensionMap
-          ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext
-          ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext
-          ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
-          ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
-          ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList {
+  override method enterDeclarationInGraph (
+          ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph,
+          ?!@equatableExtensionMap ioEquatableExtensionMap,
+          ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext,
+          ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext,
+          ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext,
+          ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext,
+          ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList) {
     let key = @lstring {!self.keyRepresentation !self.mTypeName.location}
     [!?ioSemanticTypePrecedenceGraph addNode !key !self]
     [!?ioSemanticTypePrecedenceGraph addEdge !from: key !to: @("@" + self.mTypeName, self.mTypeName)]
@@ -179,26 +179,26 @@ final class @equatableExtensionAST : @semanticDeclarationAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method enterDeclarationInSemanticContext
-    ?!@equatableExtensionMap unused ioEquatableExtensionMap
-    ?let @extensionInitializerForBuildingContext unused inExtensionInitializerMapForBuildingContext
-    ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext
-    ?let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext
-    ?let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext
-    ?!@unifiedTypeMap unused ioTypeMap
-    ?!@semanticContext unused ioSemanticContext {
+  override method enterDeclarationInSemanticContext (
+    ?!@equatableExtensionMap unused ioEquatableExtensionMap,
+    ?let @extensionInitializerForBuildingContext unused inExtensionInitializerMapForBuildingContext,
+    ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext,
+    ?let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext,
+    ?let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext,
+    ?!@unifiedTypeMap unused ioTypeMap,
+    ?!@semanticContext unused ioSemanticContext) {
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method semanticAnalysis
-                ?!@lstringlist unused ioUsefulnessRootEntities
-                ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
-                ?let @string unused inProductDirectory
-                ?let @semanticContext unused inSemanticContext
-                ?!@unifiedTypeMap unused ioTypeMap
-                ?let @predefinedTypes unused inPredefinedTypes
-                ?!@semanticDeclarationListForGeneration unused ioSemanticDeclarationListForGeneration {
+  override method semanticAnalysis (
+                ?!@lstringlist unused ioUsefulnessRootEntities,
+                ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph,
+                ?let @string unused inProductDirectory,
+                ?let @semanticContext unused inSemanticContext,
+                ?!@unifiedTypeMap unused ioTypeMap,
+                ?let @predefinedTypes unused inPredefinedTypes,
+                ?!@semanticDeclarationListForGeneration unused ioSemanticDeclarationListForGeneration) {
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

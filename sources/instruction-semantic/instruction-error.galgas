@@ -49,8 +49,8 @@ syntax extension galgas3InstructionsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <issue_fixit> ?!@galgasDeclarationAST ioDeclarations
-                     !@fixitListAST outFixitListAST {
+  rule <issue_fixit> (?!@galgasDeclarationAST ioDeclarations,
+                      !@fixitListAST outFixitListAST) {
     outFixitListAST = @()
     select
     or
@@ -88,8 +88,8 @@ syntax extension galgas3InstructionsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <semantic_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
-                                   !@semanticInstructionAST outInstruction {
+  rule <semantic_instruction_ggs3> (?!@galgasDeclarationAST ioDeclarations,
+                                    !@semanticInstructionAST outInstruction) {
     $error$
     let instructionLocation = @location.here
     <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST mReceiverExpression
@@ -126,8 +126,8 @@ syntax extension galgas4InstructionsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <issue_fixit> ?!@galgasDeclarationAST ioDeclarations
-                     !@fixitListAST outFixitListAST {
+  rule <issue_fixit> (?!@galgasDeclarationAST ioDeclarations,
+                      !@fixitListAST outFixitListAST) {
     outFixitListAST = @()
     select
     or
@@ -168,8 +168,8 @@ syntax extension galgas4InstructionsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <semantic_instruction> ?!@galgasDeclarationAST ioDeclarations
-                              !@semanticInstructionAST outInstruction {
+  rule <semantic_instruction> (?!@galgasDeclarationAST ioDeclarations,
+                               !@semanticInstructionAST outInstruction) {
     $error$
     let instructionLocation = @location.here
     <expression> !?ioDeclarations ?let @semanticExpressionAST mReceiverExpression
@@ -206,7 +206,7 @@ syntax extension galgas4InstructionsSyntax {
 //! CONTEXT
 //--------------------------------------------------------------------------------------------------
 
-override method @errorInstructionAST enterInstructionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
+override method @errorInstructionAST enterInstructionInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
   [self.mLocationExpression enterExpressionInSemanticContext !?ioTypeMap]
   [self.mMessageExpression enterExpressionInSemanticContext !?ioTypeMap]
   [self.mFixitListAST enterFixItListInSemanticContext !?ioTypeMap]
@@ -214,7 +214,7 @@ override method @errorInstructionAST enterInstructionInSemanticContext ?!@unifie
 
 //--------------------------------------------------------------------------------------------------
 
-method @fixitListAST enterFixItListInSemanticContext ?!@unifiedTypeMap ioTypeMap {
+method @fixitListAST enterFixItListInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
   for (element) in self do
     switch element
     case fixItRemove :
@@ -247,21 +247,19 @@ list @fixitListForGeneration {
 
 //--------------------------------------------------------------------------------------------------
 
-proc analyzeErrorOrWarningInstruction
-  ?let @lstring inUsefulnessCallerEntityName
-  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-  ?let @analysisContext inAnalysisContext
-  ?!@unifiedTypeMap ioTypeMap
-  ?let @semanticExpressionAST inLocationExpression
-  ?let @semanticExpressionAST inMessageExpression
-  ?let @fixitListAST inFixitListAST
-  ?let @location inErrorLocation
-  ?let @string inErrorOrWarningString
-  ?!@localVarManager ioVariableMap
-  !@semanticExpressionForGeneration outLocationExpression
-  !@semanticExpressionForGeneration outMessageExpression
-  !@fixitListForGeneration outFixitListForGeneration
-{
+proc analyzeErrorOrWarningInstruction (?let @lstring inUsefulnessCallerEntityName,
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
+  ?let @analysisContext inAnalysisContext,
+  ?!@unifiedTypeMap ioTypeMap,
+  ?let @semanticExpressionAST inLocationExpression,
+  ?let @semanticExpressionAST inMessageExpression,
+  ?let @fixitListAST inFixitListAST,
+  ?let @location inErrorLocation,
+  ?let @string inErrorOrWarningString,
+  ?!@localVarManager ioVariableMap,
+  !@semanticExpressionForGeneration outLocationExpression,
+  !@semanticExpressionForGeneration outMessageExpression,
+  !@fixitListForGeneration outFixitListForGeneration) {
 //--- Analyze location expression
   [inLocationExpression analyzeSemanticExpression
     !usefulnessCallerEntityName: inUsefulnessCallerEntityName
@@ -361,14 +359,13 @@ proc analyzeErrorOrWarningInstruction
 
 //·································································································
 
-override method @errorInstructionAST analyzeSemanticInstruction
-  ?let @lstring inUsefulnessCallerEntityName
-  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-  ?let @analysisContext inAnalysisContext
-                                ?!@unifiedTypeMap ioTypeMap
-  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
-  ?!@localVarManager ioVariableMap
-{
+override method @errorInstructionAST analyzeSemanticInstruction (
+                        ?let @lstring inUsefulnessCallerEntityName,
+                        ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
+                        ?let @analysisContext inAnalysisContext,
+                        ?!@unifiedTypeMap ioTypeMap,
+                        ?!@semanticInstructionListForGeneration ioInstructionListForGeneration,
+                        ?!@localVarManager ioVariableMap) {
 //---
   analyzeErrorOrWarningInstruction (
     !inUsefulnessCallerEntityName
@@ -405,14 +402,12 @@ override method @errorInstructionAST analyzeSemanticInstruction
 //! GENERATION
 //--------------------------------------------------------------------------------------------------
 
-method @fixitListForGeneration generateFixIt
-  ?!@stringset ioInclusionSet
-  ?!@uint ioTemporaryVariableIndex
-  ?!@stringset ioUnusedVariableCppNameSet
-  ?let @bool unused inGenerateSyntaxDirectedTranslationString
-  ?!@string ioGeneratedCode
-  !@string outFixItArrayCppName
-{
+method @fixitListForGeneration generateFixIt (?!@stringset ioInclusionSet,
+  ?!@uint ioTemporaryVariableIndex,
+  ?!@stringset ioUnusedVariableCppNameSet,
+  ?let @bool unused inGenerateSyntaxDirectedTranslationString,
+  ?!@string ioGeneratedCode,
+  !@string outFixItArrayCppName) {
   outFixItArrayCppName = "fixItArray" + ioTemporaryVariableIndex
   ioTemporaryVariableIndex += 1
   ioGeneratedCode += "GenericArray <FixItDescription> " + outFixItArrayCppName + " ;\n"
@@ -463,13 +458,11 @@ final class @errorInstructionForGeneration : @semanticInstructionForGeneration {
 
 //································································································*
 
-override method @errorInstructionForGeneration generateInstruction
-  ?!@stringset ioInclusionSet
-  ?!@uint ioTemporaryVariableIndex
-  ?!@stringset ioUnusedVariableCppNameSet
-  ?let @bool inGenerateSyntaxDirectedTranslationString
-  ?!@string ioGeneratedCode
-{
+override method @errorInstructionForGeneration generateInstruction (?!@stringset ioInclusionSet,
+  ?!@uint ioTemporaryVariableIndex,
+  ?!@stringset ioUnusedVariableCppNameSet,
+  ?let @bool inGenerateSyntaxDirectedTranslationString,
+  ?!@string ioGeneratedCode) {
 //--- Receiver expression
   [self.mReceiverExpression generateExpression
     !?ioGeneratedCode

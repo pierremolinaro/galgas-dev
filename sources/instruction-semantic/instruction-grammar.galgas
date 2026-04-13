@@ -92,8 +92,8 @@ syntax extension galgas3InstructionsSyntax {
   // NEW GRAMMAR INSTRUCTION, COMPATIBLE WITH GALGAS 4
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <semantic_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
-                                   !@semanticInstructionAST outInstruction {
+  rule <semantic_instruction_ggs3> (?!@galgasDeclarationAST ioDeclarations,
+                                    !@semanticInstructionAST outInstruction) {
     $grammar$
     let instructionLocation = @location.here
     $identifier$ ?let @lstring grammarComponentName indexing grammarComponentReference
@@ -112,12 +112,12 @@ syntax extension galgas3InstructionsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <grammar_instruction_core> ?!@galgasDeclarationAST ioDeclarations
-                                  ?let @location inInstructionLocation
-                                  ?let @actualParameterListAST actualParameterList
-                                  ?let @lstring inGrammarComponentName
-                                  ?let @lstring inLabelName
-                                  !@semanticInstructionAST outInstruction {
+  rule <grammar_instruction_core> (?!@galgasDeclarationAST ioDeclarations,
+                                   ?let @location inInstructionLocation,
+                                   ?let @actualParameterListAST actualParameterList,
+                                   ?let @lstring inGrammarComponentName,
+                                   ?let @lstring inLabelName,
+                                   !@semanticInstructionAST outInstruction) {
     $in$
     <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST sourceExpression
     let endOfSourceExpression = @location.here
@@ -142,12 +142,12 @@ syntax extension galgas3InstructionsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <grammar_instruction_core> ?!@galgasDeclarationAST ioDeclarations
-                                  ?let @location inInstructionLocation
-                                  ?let @actualParameterListAST actualParameterList
-                                  ?let @lstring inGrammarComponentName
-                                  ?let @lstring inLabelName
-                                  !@semanticInstructionAST outInstruction {
+  rule <grammar_instruction_core> (?!@galgasDeclarationAST ioDeclarations,
+                                   ?let @location inInstructionLocation,
+                                   ?let @actualParameterListAST actualParameterList,
+                                   ?let @lstring inGrammarComponentName,
+                                   ?let @lstring inLabelName,
+                                   !@semanticInstructionAST outInstruction) {
     $on$
     <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST sourceExpression
     let @location endOfSourceExpression = .here
@@ -179,8 +179,8 @@ syntax extension galgas3InstructionsSyntax {
   // OBSOLETE GRAMMAR INSTRUCTION, NOT COMPATIBLE WITH GALGAS 4
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <semantic_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
-                                   !@semanticInstructionAST outInstruction { //obsolete
+  rule <semantic_instruction_ggs3> (?!@galgasDeclarationAST ioDeclarations,
+                                    !@semanticInstructionAST outInstruction) { //obsolete
     $grammar$
     let instructionLocation = @location.here
     $identifier$ ?let @lstring grammarComponentName indexing grammarComponentReference
@@ -196,11 +196,11 @@ syntax extension galgas3InstructionsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <grammar_instruction_core_obsolete> ?!@galgasDeclarationAST ioDeclarations
-                                           ?let @location inInstructionLocation
-                                           ?let @lstring inGrammarComponentName
-                                           ?let @lstring inLabelName
-                                           !@semanticInstructionAST outInstruction {
+  rule <grammar_instruction_core_obsolete> (?!@galgasDeclarationAST ioDeclarations,
+                                            ?let @location inInstructionLocation,
+                                            ?let @lstring inGrammarComponentName,
+                                            ?let @lstring inLabelName,
+                                            !@semanticInstructionAST outInstruction) {
     $in$
     <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST mSourceExpression
     let endOfSourceExpression = @location.here
@@ -226,11 +226,11 @@ syntax extension galgas3InstructionsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <grammar_instruction_core_obsolete> ?!@galgasDeclarationAST ioDeclarations
-                                           ?let @location inInstructionLocation
-                                           ?let @lstring inGrammarComponentName
-                                           ?let @lstring inLabelName
-                                           !@semanticInstructionAST outInstruction {
+  rule <grammar_instruction_core_obsolete> (?!@galgasDeclarationAST ioDeclarations,
+                                            ?let @location inInstructionLocation,
+                                            ?let @lstring inGrammarComponentName,
+                                            ?let @lstring inLabelName,
+                                            !@semanticInstructionAST outInstruction) {
     $on$
     $($
     <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST sourceExpression
@@ -271,8 +271,8 @@ syntax extension galgas4InstructionsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <semantic_instruction> ?!@galgasDeclarationAST ioDeclarations
-                              !@semanticInstructionAST outInstruction {
+  rule <semantic_instruction> (?!@galgasDeclarationAST ioDeclarations,
+                               !@semanticInstructionAST outInstruction) {
     $grammar$
     let instructionLocation = @location.here
     $identifier$ ?let @lstring grammarComponentName indexing grammarComponentReference
@@ -289,12 +289,12 @@ syntax extension galgas4InstructionsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <grammar_instruction_core> ?!@galgasDeclarationAST ioDeclarations
-                                  ?let @location inInstructionLocation
-                                  ?let @actualParameterListAST actualParameterList
-                                  ?let @lstring inGrammarComponentName
-                                  ?let @lstring inLabelName
-                                  !@semanticInstructionAST outInstruction {
+  rule <grammar_instruction_core> (?!@galgasDeclarationAST ioDeclarations,
+                                   ?let @location inInstructionLocation,
+                                   ?let @actualParameterListAST actualParameterList,
+                                   ?let @lstring inGrammarComponentName,
+                                   ?let @lstring inLabelName,
+                                   !@semanticInstructionAST outInstruction) {
     $in$
     <expression> !?ioDeclarations ?let @semanticExpressionAST sourceExpression
     let endOfSourceExpression = @location.here
@@ -319,12 +319,12 @@ syntax extension galgas4InstructionsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <grammar_instruction_core> ?!@galgasDeclarationAST ioDeclarations
-                                  ?let @location inInstructionLocation
-                                  ?let @actualParameterListAST actualParameterList
-                                  ?let @lstring inGrammarComponentName
-                                  ?let @lstring inLabelName
-                                  !@semanticInstructionAST outInstruction {
+  rule <grammar_instruction_core> (?!@galgasDeclarationAST ioDeclarations,
+                                   ?let @location inInstructionLocation,
+                                   ?let @actualParameterListAST actualParameterList,
+                                   ?let @lstring inGrammarComponentName,
+                                   ?let @lstring inLabelName,
+                                   !@semanticInstructionAST outInstruction) {
     $on$
     <expression> !?ioDeclarations ?let @semanticExpressionAST sourceExpression
     let @location endOfSourceExpression = .here
@@ -360,9 +360,7 @@ syntax extension galgas4InstructionsSyntax {
 //! CONTEXT
 //--------------------------------------------------------------------------------------------------
 
-  override method @grammarInFileInstructionAST enterInstructionInSemanticContext
-    ?!@unifiedTypeMap ioTypeMap
-  {
+  override method @grammarInFileInstructionAST enterInstructionInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
     [self.mSourceExpression enterExpressionInSemanticContext !?ioTypeMap]
     for (mActualParameter) in self.mActualParameterList do
       [mActualParameter enterParameterInSemanticContext !?ioTypeMap]
@@ -371,9 +369,7 @@ syntax extension galgas4InstructionsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method @grammarInStringInstructionAST enterInstructionInSemanticContext
-    ?!@unifiedTypeMap ioTypeMap
-  {
+  override method @grammarInStringInstructionAST enterInstructionInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
     [self.mSourceExpression enterExpressionInSemanticContext !?ioTypeMap]
     for (mActualParameter) in self.mActualParameterList do
       [mActualParameter enterParameterInSemanticContext !?ioTypeMap]
@@ -384,14 +380,13 @@ syntax extension galgas4InstructionsSyntax {
 //! SEMANTICS
 //--------------------------------------------------------------------------------------------------
 
-override method @grammarInFileInstructionAST analyzeSemanticInstruction
-  ?let @lstring inUsefulnessCallerEntityName
-  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-  ?let @analysisContext inAnalysisContext
-                                ?!@unifiedTypeMap ioTypeMap
-  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
-  ?!@localVarManager ioVariableMap
-{
+override method @grammarInFileInstructionAST analyzeSemanticInstruction (
+                        ?let @lstring inUsefulnessCallerEntityName,
+                        ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
+                        ?let @analysisContext inAnalysisContext,
+                        ?!@unifiedTypeMap ioTypeMap,
+                        ?!@semanticInstructionListForGeneration ioInstructionListForGeneration,
+                        ?!@localVarManager ioVariableMap) {
   let usefulnessName = grammarNameForUsefulEntitiesGraph (!self.mGrammarComponentName)
   [!?ioUsefulEntitiesGraph addEdge !from: inUsefulnessCallerEntityName !to: usefulnessName]
 //--- Search grammar in grammar map
@@ -461,14 +456,13 @@ override method @grammarInFileInstructionAST analyzeSemanticInstruction
 
 //·································································································
 
-override method @grammarInStringInstructionAST analyzeSemanticInstruction
-  ?let @lstring inUsefulnessCallerEntityName
-  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-  ?let @analysisContext inAnalysisContext
-                                ?!@unifiedTypeMap ioTypeMap
-  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
-  ?!@localVarManager ioVariableMap
-{
+override method @grammarInStringInstructionAST analyzeSemanticInstruction (
+                        ?let @lstring inUsefulnessCallerEntityName,
+                        ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
+                        ?let @analysisContext inAnalysisContext,
+                        ?!@unifiedTypeMap ioTypeMap,
+                        ?!@semanticInstructionListForGeneration ioInstructionListForGeneration,
+                        ?!@localVarManager ioVariableMap) {
   let grammarUsefulnessName = grammarNameForUsefulEntitiesGraph (!self.mGrammarComponentName)
   [!?ioUsefulEntitiesGraph addEdge !from: inUsefulnessCallerEntityName !to: grammarUsefulnessName]
 //--- Search grammar in grammar map
@@ -570,13 +564,11 @@ override method @grammarInStringInstructionAST analyzeSemanticInstruction
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method @grammarInstructionWithSourceFileForGeneration generateInstruction
-    ?!@stringset ioInclusionSet
-    ?!@uint ioTemporaryVariableIndex
-    ?!@stringset ioUnusedVariableCppNameSet
-    ?let @bool unused inGenerateSyntaxDirectedTranslationString
-    ?!@string ioGeneratedCode
-  {
+  override method @grammarInstructionWithSourceFileForGeneration generateInstruction (?!@stringset ioInclusionSet,
+    ?!@uint ioTemporaryVariableIndex,
+    ?!@stringset ioUnusedVariableCppNameSet,
+    ?let @bool unused inGenerateSyntaxDirectedTranslationString,
+    ?!@string ioGeneratedCode) {
     ioInclusionSet ++= "grammar-" + self.mGrammarName.fileNameRepresentation
   //--- Source string
     [self.mSourceFileExpression generateExpression
@@ -642,12 +634,11 @@ override method @grammarInStringInstructionAST analyzeSemanticInstruction
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method @grammarInstructionWithSourceExpressionForGeneration generateInstruction
-    ?!@stringset ioInclusionSet
-    ?!@uint ioTemporaryVariableIndex
-    ?!@stringset ioUnusedVariableCppNameSet
-    ?let @bool unused inGenerateSyntaxDirectedTranslationString
-    ?!@string ioGeneratedCode {
+  override method @grammarInstructionWithSourceExpressionForGeneration generateInstruction (?!@stringset ioInclusionSet,
+    ?!@uint ioTemporaryVariableIndex,
+    ?!@stringset ioUnusedVariableCppNameSet,
+    ?let @bool unused inGenerateSyntaxDirectedTranslationString,
+    ?!@string ioGeneratedCode) {
     ioInclusionSet ++= "grammar-" + self.mGrammarName.fileNameRepresentation
   //--- Source string
     [self.mSourceStringExpression generateExpression

@@ -486,9 +486,9 @@ override method @lexicalFunctionInputArgumentAST checkLexicalRoutineCallArgument
 //                       checkLexicalInstruction
 //--------------------------------------------------------------------------------------------------
 
-abstract method @lexicalInstructionAST checkLexicalInstruction
-  ?!@lexiqueAnalysisContext unused ioLexiqueAnalysisContext
-  ?!@lexicalTagMap unused ioTagMap
+abstract method @lexicalInstructionAST checkLexicalInstruction (
+                         ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext,
+                         ?!@lexicalTagMap unused ioTagMap) 
 
 //--------------------------------------------------------------------------------------------------
 //                         compileLexiqueComponent

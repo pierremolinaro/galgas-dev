@@ -132,7 +132,7 @@ final class @classFuncExpressionAST : @semanticExpressionAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method enterExpressionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
+  override method enterExpressionInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
     if self.typeName.string != "" then
       [!?ioTypeMap makeEntry !self.typeName ?*]
     end

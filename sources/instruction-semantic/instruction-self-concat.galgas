@@ -23,8 +23,8 @@ syntax extension galgas3InstructionsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <semantic_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
-                                   !@semanticInstructionAST outInstruction {
+  rule <semantic_instruction_ggs3> (?!@galgasDeclarationAST ioDeclarations,
+                                    !@semanticInstructionAST outInstruction) {
     $self$
     let instructionLocation = @location.here
     $+=$
@@ -37,8 +37,8 @@ syntax extension galgas3InstructionsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <semantic_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
-                                   !@semanticInstructionAST outInstruction {
+  rule <semantic_instruction_ggs3> (?!@galgasDeclarationAST ioDeclarations,
+                                    !@semanticInstructionAST outInstruction) {
     $self$
     let instructionLocation = @location.here
     $+=$
@@ -51,8 +51,8 @@ syntax extension galgas3InstructionsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <semantic_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
-                                   !@semanticInstructionAST outInstruction {
+  rule <semantic_instruction_ggs3> (?!@galgasDeclarationAST ioDeclarations,
+                                    !@semanticInstructionAST outInstruction) {
     $self$
     let instructionLocation = @location.here
     $-=$
@@ -65,8 +65,8 @@ syntax extension galgas3InstructionsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <semantic_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
-                                   !@semanticInstructionAST outInstruction {
+  rule <semantic_instruction_ggs3> (?!@galgasDeclarationAST ioDeclarations,
+                                    !@semanticInstructionAST outInstruction) {
     $self$
     let instructionLocation = @location.here
     $*=$
@@ -79,8 +79,8 @@ syntax extension galgas3InstructionsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <semantic_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
-                                   !@semanticInstructionAST outInstruction {
+  rule <semantic_instruction_ggs3> (?!@galgasDeclarationAST ioDeclarations,
+                                    !@semanticInstructionAST outInstruction) {
     $self$
     let instructionLocation = @location.here
     $/=$
@@ -116,8 +116,8 @@ syntax extension galgas4InstructionsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <semantic_instruction> ?!@galgasDeclarationAST ioDeclarations
-                              !@semanticInstructionAST outInstruction {
+  rule <semantic_instruction> (?!@galgasDeclarationAST ioDeclarations,
+                               !@semanticInstructionAST outInstruction) {
     $self$
     let instructionLocation = @location.here
     $+=$
@@ -130,8 +130,8 @@ syntax extension galgas4InstructionsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <semantic_instruction> ?!@galgasDeclarationAST ioDeclarations
-                              !@semanticInstructionAST outInstruction {
+  rule <semantic_instruction> (?!@galgasDeclarationAST ioDeclarations,
+                               !@semanticInstructionAST outInstruction) {
     $self$
     let instructionLocation = @location.here
     $-=$
@@ -144,8 +144,8 @@ syntax extension galgas4InstructionsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <semantic_instruction> ?!@galgasDeclarationAST ioDeclarations
-                              !@semanticInstructionAST outInstruction {
+  rule <semantic_instruction> (?!@galgasDeclarationAST ioDeclarations,
+                               !@semanticInstructionAST outInstruction) {
     $self$
     let instructionLocation = @location.here
     $*=$
@@ -158,8 +158,8 @@ syntax extension galgas4InstructionsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <semantic_instruction> ?!@galgasDeclarationAST ioDeclarations
-                              !@semanticInstructionAST outInstruction {
+  rule <semantic_instruction> (?!@galgasDeclarationAST ioDeclarations,
+                               !@semanticInstructionAST outInstruction) {
     $self$
     let instructionLocation = @location.here
     $/=$
@@ -183,18 +183,19 @@ final class @selfDivEqualExpressionInstructionAST : @semanticInstructionAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method enterInstructionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
+  override method enterInstructionInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
     [self.mExpression enterExpressionInSemanticContext !?ioTypeMap]
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method analyzeSemanticInstruction ?let @lstring inUsefulnessCallerEntityName
-                                             ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-                                             ?let @analysisContext inAnalysisContext
-                                             ?!@unifiedTypeMap ioTypeMap
-                                             ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
-                                             ?!@localVarManager ioVariableMap {
+  override method analyzeSemanticInstruction  (
+                        ?let @lstring inUsefulnessCallerEntityName,
+                        ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
+                        ?let @analysisContext inAnalysisContext,
+                        ?!@unifiedTypeMap ioTypeMap,
+                        ?!@semanticInstructionListForGeneration ioInstructionListForGeneration,
+                        ?!@localVarManager ioVariableMap) {
   //--- Analyze "self", as receiver expression
     if let selfAvailable = inAnalysisContext.selfAvailability.getAvailable then
       if not selfAvailable.selfMutability.selfIsMutable then
@@ -251,18 +252,19 @@ final class @selfPlusEqualExpressionInstructionAST : @semanticInstructionAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method enterInstructionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
+  override method enterInstructionInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
     [self.mExpression enterExpressionInSemanticContext !?ioTypeMap]
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method analyzeSemanticInstruction ?let @lstring inUsefulnessCallerEntityName
-                                             ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-                                             ?let @analysisContext inAnalysisContext
-                                             ?!@unifiedTypeMap ioTypeMap
-                                             ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
-                                             ?!@localVarManager ioVariableMap {
+  override method analyzeSemanticInstruction  (
+                        ?let @lstring inUsefulnessCallerEntityName,
+                        ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
+                        ?let @analysisContext inAnalysisContext,
+                        ?!@unifiedTypeMap ioTypeMap,
+                        ?!@semanticInstructionListForGeneration ioInstructionListForGeneration,
+                        ?!@localVarManager ioVariableMap) {
   //--- Analyze "self", as receiver expression
     if let selfAvailable = inAnalysisContext.selfAvailability.getAvailable then
       if not selfAvailable.selfMutability.selfIsMutable then
@@ -319,18 +321,19 @@ final class @selfMinusEqualExpressionInstructionAST : @semanticInstructionAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method enterInstructionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
+  override method enterInstructionInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
     [self.mExpression enterExpressionInSemanticContext !?ioTypeMap]
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method analyzeSemanticInstruction ?let @lstring inUsefulnessCallerEntityName
-                                             ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-                                             ?let @analysisContext inAnalysisContext
-                                             ?!@unifiedTypeMap ioTypeMap
-                                             ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
-                                             ?!@localVarManager ioVariableMap {
+  override method analyzeSemanticInstruction  (
+                        ?let @lstring inUsefulnessCallerEntityName,
+                        ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
+                        ?let @analysisContext inAnalysisContext,
+                        ?!@unifiedTypeMap ioTypeMap,
+                        ?!@semanticInstructionListForGeneration ioInstructionListForGeneration,
+                        ?!@localVarManager ioVariableMap) {
   //--- Analyze "self", as receiver expression
     if let selfAvailable = inAnalysisContext.selfAvailability.getAvailable then
       if not selfAvailable.selfMutability.selfIsMutable then
@@ -387,18 +390,19 @@ final class @selfMulEqualExpressionInstructionAST : @semanticInstructionAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method enterInstructionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
+  override method enterInstructionInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
     [self.mExpression enterExpressionInSemanticContext !?ioTypeMap]
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method analyzeSemanticInstruction ?let @lstring inUsefulnessCallerEntityName
-                                             ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-                                             ?let @analysisContext inAnalysisContext
-                                             ?!@unifiedTypeMap ioTypeMap
-                                             ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
-                                             ?!@localVarManager ioVariableMap {
+  override method analyzeSemanticInstruction  (
+                        ?let @lstring inUsefulnessCallerEntityName,
+                        ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
+                        ?let @analysisContext inAnalysisContext,
+                        ?!@unifiedTypeMap ioTypeMap,
+                        ?!@semanticInstructionListForGeneration ioInstructionListForGeneration,
+                        ?!@localVarManager ioVariableMap) {
   //--- Analyze "self", as receiver expression
     if let selfAvailable = inAnalysisContext.selfAvailability.getAvailable then
       if not selfAvailable.selfMutability.selfIsMutable then
@@ -455,18 +459,19 @@ final class @selfPlusEqualElementsInstructionAST : @semanticInstructionAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method enterInstructionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
+  override method enterInstructionInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
     [self.mExpressions enterInSemanticContext !?ioTypeMap]
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method analyzeSemanticInstruction ?let @lstring inUsefulnessCallerEntityName
-                                             ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-                                             ?let @analysisContext inAnalysisContext
-                                             ?!@unifiedTypeMap ioTypeMap
-                                             ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
-                                             ?!@localVarManager ioVariableMap {
+  override method analyzeSemanticInstruction  (
+                        ?let @lstring inUsefulnessCallerEntityName,
+                        ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
+                        ?let @analysisContext inAnalysisContext,
+                        ?!@unifiedTypeMap ioTypeMap,
+                        ?!@semanticInstructionListForGeneration ioInstructionListForGeneration,
+                        ?!@localVarManager ioVariableMap) {
   //--- Analyze "self", as receiver expression
     if let selfAvailable = inAnalysisContext.selfAvailability.getAvailable then
       if not selfAvailable.selfMutability.selfIsMutable then

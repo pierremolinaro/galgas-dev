@@ -22,13 +22,11 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //--------------------------------------------------------------------------------------------------
 
-proc enterClassFunctionWithoutArgument
-  ?!@classFunctionMap ioClassFunctionMap
-  ?!@unifiedTypeMap ioUnifiedTypeMap
-  ?name:let @string inClassFunctionName
-  ?resultTypeName:let @string inReturnedTypeName
-  ?hasLexiqueArg:let @bool inHasLexiqueArgument
-{
+proc enterClassFunctionWithoutArgument (?!@classFunctionMap ioClassFunctionMap,
+  ?!@unifiedTypeMap ioUnifiedTypeMap,
+  ?name:let @string inClassFunctionName,
+  ?resultTypeName:let @string inReturnedTypeName,
+  ?hasLexiqueArg:let @bool inHasLexiqueArgument) {
   [!?ioUnifiedTypeMap makeEntryFromString
     !inReturnedTypeName
     ?let @unifiedTypeMapEntry returnedTypeIndex
@@ -43,15 +41,14 @@ proc enterClassFunctionWithoutArgument
 
 //--------------------------------------------------------------------------------------------------
 
-proc enterClassFunctionWithArgument
-  ?!@classFunctionMap ioClassFunctionMap
-  ?!@unifiedTypeMap ioUnifiedTypeMap
-  ?name:let @string inClassFunctionName
-  ?argTypeName:let @string inArgument1TypeName
-  ?argName:let @string inArgument1Name
-  ?resultTypeName:let @string inReturnedTypeName
-  ?hasLexiqueArg:let @bool inHasLexiqueArgument
-{
+proc enterClassFunctionWithArgument (
+  ?!@classFunctionMap ioClassFunctionMap,
+  ?!@unifiedTypeMap ioUnifiedTypeMap,
+  ?name:let @string inClassFunctionName,
+  ?argTypeName:let @string inArgument1TypeName,
+  ?argName:let @string inArgument1Name,
+  ?resultTypeName:let @string inReturnedTypeName,
+  ?hasLexiqueArg:let @bool inHasLexiqueArgument) {
   [!?ioUnifiedTypeMap makeEntryFromString !inReturnedTypeName ?let returnedTypeIndex]
   [!?ioUnifiedTypeMap makeEntryFromString !inArgument1TypeName ?let t]
   [!?ioClassFunctionMap insertOrReplace
@@ -64,17 +61,15 @@ proc enterClassFunctionWithArgument
 
 //--------------------------------------------------------------------------------------------------
 
-proc enterClassFunctionWith2Arguments
-  ?!@classFunctionMap ioClassFunctionMap
-  ?!@unifiedTypeMap ioUnifiedTypeMap
-  ?name:let @string inClassFunctionName
-  ?argTypeName1:let @string inArgument1TypeName
-  ?argName1:let @string inArgument1Name
-  ?argTypeName2:let @string inArgument2TypeName
-  ?argName2:let @string inArgument2Name
-  ?resultTypeName:let @string inReturnedTypeName
-  ?hasLexiqueArg:let @bool inHasLexiqueArgument
-{
+proc enterClassFunctionWith2Arguments (?!@classFunctionMap ioClassFunctionMap,
+  ?!@unifiedTypeMap ioUnifiedTypeMap,
+  ?name:let @string inClassFunctionName,
+  ?argTypeName1:let @string inArgument1TypeName,
+  ?argName1:let @string inArgument1Name,
+  ?argTypeName2:let @string inArgument2TypeName,
+  ?argName2:let @string inArgument2Name,
+  ?resultTypeName:let @string inReturnedTypeName,
+  ?hasLexiqueArg:let @bool inHasLexiqueArgument) {
   [!?ioUnifiedTypeMap makeEntryFromString !inReturnedTypeName ?let returnedTypeIndex]
   var argumentTypeList = @functionSignature ()
   var @unifiedTypeMapEntry t
@@ -92,19 +87,17 @@ proc enterClassFunctionWith2Arguments
 
 //--------------------------------------------------------------------------------------------------
 
-proc enterClassFunctionWith3Arguments
-  ?!@classFunctionMap ioClassFunctionMap
-  ?!@unifiedTypeMap ioUnifiedTypeMap
-  ?name:let @string inClassFunctionName
-  ?argTypeName1:let @string inArgument1TypeName
-  ?argName1:let @string inArgument1Name
-  ?argTypeName2:let @string inArgument2TypeName
-  ?argName2:let @string inArgument2Name
-  ?argTypeName3:let @string inArgument3TypeName
-  ?argName3:let @string inArgument3Name
-  ?resultTypeName:let @string inReturnedTypeName
-  ?hasLexiqueArg:let @bool inHasLexiqueArgument
-{
+proc enterClassFunctionWith3Arguments (?!@classFunctionMap ioClassFunctionMap,
+  ?!@unifiedTypeMap ioUnifiedTypeMap,
+  ?name:let @string inClassFunctionName,
+  ?argTypeName1:let @string inArgument1TypeName,
+  ?argName1:let @string inArgument1Name,
+  ?argTypeName2:let @string inArgument2TypeName,
+  ?argName2:let @string inArgument2Name,
+  ?argTypeName3:let @string inArgument3TypeName,
+  ?argName3:let @string inArgument3Name,
+  ?resultTypeName:let @string inReturnedTypeName,
+  ?hasLexiqueArg:let @bool inHasLexiqueArgument) {
   [!?ioUnifiedTypeMap makeEntryFromString !inReturnedTypeName ?let returnedTypeIndex]
   [!?ioUnifiedTypeMap makeEntryFromString !inArgument1TypeName ?var t]
   var @functionSignature argumentTypeList = @()

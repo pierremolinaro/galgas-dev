@@ -23,15 +23,15 @@ syntax extension galgas3InstructionsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <semantic_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
-                                   !@semanticInstructionAST outInstruction {
+  rule <semantic_instruction_ggs3> (?!@galgasDeclarationAST ioDeclarations,
+                                    !@semanticInstructionAST outInstruction) {
     <semantic_instruction_beginning_with_identifier> !?ioDeclarations !prefixedBySelf: false ?outInstruction
   }
   
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <semantic_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
-                                   !@semanticInstructionAST outInstruction {
+  rule <semantic_instruction_ggs3> (?!@galgasDeclarationAST ioDeclarations,
+                                    !@semanticInstructionAST outInstruction) {
     $self$
     $.$
     <semantic_instruction_beginning_with_identifier> !?ioDeclarations !prefixedBySelf: true ?outInstruction
@@ -39,9 +39,9 @@ syntax extension galgas3InstructionsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <semantic_instruction_beginning_with_identifier> ?!@galgasDeclarationAST ioDeclarations
-                                                        ?prefixedBySelf: let @bool inHasSelfPrefix
-                                                        !@semanticInstructionAST outInstruction {
+  rule <semantic_instruction_beginning_with_identifier> (?!@galgasDeclarationAST ioDeclarations,
+                                                         ?prefixedBySelf: let @bool inHasSelfPrefix,
+                                                         !@semanticInstructionAST outInstruction) {
     $identifier$ ?let @lstring receiverName
     let instructionLocation = @location.here
     var @lstringlist propertyList = @()
@@ -154,8 +154,8 @@ syntax extension galgas3InstructionsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <non_empty_output_expression_list_ggs3> ?!@galgasDeclarationAST ioDeclarations
-                                               !@actualOutputArgumentList outExpressionList {
+  rule <non_empty_output_expression_list_ggs3> (?!@galgasDeclarationAST ioDeclarations,
+                                                !@actualOutputArgumentList outExpressionList) {
     outExpressionList = @()
     repeat
       let @lstring selector
@@ -179,15 +179,15 @@ syntax extension galgas4InstructionsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <semantic_instruction> ?!@galgasDeclarationAST ioDeclarations
-                              !@semanticInstructionAST outInstruction {
+  rule <semantic_instruction> (?!@galgasDeclarationAST ioDeclarations,
+                               !@semanticInstructionAST outInstruction) {
     <semantic_instruction_beginning_with_identifier> !?ioDeclarations !prefixedBySelf: false ?outInstruction
   }
   
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <semantic_instruction> ?!@galgasDeclarationAST ioDeclarations
-                              !@semanticInstructionAST outInstruction {
+  rule <semantic_instruction> (?!@galgasDeclarationAST ioDeclarations,
+                               !@semanticInstructionAST outInstruction) {
     $self$
     $.$
     <semantic_instruction_beginning_with_identifier> !?ioDeclarations !prefixedBySelf: true ?outInstruction
@@ -195,9 +195,9 @@ syntax extension galgas4InstructionsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <semantic_instruction_beginning_with_identifier> ?!@galgasDeclarationAST ioDeclarations
-                                                        ?prefixedBySelf: let @bool inHasSelfPrefix
-                                                        !@semanticInstructionAST outInstruction {
+  rule <semantic_instruction_beginning_with_identifier> (?!@galgasDeclarationAST ioDeclarations,
+                                                         ?prefixedBySelf: let @bool inHasSelfPrefix,
+                                                         !@semanticInstructionAST outInstruction) {
     $identifier$ ?let @lstring receiverName
     let instructionLocation = @location.here
     var @lstringlist propertyList = @()
@@ -413,19 +413,19 @@ final class @opAssignExpressionInstructionAST : @semanticInstructionAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   
-  override method enterInstructionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
+  override method enterInstructionInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
     [self.mExpression enterExpressionInSemanticContext !?ioTypeMap]
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method analyzeSemanticInstruction
-                    ?let @lstring inUsefulnessCallerEntityName
-                    ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-                    ?let @analysisContext inAnalysisContext
-                    ?!@unifiedTypeMap ioTypeMap
-                    ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
-                    ?!@localVarManager ioVariableMap {
+  override method analyzeSemanticInstruction (
+                        ?let @lstring inUsefulnessCallerEntityName,
+                        ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
+                        ?let @analysisContext inAnalysisContext,
+                        ?!@unifiedTypeMap ioTypeMap,
+                        ?!@semanticInstructionListForGeneration ioInstructionListForGeneration,
+                        ?!@localVarManager ioVariableMap) {
   //--- Check target variable, or self.property
     var @unifiedTypeMapEntry targetType
     let @string targetVariableCppName
@@ -511,19 +511,19 @@ final class @plusEqualElementsInstructionAST : @semanticInstructionAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method enterInstructionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
+  override method enterInstructionInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
     [self.mExpressions enterInSemanticContext !?ioTypeMap]
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method analyzeSemanticInstruction
-                            ?let @lstring inUsefulnessCallerEntityName
-                            ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-                            ?let @analysisContext inAnalysisContext
-                            ?!@unifiedTypeMap ioTypeMap
-                            ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
-                            ?!@localVarManager ioVariableMap {
+  override method analyzeSemanticInstruction (
+                        ?let @lstring inUsefulnessCallerEntityName,
+                        ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
+                        ?let @analysisContext inAnalysisContext,
+                        ?!@unifiedTypeMap ioTypeMap,
+                        ?!@semanticInstructionListForGeneration ioInstructionListForGeneration,
+                        ?!@localVarManager ioVariableMap) {
   //--- Check target variable, or self.property
     var @unifiedTypeMapEntry targetType
     let @string targetVariableCppName
@@ -620,19 +620,19 @@ final class @plusPlusEqualElementInstructionAST : @semanticInstructionAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method enterInstructionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
+  override method enterInstructionInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
     [self.mExpression enterExpressionInSemanticContext !?ioTypeMap]
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method analyzeSemanticInstruction
-                            ?let @lstring inUsefulnessCallerEntityName
-                            ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-                            ?let @analysisContext inAnalysisContext
-                            ?!@unifiedTypeMap ioTypeMap
-                            ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
-                            ?!@localVarManager ioVariableMap {
+  override method analyzeSemanticInstruction (
+                        ?let @lstring inUsefulnessCallerEntityName,
+                        ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
+                        ?let @analysisContext inAnalysisContext,
+                        ?!@unifiedTypeMap ioTypeMap,
+                        ?!@semanticInstructionListForGeneration ioInstructionListForGeneration,
+                        ?!@localVarManager ioVariableMap) {
   //--- Check target variable, or self.property
     var @unifiedTypeMapEntry targetType
     let @string targetVariableCppName
@@ -724,12 +724,11 @@ final class @plusEqualnstructionForGeneration : @semanticInstructionForGeneratio
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method generateInstruction
-    ?!@stringset ioInclusionSet
-    ?!@uint ioTemporaryVariableIndex
-    ?!@stringset ioUnusedVariableCppNameSet
-    ?let @bool unused inGenerateSyntaxDirectedTranslationString
-    ?!@string ioGeneratedCode {
+  override method generateInstruction (?!@stringset ioInclusionSet,
+    ?!@uint ioTemporaryVariableIndex,
+    ?!@stringset ioUnusedVariableCppNameSet,
+    ?let @bool unused inGenerateSyntaxDirectedTranslationString,
+    ?!@string ioGeneratedCode) {
   //--- Parameters
     [self.mTargetType addHeaderFileName !?ioInclusionSet]
     var parameterList = @stringlist ()
@@ -780,12 +779,11 @@ final class @opAssignInstructionForGeneration : @semanticInstructionForGeneratio
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method generateInstruction
-    ?!@stringset ioInclusionSet
-    ?!@uint ioTemporaryVariableIndex
-    ?!@stringset ioUnusedVariableCppNameSet
-    ?let @bool unused inGenerateSyntaxDirectedTranslationString
-    ?!@string ioGeneratedCode {
+  override method generateInstruction (?!@stringset ioInclusionSet,
+    ?!@uint ioTemporaryVariableIndex,
+    ?!@stringset ioUnusedVariableCppNameSet,
+    ?let @bool unused inGenerateSyntaxDirectedTranslationString,
+    ?!@string ioGeneratedCode) {
     [self.mTargetType addHeaderFileName !?ioInclusionSet]
     [self.mSourceExpression generateExpression
       !?ioGeneratedCode
@@ -822,12 +820,11 @@ final class @plusPlusAssignInstructionForGeneration : @semanticInstructionForGen
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method generateInstruction
-    ?!@stringset ioInclusionSet
-    ?!@uint ioTemporaryVariableIndex
-    ?!@stringset ioUnusedVariableCppNameSet
-    ?let @bool unused inGenerateSyntaxDirectedTranslationString
-    ?!@string ioGeneratedCode {
+  override method generateInstruction (?!@stringset ioInclusionSet,
+    ?!@uint ioTemporaryVariableIndex,
+    ?!@stringset ioUnusedVariableCppNameSet,
+    ?let @bool unused inGenerateSyntaxDirectedTranslationString,
+    ?!@string ioGeneratedCode) {
     [self.mTargetType addHeaderFileName !?ioInclusionSet]
     [self.mSourceExpression generateExpression
       !?ioGeneratedCode

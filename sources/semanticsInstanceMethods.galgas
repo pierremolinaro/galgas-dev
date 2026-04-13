@@ -22,11 +22,9 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //--------------------------------------------------------------------------------------------------
 
-proc enterInstanceMethodWithoutArgument
-  ?!@instanceMethodMap ioInstanceMethodMap
-  ?methodName:let @string inInstanceMethodName
-  ?let @bool inHasCompilerArgument
-{
+proc enterInstanceMethodWithoutArgument (?!@instanceMethodMap ioInstanceMethodMap,
+  ?methodName:let @string inInstanceMethodName,
+  ?let @bool inHasCompilerArgument) {
   [!?ioInstanceMethodMap insertKey
     !inInstanceMethodName.nowhere
     !@methodKind.definedAsMember
@@ -40,12 +38,12 @@ proc enterInstanceMethodWithoutArgument
 
 //--------------------------------------------------------------------------------------------------
 
-proc enterInstanceMethodWithInputArgument ?!@instanceMethodMap ioInstanceMethodMap
-                                          ?!@unifiedTypeMap ioUnifiedTypeMap
-                                          ?inputArgTypeName:let @string inInputArgumentTypeName
-                                          ?inputArgName:let @string inInputArgumentName
-                                          ?methodName:let @string inInstanceMethodName
-                                          ?let @bool inHasCompilerArgument {
+proc enterInstanceMethodWithInputArgument (?!@instanceMethodMap ioInstanceMethodMap,
+                                           ?!@unifiedTypeMap ioUnifiedTypeMap,
+                                           ?inputArgTypeName:let @string inInputArgumentTypeName,
+                                           ?inputArgName:let @string inInputArgumentName,
+                                           ?methodName:let @string inInstanceMethodName,
+                                           ?let @bool inHasCompilerArgument) {
   [!?ioUnifiedTypeMap makeEntryFromString !inInputArgumentTypeName ?let argumentTypeIndex]
   var @formalParameterSignature argList = @()
   argList += !"".nowhere !argumentTypeIndex !@formalArgumentPassingModeAST. argumentConstantIn !inInputArgumentName

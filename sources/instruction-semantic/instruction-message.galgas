@@ -31,8 +31,8 @@ syntax extension galgas3InstructionsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <semantic_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
-                                   !@semanticInstructionAST outInstruction {
+  rule <semantic_instruction_ggs3> (?!@galgasDeclarationAST ioDeclarations,
+                                    !@semanticInstructionAST outInstruction) {
     $message$
     let instructionLocation = @location.here
     <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST expression
@@ -66,9 +66,7 @@ syntax extension galgas4InstructionsSyntax {
 //! CONTEXT
 //--------------------------------------------------------------------------------------------------
 
-override method @messageInstructionAST enterInstructionInSemanticContext
-  ?!@unifiedTypeMap ioTypeMap
-{
+override method @messageInstructionAST enterInstructionInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
   [self.mExpression enterExpressionInSemanticContext !?ioTypeMap]
 }
 
@@ -76,13 +74,13 @@ override method @messageInstructionAST enterInstructionInSemanticContext
 //! SEMANTICS
 //--------------------------------------------------------------------------------------------------
 
-override method @messageInstructionAST analyzeSemanticInstruction
-  ?let @lstring inUsefulnessCallerEntityName
-  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-  ?let @analysisContext inAnalysisContext
-                                ?!@unifiedTypeMap ioTypeMap
-  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
-  ?!@localVarManager ioVariableMap {
+override method @messageInstructionAST analyzeSemanticInstruction (
+                        ?let @lstring inUsefulnessCallerEntityName,
+                        ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
+                        ?let @analysisContext inAnalysisContext,
+                        ?!@unifiedTypeMap ioTypeMap,
+                        ?!@semanticInstructionListForGeneration ioInstructionListForGeneration,
+                        ?!@localVarManager ioVariableMap) {
 //--- Analyze source expression
   [self.mExpression analyzeSemanticExpression
     !usefulnessCallerEntityName: inUsefulnessCallerEntityName
@@ -115,13 +113,11 @@ final class @messageInstructionForGeneration : @semanticInstructionForGeneration
 
 //································································································*
 
-override method @messageInstructionForGeneration generateInstruction
-  ?!@stringset ioInclusionSet
-  ?!@uint ioTemporaryVariableIndex
-  ?!@stringset ioUnusedVariableCppNameSet
-  ?let @bool unused inGenerateSyntaxDirectedTranslationString
-  ?!@string ioGeneratedCode
-{
+override method @messageInstructionForGeneration generateInstruction (?!@stringset ioInclusionSet,
+  ?!@uint ioTemporaryVariableIndex,
+  ?!@stringset ioUnusedVariableCppNameSet,
+  ?let @bool unused inGenerateSyntaxDirectedTranslationString,
+  ?!@string ioGeneratedCode) {
 //--- Message expression
   [self.mExpression generateExpression
     !?ioGeneratedCode

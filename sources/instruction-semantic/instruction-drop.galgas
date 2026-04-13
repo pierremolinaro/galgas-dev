@@ -31,8 +31,8 @@ syntax extension galgas3InstructionsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <semantic_instruction_ggs3> ?!@galgasDeclarationAST unused ioDeclarations
-                                   !@semanticInstructionAST outInstruction {
+  rule <semantic_instruction_ggs3> (?!@galgasDeclarationAST unused ioDeclarations,
+                                    !@semanticInstructionAST outInstruction) {
     $drop$
     let instructionLocation = @location.here
     var @lstringlist dropList = @()
@@ -55,8 +55,8 @@ syntax extension galgas4InstructionsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <semantic_instruction> ?!@galgasDeclarationAST unused ioDeclarations
-                              !@semanticInstructionAST outInstruction {
+  rule <semantic_instruction> (?!@galgasDeclarationAST unused ioDeclarations,
+                               !@semanticInstructionAST outInstruction) {
     $drop$
     let instructionLocation = @location.here
     var @lstringlist dropList = @()
@@ -77,20 +77,19 @@ syntax extension galgas4InstructionsSyntax {
 //! CONTEXT
 //--------------------------------------------------------------------------------------------------
 
-override method @dropInstructionAST enterInstructionInSemanticContext ?!@unifiedTypeMap unused ioTypeMap {
+override method @dropInstructionAST enterInstructionInSemanticContext (?!@unifiedTypeMap unused ioTypeMap) {
 }
 
 //--------------------------------------------------------------------------------------------------
 //! SEMANTICS
 //--------------------------------------------------------------------------------------------------
 
-override method @dropInstructionAST analyzeSemanticInstruction
-                    ?let @lstring unused inUsefulnessCallerEntityName
-                    ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
-                    ?let @analysisContext unused inAnalysisContext
-                                ?!@unifiedTypeMap unused ioTypeMap
-                    ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
-                    ?!@localVarManager ioVariableMap {
+override method @dropInstructionAST analyzeSemanticInstruction (?let @lstring unused inUsefulnessCallerEntityName,
+                                                                ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph,
+                                                                ?let @analysisContext unused inAnalysisContext,
+                    						                          ?!@unifiedTypeMap unused ioTypeMap,
+                                   ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration,
+                                   ?!@localVarManager ioVariableMap) {
   for (mValue) in self.mDropList do
     [!?ioVariableMap searchForDropAccess !mValue]
   end

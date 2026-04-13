@@ -34,7 +34,7 @@ syntax extension galgas3LexiqueComponentSyntax {
 
  //································································································
 
-  rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
+  rule <declaration_ggs3> (?!@galgasDeclarationAST ioDeclarations) {
     $template$
     $lexique$
   //--- Lexique Component Name

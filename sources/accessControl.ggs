@@ -1,6 +1,6 @@
 //--------------------------------------------------------------------------------------------------
 //
-//  Copyright (C) 2023, ..., 2023 Pierre Molinaro.
+//  Copyright (C) 2023, ..., 2026 Pierre Molinaro.
 //
 //  MIT License
 //
@@ -24,7 +24,7 @@ syntax extension galgas3DeclarationsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <acces_control> !@AccessControlAST outAccessControl {
+  rule <acces_control> (!@AccessControlAST outAccessControl) {
     select
       outAccessControl = .publicAccess
     or
@@ -36,7 +36,7 @@ syntax extension galgas3DeclarationsSyntax {
         outAccessControl = .protectedAccess
       or
         $($
-        $identifier$ ?let value
+        $identifier$ (?let value)
         if value.string != "set" then
           error value.location : "only 'set' is allowed here"
         end
@@ -49,7 +49,7 @@ syntax extension galgas3DeclarationsSyntax {
         outAccessControl = .privateAccess
       or
         $($
-        $identifier$ ?let value
+        $identifier$ (?let value)
         if value.string != "set" then
           error value.location : "only 'set' is allowed here"
         end
@@ -59,11 +59,11 @@ syntax extension galgas3DeclarationsSyntax {
     or
       $fileprivate$
       select
-        outAccessControl = .fileprivateAccess {!declarationLocation: .here}
+        outAccessControl = .fileprivateAccess (!declarationLocation: .here)
       or
         $($
-        outAccessControl = .fileprivateSetAccess {!declarationLocation: .here}
-        $identifier$ ?let value
+        outAccessControl = .fileprivateSetAccess (!declarationLocation: .here)
+        $identifier$ (?let value)
         if value.string != "set" then
           error value.location : "only 'set' is allowed here"
         end
@@ -82,7 +82,7 @@ syntax extension galgas4DeclarationsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <acces_control> !@AccessControlAST outAccessControl {
+  rule <acces_control> (!@AccessControlAST outAccessControl) {
     select
       outAccessControl = .publicAccess
     or
@@ -94,7 +94,7 @@ syntax extension galgas4DeclarationsSyntax {
         outAccessControl = .protectedAccess
       or
         $($
-        $identifier$ ?let value
+        $identifier$ (?let value)
         if value.string != "set" then
           error value.location : "only 'set' is allowed here"
         end
@@ -107,7 +107,7 @@ syntax extension galgas4DeclarationsSyntax {
         outAccessControl = .privateAccess
       or
         $($
-        $identifier$ ?let value
+        $identifier$ (?let value)
         if value.string != "set" then
           error value.location : "only 'set' is allowed here"
         end
@@ -117,11 +117,11 @@ syntax extension galgas4DeclarationsSyntax {
     or
       $fileprivate$
       select
-        outAccessControl = .fileprivateSetAccess {!declarationLocation: .here}
+        outAccessControl = .fileprivateSetAccess (!declarationLocation: .here)
       or
         $($
-        $identifier$ ?let value
-        outAccessControl = .fileprivateSetAccess {!declarationLocation: .here}
+        $identifier$ (?let value)
+        outAccessControl = .fileprivateSetAccess (!declarationLocation: .here)
         if value.string != "set" then
           error value.location : "only 'set' is allowed here"
         end
@@ -147,7 +147,7 @@ enum @AccessControlAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  method checkCompatibilityWithLet ?let @location inLocation {
+  proc checkCompatibilityWithLet (?let @location inLocation) {
     switch self
     case publicAccess :
     case protectedAccess :
@@ -164,22 +164,22 @@ enum @AccessControlAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  getter accessControl ?forDeclaringType: let @unifiedTypeMapEntry inDeclaringType -> @AccessControl {
+  func accessControl (?forDeclaringType: let @unifiedTypeMapEntry inDeclaringType) -> @AccessControl {
     switch self
     case publicAccess :
       result = .publicAccess
     case protectedAccess :
-      result = .protectedAccess {!declaringType: inDeclaringType}
+      result = .protectedAccess (!declaringType: inDeclaringType)
     case protectedSetAccess :
-      result = .protectedSetAccess {!declaringType: inDeclaringType}
+      result = .protectedSetAccess (!declaringType: inDeclaringType)
     case privateAccess :
-      result = .privateAccess {!declaringType: inDeclaringType}
+      result = .privateAccess (!declaringType: inDeclaringType)
     case privateSetAccess :
-      result = .privateSetAccess {!declaringType: inDeclaringType}
+      result = .privateSetAccess (!declaringType: inDeclaringType)
     case fileprivateAccess (declarationLocation) :
-      result = .fileprivateAccess {!declarationLocation: declarationLocation}
+      result = .fileprivateAccess (!declarationLocation: declarationLocation)
     case fileprivateSetAccess (declarationLocation) :
-      result = .fileprivateSetAccess {!declarationLocation: declarationLocation}
+      result = .fileprivateSetAccess (!declarationLocation: declarationLocation)
     end
   }
 
@@ -200,15 +200,15 @@ enum @AccessControl {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  method checkSetAccess ?let @selfAvailability inOptionalCurrentType
-                        ?let @location inErrorLocation {
+  proc checkSetAccess (?let @selfAvailability inOptionalCurrentType,
+                       ?let @location inErrorLocation) {
     switch self
     case publicAccess :
     case protectedAccess (declaringType) :
       switch inOptionalCurrentType
       case none :
         error inErrorLocation : "inaccessible property (due to 'protected' qualifier)"
-      case available (t *) :
+      case available (t, *) :
         var currentType = t
         var ok = declaringType.typeName == currentType.typeName
         loop while (not ok) && (not currentType.definition.superType.isNull) do
@@ -223,7 +223,7 @@ enum @AccessControl {
       switch inOptionalCurrentType
       case none :
          warning inErrorLocation : "inaccessible property (due to 'protected(set)' qualifier)"
-      case available (t *) :
+      case available (t, *) :
         var currentType = t
         var ok = declaringType.typeName == currentType.typeName
         loop while (not ok) && (not currentType.definition.superType.isNull) do
@@ -238,7 +238,7 @@ enum @AccessControl {
       switch inOptionalCurrentType
       case none :
         error inErrorLocation : "inaccessible property (due to 'private' qualifier)"
-      case available (currentType *) :
+      case available (currentType, *) :
         if declaringType.typeName != currentType.typeName then
           error inErrorLocation : "inaccessible property (due to 'private' qualifier)"
         end
@@ -247,7 +247,7 @@ enum @AccessControl {
       switch inOptionalCurrentType
       case none :
          warning inErrorLocation : "inaccessible property (due to 'private(set)' qualifier)"
-      case available (currentType *) :
+      case available (currentType, *) :
         if declaringType.typeName != currentType.typeName then
           error inErrorLocation : "inaccessible property (due to 'private(set)' qualifier)"
         end
@@ -265,8 +265,8 @@ enum @AccessControl {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  method checkGetAccess ?let @selfAvailability inOptionalCurrentType
-                        ?let @location inErrorLocation {
+  proc checkGetAccess (?let @selfAvailability inOptionalCurrentType,
+                       ?let @location inErrorLocation) {
     switch self
     case publicAccess :
     case protectedSetAccess (*) :
@@ -275,7 +275,7 @@ enum @AccessControl {
       switch inOptionalCurrentType
       case none :
         error inErrorLocation : "inaccessible property (due to 'private' qualifier)"
-      case available (t *) :
+      case available (t, *) :
         var currentType = t
         var ok = declaringType.typeName == currentType.typeName
         loop while (not ok) && (not currentType.definition.superType.isNull) do
@@ -290,7 +290,7 @@ enum @AccessControl {
       switch inOptionalCurrentType
       case none :
         error inErrorLocation : "inaccessible property (due to 'private' qualifier)"
-      case available (currentType *) :
+      case available (currentType, *) :
         if declaringType.typeName != currentType.typeName then
           error inErrorLocation : "inaccessible property (due to 'private' qualifier)"
         end

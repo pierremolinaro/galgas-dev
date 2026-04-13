@@ -25,16 +25,16 @@ list @actualParameterListAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  method analyzeRoutineArguments?let @lstring inUsefulnessCallerEntityName
-                                ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-                                ?let @analysisContext inAnalysisContext
-                                ?!@unifiedTypeMap ioTypeMap
-                                ?let @lstring inRoutineName
-                                ?invokedEntityNameForErrorSignaling: let @string inInvokedEntityName
-                                ?let @formalParameterSignature inRoutineSignature
-                                ?!@localVarManager ioVariableMap
-                                ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
-                                !@actualParameterListForGeneration outActualParameterListForGeneration {
+  method analyzeRoutineArguments (?let @lstring inUsefulnessCallerEntityName,
+                                  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
+                                  ?let @analysisContext inAnalysisContext,
+                                  ?!@unifiedTypeMap ioTypeMap,
+                                  ?let @lstring inRoutineName,
+                                  ?invokedEntityNameForErrorSignaling: let @string inInvokedEntityName,
+                                  ?let @formalParameterSignature inRoutineSignature,
+                                  ?!@localVarManager ioVariableMap,
+                                  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration,
+                                  !@actualParameterListForGeneration outActualParameterListForGeneration) {
     if inRoutineSignature.count != self.count then
       error inRoutineName
       : "the " + inInvokedEntityName + " defines " + inRoutineSignature.count
@@ -82,22 +82,22 @@ abstract class @actualParameterAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  abstract method enterInActualOutputParameterList ?!@actualOutputArgumentList ioActualOutputArgumentList
+  abstract method enterInActualOutputParameterList (?!@actualOutputArgumentList ioActualOutputArgumentList)
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  abstract method checkAgainstFormalArgument
-    ?let @lstring inUsefulnessCallerEntityName
-    ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-    ?let @analysisContext inAnalysisContext
-    ?!@unifiedTypeMap ioTypeMap
-    ?let @lstring inFormalSelector
-    ?let @unifiedTypeMapEntry inFormalArgumentType
-    ?let @formalArgumentPassingModeAST inFormalArgumentPassingMode
-    ?!@localVarManager ioVariableMap
-    ?!@actualParameterListForGeneration ioActualParameterListForGeneration
-    ?!@stringset ioExclusiveVariableSet
-    ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+  abstract method checkAgainstFormalArgument (
+    ?let @lstring inUsefulnessCallerEntityName,
+    ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
+    ?let @analysisContext inAnalysisContext,
+    ?!@unifiedTypeMap ioTypeMap,
+    ?let @lstring inFormalSelector,
+    ?let @unifiedTypeMapEntry inFormalArgumentType,
+    ?let @formalArgumentPassingModeAST inFormalArgumentPassingMode,
+    ?!@localVarManager ioVariableMap,
+    ?!@actualParameterListForGeneration ioActualParameterListForGeneration,
+    ?!@stringset ioExclusiveVariableSet,
+    ?!@semanticInstructionListForGeneration ioInstructionListForGeneration)
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -112,14 +112,14 @@ final class @outputActualParameterAST : @actualParameterAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method enterParameterInSemanticContext ?!@unifiedTypeMap ioTypeMap {
+  override method enterParameterInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
     [self.mOutputActualParameterExpression enterExpressionInSemanticContext !?ioTypeMap]
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override getter isCompatibleWith ?let @formalArgumentPassingModeAST inFormalPassingMode
-                                   ?let @string inSelector -> @bool {
+  override getter isCompatibleWith (?let @formalArgumentPassingModeAST inFormalPassingMode,
+                                    ?let @string inSelector) -> @bool {
     result = (inFormalPassingMode == .argumentConstantIn) || (inFormalPassingMode == .argumentVarIn)
     if result then
       result = self.mActualSelector.string == inSelector
@@ -128,7 +128,7 @@ final class @outputActualParameterAST : @actualParameterAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method enterInActualOutputParameterList ?!@actualOutputArgumentList ioActualOutputArgumentList {
+  override method enterInActualOutputParameterList (?!@actualOutputArgumentList ioActualOutputArgumentList) {
     ioActualOutputArgumentList +=
       !self.mActualSelector
       !self.mOutputActualParameterExpression
@@ -137,18 +137,18 @@ final class @outputActualParameterAST : @actualParameterAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method checkAgainstFormalArgument
-                                  ?let @lstring inUsefulnessCallerEntityName
-                                  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-                                  ?let @analysisContext inAnalysisContext
-                                  ?!@unifiedTypeMap ioTypeMap
-                                  ?let @lstring inFormalSelector
-                                  ?let @unifiedTypeMapEntry inFormalArgumentType
-                                  ?let @formalArgumentPassingModeAST inFormalArgumentPassingMode
-                                  ?!@localVarManager ioVariableMap
-                                  ?!@actualParameterListForGeneration ioActualParameterListForGeneration
-                                  ?!@stringset unused ioExclusiveVariableSet
-                                  ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration {
+  override method checkAgainstFormalArgument (
+                                  ?let @lstring inUsefulnessCallerEntityName,
+                                  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
+                                  ?let @analysisContext inAnalysisContext,
+                                  ?!@unifiedTypeMap ioTypeMap,
+                                  ?let @lstring inFormalSelector,
+                                  ?let @unifiedTypeMapEntry inFormalArgumentType,
+                                  ?let @formalArgumentPassingModeAST inFormalArgumentPassingMode,
+                                  ?!@localVarManager ioVariableMap,
+                                  ?!@actualParameterListForGeneration ioActualParameterListForGeneration,
+                                  ?!@stringset unused ioExclusiveVariableSet,
+                                  ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration) {
     if (inFormalArgumentPassingMode != .argumentVarIn)
      & (inFormalArgumentPassingMode != .argumentConstantIn) then
       error self.mActualSelector
@@ -197,13 +197,13 @@ final class @outputInputActualParameterAST : @actualParameterAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method enterParameterInSemanticContext ?!@unifiedTypeMap unused ioTypeMap {
+  override method enterParameterInSemanticContext (?!@unifiedTypeMap unused ioTypeMap) {
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override getter isCompatibleWith ?let @formalArgumentPassingModeAST inFormalPassingMode
-                                   ?let @string inSelector -> @bool {
+  override getter isCompatibleWith (?let @formalArgumentPassingModeAST inFormalPassingMode,
+                                    ?let @string inSelector) -> @bool {
     result = inFormalPassingMode == .argumentInOut
     if result then
       result = self.mActualSelector.string == inSelector
@@ -212,24 +212,24 @@ final class @outputInputActualParameterAST : @actualParameterAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method enterInActualOutputParameterList ?!@actualOutputArgumentList unused ioActualOutputArgumentList {
+  override method enterInActualOutputParameterList (?!@actualOutputArgumentList unused ioActualOutputArgumentList) {
     error self.mActualSelector : "a getter does not support output/input parameter"
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method checkAgainstFormalArgument
-                              ?let @lstring unused inUsefulnessCallerEntityName
-                              ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
-                              ?let @analysisContext inAnalysisContext
-                              ?!@unifiedTypeMap unused ioTypeMap
-                              ?let @lstring inFormalSelector
-                              ?let @unifiedTypeMapEntry inFormalArgumentType
-                              ?let @formalArgumentPassingModeAST inFormalArgumentPassingMode
-                              ?!@localVarManager ioVariableMap
-                              ?!@actualParameterListForGeneration ioActualParameterListForGeneration
-                              ?!@stringset ioExclusiveVariableSet
-                              ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration {
+  override method checkAgainstFormalArgument (
+                              ?let @lstring unused inUsefulnessCallerEntityName,
+                              ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph,
+                              ?let @analysisContext inAnalysisContext,
+                              ?!@unifiedTypeMap unused ioTypeMap,
+                              ?let @lstring inFormalSelector,
+                              ?let @unifiedTypeMapEntry inFormalArgumentType,
+                              ?let @formalArgumentPassingModeAST inFormalArgumentPassingMode,
+                              ?!@localVarManager ioVariableMap,
+                              ?!@actualParameterListForGeneration ioActualParameterListForGeneration,
+                              ?!@stringset ioExclusiveVariableSet,
+                              ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration) {
     if inFormalArgumentPassingMode != .argumentInOut then
       error self.mActualSelector
       :"the corresponding formal argument has the '" + inFormalArgumentPassingMode.string
@@ -295,14 +295,14 @@ final class @outputInputJokerParameterAST : @actualParameterAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method enterParameterInSemanticContext ?!@unifiedTypeMap ioTypeMap {
+  override method enterParameterInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
     [self.expression enterExpressionInSemanticContext !?ioTypeMap]
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override getter isCompatibleWith ?let @formalArgumentPassingModeAST inFormalPassingMode
-                                   ?let @string inSelector -> @bool {
+  override getter isCompatibleWith (?let @formalArgumentPassingModeAST inFormalPassingMode,
+                                    ?let @string inSelector) -> @bool {
     result = inFormalPassingMode == .argumentInOut
     if result then
       result = self.mActualSelector.string == inSelector
@@ -311,24 +311,24 @@ final class @outputInputJokerParameterAST : @actualParameterAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method enterInActualOutputParameterList ?!@actualOutputArgumentList unused ioActualOutputArgumentList {
+  override method enterInActualOutputParameterList (?!@actualOutputArgumentList unused ioActualOutputArgumentList) {
     error self.mActualSelector : "a getter does not support output/input parameter"
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method checkAgainstFormalArgument
-                                  ?let @lstring inUsefulnessCallerEntityName
-                                  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-                                  ?let @analysisContext inAnalysisContext
-                                  ?!@unifiedTypeMap ioTypeMap
-                                  ?let @lstring inFormalSelector
-                                  ?let @unifiedTypeMapEntry inFormalArgumentType
-                                  ?let @formalArgumentPassingModeAST inFormalArgumentPassingMode
-                                  ?!@localVarManager ioVariableMap
-                                  ?!@actualParameterListForGeneration ioActualParameterListForGeneration
-                                  ?!@stringset unused ioExclusiveVariableSet
-                                  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration {
+  override method checkAgainstFormalArgument (
+                                  ?let @lstring inUsefulnessCallerEntityName,
+                                  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
+                                  ?let @analysisContext inAnalysisContext,
+                                  ?!@unifiedTypeMap ioTypeMap,
+                                  ?let @lstring inFormalSelector,
+                                  ?let @unifiedTypeMapEntry inFormalArgumentType,
+                                  ?let @formalArgumentPassingModeAST inFormalArgumentPassingMode,
+                                  ?!@localVarManager ioVariableMap,
+                                  ?!@actualParameterListForGeneration ioActualParameterListForGeneration,
+                                  ?!@stringset unused ioExclusiveVariableSet,
+                                  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration) {
     if inFormalArgumentPassingMode != .argumentInOut then
       error self.mActualSelector
       : "the corresponding formal argument has the '" + inFormalArgumentPassingMode.string
@@ -643,13 +643,13 @@ final class @inputActualSelfParameterAST : @actualParameterAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method enterParameterInSemanticContext ?!@unifiedTypeMap unused ioTypeMap {
+  override method enterParameterInSemanticContext (?!@unifiedTypeMap unused ioTypeMap) {
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override getter isCompatibleWith ?let @formalArgumentPassingModeAST inFormalPassingMode
-                                   ?let @string inSelector -> @bool {
+  override getter isCompatibleWith (?let @formalArgumentPassingModeAST inFormalPassingMode,
+                                    ?let @string inSelector) -> @bool {
     result = inFormalPassingMode == .argumentOut
     if result then
       result = self.mActualSelector.string == inSelector
@@ -658,25 +658,24 @@ final class @inputActualSelfParameterAST : @actualParameterAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method enterInActualOutputParameterList ?!@actualOutputArgumentList unused ioActualOutputArgumentList {
+  override method enterInActualOutputParameterList (?!@actualOutputArgumentList unused ioActualOutputArgumentList) {
     error self.mActualSelector : "a getter does not support input parameter"
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method checkAgainstFormalArgument
-    ?let @lstring unused inUsefulnessCallerEntityName
-    ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
-    ?let @analysisContext inAnalysisContext
-                                  ?!@unifiedTypeMap unused ioTypeMap
-    ?let @lstring inFormalSelector
-    ?let @unifiedTypeMapEntry inFormalArgumentType
-    ?let @formalArgumentPassingModeAST inFormalArgumentPassingMode
-    ?!@localVarManager ioVariableMap
-    ?!@actualParameterListForGeneration ioActualParameterListForGeneration
-    ?!@stringset unused ioExclusiveVariableSet
-    ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
-  {
+  override method checkAgainstFormalArgument (
+    ?let @lstring unused inUsefulnessCallerEntityName,
+    ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph,
+    ?let @analysisContext inAnalysisContext,
+                                  ?!@unifiedTypeMap unused ioTypeMap,
+    ?let @lstring inFormalSelector,
+    ?let @unifiedTypeMapEntry inFormalArgumentType,
+    ?let @formalArgumentPassingModeAST inFormalArgumentPassingMode,
+    ?!@localVarManager ioVariableMap,
+    ?!@actualParameterListForGeneration ioActualParameterListForGeneration,
+    ?!@stringset unused ioExclusiveVariableSet,
+    ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration) {
     if inFormalArgumentPassingMode != .argumentOut then
       error self.mActualSelector
       :"the corresponding formal argument has the '" + inFormalArgumentPassingMode.string
@@ -734,13 +733,13 @@ final class @inputActualNewVariableParameterAST : @actualParameterAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method enterParameterInSemanticContext ?!@unifiedTypeMap unused ioTypeMap {
+  override method enterParameterInSemanticContext (?!@unifiedTypeMap unused ioTypeMap) {
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override getter isCompatibleWith ?let @formalArgumentPassingModeAST inFormalPassingMode
-                                   ?let @string inSelector -> @bool {
+  override getter isCompatibleWith (?let @formalArgumentPassingModeAST inFormalPassingMode,
+                                    ?let @string inSelector) -> @bool {
     result = inFormalPassingMode == .argumentOut
     if result then
       result = self.mActualSelector.string == inSelector
@@ -749,25 +748,24 @@ final class @inputActualNewVariableParameterAST : @actualParameterAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method enterInActualOutputParameterList ?!@actualOutputArgumentList unused ioActualOutputArgumentList {
+  override method enterInActualOutputParameterList (?!@actualOutputArgumentList unused ioActualOutputArgumentList) {
     error self.mActualSelector : "a getter does not support input parameter"
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method checkAgainstFormalArgument
-    ?let @lstring unused inUsefulnessCallerEntityName
-    ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
-    ?let @analysisContext unused inAnalysisContext
-    ?!@unifiedTypeMap ioTypeMap
-    ?let @lstring inFormalSelector
-    ?let @unifiedTypeMapEntry inFormalArgumentType
-    ?let @formalArgumentPassingModeAST inFormalArgumentPassingMode
-    ?!@localVarManager ioVariableMap
-    ?!@actualParameterListForGeneration ioActualParameterListForGeneration
-    ?!@stringset ioExclusiveVariableSet
-    ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
-  {
+  override method checkAgainstFormalArgument (
+    ?let @lstring unused inUsefulnessCallerEntityName,
+    ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph,
+    ?let @analysisContext unused inAnalysisContext,
+    ?!@unifiedTypeMap ioTypeMap,
+    ?let @lstring inFormalSelector,
+    ?let @unifiedTypeMapEntry inFormalArgumentType,
+    ?let @formalArgumentPassingModeAST inFormalArgumentPassingMode,
+    ?!@localVarManager ioVariableMap,
+    ?!@actualParameterListForGeneration ioActualParameterListForGeneration,
+    ?!@stringset ioExclusiveVariableSet,
+    ?!@semanticInstructionListForGeneration ioInstructionListForGeneration) {
   //--- Check passing mode
     if inFormalArgumentPassingMode != @formalArgumentPassingModeAST.argumentOut then
       error self.mActualSelector
@@ -840,13 +838,13 @@ final class @inputActualNewConstantParameterAST : @actualParameterAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method enterParameterInSemanticContext ?!@unifiedTypeMap unused ioTypeMap {
+  override method enterParameterInSemanticContext (?!@unifiedTypeMap unused ioTypeMap) {
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override getter isCompatibleWith ?let @formalArgumentPassingModeAST inFormalPassingMode
-                                   ?let @string inSelector -> @bool {
+  override getter isCompatibleWith (?let @formalArgumentPassingModeAST inFormalPassingMode,
+                                    ?let @string inSelector) -> @bool {
     result = inFormalPassingMode == .argumentOut
     if result then
       result = self.mActualSelector.string == inSelector
@@ -855,25 +853,24 @@ final class @inputActualNewConstantParameterAST : @actualParameterAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method enterInActualOutputParameterList ?!@actualOutputArgumentList unused ioActualOutputArgumentList {
+  override method enterInActualOutputParameterList (?!@actualOutputArgumentList unused ioActualOutputArgumentList) {
     error self.mActualSelector : "a getter does not support input parameter"
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method checkAgainstFormalArgument
-    ?let @lstring unused inUsefulnessCallerEntityName
-    ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
-    ?let @analysisContext unused inAnalysisContext
-                                  ?!@unifiedTypeMap ioTypeMap
-    ?let @lstring inFormalSelector
-    ?let @unifiedTypeMapEntry inFormalArgumentType
-    ?let @formalArgumentPassingModeAST inFormalArgumentPassingMode
-    ?!@localVarManager ioVariableMap
-    ?!@actualParameterListForGeneration ioActualParameterListForGeneration
-    ?!@stringset ioExclusiveVariableSet
-    ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
-  {
+  override method checkAgainstFormalArgument (
+    ?let @lstring unused inUsefulnessCallerEntityName,
+    ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph,
+    ?let @analysisContext unused inAnalysisContext,
+                                  ?!@unifiedTypeMap ioTypeMap,
+    ?let @lstring inFormalSelector,
+    ?let @unifiedTypeMapEntry inFormalArgumentType,
+    ?let @formalArgumentPassingModeAST inFormalArgumentPassingMode,
+    ?!@localVarManager ioVariableMap,
+    ?!@actualParameterListForGeneration ioActualParameterListForGeneration,
+    ?!@stringset ioExclusiveVariableSet,
+    ?!@semanticInstructionListForGeneration ioInstructionListForGeneration) {
   //--- Check passing mode
     if inFormalArgumentPassingMode != @formalArgumentPassingModeAST. argumentOut then
       error self.mActualSelector
@@ -951,13 +948,13 @@ final class @inputSingleJokerActualParameterAST : @actualParameterAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method enterParameterInSemanticContext ?!@unifiedTypeMap unused ioTypeMap {
+  override method enterParameterInSemanticContext (?!@unifiedTypeMap unused ioTypeMap) {
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override getter isCompatibleWith ?let @formalArgumentPassingModeAST inFormalPassingMode
-                                   ?let @string inSelector -> @bool {
+  override getter isCompatibleWith (?let @formalArgumentPassingModeAST inFormalPassingMode,
+                                    ?let @string inSelector) -> @bool {
     result = inFormalPassingMode == .argumentOut
     if result then
       result = self.mActualSelector.string == inSelector
@@ -966,24 +963,24 @@ final class @inputSingleJokerActualParameterAST : @actualParameterAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method enterInActualOutputParameterList ?!@actualOutputArgumentList unused ioActualOutputArgumentList {
+  override method enterInActualOutputParameterList (?!@actualOutputArgumentList unused ioActualOutputArgumentList) {
     error self.mActualSelector : "a getter does not support input parameter"
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method checkAgainstFormalArgument
-    ?let @lstring unused inUsefulnessCallerEntityName
-    ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
-    ?let @analysisContext unused inAnalysisContext
-                                  ?!@unifiedTypeMap unused ioTypeMap
-    ?let @lstring inFormalSelector
-    ?let @unifiedTypeMapEntry inFormalArgumentType
-    ?let @formalArgumentPassingModeAST inFormalArgumentPassingMode
-    ?!@localVarManager ioVariableMap
-    ?!@actualParameterListForGeneration ioActualParameterListForGeneration
-    ?!@stringset unused ioExclusiveVariableSet
-    ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration {
+  override method checkAgainstFormalArgument (
+                                  ?let @lstring unused inUsefulnessCallerEntityName,
+                                  ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph,
+                                  ?let @analysisContext unused inAnalysisContext,
+                                  ?!@unifiedTypeMap unused ioTypeMap,
+                                  ?let @lstring inFormalSelector,
+                                  ?let @unifiedTypeMapEntry inFormalArgumentType,
+                                  ?let @formalArgumentPassingModeAST inFormalArgumentPassingMode,
+                                  ?!@localVarManager ioVariableMap,
+                                  ?!@actualParameterListForGeneration ioActualParameterListForGeneration,
+                                  ?!@stringset unused ioExclusiveVariableSet,
+                                  ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration) {
     if inFormalArgumentPassingMode != @formalArgumentPassingModeAST. argumentOut then
       error self.mActualSelector
       :"the corresponding formal argument has the '" + inFormalArgumentPassingMode.string
@@ -1025,39 +1022,35 @@ final class @inputJokerActualParameterAST : @actualParameterAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method enterParameterInSemanticContext ?!@unifiedTypeMap unused ioTypeMap {
+  override method enterParameterInSemanticContext (?!@unifiedTypeMap unused ioTypeMap) {
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override getter isCompatibleWith ?let @formalArgumentPassingModeAST inFormalPassingMode
-                                   ?let @string unused inSelector -> @bool {
+  override getter isCompatibleWith (?let @formalArgumentPassingModeAST inFormalPassingMode,
+                                    ?let @string unused inSelector) -> @bool {
     result = inFormalPassingMode == .argumentOut
-//    if result then
-//      result = self.mActualSelector.string == inSelector
-//    end
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method enterInActualOutputParameterList ?!@actualOutputArgumentList unused ioActualOutputArgumentList {
+  override method enterInActualOutputParameterList (?!@actualOutputArgumentList unused ioActualOutputArgumentList) {
     error self.mQualifierLocation : "a getter does not support input parameter"
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method checkAgainstFormalArgument
-    ?let @lstring unused inUsefulnessCallerEntityName
-    ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
-    ?let @analysisContext unused inAnalysisContext
-                                  ?!@unifiedTypeMap unused ioTypeMap
-    ?let @lstring unused inFormalSelector
-    ?let @unifiedTypeMapEntry inFormalArgumentType
-    ?let @formalArgumentPassingModeAST inFormalArgumentPassingMode
-    ?!@localVarManager unused ioVariableMap
-    ?!@actualParameterListForGeneration ioActualParameterListForGeneration
-    ?!@stringset unused ioExclusiveVariableSet
-    ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration {
+  override method checkAgainstFormalArgument (?let @lstring unused inUsefulnessCallerEntityName,
+                                              ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph,
+                                              ?let @analysisContext unused inAnalysisContext,
+                                              ?!@unifiedTypeMap unused ioTypeMap,
+                                              ?let @lstring unused inFormalSelector,
+                                              ?let @unifiedTypeMapEntry inFormalArgumentType,
+                                              ?let @formalArgumentPassingModeAST inFormalArgumentPassingMode,
+     				    		   ?!@localVarManager unused ioVariableMap,
+                           ?!@actualParameterListForGeneration ioActualParameterListForGeneration,
+                           ?!@stringset unused ioExclusiveVariableSet,
+    							  ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration) {
     if inFormalArgumentPassingMode != @formalArgumentPassingModeAST.argumentOut then
       error self.mQualifierLocation
       :"the corresponding formal argument has the '" + inFormalArgumentPassingMode.string

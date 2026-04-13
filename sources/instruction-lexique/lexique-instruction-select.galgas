@@ -33,7 +33,7 @@ syntax extension galgas3LexiqueComponentSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
+  rule <lexical_instruction> (?!@lexicalInstructionListAST ioInstructionList) {
     $select$
     var @lexicalSelectBranchListAST lexicalWhileBranchList = @()
     repeat
@@ -71,7 +71,7 @@ syntax extension galgas4LexiqueComponentSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
+  rule <lexical_instruction> (?!@lexicalInstructionListAST ioInstructionList) {
     $select$
     var @lexicalSelectBranchListAST lexicalWhileBranchList = @()
     repeat
@@ -107,9 +107,9 @@ syntax extension galgas4LexiqueComponentSyntax {
 //! CHECK LEXICAL INSTRUCTION
 //--------------------------------------------------------------------------------------------------
 
-override method @lexicalSelectInstructionAST checkLexicalInstruction
-  ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
-  ?!@lexicalTagMap  ioTagMap {
+override method @lexicalSelectInstructionAST checkLexicalInstruction (
+                         ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext,
+                         ?!@lexicalTagMap ioTagMap)  {
   for (mSelectExpression mSelectInstructionList) in self.mLexicalSelectBranchList do
     [mSelectExpression checkLexicalExpression !?ioLexiqueAnalysisContext]
     var tagMap = @lexicalTagMap.mapWithMapToOverride{!ioTagMap}

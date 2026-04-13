@@ -33,8 +33,8 @@ syntax extension galgas3InstructionsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <semantic_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
-                                   !@semanticInstructionAST outInstruction {
+  rule <semantic_instruction_ggs3> (?!@galgasDeclarationAST ioDeclarations,
+                                    !@semanticInstructionAST outInstruction) {
     $warning$
     let instructionLocation = @location.here
     <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST mReceiverExpression
@@ -59,8 +59,8 @@ syntax extension galgas4InstructionsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <semantic_instruction> ?!@galgasDeclarationAST ioDeclarations
-                              !@semanticInstructionAST outInstruction {
+  rule <semantic_instruction> (?!@galgasDeclarationAST ioDeclarations,
+                               !@semanticInstructionAST outInstruction) {
     $warning$
     let instructionLocation = @location.here
     <expression> !?ioDeclarations ?let @semanticExpressionAST mReceiverExpression
@@ -83,7 +83,7 @@ syntax extension galgas4InstructionsSyntax {
 //! CONTEXT
 //--------------------------------------------------------------------------------------------------
 
-override method @warningInstructionAST enterInstructionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
+override method @warningInstructionAST enterInstructionInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
   [self.mLocationExpression enterExpressionInSemanticContext !?ioTypeMap]
   [self.mMessageExpression enterExpressionInSemanticContext !?ioTypeMap]
   [self.mFixitListAST enterFixItListInSemanticContext !?ioTypeMap]
@@ -93,13 +93,13 @@ override method @warningInstructionAST enterInstructionInSemanticContext ?!@unif
 //! SEMANTICS
 //--------------------------------------------------------------------------------------------------
 
-override method @warningInstructionAST analyzeSemanticInstruction
-  ?let @lstring inUsefulnessCallerEntityName
-  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-  ?let @analysisContext inAnalysisContext
-                                ?!@unifiedTypeMap ioTypeMap
-  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
-  ?!@localVarManager ioVariableMap {
+override method @warningInstructionAST analyzeSemanticInstruction (
+                        ?let @lstring inUsefulnessCallerEntityName,
+                        ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
+                        ?let @analysisContext inAnalysisContext,
+                        ?!@unifiedTypeMap ioTypeMap,
+                        ?!@semanticInstructionListForGeneration ioInstructionListForGeneration,
+                        ?!@localVarManager ioVariableMap) {
 //---
   analyzeErrorOrWarningInstruction (
     !inUsefulnessCallerEntityName
@@ -138,13 +138,11 @@ final class @warningInstructionForGeneration : @semanticInstructionForGeneration
 
 //·································································································
 
-override method @warningInstructionForGeneration generateInstruction
-  ?!@stringset ioInclusionSet
-  ?!@uint ioTemporaryVariableIndex
-  ?!@stringset ioUnusedVariableCppNameSet
-  ?let @bool inGenerateSyntaxDirectedTranslationString
-  ?!@string ioGeneratedCode
- {
+override method @warningInstructionForGeneration generateInstruction (?!@stringset ioInclusionSet,
+                                     ?!@uint ioTemporaryVariableIndex,
+                                     ?!@stringset ioUnusedVariableCppNameSet,
+                                     ?let @bool inGenerateSyntaxDirectedTranslationString,
+                                     ?!@string ioGeneratedCode) {
 //--- Receiver expression
   [self.mReceiverExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?let receiverCppVarName]
 //--- Receiver expression

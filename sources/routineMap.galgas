@@ -65,9 +65,9 @@ struct @routineMap {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  setter insertKey ?let @lstring inRoutineName
-                   ?let @formalParameterSignature inRoutineSignature
-                   ?isFilePrivate: let @bool inIsFilePrivate {
+  setter insertKey (?let @lstring inRoutineName,
+                    ?let @formalParameterSignature inRoutineSignature,
+                    ?isFilePrivate: let @bool inIsFilePrivate) {
     var @routineArgumentMap routineArgumentMap
     if [self.mInternalRoutineMap hasKey !inRoutineName] then
       [self.mInternalRoutineMap searchKey !inRoutineName ?routineArgumentMap]
@@ -89,11 +89,11 @@ struct @routineMap {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  method searchKey ?let @lstring inRoutineName
-                   ?actualParameters: @actualParameterListAST inActualParameterList
-                   !@formalParameterSignature outRoutineSignature
-                   !isFilePrivate: @bool outIsFilePrivate
-                   !routineMangledName: @lstring outRoutineMangledName {
+  method searchKey (?let @lstring inRoutineName,
+                    ?actualParameters: @actualParameterListAST inActualParameterList,
+                    !@formalParameterSignature outRoutineSignature,
+                    !isFilePrivate: @bool outIsFilePrivate,
+                    !routineMangledName: @lstring outRoutineMangledName) {
     if let routine = self.mInternalRoutineMap @[inRoutineName] then
       outIsFilePrivate = false
       outRoutineSignature = @()

@@ -118,7 +118,7 @@ syntax galgas3GuiComponentSyntax (galgasScanner3) {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
+  rule <declaration_ggs3> (?!@galgasDeclarationAST ioDeclarations) {
     $gui$
     $identifier$ ?let @lstring mGUIName
     ${$
@@ -153,7 +153,7 @@ syntax galgas3GuiComponentSyntax (galgasScanner3) {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <gui_with_lexique_declaration> ?!@withLexiqueListAST ioWithLexiqueList {
+  rule <gui_with_lexique_declaration> (?!@withLexiqueListAST ioWithLexiqueList) {
     $with$
     $lexique$
     $identifier$ ?let @lstring lexiqueReference
@@ -222,7 +222,7 @@ syntax galgas3GuiComponentSyntax (galgasScanner3) {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <gui_with_option_declaration> ?!@lstringlist ioImportedOptionList {
+  rule <gui_with_option_declaration> (?!@lstringlist ioImportedOptionList) {
     $with$
     $option$
     $identifier$ ?let @lstring optionReference
@@ -231,7 +231,7 @@ syntax galgas3GuiComponentSyntax (galgasScanner3) {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <gui_attributes> ?!@guiSimpleAttributeListAST ioSimpleGlobalAttributes {
+  rule <gui_attributes> (?!@guiSimpleAttributeListAST ioSimpleGlobalAttributes) {
     $identifier$ ?let @lstring mKey
     $:$
     var mValue = @lstring {!"" !.here}

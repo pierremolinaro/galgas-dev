@@ -33,7 +33,7 @@ syntax extension galgas3LexiqueComponentSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
+  rule <lexical_instruction> (?!@lexicalInstructionListAST ioInstructionList) {
     $rewind$
     $identifier$ ?let tagName
     $send$
@@ -51,7 +51,7 @@ syntax extension galgas4LexiqueComponentSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
+  rule <lexical_instruction> (?!@lexicalInstructionListAST ioInstructionList) {
     $rewind$
     $identifier$ ?let tagName
     $send$
@@ -67,18 +67,18 @@ syntax extension galgas4LexiqueComponentSyntax {
 //! CHECK LEXICAL INSTRUCTION
 //--------------------------------------------------------------------------------------------------
 
-override method @lexicalRewindInstructionAST checkLexicalInstruction
-  ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
-  ?!@lexicalTagMap ioTagMap {
+override method @lexicalRewindInstructionAST checkLexicalInstruction (
+  ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext,
+  ?!@lexicalTagMap ioTagMap) {
   [ioTagMap searchKey !self.mLexicalTagName]
   [ioLexiqueAnalysisContext.mTerminalMap searchKey !self.mTerminalName ?*]
 }
 
 //--------------------------------------------------------------------------------------------------
 
-override getter @lexicalRewindInstructionAST generateSwiftCocoaInstructionCode
-  ?let @string inScannerClassName
-  ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
+override getter @lexicalRewindInstructionAST generateSwiftCocoaInstructionCode (
+  ?let @string inScannerClassName,
+  ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext)
   -> @string outGeneratedCode {
   outGeneratedCode = "self.restoreScanningPoint (locationForTag_" + self.mLexicalTagName + ")\n"
   outGeneratedCode += "tokenCode = " + inScannerClassName + "_1_" + self.mTerminalName.string.identifierRepresentation + "\n"
@@ -94,9 +94,8 @@ override getter @lexicalRewindInstructionAST lexicalInstructionUsesLoopLocalVari
 
 //·································································································
 
-override getter @lexicalRewindInstructionAST generateLexicalInstructionCode
-  ?let @string unused inScannerClassName
-  ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
+override getter @lexicalRewindInstructionAST generateLexicalInstructionCode (?let @string unused inScannerClassName,
+  ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext)
   -> @string {
   result  = "mCurrentLocation = currentLocationForTag_" + self.mLexicalTagName + " ;\n"
   result += "mTokenEndLocation = endLocationForTag_" + self.mLexicalTagName + " ;\n"

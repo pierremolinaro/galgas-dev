@@ -23,8 +23,8 @@ syntax extension galgas3InstructionsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <comma_separated_expression_ggs3> ?!@galgasDeclarationAST ioDeclarations
-                                         !@CommaSeparatedExpressionList outExpressionList {
+  rule <comma_separated_expression_ggs3> (?!@galgasDeclarationAST ioDeclarations,
+                                          !@CommaSeparatedExpressionList outExpressionList) {
     outExpressionList = @()
     repeat
       select
@@ -85,8 +85,8 @@ syntax extension galgas4InstructionsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <comma_separated_expression> ?!@galgasDeclarationAST ioDeclarations
-                                    !@CommaSeparatedExpressionList outExpressionList {
+  rule <comma_separated_expression> (?!@galgasDeclarationAST ioDeclarations,
+                                     !@CommaSeparatedExpressionList outExpressionList) {
     outExpressionList = @()
     repeat
       select
@@ -161,7 +161,7 @@ list @CommaSeparatedExpressionList {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  method enterExpressionListInSemanticContext ?!@unifiedTypeMap ioTypeMap {
+  method enterExpressionListInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
     for (expression) in self do
       switch expression
       case regularExp (exp *) :
@@ -175,12 +175,12 @@ list @CommaSeparatedExpressionList {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  method analyzeSemanticExpressionList ?let @lstring inUsefulnessCallerEntityName
-                                       ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-                                       ?let @analysisContext inAnalysisContext
-                                       ?!@unifiedTypeMap ioTypeMap
-                                       ?!@localVarManager ioVariableMap
-                                       !@ifTestListForGeneration outTestListForGeneration {
+  method analyzeSemanticExpressionList (?let @lstring inUsefulnessCallerEntityName,
+                                       ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
+                                       ?let @analysisContext inAnalysisContext,
+                                       ?!@unifiedTypeMap ioTypeMap,
+                                       ?!@localVarManager ioVariableMap,
+                                       !@ifTestListForGeneration outTestListForGeneration) {
     outTestListForGeneration = @()
     for (expression) in self do
       switch expression
@@ -395,11 +395,11 @@ list @ifTestListForGeneration {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  
-  method generateInstruction ?!@stringset ioInclusionSet
-                             ?!@uint ioTemporaryVariableIndex
-                             ?!@stringset ioUnusedVariableCppNameSet
-                             ?!@string ioGeneratedCode
-                             !@string outTestVar {
+  method generateInstruction (?!@stringset ioInclusionSet,
+                              ?!@uint ioTemporaryVariableIndex,
+                              ?!@stringset ioUnusedVariableCppNameSet,
+                              ?!@string ioGeneratedCode,
+                              !@string outTestVar) {
   //--- Generate test expression
     outTestVar = "test_" + ioTemporaryVariableIndex.string
     ioTemporaryVariableIndex += 1

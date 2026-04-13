@@ -21,7 +21,7 @@ syntax extension galgas3DeclarationsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
+  rule <declaration_ggs3> (?!@galgasDeclarationAST ioDeclarations) {
     $method$
     $@type$ ?var typeName indexing typeReferenceExtensionMethod
     repeat
@@ -48,8 +48,8 @@ syntax extension galgas3DeclarationsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <method_declaration_ggs3> ?let @lstring inTypeName
-                                 ?!@galgasDeclarationAST ioDeclarations {
+  rule <method_declaration_ggs3> (?let @lstring inTypeName,
+                                  ?!@galgasDeclarationAST ioDeclarations) {
     $method$
     var typeName = inTypeName
     repeat
@@ -84,7 +84,7 @@ syntax extension galgas4DeclarationsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
+  rule <declaration> (?!@galgasDeclarationAST ioDeclarations) {
     $proc$
     <simple_type_definition> !?ioDeclarations ?var @lstring typeName
     $.$
@@ -112,8 +112,8 @@ syntax extension galgas4DeclarationsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <method_declaration> ?let @lstring inTypeName
-                            ?!@galgasDeclarationAST ioDeclarations {
+  rule <method_declaration> (?let @lstring inTypeName,
+                             ?!@galgasDeclarationAST ioDeclarations) {
     $proc$
     $identifier$ ?let @lstring methodName indexing extensionMethodDefinition
     <formal_parameter_list> !?ioDeclarations ?let @formalParameterListAST formalParameterList
@@ -152,14 +152,14 @@ final class @extensionMethodAST : @semanticDeclarationAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method enterDeclarationInGraph
-     ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
-     ?!@equatableExtensionMap unused ioEquatableExtensionMap
-     ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext
-     ?!@extensionMethodMapForBuildingContext ioExtensionMethodMapForBuildingContext
-     ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
-     ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
-     ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList {
+  override method enterDeclarationInGraph (
+     ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph,
+     ?!@equatableExtensionMap unused ioEquatableExtensionMap,
+     ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext,
+     ?!@extensionMethodMapForBuildingContext ioExtensionMethodMapForBuildingContext,
+     ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext,
+     ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext,
+     ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList) {
     let key = @lstring {
       !"extension method @" + self.mTypeName + " " + self.mExtensionMethodName
       !self.mExtensionMethodName.location
@@ -191,26 +191,25 @@ final class @extensionMethodAST : @semanticDeclarationAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method enterDeclarationInSemanticContext
-    ?!@equatableExtensionMap unused ioEquatableExtensionMap
-    ?let @extensionInitializerForBuildingContext unused inExtensionInitializerMapForBuildingContext
-    ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext
-    ?let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext
-    ?let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext
-    ?!@unifiedTypeMap unused ioTypeMap
-    ?!@semanticContext unused ioSemanticContext
-  {
+  override method enterDeclarationInSemanticContext (
+    ?!@equatableExtensionMap unused ioEquatableExtensionMap,
+    ?let @extensionInitializerForBuildingContext unused inExtensionInitializerMapForBuildingContext,
+    ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext,
+    ?let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext,
+    ?let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext,
+    ?!@unifiedTypeMap unused ioTypeMap,
+    ?!@semanticContext unused ioSemanticContext) {
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method semanticAnalysis ?!@lstringlist unused ioUsefulnessRootEntities
-                                   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-                                   ?let @string unused inProductDirectory
-                                   ?let @semanticContext inSemanticContext
-                                   ?!@unifiedTypeMap ioTypeMap
-                                   ?let @predefinedTypes inPredefinedTypes
-                 ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration {
+  override method semanticAnalysis (?!@lstringlist unused ioUsefulnessRootEntities,
+                                    ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
+                                    ?let @string unused inProductDirectory,
+                                    ?let @semanticContext inSemanticContext,
+                                    ?!@unifiedTypeMap ioTypeMap,
+                                    ?let @predefinedTypes inPredefinedTypes,
+                 ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration) {
   //--- Useful entities graph
     let nameForUsefulness = methodNameForUsefulEntitiesGraph (!self.mTypeName !self.mExtensionMethodName)
     [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
@@ -278,20 +277,19 @@ final class @extensionMethodAST : @semanticDeclarationAST {
 //   EXTENSION LIST MAP
 //--------------------------------------------------------------------------------------------------
 
-override method @extensionMethodAST buildExtensionListMaps
-  ?!@genericExtensionMethodListMap unused ioAbstractExtensionSetterListMap
-  ?!@genericExtensionMethodListMap unused ioExtensionSetterListMap
-  ?!@genericExtensionMethodListMap unused ioOverridingExtensionSetterListMap
-  ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionSetterListMap
-  ?!@genericExtensionMethodListMap unused ioAbstractExtensionMethodListMapAST
-  ?!@genericExtensionMethodListMap ioExtensionMethodListMap
-  ?!@genericExtensionMethodListMap unused ioOverridingExtensionMethodListMap
-  ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionMethodListMap
-  ?!@genericExtensionMethodListMap unused ioAbstractExtensionGetterListMap
-  ?!@genericExtensionMethodListMap unused ioExtensionGetterListMap
-  ?!@genericExtensionMethodListMap unused ioOverridingExtensionGetterListMap
-  ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionGetterListMap
-{
+override method @extensionMethodAST buildExtensionListMaps (
+  ?!@genericExtensionMethodListMap unused ioAbstractExtensionSetterListMap,
+  ?!@genericExtensionMethodListMap unused ioExtensionSetterListMap,
+  ?!@genericExtensionMethodListMap unused ioOverridingExtensionSetterListMap,
+  ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionSetterListMap,
+  ?!@genericExtensionMethodListMap unused ioAbstractExtensionMethodListMapAST,
+  ?!@genericExtensionMethodListMap ioExtensionMethodListMap,
+  ?!@genericExtensionMethodListMap unused ioOverridingExtensionMethodListMap,
+  ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionMethodListMap,
+  ?!@genericExtensionMethodListMap unused ioAbstractExtensionGetterListMap,
+  ?!@genericExtensionMethodListMap unused ioExtensionGetterListMap,
+  ?!@genericExtensionMethodListMap unused ioOverridingExtensionGetterListMap,
+  ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionGetterListMap) {
 //  ioExtensionMethodListMap += !self.mTypeName.string !self.mExtensionMethodName
   [!?ioExtensionMethodListMap insertKey !self.mTypeName.string !self.mExtensionMethodName]
 }
@@ -317,9 +315,8 @@ override getter @extensionMethodForGeneration headerKind ->@headerKind {
 
 //································································································
 
-override method @extensionMethodForGeneration appendDeclaration1
-  ?!@stringset unused ioInclusionSet
-  !@string outHeader {
+override method @extensionMethodForGeneration appendDeclaration1 (?!@stringset unused ioInclusionSet,
+                                                                  !@string outHeader) {
   if self.mImplementedAsFunction then
     outHeader = [filewrapper semanticComponentGenerationTemplate.extensionMethodAsFunctionDeclaration
       !self.mReceiverType.definition.typeName.string
@@ -337,11 +334,9 @@ override method @extensionMethodForGeneration appendDeclaration1
 
 //································································································
 
-override method @extensionMethodForGeneration appendSpecificImplementation
-  ?let @unifiedTypeMap unused inTypeMap
-  ?!@stringset ioInclusionSet
-  !@string outImplementation
-{
+override method @extensionMethodForGeneration appendSpecificImplementation (?let @unifiedTypeMap unused inTypeMap,
+                                                    ?!@stringset ioInclusionSet,
+                                                    !@string outImplementation) {
   if self.mImplementedAsFunction then
     var @formalParameterListForGeneration extensionMethodFormalParameterList = self.mExtensionMethodFormalParameterList
     [!?extensionMethodFormalParameterList insertAtIndex

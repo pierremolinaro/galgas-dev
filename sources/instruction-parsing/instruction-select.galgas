@@ -247,12 +247,11 @@ override getter @selectInstructionForGeneration compareInstructionSyntaxSignatur
 //! CODE GENERATION
 //--------------------------------------------------------------------------------------------------
 
-override method @selectInstructionForGeneration generateInstruction
-                          ?!@stringset ioInclusionSet
-                          ?!@uint ioTemporaryVariableIndex
-                          ?!@stringset ioUnusedVariableCppNameSet
-                          ?let @bool inGenerateSyntaxDirectedTranslationString
-                          ?!@string ioGeneratedCode {
+override method @selectInstructionForGeneration generateInstruction (?!@stringset ioInclusionSet,
+                                       ?!@uint ioTemporaryVariableIndex,
+                                       ?!@stringset ioUnusedVariableCppNameSet,
+                                       ?let @bool inGenerateSyntaxDirectedTranslationString,
+                                       ?!@string ioGeneratedCode) {
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
   ioGeneratedCode += "switch (select_" + self.mSyntaxComponentName.identifierRepresentation + "_"
   ioGeneratedCode += self.mChoiceIndex.string + " (" + compilerCppName () + ")) {\n"

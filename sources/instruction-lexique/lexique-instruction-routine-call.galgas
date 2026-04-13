@@ -58,7 +58,7 @@ syntax extension galgas3LexiqueComponentSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
+  rule <lexical_instruction> (?!@lexicalInstructionListAST ioInstructionList) {
     $identifier$ ?let @lstring actionName
     var @lexicalRoutineCallActualArgumentListAST actualArgumentList = @()
     $($
@@ -103,7 +103,7 @@ syntax extension galgas4LexiqueComponentSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
+  rule <lexical_instruction> (?!@lexicalInstructionListAST ioInstructionList) {
     $identifier$ ?let @lstring actionName
     var @lexicalRoutineCallActualArgumentListAST actualArgumentList = @()
     $($
@@ -146,42 +146,14 @@ syntax extension galgas4LexiqueComponentSyntax {
 //! CHECK LEXICAL INSTRUCTION
 //--------------------------------------------------------------------------------------------------
 
-//abstract getter @abstractLexicalRoutineActualArgumentAST generateObjcCocoaRoutineArgument
-//  ?let @lexiqueAnalysisContext inLexiqueAnalysisContext
-//  -> @string
-
-//--------------------------------------------------------------------------------------------------
-
-//override getter @lexicalAttributeInputOutputArgumentAST generateObjcCocoaRoutineArgument
-//  ?let @lexiqueAnalysisContext inLexiqueAnalysisContext
-//  -> @string outGeneratedCode
-//{
-//  [inLexiqueAnalysisContext.mLexicalAttributeMap searchKey !self.mAttributeName ?let lexicalType]
-//  outGeneratedCode = ""
-//  if [lexicalType needsReferenceInInputOutputInCocoa] then
-//    outGeneratedCode += "& "
-//  end
-//  outGeneratedCode += "mLexicalAttribute_" + self.mAttributeName
-//}
-
-//--------------------------------------------------------------------------------------------------
-
-//override getter @lexicalFormalInputArgumentAST generateObjcCocoaRoutineArgument
-//  ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
-//  -> @string outGeneratedCode {
-//  outGeneratedCode = [self.mRoutineOrFunctionFormalInputArgument generateObjcCocoaRoutineOrFunctionArgument]
-//}
-
-//--------------------------------------------------------------------------------------------------
-
 abstract getter @abstractLexicalRoutineActualArgumentAST generateSwiftCocoaRoutineArgument
-  ?let @lexiqueAnalysisContext inLexiqueAnalysisContext
+  (?let @lexiqueAnalysisContext inLexiqueAnalysisContext)
   -> @string
 
 //--------------------------------------------------------------------------------------------------
 
-override getter @lexicalAttributeInputOutputArgumentAST generateSwiftCocoaRoutineArgument
-  ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
+override getter @lexicalAttributeInputOutputArgumentAST generateSwiftCocoaRoutineArgument (
+  ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext)
   -> @string outGeneratedCode
 {
   outGeneratedCode = "&self.mLexicalAttribute_" + self.mAttributeName
@@ -190,24 +162,24 @@ override getter @lexicalAttributeInputOutputArgumentAST generateSwiftCocoaRoutin
 //--------------------------------------------------------------------------------------------------
 
 override getter @lexicalFormalInputArgumentAST generateSwiftCocoaRoutineArgument
-  ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
+  (?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext)
   -> @string outGeneratedCode {
   outGeneratedCode = self.mRoutineOrFunctionFormalInputArgument.generateSwiftCocoaRoutineOrFunctionArgument
 }
 
 //--------------------------------------------------------------------------------------------------
 
-abstract method @abstractLexicalRoutineActualArgumentAST checkLexicalRoutineCallArgument
-  ?!@lexiqueAnalysisContext unused ioLexiqueAnalysisContext
-  ?@lexicalArgumentModeAST unused inLexicalRoutineFormalArgumentMode
-  ?@lexicalTypeEnum unused inLexicalRoutineFormalArgumentType
+abstract method @abstractLexicalRoutineActualArgumentAST checkLexicalRoutineCallArgument (
+  ?!@lexiqueAnalysisContext unused ioLexiqueAnalysisContext,
+  ?@lexicalArgumentModeAST unused inLexicalRoutineFormalArgumentMode,
+  ?@lexicalTypeEnum unused inLexicalRoutineFormalArgumentType)
 
 //--------------------------------------------------------------------------------------------------
 
-override method @lexicalAttributeInputOutputArgumentAST checkLexicalRoutineCallArgument
-  ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
-  ?@lexicalArgumentModeAST inLexicalRoutineFormalArgumentMode
-  ?@lexicalTypeEnum inLexicalRoutineFormalArgumentType {
+override method @lexicalAttributeInputOutputArgumentAST checkLexicalRoutineCallArgument (
+  ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext,
+  ?@lexicalArgumentModeAST inLexicalRoutineFormalArgumentMode,
+  ?@lexicalTypeEnum inLexicalRoutineFormalArgumentType) {
 //--- Check attribute definition
   [ioLexiqueAnalysisContext.mLexicalAttributeMap searchKey
     !self.mAttributeName
@@ -229,10 +201,10 @@ override method @lexicalAttributeInputOutputArgumentAST checkLexicalRoutineCallA
 
 //--------------------------------------------------------------------------------------------------
 
-override method @lexicalFormalInputArgumentAST checkLexicalRoutineCallArgument
-  ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
-  ?@lexicalArgumentModeAST inLexicalRoutineFormalArgumentMode
-  ?@lexicalTypeEnum inLexicalRoutineFormalArgumentType {
+override method @lexicalFormalInputArgumentAST checkLexicalRoutineCallArgument (
+  ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext,
+  ?@lexicalArgumentModeAST inLexicalRoutineFormalArgumentMode,
+  ?@lexicalTypeEnum inLexicalRoutineFormalArgumentType) {
 //--- Check attribute definition
   [self.mRoutineOrFunctionFormalInputArgument checkLexicalRoutineCallArgument
     !?ioLexiqueAnalysisContext
@@ -246,9 +218,9 @@ override method @lexicalFormalInputArgumentAST checkLexicalRoutineCallArgument
 
 //--------------------------------------------------------------------------------------------------
 
-override method @lexicalRoutineCallInstructionAST checkLexicalInstruction
-  ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
-  ?!@lexicalTagMap unused ioTagMap {
+override method @lexicalRoutineCallInstructionAST checkLexicalInstruction (
+                         ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext,
+                         ?!@lexicalTagMap unused ioTagMap) {
   [ioLexiqueAnalysisContext.mLexicalRoutineMessageMap searchKey
     !self.mRoutineName
     ?let lexicalRoutineFormalArgumentList
@@ -345,9 +317,9 @@ override getter @lexicalRoutineCallInstructionAST lexicalInstructionUsesLoopLoca
 
 //·································································································
 
-override getter @lexicalRoutineCallInstructionAST generateLexicalInstructionCode
-  ?let @string inScannerClassName
-  ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
+override getter @lexicalRoutineCallInstructionAST generateLexicalInstructionCode (
+  ?let @string inScannerClassName,
+  ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext)
   -> @string {
   result = "::scanner_routine_" + self.mRoutineName + " (*this"
   for (mLexicalRoutineActualArgument) in self.mActualArgumentList do

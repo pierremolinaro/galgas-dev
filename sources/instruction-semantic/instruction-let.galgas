@@ -48,8 +48,8 @@ syntax extension galgas3InstructionsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <semantic_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
-                                   !@semanticInstructionAST outInstruction {
+  rule <semantic_instruction_ggs3> (?!@galgasDeclarationAST ioDeclarations,
+                                    !@semanticInstructionAST outInstruction) {
     $let$
     <type_definition_ggs3> !?ioDeclarations ?let typeName
     $identifier$ ?let constantName
@@ -74,8 +74,8 @@ syntax extension galgas3InstructionsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <semantic_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
-                                   !@semanticInstructionAST outInstruction {
+  rule <semantic_instruction_ggs3> (?!@galgasDeclarationAST ioDeclarations,
+                                    !@semanticInstructionAST outInstruction) {
     $let$
     $identifier$ ?let variableName
     $=$
@@ -96,8 +96,8 @@ syntax extension galgas4InstructionsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <semantic_instruction> ?!@galgasDeclarationAST ioDeclarations
-                              !@semanticInstructionAST outInstruction {
+  rule <semantic_instruction> (?!@galgasDeclarationAST ioDeclarations,
+                               !@semanticInstructionAST outInstruction) {
     $let$
     <type_definition> !?ioDeclarations ?let typeName
     $identifier$ ?let constantName
@@ -122,8 +122,8 @@ syntax extension galgas4InstructionsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <semantic_instruction> ?!@galgasDeclarationAST ioDeclarations
-                              !@semanticInstructionAST outInstruction {
+  rule <semantic_instruction> (?!@galgasDeclarationAST ioDeclarations,
+                               !@semanticInstructionAST outInstruction) {
     $let$
     $identifier$ ?let variableName
     $=$
@@ -142,23 +142,19 @@ syntax extension galgas4InstructionsSyntax {
 //! CONTEXT
 //--------------------------------------------------------------------------------------------------
 
-override method @undefinedLocalConstantDeclarationAST enterInstructionInSemanticContext
-  ?!@unifiedTypeMap unused ioTypeMap
-{
+override method @undefinedLocalConstantDeclarationAST enterInstructionInSemanticContext (?!@unifiedTypeMap unused ioTypeMap) {
 }
 
 //·································································································
 
 
-override method @localConstantDeclarationWithAssignmentAST enterInstructionInSemanticContext
-  ?!@unifiedTypeMap ioTypeMap {
+override method @localConstantDeclarationWithAssignmentAST enterInstructionInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
   [self.mSourceExpression enterExpressionInSemanticContext !?ioTypeMap]
 }
 
 //·································································································
 
-override method @localVariableOrConstantDeclarationWithAssignmentAST enterInstructionInSemanticContext
-  ?!@unifiedTypeMap ioTypeMap {
+override method @localVariableOrConstantDeclarationWithAssignmentAST enterInstructionInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
   if self.mOptionalTypeName.string != "" then
     [!?ioTypeMap makeEntry !self.mOptionalTypeName ?*]
   end
@@ -169,13 +165,13 @@ override method @localVariableOrConstantDeclarationWithAssignmentAST enterInstru
 //! SEMANTICS
 //--------------------------------------------------------------------------------------------------
 
-override method @undefinedLocalConstantDeclarationAST analyzeSemanticInstruction
-                                          ?let @lstring unused inUsefulnessCallerEntityName
-                                          ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
-                                          ?let @analysisContext unused inAnalysisContext
-                                ?!@unifiedTypeMap ioTypeMap
-                                          ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
-                                          ?!@localVarManager ioVariableMap {
+override method @undefinedLocalConstantDeclarationAST analyzeSemanticInstruction (
+                        ?let @lstring unused inUsefulnessCallerEntityName,
+                        ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph,
+                        ?let @analysisContext unused inAnalysisContext,
+                        ?!@unifiedTypeMap ioTypeMap,
+                        ?!@semanticInstructionListForGeneration ioInstructionListForGeneration,
+                        ?!@localVarManager ioVariableMap) {
   let targetType = [ioTypeMap typeMapEntryForLKey !self.mConstantTypeName]
   let targetVariableCppName = "var_" + self.mConstantName.string.identifierRepresentation
                             + "_" + self.mConstantName.location.startLocationIndex
@@ -194,13 +190,13 @@ override method @undefinedLocalConstantDeclarationAST analyzeSemanticInstruction
 
 //·································································································
 
-override method @localConstantDeclarationWithAssignmentAST analyzeSemanticInstruction
-                            ?let @lstring inUsefulnessCallerEntityName
-                            ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-                            ?let @analysisContext inAnalysisContext
-                            ?!@unifiedTypeMap ioTypeMap
-                            ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
-                            ?!@localVarManager ioVariableMap {
+override method @localConstantDeclarationWithAssignmentAST analyzeSemanticInstruction (
+                        ?let @lstring inUsefulnessCallerEntityName,
+                        ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
+                        ?let @analysisContext inAnalysisContext,
+                        ?!@unifiedTypeMap ioTypeMap,
+                        ?!@semanticInstructionListForGeneration ioInstructionListForGeneration,
+                        ?!@localVarManager ioVariableMap) {
 //--- Analyze source expression
   [self.mSourceExpression analyzeSemanticExpression
     !usefulnessCallerEntityName: inUsefulnessCallerEntityName
@@ -230,13 +226,13 @@ override method @localConstantDeclarationWithAssignmentAST analyzeSemanticInstru
 
 //·································································································
 
-override method @localVariableOrConstantDeclarationWithAssignmentAST analyzeSemanticInstruction
-                            ?let @lstring inUsefulnessCallerEntityName
-                            ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-                            ?let @analysisContext inAnalysisContext
-                                ?!@unifiedTypeMap ioTypeMap
-                            ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
-                            ?!@localVarManager ioVariableMap {
+override method @localVariableOrConstantDeclarationWithAssignmentAST analyzeSemanticInstruction (
+                        ?let @lstring inUsefulnessCallerEntityName,
+                        ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
+                        ?let @analysisContext inAnalysisContext,
+                        ?!@unifiedTypeMap ioTypeMap,
+                        ?!@semanticInstructionListForGeneration ioInstructionListForGeneration,
+                        ?!@localVarManager ioVariableMap) {
   let targetType = [ioTypeMap typeMapEntryForLKey !self.mOptionalTypeName]
 //--- Analyze source expression
   [self.mSourceExpression analyzeSemanticExpression
@@ -298,25 +294,24 @@ final class @localVariableOrConstantDeclarationWithSourceExpressionForGeneration
 
 //·································································································
 
-override method @undefinedLocalConstantDeclarationForGeneration generateInstruction
-  ?!@stringset ioInclusionSet
-  ?!@uint unused ioTemporaryVariableIndex
-  ?!@stringset unused ioUnusedVariableCppNameSet
-  ?let @bool unused inGenerateSyntaxDirectedTranslationString
-  ?!@string ioGeneratedCode
-{
+override method @undefinedLocalConstantDeclarationForGeneration generateInstruction (
+  ?!@stringset ioInclusionSet,
+  ?!@uint unused ioTemporaryVariableIndex,
+  ?!@stringset unused ioUnusedVariableCppNameSet,
+  ?let @bool unused inGenerateSyntaxDirectedTranslationString,
+  ?!@string ioGeneratedCode) {
   [self.mTargetType addHeaderFileName !?ioInclusionSet]
   ioGeneratedCode += "GGS_" + self.mTargetType.identifierRepresentation + " " + self.mCppVariableName + " ;\n"
 }
 
 //·································································································
 
-override method @localVariableOrConstantDeclarationWithSourceExpressionForGeneration generateInstruction
-                                                    ?!@stringset ioInclusionSet
-                                                    ?!@uint ioTemporaryVariableIndex
-                                                    ?!@stringset ioUnusedVariableCppNameSet
-                                                    ?let @bool unused inGenerateSyntaxDirectedTranslationString
-                                                    ?!@string ioGeneratedCode {
+override method @localVariableOrConstantDeclarationWithSourceExpressionForGeneration generateInstruction (
+                                ?!@stringset ioInclusionSet,
+    								   ?!@uint ioTemporaryVariableIndex,
+                       			?!@stringset ioUnusedVariableCppNameSet,
+                                ?let @bool unused inGenerateSyntaxDirectedTranslationString,
+                                ?!@string ioGeneratedCode) {
   [self.mTargetType addHeaderFileName !?ioInclusionSet]
   [self.mSourceExpression generateExpression
      !?ioGeneratedCode

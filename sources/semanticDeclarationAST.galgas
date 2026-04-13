@@ -24,36 +24,35 @@ abstract class @semanticDeclarationAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  abstract method enterDeclarationInGraph
-    ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
-    ?!@equatableExtensionMap ioEquatableExtensionMap
-    ?!@extensionInitializerForBuildingContext ioExtensionInitializerForBuildingContext
-    ?!@extensionMethodMapForBuildingContext ioExtensionMethodMapForBuildingContext
-    ?!@extensionGetterMapForBuildingContext ioExtensionGetterMapForBuildingContext
-    ?!@extensionSetterMapForBuildingContext ioExtensionSetterMapForBuildingContext
-    ?!@semanticDeclarationListAST ioExtensionOverrideDefinitionList
+  abstract method enterDeclarationInGraph (?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph,
+                              ?!@equatableExtensionMap ioEquatableExtensionMap,
+    ?!@extensionInitializerForBuildingContext ioExtensionInitializerForBuildingContext,
+    ?!@extensionMethodMapForBuildingContext ioExtensionMethodMapForBuildingContext,
+    ?!@extensionGetterMapForBuildingContext ioExtensionGetterMapForBuildingContext,
+    ?!@extensionSetterMapForBuildingContext ioExtensionSetterMapForBuildingContext,
+    ?!@semanticDeclarationListAST ioExtensionOverrideDefinitionList)
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  abstract method enterDeclarationInSemanticContext
-    ?!@equatableExtensionMap unused ioEquatableExtensionMap
-    ?let @extensionInitializerForBuildingContext unused inExtensionInitializerMapForBuildingContext
-    ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext
-    ?let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext
-    ?let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext
-    ?!@unifiedTypeMap ioTypeMap
-    ?!@semanticContext unused ioSemanticContext
+  abstract method enterDeclarationInSemanticContext (
+    ?!@equatableExtensionMap unused ioEquatableExtensionMap,
+    ?let @extensionInitializerForBuildingContext unused inExtensionInitializerMapForBuildingContext,
+    ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext,
+    ?let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext,
+    ?let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext,
+    ?!@unifiedTypeMap ioTypeMap,
+    ?!@semanticContext unused ioSemanticContext)
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  abstract method semanticAnalysis
-    ?!@lstringlist ioUsefulnessRootEntities
-    ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-    ?let @string inProductDirectory
-    ?let @semanticContext unused inSemanticContext
-                                  ?!@unifiedTypeMap unused ioTypeMap
-    ?let @predefinedTypes unused inPredefinedTypes
-    ?!@semanticDeclarationListForGeneration unused ioSemanticDeclarationListForGeneration
+  abstract method semanticAnalysis (
+    ?!@lstringlist ioUsefulnessRootEntities,
+    ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
+    ?let @string inProductDirectory,
+    ?let @semanticContext unused inSemanticContext,
+                                  ?!@unifiedTypeMap unused ioTypeMap,
+    ?let @predefinedTypes unused inPredefinedTypes,
+    ?!@semanticDeclarationListForGeneration unused ioSemanticDeclarationListForGeneration)
 
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

@@ -3,25 +3,24 @@
 //--------------------------------------------------------------------------------------------------
 
 import SwiftUI
-import Combine
 
 //--------------------------------------------------------------------------------------------------
 
-final class RootDirectoryNode : ObservableObject {
+@Observable final class RootDirectoryNode {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  @Published var mProjectURL : URL
-  @Published private(set) var mChildren : [SourceFileNode]
-  @Published var mSelectedFileNodeID : SourceFileNodeID? = nil
+  var mProjectURL : URL
+  private(set) var mChildren : [SourceFileNode]
+  var mSelectedFileNodeID : SourceFileNodeID? = nil
   private var mStream : FSEventStreamRef? = nil
 
-  @Binding private var mIssuesBinding : [CompilationIssue]
+  private var mIssuesBinding : [CompilationIssue]
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init (url inURL : URL,
-        issuesBinding inIssuesBinding : Binding <[CompilationIssue]>) {
+        issuesBinding inIssuesBinding : [CompilationIssue]) {
     self.mProjectURL = inURL
     self.mChildren = []
     self._mIssuesBinding = inIssuesBinding
@@ -174,7 +173,7 @@ final class RootDirectoryNode : ObservableObject {
         scanner: scannerFor (extension: fileURL.pathExtension),
         initialString: str,
         fileURL: fileURL,
-        issuesBinding: self.$mIssuesBinding
+        issuesBinding: self.mIssuesBinding
       )
       stm.setWriteFileCallback { str in self.scheduleSave (forNodeID: inID, contents: str) }
       self.mSourceTextDictionary [inID] = stm

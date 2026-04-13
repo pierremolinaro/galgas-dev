@@ -21,7 +21,7 @@ syntax extension galgas3DeclarationsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
+  rule <declaration_ggs3> (?!@galgasDeclarationAST ioDeclarations) {
     $extension$
     $@type$ ?var @lstring typeName indexing typeReferenceExtensionMethod
     $.$
@@ -48,8 +48,8 @@ syntax extension galgas3DeclarationsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <method_declaration_ggs3> ?let @lstring inClassName
-                                 ?!@galgasDeclarationAST ioDeclarations {
+  rule <method_declaration_ggs3> (?let @lstring inClassName,
+                                  ?!@galgasDeclarationAST ioDeclarations) {
     $init$
     <formal_input_parameter_list_ggs34> !?ioDeclarations ?let formalParameterList
     ${$
@@ -75,7 +75,7 @@ syntax extension galgas4DeclarationsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
+  rule <declaration> (?!@galgasDeclarationAST ioDeclarations) {
     $extension$
     <simple_type_definition> !?ioDeclarations ?var typeName
     $.$
@@ -103,8 +103,8 @@ syntax extension galgas4DeclarationsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <method_declaration> ?let @lstring inTypeName
-                            ?!@galgasDeclarationAST ioDeclarations {
+  rule <method_declaration>  (?let @lstring inTypeName,
+                              ?!@galgasDeclarationAST ioDeclarations) {
     $init$
     let initLocation = @location.here
     <formal_input_parameter_list> !?ioDeclarations ?let formalParameterList
@@ -146,14 +146,14 @@ final class @initializerAST : @semanticDeclarationAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method enterDeclarationInGraph
-          ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
-          ?!@equatableExtensionMap unused ioEquatableExtensionMap
-          ?!@extensionInitializerForBuildingContext ioExtensionInitializerForBuildingContext
-          ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext
-          ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
-          ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
-          ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList {
+  override method enterDeclarationInGraph (
+          ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph,
+          ?!@equatableExtensionMap unused ioEquatableExtensionMap,
+          ?!@extensionInitializerForBuildingContext ioExtensionInitializerForBuildingContext,
+          ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext,
+          ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext,
+          ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext,
+          ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList) {
     let key = @lstring {!self.keyRepresentation !self.mTypeName.location}
     [!?ioSemanticTypePrecedenceGraph addNode !key !self]
     [!?ioSemanticTypePrecedenceGraph addEdge !from: key !to: @("@" + self.mTypeName, self.mTypeName)]
@@ -174,26 +174,26 @@ final class @initializerAST : @semanticDeclarationAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method enterDeclarationInSemanticContext
-    ?!@equatableExtensionMap unused ioEquatableExtensionMap
-    ?let @extensionInitializerForBuildingContext unused inExtensionInitializerMapForBuildingContext
-    ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext
-    ?let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext
-    ?let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext
-    ?!@unifiedTypeMap unused ioTypeMap
-    ?!@semanticContext unused ioSemanticContext {
+  override method enterDeclarationInSemanticContext (
+    ?!@equatableExtensionMap unused ioEquatableExtensionMap,
+    ?let @extensionInitializerForBuildingContext unused inExtensionInitializerMapForBuildingContext,
+    ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext,
+    ?let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext,
+    ?let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext,
+    ?!@unifiedTypeMap unused ioTypeMap,
+    ?!@semanticContext unused ioSemanticContext) {
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method semanticAnalysis
-                ?!@lstringlist unused ioUsefulnessRootEntities
-                ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-                ?let @string unused inProductDirectory
-                ?let @semanticContext inSemanticContext
-                ?!@unifiedTypeMap ioTypeMap
-                ?let @predefinedTypes inPredefinedTypes
-                ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration {
+  override method semanticAnalysis (
+                ?!@lstringlist unused ioUsefulnessRootEntities,
+                ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
+                ?let @string unused inProductDirectory,
+                ?let @semanticContext inSemanticContext,
+                ?!@unifiedTypeMap ioTypeMap,
+                ?let @predefinedTypes inPredefinedTypes,
+                ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration) {
   //--- Useful entities graph
     let nameForUsefulness = initializerNameForUsefulEntitiesGraph (
       !self.mTypeName
@@ -253,15 +253,15 @@ final class @initializerAST : @semanticDeclarationAST {
 
 //--------------------------------------------------------------------------------------------------
 
-private proc analyzeInitializerBody ?let @lstring inUsefulnessCallerEntityName
-                        ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-                        ?let @analysisContext inAnalysisContext
-                        ?!@unifiedTypeMap ioTypeMap
-                        ?let @formalInputParameterListAST inFormalArgumentListAST
-                        ?let @semanticInstructionListAST inInstructionList
-                        ?let @location inEndOfMethodLocation
-                        !@semanticInstructionListForGeneration outSemanticInstructionListForGeneration
-                        !@formalInputParameterListForGeneration outSignatureForGeneration {
+private proc analyzeInitializerBody (?let @lstring inUsefulnessCallerEntityName,
+                        ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
+                        ?let @analysisContext inAnalysisContext,
+                        ?!@unifiedTypeMap ioTypeMap,
+                        ?let @formalInputParameterListAST inFormalArgumentListAST,
+                        ?let @semanticInstructionListAST inInstructionList,
+                        ?let @location inEndOfMethodLocation,
+                        !@semanticInstructionListForGeneration outSemanticInstructionListForGeneration,
+                        !@formalInputParameterListForGeneration outSignatureForGeneration) {
   var variableMap = @localVarManager {}
 //--- Enter properties that should be explicitly initialized
   if let selfAvailable = inAnalysisContext.selfAvailability.getAvailable then
@@ -347,9 +347,9 @@ final class @extensionInitializerForGeneration : @semanticDeclarationWithHeaderF
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method appendSpecificImplementation ?let @unifiedTypeMap unused inTypeMap
-                                                ?!@stringset ioInclusionSet
-                                                !@string outImplementation {
+  override method appendSpecificImplementation (?let @unifiedTypeMap unused inTypeMap,
+                                                ?!@stringset ioInclusionSet,
+                                                !@string outImplementation) {
     for formalArg in self.formalParameterList do
       [formalArg.mFormalArgumentType addHeaderFileName !?ioInclusionSet]
     end
@@ -377,12 +377,12 @@ final class @extensionInitializerForGeneration : @semanticDeclarationWithHeaderF
 // INITIALIZER IMPLEMENTATION
 //--------------------------------------------------------------------------------------------------
 
-private proc generateInitializer ?let @unifiedTypeMapEntry inReceiverType
-                         ?let @string inInitializerName
-                         ?!@stringset ioInclusionSet
-                         ?let @formalInputParameterListForGeneration inFormalArgumentList
-                         ?let @semanticInstructionListForGeneration inInstructionList
-                         !@string outGeneratedCode {
+private proc generateInitializer (?let @unifiedTypeMapEntry inReceiverType,
+                         ?let @string inInitializerName,
+                         ?!@stringset ioInclusionSet,
+                         ?let @formalInputParameterListForGeneration inFormalArgumentList,
+                         ?let @semanticInstructionListForGeneration inInstructionList,
+                         !@string outGeneratedCode) {
   let className = inReceiverType.definition.typeName.string
 //--- Build unused variable set
   var @stringset unusedVariableCppNameSet = @()

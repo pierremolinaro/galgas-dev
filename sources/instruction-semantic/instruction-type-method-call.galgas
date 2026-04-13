@@ -33,8 +33,8 @@ syntax extension galgas3InstructionsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <semantic_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
-                                   !@semanticInstructionAST outInstruction {
+  rule <semantic_instruction_ggs3> (?!@galgasDeclarationAST ioDeclarations,
+                                    !@semanticInstructionAST outInstruction) {
     $[$
     let instructionLocation = @location.here
     $@type$ ?let @lstring mTypeName indexing typeReferenceInTypeMethod
@@ -59,8 +59,8 @@ syntax extension galgas4InstructionsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <semantic_instruction> ?!@galgasDeclarationAST ioDeclarations
-                              !@semanticInstructionAST outInstruction {
+  rule <semantic_instruction> (?!@galgasDeclarationAST ioDeclarations,
+                               !@semanticInstructionAST outInstruction) {
     let instructionLocation = @location.here
     $@type$ ?let @lstring mTypeName indexing typeReferenceInTypeMethod
     $.$
@@ -82,7 +82,7 @@ syntax extension galgas4InstructionsSyntax {
 //! CONTEXT
 //--------------------------------------------------------------------------------------------------
 
-override method @typeMethodCallInstructionAST enterInstructionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
+override method @typeMethodCallInstructionAST enterInstructionInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
   for (mActualParameter) in self.mActualParameterList do
     [mActualParameter enterParameterInSemanticContext !?ioTypeMap]
   end
@@ -92,13 +92,13 @@ override method @typeMethodCallInstructionAST enterInstructionInSemanticContext 
 //! SEMANTICS
 //--------------------------------------------------------------------------------------------------
 
-override method @typeMethodCallInstructionAST analyzeSemanticInstruction
-  ?let @lstring inUsefulnessCallerEntityName
-  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-  ?let @analysisContext inAnalysisContext
-                                ?!@unifiedTypeMap ioTypeMap
-  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
-  ?!@localVarManager ioVariableMap {
+override method @typeMethodCallInstructionAST analyzeSemanticInstruction (
+                        ?let @lstring inUsefulnessCallerEntityName,
+                        ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
+                        ?let @analysisContext inAnalysisContext,
+                        ?!@unifiedTypeMap ioTypeMap,
+                        ?!@semanticInstructionListForGeneration ioInstructionListForGeneration,
+                        ?!@localVarManager ioVariableMap) {
 //--- Get type method map for the named type
   let type = [ioTypeMap typeMapEntryForLKey !self.mTypeName]
 //--- Get type method signature
@@ -137,12 +137,11 @@ final class @typeMethodCallInstructionForGeneration : @semanticInstructionForGen
 
 //································································································*
 
-override method @typeMethodCallInstructionForGeneration generateInstruction
-  ?!@stringset ioInclusionSet
-  ?!@uint ioTemporaryVariableIndex
-  ?!@stringset ioUnusedVariableCppNameSet
-  ?let @bool unused inGenerateSyntaxDirectedTranslationString
-  ?!@string ioGeneratedCode {
+override method @typeMethodCallInstructionForGeneration generateInstruction (?!@stringset ioInclusionSet,
+                                    ?!@uint ioTemporaryVariableIndex,
+                                    ?!@stringset ioUnusedVariableCppNameSet,
+                                    ?let @bool unused inGenerateSyntaxDirectedTranslationString,
+                                    ?!@string ioGeneratedCode) {
   ioGeneratedCode += "{\n"
 //--- Parameters
   var parameterCppNameList = @stringlist ()

@@ -43,8 +43,8 @@ syntax extension galgas3InstructionsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <semantic_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
-                                   !@semanticInstructionAST outInstruction {
+  rule <semantic_instruction_ggs3> (?!@galgasDeclarationAST ioDeclarations,
+                                    !@semanticInstructionAST outInstruction) {
     $[$
     let instructionLocation = @location.here
     $!?$
@@ -87,8 +87,8 @@ syntax extension galgas3InstructionsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <semantic_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
-                                   !@semanticInstructionAST outInstruction {
+  rule <semantic_instruction_ggs3> (?!@galgasDeclarationAST ioDeclarations,
+                                    !@semanticInstructionAST outInstruction) {
     $[$
     let instructionLocation = @location.here
     $!?$
@@ -113,8 +113,8 @@ syntax extension galgas4InstructionsSyntax {
 
    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <semantic_instruction> ?!@galgasDeclarationAST ioDeclarations
-                              !@semanticInstructionAST outInstruction {
+  rule <semantic_instruction> (?!@galgasDeclarationAST ioDeclarations,
+                               !@semanticInstructionAST outInstruction) {
     let instructionLocation = @location.here
     $!?$
     let @bool prefixedBySelf
@@ -167,9 +167,7 @@ syntax extension galgas4InstructionsSyntax {
 //! CONTEXT
 //--------------------------------------------------------------------------------------------------
 
-override method @setterCallInstructionAST enterInstructionInSemanticContext
-  ?!@unifiedTypeMap ioTypeMap
-{
+override method @setterCallInstructionAST enterInstructionInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
   for (mActualParameter) in self.mActualParameterList do
     [mActualParameter enterParameterInSemanticContext !?ioTypeMap]
   end
@@ -177,9 +175,7 @@ override method @setterCallInstructionAST enterInstructionInSemanticContext
 
 //································································································*
 
-override method @selfSetterCallInstructionAST enterInstructionInSemanticContext
-  ?!@unifiedTypeMap ioTypeMap
-{
+override method @selfSetterCallInstructionAST enterInstructionInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
   for (mActualParameter) in self.mActualParameterList do
     [mActualParameter enterParameterInSemanticContext !?ioTypeMap]
   end
@@ -189,13 +185,13 @@ override method @selfSetterCallInstructionAST enterInstructionInSemanticContext
 //! SEMANTICS
 //--------------------------------------------------------------------------------------------------
 
-override method @setterCallInstructionAST analyzeSemanticInstruction
-                        ?let @lstring inUsefulnessCallerEntityName
-                        ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-                        ?let @analysisContext inAnalysisContext
-                        ?!@unifiedTypeMap ioTypeMap
-                        ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
-                        ?!@localVarManager ioVariableMap {
+override method @setterCallInstructionAST analyzeSemanticInstruction (
+                        ?let @lstring inUsefulnessCallerEntityName,
+                        ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
+                        ?let @analysisContext inAnalysisContext,
+                        ?!@unifiedTypeMap ioTypeMap,
+                        ?!@semanticInstructionListForGeneration ioInstructionListForGeneration,
+                        ?!@localVarManager ioVariableMap) {
   var @unifiedTypeMapEntry receiverType
   let @string targetVariableCppName
   let @string nameForCheckingFormalParameterUsing
@@ -311,13 +307,13 @@ override method @setterCallInstructionAST analyzeSemanticInstruction
 
 //································································································*
 
-override method @selfSetterCallInstructionAST analyzeSemanticInstruction
-  ?let @lstring inUsefulnessCallerEntityName
-  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-  ?let @analysisContext inAnalysisContext
-                                ?!@unifiedTypeMap ioTypeMap
-  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
-  ?!@localVarManager ioVariableMap {
+override method @selfSetterCallInstructionAST analyzeSemanticInstruction (
+                        ?let @lstring inUsefulnessCallerEntityName,
+                        ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
+                        ?let @analysisContext inAnalysisContext,
+                        ?!@unifiedTypeMap ioTypeMap,
+                        ?!@semanticInstructionListForGeneration ioInstructionListForGeneration,
+                        ?!@localVarManager ioVariableMap) {
 //--- Analyze "self", as receiver expression
   if let selfAvailable = inAnalysisContext.selfAvailability.getAvailable then
     if not selfAvailable.selfMutability.selfIsMutable then
@@ -385,12 +381,11 @@ final class @selfSetterCallInstructionForGeneration : @semanticInstructionForGen
 
 //································································································*
 
-override method @setterCallInstructionForGeneration generateInstruction
-  ?!@stringset ioInclusionSet
-  ?!@uint ioTemporaryVariableIndex
-  ?!@stringset ioUnusedVariableCppNameSet
-  ?let @bool unused inGenerateSyntaxDirectedTranslationString
-  ?!@string ioGeneratedCode {
+override method @setterCallInstructionForGeneration generateInstruction (?!@stringset ioInclusionSet,
+  ?!@uint ioTemporaryVariableIndex,
+  ?!@stringset ioUnusedVariableCppNameSet,
+  ?let @bool unused inGenerateSyntaxDirectedTranslationString,
+  ?!@string ioGeneratedCode) {
   ioGeneratedCode += "{\n"
   var receiverCppName = self.mReceiverCppName
   for (mValue) in self.mReceiverStructAttributes do
@@ -465,12 +460,11 @@ override method @setterCallInstructionForGeneration generateInstruction
 
 //································································································*
 
-override method @selfSetterCallInstructionForGeneration generateInstruction
-  ?!@stringset ioInclusionSet
-  ?!@uint ioTemporaryVariableIndex
-  ?!@stringset ioUnusedVariableCppNameSet
-  ?let @bool unused inGenerateSyntaxDirectedTranslationString
-  ?!@string ioGeneratedCode {
+override method @selfSetterCallInstructionForGeneration generateInstruction (?!@stringset ioInclusionSet,
+  ?!@uint ioTemporaryVariableIndex,
+  ?!@stringset ioUnusedVariableCppNameSet,
+  ?let @bool unused inGenerateSyntaxDirectedTranslationString,
+  ?!@string ioGeneratedCode) {
   ioGeneratedCode += "{\n"
   [!?ioUnusedVariableCppNameSet removeKey !self.mSelfCppName]
 //--- Parameters

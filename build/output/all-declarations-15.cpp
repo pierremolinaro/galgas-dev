@@ -8830,57 +8830,57 @@ void extensionMethod_searchKey (const GGS_routineMap inObject,
   GalgasBool test_0 = GalgasBool::boolTrue ;
   if (GalgasBool::boolTrue == test_0) {
     const GGS_routineMap temp_1 = inObject ;
-    const GGS_internalRoutineMap_2E_element var_routine_4077 = temp_1.readProperty_mInternalRoutineMap ().readSubscript__3F_ (constinArgument_inRoutineName.readProperty_string (), inCompiler COMMA_HERE).unwrappedValue () ;
+    const GGS_internalRoutineMap_2E_element var_routine_4093 = temp_1.readProperty_mInternalRoutineMap ().readSubscript__3F_ (constinArgument_inRoutineName.readProperty_string (), inCompiler COMMA_HERE).unwrappedValue () ;
     if (!temp_1.readProperty_mInternalRoutineMap ().readSubscript__3F_ (constinArgument_inRoutineName.readProperty_string (), inCompiler COMMA_HERE).isValuated ()) {
       test_0 = GalgasBool::boolFalse ;
     }
     if (GalgasBool::boolTrue == test_0) {
       outArgument_outIsFilePrivate = GGS_bool (false) ;
       outArgument_outRoutineSignature = GGS_formalParameterSignature::init (inCompiler COMMA_HERE) ;
-      UpEnumerator_routineArgumentMap enumerator_4224 (var_routine_4077.readProperty_mArgumentMap ()) ;
-      while (enumerator_4224.hasCurrentObject ()) {
-        outArgument_outIsFilePrivate = enumerator_4224.current (HERE).readProperty_mIsFilePrivate () ;
-        outArgument_outRoutineSignature = enumerator_4224.current (HERE).readProperty_mRoutineSignature () ;
-        enumerator_4224.gotoNextObject () ;
+      UpEnumerator_routineArgumentMap enumerator_4240 (var_routine_4093.readProperty_mArgumentMap ()) ;
+      while (enumerator_4240.hasCurrentObject ()) {
+        outArgument_outIsFilePrivate = enumerator_4240.current (HERE).readProperty_mIsFilePrivate () ;
+        outArgument_outRoutineSignature = enumerator_4240.current (HERE).readProperty_mRoutineSignature () ;
+        enumerator_4240.gotoNextObject () ;
       }
-      GGS_acceptableParameterList var_acceptableParameterList_4387 = GGS_acceptableParameterList::init (inCompiler COMMA_HERE) ;
-      UpEnumerator_routineArgumentMap enumerator_4444 (var_routine_4077.readProperty_mArgumentMap ()) ;
-      while (enumerator_4444.hasCurrentObject ()) {
-        GGS_bool var_accept_4472 = GGS_bool (ComparisonKind::equal, constinArgument_inActualParameterList.getter_count (SOURCE_FILE ("routineMap.galgas", 106)).objectCompare (enumerator_4444.current (HERE).readProperty_mRoutineSignature ().getter_count (SOURCE_FILE ("routineMap.galgas", 106)))) ;
-        UpEnumerator_formalParameterSignature enumerator_4579 (enumerator_4444.current (HERE).readProperty_mRoutineSignature ()) ;
-        UpEnumerator_actualParameterListAST enumerator_4599 (constinArgument_inActualParameterList) ;
-        bool bool_2 = var_accept_4472.isValidAndTrue () ;
-        if (enumerator_4579.hasCurrentObject () && enumerator_4599.hasCurrentObject () && bool_2) {
-          while (enumerator_4579.hasCurrentObject () && enumerator_4599.hasCurrentObject () && bool_2) {
-            var_accept_4472 = callExtensionGetter_isCompatibleWith ((const cPtr_actualParameterAST *) enumerator_4599.current_mActualParameter (HERE).ptr (), enumerator_4579.current (HERE).readProperty_mFormalArgumentPassingMode (), enumerator_4579.current (HERE).readProperty_mFormalSelector ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("routineMap.galgas", 108)) ;
-            enumerator_4579.gotoNextObject () ;
-            enumerator_4599.gotoNextObject () ;
-            if (enumerator_4579.hasCurrentObject () && enumerator_4599.hasCurrentObject ()) {
-              bool_2 = var_accept_4472.isValidAndTrue () ;
+      GGS_acceptableParameterList var_acceptableParameterList_4403 = GGS_acceptableParameterList::init (inCompiler COMMA_HERE) ;
+      UpEnumerator_routineArgumentMap enumerator_4460 (var_routine_4093.readProperty_mArgumentMap ()) ;
+      while (enumerator_4460.hasCurrentObject ()) {
+        GGS_bool var_accept_4488 = GGS_bool (ComparisonKind::equal, constinArgument_inActualParameterList.getter_count (SOURCE_FILE ("routineMap.galgas", 106)).objectCompare (enumerator_4460.current (HERE).readProperty_mRoutineSignature ().getter_count (SOURCE_FILE ("routineMap.galgas", 106)))) ;
+        UpEnumerator_formalParameterSignature enumerator_4595 (enumerator_4460.current (HERE).readProperty_mRoutineSignature ()) ;
+        UpEnumerator_actualParameterListAST enumerator_4615 (constinArgument_inActualParameterList) ;
+        bool bool_2 = var_accept_4488.isValidAndTrue () ;
+        if (enumerator_4595.hasCurrentObject () && enumerator_4615.hasCurrentObject () && bool_2) {
+          while (enumerator_4595.hasCurrentObject () && enumerator_4615.hasCurrentObject () && bool_2) {
+            var_accept_4488 = callExtensionGetter_isCompatibleWith ((const cPtr_actualParameterAST *) enumerator_4615.current_mActualParameter (HERE).ptr (), enumerator_4595.current (HERE).readProperty_mFormalArgumentPassingMode (), enumerator_4595.current (HERE).readProperty_mFormalSelector ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("routineMap.galgas", 108)) ;
+            enumerator_4595.gotoNextObject () ;
+            enumerator_4615.gotoNextObject () ;
+            if (enumerator_4595.hasCurrentObject () && enumerator_4615.hasCurrentObject ()) {
+              bool_2 = var_accept_4488.isValidAndTrue () ;
             }
           }
         }
         GalgasBool test_3 = GalgasBool::boolTrue ;
         if (GalgasBool::boolTrue == test_3) {
-          test_3 = var_accept_4472.boolEnum () ;
+          test_3 = var_accept_4488.boolEnum () ;
           if (GalgasBool::boolTrue == test_3) {
-            var_acceptableParameterList_4387.addAssignOperation (enumerator_4444.current (HERE).readProperty_mRoutineSignature (), enumerator_4444.current (HERE).readProperty_mIsFilePrivate ()  COMMA_SOURCE_FILE ("routineMap.galgas", 114)) ;
+            var_acceptableParameterList_4403.addAssignOperation (enumerator_4460.current (HERE).readProperty_mRoutineSignature (), enumerator_4460.current (HERE).readProperty_mIsFilePrivate ()  COMMA_SOURCE_FILE ("routineMap.galgas", 114)) ;
           }
         }
-        enumerator_4444.gotoNextObject () ;
+        enumerator_4460.gotoNextObject () ;
       }
       GalgasBool test_4 = GalgasBool::boolTrue ;
       if (GalgasBool::boolTrue == test_4) {
-        test_4 = GGS_bool (ComparisonKind::equal, var_acceptableParameterList_4387.getter_count (SOURCE_FILE ("routineMap.galgas", 117)).objectCompare (GGS_uint (uint32_t (1U)))).boolEnum () ;
+        test_4 = GGS_bool (ComparisonKind::equal, var_acceptableParameterList_4403.getter_count (SOURCE_FILE ("routineMap.galgas", 117)).objectCompare (GGS_uint (uint32_t (1U)))).boolEnum () ;
         if (GalgasBool::boolTrue == test_4) {
-          var_acceptableParameterList_4387.method_first (outArgument_outRoutineSignature, outArgument_outIsFilePrivate, inCompiler COMMA_SOURCE_FILE ("routineMap.galgas", 118)) ;
+          var_acceptableParameterList_4403.method_first (outArgument_outRoutineSignature, outArgument_outIsFilePrivate, inCompiler COMMA_SOURCE_FILE ("routineMap.galgas", 118)) ;
           outArgument_outRoutineMangledName = function_routineMangledName (constinArgument_inRoutineName, outArgument_outRoutineSignature, inCompiler COMMA_SOURCE_FILE ("routineMap.galgas", 119)) ;
         }
       }
       if (GalgasBool::boolFalse == test_4) {
         GalgasBool test_5 = GalgasBool::boolTrue ;
         if (GalgasBool::boolTrue == test_5) {
-          test_5 = GGS_bool (ComparisonKind::equal, var_acceptableParameterList_4387.getter_count (SOURCE_FILE ("routineMap.galgas", 120)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
+          test_5 = GGS_bool (ComparisonKind::equal, var_acceptableParameterList_4403.getter_count (SOURCE_FILE ("routineMap.galgas", 120)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
           if (GalgasBool::boolTrue == test_5) {
             GenericArray <FixItDescription> fixItArray6 ;
             inCompiler->emitSemanticError (constinArgument_inRoutineName.readProperty_location (), GGS_string ("cannot find any procedure with compatible formal argument list"), fixItArray6  COMMA_SOURCE_FILE ("routineMap.galgas", 121)) ;
@@ -8890,14 +8890,14 @@ void extensionMethod_searchKey (const GGS_routineMap inObject,
           }
         }
         if (GalgasBool::boolFalse == test_5) {
-          GGS_string var_s_5430 = GGS_string ("ambiguity, several procedures with compatible formal argument list:") ;
-          UpEnumerator_acceptableParameterList enumerator_5527 (var_acceptableParameterList_4387) ;
-          while (enumerator_5527.hasCurrentObject ()) {
-            var_s_5430.plusAssignOperation(GGS_string ("\n  - ").add_operation (function_routineArgumentFromFormalParameters (enumerator_5527.current (HERE).readProperty_mRoutineSignature (), inCompiler COMMA_SOURCE_FILE ("routineMap.galgas", 127)), inCompiler COMMA_SOURCE_FILE ("routineMap.galgas", 127)), inCompiler  COMMA_SOURCE_FILE ("routineMap.galgas", 127)) ;
-            enumerator_5527.gotoNextObject () ;
+          GGS_string var_s_5446 = GGS_string ("ambiguity, several procedures with compatible formal argument list:") ;
+          UpEnumerator_acceptableParameterList enumerator_5543 (var_acceptableParameterList_4403) ;
+          while (enumerator_5543.hasCurrentObject ()) {
+            var_s_5446.plusAssignOperation(GGS_string ("\n  - ").add_operation (function_routineArgumentFromFormalParameters (enumerator_5543.current (HERE).readProperty_mRoutineSignature (), inCompiler COMMA_SOURCE_FILE ("routineMap.galgas", 127)), inCompiler COMMA_SOURCE_FILE ("routineMap.galgas", 127)), inCompiler  COMMA_SOURCE_FILE ("routineMap.galgas", 127)) ;
+            enumerator_5543.gotoNextObject () ;
           }
           GenericArray <FixItDescription> fixItArray7 ;
-          inCompiler->emitSemanticError (constinArgument_inRoutineName.readProperty_location (), var_s_5430, fixItArray7  COMMA_SOURCE_FILE ("routineMap.galgas", 129)) ;
+          inCompiler->emitSemanticError (constinArgument_inRoutineName.readProperty_location (), var_s_5446, fixItArray7  COMMA_SOURCE_FILE ("routineMap.galgas", 129)) ;
           outArgument_outRoutineSignature.drop () ; // Release error dropped variable
           outArgument_outIsFilePrivate.drop () ; // Release error dropped variable
           outArgument_outRoutineMangledName.drop () ; // Release error dropped variable
@@ -8951,13 +8951,13 @@ void extensionSetter_insertKey (GGS_syntaxExtensions & ioObject,
     const GGS_syntaxExtensions temp_1 = ioObject ;
     test_0 = temp_1.readProperty_dictionary ().getter_hasKey (constinArgument_inKey COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas", 44)).boolEnum () ;
     if (GalgasBool::boolTrue == test_0) {
-      GGS_galgas_33_SyntaxExtensionListAST var_aList_2262 ;
+      GGS_galgas_33_SyntaxExtensionListAST var_aList_2266 ;
       const GGS_syntaxExtensions temp_2 = ioObject ;
-      temp_2.readProperty_dictionary ().method_searchKey (constinArgument_inKey, var_aList_2262, inCompiler COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas", 45)) ;
+      temp_2.readProperty_dictionary ().method_searchKey (constinArgument_inKey, var_aList_2266, inCompiler COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas", 45)) ;
       {
-      var_aList_2262.setter_append (constinArgument_inSyntaxComponentName, constinArgument_inNonterminalDeclarationList, constinArgument_inRuleList, inCompiler COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas", 46)) ;
+      var_aList_2266.setter_append (constinArgument_inSyntaxComponentName, constinArgument_inNonterminalDeclarationList, constinArgument_inRuleList, inCompiler COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas", 46)) ;
       }
-      ioObject.mProperty_dictionary.addAssignOperation (constinArgument_inKey, var_aList_2262, inCompiler  COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas", 47)) ;
+      ioObject.mProperty_dictionary.addAssignOperation (constinArgument_inKey, var_aList_2266, inCompiler  COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas", 47)) ;
     }
   }
   if (GalgasBool::boolFalse == test_0) {
@@ -8978,9 +8978,9 @@ GGS_string extensionGetter_keyRepresentation (const GGS_formalParameterListAST &
   GGS_string result_result ; // Returned variable
   result_result = GGS_string ("(") ;
   const GGS_formalParameterListAST temp_0 = inObject ;
-  UpEnumerator_formalParameterListAST enumerator_4905 (temp_0) ;
-  while (enumerator_4905.hasCurrentObject ()) {
-    switch (enumerator_4905.current (HERE).readProperty_mFormalArgumentPassingMode ().enumValue ()) {
+  UpEnumerator_formalParameterListAST enumerator_4911 (temp_0) ;
+  while (enumerator_4911.hasCurrentObject ()) {
+    switch (enumerator_4911.current (HERE).readProperty_mFormalArgumentPassingMode ().enumValue ()) {
     case GGS_formalArgumentPassingModeAST::Enumeration::invalid:
       break ;
     case GGS_formalArgumentPassingModeAST::Enumeration::enum_argumentConstantIn:
@@ -9000,9 +9000,9 @@ GGS_string extensionGetter_keyRepresentation (const GGS_formalParameterListAST &
       }
       break ;
     }
-    result_result.plusAssignOperation(enumerator_4905.current (HERE).readProperty_mFormalSelector ().readProperty_string (), inCompiler  COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas", 132)) ;
-    enumerator_4905.gotoNextObject () ;
-    if (enumerator_4905.hasCurrentObject ()) {
+    result_result.plusAssignOperation(enumerator_4911.current (HERE).readProperty_mFormalSelector ().readProperty_string (), inCompiler  COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas", 132)) ;
+    enumerator_4911.gotoNextObject () ;
+    if (enumerator_4911.hasCurrentObject ()) {
       result_result.plusAssignOperation(GGS_string (", "), inCompiler  COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas", 134)) ;
     }
   }
@@ -9024,10 +9024,10 @@ GGS_string extensionGetter_initializerSignature (const GGS_formalInputParameterL
   GGS_string result_result ; // Returned variable
   result_result = GGS_string ("init") ;
   const GGS_formalInputParameterListAST temp_0 = inObject ;
-  UpEnumerator_formalInputParameterListAST enumerator_5826 (temp_0) ;
-  while (enumerator_5826.hasCurrentObject ()) {
-    result_result.plusAssignOperation(GGS_string ("!").add_operation (enumerator_5826.current (HERE).readProperty_mFormalSelector ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas", 157)), inCompiler  COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas", 157)) ;
-    enumerator_5826.gotoNextObject () ;
+  UpEnumerator_formalInputParameterListAST enumerator_5832 (temp_0) ;
+  while (enumerator_5832.hasCurrentObject ()) {
+    result_result.plusAssignOperation(GGS_string ("!").add_operation (enumerator_5832.current (HERE).readProperty_mFormalSelector ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas", 157)), inCompiler  COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas", 157)) ;
+    enumerator_5832.gotoNextObject () ;
   }
 //---
   return result_result ;
@@ -11359,6 +11359,261 @@ GGS_galgasDeclarationAST GGS_galgasDeclarationAST::extractObject (const GGS_obje
   }
   return result ;
 }
+
+//--------------------------------------------------------------------------------------------------
+//
+//Extension method '@AccessControlAST checkCompatibilityWithLet'
+//
+//--------------------------------------------------------------------------------------------------
+
+void extensionMethod_checkCompatibilityWithLet (const GGS_AccessControlAST inObject,
+                                                const GGS_location constinArgument_inLocation,
+                                                Compiler * inCompiler
+                                                COMMA_UNUSED_LOCATION_ARGS) {
+  const GGS_AccessControlAST temp_0 = inObject ;
+  switch (temp_0.enumValue ()) {
+  case GGS_AccessControlAST::Enumeration::invalid:
+    break ;
+  case GGS_AccessControlAST::Enumeration::enum_publicAccess:
+    break ;
+  case GGS_AccessControlAST::Enumeration::enum_protectedAccess:
+    break ;
+  case GGS_AccessControlAST::Enumeration::enum_protectedSetAccess:
+    {
+      GenericArray <FixItDescription> fixItArray1 ;
+      inCompiler->emitSemanticError (constinArgument_inLocation, GGS_string ("'protected(set)' and 'let' are incompatible"), fixItArray1  COMMA_SOURCE_FILE ("accessControl.ggs", 155)) ;
+    }
+    break ;
+  case GGS_AccessControlAST::Enumeration::enum_privateAccess:
+    break ;
+  case GGS_AccessControlAST::Enumeration::enum_privateSetAccess:
+    {
+      GenericArray <FixItDescription> fixItArray2 ;
+      inCompiler->emitSemanticError (constinArgument_inLocation, GGS_string ("'private(set)' and 'let' are incompatible"), fixItArray2  COMMA_SOURCE_FILE ("accessControl.ggs", 158)) ;
+    }
+    break ;
+  case GGS_AccessControlAST::Enumeration::enum_fileprivateAccess:
+    break ;
+  case GGS_AccessControlAST::Enumeration::enum_fileprivateSetAccess:
+    {
+      GGS_location extractedValue_5233__0 ;
+      temp_0.getAssociatedValuesFor_fileprivateSetAccess (extractedValue_5233__0) ;
+      GenericArray <FixItDescription> fixItArray3 ;
+      inCompiler->emitSemanticError (constinArgument_inLocation, GGS_string ("'private(set)' and 'let' are incompatible"), fixItArray3  COMMA_SOURCE_FILE ("accessControl.ggs", 161)) ;
+    }
+    break ;
+  }
+}
+
+
+//--------------------------------------------------------------------------------------------------
+//
+//Extension method '@AccessControl checkSetAccess'
+//
+//--------------------------------------------------------------------------------------------------
+
+void extensionMethod_checkSetAccess (const GGS_AccessControl inObject,
+                                     const GGS_selfAvailability constinArgument_inOptionalCurrentType,
+                                     const GGS_location constinArgument_inErrorLocation,
+                                     Compiler * inCompiler
+                                     COMMA_UNUSED_LOCATION_ARGS) {
+  const GGS_AccessControl temp_0 = inObject ;
+  switch (temp_0.enumValue ()) {
+  case GGS_AccessControl::Enumeration::invalid:
+    break ;
+  case GGS_AccessControl::Enumeration::enum_publicAccess:
+    break ;
+  case GGS_AccessControl::Enumeration::enum_protectedAccess:
+    {
+      GGS_unifiedTypeMapEntry extractedValue_7150_declaringType_0 ;
+      temp_0.getAssociatedValuesFor_protectedAccess (extractedValue_7150_declaringType_0) ;
+      switch (constinArgument_inOptionalCurrentType.enumValue ()) {
+      case GGS_selfAvailability::Enumeration::invalid:
+        break ;
+      case GGS_selfAvailability::Enumeration::enum_none:
+        {
+          GenericArray <FixItDescription> fixItArray1 ;
+          inCompiler->emitSemanticError (constinArgument_inErrorLocation, GGS_string ("inaccessible property (due to 'protected' qualifier)"), fixItArray1  COMMA_SOURCE_FILE ("accessControl.ggs", 210)) ;
+        }
+        break ;
+      case GGS_selfAvailability::Enumeration::enum_available:
+        {
+          GGS_unifiedTypeMapEntry extractedValue_7329_t_0 ;
+          GGS_selfMutability extractedValue_7332__1 ;
+          constinArgument_inOptionalCurrentType.getAssociatedValuesFor_available (extractedValue_7329_t_0, extractedValue_7332__1) ;
+          GGS_unifiedTypeMapEntry var_currentType_7349 = extractedValue_7329_t_0 ;
+          GGS_bool var_ok_7377 = GGS_bool (ComparisonKind::equal, extensionGetter_typeName (extractedValue_7150_declaringType_0, inCompiler COMMA_SOURCE_FILE ("accessControl.ggs", 213)).objectCompare (extensionGetter_typeName (var_currentType_7349, inCompiler COMMA_SOURCE_FILE ("accessControl.ggs", 213)))) ;
+          bool loop_7437 = true ;
+          while (loop_7437) {
+            GalgasBool test_2 = GalgasBool::boolTrue ;
+            if (GalgasBool::boolTrue == test_2) {
+              GGS_bool test_3 = var_ok_7377.operator_not (SOURCE_FILE ("accessControl.ggs", 214)) ;
+              if (GalgasBool::boolTrue == test_3.boolEnum ()) {
+                test_3 = extensionGetter_definition (var_currentType_7349, inCompiler COMMA_SOURCE_FILE ("accessControl.ggs", 214)).readProperty_superType ().getter_isNull (SOURCE_FILE ("accessControl.ggs", 214)).operator_not (SOURCE_FILE ("accessControl.ggs", 214)) ;
+              }
+              test_2 = test_3.boolEnum () ;
+              loop_7437 = test_2 == GalgasBool::boolTrue ;
+              if (loop_7437) {
+                var_currentType_7349 = extensionGetter_definition (var_currentType_7349, inCompiler COMMA_SOURCE_FILE ("accessControl.ggs", 215)).readProperty_superType () ;
+                var_ok_7377 = GGS_bool (ComparisonKind::equal, extensionGetter_typeName (extractedValue_7150_declaringType_0, inCompiler COMMA_SOURCE_FILE ("accessControl.ggs", 216)).objectCompare (extensionGetter_typeName (var_currentType_7349, inCompiler COMMA_SOURCE_FILE ("accessControl.ggs", 216)))) ;
+              }
+            }
+          }
+          GalgasBool test_4 = GalgasBool::boolTrue ;
+          if (GalgasBool::boolTrue == test_4) {
+            test_4 = var_ok_7377.operator_not (SOURCE_FILE ("accessControl.ggs", 218)).boolEnum () ;
+            if (GalgasBool::boolTrue == test_4) {
+              GenericArray <FixItDescription> fixItArray5 ;
+              inCompiler->emitSemanticError (constinArgument_inErrorLocation, GGS_string ("inaccessible property (due to 'protected' qualifier)"), fixItArray5  COMMA_SOURCE_FILE ("accessControl.ggs", 219)) ;
+            }
+          }
+        }
+        break ;
+      }
+    }
+    break ;
+  case GGS_AccessControl::Enumeration::enum_protectedSetAccess:
+    {
+      GGS_unifiedTypeMapEntry extractedValue_7803_declaringType_0 ;
+      temp_0.getAssociatedValuesFor_protectedSetAccess (extractedValue_7803_declaringType_0) ;
+      switch (constinArgument_inOptionalCurrentType.enumValue ()) {
+      case GGS_selfAvailability::Enumeration::invalid:
+        break ;
+      case GGS_selfAvailability::Enumeration::enum_none:
+        {
+          GenericArray <FixItDescription> fixItArray6 ;
+          inCompiler->emitSemanticWarning (constinArgument_inErrorLocation, GGS_string ("inaccessible property (due to 'protected(set)' qualifier)"), fixItArray6  COMMA_SOURCE_FILE ("accessControl.ggs", 225)) ;
+        }
+        break ;
+      case GGS_selfAvailability::Enumeration::enum_available:
+        {
+          GGS_unifiedTypeMapEntry extractedValue_7990_t_0 ;
+          GGS_selfMutability extractedValue_7993__1 ;
+          constinArgument_inOptionalCurrentType.getAssociatedValuesFor_available (extractedValue_7990_t_0, extractedValue_7993__1) ;
+          GGS_unifiedTypeMapEntry var_currentType_8010 = extractedValue_7990_t_0 ;
+          GGS_bool var_ok_8038 = GGS_bool (ComparisonKind::equal, extensionGetter_typeName (extractedValue_7803_declaringType_0, inCompiler COMMA_SOURCE_FILE ("accessControl.ggs", 228)).objectCompare (extensionGetter_typeName (var_currentType_8010, inCompiler COMMA_SOURCE_FILE ("accessControl.ggs", 228)))) ;
+          bool loop_8098 = true ;
+          while (loop_8098) {
+            GalgasBool test_7 = GalgasBool::boolTrue ;
+            if (GalgasBool::boolTrue == test_7) {
+              GGS_bool test_8 = var_ok_8038.operator_not (SOURCE_FILE ("accessControl.ggs", 229)) ;
+              if (GalgasBool::boolTrue == test_8.boolEnum ()) {
+                test_8 = extensionGetter_definition (var_currentType_8010, inCompiler COMMA_SOURCE_FILE ("accessControl.ggs", 229)).readProperty_superType ().getter_isNull (SOURCE_FILE ("accessControl.ggs", 229)).operator_not (SOURCE_FILE ("accessControl.ggs", 229)) ;
+              }
+              test_7 = test_8.boolEnum () ;
+              loop_8098 = test_7 == GalgasBool::boolTrue ;
+              if (loop_8098) {
+                var_currentType_8010 = extensionGetter_definition (var_currentType_8010, inCompiler COMMA_SOURCE_FILE ("accessControl.ggs", 230)).readProperty_superType () ;
+                var_ok_8038 = GGS_bool (ComparisonKind::equal, extensionGetter_typeName (extractedValue_7803_declaringType_0, inCompiler COMMA_SOURCE_FILE ("accessControl.ggs", 231)).objectCompare (extensionGetter_typeName (var_currentType_8010, inCompiler COMMA_SOURCE_FILE ("accessControl.ggs", 231)))) ;
+              }
+            }
+          }
+          GalgasBool test_9 = GalgasBool::boolTrue ;
+          if (GalgasBool::boolTrue == test_9) {
+            test_9 = var_ok_8038.operator_not (SOURCE_FILE ("accessControl.ggs", 233)).boolEnum () ;
+            if (GalgasBool::boolTrue == test_9) {
+              GenericArray <FixItDescription> fixItArray10 ;
+              inCompiler->emitSemanticWarning (constinArgument_inErrorLocation, GGS_string ("inaccessible property (due to 'protected(set)' qualifier)"), fixItArray10  COMMA_SOURCE_FILE ("accessControl.ggs", 234)) ;
+            }
+          }
+        }
+        break ;
+      }
+    }
+    break ;
+  case GGS_AccessControl::Enumeration::enum_privateAccess:
+    {
+      GGS_unifiedTypeMapEntry extractedValue_8466_declaringType_0 ;
+      temp_0.getAssociatedValuesFor_privateAccess (extractedValue_8466_declaringType_0) ;
+      switch (constinArgument_inOptionalCurrentType.enumValue ()) {
+      case GGS_selfAvailability::Enumeration::invalid:
+        break ;
+      case GGS_selfAvailability::Enumeration::enum_none:
+        {
+          GenericArray <FixItDescription> fixItArray11 ;
+          inCompiler->emitSemanticError (constinArgument_inErrorLocation, GGS_string ("inaccessible property (due to 'private' qualifier)"), fixItArray11  COMMA_SOURCE_FILE ("accessControl.ggs", 240)) ;
+        }
+        break ;
+      case GGS_selfAvailability::Enumeration::enum_available:
+        {
+          GGS_unifiedTypeMapEntry extractedValue_8643_currentType_0 ;
+          GGS_selfMutability extractedValue_8656__1 ;
+          constinArgument_inOptionalCurrentType.getAssociatedValuesFor_available (extractedValue_8643_currentType_0, extractedValue_8656__1) ;
+          GalgasBool test_12 = GalgasBool::boolTrue ;
+          if (GalgasBool::boolTrue == test_12) {
+            test_12 = GGS_bool (ComparisonKind::notEqual, extensionGetter_typeName (extractedValue_8466_declaringType_0, inCompiler COMMA_SOURCE_FILE ("accessControl.ggs", 242)).objectCompare (extensionGetter_typeName (extractedValue_8643_currentType_0, inCompiler COMMA_SOURCE_FILE ("accessControl.ggs", 242)))).boolEnum () ;
+            if (GalgasBool::boolTrue == test_12) {
+              GenericArray <FixItDescription> fixItArray13 ;
+              inCompiler->emitSemanticError (constinArgument_inErrorLocation, GGS_string ("inaccessible property (due to 'private' qualifier)"), fixItArray13  COMMA_SOURCE_FILE ("accessControl.ggs", 243)) ;
+            }
+          }
+        }
+        break ;
+      }
+    }
+    break ;
+  case GGS_AccessControl::Enumeration::enum_privateSetAccess:
+    {
+      GGS_unifiedTypeMapEntry extractedValue_8860_declaringType_0 ;
+      temp_0.getAssociatedValuesFor_privateSetAccess (extractedValue_8860_declaringType_0) ;
+      switch (constinArgument_inOptionalCurrentType.enumValue ()) {
+      case GGS_selfAvailability::Enumeration::invalid:
+        break ;
+      case GGS_selfAvailability::Enumeration::enum_none:
+        {
+          GenericArray <FixItDescription> fixItArray14 ;
+          inCompiler->emitSemanticWarning (constinArgument_inErrorLocation, GGS_string ("inaccessible property (due to 'private(set)' qualifier)"), fixItArray14  COMMA_SOURCE_FILE ("accessControl.ggs", 249)) ;
+        }
+        break ;
+      case GGS_selfAvailability::Enumeration::enum_available:
+        {
+          GGS_unifiedTypeMapEntry extractedValue_9045_currentType_0 ;
+          GGS_selfMutability extractedValue_9058__1 ;
+          constinArgument_inOptionalCurrentType.getAssociatedValuesFor_available (extractedValue_9045_currentType_0, extractedValue_9058__1) ;
+          GalgasBool test_15 = GalgasBool::boolTrue ;
+          if (GalgasBool::boolTrue == test_15) {
+            test_15 = GGS_bool (ComparisonKind::notEqual, extensionGetter_typeName (extractedValue_8860_declaringType_0, inCompiler COMMA_SOURCE_FILE ("accessControl.ggs", 251)).objectCompare (extensionGetter_typeName (extractedValue_9045_currentType_0, inCompiler COMMA_SOURCE_FILE ("accessControl.ggs", 251)))).boolEnum () ;
+            if (GalgasBool::boolTrue == test_15) {
+              GenericArray <FixItDescription> fixItArray16 ;
+              inCompiler->emitSemanticError (constinArgument_inErrorLocation, GGS_string ("inaccessible property (due to 'private(set)' qualifier)"), fixItArray16  COMMA_SOURCE_FILE ("accessControl.ggs", 252)) ;
+            }
+          }
+        }
+        break ;
+      }
+    }
+    break ;
+  case GGS_AccessControl::Enumeration::enum_fileprivateAccess:
+    {
+      GGS_location extractedValue_9268_declaringLocation_0 ;
+      temp_0.getAssociatedValuesFor_fileprivateAccess (extractedValue_9268_declaringLocation_0) ;
+      GalgasBool test_17 = GalgasBool::boolTrue ;
+      if (GalgasBool::boolTrue == test_17) {
+        test_17 = GGS_bool (ComparisonKind::notEqual, extensionGetter_sourceFile (extractedValue_9268_declaringLocation_0, inCompiler COMMA_SOURCE_FILE ("accessControl.ggs", 256)).objectCompare (extensionGetter_sourceFile (constinArgument_inErrorLocation, inCompiler COMMA_SOURCE_FILE ("accessControl.ggs", 256)))).boolEnum () ;
+        if (GalgasBool::boolTrue == test_17) {
+          GenericArray <FixItDescription> fixItArray18 ;
+          inCompiler->emitSemanticError (constinArgument_inErrorLocation, GGS_string ("inaccessible property (due to 'fileprivate' qualifier)"), fixItArray18  COMMA_SOURCE_FILE ("accessControl.ggs", 257)) ;
+        }
+      }
+    }
+    break ;
+  case GGS_AccessControl::Enumeration::enum_fileprivateSetAccess:
+    {
+      GGS_location extractedValue_9492_declaringLocation_0 ;
+      temp_0.getAssociatedValuesFor_fileprivateSetAccess (extractedValue_9492_declaringLocation_0) ;
+      GalgasBool test_19 = GalgasBool::boolTrue ;
+      if (GalgasBool::boolTrue == test_19) {
+        test_19 = GGS_bool (ComparisonKind::notEqual, extensionGetter_sourceFile (extractedValue_9492_declaringLocation_0, inCompiler COMMA_SOURCE_FILE ("accessControl.ggs", 260)).objectCompare (extensionGetter_sourceFile (constinArgument_inErrorLocation, inCompiler COMMA_SOURCE_FILE ("accessControl.ggs", 260)))).boolEnum () ;
+        if (GalgasBool::boolTrue == test_19) {
+          GenericArray <FixItDescription> fixItArray20 ;
+          inCompiler->emitSemanticError (constinArgument_inErrorLocation, GGS_string ("inaccessible property (due to 'fileprivate(set)' qualifier)"), fixItArray20  COMMA_SOURCE_FILE ("accessControl.ggs", 261)) ;
+        }
+      }
+    }
+    break ;
+  }
+}
+
 
 //--------------------------------------------------------------------------------------------------
 // @extensionMethodAST reference class
@@ -14447,286 +14702,6 @@ GGS_extensionSetterAST GGS_extensionSetterAST::extractObject (const GGS_object &
       result = *p ;
     }else{
       inCompiler->castError ("extensionSetterAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-// @extensionSetterForGeneration reference class
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult GGS_extensionSetterForGeneration::objectCompare (const GGS_extensionSetterForGeneration & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    const size_t myObjectPtr = size_t (mObjectPtr) ;
-    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_extensionSetterForGeneration::GGS_extensionSetterForGeneration (void) :
-GGS_semanticDeclarationWithHeaderForGeneration () {
-}
-
-//--- Synthetized initializer ----------------------------------------------------------------------
-
-GGS_extensionSetterForGeneration GGS_extensionSetterForGeneration::
-init_21_generateHeader_21_implementationCppFileName_21__21__21__21__21__21_ (const GGS_bool & in_generateHeader,
-                                                                             const GGS_string & in_implementationCppFileName,
-                                                                             const GGS_unifiedTypeMapEntry & in_mReceiverType,
-                                                                             const GGS_string & in_mExtensionSetterName,
-                                                                             const GGS_bool & in_mImplementedAsFunction,
-                                                                             const GGS_formalParameterListForGeneration & in_mExtensionSetterFormalParameterList,
-                                                                             const GGS_typedPropertyList & in_mTypedAttributeList,
-                                                                             const GGS_semanticInstructionListForGeneration & in_mSemanticInstructionListForGeneration,
-                                                                             Compiler * inCompiler
-                                                                             COMMA_LOCATION_ARGS) {
-  cPtr_extensionSetterForGeneration * object = nullptr ;
-  macroMyNew (object, cPtr_extensionSetterForGeneration (inCompiler COMMA_THERE)) ;
-  object->extensionSetterForGeneration_init_21_generateHeader_21_implementationCppFileName_21__21__21__21__21__21_ (in_generateHeader, in_implementationCppFileName, in_mReceiverType, in_mExtensionSetterName, in_mImplementedAsFunction, in_mExtensionSetterFormalParameterList, in_mTypedAttributeList, in_mSemanticInstructionListForGeneration, inCompiler) ;
-  const GGS_extensionSetterForGeneration result (object) ;
-  macroDetachSharedObject (object) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_extensionSetterForGeneration::
-extensionSetterForGeneration_init_21_generateHeader_21_implementationCppFileName_21__21__21__21__21__21_ (const GGS_bool & in_generateHeader,
-                                                                                                          const GGS_string & in_implementationCppFileName,
-                                                                                                          const GGS_unifiedTypeMapEntry & in_mReceiverType,
-                                                                                                          const GGS_string & in_mExtensionSetterName,
-                                                                                                          const GGS_bool & in_mImplementedAsFunction,
-                                                                                                          const GGS_formalParameterListForGeneration & in_mExtensionSetterFormalParameterList,
-                                                                                                          const GGS_typedPropertyList & in_mTypedAttributeList,
-                                                                                                          const GGS_semanticInstructionListForGeneration & in_mSemanticInstructionListForGeneration,
-                                                                                                          Compiler * /* inCompiler */) {
-  mProperty_generateHeader = in_generateHeader ;
-  mProperty_implementationCppFileName = in_implementationCppFileName ;
-  mProperty_mReceiverType = in_mReceiverType ;
-  mProperty_mExtensionSetterName = in_mExtensionSetterName ;
-  mProperty_mImplementedAsFunction = in_mImplementedAsFunction ;
-  mProperty_mExtensionSetterFormalParameterList = in_mExtensionSetterFormalParameterList ;
-  mProperty_mTypedAttributeList = in_mTypedAttributeList ;
-  mProperty_mSemanticInstructionListForGeneration = in_mSemanticInstructionListForGeneration ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_extensionSetterForGeneration::GGS_extensionSetterForGeneration (const cPtr_extensionSetterForGeneration * inSourcePtr) :
-GGS_semanticDeclarationWithHeaderForGeneration (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_extensionSetterForGeneration) ;
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_unifiedTypeMapEntry GGS_extensionSetterForGeneration::readProperty_mReceiverType (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_unifiedTypeMapEntry () ;
-  }else{
-    cPtr_extensionSetterForGeneration * p = (cPtr_extensionSetterForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_extensionSetterForGeneration) ;
-    return p->mProperty_mReceiverType ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_string GGS_extensionSetterForGeneration::readProperty_mExtensionSetterName (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_string () ;
-  }else{
-    cPtr_extensionSetterForGeneration * p = (cPtr_extensionSetterForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_extensionSetterForGeneration) ;
-    return p->mProperty_mExtensionSetterName ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_bool GGS_extensionSetterForGeneration::readProperty_mImplementedAsFunction (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_bool () ;
-  }else{
-    cPtr_extensionSetterForGeneration * p = (cPtr_extensionSetterForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_extensionSetterForGeneration) ;
-    return p->mProperty_mImplementedAsFunction ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_formalParameterListForGeneration GGS_extensionSetterForGeneration::readProperty_mExtensionSetterFormalParameterList (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_formalParameterListForGeneration () ;
-  }else{
-    cPtr_extensionSetterForGeneration * p = (cPtr_extensionSetterForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_extensionSetterForGeneration) ;
-    return p->mProperty_mExtensionSetterFormalParameterList ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_typedPropertyList GGS_extensionSetterForGeneration::readProperty_mTypedAttributeList (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_typedPropertyList () ;
-  }else{
-    cPtr_extensionSetterForGeneration * p = (cPtr_extensionSetterForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_extensionSetterForGeneration) ;
-    return p->mProperty_mTypedAttributeList ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_semanticInstructionListForGeneration GGS_extensionSetterForGeneration::readProperty_mSemanticInstructionListForGeneration (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_semanticInstructionListForGeneration () ;
-  }else{
-    cPtr_extensionSetterForGeneration * p = (cPtr_extensionSetterForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_extensionSetterForGeneration) ;
-    return p->mProperty_mSemanticInstructionListForGeneration ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-//Pointer class for @extensionSetterForGeneration class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_extensionSetterForGeneration::cPtr_extensionSetterForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_semanticDeclarationWithHeaderForGeneration (inCompiler COMMA_THERE),
-mProperty_mReceiverType (),
-mProperty_mExtensionSetterName (),
-mProperty_mImplementedAsFunction (),
-mProperty_mExtensionSetterFormalParameterList (),
-mProperty_mTypedAttributeList (),
-mProperty_mSemanticInstructionListForGeneration () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cPtr_extensionSetterForGeneration::cPtr_extensionSetterForGeneration (const GGS_bool & in_generateHeader,
-                                                                      const GGS_string & in_implementationCppFileName,
-                                                                      const GGS_unifiedTypeMapEntry & in_mReceiverType,
-                                                                      const GGS_string & in_mExtensionSetterName,
-                                                                      const GGS_bool & in_mImplementedAsFunction,
-                                                                      const GGS_formalParameterListForGeneration & in_mExtensionSetterFormalParameterList,
-                                                                      const GGS_typedPropertyList & in_mTypedAttributeList,
-                                                                      const GGS_semanticInstructionListForGeneration & in_mSemanticInstructionListForGeneration,
-                                                                      Compiler * inCompiler
-                                                                      COMMA_LOCATION_ARGS) :
-cPtr_semanticDeclarationWithHeaderForGeneration (in_generateHeader, in_implementationCppFileName, inCompiler COMMA_THERE),
-mProperty_mReceiverType (),
-mProperty_mExtensionSetterName (),
-mProperty_mImplementedAsFunction (),
-mProperty_mExtensionSetterFormalParameterList (),
-mProperty_mTypedAttributeList (),
-mProperty_mSemanticInstructionListForGeneration () {
-  mProperty_generateHeader = in_generateHeader ;
-  mProperty_implementationCppFileName = in_implementationCppFileName ;
-  mProperty_mReceiverType = in_mReceiverType ;
-  mProperty_mExtensionSetterName = in_mExtensionSetterName ;
-  mProperty_mImplementedAsFunction = in_mImplementedAsFunction ;
-  mProperty_mExtensionSetterFormalParameterList = in_mExtensionSetterFormalParameterList ;
-  mProperty_mTypedAttributeList = in_mTypedAttributeList ;
-  mProperty_mSemanticInstructionListForGeneration = in_mSemanticInstructionListForGeneration ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * cPtr_extensionSetterForGeneration::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_extensionSetterForGeneration ;
-}
-
-void cPtr_extensionSetterForGeneration::description (String & ioString,
-                                                     const int32_t inIndentation) const {
-  ioString.appendCString ("[@extensionSetterForGeneration:") ;
-  mProperty_generateHeader.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_implementationCppFileName.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mReceiverType.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mExtensionSetterName.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mImplementedAsFunction.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mExtensionSetterFormalParameterList.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mTypedAttributeList.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mSemanticInstructionListForGeneration.description (ioString, inIndentation+1) ;
-  ioString.appendCString ("]") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-acPtr_class * cPtr_extensionSetterForGeneration::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_extensionSetterForGeneration (mProperty_generateHeader, mProperty_implementationCppFileName, mProperty_mReceiverType, mProperty_mExtensionSetterName, mProperty_mImplementedAsFunction, mProperty_mExtensionSetterFormalParameterList, mProperty_mTypedAttributeList, mProperty_mSemanticInstructionListForGeneration, inCompiler COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_extensionSetterForGeneration::printNonNullClassInstanceProperties (void) const {
-    cPtr_semanticDeclarationWithHeaderForGeneration::printNonNullClassInstanceProperties () ;
-    mProperty_mReceiverType.printNonNullClassInstanceProperties ("mReceiverType") ;
-    mProperty_mExtensionSetterName.printNonNullClassInstanceProperties ("mExtensionSetterName") ;
-    mProperty_mImplementedAsFunction.printNonNullClassInstanceProperties ("mImplementedAsFunction") ;
-    mProperty_mExtensionSetterFormalParameterList.printNonNullClassInstanceProperties ("mExtensionSetterFormalParameterList") ;
-    mProperty_mTypedAttributeList.printNonNullClassInstanceProperties ("mTypedAttributeList") ;
-    mProperty_mSemanticInstructionListForGeneration.printNonNullClassInstanceProperties ("mSemanticInstructionListForGeneration") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-//     @extensionSetterForGeneration generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_extensionSetterForGeneration ("extensionSetterForGeneration",
-                                                                                 & kTypeDescriptor_GALGAS_semanticDeclarationWithHeaderForGeneration) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_extensionSetterForGeneration::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_extensionSetterForGeneration ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_extensionSetterForGeneration::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_extensionSetterForGeneration (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_extensionSetterForGeneration GGS_extensionSetterForGeneration::extractObject (const GGS_object & inObject,
-                                                                                  Compiler * inCompiler
-                                                                                  COMMA_LOCATION_ARGS) {
-  GGS_extensionSetterForGeneration result ;
-  const GGS_extensionSetterForGeneration * p = (const GGS_extensionSetterForGeneration *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_extensionSetterForGeneration *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("extensionSetterForGeneration", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;

@@ -23,8 +23,8 @@ syntax extension galgas3InstructionsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <semantic_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
-                                   !@semanticInstructionAST outInstruction {
+  rule <semantic_instruction_ggs3> (?!@galgasDeclarationAST ioDeclarations,
+                                    !@semanticInstructionAST outInstruction) {
     $identifier$ ?let mRoutineName indexing routineCall
     $($
     <actual_parameter_list_ggs3> !?ioDeclarations ?let @actualParameterListAST actualParameterList
@@ -70,7 +70,7 @@ final class @procCallInstructionAST : @semanticInstructionAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method enterInstructionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
+  override method enterInstructionInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
     for (mActualParameter) in self.mActualParameterList do
       [mActualParameter enterParameterInSemanticContext !?ioTypeMap]
     end
@@ -78,12 +78,12 @@ final class @procCallInstructionAST : @semanticInstructionAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method analyzeSemanticInstruction  ?let @lstring inUsefulnessCallerEntityName
-                                              ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-                                              ?let @analysisContext inAnalysisContext
-                                              ?!@unifiedTypeMap ioTypeMap
-                                              ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
-                                              ?!@localVarManager ioVariableMap  {
+  override method analyzeSemanticInstruction (?let @lstring inUsefulnessCallerEntityName,
+                                              ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
+                                              ?let @analysisContext inAnalysisContext,
+                                              ?!@unifiedTypeMap ioTypeMap,
+                                              ?!@semanticInstructionListForGeneration ioInstructionListForGeneration,
+                                              ?!@localVarManager ioVariableMap) {
    //--- Get routine signature
     [inAnalysisContext.semanticContext.routineMap searchKey
        !self.mRoutineName
@@ -136,11 +136,11 @@ final class @procCallInstructionForGeneration : @semanticInstructionForGeneratio
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method generateInstruction ?!@stringset ioInclusionSet
-                                      ?!@uint ioTemporaryVariableIndex
-                                      ?!@stringset ioUnusedVariableCppNameSet
-                                      ?let @bool unused inGenerateSyntaxDirectedTranslationString
-                                      ?!@string ioGeneratedCode {
+  override method generateInstruction (?!@stringset ioInclusionSet,
+                                       ?!@uint ioTemporaryVariableIndex,
+                                       ?!@stringset ioUnusedVariableCppNameSet,
+                                       ?let @bool unused inGenerateSyntaxDirectedTranslationString,
+                                       ?!@string ioGeneratedCode) {
     ioInclusionSet ++= "proc-" + self.routineMangledName.string.fileNameRepresentation
     ioGeneratedCode += "{\n"
   //--- Parameters

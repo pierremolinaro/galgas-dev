@@ -23,8 +23,8 @@ syntax extension galgas3InstructionsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <semantic_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
-                                   !@semanticInstructionAST outInstruction {
+  rule <semantic_instruction_ggs3> (?!@galgasDeclarationAST ioDeclarations,
+                                    !@semanticInstructionAST outInstruction) {
     $[$
     let instructionLocation = @location.here
     <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST mReceiverExpression
@@ -94,7 +94,7 @@ final class @methodCallInstructionAST : @semanticInstructionAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method enterInstructionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
+  override method enterInstructionInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
     [self.mReceiverExpression enterExpressionInSemanticContext !?ioTypeMap]
     for (mActualParameter) in self.mActualParameterList do
       [mActualParameter enterParameterInSemanticContext !?ioTypeMap]
@@ -103,14 +103,13 @@ final class @methodCallInstructionAST : @semanticInstructionAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method analyzeSemanticInstruction
-    ?let @lstring inUsefulnessCallerEntityName
-    ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-    ?let @analysisContext inAnalysisContext
-                                  ?!@unifiedTypeMap ioTypeMap
-    ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
-    ?!@localVarManager ioVariableMap
-  {
+  override method analyzeSemanticInstruction (
+                        ?let @lstring inUsefulnessCallerEntityName,
+                        ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
+                        ?let @analysisContext inAnalysisContext,
+                        ?!@unifiedTypeMap ioTypeMap,
+                        ?!@semanticInstructionListForGeneration ioInstructionListForGeneration,
+                        ?!@localVarManager ioVariableMap) {
   //--- Check self is not inkoved before full initialization
     if self.mReceiverExpression is @selfInExpressionAST then
       [ioVariableMap checkSelfObjectIsFullyInitialized !self.mMethodName.location]
@@ -201,12 +200,11 @@ final class @methodCallInstructionForGeneration : @semanticInstructionForGenerat
 
 //································································································*
 
-override method @methodCallInstructionForGeneration generateInstruction
-  ?!@stringset ioInclusionSet
-  ?!@uint ioTemporaryVariableIndex
-  ?!@stringset ioUnusedVariableCppNameSet
-  ?let @bool unused inGenerateSyntaxDirectedTranslationString
-  ?!@string ioGeneratedCode {
+override method @methodCallInstructionForGeneration generateInstruction (?!@stringset ioInclusionSet,
+                                     ?!@uint ioTemporaryVariableIndex,
+                                     ?!@stringset ioUnusedVariableCppNameSet,
+                                     ?let @bool unused inGenerateSyntaxDirectedTranslationString,
+                                     ?!@string ioGeneratedCode) {
 //--- Receiver expression
   [self.mReceiverExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?let @string receiverCppName]
   [!?ioUnusedVariableCppNameSet removeKey !receiverCppName]

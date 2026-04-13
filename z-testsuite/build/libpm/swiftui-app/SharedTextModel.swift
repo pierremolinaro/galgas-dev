@@ -3,7 +3,6 @@
 //--------------------------------------------------------------------------------------------------
 
 import SwiftUI
-import Combine
 
 //--------------------------------------------------------------------------------------------------
 
@@ -11,7 +10,7 @@ let ISSUE_MARK_WIDTH = 5.0
 
 //--------------------------------------------------------------------------------------------------
 
-final class SharedTextModel : NSObject, ObservableObject, Identifiable, NSTextStorageDelegate {
+@Observable final class SharedTextModel : NSObject, Identifiable, NSTextStorageDelegate {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -28,33 +27,33 @@ final class SharedTextModel : NSObject, ObservableObject, Identifiable, NSTextSt
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private let mSharedUndoManager : UndoManager = UndoManager ()
-  @Published private var mCanUndo = false
-  @Published private var mCanRedo = false
-  @ObservationTracked var canUndo : Bool { self.mCanUndo }
-  @ObservationTracked var canRedo : Bool { self.mCanRedo }
+  private var mCanUndo = false
+  private var mCanRedo = false
+  var canUndo : Bool { self.mCanUndo }
+  var canRedo : Bool { self.mCanRedo }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  @Published var mBottomViewIsVisible = false
+  var mBottomViewIsVisible = false
   private var mWriteFileCallback : ((String) -> Void)? = nil
   private var mPopUpMenuItems = [IdentifiableAttributedString] ()
 
-  @Published var mTopViewSelection = NSRange ()
-  @Published var mBottomViewSelection = NSRange ()
+  var mTopViewSelection = NSRange ()
+  var mBottomViewSelection = NSRange ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  @Binding var mIssues : [CompilationIssue]
+  var mIssues : [CompilationIssue]
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init (scanner inScanner : AbstractScanner?,
         initialString inString : String,
         fileURL inFileURL : URL,
-        issuesBinding inIssuesBinding : Binding <[CompilationIssue]>) {
+        issuesBinding inIssuesBinding : [CompilationIssue]) {
     self.mScanner = inScanner
     self.mDocumentString = inString
-    self._mIssues = inIssuesBinding
+    self.mIssues = inIssuesBinding
     self.mFileURL = inFileURL
     super.init ()
     noteObjectAllocation (self)
@@ -88,6 +87,11 @@ final class SharedTextModel : NSObject, ObservableObject, Identifiable, NSTextSt
     self.mTextStorage.delegate = self // NSTextStorageDelegate
     self.mScanner?.performLexicalColoringAfterUserDefaultChange (textStorage: self.mTextStorage)
     let attributedStr = NSMutableAttributedString (string: self.mDocumentString)
+    attributedStr.addAttribute (
+      .font,
+      value: NSFont (name: "Menlo", size: 16.0)!,
+      range: NSRange (location: 0, length: attributedStr.length)
+    )
     self.mTextStorage.setAttributedString (attributedStr)
   //--- Inutile d'en faire plus, la méthode textStorage (_:didProcessEditing:range:changeInLength)
   //  va être appelée, la classe courante est le délégué du self.mTextStorage (NSTextStorageDelegate)
@@ -535,7 +539,7 @@ struct LexicalHilitingTextEditor : NSViewRepresentable {
   private let mInstallScrollToLineNotificationObserver : Bool
   private let mPopulateContextualMenuCallBack : (NSMenu, String, [String]) -> Void
 
-  @ObservedObject private var mSharedTextModel : SharedTextModel
+  @State private var mSharedTextModel : SharedTextModel
 
   @Binding private var mSelection : NSRange
   @Binding private var mPopUpMenuItems : [IdentifiableAttributedString]

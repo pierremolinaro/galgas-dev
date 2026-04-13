@@ -3,31 +3,30 @@
 //--------------------------------------------------------------------------------------------------
 
 import SwiftUI
-import Combine
 
 //--------------------------------------------------------------------------------------------------
 
-final class ProjectCompiler : ObservableObject  {
+@Observable final class ProjectCompiler  {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  @Published private var mIsCompilingProject = false
-  @ObservationTracked var isCompilingProject : Bool { self.mIsCompilingProject }
+  var mIsCompilingProject = false
+  var isCompilingProject : Bool { self.mIsCompilingProject }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  @Published private var mCompileLog : AttributedString = AttributedString ()
-  @ObservationTracked var compileLog : AttributedString { self.mCompileLog }
+  var mCompileLog : AttributedString = AttributedString ()
+  var compileLog : AttributedString { self.mCompileLog }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  @Published private var mErrorCount = 0
-  @ObservationTracked var errorCount : Int { self.mErrorCount }
+  var mErrorCount = 0
+  var errorCount : Int { self.mErrorCount }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  @Published private var mWarningCount = 0
-  @ObservationTracked var warningCount : Int { self.mWarningCount }
+  var mWarningCount = 0
+  var warningCount : Int { self.mWarningCount }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

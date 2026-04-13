@@ -21,8 +21,8 @@ syntax extension galgas3SyntaxComponentSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <syntax_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
-                                 !@syntaxInstructionAST outInstruction {
+  rule <syntax_instruction_ggs3> (?!@galgasDeclarationAST ioDeclarations,
+                                  !@syntaxInstructionAST outInstruction) {
     $send$
     let instructionLocation = @location.here
     <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST sentExpression
@@ -42,8 +42,8 @@ syntax extension galgas4SyntaxComponentSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <syntax_instruction> ?!@galgasDeclarationAST ioDeclarations
-                            !@syntaxInstructionAST outInstruction {
+  rule <syntax_instruction> (?!@galgasDeclarationAST ioDeclarations,
+                             !@syntaxInstructionAST outInstruction) {
     $send$
     let instructionLocation = @location.here
     <expression> !?ioDeclarations ?let @semanticExpressionAST sentExpression
@@ -66,29 +66,28 @@ final class @syntaxSendInstructionAST : @syntaxInstructionAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method transformInstructionForGrammarAnalysis
-    ?!usedTerminalMap:@terminalSymbolsMapForGrammarAnalysis unused ioActuallyUsedTerminalSymbolMap
-    ?nonTerminalSymbolMap:let @nonTerminalSymbolMapForGrammarAnalysis unused inNonTerminalSymbolMap
-    ?!addedTerminalIndex:@uint unused ioAddedNonTerminalIndex
-    ?!@syntaxInstructionListForGrammarAnalysis unused ioSyntaxInstructionList {
+  override method transformInstructionForGrammarAnalysis (
+    ?!usedTerminalMap:@terminalSymbolsMapForGrammarAnalysis unused ioActuallyUsedTerminalSymbolMap,
+    ?nonTerminalSymbolMap:let @nonTerminalSymbolMapForGrammarAnalysis unused inNonTerminalSymbolMap,
+    ?!addedTerminalIndex:@uint unused ioAddedNonTerminalIndex,
+    ?!@syntaxInstructionListForGrammarAnalysis unused ioSyntaxInstructionList) {
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method analyzeSyntaxInstruction
-                                  ?let @lstring inUsefulnessCallerEntityName
-                                  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-                                  ?let @analysisContext inAnalysisContext
-                                  ?!@unifiedTypeMap ioTypeMap
-                                  ?let @bool inHasTranslateFeature
-                                  ?let @terminalMap unused inTerminalMap
-                                  ?let @string unused inLexiqueName
-                                  ?let @nonterminalMap unused inNonterminalMap
-                                  ?let @string unused inComponentName
-                                  ?let @stringset unused inIndexNameSet
-                                  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
-                                  ?!@localVarManager ioVariableMap
-                                  ?!@uint unused ioSelectMethodCount {
+  override method analyzeSyntaxInstruction (?let @lstring inUsefulnessCallerEntityName,
+                                  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
+                                  ?let @analysisContext inAnalysisContext,
+                                  ?!@unifiedTypeMap ioTypeMap,
+                                  ?let @bool inHasTranslateFeature,
+                                  ?let @terminalMap unused inTerminalMap,
+                                  ?let @string unused inLexiqueName,
+                                  ?let @nonterminalMap unused inNonterminalMap,
+                                  ?let @string unused inComponentName,
+                                  ?let @stringset unused inIndexNameSet,
+                                  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration,
+                                  ?!@localVarManager ioVariableMap,
+                                  ?!@uint unused ioSelectMethodCount) {
     if not inHasTranslateFeature then
       error self.mInstructionLocation 
       : "'send' instruction is only allowed when syntax componant has 'translate' feature"
@@ -127,11 +126,11 @@ final class @syntaxSendInstructionForGeneration : @syntaxInstructionForGeneratio
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method generateInstruction ?!@stringset ioInclusionSet
-                                      ?!@uint ioTemporaryVariableIndex
-                                      ?!@stringset ioUnusedVariableCppNameSet
-                                      ?let @bool unused inGenerateSyntaxDirectedTranslationString
-                                      ?!@string ioGeneratedCode {
+  override method generateInstruction (?!@stringset ioInclusionSet,
+                                       ?!@uint ioTemporaryVariableIndex,
+                                       ?!@stringset ioUnusedVariableCppNameSet,
+                                       ?let @bool unused inGenerateSyntaxDirectedTranslationString,
+                                       ?!@string ioGeneratedCode) {
     [self.mExpression generateExpression
       !?ioGeneratedCode
       !?ioInclusionSet

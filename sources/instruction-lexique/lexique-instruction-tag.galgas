@@ -32,7 +32,7 @@ syntax extension galgas3LexiqueComponentSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
+  rule <lexical_instruction> (?!@lexicalInstructionListAST ioInstructionList) {
     $tag$
     $identifier$ ?let tagName
     ioInstructionList += !@lexicalTagInstructionAST {!tagName}
@@ -48,7 +48,7 @@ syntax extension galgas4LexiqueComponentSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
+  rule <lexical_instruction> (?!@lexicalInstructionListAST ioInstructionList) {
     $tag$
     $identifier$ ?let tagName
     ioInstructionList += !@lexicalTagInstructionAST {!tagName}
@@ -62,17 +62,17 @@ syntax extension galgas4LexiqueComponentSyntax {
 //! CHECK LEXICAL INSTRUCTION
 //--------------------------------------------------------------------------------------------------
 
-override method @lexicalTagInstructionAST checkLexicalInstruction
-  ?!@lexiqueAnalysisContext unused ioLexiqueAnalysisContext
-  ?!@lexicalTagMap ioTagMap {
+override method @lexicalTagInstructionAST checkLexicalInstruction (
+  ?!@lexiqueAnalysisContext unused ioLexiqueAnalysisContext,
+  ?!@lexicalTagMap ioTagMap) {
   [!?ioTagMap insertKey !self.mLexicalTagName]
 }
 
 //--------------------------------------------------------------------------------------------------
 
-override getter @lexicalTagInstructionAST generateSwiftCocoaInstructionCode
-  ?let @string unused inScannerClassName
-  ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
+override getter @lexicalTagInstructionAST generateSwiftCocoaInstructionCode (
+  ?let @string unused inScannerClassName,
+  ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext)
   -> @string outGeneratedCode {
   outGeneratedCode = "let locationForTag_" + self.mLexicalTagName + " = self.savedScanningPoint ()\n"
 }
@@ -86,9 +86,10 @@ override getter @lexicalTagInstructionAST lexicalInstructionUsesLoopLocalVariabl
 }
 
 //--------------------------------------------------------------------------------------------------
-override getter @lexicalTagInstructionAST generateLexicalInstructionCode
-  ?let @string unused inScannerClassName
-  ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
+
+override getter @lexicalTagInstructionAST generateLexicalInstructionCode (
+  ?let @string unused inScannerClassName,
+  ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext)
   -> @string {
   result = "const LocationInSource currentLocationForTag_" + self.mLexicalTagName + " = mCurrentLocation ;\n"
                     + "const LocationInSource endLocationForTag_" + self.mLexicalTagName + " = mTokenEndLocation ;\n"
