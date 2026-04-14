@@ -63,8 +63,8 @@ option galgas_cli_options {
   @bool checkEntityUsefulness : '\0', "check-usefulness"
     -> "Check Entity Usefulness"
 
-  @bool errorOnOldStyleGetterCall : '\0', "error-on-old-style-getter-call"
-    -> "GGS3: error on old style getter with no argument call"
+//  @bool errorOnOldStyleGetterCall : '\0', "error-on-old-style-getter-call"
+//    -> "GGS3: error on old style getter with no argument call"
 }
 
 //--------------------------------------------------------------------------------------------------
