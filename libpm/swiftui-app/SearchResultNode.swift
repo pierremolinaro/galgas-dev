@@ -24,7 +24,7 @@ struct SearchResultNode : Identifiable {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  var count : Int { 1 + self.entries.count }
+  var count : Int { self.entries.count }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
