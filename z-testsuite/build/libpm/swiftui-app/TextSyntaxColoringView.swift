@@ -98,11 +98,11 @@ struct TextSyntaxColoringView : View {
           } label: {
              Label ("", systemImage: "gearshape.fill")
           }.frame (width: 48)
-//   §       Picker ("", selection: self.mUserTopViewSelectedPopUp) {
-//            ForEach (self.mTopViewPopUpMenuItems, id: \.id) { entry in
-//              Text (entry.attributedString).tag (entry.id)
-//            }
-//          }.pickerStyle (.menu).labelsHidden ()
+          Picker ("", selection: self.mUserTopViewSelectedPopUp) {
+            ForEach (self.mTopViewPopUpMenuItems, id: \.id) { entry in
+              Text (entry.attributedString).tag (entry.id)
+            }
+          }.pickerStyle (.menu).labelsHidden ()
           Button ("+") { self.mSharedTextModel.mBottomViewIsVisible = true }
           .disabled (self.mSharedTextModel.mBottomViewIsVisible)
           Spacer ().frame (width: 6)

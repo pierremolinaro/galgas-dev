@@ -141,7 +141,7 @@ final class @functionCallExpressionAST : @semanticExpressionAST {
       :"the '" + self.mFunctionName + "' function header declares " + functionSignature.count.string
         + " formal parameter(s), but this function call names " + self.mExpressionList.count.string
         + " effective argument(s)"
-      : outExpression
+      spoil (outExpression)
     else
       var semanticExpressionListForGeneration = @semanticExpressionListForGeneration ()
       for formalArg in functionSignature, actualArg in self.mExpressionList do

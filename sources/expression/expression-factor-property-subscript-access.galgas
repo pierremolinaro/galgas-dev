@@ -179,7 +179,7 @@ final class @structPropertyAccessExpressionAST : @semanticExpressionAST {
           error self.propertyName
           : "for being called as a property read, the getter should have no formal argument (has "
           + theGetter.mArgumentTypeList.count + ")"
-          : outExpressionGeneration
+          spoil (outExpressionGeneration)
         else
           outExpressionGeneration = @getterCallExpressionForGeneration {
             !theGetter.mReturnedType
@@ -205,7 +205,7 @@ final class @structPropertyAccessExpressionAST : @semanticExpressionAST {
            s += "\n  -- getter: " + aGetter.lkey
          end
         end
-        error self.propertyName : s : outExpressionGeneration
+        error self.propertyName : s spoil (outExpressionGeneration)
       end
     end
   }
@@ -325,7 +325,7 @@ final class @subscriptReadAccessExpressionAST : @semanticExpressionAST {
         semanticExpressionListForGeneration
       )
     else // Unknown subscript signature
-      error self.endOfArgsLocation : "unknown subscript signature" : outExpression
+      error self.endOfArgsLocation : "unknown subscript signature" spoil (outExpression)
     end
   }
 

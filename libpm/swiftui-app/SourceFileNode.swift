@@ -12,9 +12,9 @@ import AppKit
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   let id : SourceFileNodeID
-  var mURL : URL
+  private(set) var mURL : URL
   private(set) var mChildren : [SourceFileNode] = []
-  var mIsEdited : Bool = false
+  private(set) var mIsEdited : Bool = false
   private(set) weak var mRootNode : RootDirectoryNode?
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

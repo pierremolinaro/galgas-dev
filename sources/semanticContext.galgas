@@ -659,7 +659,7 @@ override method @filewrapperDeclarationAST enterDeclarationInSemanticContext
   end
   if not absoluteSourcePath.directoryExists then
     error self.mFilewrapperPath: "The '" + absoluteSourcePath + "' directory does not exist"
-    : regularRootFileMap, wrapperDirectoryMap
+    spoil (regularRootFileMap, wrapperDirectoryMap)
   else
   //--- Enumerate paths
     var @uint wrapperFileIndex = 0

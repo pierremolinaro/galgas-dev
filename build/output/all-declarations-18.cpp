@@ -1121,15 +1121,15 @@ GGS_unifiedTypeDefinition cPtr_unifiedTypeMapElementClass::getter_definition (Co
   case GGS_typeDefinition::Enumeration::enum_unsolved:
     {
       GenericArray <FixItDescription> fixItArray1 ;
-      inCompiler->emitSemanticError (GGS_location::class_func_nowhere (SOURCE_FILE ("unified-type-map.galgas", 167)), GGS_string ("unsolved type"), fixItArray1  COMMA_SOURCE_FILE ("unified-type-map.galgas", 167)) ;
+      inCompiler->emitSemanticError (GGS_location::class_func_nowhere (SOURCE_FILE ("unified-type-map.galgas", 152)), GGS_string ("unsolved type"), fixItArray1  COMMA_SOURCE_FILE ("unified-type-map.galgas", 152)) ;
       result_result.drop () ; // Release error dropped variable
     }
     break ;
   case GGS_typeDefinition::Enumeration::enum_solved:
     {
-      GGS_unifiedTypeDefinition extractedValue_6469_definition_0 ;
-      temp_0.readProperty_mDefinition ().getAssociatedValuesFor_solved (extractedValue_6469_definition_0) ;
-      result_result = extractedValue_6469_definition_0 ;
+      GGS_unifiedTypeDefinition extractedValue_5942_definition_0 ;
+      temp_0.readProperty_mDefinition ().getAssociatedValuesFor_solved (extractedValue_5942_definition_0) ;
+      result_result = extractedValue_5942_definition_0 ;
     }
     break ;
   }

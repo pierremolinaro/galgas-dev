@@ -98,13 +98,15 @@ syntax extension galgas3InstructionsSyntax {
     var mBuiltVariableList = @lstringlist ()
     select
     or
-      $:$
+      $spoil$
+      $($
       repeat
        $identifier$ ?let builtVariableName
        mBuiltVariableList += !builtVariableName
       while
         $,$
       end
+      $)$
     end
     <issue_fixit> !?ioDeclarations ?let @fixitListAST fixitListAST
     outInstruction = @errorInstructionAST {

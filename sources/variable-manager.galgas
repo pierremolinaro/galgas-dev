@@ -478,7 +478,7 @@ setter @localVarMapListForLLVM neutralAccess ?let @lstring inVarName
                                              !@string outNameForCheckingFormalParameterUsing {
   if inIndex >= self.count then
     error inVarName : "'" + inVarName + "' variable is not declared"
-    : outType, outCppName, outNameForCheckingFormalParameterUsing
+    spoil (outType, outCppName, outNameForCheckingFormalParameterUsing)
   else
     let localMap = [self mMapAtIndex !inIndex]
     if let varDescriptor = localMap @[inVarName] then
@@ -575,7 +575,7 @@ setter @localVarMapListForLLVM writeAccessInSubMap ?let @lstring inVarName
                                                    !@string outNameForCheckingFormalParameterUsing {
   if inIndex >= self.count then
     error inVarName : "'" + inVarName + "' variable is not declared"
-    : outType, outCppName, outNameForCheckingFormalParameterUsing
+    spoil (outType, outCppName, outNameForCheckingFormalParameterUsing)
   else
     var localMap = [self mMapAtIndex !inIndex]
     if let varDescriptor = localMap @[inVarName] then
@@ -675,7 +675,7 @@ setter @localVarMapListForLLVM readAccess ?let @lstring inVarName
                                           !@string outNameForCheckingFormalParameterUsing {
   if inIndex >= self.count then
     error inVarName : "'" + inVarName + "' variable is not declared"
-    : outType, outCppName, outNameForCheckingFormalParameterUsing
+    spoil (outType, outCppName, outNameForCheckingFormalParameterUsing)
   else
     var localMap = [self mMapAtIndex !inIndex]
     if let varDescriptor = localMap @[inVarName] then
@@ -766,17 +766,10 @@ setter @localVarMapListForLLVM readWriteAccess ?let @lstring inVarName
                                                !@string outNameForCheckingFormalParameterUsing {
   if inIndex >= self.count then
     error inVarName : "'" + inVarName + "' variable is not declared"
-    : outType, outCppName, outNameForCheckingFormalParameterUsing
+    spoil (outType, outCppName, outNameForCheckingFormalParameterUsing)
   else
     var localMap = [self mMapAtIndex !inIndex]
     if let varDescriptor = localMap @[inVarName] then
-//    if let [localMap searchKey
-//              !inVarName
-//              ?let type
-//              ?let cppName
-//              ?let nameForCheckingFormalParameterUsing
-//              ?let inAttributes
-//              ?let valuation] then
       var newValuation = varDescriptor.mState
       [!?newValuation readWriteTransition !inVarName !inOverridenMap: true !varDescriptor.mAttributes]
       if newValuation != varDescriptor.mState then

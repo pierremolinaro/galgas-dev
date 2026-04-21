@@ -99,7 +99,7 @@ final class @tildeExpressionAST : @semanticExpressionAST {
       error self.mOperatorLocation
       : "operand type is '@" + type.definition.typeName.string
       + "' and does not support the '~' operator"
-      : outExpression
+      spoil (outExpression)
     else
     //--- Generate expression
       outExpression = @tildeExpressionForGeneration {

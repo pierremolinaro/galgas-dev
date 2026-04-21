@@ -448,7 +448,7 @@ final class @opAssignExpressionInstructionAST : @semanticInstructionAST {
         end
       else
         error self.mInstructionLocation : "'self' not available in this context"
-        : targetType, targetVariableCppName, nameForCheckingFormalParameterUsing
+        spoil (targetType, targetVariableCppName, nameForCheckingFormalParameterUsing)
       end
     else
       [!?ioVariableMap searchForReadWriteAccess
@@ -543,7 +543,7 @@ final class @plusEqualElementsInstructionAST : @semanticInstructionAST {
         end
       else
         error self.mInstructionLocation : "'self' not available in this context"
-        : targetType, targetVariableCppName, nameForCheckingFormalParameterUsing
+        spoil (targetType, targetVariableCppName, nameForCheckingFormalParameterUsing)
       end
     else
       [!?ioVariableMap searchForReadWriteAccess
@@ -652,7 +652,7 @@ final class @plusPlusEqualElementInstructionAST : @semanticInstructionAST {
         end
       else
         error self.mInstructionLocation : "'self' not available in this context"
-        : targetType, targetVariableCppName, nameForCheckingFormalParameterUsing
+        spoil (targetType, targetVariableCppName, nameForCheckingFormalParameterUsing)
       end
     else
       [!?ioVariableMap searchForReadWriteAccess

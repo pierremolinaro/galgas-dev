@@ -87,7 +87,7 @@ override method @templateGetterCallInExpressionAST templateExpressionAnalysis
   if receiverType.definition.typeKind.isStructType || receiverType.definition.typeKind.isClassType,
      self.mExpressionList.count == 0,
      [receiverType.definition.propertyMap hasKey !self.mGetterName] then
-    error self.mExpressionLocation : "use dot notation, instead og getter call" : outExpression
+    error self.mExpressionLocation : "use dot notation, instead og getter call" spoil (outExpression)
   else
   //--- Get getter map
     let @getterMap getterMap = receiverType.definition.getterMap
@@ -136,7 +136,7 @@ override method @templateGetterCallInExpressionAST templateExpressionAnalysis
           error self.mGetterName
           : "the '@" + receiverTypeName + "' struct type does not define the '" + self.mGetterName.string
           + "' getter, and none of its fields defines it"
-          : getterFormalArgumentTypeList, hasCompilerArgument, returnedType, kind
+          spoil (getterFormalArgumentTypeList, hasCompilerArgument, returnedType, kind)
         elsif matchingReaderCount > 1 then
           var @string s = ""
           for (mValue) in fieldList
@@ -146,16 +146,16 @@ override method @templateGetterCallInExpressionAST templateExpressionAnalysis
           error self.mGetterName
           : "the '@"+ receiverTypeName + "' struct type does not define the '" + self.mGetterName.string
           + "' getter, and several of its fields defines it:" + s + " (exactly one field should define it)"
-          : getterFormalArgumentTypeList, hasCompilerArgument, returnedType, kind
+          spoil (getterFormalArgumentTypeList, hasCompilerArgument, returnedType, kind)
         end
       elsif getterMap.count == 0 then
         error self.mGetterName
         : "the '@"+ receiverTypeName + "' type does not define any getter"
-        : getterFormalArgumentTypeList, hasCompilerArgument, returnedType, kind
+        spoil (getterFormalArgumentTypeList, hasCompilerArgument, returnedType, kind)
       else
         error self.mGetterName
         : "the '@"+ receiverTypeName + "' type does not define the '" + self.mGetterName + "' getter"
-        : getterFormalArgumentTypeList, hasCompilerArgument, returnedType, kind
+        spoil (getterFormalArgumentTypeList, hasCompilerArgument, returnedType, kind)
         fixit { replace getterMap.keyList }
       end
     end
@@ -163,7 +163,7 @@ override method @templateGetterCallInExpressionAST templateExpressionAnalysis
     if self.mExpressionList.count != getterFormalArgumentTypeList.count then
       error self.mGetterName: "calling the '" + self.mGetterName + "' getter of '@" + receiverTypeName + "' requires "
       + getterFormalArgumentTypeList.count.string + " parameter(s), while this call has "
-      + self.mExpressionList.count.string + " parameter(s)" : outExpression
+      + self.mExpressionList.count.string + " parameter(s)" spoil (outExpression)
     else
       var @semanticExpressionListForGeneration constructorEffectiveParameterList = @()
       for (mActualSelector mExpression mEndOfExpressionLocation) in self.mExpressionList,
@@ -225,11 +225,11 @@ override method @templateClassFunctionAST templateExpressionAnalysis
     if classFunctionMap.count == 0 then
       error self.mClassFunctionName
       : "the '@"+ self.mTypeName + "' type does not define any constructor"
-      : classFuncFormalArgumentTypeList, hasCompilerArgument, returnedType
+      spoil (classFuncFormalArgumentTypeList, hasCompilerArgument, returnedType)
     else
       error self.mClassFunctionName
       : "the '@"+ self.mTypeName + "' type does not define the '" + self.mClassFunctionName + "' constructor"
-      : classFuncFormalArgumentTypeList, hasCompilerArgument, returnedType
+      spoil (classFuncFormalArgumentTypeList, hasCompilerArgument, returnedType)
       fixit { replace classFunctionMap.keyList }
     end
   end
@@ -241,7 +241,7 @@ override method @templateClassFunctionAST templateExpressionAnalysis
     : "calling the '" + self.mClassFunctionName + "' constructor of '@" + constructorType.definition.typeName.string + "' requires "
     + classFuncFormalArgumentTypeList.count.string + " parameter(s), while this call has "
     + self.mExpressionList.count.string + " parameter(s)"
-    : classFunctionEffectiveParameterList
+    spoil (classFunctionEffectiveParameterList)
   else
     classFunctionEffectiveParameterList = @semanticExpressionListForGeneration ()
     for (mActualSelector mExpression mEndOfExpressionLocation) in self.mExpressionList, (mFormalSelector mFormalArgumentType 2*) in classFuncFormalArgumentTypeList do
@@ -284,7 +284,7 @@ override method @templateFileWrapperTemplateCallAST templateExpressionAnalysis
   ?!@unifiedTypeMap unused ioTypeMap
   !@semanticExpressionForGeneration outExpression
 {
-  error self.mFileWrapperName:"unhandled @templateFileWrapperTemplateCallAST templateExpressionAnalysis":outExpression
+  error self.mFileWrapperName:"unhandled @templateFileWrapperTemplateCallAST templateExpressionAnalysis" spoil (outExpression)
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -526,7 +526,7 @@ override method @templateNotOperatorAST templateExpressionAnalysis
   if not [type.definition.features contains !.prefixNotOperator] then
     error self.mOperatorLocation
     : "operand type is '@" + type.definition.typeName.string + "' and does not support the 'not' operator"
-    :outExpression
+    spoil (outExpression)
   else
   //--- Generate expression
     outExpression = @notExpressionForGeneration {
@@ -559,7 +559,7 @@ override method @templateLogicalNegateAST templateExpressionAnalysis
   if not [type.definition.features contains !.prefixTildeOperator] then
     error self.mOperatorLocation
     : "operand type is '@" + type.definition.typeName.string + "' and does not support the '~' operator"
-    :outExpression
+    spoil (outExpression)
   else
   //--- Generate expression
     outExpression = @tildeExpressionForGeneration {
@@ -682,7 +682,7 @@ override method @templateOptionAccessAST templateExpressionAnalysis
         !self.mOptionName.string
       }
     else
-      error self.mGetterName:"only the 'value', 'char', 'string' and 'comment' getters are defined for an option" :outExpression
+      error self.mGetterName:"only the 'value', 'char', 'string' and 'comment' getters are defined for an option" spoil (outExpression)
     end
   else
     var @stringset s = @()
@@ -697,7 +697,7 @@ override method @templateOptionAccessAST templateExpressionAnalysis
     end
     error self.mOptionName
     : "the '" + self.mOptionComponentName + "' option component does not define the '" + self.mOptionName + "' option"
-    : outExpression
+    spoil (outExpression)
     fixit { replace s }
   end
 }
@@ -735,7 +735,7 @@ override method @templateFunctionCallAST templateExpressionAnalysis
     :"the '" + self.mFunctionName + "' function header declares " + functionSignature.count.string
       + " formal parameter(s), but this function call names " + self.mExpressionList.count.string
       + " effective argument(s)"
-    : outExpression
+    spoil (outExpression)
   else
     var semanticExpressionListForGeneration = @semanticExpressionListForGeneration ()
     for (mFormalSelector mFormalArgumentType 2*) in functionSignature, (mActualSelector mExpression mEndOfExpressionLocation) in self.mExpressionList do
@@ -774,7 +774,7 @@ override method @templateExtensionTemplateCallAST templateExpressionAnalysis
 {
   error self.mTemplateName
   :"INTERNAL ERROR: @templateExtensionTemplateCallAST templateExpressionAnalysis not implemented yet"
-  :outExpression
+  spoil (outExpression)
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -1045,7 +1045,7 @@ override method @templateUnaryMinusOperationAST templateExpressionAnalysis
   if not [type.definition.features contains !.prefixMinusOperator] then
     error self.mOperatorLocation
     : "operand type is '@" + type.definition.typeName.string + "' and does not support the prefix minus operator"
-    :outExpression
+    spoil (outExpression)
   else
   //--- Generate expression
     outExpression = @unaryMinusExpressionForGeneration {
@@ -1382,11 +1382,11 @@ override method @templateLeftShiftOperationAST templateExpressionAnalysis
   if not [leftType.definition.features contains !.infixShiftOperator] then
     error self.mOperatorLocation
     : "left operand type is '@" + leftType.definition.typeName.string + "' and does not support a shift operator"
-    :outExpression
+    spoil (outExpression)
   elsif rightType.definition.typeName.string != "uint" then
     error self.mOperatorLocation
     : "for a shift operator, right operand type should be '@uint': it is '@" + rightType.definition.typeName.string + "'"
-    :outExpression
+    spoil (outExpression)
   else
   //--- Generate expression
     outExpression = @binaryOperatorExpressionForGeneration {
@@ -1430,11 +1430,11 @@ override method @templateRightShiftOperationAST templateExpressionAnalysis
   if not [leftType.definition.features contains !.infixShiftOperator] then
     error self.mOperatorLocation
     : "left operand type is '@" + leftType.definition.typeName.string + "' and does not support a shift operator"
-    :outExpression
+    spoil (outExpression)
   elsif rightType.definition.typeName.string != "uint" then
     error self.mOperatorLocation
     : "for a shift operator, right operand type should be '@uint': it is '@" + rightType.definition.typeName.string + "'"
-    :outExpression
+    spoil (outExpression)
   else
   //--- Generate expression
     outExpression = @binaryOperatorExpressionForGeneration {

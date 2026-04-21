@@ -251,7 +251,7 @@ list @CommaSeparatedExpressionList {
       //--- Check this is a class
         elsif analyzedExpression.mResultType.definition.typeKind.isClassType then
           if typeName.string == "" then
-            error typeName.location : "on a class object, the 'as' clause is required" : castType, testType
+            error typeName.location : "on a class object, the 'as' clause is required" spoil (castType, testType)
           else
             castType = [ioTypeMap typeMapEntryForLKey !typeName]
             testType = castType

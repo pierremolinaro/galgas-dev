@@ -106,7 +106,7 @@ override method @bangExpressionAST analyzeSemanticExpression
   else
     error self.mOperatorLocation
     : "operand type is '@" + type.definition.typeName.string + "' and does not support the 'bang' operator"
-    : outExpression
+    spoil (outExpression)
   end
 }
 

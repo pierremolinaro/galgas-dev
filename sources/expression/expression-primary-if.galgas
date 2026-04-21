@@ -162,11 +162,11 @@ override method @ifExpressionAST analyzeSemanticExpression
   if if_expression.mResultType.definition.typeName.string != "bool" then
     error self.mOperatorLocation
     :"the test expression type is '@" + if_expression.mResultType.definition.typeName.string + "', it should be '@bool'"
-    :outExpression
+    spoil (outExpression)
   elsif then_expression.mResultType != else_expression.mResultType then
     error self.mOperatorLocation
     :"operand expression types are '@" + then_expression.mResultType.definition.typeName.string + "' and '@" + else_expression.mResultType.definition.typeName.string + "': they should be the same"
-    :outExpression
+    spoil (outExpression)
   else
   //--- Generate expression
     outExpression = @ifExpressionForGeneration {

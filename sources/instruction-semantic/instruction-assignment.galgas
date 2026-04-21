@@ -92,7 +92,7 @@ syntax extension galgas4InstructionsSyntax {
          !?ioDeclarations
          ?let @actualOutputArgumentList unused outExpressionList
       $]$
-      error .here : "not handled yet" : optionalProperty
+      error .here : "not handled yet" spoil (optionalProperty)
     or
       $.$
       $identifier$ ?let attributeName
@@ -124,7 +124,7 @@ syntax extension galgas4InstructionsSyntax {
          !?ioDeclarations
          ?let @actualOutputArgumentList unused outExpressionList
       $]$
-      error .here : "not handled yet" : optionalProperty
+      error .here : "not handled yet" spoil (optionalProperty)
     or
       $.$
       $identifier$ ?let attributeName

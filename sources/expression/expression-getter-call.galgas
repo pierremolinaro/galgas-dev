@@ -103,7 +103,7 @@ final class @getterCallExpressionAST : @semanticExpressionAST {
         error self.mGetterName
         : "calling the '" + self.mGetterName + "' getter of '@" + receiverType.definition.typeName.string + "' requires "
         + aGetter.mArgumentTypeList.count + " parameter(s), while this call has "
-        + self.mActualArgumentList.count + " parameter(s)" : outExpression
+        + self.mActualArgumentList.count + " parameter(s)" spoil (outExpression)
       else
         var @semanticExpressionListForGeneration constructorEffectiveParameterList = @()
         for (mActualSelector mExpression mEndOfExpressionLocation) in self.mActualArgumentList,
@@ -141,7 +141,7 @@ final class @getterCallExpressionAST : @semanticExpressionAST {
       end
   //-------------------------------------- The getter does not exist, it is a property ?
     elsif self.mActualArgumentList.count == 0, [receiverType.definition.propertyMap hasKey !self.mGetterName] then
-      error self.mExpressionLocation : "use dot notation, instead of getter call" : outExpression
+      error self.mExpressionLocation : "use dot notation, instead of getter call" spoil (outExpression)
   //-------------------------------------- not found, old style search
     else
       var @uint matchingReaderCount = 0
@@ -176,7 +176,7 @@ final class @getterCallExpressionAST : @semanticExpressionAST {
           error self.mGetterName
           : "the '@"+ receiverType.definition.typeName.string + "' struct type does not define the '" + self.mGetterName.string
           + "' getter, and none of its fields defines it"
-          : getterFormalArgumentTypeList, hasCompilerArgument, returnedType, kind
+          spoil (getterFormalArgumentTypeList, hasCompilerArgument, returnedType, kind)
         elsif matchingReaderCount > 1 then
           var @string s = ""
           for (mValue) in fieldList
@@ -186,14 +186,14 @@ final class @getterCallExpressionAST : @semanticExpressionAST {
           error self.mGetterName
           : "the '@"+ receiverType.definition.typeName.string + "' struct type does not define the '" + self.mGetterName.string
           + "' getter, and several of its fields defines it:" + s + " (exactly one field should define it)"
-          : getterFormalArgumentTypeList, hasCompilerArgument, returnedType, kind
+          spoil (getterFormalArgumentTypeList, hasCompilerArgument, returnedType, kind)
         end
       //--- Analysis arguments
         if self.mActualArgumentList.count != getterFormalArgumentTypeList.count then
           error self.mGetterName
           : "calling the '" + self.mGetterName + "' getter of '@" + receiverType.definition.typeName.string + "' requires "
           + getterFormalArgumentTypeList.count.string + " parameter(s), while this call has "
-          + self.mActualArgumentList.count.string + " parameter(s)" : outExpression
+          + self.mActualArgumentList.count.string + " parameter(s)" spoil (outExpression)
         else
           var @semanticExpressionListForGeneration constructorEffectiveParameterList = @()
           for (mActualSelector mExpression mEndOfExpressionLocation) in self.mActualArgumentList,
@@ -231,11 +231,11 @@ final class @getterCallExpressionAST : @semanticExpressionAST {
       elsif receiverType.definition.getterMap.count == 0 then
         error self.mGetterName
         : "the '@"+ receiverType.definition.typeName.string + "' type does not define any getter"
-        : outExpression
+        spoil (outExpression)
       else
         error self.mGetterName
         : "the '@"+ receiverType.definition.typeName.string + "' type does not define the '" + self.mGetterName + "' getter "
-        : outExpression
+        spoil (outExpression)
         fixit { replace receiverType.definition.getterMap.keyList }
       end
     end

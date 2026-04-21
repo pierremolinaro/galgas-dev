@@ -211,7 +211,7 @@ private proc analyzeConstructorInvocation ?let @lstring inUsefulnessCallerEntity
   if outConstructorType.isNull then
     error inTypeName
     : "cannot infer type"
-    : outReturnedType, outConstructorType, outConstructorEffectiveParameterList, outHasCompilerArgument
+    spoil (outReturnedType, outConstructorType, outConstructorEffectiveParameterList, outHasCompilerArgument)
   else
   //--- Get constructor map from type map
     let @classFunctionMap classFunctionMap = outConstructorType.definition.classFunctionMap
@@ -226,12 +226,12 @@ private proc analyzeConstructorInvocation ?let @lstring inUsefulnessCallerEntity
         error inConstructorName
         : "the '@"+ outConstructorType.definition.typeName.string 
         + "' type does not define any constructor"
-        : constructorFormalArgumentTypeList, outHasCompilerArgument, outReturnedType
+        spoil (constructorFormalArgumentTypeList, outHasCompilerArgument, outReturnedType)
       else
         error inConstructorName
         : "the '@"+ outConstructorType.definition.typeName.string
         + "' type does not define the '" + inConstructorName + "' constructor"
-        : constructorFormalArgumentTypeList, outHasCompilerArgument, outReturnedType
+        spoil (constructorFormalArgumentTypeList, outHasCompilerArgument, outReturnedType)
         fixit { replace classFunctionMap.keyList }
       end
     end

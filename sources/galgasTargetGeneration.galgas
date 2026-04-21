@@ -336,7 +336,7 @@ proc updateGalgasTargets
   let @lstring macCodeSign
   if let entry = inProjectQualifiedFeatureMap @["macCodeSign"] then
     if entry.mFeatureValue.string == "" then
-      error entry.mFeatureValue:"the %macCodeSign attribute should not be empty" : macCodeSign
+      error entry.mFeatureValue:"the %macCodeSign attribute should not be empty" spoil (macCodeSign)
     else
       macCodeSign = entry.mFeatureValue
     end
@@ -349,7 +349,7 @@ proc updateGalgasTargets
   let @string libpmPath
   if let entry = inProjectQualifiedFeatureMap @["libpmAtPath"] then
     if entry.mFeatureValue.string == "" then
-      error entry.mFeatureValue:"the libpm path should not be empty" : libpmPath
+      error entry.mFeatureValue:"the libpm path should not be empty" spoil (libpmPath)
     else
       libpmPath = entry.mFeatureValue.string
     end
@@ -1160,7 +1160,7 @@ proc updateGalgasTargets
     else
       let components = [macCodeSign.string componentsSeparatedByString !":"]
       if components.count != 2 then
-        error macCodeSign : "the %macCodeSign attribute associated string should be \"key:value\"" : codeSigningSettingList
+        error macCodeSign : "the %macCodeSign attribute associated string should be \"key:value\"" spoil (codeSigningSettingList)
       elsif [components mValueAtIndex !0] == "MacDeveloper" then
         codeSigningSettingList = @[
           @("CODE_SIGN_IDENTITY = \"Mac Developer\""),
@@ -1169,7 +1169,7 @@ proc updateGalgasTargets
       elsif [components mValueAtIndex !0] == "Certificate" then
         codeSigningSettingList = @[@("CODE_SIGN_IDENTITY = \"" + [components mValueAtIndex !1] + "\"")]
       else
-        error macCodeSign : "the %macCodeSign attribute string is \"key:value\", but key should be 'MacDeveloper' or 'Certificate'" : codeSigningSettingList
+        error macCodeSign : "the %macCodeSign attribute string is \"key:value\", but key should be 'MacDeveloper' or 'Certificate'" spoil (codeSigningSettingList)
       end
     end
   //--- Add Mach O release target

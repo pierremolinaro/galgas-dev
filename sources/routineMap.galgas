@@ -120,7 +120,7 @@ struct @routineMap {
       elsif acceptableParameterList.count == 0 then
         error inRoutineName
         : "cannot find any procedure with compatible formal argument list"
-        : outRoutineSignature, outIsFilePrivate, outRoutineMangledName
+        spoil (outRoutineSignature, outIsFilePrivate, outRoutineMangledName)
       else
         var s = "ambiguity, several procedures with compatible formal argument list:"
         for element in acceptableParameterList do
@@ -128,12 +128,12 @@ struct @routineMap {
         end
         error inRoutineName
         : s
-        : outRoutineSignature, outIsFilePrivate, outRoutineMangledName
+        spoil (outRoutineSignature, outIsFilePrivate, outRoutineMangledName)
       end
     else
       error inRoutineName
       : "the '" + inRoutineName + "' routine is not declared"
-      : outRoutineSignature, outIsFilePrivate, outRoutineMangledName
+      spoil (outRoutineSignature, outIsFilePrivate, outRoutineMangledName)
     end
   }
 

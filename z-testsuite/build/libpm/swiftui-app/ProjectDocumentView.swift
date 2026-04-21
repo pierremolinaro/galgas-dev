@@ -255,7 +255,7 @@ struct ProjectDocumentView : View {
 
   private func fileSelectionDidChange (_ inProxy : ScrollViewProxy) {
     if let selectedID = self.mRootDirectoryNode.mSelectedFileNodeID {
-      DispatchQueue.main.async { inProxy.scrollTo (selectedID, anchor: .center) }
+      DispatchQueue.main.async { inProxy.scrollTo (selectedID, anchor: nil) }
     }
   }
 

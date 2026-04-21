@@ -97,7 +97,7 @@ override method @unaryPlusExpressionAST analyzeSemanticExpression
   if not [type.definition.features contains !.prefixPlusOperator] then
     error self.mOperatorLocation
     : "operand type is '@" + type.definition.typeName.string + "' and does not support the prefix '+' operator"
-    :outExpression
+    spoil (outExpression)
   end
 }
 

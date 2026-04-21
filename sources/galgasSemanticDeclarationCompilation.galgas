@@ -161,7 +161,7 @@ private proc buildGalgasSemanticContext ?let @galgasDeclarationAST inDeclaration
     end
     error inEndOfProjectSourceFile
       : "semantic analysis not performed, due to undefined type error(s)"
-      : outSemanticContext, outSortedSemanticDeclarationListAST, outTypeMap
+      spoil (outSemanticContext, outSortedSemanticDeclarationListAST, outTypeMap)
   else
     [semanticTypePrecedenceGraph topologicalSort
       ?outSortedSemanticDeclarationListAST
@@ -174,7 +174,7 @@ private proc buildGalgasSemanticContext ?let @galgasDeclarationAST inDeclaration
       for declaration in unsortedSemanticDeclarationListAST do
         s += "\n-  " + declaration.mSemanticDeclaration.keyRepresentation
       end
-      error inEndOfProjectSourceFile : s : outSemanticContext, outTypeMap
+      error inEndOfProjectSourceFile : s spoil (outSemanticContext, outTypeMap)
     else
     //--- Add extension override
       outSortedSemanticDeclarationListAST += extensionOverrideDefinitionList

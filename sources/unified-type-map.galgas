@@ -76,7 +76,7 @@ map @unifiedTypeMap {
     elsif let node = self @[inLKey] then
       result = .element {!weakElement: node.mElement}
     else
-      error inLKey : "there is no '@" + inLKey + "' type" : result
+      error inLKey : "there is no '@" + inLKey + "' type" spoil (result)
     end
   }
 
@@ -117,27 +117,12 @@ map @unifiedTypeMap {
       case solved (definition) :
         result = definition
       case unsolved :
-        error inLKey : "unsolved type" : result
+        error inLKey : "unsolved type" spoil (result)
       end
     else
-      error inLKey : "there is no '@" + inLKey + "' type" : result
+      error inLKey : "there is no '@" + inLKey + "' type" spoil (result)
     end
   }
-
-  //----------------------------------------------------------------------------------------------
-
-//  getter typeOrPackageDefinition ?let @lstring inLKey -> @unifiedTypeDefinition {
-//    if let [self searchKey !inLKey ?let @unifiedTypeMapElementClass element] then
-//      switch element.mDefinition
-//      case solved (definition) :
-//        result = definition
-//      case unsolved :
-//        error inLKey : "unsolved type" : result
-//      end
-//    else
-//      error inLKey : "there is no '@" + inLKey + "' type" : result
-//    end
-//  }
 
   //----------------------------------------------------------------------------------------------
 
@@ -164,7 +149,7 @@ final class @unifiedTypeMapElementClass {
   getter definition -> @unifiedTypeDefinition {
     switch self.mDefinition
     case unsolved :
-      error .nowhere : "unsolved type" : result
+      error .nowhere : "unsolved type" spoil (result)
     case solved (definition) :
       result = definition
     end
@@ -194,17 +179,17 @@ enum @unifiedTypeMapEntry %equatable {
   getter definition -> @unifiedTypeDefinition {
     switch self
     case null :
-      error .nowhere : "null type" : result
+      error .nowhere : "null type" spoil (result)
     case element (weakElement) :
       if let type = weakElement then
         switch type.mDefinition
         case unsolved :
-          error .nowhere : "unsolved type" : result
+          error .nowhere : "unsolved type" spoil (result)
         case solved (definition) :
           result = definition
         end
       else
-        error .nowhere : "nil type" : result
+        error .nowhere : "nil type" spoil (result)
       end
     end
   }

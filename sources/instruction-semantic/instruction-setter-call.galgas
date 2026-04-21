@@ -135,7 +135,7 @@ syntax extension galgas4InstructionsSyntax {
           !actualParameterList
         }
       else
-        error instructionLocation : "invalid setter call" : outInstruction
+        error instructionLocation : "invalid setter call" spoil (outInstruction)
       end
     or
       var receiverStructProperties = @lstringlist ()
@@ -213,7 +213,7 @@ override method @setterCallInstructionAST analyzeSemanticInstruction (
     else
       error self.mSetterName
       : "'self' not available in this context"
-      : receiverType, targetVariableCppName, nameForCheckingFormalParameterUsing
+      spoil (receiverType, targetVariableCppName, nameForCheckingFormalParameterUsing)
     end
   else
     [!?ioVariableMap searchForReadWriteAccess

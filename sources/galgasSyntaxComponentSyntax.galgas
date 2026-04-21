@@ -108,11 +108,6 @@ syntax galgas3SyntaxComponentSyntax (galgasScanner3) {
       !nonterminalDeclarationList
       !ruleList
     ]
-//    ioDeclarations.mSyntaxExtensions +=
-//      !syntaxComponentName.string
-//      !syntaxComponentName
-//      !nonterminalDeclarationList
-//      !ruleList
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

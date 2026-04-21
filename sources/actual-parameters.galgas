@@ -41,7 +41,7 @@ list @actualParameterListAST {
       + " formal argument" + if inRoutineSignature.count > 1 then "s" else "" end
       + " but this invocation names "
       + self.count + " argument" + if self.count > 1 then "s" else "" end
-      : outActualParameterListForGeneration
+      spoil (outActualParameterListForGeneration)
     else
       outActualParameterListForGeneration = @()
       var @stringset exclusiveVariableSet = @()

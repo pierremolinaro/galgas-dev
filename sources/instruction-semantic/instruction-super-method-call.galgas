@@ -112,7 +112,7 @@ final class @superMethodCallInstructionAST : @semanticInstructionAST {
     let @unifiedTypeMapEntry selfType
     switch inAnalysisContext.selfAvailability
     case none :
-      error self.mMethodName : "'super' is not available in this context" : selfType
+      error self.mMethodName : "'super' is not available in this context" spoil (selfType)
     case available (@unifiedTypeMapEntry type @selfMutability unused selfMutability) :
       selfType = type
     end

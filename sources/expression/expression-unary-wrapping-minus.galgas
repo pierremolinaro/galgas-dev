@@ -97,7 +97,7 @@ override method @unaryWrappingMinusExpressionAST analyzeSemanticExpression
   if not [type.definition.features contains !.prefixMinusOperatorNoOVF] then
     error self.mOperatorLocation
     : "operand type is '@" + type.definition.typeName.string + "' and does not support the prefix minus operator"
-    :outExpression
+    spoil (outExpression)
   else
   //--- Generate expression
     outExpression = @unaryWrappingMinusExpressionForGeneration {
