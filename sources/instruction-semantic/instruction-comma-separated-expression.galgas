@@ -251,7 +251,7 @@ list @CommaSeparatedExpressionList {
       //--- Check this is a class
         elsif analyzedExpression.mResultType.definition.typeKind.isClassType then
           if typeName.string == "" then
-            error typeName.location : "on a class object, the 'as' clause is required" spoil (castType, testType)
+            error (typeName.location : "on a class object, the 'as' clause is required" spoil castType, testType)
           else
             castType = [ioTypeMap typeMapEntryForLKey !typeName]
             testType = castType
@@ -264,10 +264,11 @@ list @CommaSeparatedExpressionList {
               found = t == analyzedExpression.mResultType
             end
             if not found then
-              error typeName
+              error (typeName
               : "the '@" + typeName + "' type is not a descendant of the '@"
               + analyzedExpression.mResultType.definition.typeName.string
               + "' type of the cast expression"
+              )
             end
           end
           [!?ioVariableMap openOverrideForSelectBlock]
@@ -323,10 +324,11 @@ list @CommaSeparatedExpressionList {
             end
           end
           if not found then
-            error typeName
+            error (typeName
             : "the '@" + castType.definition.typeName.string
             + "' type is not compatible with the '@"
             + analyzedExpression.mResultType.definition.typeName.string + "' type"
+            )
           end
           [!?ioVariableMap openOverrideForSelectBlock]
           [!?ioVariableMap openBranch]
@@ -357,9 +359,10 @@ list @CommaSeparatedExpressionList {
             !testType: testType
           }
         else
-          error analyzedExpression.mLocation
+          error (analyzedExpression.mLocation
            : "expression should be a class instance, or a weak reference: it is an @"
            + analyzedExpression.mResultType.definition.typeName.string + " instance"
+          )
         end
       end
     end

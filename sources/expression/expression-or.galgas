@@ -366,11 +366,11 @@ override method @closedSliceExpressionAST analyzeSemanticExpression
 //--- Check operator availability
   let @unifiedTypeMapEntry leftType = leftExpression.mResultType
   if leftType.definition.typeName.string != "uint" then
-    error leftExpression.mLocation : "the left expression or '...' operator should an @uint"
+    error (leftExpression.mLocation : "the left expression or '...' operator should an @uint")
   end
   let @unifiedTypeMapEntry rightType = rightExpression.mResultType
   if rightType.definition.typeName.string != "uint" then
-    error rightExpression.mLocation : "the right expression or '...' operator should an @uint"
+    error (rightExpression.mLocation : "the right expression or '...' operator should an @uint")
   end
 //--- Generate expression
   outExpression = @closedSliceExpressionForGeneration {

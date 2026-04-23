@@ -433,7 +433,7 @@ final class @opAssignExpressionInstructionAST : @semanticInstructionAST {
     if self.mPrefixedBySelf then
       if let selfAvailable = inAnalysisContext.selfAvailability.getAvailable then
         if not selfAvailable.selfMutability.propertiesAreMutable then
-          error self.mInstructionLocation : "property not mutable in this context"
+          error (self.mInstructionLocation : "property not mutable in this context")
         end
         let propertyMap = selfAvailable.type.definition.propertyMap
         [propertyMap searchKey !self.mReceiverName ?* ?let isConstant ?targetType]
@@ -441,14 +441,14 @@ final class @opAssignExpressionInstructionAST : @semanticInstructionAST {
         targetVariableCppName = inAnalysisContext.selfObjectCppPrefixForAccessingProperty
           + "mProperty_"+ self.mReceiverName.string.identifierRepresentation
         if isConstant then
-          error self.mReceiverName : "a constant property cannot be modified"
+          error (self.mReceiverName : "a constant property cannot be modified")
         end
         if not selfAvailable.selfMutability.propertiesAreMutable then
-          error self.mReceiverName : "the property is not mutable in this context"
+          error (self.mReceiverName : "the property is not mutable in this context")
         end
       else
-        error self.mInstructionLocation : "'self' not available in this context"
-        spoil (targetType, targetVariableCppName, nameForCheckingFormalParameterUsing)
+        error (self.mInstructionLocation : "'self' not available in this context"
+        spoil targetType, targetVariableCppName, nameForCheckingFormalParameterUsing)
       end
     else
       [!?ioVariableMap searchForReadWriteAccess
@@ -464,14 +464,15 @@ final class @opAssignExpressionInstructionAST : @semanticInstructionAST {
       [propertyMap searchKey !value ?let accessControl ?let isConstant ?targetType]
       [accessControl checkSetAccess !inAnalysisContext.selfAvailability !value.location]
       if isConstant then
-        error self.mReceiverName : "a constant property cannot be modified"
+        error (self.mReceiverName : "a constant property cannot be modified")
       end
     end
   //--- Check target variable type support 'X= exp' operator
     if not [targetType.definition.features contains !self.mOperator.features] then
-      error self.mInstructionLocation
+      error (self.mInstructionLocation
       :"the target object has the '@" + targetType.definition.typeName.string
       + "' type, but this type does not support the '" + self.mOperator.string + "' operator"
+      )
     end
   //--- Analyze source expression
     [self.mExpression analyzeSemanticExpression
@@ -536,14 +537,14 @@ final class @plusEqualElementsInstructionAST : @semanticInstructionAST {
         targetVariableCppName = inAnalysisContext.selfObjectCppPrefixForAccessingProperty
           + "mProperty_"+ self.mReceiverName.string.identifierRepresentation
         if isConstant then
-          error self.mReceiverName : "a constant property cannot be modified"
+          error (self.mReceiverName : "a constant property cannot be modified")
         end
         if not selfAvailable.selfMutability.propertiesAreMutable then
-          error self.mReceiverName : "the property cannot be mutated in this context"
+          error (self.mReceiverName : "the property cannot be mutated in this context")
         end
       else
-        error self.mInstructionLocation : "'self' not available in this context"
-        spoil (targetType, targetVariableCppName, nameForCheckingFormalParameterUsing)
+        error (self.mInstructionLocation : "'self' not available in this context"
+        spoil targetType, targetVariableCppName, nameForCheckingFormalParameterUsing)
       end
     else
       [!?ioVariableMap searchForReadWriteAccess
@@ -559,21 +560,23 @@ final class @plusEqualElementsInstructionAST : @semanticInstructionAST {
       [propertyMap searchKey !value ?let accessControl ?let isConstant ?targetType]
       [accessControl checkSetAccess !inAnalysisContext.selfAvailability !value]
        if isConstant then
-        error value : "a constant property cannot be modified"
+        error (value : "a constant property cannot be modified")
       end
     end
   //--- Check target variable type support '+=' operator
     let addAssignOperatorArguments= targetType.definition.addAssignOperatorArguments // Empty list if += operator is not supported
     if addAssignOperatorArguments.count == 0 then
-      error self.mInstructionLocation
+      error (self.mInstructionLocation
       :"the target object has the '@" + targetType.definition.typeName.string
       + "' type, but this type does not support the '+=' operator"
+      )
   //--- Analyze source expressions
     elsif self.mExpressions.count != addAssignOperatorArguments.count then
-      error self.mInstructionLocation
+      error (self.mInstructionLocation
       : "calling the '+=' operator on an '@" + targetType.definition.typeName.string + "' object requires "
       + addAssignOperatorArguments.count.string + " parameter(s), while this invocation has "
       + self.mExpressions.count.string + " parameter(s)"
+      )
     else
       var @semanticExpressionListForGeneration effectiveParameterList = @()
       for (mActualSelector mExpression mEndOfExpressionLocation) in self.mExpressions, (mFormalSelector mFormalArgumentType 2*) in addAssignOperatorArguments do
@@ -588,9 +591,7 @@ final class @plusEqualElementsInstructionAST : @semanticInstructionAST {
         ]
         if mFormalSelector.string != mActualSelector.string then
           let @string s = "!" + if mFormalSelector.string != "" then mFormalSelector.string + ":" else "" end
-          error mActualSelector : "the selector should be '" + s + "'" fixit { replace s }
-  //        error mActualSelector
-  //          : "the selector should be '!" + mFormalSelector + if mFormalSelector.string != "" then ":" else "" end + "'"
+          error (mActualSelector : "the selector should be '" + s + "'" fixit replace s)
         end
         checkAssignmentTypeWithImplicitGetterCall (!mFormalArgumentType !expression.mResultType !mEndOfExpressionLocation !?expression)
         effectiveParameterList += !expression
@@ -645,14 +646,14 @@ final class @plusPlusEqualElementInstructionAST : @semanticInstructionAST {
         targetVariableCppName = inAnalysisContext.selfObjectCppPrefixForAccessingProperty
           + "mProperty_"+ self.mReceiverName.string.identifierRepresentation
         if isConstant then
-          error self.mReceiverName : "a constant property cannot be modified"
+          error (self.mReceiverName : "a constant property cannot be modified")
         end
         if not selfAvailable.selfMutability.propertiesAreMutable then
-          error self.mReceiverName : "the property cannot be mutated in this context"
+          error (self.mReceiverName : "the property cannot be mutated in this context")
         end
       else
-        error self.mInstructionLocation : "'self' not available in this context"
-        spoil (targetType, targetVariableCppName, nameForCheckingFormalParameterUsing)
+        error (self.mInstructionLocation : "'self' not available in this context"
+        spoil targetType, targetVariableCppName, nameForCheckingFormalParameterUsing)
       end
     else
       [!?ioVariableMap searchForReadWriteAccess
@@ -668,14 +669,15 @@ final class @plusPlusEqualElementInstructionAST : @semanticInstructionAST {
       [propertyMap searchKey !value ?let accessControl ?let isConstant ?targetType]
       [accessControl checkSetAccess !inAnalysisContext.selfAvailability !value]
       if isConstant then
-        error value : "a constant property cannot be modified"
+        error (value : "a constant property cannot be modified")
       end
     end
   //--- Check target variable type support '++=' operator
     if not targetType.definition.supportCollectionValue then
-      error self.mInstructionLocation
+      error (self.mInstructionLocation
       :"the target object has the '@" + targetType.definition.typeName.string
       + "' type, but this type does not support the '++=' operator"
+      )
     end
     let rightExpressionType = targetType.definition.typeForEnumeratedElement
   //--- Analyze source expression

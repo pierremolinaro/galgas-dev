@@ -135,7 +135,7 @@ final class @methodCallInstructionAST : @semanticInstructionAST {
       ?let errorMessage
     ]
     if errorMessage != "" then
-      error self.mMethodName : errorMessage
+      error (self.mMethodName : errorMessage)
     end
   //--- Check effective parameters
     [self.mActualParameterList analyzeRoutineArguments

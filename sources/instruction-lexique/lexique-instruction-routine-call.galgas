@@ -187,15 +187,16 @@ override method @lexicalAttributeInputOutputArgumentAST checkLexicalRoutineCallA
   ]
 //--- Type check
   if attributeLexicalType != inLexicalRoutineFormalArgumentType then
-    error self.mAttributeName:"type error, attribute type is @"
+    error (self.mAttributeName:"type error, attribute type is @"
     + attributeLexicalType.lexicalTypeBaseName
     + " type, but lexical routine prototype requires @"
     + inLexicalRoutineFormalArgumentType.lexicalTypeBaseName
     + " type"
+    )
   end
 //--- Passing mode check
   if inLexicalRoutineFormalArgumentMode != @lexicalArgumentModeAST.lexicalInputOutputMode then
-    error self.mActualPassingModeLocation:"the output mode (!) is required here, not an output/input mode"
+    error (self.mActualPassingModeLocation:"the output mode (!) is required here, not an output/input mode")
   end
 }
 
@@ -212,7 +213,7 @@ override method @lexicalFormalInputArgumentAST checkLexicalRoutineCallArgument (
   ]
 //--- Passing mode check
   if inLexicalRoutineFormalArgumentMode != @lexicalArgumentModeAST.lexicalInputMode then
-    error self.mActualPassingModeLocation:"the output/input mode (!?) is required here, not an input mode"
+    error (self.mActualPassingModeLocation:"the output/input mode (!?) is required here, not an input mode")
   end
 }
 
@@ -229,10 +230,11 @@ override method @lexicalRoutineCallInstructionAST checkLexicalInstruction (
   ]
 //--- Check actual argument count
   if lexicalRoutineFormalArgumentList.count != self.mActualArgumentList.count then
-    error self.mRoutineName : "this lexical routine call names "
+    error (self.mRoutineName : "this lexical routine call names "
     + self.mActualArgumentList.count.string
     + " actual argument(s), but the lexical routine prototype requires "
     + lexicalRoutineFormalArgumentList.count + " actual argument(s)"
+    )
   end
 //--- Check actual argument against formal parameters
   for (mLexicalFormalArgumentMode mLexicalFormalArgumentType *) in lexicalRoutineFormalArgumentList, (mLexicalRoutineActualArgument) in self.mActualArgumentList do
@@ -244,19 +246,17 @@ override method @lexicalRoutineCallInstructionAST checkLexicalInstruction (
   end
 //--- Check error message count
   if routineErrorMessageList.count != self.mErrorMessageList.count then
-    error self.mRoutineName: "this lexical routine call names "
+    error (self.mRoutineName: "this lexical routine call names "
     + self.mErrorMessageList.count.string
     + " error message(s), but the lexical routine prototype requires "
     + routineErrorMessageList.count.string + " error message(s)"
+    )
   end
 //--- Check error messages are actually defined
   for (mValue) in self.mErrorMessageList do
     var entry = ioLexiqueAnalysisContext.mLexicalMessageMap @[!searchKey: mValue]
     entry.mMessageIsUsed = true
     [!?ioLexiqueAnalysisContext.mLexicalMessageMap replaceKey !with: entry]
-//    with %aliasOf ioLexiqueAnalysisContext.mLexicalMessageMap [!searchKey: mValue]  do
-//      mMessageIsUsed = true
-//    end
   end
 }
 

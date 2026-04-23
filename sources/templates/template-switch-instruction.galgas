@@ -153,26 +153,26 @@ override method @templateInstructionSwitchAST templateInstructionAnalysis
       for constantName in mConstantList do
         if [enumType.constantMap hasKey !constantName.string] then
           if [constantsNamedInSwitchInstruction hasKey !constantName.string] then
-            error constantName
-            :"the '" + constantName + "' constant is already named in this switch instruction"
+            error (constantName
+            :"the '" + constantName + "' constant is already named in this switch instruction")
           end
           constantsNamedInSwitchInstruction ++= constantName.string
           [enumType.constantMap searchKey !constantName ?* ?let @associatedValueDescriptorList associatedTypeList]
           if (associatedTypeList.count > 0) & (mAssociatedValuesExtraction.count == 0) then
-            error constantName
-              :"the associated values of '" + constantName + "' constant should be extracted"
+            error (constantName
+              :"the associated values of '" + constantName + "' constant should be extracted")
           elsif (associatedTypeList.count == 0) & (mAssociatedValuesExtraction.count > 0) then
-            error constantName
-              :"the '" + constantName + "' constant has no associated value"
+            error (constantName
+              :"the '" + constantName + "' constant has no associated value")
           elsif associatedTypeList.count  != mAssociatedValuesExtraction.count then
-            error constantName
+            error (constantName
               :"the '" + constantName + "' constant requires " + associatedTypeList.count + "  associated value"
-              + if associatedTypeList.count > 1 then "s" else "" end
+              + if associatedTypeList.count > 1 then "s" else "" end)
           else
             for descriptor in associatedTypeList, (mExtractedValueTypeName mExtractedValueName *) in mAssociatedValuesExtraction do (IDX)
               if mExtractedValueTypeName.string != "" then // Explicit type ?
                 if descriptor.type.definition.typeName.string != mExtractedValueTypeName.string then
-                  error mExtractedValueTypeName : "the required type is '@" + descriptor.type.definition.typeName.string + "'"
+                  error (mExtractedValueTypeName : "the required type is '@" + descriptor.type.definition.typeName.string + "'")
                 end
               end
               let cppName = "extractedValue_" + mExtractedValueName.location.startLocationIndex
@@ -191,9 +191,9 @@ override method @templateInstructionSwitchAST templateInstructionAnalysis
             end
           end
         else
-          error constantName
+          error (constantName
           :"'" + constantName + "' is not a constant of '@"
-          + switchExpression.mResultType.definition.typeName.string + "' enumeration type"
+          + switchExpression.mResultType.definition.typeName.string + "' enumeration type")
         end
       end
       var @templateInstructionListForGeneration instructionList = @()
@@ -218,8 +218,8 @@ override method @templateInstructionSwitchAST templateInstructionAnalysis
       for (key) in forgottenConstants do
         s += "\n  - " + key
       end
-      error self.switchExpressionEndLocation
-      : "the switch instruction should name all enumeration constants; missing constants are:" + s
+      error (self.switchExpressionEndLocation
+      : "the switch instruction should name all enumeration constants; missing constants are:" + s)
     end
   //---
     ioInstructionList += !@templateInstructionSwitchForGeneration {
@@ -228,8 +228,8 @@ override method @templateInstructionSwitchAST templateInstructionAnalysis
       !templateInstructionSwitchBranchList
     }
   else
-    error switchExpression.mLocation : "'switch' expression type should be an enumeration (it is a "
-       + switchExpression.mResultType.definition.typeKind + " type)"
+    error (switchExpression.mLocation : "'switch' expression type should be an enumeration (it is a "
+       + switchExpression.mResultType.definition.typeKind + " type)")
   end
 }
 

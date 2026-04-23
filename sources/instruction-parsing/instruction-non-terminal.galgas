@@ -189,20 +189,20 @@ override getter @nonterminalInstructionForGeneration compareInstructionSyntaxSig
   if let si = inTestedInstruction as @nonterminalInstructionForGeneration then
     result = self.mNonterminalName == si.mNonterminalName
     if not result then
-      error si.mInstructionLocation
-      :"syntax signature error; the expected syntax instruction here is the '<" + self.mNonterminalName + ">' nonterminal invocation"
+      error (si.mInstructionLocation
+      :"syntax signature error; the expected syntax instruction here is the '<" + self.mNonterminalName + ">' nonterminal invocation")
     end
   elsif let si = inTestedInstruction as @syntaxInstructionForGeneration then
-    error si.mInstructionLocation
-      :"syntax signature error; the expected syntax instruction here is the '<" + self.mNonterminalName + ">' nonterminal invocation"
+    error (si.mInstructionLocation
+      :"syntax signature error; the expected syntax instruction here is the '<" + self.mNonterminalName + ">' nonterminal invocation")
     result = false
   else
-    error self.mInstructionLocation : "internal error"
+    error (self.mInstructionLocation : "internal error")
     result = false
   end
   if not result then
-    error self.mInstructionLocation
-    :"reference syntax instruction is here"
+    error (self.mInstructionLocation
+    :"reference syntax instruction is here")
   end
 }
 

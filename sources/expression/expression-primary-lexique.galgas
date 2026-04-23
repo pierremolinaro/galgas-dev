@@ -97,7 +97,7 @@ override method @lexiqueIntrospectionExpressionAST analyzeSemanticExpression
   ]
 //--- Check getter name
   if self.mLexiqueGetterName.string != "symbols" then
-    error self.mLexiqueGetterName:"unknown getter"
+    error (self.mLexiqueGetterName:"unknown getter")
   end
 //---
   outExpression = @lexiqueIntrospectionForGeneration {

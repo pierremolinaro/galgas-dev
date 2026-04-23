@@ -49,7 +49,7 @@ proc groupSyntaxComponentsGalgas3
   for (key theLists) in inSyntaxExtensions.dictionary do
     if not [componentNameSet hasKey !key] then
       for (mSyntaxComponentName * *) in theLists do
-        error mSyntaxComponentName : "there is no '" + mSyntaxComponentName +"' syntax component"
+        error (mSyntaxComponentName : "there is no '" + mSyntaxComponentName +"' syntax component")
       end
     end
   end

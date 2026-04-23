@@ -173,7 +173,7 @@ override method @optionExpressionAST analyzeSemanticExpression
         !self.mOptionComponentName.string
         !self.mOptionEntryName.string}
     else
-      error self.mOptionGetterName:"only the 'value', 'char', 'string' and 'comment' getters are defined for an option" spoil (outExpression)
+      error (self.mOptionGetterName:"only the 'value', 'char', 'string' and 'comment' getters are defined for an option" spoil outExpression)
     end
   else
     var @stringlist s = @()
@@ -186,10 +186,10 @@ override method @optionExpressionAST analyzeSemanticExpression
     for (lkey * * * *) in stringOptionMap do
       s += !lkey
     end
-    error self.mOptionEntryName
+    error (self.mOptionEntryName
     : "the '" + self.mOptionComponentName + "' option component does not define the '" + self.mOptionEntryName + "' option"
-    spoil (outExpression)
-    fixit { replace s }
+    spoil outExpression
+    fixit replace s)
   end
 }
 

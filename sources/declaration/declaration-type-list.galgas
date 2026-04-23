@@ -43,13 +43,13 @@ syntax extension galgas3DeclarationsSyntax {
     while
       $%equatable$
       if isEquatable then
-        error .here : "duplicate attribute" fixit { remove }
+        error (.here : "duplicate attribute" fixit remove)
       end
       isEquatable = true
     while
       $%usefull$
       if isUsefull then
-        error .here : "duplicate attribute" fixit { remove }
+        error (.here : "duplicate attribute" fixit remove)
       end
       isUsefull = true
     end
@@ -62,7 +62,7 @@ syntax extension galgas3DeclarationsSyntax {
       <method_declaration_ggs3> !listTypeName !?ioDeclarations
     end
     if propertyList.count == 0 then
-      error .here : "a list declaration must declare at least one property"
+      error (.here : "a list declaration must declare at least one property")
     end
     $}$
     ioDeclarations.mDeclarationList += !@listDeclarationAST {
@@ -93,13 +93,13 @@ syntax extension galgas4DeclarationsSyntax {
     while
       $%equatable$
       if isEquatable then
-        error .here : "duplicate attribute" fixit { remove }
+        error (.here : "duplicate attribute" fixit remove)
       end
       isEquatable = true
     while
       $%usefull$
       if isUsefull then
-        error .here : "duplicate attribute" fixit { remove }
+        error (.here : "duplicate attribute" fixit remove)
       end
       isUsefull = true
     end
@@ -168,7 +168,7 @@ override method @listDeclarationAST enterDeclarationInSemanticContext
   var @typedPropertyList typedAttributeList = @()
   for (* propertyTypeName mPropertyName unused accessControl hasSelector initExpression) in self.mPropertyList do
     if initExpression.isSome then
-      error mPropertyName : "property initialization is not handled for a list"
+      error (mPropertyName : "property initialization is not handled for a list")
     end
     [!?ioTypeMap makeEntry !propertyTypeName ?let attributeTypeIndex]
     typedAttributeList += !attributeTypeIndex !mPropertyName !initExpression !hasSetter: true !hasSelector: hasSelector
@@ -480,7 +480,7 @@ override method @listDeclarationAST semanticAnalysis
   var @propertyIndexMap attributeMap = @()
   for (* propertyTypeName propertyName unused accessControl hasSelector initExpression) in self.mPropertyList do
     if initExpression.isSome then
-      error propertyName : "property initialization is not handled for a list"
+      error (propertyName : "property initialization is not handled for a list")
     end
     let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!propertyTypeName)
     [!?ioUsefulEntitiesGraph addEdge !from: nameForUsefulness !to: propertyTypeNameForUsefulness]

@@ -77,11 +77,6 @@ override method @weakReferenceDeclarationAST enterDeclarationInSemanticContext
     [!?ioTypeMap makeEntry !self.mSuperWeakReferenceTypeName ?superClassIndex]
     let superTypeDefinition = [ioTypeMap typeDefinition !self.mSuperWeakReferenceTypeName]
     generateHeaderInSeparateFile = superTypeDefinition.generateHeaderInSeparateFile
-  //---
-//    if not [superTypeDefinition.typeKind isWeakReferenceType] then
-//      error self.mSuperWeakReferenceTypeName
-//      : "the @" + self.mSuperWeakReferenceTypeName + " should be a weak reference type"
-//    end
   end
 //--- Current class Index
   [!?ioTypeMap makeEntry
@@ -117,13 +112,13 @@ override method @weakReferenceDeclarationAST enterDeclarationInSemanticContext
     !acceptSetters: true
   )
   for aGetter in getterMap do
-    error aGetter.lkey : "a weak reference does not support extension"
+    error (aGetter.lkey : "a weak reference does not support extension")
   end
   for aGetter in setterMap do
-    error aGetter.lkey : "a weak reference does not support extension"
+    error (aGetter.lkey : "a weak reference does not support extension")
   end
   for aGetter in instanceMethodMap do
-    error aGetter.lkey : "a weak reference does not support extension"
+    error (aGetter.lkey : "a weak reference does not support extension")
   end
   var features = @typeFeatures.referenceEquatable
   handleEquatableComparableExtension (

@@ -72,20 +72,20 @@ func compareSyntaxSignature (
   if result & (inReferenceSignature.count < inTestedSignature.count) then
     let @semanticInstructionForGeneration instruction = [inTestedSignature mInstructionAtIndex !inReferenceSignature.count]
     if let si = instruction as @syntaxInstructionForGeneration then
-      error si.mInstructionLocation
-      :"syntax signature error, exceeding instruction; this branch has more syntax instructions than reference branch"
+      error (si.mInstructionLocation
+      :"syntax signature error, exceeding instruction; this branch has more syntax instructions than reference branch")
     else
-      error inErrorLocation : "internal error"
+      error (inErrorLocation : "internal error")
     end
   elsif result & (inReferenceSignature.count > inTestedSignature.count) then
-    error inErrorLocation
-    :"syntax signature error, missing instruction; this branch has less syntax instructions than reference branch"
+    error (inErrorLocation
+    :"syntax signature error, missing instruction; this branch has less syntax instructions than reference branch")
     let @semanticInstructionForGeneration instruction = [inReferenceSignature mInstructionAtIndex !inTestedSignature.count]
     if let si = instruction as @syntaxInstructionForGeneration then
-      error si.mInstructionLocation
-      :"this is the syntax instruction in reference branch that corresponds to the first missing instruction"
+      error (si.mInstructionLocation
+      :"this is the syntax instruction in reference branch that corresponds to the first missing instruction")
     else
-      error inErrorLocation : "internal error"
+      error (inErrorLocation : "internal error")
     end
   end
 }

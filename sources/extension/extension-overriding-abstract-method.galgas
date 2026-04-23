@@ -197,9 +197,9 @@ override method @overridingAbstractExtensionMethodAST semanticAnalysis (
   let @unifiedTypeMapEntry selfType = [ioTypeMap typeMapEntryForLKey !self.mTypeName]
 //--- Check type is an abstract class
   if not selfType.definition.typeKind.isClassType then
-    error self.mOverridingExtensionMethodName: "cannot declare a extension method: '@" + selfType.definition.typeName.string + "' is not a class"
+    error (self.mOverridingExtensionMethodName: "cannot declare a extension method: '@" + selfType.definition.typeName.string + "' is not a class")
   elsif selfType.definition.isConcrete then
-    error self.mOverridingExtensionMethodName: "cannot declare an abstract extension method: '@" + selfType.definition.typeName.string + "' is not an abstract class"
+    error (self.mOverridingExtensionMethodName: "cannot declare an abstract extension method: '@" + selfType.definition.typeName.string + "' is not an abstract class")
   end
 //--- Find base type name
   var @string baseTypeName = ""
@@ -225,7 +225,7 @@ override method @overridingAbstractExtensionMethodAST semanticAnalysis (
     superType = superType.definition.superType
   end
   if baseTypeName == "" then
-    error self.mOverridingExtensionMethodName:"this getter is not declared by a super class"
+    error (self.mOverridingExtensionMethodName:"this getter is not declared by a super class")
   end
 //--- Analyze formal argument list
   var variableMap = @localVarManager {}

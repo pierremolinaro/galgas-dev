@@ -34,9 +34,9 @@ syntax extension galgas3DeclarationsSyntax {
       case none :
         comparison = .comparable
       case comparable :
-        error .here : "duplicated attribute"
+        error (.here : "duplicated attribute")
       case equatable :
-        error .here : "%comparable and %equatable are mutually exclusive"
+        error (.here : "%comparable and %equatable are mutually exclusive")
       end
     while
       $%equatable$
@@ -44,9 +44,9 @@ syntax extension galgas3DeclarationsSyntax {
       case none :
         comparison = .equatable
       case equatable :
-        error .here : "duplicated attribute"
+        error (.here : "duplicated attribute")
       case comparable :
-        error .here : "%comparable and %equatable are mutually exclusive"
+        error (.here : "%comparable and %equatable are mutually exclusive")
       end
     end
     ${$
@@ -80,7 +80,7 @@ syntax extension galgas3DeclarationsSyntax {
     end
     $}$
     if constantList.count == 0 then
-      error enumTypeName : "an enumerated type must define at least one case constant"
+      error (enumTypeName : "an enumerated type must define at least one case constant")
     end
     ioDeclarations.mDeclarationList += !@enumDeclarationAST {
       !isPredefined: false // Is not predefined
@@ -111,9 +111,9 @@ syntax extension galgas4DeclarationsSyntax {
       case none :
         comparison = .comparable
       case comparable :
-        error .here : "duplicated attribute"
+        error (.here : "duplicated attribute")
       case equatable :
-        error .here : "%comparable and %equatable are mutually exclusive"
+        error (.here : "%comparable and %equatable are mutually exclusive")
       end
     while
       $%equatable$
@@ -121,9 +121,9 @@ syntax extension galgas4DeclarationsSyntax {
       case none :
         comparison = .equatable
       case equatable :
-        error .here : "duplicated attribute"
+        error (.here : "duplicated attribute")
       case comparable :
-        error .here : "%comparable and %equatable are mutually exclusive"
+        error (.here : "%comparable and %equatable are mutually exclusive")
       end
     end
     ${$
@@ -158,7 +158,7 @@ syntax extension galgas4DeclarationsSyntax {
     end
     $}$
     if constantList.count == 0 then
-      error enumTypeName : "an enumerated type must define at least one case constant"
+      error (enumTypeName : "an enumerated type must define at least one case constant")
     end
     ioDeclarations.mDeclarationList += !@enumDeclarationAST {
       !isPredefined: false // Is not predefined
@@ -469,7 +469,7 @@ final class @enumDeclarationAST : @semanticDeclarationAST {
         let associatedTypeEntry = [ioTypeMap typeMapEntryForLKey !associatedValue.typeName]
         associatedTypeList += !associatedTypeEntry !associatedValue.valueName
         if [associatedValueNameSet hasKey !associatedValue.valueName.string] then
-          error associatedValue.valueName : "duplicated name"
+          error (associatedValue.valueName : "duplicated name")
         end
         associatedValueNameSet ++= associatedValue.valueName.string
       //--- Comparison
@@ -480,12 +480,12 @@ final class @enumDeclarationAST : @semanticDeclarationAST {
           if (not [associatedType.features contains !.comparable])
             & not [associatedType.features contains !.equatable]
             & not [associatedType.features contains !.referenceEquatable] then
-            error associatedValue.typeName : "the @" + associatedValue.typeName + " should be equatable"
+            error (associatedValue.typeName : "the @" + associatedValue.typeName + " should be equatable")
           end
         case comparable :
           let associatedType = associatedTypeEntry.definition
           if not [associatedType.features contains !.comparable] then
-            error associatedValue.typeName : "the @" + associatedValue.typeName + " should be comparable"
+            error (associatedValue.typeName : "the @" + associatedValue.typeName + " should be comparable")
           end
         end  
       end

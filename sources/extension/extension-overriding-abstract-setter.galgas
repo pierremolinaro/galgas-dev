@@ -124,9 +124,9 @@ final class @overridingAbstractExtensionSetterAST : @semanticDeclarationAST {
     let @unifiedTypeMapEntry selfType = [ioTypeMap typeMapEntryForLKey !self.mTypeName]
   //--- Check type is an abstract class
     if not selfType.definition.typeKind.isClassType then
-      error self.mOverridingExtensionSetterName: "cannot declare a extension setter: '@" + selfType.definition.typeName.string + "' is not a class"
+      error (self.mOverridingExtensionSetterName: "cannot declare a extension setter: '@" + selfType.definition.typeName.string + "' is not a class")
     elsif selfType.definition.isConcrete then
-      error self.mOverridingExtensionSetterName: "cannot declare an abstract extension setter: '@" + selfType.definition.typeName.string + "' is not an abstract class"
+      error (self.mOverridingExtensionSetterName: "cannot declare an abstract extension setter: '@" + selfType.definition.typeName.string + "' is not an abstract class")
     end
   //--- Find base type name
     var @string baseTypeName = ""
@@ -144,7 +144,7 @@ final class @overridingAbstractExtensionSetterAST : @semanticDeclarationAST {
       superType = superType.definition.superType
     end
     if baseTypeName == "" then
-      error self.mOverridingExtensionSetterName:"this setter is not declared by a super class"
+      error (self.mOverridingExtensionSetterName:"this setter is not declared by a super class")
     end
   //--- Analyze formal argument list
     var variableMap = @localVarManager {}

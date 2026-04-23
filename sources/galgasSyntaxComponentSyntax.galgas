@@ -192,7 +192,7 @@ syntax galgas3SyntaxComponentSyntax (galgasScanner3) {
         or
           let separator = @string.separatorString
           if not [separator containsCharacter !'\n'] then
-            error .separator : "instructions on same line should be separated by ';'"
+            error (.separator : "instructions on same line should be separated by ';'")
           end
         end
       end
@@ -394,7 +394,7 @@ syntax galgas4SyntaxComponentSyntax (galgasScanner4) {
         or
           let separator = @string.separatorString
           if not [separator containsCharacter !'\n'] then
-            error .separator : "instructions on same line should be separated by ';'"
+            error (.separator : "instructions on same line should be separated by ';'")
           end
         end
       end

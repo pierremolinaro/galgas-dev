@@ -205,9 +205,10 @@ final class @optionComponentDeclarationAST : @semanticDeclarationAST {
     var optionNameSet = @stringset.emptySet
     for anOption in self.mOptions do
       if [optionNameSet hasKey !anOption.mOptionInternalName.string] then
-        error anOption.mOptionInternalName
+        error (anOption.mOptionInternalName
         : "the '" + anOption.mOptionInternalName.string
         + "' command line option has been already declared"
+        )
       elsif anOption.mOptionTypeName.string == "bool" then
         [!?boolOptionMap insertKey
           !anOption.mOptionInternalName
@@ -217,8 +218,9 @@ final class @optionComponentDeclarationAST : @semanticDeclarationAST {
           !"false"
         ]
         if anOption.mOptionDefaultValueKind != @optionDefaultValueEnumAST. noDefaultValue then
-          error anOption.mOptionDefaultValue
+          error (anOption.mOptionDefaultValue
           :"an @bool option cannot have a default value (default value is always false)"
+          )
         end
       elsif anOption.mOptionTypeName.string == "uint" then
         [!?uintOptionMap insertKey
@@ -229,8 +231,9 @@ final class @optionComponentDeclarationAST : @semanticDeclarationAST {
           !if anOption.mOptionDefaultValue.string == "" then "0" else anOption.mOptionDefaultValue.string end
         ]
         if anOption.mOptionDefaultValueKind == @optionDefaultValueEnumAST. stringDefaultValue then
-          error anOption.mOptionDefaultValue
+          error (anOption.mOptionDefaultValue
           :"an @uint option default value cannot be an @string value"
+          )
         end
       elsif anOption.mOptionTypeName.string == "string" then
         [!?stringOptionMap insertKey
@@ -241,8 +244,9 @@ final class @optionComponentDeclarationAST : @semanticDeclarationAST {
           !anOption.mOptionDefaultValue.string
         ]
         if anOption.mOptionDefaultValueKind == @optionDefaultValueEnumAST. unsignedDefaultValue then
-          error anOption.mOptionDefaultValue
+          error (anOption.mOptionDefaultValue
           :"an @string option default value cannot be an @uint value"
+          )
         end
       elsif anOption.mOptionTypeName.string == "stringlist" then
         [!?stringListOptionMap insertKey
@@ -253,12 +257,14 @@ final class @optionComponentDeclarationAST : @semanticDeclarationAST {
           !anOption.mOptionDefaultValue.string
         ]
         if anOption.mOptionDefaultValueKind != .noDefaultValue then
-          error anOption.mOptionDefaultValue
+          error (anOption.mOptionDefaultValue
           :"an @stringlist option cannot accept default value"
+          )
         end
       else
-        error anOption.mOptionTypeName
+        error (anOption.mOptionTypeName
         : "only the @bool, @uint or @string types are allowed here"
+        )
       end
       optionNameSet ++= anOption.mOptionInternalName.string
     end

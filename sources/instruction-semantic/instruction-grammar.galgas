@@ -426,9 +426,10 @@ override method @grammarInFileInstructionAST analyzeSemanticInstruction (
   ]
 //--- Check source expression type: @lstring for file, @string for source string itself
   if sourceExpression.mResultType != inAnalysisContext.predefinedTypes.mLStringType then
-    error self.mEndOfSourceExpression
+    error (self.mEndOfSourceExpression
     :"this expression is the source file path and its type should be '@lstring', but it is '@"
      + sourceExpression.mResultType.definition.typeName.string + "'"
+    )
   end
 //--- Check syntax directed translation result parameter
   let syntaxDirectedTranslationResultVarName = "syntaxDirectedTranslationResult_" + self.mGrammarComponentName.location.startLocationIndex
@@ -502,9 +503,10 @@ override method @grammarInStringInstructionAST analyzeSemanticInstruction (
   ]
 //--- Check source expression type: @string
   if sourceExpression.mResultType != inAnalysisContext.predefinedTypes.mStringType then
-    error self.mEndOfSourceExpression
+    error (self.mEndOfSourceExpression
     :"this expression is the source string and its type should be '@string', but it is '@"
      + sourceExpression.mResultType.definition.typeName.string + "'"
+    )
   end
 //--- Parse name expression
   [self.mNameExpression analyzeSemanticExpression
@@ -518,9 +520,10 @@ override method @grammarInStringInstructionAST analyzeSemanticInstruction (
   ]
 //--- Check name expression type: @string
   if nameExpression.mResultType != inAnalysisContext.predefinedTypes.mStringType then
-    error self.mEndOfNameExpression
+    error (self.mEndOfNameExpression
     :"this expression is the name string and its type should be '@string', but it is '@"
      + sourceExpression.mResultType.definition.typeName.string + "'"
+    )
   end
 //--- Check syntax directed translation result parameter
   let syntaxDirectedTranslationResultVarName = "syntaxDirectedTranslationResult_" + self.mGrammarComponentName.location.startLocationIndex

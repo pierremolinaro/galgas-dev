@@ -299,7 +299,7 @@ setter @XcodeProjectDescriptor addGroupWithFiles
       childrenRefs += !swiftFileRef
       ioSwiftFileBuildRefs += !buildRef
     else
-      error @location. nowhere : "unhandled extension for file '" + f + "'"
+      error (@location. nowhere : "unhandled extension for file '" + f + "'")
     end
   end
   self.mGroupList += !outGroupRef !inGroupName !inGroupPath !childrenRefs

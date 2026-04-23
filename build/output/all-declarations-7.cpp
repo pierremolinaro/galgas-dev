@@ -10151,19 +10151,19 @@ void cParser_templateSyntax::rule_templateSyntax_for_5F_instruction_5F_element_i
     }
   }
   if (var_n_2659.isValid ()) {
-    uint32_t variant_2758 = var_n_2659.uintValue () ;
-    bool loop_2758 = true ;
-    while (loop_2758) {
-      loop_2758 = GGS_bool (ComparisonKind::greaterThan, var_n_2659.objectCompare (GGS_uint (uint32_t (0U)))).isValid () ;
-      if (loop_2758) {
-        loop_2758 = GGS_bool (ComparisonKind::greaterThan, var_n_2659.objectCompare (GGS_uint (uint32_t (0U)))).boolValue () ;
+    uint32_t variant_2760 = var_n_2659.uintValue () ;
+    bool loop_2760 = true ;
+    while (loop_2760) {
+      loop_2760 = GGS_bool (ComparisonKind::greaterThan, var_n_2659.objectCompare (GGS_uint (uint32_t (0U)))).isValid () ;
+      if (loop_2760) {
+        loop_2760 = GGS_bool (ComparisonKind::greaterThan, var_n_2659.objectCompare (GGS_uint (uint32_t (0U)))).boolValue () ;
       }
-      if (loop_2758 && (0 == variant_2758)) {
-        loop_2758 = false ;
+      if (loop_2760 && (0 == variant_2760)) {
+        loop_2760 = false ;
         inCompiler->loopRunTimeVariantError (SOURCE_FILE ("template-for-instruction.galgas", 58)) ;
       }
-      if (loop_2758) {
-        variant_2758 -= 1 ;
+      if (loop_2760) {
+        variant_2760 -= 1 ;
         ioArgument_ioElementList.addAssignOperation (GGS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("template-for-instruction.galgas", 59))  COMMA_SOURCE_FILE ("template-for-instruction.galgas", 59)) ;
         var_n_2659.minusAssignOperation(GGS_uint (uint32_t (1U)), inCompiler  COMMA_SOURCE_FILE ("template-for-instruction.galgas", 60)) ;
       }
@@ -10196,9 +10196,9 @@ void cParser_templateSyntax::rule_templateSyntax_for_5F_instruction_5F_element_i
 
 void cParser_templateSyntax::rule_templateSyntax_for_5F_instruction_5F_element_i29_ (GGS_lstringlist & ioArgument_ioElementList,
                                                                                      Lexique_galgasTemplateScanner * inCompiler) {
-  GGS_lstring var_constantName_3243 = inCompiler->synthetizedAttribute_tokenString () ;
+  GGS_lstring var_constantName_3245 = inCompiler->synthetizedAttribute_tokenString () ;
   inCompiler->acceptTerminal (Lexique_galgasTemplateScanner::kToken_identifier COMMA_SOURCE_FILE ("template-for-instruction.galgas", 74)) ;
-  ioArgument_ioElementList.addAssignOperation (var_constantName_3243  COMMA_SOURCE_FILE ("template-for-instruction.galgas", 75)) ;
+  ioArgument_ioElementList.addAssignOperation (var_constantName_3245  COMMA_SOURCE_FILE ("template-for-instruction.galgas", 75)) ;
 }
 
 //------------------------------------------------------------------------------------------------
@@ -10235,12 +10235,12 @@ void cParser_templateSyntax::rule_templateSyntax_for_5F_instruction_5F_enumerate
   } break ;
   case 2: {
     inCompiler->acceptTerminal (Lexique_galgasTemplateScanner::kToken__3A_ COMMA_SOURCE_FILE ("template-for-instruction.galgas", 116)) ;
-    GGS_location var_startLocation_4624 = GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("template-for-instruction.galgas", 117)) ;
-    GGS_lstring var_prefixString_4688 = inCompiler->synthetizedAttribute_tokenString () ;
+    GGS_location var_startLocation_4626 = GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("template-for-instruction.galgas", 117)) ;
+    GGS_lstring var_prefixString_4690 = inCompiler->synthetizedAttribute_tokenString () ;
     inCompiler->acceptTerminal (Lexique_galgasTemplateScanner::kToken_identifier COMMA_SOURCE_FILE ("template-for-instruction.galgas", 118)) ;
     GenericArray <FixItDescription> fixItArray1 ;
     appendFixItActions (fixItArray1, EnumFixItKind::fixItReplace, GGS_string::makeEmptyString ()) ;
-    inCompiler->emitSemanticError (var_prefixString_4688.readProperty_location ().getter_union (var_startLocation_4624, inCompiler COMMA_SOURCE_FILE ("template-for-instruction.galgas", 119)), GGS_string ("useless prefix"), fixItArray1  COMMA_SOURCE_FILE ("template-for-instruction.galgas", 119)) ;
+    inCompiler->emitSemanticError (var_prefixString_4690.readProperty_location ().getter_union (var_startLocation_4626, inCompiler COMMA_SOURCE_FILE ("template-for-instruction.galgas", 119)), GGS_string ("useless prefix"), fixItArray1  COMMA_SOURCE_FILE ("template-for-instruction.galgas", 119)) ;
   } break ;
   default:
     break ;

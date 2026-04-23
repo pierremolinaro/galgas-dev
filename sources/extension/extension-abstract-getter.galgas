@@ -220,11 +220,13 @@ final class @abstractExtensionGetterAST : @semanticDeclarationAST {
     let @unifiedTypeMapEntry selfType = [ioTypeMap typeMapEntryForLKey !self.mTypeName]
   //--- Check self type is an abstract class
     if not selfType.definition.typeKind.isClassType then
-      error self.mAbstractExtensionGetterName
+      error (self.mAbstractExtensionGetterName
         : "cannot declare an extension getter: '@" + selfType.definition.typeName.string + "' is not a class"
+      )
     elsif selfType.definition.isConcrete then
-      error self.mAbstractExtensionGetterName
+      error (self.mAbstractExtensionGetterName
         : "cannot declare an abstract extension getter: '@" + selfType.definition.typeName.string + "' is not an abstract class"
+      )
     end
   //--- Compute method signature
     var @formalInputParameterListForGeneration formalParameterListForGeneration = @()

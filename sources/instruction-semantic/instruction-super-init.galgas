@@ -151,8 +151,9 @@ final class @superInitInstructionAST : @semanticInstructionAST {
               then formalArg.mFormalSelector.string + ":"
               else ""
             end
-            error actualArg.mActualSelector : "the selector should be '" + s + "'"
-            fixit { replace s }
+            error (actualArg.mActualSelector : "the selector should be '" + s + "'"
+            fixit replace s
+            )
           end
           actualParameterListForGeneration += !expression
         end
@@ -164,10 +165,10 @@ final class @superInitInstructionAST : @semanticInstructionAST {
           !superTypeDefinition.typeName
         }
      case null :
-       error self.mInstructionLocation : "superinit  is not available, current class has no super class"
+       error (self.mInstructionLocation : "superinit  is not available, current class has no super class")
      end
    else
-     error self.mInstructionLocation : "superinit  should be call in a class initializer"
+     error (self.mInstructionLocation : "superinit  should be call in a class initializer")
    end
   }
 

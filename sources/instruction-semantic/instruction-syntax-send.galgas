@@ -89,8 +89,9 @@ final class @syntaxSendInstructionAST : @syntaxInstructionAST {
                                   ?!@localVarManager ioVariableMap,
                                   ?!@uint unused ioSelectMethodCount) {
     if not inHasTranslateFeature then
-      error self.mInstructionLocation 
+      error (self.mInstructionLocation 
       : "'send' instruction is only allowed when syntax componant has 'translate' feature"
+      )
     end
   //--- Analyze source expression
     [self.mExpression analyzeSemanticExpression
@@ -104,7 +105,7 @@ final class @syntaxSendInstructionAST : @syntaxInstructionAST {
     ]
   //--- Check expression type
     if expression.mResultType != inAnalysisContext.predefinedTypes.mStringType  then
-      error self.mInstructionLocation: "'send' expresion should be an @string expression"
+      error (self.mInstructionLocation: "'send' expresion should be an @string expression")
     end
   //---
     ioInstructionListForGeneration += !@syntaxSendInstructionForGeneration {

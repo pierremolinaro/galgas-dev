@@ -235,7 +235,7 @@ override method @lexicalCharacterSetMatchAST checkLexicalExpression
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
 {
   if not [ioLexiqueAnalysisContext.mUnicodeTestFunctions hasKey !self.mCharacterSetName.string] then
-    error self.mCharacterSetName : "undefined test function" fixit { replace ioLexiqueAnalysisContext.mUnicodeTestFunctions }
+    error (self.mCharacterSetName : "undefined test function" fixit replace ioLexiqueAnalysisContext.mUnicodeTestFunctions)
   end
 }
 
@@ -280,11 +280,12 @@ override method @lexicalAttributeInputArgumentAST checkLexicalFunctionCallArgume
   ]
 //--- Type check
   if attributeLexicalType != inLexicalRoutineFormalArgumentType then
-    error self.mAttributeName:"type error, attribute type is @"
+    error (self.mAttributeName:"type error, attribute type is @"
     + attributeLexicalType.lexicalTypeBaseName
     + " type, but lexical routine prototype requires @"
     + inLexicalRoutineFormalArgumentType.lexicalTypeBaseName
     + " type"
+    )
   end
 }
 
@@ -295,10 +296,11 @@ override method @lexicalCharacterInputArgumentAST checkLexicalFunctionCallArgume
   ?@lexicalTypeEnum inLexicalRoutineFormalArgumentType {
 //--- Type check
   if @lexicalTypeEnum. lexicalType_char != inLexicalRoutineFormalArgumentType then
-    error self.mCharacter:"type error, a literal character has @char"
+    error (self.mCharacter:"type error, a literal character has @char"
     + " type, but lexical routine prototype requires an @"
     + inLexicalRoutineFormalArgumentType.lexicalTypeBaseName
     + " type value"
+    )
   end
 }
 
@@ -309,10 +311,11 @@ override method @lexicalUnsignedInputArgumentAST checkLexicalFunctionCallArgumen
   ?@lexicalTypeEnum inLexicalRoutineFormalArgumentType {
 //--- Type check
   if @lexicalTypeEnum.lexicalType_uint != inLexicalRoutineFormalArgumentType then
-    error self.mUnsigned:"type error, a literal character has @uint"
+    error (self.mUnsigned:"type error, a literal character has @uint"
     + " type, but lexical routine prototype requires an @"
     + inLexicalRoutineFormalArgumentType.lexicalTypeBaseName
     + " type value"
+    )
   end
 }
 
@@ -323,10 +326,11 @@ override method @lexicalCurrentCharacterInputArgumentAST checkLexicalFunctionCal
   ?@lexicalTypeEnum inLexicalRoutineFormalArgumentType {
 //--- Type check
   if @lexicalTypeEnum.lexicalType_char != inLexicalRoutineFormalArgumentType then
-    error self.mLocation:"type error, current character value has @char"
+    error (self.mLocation:"type error, current character value has @char"
     + " type, but lexical routine prototype requires an @"
     + inLexicalRoutineFormalArgumentType.lexicalTypeBaseName
     + " type value"
+    )
   end
 }
 
@@ -349,18 +353,20 @@ override method @lexicalFunctionInputArgumentAST checkLexicalFunctionCallArgumen
   end
 //--- Returned type check
   if returnedLexicalFormalType != inLexicalRoutineFormalArgumentType then
-    error self.mFunctionName:"type error, the function returns an @"
+    error (self.mFunctionName:"type error, the function returns an @"
     + returnedLexicalFormalType.lexicalTypeBaseName
     + " value, but lexical routine prototype requires an @"
     + inLexicalRoutineFormalArgumentType.lexicalTypeBaseName
     + " value"
+    )
   end
 //--- Check actual argument count
   if lexicalFormalTypeList.count != self.mFunctionActualArgumentList.count then
-    error self.mFunctionName: "this lexical function names "
+    error (self.mFunctionName: "this lexical function names "
     + self.mFunctionActualArgumentList.count.string
     + " actual argument(s), but the prototype requires "
     + lexicalFormalTypeList.count.string + " actual argument(s)"
+    )
   end
 //--- Check actual argument against formal parameters
   for (mLexicalType *) in lexicalFormalTypeList, (mLexicalActualInputArgument) in self.mFunctionActualArgumentList do
@@ -391,11 +397,12 @@ override method @lexicalAttributeInputArgumentAST checkLexicalRoutineCallArgumen
   ]
 //--- Type check
   if attributeLexicalType != inLexicalRoutineFormalArgumentType then
-    error self.mAttributeName:"type error, attribute type is @"
+    error (self.mAttributeName:"type error, attribute type is @"
     + attributeLexicalType.lexicalTypeBaseName
     + " type, but lexical routine prototype requires @"
     + inLexicalRoutineFormalArgumentType.lexicalTypeBaseName
     + " type"
+    )    
   end
 }
 
@@ -406,10 +413,11 @@ override method @lexicalCharacterInputArgumentAST checkLexicalRoutineCallArgumen
   ?@lexicalTypeEnum inLexicalRoutineFormalArgumentType {
 //--- Type check
   if @lexicalTypeEnum. lexicalType_char != inLexicalRoutineFormalArgumentType then
-    error self.mCharacter:"type error, a literal character has @char"
+    error (self.mCharacter:"type error, a literal character has @char"
     + " type, but lexical routine prototype requires an @"
     + inLexicalRoutineFormalArgumentType.lexicalTypeBaseName
     + " type value"
+    )
   end
 }
 
@@ -420,10 +428,11 @@ override method @lexicalUnsignedInputArgumentAST checkLexicalRoutineCallArgument
   ?@lexicalTypeEnum inLexicalRoutineFormalArgumentType {
 //--- Type check
   if @lexicalTypeEnum. lexicalType_uint != inLexicalRoutineFormalArgumentType then
-    error self.mUnsigned:"type error, a literal unsigned value has @uint"
+    error (self.mUnsigned:"type error, a literal unsigned value has @uint"
     + " type, but lexical routine prototype requires an @"
     + inLexicalRoutineFormalArgumentType.lexicalTypeBaseName
     + " type value"
+    )
   end
 }
 
@@ -434,10 +443,11 @@ override method @lexicalCurrentCharacterInputArgumentAST checkLexicalRoutineCall
   ?@lexicalTypeEnum inLexicalRoutineFormalArgumentType {
 //--- Type check
   if @lexicalTypeEnum. lexicalType_char != inLexicalRoutineFormalArgumentType then
-    error self.mLocation:"type error, current character value has @char"
+    error (self.mLocation:"type error, current character value has @char"
     + " type, but lexical routine prototype requires an @"
     + inLexicalRoutineFormalArgumentType.lexicalTypeBaseName
     + " type value"
+    )
   end
 }
 
@@ -460,18 +470,20 @@ override method @lexicalFunctionInputArgumentAST checkLexicalRoutineCallArgument
   end
 //--- Returned type check
   if returnedLexicalFormalType != inLexicalRoutineFormalArgumentType then
-    error self.mFunctionName:"type error, the function returns an @"
+    error (self.mFunctionName:"type error, the function returns an @"
     + returnedLexicalFormalType.lexicalTypeBaseName
     + " value, but lexical routine prototype requires an @"
     + inLexicalRoutineFormalArgumentType.lexicalTypeBaseName
     + " value"
+    )
   end
 //--- Check actual argument count
   if lexicalFormalTypeList.count != self.mFunctionActualArgumentList.count then
-    error self.mFunctionName: "this lexical function names "
+    error (self.mFunctionName: "this lexical function names "
     + self.mFunctionActualArgumentList.count.string
     + " actual argument(s), but the prototype requires "
     + lexicalFormalTypeList.count.string + " actual argument(s)"
+    )
   end
 //--- Check actual argument against formal parameters
   for (mLexicalType *) in lexicalFormalTypeList, (mLexicalActualInputArgument) in self.mFunctionActualArgumentList do

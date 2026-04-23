@@ -427,7 +427,7 @@ method @currentVarManager checkSelfObjectIsFullyInitialized ?let @location inErr
     end
   end
   if not fullyInitialized then
-    error inErrorLocation : "invalid call, self is not fully initialized"
+    error (inErrorLocation : "invalid call, self is not fully initialized")
   end
 }
 
@@ -477,8 +477,8 @@ setter @localVarMapListForLLVM neutralAccess ?let @lstring inVarName
                                              !@string outCppName
                                              !@string outNameForCheckingFormalParameterUsing {
   if inIndex >= self.count then
-    error inVarName : "'" + inVarName + "' variable is not declared"
-    spoil (outType, outCppName, outNameForCheckingFormalParameterUsing)
+    error (inVarName : "'" + inVarName + "' variable is not declared"
+    spoil outType, outCppName, outNameForCheckingFormalParameterUsing)
   else
     let localMap = [self mMapAtIndex !inIndex]
     if let varDescriptor = localMap @[inVarName] then
@@ -503,11 +503,6 @@ setter @localVarManager searchForDropAccess ?let @lstring inVarName {
 
 setter @currentVarManager searchForDropAccess ?let @lstring inVarName {
   if let varDescriptor = self.mLocalVarMap @[inVarName] then
-//  if let [self.mLocalVarMap searchKey
-//                !inVarName
-//                ?3*
-//                ?let attributes
-//                ?let valuation] then
     [varDescriptor.mState checkFinalState !inVarName !varDescriptor.mAttributes]
     [!?self.mLocalVarMap removeKey !inVarName ?5*]
   else
@@ -516,9 +511,9 @@ setter @currentVarManager searchForDropAccess ?let @lstring inVarName {
       found = [subMap hasKey !inVarName.string]
     end
     if found then
-      error inVarName : "variable '" + inVarName + "' is not declared in current scope, but in an overrided scope"
+      error (inVarName : "variable '" + inVarName + "' is not declared in current scope, but in an overrided scope")
     else
-      error inVarName : "variable '" + inVarName + "' is not declared"
+      error (inVarName : "variable '" + inVarName + "' is not declared")
     end
   end
 }
@@ -574,19 +569,11 @@ setter @localVarMapListForLLVM writeAccessInSubMap ?let @lstring inVarName
                                                    !@string outCppName
                                                    !@string outNameForCheckingFormalParameterUsing {
   if inIndex >= self.count then
-    error inVarName : "'" + inVarName + "' variable is not declared"
-    spoil (outType, outCppName, outNameForCheckingFormalParameterUsing)
+    error (inVarName : "'" + inVarName + "' variable is not declared"
+    spoil outType, outCppName, outNameForCheckingFormalParameterUsing)
   else
     var localMap = [self mMapAtIndex !inIndex]
     if let varDescriptor = localMap @[inVarName] then
-//    if let [localMap searchKey
-//             !inVarName
-//             ?let type
-//             ?let cppName
-//             ?let nameForCheckingFormalParameterUsing
-//             ?let attributes
-//             ?let valuation
-//           ] then
       var newValuation = varDescriptor.mState
       [!?newValuation writeTransition !inVarName !inOverridenMap: true !varDescriptor.mAttributes]
       if newValuation != varDescriptor.mState then
@@ -616,7 +603,7 @@ setter @localVarValuation writeTransition ?let @lstring inVarName
       warning inVarName : "formal parameter has been declared as unused"
     end
     if [inAttributes contains !.rejectWriteInInitializedAndReadStates] then
-      error inVarName : "constant '" + inVarName + "' cannot be mutated"
+      error (inVarName : "constant '" + inVarName + "' cannot be mutated")
       self = .invalid
     elsif not [inAttributes contains !.acceptInitializedStateAsFinalState] && not inOverridenMap then
       warning inVarName : "variable '" + inVarName + "' was written to, but never read"
@@ -625,7 +612,7 @@ setter @localVarValuation writeTransition ?let @lstring inVarName
     end
   case read : // The variable has been written, and read
     if [inAttributes contains !.rejectWriteInInitializedAndReadStates] then
-      error inVarName : "constant '" + inVarName + "' cannot be mutated"
+      error (inVarName : "constant '" + inVarName + "' cannot be mutated")
       self = .invalid
     else
       self = .mutated
@@ -674,8 +661,8 @@ setter @localVarMapListForLLVM readAccess ?let @lstring inVarName
                                           !@string outCppName
                                           !@string outNameForCheckingFormalParameterUsing {
   if inIndex >= self.count then
-    error inVarName : "'" + inVarName + "' variable is not declared"
-    spoil (outType, outCppName, outNameForCheckingFormalParameterUsing)
+    error (inVarName : "'" + inVarName + "' variable is not declared"
+    spoil outType, outCppName, outNameForCheckingFormalParameterUsing)
   else
     var localMap = [self mMapAtIndex !inIndex]
     if let varDescriptor = localMap @[inVarName] then
@@ -701,7 +688,7 @@ setter @localVarValuation readTransition ?let @lstring inVarName
   switch self
   case invalid :
   case declared (*) : // The variable has no value
-    error inVarName : "variable '" + inVarName + "' used before being initialized"
+    error (inVarName : "variable '" + inVarName + "' used before being initialized")
     self = .invalid
   case initialized: // The variable has been written once
     self = .read
@@ -765,8 +752,8 @@ setter @localVarMapListForLLVM readWriteAccess ?let @lstring inVarName
                                                !@string outCppName
                                                !@string outNameForCheckingFormalParameterUsing {
   if inIndex >= self.count then
-    error inVarName : "'" + inVarName + "' variable is not declared"
-    spoil (outType, outCppName, outNameForCheckingFormalParameterUsing)
+    error (inVarName : "'" + inVarName + "' variable is not declared"
+    spoil outType, outCppName, outNameForCheckingFormalParameterUsing)
   else
     var localMap = [self mMapAtIndex !inIndex]
     if let varDescriptor = localMap @[inVarName] then
@@ -808,7 +795,7 @@ setter @currentVarManager openScope {
 setter @currentVarManager closeScope ?let @location inErrorLocation {
   [self.mLocalVarMap checkFinalStates !inErrorLocation]
   if self.mSubMaps.count == 0 then
-    error inErrorLocation : "EMPTY SUBMAPS"
+    error (inErrorLocation : "EMPTY SUBMAPS")
   end
   if self.mSubMaps.count > 0 then
     [!?self.mSubMaps popFirst ?self.mLocalVarMap]
@@ -844,7 +831,7 @@ method @localVarValuation checkFinalState ?let @lstring inVarName ?let @localVar
   case invalid :
   case declared (usedInOtherBlock) : // The variable has no value
     if [inAttributes contains !.rejectDeclaredStateAsFinalState] then
-      error inVarName : "variable '" + inVarName + "' should be initialized"
+      error (inVarName : "variable '" + inVarName + "' should be initialized")
     elsif usedInOtherBlock then
       warning inVarName : "variable '" + inVarName + "' is only used  in sub scope; consider moving it"
     else
@@ -987,7 +974,7 @@ setter @currentVarManager combineManagerWith ?otherManager: let @currentVarManag
   end
 
   if s != "" then
-    error inErrorLocation : "convergence error:" + s
+    error (inErrorLocation : "convergence error:" + s)
   end
 }
 

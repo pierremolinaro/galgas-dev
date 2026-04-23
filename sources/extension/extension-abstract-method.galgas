@@ -196,9 +196,9 @@ final class @abstractExtensionMethodAST : @semanticDeclarationAST {
     let @unifiedTypeMapEntry selfType = [ioTypeMap typeMapEntryForLKey !self.mTypeName]
   //--- Check self type is an abstract class
     if not selfType.definition.typeKind.isClassType then
-      error self.mAbstractExtensionMethodName: "cannot declare a extension method: '@" + selfType.definition.typeName.string + "' is not a class"
+      error (self.mAbstractExtensionMethodName: "cannot declare a extension method: '@" + selfType.definition.typeName.string + "' is not a class")
     elsif selfType.definition.isConcrete then
-      error self.mAbstractExtensionMethodName: "cannot declare an abstract extension method: '@" + selfType.definition.typeName.string + "' is not an abstract class"
+      error (self.mAbstractExtensionMethodName: "cannot declare an abstract extension method: '@" + selfType.definition.typeName.string + "' is not an abstract class")
     end
   //--- Compute method signature
     var formalParameterListForGeneration = @formalParameterListForGeneration ()

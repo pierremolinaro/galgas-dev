@@ -36,12 +36,12 @@ list @actualParameterListAST {
                                   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration,
                                   !@actualParameterListForGeneration outActualParameterListForGeneration) {
     if inRoutineSignature.count != self.count then
-      error inRoutineName
+      error (inRoutineName
       : "the " + inInvokedEntityName + " defines " + inRoutineSignature.count
       + " formal argument" + if inRoutineSignature.count > 1 then "s" else "" end
       + " but this invocation names "
       + self.count + " argument" + if self.count > 1 then "s" else "" end
-      spoil (outActualParameterListForGeneration)
+      spoil outActualParameterListForGeneration)
     else
       outActualParameterListForGeneration = @()
       var @stringset exclusiveVariableSet = @()
@@ -151,14 +151,14 @@ final class @outputActualParameterAST : @actualParameterAST {
                                   ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration) {
     if (inFormalArgumentPassingMode != .argumentVarIn)
      & (inFormalArgumentPassingMode != .argumentConstantIn) then
-      error self.mActualSelector
+      error (self.mActualSelector
       :"the corresponding formal argument has the '" + inFormalArgumentPassingMode.string
       + "' passing mode: this parameter should be passed with '"
-      + inFormalArgumentPassingMode.correspondingEffectiveParameterString + "'"
+      + inFormalArgumentPassingMode.correspondingEffectiveParameterString + "'")
     else
       if inFormalSelector.string != self.mActualSelector.string then
         let @string s = "!" + if inFormalSelector.string != "" then inFormalSelector.string + ":" else "" end
-        error self.mActualSelector : "the selector should be '" + s + "'" fixit { replace s }
+        error (self.mActualSelector : "the selector should be '" + s + "'" fixit replace s)
        end
       [self.mOutputActualParameterExpression analyzeSemanticExpression
         !usefulnessCallerEntityName: inUsefulnessCallerEntityName
@@ -213,7 +213,7 @@ final class @outputInputActualParameterAST : @actualParameterAST {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override method enterInActualOutputParameterList (?!@actualOutputArgumentList unused ioActualOutputArgumentList) {
-    error self.mActualSelector : "a getter does not support output/input parameter"
+    error (self.mActualSelector : "a getter does not support output/input parameter")
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -231,13 +231,13 @@ final class @outputInputActualParameterAST : @actualParameterAST {
                               ?!@stringset ioExclusiveVariableSet,
                               ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration) {
     if inFormalArgumentPassingMode != .argumentInOut then
-      error self.mActualSelector
+      error (self.mActualSelector
       :"the corresponding formal argument has the '" + inFormalArgumentPassingMode.string
       + "' passing mode: this parameter should be passed with '"
-      + inFormalArgumentPassingMode.correspondingEffectiveParameterString + "'"
+      + inFormalArgumentPassingMode.correspondingEffectiveParameterString + "'")
     elsif inFormalSelector.string != self.mActualSelector.string then
       let @string s = "!?" + if inFormalSelector.string != "" then inFormalSelector.string + ":" else "" end
-      error self.mActualSelector : "the selector should be '" + s + "'" fixit { replace s }
+      error (self.mActualSelector : "the selector should be '" + s + "'" fixit replace s)
     end
   //--- Analyze input/output variable
     [!?ioVariableMap searchForReadWriteAccess
@@ -257,21 +257,21 @@ final class @outputInputActualParameterAST : @actualParameterAST {
       ]
       [accessControl checkSetAccess !inAnalysisContext.selfAvailability !value]
       if isConstant then
-        error value : "a constant property cannot be modified"
+        error (value : "a constant property cannot be modified")
       end
       typeList += !parameterType
     end
   //--- Check type
     if inFormalArgumentType != parameterType then
-      error self.mOutputInputActualParameterName
+      error (self.mOutputInputActualParameterName
       :"the parameter object has the '@" + parameterType.definition.typeName.string
       + "', it should be the same as the corresponding formal argument: '@"
-      + inFormalArgumentType.definition.typeName.string + "'"
+      + inFormalArgumentType.definition.typeName.string + "'")
     end
   //--- Check for exclusive access
     if [ioExclusiveVariableSet hasKey !self.mOutputInputActualParameterName.string] then
-      error self.mOutputInputActualParameterName
-      :"this variable is already named as input or output/input effective parameter"
+      error (self.mOutputInputActualParameterName
+      :"this variable is already named as input or output/input effective parameter")
     end
     ioExclusiveVariableSet ++= self.mOutputInputActualParameterName.string
   //--- Generate actual parameter
@@ -312,7 +312,7 @@ final class @outputInputJokerParameterAST : @actualParameterAST {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override method enterInActualOutputParameterList (?!@actualOutputArgumentList unused ioActualOutputArgumentList) {
-    error self.mActualSelector : "a getter does not support output/input parameter"
+    error (self.mActualSelector : "a getter does not support output/input parameter")
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -330,13 +330,13 @@ final class @outputInputJokerParameterAST : @actualParameterAST {
                                   ?!@stringset unused ioExclusiveVariableSet,
                                   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration) {
     if inFormalArgumentPassingMode != .argumentInOut then
-      error self.mActualSelector
+      error (self.mActualSelector
       : "the corresponding formal argument has the '" + inFormalArgumentPassingMode.string
       + "' passing mode: this parameter should be passed with '"
-      + inFormalArgumentPassingMode.correspondingEffectiveParameterString + "'"
+      + inFormalArgumentPassingMode.correspondingEffectiveParameterString + "'")
     elsif inFormalSelector.string != self.mActualSelector.string then
       let @string s = "!?" + if inFormalSelector.string != "" then inFormalSelector.string + ":" else "" end
-      error self.mActualSelector : "the selector should be '" + s + "'" fixit { replace s }
+      error (self.mActualSelector : "the selector should be '" + s + "'" fixit replace s)
     end
   //--- Check source expression
    [self.expression analyzeSemanticExpression
@@ -398,7 +398,7 @@ final class @outputInputSelfParameterAST : @actualParameterAST {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override method enterInActualOutputParameterList ?!@actualOutputArgumentList unused ioActualOutputArgumentList {
-    error self.mActualSelector : "a getter does not support output/input parameter"
+    error (self.mActualSelector : "a getter does not support output/input parameter")
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -416,25 +416,25 @@ final class @outputInputSelfParameterAST : @actualParameterAST {
                             ?!@stringset unused ioExclusiveVariableSet
                             ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration {
     if inFormalArgumentPassingMode != .argumentInOut then
-      error self.mActualSelector
+      error (self.mActualSelector
       :"the corresponding formal argument has the '" + inFormalArgumentPassingMode.string
       + "' passing mode: this parameter should be passed with '"
-      + inFormalArgumentPassingMode.correspondingEffectiveParameterString + "'"
+      + inFormalArgumentPassingMode.correspondingEffectiveParameterString + "'")
     elsif inFormalSelector.string != self.mActualSelector.string then
       let @string s = "!?" + if inFormalSelector.string != "" then inFormalSelector.string + ":" else "" end
-      error self.mActualSelector : "the selector should be '" + s + "'" fixit { replace s }
+      error (self.mActualSelector : "the selector should be '" + s + "'" fixit replace s)
     end
   //--- Analyze self
     if let selfAvailable = inAnalysisContext.selfAvailability.getAvailable then
       if not selfAvailable.selfMutability.selfIsMutable then
-        error self.mActualSelector : "'self' not mutable in this context"
+        error (self.mActualSelector : "'self' not mutable in this context")
       end
     //--- Check type
       if inFormalArgumentType != selfAvailable.type then
-        error self.mActualSelector
+        error (self.mActualSelector
         :"the parameter object has the '@" + selfAvailable.type.definition.typeName.string
         + "', it should be the same as the corresponding formal argument: '@"
-        + inFormalArgumentType.definition.typeName.string + "'"
+        + inFormalArgumentType.definition.typeName.string + "'")
     end
       ioActualParameterListForGeneration += !@outputInputActualParameterForGeneration {
         !inFormalArgumentType
@@ -443,7 +443,7 @@ final class @outputInputSelfParameterAST : @actualParameterAST {
         !@unifiedTypeMapEntryList.listWithValue {!inFormalArgumentType}
       }
     else
-      error self.mActualSelector : "'self' not available in this context"
+      error (self.mActualSelector : "'self' not available in this context")
     end
   }
 
@@ -476,7 +476,7 @@ final class @inputActualExistingVariableParameterAST : @actualParameterAST {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override method enterInActualOutputParameterList ?!@actualOutputArgumentList unused ioActualOutputArgumentList {
-    error self.mActualSelector : "a getter does not support input parameter"
+    error (self.mActualSelector : "a getter does not support input parameter")
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -494,13 +494,12 @@ final class @inputActualExistingVariableParameterAST : @actualParameterAST {
     ?!@stringset ioExclusiveVariableSet
     ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration {
     if inFormalArgumentPassingMode != @formalArgumentPassingModeAST. argumentOut then
-      error self.mActualSelector
+      error (self.mActualSelector
       :"the corresponding formal argument has the '" + inFormalArgumentPassingMode.string
-      + "' passing mode: this parameter should be passed with '" + inFormalArgumentPassingMode.correspondingEffectiveParameterString + "'"
+      + "' passing mode: this parameter should be passed with '" + inFormalArgumentPassingMode.correspondingEffectiveParameterString + "'")
     elsif inFormalSelector.string != self.mActualSelector.string then
       let @string s = "?" + if inFormalSelector.string != "" then inFormalSelector.string + ":" else "" end
-      error self.mActualSelector : "the selector should be '" + s + "'" fixit { replace s }
-  //     error self.mActualSelector : "the selector should be '?" + inFormalSelector + if inFormalSelector.string != "" then ":" else "" end + "'"
+      error (self.mActualSelector : "the selector should be '" + s + "'" fixit replace s)
     end
     [!?ioVariableMap searchForWriteAccess
       !self.mInputActualParameterName
@@ -510,14 +509,14 @@ final class @inputActualExistingVariableParameterAST : @actualParameterAST {
     ]
   //--- Check type
     if inFormalArgumentType != parameterType then
-      error self.mInputActualParameterName
+      error (self.mInputActualParameterName
       :"the parameter object has the '@" + parameterType.definition.typeName.string
-      + "', it should be the same as the corresponding formal argument: '@" + inFormalArgumentType.definition.typeName.string + "'"
+      + "', it should be the same as the corresponding formal argument: '@" + inFormalArgumentType.definition.typeName.string + "'")
     end
   //--- Check for exclusive access
     if [ioExclusiveVariableSet hasKey !self.mInputActualParameterName.string] then
-      error self.mInputActualParameterName
-      :"this variable is already named as input or output/input effective parameter"
+      error (self.mInputActualParameterName
+      :"this variable is already named as input or output/input effective parameter")
     end
     ioExclusiveVariableSet ++= self.mInputActualParameterName.string
   //--- Generate actual parameter
@@ -567,7 +566,7 @@ final class @inputActualSelfPropertyParameterAST : @actualParameterAST {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override method enterInActualOutputParameterList ?!@actualOutputArgumentList unused ioActualOutputArgumentList {
-    error self.mActualSelector : "a getter does not support input parameter"
+    error (self.mActualSelector : "a getter does not support input parameter")
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -586,17 +585,17 @@ final class @inputActualSelfPropertyParameterAST : @actualParameterAST {
     ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
   {
     if inFormalArgumentPassingMode != .argumentOut then
-      error self.mActualSelector
+      error (self.mActualSelector
       :"the corresponding formal argument has the '" + inFormalArgumentPassingMode.string
-      + "' passing mode: this parameter should be passed with '" + inFormalArgumentPassingMode.correspondingEffectiveParameterString + "'"
+      + "' passing mode: this parameter should be passed with '" + inFormalArgumentPassingMode.correspondingEffectiveParameterString + "'")
     elsif inFormalSelector.string != self.mActualSelector.string then
       let @string s = "?" + if inFormalSelector.string != "" then inFormalSelector.string + ":" else "" end
-      error self.mActualSelector : "the selector should be '" + s + "'" fixit { replace s }
+      error (self.mActualSelector : "the selector should be '" + s + "'" fixit replace s)
     end
 
     if let selfAvailable = inAnalysisContext.selfAvailability.getAvailable then
       if not selfAvailable.selfMutability.propertiesAreMutable then
-        error self.mInputActualSelfPropertyName : "'self' not mutable in this context"
+        error (self.mInputActualSelfPropertyName : "'self' not mutable in this context")
       end
       let propertyMap = selfAvailable.type.definition.propertyMap
       [propertyMap searchKey !self.mInputActualSelfPropertyName ?2* ?let parameterType]
@@ -604,9 +603,9 @@ final class @inputActualSelfPropertyParameterAST : @actualParameterAST {
        + "mProperty_"+ self.mInputActualSelfPropertyName.string.identifierRepresentation
     //--- Check type
       if inFormalArgumentType != parameterType then
-        error self.mInputActualSelfPropertyName
+        error (self.mInputActualSelfPropertyName
         :"the parameter object has the '@" + parameterType.definition.typeName.string
-        + "', it should be the same as the corresponding formal argument: '@" + inFormalArgumentType.definition.typeName.string + "'"
+        + "', it should be the same as the corresponding formal argument: '@" + inFormalArgumentType.definition.typeName.string + "'")
       end
     //--- Generate actual parameter
       var @2stringlist poisonedVarCppNameList = @()
@@ -626,7 +625,7 @@ final class @inputActualSelfPropertyParameterAST : @actualParameterAST {
       }
 
     else
-      error self.mInputActualSelfPropertyName : "'self' not available in this context"
+      error (self.mInputActualSelfPropertyName : "'self' not available in this context")
     end
   }
 
@@ -659,7 +658,7 @@ final class @inputActualSelfParameterAST : @actualParameterAST {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override method enterInActualOutputParameterList (?!@actualOutputArgumentList unused ioActualOutputArgumentList) {
-    error self.mActualSelector : "a getter does not support input parameter"
+    error (self.mActualSelector : "a getter does not support input parameter")
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -677,25 +676,25 @@ final class @inputActualSelfParameterAST : @actualParameterAST {
     ?!@stringset unused ioExclusiveVariableSet,
     ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration) {
     if inFormalArgumentPassingMode != .argumentOut then
-      error self.mActualSelector
+      error (self.mActualSelector
       :"the corresponding formal argument has the '" + inFormalArgumentPassingMode.string
-      + "' passing mode: this parameter should be passed with '" + inFormalArgumentPassingMode.correspondingEffectiveParameterString + "'"
+      + "' passing mode: this parameter should be passed with '" + inFormalArgumentPassingMode.correspondingEffectiveParameterString + "'")
     elsif inFormalSelector.string != self.mActualSelector.string then
       let @string s = "?" + if inFormalSelector.string != "" then inFormalSelector.string + ":" else "" end
-      error self.mActualSelector : "the selector should be '" + s + "'" fixit { replace s }
+      error (self.mActualSelector : "the selector should be '" + s + "'" fixit replace s)
     end
 
     if let selfAvailable = inAnalysisContext.selfAvailability.getAvailable then
       if not selfAvailable.selfMutability.selfIsMutable then
-        error self.mSelfLocation : "'self' not mutable in this context"
+        error (self.mSelfLocation : "'self' not mutable in this context")
       end
       let targetVariableCppName = inAnalysisContext.selfObjectCppName
     //--- Check type
       if inFormalArgumentType != selfAvailable.type then
-        error self.mSelfLocation
+        error (self.mSelfLocation
         :"the parameter object has the '@" + selfAvailable.type.definition.typeName.string
         + "', it should be the same as the corresponding formal argument: '@"
-        + inFormalArgumentType.definition.typeName.string + "'"
+        + inFormalArgumentType.definition.typeName.string + "'")
       end
     //--- Generate actual parameter
       var @2stringlist poisonedVarCppNameList = @()
@@ -715,7 +714,7 @@ final class @inputActualSelfParameterAST : @actualParameterAST {
       }
 
     else
-      error self.mSelfLocation : "'self' not available in this context"
+      error (self.mSelfLocation : "'self' not available in this context")
     end
   }
 
@@ -749,7 +748,7 @@ final class @inputActualNewVariableParameterAST : @actualParameterAST {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override method enterInActualOutputParameterList (?!@actualOutputArgumentList unused ioActualOutputArgumentList) {
-    error self.mActualSelector : "a getter does not support input parameter"
+    error (self.mActualSelector : "a getter does not support input parameter")
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -768,22 +767,22 @@ final class @inputActualNewVariableParameterAST : @actualParameterAST {
     ?!@semanticInstructionListForGeneration ioInstructionListForGeneration) {
   //--- Check passing mode
     if inFormalArgumentPassingMode != @formalArgumentPassingModeAST.argumentOut then
-      error self.mActualSelector
+      error (self.mActualSelector
       :"the corresponding formal argument has the '" + inFormalArgumentPassingMode.string
       + "' passing mode: this parameter should be passed with '"
-      + inFormalArgumentPassingMode.correspondingEffectiveParameterString + "'"
+      + inFormalArgumentPassingMode.correspondingEffectiveParameterString + "'")
     elsif inFormalSelector.string != self.mActualSelector.string then
       let @string s = "?" + if inFormalSelector.string != "" then inFormalSelector.string + ":" else "" end
-      error self.mActualSelector : "the selector should be '" + s + "'" fixit { replace s }
+      error (self.mActualSelector : "the selector should be '" + s + "'" fixit replace s)
     end
   //--- Analyze or infer type
     if self.mInputOptionalActualTypeName.string != "" then
       let parameterType = [ioTypeMap typeMapEntryForLKey !self.mInputOptionalActualTypeName]
       if inFormalArgumentType != parameterType then
-        error self.mInputActualParameterName
+        error (self.mInputActualParameterName
         :"the parameter object has the '@" + parameterType.definition.typeName.string
         + "', it should be the same as the corresponding formal argument: '@"
-        + inFormalArgumentType.definition.typeName.string + "'"
+        + inFormalArgumentType.definition.typeName.string + "'")
       end
     end
   //--- Declare local variable
@@ -801,8 +800,8 @@ final class @inputActualNewVariableParameterAST : @actualParameterAST {
       !targetVariableCppName}
   //--- Check for exclusive access
     if [ioExclusiveVariableSet hasKey !self.mInputActualParameterName.string] then
-      error self.mInputActualParameterName
-      :"this variable is already named as input or output/input effective parameter"
+      error (self.mInputActualParameterName
+      :"this variable is already named as input or output/input effective parameter")
     end
     ioExclusiveVariableSet ++= self.mInputActualParameterName.string
   //--- Generate actual parameter
@@ -854,7 +853,7 @@ final class @inputActualNewConstantParameterAST : @actualParameterAST {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override method enterInActualOutputParameterList (?!@actualOutputArgumentList unused ioActualOutputArgumentList) {
-    error self.mActualSelector : "a getter does not support input parameter"
+    error (self.mActualSelector : "a getter does not support input parameter")
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -873,21 +872,21 @@ final class @inputActualNewConstantParameterAST : @actualParameterAST {
     ?!@semanticInstructionListForGeneration ioInstructionListForGeneration) {
   //--- Check passing mode
     if inFormalArgumentPassingMode != @formalArgumentPassingModeAST. argumentOut then
-      error self.mActualSelector
+      error (self.mActualSelector
       :"the corresponding formal argument has the '" + inFormalArgumentPassingMode.string
       + "' passing mode: this parameter should be passed with '"
-      + inFormalArgumentPassingMode.correspondingEffectiveParameterString + "'"
+      + inFormalArgumentPassingMode.correspondingEffectiveParameterString + "'")
     elsif inFormalSelector.string != self.mActualSelector.string then
       let @string s = "?" + if inFormalSelector.string != "" then inFormalSelector.string + ":" else "" end
-      error self.mActualSelector : "the selector should be '" + s + "'" fixit { replace s }
+      error (self.mActualSelector : "the selector should be '" + s + "'" fixit replace s)
     end
   //--- Analyze or infer type
     if self.mInputOptionalActualTypeName.string != "" then
       let parameterType = [ioTypeMap typeMapEntryForLKey !self.mInputOptionalActualTypeName]
       if inFormalArgumentType != parameterType then
-        error self.mInputActualParameterName
+        error (self.mInputActualParameterName
         :"the parameter object has the '@" + parameterType.definition.typeName.string
-        + "', it should be the same as the corresponding formal argument: '@" + inFormalArgumentType.definition.typeName.string + "'"
+        + "', it should be the same as the corresponding formal argument: '@" + inFormalArgumentType.definition.typeName.string + "'")
       end
     end
   //--- Declare local constant
@@ -914,8 +913,8 @@ final class @inputActualNewConstantParameterAST : @actualParameterAST {
     }
   //--- Check for exclusive access
     if [ioExclusiveVariableSet hasKey !self.mInputActualParameterName.string] then
-      error self.mInputActualParameterName
-      :"this variable is already named as input or output/input effective parameter"
+      error (self.mInputActualParameterName
+      :"this variable is already named as input or output/input effective parameter")
     end
     ioExclusiveVariableSet ++= self.mInputActualParameterName.string
   //--- Generate actual parameter
@@ -964,7 +963,7 @@ final class @inputSingleJokerActualParameterAST : @actualParameterAST {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override method enterInActualOutputParameterList (?!@actualOutputArgumentList unused ioActualOutputArgumentList) {
-    error self.mActualSelector : "a getter does not support input parameter"
+    error (self.mActualSelector : "a getter does not support input parameter")
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -982,13 +981,13 @@ final class @inputSingleJokerActualParameterAST : @actualParameterAST {
                                   ?!@stringset unused ioExclusiveVariableSet,
                                   ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration) {
     if inFormalArgumentPassingMode != @formalArgumentPassingModeAST. argumentOut then
-      error self.mActualSelector
+      error (self.mActualSelector
       :"the corresponding formal argument has the '" + inFormalArgumentPassingMode.string
       + "' passing mode: this parameter should be passed with '"
-      + inFormalArgumentPassingMode.correspondingEffectiveParameterString + "'"
+      + inFormalArgumentPassingMode.correspondingEffectiveParameterString + "'")
     elsif inFormalSelector.string != self.mActualSelector.string then
       let @string s = "?" + if inFormalSelector.string != "" then inFormalSelector.string + ":" else "" end
-      error self.mActualSelector : "the selector should be '" + s + "'" fixit { replace s }
+      error (self.mActualSelector : "the selector should be '" + s + "'" fixit replace s)
     else
       let cppVarName = "joker_" + self.mActualSelector.location.startLocationIndex
     //--- Generate actual parameter
@@ -1035,7 +1034,7 @@ final class @inputJokerActualParameterAST : @actualParameterAST {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override method enterInActualOutputParameterList (?!@actualOutputArgumentList unused ioActualOutputArgumentList) {
-    error self.mQualifierLocation : "a getter does not support input parameter"
+    error (self.mQualifierLocation : "a getter does not support input parameter")
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -1052,9 +1051,9 @@ final class @inputJokerActualParameterAST : @actualParameterAST {
                            ?!@stringset unused ioExclusiveVariableSet,
     							  ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration) {
     if inFormalArgumentPassingMode != @formalArgumentPassingModeAST.argumentOut then
-      error self.mQualifierLocation
+      error (self.mQualifierLocation
       :"the corresponding formal argument has the '" + inFormalArgumentPassingMode.string
-      + "' passing mode: this parameter should be passed with '" + inFormalArgumentPassingMode.correspondingEffectiveParameterString + "'"
+      + "' passing mode: this parameter should be passed with '" + inFormalArgumentPassingMode.correspondingEffectiveParameterString + "'")
     else
       let cppVarName = "joker_" + self.mQualifierLocation.startLocationIndex + "_" + self.mJokerIndex
     //--- Generate actual parameter

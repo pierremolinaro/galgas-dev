@@ -92,7 +92,7 @@ syntax extension galgas4InstructionsSyntax {
          !?ioDeclarations
          ?let @actualOutputArgumentList unused outExpressionList
       $]$
-      error .here : "not handled yet" spoil (optionalProperty)
+      error (.here : "not handled yet" spoil optionalProperty)
     or
       $.$
       $identifier$ ?let attributeName
@@ -124,7 +124,7 @@ syntax extension galgas4InstructionsSyntax {
          !?ioDeclarations
          ?let @actualOutputArgumentList unused outExpressionList
       $]$
-      error .here : "not handled yet" spoil (optionalProperty)
+      error (.here : "not handled yet" spoil optionalProperty)
     or
       $.$
       $identifier$ ?let attributeName
@@ -181,7 +181,7 @@ final class @assignmentInstructionAST : @semanticInstructionAST {
       [propertyMap searchKey !self.mOptionalProperty ?let accessControl ?let isConstant ?targetType]
       [accessControl checkSetAccess !inAnalysisContext.selfAvailability !self.mOptionalProperty]
       if isConstant then
-        error self.mOptionalProperty : "a constant property cannot be modified"
+        error (self.mOptionalProperty : "a constant property cannot be modified")
       end
     end
   //--- Analyze source expression
@@ -261,12 +261,12 @@ final class @selfPropertyAssignmentInstructionAST : @semanticInstructionAST {
                         ?!@localVarManager ioVariableMap) {
     if let selfAvailable = inAnalysisContext.selfAvailability.getAvailable then
       if not selfAvailable.selfMutability.propertiesAreMutable then
-        error self.mInstructionLocation : "'self' property not mutable in this context"
+        error (self.mInstructionLocation : "'self' property not mutable in this context")
       end
       let propertyMap = selfAvailable.type.definition.propertyMap
       [propertyMap searchKey !self.mTargetSelfPropertyName ?* ?let isConstant ?var targetType]
       if isConstant & not selfAvailable.selfMutability.isInitializer then
-        error self.mTargetSelfPropertyName : "a constant property cannot be modified"
+        error (self.mTargetSelfPropertyName : "a constant property cannot be modified")
       end
       let targetVariableCppName = inAnalysisContext.selfObjectCppPrefixForAccessingProperty
          + "mProperty_"+ self.mTargetSelfPropertyName.string.identifierRepresentation
@@ -276,7 +276,7 @@ final class @selfPropertyAssignmentInstructionAST : @semanticInstructionAST {
         [propertyMap searchKey !self.mOptionalProperty ?let accessControl ?let isConstant ?targetType]
         [accessControl checkSetAccess !inAnalysisContext.selfAvailability !self.mOptionalProperty.location]
         if isConstant then
-          error self.mOptionalProperty : "a constant property cannot be modified"
+          error (self.mOptionalProperty : "a constant property cannot be modified")
         end
       end
     //--- Analyze source expression
@@ -306,7 +306,7 @@ final class @selfPropertyAssignmentInstructionAST : @semanticInstructionAST {
         !self.mTargetSelfPropertyName.location
       }
     else
-      error self.mInstructionLocation : "'self' not available in this context"
+      error (self.mInstructionLocation : "'self' not available in this context")
     end
   }
 

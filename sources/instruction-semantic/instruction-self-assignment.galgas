@@ -90,7 +90,7 @@ override method @selfAssignmentInstructionAST analyzeSemanticInstruction (
                         ?!@localVarManager ioVariableMap) {
   if let selfAvailable = inAnalysisContext.selfAvailability.getAvailable then
     if not selfAvailable.selfMutability.selfIsMutable then
-      error self.mInstructionLocation : "'self' not mutable in this context"
+      error (self.mInstructionLocation : "'self' not mutable in this context")
     end
   //--- Analyze source expression
     [self.mSourceExpression analyzeSemanticExpression
@@ -115,7 +115,7 @@ override method @selfAssignmentInstructionAST analyzeSemanticInstruction (
       !self.mInstructionLocation
     }
   else
-    error self.mInstructionLocation : "'self' not available in this context"
+    error (self.mInstructionLocation : "'self' not available in this context")
   end
 }
 

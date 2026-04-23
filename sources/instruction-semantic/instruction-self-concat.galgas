@@ -101,21 +101,6 @@ syntax extension galgas4InstructionsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-//  rule <semantic_instruction> ?!@galgasDeclarationAST unused ioDeclarations
-//                              !@semanticInstructionAST outInstruction {
-//    $self$
-//    let instructionLocation = @location.here
-//    $+=$
-//    error .here : "obsolete"
-//    <non_empty_output_expression_list> ?let @actualOutputArgumentList expressionList
-//    outInstruction = @selfPlusEqualElementsInstructionAST {
-//      !instructionLocation
-//      !expressionList
-//    }
-//  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
   rule <semantic_instruction> (?!@galgasDeclarationAST ioDeclarations,
                                !@semanticInstructionAST outInstruction) {
     $self$
@@ -199,13 +184,14 @@ final class @selfDivEqualExpressionInstructionAST : @semanticInstructionAST {
   //--- Analyze "self", as receiver expression
     if let selfAvailable = inAnalysisContext.selfAvailability.getAvailable then
       if not selfAvailable.selfMutability.selfIsMutable then
-        error self.mInstructionLocation : "'self' not mutable in this context"
+        error (self.mInstructionLocation : "'self' not mutable in this context")
       end
     //--- Check target variable type support '/= exp' operator
       if [selfAvailable.type.definition.features contains !.divAssignOperatorWithExpression] then
-        error self.mInstructionLocation
+        error (self.mInstructionLocation
         :"the target object has the '@" + selfAvailable.type.definition.typeName.string
         + "' type, but this type does not support the '/=' operator"
+        )
       end
     //--- Analyze source expression
       [self.mExpression analyzeSemanticExpression
@@ -235,7 +221,7 @@ final class @selfDivEqualExpressionInstructionAST : @semanticInstructionAST {
         !"divAssignOperation"
       }
     else
-      error self.mInstructionLocation : "'self' not available in this context"
+      error (self.mInstructionLocation : "'self' not available in this context")
     end
   }
 
@@ -268,13 +254,14 @@ final class @selfPlusEqualExpressionInstructionAST : @semanticInstructionAST {
   //--- Analyze "self", as receiver expression
     if let selfAvailable = inAnalysisContext.selfAvailability.getAvailable then
       if not selfAvailable.selfMutability.selfIsMutable then
-        error self.mInstructionLocation : "'self' not mutable in this context"
+        error (self.mInstructionLocation : "'self' not mutable in this context")
       end
     //--- Check target variable type support '+= exp' operator
       if not [selfAvailable.type.definition.features contains !.plusAssignOperatorWithExpression] then
-        error self.mInstructionLocation
+        error (self.mInstructionLocation
         : "the target object has the '@" + selfAvailable.type.definition.typeName.string
         + "' type, but this type does not support the '+=' operator"
+        )
       end
     //--- Analyze source expression
       [self.mExpression analyzeSemanticExpression
@@ -304,7 +291,7 @@ final class @selfPlusEqualExpressionInstructionAST : @semanticInstructionAST {
         !"plusAssignOperation"
       }
     else
-      error self.mInstructionLocation : "'self' not available in this context"
+      error (self.mInstructionLocation : "'self' not available in this context")
     end
   }
 
@@ -337,13 +324,14 @@ final class @selfMinusEqualExpressionInstructionAST : @semanticInstructionAST {
   //--- Analyze "self", as receiver expression
     if let selfAvailable = inAnalysisContext.selfAvailability.getAvailable then
       if not selfAvailable.selfMutability.selfIsMutable then
-        error self.mInstructionLocation : "'self' not mutable in this context"
+        error (self.mInstructionLocation : "'self' not mutable in this context")
       end
     //--- Check target variable type support '-= exp' operator
       if not [selfAvailable.type.definition.features contains !.minusAssignOperatorWithExpression] then
-        error self.mInstructionLocation
+        error (self.mInstructionLocation
         : "the target object has the '@" + selfAvailable.type.definition.typeName.string
         + "' type, but this type does not support the '-=' operator"
+        )  
       end
     //--- Analyze source expression
       [self.mExpression analyzeSemanticExpression
@@ -373,7 +361,7 @@ final class @selfMinusEqualExpressionInstructionAST : @semanticInstructionAST {
         !"minusAssignOperation"
       }
     else
-      error self.mInstructionLocation : "'self' not available in this context"
+      error (self.mInstructionLocation : "'self' not available in this context")
     end
   }
 
@@ -406,13 +394,14 @@ final class @selfMulEqualExpressionInstructionAST : @semanticInstructionAST {
   //--- Analyze "self", as receiver expression
     if let selfAvailable = inAnalysisContext.selfAvailability.getAvailable then
       if not selfAvailable.selfMutability.selfIsMutable then
-        error self.mInstructionLocation : "'self' not mutable in this context"
+        error (self.mInstructionLocation : "'self' not mutable in this context")
       end
     //--- Check target variable type support '*= exp' operator
       if [selfAvailable.type.definition.features contains !.mulAssignOperatorWithExpression] then
-        error self.mInstructionLocation
+        error (self.mInstructionLocation
         : "the target object has the '@" + selfAvailable.type.definition.typeName.string
         + "' type, but this type does not support the '*=' operator"
+        )
       end
     //--- Analyze source expression
       [self.mExpression analyzeSemanticExpression
@@ -442,7 +431,7 @@ final class @selfMulEqualExpressionInstructionAST : @semanticInstructionAST {
         !"mulAssignOperation"
       }
     else
-      error self.mInstructionLocation : "'self' not available in this context"
+      error (self.mInstructionLocation : "'self' not available in this context")
     end
   }
 
@@ -475,21 +464,23 @@ final class @selfPlusEqualElementsInstructionAST : @semanticInstructionAST {
   //--- Analyze "self", as receiver expression
     if let selfAvailable = inAnalysisContext.selfAvailability.getAvailable then
       if not selfAvailable.selfMutability.selfIsMutable then
-        error self.mInstructionLocation : "'self' not mutable in this context"
+        error (self.mInstructionLocation : "'self' not mutable in this context")
       end
     //--- Check target variable type support '+=' operator
       let addAssignOperatorArguments= selfAvailable.type.definition.addAssignOperatorArguments // Empty list if += operator is not supported
       if addAssignOperatorArguments.count == 0 then
-        error self.mInstructionLocation
+        error (self.mInstructionLocation
         : "the target object has the '@" + selfAvailable.type.definition.typeName.string
         + "' type, but this type does not support the '+=' operator"
+        )
     //--- Analyze source expressions
       elsif self.mExpressions.count != addAssignOperatorArguments.count then
-        error self.mInstructionLocation
+        error (self.mInstructionLocation
         : "calling the '+=' operator on an '@" + selfAvailable.type.definition.typeName.string
         + "' object requires "
         + addAssignOperatorArguments.count.string + " parameter(s), while this invocation has "
         + self.mExpressions.count.string + " parameter(s)"
+        )
       else
         var effectiveParameterList = @semanticExpressionListForGeneration ()
         for expressionAST in self.mExpressions, addAssignArgument in addAssignOperatorArguments do
@@ -507,7 +498,7 @@ final class @selfPlusEqualElementsInstructionAST : @semanticInstructionAST {
               then addAssignArgument.mFormalSelector.string + ":"
               else ""
             end
-            error expressionAST.mActualSelector : "the selector should be '" + s + "'" fixit { replace s }
+            error (expressionAST.mActualSelector : "the selector should be '" + s + "'" fixit replace s)
           end
           checkAssignmentTypeWithImplicitGetterCall (
             !addAssignArgument.mFormalArgumentType
@@ -528,7 +519,7 @@ final class @selfPlusEqualElementsInstructionAST : @semanticInstructionAST {
         }
       end
     else
-      error self.mInstructionLocation : "'self' not available in this context"
+      error (self.mInstructionLocation : "'self' not available in this context")
     end
   }
 

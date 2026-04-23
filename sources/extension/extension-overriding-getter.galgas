@@ -285,7 +285,7 @@ override method @overridingExtensionGetterAST semanticAnalysis (
   let @unifiedTypeMapEntry selfType = [ioTypeMap typeMapEntryForLKey !self.mTypeName]
 //--- Check self type is a class
   if not selfType.definition.typeKind.isClassType then
-    error self.mOverridingExtensionGetterName: "cannot declare a extension getter: '@" + selfType.definition.typeName.string + "' is not a class"
+    error (self.mOverridingExtensionGetterName: "cannot declare a extension getter: '@" + selfType.definition.typeName.string + "' is not a class")
   end
 //--- Find base type name
   var @string baseTypeName = ""
@@ -313,7 +313,7 @@ override method @overridingExtensionGetterAST semanticAnalysis (
     superType = superType.definition.superType
   end
   if baseTypeName == "" then
-    error self.mOverridingExtensionGetterName: "this getter is not declared by a super class"
+    error (self.mOverridingExtensionGetterName: "this getter is not declared by a super class")
   end
 //--- Analyze instruction list
   let analysisContext = @analysisContext {

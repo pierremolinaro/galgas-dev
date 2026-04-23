@@ -184,12 +184,12 @@ syntax galgas3GuiComponentSyntax (galgasScanner3) {
           $($
           $literalInt$ ?let leadingStrip
           if leadingStrip.bigint >= 15 then
-            error leadingStrip:"leading strip should be < 15"
+            error (leadingStrip:"leading strip should be < 15")
           end
           $,$
           $literalInt$ ?let endingStrip
           if endingStrip.bigint >= 15 then
-            error endingStrip:"tail strip should be < 15"
+            error (endingStrip:"tail strip should be < 15")
           end
           displayFlags = (leadingStrip.bigint << 4) | endingStrip
          $)$
@@ -319,12 +319,12 @@ syntax galgas4GuiComponentSyntax (galgasScanner4) {
           $($
           $literalInt$ ?let leadingStrip
           if leadingStrip.bigint >= 15 then
-            error leadingStrip:"leading strip should be < 15"
+            error (leadingStrip:"leading strip should be < 15")
           end
           $,$
           $literalInt$ ?let endingStrip
           if endingStrip.bigint >= 15 then
-            error endingStrip:"tail strip should be < 15"
+            error (endingStrip:"tail strip should be < 15")
           end
           displayFlags = (leadingStrip.bigint << 4) | endingStrip
          $)$
@@ -427,7 +427,7 @@ private proc guiComponentSemanticAnalysis ?let @galgasGUIComponentListAST.@eleme
                                           ?let @semanticContext inSemanticContext
                                           ?!@optionComponentMapForGeneration ioOptionComponentMapForGeneration {
   if inGUIComponentAST.mGUIComponentName.string != "cocoa" then
-    error inGUIComponentAST.mGUIComponentName : "the gui name should be 'cocoa'"
+    error (inGUIComponentAST.mGUIComponentName : "the gui name should be 'cocoa'")
   end
 //---
   var @guiAnalysisContext context = @{}
@@ -445,9 +445,9 @@ private proc guiComponentSemanticAnalysis ?let @galgasGUIComponentListAST.@eleme
   for (mKey mValue) in inGUIComponentAST.mGlobalSimpleAttributeList do
     if mKey.string == "run" then
       if runOptionDefined then
-        error mKey : "option already defined"
+        error (mKey : "option already defined")
       elsif mValue.string == "" then
-        error mValue : "run option string should not be empty"
+        error (mValue : "run option string should not be empty")
       else
         context.mBuildRunOption = mValue.string
         runOptionDefined = true
@@ -477,11 +477,12 @@ private proc guiComponentSemanticAnalysis ?let @galgasGUIComponentListAST.@eleme
     for (* mTerminalList *) in labels do
       for (mTerminal *) in mTerminalList do
         if not [terminalSymbolSet hasKey !mTerminal.string] then
-          error mTerminal: "the '$"
+          error (mTerminal: "the '$"
             + mTerminal
             + "$' terminal symbol is not declared by the '"
             + lexiqueFileName
             + "' lexique"
+          )
         end
       end
     end
@@ -489,7 +490,7 @@ private proc guiComponentSemanticAnalysis ?let @galgasGUIComponentListAST.@eleme
     var @textMacroList textMacroList = @()
     for (mKey mAttributeName mValue) in compoundAttributes do
       if mKey.string != "textMacro" then
-        error mKey: "for a compound attribute, only the 'textMacro' key is valid"
+        error (mKey: "for a compound attribute, only the 'textMacro' key is valid")
       else
         textMacroList += !mAttributeName.string !mValue.string
       end
@@ -506,27 +507,27 @@ private proc guiComponentSemanticAnalysis ?let @galgasGUIComponentListAST.@eleme
         hasAssociatedExtension = true
       elsif mKey.string == "title" then
         if hasTabViewTitle then
-          error mKey: "the '" + mKey + "' key should be defined once"
+          error (mKey: "the '" + mKey + "' key should be defined once")
         end
         hasTabViewTitle = true
         tabViewTitle = mValue.string
       elsif mKey.string == "blockComment" then
         if hasBlockComment then
-          error mKey: "the '" + mKey + "' key should be defined once"
+          error (mKey: "the '" + mKey + "' key should be defined once")
         end
         hasBlockComment = true
         blockComment = mValue.string
       else
-        error mKey: "the '" + mKey + "' key is not valid (valid keys: 'blockComment,', 'fileExtension', 'title')"
+        error (mKey: "the '" + mKey + "' key is not valid (valid keys: 'blockComment,', 'fileExtension', 'title')")
       end
     end
   //--- has an extension ?
     if not hasAssociatedExtension then
-      error lexiqueFileName:"one or more file extensions should be associated with a lexique (fileExtension : \"...\")"
+      error (lexiqueFileName:"one or more file extensions should be associated with a lexique (fileExtension : \"...\")")
     end
   //--- has title ?
     if not hasTabViewTitle then
-      error lexiqueFileName:"the 'title' key should be defined once (it is not defined)"
+      error (lexiqueFileName:"the 'title' key should be defined once (it is not defined)")
     end
   //---
     context.mWithLexiqueList +=

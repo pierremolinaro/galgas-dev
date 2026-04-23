@@ -81,7 +81,7 @@ override method @selfInExpressionAST analyzeSemanticExpression
     let @string selfCppName = inAnalysisContext.selfObjectCppName
     outExpression = @selfInExpressionForGeneration {!selfAvailable.type !self.mSelfLocation !selfCppName}
   else
-    error self.mSelfLocation : "'self' not available in this context" spoil (outExpression)
+    error (self.mSelfLocation : "'self' not available in this context" spoil outExpression)
   end
 }
 

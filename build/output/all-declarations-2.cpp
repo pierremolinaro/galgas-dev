@@ -13771,16 +13771,16 @@ GGS_AccessControl extensionGetter_accessControl (const GGS_AccessControlAST & in
     break ;
   case GGS_AccessControlAST::Enumeration::enum_fileprivateAccess:
     {
-      GGS_location extractedValue_5998_declarationLocation_0 ;
-      temp_0.getAssociatedValuesFor_fileprivateAccess (extractedValue_5998_declarationLocation_0) ;
-      result_result = GGS_AccessControl::class_func_fileprivateAccess (extractedValue_5998_declarationLocation_0  COMMA_SOURCE_FILE ("accessControl.ggs", 180)) ;
+      GGS_location extractedValue_6016_declarationLocation_0 ;
+      temp_0.getAssociatedValuesFor_fileprivateAccess (extractedValue_6016_declarationLocation_0) ;
+      result_result = GGS_AccessControl::class_func_fileprivateAccess (extractedValue_6016_declarationLocation_0  COMMA_SOURCE_FILE ("accessControl.ggs", 180)) ;
     }
     break ;
   case GGS_AccessControlAST::Enumeration::enum_fileprivateSetAccess:
     {
-      GGS_location extractedValue_6130_declarationLocation_0 ;
-      temp_0.getAssociatedValuesFor_fileprivateSetAccess (extractedValue_6130_declarationLocation_0) ;
-      result_result = GGS_AccessControl::class_func_fileprivateSetAccess (extractedValue_6130_declarationLocation_0  COMMA_SOURCE_FILE ("accessControl.ggs", 182)) ;
+      GGS_location extractedValue_6148_declarationLocation_0 ;
+      temp_0.getAssociatedValuesFor_fileprivateSetAccess (extractedValue_6148_declarationLocation_0) ;
+      result_result = GGS_AccessControl::class_func_fileprivateSetAccess (extractedValue_6148_declarationLocation_0  COMMA_SOURCE_FILE ("accessControl.ggs", 182)) ;
     }
     break ;
   }
@@ -14234,8 +14234,8 @@ void extensionMethod_checkGetAccess (const GGS_AccessControl inObject,
     break ;
   case GGS_AccessControl::Enumeration::enum_protectedAccess:
     {
-      GGS_unifiedTypeMapEntry extractedValue_10063_declaringType_0 ;
-      temp_0.getAssociatedValuesFor_protectedAccess (extractedValue_10063_declaringType_0) ;
+      GGS_unifiedTypeMapEntry extractedValue_10095_declaringType_0 ;
+      temp_0.getAssociatedValuesFor_protectedAccess (extractedValue_10095_declaringType_0) ;
       switch (constinArgument_inOptionalCurrentType.enumValue ()) {
       case GGS_selfAvailability::Enumeration::invalid:
         break ;
@@ -14247,30 +14247,30 @@ void extensionMethod_checkGetAccess (const GGS_AccessControl inObject,
         break ;
       case GGS_selfAvailability::Enumeration::enum_available:
         {
-          GGS_unifiedTypeMapEntry extractedValue_10240_t_0 ;
-          GGS_selfMutability extractedValue_10243__1 ;
-          constinArgument_inOptionalCurrentType.getAssociatedValuesFor_available (extractedValue_10240_t_0, extractedValue_10243__1) ;
-          GGS_unifiedTypeMapEntry var_currentType_10260 = extractedValue_10240_t_0 ;
-          GGS_bool var_ok_10288 = GGS_bool (ComparisonKind::equal, extensionGetter_typeName (extractedValue_10063_declaringType_0, inCompiler COMMA_SOURCE_FILE ("accessControl.ggs", 280)).objectCompare (extensionGetter_typeName (var_currentType_10260, inCompiler COMMA_SOURCE_FILE ("accessControl.ggs", 280)))) ;
-          bool loop_10348 = true ;
-          while (loop_10348) {
+          GGS_unifiedTypeMapEntry extractedValue_10274_t_0 ;
+          GGS_selfMutability extractedValue_10277__1 ;
+          constinArgument_inOptionalCurrentType.getAssociatedValuesFor_available (extractedValue_10274_t_0, extractedValue_10277__1) ;
+          GGS_unifiedTypeMapEntry var_currentType_10294 = extractedValue_10274_t_0 ;
+          GGS_bool var_ok_10322 = GGS_bool (ComparisonKind::equal, extensionGetter_typeName (extractedValue_10095_declaringType_0, inCompiler COMMA_SOURCE_FILE ("accessControl.ggs", 280)).objectCompare (extensionGetter_typeName (var_currentType_10294, inCompiler COMMA_SOURCE_FILE ("accessControl.ggs", 280)))) ;
+          bool loop_10382 = true ;
+          while (loop_10382) {
             GalgasBool test_2 = GalgasBool::boolTrue ;
             if (GalgasBool::boolTrue == test_2) {
-              GGS_bool test_3 = var_ok_10288.operator_not (SOURCE_FILE ("accessControl.ggs", 281)) ;
+              GGS_bool test_3 = var_ok_10322.operator_not (SOURCE_FILE ("accessControl.ggs", 281)) ;
               if (GalgasBool::boolTrue == test_3.boolEnum ()) {
-                test_3 = extensionGetter_definition (var_currentType_10260, inCompiler COMMA_SOURCE_FILE ("accessControl.ggs", 281)).readProperty_superType ().getter_isNull (SOURCE_FILE ("accessControl.ggs", 281)).operator_not (SOURCE_FILE ("accessControl.ggs", 281)) ;
+                test_3 = extensionGetter_definition (var_currentType_10294, inCompiler COMMA_SOURCE_FILE ("accessControl.ggs", 281)).readProperty_superType ().getter_isNull (SOURCE_FILE ("accessControl.ggs", 281)).operator_not (SOURCE_FILE ("accessControl.ggs", 281)) ;
               }
               test_2 = test_3.boolEnum () ;
-              loop_10348 = test_2 == GalgasBool::boolTrue ;
-              if (loop_10348) {
-                var_currentType_10260 = extensionGetter_definition (var_currentType_10260, inCompiler COMMA_SOURCE_FILE ("accessControl.ggs", 282)).readProperty_superType () ;
-                var_ok_10288 = GGS_bool (ComparisonKind::equal, extensionGetter_typeName (extractedValue_10063_declaringType_0, inCompiler COMMA_SOURCE_FILE ("accessControl.ggs", 283)).objectCompare (extensionGetter_typeName (var_currentType_10260, inCompiler COMMA_SOURCE_FILE ("accessControl.ggs", 283)))) ;
+              loop_10382 = test_2 == GalgasBool::boolTrue ;
+              if (loop_10382) {
+                var_currentType_10294 = extensionGetter_definition (var_currentType_10294, inCompiler COMMA_SOURCE_FILE ("accessControl.ggs", 282)).readProperty_superType () ;
+                var_ok_10322 = GGS_bool (ComparisonKind::equal, extensionGetter_typeName (extractedValue_10095_declaringType_0, inCompiler COMMA_SOURCE_FILE ("accessControl.ggs", 283)).objectCompare (extensionGetter_typeName (var_currentType_10294, inCompiler COMMA_SOURCE_FILE ("accessControl.ggs", 283)))) ;
               }
             }
           }
           GalgasBool test_4 = GalgasBool::boolTrue ;
           if (GalgasBool::boolTrue == test_4) {
-            test_4 = var_ok_10288.operator_not (SOURCE_FILE ("accessControl.ggs", 285)).boolEnum () ;
+            test_4 = var_ok_10322.operator_not (SOURCE_FILE ("accessControl.ggs", 285)).boolEnum () ;
             if (GalgasBool::boolTrue == test_4) {
               GenericArray <FixItDescription> fixItArray5 ;
               inCompiler->emitSemanticError (constinArgument_inErrorLocation, GGS_string ("inaccessible property (due to 'protected' qualifier)"), fixItArray5  COMMA_SOURCE_FILE ("accessControl.ggs", 286)) ;
@@ -14283,8 +14283,8 @@ void extensionMethod_checkGetAccess (const GGS_AccessControl inObject,
     break ;
   case GGS_AccessControl::Enumeration::enum_privateAccess:
     {
-      GGS_unifiedTypeMapEntry extractedValue_10709_declaringType_0 ;
-      temp_0.getAssociatedValuesFor_privateAccess (extractedValue_10709_declaringType_0) ;
+      GGS_unifiedTypeMapEntry extractedValue_10745_declaringType_0 ;
+      temp_0.getAssociatedValuesFor_privateAccess (extractedValue_10745_declaringType_0) ;
       switch (constinArgument_inOptionalCurrentType.enumValue ()) {
       case GGS_selfAvailability::Enumeration::invalid:
         break ;
@@ -14296,12 +14296,12 @@ void extensionMethod_checkGetAccess (const GGS_AccessControl inObject,
         break ;
       case GGS_selfAvailability::Enumeration::enum_available:
         {
-          GGS_unifiedTypeMapEntry extractedValue_10886_currentType_0 ;
-          GGS_selfMutability extractedValue_10899__1 ;
-          constinArgument_inOptionalCurrentType.getAssociatedValuesFor_available (extractedValue_10886_currentType_0, extractedValue_10899__1) ;
+          GGS_unifiedTypeMapEntry extractedValue_10924_currentType_0 ;
+          GGS_selfMutability extractedValue_10937__1 ;
+          constinArgument_inOptionalCurrentType.getAssociatedValuesFor_available (extractedValue_10924_currentType_0, extractedValue_10937__1) ;
           GalgasBool test_7 = GalgasBool::boolTrue ;
           if (GalgasBool::boolTrue == test_7) {
-            test_7 = GGS_bool (ComparisonKind::notEqual, extensionGetter_typeName (extractedValue_10709_declaringType_0, inCompiler COMMA_SOURCE_FILE ("accessControl.ggs", 294)).objectCompare (extensionGetter_typeName (extractedValue_10886_currentType_0, inCompiler COMMA_SOURCE_FILE ("accessControl.ggs", 294)))).boolEnum () ;
+            test_7 = GGS_bool (ComparisonKind::notEqual, extensionGetter_typeName (extractedValue_10745_declaringType_0, inCompiler COMMA_SOURCE_FILE ("accessControl.ggs", 294)).objectCompare (extensionGetter_typeName (extractedValue_10924_currentType_0, inCompiler COMMA_SOURCE_FILE ("accessControl.ggs", 294)))).boolEnum () ;
             if (GalgasBool::boolTrue == test_7) {
               GenericArray <FixItDescription> fixItArray8 ;
               inCompiler->emitSemanticError (constinArgument_inErrorLocation, GGS_string ("inaccessible property (due to 'private' qualifier)"), fixItArray8  COMMA_SOURCE_FILE ("accessControl.ggs", 295)) ;
@@ -14314,11 +14314,11 @@ void extensionMethod_checkGetAccess (const GGS_AccessControl inObject,
     break ;
   case GGS_AccessControl::Enumeration::enum_fileprivateAccess:
     {
-      GGS_location extractedValue_11104_declaringLocation_0 ;
-      temp_0.getAssociatedValuesFor_fileprivateAccess (extractedValue_11104_declaringLocation_0) ;
+      GGS_location extractedValue_11144_declaringLocation_0 ;
+      temp_0.getAssociatedValuesFor_fileprivateAccess (extractedValue_11144_declaringLocation_0) ;
       GalgasBool test_9 = GalgasBool::boolTrue ;
       if (GalgasBool::boolTrue == test_9) {
-        test_9 = GGS_bool (ComparisonKind::notEqual, extensionGetter_sourceFile (extractedValue_11104_declaringLocation_0, inCompiler COMMA_SOURCE_FILE ("accessControl.ggs", 299)).objectCompare (extensionGetter_sourceFile (constinArgument_inErrorLocation, inCompiler COMMA_SOURCE_FILE ("accessControl.ggs", 299)))).boolEnum () ;
+        test_9 = GGS_bool (ComparisonKind::notEqual, extensionGetter_sourceFile (extractedValue_11144_declaringLocation_0, inCompiler COMMA_SOURCE_FILE ("accessControl.ggs", 299)).objectCompare (extensionGetter_sourceFile (constinArgument_inErrorLocation, inCompiler COMMA_SOURCE_FILE ("accessControl.ggs", 299)))).boolEnum () ;
         if (GalgasBool::boolTrue == test_9) {
           GenericArray <FixItDescription> fixItArray10 ;
           inCompiler->emitSemanticError (constinArgument_inErrorLocation, GGS_string ("inaccessible property (due to 'fileprivate' qualifier)"), fixItArray10  COMMA_SOURCE_FILE ("accessControl.ggs", 300)) ;

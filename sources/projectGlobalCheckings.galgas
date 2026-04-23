@@ -197,9 +197,9 @@ proc checkextensionSetterDefinitionForClass
           !inUnifiedTypeMap
         )
       else
-        error inAbstractExtensionSetterName: "an abstract extension method '" + inAbstractExtensionSetterName + "' is defined for abstract class '@"
+        error (inAbstractExtensionSetterName: "an abstract extension method '" + inAbstractExtensionSetterName + "' is defined for abstract class '@"
         + inClassNameForErrorSignaling
-        + "', but concrete descendant class '@" + descendantClassName + "' does not implement this method"
+        + "', but concrete descendant class '@" + descendantClassName + "' does not implement this method")
       end
     end
   end
@@ -234,9 +234,9 @@ proc checkExtensionMethodDefinitionForClass
           !inUnifiedTypeMap
         )
       else
-        error inAbstractExtensionMethodName: "an abstract extension method '" + inAbstractExtensionMethodName + "' is defined for abstract class '@"
+        error (inAbstractExtensionMethodName: "an abstract extension method '" + inAbstractExtensionMethodName + "' is defined for abstract class '@"
         + inClassNameForErrorSignaling
-        + "', but concrete descendant class '@" + descendantClassName + "' does not implement this method"
+        + "', but concrete descendant class '@" + descendantClassName + "' does not implement this method")
       end
     end
   end
@@ -271,9 +271,9 @@ proc checkExtensionGetterDefinitionForClass
           !inUnifiedTypeMap
         )
       else
-        error inAbstractExtensionGetterName: "an abstract extension getter '" + inAbstractExtensionGetterName + "' is defined for abstract class '@"
+        error (inAbstractExtensionGetterName: "an abstract extension getter '" + inAbstractExtensionGetterName + "' is defined for abstract class '@"
         + inClassNameForErrorSignaling
-        + "', but concrete descendant class '@" + descendantClassName + "' does not implement this getter"
+        + "', but concrete descendant class '@" + descendantClassName + "' does not implement this getter")
       end
     end
   end

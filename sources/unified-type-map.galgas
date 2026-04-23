@@ -76,7 +76,7 @@ map @unifiedTypeMap {
     elsif let node = self @[inLKey] then
       result = .element {!weakElement: node.mElement}
     else
-      error inLKey : "there is no '@" + inLKey + "' type" spoil (result)
+      error (inLKey : "there is no '@" + inLKey + "' type" spoil result)
     end
   }
 
@@ -98,7 +98,7 @@ map @unifiedTypeMap {
     if let node = self @[inTypeName] then
       switch node.mElement.mDefinition
       case solved (*) :
-        error inTypeName : "type already defined"
+        error (inTypeName : "type already defined")
       case unsolved :
         var e = node.mElement
         e.mDefinition = .solved {!definition: inTypeDefinition}
@@ -117,10 +117,10 @@ map @unifiedTypeMap {
       case solved (definition) :
         result = definition
       case unsolved :
-        error inLKey : "unsolved type" spoil (result)
+        error (inLKey : "unsolved type" spoil result)
       end
     else
-      error inLKey : "there is no '@" + inLKey + "' type" spoil (result)
+      error (inLKey : "there is no '@" + inLKey + "' type" spoil result)
     end
   }
 
@@ -149,7 +149,7 @@ final class @unifiedTypeMapElementClass {
   getter definition -> @unifiedTypeDefinition {
     switch self.mDefinition
     case unsolved :
-      error .nowhere : "unsolved type" spoil (result)
+      error (.nowhere : "unsolved type" spoil result)
     case solved (definition) :
       result = definition
     end
@@ -179,17 +179,17 @@ enum @unifiedTypeMapEntry %equatable {
   getter definition -> @unifiedTypeDefinition {
     switch self
     case null :
-      error .nowhere : "null type" spoil (result)
+      error (.nowhere : "null type" spoil result)
     case element (weakElement) :
       if let type = weakElement then
         switch type.mDefinition
         case unsolved :
-          error .nowhere : "unsolved type" spoil (result)
+          error (.nowhere : "unsolved type" spoil result)
         case solved (definition) :
           result = definition
         end
       else
-        error .nowhere : "nil type" spoil (result)
+        error (.nowhere : "nil type" spoil result)
       end
     end
   }

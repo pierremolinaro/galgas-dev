@@ -132,16 +132,16 @@ final class @functionCallExpressionAST : @semanticExpressionAST {
     if isInternal then
       let procDeclarationLocation = [inAnalysisContext.semanticContext.mFunctionMap locationForKey !self.mFunctionName.string]
       if self.mFunctionName.location.file != procDeclarationLocation.file then
-        error self.mFunctionName : "this proc is internal to '" + procDeclarationLocation.file + "' file"
+        error (self.mFunctionName : "this proc is internal to '" + procDeclarationLocation.file + "' file")
       end
     end
   //--- Analyze effective parameters
     if functionSignature.count != self.mExpressionList.count then
-      error self.mFunctionName
+      error (self.mFunctionName
       :"the '" + self.mFunctionName + "' function header declares " + functionSignature.count.string
         + " formal parameter(s), but this function call names " + self.mExpressionList.count.string
         + " effective argument(s)"
-      spoil (outExpression)
+      spoil outExpression)
     else
       var semanticExpressionListForGeneration = @semanticExpressionListForGeneration ()
       for formalArg in functionSignature, actualArg in self.mExpressionList do
@@ -165,8 +165,8 @@ final class @functionCallExpressionAST : @semanticExpressionAST {
             then formalArg.mFormalSelector.string + ":"
             else ""
           end
-          error actualArg.mActualSelector : "the selector should be '" + s + "'"
-          fixit { replace s }
+          error (actualArg.mActualSelector : "the selector should be '" + s + "'"
+          fixit replace s)
         end
         semanticExpressionListForGeneration += !expression
       end

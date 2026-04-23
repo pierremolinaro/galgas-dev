@@ -38,7 +38,7 @@ syntax extension galgas3DeclarationsSyntax {
         $($
         $identifier$ (?let value)
         if value.string != "set" then
-          error value.location : "only 'set' is allowed here"
+          error (value.location : "only 'set' is allowed here")
         end
         $)$
         outAccessControl = .protectedSetAccess
@@ -51,7 +51,7 @@ syntax extension galgas3DeclarationsSyntax {
         $($
         $identifier$ (?let value)
         if value.string != "set" then
-          error value.location : "only 'set' is allowed here"
+          error (value.location : "only 'set' is allowed here")
         end
         $)$
         outAccessControl = .privateSetAccess
@@ -65,7 +65,7 @@ syntax extension galgas3DeclarationsSyntax {
         outAccessControl = .fileprivateSetAccess (!declarationLocation: .here)
         $identifier$ (?let value)
         if value.string != "set" then
-          error value.location : "only 'set' is allowed here"
+          error (value.location : "only 'set' is allowed here")
         end
         $)$
       end
@@ -96,7 +96,7 @@ syntax extension galgas4DeclarationsSyntax {
         $($
         $identifier$ (?let value)
         if value.string != "set" then
-          error value.location : "only 'set' is allowed here"
+          error (value.location : "only 'set' is allowed here")
         end
         $)$
         outAccessControl = .protectedSetAccess
@@ -109,7 +109,7 @@ syntax extension galgas4DeclarationsSyntax {
         $($
         $identifier$ (?let value)
         if value.string != "set" then
-          error value.location : "only 'set' is allowed here"
+          error (value.location : "only 'set' is allowed here")
         end
         $)$
         outAccessControl = .privateSetAccess
@@ -123,7 +123,7 @@ syntax extension galgas4DeclarationsSyntax {
         $identifier$ (?let value)
         outAccessControl = .fileprivateSetAccess (!declarationLocation: .here)
         if value.string != "set" then
-          error value.location : "only 'set' is allowed here"
+          error (value.location : "only 'set' is allowed here")
         end
         $)$
       end
@@ -152,13 +152,13 @@ enum @AccessControlAST {
     case publicAccess :
     case protectedAccess :
     case protectedSetAccess :
-      error inLocation : "'protected(set)' and 'let' are incompatible"
+      error (inLocation : "'protected(set)' and 'let' are incompatible")
     case privateAccess :
     case privateSetAccess :
-      error inLocation : "'private(set)' and 'let' are incompatible"
+      error (inLocation : "'private(set)' and 'let' are incompatible")
     case fileprivateAccess (*) :
     case fileprivateSetAccess (*) :
-      error inLocation : "'private(set)' and 'let' are incompatible"
+      error (inLocation : "'private(set)' and 'let' are incompatible")
     end
   }
 
@@ -207,7 +207,7 @@ enum @AccessControl {
     case protectedAccess (declaringType) :
       switch inOptionalCurrentType
       case none :
-        error inErrorLocation : "inaccessible property (due to 'protected' qualifier)"
+        error (inErrorLocation : "inaccessible property (due to 'protected' qualifier)")
       case available (t, *) :
         var currentType = t
         var ok = declaringType.typeName == currentType.typeName
@@ -216,7 +216,7 @@ enum @AccessControl {
           ok = declaringType.typeName == currentType.typeName
         end
         if not ok then
-          error inErrorLocation : "inaccessible property (due to 'protected' qualifier)"
+          error (inErrorLocation : "inaccessible property (due to 'protected' qualifier)")
         end
       end
     case protectedSetAccess (declaringType) :
@@ -237,10 +237,10 @@ enum @AccessControl {
     case privateAccess (declaringType) :
       switch inOptionalCurrentType
       case none :
-        error inErrorLocation : "inaccessible property (due to 'private' qualifier)"
+        error (inErrorLocation : "inaccessible property (due to 'private' qualifier)")
       case available (currentType, *) :
         if declaringType.typeName != currentType.typeName then
-          error inErrorLocation : "inaccessible property (due to 'private' qualifier)"
+          error (inErrorLocation : "inaccessible property (due to 'private' qualifier)")
         end
       end
     case privateSetAccess (declaringType) :
@@ -249,16 +249,16 @@ enum @AccessControl {
          warning inErrorLocation : "inaccessible property (due to 'private(set)' qualifier)"
       case available (currentType, *) :
         if declaringType.typeName != currentType.typeName then
-          error inErrorLocation : "inaccessible property (due to 'private(set)' qualifier)"
+          error (inErrorLocation : "inaccessible property (due to 'private(set)' qualifier)")
         end
       end
     case fileprivateAccess (declaringLocation) :
       if declaringLocation.sourceFile != inErrorLocation.sourceFile then
-        error inErrorLocation : "inaccessible property (due to 'fileprivate' qualifier)"
+        error (inErrorLocation : "inaccessible property (due to 'fileprivate' qualifier)")
       end
     case fileprivateSetAccess (declaringLocation) :
       if declaringLocation.sourceFile != inErrorLocation.sourceFile then
-        error inErrorLocation : "inaccessible property (due to 'fileprivate(set)' qualifier)"
+        error (inErrorLocation : "inaccessible property (due to 'fileprivate(set)' qualifier)")
       end
     end
   }
@@ -274,7 +274,7 @@ enum @AccessControl {
     case protectedAccess (declaringType) :
       switch inOptionalCurrentType
       case none :
-        error inErrorLocation : "inaccessible property (due to 'private' qualifier)"
+        error (inErrorLocation : "inaccessible property (due to 'private' qualifier)")
       case available (t, *) :
         var currentType = t
         var ok = declaringType.typeName == currentType.typeName
@@ -283,21 +283,21 @@ enum @AccessControl {
           ok = declaringType.typeName == currentType.typeName
         end
         if not ok then
-          error inErrorLocation : "inaccessible property (due to 'protected' qualifier)"
+          error (inErrorLocation : "inaccessible property (due to 'protected' qualifier)")
         end
       end
     case privateAccess (declaringType) :
       switch inOptionalCurrentType
       case none :
-        error inErrorLocation : "inaccessible property (due to 'private' qualifier)"
+        error (inErrorLocation : "inaccessible property (due to 'private' qualifier)")
       case available (currentType, *) :
         if declaringType.typeName != currentType.typeName then
-          error inErrorLocation : "inaccessible property (due to 'private' qualifier)"
+          error (inErrorLocation : "inaccessible property (due to 'private' qualifier)")
         end
       end
     case fileprivateAccess (declaringLocation) :
       if declaringLocation.sourceFile != inErrorLocation.sourceFile then
-        error inErrorLocation : "inaccessible property (due to 'fileprivate' qualifier)"
+        error (inErrorLocation : "inaccessible property (due to 'fileprivate' qualifier)")
       end
     case fileprivateSetAccess (*) :
     end

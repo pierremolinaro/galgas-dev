@@ -403,7 +403,7 @@ syntax galgas3LexiqueComponentSyntax (galgasScanner3) {
     while
       $style$
       if theStyle.string != "" then
-        error @location.here : "duplicated style reference"
+        error (@location.here : "duplicated style reference")
       end
       $identifier$ ? theStyle
     while
@@ -430,10 +430,10 @@ syntax galgas3LexiqueComponentSyntax (galgasScanner3) {
     $style$
     $identifier$ ?let @lstring styleIdentifier
     if [styleIdentifier.string containsCharacter !'_'] then
-      error styleIdentifier : "for compatibility with latex formatting, a style name should not contain '_' character"
+      error (styleIdentifier : "for compatibility with latex formatting, a style name should not contain '_' character")
     end
     if [styleIdentifier.string containsCharacterInRange !'0' !'9'] then
-      error styleIdentifier : "for compatibility with latex formatting, a style name should not contain any digit"
+      error (styleIdentifier : "for compatibility with latex formatting, a style name should not contain any digit")
     end
     $->$
     $"string"$ ?let @lstring comment
@@ -764,7 +764,7 @@ syntax galgas4LexiqueComponentSyntax (galgasScanner4) {
     while
       $style$
       if theStyle.string != "" then
-        error @location.here : "duplicated style reference"
+        error (@location.here : "duplicated style reference")
       end
       $identifier$ ? theStyle
     while
@@ -791,10 +791,10 @@ syntax galgas4LexiqueComponentSyntax (galgasScanner4) {
     $style$
     $identifier$ ?let @lstring styleIdentifier
     if [styleIdentifier.string containsCharacter !'_'] then
-      error styleIdentifier : "for compatibility with latex formatting, a style name should not contain '_' character"
+      error (styleIdentifier : "for compatibility with latex formatting, a style name should not contain '_' character")
     end
     if [styleIdentifier.string containsCharacterInRange !'0' !'9'] then
-      error styleIdentifier : "for compatibility with latex formatting, a style name should not contain any digit"
+      error (styleIdentifier : "for compatibility with latex formatting, a style name should not contain any digit")
     end
     $->$
     $"string"$ ?let @lstring comment
@@ -937,23 +937,6 @@ override method @lexiqueComponentAST semanticAnalysis
       argumentTypeList += !mFormalSelector !mAttributeName.string !attributeLexicalType
     end
     [!?lexiqueAnalysisContext.mTerminalMap insertKey !mName !argumentTypeList]
-//    var isEndOfTemplateMark = false
-//    var atomicSelection = true
-//    for (mValue) in mOptionList do
-//      if mValue.string == "nonAtomicSelection" then
-//        if atomicSelection then
-//          atomicSelection = false
-//        else
-//          error mValue: "the 'nonAtomicSelection' attribute is already set"
-//        end
-//      elsif mValue.string != "templateEndMark" then
-//        error mValue:"only the 'templateEndMark' and 'nonAtomicSelection' attributes are allowed here"
-//      elsif isEndOfTemplateMark then
-//        error mValue:"the 'templateEndMark' attribute is already set"
-//      else
-//        isEndOfTemplateMark = true
-//      end
-//    end
     lexiqueAnalysisContext.mTerminalList +=
       !mName
       !argumentTypeList
@@ -1018,7 +1001,7 @@ override method @lexiqueComponentAST semanticAnalysis
   var @stringset indexNameSet = @()
   for (mIndexName *) in self.mIndexingListAST do
     if [indexNameSet hasKey !mIndexName.string] then
-      error mIndexName : "the '" + mIndexName + "' index is already declared"
+      error (mIndexName : "the '" + mIndexName + "' index is already declared")
     end
     indexNameSet ++= mIndexName.string
   end

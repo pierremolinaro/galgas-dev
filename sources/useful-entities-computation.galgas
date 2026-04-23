@@ -47,7 +47,7 @@ proc checkUsefulEntities ?let @usefulEntitiesGraph inUsefulEntitiesGraph
       for (name) in undefinedNodeList do
         s += "\n  - " + name
       end
-      error .nowhere : s
+      error (.nowhere : s)
     else
     //--- No undefined node, compute usefull entities
       let usefullEntityList = [inUsefulEntitiesGraph accessibleNodesFrom !inRootEntities !@()]

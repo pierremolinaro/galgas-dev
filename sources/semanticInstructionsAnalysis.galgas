@@ -160,9 +160,6 @@ proc checkExpressionIsBoolean
         ?let @unifiedTypeMapEntry attributeType
       ]
       [accessControl checkSetAccess !inAnalysisContext.selfAvailability !inErrorLocation]
-//      if not isPublic then
-//        error inErrorLocation : " inaccessible property (due to its 'private' qualifier)"
-//      end
       if attributeType == boolType then
         outExpression = @propertyAccessExpressionForGeneration {
           !boolType
@@ -171,22 +168,22 @@ proc checkExpressionIsBoolean
           !"bool"
         }
       else
-        error inErrorLocation
+        error (inErrorLocation
         : "the '@"+ expressionType.definition.typeName.string + "' struct type defines an attribute named 'bool', but its type is not '@bool'"
-        spoil (outExpression)
+        spoil outExpression)
       end
     else
-      error inErrorLocation
+      error (inErrorLocation
       : "the '@"+ expressionType.definition.typeName.string + "' struct type does not define an attribute named 'bool'"
-      spoil (outExpression)
+      spoil outExpression)
     end
   else
     if let entry = expressionType.definition.getterMap @["bool"] then
       if entry.mReturnedType != boolType then
-        error inErrorLocation
-        : "the expression type is not @bool, it handles a 'bool' getter, but it does not return a '@bool' value" spoil (outExpression)
+        error (inErrorLocation
+        : "the expression type is not @bool, it handles a 'bool' getter, but it does not return a '@bool' value" spoil outExpression)
       elsif entry.mArgumentTypeList.count > 0 then
-        error inErrorLocation: "the expression type is not @bool, it handles a 'bool' getter that requires argument(s)" spoil (outExpression)
+        error (inErrorLocation: "the expression type is not @bool, it handles a 'bool' getter that requires argument(s)" spoil outExpression)
       else
         outExpression = @getterCallExpressionForGeneration {
           !boolType
@@ -201,14 +198,14 @@ proc checkExpressionIsBoolean
       end
     else
       if expressionType.definition.getterMap.count == 0 then
-        error inErrorLocation
+        error (inErrorLocation
         : "the expression type is not '@bool', but '@"+ expressionType.definition.typeName.string + "', and this type does not define the 'bool' getter"
-        spoil (outExpression)
+        spoil outExpression)
       else
-        error inErrorLocation
+        error (inErrorLocation
         : "the expression type is not '@bool', but '@"+ expressionType.definition.typeName.string + "', and this type does not define the 'bool' getter "
-        spoil (outExpression)
-        fixit { replace expressionType.definition.getterMap.keyList }
+        spoil outExpression
+        fixit replace expressionType.definition.getterMap.keyList)
       end
     end
   end
@@ -245,7 +242,7 @@ override method @grammarInstructionSyntaxDirectedTranslationDropResult  analyzeG
   ?!@stringlist unused ioAssignementList
   ?!@localVarManager unused ioVariableMap {
   if not inHasTranslateFeature then
-    error self.mLocation : "the ':>' construct requires the grammar to be declared with 'translate' feature"
+    error (self.mLocation : "the ':>' construct requires the grammar to be declared with 'translate' feature")
   end
 }
 
@@ -259,14 +256,14 @@ override method @grammarInstructionSyntaxDirectedTranslationResultInVar  analyze
   ?!@stringlist ioAssignementList
   ?!@localVarManager ioVariableMap {
   if not inHasTranslateFeature then
-    error self.mActualParameterName : "the ':>' construct requires the grammar to be declared with 'translate' feature"
+    error (self.mActualParameterName : "the ':>' construct requires the grammar to be declared with 'translate' feature")
   end
   [!?ioVariableMap searchForWriteAccess !self.mActualParameterName ?let @unifiedTypeMapEntry type ?let @string cppName ?*]
   let expectedType = inAnalysisContext.predefinedTypes.mStringType
   if expectedType != type then
-    error self.mActualParameterName
+    error (self.mActualParameterName
     : "the '" + self.mActualParameterName + "' parameter has the '@" + type.identifierRepresentation
-    + ", bit an '@" + expectedType.identifierRepresentation + "' parameter is required here"
+    + ", bit an '@" + expectedType.identifierRepresentation + "' parameter is required here")
   end
   ioAssignementList += !cppName + " = GGS_string (" + inSyntaxDirectedTranslationResultVarName + ") ;"
 }
@@ -281,16 +278,16 @@ override method @grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar 
   ?!@stringlist ioAssignementList
   ?!@localVarManager ioVariableMap {
   if not inHasTranslateFeature then
-    error self.mActualParameterName : "the ':>' construct requires the grammar to be declared with 'translate' feature"
+    error (self.mActualParameterName : "the ':>' construct requires the grammar to be declared with 'translate' feature")
   end
   let cppName = "var_" + self.mActualParameterName.string.identifierRepresentation + "_" + self.mActualParameterName.location.startLocationIndex
   let type = [ioTypeMap typeMapEntryForLKey !self.mActualParameterTypeName]
   [!?ioVariableMap insertInitializedLocalVariable !self.mActualParameterName !warnsIfNotMutated: true !type !cppName !cppName]
   let expectedType = inAnalysisContext.predefinedTypes.mStringType
   if expectedType != type then
-    error self.mActualParameterName
+    error (self.mActualParameterName
     : "the '" + self.mActualParameterName + "' parameter has the '@" + type.identifierRepresentation
-    + ", bit an '@" + expectedType.identifierRepresentation + "' parameter is required here"
+    + ", bit an '@" + expectedType.identifierRepresentation + "' parameter is required here")
   end
   ioAssignementList += !"GGS_string " + cppName + " (" + inSyntaxDirectedTranslationResultVarName + ") ;"
 }
@@ -305,16 +302,16 @@ override method @grammarInstructionSyntaxDirectedTranslationResultInDeclaredCons
   ?!@stringlist ioAssignementList
   ?!@localVarManager ioVariableMap {
   if not inHasTranslateFeature then
-    error self.mActualParameterName : "the ':>' construct requires the grammar to be declared with 'translate' feature"
+    error (self.mActualParameterName : "the ':>' construct requires the grammar to be declared with 'translate' feature")
   end
   let cppName = "var_" + self.mActualParameterName.string.identifierRepresentation + "_" + self.mActualParameterName.location.startLocationIndex
   let type = [ioTypeMap typeMapEntryForLKey !self.mActualParameterTypeName]
   [!?ioVariableMap insertInitializedLocalConstant !self.mActualParameterName !type !cppName !cppName]
   let expectedType = inAnalysisContext.predefinedTypes.mStringType
   if expectedType != type then
-    error self.mActualParameterName
+    error (self.mActualParameterName
     : "the '" + self.mActualParameterName + "' parameter has the '@" + type.identifierRepresentation
-    + ", bit an '@" + expectedType.identifierRepresentation + "' parameter is required here"
+    + ", bit an '@" + expectedType.identifierRepresentation + "' parameter is required here")
   end
   ioAssignementList += !"const GGS_string " + cppName + " (" + inSyntaxDirectedTranslationResultVarName + ") ;"
 }

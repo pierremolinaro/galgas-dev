@@ -174,12 +174,12 @@ override method @testDynamicClassInExpressionAST analyzeSemanticExpression
       found = t == expression.mResultType
     end
     if not found then
-      error self.mTypeName
-      :"the '@" + self.mTypeName + "' is not a descendant of the '@" + expression.mResultType.definition.typeName.string + "' type of the cast expression"
+      error (self.mTypeName
+      :"the '@" + self.mTypeName + "' is not a descendant of the '@" + expression.mResultType.definition.typeName.string + "' type of the cast expression")
     end
   else
-    error expression.mLocation: "expression should be a class instance: it is an @"
-     + expression.mResultType.definition.typeName.string + " instance"
+    error (expression.mLocation: "expression should be a class instance: it is an @"
+     + expression.mResultType.definition.typeName.string + " instance")
   end
 //--- Generate expression
   outExpression = @testDynamicClassInExpressionForGeneration {
@@ -232,14 +232,14 @@ override method @castInExpressionAST analyzeSemanticExpression
       found = t == expression.mResultType
     end
     if not found then
-      error self.mTypeName
+      error (self.mTypeName
       :"the '@" + self.mTypeName + "' is not a descendant of the '@"
-      + expression.mResultType.definition.typeName.string + "' type of the cast expression"
+      + expression.mResultType.definition.typeName.string + "' type of the cast expression")
     end
   elsif expression.mResultType.definition.typeName.string != "object" then
-    error expression.mLocation:
+    error (expression.mLocation:
       "cast expression should be a class instance or an @object instance: it is an @"
-     + expression.mResultType.definition.typeName.string + " instance"
+     + expression.mResultType.definition.typeName.string + " instance")
   end
 //--- Generate expression
   if expression.mResultType.definition.typeName.string == "object" then

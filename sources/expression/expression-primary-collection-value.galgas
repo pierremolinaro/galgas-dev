@@ -132,16 +132,16 @@ final class @collectionValueAST : @semanticExpressionAST {
     end
   //---
     if targetType == .null then
-      error self.mTypeName : "Cannot infer type" spoil (outExpression)
+      error (self.mTypeName : "Cannot infer type" spoil outExpression)
     elsif not targetType.definition.supportCollectionValue then
-      error self.mTypeName
+      error (self.mTypeName
       : "the @" + targetType.definition.typeName.string
-      + " type does not support collection value" spoil (outExpression)
+      + " type does not support collection value" spoil outExpression)
     else
       let initializerMap = targetType.definition.initializerMap
       let @functionSignature emptyArgumentList = @()
       if not [initializerMap hasKey !emptyArgumentList.initializerSignature] then
-        error self.mTypeName : "the @" + self.mTypeName + " has no @() initializer"
+        error (self.mTypeName : "the @" + self.mTypeName + " has no @() initializer")
       end
     //--- Usefull entity graph
       let nameForUsefulness = initializerNameForUsefulEntitiesGraph (

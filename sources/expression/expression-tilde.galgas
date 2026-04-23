@@ -96,10 +96,10 @@ final class @tildeExpressionAST : @semanticExpressionAST {
         !~ exp.mValue
       }
     elsif not [type.definition.features contains !.prefixTildeOperator] then
-      error self.mOperatorLocation
+      error (self.mOperatorLocation
       : "operand type is '@" + type.definition.typeName.string
       + "' and does not support the '~' operator"
-      spoil (outExpression)
+      spoil outExpression)
     else
     //--- Generate expression
       outExpression = @tildeExpressionForGeneration {

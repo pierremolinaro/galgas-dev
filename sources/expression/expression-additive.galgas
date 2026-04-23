@@ -232,9 +232,9 @@ override method @rightShiftExpressionAST analyzeSemanticExpression
        !left.mValue >> right.mValue.uint
      }
   elsif not [leftType.definition.features contains !.infixShiftOperator] then
-    error self.mOperatorLocation
+    error (self.mOperatorLocation
     : "left operand type is '@" + leftType.definition.typeName.string + "' and does not support a shift operator"
-    spoil (outExpression)
+    spoil outExpression)
   else
   //--- Generate expression
     outExpression = @binaryOperatorExpressionForGeneration {
@@ -304,9 +304,9 @@ override method @leftShiftExpressionAST analyzeSemanticExpression
        !left.mValue << right.mValue.uint
      }
   elsif not [leftType.definition.features contains !.infixShiftOperator] then
-    error self.mOperatorLocation
+    error (self.mOperatorLocation
     : "left operand type is '@" + leftType.definition.typeName.string + "' and does not support a shift operator"
-    spoil (outExpression)
+    spoil outExpression)
   else
   //--- Generate expression
     outExpression = @binaryOperatorExpressionForGeneration {

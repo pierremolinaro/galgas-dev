@@ -80,13 +80,13 @@ syntax galgas3ProgramDeclarations (galgasScanner3) {
   //--- Source file
     $?selector:$ ?let selector
     if selector.string != "sourceFilePath" then
-      error selector : "the selector should be '?sourceFilePath:'" fixit { replace "?sourceFilePath:" }
+      error (selector : "the selector should be '?sourceFilePath:'" fixit replace "?sourceFilePath:")
     end
     select
     or
       $@type$ ?let typeName
       if typeName.string != "lstring" then
-        error typeName : "the only type allowed here is '@lstring'"
+        error (typeName : "the only type allowed here is '@lstring'")
       end
     end
     let @bool isUnused
@@ -176,13 +176,13 @@ syntax galgas4ProgramDeclarations (galgasScanner4) {
   //--- Source file
     $?selector:$ ?let selector
     if selector.string != "sourceFilePath" then
-      error selector : "the selector should be '?sourceFilePath:'" fixit { replace "?sourceFilePath:" }
+      error (selector : "the selector should be '?sourceFilePath:'" fixit replace "?sourceFilePath:")
     end
     select
     or
       $@type$ ?let typeName
       if typeName.string != "lstring" then
-        error typeName : "the only type allowed here is '@lstring'"
+        error (typeName : "the only type allowed here is '@lstring'")
       end
     end
     let @bool isUnused

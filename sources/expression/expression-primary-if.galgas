@@ -160,13 +160,13 @@ override method @ifExpressionAST analyzeSemanticExpression
   ]
 //--- Check 'if' expression is boolean
   if if_expression.mResultType.definition.typeName.string != "bool" then
-    error self.mOperatorLocation
+    error (self.mOperatorLocation
     :"the test expression type is '@" + if_expression.mResultType.definition.typeName.string + "', it should be '@bool'"
-    spoil (outExpression)
+    spoil outExpression)
   elsif then_expression.mResultType != else_expression.mResultType then
-    error self.mOperatorLocation
+    error (self.mOperatorLocation
     :"operand expression types are '@" + then_expression.mResultType.definition.typeName.string + "' and '@" + else_expression.mResultType.definition.typeName.string + "': they should be the same"
-    spoil (outExpression)
+    spoil outExpression)
   else
   //--- Generate expression
     outExpression = @ifExpressionForGeneration {

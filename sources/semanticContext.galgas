@@ -505,7 +505,7 @@ proc addExtensions
         !"" // No Error message
       ]
       if not inAcceptSetters then
-        error lkey : "a class does not accept any setter; use method instead"
+        error (lkey : "a class does not accept any setter; use method instead")
       end
     end
   end
@@ -643,7 +643,7 @@ override method @filewrapperDeclarationAST enterDeclarationInSemanticContext
   var @wrapperExtensionMap binaryFileExtensionMap = @()
   for (mValue) in self.mFilewrapperBinaryFileExtensionList do
     if [textExtensionMap hasKey !mValue.string] then
-      error mValue:"the '" + mValue + "' extension is already used for text files"
+      error (mValue:"the '" + mValue + "' extension is already used for text files")
     else
     [!?binaryFileExtensionMap insertKey !mValue]
     end
@@ -658,8 +658,8 @@ override method @filewrapperDeclarationAST enterDeclarationInSemanticContext
     absoluteSourcePath = self.mSourceFileAbsolutePath.deletingLastPathComponent + "/" + self.mFilewrapperPath.string
   end
   if not absoluteSourcePath.directoryExists then
-    error self.mFilewrapperPath: "The '" + absoluteSourcePath + "' directory does not exist"
-    spoil (regularRootFileMap, wrapperDirectoryMap)
+    error (self.mFilewrapperPath: "The '" + absoluteSourcePath + "' directory does not exist"
+    spoil regularRootFileMap, wrapperDirectoryMap)
   else
   //--- Enumerate paths
     var @uint wrapperFileIndex = 0

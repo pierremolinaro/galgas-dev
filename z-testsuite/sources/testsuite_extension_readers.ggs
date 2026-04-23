@@ -30,7 +30,7 @@ proc testsuite_extension_readers() {
   let @string s = b.otherReader (!2, !"-")
   log s
   if false then
-    error b : "non displayed message"
+    error (b : "non displayed message")
   end
   let @uint a = 9
   println ("Carré de 9: " + a.carré + "")

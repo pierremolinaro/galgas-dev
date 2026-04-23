@@ -90,20 +90,20 @@ final class @getterCallExpressionAST : @semanticExpressionAST {
   //-------------------------------------- Search getter
     if let aGetter = receiverType.definition.getterMap @[self.mGetterName] then
       if aGetter.mGetterNameThatObsoletesInvokationName != "" then
-        error self.mGetterName : "obsolete getter" fixit {
+        error (self.mGetterName : "obsolete getter" fixit
           replace aGetter.mGetterNameThatObsoletesInvokationName
-        }
+        )
       end
       if [receiverType.definition.propertyMap hasKey !self.mGetterName.string]
         && (self.mActualArgumentList.count == 0) then
-        error self.mExpressionLocation : "use dot notation, instead of getter call"
+        error (self.mExpressionLocation : "use dot notation, instead of getter call")
       end
     //--- Analysis arguments
       if self.mActualArgumentList.count != aGetter.mArgumentTypeList.count then
-        error self.mGetterName
+        error (self.mGetterName
         : "calling the '" + self.mGetterName + "' getter of '@" + receiverType.definition.typeName.string + "' requires "
         + aGetter.mArgumentTypeList.count + " parameter(s), while this call has "
-        + self.mActualArgumentList.count + " parameter(s)" spoil (outExpression)
+        + self.mActualArgumentList.count + " parameter(s)" spoil outExpression)
       else
         var @semanticExpressionListForGeneration constructorEffectiveParameterList = @()
         for (mActualSelector mExpression mEndOfExpressionLocation) in self.mActualArgumentList,
@@ -119,7 +119,7 @@ final class @getterCallExpressionAST : @semanticExpressionAST {
           ]
           if mFormalSelector.string != mActualSelector.string then
             let @string s = "!" + if mFormalSelector.string != "" then mFormalSelector.string + ":" else "" end
-            error mActualSelector : "the selector should be '" + s + "'" fixit { replace s }
+            error (mActualSelector : "the selector should be '" + s + "'" fixit replace s)
           end
           checkAssignmentTypeWithImplicitGetterCall (!mFormalArgumentType !exp.mResultType !mEndOfExpressionLocation !?exp)
           constructorEffectiveParameterList += !exp
@@ -136,12 +136,12 @@ final class @getterCallExpressionAST : @semanticExpressionAST {
         }
 //        if inAnalysisContext.semanticContext.galgas4 || [option galgas_cli_options.errorOnOldStyleGetterCall value],
         if self.mActualArgumentList.count == 0 then
-          error self.mExpressionLocation : "getter with no argument, remove parenthesis" fixit { remove }
+          error (self.mExpressionLocation : "getter with no argument, remove parenthesis" fixit remove)
         end
       end
   //-------------------------------------- The getter does not exist, it is a property ?
     elsif self.mActualArgumentList.count == 0, [receiverType.definition.propertyMap hasKey !self.mGetterName] then
-      error self.mExpressionLocation : "use dot notation, instead of getter call" spoil (outExpression)
+      error (self.mExpressionLocation : "use dot notation, instead of getter call" spoil outExpression)
   //-------------------------------------- not found, old style search
     else
       var @uint matchingReaderCount = 0
@@ -173,27 +173,27 @@ final class @getterCallExpressionAST : @semanticExpressionAST {
           end
         end
         if matchingReaderCount == 0 then
-          error self.mGetterName
+          error (self.mGetterName
           : "the '@"+ receiverType.definition.typeName.string + "' struct type does not define the '" + self.mGetterName.string
           + "' getter, and none of its fields defines it"
-          spoil (getterFormalArgumentTypeList, hasCompilerArgument, returnedType, kind)
+          spoil getterFormalArgumentTypeList, hasCompilerArgument, returnedType, kind)
         elsif matchingReaderCount > 1 then
           var @string s = ""
           for (mValue) in fieldList
             do s += mValue
             between s += ", "
           end
-          error self.mGetterName
+          error (self.mGetterName
           : "the '@"+ receiverType.definition.typeName.string + "' struct type does not define the '" + self.mGetterName.string
           + "' getter, and several of its fields defines it:" + s + " (exactly one field should define it)"
-          spoil (getterFormalArgumentTypeList, hasCompilerArgument, returnedType, kind)
+          spoil getterFormalArgumentTypeList, hasCompilerArgument, returnedType, kind)
         end
       //--- Analysis arguments
         if self.mActualArgumentList.count != getterFormalArgumentTypeList.count then
-          error self.mGetterName
+          error (self.mGetterName
           : "calling the '" + self.mGetterName + "' getter of '@" + receiverType.definition.typeName.string + "' requires "
           + getterFormalArgumentTypeList.count.string + " parameter(s), while this call has "
-          + self.mActualArgumentList.count.string + " parameter(s)" spoil (outExpression)
+          + self.mActualArgumentList.count.string + " parameter(s)" spoil outExpression)
         else
           var @semanticExpressionListForGeneration constructorEffectiveParameterList = @()
           for (mActualSelector mExpression mEndOfExpressionLocation) in self.mActualArgumentList,
@@ -209,13 +209,13 @@ final class @getterCallExpressionAST : @semanticExpressionAST {
             ]
             if mFormalSelector.string != mActualSelector.string then
               let @string s = "!" + if mFormalSelector.string != "" then mFormalSelector.string + ":" else "" end
-              error mActualSelector : "the selector should be '" + s + "'" fixit { replace s }
+              error (mActualSelector : "the selector should be '" + s + "'" fixit replace s)
             end
             checkAssignmentTypeWithImplicitGetterCall (!mFormalArgumentType !exp.mResultType !mEndOfExpressionLocation !?exp)
             constructorEffectiveParameterList += !exp
           end
           if obsoletedByGetter != "" then
-            error self.mGetterName : "obsolete getter" fixit { replace obsoletedByGetter }
+            error (self.mGetterName : "obsolete getter" fixit replace obsoletedByGetter)
           end
           outExpression = @getterCallExpressionForGeneration {
             !returnedType
@@ -229,14 +229,14 @@ final class @getterCallExpressionAST : @semanticExpressionAST {
           }
         end
       elsif receiverType.definition.getterMap.count == 0 then
-        error self.mGetterName
+        error (self.mGetterName
         : "the '@"+ receiverType.definition.typeName.string + "' type does not define any getter"
-        spoil (outExpression)
+        spoil outExpression)
       else
-        error self.mGetterName
+        error (self.mGetterName
         : "the '@"+ receiverType.definition.typeName.string + "' type does not define the '" + self.mGetterName + "' getter "
-        spoil (outExpression)
-        fixit { replace receiverType.definition.getterMap.keyList }
+        spoil outExpression
+        fixit replace receiverType.definition.getterMap.keyList)
       end
     end
   }

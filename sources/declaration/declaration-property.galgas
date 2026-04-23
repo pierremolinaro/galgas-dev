@@ -74,7 +74,7 @@ syntax extension galgas3DeclarationsSyntax {
       $var$
     or
       $let$
-      error .here : "a weak property is mutable, and should be declared with 'var'"
+      error (.here : "a weak property is mutable, and should be declared with 'var'")
     end
     <type_definition_ggs3> !?ioDeclarations ?let propertyTypeName
     $identifier$ ?let propertyName
@@ -181,7 +181,7 @@ syntax extension galgas4DeclarationsSyntax {
       $var$
     or
       $let$
-      error .here : "a weak property is mutable, should be declared with 'var'"
+      error (.here : "a weak property is mutable, should be declared with 'var'")
     end
     <type_definition> !?ioDeclarations ?let propertyTypeName
     $identifier$ ?let propertyName

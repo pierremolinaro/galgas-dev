@@ -422,7 +422,7 @@ proc check_K_escapeCharacters ?let @lstring inString {  //--- Check escape seque
       if mValue.count > 0 then
         let @char c = [mValue characterAtIndex !0]
         if c != 'K' then
-          error inString: "only '%K' and '%%' escape sequences are allowed in this error message "
+          error (inString: "only '%K' and '%%' escape sequences are allowed in this error message ")
         end
       end
     end
@@ -439,7 +439,7 @@ proc check_K_L_escapeCharacters ?let @lstring inString {  //--- Check escape seq
       if mValue.count > 0 then
         let @char c = [mValue characterAtIndex !0]
         if (c != 'K') & (c != 'L') then
-          error inString: "only '%K', '%L' and '%%' escape sequences are allowed in this error message "
+          error (inString: "only '%K', '%L' and '%%' escape sequences are allowed in this error message ")
         end
       end
     end
@@ -466,7 +466,7 @@ override method @dictDeclarationAST semanticAnalysis
 //--- Check key is comparable
   let keyType = [ioTypeMap typeMapEntryForLKey !self.mKeyTypeName]
   if not [keyType.definition.features contains !.comparable] then
-    error self.mKeyTypeName : "the @" + self.mKeyTypeName + " type is not comparable"
+    error (self.mKeyTypeName : "the @" + self.mKeyTypeName + " type is not comparable")
   end
 //--- Useful entities graph
   let nameForUsefulness = typeNameForUsefulEntitiesGraph (!self.mDictTypeName)
@@ -510,7 +510,7 @@ override method @dictDeclarationAST semanticAnalysis
         m+= " " + s
       end
       m += "; theses names are reserved"
-      error mPropertyName: m
+      error (mPropertyName: m)
     end
     [!?attributeMap insertKey !mPropertyName !t]
   end

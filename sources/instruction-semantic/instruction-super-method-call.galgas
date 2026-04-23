@@ -112,13 +112,13 @@ final class @superMethodCallInstructionAST : @semanticInstructionAST {
     let @unifiedTypeMapEntry selfType
     switch inAnalysisContext.selfAvailability
     case none :
-      error self.mMethodName : "'super' is not available in this context" spoil (selfType)
+      error (self.mMethodName : "'super' is not available in this context" spoil selfType)
     case available (@unifiedTypeMapEntry type @selfMutability unused selfMutability) :
       selfType = type
     end
   //--- Check self type is a class
     if not selfType.definition.typeKind.isClassType then
-      error self.mMethodName : "self type is not a class"
+      error (self.mMethodName : "self type is not a class")
     end
   //--- Get type method signature
     [selfType.definition.instanceMethodMap searchKey
@@ -131,7 +131,7 @@ final class @superMethodCallInstructionAST : @semanticInstructionAST {
       ?let errorMessage
     ]
     if errorMessage != "" then
-      error self.mMethodName : errorMessage
+      error (self.mMethodName : errorMessage)
     end
   //--- Check effective parameters
     [self.mActualParameterList analyzeRoutineArguments

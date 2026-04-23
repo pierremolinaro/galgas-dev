@@ -123,9 +123,9 @@ final class @abstractExtensionSetterAST : @semanticDeclarationAST {
     let @unifiedTypeMapEntry selfType = [ioTypeMap typeMapEntryForLKey !self.mTypeName]
   //--- Check self type is an abstract class
     if not selfType.definition.typeKind.isClassType then
-      error self.mAbstractExtensionSetterName: "cannot declare a extension setter: '@" + selfType.definition.typeName.string + "' is not a class"
+      error (self.mAbstractExtensionSetterName: "cannot declare a extension setter: '@" + selfType.definition.typeName.string + "' is not a class")
     elsif selfType.definition.isConcrete then
-      error self.mAbstractExtensionSetterName: "cannot declare an abstract extension setter: '@" + selfType.definition.typeName.string + "' is not an abstract class"
+      error (self.mAbstractExtensionSetterName: "cannot declare an abstract extension setter: '@" + selfType.definition.typeName.string + "' is not an abstract class")
     end
   //--- Compute setter signature
     var formalParameterListForGeneration = @formalParameterListForGeneration ()

@@ -184,12 +184,13 @@ final class @terminalCheckInstructionAST : @syntaxInstructionAST {
     [inTerminalMap searchKey !self.mTerminalName ?let @lexicalSentValueList sentAttributeList]
   //---
     if self.mActualInputParameterList.count != sentAttributeList.count then
-      error self.mTerminalName
+      error (self.mTerminalName
       : "naming the '$" + self.mTerminalName + "$' terminal requires " + sentAttributeList.count.string
       + " input parameter" + if sentAttributeList.count > 1 then "s" else "" end
       + ", but this instruction names "
       + self.mActualInputParameterList.count.string + " input parameter"
       + if self.mActualInputParameterList.count > 1 then "s" else "" end
+      )
     end
   //---
     var terminalCheckAssignementList = @terminalCheckAssignementList ()
@@ -203,14 +204,14 @@ final class @terminalCheckInstructionAST : @syntaxInstructionAST {
         !?ioVariableMap
       ]
       if mLexicalFormalSelector.string != mActualSelector.string then
-        error mActualSelector : "the actual selector should be '?" + mLexicalFormalSelector + if mLexicalFormalSelector.string != "" then ":" else "" end + "'"
+        error (mActualSelector : "the actual selector should be '?" + mLexicalFormalSelector + if mLexicalFormalSelector.string != "" then ":" else "" end + "'")
         warning mLexicalFormalSelector : "the formal selector is declared here"
       end
     end
   //---
     for (mValue0 *) in self.mIndexingKeyList do
       if not [inIndexNameSet hasKey !mValue0.string] then
-        error mValue0 : "the '" + mValue0 + "' indexing name is not declared by the lexique" fixit { replace inIndexNameSet }
+        error (mValue0 : "the '" + mValue0 + "' indexing name is not declared by the lexique" fixit replace inIndexNameSet)
       end
     end
   //--- Check syntax directed translation destination variable
@@ -322,20 +323,20 @@ override getter @terminalCheckInstructionForGeneration compareInstructionSyntaxS
   if let si = inTestedInstruction as @terminalCheckInstructionForGeneration then
     result = self.mTerminalName.string == si.mTerminalName.string
     if not result then
-      error si.mInstructionLocation
-      :"syntax signature error; the expected syntax instruction here is the '$" + self.mTerminalName + "$' terminal check"
+      error (si.mInstructionLocation
+      :"syntax signature error; the expected syntax instruction here is the '$" + self.mTerminalName + "$' terminal check")
     end
   elsif let si = inTestedInstruction as @syntaxInstructionForGeneration then
-    error si.mInstructionLocation
-      :"syntax signature error; the expected syntax instruction here is the '$" + self.mTerminalName + "$' terminal check"
+    error (si.mInstructionLocation
+      :"syntax signature error; the expected syntax instruction here is the '$" + self.mTerminalName + "$' terminal check")
     result = false
   else
-    error self.mInstructionLocation : "internal error"
+    error (self.mInstructionLocation : "internal error")
     result = false
   end
   if not result then
-    error self.mInstructionLocation
-    :"reference syntax instruction is here"
+    error (self.mInstructionLocation
+    :"reference syntax instruction is here")
   end
 }
 

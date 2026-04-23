@@ -259,15 +259,15 @@ private proc analyzeInitializerInvocation ?let @lstring inUsefulnessCallerEntity
     outInstanciedType = [ioTypeMap typeMapEntryForLKey !inTypeName]
   end
   if outInstanciedType.isNull then
-    error inTypeName
+    error (inTypeName
     : "cannot infer type"
-    spoil (outInstanciedType, outConstructorEffectiveParameterList, outInitializerName)
+    spoil outInstanciedType, outConstructorEffectiveParameterList, outInitializerName)
   else
     let instanciedTypeDefinition = outInstanciedType.definition
     if not instanciedTypeDefinition.isConcrete then
-      error inTypeName
+      error (inTypeName
       : "cannot instanciate an abstract class"
-      spoil (outInstanciedType, outConstructorEffectiveParameterList, outInitializerName)
+      spoil outInstanciedType, outConstructorEffectiveParameterList, outInitializerName)
     else
     //--- Usefull entity graph
       let nameForUsefulness = initializerNameForUsefulEntitiesGraph (
@@ -293,9 +293,9 @@ private proc analyzeInitializerInvocation ?let @lstring inUsefulnessCallerEntity
           s += ","
         end
         s += ")"
-        error outInitializerName :
+        error (outInitializerName :
         "the " + s + " initializer is not declared"
-        spoil (formalSignature)
+        spoil formalSignature)
       end
     //--- Analysis arguments
       outConstructorEffectiveParameterList = @()
@@ -322,8 +322,8 @@ private proc analyzeInitializerInvocation ?let @lstring inUsefulnessCallerEntity
             then formalArg.mFormalSelector.string + ":"
             else ""
           end
-          error effectiveParameter.mActualSelector
-          : "the selector should be '" + s + "'" fixit { replace s }
+          error (effectiveParameter.mActualSelector
+          : "the selector should be '" + s + "'" fixit replace s )
         end
       end
     end

@@ -281,7 +281,7 @@ final class @structDeclarationAST : @semanticDeclarationAST {
     let structNameForUsefulness = typeNameForUsefulEntitiesGraph (!self.structTypeName)
   //---
     if self.mStructurePropertyListAST.count == 0 then
-      error self.structTypeName: "a structure cannot be empty: it must have at least one property"
+      error (self.structTypeName: "a structure cannot be empty: it must have at least one property")
     end
     var @typedPropertyList typedPropertyList = @()
     var @typedPropertyList constructorArgumentList = @()
@@ -296,19 +296,16 @@ final class @structDeclarationAST : @semanticDeclarationAST {
           m += " " + s
         end
         m += "; theses names are reserved"
-        error property.name : m
+        error (property.name : m)
       end
       if property.mutability.isWeakProperty then
         switch t.definition.unwrappedType
         case null :
-          error property.name : "the weak property type should be an optional class"
+          error (property.name : "the weak property type should be an optional class")
         case element (aWeakType) :
           if let aType = aWeakType, aType.definition.typeKind == .classType then
-//            if not ref.isReference then
-//              error property.name : "the weak property type should be an optional refclass"
-//            end
           else
-            error property.name : "the weak property type should be an optional class"
+            error (property.name : "the weak property type should be an optional class")
           end
         end
       end
@@ -337,13 +334,13 @@ final class @structDeclarationAST : @semanticDeclarationAST {
         if (not [propertyFeatures contains !.equatable])
            & not [propertyFeatures contains !.comparable]
            & not [propertyFeatures contains !.referenceEquatable] then
-          error property.name
-          : "the structure is not equatable, because '" + property.name + "' is not"
+          error (property.name
+          : "the structure is not equatable, because '" + property.name + "' is not")
         end
       case comparable :
         if not [t.definition.features contains !.comparable] then
-          error property.name
-          : "the structure is not comparable, because '" + property.name + "' is not"
+          error (property.name
+          : "the structure is not comparable, because '" + property.name + "' is not")
         end
       end  
     end

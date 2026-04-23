@@ -89,7 +89,7 @@ proc compileSemanticDeclarationsGalgas ?!@lstringlist ioUsefulnessRootEntities
   end
 //----- Check there is no undefined types
   for entry in outTypeMap.unsolvedEntryList do
-    error entry.mValue : "the '@" + entry.mValue + "' type is undefined"
+    error (entry.mValue : "the '@" + entry.mValue + "' type is undefined")
   end
 //----- Semantic Analysis
   outSemanticDeclarationSortedListForGeneration = @()
@@ -157,11 +157,11 @@ private proc buildGalgasSemanticContext ?let @galgasDeclarationAST inDeclaration
 //---
   if semanticTypePrecedenceGraph.undefinedNodeCount > 0 then
     for node in semanticTypePrecedenceGraph.undefinedNodeReferenceList do
-      error node.mValue : "the '" + node.mValue + "' type is not defined"
+      error (node.mValue : "the '" + node.mValue + "' type is not defined")
     end
-    error inEndOfProjectSourceFile
+    error (inEndOfProjectSourceFile
       : "semantic analysis not performed, due to undefined type error(s)"
-      spoil (outSemanticContext, outSortedSemanticDeclarationListAST, outTypeMap)
+      spoil outSemanticContext, outSortedSemanticDeclarationListAST, outTypeMap)
   else
     [semanticTypePrecedenceGraph topologicalSort
       ?outSortedSemanticDeclarationListAST
@@ -174,7 +174,7 @@ private proc buildGalgasSemanticContext ?let @galgasDeclarationAST inDeclaration
       for declaration in unsortedSemanticDeclarationListAST do
         s += "\n-  " + declaration.mSemanticDeclaration.keyRepresentation
       end
-      error inEndOfProjectSourceFile : s spoil (outSemanticContext, outTypeMap)
+      error (inEndOfProjectSourceFile : s spoil outSemanticContext, outTypeMap)
     else
     //--- Add extension override
       outSortedSemanticDeclarationListAST += extensionOverrideDefinitionList
@@ -328,17 +328,17 @@ private proc generateManyHeaders
       switch declaration.mDeclaration.headerKind
       case noHeader :
         if headerIncludes1 != "" then
-          error "".nowhere
-          : "'noHeader' setting for the '" + declaration.infoMessage + "' declaration, and 'headerIncludes1' string is not empty"
+          error ("".nowhere
+          : "'noHeader' setting for the '" + declaration.infoMessage + "' declaration, and 'headerIncludes1' string is not empty")
         end
         if headerIncludes2 != "" then
-          error "".nowhere
-          : "'noHeader' setting for the '" + declaration.infoMessage + "' declaration, and 'headerIncludes2' string is not empty"
+          error ("".nowhere
+          : "'noHeader' setting for the '" + declaration.infoMessage + "' declaration, and 'headerIncludes2' string is not empty")
         end
       case oneHeader :
         if headerIncludes1 == "" then
-          error "".nowhere
-          : "'oneHeader' setting for the '" + declaration.infoMessage + "' declaration, and 'headerIncludes1' string is empty"
+          error ("".nowhere
+          : "'oneHeader' setting for the '" + declaration.infoMessage + "' declaration, and 'headerIncludes1' string is empty")
         end
         if headerIncludes2 != "" then
           warning "".nowhere

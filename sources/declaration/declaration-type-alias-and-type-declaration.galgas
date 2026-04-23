@@ -132,7 +132,7 @@ syntax extension galgas3DeclarationsSyntax {
     <type_definition_ggs3> !?ioDeclarations ?outTypeName
     $:$
     <type_definition_ggs3> !?ioDeclarations ?*
-    error .here : "Not handled yet"
+    error (.here : "Not handled yet")
     $]$
   }
 
@@ -144,7 +144,7 @@ syntax extension galgas3DeclarationsSyntax {
     $<$
     repeat
       <type_definition_ggs3> !?ioDeclarations ?let t
-      error t : "not handled yet"
+      error (t : "not handled yet")
     while
       $,$
     end
@@ -171,7 +171,7 @@ syntax extension galgas3DeclarationsSyntax {
     while
       $,$
     end
-    error .here : "Not handled yet"
+    error (.here : "Not handled yet")
     $)$
   }
 
@@ -211,7 +211,7 @@ syntax extension galgas4DeclarationsSyntax {
       $<$
       repeat
         <type_definition> !?ioDeclarations ?let t
-        error t : "not handled yet"
+        error (t : "not handled yet")
       while
         $,$
       end
@@ -255,7 +255,7 @@ syntax extension galgas4DeclarationsSyntax {
     or
       $:$
       <type_definition> !?ioDeclarations ?*
-      error .here : "Not handled yet"
+      error (.here : "Not handled yet")
       end
     $]$
   }
@@ -270,7 +270,7 @@ syntax extension galgas4DeclarationsSyntax {
     while
       $,$
     end
-    error .here : "Not handled yet"
+    error (.here : "Not handled yet")
     $)$
   }
 

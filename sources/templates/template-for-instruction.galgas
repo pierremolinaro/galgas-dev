@@ -53,7 +53,7 @@ syntax extension templateSyntax {
     $*$
     var n = count.bigint.uint
     if n == 0 then
-      error count: "this value should be > 0"
+      error (count: "this value should be > 0")
     end
     loop (n) while n > 0 do
       ioElementList += !"".nowhere
@@ -116,8 +116,8 @@ syntax extension templateSyntax {
       $:$
       let startLocation = @location.here
       $identifier$ ?let @lstring prefixString
-      error [prefixString.location union !startLocation]
-      : "useless prefix" fixit { replace "" }
+      error ([prefixString.location union !startLocation]
+      : "useless prefix" fixit replace "")
     end
   }
 
@@ -226,7 +226,7 @@ override method @templateInstructionForeachAST templateInstructionAnalysis
 //--- Check expression is enumerable (empty List if cannot be enumerated)
   let @enumerationDescriptorList enumerationDescriptor = expression.mResultType.definition.enumerationDescriptorList
   if enumerationDescriptor.count == 0 then
-    error expression.mLocation : "expression of '@" + expression.mResultType.definition.typeName.string + "' cannot be enumerated"
+    error (expression.mLocation : "expression of '@" + expression.mResultType.definition.typeName.string + "' cannot be enumerated")
   end
 //--- Before instructions
   var beforeInstructionList = @templateInstructionListForGeneration ()
@@ -247,9 +247,9 @@ override method @templateInstructionForeachAST templateInstructionAnalysis
     [!?doVariableMap insertKey !self.mIndexIdentifier !inAnalysisContext.mPredefinedTypes.mUIntType !cppIndexVarName]
   end
   if self.mEnumeration.count != enumerationDescriptor.count then
-    error self.mEndOfProperties
+    error (self.mEndOfProperties
     : enumerationDescriptor.count.string + " variables are required here ("
-    + self.mEnumeration.count + " provided)"
+    + self.mEnumeration.count + " provided)")
   else
     for (enumeratedType enumerationName) in enumerationDescriptor,
         (optionalConstantName) in self.mEnumeration do

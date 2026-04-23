@@ -265,10 +265,10 @@ final class @classDeclarationAST : @semanticDeclarationAST {
       generateHeaderInSeparateFile = superTypeDefinition.generateHeaderInSeparateFile
     //---
       if not superTypeDefinition.typeKind.isClassType then
-        error self.mSuperClassName : "the @" + self.mSuperClassName + " should be a class type"
+        error (self.mSuperClassName : "the @" + self.mSuperClassName + " should be a class type")
       end
       if superTypeDefinition.isFinal then
-        error self.mSuperClassName : "cannot inherit from the @" + self.mSuperClassName + " final class"
+        error (self.mSuperClassName : "cannot inherit from the @" + self.mSuperClassName + " final class")
       end
     //--- Mark all setters as inherited
       setterMap = @()
@@ -339,8 +339,8 @@ final class @classDeclarationAST : @semanticDeclarationAST {
         !attributeTypeIndex
       ]
       if [getterMap hasKey !property.name.string] then
-        error property.name
-        : "'" + property.name + "' is the name of a prefefined or a user defined getter"
+        error (property.name
+        : "'" + property.name + "' is the name of a prefefined or a user defined getter")
       end
     end
   //--- Typed attribute list
@@ -479,7 +479,7 @@ final class @classDeclarationAST : @semanticDeclarationAST {
     else
       allAttributeList = superClassEntry.definition.allTypedPropertyList
       if self.mGenerateInSeparateFile then
-        error self.mClassTypeName : "a class that has a super class does not accept any feature"
+        error (self.mClassTypeName : "a class that has a super class does not accept any feature")
       end
     end
     var @typedPropertyList synthetizedInheritedInitializerArgumentList = @()

@@ -30,7 +30,7 @@ rule <start_symbol>
   ?let @bool inPrintDuringParsing {
   let @string s = @string. retrieveAndResetTemplateString
   if s.count > 0 then
-    error @location.here: "No character is allowed before XML header"
+    error (@location.here: "No character is allowed before XML header")
   end
 //--- XML header
   $<?$
@@ -170,7 +170,7 @@ rule <element>
     $</$
     $name$ ?let @lstring closingName
     if closingName.string != name.string then
-      error closingName:"incorrect closing tag </" + closingName + "> instead of </" + name + ">"
+      error (closingName:"incorrect closing tag </" + closingName + "> instead of </" + name + ">")
     end
     $>$
   end

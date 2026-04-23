@@ -99,7 +99,7 @@ final class @procCallInstructionAST : @semanticInstructionAST {
     if isFilePrivate then
       let procDeclarationLocation = [inAnalysisContext.semanticContext.routineMap locationForKey !self.mRoutineName.string]
       if self.mRoutineName.location.file != procDeclarationLocation.file then
-        error self.mRoutineName : "this proc is internal to '" + procDeclarationLocation.file + "' file"
+        error (self.mRoutineName : "this proc is internal to '" + procDeclarationLocation.file + "' file")
       end
     end
   //--- Check effective parameters

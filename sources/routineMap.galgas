@@ -76,7 +76,7 @@ struct @routineMap {
     end
     let routineArguments = routineArgumentFromFormalParameters (!inRoutineSignature)
     if [routineArgumentMap hasKey !routineArguments] then
-      error inRoutineName : "duplicated declaration of the " + inRoutineName + routineArguments + " routine"
+      error (inRoutineName : "duplicated declaration of the " + inRoutineName + routineArguments + " routine")
     else
      [!?routineArgumentMap insertKey
        !@{!routineArguments !inRoutineName.location}
@@ -118,22 +118,22 @@ struct @routineMap {
         [acceptableParameterList first ?outRoutineSignature ?outIsFilePrivate]
         outRoutineMangledName = routineMangledName (!inRoutineName !outRoutineSignature)
       elsif acceptableParameterList.count == 0 then
-        error inRoutineName
+        error (inRoutineName
         : "cannot find any procedure with compatible formal argument list"
-        spoil (outRoutineSignature, outIsFilePrivate, outRoutineMangledName)
+        spoil outRoutineSignature, outIsFilePrivate, outRoutineMangledName)
       else
         var s = "ambiguity, several procedures with compatible formal argument list:"
         for element in acceptableParameterList do
           s += "\n  - " + routineArgumentFromFormalParameters (!element.mRoutineSignature)
         end
-        error inRoutineName
+        error (inRoutineName
         : s
-        spoil (outRoutineSignature, outIsFilePrivate, outRoutineMangledName)
+        spoil outRoutineSignature, outIsFilePrivate, outRoutineMangledName)
       end
     else
-      error inRoutineName
+      error (inRoutineName
       : "the '" + inRoutineName + "' routine is not declared"
-      spoil (outRoutineSignature, outIsFilePrivate, outRoutineMangledName)
+      spoil outRoutineSignature, outIsFilePrivate, outRoutineMangledName)
     end
   }
 

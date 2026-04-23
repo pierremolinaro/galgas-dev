@@ -260,11 +260,11 @@ override getter @repeatInstructionForGeneration compareInstructionSyntaxSignatur
   if let si = inTestedInstruction as @repeatInstructionForGeneration then
     result = compareSyntaxSignature (!self.m_repeated_instructionList !si.m_repeated_instructionList !si.mEndOfRepeatedInstructions)
     if result & (self.mListOfSemanticInstructionListForGeneration.count != si.mListOfSemanticInstructionListForGeneration.count) then
-      error si.mInstructionLocation
+      error (si.mInstructionLocation
         :"syntax signature error; the reference 'repeat' instruction has "
         + self.mListOfSemanticInstructionListForGeneration.count.string
         + " 'while' branche(s), but this instruction has "
-        + si.mListOfSemanticInstructionListForGeneration.count.string
+        + si.mListOfSemanticInstructionListForGeneration.count.string)
       result = false
     end
     for (ref_mInstructionList *) in self.mListOfSemanticInstructionListForGeneration, (test_mInstructionList test_mEndOfInstructionList) in si.mListOfSemanticInstructionListForGeneration while result do
@@ -272,16 +272,16 @@ override getter @repeatInstructionForGeneration compareInstructionSyntaxSignatur
     end
   elsif let si = inTestedInstruction as @syntaxInstructionForGeneration then
 //  case >= @syntaxInstructionForGeneration si :
-    error si.mInstructionLocation
-      :"syntax signature error; the expected syntax instruction here is a 'repeat' instruction"
+    error (si.mInstructionLocation
+      :"syntax signature error; the expected syntax instruction here is a 'repeat' instruction")
     result = false
   else
-    error self.mInstructionLocation : "internal error"
+    error (self.mInstructionLocation : "internal error")
     result = false
   end
   if not result then
-    error self.mInstructionLocation
-    :"reference syntax instruction is here"
+    error (self.mInstructionLocation
+    :"reference syntax instruction is here")
   end
 }
 

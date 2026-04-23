@@ -86,7 +86,7 @@ syntax extension galgas3InstructionsSyntax {
     $*$
     var n = count.bigint.uint
     if n == 0 then
-      error count: "this value should be > 0"
+      error (count: "this value should be > 0")
     end
     loop (n) while n > 0 do
       ioElementList += !"".nowhere !true !"".nowhere
@@ -267,7 +267,7 @@ syntax extension galgas4InstructionsSyntax {
     $*$
     var n = count.bigint.uint
     if n == 0 then
-      error count: "this value should be > 0"
+      error (count: "this value should be > 0")
     end
     loop (n) while n > 0 do
       ioElementList += !"".nowhere !true !"".nowhere
@@ -507,7 +507,7 @@ override method @enumeratedCollectionCstListInExpAST analyzeEnumeration (
   outEnumeratorCppName = "enumerator_" + self.mEndOfEnumerationExpression.startLocationIndex
   let enumerationDescriptorList = outEnumerationExpression.mResultType.definition.enumerationDescriptorList
   if enumerationDescriptorList.count == 0 then
-    error self.mEndOfEnumerationExpression : "an '@" + outEnumerationExpression.mResultType.definition.typeName.string + "' object cannot be enumerated"
+    error (self.mEndOfEnumerationExpression : "an '@" + outEnumerationExpression.mResultType.definition.typeName.string + "' object cannot be enumerated")
   else
 //--- Arguments
     if self.mElementList.count == 0 then
@@ -521,25 +521,27 @@ override method @enumeratedCollectionCstListInExpAST analyzeEnumeration (
        ]
       end
     elsif self.mElementList.count != enumerationDescriptorList.count then
-      error self.mEndOfEnumerationExpression
+      error (self.mEndOfEnumerationExpression
       :"the '@" + outEnumerationExpression.mResultType.definition.typeName.string + "' type requires "
       + enumerationDescriptorList.count.string + " argument"
       + if (enumerationDescriptorList.count > 1) then "s" else "" end
       + " for enumeration: this list provides "
       + self.mElementList.count.string
+      )
     else
       if enumerationDescriptorList.count > self.mElementList.count then
         let missingArgumentCount = enumerationDescriptorList.count - self.mElementList.count
-        error self.mEndOfEnumerationExpression
+        error (self.mEndOfEnumerationExpression
         : "enumerated object has " + missingArgumentCount + "more properties"
-        fixit { replace if missingArgumentCount == 1 then "*" else " " + missingArgumentCount + "*" end }
+        fixit replace if missingArgumentCount == 1 then "*" else " " + missingArgumentCount + "*" end
+        )
       end
       for (mOptionalTypeName mDeclaredAsUnused mOptionalConstantName) in self.mElementList, (mEnumeratedType mEnumerationName) in enumerationDescriptorList do
         if mOptionalConstantName.string != "" then // Empty string if joker
           if mOptionalTypeName.string != "" then
             let foundType = [ioTypeMap typeMapEntryForLKey !mOptionalTypeName]
             if foundType != mEnumeratedType then
-              error mOptionalTypeName : "incorrect '@" + foundType.definition.typeName.string + "' type: '@" + mEnumeratedType.definition.typeName.string + "' type required here"
+              error (mOptionalTypeName : "incorrect '@" + foundType.definition.typeName.string + "' type: '@" + mEnumeratedType.definition.typeName.string + "' type required here")
             end
           end
           ioLocalConstantListForDoBranch +=
@@ -576,7 +578,7 @@ override method @enumeratedCollectionVarInExpAST analyzeEnumeration (?let @lstri
   outEnumeratorCppName = "enumerator_" + self.mEndOfEnumerationExpression.startLocationIndex
   let enumeratedElementType = outEnumerationExpression.mResultType.definition.typeForEnumeratedElement
   if enumeratedElementType.isNull then
-    error self.mEndOfEnumerationExpression : "an '@" + outEnumerationExpression.mResultType.definition.typeName.string + "' object cannot be enumerated"
+    error (self.mEndOfEnumerationExpression : "an '@" + outEnumerationExpression.mResultType.definition.typeName.string + "' object cannot be enumerated")
   elsif self.mEnumerationVariable.string != "" then
     ioLocalConstantListForDoBranch += !enumeratedElementType !self.mEnumerationVariable !false !outEnumeratorCppName + ".current (HERE)"
   end
@@ -584,7 +586,7 @@ override method @enumeratedCollectionVarInExpAST analyzeEnumeration (?let @lstri
   if self.mEnumerationOptionalTypeName.string != "" then
     let explicitType = [ioTypeMap typeMapEntryForLKey !self.mEnumerationOptionalTypeName]
     if enumeratedElementType.definition.typeName.string != explicitType.definition.typeName.string then
-      error self.mEnumerationOptionalTypeName: "the '@" + enumeratedElementType.definition.typeName.string + "' type is expected here"
+      error (self.mEnumerationOptionalTypeName: "the '@" + enumeratedElementType.definition.typeName.string + "' type is expected here")
     end
   end
 //---

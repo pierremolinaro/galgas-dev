@@ -135,7 +135,7 @@ syntax extension galgas4InstructionsSyntax {
           !actualParameterList
         }
       else
-        error instructionLocation : "invalid setter call" spoil (outInstruction)
+        error (instructionLocation : "invalid setter call" spoil outInstruction)
       end
     or
       var receiverStructProperties = @lstringlist ()
@@ -200,20 +200,20 @@ override method @setterCallInstructionAST analyzeSemanticInstruction (
     //--- Check self is not inkoed before full initialization
       if selfAvailability.type.definition.typeKind == .classType then
       elsif not selfAvailability.selfMutability.selfIsMutable then
-        error self.mSetterName : "'self' not mutable in this context"
+        error (self.mSetterName : "'self' not mutable in this context")
       end
       let propertyMap = selfAvailability.type.definition.propertyMap
       [propertyMap searchKey !self.mReceiverName ?* ?let isConstant ?receiverType]
       if isConstant then
-        error self.mReceiverName: "a constant property cannot be modified"
+        error (self.mReceiverName: "a constant property cannot be modified")
       end
       nameForCheckingFormalParameterUsing = inAnalysisContext.selfObjectCppName
       targetVariableCppName = inAnalysisContext.selfObjectCppPrefixForAccessingProperty
         + "mProperty_"+ self.mReceiverName.string.identifierRepresentation
     else
-      error self.mSetterName
+      error (self.mSetterName
       : "'self' not available in this context"
-      spoil (receiverType, targetVariableCppName, nameForCheckingFormalParameterUsing)
+      spoil receiverType, targetVariableCppName, nameForCheckingFormalParameterUsing)
     end
   else
     [!?ioVariableMap searchForReadWriteAccess
@@ -229,14 +229,14 @@ override method @setterCallInstructionAST analyzeSemanticInstruction (
   for (value) in self.mReceiverStructProperties while ok do
     ok = receiverType.definition.typeKind.isStructType
     if not ok then
-      error errorLocation : "a structure is required for '.' access"
+      error (errorLocation : "a structure is required for '.' access")
     else
       let propertyMap = receiverType.definition.propertyMap
       [propertyMap searchKey !value ?let accessControl ?let isConstant ?receiverType]
       [accessControl checkSetAccess !inAnalysisContext.selfAvailability !value.location]
       errorLocation = value.location
       if isConstant then
-        error value : "a constant property cannot be modified"
+        error (value : "a constant property cannot be modified")
       end
     end
   end
@@ -258,7 +258,7 @@ override method @setterCallInstructionAST analyzeSemanticInstruction (
     ?let setterErrorMessage
   ]
   if setterErrorMessage != "" then
-    error self.mSetterName : setterErrorMessage
+    error (self.mSetterName : setterErrorMessage)
   end
 //--- Check effective parameters
   [self.mActualParameterList analyzeRoutineArguments
@@ -317,7 +317,7 @@ override method @selfSetterCallInstructionAST analyzeSemanticInstruction (
 //--- Analyze "self", as receiver expression
   if let selfAvailable = inAnalysisContext.selfAvailability.getAvailable then
     if not selfAvailable.selfMutability.selfIsMutable then
-      error self.mSetterName : "'self' not mutable in this context"
+      error (self.mSetterName : "'self' not mutable in this context")
     end
   //--- Check self is not invoked before full initialization
     [ioVariableMap checkSelfObjectIsFullyInitialized !self.mSetterName.location]
@@ -346,7 +346,7 @@ override method @selfSetterCallInstructionAST analyzeSemanticInstruction (
       !hasCompilerArgument
     }
   else
-    error self.mSetterName : "'self' not available in this context"
+    error (self.mSetterName : "'self' not available in this context")
   end
 }
 

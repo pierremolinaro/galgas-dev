@@ -73,19 +73,19 @@ syntax extension galgas3LexiqueComponentSyntax {
     while
       $%nonAtomicSelection$
       if nonAtomicSelection then
-        error .here : "duplicated %nonAtomicSelection attribute"
+        error (.here : "duplicated %nonAtomicSelection attribute")
       end
       nonAtomicSelection = true
     while
       $%templateEndMark$
       if templateEndMark then
-        error .here : "duplicated %templateEndMark attribute"
+        error (.here : "duplicated %templateEndMark attribute")
       end
       templateEndMark = true
     while
       $%preserved$
       if preserved then
-        error .here : "duplicated %preserved attribute"
+        error (.here : "duplicated %preserved attribute")
       end
       preserved = true
     end
@@ -168,19 +168,19 @@ syntax extension galgas4LexiqueComponentSyntax {
     while
       $%nonAtomicSelection$
       if nonAtomicSelection then
-        error .here : "duplicated %nonAtomicSelection attribute"
+        error (.here : "duplicated %nonAtomicSelection attribute")
       end
       nonAtomicSelection = true
     while
       $%templateEndMark$
       if templateEndMark then
-        error .here : "duplicated %templateEndMark attribute"
+        error (.here : "duplicated %templateEndMark attribute")
       end
       templateEndMark = true
     while
       $%preserved$
       if preserved then
-        error .here : "duplicated %preserved attribute"
+        error (.here : "duplicated %preserved attribute")
       end
       preserved = true
     end
@@ -262,7 +262,7 @@ override method @templateLexiqueComponentAST enterDeclarationInSemanticContext
      ?let lexicalListDeclarationListAST
   ]
   if superLexiqueIsTemplate then
-    error self.mLexiqueSuperComponentName : "cannot inherit from a template lexique"
+    error (self.mLexiqueSuperComponentName : "cannot inherit from a template lexique")
   end
 //---
   [!?ioSemanticContext.mLexiqueComponentMapForSemanticAnalysis insertKey

@@ -31,16 +31,17 @@ proc checkMethodSignatures
   ?let @location inReferenceLocation
 {
   if inTestedSignature.count != inReferenceSignature.count then
-    error inErrorLocation:"this method declares " + inTestedSignature.count.string
-    + " formal parameter(s), but overriden method declares " + inReferenceSignature.count.string
-    error inReferenceLocation:"overriden method is declared here"
+    error (inErrorLocation:"this method declares " + inTestedSignature.count.string
+    + " formal parameter(s), but overriden method declares " + inReferenceSignature.count.string)
+    error (inReferenceLocation:"overriden method is declared here")
   else
     for (ref_mFormalSelector ref_mFormalArgumentType ref_mFormalArgumentPassingMode *) in inReferenceSignature, (mFormalSelector mFormalArgumentPassingMode mFormalArgumentType mFormalArgumentName *) in inTestedSignature do
       if ref_mFormalArgumentPassingMode != mFormalArgumentPassingMode then
-        error mFormalArgumentName : "the '" + mFormalArgumentName + "' formal parameter is declared as "
+        error (mFormalArgumentName : "the '" + mFormalArgumentName + "' formal parameter is declared as "
         + mFormalArgumentPassingMode.formalArgumentMessage + ", but overriden method declares it as "
         + ref_mFormalArgumentPassingMode.formalArgumentMessage
-        error inReferenceLocation:"overriden method is declared here"
+        )
+        error (inReferenceLocation:"overriden method is declared here")
       end
       if mFormalSelector.string != ref_mFormalSelector.string then
         var @string s
@@ -53,13 +54,13 @@ proc checkMethodSignatures
           s = "!"
         end
         s += if ref_mFormalSelector.string != "" then ref_mFormalSelector.string + ":" else "" end
-        error mFormalSelector : "the selector should be '" + s + "'" fixit { replace s }
+        error (mFormalSelector : "the selector should be '" + s + "'" fixit replace s)
       end
       if mFormalArgumentType.definition.typeName.string != ref_mFormalArgumentType.definition.typeName.string then
-        error mFormalArgumentName : "the '" + mFormalArgumentName + "' formal parameter has the '@"
+        error (mFormalArgumentName : "the '" + mFormalArgumentName + "' formal parameter has the '@"
         + mFormalArgumentType.definition.typeName.string + "' type, but overriden method declares with the '@"
-        + ref_mFormalArgumentType.definition.typeName.string + "' type"
-        error inReferenceLocation:"overriden method is declared here"
+        + ref_mFormalArgumentType.definition.typeName.string + "' type")
+        error (inReferenceLocation:"overriden method is declared here")
       end
     end
   end
@@ -79,26 +80,26 @@ proc checkGetterSignatures
   ?let @unifiedTypeMapEntry inInheritedReturnType
   ?let @location inReferenceLocation {
   if inReturnType.definition.typeName.string != inInheritedReturnType.definition.typeName.string then
-    error inErrorLocation : "the return type is '@"
+    error (inErrorLocation : "the return type is '@"
     + inReturnType.definition.typeName.string + "', but overriden getter names '@"
-    + inInheritedReturnType.definition.typeName.string + "' as return type"
-    error inReferenceLocation:"overriden getter is declared here"
+    + inInheritedReturnType.definition.typeName.string + "' as return type")
+    error (inReferenceLocation:"overriden getter is declared here")
   end
   if inTestedSignature.count != inReferenceSignature.count then
-    error inErrorLocation:"this getter declares " + inTestedSignature.count.string
-    + " formal parameter(s), but overriden getter declares " + inReferenceSignature.count.string
-    error inReferenceLocation:"overriden getter is declared here"
+    error (inErrorLocation:"this getter declares " + inTestedSignature.count.string
+    + " formal parameter(s), but overriden getter declares " + inReferenceSignature.count.string)
+    error (inReferenceLocation:"overriden getter is declared here")
   else
     for (ref_mFormalSelector ref_mFormalArgumentType 2*) in inReferenceSignature, (mFormalSelector mFormalArgumentType * mFormalArgumentName *) in inTestedSignature do
       if mFormalSelector.string != ref_mFormalSelector.string then
         let @string s = "?" + if ref_mFormalSelector.string != "" then ref_mFormalSelector.string + ":" else "" end
-        error mFormalSelector : "the selector should be '" + s + "'" fixit { replace s }
+        error (mFormalSelector : "the selector should be '" + s + "'" fixit replace s)
       end
       if mFormalArgumentType.definition.typeName.string != ref_mFormalArgumentType.definition.typeName.string then
-        error mFormalArgumentName : "the '" + mFormalArgumentName + "' formal parameter has the '@"
+        error (mFormalArgumentName : "the '" + mFormalArgumentName + "' formal parameter has the '@"
         + mFormalArgumentType.definition.typeName.string + "' type, but overriden getter declares with the '@"
-        + ref_mFormalArgumentType.definition.typeName.string + "' type"
-        error inReferenceLocation:"overriden getter is declared here"
+        + ref_mFormalArgumentType.definition.typeName.string + "' type")
+        error (inReferenceLocation:"overriden getter is declared here")
       end
     end
   end
@@ -508,7 +509,7 @@ override method @filewrapperDeclarationAST semanticAnalysis
     absoluteSourcePath = self.mSourceFileAbsolutePath.deletingLastPathComponent + "/" + self.mFilewrapperPath.string
   end
   if not absoluteSourcePath.directoryExists then
-    error self.mFilewrapperPath: "The '" + absoluteSourcePath + "' directory does not exist"
+    error (self.mFilewrapperPath: "The '" + absoluteSourcePath + "' directory does not exist")
   else
   //--- Analyze filewrapper templates
     var @filewrapperTemplateListForGeneration filewrapperTemplateListForGeneration = @()
@@ -520,8 +521,8 @@ override method @filewrapperDeclarationAST semanticAnalysis
       [!?ioUsefulEntitiesGraph addNode !filewrapperTemplateNameForUsefulness !filewrapperTemplateNameForUsefulness]
       [!?ioUsefulEntitiesGraph addEdge !from: filewrapperTemplateNameForUsefulness !to: filewrapperNameForUsefulness]
       if filewrapperTemplate.mFilewrapperTemplatePath.string.firstCharacterOrNul == '/' then
-        error filewrapperTemplate.mFilewrapperTemplatePath
-         : "the path should not begin with a '/'; it is relative to filewrapper path '" + absoluteSourcePath + "'"
+        error (filewrapperTemplate.mFilewrapperTemplatePath
+         : "the path should not begin with a '/'; it is relative to filewrapper path '" + absoluteSourcePath + "'")
       end
       let absoluteTemplatePath = absoluteSourcePath + "/" + filewrapperTemplate.mFilewrapperTemplatePath
     //--- Parse template
@@ -665,17 +666,17 @@ override method @galgas3GrammarComponentAST semanticAnalysis
     [!?ioUsefulEntitiesGraph addEdge !from: grammarNameForUsefulness !to: lexiqueNameForUsefulness]
   //--- Check translate feature
     if self.mHasTranslateFeature & not hasTranslateFeature then
-      error syntaxComponentName : "as '" + self.mGrammarComponentName + "' grammar declares 'translate' feature, this syntax component should do so"
+      error (syntaxComponentName : "as '" + self.mGrammarComponentName + "' grammar declares 'translate' feature, this syntax component should do so")
     elsif hasTranslateFeature & not self.mHasTranslateFeature then
-      error self.mGrammarComponentName : "as '" + syntaxComponentName + "' syntax component declares 'translate' feature, this grammar should do so"
+      error (self.mGrammarComponentName : "as '" + syntaxComponentName + "' syntax component declares 'translate' feature, this grammar should do so")
     end
   //--- Handle lexique component
     if lexiqueComponentName.string == "" then
       lexiqueComponentName = lexiqueName
     elsif lexiqueName.string != lexiqueComponentName.string then
-      error syntaxComponentName : "this syntax component uses '"
+      error (syntaxComponentName : "this syntax component uses '"
         + lexiqueName + "' lexique component, but the first syntax component uses the '"
-        + lexiqueComponentName + "' lexique component (they should be the same)"
+        + lexiqueComponentName + "' lexique component (they should be the same)")
     end
   //--- Handle non terminal declarations
     handleNonTerminalDeclarations (
@@ -921,8 +922,8 @@ proc enterNonterminalNonTerminalInMapAndCheck
       for (key) in missingLabelSet do
         s += "\n-  " + key
       end
-      error inNonTerminalName
-      : "the '" + inNonTerminalName + "' nonterminal is redeclared without the following label(s):" + s
+      error (inNonTerminalName
+      : "the '" + inNonTerminalName + "' nonterminal is redeclared without the following label(s):" + s)
     end
     let @stringset newLabelSet = reDeclarationLabelSet - firstDeclarationLabelSet
     if newLabelSet.count > 0 then
@@ -930,8 +931,8 @@ proc enterNonterminalNonTerminalInMapAndCheck
       for (key) in newLabelSet do
         s += "\n-  " + key
       end
-      error inNonTerminalName
-      : "the '" + inNonTerminalName + "' nonterminal is redeclared with the new label(s):" + s
+      error (inNonTerminalName
+      : "the '" + inNonTerminalName + "' nonterminal is redeclared with the new label(s):" + s)
     end
     if (missingLabelSet.count == 0) & (newLabelSet.count == 0) then
       for aLabel in entry.mLabelMap, (* * new_mSignature new_mEndOfArgumentLocation) in inNonterminalLabelMap do
@@ -1068,9 +1069,9 @@ override method @inputParameterVariable analyzeInputParameter
   case lexicalType_bigint : expectedType = inAnalysisContext.predefinedTypes.mLBigIntType
   end
   if expectedType != type then
-    error self.mActualParameterName
+    error (self.mActualParameterName
     : "the '" + self.mActualParameterName + "' parameter has the '@" + type.identifierRepresentation
-    + ", bit an '@" + expectedType.identifierRepresentation + "' parameter is required here"
+    + ", bit an '@" + expectedType.identifierRepresentation + "' parameter is required here")
   end
   ioTerminalCheckAssignementList +=
     !"" // Do not declare variable
@@ -1103,9 +1104,9 @@ override method @inputParameterDeclaredVariable analyzeInputParameter
   if self.mActualParameterTypeName.string != "" then
     let type = [ioTypeMap typeMapEntryForLKey !self.mActualParameterTypeName]
     if expectedType != type then
-      error self.mActualParameterName
+      error (self.mActualParameterName
       : "the '" + self.mActualParameterName + "' formal argument has the '@" + type.definition.typeName.string
-      + ", bit an '@" + expectedType.definition.typeName.string + "' parameter is required here"
+      + ", bit an '@" + expectedType.definition.typeName.string + "' parameter is required here")
     end
   end
 //--- Create local variable
@@ -1148,9 +1149,9 @@ override method @inputParameterDeclaredConstant analyzeInputParameter
   if self.mActualParameterTypeName.string != "" then
     let type = [ioTypeMap typeMapEntryForLKey !self.mActualParameterTypeName]
     if expectedType != type then
-      error self.mActualParameterName
+      error (self.mActualParameterName
       : "the '" + self.mActualParameterName + "' formal argument has the '@" + type.definition.typeName.string
-      + ", bit an '@" + expectedType.definition.typeName.string + "' parameter is required here"
+      + ", bit an '@" + expectedType.definition.typeName.string + "' parameter is required here")
     end
   end
 //--- Create local constant
@@ -1188,7 +1189,7 @@ override method @grammarInstructionSyntaxDirectedTranslationDropResult  analyzeS
   ?let @bool inHasTranslateFeature
   ?!@localVarManager unused ioVariableMap {
   if not inHasTranslateFeature then
-    error self.mLocation : "the ':>' construct requires the syntax component to be declared with 'translate' feature"
+    error (self.mLocation : "the ':>' construct requires the syntax component to be declared with 'translate' feature")
   end
 }
 
@@ -1200,14 +1201,14 @@ override method @grammarInstructionSyntaxDirectedTranslationResultInVar  analyze
   ?let @bool inHasTranslateFeature
   ?!@localVarManager ioVariableMap {
   if not inHasTranslateFeature then
-    error self.mActualParameterName : "the ':>' construct requires the syntax component to be declared with 'translate' feature"
+    error (self.mActualParameterName : "the ':>' construct requires the syntax component to be declared with 'translate' feature")
   end
   [!?ioVariableMap searchForWriteAccess !self.mActualParameterName ?let @unifiedTypeMapEntry type ?* ?*]
   let expectedType = inAnalysisContext.predefinedTypes.mStringType
   if expectedType != type then
-    error self.mActualParameterName
+    error (self.mActualParameterName
     : "the '" + self.mActualParameterName + "' parameter has the '@" + type.identifierRepresentation
-    + ", bit an '@" + expectedType.identifierRepresentation + "' parameter is required here"
+    + ", bit an '@" + expectedType.identifierRepresentation + "' parameter is required here")
   end
 }
 
@@ -1219,7 +1220,7 @@ override method @grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar 
   ?let @bool inHasTranslateFeature
   ?!@localVarManager ioVariableMap {
   if not inHasTranslateFeature then
-    error self.mActualParameterName : "the ':>' construct requires the syntax component to be declared with 'translate' feature"
+    error (self.mActualParameterName : "the ':>' construct requires the syntax component to be declared with 'translate' feature")
   end
   let cppName = "var_" + self.mActualParameterName.string.identifierRepresentation + "_" + self.mActualParameterName.location.startLocationIndex
   let type = [ioTypeMap typeMapEntryForLKey !self.mActualParameterTypeName]
@@ -1232,9 +1233,9 @@ override method @grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar 
   ]
   let expectedType = inAnalysisContext.predefinedTypes.mStringType
   if expectedType != type then
-    error self.mActualParameterName
+    error (self.mActualParameterName
     : "the '" + self.mActualParameterName + "' parameter has the '@" + type.identifierRepresentation
-    + ", bit an '@" + expectedType.identifierRepresentation + "' parameter is required here"
+    + ", bit an '@" + expectedType.identifierRepresentation + "' parameter is required here")
   end
 }
 
@@ -1246,16 +1247,16 @@ override method @grammarInstructionSyntaxDirectedTranslationResultInDeclaredCons
   ?let @bool inHasTranslateFeature
   ?!@localVarManager ioVariableMap {
   if not inHasTranslateFeature then
-    error self.mActualParameterName : "the ':>' construct requires the grammar to be declared with 'translate' feature"
+    error (self.mActualParameterName : "the ':>' construct requires the grammar to be declared with 'translate' feature")
   end
   let cppName = "var_" + self.mActualParameterName.string.identifierRepresentation + "_" + self.mActualParameterName.location.startLocationIndex
   let type = [ioTypeMap typeMapEntryForLKey !self.mActualParameterTypeName]
   [!?ioVariableMap insertInitializedLocalConstant !self.mActualParameterName !type !cppName !cppName]
   let expectedType = inAnalysisContext.predefinedTypes.mStringType
   if expectedType != type then
-    error self.mActualParameterName
+    error (self.mActualParameterName
     : "the '" + self.mActualParameterName + "' parameter has the '@" + type.identifierRepresentation
-    + ", bit an '@" + expectedType.identifierRepresentation + "' parameter is required here"
+    + ", bit an '@" + expectedType.identifierRepresentation + "' parameter is required here")
   end
 }
 
