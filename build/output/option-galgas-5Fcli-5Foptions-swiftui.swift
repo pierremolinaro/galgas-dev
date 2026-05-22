@@ -18,6 +18,7 @@ fileprivate let generateManyFiles_PREFKEY = "galgas_cli_options:generateManyFile
 fileprivate let generateOneHeader_PREFKEY = "galgas_cli_options:generateOneHeader"
 fileprivate let outputHTMLgrammarFile_PREFKEY = "galgas_cli_options:outputHTMLgrammarFile"
 fileprivate let outputHTMLTypeListFile_PREFKEY = "galgas_cli_options:outputHTMLTypeListFile"
+fileprivate let outputGrammarSwiftDescriptionFile_PREFKEY = "galgas_cli_options:outputGrammarSwiftDescriptionFile"
 fileprivate let printPredefinedLexicalActions_PREFKEY = "galgas_cli_options:printPredefinedLexicalActions"
 fileprivate let check_big_int_PREFKEY = "galgas_cli_options:check_big_int"
 fileprivate let create_project_PREFKEY = "galgas_cli_options:create_project"
@@ -48,6 +49,7 @@ struct OptionView : View {
   @AppStorage(generateOneHeader_PREFKEY) private var generateOneHeader : Bool = false
   @AppStorage(outputHTMLgrammarFile_PREFKEY) private var outputHTMLgrammarFile : Bool = false
   @AppStorage(outputHTMLTypeListFile_PREFKEY) private var outputHTMLTypeListFile : Bool = false
+  @AppStorage(outputGrammarSwiftDescriptionFile_PREFKEY) private var outputGrammarSwiftDescriptionFile : Bool = false
   @AppStorage(printPredefinedLexicalActions_PREFKEY) private var printPredefinedLexicalActions : Bool = false
   @AppStorage(check_big_int_PREFKEY) private var check_big_int : Bool = false
 
@@ -93,6 +95,7 @@ struct OptionView : View {
           Toggle ("Generate one C++ header file for all declarations", isOn: self.$generateOneHeader)
           Toggle ("Output a HTML file for every grammar component", isOn: self.$outputHTMLgrammarFile)
           Toggle ("Output a HTML file that contains all defined types", isOn: self.$outputHTMLTypeListFile)
+          Toggle ("Output a Swift description file for every grammar component", isOn: self.$outputGrammarSwiftDescriptionFile)
           Toggle ("Print the list of predefined lexical routines and functions", isOn: self.$printPredefinedLexicalActions)
           Toggle ("Run bit integers checks", isOn: self.$check_big_int)
           HStack { Text ("Create a new GALGAS Project") ; TextField ("", text: self.$create_project) }
@@ -163,6 +166,9 @@ func commandLineToolInvocation () -> CommandLineToolInvocation {
   }
   if ud.bool (forKey: outputHTMLTypeListFile_PREFKEY) {
     arguments.append ("--output-html-type-dump-file")
+  }
+  if ud.bool (forKey: outputGrammarSwiftDescriptionFile_PREFKEY) {
+    arguments.append ("--output-swift-description-grammar-file")
   }
   if ud.bool (forKey: printPredefinedLexicalActions_PREFKEY) {
     arguments.append ("--print-predefined-lexical-actions")

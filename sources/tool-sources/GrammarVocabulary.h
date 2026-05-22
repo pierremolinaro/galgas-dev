@@ -42,6 +42,14 @@ class GGS_nonTerminalSymbolSortedListForGrammarAnalysis ;
 //--------------------------------------------------------------------------------------------------
 
 class GrammarVocabulary final {
+
+//--- Private properties
+  private: GenericUniqueArray <String> mStringsArray ;
+  private: GenericUniqueArray <bool> mGenerateChoiceArray ;
+  private: int32_t mTerminalSymbolsCount ;
+  private: int32_t mOriginalGrammarSymbolsCount ;
+  private: int32_t mStartSymbol ;
+
 //--- Constructor and destructor
   public: GrammarVocabulary (void) ;
   public: ~ GrammarVocabulary (void) ;
@@ -60,10 +68,15 @@ class GrammarVocabulary final {
 //--- Add augmented symbol (for LR analyzers)
   public: void addAugmentedSymbol (void) ;
 
-//--- Print symbol in file
-  public: void printInFile (AbstractOutputStream & inHTMLfile,
-                            const int32_t inSymbolIndex
-                            COMMA_LOCATION_ARGS) const ;
+//--- Print symbol in HTML file
+  public: void printSymbolInHTMLFile (AbstractOutputStream & inHTMLfile,
+                                      const int32_t inSymbolIndex
+                                      COMMA_LOCATION_ARGS) const ;
+
+//--- Print vocabulary in Swift file
+  public: void printVocabularyInSwiftFile (AbstractOutputStream & ioSwiftfile,
+                                           const String & inGrammarName,
+                                           const class PureBNFproductionsList & inPureBNFproductions) const ;
 
 //--- Get 'empty string' terminal symbol index
   public: int32_t getEmptyStringTerminalSymbolIndex (void) const ;
@@ -97,13 +110,6 @@ class GrammarVocabulary final {
 //--- No copy
   private: GrammarVocabulary (GrammarVocabulary &) = delete ;
   private: GrammarVocabulary & operator = (GrammarVocabulary &) = delete ;
-
-//--- Private properties
-  private: GenericUniqueArray <String> mStringsArray ;
-  private: GenericUniqueArray <bool> mGenerateChoiceArray ;
-  private: int32_t mTerminalSymbolsCount ;
-  private: int32_t mOriginalGrammarSymbolsCount ;
-  private: int32_t mStartSymbol ;
 } ;
 
 //--------------------------------------------------------------------------------------------------

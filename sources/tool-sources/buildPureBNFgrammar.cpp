@@ -487,7 +487,7 @@ printPureBNFgrammarInBNFfile (HTMLString & inHTMLfile,
     inHTMLfile.addRawData ("</a></td><td class=\"result_line\">") ;
     inHTMLfile.appendCString ("rule ") ;
     inHTMLfile.addRawData ("<code>") ;
-    inVocabulary.printInFile (inHTMLfile, p.leftNonTerminalIndex () COMMA_HERE) ;
+    inVocabulary.printSymbolInHTMLFile (inHTMLfile, p.leftNonTerminalIndex () COMMA_HERE) ;
     inHTMLfile.addRawData ("</code>") ;
     if (i == (productionsCount - 1)) {
       inHTMLfile.addRawData ("<br>") ;
@@ -506,7 +506,7 @@ printPureBNFgrammarInBNFfile (HTMLString & inHTMLfile,
       if (d != 0) {
         inHTMLfile.addRawData ("<br>") ;
       }
-      inVocabulary.printInFile (inHTMLfile, p.derivationAtIndex (d COMMA_HERE) COMMA_HERE) ;
+      inVocabulary.printSymbolInHTMLFile (inHTMLfile, p.derivationAtIndex (d COMMA_HERE) COMMA_HERE) ;
     }
     inHTMLfile.addRawData ("</code></td></tr>") ;
   }
@@ -520,7 +520,7 @@ printPureBNFgrammarInBNFfile (HTMLString & inHTMLfile,
     inHTMLfile.addRawData ("<tr class=\"result_line\"><td class=\"result_line\">") ;
     inHTMLfile.appendSigned (s) ;
     inHTMLfile.addRawData ("</td><td><code>") ;
-    inVocabulary.printInFile (inHTMLfile, s COMMA_HERE) ;
+    inVocabulary.printSymbolInHTMLFile (inHTMLfile, s COMMA_HERE) ;
     inHTMLfile.addRawData ("</code></td></tr>\n") ;
   }
     inHTMLfile.addRawData ("</table>") ;

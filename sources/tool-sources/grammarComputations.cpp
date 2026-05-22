@@ -299,7 +299,7 @@ static const char k_default_style [] = {
 
 static void
 analyzeGrammar (Compiler * inCompiler,
-                const String & inHTMLFileName,
+                const String & inHTMLFilePath,
                 const GGS_unusedNonTerminalSymbolMapForGrammarAnalysis & inUnusedNonTerminalSymbolsForGrammar,
                 const GGS_lstring & inTargetFileName,
                 const GGS_lstring & inGrammarClass,
@@ -311,6 +311,7 @@ analyzeGrammar (Compiler * inCompiler,
                 const GGS_nonTerminalSymbolSortedListForGrammarAnalysis & inNonTerminalSymbolSortedListForGrammarAnalysis,
                 const String & inSyntaxDirectedTranslationVarName,
                 String & ioCppFileContents,
+                String & ioSwiftDescription,
                 HTMLString & outHTMLHelperFileContents,
                 const bool inPopulateHTMLHelperString) {
   bool warningFlag = false ;
@@ -379,9 +380,7 @@ analyzeGrammar (Compiler * inCompiler,
                                 inOriginalGrammarStartSymbol.uintValue ()) ;
 
   //--- Build pure BNFproductions, add new non terminal symbols from 'repeat' and 'select' instructions
-    buildPureBNFgrammar (inSyntaxComponentsList,
-                         vocabulary,
-                         pureBNFproductions) ;
+    buildPureBNFgrammar (inSyntaxComponentsList, vocabulary, pureBNFproductions) ;
 
   //--- Print in bnf file the pure BNF productions
     outHTMLHelperFileContents.addRawData ("<p></p>") ;
@@ -393,6 +392,9 @@ analyzeGrammar (Compiler * inCompiler,
       gCout.flush () ;
     }
   }
+//--- Print in Swift file
+  const String grammarName = inHTMLFilePath.lastPathComponent ().deletingPathExtension () ;
+  vocabulary.printVocabularyInSwiftFile (ioSwiftDescription, grammarName, pureBNFproductions) ;
 //--- Define vocabulary BDD sets descriptor
   const BinaryDecisionDiagramRelationSingleType vocabularyBDDType = vocabulary.getVocabularyBDDType () ;
 //--- Search for identical productions -----------------------------------------------------------
@@ -604,7 +606,7 @@ analyzeGrammar (Compiler * inCompiler,
     if (inPopulateHTMLHelperString) {
       errorMessage.appendCString ("errors have been raised when analyzing the grammar: see file"
                               " 'file://") ;
-      errorMessage.appendString (inHTMLFileName) ;
+      errorMessage.appendString (inHTMLFilePath) ;
       errorMessage.appendCString ("'") ;
     }else{
       errorMessage.appendCString ("errors have been raised when analyzing the grammar:"
@@ -628,7 +630,7 @@ analyzeGrammar (Compiler * inCompiler,
     warningMessage.appendCString ("warnings have been raised when analyzing the grammar: ") ;
     if (inPopulateHTMLHelperString) {
       warningMessage.appendCString ("see file 'file://") ;
-      warningMessage.appendString (inHTMLFileName) ;
+      warningMessage.appendString (inHTMLFilePath) ;
       warningMessage.appendCString ("'") ;
     }else{
       warningMessage.appendCString ("turn on '-H' command line option, and see generated '") ;
@@ -645,31 +647,104 @@ analyzeGrammar (Compiler * inCompiler,
 //--------------------------------------------------------------------------------------------------
 
 void
-routine_grammarAnalysisAndGeneration_3F__3F__3F__3F__3F__3F__3F__3F__3F__3F__21__21_ (const GGS_lstring inTargetFileName,
+routine_grammarAnalysisAndGeneration_3F__3F__3F__3F__3F__3F__3F__3F__3F__3F__21__21__21_ (const GGS_lstring inTargetFileName,
                                       const GGS_lstring inGrammarClass,
                                       const GGS_uint inOriginalGrammarStartSymbol,
                                       const GGS_string inLexiqueName,
                                       const GGS_terminalSymbolsMapForGrammarAnalysis inTerminalSymbolMap,
                                       const GGS_syntaxComponentListForGrammarAnalysis inSyntaxComponentsList,
                                       const GGS_unusedNonTerminalSymbolMapForGrammarAnalysis inUnusedNonTerminalSymbolsForGrammar,
-                                      const GGS_string inHTMLFileName,
+                                      const GGS_string inHTMLFilePath,
                                       const GGS_nonTerminalSymbolSortedListForGrammarAnalysis inNonTerminalSymbolSortedListForGrammarAnalysis,
                                       const GGS_string inSyntaxDirectedTranslationVarName,
                                       GGS_string & outCppFileContents,
                                       GGS_string & outHTMLHelperFileContents,
+                                      GGS_string & outSwiftGrammarDescription,
                                       Compiler * inCompiler
                                       COMMA_UNUSED_LOCATION_ARGS) {
   if (totalErrorCount () == 0) {
     BinaryDecisionDiagram::markAndSweepUnusedNodes () ;
     BinaryDecisionDiagram::checkAllBDDsAreWellFormed (HERE) ;
-
+  //------------------------------------------------------ Generate Swift description
+    const String grammarName = inHTMLFilePath.stringValue().lastPathComponent ().deletingPathExtension () ;
+    String swiftDescription = "" ;
+    swiftDescription.appendHyphenLineComment ("//") ;
+    swiftDescription.appendString ("import Foundation\n\n") ;
+    swiftDescription.appendHyphenLineComment ("//") ;
+//  //--- Terminal symbols
+//    swiftDescription.appendString ("enum ") ;
+//    swiftDescription.appendString (grammarName) ;
+//    swiftDescription.appendString ("_terminal : Terminal_protocol {\n\n") ;
+//    swiftDescription.appendSecondaryLineComment ("//") ;
+//    UpEnumerator_terminalSymbolsMapForGrammarAnalysis terminalEnumerator (inTerminalSymbolMap) ;
+//    while (terminalEnumerator.hasCurrentObject ()) {
+//      swiftDescription.appendString ("  case `") ;
+//      swiftDescription.appendString (terminalEnumerator.current_lkey(HERE).mProperty_string.stringValue()) ;
+//      swiftDescription.appendString ("`\n") ;
+//      terminalEnumerator.gotoNextObject () ;
+//    }
+//    swiftDescription.appendString ("\n") ;
+//    swiftDescription.appendSecondaryLineComment ("//") ;
+//    swiftDescription.appendString ("  var description : String {\n") ;
+//    terminalEnumerator.rewind () ;
+//    while (terminalEnumerator.hasCurrentObject ()) {
+//      swiftDescription.appendString ("    case `") ;
+//      swiftDescription.appendString (terminalEnumerator.current_lkey(HERE).mProperty_string.stringValue()) ;
+//      swiftDescription.appendString ("` : return \"") ;
+//      swiftDescription.appendStringAsCLiteralStringConstantWithoutDelimiters (terminalEnumerator.current_lkey(HERE).mProperty_string.stringValue()) ;
+//      swiftDescription.appendString ("\"\n") ;
+//      terminalEnumerator.gotoNextObject () ;
+//    }
+//    swiftDescription.appendString ("  }\n\n") ;
+//    swiftDescription.appendSecondaryLineComment ("//") ;
+//    swiftDescription.appendString ("}\n\n") ;
+//    swiftDescription.appendHyphenLineComment ("//") ;
+//  //--- Non Terminal symbols
+//    swiftDescription.appendString ("enum ") ;
+//    swiftDescription.appendString (grammarName) ;
+//    swiftDescription.appendString ("_nonTerminal : NonTerminal_protocol {\n\n") ;
+//    swiftDescription.appendSecondaryLineComment ("//") ;
+//    UpEnumerator_nonTerminalSymbolSortedListForGrammarAnalysis ntEnumerator (inNonTerminalSymbolSortedListForGrammarAnalysis) ;
+//    while (ntEnumerator.hasCurrentObject ()) {
+//      swiftDescription.appendString ("  case `") ;
+//      swiftDescription.appendString (ntEnumerator.current_mNonTerminalSymbol (HERE).mProperty_string.stringValue()) ;
+//      swiftDescription.appendString ("`\n") ;
+//      ntEnumerator.gotoNextObject () ;
+//    }
+//    swiftDescription.appendString ("\n") ;
+//    swiftDescription.appendSecondaryLineComment ("//") ;
+//    swiftDescription.appendString ("  var description : String {\n") ;
+//    ntEnumerator.rewind () ;
+//    while (ntEnumerator.hasCurrentObject ()) {
+//      swiftDescription.appendString ("    case `") ;
+//      swiftDescription.appendString (ntEnumerator.current_mNonTerminalSymbol (HERE).mProperty_string.stringValue()) ;
+//      swiftDescription.appendString ("` : return \"") ;
+//      swiftDescription.appendStringAsCLiteralStringConstantWithoutDelimiters (ntEnumerator.current_mNonTerminalSymbol (HERE).mProperty_string.stringValue()) ;
+//      swiftDescription.appendString ("\"\n") ;
+//      ntEnumerator.gotoNextObject () ;
+//    }
+//    swiftDescription.appendString ("  }\n\n") ;
+//    swiftDescription.appendSecondaryLineComment ("//") ;
+//    swiftDescription.appendString ("}\n\n") ;
+//    swiftDescription.appendHyphenLineComment ("//") ;
+//  //--- Start symbol
+//    swiftDescription.appendString ("let ") ;
+//    swiftDescription.appendString (grammarName) ;
+//    swiftDescription.appendString ("_startSymbol : ") ;
+//    swiftDescription.appendString (grammarName) ;
+//    const GGS_lstring startSymbol = inNonTerminalSymbolSortedListForGrammarAnalysis.sortedElementArray () (int32_t (inOriginalGrammarStartSymbol.uintValue()) COMMA_HERE).mProperty_mNonTerminalSymbol ;
+//    swiftDescription.appendString ("_terminal = .`") ;
+//    swiftDescription.appendString (startSymbol.mProperty_string.stringValue ()) ;
+//    swiftDescription.appendString ("` \n\n") ;
+//    swiftDescription.appendHyphenLineComment ("//") ;
+//
+  //--- Analyze
     const GGS_location inErrorLocation = inTargetFileName.mProperty_location ;
-
     HTMLString HTMLHelperFileContents ;
     String CppFileContents ;
     const bool populateHTMLHelperString = gOption_galgas_5F_cli_5F_options_outputHTMLgrammarFile.mValue ;
     analyzeGrammar (inCompiler,
-                    inHTMLFileName.stringValue (),
+                    inHTMLFilePath.stringValue (),
                     inUnusedNonTerminalSymbolsForGrammar,
                     inTargetFileName,
                     inGrammarClass,
@@ -681,10 +756,12 @@ routine_grammarAnalysisAndGeneration_3F__3F__3F__3F__3F__3F__3F__3F__3F__3F__21_
                     inNonTerminalSymbolSortedListForGrammarAnalysis,
                     inSyntaxDirectedTranslationVarName.stringValue (),
                     CppFileContents,
+                    swiftDescription,
                     HTMLHelperFileContents,
                     populateHTMLHelperString) ;
     outHTMLHelperFileContents = GGS_string (HTMLHelperFileContents) ;
     outCppFileContents = GGS_string (CppFileContents) ;
+    outSwiftGrammarDescription = GGS_string (swiftDescription) ;
   }
 }
 

@@ -146,12 +146,12 @@ printFOLLOWsets (const GenericUniqueArray <GenericUniqueArray <uint64_t> > & inF
   for (int32_t i=0 ; i<symbolsToDisplayCount ; i++) {
     if (i != inVocabulary.getEmptyStringTerminalSymbolIndex ()) { // Don't print follower of empty string
       inHTMLfile.addRawData ("<tr class=\"result_line\"><td class=\"result_line\"><code>") ;
-      inVocabulary.printInFile (inHTMLfile, i COMMA_HERE) ;
+      inVocabulary.printSymbolInHTMLFile (inHTMLfile, i COMMA_HERE) ;
       inHTMLfile.addRawData ("</code></td><td><code>") ;
       const int32_t n = inFOLLOWarray (i COMMA_HERE).count () ;
       for (int32_t j=0 ; j<n ; j++) {
         inHTMLfile.appendCString (" ") ;
-        inVocabulary.printInFile (inHTMLfile, (int32_t) inFOLLOWarray (i COMMA_HERE) (j COMMA_HERE) COMMA_HERE) ;
+        inVocabulary.printSymbolInHTMLFile (inHTMLfile, (int32_t) inFOLLOWarray (i COMMA_HERE) (j COMMA_HERE) COMMA_HERE) ;
       }
       inHTMLfile.addRawData ("</code></td></tr>") ;
     }
@@ -227,7 +227,7 @@ checkFOLLOWsets (HTMLString & ioHTMLFileContents,
         const int32_t symbol = (int32_t) array (i COMMA_HERE) ;
         if (symbol >= inVocabulary.getTerminalSymbolsCount ()) {
           ioHTMLFileContents.addRawData ("<tr class=\"result_line\"><td class=\"result_line\"><code>") ;
-          inVocabulary.printInFile (ioHTMLFileContents, symbol COMMA_HERE) ;
+          inVocabulary.printSymbolInHTMLFile (ioHTMLFileContents, symbol COMMA_HERE) ;
           ioHTMLFileContents.addRawData ("</code></td></tr>") ;
         }
       }

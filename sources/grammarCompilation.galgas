@@ -255,12 +255,13 @@ extern proc grammarAnalysisAndGeneration
   ?let @terminalSymbolsMapForGrammarAnalysis inTerminalSymbolMap
   ?let @syntaxComponentListForGrammarAnalysis ioSyntaxComponentsList
   ?let @unusedNonTerminalSymbolMapForGrammarAnalysis inUnusedNonTerminalSymbolsForGrammar
-  ?let @string inHTMLfilePath
+  ?let @string inHTMLfileName
   ?let @nonTerminalSymbolSortedListForGrammarAnalysis inNonTerminalSymbolSortedListForGrammarAnalysis
 //  ?let @bool inHasIndexing
   ?let @string inSyntaxDirectedTranslationVarName // Empty if not syntax directed translation
   !@string outGrammarCppFile
   !@string outGrammarHTMLHelperContents
+  !@string outSwiftGrammarDescription
 
 //--------------------------------------------------------------------------------------------------
 

@@ -228,6 +228,8 @@ extern BoolCommandLineOption gOption_galgas_5F_cli_5F_options_outputHTMLgrammarF
 
 extern BoolCommandLineOption gOption_galgas_5F_cli_5F_options_outputHTMLTypeListFile ;
 
+extern BoolCommandLineOption gOption_galgas_5F_cli_5F_options_outputGrammarSwiftDescriptionFile ;
+
 extern BoolCommandLineOption gOption_galgas_5F_cli_5F_options_printPredefinedLexicalActions ;
 
 extern BoolCommandLineOption gOption_galgas_5F_cli_5F_options_check_5F_big_5F_int ;
@@ -609,24 +611,25 @@ GGS_string filewrapperTemplate_grammarGenerationTemplate_grammarZone_33_HeaderGa
 
 //--------------------------------------------------------------------------------------------------
 //
-//Routine 'grammarAnalysisAndGeneration??????????!!'
+//Routine 'grammarAnalysisAndGeneration??????????!!!'
 //
 //--------------------------------------------------------------------------------------------------
 
-void routine_grammarAnalysisAndGeneration_3F__3F__3F__3F__3F__3F__3F__3F__3F__3F__21__21_ (const class GGS_lstring constinArgument0,
-                                                                                           const class GGS_lstring constinArgument1,
-                                                                                           const class GGS_uint constinArgument2,
-                                                                                           const class GGS_string constinArgument3,
-                                                                                           const class GGS_terminalSymbolsMapForGrammarAnalysis constinArgument4,
-                                                                                           const class GGS_syntaxComponentListForGrammarAnalysis constinArgument5,
-                                                                                           const class GGS_unusedNonTerminalSymbolMapForGrammarAnalysis constinArgument6,
-                                                                                           const class GGS_string constinArgument7,
-                                                                                           const class GGS_nonTerminalSymbolSortedListForGrammarAnalysis constinArgument8,
-                                                                                           const class GGS_string constinArgument9,
-                                                                                           class GGS_string & outArgument10,
-                                                                                           class GGS_string & outArgument11,
-                                                                                           class Compiler * inCompiler
-                                                                                           COMMA_LOCATION_ARGS) ;
+void routine_grammarAnalysisAndGeneration_3F__3F__3F__3F__3F__3F__3F__3F__3F__3F__21__21__21_ (const class GGS_lstring constinArgument0,
+                                                                                               const class GGS_lstring constinArgument1,
+                                                                                               const class GGS_uint constinArgument2,
+                                                                                               const class GGS_string constinArgument3,
+                                                                                               const class GGS_terminalSymbolsMapForGrammarAnalysis constinArgument4,
+                                                                                               const class GGS_syntaxComponentListForGrammarAnalysis constinArgument5,
+                                                                                               const class GGS_unusedNonTerminalSymbolMapForGrammarAnalysis constinArgument6,
+                                                                                               const class GGS_string constinArgument7,
+                                                                                               const class GGS_nonTerminalSymbolSortedListForGrammarAnalysis constinArgument8,
+                                                                                               const class GGS_string constinArgument9,
+                                                                                               class GGS_string & outArgument10,
+                                                                                               class GGS_string & outArgument11,
+                                                                                               class GGS_string & outArgument12,
+                                                                                               class Compiler * inCompiler
+                                                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //

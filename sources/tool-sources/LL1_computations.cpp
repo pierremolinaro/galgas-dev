@@ -2,8 +2,8 @@
 //
 //  Routines for checking LL(1) condition
 //
-//  Copyright (C) 1994, ..., 2023 Pierre Molinaro.
-//                                           
+//  Copyright (C) 1994, ..., 2026 Pierre Molinaro.
+//
 //  MIT License
 //                                           
 // Permission is hereby granted, free of charge, to any person obtaining a copy of this software
@@ -37,38 +37,38 @@
 
 //--------------------------------------------------------------------------------------------------
 
-class cAffichagePremiersProduction : public C_bdd_value_traversing {
+class AffichagePremiersProduction final : public C_bdd_value_traversing {
 //--- Attributs
   protected: HTMLString & mFichierBNF ;
   protected: const GrammarVocabulary & mVocabulary ;
 
 //--- Constructeur
-  public: cAffichagePremiersProduction (HTMLString & inHTMLfile,
-                                         const GrammarVocabulary & inVocabulary) ;
+  public: AffichagePremiersProduction (HTMLString & inHTMLfile,
+                                       const GrammarVocabulary & inVocabulary) ;
 
 //--- Methode virtelle appelee pour chaque valeur
   public: virtual void action (const bool * tableauDesValeurs,
-                                const uint32_t nombreVariables) ;
+                               const uint32_t nombreVariables) ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-cAffichagePremiersProduction::cAffichagePremiersProduction (HTMLString & inHTMLfile,
-                                                            const GrammarVocabulary & inVocabulary) :
+AffichagePremiersProduction::AffichagePremiersProduction (HTMLString & inHTMLfile,
+                                                          const GrammarVocabulary & inVocabulary) :
 mFichierBNF (inHTMLfile),
 mVocabulary (inVocabulary) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void cAffichagePremiersProduction::action (const bool * tableauDesValeurs,
-                                           const uint32_t nombreVariables) {
+void AffichagePremiersProduction::action (const bool * tableauDesValeurs,
+                                          const uint32_t nombreVariables) {
   int32_t element = 0 ;
   for (int32_t i=((int32_t) nombreVariables) - 1 ; i>=0 ; i--) {
     element = (element << 1) + tableauDesValeurs [i] ;
   }
   mFichierBNF.appendCString (" ") ;
-  mVocabulary.printInFile (mFichierBNF, element COMMA_HERE) ;
+  mVocabulary.printSymbolInHTMLFile (mFichierBNF, element COMMA_HERE) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -90,7 +90,7 @@ check_LL1_condition (const PureBNFproductionsList & inPureBNFproductions,
                    " if the production is empty, the FOLLOW of the left nonterminal symbol ;\n"
                    " if the production is not empty (e.g. g -> x) :\n"
                    "         -- the FIRST of x, and\n"
-                   "         -- if x est a nonterminal symbol deriving in the empty string, union the FOLLOW of x.\n\n"
+                   "         -- if x is a nonterminal symbol deriving in the empty string, union the FOLLOW of x.\n\n"
                    "Only are listed the nonterminal having more than one production (see step 2\n"
                    "for inPureBNFproductions numbering) :\n\n") ;
     ioHTMLFileContents.addRawData ("</p>") ;
@@ -109,7 +109,7 @@ check_LL1_condition (const PureBNFproductionsList & inPureBNFproductions,
       //--- Calculer et afficher les premiers
         if (inPopulateHTMLHelperString) {
           ioHTMLFileContents.addRawData ("<tr><td class=\"result_title\" colspan=\"2\"><code>") ;
-          inVocabulary.printInFile (ioHTMLFileContents, i + terminalSymbolsCount COMMA_HERE) ;
+          inVocabulary.printSymbolInHTMLFile (ioHTMLFileContents, i + terminalSymbolsCount COMMA_HERE) ;
           ioHTMLFileContents.addRawData ("</code></td></tr>") ;
         }
         for (int32_t j=first ; j<=derniere ; j++) {
@@ -142,7 +142,7 @@ check_LL1_condition (const PureBNFproductionsList & inPureBNFproductions,
             p.derivationFirst ().getValueArray (array) ;
             for (int32_t k=0 ; k < array.count () ; k++) {
               const uint64_t symbol = array (k COMMA_HERE) ;
-              inVocabulary.printInFile (ioHTMLFileContents, (int32_t) symbol COMMA_HERE) ;
+              inVocabulary.printSymbolInHTMLFile (ioHTMLFileContents, (int32_t) symbol COMMA_HERE) ;
               ioHTMLFileContents.appendCString (" ") ;
             }
             ioHTMLFileContents.addRawData ("</code></td></tr>") ;
@@ -205,29 +205,28 @@ check_LL1_condition (const PureBNFproductionsList & inPureBNFproductions,
 
 //--------------------------------------------------------------------------------------------------
 
-class cEcrireNonTerminal : public C_bdd_value_traversing {
-//--- Attributs
+class EcrireNonTerminal final : public C_bdd_value_traversing {
+//--- Propriétés
   protected: HTMLString & mFichierBNF ;
   protected: const GrammarVocabulary & mVocabulary ;
   protected: String aNomClasseLexique ;
   protected: int16_t aIndice ;
 
 //--- Constructeur
-  public: cEcrireNonTerminal (HTMLString & inHTMLfile,
-                               const GrammarVocabulary & inVocabulary,
-                               const String & nomClasseLexique) ;
+  public: EcrireNonTerminal (HTMLString & inHTMLfile,
+                             const GrammarVocabulary & inVocabulary,
+                             const String & nomClasseLexique) ;
 
 //--- Methode virtuelle appelee pour chaque valeur
   public: virtual void action (const bool * tableauDesValeurs,
-                                const uint32_t nombreVariables) ;
+                               const uint32_t nombreVariables) ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-cEcrireNonTerminal::
-cEcrireNonTerminal (HTMLString & inHTMLfile,
-                    const GrammarVocabulary & inVocabulary,
-                    const String & nomClasseLexique) :
+EcrireNonTerminal::EcrireNonTerminal (HTMLString & inHTMLfile,
+                                      const GrammarVocabulary & inVocabulary,
+                                      const String & nomClasseLexique) :
 mFichierBNF (inHTMLfile),
 mVocabulary (inVocabulary),
 aNomClasseLexique (nomClasseLexique),
@@ -236,8 +235,8 @@ aIndice (0) {
 
 //--------------------------------------------------------------------------------------------------
 
-void cEcrireNonTerminal::action (const bool * tableauDesValeurs,
-                                 const uint32_t nombreVariables) {
+void EcrireNonTerminal::action (const bool * tableauDesValeurs,
+                                const uint32_t nombreVariables) {
   int32_t element = 0 ;
   for (int32_t i=((int32_t) nombreVariables) - 1 ; i>=0 ; i--) {
     element = (element << 1) + tableauDesValeurs [i] ;
@@ -288,21 +287,21 @@ engendrerAiguillageNonTerminaux (const GrammarVocabulary & inVocabulary,
 
 //--------------------------------------------------------------------------------------------------
 
-class C_ProductionNameDescriptor {
+class LL1ProductionNameDescriptor final {
   public: String mName ;
   public: String mFileName ;
   public: uint32_t mLineNumber ;
 
-  public: C_ProductionNameDescriptor (void) ;
+  public: LL1ProductionNameDescriptor (void) ;
 
-  public: C_ProductionNameDescriptor (const String & inName,
+  public: LL1ProductionNameDescriptor (const String & inName,
                                        const String & inFileName,
                                        const uint32_t inLineNumber) ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-C_ProductionNameDescriptor::C_ProductionNameDescriptor (void) :
+LL1ProductionNameDescriptor::LL1ProductionNameDescriptor (void) :
 mName (),
 mFileName (),
 mLineNumber (0) {
@@ -310,9 +309,9 @@ mLineNumber (0) {
 
 //--------------------------------------------------------------------------------------------------
 
-C_ProductionNameDescriptor::C_ProductionNameDescriptor (const String & inName,
-                                                        const String & inFileName,
-                                                        const uint32_t inLineNumber) :
+LL1ProductionNameDescriptor::LL1ProductionNameDescriptor (const String & inName,
+                                                          const String & inFileName,
+                                                          const uint32_t inLineNumber) :
 mName (inName),
 mFileName (inFileName),
 mLineNumber (inLineNumber) {
@@ -329,7 +328,7 @@ printProductions (const PureBNFproductionsList & inPureBNFproductions,
                   bool & ioFirst,
                   GenericUniqueArray <int16_t> & ioProductionRulesIndex,
                   GenericUniqueArray <String> & ioProductionRulesTitle,
-                  GenericUniqueArray <C_ProductionNameDescriptor> & ioProductionRuleDescription,
+                  GenericUniqueArray <LL1ProductionNameDescriptor> & ioProductionRuleDescription,
                   GenericUniqueArray <int16_t> & ioFirstProductionRuleIndex,
                   AbstractOutputStream & inCppFile) {
   ioFirstProductionRuleIndex.appendObject ((int16_t) ioProductionRulesIndex.count ()) ;
@@ -340,8 +339,8 @@ printProductions (const PureBNFproductionsList & inPureBNFproductions,
       ioProductionRulesIndex.appendObject (ioProductionIndex) ;
       GrammarProduction & p = inPureBNFproductions.mProductionArray (inPureBNFproductions.tableauIndirectionProduction (j COMMA_HERE) COMMA_HERE) ;
       String title ;
-      inVocabulary.printInFile (title, p.leftNonTerminalIndex () COMMA_HERE) ;
-      const C_ProductionNameDescriptor description (title, p.sourceFileName (), (uint32_t) ioProductionIndex) ;
+      inVocabulary.printSymbolInHTMLFile (title, p.leftNonTerminalIndex () COMMA_HERE) ;
+      const LL1ProductionNameDescriptor description (title, p.sourceFileName (), (uint32_t) ioProductionIndex) ;
       ioProductionRuleDescription.appendObject (description) ;
       title.appendCString (", in file '") ;
       title.appendString (p.sourceFileName ()) ;
@@ -463,7 +462,7 @@ generate_LL1_grammar_Cpp_file (const GGS_nonTerminalSymbolSortedListForGrammarAn
   const int32_t productionsCount = inPureBNFproductions.mProductionArray.count () ;
   GenericUniqueArray <int16_t> productionRulesIndex (500 COMMA_HERE);
   GenericUniqueArray <int16_t> firstProductionRuleIndex (500 COMMA_HERE) ;
-  GenericUniqueArray <C_ProductionNameDescriptor> productionRuleDescription ;
+  GenericUniqueArray <LL1ProductionNameDescriptor> productionRuleDescription ;
   GenericUniqueArray <String> productionRulesTitle (500 COMMA_HERE) ;
 
   ioCppFileContents.appendCppTitleComment ("LL(1) PRODUCTION RULES") ;

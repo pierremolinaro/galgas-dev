@@ -108,7 +108,7 @@ displayNonterminalSymbolsFollowedByEmpty (const BinaryDecisionDiagramRelation & 
     for (int32_t i=0 ; i < array.count () ; i++) {
       ioHTMLFileContents.addRawData ("<tr class=\"result_line\"><td class=\"result_line\"><code>") ;
       const uint64_t symbol = array (i COMMA_HERE) ;
-      inVocabulary.printInFile (ioHTMLFileContents, (int32_t) symbol COMMA_HERE) ;
+      inVocabulary.printSymbolInHTMLFile (ioHTMLFileContents, (int32_t) symbol COMMA_HERE) ;
       ioHTMLFileContents.addRawData ("</code></td></tr>") ;
     }
     ioHTMLFileContents.addRawData ("</table>") ;

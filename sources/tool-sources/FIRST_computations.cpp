@@ -120,7 +120,7 @@ displayAndCheckFIRSTsets (HTMLString & ioHTMLFileContents,
       const int32_t length = outFIRSTarray (symbol COMMA_HERE).count () ;
       for (int32_t e=0 ; e<length ; e++) {
         ioHTMLFileContents.appendCString (" ") ;
-        inVocabulary.printInFile (ioHTMLFileContents, (int32_t) outFIRSTarray (symbol COMMA_HERE) (e COMMA_HERE) COMMA_HERE) ;
+        inVocabulary.printSymbolInHTMLFile (ioHTMLFileContents, (int32_t) outFIRSTarray (symbol COMMA_HERE) (e COMMA_HERE) COMMA_HERE) ;
       }
       ioHTMLFileContents.addRawData ("</code></td></tr>") ;
     }

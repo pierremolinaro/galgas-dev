@@ -106,6 +106,7 @@ class AbstractOutputStream {
                                    const String & inCommentString) ;
   public: void appendHyphenLineCommentWithoutExtraBlankLine (const char * inLineCommentPrefix) ;
   public: void appendHyphenLineComment (const char * inLineCommentPrefix) ;
+  public: void appendSecondaryLineComment (const char * inLineCommentPrefix) ;
   public: void appendSpaceLineComment (const char * inLineCommentPrefix) ;
   public: void appendCenterJustifiedComment (const char * inLineCommentPrefix,
                                              const String & inCommentString) ;

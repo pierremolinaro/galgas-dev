@@ -219,14 +219,14 @@ display (const PureBNFproductionsList & inProductionRules,
     const int32_t location = mItemsSet (i COMMA_HERE).mLocationIndex ;
     inHTMLfile.addRawData ("<span class=\"list\">") ;
     inHTMLfile.appendCString ("[") ;
-    inVocabulary.printInFile (inHTMLfile, p.leftNonTerminalIndex () COMMA_HERE) ;
+    inVocabulary.printSymbolInHTMLFile (inHTMLfile, p.leftNonTerminalIndex () COMMA_HERE) ;
     inHTMLfile.appendCString (" ->") ;
     for (int32_t j=0 ; j<p.derivationLength () ; j++) {
       if (j == location) {
         inHTMLfile.addRawData (" &oplus;") ;
       }
       inHTMLfile.appendCString (" ") ;
-      inVocabulary.printInFile (inHTMLfile, p.derivationAtIndex (j COMMA_HERE) COMMA_HERE) ;
+      inVocabulary.printSymbolInHTMLFile (inHTMLfile, p.derivationAtIndex (j COMMA_HERE) COMMA_HERE) ;
     }
     if (location == p.derivationLength ()) {
       inHTMLfile.appendCString (" .") ;
@@ -1488,7 +1488,7 @@ SLR_computations (const PureBNFproductionsList & inProductionRules,
       ioHTMLFileContents.appendCString ("  S") ;
       ioHTMLFileContents.appendSigned (transitionList (i COMMA_HERE).sourceState ()) ;
       ioHTMLFileContents.appendCString (" |- ") ;
-      inVocabulary.printInFile (ioHTMLFileContents, transitionList (i COMMA_HERE).action () COMMA_HERE) ;
+      inVocabulary.printSymbolInHTMLFile (ioHTMLFileContents, transitionList (i COMMA_HERE).action () COMMA_HERE) ;
       ioHTMLFileContents.appendCString (" -> S") ;
       ioHTMLFileContents.appendSigned (transitionList (i COMMA_HERE).targetState ()) ;
       ioHTMLFileContents.addRawData ("</code></td></tr>") ;
@@ -1528,7 +1528,7 @@ SLR_computations (const PureBNFproductionsList & inProductionRules,
         ioHTMLFileContents.appendCString ("Action [S") ;
         ioHTMLFileContents.appendSigned (sourceState) ;
         ioHTMLFileContents.appendCString (", ") ;
-        inVocabulary.printInFile (ioHTMLFileContents, terminal COMMA_HERE) ;
+        inVocabulary.printSymbolInHTMLFile (ioHTMLFileContents, terminal COMMA_HERE) ;
         ioHTMLFileContents.appendCString ("] : shift, goto S") ;
         ioHTMLFileContents.appendSigned (targetState) ;
         ioHTMLFileContents.addRawData ("</code></td></tr>") ;
@@ -1553,7 +1553,7 @@ SLR_computations (const PureBNFproductionsList & inProductionRules,
         ioHTMLFileContents.appendCString ("Action [S") ;
         ioHTMLFileContents.appendSigned (state) ;
         ioHTMLFileContents.appendCString (", ") ;
-        inVocabulary.printInFile (ioHTMLFileContents, terminal COMMA_HERE) ;
+        inVocabulary.printSymbolInHTMLFile (ioHTMLFileContents, terminal COMMA_HERE) ;
         ioHTMLFileContents.appendCString ("] : accept") ;
         ioHTMLFileContents.addRawData ("</code>") ;
       }
@@ -1583,9 +1583,9 @@ SLR_computations (const PureBNFproductionsList & inProductionRules,
           ioHTMLFileContents.appendCString ("Action [S") ;
           ioHTMLFileContents.appendSigned (state) ;
           ioHTMLFileContents.appendCString (", ") ;
-          inVocabulary.printInFile (ioHTMLFileContents, terminal COMMA_HERE) ;
+          inVocabulary.printSymbolInHTMLFile (ioHTMLFileContents, terminal COMMA_HERE) ;
           ioHTMLFileContents.appendCString ("] : reduce by ") ;
-          inVocabulary.printInFile (ioHTMLFileContents, leftNonTerminal COMMA_HERE) ;
+          inVocabulary.printSymbolInHTMLFile (ioHTMLFileContents, leftNonTerminal COMMA_HERE) ;
           ioHTMLFileContents.addRawData ("</code>") ;
         }
         if (! SLRdecisionTable (state, terminal COMMA_HERE).isInUndefinedState ()) {
@@ -1613,7 +1613,7 @@ SLR_computations (const PureBNFproductionsList & inProductionRules,
         ioHTMLFileContents.appendCString ("Successor [S") ;
         ioHTMLFileContents.appendSigned (transitionList (t COMMA_HERE).sourceState ()) ;
         ioHTMLFileContents.appendCString (", ") ;
-        inVocabulary.printInFile (ioHTMLFileContents, transitionList (t COMMA_HERE).action () COMMA_HERE) ;
+        inVocabulary.printSymbolInHTMLFile (ioHTMLFileContents, transitionList (t COMMA_HERE).action () COMMA_HERE) ;
         ioHTMLFileContents.appendCString ("] = S") ;
         ioHTMLFileContents.appendSigned (transitionList (t COMMA_HERE).targetState ()) ;
         ioHTMLFileContents.addRawData ("</code></td></tr>") ;

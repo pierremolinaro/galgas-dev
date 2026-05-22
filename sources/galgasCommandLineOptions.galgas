@@ -26,6 +26,8 @@
 option galgas_cli_options {
   @bool outputHTMLgrammarFile: '\0', "output-html-grammar-file"
     -> "Output a HTML file for every grammar component"
+  @bool outputGrammarSwiftDescriptionFile: '\0', "output-swift-description-grammar-file"
+    -> "Output a Swift description file for every grammar component"
 
   @bool outputHTMLTypeListFile: 'T', "output-html-type-dump-file"
     -> "Output a HTML file that contains all defined types"

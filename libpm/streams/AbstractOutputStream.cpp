@@ -331,6 +331,17 @@ void AbstractOutputStream::appendHyphenLineComment (const char * inLineCommentPr
 }
 
 //--------------------------------------------------------------------------------------------------
+
+void AbstractOutputStream::appendSecondaryLineComment (const char * inLineCommentPrefix) {
+  appendCString ("  ") ;
+  appendCString (inLineCommentPrefix) ;
+  for (int32_t i=3 ; i<kCommentMaxLength ; i+=2) {
+    appendCString (" -") ;
+  }
+  appendCString ("\n\n") ;
+}
+
+//--------------------------------------------------------------------------------------------------
 //                          C Comments
 //--------------------------------------------------------------------------------------------------
 

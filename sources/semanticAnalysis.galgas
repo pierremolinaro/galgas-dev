@@ -782,14 +782,25 @@ override method @galgas3GrammarComponentAST semanticAnalysis
     !if self.mHasTranslateFeature then syntaxDirectedTranslationResultVarName () else "" end
     ?let @string grammarCppFile
     ?let @string grammarHTMLHelperContents
+    ?let @string swiftGrammarDescription
+
   )
-//--------------------------------------------------------- Generate HTML grammer helper file
+//--------------------------------------------------------- Generate HTML grammar helper file
   if [option galgas_cli_options.outputHTMLgrammarFile value] then
     [HTMLFilePath.deletingLastPathComponent makeDirectory]
     [grammarHTMLHelperContents writeToFileWhenDifferentContents !HTMLFilePath ?*]
   else
     [@string deleteFileIfExists !HTMLFilePath]
   end
+//--------------------------------------------------------- Generate Swift description file
+  let swiftFilePath = inProductDirectory + "/../helpers/" + self.mGrammarComponentName + ".swift"
+  if [option galgas_cli_options.outputGrammarSwiftDescriptionFile value] then
+    [swiftFilePath.deletingLastPathComponent makeDirectory]
+    [swiftGrammarDescription writeToFileWhenDifferentContents !swiftFilePath ?*]
+  else
+    [@string deleteFileIfExists !swiftFilePath]
+  end
+
 //---
   ioSemanticDeclarationListForGeneration +=
     !infoMessage: ""

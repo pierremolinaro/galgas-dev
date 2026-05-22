@@ -29,6 +29,7 @@
 
 #include "GrammarVocabulary.h"
 #include "grammarCompilation.h"
+#include "PureBNFproductionsList.h"
 
 //--------------------------------------------------------------------------------------------------
 
@@ -150,9 +151,9 @@ bool GrammarVocabulary::needToGenerateChoice (const int32_t inSymbolIndex
 
 //--------------------------------------------------------------------------------------------------
 
-void GrammarVocabulary::printInFile (AbstractOutputStream & inHTMLfile,
-                                     const int32_t inSymbolIndex
-                                     COMMA_LOCATION_ARGS) const {
+void GrammarVocabulary::printSymbolInHTMLFile (AbstractOutputStream & inHTMLfile,
+                                               const int32_t inSymbolIndex
+                                               COMMA_LOCATION_ARGS) const {
   if (inSymbolIndex < mTerminalSymbolsCount) {
     inHTMLfile.appendCString ("$") ;
     inHTMLfile.appendString (mStringsArray (inSymbolIndex COMMA_THERE)) ;
@@ -162,6 +163,122 @@ void GrammarVocabulary::printInFile (AbstractOutputStream & inHTMLfile,
     inHTMLfile.appendString (mStringsArray (inSymbolIndex COMMA_THERE)) ;
     inHTMLfile.appendCString (">") ;
   }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GrammarVocabulary::printVocabularyInSwiftFile (AbstractOutputStream & ioSwiftfile,
+                                                    const String & inGrammarName,
+                                                    const PureBNFproductionsList & inPureBNFproductions) const {
+//--- Terminal symbols
+  ioSwiftfile.appendString ("enum ") ;
+  ioSwiftfile.appendString (inGrammarName) ;
+  ioSwiftfile.appendString ("_terminal : Terminal_protocol {\n\n") ;
+  ioSwiftfile.appendSecondaryLineComment ("//") ;
+  for (int32_t i = 0 ; i < getTerminalSymbolsCount () ; i++) {
+    ioSwiftfile.appendString ("  case t") ;
+    ioSwiftfile.appendSigned (i) ;
+    ioSwiftfile.appendString ("\n") ;
+  }
+  ioSwiftfile.appendString ("\n") ;
+  ioSwiftfile.appendSecondaryLineComment ("//") ;
+  ioSwiftfile.appendString ("  var description : String {\n") ;
+  ioSwiftfile.appendString ("    switch self {\n") ;
+  for (int32_t i = 0 ; i < getTerminalSymbolsCount () ; i++) {
+    ioSwiftfile.appendString ("    case .t") ;
+    ioSwiftfile.appendSigned (i) ;
+    ioSwiftfile.appendString (" : return \"$") ;
+    ioSwiftfile.appendStringAsCLiteralStringConstantWithoutDelimiters (getSymbol (i COMMA_HERE)) ;
+    ioSwiftfile.appendString ("$\"\n") ;
+  }
+  ioSwiftfile.appendString ("    }\n") ;
+  ioSwiftfile.appendString ("  }\n\n") ;
+  ioSwiftfile.appendSecondaryLineComment ("//") ;
+  ioSwiftfile.appendString ("  var typstRawCode : String {\n") ; // replacingOccurrences (of: "\"", with: "\\\"")
+  ioSwiftfile.appendString ("    let s = self.description.replacingOccurrences (of: \"\\\"\", with: \"\\\\\\\"\")\n") ;
+  ioSwiftfile.appendString ("    return \"#raw(\\\"\\(s)\\\")\"\n") ;
+  ioSwiftfile.appendString ("  }\n\n") ;
+  ioSwiftfile.appendSecondaryLineComment ("//") ;
+  ioSwiftfile.appendString ("  // func isEOF () -> Bool { self == .`##` }\n\n") ;
+  ioSwiftfile.appendSecondaryLineComment ("//") ;
+  ioSwiftfile.appendString ("}\n\n") ;
+  ioSwiftfile.appendHyphenLineComment ("//") ;
+//--- Non Terminal symbols
+  ioSwiftfile.appendString ("enum ") ;
+  ioSwiftfile.appendString (inGrammarName) ;
+  ioSwiftfile.appendString ("_nonTerminal : NonTerminal_protocol {\n\n") ;
+  ioSwiftfile.appendSecondaryLineComment ("//") ;
+  for (int32_t i = 0 ; i < getNonTerminalSymbolsCount () ; i++) {
+    ioSwiftfile.appendString ("  case nt") ;
+    ioSwiftfile.appendSigned (i) ;
+    ioSwiftfile.appendString ("\n") ;
+  }
+  ioSwiftfile.appendString ("\n") ;
+  ioSwiftfile.appendSecondaryLineComment ("//") ;
+  ioSwiftfile.appendString ("  var description : String {\n") ;
+  ioSwiftfile.appendString ("    switch self {\n") ;
+  for (int32_t i = 0 ; i < getNonTerminalSymbolsCount () ; i++) {
+    ioSwiftfile.appendString ("    case .nt") ;
+    ioSwiftfile.appendSigned (i) ;
+    ioSwiftfile.appendString (" : return \"<") ;
+    ioSwiftfile.appendStringAsCLiteralStringConstantWithoutDelimiters (getSymbol (i + getTerminalSymbolsCount () COMMA_HERE)) ;
+    ioSwiftfile.appendString (">\"\n") ;
+  }
+  ioSwiftfile.appendString ("    }\n") ;
+  ioSwiftfile.appendString ("  }\n\n") ;
+  ioSwiftfile.appendSecondaryLineComment ("//") ;
+  ioSwiftfile.appendString ("  var typstRawCode : String {\n") ; // replacingOccurrences (of: "\"", with: "\\\"")
+  ioSwiftfile.appendString ("    let s = self.description.replacingOccurrences (of: \"\\\"\", with: \"\\\\\\\"\")\n") ;
+  ioSwiftfile.appendString ("    return \"#raw(\\\"\\(s)\\\")\"\n") ;
+  ioSwiftfile.appendString ("  }\n\n") ;
+  ioSwiftfile.appendSecondaryLineComment ("//") ;
+  ioSwiftfile.appendString ("}\n\n") ;
+  ioSwiftfile.appendHyphenLineComment ("//") ;
+//--- Start symbol
+  ioSwiftfile.appendString ("let ") ;
+  ioSwiftfile.appendString (inGrammarName) ;
+  ioSwiftfile.appendString ("_startSymbol : ") ;
+  ioSwiftfile.appendString (inGrammarName) ;
+  ioSwiftfile.appendString ("_nonTerminal = .nt") ;
+  ioSwiftfile.appendSigned (getNonTerminalSymbolsCount () - 1) ;
+  ioSwiftfile.appendString ("\n\n") ;
+  ioSwiftfile.appendHyphenLineComment ("//") ;
+//--- Productions
+  ioSwiftfile.appendString ("let ") ;
+  ioSwiftfile.appendString (inGrammarName) ;
+  ioSwiftfile.appendString ("_rules : [Grammar <") ;
+  ioSwiftfile.appendString (inGrammarName) ;
+  ioSwiftfile.appendString ("_terminal, ") ;
+  ioSwiftfile.appendString (inGrammarName) ;
+  ioSwiftfile.appendString ("_nonTerminal>.Rule] = [\n") ;
+  for (int32_t i = 0 ; i < inPureBNFproductions.mProductionArray.count () ; i++) {
+    const GrammarProduction & production = inPureBNFproductions.mProductionArray (i COMMA_HERE) ;
+    ioSwiftfile.appendString ("  .init (.nt") ;
+    ioSwiftfile.appendSigned (production.leftNonTerminalIndex () - getTerminalSymbolsCount ()) ;
+    ioSwiftfile.appendString (", [") ;
+    for (int32_t j=0 ; j<production.derivationLength () ; j++) {
+      const int32_t element = production.derivationAtIndex (j COMMA_HERE) ;
+      if (element < getTerminalSymbolsCount ()) {
+        ioSwiftfile.appendString (".terminal(.t") ;
+        ioSwiftfile.appendSigned (element) ;
+        ioSwiftfile.appendString (")") ;
+      }else{
+        ioSwiftfile.appendString (".nonterminal(.nt") ;
+        ioSwiftfile.appendSigned (element - getTerminalSymbolsCount ()) ;
+        ioSwiftfile.appendString (")") ;
+      }
+      if (j < (production.derivationLength () - 1)) {
+        ioSwiftfile.appendString (",") ;
+      }else if ((j == (production.derivationLength () - 1)) && (i == (inPureBNFproductions.mProductionArray.count () - 1))) {
+        ioSwiftfile.appendString (",.terminal(.t") ;
+        ioSwiftfile.appendSigned (getTerminalSymbolsCount () - 1) ;
+        ioSwiftfile.appendString (")") ;
+      }
+    }
+    ioSwiftfile.appendString ("]),\n") ;
+  }
+  ioSwiftfile.appendString ("]\n\n") ;
+  ioSwiftfile.appendHyphenLineComment ("//") ;
 }
 
 //--------------------------------------------------------------------------------------------------
