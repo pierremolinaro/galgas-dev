@@ -5839,7 +5839,7 @@ static const GALGAS_TypeDescriptor * functionArgs_routineMangledName [3] = {
 //--------------------------------------------------------------------------------------------------
 
 static GGS_object functionWithGenericHeader_routineMangledName (Compiler * inCompiler,
-                                                                const ObjectArray & inEffectiveParameterArray,
+                                                                const GALGAS_ObjectArray & inEffectiveParameterArray,
                                                                 const GGS_location & /* inErrorLocation */
                                                                 COMMA_LOCATION_ARGS) {
   const GGS_lstring operand0 = GGS_lstring::extractObject (inEffectiveParameterArray.objectAtIndex (0 COMMA_HERE),
@@ -5919,7 +5919,7 @@ static const GALGAS_TypeDescriptor * functionArgs_routineArgumentFromFormalParam
 //--------------------------------------------------------------------------------------------------
 
 static GGS_object functionWithGenericHeader_routineArgumentFromFormalParameters (Compiler * inCompiler,
-                                                                                 const ObjectArray & inEffectiveParameterArray,
+                                                                                 const GALGAS_ObjectArray & inEffectiveParameterArray,
                                                                                  const GGS_location & /* inErrorLocation */
                                                                                  COMMA_LOCATION_ARGS) {
   const GGS_formalParameterSignature operand0 = GGS_formalParameterSignature::extractObject (inEffectiveParameterArray.objectAtIndex (0 COMMA_HERE),

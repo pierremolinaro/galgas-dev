@@ -4,7 +4,7 @@
 //
 //  This file is part of libpm library
 //
-//  Copyright (C) 1996, ..., 2024 Pierre Molinaro.
+//  Copyright (C) 1996, ..., 2026 Pierre Molinaro.
 //
 //  e-mail : pierre@pcmolinaro.name
 //
@@ -46,6 +46,9 @@
 #endif
 
 #if COMPILE_FOR_WINDOWS == 1
+//  #include <Windows.h>
+//  #include <ShellApi.h>
+//  #include <ComDef.h>
   #include <Shlobj.h>
 #endif
 

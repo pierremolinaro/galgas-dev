@@ -7593,7 +7593,7 @@ class cMapElement : public CollectionElement {
 //--------------------------------------------------------------------------------------------------
 
 #include "C_galgas_function_descriptor.h"
-#include "ObjectArray.h"
+#include "GALGAS_ObjectArray.h"
 
 
 //--- START OF USER ZONE 2

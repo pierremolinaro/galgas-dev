@@ -168,7 +168,7 @@ end
    <Unit filename="%!LIBPM_PATH%/galgas/galgas-input-output.cpp" />
    <Unit filename="%!LIBPM_PATH%/galgas/C_galgas_class_inspector.cpp" />
    <Unit filename="%!LIBPM_PATH%/galgas/IssueWithFixIt.cpp" />
-   <Unit filename="%!LIBPM_PATH%/galgas/ObjectArray.cpp" />
+   <Unit filename="%!LIBPM_PATH%/galgas/GALGAS_ObjectArray.cpp" />
    <Unit filename="%!LIBPM_PATH%/galgas/CollectionElement" />
    <Unit filename="%!LIBPM_PATH%/galgas/capCollectionElement.cpp" />
    <Unit filename="%!LIBPM_PATH%/galgas/capCollectionElementArray.cpp" />

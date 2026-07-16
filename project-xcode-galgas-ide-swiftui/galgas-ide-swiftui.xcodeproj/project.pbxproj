@@ -37,7 +37,7 @@
 		CF305FB62D0D8A2E000A5F79 /* BigSigned.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305E572D0D8A2E000A5F79 /* BigSigned.cpp */; };
 		CF305FB72D0D8A2E000A5F79 /* BigSigned-divide.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305E5D2D0D8A2E000A5F79 /* BigSigned-divide.cpp */; };
 		CF305FB82D0D8A2E000A5F79 /* GGS_sint64.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305F232D0D8A2E000A5F79 /* GGS_sint64.cpp */; };
-		CF305FB92D0D8A2E000A5F79 /* ObjectArray.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305F0A2D0D8A2E000A5F79 /* ObjectArray.cpp */; };
+		CF305FB92D0D8A2E000A5F79 /* GALGAS_ObjectArray.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305F0A2D0D8A2E000A5F79 /* GALGAS_ObjectArray.cpp */; };
 		CF305FBB2D0D8A2E000A5F79 /* BigSigned-multiply.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305E5F2D0D8A2E000A5F79 /* BigSigned-multiply.cpp */; };
 		CF305FBC2D0D8A2E000A5F79 /* BigUnsigned-bit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305E662D0D8A2E000A5F79 /* BigUnsigned-bit.cpp */; };
 		CF305FBD2D0D8A2E000A5F79 /* md5.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305F872D0D8A2E000A5F79 /* md5.cpp */; };
@@ -213,7 +213,7 @@
 		CF8F80FC2D0D91490095170B /* BigSigned.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305E572D0D8A2E000A5F79 /* BigSigned.cpp */; };
 		CF8F80FD2D0D91490095170B /* BigSigned-divide.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305E5D2D0D8A2E000A5F79 /* BigSigned-divide.cpp */; };
 		CF8F80FE2D0D91490095170B /* GGS_sint64.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305F232D0D8A2E000A5F79 /* GGS_sint64.cpp */; };
-		CF8F80FF2D0D91490095170B /* ObjectArray.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305F0A2D0D8A2E000A5F79 /* ObjectArray.cpp */; };
+		CF8F80FF2D0D91490095170B /* GALGAS_ObjectArray.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305F0A2D0D8A2E000A5F79 /* GALGAS_ObjectArray.cpp */; };
 		CF8F81002D0D91490095170B /* BigSigned-multiply.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305E5F2D0D8A2E000A5F79 /* BigSigned-multiply.cpp */; };
 		CF8F81012D0D91490095170B /* BigUnsigned-bit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305E662D0D8A2E000A5F79 /* BigUnsigned-bit.cpp */; };
 		CF8F81022D0D91490095170B /* md5.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305F872D0D8A2E000A5F79 /* md5.cpp */; };
@@ -549,8 +549,8 @@
 		CF305F062D0D8A2E000A5F79 /* IssueDescriptor.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = IssueDescriptor.cpp; sourceTree = "<group>"; };
 		CF305F072D0D8A2E000A5F79 /* LexiqueIntrospection.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LexiqueIntrospection.h; sourceTree = "<group>"; };
 		CF305F082D0D8A2E000A5F79 /* LexiqueIntrospection.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = LexiqueIntrospection.cpp; sourceTree = "<group>"; };
-		CF305F092D0D8A2E000A5F79 /* ObjectArray.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ObjectArray.h; sourceTree = "<group>"; };
-		CF305F0A2D0D8A2E000A5F79 /* ObjectArray.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ObjectArray.cpp; sourceTree = "<group>"; };
+		CF305F092D0D8A2E000A5F79 /* GALGAS_ObjectArray.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GALGAS_ObjectArray.h; sourceTree = "<group>"; };
+		CF305F0A2D0D8A2E000A5F79 /* GALGAS_ObjectArray.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = GALGAS_ObjectArray.cpp; sourceTree = "<group>"; };
 		CF305F0B2D0D8A2E000A5F79 /* ComparisonKind.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ComparisonKind.h; sourceTree = "<group>"; };
 		CF305F0C2D0D8A2E000A5F79 /* ComparisonResult.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ComparisonResult.h; sourceTree = "<group>"; };
 		CF305F0D2D0D8A2E000A5F79 /* Compiler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Compiler.h; sourceTree = "<group>"; };
@@ -990,8 +990,8 @@
 				CF305EFA2D0D8A2E000A5F79 /* capCollectionElementArray.cpp */,
 				CF305EFD2D0D8A2E000A5F79 /* CollectionElement.h */,
 				CF305EFE2D0D8A2E000A5F79 /* CollectionElement.cpp */,
-				CF305F092D0D8A2E000A5F79 /* ObjectArray.h */,
-				CF305F0A2D0D8A2E000A5F79 /* ObjectArray.cpp */,
+				CF305F092D0D8A2E000A5F79 /* GALGAS_ObjectArray.h */,
+				CF305F0A2D0D8A2E000A5F79 /* GALGAS_ObjectArray.cpp */,
 				CF305F0B2D0D8A2E000A5F79 /* ComparisonKind.h */,
 				CF305F0C2D0D8A2E000A5F79 /* ComparisonResult.h */,
 				CF305F0D2D0D8A2E000A5F79 /* Compiler.h */,
@@ -1494,7 +1494,7 @@
 				CF8F80FC2D0D91490095170B /* BigSigned.cpp in Sources */,
 				CF8F80FD2D0D91490095170B /* BigSigned-divide.cpp in Sources */,
 				CF8F80FE2D0D91490095170B /* GGS_sint64.cpp in Sources */,
-				CF8F80FF2D0D91490095170B /* ObjectArray.cpp in Sources */,
+				CF8F80FF2D0D91490095170B /* GALGAS_ObjectArray.cpp in Sources */,
 				CF8F81002D0D91490095170B /* BigSigned-multiply.cpp in Sources */,
 				CF8F81012D0D91490095170B /* BigUnsigned-bit.cpp in Sources */,
 				CF8F81022D0D91490095170B /* md5.cpp in Sources */,
@@ -1721,7 +1721,7 @@
 				CF305FB62D0D8A2E000A5F79 /* BigSigned.cpp in Sources */,
 				CF305FB72D0D8A2E000A5F79 /* BigSigned-divide.cpp in Sources */,
 				CF305FB82D0D8A2E000A5F79 /* GGS_sint64.cpp in Sources */,
-				CF305FB92D0D8A2E000A5F79 /* ObjectArray.cpp in Sources */,
+				CF305FB92D0D8A2E000A5F79 /* GALGAS_ObjectArray.cpp in Sources */,
 				CF305FBB2D0D8A2E000A5F79 /* BigSigned-multiply.cpp in Sources */,
 				CF305FBC2D0D8A2E000A5F79 /* BigUnsigned-bit.cpp in Sources */,
 				CF305FBD2D0D8A2E000A5F79 /* md5.cpp in Sources */,

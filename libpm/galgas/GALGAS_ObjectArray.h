@@ -1,8 +1,8 @@
 //--------------------------------------------------------------------------------------------------
 //
-//  ObjectArray
+//  capCollectionElementArray                                                                    
 //
-//  This file is part of libpm library
+//  This file is part of libpm library                                                           
 //
 //  Copyright (C) 2010, ..., 2026 Pierre Molinaro.
 //
@@ -18,36 +18,42 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-#include "ObjectArray.h"
-#include "all-predefined-types.h"
+#pragma once
 
 //--------------------------------------------------------------------------------------------------
 
-ObjectArray::ObjectArray (const GGS_objectlist & inObjectList,
-                          Compiler * inCompiler
-                          COMMA_LOCATION_ARGS) :
-mArray (nullptr),
-mCount (0) {
-  mCount = inObjectList.count () ;
-  macroMyNewArray (mArray, GGS_object, mCount) ;
-  for (uint32_t i=0 ; i<mCount ; i++) {
-    mArray [i] = inObjectList.getter_mValueAtIndex (GGS_uint (i), inCompiler COMMA_THERE) ;
-  }
-}
+#include "SharedObject.h"
 
 //--------------------------------------------------------------------------------------------------
 
-ObjectArray::~ObjectArray (void) {
-  macroMyDeleteArray (mArray) ;
-  mCount = 0 ;
-}
+class GGS_object ;
+class GGS_objectlist ;
+class Compiler ;
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_object ObjectArray::objectAtIndex (const uint32_t inIndex
-                                       COMMA_LOCATION_ARGS) const {
-  macroAssertThere (inIndex < mCount, "inIndex (%ld) >= mCount (%ld)", inIndex, mCount) ;
-  return mArray [inIndex] ;
-}
+class GALGAS_ObjectArray final {
+//--- Default constructor
+  public: GALGAS_ObjectArray (const GGS_objectlist & inObjectList,
+                              Compiler * inCompiler
+                              COMMA_LOCATION_ARGS) ;
+
+//--- Virtual destructor
+  public: ~ GALGAS_ObjectArray (void) ;
+
+//--- No copy
+  private: GALGAS_ObjectArray (const GALGAS_ObjectArray & inSource) ;
+  private: GALGAS_ObjectArray & operator = (const GALGAS_ObjectArray & inSource) ;
+
+//--- Object count
+  public: inline uint32_t count (void) const { return mCount ; }
+
+//--- Object at index
+  public: GGS_object objectAtIndex (const uint32_t inIndex COMMA_LOCATION_ARGS) const ;
+
+//--- Attributes
+  private: GGS_object * mArray ;
+  private: uint32_t mCount ;
+} ;
 
 //--------------------------------------------------------------------------------------------------

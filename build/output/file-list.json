@@ -141,7 +141,7 @@
        "galgas-input-output.cpp",
        "C_galgas_class_inspector.cpp",
        "IssueWithFixIt.cpp",
-       "ObjectArray.cpp",
+       "GALGAS_ObjectArray.cpp",
        "CollectionElement.cpp",
        "capCollectionElement.cpp",
        "capCollectionElementArray.cpp",

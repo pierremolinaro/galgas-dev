@@ -52,14 +52,14 @@ static const GALGAS_TypeDescriptor * functionArgs_%![FUNCTION_NAME identifierRep
 %
 if [FORMAL_ARGUMENT_LIST count] == 0 then
   %static GGS_object functionWithGenericHeader_%![FUNCTION_NAME identifierRepresentation]% (%?^%Compiler * inCompiler,\n%
-                                             !^%const ObjectArray & /* inEffectiveParameterArray */,\n%
+                                             !^%const GALGAS_ObjectArray & /* inEffectiveParameterArray */,\n%
                                              !^%const GGS_location & /* inErrorLocation */\n%
                                              !^%COMMA_LOCATION_ARGS) {\n%
   %  return function_%![FUNCTION_NAME identifierRepresentation]% (inCompiler COMMA_THERE).getter_object (THERE) ;\n%
   %}\n%
 else
   %static GGS_object functionWithGenericHeader_%![FUNCTION_NAME identifierRepresentation]% (%?^%Compiler * inCompiler,\n%
-                                             !^%const ObjectArray & inEffectiveParameterArray,\n%
+                                             !^%const GALGAS_ObjectArray & inEffectiveParameterArray,\n%
                                              !^%const GGS_location & /* inErrorLocation*/\n%
                                              !^%COMMA_LOCATION_ARGS) {\n%
   for (mFormalSelector mFormalArgumentType mFormalArgumentCppName mFormalArgumentName mIsConstant) in FORMAL_ARGUMENT_LIST do (IDX)

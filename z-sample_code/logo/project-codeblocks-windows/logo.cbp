@@ -160,7 +160,7 @@
    <Unit filename="../build/libpm/galgas/galgas-input-output.cpp" />
    <Unit filename="../build/libpm/galgas/C_galgas_class_inspector.cpp" />
    <Unit filename="../build/libpm/galgas/IssueWithFixIt.cpp" />
-   <Unit filename="../build/libpm/galgas/ObjectArray.cpp" />
+   <Unit filename="../build/libpm/galgas/GALGAS_ObjectArray.cpp" />
    <Unit filename="../build/libpm/galgas/CollectionElement" />
    <Unit filename="../build/libpm/galgas/capCollectionElement.cpp" />
    <Unit filename="../build/libpm/galgas/capCollectionElementArray.cpp" />
