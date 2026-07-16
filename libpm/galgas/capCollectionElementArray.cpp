@@ -322,7 +322,7 @@ capCollectionElement capCollectionElementArray::objectAtIndex (const uint32_t in
 
 //--------------------------------------------------------------------------------------------------
 
-cCollectionElement * capCollectionElementArray::uniquelyReferencedPointerAtIndex (const uint32_t inIndex
+CollectionElement * capCollectionElementArray::uniquelyReferencedPointerAtIndex (const uint32_t inIndex
                                                                                   COMMA_LOCATION_ARGS) {
   insulateOrCreate () ;
   macroUniqueSharedObject (mSharedRoot) ;
@@ -333,7 +333,7 @@ cCollectionElement * capCollectionElementArray::uniquelyReferencedPointerAtIndex
 
 //--------------------------------------------------------------------------------------------------
 
-const cCollectionElement * capCollectionElementArray::pointerAtIndexForReadAccess (const uint32_t inIndex
+const CollectionElement * capCollectionElementArray::pointerAtIndexForReadAccess (const uint32_t inIndex
                                                                                    COMMA_LOCATION_ARGS) const {
   macroAssertThere (inIndex < count (), "inIndex (%ld) >= mCount (%ld)", inIndex, count ()) ;
   return mSharedRoot->mArray [inIndex].ptr () ;

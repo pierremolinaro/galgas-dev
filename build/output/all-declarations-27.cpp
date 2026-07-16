@@ -3535,7 +3535,7 @@ static const GALGAS_TypeDescriptor * functionArgs_definitionGroupAmount [1] = {
 //--------------------------------------------------------------------------------------------------
 
 static GGS_object functionWithGenericHeader_definitionGroupAmount (Compiler * inCompiler,
-                                                                   const cObjectArray & /* inEffectiveParameterArray */,
+                                                                   const ObjectArray & /* inEffectiveParameterArray */,
                                                                    const GGS_location & /* inErrorLocation */
                                                                    COMMA_LOCATION_ARGS) {
   return function_definitionGroupAmount (inCompiler COMMA_THERE).getter_object (THERE) ;
@@ -3979,7 +3979,7 @@ static const GALGAS_TypeDescriptor * functionArgs_buildLexicalTypeMap [1] = {
 //--------------------------------------------------------------------------------------------------
 
 static GGS_object functionWithGenericHeader_buildLexicalTypeMap (Compiler * inCompiler,
-                                                                 const cObjectArray & /* inEffectiveParameterArray */,
+                                                                 const ObjectArray & /* inEffectiveParameterArray */,
                                                                  const GGS_location & /* inErrorLocation */
                                                                  COMMA_LOCATION_ARGS) {
   return function_buildLexicalTypeMap (inCompiler COMMA_THERE).getter_object (THERE) ;

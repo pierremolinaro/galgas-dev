@@ -168,11 +168,10 @@ end
    <Unit filename="%!LIBPM_PATH%/galgas/galgas-input-output.cpp" />
    <Unit filename="%!LIBPM_PATH%/galgas/C_galgas_class_inspector.cpp" />
    <Unit filename="%!LIBPM_PATH%/galgas/IssueWithFixIt.cpp" />
-   <Unit filename="%!LIBPM_PATH%/galgas/cObjectArray.cpp" />
-   <Unit filename="%!LIBPM_PATH%/galgas/cCollectionElement.cpp" />
+   <Unit filename="%!LIBPM_PATH%/galgas/ObjectArray.cpp" />
+   <Unit filename="%!LIBPM_PATH%/galgas/CollectionElement" />
    <Unit filename="%!LIBPM_PATH%/galgas/capCollectionElement.cpp" />
    <Unit filename="%!LIBPM_PATH%/galgas/capCollectionElementArray.cpp" />
-   <Unit filename="%!LIBPM_PATH%/galgas/cGenericAbstractEnumerator.cpp" />
    <Unit filename="%!LIBPM_PATH%/galgas/Enumerator_range.cpp" />
    <Unit filename="%!LIBPM_PATH%/galgas/IndexingDictionary.cpp" />
    <Unit filename="%!LIBPM_PATH%/galgas/IssueDescriptor.cpp" />

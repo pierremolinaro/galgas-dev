@@ -8,111 +8,6 @@
 #include "all-declarations-2.h"
 
 //--------------------------------------------------------------------------------------------------
-
-GGS_syntaxExtensions::GGS_syntaxExtensions (void) :
-mProperty_dictionary () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_syntaxExtensions::GGS_syntaxExtensions (const GGS_syntaxExtensions & inSource) :
-mProperty_dictionary (inSource.mProperty_dictionary) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_syntaxExtensions & GGS_syntaxExtensions::operator = (const GGS_syntaxExtensions & inSource) {
-  mProperty_dictionary = inSource.mProperty_dictionary ;
-  return *this ;
-}
-
-//---Synthetized initializer -----------------------------------------------------------------------
-
-GGS_syntaxExtensions GGS_syntaxExtensions::init (Compiler * inCompiler
-                                                 COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_syntaxExtensions result ;
-  result.setInitializedProperties (inCompiler) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_syntaxExtensions::setInitializedProperties (Compiler * inCompiler) {
-  mProperty_dictionary = GGS_syntaxExtensionsDictionary::init (inCompiler COMMA_HERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_syntaxExtensions::GGS_syntaxExtensions (const GGS_syntaxExtensionsDictionary & inOperand0) :
-mProperty_dictionary (inOperand0) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GGS_syntaxExtensions::isValid (void) const {
-  return mProperty_dictionary.isValid () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_syntaxExtensions::drop (void) {
-  mProperty_dictionary.drop () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_syntaxExtensions::description (String & ioString,
-                                        const int32_t inIndentation) const {
-  ioString.appendCString ("<struct @syntaxExtensions:") ;
-  if (! isValid ()) {
-    ioString.appendCString (" not built") ;
-  }else{
-    mProperty_dictionary.description (ioString, inIndentation+1) ;
-  }
-  ioString.appendCString (">") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//     @syntaxExtensions generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_syntaxExtensions ("syntaxExtensions",
-                                                                     nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_syntaxExtensions::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_syntaxExtensions ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_syntaxExtensions::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_syntaxExtensions (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_syntaxExtensions GGS_syntaxExtensions::extractObject (const GGS_object & inObject,
-                                                          Compiler * inCompiler
-                                                          COMMA_LOCATION_ARGS) {
-  GGS_syntaxExtensions result ;
-  const GGS_syntaxExtensions * p = (const GGS_syntaxExtensions *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_syntaxExtensions *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("syntaxExtensions", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
 //  Extension Getter '@syntaxExtensions listForKey'
 //--------------------------------------------------------------------------------------------------
 
@@ -494,55 +389,55 @@ GGS_string extensionGetter_formalArgumentMessage (const GGS_formalArgumentPassin
 //Class for element of '@formalParameterListAST' list
 //--------------------------------------------------------------------------------------------------
 
-class cCollectionElement_formalParameterListAST : public cCollectionElement {
+class CollectionElement_formalParameterListAST : public CollectionElement {
   public: GGS_formalParameterListAST_2E_element mObject ;
 
 //--- Class functions
-  public: cCollectionElement_formalParameterListAST (const GGS_lstring & in_mFormalSelector,
-                                                     const GGS_formalArgumentPassingModeAST & in_mFormalArgumentPassingMode,
-                                                     const GGS_lstring & in_mFormalArgumentTypeName,
-                                                     const GGS_lstring & in_mFormalArgumentName,
-                                                     const GGS_bool & in_mIsUnused
-                                                     COMMA_LOCATION_ARGS) ;
-  public: cCollectionElement_formalParameterListAST (const GGS_formalParameterListAST_2E_element & inElement COMMA_LOCATION_ARGS) ;
+  public: CollectionElement_formalParameterListAST (const GGS_lstring & in_mFormalSelector,
+                                                    const GGS_formalArgumentPassingModeAST & in_mFormalArgumentPassingMode,
+                                                    const GGS_lstring & in_mFormalArgumentTypeName,
+                                                    const GGS_lstring & in_mFormalArgumentName,
+                                                    const GGS_bool & in_mIsUnused
+                                                    COMMA_LOCATION_ARGS) ;
+  public: CollectionElement_formalParameterListAST (const GGS_formalParameterListAST_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
 //--- Virtual method that returns a copy of current object
-  public: virtual cCollectionElement * copy (void) ;
+  public: virtual CollectionElement * copy (void) ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-cCollectionElement_formalParameterListAST::cCollectionElement_formalParameterListAST (const GGS_lstring & in_mFormalSelector,
-                                                                                      const GGS_formalArgumentPassingModeAST & in_mFormalArgumentPassingMode,
-                                                                                      const GGS_lstring & in_mFormalArgumentTypeName,
-                                                                                      const GGS_lstring & in_mFormalArgumentName,
-                                                                                      const GGS_bool & in_mIsUnused
-                                                                                      COMMA_LOCATION_ARGS) :
-cCollectionElement (THERE),
+CollectionElement_formalParameterListAST::CollectionElement_formalParameterListAST (const GGS_lstring & in_mFormalSelector,
+                                                                                    const GGS_formalArgumentPassingModeAST & in_mFormalArgumentPassingMode,
+                                                                                    const GGS_lstring & in_mFormalArgumentTypeName,
+                                                                                    const GGS_lstring & in_mFormalArgumentName,
+                                                                                    const GGS_bool & in_mIsUnused
+                                                                                    COMMA_LOCATION_ARGS) :
+CollectionElement (THERE),
 mObject (in_mFormalSelector, in_mFormalArgumentPassingMode, in_mFormalArgumentTypeName, in_mFormalArgumentName, in_mIsUnused) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-cCollectionElement_formalParameterListAST::cCollectionElement_formalParameterListAST (const GGS_formalParameterListAST_2E_element & inElement COMMA_LOCATION_ARGS) :
-cCollectionElement (THERE),
+CollectionElement_formalParameterListAST::CollectionElement_formalParameterListAST (const GGS_formalParameterListAST_2E_element & inElement COMMA_LOCATION_ARGS) :
+CollectionElement (THERE),
 mObject (inElement.mProperty_mFormalSelector, inElement.mProperty_mFormalArgumentPassingMode, inElement.mProperty_mFormalArgumentTypeName, inElement.mProperty_mFormalArgumentName, inElement.mProperty_mIsUnused) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-bool cCollectionElement_formalParameterListAST::isValid (void) const {
+bool CollectionElement_formalParameterListAST::isValid (void) const {
   return true ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-cCollectionElement * cCollectionElement_formalParameterListAST::copy (void) {
-  cCollectionElement * result = nullptr ;
-  macroMyNew (result, cCollectionElement_formalParameterListAST (mObject.mProperty_mFormalSelector, mObject.mProperty_mFormalArgumentPassingMode, mObject.mProperty_mFormalArgumentTypeName, mObject.mProperty_mFormalArgumentName, mObject.mProperty_mIsUnused COMMA_HERE)) ;
+CollectionElement * CollectionElement_formalParameterListAST::copy (void) {
+  CollectionElement * result = nullptr ;
+  macroMyNew (result, CollectionElement_formalParameterListAST (mObject.mProperty_mFormalSelector, mObject.mProperty_mFormalArgumentPassingMode, mObject.mProperty_mFormalArgumentTypeName, mObject.mProperty_mFormalArgumentName, mObject.mProperty_mIsUnused COMMA_HERE)) ;
   return result ;
 }
 
@@ -561,8 +456,8 @@ mArray () {
   mArray.setCapacity (std::max (16, int32_t (inArray.count ()))) ;
   for (uint32_t i = 0 ; i < inArray.count () ; i++) {
     const capCollectionElement v = inArray.objectAtIndex (i COMMA_HERE) ;
-    cCollectionElement_formalParameterListAST * p = (cCollectionElement_formalParameterListAST *) v.ptr () ;
-    macroValidSharedObject (p, cCollectionElement_formalParameterListAST) ;
+    CollectionElement_formalParameterListAST * p = (CollectionElement_formalParameterListAST *) v.ptr () ;
+    macroValidSharedObject (p, CollectionElement_formalParameterListAST) ;
     const GGS_formalParameterListAST_2E_element element (p->mObject.mProperty_mFormalSelector, p->mObject.mProperty_mFormalArgumentPassingMode, p->mObject.mProperty_mFormalArgumentTypeName, p->mObject.mProperty_mFormalArgumentName, p->mObject.mProperty_mIsUnused) ;
     mArray.appendObject (element) ;
   }
@@ -577,8 +472,8 @@ void GGS_formalParameterListAST::makeAttributesFromObjects (capCollectionElement
                                                             const GGS_lstring & in_mFormalArgumentName,
                                                             const GGS_bool & in_mIsUnused
                                                             COMMA_LOCATION_ARGS) {
-  cCollectionElement_formalParameterListAST * p = nullptr ;
-  macroMyNew (p, cCollectionElement_formalParameterListAST (in_mFormalSelector, in_mFormalArgumentPassingMode, in_mFormalArgumentTypeName, in_mFormalArgumentName, in_mIsUnused COMMA_THERE)) ;
+  CollectionElement_formalParameterListAST * p = nullptr ;
+  macroMyNew (p, CollectionElement_formalParameterListAST (in_mFormalSelector, in_mFormalArgumentPassingMode, in_mFormalArgumentTypeName, in_mFormalArgumentName, in_mIsUnused COMMA_THERE)) ;
   outAttributes.setPointer (p) ;
   macroDetachSharedObject (p) ;
 }
@@ -1332,55 +1227,55 @@ GGS_formalParameterListAST GGS_formalParameterListAST::extractObject (const GGS_
 //Class for element of '@formalInputParameterListAST' list
 //--------------------------------------------------------------------------------------------------
 
-class cCollectionElement_formalInputParameterListAST : public cCollectionElement {
+class CollectionElement_formalInputParameterListAST : public CollectionElement {
   public: GGS_formalInputParameterListAST_2E_element mObject ;
 
 //--- Class functions
-  public: cCollectionElement_formalInputParameterListAST (const GGS_lstring & in_mFormalSelector,
-                                                          const GGS_lstring & in_mFormalArgumentTypeName,
-                                                          const GGS_lstring & in_mFormalArgumentName,
-                                                          const GGS_bool & in_mIsUnused,
-                                                          const GGS_bool & in_mIsConstant
-                                                          COMMA_LOCATION_ARGS) ;
-  public: cCollectionElement_formalInputParameterListAST (const GGS_formalInputParameterListAST_2E_element & inElement COMMA_LOCATION_ARGS) ;
+  public: CollectionElement_formalInputParameterListAST (const GGS_lstring & in_mFormalSelector,
+                                                         const GGS_lstring & in_mFormalArgumentTypeName,
+                                                         const GGS_lstring & in_mFormalArgumentName,
+                                                         const GGS_bool & in_mIsUnused,
+                                                         const GGS_bool & in_mIsConstant
+                                                         COMMA_LOCATION_ARGS) ;
+  public: CollectionElement_formalInputParameterListAST (const GGS_formalInputParameterListAST_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
 //--- Virtual method that returns a copy of current object
-  public: virtual cCollectionElement * copy (void) ;
+  public: virtual CollectionElement * copy (void) ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-cCollectionElement_formalInputParameterListAST::cCollectionElement_formalInputParameterListAST (const GGS_lstring & in_mFormalSelector,
-                                                                                                const GGS_lstring & in_mFormalArgumentTypeName,
-                                                                                                const GGS_lstring & in_mFormalArgumentName,
-                                                                                                const GGS_bool & in_mIsUnused,
-                                                                                                const GGS_bool & in_mIsConstant
-                                                                                                COMMA_LOCATION_ARGS) :
-cCollectionElement (THERE),
+CollectionElement_formalInputParameterListAST::CollectionElement_formalInputParameterListAST (const GGS_lstring & in_mFormalSelector,
+                                                                                              const GGS_lstring & in_mFormalArgumentTypeName,
+                                                                                              const GGS_lstring & in_mFormalArgumentName,
+                                                                                              const GGS_bool & in_mIsUnused,
+                                                                                              const GGS_bool & in_mIsConstant
+                                                                                              COMMA_LOCATION_ARGS) :
+CollectionElement (THERE),
 mObject (in_mFormalSelector, in_mFormalArgumentTypeName, in_mFormalArgumentName, in_mIsUnused, in_mIsConstant) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-cCollectionElement_formalInputParameterListAST::cCollectionElement_formalInputParameterListAST (const GGS_formalInputParameterListAST_2E_element & inElement COMMA_LOCATION_ARGS) :
-cCollectionElement (THERE),
+CollectionElement_formalInputParameterListAST::CollectionElement_formalInputParameterListAST (const GGS_formalInputParameterListAST_2E_element & inElement COMMA_LOCATION_ARGS) :
+CollectionElement (THERE),
 mObject (inElement.mProperty_mFormalSelector, inElement.mProperty_mFormalArgumentTypeName, inElement.mProperty_mFormalArgumentName, inElement.mProperty_mIsUnused, inElement.mProperty_mIsConstant) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-bool cCollectionElement_formalInputParameterListAST::isValid (void) const {
+bool CollectionElement_formalInputParameterListAST::isValid (void) const {
   return true ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-cCollectionElement * cCollectionElement_formalInputParameterListAST::copy (void) {
-  cCollectionElement * result = nullptr ;
-  macroMyNew (result, cCollectionElement_formalInputParameterListAST (mObject.mProperty_mFormalSelector, mObject.mProperty_mFormalArgumentTypeName, mObject.mProperty_mFormalArgumentName, mObject.mProperty_mIsUnused, mObject.mProperty_mIsConstant COMMA_HERE)) ;
+CollectionElement * CollectionElement_formalInputParameterListAST::copy (void) {
+  CollectionElement * result = nullptr ;
+  macroMyNew (result, CollectionElement_formalInputParameterListAST (mObject.mProperty_mFormalSelector, mObject.mProperty_mFormalArgumentTypeName, mObject.mProperty_mFormalArgumentName, mObject.mProperty_mIsUnused, mObject.mProperty_mIsConstant COMMA_HERE)) ;
   return result ;
 }
 
@@ -1399,8 +1294,8 @@ mArray () {
   mArray.setCapacity (std::max (16, int32_t (inArray.count ()))) ;
   for (uint32_t i = 0 ; i < inArray.count () ; i++) {
     const capCollectionElement v = inArray.objectAtIndex (i COMMA_HERE) ;
-    cCollectionElement_formalInputParameterListAST * p = (cCollectionElement_formalInputParameterListAST *) v.ptr () ;
-    macroValidSharedObject (p, cCollectionElement_formalInputParameterListAST) ;
+    CollectionElement_formalInputParameterListAST * p = (CollectionElement_formalInputParameterListAST *) v.ptr () ;
+    macroValidSharedObject (p, CollectionElement_formalInputParameterListAST) ;
     const GGS_formalInputParameterListAST_2E_element element (p->mObject.mProperty_mFormalSelector, p->mObject.mProperty_mFormalArgumentTypeName, p->mObject.mProperty_mFormalArgumentName, p->mObject.mProperty_mIsUnused, p->mObject.mProperty_mIsConstant) ;
     mArray.appendObject (element) ;
   }
@@ -1415,8 +1310,8 @@ void GGS_formalInputParameterListAST::makeAttributesFromObjects (capCollectionEl
                                                                  const GGS_bool & in_mIsUnused,
                                                                  const GGS_bool & in_mIsConstant
                                                                  COMMA_LOCATION_ARGS) {
-  cCollectionElement_formalInputParameterListAST * p = nullptr ;
-  macroMyNew (p, cCollectionElement_formalInputParameterListAST (in_mFormalSelector, in_mFormalArgumentTypeName, in_mFormalArgumentName, in_mIsUnused, in_mIsConstant COMMA_THERE)) ;
+  CollectionElement_formalInputParameterListAST * p = nullptr ;
+  macroMyNew (p, CollectionElement_formalInputParameterListAST (in_mFormalSelector, in_mFormalArgumentTypeName, in_mFormalArgumentName, in_mIsUnused, in_mIsConstant COMMA_THERE)) ;
   outAttributes.setPointer (p) ;
   macroDetachSharedObject (p) ;
 }
@@ -3009,49 +2904,49 @@ GGS_inputParameterDeclaredConstant_2E_weak GGS_inputParameterDeclaredConstant_2E
 //Class for element of '@actualInputParameterListAST' list
 //--------------------------------------------------------------------------------------------------
 
-class cCollectionElement_actualInputParameterListAST : public cCollectionElement {
+class CollectionElement_actualInputParameterListAST : public CollectionElement {
   public: GGS_actualInputParameterListAST_2E_element mObject ;
 
 //--- Class functions
-  public: cCollectionElement_actualInputParameterListAST (const GGS_lstring & in_mActualSelector,
-                                                          const GGS_abstractInputParameter & in_mInputParameter
-                                                          COMMA_LOCATION_ARGS) ;
-  public: cCollectionElement_actualInputParameterListAST (const GGS_actualInputParameterListAST_2E_element & inElement COMMA_LOCATION_ARGS) ;
+  public: CollectionElement_actualInputParameterListAST (const GGS_lstring & in_mActualSelector,
+                                                         const GGS_abstractInputParameter & in_mInputParameter
+                                                         COMMA_LOCATION_ARGS) ;
+  public: CollectionElement_actualInputParameterListAST (const GGS_actualInputParameterListAST_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
 //--- Virtual method that returns a copy of current object
-  public: virtual cCollectionElement * copy (void) ;
+  public: virtual CollectionElement * copy (void) ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-cCollectionElement_actualInputParameterListAST::cCollectionElement_actualInputParameterListAST (const GGS_lstring & in_mActualSelector,
-                                                                                                const GGS_abstractInputParameter & in_mInputParameter
-                                                                                                COMMA_LOCATION_ARGS) :
-cCollectionElement (THERE),
+CollectionElement_actualInputParameterListAST::CollectionElement_actualInputParameterListAST (const GGS_lstring & in_mActualSelector,
+                                                                                              const GGS_abstractInputParameter & in_mInputParameter
+                                                                                              COMMA_LOCATION_ARGS) :
+CollectionElement (THERE),
 mObject (in_mActualSelector, in_mInputParameter) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-cCollectionElement_actualInputParameterListAST::cCollectionElement_actualInputParameterListAST (const GGS_actualInputParameterListAST_2E_element & inElement COMMA_LOCATION_ARGS) :
-cCollectionElement (THERE),
+CollectionElement_actualInputParameterListAST::CollectionElement_actualInputParameterListAST (const GGS_actualInputParameterListAST_2E_element & inElement COMMA_LOCATION_ARGS) :
+CollectionElement (THERE),
 mObject (inElement.mProperty_mActualSelector, inElement.mProperty_mInputParameter) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-bool cCollectionElement_actualInputParameterListAST::isValid (void) const {
+bool CollectionElement_actualInputParameterListAST::isValid (void) const {
   return true ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-cCollectionElement * cCollectionElement_actualInputParameterListAST::copy (void) {
-  cCollectionElement * result = nullptr ;
-  macroMyNew (result, cCollectionElement_actualInputParameterListAST (mObject.mProperty_mActualSelector, mObject.mProperty_mInputParameter COMMA_HERE)) ;
+CollectionElement * CollectionElement_actualInputParameterListAST::copy (void) {
+  CollectionElement * result = nullptr ;
+  macroMyNew (result, CollectionElement_actualInputParameterListAST (mObject.mProperty_mActualSelector, mObject.mProperty_mInputParameter COMMA_HERE)) ;
   return result ;
 }
 
@@ -3070,8 +2965,8 @@ mArray () {
   mArray.setCapacity (std::max (16, int32_t (inArray.count ()))) ;
   for (uint32_t i = 0 ; i < inArray.count () ; i++) {
     const capCollectionElement v = inArray.objectAtIndex (i COMMA_HERE) ;
-    cCollectionElement_actualInputParameterListAST * p = (cCollectionElement_actualInputParameterListAST *) v.ptr () ;
-    macroValidSharedObject (p, cCollectionElement_actualInputParameterListAST) ;
+    CollectionElement_actualInputParameterListAST * p = (CollectionElement_actualInputParameterListAST *) v.ptr () ;
+    macroValidSharedObject (p, CollectionElement_actualInputParameterListAST) ;
     const GGS_actualInputParameterListAST_2E_element element (p->mObject.mProperty_mActualSelector, p->mObject.mProperty_mInputParameter) ;
     mArray.appendObject (element) ;
   }
@@ -3083,8 +2978,8 @@ void GGS_actualInputParameterListAST::makeAttributesFromObjects (capCollectionEl
                                                                  const GGS_lstring & in_mActualSelector,
                                                                  const GGS_abstractInputParameter & in_mInputParameter
                                                                  COMMA_LOCATION_ARGS) {
-  cCollectionElement_actualInputParameterListAST * p = nullptr ;
-  macroMyNew (p, cCollectionElement_actualInputParameterListAST (in_mActualSelector, in_mInputParameter COMMA_THERE)) ;
+  CollectionElement_actualInputParameterListAST * p = nullptr ;
+  macroMyNew (p, CollectionElement_actualInputParameterListAST (in_mActualSelector, in_mInputParameter COMMA_THERE)) ;
   outAttributes.setPointer (p) ;
   macroDetachSharedObject (p) ;
 }
@@ -3616,47 +3511,47 @@ GGS_actualInputParameterListAST GGS_actualInputParameterListAST::extractObject (
 //Class for element of '@semanticDeclarationListAST' list
 //--------------------------------------------------------------------------------------------------
 
-class cCollectionElement_semanticDeclarationListAST : public cCollectionElement {
+class CollectionElement_semanticDeclarationListAST : public CollectionElement {
   public: GGS_semanticDeclarationListAST_2E_element mObject ;
 
 //--- Class functions
-  public: cCollectionElement_semanticDeclarationListAST (const GGS_semanticDeclarationAST & in_mSemanticDeclaration
-                                                         COMMA_LOCATION_ARGS) ;
-  public: cCollectionElement_semanticDeclarationListAST (const GGS_semanticDeclarationListAST_2E_element & inElement COMMA_LOCATION_ARGS) ;
+  public: CollectionElement_semanticDeclarationListAST (const GGS_semanticDeclarationAST & in_mSemanticDeclaration
+                                                        COMMA_LOCATION_ARGS) ;
+  public: CollectionElement_semanticDeclarationListAST (const GGS_semanticDeclarationListAST_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
 //--- Virtual method that returns a copy of current object
-  public: virtual cCollectionElement * copy (void) ;
+  public: virtual CollectionElement * copy (void) ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-cCollectionElement_semanticDeclarationListAST::cCollectionElement_semanticDeclarationListAST (const GGS_semanticDeclarationAST & in_mSemanticDeclaration
-                                                                                              COMMA_LOCATION_ARGS) :
-cCollectionElement (THERE),
+CollectionElement_semanticDeclarationListAST::CollectionElement_semanticDeclarationListAST (const GGS_semanticDeclarationAST & in_mSemanticDeclaration
+                                                                                            COMMA_LOCATION_ARGS) :
+CollectionElement (THERE),
 mObject (in_mSemanticDeclaration) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-cCollectionElement_semanticDeclarationListAST::cCollectionElement_semanticDeclarationListAST (const GGS_semanticDeclarationListAST_2E_element & inElement COMMA_LOCATION_ARGS) :
-cCollectionElement (THERE),
+CollectionElement_semanticDeclarationListAST::CollectionElement_semanticDeclarationListAST (const GGS_semanticDeclarationListAST_2E_element & inElement COMMA_LOCATION_ARGS) :
+CollectionElement (THERE),
 mObject (inElement.mProperty_mSemanticDeclaration) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-bool cCollectionElement_semanticDeclarationListAST::isValid (void) const {
+bool CollectionElement_semanticDeclarationListAST::isValid (void) const {
   return true ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-cCollectionElement * cCollectionElement_semanticDeclarationListAST::copy (void) {
-  cCollectionElement * result = nullptr ;
-  macroMyNew (result, cCollectionElement_semanticDeclarationListAST (mObject.mProperty_mSemanticDeclaration COMMA_HERE)) ;
+CollectionElement * CollectionElement_semanticDeclarationListAST::copy (void) {
+  CollectionElement * result = nullptr ;
+  macroMyNew (result, CollectionElement_semanticDeclarationListAST (mObject.mProperty_mSemanticDeclaration COMMA_HERE)) ;
   return result ;
 }
 
@@ -3675,8 +3570,8 @@ mArray () {
   mArray.setCapacity (std::max (16, int32_t (inArray.count ()))) ;
   for (uint32_t i = 0 ; i < inArray.count () ; i++) {
     const capCollectionElement v = inArray.objectAtIndex (i COMMA_HERE) ;
-    cCollectionElement_semanticDeclarationListAST * p = (cCollectionElement_semanticDeclarationListAST *) v.ptr () ;
-    macroValidSharedObject (p, cCollectionElement_semanticDeclarationListAST) ;
+    CollectionElement_semanticDeclarationListAST * p = (CollectionElement_semanticDeclarationListAST *) v.ptr () ;
+    macroValidSharedObject (p, CollectionElement_semanticDeclarationListAST) ;
     const GGS_semanticDeclarationListAST_2E_element element (p->mObject.mProperty_mSemanticDeclaration) ;
     mArray.appendObject (element) ;
   }
@@ -3687,8 +3582,8 @@ mArray () {
 void GGS_semanticDeclarationListAST::makeAttributesFromObjects (capCollectionElement & outAttributes,
                                                                 const GGS_semanticDeclarationAST & in_mSemanticDeclaration
                                                                 COMMA_LOCATION_ARGS) {
-  cCollectionElement_semanticDeclarationListAST * p = nullptr ;
-  macroMyNew (p, cCollectionElement_semanticDeclarationListAST (in_mSemanticDeclaration COMMA_THERE)) ;
+  CollectionElement_semanticDeclarationListAST * p = nullptr ;
+  macroMyNew (p, CollectionElement_semanticDeclarationListAST (in_mSemanticDeclaration COMMA_THERE)) ;
   outAttributes.setPointer (p) ;
   macroDetachSharedObject (p) ;
 }
@@ -4512,53 +4407,53 @@ GGS_onceFunctionDeclarationAST_2E_weak GGS_onceFunctionDeclarationAST_2E_weak::e
 //Class for element of '@formalTemplateInputParameterListAST' list
 //--------------------------------------------------------------------------------------------------
 
-class cCollectionElement_formalTemplateInputParameterListAST : public cCollectionElement {
+class CollectionElement_formalTemplateInputParameterListAST : public CollectionElement {
   public: GGS_formalTemplateInputParameterListAST_2E_element mObject ;
 
 //--- Class functions
-  public: cCollectionElement_formalTemplateInputParameterListAST (const GGS_lstring & in_mFormalTemplateSelector,
-                                                                  const GGS_lstring & in_mFormalArgumentTypeName,
-                                                                  const GGS_lstring & in_mFormalArgumentName,
-                                                                  const GGS_bool & in_mIsUnused
-                                                                  COMMA_LOCATION_ARGS) ;
-  public: cCollectionElement_formalTemplateInputParameterListAST (const GGS_formalTemplateInputParameterListAST_2E_element & inElement COMMA_LOCATION_ARGS) ;
+  public: CollectionElement_formalTemplateInputParameterListAST (const GGS_lstring & in_mFormalTemplateSelector,
+                                                                 const GGS_lstring & in_mFormalArgumentTypeName,
+                                                                 const GGS_lstring & in_mFormalArgumentName,
+                                                                 const GGS_bool & in_mIsUnused
+                                                                 COMMA_LOCATION_ARGS) ;
+  public: CollectionElement_formalTemplateInputParameterListAST (const GGS_formalTemplateInputParameterListAST_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
 //--- Virtual method that returns a copy of current object
-  public: virtual cCollectionElement * copy (void) ;
+  public: virtual CollectionElement * copy (void) ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-cCollectionElement_formalTemplateInputParameterListAST::cCollectionElement_formalTemplateInputParameterListAST (const GGS_lstring & in_mFormalTemplateSelector,
-                                                                                                                const GGS_lstring & in_mFormalArgumentTypeName,
-                                                                                                                const GGS_lstring & in_mFormalArgumentName,
-                                                                                                                const GGS_bool & in_mIsUnused
-                                                                                                                COMMA_LOCATION_ARGS) :
-cCollectionElement (THERE),
+CollectionElement_formalTemplateInputParameterListAST::CollectionElement_formalTemplateInputParameterListAST (const GGS_lstring & in_mFormalTemplateSelector,
+                                                                                                              const GGS_lstring & in_mFormalArgumentTypeName,
+                                                                                                              const GGS_lstring & in_mFormalArgumentName,
+                                                                                                              const GGS_bool & in_mIsUnused
+                                                                                                              COMMA_LOCATION_ARGS) :
+CollectionElement (THERE),
 mObject (in_mFormalTemplateSelector, in_mFormalArgumentTypeName, in_mFormalArgumentName, in_mIsUnused) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-cCollectionElement_formalTemplateInputParameterListAST::cCollectionElement_formalTemplateInputParameterListAST (const GGS_formalTemplateInputParameterListAST_2E_element & inElement COMMA_LOCATION_ARGS) :
-cCollectionElement (THERE),
+CollectionElement_formalTemplateInputParameterListAST::CollectionElement_formalTemplateInputParameterListAST (const GGS_formalTemplateInputParameterListAST_2E_element & inElement COMMA_LOCATION_ARGS) :
+CollectionElement (THERE),
 mObject (inElement.mProperty_mFormalTemplateSelector, inElement.mProperty_mFormalArgumentTypeName, inElement.mProperty_mFormalArgumentName, inElement.mProperty_mIsUnused) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-bool cCollectionElement_formalTemplateInputParameterListAST::isValid (void) const {
+bool CollectionElement_formalTemplateInputParameterListAST::isValid (void) const {
   return true ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-cCollectionElement * cCollectionElement_formalTemplateInputParameterListAST::copy (void) {
-  cCollectionElement * result = nullptr ;
-  macroMyNew (result, cCollectionElement_formalTemplateInputParameterListAST (mObject.mProperty_mFormalTemplateSelector, mObject.mProperty_mFormalArgumentTypeName, mObject.mProperty_mFormalArgumentName, mObject.mProperty_mIsUnused COMMA_HERE)) ;
+CollectionElement * CollectionElement_formalTemplateInputParameterListAST::copy (void) {
+  CollectionElement * result = nullptr ;
+  macroMyNew (result, CollectionElement_formalTemplateInputParameterListAST (mObject.mProperty_mFormalTemplateSelector, mObject.mProperty_mFormalArgumentTypeName, mObject.mProperty_mFormalArgumentName, mObject.mProperty_mIsUnused COMMA_HERE)) ;
   return result ;
 }
 
@@ -4577,8 +4472,8 @@ mArray () {
   mArray.setCapacity (std::max (16, int32_t (inArray.count ()))) ;
   for (uint32_t i = 0 ; i < inArray.count () ; i++) {
     const capCollectionElement v = inArray.objectAtIndex (i COMMA_HERE) ;
-    cCollectionElement_formalTemplateInputParameterListAST * p = (cCollectionElement_formalTemplateInputParameterListAST *) v.ptr () ;
-    macroValidSharedObject (p, cCollectionElement_formalTemplateInputParameterListAST) ;
+    CollectionElement_formalTemplateInputParameterListAST * p = (CollectionElement_formalTemplateInputParameterListAST *) v.ptr () ;
+    macroValidSharedObject (p, CollectionElement_formalTemplateInputParameterListAST) ;
     const GGS_formalTemplateInputParameterListAST_2E_element element (p->mObject.mProperty_mFormalTemplateSelector, p->mObject.mProperty_mFormalArgumentTypeName, p->mObject.mProperty_mFormalArgumentName, p->mObject.mProperty_mIsUnused) ;
     mArray.appendObject (element) ;
   }
@@ -4592,8 +4487,8 @@ void GGS_formalTemplateInputParameterListAST::makeAttributesFromObjects (capColl
                                                                          const GGS_lstring & in_mFormalArgumentName,
                                                                          const GGS_bool & in_mIsUnused
                                                                          COMMA_LOCATION_ARGS) {
-  cCollectionElement_formalTemplateInputParameterListAST * p = nullptr ;
-  macroMyNew (p, cCollectionElement_formalTemplateInputParameterListAST (in_mFormalTemplateSelector, in_mFormalArgumentTypeName, in_mFormalArgumentName, in_mIsUnused COMMA_THERE)) ;
+  CollectionElement_formalTemplateInputParameterListAST * p = nullptr ;
+  macroMyNew (p, CollectionElement_formalTemplateInputParameterListAST (in_mFormalTemplateSelector, in_mFormalArgumentTypeName, in_mFormalArgumentName, in_mIsUnused COMMA_THERE)) ;
   outAttributes.setPointer (p) ;
   macroDetachSharedObject (p) ;
 }
@@ -5273,51 +5168,51 @@ GGS_formalTemplateInputParameterListAST GGS_formalTemplateInputParameterListAST:
 //Class for element of '@filewrapperTemplateListAST' list
 //--------------------------------------------------------------------------------------------------
 
-class cCollectionElement_filewrapperTemplateListAST : public cCollectionElement {
+class CollectionElement_filewrapperTemplateListAST : public CollectionElement {
   public: GGS_filewrapperTemplateListAST_2E_element mObject ;
 
 //--- Class functions
-  public: cCollectionElement_filewrapperTemplateListAST (const GGS_lstring & in_mFilewrapperTemplateName,
-                                                         const GGS_lstring & in_mFilewrapperTemplatePath,
-                                                         const GGS_formalTemplateInputParameterListAST & in_mFilewrapperTemplateFormalInputParameters
-                                                         COMMA_LOCATION_ARGS) ;
-  public: cCollectionElement_filewrapperTemplateListAST (const GGS_filewrapperTemplateListAST_2E_element & inElement COMMA_LOCATION_ARGS) ;
+  public: CollectionElement_filewrapperTemplateListAST (const GGS_lstring & in_mFilewrapperTemplateName,
+                                                        const GGS_lstring & in_mFilewrapperTemplatePath,
+                                                        const GGS_formalTemplateInputParameterListAST & in_mFilewrapperTemplateFormalInputParameters
+                                                        COMMA_LOCATION_ARGS) ;
+  public: CollectionElement_filewrapperTemplateListAST (const GGS_filewrapperTemplateListAST_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
 //--- Virtual method that returns a copy of current object
-  public: virtual cCollectionElement * copy (void) ;
+  public: virtual CollectionElement * copy (void) ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-cCollectionElement_filewrapperTemplateListAST::cCollectionElement_filewrapperTemplateListAST (const GGS_lstring & in_mFilewrapperTemplateName,
-                                                                                              const GGS_lstring & in_mFilewrapperTemplatePath,
-                                                                                              const GGS_formalTemplateInputParameterListAST & in_mFilewrapperTemplateFormalInputParameters
-                                                                                              COMMA_LOCATION_ARGS) :
-cCollectionElement (THERE),
+CollectionElement_filewrapperTemplateListAST::CollectionElement_filewrapperTemplateListAST (const GGS_lstring & in_mFilewrapperTemplateName,
+                                                                                            const GGS_lstring & in_mFilewrapperTemplatePath,
+                                                                                            const GGS_formalTemplateInputParameterListAST & in_mFilewrapperTemplateFormalInputParameters
+                                                                                            COMMA_LOCATION_ARGS) :
+CollectionElement (THERE),
 mObject (in_mFilewrapperTemplateName, in_mFilewrapperTemplatePath, in_mFilewrapperTemplateFormalInputParameters) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-cCollectionElement_filewrapperTemplateListAST::cCollectionElement_filewrapperTemplateListAST (const GGS_filewrapperTemplateListAST_2E_element & inElement COMMA_LOCATION_ARGS) :
-cCollectionElement (THERE),
+CollectionElement_filewrapperTemplateListAST::CollectionElement_filewrapperTemplateListAST (const GGS_filewrapperTemplateListAST_2E_element & inElement COMMA_LOCATION_ARGS) :
+CollectionElement (THERE),
 mObject (inElement.mProperty_mFilewrapperTemplateName, inElement.mProperty_mFilewrapperTemplatePath, inElement.mProperty_mFilewrapperTemplateFormalInputParameters) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-bool cCollectionElement_filewrapperTemplateListAST::isValid (void) const {
+bool CollectionElement_filewrapperTemplateListAST::isValid (void) const {
   return true ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-cCollectionElement * cCollectionElement_filewrapperTemplateListAST::copy (void) {
-  cCollectionElement * result = nullptr ;
-  macroMyNew (result, cCollectionElement_filewrapperTemplateListAST (mObject.mProperty_mFilewrapperTemplateName, mObject.mProperty_mFilewrapperTemplatePath, mObject.mProperty_mFilewrapperTemplateFormalInputParameters COMMA_HERE)) ;
+CollectionElement * CollectionElement_filewrapperTemplateListAST::copy (void) {
+  CollectionElement * result = nullptr ;
+  macroMyNew (result, CollectionElement_filewrapperTemplateListAST (mObject.mProperty_mFilewrapperTemplateName, mObject.mProperty_mFilewrapperTemplatePath, mObject.mProperty_mFilewrapperTemplateFormalInputParameters COMMA_HERE)) ;
   return result ;
 }
 
@@ -5336,8 +5231,8 @@ mArray () {
   mArray.setCapacity (std::max (16, int32_t (inArray.count ()))) ;
   for (uint32_t i = 0 ; i < inArray.count () ; i++) {
     const capCollectionElement v = inArray.objectAtIndex (i COMMA_HERE) ;
-    cCollectionElement_filewrapperTemplateListAST * p = (cCollectionElement_filewrapperTemplateListAST *) v.ptr () ;
-    macroValidSharedObject (p, cCollectionElement_filewrapperTemplateListAST) ;
+    CollectionElement_filewrapperTemplateListAST * p = (CollectionElement_filewrapperTemplateListAST *) v.ptr () ;
+    macroValidSharedObject (p, CollectionElement_filewrapperTemplateListAST) ;
     const GGS_filewrapperTemplateListAST_2E_element element (p->mObject.mProperty_mFilewrapperTemplateName, p->mObject.mProperty_mFilewrapperTemplatePath, p->mObject.mProperty_mFilewrapperTemplateFormalInputParameters) ;
     mArray.appendObject (element) ;
   }
@@ -5350,8 +5245,8 @@ void GGS_filewrapperTemplateListAST::makeAttributesFromObjects (capCollectionEle
                                                                 const GGS_lstring & in_mFilewrapperTemplatePath,
                                                                 const GGS_formalTemplateInputParameterListAST & in_mFilewrapperTemplateFormalInputParameters
                                                                 COMMA_LOCATION_ARGS) {
-  cCollectionElement_filewrapperTemplateListAST * p = nullptr ;
-  macroMyNew (p, cCollectionElement_filewrapperTemplateListAST (in_mFilewrapperTemplateName, in_mFilewrapperTemplatePath, in_mFilewrapperTemplateFormalInputParameters COMMA_THERE)) ;
+  CollectionElement_filewrapperTemplateListAST * p = nullptr ;
+  macroMyNew (p, CollectionElement_filewrapperTemplateListAST (in_mFilewrapperTemplateName, in_mFilewrapperTemplatePath, in_mFilewrapperTemplateFormalInputParameters COMMA_THERE)) ;
   outAttributes.setPointer (p) ;
   macroDetachSharedObject (p) ;
 }
@@ -6079,47 +5974,47 @@ GGS_filewrapperDeclarationAST_2E_weak GGS_filewrapperDeclarationAST_2E_weak::ext
 //Class for element of '@syntaxInstructionList' list
 //--------------------------------------------------------------------------------------------------
 
-class cCollectionElement_syntaxInstructionList : public cCollectionElement {
+class CollectionElement_syntaxInstructionList : public CollectionElement {
   public: GGS_syntaxInstructionList_2E_element mObject ;
 
 //--- Class functions
-  public: cCollectionElement_syntaxInstructionList (const GGS_syntaxInstructionAST & in_mInstruction
-                                                    COMMA_LOCATION_ARGS) ;
-  public: cCollectionElement_syntaxInstructionList (const GGS_syntaxInstructionList_2E_element & inElement COMMA_LOCATION_ARGS) ;
+  public: CollectionElement_syntaxInstructionList (const GGS_syntaxInstructionAST & in_mInstruction
+                                                   COMMA_LOCATION_ARGS) ;
+  public: CollectionElement_syntaxInstructionList (const GGS_syntaxInstructionList_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
 //--- Virtual method that returns a copy of current object
-  public: virtual cCollectionElement * copy (void) ;
+  public: virtual CollectionElement * copy (void) ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-cCollectionElement_syntaxInstructionList::cCollectionElement_syntaxInstructionList (const GGS_syntaxInstructionAST & in_mInstruction
-                                                                                    COMMA_LOCATION_ARGS) :
-cCollectionElement (THERE),
+CollectionElement_syntaxInstructionList::CollectionElement_syntaxInstructionList (const GGS_syntaxInstructionAST & in_mInstruction
+                                                                                  COMMA_LOCATION_ARGS) :
+CollectionElement (THERE),
 mObject (in_mInstruction) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-cCollectionElement_syntaxInstructionList::cCollectionElement_syntaxInstructionList (const GGS_syntaxInstructionList_2E_element & inElement COMMA_LOCATION_ARGS) :
-cCollectionElement (THERE),
+CollectionElement_syntaxInstructionList::CollectionElement_syntaxInstructionList (const GGS_syntaxInstructionList_2E_element & inElement COMMA_LOCATION_ARGS) :
+CollectionElement (THERE),
 mObject (inElement.mProperty_mInstruction) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-bool cCollectionElement_syntaxInstructionList::isValid (void) const {
+bool CollectionElement_syntaxInstructionList::isValid (void) const {
   return true ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-cCollectionElement * cCollectionElement_syntaxInstructionList::copy (void) {
-  cCollectionElement * result = nullptr ;
-  macroMyNew (result, cCollectionElement_syntaxInstructionList (mObject.mProperty_mInstruction COMMA_HERE)) ;
+CollectionElement * CollectionElement_syntaxInstructionList::copy (void) {
+  CollectionElement * result = nullptr ;
+  macroMyNew (result, CollectionElement_syntaxInstructionList (mObject.mProperty_mInstruction COMMA_HERE)) ;
   return result ;
 }
 
@@ -6138,8 +6033,8 @@ mArray () {
   mArray.setCapacity (std::max (16, int32_t (inArray.count ()))) ;
   for (uint32_t i = 0 ; i < inArray.count () ; i++) {
     const capCollectionElement v = inArray.objectAtIndex (i COMMA_HERE) ;
-    cCollectionElement_syntaxInstructionList * p = (cCollectionElement_syntaxInstructionList *) v.ptr () ;
-    macroValidSharedObject (p, cCollectionElement_syntaxInstructionList) ;
+    CollectionElement_syntaxInstructionList * p = (CollectionElement_syntaxInstructionList *) v.ptr () ;
+    macroValidSharedObject (p, CollectionElement_syntaxInstructionList) ;
     const GGS_syntaxInstructionList_2E_element element (p->mObject.mProperty_mInstruction) ;
     mArray.appendObject (element) ;
   }
@@ -6150,8 +6045,8 @@ mArray () {
 void GGS_syntaxInstructionList::makeAttributesFromObjects (capCollectionElement & outAttributes,
                                                            const GGS_syntaxInstructionAST & in_mInstruction
                                                            COMMA_LOCATION_ARGS) {
-  cCollectionElement_syntaxInstructionList * p = nullptr ;
-  macroMyNew (p, cCollectionElement_syntaxInstructionList (in_mInstruction COMMA_THERE)) ;
+  CollectionElement_syntaxInstructionList * p = nullptr ;
+  macroMyNew (p, CollectionElement_syntaxInstructionList (in_mInstruction COMMA_THERE)) ;
   outAttributes.setPointer (p) ;
   macroDetachSharedObject (p) ;
 }
@@ -6609,51 +6504,51 @@ GGS_syntaxInstructionList GGS_syntaxInstructionList::extractObject (const GGS_ob
 //Class for element of '@nonTerminalLabelListAST' list
 //--------------------------------------------------------------------------------------------------
 
-class cCollectionElement_nonTerminalLabelListAST : public cCollectionElement {
+class CollectionElement_nonTerminalLabelListAST : public CollectionElement {
   public: GGS_nonTerminalLabelListAST_2E_element mObject ;
 
 //--- Class functions
-  public: cCollectionElement_nonTerminalLabelListAST (const GGS_lstring & in_mLabelName,
-                                                      const GGS_formalParameterListAST & in_mFormalArgumentList,
-                                                      const GGS_location & in_mEndOfArgumentLocation
-                                                      COMMA_LOCATION_ARGS) ;
-  public: cCollectionElement_nonTerminalLabelListAST (const GGS_nonTerminalLabelListAST_2E_element & inElement COMMA_LOCATION_ARGS) ;
+  public: CollectionElement_nonTerminalLabelListAST (const GGS_lstring & in_mLabelName,
+                                                     const GGS_formalParameterListAST & in_mFormalArgumentList,
+                                                     const GGS_location & in_mEndOfArgumentLocation
+                                                     COMMA_LOCATION_ARGS) ;
+  public: CollectionElement_nonTerminalLabelListAST (const GGS_nonTerminalLabelListAST_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
 //--- Virtual method that returns a copy of current object
-  public: virtual cCollectionElement * copy (void) ;
+  public: virtual CollectionElement * copy (void) ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-cCollectionElement_nonTerminalLabelListAST::cCollectionElement_nonTerminalLabelListAST (const GGS_lstring & in_mLabelName,
-                                                                                        const GGS_formalParameterListAST & in_mFormalArgumentList,
-                                                                                        const GGS_location & in_mEndOfArgumentLocation
-                                                                                        COMMA_LOCATION_ARGS) :
-cCollectionElement (THERE),
+CollectionElement_nonTerminalLabelListAST::CollectionElement_nonTerminalLabelListAST (const GGS_lstring & in_mLabelName,
+                                                                                      const GGS_formalParameterListAST & in_mFormalArgumentList,
+                                                                                      const GGS_location & in_mEndOfArgumentLocation
+                                                                                      COMMA_LOCATION_ARGS) :
+CollectionElement (THERE),
 mObject (in_mLabelName, in_mFormalArgumentList, in_mEndOfArgumentLocation) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-cCollectionElement_nonTerminalLabelListAST::cCollectionElement_nonTerminalLabelListAST (const GGS_nonTerminalLabelListAST_2E_element & inElement COMMA_LOCATION_ARGS) :
-cCollectionElement (THERE),
+CollectionElement_nonTerminalLabelListAST::CollectionElement_nonTerminalLabelListAST (const GGS_nonTerminalLabelListAST_2E_element & inElement COMMA_LOCATION_ARGS) :
+CollectionElement (THERE),
 mObject (inElement.mProperty_mLabelName, inElement.mProperty_mFormalArgumentList, inElement.mProperty_mEndOfArgumentLocation) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-bool cCollectionElement_nonTerminalLabelListAST::isValid (void) const {
+bool CollectionElement_nonTerminalLabelListAST::isValid (void) const {
   return true ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-cCollectionElement * cCollectionElement_nonTerminalLabelListAST::copy (void) {
-  cCollectionElement * result = nullptr ;
-  macroMyNew (result, cCollectionElement_nonTerminalLabelListAST (mObject.mProperty_mLabelName, mObject.mProperty_mFormalArgumentList, mObject.mProperty_mEndOfArgumentLocation COMMA_HERE)) ;
+CollectionElement * CollectionElement_nonTerminalLabelListAST::copy (void) {
+  CollectionElement * result = nullptr ;
+  macroMyNew (result, CollectionElement_nonTerminalLabelListAST (mObject.mProperty_mLabelName, mObject.mProperty_mFormalArgumentList, mObject.mProperty_mEndOfArgumentLocation COMMA_HERE)) ;
   return result ;
 }
 
@@ -6672,8 +6567,8 @@ mArray () {
   mArray.setCapacity (std::max (16, int32_t (inArray.count ()))) ;
   for (uint32_t i = 0 ; i < inArray.count () ; i++) {
     const capCollectionElement v = inArray.objectAtIndex (i COMMA_HERE) ;
-    cCollectionElement_nonTerminalLabelListAST * p = (cCollectionElement_nonTerminalLabelListAST *) v.ptr () ;
-    macroValidSharedObject (p, cCollectionElement_nonTerminalLabelListAST) ;
+    CollectionElement_nonTerminalLabelListAST * p = (CollectionElement_nonTerminalLabelListAST *) v.ptr () ;
+    macroValidSharedObject (p, CollectionElement_nonTerminalLabelListAST) ;
     const GGS_nonTerminalLabelListAST_2E_element element (p->mObject.mProperty_mLabelName, p->mObject.mProperty_mFormalArgumentList, p->mObject.mProperty_mEndOfArgumentLocation) ;
     mArray.appendObject (element) ;
   }
@@ -6686,8 +6581,8 @@ void GGS_nonTerminalLabelListAST::makeAttributesFromObjects (capCollectionElemen
                                                              const GGS_formalParameterListAST & in_mFormalArgumentList,
                                                              const GGS_location & in_mEndOfArgumentLocation
                                                              COMMA_LOCATION_ARGS) {
-  cCollectionElement_nonTerminalLabelListAST * p = nullptr ;
-  macroMyNew (p, cCollectionElement_nonTerminalLabelListAST (in_mLabelName, in_mFormalArgumentList, in_mEndOfArgumentLocation COMMA_THERE)) ;
+  CollectionElement_nonTerminalLabelListAST * p = nullptr ;
+  macroMyNew (p, CollectionElement_nonTerminalLabelListAST (in_mLabelName, in_mFormalArgumentList, in_mEndOfArgumentLocation COMMA_THERE)) ;
   outAttributes.setPointer (p) ;
   macroDetachSharedObject (p) ;
 }
@@ -7293,49 +7188,49 @@ GGS_nonTerminalLabelListAST GGS_nonTerminalLabelListAST::extractObject (const GG
 //Class for element of '@nonterminalDeclarationListAST' list
 //--------------------------------------------------------------------------------------------------
 
-class cCollectionElement_nonterminalDeclarationListAST : public cCollectionElement {
+class CollectionElement_nonterminalDeclarationListAST : public CollectionElement {
   public: GGS_nonterminalDeclarationListAST_2E_element mObject ;
 
 //--- Class functions
-  public: cCollectionElement_nonterminalDeclarationListAST (const GGS_lstring & in_mNonterminalName,
-                                                            const GGS_nonTerminalLabelListAST & in_mLabels
-                                                            COMMA_LOCATION_ARGS) ;
-  public: cCollectionElement_nonterminalDeclarationListAST (const GGS_nonterminalDeclarationListAST_2E_element & inElement COMMA_LOCATION_ARGS) ;
+  public: CollectionElement_nonterminalDeclarationListAST (const GGS_lstring & in_mNonterminalName,
+                                                           const GGS_nonTerminalLabelListAST & in_mLabels
+                                                           COMMA_LOCATION_ARGS) ;
+  public: CollectionElement_nonterminalDeclarationListAST (const GGS_nonterminalDeclarationListAST_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
 //--- Virtual method that returns a copy of current object
-  public: virtual cCollectionElement * copy (void) ;
+  public: virtual CollectionElement * copy (void) ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-cCollectionElement_nonterminalDeclarationListAST::cCollectionElement_nonterminalDeclarationListAST (const GGS_lstring & in_mNonterminalName,
-                                                                                                    const GGS_nonTerminalLabelListAST & in_mLabels
-                                                                                                    COMMA_LOCATION_ARGS) :
-cCollectionElement (THERE),
+CollectionElement_nonterminalDeclarationListAST::CollectionElement_nonterminalDeclarationListAST (const GGS_lstring & in_mNonterminalName,
+                                                                                                  const GGS_nonTerminalLabelListAST & in_mLabels
+                                                                                                  COMMA_LOCATION_ARGS) :
+CollectionElement (THERE),
 mObject (in_mNonterminalName, in_mLabels) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-cCollectionElement_nonterminalDeclarationListAST::cCollectionElement_nonterminalDeclarationListAST (const GGS_nonterminalDeclarationListAST_2E_element & inElement COMMA_LOCATION_ARGS) :
-cCollectionElement (THERE),
+CollectionElement_nonterminalDeclarationListAST::CollectionElement_nonterminalDeclarationListAST (const GGS_nonterminalDeclarationListAST_2E_element & inElement COMMA_LOCATION_ARGS) :
+CollectionElement (THERE),
 mObject (inElement.mProperty_mNonterminalName, inElement.mProperty_mLabels) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-bool cCollectionElement_nonterminalDeclarationListAST::isValid (void) const {
+bool CollectionElement_nonterminalDeclarationListAST::isValid (void) const {
   return true ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-cCollectionElement * cCollectionElement_nonterminalDeclarationListAST::copy (void) {
-  cCollectionElement * result = nullptr ;
-  macroMyNew (result, cCollectionElement_nonterminalDeclarationListAST (mObject.mProperty_mNonterminalName, mObject.mProperty_mLabels COMMA_HERE)) ;
+CollectionElement * CollectionElement_nonterminalDeclarationListAST::copy (void) {
+  CollectionElement * result = nullptr ;
+  macroMyNew (result, CollectionElement_nonterminalDeclarationListAST (mObject.mProperty_mNonterminalName, mObject.mProperty_mLabels COMMA_HERE)) ;
   return result ;
 }
 
@@ -7354,8 +7249,8 @@ mArray () {
   mArray.setCapacity (std::max (16, int32_t (inArray.count ()))) ;
   for (uint32_t i = 0 ; i < inArray.count () ; i++) {
     const capCollectionElement v = inArray.objectAtIndex (i COMMA_HERE) ;
-    cCollectionElement_nonterminalDeclarationListAST * p = (cCollectionElement_nonterminalDeclarationListAST *) v.ptr () ;
-    macroValidSharedObject (p, cCollectionElement_nonterminalDeclarationListAST) ;
+    CollectionElement_nonterminalDeclarationListAST * p = (CollectionElement_nonterminalDeclarationListAST *) v.ptr () ;
+    macroValidSharedObject (p, CollectionElement_nonterminalDeclarationListAST) ;
     const GGS_nonterminalDeclarationListAST_2E_element element (p->mObject.mProperty_mNonterminalName, p->mObject.mProperty_mLabels) ;
     mArray.appendObject (element) ;
   }
@@ -7367,8 +7262,8 @@ void GGS_nonterminalDeclarationListAST::makeAttributesFromObjects (capCollection
                                                                    const GGS_lstring & in_mNonterminalName,
                                                                    const GGS_nonTerminalLabelListAST & in_mLabels
                                                                    COMMA_LOCATION_ARGS) {
-  cCollectionElement_nonterminalDeclarationListAST * p = nullptr ;
-  macroMyNew (p, cCollectionElement_nonterminalDeclarationListAST (in_mNonterminalName, in_mLabels COMMA_THERE)) ;
+  CollectionElement_nonterminalDeclarationListAST * p = nullptr ;
+  macroMyNew (p, CollectionElement_nonterminalDeclarationListAST (in_mNonterminalName, in_mLabels COMMA_THERE)) ;
   outAttributes.setPointer (p) ;
   macroDetachSharedObject (p) ;
 }
@@ -7900,55 +7795,55 @@ GGS_nonterminalDeclarationListAST GGS_nonterminalDeclarationListAST::extractObje
 //Class for element of '@syntaxRuleLabelListAST' list
 //--------------------------------------------------------------------------------------------------
 
-class cCollectionElement_syntaxRuleLabelListAST : public cCollectionElement {
+class CollectionElement_syntaxRuleLabelListAST : public CollectionElement {
   public: GGS_syntaxRuleLabelListAST_2E_element mObject ;
 
 //--- Class functions
-  public: cCollectionElement_syntaxRuleLabelListAST (const GGS_lstring & in_mLabelName,
-                                                     const GGS_formalParameterListAST & in_mFormalArguments,
-                                                     const GGS_location & in_mEndOfArgumentLocation,
-                                                     const GGS_syntaxInstructionList & in_mSyntaxInstructionList,
-                                                     const GGS_location & in_mEndOfInstructionList
-                                                     COMMA_LOCATION_ARGS) ;
-  public: cCollectionElement_syntaxRuleLabelListAST (const GGS_syntaxRuleLabelListAST_2E_element & inElement COMMA_LOCATION_ARGS) ;
+  public: CollectionElement_syntaxRuleLabelListAST (const GGS_lstring & in_mLabelName,
+                                                    const GGS_formalParameterListAST & in_mFormalArguments,
+                                                    const GGS_location & in_mEndOfArgumentLocation,
+                                                    const GGS_syntaxInstructionList & in_mSyntaxInstructionList,
+                                                    const GGS_location & in_mEndOfInstructionList
+                                                    COMMA_LOCATION_ARGS) ;
+  public: CollectionElement_syntaxRuleLabelListAST (const GGS_syntaxRuleLabelListAST_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
 //--- Virtual method that returns a copy of current object
-  public: virtual cCollectionElement * copy (void) ;
+  public: virtual CollectionElement * copy (void) ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-cCollectionElement_syntaxRuleLabelListAST::cCollectionElement_syntaxRuleLabelListAST (const GGS_lstring & in_mLabelName,
-                                                                                      const GGS_formalParameterListAST & in_mFormalArguments,
-                                                                                      const GGS_location & in_mEndOfArgumentLocation,
-                                                                                      const GGS_syntaxInstructionList & in_mSyntaxInstructionList,
-                                                                                      const GGS_location & in_mEndOfInstructionList
-                                                                                      COMMA_LOCATION_ARGS) :
-cCollectionElement (THERE),
+CollectionElement_syntaxRuleLabelListAST::CollectionElement_syntaxRuleLabelListAST (const GGS_lstring & in_mLabelName,
+                                                                                    const GGS_formalParameterListAST & in_mFormalArguments,
+                                                                                    const GGS_location & in_mEndOfArgumentLocation,
+                                                                                    const GGS_syntaxInstructionList & in_mSyntaxInstructionList,
+                                                                                    const GGS_location & in_mEndOfInstructionList
+                                                                                    COMMA_LOCATION_ARGS) :
+CollectionElement (THERE),
 mObject (in_mLabelName, in_mFormalArguments, in_mEndOfArgumentLocation, in_mSyntaxInstructionList, in_mEndOfInstructionList) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-cCollectionElement_syntaxRuleLabelListAST::cCollectionElement_syntaxRuleLabelListAST (const GGS_syntaxRuleLabelListAST_2E_element & inElement COMMA_LOCATION_ARGS) :
-cCollectionElement (THERE),
+CollectionElement_syntaxRuleLabelListAST::CollectionElement_syntaxRuleLabelListAST (const GGS_syntaxRuleLabelListAST_2E_element & inElement COMMA_LOCATION_ARGS) :
+CollectionElement (THERE),
 mObject (inElement.mProperty_mLabelName, inElement.mProperty_mFormalArguments, inElement.mProperty_mEndOfArgumentLocation, inElement.mProperty_mSyntaxInstructionList, inElement.mProperty_mEndOfInstructionList) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-bool cCollectionElement_syntaxRuleLabelListAST::isValid (void) const {
+bool CollectionElement_syntaxRuleLabelListAST::isValid (void) const {
   return true ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-cCollectionElement * cCollectionElement_syntaxRuleLabelListAST::copy (void) {
-  cCollectionElement * result = nullptr ;
-  macroMyNew (result, cCollectionElement_syntaxRuleLabelListAST (mObject.mProperty_mLabelName, mObject.mProperty_mFormalArguments, mObject.mProperty_mEndOfArgumentLocation, mObject.mProperty_mSyntaxInstructionList, mObject.mProperty_mEndOfInstructionList COMMA_HERE)) ;
+CollectionElement * CollectionElement_syntaxRuleLabelListAST::copy (void) {
+  CollectionElement * result = nullptr ;
+  macroMyNew (result, CollectionElement_syntaxRuleLabelListAST (mObject.mProperty_mLabelName, mObject.mProperty_mFormalArguments, mObject.mProperty_mEndOfArgumentLocation, mObject.mProperty_mSyntaxInstructionList, mObject.mProperty_mEndOfInstructionList COMMA_HERE)) ;
   return result ;
 }
 
@@ -7967,8 +7862,8 @@ mArray () {
   mArray.setCapacity (std::max (16, int32_t (inArray.count ()))) ;
   for (uint32_t i = 0 ; i < inArray.count () ; i++) {
     const capCollectionElement v = inArray.objectAtIndex (i COMMA_HERE) ;
-    cCollectionElement_syntaxRuleLabelListAST * p = (cCollectionElement_syntaxRuleLabelListAST *) v.ptr () ;
-    macroValidSharedObject (p, cCollectionElement_syntaxRuleLabelListAST) ;
+    CollectionElement_syntaxRuleLabelListAST * p = (CollectionElement_syntaxRuleLabelListAST *) v.ptr () ;
+    macroValidSharedObject (p, CollectionElement_syntaxRuleLabelListAST) ;
     const GGS_syntaxRuleLabelListAST_2E_element element (p->mObject.mProperty_mLabelName, p->mObject.mProperty_mFormalArguments, p->mObject.mProperty_mEndOfArgumentLocation, p->mObject.mProperty_mSyntaxInstructionList, p->mObject.mProperty_mEndOfInstructionList) ;
     mArray.appendObject (element) ;
   }
@@ -7983,8 +7878,8 @@ void GGS_syntaxRuleLabelListAST::makeAttributesFromObjects (capCollectionElement
                                                             const GGS_syntaxInstructionList & in_mSyntaxInstructionList,
                                                             const GGS_location & in_mEndOfInstructionList
                                                             COMMA_LOCATION_ARGS) {
-  cCollectionElement_syntaxRuleLabelListAST * p = nullptr ;
-  macroMyNew (p, cCollectionElement_syntaxRuleLabelListAST (in_mLabelName, in_mFormalArguments, in_mEndOfArgumentLocation, in_mSyntaxInstructionList, in_mEndOfInstructionList COMMA_THERE)) ;
+  CollectionElement_syntaxRuleLabelListAST * p = nullptr ;
+  macroMyNew (p, CollectionElement_syntaxRuleLabelListAST (in_mLabelName, in_mFormalArguments, in_mEndOfArgumentLocation, in_mSyntaxInstructionList, in_mEndOfInstructionList COMMA_THERE)) ;
   outAttributes.setPointer (p) ;
   macroDetachSharedObject (p) ;
 }
@@ -8738,49 +8633,49 @@ GGS_syntaxRuleLabelListAST GGS_syntaxRuleLabelListAST::extractObject (const GGS_
 //Class for element of '@syntaxRuleListAST' list
 //--------------------------------------------------------------------------------------------------
 
-class cCollectionElement_syntaxRuleListAST : public cCollectionElement {
+class CollectionElement_syntaxRuleListAST : public CollectionElement {
   public: GGS_syntaxRuleListAST_2E_element mObject ;
 
 //--- Class functions
-  public: cCollectionElement_syntaxRuleListAST (const GGS_lstring & in_mNonterminalName,
-                                                const GGS_syntaxRuleLabelListAST & in_mLabelList
-                                                COMMA_LOCATION_ARGS) ;
-  public: cCollectionElement_syntaxRuleListAST (const GGS_syntaxRuleListAST_2E_element & inElement COMMA_LOCATION_ARGS) ;
+  public: CollectionElement_syntaxRuleListAST (const GGS_lstring & in_mNonterminalName,
+                                               const GGS_syntaxRuleLabelListAST & in_mLabelList
+                                               COMMA_LOCATION_ARGS) ;
+  public: CollectionElement_syntaxRuleListAST (const GGS_syntaxRuleListAST_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
 //--- Virtual method that returns a copy of current object
-  public: virtual cCollectionElement * copy (void) ;
+  public: virtual CollectionElement * copy (void) ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-cCollectionElement_syntaxRuleListAST::cCollectionElement_syntaxRuleListAST (const GGS_lstring & in_mNonterminalName,
-                                                                            const GGS_syntaxRuleLabelListAST & in_mLabelList
-                                                                            COMMA_LOCATION_ARGS) :
-cCollectionElement (THERE),
+CollectionElement_syntaxRuleListAST::CollectionElement_syntaxRuleListAST (const GGS_lstring & in_mNonterminalName,
+                                                                          const GGS_syntaxRuleLabelListAST & in_mLabelList
+                                                                          COMMA_LOCATION_ARGS) :
+CollectionElement (THERE),
 mObject (in_mNonterminalName, in_mLabelList) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-cCollectionElement_syntaxRuleListAST::cCollectionElement_syntaxRuleListAST (const GGS_syntaxRuleListAST_2E_element & inElement COMMA_LOCATION_ARGS) :
-cCollectionElement (THERE),
+CollectionElement_syntaxRuleListAST::CollectionElement_syntaxRuleListAST (const GGS_syntaxRuleListAST_2E_element & inElement COMMA_LOCATION_ARGS) :
+CollectionElement (THERE),
 mObject (inElement.mProperty_mNonterminalName, inElement.mProperty_mLabelList) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-bool cCollectionElement_syntaxRuleListAST::isValid (void) const {
+bool CollectionElement_syntaxRuleListAST::isValid (void) const {
   return true ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-cCollectionElement * cCollectionElement_syntaxRuleListAST::copy (void) {
-  cCollectionElement * result = nullptr ;
-  macroMyNew (result, cCollectionElement_syntaxRuleListAST (mObject.mProperty_mNonterminalName, mObject.mProperty_mLabelList COMMA_HERE)) ;
+CollectionElement * CollectionElement_syntaxRuleListAST::copy (void) {
+  CollectionElement * result = nullptr ;
+  macroMyNew (result, CollectionElement_syntaxRuleListAST (mObject.mProperty_mNonterminalName, mObject.mProperty_mLabelList COMMA_HERE)) ;
   return result ;
 }
 
@@ -8799,8 +8694,8 @@ mArray () {
   mArray.setCapacity (std::max (16, int32_t (inArray.count ()))) ;
   for (uint32_t i = 0 ; i < inArray.count () ; i++) {
     const capCollectionElement v = inArray.objectAtIndex (i COMMA_HERE) ;
-    cCollectionElement_syntaxRuleListAST * p = (cCollectionElement_syntaxRuleListAST *) v.ptr () ;
-    macroValidSharedObject (p, cCollectionElement_syntaxRuleListAST) ;
+    CollectionElement_syntaxRuleListAST * p = (CollectionElement_syntaxRuleListAST *) v.ptr () ;
+    macroValidSharedObject (p, CollectionElement_syntaxRuleListAST) ;
     const GGS_syntaxRuleListAST_2E_element element (p->mObject.mProperty_mNonterminalName, p->mObject.mProperty_mLabelList) ;
     mArray.appendObject (element) ;
   }
@@ -8812,8 +8707,8 @@ void GGS_syntaxRuleListAST::makeAttributesFromObjects (capCollectionElement & ou
                                                        const GGS_lstring & in_mNonterminalName,
                                                        const GGS_syntaxRuleLabelListAST & in_mLabelList
                                                        COMMA_LOCATION_ARGS) {
-  cCollectionElement_syntaxRuleListAST * p = nullptr ;
-  macroMyNew (p, cCollectionElement_syntaxRuleListAST (in_mNonterminalName, in_mLabelList COMMA_THERE)) ;
+  CollectionElement_syntaxRuleListAST * p = nullptr ;
+  macroMyNew (p, CollectionElement_syntaxRuleListAST (in_mNonterminalName, in_mLabelList COMMA_THERE)) ;
   outAttributes.setPointer (p) ;
   macroDetachSharedObject (p) ;
 }
@@ -9345,49 +9240,49 @@ GGS_syntaxRuleListAST GGS_syntaxRuleListAST::extractObject (const GGS_object & i
 //Class for element of '@listOfSyntaxInstructionList' list
 //--------------------------------------------------------------------------------------------------
 
-class cCollectionElement_listOfSyntaxInstructionList : public cCollectionElement {
+class CollectionElement_listOfSyntaxInstructionList : public CollectionElement {
   public: GGS_listOfSyntaxInstructionList_2E_element mObject ;
 
 //--- Class functions
-  public: cCollectionElement_listOfSyntaxInstructionList (const GGS_syntaxInstructionList & in_mSyntaxInstructionList,
-                                                          const GGS_location & in_mEndOf_5F_instructions
-                                                          COMMA_LOCATION_ARGS) ;
-  public: cCollectionElement_listOfSyntaxInstructionList (const GGS_listOfSyntaxInstructionList_2E_element & inElement COMMA_LOCATION_ARGS) ;
+  public: CollectionElement_listOfSyntaxInstructionList (const GGS_syntaxInstructionList & in_mSyntaxInstructionList,
+                                                         const GGS_location & in_mEndOf_5F_instructions
+                                                         COMMA_LOCATION_ARGS) ;
+  public: CollectionElement_listOfSyntaxInstructionList (const GGS_listOfSyntaxInstructionList_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
 //--- Virtual method that returns a copy of current object
-  public: virtual cCollectionElement * copy (void) ;
+  public: virtual CollectionElement * copy (void) ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-cCollectionElement_listOfSyntaxInstructionList::cCollectionElement_listOfSyntaxInstructionList (const GGS_syntaxInstructionList & in_mSyntaxInstructionList,
-                                                                                                const GGS_location & in_mEndOf_5F_instructions
-                                                                                                COMMA_LOCATION_ARGS) :
-cCollectionElement (THERE),
+CollectionElement_listOfSyntaxInstructionList::CollectionElement_listOfSyntaxInstructionList (const GGS_syntaxInstructionList & in_mSyntaxInstructionList,
+                                                                                              const GGS_location & in_mEndOf_5F_instructions
+                                                                                              COMMA_LOCATION_ARGS) :
+CollectionElement (THERE),
 mObject (in_mSyntaxInstructionList, in_mEndOf_5F_instructions) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-cCollectionElement_listOfSyntaxInstructionList::cCollectionElement_listOfSyntaxInstructionList (const GGS_listOfSyntaxInstructionList_2E_element & inElement COMMA_LOCATION_ARGS) :
-cCollectionElement (THERE),
+CollectionElement_listOfSyntaxInstructionList::CollectionElement_listOfSyntaxInstructionList (const GGS_listOfSyntaxInstructionList_2E_element & inElement COMMA_LOCATION_ARGS) :
+CollectionElement (THERE),
 mObject (inElement.mProperty_mSyntaxInstructionList, inElement.mProperty_mEndOf_5F_instructions) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-bool cCollectionElement_listOfSyntaxInstructionList::isValid (void) const {
+bool CollectionElement_listOfSyntaxInstructionList::isValid (void) const {
   return true ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-cCollectionElement * cCollectionElement_listOfSyntaxInstructionList::copy (void) {
-  cCollectionElement * result = nullptr ;
-  macroMyNew (result, cCollectionElement_listOfSyntaxInstructionList (mObject.mProperty_mSyntaxInstructionList, mObject.mProperty_mEndOf_5F_instructions COMMA_HERE)) ;
+CollectionElement * CollectionElement_listOfSyntaxInstructionList::copy (void) {
+  CollectionElement * result = nullptr ;
+  macroMyNew (result, CollectionElement_listOfSyntaxInstructionList (mObject.mProperty_mSyntaxInstructionList, mObject.mProperty_mEndOf_5F_instructions COMMA_HERE)) ;
   return result ;
 }
 
@@ -9406,8 +9301,8 @@ mArray () {
   mArray.setCapacity (std::max (16, int32_t (inArray.count ()))) ;
   for (uint32_t i = 0 ; i < inArray.count () ; i++) {
     const capCollectionElement v = inArray.objectAtIndex (i COMMA_HERE) ;
-    cCollectionElement_listOfSyntaxInstructionList * p = (cCollectionElement_listOfSyntaxInstructionList *) v.ptr () ;
-    macroValidSharedObject (p, cCollectionElement_listOfSyntaxInstructionList) ;
+    CollectionElement_listOfSyntaxInstructionList * p = (CollectionElement_listOfSyntaxInstructionList *) v.ptr () ;
+    macroValidSharedObject (p, CollectionElement_listOfSyntaxInstructionList) ;
     const GGS_listOfSyntaxInstructionList_2E_element element (p->mObject.mProperty_mSyntaxInstructionList, p->mObject.mProperty_mEndOf_5F_instructions) ;
     mArray.appendObject (element) ;
   }
@@ -9419,8 +9314,8 @@ void GGS_listOfSyntaxInstructionList::makeAttributesFromObjects (capCollectionEl
                                                                  const GGS_syntaxInstructionList & in_mSyntaxInstructionList,
                                                                  const GGS_location & in_mEndOf_5F_instructions
                                                                  COMMA_LOCATION_ARGS) {
-  cCollectionElement_listOfSyntaxInstructionList * p = nullptr ;
-  macroMyNew (p, cCollectionElement_listOfSyntaxInstructionList (in_mSyntaxInstructionList, in_mEndOf_5F_instructions COMMA_THERE)) ;
+  CollectionElement_listOfSyntaxInstructionList * p = nullptr ;
+  macroMyNew (p, CollectionElement_listOfSyntaxInstructionList (in_mSyntaxInstructionList, in_mEndOf_5F_instructions COMMA_THERE)) ;
   outAttributes.setPointer (p) ;
   macroDetachSharedObject (p) ;
 }
@@ -10196,55 +10091,55 @@ GGS_galgas_33_GrammarComponentAST_2E_weak GGS_galgas_33_GrammarComponentAST_2E_w
 //Class for element of '@galgas_33_SyntaxComponentListAST' list
 //--------------------------------------------------------------------------------------------------
 
-class cCollectionElement_galgas_33_SyntaxComponentListAST : public cCollectionElement {
+class CollectionElement_galgas_33_SyntaxComponentListAST : public CollectionElement {
   public: GGS_galgas_33_SyntaxComponentListAST_2E_element mObject ;
 
 //--- Class functions
-  public: cCollectionElement_galgas_33_SyntaxComponentListAST (const GGS_lstring & in_mSyntaxComponentName,
-                                                               const GGS_lstring & in_mImportedLexiqueFilePath,
-                                                               const GGS_nonterminalDeclarationListAST & in_mNonterminalDeclarationList,
-                                                               const GGS_syntaxRuleListAST & in_mRuleList,
-                                                               const GGS_bool & in_mHasTranslateFeature
-                                                               COMMA_LOCATION_ARGS) ;
-  public: cCollectionElement_galgas_33_SyntaxComponentListAST (const GGS_galgas_33_SyntaxComponentListAST_2E_element & inElement COMMA_LOCATION_ARGS) ;
+  public: CollectionElement_galgas_33_SyntaxComponentListAST (const GGS_lstring & in_mSyntaxComponentName,
+                                                              const GGS_lstring & in_mImportedLexiqueFilePath,
+                                                              const GGS_nonterminalDeclarationListAST & in_mNonterminalDeclarationList,
+                                                              const GGS_syntaxRuleListAST & in_mRuleList,
+                                                              const GGS_bool & in_mHasTranslateFeature
+                                                              COMMA_LOCATION_ARGS) ;
+  public: CollectionElement_galgas_33_SyntaxComponentListAST (const GGS_galgas_33_SyntaxComponentListAST_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
 //--- Virtual method that returns a copy of current object
-  public: virtual cCollectionElement * copy (void) ;
+  public: virtual CollectionElement * copy (void) ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-cCollectionElement_galgas_33_SyntaxComponentListAST::cCollectionElement_galgas_33_SyntaxComponentListAST (const GGS_lstring & in_mSyntaxComponentName,
-                                                                                                          const GGS_lstring & in_mImportedLexiqueFilePath,
-                                                                                                          const GGS_nonterminalDeclarationListAST & in_mNonterminalDeclarationList,
-                                                                                                          const GGS_syntaxRuleListAST & in_mRuleList,
-                                                                                                          const GGS_bool & in_mHasTranslateFeature
-                                                                                                          COMMA_LOCATION_ARGS) :
-cCollectionElement (THERE),
+CollectionElement_galgas_33_SyntaxComponentListAST::CollectionElement_galgas_33_SyntaxComponentListAST (const GGS_lstring & in_mSyntaxComponentName,
+                                                                                                        const GGS_lstring & in_mImportedLexiqueFilePath,
+                                                                                                        const GGS_nonterminalDeclarationListAST & in_mNonterminalDeclarationList,
+                                                                                                        const GGS_syntaxRuleListAST & in_mRuleList,
+                                                                                                        const GGS_bool & in_mHasTranslateFeature
+                                                                                                        COMMA_LOCATION_ARGS) :
+CollectionElement (THERE),
 mObject (in_mSyntaxComponentName, in_mImportedLexiqueFilePath, in_mNonterminalDeclarationList, in_mRuleList, in_mHasTranslateFeature) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-cCollectionElement_galgas_33_SyntaxComponentListAST::cCollectionElement_galgas_33_SyntaxComponentListAST (const GGS_galgas_33_SyntaxComponentListAST_2E_element & inElement COMMA_LOCATION_ARGS) :
-cCollectionElement (THERE),
+CollectionElement_galgas_33_SyntaxComponentListAST::CollectionElement_galgas_33_SyntaxComponentListAST (const GGS_galgas_33_SyntaxComponentListAST_2E_element & inElement COMMA_LOCATION_ARGS) :
+CollectionElement (THERE),
 mObject (inElement.mProperty_mSyntaxComponentName, inElement.mProperty_mImportedLexiqueFilePath, inElement.mProperty_mNonterminalDeclarationList, inElement.mProperty_mRuleList, inElement.mProperty_mHasTranslateFeature) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-bool cCollectionElement_galgas_33_SyntaxComponentListAST::isValid (void) const {
+bool CollectionElement_galgas_33_SyntaxComponentListAST::isValid (void) const {
   return true ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-cCollectionElement * cCollectionElement_galgas_33_SyntaxComponentListAST::copy (void) {
-  cCollectionElement * result = nullptr ;
-  macroMyNew (result, cCollectionElement_galgas_33_SyntaxComponentListAST (mObject.mProperty_mSyntaxComponentName, mObject.mProperty_mImportedLexiqueFilePath, mObject.mProperty_mNonterminalDeclarationList, mObject.mProperty_mRuleList, mObject.mProperty_mHasTranslateFeature COMMA_HERE)) ;
+CollectionElement * CollectionElement_galgas_33_SyntaxComponentListAST::copy (void) {
+  CollectionElement * result = nullptr ;
+  macroMyNew (result, CollectionElement_galgas_33_SyntaxComponentListAST (mObject.mProperty_mSyntaxComponentName, mObject.mProperty_mImportedLexiqueFilePath, mObject.mProperty_mNonterminalDeclarationList, mObject.mProperty_mRuleList, mObject.mProperty_mHasTranslateFeature COMMA_HERE)) ;
   return result ;
 }
 
@@ -10263,8 +10158,8 @@ mArray () {
   mArray.setCapacity (std::max (16, int32_t (inArray.count ()))) ;
   for (uint32_t i = 0 ; i < inArray.count () ; i++) {
     const capCollectionElement v = inArray.objectAtIndex (i COMMA_HERE) ;
-    cCollectionElement_galgas_33_SyntaxComponentListAST * p = (cCollectionElement_galgas_33_SyntaxComponentListAST *) v.ptr () ;
-    macroValidSharedObject (p, cCollectionElement_galgas_33_SyntaxComponentListAST) ;
+    CollectionElement_galgas_33_SyntaxComponentListAST * p = (CollectionElement_galgas_33_SyntaxComponentListAST *) v.ptr () ;
+    macroValidSharedObject (p, CollectionElement_galgas_33_SyntaxComponentListAST) ;
     const GGS_galgas_33_SyntaxComponentListAST_2E_element element (p->mObject.mProperty_mSyntaxComponentName, p->mObject.mProperty_mImportedLexiqueFilePath, p->mObject.mProperty_mNonterminalDeclarationList, p->mObject.mProperty_mRuleList, p->mObject.mProperty_mHasTranslateFeature) ;
     mArray.appendObject (element) ;
   }
@@ -10279,8 +10174,8 @@ void GGS_galgas_33_SyntaxComponentListAST::makeAttributesFromObjects (capCollect
                                                                       const GGS_syntaxRuleListAST & in_mRuleList,
                                                                       const GGS_bool & in_mHasTranslateFeature
                                                                       COMMA_LOCATION_ARGS) {
-  cCollectionElement_galgas_33_SyntaxComponentListAST * p = nullptr ;
-  macroMyNew (p, cCollectionElement_galgas_33_SyntaxComponentListAST (in_mSyntaxComponentName, in_mImportedLexiqueFilePath, in_mNonterminalDeclarationList, in_mRuleList, in_mHasTranslateFeature COMMA_THERE)) ;
+  CollectionElement_galgas_33_SyntaxComponentListAST * p = nullptr ;
+  macroMyNew (p, CollectionElement_galgas_33_SyntaxComponentListAST (in_mSyntaxComponentName, in_mImportedLexiqueFilePath, in_mNonterminalDeclarationList, in_mRuleList, in_mHasTranslateFeature COMMA_THERE)) ;
   outAttributes.setPointer (p) ;
   macroDetachSharedObject (p) ;
 }
@@ -11034,49 +10929,49 @@ GGS_galgas_33_SyntaxComponentListAST GGS_galgas_33_SyntaxComponentListAST::extra
 //Class for element of '@prologueEpilogueList' list
 //--------------------------------------------------------------------------------------------------
 
-class cCollectionElement_prologueEpilogueList : public cCollectionElement {
+class CollectionElement_prologueEpilogueList : public CollectionElement {
   public: GGS_prologueEpilogueList_2E_element mObject ;
 
 //--- Class functions
-  public: cCollectionElement_prologueEpilogueList (const GGS_semanticInstructionListAST & in_mInstructionList,
-                                                   const GGS_location & in_mEndOfInstructionList
-                                                   COMMA_LOCATION_ARGS) ;
-  public: cCollectionElement_prologueEpilogueList (const GGS_prologueEpilogueList_2E_element & inElement COMMA_LOCATION_ARGS) ;
+  public: CollectionElement_prologueEpilogueList (const GGS_semanticInstructionListAST & in_mInstructionList,
+                                                  const GGS_location & in_mEndOfInstructionList
+                                                  COMMA_LOCATION_ARGS) ;
+  public: CollectionElement_prologueEpilogueList (const GGS_prologueEpilogueList_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
 //--- Virtual method that returns a copy of current object
-  public: virtual cCollectionElement * copy (void) ;
+  public: virtual CollectionElement * copy (void) ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-cCollectionElement_prologueEpilogueList::cCollectionElement_prologueEpilogueList (const GGS_semanticInstructionListAST & in_mInstructionList,
-                                                                                  const GGS_location & in_mEndOfInstructionList
-                                                                                  COMMA_LOCATION_ARGS) :
-cCollectionElement (THERE),
+CollectionElement_prologueEpilogueList::CollectionElement_prologueEpilogueList (const GGS_semanticInstructionListAST & in_mInstructionList,
+                                                                                const GGS_location & in_mEndOfInstructionList
+                                                                                COMMA_LOCATION_ARGS) :
+CollectionElement (THERE),
 mObject (in_mInstructionList, in_mEndOfInstructionList) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-cCollectionElement_prologueEpilogueList::cCollectionElement_prologueEpilogueList (const GGS_prologueEpilogueList_2E_element & inElement COMMA_LOCATION_ARGS) :
-cCollectionElement (THERE),
+CollectionElement_prologueEpilogueList::CollectionElement_prologueEpilogueList (const GGS_prologueEpilogueList_2E_element & inElement COMMA_LOCATION_ARGS) :
+CollectionElement (THERE),
 mObject (inElement.mProperty_mInstructionList, inElement.mProperty_mEndOfInstructionList) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-bool cCollectionElement_prologueEpilogueList::isValid (void) const {
+bool CollectionElement_prologueEpilogueList::isValid (void) const {
   return true ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-cCollectionElement * cCollectionElement_prologueEpilogueList::copy (void) {
-  cCollectionElement * result = nullptr ;
-  macroMyNew (result, cCollectionElement_prologueEpilogueList (mObject.mProperty_mInstructionList, mObject.mProperty_mEndOfInstructionList COMMA_HERE)) ;
+CollectionElement * CollectionElement_prologueEpilogueList::copy (void) {
+  CollectionElement * result = nullptr ;
+  macroMyNew (result, CollectionElement_prologueEpilogueList (mObject.mProperty_mInstructionList, mObject.mProperty_mEndOfInstructionList COMMA_HERE)) ;
   return result ;
 }
 
@@ -11095,8 +10990,8 @@ mArray () {
   mArray.setCapacity (std::max (16, int32_t (inArray.count ()))) ;
   for (uint32_t i = 0 ; i < inArray.count () ; i++) {
     const capCollectionElement v = inArray.objectAtIndex (i COMMA_HERE) ;
-    cCollectionElement_prologueEpilogueList * p = (cCollectionElement_prologueEpilogueList *) v.ptr () ;
-    macroValidSharedObject (p, cCollectionElement_prologueEpilogueList) ;
+    CollectionElement_prologueEpilogueList * p = (CollectionElement_prologueEpilogueList *) v.ptr () ;
+    macroValidSharedObject (p, CollectionElement_prologueEpilogueList) ;
     const GGS_prologueEpilogueList_2E_element element (p->mObject.mProperty_mInstructionList, p->mObject.mProperty_mEndOfInstructionList) ;
     mArray.appendObject (element) ;
   }
@@ -11108,8 +11003,8 @@ void GGS_prologueEpilogueList::makeAttributesFromObjects (capCollectionElement &
                                                           const GGS_semanticInstructionListAST & in_mInstructionList,
                                                           const GGS_location & in_mEndOfInstructionList
                                                           COMMA_LOCATION_ARGS) {
-  cCollectionElement_prologueEpilogueList * p = nullptr ;
-  macroMyNew (p, cCollectionElement_prologueEpilogueList (in_mInstructionList, in_mEndOfInstructionList COMMA_THERE)) ;
+  CollectionElement_prologueEpilogueList * p = nullptr ;
+  macroMyNew (p, CollectionElement_prologueEpilogueList (in_mInstructionList, in_mEndOfInstructionList COMMA_THERE)) ;
   outAttributes.setPointer (p) ;
   macroDetachSharedObject (p) ;
 }
@@ -11641,59 +11536,59 @@ GGS_prologueEpilogueList GGS_prologueEpilogueList::extractObject (const GGS_obje
 //Class for element of '@programRuleList' list
 //--------------------------------------------------------------------------------------------------
 
-class cCollectionElement_programRuleList : public cCollectionElement {
+class CollectionElement_programRuleList : public CollectionElement {
   public: GGS_programRuleList_2E_element mObject ;
 
 //--- Class functions
-  public: cCollectionElement_programRuleList (const GGS_lstring & in_mSourceFileExtension,
-                                              const GGS_lstring & in_mSourceFileHelp,
-                                              const GGS_lstring & in_mSourceFileVariableName,
-                                              const GGS_bool & in_mSourceFileVariableNameIsUnused,
-                                              const GGS_lstring & in_mReferenceGrammar,
-                                              const GGS_semanticInstructionListAST & in_mInstructionList,
-                                              const GGS_location & in_mEndOfInstructionList
-                                              COMMA_LOCATION_ARGS) ;
-  public: cCollectionElement_programRuleList (const GGS_programRuleList_2E_element & inElement COMMA_LOCATION_ARGS) ;
+  public: CollectionElement_programRuleList (const GGS_lstring & in_mSourceFileExtension,
+                                             const GGS_lstring & in_mSourceFileHelp,
+                                             const GGS_lstring & in_mSourceFileVariableName,
+                                             const GGS_bool & in_mSourceFileVariableNameIsUnused,
+                                             const GGS_lstring & in_mReferenceGrammar,
+                                             const GGS_semanticInstructionListAST & in_mInstructionList,
+                                             const GGS_location & in_mEndOfInstructionList
+                                             COMMA_LOCATION_ARGS) ;
+  public: CollectionElement_programRuleList (const GGS_programRuleList_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
 //--- Virtual method that returns a copy of current object
-  public: virtual cCollectionElement * copy (void) ;
+  public: virtual CollectionElement * copy (void) ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-cCollectionElement_programRuleList::cCollectionElement_programRuleList (const GGS_lstring & in_mSourceFileExtension,
-                                                                        const GGS_lstring & in_mSourceFileHelp,
-                                                                        const GGS_lstring & in_mSourceFileVariableName,
-                                                                        const GGS_bool & in_mSourceFileVariableNameIsUnused,
-                                                                        const GGS_lstring & in_mReferenceGrammar,
-                                                                        const GGS_semanticInstructionListAST & in_mInstructionList,
-                                                                        const GGS_location & in_mEndOfInstructionList
-                                                                        COMMA_LOCATION_ARGS) :
-cCollectionElement (THERE),
+CollectionElement_programRuleList::CollectionElement_programRuleList (const GGS_lstring & in_mSourceFileExtension,
+                                                                      const GGS_lstring & in_mSourceFileHelp,
+                                                                      const GGS_lstring & in_mSourceFileVariableName,
+                                                                      const GGS_bool & in_mSourceFileVariableNameIsUnused,
+                                                                      const GGS_lstring & in_mReferenceGrammar,
+                                                                      const GGS_semanticInstructionListAST & in_mInstructionList,
+                                                                      const GGS_location & in_mEndOfInstructionList
+                                                                      COMMA_LOCATION_ARGS) :
+CollectionElement (THERE),
 mObject (in_mSourceFileExtension, in_mSourceFileHelp, in_mSourceFileVariableName, in_mSourceFileVariableNameIsUnused, in_mReferenceGrammar, in_mInstructionList, in_mEndOfInstructionList) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-cCollectionElement_programRuleList::cCollectionElement_programRuleList (const GGS_programRuleList_2E_element & inElement COMMA_LOCATION_ARGS) :
-cCollectionElement (THERE),
+CollectionElement_programRuleList::CollectionElement_programRuleList (const GGS_programRuleList_2E_element & inElement COMMA_LOCATION_ARGS) :
+CollectionElement (THERE),
 mObject (inElement.mProperty_mSourceFileExtension, inElement.mProperty_mSourceFileHelp, inElement.mProperty_mSourceFileVariableName, inElement.mProperty_mSourceFileVariableNameIsUnused, inElement.mProperty_mReferenceGrammar, inElement.mProperty_mInstructionList, inElement.mProperty_mEndOfInstructionList) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-bool cCollectionElement_programRuleList::isValid (void) const {
+bool CollectionElement_programRuleList::isValid (void) const {
   return true ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-cCollectionElement * cCollectionElement_programRuleList::copy (void) {
-  cCollectionElement * result = nullptr ;
-  macroMyNew (result, cCollectionElement_programRuleList (mObject.mProperty_mSourceFileExtension, mObject.mProperty_mSourceFileHelp, mObject.mProperty_mSourceFileVariableName, mObject.mProperty_mSourceFileVariableNameIsUnused, mObject.mProperty_mReferenceGrammar, mObject.mProperty_mInstructionList, mObject.mProperty_mEndOfInstructionList COMMA_HERE)) ;
+CollectionElement * CollectionElement_programRuleList::copy (void) {
+  CollectionElement * result = nullptr ;
+  macroMyNew (result, CollectionElement_programRuleList (mObject.mProperty_mSourceFileExtension, mObject.mProperty_mSourceFileHelp, mObject.mProperty_mSourceFileVariableName, mObject.mProperty_mSourceFileVariableNameIsUnused, mObject.mProperty_mReferenceGrammar, mObject.mProperty_mInstructionList, mObject.mProperty_mEndOfInstructionList COMMA_HERE)) ;
   return result ;
 }
 
@@ -11712,8 +11607,8 @@ mArray () {
   mArray.setCapacity (std::max (16, int32_t (inArray.count ()))) ;
   for (uint32_t i = 0 ; i < inArray.count () ; i++) {
     const capCollectionElement v = inArray.objectAtIndex (i COMMA_HERE) ;
-    cCollectionElement_programRuleList * p = (cCollectionElement_programRuleList *) v.ptr () ;
-    macroValidSharedObject (p, cCollectionElement_programRuleList) ;
+    CollectionElement_programRuleList * p = (CollectionElement_programRuleList *) v.ptr () ;
+    macroValidSharedObject (p, CollectionElement_programRuleList) ;
     const GGS_programRuleList_2E_element element (p->mObject.mProperty_mSourceFileExtension, p->mObject.mProperty_mSourceFileHelp, p->mObject.mProperty_mSourceFileVariableName, p->mObject.mProperty_mSourceFileVariableNameIsUnused, p->mObject.mProperty_mReferenceGrammar, p->mObject.mProperty_mInstructionList, p->mObject.mProperty_mEndOfInstructionList) ;
     mArray.appendObject (element) ;
   }
@@ -11730,8 +11625,8 @@ void GGS_programRuleList::makeAttributesFromObjects (capCollectionElement & outA
                                                      const GGS_semanticInstructionListAST & in_mInstructionList,
                                                      const GGS_location & in_mEndOfInstructionList
                                                      COMMA_LOCATION_ARGS) {
-  cCollectionElement_programRuleList * p = nullptr ;
-  macroMyNew (p, cCollectionElement_programRuleList (in_mSourceFileExtension, in_mSourceFileHelp, in_mSourceFileVariableName, in_mSourceFileVariableNameIsUnused, in_mReferenceGrammar, in_mInstructionList, in_mEndOfInstructionList COMMA_THERE)) ;
+  CollectionElement_programRuleList * p = nullptr ;
+  macroMyNew (p, CollectionElement_programRuleList (in_mSourceFileExtension, in_mSourceFileHelp, in_mSourceFileVariableName, in_mSourceFileVariableNameIsUnused, in_mReferenceGrammar, in_mInstructionList, in_mEndOfInstructionList COMMA_THERE)) ;
   outAttributes.setPointer (p) ;
   macroDetachSharedObject (p) ;
 }
@@ -12633,55 +12528,55 @@ GGS_programRuleList GGS_programRuleList::extractObject (const GGS_object & inObj
 //Class for element of '@galgasGUIComponentListAST' list
 //--------------------------------------------------------------------------------------------------
 
-class cCollectionElement_galgasGUIComponentListAST : public cCollectionElement {
+class CollectionElement_galgasGUIComponentListAST : public CollectionElement {
   public: GGS_galgasGUIComponentListAST_2E_element mObject ;
 
 //--- Class functions
-  public: cCollectionElement_galgasGUIComponentListAST (const GGS_lstring & in_mGUIComponentName,
-                                                        const GGS_lstringlist & in_mImportedOptionList,
-                                                        const GGS_guiSimpleAttributeListAST & in_mGlobalSimpleAttributeList,
-                                                        const GGS_withLexiqueListAST & in_mWithLexiqueList,
-                                                        const GGS_projectIndexingDescriptorList & in_mProjectIndexingDescriptorList
-                                                        COMMA_LOCATION_ARGS) ;
-  public: cCollectionElement_galgasGUIComponentListAST (const GGS_galgasGUIComponentListAST_2E_element & inElement COMMA_LOCATION_ARGS) ;
+  public: CollectionElement_galgasGUIComponentListAST (const GGS_lstring & in_mGUIComponentName,
+                                                       const GGS_lstringlist & in_mImportedOptionList,
+                                                       const GGS_guiSimpleAttributeListAST & in_mGlobalSimpleAttributeList,
+                                                       const GGS_withLexiqueListAST & in_mWithLexiqueList,
+                                                       const GGS_projectIndexingDescriptorList & in_mProjectIndexingDescriptorList
+                                                       COMMA_LOCATION_ARGS) ;
+  public: CollectionElement_galgasGUIComponentListAST (const GGS_galgasGUIComponentListAST_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
 //--- Virtual method that returns a copy of current object
-  public: virtual cCollectionElement * copy (void) ;
+  public: virtual CollectionElement * copy (void) ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-cCollectionElement_galgasGUIComponentListAST::cCollectionElement_galgasGUIComponentListAST (const GGS_lstring & in_mGUIComponentName,
-                                                                                            const GGS_lstringlist & in_mImportedOptionList,
-                                                                                            const GGS_guiSimpleAttributeListAST & in_mGlobalSimpleAttributeList,
-                                                                                            const GGS_withLexiqueListAST & in_mWithLexiqueList,
-                                                                                            const GGS_projectIndexingDescriptorList & in_mProjectIndexingDescriptorList
-                                                                                            COMMA_LOCATION_ARGS) :
-cCollectionElement (THERE),
+CollectionElement_galgasGUIComponentListAST::CollectionElement_galgasGUIComponentListAST (const GGS_lstring & in_mGUIComponentName,
+                                                                                          const GGS_lstringlist & in_mImportedOptionList,
+                                                                                          const GGS_guiSimpleAttributeListAST & in_mGlobalSimpleAttributeList,
+                                                                                          const GGS_withLexiqueListAST & in_mWithLexiqueList,
+                                                                                          const GGS_projectIndexingDescriptorList & in_mProjectIndexingDescriptorList
+                                                                                          COMMA_LOCATION_ARGS) :
+CollectionElement (THERE),
 mObject (in_mGUIComponentName, in_mImportedOptionList, in_mGlobalSimpleAttributeList, in_mWithLexiqueList, in_mProjectIndexingDescriptorList) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-cCollectionElement_galgasGUIComponentListAST::cCollectionElement_galgasGUIComponentListAST (const GGS_galgasGUIComponentListAST_2E_element & inElement COMMA_LOCATION_ARGS) :
-cCollectionElement (THERE),
+CollectionElement_galgasGUIComponentListAST::CollectionElement_galgasGUIComponentListAST (const GGS_galgasGUIComponentListAST_2E_element & inElement COMMA_LOCATION_ARGS) :
+CollectionElement (THERE),
 mObject (inElement.mProperty_mGUIComponentName, inElement.mProperty_mImportedOptionList, inElement.mProperty_mGlobalSimpleAttributeList, inElement.mProperty_mWithLexiqueList, inElement.mProperty_mProjectIndexingDescriptorList) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-bool cCollectionElement_galgasGUIComponentListAST::isValid (void) const {
+bool CollectionElement_galgasGUIComponentListAST::isValid (void) const {
   return true ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-cCollectionElement * cCollectionElement_galgasGUIComponentListAST::copy (void) {
-  cCollectionElement * result = nullptr ;
-  macroMyNew (result, cCollectionElement_galgasGUIComponentListAST (mObject.mProperty_mGUIComponentName, mObject.mProperty_mImportedOptionList, mObject.mProperty_mGlobalSimpleAttributeList, mObject.mProperty_mWithLexiqueList, mObject.mProperty_mProjectIndexingDescriptorList COMMA_HERE)) ;
+CollectionElement * CollectionElement_galgasGUIComponentListAST::copy (void) {
+  CollectionElement * result = nullptr ;
+  macroMyNew (result, CollectionElement_galgasGUIComponentListAST (mObject.mProperty_mGUIComponentName, mObject.mProperty_mImportedOptionList, mObject.mProperty_mGlobalSimpleAttributeList, mObject.mProperty_mWithLexiqueList, mObject.mProperty_mProjectIndexingDescriptorList COMMA_HERE)) ;
   return result ;
 }
 
@@ -12700,8 +12595,8 @@ mArray () {
   mArray.setCapacity (std::max (16, int32_t (inArray.count ()))) ;
   for (uint32_t i = 0 ; i < inArray.count () ; i++) {
     const capCollectionElement v = inArray.objectAtIndex (i COMMA_HERE) ;
-    cCollectionElement_galgasGUIComponentListAST * p = (cCollectionElement_galgasGUIComponentListAST *) v.ptr () ;
-    macroValidSharedObject (p, cCollectionElement_galgasGUIComponentListAST) ;
+    CollectionElement_galgasGUIComponentListAST * p = (CollectionElement_galgasGUIComponentListAST *) v.ptr () ;
+    macroValidSharedObject (p, CollectionElement_galgasGUIComponentListAST) ;
     const GGS_galgasGUIComponentListAST_2E_element element (p->mObject.mProperty_mGUIComponentName, p->mObject.mProperty_mImportedOptionList, p->mObject.mProperty_mGlobalSimpleAttributeList, p->mObject.mProperty_mWithLexiqueList, p->mObject.mProperty_mProjectIndexingDescriptorList) ;
     mArray.appendObject (element) ;
   }
@@ -12716,8 +12611,8 @@ void GGS_galgasGUIComponentListAST::makeAttributesFromObjects (capCollectionElem
                                                                const GGS_withLexiqueListAST & in_mWithLexiqueList,
                                                                const GGS_projectIndexingDescriptorList & in_mProjectIndexingDescriptorList
                                                                COMMA_LOCATION_ARGS) {
-  cCollectionElement_galgasGUIComponentListAST * p = nullptr ;
-  macroMyNew (p, cCollectionElement_galgasGUIComponentListAST (in_mGUIComponentName, in_mImportedOptionList, in_mGlobalSimpleAttributeList, in_mWithLexiqueList, in_mProjectIndexingDescriptorList COMMA_THERE)) ;
+  CollectionElement_galgasGUIComponentListAST * p = nullptr ;
+  macroMyNew (p, CollectionElement_galgasGUIComponentListAST (in_mGUIComponentName, in_mImportedOptionList, in_mGlobalSimpleAttributeList, in_mWithLexiqueList, in_mProjectIndexingDescriptorList COMMA_THERE)) ;
   outAttributes.setPointer (p) ;
   macroDetachSharedObject (p) ;
 }

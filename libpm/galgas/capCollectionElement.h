@@ -28,13 +28,13 @@
 //--------------------------------------------------------------------------------------------------
 
 class String ;
-class cCollectionElement ;
+class CollectionElement ;
 
 //--------------------------------------------------------------------------------------------------
 
 class capCollectionElement final {
 //--- Private pointer
-  private: cCollectionElement * mPtr ;
+  private: CollectionElement * mPtr ;
 
 //--- Default constructor
   public: capCollectionElement (void) ;
@@ -47,7 +47,7 @@ class capCollectionElement final {
   public: capCollectionElement & operator = (const capCollectionElement & inSource) ;
 
 //--- set pointer
-  public: void setPointer (cCollectionElement * inObjectPointer) ;
+  public: void setPointer (CollectionElement * inObjectPointer) ;
 
 //--- Method that checks that all attributes are valid
   public: bool isValid (void) const ;
@@ -59,8 +59,8 @@ class capCollectionElement final {
   public: void drop (void) ;
 
 //--- Get pointer (for temporary use)
-  public: inline cCollectionElement * ptr (void) { return mPtr ; }
-  public: inline const cCollectionElement * ptr (void) const { return mPtr ; }
+  public: inline CollectionElement * ptr (void) { return mPtr ; }
+  public: inline const CollectionElement * ptr (void) const { return mPtr ; }
 
 //--- Method that returns a copy of current object
   public: capCollectionElement copy (void) ;

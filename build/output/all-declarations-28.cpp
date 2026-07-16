@@ -5887,7 +5887,7 @@ static const GALGAS_TypeDescriptor * functionArgs_escapeForTex [2] = {
 //--------------------------------------------------------------------------------------------------
 
 static GGS_object functionWithGenericHeader_escapeForTex (Compiler * inCompiler,
-                                                          const cObjectArray & inEffectiveParameterArray,
+                                                          const ObjectArray & inEffectiveParameterArray,
                                                           const GGS_location & /* inErrorLocation */
                                                           COMMA_LOCATION_ARGS) {
   const GGS_string operand0 = GGS_string::extractObject (inEffectiveParameterArray.objectAtIndex (0 COMMA_HERE),
@@ -6722,7 +6722,7 @@ static const GALGAS_TypeDescriptor * functionArgs_compilerCppName [1] = {
 //--------------------------------------------------------------------------------------------------
 
 static GGS_object functionWithGenericHeader_compilerCppName (Compiler * inCompiler,
-                                                             const cObjectArray & /* inEffectiveParameterArray */,
+                                                             const ObjectArray & /* inEffectiveParameterArray */,
                                                              const GGS_location & /* inErrorLocation */
                                                              COMMA_LOCATION_ARGS) {
   return function_compilerCppName (inCompiler COMMA_THERE).getter_object (THERE) ;
@@ -6792,7 +6792,7 @@ static const GALGAS_TypeDescriptor * functionArgs_syntaxDirectedTranslationResul
 //--------------------------------------------------------------------------------------------------
 
 static GGS_object functionWithGenericHeader_syntaxDirectedTranslationResultVarName (Compiler * inCompiler,
-                                                                                    const cObjectArray & /* inEffectiveParameterArray */,
+                                                                                    const ObjectArray & /* inEffectiveParameterArray */,
                                                                                     const GGS_location & /* inErrorLocation */
                                                                                     COMMA_LOCATION_ARGS) {
   return function_syntaxDirectedTranslationResultVarName (inCompiler COMMA_THERE).getter_object (THERE) ;
@@ -7985,7 +7985,7 @@ static const GALGAS_TypeDescriptor * functionArgs_getterNameForUsefulEntitiesGra
 //--------------------------------------------------------------------------------------------------
 
 static GGS_object functionWithGenericHeader_getterNameForUsefulEntitiesGraph (Compiler * inCompiler,
-                                                                              const cObjectArray & inEffectiveParameterArray,
+                                                                              const ObjectArray & inEffectiveParameterArray,
                                                                               const GGS_location & /* inErrorLocation */
                                                                               COMMA_LOCATION_ARGS) {
   const GGS_string operand0 = GGS_string::extractObject (inEffectiveParameterArray.objectAtIndex (0 COMMA_HERE),
@@ -8038,7 +8038,7 @@ static const GALGAS_TypeDescriptor * functionArgs_setterNameForUsefulEntitiesGra
 //--------------------------------------------------------------------------------------------------
 
 static GGS_object functionWithGenericHeader_setterNameForUsefulEntitiesGraph (Compiler * inCompiler,
-                                                                              const cObjectArray & inEffectiveParameterArray,
+                                                                              const ObjectArray & inEffectiveParameterArray,
                                                                               const GGS_location & /* inErrorLocation */
                                                                               COMMA_LOCATION_ARGS) {
   const GGS_string operand0 = GGS_string::extractObject (inEffectiveParameterArray.objectAtIndex (0 COMMA_HERE),
@@ -8091,7 +8091,7 @@ static const GALGAS_TypeDescriptor * functionArgs_methodNameForUsefulEntitiesGra
 //--------------------------------------------------------------------------------------------------
 
 static GGS_object functionWithGenericHeader_methodNameForUsefulEntitiesGraph (Compiler * inCompiler,
-                                                                              const cObjectArray & inEffectiveParameterArray,
+                                                                              const ObjectArray & inEffectiveParameterArray,
                                                                               const GGS_location & /* inErrorLocation */
                                                                               COMMA_LOCATION_ARGS) {
   const GGS_string operand0 = GGS_string::extractObject (inEffectiveParameterArray.objectAtIndex (0 COMMA_HERE),
@@ -8144,7 +8144,7 @@ static const GALGAS_TypeDescriptor * functionArgs_initializerNameForUsefulEntiti
 //--------------------------------------------------------------------------------------------------
 
 static GGS_object functionWithGenericHeader_initializerNameForUsefulEntitiesGraph (Compiler * inCompiler,
-                                                                                   const cObjectArray & inEffectiveParameterArray,
+                                                                                   const ObjectArray & inEffectiveParameterArray,
                                                                                    const GGS_location & /* inErrorLocation */
                                                                                    COMMA_LOCATION_ARGS) {
   const GGS_lstring operand0 = GGS_lstring::extractObject (inEffectiveParameterArray.objectAtIndex (0 COMMA_HERE),
@@ -8195,7 +8195,7 @@ static const GALGAS_TypeDescriptor * functionArgs_equatableNameForUsefulEntities
 //--------------------------------------------------------------------------------------------------
 
 static GGS_object functionWithGenericHeader_equatableNameForUsefulEntitiesGraph (Compiler * inCompiler,
-                                                                                 const cObjectArray & inEffectiveParameterArray,
+                                                                                 const ObjectArray & inEffectiveParameterArray,
                                                                                  const GGS_location & /* inErrorLocation */
                                                                                  COMMA_LOCATION_ARGS) {
   const GGS_lstring operand0 = GGS_lstring::extractObject (inEffectiveParameterArray.objectAtIndex (0 COMMA_HERE),
@@ -8242,7 +8242,7 @@ static const GALGAS_TypeDescriptor * functionArgs_lexiqueNameForUsefulEntitiesGr
 //--------------------------------------------------------------------------------------------------
 
 static GGS_object functionWithGenericHeader_lexiqueNameForUsefulEntitiesGraph (Compiler * inCompiler,
-                                                                               const cObjectArray & inEffectiveParameterArray,
+                                                                               const ObjectArray & inEffectiveParameterArray,
                                                                                const GGS_location & /* inErrorLocation */
                                                                                COMMA_LOCATION_ARGS) {
   const GGS_lstring operand0 = GGS_lstring::extractObject (inEffectiveParameterArray.objectAtIndex (0 COMMA_HERE),
@@ -8289,7 +8289,7 @@ static const GALGAS_TypeDescriptor * functionArgs_grammarNameForUsefulEntitiesGr
 //--------------------------------------------------------------------------------------------------
 
 static GGS_object functionWithGenericHeader_grammarNameForUsefulEntitiesGraph (Compiler * inCompiler,
-                                                                               const cObjectArray & inEffectiveParameterArray,
+                                                                               const ObjectArray & inEffectiveParameterArray,
                                                                                const GGS_location & /* inErrorLocation */
                                                                                COMMA_LOCATION_ARGS) {
   const GGS_lstring operand0 = GGS_lstring::extractObject (inEffectiveParameterArray.objectAtIndex (0 COMMA_HERE),
@@ -8336,7 +8336,7 @@ static const GALGAS_TypeDescriptor * functionArgs_syntaxNameForUsefulEntitiesGra
 //--------------------------------------------------------------------------------------------------
 
 static GGS_object functionWithGenericHeader_syntaxNameForUsefulEntitiesGraph (Compiler * inCompiler,
-                                                                              const cObjectArray & inEffectiveParameterArray,
+                                                                              const ObjectArray & inEffectiveParameterArray,
                                                                               const GGS_location & /* inErrorLocation */
                                                                               COMMA_LOCATION_ARGS) {
   const GGS_lstring operand0 = GGS_lstring::extractObject (inEffectiveParameterArray.objectAtIndex (0 COMMA_HERE),
@@ -8383,7 +8383,7 @@ static const GALGAS_TypeDescriptor * functionArgs_optionNameForUsefulEntitiesGra
 //--------------------------------------------------------------------------------------------------
 
 static GGS_object functionWithGenericHeader_optionNameForUsefulEntitiesGraph (Compiler * inCompiler,
-                                                                              const cObjectArray & inEffectiveParameterArray,
+                                                                              const ObjectArray & inEffectiveParameterArray,
                                                                               const GGS_location & /* inErrorLocation */
                                                                               COMMA_LOCATION_ARGS) {
   const GGS_lstring operand0 = GGS_lstring::extractObject (inEffectiveParameterArray.objectAtIndex (0 COMMA_HERE),
@@ -8430,7 +8430,7 @@ static const GALGAS_TypeDescriptor * functionArgs_filewrapperNameForUsefulEntiti
 //--------------------------------------------------------------------------------------------------
 
 static GGS_object functionWithGenericHeader_filewrapperNameForUsefulEntitiesGraph (Compiler * inCompiler,
-                                                                                   const cObjectArray & inEffectiveParameterArray,
+                                                                                   const ObjectArray & inEffectiveParameterArray,
                                                                                    const GGS_location & /* inErrorLocation */
                                                                                    COMMA_LOCATION_ARGS) {
   const GGS_lstring operand0 = GGS_lstring::extractObject (inEffectiveParameterArray.objectAtIndex (0 COMMA_HERE),
@@ -8479,7 +8479,7 @@ static const GALGAS_TypeDescriptor * functionArgs_filewrapperTemplateNameForUsef
 //--------------------------------------------------------------------------------------------------
 
 static GGS_object functionWithGenericHeader_filewrapperTemplateNameForUsefulEntitiesGraph (Compiler * inCompiler,
-                                                                                           const cObjectArray & inEffectiveParameterArray,
+                                                                                           const ObjectArray & inEffectiveParameterArray,
                                                                                            const GGS_location & /* inErrorLocation */
                                                                                            COMMA_LOCATION_ARGS) {
   const GGS_lstring operand0 = GGS_lstring::extractObject (inEffectiveParameterArray.objectAtIndex (0 COMMA_HERE),

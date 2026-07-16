@@ -4,7 +4,7 @@
 //
 //  This file is part of libpm library                                                           
 //
-//  Copyright (C) 2010, ..., 2016 Pierre Molinaro.
+//  Copyright (C) 2010, ..., 2026 Pierre Molinaro.
 //
 //  e-mail : pierre@pcmolinaro.name
 //
@@ -18,21 +18,12 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-#include "cGenericAbstractEnumerator.h"
+#include "CollectionElement.h"
 
 //--------------------------------------------------------------------------------------------------
 
-cGenericAbstractEnumerator::~ cGenericAbstractEnumerator (void) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-const cCollectionElement * cGenericAbstractEnumerator::currentObjectPtr (LOCATION_ARGS) const {
-  const uint32_t idx = (mOrder == EnumerationOrder::Up)
-    ? mIndex
-    : mEnumerationArray.count () - 1 - mIndex
-  ;
-  return mEnumerationArray.pointerAtIndexForReadAccess (idx COMMA_THERE) ;
+CollectionElement::CollectionElement (LOCATION_ARGS) :
+SharedObject (THERE) {
 }
 
 //--------------------------------------------------------------------------------------------------

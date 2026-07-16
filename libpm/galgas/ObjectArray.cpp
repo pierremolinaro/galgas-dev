@@ -1,10 +1,10 @@
 //--------------------------------------------------------------------------------------------------
 //
-//  cObjectArray
+//  ObjectArray
 //
 //  This file is part of libpm library
 //
-//  Copyright (C) 2010, ..., 2010 Pierre Molinaro.
+//  Copyright (C) 2010, ..., 2026 Pierre Molinaro.
 //
 //  e-mail : pierre@pcmolinaro.name
 //
@@ -18,14 +18,14 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-#include "cObjectArray.h"
+#include "ObjectArray.h"
 #include "all-predefined-types.h"
 
 //--------------------------------------------------------------------------------------------------
 
-cObjectArray::cObjectArray (const GGS_objectlist & inObjectList,
-                            Compiler * inCompiler
-                            COMMA_LOCATION_ARGS) :
+ObjectArray::ObjectArray (const GGS_objectlist & inObjectList,
+                          Compiler * inCompiler
+                          COMMA_LOCATION_ARGS) :
 mArray (nullptr),
 mCount (0) {
   mCount = inObjectList.count () ;
@@ -37,15 +37,15 @@ mCount (0) {
 
 //--------------------------------------------------------------------------------------------------
 
-cObjectArray::~cObjectArray (void) {
+ObjectArray::~ObjectArray (void) {
   macroMyDeleteArray (mArray) ;
   mCount = 0 ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_object cObjectArray::objectAtIndex (const uint32_t inIndex
-                                           COMMA_LOCATION_ARGS) const {
+GGS_object ObjectArray::objectAtIndex (const uint32_t inIndex
+                                       COMMA_LOCATION_ARGS) const {
   macroAssertThere (inIndex < mCount, "inIndex (%ld) >= mCount (%ld)", inIndex, mCount) ;
   return mArray [inIndex] ;
 }

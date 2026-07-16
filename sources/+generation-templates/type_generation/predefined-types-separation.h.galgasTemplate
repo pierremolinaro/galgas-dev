@@ -1,10 +1,10 @@
 //--------------------------------------------------------------------------------------------------
 
-#include "cCollectionElement.h"
+#include "CollectionElement.h"
 
 //--------------------------------------------------------------------------------------------------
 
-class cMapElement : public cCollectionElement {
+class cMapElement : public CollectionElement {
 //--- Attribut
   public: GGS_lstring mProperty_lkey ;
 
@@ -20,6 +20,6 @@ class cMapElement : public cCollectionElement {
 //--------------------------------------------------------------------------------------------------
 
 #include "C_galgas_function_descriptor.h"
-#include "cObjectArray.h"
+#include "ObjectArray.h"
 
 

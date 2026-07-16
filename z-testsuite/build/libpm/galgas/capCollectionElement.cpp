@@ -19,7 +19,7 @@
 //--------------------------------------------------------------------------------------------------
 
 #include "capCollectionElement.h"
-#include "cCollectionElement.h"
+#include "CollectionElement.h"
 #include "String-class.h"
 
 //--------------------------------------------------------------------------------------------------
@@ -30,7 +30,7 @@ mPtr (nullptr) {
 
 //--------------------------------------------------------------------------------------------------
 
-void capCollectionElement::setPointer (cCollectionElement * inObjectPointer) {
+void capCollectionElement::setPointer (CollectionElement * inObjectPointer) {
   macroAssignSharedObject (mPtr, inObjectPointer) ;
 }
 
@@ -68,7 +68,7 @@ bool capCollectionElement::isValid (void) const {
 
 capCollectionElement capCollectionElement::copy (void) {
   capCollectionElement result ;
-  cCollectionElement * p = mPtr->copy () ;
+  CollectionElement * p = mPtr->copy () ;
   result.setPointer (p) ;
   macroDetachSharedObject (p) ;
   return result ;
@@ -84,7 +84,7 @@ void capCollectionElement::drop (void) {
 
 void capCollectionElement::insulate (void) {
   if ((nullptr != mPtr) && !mPtr->isUniquelyReferenced ()) {
-    cCollectionElement * p = mPtr->copy () ;
+    CollectionElement * p = mPtr->copy () ;
     macroAssignSharedObject (mPtr, p) ;
     macroDetachSharedObject (p) ;
   }

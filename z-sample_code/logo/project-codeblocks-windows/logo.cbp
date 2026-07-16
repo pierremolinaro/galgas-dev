@@ -160,11 +160,10 @@
    <Unit filename="../build/libpm/galgas/galgas-input-output.cpp" />
    <Unit filename="../build/libpm/galgas/C_galgas_class_inspector.cpp" />
    <Unit filename="../build/libpm/galgas/IssueWithFixIt.cpp" />
-   <Unit filename="../build/libpm/galgas/cObjectArray.cpp" />
-   <Unit filename="../build/libpm/galgas/cCollectionElement.cpp" />
+   <Unit filename="../build/libpm/galgas/ObjectArray.cpp" />
+   <Unit filename="../build/libpm/galgas/CollectionElement" />
    <Unit filename="../build/libpm/galgas/capCollectionElement.cpp" />
    <Unit filename="../build/libpm/galgas/capCollectionElementArray.cpp" />
-   <Unit filename="../build/libpm/galgas/cGenericAbstractEnumerator.cpp" />
    <Unit filename="../build/libpm/galgas/Enumerator_range.cpp" />
    <Unit filename="../build/libpm/galgas/IndexingDictionary.cpp" />
    <Unit filename="../build/libpm/galgas/IssueDescriptor.cpp" />

@@ -12,7 +12,7 @@
 #include "ComparisonResult.h"
 #include "ComparisonKind.h"
 #include "EnumerationOrder.h"
-#include "cGenericAbstractEnumerator.h"
+#include "capCollectionElementArray.h"
 #include "Enumerator_range.h"
 #include "String-class.h"
 #include "Timer.h"
@@ -7573,11 +7573,11 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lbigintlist_2E_element
 
 //--------------------------------------------------------------------------------------------------
 
-#include "cCollectionElement.h"
+#include "CollectionElement.h"
 
 //--------------------------------------------------------------------------------------------------
 
-class cMapElement : public cCollectionElement {
+class cMapElement : public CollectionElement {
 //--- Attribut
   public: GGS_lstring mProperty_lkey ;
 
@@ -7593,7 +7593,7 @@ class cMapElement : public cCollectionElement {
 //--------------------------------------------------------------------------------------------------
 
 #include "C_galgas_function_descriptor.h"
-#include "cObjectArray.h"
+#include "ObjectArray.h"
 
 
 //--- START OF USER ZONE 2

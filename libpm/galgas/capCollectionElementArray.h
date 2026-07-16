@@ -86,11 +86,11 @@ class capCollectionElementArray final {
   public: capCollectionElement objectAtIndex (const uint32_t inIndex COMMA_LOCATION_ARGS) const ;
 
 //--- Get object pointer for writing (perform implicitly an "insulate" action)
-  public: cCollectionElement * uniquelyReferencedPointerAtIndex (const uint32_t inIndex
+  public: CollectionElement * uniquelyReferencedPointerAtIndex (const uint32_t inIndex
                                                                   COMMA_LOCATION_ARGS) ;
 
 //--- Get object pointer for reading
-  public: const cCollectionElement * pointerAtIndexForReadAccess (const uint32_t inIndex
+  public: const CollectionElement * pointerAtIndexForReadAccess (const uint32_t inIndex
                                                                    COMMA_LOCATION_ARGS) const ;
 
 //--- Get count

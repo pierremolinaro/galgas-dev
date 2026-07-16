@@ -24,7 +24,7 @@
 
 #include "AC_GALGAS_root.h"
 #include "ComparisonResult.h"
-#include "cCollectionElement.h"
+#include "CollectionElement.h"
 
 //--------------------------------------------------------------------------------------------------
 //  AC_GALGAS_graph

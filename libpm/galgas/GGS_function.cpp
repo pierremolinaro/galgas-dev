@@ -22,7 +22,7 @@
 #include "C_galgas_function_descriptor.h"
 #include "GALGAS_TypeDescriptor.h"
 #include "Compiler.h"
-#include "cObjectArray.h"
+#include "ObjectArray.h"
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -160,7 +160,7 @@ GGS_object GGS_function::getter_invoke (const GGS_objectlist & inObjectList,
                                               const GGS_location & inErrorLocation,
                                               Compiler * inCompiler
                                               COMMA_LOCATION_ARGS) const {
-  const cObjectArray argumentsArray (inObjectList, inCompiler COMMA_THERE) ;
+  const ObjectArray argumentsArray (inObjectList, inCompiler COMMA_THERE) ;
 //--- Check parameter count
   bool ok = mFunctionDescriptor->mParameterCount == argumentsArray.count () ;
   if (! ok) {

@@ -1,14 +1,14 @@
 //--------------------------------------------------------------------------------------------------
 
 #include "all-predefined-types.h"
-#include "cCollectionElement.h"
+#include "CollectionElement.h"
 #include "Compiler.h"
 
 //--------------------------------------------------------------------------------------------------
 
 cMapElement::cMapElement (const GGS_lstring & inLKey
                           COMMA_LOCATION_ARGS) :
-cCollectionElement (THERE),
+CollectionElement (THERE),
 mProperty_lkey (inLKey) {
 }
 

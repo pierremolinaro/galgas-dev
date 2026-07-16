@@ -4,7 +4,7 @@
 //
 //  This file is part of libpm library                                                           
 //
-//  Copyright (C) 2010, ..., 2016 Pierre Molinaro.
+//  Copyright (C) 2010, ..., 2026 Pierre Molinaro.
 //
 //  e-mail : pierre@pcmolinaro.name
 //
@@ -18,21 +18,32 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-#include "cGenericAbstractEnumerator.h"
+#pragma once
 
 //--------------------------------------------------------------------------------------------------
 
-cGenericAbstractEnumerator::~ cGenericAbstractEnumerator (void) {
-}
+#include "SharedObject.h"
+#include "ComparisonResult.h"
 
 //--------------------------------------------------------------------------------------------------
 
-const cCollectionElement * cGenericAbstractEnumerator::currentObjectPtr (LOCATION_ARGS) const {
-  const uint32_t idx = (mOrder == EnumerationOrder::Up)
-    ? mIndex
-    : mEnumerationArray.count () - 1 - mIndex
-  ;
-  return mEnumerationArray.pointerAtIndexForReadAccess (idx COMMA_THERE) ;
-}
+class String ;
+
+//--------------------------------------------------------------------------------------------------
+
+class CollectionElement : public SharedObject {
+//--- Default constructor
+  public: CollectionElement (LOCATION_ARGS) ;
+
+//--- No copy
+  private: CollectionElement (const CollectionElement &) = delete ;
+  private: CollectionElement & operator = (const CollectionElement &) = delete ;
+
+//--- Virtual method that checks that all attributes are valid
+  public: virtual bool isValid (void) const = 0 ;
+
+//--- Virtual method that returns a copy of current object
+  public: virtual CollectionElement * copy (void) = 0 ;
+} ;
 
 //--------------------------------------------------------------------------------------------------

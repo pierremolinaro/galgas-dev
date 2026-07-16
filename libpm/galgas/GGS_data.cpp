@@ -19,7 +19,7 @@
 //--------------------------------------------------------------------------------------------------
 
 #include "all-predefined-types.h"
-#include "cCollectionElement.h"
+#include "CollectionElement.h"
 #include "Compiler.h"
 #include "galgas-input-output.h"
 #include "utf32.h"
@@ -376,7 +376,7 @@ void GGS_data::method_writeToExecutableFile (GGS_string inFilePath,
 //   cCollectionElement_data
 //--------------------------------------------------------------------------------------------------
 
-class cCollectionElement_data : public cCollectionElement {
+class cCollectionElement_data : public CollectionElement {
 //--- Private member
   protected: GGS_uint mProperty_data ;
   public: inline GGS_uint attribute_data (void) const { return mProperty_data ; }
@@ -393,10 +393,10 @@ class cCollectionElement_data : public cCollectionElement {
   public: virtual bool isValid (void) const ;
 
 //--- Virtual method for comparing elements
-  public: virtual ComparisonResult compare (const cCollectionElement * inOperand) const ;
+  public: virtual ComparisonResult compare (const CollectionElement * inOperand) const ;
 
 //--- Virtual method that returns a copy of current object
-  public: virtual cCollectionElement * copy (void) ;
+  public: virtual CollectionElement * copy (void) ;
 
 //--- Description
  public: virtual void description (String & ioString, const int32_t inIndentation) const ;
@@ -406,7 +406,7 @@ class cCollectionElement_data : public cCollectionElement {
 
 cCollectionElement_data::cCollectionElement_data (const GGS_uint & inData
                                                   COMMA_LOCATION_ARGS) :
-cCollectionElement (THERE),
+CollectionElement (THERE),
 mProperty_data (inData) {
 }
 
@@ -418,7 +418,7 @@ bool cCollectionElement_data::isValid (void) const {
 
 //--------------------------------------------------------------------------------------------------
 
-ComparisonResult cCollectionElement_data::compare (const cCollectionElement * inOperand) const {
+ComparisonResult cCollectionElement_data::compare (const CollectionElement * inOperand) const {
   const cCollectionElement_data * operand = (const cCollectionElement_data *) inOperand ;
   macroValidSharedObject (operand, cCollectionElement_data) ;
   return mProperty_data.objectCompare (operand->mProperty_data) ;
@@ -426,7 +426,7 @@ ComparisonResult cCollectionElement_data::compare (const cCollectionElement * in
 
 //--------------------------------------------------------------------------------------------------
 
-cCollectionElement * cCollectionElement_data::copy (void) {
+CollectionElement * cCollectionElement_data::copy (void) {
   cCollectionElement_data * p = nullptr ;
   macroMyNew (p, cCollectionElement_data (mProperty_data COMMA_HERE)) ;
   return p ;

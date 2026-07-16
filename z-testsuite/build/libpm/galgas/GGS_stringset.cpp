@@ -20,7 +20,7 @@
 
 #include "all-predefined-types.h"
 #include "MF_MemoryControl.h"
-#include "cCollectionElement.h"
+#include "CollectionElement.h"
 #include "Compiler.h"
 
 //--------------------------------------------------------------------------------------------------

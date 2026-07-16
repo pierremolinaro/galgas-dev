@@ -1,10 +1,10 @@
 //--------------------------------------------------------------------------------------------------
 //
-//  cGenericAbstractEnumerator: base class for enumerating GALGAS enumerable objects             
+//  capCollectionElementArray                                                                    
 //
 //  This file is part of libpm library                                                           
 //
-//  Copyright (C) 2010, ..., 2010 Pierre Molinaro.
+//  Copyright (C) 2010, ..., 2026 Pierre Molinaro.
 //
 //  e-mail : pierre@pcmolinaro.name
 //
@@ -22,38 +22,38 @@
 
 //--------------------------------------------------------------------------------------------------
 
-#include "capCollectionElementArray.h"
-#include "EnumerationOrder.h"
+#include "SharedObject.h"
 
 //--------------------------------------------------------------------------------------------------
 
-class cGenericAbstractEnumerator {
-//--- Private data members
-  protected: capCollectionElementArray mEnumerationArray ;
-  private: uint32_t mIndex ;
-  public: const EnumerationOrder mOrder ;
+class GGS_object ;
+class GGS_objectlist ;
+class Compiler ;
 
-//--- Constructor
-  protected: inline cGenericAbstractEnumerator (const EnumerationOrder inOrder) :
-  mEnumerationArray (),
-  mIndex (0),
-  mOrder (inOrder) {
-  }
+//--------------------------------------------------------------------------------------------------
+
+class ObjectArray final {
+//--- Default constructor
+  public: ObjectArray (const GGS_objectlist & inObjectList,
+                       Compiler * inCompiler
+                       COMMA_LOCATION_ARGS) ;
 
 //--- Virtual destructor
-  protected: virtual ~ cGenericAbstractEnumerator (void) ;
+  public: ~ ObjectArray (void) ;
 
 //--- No copy
-  private: cGenericAbstractEnumerator (const cGenericAbstractEnumerator &) = delete ;
-  private: cGenericAbstractEnumerator & operator = (const cGenericAbstractEnumerator &) = delete ;
+  private: ObjectArray (const ObjectArray & inSource) ;
+  private: ObjectArray & operator = (const ObjectArray & inSource) ;
 
-//--- 
-  public: inline bool hasCurrentObject (void) const { return mIndex < mEnumerationArray.count () ; }
-  public: inline void gotoNextObject (void) { mIndex += 1 ; }
-  public: inline void rewind (void) { mIndex = 0 ; }
-  protected: const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ;
+//--- Object count
+  public: inline uint32_t count (void) const { return mCount ; }
 
-  public: inline uint32_t index (void) const { return mIndex ; } // For Sara compatibility
+//--- Object at index
+  public: GGS_object objectAtIndex (const uint32_t inIndex COMMA_LOCATION_ARGS) const ;
+
+//--- Attributes
+  private: GGS_object * mArray ;
+  private: uint32_t mCount ;
 } ;
 
 //--------------------------------------------------------------------------------------------------

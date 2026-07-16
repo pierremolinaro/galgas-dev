@@ -8,7 +8,7 @@
 #include "ComparisonResult.h"
 #include "ComparisonKind.h"
 #include "EnumerationOrder.h"
-#include "cGenericAbstractEnumerator.h"
+#include "capCollectionElementArray.h"
 #include "Enumerator_range.h"
 #include "String-class.h"
 #include "Timer.h"
