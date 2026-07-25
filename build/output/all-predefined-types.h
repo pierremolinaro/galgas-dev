@@ -20,7 +20,7 @@
 #include "AC_GALGAS_value_class.h"
 #include "AC_GALGAS_enumAssociatedValues.h"
 #include "AC_GALGAS_graph.h"
-#include "acStrongPtr_class.h"
+#include "AbstractStrongPtrClass.h"
 #include "cPtr_weakReference_proxy.h"
 #include "AC_GALGAS_weak_reference.h"
 #include "BoolCommandLineOption.h"

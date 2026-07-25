@@ -600,7 +600,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_actualParameterAST ;
 // Phase 2: pointer class for @actualParameterAST class
 //--------------------------------------------------------------------------------------------------
 
-class cPtr_actualParameterAST : public acStrongPtr_class {
+class cPtr_actualParameterAST : public AbstractStrongPtrClass {
 
   #ifndef DO_NOT_GENERATE_CHECKINGS
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
@@ -780,7 +780,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_semanticInstructionFor
 // Phase 2: pointer class for @semanticInstructionForGeneration class
 //--------------------------------------------------------------------------------------------------
 
-class cPtr_semanticInstructionForGeneration : public acStrongPtr_class {
+class cPtr_semanticInstructionForGeneration : public AbstractStrongPtrClass {
 
   #ifndef DO_NOT_GENERATE_CHECKINGS
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
@@ -1187,7 +1187,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_unifiedTypeMapEntry ;
 // Phase 2: pointer class for @actualParameterForGeneration class
 //--------------------------------------------------------------------------------------------------
 
-class cPtr_actualParameterForGeneration : public acStrongPtr_class {
+class cPtr_actualParameterForGeneration : public AbstractStrongPtrClass {
 
   #ifndef DO_NOT_GENERATE_CHECKINGS
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
@@ -1439,7 +1439,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_semanticExpressionAST 
 // Phase 2: pointer class for @semanticExpressionAST class
 //--------------------------------------------------------------------------------------------------
 
-class cPtr_semanticExpressionAST : public acStrongPtr_class {
+class cPtr_semanticExpressionAST : public AbstractStrongPtrClass {
 
   #ifndef DO_NOT_GENERATE_CHECKINGS
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
@@ -2112,7 +2112,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_semanticExpressionForG
 // Phase 2: pointer class for @semanticExpressionForGeneration class
 //--------------------------------------------------------------------------------------------------
 
-class cPtr_semanticExpressionForGeneration : public acStrongPtr_class {
+class cPtr_semanticExpressionForGeneration : public AbstractStrongPtrClass {
 
   #ifndef DO_NOT_GENERATE_CHECKINGS
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
@@ -2337,7 +2337,7 @@ class cPtr_superInitInstructionForGeneration : public cPtr_semanticInstructionFo
                                                   COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
+  public: virtual AbstractPtrClass * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
@@ -3350,7 +3350,7 @@ class cPtr_warningInstructionForGeneration : public cPtr_semanticInstructionForG
                                                 COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
+  public: virtual AbstractPtrClass * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
@@ -3857,7 +3857,7 @@ class cPtr_logInstructionForGeneration : public cPtr_semanticInstructionForGener
                                             COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
+  public: virtual AbstractPtrClass * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
@@ -4622,7 +4622,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_syntaxInstructionAST ;
 // Phase 2: pointer class for @syntaxInstructionAST class
 //--------------------------------------------------------------------------------------------------
 
-class cPtr_syntaxInstructionAST : public acStrongPtr_class {
+class cPtr_syntaxInstructionAST : public AbstractStrongPtrClass {
 
   #ifndef DO_NOT_GENERATE_CHECKINGS
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
@@ -5685,7 +5685,7 @@ class cPtr_ifInstructionForGeneration : public cPtr_semanticInstructionForGenera
                                            COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
+  public: virtual AbstractPtrClass * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
@@ -5919,7 +5919,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_typeDefinition ;
 // Phase 2: pointer class for @unifiedTypeMapElementClass class
 //--------------------------------------------------------------------------------------------------
 
-class cPtr_unifiedTypeMapElementClass : public acStrongPtr_class {
+class cPtr_unifiedTypeMapElementClass : public AbstractStrongPtrClass {
 
   #ifndef DO_NOT_GENERATE_CHECKINGS
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
@@ -5946,7 +5946,7 @@ class cPtr_unifiedTypeMapElementClass : public acStrongPtr_class {
                                            COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
+  public: virtual AbstractPtrClass * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
@@ -6314,7 +6314,7 @@ class cPtr_assignmentInstructionForGeneration : public cPtr_semanticInstructionF
                                                    COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
+  public: virtual AbstractPtrClass * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
@@ -8155,7 +8155,7 @@ class cPtr_switchInstructionForGeneration : public cPtr_semanticInstructionForGe
                                                COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
+  public: virtual AbstractPtrClass * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
@@ -8357,7 +8357,7 @@ class cPtr_superMethodCallInstructionForGeneration : public cPtr_semanticInstruc
                                                         COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
+  public: virtual AbstractPtrClass * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
@@ -8553,7 +8553,7 @@ class cPtr_loopInstructionWithoutVariantForGeneration : public cPtr_semanticInst
                                                            COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
+  public: virtual AbstractPtrClass * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
@@ -8749,7 +8749,7 @@ class cPtr_typeMethodCallInstructionForGeneration : public cPtr_semanticInstruct
                                                        COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
+  public: virtual AbstractPtrClass * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
@@ -10129,7 +10129,7 @@ class cPtr_errorInstructionForGeneration : public cPtr_semanticInstructionForGen
                                               COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
+  public: virtual AbstractPtrClass * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
@@ -10428,7 +10428,7 @@ class cPtr_methodCallInstructionForGeneration : public cPtr_semanticInstructionF
                                                    COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
+  public: virtual AbstractPtrClass * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
@@ -10612,7 +10612,7 @@ class cPtr_localVariableDeclarationForGeneration : public cPtr_semanticInstructi
                                                       COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
+  public: virtual AbstractPtrClass * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
@@ -18868,7 +18868,7 @@ class cPtr_loopInstructionWithVariantForGeneration : public cPtr_semanticInstruc
                                                         COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
+  public: virtual AbstractPtrClass * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
@@ -19298,7 +19298,7 @@ class cPtr_undefinedLocalConstantDeclarationForGeneration : public cPtr_semantic
                                                                COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
+  public: virtual AbstractPtrClass * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
@@ -19494,7 +19494,7 @@ class cPtr_localVariableOrConstantDeclarationWithSourceExpressionForGeneration :
                                                                                     COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
+  public: virtual AbstractPtrClass * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
@@ -19637,7 +19637,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_abstractGrammarInstruc
 // Phase 2: pointer class for @abstractGrammarInstructionSyntaxDirectedTranslationResult class
 //--------------------------------------------------------------------------------------------------
 
-class cPtr_abstractGrammarInstructionSyntaxDirectedTranslationResult : public acStrongPtr_class {
+class cPtr_abstractGrammarInstructionSyntaxDirectedTranslationResult : public AbstractStrongPtrClass {
 
   #ifndef DO_NOT_GENERATE_CHECKINGS
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
@@ -19861,7 +19861,7 @@ class cPtr_grammarInstructionSyntaxDirectedTranslationResultNone : public cPtr_a
                                                                       COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
+  public: virtual AbstractPtrClass * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
@@ -20054,7 +20054,7 @@ class cPtr_grammarInstructionSyntaxDirectedTranslationDropResult : public cPtr_a
                                                                       COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
+  public: virtual AbstractPtrClass * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
@@ -20247,7 +20247,7 @@ class cPtr_grammarInstructionSyntaxDirectedTranslationResultInVar : public cPtr_
                                                                        COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
+  public: virtual AbstractPtrClass * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description

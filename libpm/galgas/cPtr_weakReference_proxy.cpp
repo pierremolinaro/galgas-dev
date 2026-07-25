@@ -19,13 +19,13 @@
 //--------------------------------------------------------------------------------------------------
 
 #include "cPtr_weakReference_proxy.h"
-#include "acStrongPtr_class.h"
+#include "AbstractStrongPtrClass.h"
 #include "String-class.h"
 
 //--------------------------------------------------------------------------------------------------
 
 cPtr_weakReference_proxy::cPtr_weakReference_proxy (LOCATION_ARGS) :
-acPtr_class (THERE),
+AbstractPtrClass (THERE),
 mStrongObjectPtr (nullptr) {
 }
 
@@ -49,13 +49,13 @@ const GALGAS_TypeDescriptor * cPtr_weakReference_proxy::classDescriptor (void) c
 
 //--------------------------------------------------------------------------------------------------
 
-acPtr_class * cPtr_weakReference_proxy::duplicate (UNUSED_LOCATION_ARGS) const {
+AbstractPtrClass * cPtr_weakReference_proxy::duplicate (UNUSED_LOCATION_ARGS) const {
   return nullptr ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-acPtr_class * cPtr_weakReference_proxy::duplicate (Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+AbstractPtrClass * cPtr_weakReference_proxy::duplicate (Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
   return nullptr ;
 }
 

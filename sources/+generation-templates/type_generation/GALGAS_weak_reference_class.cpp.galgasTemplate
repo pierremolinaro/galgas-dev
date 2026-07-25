@@ -31,7 +31,7 @@ GGS_%!WEAK_REF_TYPE_IDENTIFIER%::GGS_%!WEAK_REF_TYPE_IDENTIFIER% (void) :
 
 GGS_%!WEAK_REF_TYPE_IDENTIFIER% & GGS_%!WEAK_REF_TYPE_IDENTIFIER%::operator = (const GGS_%!CLASS_TYPE_IDENTIFIER% & inSource) {
   cPtr_weakReference_proxy * proxyPtr = nullptr ;
-  acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
+  AbstractStrongPtrClass * p = (AbstractStrongPtrClass *) inSource.ptr () ;
   if (p != nullptr) {
     proxyPtr = p->getProxy () ;
   }
@@ -61,7 +61,7 @@ GGS_%!WEAK_REF_TYPE_IDENTIFIER%::GGS_%!WEAK_REF_TYPE_IDENTIFIER% (const class GG
       macroMyNew (mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
     }else if (inSource.isValuated ()) {
       const GGS_%!CLASS_TYPE_IDENTIFIER% v = inSource.unwrappedValue () ;
-      acStrongPtr_class * ptr = (acStrongPtr_class *) v.ptr () ;
+      AbstractStrongPtrClass * ptr = (AbstractStrongPtrClass *) v.ptr () ;
       if (ptr != nullptr) {
         cPtr_weakReference_proxy * proxy = ptr->getProxy () ;
         macroAssignSharedObject (mProxyPtr, proxy) ;
@@ -96,7 +96,7 @@ GGS_%!CLASS_TYPE_IDENTIFIER% GGS_%!WEAK_REF_TYPE_IDENTIFIER%::unwrappedValue (vo
 GGS_%!CLASS_TYPE_IDENTIFIER% GGS_%!WEAK_REF_TYPE_IDENTIFIER%::bang_%!WEAK_REF_TYPE_IDENTIFIER% (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GGS_%!CLASS_TYPE_IDENTIFIER% result ;
   if (mProxyPtr != nullptr) {
-    acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
+    AbstractStrongPtrClass * strongPtr = mProxyPtr->strongObject () ;
     if (strongPtr == nullptr) {
       inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
     }else{

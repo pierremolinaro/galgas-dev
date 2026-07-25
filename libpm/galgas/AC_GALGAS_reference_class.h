@@ -28,20 +28,20 @@
 
 class String ;
 class GALGAS_TypeDescriptor ;
-class acStrongPtr_class ;
+class AbstractStrongPtrClass ;
 
 //--------------------------------------------------------------------------------------------------
 
 class AC_GALGAS_reference_class : public AC_GALGAS_root { // AC_GALGAS_reference_class est une classe abstraite
 //--- Properties
-  protected: acStrongPtr_class * mObjectPtr ;
-  public: inline const acStrongPtr_class * ptr (void) const { return mObjectPtr ; }
+  protected: AbstractStrongPtrClass * mObjectPtr ;
+  public: inline const AbstractStrongPtrClass * ptr (void) const { return mObjectPtr ; }
 
 //--- Default constructor
   protected: AC_GALGAS_reference_class (void) ;
 
 //--- Constructor from pointer
-  protected: AC_GALGAS_reference_class (const acStrongPtr_class * inPointer) ;
+  protected: AC_GALGAS_reference_class (const AbstractStrongPtrClass * inPointer) ;
 
 //--- Destructor
   protected: virtual ~ AC_GALGAS_reference_class (void) ;

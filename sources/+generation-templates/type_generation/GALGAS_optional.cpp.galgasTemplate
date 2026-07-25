@@ -24,7 +24,7 @@ AC_GALGAS_root (),
 mValue (),
 mState (OptionalState::invalid) {
   if (inSource.isValid ()) {
-    const acStrongPtr_class * p = inSource.ptr () ;
+    const AbstractStrongPtrClass * p = inSource.ptr () ;
     if (p == nullptr) {
       mState = OptionalState::isNil ;
     }else{

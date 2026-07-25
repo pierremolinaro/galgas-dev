@@ -19,7 +19,7 @@
 //--------------------------------------------------------------------------------------------------
 
 #include "AC_GALGAS_value_class.h"
-#include "acPtr_class.h"
+#include "AbstractPtrClass.h"
 #include "GALGAS_TypeDescriptor.h"
 #include "String-class.h"
 
@@ -42,10 +42,10 @@ mObjectPtr (nullptr) {
 
 //--------------------------------------------------------------------------------------------------
 
-AC_GALGAS_value_class::AC_GALGAS_value_class (const acPtr_class * inPointer) :
+AC_GALGAS_value_class::AC_GALGAS_value_class (const AbstractPtrClass * inPointer) :
 AC_GALGAS_root (),
 mObjectPtr (nullptr) {
-  macroAssignSharedObject (mObjectPtr, (acPtr_class *) inPointer) ;
+  macroAssignSharedObject (mObjectPtr, (AbstractPtrClass *) inPointer) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -94,7 +94,7 @@ void AC_GALGAS_value_class::description (String & ioString,
 
 void AC_GALGAS_value_class::insulate (Compiler * inCompiler COMMA_LOCATION_ARGS) {
   if (isValid () && !mObjectPtr->isUniquelyReferenced ()) {
-    acPtr_class * p = mObjectPtr->duplicate (inCompiler COMMA_THERE) ;
+    AbstractPtrClass * p = mObjectPtr->duplicate (inCompiler COMMA_THERE) ;
     macroAssignSharedObject (mObjectPtr, p) ;
     macroDetachSharedObject (p) ;
   }

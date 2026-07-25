@@ -20,7 +20,7 @@
 		CF305FA32D0D8A2E000A5F79 /* ColoredConsole.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305F5D2D0D8A2E000A5F79 /* ColoredConsole.cpp */; };
 		CF305FA42D0D8A2E000A5F79 /* C_galgas_CLI_Options.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305EEE2D0D8A2E000A5F79 /* C_galgas_CLI_Options.cpp */; };
 		CF305FA52D0D8A2E000A5F79 /* HTMLFileWrite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305ED12D0D8A2E000A5F79 /* HTMLFileWrite.cpp */; };
-		CF305FA62D0D8A2E000A5F79 /* acStrongPtr_class.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305EEA2D0D8A2E000A5F79 /* acStrongPtr_class.cpp */; };
+		CF305FA62D0D8A2E000A5F79 /* AbstractStrongPtrClass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305EEA2D0D8A2E000A5F79 /* AbstractStrongPtrClass.cpp */; };
 		CF305FA72D0D8A2E000A5F79 /* GALGAS_TypeDescriptor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305EF42D0D8A2E000A5F79 /* GALGAS_TypeDescriptor.cpp */; };
 		CF305FA82D0D8A2E000A5F79 /* Compiler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305F0E2D0D8A2E000A5F79 /* Compiler.cpp */; };
 		CF305FAA2D0D8A2E000A5F79 /* PrologueEpilogue.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305F8B2D0D8A2E000A5F79 /* PrologueEpilogue.cpp */; };
@@ -102,7 +102,7 @@
 		CF3060082D0D8A2E000A5F79 /* U8Data.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305F932D0D8A2E000A5F79 /* U8Data.cpp */; };
 		CF3060092D0D8A2E000A5F79 /* GGS_string-getters.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305F252D0D8A2E000A5F79 /* GGS_string-getters.cpp */; };
 		CF30600A2D0D8A2E000A5F79 /* AC_GALGAS_graph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305ED82D0D8A2E000A5F79 /* AC_GALGAS_graph.cpp */; };
-		CF30600B2D0D8A2E000A5F79 /* acPtr_class.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305EE82D0D8A2E000A5F79 /* acPtr_class.cpp */; };
+		CF30600B2D0D8A2E000A5F79 /* AbstractPtrClass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305EE82D0D8A2E000A5F79 /* AbstractPtrClass.cpp */; };
 		CF30600D2D0D8A2E000A5F79 /* BigUnsigned-divide-naive.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305E6B2D0D8A2E000A5F79 /* BigUnsigned-divide-naive.cpp */; };
 		CF30600E2D0D8A2E000A5F79 /* BinaryDecisionDiagram.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305E4D2D0D8A2E000A5F79 /* BinaryDecisionDiagram.cpp */; };
 		CF30600F2D0D8A2E000A5F79 /* GGS_binaryset.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305F192D0D8A2E000A5F79 /* GGS_binaryset.cpp */; };
@@ -196,7 +196,7 @@
 		CF8F80EB2D0D91490095170B /* ColoredConsole.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305F5D2D0D8A2E000A5F79 /* ColoredConsole.cpp */; };
 		CF8F80EC2D0D91490095170B /* C_galgas_CLI_Options.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305EEE2D0D8A2E000A5F79 /* C_galgas_CLI_Options.cpp */; };
 		CF8F80ED2D0D91490095170B /* HTMLFileWrite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305ED12D0D8A2E000A5F79 /* HTMLFileWrite.cpp */; };
-		CF8F80EE2D0D91490095170B /* acStrongPtr_class.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305EEA2D0D8A2E000A5F79 /* acStrongPtr_class.cpp */; };
+		CF8F80EE2D0D91490095170B /* AbstractStrongPtrClass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305EEA2D0D8A2E000A5F79 /* AbstractStrongPtrClass.cpp */; };
 		CF8F80EF2D0D91490095170B /* GALGAS_TypeDescriptor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305EF42D0D8A2E000A5F79 /* GALGAS_TypeDescriptor.cpp */; };
 		CF8F80F02D0D91490095170B /* Compiler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305F0E2D0D8A2E000A5F79 /* Compiler.cpp */; };
 		CF8F80F12D0D91490095170B /* PrologueEpilogue.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305F8B2D0D8A2E000A5F79 /* PrologueEpilogue.cpp */; };
@@ -293,7 +293,7 @@
 		CF8F814F2D0D91490095170B /* U8Data.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305F932D0D8A2E000A5F79 /* U8Data.cpp */; };
 		CF8F81502D0D91490095170B /* GGS_string-getters.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305F252D0D8A2E000A5F79 /* GGS_string-getters.cpp */; };
 		CF8F81512D0D91490095170B /* AC_GALGAS_graph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305ED82D0D8A2E000A5F79 /* AC_GALGAS_graph.cpp */; };
-		CF8F81522D0D91490095170B /* acPtr_class.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305EE82D0D8A2E000A5F79 /* acPtr_class.cpp */; };
+		CF8F81522D0D91490095170B /* AbstractPtrClass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305EE82D0D8A2E000A5F79 /* AbstractPtrClass.cpp */; };
 		CF8F81532D0D91490095170B /* BigUnsigned-divide-naive.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305E6B2D0D8A2E000A5F79 /* BigUnsigned-divide-naive.cpp */; };
 		CF8F81542D0D91490095170B /* BinaryDecisionDiagram.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305E4D2D0D8A2E000A5F79 /* BinaryDecisionDiagram.cpp */; };
 		CF8F81552D0D91490095170B /* GGS_binaryset.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305F192D0D8A2E000A5F79 /* GGS_binaryset.cpp */; };
@@ -521,10 +521,10 @@
 		CF305EE42D0D8A2E000A5F79 /* AC_GALGAS_value_class.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = AC_GALGAS_value_class.cpp; sourceTree = "<group>"; };
 		CF305EE52D0D8A2E000A5F79 /* AC_GALGAS_weak_reference.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AC_GALGAS_weak_reference.h; sourceTree = "<group>"; };
 		CF305EE62D0D8A2E000A5F79 /* AC_GALGAS_weak_reference.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = AC_GALGAS_weak_reference.cpp; sourceTree = "<group>"; };
-		CF305EE72D0D8A2E000A5F79 /* acPtr_class.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = acPtr_class.h; sourceTree = "<group>"; };
-		CF305EE82D0D8A2E000A5F79 /* acPtr_class.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = acPtr_class.cpp; sourceTree = "<group>"; };
-		CF305EE92D0D8A2E000A5F79 /* acStrongPtr_class.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = acStrongPtr_class.h; sourceTree = "<group>"; };
-		CF305EEA2D0D8A2E000A5F79 /* acStrongPtr_class.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = acStrongPtr_class.cpp; sourceTree = "<group>"; };
+		CF305EE72D0D8A2E000A5F79 /* AbstractPtrClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AbstractPtrClass.h; sourceTree = "<group>"; };
+		CF305EE82D0D8A2E000A5F79 /* AbstractPtrClass.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = AbstractPtrClass.cpp; sourceTree = "<group>"; };
+		CF305EE92D0D8A2E000A5F79 /* AbstractStrongPtrClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AbstractStrongPtrClass.h; sourceTree = "<group>"; };
+		CF305EEA2D0D8A2E000A5F79 /* AbstractStrongPtrClass.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = AbstractStrongPtrClass.cpp; sourceTree = "<group>"; };
 		CF305EEB2D0D8A2E000A5F79 /* C_galgas_class_inspector.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = C_galgas_class_inspector.h; sourceTree = "<group>"; };
 		CF305EEC2D0D8A2E000A5F79 /* C_galgas_class_inspector.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = C_galgas_class_inspector.cpp; sourceTree = "<group>"; };
 		CF305EED2D0D8A2E000A5F79 /* C_galgas_CLI_Options.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = C_galgas_CLI_Options.h; sourceTree = "<group>"; };
@@ -972,10 +972,10 @@
 				CF305EE42D0D8A2E000A5F79 /* AC_GALGAS_value_class.cpp */,
 				CF305EE52D0D8A2E000A5F79 /* AC_GALGAS_weak_reference.h */,
 				CF305EE62D0D8A2E000A5F79 /* AC_GALGAS_weak_reference.cpp */,
-				CF305EE72D0D8A2E000A5F79 /* acPtr_class.h */,
-				CF305EE82D0D8A2E000A5F79 /* acPtr_class.cpp */,
-				CF305EE92D0D8A2E000A5F79 /* acStrongPtr_class.h */,
-				CF305EEA2D0D8A2E000A5F79 /* acStrongPtr_class.cpp */,
+				CF305EE72D0D8A2E000A5F79 /* AbstractPtrClass.h */,
+				CF305EE82D0D8A2E000A5F79 /* AbstractPtrClass.cpp */,
+				CF305EE92D0D8A2E000A5F79 /* AbstractStrongPtrClass.h */,
+				CF305EEA2D0D8A2E000A5F79 /* AbstractStrongPtrClass.cpp */,
 				CF305EEB2D0D8A2E000A5F79 /* C_galgas_class_inspector.h */,
 				CF305EEC2D0D8A2E000A5F79 /* C_galgas_class_inspector.cpp */,
 				CF305EED2D0D8A2E000A5F79 /* C_galgas_CLI_Options.h */,
@@ -1477,7 +1477,7 @@
 				CF8F80EB2D0D91490095170B /* ColoredConsole.cpp in Sources */,
 				CF8F80EC2D0D91490095170B /* C_galgas_CLI_Options.cpp in Sources */,
 				CF8F80ED2D0D91490095170B /* HTMLFileWrite.cpp in Sources */,
-				CF8F80EE2D0D91490095170B /* acStrongPtr_class.cpp in Sources */,
+				CF8F80EE2D0D91490095170B /* AbstractStrongPtrClass.cpp in Sources */,
 				CF8F80EF2D0D91490095170B /* GALGAS_TypeDescriptor.cpp in Sources */,
 				CF8F80F02D0D91490095170B /* Compiler.cpp in Sources */,
 				CF8F80F12D0D91490095170B /* PrologueEpilogue.cpp in Sources */,
@@ -1574,7 +1574,7 @@
 				CF8F814F2D0D91490095170B /* U8Data.cpp in Sources */,
 				CF8F81502D0D91490095170B /* GGS_string-getters.cpp in Sources */,
 				CF8F81512D0D91490095170B /* AC_GALGAS_graph.cpp in Sources */,
-				CF8F81522D0D91490095170B /* acPtr_class.cpp in Sources */,
+				CF8F81522D0D91490095170B /* AbstractPtrClass.cpp in Sources */,
 				CF8F81532D0D91490095170B /* BigUnsigned-divide-naive.cpp in Sources */,
 				CF8F81542D0D91490095170B /* BinaryDecisionDiagram.cpp in Sources */,
 				CF8F81552D0D91490095170B /* GGS_binaryset.cpp in Sources */,
@@ -1704,7 +1704,7 @@
 				CF305FA32D0D8A2E000A5F79 /* ColoredConsole.cpp in Sources */,
 				CF305FA42D0D8A2E000A5F79 /* C_galgas_CLI_Options.cpp in Sources */,
 				CF305FA52D0D8A2E000A5F79 /* HTMLFileWrite.cpp in Sources */,
-				CF305FA62D0D8A2E000A5F79 /* acStrongPtr_class.cpp in Sources */,
+				CF305FA62D0D8A2E000A5F79 /* AbstractStrongPtrClass.cpp in Sources */,
 				CF305FA72D0D8A2E000A5F79 /* GALGAS_TypeDescriptor.cpp in Sources */,
 				CF305FA82D0D8A2E000A5F79 /* Compiler.cpp in Sources */,
 				CF305FAA2D0D8A2E000A5F79 /* PrologueEpilogue.cpp in Sources */,
@@ -1801,7 +1801,7 @@
 				CF3060082D0D8A2E000A5F79 /* U8Data.cpp in Sources */,
 				CF3060092D0D8A2E000A5F79 /* GGS_string-getters.cpp in Sources */,
 				CF30600A2D0D8A2E000A5F79 /* AC_GALGAS_graph.cpp in Sources */,
-				CF30600B2D0D8A2E000A5F79 /* acPtr_class.cpp in Sources */,
+				CF30600B2D0D8A2E000A5F79 /* AbstractPtrClass.cpp in Sources */,
 				CF30600D2D0D8A2E000A5F79 /* BigUnsigned-divide-naive.cpp in Sources */,
 				CF30600E2D0D8A2E000A5F79 /* BinaryDecisionDiagram.cpp in Sources */,
 				CF30600F2D0D8A2E000A5F79 /* GGS_binaryset.cpp in Sources */,

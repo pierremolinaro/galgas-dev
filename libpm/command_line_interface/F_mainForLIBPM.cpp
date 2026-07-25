@@ -30,7 +30,7 @@
 #include "PrologueEpilogue.h"
 #include "analyzeCommandLineOptions.h"
 #include "utf32.h"
-#include "acStrongPtr_class.h"
+#include "AbstractStrongPtrClass.h"
 
 //--------------------------------------------------------------------------------------------------
 
@@ -72,7 +72,7 @@ int main (int argc, const char * argv []) {
       PrologueEpilogue::runEpilogueActions () ;
       BinaryDecisionDiagram::freeBDDStataStructures () ;
       #ifndef DO_NOT_GENERATE_CHECKINGS
-        acStrongPtr_class::printExistingClassInstances () ;
+        AbstractStrongPtrClass::printExistingClassInstances () ;
         SharedObject::checkAllObjectsHaveBeenReleased () ;
         displayAllocationStats () ;
         displayAllocatedBlockSizeStats () ;
@@ -81,21 +81,21 @@ int main (int argc, const char * argv []) {
     }catch (const std::exception & e) {
       F_default_display_exception (e) ;
       #ifndef DO_NOT_GENERATE_CHECKINGS
-        acStrongPtr_class::printExistingClassInstances () ;
+        AbstractStrongPtrClass::printExistingClassInstances () ;
         SharedObject::checkAllObjectsHaveBeenReleased () ;
       #endif
       returnCode = 1 ; // Error code
     }catch (char * inExceptionString) {
       printf ("*** Exception: '%s' ***\n", inExceptionString) ;
       #ifndef DO_NOT_GENERATE_CHECKINGS
-        acStrongPtr_class::printExistingClassInstances () ;
+        AbstractStrongPtrClass::printExistingClassInstances () ;
         SharedObject::checkAllObjectsHaveBeenReleased () ;
       #endif
       returnCode = 1 ; // Error code
     }catch (...) {
       F_default_display_unknown_exception () ;
       #ifndef DO_NOT_GENERATE_CHECKINGS
-        acStrongPtr_class::printExistingClassInstances () ;
+        AbstractStrongPtrClass::printExistingClassInstances () ;
         SharedObject::checkAllObjectsHaveBeenReleased () ;
       #endif
       returnCode = 2 ; // Error code

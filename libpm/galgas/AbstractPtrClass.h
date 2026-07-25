@@ -1,10 +1,10 @@
 //--------------------------------------------------------------------------------------------------
 //
-//  acPtr_class : Base class for GALGAS class                                                    
+//  AbstractPtrClass : Base class for GALGAS class                                                    
 //
 //  This file is part of libpm library                                                           
 //
-//  Copyright (C) 2008, ..., 2011 Pierre Molinaro.
+//  Copyright (C) 2008, ..., 2026 Pierre Molinaro.
 //
 //  e-mail : pierre@pcmolinaro.name
 //
@@ -32,19 +32,19 @@ class GALGAS_TypeDescriptor ;
 
 //--------------------------------------------------------------------------------------------------
 
-class acPtr_class : public SharedObject {
-  public: acPtr_class (LOCATION_ARGS) ;
+class AbstractPtrClass : public SharedObject {
+  public: AbstractPtrClass (LOCATION_ARGS) ;
 
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const = 0 ;
 
-  public: virtual ComparisonResult dynamicObjectCompare (const acPtr_class * /* inOperandPtr */) const {
+  public: virtual ComparisonResult dynamicObjectCompare (const AbstractPtrClass * /* inOperandPtr */) const {
     return ComparisonResult::invalid ;
   }
 
   public: virtual const GALGAS_TypeDescriptor * classDescriptor (void) const = 0 ;
 
-  public: virtual acPtr_class * duplicate (class Compiler * COMMA_UNUSED_LOCATION_ARGS) const = 0 ;
+  public: virtual AbstractPtrClass * duplicate (class Compiler * COMMA_UNUSED_LOCATION_ARGS) const = 0 ;
 } ;
 
 //--------------------------------------------------------------------------------------------------

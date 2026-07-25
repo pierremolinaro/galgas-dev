@@ -173,8 +173,8 @@
    <Unit filename="../build/libpm/galgas/AC_GALGAS_value_class.cpp" />
    <Unit filename="../build/libpm/galgas/AC_GALGAS_graph.cpp" />
    <Unit filename="../build/libpm/galgas/AC_GALGAS_enumAssociatedValues.cpp" />
-   <Unit filename="../build/libpm/galgas/acPtr_class.cpp" />
-   <Unit filename="../build/libpm/galgas/acStrongPtr_class.cpp" />
+   <Unit filename="../build/libpm/galgas/AbstractPtrClass.cpp" />
+   <Unit filename="../build/libpm/galgas/AbstractStrongPtrClass.cpp" />
    <Unit filename="../build/libpm/galgas/cPtr_weakReference_proxy.cpp" />
    <Unit filename="../build/libpm/galgas/AC_GALGAS_weak_reference.cpp" />
    <Unit filename="../build/libpm/galgas/cPtr_object.cpp" />

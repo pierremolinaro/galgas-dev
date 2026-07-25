@@ -1,10 +1,10 @@
 //--------------------------------------------------------------------------------------------------
 //
-//  acStrongPtr_class : Base class for reference class class
+//  AbstractStrongPtrClass : Base class for reference class class
 //
 //  This file is part of libpm library
 //
-//  Copyright (C) 2021, ..., 2021 Pierre Molinaro.
+//  Copyright (C) 2021, ..., 2026 Pierre Molinaro.
 //
 //  e-mail : pierre@pcmolinaro.name
 //
@@ -22,7 +22,7 @@
 
 //--------------------------------------------------------------------------------------------------
 
-#include "acPtr_class.h"
+#include "AbstractPtrClass.h"
 
 //--------------------------------------------------------------------------------------------------
 
@@ -30,18 +30,18 @@ class cPtr_weakReference_proxy ;
 
 //--------------------------------------------------------------------------------------------------
 
-class acStrongPtr_class : public acPtr_class {
+class AbstractStrongPtrClass : public AbstractPtrClass {
 //--- Properties
   #ifndef DO_NOT_GENERATE_CHECKINGS
-    private: acStrongPtr_class * mPreviousPtr ;
-    private: acStrongPtr_class * mNextPtr ;
+    private: AbstractStrongPtrClass * mPreviousPtr ;
+    private: AbstractStrongPtrClass * mNextPtr ;
   #endif
 
 //--- Default constructor
-  public: acStrongPtr_class (class Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+  public: AbstractStrongPtrClass (class Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Destructor
-  public: virtual ~ acStrongPtr_class (void) ;
+  public: virtual ~ AbstractStrongPtrClass (void) ;
 
 //--- Private property
   private: cPtr_weakReference_proxy * mProxyPtr ;
@@ -50,8 +50,8 @@ class acStrongPtr_class : public acPtr_class {
   public: cPtr_weakReference_proxy * getProxy (void) ;
 
 //--- No Copy
-  private: acStrongPtr_class (const acStrongPtr_class &) = delete ;
-  private: acStrongPtr_class & operator = (const acStrongPtr_class &) = delete ;
+  private: AbstractStrongPtrClass (const AbstractStrongPtrClass &) = delete ;
+  private: AbstractStrongPtrClass & operator = (const AbstractStrongPtrClass &) = delete ;
 
 //--- Friend
   friend class cPtr_weakReference_proxy ;

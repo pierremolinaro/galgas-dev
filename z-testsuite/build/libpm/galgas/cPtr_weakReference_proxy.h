@@ -22,15 +22,15 @@
 
 //--------------------------------------------------------------------------------------------------
 
-#include "acPtr_class.h"
+#include "AbstractPtrClass.h"
 
 //--------------------------------------------------------------------------------------------------
 
-class acStrongPtr_class ;
+class AbstractStrongPtrClass ;
 
 //--------------------------------------------------------------------------------------------------
 
-class cPtr_weakReference_proxy final : public acPtr_class {
+class cPtr_weakReference_proxy final : public AbstractPtrClass {
 //--- Public default constructor
   public: cPtr_weakReference_proxy (LOCATION_ARGS) ;
 
@@ -38,27 +38,27 @@ class cPtr_weakReference_proxy final : public acPtr_class {
   public: virtual ~ cPtr_weakReference_proxy (void) ;
 
 //--- Private property
-  private: acStrongPtr_class * mStrongObjectPtr ;
-  public: acStrongPtr_class * strongObject (void) const { return mStrongObjectPtr ; }
+  private: AbstractStrongPtrClass * mStrongObjectPtr ;
+  public: AbstractStrongPtrClass * strongObject (void) const { return mStrongObjectPtr ; }
 
-//--- Virtual methods from acPtr_class
+//--- Virtual methods from AbstractPtrClass
   public: virtual void description (String &, const int32_t) const {} // Never invoked
 
-  public: virtual ComparisonResult dynamicObjectCompare (const acPtr_class *) const { // Never invoked
+  public: virtual ComparisonResult dynamicObjectCompare (const AbstractPtrClass *) const { // Never invoked
     return ComparisonResult::invalid ;
   }
 
   public: virtual const GALGAS_TypeDescriptor * classDescriptor (void) const ;
 
-  public: acPtr_class * duplicate (LOCATION_ARGS) const ;
-  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+  public: AbstractPtrClass * duplicate (LOCATION_ARGS) const ;
+  public: virtual AbstractPtrClass * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
 //--- No Copy
   private: cPtr_weakReference_proxy (const cPtr_weakReference_proxy &) = delete ;
   private: cPtr_weakReference_proxy & operator = (const cPtr_weakReference_proxy &) = delete ;
 
 //--- Friend
-  friend class acStrongPtr_class ;
+  friend class AbstractStrongPtrClass ;
 } ;
 
 //--------------------------------------------------------------------------------------------------

@@ -125,7 +125,7 @@ end
 %if [INITIALIZER_ARGUMENT_LIST count] != 0 then
 %cPtr_%!TYPE_IDENTIFIER%::cPtr_%!TYPE_IDENTIFIER% (Compiler * inCompiler COMMA_LOCATION_ARGS) :\n%
   if SUPER_TYPE_IDENTIFIER == ""
-  then %acStrongPtr_class%
+  then %AbstractStrongPtrClass%
   else %cPtr_%!SUPER_TYPE_IDENTIFIER
   end
   % (inCompiler COMMA_THERE)%
@@ -145,7 +145,7 @@ cPtr_%!TYPE_IDENTIFIER%::cPtr_%!TYPE_IDENTIFIER% (%?^
   %Compiler * inCompiler%
   %\n%!^%COMMA_LOCATION_ARGS%
 %) :
-%if SUPER_TYPE_IDENTIFIER == "" then %acStrongPtr_class% else %cPtr_%!SUPER_TYPE_IDENTIFIER end% (%
+%if SUPER_TYPE_IDENTIFIER == "" then %AbstractStrongPtrClass% else %cPtr_%!SUPER_TYPE_IDENTIFIER end% (%
   for (mPropertyTypeEntry mPropertyName initialization mHasSetter mHasSelector) in INHERITED_INITIALIZER_ARGUMENT_LIST
     do %in_%![mPropertyName identifierRepresentation]%, %
   end
@@ -187,8 +187,8 @@ end
 if not IS_ABSTRACT then
 %//--------------------------------------------------------------------------------------------------
 
-acPtr_class * cPtr_%!TYPE_IDENTIFIER%::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  acPtr_class * ptr = nullptr ;
+AbstractPtrClass * cPtr_%!TYPE_IDENTIFIER%::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  AbstractPtrClass * ptr = nullptr ;
   macroMyNew (ptr, cPtr_%!TYPE_IDENTIFIER% (%
   for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in INITIALIZER_ARGUMENT_LIST
   do  %mProperty_%![mPropertyName identifierRepresentation]%, %
@@ -204,7 +204,7 @@ acPtr_class * cPtr_%!TYPE_IDENTIFIER%::duplicate (Compiler * inCompiler COMMA_LO
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_%!TYPE_IDENTIFIER%::printNonNullClassInstanceProperties (void) const {
   %if SUPER_TYPE_IDENTIFIER == "" then
-     %  acStrongPtr_class::printNonNullClassInstanceProperties () ;\n%
+     %  AbstractStrongPtrClass::printNonNullClassInstanceProperties () ;\n%
   else
     %  cPtr_%!SUPER_TYPE_IDENTIFIER%::printNonNullClassInstanceProperties () ;\n%
   end

@@ -9,7 +9,7 @@ class GrammarVocabulary ;
 // Phase 2: pointer class for @abstractSyntaxInstructionForGrammarAnalysis class
 //--------------------------------------------------------------------------------------------------
 
-class cPtr_abstractSyntaxInstructionForGrammarAnalysis : public acStrongPtr_class {
+class cPtr_abstractSyntaxInstructionForGrammarAnalysis : public AbstractStrongPtrClass {
 
   #ifndef DO_NOT_GENERATE_CHECKINGS
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
