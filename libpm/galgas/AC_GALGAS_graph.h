@@ -24,7 +24,7 @@
 
 #include "AC_GALGAS_root.h"
 #include "ComparisonResult.h"
-#include "CollectionElement.h"
+#include "CollectionElementPtr.h"
 
 //--------------------------------------------------------------------------------------------------
 //  AC_GALGAS_graph
@@ -107,13 +107,13 @@ class AC_GALGAS_graph : public AC_GALGAS_root {
                                              COMMA_LOCATION_ARGS) const ;
 
 
-  protected: VIRTUAL_IN_DEBUG capCollectionElementArray graph (void) const ;
+  protected: VIRTUAL_IN_DEBUG CollectionElementArray graph (void) const ;
 
   private: VIRTUAL_IN_DEBUG void insulateGraph (LOCATION_ARGS) ;
 
   protected: VIRTUAL_IN_DEBUG void internalAddNode (const GGS_lstring & inKey,
                                                     const char * inErrorMessage,
-                                                    const capCollectionElement & inAttributes,
+                                                    const CollectionElement & inAttributes,
                                                     Compiler * inCompiler
                                                     COMMA_LOCATION_ARGS) ;
 
@@ -122,29 +122,29 @@ class AC_GALGAS_graph : public AC_GALGAS_root {
 
   public: VIRTUAL_IN_DEBUG GGS_lstringlist getter_undefinedNodeReferenceList (LOCATION_ARGS) const ;
 
-  protected: VIRTUAL_IN_DEBUG void internalTopologicalSort (capCollectionElementArray & outSortedList,
+  protected: VIRTUAL_IN_DEBUG void internalTopologicalSort (CollectionElementArray & outSortedList,
                                                             GGS_lstringlist & outSortedNodeKeyList,
-                                                            capCollectionElementArray & outUnsortedList,
+                                                            CollectionElementArray & outUnsortedList,
                                                             GGS_lstringlist & outUnsortedNodeKeyList,
                                                             Compiler * inCompiler
                                                             COMMA_LOCATION_ARGS) const ;
 
-  protected: VIRTUAL_IN_DEBUG void internalFindCircularities (capCollectionElementArray & outInfoList,
+  protected: VIRTUAL_IN_DEBUG void internalFindCircularities (CollectionElementArray & outInfoList,
                                                               GGS_lstringlist & outNodeKeyList
                                                               COMMA_UNUSED_LOCATION_ARGS) const ;
 
-  protected: VIRTUAL_IN_DEBUG void internalNodesWithNoPredecessor (capCollectionElementArray & outSortedList,
+  protected: VIRTUAL_IN_DEBUG void internalNodesWithNoPredecessor (CollectionElementArray & outSortedList,
                                                                    GGS_lstringlist & outSortedNodeKeyList
                                                                    COMMA_LOCATION_ARGS) const ;
 
-  protected: VIRTUAL_IN_DEBUG void internalNodesWithNoSuccessor (capCollectionElementArray & outSortedList,
+  protected: VIRTUAL_IN_DEBUG void internalNodesWithNoSuccessor (CollectionElementArray & outSortedList,
                                                                  GGS_lstringlist & outSortedNodeKeyList
                                                                  COMMA_LOCATION_ARGS) const ;
 
 
-  protected: VIRTUAL_IN_DEBUG void internalDepthFirstTopologicalSort (capCollectionElementArray & outSortedList,
+  protected: VIRTUAL_IN_DEBUG void internalDepthFirstTopologicalSort (CollectionElementArray & outSortedList,
                                                                       GGS_lstringlist & outSortedNodeKeyList,
-                                                                      capCollectionElementArray & outUnsortedList,
+                                                                      CollectionElementArray & outUnsortedList,
                                                                       GGS_lstringlist & outUnsortedNodeKeyList,
                                                                       Compiler * inCompiler
                                                                       COMMA_LOCATION_ARGS) const ;

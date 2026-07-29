@@ -1,10 +1,10 @@
 //--------------------------------------------------------------------------------------------------
 
-#include "CollectionElement.h"
+#include "CollectionElementPtr.h"
 
 //--------------------------------------------------------------------------------------------------
 
-class cMapElement : public CollectionElement {
+class cMapElement : public CollectionElementPtr {
 //--- Attribut
   public: GGS_lstring mProperty_lkey ;
 

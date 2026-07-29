@@ -169,9 +169,9 @@ end
    <Unit filename="%!LIBPM_PATH%/galgas/C_galgas_class_inspector.cpp" />
    <Unit filename="%!LIBPM_PATH%/galgas/IssueWithFixIt.cpp" />
    <Unit filename="%!LIBPM_PATH%/galgas/GALGAS_ObjectArray.cpp" />
-   <Unit filename="%!LIBPM_PATH%/galgas/CollectionElement" />
-   <Unit filename="%!LIBPM_PATH%/galgas/capCollectionElement.cpp" />
-   <Unit filename="%!LIBPM_PATH%/galgas/capCollectionElementArray.cpp" />
+   <Unit filename="%!LIBPM_PATH%/galgas/CollectionElementPtr.cpp" />
+   <Unit filename="%!LIBPM_PATH%/galgas/CollectionElement.cpp" />
+   <Unit filename="%!LIBPM_PATH%/galgas/CollectionElementArray.cpp" />
    <Unit filename="%!LIBPM_PATH%/galgas/Enumerator_range.cpp" />
    <Unit filename="%!LIBPM_PATH%/galgas/IndexingDictionary.cpp" />
    <Unit filename="%!LIBPM_PATH%/galgas/IssueDescriptor.cpp" />
@@ -183,9 +183,9 @@ end
    <Unit filename="%!LIBPM_PATH%/galgas/AC_GALGAS_enumAssociatedValues.cpp" />
    <Unit filename="%!LIBPM_PATH%/galgas/AbstractPtrClass.cpp" />
    <Unit filename="%!LIBPM_PATH%/galgas/AbstractStrongPtrClass.cpp" />
-   <Unit filename="%!LIBPM_PATH%/galgas/cPtr_weakReference_proxy.cpp" />
+   <Unit filename="%!LIBPM_PATH%/galgas/PtrWeakReferenceProxy.cpp" />
    <Unit filename="%!LIBPM_PATH%/galgas/AC_GALGAS_weak_reference.cpp" />
-   <Unit filename="%!LIBPM_PATH%/galgas/cPtr_object.cpp" />
+   <Unit filename="%!LIBPM_PATH%/galgas/PtrObject.cpp" />
    <Unit filename="%!LIBPM_PATH%/galgas/scanner_actions.cpp" />
    <Unit filename="%!LIBPM_PATH%/galgas/GGS_application.cpp" />
    <Unit filename="%!LIBPM_PATH%/galgas/GGS_bigint.cpp" />

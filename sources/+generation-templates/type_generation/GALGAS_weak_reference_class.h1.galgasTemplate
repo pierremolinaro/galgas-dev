@@ -22,7 +22,7 @@ class GGS_%!WEAK_REF_TYPE_IDENTIFIER% : public %
 //--------------------------------- nil initializer
   public: inline static GGS_%!WEAK_REF_TYPE_IDENTIFIER% init_nil (void) {
     GGS_%!WEAK_REF_TYPE_IDENTIFIER% result ;
-    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
     return result ;
   }
 

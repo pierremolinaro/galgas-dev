@@ -26,7 +26,7 @@
 
 //--------------------------------------------------------------------------------------------------
 
-class cPtr_weakReference_proxy ;
+class PtrWeakReferenceProxy ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -44,17 +44,17 @@ class AbstractStrongPtrClass : public AbstractPtrClass {
   public: virtual ~ AbstractStrongPtrClass (void) ;
 
 //--- Private property
-  private: cPtr_weakReference_proxy * mProxyPtr ;
+  private: PtrWeakReferenceProxy * mProxyPtr ;
 
 //--- Get proxy
-  public: cPtr_weakReference_proxy * getProxy (void) ;
+  public: PtrWeakReferenceProxy * getProxy (void) ;
 
 //--- No Copy
   private: AbstractStrongPtrClass (const AbstractStrongPtrClass &) = delete ;
   private: AbstractStrongPtrClass & operator = (const AbstractStrongPtrClass &) = delete ;
 
 //--- Friend
-  friend class cPtr_weakReference_proxy ;
+  friend class PtrWeakReferenceProxy ;
 
 //--- Print all existing objects
   #ifndef DO_NOT_GENERATE_CHECKINGS

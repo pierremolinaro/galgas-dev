@@ -31,7 +31,7 @@ class GraphNode final {
   public: int32_t mBalance ;
   public: const String mKey ;
   public: const uint32_t mNodeID ;
-  public: capCollectionElement mAttributes ;
+  public: CollectionElement mAttributes ;
   public: GGS_location mDefinitionLocation ;
   public: GenericUniqueArray <GGS_location> mReferenceLocationArray ;
   public: bool mIsDefined ;
@@ -42,7 +42,7 @@ class GraphNode final {
 
   public: GraphNode (GraphNode * inNode) ;
 
-  public: void accumulateNodes (capCollectionElementArray & outNodeList) const ;
+  public: void accumulateNodes (CollectionElementArray & outNodeList) const ;
 
 //--- Destructor
   public: ~ GraphNode (void) ;
@@ -103,7 +103,7 @@ class SharedGraph : public SharedObject {
 
   public: void internalAddNode (const GGS_lstring & inKey,
                                 const char * inErrorMessage,
-                                const capCollectionElement & inAttributes,
+                                const CollectionElement & inAttributes,
                                 Compiler * inCompiler
                                 COMMA_LOCATION_ARGS) ;
 
@@ -118,24 +118,24 @@ class SharedGraph : public SharedObject {
                                   Compiler * inCompiler
                                   COMMA_LOCATION_ARGS) ;
 
-  public: void internalTopologicalSort (capCollectionElementArray & outSortedList,
+  public: void internalTopologicalSort (CollectionElementArray & outSortedList,
                                         GGS_lstringlist & outSortedNodeKeyList,
-                                        capCollectionElementArray & outUnsortedList,
+                                        CollectionElementArray & outUnsortedList,
                                         GGS_lstringlist & outUnsortedNodeKeyList) const ;
 
 
-  public: void internalFindCircularities (capCollectionElementArray & outInfoList,
+  public: void internalFindCircularities (CollectionElementArray & outInfoList,
                                           GGS_lstringlist & outNodeKeyList) const ;
 
-  public: void internalNodesWithNoPredecessor (capCollectionElementArray & outInfoList,
+  public: void internalNodesWithNoPredecessor (CollectionElementArray & outInfoList,
                                                GGS_lstringlist & outNodeKeyList) const ;
 
-  public: void internalNodesWithNoSuccessor (capCollectionElementArray & outInfoList,
+  public: void internalNodesWithNoSuccessor (CollectionElementArray & outInfoList,
                                              GGS_lstringlist & outNodeKeyList) const ;
 
-  public: void internalDepthFirstTopologicalSort (capCollectionElementArray & outSortedList,
+  public: void internalDepthFirstTopologicalSort (CollectionElementArray & outSortedList,
                                                   GGS_lstringlist & outSortedNodeKeyList,
-                                                  capCollectionElementArray & outUnsortedList,
+                                                  CollectionElementArray & outUnsortedList,
                                                   GGS_lstringlist & outUnsortedNodeKeyList) const ;
 
   public: void subGraph (AC_GALGAS_graph & outResultingGraph,
@@ -144,7 +144,7 @@ class SharedGraph : public SharedObject {
                          Compiler * inCompiler
                          COMMA_LOCATION_ARGS) const ;
 
-  public: void graph (capCollectionElementArray & outNodeList) const ;
+  public: void graph (CollectionElementArray & outNodeList) const ;
 
   public: GGS_stringlist keyList (void) const ;
 
@@ -513,7 +513,7 @@ static const GraphNode * findNode (const String & inKey,
 
 //--------------------------------------------------------------------------------------------------
 
-void GraphNode::accumulateNodes (capCollectionElementArray & outNodeList) const {
+void GraphNode::accumulateNodes (CollectionElementArray & outNodeList) const {
   outNodeList.appendObject (mAttributes) ;
   if (mInfPtr != nullptr) {
     mInfPtr->accumulateNodes (outNodeList) ;
@@ -525,7 +525,7 @@ void GraphNode::accumulateNodes (capCollectionElementArray & outNodeList) const 
 
 //--------------------------------------------------------------------------------------------------
 
-void SharedGraph::graph (capCollectionElementArray & outNodeList) const {
+void SharedGraph::graph (CollectionElementArray & outNodeList) const {
   if (mRoot != nullptr) {
     mRoot->accumulateNodes (outNodeList) ;
   }
@@ -533,8 +533,8 @@ void SharedGraph::graph (capCollectionElementArray & outNodeList) const {
 
 //--------------------------------------------------------------------------------------------------
 
-capCollectionElementArray AC_GALGAS_graph::graph (void) const {
-  capCollectionElementArray result ;
+CollectionElementArray AC_GALGAS_graph::graph (void) const {
+  CollectionElementArray result ;
   if (isValid ()) {
     mSharedGraph->graph (result) ;
   }
@@ -838,7 +838,7 @@ GraphNode * SharedGraph::findOrAddNodeForKey (const String & inKey) {
 
 void SharedGraph::internalAddNode (const GGS_lstring & inKey,
                                    const char * inErrorMessage,
-                                   const capCollectionElement & inAttributes,
+                                   const CollectionElement & inAttributes,
                                    Compiler * inCompiler
                                    COMMA_LOCATION_ARGS) {
   GraphNode * node = findOrAddNodeForKey (inKey.mProperty_string.stringValue ()) ;
@@ -858,7 +858,7 @@ void SharedGraph::internalAddNode (const GGS_lstring & inKey,
 
 void AC_GALGAS_graph::internalAddNode (const GGS_lstring & inKey,
                                        const char * inErrorMessage,
-                                       const capCollectionElement & inAttributes,
+                                       const CollectionElement & inAttributes,
                                        Compiler * inCompiler
                                        COMMA_LOCATION_ARGS) {
   if (isValid () && inKey.isValid () && inAttributes.isValid ()) {
@@ -1066,7 +1066,7 @@ GGS_stringlist AC_GALGAS_graph::getter_undefinedNodeKeyList (LOCATION_ARGS) cons
 
 //--------------------------------------------------------------------------------------------------
 
-void SharedGraph::internalFindCircularities (capCollectionElementArray & outInfoList,
+void SharedGraph::internalFindCircularities (CollectionElementArray & outInfoList,
                                              GGS_lstringlist & outNodeKeyList) const {
   GenericUniqueArray <uint32_t> nodeArray ; mDirectedGraph.getNodesInvolvedInCircularities (nodeArray) ;
 //--- Add nodes
@@ -1085,7 +1085,7 @@ void SharedGraph::internalFindCircularities (capCollectionElementArray & outInfo
 
 //--------------------------------------------------------------------------------------------------
 
-void AC_GALGAS_graph::internalFindCircularities (capCollectionElementArray & outInfoList,
+void AC_GALGAS_graph::internalFindCircularities (CollectionElementArray & outInfoList,
                                                  GGS_lstringlist & outNodeKeyList
                                                  COMMA_UNUSED_LOCATION_ARGS) const {
   outNodeKeyList.drop () ;
@@ -1102,7 +1102,7 @@ void AC_GALGAS_graph::internalFindCircularities (capCollectionElementArray & out
 
 //--------------------------------------------------------------------------------------------------
 
-void SharedGraph::internalNodesWithNoPredecessor (capCollectionElementArray & outInfoList,
+void SharedGraph::internalNodesWithNoPredecessor (CollectionElementArray & outInfoList,
                                                   GGS_lstringlist & outNodeKeyList) const {
   GenericUniqueArray <uint32_t> nodeArray ; mDirectedGraph.getNodesWithNoPredecessor (nodeArray) ;
 //--- Add nodes
@@ -1121,7 +1121,7 @@ void SharedGraph::internalNodesWithNoPredecessor (capCollectionElementArray & ou
 
 //--------------------------------------------------------------------------------------------------
 
-void AC_GALGAS_graph::internalNodesWithNoPredecessor (capCollectionElementArray & outInfoList,
+void AC_GALGAS_graph::internalNodesWithNoPredecessor (CollectionElementArray & outInfoList,
                                                       GGS_lstringlist & outNodeKeyList
                                                       COMMA_UNUSED_LOCATION_ARGS) const {
   outNodeKeyList.drop () ;
@@ -1138,7 +1138,7 @@ void AC_GALGAS_graph::internalNodesWithNoPredecessor (capCollectionElementArray 
 
 //--------------------------------------------------------------------------------------------------
 
-void SharedGraph::internalNodesWithNoSuccessor (capCollectionElementArray & outInfoList,
+void SharedGraph::internalNodesWithNoSuccessor (CollectionElementArray & outInfoList,
                                                 GGS_lstringlist & outNodeKeyList) const {
   GenericUniqueArray <uint32_t> nodeArray ; mDirectedGraph.getNodesWithNoSuccessor (nodeArray) ;
 //--- Add nodes
@@ -1157,7 +1157,7 @@ void SharedGraph::internalNodesWithNoSuccessor (capCollectionElementArray & outI
 
 //--------------------------------------------------------------------------------------------------
 
-void AC_GALGAS_graph::internalNodesWithNoSuccessor (capCollectionElementArray & outInfoList,
+void AC_GALGAS_graph::internalNodesWithNoSuccessor (CollectionElementArray & outInfoList,
                                                     GGS_lstringlist & outNodeKeyList
                                                     COMMA_UNUSED_LOCATION_ARGS) const {
   outNodeKeyList.drop () ;
@@ -1174,9 +1174,9 @@ void AC_GALGAS_graph::internalNodesWithNoSuccessor (capCollectionElementArray & 
 
 //--------------------------------------------------------------------------------------------------
 
-void SharedGraph::internalTopologicalSort (capCollectionElementArray & outSortedList,
+void SharedGraph::internalTopologicalSort (CollectionElementArray & outSortedList,
                                            GGS_lstringlist & outSortedNodeKeyList,
-                                           capCollectionElementArray & outUnsortedList,
+                                           CollectionElementArray & outUnsortedList,
                                            GGS_lstringlist & outUnsortedNodeKeyList) const {
   GenericUniqueArray <uint32_t> sortedNodes ;
   GenericUniqueArray <uint32_t> unsortedNodes ;
@@ -1209,9 +1209,9 @@ void SharedGraph::internalTopologicalSort (capCollectionElementArray & outSorted
 
 //--------------------------------------------------------------------------------------------------
 
-void AC_GALGAS_graph::internalTopologicalSort (capCollectionElementArray & outSortedList,
+void AC_GALGAS_graph::internalTopologicalSort (CollectionElementArray & outSortedList,
                                                GGS_lstringlist & outSortedNodeKeyList,
-                                               capCollectionElementArray & outUnsortedList,
+                                               CollectionElementArray & outUnsortedList,
                                                GGS_lstringlist & outUnsortedNodeKeyList,
                                                Compiler * inCompiler
                                                COMMA_LOCATION_ARGS) const {
@@ -1244,9 +1244,9 @@ void AC_GALGAS_graph::internalTopologicalSort (capCollectionElementArray & outSo
 
 //--------------------------------------------------------------------------------------------------
 
-void SharedGraph::internalDepthFirstTopologicalSort (capCollectionElementArray & outSortedList,
+void SharedGraph::internalDepthFirstTopologicalSort (CollectionElementArray & outSortedList,
                                                      GGS_lstringlist & outSortedNodeKeyList,
-                                                     capCollectionElementArray & outUnsortedList,
+                                                     CollectionElementArray & outUnsortedList,
                                                      GGS_lstringlist & outUnsortedNodeKeyList) const {
   GenericUniqueArray <uint32_t> sortedNodes ;
   GenericUniqueArray <uint32_t> unsortedNodes ;
@@ -1279,9 +1279,9 @@ void SharedGraph::internalDepthFirstTopologicalSort (capCollectionElementArray &
 
 //--------------------------------------------------------------------------------------------------
 
-void AC_GALGAS_graph::internalDepthFirstTopologicalSort (capCollectionElementArray & outSortedList,
+void AC_GALGAS_graph::internalDepthFirstTopologicalSort (CollectionElementArray & outSortedList,
                                                          GGS_lstringlist & outSortedNodeKeyList,
-                                                         capCollectionElementArray & outUnsortedList,
+                                                         CollectionElementArray & outUnsortedList,
                                                          GGS_lstringlist & outUnsortedNodeKeyList,
                                                          Compiler * inCompiler
                                                          COMMA_LOCATION_ARGS) const {

@@ -19,7 +19,7 @@
 //--------------------------------------------------------------------------------------------------
 
 #include "AC_GALGAS_weak_reference.h"
-#include "cPtr_weakReference_proxy.h"
+#include "PtrWeakReferenceProxy.h"
 #include "AC_GALGAS_reference_class.h"
 #include "AbstractStrongPtrClass.h"
 #include "GALGAS_TypeDescriptor.h"
@@ -61,7 +61,7 @@ AC_GALGAS_root (),
 mProxyPtr (nullptr) {
   AbstractStrongPtrClass * ptr = (AbstractStrongPtrClass *) inSource.ptr () ;
   if (ptr != nullptr) {
-    cPtr_weakReference_proxy * proxy = ptr->getProxy () ;
+    PtrWeakReferenceProxy * proxy = ptr->getProxy () ;
     macroAssignSharedObject (mProxyPtr, proxy) ;
   }
 }
@@ -110,7 +110,7 @@ void AC_GALGAS_weak_reference::description (String & ioString,
   if (ptr == nullptr) {
     ioString.appendCString ("not built") ;
   }else{
-    cPtr_weakReference_proxy * proxy = ptr->getProxy () ;
+    PtrWeakReferenceProxy * proxy = ptr->getProxy () ;
     if (proxy == nullptr) {
       ioString.appendCString ("nil") ;
     }else{

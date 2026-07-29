@@ -106,10 +106,10 @@ class GGS_%!TYPE_IDENTIFIER% : public AC_GALGAS_root {
 
 
 //--- List constructor for graph
-  public: GGS_%!TYPE_IDENTIFIER% (const capCollectionElementArray & inSharedArray) ;
+  public: GGS_%!TYPE_IDENTIFIER% (const CollectionElementArray & inSharedArray) ;
 
 //--- Element constructor
-  public: static void makeAttributesFromObjects (%?^%capCollectionElement & outAttributes%
+  public: static void makeAttributesFromObjects (%?^%CollectionElement & outAttributes%
   for (mPropertyTypeEntry mPropertyName 3*) in PROPERTY_LIST
     do %,\n%!^%const class GGS_%![mPropertyTypeEntry identifierRepresentation]% & in_%![mPropertyName identifierRepresentation]
   end

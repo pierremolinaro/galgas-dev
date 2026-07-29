@@ -394,7 +394,7 @@ class GGS_functionPrototypeDeclarationForGeneration_2E_weak : public GGS_semanti
 //--------------------------------- nil initializer
   public: inline static GGS_functionPrototypeDeclarationForGeneration_2E_weak init_nil (void) {
     GGS_functionPrototypeDeclarationForGeneration_2E_weak result ;
-    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
     return result ;
   }
 
@@ -591,7 +591,7 @@ class GGS_functionImplementationForGeneration_2E_weak : public GGS_functionProto
 //--------------------------------- nil initializer
   public: inline static GGS_functionImplementationForGeneration_2E_weak init_nil (void) {
     GGS_functionImplementationForGeneration_2E_weak result ;
-    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
     return result ;
   }
 
@@ -799,7 +799,7 @@ class GGS_onceFunctionDeclarationForGeneration_2E_weak : public GGS_semanticDecl
 //--------------------------------- nil initializer
   public: inline static GGS_onceFunctionDeclarationForGeneration_2E_weak init_nil (void) {
     GGS_onceFunctionDeclarationForGeneration_2E_weak result ;
-    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
     return result ;
   }
 
@@ -1013,7 +1013,7 @@ class GGS_filewrapperDeclarationForGeneration_2E_weak : public GGS_semanticDecla
 //--------------------------------- nil initializer
   public: inline static GGS_filewrapperDeclarationForGeneration_2E_weak init_nil (void) {
     GGS_filewrapperDeclarationForGeneration_2E_weak result ;
-    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
     return result ;
   }
 
@@ -1204,7 +1204,7 @@ class GGS_programComponentForGeneration_2E_weak : public GGS_semanticDeclaration
 //--------------------------------- nil initializer
   public: inline static GGS_programComponentForGeneration_2E_weak init_nil (void) {
     GGS_programComponentForGeneration_2E_weak result ;
-    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
     return result ;
   }
 
@@ -1455,7 +1455,7 @@ class GGS_grammarForGeneration_2E_weak : public GGS_semanticDeclarationWithHeade
 //--------------------------------- nil initializer
   public: inline static GGS_grammarForGeneration_2E_weak init_nil (void) {
     GGS_grammarForGeneration_2E_weak result ;
-    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
     return result ;
   }
 
@@ -1675,7 +1675,7 @@ class GGS_lexiqueDeclarationForGeneration_2E_weak : public GGS_semanticDeclarati
 //--------------------------------- nil initializer
   public: inline static GGS_lexiqueDeclarationForGeneration_2E_weak init_nil (void) {
     GGS_lexiqueDeclarationForGeneration_2E_weak result ;
-    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
     return result ;
   }
 
@@ -1864,7 +1864,7 @@ class GGS_templateGetterCallInExpressionAST_2E_weak : public GGS_templateExpress
 //--------------------------------- nil initializer
   public: inline static GGS_templateGetterCallInExpressionAST_2E_weak init_nil (void) {
     GGS_templateGetterCallInExpressionAST_2E_weak result ;
-    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
     return result ;
   }
 

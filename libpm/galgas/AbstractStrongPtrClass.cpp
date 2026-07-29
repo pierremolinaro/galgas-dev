@@ -19,7 +19,7 @@
 //--------------------------------------------------------------------------------------------------
 
 #include "AbstractStrongPtrClass.h"
-#include "cPtr_weakReference_proxy.h"
+#include "PtrWeakReferenceProxy.h"
 #include "cpp-allocation.h"
 
 //--------------------------------------------------------------------------------------------------
@@ -76,9 +76,9 @@ AbstractStrongPtrClass::~ AbstractStrongPtrClass (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-cPtr_weakReference_proxy * AbstractStrongPtrClass::getProxy (void) {
+PtrWeakReferenceProxy * AbstractStrongPtrClass::getProxy (void) {
   if (mProxyPtr == nullptr) {
-    macroMyNew (mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    macroMyNew (mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
     mProxyPtr->mStrongObjectPtr = this ;
   }
   return mProxyPtr ;

@@ -12,7 +12,7 @@
 #include "ComparisonResult.h"
 #include "ComparisonKind.h"
 #include "EnumerationOrder.h"
-#include "capCollectionElementArray.h"
+#include "CollectionElementArray.h"
 #include "Enumerator_range.h"
 #include "String-class.h"
 #include "Timer.h"
@@ -21,7 +21,7 @@
 #include "AC_GALGAS_enumAssociatedValues.h"
 #include "AC_GALGAS_graph.h"
 #include "AbstractStrongPtrClass.h"
-#include "cPtr_weakReference_proxy.h"
+#include "PtrWeakReferenceProxy.h"
 #include "AC_GALGAS_weak_reference.h"
 #include "BoolCommandLineOption.h"
 #include "UIntCommandLineOption.h"
@@ -3146,13 +3146,13 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_function ;
 //   @object type
 //--------------------------------------------------------------------------------------------------
 
-class cPtr_object ;
+class PtrObject ;
 
 //--------------------------------------------------------------------------------------------------
 
 class GGS_object : public AC_GALGAS_root {
 //--------------------------------- Private data member
-  private: cPtr_object * mSharedObject ;
+  private: PtrObject * mSharedObject ;
 
 //--------------------------------- Accessors
   public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override { return mSharedObject != nullptr ; }
@@ -3453,10 +3453,10 @@ class GGS_lstringlist : public AC_GALGAS_root {
 
 
 //--- List constructor for graph
-  public: GGS_lstringlist (const capCollectionElementArray & inSharedArray) ;
+  public: GGS_lstringlist (const CollectionElementArray & inSharedArray) ;
 
 //--- Element constructor
-  public: static void makeAttributesFromObjects (capCollectionElement & outAttributes,
+  public: static void makeAttributesFromObjects (CollectionElement & outAttributes,
                                                  const class GGS_lstring & in_mValue
                                                  COMMA_LOCATION_ARGS) ;
 
@@ -3673,10 +3673,10 @@ class GGS_stringlist : public AC_GALGAS_root {
 
 
 //--- List constructor for graph
-  public: GGS_stringlist (const capCollectionElementArray & inSharedArray) ;
+  public: GGS_stringlist (const CollectionElementArray & inSharedArray) ;
 
 //--- Element constructor
-  public: static void makeAttributesFromObjects (capCollectionElement & outAttributes,
+  public: static void makeAttributesFromObjects (CollectionElement & outAttributes,
                                                  const class GGS_string & in_mValue
                                                  COMMA_LOCATION_ARGS) ;
 
@@ -4067,10 +4067,10 @@ class GGS__32_stringlist : public AC_GALGAS_root {
 
 
 //--- List constructor for graph
-  public: GGS__32_stringlist (const capCollectionElementArray & inSharedArray) ;
+  public: GGS__32_stringlist (const CollectionElementArray & inSharedArray) ;
 
 //--- Element constructor
-  public: static void makeAttributesFromObjects (capCollectionElement & outAttributes,
+  public: static void makeAttributesFromObjects (CollectionElement & outAttributes,
                                                  const class GGS_string & in_mValue_30_,
                                                  const class GGS_string & in_mValue_31_
                                                  COMMA_LOCATION_ARGS) ;
@@ -4306,10 +4306,10 @@ class GGS_functionlist : public AC_GALGAS_root {
 
 
 //--- List constructor for graph
-  public: GGS_functionlist (const capCollectionElementArray & inSharedArray) ;
+  public: GGS_functionlist (const CollectionElementArray & inSharedArray) ;
 
 //--- Element constructor
-  public: static void makeAttributesFromObjects (capCollectionElement & outAttributes,
+  public: static void makeAttributesFromObjects (CollectionElement & outAttributes,
                                                  const class GGS_function & in_mValue
                                                  COMMA_LOCATION_ARGS) ;
 
@@ -4526,10 +4526,10 @@ class GGS_luintlist : public AC_GALGAS_root {
 
 
 //--- List constructor for graph
-  public: GGS_luintlist (const capCollectionElementArray & inSharedArray) ;
+  public: GGS_luintlist (const CollectionElementArray & inSharedArray) ;
 
 //--- Element constructor
-  public: static void makeAttributesFromObjects (capCollectionElement & outAttributes,
+  public: static void makeAttributesFromObjects (CollectionElement & outAttributes,
                                                  const class GGS_luint & in_mValue
                                                  COMMA_LOCATION_ARGS) ;
 
@@ -4832,10 +4832,10 @@ class GGS_objectlist : public AC_GALGAS_root {
 
 
 //--- List constructor for graph
-  public: GGS_objectlist (const capCollectionElementArray & inSharedArray) ;
+  public: GGS_objectlist (const CollectionElementArray & inSharedArray) ;
 
 //--- Element constructor
-  public: static void makeAttributesFromObjects (capCollectionElement & outAttributes,
+  public: static void makeAttributesFromObjects (CollectionElement & outAttributes,
                                                  const class GGS_object & in_mValue
                                                  COMMA_LOCATION_ARGS) ;
 
@@ -5052,10 +5052,10 @@ class GGS_typelist : public AC_GALGAS_root {
 
 
 //--- List constructor for graph
-  public: GGS_typelist (const capCollectionElementArray & inSharedArray) ;
+  public: GGS_typelist (const CollectionElementArray & inSharedArray) ;
 
 //--- Element constructor
-  public: static void makeAttributesFromObjects (capCollectionElement & outAttributes,
+  public: static void makeAttributesFromObjects (CollectionElement & outAttributes,
                                                  const class GGS_type & in_mValue
                                                  COMMA_LOCATION_ARGS) ;
 
@@ -5272,10 +5272,10 @@ class GGS_uintlist : public AC_GALGAS_root {
 
 
 //--- List constructor for graph
-  public: GGS_uintlist (const capCollectionElementArray & inSharedArray) ;
+  public: GGS_uintlist (const CollectionElementArray & inSharedArray) ;
 
 //--- Element constructor
-  public: static void makeAttributesFromObjects (capCollectionElement & outAttributes,
+  public: static void makeAttributesFromObjects (CollectionElement & outAttributes,
                                                  const class GGS_uint & in_mValue
                                                  COMMA_LOCATION_ARGS) ;
 
@@ -5492,10 +5492,10 @@ class GGS_uint_36__34_list : public AC_GALGAS_root {
 
 
 //--- List constructor for graph
-  public: GGS_uint_36__34_list (const capCollectionElementArray & inSharedArray) ;
+  public: GGS_uint_36__34_list (const CollectionElementArray & inSharedArray) ;
 
 //--- Element constructor
-  public: static void makeAttributesFromObjects (capCollectionElement & outAttributes,
+  public: static void makeAttributesFromObjects (CollectionElement & outAttributes,
                                                  const class GGS_uint_36__34_ & in_mValue
                                                  COMMA_LOCATION_ARGS) ;
 
@@ -5712,10 +5712,10 @@ class GGS_bigintlist : public AC_GALGAS_root {
 
 
 //--- List constructor for graph
-  public: GGS_bigintlist (const capCollectionElementArray & inSharedArray) ;
+  public: GGS_bigintlist (const CollectionElementArray & inSharedArray) ;
 
 //--- Element constructor
-  public: static void makeAttributesFromObjects (capCollectionElement & outAttributes,
+  public: static void makeAttributesFromObjects (CollectionElement & outAttributes,
                                                  const class GGS_bigint & in_mValue
                                                  COMMA_LOCATION_ARGS) ;
 
@@ -5932,10 +5932,10 @@ class GGS_lbigintlist : public AC_GALGAS_root {
 
 
 //--- List constructor for graph
-  public: GGS_lbigintlist (const capCollectionElementArray & inSharedArray) ;
+  public: GGS_lbigintlist (const CollectionElementArray & inSharedArray) ;
 
 //--- Element constructor
-  public: static void makeAttributesFromObjects (capCollectionElement & outAttributes,
+  public: static void makeAttributesFromObjects (CollectionElement & outAttributes,
                                                  const class GGS_lbigint & in_mValue
                                                  COMMA_LOCATION_ARGS) ;
 
@@ -7573,11 +7573,11 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lbigintlist_2E_element
 
 //--------------------------------------------------------------------------------------------------
 
-#include "CollectionElement.h"
+#include "CollectionElementPtr.h"
 
 //--------------------------------------------------------------------------------------------------
 
-class cMapElement : public CollectionElement {
+class cMapElement : public CollectionElementPtr {
 //--- Attribut
   public: GGS_lstring mProperty_lkey ;
 

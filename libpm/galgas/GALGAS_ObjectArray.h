@@ -1,6 +1,6 @@
 //--------------------------------------------------------------------------------------------------
 //
-//  capCollectionElementArray                                                                    
+//  CollectionElementArray                                                                    
 //
 //  This file is part of libpm library                                                           
 //

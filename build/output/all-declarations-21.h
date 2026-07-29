@@ -26,7 +26,7 @@ class GGS_procCallInstructionAST_2E_weak : public GGS_semanticInstructionAST_2E_
 //--------------------------------- nil initializer
   public: inline static GGS_procCallInstructionAST_2E_weak init_nil (void) {
     GGS_procCallInstructionAST_2E_weak result ;
-    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
     return result ;
   }
 
@@ -269,7 +269,7 @@ class GGS_extensionMethodForGeneration_2E_weak : public GGS_semanticDeclarationW
 //--------------------------------- nil initializer
   public: inline static GGS_extensionMethodForGeneration_2E_weak init_nil (void) {
     GGS_extensionMethodForGeneration_2E_weak result ;
-    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
     return result ;
   }
 

@@ -12,9 +12,9 @@
 ComparisonResult GGS_grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar_2E_weak::objectCompare (const GGS_grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar_2E_weak & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
-    cPtr_weakReference_proxy * myPtr = mProxyPtr ;
+    PtrWeakReferenceProxy * myPtr = mProxyPtr ;
     const size_t myObjectPtr = size_t (myPtr) ;
-    cPtr_weakReference_proxy * operandPtr = inOperand.mProxyPtr ;
+    PtrWeakReferenceProxy * operandPtr = inOperand.mProxyPtr ;
     const size_t operandObjectPtr = size_t (operandPtr) ;
     if (myObjectPtr < operandObjectPtr) {
       result = ComparisonResult::firstOperandLowerThanSecond ;
@@ -36,7 +36,7 @@ GGS_abstractGrammarInstructionSyntaxDirectedTranslationResult_2E_weak () {
 //--------------------------------------------------------------------------------------------------
 
 GGS_grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar_2E_weak & GGS_grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar_2E_weak::operator = (const GGS_grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar & inSource) {
-  cPtr_weakReference_proxy * proxyPtr = nullptr ;
+  PtrWeakReferenceProxy * proxyPtr = nullptr ;
   AbstractStrongPtrClass * p = (AbstractStrongPtrClass *) inSource.ptr () ;
   if (p != nullptr) {
     proxyPtr = p->getProxy () ;
@@ -56,7 +56,7 @@ GGS_abstractGrammarInstructionSyntaxDirectedTranslationResult_2E_weak (inSource)
 
 GGS_grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar_2E_weak GGS_grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar_2E_weak::class_func_nil (LOCATION_ARGS) {
   GGS_grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar_2E_weak result ;
-  macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
+  macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (THERE)) ;
   return result ;
 }
 
@@ -134,9 +134,9 @@ GGS_grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar_2E_weak GGS_g
 ComparisonResult GGS_grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst_2E_weak::objectCompare (const GGS_grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst_2E_weak & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
-    cPtr_weakReference_proxy * myPtr = mProxyPtr ;
+    PtrWeakReferenceProxy * myPtr = mProxyPtr ;
     const size_t myObjectPtr = size_t (myPtr) ;
-    cPtr_weakReference_proxy * operandPtr = inOperand.mProxyPtr ;
+    PtrWeakReferenceProxy * operandPtr = inOperand.mProxyPtr ;
     const size_t operandObjectPtr = size_t (operandPtr) ;
     if (myObjectPtr < operandObjectPtr) {
       result = ComparisonResult::firstOperandLowerThanSecond ;
@@ -158,7 +158,7 @@ GGS_abstractGrammarInstructionSyntaxDirectedTranslationResult_2E_weak () {
 //--------------------------------------------------------------------------------------------------
 
 GGS_grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst_2E_weak & GGS_grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst_2E_weak::operator = (const GGS_grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst & inSource) {
-  cPtr_weakReference_proxy * proxyPtr = nullptr ;
+  PtrWeakReferenceProxy * proxyPtr = nullptr ;
   AbstractStrongPtrClass * p = (AbstractStrongPtrClass *) inSource.ptr () ;
   if (p != nullptr) {
     proxyPtr = p->getProxy () ;
@@ -178,7 +178,7 @@ GGS_abstractGrammarInstructionSyntaxDirectedTranslationResult_2E_weak (inSource)
 
 GGS_grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst_2E_weak GGS_grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst_2E_weak::class_func_nil (LOCATION_ARGS) {
   GGS_grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst_2E_weak result ;
-  macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
+  macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (THERE)) ;
   return result ;
 }
 
@@ -256,9 +256,9 @@ GGS_grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst_2E_weak GGS
 ComparisonResult GGS_grammarInstructionWithSourceFileForGeneration_2E_weak::objectCompare (const GGS_grammarInstructionWithSourceFileForGeneration_2E_weak & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
-    cPtr_weakReference_proxy * myPtr = mProxyPtr ;
+    PtrWeakReferenceProxy * myPtr = mProxyPtr ;
     const size_t myObjectPtr = size_t (myPtr) ;
-    cPtr_weakReference_proxy * operandPtr = inOperand.mProxyPtr ;
+    PtrWeakReferenceProxy * operandPtr = inOperand.mProxyPtr ;
     const size_t operandObjectPtr = size_t (operandPtr) ;
     if (myObjectPtr < operandObjectPtr) {
       result = ComparisonResult::firstOperandLowerThanSecond ;
@@ -280,7 +280,7 @@ GGS_semanticInstructionForGeneration_2E_weak () {
 //--------------------------------------------------------------------------------------------------
 
 GGS_grammarInstructionWithSourceFileForGeneration_2E_weak & GGS_grammarInstructionWithSourceFileForGeneration_2E_weak::operator = (const GGS_grammarInstructionWithSourceFileForGeneration & inSource) {
-  cPtr_weakReference_proxy * proxyPtr = nullptr ;
+  PtrWeakReferenceProxy * proxyPtr = nullptr ;
   AbstractStrongPtrClass * p = (AbstractStrongPtrClass *) inSource.ptr () ;
   if (p != nullptr) {
     proxyPtr = p->getProxy () ;
@@ -300,7 +300,7 @@ GGS_semanticInstructionForGeneration_2E_weak (inSource) {
 
 GGS_grammarInstructionWithSourceFileForGeneration_2E_weak GGS_grammarInstructionWithSourceFileForGeneration_2E_weak::class_func_nil (LOCATION_ARGS) {
   GGS_grammarInstructionWithSourceFileForGeneration_2E_weak result ;
-  macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
+  macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (THERE)) ;
   return result ;
 }
 
@@ -378,9 +378,9 @@ GGS_grammarInstructionWithSourceFileForGeneration_2E_weak GGS_grammarInstruction
 ComparisonResult GGS_grammarInstructionWithSourceExpressionForGeneration_2E_weak::objectCompare (const GGS_grammarInstructionWithSourceExpressionForGeneration_2E_weak & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
-    cPtr_weakReference_proxy * myPtr = mProxyPtr ;
+    PtrWeakReferenceProxy * myPtr = mProxyPtr ;
     const size_t myObjectPtr = size_t (myPtr) ;
-    cPtr_weakReference_proxy * operandPtr = inOperand.mProxyPtr ;
+    PtrWeakReferenceProxy * operandPtr = inOperand.mProxyPtr ;
     const size_t operandObjectPtr = size_t (operandPtr) ;
     if (myObjectPtr < operandObjectPtr) {
       result = ComparisonResult::firstOperandLowerThanSecond ;
@@ -402,7 +402,7 @@ GGS_semanticInstructionForGeneration_2E_weak () {
 //--------------------------------------------------------------------------------------------------
 
 GGS_grammarInstructionWithSourceExpressionForGeneration_2E_weak & GGS_grammarInstructionWithSourceExpressionForGeneration_2E_weak::operator = (const GGS_grammarInstructionWithSourceExpressionForGeneration & inSource) {
-  cPtr_weakReference_proxy * proxyPtr = nullptr ;
+  PtrWeakReferenceProxy * proxyPtr = nullptr ;
   AbstractStrongPtrClass * p = (AbstractStrongPtrClass *) inSource.ptr () ;
   if (p != nullptr) {
     proxyPtr = p->getProxy () ;
@@ -422,7 +422,7 @@ GGS_semanticInstructionForGeneration_2E_weak (inSource) {
 
 GGS_grammarInstructionWithSourceExpressionForGeneration_2E_weak GGS_grammarInstructionWithSourceExpressionForGeneration_2E_weak::class_func_nil (LOCATION_ARGS) {
   GGS_grammarInstructionWithSourceExpressionForGeneration_2E_weak result ;
-  macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
+  macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (THERE)) ;
   return result ;
 }
 
@@ -499,51 +499,51 @@ GGS_grammarInstructionWithSourceExpressionForGeneration_2E_weak GGS_grammarInstr
 //Class for element of '@forInstructionEnumeratedObjectElementListAST' list
 //--------------------------------------------------------------------------------------------------
 
-class CollectionElement_forInstructionEnumeratedObjectElementListAST : public CollectionElement {
+class CollectionElementPtr_forInstructionEnumeratedObjectElementListAST : public CollectionElementPtr {
   public: GGS_forInstructionEnumeratedObjectElementListAST_2E_element mObject ;
 
 //--- Class functions
-  public: CollectionElement_forInstructionEnumeratedObjectElementListAST (const GGS_lstring & in_mOptionalTypeName,
-                                                                          const GGS_bool & in_mDeclaredAsUnused,
-                                                                          const GGS_lstring & in_mOptionalConstantName
-                                                                          COMMA_LOCATION_ARGS) ;
-  public: CollectionElement_forInstructionEnumeratedObjectElementListAST (const GGS_forInstructionEnumeratedObjectElementListAST_2E_element & inElement COMMA_LOCATION_ARGS) ;
+  public: CollectionElementPtr_forInstructionEnumeratedObjectElementListAST (const GGS_lstring & in_mOptionalTypeName,
+                                                                             const GGS_bool & in_mDeclaredAsUnused,
+                                                                             const GGS_lstring & in_mOptionalConstantName
+                                                                             COMMA_LOCATION_ARGS) ;
+  public: CollectionElementPtr_forInstructionEnumeratedObjectElementListAST (const GGS_forInstructionEnumeratedObjectElementListAST_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
 //--- Virtual method that returns a copy of current object
-  public: virtual CollectionElement * copy (void) ;
+  public: virtual CollectionElementPtr * copy (void) ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-CollectionElement_forInstructionEnumeratedObjectElementListAST::CollectionElement_forInstructionEnumeratedObjectElementListAST (const GGS_lstring & in_mOptionalTypeName,
-                                                                                                                                const GGS_bool & in_mDeclaredAsUnused,
-                                                                                                                                const GGS_lstring & in_mOptionalConstantName
-                                                                                                                                COMMA_LOCATION_ARGS) :
-CollectionElement (THERE),
+CollectionElementPtr_forInstructionEnumeratedObjectElementListAST::CollectionElementPtr_forInstructionEnumeratedObjectElementListAST (const GGS_lstring & in_mOptionalTypeName,
+                                                                                                                                      const GGS_bool & in_mDeclaredAsUnused,
+                                                                                                                                      const GGS_lstring & in_mOptionalConstantName
+                                                                                                                                      COMMA_LOCATION_ARGS) :
+CollectionElementPtr (THERE),
 mObject (in_mOptionalTypeName, in_mDeclaredAsUnused, in_mOptionalConstantName) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-CollectionElement_forInstructionEnumeratedObjectElementListAST::CollectionElement_forInstructionEnumeratedObjectElementListAST (const GGS_forInstructionEnumeratedObjectElementListAST_2E_element & inElement COMMA_LOCATION_ARGS) :
-CollectionElement (THERE),
+CollectionElementPtr_forInstructionEnumeratedObjectElementListAST::CollectionElementPtr_forInstructionEnumeratedObjectElementListAST (const GGS_forInstructionEnumeratedObjectElementListAST_2E_element & inElement COMMA_LOCATION_ARGS) :
+CollectionElementPtr (THERE),
 mObject (inElement.mProperty_mOptionalTypeName, inElement.mProperty_mDeclaredAsUnused, inElement.mProperty_mOptionalConstantName) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-bool CollectionElement_forInstructionEnumeratedObjectElementListAST::isValid (void) const {
+bool CollectionElementPtr_forInstructionEnumeratedObjectElementListAST::isValid (void) const {
   return true ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-CollectionElement * CollectionElement_forInstructionEnumeratedObjectElementListAST::copy (void) {
-  CollectionElement * result = nullptr ;
-  macroMyNew (result, CollectionElement_forInstructionEnumeratedObjectElementListAST (mObject.mProperty_mOptionalTypeName, mObject.mProperty_mDeclaredAsUnused, mObject.mProperty_mOptionalConstantName COMMA_HERE)) ;
+CollectionElementPtr * CollectionElementPtr_forInstructionEnumeratedObjectElementListAST::copy (void) {
+  CollectionElementPtr * result = nullptr ;
+  macroMyNew (result, CollectionElementPtr_forInstructionEnumeratedObjectElementListAST (mObject.mProperty_mOptionalTypeName, mObject.mProperty_mDeclaredAsUnused, mObject.mProperty_mOptionalConstantName COMMA_HERE)) ;
   return result ;
 }
 
@@ -557,13 +557,13 @@ mArray () {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_forInstructionEnumeratedObjectElementListAST::GGS_forInstructionEnumeratedObjectElementListAST (const capCollectionElementArray & inArray) :
+GGS_forInstructionEnumeratedObjectElementListAST::GGS_forInstructionEnumeratedObjectElementListAST (const CollectionElementArray & inArray) :
 mArray () {
   mArray.setCapacity (std::max (16, int32_t (inArray.count ()))) ;
   for (uint32_t i = 0 ; i < inArray.count () ; i++) {
-    const capCollectionElement v = inArray.objectAtIndex (i COMMA_HERE) ;
-    CollectionElement_forInstructionEnumeratedObjectElementListAST * p = (CollectionElement_forInstructionEnumeratedObjectElementListAST *) v.ptr () ;
-    macroValidSharedObject (p, CollectionElement_forInstructionEnumeratedObjectElementListAST) ;
+    const CollectionElement v = inArray.objectAtIndex (i COMMA_HERE) ;
+    CollectionElementPtr_forInstructionEnumeratedObjectElementListAST * p = (CollectionElementPtr_forInstructionEnumeratedObjectElementListAST *) v.ptr () ;
+    macroValidSharedObject (p, CollectionElementPtr_forInstructionEnumeratedObjectElementListAST) ;
     const GGS_forInstructionEnumeratedObjectElementListAST_2E_element element (p->mObject.mProperty_mOptionalTypeName, p->mObject.mProperty_mDeclaredAsUnused, p->mObject.mProperty_mOptionalConstantName) ;
     mArray.appendObject (element) ;
   }
@@ -571,13 +571,13 @@ mArray () {
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_forInstructionEnumeratedObjectElementListAST::makeAttributesFromObjects (capCollectionElement & outAttributes,
+void GGS_forInstructionEnumeratedObjectElementListAST::makeAttributesFromObjects (CollectionElement & outAttributes,
                                                                                   const GGS_lstring & in_mOptionalTypeName,
                                                                                   const GGS_bool & in_mDeclaredAsUnused,
                                                                                   const GGS_lstring & in_mOptionalConstantName
                                                                                   COMMA_LOCATION_ARGS) {
-  CollectionElement_forInstructionEnumeratedObjectElementListAST * p = nullptr ;
-  macroMyNew (p, CollectionElement_forInstructionEnumeratedObjectElementListAST (in_mOptionalTypeName, in_mDeclaredAsUnused, in_mOptionalConstantName COMMA_THERE)) ;
+  CollectionElementPtr_forInstructionEnumeratedObjectElementListAST * p = nullptr ;
+  macroMyNew (p, CollectionElementPtr_forInstructionEnumeratedObjectElementListAST (in_mOptionalTypeName, in_mDeclaredAsUnused, in_mOptionalConstantName COMMA_THERE)) ;
   outAttributes.setPointer (p) ;
   macroDetachSharedObject (p) ;
 }
@@ -1282,9 +1282,9 @@ GGS_abstractEnumeratedCollectionAST GGS_abstractEnumeratedCollectionAST::extract
 ComparisonResult GGS_abstractEnumeratedCollectionAST_2E_weak::objectCompare (const GGS_abstractEnumeratedCollectionAST_2E_weak & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
-    cPtr_weakReference_proxy * myPtr = mProxyPtr ;
+    PtrWeakReferenceProxy * myPtr = mProxyPtr ;
     const size_t myObjectPtr = size_t (myPtr) ;
-    cPtr_weakReference_proxy * operandPtr = inOperand.mProxyPtr ;
+    PtrWeakReferenceProxy * operandPtr = inOperand.mProxyPtr ;
     const size_t operandObjectPtr = size_t (operandPtr) ;
     if (myObjectPtr < operandObjectPtr) {
       result = ComparisonResult::firstOperandLowerThanSecond ;
@@ -1306,7 +1306,7 @@ AC_GALGAS_weak_reference () {
 //--------------------------------------------------------------------------------------------------
 
 GGS_abstractEnumeratedCollectionAST_2E_weak & GGS_abstractEnumeratedCollectionAST_2E_weak::operator = (const GGS_abstractEnumeratedCollectionAST & inSource) {
-  cPtr_weakReference_proxy * proxyPtr = nullptr ;
+  PtrWeakReferenceProxy * proxyPtr = nullptr ;
   AbstractStrongPtrClass * p = (AbstractStrongPtrClass *) inSource.ptr () ;
   if (p != nullptr) {
     proxyPtr = p->getProxy () ;
@@ -1326,7 +1326,7 @@ AC_GALGAS_weak_reference (inSource) {
 
 GGS_abstractEnumeratedCollectionAST_2E_weak GGS_abstractEnumeratedCollectionAST_2E_weak::class_func_nil (LOCATION_ARGS) {
   GGS_abstractEnumeratedCollectionAST_2E_weak result ;
-  macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
+  macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (THERE)) ;
   return result ;
 }
 
@@ -1404,9 +1404,9 @@ GGS_abstractEnumeratedCollectionAST_2E_weak GGS_abstractEnumeratedCollectionAST_
 ComparisonResult GGS_enumeratedCollectionVarInExpAST_2E_weak::objectCompare (const GGS_enumeratedCollectionVarInExpAST_2E_weak & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
-    cPtr_weakReference_proxy * myPtr = mProxyPtr ;
+    PtrWeakReferenceProxy * myPtr = mProxyPtr ;
     const size_t myObjectPtr = size_t (myPtr) ;
-    cPtr_weakReference_proxy * operandPtr = inOperand.mProxyPtr ;
+    PtrWeakReferenceProxy * operandPtr = inOperand.mProxyPtr ;
     const size_t operandObjectPtr = size_t (operandPtr) ;
     if (myObjectPtr < operandObjectPtr) {
       result = ComparisonResult::firstOperandLowerThanSecond ;
@@ -1428,7 +1428,7 @@ GGS_abstractEnumeratedCollectionAST_2E_weak () {
 //--------------------------------------------------------------------------------------------------
 
 GGS_enumeratedCollectionVarInExpAST_2E_weak & GGS_enumeratedCollectionVarInExpAST_2E_weak::operator = (const GGS_enumeratedCollectionVarInExpAST & inSource) {
-  cPtr_weakReference_proxy * proxyPtr = nullptr ;
+  PtrWeakReferenceProxy * proxyPtr = nullptr ;
   AbstractStrongPtrClass * p = (AbstractStrongPtrClass *) inSource.ptr () ;
   if (p != nullptr) {
     proxyPtr = p->getProxy () ;
@@ -1448,7 +1448,7 @@ GGS_abstractEnumeratedCollectionAST_2E_weak (inSource) {
 
 GGS_enumeratedCollectionVarInExpAST_2E_weak GGS_enumeratedCollectionVarInExpAST_2E_weak::class_func_nil (LOCATION_ARGS) {
   GGS_enumeratedCollectionVarInExpAST_2E_weak result ;
-  macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
+  macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (THERE)) ;
   return result ;
 }
 
@@ -1726,9 +1726,9 @@ GGS_enumeratedCollectionCstListInExpAST GGS_enumeratedCollectionCstListInExpAST:
 ComparisonResult GGS_enumeratedCollectionCstListInExpAST_2E_weak::objectCompare (const GGS_enumeratedCollectionCstListInExpAST_2E_weak & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
-    cPtr_weakReference_proxy * myPtr = mProxyPtr ;
+    PtrWeakReferenceProxy * myPtr = mProxyPtr ;
     const size_t myObjectPtr = size_t (myPtr) ;
-    cPtr_weakReference_proxy * operandPtr = inOperand.mProxyPtr ;
+    PtrWeakReferenceProxy * operandPtr = inOperand.mProxyPtr ;
     const size_t operandObjectPtr = size_t (operandPtr) ;
     if (myObjectPtr < operandObjectPtr) {
       result = ComparisonResult::firstOperandLowerThanSecond ;
@@ -1750,7 +1750,7 @@ GGS_abstractEnumeratedCollectionAST_2E_weak () {
 //--------------------------------------------------------------------------------------------------
 
 GGS_enumeratedCollectionCstListInExpAST_2E_weak & GGS_enumeratedCollectionCstListInExpAST_2E_weak::operator = (const GGS_enumeratedCollectionCstListInExpAST & inSource) {
-  cPtr_weakReference_proxy * proxyPtr = nullptr ;
+  PtrWeakReferenceProxy * proxyPtr = nullptr ;
   AbstractStrongPtrClass * p = (AbstractStrongPtrClass *) inSource.ptr () ;
   if (p != nullptr) {
     proxyPtr = p->getProxy () ;
@@ -1770,7 +1770,7 @@ GGS_abstractEnumeratedCollectionAST_2E_weak (inSource) {
 
 GGS_enumeratedCollectionCstListInExpAST_2E_weak GGS_enumeratedCollectionCstListInExpAST_2E_weak::class_func_nil (LOCATION_ARGS) {
   GGS_enumeratedCollectionCstListInExpAST_2E_weak result ;
-  macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
+  macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (THERE)) ;
   return result ;
 }
 
@@ -1847,49 +1847,49 @@ GGS_enumeratedCollectionCstListInExpAST_2E_weak GGS_enumeratedCollectionCstListI
 //Class for element of '@forInstructionEnumeratedObjectListAST' list
 //--------------------------------------------------------------------------------------------------
 
-class CollectionElement_forInstructionEnumeratedObjectListAST : public CollectionElement {
+class CollectionElementPtr_forInstructionEnumeratedObjectListAST : public CollectionElementPtr {
   public: GGS_forInstructionEnumeratedObjectListAST_2E_element mObject ;
 
 //--- Class functions
-  public: CollectionElement_forInstructionEnumeratedObjectListAST (const GGS_bool & in_mAscending,
-                                                                   const GGS_abstractEnumeratedCollectionAST & in_mEnumeratedCollection
-                                                                   COMMA_LOCATION_ARGS) ;
-  public: CollectionElement_forInstructionEnumeratedObjectListAST (const GGS_forInstructionEnumeratedObjectListAST_2E_element & inElement COMMA_LOCATION_ARGS) ;
+  public: CollectionElementPtr_forInstructionEnumeratedObjectListAST (const GGS_bool & in_mAscending,
+                                                                      const GGS_abstractEnumeratedCollectionAST & in_mEnumeratedCollection
+                                                                      COMMA_LOCATION_ARGS) ;
+  public: CollectionElementPtr_forInstructionEnumeratedObjectListAST (const GGS_forInstructionEnumeratedObjectListAST_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
 //--- Virtual method that returns a copy of current object
-  public: virtual CollectionElement * copy (void) ;
+  public: virtual CollectionElementPtr * copy (void) ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-CollectionElement_forInstructionEnumeratedObjectListAST::CollectionElement_forInstructionEnumeratedObjectListAST (const GGS_bool & in_mAscending,
-                                                                                                                  const GGS_abstractEnumeratedCollectionAST & in_mEnumeratedCollection
-                                                                                                                  COMMA_LOCATION_ARGS) :
-CollectionElement (THERE),
+CollectionElementPtr_forInstructionEnumeratedObjectListAST::CollectionElementPtr_forInstructionEnumeratedObjectListAST (const GGS_bool & in_mAscending,
+                                                                                                                        const GGS_abstractEnumeratedCollectionAST & in_mEnumeratedCollection
+                                                                                                                        COMMA_LOCATION_ARGS) :
+CollectionElementPtr (THERE),
 mObject (in_mAscending, in_mEnumeratedCollection) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-CollectionElement_forInstructionEnumeratedObjectListAST::CollectionElement_forInstructionEnumeratedObjectListAST (const GGS_forInstructionEnumeratedObjectListAST_2E_element & inElement COMMA_LOCATION_ARGS) :
-CollectionElement (THERE),
+CollectionElementPtr_forInstructionEnumeratedObjectListAST::CollectionElementPtr_forInstructionEnumeratedObjectListAST (const GGS_forInstructionEnumeratedObjectListAST_2E_element & inElement COMMA_LOCATION_ARGS) :
+CollectionElementPtr (THERE),
 mObject (inElement.mProperty_mAscending, inElement.mProperty_mEnumeratedCollection) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-bool CollectionElement_forInstructionEnumeratedObjectListAST::isValid (void) const {
+bool CollectionElementPtr_forInstructionEnumeratedObjectListAST::isValid (void) const {
   return true ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-CollectionElement * CollectionElement_forInstructionEnumeratedObjectListAST::copy (void) {
-  CollectionElement * result = nullptr ;
-  macroMyNew (result, CollectionElement_forInstructionEnumeratedObjectListAST (mObject.mProperty_mAscending, mObject.mProperty_mEnumeratedCollection COMMA_HERE)) ;
+CollectionElementPtr * CollectionElementPtr_forInstructionEnumeratedObjectListAST::copy (void) {
+  CollectionElementPtr * result = nullptr ;
+  macroMyNew (result, CollectionElementPtr_forInstructionEnumeratedObjectListAST (mObject.mProperty_mAscending, mObject.mProperty_mEnumeratedCollection COMMA_HERE)) ;
   return result ;
 }
 
@@ -1903,13 +1903,13 @@ mArray () {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_forInstructionEnumeratedObjectListAST::GGS_forInstructionEnumeratedObjectListAST (const capCollectionElementArray & inArray) :
+GGS_forInstructionEnumeratedObjectListAST::GGS_forInstructionEnumeratedObjectListAST (const CollectionElementArray & inArray) :
 mArray () {
   mArray.setCapacity (std::max (16, int32_t (inArray.count ()))) ;
   for (uint32_t i = 0 ; i < inArray.count () ; i++) {
-    const capCollectionElement v = inArray.objectAtIndex (i COMMA_HERE) ;
-    CollectionElement_forInstructionEnumeratedObjectListAST * p = (CollectionElement_forInstructionEnumeratedObjectListAST *) v.ptr () ;
-    macroValidSharedObject (p, CollectionElement_forInstructionEnumeratedObjectListAST) ;
+    const CollectionElement v = inArray.objectAtIndex (i COMMA_HERE) ;
+    CollectionElementPtr_forInstructionEnumeratedObjectListAST * p = (CollectionElementPtr_forInstructionEnumeratedObjectListAST *) v.ptr () ;
+    macroValidSharedObject (p, CollectionElementPtr_forInstructionEnumeratedObjectListAST) ;
     const GGS_forInstructionEnumeratedObjectListAST_2E_element element (p->mObject.mProperty_mAscending, p->mObject.mProperty_mEnumeratedCollection) ;
     mArray.appendObject (element) ;
   }
@@ -1917,12 +1917,12 @@ mArray () {
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_forInstructionEnumeratedObjectListAST::makeAttributesFromObjects (capCollectionElement & outAttributes,
+void GGS_forInstructionEnumeratedObjectListAST::makeAttributesFromObjects (CollectionElement & outAttributes,
                                                                            const GGS_bool & in_mAscending,
                                                                            const GGS_abstractEnumeratedCollectionAST & in_mEnumeratedCollection
                                                                            COMMA_LOCATION_ARGS) {
-  CollectionElement_forInstructionEnumeratedObjectListAST * p = nullptr ;
-  macroMyNew (p, CollectionElement_forInstructionEnumeratedObjectListAST (in_mAscending, in_mEnumeratedCollection COMMA_THERE)) ;
+  CollectionElementPtr_forInstructionEnumeratedObjectListAST * p = nullptr ;
+  macroMyNew (p, CollectionElementPtr_forInstructionEnumeratedObjectListAST (in_mAscending, in_mEnumeratedCollection COMMA_THERE)) ;
   outAttributes.setPointer (p) ;
   macroDetachSharedObject (p) ;
 }
@@ -2497,51 +2497,51 @@ void callExtensionMethod_analyzeEnumeration (cPtr_abstractEnumeratedCollectionAS
 //Class for element of '@forInstructionEnumeratedObjectListForGeneration' list
 //--------------------------------------------------------------------------------------------------
 
-class CollectionElement_forInstructionEnumeratedObjectListForGeneration : public CollectionElement {
+class CollectionElementPtr_forInstructionEnumeratedObjectListForGeneration : public CollectionElementPtr {
   public: GGS_forInstructionEnumeratedObjectListForGeneration_2E_element mObject ;
 
 //--- Class functions
-  public: CollectionElement_forInstructionEnumeratedObjectListForGeneration (const GGS_string & in_mEnumerationOrder,
-                                                                             const GGS_semanticExpressionForGeneration & in_mEnumeratedExpression,
-                                                                             const GGS_string & in_mEnumeratorCppName
-                                                                             COMMA_LOCATION_ARGS) ;
-  public: CollectionElement_forInstructionEnumeratedObjectListForGeneration (const GGS_forInstructionEnumeratedObjectListForGeneration_2E_element & inElement COMMA_LOCATION_ARGS) ;
+  public: CollectionElementPtr_forInstructionEnumeratedObjectListForGeneration (const GGS_string & in_mEnumerationOrder,
+                                                                                const GGS_semanticExpressionForGeneration & in_mEnumeratedExpression,
+                                                                                const GGS_string & in_mEnumeratorCppName
+                                                                                COMMA_LOCATION_ARGS) ;
+  public: CollectionElementPtr_forInstructionEnumeratedObjectListForGeneration (const GGS_forInstructionEnumeratedObjectListForGeneration_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
 //--- Virtual method that returns a copy of current object
-  public: virtual CollectionElement * copy (void) ;
+  public: virtual CollectionElementPtr * copy (void) ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-CollectionElement_forInstructionEnumeratedObjectListForGeneration::CollectionElement_forInstructionEnumeratedObjectListForGeneration (const GGS_string & in_mEnumerationOrder,
-                                                                                                                                      const GGS_semanticExpressionForGeneration & in_mEnumeratedExpression,
-                                                                                                                                      const GGS_string & in_mEnumeratorCppName
-                                                                                                                                      COMMA_LOCATION_ARGS) :
-CollectionElement (THERE),
+CollectionElementPtr_forInstructionEnumeratedObjectListForGeneration::CollectionElementPtr_forInstructionEnumeratedObjectListForGeneration (const GGS_string & in_mEnumerationOrder,
+                                                                                                                                            const GGS_semanticExpressionForGeneration & in_mEnumeratedExpression,
+                                                                                                                                            const GGS_string & in_mEnumeratorCppName
+                                                                                                                                            COMMA_LOCATION_ARGS) :
+CollectionElementPtr (THERE),
 mObject (in_mEnumerationOrder, in_mEnumeratedExpression, in_mEnumeratorCppName) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-CollectionElement_forInstructionEnumeratedObjectListForGeneration::CollectionElement_forInstructionEnumeratedObjectListForGeneration (const GGS_forInstructionEnumeratedObjectListForGeneration_2E_element & inElement COMMA_LOCATION_ARGS) :
-CollectionElement (THERE),
+CollectionElementPtr_forInstructionEnumeratedObjectListForGeneration::CollectionElementPtr_forInstructionEnumeratedObjectListForGeneration (const GGS_forInstructionEnumeratedObjectListForGeneration_2E_element & inElement COMMA_LOCATION_ARGS) :
+CollectionElementPtr (THERE),
 mObject (inElement.mProperty_mEnumerationOrder, inElement.mProperty_mEnumeratedExpression, inElement.mProperty_mEnumeratorCppName) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-bool CollectionElement_forInstructionEnumeratedObjectListForGeneration::isValid (void) const {
+bool CollectionElementPtr_forInstructionEnumeratedObjectListForGeneration::isValid (void) const {
   return true ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-CollectionElement * CollectionElement_forInstructionEnumeratedObjectListForGeneration::copy (void) {
-  CollectionElement * result = nullptr ;
-  macroMyNew (result, CollectionElement_forInstructionEnumeratedObjectListForGeneration (mObject.mProperty_mEnumerationOrder, mObject.mProperty_mEnumeratedExpression, mObject.mProperty_mEnumeratorCppName COMMA_HERE)) ;
+CollectionElementPtr * CollectionElementPtr_forInstructionEnumeratedObjectListForGeneration::copy (void) {
+  CollectionElementPtr * result = nullptr ;
+  macroMyNew (result, CollectionElementPtr_forInstructionEnumeratedObjectListForGeneration (mObject.mProperty_mEnumerationOrder, mObject.mProperty_mEnumeratedExpression, mObject.mProperty_mEnumeratorCppName COMMA_HERE)) ;
   return result ;
 }
 
@@ -2555,13 +2555,13 @@ mArray () {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_forInstructionEnumeratedObjectListForGeneration::GGS_forInstructionEnumeratedObjectListForGeneration (const capCollectionElementArray & inArray) :
+GGS_forInstructionEnumeratedObjectListForGeneration::GGS_forInstructionEnumeratedObjectListForGeneration (const CollectionElementArray & inArray) :
 mArray () {
   mArray.setCapacity (std::max (16, int32_t (inArray.count ()))) ;
   for (uint32_t i = 0 ; i < inArray.count () ; i++) {
-    const capCollectionElement v = inArray.objectAtIndex (i COMMA_HERE) ;
-    CollectionElement_forInstructionEnumeratedObjectListForGeneration * p = (CollectionElement_forInstructionEnumeratedObjectListForGeneration *) v.ptr () ;
-    macroValidSharedObject (p, CollectionElement_forInstructionEnumeratedObjectListForGeneration) ;
+    const CollectionElement v = inArray.objectAtIndex (i COMMA_HERE) ;
+    CollectionElementPtr_forInstructionEnumeratedObjectListForGeneration * p = (CollectionElementPtr_forInstructionEnumeratedObjectListForGeneration *) v.ptr () ;
+    macroValidSharedObject (p, CollectionElementPtr_forInstructionEnumeratedObjectListForGeneration) ;
     const GGS_forInstructionEnumeratedObjectListForGeneration_2E_element element (p->mObject.mProperty_mEnumerationOrder, p->mObject.mProperty_mEnumeratedExpression, p->mObject.mProperty_mEnumeratorCppName) ;
     mArray.appendObject (element) ;
   }
@@ -2569,13 +2569,13 @@ mArray () {
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_forInstructionEnumeratedObjectListForGeneration::makeAttributesFromObjects (capCollectionElement & outAttributes,
+void GGS_forInstructionEnumeratedObjectListForGeneration::makeAttributesFromObjects (CollectionElement & outAttributes,
                                                                                      const GGS_string & in_mEnumerationOrder,
                                                                                      const GGS_semanticExpressionForGeneration & in_mEnumeratedExpression,
                                                                                      const GGS_string & in_mEnumeratorCppName
                                                                                      COMMA_LOCATION_ARGS) {
-  CollectionElement_forInstructionEnumeratedObjectListForGeneration * p = nullptr ;
-  macroMyNew (p, CollectionElement_forInstructionEnumeratedObjectListForGeneration (in_mEnumerationOrder, in_mEnumeratedExpression, in_mEnumeratorCppName COMMA_THERE)) ;
+  CollectionElementPtr_forInstructionEnumeratedObjectListForGeneration * p = nullptr ;
+  macroMyNew (p, CollectionElementPtr_forInstructionEnumeratedObjectListForGeneration (in_mEnumerationOrder, in_mEnumeratedExpression, in_mEnumeratorCppName COMMA_THERE)) ;
   outAttributes.setPointer (p) ;
   macroDetachSharedObject (p) ;
 }
@@ -3182,9 +3182,9 @@ GGS_forInstructionEnumeratedObjectListForGeneration GGS_forInstructionEnumerated
 ComparisonResult GGS_forInstructionForGeneration_2E_weak::objectCompare (const GGS_forInstructionForGeneration_2E_weak & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
-    cPtr_weakReference_proxy * myPtr = mProxyPtr ;
+    PtrWeakReferenceProxy * myPtr = mProxyPtr ;
     const size_t myObjectPtr = size_t (myPtr) ;
-    cPtr_weakReference_proxy * operandPtr = inOperand.mProxyPtr ;
+    PtrWeakReferenceProxy * operandPtr = inOperand.mProxyPtr ;
     const size_t operandObjectPtr = size_t (operandPtr) ;
     if (myObjectPtr < operandObjectPtr) {
       result = ComparisonResult::firstOperandLowerThanSecond ;
@@ -3206,7 +3206,7 @@ GGS_semanticInstructionForGeneration_2E_weak () {
 //--------------------------------------------------------------------------------------------------
 
 GGS_forInstructionForGeneration_2E_weak & GGS_forInstructionForGeneration_2E_weak::operator = (const GGS_forInstructionForGeneration & inSource) {
-  cPtr_weakReference_proxy * proxyPtr = nullptr ;
+  PtrWeakReferenceProxy * proxyPtr = nullptr ;
   AbstractStrongPtrClass * p = (AbstractStrongPtrClass *) inSource.ptr () ;
   if (p != nullptr) {
     proxyPtr = p->getProxy () ;
@@ -3226,7 +3226,7 @@ GGS_semanticInstructionForGeneration_2E_weak (inSource) {
 
 GGS_forInstructionForGeneration_2E_weak GGS_forInstructionForGeneration_2E_weak::class_func_nil (LOCATION_ARGS) {
   GGS_forInstructionForGeneration_2E_weak result ;
-  macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
+  macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (THERE)) ;
   return result ;
 }
 
@@ -3304,9 +3304,9 @@ GGS_forInstructionForGeneration_2E_weak GGS_forInstructionForGeneration_2E_weak:
 ComparisonResult GGS_setterCallInstructionForGeneration_2E_weak::objectCompare (const GGS_setterCallInstructionForGeneration_2E_weak & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
-    cPtr_weakReference_proxy * myPtr = mProxyPtr ;
+    PtrWeakReferenceProxy * myPtr = mProxyPtr ;
     const size_t myObjectPtr = size_t (myPtr) ;
-    cPtr_weakReference_proxy * operandPtr = inOperand.mProxyPtr ;
+    PtrWeakReferenceProxy * operandPtr = inOperand.mProxyPtr ;
     const size_t operandObjectPtr = size_t (operandPtr) ;
     if (myObjectPtr < operandObjectPtr) {
       result = ComparisonResult::firstOperandLowerThanSecond ;
@@ -3328,7 +3328,7 @@ GGS_semanticInstructionForGeneration_2E_weak () {
 //--------------------------------------------------------------------------------------------------
 
 GGS_setterCallInstructionForGeneration_2E_weak & GGS_setterCallInstructionForGeneration_2E_weak::operator = (const GGS_setterCallInstructionForGeneration & inSource) {
-  cPtr_weakReference_proxy * proxyPtr = nullptr ;
+  PtrWeakReferenceProxy * proxyPtr = nullptr ;
   AbstractStrongPtrClass * p = (AbstractStrongPtrClass *) inSource.ptr () ;
   if (p != nullptr) {
     proxyPtr = p->getProxy () ;
@@ -3348,7 +3348,7 @@ GGS_semanticInstructionForGeneration_2E_weak (inSource) {
 
 GGS_setterCallInstructionForGeneration_2E_weak GGS_setterCallInstructionForGeneration_2E_weak::class_func_nil (LOCATION_ARGS) {
   GGS_setterCallInstructionForGeneration_2E_weak result ;
-  macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
+  macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (THERE)) ;
   return result ;
 }
 
@@ -3426,9 +3426,9 @@ GGS_setterCallInstructionForGeneration_2E_weak GGS_setterCallInstructionForGener
 ComparisonResult GGS_selfSetterCallInstructionForGeneration_2E_weak::objectCompare (const GGS_selfSetterCallInstructionForGeneration_2E_weak & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
-    cPtr_weakReference_proxy * myPtr = mProxyPtr ;
+    PtrWeakReferenceProxy * myPtr = mProxyPtr ;
     const size_t myObjectPtr = size_t (myPtr) ;
-    cPtr_weakReference_proxy * operandPtr = inOperand.mProxyPtr ;
+    PtrWeakReferenceProxy * operandPtr = inOperand.mProxyPtr ;
     const size_t operandObjectPtr = size_t (operandPtr) ;
     if (myObjectPtr < operandObjectPtr) {
       result = ComparisonResult::firstOperandLowerThanSecond ;
@@ -3450,7 +3450,7 @@ GGS_semanticInstructionForGeneration_2E_weak () {
 //--------------------------------------------------------------------------------------------------
 
 GGS_selfSetterCallInstructionForGeneration_2E_weak & GGS_selfSetterCallInstructionForGeneration_2E_weak::operator = (const GGS_selfSetterCallInstructionForGeneration & inSource) {
-  cPtr_weakReference_proxy * proxyPtr = nullptr ;
+  PtrWeakReferenceProxy * proxyPtr = nullptr ;
   AbstractStrongPtrClass * p = (AbstractStrongPtrClass *) inSource.ptr () ;
   if (p != nullptr) {
     proxyPtr = p->getProxy () ;
@@ -3470,7 +3470,7 @@ GGS_semanticInstructionForGeneration_2E_weak (inSource) {
 
 GGS_selfSetterCallInstructionForGeneration_2E_weak GGS_selfSetterCallInstructionForGeneration_2E_weak::class_func_nil (LOCATION_ARGS) {
   GGS_selfSetterCallInstructionForGeneration_2E_weak result ;
-  macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
+  macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (THERE)) ;
   return result ;
 }
 
@@ -4108,9 +4108,9 @@ GGS_plusEqualnstructionForGeneration GGS_plusEqualnstructionForGeneration::extra
 ComparisonResult GGS_plusEqualnstructionForGeneration_2E_weak::objectCompare (const GGS_plusEqualnstructionForGeneration_2E_weak & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
-    cPtr_weakReference_proxy * myPtr = mProxyPtr ;
+    PtrWeakReferenceProxy * myPtr = mProxyPtr ;
     const size_t myObjectPtr = size_t (myPtr) ;
-    cPtr_weakReference_proxy * operandPtr = inOperand.mProxyPtr ;
+    PtrWeakReferenceProxy * operandPtr = inOperand.mProxyPtr ;
     const size_t operandObjectPtr = size_t (operandPtr) ;
     if (myObjectPtr < operandObjectPtr) {
       result = ComparisonResult::firstOperandLowerThanSecond ;
@@ -4132,7 +4132,7 @@ GGS_semanticInstructionForGeneration_2E_weak () {
 //--------------------------------------------------------------------------------------------------
 
 GGS_plusEqualnstructionForGeneration_2E_weak & GGS_plusEqualnstructionForGeneration_2E_weak::operator = (const GGS_plusEqualnstructionForGeneration & inSource) {
-  cPtr_weakReference_proxy * proxyPtr = nullptr ;
+  PtrWeakReferenceProxy * proxyPtr = nullptr ;
   AbstractStrongPtrClass * p = (AbstractStrongPtrClass *) inSource.ptr () ;
   if (p != nullptr) {
     proxyPtr = p->getProxy () ;
@@ -4152,7 +4152,7 @@ GGS_semanticInstructionForGeneration_2E_weak (inSource) {
 
 GGS_plusEqualnstructionForGeneration_2E_weak GGS_plusEqualnstructionForGeneration_2E_weak::class_func_nil (LOCATION_ARGS) {
   GGS_plusEqualnstructionForGeneration_2E_weak result ;
-  macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
+  macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (THERE)) ;
   return result ;
 }
 
@@ -4230,9 +4230,9 @@ GGS_plusEqualnstructionForGeneration_2E_weak GGS_plusEqualnstructionForGeneratio
 ComparisonResult GGS_opAssignInstructionForGeneration_2E_weak::objectCompare (const GGS_opAssignInstructionForGeneration_2E_weak & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
-    cPtr_weakReference_proxy * myPtr = mProxyPtr ;
+    PtrWeakReferenceProxy * myPtr = mProxyPtr ;
     const size_t myObjectPtr = size_t (myPtr) ;
-    cPtr_weakReference_proxy * operandPtr = inOperand.mProxyPtr ;
+    PtrWeakReferenceProxy * operandPtr = inOperand.mProxyPtr ;
     const size_t operandObjectPtr = size_t (operandPtr) ;
     if (myObjectPtr < operandObjectPtr) {
       result = ComparisonResult::firstOperandLowerThanSecond ;
@@ -4254,7 +4254,7 @@ GGS_semanticInstructionForGeneration_2E_weak () {
 //--------------------------------------------------------------------------------------------------
 
 GGS_opAssignInstructionForGeneration_2E_weak & GGS_opAssignInstructionForGeneration_2E_weak::operator = (const GGS_opAssignInstructionForGeneration & inSource) {
-  cPtr_weakReference_proxy * proxyPtr = nullptr ;
+  PtrWeakReferenceProxy * proxyPtr = nullptr ;
   AbstractStrongPtrClass * p = (AbstractStrongPtrClass *) inSource.ptr () ;
   if (p != nullptr) {
     proxyPtr = p->getProxy () ;
@@ -4274,7 +4274,7 @@ GGS_semanticInstructionForGeneration_2E_weak (inSource) {
 
 GGS_opAssignInstructionForGeneration_2E_weak GGS_opAssignInstructionForGeneration_2E_weak::class_func_nil (LOCATION_ARGS) {
   GGS_opAssignInstructionForGeneration_2E_weak result ;
-  macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
+  macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (THERE)) ;
   return result ;
 }
 
@@ -4352,9 +4352,9 @@ GGS_opAssignInstructionForGeneration_2E_weak GGS_opAssignInstructionForGeneratio
 ComparisonResult GGS_plusPlusAssignInstructionForGeneration_2E_weak::objectCompare (const GGS_plusPlusAssignInstructionForGeneration_2E_weak & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
-    cPtr_weakReference_proxy * myPtr = mProxyPtr ;
+    PtrWeakReferenceProxy * myPtr = mProxyPtr ;
     const size_t myObjectPtr = size_t (myPtr) ;
-    cPtr_weakReference_proxy * operandPtr = inOperand.mProxyPtr ;
+    PtrWeakReferenceProxy * operandPtr = inOperand.mProxyPtr ;
     const size_t operandObjectPtr = size_t (operandPtr) ;
     if (myObjectPtr < operandObjectPtr) {
       result = ComparisonResult::firstOperandLowerThanSecond ;
@@ -4376,7 +4376,7 @@ GGS_semanticInstructionForGeneration_2E_weak () {
 //--------------------------------------------------------------------------------------------------
 
 GGS_plusPlusAssignInstructionForGeneration_2E_weak & GGS_plusPlusAssignInstructionForGeneration_2E_weak::operator = (const GGS_plusPlusAssignInstructionForGeneration & inSource) {
-  cPtr_weakReference_proxy * proxyPtr = nullptr ;
+  PtrWeakReferenceProxy * proxyPtr = nullptr ;
   AbstractStrongPtrClass * p = (AbstractStrongPtrClass *) inSource.ptr () ;
   if (p != nullptr) {
     proxyPtr = p->getProxy () ;
@@ -4396,7 +4396,7 @@ GGS_semanticInstructionForGeneration_2E_weak (inSource) {
 
 GGS_plusPlusAssignInstructionForGeneration_2E_weak GGS_plusPlusAssignInstructionForGeneration_2E_weak::class_func_nil (LOCATION_ARGS) {
   GGS_plusPlusAssignInstructionForGeneration_2E_weak result ;
-  macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
+  macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (THERE)) ;
   return result ;
 }
 
@@ -4474,9 +4474,9 @@ GGS_plusPlusAssignInstructionForGeneration_2E_weak GGS_plusPlusAssignInstruction
 ComparisonResult GGS_messageInstructionForGeneration_2E_weak::objectCompare (const GGS_messageInstructionForGeneration_2E_weak & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
-    cPtr_weakReference_proxy * myPtr = mProxyPtr ;
+    PtrWeakReferenceProxy * myPtr = mProxyPtr ;
     const size_t myObjectPtr = size_t (myPtr) ;
-    cPtr_weakReference_proxy * operandPtr = inOperand.mProxyPtr ;
+    PtrWeakReferenceProxy * operandPtr = inOperand.mProxyPtr ;
     const size_t operandObjectPtr = size_t (operandPtr) ;
     if (myObjectPtr < operandObjectPtr) {
       result = ComparisonResult::firstOperandLowerThanSecond ;
@@ -4498,7 +4498,7 @@ GGS_semanticInstructionForGeneration_2E_weak () {
 //--------------------------------------------------------------------------------------------------
 
 GGS_messageInstructionForGeneration_2E_weak & GGS_messageInstructionForGeneration_2E_weak::operator = (const GGS_messageInstructionForGeneration & inSource) {
-  cPtr_weakReference_proxy * proxyPtr = nullptr ;
+  PtrWeakReferenceProxy * proxyPtr = nullptr ;
   AbstractStrongPtrClass * p = (AbstractStrongPtrClass *) inSource.ptr () ;
   if (p != nullptr) {
     proxyPtr = p->getProxy () ;
@@ -4518,7 +4518,7 @@ GGS_semanticInstructionForGeneration_2E_weak (inSource) {
 
 GGS_messageInstructionForGeneration_2E_weak GGS_messageInstructionForGeneration_2E_weak::class_func_nil (LOCATION_ARGS) {
   GGS_messageInstructionForGeneration_2E_weak result ;
-  macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
+  macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (THERE)) ;
   return result ;
 }
 
@@ -5024,55 +5024,55 @@ GGS_typeKindEnum GGS_typeKindEnum::extractObject (const GGS_object & inObject,
 //Class for element of '@typedPropertyList' list
 //--------------------------------------------------------------------------------------------------
 
-class CollectionElement_typedPropertyList : public CollectionElement {
+class CollectionElementPtr_typedPropertyList : public CollectionElementPtr {
   public: GGS_typedPropertyList_2E_element mObject ;
 
 //--- Class functions
-  public: CollectionElement_typedPropertyList (const GGS_unifiedTypeMapEntry & in_typeEntry,
-                                               const GGS_lstring & in_name,
-                                               const GGS_propertyInCollectionInitializationAST & in_initialization,
-                                               const GGS_bool & in_hasSetter,
-                                               const GGS_bool & in_hasSelector
-                                               COMMA_LOCATION_ARGS) ;
-  public: CollectionElement_typedPropertyList (const GGS_typedPropertyList_2E_element & inElement COMMA_LOCATION_ARGS) ;
+  public: CollectionElementPtr_typedPropertyList (const GGS_unifiedTypeMapEntry & in_typeEntry,
+                                                  const GGS_lstring & in_name,
+                                                  const GGS_propertyInCollectionInitializationAST & in_initialization,
+                                                  const GGS_bool & in_hasSetter,
+                                                  const GGS_bool & in_hasSelector
+                                                  COMMA_LOCATION_ARGS) ;
+  public: CollectionElementPtr_typedPropertyList (const GGS_typedPropertyList_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
 //--- Virtual method that returns a copy of current object
-  public: virtual CollectionElement * copy (void) ;
+  public: virtual CollectionElementPtr * copy (void) ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-CollectionElement_typedPropertyList::CollectionElement_typedPropertyList (const GGS_unifiedTypeMapEntry & in_typeEntry,
-                                                                          const GGS_lstring & in_name,
-                                                                          const GGS_propertyInCollectionInitializationAST & in_initialization,
-                                                                          const GGS_bool & in_hasSetter,
-                                                                          const GGS_bool & in_hasSelector
-                                                                          COMMA_LOCATION_ARGS) :
-CollectionElement (THERE),
+CollectionElementPtr_typedPropertyList::CollectionElementPtr_typedPropertyList (const GGS_unifiedTypeMapEntry & in_typeEntry,
+                                                                                const GGS_lstring & in_name,
+                                                                                const GGS_propertyInCollectionInitializationAST & in_initialization,
+                                                                                const GGS_bool & in_hasSetter,
+                                                                                const GGS_bool & in_hasSelector
+                                                                                COMMA_LOCATION_ARGS) :
+CollectionElementPtr (THERE),
 mObject (in_typeEntry, in_name, in_initialization, in_hasSetter, in_hasSelector) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-CollectionElement_typedPropertyList::CollectionElement_typedPropertyList (const GGS_typedPropertyList_2E_element & inElement COMMA_LOCATION_ARGS) :
-CollectionElement (THERE),
+CollectionElementPtr_typedPropertyList::CollectionElementPtr_typedPropertyList (const GGS_typedPropertyList_2E_element & inElement COMMA_LOCATION_ARGS) :
+CollectionElementPtr (THERE),
 mObject (inElement.mProperty_typeEntry, inElement.mProperty_name, inElement.mProperty_initialization, inElement.mProperty_hasSetter, inElement.mProperty_hasSelector) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-bool CollectionElement_typedPropertyList::isValid (void) const {
+bool CollectionElementPtr_typedPropertyList::isValid (void) const {
   return true ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-CollectionElement * CollectionElement_typedPropertyList::copy (void) {
-  CollectionElement * result = nullptr ;
-  macroMyNew (result, CollectionElement_typedPropertyList (mObject.mProperty_typeEntry, mObject.mProperty_name, mObject.mProperty_initialization, mObject.mProperty_hasSetter, mObject.mProperty_hasSelector COMMA_HERE)) ;
+CollectionElementPtr * CollectionElementPtr_typedPropertyList::copy (void) {
+  CollectionElementPtr * result = nullptr ;
+  macroMyNew (result, CollectionElementPtr_typedPropertyList (mObject.mProperty_typeEntry, mObject.mProperty_name, mObject.mProperty_initialization, mObject.mProperty_hasSetter, mObject.mProperty_hasSelector COMMA_HERE)) ;
   return result ;
 }
 
@@ -5086,13 +5086,13 @@ mArray () {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_typedPropertyList::GGS_typedPropertyList (const capCollectionElementArray & inArray) :
+GGS_typedPropertyList::GGS_typedPropertyList (const CollectionElementArray & inArray) :
 mArray () {
   mArray.setCapacity (std::max (16, int32_t (inArray.count ()))) ;
   for (uint32_t i = 0 ; i < inArray.count () ; i++) {
-    const capCollectionElement v = inArray.objectAtIndex (i COMMA_HERE) ;
-    CollectionElement_typedPropertyList * p = (CollectionElement_typedPropertyList *) v.ptr () ;
-    macroValidSharedObject (p, CollectionElement_typedPropertyList) ;
+    const CollectionElement v = inArray.objectAtIndex (i COMMA_HERE) ;
+    CollectionElementPtr_typedPropertyList * p = (CollectionElementPtr_typedPropertyList *) v.ptr () ;
+    macroValidSharedObject (p, CollectionElementPtr_typedPropertyList) ;
     const GGS_typedPropertyList_2E_element element (p->mObject.mProperty_typeEntry, p->mObject.mProperty_name, p->mObject.mProperty_initialization, p->mObject.mProperty_hasSetter, p->mObject.mProperty_hasSelector) ;
     mArray.appendObject (element) ;
   }
@@ -5100,15 +5100,15 @@ mArray () {
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_typedPropertyList::makeAttributesFromObjects (capCollectionElement & outAttributes,
+void GGS_typedPropertyList::makeAttributesFromObjects (CollectionElement & outAttributes,
                                                        const GGS_unifiedTypeMapEntry & in_typeEntry,
                                                        const GGS_lstring & in_name,
                                                        const GGS_propertyInCollectionInitializationAST & in_initialization,
                                                        const GGS_bool & in_hasSetter,
                                                        const GGS_bool & in_hasSelector
                                                        COMMA_LOCATION_ARGS) {
-  CollectionElement_typedPropertyList * p = nullptr ;
-  macroMyNew (p, CollectionElement_typedPropertyList (in_typeEntry, in_name, in_initialization, in_hasSetter, in_hasSelector COMMA_THERE)) ;
+  CollectionElementPtr_typedPropertyList * p = nullptr ;
+  macroMyNew (p, CollectionElementPtr_typedPropertyList (in_typeEntry, in_name, in_initialization, in_hasSetter, in_hasSelector COMMA_THERE)) ;
   outAttributes.setPointer (p) ;
   macroDetachSharedObject (p) ;
 }
@@ -11138,49 +11138,49 @@ GGS_subscriptMap GGS_subscriptMap::extractObject (const GGS_object & inObject,
 //Class for element of '@enumerationDescriptorList' list
 //--------------------------------------------------------------------------------------------------
 
-class CollectionElement_enumerationDescriptorList : public CollectionElement {
+class CollectionElementPtr_enumerationDescriptorList : public CollectionElementPtr {
   public: GGS_enumerationDescriptorList_2E_element mObject ;
 
 //--- Class functions
-  public: CollectionElement_enumerationDescriptorList (const GGS_unifiedTypeMapEntry & in_mEnumeratedType,
-                                                       const GGS_string & in_mEnumerationName
-                                                       COMMA_LOCATION_ARGS) ;
-  public: CollectionElement_enumerationDescriptorList (const GGS_enumerationDescriptorList_2E_element & inElement COMMA_LOCATION_ARGS) ;
+  public: CollectionElementPtr_enumerationDescriptorList (const GGS_unifiedTypeMapEntry & in_mEnumeratedType,
+                                                          const GGS_string & in_mEnumerationName
+                                                          COMMA_LOCATION_ARGS) ;
+  public: CollectionElementPtr_enumerationDescriptorList (const GGS_enumerationDescriptorList_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
 //--- Virtual method that returns a copy of current object
-  public: virtual CollectionElement * copy (void) ;
+  public: virtual CollectionElementPtr * copy (void) ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-CollectionElement_enumerationDescriptorList::CollectionElement_enumerationDescriptorList (const GGS_unifiedTypeMapEntry & in_mEnumeratedType,
-                                                                                          const GGS_string & in_mEnumerationName
-                                                                                          COMMA_LOCATION_ARGS) :
-CollectionElement (THERE),
+CollectionElementPtr_enumerationDescriptorList::CollectionElementPtr_enumerationDescriptorList (const GGS_unifiedTypeMapEntry & in_mEnumeratedType,
+                                                                                                const GGS_string & in_mEnumerationName
+                                                                                                COMMA_LOCATION_ARGS) :
+CollectionElementPtr (THERE),
 mObject (in_mEnumeratedType, in_mEnumerationName) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-CollectionElement_enumerationDescriptorList::CollectionElement_enumerationDescriptorList (const GGS_enumerationDescriptorList_2E_element & inElement COMMA_LOCATION_ARGS) :
-CollectionElement (THERE),
+CollectionElementPtr_enumerationDescriptorList::CollectionElementPtr_enumerationDescriptorList (const GGS_enumerationDescriptorList_2E_element & inElement COMMA_LOCATION_ARGS) :
+CollectionElementPtr (THERE),
 mObject (inElement.mProperty_mEnumeratedType, inElement.mProperty_mEnumerationName) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-bool CollectionElement_enumerationDescriptorList::isValid (void) const {
+bool CollectionElementPtr_enumerationDescriptorList::isValid (void) const {
   return true ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-CollectionElement * CollectionElement_enumerationDescriptorList::copy (void) {
-  CollectionElement * result = nullptr ;
-  macroMyNew (result, CollectionElement_enumerationDescriptorList (mObject.mProperty_mEnumeratedType, mObject.mProperty_mEnumerationName COMMA_HERE)) ;
+CollectionElementPtr * CollectionElementPtr_enumerationDescriptorList::copy (void) {
+  CollectionElementPtr * result = nullptr ;
+  macroMyNew (result, CollectionElementPtr_enumerationDescriptorList (mObject.mProperty_mEnumeratedType, mObject.mProperty_mEnumerationName COMMA_HERE)) ;
   return result ;
 }
 
@@ -11194,13 +11194,13 @@ mArray () {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_enumerationDescriptorList::GGS_enumerationDescriptorList (const capCollectionElementArray & inArray) :
+GGS_enumerationDescriptorList::GGS_enumerationDescriptorList (const CollectionElementArray & inArray) :
 mArray () {
   mArray.setCapacity (std::max (16, int32_t (inArray.count ()))) ;
   for (uint32_t i = 0 ; i < inArray.count () ; i++) {
-    const capCollectionElement v = inArray.objectAtIndex (i COMMA_HERE) ;
-    CollectionElement_enumerationDescriptorList * p = (CollectionElement_enumerationDescriptorList *) v.ptr () ;
-    macroValidSharedObject (p, CollectionElement_enumerationDescriptorList) ;
+    const CollectionElement v = inArray.objectAtIndex (i COMMA_HERE) ;
+    CollectionElementPtr_enumerationDescriptorList * p = (CollectionElementPtr_enumerationDescriptorList *) v.ptr () ;
+    macroValidSharedObject (p, CollectionElementPtr_enumerationDescriptorList) ;
     const GGS_enumerationDescriptorList_2E_element element (p->mObject.mProperty_mEnumeratedType, p->mObject.mProperty_mEnumerationName) ;
     mArray.appendObject (element) ;
   }
@@ -11208,12 +11208,12 @@ mArray () {
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_enumerationDescriptorList::makeAttributesFromObjects (capCollectionElement & outAttributes,
+void GGS_enumerationDescriptorList::makeAttributesFromObjects (CollectionElement & outAttributes,
                                                                const GGS_unifiedTypeMapEntry & in_mEnumeratedType,
                                                                const GGS_string & in_mEnumerationName
                                                                COMMA_LOCATION_ARGS) {
-  CollectionElement_enumerationDescriptorList * p = nullptr ;
-  macroMyNew (p, CollectionElement_enumerationDescriptorList (in_mEnumeratedType, in_mEnumerationName COMMA_THERE)) ;
+  CollectionElementPtr_enumerationDescriptorList * p = nullptr ;
+  macroMyNew (p, CollectionElementPtr_enumerationDescriptorList (in_mEnumeratedType, in_mEnumerationName COMMA_THERE)) ;
   outAttributes.setPointer (p) ;
   macroDetachSharedObject (p) ;
 }
@@ -12255,53 +12255,53 @@ GGS_typeFeatures GGS_typeFeatures::extractObject (const GGS_object & inObject,
 //Class for element of '@functionSignature' list
 //--------------------------------------------------------------------------------------------------
 
-class CollectionElement_functionSignature : public CollectionElement {
+class CollectionElementPtr_functionSignature : public CollectionElementPtr {
   public: GGS_functionSignature_2E_element mObject ;
 
 //--- Class functions
-  public: CollectionElement_functionSignature (const GGS_lstring & in_mFormalSelector,
-                                               const GGS_unifiedTypeMapEntry & in_mFormalArgumentType,
-                                               const GGS_string & in_mFormalArgumentName,
-                                               const GGS_bool & in_isConstant
-                                               COMMA_LOCATION_ARGS) ;
-  public: CollectionElement_functionSignature (const GGS_functionSignature_2E_element & inElement COMMA_LOCATION_ARGS) ;
+  public: CollectionElementPtr_functionSignature (const GGS_lstring & in_mFormalSelector,
+                                                  const GGS_unifiedTypeMapEntry & in_mFormalArgumentType,
+                                                  const GGS_string & in_mFormalArgumentName,
+                                                  const GGS_bool & in_isConstant
+                                                  COMMA_LOCATION_ARGS) ;
+  public: CollectionElementPtr_functionSignature (const GGS_functionSignature_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
 //--- Virtual method that returns a copy of current object
-  public: virtual CollectionElement * copy (void) ;
+  public: virtual CollectionElementPtr * copy (void) ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-CollectionElement_functionSignature::CollectionElement_functionSignature (const GGS_lstring & in_mFormalSelector,
-                                                                          const GGS_unifiedTypeMapEntry & in_mFormalArgumentType,
-                                                                          const GGS_string & in_mFormalArgumentName,
-                                                                          const GGS_bool & in_isConstant
-                                                                          COMMA_LOCATION_ARGS) :
-CollectionElement (THERE),
+CollectionElementPtr_functionSignature::CollectionElementPtr_functionSignature (const GGS_lstring & in_mFormalSelector,
+                                                                                const GGS_unifiedTypeMapEntry & in_mFormalArgumentType,
+                                                                                const GGS_string & in_mFormalArgumentName,
+                                                                                const GGS_bool & in_isConstant
+                                                                                COMMA_LOCATION_ARGS) :
+CollectionElementPtr (THERE),
 mObject (in_mFormalSelector, in_mFormalArgumentType, in_mFormalArgumentName, in_isConstant) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-CollectionElement_functionSignature::CollectionElement_functionSignature (const GGS_functionSignature_2E_element & inElement COMMA_LOCATION_ARGS) :
-CollectionElement (THERE),
+CollectionElementPtr_functionSignature::CollectionElementPtr_functionSignature (const GGS_functionSignature_2E_element & inElement COMMA_LOCATION_ARGS) :
+CollectionElementPtr (THERE),
 mObject (inElement.mProperty_mFormalSelector, inElement.mProperty_mFormalArgumentType, inElement.mProperty_mFormalArgumentName, inElement.mProperty_isConstant) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-bool CollectionElement_functionSignature::isValid (void) const {
+bool CollectionElementPtr_functionSignature::isValid (void) const {
   return true ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-CollectionElement * CollectionElement_functionSignature::copy (void) {
-  CollectionElement * result = nullptr ;
-  macroMyNew (result, CollectionElement_functionSignature (mObject.mProperty_mFormalSelector, mObject.mProperty_mFormalArgumentType, mObject.mProperty_mFormalArgumentName, mObject.mProperty_isConstant COMMA_HERE)) ;
+CollectionElementPtr * CollectionElementPtr_functionSignature::copy (void) {
+  CollectionElementPtr * result = nullptr ;
+  macroMyNew (result, CollectionElementPtr_functionSignature (mObject.mProperty_mFormalSelector, mObject.mProperty_mFormalArgumentType, mObject.mProperty_mFormalArgumentName, mObject.mProperty_isConstant COMMA_HERE)) ;
   return result ;
 }
 
@@ -12315,13 +12315,13 @@ mArray () {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_functionSignature::GGS_functionSignature (const capCollectionElementArray & inArray) :
+GGS_functionSignature::GGS_functionSignature (const CollectionElementArray & inArray) :
 mArray () {
   mArray.setCapacity (std::max (16, int32_t (inArray.count ()))) ;
   for (uint32_t i = 0 ; i < inArray.count () ; i++) {
-    const capCollectionElement v = inArray.objectAtIndex (i COMMA_HERE) ;
-    CollectionElement_functionSignature * p = (CollectionElement_functionSignature *) v.ptr () ;
-    macroValidSharedObject (p, CollectionElement_functionSignature) ;
+    const CollectionElement v = inArray.objectAtIndex (i COMMA_HERE) ;
+    CollectionElementPtr_functionSignature * p = (CollectionElementPtr_functionSignature *) v.ptr () ;
+    macroValidSharedObject (p, CollectionElementPtr_functionSignature) ;
     const GGS_functionSignature_2E_element element (p->mObject.mProperty_mFormalSelector, p->mObject.mProperty_mFormalArgumentType, p->mObject.mProperty_mFormalArgumentName, p->mObject.mProperty_isConstant) ;
     mArray.appendObject (element) ;
   }
@@ -12329,14 +12329,14 @@ mArray () {
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_functionSignature::makeAttributesFromObjects (capCollectionElement & outAttributes,
+void GGS_functionSignature::makeAttributesFromObjects (CollectionElement & outAttributes,
                                                        const GGS_lstring & in_mFormalSelector,
                                                        const GGS_unifiedTypeMapEntry & in_mFormalArgumentType,
                                                        const GGS_string & in_mFormalArgumentName,
                                                        const GGS_bool & in_isConstant
                                                        COMMA_LOCATION_ARGS) {
-  CollectionElement_functionSignature * p = nullptr ;
-  macroMyNew (p, CollectionElement_functionSignature (in_mFormalSelector, in_mFormalArgumentType, in_mFormalArgumentName, in_isConstant COMMA_THERE)) ;
+  CollectionElementPtr_functionSignature * p = nullptr ;
+  macroMyNew (p, CollectionElementPtr_functionSignature (in_mFormalSelector, in_mFormalArgumentType, in_mFormalArgumentName, in_isConstant COMMA_THERE)) ;
   outAttributes.setPointer (p) ;
   macroDetachSharedObject (p) ;
 }
@@ -13430,9 +13430,9 @@ void callExtensionMethod_semanticAnalysis (cPtr_semanticDeclarationAST * inObjec
 ComparisonResult GGS_semanticDeclarationAST_2E_weak::objectCompare (const GGS_semanticDeclarationAST_2E_weak & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
-    cPtr_weakReference_proxy * myPtr = mProxyPtr ;
+    PtrWeakReferenceProxy * myPtr = mProxyPtr ;
     const size_t myObjectPtr = size_t (myPtr) ;
-    cPtr_weakReference_proxy * operandPtr = inOperand.mProxyPtr ;
+    PtrWeakReferenceProxy * operandPtr = inOperand.mProxyPtr ;
     const size_t operandObjectPtr = size_t (operandPtr) ;
     if (myObjectPtr < operandObjectPtr) {
       result = ComparisonResult::firstOperandLowerThanSecond ;
@@ -13454,7 +13454,7 @@ AC_GALGAS_weak_reference () {
 //--------------------------------------------------------------------------------------------------
 
 GGS_semanticDeclarationAST_2E_weak & GGS_semanticDeclarationAST_2E_weak::operator = (const GGS_semanticDeclarationAST & inSource) {
-  cPtr_weakReference_proxy * proxyPtr = nullptr ;
+  PtrWeakReferenceProxy * proxyPtr = nullptr ;
   AbstractStrongPtrClass * p = (AbstractStrongPtrClass *) inSource.ptr () ;
   if (p != nullptr) {
     proxyPtr = p->getProxy () ;
@@ -13474,7 +13474,7 @@ AC_GALGAS_weak_reference (inSource) {
 
 GGS_semanticDeclarationAST_2E_weak GGS_semanticDeclarationAST_2E_weak::class_func_nil (LOCATION_ARGS) {
   GGS_semanticDeclarationAST_2E_weak result ;
-  macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
+  macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (THERE)) ;
   return result ;
 }
 
@@ -14598,53 +14598,53 @@ GGS_routineArgumentMap GGS_routineArgumentMap::extractObject (const GGS_object &
 //Class for element of '@formalParameterSignature' list
 //--------------------------------------------------------------------------------------------------
 
-class CollectionElement_formalParameterSignature : public CollectionElement {
+class CollectionElementPtr_formalParameterSignature : public CollectionElementPtr {
   public: GGS_formalParameterSignature_2E_element mObject ;
 
 //--- Class functions
-  public: CollectionElement_formalParameterSignature (const GGS_lstring & in_mFormalSelector,
-                                                      const GGS_unifiedTypeMapEntry & in_mFormalArgumentType,
-                                                      const GGS_formalArgumentPassingModeAST & in_mFormalArgumentPassingMode,
-                                                      const GGS_string & in_mFormalArgumentName
-                                                      COMMA_LOCATION_ARGS) ;
-  public: CollectionElement_formalParameterSignature (const GGS_formalParameterSignature_2E_element & inElement COMMA_LOCATION_ARGS) ;
+  public: CollectionElementPtr_formalParameterSignature (const GGS_lstring & in_mFormalSelector,
+                                                         const GGS_unifiedTypeMapEntry & in_mFormalArgumentType,
+                                                         const GGS_formalArgumentPassingModeAST & in_mFormalArgumentPassingMode,
+                                                         const GGS_string & in_mFormalArgumentName
+                                                         COMMA_LOCATION_ARGS) ;
+  public: CollectionElementPtr_formalParameterSignature (const GGS_formalParameterSignature_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
 //--- Virtual method that returns a copy of current object
-  public: virtual CollectionElement * copy (void) ;
+  public: virtual CollectionElementPtr * copy (void) ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-CollectionElement_formalParameterSignature::CollectionElement_formalParameterSignature (const GGS_lstring & in_mFormalSelector,
-                                                                                        const GGS_unifiedTypeMapEntry & in_mFormalArgumentType,
-                                                                                        const GGS_formalArgumentPassingModeAST & in_mFormalArgumentPassingMode,
-                                                                                        const GGS_string & in_mFormalArgumentName
-                                                                                        COMMA_LOCATION_ARGS) :
-CollectionElement (THERE),
+CollectionElementPtr_formalParameterSignature::CollectionElementPtr_formalParameterSignature (const GGS_lstring & in_mFormalSelector,
+                                                                                              const GGS_unifiedTypeMapEntry & in_mFormalArgumentType,
+                                                                                              const GGS_formalArgumentPassingModeAST & in_mFormalArgumentPassingMode,
+                                                                                              const GGS_string & in_mFormalArgumentName
+                                                                                              COMMA_LOCATION_ARGS) :
+CollectionElementPtr (THERE),
 mObject (in_mFormalSelector, in_mFormalArgumentType, in_mFormalArgumentPassingMode, in_mFormalArgumentName) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-CollectionElement_formalParameterSignature::CollectionElement_formalParameterSignature (const GGS_formalParameterSignature_2E_element & inElement COMMA_LOCATION_ARGS) :
-CollectionElement (THERE),
+CollectionElementPtr_formalParameterSignature::CollectionElementPtr_formalParameterSignature (const GGS_formalParameterSignature_2E_element & inElement COMMA_LOCATION_ARGS) :
+CollectionElementPtr (THERE),
 mObject (inElement.mProperty_mFormalSelector, inElement.mProperty_mFormalArgumentType, inElement.mProperty_mFormalArgumentPassingMode, inElement.mProperty_mFormalArgumentName) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-bool CollectionElement_formalParameterSignature::isValid (void) const {
+bool CollectionElementPtr_formalParameterSignature::isValid (void) const {
   return true ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-CollectionElement * CollectionElement_formalParameterSignature::copy (void) {
-  CollectionElement * result = nullptr ;
-  macroMyNew (result, CollectionElement_formalParameterSignature (mObject.mProperty_mFormalSelector, mObject.mProperty_mFormalArgumentType, mObject.mProperty_mFormalArgumentPassingMode, mObject.mProperty_mFormalArgumentName COMMA_HERE)) ;
+CollectionElementPtr * CollectionElementPtr_formalParameterSignature::copy (void) {
+  CollectionElementPtr * result = nullptr ;
+  macroMyNew (result, CollectionElementPtr_formalParameterSignature (mObject.mProperty_mFormalSelector, mObject.mProperty_mFormalArgumentType, mObject.mProperty_mFormalArgumentPassingMode, mObject.mProperty_mFormalArgumentName COMMA_HERE)) ;
   return result ;
 }
 
@@ -14658,13 +14658,13 @@ mArray () {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_formalParameterSignature::GGS_formalParameterSignature (const capCollectionElementArray & inArray) :
+GGS_formalParameterSignature::GGS_formalParameterSignature (const CollectionElementArray & inArray) :
 mArray () {
   mArray.setCapacity (std::max (16, int32_t (inArray.count ()))) ;
   for (uint32_t i = 0 ; i < inArray.count () ; i++) {
-    const capCollectionElement v = inArray.objectAtIndex (i COMMA_HERE) ;
-    CollectionElement_formalParameterSignature * p = (CollectionElement_formalParameterSignature *) v.ptr () ;
-    macroValidSharedObject (p, CollectionElement_formalParameterSignature) ;
+    const CollectionElement v = inArray.objectAtIndex (i COMMA_HERE) ;
+    CollectionElementPtr_formalParameterSignature * p = (CollectionElementPtr_formalParameterSignature *) v.ptr () ;
+    macroValidSharedObject (p, CollectionElementPtr_formalParameterSignature) ;
     const GGS_formalParameterSignature_2E_element element (p->mObject.mProperty_mFormalSelector, p->mObject.mProperty_mFormalArgumentType, p->mObject.mProperty_mFormalArgumentPassingMode, p->mObject.mProperty_mFormalArgumentName) ;
     mArray.appendObject (element) ;
   }
@@ -14672,14 +14672,14 @@ mArray () {
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_formalParameterSignature::makeAttributesFromObjects (capCollectionElement & outAttributes,
+void GGS_formalParameterSignature::makeAttributesFromObjects (CollectionElement & outAttributes,
                                                               const GGS_lstring & in_mFormalSelector,
                                                               const GGS_unifiedTypeMapEntry & in_mFormalArgumentType,
                                                               const GGS_formalArgumentPassingModeAST & in_mFormalArgumentPassingMode,
                                                               const GGS_string & in_mFormalArgumentName
                                                               COMMA_LOCATION_ARGS) {
-  CollectionElement_formalParameterSignature * p = nullptr ;
-  macroMyNew (p, CollectionElement_formalParameterSignature (in_mFormalSelector, in_mFormalArgumentType, in_mFormalArgumentPassingMode, in_mFormalArgumentName COMMA_THERE)) ;
+  CollectionElementPtr_formalParameterSignature * p = nullptr ;
+  macroMyNew (p, CollectionElementPtr_formalParameterSignature (in_mFormalSelector, in_mFormalArgumentType, in_mFormalArgumentPassingMode, in_mFormalArgumentName COMMA_THERE)) ;
   outAttributes.setPointer (p) ;
   macroDetachSharedObject (p) ;
 }
@@ -15359,49 +15359,49 @@ GGS_formalParameterSignature GGS_formalParameterSignature::extractObject (const 
 //Class for element of '@acceptableParameterList' list
 //--------------------------------------------------------------------------------------------------
 
-class CollectionElement_acceptableParameterList : public CollectionElement {
+class CollectionElementPtr_acceptableParameterList : public CollectionElementPtr {
   public: GGS_acceptableParameterList_2E_element mObject ;
 
 //--- Class functions
-  public: CollectionElement_acceptableParameterList (const GGS_formalParameterSignature & in_mRoutineSignature,
-                                                     const GGS_bool & in_mIsFilePrivate
-                                                     COMMA_LOCATION_ARGS) ;
-  public: CollectionElement_acceptableParameterList (const GGS_acceptableParameterList_2E_element & inElement COMMA_LOCATION_ARGS) ;
+  public: CollectionElementPtr_acceptableParameterList (const GGS_formalParameterSignature & in_mRoutineSignature,
+                                                        const GGS_bool & in_mIsFilePrivate
+                                                        COMMA_LOCATION_ARGS) ;
+  public: CollectionElementPtr_acceptableParameterList (const GGS_acceptableParameterList_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
 //--- Virtual method that returns a copy of current object
-  public: virtual CollectionElement * copy (void) ;
+  public: virtual CollectionElementPtr * copy (void) ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-CollectionElement_acceptableParameterList::CollectionElement_acceptableParameterList (const GGS_formalParameterSignature & in_mRoutineSignature,
-                                                                                      const GGS_bool & in_mIsFilePrivate
-                                                                                      COMMA_LOCATION_ARGS) :
-CollectionElement (THERE),
+CollectionElementPtr_acceptableParameterList::CollectionElementPtr_acceptableParameterList (const GGS_formalParameterSignature & in_mRoutineSignature,
+                                                                                            const GGS_bool & in_mIsFilePrivate
+                                                                                            COMMA_LOCATION_ARGS) :
+CollectionElementPtr (THERE),
 mObject (in_mRoutineSignature, in_mIsFilePrivate) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-CollectionElement_acceptableParameterList::CollectionElement_acceptableParameterList (const GGS_acceptableParameterList_2E_element & inElement COMMA_LOCATION_ARGS) :
-CollectionElement (THERE),
+CollectionElementPtr_acceptableParameterList::CollectionElementPtr_acceptableParameterList (const GGS_acceptableParameterList_2E_element & inElement COMMA_LOCATION_ARGS) :
+CollectionElementPtr (THERE),
 mObject (inElement.mProperty_mRoutineSignature, inElement.mProperty_mIsFilePrivate) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-bool CollectionElement_acceptableParameterList::isValid (void) const {
+bool CollectionElementPtr_acceptableParameterList::isValid (void) const {
   return true ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-CollectionElement * CollectionElement_acceptableParameterList::copy (void) {
-  CollectionElement * result = nullptr ;
-  macroMyNew (result, CollectionElement_acceptableParameterList (mObject.mProperty_mRoutineSignature, mObject.mProperty_mIsFilePrivate COMMA_HERE)) ;
+CollectionElementPtr * CollectionElementPtr_acceptableParameterList::copy (void) {
+  CollectionElementPtr * result = nullptr ;
+  macroMyNew (result, CollectionElementPtr_acceptableParameterList (mObject.mProperty_mRoutineSignature, mObject.mProperty_mIsFilePrivate COMMA_HERE)) ;
   return result ;
 }
 
@@ -15415,13 +15415,13 @@ mArray () {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_acceptableParameterList::GGS_acceptableParameterList (const capCollectionElementArray & inArray) :
+GGS_acceptableParameterList::GGS_acceptableParameterList (const CollectionElementArray & inArray) :
 mArray () {
   mArray.setCapacity (std::max (16, int32_t (inArray.count ()))) ;
   for (uint32_t i = 0 ; i < inArray.count () ; i++) {
-    const capCollectionElement v = inArray.objectAtIndex (i COMMA_HERE) ;
-    CollectionElement_acceptableParameterList * p = (CollectionElement_acceptableParameterList *) v.ptr () ;
-    macroValidSharedObject (p, CollectionElement_acceptableParameterList) ;
+    const CollectionElement v = inArray.objectAtIndex (i COMMA_HERE) ;
+    CollectionElementPtr_acceptableParameterList * p = (CollectionElementPtr_acceptableParameterList *) v.ptr () ;
+    macroValidSharedObject (p, CollectionElementPtr_acceptableParameterList) ;
     const GGS_acceptableParameterList_2E_element element (p->mObject.mProperty_mRoutineSignature, p->mObject.mProperty_mIsFilePrivate) ;
     mArray.appendObject (element) ;
   }
@@ -15429,12 +15429,12 @@ mArray () {
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_acceptableParameterList::makeAttributesFromObjects (capCollectionElement & outAttributes,
+void GGS_acceptableParameterList::makeAttributesFromObjects (CollectionElement & outAttributes,
                                                              const GGS_formalParameterSignature & in_mRoutineSignature,
                                                              const GGS_bool & in_mIsFilePrivate
                                                              COMMA_LOCATION_ARGS) {
-  CollectionElement_acceptableParameterList * p = nullptr ;
-  macroMyNew (p, CollectionElement_acceptableParameterList (in_mRoutineSignature, in_mIsFilePrivate COMMA_THERE)) ;
+  CollectionElementPtr_acceptableParameterList * p = nullptr ;
+  macroMyNew (p, CollectionElementPtr_acceptableParameterList (in_mRoutineSignature, in_mIsFilePrivate COMMA_THERE)) ;
   outAttributes.setPointer (p) ;
   macroDetachSharedObject (p) ;
 }
@@ -16245,51 +16245,51 @@ GGS_syntaxExtensionsDictionary GGS_syntaxExtensionsDictionary::extractObject (co
 //Class for element of '@galgas_33_SyntaxExtensionListAST' list
 //--------------------------------------------------------------------------------------------------
 
-class CollectionElement_galgas_33_SyntaxExtensionListAST : public CollectionElement {
+class CollectionElementPtr_galgas_33_SyntaxExtensionListAST : public CollectionElementPtr {
   public: GGS_galgas_33_SyntaxExtensionListAST_2E_element mObject ;
 
 //--- Class functions
-  public: CollectionElement_galgas_33_SyntaxExtensionListAST (const GGS_lstring & in_mSyntaxComponentName,
-                                                              const GGS_nonterminalDeclarationListAST & in_mNonterminalDeclarationList,
-                                                              const GGS_syntaxRuleListAST & in_mRuleList
-                                                              COMMA_LOCATION_ARGS) ;
-  public: CollectionElement_galgas_33_SyntaxExtensionListAST (const GGS_galgas_33_SyntaxExtensionListAST_2E_element & inElement COMMA_LOCATION_ARGS) ;
+  public: CollectionElementPtr_galgas_33_SyntaxExtensionListAST (const GGS_lstring & in_mSyntaxComponentName,
+                                                                 const GGS_nonterminalDeclarationListAST & in_mNonterminalDeclarationList,
+                                                                 const GGS_syntaxRuleListAST & in_mRuleList
+                                                                 COMMA_LOCATION_ARGS) ;
+  public: CollectionElementPtr_galgas_33_SyntaxExtensionListAST (const GGS_galgas_33_SyntaxExtensionListAST_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
 //--- Virtual method that returns a copy of current object
-  public: virtual CollectionElement * copy (void) ;
+  public: virtual CollectionElementPtr * copy (void) ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-CollectionElement_galgas_33_SyntaxExtensionListAST::CollectionElement_galgas_33_SyntaxExtensionListAST (const GGS_lstring & in_mSyntaxComponentName,
-                                                                                                        const GGS_nonterminalDeclarationListAST & in_mNonterminalDeclarationList,
-                                                                                                        const GGS_syntaxRuleListAST & in_mRuleList
-                                                                                                        COMMA_LOCATION_ARGS) :
-CollectionElement (THERE),
+CollectionElementPtr_galgas_33_SyntaxExtensionListAST::CollectionElementPtr_galgas_33_SyntaxExtensionListAST (const GGS_lstring & in_mSyntaxComponentName,
+                                                                                                              const GGS_nonterminalDeclarationListAST & in_mNonterminalDeclarationList,
+                                                                                                              const GGS_syntaxRuleListAST & in_mRuleList
+                                                                                                              COMMA_LOCATION_ARGS) :
+CollectionElementPtr (THERE),
 mObject (in_mSyntaxComponentName, in_mNonterminalDeclarationList, in_mRuleList) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-CollectionElement_galgas_33_SyntaxExtensionListAST::CollectionElement_galgas_33_SyntaxExtensionListAST (const GGS_galgas_33_SyntaxExtensionListAST_2E_element & inElement COMMA_LOCATION_ARGS) :
-CollectionElement (THERE),
+CollectionElementPtr_galgas_33_SyntaxExtensionListAST::CollectionElementPtr_galgas_33_SyntaxExtensionListAST (const GGS_galgas_33_SyntaxExtensionListAST_2E_element & inElement COMMA_LOCATION_ARGS) :
+CollectionElementPtr (THERE),
 mObject (inElement.mProperty_mSyntaxComponentName, inElement.mProperty_mNonterminalDeclarationList, inElement.mProperty_mRuleList) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-bool CollectionElement_galgas_33_SyntaxExtensionListAST::isValid (void) const {
+bool CollectionElementPtr_galgas_33_SyntaxExtensionListAST::isValid (void) const {
   return true ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-CollectionElement * CollectionElement_galgas_33_SyntaxExtensionListAST::copy (void) {
-  CollectionElement * result = nullptr ;
-  macroMyNew (result, CollectionElement_galgas_33_SyntaxExtensionListAST (mObject.mProperty_mSyntaxComponentName, mObject.mProperty_mNonterminalDeclarationList, mObject.mProperty_mRuleList COMMA_HERE)) ;
+CollectionElementPtr * CollectionElementPtr_galgas_33_SyntaxExtensionListAST::copy (void) {
+  CollectionElementPtr * result = nullptr ;
+  macroMyNew (result, CollectionElementPtr_galgas_33_SyntaxExtensionListAST (mObject.mProperty_mSyntaxComponentName, mObject.mProperty_mNonterminalDeclarationList, mObject.mProperty_mRuleList COMMA_HERE)) ;
   return result ;
 }
 
@@ -16303,13 +16303,13 @@ mArray () {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_galgas_33_SyntaxExtensionListAST::GGS_galgas_33_SyntaxExtensionListAST (const capCollectionElementArray & inArray) :
+GGS_galgas_33_SyntaxExtensionListAST::GGS_galgas_33_SyntaxExtensionListAST (const CollectionElementArray & inArray) :
 mArray () {
   mArray.setCapacity (std::max (16, int32_t (inArray.count ()))) ;
   for (uint32_t i = 0 ; i < inArray.count () ; i++) {
-    const capCollectionElement v = inArray.objectAtIndex (i COMMA_HERE) ;
-    CollectionElement_galgas_33_SyntaxExtensionListAST * p = (CollectionElement_galgas_33_SyntaxExtensionListAST *) v.ptr () ;
-    macroValidSharedObject (p, CollectionElement_galgas_33_SyntaxExtensionListAST) ;
+    const CollectionElement v = inArray.objectAtIndex (i COMMA_HERE) ;
+    CollectionElementPtr_galgas_33_SyntaxExtensionListAST * p = (CollectionElementPtr_galgas_33_SyntaxExtensionListAST *) v.ptr () ;
+    macroValidSharedObject (p, CollectionElementPtr_galgas_33_SyntaxExtensionListAST) ;
     const GGS_galgas_33_SyntaxExtensionListAST_2E_element element (p->mObject.mProperty_mSyntaxComponentName, p->mObject.mProperty_mNonterminalDeclarationList, p->mObject.mProperty_mRuleList) ;
     mArray.appendObject (element) ;
   }
@@ -16317,13 +16317,13 @@ mArray () {
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_galgas_33_SyntaxExtensionListAST::makeAttributesFromObjects (capCollectionElement & outAttributes,
+void GGS_galgas_33_SyntaxExtensionListAST::makeAttributesFromObjects (CollectionElement & outAttributes,
                                                                       const GGS_lstring & in_mSyntaxComponentName,
                                                                       const GGS_nonterminalDeclarationListAST & in_mNonterminalDeclarationList,
                                                                       const GGS_syntaxRuleListAST & in_mRuleList
                                                                       COMMA_LOCATION_ARGS) {
-  CollectionElement_galgas_33_SyntaxExtensionListAST * p = nullptr ;
-  macroMyNew (p, CollectionElement_galgas_33_SyntaxExtensionListAST (in_mSyntaxComponentName, in_mNonterminalDeclarationList, in_mRuleList COMMA_THERE)) ;
+  CollectionElementPtr_galgas_33_SyntaxExtensionListAST * p = nullptr ;
+  macroMyNew (p, CollectionElementPtr_galgas_33_SyntaxExtensionListAST (in_mSyntaxComponentName, in_mNonterminalDeclarationList, in_mRuleList COMMA_THERE)) ;
   outAttributes.setPointer (p) ;
   macroDetachSharedObject (p) ;
 }

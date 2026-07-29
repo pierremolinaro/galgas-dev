@@ -2,36 +2,36 @@
 //%!"Class for element of '@" + TYPE_IDENTIFIER + "' list"%
 //--------------------------------------------------------------------------------------------------
 
-class CollectionElement_%!TYPE_IDENTIFIER% : public CollectionElement {
+class CollectionElementPtr_%!TYPE_IDENTIFIER% : public CollectionElementPtr {
   public: GGS_%!ELEMENT_TYPE_IDENTIFIER% mObject ;
 
 //--- Class functions
-  public: CollectionElement_%!TYPE_IDENTIFIER% (%?^
+  public: CollectionElementPtr_%!TYPE_IDENTIFIER% (%?^
   for (propertyTypeEntry propertyName 3*) in PROPERTY_LIST
     do %const GGS_%![propertyTypeEntry identifierRepresentation]% & in_%![propertyName identifierRepresentation]
     between %,\n%!^
   end
 %\n%
 !^%COMMA_LOCATION_ARGS) ;
-  public: CollectionElement_%!TYPE_IDENTIFIER% (const GGS_%!ELEMENT_TYPE_IDENTIFIER% & inElement COMMA_LOCATION_ARGS) ;
+  public: CollectionElementPtr_%!TYPE_IDENTIFIER% (const GGS_%!ELEMENT_TYPE_IDENTIFIER% & inElement COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
 //--- Virtual method that returns a copy of current object
-  public: virtual CollectionElement * copy (void) ;
+  public: virtual CollectionElementPtr * copy (void) ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-CollectionElement_%!TYPE_IDENTIFIER%::CollectionElement_%!TYPE_IDENTIFIER% (%?^
+CollectionElementPtr_%!TYPE_IDENTIFIER%::CollectionElementPtr_%!TYPE_IDENTIFIER% (%?^
   for (propertyTypeEntry propertyName 3*) in PROPERTY_LIST
     do %const GGS_%![propertyTypeEntry identifierRepresentation]% & in_%![propertyName identifierRepresentation]
     between %,\n%!^
   end
 %\n%
 !^%COMMA_LOCATION_ARGS) :
-CollectionElement (THERE),
+CollectionElementPtr (THERE),
 mObject (%
 for (* propertyName 3*) in PROPERTY_LIST
   do %in_%![propertyName identifierRepresentation]
@@ -42,8 +42,8 @@ end
 
 //--------------------------------------------------------------------------------------------------
 
-CollectionElement_%!TYPE_IDENTIFIER%::CollectionElement_%!TYPE_IDENTIFIER% (const GGS_%!ELEMENT_TYPE_IDENTIFIER% & inElement COMMA_LOCATION_ARGS) :
-CollectionElement (THERE),
+CollectionElementPtr_%!TYPE_IDENTIFIER%::CollectionElementPtr_%!TYPE_IDENTIFIER% (const GGS_%!ELEMENT_TYPE_IDENTIFIER% & inElement COMMA_LOCATION_ARGS) :
+CollectionElementPtr (THERE),
 mObject (%
 for (* propertyName 3*) in PROPERTY_LIST
   do %inElement.mProperty_%![propertyName identifierRepresentation]
@@ -54,15 +54,15 @@ end
 
 //--------------------------------------------------------------------------------------------------
 
-bool CollectionElement_%!TYPE_IDENTIFIER%::isValid (void) const {
+bool CollectionElementPtr_%!TYPE_IDENTIFIER%::isValid (void) const {
   return true ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-CollectionElement * CollectionElement_%!TYPE_IDENTIFIER%::copy (void) {
-  CollectionElement * result = nullptr ;
-  macroMyNew (result, CollectionElement_%!TYPE_IDENTIFIER% (%
+CollectionElementPtr * CollectionElementPtr_%!TYPE_IDENTIFIER%::copy (void) {
+  CollectionElementPtr * result = nullptr ;
+  macroMyNew (result, CollectionElementPtr_%!TYPE_IDENTIFIER% (%
     for (propertyTypeEntry propertyName 3*) in PROPERTY_LIST
       do %mObject.mProperty_%![propertyName identifierRepresentation]
       between %, %
@@ -81,13 +81,13 @@ mArray () {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_%!TYPE_IDENTIFIER%::GGS_%!TYPE_IDENTIFIER% (const capCollectionElementArray & inArray) :
+GGS_%!TYPE_IDENTIFIER%::GGS_%!TYPE_IDENTIFIER% (const CollectionElementArray & inArray) :
 mArray () {
   mArray.setCapacity (std::max (16, int32_t (inArray.count ()))) ;
   for (uint32_t i = 0 ; i < inArray.count () ; i++) {
-    const capCollectionElement v = inArray.objectAtIndex (i COMMA_HERE) ;
-    CollectionElement_%!TYPE_IDENTIFIER% * p = (CollectionElement_%!TYPE_IDENTIFIER% *) v.ptr () ;
-    macroValidSharedObject (p, CollectionElement_%!TYPE_IDENTIFIER%) ;
+    const CollectionElement v = inArray.objectAtIndex (i COMMA_HERE) ;
+    CollectionElementPtr_%!TYPE_IDENTIFIER% * p = (CollectionElementPtr_%!TYPE_IDENTIFIER% *) v.ptr () ;
+    macroValidSharedObject (p, CollectionElementPtr_%!TYPE_IDENTIFIER%) ;
     const GGS_%!ELEMENT_TYPE_IDENTIFIER% element (%
     for (* mPropertyName 3*) in PROPERTY_LIST
     do %p->mObject.mProperty_%![mPropertyName identifierRepresentation]
@@ -100,14 +100,14 @@ mArray () {
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_%!TYPE_IDENTIFIER%::makeAttributesFromObjects (%?^%capCollectionElement & outAttributes%
+void GGS_%!TYPE_IDENTIFIER%::makeAttributesFromObjects (%?^%CollectionElement & outAttributes%
   for (mPropertyTypeEntry mPropertyName 3*) in PROPERTY_LIST
     do %,\n%!^%const GGS_%![mPropertyTypeEntry identifierRepresentation]% & in_%![mPropertyName identifierRepresentation]
   end
 %\n%
 !^%COMMA_LOCATION_ARGS) {
-  CollectionElement_%!TYPE_IDENTIFIER% * p = nullptr ;
-  macroMyNew (p, CollectionElement_%!TYPE_IDENTIFIER% (%
+  CollectionElementPtr_%!TYPE_IDENTIFIER% * p = nullptr ;
+  macroMyNew (p, CollectionElementPtr_%!TYPE_IDENTIFIER% (%
   for (* mPropertyName 3*) in PROPERTY_LIST
   do %in_%![mPropertyName identifierRepresentation]
   between %, %

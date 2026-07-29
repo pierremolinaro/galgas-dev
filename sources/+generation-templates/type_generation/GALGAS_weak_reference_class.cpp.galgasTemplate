@@ -3,9 +3,9 @@
 ComparisonResult GGS_%!WEAK_REF_TYPE_IDENTIFIER%::objectCompare (const GGS_%!WEAK_REF_TYPE_IDENTIFIER% & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
-    cPtr_weakReference_proxy * myPtr = mProxyPtr ;
+    PtrWeakReferenceProxy * myPtr = mProxyPtr ;
     const size_t myObjectPtr = size_t (myPtr) ;
-    cPtr_weakReference_proxy * operandPtr = inOperand.mProxyPtr ;
+    PtrWeakReferenceProxy * operandPtr = inOperand.mProxyPtr ;
     const size_t operandObjectPtr = size_t (operandPtr) ;
     if (myObjectPtr < operandObjectPtr) {
       result = ComparisonResult::firstOperandLowerThanSecond ;
@@ -30,7 +30,7 @@ GGS_%!WEAK_REF_TYPE_IDENTIFIER%::GGS_%!WEAK_REF_TYPE_IDENTIFIER% (void) :
 //--------------------------------------------------------------------------------------------------
 
 GGS_%!WEAK_REF_TYPE_IDENTIFIER% & GGS_%!WEAK_REF_TYPE_IDENTIFIER%::operator = (const GGS_%!CLASS_TYPE_IDENTIFIER% & inSource) {
-  cPtr_weakReference_proxy * proxyPtr = nullptr ;
+  PtrWeakReferenceProxy * proxyPtr = nullptr ;
   AbstractStrongPtrClass * p = (AbstractStrongPtrClass *) inSource.ptr () ;
   if (p != nullptr) {
     proxyPtr = p->getProxy () ;
@@ -58,12 +58,12 @@ GGS_%!WEAK_REF_TYPE_IDENTIFIER%::GGS_%!WEAK_REF_TYPE_IDENTIFIER% (const class GG
   end% () {
   if (inSource.isValid ()) {
     if (inSource.isNil ()) {
-      macroMyNew (mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+      macroMyNew (mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
     }else if (inSource.isValuated ()) {
       const GGS_%!CLASS_TYPE_IDENTIFIER% v = inSource.unwrappedValue () ;
       AbstractStrongPtrClass * ptr = (AbstractStrongPtrClass *) v.ptr () ;
       if (ptr != nullptr) {
-        cPtr_weakReference_proxy * proxy = ptr->getProxy () ;
+        PtrWeakReferenceProxy * proxy = ptr->getProxy () ;
         macroAssignSharedObject (mProxyPtr, proxy) ;
       }
     }
@@ -74,7 +74,7 @@ GGS_%!WEAK_REF_TYPE_IDENTIFIER%::GGS_%!WEAK_REF_TYPE_IDENTIFIER% (const class GG
 
 GGS_%!WEAK_REF_TYPE_IDENTIFIER% GGS_%!WEAK_REF_TYPE_IDENTIFIER%::class_func_nil (LOCATION_ARGS) {
   GGS_%!WEAK_REF_TYPE_IDENTIFIER% result ;
-  macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
+  macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (THERE)) ;
   return result ;
 }
 

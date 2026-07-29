@@ -23,7 +23,7 @@ void GGS_%!TYPE_IDENTIFIER%::setter_%![mInsertModifierName identifierRepresentat
   end
   %,\n%!^%Compiler * inCompiler\n%
   !^%COMMA_LOCATION_ARGS) {
-  capCollectionElement attributes ;
+  CollectionElement attributes ;
   GGS_%![ASSOCIATED_LIST_TYPE identifierRepresentation]%::makeAttributesFromObjects (attributes%
   for (4*) in [ASSOCIATED_LIST_TYPE definition].addAssignOperatorArguments
   do (IDX) %, inArgument_%![IDX string]
@@ -43,8 +43,8 @@ void GGS_%!TYPE_IDENTIFIER%::method_topologicalSort (%?^%GGS_%![ASSOCIATED_LIST_
                        %!^%GGS_lstringlist & outUnsortedKeyList,
                        %!^%Compiler * inCompiler
                        %!^%COMMA_LOCATION_ARGS) const {
-  capCollectionElementArray sortedList ;
-  capCollectionElementArray unsortedList ;
+  CollectionElementArray sortedList ;
+  CollectionElementArray unsortedList ;
   internalTopologicalSort (sortedList, outSortedKeyList, unsortedList, outUnsortedKeyList, inCompiler COMMA_THERE) ;
   outSortedList = GGS_%![ASSOCIATED_LIST_TYPE identifierRepresentation]% (sortedList) ;
   outUnsortedList = GGS_%![ASSOCIATED_LIST_TYPE identifierRepresentation]% (unsortedList) ;
@@ -58,8 +58,8 @@ void GGS_%!TYPE_IDENTIFIER%::method_depthFirstTopologicalSort (%?^%GGS_%![ASSOCI
                        %!^%GGS_lstringlist & outUnsortedKeyList,
                        %!^%Compiler * inCompiler
                        %!^%COMMA_LOCATION_ARGS) const {
-  capCollectionElementArray sortedList ;
-  capCollectionElementArray unsortedList ;
+  CollectionElementArray sortedList ;
+  CollectionElementArray unsortedList ;
   internalDepthFirstTopologicalSort (sortedList, outSortedKeyList, unsortedList, outUnsortedKeyList, inCompiler COMMA_THERE) ;
   outSortedList = GGS_%![ASSOCIATED_LIST_TYPE identifierRepresentation]% (sortedList) ;
   outUnsortedList = GGS_%![ASSOCIATED_LIST_TYPE identifierRepresentation]% (unsortedList) ;
@@ -79,7 +79,7 @@ GGS_%!TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::getter_reversedGraph (LOCATION_AR
 void GGS_%!TYPE_IDENTIFIER%::method_circularities (%?^%GGS_%![ASSOCIATED_LIST_TYPE identifierRepresentation]% & outInfoList,
                        %!^%GGS_lstringlist & outKeyList
                        %!^%COMMA_LOCATION_ARGS) const {
-  capCollectionElementArray infoList ;
+  CollectionElementArray infoList ;
   internalFindCircularities (infoList, outKeyList COMMA_THERE) ;
   outInfoList = GGS_%![ASSOCIATED_LIST_TYPE identifierRepresentation]% (infoList) ;
 }
@@ -89,7 +89,7 @@ void GGS_%!TYPE_IDENTIFIER%::method_circularities (%?^%GGS_%![ASSOCIATED_LIST_TY
 void GGS_%!TYPE_IDENTIFIER%::method_nodesWithNoSuccessor (%?^%GGS_%![ASSOCIATED_LIST_TYPE identifierRepresentation]% & outInfoList,
                        %!^%GGS_lstringlist & outKeyList
                        %!^%COMMA_LOCATION_ARGS) const {
-  capCollectionElementArray infoList ;
+  CollectionElementArray infoList ;
   internalNodesWithNoSuccessor (infoList, outKeyList COMMA_THERE) ;
   outInfoList = GGS_%![ASSOCIATED_LIST_TYPE identifierRepresentation]% (infoList) ;
 }
@@ -99,7 +99,7 @@ void GGS_%!TYPE_IDENTIFIER%::method_nodesWithNoSuccessor (%?^%GGS_%![ASSOCIATED_
 void GGS_%!TYPE_IDENTIFIER%::method_nodesWithNoPredecessor (%?^%GGS_%![ASSOCIATED_LIST_TYPE identifierRepresentation]% & outInfoList,
                        %!^%GGS_lstringlist & outKeyList
                        %!^%COMMA_LOCATION_ARGS) const {
-  capCollectionElementArray infoList ;
+  CollectionElementArray infoList ;
   internalNodesWithNoPredecessor (infoList, outKeyList COMMA_THERE) ;
   outInfoList = GGS_%![ASSOCIATED_LIST_TYPE identifierRepresentation]% (infoList) ;
 }

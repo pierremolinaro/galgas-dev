@@ -109,7 +109,7 @@ class GGS_semanticExpressionAST_2E_weak : public AC_GALGAS_weak_reference {
 //--------------------------------- nil initializer
   public: inline static GGS_semanticExpressionAST_2E_weak init_nil (void) {
     GGS_semanticExpressionAST_2E_weak result ;
-    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
     return result ;
   }
 
@@ -296,10 +296,10 @@ class GGS_formalParameterListAST : public AC_GALGAS_root {
 
 
 //--- List constructor for graph
-  public: GGS_formalParameterListAST (const capCollectionElementArray & inSharedArray) ;
+  public: GGS_formalParameterListAST (const CollectionElementArray & inSharedArray) ;
 
 //--- Element constructor
-  public: static void makeAttributesFromObjects (capCollectionElement & outAttributes,
+  public: static void makeAttributesFromObjects (CollectionElement & outAttributes,
                                                  const class GGS_lstring & in_mFormalSelector,
                                                  const class GGS_formalArgumentPassingModeAST & in_mFormalArgumentPassingMode,
                                                  const class GGS_lstring & in_mFormalArgumentTypeName,
@@ -715,10 +715,10 @@ class GGS_formalInputParameterListAST : public AC_GALGAS_root {
 
 
 //--- List constructor for graph
-  public: GGS_formalInputParameterListAST (const capCollectionElementArray & inSharedArray) ;
+  public: GGS_formalInputParameterListAST (const CollectionElementArray & inSharedArray) ;
 
 //--- Element constructor
-  public: static void makeAttributesFromObjects (capCollectionElement & outAttributes,
+  public: static void makeAttributesFromObjects (CollectionElement & outAttributes,
                                                  const class GGS_lstring & in_mFormalSelector,
                                                  const class GGS_lstring & in_mFormalArgumentTypeName,
                                                  const class GGS_lstring & in_mFormalArgumentName,
@@ -1135,7 +1135,7 @@ class GGS_abstractInputParameter_2E_weak : public AC_GALGAS_weak_reference {
 //--------------------------------- nil initializer
   public: inline static GGS_abstractInputParameter_2E_weak init_nil (void) {
     GGS_abstractInputParameter_2E_weak result ;
-    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
     return result ;
   }
 
@@ -1306,7 +1306,7 @@ class GGS_inputParameterAnonymousVariable_2E_weak : public GGS_abstractInputPara
 //--------------------------------- nil initializer
   public: inline static GGS_inputParameterAnonymousVariable_2E_weak init_nil (void) {
     GGS_inputParameterAnonymousVariable_2E_weak result ;
-    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
     return result ;
   }
 
@@ -1485,7 +1485,7 @@ class GGS_inputParameterVariable_2E_weak : public GGS_abstractInputParameter_2E_
 //--------------------------------- nil initializer
   public: inline static GGS_inputParameterVariable_2E_weak init_nil (void) {
     GGS_inputParameterVariable_2E_weak result ;
-    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
     return result ;
   }
 
@@ -1670,7 +1670,7 @@ class GGS_inputParameterDeclaredVariable_2E_weak : public GGS_abstractInputParam
 //--------------------------------- nil initializer
   public: inline static GGS_inputParameterDeclaredVariable_2E_weak init_nil (void) {
     GGS_inputParameterDeclaredVariable_2E_weak result ;
-    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
     return result ;
   }
 
@@ -1855,7 +1855,7 @@ class GGS_inputParameterDeclaredConstant_2E_weak : public GGS_abstractInputParam
 //--------------------------------- nil initializer
   public: inline static GGS_inputParameterDeclaredConstant_2E_weak init_nil (void) {
     GGS_inputParameterDeclaredConstant_2E_weak result ;
-    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
     return result ;
   }
 
@@ -2016,10 +2016,10 @@ class GGS_actualInputParameterListAST : public AC_GALGAS_root {
 
 
 //--- List constructor for graph
-  public: GGS_actualInputParameterListAST (const capCollectionElementArray & inSharedArray) ;
+  public: GGS_actualInputParameterListAST (const CollectionElementArray & inSharedArray) ;
 
 //--- Element constructor
-  public: static void makeAttributesFromObjects (capCollectionElement & outAttributes,
+  public: static void makeAttributesFromObjects (CollectionElement & outAttributes,
                                                  const class GGS_lstring & in_mActualSelector,
                                                  const class GGS_abstractInputParameter & in_mInputParameter
                                                  COMMA_LOCATION_ARGS) ;
@@ -2337,10 +2337,10 @@ class GGS_semanticDeclarationListAST : public AC_GALGAS_root {
 
 
 //--- List constructor for graph
-  public: GGS_semanticDeclarationListAST (const capCollectionElementArray & inSharedArray) ;
+  public: GGS_semanticDeclarationListAST (const CollectionElementArray & inSharedArray) ;
 
 //--- Element constructor
-  public: static void makeAttributesFromObjects (capCollectionElement & outAttributes,
+  public: static void makeAttributesFromObjects (CollectionElement & outAttributes,
                                                  const class GGS_semanticDeclarationAST & in_mSemanticDeclaration
                                                  COMMA_LOCATION_ARGS) ;
 
@@ -2693,7 +2693,7 @@ class GGS_externFunctionDeclarationAST_2E_weak : public GGS_semanticDeclarationA
 //--------------------------------- nil initializer
   public: inline static GGS_externFunctionDeclarationAST_2E_weak init_nil (void) {
     GGS_externFunctionDeclarationAST_2E_weak result ;
-    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
     return result ;
   }
 
@@ -2906,7 +2906,7 @@ class GGS_functionDeclarationAST_2E_weak : public GGS_externFunctionDeclarationA
 //--------------------------------- nil initializer
   public: inline static GGS_functionDeclarationAST_2E_weak init_nil (void) {
     GGS_functionDeclarationAST_2E_weak result ;
-    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
     return result ;
   }
 
@@ -3148,7 +3148,7 @@ class GGS_onceFunctionDeclarationAST_2E_weak : public GGS_semanticDeclarationAST
 //--------------------------------- nil initializer
   public: inline static GGS_onceFunctionDeclarationAST_2E_weak init_nil (void) {
     GGS_onceFunctionDeclarationAST_2E_weak result ;
-    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
     return result ;
   }
 
@@ -3313,10 +3313,10 @@ class GGS_formalTemplateInputParameterListAST : public AC_GALGAS_root {
 
 
 //--- List constructor for graph
-  public: GGS_formalTemplateInputParameterListAST (const capCollectionElementArray & inSharedArray) ;
+  public: GGS_formalTemplateInputParameterListAST (const CollectionElementArray & inSharedArray) ;
 
 //--- Element constructor
-  public: static void makeAttributesFromObjects (capCollectionElement & outAttributes,
+  public: static void makeAttributesFromObjects (CollectionElement & outAttributes,
                                                  const class GGS_lstring & in_mFormalTemplateSelector,
                                                  const class GGS_lstring & in_mFormalArgumentTypeName,
                                                  const class GGS_lstring & in_mFormalArgumentName,
@@ -3698,10 +3698,10 @@ class GGS_filewrapperTemplateListAST : public AC_GALGAS_root {
 
 
 //--- List constructor for graph
-  public: GGS_filewrapperTemplateListAST (const capCollectionElementArray & inSharedArray) ;
+  public: GGS_filewrapperTemplateListAST (const CollectionElementArray & inSharedArray) ;
 
 //--- Element constructor
-  public: static void makeAttributesFromObjects (capCollectionElement & outAttributes,
+  public: static void makeAttributesFromObjects (CollectionElement & outAttributes,
                                                  const class GGS_lstring & in_mFilewrapperTemplateName,
                                                  const class GGS_lstring & in_mFilewrapperTemplatePath,
                                                  const class GGS_formalTemplateInputParameterListAST & in_mFilewrapperTemplateFormalInputParameters
@@ -4132,7 +4132,7 @@ class GGS_filewrapperDeclarationAST_2E_weak : public GGS_semanticDeclarationAST_
 //--------------------------------- nil initializer
   public: inline static GGS_filewrapperDeclarationAST_2E_weak init_nil (void) {
     GGS_filewrapperDeclarationAST_2E_weak result ;
-    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
     return result ;
   }
 
@@ -4291,10 +4291,10 @@ class GGS_syntaxInstructionList : public AC_GALGAS_root {
 
 
 //--- List constructor for graph
-  public: GGS_syntaxInstructionList (const capCollectionElementArray & inSharedArray) ;
+  public: GGS_syntaxInstructionList (const CollectionElementArray & inSharedArray) ;
 
 //--- Element constructor
-  public: static void makeAttributesFromObjects (capCollectionElement & outAttributes,
+  public: static void makeAttributesFromObjects (CollectionElement & outAttributes,
                                                  const class GGS_syntaxInstructionAST & in_mInstruction
                                                  COMMA_LOCATION_ARGS) ;
 
@@ -4586,10 +4586,10 @@ class GGS_nonTerminalLabelListAST : public AC_GALGAS_root {
 
 
 //--- List constructor for graph
-  public: GGS_nonTerminalLabelListAST (const capCollectionElementArray & inSharedArray) ;
+  public: GGS_nonTerminalLabelListAST (const CollectionElementArray & inSharedArray) ;
 
 //--- Element constructor
-  public: static void makeAttributesFromObjects (capCollectionElement & outAttributes,
+  public: static void makeAttributesFromObjects (CollectionElement & outAttributes,
                                                  const class GGS_lstring & in_mLabelName,
                                                  const class GGS_formalParameterListAST & in_mFormalArgumentList,
                                                  const class GGS_location & in_mEndOfArgumentLocation
@@ -5029,10 +5029,10 @@ class GGS_syntaxRuleLabelListAST : public AC_GALGAS_root {
 
 
 //--- List constructor for graph
-  public: GGS_syntaxRuleLabelListAST (const capCollectionElementArray & inSharedArray) ;
+  public: GGS_syntaxRuleLabelListAST (const CollectionElementArray & inSharedArray) ;
 
 //--- Element constructor
-  public: static void makeAttributesFromObjects (capCollectionElement & outAttributes,
+  public: static void makeAttributesFromObjects (CollectionElement & outAttributes,
                                                  const class GGS_lstring & in_mLabelName,
                                                  const class GGS_formalParameterListAST & in_mFormalArguments,
                                                  const class GGS_location & in_mEndOfArgumentLocation,
@@ -5526,10 +5526,10 @@ class GGS_listOfSyntaxInstructionList : public AC_GALGAS_root {
 
 
 //--- List constructor for graph
-  public: GGS_listOfSyntaxInstructionList (const capCollectionElementArray & inSharedArray) ;
+  public: GGS_listOfSyntaxInstructionList (const CollectionElementArray & inSharedArray) ;
 
 //--- Element constructor
-  public: static void makeAttributesFromObjects (capCollectionElement & outAttributes,
+  public: static void makeAttributesFromObjects (CollectionElement & outAttributes,
                                                  const class GGS_syntaxInstructionList & in_mSyntaxInstructionList,
                                                  const class GGS_location & in_mEndOf_5F_instructions
                                                  COMMA_LOCATION_ARGS) ;
@@ -5918,7 +5918,7 @@ class GGS_galgas_33_SyntaxComponentAST_2E_weak : public GGS_semanticDeclarationA
 //--------------------------------- nil initializer
   public: inline static GGS_galgas_33_SyntaxComponentAST_2E_weak init_nil (void) {
     GGS_galgas_33_SyntaxComponentAST_2E_weak result ;
-    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
     return result ;
   }
 
@@ -6166,7 +6166,7 @@ class GGS_galgas_33_GrammarComponentAST_2E_weak : public GGS_semanticDeclaration
 //--------------------------------- nil initializer
   public: inline static GGS_galgas_33_GrammarComponentAST_2E_weak init_nil (void) {
     GGS_galgas_33_GrammarComponentAST_2E_weak result ;
-    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
     return result ;
   }
 
@@ -6333,10 +6333,10 @@ class GGS_galgas_33_SyntaxComponentListAST : public AC_GALGAS_root {
 
 
 //--- List constructor for graph
-  public: GGS_galgas_33_SyntaxComponentListAST (const capCollectionElementArray & inSharedArray) ;
+  public: GGS_galgas_33_SyntaxComponentListAST (const CollectionElementArray & inSharedArray) ;
 
 //--- Element constructor
-  public: static void makeAttributesFromObjects (capCollectionElement & outAttributes,
+  public: static void makeAttributesFromObjects (CollectionElement & outAttributes,
                                                  const class GGS_lstring & in_mSyntaxComponentName,
                                                  const class GGS_lstring & in_mImportedLexiqueFilePath,
                                                  const class GGS_nonterminalDeclarationListAST & in_mNonterminalDeclarationList,
@@ -6746,10 +6746,10 @@ class GGS_prologueEpilogueList : public AC_GALGAS_root {
 
 
 //--- List constructor for graph
-  public: GGS_prologueEpilogueList (const capCollectionElementArray & inSharedArray) ;
+  public: GGS_prologueEpilogueList (const CollectionElementArray & inSharedArray) ;
 
 //--- Element constructor
-  public: static void makeAttributesFromObjects (capCollectionElement & outAttributes,
+  public: static void makeAttributesFromObjects (CollectionElement & outAttributes,
                                                  const class GGS_semanticInstructionListAST & in_mInstructionList,
                                                  const class GGS_location & in_mEndOfInstructionList
                                                  COMMA_LOCATION_ARGS) ;
@@ -7079,10 +7079,10 @@ class GGS_programRuleList : public AC_GALGAS_root {
 
 
 //--- List constructor for graph
-  public: GGS_programRuleList (const capCollectionElementArray & inSharedArray) ;
+  public: GGS_programRuleList (const CollectionElementArray & inSharedArray) ;
 
 //--- Element constructor
-  public: static void makeAttributesFromObjects (capCollectionElement & outAttributes,
+  public: static void makeAttributesFromObjects (CollectionElement & outAttributes,
                                                  const class GGS_lstring & in_mSourceFileExtension,
                                                  const class GGS_lstring & in_mSourceFileHelp,
                                                  const class GGS_lstring & in_mSourceFileVariableName,
@@ -7558,10 +7558,10 @@ class GGS_galgasGUIComponentListAST : public AC_GALGAS_root {
 
 
 //--- List constructor for graph
-  public: GGS_galgasGUIComponentListAST (const capCollectionElementArray & inSharedArray) ;
+  public: GGS_galgasGUIComponentListAST (const CollectionElementArray & inSharedArray) ;
 
 //--- Element constructor
-  public: static void makeAttributesFromObjects (capCollectionElement & outAttributes,
+  public: static void makeAttributesFromObjects (CollectionElement & outAttributes,
                                                  const class GGS_lstring & in_mGUIComponentName,
                                                  const class GGS_lstringlist & in_mImportedOptionList,
                                                  const class GGS_guiSimpleAttributeListAST & in_mGlobalSimpleAttributeList,
@@ -7854,10 +7854,10 @@ class GGS_guiSimpleAttributeListAST : public AC_GALGAS_root {
 
 
 //--- List constructor for graph
-  public: GGS_guiSimpleAttributeListAST (const capCollectionElementArray & inSharedArray) ;
+  public: GGS_guiSimpleAttributeListAST (const CollectionElementArray & inSharedArray) ;
 
 //--- Element constructor
-  public: static void makeAttributesFromObjects (capCollectionElement & outAttributes,
+  public: static void makeAttributesFromObjects (CollectionElement & outAttributes,
                                                  const class GGS_lstring & in_mKey,
                                                  const class GGS_lstring & in_mValue
                                                  COMMA_LOCATION_ARGS) ;
@@ -8093,10 +8093,10 @@ class GGS_projectIndexingDescriptorList : public AC_GALGAS_root {
 
 
 //--- List constructor for graph
-  public: GGS_projectIndexingDescriptorList (const capCollectionElementArray & inSharedArray) ;
+  public: GGS_projectIndexingDescriptorList (const CollectionElementArray & inSharedArray) ;
 
 //--- Element constructor
-  public: static void makeAttributesFromObjects (capCollectionElement & outAttributes,
+  public: static void makeAttributesFromObjects (CollectionElement & outAttributes,
                                                  const class GGS_lstring & in_mProjectFileExtension,
                                                  const class GGS_lstring & in_indexingPathSuffix
                                                  COMMA_LOCATION_ARGS) ;
@@ -8336,10 +8336,10 @@ class GGS_withLexiqueListAST : public AC_GALGAS_root {
 
 
 //--- List constructor for graph
-  public: GGS_withLexiqueListAST (const capCollectionElementArray & inSharedArray) ;
+  public: GGS_withLexiqueListAST (const CollectionElementArray & inSharedArray) ;
 
 //--- Element constructor
-  public: static void makeAttributesFromObjects (capCollectionElement & outAttributes,
+  public: static void makeAttributesFromObjects (CollectionElement & outAttributes,
                                                  const class GGS_lstring & in_mLexiqueFileName,
                                                  const class GGS_guiLabelListAST & in_mLabels,
                                                  const class GGS_guiSimpleAttributeListAST & in_mSimpleAttributes,

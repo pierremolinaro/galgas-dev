@@ -26,7 +26,7 @@ class GGS_semanticInstructionAST_2E_weak : public GGS_syntaxInstructionAST_2E_we
 //--------------------------------- nil initializer
   public: inline static GGS_semanticInstructionAST_2E_weak init_nil (void) {
     GGS_semanticInstructionAST_2E_weak result ;
-    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
     return result ;
   }
 
@@ -210,7 +210,7 @@ class GGS_procCallInstructionForGeneration_2E_weak : public GGS_semanticInstruct
 //--------------------------------- nil initializer
   public: inline static GGS_procCallInstructionForGeneration_2E_weak init_nil (void) {
     GGS_procCallInstructionForGeneration_2E_weak result ;
-    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
     return result ;
   }
 
@@ -289,7 +289,7 @@ class GGS_dropInstructionAST_2E_weak : public GGS_semanticInstructionAST_2E_weak
 //--------------------------------- nil initializer
   public: inline static GGS_dropInstructionAST_2E_weak init_nil (void) {
     GGS_dropInstructionAST_2E_weak result ;
-    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
     return result ;
   }
 
@@ -368,7 +368,7 @@ class GGS_selfAssignmentInstructionAST_2E_weak : public GGS_semanticInstructionA
 //--------------------------------- nil initializer
   public: inline static GGS_selfAssignmentInstructionAST_2E_weak init_nil (void) {
     GGS_selfAssignmentInstructionAST_2E_weak result ;
-    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
     return result ;
   }
 
@@ -447,7 +447,7 @@ class GGS_superInitInstructionAST_2E_weak : public GGS_semanticInstructionAST_2E
 //--------------------------------- nil initializer
   public: inline static GGS_superInitInstructionAST_2E_weak init_nil (void) {
     GGS_superInitInstructionAST_2E_weak result ;
-    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
     return result ;
   }
 
@@ -526,7 +526,7 @@ class GGS_warningInstructionAST_2E_weak : public GGS_semanticInstructionAST_2E_w
 //--------------------------------- nil initializer
   public: inline static GGS_warningInstructionAST_2E_weak init_nil (void) {
     GGS_warningInstructionAST_2E_weak result ;
-    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
     return result ;
   }
 
@@ -605,7 +605,7 @@ class GGS_logInstructionAST_2E_weak : public GGS_semanticInstructionAST_2E_weak 
 //--------------------------------- nil initializer
   public: inline static GGS_logInstructionAST_2E_weak init_nil (void) {
     GGS_logInstructionAST_2E_weak result ;
-    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
     return result ;
   }
 
@@ -684,7 +684,7 @@ class GGS_ifInstructionAST_2E_weak : public GGS_semanticInstructionAST_2E_weak {
 //--------------------------------- nil initializer
   public: inline static GGS_ifInstructionAST_2E_weak init_nil (void) {
     GGS_ifInstructionAST_2E_weak result ;
-    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
     return result ;
   }
 
@@ -763,7 +763,7 @@ class GGS_assignmentInstructionAST_2E_weak : public GGS_semanticInstructionAST_2
 //--------------------------------- nil initializer
   public: inline static GGS_assignmentInstructionAST_2E_weak init_nil (void) {
     GGS_assignmentInstructionAST_2E_weak result ;
-    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
     return result ;
   }
 
@@ -842,7 +842,7 @@ class GGS_selfPropertyAssignmentInstructionAST_2E_weak : public GGS_semanticInst
 //--------------------------------- nil initializer
   public: inline static GGS_selfPropertyAssignmentInstructionAST_2E_weak init_nil (void) {
     GGS_selfPropertyAssignmentInstructionAST_2E_weak result ;
-    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
     return result ;
   }
 
@@ -921,7 +921,7 @@ class GGS_switchInstructionAST_2E_weak : public GGS_semanticInstructionAST_2E_we
 //--------------------------------- nil initializer
   public: inline static GGS_switchInstructionAST_2E_weak init_nil (void) {
     GGS_switchInstructionAST_2E_weak result ;
-    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
     return result ;
   }
 
@@ -1000,7 +1000,7 @@ class GGS_superMethodCallInstructionAST_2E_weak : public GGS_semanticInstruction
 //--------------------------------- nil initializer
   public: inline static GGS_superMethodCallInstructionAST_2E_weak init_nil (void) {
     GGS_superMethodCallInstructionAST_2E_weak result ;
-    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
     return result ;
   }
 
@@ -1079,7 +1079,7 @@ class GGS_loopInstructionWithoutVariantAST_2E_weak : public GGS_semanticInstruct
 //--------------------------------- nil initializer
   public: inline static GGS_loopInstructionWithoutVariantAST_2E_weak init_nil (void) {
     GGS_loopInstructionWithoutVariantAST_2E_weak result ;
-    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
     return result ;
   }
 
@@ -1158,7 +1158,7 @@ class GGS_typeMethodCallInstructionAST_2E_weak : public GGS_semanticInstructionA
 //--------------------------------- nil initializer
   public: inline static GGS_typeMethodCallInstructionAST_2E_weak init_nil (void) {
     GGS_typeMethodCallInstructionAST_2E_weak result ;
-    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
     return result ;
   }
 
@@ -1237,7 +1237,7 @@ class GGS_errorInstructionAST_2E_weak : public GGS_semanticInstructionAST_2E_wea
 //--------------------------------- nil initializer
   public: inline static GGS_errorInstructionAST_2E_weak init_nil (void) {
     GGS_errorInstructionAST_2E_weak result ;
-    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
     return result ;
   }
 
@@ -1316,7 +1316,7 @@ class GGS_methodCallInstructionAST_2E_weak : public GGS_semanticInstructionAST_2
 //--------------------------------- nil initializer
   public: inline static GGS_methodCallInstructionAST_2E_weak init_nil (void) {
     GGS_methodCallInstructionAST_2E_weak result ;
-    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
     return result ;
   }
 
@@ -1395,7 +1395,7 @@ class GGS_localVariableDeclarationWithAssignmentAST_2E_weak : public GGS_semanti
 //--------------------------------- nil initializer
   public: inline static GGS_localVariableDeclarationWithAssignmentAST_2E_weak init_nil (void) {
     GGS_localVariableDeclarationWithAssignmentAST_2E_weak result ;
-    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
     return result ;
   }
 
@@ -1474,7 +1474,7 @@ class GGS_localVariableDeclarationNoAssignmentAST_2E_weak : public GGS_semanticI
 //--------------------------------- nil initializer
   public: inline static GGS_localVariableDeclarationNoAssignmentAST_2E_weak init_nil (void) {
     GGS_localVariableDeclarationNoAssignmentAST_2E_weak result ;
-    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
     return result ;
   }
 
@@ -1553,7 +1553,7 @@ class GGS_loopInstructionWithVariantAST_2E_weak : public GGS_semanticInstruction
 //--------------------------------- nil initializer
   public: inline static GGS_loopInstructionWithVariantAST_2E_weak init_nil (void) {
     GGS_loopInstructionWithVariantAST_2E_weak result ;
-    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
     return result ;
   }
 
@@ -1632,7 +1632,7 @@ class GGS_syntaxSendInstructionAST_2E_weak : public GGS_syntaxInstructionAST_2E_
 //--------------------------------- nil initializer
   public: inline static GGS_syntaxSendInstructionAST_2E_weak init_nil (void) {
     GGS_syntaxSendInstructionAST_2E_weak result ;
-    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
     return result ;
   }
 
@@ -1813,7 +1813,7 @@ class GGS_syntaxSendInstructionForGeneration_2E_weak : public GGS_syntaxInstruct
 //--------------------------------- nil initializer
   public: inline static GGS_syntaxSendInstructionForGeneration_2E_weak init_nil (void) {
     GGS_syntaxSendInstructionForGeneration_2E_weak result ;
-    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
     return result ;
   }
 
@@ -1892,7 +1892,7 @@ class GGS_localVariableOrConstantDeclarationWithAssignmentAST_2E_weak : public G
 //--------------------------------- nil initializer
   public: inline static GGS_localVariableOrConstantDeclarationWithAssignmentAST_2E_weak init_nil (void) {
     GGS_localVariableOrConstantDeclarationWithAssignmentAST_2E_weak result ;
-    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
     return result ;
   }
 
@@ -1971,7 +1971,7 @@ class GGS_undefinedLocalConstantDeclarationAST_2E_weak : public GGS_semanticInst
 //--------------------------------- nil initializer
   public: inline static GGS_undefinedLocalConstantDeclarationAST_2E_weak init_nil (void) {
     GGS_undefinedLocalConstantDeclarationAST_2E_weak result ;
-    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
     return result ;
   }
 
@@ -2031,83 +2031,4 @@ class GGS_undefinedLocalConstantDeclarationAST_2E_weak : public GGS_semanticInst
 //--------------------------------------------------------------------------------------------------
 
 extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_undefinedLocalConstantDeclarationAST_2E_weak ;
-
-//--------------------------------------------------------------------------------------------------
-// Phase 1: @localConstantDeclarationWithAssignmentAST_2E_weak weak reference class
-//--------------------------------------------------------------------------------------------------
-
-class GGS_localConstantDeclarationWithAssignmentAST_2E_weak : public GGS_semanticInstructionAST_2E_weak {
-//--------------------------------- Default constructor
-  public: GGS_localConstantDeclarationWithAssignmentAST_2E_weak (void) ;
-
-//--------------------------------- Constructor and assignment from strong reference
-  public: GGS_localConstantDeclarationWithAssignmentAST_2E_weak (const class GGS_localConstantDeclarationWithAssignmentAST & inSource) ;
-
-  public: GGS_localConstantDeclarationWithAssignmentAST_2E_weak & operator = (const class GGS_localConstantDeclarationWithAssignmentAST & inSource) ;
-
-//--------------------------------- Constructor and assignment from optional reference
-
-//--------------------------------- nil initializer
-  public: inline static GGS_localConstantDeclarationWithAssignmentAST_2E_weak init_nil (void) {
-    GGS_localConstantDeclarationWithAssignmentAST_2E_weak result ;
-    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
-    return result ;
-  }
-
-//--------------------------------- Bang operator
-  public: GGS_localConstantDeclarationWithAssignmentAST bang_localConstantDeclarationWithAssignmentAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- isValuated
-  public: inline bool isValuated (void) const {
-    return isValid () && (ptr () != nullptr) ;
-  }
-
-//--------------------------------- Unwrapped value
-  public: GGS_localConstantDeclarationWithAssignmentAST unwrappedValue (void) const ;
-
-//--------------------------------- GALGAS read only properties
-  public: inline GGS_bool readProperty_isNil (void) const {
-    return GGS_bool (isValid (), ptr () == nullptr) ;
-  }
-
-  public: inline GGS_bool readProperty_isSome (void) const {
-    return GGS_bool (isValid (), ptr () != nullptr) ;
-  }
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
-//--------------------------------- Object extraction
-  public: static GGS_localConstantDeclarationWithAssignmentAST_2E_weak extractObject (const GGS_object & inObject,
-                                                                                      Compiler * inCompiler
-                                                                                      COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS class functions
-  public: static class GGS_localConstantDeclarationWithAssignmentAST_2E_weak class_func_nil (LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GGS_localConstantDeclarationWithAssignmentAST_2E_weak & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Read subscripts
-
-
-//--------------------------------- Introspection
-  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
- 
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_localConstantDeclarationWithAssignmentAST_2E_weak ;
 

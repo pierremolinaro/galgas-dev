@@ -141,7 +141,7 @@ class GGS_routineImplementationForGeneration_2E_weak : public GGS_routinePrototy
 //--------------------------------- nil initializer
   public: inline static GGS_routineImplementationForGeneration_2E_weak init_nil (void) {
     GGS_routineImplementationForGeneration_2E_weak result ;
-    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
     return result ;
   }
 

@@ -2,13 +2,13 @@
 //   @object type
 //--------------------------------------------------------------------------------------------------
 
-class cPtr_object ;
+class PtrObject ;
 
 //--------------------------------------------------------------------------------------------------
 
 class GGS_object : public AC_GALGAS_root {
 //--------------------------------- Private data member
-  private: cPtr_object * mSharedObject ;
+  private: PtrObject * mSharedObject ;
 
 //--------------------------------- Accessors
   public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override { return mSharedObject != nullptr ; }

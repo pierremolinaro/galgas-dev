@@ -215,9 +215,9 @@
    <Unit filename="../libpm/galgas/C_galgas_class_inspector.cpp" />
    <Unit filename="../libpm/galgas/IssueWithFixIt.cpp" />
    <Unit filename="../libpm/galgas/GALGAS_ObjectArray.cpp" />
-   <Unit filename="../libpm/galgas/CollectionElement" />
-   <Unit filename="../libpm/galgas/capCollectionElement.cpp" />
-   <Unit filename="../libpm/galgas/capCollectionElementArray.cpp" />
+   <Unit filename="../libpm/galgas/CollectionElementPtr.cpp" />
+   <Unit filename="../libpm/galgas/CollectionElement.cpp" />
+   <Unit filename="../libpm/galgas/CollectionElementArray.cpp" />
    <Unit filename="../libpm/galgas/Enumerator_range.cpp" />
    <Unit filename="../libpm/galgas/IndexingDictionary.cpp" />
    <Unit filename="../libpm/galgas/IssueDescriptor.cpp" />
@@ -229,9 +229,9 @@
    <Unit filename="../libpm/galgas/AC_GALGAS_enumAssociatedValues.cpp" />
    <Unit filename="../libpm/galgas/AbstractPtrClass.cpp" />
    <Unit filename="../libpm/galgas/AbstractStrongPtrClass.cpp" />
-   <Unit filename="../libpm/galgas/cPtr_weakReference_proxy.cpp" />
+   <Unit filename="../libpm/galgas/PtrWeakReferenceProxy.cpp" />
    <Unit filename="../libpm/galgas/AC_GALGAS_weak_reference.cpp" />
-   <Unit filename="../libpm/galgas/cPtr_object.cpp" />
+   <Unit filename="../libpm/galgas/PtrObject.cpp" />
    <Unit filename="../libpm/galgas/scanner_actions.cpp" />
    <Unit filename="../libpm/galgas/GGS_application.cpp" />
    <Unit filename="../libpm/galgas/GGS_bigint.cpp" />

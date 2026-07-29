@@ -19,7 +19,7 @@
 //--------------------------------------------------------------------------------------------------
 
 #include "all-predefined-types.h"
-#include "cPtr_object.h"
+#include "PtrObject.h"
 
 //--------------------------------------------------------------------------------------------------
 
@@ -34,7 +34,7 @@ GGS_object::GGS_object (AC_GALGAS_root * inObjectPointer
                         COMMA_LOCATION_ARGS) :
 AC_GALGAS_root (),
 mSharedObject (nullptr) {
-  macroMyNew (mSharedObject, cPtr_object (inObjectPointer COMMA_THERE)) ;
+  macroMyNew (mSharedObject, PtrObject (inObjectPointer COMMA_THERE)) ;
 }
 
 //--------------------------------------------------------------------------------------------------
