@@ -10,751 +10,626 @@
 
 //--------------------------------------------------------------------------------------------------
 //
-//Routine 'guiComponentSemanticAnalysis??&'
+//Routine 'analyzeConstructorInvocation?&??&&????!!!!!'
 //
 //--------------------------------------------------------------------------------------------------
 
-void routine_guiComponentSemanticAnalysis_3F__3F__26_ (const class GGS_galgasGUIComponentListAST_2E_element constinArgument0,
-                                                       const class GGS_semanticContext constinArgument1,
-                                                       class GGS_optionComponentMapForGeneration & ioArgument2,
-                                                       class Compiler * inCompiler
-                                                       COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Filewrapper 'guiGenerationTemplates'
-//
-//--------------------------------------------------------------------------------------------------
-
-
-//--------------------------------------------------------------------------------------------------
-
-
-//--------------------------------------------------------------------------------------------------
-
-
-//--------------------------------------------------------------------------------------------------
-
-extern const cDirectoryWrapper gWrapperDirectory_0_guiGenerationTemplates ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'guiGenerationTemplates swiftui_gui_implementation'
-//
-//--------------------------------------------------------------------------------------------------
-
-GGS_string filewrapperTemplate_guiGenerationTemplates_swiftui_5F_gui_5F_implementation (class Compiler * inCompiler,
-                                                                                        const class GGS_guiAnalysisContext & in_GUI_5F_CONTEXT,
-                                                                                        const class GGS_bool & in_QUIET_5F_OUTPUT_5F_BY_5F_DEFAULT
-                                                                                        COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Routine 'analyzeSyntaxInstructionList?&?&????????&&!'
-//
-//--------------------------------------------------------------------------------------------------
-
-void routine_analyzeSyntaxInstructionList_3F__26__3F__26__3F__3F__3F__3F__3F__3F__3F__3F__26__26__21_ (const class GGS_lstring constinArgument0,
+void routine_analyzeConstructorInvocation_3F__26__3F__3F__26__26__3F__3F__3F__3F__21__21__21__21__21_ (const class GGS_lstring constinArgument0,
                                                                                                        class GGS_usefulEntitiesGraph & ioArgument1,
-                                                                                                       const class GGS_analysisContext constinArgument2,
-                                                                                                       class GGS_unifiedTypeMap & ioArgument3,
-                                                                                                       const class GGS_bool constinArgument4,
-                                                                                                       const class GGS_terminalMap constinArgument5,
-                                                                                                       const class GGS_string constinArgument6,
-                                                                                                       const class GGS_nonterminalMap constinArgument7,
-                                                                                                       const class GGS_string constinArgument8,
-                                                                                                       const class GGS_syntaxInstructionList constinArgument9,
-                                                                                                       const class GGS_location constinArgument10,
-                                                                                                       const class GGS_stringset constinArgument11,
-                                                                                                       class GGS_localVarManager & ioArgument12,
-                                                                                                       class GGS_uint & ioArgument13,
-                                                                                                       class GGS_semanticInstructionListForGeneration & outArgument14,
+                                                                                                       const class GGS_unifiedTypeMapEntry constinArgument2,
+                                                                                                       const class GGS_analysisContext constinArgument3,
+                                                                                                       class GGS_unifiedTypeMap & ioArgument4,
+                                                                                                       class GGS_localVarManager & ioArgument5,
+                                                                                                       const class GGS_lstring constinArgument6,
+                                                                                                       const class GGS_lstring constinArgument7,
+                                                                                                       const class GGS_actualOutputArgumentList constinArgument8,
+                                                                                                       const class GGS_location constinArgument9,
+                                                                                                       class GGS_unifiedTypeMapEntry & outArgument10,
+                                                                                                       class GGS_unifiedTypeMapEntry & outArgument11,
+                                                                                                       class GGS_semanticExpressionListForGeneration & outArgument12,
+                                                                                                       class GGS_bool & outArgument13,
+                                                                                                       class GGS__5B_unifiedTypeMapEntry_5D_ & outArgument14,
                                                                                                        class Compiler * inCompiler
                                                                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //
-//Function 'compareSyntaxSignature'
-//
-//--------------------------------------------------------------------------------------------------
-
-class GGS_bool function_compareSyntaxSignature (const class GGS_semanticInstructionListForGeneration & constinArgument0,
-                                                const class GGS_semanticInstructionListForGeneration & constinArgument1,
-                                                const class GGS_location & constinArgument2,
-                                                class Compiler * inCompiler
-                                                COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Routine 'enterInstanceMethodWithoutArgument&?methodName?'
-//
-//--------------------------------------------------------------------------------------------------
-
-void routine_enterInstanceMethodWithoutArgument_26__3F_methodName_3F_ (class GGS_instanceMethodMap & ioArgument0,
-                                                                       const class GGS_string constinArgument1,
-                                                                       const class GGS_bool constinArgument2,
-                                                                       class Compiler * inCompiler
-                                                                       COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Routine 'enterInstanceMethodWithInputArgument&&?inputArgTypeName?inputArgName?methodName?'
-//
-//--------------------------------------------------------------------------------------------------
-
-void routine_enterInstanceMethodWithInputArgument_26__26__3F_inputArgTypeName_3F_inputArgName_3F_methodName_3F_ (class GGS_instanceMethodMap & ioArgument0,
-                                                                                                                 class GGS_unifiedTypeMap & ioArgument1,
-                                                                                                                 const class GGS_string constinArgument2,
-                                                                                                                 const class GGS_string constinArgument3,
-                                                                                                                 const class GGS_string constinArgument4,
-                                                                                                                 const class GGS_bool constinArgument5,
-                                                                                                                 class Compiler * inCompiler
-                                                                                                                 COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Routine 'enterBaseFinalGetterWithoutArgument&&?getterName?obsoleteName?returnedTypeName?hasCompilerArgument'
-//
-//--------------------------------------------------------------------------------------------------
-
-void routine_enterBaseFinalGetterWithoutArgument_26__26__3F_getterName_3F_obsoleteName_3F_returnedTypeName_3F_hasCompilerArgument (class GGS_getterMap & ioArgument0,
-                                                                                                                                   class GGS_unifiedTypeMap & ioArgument1,
-                                                                                                                                   const class GGS_string constinArgument2,
-                                                                                                                                   const class GGS_string constinArgument3,
-                                                                                                                                   const class GGS_string constinArgument4,
-                                                                                                                                   const class GGS_bool constinArgument5,
-                                                                                                                                   class Compiler * inCompiler
-                                                                                                                                   COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Routine 'enterInheritedGetterWithoutArgument&&?getterName?obsoleteName?returnedTypeName?hasCompilerArgument'
-//
-//--------------------------------------------------------------------------------------------------
-
-void routine_enterInheritedGetterWithoutArgument_26__26__3F_getterName_3F_obsoleteName_3F_returnedTypeName_3F_hasCompilerArgument (class GGS_getterMap & ioArgument0,
-                                                                                                                                   class GGS_unifiedTypeMap & ioArgument1,
-                                                                                                                                   const class GGS_string constinArgument2,
-                                                                                                                                   const class GGS_string constinArgument3,
-                                                                                                                                   const class GGS_string constinArgument4,
-                                                                                                                                   const class GGS_bool constinArgument5,
-                                                                                                                                   class Compiler * inCompiler
-                                                                                                                                   COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Routine 'enterInheritedGetterWithArgument&&?getterName?argumentTypeName?argumentName?returnedTypeName?hasCompilerArgument'
-//
-//--------------------------------------------------------------------------------------------------
-
-void routine_enterInheritedGetterWithArgument_26__26__3F_getterName_3F_argumentTypeName_3F_argumentName_3F_returnedTypeName_3F_hasCompilerArgument (class GGS_getterMap & ioArgument0,
-                                                                                                                                                    class GGS_unifiedTypeMap & ioArgument1,
-                                                                                                                                                    const class GGS_string constinArgument2,
-                                                                                                                                                    const class GGS_string constinArgument3,
-                                                                                                                                                    const class GGS_string constinArgument4,
-                                                                                                                                                    const class GGS_string constinArgument5,
-                                                                                                                                                    const class GGS_bool constinArgument6,
-                                                                                                                                                    class Compiler * inCompiler
-                                                                                                                                                    COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Routine 'enterBaseGetterWithArgument&&?getterName?argumentTypeName?argumentName?returnedTypeName?hasCompilerArgument'
-//
-//--------------------------------------------------------------------------------------------------
-
-void routine_enterBaseGetterWithArgument_26__26__3F_getterName_3F_argumentTypeName_3F_argumentName_3F_returnedTypeName_3F_hasCompilerArgument (class GGS_getterMap & ioArgument0,
-                                                                                                                                               class GGS_unifiedTypeMap & ioArgument1,
-                                                                                                                                               const class GGS_string constinArgument2,
-                                                                                                                                               const class GGS_string constinArgument3,
-                                                                                                                                               const class GGS_string constinArgument4,
-                                                                                                                                               const class GGS_string constinArgument5,
-                                                                                                                                               const class GGS_bool constinArgument6,
-                                                                                                                                               class Compiler * inCompiler
-                                                                                                                                               COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Routine 'enterBaseGetterWith2Arguments&&??????returnedTypeName?hasCompilerArgument'
-//
-//--------------------------------------------------------------------------------------------------
-
-void routine_enterBaseGetterWith_32_Arguments_26__26__3F__3F__3F__3F__3F__3F_returnedTypeName_3F_hasCompilerArgument (class GGS_getterMap & ioArgument0,
-                                                                                                                      class GGS_unifiedTypeMap & ioArgument1,
-                                                                                                                      const class GGS_string constinArgument2,
-                                                                                                                      const class GGS_string constinArgument3,
-                                                                                                                      const class GGS_string constinArgument4,
-                                                                                                                      const class GGS_string constinArgument5,
-                                                                                                                      const class GGS_string constinArgument6,
-                                                                                                                      const class GGS_string constinArgument7,
-                                                                                                                      const class GGS_bool constinArgument8,
-                                                                                                                      class Compiler * inCompiler
-                                                                                                                      COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Routine 'enterBaseGetterWithoutArgument&&?getterName?obsoleteName?returnedTypeName?hasCompilerArgument'
-//
-//--------------------------------------------------------------------------------------------------
-
-void routine_enterBaseGetterWithoutArgument_26__26__3F_getterName_3F_obsoleteName_3F_returnedTypeName_3F_hasCompilerArgument (class GGS_getterMap & ioArgument0,
-                                                                                                                              class GGS_unifiedTypeMap & ioArgument1,
-                                                                                                                              const class GGS_string constinArgument2,
-                                                                                                                              const class GGS_string constinArgument3,
-                                                                                                                              const class GGS_string constinArgument4,
-                                                                                                                              const class GGS_bool constinArgument5,
-                                                                                                                              class Compiler * inCompiler
-                                                                                                                              COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Routine 'enterBaseGetterWithArgument&&?getterName?argSelector?argType?argName?returnedTypeName?hasCompilerArgument'
-//
-//--------------------------------------------------------------------------------------------------
-
-void routine_enterBaseGetterWithArgument_26__26__3F_getterName_3F_argSelector_3F_argType_3F_argName_3F_returnedTypeName_3F_hasCompilerArgument (class GGS_getterMap & ioArgument0,
-                                                                                                                                                class GGS_unifiedTypeMap & ioArgument1,
-                                                                                                                                                const class GGS_string constinArgument2,
-                                                                                                                                                const class GGS_string constinArgument3,
-                                                                                                                                                const class GGS_string constinArgument4,
-                                                                                                                                                const class GGS_string constinArgument5,
-                                                                                                                                                const class GGS_string constinArgument6,
-                                                                                                                                                const class GGS_bool constinArgument7,
-                                                                                                                                                class Compiler * inCompiler
-                                                                                                                                                COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Routine 'enterBaseFinalGetterWithArgument&&?getterName???returnedTypeName?hasCompilerArgument'
-//
-//--------------------------------------------------------------------------------------------------
-
-void routine_enterBaseFinalGetterWithArgument_26__26__3F_getterName_3F__3F__3F_returnedTypeName_3F_hasCompilerArgument (class GGS_getterMap & ioArgument0,
-                                                                                                                        class GGS_unifiedTypeMap & ioArgument1,
-                                                                                                                        const class GGS_string constinArgument2,
-                                                                                                                        const class GGS_string constinArgument3,
-                                                                                                                        const class GGS_string constinArgument4,
-                                                                                                                        const class GGS_string constinArgument5,
-                                                                                                                        const class GGS_bool constinArgument6,
-                                                                                                                        class Compiler * inCompiler
-                                                                                                                        COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Routine 'enterBaseGetterWith2Arguments&&?getterName?arg1Selector?arg1TypeName?arg1Name?arg2Selector?arg2TypeName?arg2Name?returnedTypeName?hasCompilerArgument'
-//
-//--------------------------------------------------------------------------------------------------
-
-void routine_enterBaseGetterWith_32_Arguments_26__26__3F_getterName_3F_arg_31_Selector_3F_arg_31_TypeName_3F_arg_31_Name_3F_arg_32_Selector_3F_arg_32_TypeName_3F_arg_32_Name_3F_returnedTypeName_3F_hasCompilerArgument (class GGS_getterMap & ioArgument0,
-                                                                                                                                                                                                                          class GGS_unifiedTypeMap & ioArgument1,
-                                                                                                                                                                                                                          const class GGS_string constinArgument2,
-                                                                                                                                                                                                                          const class GGS_string constinArgument3,
-                                                                                                                                                                                                                          const class GGS_string constinArgument4,
-                                                                                                                                                                                                                          const class GGS_string constinArgument5,
-                                                                                                                                                                                                                          const class GGS_string constinArgument6,
-                                                                                                                                                                                                                          const class GGS_string constinArgument7,
-                                                                                                                                                                                                                          const class GGS_string constinArgument8,
-                                                                                                                                                                                                                          const class GGS_string constinArgument9,
-                                                                                                                                                                                                                          const class GGS_bool constinArgument10,
-                                                                                                                                                                                                                          class Compiler * inCompiler
-                                                                                                                                                                                                                          COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Routine 'enterBaseFinalGetterWith2Arguments&&?getterName?????returnedTypeName?hasCompilerArgument'
-//
-//--------------------------------------------------------------------------------------------------
-
-void routine_enterBaseFinalGetterWith_32_Arguments_26__26__3F_getterName_3F__3F__3F__3F__3F_returnedTypeName_3F_hasCompilerArgument (class GGS_getterMap & ioArgument0,
-                                                                                                                                     class GGS_unifiedTypeMap & ioArgument1,
-                                                                                                                                     const class GGS_string constinArgument2,
-                                                                                                                                     const class GGS_string constinArgument3,
-                                                                                                                                     const class GGS_string constinArgument4,
-                                                                                                                                     const class GGS_string constinArgument5,
-                                                                                                                                     const class GGS_string constinArgument6,
-                                                                                                                                     const class GGS_string constinArgument7,
-                                                                                                                                     const class GGS_bool constinArgument8,
-                                                                                                                                     class Compiler * inCompiler
-                                                                                                                                     COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Routine 'enterBaseFinalGetterWith3Arguments&&????????returnedTypeName?hasCompilerArgument'
-//
-//--------------------------------------------------------------------------------------------------
-
-void routine_enterBaseFinalGetterWith_33_Arguments_26__26__3F__3F__3F__3F__3F__3F__3F__3F_returnedTypeName_3F_hasCompilerArgument (class GGS_getterMap & ioArgument0,
-                                                                                                                                   class GGS_unifiedTypeMap & ioArgument1,
-                                                                                                                                   const class GGS_string constinArgument2,
-                                                                                                                                   const class GGS_string constinArgument3,
-                                                                                                                                   const class GGS_string constinArgument4,
-                                                                                                                                   const class GGS_string constinArgument5,
-                                                                                                                                   const class GGS_string constinArgument6,
-                                                                                                                                   const class GGS_string constinArgument7,
-                                                                                                                                   const class GGS_string constinArgument8,
-                                                                                                                                   const class GGS_string constinArgument9,
-                                                                                                                                   const class GGS_bool constinArgument10,
-                                                                                                                                   class Compiler * inCompiler
-                                                                                                                                   COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Routine 'commonGetterMapForAllTypes&!'
-//
-//--------------------------------------------------------------------------------------------------
-
-void routine_commonGetterMapForAllTypes_26__21_ (class GGS_unifiedTypeMap & ioArgument0,
-                                                 class GGS_getterMap & outArgument1,
-                                                 class Compiler * inCompiler
-                                                 COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Routine 'checkDiadicOperator?operatorIsHandled??&&'
-//
-//--------------------------------------------------------------------------------------------------
-
-void routine_checkDiadicOperator_3F_operatorIsHandled_3F__3F__26__26_ (const class GGS_bool constinArgument0,
-                                                                       const class GGS_string constinArgument1,
-                                                                       const class GGS_location constinArgument2,
-                                                                       class GGS_semanticExpressionForGeneration & ioArgument3,
-                                                                       class GGS_semanticExpressionForGeneration & ioArgument4,
-                                                                       class Compiler * inCompiler
-                                                                       COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Filewrapper 'programFileGenerationTemplate'
-//
-//--------------------------------------------------------------------------------------------------
-
-
-//--------------------------------------------------------------------------------------------------
-
-
-//--------------------------------------------------------------------------------------------------
-
-
-//--------------------------------------------------------------------------------------------------
-
-extern const cDirectoryWrapper gWrapperDirectory_0_programFileGenerationTemplate ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'programFileGenerationTemplate programFileImplementation'
-//
-//--------------------------------------------------------------------------------------------------
-
-GGS_string filewrapperTemplate_programFileGenerationTemplate_programFileImplementation (class Compiler * inCompiler,
-                                                                                        const class GGS_string & in_COMPONENT_5F_NAME,
-                                                                                        const class GGS_stringlist & in_IMPORTED_5F_COMPONENT_5F_LIST,
-                                                                                        const class GGS_string & in_BEFORE_5F_AFTER_5F_RULE_5F_IMPLEMENTATION_5F_STRING,
-                                                                                        const class GGS_programRuleList & in_PROGRAM_5F_RULE_5F_LIST,
-                                                                                        const class GGS_string & in_PROJECT_5F_VERSION_5F_STRING
-                                                                                        COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Routine 'compileBeforeClauseGalgas3&&?&?&'
-//
-//--------------------------------------------------------------------------------------------------
-
-void routine_compileBeforeClauseGalgas_33__26__26__3F__26__3F__26_ (class GGS_lstringlist & ioArgument0,
-                                                                    class GGS_usefulEntitiesGraph & ioArgument1,
-                                                                    const class GGS_analysisContext constinArgument2,
-                                                                    class GGS_unifiedTypeMap & ioArgument3,
-                                                                    const class GGS_prologueEpilogueList constinArgument4,
-                                                                    class GGS_programListForGeneration & ioArgument5,
-                                                                    class Compiler * inCompiler
-                                                                    COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Routine 'compileProgramRulesGalgas3&&?&?&'
-//
-//--------------------------------------------------------------------------------------------------
-
-void routine_compileProgramRulesGalgas_33__26__26__3F__26__3F__26_ (class GGS_lstringlist & ioArgument0,
-                                                                    class GGS_usefulEntitiesGraph & ioArgument1,
-                                                                    const class GGS_analysisContext constinArgument2,
-                                                                    class GGS_unifiedTypeMap & ioArgument3,
-                                                                    const class GGS_programRuleList constinArgument4,
-                                                                    class GGS_programListForGeneration & ioArgument5,
-                                                                    class Compiler * inCompiler
-                                                                    COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Routine 'compileAfterClauseGalgas3&&?&?&'
-//
-//--------------------------------------------------------------------------------------------------
-
-void routine_compileAfterClauseGalgas_33__26__26__3F__26__3F__26_ (class GGS_lstringlist & ioArgument0,
-                                                                   class GGS_usefulEntitiesGraph & ioArgument1,
-                                                                   const class GGS_analysisContext constinArgument2,
-                                                                   class GGS_unifiedTypeMap & ioArgument3,
-                                                                   const class GGS_prologueEpilogueList constinArgument4,
-                                                                   class GGS_programListForGeneration & ioArgument5,
-                                                                   class Compiler * inCompiler
-                                                                   COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Filewrapper 'optionGenerationTemplates'
-//
-//--------------------------------------------------------------------------------------------------
-
-
-//--------------------------------------------------------------------------------------------------
-
-
-//--------------------------------------------------------------------------------------------------
-
-
-//--------------------------------------------------------------------------------------------------
-
-extern const cDirectoryWrapper gWrapperDirectory_0_optionGenerationTemplates ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'optionGenerationTemplates optionHeaderZone3'
-//
-//--------------------------------------------------------------------------------------------------
-
-GGS_string filewrapperTemplate_optionGenerationTemplates_optionHeaderZone_33_ (class Compiler * inCompiler,
-                                                                               const class GGS_string & in_OPTION_5F_COMPONENT_5F_NAME,
-                                                                               const class GGS_commandLineOptionSortedList & in_BOOL_5F_OPTION_5F_SORTED_5F_LIST,
-                                                                               const class GGS_commandLineOptionSortedList & in_UINT_5F_OPTION_5F_SORTED_5F_LIST,
-                                                                               const class GGS_commandLineOptionSortedList & in_STRING_5F_OPTION_5F_SORTED_5F_LIST,
-                                                                               const class GGS_commandLineOptionSortedList & in_STRING_5F_LIST_5F_OPTION_5F_SORTED_5F_LIST
-                                                                               COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'optionGenerationTemplates optionImplementationGalgas3'
-//
-//--------------------------------------------------------------------------------------------------
-
-GGS_string filewrapperTemplate_optionGenerationTemplates_optionImplementationGalgas_33_ (class Compiler * inCompiler,
-                                                                                         const class GGS_string & in_OPTION_5F_COMPONENT_5F_NAME,
-                                                                                         const class GGS_commandLineOptionSortedList & in_BOOL_5F_OPTION_5F_SORTED_5F_LIST,
-                                                                                         const class GGS_commandLineOptionSortedList & in_UINT_5F_OPTION_5F_SORTED_5F_LIST,
-                                                                                         const class GGS_commandLineOptionSortedList & in_STRING_5F_OPTION_5F_SORTED_5F_LIST,
-                                                                                         const class GGS_commandLineOptionSortedList & in_STRING_5F_LIST_5F_OPTION_5F_SORTED_5F_LIST
-                                                                                         COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'optionGenerationTemplates optionImplementationSwiftUI'
-//
-//--------------------------------------------------------------------------------------------------
-
-GGS_string filewrapperTemplate_optionGenerationTemplates_optionImplementationSwiftUI (class Compiler * inCompiler,
-                                                                                      const class GGS_string & in_OPTION_5F_HEADER_5F_FILE_5F_NAME,
-                                                                                      const class GGS_string & in_OPTION_5F_COMPONENT_5F_NAME,
-                                                                                      const class GGS_commandLineOptionSortedList & in_BOOL_5F_OPTION_5F_SORTED_5F_LIST,
-                                                                                      const class GGS_commandLineOptionSortedList & in_UINT_5F_OPTION_5F_SORTED_5F_LIST,
-                                                                                      const class GGS_commandLineOptionSortedList & in_STRING_5F_OPTION_5F_SORTED_5F_LIST,
-                                                                                      const class GGS_commandLineOptionSortedList & in_STRING_5F_LIST_5F_OPTION_5F_SORTED_5F_LIST
-                                                                                      COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Routine 'enterClassFunctionWithoutArgument&&?name?resultTypeName?hasLexiqueArg'
-//
-//--------------------------------------------------------------------------------------------------
-
-void routine_enterClassFunctionWithoutArgument_26__26__3F_name_3F_resultTypeName_3F_hasLexiqueArg (class GGS_classFunctionMap & ioArgument0,
-                                                                                                   class GGS_unifiedTypeMap & ioArgument1,
-                                                                                                   const class GGS_string constinArgument2,
-                                                                                                   const class GGS_string constinArgument3,
-                                                                                                   const class GGS_bool constinArgument4,
-                                                                                                   class Compiler * inCompiler
-                                                                                                   COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Routine 'enterClassFunctionWithArgument&&?name?argTypeName?argName?resultTypeName?hasLexiqueArg'
-//
-//--------------------------------------------------------------------------------------------------
-
-void routine_enterClassFunctionWithArgument_26__26__3F_name_3F_argTypeName_3F_argName_3F_resultTypeName_3F_hasLexiqueArg (class GGS_classFunctionMap & ioArgument0,
-                                                                                                                          class GGS_unifiedTypeMap & ioArgument1,
-                                                                                                                          const class GGS_string constinArgument2,
-                                                                                                                          const class GGS_string constinArgument3,
-                                                                                                                          const class GGS_string constinArgument4,
-                                                                                                                          const class GGS_string constinArgument5,
-                                                                                                                          const class GGS_bool constinArgument6,
-                                                                                                                          class Compiler * inCompiler
-                                                                                                                          COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Routine 'enterClassFunctionWith2Arguments&&?name?argTypeName1?argName1?argTypeName2?argName2?resultTypeName?hasLexiqueArg'
-//
-//--------------------------------------------------------------------------------------------------
-
-void routine_enterClassFunctionWith_32_Arguments_26__26__3F_name_3F_argTypeName_31__3F_argName_31__3F_argTypeName_32__3F_argName_32__3F_resultTypeName_3F_hasLexiqueArg (class GGS_classFunctionMap & ioArgument0,
-                                                                                                                                                                         class GGS_unifiedTypeMap & ioArgument1,
-                                                                                                                                                                         const class GGS_string constinArgument2,
-                                                                                                                                                                         const class GGS_string constinArgument3,
-                                                                                                                                                                         const class GGS_string constinArgument4,
-                                                                                                                                                                         const class GGS_string constinArgument5,
-                                                                                                                                                                         const class GGS_string constinArgument6,
-                                                                                                                                                                         const class GGS_string constinArgument7,
-                                                                                                                                                                         const class GGS_bool constinArgument8,
-                                                                                                                                                                         class Compiler * inCompiler
-                                                                                                                                                                         COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Routine 'enterClassFunctionWith3Arguments&&?name?argTypeName1?argName1?argTypeName2?argName2?argTypeName3?argName3?resultTypeName?hasLexiqueArg'
-//
-//--------------------------------------------------------------------------------------------------
-
-void routine_enterClassFunctionWith_33_Arguments_26__26__3F_name_3F_argTypeName_31__3F_argName_31__3F_argTypeName_32__3F_argName_32__3F_argTypeName_33__3F_argName_33__3F_resultTypeName_3F_hasLexiqueArg (class GGS_classFunctionMap & ioArgument0,
-                                                                                                                                                                                                           class GGS_unifiedTypeMap & ioArgument1,
-                                                                                                                                                                                                           const class GGS_string constinArgument2,
-                                                                                                                                                                                                           const class GGS_string constinArgument3,
-                                                                                                                                                                                                           const class GGS_string constinArgument4,
-                                                                                                                                                                                                           const class GGS_string constinArgument5,
-                                                                                                                                                                                                           const class GGS_string constinArgument6,
-                                                                                                                                                                                                           const class GGS_string constinArgument7,
-                                                                                                                                                                                                           const class GGS_string constinArgument8,
-                                                                                                                                                                                                           const class GGS_string constinArgument9,
-                                                                                                                                                                                                           const class GGS_bool constinArgument10,
-                                                                                                                                                                                                           class Compiler * inCompiler
-                                                                                                                                                                                                           COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Filewrapper 'projectCreationFileWrapper'
-//
-//--------------------------------------------------------------------------------------------------
-
-
-//--------------------------------------------------------------------------------------------------
-
-
-//--------------------------------------------------------------------------------------------------
-
-
-//--------------------------------------------------------------------------------------------------
-
-extern const cDirectoryWrapper gWrapperDirectory_0_projectCreationFileWrapper ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'projectCreationFileWrapper PROJECT_project'
-//
-//--------------------------------------------------------------------------------------------------
-
-GGS_string filewrapperTemplate_projectCreationFileWrapper_PROJECT_5F_project (class Compiler * inCompiler,
-                                                                              const class GGS_string & in_PROJECT_5F_NAME
-                                                                              COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'projectCreationFileWrapper PROJECT_cocoa'
-//
-//--------------------------------------------------------------------------------------------------
-
-GGS_string filewrapperTemplate_projectCreationFileWrapper_PROJECT_5F_cocoa (class Compiler * inCompiler,
-                                                                            const class GGS_string & in_PROJECT_5F_NAME
-                                                                            COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'projectCreationFileWrapper PROJECT_grammar'
-//
-//--------------------------------------------------------------------------------------------------
-
-GGS_string filewrapperTemplate_projectCreationFileWrapper_PROJECT_5F_grammar (class Compiler * inCompiler,
-                                                                              const class GGS_string & in_PROJECT_5F_NAME
-                                                                              COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'projectCreationFileWrapper PROJECT_lexique'
-//
-//--------------------------------------------------------------------------------------------------
-
-GGS_string filewrapperTemplate_projectCreationFileWrapper_PROJECT_5F_lexique (class Compiler * inCompiler,
-                                                                              const class GGS_string & in_PROJECT_5F_NAME
-                                                                              COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'projectCreationFileWrapper PROJECT_options'
-//
-//--------------------------------------------------------------------------------------------------
-
-GGS_string filewrapperTemplate_projectCreationFileWrapper_PROJECT_5F_options (class Compiler * inCompiler,
-                                                                              const class GGS_string & in_PROJECT_5F_NAME
-                                                                              COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'projectCreationFileWrapper PROJECT_program'
-//
-//--------------------------------------------------------------------------------------------------
-
-GGS_string filewrapperTemplate_projectCreationFileWrapper_PROJECT_5F_program (class Compiler * inCompiler,
-                                                                              const class GGS_string & in_PROJECT_5F_NAME
-                                                                              COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'projectCreationFileWrapper PROJECT_semantics'
-//
-//--------------------------------------------------------------------------------------------------
-
-GGS_string filewrapperTemplate_projectCreationFileWrapper_PROJECT_5F_semantics (class Compiler * inCompiler,
-                                                                                const class GGS_string & in_PROJECT_5F_NAME
-                                                                                COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'projectCreationFileWrapper PROJECT_syntax'
-//
-//--------------------------------------------------------------------------------------------------
-
-GGS_string filewrapperTemplate_projectCreationFileWrapper_PROJECT_5F_syntax (class Compiler * inCompiler,
-                                                                             const class GGS_string & in_PROJECT_5F_NAME
-                                                                             COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Routine 'performProjectCreation?'
-//
-//--------------------------------------------------------------------------------------------------
-
-void routine_performProjectCreation_3F_ (const class GGS_string constinArgument0,
-                                         class Compiler * inCompiler
-                                         COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Routine 'projectCreation?'
-//
-//--------------------------------------------------------------------------------------------------
-
-void routine_projectCreation_3F_ (const class GGS_string constinArgument0,
-                                  class Compiler * inCompiler
-                                  COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Routine 'addExtensions????&&??isClass&&&&?acceptSetters'
-//
-//--------------------------------------------------------------------------------------------------
-
-void routine_addExtensions_3F__3F__3F__3F__26__26__3F__3F_isClass_26__26__26__26__3F_acceptSetters (const class GGS_extensionInitializerForBuildingContext constinArgument0,
-                                                                                                    const class GGS_extensionMethodMapForBuildingContext constinArgument1,
-                                                                                                    const class GGS_extensionGetterMapForBuildingContext constinArgument2,
-                                                                                                    const class GGS_extensionSetterMapForBuildingContext constinArgument3,
-                                                                                                    class GGS_semanticContext & ioArgument4,
-                                                                                                    class GGS_unifiedTypeMap & ioArgument5,
-                                                                                                    const class GGS_lstring constinArgument6,
-                                                                                                    const class GGS_bool constinArgument7,
-                                                                                                    class GGS_initializerMap & ioArgument8,
-                                                                                                    class GGS_getterMap & ioArgument9,
-                                                                                                    class GGS_setterMap & ioArgument10,
-                                                                                                    class GGS_instanceMethodMap & ioArgument11,
-                                                                                                    const class GGS_bool constinArgument12,
-                                                                                                    class Compiler * inCompiler
-                                                                                                    COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Routine 'recursivelyEnumerateDirectories????!!&&'
-//
-//--------------------------------------------------------------------------------------------------
-
-void routine_recursivelyEnumerateDirectories_3F__3F__3F__3F__21__21__26__26_ (const class GGS_string constinArgument0,
-                                                                              const class GGS_string constinArgument1,
-                                                                              const class GGS_wrapperExtensionMap constinArgument2,
-                                                                              const class GGS_wrapperExtensionMap constinArgument3,
-                                                                              class GGS_wrapperFileMap & outArgument4,
-                                                                              class GGS_wrapperDirectoryMap & outArgument5,
-                                                                              class GGS_uint & ioArgument6,
-                                                                              class GGS_uint & ioArgument7,
-                                                                              class Compiler * inCompiler
-                                                                              COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Routine 'enterModifierWithInputArgument&&?argTypeName?argName?setterName?compilerArg'
-//
-//--------------------------------------------------------------------------------------------------
-
-void routine_enterModifierWithInputArgument_26__26__3F_argTypeName_3F_argName_3F_setterName_3F_compilerArg (class GGS_setterMap & ioArgument0,
-                                                                                                            class GGS_unifiedTypeMap & ioArgument1,
-                                                                                                            const class GGS_string constinArgument2,
-                                                                                                            const class GGS_string constinArgument3,
-                                                                                                            const class GGS_string constinArgument4,
-                                                                                                            const class GGS_bool constinArgument5,
-                                                                                                            class Compiler * inCompiler
-                                                                                                            COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Routine 'enterModifierWithOutputAndInputArguments&&?outputArgTypeName?outputArgName?inputArgTypeName?inputArgName?setterName?compilerArg'
-//
-//--------------------------------------------------------------------------------------------------
-
-void routine_enterModifierWithOutputAndInputArguments_26__26__3F_outputArgTypeName_3F_outputArgName_3F_inputArgTypeName_3F_inputArgName_3F_setterName_3F_compilerArg (class GGS_setterMap & ioArgument0,
-                                                                                                                                                                      class GGS_unifiedTypeMap & ioArgument1,
-                                                                                                                                                                      const class GGS_string constinArgument2,
-                                                                                                                                                                      const class GGS_string constinArgument3,
-                                                                                                                                                                      const class GGS_string constinArgument4,
-                                                                                                                                                                      const class GGS_string constinArgument5,
-                                                                                                                                                                      const class GGS_string constinArgument6,
-                                                                                                                                                                      const class GGS_bool constinArgument7,
-                                                                                                                                                                      class Compiler * inCompiler
-                                                                                                                                                                      COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Routine 'enterModifierWith2InputArguments&&?arg1TypeName?arg1Name?arg2TypeName?arg2Name?setterName?compilerArg'
-//
-//--------------------------------------------------------------------------------------------------
-
-void routine_enterModifierWith_32_InputArguments_26__26__3F_arg_31_TypeName_3F_arg_31_Name_3F_arg_32_TypeName_3F_arg_32_Name_3F_setterName_3F_compilerArg (class GGS_setterMap & ioArgument0,
-                                                                                                                                                           class GGS_unifiedTypeMap & ioArgument1,
-                                                                                                                                                           const class GGS_string constinArgument2,
-                                                                                                                                                           const class GGS_string constinArgument3,
-                                                                                                                                                           const class GGS_string constinArgument4,
-                                                                                                                                                           const class GGS_string constinArgument5,
-                                                                                                                                                           const class GGS_string constinArgument6,
-                                                                                                                                                           const class GGS_bool constinArgument7,
-                                                                                                                                                           class Compiler * inCompiler
-                                                                                                                                                           COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Routine 'enterModifierWithoutArgument&??compilerArg'
-//
-//--------------------------------------------------------------------------------------------------
-
-void routine_enterModifierWithoutArgument_26__3F__3F_compilerArg (class GGS_setterMap & ioArgument0,
-                                                                  const class GGS_string constinArgument1,
-                                                                  const class GGS_bool constinArgument2,
-                                                                  class Compiler * inCompiler
-                                                                  COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Routine 'templateInstructionListAnalysis?&?&?&'
-//
-//--------------------------------------------------------------------------------------------------
-
-void routine_templateInstructionListAnalysis_3F__26__3F__26__3F__26_ (const class GGS_lstring constinArgument0,
-                                                                      class GGS_usefulEntitiesGraph & ioArgument1,
-                                                                      const class GGS_templateAnalysisContext constinArgument2,
-                                                                      class GGS_unifiedTypeMap & ioArgument3,
-                                                                      const class GGS_templateInstructionListAST constinArgument4,
-                                                                      class GGS_templateInstructionListForGeneration & ioArgument5,
-                                                                      class Compiler * inCompiler
-                                                                      COMMA_LOCATION_ARGS) ;
+//Routine 'analyzeInitializerInvocation?&??&&???!!!'
+//
+//--------------------------------------------------------------------------------------------------
+
+void routine_analyzeInitializerInvocation_3F__26__3F__3F__26__26__3F__3F__3F__21__21__21_ (const class GGS_lstring constinArgument0,
+                                                                                           class GGS_usefulEntitiesGraph & ioArgument1,
+                                                                                           const class GGS_unifiedTypeMapEntry constinArgument2,
+                                                                                           const class GGS_analysisContext constinArgument3,
+                                                                                           class GGS_unifiedTypeMap & ioArgument4,
+                                                                                           class GGS_localVarManager & ioArgument5,
+                                                                                           const class GGS_lstring constinArgument6,
+                                                                                           const class GGS_actualOutputArgumentList constinArgument7,
+                                                                                           const class GGS_location constinArgument8,
+                                                                                           class GGS_unifiedTypeMapEntry & outArgument9,
+                                                                                           class GGS_lstring & outArgument10,
+                                                                                           class GGS_semanticExpressionListForGeneration & outArgument11,
+                                                                                           class Compiler * inCompiler
+                                                                                           COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Routine 'printPredefinedLexicalActions'
+//
+//--------------------------------------------------------------------------------------------------
+
+void routine_printPredefinedLexicalActions (class Compiler * inCompiler
+                                            COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper 'libpmFileWrapper'
+//
+//--------------------------------------------------------------------------------------------------
+
+extern const char * gWrapperFileContent_260_libpmFileWrapper ;
+extern const char * gWrapperFileContent_266_libpmFileWrapper ;
+extern const char * gWrapperFileContent_262_libpmFileWrapper ;
+extern const char * gWrapperFileContent_267_libpmFileWrapper ;
+extern const char * gWrapperFileContent_268_libpmFileWrapper ;
+extern const char * gWrapperFileContent_265_libpmFileWrapper ;
+extern const char * gWrapperFileContent_264_libpmFileWrapper ;
+extern const char * gWrapperFileContent_261_libpmFileWrapper ;
+extern const char * gWrapperFileContent_263_libpmFileWrapper ;
+extern const char * gWrapperFileContent_251_libpmFileWrapper ;
+extern const char * gWrapperFileContent_242_libpmFileWrapper ;
+extern const char * gWrapperFileContent_253_libpmFileWrapper ;
+extern const char * gWrapperFileContent_254_libpmFileWrapper ;
+extern const char * gWrapperFileContent_232_libpmFileWrapper ;
+extern const char * gWrapperFileContent_243_libpmFileWrapper ;
+extern const char * gWrapperFileContent_252_libpmFileWrapper ;
+extern const char * gWrapperFileContent_231_libpmFileWrapper ;
+extern const char * gWrapperFileContent_236_libpmFileWrapper ;
+extern const char * gWrapperFileContent_257_libpmFileWrapper ;
+extern const char * gWrapperFileContent_258_libpmFileWrapper ;
+extern const char * gWrapperFileContent_247_libpmFileWrapper ;
+extern const char * gWrapperFileContent_237_libpmFileWrapper ;
+extern const char * gWrapperFileContent_245_libpmFileWrapper ;
+extern const char * gWrapperFileContent_239_libpmFileWrapper ;
+extern const char * gWrapperFileContent_227_libpmFileWrapper ;
+extern const char * gWrapperFileContent_256_libpmFileWrapper ;
+extern const char * gWrapperFileContent_234_libpmFileWrapper ;
+extern const char * gWrapperFileContent_250_libpmFileWrapper ;
+extern const char * gWrapperFileContent_240_libpmFileWrapper ;
+extern const char * gWrapperFileContent_235_libpmFileWrapper ;
+extern const char * gWrapperFileContent_259_libpmFileWrapper ;
+extern const char * gWrapperFileContent_241_libpmFileWrapper ;
+extern const char * gWrapperFileContent_230_libpmFileWrapper ;
+extern const char * gWrapperFileContent_224_libpmFileWrapper ;
+extern const char * gWrapperFileContent_229_libpmFileWrapper ;
+extern const char * gWrapperFileContent_226_libpmFileWrapper ;
+extern const char * gWrapperFileContent_246_libpmFileWrapper ;
+extern const char * gWrapperFileContent_249_libpmFileWrapper ;
+extern const char * gWrapperFileContent_248_libpmFileWrapper ;
+extern const char * gWrapperFileContent_228_libpmFileWrapper ;
+extern const char * gWrapperFileContent_223_libpmFileWrapper ;
+extern const char * gWrapperFileContent_238_libpmFileWrapper ;
+extern const char * gWrapperFileContent_244_libpmFileWrapper ;
+extern const char * gWrapperFileContent_233_libpmFileWrapper ;
+extern const char * gWrapperFileContent_255_libpmFileWrapper ;
+extern const char * gWrapperFileContent_225_libpmFileWrapper ;
+extern const char * gWrapperFileContent_214_libpmFileWrapper ;
+extern const char * gWrapperFileContent_217_libpmFileWrapper ;
+extern const char * gWrapperFileContent_209_libpmFileWrapper ;
+extern const char * gWrapperFileContent_221_libpmFileWrapper ;
+extern const char * gWrapperFileContent_216_libpmFileWrapper ;
+extern const char * gWrapperFileContent_219_libpmFileWrapper ;
+extern const char * gWrapperFileContent_210_libpmFileWrapper ;
+extern const char * gWrapperFileContent_218_libpmFileWrapper ;
+extern const char * gWrapperFileContent_211_libpmFileWrapper ;
+extern const char * gWrapperFileContent_207_libpmFileWrapper ;
+extern const char * gWrapperFileContent_215_libpmFileWrapper ;
+extern const char * gWrapperFileContent_212_libpmFileWrapper ;
+extern const char * gWrapperFileContent_220_libpmFileWrapper ;
+extern const char * gWrapperFileContent_208_libpmFileWrapper ;
+extern const char * gWrapperFileContent_213_libpmFileWrapper ;
+extern const char * gWrapperFileContent_222_libpmFileWrapper ;
+extern const char * gWrapperFileContent_198_libpmFileWrapper ;
+extern const char * gWrapperFileContent_201_libpmFileWrapper ;
+extern const char * gWrapperFileContent_203_libpmFileWrapper ;
+extern const char * gWrapperFileContent_200_libpmFileWrapper ;
+extern const char * gWrapperFileContent_202_libpmFileWrapper ;
+extern const char * gWrapperFileContent_197_libpmFileWrapper ;
+extern const char * gWrapperFileContent_205_libpmFileWrapper ;
+extern const char * gWrapperFileContent_206_libpmFileWrapper ;
+extern const char * gWrapperFileContent_199_libpmFileWrapper ;
+extern const char * gWrapperFileContent_204_libpmFileWrapper ;
+extern const char * gWrapperFileContent_127_libpmFileWrapper ;
+extern const char * gWrapperFileContent_158_libpmFileWrapper ;
+extern const char * gWrapperFileContent_188_libpmFileWrapper ;
+extern const char * gWrapperFileContent_134_libpmFileWrapper ;
+extern const char * gWrapperFileContent_124_libpmFileWrapper ;
+extern const char * gWrapperFileContent_104_libpmFileWrapper ;
+extern const char * gWrapperFileContent_166_libpmFileWrapper ;
+extern const char * gWrapperFileContent_155_libpmFileWrapper ;
+extern const char * gWrapperFileContent_165_libpmFileWrapper ;
+extern const char * gWrapperFileContent_126_libpmFileWrapper ;
+extern const char * gWrapperFileContent_160_libpmFileWrapper ;
+extern const char * gWrapperFileContent_173_libpmFileWrapper ;
+extern const char * gWrapperFileContent_191_libpmFileWrapper ;
+extern const char * gWrapperFileContent_168_libpmFileWrapper ;
+extern const char * gWrapperFileContent_163_libpmFileWrapper ;
+extern const char * gWrapperFileContent_153_libpmFileWrapper ;
+extern const char * gWrapperFileContent_172_libpmFileWrapper ;
+extern const char * gWrapperFileContent_125_libpmFileWrapper ;
+extern const char * gWrapperFileContent_120_libpmFileWrapper ;
+extern const char * gWrapperFileContent_182_libpmFileWrapper ;
+extern const char * gWrapperFileContent_174_libpmFileWrapper ;
+extern const char * gWrapperFileContent_154_libpmFileWrapper ;
+extern const char * gWrapperFileContent_119_libpmFileWrapper ;
+extern const char * gWrapperFileContent_150_libpmFileWrapper ;
+extern const char * gWrapperFileContent_184_libpmFileWrapper ;
+extern const char * gWrapperFileContent_143_libpmFileWrapper ;
+extern const char * gWrapperFileContent_129_libpmFileWrapper ;
+extern const char * gWrapperFileContent_135_libpmFileWrapper ;
+extern const char * gWrapperFileContent_133_libpmFileWrapper ;
+extern const char * gWrapperFileContent_137_libpmFileWrapper ;
+extern const char * gWrapperFileContent_132_libpmFileWrapper ;
+extern const char * gWrapperFileContent_187_libpmFileWrapper ;
+extern const char * gWrapperFileContent_146_libpmFileWrapper ;
+extern const char * gWrapperFileContent_121_libpmFileWrapper ;
+extern const char * gWrapperFileContent_122_libpmFileWrapper ;
+extern const char * gWrapperFileContent_118_libpmFileWrapper ;
+extern const char * gWrapperFileContent_156_libpmFileWrapper ;
+extern const char * gWrapperFileContent_138_libpmFileWrapper ;
+extern const char * gWrapperFileContent_183_libpmFileWrapper ;
+extern const char * gWrapperFileContent_189_libpmFileWrapper ;
+extern const char * gWrapperFileContent_103_libpmFileWrapper ;
+extern const char * gWrapperFileContent_151_libpmFileWrapper ;
+extern const char * gWrapperFileContent_190_libpmFileWrapper ;
+extern const char * gWrapperFileContent_123_libpmFileWrapper ;
+extern const char * gWrapperFileContent_167_libpmFileWrapper ;
+extern const char * gWrapperFileContent_140_libpmFileWrapper ;
+extern const char * gWrapperFileContent_171_libpmFileWrapper ;
+extern const char * gWrapperFileContent_105_libpmFileWrapper ;
+extern const char * gWrapperFileContent_145_libpmFileWrapper ;
+extern const char * gWrapperFileContent_114_libpmFileWrapper ;
+extern const char * gWrapperFileContent_176_libpmFileWrapper ;
+extern const char * gWrapperFileContent_159_libpmFileWrapper ;
+extern const char * gWrapperFileContent_196_libpmFileWrapper ;
+extern const char * gWrapperFileContent_109_libpmFileWrapper ;
+extern const char * gWrapperFileContent_162_libpmFileWrapper ;
+extern const char * gWrapperFileContent_131_libpmFileWrapper ;
+extern const char * gWrapperFileContent_130_libpmFileWrapper ;
+extern const char * gWrapperFileContent_113_libpmFileWrapper ;
+extern const char * gWrapperFileContent_178_libpmFileWrapper ;
+extern const char * gWrapperFileContent_192_libpmFileWrapper ;
+extern const char * gWrapperFileContent_142_libpmFileWrapper ;
+extern const char * gWrapperFileContent_117_libpmFileWrapper ;
+extern const char * gWrapperFileContent_147_libpmFileWrapper ;
+extern const char * gWrapperFileContent_128_libpmFileWrapper ;
+extern const char * gWrapperFileContent_144_libpmFileWrapper ;
+extern const char * gWrapperFileContent_157_libpmFileWrapper ;
+extern const char * gWrapperFileContent_186_libpmFileWrapper ;
+extern const char * gWrapperFileContent_170_libpmFileWrapper ;
+extern const char * gWrapperFileContent_194_libpmFileWrapper ;
+extern const char * gWrapperFileContent_193_libpmFileWrapper ;
+extern const char * gWrapperFileContent_152_libpmFileWrapper ;
+extern const char * gWrapperFileContent_107_libpmFileWrapper ;
+extern const char * gWrapperFileContent_110_libpmFileWrapper ;
+extern const char * gWrapperFileContent_179_libpmFileWrapper ;
+extern const char * gWrapperFileContent_136_libpmFileWrapper ;
+extern const char * gWrapperFileContent_195_libpmFileWrapper ;
+extern const char * gWrapperFileContent_177_libpmFileWrapper ;
+extern const char * gWrapperFileContent_108_libpmFileWrapper ;
+extern const char * gWrapperFileContent_164_libpmFileWrapper ;
+extern const char * gWrapperFileContent_116_libpmFileWrapper ;
+extern const char * gWrapperFileContent_149_libpmFileWrapper ;
+extern const char * gWrapperFileContent_106_libpmFileWrapper ;
+extern const char * gWrapperFileContent_111_libpmFileWrapper ;
+extern const char * gWrapperFileContent_141_libpmFileWrapper ;
+extern const char * gWrapperFileContent_181_libpmFileWrapper ;
+extern const char * gWrapperFileContent_161_libpmFileWrapper ;
+extern const char * gWrapperFileContent_148_libpmFileWrapper ;
+extern const char * gWrapperFileContent_169_libpmFileWrapper ;
+extern const char * gWrapperFileContent_180_libpmFileWrapper ;
+extern const char * gWrapperFileContent_112_libpmFileWrapper ;
+extern const char * gWrapperFileContent_185_libpmFileWrapper ;
+extern const char * gWrapperFileContent_139_libpmFileWrapper ;
+extern const char * gWrapperFileContent_115_libpmFileWrapper ;
+extern const char * gWrapperFileContent_175_libpmFileWrapper ;
+extern const char * gWrapperFileContent_26_libpmFileWrapper ;
+extern const char * gWrapperFileContent_28_libpmFileWrapper ;
+extern const char * gWrapperFileContent_27_libpmFileWrapper ;
+extern const char * gWrapperFileContent_22_libpmFileWrapper ;
+extern const char * gWrapperFileContent_19_libpmFileWrapper ;
+extern const char * gWrapperFileContent_21_libpmFileWrapper ;
+extern const char * gWrapperFileContent_17_libpmFileWrapper ;
+extern const char * gWrapperFileContent_23_libpmFileWrapper ;
+extern const char * gWrapperFileContent_25_libpmFileWrapper ;
+extern const char * gWrapperFileContent_20_libpmFileWrapper ;
+extern const char * gWrapperFileContent_24_libpmFileWrapper ;
+extern const char * gWrapperFileContent_18_libpmFileWrapper ;
+extern const char * gWrapperFileContent_12_libpmFileWrapper ;
+extern const char * gWrapperFileContent_16_libpmFileWrapper ;
+extern const char * gWrapperFileContent_13_libpmFileWrapper ;
+extern const char * gWrapperFileContent_15_libpmFileWrapper ;
+extern const char * gWrapperFileContent_14_libpmFileWrapper ;
+extern const char * gWrapperFileContent_11_libpmFileWrapper ;
+extern const char * gWrapperFileContent_2_libpmFileWrapper ;
+extern const char * gWrapperFileContent_0_libpmFileWrapper ;
+extern const char * gWrapperFileContent_4_libpmFileWrapper ;
+extern const char * gWrapperFileContent_7_libpmFileWrapper ;
+extern const char * gWrapperFileContent_10_libpmFileWrapper ;
+extern const char * gWrapperFileContent_6_libpmFileWrapper ;
+extern const char * gWrapperFileContent_9_libpmFileWrapper ;
+extern const char * gWrapperFileContent_8_libpmFileWrapper ;
+extern const char * gWrapperFileContent_5_libpmFileWrapper ;
+extern const char * gWrapperFileContent_3_libpmFileWrapper ;
+extern const char * gWrapperFileContent_1_libpmFileWrapper ;
+extern const char * gWrapperFileContent_30_libpmFileWrapper ;
+extern const char * gWrapperFileContent_69_libpmFileWrapper ;
+extern const char * gWrapperFileContent_31_libpmFileWrapper ;
+extern const char * gWrapperFileContent_61_libpmFileWrapper ;
+extern const char * gWrapperFileContent_42_libpmFileWrapper ;
+extern const char * gWrapperFileContent_47_libpmFileWrapper ;
+extern const char * gWrapperFileContent_37_libpmFileWrapper ;
+extern const char * gWrapperFileContent_63_libpmFileWrapper ;
+extern const char * gWrapperFileContent_64_libpmFileWrapper ;
+extern const char * gWrapperFileContent_52_libpmFileWrapper ;
+extern const char * gWrapperFileContent_34_libpmFileWrapper ;
+extern const char * gWrapperFileContent_51_libpmFileWrapper ;
+extern const char * gWrapperFileContent_55_libpmFileWrapper ;
+extern const char * gWrapperFileContent_45_libpmFileWrapper ;
+extern const char * gWrapperFileContent_41_libpmFileWrapper ;
+extern const char * gWrapperFileContent_56_libpmFileWrapper ;
+extern const char * gWrapperFileContent_54_libpmFileWrapper ;
+extern const char * gWrapperFileContent_40_libpmFileWrapper ;
+extern const char * gWrapperFileContent_44_libpmFileWrapper ;
+extern const char * gWrapperFileContent_59_libpmFileWrapper ;
+extern const char * gWrapperFileContent_46_libpmFileWrapper ;
+extern const char * gWrapperFileContent_68_libpmFileWrapper ;
+extern const char * gWrapperFileContent_57_libpmFileWrapper ;
+extern const char * gWrapperFileContent_62_libpmFileWrapper ;
+extern const char * gWrapperFileContent_35_libpmFileWrapper ;
+extern const char * gWrapperFileContent_29_libpmFileWrapper ;
+extern const char * gWrapperFileContent_53_libpmFileWrapper ;
+extern const char * gWrapperFileContent_66_libpmFileWrapper ;
+extern const char * gWrapperFileContent_65_libpmFileWrapper ;
+extern const char * gWrapperFileContent_32_libpmFileWrapper ;
+extern const char * gWrapperFileContent_33_libpmFileWrapper ;
+extern const char * gWrapperFileContent_58_libpmFileWrapper ;
+extern const char * gWrapperFileContent_38_libpmFileWrapper ;
+extern const char * gWrapperFileContent_39_libpmFileWrapper ;
+extern const char * gWrapperFileContent_43_libpmFileWrapper ;
+extern const char * gWrapperFileContent_36_libpmFileWrapper ;
+extern const char * gWrapperFileContent_67_libpmFileWrapper ;
+extern const char * gWrapperFileContent_49_libpmFileWrapper ;
+extern const char * gWrapperFileContent_50_libpmFileWrapper ;
+extern const char * gWrapperFileContent_60_libpmFileWrapper ;
+extern const char * gWrapperFileContent_48_libpmFileWrapper ;
+extern const char * gWrapperFileContent_73_libpmFileWrapper ;
+extern const char * gWrapperFileContent_71_libpmFileWrapper ;
+extern const char * gWrapperFileContent_70_libpmFileWrapper ;
+extern const char * gWrapperFileContent_72_libpmFileWrapper ;
+extern const char * gWrapperFileContent_91_libpmFileWrapper ;
+extern const char * gWrapperFileContent_100_libpmFileWrapper ;
+extern const char * gWrapperFileContent_92_libpmFileWrapper ;
+extern const char * gWrapperFileContent_87_libpmFileWrapper ;
+extern const char * gWrapperFileContent_89_libpmFileWrapper ;
+extern const char * gWrapperFileContent_97_libpmFileWrapper ;
+extern const char * gWrapperFileContent_82_libpmFileWrapper ;
+extern const char * gWrapperFileContent_101_libpmFileWrapper ;
+extern const char * gWrapperFileContent_85_libpmFileWrapper ;
+extern const char * gWrapperFileContent_88_libpmFileWrapper ;
+extern const char * gWrapperFileContent_93_libpmFileWrapper ;
+extern const char * gWrapperFileContent_74_libpmFileWrapper ;
+extern const char * gWrapperFileContent_96_libpmFileWrapper ;
+extern const char * gWrapperFileContent_86_libpmFileWrapper ;
+extern const char * gWrapperFileContent_90_libpmFileWrapper ;
+extern const char * gWrapperFileContent_80_libpmFileWrapper ;
+extern const char * gWrapperFileContent_79_libpmFileWrapper ;
+extern const char * gWrapperFileContent_94_libpmFileWrapper ;
+extern const char * gWrapperFileContent_75_libpmFileWrapper ;
+extern const char * gWrapperFileContent_83_libpmFileWrapper ;
+extern const char * gWrapperFileContent_99_libpmFileWrapper ;
+extern const char * gWrapperFileContent_95_libpmFileWrapper ;
+extern const char * gWrapperFileContent_102_libpmFileWrapper ;
+extern const char * gWrapperFileContent_76_libpmFileWrapper ;
+extern const char * gWrapperFileContent_78_libpmFileWrapper ;
+extern const char * gWrapperFileContent_98_libpmFileWrapper ;
+extern const char * gWrapperFileContent_81_libpmFileWrapper ;
+extern const char * gWrapperFileContent_77_libpmFileWrapper ;
+extern const char * gWrapperFileContent_84_libpmFileWrapper ;
+
+//--------------------------------------------------------------------------------------------------
+
+
+//--------------------------------------------------------------------------------------------------
+
+extern const cRegularFileWrapper gWrapperFile_0_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_1_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_2_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_3_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_4_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_5_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_6_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_7_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_8_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_9_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_10_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_11_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_12_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_13_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_14_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_15_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_16_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_17_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_18_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_19_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_20_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_21_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_22_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_23_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_24_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_25_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_26_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_27_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_28_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_29_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_30_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_31_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_32_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_33_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_34_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_35_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_36_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_37_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_38_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_39_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_40_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_41_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_42_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_43_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_44_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_45_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_46_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_47_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_48_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_49_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_50_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_51_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_52_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_53_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_54_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_55_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_56_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_57_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_58_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_59_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_60_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_61_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_62_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_63_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_64_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_65_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_66_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_67_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_68_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_69_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_70_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_71_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_72_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_73_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_74_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_75_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_76_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_77_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_78_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_79_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_80_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_81_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_82_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_83_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_84_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_85_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_86_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_87_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_88_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_89_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_90_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_91_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_92_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_93_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_94_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_95_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_96_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_97_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_98_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_99_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_100_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_101_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_102_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_103_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_104_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_105_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_106_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_107_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_108_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_109_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_110_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_111_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_112_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_113_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_114_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_115_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_116_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_117_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_118_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_119_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_120_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_121_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_122_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_123_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_124_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_125_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_126_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_127_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_128_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_129_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_130_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_131_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_132_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_133_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_134_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_135_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_136_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_137_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_138_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_139_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_140_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_141_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_142_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_143_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_144_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_145_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_146_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_147_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_148_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_149_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_150_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_151_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_152_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_153_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_154_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_155_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_156_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_157_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_158_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_159_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_160_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_161_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_162_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_163_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_164_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_165_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_166_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_167_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_168_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_169_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_170_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_171_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_172_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_173_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_174_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_175_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_176_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_177_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_178_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_179_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_180_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_181_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_182_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_183_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_184_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_185_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_186_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_187_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_188_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_189_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_190_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_191_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_192_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_193_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_194_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_195_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_196_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_197_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_198_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_199_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_200_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_201_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_202_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_203_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_204_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_205_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_206_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_207_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_208_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_209_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_210_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_211_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_212_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_213_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_214_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_215_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_216_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_217_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_218_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_219_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_220_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_221_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_222_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_223_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_224_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_225_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_226_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_227_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_228_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_229_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_230_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_231_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_232_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_233_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_234_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_235_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_236_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_237_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_238_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_239_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_240_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_241_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_242_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_243_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_244_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_245_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_246_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_247_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_248_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_249_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_250_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_251_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_252_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_253_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_254_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_255_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_256_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_257_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_258_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_259_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_260_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_261_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_262_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_263_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_264_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_265_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_266_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_267_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_268_libpmFileWrapper ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const cDirectoryWrapper gWrapperDirectory_0_libpmFileWrapper ;
+extern const cDirectoryWrapper gWrapperDirectory_1_libpmFileWrapper ;
+extern const cDirectoryWrapper gWrapperDirectory_2_libpmFileWrapper ;
+extern const cDirectoryWrapper gWrapperDirectory_3_libpmFileWrapper ;
+extern const cDirectoryWrapper gWrapperDirectory_4_libpmFileWrapper ;
+extern const cDirectoryWrapper gWrapperDirectory_5_libpmFileWrapper ;
+extern const cDirectoryWrapper gWrapperDirectory_6_libpmFileWrapper ;
+extern const cDirectoryWrapper gWrapperDirectory_7_libpmFileWrapper ;
+extern const cDirectoryWrapper gWrapperDirectory_8_libpmFileWrapper ;
+extern const cDirectoryWrapper gWrapperDirectory_9_libpmFileWrapper ;
+extern const cDirectoryWrapper gWrapperDirectory_10_libpmFileWrapper ;
+extern const cDirectoryWrapper gWrapperDirectory_11_libpmFileWrapper ;
+extern const cDirectoryWrapper gWrapperDirectory_12_libpmFileWrapper ;
+extern const cDirectoryWrapper gWrapperDirectory_13_libpmFileWrapper ;
+extern const cDirectoryWrapper gWrapperDirectory_14_libpmFileWrapper ;
+extern const cDirectoryWrapper gWrapperDirectory_15_libpmFileWrapper ;
+extern const cDirectoryWrapper gWrapperDirectory_16_libpmFileWrapper ;
 

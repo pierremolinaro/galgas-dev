@@ -288,7 +288,7 @@ override method @weakReferenceTypeForGeneration appendSpecificImplementation
 //--------------------------------------------------------------------------------------------------
 
 filewrapper weakClassGenerationTemplate in "../+generation-templates/type_generation" {
-  "ggs"
+  "galgas4"
 }{
 }{
 

@@ -140,7 +140,7 @@ syntax galgas3ProjectSyntax (galgasScanner3) {
      let sourceDirectory = inProjectSourceFilePath.string.deletingLastPathComponent + "/sources"
      var extensionList = @stringlist ()
      extensionList += !"galgas3"
-     extensionList += !"ggs"
+     extensionList += !"galgas4"
      let projectSourceList = [sourceDirectory regularFilesWithExtensions !true !extensionList]
   //--- Enumerate tool C++ sources directory
      let toolCppDirectory = sourceDirectory + "/tool-sources"

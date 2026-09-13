@@ -133,7 +133,7 @@ gui cocoa {
 
   with lexique galgasScanner4 {
     fileExtension : "galgas4project"
-    fileExtension : "ggs"
+    fileExtension : "galgas4"
     blockComment : "//"
     title: "Source GALGAS 4"
 

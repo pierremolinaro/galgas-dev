@@ -7,4363 +7,6 @@
 
 #include "all-declarations-17.h"
 
-
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_galgas_34_LexiqueComponentSyntax::rule_galgas_34_LexiqueComponentSyntax_declaration_i0_ (GGS_galgasDeclarationAST & ioArgument_ioDeclarations,
-                                                                                                      Lexique_galgasScanner_34_ * inCompiler) {
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_lexique COMMA_SOURCE_FILE ("lexique-component.galgas3", 454)) ;
-  GGS_lstring var_lexiqueComponentName_16780 = inCompiler->synthetizedAttribute_tokenString () ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("lexique-component.galgas3", 456)) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__7B_ COMMA_SOURCE_FILE ("lexique-component.galgas3", 457)) ;
-  GGS_templateDelimitorListAST var_templateDelimitorList_16870 = GGS_templateDelimitorListAST::init (inCompiler COMMA_HERE) ;
-  GGS_templateReplacementListAST var_templateReplacementList_16934 = GGS_templateReplacementListAST::init (inCompiler COMMA_HERE) ;
-  GGS_lexicalAttributeListAST var_lexicalAttributeList_16997 = GGS_lexicalAttributeListAST::init (inCompiler COMMA_HERE) ;
-  GGS_lexicalStyleListAST var_lexicalStyleList_17053 = GGS_lexicalStyleListAST::init (inCompiler COMMA_HERE) ;
-  GGS_terminalDeclarationListAST var_terminalDeclarationList_17112 = GGS_terminalDeclarationListAST::init (inCompiler COMMA_HERE) ;
-  GGS_lexicalMessageDeclarationListAST var_lexicalMessageDeclarationList_17184 = GGS_lexicalMessageDeclarationListAST::init (inCompiler COMMA_HERE) ;
-  GGS_lexicalListDeclarationListAST var_lexicalListDeclarationList_17259 = GGS_lexicalListDeclarationListAST::init (inCompiler COMMA_HERE) ;
-  GGS_lexicalRuleListAST var_lexicalRuleList_17320 = GGS_lexicalRuleListAST::init (inCompiler COMMA_HERE) ;
-  GGS_indexingListAST var_indexingListAST_17367 = GGS_indexingListAST::init (inCompiler COMMA_HERE) ;
-  bool repeatFlag_0 = true ;
-  while (repeatFlag_0) {
-    switch (select_galgas_34_LexiqueComponentSyntax_0 (inCompiler)) {
-    case 2: {
-      nt_template_5F_delimitor_ (var_templateDelimitorList_16870, inCompiler) ;
-    } break ;
-    case 3: {
-      nt_template_5F_replacement_ (var_templateReplacementList_16934, inCompiler) ;
-    } break ;
-    case 4: {
-      nt_lexical_5F_attribute_5F_declaration_ (var_lexicalAttributeList_16997, inCompiler) ;
-    } break ;
-    case 5: {
-      nt_style_5F_declaration_ (var_lexicalStyleList_17053, inCompiler) ;
-    } break ;
-    case 6: {
-      nt_terminal_5F_declaration_ (var_terminalDeclarationList_17112, inCompiler) ;
-    } break ;
-    case 7: {
-      nt_lexical_5F_list_5F_declaration_ (var_lexicalListDeclarationList_17259, inCompiler) ;
-    } break ;
-    case 8: {
-      nt_lexical_5F_explicit_5F_rule_ (var_lexicalRuleList_17320, inCompiler) ;
-    } break ;
-    case 9: {
-      nt_lexical_5F_implicit_5F_rule_ (var_lexicalRuleList_17320, inCompiler) ;
-    } break ;
-    case 10: {
-      nt_lexical_5F_message_5F_declaration_ (var_lexicalMessageDeclarationList_17184, inCompiler) ;
-    } break ;
-    case 11: {
-      nt_lexical_5F_indexing_5F_declaration_ (var_indexingListAST_17367, inCompiler) ;
-    } break ;
-    default:
-      repeatFlag_0 = false ;
-      break ;
-    }
-  }
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__7D_ COMMA_SOURCE_FILE ("lexique-component.galgas3", 490)) ;
-  ioArgument_ioDeclarations.mProperty_mDeclarationList.addAssignOperation (GGS_lexiqueComponentAST::init_21_isPredefined_21__21__21__21__21__21__21__21__21__21__21_ (GGS_bool (false), var_lexiqueComponentName_16780, GGS_bool (false), var_templateDelimitorList_16870, var_templateReplacementList_16934, var_lexicalAttributeList_16997, var_lexicalStyleList_17053, var_terminalDeclarationList_17112, var_lexicalMessageDeclarationList_17184, var_lexicalListDeclarationList_17259, var_lexicalRuleList_17320, var_indexingListAST_17367, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("lexique-component.galgas3", 491)) ;
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_galgas_34_LexiqueComponentSyntax::rule_galgas_34_LexiqueComponentSyntax_declaration_i0_indexing (Lexique_galgasScanner_34_ * inCompiler) {
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_lexique COMMA_SOURCE_FILE ("lexique-component.galgas3", 454)) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("lexique-component.galgas3", 456)) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__7B_ COMMA_SOURCE_FILE ("lexique-component.galgas3", 457)) ;
-  bool repeatFlag_0 = true ;
-  while (repeatFlag_0) {
-    switch (select_galgas_34_LexiqueComponentSyntax_0 (inCompiler)) {
-    case 2: {
-      nt_template_5F_delimitor_indexing (inCompiler) ;
-    } break ;
-    case 3: {
-      nt_template_5F_replacement_indexing (inCompiler) ;
-    } break ;
-    case 4: {
-      nt_lexical_5F_attribute_5F_declaration_indexing (inCompiler) ;
-    } break ;
-    case 5: {
-      nt_style_5F_declaration_indexing (inCompiler) ;
-    } break ;
-    case 6: {
-      nt_terminal_5F_declaration_indexing (inCompiler) ;
-    } break ;
-    case 7: {
-      nt_lexical_5F_list_5F_declaration_indexing (inCompiler) ;
-    } break ;
-    case 8: {
-      nt_lexical_5F_explicit_5F_rule_indexing (inCompiler) ;
-    } break ;
-    case 9: {
-      nt_lexical_5F_implicit_5F_rule_indexing (inCompiler) ;
-    } break ;
-    case 10: {
-      nt_lexical_5F_message_5F_declaration_indexing (inCompiler) ;
-    } break ;
-    case 11: {
-      nt_lexical_5F_indexing_5F_declaration_indexing (inCompiler) ;
-    } break ;
-    default:
-      repeatFlag_0 = false ;
-      break ;
-    }
-  }
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__7D_ COMMA_SOURCE_FILE ("lexique-component.galgas3", 490)) ;
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_galgas_34_LexiqueComponentSyntax::rule_galgas_34_LexiqueComponentSyntax_lexical_5F_indexing_5F_declaration_i1_ (GGS_indexingListAST & ioArgument_ioIndexingListAST,
-                                                                                                                             Lexique_galgasScanner_34_ * inCompiler) {
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_indexing COMMA_SOURCE_FILE ("lexique-component.galgas3", 510)) ;
-  GGS_lstring var_indexName_18734 = inCompiler->synthetizedAttribute_tokenString () ;
-  inCompiler->enterIndexing (Lexique_galgasScanner_34_::kIndexing_indexingNameDefinition, "") ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("lexique-component.galgas3", 511)) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__3A_ COMMA_SOURCE_FILE ("lexique-component.galgas3", 512)) ;
-  GGS_lstring var_indexComment_18813 = inCompiler->synthetizedAttribute_tokenString () ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__22_string_22_ COMMA_SOURCE_FILE ("lexique-component.galgas3", 513)) ;
-  ioArgument_ioIndexingListAST.addAssignOperation (var_indexName_18734, var_indexComment_18813  COMMA_SOURCE_FILE ("lexique-component.galgas3", 514)) ;
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_galgas_34_LexiqueComponentSyntax::rule_galgas_34_LexiqueComponentSyntax_lexical_5F_indexing_5F_declaration_i1_indexing (Lexique_galgasScanner_34_ * inCompiler) {
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_indexing COMMA_SOURCE_FILE ("lexique-component.galgas3", 510)) ;
-  inCompiler->enterIndexing (Lexique_galgasScanner_34_::kIndexing_indexingNameDefinition, "") ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("lexique-component.galgas3", 511)) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__3A_ COMMA_SOURCE_FILE ("lexique-component.galgas3", 512)) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__22_string_22_ COMMA_SOURCE_FILE ("lexique-component.galgas3", 513)) ;
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_galgas_34_LexiqueComponentSyntax::rule_galgas_34_LexiqueComponentSyntax_lexical_5F_message_5F_declaration_i2_ (GGS_lexicalMessageDeclarationListAST & ioArgument_ioLexicalMessageDeclarationList,
-                                                                                                                            Lexique_galgasScanner_34_ * inCompiler) {
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__25_errorMessage COMMA_SOURCE_FILE ("lexique-component.galgas3", 521)) ;
-  GGS_lstring var_messageName_19145 = inCompiler->synthetizedAttribute_tokenString () ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("lexique-component.galgas3", 522)) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__3A_ COMMA_SOURCE_FILE ("lexique-component.galgas3", 523)) ;
-  GGS_lstring var_messageValue_19194 = inCompiler->synthetizedAttribute_tokenString () ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__22_string_22_ COMMA_SOURCE_FILE ("lexique-component.galgas3", 524)) ;
-  ioArgument_ioLexicalMessageDeclarationList.addAssignOperation (var_messageName_19145, var_messageValue_19194  COMMA_SOURCE_FILE ("lexique-component.galgas3", 525)) ;
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_galgas_34_LexiqueComponentSyntax::rule_galgas_34_LexiqueComponentSyntax_lexical_5F_message_5F_declaration_i2_indexing (Lexique_galgasScanner_34_ * inCompiler) {
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__25_errorMessage COMMA_SOURCE_FILE ("lexique-component.galgas3", 521)) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("lexique-component.galgas3", 522)) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__3A_ COMMA_SOURCE_FILE ("lexique-component.galgas3", 523)) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__22_string_22_ COMMA_SOURCE_FILE ("lexique-component.galgas3", 524)) ;
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_galgas_34_LexiqueComponentSyntax::rule_galgas_34_LexiqueComponentSyntax_lexical_5F_implicit_5F_rule_i3_ (GGS_lexicalRuleListAST & ioArgument_ioLexicalImplicitRuleList,
-                                                                                                                      Lexique_galgasScanner_34_ * inCompiler) {
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_rule COMMA_SOURCE_FILE ("lexique-component.galgas3", 531)) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_list COMMA_SOURCE_FILE ("lexique-component.galgas3", 532)) ;
-  GGS_lstring var_listName_19514 = inCompiler->synthetizedAttribute_tokenString () ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("lexique-component.galgas3", 533)) ;
-  ioArgument_ioLexicalImplicitRuleList.addAssignOperation (GGS_lexicalImplicitRuleAST::init_21_ (var_listName_19514, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("lexique-component.galgas3", 534)) ;
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_galgas_34_LexiqueComponentSyntax::rule_galgas_34_LexiqueComponentSyntax_lexical_5F_implicit_5F_rule_i3_indexing (Lexique_galgasScanner_34_ * inCompiler) {
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_rule COMMA_SOURCE_FILE ("lexique-component.galgas3", 531)) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_list COMMA_SOURCE_FILE ("lexique-component.galgas3", 532)) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("lexique-component.galgas3", 533)) ;
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_galgas_34_LexiqueComponentSyntax::rule_galgas_34_LexiqueComponentSyntax_lexical_5F_explicit_5F_rule_i4_ (GGS_lexicalRuleListAST & ioArgument_ioLexicalExplicitRuleList,
-                                                                                                                      Lexique_galgasScanner_34_ * inCompiler) {
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_rule COMMA_SOURCE_FILE ("lexique-component.galgas3", 540)) ;
-  GGS_lexicalExpressionAST var_lexicalRuleExpression_19844 ;
-  nt_lexical_5F_expression_ (var_lexicalRuleExpression_19844, inCompiler) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__7B_ COMMA_SOURCE_FILE ("lexique-component.galgas3", 542)) ;
-  GGS_lexicalInstructionListAST var_instructionList_19909 = GGS_lexicalInstructionListAST::init (inCompiler COMMA_HERE) ;
-  bool repeatFlag_0 = true ;
-  while (repeatFlag_0) {
-    if (select_galgas_34_LexiqueComponentSyntax_1 (inCompiler) == 2) {
-      nt_lexical_5F_instruction_ (var_instructionList_19909, inCompiler) ;
-    }else{
-      repeatFlag_0 = false ;
-    }
-  }
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__7D_ COMMA_SOURCE_FILE ("lexique-component.galgas3", 548)) ;
-  ioArgument_ioLexicalExplicitRuleList.addAssignOperation (GGS_lexicalExplicitRuleAST::init_21__21_ (var_lexicalRuleExpression_19844, var_instructionList_19909, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("lexique-component.galgas3", 549)) ;
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_galgas_34_LexiqueComponentSyntax::rule_galgas_34_LexiqueComponentSyntax_lexical_5F_explicit_5F_rule_i4_indexing (Lexique_galgasScanner_34_ * inCompiler) {
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_rule COMMA_SOURCE_FILE ("lexique-component.galgas3", 540)) ;
-  nt_lexical_5F_expression_indexing (inCompiler) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__7B_ COMMA_SOURCE_FILE ("lexique-component.galgas3", 542)) ;
-  bool repeatFlag_0 = true ;
-  while (repeatFlag_0) {
-    if (select_galgas_34_LexiqueComponentSyntax_1 (inCompiler) == 2) {
-      nt_lexical_5F_instruction_indexing (inCompiler) ;
-    }else{
-      repeatFlag_0 = false ;
-    }
-  }
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__7D_ COMMA_SOURCE_FILE ("lexique-component.galgas3", 548)) ;
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_galgas_34_LexiqueComponentSyntax::rule_galgas_34_LexiqueComponentSyntax_lexical_5F_instruction_i5_ (GGS_lexicalInstructionListAST & ioArgument_ioInstructionList,
-                                                                                                                 Lexique_galgasScanner_34_ * inCompiler) {
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_send COMMA_SOURCE_FILE ("lexique-component.galgas3", 555)) ;
-  GGS_lexicalInstructionAST var_instruction_20369 ;
-  nt_lexical_5F_send_5F_instruction_ (var_instruction_20369, inCompiler) ;
-  ioArgument_ioInstructionList.addAssignOperation (var_instruction_20369  COMMA_SOURCE_FILE ("lexique-component.galgas3", 557)) ;
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_galgas_34_LexiqueComponentSyntax::rule_galgas_34_LexiqueComponentSyntax_lexical_5F_instruction_i5_indexing (Lexique_galgasScanner_34_ * inCompiler) {
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_send COMMA_SOURCE_FILE ("lexique-component.galgas3", 555)) ;
-  nt_lexical_5F_send_5F_instruction_indexing (inCompiler) ;
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_galgas_34_LexiqueComponentSyntax::rule_galgas_34_LexiqueComponentSyntax_repeat_5F_while_5F_branch_i6_ (GGS_lexicalWhileBranchListAST & ioArgument_ioLexicalWhileBranchList,
-                                                                                                                    Lexique_galgasScanner_34_ * inCompiler) {
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_while COMMA_SOURCE_FILE ("lexique-component.galgas3", 563)) ;
-  GGS_lexicalExpressionAST var_whileExpression_20675 ;
-  nt_lexical_5F_expression_ (var_whileExpression_20675, inCompiler) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__3A_ COMMA_SOURCE_FILE ("lexique-component.galgas3", 565)) ;
-  GGS_lexicalInstructionListAST var_whileInstructionList_20734 = GGS_lexicalInstructionListAST::init (inCompiler COMMA_HERE) ;
-  bool repeatFlag_0 = true ;
-  while (repeatFlag_0) {
-    if (select_galgas_34_LexiqueComponentSyntax_2 (inCompiler) == 2) {
-      nt_lexical_5F_instruction_ (var_whileInstructionList_20734, inCompiler) ;
-    }else{
-      repeatFlag_0 = false ;
-    }
-  }
-  ioArgument_ioLexicalWhileBranchList.addAssignOperation (var_whileExpression_20675, var_whileInstructionList_20734  COMMA_SOURCE_FILE ("lexique-component.galgas3", 571)) ;
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_galgas_34_LexiqueComponentSyntax::rule_galgas_34_LexiqueComponentSyntax_repeat_5F_while_5F_branch_i6_indexing (Lexique_galgasScanner_34_ * inCompiler) {
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_while COMMA_SOURCE_FILE ("lexique-component.galgas3", 563)) ;
-  nt_lexical_5F_expression_indexing (inCompiler) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__3A_ COMMA_SOURCE_FILE ("lexique-component.galgas3", 565)) ;
-  bool repeatFlag_0 = true ;
-  while (repeatFlag_0) {
-    if (select_galgas_34_LexiqueComponentSyntax_2 (inCompiler) == 2) {
-      nt_lexical_5F_instruction_indexing (inCompiler) ;
-    }else{
-      repeatFlag_0 = false ;
-    }
-  }
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_galgas_34_LexiqueComponentSyntax::rule_galgas_34_LexiqueComponentSyntax_lexical_5F_output_5F_effective_5F_argument_i7_ (GGS_lexicalRoutineOrFunctionFormalInputArgumentAST & outArgument_outEffectiveArgument,
-                                                                                                                                     Lexique_galgasScanner_34_ * inCompiler) {
-  outArgument_outEffectiveArgument.drop () ; // Release 'out' argument
-  GGS_lchar var_character_21159 = inCompiler->synthetizedAttribute_charValue () ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__27_char_27_ COMMA_SOURCE_FILE ("lexique-component.galgas3", 577)) ;
-  outArgument_outEffectiveArgument = GGS_lexicalCharacterInputArgumentAST::init_21_ (var_character_21159, inCompiler COMMA_HERE) ;
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_galgas_34_LexiqueComponentSyntax::rule_galgas_34_LexiqueComponentSyntax_lexical_5F_output_5F_effective_5F_argument_i7_indexing (Lexique_galgasScanner_34_ * inCompiler) {
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__27_char_27_ COMMA_SOURCE_FILE ("lexique-component.galgas3", 577)) ;
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_galgas_34_LexiqueComponentSyntax::rule_galgas_34_LexiqueComponentSyntax_lexical_5F_output_5F_effective_5F_argument_i8_ (GGS_lexicalRoutineOrFunctionFormalInputArgumentAST & outArgument_outEffectiveArgument,
-                                                                                                                                     Lexique_galgasScanner_34_ * inCompiler) {
-  outArgument_outEffectiveArgument.drop () ; // Release 'out' argument
-  GGS_lbigint var_unsignedValue_21487 = inCompiler->synthetizedAttribute_bigintValue () ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_literalInt COMMA_SOURCE_FILE ("lexique-component.galgas3", 584)) ;
-  outArgument_outEffectiveArgument = GGS_lexicalUnsignedInputArgumentAST::init_21_ (var_unsignedValue_21487, inCompiler COMMA_HERE) ;
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_galgas_34_LexiqueComponentSyntax::rule_galgas_34_LexiqueComponentSyntax_lexical_5F_output_5F_effective_5F_argument_i8_indexing (Lexique_galgasScanner_34_ * inCompiler) {
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_literalInt COMMA_SOURCE_FILE ("lexique-component.galgas3", 584)) ;
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_galgas_34_LexiqueComponentSyntax::rule_galgas_34_LexiqueComponentSyntax_lexical_5F_output_5F_effective_5F_argument_i9_ (GGS_lexicalRoutineOrFunctionFormalInputArgumentAST & outArgument_outEffectiveArgument,
-                                                                                                                                     Lexique_galgasScanner_34_ * inCompiler) {
-  outArgument_outEffectiveArgument.drop () ; // Release 'out' argument
-  GGS_location var_currentLocation_21808 = GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("lexique-component.galgas3", 591)) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__2A_ COMMA_SOURCE_FILE ("lexique-component.galgas3", 592)) ;
-  outArgument_outEffectiveArgument = GGS_lexicalCurrentCharacterInputArgumentAST::init_21_ (var_currentLocation_21808, inCompiler COMMA_HERE) ;
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_galgas_34_LexiqueComponentSyntax::rule_galgas_34_LexiqueComponentSyntax_lexical_5F_output_5F_effective_5F_argument_i9_indexing (Lexique_galgasScanner_34_ * inCompiler) {
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__2A_ COMMA_SOURCE_FILE ("lexique-component.galgas3", 592)) ;
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_galgas_34_LexiqueComponentSyntax::rule_galgas_34_LexiqueComponentSyntax_lexical_5F_output_5F_effective_5F_argument_i10_ (GGS_lexicalRoutineOrFunctionFormalInputArgumentAST & outArgument_outEffectiveArgument,
-                                                                                                                                      Lexique_galgasScanner_34_ * inCompiler) {
-  outArgument_outEffectiveArgument.drop () ; // Release 'out' argument
-  GGS_lstring var_idf_22180 = inCompiler->synthetizedAttribute_tokenString () ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("lexique-component.galgas3", 599)) ;
-  switch (select_galgas_34_LexiqueComponentSyntax_3 (inCompiler)) {
-  case 1: {
-    outArgument_outEffectiveArgument = GGS_lexicalAttributeInputArgumentAST::init_21_ (var_idf_22180, inCompiler COMMA_HERE) ;
-  } break ;
-  case 2: {
-    inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__28_ COMMA_SOURCE_FILE ("lexique-component.galgas3", 603)) ;
-    GGS_lexicalFunctionCallActualArgumentListAST var_functionActualArgumentList_22334 = GGS_lexicalFunctionCallActualArgumentListAST::init (inCompiler COMMA_HERE) ;
-    bool repeatFlag_0 = true ;
-    while (repeatFlag_0) {
-      if (select_galgas_34_LexiqueComponentSyntax_4 (inCompiler) == 2) {
-        inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__21_ COMMA_SOURCE_FILE ("lexique-component.galgas3", 607)) ;
-        GGS_lexicalRoutineOrFunctionFormalInputArgumentAST var_arg_22501 ;
-        nt_lexical_5F_output_5F_effective_5F_argument_ (var_arg_22501, inCompiler) ;
-        var_functionActualArgumentList_22334.addAssignOperation (var_arg_22501  COMMA_SOURCE_FILE ("lexique-component.galgas3", 609)) ;
-      }else{
-        repeatFlag_0 = false ;
-      }
-    }
-    inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__29_ COMMA_SOURCE_FILE ("lexique-component.galgas3", 611)) ;
-    outArgument_outEffectiveArgument = GGS_lexicalFunctionInputArgumentAST::init_21__21_ (var_idf_22180, var_functionActualArgumentList_22334, inCompiler COMMA_HERE) ;
-  } break ;
-  default:
-    break ;
-  }
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_galgas_34_LexiqueComponentSyntax::rule_galgas_34_LexiqueComponentSyntax_lexical_5F_output_5F_effective_5F_argument_i10_indexing (Lexique_galgasScanner_34_ * inCompiler) {
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("lexique-component.galgas3", 599)) ;
-  switch (select_galgas_34_LexiqueComponentSyntax_3 (inCompiler)) {
-  case 1: {
-  } break ;
-  case 2: {
-    inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__28_ COMMA_SOURCE_FILE ("lexique-component.galgas3", 603)) ;
-    bool repeatFlag_0 = true ;
-    while (repeatFlag_0) {
-      if (select_galgas_34_LexiqueComponentSyntax_4 (inCompiler) == 2) {
-        inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__21_ COMMA_SOURCE_FILE ("lexique-component.galgas3", 607)) ;
-        nt_lexical_5F_output_5F_effective_5F_argument_indexing (inCompiler) ;
-      }else{
-        repeatFlag_0 = false ;
-      }
-    }
-    inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__29_ COMMA_SOURCE_FILE ("lexique-component.galgas3", 611)) ;
-  } break ;
-  default:
-    break ;
-  }
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_galgas_34_LexiqueComponentSyntax::rule_galgas_34_LexiqueComponentSyntax_lexical_5F_expression_i11_ (GGS_lexicalExpressionAST & outArgument_outExpression,
-                                                                                                                 Lexique_galgasScanner_34_ * inCompiler) {
-  outArgument_outExpression.drop () ; // Release 'out' argument
-  nt_lexical_5F_term_ (outArgument_outExpression, inCompiler) ;
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_galgas_34_LexiqueComponentSyntax::rule_galgas_34_LexiqueComponentSyntax_lexical_5F_expression_i11_indexing (Lexique_galgasScanner_34_ * inCompiler) {
-  nt_lexical_5F_term_indexing (inCompiler) ;
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_galgas_34_LexiqueComponentSyntax::rule_galgas_34_LexiqueComponentSyntax_lexical_5F_term_i12_ (GGS_lexicalExpressionAST & outArgument_outExpression,
-                                                                                                           Lexique_galgasScanner_34_ * inCompiler) {
-  outArgument_outExpression.drop () ; // Release 'out' argument
-  nt_lexical_5F_factor_ (outArgument_outExpression, inCompiler) ;
-  bool repeatFlag_0 = true ;
-  while (repeatFlag_0) {
-    if (select_galgas_34_LexiqueComponentSyntax_5 (inCompiler) == 2) {
-      inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__7C_ COMMA_SOURCE_FILE ("lexique-component.galgas3", 628)) ;
-      GGS_lexicalExpressionAST var_rightExpression_23144 ;
-      nt_lexical_5F_factor_ (var_rightExpression_23144, inCompiler) ;
-      outArgument_outExpression = GGS_lexicalOrExpressionAST::init_21__21_ (outArgument_outExpression, var_rightExpression_23144, inCompiler COMMA_HERE) ;
-    }else{
-      repeatFlag_0 = false ;
-    }
-  }
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_galgas_34_LexiqueComponentSyntax::rule_galgas_34_LexiqueComponentSyntax_lexical_5F_term_i12_indexing (Lexique_galgasScanner_34_ * inCompiler) {
-  nt_lexical_5F_factor_indexing (inCompiler) ;
-  bool repeatFlag_0 = true ;
-  while (repeatFlag_0) {
-    if (select_galgas_34_LexiqueComponentSyntax_5 (inCompiler) == 2) {
-      inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__7C_ COMMA_SOURCE_FILE ("lexique-component.galgas3", 628)) ;
-      nt_lexical_5F_factor_indexing (inCompiler) ;
-    }else{
-      repeatFlag_0 = false ;
-    }
-  }
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_galgas_34_LexiqueComponentSyntax::rule_galgas_34_LexiqueComponentSyntax_lexical_5F_factor_i13_ (GGS_lexicalExpressionAST & outArgument_outExpression,
-                                                                                                             Lexique_galgasScanner_34_ * inCompiler) {
-  outArgument_outExpression.drop () ; // Release 'out' argument
-  GGS_lstring var_string_23437 = inCompiler->synthetizedAttribute_tokenString () ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__22_string_22_ COMMA_SOURCE_FILE ("lexique-component.galgas3", 637)) ;
-  outArgument_outExpression = GGS_lexicalStringMatchAST::init_21_ (var_string_23437, inCompiler COMMA_HERE) ;
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_galgas_34_LexiqueComponentSyntax::rule_galgas_34_LexiqueComponentSyntax_lexical_5F_factor_i13_indexing (Lexique_galgasScanner_34_ * inCompiler) {
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__22_string_22_ COMMA_SOURCE_FILE ("lexique-component.galgas3", 637)) ;
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_galgas_34_LexiqueComponentSyntax::rule_galgas_34_LexiqueComponentSyntax_lexical_5F_factor_i14_ (GGS_lexicalExpressionAST & outArgument_outExpression,
-                                                                                                             Lexique_galgasScanner_34_ * inCompiler) {
-  outArgument_outExpression.drop () ; // Release 'out' argument
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__7E_ COMMA_SOURCE_FILE ("lexique-component.galgas3", 644)) ;
-  GGS_lstring var_string_23695 = inCompiler->synthetizedAttribute_tokenString () ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__22_string_22_ COMMA_SOURCE_FILE ("lexique-component.galgas3", 645)) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_error COMMA_SOURCE_FILE ("lexique-component.galgas3", 646)) ;
-  GGS_lstring var_errorMessage_23736 = inCompiler->synthetizedAttribute_tokenString () ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("lexique-component.galgas3", 647)) ;
-  outArgument_outExpression = GGS_lexicalStringNotMatchAST::init_21__21_ (var_string_23695, var_errorMessage_23736, inCompiler COMMA_HERE) ;
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_galgas_34_LexiqueComponentSyntax::rule_galgas_34_LexiqueComponentSyntax_lexical_5F_factor_i14_indexing (Lexique_galgasScanner_34_ * inCompiler) {
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__7E_ COMMA_SOURCE_FILE ("lexique-component.galgas3", 644)) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__22_string_22_ COMMA_SOURCE_FILE ("lexique-component.galgas3", 645)) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_error COMMA_SOURCE_FILE ("lexique-component.galgas3", 646)) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("lexique-component.galgas3", 647)) ;
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_galgas_34_LexiqueComponentSyntax::rule_galgas_34_LexiqueComponentSyntax_lexical_5F_factor_i15_ (GGS_lexicalExpressionAST & outArgument_outExpression,
-                                                                                                             Lexique_galgasScanner_34_ * inCompiler) {
-  outArgument_outExpression.drop () ; // Release 'out' argument
-  GGS_lchar var_character_24014 = inCompiler->synthetizedAttribute_charValue () ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__27_char_27_ COMMA_SOURCE_FILE ("lexique-component.galgas3", 654)) ;
-  switch (select_galgas_34_LexiqueComponentSyntax_6 (inCompiler)) {
-  case 1: {
-    outArgument_outExpression = GGS_lexicalCharacterMatchAST::init_21_ (var_character_24014, inCompiler COMMA_HERE) ;
-  } break ;
-  case 2: {
-    inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__2D__3E_ COMMA_SOURCE_FILE ("lexique-component.galgas3", 658)) ;
-    GGS_lchar var_upperBound_24141 = inCompiler->synthetizedAttribute_charValue () ;
-    inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__27_char_27_ COMMA_SOURCE_FILE ("lexique-component.galgas3", 659)) ;
-    outArgument_outExpression = GGS_lexicalCharacterIntervalMatchAST::init_21__21_ (var_character_24014, var_upperBound_24141, inCompiler COMMA_HERE) ;
-  } break ;
-  default:
-    break ;
-  }
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_galgas_34_LexiqueComponentSyntax::rule_galgas_34_LexiqueComponentSyntax_lexical_5F_factor_i15_indexing (Lexique_galgasScanner_34_ * inCompiler) {
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__27_char_27_ COMMA_SOURCE_FILE ("lexique-component.galgas3", 654)) ;
-  switch (select_galgas_34_LexiqueComponentSyntax_6 (inCompiler)) {
-  case 1: {
-  } break ;
-  case 2: {
-    inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__2D__3E_ COMMA_SOURCE_FILE ("lexique-component.galgas3", 658)) ;
-    inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__27_char_27_ COMMA_SOURCE_FILE ("lexique-component.galgas3", 659)) ;
-  } break ;
-  default:
-    break ;
-  }
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_galgas_34_LexiqueComponentSyntax::rule_galgas_34_LexiqueComponentSyntax_lexical_5F_factor_i16_ (GGS_lexicalExpressionAST & outArgument_outExpression,
-                                                                                                             Lexique_galgasScanner_34_ * inCompiler) {
-  outArgument_outExpression.drop () ; // Release 'out' argument
-  GGS_lstring var_characterSet_24442 = inCompiler->synthetizedAttribute_tokenString () ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("lexique-component.galgas3", 667)) ;
-  outArgument_outExpression = GGS_lexicalCharacterSetMatchAST::init_21_ (var_characterSet_24442, inCompiler COMMA_HERE) ;
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_galgas_34_LexiqueComponentSyntax::rule_galgas_34_LexiqueComponentSyntax_lexical_5F_factor_i16_indexing (Lexique_galgasScanner_34_ * inCompiler) {
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("lexique-component.galgas3", 667)) ;
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_galgas_34_LexiqueComponentSyntax::rule_galgas_34_LexiqueComponentSyntax_lexical_5F_list_5F_declaration_i17_ (GGS_lexicalListDeclarationListAST & ioArgument_ioLexicalListDeclarationList,
-                                                                                                                          Lexique_galgasScanner_34_ * inCompiler) {
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_list COMMA_SOURCE_FILE ("lexique-component.galgas3", 674)) ;
-  GGS_lstring var_name_24758 = inCompiler->synthetizedAttribute_tokenString () ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("lexique-component.galgas3", 675)) ;
-  GGS_sentLexicalAttributeListAST var_sentAttributeList_24800 = GGS_sentLexicalAttributeListAST::init (inCompiler COMMA_HERE) ;
-  bool repeatFlag_0 = true ;
-  while (repeatFlag_0) {
-    switch (select_galgas_34_LexiqueComponentSyntax_7 (inCompiler)) {
-    case 2: {
-      GGS_lstring var_selector_24869 = inCompiler->synthetizedAttribute_tokenString () ;
-      inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__21_selector_3A_ COMMA_SOURCE_FILE ("lexique-component.galgas3", 679)) ;
-      GGS_lstring var_sentAttribute_24902 = inCompiler->synthetizedAttribute_tokenString () ;
-      inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("lexique-component.galgas3", 680)) ;
-      var_sentAttributeList_24800.addAssignOperation (var_selector_24869, var_sentAttribute_24902  COMMA_SOURCE_FILE ("lexique-component.galgas3", 681)) ;
-    } break ;
-    case 3: {
-      inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__21_ COMMA_SOURCE_FILE ("lexique-component.galgas3", 683)) ;
-      GGS_lstring var_selector_24998 = GGS_string::makeEmptyString ().getter_here (inCompiler COMMA_SOURCE_FILE ("lexique-component.galgas3", 684)) ;
-      GGS_lstring var_sentAttribute_25041 = inCompiler->synthetizedAttribute_tokenString () ;
-      inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("lexique-component.galgas3", 685)) ;
-      var_sentAttributeList_24800.addAssignOperation (var_selector_24998, var_sentAttribute_25041  COMMA_SOURCE_FILE ("lexique-component.galgas3", 686)) ;
-    } break ;
-    default:
-      repeatFlag_0 = false ;
-      break ;
-    }
-  }
-  GGS_lstring var_theStyle_25132 ;
-  switch (select_galgas_34_LexiqueComponentSyntax_8 (inCompiler)) {
-  case 1: {
-    inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_style COMMA_SOURCE_FILE ("lexique-component.galgas3", 690)) ;
-    var_theStyle_25132 = inCompiler->synthetizedAttribute_tokenString () ;
-    inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("lexique-component.galgas3", 691)) ;
-  } break ;
-  case 2: {
-    var_theStyle_25132 = GGS_lstring::init_21__21_ (GGS_string::makeEmptyString (), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("lexique-component.galgas3", 693)), inCompiler COMMA_HERE) ;
-  } break ;
-  default:
-    break ;
-  }
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__25_errorMessage COMMA_SOURCE_FILE ("lexique-component.galgas3", 695)) ;
-  GGS_lstring var_errorMessage_25336 = inCompiler->synthetizedAttribute_tokenString () ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__22_string_22_ COMMA_SOURCE_FILE ("lexique-component.galgas3", 696)) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__7B_ COMMA_SOURCE_FILE ("lexique-component.galgas3", 697)) ;
-  GGS_lexicalListEntryListAST var_entryList_25365 = GGS_lexicalListEntryListAST::init (inCompiler COMMA_HERE) ;
-  bool repeatFlag_1 = true ;
-  while (repeatFlag_1) {
-    nt_lexical_5F_list_5F_entry_ (var_entryList_25365, inCompiler) ;
-    if (select_galgas_34_LexiqueComponentSyntax_9 (inCompiler) == 2) {
-      inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__2C_ COMMA_SOURCE_FILE ("lexique-component.galgas3", 702)) ;
-    }else{
-      repeatFlag_1 = false ;
-    }
-  }
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__7D_ COMMA_SOURCE_FILE ("lexique-component.galgas3", 704)) ;
-  ioArgument_ioLexicalListDeclarationList.addAssignOperation (var_name_24758, var_theStyle_25132, var_errorMessage_25336, var_sentAttributeList_24800, var_entryList_25365  COMMA_SOURCE_FILE ("lexique-component.galgas3", 705)) ;
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_galgas_34_LexiqueComponentSyntax::rule_galgas_34_LexiqueComponentSyntax_lexical_5F_list_5F_declaration_i17_indexing (Lexique_galgasScanner_34_ * inCompiler) {
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_list COMMA_SOURCE_FILE ("lexique-component.galgas3", 674)) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("lexique-component.galgas3", 675)) ;
-  bool repeatFlag_0 = true ;
-  while (repeatFlag_0) {
-    switch (select_galgas_34_LexiqueComponentSyntax_7 (inCompiler)) {
-    case 2: {
-      inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__21_selector_3A_ COMMA_SOURCE_FILE ("lexique-component.galgas3", 679)) ;
-      inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("lexique-component.galgas3", 680)) ;
-    } break ;
-    case 3: {
-      inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__21_ COMMA_SOURCE_FILE ("lexique-component.galgas3", 683)) ;
-      inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("lexique-component.galgas3", 685)) ;
-    } break ;
-    default:
-      repeatFlag_0 = false ;
-      break ;
-    }
-  }
-  switch (select_galgas_34_LexiqueComponentSyntax_8 (inCompiler)) {
-  case 1: {
-    inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_style COMMA_SOURCE_FILE ("lexique-component.galgas3", 690)) ;
-    inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("lexique-component.galgas3", 691)) ;
-  } break ;
-  case 2: {
-  } break ;
-  default:
-    break ;
-  }
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__25_errorMessage COMMA_SOURCE_FILE ("lexique-component.galgas3", 695)) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__22_string_22_ COMMA_SOURCE_FILE ("lexique-component.galgas3", 696)) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__7B_ COMMA_SOURCE_FILE ("lexique-component.galgas3", 697)) ;
-  bool repeatFlag_1 = true ;
-  while (repeatFlag_1) {
-    nt_lexical_5F_list_5F_entry_indexing (inCompiler) ;
-    if (select_galgas_34_LexiqueComponentSyntax_9 (inCompiler) == 2) {
-      inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__2C_ COMMA_SOURCE_FILE ("lexique-component.galgas3", 702)) ;
-    }else{
-      repeatFlag_1 = false ;
-    }
-  }
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__7D_ COMMA_SOURCE_FILE ("lexique-component.galgas3", 704)) ;
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_galgas_34_LexiqueComponentSyntax::rule_galgas_34_LexiqueComponentSyntax_lexical_5F_list_5F_entry_i18_ (GGS_lexicalListEntryListAST & ioArgument_ioLexicalListEntryList,
-                                                                                                                    Lexique_galgasScanner_34_ * inCompiler) {
-  GGS_lstring var_entrySpelling_25803 = inCompiler->synthetizedAttribute_tokenString () ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__22_string_22_ COMMA_SOURCE_FILE ("lexique-component.galgas3", 711)) ;
-  GGS_bool var_isTemplateEndMark_25825 = GGS_bool (false) ;
-  GGS_bool var_nonAtomicSelection_25859 = GGS_bool (false) ;
-  bool repeatFlag_0 = true ;
-  while (repeatFlag_0) {
-    switch (select_galgas_34_LexiqueComponentSyntax_10 (inCompiler)) {
-    case 2: {
-      inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__25_templateEndMark COMMA_SOURCE_FILE ("lexique-component.galgas3", 716)) ;
-      var_isTemplateEndMark_25825 = GGS_bool (true) ;
-    } break ;
-    case 3: {
-      inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__25_nonAtomicSelection COMMA_SOURCE_FILE ("lexique-component.galgas3", 719)) ;
-      var_nonAtomicSelection_25859 = GGS_bool (true) ;
-    } break ;
-    default:
-      repeatFlag_0 = false ;
-      break ;
-    }
-  }
-  GGS_lstring var_terminalSpelling_26058 ;
-  switch (select_galgas_34_LexiqueComponentSyntax_11 (inCompiler)) {
-  case 1: {
-    inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__2D__3E_ COMMA_SOURCE_FILE ("lexique-component.galgas3", 724)) ;
-    var_terminalSpelling_26058 = inCompiler->synthetizedAttribute_tokenString () ;
-    inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__24_terminal_24_ COMMA_SOURCE_FILE ("lexique-component.galgas3", 725)) ;
-  } break ;
-  case 2: {
-    var_terminalSpelling_26058 = var_entrySpelling_25803 ;
-  } break ;
-  default:
-    break ;
-  }
-  ioArgument_ioLexicalListEntryList.addAssignOperation (var_entrySpelling_25803, var_terminalSpelling_26058, var_nonAtomicSelection_25859, var_isTemplateEndMark_25825  COMMA_SOURCE_FILE ("lexique-component.galgas3", 729)) ;
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_galgas_34_LexiqueComponentSyntax::rule_galgas_34_LexiqueComponentSyntax_lexical_5F_list_5F_entry_i18_indexing (Lexique_galgasScanner_34_ * inCompiler) {
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__22_string_22_ COMMA_SOURCE_FILE ("lexique-component.galgas3", 711)) ;
-  bool repeatFlag_0 = true ;
-  while (repeatFlag_0) {
-    switch (select_galgas_34_LexiqueComponentSyntax_10 (inCompiler)) {
-    case 2: {
-      inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__25_templateEndMark COMMA_SOURCE_FILE ("lexique-component.galgas3", 716)) ;
-    } break ;
-    case 3: {
-      inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__25_nonAtomicSelection COMMA_SOURCE_FILE ("lexique-component.galgas3", 719)) ;
-    } break ;
-    default:
-      repeatFlag_0 = false ;
-      break ;
-    }
-  }
-  switch (select_galgas_34_LexiqueComponentSyntax_11 (inCompiler)) {
-  case 1: {
-    inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__2D__3E_ COMMA_SOURCE_FILE ("lexique-component.galgas3", 724)) ;
-    inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__24_terminal_24_ COMMA_SOURCE_FILE ("lexique-component.galgas3", 725)) ;
-  } break ;
-  case 2: {
-  } break ;
-  default:
-    break ;
-  }
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_galgas_34_LexiqueComponentSyntax::rule_galgas_34_LexiqueComponentSyntax_lexical_5F_attribute_5F_declaration_i19_ (GGS_lexicalAttributeListAST & ioArgument_ioLexicalAttributeList,
-                                                                                                                               Lexique_galgasScanner_34_ * inCompiler) {
-  GGS_lstring var_typeName_26582 = inCompiler->synthetizedAttribute_tokenString () ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__40_type COMMA_SOURCE_FILE ("lexique-component.galgas3", 739)) ;
-  GGS_lstring var_name_26622 = inCompiler->synthetizedAttribute_tokenString () ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("lexique-component.galgas3", 740)) ;
-  ioArgument_ioLexicalAttributeList.addAssignOperation (var_typeName_26582, var_name_26622  COMMA_SOURCE_FILE ("lexique-component.galgas3", 741)) ;
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_galgas_34_LexiqueComponentSyntax::rule_galgas_34_LexiqueComponentSyntax_lexical_5F_attribute_5F_declaration_i19_indexing (Lexique_galgasScanner_34_ * inCompiler) {
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__40_type COMMA_SOURCE_FILE ("lexique-component.galgas3", 739)) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("lexique-component.galgas3", 740)) ;
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_galgas_34_LexiqueComponentSyntax::rule_galgas_34_LexiqueComponentSyntax_terminal_5F_declaration_i20_ (GGS_terminalDeclarationListAST & ioArgument_ioTerminalDeclarationList,
-                                                                                                                   Lexique_galgasScanner_34_ * inCompiler) {
-  GGS_lstring var_name_26901 = inCompiler->synthetizedAttribute_tokenString () ;
-  inCompiler->enterIndexing (Lexique_galgasScanner_34_::kIndexing_terminalDeclaration, "") ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__24_terminal_24_ COMMA_SOURCE_FILE ("lexique-component.galgas3", 747)) ;
-  GGS_sentLexicalAttributeListAST var_sentAttributeList_26943 = GGS_sentLexicalAttributeListAST::init (inCompiler COMMA_HERE) ;
-  bool repeatFlag_0 = true ;
-  while (repeatFlag_0) {
-    switch (select_galgas_34_LexiqueComponentSyntax_12 (inCompiler)) {
-    case 2: {
-      GGS_lstring var_selector_27040 = inCompiler->synthetizedAttribute_tokenString () ;
-      inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__21_selector_3A_ COMMA_SOURCE_FILE ("lexique-component.galgas3", 751)) ;
-      GGS_lstring var_sentAttribute_27073 = inCompiler->synthetizedAttribute_tokenString () ;
-      inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("lexique-component.galgas3", 752)) ;
-      var_sentAttributeList_26943.addAssignOperation (var_selector_27040, var_sentAttribute_27073  COMMA_SOURCE_FILE ("lexique-component.galgas3", 753)) ;
-    } break ;
-    case 3: {
-      inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__21_ COMMA_SOURCE_FILE ("lexique-component.galgas3", 755)) ;
-      GGS_lstring var_selector_27169 = GGS_string::makeEmptyString ().getter_here (inCompiler COMMA_SOURCE_FILE ("lexique-component.galgas3", 756)) ;
-      GGS_lstring var_sentAttribute_27212 = inCompiler->synthetizedAttribute_tokenString () ;
-      inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("lexique-component.galgas3", 757)) ;
-      var_sentAttributeList_26943.addAssignOperation (var_selector_27169, var_sentAttribute_27212  COMMA_SOURCE_FILE ("lexique-component.galgas3", 758)) ;
-    } break ;
-    default:
-      repeatFlag_0 = false ;
-      break ;
-    }
-  }
-  GGS_lstring var_theStyle_27303 = GGS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("lexique-component.galgas3", 760)) ;
-  GGS_bool var_nonAtomicSelection_27361 = GGS_bool (false) ;
-  GGS_bool var_templateEndMark_27396 = GGS_bool (false) ;
-  bool repeatFlag_1 = true ;
-  while (repeatFlag_1) {
-    switch (select_galgas_34_LexiqueComponentSyntax_13 (inCompiler)) {
-    case 2: {
-      inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_style COMMA_SOURCE_FILE ("lexique-component.galgas3", 765)) ;
-      GalgasBool test_2 = GalgasBool::boolTrue ;
-      if (GalgasBool::boolTrue == test_2) {
-        test_2 = GGS_bool (ComparisonKind::notEqual, var_theStyle_27303.readProperty_string ().objectCompare (GGS_string::makeEmptyString ())).boolEnum () ;
-        if (GalgasBool::boolTrue == test_2) {
-          GenericArray <FixItDescription> fixItArray3 ;
-          inCompiler->emitSemanticError (GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("lexique-component.galgas3", 767)), GGS_string ("duplicated style reference"), fixItArray3  COMMA_SOURCE_FILE ("lexique-component.galgas3", 767)) ;
-        }
-      }
-      var_theStyle_27303 = inCompiler->synthetizedAttribute_tokenString () ;
-      inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("lexique-component.galgas3", 769)) ;
-    } break ;
-    case 3: {
-      inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__25_nonAtomicSelection COMMA_SOURCE_FILE ("lexique-component.galgas3", 771)) ;
-      var_nonAtomicSelection_27361 = GGS_bool (true) ;
-    } break ;
-    case 4: {
-      inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__25_templateEndMark COMMA_SOURCE_FILE ("lexique-component.galgas3", 774)) ;
-      var_templateEndMark_27396 = GGS_bool (true) ;
-    } break ;
-    default:
-      repeatFlag_1 = false ;
-      break ;
-    }
-  }
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__25_errorMessage COMMA_SOURCE_FILE ("lexique-component.galgas3", 777)) ;
-  GGS_lstring var_errorMessage_27784 = inCompiler->synthetizedAttribute_tokenString () ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__22_string_22_ COMMA_SOURCE_FILE ("lexique-component.galgas3", 778)) ;
-  ioArgument_ioTerminalDeclarationList.addAssignOperation (var_name_26901, var_sentAttributeList_26943, var_errorMessage_27784, var_theStyle_27303, var_nonAtomicSelection_27361, var_templateEndMark_27396  COMMA_SOURCE_FILE ("lexique-component.galgas3", 779)) ;
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_galgas_34_LexiqueComponentSyntax::rule_galgas_34_LexiqueComponentSyntax_terminal_5F_declaration_i20_indexing (Lexique_galgasScanner_34_ * inCompiler) {
-  inCompiler->enterIndexing (Lexique_galgasScanner_34_::kIndexing_terminalDeclaration, "") ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__24_terminal_24_ COMMA_SOURCE_FILE ("lexique-component.galgas3", 747)) ;
-  bool repeatFlag_0 = true ;
-  while (repeatFlag_0) {
-    switch (select_galgas_34_LexiqueComponentSyntax_12 (inCompiler)) {
-    case 2: {
-      inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__21_selector_3A_ COMMA_SOURCE_FILE ("lexique-component.galgas3", 751)) ;
-      inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("lexique-component.galgas3", 752)) ;
-    } break ;
-    case 3: {
-      inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__21_ COMMA_SOURCE_FILE ("lexique-component.galgas3", 755)) ;
-      inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("lexique-component.galgas3", 757)) ;
-    } break ;
-    default:
-      repeatFlag_0 = false ;
-      break ;
-    }
-  }
-  bool repeatFlag_1 = true ;
-  while (repeatFlag_1) {
-    switch (select_galgas_34_LexiqueComponentSyntax_13 (inCompiler)) {
-    case 2: {
-      inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_style COMMA_SOURCE_FILE ("lexique-component.galgas3", 765)) ;
-      inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("lexique-component.galgas3", 769)) ;
-    } break ;
-    case 3: {
-      inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__25_nonAtomicSelection COMMA_SOURCE_FILE ("lexique-component.galgas3", 771)) ;
-    } break ;
-    case 4: {
-      inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__25_templateEndMark COMMA_SOURCE_FILE ("lexique-component.galgas3", 774)) ;
-    } break ;
-    default:
-      repeatFlag_1 = false ;
-      break ;
-    }
-  }
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__25_errorMessage COMMA_SOURCE_FILE ("lexique-component.galgas3", 777)) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__22_string_22_ COMMA_SOURCE_FILE ("lexique-component.galgas3", 778)) ;
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_galgas_34_LexiqueComponentSyntax::rule_galgas_34_LexiqueComponentSyntax_style_5F_declaration_i21_ (GGS_lexicalStyleListAST & ioArgument_ioLexicalStyleList,
-                                                                                                                Lexique_galgasScanner_34_ * inCompiler) {
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_style COMMA_SOURCE_FILE ("lexique-component.galgas3", 791)) ;
-  GGS_lstring var_styleIdentifier_28214 = inCompiler->synthetizedAttribute_tokenString () ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("lexique-component.galgas3", 792)) ;
-  GalgasBool test_0 = GalgasBool::boolTrue ;
-  if (GalgasBool::boolTrue == test_0) {
-    test_0 = var_styleIdentifier_28214.readProperty_string ().getter_containsCharacter (GGS_char (utf32 (95)) COMMA_SOURCE_FILE ("lexique-component.galgas3", 793)).boolEnum () ;
-    if (GalgasBool::boolTrue == test_0) {
-      GenericArray <FixItDescription> fixItArray1 ;
-      inCompiler->emitSemanticError (var_styleIdentifier_28214.readProperty_location (), GGS_string ("for compatibility with latex formatting, a style name should not contain '_' character"), fixItArray1  COMMA_SOURCE_FILE ("lexique-component.galgas3", 794)) ;
-    }
-  }
-  GalgasBool test_2 = GalgasBool::boolTrue ;
-  if (GalgasBool::boolTrue == test_2) {
-    test_2 = var_styleIdentifier_28214.readProperty_string ().getter_containsCharacterInRange (GGS_char (utf32 (48)), GGS_char (utf32 (57)) COMMA_SOURCE_FILE ("lexique-component.galgas3", 796)).boolEnum () ;
-    if (GalgasBool::boolTrue == test_2) {
-      GenericArray <FixItDescription> fixItArray3 ;
-      inCompiler->emitSemanticError (var_styleIdentifier_28214.readProperty_location (), GGS_string ("for compatibility with latex formatting, a style name should not contain any digit"), fixItArray3  COMMA_SOURCE_FILE ("lexique-component.galgas3", 797)) ;
-    }
-  }
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__2D__3E_ COMMA_SOURCE_FILE ("lexique-component.galgas3", 799)) ;
-  GGS_lstring var_comment_28654 = inCompiler->synthetizedAttribute_tokenString () ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__22_string_22_ COMMA_SOURCE_FILE ("lexique-component.galgas3", 800)) ;
-  ioArgument_ioLexicalStyleList.addAssignOperation (var_styleIdentifier_28214, var_comment_28654  COMMA_SOURCE_FILE ("lexique-component.galgas3", 801)) ;
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_galgas_34_LexiqueComponentSyntax::rule_galgas_34_LexiqueComponentSyntax_style_5F_declaration_i21_indexing (Lexique_galgasScanner_34_ * inCompiler) {
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_style COMMA_SOURCE_FILE ("lexique-component.galgas3", 791)) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("lexique-component.galgas3", 792)) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__2D__3E_ COMMA_SOURCE_FILE ("lexique-component.galgas3", 799)) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__22_string_22_ COMMA_SOURCE_FILE ("lexique-component.galgas3", 800)) ;
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_galgas_34_LexiqueComponentSyntax::rule_galgas_34_LexiqueComponentSyntax_lexical_5F_send_5F_instruction_i22_ (GGS_lexicalInstructionAST & outArgument_outInstruction,
-                                                                                                                          Lexique_galgasScanner_34_ * inCompiler) {
-  outArgument_outInstruction.drop () ; // Release 'out' argument
-  GGS_lexicalSendSearchListAST var_lexicalSendSearchList_3247 = GGS_lexicalSendSearchListAST::init (inCompiler COMMA_HERE) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__25_searchString COMMA_SOURCE_FILE ("lexique-instruction-structured-send.galgas3", 75)) ;
-  bool repeatFlag_0 = true ;
-  while (repeatFlag_0) {
-    GGS_lstring var_attributeName_3339 = inCompiler->synthetizedAttribute_tokenString () ;
-    inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("lexique-instruction-structured-send.galgas3", 77)) ;
-    inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_in COMMA_SOURCE_FILE ("lexique-instruction-structured-send.galgas3", 78)) ;
-    GGS_lstring var_searchListName_3397 = inCompiler->synthetizedAttribute_tokenString () ;
-    inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("lexique-instruction-structured-send.galgas3", 79)) ;
-    var_lexicalSendSearchList_3247.addAssignOperation (var_attributeName_3339, var_searchListName_3397  COMMA_SOURCE_FILE ("lexique-instruction-structured-send.galgas3", 80)) ;
-    inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_default COMMA_SOURCE_FILE ("lexique-instruction-structured-send.galgas3", 81)) ;
-    if (select_galgas_34_LexiqueComponentSyntax_14 (inCompiler) == 2) {
-      inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__25_searchString COMMA_SOURCE_FILE ("lexique-instruction-structured-send.galgas3", 83)) ;
-    }else{
-      repeatFlag_0 = false ;
-    }
-  }
-  GGS_lexicalSendDefaultActionAST var_lexicalSendDefaultAction_3567 ;
-  switch (select_galgas_34_LexiqueComponentSyntax_15 (inCompiler)) {
-  case 1: {
-    GGS_lstring var_defaultSentTerminal_3638 = inCompiler->synthetizedAttribute_tokenString () ;
-    inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__24_terminal_24_ COMMA_SOURCE_FILE ("lexique-instruction-structured-send.galgas3", 87)) ;
-    var_lexicalSendDefaultAction_3567 = GGS_lexicalSendTerminalByDefaultAST::init_21_ (var_defaultSentTerminal_3638, inCompiler COMMA_HERE) ;
-  } break ;
-  case 2: {
-    inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_error COMMA_SOURCE_FILE ("lexique-instruction-structured-send.galgas3", 90)) ;
-    GGS_lstring var_defaultErrorMessageName_3801 = inCompiler->synthetizedAttribute_tokenString () ;
-    inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("lexique-instruction-structured-send.galgas3", 91)) ;
-    var_lexicalSendDefaultAction_3567 = GGS_lexicalErrorByDefaultAST::init_21_ (var_defaultErrorMessageName_3801, inCompiler COMMA_HERE) ;
-  } break ;
-  default:
-    break ;
-  }
-  outArgument_outInstruction = GGS_lexicalStructuredSendInstructionAST::init_21__21_ (var_lexicalSendSearchList_3247, var_lexicalSendDefaultAction_3567, inCompiler COMMA_HERE) ;
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_galgas_34_LexiqueComponentSyntax::rule_galgas_34_LexiqueComponentSyntax_lexical_5F_send_5F_instruction_i22_indexing (Lexique_galgasScanner_34_ * inCompiler) {
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__25_searchString COMMA_SOURCE_FILE ("lexique-instruction-structured-send.galgas3", 75)) ;
-  bool repeatFlag_0 = true ;
-  while (repeatFlag_0) {
-    inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("lexique-instruction-structured-send.galgas3", 77)) ;
-    inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_in COMMA_SOURCE_FILE ("lexique-instruction-structured-send.galgas3", 78)) ;
-    inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("lexique-instruction-structured-send.galgas3", 79)) ;
-    inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_default COMMA_SOURCE_FILE ("lexique-instruction-structured-send.galgas3", 81)) ;
-    if (select_galgas_34_LexiqueComponentSyntax_14 (inCompiler) == 2) {
-      inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__25_searchString COMMA_SOURCE_FILE ("lexique-instruction-structured-send.galgas3", 83)) ;
-    }else{
-      repeatFlag_0 = false ;
-    }
-  }
-  switch (select_galgas_34_LexiqueComponentSyntax_15 (inCompiler)) {
-  case 1: {
-    inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__24_terminal_24_ COMMA_SOURCE_FILE ("lexique-instruction-structured-send.galgas3", 87)) ;
-  } break ;
-  case 2: {
-    inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_error COMMA_SOURCE_FILE ("lexique-instruction-structured-send.galgas3", 90)) ;
-    inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("lexique-instruction-structured-send.galgas3", 91)) ;
-  } break ;
-  default:
-    break ;
-  }
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_galgas_34_LexiqueComponentSyntax::rule_galgas_34_LexiqueComponentSyntax_lexical_5F_instruction_i23_ (GGS_lexicalInstructionListAST & ioArgument_ioInstructionList,
-                                                                                                                  Lexique_galgasScanner_34_ * inCompiler) {
-  GGS_lstring var_actionName_4445 = inCompiler->synthetizedAttribute_tokenString () ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas3", 107)) ;
-  GGS_lexicalRoutineCallActualArgumentListAST var_actualArgumentList_4505 = GGS_lexicalRoutineCallActualArgumentListAST::init (inCompiler COMMA_HERE) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__28_ COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas3", 109)) ;
-  bool repeatFlag_0 = true ;
-  while (repeatFlag_0) {
-    switch (select_galgas_34_LexiqueComponentSyntax_16 (inCompiler)) {
-    case 2: {
-      inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__21_ COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas3", 112)) ;
-      GGS_location var_passingModeLocation_4579 = GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas3", 113)) ;
-      GGS_lexicalRoutineOrFunctionFormalInputArgumentAST var_arg_4711 ;
-      nt_lexical_5F_output_5F_effective_5F_argument_ (var_arg_4711, inCompiler) ;
-      var_actualArgumentList_4505.addAssignOperation (GGS_lexicalFormalInputArgumentAST::init_21__21_ (var_passingModeLocation_4579, var_arg_4711, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas3", 115)) ;
-    } break ;
-    case 3: {
-      inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__21__3F_ COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas3", 117)) ;
-      GGS_location var_passingModeLocation_4834 = GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas3", 118)) ;
-      GGS_lstring var_attributeName_4904 = inCompiler->synthetizedAttribute_tokenString () ;
-      inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas3", 119)) ;
-      GGS_lexicalAttributeInputOutputArgumentAST var_arg_4928 = GGS_lexicalAttributeInputOutputArgumentAST::init_21__21_ (var_passingModeLocation_4834, var_attributeName_4904, inCompiler COMMA_HERE) ;
-      var_actualArgumentList_4505.addAssignOperation (var_arg_4928  COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas3", 121)) ;
-    } break ;
-    default:
-      repeatFlag_0 = false ;
-      break ;
-    }
-  }
-  GGS_lstringlist var_errorMessageList_5074 = GGS_lstringlist::init (inCompiler COMMA_HERE) ;
-  switch (select_galgas_34_LexiqueComponentSyntax_17 (inCompiler)) {
-  case 1: {
-  } break ;
-  case 2: {
-    inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_error COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas3", 126)) ;
-    bool repeatFlag_1 = true ;
-    while (repeatFlag_1) {
-      GGS_lstring var_errorMessageName_5177 = inCompiler->synthetizedAttribute_tokenString () ;
-      inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas3", 128)) ;
-      var_errorMessageList_5074.addAssignOperation (var_errorMessageName_5177  COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas3", 129)) ;
-      if (select_galgas_34_LexiqueComponentSyntax_18 (inCompiler) == 2) {
-        inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__2C_ COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas3", 131)) ;
-      }else{
-        repeatFlag_1 = false ;
-      }
-    }
-  } break ;
-  default:
-    break ;
-  }
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__29_ COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas3", 134)) ;
-  ioArgument_ioInstructionList.addAssignOperation (GGS_lexicalRoutineCallInstructionAST::init_21__21__21_ (var_actionName_4445, var_actualArgumentList_4505, var_errorMessageList_5074, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas3", 135)) ;
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_galgas_34_LexiqueComponentSyntax::rule_galgas_34_LexiqueComponentSyntax_lexical_5F_instruction_i23_indexing (Lexique_galgasScanner_34_ * inCompiler) {
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas3", 107)) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__28_ COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas3", 109)) ;
-  bool repeatFlag_0 = true ;
-  while (repeatFlag_0) {
-    switch (select_galgas_34_LexiqueComponentSyntax_16 (inCompiler)) {
-    case 2: {
-      inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__21_ COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas3", 112)) ;
-      nt_lexical_5F_output_5F_effective_5F_argument_indexing (inCompiler) ;
-    } break ;
-    case 3: {
-      inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__21__3F_ COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas3", 117)) ;
-      inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas3", 119)) ;
-    } break ;
-    default:
-      repeatFlag_0 = false ;
-      break ;
-    }
-  }
-  switch (select_galgas_34_LexiqueComponentSyntax_17 (inCompiler)) {
-  case 1: {
-  } break ;
-  case 2: {
-    inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_error COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas3", 126)) ;
-    bool repeatFlag_1 = true ;
-    while (repeatFlag_1) {
-      inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas3", 128)) ;
-      if (select_galgas_34_LexiqueComponentSyntax_18 (inCompiler) == 2) {
-        inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__2C_ COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas3", 131)) ;
-      }else{
-        repeatFlag_1 = false ;
-      }
-    }
-  } break ;
-  default:
-    break ;
-  }
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__29_ COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas3", 134)) ;
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_galgas_34_LexiqueComponentSyntax::rule_galgas_34_LexiqueComponentSyntax_lexical_5F_instruction_i24_ (GGS_lexicalInstructionListAST & ioArgument_ioInstructionList,
-                                                                                                                  Lexique_galgasScanner_34_ * inCompiler) {
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_tag COMMA_SOURCE_FILE ("lexique-instruction-tag.galgas3", 52)) ;
-  GGS_lstring var_tagName_2431 = inCompiler->synthetizedAttribute_tokenString () ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("lexique-instruction-tag.galgas3", 53)) ;
-  ioArgument_ioInstructionList.addAssignOperation (GGS_lexicalTagInstructionAST::init_21_ (var_tagName_2431, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("lexique-instruction-tag.galgas3", 54)) ;
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_galgas_34_LexiqueComponentSyntax::rule_galgas_34_LexiqueComponentSyntax_lexical_5F_instruction_i24_indexing (Lexique_galgasScanner_34_ * inCompiler) {
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_tag COMMA_SOURCE_FILE ("lexique-instruction-tag.galgas3", 52)) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("lexique-instruction-tag.galgas3", 53)) ;
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_galgas_34_LexiqueComponentSyntax::rule_galgas_34_LexiqueComponentSyntax_lexical_5F_instruction_i25_ (GGS_lexicalInstructionListAST & ioArgument_ioInstructionList,
-                                                                                                                  Lexique_galgasScanner_34_ * inCompiler) {
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_select COMMA_SOURCE_FILE ("lexique-instruction-select.galgas3", 75)) ;
-  GGS_lexicalSelectBranchListAST var_lexicalWhileBranchList_3162 = GGS_lexicalSelectBranchListAST::init (inCompiler COMMA_HERE) ;
-  bool repeatFlag_0 = true ;
-  while (repeatFlag_0) {
-    inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_case COMMA_SOURCE_FILE ("lexique-instruction-select.galgas3", 78)) ;
-    GGS_lexicalExpressionAST var_selectExpression_3269 ;
-    nt_lexical_5F_expression_ (var_selectExpression_3269, inCompiler) ;
-    inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__3A_ COMMA_SOURCE_FILE ("lexique-instruction-select.galgas3", 80)) ;
-    GGS_lexicalInstructionListAST var_selectInstructionList_3333 = GGS_lexicalInstructionListAST::init (inCompiler COMMA_HERE) ;
-    bool repeatFlag_1 = true ;
-    while (repeatFlag_1) {
-      if (select_galgas_34_LexiqueComponentSyntax_20 (inCompiler) == 2) {
-        nt_lexical_5F_instruction_ (var_selectInstructionList_3333, inCompiler) ;
-      }else{
-        repeatFlag_1 = false ;
-      }
-    }
-    var_lexicalWhileBranchList_3162.addAssignOperation (var_selectExpression_3269, var_selectInstructionList_3333  COMMA_SOURCE_FILE ("lexique-instruction-select.galgas3", 86)) ;
-    if (select_galgas_34_LexiqueComponentSyntax_19 (inCompiler) == 2) {
-    }else{
-      repeatFlag_0 = false ;
-    }
-  }
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_default COMMA_SOURCE_FILE ("lexique-instruction-select.galgas3", 89)) ;
-  GGS_lexicalInstructionListAST var_defaultInstructionList_3590 = GGS_lexicalInstructionListAST::init (inCompiler COMMA_HERE) ;
-  bool repeatFlag_2 = true ;
-  while (repeatFlag_2) {
-    if (select_galgas_34_LexiqueComponentSyntax_21 (inCompiler) == 2) {
-      nt_lexical_5F_instruction_ (var_defaultInstructionList_3590, inCompiler) ;
-    }else{
-      repeatFlag_2 = false ;
-    }
-  }
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_end COMMA_SOURCE_FILE ("lexique-instruction-select.galgas3", 95)) ;
-  ioArgument_ioInstructionList.addAssignOperation (GGS_lexicalSelectInstructionAST::init_21__21_ (var_lexicalWhileBranchList_3162, var_defaultInstructionList_3590, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("lexique-instruction-select.galgas3", 96)) ;
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_galgas_34_LexiqueComponentSyntax::rule_galgas_34_LexiqueComponentSyntax_lexical_5F_instruction_i25_indexing (Lexique_galgasScanner_34_ * inCompiler) {
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_select COMMA_SOURCE_FILE ("lexique-instruction-select.galgas3", 75)) ;
-  bool repeatFlag_0 = true ;
-  while (repeatFlag_0) {
-    inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_case COMMA_SOURCE_FILE ("lexique-instruction-select.galgas3", 78)) ;
-    nt_lexical_5F_expression_indexing (inCompiler) ;
-    inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__3A_ COMMA_SOURCE_FILE ("lexique-instruction-select.galgas3", 80)) ;
-    bool repeatFlag_1 = true ;
-    while (repeatFlag_1) {
-      if (select_galgas_34_LexiqueComponentSyntax_20 (inCompiler) == 2) {
-        nt_lexical_5F_instruction_indexing (inCompiler) ;
-      }else{
-        repeatFlag_1 = false ;
-      }
-    }
-    if (select_galgas_34_LexiqueComponentSyntax_19 (inCompiler) == 2) {
-    }else{
-      repeatFlag_0 = false ;
-    }
-  }
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_default COMMA_SOURCE_FILE ("lexique-instruction-select.galgas3", 89)) ;
-  bool repeatFlag_2 = true ;
-  while (repeatFlag_2) {
-    if (select_galgas_34_LexiqueComponentSyntax_21 (inCompiler) == 2) {
-      nt_lexical_5F_instruction_indexing (inCompiler) ;
-    }else{
-      repeatFlag_2 = false ;
-    }
-  }
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_end COMMA_SOURCE_FILE ("lexique-instruction-select.galgas3", 95)) ;
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_galgas_34_LexiqueComponentSyntax::rule_galgas_34_LexiqueComponentSyntax_lexical_5F_send_5F_instruction_i26_ (GGS_lexicalInstructionAST & outArgument_outInstruction,
-                                                                                                                          Lexique_galgasScanner_34_ * inCompiler) {
-  outArgument_outInstruction.drop () ; // Release 'out' argument
-  GGS_lstring var_sentTerminal_2444 = inCompiler->synthetizedAttribute_tokenString () ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__24_terminal_24_ COMMA_SOURCE_FILE ("lexique-instruction-simple-send.galgas3", 51)) ;
-  outArgument_outInstruction = GGS_lexicalSimpleSendInstructionAST::init_21_ (var_sentTerminal_2444, inCompiler COMMA_HERE) ;
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_galgas_34_LexiqueComponentSyntax::rule_galgas_34_LexiqueComponentSyntax_lexical_5F_send_5F_instruction_i26_indexing (Lexique_galgasScanner_34_ * inCompiler) {
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__24_terminal_24_ COMMA_SOURCE_FILE ("lexique-instruction-simple-send.galgas3", 51)) ;
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_galgas_34_LexiqueComponentSyntax::rule_galgas_34_LexiqueComponentSyntax_lexical_5F_instruction_i27_ (GGS_lexicalInstructionListAST & ioArgument_ioInstructionList,
-                                                                                                                  Lexique_galgasScanner_34_ * inCompiler) {
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_log COMMA_SOURCE_FILE ("lexique-instruction-log.galgas3", 50)) ;
-  ioArgument_ioInstructionList.addAssignOperation (GGS_lexicalLogInstructionAST::init (inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("lexique-instruction-log.galgas3", 51)) ;
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_galgas_34_LexiqueComponentSyntax::rule_galgas_34_LexiqueComponentSyntax_lexical_5F_instruction_i27_indexing (Lexique_galgasScanner_34_ * inCompiler) {
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_log COMMA_SOURCE_FILE ("lexique-instruction-log.galgas3", 50)) ;
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_galgas_34_LexiqueComponentSyntax::rule_galgas_34_LexiqueComponentSyntax_lexical_5F_instruction_i28_ (GGS_lexicalInstructionListAST & ioArgument_ioInstructionList,
-                                                                                                                  Lexique_galgasScanner_34_ * inCompiler) {
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_rewind COMMA_SOURCE_FILE ("lexique-instruction-rewind.galgas3", 55)) ;
-  GGS_lstring var_tagName_2542 = inCompiler->synthetizedAttribute_tokenString () ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("lexique-instruction-rewind.galgas3", 56)) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_send COMMA_SOURCE_FILE ("lexique-instruction-rewind.galgas3", 57)) ;
-  GGS_lstring var_terminalName_2585 = inCompiler->synthetizedAttribute_tokenString () ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__24_terminal_24_ COMMA_SOURCE_FILE ("lexique-instruction-rewind.galgas3", 58)) ;
-  ioArgument_ioInstructionList.addAssignOperation (GGS_lexicalRewindInstructionAST::init_21__21_ (var_tagName_2542, var_terminalName_2585, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("lexique-instruction-rewind.galgas3", 59)) ;
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_galgas_34_LexiqueComponentSyntax::rule_galgas_34_LexiqueComponentSyntax_lexical_5F_instruction_i28_indexing (Lexique_galgasScanner_34_ * inCompiler) {
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_rewind COMMA_SOURCE_FILE ("lexique-instruction-rewind.galgas3", 55)) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("lexique-instruction-rewind.galgas3", 56)) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_send COMMA_SOURCE_FILE ("lexique-instruction-rewind.galgas3", 57)) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__24_terminal_24_ COMMA_SOURCE_FILE ("lexique-instruction-rewind.galgas3", 58)) ;
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_galgas_34_LexiqueComponentSyntax::rule_galgas_34_LexiqueComponentSyntax_lexical_5F_instruction_i29_ (GGS_lexicalInstructionListAST & ioArgument_ioInstructionList,
-                                                                                                                  Lexique_galgasScanner_34_ * inCompiler) {
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_repeat COMMA_SOURCE_FILE ("lexique-instruction-repeat.galgas3", 69)) ;
-  GGS_location var_location_2937 = GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("lexique-instruction-repeat.galgas3", 70)) ;
-  GGS_lexicalInstructionListAST var_repeatedInstructionList_2998 = GGS_lexicalInstructionListAST::init (inCompiler COMMA_HERE) ;
-  bool repeatFlag_0 = true ;
-  while (repeatFlag_0) {
-    if (select_galgas_34_LexiqueComponentSyntax_22 (inCompiler) == 2) {
-      nt_lexical_5F_instruction_ (var_repeatedInstructionList_2998, inCompiler) ;
-    }else{
-      repeatFlag_0 = false ;
-    }
-  }
-  GGS_lexicalWhileBranchListAST var_lexicalWhileBranchList_3146 = GGS_lexicalWhileBranchListAST::init (inCompiler COMMA_HERE) ;
-  bool repeatFlag_1 = true ;
-  while (repeatFlag_1) {
-    nt_repeat_5F_while_5F_branch_ (var_lexicalWhileBranchList_3146, inCompiler) ;
-    if (select_galgas_34_LexiqueComponentSyntax_23 (inCompiler) == 2) {
-    }else{
-      repeatFlag_1 = false ;
-    }
-  }
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_end COMMA_SOURCE_FILE ("lexique-instruction-repeat.galgas3", 81)) ;
-  ioArgument_ioInstructionList.addAssignOperation (GGS_lexicalRepeatInstructionAST::init_21__21__21_ (var_repeatedInstructionList_2998, var_lexicalWhileBranchList_3146, var_location_2937, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("lexique-instruction-repeat.galgas3", 82)) ;
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_galgas_34_LexiqueComponentSyntax::rule_galgas_34_LexiqueComponentSyntax_lexical_5F_instruction_i29_indexing (Lexique_galgasScanner_34_ * inCompiler) {
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_repeat COMMA_SOURCE_FILE ("lexique-instruction-repeat.galgas3", 69)) ;
-  bool repeatFlag_0 = true ;
-  while (repeatFlag_0) {
-    if (select_galgas_34_LexiqueComponentSyntax_22 (inCompiler) == 2) {
-      nt_lexical_5F_instruction_indexing (inCompiler) ;
-    }else{
-      repeatFlag_0 = false ;
-    }
-  }
-  bool repeatFlag_1 = true ;
-  while (repeatFlag_1) {
-    nt_repeat_5F_while_5F_branch_indexing (inCompiler) ;
-    if (select_galgas_34_LexiqueComponentSyntax_23 (inCompiler) == 2) {
-    }else{
-      repeatFlag_1 = false ;
-    }
-  }
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_end COMMA_SOURCE_FILE ("lexique-instruction-repeat.galgas3", 81)) ;
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_galgas_34_LexiqueComponentSyntax::rule_galgas_34_LexiqueComponentSyntax_lexical_5F_instruction_i30_ (GGS_lexicalInstructionListAST & ioArgument_ioInstructionList,
-                                                                                                                  Lexique_galgasScanner_34_ * inCompiler) {
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_drop COMMA_SOURCE_FILE ("lexique-instruction-drop.galgas3", 52)) ;
-  GGS_lstring var_terminalName_2447 = inCompiler->synthetizedAttribute_tokenString () ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__24_terminal_24_ COMMA_SOURCE_FILE ("lexique-instruction-drop.galgas3", 53)) ;
-  ioArgument_ioInstructionList.addAssignOperation (GGS_lexicalDropInstructionAST::init_21_ (var_terminalName_2447, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("lexique-instruction-drop.galgas3", 54)) ;
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_galgas_34_LexiqueComponentSyntax::rule_galgas_34_LexiqueComponentSyntax_lexical_5F_instruction_i30_indexing (Lexique_galgasScanner_34_ * inCompiler) {
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_drop COMMA_SOURCE_FILE ("lexique-instruction-drop.galgas3", 52)) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__24_terminal_24_ COMMA_SOURCE_FILE ("lexique-instruction-drop.galgas3", 53)) ;
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_galgas_34_LexiqueComponentSyntax::rule_galgas_34_LexiqueComponentSyntax_lexical_5F_instruction_i31_ (GGS_lexicalInstructionListAST & ioArgument_ioInstructionList,
-                                                                                                                  Lexique_galgasScanner_34_ * inCompiler) {
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_warning COMMA_SOURCE_FILE ("lexique-instruction-warning.galgas3", 52)) ;
-  GGS_lstring var_warningMessageName_2473 = inCompiler->synthetizedAttribute_tokenString () ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("lexique-instruction-warning.galgas3", 53)) ;
-  ioArgument_ioInstructionList.addAssignOperation (GGS_lexicalWarningInstructionAST::init_21_ (var_warningMessageName_2473, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("lexique-instruction-warning.galgas3", 54)) ;
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_galgas_34_LexiqueComponentSyntax::rule_galgas_34_LexiqueComponentSyntax_lexical_5F_instruction_i31_indexing (Lexique_galgasScanner_34_ * inCompiler) {
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_warning COMMA_SOURCE_FILE ("lexique-instruction-warning.galgas3", 52)) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("lexique-instruction-warning.galgas3", 53)) ;
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_galgas_34_LexiqueComponentSyntax::rule_galgas_34_LexiqueComponentSyntax_lexical_5F_instruction_i32_ (GGS_lexicalInstructionListAST & ioArgument_ioInstructionList,
-                                                                                                                  Lexique_galgasScanner_34_ * inCompiler) {
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_error COMMA_SOURCE_FILE ("lexique-instruction-error.galgas3", 52)) ;
-  GGS_lstring var_errorMessageName_2459 = inCompiler->synthetizedAttribute_tokenString () ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("lexique-instruction-error.galgas3", 53)) ;
-  ioArgument_ioInstructionList.addAssignOperation (GGS_lexicalErrorInstructionAST::init_21_ (var_errorMessageName_2459, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("lexique-instruction-error.galgas3", 54)) ;
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_galgas_34_LexiqueComponentSyntax::rule_galgas_34_LexiqueComponentSyntax_lexical_5F_instruction_i32_indexing (Lexique_galgasScanner_34_ * inCompiler) {
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_error COMMA_SOURCE_FILE ("lexique-instruction-error.galgas3", 52)) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("lexique-instruction-error.galgas3", 53)) ;
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_galgas_34_LexiqueComponentSyntax::rule_galgas_34_LexiqueComponentSyntax_declaration_i33_ (GGS_galgasDeclarationAST & ioArgument_ioDeclarations,
-                                                                                                       Lexique_galgasScanner_34_ * inCompiler) {
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_template COMMA_SOURCE_FILE ("template-lexique-component.galgas3", 133)) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_lexique COMMA_SOURCE_FILE ("template-lexique-component.galgas3", 134)) ;
-  GGS_lstring var_lexiqueComponentName_4923 = inCompiler->synthetizedAttribute_tokenString () ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("template-lexique-component.galgas3", 136)) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__3A_ COMMA_SOURCE_FILE ("template-lexique-component.galgas3", 137)) ;
-  GGS_lstring var_lexiqueSuperComponentName_4983 = inCompiler->synthetizedAttribute_tokenString () ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("template-lexique-component.galgas3", 138)) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__7B_ COMMA_SOURCE_FILE ("template-lexique-component.galgas3", 140)) ;
-  GGS_templateDelimitorListAST var_templateDelimitorList_5078 = GGS_templateDelimitorListAST::init (inCompiler COMMA_HERE) ;
-  GGS_templateReplacementListAST var_templateReplacementList_5142 = GGS_templateReplacementListAST::init (inCompiler COMMA_HERE) ;
-  bool repeatFlag_0 = true ;
-  while (repeatFlag_0) {
-    switch (select_galgas_34_LexiqueComponentSyntax_24 (inCompiler)) {
-    case 2: {
-      nt_template_5F_delimitor_ (var_templateDelimitorList_5078, inCompiler) ;
-    } break ;
-    case 3: {
-      nt_template_5F_replacement_ (var_templateReplacementList_5142, inCompiler) ;
-    } break ;
-    default:
-      repeatFlag_0 = false ;
-      break ;
-    }
-  }
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__7D_ COMMA_SOURCE_FILE ("template-lexique-component.galgas3", 149)) ;
-  ioArgument_ioDeclarations.mProperty_mDeclarationList.addAssignOperation (GGS_templateLexiqueComponentAST::init_21_isPredefined_21__21__21__21_ (GGS_bool (false), var_lexiqueComponentName_4923, var_lexiqueSuperComponentName_4983, var_templateDelimitorList_5078, var_templateReplacementList_5142, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("template-lexique-component.galgas3", 150)) ;
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_galgas_34_LexiqueComponentSyntax::rule_galgas_34_LexiqueComponentSyntax_declaration_i33_indexing (Lexique_galgasScanner_34_ * inCompiler) {
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_template COMMA_SOURCE_FILE ("template-lexique-component.galgas3", 133)) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_lexique COMMA_SOURCE_FILE ("template-lexique-component.galgas3", 134)) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("template-lexique-component.galgas3", 136)) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__3A_ COMMA_SOURCE_FILE ("template-lexique-component.galgas3", 137)) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("template-lexique-component.galgas3", 138)) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__7B_ COMMA_SOURCE_FILE ("template-lexique-component.galgas3", 140)) ;
-  bool repeatFlag_0 = true ;
-  while (repeatFlag_0) {
-    switch (select_galgas_34_LexiqueComponentSyntax_24 (inCompiler)) {
-    case 2: {
-      nt_template_5F_delimitor_indexing (inCompiler) ;
-    } break ;
-    case 3: {
-      nt_template_5F_replacement_indexing (inCompiler) ;
-    } break ;
-    default:
-      repeatFlag_0 = false ;
-      break ;
-    }
-  }
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__7D_ COMMA_SOURCE_FILE ("template-lexique-component.galgas3", 149)) ;
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_galgas_34_LexiqueComponentSyntax::rule_galgas_34_LexiqueComponentSyntax_template_5F_delimitor_i34_ (GGS_templateDelimitorListAST & ioArgument_ioTemplateDelimitorList,
-                                                                                                                 Lexique_galgasScanner_34_ * inCompiler) {
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_template COMMA_SOURCE_FILE ("template-lexique-component.galgas3", 162)) ;
-  GGS_lstring var_startString_5806 = inCompiler->synthetizedAttribute_tokenString () ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__22_string_22_ COMMA_SOURCE_FILE ("template-lexique-component.galgas3", 163)) ;
-  GGS_bool var_nonAtomicSelection_5826 = GGS_bool (false) ;
-  GGS_bool var_templateEndMark_5861 = GGS_bool (false) ;
-  GGS_bool var_preserved_5893 = GGS_bool (false) ;
-  bool repeatFlag_0 = true ;
-  while (repeatFlag_0) {
-    switch (select_galgas_34_LexiqueComponentSyntax_25 (inCompiler)) {
-    case 2: {
-      inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__25_nonAtomicSelection COMMA_SOURCE_FILE ("template-lexique-component.galgas3", 169)) ;
-      GalgasBool test_1 = GalgasBool::boolTrue ;
-      if (GalgasBool::boolTrue == test_1) {
-        test_1 = var_nonAtomicSelection_5826.boolEnum () ;
-        if (GalgasBool::boolTrue == test_1) {
-          GenericArray <FixItDescription> fixItArray2 ;
-          inCompiler->emitSemanticError (GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("template-lexique-component.galgas3", 171)), GGS_string ("duplicated %nonAtomicSelection attribute"), fixItArray2  COMMA_SOURCE_FILE ("template-lexique-component.galgas3", 171)) ;
-        }
-      }
-      var_nonAtomicSelection_5826 = GGS_bool (true) ;
-    } break ;
-    case 3: {
-      inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__25_templateEndMark COMMA_SOURCE_FILE ("template-lexique-component.galgas3", 175)) ;
-      GalgasBool test_3 = GalgasBool::boolTrue ;
-      if (GalgasBool::boolTrue == test_3) {
-        test_3 = var_templateEndMark_5861.boolEnum () ;
-        if (GalgasBool::boolTrue == test_3) {
-          GenericArray <FixItDescription> fixItArray4 ;
-          inCompiler->emitSemanticError (GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("template-lexique-component.galgas3", 177)), GGS_string ("duplicated %templateEndMark attribute"), fixItArray4  COMMA_SOURCE_FILE ("template-lexique-component.galgas3", 177)) ;
-        }
-      }
-      var_templateEndMark_5861 = GGS_bool (true) ;
-    } break ;
-    case 4: {
-      inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__25_preserved COMMA_SOURCE_FILE ("template-lexique-component.galgas3", 181)) ;
-      GalgasBool test_5 = GalgasBool::boolTrue ;
-      if (GalgasBool::boolTrue == test_5) {
-        test_5 = var_preserved_5893.boolEnum () ;
-        if (GalgasBool::boolTrue == test_5) {
-          GenericArray <FixItDescription> fixItArray6 ;
-          inCompiler->emitSemanticError (GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("template-lexique-component.galgas3", 183)), GGS_string ("duplicated %preserved attribute"), fixItArray6  COMMA_SOURCE_FILE ("template-lexique-component.galgas3", 183)) ;
-        }
-      }
-      var_preserved_5893 = GGS_bool (true) ;
-    } break ;
-    default:
-      repeatFlag_0 = false ;
-      break ;
-    }
-  }
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__2E__2E__2E_ COMMA_SOURCE_FILE ("template-lexique-component.galgas3", 187)) ;
-  GGS_lstring var_endString_6461 = inCompiler->synthetizedAttribute_tokenString () ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__22_string_22_ COMMA_SOURCE_FILE ("template-lexique-component.galgas3", 188)) ;
-  ioArgument_ioTemplateDelimitorList.addAssignOperation (var_startString_5806, var_nonAtomicSelection_5826, var_templateEndMark_5861, var_preserved_5893, var_endString_6461  COMMA_SOURCE_FILE ("template-lexique-component.galgas3", 189)) ;
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_galgas_34_LexiqueComponentSyntax::rule_galgas_34_LexiqueComponentSyntax_template_5F_delimitor_i34_indexing (Lexique_galgasScanner_34_ * inCompiler) {
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_template COMMA_SOURCE_FILE ("template-lexique-component.galgas3", 162)) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__22_string_22_ COMMA_SOURCE_FILE ("template-lexique-component.galgas3", 163)) ;
-  bool repeatFlag_0 = true ;
-  while (repeatFlag_0) {
-    switch (select_galgas_34_LexiqueComponentSyntax_25 (inCompiler)) {
-    case 2: {
-      inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__25_nonAtomicSelection COMMA_SOURCE_FILE ("template-lexique-component.galgas3", 169)) ;
-    } break ;
-    case 3: {
-      inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__25_templateEndMark COMMA_SOURCE_FILE ("template-lexique-component.galgas3", 175)) ;
-    } break ;
-    case 4: {
-      inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__25_preserved COMMA_SOURCE_FILE ("template-lexique-component.galgas3", 181)) ;
-    } break ;
-    default:
-      repeatFlag_0 = false ;
-      break ;
-    }
-  }
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__2E__2E__2E_ COMMA_SOURCE_FILE ("template-lexique-component.galgas3", 187)) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__22_string_22_ COMMA_SOURCE_FILE ("template-lexique-component.galgas3", 188)) ;
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_galgas_34_LexiqueComponentSyntax::rule_galgas_34_LexiqueComponentSyntax_template_5F_replacement_i35_ (GGS_templateReplacementListAST & ioArgument_ioTemplateReplacement,
-                                                                                                                   Lexique_galgasScanner_34_ * inCompiler) {
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__25_templateReplacement COMMA_SOURCE_FILE ("template-lexique-component.galgas3", 200)) ;
-  GGS_lstring var_matchString_6871 = inCompiler->synthetizedAttribute_tokenString () ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__22_string_22_ COMMA_SOURCE_FILE ("template-lexique-component.galgas3", 201)) ;
-  GGS_lstring var_replacementString_6900 ;
-  GGS_lstring var_replacementFunction_6935 ;
-  switch (select_galgas_34_LexiqueComponentSyntax_26 (inCompiler)) {
-  case 1: {
-    inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__2E__2E__2E_ COMMA_SOURCE_FILE ("template-lexique-component.galgas3", 205)) ;
-    var_replacementString_6900 = inCompiler->synthetizedAttribute_tokenString () ;
-    inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__22_string_22_ COMMA_SOURCE_FILE ("template-lexique-component.galgas3", 206)) ;
-    inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__3A_ COMMA_SOURCE_FILE ("template-lexique-component.galgas3", 207)) ;
-    var_replacementFunction_6935 = inCompiler->synthetizedAttribute_tokenString () ;
-    inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("template-lexique-component.galgas3", 208)) ;
-  } break ;
-  case 2: {
-    inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__2D__3E_ COMMA_SOURCE_FILE ("template-lexique-component.galgas3", 210)) ;
-    var_replacementString_6900 = inCompiler->synthetizedAttribute_tokenString () ;
-    inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__22_string_22_ COMMA_SOURCE_FILE ("template-lexique-component.galgas3", 211)) ;
-    var_replacementFunction_6935 = GGS_lstring::init_21__21_ (GGS_string::makeEmptyString (), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("template-lexique-component.galgas3", 212)), inCompiler COMMA_HERE) ;
-  } break ;
-  default:
-    break ;
-  }
-  ioArgument_ioTemplateReplacement.addAssignOperation (var_matchString_6871, var_replacementString_6900, var_replacementFunction_6935  COMMA_SOURCE_FILE ("template-lexique-component.galgas3", 214)) ;
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_galgas_34_LexiqueComponentSyntax::rule_galgas_34_LexiqueComponentSyntax_template_5F_replacement_i35_indexing (Lexique_galgasScanner_34_ * inCompiler) {
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__25_templateReplacement COMMA_SOURCE_FILE ("template-lexique-component.galgas3", 200)) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__22_string_22_ COMMA_SOURCE_FILE ("template-lexique-component.galgas3", 201)) ;
-  switch (select_galgas_34_LexiqueComponentSyntax_26 (inCompiler)) {
-  case 1: {
-    inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__2E__2E__2E_ COMMA_SOURCE_FILE ("template-lexique-component.galgas3", 205)) ;
-    inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__22_string_22_ COMMA_SOURCE_FILE ("template-lexique-component.galgas3", 206)) ;
-    inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__3A_ COMMA_SOURCE_FILE ("template-lexique-component.galgas3", 207)) ;
-    inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("template-lexique-component.galgas3", 208)) ;
-  } break ;
-  case 2: {
-    inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__2D__3E_ COMMA_SOURCE_FILE ("template-lexique-component.galgas3", 210)) ;
-    inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__22_string_22_ COMMA_SOURCE_FILE ("template-lexique-component.galgas3", 211)) ;
-  } break ;
-  default:
-    break ;
-  }
-}
-
-
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_galgas_34_OptionComponentSyntax::rule_galgas_34_OptionComponentSyntax_declaration_i0_ (GGS_galgasDeclarationAST & ioArgument_ioDeclarations,
-                                                                                                    Lexique_galgasScanner_34_ * inCompiler) {
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_option COMMA_SOURCE_FILE ("optionCompilation.galgas3", 93)) ;
-  GGS_lstring var_optionComponentName_3485 = inCompiler->synthetizedAttribute_tokenString () ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("optionCompilation.galgas3", 94)) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__7B_ COMMA_SOURCE_FILE ("optionCompilation.galgas3", 95)) ;
-  GGS_commandLineOptionListAST var_options_3547 = GGS_commandLineOptionListAST::init (inCompiler COMMA_HERE) ;
-  bool repeatFlag_0 = true ;
-  while (repeatFlag_0) {
-    if (select_galgas_34_OptionComponentSyntax_0 (inCompiler) == 2) {
-      nt_option_5F_declaration_5F_ggs_33__ (var_options_3547, inCompiler) ;
-    }else{
-      repeatFlag_0 = false ;
-    }
-  }
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__7D_ COMMA_SOURCE_FILE ("optionCompilation.galgas3", 101)) ;
-  ioArgument_ioDeclarations.mProperty_mDeclarationList.addAssignOperation (GGS_optionComponentDeclarationAST::init_21_isPredefined_21__21_ (GGS_bool (false), var_optionComponentName_3485, var_options_3547, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("optionCompilation.galgas3", 102)) ;
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_galgas_34_OptionComponentSyntax::rule_galgas_34_OptionComponentSyntax_declaration_i0_indexing (Lexique_galgasScanner_34_ * inCompiler) {
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_option COMMA_SOURCE_FILE ("optionCompilation.galgas3", 93)) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("optionCompilation.galgas3", 94)) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__7B_ COMMA_SOURCE_FILE ("optionCompilation.galgas3", 95)) ;
-  bool repeatFlag_0 = true ;
-  while (repeatFlag_0) {
-    if (select_galgas_34_OptionComponentSyntax_0 (inCompiler) == 2) {
-      nt_option_5F_declaration_5F_ggs_33__indexing (inCompiler) ;
-    }else{
-      repeatFlag_0 = false ;
-    }
-  }
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__7D_ COMMA_SOURCE_FILE ("optionCompilation.galgas3", 101)) ;
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_galgas_34_OptionComponentSyntax::rule_galgas_34_OptionComponentSyntax_option_5F_declaration_5F_ggs_33__i1_ (GGS_commandLineOptionListAST & ioArgument_ioCommandLineOptionList,
-                                                                                                                         Lexique_galgasScanner_34_ * inCompiler) {
-  GGS_lstring var_mOptionTypeName_4008 = inCompiler->synthetizedAttribute_tokenString () ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__40_type COMMA_SOURCE_FILE ("optionCompilation.galgas3", 112)) ;
-  GGS_lstring var_mOptionInternalName_4055 = inCompiler->synthetizedAttribute_tokenString () ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("optionCompilation.galgas3", 113)) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__3A_ COMMA_SOURCE_FILE ("optionCompilation.galgas3", 114)) ;
-  GGS_lchar var_mOptionInvocationLetter_4108 = inCompiler->synthetizedAttribute_charValue () ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__27_char_27_ COMMA_SOURCE_FILE ("optionCompilation.galgas3", 115)) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__2C_ COMMA_SOURCE_FILE ("optionCompilation.galgas3", 116)) ;
-  GGS_lstring var_mOptionInvocationString_4169 = inCompiler->synthetizedAttribute_tokenString () ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__22_string_22_ COMMA_SOURCE_FILE ("optionCompilation.galgas3", 117)) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__2D__3E_ COMMA_SOURCE_FILE ("optionCompilation.galgas3", 118)) ;
-  GGS_lstring var_mOptionComment_4231 = inCompiler->synthetizedAttribute_tokenString () ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__22_string_22_ COMMA_SOURCE_FILE ("optionCompilation.galgas3", 119)) ;
-  GGS_lstring var_defaultValue_4254 = GGS_lstring::init_21__21_ (GGS_string::makeEmptyString (), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("optionCompilation.galgas3", 120)), inCompiler COMMA_HERE) ;
-  GGS_optionDefaultValueEnumAST var_optionDefaultValueKind_4335 ;
-  switch (select_galgas_34_OptionComponentSyntax_1 (inCompiler)) {
-  case 1: {
-    var_optionDefaultValueKind_4335 = GGS_optionDefaultValueEnumAST::class_func_noDefaultValue (SOURCE_FILE ("optionCompilation.galgas3", 123)) ;
-  } break ;
-  case 2: {
-    inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_default COMMA_SOURCE_FILE ("optionCompilation.galgas3", 125)) ;
-    switch (select_galgas_34_OptionComponentSyntax_2 (inCompiler)) {
-    case 1: {
-      var_defaultValue_4254 = inCompiler->synthetizedAttribute_tokenString () ;
-      inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__22_string_22_ COMMA_SOURCE_FILE ("optionCompilation.galgas3", 127)) ;
-      var_optionDefaultValueKind_4335 = GGS_optionDefaultValueEnumAST::class_func_stringDefaultValue (SOURCE_FILE ("optionCompilation.galgas3", 128)) ;
-    } break ;
-    case 2: {
-      GGS_lbigint var_v_4628 = inCompiler->synthetizedAttribute_bigintValue () ;
-      inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_literalInt COMMA_SOURCE_FILE ("optionCompilation.galgas3", 130)) ;
-      var_defaultValue_4254 = GGS_lstring::init_21__21_ (var_v_4628.readProperty_bigint ().getter_string (SOURCE_FILE ("optionCompilation.galgas3", 131)), var_v_4628.readProperty_location (), inCompiler COMMA_HERE) ;
-      var_optionDefaultValueKind_4335 = GGS_optionDefaultValueEnumAST::class_func_unsignedDefaultValue (SOURCE_FILE ("optionCompilation.galgas3", 132)) ;
-    } break ;
-    default:
-      break ;
-    }
-  } break ;
-  default:
-    break ;
-  }
-  ioArgument_ioCommandLineOptionList.addAssignOperation (var_mOptionTypeName_4008, var_mOptionInternalName_4055, var_mOptionInvocationLetter_4108, var_mOptionInvocationString_4169, var_mOptionComment_4231, var_defaultValue_4254, var_optionDefaultValueKind_4335  COMMA_SOURCE_FILE ("optionCompilation.galgas3", 135)) ;
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_galgas_34_OptionComponentSyntax::rule_galgas_34_OptionComponentSyntax_option_5F_declaration_5F_ggs_33__i1_indexing (Lexique_galgasScanner_34_ * inCompiler) {
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__40_type COMMA_SOURCE_FILE ("optionCompilation.galgas3", 112)) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("optionCompilation.galgas3", 113)) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__3A_ COMMA_SOURCE_FILE ("optionCompilation.galgas3", 114)) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__27_char_27_ COMMA_SOURCE_FILE ("optionCompilation.galgas3", 115)) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__2C_ COMMA_SOURCE_FILE ("optionCompilation.galgas3", 116)) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__22_string_22_ COMMA_SOURCE_FILE ("optionCompilation.galgas3", 117)) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__2D__3E_ COMMA_SOURCE_FILE ("optionCompilation.galgas3", 118)) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__22_string_22_ COMMA_SOURCE_FILE ("optionCompilation.galgas3", 119)) ;
-  switch (select_galgas_34_OptionComponentSyntax_1 (inCompiler)) {
-  case 1: {
-  } break ;
-  case 2: {
-    inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_default COMMA_SOURCE_FILE ("optionCompilation.galgas3", 125)) ;
-    switch (select_galgas_34_OptionComponentSyntax_2 (inCompiler)) {
-    case 1: {
-      inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__22_string_22_ COMMA_SOURCE_FILE ("optionCompilation.galgas3", 127)) ;
-    } break ;
-    case 2: {
-      inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_literalInt COMMA_SOURCE_FILE ("optionCompilation.galgas3", 130)) ;
-    } break ;
-    default:
-      break ;
-    }
-  } break ;
-  default:
-    break ;
-  }
-}
-
-
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_galgas_34_GuiComponentSyntax::rule_galgas_34_GuiComponentSyntax_declaration_i0_ (GGS_galgasDeclarationAST & ioArgument_ioDeclarations,
-                                                                                              Lexique_galgasScanner_34_ * inCompiler) {
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_gui COMMA_SOURCE_FILE ("guiCompilation.galgas3", 257)) ;
-  GGS_lstring var_mGUIName_8738 = inCompiler->synthetizedAttribute_tokenString () ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("guiCompilation.galgas3", 258)) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__7B_ COMMA_SOURCE_FILE ("guiCompilation.galgas3", 259)) ;
-  GGS_lstringlist var_importedOptionList_8776 = GGS_lstringlist::init (inCompiler COMMA_HERE) ;
-  GGS_guiSimpleAttributeListAST var_simpleGlobalAttributes_8836 = GGS_guiSimpleAttributeListAST::init (inCompiler COMMA_HERE) ;
-  GGS_withLexiqueListAST var_withLexiqueList_8893 = GGS_withLexiqueListAST::init (inCompiler COMMA_HERE) ;
-  GGS_projectIndexingDescriptorList var_projectExtensionList_8954 = GGS_projectIndexingDescriptorList::init (inCompiler COMMA_HERE) ;
-  bool repeatFlag_0 = true ;
-  while (repeatFlag_0) {
-    switch (select_galgas_34_GuiComponentSyntax_0 (inCompiler)) {
-    case 2: {
-      inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_project COMMA_SOURCE_FILE ("guiCompilation.galgas3", 266)) ;
-      GGS_lstring var_fileExtension_9040 = inCompiler->synthetizedAttribute_tokenString () ;
-      inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__22_string_22_ COMMA_SOURCE_FILE ("guiCompilation.galgas3", 267)) ;
-      inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_indexing COMMA_SOURCE_FILE ("guiCompilation.galgas3", 268)) ;
-      inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_in COMMA_SOURCE_FILE ("guiCompilation.galgas3", 269)) ;
-      GGS_lstring var_indexingPathSuffix_9104 = inCompiler->synthetizedAttribute_tokenString () ;
-      inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__22_string_22_ COMMA_SOURCE_FILE ("guiCompilation.galgas3", 270)) ;
-      var_projectExtensionList_8954.addAssignOperation (var_fileExtension_9040, var_indexingPathSuffix_9104  COMMA_SOURCE_FILE ("guiCompilation.galgas3", 271)) ;
-    } break ;
-    case 3: {
-      nt_gui_5F_attributes_ (var_simpleGlobalAttributes_8836, inCompiler) ;
-    } break ;
-    case 4: {
-      nt_gui_5F_with_5F_option_5F_declaration_ (var_importedOptionList_8776, inCompiler) ;
-    } break ;
-    case 5: {
-      nt_gui_5F_with_5F_lexique_5F_declaration_ (var_withLexiqueList_8893, inCompiler) ;
-    } break ;
-    default:
-      repeatFlag_0 = false ;
-      break ;
-    }
-  }
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__7D_ COMMA_SOURCE_FILE ("guiCompilation.galgas3", 280)) ;
-  ioArgument_ioDeclarations.mProperty_mGUIComponentList.addAssignOperation (var_mGUIName_8738, var_importedOptionList_8776, var_simpleGlobalAttributes_8836, var_withLexiqueList_8893, var_projectExtensionList_8954  COMMA_SOURCE_FILE ("guiCompilation.galgas3", 281)) ;
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_galgas_34_GuiComponentSyntax::rule_galgas_34_GuiComponentSyntax_declaration_i0_indexing (Lexique_galgasScanner_34_ * inCompiler) {
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_gui COMMA_SOURCE_FILE ("guiCompilation.galgas3", 257)) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("guiCompilation.galgas3", 258)) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__7B_ COMMA_SOURCE_FILE ("guiCompilation.galgas3", 259)) ;
-  bool repeatFlag_0 = true ;
-  while (repeatFlag_0) {
-    switch (select_galgas_34_GuiComponentSyntax_0 (inCompiler)) {
-    case 2: {
-      inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_project COMMA_SOURCE_FILE ("guiCompilation.galgas3", 266)) ;
-      inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__22_string_22_ COMMA_SOURCE_FILE ("guiCompilation.galgas3", 267)) ;
-      inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_indexing COMMA_SOURCE_FILE ("guiCompilation.galgas3", 268)) ;
-      inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_in COMMA_SOURCE_FILE ("guiCompilation.galgas3", 269)) ;
-      inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__22_string_22_ COMMA_SOURCE_FILE ("guiCompilation.galgas3", 270)) ;
-    } break ;
-    case 3: {
-      nt_gui_5F_attributes_indexing (inCompiler) ;
-    } break ;
-    case 4: {
-      nt_gui_5F_with_5F_option_5F_declaration_indexing (inCompiler) ;
-    } break ;
-    case 5: {
-      nt_gui_5F_with_5F_lexique_5F_declaration_indexing (inCompiler) ;
-    } break ;
-    default:
-      repeatFlag_0 = false ;
-      break ;
-    }
-  }
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__7D_ COMMA_SOURCE_FILE ("guiCompilation.galgas3", 280)) ;
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_galgas_34_GuiComponentSyntax::rule_galgas_34_GuiComponentSyntax_gui_5F_with_5F_lexique_5F_declaration_i1_ (GGS_withLexiqueListAST & ioArgument_ioWithLexiqueList,
-                                                                                                                        Lexique_galgasScanner_34_ * inCompiler) {
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_with COMMA_SOURCE_FILE ("guiCompilation.galgas3", 292)) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_lexique COMMA_SOURCE_FILE ("guiCompilation.galgas3", 293)) ;
-  GGS_lstring var_lexiqueReference_9808 = inCompiler->synthetizedAttribute_tokenString () ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("guiCompilation.galgas3", 294)) ;
-  GGS_guiLabelListAST var_labels_9850 = GGS_guiLabelListAST::init (inCompiler COMMA_HERE) ;
-  GGS_guiSimpleAttributeListAST var_simpleAttributes_9898 = GGS_guiSimpleAttributeListAST::init (inCompiler COMMA_HERE) ;
-  GGS_guiCompoundAttributeListAST var_compoundAttributes_9958 = GGS_guiCompoundAttributeListAST::init (inCompiler COMMA_HERE) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__7B_ COMMA_SOURCE_FILE ("guiCompilation.galgas3", 298)) ;
-  bool repeatFlag_0 = true ;
-  while (repeatFlag_0) {
-    switch (select_galgas_34_GuiComponentSyntax_1 (inCompiler)) {
-    case 2: {
-      inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_label COMMA_SOURCE_FILE ("guiCompilation.galgas3", 301)) ;
-      GGS_uint var_displayStyle_10042 ;
-      switch (select_galgas_34_GuiComponentSyntax_2 (inCompiler)) {
-      case 1: {
-        var_displayStyle_10042 = GGS_uint (uint32_t (0U)) ;
-      } break ;
-      case 2: {
-        inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__2A_ COMMA_SOURCE_FILE ("guiCompilation.galgas3", 306)) ;
-        var_displayStyle_10042 = GGS_uint (uint32_t (1U)) ;
-      } break ;
-      default:
-        break ;
-      }
-      GGS_terminalLabelListAST var_terminalList_10181 = GGS_terminalLabelListAST::init (inCompiler COMMA_HERE) ;
-      bool repeatFlag_1 = true ;
-      while (repeatFlag_1) {
-        GGS_lstring var_terminal_10251 = inCompiler->synthetizedAttribute_tokenString () ;
-        inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__24_terminal_24_ COMMA_SOURCE_FILE ("guiCompilation.galgas3", 311)) ;
-        GGS_uint var_displayFlags_10278 ;
-        switch (select_galgas_34_GuiComponentSyntax_4 (inCompiler)) {
-        case 1: {
-          var_displayFlags_10278 = GGS_uint (uint32_t (0U)) ;
-        } break ;
-        case 2: {
-          inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__2D_ COMMA_SOURCE_FILE ("guiCompilation.galgas3", 316)) ;
-          var_displayFlags_10278 = GGS_uint (uint32_t (65535U)) ;
-        } break ;
-        case 3: {
-          inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__28_ COMMA_SOURCE_FILE ("guiCompilation.galgas3", 319)) ;
-          GGS_lbigint var_leadingStrip_10471 = inCompiler->synthetizedAttribute_bigintValue () ;
-          inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_literalInt COMMA_SOURCE_FILE ("guiCompilation.galgas3", 320)) ;
-          GalgasBool test_2 = GalgasBool::boolTrue ;
-          if (GalgasBool::boolTrue == test_2) {
-            test_2 = GGS_bool (ComparisonKind::greaterOrEqual, var_leadingStrip_10471.readProperty_bigint ().objectCompare (GGS_bigint ("15", inCompiler  COMMA_SOURCE_FILE ("guiCompilation.galgas3", 321)))).boolEnum () ;
-            if (GalgasBool::boolTrue == test_2) {
-              GenericArray <FixItDescription> fixItArray3 ;
-              inCompiler->emitSemanticError (var_leadingStrip_10471.readProperty_location (), GGS_string ("leading strip should be < 15"), fixItArray3  COMMA_SOURCE_FILE ("guiCompilation.galgas3", 322)) ;
-            }
-          }
-          inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__2C_ COMMA_SOURCE_FILE ("guiCompilation.galgas3", 324)) ;
-          GGS_lbigint var_endingStrip_10648 = inCompiler->synthetizedAttribute_bigintValue () ;
-          inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_literalInt COMMA_SOURCE_FILE ("guiCompilation.galgas3", 325)) ;
-          GalgasBool test_4 = GalgasBool::boolTrue ;
-          if (GalgasBool::boolTrue == test_4) {
-            test_4 = GGS_bool (ComparisonKind::greaterOrEqual, var_endingStrip_10648.readProperty_bigint ().objectCompare (GGS_bigint ("15", inCompiler  COMMA_SOURCE_FILE ("guiCompilation.galgas3", 326)))).boolEnum () ;
-            if (GalgasBool::boolTrue == test_4) {
-              GenericArray <FixItDescription> fixItArray5 ;
-              inCompiler->emitSemanticError (var_endingStrip_10648.readProperty_location (), GGS_string ("tail strip should be < 15"), fixItArray5  COMMA_SOURCE_FILE ("guiCompilation.galgas3", 327)) ;
-            }
-          }
-          var_displayFlags_10278 = var_leadingStrip_10471.readProperty_bigint ().left_shift_operation (GGS_bigint ("4", inCompiler  COMMA_SOURCE_FILE ("guiCompilation.galgas3", 329)), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas3", 329)).operator_or (var_endingStrip_10648.readProperty_bigint () COMMA_SOURCE_FILE ("guiCompilation.galgas3", 329)).getter_uint (inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas3", 329)) ;
-          inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__29_ COMMA_SOURCE_FILE ("guiCompilation.galgas3", 330)) ;
-        } break ;
-        default:
-          break ;
-        }
-        var_terminalList_10181.addAssignOperation (var_terminal_10251, var_displayFlags_10278  COMMA_SOURCE_FILE ("guiCompilation.galgas3", 332)) ;
-        if (select_galgas_34_GuiComponentSyntax_3 (inCompiler) == 2) {
-          inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__2C_ COMMA_SOURCE_FILE ("guiCompilation.galgas3", 334)) ;
-        }else{
-          repeatFlag_1 = false ;
-        }
-      }
-      var_labels_9850.addAssignOperation (var_displayStyle_10042, var_terminalList_10181, GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("guiCompilation.galgas3", 336))  COMMA_SOURCE_FILE ("guiCompilation.galgas3", 336)) ;
-    } break ;
-    case 3: {
-      GGS_lstring var_key_11053 = inCompiler->synthetizedAttribute_tokenString () ;
-      inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("guiCompilation.galgas3", 338)) ;
-      GGS_lstring var_name_11088 = inCompiler->synthetizedAttribute_tokenString () ;
-      inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__22_string_22_ COMMA_SOURCE_FILE ("guiCompilation.galgas3", 339)) ;
-      inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__3A_ COMMA_SOURCE_FILE ("guiCompilation.galgas3", 340)) ;
-      GGS_lstring var_value_11113 = GGS_lstring::init_21__21_ (GGS_string::makeEmptyString (), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("guiCompilation.galgas3", 341)), inCompiler COMMA_HERE) ;
-      bool repeatFlag_6 = true ;
-      while (repeatFlag_6) {
-        GGS_lstring var_v_11198 = inCompiler->synthetizedAttribute_tokenString () ;
-        inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__22_string_22_ COMMA_SOURCE_FILE ("guiCompilation.galgas3", 343)) ;
-        var_value_11113 = GGS_lstring::init_21__21_ (var_value_11113.readProperty_string ().add_operation (var_v_11198.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas3", 344)), var_v_11198.readProperty_location (), inCompiler COMMA_HERE) ;
-        if (select_galgas_34_GuiComponentSyntax_5 (inCompiler) == 2) {
-        }else{
-          repeatFlag_6 = false ;
-        }
-      }
-      var_compoundAttributes_9958.addAssignOperation (var_key_11053, var_name_11088, var_value_11113  COMMA_SOURCE_FILE ("guiCompilation.galgas3", 347)) ;
-    } break ;
-    case 4: {
-      GGS_lstring var_name_11375 = inCompiler->synthetizedAttribute_tokenString () ;
-      inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("guiCompilation.galgas3", 349)) ;
-      inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__3A_ COMMA_SOURCE_FILE ("guiCompilation.galgas3", 350)) ;
-      GGS_lstring var_value_11421 = inCompiler->synthetizedAttribute_tokenString () ;
-      inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__22_string_22_ COMMA_SOURCE_FILE ("guiCompilation.galgas3", 351)) ;
-      var_simpleAttributes_9898.addAssignOperation (var_name_11375, var_value_11421  COMMA_SOURCE_FILE ("guiCompilation.galgas3", 352)) ;
-    } break ;
-    default:
-      repeatFlag_0 = false ;
-      break ;
-    }
-  }
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__7D_ COMMA_SOURCE_FILE ("guiCompilation.galgas3", 354)) ;
-  ioArgument_ioWithLexiqueList.addAssignOperation (var_lexiqueReference_9808, var_labels_9850, var_simpleAttributes_9898, var_compoundAttributes_9958  COMMA_SOURCE_FILE ("guiCompilation.galgas3", 355)) ;
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_galgas_34_GuiComponentSyntax::rule_galgas_34_GuiComponentSyntax_gui_5F_with_5F_lexique_5F_declaration_i1_indexing (Lexique_galgasScanner_34_ * inCompiler) {
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_with COMMA_SOURCE_FILE ("guiCompilation.galgas3", 292)) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_lexique COMMA_SOURCE_FILE ("guiCompilation.galgas3", 293)) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("guiCompilation.galgas3", 294)) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__7B_ COMMA_SOURCE_FILE ("guiCompilation.galgas3", 298)) ;
-  bool repeatFlag_0 = true ;
-  while (repeatFlag_0) {
-    switch (select_galgas_34_GuiComponentSyntax_1 (inCompiler)) {
-    case 2: {
-      inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_label COMMA_SOURCE_FILE ("guiCompilation.galgas3", 301)) ;
-      switch (select_galgas_34_GuiComponentSyntax_2 (inCompiler)) {
-      case 1: {
-      } break ;
-      case 2: {
-        inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__2A_ COMMA_SOURCE_FILE ("guiCompilation.galgas3", 306)) ;
-      } break ;
-      default:
-        break ;
-      }
-      bool repeatFlag_1 = true ;
-      while (repeatFlag_1) {
-        inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__24_terminal_24_ COMMA_SOURCE_FILE ("guiCompilation.galgas3", 311)) ;
-        switch (select_galgas_34_GuiComponentSyntax_4 (inCompiler)) {
-        case 1: {
-        } break ;
-        case 2: {
-          inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__2D_ COMMA_SOURCE_FILE ("guiCompilation.galgas3", 316)) ;
-        } break ;
-        case 3: {
-          inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__28_ COMMA_SOURCE_FILE ("guiCompilation.galgas3", 319)) ;
-          inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_literalInt COMMA_SOURCE_FILE ("guiCompilation.galgas3", 320)) ;
-          inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__2C_ COMMA_SOURCE_FILE ("guiCompilation.galgas3", 324)) ;
-          inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_literalInt COMMA_SOURCE_FILE ("guiCompilation.galgas3", 325)) ;
-          inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__29_ COMMA_SOURCE_FILE ("guiCompilation.galgas3", 330)) ;
-        } break ;
-        default:
-          break ;
-        }
-        if (select_galgas_34_GuiComponentSyntax_3 (inCompiler) == 2) {
-          inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__2C_ COMMA_SOURCE_FILE ("guiCompilation.galgas3", 334)) ;
-        }else{
-          repeatFlag_1 = false ;
-        }
-      }
-    } break ;
-    case 3: {
-      inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("guiCompilation.galgas3", 338)) ;
-      inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__22_string_22_ COMMA_SOURCE_FILE ("guiCompilation.galgas3", 339)) ;
-      inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__3A_ COMMA_SOURCE_FILE ("guiCompilation.galgas3", 340)) ;
-      bool repeatFlag_2 = true ;
-      while (repeatFlag_2) {
-        inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__22_string_22_ COMMA_SOURCE_FILE ("guiCompilation.galgas3", 343)) ;
-        if (select_galgas_34_GuiComponentSyntax_5 (inCompiler) == 2) {
-        }else{
-          repeatFlag_2 = false ;
-        }
-      }
-    } break ;
-    case 4: {
-      inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("guiCompilation.galgas3", 349)) ;
-      inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__3A_ COMMA_SOURCE_FILE ("guiCompilation.galgas3", 350)) ;
-      inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__22_string_22_ COMMA_SOURCE_FILE ("guiCompilation.galgas3", 351)) ;
-    } break ;
-    default:
-      repeatFlag_0 = false ;
-      break ;
-    }
-  }
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__7D_ COMMA_SOURCE_FILE ("guiCompilation.galgas3", 354)) ;
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_galgas_34_GuiComponentSyntax::rule_galgas_34_GuiComponentSyntax_gui_5F_with_5F_option_5F_declaration_i2_ (GGS_lstringlist & ioArgument_ioImportedOptionList,
-                                                                                                                       Lexique_galgasScanner_34_ * inCompiler) {
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_with COMMA_SOURCE_FILE ("guiCompilation.galgas3", 361)) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_option COMMA_SOURCE_FILE ("guiCompilation.galgas3", 362)) ;
-  GGS_lstring var_optionReference_11809 = inCompiler->synthetizedAttribute_tokenString () ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("guiCompilation.galgas3", 363)) ;
-  ioArgument_ioImportedOptionList.addAssignOperation (var_optionReference_11809  COMMA_SOURCE_FILE ("guiCompilation.galgas3", 364)) ;
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_galgas_34_GuiComponentSyntax::rule_galgas_34_GuiComponentSyntax_gui_5F_with_5F_option_5F_declaration_i2_indexing (Lexique_galgasScanner_34_ * inCompiler) {
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_with COMMA_SOURCE_FILE ("guiCompilation.galgas3", 361)) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_option COMMA_SOURCE_FILE ("guiCompilation.galgas3", 362)) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("guiCompilation.galgas3", 363)) ;
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_galgas_34_GuiComponentSyntax::rule_galgas_34_GuiComponentSyntax_gui_5F_attributes_i3_ (GGS_guiSimpleAttributeListAST & ioArgument_ioSimpleGlobalAttributes,
-                                                                                                    Lexique_galgasScanner_34_ * inCompiler) {
-  GGS_lstring var_mKey_12088 = inCompiler->synthetizedAttribute_tokenString () ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("guiCompilation.galgas3", 370)) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__3A_ COMMA_SOURCE_FILE ("guiCompilation.galgas3", 371)) ;
-  GGS_lstring var_mValue_12109 = GGS_lstring::init_21__21_ (GGS_string::makeEmptyString (), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("guiCompilation.galgas3", 372)), inCompiler COMMA_HERE) ;
-  bool repeatFlag_0 = true ;
-  while (repeatFlag_0) {
-    GGS_lstring var_value_12182 = inCompiler->synthetizedAttribute_tokenString () ;
-    inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__22_string_22_ COMMA_SOURCE_FILE ("guiCompilation.galgas3", 374)) ;
-    var_mValue_12109 = GGS_lstring::init_21__21_ (var_mValue_12109.readProperty_string ().add_operation (var_value_12182.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas3", 375)), var_value_12182.readProperty_location (), inCompiler COMMA_HERE) ;
-    if (select_galgas_34_GuiComponentSyntax_6 (inCompiler) == 2) {
-    }else{
-      repeatFlag_0 = false ;
-    }
-  }
-  ioArgument_ioSimpleGlobalAttributes.addAssignOperation (var_mKey_12088, var_mValue_12109  COMMA_SOURCE_FILE ("guiCompilation.galgas3", 378)) ;
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_galgas_34_GuiComponentSyntax::rule_galgas_34_GuiComponentSyntax_gui_5F_attributes_i3_indexing (Lexique_galgasScanner_34_ * inCompiler) {
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("guiCompilation.galgas3", 370)) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__3A_ COMMA_SOURCE_FILE ("guiCompilation.galgas3", 371)) ;
-  bool repeatFlag_0 = true ;
-  while (repeatFlag_0) {
-    inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__22_string_22_ COMMA_SOURCE_FILE ("guiCompilation.galgas3", 374)) ;
-    if (select_galgas_34_GuiComponentSyntax_6 (inCompiler) == 2) {
-    }else{
-      repeatFlag_0 = false ;
-    }
-  }
-}
-
-
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_galgas_34_SyntaxComponentSyntax::rule_galgas_34_SyntaxComponentSyntax_declaration_i0_ (GGS_galgasDeclarationAST & ioArgument_ioDeclarations,
-                                                                                                    Lexique_galgasScanner_34_ * inCompiler) {
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_syntax COMMA_SOURCE_FILE ("galgasSyntaxComponentSyntax.galgas3", 243)) ;
-  GGS_lstring var_syntaxComponentName_10149 = inCompiler->synthetizedAttribute_tokenString () ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("galgasSyntaxComponentSyntax.galgas3", 244)) ;
-  GGS_lstring var_importedLexiqueReference_10211 ;
-  switch (select_galgas_34_SyntaxComponentSyntax_0 (inCompiler)) {
-  case 1: {
-    var_importedLexiqueReference_10211 = GGS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("galgasSyntaxComponentSyntax.galgas3", 248)) ;
-  } break ;
-  case 2: {
-    inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__28_ COMMA_SOURCE_FILE ("galgasSyntaxComponentSyntax.galgas3", 250)) ;
-    var_importedLexiqueReference_10211 = inCompiler->synthetizedAttribute_tokenString () ;
-    inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("galgasSyntaxComponentSyntax.galgas3", 251)) ;
-    inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__29_ COMMA_SOURCE_FILE ("galgasSyntaxComponentSyntax.galgas3", 252)) ;
-  } break ;
-  default:
-    break ;
-  }
-  GGS_bool var_hasTranslateFeature_10413 ;
-  switch (select_galgas_34_SyntaxComponentSyntax_1 (inCompiler)) {
-  case 1: {
-    var_hasTranslateFeature_10413 = GGS_bool (false) ;
-  } break ;
-  case 2: {
-    inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__25_translate COMMA_SOURCE_FILE ("galgasSyntaxComponentSyntax.galgas3", 259)) ;
-    var_hasTranslateFeature_10413 = GGS_bool (true) ;
-  } break ;
-  default:
-    break ;
-  }
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__7B_ COMMA_SOURCE_FILE ("galgasSyntaxComponentSyntax.galgas3", 262)) ;
-  GGS_nonterminalDeclarationListAST var_nonterminalDeclarationList_10590 = GGS_nonterminalDeclarationListAST::init (inCompiler COMMA_HERE) ;
-  GGS_syntaxRuleListAST var_ruleList_10661 = GGS_syntaxRuleListAST::init (inCompiler COMMA_HERE) ;
-  bool repeatFlag_0 = true ;
-  while (repeatFlag_0) {
-    switch (select_galgas_34_SyntaxComponentSyntax_2 (inCompiler)) {
-    case 2: {
-      nt_nonterminal_5F_declaration_ (ioArgument_ioDeclarations, var_nonterminalDeclarationList_10590, inCompiler) ;
-    } break ;
-    case 3: {
-      nt_syntax_5F_rule_5F_declaration_ (ioArgument_ioDeclarations, var_ruleList_10661, inCompiler) ;
-    } break ;
-    default:
-      repeatFlag_0 = false ;
-      break ;
-    }
-  }
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__7D_ COMMA_SOURCE_FILE ("galgasSyntaxComponentSyntax.galgas3", 273)) ;
-  ioArgument_ioDeclarations.mProperty_mSyntaxComponentList.addAssignOperation (var_syntaxComponentName_10149, var_importedLexiqueReference_10211, var_nonterminalDeclarationList_10590, var_ruleList_10661, var_hasTranslateFeature_10413  COMMA_SOURCE_FILE ("galgasSyntaxComponentSyntax.galgas3", 274)) ;
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_galgas_34_SyntaxComponentSyntax::rule_galgas_34_SyntaxComponentSyntax_declaration_i0_indexing (Lexique_galgasScanner_34_ * inCompiler) {
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_syntax COMMA_SOURCE_FILE ("galgasSyntaxComponentSyntax.galgas3", 243)) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("galgasSyntaxComponentSyntax.galgas3", 244)) ;
-  switch (select_galgas_34_SyntaxComponentSyntax_0 (inCompiler)) {
-  case 1: {
-  } break ;
-  case 2: {
-    inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__28_ COMMA_SOURCE_FILE ("galgasSyntaxComponentSyntax.galgas3", 250)) ;
-    inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("galgasSyntaxComponentSyntax.galgas3", 251)) ;
-    inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__29_ COMMA_SOURCE_FILE ("galgasSyntaxComponentSyntax.galgas3", 252)) ;
-  } break ;
-  default:
-    break ;
-  }
-  switch (select_galgas_34_SyntaxComponentSyntax_1 (inCompiler)) {
-  case 1: {
-  } break ;
-  case 2: {
-    inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__25_translate COMMA_SOURCE_FILE ("galgasSyntaxComponentSyntax.galgas3", 259)) ;
-  } break ;
-  default:
-    break ;
-  }
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__7B_ COMMA_SOURCE_FILE ("galgasSyntaxComponentSyntax.galgas3", 262)) ;
-  bool repeatFlag_0 = true ;
-  while (repeatFlag_0) {
-    switch (select_galgas_34_SyntaxComponentSyntax_2 (inCompiler)) {
-    case 2: {
-      nt_nonterminal_5F_declaration_indexing (inCompiler) ;
-    } break ;
-    case 3: {
-      nt_syntax_5F_rule_5F_declaration_indexing (inCompiler) ;
-    } break ;
-    default:
-      repeatFlag_0 = false ;
-      break ;
-    }
-  }
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__7D_ COMMA_SOURCE_FILE ("galgasSyntaxComponentSyntax.galgas3", 273)) ;
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_galgas_34_SyntaxComponentSyntax::rule_galgas_34_SyntaxComponentSyntax_declaration_i1_ (GGS_galgasDeclarationAST & ioArgument_ioDeclarations,
-                                                                                                    Lexique_galgasScanner_34_ * inCompiler) {
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_syntax COMMA_SOURCE_FILE ("galgasSyntaxComponentSyntax.galgas3", 287)) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_extension COMMA_SOURCE_FILE ("galgasSyntaxComponentSyntax.galgas3", 288)) ;
-  GGS_lstring var_syntaxComponentName_11445 = inCompiler->synthetizedAttribute_tokenString () ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("galgasSyntaxComponentSyntax.galgas3", 289)) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__7B_ COMMA_SOURCE_FILE ("galgasSyntaxComponentSyntax.galgas3", 290)) ;
-  GGS_nonterminalDeclarationListAST var_nonterminalDeclarationList_11510 = GGS_nonterminalDeclarationListAST::init (inCompiler COMMA_HERE) ;
-  GGS_syntaxRuleListAST var_ruleList_11581 = GGS_syntaxRuleListAST::init (inCompiler COMMA_HERE) ;
-  bool repeatFlag_0 = true ;
-  while (repeatFlag_0) {
-    switch (select_galgas_34_SyntaxComponentSyntax_3 (inCompiler)) {
-    case 2: {
-      nt_nonterminal_5F_declaration_ (ioArgument_ioDeclarations, var_nonterminalDeclarationList_11510, inCompiler) ;
-    } break ;
-    case 3: {
-      nt_syntax_5F_rule_5F_declaration_ (ioArgument_ioDeclarations, var_ruleList_11581, inCompiler) ;
-    } break ;
-    default:
-      repeatFlag_0 = false ;
-      break ;
-    }
-  }
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__7D_ COMMA_SOURCE_FILE ("galgasSyntaxComponentSyntax.galgas3", 301)) ;
-  {
-  extensionSetter_insertKey (ioArgument_ioDeclarations.mProperty_mSyntaxExtensions, var_syntaxComponentName_11445.readProperty_string (), var_syntaxComponentName_11445, var_nonterminalDeclarationList_11510, var_ruleList_11581, inCompiler COMMA_SOURCE_FILE ("galgasSyntaxComponentSyntax.galgas3", 302)) ;
-  }
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_galgas_34_SyntaxComponentSyntax::rule_galgas_34_SyntaxComponentSyntax_declaration_i1_indexing (Lexique_galgasScanner_34_ * inCompiler) {
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_syntax COMMA_SOURCE_FILE ("galgasSyntaxComponentSyntax.galgas3", 287)) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_extension COMMA_SOURCE_FILE ("galgasSyntaxComponentSyntax.galgas3", 288)) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("galgasSyntaxComponentSyntax.galgas3", 289)) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__7B_ COMMA_SOURCE_FILE ("galgasSyntaxComponentSyntax.galgas3", 290)) ;
-  bool repeatFlag_0 = true ;
-  while (repeatFlag_0) {
-    switch (select_galgas_34_SyntaxComponentSyntax_3 (inCompiler)) {
-    case 2: {
-      nt_nonterminal_5F_declaration_indexing (inCompiler) ;
-    } break ;
-    case 3: {
-      nt_syntax_5F_rule_5F_declaration_indexing (inCompiler) ;
-    } break ;
-    default:
-      repeatFlag_0 = false ;
-      break ;
-    }
-  }
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__7D_ COMMA_SOURCE_FILE ("galgasSyntaxComponentSyntax.galgas3", 301)) ;
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_galgas_34_SyntaxComponentSyntax::rule_galgas_34_SyntaxComponentSyntax_nonterminal_5F_declaration_i2_ (GGS_galgasDeclarationAST & ioArgument_ioDeclarations,
-                                                                                                                   GGS_nonterminalDeclarationListAST & ioArgument_ioNonterminalDeclarationList,
-                                                                                                                   Lexique_galgasScanner_34_ * inCompiler) {
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_rule COMMA_SOURCE_FILE ("galgasSyntaxComponentSyntax.galgas3", 321)) ;
-  GGS_lstring var_mNonterminalName_12621 = inCompiler->synthetizedAttribute_tokenString () ;
-  inCompiler->enterIndexing (Lexique_galgasScanner_34_::kIndexing_ruleDefinition, "") ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__3C_non_5F_terminal_3E_ COMMA_SOURCE_FILE ("galgasSyntaxComponentSyntax.galgas3", 322)) ;
-  GGS_nonTerminalLabelListAST var_labels_12695 = GGS_nonTerminalLabelListAST::init (inCompiler COMMA_HERE) ;
-  GGS_formalParameterListAST var_firstBranchFormalParameters_12782 ;
-  nt_formal_5F_parameter_5F_list_ (ioArgument_ioDeclarations, var_firstBranchFormalParameters_12782, inCompiler) ;
-  var_labels_12695.addAssignOperation (GGS_lstring::init_21__21_ (GGS_string::makeEmptyString (), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("galgasSyntaxComponentSyntax.galgas3", 325)), inCompiler COMMA_HERE), var_firstBranchFormalParameters_12782, GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("galgasSyntaxComponentSyntax.galgas3", 325))  COMMA_SOURCE_FILE ("galgasSyntaxComponentSyntax.galgas3", 325)) ;
-  bool repeatFlag_0 = true ;
-  while (repeatFlag_0) {
-    if (select_galgas_34_SyntaxComponentSyntax_4 (inCompiler) == 2) {
-      inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_label COMMA_SOURCE_FILE ("galgasSyntaxComponentSyntax.galgas3", 328)) ;
-      GGS_lstring var_labelName_12943 = inCompiler->synthetizedAttribute_tokenString () ;
-      inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("galgasSyntaxComponentSyntax.galgas3", 329)) ;
-      GGS_formalParameterListAST var_formalParameters_13029 ;
-      nt_formal_5F_parameter_5F_list_ (ioArgument_ioDeclarations, var_formalParameters_13029, inCompiler) ;
-      var_labels_12695.addAssignOperation (var_labelName_12943, var_formalParameters_13029, GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("galgasSyntaxComponentSyntax.galgas3", 331))  COMMA_SOURCE_FILE ("galgasSyntaxComponentSyntax.galgas3", 331)) ;
-    }else{
-      repeatFlag_0 = false ;
-    }
-  }
-  ioArgument_ioNonterminalDeclarationList.addAssignOperation (var_mNonterminalName_12621, var_labels_12695  COMMA_SOURCE_FILE ("galgasSyntaxComponentSyntax.galgas3", 333)) ;
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_galgas_34_SyntaxComponentSyntax::rule_galgas_34_SyntaxComponentSyntax_nonterminal_5F_declaration_i2_indexing (Lexique_galgasScanner_34_ * inCompiler) {
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_rule COMMA_SOURCE_FILE ("galgasSyntaxComponentSyntax.galgas3", 321)) ;
-  inCompiler->enterIndexing (Lexique_galgasScanner_34_::kIndexing_ruleDefinition, "") ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__3C_non_5F_terminal_3E_ COMMA_SOURCE_FILE ("galgasSyntaxComponentSyntax.galgas3", 322)) ;
-  nt_formal_5F_parameter_5F_list_indexing (inCompiler) ;
-  bool repeatFlag_0 = true ;
-  while (repeatFlag_0) {
-    if (select_galgas_34_SyntaxComponentSyntax_4 (inCompiler) == 2) {
-      inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_label COMMA_SOURCE_FILE ("galgasSyntaxComponentSyntax.galgas3", 328)) ;
-      inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("galgasSyntaxComponentSyntax.galgas3", 329)) ;
-      nt_formal_5F_parameter_5F_list_indexing (inCompiler) ;
-    }else{
-      repeatFlag_0 = false ;
-    }
-  }
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_galgas_34_SyntaxComponentSyntax::rule_galgas_34_SyntaxComponentSyntax_syntax_5F_rule_5F_label_i3_ (GGS_galgasDeclarationAST & ioArgument_ioDeclarations,
-                                                                                                                const GGS_lstring constinArgument_inLabelName,
-                                                                                                                GGS_syntaxRuleLabelListAST & ioArgument_ioLabelList,
-                                                                                                                Lexique_galgasScanner_34_ * inCompiler) {
-  GGS_formalParameterListAST var_mFormalParameters_13643 ;
-  nt_formal_5F_parameter_5F_list_ (ioArgument_ioDeclarations, var_mFormalParameters_13643, inCompiler) ;
-  GGS_location var_endOfArguments_13669 = GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("galgasSyntaxComponentSyntax.galgas3", 343)) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__7B_ COMMA_SOURCE_FILE ("galgasSyntaxComponentSyntax.galgas3", 344)) ;
-  GGS_syntaxInstructionList var_mSyntaxInstructionList_13784 ;
-  nt_syntax_5F_instruction_5F_list_ (ioArgument_ioDeclarations, var_mSyntaxInstructionList_13784, inCompiler) ;
-  ioArgument_ioLabelList.addAssignOperation (constinArgument_inLabelName, var_mFormalParameters_13643, var_endOfArguments_13669, var_mSyntaxInstructionList_13784, GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("galgasSyntaxComponentSyntax.galgas3", 351))  COMMA_SOURCE_FILE ("galgasSyntaxComponentSyntax.galgas3", 346)) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__7D_ COMMA_SOURCE_FILE ("galgasSyntaxComponentSyntax.galgas3", 352)) ;
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_galgas_34_SyntaxComponentSyntax::rule_galgas_34_SyntaxComponentSyntax_syntax_5F_rule_5F_label_i3_indexing (Lexique_galgasScanner_34_ * inCompiler) {
-  nt_formal_5F_parameter_5F_list_indexing (inCompiler) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__7B_ COMMA_SOURCE_FILE ("galgasSyntaxComponentSyntax.galgas3", 344)) ;
-  nt_syntax_5F_instruction_5F_list_indexing (inCompiler) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__7D_ COMMA_SOURCE_FILE ("galgasSyntaxComponentSyntax.galgas3", 352)) ;
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_galgas_34_SyntaxComponentSyntax::rule_galgas_34_SyntaxComponentSyntax_syntax_5F_rule_5F_declaration_i4_ (GGS_galgasDeclarationAST & ioArgument_ioDeclarations,
-                                                                                                                      GGS_syntaxRuleListAST & ioArgument_ioRuleList,
-                                                                                                                      Lexique_galgasScanner_34_ * inCompiler) {
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_rule COMMA_SOURCE_FILE ("galgasSyntaxComponentSyntax.galgas3", 359)) ;
-  GGS_lstring var_mNonterminalName_14244 = inCompiler->synthetizedAttribute_tokenString () ;
-  inCompiler->enterIndexing (Lexique_galgasScanner_34_::kIndexing_ruleDefinition, "") ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__3C_non_5F_terminal_3E_ COMMA_SOURCE_FILE ("galgasSyntaxComponentSyntax.galgas3", 360)) ;
-  GGS_lstring var_labelName_14293 = GGS_lstring::init_21__21_ (GGS_string::makeEmptyString (), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("galgasSyntaxComponentSyntax.galgas3", 361)), inCompiler COMMA_HERE) ;
-  GGS_syntaxRuleLabelListAST var_mLabelList_14344 = GGS_syntaxRuleLabelListAST::init (inCompiler COMMA_HERE) ;
-  bool repeatFlag_0 = true ;
-  while (repeatFlag_0) {
-    nt_syntax_5F_rule_5F_label_ (ioArgument_ioDeclarations, var_labelName_14293, var_mLabelList_14344, inCompiler) ;
-    if (select_galgas_34_SyntaxComponentSyntax_5 (inCompiler) == 2) {
-      inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_label COMMA_SOURCE_FILE ("galgasSyntaxComponentSyntax.galgas3", 366)) ;
-      var_labelName_14293 = inCompiler->synthetizedAttribute_tokenString () ;
-      inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("galgasSyntaxComponentSyntax.galgas3", 367)) ;
-    }else{
-      repeatFlag_0 = false ;
-    }
-  }
-  ioArgument_ioRuleList.addAssignOperation (var_mNonterminalName_14244, var_mLabelList_14344  COMMA_SOURCE_FILE ("galgasSyntaxComponentSyntax.galgas3", 369)) ;
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_galgas_34_SyntaxComponentSyntax::rule_galgas_34_SyntaxComponentSyntax_syntax_5F_rule_5F_declaration_i4_indexing (Lexique_galgasScanner_34_ * inCompiler) {
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_rule COMMA_SOURCE_FILE ("galgasSyntaxComponentSyntax.galgas3", 359)) ;
-  inCompiler->enterIndexing (Lexique_galgasScanner_34_::kIndexing_ruleDefinition, "") ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__3C_non_5F_terminal_3E_ COMMA_SOURCE_FILE ("galgasSyntaxComponentSyntax.galgas3", 360)) ;
-  bool repeatFlag_0 = true ;
-  while (repeatFlag_0) {
-    nt_syntax_5F_rule_5F_label_indexing (inCompiler) ;
-    if (select_galgas_34_SyntaxComponentSyntax_5 (inCompiler) == 2) {
-      inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_label COMMA_SOURCE_FILE ("galgasSyntaxComponentSyntax.galgas3", 366)) ;
-      inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("galgasSyntaxComponentSyntax.galgas3", 367)) ;
-    }else{
-      repeatFlag_0 = false ;
-    }
-  }
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_galgas_34_SyntaxComponentSyntax::rule_galgas_34_SyntaxComponentSyntax_syntax_5F_instruction_5F_list_i5_ (GGS_galgasDeclarationAST & ioArgument_ioDeclarations,
-                                                                                                                      GGS_syntaxInstructionList & outArgument_outSyntaxInstructionList,
-                                                                                                                      Lexique_galgasScanner_34_ * inCompiler) {
-  outArgument_outSyntaxInstructionList.drop () ; // Release 'out' argument
-  outArgument_outSyntaxInstructionList = GGS_syntaxInstructionList::init (inCompiler COMMA_HERE) ;
-  switch (select_galgas_34_SyntaxComponentSyntax_6 (inCompiler)) {
-  case 1: {
-  } break ;
-  case 2: {
-    bool repeatFlag_0 = true ;
-    while (repeatFlag_0) {
-      switch (select_galgas_34_SyntaxComponentSyntax_8 (inCompiler)) {
-      case 1: {
-        GGS_semanticInstructionAST var_instruction_15163 ;
-        nt_semantic_5F_instruction_ (ioArgument_ioDeclarations, var_instruction_15163, inCompiler) ;
-        outArgument_outSyntaxInstructionList.addAssignOperation (var_instruction_15163  COMMA_SOURCE_FILE ("galgasSyntaxComponentSyntax.galgas3", 386)) ;
-      } break ;
-      case 2: {
-        GGS_syntaxInstructionAST var_instruction_15290 ;
-        nt_syntax_5F_instruction_ (ioArgument_ioDeclarations, var_instruction_15290, inCompiler) ;
-        outArgument_outSyntaxInstructionList.addAssignOperation (var_instruction_15290  COMMA_SOURCE_FILE ("galgasSyntaxComponentSyntax.galgas3", 389)) ;
-      } break ;
-      default:
-        break ;
-      }
-      if (select_galgas_34_SyntaxComponentSyntax_7 (inCompiler) == 2) {
-        switch (select_galgas_34_SyntaxComponentSyntax_9 (inCompiler)) {
-        case 1: {
-          inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__3B_ COMMA_SOURCE_FILE ("galgasSyntaxComponentSyntax.galgas3", 393)) ;
-        } break ;
-        case 2: {
-          GGS_string var_separator_15431 = GGS_string::class_func_separatorString (inCompiler  COMMA_SOURCE_FILE ("galgasSyntaxComponentSyntax.galgas3", 395)) ;
-          GalgasBool test_1 = GalgasBool::boolTrue ;
-          if (GalgasBool::boolTrue == test_1) {
-            test_1 = var_separator_15431.getter_containsCharacter (GGS_char (utf32 (10)) COMMA_SOURCE_FILE ("galgasSyntaxComponentSyntax.galgas3", 396)).operator_not (SOURCE_FILE ("galgasSyntaxComponentSyntax.galgas3", 396)).boolEnum () ;
-            if (GalgasBool::boolTrue == test_1) {
-              GenericArray <FixItDescription> fixItArray2 ;
-              inCompiler->emitSemanticError (GGS_location::class_func_separator (inCompiler  COMMA_SOURCE_FILE ("galgasSyntaxComponentSyntax.galgas3", 397)), GGS_string ("instructions on same line should be separated by ';'"), fixItArray2  COMMA_SOURCE_FILE ("galgasSyntaxComponentSyntax.galgas3", 397)) ;
-            }
-          }
-        } break ;
-        default:
-          break ;
-        }
-      }else{
-        repeatFlag_0 = false ;
-      }
-    }
-  } break ;
-  default:
-    break ;
-  }
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_galgas_34_SyntaxComponentSyntax::rule_galgas_34_SyntaxComponentSyntax_syntax_5F_instruction_5F_list_i5_indexing (Lexique_galgasScanner_34_ * inCompiler) {
-  switch (select_galgas_34_SyntaxComponentSyntax_6 (inCompiler)) {
-  case 1: {
-  } break ;
-  case 2: {
-    bool repeatFlag_0 = true ;
-    while (repeatFlag_0) {
-      switch (select_galgas_34_SyntaxComponentSyntax_8 (inCompiler)) {
-      case 1: {
-        nt_semantic_5F_instruction_indexing (inCompiler) ;
-      } break ;
-      case 2: {
-        nt_syntax_5F_instruction_indexing (inCompiler) ;
-      } break ;
-      default:
-        break ;
-      }
-      if (select_galgas_34_SyntaxComponentSyntax_7 (inCompiler) == 2) {
-        switch (select_galgas_34_SyntaxComponentSyntax_9 (inCompiler)) {
-        case 1: {
-          inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__3B_ COMMA_SOURCE_FILE ("galgasSyntaxComponentSyntax.galgas3", 393)) ;
-        } break ;
-        case 2: {
-        } break ;
-        default:
-          break ;
-        }
-      }else{
-        repeatFlag_0 = false ;
-      }
-    }
-  } break ;
-  default:
-    break ;
-  }
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_galgas_34_SyntaxComponentSyntax::rule_galgas_34_SyntaxComponentSyntax_syntax_5F_instruction_i6_ (GGS_galgasDeclarationAST & ioArgument_ioDeclarations,
-                                                                                                              GGS_syntaxInstructionAST & outArgument_outInstruction,
-                                                                                                              Lexique_galgasScanner_34_ * inCompiler) {
-  outArgument_outInstruction.drop () ; // Release 'out' argument
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_send COMMA_SOURCE_FILE ("instruction-syntax-send.galgas3", 47)) ;
-  GGS_location var_instructionLocation_2250 = GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("instruction-syntax-send.galgas3", 48)) ;
-  GGS_semanticExpressionAST var_sentExpression_2349 ;
-  nt_expression_ (ioArgument_ioDeclarations, var_sentExpression_2349, inCompiler) ;
-  outArgument_outInstruction = GGS_syntaxSendInstructionAST::init_21__21_ (var_instructionLocation_2250, var_sentExpression_2349, inCompiler COMMA_HERE) ;
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_galgas_34_SyntaxComponentSyntax::rule_galgas_34_SyntaxComponentSyntax_syntax_5F_instruction_i6_indexing (Lexique_galgasScanner_34_ * inCompiler) {
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_send COMMA_SOURCE_FILE ("instruction-syntax-send.galgas3", 47)) ;
-  nt_expression_indexing (inCompiler) ;
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_galgas_34_SyntaxComponentSyntax::rule_galgas_34_SyntaxComponentSyntax_syntax_5F_instruction_i7_ (GGS_galgasDeclarationAST & ioArgument_ioDeclarations,
-                                                                                                              GGS_syntaxInstructionAST & outArgument_outInstruction,
-                                                                                                              Lexique_galgasScanner_34_ * inCompiler) {
-  outArgument_outInstruction.drop () ; // Release 'out' argument
-  GGS_lstring var_mNonterminalName_2825 = inCompiler->synthetizedAttribute_tokenString () ;
-  inCompiler->enterIndexing (Lexique_galgasScanner_34_::kIndexing_ruleReference, "") ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__3C_non_5F_terminal_3E_ COMMA_SOURCE_FILE ("instruction-non-terminal.galgas3", 56)) ;
-  GGS_actualParameterListAST var_mActualParameterList_2958 ;
-  nt_actual_5F_parameter_5F_list_5F_within_5F_parenthesis_ (ioArgument_ioDeclarations, var_mActualParameterList_2958, inCompiler) ;
-  GGS_abstractGrammarInstructionSyntaxDirectedTranslationResult var_grammarInstructionSyntaxDirectedTranslationResult_3100 ;
-  switch (select_galgas_34_SyntaxComponentSyntax_10 (inCompiler)) {
-  case 1: {
-    var_grammarInstructionSyntaxDirectedTranslationResult_3100 = GGS_grammarInstructionSyntaxDirectedTranslationResultNone::init (inCompiler COMMA_HERE) ;
-  } break ;
-  case 2: {
-    inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__3A__3E_ COMMA_SOURCE_FILE ("instruction-non-terminal.galgas3", 63)) ;
-    nt_syntax_5F_directed_5F_translation_5F_result_ (ioArgument_ioDeclarations, var_grammarInstructionSyntaxDirectedTranslationResult_3100, inCompiler) ;
-  } break ;
-  default:
-    break ;
-  }
-  outArgument_outInstruction = GGS_nonterminalCallInstruction::init_21__21__21__21_ (var_mNonterminalName_2825.readProperty_location (), var_mNonterminalName_2825, var_mActualParameterList_2958, var_grammarInstructionSyntaxDirectedTranslationResult_3100, inCompiler COMMA_HERE) ;
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_galgas_34_SyntaxComponentSyntax::rule_galgas_34_SyntaxComponentSyntax_syntax_5F_instruction_i7_indexing (Lexique_galgasScanner_34_ * inCompiler) {
-  inCompiler->enterIndexing (Lexique_galgasScanner_34_::kIndexing_ruleReference, "") ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__3C_non_5F_terminal_3E_ COMMA_SOURCE_FILE ("instruction-non-terminal.galgas3", 56)) ;
-  nt_actual_5F_parameter_5F_list_5F_within_5F_parenthesis_indexing (inCompiler) ;
-  switch (select_galgas_34_SyntaxComponentSyntax_10 (inCompiler)) {
-  case 1: {
-  } break ;
-  case 2: {
-    inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__3A__3E_ COMMA_SOURCE_FILE ("instruction-non-terminal.galgas3", 63)) ;
-    nt_syntax_5F_directed_5F_translation_5F_result_indexing (inCompiler) ;
-  } break ;
-  default:
-    break ;
-  }
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_galgas_34_SyntaxComponentSyntax::rule_galgas_34_SyntaxComponentSyntax_syntax_5F_instruction_i8_ (GGS_galgasDeclarationAST & ioArgument_ioDeclarations,
-                                                                                                              GGS_syntaxInstructionAST & outArgument_outInstruction,
-                                                                                                              Lexique_galgasScanner_34_ * inCompiler) {
-  outArgument_outInstruction.drop () ; // Release 'out' argument
-  GGS_lstring var_terminalName_3973 = inCompiler->synthetizedAttribute_tokenString () ;
-  inCompiler->enterIndexing (Lexique_galgasScanner_34_::kIndexing_terminalReference, "") ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__24_terminal_24_ COMMA_SOURCE_FILE ("instruction-terminal.galgas3", 84)) ;
-  GGS_actualInputParameterListAST var_actualInputParameterList_4069 ;
-  nt_actual_5F_input_5F_parameter_5F_list_ (ioArgument_ioDeclarations, var_actualInputParameterList_4069, inCompiler) ;
-  GGS__32_lstringlist var_indexNameList_4135 ;
-  nt_terminal_5F_instruction_5F_indexing_ (var_indexNameList_4135, inCompiler) ;
-  GGS_abstractGrammarInstructionSyntaxDirectedTranslationResult var_grammarInstructionSyntaxDirectedTranslationPreceedingDelimitor_4270 ;
-  GGS_abstractGrammarInstructionSyntaxDirectedTranslationResult var_grammarInstructionSyntaxDirectedTranslationPreceedingToken_4400 ;
-  switch (select_galgas_34_SyntaxComponentSyntax_11 (inCompiler)) {
-  case 1: {
-    var_grammarInstructionSyntaxDirectedTranslationPreceedingDelimitor_4270 = GGS_grammarInstructionSyntaxDirectedTranslationResultNone::init (inCompiler COMMA_HERE) ;
-    var_grammarInstructionSyntaxDirectedTranslationPreceedingToken_4400 = GGS_grammarInstructionSyntaxDirectedTranslationResultNone::init (inCompiler COMMA_HERE) ;
-  } break ;
-  case 2: {
-    inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__3A__3E_ COMMA_SOURCE_FILE ("instruction-terminal.galgas3", 94)) ;
-    nt_syntax_5F_directed_5F_translation_5F_result_ (ioArgument_ioDeclarations, var_grammarInstructionSyntaxDirectedTranslationPreceedingDelimitor_4270, inCompiler) ;
-    nt_syntax_5F_directed_5F_translation_5F_result_ (ioArgument_ioDeclarations, var_grammarInstructionSyntaxDirectedTranslationPreceedingToken_4400, inCompiler) ;
-  } break ;
-  default:
-    break ;
-  }
-  outArgument_outInstruction = GGS_terminalCheckInstructionAST::init_21__21__21__21__21__21_ (var_terminalName_3973.readProperty_location (), var_terminalName_3973, var_actualInputParameterList_4069, var_indexNameList_4135, var_grammarInstructionSyntaxDirectedTranslationPreceedingDelimitor_4270, var_grammarInstructionSyntaxDirectedTranslationPreceedingToken_4400, inCompiler COMMA_HERE) ;
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_galgas_34_SyntaxComponentSyntax::rule_galgas_34_SyntaxComponentSyntax_syntax_5F_instruction_i8_indexing (Lexique_galgasScanner_34_ * inCompiler) {
-  inCompiler->enterIndexing (Lexique_galgasScanner_34_::kIndexing_terminalReference, "") ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__24_terminal_24_ COMMA_SOURCE_FILE ("instruction-terminal.galgas3", 84)) ;
-  nt_actual_5F_input_5F_parameter_5F_list_indexing (inCompiler) ;
-  nt_terminal_5F_instruction_5F_indexing_indexing (inCompiler) ;
-  switch (select_galgas_34_SyntaxComponentSyntax_11 (inCompiler)) {
-  case 1: {
-  } break ;
-  case 2: {
-    inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__3A__3E_ COMMA_SOURCE_FILE ("instruction-terminal.galgas3", 94)) ;
-    nt_syntax_5F_directed_5F_translation_5F_result_indexing (inCompiler) ;
-    nt_syntax_5F_directed_5F_translation_5F_result_indexing (inCompiler) ;
-  } break ;
-  default:
-    break ;
-  }
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_galgas_34_SyntaxComponentSyntax::rule_galgas_34_SyntaxComponentSyntax_terminal_5F_instruction_5F_indexing_i9_ (GGS__32_lstringlist & outArgument_outIndexNameList,
-                                                                                                                            Lexique_galgasScanner_34_ * inCompiler) {
-  outArgument_outIndexNameList.drop () ; // Release 'out' argument
-  outArgument_outIndexNameList = GGS__32_lstringlist::init (inCompiler COMMA_HERE) ;
-  switch (select_galgas_34_SyntaxComponentSyntax_12 (inCompiler)) {
-  case 1: {
-  } break ;
-  case 2: {
-    inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_indexing COMMA_SOURCE_FILE ("instruction-terminal.galgas3", 114)) ;
-    inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__28_ COMMA_SOURCE_FILE ("instruction-terminal.galgas3", 115)) ;
-    bool repeatFlag_0 = true ;
-    while (repeatFlag_0) {
-      GGS_lstring var_indexName_5592 = inCompiler->synthetizedAttribute_tokenString () ;
-      inCompiler->enterIndexing (Lexique_galgasScanner_34_::kIndexing_indexingNameReference, "") ;
-      inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("instruction-terminal.galgas3", 117)) ;
-      GGS_lstring var_postfixName_5654 ;
-      switch (select_galgas_34_SyntaxComponentSyntax_14 (inCompiler)) {
-      case 1: {
-        var_postfixName_5654 = GGS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("instruction-terminal.galgas3", 120)) ;
-      } break ;
-      case 2: {
-        var_postfixName_5654 = inCompiler->synthetizedAttribute_tokenString () ;
-        inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__22_string_22_ COMMA_SOURCE_FILE ("instruction-terminal.galgas3", 122)) ;
-      } break ;
-      default:
-        break ;
-      }
-      outArgument_outIndexNameList.addAssignOperation (var_indexName_5592, var_postfixName_5654  COMMA_SOURCE_FILE ("instruction-terminal.galgas3", 124)) ;
-      if (select_galgas_34_SyntaxComponentSyntax_13 (inCompiler) == 2) {
-        inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__2C_ COMMA_SOURCE_FILE ("instruction-terminal.galgas3", 126)) ;
-      }else{
-        repeatFlag_0 = false ;
-      }
-    }
-    inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__29_ COMMA_SOURCE_FILE ("instruction-terminal.galgas3", 128)) ;
-  } break ;
-  default:
-    break ;
-  }
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_galgas_34_SyntaxComponentSyntax::rule_galgas_34_SyntaxComponentSyntax_terminal_5F_instruction_5F_indexing_i9_indexing (Lexique_galgasScanner_34_ * inCompiler) {
-  switch (select_galgas_34_SyntaxComponentSyntax_12 (inCompiler)) {
-  case 1: {
-  } break ;
-  case 2: {
-    inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_indexing COMMA_SOURCE_FILE ("instruction-terminal.galgas3", 114)) ;
-    inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__28_ COMMA_SOURCE_FILE ("instruction-terminal.galgas3", 115)) ;
-    bool repeatFlag_0 = true ;
-    while (repeatFlag_0) {
-      inCompiler->enterIndexing (Lexique_galgasScanner_34_::kIndexing_indexingNameReference, "") ;
-      inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("instruction-terminal.galgas3", 117)) ;
-      switch (select_galgas_34_SyntaxComponentSyntax_14 (inCompiler)) {
-      case 1: {
-      } break ;
-      case 2: {
-        inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__22_string_22_ COMMA_SOURCE_FILE ("instruction-terminal.galgas3", 122)) ;
-      } break ;
-      default:
-        break ;
-      }
-      if (select_galgas_34_SyntaxComponentSyntax_13 (inCompiler) == 2) {
-        inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__2C_ COMMA_SOURCE_FILE ("instruction-terminal.galgas3", 126)) ;
-      }else{
-        repeatFlag_0 = false ;
-      }
-    }
-    inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__29_ COMMA_SOURCE_FILE ("instruction-terminal.galgas3", 128)) ;
-  } break ;
-  default:
-    break ;
-  }
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_galgas_34_SyntaxComponentSyntax::rule_galgas_34_SyntaxComponentSyntax_syntax_5F_instruction_i10_ (GGS_galgasDeclarationAST & ioArgument_ioDeclarations,
-                                                                                                               GGS_syntaxInstructionAST & outArgument_outInstruction,
-                                                                                                               Lexique_galgasScanner_34_ * inCompiler) {
-  outArgument_outInstruction.drop () ; // Release 'out' argument
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_select COMMA_SOURCE_FILE ("instruction-select.galgas3", 69)) ;
-  GGS_location var_mSelectInstructionLocation_3144 = GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("instruction-select.galgas3", 70)) ;
-  GGS_listOfSyntaxInstructionList var_mSelectBranchList_3196 = GGS_listOfSyntaxInstructionList::init (inCompiler COMMA_HERE) ;
-  GGS_syntaxInstructionList var_il_3323 ;
-  nt_syntax_5F_instruction_5F_list_ (ioArgument_ioDeclarations, var_il_3323, inCompiler) ;
-  var_mSelectBranchList_3196.addAssignOperation (var_il_3323, GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("instruction-select.galgas3", 73))  COMMA_SOURCE_FILE ("instruction-select.galgas3", 73)) ;
-  bool repeatFlag_0 = true ;
-  while (repeatFlag_0) {
-    inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_or COMMA_SOURCE_FILE ("instruction-select.galgas3", 75)) ;
-    GGS_syntaxInstructionList var_instructionList_3470 ;
-    nt_syntax_5F_instruction_5F_list_ (ioArgument_ioDeclarations, var_instructionList_3470, inCompiler) ;
-    var_mSelectBranchList_3196.addAssignOperation (var_instructionList_3470, GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("instruction-select.galgas3", 77))  COMMA_SOURCE_FILE ("instruction-select.galgas3", 77)) ;
-    if (select_galgas_34_SyntaxComponentSyntax_15 (inCompiler) == 2) {
-    }else{
-      repeatFlag_0 = false ;
-    }
-  }
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_end COMMA_SOURCE_FILE ("instruction-select.galgas3", 80)) ;
-  GGS_location var_endOf_5F_select_5F_instruction_3582 = GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("instruction-select.galgas3", 81)) ;
-  outArgument_outInstruction = GGS_selectInstruction::init_21__21__21_ (var_mSelectInstructionLocation_3144, var_mSelectBranchList_3196, var_endOf_5F_select_5F_instruction_3582, inCompiler COMMA_HERE) ;
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_galgas_34_SyntaxComponentSyntax::rule_galgas_34_SyntaxComponentSyntax_syntax_5F_instruction_i10_indexing (Lexique_galgasScanner_34_ * inCompiler) {
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_select COMMA_SOURCE_FILE ("instruction-select.galgas3", 69)) ;
-  nt_syntax_5F_instruction_5F_list_indexing (inCompiler) ;
-  bool repeatFlag_0 = true ;
-  while (repeatFlag_0) {
-    inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_or COMMA_SOURCE_FILE ("instruction-select.galgas3", 75)) ;
-    nt_syntax_5F_instruction_5F_list_indexing (inCompiler) ;
-    if (select_galgas_34_SyntaxComponentSyntax_15 (inCompiler) == 2) {
-    }else{
-      repeatFlag_0 = false ;
-    }
-  }
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_end COMMA_SOURCE_FILE ("instruction-select.galgas3", 80)) ;
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_galgas_34_SyntaxComponentSyntax::rule_galgas_34_SyntaxComponentSyntax_syntax_5F_instruction_i11_ (GGS_galgasDeclarationAST & ioArgument_ioDeclarations,
-                                                                                                               GGS_syntaxInstructionAST & outArgument_outInstruction,
-                                                                                                               Lexique_galgasScanner_34_ * inCompiler) {
-  outArgument_outInstruction.drop () ; // Release 'out' argument
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_repeat COMMA_SOURCE_FILE ("instruction-repeat.galgas3", 73)) ;
-  GGS_location var_mRepeatInstructionLocation_3371 = GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("instruction-repeat.galgas3", 74)) ;
-  GGS_syntaxInstructionList var_mRepeatedInstructionList_3489 ;
-  nt_syntax_5F_instruction_5F_list_ (ioArgument_ioDeclarations, var_mRepeatedInstructionList_3489, inCompiler) ;
-  GGS_location var_endOf_5F_repeated_5F_instructions_3522 = GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("instruction-repeat.galgas3", 76)) ;
-  GGS_listOfSyntaxInstructionList var_mRepeatBranchList_3575 = GGS_listOfSyntaxInstructionList::init (inCompiler COMMA_HERE) ;
-  bool repeatFlag_0 = true ;
-  while (repeatFlag_0) {
-    inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_while COMMA_SOURCE_FILE ("instruction-repeat.galgas3", 79)) ;
-    GGS_syntaxInstructionList var_mInstructionList_3729 ;
-    nt_syntax_5F_instruction_5F_list_ (ioArgument_ioDeclarations, var_mInstructionList_3729, inCompiler) ;
-    var_mRepeatBranchList_3575.addAssignOperation (var_mInstructionList_3729, GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("instruction-repeat.galgas3", 81))  COMMA_SOURCE_FILE ("instruction-repeat.galgas3", 81)) ;
-    if (select_galgas_34_SyntaxComponentSyntax_16 (inCompiler) == 2) {
-    }else{
-      repeatFlag_0 = false ;
-    }
-  }
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_end COMMA_SOURCE_FILE ("instruction-repeat.galgas3", 84)) ;
-  GGS_location var_endOf_5F_repeat_5F_instruction_3844 = GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("instruction-repeat.galgas3", 85)) ;
-  outArgument_outInstruction = GGS_repeatInstruction::init_21__21__21__21__21_ (var_mRepeatInstructionLocation_3371, var_mRepeatedInstructionList_3489, var_endOf_5F_repeated_5F_instructions_3522, var_mRepeatBranchList_3575, var_endOf_5F_repeat_5F_instruction_3844, inCompiler COMMA_HERE) ;
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_galgas_34_SyntaxComponentSyntax::rule_galgas_34_SyntaxComponentSyntax_syntax_5F_instruction_i11_indexing (Lexique_galgasScanner_34_ * inCompiler) {
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_repeat COMMA_SOURCE_FILE ("instruction-repeat.galgas3", 73)) ;
-  nt_syntax_5F_instruction_5F_list_indexing (inCompiler) ;
-  bool repeatFlag_0 = true ;
-  while (repeatFlag_0) {
-    inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_while COMMA_SOURCE_FILE ("instruction-repeat.galgas3", 79)) ;
-    nt_syntax_5F_instruction_5F_list_indexing (inCompiler) ;
-    if (select_galgas_34_SyntaxComponentSyntax_16 (inCompiler) == 2) {
-    }else{
-      repeatFlag_0 = false ;
-    }
-  }
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_end COMMA_SOURCE_FILE ("instruction-repeat.galgas3", 84)) ;
-}
-
-
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_galgas_34_GrammarComponentSyntax::rule_galgas_34_GrammarComponentSyntax_declaration_i0_ (GGS_galgasDeclarationAST & ioArgument_ioDeclarations,
-                                                                                                      Lexique_galgasScanner_34_ * inCompiler) {
-  GGS_lbool var_hasIndexing_8300 ;
-  switch (select_galgas_34_GrammarComponentSyntax_0 (inCompiler)) {
-  case 1: {
-    var_hasIndexing_8300 = GGS_lbool::init_21__21_ (GGS_bool (false), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas3", 238)), inCompiler COMMA_HERE) ;
-  } break ;
-  case 2: {
-    var_hasIndexing_8300 = GGS_lbool::init_21__21_ (GGS_bool (true), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas3", 240)), inCompiler COMMA_HERE) ;
-    inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_indexing COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas3", 241)) ;
-  } break ;
-  default:
-    break ;
-  }
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_grammar COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas3", 243)) ;
-  GGS_lstring var_mGrammarName_8503 = inCompiler->synthetizedAttribute_tokenString () ;
-  inCompiler->enterIndexing (Lexique_galgasScanner_34_::kIndexing_grammarComponentDefinition, "") ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas3", 244)) ;
-  GGS_lstring var_mGrammarClass_8581 = inCompiler->synthetizedAttribute_tokenString () ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__22_string_22_ COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas3", 245)) ;
-  GGS_bool var_hasTranslateFeature_8635 ;
-  switch (select_galgas_34_GrammarComponentSyntax_1 (inCompiler)) {
-  case 1: {
-    var_hasTranslateFeature_8635 = GGS_bool (false) ;
-  } break ;
-  case 2: {
-    inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__25_translate COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas3", 251)) ;
-    var_hasTranslateFeature_8635 = GGS_bool (true) ;
-  } break ;
-  default:
-    break ;
-  }
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__7B_ COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas3", 254)) ;
-  GGS_lstringlist var_syntaxComponents_8812 = GGS_lstringlist::init (inCompiler COMMA_HERE) ;
-  bool repeatFlag_0 = true ;
-  while (repeatFlag_0) {
-    inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_syntax COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas3", 258)) ;
-    GGS_lstring var_syntaxComponent_8894 = inCompiler->synthetizedAttribute_tokenString () ;
-    inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas3", 259)) ;
-    var_syntaxComponents_8812.addAssignOperation (var_syntaxComponent_8894  COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas3", 260)) ;
-    if (select_galgas_34_GrammarComponentSyntax_2 (inCompiler) == 2) {
-    }else{
-      repeatFlag_0 = false ;
-    }
-  }
-  GGS_lstring var_startSymbol_9026 = inCompiler->synthetizedAttribute_tokenString () ;
-  inCompiler->enterIndexing (Lexique_galgasScanner_34_::kIndexing_ruleReference, "") ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__3C_non_5F_terminal_3E_ COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas3", 264)) ;
-  GGS_nonTerminalLabelListAST var_mLabelList_9069 = GGS_nonTerminalLabelListAST::init (inCompiler COMMA_HERE) ;
-  nt_grammar_5F_start_5F_symbol_5F_label_ (ioArgument_ioDeclarations, GGS_lstring::init_21__21_ (GGS_string::makeEmptyString (), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas3", 266)), inCompiler COMMA_HERE), var_mLabelList_9069, inCompiler) ;
-  bool repeatFlag_1 = true ;
-  while (repeatFlag_1) {
-    if (select_galgas_34_GrammarComponentSyntax_3 (inCompiler) == 2) {
-      inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_label COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas3", 269)) ;
-      GGS_lstring var_labelName_9273 = inCompiler->synthetizedAttribute_tokenString () ;
-      inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas3", 270)) ;
-      nt_grammar_5F_start_5F_symbol_5F_label_ (ioArgument_ioDeclarations, var_labelName_9273, var_mLabelList_9069, inCompiler) ;
-    }else{
-      repeatFlag_1 = false ;
-    }
-  }
-  GGS_lstringlist var_mUnusedNonterminalList_9412 = GGS_lstringlist::init (inCompiler COMMA_HERE) ;
-  bool repeatFlag_2 = true ;
-  while (repeatFlag_2) {
-    if (select_galgas_34_GrammarComponentSyntax_4 (inCompiler) == 2) {
-      inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_unused COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas3", 277)) ;
-      GGS_lstring var_nonterminalSymbolName_9526 = inCompiler->synthetizedAttribute_tokenString () ;
-      inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__3C_non_5F_terminal_3E_ COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas3", 278)) ;
-      var_mUnusedNonterminalList_9412.addAssignOperation (var_nonterminalSymbolName_9526  COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas3", 279)) ;
-    }else{
-      repeatFlag_2 = false ;
-    }
-  }
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__7D_ COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas3", 282)) ;
-  ioArgument_ioDeclarations.mProperty_mDeclarationList.addAssignOperation (GGS_galgas_33_GrammarComponentAST::init_21_isPredefined_21__21__21__21__21__21__21__21_ (GGS_bool (false), var_hasIndexing_8300, var_mGrammarName_8503, var_mGrammarClass_8581, var_syntaxComponents_8812, var_startSymbol_9026, var_mLabelList_9069, var_mUnusedNonterminalList_9412, var_hasTranslateFeature_8635, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas3", 283)) ;
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_galgas_34_GrammarComponentSyntax::rule_galgas_34_GrammarComponentSyntax_declaration_i0_indexing (Lexique_galgasScanner_34_ * inCompiler) {
-  switch (select_galgas_34_GrammarComponentSyntax_0 (inCompiler)) {
-  case 1: {
-  } break ;
-  case 2: {
-    inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_indexing COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas3", 241)) ;
-  } break ;
-  default:
-    break ;
-  }
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_grammar COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas3", 243)) ;
-  inCompiler->enterIndexing (Lexique_galgasScanner_34_::kIndexing_grammarComponentDefinition, "") ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas3", 244)) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__22_string_22_ COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas3", 245)) ;
-  switch (select_galgas_34_GrammarComponentSyntax_1 (inCompiler)) {
-  case 1: {
-  } break ;
-  case 2: {
-    inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__25_translate COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas3", 251)) ;
-  } break ;
-  default:
-    break ;
-  }
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__7B_ COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas3", 254)) ;
-  bool repeatFlag_0 = true ;
-  while (repeatFlag_0) {
-    inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_syntax COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas3", 258)) ;
-    inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas3", 259)) ;
-    if (select_galgas_34_GrammarComponentSyntax_2 (inCompiler) == 2) {
-    }else{
-      repeatFlag_0 = false ;
-    }
-  }
-  inCompiler->enterIndexing (Lexique_galgasScanner_34_::kIndexing_ruleReference, "") ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__3C_non_5F_terminal_3E_ COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas3", 264)) ;
-  nt_grammar_5F_start_5F_symbol_5F_label_indexing (inCompiler) ;
-  bool repeatFlag_1 = true ;
-  while (repeatFlag_1) {
-    if (select_galgas_34_GrammarComponentSyntax_3 (inCompiler) == 2) {
-      inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_label COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas3", 269)) ;
-      inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas3", 270)) ;
-      nt_grammar_5F_start_5F_symbol_5F_label_indexing (inCompiler) ;
-    }else{
-      repeatFlag_1 = false ;
-    }
-  }
-  bool repeatFlag_2 = true ;
-  while (repeatFlag_2) {
-    if (select_galgas_34_GrammarComponentSyntax_4 (inCompiler) == 2) {
-      inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_unused COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas3", 277)) ;
-      inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__3C_non_5F_terminal_3E_ COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas3", 278)) ;
-    }else{
-      repeatFlag_2 = false ;
-    }
-  }
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__7D_ COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas3", 282)) ;
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_galgas_34_GrammarComponentSyntax::rule_galgas_34_GrammarComponentSyntax_grammar_5F_start_5F_symbol_5F_label_i1_ (GGS_galgasDeclarationAST & ioArgument_ioDeclarations,
-                                                                                                                              const GGS_lstring constinArgument_inLabelName,
-                                                                                                                              GGS_nonTerminalLabelListAST & ioArgument_ioLabelList,
-                                                                                                                              Lexique_galgasScanner_34_ * inCompiler) {
-  GGS_stringset var_argumentNameSet_10265 = GGS_stringset::init (inCompiler COMMA_HERE) ;
-  GGS_formalParameterListAST var_formalParameterList_10319 = GGS_formalParameterListAST::init (inCompiler COMMA_HERE) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__28_ COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas3", 302)) ;
-  switch (select_galgas_34_GrammarComponentSyntax_5 (inCompiler)) {
-  case 1: {
-  } break ;
-  case 2: {
-    bool repeatFlag_0 = true ;
-    while (repeatFlag_0) {
-      GGS_lstring var_argumentName_10439 ;
-      nt_label_5F_formal_5F_parameter_ (ioArgument_ioDeclarations, var_argumentName_10439, var_formalParameterList_10319, inCompiler) ;
-      GalgasBool test_1 = GalgasBool::boolTrue ;
-      if (GalgasBool::boolTrue == test_1) {
-        test_1 = var_argumentNameSet_10265.getter_hasKey (var_argumentName_10439.readProperty_string () COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas3", 307)).boolEnum () ;
-        if (GalgasBool::boolTrue == test_1) {
-          GenericArray <FixItDescription> fixItArray2 ;
-          inCompiler->emitSemanticError (var_argumentName_10439.readProperty_location (), GGS_string ("there is already an argument named '").add_operation (var_argumentName_10439.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas3", 308)).add_operation (GGS_string ("'"), inCompiler COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas3", 308)), fixItArray2  COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas3", 308)) ;
-        }
-      }
-      var_argumentNameSet_10265.plusPlusAssignOperation (var_argumentName_10439.readProperty_string ()  COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas3", 310)) ;
-      if (select_galgas_34_GrammarComponentSyntax_6 (inCompiler) == 2) {
-        inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__2C_ COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas3", 312)) ;
-      }else{
-        repeatFlag_0 = false ;
-      }
-    }
-  } break ;
-  default:
-    break ;
-  }
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__29_ COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas3", 315)) ;
-  ioArgument_ioLabelList.addAssignOperation (constinArgument_inLabelName, var_formalParameterList_10319, GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas3", 316))  COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas3", 316)) ;
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_galgas_34_GrammarComponentSyntax::rule_galgas_34_GrammarComponentSyntax_grammar_5F_start_5F_symbol_5F_label_i1_indexing (Lexique_galgasScanner_34_ * inCompiler) {
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__28_ COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas3", 302)) ;
-  switch (select_galgas_34_GrammarComponentSyntax_5 (inCompiler)) {
-  case 1: {
-  } break ;
-  case 2: {
-    bool repeatFlag_0 = true ;
-    while (repeatFlag_0) {
-      nt_label_5F_formal_5F_parameter_indexing (inCompiler) ;
-      if (select_galgas_34_GrammarComponentSyntax_6 (inCompiler) == 2) {
-        inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__2C_ COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas3", 312)) ;
-      }else{
-        repeatFlag_0 = false ;
-      }
-    }
-  } break ;
-  default:
-    break ;
-  }
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__29_ COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas3", 315)) ;
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_galgas_34_GrammarComponentSyntax::rule_galgas_34_GrammarComponentSyntax_label_5F_formal_5F_parameter_i2_ (GGS_galgasDeclarationAST & ioArgument_ioDeclarations,
-                                                                                                                       GGS_lstring & outArgument_outArgumentName,
-                                                                                                                       GGS_formalParameterListAST & ioArgument_ioStartSymbolLabelFormalParameterList,
-                                                                                                                       Lexique_galgasScanner_34_ * inCompiler) {
-  outArgument_outArgumentName.drop () ; // Release 'out' argument
-  GGS_lstring var_selector_11154 = inCompiler->synthetizedAttribute_tokenString () ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__3F_selector_3A_ COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas3", 324)) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_var COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas3", 325)) ;
-  GGS_lstring var_mTypeName_11226 ;
-  nt_type_5F_definition_ (ioArgument_ioDeclarations, var_mTypeName_11226, inCompiler) ;
-  switch (select_galgas_34_GrammarComponentSyntax_7 (inCompiler)) {
-  case 1: {
-  } break ;
-  case 2: {
-    inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_unused COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas3", 329)) ;
-  } break ;
-  default:
-    break ;
-  }
-  outArgument_outArgumentName = inCompiler->synthetizedAttribute_tokenString () ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas3", 331)) ;
-  ioArgument_ioStartSymbolLabelFormalParameterList.addAssignOperation (var_selector_11154, GGS_formalArgumentPassingModeAST::class_func_argumentVarIn (SOURCE_FILE ("galgasGrammarComponentSyntax.galgas3", 334)), var_mTypeName_11226, outArgument_outArgumentName, GGS_bool (false)  COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas3", 332)) ;
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_galgas_34_GrammarComponentSyntax::rule_galgas_34_GrammarComponentSyntax_label_5F_formal_5F_parameter_i2_indexing (Lexique_galgasScanner_34_ * inCompiler) {
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__3F_selector_3A_ COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas3", 324)) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_var COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas3", 325)) ;
-  nt_type_5F_definition_indexing (inCompiler) ;
-  switch (select_galgas_34_GrammarComponentSyntax_7 (inCompiler)) {
-  case 1: {
-  } break ;
-  case 2: {
-    inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_unused COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas3", 329)) ;
-  } break ;
-  default:
-    break ;
-  }
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas3", 331)) ;
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_galgas_34_GrammarComponentSyntax::rule_galgas_34_GrammarComponentSyntax_label_5F_formal_5F_parameter_i3_ (GGS_galgasDeclarationAST & ioArgument_ioDeclarations,
-                                                                                                                       GGS_lstring & outArgument_outArgumentName,
-                                                                                                                       GGS_formalParameterListAST & ioArgument_ioStartSymbolLabelFormalParameterList,
-                                                                                                                       Lexique_galgasScanner_34_ * inCompiler) {
-  outArgument_outArgumentName.drop () ; // Release 'out' argument
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__3F_ COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas3", 345)) ;
-  GGS_lstring var_selector_11797 = GGS_string::makeEmptyString ().getter_here (inCompiler COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas3", 346)) ;
-  GGS_lstring var_mTypeName_11869 ;
-  nt_type_5F_definition_ (ioArgument_ioDeclarations, var_mTypeName_11869, inCompiler) ;
-  switch (select_galgas_34_GrammarComponentSyntax_8 (inCompiler)) {
-  case 1: {
-  } break ;
-  case 2: {
-    inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_unused COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas3", 350)) ;
-  } break ;
-  default:
-    break ;
-  }
-  outArgument_outArgumentName = inCompiler->synthetizedAttribute_tokenString () ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas3", 352)) ;
-  ioArgument_ioStartSymbolLabelFormalParameterList.addAssignOperation (var_selector_11797, GGS_formalArgumentPassingModeAST::class_func_argumentConstantIn (SOURCE_FILE ("galgasGrammarComponentSyntax.galgas3", 355)), var_mTypeName_11869, outArgument_outArgumentName, GGS_bool (false)  COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas3", 353)) ;
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_galgas_34_GrammarComponentSyntax::rule_galgas_34_GrammarComponentSyntax_label_5F_formal_5F_parameter_i3_indexing (Lexique_galgasScanner_34_ * inCompiler) {
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__3F_ COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas3", 345)) ;
-  nt_type_5F_definition_indexing (inCompiler) ;
-  switch (select_galgas_34_GrammarComponentSyntax_8 (inCompiler)) {
-  case 1: {
-  } break ;
-  case 2: {
-    inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_unused COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas3", 350)) ;
-  } break ;
-  default:
-    break ;
-  }
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas3", 352)) ;
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_galgas_34_GrammarComponentSyntax::rule_galgas_34_GrammarComponentSyntax_label_5F_formal_5F_parameter_i4_ (GGS_galgasDeclarationAST & ioArgument_ioDeclarations,
-                                                                                                                       GGS_lstring & outArgument_outArgumentName,
-                                                                                                                       GGS_formalParameterListAST & ioArgument_ioStartSymbolLabelFormalParameterList,
-                                                                                                                       Lexique_galgasScanner_34_ * inCompiler) {
-  outArgument_outArgumentName.drop () ; // Release 'out' argument
-  GGS_lstring var_selector_12450 = inCompiler->synthetizedAttribute_tokenString () ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__3F_selector_3A_ COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas3", 366)) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_let COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas3", 367)) ;
-  GGS_lstring var_mTypeName_12522 ;
-  nt_type_5F_definition_ (ioArgument_ioDeclarations, var_mTypeName_12522, inCompiler) ;
-  switch (select_galgas_34_GrammarComponentSyntax_9 (inCompiler)) {
-  case 1: {
-  } break ;
-  case 2: {
-    inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_unused COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas3", 371)) ;
-  } break ;
-  default:
-    break ;
-  }
-  outArgument_outArgumentName = inCompiler->synthetizedAttribute_tokenString () ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas3", 373)) ;
-  ioArgument_ioStartSymbolLabelFormalParameterList.addAssignOperation (var_selector_12450, GGS_formalArgumentPassingModeAST::class_func_argumentConstantIn (SOURCE_FILE ("galgasGrammarComponentSyntax.galgas3", 376)), var_mTypeName_12522, outArgument_outArgumentName, GGS_bool (false)  COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas3", 374)) ;
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_galgas_34_GrammarComponentSyntax::rule_galgas_34_GrammarComponentSyntax_label_5F_formal_5F_parameter_i4_indexing (Lexique_galgasScanner_34_ * inCompiler) {
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__3F_selector_3A_ COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas3", 366)) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_let COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas3", 367)) ;
-  nt_type_5F_definition_indexing (inCompiler) ;
-  switch (select_galgas_34_GrammarComponentSyntax_9 (inCompiler)) {
-  case 1: {
-  } break ;
-  case 2: {
-    inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_unused COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas3", 371)) ;
-  } break ;
-  default:
-    break ;
-  }
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas3", 373)) ;
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_galgas_34_GrammarComponentSyntax::rule_galgas_34_GrammarComponentSyntax_label_5F_formal_5F_parameter_i5_ (GGS_galgasDeclarationAST & ioArgument_ioDeclarations,
-                                                                                                                       GGS_lstring & outArgument_outArgumentName,
-                                                                                                                       GGS_formalParameterListAST & ioArgument_ioStartSymbolLabelFormalParameterList,
-                                                                                                                       Lexique_galgasScanner_34_ * inCompiler) {
-  outArgument_outArgumentName.drop () ; // Release 'out' argument
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__3F_ COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas3", 387)) ;
-  GGS_lstring var_selector_13097 = GGS_string::makeEmptyString ().getter_here (inCompiler COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas3", 388)) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_let COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas3", 389)) ;
-  GGS_lstring var_mTypeName_13179 ;
-  nt_type_5F_definition_ (ioArgument_ioDeclarations, var_mTypeName_13179, inCompiler) ;
-  switch (select_galgas_34_GrammarComponentSyntax_10 (inCompiler)) {
-  case 1: {
-  } break ;
-  case 2: {
-    inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_unused COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas3", 393)) ;
-  } break ;
-  default:
-    break ;
-  }
-  outArgument_outArgumentName = inCompiler->synthetizedAttribute_tokenString () ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas3", 395)) ;
-  ioArgument_ioStartSymbolLabelFormalParameterList.addAssignOperation (var_selector_13097, GGS_formalArgumentPassingModeAST::class_func_argumentConstantIn (SOURCE_FILE ("galgasGrammarComponentSyntax.galgas3", 398)), var_mTypeName_13179, outArgument_outArgumentName, GGS_bool (false)  COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas3", 396)) ;
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_galgas_34_GrammarComponentSyntax::rule_galgas_34_GrammarComponentSyntax_label_5F_formal_5F_parameter_i5_indexing (Lexique_galgasScanner_34_ * inCompiler) {
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__3F_ COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas3", 387)) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_let COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas3", 389)) ;
-  nt_type_5F_definition_indexing (inCompiler) ;
-  switch (select_galgas_34_GrammarComponentSyntax_10 (inCompiler)) {
-  case 1: {
-  } break ;
-  case 2: {
-    inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_unused COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas3", 393)) ;
-  } break ;
-  default:
-    break ;
-  }
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas3", 395)) ;
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_galgas_34_GrammarComponentSyntax::rule_galgas_34_GrammarComponentSyntax_label_5F_formal_5F_parameter_i6_ (GGS_galgasDeclarationAST & ioArgument_ioDeclarations,
-                                                                                                                       GGS_lstring & outArgument_outArgumentName,
-                                                                                                                       GGS_formalParameterListAST & ioArgument_ioStartSymbolLabelFormalParameterList,
-                                                                                                                       Lexique_galgasScanner_34_ * inCompiler) {
-  outArgument_outArgumentName.drop () ; // Release 'out' argument
-  GGS_lstring var_selector_13791 = inCompiler->synthetizedAttribute_tokenString () ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__3F__21_selector_3A_ COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas3", 409)) ;
-  GGS_lstring var_mTypeName_13853 ;
-  nt_type_5F_definition_ (ioArgument_ioDeclarations, var_mTypeName_13853, inCompiler) ;
-  switch (select_galgas_34_GrammarComponentSyntax_11 (inCompiler)) {
-  case 1: {
-  } break ;
-  case 2: {
-    inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_unused COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas3", 413)) ;
-  } break ;
-  default:
-    break ;
-  }
-  outArgument_outArgumentName = inCompiler->synthetizedAttribute_tokenString () ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas3", 415)) ;
-  ioArgument_ioStartSymbolLabelFormalParameterList.addAssignOperation (var_selector_13791, GGS_formalArgumentPassingModeAST::class_func_argumentInOut (SOURCE_FILE ("galgasGrammarComponentSyntax.galgas3", 418)), var_mTypeName_13853, outArgument_outArgumentName, GGS_bool (false)  COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas3", 416)) ;
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_galgas_34_GrammarComponentSyntax::rule_galgas_34_GrammarComponentSyntax_label_5F_formal_5F_parameter_i6_indexing (Lexique_galgasScanner_34_ * inCompiler) {
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__3F__21_selector_3A_ COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas3", 409)) ;
-  nt_type_5F_definition_indexing (inCompiler) ;
-  switch (select_galgas_34_GrammarComponentSyntax_11 (inCompiler)) {
-  case 1: {
-  } break ;
-  case 2: {
-    inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_unused COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas3", 413)) ;
-  } break ;
-  default:
-    break ;
-  }
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas3", 415)) ;
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_galgas_34_GrammarComponentSyntax::rule_galgas_34_GrammarComponentSyntax_label_5F_formal_5F_parameter_i7_ (GGS_galgasDeclarationAST & ioArgument_ioDeclarations,
-                                                                                                                       GGS_lstring & outArgument_outArgumentName,
-                                                                                                                       GGS_formalParameterListAST & ioArgument_ioStartSymbolLabelFormalParameterList,
-                                                                                                                       Lexique_galgasScanner_34_ * inCompiler) {
-  outArgument_outArgumentName.drop () ; // Release 'out' argument
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__3F__21_ COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas3", 429)) ;
-  GGS_lstring var_selector_14454 = GGS_string::makeEmptyString ().getter_here (inCompiler COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas3", 430)) ;
-  GGS_lstring var_mTypeName_14526 ;
-  nt_type_5F_definition_ (ioArgument_ioDeclarations, var_mTypeName_14526, inCompiler) ;
-  switch (select_galgas_34_GrammarComponentSyntax_12 (inCompiler)) {
-  case 1: {
-  } break ;
-  case 2: {
-    inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_unused COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas3", 434)) ;
-  } break ;
-  default:
-    break ;
-  }
-  outArgument_outArgumentName = inCompiler->synthetizedAttribute_tokenString () ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas3", 436)) ;
-  ioArgument_ioStartSymbolLabelFormalParameterList.addAssignOperation (var_selector_14454, GGS_formalArgumentPassingModeAST::class_func_argumentInOut (SOURCE_FILE ("galgasGrammarComponentSyntax.galgas3", 439)), var_mTypeName_14526, outArgument_outArgumentName, GGS_bool (false)  COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas3", 437)) ;
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_galgas_34_GrammarComponentSyntax::rule_galgas_34_GrammarComponentSyntax_label_5F_formal_5F_parameter_i7_indexing (Lexique_galgasScanner_34_ * inCompiler) {
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__3F__21_ COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas3", 429)) ;
-  nt_type_5F_definition_indexing (inCompiler) ;
-  switch (select_galgas_34_GrammarComponentSyntax_12 (inCompiler)) {
-  case 1: {
-  } break ;
-  case 2: {
-    inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_unused COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas3", 434)) ;
-  } break ;
-  default:
-    break ;
-  }
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas3", 436)) ;
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_galgas_34_GrammarComponentSyntax::rule_galgas_34_GrammarComponentSyntax_label_5F_formal_5F_parameter_i8_ (GGS_galgasDeclarationAST & ioArgument_ioDeclarations,
-                                                                                                                       GGS_lstring & outArgument_outArgumentName,
-                                                                                                                       GGS_formalParameterListAST & ioArgument_ioStartSymbolLabelFormalParameterList,
-                                                                                                                       Lexique_galgasScanner_34_ * inCompiler) {
-  outArgument_outArgumentName.drop () ; // Release 'out' argument
-  GGS_lstring var_selector_15132 = inCompiler->synthetizedAttribute_tokenString () ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__21_selector_3A_ COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas3", 450)) ;
-  GGS_lstring var_mTypeName_15194 ;
-  nt_type_5F_definition_ (ioArgument_ioDeclarations, var_mTypeName_15194, inCompiler) ;
-  outArgument_outArgumentName = inCompiler->synthetizedAttribute_tokenString () ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas3", 452)) ;
-  ioArgument_ioStartSymbolLabelFormalParameterList.addAssignOperation (var_selector_15132, GGS_formalArgumentPassingModeAST::class_func_argumentOut (SOURCE_FILE ("galgasGrammarComponentSyntax.galgas3", 455)), var_mTypeName_15194, outArgument_outArgumentName, GGS_bool (false)  COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas3", 453)) ;
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_galgas_34_GrammarComponentSyntax::rule_galgas_34_GrammarComponentSyntax_label_5F_formal_5F_parameter_i8_indexing (Lexique_galgasScanner_34_ * inCompiler) {
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__21_selector_3A_ COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas3", 450)) ;
-  nt_type_5F_definition_indexing (inCompiler) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas3", 452)) ;
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_galgas_34_GrammarComponentSyntax::rule_galgas_34_GrammarComponentSyntax_label_5F_formal_5F_parameter_i9_ (GGS_galgasDeclarationAST & ioArgument_ioDeclarations,
-                                                                                                                       GGS_lstring & outArgument_outArgumentName,
-                                                                                                                       GGS_formalParameterListAST & ioArgument_ioStartSymbolLabelFormalParameterList,
-                                                                                                                       Lexique_galgasScanner_34_ * inCompiler) {
-  outArgument_outArgumentName.drop () ; // Release 'out' argument
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__21_ COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas3", 466)) ;
-  GGS_lstring var_selector_15752 = GGS_string::makeEmptyString ().getter_here (inCompiler COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas3", 467)) ;
-  GGS_lstring var_mTypeName_15824 ;
-  nt_type_5F_definition_ (ioArgument_ioDeclarations, var_mTypeName_15824, inCompiler) ;
-  outArgument_outArgumentName = inCompiler->synthetizedAttribute_tokenString () ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas3", 469)) ;
-  ioArgument_ioStartSymbolLabelFormalParameterList.addAssignOperation (var_selector_15752, GGS_formalArgumentPassingModeAST::class_func_argumentOut (SOURCE_FILE ("galgasGrammarComponentSyntax.galgas3", 472)), var_mTypeName_15824, outArgument_outArgumentName, GGS_bool (false)  COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas3", 470)) ;
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_galgas_34_GrammarComponentSyntax::rule_galgas_34_GrammarComponentSyntax_label_5F_formal_5F_parameter_i9_indexing (Lexique_galgasScanner_34_ * inCompiler) {
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__21_ COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas3", 466)) ;
-  nt_type_5F_definition_indexing (inCompiler) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas3", 469)) ;
-}
-
-
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_galgas_34_ProgramDeclarations::rule_galgas_34_ProgramDeclarations_declaration_i0_ (GGS_galgasDeclarationAST & ioArgument_ioDeclarations,
-                                                                                                Lexique_galgasScanner_34_ * inCompiler) {
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_before COMMA_SOURCE_FILE ("galgasProgramDeclarations.galgas3", 133)) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__7B_ COMMA_SOURCE_FILE ("galgasProgramDeclarations.galgas3", 134)) ;
-  GGS_semanticInstructionListAST var_prologueInstructionList_5365 ;
-  nt_semantic_5F_instruction_5F_list_ (ioArgument_ioDeclarations, var_prologueInstructionList_5365, inCompiler) ;
-  GGS_location var_endOfPrologue_5397 = GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("galgasProgramDeclarations.galgas3", 136)) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__7D_ COMMA_SOURCE_FILE ("galgasProgramDeclarations.galgas3", 137)) ;
-  ioArgument_ioDeclarations.mProperty_mPrologueDeclarationList.addAssignOperation (var_prologueInstructionList_5365, var_endOfPrologue_5397  COMMA_SOURCE_FILE ("galgasProgramDeclarations.galgas3", 138)) ;
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_galgas_34_ProgramDeclarations::rule_galgas_34_ProgramDeclarations_declaration_i0_indexing (Lexique_galgasScanner_34_ * inCompiler) {
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_before COMMA_SOURCE_FILE ("galgasProgramDeclarations.galgas3", 133)) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__7B_ COMMA_SOURCE_FILE ("galgasProgramDeclarations.galgas3", 134)) ;
-  nt_semantic_5F_instruction_5F_list_indexing (inCompiler) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__7D_ COMMA_SOURCE_FILE ("galgasProgramDeclarations.galgas3", 137)) ;
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_galgas_34_ProgramDeclarations::rule_galgas_34_ProgramDeclarations_declaration_i1_ (GGS_galgasDeclarationAST & ioArgument_ioDeclarations,
-                                                                                                Lexique_galgasScanner_34_ * inCompiler) {
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_after COMMA_SOURCE_FILE ("galgasProgramDeclarations.galgas3", 148)) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__7B_ COMMA_SOURCE_FILE ("galgasProgramDeclarations.galgas3", 149)) ;
-  GGS_semanticInstructionListAST var_prologueInstructionList_5932 ;
-  nt_semantic_5F_instruction_5F_list_ (ioArgument_ioDeclarations, var_prologueInstructionList_5932, inCompiler) ;
-  GGS_location var_endOfPrologue_5964 = GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("galgasProgramDeclarations.galgas3", 151)) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__7D_ COMMA_SOURCE_FILE ("galgasProgramDeclarations.galgas3", 152)) ;
-  ioArgument_ioDeclarations.mProperty_mEpilogueDeclarationList.addAssignOperation (var_prologueInstructionList_5932, var_endOfPrologue_5964  COMMA_SOURCE_FILE ("galgasProgramDeclarations.galgas3", 153)) ;
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_galgas_34_ProgramDeclarations::rule_galgas_34_ProgramDeclarations_declaration_i1_indexing (Lexique_galgasScanner_34_ * inCompiler) {
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_after COMMA_SOURCE_FILE ("galgasProgramDeclarations.galgas3", 148)) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__7B_ COMMA_SOURCE_FILE ("galgasProgramDeclarations.galgas3", 149)) ;
-  nt_semantic_5F_instruction_5F_list_indexing (inCompiler) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__7D_ COMMA_SOURCE_FILE ("galgasProgramDeclarations.galgas3", 152)) ;
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_galgas_34_ProgramDeclarations::rule_galgas_34_ProgramDeclarations_declaration_i2_ (GGS_galgasDeclarationAST & ioArgument_ioDeclarations,
-                                                                                                Lexique_galgasScanner_34_ * inCompiler) {
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_case COMMA_SOURCE_FILE ("galgasProgramDeclarations.galgas3", 163)) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__2E_ COMMA_SOURCE_FILE ("galgasProgramDeclarations.galgas3", 164)) ;
-  GGS_lstring var_mSourceFileExtension_6452 = inCompiler->synthetizedAttribute_tokenString () ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__22_string_22_ COMMA_SOURCE_FILE ("galgasProgramDeclarations.galgas3", 165)) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__25_errorMessage COMMA_SOURCE_FILE ("galgasProgramDeclarations.galgas3", 166)) ;
-  GGS_lstring var_mSourceFileHelp_6522 = inCompiler->synthetizedAttribute_tokenString () ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__22_string_22_ COMMA_SOURCE_FILE ("galgasProgramDeclarations.galgas3", 167)) ;
-  GGS_lstring var_referenceGrammar_6581 ;
-  switch (select_galgas_34_ProgramDeclarations_0 (inCompiler)) {
-  case 1: {
-    var_referenceGrammar_6581 = GGS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("galgasProgramDeclarations.galgas3", 171)) ;
-  } break ;
-  case 2: {
-    inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_grammar COMMA_SOURCE_FILE ("galgasProgramDeclarations.galgas3", 173)) ;
-    var_referenceGrammar_6581 = inCompiler->synthetizedAttribute_tokenString () ;
-    inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("galgasProgramDeclarations.galgas3", 174)) ;
-  } break ;
-  default:
-    break ;
-  }
-  GGS_lstring var_selector_6755 = inCompiler->synthetizedAttribute_tokenString () ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__3F_selector_3A_ COMMA_SOURCE_FILE ("galgasProgramDeclarations.galgas3", 177)) ;
-  GalgasBool test_0 = GalgasBool::boolTrue ;
-  if (GalgasBool::boolTrue == test_0) {
-    test_0 = GGS_bool (ComparisonKind::notEqual, var_selector_6755.readProperty_string ().objectCompare (GGS_string ("sourceFilePath"))).boolEnum () ;
-    if (GalgasBool::boolTrue == test_0) {
-      GenericArray <FixItDescription> fixItArray1 ;
-      appendFixItActions (fixItArray1, EnumFixItKind::fixItReplace, GGS_string ("\?sourceFilePath:")) ;
-      inCompiler->emitSemanticError (var_selector_6755.readProperty_location (), GGS_string ("the selector should be '\?sourceFilePath:'"), fixItArray1  COMMA_SOURCE_FILE ("galgasProgramDeclarations.galgas3", 179)) ;
-    }
-  }
-  switch (select_galgas_34_ProgramDeclarations_1 (inCompiler)) {
-  case 1: {
-  } break ;
-  case 2: {
-    GGS_lstring var_typeName_6959 = inCompiler->synthetizedAttribute_tokenString () ;
-    inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__40_type COMMA_SOURCE_FILE ("galgasProgramDeclarations.galgas3", 183)) ;
-    GalgasBool test_2 = GalgasBool::boolTrue ;
-    if (GalgasBool::boolTrue == test_2) {
-      test_2 = GGS_bool (ComparisonKind::notEqual, var_typeName_6959.readProperty_string ().objectCompare (GGS_string ("lstring"))).boolEnum () ;
-      if (GalgasBool::boolTrue == test_2) {
-        GenericArray <FixItDescription> fixItArray3 ;
-        inCompiler->emitSemanticError (var_typeName_6959.readProperty_location (), GGS_string ("the only type allowed here is '@lstring'"), fixItArray3  COMMA_SOURCE_FILE ("galgasProgramDeclarations.galgas3", 185)) ;
-      }
-    }
-  } break ;
-  default:
-    break ;
-  }
-  GGS_bool var_isUnused_7113 ;
-  switch (select_galgas_34_ProgramDeclarations_2 (inCompiler)) {
-  case 1: {
-    var_isUnused_7113 = GGS_bool (false) ;
-  } break ;
-  case 2: {
-    inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_unused COMMA_SOURCE_FILE ("galgasProgramDeclarations.galgas3", 192)) ;
-    var_isUnused_7113 = GGS_bool (true) ;
-  } break ;
-  default:
-    break ;
-  }
-  GGS_lstring var_mSourceFileVariableName_7239 = inCompiler->synthetizedAttribute_tokenString () ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("galgasProgramDeclarations.galgas3", 195)) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__7B_ COMMA_SOURCE_FILE ("galgasProgramDeclarations.galgas3", 197)) ;
-  GGS_semanticInstructionListAST var_mInstructionList_7361 ;
-  nt_semantic_5F_instruction_5F_list_ (ioArgument_ioDeclarations, var_mInstructionList_7361, inCompiler) ;
-  GGS_location var_endOfInstructionList_7386 = GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("galgasProgramDeclarations.galgas3", 199)) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__7D_ COMMA_SOURCE_FILE ("galgasProgramDeclarations.galgas3", 200)) ;
-  ioArgument_ioDeclarations.mProperty_mSourceRuleList.addAssignOperation (var_mSourceFileExtension_6452, var_mSourceFileHelp_6522, var_mSourceFileVariableName_7239, var_isUnused_7113, var_referenceGrammar_6581, var_mInstructionList_7361, var_endOfInstructionList_7386  COMMA_SOURCE_FILE ("galgasProgramDeclarations.galgas3", 201)) ;
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_galgas_34_ProgramDeclarations::rule_galgas_34_ProgramDeclarations_declaration_i2_indexing (Lexique_galgasScanner_34_ * inCompiler) {
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_case COMMA_SOURCE_FILE ("galgasProgramDeclarations.galgas3", 163)) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__2E_ COMMA_SOURCE_FILE ("galgasProgramDeclarations.galgas3", 164)) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__22_string_22_ COMMA_SOURCE_FILE ("galgasProgramDeclarations.galgas3", 165)) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__25_errorMessage COMMA_SOURCE_FILE ("galgasProgramDeclarations.galgas3", 166)) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__22_string_22_ COMMA_SOURCE_FILE ("galgasProgramDeclarations.galgas3", 167)) ;
-  switch (select_galgas_34_ProgramDeclarations_0 (inCompiler)) {
-  case 1: {
-  } break ;
-  case 2: {
-    inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_grammar COMMA_SOURCE_FILE ("galgasProgramDeclarations.galgas3", 173)) ;
-    inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("galgasProgramDeclarations.galgas3", 174)) ;
-  } break ;
-  default:
-    break ;
-  }
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__3F_selector_3A_ COMMA_SOURCE_FILE ("galgasProgramDeclarations.galgas3", 177)) ;
-  switch (select_galgas_34_ProgramDeclarations_1 (inCompiler)) {
-  case 1: {
-  } break ;
-  case 2: {
-    inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__40_type COMMA_SOURCE_FILE ("galgasProgramDeclarations.galgas3", 183)) ;
-  } break ;
-  default:
-    break ;
-  }
-  switch (select_galgas_34_ProgramDeclarations_2 (inCompiler)) {
-  case 1: {
-  } break ;
-  case 2: {
-    inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_unused COMMA_SOURCE_FILE ("galgasProgramDeclarations.galgas3", 192)) ;
-  } break ;
-  default:
-    break ;
-  }
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("galgasProgramDeclarations.galgas3", 195)) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__7B_ COMMA_SOURCE_FILE ("galgasProgramDeclarations.galgas3", 197)) ;
-  nt_semantic_5F_instruction_5F_list_indexing (inCompiler) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__7D_ COMMA_SOURCE_FILE ("galgasProgramDeclarations.galgas3", 200)) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-// @externProcedureDeclarationAST reference class
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult GGS_externProcedureDeclarationAST::objectCompare (const GGS_externProcedureDeclarationAST & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    const size_t myObjectPtr = size_t (mObjectPtr) ;
-    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_externProcedureDeclarationAST::GGS_externProcedureDeclarationAST (void) :
-GGS_semanticDeclarationAST () {
-}
-
-//--- Synthetized initializer ----------------------------------------------------------------------
-
-GGS_externProcedureDeclarationAST GGS_externProcedureDeclarationAST::
-init_21_isPredefined_21_isFilePrivate_21__21__21_usefullProcedure (const GGS_bool & in_isPredefined,
-                                                                   const GGS_bool & in_isFilePrivate,
-                                                                   const GGS_lstring & in_mRoutineName,
-                                                                   const GGS_formalParameterListAST & in_mFormalArgumentListAST,
-                                                                   const GGS_bool & in_usefullProcedure,
-                                                                   Compiler * inCompiler
-                                                                   COMMA_LOCATION_ARGS) {
-  cPtr_externProcedureDeclarationAST * object = nullptr ;
-  macroMyNew (object, cPtr_externProcedureDeclarationAST (inCompiler COMMA_THERE)) ;
-  object->externProcedureDeclarationAST_init_21_isPredefined_21_isFilePrivate_21__21__21_usefullProcedure (in_isPredefined, in_isFilePrivate, in_mRoutineName, in_mFormalArgumentListAST, in_usefullProcedure, inCompiler) ;
-  const GGS_externProcedureDeclarationAST result (object) ;
-  macroDetachSharedObject (object) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_externProcedureDeclarationAST::
-externProcedureDeclarationAST_init_21_isPredefined_21_isFilePrivate_21__21__21_usefullProcedure (const GGS_bool & in_isPredefined,
-                                                                                                 const GGS_bool & in_isFilePrivate,
-                                                                                                 const GGS_lstring & in_mRoutineName,
-                                                                                                 const GGS_formalParameterListAST & in_mFormalArgumentListAST,
-                                                                                                 const GGS_bool & in_usefullProcedure,
-                                                                                                 Compiler * /* inCompiler */) {
-  mProperty_isPredefined = in_isPredefined ;
-  mProperty_isFilePrivate = in_isFilePrivate ;
-  mProperty_mRoutineName = in_mRoutineName ;
-  mProperty_mFormalArgumentListAST = in_mFormalArgumentListAST ;
-  mProperty_usefullProcedure = in_usefullProcedure ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_externProcedureDeclarationAST::GGS_externProcedureDeclarationAST (const cPtr_externProcedureDeclarationAST * inSourcePtr) :
-GGS_semanticDeclarationAST (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_externProcedureDeclarationAST) ;
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_bool GGS_externProcedureDeclarationAST::readProperty_isFilePrivate (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_bool () ;
-  }else{
-    cPtr_externProcedureDeclarationAST * p = (cPtr_externProcedureDeclarationAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_externProcedureDeclarationAST) ;
-    return p->mProperty_isFilePrivate ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lstring GGS_externProcedureDeclarationAST::readProperty_mRoutineName (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_lstring () ;
-  }else{
-    cPtr_externProcedureDeclarationAST * p = (cPtr_externProcedureDeclarationAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_externProcedureDeclarationAST) ;
-    return p->mProperty_mRoutineName ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_formalParameterListAST GGS_externProcedureDeclarationAST::readProperty_mFormalArgumentListAST (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_formalParameterListAST () ;
-  }else{
-    cPtr_externProcedureDeclarationAST * p = (cPtr_externProcedureDeclarationAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_externProcedureDeclarationAST) ;
-    return p->mProperty_mFormalArgumentListAST ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_bool GGS_externProcedureDeclarationAST::readProperty_usefullProcedure (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_bool () ;
-  }else{
-    cPtr_externProcedureDeclarationAST * p = (cPtr_externProcedureDeclarationAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_externProcedureDeclarationAST) ;
-    return p->mProperty_usefullProcedure ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-//Pointer class for @externProcedureDeclarationAST class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_externProcedureDeclarationAST::cPtr_externProcedureDeclarationAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_semanticDeclarationAST (inCompiler COMMA_THERE),
-mProperty_isFilePrivate (),
-mProperty_mRoutineName (),
-mProperty_mFormalArgumentListAST (),
-mProperty_usefullProcedure () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cPtr_externProcedureDeclarationAST::cPtr_externProcedureDeclarationAST (const GGS_bool & in_isPredefined,
-                                                                        const GGS_bool & in_isFilePrivate,
-                                                                        const GGS_lstring & in_mRoutineName,
-                                                                        const GGS_formalParameterListAST & in_mFormalArgumentListAST,
-                                                                        const GGS_bool & in_usefullProcedure,
-                                                                        Compiler * inCompiler
-                                                                        COMMA_LOCATION_ARGS) :
-cPtr_semanticDeclarationAST (in_isPredefined, inCompiler COMMA_THERE),
-mProperty_isFilePrivate (),
-mProperty_mRoutineName (),
-mProperty_mFormalArgumentListAST (),
-mProperty_usefullProcedure () {
-  mProperty_isPredefined = in_isPredefined ;
-  mProperty_isFilePrivate = in_isFilePrivate ;
-  mProperty_mRoutineName = in_mRoutineName ;
-  mProperty_mFormalArgumentListAST = in_mFormalArgumentListAST ;
-  mProperty_usefullProcedure = in_usefullProcedure ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * cPtr_externProcedureDeclarationAST::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_externProcedureDeclarationAST ;
-}
-
-void cPtr_externProcedureDeclarationAST::description (String & ioString,
-                                                      const int32_t inIndentation) const {
-  ioString.appendCString ("[@externProcedureDeclarationAST:") ;
-  mProperty_isPredefined.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_isFilePrivate.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mRoutineName.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mFormalArgumentListAST.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_usefullProcedure.description (ioString, inIndentation+1) ;
-  ioString.appendCString ("]") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AbstractPtrClass * cPtr_externProcedureDeclarationAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  AbstractPtrClass * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_externProcedureDeclarationAST (mProperty_isPredefined, mProperty_isFilePrivate, mProperty_mRoutineName, mProperty_mFormalArgumentListAST, mProperty_usefullProcedure, inCompiler COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_externProcedureDeclarationAST::printNonNullClassInstanceProperties (void) const {
-    cPtr_semanticDeclarationAST::printNonNullClassInstanceProperties () ;
-    mProperty_isFilePrivate.printNonNullClassInstanceProperties ("isFilePrivate") ;
-    mProperty_mRoutineName.printNonNullClassInstanceProperties ("mRoutineName") ;
-    mProperty_mFormalArgumentListAST.printNonNullClassInstanceProperties ("mFormalArgumentListAST") ;
-    mProperty_usefullProcedure.printNonNullClassInstanceProperties ("usefullProcedure") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-//     @externProcedureDeclarationAST generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_externProcedureDeclarationAST ("externProcedureDeclarationAST",
-                                                                                  & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_externProcedureDeclarationAST::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_externProcedureDeclarationAST ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_externProcedureDeclarationAST::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_externProcedureDeclarationAST (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_externProcedureDeclarationAST GGS_externProcedureDeclarationAST::extractObject (const GGS_object & inObject,
-                                                                                    Compiler * inCompiler
-                                                                                    COMMA_LOCATION_ARGS) {
-  GGS_externProcedureDeclarationAST result ;
-  const GGS_externProcedureDeclarationAST * p = (const GGS_externProcedureDeclarationAST *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_externProcedureDeclarationAST *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("externProcedureDeclarationAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-// @routinePrototypeDeclarationForGeneration reference class
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult GGS_routinePrototypeDeclarationForGeneration::objectCompare (const GGS_routinePrototypeDeclarationForGeneration & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    const size_t myObjectPtr = size_t (mObjectPtr) ;
-    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_routinePrototypeDeclarationForGeneration::GGS_routinePrototypeDeclarationForGeneration (void) :
-GGS_semanticDeclarationWithHeaderForGeneration () {
-}
-
-//--- Synthetized initializer ----------------------------------------------------------------------
-
-GGS_routinePrototypeDeclarationForGeneration GGS_routinePrototypeDeclarationForGeneration::
-init_21_generateHeader_21_implementationCppFileName_21_routineMangledName_21_ (const GGS_bool & in_generateHeader,
-                                                                               const GGS_string & in_implementationCppFileName,
-                                                                               const GGS_string & in_routineMangledName,
-                                                                               const GGS_formalParameterListForGeneration & in_mFormalArgumentList,
-                                                                               Compiler * inCompiler
-                                                                               COMMA_LOCATION_ARGS) {
-  cPtr_routinePrototypeDeclarationForGeneration * object = nullptr ;
-  macroMyNew (object, cPtr_routinePrototypeDeclarationForGeneration (inCompiler COMMA_THERE)) ;
-  object->routinePrototypeDeclarationForGeneration_init_21_generateHeader_21_implementationCppFileName_21_routineMangledName_21_ (in_generateHeader, in_implementationCppFileName, in_routineMangledName, in_mFormalArgumentList, inCompiler) ;
-  const GGS_routinePrototypeDeclarationForGeneration result (object) ;
-  macroDetachSharedObject (object) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_routinePrototypeDeclarationForGeneration::
-routinePrototypeDeclarationForGeneration_init_21_generateHeader_21_implementationCppFileName_21_routineMangledName_21_ (const GGS_bool & in_generateHeader,
-                                                                                                                        const GGS_string & in_implementationCppFileName,
-                                                                                                                        const GGS_string & in_routineMangledName,
-                                                                                                                        const GGS_formalParameterListForGeneration & in_mFormalArgumentList,
-                                                                                                                        Compiler * /* inCompiler */) {
-  mProperty_generateHeader = in_generateHeader ;
-  mProperty_implementationCppFileName = in_implementationCppFileName ;
-  mProperty_routineMangledName = in_routineMangledName ;
-  mProperty_mFormalArgumentList = in_mFormalArgumentList ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_routinePrototypeDeclarationForGeneration::GGS_routinePrototypeDeclarationForGeneration (const cPtr_routinePrototypeDeclarationForGeneration * inSourcePtr) :
-GGS_semanticDeclarationWithHeaderForGeneration (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_routinePrototypeDeclarationForGeneration) ;
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_string GGS_routinePrototypeDeclarationForGeneration::readProperty_routineMangledName (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_string () ;
-  }else{
-    cPtr_routinePrototypeDeclarationForGeneration * p = (cPtr_routinePrototypeDeclarationForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_routinePrototypeDeclarationForGeneration) ;
-    return p->mProperty_routineMangledName ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_formalParameterListForGeneration GGS_routinePrototypeDeclarationForGeneration::readProperty_mFormalArgumentList (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_formalParameterListForGeneration () ;
-  }else{
-    cPtr_routinePrototypeDeclarationForGeneration * p = (cPtr_routinePrototypeDeclarationForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_routinePrototypeDeclarationForGeneration) ;
-    return p->mProperty_mFormalArgumentList ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-//Pointer class for @routinePrototypeDeclarationForGeneration class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_routinePrototypeDeclarationForGeneration::cPtr_routinePrototypeDeclarationForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_semanticDeclarationWithHeaderForGeneration (inCompiler COMMA_THERE),
-mProperty_routineMangledName (),
-mProperty_mFormalArgumentList () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cPtr_routinePrototypeDeclarationForGeneration::cPtr_routinePrototypeDeclarationForGeneration (const GGS_bool & in_generateHeader,
-                                                                                              const GGS_string & in_implementationCppFileName,
-                                                                                              const GGS_string & in_routineMangledName,
-                                                                                              const GGS_formalParameterListForGeneration & in_mFormalArgumentList,
-                                                                                              Compiler * inCompiler
-                                                                                              COMMA_LOCATION_ARGS) :
-cPtr_semanticDeclarationWithHeaderForGeneration (in_generateHeader, in_implementationCppFileName, inCompiler COMMA_THERE),
-mProperty_routineMangledName (),
-mProperty_mFormalArgumentList () {
-  mProperty_generateHeader = in_generateHeader ;
-  mProperty_implementationCppFileName = in_implementationCppFileName ;
-  mProperty_routineMangledName = in_routineMangledName ;
-  mProperty_mFormalArgumentList = in_mFormalArgumentList ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * cPtr_routinePrototypeDeclarationForGeneration::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_routinePrototypeDeclarationForGeneration ;
-}
-
-void cPtr_routinePrototypeDeclarationForGeneration::description (String & ioString,
-                                                                 const int32_t inIndentation) const {
-  ioString.appendCString ("[@routinePrototypeDeclarationForGeneration:") ;
-  mProperty_generateHeader.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_implementationCppFileName.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_routineMangledName.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mFormalArgumentList.description (ioString, inIndentation+1) ;
-  ioString.appendCString ("]") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AbstractPtrClass * cPtr_routinePrototypeDeclarationForGeneration::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  AbstractPtrClass * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_routinePrototypeDeclarationForGeneration (mProperty_generateHeader, mProperty_implementationCppFileName, mProperty_routineMangledName, mProperty_mFormalArgumentList, inCompiler COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_routinePrototypeDeclarationForGeneration::printNonNullClassInstanceProperties (void) const {
-    cPtr_semanticDeclarationWithHeaderForGeneration::printNonNullClassInstanceProperties () ;
-    mProperty_routineMangledName.printNonNullClassInstanceProperties ("routineMangledName") ;
-    mProperty_mFormalArgumentList.printNonNullClassInstanceProperties ("mFormalArgumentList") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-//     @routinePrototypeDeclarationForGeneration generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_routinePrototypeDeclarationForGeneration ("routinePrototypeDeclarationForGeneration",
-                                                                                             & kTypeDescriptor_GALGAS_semanticDeclarationWithHeaderForGeneration) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_routinePrototypeDeclarationForGeneration::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_routinePrototypeDeclarationForGeneration ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_routinePrototypeDeclarationForGeneration::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_routinePrototypeDeclarationForGeneration (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_routinePrototypeDeclarationForGeneration GGS_routinePrototypeDeclarationForGeneration::extractObject (const GGS_object & inObject,
-                                                                                                          Compiler * inCompiler
-                                                                                                          COMMA_LOCATION_ARGS) {
-  GGS_routinePrototypeDeclarationForGeneration result ;
-  const GGS_routinePrototypeDeclarationForGeneration * p = (const GGS_routinePrototypeDeclarationForGeneration *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_routinePrototypeDeclarationForGeneration *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("routinePrototypeDeclarationForGeneration", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult GGS_routinePrototypeDeclarationForGeneration_2E_weak::objectCompare (const GGS_routinePrototypeDeclarationForGeneration_2E_weak & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    PtrWeakReferenceProxy * myPtr = mProxyPtr ;
-    const size_t myObjectPtr = size_t (myPtr) ;
-    PtrWeakReferenceProxy * operandPtr = inOperand.mProxyPtr ;
-    const size_t operandObjectPtr = size_t (operandPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_routinePrototypeDeclarationForGeneration_2E_weak::GGS_routinePrototypeDeclarationForGeneration_2E_weak (void) :
-GGS_semanticDeclarationWithHeaderForGeneration_2E_weak () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_routinePrototypeDeclarationForGeneration_2E_weak & GGS_routinePrototypeDeclarationForGeneration_2E_weak::operator = (const GGS_routinePrototypeDeclarationForGeneration & inSource) {
-  PtrWeakReferenceProxy * proxyPtr = nullptr ;
-  AbstractStrongPtrClass * p = (AbstractStrongPtrClass *) inSource.ptr () ;
-  if (p != nullptr) {
-    proxyPtr = p->getProxy () ;
-  }
-  macroAssignSharedObject (mProxyPtr, proxyPtr) ;
-  return *this ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_routinePrototypeDeclarationForGeneration_2E_weak::GGS_routinePrototypeDeclarationForGeneration_2E_weak (const GGS_routinePrototypeDeclarationForGeneration & inSource) :
-GGS_semanticDeclarationWithHeaderForGeneration_2E_weak (inSource) {
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_routinePrototypeDeclarationForGeneration_2E_weak GGS_routinePrototypeDeclarationForGeneration_2E_weak::class_func_nil (LOCATION_ARGS) {
-  GGS_routinePrototypeDeclarationForGeneration_2E_weak result ;
-  macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (THERE)) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_routinePrototypeDeclarationForGeneration GGS_routinePrototypeDeclarationForGeneration_2E_weak::unwrappedValue (void) const {
-  GGS_routinePrototypeDeclarationForGeneration result ;
-  if (isValid ()) {
-    const cPtr_routinePrototypeDeclarationForGeneration * p = (cPtr_routinePrototypeDeclarationForGeneration *) ptr () ;
-    if (nullptr != p) {
-      result = GGS_routinePrototypeDeclarationForGeneration (p) ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_routinePrototypeDeclarationForGeneration GGS_routinePrototypeDeclarationForGeneration_2E_weak::bang_routinePrototypeDeclarationForGeneration_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  GGS_routinePrototypeDeclarationForGeneration result ;
-  if (mProxyPtr != nullptr) {
-    AbstractStrongPtrClass * strongPtr = mProxyPtr->strongObject () ;
-    if (strongPtr == nullptr) {
-      inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
-    }else{
-      macroValidSharedObject (strongPtr, cPtr_routinePrototypeDeclarationForGeneration) ;
-      result = GGS_routinePrototypeDeclarationForGeneration ((cPtr_routinePrototypeDeclarationForGeneration *) strongPtr) ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//     @routinePrototypeDeclarationForGeneration.weak generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_routinePrototypeDeclarationForGeneration_2E_weak ("routinePrototypeDeclarationForGeneration.weak",
-                                                                                                     & kTypeDescriptor_GALGAS_semanticDeclarationWithHeaderForGeneration_2E_weak) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_routinePrototypeDeclarationForGeneration_2E_weak::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_routinePrototypeDeclarationForGeneration_2E_weak ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_routinePrototypeDeclarationForGeneration_2E_weak::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_routinePrototypeDeclarationForGeneration_2E_weak (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_routinePrototypeDeclarationForGeneration_2E_weak GGS_routinePrototypeDeclarationForGeneration_2E_weak::extractObject (const GGS_object & inObject,
-                                                                                                                          Compiler * inCompiler
-                                                                                                                          COMMA_LOCATION_ARGS) {
-  GGS_routinePrototypeDeclarationForGeneration_2E_weak result ;
-  const GGS_routinePrototypeDeclarationForGeneration_2E_weak * p = (const GGS_routinePrototypeDeclarationForGeneration_2E_weak *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_routinePrototypeDeclarationForGeneration_2E_weak *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("routinePrototypeDeclarationForGeneration.weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lexiqueAnalysisContext::GGS_lexiqueAnalysisContext (void) :
-mProperty_mLexiqueName (),
-mProperty_mLexicalRoutineMessageMap (),
-mProperty_mLexicalFunctionMap (),
-mProperty_mLexicalMessageMap (),
-mProperty_mTerminalMap (),
-mProperty_mTerminalList (),
-mProperty_mLexicalAttributeMap (),
-mProperty_mLexicalTokenListMap (),
-mProperty_mUnicodeStringToGenerate (),
-mProperty_mTemplateDelimitorList (),
-mProperty_mStyleMap (),
-mProperty_mUnicodeTestFunctions () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lexiqueAnalysisContext::GGS_lexiqueAnalysisContext (const GGS_lexiqueAnalysisContext & inSource) :
-mProperty_mLexiqueName (inSource.mProperty_mLexiqueName),
-mProperty_mLexicalRoutineMessageMap (inSource.mProperty_mLexicalRoutineMessageMap),
-mProperty_mLexicalFunctionMap (inSource.mProperty_mLexicalFunctionMap),
-mProperty_mLexicalMessageMap (inSource.mProperty_mLexicalMessageMap),
-mProperty_mTerminalMap (inSource.mProperty_mTerminalMap),
-mProperty_mTerminalList (inSource.mProperty_mTerminalList),
-mProperty_mLexicalAttributeMap (inSource.mProperty_mLexicalAttributeMap),
-mProperty_mLexicalTokenListMap (inSource.mProperty_mLexicalTokenListMap),
-mProperty_mUnicodeStringToGenerate (inSource.mProperty_mUnicodeStringToGenerate),
-mProperty_mTemplateDelimitorList (inSource.mProperty_mTemplateDelimitorList),
-mProperty_mStyleMap (inSource.mProperty_mStyleMap),
-mProperty_mUnicodeTestFunctions (inSource.mProperty_mUnicodeTestFunctions) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lexiqueAnalysisContext & GGS_lexiqueAnalysisContext::operator = (const GGS_lexiqueAnalysisContext & inSource) {
-  mProperty_mLexiqueName = inSource.mProperty_mLexiqueName ;
-  mProperty_mLexicalRoutineMessageMap = inSource.mProperty_mLexicalRoutineMessageMap ;
-  mProperty_mLexicalFunctionMap = inSource.mProperty_mLexicalFunctionMap ;
-  mProperty_mLexicalMessageMap = inSource.mProperty_mLexicalMessageMap ;
-  mProperty_mTerminalMap = inSource.mProperty_mTerminalMap ;
-  mProperty_mTerminalList = inSource.mProperty_mTerminalList ;
-  mProperty_mLexicalAttributeMap = inSource.mProperty_mLexicalAttributeMap ;
-  mProperty_mLexicalTokenListMap = inSource.mProperty_mLexicalTokenListMap ;
-  mProperty_mUnicodeStringToGenerate = inSource.mProperty_mUnicodeStringToGenerate ;
-  mProperty_mTemplateDelimitorList = inSource.mProperty_mTemplateDelimitorList ;
-  mProperty_mStyleMap = inSource.mProperty_mStyleMap ;
-  mProperty_mUnicodeTestFunctions = inSource.mProperty_mUnicodeTestFunctions ;
-  return *this ;
-}
-
-//---Synthetized initializer -----------------------------------------------------------------------
-
-GGS_lexiqueAnalysisContext GGS_lexiqueAnalysisContext::init_21__21__21__21__21__21__21__21__21__21__21__21_ (const GGS_string & in_mLexiqueName,
-                                                                                                             const GGS_lexicalRoutineMap & in_mLexicalRoutineMessageMap,
-                                                                                                             const GGS_lexicalFunctionMap & in_mLexicalFunctionMap,
-                                                                                                             const GGS_lexicalMessageMap & in_mLexicalMessageMap,
-                                                                                                             const GGS_terminalMap & in_mTerminalMap,
-                                                                                                             const GGS_terminalList & in_mTerminalList,
-                                                                                                             const GGS_lexicalAttributeMap & in_mLexicalAttributeMap,
-                                                                                                             const GGS_lexicalExplicitTokenListMapMap & in_mLexicalTokenListMap,
-                                                                                                             const GGS_stringset & in_mUnicodeStringToGenerate,
-                                                                                                             const GGS_templateDelimitorList & in_mTemplateDelimitorList,
-                                                                                                             const GGS_styleMap & in_mStyleMap,
-                                                                                                             const GGS_stringset & in_mUnicodeTestFunctions,
-                                                                                                             Compiler * inCompiler
-                                                                                                             COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_lexiqueAnalysisContext result ;
-  result.setInitializedProperties (inCompiler) ;
-  result.mProperty_mLexiqueName = in_mLexiqueName ;
-  result.mProperty_mLexicalRoutineMessageMap = in_mLexicalRoutineMessageMap ;
-  result.mProperty_mLexicalFunctionMap = in_mLexicalFunctionMap ;
-  result.mProperty_mLexicalMessageMap = in_mLexicalMessageMap ;
-  result.mProperty_mTerminalMap = in_mTerminalMap ;
-  result.mProperty_mTerminalList = in_mTerminalList ;
-  result.mProperty_mLexicalAttributeMap = in_mLexicalAttributeMap ;
-  result.mProperty_mLexicalTokenListMap = in_mLexicalTokenListMap ;
-  result.mProperty_mUnicodeStringToGenerate = in_mUnicodeStringToGenerate ;
-  result.mProperty_mTemplateDelimitorList = in_mTemplateDelimitorList ;
-  result.mProperty_mStyleMap = in_mStyleMap ;
-  result.mProperty_mUnicodeTestFunctions = in_mUnicodeTestFunctions ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_lexiqueAnalysisContext::setInitializedProperties (Compiler * /* inCompiler */) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lexiqueAnalysisContext::GGS_lexiqueAnalysisContext (const GGS_string & inOperand0,
-                                                        const GGS_lexicalRoutineMap & inOperand1,
-                                                        const GGS_lexicalFunctionMap & inOperand2,
-                                                        const GGS_lexicalMessageMap & inOperand3,
-                                                        const GGS_terminalMap & inOperand4,
-                                                        const GGS_terminalList & inOperand5,
-                                                        const GGS_lexicalAttributeMap & inOperand6,
-                                                        const GGS_lexicalExplicitTokenListMapMap & inOperand7,
-                                                        const GGS_stringset & inOperand8,
-                                                        const GGS_templateDelimitorList & inOperand9,
-                                                        const GGS_styleMap & inOperand10,
-                                                        const GGS_stringset & inOperand11) :
-mProperty_mLexiqueName (inOperand0),
-mProperty_mLexicalRoutineMessageMap (inOperand1),
-mProperty_mLexicalFunctionMap (inOperand2),
-mProperty_mLexicalMessageMap (inOperand3),
-mProperty_mTerminalMap (inOperand4),
-mProperty_mTerminalList (inOperand5),
-mProperty_mLexicalAttributeMap (inOperand6),
-mProperty_mLexicalTokenListMap (inOperand7),
-mProperty_mUnicodeStringToGenerate (inOperand8),
-mProperty_mTemplateDelimitorList (inOperand9),
-mProperty_mStyleMap (inOperand10),
-mProperty_mUnicodeTestFunctions (inOperand11) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GGS_lexiqueAnalysisContext::isValid (void) const {
-  return mProperty_mLexiqueName.isValid () && mProperty_mLexicalRoutineMessageMap.isValid () && mProperty_mLexicalFunctionMap.isValid () && mProperty_mLexicalMessageMap.isValid () && mProperty_mTerminalMap.isValid () && mProperty_mTerminalList.isValid () && mProperty_mLexicalAttributeMap.isValid () && mProperty_mLexicalTokenListMap.isValid () && mProperty_mUnicodeStringToGenerate.isValid () && mProperty_mTemplateDelimitorList.isValid () && mProperty_mStyleMap.isValid () && mProperty_mUnicodeTestFunctions.isValid () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_lexiqueAnalysisContext::drop (void) {
-  mProperty_mLexiqueName.drop () ;
-  mProperty_mLexicalRoutineMessageMap.drop () ;
-  mProperty_mLexicalFunctionMap.drop () ;
-  mProperty_mLexicalMessageMap.drop () ;
-  mProperty_mTerminalMap.drop () ;
-  mProperty_mTerminalList.drop () ;
-  mProperty_mLexicalAttributeMap.drop () ;
-  mProperty_mLexicalTokenListMap.drop () ;
-  mProperty_mUnicodeStringToGenerate.drop () ;
-  mProperty_mTemplateDelimitorList.drop () ;
-  mProperty_mStyleMap.drop () ;
-  mProperty_mUnicodeTestFunctions.drop () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_lexiqueAnalysisContext::description (String & ioString,
-                                              const int32_t inIndentation) const {
-  ioString.appendCString ("<struct @lexiqueAnalysisContext:") ;
-  if (! isValid ()) {
-    ioString.appendCString (" not built") ;
-  }else{
-    mProperty_mLexiqueName.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_mLexicalRoutineMessageMap.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_mLexicalFunctionMap.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_mLexicalMessageMap.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_mTerminalMap.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_mTerminalList.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_mLexicalAttributeMap.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_mLexicalTokenListMap.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_mUnicodeStringToGenerate.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_mTemplateDelimitorList.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_mStyleMap.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_mUnicodeTestFunctions.description (ioString, inIndentation+1) ;
-  }
-  ioString.appendCString (">") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//     @lexiqueAnalysisContext generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lexiqueAnalysisContext ("lexiqueAnalysisContext",
-                                                                           nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_lexiqueAnalysisContext::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_lexiqueAnalysisContext ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_lexiqueAnalysisContext::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_lexiqueAnalysisContext (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lexiqueAnalysisContext GGS_lexiqueAnalysisContext::extractObject (const GGS_object & inObject,
-                                                                      Compiler * inCompiler
-                                                                      COMMA_LOCATION_ARGS) {
-  GGS_lexiqueAnalysisContext result ;
-  const GGS_lexiqueAnalysisContext * p = (const GGS_lexiqueAnalysisContext *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_lexiqueAnalysisContext *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("lexiqueAnalysisContext", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_XcodeProjectDescriptor::GGS_XcodeProjectDescriptor (void) :
-mProperty_mSequenceNumber (),
-mProperty_mMainGroupReference (),
-mProperty_mMainGroupChildrenRefs (),
-mProperty_mProjectObjectReference (),
-mProperty_mGroupList (),
-mProperty_mToolTargetList (),
-mProperty_mAppTargetList (),
-mProperty_mCFileList (),
-mProperty_mCppFileList (),
-mProperty_m_5F_Swift_5F_FileList (),
-mProperty_m_5F_M_5F_FileList (),
-mProperty_m_5F_MM_5F_FileList (),
-mProperty_mFrameworkFileList (),
-mProperty_mHeaderFileList (),
-mProperty_mBuildFileList (),
-mProperty_mDefaultConfigurationRef (),
-mProperty_mDefaultConfigurationSettingList (),
-mProperty_mProjectBuildConfigurationRef (),
-mProperty_mInfoPlistFileList (),
-mProperty_mXIB_5F_fileList (),
-mProperty_mTIFF_5F_fileList (),
-mProperty_mICNS_5F_fileList (),
-mProperty_mApplicationBundleName (),
-mProperty_mProjectName () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_XcodeProjectDescriptor::GGS_XcodeProjectDescriptor (const GGS_XcodeProjectDescriptor & inSource) :
-mProperty_mSequenceNumber (inSource.mProperty_mSequenceNumber),
-mProperty_mMainGroupReference (inSource.mProperty_mMainGroupReference),
-mProperty_mMainGroupChildrenRefs (inSource.mProperty_mMainGroupChildrenRefs),
-mProperty_mProjectObjectReference (inSource.mProperty_mProjectObjectReference),
-mProperty_mGroupList (inSource.mProperty_mGroupList),
-mProperty_mToolTargetList (inSource.mProperty_mToolTargetList),
-mProperty_mAppTargetList (inSource.mProperty_mAppTargetList),
-mProperty_mCFileList (inSource.mProperty_mCFileList),
-mProperty_mCppFileList (inSource.mProperty_mCppFileList),
-mProperty_m_5F_Swift_5F_FileList (inSource.mProperty_m_5F_Swift_5F_FileList),
-mProperty_m_5F_M_5F_FileList (inSource.mProperty_m_5F_M_5F_FileList),
-mProperty_m_5F_MM_5F_FileList (inSource.mProperty_m_5F_MM_5F_FileList),
-mProperty_mFrameworkFileList (inSource.mProperty_mFrameworkFileList),
-mProperty_mHeaderFileList (inSource.mProperty_mHeaderFileList),
-mProperty_mBuildFileList (inSource.mProperty_mBuildFileList),
-mProperty_mDefaultConfigurationRef (inSource.mProperty_mDefaultConfigurationRef),
-mProperty_mDefaultConfigurationSettingList (inSource.mProperty_mDefaultConfigurationSettingList),
-mProperty_mProjectBuildConfigurationRef (inSource.mProperty_mProjectBuildConfigurationRef),
-mProperty_mInfoPlistFileList (inSource.mProperty_mInfoPlistFileList),
-mProperty_mXIB_5F_fileList (inSource.mProperty_mXIB_5F_fileList),
-mProperty_mTIFF_5F_fileList (inSource.mProperty_mTIFF_5F_fileList),
-mProperty_mICNS_5F_fileList (inSource.mProperty_mICNS_5F_fileList),
-mProperty_mApplicationBundleName (inSource.mProperty_mApplicationBundleName),
-mProperty_mProjectName (inSource.mProperty_mProjectName) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_XcodeProjectDescriptor & GGS_XcodeProjectDescriptor::operator = (const GGS_XcodeProjectDescriptor & inSource) {
-  mProperty_mSequenceNumber = inSource.mProperty_mSequenceNumber ;
-  mProperty_mMainGroupReference = inSource.mProperty_mMainGroupReference ;
-  mProperty_mMainGroupChildrenRefs = inSource.mProperty_mMainGroupChildrenRefs ;
-  mProperty_mProjectObjectReference = inSource.mProperty_mProjectObjectReference ;
-  mProperty_mGroupList = inSource.mProperty_mGroupList ;
-  mProperty_mToolTargetList = inSource.mProperty_mToolTargetList ;
-  mProperty_mAppTargetList = inSource.mProperty_mAppTargetList ;
-  mProperty_mCFileList = inSource.mProperty_mCFileList ;
-  mProperty_mCppFileList = inSource.mProperty_mCppFileList ;
-  mProperty_m_5F_Swift_5F_FileList = inSource.mProperty_m_5F_Swift_5F_FileList ;
-  mProperty_m_5F_M_5F_FileList = inSource.mProperty_m_5F_M_5F_FileList ;
-  mProperty_m_5F_MM_5F_FileList = inSource.mProperty_m_5F_MM_5F_FileList ;
-  mProperty_mFrameworkFileList = inSource.mProperty_mFrameworkFileList ;
-  mProperty_mHeaderFileList = inSource.mProperty_mHeaderFileList ;
-  mProperty_mBuildFileList = inSource.mProperty_mBuildFileList ;
-  mProperty_mDefaultConfigurationRef = inSource.mProperty_mDefaultConfigurationRef ;
-  mProperty_mDefaultConfigurationSettingList = inSource.mProperty_mDefaultConfigurationSettingList ;
-  mProperty_mProjectBuildConfigurationRef = inSource.mProperty_mProjectBuildConfigurationRef ;
-  mProperty_mInfoPlistFileList = inSource.mProperty_mInfoPlistFileList ;
-  mProperty_mXIB_5F_fileList = inSource.mProperty_mXIB_5F_fileList ;
-  mProperty_mTIFF_5F_fileList = inSource.mProperty_mTIFF_5F_fileList ;
-  mProperty_mICNS_5F_fileList = inSource.mProperty_mICNS_5F_fileList ;
-  mProperty_mApplicationBundleName = inSource.mProperty_mApplicationBundleName ;
-  mProperty_mProjectName = inSource.mProperty_mProjectName ;
-  return *this ;
-}
-
-//---Synthetized initializer -----------------------------------------------------------------------
-
-GGS_XcodeProjectDescriptor GGS_XcodeProjectDescriptor::init (Compiler * inCompiler
-                                                             COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_XcodeProjectDescriptor result ;
-  result.setInitializedProperties (inCompiler) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_XcodeProjectDescriptor::setInitializedProperties (Compiler * inCompiler) {
-  mProperty_mSequenceNumber = GGS_uint (uint32_t (0U)) ;
-  mProperty_mMainGroupReference = GGS_string::makeEmptyString () ;
-  mProperty_mMainGroupChildrenRefs = GGS_stringlist::init (inCompiler COMMA_HERE) ;
-  mProperty_mProjectObjectReference = GGS_string::makeEmptyString () ;
-  mProperty_mGroupList = GGS_XCodeGroupList::init (inCompiler COMMA_HERE) ;
-  mProperty_mToolTargetList = GGS_XCodeToolTargetList::init (inCompiler COMMA_HERE) ;
-  mProperty_mAppTargetList = GGS_XCodeAppTargetList::init (inCompiler COMMA_HERE) ;
-  mProperty_mCFileList = GGS__32_stringlist::init (inCompiler COMMA_HERE) ;
-  mProperty_mCppFileList = GGS__32_stringlist::init (inCompiler COMMA_HERE) ;
-  mProperty_m_5F_Swift_5F_FileList = GGS__32_stringlist::init (inCompiler COMMA_HERE) ;
-  mProperty_m_5F_M_5F_FileList = GGS__32_stringlist::init (inCompiler COMMA_HERE) ;
-  mProperty_m_5F_MM_5F_FileList = GGS__32_stringlist::init (inCompiler COMMA_HERE) ;
-  mProperty_mFrameworkFileList = GGS__32_stringlist::init (inCompiler COMMA_HERE) ;
-  mProperty_mHeaderFileList = GGS__32_stringlist::init (inCompiler COMMA_HERE) ;
-  mProperty_mBuildFileList = GGS_BuildFileList::init (inCompiler COMMA_HERE) ;
-  mProperty_mDefaultConfigurationRef = GGS_string::makeEmptyString () ;
-  mProperty_mDefaultConfigurationSettingList = GGS_stringlist::init (inCompiler COMMA_HERE) ;
-  mProperty_mProjectBuildConfigurationRef = GGS_string::makeEmptyString () ;
-  mProperty_mInfoPlistFileList = GGS__32_stringlist::init (inCompiler COMMA_HERE) ;
-  mProperty_mXIB_5F_fileList = GGS__32_stringlist::init (inCompiler COMMA_HERE) ;
-  mProperty_mTIFF_5F_fileList = GGS__32_stringlist::init (inCompiler COMMA_HERE) ;
-  mProperty_mICNS_5F_fileList = GGS__32_stringlist::init (inCompiler COMMA_HERE) ;
-  mProperty_mApplicationBundleName = GGS_string::makeEmptyString () ;
-  mProperty_mProjectName = GGS_string::makeEmptyString () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_XcodeProjectDescriptor::GGS_XcodeProjectDescriptor (const GGS_uint & inOperand0,
-                                                        const GGS_string & inOperand1,
-                                                        const GGS_stringlist & inOperand2,
-                                                        const GGS_string & inOperand3,
-                                                        const GGS_XCodeGroupList & inOperand4,
-                                                        const GGS_XCodeToolTargetList & inOperand5,
-                                                        const GGS_XCodeAppTargetList & inOperand6,
-                                                        const GGS__32_stringlist & inOperand7,
-                                                        const GGS__32_stringlist & inOperand8,
-                                                        const GGS__32_stringlist & inOperand9,
-                                                        const GGS__32_stringlist & inOperand10,
-                                                        const GGS__32_stringlist & inOperand11,
-                                                        const GGS__32_stringlist & inOperand12,
-                                                        const GGS__32_stringlist & inOperand13,
-                                                        const GGS_BuildFileList & inOperand14,
-                                                        const GGS_string & inOperand15,
-                                                        const GGS_stringlist & inOperand16,
-                                                        const GGS_string & inOperand17,
-                                                        const GGS__32_stringlist & inOperand18,
-                                                        const GGS__32_stringlist & inOperand19,
-                                                        const GGS__32_stringlist & inOperand20,
-                                                        const GGS__32_stringlist & inOperand21,
-                                                        const GGS_string & inOperand22,
-                                                        const GGS_string & inOperand23) :
-mProperty_mSequenceNumber (inOperand0),
-mProperty_mMainGroupReference (inOperand1),
-mProperty_mMainGroupChildrenRefs (inOperand2),
-mProperty_mProjectObjectReference (inOperand3),
-mProperty_mGroupList (inOperand4),
-mProperty_mToolTargetList (inOperand5),
-mProperty_mAppTargetList (inOperand6),
-mProperty_mCFileList (inOperand7),
-mProperty_mCppFileList (inOperand8),
-mProperty_m_5F_Swift_5F_FileList (inOperand9),
-mProperty_m_5F_M_5F_FileList (inOperand10),
-mProperty_m_5F_MM_5F_FileList (inOperand11),
-mProperty_mFrameworkFileList (inOperand12),
-mProperty_mHeaderFileList (inOperand13),
-mProperty_mBuildFileList (inOperand14),
-mProperty_mDefaultConfigurationRef (inOperand15),
-mProperty_mDefaultConfigurationSettingList (inOperand16),
-mProperty_mProjectBuildConfigurationRef (inOperand17),
-mProperty_mInfoPlistFileList (inOperand18),
-mProperty_mXIB_5F_fileList (inOperand19),
-mProperty_mTIFF_5F_fileList (inOperand20),
-mProperty_mICNS_5F_fileList (inOperand21),
-mProperty_mApplicationBundleName (inOperand22),
-mProperty_mProjectName (inOperand23) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GGS_XcodeProjectDescriptor::isValid (void) const {
-  return mProperty_mSequenceNumber.isValid () && mProperty_mMainGroupReference.isValid () && mProperty_mMainGroupChildrenRefs.isValid () && mProperty_mProjectObjectReference.isValid () && mProperty_mGroupList.isValid () && mProperty_mToolTargetList.isValid () && mProperty_mAppTargetList.isValid () && mProperty_mCFileList.isValid () && mProperty_mCppFileList.isValid () && mProperty_m_5F_Swift_5F_FileList.isValid () && mProperty_m_5F_M_5F_FileList.isValid () && mProperty_m_5F_MM_5F_FileList.isValid () && mProperty_mFrameworkFileList.isValid () && mProperty_mHeaderFileList.isValid () && mProperty_mBuildFileList.isValid () && mProperty_mDefaultConfigurationRef.isValid () && mProperty_mDefaultConfigurationSettingList.isValid () && mProperty_mProjectBuildConfigurationRef.isValid () && mProperty_mInfoPlistFileList.isValid () && mProperty_mXIB_5F_fileList.isValid () && mProperty_mTIFF_5F_fileList.isValid () && mProperty_mICNS_5F_fileList.isValid () && mProperty_mApplicationBundleName.isValid () && mProperty_mProjectName.isValid () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_XcodeProjectDescriptor::drop (void) {
-  mProperty_mSequenceNumber.drop () ;
-  mProperty_mMainGroupReference.drop () ;
-  mProperty_mMainGroupChildrenRefs.drop () ;
-  mProperty_mProjectObjectReference.drop () ;
-  mProperty_mGroupList.drop () ;
-  mProperty_mToolTargetList.drop () ;
-  mProperty_mAppTargetList.drop () ;
-  mProperty_mCFileList.drop () ;
-  mProperty_mCppFileList.drop () ;
-  mProperty_m_5F_Swift_5F_FileList.drop () ;
-  mProperty_m_5F_M_5F_FileList.drop () ;
-  mProperty_m_5F_MM_5F_FileList.drop () ;
-  mProperty_mFrameworkFileList.drop () ;
-  mProperty_mHeaderFileList.drop () ;
-  mProperty_mBuildFileList.drop () ;
-  mProperty_mDefaultConfigurationRef.drop () ;
-  mProperty_mDefaultConfigurationSettingList.drop () ;
-  mProperty_mProjectBuildConfigurationRef.drop () ;
-  mProperty_mInfoPlistFileList.drop () ;
-  mProperty_mXIB_5F_fileList.drop () ;
-  mProperty_mTIFF_5F_fileList.drop () ;
-  mProperty_mICNS_5F_fileList.drop () ;
-  mProperty_mApplicationBundleName.drop () ;
-  mProperty_mProjectName.drop () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_XcodeProjectDescriptor::description (String & ioString,
-                                              const int32_t inIndentation) const {
-  ioString.appendCString ("<struct @XcodeProjectDescriptor:") ;
-  if (! isValid ()) {
-    ioString.appendCString (" not built") ;
-  }else{
-    mProperty_mSequenceNumber.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_mMainGroupReference.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_mMainGroupChildrenRefs.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_mProjectObjectReference.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_mGroupList.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_mToolTargetList.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_mAppTargetList.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_mCFileList.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_mCppFileList.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_m_5F_Swift_5F_FileList.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_m_5F_M_5F_FileList.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_m_5F_MM_5F_FileList.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_mFrameworkFileList.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_mHeaderFileList.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_mBuildFileList.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_mDefaultConfigurationRef.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_mDefaultConfigurationSettingList.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_mProjectBuildConfigurationRef.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_mInfoPlistFileList.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_mXIB_5F_fileList.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_mTIFF_5F_fileList.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_mICNS_5F_fileList.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_mApplicationBundleName.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_mProjectName.description (ioString, inIndentation+1) ;
-  }
-  ioString.appendCString (">") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//     @XcodeProjectDescriptor generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_XcodeProjectDescriptor ("XcodeProjectDescriptor",
-                                                                           nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_XcodeProjectDescriptor::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_XcodeProjectDescriptor ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_XcodeProjectDescriptor::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_XcodeProjectDescriptor (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_XcodeProjectDescriptor GGS_XcodeProjectDescriptor::extractObject (const GGS_object & inObject,
-                                                                      Compiler * inCompiler
-                                                                      COMMA_LOCATION_ARGS) {
-  GGS_XcodeProjectDescriptor result ;
-  const GGS_XcodeProjectDescriptor * p = (const GGS_XcodeProjectDescriptor *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_XcodeProjectDescriptor *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("XcodeProjectDescriptor", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension method '@XcodeProjectDescriptor addTIFF_file'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionSetter_addTIFF_5F_file (GGS_XcodeProjectDescriptor & ioObject,
-                                      const GGS_string constinArgument_inFileName,
-                                      GGS_string & outArgument_outFileRef,
-                                      Compiler * inCompiler
-                                      COMMA_UNUSED_LOCATION_ARGS) {
-  outArgument_outFileRef.drop () ; // Release 'out' argument
-  {
-  extensionSetter_getReferenceKey (ioObject, outArgument_outFileRef, inCompiler COMMA_SOURCE_FILE ("XcodeProjectGeneration.galgas3", 41)) ;
-  }
-  ioObject.mProperty_mTIFF_5F_fileList.addAssignOperation (outArgument_outFileRef, constinArgument_inFileName  COMMA_SOURCE_FILE ("XcodeProjectGeneration.galgas3", 42)) ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension method '@XcodeProjectDescriptor addInfoPlistFile'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionSetter_addInfoPlistFile (GGS_XcodeProjectDescriptor & ioObject,
-                                       const GGS_string constinArgument_inFileName,
-                                       GGS_string & outArgument_outFileRef,
-                                       Compiler * inCompiler
-                                       COMMA_UNUSED_LOCATION_ARGS) {
-  outArgument_outFileRef.drop () ; // Release 'out' argument
-  {
-  extensionSetter_getReferenceKey (ioObject, outArgument_outFileRef, inCompiler COMMA_SOURCE_FILE ("XcodeProjectGeneration.galgas3", 50)) ;
-  }
-  ioObject.mProperty_mInfoPlistFileList.addAssignOperation (outArgument_outFileRef, constinArgument_inFileName  COMMA_SOURCE_FILE ("XcodeProjectGeneration.galgas3", 51)) ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension method '@XcodeProjectDescriptor addXIBFile'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionSetter_addXIBFile (GGS_XcodeProjectDescriptor & ioObject,
-                                 const GGS_string constinArgument_inFileName,
-                                 GGS_string & outArgument_outFileRef,
-                                 Compiler * inCompiler
-                                 COMMA_UNUSED_LOCATION_ARGS) {
-  outArgument_outFileRef.drop () ; // Release 'out' argument
-  {
-  extensionSetter_getReferenceKey (ioObject, outArgument_outFileRef, inCompiler COMMA_SOURCE_FILE ("XcodeProjectGeneration.galgas3", 59)) ;
-  }
-  ioObject.mProperty_mXIB_5F_fileList.addAssignOperation (outArgument_outFileRef, constinArgument_inFileName  COMMA_SOURCE_FILE ("XcodeProjectGeneration.galgas3", 60)) ;
-}
-
-
 //--------------------------------------------------------------------------------------------------
 //
 //Extension method '@XcodeProjectDescriptor addFrameworkFile'
@@ -13809,4 +9452,9127 @@ GGS_galgas_33_SyntaxComponentAST GGS_galgas_33_SyntaxComponentAST::extractObject
   }
   return result ;
 }
+
+//--------------------------------------------------------------------------------------------------
+// @galgas_33_GrammarComponentAST reference class
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GGS_galgas_33_GrammarComponentAST::objectCompare (const GGS_galgas_33_GrammarComponentAST & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    const size_t myObjectPtr = size_t (mObjectPtr) ;
+    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_galgas_33_GrammarComponentAST::GGS_galgas_33_GrammarComponentAST (void) :
+GGS_semanticDeclarationAST () {
+}
+
+//--- Synthetized initializer ----------------------------------------------------------------------
+
+GGS_galgas_33_GrammarComponentAST GGS_galgas_33_GrammarComponentAST::
+init_21_isPredefined_21__21__21__21__21__21__21__21_ (const GGS_bool & in_isPredefined,
+                                                      const GGS_lbool & in_mHasIndexing,
+                                                      const GGS_lstring & in_mGrammarComponentName,
+                                                      const GGS_lstring & in_mGrammarClass,
+                                                      const GGS_lstringlist & in_mSyntaxComponents,
+                                                      const GGS_lstring & in_mStartSymbolName,
+                                                      const GGS_nonTerminalLabelListAST & in_mStartSymbolLabelList,
+                                                      const GGS_lstringlist & in_mUnusedNonterminalList,
+                                                      const GGS_bool & in_mHasTranslateFeature,
+                                                      Compiler * inCompiler
+                                                      COMMA_LOCATION_ARGS) {
+  cPtr_galgas_33_GrammarComponentAST * object = nullptr ;
+  macroMyNew (object, cPtr_galgas_33_GrammarComponentAST (inCompiler COMMA_THERE)) ;
+  object->galgas_33_GrammarComponentAST_init_21_isPredefined_21__21__21__21__21__21__21__21_ (in_isPredefined, in_mHasIndexing, in_mGrammarComponentName, in_mGrammarClass, in_mSyntaxComponents, in_mStartSymbolName, in_mStartSymbolLabelList, in_mUnusedNonterminalList, in_mHasTranslateFeature, inCompiler) ;
+  const GGS_galgas_33_GrammarComponentAST result (object) ;
+  macroDetachSharedObject (object) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_galgas_33_GrammarComponentAST::
+galgas_33_GrammarComponentAST_init_21_isPredefined_21__21__21__21__21__21__21__21_ (const GGS_bool & in_isPredefined,
+                                                                                    const GGS_lbool & in_mHasIndexing,
+                                                                                    const GGS_lstring & in_mGrammarComponentName,
+                                                                                    const GGS_lstring & in_mGrammarClass,
+                                                                                    const GGS_lstringlist & in_mSyntaxComponents,
+                                                                                    const GGS_lstring & in_mStartSymbolName,
+                                                                                    const GGS_nonTerminalLabelListAST & in_mStartSymbolLabelList,
+                                                                                    const GGS_lstringlist & in_mUnusedNonterminalList,
+                                                                                    const GGS_bool & in_mHasTranslateFeature,
+                                                                                    Compiler * /* inCompiler */) {
+  mProperty_isPredefined = in_isPredefined ;
+  mProperty_mHasIndexing = in_mHasIndexing ;
+  mProperty_mGrammarComponentName = in_mGrammarComponentName ;
+  mProperty_mGrammarClass = in_mGrammarClass ;
+  mProperty_mSyntaxComponents = in_mSyntaxComponents ;
+  mProperty_mStartSymbolName = in_mStartSymbolName ;
+  mProperty_mStartSymbolLabelList = in_mStartSymbolLabelList ;
+  mProperty_mUnusedNonterminalList = in_mUnusedNonterminalList ;
+  mProperty_mHasTranslateFeature = in_mHasTranslateFeature ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_galgas_33_GrammarComponentAST::GGS_galgas_33_GrammarComponentAST (const cPtr_galgas_33_GrammarComponentAST * inSourcePtr) :
+GGS_semanticDeclarationAST (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_galgas_33_GrammarComponentAST) ;
+}
+//--------------------------------------------------------------------------------------------------
+
+GGS_lbool GGS_galgas_33_GrammarComponentAST::readProperty_mHasIndexing (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_lbool () ;
+  }else{
+    cPtr_galgas_33_GrammarComponentAST * p = (cPtr_galgas_33_GrammarComponentAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_galgas_33_GrammarComponentAST) ;
+    return p->mProperty_mHasIndexing ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstring GGS_galgas_33_GrammarComponentAST::readProperty_mGrammarComponentName (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_lstring () ;
+  }else{
+    cPtr_galgas_33_GrammarComponentAST * p = (cPtr_galgas_33_GrammarComponentAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_galgas_33_GrammarComponentAST) ;
+    return p->mProperty_mGrammarComponentName ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstring GGS_galgas_33_GrammarComponentAST::readProperty_mGrammarClass (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_lstring () ;
+  }else{
+    cPtr_galgas_33_GrammarComponentAST * p = (cPtr_galgas_33_GrammarComponentAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_galgas_33_GrammarComponentAST) ;
+    return p->mProperty_mGrammarClass ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstringlist GGS_galgas_33_GrammarComponentAST::readProperty_mSyntaxComponents (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_lstringlist () ;
+  }else{
+    cPtr_galgas_33_GrammarComponentAST * p = (cPtr_galgas_33_GrammarComponentAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_galgas_33_GrammarComponentAST) ;
+    return p->mProperty_mSyntaxComponents ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstring GGS_galgas_33_GrammarComponentAST::readProperty_mStartSymbolName (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_lstring () ;
+  }else{
+    cPtr_galgas_33_GrammarComponentAST * p = (cPtr_galgas_33_GrammarComponentAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_galgas_33_GrammarComponentAST) ;
+    return p->mProperty_mStartSymbolName ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_nonTerminalLabelListAST GGS_galgas_33_GrammarComponentAST::readProperty_mStartSymbolLabelList (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_nonTerminalLabelListAST () ;
+  }else{
+    cPtr_galgas_33_GrammarComponentAST * p = (cPtr_galgas_33_GrammarComponentAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_galgas_33_GrammarComponentAST) ;
+    return p->mProperty_mStartSymbolLabelList ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstringlist GGS_galgas_33_GrammarComponentAST::readProperty_mUnusedNonterminalList (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_lstringlist () ;
+  }else{
+    cPtr_galgas_33_GrammarComponentAST * p = (cPtr_galgas_33_GrammarComponentAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_galgas_33_GrammarComponentAST) ;
+    return p->mProperty_mUnusedNonterminalList ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_bool GGS_galgas_33_GrammarComponentAST::readProperty_mHasTranslateFeature (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_bool () ;
+  }else{
+    cPtr_galgas_33_GrammarComponentAST * p = (cPtr_galgas_33_GrammarComponentAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_galgas_33_GrammarComponentAST) ;
+    return p->mProperty_mHasTranslateFeature ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//Pointer class for @galgas3GrammarComponentAST class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_galgas_33_GrammarComponentAST::cPtr_galgas_33_GrammarComponentAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_semanticDeclarationAST (inCompiler COMMA_THERE),
+mProperty_mHasIndexing (),
+mProperty_mGrammarComponentName (),
+mProperty_mGrammarClass (),
+mProperty_mSyntaxComponents (),
+mProperty_mStartSymbolName (),
+mProperty_mStartSymbolLabelList (),
+mProperty_mUnusedNonterminalList (),
+mProperty_mHasTranslateFeature () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+cPtr_galgas_33_GrammarComponentAST::cPtr_galgas_33_GrammarComponentAST (const GGS_bool & in_isPredefined,
+                                                                        const GGS_lbool & in_mHasIndexing,
+                                                                        const GGS_lstring & in_mGrammarComponentName,
+                                                                        const GGS_lstring & in_mGrammarClass,
+                                                                        const GGS_lstringlist & in_mSyntaxComponents,
+                                                                        const GGS_lstring & in_mStartSymbolName,
+                                                                        const GGS_nonTerminalLabelListAST & in_mStartSymbolLabelList,
+                                                                        const GGS_lstringlist & in_mUnusedNonterminalList,
+                                                                        const GGS_bool & in_mHasTranslateFeature,
+                                                                        Compiler * inCompiler
+                                                                        COMMA_LOCATION_ARGS) :
+cPtr_semanticDeclarationAST (in_isPredefined, inCompiler COMMA_THERE),
+mProperty_mHasIndexing (),
+mProperty_mGrammarComponentName (),
+mProperty_mGrammarClass (),
+mProperty_mSyntaxComponents (),
+mProperty_mStartSymbolName (),
+mProperty_mStartSymbolLabelList (),
+mProperty_mUnusedNonterminalList (),
+mProperty_mHasTranslateFeature () {
+  mProperty_isPredefined = in_isPredefined ;
+  mProperty_mHasIndexing = in_mHasIndexing ;
+  mProperty_mGrammarComponentName = in_mGrammarComponentName ;
+  mProperty_mGrammarClass = in_mGrammarClass ;
+  mProperty_mSyntaxComponents = in_mSyntaxComponents ;
+  mProperty_mStartSymbolName = in_mStartSymbolName ;
+  mProperty_mStartSymbolLabelList = in_mStartSymbolLabelList ;
+  mProperty_mUnusedNonterminalList = in_mUnusedNonterminalList ;
+  mProperty_mHasTranslateFeature = in_mHasTranslateFeature ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * cPtr_galgas_33_GrammarComponentAST::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_galgas_33_GrammarComponentAST ;
+}
+
+void cPtr_galgas_33_GrammarComponentAST::description (String & ioString,
+                                                      const int32_t inIndentation) const {
+  ioString.appendCString ("[@galgas3GrammarComponentAST:") ;
+  mProperty_isPredefined.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mHasIndexing.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mGrammarComponentName.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mGrammarClass.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mSyntaxComponents.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mStartSymbolName.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mStartSymbolLabelList.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mUnusedNonterminalList.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mHasTranslateFeature.description (ioString, inIndentation+1) ;
+  ioString.appendCString ("]") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AbstractPtrClass * cPtr_galgas_33_GrammarComponentAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  AbstractPtrClass * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_galgas_33_GrammarComponentAST (mProperty_isPredefined, mProperty_mHasIndexing, mProperty_mGrammarComponentName, mProperty_mGrammarClass, mProperty_mSyntaxComponents, mProperty_mStartSymbolName, mProperty_mStartSymbolLabelList, mProperty_mUnusedNonterminalList, mProperty_mHasTranslateFeature, inCompiler COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_galgas_33_GrammarComponentAST::printNonNullClassInstanceProperties (void) const {
+    cPtr_semanticDeclarationAST::printNonNullClassInstanceProperties () ;
+    mProperty_mHasIndexing.printNonNullClassInstanceProperties ("mHasIndexing") ;
+    mProperty_mGrammarComponentName.printNonNullClassInstanceProperties ("mGrammarComponentName") ;
+    mProperty_mGrammarClass.printNonNullClassInstanceProperties ("mGrammarClass") ;
+    mProperty_mSyntaxComponents.printNonNullClassInstanceProperties ("mSyntaxComponents") ;
+    mProperty_mStartSymbolName.printNonNullClassInstanceProperties ("mStartSymbolName") ;
+    mProperty_mStartSymbolLabelList.printNonNullClassInstanceProperties ("mStartSymbolLabelList") ;
+    mProperty_mUnusedNonterminalList.printNonNullClassInstanceProperties ("mUnusedNonterminalList") ;
+    mProperty_mHasTranslateFeature.printNonNullClassInstanceProperties ("mHasTranslateFeature") ;
+  }
+#endif
+
+//--------------------------------------------------------------------------------------------------
+//     @galgas3GrammarComponentAST generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_galgas_33_GrammarComponentAST ("galgas3GrammarComponentAST",
+                                                                                  & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_galgas_33_GrammarComponentAST::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_galgas_33_GrammarComponentAST ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_galgas_33_GrammarComponentAST::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_galgas_33_GrammarComponentAST (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_galgas_33_GrammarComponentAST GGS_galgas_33_GrammarComponentAST::extractObject (const GGS_object & inObject,
+                                                                                    Compiler * inCompiler
+                                                                                    COMMA_LOCATION_ARGS) {
+  GGS_galgas_33_GrammarComponentAST result ;
+  const GGS_galgas_33_GrammarComponentAST * p = (const GGS_galgas_33_GrammarComponentAST *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_galgas_33_GrammarComponentAST *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("galgas3GrammarComponentAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//Extension method '@galgasDeclarationAST getOptionalTypeName'
+//
+//--------------------------------------------------------------------------------------------------
+
+void extensionSetter_getOptionalTypeName (GGS_galgasDeclarationAST & ioObject,
+                                          GGS_lstring & outArgument_outOptionalTypeName,
+                                          const GGS_lstring constinArgument_inTypeName,
+                                          const GGS_bool constinArgument_inPredefined,
+                                          Compiler * inCompiler
+                                          COMMA_UNUSED_LOCATION_ARGS) {
+  outArgument_outOptionalTypeName.drop () ; // Release 'out' argument
+  outArgument_outOptionalTypeName = function_makeOptionalTypeLName (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas3", 435)) ;
+  GalgasBool test_0 = GalgasBool::boolTrue ;
+  if (GalgasBool::boolTrue == test_0) {
+    const GGS_galgasDeclarationAST temp_1 = ioObject ;
+    test_0 = temp_1.readProperty_implicitTypeDeclarationSet ().getter_hasKey (outArgument_outOptionalTypeName.readProperty_string () COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas3", 436)).operator_not (SOURCE_FILE ("semanticsTypesForAST.galgas3", 436)).boolEnum () ;
+    if (GalgasBool::boolTrue == test_0) {
+      ioObject.mProperty_implicitTypeDeclarationSet.plusPlusAssignOperation (outArgument_outOptionalTypeName.readProperty_string ()  COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas3", 437)) ;
+      ioObject.mProperty_mDeclarationList.addAssignOperation (GGS_optionalTypeDeclarationAST::init_21_isPredefined_21_optionalTypeName_21_unwrappedTypeName_21_isUsefull (constinArgument_inPredefined, outArgument_outOptionalTypeName, constinArgument_inTypeName, GGS_bool (true), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas3", 438)) ;
+    }
+  }
+}
+
+
+//--------------------------------------------------------------------------------------------------
+//
+//Abstract extension method '@templateInstructionForGeneration templateCodeGeneration'
+//
+//--------------------------------------------------------------------------------------------------
+
+void callExtensionMethod_templateCodeGeneration (cPtr_templateInstructionForGeneration * inObject,
+                                                 GGS_string & io_ioGeneratedCode,
+                                                 GGS_stringset & io_ioInclusionSet,
+                                                 GGS_uint & io_ioTemporaryVariableIndex,
+                                                 GGS_stringset & io_ioUnusedVariableCppNameSet,
+                                                 GGS_bool & io_ioUseColumnMarker,
+                                                 Compiler * inCompiler
+                                                 COMMA_LOCATION_ARGS) {
+//--- Drop output arguments
+//--- Find method
+  if (nullptr != inObject) {
+    macroValidSharedObject (inObject, cPtr_templateInstructionForGeneration) ;
+    inObject->method_templateCodeGeneration (io_ioGeneratedCode, io_ioInclusionSet, io_ioTemporaryVariableIndex, io_ioUnusedVariableCppNameSet, io_ioUseColumnMarker, inCompiler COMMA_THERE) ;
+  }
+}
+//--------------------------------------------------------------------------------------------------
+// @templateInstructionForeachAST reference class
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GGS_templateInstructionForeachAST::objectCompare (const GGS_templateInstructionForeachAST & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    const size_t myObjectPtr = size_t (mObjectPtr) ;
+    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_templateInstructionForeachAST::GGS_templateInstructionForeachAST (void) :
+GGS_templateInstructionAST () {
+}
+
+//--- Synthetized initializer ----------------------------------------------------------------------
+
+GGS_templateInstructionForeachAST GGS_templateInstructionForeachAST::
+init_21__21__21__21__21__21__21__21__21_ (const GGS_bool & in_mIsAscending,
+                                          const GGS_templateExpressionAST & in_mExpression,
+                                          const GGS_lstringlist & in_mEnumeration,
+                                          const GGS_location & in_mEndOfProperties,
+                                          const GGS_templateInstructionListAST & in_mBeforeInstructionList,
+                                          const GGS_templateInstructionListAST & in_mDoInstructionList,
+                                          const GGS_lstring & in_mIndexIdentifier,
+                                          const GGS_templateInstructionListAST & in_mBetweenInstructionList,
+                                          const GGS_templateInstructionListAST & in_mAfterInstructionList,
+                                          Compiler * inCompiler
+                                          COMMA_LOCATION_ARGS) {
+  cPtr_templateInstructionForeachAST * object = nullptr ;
+  macroMyNew (object, cPtr_templateInstructionForeachAST (inCompiler COMMA_THERE)) ;
+  object->templateInstructionForeachAST_init_21__21__21__21__21__21__21__21__21_ (in_mIsAscending, in_mExpression, in_mEnumeration, in_mEndOfProperties, in_mBeforeInstructionList, in_mDoInstructionList, in_mIndexIdentifier, in_mBetweenInstructionList, in_mAfterInstructionList, inCompiler) ;
+  const GGS_templateInstructionForeachAST result (object) ;
+  macroDetachSharedObject (object) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_templateInstructionForeachAST::
+templateInstructionForeachAST_init_21__21__21__21__21__21__21__21__21_ (const GGS_bool & in_mIsAscending,
+                                                                        const GGS_templateExpressionAST & in_mExpression,
+                                                                        const GGS_lstringlist & in_mEnumeration,
+                                                                        const GGS_location & in_mEndOfProperties,
+                                                                        const GGS_templateInstructionListAST & in_mBeforeInstructionList,
+                                                                        const GGS_templateInstructionListAST & in_mDoInstructionList,
+                                                                        const GGS_lstring & in_mIndexIdentifier,
+                                                                        const GGS_templateInstructionListAST & in_mBetweenInstructionList,
+                                                                        const GGS_templateInstructionListAST & in_mAfterInstructionList,
+                                                                        Compiler * /* inCompiler */) {
+  mProperty_mIsAscending = in_mIsAscending ;
+  mProperty_mExpression = in_mExpression ;
+  mProperty_mEnumeration = in_mEnumeration ;
+  mProperty_mEndOfProperties = in_mEndOfProperties ;
+  mProperty_mBeforeInstructionList = in_mBeforeInstructionList ;
+  mProperty_mDoInstructionList = in_mDoInstructionList ;
+  mProperty_mIndexIdentifier = in_mIndexIdentifier ;
+  mProperty_mBetweenInstructionList = in_mBetweenInstructionList ;
+  mProperty_mAfterInstructionList = in_mAfterInstructionList ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_templateInstructionForeachAST::GGS_templateInstructionForeachAST (const cPtr_templateInstructionForeachAST * inSourcePtr) :
+GGS_templateInstructionAST (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_templateInstructionForeachAST) ;
+}
+//--------------------------------------------------------------------------------------------------
+
+GGS_bool GGS_templateInstructionForeachAST::readProperty_mIsAscending (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_bool () ;
+  }else{
+    cPtr_templateInstructionForeachAST * p = (cPtr_templateInstructionForeachAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_templateInstructionForeachAST) ;
+    return p->mProperty_mIsAscending ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_templateExpressionAST GGS_templateInstructionForeachAST::readProperty_mExpression (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_templateExpressionAST () ;
+  }else{
+    cPtr_templateInstructionForeachAST * p = (cPtr_templateInstructionForeachAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_templateInstructionForeachAST) ;
+    return p->mProperty_mExpression ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstringlist GGS_templateInstructionForeachAST::readProperty_mEnumeration (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_lstringlist () ;
+  }else{
+    cPtr_templateInstructionForeachAST * p = (cPtr_templateInstructionForeachAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_templateInstructionForeachAST) ;
+    return p->mProperty_mEnumeration ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_location GGS_templateInstructionForeachAST::readProperty_mEndOfProperties (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_location () ;
+  }else{
+    cPtr_templateInstructionForeachAST * p = (cPtr_templateInstructionForeachAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_templateInstructionForeachAST) ;
+    return p->mProperty_mEndOfProperties ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_templateInstructionListAST GGS_templateInstructionForeachAST::readProperty_mBeforeInstructionList (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_templateInstructionListAST () ;
+  }else{
+    cPtr_templateInstructionForeachAST * p = (cPtr_templateInstructionForeachAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_templateInstructionForeachAST) ;
+    return p->mProperty_mBeforeInstructionList ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_templateInstructionListAST GGS_templateInstructionForeachAST::readProperty_mDoInstructionList (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_templateInstructionListAST () ;
+  }else{
+    cPtr_templateInstructionForeachAST * p = (cPtr_templateInstructionForeachAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_templateInstructionForeachAST) ;
+    return p->mProperty_mDoInstructionList ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstring GGS_templateInstructionForeachAST::readProperty_mIndexIdentifier (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_lstring () ;
+  }else{
+    cPtr_templateInstructionForeachAST * p = (cPtr_templateInstructionForeachAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_templateInstructionForeachAST) ;
+    return p->mProperty_mIndexIdentifier ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_templateInstructionListAST GGS_templateInstructionForeachAST::readProperty_mBetweenInstructionList (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_templateInstructionListAST () ;
+  }else{
+    cPtr_templateInstructionForeachAST * p = (cPtr_templateInstructionForeachAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_templateInstructionForeachAST) ;
+    return p->mProperty_mBetweenInstructionList ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_templateInstructionListAST GGS_templateInstructionForeachAST::readProperty_mAfterInstructionList (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_templateInstructionListAST () ;
+  }else{
+    cPtr_templateInstructionForeachAST * p = (cPtr_templateInstructionForeachAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_templateInstructionForeachAST) ;
+    return p->mProperty_mAfterInstructionList ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//Pointer class for @templateInstructionForeachAST class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_templateInstructionForeachAST::cPtr_templateInstructionForeachAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_templateInstructionAST (inCompiler COMMA_THERE),
+mProperty_mIsAscending (),
+mProperty_mExpression (),
+mProperty_mEnumeration (),
+mProperty_mEndOfProperties (),
+mProperty_mBeforeInstructionList (),
+mProperty_mDoInstructionList (),
+mProperty_mIndexIdentifier (),
+mProperty_mBetweenInstructionList (),
+mProperty_mAfterInstructionList () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+cPtr_templateInstructionForeachAST::cPtr_templateInstructionForeachAST (const GGS_bool & in_mIsAscending,
+                                                                        const GGS_templateExpressionAST & in_mExpression,
+                                                                        const GGS_lstringlist & in_mEnumeration,
+                                                                        const GGS_location & in_mEndOfProperties,
+                                                                        const GGS_templateInstructionListAST & in_mBeforeInstructionList,
+                                                                        const GGS_templateInstructionListAST & in_mDoInstructionList,
+                                                                        const GGS_lstring & in_mIndexIdentifier,
+                                                                        const GGS_templateInstructionListAST & in_mBetweenInstructionList,
+                                                                        const GGS_templateInstructionListAST & in_mAfterInstructionList,
+                                                                        Compiler * inCompiler
+                                                                        COMMA_LOCATION_ARGS) :
+cPtr_templateInstructionAST (inCompiler COMMA_THERE),
+mProperty_mIsAscending (),
+mProperty_mExpression (),
+mProperty_mEnumeration (),
+mProperty_mEndOfProperties (),
+mProperty_mBeforeInstructionList (),
+mProperty_mDoInstructionList (),
+mProperty_mIndexIdentifier (),
+mProperty_mBetweenInstructionList (),
+mProperty_mAfterInstructionList () {
+  mProperty_mIsAscending = in_mIsAscending ;
+  mProperty_mExpression = in_mExpression ;
+  mProperty_mEnumeration = in_mEnumeration ;
+  mProperty_mEndOfProperties = in_mEndOfProperties ;
+  mProperty_mBeforeInstructionList = in_mBeforeInstructionList ;
+  mProperty_mDoInstructionList = in_mDoInstructionList ;
+  mProperty_mIndexIdentifier = in_mIndexIdentifier ;
+  mProperty_mBetweenInstructionList = in_mBetweenInstructionList ;
+  mProperty_mAfterInstructionList = in_mAfterInstructionList ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * cPtr_templateInstructionForeachAST::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_templateInstructionForeachAST ;
+}
+
+void cPtr_templateInstructionForeachAST::description (String & ioString,
+                                                      const int32_t inIndentation) const {
+  ioString.appendCString ("[@templateInstructionForeachAST:") ;
+  mProperty_mIsAscending.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mExpression.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mEnumeration.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mEndOfProperties.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mBeforeInstructionList.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mDoInstructionList.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mIndexIdentifier.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mBetweenInstructionList.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mAfterInstructionList.description (ioString, inIndentation+1) ;
+  ioString.appendCString ("]") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AbstractPtrClass * cPtr_templateInstructionForeachAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  AbstractPtrClass * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_templateInstructionForeachAST (mProperty_mIsAscending, mProperty_mExpression, mProperty_mEnumeration, mProperty_mEndOfProperties, mProperty_mBeforeInstructionList, mProperty_mDoInstructionList, mProperty_mIndexIdentifier, mProperty_mBetweenInstructionList, mProperty_mAfterInstructionList, inCompiler COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_templateInstructionForeachAST::printNonNullClassInstanceProperties (void) const {
+    cPtr_templateInstructionAST::printNonNullClassInstanceProperties () ;
+    mProperty_mIsAscending.printNonNullClassInstanceProperties ("mIsAscending") ;
+    mProperty_mExpression.printNonNullClassInstanceProperties ("mExpression") ;
+    mProperty_mEnumeration.printNonNullClassInstanceProperties ("mEnumeration") ;
+    mProperty_mEndOfProperties.printNonNullClassInstanceProperties ("mEndOfProperties") ;
+    mProperty_mBeforeInstructionList.printNonNullClassInstanceProperties ("mBeforeInstructionList") ;
+    mProperty_mDoInstructionList.printNonNullClassInstanceProperties ("mDoInstructionList") ;
+    mProperty_mIndexIdentifier.printNonNullClassInstanceProperties ("mIndexIdentifier") ;
+    mProperty_mBetweenInstructionList.printNonNullClassInstanceProperties ("mBetweenInstructionList") ;
+    mProperty_mAfterInstructionList.printNonNullClassInstanceProperties ("mAfterInstructionList") ;
+  }
+#endif
+
+//--------------------------------------------------------------------------------------------------
+//     @templateInstructionForeachAST generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_templateInstructionForeachAST ("templateInstructionForeachAST",
+                                                                                  & kTypeDescriptor_GALGAS_templateInstructionAST) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_templateInstructionForeachAST::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_templateInstructionForeachAST ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_templateInstructionForeachAST::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_templateInstructionForeachAST (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_templateInstructionForeachAST GGS_templateInstructionForeachAST::extractObject (const GGS_object & inObject,
+                                                                                    Compiler * inCompiler
+                                                                                    COMMA_LOCATION_ARGS) {
+  GGS_templateInstructionForeachAST result ;
+  const GGS_templateInstructionForeachAST * p = (const GGS_templateInstructionForeachAST *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_templateInstructionForeachAST *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("templateInstructionForeachAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GGS_templateInstructionForeachAST_2E_weak::objectCompare (const GGS_templateInstructionForeachAST_2E_weak & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    PtrWeakReferenceProxy * myPtr = mProxyPtr ;
+    const size_t myObjectPtr = size_t (myPtr) ;
+    PtrWeakReferenceProxy * operandPtr = inOperand.mProxyPtr ;
+    const size_t operandObjectPtr = size_t (operandPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_templateInstructionForeachAST_2E_weak::GGS_templateInstructionForeachAST_2E_weak (void) :
+GGS_templateInstructionAST_2E_weak () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_templateInstructionForeachAST_2E_weak & GGS_templateInstructionForeachAST_2E_weak::operator = (const GGS_templateInstructionForeachAST & inSource) {
+  PtrWeakReferenceProxy * proxyPtr = nullptr ;
+  AbstractStrongPtrClass * p = (AbstractStrongPtrClass *) inSource.ptr () ;
+  if (p != nullptr) {
+    proxyPtr = p->getProxy () ;
+  }
+  macroAssignSharedObject (mProxyPtr, proxyPtr) ;
+  return *this ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_templateInstructionForeachAST_2E_weak::GGS_templateInstructionForeachAST_2E_weak (const GGS_templateInstructionForeachAST & inSource) :
+GGS_templateInstructionAST_2E_weak (inSource) {
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_templateInstructionForeachAST_2E_weak GGS_templateInstructionForeachAST_2E_weak::class_func_nil (LOCATION_ARGS) {
+  GGS_templateInstructionForeachAST_2E_weak result ;
+  macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (THERE)) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_templateInstructionForeachAST GGS_templateInstructionForeachAST_2E_weak::unwrappedValue (void) const {
+  GGS_templateInstructionForeachAST result ;
+  if (isValid ()) {
+    const cPtr_templateInstructionForeachAST * p = (cPtr_templateInstructionForeachAST *) ptr () ;
+    if (nullptr != p) {
+      result = GGS_templateInstructionForeachAST (p) ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_templateInstructionForeachAST GGS_templateInstructionForeachAST_2E_weak::bang_templateInstructionForeachAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  GGS_templateInstructionForeachAST result ;
+  if (mProxyPtr != nullptr) {
+    AbstractStrongPtrClass * strongPtr = mProxyPtr->strongObject () ;
+    if (strongPtr == nullptr) {
+      inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
+    }else{
+      macroValidSharedObject (strongPtr, cPtr_templateInstructionForeachAST) ;
+      result = GGS_templateInstructionForeachAST ((cPtr_templateInstructionForeachAST *) strongPtr) ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @templateInstructionForeachAST.weak generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_templateInstructionForeachAST_2E_weak ("templateInstructionForeachAST.weak",
+                                                                                          & kTypeDescriptor_GALGAS_templateInstructionAST_2E_weak) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_templateInstructionForeachAST_2E_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_templateInstructionForeachAST_2E_weak ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_templateInstructionForeachAST_2E_weak::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_templateInstructionForeachAST_2E_weak (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_templateInstructionForeachAST_2E_weak GGS_templateInstructionForeachAST_2E_weak::extractObject (const GGS_object & inObject,
+                                                                                                    Compiler * inCompiler
+                                                                                                    COMMA_LOCATION_ARGS) {
+  GGS_templateInstructionForeachAST_2E_weak result ;
+  const GGS_templateInstructionForeachAST_2E_weak * p = (const GGS_templateInstructionForeachAST_2E_weak *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_templateInstructionForeachAST_2E_weak *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("templateInstructionForeachAST.weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+// @templateInstructionForeachForGeneration reference class
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GGS_templateInstructionForeachForGeneration::objectCompare (const GGS_templateInstructionForeachForGeneration & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    const size_t myObjectPtr = size_t (mObjectPtr) ;
+    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_templateInstructionForeachForGeneration::GGS_templateInstructionForeachForGeneration (void) :
+GGS_templateInstructionForGeneration () {
+}
+
+//--- Synthetized initializer ----------------------------------------------------------------------
+
+GGS_templateInstructionForeachForGeneration GGS_templateInstructionForeachForGeneration::
+init_21__21__21__21__21__21__21__21_ (const GGS_bool & in_mIsAscending,
+                                      const GGS_semanticExpressionForGeneration & in_mExpression,
+                                      const GGS_string & in_mEnumeratorCppName,
+                                      const GGS_templateInstructionListForGeneration & in_mBeforeInstructionList,
+                                      const GGS_templateInstructionListForGeneration & in_mDoInstructionList,
+                                      const GGS_string & in_mIndexCppName,
+                                      const GGS_templateInstructionListForGeneration & in_mBetweenInstructionList,
+                                      const GGS_templateInstructionListForGeneration & in_mAfterInstructionList,
+                                      Compiler * inCompiler
+                                      COMMA_LOCATION_ARGS) {
+  cPtr_templateInstructionForeachForGeneration * object = nullptr ;
+  macroMyNew (object, cPtr_templateInstructionForeachForGeneration (inCompiler COMMA_THERE)) ;
+  object->templateInstructionForeachForGeneration_init_21__21__21__21__21__21__21__21_ (in_mIsAscending, in_mExpression, in_mEnumeratorCppName, in_mBeforeInstructionList, in_mDoInstructionList, in_mIndexCppName, in_mBetweenInstructionList, in_mAfterInstructionList, inCompiler) ;
+  const GGS_templateInstructionForeachForGeneration result (object) ;
+  macroDetachSharedObject (object) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_templateInstructionForeachForGeneration::
+templateInstructionForeachForGeneration_init_21__21__21__21__21__21__21__21_ (const GGS_bool & in_mIsAscending,
+                                                                              const GGS_semanticExpressionForGeneration & in_mExpression,
+                                                                              const GGS_string & in_mEnumeratorCppName,
+                                                                              const GGS_templateInstructionListForGeneration & in_mBeforeInstructionList,
+                                                                              const GGS_templateInstructionListForGeneration & in_mDoInstructionList,
+                                                                              const GGS_string & in_mIndexCppName,
+                                                                              const GGS_templateInstructionListForGeneration & in_mBetweenInstructionList,
+                                                                              const GGS_templateInstructionListForGeneration & in_mAfterInstructionList,
+                                                                              Compiler * /* inCompiler */) {
+  mProperty_mIsAscending = in_mIsAscending ;
+  mProperty_mExpression = in_mExpression ;
+  mProperty_mEnumeratorCppName = in_mEnumeratorCppName ;
+  mProperty_mBeforeInstructionList = in_mBeforeInstructionList ;
+  mProperty_mDoInstructionList = in_mDoInstructionList ;
+  mProperty_mIndexCppName = in_mIndexCppName ;
+  mProperty_mBetweenInstructionList = in_mBetweenInstructionList ;
+  mProperty_mAfterInstructionList = in_mAfterInstructionList ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_templateInstructionForeachForGeneration::GGS_templateInstructionForeachForGeneration (const cPtr_templateInstructionForeachForGeneration * inSourcePtr) :
+GGS_templateInstructionForGeneration (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_templateInstructionForeachForGeneration) ;
+}
+//--------------------------------------------------------------------------------------------------
+
+GGS_bool GGS_templateInstructionForeachForGeneration::readProperty_mIsAscending (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_bool () ;
+  }else{
+    cPtr_templateInstructionForeachForGeneration * p = (cPtr_templateInstructionForeachForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_templateInstructionForeachForGeneration) ;
+    return p->mProperty_mIsAscending ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_semanticExpressionForGeneration GGS_templateInstructionForeachForGeneration::readProperty_mExpression (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_semanticExpressionForGeneration () ;
+  }else{
+    cPtr_templateInstructionForeachForGeneration * p = (cPtr_templateInstructionForeachForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_templateInstructionForeachForGeneration) ;
+    return p->mProperty_mExpression ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_string GGS_templateInstructionForeachForGeneration::readProperty_mEnumeratorCppName (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_string () ;
+  }else{
+    cPtr_templateInstructionForeachForGeneration * p = (cPtr_templateInstructionForeachForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_templateInstructionForeachForGeneration) ;
+    return p->mProperty_mEnumeratorCppName ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_templateInstructionListForGeneration GGS_templateInstructionForeachForGeneration::readProperty_mBeforeInstructionList (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_templateInstructionListForGeneration () ;
+  }else{
+    cPtr_templateInstructionForeachForGeneration * p = (cPtr_templateInstructionForeachForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_templateInstructionForeachForGeneration) ;
+    return p->mProperty_mBeforeInstructionList ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_templateInstructionListForGeneration GGS_templateInstructionForeachForGeneration::readProperty_mDoInstructionList (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_templateInstructionListForGeneration () ;
+  }else{
+    cPtr_templateInstructionForeachForGeneration * p = (cPtr_templateInstructionForeachForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_templateInstructionForeachForGeneration) ;
+    return p->mProperty_mDoInstructionList ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_string GGS_templateInstructionForeachForGeneration::readProperty_mIndexCppName (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_string () ;
+  }else{
+    cPtr_templateInstructionForeachForGeneration * p = (cPtr_templateInstructionForeachForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_templateInstructionForeachForGeneration) ;
+    return p->mProperty_mIndexCppName ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_templateInstructionListForGeneration GGS_templateInstructionForeachForGeneration::readProperty_mBetweenInstructionList (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_templateInstructionListForGeneration () ;
+  }else{
+    cPtr_templateInstructionForeachForGeneration * p = (cPtr_templateInstructionForeachForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_templateInstructionForeachForGeneration) ;
+    return p->mProperty_mBetweenInstructionList ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_templateInstructionListForGeneration GGS_templateInstructionForeachForGeneration::readProperty_mAfterInstructionList (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_templateInstructionListForGeneration () ;
+  }else{
+    cPtr_templateInstructionForeachForGeneration * p = (cPtr_templateInstructionForeachForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_templateInstructionForeachForGeneration) ;
+    return p->mProperty_mAfterInstructionList ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//Pointer class for @templateInstructionForeachForGeneration class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_templateInstructionForeachForGeneration::cPtr_templateInstructionForeachForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_templateInstructionForGeneration (inCompiler COMMA_THERE),
+mProperty_mIsAscending (),
+mProperty_mExpression (),
+mProperty_mEnumeratorCppName (),
+mProperty_mBeforeInstructionList (),
+mProperty_mDoInstructionList (),
+mProperty_mIndexCppName (),
+mProperty_mBetweenInstructionList (),
+mProperty_mAfterInstructionList () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+cPtr_templateInstructionForeachForGeneration::cPtr_templateInstructionForeachForGeneration (const GGS_bool & in_mIsAscending,
+                                                                                            const GGS_semanticExpressionForGeneration & in_mExpression,
+                                                                                            const GGS_string & in_mEnumeratorCppName,
+                                                                                            const GGS_templateInstructionListForGeneration & in_mBeforeInstructionList,
+                                                                                            const GGS_templateInstructionListForGeneration & in_mDoInstructionList,
+                                                                                            const GGS_string & in_mIndexCppName,
+                                                                                            const GGS_templateInstructionListForGeneration & in_mBetweenInstructionList,
+                                                                                            const GGS_templateInstructionListForGeneration & in_mAfterInstructionList,
+                                                                                            Compiler * inCompiler
+                                                                                            COMMA_LOCATION_ARGS) :
+cPtr_templateInstructionForGeneration (inCompiler COMMA_THERE),
+mProperty_mIsAscending (),
+mProperty_mExpression (),
+mProperty_mEnumeratorCppName (),
+mProperty_mBeforeInstructionList (),
+mProperty_mDoInstructionList (),
+mProperty_mIndexCppName (),
+mProperty_mBetweenInstructionList (),
+mProperty_mAfterInstructionList () {
+  mProperty_mIsAscending = in_mIsAscending ;
+  mProperty_mExpression = in_mExpression ;
+  mProperty_mEnumeratorCppName = in_mEnumeratorCppName ;
+  mProperty_mBeforeInstructionList = in_mBeforeInstructionList ;
+  mProperty_mDoInstructionList = in_mDoInstructionList ;
+  mProperty_mIndexCppName = in_mIndexCppName ;
+  mProperty_mBetweenInstructionList = in_mBetweenInstructionList ;
+  mProperty_mAfterInstructionList = in_mAfterInstructionList ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * cPtr_templateInstructionForeachForGeneration::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_templateInstructionForeachForGeneration ;
+}
+
+void cPtr_templateInstructionForeachForGeneration::description (String & ioString,
+                                                                const int32_t inIndentation) const {
+  ioString.appendCString ("[@templateInstructionForeachForGeneration:") ;
+  mProperty_mIsAscending.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mExpression.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mEnumeratorCppName.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mBeforeInstructionList.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mDoInstructionList.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mIndexCppName.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mBetweenInstructionList.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mAfterInstructionList.description (ioString, inIndentation+1) ;
+  ioString.appendCString ("]") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AbstractPtrClass * cPtr_templateInstructionForeachForGeneration::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  AbstractPtrClass * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_templateInstructionForeachForGeneration (mProperty_mIsAscending, mProperty_mExpression, mProperty_mEnumeratorCppName, mProperty_mBeforeInstructionList, mProperty_mDoInstructionList, mProperty_mIndexCppName, mProperty_mBetweenInstructionList, mProperty_mAfterInstructionList, inCompiler COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_templateInstructionForeachForGeneration::printNonNullClassInstanceProperties (void) const {
+    cPtr_templateInstructionForGeneration::printNonNullClassInstanceProperties () ;
+    mProperty_mIsAscending.printNonNullClassInstanceProperties ("mIsAscending") ;
+    mProperty_mExpression.printNonNullClassInstanceProperties ("mExpression") ;
+    mProperty_mEnumeratorCppName.printNonNullClassInstanceProperties ("mEnumeratorCppName") ;
+    mProperty_mBeforeInstructionList.printNonNullClassInstanceProperties ("mBeforeInstructionList") ;
+    mProperty_mDoInstructionList.printNonNullClassInstanceProperties ("mDoInstructionList") ;
+    mProperty_mIndexCppName.printNonNullClassInstanceProperties ("mIndexCppName") ;
+    mProperty_mBetweenInstructionList.printNonNullClassInstanceProperties ("mBetweenInstructionList") ;
+    mProperty_mAfterInstructionList.printNonNullClassInstanceProperties ("mAfterInstructionList") ;
+  }
+#endif
+
+//--------------------------------------------------------------------------------------------------
+//     @templateInstructionForeachForGeneration generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_templateInstructionForeachForGeneration ("templateInstructionForeachForGeneration",
+                                                                                            & kTypeDescriptor_GALGAS_templateInstructionForGeneration) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_templateInstructionForeachForGeneration::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_templateInstructionForeachForGeneration ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_templateInstructionForeachForGeneration::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_templateInstructionForeachForGeneration (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_templateInstructionForeachForGeneration GGS_templateInstructionForeachForGeneration::extractObject (const GGS_object & inObject,
+                                                                                                        Compiler * inCompiler
+                                                                                                        COMMA_LOCATION_ARGS) {
+  GGS_templateInstructionForeachForGeneration result ;
+  const GGS_templateInstructionForeachForGeneration * p = (const GGS_templateInstructionForeachForGeneration *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_templateInstructionForeachForGeneration *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("templateInstructionForeachForGeneration", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GGS_templateInstructionForeachForGeneration_2E_weak::objectCompare (const GGS_templateInstructionForeachForGeneration_2E_weak & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    PtrWeakReferenceProxy * myPtr = mProxyPtr ;
+    const size_t myObjectPtr = size_t (myPtr) ;
+    PtrWeakReferenceProxy * operandPtr = inOperand.mProxyPtr ;
+    const size_t operandObjectPtr = size_t (operandPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_templateInstructionForeachForGeneration_2E_weak::GGS_templateInstructionForeachForGeneration_2E_weak (void) :
+GGS_templateInstructionForGeneration_2E_weak () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_templateInstructionForeachForGeneration_2E_weak & GGS_templateInstructionForeachForGeneration_2E_weak::operator = (const GGS_templateInstructionForeachForGeneration & inSource) {
+  PtrWeakReferenceProxy * proxyPtr = nullptr ;
+  AbstractStrongPtrClass * p = (AbstractStrongPtrClass *) inSource.ptr () ;
+  if (p != nullptr) {
+    proxyPtr = p->getProxy () ;
+  }
+  macroAssignSharedObject (mProxyPtr, proxyPtr) ;
+  return *this ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_templateInstructionForeachForGeneration_2E_weak::GGS_templateInstructionForeachForGeneration_2E_weak (const GGS_templateInstructionForeachForGeneration & inSource) :
+GGS_templateInstructionForGeneration_2E_weak (inSource) {
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_templateInstructionForeachForGeneration_2E_weak GGS_templateInstructionForeachForGeneration_2E_weak::class_func_nil (LOCATION_ARGS) {
+  GGS_templateInstructionForeachForGeneration_2E_weak result ;
+  macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (THERE)) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_templateInstructionForeachForGeneration GGS_templateInstructionForeachForGeneration_2E_weak::unwrappedValue (void) const {
+  GGS_templateInstructionForeachForGeneration result ;
+  if (isValid ()) {
+    const cPtr_templateInstructionForeachForGeneration * p = (cPtr_templateInstructionForeachForGeneration *) ptr () ;
+    if (nullptr != p) {
+      result = GGS_templateInstructionForeachForGeneration (p) ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_templateInstructionForeachForGeneration GGS_templateInstructionForeachForGeneration_2E_weak::bang_templateInstructionForeachForGeneration_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  GGS_templateInstructionForeachForGeneration result ;
+  if (mProxyPtr != nullptr) {
+    AbstractStrongPtrClass * strongPtr = mProxyPtr->strongObject () ;
+    if (strongPtr == nullptr) {
+      inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
+    }else{
+      macroValidSharedObject (strongPtr, cPtr_templateInstructionForeachForGeneration) ;
+      result = GGS_templateInstructionForeachForGeneration ((cPtr_templateInstructionForeachForGeneration *) strongPtr) ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @templateInstructionForeachForGeneration.weak generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_templateInstructionForeachForGeneration_2E_weak ("templateInstructionForeachForGeneration.weak",
+                                                                                                    & kTypeDescriptor_GALGAS_templateInstructionForGeneration_2E_weak) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_templateInstructionForeachForGeneration_2E_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_templateInstructionForeachForGeneration_2E_weak ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_templateInstructionForeachForGeneration_2E_weak::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_templateInstructionForeachForGeneration_2E_weak (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_templateInstructionForeachForGeneration_2E_weak GGS_templateInstructionForeachForGeneration_2E_weak::extractObject (const GGS_object & inObject,
+                                                                                                                        Compiler * inCompiler
+                                                                                                                        COMMA_LOCATION_ARGS) {
+  GGS_templateInstructionForeachForGeneration_2E_weak result ;
+  const GGS_templateInstructionForeachForGeneration_2E_weak * p = (const GGS_templateInstructionForeachForGeneration_2E_weak *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_templateInstructionForeachForGeneration_2E_weak *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("templateInstructionForeachForGeneration.weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+// @templateInstructionExpressionForGeneration reference class
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GGS_templateInstructionExpressionForGeneration::objectCompare (const GGS_templateInstructionExpressionForGeneration & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    const size_t myObjectPtr = size_t (mObjectPtr) ;
+    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_templateInstructionExpressionForGeneration::GGS_templateInstructionExpressionForGeneration (void) :
+GGS_templateInstructionForGeneration () {
+}
+
+//--- Synthetized initializer ----------------------------------------------------------------------
+
+GGS_templateInstructionExpressionForGeneration GGS_templateInstructionExpressionForGeneration::
+init_21_ (const GGS_semanticExpressionForGeneration & in_mExpression,
+          Compiler * inCompiler
+          COMMA_LOCATION_ARGS) {
+  cPtr_templateInstructionExpressionForGeneration * object = nullptr ;
+  macroMyNew (object, cPtr_templateInstructionExpressionForGeneration (inCompiler COMMA_THERE)) ;
+  object->templateInstructionExpressionForGeneration_init_21_ (in_mExpression, inCompiler) ;
+  const GGS_templateInstructionExpressionForGeneration result (object) ;
+  macroDetachSharedObject (object) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_templateInstructionExpressionForGeneration::
+templateInstructionExpressionForGeneration_init_21_ (const GGS_semanticExpressionForGeneration & in_mExpression,
+                                                     Compiler * /* inCompiler */) {
+  mProperty_mExpression = in_mExpression ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_templateInstructionExpressionForGeneration::GGS_templateInstructionExpressionForGeneration (const cPtr_templateInstructionExpressionForGeneration * inSourcePtr) :
+GGS_templateInstructionForGeneration (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_templateInstructionExpressionForGeneration) ;
+}
+//--------------------------------------------------------------------------------------------------
+
+GGS_semanticExpressionForGeneration GGS_templateInstructionExpressionForGeneration::readProperty_mExpression (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_semanticExpressionForGeneration () ;
+  }else{
+    cPtr_templateInstructionExpressionForGeneration * p = (cPtr_templateInstructionExpressionForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_templateInstructionExpressionForGeneration) ;
+    return p->mProperty_mExpression ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//Pointer class for @templateInstructionExpressionForGeneration class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_templateInstructionExpressionForGeneration::cPtr_templateInstructionExpressionForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_templateInstructionForGeneration (inCompiler COMMA_THERE),
+mProperty_mExpression () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+cPtr_templateInstructionExpressionForGeneration::cPtr_templateInstructionExpressionForGeneration (const GGS_semanticExpressionForGeneration & in_mExpression,
+                                                                                                  Compiler * inCompiler
+                                                                                                  COMMA_LOCATION_ARGS) :
+cPtr_templateInstructionForGeneration (inCompiler COMMA_THERE),
+mProperty_mExpression () {
+  mProperty_mExpression = in_mExpression ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * cPtr_templateInstructionExpressionForGeneration::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_templateInstructionExpressionForGeneration ;
+}
+
+void cPtr_templateInstructionExpressionForGeneration::description (String & ioString,
+                                                                   const int32_t inIndentation) const {
+  ioString.appendCString ("[@templateInstructionExpressionForGeneration:") ;
+  mProperty_mExpression.description (ioString, inIndentation+1) ;
+  ioString.appendCString ("]") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AbstractPtrClass * cPtr_templateInstructionExpressionForGeneration::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  AbstractPtrClass * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_templateInstructionExpressionForGeneration (mProperty_mExpression, inCompiler COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_templateInstructionExpressionForGeneration::printNonNullClassInstanceProperties (void) const {
+    cPtr_templateInstructionForGeneration::printNonNullClassInstanceProperties () ;
+    mProperty_mExpression.printNonNullClassInstanceProperties ("mExpression") ;
+  }
+#endif
+
+//--------------------------------------------------------------------------------------------------
+//     @templateInstructionExpressionForGeneration generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_templateInstructionExpressionForGeneration ("templateInstructionExpressionForGeneration",
+                                                                                               & kTypeDescriptor_GALGAS_templateInstructionForGeneration) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_templateInstructionExpressionForGeneration::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_templateInstructionExpressionForGeneration ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_templateInstructionExpressionForGeneration::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_templateInstructionExpressionForGeneration (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_templateInstructionExpressionForGeneration GGS_templateInstructionExpressionForGeneration::extractObject (const GGS_object & inObject,
+                                                                                                              Compiler * inCompiler
+                                                                                                              COMMA_LOCATION_ARGS) {
+  GGS_templateInstructionExpressionForGeneration result ;
+  const GGS_templateInstructionExpressionForGeneration * p = (const GGS_templateInstructionExpressionForGeneration *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_templateInstructionExpressionForGeneration *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("templateInstructionExpressionForGeneration", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+// @templateBlockInstructionForGeneration reference class
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GGS_templateBlockInstructionForGeneration::objectCompare (const GGS_templateBlockInstructionForGeneration & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    const size_t myObjectPtr = size_t (mObjectPtr) ;
+    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_templateBlockInstructionForGeneration::GGS_templateBlockInstructionForGeneration (void) :
+GGS_templateInstructionForGeneration () {
+}
+
+//--- Synthetized initializer ----------------------------------------------------------------------
+
+GGS_templateBlockInstructionForGeneration GGS_templateBlockInstructionForGeneration::
+init_21__21__21_ (const GGS_semanticExpressionForGeneration & in_mExpression,
+                  const GGS_location & in_mLocation,
+                  const GGS_templateInstructionListForGeneration & in_mBlockInstructionList,
+                  Compiler * inCompiler
+                  COMMA_LOCATION_ARGS) {
+  cPtr_templateBlockInstructionForGeneration * object = nullptr ;
+  macroMyNew (object, cPtr_templateBlockInstructionForGeneration (inCompiler COMMA_THERE)) ;
+  object->templateBlockInstructionForGeneration_init_21__21__21_ (in_mExpression, in_mLocation, in_mBlockInstructionList, inCompiler) ;
+  const GGS_templateBlockInstructionForGeneration result (object) ;
+  macroDetachSharedObject (object) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_templateBlockInstructionForGeneration::
+templateBlockInstructionForGeneration_init_21__21__21_ (const GGS_semanticExpressionForGeneration & in_mExpression,
+                                                        const GGS_location & in_mLocation,
+                                                        const GGS_templateInstructionListForGeneration & in_mBlockInstructionList,
+                                                        Compiler * /* inCompiler */) {
+  mProperty_mExpression = in_mExpression ;
+  mProperty_mLocation = in_mLocation ;
+  mProperty_mBlockInstructionList = in_mBlockInstructionList ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_templateBlockInstructionForGeneration::GGS_templateBlockInstructionForGeneration (const cPtr_templateBlockInstructionForGeneration * inSourcePtr) :
+GGS_templateInstructionForGeneration (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_templateBlockInstructionForGeneration) ;
+}
+//--------------------------------------------------------------------------------------------------
+
+GGS_semanticExpressionForGeneration GGS_templateBlockInstructionForGeneration::readProperty_mExpression (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_semanticExpressionForGeneration () ;
+  }else{
+    cPtr_templateBlockInstructionForGeneration * p = (cPtr_templateBlockInstructionForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_templateBlockInstructionForGeneration) ;
+    return p->mProperty_mExpression ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_location GGS_templateBlockInstructionForGeneration::readProperty_mLocation (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_location () ;
+  }else{
+    cPtr_templateBlockInstructionForGeneration * p = (cPtr_templateBlockInstructionForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_templateBlockInstructionForGeneration) ;
+    return p->mProperty_mLocation ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_templateInstructionListForGeneration GGS_templateBlockInstructionForGeneration::readProperty_mBlockInstructionList (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_templateInstructionListForGeneration () ;
+  }else{
+    cPtr_templateBlockInstructionForGeneration * p = (cPtr_templateBlockInstructionForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_templateBlockInstructionForGeneration) ;
+    return p->mProperty_mBlockInstructionList ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//Pointer class for @templateBlockInstructionForGeneration class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_templateBlockInstructionForGeneration::cPtr_templateBlockInstructionForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_templateInstructionForGeneration (inCompiler COMMA_THERE),
+mProperty_mExpression (),
+mProperty_mLocation (),
+mProperty_mBlockInstructionList () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+cPtr_templateBlockInstructionForGeneration::cPtr_templateBlockInstructionForGeneration (const GGS_semanticExpressionForGeneration & in_mExpression,
+                                                                                        const GGS_location & in_mLocation,
+                                                                                        const GGS_templateInstructionListForGeneration & in_mBlockInstructionList,
+                                                                                        Compiler * inCompiler
+                                                                                        COMMA_LOCATION_ARGS) :
+cPtr_templateInstructionForGeneration (inCompiler COMMA_THERE),
+mProperty_mExpression (),
+mProperty_mLocation (),
+mProperty_mBlockInstructionList () {
+  mProperty_mExpression = in_mExpression ;
+  mProperty_mLocation = in_mLocation ;
+  mProperty_mBlockInstructionList = in_mBlockInstructionList ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * cPtr_templateBlockInstructionForGeneration::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_templateBlockInstructionForGeneration ;
+}
+
+void cPtr_templateBlockInstructionForGeneration::description (String & ioString,
+                                                              const int32_t inIndentation) const {
+  ioString.appendCString ("[@templateBlockInstructionForGeneration:") ;
+  mProperty_mExpression.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mLocation.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mBlockInstructionList.description (ioString, inIndentation+1) ;
+  ioString.appendCString ("]") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AbstractPtrClass * cPtr_templateBlockInstructionForGeneration::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  AbstractPtrClass * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_templateBlockInstructionForGeneration (mProperty_mExpression, mProperty_mLocation, mProperty_mBlockInstructionList, inCompiler COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_templateBlockInstructionForGeneration::printNonNullClassInstanceProperties (void) const {
+    cPtr_templateInstructionForGeneration::printNonNullClassInstanceProperties () ;
+    mProperty_mExpression.printNonNullClassInstanceProperties ("mExpression") ;
+    mProperty_mLocation.printNonNullClassInstanceProperties ("mLocation") ;
+    mProperty_mBlockInstructionList.printNonNullClassInstanceProperties ("mBlockInstructionList") ;
+  }
+#endif
+
+//--------------------------------------------------------------------------------------------------
+//     @templateBlockInstructionForGeneration generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_templateBlockInstructionForGeneration ("templateBlockInstructionForGeneration",
+                                                                                          & kTypeDescriptor_GALGAS_templateInstructionForGeneration) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_templateBlockInstructionForGeneration::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_templateBlockInstructionForGeneration ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_templateBlockInstructionForGeneration::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_templateBlockInstructionForGeneration (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_templateBlockInstructionForGeneration GGS_templateBlockInstructionForGeneration::extractObject (const GGS_object & inObject,
+                                                                                                    Compiler * inCompiler
+                                                                                                    COMMA_LOCATION_ARGS) {
+  GGS_templateBlockInstructionForGeneration result ;
+  const GGS_templateBlockInstructionForGeneration * p = (const GGS_templateBlockInstructionForGeneration *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_templateBlockInstructionForGeneration *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("templateBlockInstructionForGeneration", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+// @templateGetterCallInExpressionAST reference class
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GGS_templateGetterCallInExpressionAST::objectCompare (const GGS_templateGetterCallInExpressionAST & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    const size_t myObjectPtr = size_t (mObjectPtr) ;
+    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_templateGetterCallInExpressionAST::GGS_templateGetterCallInExpressionAST (void) :
+GGS_templateExpressionAST () {
+}
+
+//--- Synthetized initializer ----------------------------------------------------------------------
+
+GGS_templateGetterCallInExpressionAST GGS_templateGetterCallInExpressionAST::
+init_21__21__21__21_ (const GGS_templateExpressionAST & in_mReceiverExpression,
+                      const GGS_lstring & in_mGetterName,
+                      const GGS_templateExpressionListAST & in_mExpressionList,
+                      const GGS_location & in_mExpressionLocation,
+                      Compiler * inCompiler
+                      COMMA_LOCATION_ARGS) {
+  cPtr_templateGetterCallInExpressionAST * object = nullptr ;
+  macroMyNew (object, cPtr_templateGetterCallInExpressionAST (inCompiler COMMA_THERE)) ;
+  object->templateGetterCallInExpressionAST_init_21__21__21__21_ (in_mReceiverExpression, in_mGetterName, in_mExpressionList, in_mExpressionLocation, inCompiler) ;
+  const GGS_templateGetterCallInExpressionAST result (object) ;
+  macroDetachSharedObject (object) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_templateGetterCallInExpressionAST::
+templateGetterCallInExpressionAST_init_21__21__21__21_ (const GGS_templateExpressionAST & in_mReceiverExpression,
+                                                        const GGS_lstring & in_mGetterName,
+                                                        const GGS_templateExpressionListAST & in_mExpressionList,
+                                                        const GGS_location & in_mExpressionLocation,
+                                                        Compiler * /* inCompiler */) {
+  mProperty_mReceiverExpression = in_mReceiverExpression ;
+  mProperty_mGetterName = in_mGetterName ;
+  mProperty_mExpressionList = in_mExpressionList ;
+  mProperty_mExpressionLocation = in_mExpressionLocation ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_templateGetterCallInExpressionAST::GGS_templateGetterCallInExpressionAST (const cPtr_templateGetterCallInExpressionAST * inSourcePtr) :
+GGS_templateExpressionAST (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_templateGetterCallInExpressionAST) ;
+}
+//--------------------------------------------------------------------------------------------------
+
+GGS_templateExpressionAST GGS_templateGetterCallInExpressionAST::readProperty_mReceiverExpression (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_templateExpressionAST () ;
+  }else{
+    cPtr_templateGetterCallInExpressionAST * p = (cPtr_templateGetterCallInExpressionAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_templateGetterCallInExpressionAST) ;
+    return p->mProperty_mReceiverExpression ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstring GGS_templateGetterCallInExpressionAST::readProperty_mGetterName (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_lstring () ;
+  }else{
+    cPtr_templateGetterCallInExpressionAST * p = (cPtr_templateGetterCallInExpressionAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_templateGetterCallInExpressionAST) ;
+    return p->mProperty_mGetterName ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_templateExpressionListAST GGS_templateGetterCallInExpressionAST::readProperty_mExpressionList (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_templateExpressionListAST () ;
+  }else{
+    cPtr_templateGetterCallInExpressionAST * p = (cPtr_templateGetterCallInExpressionAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_templateGetterCallInExpressionAST) ;
+    return p->mProperty_mExpressionList ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_location GGS_templateGetterCallInExpressionAST::readProperty_mExpressionLocation (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_location () ;
+  }else{
+    cPtr_templateGetterCallInExpressionAST * p = (cPtr_templateGetterCallInExpressionAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_templateGetterCallInExpressionAST) ;
+    return p->mProperty_mExpressionLocation ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//Pointer class for @templateGetterCallInExpressionAST class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_templateGetterCallInExpressionAST::cPtr_templateGetterCallInExpressionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_templateExpressionAST (inCompiler COMMA_THERE),
+mProperty_mReceiverExpression (),
+mProperty_mGetterName (),
+mProperty_mExpressionList (),
+mProperty_mExpressionLocation () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+cPtr_templateGetterCallInExpressionAST::cPtr_templateGetterCallInExpressionAST (const GGS_templateExpressionAST & in_mReceiverExpression,
+                                                                                const GGS_lstring & in_mGetterName,
+                                                                                const GGS_templateExpressionListAST & in_mExpressionList,
+                                                                                const GGS_location & in_mExpressionLocation,
+                                                                                Compiler * inCompiler
+                                                                                COMMA_LOCATION_ARGS) :
+cPtr_templateExpressionAST (inCompiler COMMA_THERE),
+mProperty_mReceiverExpression (),
+mProperty_mGetterName (),
+mProperty_mExpressionList (),
+mProperty_mExpressionLocation () {
+  mProperty_mReceiverExpression = in_mReceiverExpression ;
+  mProperty_mGetterName = in_mGetterName ;
+  mProperty_mExpressionList = in_mExpressionList ;
+  mProperty_mExpressionLocation = in_mExpressionLocation ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * cPtr_templateGetterCallInExpressionAST::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_templateGetterCallInExpressionAST ;
+}
+
+void cPtr_templateGetterCallInExpressionAST::description (String & ioString,
+                                                          const int32_t inIndentation) const {
+  ioString.appendCString ("[@templateGetterCallInExpressionAST:") ;
+  mProperty_mReceiverExpression.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mGetterName.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mExpressionList.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mExpressionLocation.description (ioString, inIndentation+1) ;
+  ioString.appendCString ("]") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AbstractPtrClass * cPtr_templateGetterCallInExpressionAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  AbstractPtrClass * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_templateGetterCallInExpressionAST (mProperty_mReceiverExpression, mProperty_mGetterName, mProperty_mExpressionList, mProperty_mExpressionLocation, inCompiler COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_templateGetterCallInExpressionAST::printNonNullClassInstanceProperties (void) const {
+    cPtr_templateExpressionAST::printNonNullClassInstanceProperties () ;
+    mProperty_mReceiverExpression.printNonNullClassInstanceProperties ("mReceiverExpression") ;
+    mProperty_mGetterName.printNonNullClassInstanceProperties ("mGetterName") ;
+    mProperty_mExpressionList.printNonNullClassInstanceProperties ("mExpressionList") ;
+    mProperty_mExpressionLocation.printNonNullClassInstanceProperties ("mExpressionLocation") ;
+  }
+#endif
+
+//--------------------------------------------------------------------------------------------------
+//     @templateGetterCallInExpressionAST generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_templateGetterCallInExpressionAST ("templateGetterCallInExpressionAST",
+                                                                                      & kTypeDescriptor_GALGAS_templateExpressionAST) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_templateGetterCallInExpressionAST::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_templateGetterCallInExpressionAST ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_templateGetterCallInExpressionAST::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_templateGetterCallInExpressionAST (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_templateGetterCallInExpressionAST GGS_templateGetterCallInExpressionAST::extractObject (const GGS_object & inObject,
+                                                                                            Compiler * inCompiler
+                                                                                            COMMA_LOCATION_ARGS) {
+  GGS_templateGetterCallInExpressionAST result ;
+  const GGS_templateGetterCallInExpressionAST * p = (const GGS_templateGetterCallInExpressionAST *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_templateGetterCallInExpressionAST *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("templateGetterCallInExpressionAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GGS_templateGetterCallInExpressionAST_2E_weak::objectCompare (const GGS_templateGetterCallInExpressionAST_2E_weak & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    PtrWeakReferenceProxy * myPtr = mProxyPtr ;
+    const size_t myObjectPtr = size_t (myPtr) ;
+    PtrWeakReferenceProxy * operandPtr = inOperand.mProxyPtr ;
+    const size_t operandObjectPtr = size_t (operandPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_templateGetterCallInExpressionAST_2E_weak::GGS_templateGetterCallInExpressionAST_2E_weak (void) :
+GGS_templateExpressionAST_2E_weak () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_templateGetterCallInExpressionAST_2E_weak & GGS_templateGetterCallInExpressionAST_2E_weak::operator = (const GGS_templateGetterCallInExpressionAST & inSource) {
+  PtrWeakReferenceProxy * proxyPtr = nullptr ;
+  AbstractStrongPtrClass * p = (AbstractStrongPtrClass *) inSource.ptr () ;
+  if (p != nullptr) {
+    proxyPtr = p->getProxy () ;
+  }
+  macroAssignSharedObject (mProxyPtr, proxyPtr) ;
+  return *this ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_templateGetterCallInExpressionAST_2E_weak::GGS_templateGetterCallInExpressionAST_2E_weak (const GGS_templateGetterCallInExpressionAST & inSource) :
+GGS_templateExpressionAST_2E_weak (inSource) {
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_templateGetterCallInExpressionAST_2E_weak GGS_templateGetterCallInExpressionAST_2E_weak::class_func_nil (LOCATION_ARGS) {
+  GGS_templateGetterCallInExpressionAST_2E_weak result ;
+  macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (THERE)) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_templateGetterCallInExpressionAST GGS_templateGetterCallInExpressionAST_2E_weak::unwrappedValue (void) const {
+  GGS_templateGetterCallInExpressionAST result ;
+  if (isValid ()) {
+    const cPtr_templateGetterCallInExpressionAST * p = (cPtr_templateGetterCallInExpressionAST *) ptr () ;
+    if (nullptr != p) {
+      result = GGS_templateGetterCallInExpressionAST (p) ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_templateGetterCallInExpressionAST GGS_templateGetterCallInExpressionAST_2E_weak::bang_templateGetterCallInExpressionAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  GGS_templateGetterCallInExpressionAST result ;
+  if (mProxyPtr != nullptr) {
+    AbstractStrongPtrClass * strongPtr = mProxyPtr->strongObject () ;
+    if (strongPtr == nullptr) {
+      inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
+    }else{
+      macroValidSharedObject (strongPtr, cPtr_templateGetterCallInExpressionAST) ;
+      result = GGS_templateGetterCallInExpressionAST ((cPtr_templateGetterCallInExpressionAST *) strongPtr) ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @templateGetterCallInExpressionAST.weak generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_templateGetterCallInExpressionAST_2E_weak ("templateGetterCallInExpressionAST.weak",
+                                                                                              & kTypeDescriptor_GALGAS_templateExpressionAST_2E_weak) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_templateGetterCallInExpressionAST_2E_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_templateGetterCallInExpressionAST_2E_weak ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_templateGetterCallInExpressionAST_2E_weak::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_templateGetterCallInExpressionAST_2E_weak (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_templateGetterCallInExpressionAST_2E_weak GGS_templateGetterCallInExpressionAST_2E_weak::extractObject (const GGS_object & inObject,
+                                                                                                            Compiler * inCompiler
+                                                                                                            COMMA_LOCATION_ARGS) {
+  GGS_templateGetterCallInExpressionAST_2E_weak result ;
+  const GGS_templateGetterCallInExpressionAST_2E_weak * p = (const GGS_templateGetterCallInExpressionAST_2E_weak *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_templateGetterCallInExpressionAST_2E_weak *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("templateGetterCallInExpressionAST.weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+// @templateInstructionSwitchForGeneration reference class
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GGS_templateInstructionSwitchForGeneration::objectCompare (const GGS_templateInstructionSwitchForGeneration & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    const size_t myObjectPtr = size_t (mObjectPtr) ;
+    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_templateInstructionSwitchForGeneration::GGS_templateInstructionSwitchForGeneration (void) :
+GGS_templateInstructionForGeneration () {
+}
+
+//--- Synthetized initializer ----------------------------------------------------------------------
+
+GGS_templateInstructionSwitchForGeneration GGS_templateInstructionSwitchForGeneration::
+init_21__21__21_ (const GGS_unifiedTypeMapEntry & in_enumType,
+                  const GGS_semanticExpressionForGeneration & in_switchExpression,
+                  const GGS_templateInstructionSwitchBranchListForGeneration & in_templateInstructionSwitchBranchList,
+                  Compiler * inCompiler
+                  COMMA_LOCATION_ARGS) {
+  cPtr_templateInstructionSwitchForGeneration * object = nullptr ;
+  macroMyNew (object, cPtr_templateInstructionSwitchForGeneration (inCompiler COMMA_THERE)) ;
+  object->templateInstructionSwitchForGeneration_init_21__21__21_ (in_enumType, in_switchExpression, in_templateInstructionSwitchBranchList, inCompiler) ;
+  const GGS_templateInstructionSwitchForGeneration result (object) ;
+  macroDetachSharedObject (object) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_templateInstructionSwitchForGeneration::
+templateInstructionSwitchForGeneration_init_21__21__21_ (const GGS_unifiedTypeMapEntry & in_enumType,
+                                                         const GGS_semanticExpressionForGeneration & in_switchExpression,
+                                                         const GGS_templateInstructionSwitchBranchListForGeneration & in_templateInstructionSwitchBranchList,
+                                                         Compiler * /* inCompiler */) {
+  mProperty_enumType = in_enumType ;
+  mProperty_switchExpression = in_switchExpression ;
+  mProperty_templateInstructionSwitchBranchList = in_templateInstructionSwitchBranchList ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_templateInstructionSwitchForGeneration::GGS_templateInstructionSwitchForGeneration (const cPtr_templateInstructionSwitchForGeneration * inSourcePtr) :
+GGS_templateInstructionForGeneration (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_templateInstructionSwitchForGeneration) ;
+}
+//--------------------------------------------------------------------------------------------------
+
+GGS_unifiedTypeMapEntry GGS_templateInstructionSwitchForGeneration::readProperty_enumType (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_unifiedTypeMapEntry () ;
+  }else{
+    cPtr_templateInstructionSwitchForGeneration * p = (cPtr_templateInstructionSwitchForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_templateInstructionSwitchForGeneration) ;
+    return p->mProperty_enumType ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_semanticExpressionForGeneration GGS_templateInstructionSwitchForGeneration::readProperty_switchExpression (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_semanticExpressionForGeneration () ;
+  }else{
+    cPtr_templateInstructionSwitchForGeneration * p = (cPtr_templateInstructionSwitchForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_templateInstructionSwitchForGeneration) ;
+    return p->mProperty_switchExpression ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_templateInstructionSwitchBranchListForGeneration GGS_templateInstructionSwitchForGeneration::readProperty_templateInstructionSwitchBranchList (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_templateInstructionSwitchBranchListForGeneration () ;
+  }else{
+    cPtr_templateInstructionSwitchForGeneration * p = (cPtr_templateInstructionSwitchForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_templateInstructionSwitchForGeneration) ;
+    return p->mProperty_templateInstructionSwitchBranchList ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//Pointer class for @templateInstructionSwitchForGeneration class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_templateInstructionSwitchForGeneration::cPtr_templateInstructionSwitchForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_templateInstructionForGeneration (inCompiler COMMA_THERE),
+mProperty_enumType (),
+mProperty_switchExpression (),
+mProperty_templateInstructionSwitchBranchList () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+cPtr_templateInstructionSwitchForGeneration::cPtr_templateInstructionSwitchForGeneration (const GGS_unifiedTypeMapEntry & in_enumType,
+                                                                                          const GGS_semanticExpressionForGeneration & in_switchExpression,
+                                                                                          const GGS_templateInstructionSwitchBranchListForGeneration & in_templateInstructionSwitchBranchList,
+                                                                                          Compiler * inCompiler
+                                                                                          COMMA_LOCATION_ARGS) :
+cPtr_templateInstructionForGeneration (inCompiler COMMA_THERE),
+mProperty_enumType (),
+mProperty_switchExpression (),
+mProperty_templateInstructionSwitchBranchList () {
+  mProperty_enumType = in_enumType ;
+  mProperty_switchExpression = in_switchExpression ;
+  mProperty_templateInstructionSwitchBranchList = in_templateInstructionSwitchBranchList ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * cPtr_templateInstructionSwitchForGeneration::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_templateInstructionSwitchForGeneration ;
+}
+
+void cPtr_templateInstructionSwitchForGeneration::description (String & ioString,
+                                                               const int32_t inIndentation) const {
+  ioString.appendCString ("[@templateInstructionSwitchForGeneration:") ;
+  mProperty_enumType.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_switchExpression.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_templateInstructionSwitchBranchList.description (ioString, inIndentation+1) ;
+  ioString.appendCString ("]") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AbstractPtrClass * cPtr_templateInstructionSwitchForGeneration::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  AbstractPtrClass * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_templateInstructionSwitchForGeneration (mProperty_enumType, mProperty_switchExpression, mProperty_templateInstructionSwitchBranchList, inCompiler COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_templateInstructionSwitchForGeneration::printNonNullClassInstanceProperties (void) const {
+    cPtr_templateInstructionForGeneration::printNonNullClassInstanceProperties () ;
+    mProperty_enumType.printNonNullClassInstanceProperties ("enumType") ;
+    mProperty_switchExpression.printNonNullClassInstanceProperties ("switchExpression") ;
+    mProperty_templateInstructionSwitchBranchList.printNonNullClassInstanceProperties ("templateInstructionSwitchBranchList") ;
+  }
+#endif
+
+//--------------------------------------------------------------------------------------------------
+//     @templateInstructionSwitchForGeneration generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_templateInstructionSwitchForGeneration ("templateInstructionSwitchForGeneration",
+                                                                                           & kTypeDescriptor_GALGAS_templateInstructionForGeneration) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_templateInstructionSwitchForGeneration::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_templateInstructionSwitchForGeneration ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_templateInstructionSwitchForGeneration::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_templateInstructionSwitchForGeneration (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_templateInstructionSwitchForGeneration GGS_templateInstructionSwitchForGeneration::extractObject (const GGS_object & inObject,
+                                                                                                      Compiler * inCompiler
+                                                                                                      COMMA_LOCATION_ARGS) {
+  GGS_templateInstructionSwitchForGeneration result ;
+  const GGS_templateInstructionSwitchForGeneration * p = (const GGS_templateInstructionSwitchForGeneration *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_templateInstructionSwitchForGeneration *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("templateInstructionSwitchForGeneration", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+// @templateClassFunctionAST reference class
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GGS_templateClassFunctionAST::objectCompare (const GGS_templateClassFunctionAST & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    const size_t myObjectPtr = size_t (mObjectPtr) ;
+    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_templateClassFunctionAST::GGS_templateClassFunctionAST (void) :
+GGS_templateExpressionAST () {
+}
+
+//--- Synthetized initializer ----------------------------------------------------------------------
+
+GGS_templateClassFunctionAST GGS_templateClassFunctionAST::
+init_21__21__21_ (const GGS_lstring & in_mTypeName,
+                  const GGS_lstring & in_mClassFunctionName,
+                  const GGS_templateExpressionListAST & in_mExpressionList,
+                  Compiler * inCompiler
+                  COMMA_LOCATION_ARGS) {
+  cPtr_templateClassFunctionAST * object = nullptr ;
+  macroMyNew (object, cPtr_templateClassFunctionAST (inCompiler COMMA_THERE)) ;
+  object->templateClassFunctionAST_init_21__21__21_ (in_mTypeName, in_mClassFunctionName, in_mExpressionList, inCompiler) ;
+  const GGS_templateClassFunctionAST result (object) ;
+  macroDetachSharedObject (object) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_templateClassFunctionAST::
+templateClassFunctionAST_init_21__21__21_ (const GGS_lstring & in_mTypeName,
+                                           const GGS_lstring & in_mClassFunctionName,
+                                           const GGS_templateExpressionListAST & in_mExpressionList,
+                                           Compiler * /* inCompiler */) {
+  mProperty_mTypeName = in_mTypeName ;
+  mProperty_mClassFunctionName = in_mClassFunctionName ;
+  mProperty_mExpressionList = in_mExpressionList ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_templateClassFunctionAST::GGS_templateClassFunctionAST (const cPtr_templateClassFunctionAST * inSourcePtr) :
+GGS_templateExpressionAST (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_templateClassFunctionAST) ;
+}
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstring GGS_templateClassFunctionAST::readProperty_mTypeName (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_lstring () ;
+  }else{
+    cPtr_templateClassFunctionAST * p = (cPtr_templateClassFunctionAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_templateClassFunctionAST) ;
+    return p->mProperty_mTypeName ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstring GGS_templateClassFunctionAST::readProperty_mClassFunctionName (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_lstring () ;
+  }else{
+    cPtr_templateClassFunctionAST * p = (cPtr_templateClassFunctionAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_templateClassFunctionAST) ;
+    return p->mProperty_mClassFunctionName ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_templateExpressionListAST GGS_templateClassFunctionAST::readProperty_mExpressionList (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_templateExpressionListAST () ;
+  }else{
+    cPtr_templateClassFunctionAST * p = (cPtr_templateClassFunctionAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_templateClassFunctionAST) ;
+    return p->mProperty_mExpressionList ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//Pointer class for @templateClassFunctionAST class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_templateClassFunctionAST::cPtr_templateClassFunctionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_templateExpressionAST (inCompiler COMMA_THERE),
+mProperty_mTypeName (),
+mProperty_mClassFunctionName (),
+mProperty_mExpressionList () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+cPtr_templateClassFunctionAST::cPtr_templateClassFunctionAST (const GGS_lstring & in_mTypeName,
+                                                              const GGS_lstring & in_mClassFunctionName,
+                                                              const GGS_templateExpressionListAST & in_mExpressionList,
+                                                              Compiler * inCompiler
+                                                              COMMA_LOCATION_ARGS) :
+cPtr_templateExpressionAST (inCompiler COMMA_THERE),
+mProperty_mTypeName (),
+mProperty_mClassFunctionName (),
+mProperty_mExpressionList () {
+  mProperty_mTypeName = in_mTypeName ;
+  mProperty_mClassFunctionName = in_mClassFunctionName ;
+  mProperty_mExpressionList = in_mExpressionList ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * cPtr_templateClassFunctionAST::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_templateClassFunctionAST ;
+}
+
+void cPtr_templateClassFunctionAST::description (String & ioString,
+                                                 const int32_t inIndentation) const {
+  ioString.appendCString ("[@templateClassFunctionAST:") ;
+  mProperty_mTypeName.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mClassFunctionName.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mExpressionList.description (ioString, inIndentation+1) ;
+  ioString.appendCString ("]") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AbstractPtrClass * cPtr_templateClassFunctionAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  AbstractPtrClass * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_templateClassFunctionAST (mProperty_mTypeName, mProperty_mClassFunctionName, mProperty_mExpressionList, inCompiler COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_templateClassFunctionAST::printNonNullClassInstanceProperties (void) const {
+    cPtr_templateExpressionAST::printNonNullClassInstanceProperties () ;
+    mProperty_mTypeName.printNonNullClassInstanceProperties ("mTypeName") ;
+    mProperty_mClassFunctionName.printNonNullClassInstanceProperties ("mClassFunctionName") ;
+    mProperty_mExpressionList.printNonNullClassInstanceProperties ("mExpressionList") ;
+  }
+#endif
+
+//--------------------------------------------------------------------------------------------------
+//     @templateClassFunctionAST generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_templateClassFunctionAST ("templateClassFunctionAST",
+                                                                             & kTypeDescriptor_GALGAS_templateExpressionAST) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_templateClassFunctionAST::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_templateClassFunctionAST ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_templateClassFunctionAST::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_templateClassFunctionAST (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_templateClassFunctionAST GGS_templateClassFunctionAST::extractObject (const GGS_object & inObject,
+                                                                          Compiler * inCompiler
+                                                                          COMMA_LOCATION_ARGS) {
+  GGS_templateClassFunctionAST result ;
+  const GGS_templateClassFunctionAST * p = (const GGS_templateClassFunctionAST *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_templateClassFunctionAST *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("templateClassFunctionAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+// @templateFileWrapperTemplateCallAST reference class
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GGS_templateFileWrapperTemplateCallAST::objectCompare (const GGS_templateFileWrapperTemplateCallAST & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    const size_t myObjectPtr = size_t (mObjectPtr) ;
+    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_templateFileWrapperTemplateCallAST::GGS_templateFileWrapperTemplateCallAST (void) :
+GGS_templateExpressionAST () {
+}
+
+//--- Synthetized initializer ----------------------------------------------------------------------
+
+GGS_templateFileWrapperTemplateCallAST GGS_templateFileWrapperTemplateCallAST::
+init_21__21__21_ (const GGS_lstring & in_mFileWrapperName,
+                  const GGS_lstring & in_mTemplateName,
+                  const GGS_templateExpressionListAST & in_mOutExpressionList,
+                  Compiler * inCompiler
+                  COMMA_LOCATION_ARGS) {
+  cPtr_templateFileWrapperTemplateCallAST * object = nullptr ;
+  macroMyNew (object, cPtr_templateFileWrapperTemplateCallAST (inCompiler COMMA_THERE)) ;
+  object->templateFileWrapperTemplateCallAST_init_21__21__21_ (in_mFileWrapperName, in_mTemplateName, in_mOutExpressionList, inCompiler) ;
+  const GGS_templateFileWrapperTemplateCallAST result (object) ;
+  macroDetachSharedObject (object) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_templateFileWrapperTemplateCallAST::
+templateFileWrapperTemplateCallAST_init_21__21__21_ (const GGS_lstring & in_mFileWrapperName,
+                                                     const GGS_lstring & in_mTemplateName,
+                                                     const GGS_templateExpressionListAST & in_mOutExpressionList,
+                                                     Compiler * /* inCompiler */) {
+  mProperty_mFileWrapperName = in_mFileWrapperName ;
+  mProperty_mTemplateName = in_mTemplateName ;
+  mProperty_mOutExpressionList = in_mOutExpressionList ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_templateFileWrapperTemplateCallAST::GGS_templateFileWrapperTemplateCallAST (const cPtr_templateFileWrapperTemplateCallAST * inSourcePtr) :
+GGS_templateExpressionAST (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_templateFileWrapperTemplateCallAST) ;
+}
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstring GGS_templateFileWrapperTemplateCallAST::readProperty_mFileWrapperName (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_lstring () ;
+  }else{
+    cPtr_templateFileWrapperTemplateCallAST * p = (cPtr_templateFileWrapperTemplateCallAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_templateFileWrapperTemplateCallAST) ;
+    return p->mProperty_mFileWrapperName ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstring GGS_templateFileWrapperTemplateCallAST::readProperty_mTemplateName (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_lstring () ;
+  }else{
+    cPtr_templateFileWrapperTemplateCallAST * p = (cPtr_templateFileWrapperTemplateCallAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_templateFileWrapperTemplateCallAST) ;
+    return p->mProperty_mTemplateName ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_templateExpressionListAST GGS_templateFileWrapperTemplateCallAST::readProperty_mOutExpressionList (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_templateExpressionListAST () ;
+  }else{
+    cPtr_templateFileWrapperTemplateCallAST * p = (cPtr_templateFileWrapperTemplateCallAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_templateFileWrapperTemplateCallAST) ;
+    return p->mProperty_mOutExpressionList ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//Pointer class for @templateFileWrapperTemplateCallAST class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_templateFileWrapperTemplateCallAST::cPtr_templateFileWrapperTemplateCallAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_templateExpressionAST (inCompiler COMMA_THERE),
+mProperty_mFileWrapperName (),
+mProperty_mTemplateName (),
+mProperty_mOutExpressionList () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+cPtr_templateFileWrapperTemplateCallAST::cPtr_templateFileWrapperTemplateCallAST (const GGS_lstring & in_mFileWrapperName,
+                                                                                  const GGS_lstring & in_mTemplateName,
+                                                                                  const GGS_templateExpressionListAST & in_mOutExpressionList,
+                                                                                  Compiler * inCompiler
+                                                                                  COMMA_LOCATION_ARGS) :
+cPtr_templateExpressionAST (inCompiler COMMA_THERE),
+mProperty_mFileWrapperName (),
+mProperty_mTemplateName (),
+mProperty_mOutExpressionList () {
+  mProperty_mFileWrapperName = in_mFileWrapperName ;
+  mProperty_mTemplateName = in_mTemplateName ;
+  mProperty_mOutExpressionList = in_mOutExpressionList ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * cPtr_templateFileWrapperTemplateCallAST::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_templateFileWrapperTemplateCallAST ;
+}
+
+void cPtr_templateFileWrapperTemplateCallAST::description (String & ioString,
+                                                           const int32_t inIndentation) const {
+  ioString.appendCString ("[@templateFileWrapperTemplateCallAST:") ;
+  mProperty_mFileWrapperName.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mTemplateName.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mOutExpressionList.description (ioString, inIndentation+1) ;
+  ioString.appendCString ("]") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AbstractPtrClass * cPtr_templateFileWrapperTemplateCallAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  AbstractPtrClass * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_templateFileWrapperTemplateCallAST (mProperty_mFileWrapperName, mProperty_mTemplateName, mProperty_mOutExpressionList, inCompiler COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_templateFileWrapperTemplateCallAST::printNonNullClassInstanceProperties (void) const {
+    cPtr_templateExpressionAST::printNonNullClassInstanceProperties () ;
+    mProperty_mFileWrapperName.printNonNullClassInstanceProperties ("mFileWrapperName") ;
+    mProperty_mTemplateName.printNonNullClassInstanceProperties ("mTemplateName") ;
+    mProperty_mOutExpressionList.printNonNullClassInstanceProperties ("mOutExpressionList") ;
+  }
+#endif
+
+//--------------------------------------------------------------------------------------------------
+//     @templateFileWrapperTemplateCallAST generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_templateFileWrapperTemplateCallAST ("templateFileWrapperTemplateCallAST",
+                                                                                       & kTypeDescriptor_GALGAS_templateExpressionAST) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_templateFileWrapperTemplateCallAST::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_templateFileWrapperTemplateCallAST ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_templateFileWrapperTemplateCallAST::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_templateFileWrapperTemplateCallAST (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_templateFileWrapperTemplateCallAST GGS_templateFileWrapperTemplateCallAST::extractObject (const GGS_object & inObject,
+                                                                                              Compiler * inCompiler
+                                                                                              COMMA_LOCATION_ARGS) {
+  GGS_templateFileWrapperTemplateCallAST result ;
+  const GGS_templateFileWrapperTemplateCallAST * p = (const GGS_templateFileWrapperTemplateCallAST *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_templateFileWrapperTemplateCallAST *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("templateFileWrapperTemplateCallAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+// @templateExtensionTemplateCallAST reference class
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GGS_templateExtensionTemplateCallAST::objectCompare (const GGS_templateExtensionTemplateCallAST & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    const size_t myObjectPtr = size_t (mObjectPtr) ;
+    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_templateExtensionTemplateCallAST::GGS_templateExtensionTemplateCallAST (void) :
+GGS_templateExpressionAST () {
+}
+
+//--- Synthetized initializer ----------------------------------------------------------------------
+
+GGS_templateExtensionTemplateCallAST GGS_templateExtensionTemplateCallAST::
+init_21__21__21_ (const GGS_templateExpressionAST & in_mExpressionValue,
+                  const GGS_lstring & in_mTemplateName,
+                  const GGS_templateExpressionListAST & in_mOutExpressionList,
+                  Compiler * inCompiler
+                  COMMA_LOCATION_ARGS) {
+  cPtr_templateExtensionTemplateCallAST * object = nullptr ;
+  macroMyNew (object, cPtr_templateExtensionTemplateCallAST (inCompiler COMMA_THERE)) ;
+  object->templateExtensionTemplateCallAST_init_21__21__21_ (in_mExpressionValue, in_mTemplateName, in_mOutExpressionList, inCompiler) ;
+  const GGS_templateExtensionTemplateCallAST result (object) ;
+  macroDetachSharedObject (object) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_templateExtensionTemplateCallAST::
+templateExtensionTemplateCallAST_init_21__21__21_ (const GGS_templateExpressionAST & in_mExpressionValue,
+                                                   const GGS_lstring & in_mTemplateName,
+                                                   const GGS_templateExpressionListAST & in_mOutExpressionList,
+                                                   Compiler * /* inCompiler */) {
+  mProperty_mExpressionValue = in_mExpressionValue ;
+  mProperty_mTemplateName = in_mTemplateName ;
+  mProperty_mOutExpressionList = in_mOutExpressionList ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_templateExtensionTemplateCallAST::GGS_templateExtensionTemplateCallAST (const cPtr_templateExtensionTemplateCallAST * inSourcePtr) :
+GGS_templateExpressionAST (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_templateExtensionTemplateCallAST) ;
+}
+//--------------------------------------------------------------------------------------------------
+
+GGS_templateExpressionAST GGS_templateExtensionTemplateCallAST::readProperty_mExpressionValue (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_templateExpressionAST () ;
+  }else{
+    cPtr_templateExtensionTemplateCallAST * p = (cPtr_templateExtensionTemplateCallAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_templateExtensionTemplateCallAST) ;
+    return p->mProperty_mExpressionValue ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstring GGS_templateExtensionTemplateCallAST::readProperty_mTemplateName (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_lstring () ;
+  }else{
+    cPtr_templateExtensionTemplateCallAST * p = (cPtr_templateExtensionTemplateCallAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_templateExtensionTemplateCallAST) ;
+    return p->mProperty_mTemplateName ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_templateExpressionListAST GGS_templateExtensionTemplateCallAST::readProperty_mOutExpressionList (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_templateExpressionListAST () ;
+  }else{
+    cPtr_templateExtensionTemplateCallAST * p = (cPtr_templateExtensionTemplateCallAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_templateExtensionTemplateCallAST) ;
+    return p->mProperty_mOutExpressionList ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//Pointer class for @templateExtensionTemplateCallAST class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_templateExtensionTemplateCallAST::cPtr_templateExtensionTemplateCallAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_templateExpressionAST (inCompiler COMMA_THERE),
+mProperty_mExpressionValue (),
+mProperty_mTemplateName (),
+mProperty_mOutExpressionList () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+cPtr_templateExtensionTemplateCallAST::cPtr_templateExtensionTemplateCallAST (const GGS_templateExpressionAST & in_mExpressionValue,
+                                                                              const GGS_lstring & in_mTemplateName,
+                                                                              const GGS_templateExpressionListAST & in_mOutExpressionList,
+                                                                              Compiler * inCompiler
+                                                                              COMMA_LOCATION_ARGS) :
+cPtr_templateExpressionAST (inCompiler COMMA_THERE),
+mProperty_mExpressionValue (),
+mProperty_mTemplateName (),
+mProperty_mOutExpressionList () {
+  mProperty_mExpressionValue = in_mExpressionValue ;
+  mProperty_mTemplateName = in_mTemplateName ;
+  mProperty_mOutExpressionList = in_mOutExpressionList ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * cPtr_templateExtensionTemplateCallAST::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_templateExtensionTemplateCallAST ;
+}
+
+void cPtr_templateExtensionTemplateCallAST::description (String & ioString,
+                                                         const int32_t inIndentation) const {
+  ioString.appendCString ("[@templateExtensionTemplateCallAST:") ;
+  mProperty_mExpressionValue.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mTemplateName.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mOutExpressionList.description (ioString, inIndentation+1) ;
+  ioString.appendCString ("]") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AbstractPtrClass * cPtr_templateExtensionTemplateCallAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  AbstractPtrClass * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_templateExtensionTemplateCallAST (mProperty_mExpressionValue, mProperty_mTemplateName, mProperty_mOutExpressionList, inCompiler COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_templateExtensionTemplateCallAST::printNonNullClassInstanceProperties (void) const {
+    cPtr_templateExpressionAST::printNonNullClassInstanceProperties () ;
+    mProperty_mExpressionValue.printNonNullClassInstanceProperties ("mExpressionValue") ;
+    mProperty_mTemplateName.printNonNullClassInstanceProperties ("mTemplateName") ;
+    mProperty_mOutExpressionList.printNonNullClassInstanceProperties ("mOutExpressionList") ;
+  }
+#endif
+
+//--------------------------------------------------------------------------------------------------
+//     @templateExtensionTemplateCallAST generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_templateExtensionTemplateCallAST ("templateExtensionTemplateCallAST",
+                                                                                     & kTypeDescriptor_GALGAS_templateExpressionAST) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_templateExtensionTemplateCallAST::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_templateExtensionTemplateCallAST ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_templateExtensionTemplateCallAST::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_templateExtensionTemplateCallAST (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_templateExtensionTemplateCallAST GGS_templateExtensionTemplateCallAST::extractObject (const GGS_object & inObject,
+                                                                                          Compiler * inCompiler
+                                                                                          COMMA_LOCATION_ARGS) {
+  GGS_templateExtensionTemplateCallAST result ;
+  const GGS_templateExtensionTemplateCallAST * p = (const GGS_templateExtensionTemplateCallAST *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_templateExtensionTemplateCallAST *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("templateExtensionTemplateCallAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+// @templateLiteralUIntExpressionAST reference class
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GGS_templateLiteralUIntExpressionAST::objectCompare (const GGS_templateLiteralUIntExpressionAST & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    const size_t myObjectPtr = size_t (mObjectPtr) ;
+    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_templateLiteralUIntExpressionAST::GGS_templateLiteralUIntExpressionAST (void) :
+GGS_templateExpressionAST () {
+}
+
+//--- Synthetized initializer ----------------------------------------------------------------------
+
+GGS_templateLiteralUIntExpressionAST GGS_templateLiteralUIntExpressionAST::
+init_21_ (const GGS_lbigint & in_mLiteralInt,
+          Compiler * inCompiler
+          COMMA_LOCATION_ARGS) {
+  cPtr_templateLiteralUIntExpressionAST * object = nullptr ;
+  macroMyNew (object, cPtr_templateLiteralUIntExpressionAST (inCompiler COMMA_THERE)) ;
+  object->templateLiteralUIntExpressionAST_init_21_ (in_mLiteralInt, inCompiler) ;
+  const GGS_templateLiteralUIntExpressionAST result (object) ;
+  macroDetachSharedObject (object) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_templateLiteralUIntExpressionAST::
+templateLiteralUIntExpressionAST_init_21_ (const GGS_lbigint & in_mLiteralInt,
+                                           Compiler * /* inCompiler */) {
+  mProperty_mLiteralInt = in_mLiteralInt ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_templateLiteralUIntExpressionAST::GGS_templateLiteralUIntExpressionAST (const cPtr_templateLiteralUIntExpressionAST * inSourcePtr) :
+GGS_templateExpressionAST (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_templateLiteralUIntExpressionAST) ;
+}
+//--------------------------------------------------------------------------------------------------
+
+GGS_lbigint GGS_templateLiteralUIntExpressionAST::readProperty_mLiteralInt (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_lbigint () ;
+  }else{
+    cPtr_templateLiteralUIntExpressionAST * p = (cPtr_templateLiteralUIntExpressionAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_templateLiteralUIntExpressionAST) ;
+    return p->mProperty_mLiteralInt ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//Pointer class for @templateLiteralUIntExpressionAST class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_templateLiteralUIntExpressionAST::cPtr_templateLiteralUIntExpressionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_templateExpressionAST (inCompiler COMMA_THERE),
+mProperty_mLiteralInt () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+cPtr_templateLiteralUIntExpressionAST::cPtr_templateLiteralUIntExpressionAST (const GGS_lbigint & in_mLiteralInt,
+                                                                              Compiler * inCompiler
+                                                                              COMMA_LOCATION_ARGS) :
+cPtr_templateExpressionAST (inCompiler COMMA_THERE),
+mProperty_mLiteralInt () {
+  mProperty_mLiteralInt = in_mLiteralInt ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * cPtr_templateLiteralUIntExpressionAST::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_templateLiteralUIntExpressionAST ;
+}
+
+void cPtr_templateLiteralUIntExpressionAST::description (String & ioString,
+                                                         const int32_t inIndentation) const {
+  ioString.appendCString ("[@templateLiteralUIntExpressionAST:") ;
+  mProperty_mLiteralInt.description (ioString, inIndentation+1) ;
+  ioString.appendCString ("]") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AbstractPtrClass * cPtr_templateLiteralUIntExpressionAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  AbstractPtrClass * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_templateLiteralUIntExpressionAST (mProperty_mLiteralInt, inCompiler COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_templateLiteralUIntExpressionAST::printNonNullClassInstanceProperties (void) const {
+    cPtr_templateExpressionAST::printNonNullClassInstanceProperties () ;
+    mProperty_mLiteralInt.printNonNullClassInstanceProperties ("mLiteralInt") ;
+  }
+#endif
+
+//--------------------------------------------------------------------------------------------------
+//     @templateLiteralUIntExpressionAST generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_templateLiteralUIntExpressionAST ("templateLiteralUIntExpressionAST",
+                                                                                     & kTypeDescriptor_GALGAS_templateExpressionAST) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_templateLiteralUIntExpressionAST::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_templateLiteralUIntExpressionAST ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_templateLiteralUIntExpressionAST::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_templateLiteralUIntExpressionAST (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_templateLiteralUIntExpressionAST GGS_templateLiteralUIntExpressionAST::extractObject (const GGS_object & inObject,
+                                                                                          Compiler * inCompiler
+                                                                                          COMMA_LOCATION_ARGS) {
+  GGS_templateLiteralUIntExpressionAST result ;
+  const GGS_templateLiteralUIntExpressionAST * p = (const GGS_templateLiteralUIntExpressionAST *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_templateLiteralUIntExpressionAST *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("templateLiteralUIntExpressionAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+// @structFieldAccessTemplateExpressionAST reference class
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GGS_structFieldAccessTemplateExpressionAST::objectCompare (const GGS_structFieldAccessTemplateExpressionAST & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    const size_t myObjectPtr = size_t (mObjectPtr) ;
+    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_structFieldAccessTemplateExpressionAST::GGS_structFieldAccessTemplateExpressionAST (void) :
+GGS_templateExpressionAST () {
+}
+
+//--- Synthetized initializer ----------------------------------------------------------------------
+
+GGS_structFieldAccessTemplateExpressionAST GGS_structFieldAccessTemplateExpressionAST::
+init_21__21__21_ (const GGS_location & in_mOperatorLocation,
+                  const GGS_templateExpressionAST & in_mExpression,
+                  const GGS_lstring & in_mStructFieldName,
+                  Compiler * inCompiler
+                  COMMA_LOCATION_ARGS) {
+  cPtr_structFieldAccessTemplateExpressionAST * object = nullptr ;
+  macroMyNew (object, cPtr_structFieldAccessTemplateExpressionAST (inCompiler COMMA_THERE)) ;
+  object->structFieldAccessTemplateExpressionAST_init_21__21__21_ (in_mOperatorLocation, in_mExpression, in_mStructFieldName, inCompiler) ;
+  const GGS_structFieldAccessTemplateExpressionAST result (object) ;
+  macroDetachSharedObject (object) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_structFieldAccessTemplateExpressionAST::
+structFieldAccessTemplateExpressionAST_init_21__21__21_ (const GGS_location & in_mOperatorLocation,
+                                                         const GGS_templateExpressionAST & in_mExpression,
+                                                         const GGS_lstring & in_mStructFieldName,
+                                                         Compiler * /* inCompiler */) {
+  mProperty_mOperatorLocation = in_mOperatorLocation ;
+  mProperty_mExpression = in_mExpression ;
+  mProperty_mStructFieldName = in_mStructFieldName ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_structFieldAccessTemplateExpressionAST::GGS_structFieldAccessTemplateExpressionAST (const cPtr_structFieldAccessTemplateExpressionAST * inSourcePtr) :
+GGS_templateExpressionAST (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_structFieldAccessTemplateExpressionAST) ;
+}
+//--------------------------------------------------------------------------------------------------
+
+GGS_location GGS_structFieldAccessTemplateExpressionAST::readProperty_mOperatorLocation (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_location () ;
+  }else{
+    cPtr_structFieldAccessTemplateExpressionAST * p = (cPtr_structFieldAccessTemplateExpressionAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_structFieldAccessTemplateExpressionAST) ;
+    return p->mProperty_mOperatorLocation ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_templateExpressionAST GGS_structFieldAccessTemplateExpressionAST::readProperty_mExpression (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_templateExpressionAST () ;
+  }else{
+    cPtr_structFieldAccessTemplateExpressionAST * p = (cPtr_structFieldAccessTemplateExpressionAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_structFieldAccessTemplateExpressionAST) ;
+    return p->mProperty_mExpression ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstring GGS_structFieldAccessTemplateExpressionAST::readProperty_mStructFieldName (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_lstring () ;
+  }else{
+    cPtr_structFieldAccessTemplateExpressionAST * p = (cPtr_structFieldAccessTemplateExpressionAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_structFieldAccessTemplateExpressionAST) ;
+    return p->mProperty_mStructFieldName ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//Pointer class for @structFieldAccessTemplateExpressionAST class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_structFieldAccessTemplateExpressionAST::cPtr_structFieldAccessTemplateExpressionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_templateExpressionAST (inCompiler COMMA_THERE),
+mProperty_mOperatorLocation (),
+mProperty_mExpression (),
+mProperty_mStructFieldName () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+cPtr_structFieldAccessTemplateExpressionAST::cPtr_structFieldAccessTemplateExpressionAST (const GGS_location & in_mOperatorLocation,
+                                                                                          const GGS_templateExpressionAST & in_mExpression,
+                                                                                          const GGS_lstring & in_mStructFieldName,
+                                                                                          Compiler * inCompiler
+                                                                                          COMMA_LOCATION_ARGS) :
+cPtr_templateExpressionAST (inCompiler COMMA_THERE),
+mProperty_mOperatorLocation (),
+mProperty_mExpression (),
+mProperty_mStructFieldName () {
+  mProperty_mOperatorLocation = in_mOperatorLocation ;
+  mProperty_mExpression = in_mExpression ;
+  mProperty_mStructFieldName = in_mStructFieldName ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * cPtr_structFieldAccessTemplateExpressionAST::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_structFieldAccessTemplateExpressionAST ;
+}
+
+void cPtr_structFieldAccessTemplateExpressionAST::description (String & ioString,
+                                                               const int32_t inIndentation) const {
+  ioString.appendCString ("[@structFieldAccessTemplateExpressionAST:") ;
+  mProperty_mOperatorLocation.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mExpression.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mStructFieldName.description (ioString, inIndentation+1) ;
+  ioString.appendCString ("]") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AbstractPtrClass * cPtr_structFieldAccessTemplateExpressionAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  AbstractPtrClass * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_structFieldAccessTemplateExpressionAST (mProperty_mOperatorLocation, mProperty_mExpression, mProperty_mStructFieldName, inCompiler COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_structFieldAccessTemplateExpressionAST::printNonNullClassInstanceProperties (void) const {
+    cPtr_templateExpressionAST::printNonNullClassInstanceProperties () ;
+    mProperty_mOperatorLocation.printNonNullClassInstanceProperties ("mOperatorLocation") ;
+    mProperty_mExpression.printNonNullClassInstanceProperties ("mExpression") ;
+    mProperty_mStructFieldName.printNonNullClassInstanceProperties ("mStructFieldName") ;
+  }
+#endif
+
+//--------------------------------------------------------------------------------------------------
+//     @structFieldAccessTemplateExpressionAST generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_structFieldAccessTemplateExpressionAST ("structFieldAccessTemplateExpressionAST",
+                                                                                           & kTypeDescriptor_GALGAS_templateExpressionAST) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_structFieldAccessTemplateExpressionAST::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_structFieldAccessTemplateExpressionAST ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_structFieldAccessTemplateExpressionAST::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_structFieldAccessTemplateExpressionAST (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_structFieldAccessTemplateExpressionAST GGS_structFieldAccessTemplateExpressionAST::extractObject (const GGS_object & inObject,
+                                                                                                      Compiler * inCompiler
+                                                                                                      COMMA_LOCATION_ARGS) {
+  GGS_structFieldAccessTemplateExpressionAST result ;
+  const GGS_structFieldAccessTemplateExpressionAST * p = (const GGS_structFieldAccessTemplateExpressionAST *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_structFieldAccessTemplateExpressionAST *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("structFieldAccessTemplateExpressionAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+// @templateOptionAccessAST reference class
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GGS_templateOptionAccessAST::objectCompare (const GGS_templateOptionAccessAST & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    const size_t myObjectPtr = size_t (mObjectPtr) ;
+    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_templateOptionAccessAST::GGS_templateOptionAccessAST (void) :
+GGS_templateExpressionAST () {
+}
+
+//--- Synthetized initializer ----------------------------------------------------------------------
+
+GGS_templateOptionAccessAST GGS_templateOptionAccessAST::
+init_21__21__21_ (const GGS_lstring & in_mOptionComponentName,
+                  const GGS_lstring & in_mOptionName,
+                  const GGS_lstring & in_mGetterName,
+                  Compiler * inCompiler
+                  COMMA_LOCATION_ARGS) {
+  cPtr_templateOptionAccessAST * object = nullptr ;
+  macroMyNew (object, cPtr_templateOptionAccessAST (inCompiler COMMA_THERE)) ;
+  object->templateOptionAccessAST_init_21__21__21_ (in_mOptionComponentName, in_mOptionName, in_mGetterName, inCompiler) ;
+  const GGS_templateOptionAccessAST result (object) ;
+  macroDetachSharedObject (object) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_templateOptionAccessAST::
+templateOptionAccessAST_init_21__21__21_ (const GGS_lstring & in_mOptionComponentName,
+                                          const GGS_lstring & in_mOptionName,
+                                          const GGS_lstring & in_mGetterName,
+                                          Compiler * /* inCompiler */) {
+  mProperty_mOptionComponentName = in_mOptionComponentName ;
+  mProperty_mOptionName = in_mOptionName ;
+  mProperty_mGetterName = in_mGetterName ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_templateOptionAccessAST::GGS_templateOptionAccessAST (const cPtr_templateOptionAccessAST * inSourcePtr) :
+GGS_templateExpressionAST (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_templateOptionAccessAST) ;
+}
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstring GGS_templateOptionAccessAST::readProperty_mOptionComponentName (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_lstring () ;
+  }else{
+    cPtr_templateOptionAccessAST * p = (cPtr_templateOptionAccessAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_templateOptionAccessAST) ;
+    return p->mProperty_mOptionComponentName ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstring GGS_templateOptionAccessAST::readProperty_mOptionName (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_lstring () ;
+  }else{
+    cPtr_templateOptionAccessAST * p = (cPtr_templateOptionAccessAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_templateOptionAccessAST) ;
+    return p->mProperty_mOptionName ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstring GGS_templateOptionAccessAST::readProperty_mGetterName (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_lstring () ;
+  }else{
+    cPtr_templateOptionAccessAST * p = (cPtr_templateOptionAccessAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_templateOptionAccessAST) ;
+    return p->mProperty_mGetterName ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//Pointer class for @templateOptionAccessAST class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_templateOptionAccessAST::cPtr_templateOptionAccessAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_templateExpressionAST (inCompiler COMMA_THERE),
+mProperty_mOptionComponentName (),
+mProperty_mOptionName (),
+mProperty_mGetterName () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+cPtr_templateOptionAccessAST::cPtr_templateOptionAccessAST (const GGS_lstring & in_mOptionComponentName,
+                                                            const GGS_lstring & in_mOptionName,
+                                                            const GGS_lstring & in_mGetterName,
+                                                            Compiler * inCompiler
+                                                            COMMA_LOCATION_ARGS) :
+cPtr_templateExpressionAST (inCompiler COMMA_THERE),
+mProperty_mOptionComponentName (),
+mProperty_mOptionName (),
+mProperty_mGetterName () {
+  mProperty_mOptionComponentName = in_mOptionComponentName ;
+  mProperty_mOptionName = in_mOptionName ;
+  mProperty_mGetterName = in_mGetterName ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * cPtr_templateOptionAccessAST::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_templateOptionAccessAST ;
+}
+
+void cPtr_templateOptionAccessAST::description (String & ioString,
+                                                const int32_t inIndentation) const {
+  ioString.appendCString ("[@templateOptionAccessAST:") ;
+  mProperty_mOptionComponentName.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mOptionName.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mGetterName.description (ioString, inIndentation+1) ;
+  ioString.appendCString ("]") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AbstractPtrClass * cPtr_templateOptionAccessAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  AbstractPtrClass * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_templateOptionAccessAST (mProperty_mOptionComponentName, mProperty_mOptionName, mProperty_mGetterName, inCompiler COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_templateOptionAccessAST::printNonNullClassInstanceProperties (void) const {
+    cPtr_templateExpressionAST::printNonNullClassInstanceProperties () ;
+    mProperty_mOptionComponentName.printNonNullClassInstanceProperties ("mOptionComponentName") ;
+    mProperty_mOptionName.printNonNullClassInstanceProperties ("mOptionName") ;
+    mProperty_mGetterName.printNonNullClassInstanceProperties ("mGetterName") ;
+  }
+#endif
+
+//--------------------------------------------------------------------------------------------------
+//     @templateOptionAccessAST generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_templateOptionAccessAST ("templateOptionAccessAST",
+                                                                            & kTypeDescriptor_GALGAS_templateExpressionAST) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_templateOptionAccessAST::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_templateOptionAccessAST ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_templateOptionAccessAST::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_templateOptionAccessAST (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_templateOptionAccessAST GGS_templateOptionAccessAST::extractObject (const GGS_object & inObject,
+                                                                        Compiler * inCompiler
+                                                                        COMMA_LOCATION_ARGS) {
+  GGS_templateOptionAccessAST result ;
+  const GGS_templateOptionAccessAST * p = (const GGS_templateOptionAccessAST *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_templateOptionAccessAST *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("templateOptionAccessAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+// @templateTestDynamicClassAST reference class
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GGS_templateTestDynamicClassAST::objectCompare (const GGS_templateTestDynamicClassAST & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    const size_t myObjectPtr = size_t (mObjectPtr) ;
+    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_templateTestDynamicClassAST::GGS_templateTestDynamicClassAST (void) :
+GGS_templateExpressionAST () {
+}
+
+//--- Synthetized initializer ----------------------------------------------------------------------
+
+GGS_templateTestDynamicClassAST GGS_templateTestDynamicClassAST::
+init_21__21__21__21_ (const GGS_templateExpressionAST & in_mReceiverExpression,
+                      const GGS_location & in_mEndOfReceiverExpression,
+                      const GGS_dynamicTypeComparisonKind & in_mTypeComparisonKind,
+                      const GGS_lstring & in_mTypeName,
+                      Compiler * inCompiler
+                      COMMA_LOCATION_ARGS) {
+  cPtr_templateTestDynamicClassAST * object = nullptr ;
+  macroMyNew (object, cPtr_templateTestDynamicClassAST (inCompiler COMMA_THERE)) ;
+  object->templateTestDynamicClassAST_init_21__21__21__21_ (in_mReceiverExpression, in_mEndOfReceiverExpression, in_mTypeComparisonKind, in_mTypeName, inCompiler) ;
+  const GGS_templateTestDynamicClassAST result (object) ;
+  macroDetachSharedObject (object) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_templateTestDynamicClassAST::
+templateTestDynamicClassAST_init_21__21__21__21_ (const GGS_templateExpressionAST & in_mReceiverExpression,
+                                                  const GGS_location & in_mEndOfReceiverExpression,
+                                                  const GGS_dynamicTypeComparisonKind & in_mTypeComparisonKind,
+                                                  const GGS_lstring & in_mTypeName,
+                                                  Compiler * /* inCompiler */) {
+  mProperty_mReceiverExpression = in_mReceiverExpression ;
+  mProperty_mEndOfReceiverExpression = in_mEndOfReceiverExpression ;
+  mProperty_mTypeComparisonKind = in_mTypeComparisonKind ;
+  mProperty_mTypeName = in_mTypeName ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_templateTestDynamicClassAST::GGS_templateTestDynamicClassAST (const cPtr_templateTestDynamicClassAST * inSourcePtr) :
+GGS_templateExpressionAST (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_templateTestDynamicClassAST) ;
+}
+//--------------------------------------------------------------------------------------------------
+
+GGS_templateExpressionAST GGS_templateTestDynamicClassAST::readProperty_mReceiverExpression (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_templateExpressionAST () ;
+  }else{
+    cPtr_templateTestDynamicClassAST * p = (cPtr_templateTestDynamicClassAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_templateTestDynamicClassAST) ;
+    return p->mProperty_mReceiverExpression ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_location GGS_templateTestDynamicClassAST::readProperty_mEndOfReceiverExpression (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_location () ;
+  }else{
+    cPtr_templateTestDynamicClassAST * p = (cPtr_templateTestDynamicClassAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_templateTestDynamicClassAST) ;
+    return p->mProperty_mEndOfReceiverExpression ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_dynamicTypeComparisonKind GGS_templateTestDynamicClassAST::readProperty_mTypeComparisonKind (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_dynamicTypeComparisonKind () ;
+  }else{
+    cPtr_templateTestDynamicClassAST * p = (cPtr_templateTestDynamicClassAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_templateTestDynamicClassAST) ;
+    return p->mProperty_mTypeComparisonKind ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstring GGS_templateTestDynamicClassAST::readProperty_mTypeName (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_lstring () ;
+  }else{
+    cPtr_templateTestDynamicClassAST * p = (cPtr_templateTestDynamicClassAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_templateTestDynamicClassAST) ;
+    return p->mProperty_mTypeName ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//Pointer class for @templateTestDynamicClassAST class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_templateTestDynamicClassAST::cPtr_templateTestDynamicClassAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_templateExpressionAST (inCompiler COMMA_THERE),
+mProperty_mReceiverExpression (),
+mProperty_mEndOfReceiverExpression (),
+mProperty_mTypeComparisonKind (),
+mProperty_mTypeName () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+cPtr_templateTestDynamicClassAST::cPtr_templateTestDynamicClassAST (const GGS_templateExpressionAST & in_mReceiverExpression,
+                                                                    const GGS_location & in_mEndOfReceiverExpression,
+                                                                    const GGS_dynamicTypeComparisonKind & in_mTypeComparisonKind,
+                                                                    const GGS_lstring & in_mTypeName,
+                                                                    Compiler * inCompiler
+                                                                    COMMA_LOCATION_ARGS) :
+cPtr_templateExpressionAST (inCompiler COMMA_THERE),
+mProperty_mReceiverExpression (),
+mProperty_mEndOfReceiverExpression (),
+mProperty_mTypeComparisonKind (),
+mProperty_mTypeName () {
+  mProperty_mReceiverExpression = in_mReceiverExpression ;
+  mProperty_mEndOfReceiverExpression = in_mEndOfReceiverExpression ;
+  mProperty_mTypeComparisonKind = in_mTypeComparisonKind ;
+  mProperty_mTypeName = in_mTypeName ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * cPtr_templateTestDynamicClassAST::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_templateTestDynamicClassAST ;
+}
+
+void cPtr_templateTestDynamicClassAST::description (String & ioString,
+                                                    const int32_t inIndentation) const {
+  ioString.appendCString ("[@templateTestDynamicClassAST:") ;
+  mProperty_mReceiverExpression.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mEndOfReceiverExpression.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mTypeComparisonKind.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mTypeName.description (ioString, inIndentation+1) ;
+  ioString.appendCString ("]") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AbstractPtrClass * cPtr_templateTestDynamicClassAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  AbstractPtrClass * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_templateTestDynamicClassAST (mProperty_mReceiverExpression, mProperty_mEndOfReceiverExpression, mProperty_mTypeComparisonKind, mProperty_mTypeName, inCompiler COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_templateTestDynamicClassAST::printNonNullClassInstanceProperties (void) const {
+    cPtr_templateExpressionAST::printNonNullClassInstanceProperties () ;
+    mProperty_mReceiverExpression.printNonNullClassInstanceProperties ("mReceiverExpression") ;
+    mProperty_mEndOfReceiverExpression.printNonNullClassInstanceProperties ("mEndOfReceiverExpression") ;
+    mProperty_mTypeComparisonKind.printNonNullClassInstanceProperties ("mTypeComparisonKind") ;
+    mProperty_mTypeName.printNonNullClassInstanceProperties ("mTypeName") ;
+  }
+#endif
+
+//--------------------------------------------------------------------------------------------------
+//     @templateTestDynamicClassAST generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_templateTestDynamicClassAST ("templateTestDynamicClassAST",
+                                                                                & kTypeDescriptor_GALGAS_templateExpressionAST) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_templateTestDynamicClassAST::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_templateTestDynamicClassAST ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_templateTestDynamicClassAST::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_templateTestDynamicClassAST (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_templateTestDynamicClassAST GGS_templateTestDynamicClassAST::extractObject (const GGS_object & inObject,
+                                                                                Compiler * inCompiler
+                                                                                COMMA_LOCATION_ARGS) {
+  GGS_templateTestDynamicClassAST result ;
+  const GGS_templateTestDynamicClassAST * p = (const GGS_templateTestDynamicClassAST *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_templateTestDynamicClassAST *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("templateTestDynamicClassAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+// @templateFunctionCallAST reference class
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GGS_templateFunctionCallAST::objectCompare (const GGS_templateFunctionCallAST & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    const size_t myObjectPtr = size_t (mObjectPtr) ;
+    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_templateFunctionCallAST::GGS_templateFunctionCallAST (void) :
+GGS_templateExpressionAST () {
+}
+
+//--- Synthetized initializer ----------------------------------------------------------------------
+
+GGS_templateFunctionCallAST GGS_templateFunctionCallAST::
+init_21__21_ (const GGS_lstring & in_mFunctionName,
+              const GGS_templateExpressionListAST & in_mExpressionList,
+              Compiler * inCompiler
+              COMMA_LOCATION_ARGS) {
+  cPtr_templateFunctionCallAST * object = nullptr ;
+  macroMyNew (object, cPtr_templateFunctionCallAST (inCompiler COMMA_THERE)) ;
+  object->templateFunctionCallAST_init_21__21_ (in_mFunctionName, in_mExpressionList, inCompiler) ;
+  const GGS_templateFunctionCallAST result (object) ;
+  macroDetachSharedObject (object) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_templateFunctionCallAST::
+templateFunctionCallAST_init_21__21_ (const GGS_lstring & in_mFunctionName,
+                                      const GGS_templateExpressionListAST & in_mExpressionList,
+                                      Compiler * /* inCompiler */) {
+  mProperty_mFunctionName = in_mFunctionName ;
+  mProperty_mExpressionList = in_mExpressionList ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_templateFunctionCallAST::GGS_templateFunctionCallAST (const cPtr_templateFunctionCallAST * inSourcePtr) :
+GGS_templateExpressionAST (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_templateFunctionCallAST) ;
+}
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstring GGS_templateFunctionCallAST::readProperty_mFunctionName (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_lstring () ;
+  }else{
+    cPtr_templateFunctionCallAST * p = (cPtr_templateFunctionCallAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_templateFunctionCallAST) ;
+    return p->mProperty_mFunctionName ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_templateExpressionListAST GGS_templateFunctionCallAST::readProperty_mExpressionList (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_templateExpressionListAST () ;
+  }else{
+    cPtr_templateFunctionCallAST * p = (cPtr_templateFunctionCallAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_templateFunctionCallAST) ;
+    return p->mProperty_mExpressionList ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//Pointer class for @templateFunctionCallAST class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_templateFunctionCallAST::cPtr_templateFunctionCallAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_templateExpressionAST (inCompiler COMMA_THERE),
+mProperty_mFunctionName (),
+mProperty_mExpressionList () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+cPtr_templateFunctionCallAST::cPtr_templateFunctionCallAST (const GGS_lstring & in_mFunctionName,
+                                                            const GGS_templateExpressionListAST & in_mExpressionList,
+                                                            Compiler * inCompiler
+                                                            COMMA_LOCATION_ARGS) :
+cPtr_templateExpressionAST (inCompiler COMMA_THERE),
+mProperty_mFunctionName (),
+mProperty_mExpressionList () {
+  mProperty_mFunctionName = in_mFunctionName ;
+  mProperty_mExpressionList = in_mExpressionList ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * cPtr_templateFunctionCallAST::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_templateFunctionCallAST ;
+}
+
+void cPtr_templateFunctionCallAST::description (String & ioString,
+                                                const int32_t inIndentation) const {
+  ioString.appendCString ("[@templateFunctionCallAST:") ;
+  mProperty_mFunctionName.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mExpressionList.description (ioString, inIndentation+1) ;
+  ioString.appendCString ("]") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AbstractPtrClass * cPtr_templateFunctionCallAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  AbstractPtrClass * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_templateFunctionCallAST (mProperty_mFunctionName, mProperty_mExpressionList, inCompiler COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_templateFunctionCallAST::printNonNullClassInstanceProperties (void) const {
+    cPtr_templateExpressionAST::printNonNullClassInstanceProperties () ;
+    mProperty_mFunctionName.printNonNullClassInstanceProperties ("mFunctionName") ;
+    mProperty_mExpressionList.printNonNullClassInstanceProperties ("mExpressionList") ;
+  }
+#endif
+
+//--------------------------------------------------------------------------------------------------
+//     @templateFunctionCallAST generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_templateFunctionCallAST ("templateFunctionCallAST",
+                                                                            & kTypeDescriptor_GALGAS_templateExpressionAST) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_templateFunctionCallAST::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_templateFunctionCallAST ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_templateFunctionCallAST::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_templateFunctionCallAST (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_templateFunctionCallAST GGS_templateFunctionCallAST::extractObject (const GGS_object & inObject,
+                                                                        Compiler * inCompiler
+                                                                        COMMA_LOCATION_ARGS) {
+  GGS_templateFunctionCallAST result ;
+  const GGS_templateFunctionCallAST * p = (const GGS_templateFunctionCallAST *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_templateFunctionCallAST *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("templateFunctionCallAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+// @templateVarInExpressionAST reference class
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GGS_templateVarInExpressionAST::objectCompare (const GGS_templateVarInExpressionAST & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    const size_t myObjectPtr = size_t (mObjectPtr) ;
+    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_templateVarInExpressionAST::GGS_templateVarInExpressionAST (void) :
+GGS_templateExpressionAST () {
+}
+
+//--- Synthetized initializer ----------------------------------------------------------------------
+
+GGS_templateVarInExpressionAST GGS_templateVarInExpressionAST::
+init_21_ (const GGS_lstring & in_mVarName,
+          Compiler * inCompiler
+          COMMA_LOCATION_ARGS) {
+  cPtr_templateVarInExpressionAST * object = nullptr ;
+  macroMyNew (object, cPtr_templateVarInExpressionAST (inCompiler COMMA_THERE)) ;
+  object->templateVarInExpressionAST_init_21_ (in_mVarName, inCompiler) ;
+  const GGS_templateVarInExpressionAST result (object) ;
+  macroDetachSharedObject (object) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_templateVarInExpressionAST::
+templateVarInExpressionAST_init_21_ (const GGS_lstring & in_mVarName,
+                                     Compiler * /* inCompiler */) {
+  mProperty_mVarName = in_mVarName ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_templateVarInExpressionAST::GGS_templateVarInExpressionAST (const cPtr_templateVarInExpressionAST * inSourcePtr) :
+GGS_templateExpressionAST (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_templateVarInExpressionAST) ;
+}
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstring GGS_templateVarInExpressionAST::readProperty_mVarName (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_lstring () ;
+  }else{
+    cPtr_templateVarInExpressionAST * p = (cPtr_templateVarInExpressionAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_templateVarInExpressionAST) ;
+    return p->mProperty_mVarName ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//Pointer class for @templateVarInExpressionAST class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_templateVarInExpressionAST::cPtr_templateVarInExpressionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_templateExpressionAST (inCompiler COMMA_THERE),
+mProperty_mVarName () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+cPtr_templateVarInExpressionAST::cPtr_templateVarInExpressionAST (const GGS_lstring & in_mVarName,
+                                                                  Compiler * inCompiler
+                                                                  COMMA_LOCATION_ARGS) :
+cPtr_templateExpressionAST (inCompiler COMMA_THERE),
+mProperty_mVarName () {
+  mProperty_mVarName = in_mVarName ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * cPtr_templateVarInExpressionAST::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_templateVarInExpressionAST ;
+}
+
+void cPtr_templateVarInExpressionAST::description (String & ioString,
+                                                   const int32_t inIndentation) const {
+  ioString.appendCString ("[@templateVarInExpressionAST:") ;
+  mProperty_mVarName.description (ioString, inIndentation+1) ;
+  ioString.appendCString ("]") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AbstractPtrClass * cPtr_templateVarInExpressionAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  AbstractPtrClass * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_templateVarInExpressionAST (mProperty_mVarName, inCompiler COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_templateVarInExpressionAST::printNonNullClassInstanceProperties (void) const {
+    cPtr_templateExpressionAST::printNonNullClassInstanceProperties () ;
+    mProperty_mVarName.printNonNullClassInstanceProperties ("mVarName") ;
+  }
+#endif
+
+//--------------------------------------------------------------------------------------------------
+//     @templateVarInExpressionAST generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_templateVarInExpressionAST ("templateVarInExpressionAST",
+                                                                               & kTypeDescriptor_GALGAS_templateExpressionAST) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_templateVarInExpressionAST::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_templateVarInExpressionAST ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_templateVarInExpressionAST::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_templateVarInExpressionAST (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_templateVarInExpressionAST GGS_templateVarInExpressionAST::extractObject (const GGS_object & inObject,
+                                                                              Compiler * inCompiler
+                                                                              COMMA_LOCATION_ARGS) {
+  GGS_templateVarInExpressionAST result ;
+  const GGS_templateVarInExpressionAST * p = (const GGS_templateVarInExpressionAST *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_templateVarInExpressionAST *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("templateVarInExpressionAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+#include "MF_MemoryControl.h"
+#include "C_galgas_CLI_Options.h"
+
+#include "FileManager.h"
+
+//--------------------------------------------------------------------------------------------------
+
+
+//--------------------------------------------------------------------------------------------------
+//
+//                             N O N    T E R M I N A L    N A M E S                                
+//
+//--------------------------------------------------------------------------------------------------
+
+static const char * gNonTerminalNames_templateGrammar [50] = {
+  "<expression_tpl>",// Index 0
+  "<relation_term_tpl>",// Index 1
+  "<relation_factor_tpl>",// Index 2
+  "<simple_expression_tpl>",// Index 3
+  "<term_tpl>",// Index 4
+  "<factor_tpl>",// Index 5
+  "<primary_tpl>",// Index 6
+  "<output_expression_list_tpl>",// Index 7
+  "<template_instruction>",// Index 8
+  "<template_parser_start_symbol>",// Index 9
+  "<for_instruction_element>",// Index 10
+  "<for_instruction_enumerated_object>",// Index 11
+  "<switch_case>",// Index 12
+  "<select_templateSyntax_0>",// Index 13
+  "<select_templateSyntax_1>",// Index 14
+  "<select_templateSyntax_2>",// Index 15
+  "<select_templateSyntax_3>",// Index 16
+  "<select_templateSyntax_4>",// Index 17
+  "<select_templateSyntax_5>",// Index 18
+  "<select_templateSyntax_6>",// Index 19
+  "<select_templateSyntax_7>",// Index 20
+  "<select_templateSyntax_8>",// Index 21
+  "<select_templateSyntax_9>",// Index 22
+  "<select_templateSyntax_10>",// Index 23
+  "<select_templateSyntax_11>",// Index 24
+  "<select_templateSyntax_12>",// Index 25
+  "<select_templateSyntax_13>",// Index 26
+  "<select_templateSyntax_14>",// Index 27
+  "<select_templateSyntax_15>",// Index 28
+  "<select_templateSyntax_16>",// Index 29
+  "<select_templateSyntax_17>",// Index 30
+  "<select_templateSyntax_18>",// Index 31
+  "<select_templateSyntax_19>",// Index 32
+  "<select_templateSyntax_20>",// Index 33
+  "<select_templateSyntax_21>",// Index 34
+  "<select_templateSyntax_22>",// Index 35
+  "<select_templateSyntax_23>",// Index 36
+  "<select_templateSyntax_24>",// Index 37
+  "<select_templateSyntax_25>",// Index 38
+  "<select_templateSyntax_26>",// Index 39
+  "<select_templateSyntax_27>",// Index 40
+  "<select_templateSyntax_28>",// Index 41
+  "<select_templateSyntax_29>",// Index 42
+  "<select_templateSyntax_30>",// Index 43
+  "<select_templateSyntax_31>",// Index 44
+  "<select_templateSyntax_32>",// Index 45
+  "<select_templateSyntax_33>",// Index 46
+  "<select_templateSyntax_34>",// Index 47
+  "<select_templateSyntax_35>",// Index 48
+  "<>"// Index 49
+} ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//                      S L R    A N A L Y Z E R    A C T I O N    T A B L E                        
+//
+//--------------------------------------------------------------------------------------------------
+
+// Action tables handle shift and reduce actions:
+//  - a shift action is (terminal_symbol, SHIFT (n)): if shifts to state n;
+//  - the accept action is (terminal_symbol, ACCEPT);
+//  - a reduce action is (terminal_symbol, REDUCE (n)); if reduces to state n.
+
+static const int32_t gActionTable_templateGrammar [] = {
+// State S0 (index = 0)
+  Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_SHIFT (1)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_SHIFT (2)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_SHIFT (3)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_SHIFT (4)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_SHIFT (5)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_SHIFT (6)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_SHIFT (7)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (82)
+, BOTTOM_UP_END
+// State S1 (index = 17)
+, Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_SHIFT (11)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (12)
+, Lexique_galgasTemplateScanner::kToken_not, BOTTOM_UP_SHIFT (13)
+, Lexique_galgasTemplateScanner::kToken__7E_, BOTTOM_UP_SHIFT (14)
+, Lexique_galgasTemplateScanner::kToken__28_, BOTTOM_UP_SHIFT (15)
+, Lexique_galgasTemplateScanner::kToken_true, BOTTOM_UP_SHIFT (16)
+, Lexique_galgasTemplateScanner::kToken_false, BOTTOM_UP_SHIFT (17)
+, Lexique_galgasTemplateScanner::kToken_literalInt, BOTTOM_UP_SHIFT (18)
+, Lexique_galgasTemplateScanner::kToken_double_2E_xxx, BOTTOM_UP_SHIFT (19)
+, Lexique_galgasTemplateScanner::kToken__27_char_27_, BOTTOM_UP_SHIFT (20)
+, Lexique_galgasTemplateScanner::kToken__22_string_22_, BOTTOM_UP_SHIFT (21)
+, Lexique_galgasTemplateScanner::kToken__5B_, BOTTOM_UP_SHIFT (22)
+, BOTTOM_UP_END
+// State S2 (index = 42)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (22)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (22)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (22)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (22)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (22)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_REDUCE (22)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (22)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (22)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_REDUCE (22)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (22)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (22)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (22)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_REDUCE (22)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (22)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (22)
+, BOTTOM_UP_END
+// State S3 (index = 73)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (23)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (23)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (23)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (23)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (23)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_REDUCE (23)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (23)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (23)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_REDUCE (23)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (23)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (23)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (23)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_REDUCE (23)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (23)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (23)
+, BOTTOM_UP_END
+// State S4 (index = 104)
+, Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_SHIFT (11)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (12)
+, Lexique_galgasTemplateScanner::kToken_not, BOTTOM_UP_SHIFT (13)
+, Lexique_galgasTemplateScanner::kToken__7E_, BOTTOM_UP_SHIFT (14)
+, Lexique_galgasTemplateScanner::kToken__28_, BOTTOM_UP_SHIFT (15)
+, Lexique_galgasTemplateScanner::kToken_true, BOTTOM_UP_SHIFT (16)
+, Lexique_galgasTemplateScanner::kToken_false, BOTTOM_UP_SHIFT (17)
+, Lexique_galgasTemplateScanner::kToken_literalInt, BOTTOM_UP_SHIFT (18)
+, Lexique_galgasTemplateScanner::kToken_double_2E_xxx, BOTTOM_UP_SHIFT (19)
+, Lexique_galgasTemplateScanner::kToken__27_char_27_, BOTTOM_UP_SHIFT (20)
+, Lexique_galgasTemplateScanner::kToken__22_string_22_, BOTTOM_UP_SHIFT (21)
+, Lexique_galgasTemplateScanner::kToken__5B_, BOTTOM_UP_SHIFT (22)
+, BOTTOM_UP_END
+// State S5 (index = 129)
+, Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_SHIFT (11)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (12)
+, Lexique_galgasTemplateScanner::kToken_not, BOTTOM_UP_SHIFT (13)
+, Lexique_galgasTemplateScanner::kToken__7E_, BOTTOM_UP_SHIFT (14)
+, Lexique_galgasTemplateScanner::kToken__28_, BOTTOM_UP_SHIFT (15)
+, Lexique_galgasTemplateScanner::kToken_true, BOTTOM_UP_SHIFT (16)
+, Lexique_galgasTemplateScanner::kToken_false, BOTTOM_UP_SHIFT (17)
+, Lexique_galgasTemplateScanner::kToken_literalInt, BOTTOM_UP_SHIFT (18)
+, Lexique_galgasTemplateScanner::kToken_double_2E_xxx, BOTTOM_UP_SHIFT (19)
+, Lexique_galgasTemplateScanner::kToken__27_char_27_, BOTTOM_UP_SHIFT (20)
+, Lexique_galgasTemplateScanner::kToken__22_string_22_, BOTTOM_UP_SHIFT (21)
+, Lexique_galgasTemplateScanner::kToken__5B_, BOTTOM_UP_SHIFT (22)
+, BOTTOM_UP_END
+// State S6 (index = 154)
+, Lexique_galgasTemplateScanner::kToken__3E_, BOTTOM_UP_SHIFT (32)
+, Lexique_galgasTemplateScanner::kToken__3C_, BOTTOM_UP_SHIFT (33)
+, Lexique_galgasTemplateScanner::kToken__28_, BOTTOM_UP_REDUCE (88)
+, BOTTOM_UP_END
+// State S7 (index = 161)
+, Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_SHIFT (11)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (12)
+, Lexique_galgasTemplateScanner::kToken_not, BOTTOM_UP_SHIFT (13)
+, Lexique_galgasTemplateScanner::kToken__7E_, BOTTOM_UP_SHIFT (14)
+, Lexique_galgasTemplateScanner::kToken__28_, BOTTOM_UP_SHIFT (15)
+, Lexique_galgasTemplateScanner::kToken_true, BOTTOM_UP_SHIFT (16)
+, Lexique_galgasTemplateScanner::kToken_false, BOTTOM_UP_SHIFT (17)
+, Lexique_galgasTemplateScanner::kToken_literalInt, BOTTOM_UP_SHIFT (18)
+, Lexique_galgasTemplateScanner::kToken_double_2E_xxx, BOTTOM_UP_SHIFT (19)
+, Lexique_galgasTemplateScanner::kToken__27_char_27_, BOTTOM_UP_SHIFT (20)
+, Lexique_galgasTemplateScanner::kToken__22_string_22_, BOTTOM_UP_SHIFT (21)
+, Lexique_galgasTemplateScanner::kToken__5B_, BOTTOM_UP_SHIFT (22)
+, BOTTOM_UP_END
+// State S8 (index = 186)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_SHIFT (1)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_SHIFT (2)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_SHIFT (3)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_SHIFT (4)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_SHIFT (5)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_SHIFT (6)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_SHIFT (7)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (82)
+, BOTTOM_UP_END
+// State S9 (index = 203)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_ACCEPT
+, BOTTOM_UP_END
+// State S10 (index = 206)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (26)
+, BOTTOM_UP_END
+// State S11 (index = 209)
+, Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_SHIFT (11)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (12)
+, Lexique_galgasTemplateScanner::kToken_not, BOTTOM_UP_SHIFT (13)
+, Lexique_galgasTemplateScanner::kToken__7E_, BOTTOM_UP_SHIFT (14)
+, Lexique_galgasTemplateScanner::kToken__28_, BOTTOM_UP_SHIFT (15)
+, Lexique_galgasTemplateScanner::kToken_true, BOTTOM_UP_SHIFT (16)
+, Lexique_galgasTemplateScanner::kToken_false, BOTTOM_UP_SHIFT (17)
+, Lexique_galgasTemplateScanner::kToken_literalInt, BOTTOM_UP_SHIFT (18)
+, Lexique_galgasTemplateScanner::kToken_double_2E_xxx, BOTTOM_UP_SHIFT (19)
+, Lexique_galgasTemplateScanner::kToken__27_char_27_, BOTTOM_UP_SHIFT (20)
+, Lexique_galgasTemplateScanner::kToken__22_string_22_, BOTTOM_UP_SHIFT (21)
+, Lexique_galgasTemplateScanner::kToken__5B_, BOTTOM_UP_SHIFT (22)
+, BOTTOM_UP_END
+// State S12 (index = 234)
+, Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (9)
+, Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (9)
+, Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (9)
+, Lexique_galgasTemplateScanner::kToken__3D__3D_, BOTTOM_UP_REDUCE (9)
+, Lexique_galgasTemplateScanner::kToken__21__3D_, BOTTOM_UP_REDUCE (9)
+, Lexique_galgasTemplateScanner::kToken__3C__3D_, BOTTOM_UP_REDUCE (9)
+, Lexique_galgasTemplateScanner::kToken__3E__3D_, BOTTOM_UP_REDUCE (9)
+, Lexique_galgasTemplateScanner::kToken__3E_, BOTTOM_UP_REDUCE (9)
+, Lexique_galgasTemplateScanner::kToken__3C_, BOTTOM_UP_REDUCE (9)
+, Lexique_galgasTemplateScanner::kToken__3C__3C_, BOTTOM_UP_REDUCE (9)
+, Lexique_galgasTemplateScanner::kToken__3E__3E_, BOTTOM_UP_REDUCE (9)
+, Lexique_galgasTemplateScanner::kToken__2B_, BOTTOM_UP_REDUCE (9)
+, Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_REDUCE (9)
+, Lexique_galgasTemplateScanner::kToken__2A_, BOTTOM_UP_REDUCE (9)
+, Lexique_galgasTemplateScanner::kToken__2F_, BOTTOM_UP_REDUCE (9)
+, Lexique_galgasTemplateScanner::kToken_mod, BOTTOM_UP_REDUCE (9)
+, Lexique_galgasTemplateScanner::kToken__2E_, BOTTOM_UP_REDUCE (9)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (9)
+, Lexique_galgasTemplateScanner::kToken__28_, BOTTOM_UP_SHIFT (38)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (9)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (9)
+, Lexique_galgasTemplateScanner::kToken_is, BOTTOM_UP_REDUCE (9)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (9)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (9)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (9)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (9)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (9)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (9)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (9)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_REDUCE (9)
+, Lexique_galgasTemplateScanner::kToken_then, BOTTOM_UP_REDUCE (9)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (9)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (9)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_REDUCE (9)
+, Lexique_galgasTemplateScanner::kToken_before, BOTTOM_UP_REDUCE (9)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (9)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (9)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (9)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_REDUCE (9)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (9)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (9)
+, BOTTOM_UP_END
+// State S13 (index = 317)
+, Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_SHIFT (11)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (12)
+, Lexique_galgasTemplateScanner::kToken_not, BOTTOM_UP_SHIFT (13)
+, Lexique_galgasTemplateScanner::kToken__7E_, BOTTOM_UP_SHIFT (14)
+, Lexique_galgasTemplateScanner::kToken__28_, BOTTOM_UP_SHIFT (15)
+, Lexique_galgasTemplateScanner::kToken_true, BOTTOM_UP_SHIFT (16)
+, Lexique_galgasTemplateScanner::kToken_false, BOTTOM_UP_SHIFT (17)
+, Lexique_galgasTemplateScanner::kToken_literalInt, BOTTOM_UP_SHIFT (18)
+, Lexique_galgasTemplateScanner::kToken_double_2E_xxx, BOTTOM_UP_SHIFT (19)
+, Lexique_galgasTemplateScanner::kToken__27_char_27_, BOTTOM_UP_SHIFT (20)
+, Lexique_galgasTemplateScanner::kToken__22_string_22_, BOTTOM_UP_SHIFT (21)
+, Lexique_galgasTemplateScanner::kToken__5B_, BOTTOM_UP_SHIFT (22)
+, BOTTOM_UP_END
+// State S14 (index = 342)
+, Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_SHIFT (11)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (12)
+, Lexique_galgasTemplateScanner::kToken_not, BOTTOM_UP_SHIFT (13)
+, Lexique_galgasTemplateScanner::kToken__7E_, BOTTOM_UP_SHIFT (14)
+, Lexique_galgasTemplateScanner::kToken__28_, BOTTOM_UP_SHIFT (15)
+, Lexique_galgasTemplateScanner::kToken_true, BOTTOM_UP_SHIFT (16)
+, Lexique_galgasTemplateScanner::kToken_false, BOTTOM_UP_SHIFT (17)
+, Lexique_galgasTemplateScanner::kToken_literalInt, BOTTOM_UP_SHIFT (18)
+, Lexique_galgasTemplateScanner::kToken_double_2E_xxx, BOTTOM_UP_SHIFT (19)
+, Lexique_galgasTemplateScanner::kToken__27_char_27_, BOTTOM_UP_SHIFT (20)
+, Lexique_galgasTemplateScanner::kToken__22_string_22_, BOTTOM_UP_SHIFT (21)
+, Lexique_galgasTemplateScanner::kToken__5B_, BOTTOM_UP_SHIFT (22)
+, BOTTOM_UP_END
+// State S15 (index = 367)
+, Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_SHIFT (11)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (12)
+, Lexique_galgasTemplateScanner::kToken_not, BOTTOM_UP_SHIFT (13)
+, Lexique_galgasTemplateScanner::kToken__7E_, BOTTOM_UP_SHIFT (14)
+, Lexique_galgasTemplateScanner::kToken__28_, BOTTOM_UP_SHIFT (15)
+, Lexique_galgasTemplateScanner::kToken_true, BOTTOM_UP_SHIFT (16)
+, Lexique_galgasTemplateScanner::kToken_false, BOTTOM_UP_SHIFT (17)
+, Lexique_galgasTemplateScanner::kToken_literalInt, BOTTOM_UP_SHIFT (18)
+, Lexique_galgasTemplateScanner::kToken_double_2E_xxx, BOTTOM_UP_SHIFT (19)
+, Lexique_galgasTemplateScanner::kToken__27_char_27_, BOTTOM_UP_SHIFT (20)
+, Lexique_galgasTemplateScanner::kToken__22_string_22_, BOTTOM_UP_SHIFT (21)
+, Lexique_galgasTemplateScanner::kToken__5B_, BOTTOM_UP_SHIFT (22)
+, BOTTOM_UP_END
+// State S16 (index = 392)
+, Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (11)
+, Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (11)
+, Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (11)
+, Lexique_galgasTemplateScanner::kToken__3D__3D_, BOTTOM_UP_REDUCE (11)
+, Lexique_galgasTemplateScanner::kToken__21__3D_, BOTTOM_UP_REDUCE (11)
+, Lexique_galgasTemplateScanner::kToken__3C__3D_, BOTTOM_UP_REDUCE (11)
+, Lexique_galgasTemplateScanner::kToken__3E__3D_, BOTTOM_UP_REDUCE (11)
+, Lexique_galgasTemplateScanner::kToken__3E_, BOTTOM_UP_REDUCE (11)
+, Lexique_galgasTemplateScanner::kToken__3C_, BOTTOM_UP_REDUCE (11)
+, Lexique_galgasTemplateScanner::kToken__3C__3C_, BOTTOM_UP_REDUCE (11)
+, Lexique_galgasTemplateScanner::kToken__3E__3E_, BOTTOM_UP_REDUCE (11)
+, Lexique_galgasTemplateScanner::kToken__2B_, BOTTOM_UP_REDUCE (11)
+, Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_REDUCE (11)
+, Lexique_galgasTemplateScanner::kToken__2A_, BOTTOM_UP_REDUCE (11)
+, Lexique_galgasTemplateScanner::kToken__2F_, BOTTOM_UP_REDUCE (11)
+, Lexique_galgasTemplateScanner::kToken_mod, BOTTOM_UP_REDUCE (11)
+, Lexique_galgasTemplateScanner::kToken__2E_, BOTTOM_UP_REDUCE (11)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (11)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (11)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (11)
+, Lexique_galgasTemplateScanner::kToken_is, BOTTOM_UP_REDUCE (11)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (11)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (11)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (11)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (11)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (11)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (11)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (11)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_REDUCE (11)
+, Lexique_galgasTemplateScanner::kToken_then, BOTTOM_UP_REDUCE (11)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (11)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (11)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_REDUCE (11)
+, Lexique_galgasTemplateScanner::kToken_before, BOTTOM_UP_REDUCE (11)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (11)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (11)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (11)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_REDUCE (11)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (11)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (11)
+, BOTTOM_UP_END
+// State S17 (index = 473)
+, Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (12)
+, Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (12)
+, Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (12)
+, Lexique_galgasTemplateScanner::kToken__3D__3D_, BOTTOM_UP_REDUCE (12)
+, Lexique_galgasTemplateScanner::kToken__21__3D_, BOTTOM_UP_REDUCE (12)
+, Lexique_galgasTemplateScanner::kToken__3C__3D_, BOTTOM_UP_REDUCE (12)
+, Lexique_galgasTemplateScanner::kToken__3E__3D_, BOTTOM_UP_REDUCE (12)
+, Lexique_galgasTemplateScanner::kToken__3E_, BOTTOM_UP_REDUCE (12)
+, Lexique_galgasTemplateScanner::kToken__3C_, BOTTOM_UP_REDUCE (12)
+, Lexique_galgasTemplateScanner::kToken__3C__3C_, BOTTOM_UP_REDUCE (12)
+, Lexique_galgasTemplateScanner::kToken__3E__3E_, BOTTOM_UP_REDUCE (12)
+, Lexique_galgasTemplateScanner::kToken__2B_, BOTTOM_UP_REDUCE (12)
+, Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_REDUCE (12)
+, Lexique_galgasTemplateScanner::kToken__2A_, BOTTOM_UP_REDUCE (12)
+, Lexique_galgasTemplateScanner::kToken__2F_, BOTTOM_UP_REDUCE (12)
+, Lexique_galgasTemplateScanner::kToken_mod, BOTTOM_UP_REDUCE (12)
+, Lexique_galgasTemplateScanner::kToken__2E_, BOTTOM_UP_REDUCE (12)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (12)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (12)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (12)
+, Lexique_galgasTemplateScanner::kToken_is, BOTTOM_UP_REDUCE (12)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (12)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (12)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (12)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (12)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (12)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (12)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (12)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_REDUCE (12)
+, Lexique_galgasTemplateScanner::kToken_then, BOTTOM_UP_REDUCE (12)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (12)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (12)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_REDUCE (12)
+, Lexique_galgasTemplateScanner::kToken_before, BOTTOM_UP_REDUCE (12)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (12)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (12)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (12)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_REDUCE (12)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (12)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (12)
+, BOTTOM_UP_END
+// State S18 (index = 554)
+, Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (13)
+, Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (13)
+, Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (13)
+, Lexique_galgasTemplateScanner::kToken__3D__3D_, BOTTOM_UP_REDUCE (13)
+, Lexique_galgasTemplateScanner::kToken__21__3D_, BOTTOM_UP_REDUCE (13)
+, Lexique_galgasTemplateScanner::kToken__3C__3D_, BOTTOM_UP_REDUCE (13)
+, Lexique_galgasTemplateScanner::kToken__3E__3D_, BOTTOM_UP_REDUCE (13)
+, Lexique_galgasTemplateScanner::kToken__3E_, BOTTOM_UP_REDUCE (13)
+, Lexique_galgasTemplateScanner::kToken__3C_, BOTTOM_UP_REDUCE (13)
+, Lexique_galgasTemplateScanner::kToken__3C__3C_, BOTTOM_UP_REDUCE (13)
+, Lexique_galgasTemplateScanner::kToken__3E__3E_, BOTTOM_UP_REDUCE (13)
+, Lexique_galgasTemplateScanner::kToken__2B_, BOTTOM_UP_REDUCE (13)
+, Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_REDUCE (13)
+, Lexique_galgasTemplateScanner::kToken__2A_, BOTTOM_UP_REDUCE (13)
+, Lexique_galgasTemplateScanner::kToken__2F_, BOTTOM_UP_REDUCE (13)
+, Lexique_galgasTemplateScanner::kToken_mod, BOTTOM_UP_REDUCE (13)
+, Lexique_galgasTemplateScanner::kToken__2E_, BOTTOM_UP_REDUCE (13)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (13)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (13)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (13)
+, Lexique_galgasTemplateScanner::kToken_is, BOTTOM_UP_REDUCE (13)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (13)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (13)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (13)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (13)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (13)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (13)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (13)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_REDUCE (13)
+, Lexique_galgasTemplateScanner::kToken_then, BOTTOM_UP_REDUCE (13)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (13)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (13)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_REDUCE (13)
+, Lexique_galgasTemplateScanner::kToken_before, BOTTOM_UP_REDUCE (13)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (13)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (13)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (13)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_REDUCE (13)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (13)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (13)
+, BOTTOM_UP_END
+// State S19 (index = 635)
+, Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (14)
+, Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (14)
+, Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (14)
+, Lexique_galgasTemplateScanner::kToken__3D__3D_, BOTTOM_UP_REDUCE (14)
+, Lexique_galgasTemplateScanner::kToken__21__3D_, BOTTOM_UP_REDUCE (14)
+, Lexique_galgasTemplateScanner::kToken__3C__3D_, BOTTOM_UP_REDUCE (14)
+, Lexique_galgasTemplateScanner::kToken__3E__3D_, BOTTOM_UP_REDUCE (14)
+, Lexique_galgasTemplateScanner::kToken__3E_, BOTTOM_UP_REDUCE (14)
+, Lexique_galgasTemplateScanner::kToken__3C_, BOTTOM_UP_REDUCE (14)
+, Lexique_galgasTemplateScanner::kToken__3C__3C_, BOTTOM_UP_REDUCE (14)
+, Lexique_galgasTemplateScanner::kToken__3E__3E_, BOTTOM_UP_REDUCE (14)
+, Lexique_galgasTemplateScanner::kToken__2B_, BOTTOM_UP_REDUCE (14)
+, Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_REDUCE (14)
+, Lexique_galgasTemplateScanner::kToken__2A_, BOTTOM_UP_REDUCE (14)
+, Lexique_galgasTemplateScanner::kToken__2F_, BOTTOM_UP_REDUCE (14)
+, Lexique_galgasTemplateScanner::kToken_mod, BOTTOM_UP_REDUCE (14)
+, Lexique_galgasTemplateScanner::kToken__2E_, BOTTOM_UP_REDUCE (14)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (14)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (14)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (14)
+, Lexique_galgasTemplateScanner::kToken_is, BOTTOM_UP_REDUCE (14)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (14)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (14)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (14)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (14)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (14)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (14)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (14)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_REDUCE (14)
+, Lexique_galgasTemplateScanner::kToken_then, BOTTOM_UP_REDUCE (14)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (14)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (14)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_REDUCE (14)
+, Lexique_galgasTemplateScanner::kToken_before, BOTTOM_UP_REDUCE (14)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (14)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (14)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (14)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_REDUCE (14)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (14)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (14)
+, BOTTOM_UP_END
+// State S20 (index = 716)
+, Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (15)
+, Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (15)
+, Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (15)
+, Lexique_galgasTemplateScanner::kToken__3D__3D_, BOTTOM_UP_REDUCE (15)
+, Lexique_galgasTemplateScanner::kToken__21__3D_, BOTTOM_UP_REDUCE (15)
+, Lexique_galgasTemplateScanner::kToken__3C__3D_, BOTTOM_UP_REDUCE (15)
+, Lexique_galgasTemplateScanner::kToken__3E__3D_, BOTTOM_UP_REDUCE (15)
+, Lexique_galgasTemplateScanner::kToken__3E_, BOTTOM_UP_REDUCE (15)
+, Lexique_galgasTemplateScanner::kToken__3C_, BOTTOM_UP_REDUCE (15)
+, Lexique_galgasTemplateScanner::kToken__3C__3C_, BOTTOM_UP_REDUCE (15)
+, Lexique_galgasTemplateScanner::kToken__3E__3E_, BOTTOM_UP_REDUCE (15)
+, Lexique_galgasTemplateScanner::kToken__2B_, BOTTOM_UP_REDUCE (15)
+, Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_REDUCE (15)
+, Lexique_galgasTemplateScanner::kToken__2A_, BOTTOM_UP_REDUCE (15)
+, Lexique_galgasTemplateScanner::kToken__2F_, BOTTOM_UP_REDUCE (15)
+, Lexique_galgasTemplateScanner::kToken_mod, BOTTOM_UP_REDUCE (15)
+, Lexique_galgasTemplateScanner::kToken__2E_, BOTTOM_UP_REDUCE (15)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (15)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (15)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (15)
+, Lexique_galgasTemplateScanner::kToken_is, BOTTOM_UP_REDUCE (15)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (15)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (15)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (15)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (15)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (15)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (15)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (15)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_REDUCE (15)
+, Lexique_galgasTemplateScanner::kToken_then, BOTTOM_UP_REDUCE (15)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (15)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (15)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_REDUCE (15)
+, Lexique_galgasTemplateScanner::kToken_before, BOTTOM_UP_REDUCE (15)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (15)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (15)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (15)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_REDUCE (15)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (15)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (15)
+, BOTTOM_UP_END
+// State S21 (index = 797)
+, Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken__3D__3D_, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken__21__3D_, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken__3C__3D_, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken__3E__3D_, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken__3E_, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken__3C_, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken__3C__3C_, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken__3E__3E_, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken__2B_, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken__2A_, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken__2F_, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken_mod, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken__2E_, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken__22_string_22_, BOTTOM_UP_SHIFT (42)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken_is, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken_then, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken_before, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (57)
+, BOTTOM_UP_END
+// State S22 (index = 880)
+, Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_SHIFT (11)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (12)
+, Lexique_galgasTemplateScanner::kToken_not, BOTTOM_UP_SHIFT (13)
+, Lexique_galgasTemplateScanner::kToken__7E_, BOTTOM_UP_SHIFT (14)
+, Lexique_galgasTemplateScanner::kToken__28_, BOTTOM_UP_SHIFT (15)
+, Lexique_galgasTemplateScanner::kToken_true, BOTTOM_UP_SHIFT (16)
+, Lexique_galgasTemplateScanner::kToken_false, BOTTOM_UP_SHIFT (17)
+, Lexique_galgasTemplateScanner::kToken_literalInt, BOTTOM_UP_SHIFT (18)
+, Lexique_galgasTemplateScanner::kToken_double_2E_xxx, BOTTOM_UP_SHIFT (19)
+, Lexique_galgasTemplateScanner::kToken__27_char_27_, BOTTOM_UP_SHIFT (20)
+, Lexique_galgasTemplateScanner::kToken__22_string_22_, BOTTOM_UP_SHIFT (21)
+, Lexique_galgasTemplateScanner::kToken__5B_, BOTTOM_UP_SHIFT (22)
+, Lexique_galgasTemplateScanner::kToken_template, BOTTOM_UP_SHIFT (44)
+, Lexique_galgasTemplateScanner::kToken__40_type, BOTTOM_UP_SHIFT (45)
+, Lexique_galgasTemplateScanner::kToken_filewrapper, BOTTOM_UP_SHIFT (46)
+, Lexique_galgasTemplateScanner::kToken_option, BOTTOM_UP_SHIFT (47)
+, BOTTOM_UP_END
+// State S23 (index = 913)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (21)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (21)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (21)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (21)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (21)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_REDUCE (21)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (21)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (21)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_REDUCE (21)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (21)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (21)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (21)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_REDUCE (21)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (21)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (21)
+, BOTTOM_UP_END
+// State S24 (index = 944)
+, Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_SHIFT (50)
+, Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_SHIFT (51)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (34)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (34)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (34)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (34)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (34)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (34)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (34)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (34)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (34)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (34)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_REDUCE (34)
+, Lexique_galgasTemplateScanner::kToken_then, BOTTOM_UP_REDUCE (34)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (34)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (34)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_REDUCE (34)
+, Lexique_galgasTemplateScanner::kToken_before, BOTTOM_UP_REDUCE (34)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (34)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (34)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (34)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_REDUCE (34)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (34)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (34)
+, BOTTOM_UP_END
+// State S25 (index = 993)
+, Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (37)
+, Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (37)
+, Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_SHIFT (53)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (37)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (37)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (37)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (37)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (37)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (37)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (37)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (37)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (37)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (37)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_REDUCE (37)
+, Lexique_galgasTemplateScanner::kToken_then, BOTTOM_UP_REDUCE (37)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (37)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (37)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_REDUCE (37)
+, Lexique_galgasTemplateScanner::kToken_before, BOTTOM_UP_REDUCE (37)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (37)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (37)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (37)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_REDUCE (37)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (37)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (37)
+, BOTTOM_UP_END
+// State S26 (index = 1044)
+, Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (39)
+, Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (39)
+, Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (39)
+, Lexique_galgasTemplateScanner::kToken__3D__3D_, BOTTOM_UP_SHIFT (55)
+, Lexique_galgasTemplateScanner::kToken__21__3D_, BOTTOM_UP_SHIFT (56)
+, Lexique_galgasTemplateScanner::kToken__3C__3D_, BOTTOM_UP_SHIFT (57)
+, Lexique_galgasTemplateScanner::kToken__3E__3D_, BOTTOM_UP_SHIFT (58)
+, Lexique_galgasTemplateScanner::kToken__3E_, BOTTOM_UP_SHIFT (59)
+, Lexique_galgasTemplateScanner::kToken__3C_, BOTTOM_UP_SHIFT (60)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (39)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (39)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (39)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (39)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (39)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (39)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (39)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (39)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (39)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (39)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_REDUCE (39)
+, Lexique_galgasTemplateScanner::kToken_then, BOTTOM_UP_REDUCE (39)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (39)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (39)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_REDUCE (39)
+, Lexique_galgasTemplateScanner::kToken_before, BOTTOM_UP_REDUCE (39)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (39)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (39)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (39)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_REDUCE (39)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (39)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (39)
+, BOTTOM_UP_END
+// State S27 (index = 1107)
+, Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__3D__3D_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__21__3D_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__3C__3D_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__3E__3D_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__3E_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__3C_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__3C__3C_, BOTTOM_UP_SHIFT (62)
+, Lexique_galgasTemplateScanner::kToken__3E__3E_, BOTTOM_UP_SHIFT (63)
+, Lexique_galgasTemplateScanner::kToken__2B_, BOTTOM_UP_SHIFT (64)
+, Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_SHIFT (65)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken_then, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken_before, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (46)
+, BOTTOM_UP_END
+// State S28 (index = 1178)
+, Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__3D__3D_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__21__3D_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__3C__3D_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__3E__3D_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__3E_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__3C_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__3C__3C_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__3E__3E_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__2B_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__2A_, BOTTOM_UP_SHIFT (67)
+, Lexique_galgasTemplateScanner::kToken__2F_, BOTTOM_UP_SHIFT (68)
+, Lexique_galgasTemplateScanner::kToken_mod, BOTTOM_UP_SHIFT (69)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken_then, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken_before, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (51)
+, BOTTOM_UP_END
+// State S29 (index = 1255)
+, Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken__3D__3D_, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken__21__3D_, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken__3C__3D_, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken__3E__3D_, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken__3E_, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken__3C_, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken__3C__3C_, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken__3E__3E_, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken__2B_, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken__2A_, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken__2F_, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken_mod, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken__2E_, BOTTOM_UP_SHIFT (71)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken_is, BOTTOM_UP_SHIFT (72)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken_then, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken_before, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (55)
+, BOTTOM_UP_END
+// State S30 (index = 1336)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_SHIFT (74)
+, BOTTOM_UP_END
+// State S31 (index = 1339)
+, Lexique_galgasTemplateScanner::kToken_then, BOTTOM_UP_SHIFT (75)
+, BOTTOM_UP_END
+// State S32 (index = 1342)
+, Lexique_galgasTemplateScanner::kToken__28_, BOTTOM_UP_REDUCE (90)
+, BOTTOM_UP_END
+// State S33 (index = 1345)
+, Lexique_galgasTemplateScanner::kToken__28_, BOTTOM_UP_REDUCE (89)
+, BOTTOM_UP_END
+// State S34 (index = 1348)
+, Lexique_galgasTemplateScanner::kToken__28_, BOTTOM_UP_SHIFT (76)
+, BOTTOM_UP_END
+// State S35 (index = 1351)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (107)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_SHIFT (78)
+, BOTTOM_UP_END
+// State S36 (index = 1356)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (83)
+, BOTTOM_UP_END
+// State S37 (index = 1359)
+, Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (6)
+, Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (6)
+, Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (6)
+, Lexique_galgasTemplateScanner::kToken__3D__3D_, BOTTOM_UP_REDUCE (6)
+, Lexique_galgasTemplateScanner::kToken__21__3D_, BOTTOM_UP_REDUCE (6)
+, Lexique_galgasTemplateScanner::kToken__3C__3D_, BOTTOM_UP_REDUCE (6)
+, Lexique_galgasTemplateScanner::kToken__3E__3D_, BOTTOM_UP_REDUCE (6)
+, Lexique_galgasTemplateScanner::kToken__3E_, BOTTOM_UP_REDUCE (6)
+, Lexique_galgasTemplateScanner::kToken__3C_, BOTTOM_UP_REDUCE (6)
+, Lexique_galgasTemplateScanner::kToken__3C__3C_, BOTTOM_UP_REDUCE (6)
+, Lexique_galgasTemplateScanner::kToken__3E__3E_, BOTTOM_UP_REDUCE (6)
+, Lexique_galgasTemplateScanner::kToken__2B_, BOTTOM_UP_REDUCE (6)
+, Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_REDUCE (6)
+, Lexique_galgasTemplateScanner::kToken__2A_, BOTTOM_UP_REDUCE (6)
+, Lexique_galgasTemplateScanner::kToken__2F_, BOTTOM_UP_REDUCE (6)
+, Lexique_galgasTemplateScanner::kToken_mod, BOTTOM_UP_REDUCE (6)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (6)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (6)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (6)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (6)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (6)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (6)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (6)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (6)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (6)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (6)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_REDUCE (6)
+, Lexique_galgasTemplateScanner::kToken_then, BOTTOM_UP_REDUCE (6)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (6)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (6)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_REDUCE (6)
+, Lexique_galgasTemplateScanner::kToken_before, BOTTOM_UP_REDUCE (6)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (6)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (6)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (6)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_REDUCE (6)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (6)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (6)
+, BOTTOM_UP_END
+// State S38 (index = 1436)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (69)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (69)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_SHIFT (80)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_SHIFT (81)
+, BOTTOM_UP_END
+// State S39 (index = 1445)
+, Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (7)
+, Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (7)
+, Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (7)
+, Lexique_galgasTemplateScanner::kToken__3D__3D_, BOTTOM_UP_REDUCE (7)
+, Lexique_galgasTemplateScanner::kToken__21__3D_, BOTTOM_UP_REDUCE (7)
+, Lexique_galgasTemplateScanner::kToken__3C__3D_, BOTTOM_UP_REDUCE (7)
+, Lexique_galgasTemplateScanner::kToken__3E__3D_, BOTTOM_UP_REDUCE (7)
+, Lexique_galgasTemplateScanner::kToken__3E_, BOTTOM_UP_REDUCE (7)
+, Lexique_galgasTemplateScanner::kToken__3C_, BOTTOM_UP_REDUCE (7)
+, Lexique_galgasTemplateScanner::kToken__3C__3C_, BOTTOM_UP_REDUCE (7)
+, Lexique_galgasTemplateScanner::kToken__3E__3E_, BOTTOM_UP_REDUCE (7)
+, Lexique_galgasTemplateScanner::kToken__2B_, BOTTOM_UP_REDUCE (7)
+, Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_REDUCE (7)
+, Lexique_galgasTemplateScanner::kToken__2A_, BOTTOM_UP_REDUCE (7)
+, Lexique_galgasTemplateScanner::kToken__2F_, BOTTOM_UP_REDUCE (7)
+, Lexique_galgasTemplateScanner::kToken_mod, BOTTOM_UP_REDUCE (7)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (7)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (7)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (7)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (7)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (7)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (7)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (7)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (7)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (7)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (7)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_REDUCE (7)
+, Lexique_galgasTemplateScanner::kToken_then, BOTTOM_UP_REDUCE (7)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (7)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (7)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_REDUCE (7)
+, Lexique_galgasTemplateScanner::kToken_before, BOTTOM_UP_REDUCE (7)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (7)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (7)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (7)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_REDUCE (7)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (7)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (7)
+, BOTTOM_UP_END
+// State S40 (index = 1522)
+, Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (8)
+, Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (8)
+, Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (8)
+, Lexique_galgasTemplateScanner::kToken__3D__3D_, BOTTOM_UP_REDUCE (8)
+, Lexique_galgasTemplateScanner::kToken__21__3D_, BOTTOM_UP_REDUCE (8)
+, Lexique_galgasTemplateScanner::kToken__3C__3D_, BOTTOM_UP_REDUCE (8)
+, Lexique_galgasTemplateScanner::kToken__3E__3D_, BOTTOM_UP_REDUCE (8)
+, Lexique_galgasTemplateScanner::kToken__3E_, BOTTOM_UP_REDUCE (8)
+, Lexique_galgasTemplateScanner::kToken__3C_, BOTTOM_UP_REDUCE (8)
+, Lexique_galgasTemplateScanner::kToken__3C__3C_, BOTTOM_UP_REDUCE (8)
+, Lexique_galgasTemplateScanner::kToken__3E__3E_, BOTTOM_UP_REDUCE (8)
+, Lexique_galgasTemplateScanner::kToken__2B_, BOTTOM_UP_REDUCE (8)
+, Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_REDUCE (8)
+, Lexique_galgasTemplateScanner::kToken__2A_, BOTTOM_UP_REDUCE (8)
+, Lexique_galgasTemplateScanner::kToken__2F_, BOTTOM_UP_REDUCE (8)
+, Lexique_galgasTemplateScanner::kToken_mod, BOTTOM_UP_REDUCE (8)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (8)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (8)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (8)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (8)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (8)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (8)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (8)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (8)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (8)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (8)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_REDUCE (8)
+, Lexique_galgasTemplateScanner::kToken_then, BOTTOM_UP_REDUCE (8)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (8)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (8)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_REDUCE (8)
+, Lexique_galgasTemplateScanner::kToken_before, BOTTOM_UP_REDUCE (8)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (8)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (8)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (8)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_REDUCE (8)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (8)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (8)
+, BOTTOM_UP_END
+// State S41 (index = 1599)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_SHIFT (84)
+, BOTTOM_UP_END
+// State S42 (index = 1602)
+, Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken__3D__3D_, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken__21__3D_, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken__3C__3D_, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken__3E__3D_, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken__3E_, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken__3C_, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken__3C__3C_, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken__3E__3E_, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken__2B_, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken__2A_, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken__2F_, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken_mod, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken__2E_, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken__22_string_22_, BOTTOM_UP_SHIFT (42)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken_is, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken_then, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken_before, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (57)
+, BOTTOM_UP_END
+// State S43 (index = 1685)
+, Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (16)
+, Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (16)
+, Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (16)
+, Lexique_galgasTemplateScanner::kToken__3D__3D_, BOTTOM_UP_REDUCE (16)
+, Lexique_galgasTemplateScanner::kToken__21__3D_, BOTTOM_UP_REDUCE (16)
+, Lexique_galgasTemplateScanner::kToken__3C__3D_, BOTTOM_UP_REDUCE (16)
+, Lexique_galgasTemplateScanner::kToken__3E__3D_, BOTTOM_UP_REDUCE (16)
+, Lexique_galgasTemplateScanner::kToken__3E_, BOTTOM_UP_REDUCE (16)
+, Lexique_galgasTemplateScanner::kToken__3C_, BOTTOM_UP_REDUCE (16)
+, Lexique_galgasTemplateScanner::kToken__3C__3C_, BOTTOM_UP_REDUCE (16)
+, Lexique_galgasTemplateScanner::kToken__3E__3E_, BOTTOM_UP_REDUCE (16)
+, Lexique_galgasTemplateScanner::kToken__2B_, BOTTOM_UP_REDUCE (16)
+, Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_REDUCE (16)
+, Lexique_galgasTemplateScanner::kToken__2A_, BOTTOM_UP_REDUCE (16)
+, Lexique_galgasTemplateScanner::kToken__2F_, BOTTOM_UP_REDUCE (16)
+, Lexique_galgasTemplateScanner::kToken_mod, BOTTOM_UP_REDUCE (16)
+, Lexique_galgasTemplateScanner::kToken__2E_, BOTTOM_UP_REDUCE (16)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (16)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (16)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (16)
+, Lexique_galgasTemplateScanner::kToken_is, BOTTOM_UP_REDUCE (16)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (16)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (16)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (16)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (16)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (16)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (16)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (16)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_REDUCE (16)
+, Lexique_galgasTemplateScanner::kToken_then, BOTTOM_UP_REDUCE (16)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (16)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (16)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_REDUCE (16)
+, Lexique_galgasTemplateScanner::kToken_before, BOTTOM_UP_REDUCE (16)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (16)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (16)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (16)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_REDUCE (16)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (16)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (16)
+, BOTTOM_UP_END
+// State S44 (index = 1766)
+, Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_SHIFT (11)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (12)
+, Lexique_galgasTemplateScanner::kToken_not, BOTTOM_UP_SHIFT (13)
+, Lexique_galgasTemplateScanner::kToken__7E_, BOTTOM_UP_SHIFT (14)
+, Lexique_galgasTemplateScanner::kToken__28_, BOTTOM_UP_SHIFT (15)
+, Lexique_galgasTemplateScanner::kToken_true, BOTTOM_UP_SHIFT (16)
+, Lexique_galgasTemplateScanner::kToken_false, BOTTOM_UP_SHIFT (17)
+, Lexique_galgasTemplateScanner::kToken_literalInt, BOTTOM_UP_SHIFT (18)
+, Lexique_galgasTemplateScanner::kToken_double_2E_xxx, BOTTOM_UP_SHIFT (19)
+, Lexique_galgasTemplateScanner::kToken__27_char_27_, BOTTOM_UP_SHIFT (20)
+, Lexique_galgasTemplateScanner::kToken__22_string_22_, BOTTOM_UP_SHIFT (21)
+, Lexique_galgasTemplateScanner::kToken__5B_, BOTTOM_UP_SHIFT (22)
+, BOTTOM_UP_END
+// State S45 (index = 1791)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (87)
+, BOTTOM_UP_END
+// State S46 (index = 1794)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (88)
+, BOTTOM_UP_END
+// State S47 (index = 1797)
+, Lexique_galgasTemplateScanner::kToken__2E_, BOTTOM_UP_SHIFT (89)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (90)
+, BOTTOM_UP_END
+// State S48 (index = 1802)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (92)
+, BOTTOM_UP_END
+// State S49 (index = 1805)
+, Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (17)
+, Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (17)
+, Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (17)
+, Lexique_galgasTemplateScanner::kToken__3D__3D_, BOTTOM_UP_REDUCE (17)
+, Lexique_galgasTemplateScanner::kToken__21__3D_, BOTTOM_UP_REDUCE (17)
+, Lexique_galgasTemplateScanner::kToken__3C__3D_, BOTTOM_UP_REDUCE (17)
+, Lexique_galgasTemplateScanner::kToken__3E__3D_, BOTTOM_UP_REDUCE (17)
+, Lexique_galgasTemplateScanner::kToken__3E_, BOTTOM_UP_REDUCE (17)
+, Lexique_galgasTemplateScanner::kToken__3C_, BOTTOM_UP_REDUCE (17)
+, Lexique_galgasTemplateScanner::kToken__3C__3C_, BOTTOM_UP_REDUCE (17)
+, Lexique_galgasTemplateScanner::kToken__3E__3E_, BOTTOM_UP_REDUCE (17)
+, Lexique_galgasTemplateScanner::kToken__2B_, BOTTOM_UP_REDUCE (17)
+, Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_REDUCE (17)
+, Lexique_galgasTemplateScanner::kToken__2A_, BOTTOM_UP_REDUCE (17)
+, Lexique_galgasTemplateScanner::kToken__2F_, BOTTOM_UP_REDUCE (17)
+, Lexique_galgasTemplateScanner::kToken_mod, BOTTOM_UP_REDUCE (17)
+, Lexique_galgasTemplateScanner::kToken__2E_, BOTTOM_UP_REDUCE (17)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (17)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (17)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (17)
+, Lexique_galgasTemplateScanner::kToken_is, BOTTOM_UP_REDUCE (17)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (17)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (17)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (17)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (17)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (17)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (17)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (17)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_REDUCE (17)
+, Lexique_galgasTemplateScanner::kToken_then, BOTTOM_UP_REDUCE (17)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (17)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (17)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_REDUCE (17)
+, Lexique_galgasTemplateScanner::kToken_before, BOTTOM_UP_REDUCE (17)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (17)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (17)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (17)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_REDUCE (17)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (17)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (17)
+, BOTTOM_UP_END
+// State S50 (index = 1886)
+, Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_SHIFT (11)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (12)
+, Lexique_galgasTemplateScanner::kToken_not, BOTTOM_UP_SHIFT (13)
+, Lexique_galgasTemplateScanner::kToken__7E_, BOTTOM_UP_SHIFT (14)
+, Lexique_galgasTemplateScanner::kToken__28_, BOTTOM_UP_SHIFT (15)
+, Lexique_galgasTemplateScanner::kToken_true, BOTTOM_UP_SHIFT (16)
+, Lexique_galgasTemplateScanner::kToken_false, BOTTOM_UP_SHIFT (17)
+, Lexique_galgasTemplateScanner::kToken_literalInt, BOTTOM_UP_SHIFT (18)
+, Lexique_galgasTemplateScanner::kToken_double_2E_xxx, BOTTOM_UP_SHIFT (19)
+, Lexique_galgasTemplateScanner::kToken__27_char_27_, BOTTOM_UP_SHIFT (20)
+, Lexique_galgasTemplateScanner::kToken__22_string_22_, BOTTOM_UP_SHIFT (21)
+, Lexique_galgasTemplateScanner::kToken__5B_, BOTTOM_UP_SHIFT (22)
+, BOTTOM_UP_END
+// State S51 (index = 1911)
+, Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_SHIFT (11)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (12)
+, Lexique_galgasTemplateScanner::kToken_not, BOTTOM_UP_SHIFT (13)
+, Lexique_galgasTemplateScanner::kToken__7E_, BOTTOM_UP_SHIFT (14)
+, Lexique_galgasTemplateScanner::kToken__28_, BOTTOM_UP_SHIFT (15)
+, Lexique_galgasTemplateScanner::kToken_true, BOTTOM_UP_SHIFT (16)
+, Lexique_galgasTemplateScanner::kToken_false, BOTTOM_UP_SHIFT (17)
+, Lexique_galgasTemplateScanner::kToken_literalInt, BOTTOM_UP_SHIFT (18)
+, Lexique_galgasTemplateScanner::kToken_double_2E_xxx, BOTTOM_UP_SHIFT (19)
+, Lexique_galgasTemplateScanner::kToken__27_char_27_, BOTTOM_UP_SHIFT (20)
+, Lexique_galgasTemplateScanner::kToken__22_string_22_, BOTTOM_UP_SHIFT (21)
+, Lexique_galgasTemplateScanner::kToken__5B_, BOTTOM_UP_SHIFT (22)
+, BOTTOM_UP_END
+// State S52 (index = 1936)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (0)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (0)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (0)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (0)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (0)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (0)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (0)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (0)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (0)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (0)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_REDUCE (0)
+, Lexique_galgasTemplateScanner::kToken_then, BOTTOM_UP_REDUCE (0)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (0)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (0)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_REDUCE (0)
+, Lexique_galgasTemplateScanner::kToken_before, BOTTOM_UP_REDUCE (0)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (0)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (0)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (0)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_REDUCE (0)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (0)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (0)
+, BOTTOM_UP_END
+// State S53 (index = 1981)
+, Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_SHIFT (11)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (12)
+, Lexique_galgasTemplateScanner::kToken_not, BOTTOM_UP_SHIFT (13)
+, Lexique_galgasTemplateScanner::kToken__7E_, BOTTOM_UP_SHIFT (14)
+, Lexique_galgasTemplateScanner::kToken__28_, BOTTOM_UP_SHIFT (15)
+, Lexique_galgasTemplateScanner::kToken_true, BOTTOM_UP_SHIFT (16)
+, Lexique_galgasTemplateScanner::kToken_false, BOTTOM_UP_SHIFT (17)
+, Lexique_galgasTemplateScanner::kToken_literalInt, BOTTOM_UP_SHIFT (18)
+, Lexique_galgasTemplateScanner::kToken_double_2E_xxx, BOTTOM_UP_SHIFT (19)
+, Lexique_galgasTemplateScanner::kToken__27_char_27_, BOTTOM_UP_SHIFT (20)
+, Lexique_galgasTemplateScanner::kToken__22_string_22_, BOTTOM_UP_SHIFT (21)
+, Lexique_galgasTemplateScanner::kToken__5B_, BOTTOM_UP_SHIFT (22)
+, BOTTOM_UP_END
+// State S54 (index = 2006)
+, Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (1)
+, Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (1)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (1)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (1)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (1)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (1)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (1)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (1)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (1)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (1)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (1)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (1)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_REDUCE (1)
+, Lexique_galgasTemplateScanner::kToken_then, BOTTOM_UP_REDUCE (1)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (1)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (1)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_REDUCE (1)
+, Lexique_galgasTemplateScanner::kToken_before, BOTTOM_UP_REDUCE (1)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (1)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (1)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (1)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_REDUCE (1)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (1)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (1)
+, BOTTOM_UP_END
+// State S55 (index = 2055)
+, Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_SHIFT (11)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (12)
+, Lexique_galgasTemplateScanner::kToken_not, BOTTOM_UP_SHIFT (13)
+, Lexique_galgasTemplateScanner::kToken__7E_, BOTTOM_UP_SHIFT (14)
+, Lexique_galgasTemplateScanner::kToken__28_, BOTTOM_UP_SHIFT (15)
+, Lexique_galgasTemplateScanner::kToken_true, BOTTOM_UP_SHIFT (16)
+, Lexique_galgasTemplateScanner::kToken_false, BOTTOM_UP_SHIFT (17)
+, Lexique_galgasTemplateScanner::kToken_literalInt, BOTTOM_UP_SHIFT (18)
+, Lexique_galgasTemplateScanner::kToken_double_2E_xxx, BOTTOM_UP_SHIFT (19)
+, Lexique_galgasTemplateScanner::kToken__27_char_27_, BOTTOM_UP_SHIFT (20)
+, Lexique_galgasTemplateScanner::kToken__22_string_22_, BOTTOM_UP_SHIFT (21)
+, Lexique_galgasTemplateScanner::kToken__5B_, BOTTOM_UP_SHIFT (22)
+, BOTTOM_UP_END
+// State S56 (index = 2080)
+, Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_SHIFT (11)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (12)
+, Lexique_galgasTemplateScanner::kToken_not, BOTTOM_UP_SHIFT (13)
+, Lexique_galgasTemplateScanner::kToken__7E_, BOTTOM_UP_SHIFT (14)
+, Lexique_galgasTemplateScanner::kToken__28_, BOTTOM_UP_SHIFT (15)
+, Lexique_galgasTemplateScanner::kToken_true, BOTTOM_UP_SHIFT (16)
+, Lexique_galgasTemplateScanner::kToken_false, BOTTOM_UP_SHIFT (17)
+, Lexique_galgasTemplateScanner::kToken_literalInt, BOTTOM_UP_SHIFT (18)
+, Lexique_galgasTemplateScanner::kToken_double_2E_xxx, BOTTOM_UP_SHIFT (19)
+, Lexique_galgasTemplateScanner::kToken__27_char_27_, BOTTOM_UP_SHIFT (20)
+, Lexique_galgasTemplateScanner::kToken__22_string_22_, BOTTOM_UP_SHIFT (21)
+, Lexique_galgasTemplateScanner::kToken__5B_, BOTTOM_UP_SHIFT (22)
+, BOTTOM_UP_END
+// State S57 (index = 2105)
+, Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_SHIFT (11)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (12)
+, Lexique_galgasTemplateScanner::kToken_not, BOTTOM_UP_SHIFT (13)
+, Lexique_galgasTemplateScanner::kToken__7E_, BOTTOM_UP_SHIFT (14)
+, Lexique_galgasTemplateScanner::kToken__28_, BOTTOM_UP_SHIFT (15)
+, Lexique_galgasTemplateScanner::kToken_true, BOTTOM_UP_SHIFT (16)
+, Lexique_galgasTemplateScanner::kToken_false, BOTTOM_UP_SHIFT (17)
+, Lexique_galgasTemplateScanner::kToken_literalInt, BOTTOM_UP_SHIFT (18)
+, Lexique_galgasTemplateScanner::kToken_double_2E_xxx, BOTTOM_UP_SHIFT (19)
+, Lexique_galgasTemplateScanner::kToken__27_char_27_, BOTTOM_UP_SHIFT (20)
+, Lexique_galgasTemplateScanner::kToken__22_string_22_, BOTTOM_UP_SHIFT (21)
+, Lexique_galgasTemplateScanner::kToken__5B_, BOTTOM_UP_SHIFT (22)
+, BOTTOM_UP_END
+// State S58 (index = 2130)
+, Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_SHIFT (11)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (12)
+, Lexique_galgasTemplateScanner::kToken_not, BOTTOM_UP_SHIFT (13)
+, Lexique_galgasTemplateScanner::kToken__7E_, BOTTOM_UP_SHIFT (14)
+, Lexique_galgasTemplateScanner::kToken__28_, BOTTOM_UP_SHIFT (15)
+, Lexique_galgasTemplateScanner::kToken_true, BOTTOM_UP_SHIFT (16)
+, Lexique_galgasTemplateScanner::kToken_false, BOTTOM_UP_SHIFT (17)
+, Lexique_galgasTemplateScanner::kToken_literalInt, BOTTOM_UP_SHIFT (18)
+, Lexique_galgasTemplateScanner::kToken_double_2E_xxx, BOTTOM_UP_SHIFT (19)
+, Lexique_galgasTemplateScanner::kToken__27_char_27_, BOTTOM_UP_SHIFT (20)
+, Lexique_galgasTemplateScanner::kToken__22_string_22_, BOTTOM_UP_SHIFT (21)
+, Lexique_galgasTemplateScanner::kToken__5B_, BOTTOM_UP_SHIFT (22)
+, BOTTOM_UP_END
+// State S59 (index = 2155)
+, Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_SHIFT (11)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (12)
+, Lexique_galgasTemplateScanner::kToken_not, BOTTOM_UP_SHIFT (13)
+, Lexique_galgasTemplateScanner::kToken__7E_, BOTTOM_UP_SHIFT (14)
+, Lexique_galgasTemplateScanner::kToken__28_, BOTTOM_UP_SHIFT (15)
+, Lexique_galgasTemplateScanner::kToken_true, BOTTOM_UP_SHIFT (16)
+, Lexique_galgasTemplateScanner::kToken_false, BOTTOM_UP_SHIFT (17)
+, Lexique_galgasTemplateScanner::kToken_literalInt, BOTTOM_UP_SHIFT (18)
+, Lexique_galgasTemplateScanner::kToken_double_2E_xxx, BOTTOM_UP_SHIFT (19)
+, Lexique_galgasTemplateScanner::kToken__27_char_27_, BOTTOM_UP_SHIFT (20)
+, Lexique_galgasTemplateScanner::kToken__22_string_22_, BOTTOM_UP_SHIFT (21)
+, Lexique_galgasTemplateScanner::kToken__5B_, BOTTOM_UP_SHIFT (22)
+, BOTTOM_UP_END
+// State S60 (index = 2180)
+, Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_SHIFT (11)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (12)
+, Lexique_galgasTemplateScanner::kToken_not, BOTTOM_UP_SHIFT (13)
+, Lexique_galgasTemplateScanner::kToken__7E_, BOTTOM_UP_SHIFT (14)
+, Lexique_galgasTemplateScanner::kToken__28_, BOTTOM_UP_SHIFT (15)
+, Lexique_galgasTemplateScanner::kToken_true, BOTTOM_UP_SHIFT (16)
+, Lexique_galgasTemplateScanner::kToken_false, BOTTOM_UP_SHIFT (17)
+, Lexique_galgasTemplateScanner::kToken_literalInt, BOTTOM_UP_SHIFT (18)
+, Lexique_galgasTemplateScanner::kToken_double_2E_xxx, BOTTOM_UP_SHIFT (19)
+, Lexique_galgasTemplateScanner::kToken__27_char_27_, BOTTOM_UP_SHIFT (20)
+, Lexique_galgasTemplateScanner::kToken__22_string_22_, BOTTOM_UP_SHIFT (21)
+, Lexique_galgasTemplateScanner::kToken__5B_, BOTTOM_UP_SHIFT (22)
+, BOTTOM_UP_END
+// State S61 (index = 2205)
+, Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (2)
+, Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (2)
+, Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (2)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (2)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (2)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (2)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (2)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (2)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (2)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (2)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (2)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (2)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (2)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_REDUCE (2)
+, Lexique_galgasTemplateScanner::kToken_then, BOTTOM_UP_REDUCE (2)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (2)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (2)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_REDUCE (2)
+, Lexique_galgasTemplateScanner::kToken_before, BOTTOM_UP_REDUCE (2)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (2)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (2)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (2)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_REDUCE (2)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (2)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (2)
+, BOTTOM_UP_END
+// State S62 (index = 2256)
+, Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_SHIFT (11)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (12)
+, Lexique_galgasTemplateScanner::kToken_not, BOTTOM_UP_SHIFT (13)
+, Lexique_galgasTemplateScanner::kToken__7E_, BOTTOM_UP_SHIFT (14)
+, Lexique_galgasTemplateScanner::kToken__28_, BOTTOM_UP_SHIFT (15)
+, Lexique_galgasTemplateScanner::kToken_true, BOTTOM_UP_SHIFT (16)
+, Lexique_galgasTemplateScanner::kToken_false, BOTTOM_UP_SHIFT (17)
+, Lexique_galgasTemplateScanner::kToken_literalInt, BOTTOM_UP_SHIFT (18)
+, Lexique_galgasTemplateScanner::kToken_double_2E_xxx, BOTTOM_UP_SHIFT (19)
+, Lexique_galgasTemplateScanner::kToken__27_char_27_, BOTTOM_UP_SHIFT (20)
+, Lexique_galgasTemplateScanner::kToken__22_string_22_, BOTTOM_UP_SHIFT (21)
+, Lexique_galgasTemplateScanner::kToken__5B_, BOTTOM_UP_SHIFT (22)
+, BOTTOM_UP_END
+// State S63 (index = 2281)
+, Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_SHIFT (11)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (12)
+, Lexique_galgasTemplateScanner::kToken_not, BOTTOM_UP_SHIFT (13)
+, Lexique_galgasTemplateScanner::kToken__7E_, BOTTOM_UP_SHIFT (14)
+, Lexique_galgasTemplateScanner::kToken__28_, BOTTOM_UP_SHIFT (15)
+, Lexique_galgasTemplateScanner::kToken_true, BOTTOM_UP_SHIFT (16)
+, Lexique_galgasTemplateScanner::kToken_false, BOTTOM_UP_SHIFT (17)
+, Lexique_galgasTemplateScanner::kToken_literalInt, BOTTOM_UP_SHIFT (18)
+, Lexique_galgasTemplateScanner::kToken_double_2E_xxx, BOTTOM_UP_SHIFT (19)
+, Lexique_galgasTemplateScanner::kToken__27_char_27_, BOTTOM_UP_SHIFT (20)
+, Lexique_galgasTemplateScanner::kToken__22_string_22_, BOTTOM_UP_SHIFT (21)
+, Lexique_galgasTemplateScanner::kToken__5B_, BOTTOM_UP_SHIFT (22)
+, BOTTOM_UP_END
+// State S64 (index = 2306)
+, Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_SHIFT (11)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (12)
+, Lexique_galgasTemplateScanner::kToken_not, BOTTOM_UP_SHIFT (13)
+, Lexique_galgasTemplateScanner::kToken__7E_, BOTTOM_UP_SHIFT (14)
+, Lexique_galgasTemplateScanner::kToken__28_, BOTTOM_UP_SHIFT (15)
+, Lexique_galgasTemplateScanner::kToken_true, BOTTOM_UP_SHIFT (16)
+, Lexique_galgasTemplateScanner::kToken_false, BOTTOM_UP_SHIFT (17)
+, Lexique_galgasTemplateScanner::kToken_literalInt, BOTTOM_UP_SHIFT (18)
+, Lexique_galgasTemplateScanner::kToken_double_2E_xxx, BOTTOM_UP_SHIFT (19)
+, Lexique_galgasTemplateScanner::kToken__27_char_27_, BOTTOM_UP_SHIFT (20)
+, Lexique_galgasTemplateScanner::kToken__22_string_22_, BOTTOM_UP_SHIFT (21)
+, Lexique_galgasTemplateScanner::kToken__5B_, BOTTOM_UP_SHIFT (22)
+, BOTTOM_UP_END
+// State S65 (index = 2331)
+, Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_SHIFT (11)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (12)
+, Lexique_galgasTemplateScanner::kToken_not, BOTTOM_UP_SHIFT (13)
+, Lexique_galgasTemplateScanner::kToken__7E_, BOTTOM_UP_SHIFT (14)
+, Lexique_galgasTemplateScanner::kToken__28_, BOTTOM_UP_SHIFT (15)
+, Lexique_galgasTemplateScanner::kToken_true, BOTTOM_UP_SHIFT (16)
+, Lexique_galgasTemplateScanner::kToken_false, BOTTOM_UP_SHIFT (17)
+, Lexique_galgasTemplateScanner::kToken_literalInt, BOTTOM_UP_SHIFT (18)
+, Lexique_galgasTemplateScanner::kToken_double_2E_xxx, BOTTOM_UP_SHIFT (19)
+, Lexique_galgasTemplateScanner::kToken__27_char_27_, BOTTOM_UP_SHIFT (20)
+, Lexique_galgasTemplateScanner::kToken__22_string_22_, BOTTOM_UP_SHIFT (21)
+, Lexique_galgasTemplateScanner::kToken__5B_, BOTTOM_UP_SHIFT (22)
+, BOTTOM_UP_END
+// State S66 (index = 2356)
+, Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (3)
+, Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (3)
+, Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (3)
+, Lexique_galgasTemplateScanner::kToken__3D__3D_, BOTTOM_UP_REDUCE (3)
+, Lexique_galgasTemplateScanner::kToken__21__3D_, BOTTOM_UP_REDUCE (3)
+, Lexique_galgasTemplateScanner::kToken__3C__3D_, BOTTOM_UP_REDUCE (3)
+, Lexique_galgasTemplateScanner::kToken__3E__3D_, BOTTOM_UP_REDUCE (3)
+, Lexique_galgasTemplateScanner::kToken__3E_, BOTTOM_UP_REDUCE (3)
+, Lexique_galgasTemplateScanner::kToken__3C_, BOTTOM_UP_REDUCE (3)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (3)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (3)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (3)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (3)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (3)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (3)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (3)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (3)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (3)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (3)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_REDUCE (3)
+, Lexique_galgasTemplateScanner::kToken_then, BOTTOM_UP_REDUCE (3)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (3)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (3)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_REDUCE (3)
+, Lexique_galgasTemplateScanner::kToken_before, BOTTOM_UP_REDUCE (3)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (3)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (3)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (3)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_REDUCE (3)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (3)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (3)
+, BOTTOM_UP_END
+// State S67 (index = 2419)
+, Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_SHIFT (11)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (12)
+, Lexique_galgasTemplateScanner::kToken_not, BOTTOM_UP_SHIFT (13)
+, Lexique_galgasTemplateScanner::kToken__7E_, BOTTOM_UP_SHIFT (14)
+, Lexique_galgasTemplateScanner::kToken__28_, BOTTOM_UP_SHIFT (15)
+, Lexique_galgasTemplateScanner::kToken_true, BOTTOM_UP_SHIFT (16)
+, Lexique_galgasTemplateScanner::kToken_false, BOTTOM_UP_SHIFT (17)
+, Lexique_galgasTemplateScanner::kToken_literalInt, BOTTOM_UP_SHIFT (18)
+, Lexique_galgasTemplateScanner::kToken_double_2E_xxx, BOTTOM_UP_SHIFT (19)
+, Lexique_galgasTemplateScanner::kToken__27_char_27_, BOTTOM_UP_SHIFT (20)
+, Lexique_galgasTemplateScanner::kToken__22_string_22_, BOTTOM_UP_SHIFT (21)
+, Lexique_galgasTemplateScanner::kToken__5B_, BOTTOM_UP_SHIFT (22)
+, BOTTOM_UP_END
+// State S68 (index = 2444)
+, Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_SHIFT (11)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (12)
+, Lexique_galgasTemplateScanner::kToken_not, BOTTOM_UP_SHIFT (13)
+, Lexique_galgasTemplateScanner::kToken__7E_, BOTTOM_UP_SHIFT (14)
+, Lexique_galgasTemplateScanner::kToken__28_, BOTTOM_UP_SHIFT (15)
+, Lexique_galgasTemplateScanner::kToken_true, BOTTOM_UP_SHIFT (16)
+, Lexique_galgasTemplateScanner::kToken_false, BOTTOM_UP_SHIFT (17)
+, Lexique_galgasTemplateScanner::kToken_literalInt, BOTTOM_UP_SHIFT (18)
+, Lexique_galgasTemplateScanner::kToken_double_2E_xxx, BOTTOM_UP_SHIFT (19)
+, Lexique_galgasTemplateScanner::kToken__27_char_27_, BOTTOM_UP_SHIFT (20)
+, Lexique_galgasTemplateScanner::kToken__22_string_22_, BOTTOM_UP_SHIFT (21)
+, Lexique_galgasTemplateScanner::kToken__5B_, BOTTOM_UP_SHIFT (22)
+, BOTTOM_UP_END
+// State S69 (index = 2469)
+, Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_SHIFT (11)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (12)
+, Lexique_galgasTemplateScanner::kToken_not, BOTTOM_UP_SHIFT (13)
+, Lexique_galgasTemplateScanner::kToken__7E_, BOTTOM_UP_SHIFT (14)
+, Lexique_galgasTemplateScanner::kToken__28_, BOTTOM_UP_SHIFT (15)
+, Lexique_galgasTemplateScanner::kToken_true, BOTTOM_UP_SHIFT (16)
+, Lexique_galgasTemplateScanner::kToken_false, BOTTOM_UP_SHIFT (17)
+, Lexique_galgasTemplateScanner::kToken_literalInt, BOTTOM_UP_SHIFT (18)
+, Lexique_galgasTemplateScanner::kToken_double_2E_xxx, BOTTOM_UP_SHIFT (19)
+, Lexique_galgasTemplateScanner::kToken__27_char_27_, BOTTOM_UP_SHIFT (20)
+, Lexique_galgasTemplateScanner::kToken__22_string_22_, BOTTOM_UP_SHIFT (21)
+, Lexique_galgasTemplateScanner::kToken__5B_, BOTTOM_UP_SHIFT (22)
+, BOTTOM_UP_END
+// State S70 (index = 2494)
+, Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (4)
+, Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (4)
+, Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (4)
+, Lexique_galgasTemplateScanner::kToken__3D__3D_, BOTTOM_UP_REDUCE (4)
+, Lexique_galgasTemplateScanner::kToken__21__3D_, BOTTOM_UP_REDUCE (4)
+, Lexique_galgasTemplateScanner::kToken__3C__3D_, BOTTOM_UP_REDUCE (4)
+, Lexique_galgasTemplateScanner::kToken__3E__3D_, BOTTOM_UP_REDUCE (4)
+, Lexique_galgasTemplateScanner::kToken__3E_, BOTTOM_UP_REDUCE (4)
+, Lexique_galgasTemplateScanner::kToken__3C_, BOTTOM_UP_REDUCE (4)
+, Lexique_galgasTemplateScanner::kToken__3C__3C_, BOTTOM_UP_REDUCE (4)
+, Lexique_galgasTemplateScanner::kToken__3E__3E_, BOTTOM_UP_REDUCE (4)
+, Lexique_galgasTemplateScanner::kToken__2B_, BOTTOM_UP_REDUCE (4)
+, Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_REDUCE (4)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (4)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (4)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (4)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (4)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (4)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (4)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (4)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (4)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (4)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (4)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_REDUCE (4)
+, Lexique_galgasTemplateScanner::kToken_then, BOTTOM_UP_REDUCE (4)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (4)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (4)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_REDUCE (4)
+, Lexique_galgasTemplateScanner::kToken_before, BOTTOM_UP_REDUCE (4)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (4)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (4)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (4)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_REDUCE (4)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (4)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (4)
+, BOTTOM_UP_END
+// State S71 (index = 2565)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (109)
+, BOTTOM_UP_END
+// State S72 (index = 2568)
+, Lexique_galgasTemplateScanner::kToken__3D__3D_, BOTTOM_UP_SHIFT (110)
+, Lexique_galgasTemplateScanner::kToken__3E__3D_, BOTTOM_UP_SHIFT (111)
+, Lexique_galgasTemplateScanner::kToken__3E_, BOTTOM_UP_SHIFT (112)
+, BOTTOM_UP_END
+// State S73 (index = 2575)
+, Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (5)
+, Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (5)
+, Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (5)
+, Lexique_galgasTemplateScanner::kToken__3D__3D_, BOTTOM_UP_REDUCE (5)
+, Lexique_galgasTemplateScanner::kToken__21__3D_, BOTTOM_UP_REDUCE (5)
+, Lexique_galgasTemplateScanner::kToken__3C__3D_, BOTTOM_UP_REDUCE (5)
+, Lexique_galgasTemplateScanner::kToken__3E__3D_, BOTTOM_UP_REDUCE (5)
+, Lexique_galgasTemplateScanner::kToken__3E_, BOTTOM_UP_REDUCE (5)
+, Lexique_galgasTemplateScanner::kToken__3C_, BOTTOM_UP_REDUCE (5)
+, Lexique_galgasTemplateScanner::kToken__3C__3C_, BOTTOM_UP_REDUCE (5)
+, Lexique_galgasTemplateScanner::kToken__3E__3E_, BOTTOM_UP_REDUCE (5)
+, Lexique_galgasTemplateScanner::kToken__2B_, BOTTOM_UP_REDUCE (5)
+, Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_REDUCE (5)
+, Lexique_galgasTemplateScanner::kToken__2A_, BOTTOM_UP_REDUCE (5)
+, Lexique_galgasTemplateScanner::kToken__2F_, BOTTOM_UP_REDUCE (5)
+, Lexique_galgasTemplateScanner::kToken_mod, BOTTOM_UP_REDUCE (5)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (5)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (5)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (5)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (5)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (5)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (5)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (5)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (5)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (5)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (5)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_REDUCE (5)
+, Lexique_galgasTemplateScanner::kToken_then, BOTTOM_UP_REDUCE (5)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (5)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (5)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_REDUCE (5)
+, Lexique_galgasTemplateScanner::kToken_before, BOTTOM_UP_REDUCE (5)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (5)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (5)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (5)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_REDUCE (5)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (5)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (5)
+, BOTTOM_UP_END
+// State S74 (index = 2652)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_SHIFT (1)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_SHIFT (2)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_SHIFT (3)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_SHIFT (4)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (72)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_SHIFT (5)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_SHIFT (6)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_SHIFT (7)
+, BOTTOM_UP_END
+// State S75 (index = 2669)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_SHIFT (1)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_SHIFT (2)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_SHIFT (3)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_SHIFT (4)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (76)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_SHIFT (5)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (76)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (76)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_SHIFT (6)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_SHIFT (7)
+, BOTTOM_UP_END
+// State S76 (index = 2690)
+, Lexique_galgasTemplateScanner::kToken__2A_, BOTTOM_UP_SHIFT (118)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (119)
+, Lexique_galgasTemplateScanner::kToken_literalInt, BOTTOM_UP_SHIFT (120)
+, BOTTOM_UP_END
+// State S77 (index = 2697)
+, Lexique_galgasTemplateScanner::kToken_before, BOTTOM_UP_SHIFT (122)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (91)
+, BOTTOM_UP_END
+// State S78 (index = 2702)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (124)
+, BOTTOM_UP_END
+// State S79 (index = 2705)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_SHIFT (126)
+, BOTTOM_UP_END
+// State S80 (index = 2708)
+, Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_SHIFT (11)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (12)
+, Lexique_galgasTemplateScanner::kToken_not, BOTTOM_UP_SHIFT (13)
+, Lexique_galgasTemplateScanner::kToken__7E_, BOTTOM_UP_SHIFT (14)
+, Lexique_galgasTemplateScanner::kToken__28_, BOTTOM_UP_SHIFT (15)
+, Lexique_galgasTemplateScanner::kToken_true, BOTTOM_UP_SHIFT (16)
+, Lexique_galgasTemplateScanner::kToken_false, BOTTOM_UP_SHIFT (17)
+, Lexique_galgasTemplateScanner::kToken_literalInt, BOTTOM_UP_SHIFT (18)
+, Lexique_galgasTemplateScanner::kToken_double_2E_xxx, BOTTOM_UP_SHIFT (19)
+, Lexique_galgasTemplateScanner::kToken__27_char_27_, BOTTOM_UP_SHIFT (20)
+, Lexique_galgasTemplateScanner::kToken__22_string_22_, BOTTOM_UP_SHIFT (21)
+, Lexique_galgasTemplateScanner::kToken__5B_, BOTTOM_UP_SHIFT (22)
+, BOTTOM_UP_END
+// State S81 (index = 2733)
+, Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_SHIFT (11)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (12)
+, Lexique_galgasTemplateScanner::kToken_not, BOTTOM_UP_SHIFT (13)
+, Lexique_galgasTemplateScanner::kToken__7E_, BOTTOM_UP_SHIFT (14)
+, Lexique_galgasTemplateScanner::kToken__28_, BOTTOM_UP_SHIFT (15)
+, Lexique_galgasTemplateScanner::kToken_true, BOTTOM_UP_SHIFT (16)
+, Lexique_galgasTemplateScanner::kToken_false, BOTTOM_UP_SHIFT (17)
+, Lexique_galgasTemplateScanner::kToken_literalInt, BOTTOM_UP_SHIFT (18)
+, Lexique_galgasTemplateScanner::kToken_double_2E_xxx, BOTTOM_UP_SHIFT (19)
+, Lexique_galgasTemplateScanner::kToken__27_char_27_, BOTTOM_UP_SHIFT (20)
+, Lexique_galgasTemplateScanner::kToken__22_string_22_, BOTTOM_UP_SHIFT (21)
+, Lexique_galgasTemplateScanner::kToken__5B_, BOTTOM_UP_SHIFT (22)
+, BOTTOM_UP_END
+// State S82 (index = 2758)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_SHIFT (129)
+, BOTTOM_UP_END
+// State S83 (index = 2761)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (20)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (20)
+, BOTTOM_UP_END
+// State S84 (index = 2766)
+, Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (10)
+, Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (10)
+, Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (10)
+, Lexique_galgasTemplateScanner::kToken__3D__3D_, BOTTOM_UP_REDUCE (10)
+, Lexique_galgasTemplateScanner::kToken__21__3D_, BOTTOM_UP_REDUCE (10)
+, Lexique_galgasTemplateScanner::kToken__3C__3D_, BOTTOM_UP_REDUCE (10)
+, Lexique_galgasTemplateScanner::kToken__3E__3D_, BOTTOM_UP_REDUCE (10)
+, Lexique_galgasTemplateScanner::kToken__3E_, BOTTOM_UP_REDUCE (10)
+, Lexique_galgasTemplateScanner::kToken__3C_, BOTTOM_UP_REDUCE (10)
+, Lexique_galgasTemplateScanner::kToken__3C__3C_, BOTTOM_UP_REDUCE (10)
+, Lexique_galgasTemplateScanner::kToken__3E__3E_, BOTTOM_UP_REDUCE (10)
+, Lexique_galgasTemplateScanner::kToken__2B_, BOTTOM_UP_REDUCE (10)
+, Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_REDUCE (10)
+, Lexique_galgasTemplateScanner::kToken__2A_, BOTTOM_UP_REDUCE (10)
+, Lexique_galgasTemplateScanner::kToken__2F_, BOTTOM_UP_REDUCE (10)
+, Lexique_galgasTemplateScanner::kToken_mod, BOTTOM_UP_REDUCE (10)
+, Lexique_galgasTemplateScanner::kToken__2E_, BOTTOM_UP_REDUCE (10)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (10)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (10)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (10)
+, Lexique_galgasTemplateScanner::kToken_is, BOTTOM_UP_REDUCE (10)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (10)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (10)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (10)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (10)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (10)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (10)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (10)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_REDUCE (10)
+, Lexique_galgasTemplateScanner::kToken_then, BOTTOM_UP_REDUCE (10)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (10)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (10)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_REDUCE (10)
+, Lexique_galgasTemplateScanner::kToken_before, BOTTOM_UP_REDUCE (10)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (10)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (10)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (10)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_REDUCE (10)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (10)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (10)
+, BOTTOM_UP_END
+// State S85 (index = 2847)
+, Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (58)
+, Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (58)
+, Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (58)
+, Lexique_galgasTemplateScanner::kToken__3D__3D_, BOTTOM_UP_REDUCE (58)
+, Lexique_galgasTemplateScanner::kToken__21__3D_, BOTTOM_UP_REDUCE (58)
+, Lexique_galgasTemplateScanner::kToken__3C__3D_, BOTTOM_UP_REDUCE (58)
+, Lexique_galgasTemplateScanner::kToken__3E__3D_, BOTTOM_UP_REDUCE (58)
+, Lexique_galgasTemplateScanner::kToken__3E_, BOTTOM_UP_REDUCE (58)
+, Lexique_galgasTemplateScanner::kToken__3C_, BOTTOM_UP_REDUCE (58)
+, Lexique_galgasTemplateScanner::kToken__3C__3C_, BOTTOM_UP_REDUCE (58)
+, Lexique_galgasTemplateScanner::kToken__3E__3E_, BOTTOM_UP_REDUCE (58)
+, Lexique_galgasTemplateScanner::kToken__2B_, BOTTOM_UP_REDUCE (58)
+, Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_REDUCE (58)
+, Lexique_galgasTemplateScanner::kToken__2A_, BOTTOM_UP_REDUCE (58)
+, Lexique_galgasTemplateScanner::kToken__2F_, BOTTOM_UP_REDUCE (58)
+, Lexique_galgasTemplateScanner::kToken_mod, BOTTOM_UP_REDUCE (58)
+, Lexique_galgasTemplateScanner::kToken__2E_, BOTTOM_UP_REDUCE (58)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (58)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (58)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (58)
+, Lexique_galgasTemplateScanner::kToken_is, BOTTOM_UP_REDUCE (58)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (58)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (58)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (58)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (58)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (58)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (58)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (58)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_REDUCE (58)
+, Lexique_galgasTemplateScanner::kToken_then, BOTTOM_UP_REDUCE (58)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (58)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (58)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_REDUCE (58)
+, Lexique_galgasTemplateScanner::kToken_before, BOTTOM_UP_REDUCE (58)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (58)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (58)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (58)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_REDUCE (58)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (58)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (58)
+, BOTTOM_UP_END
+// State S86 (index = 2928)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (130)
+, BOTTOM_UP_END
+// State S87 (index = 2931)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (69)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (69)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_SHIFT (80)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_SHIFT (81)
+, BOTTOM_UP_END
+// State S88 (index = 2940)
+, Lexique_galgasTemplateScanner::kToken__2E_, BOTTOM_UP_SHIFT (132)
+, BOTTOM_UP_END
+// State S89 (index = 2943)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (133)
+, BOTTOM_UP_END
+// State S90 (index = 2946)
+, Lexique_galgasTemplateScanner::kToken__2E_, BOTTOM_UP_SHIFT (134)
+, BOTTOM_UP_END
+// State S91 (index = 2949)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_SHIFT (135)
+, BOTTOM_UP_END
+// State S92 (index = 2952)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (69)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (69)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_SHIFT (80)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_SHIFT (81)
+, BOTTOM_UP_END
+// State S93 (index = 2961)
+, Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_SHIFT (50)
+, Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_SHIFT (51)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (34)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (34)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (34)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (34)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (34)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (34)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (34)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (34)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (34)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (34)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_REDUCE (34)
+, Lexique_galgasTemplateScanner::kToken_then, BOTTOM_UP_REDUCE (34)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (34)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (34)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_REDUCE (34)
+, Lexique_galgasTemplateScanner::kToken_before, BOTTOM_UP_REDUCE (34)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (34)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (34)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (34)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_REDUCE (34)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (34)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (34)
+, BOTTOM_UP_END
+// State S94 (index = 3010)
+, Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_SHIFT (50)
+, Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_SHIFT (51)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (34)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (34)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (34)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (34)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (34)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (34)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (34)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (34)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (34)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (34)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_REDUCE (34)
+, Lexique_galgasTemplateScanner::kToken_then, BOTTOM_UP_REDUCE (34)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (34)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (34)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_REDUCE (34)
+, Lexique_galgasTemplateScanner::kToken_before, BOTTOM_UP_REDUCE (34)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (34)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (34)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (34)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_REDUCE (34)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (34)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (34)
+, BOTTOM_UP_END
+// State S95 (index = 3059)
+, Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (37)
+, Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (37)
+, Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_SHIFT (53)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (37)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (37)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (37)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (37)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (37)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (37)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (37)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (37)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (37)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (37)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_REDUCE (37)
+, Lexique_galgasTemplateScanner::kToken_then, BOTTOM_UP_REDUCE (37)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (37)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (37)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_REDUCE (37)
+, Lexique_galgasTemplateScanner::kToken_before, BOTTOM_UP_REDUCE (37)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (37)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (37)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (37)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_REDUCE (37)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (37)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (37)
+, BOTTOM_UP_END
+// State S96 (index = 3110)
+, Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (40)
+, Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (40)
+, Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (40)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (40)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (40)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (40)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (40)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (40)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (40)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (40)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (40)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (40)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (40)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_REDUCE (40)
+, Lexique_galgasTemplateScanner::kToken_then, BOTTOM_UP_REDUCE (40)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (40)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (40)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_REDUCE (40)
+, Lexique_galgasTemplateScanner::kToken_before, BOTTOM_UP_REDUCE (40)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (40)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (40)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (40)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_REDUCE (40)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (40)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (40)
+, BOTTOM_UP_END
+// State S97 (index = 3161)
+, Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (41)
+, Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (41)
+, Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (41)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (41)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (41)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (41)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (41)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (41)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (41)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (41)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (41)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (41)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (41)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_REDUCE (41)
+, Lexique_galgasTemplateScanner::kToken_then, BOTTOM_UP_REDUCE (41)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (41)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (41)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_REDUCE (41)
+, Lexique_galgasTemplateScanner::kToken_before, BOTTOM_UP_REDUCE (41)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (41)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (41)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (41)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_REDUCE (41)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (41)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (41)
+, BOTTOM_UP_END
+// State S98 (index = 3212)
+, Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (42)
+, Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (42)
+, Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (42)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (42)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (42)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (42)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (42)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (42)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (42)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (42)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (42)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (42)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (42)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_REDUCE (42)
+, Lexique_galgasTemplateScanner::kToken_then, BOTTOM_UP_REDUCE (42)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (42)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (42)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_REDUCE (42)
+, Lexique_galgasTemplateScanner::kToken_before, BOTTOM_UP_REDUCE (42)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (42)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (42)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (42)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_REDUCE (42)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (42)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (42)
+, BOTTOM_UP_END
+// State S99 (index = 3263)
+, Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (43)
+, Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (43)
+, Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (43)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (43)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (43)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (43)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (43)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (43)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (43)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (43)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (43)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (43)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (43)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_REDUCE (43)
+, Lexique_galgasTemplateScanner::kToken_then, BOTTOM_UP_REDUCE (43)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (43)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (43)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_REDUCE (43)
+, Lexique_galgasTemplateScanner::kToken_before, BOTTOM_UP_REDUCE (43)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (43)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (43)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (43)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_REDUCE (43)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (43)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (43)
+, BOTTOM_UP_END
+// State S100 (index = 3314)
+, Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (44)
+, Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (44)
+, Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (44)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (44)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (44)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (44)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (44)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (44)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (44)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (44)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (44)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (44)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (44)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_REDUCE (44)
+, Lexique_galgasTemplateScanner::kToken_then, BOTTOM_UP_REDUCE (44)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (44)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (44)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_REDUCE (44)
+, Lexique_galgasTemplateScanner::kToken_before, BOTTOM_UP_REDUCE (44)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (44)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (44)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (44)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_REDUCE (44)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (44)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (44)
+, BOTTOM_UP_END
+// State S101 (index = 3365)
+, Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (45)
+, Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (45)
+, Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (45)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (45)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (45)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (45)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (45)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (45)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (45)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (45)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (45)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (45)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (45)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_REDUCE (45)
+, Lexique_galgasTemplateScanner::kToken_then, BOTTOM_UP_REDUCE (45)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (45)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (45)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_REDUCE (45)
+, Lexique_galgasTemplateScanner::kToken_before, BOTTOM_UP_REDUCE (45)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (45)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (45)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (45)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_REDUCE (45)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (45)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (45)
+, BOTTOM_UP_END
+// State S102 (index = 3416)
+, Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__3D__3D_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__21__3D_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__3C__3D_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__3E__3D_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__3E_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__3C_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__3C__3C_, BOTTOM_UP_SHIFT (62)
+, Lexique_galgasTemplateScanner::kToken__3E__3E_, BOTTOM_UP_SHIFT (63)
+, Lexique_galgasTemplateScanner::kToken__2B_, BOTTOM_UP_SHIFT (64)
+, Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_SHIFT (65)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken_then, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken_before, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (46)
+, BOTTOM_UP_END
+// State S103 (index = 3487)
+, Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__3D__3D_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__21__3D_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__3C__3D_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__3E__3D_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__3E_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__3C_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__3C__3C_, BOTTOM_UP_SHIFT (62)
+, Lexique_galgasTemplateScanner::kToken__3E__3E_, BOTTOM_UP_SHIFT (63)
+, Lexique_galgasTemplateScanner::kToken__2B_, BOTTOM_UP_SHIFT (64)
+, Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_SHIFT (65)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken_then, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken_before, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (46)
+, BOTTOM_UP_END
+// State S104 (index = 3558)
+, Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__3D__3D_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__21__3D_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__3C__3D_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__3E__3D_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__3E_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__3C_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__3C__3C_, BOTTOM_UP_SHIFT (62)
+, Lexique_galgasTemplateScanner::kToken__3E__3E_, BOTTOM_UP_SHIFT (63)
+, Lexique_galgasTemplateScanner::kToken__2B_, BOTTOM_UP_SHIFT (64)
+, Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_SHIFT (65)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken_then, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken_before, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (46)
+, BOTTOM_UP_END
+// State S105 (index = 3629)
+, Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__3D__3D_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__21__3D_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__3C__3D_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__3E__3D_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__3E_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__3C_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__3C__3C_, BOTTOM_UP_SHIFT (62)
+, Lexique_galgasTemplateScanner::kToken__3E__3E_, BOTTOM_UP_SHIFT (63)
+, Lexique_galgasTemplateScanner::kToken__2B_, BOTTOM_UP_SHIFT (64)
+, Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_SHIFT (65)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken_then, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken_before, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (46)
+, BOTTOM_UP_END
+// State S106 (index = 3700)
+, Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__3D__3D_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__21__3D_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__3C__3D_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__3E__3D_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__3E_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__3C_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__3C__3C_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__3E__3E_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__2B_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__2A_, BOTTOM_UP_SHIFT (67)
+, Lexique_galgasTemplateScanner::kToken__2F_, BOTTOM_UP_SHIFT (68)
+, Lexique_galgasTemplateScanner::kToken_mod, BOTTOM_UP_SHIFT (69)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken_then, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken_before, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (51)
+, BOTTOM_UP_END
+// State S107 (index = 3777)
+, Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__3D__3D_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__21__3D_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__3C__3D_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__3E__3D_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__3E_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__3C_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__3C__3C_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__3E__3E_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__2B_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__2A_, BOTTOM_UP_SHIFT (67)
+, Lexique_galgasTemplateScanner::kToken__2F_, BOTTOM_UP_SHIFT (68)
+, Lexique_galgasTemplateScanner::kToken_mod, BOTTOM_UP_SHIFT (69)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken_then, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken_before, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (51)
+, BOTTOM_UP_END
+// State S108 (index = 3854)
+, Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__3D__3D_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__21__3D_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__3C__3D_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__3E__3D_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__3E_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__3C_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__3C__3C_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__3E__3E_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__2B_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__2A_, BOTTOM_UP_SHIFT (67)
+, Lexique_galgasTemplateScanner::kToken__2F_, BOTTOM_UP_SHIFT (68)
+, Lexique_galgasTemplateScanner::kToken_mod, BOTTOM_UP_SHIFT (69)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken_then, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken_before, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (51)
+, BOTTOM_UP_END
+// State S109 (index = 3931)
+, Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken__3D__3D_, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken__21__3D_, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken__3C__3D_, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken__3E__3D_, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken__3E_, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken__3C_, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken__3C__3C_, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken__3E__3E_, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken__2B_, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken__2A_, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken__2F_, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken_mod, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken__2E_, BOTTOM_UP_SHIFT (71)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken_then, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken_before, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (55)
+, BOTTOM_UP_END
+// State S110 (index = 4010)
+, Lexique_galgasTemplateScanner::kToken__40_type, BOTTOM_UP_REDUCE (66)
+, BOTTOM_UP_END
+// State S111 (index = 4013)
+, Lexique_galgasTemplateScanner::kToken__40_type, BOTTOM_UP_REDUCE (67)
+, BOTTOM_UP_END
+// State S112 (index = 4016)
+, Lexique_galgasTemplateScanner::kToken__40_type, BOTTOM_UP_REDUCE (68)
+, BOTTOM_UP_END
+// State S113 (index = 4019)
+, Lexique_galgasTemplateScanner::kToken__40_type, BOTTOM_UP_SHIFT (148)
+, BOTTOM_UP_END
+// State S114 (index = 4022)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_SHIFT (1)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_SHIFT (2)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_SHIFT (3)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_SHIFT (4)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (72)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_SHIFT (5)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_SHIFT (6)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_SHIFT (7)
+, BOTTOM_UP_END
+// State S115 (index = 4039)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_SHIFT (150)
+, BOTTOM_UP_END
+// State S116 (index = 4042)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_SHIFT (1)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_SHIFT (2)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_SHIFT (3)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_SHIFT (4)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (76)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_SHIFT (5)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (76)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (76)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_SHIFT (6)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_SHIFT (7)
+, BOTTOM_UP_END
+// State S117 (index = 4063)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (74)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_SHIFT (152)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (74)
+, BOTTOM_UP_END
+// State S118 (index = 4070)
+, Lexique_galgasTemplateScanner::kToken__2A_, BOTTOM_UP_REDUCE (28)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (28)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (28)
+, Lexique_galgasTemplateScanner::kToken_literalInt, BOTTOM_UP_REDUCE (28)
+, BOTTOM_UP_END
+// State S119 (index = 4079)
+, Lexique_galgasTemplateScanner::kToken__2A_, BOTTOM_UP_REDUCE (29)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (29)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (29)
+, Lexique_galgasTemplateScanner::kToken_literalInt, BOTTOM_UP_REDUCE (29)
+, BOTTOM_UP_END
+// State S120 (index = 4088)
+, Lexique_galgasTemplateScanner::kToken__2A_, BOTTOM_UP_SHIFT (154)
+, BOTTOM_UP_END
+// State S121 (index = 4091)
+, Lexique_galgasTemplateScanner::kToken__2A_, BOTTOM_UP_SHIFT (118)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (119)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (84)
+, Lexique_galgasTemplateScanner::kToken_literalInt, BOTTOM_UP_SHIFT (120)
+, BOTTOM_UP_END
+// State S122 (index = 4100)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_SHIFT (1)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_SHIFT (2)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_SHIFT (3)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_SHIFT (4)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_SHIFT (5)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_SHIFT (6)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (93)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_SHIFT (7)
+, BOTTOM_UP_END
+// State S123 (index = 4117)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_SHIFT (159)
+, BOTTOM_UP_END
+// State S124 (index = 4120)
+, Lexique_galgasTemplateScanner::kToken__28_, BOTTOM_UP_REDUCE (111)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (111)
+, Lexique_galgasTemplateScanner::kToken__2C_, BOTTOM_UP_SHIFT (160)
+, BOTTOM_UP_END
+// State S125 (index = 4127)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_SHIFT (162)
+, BOTTOM_UP_END
+// State S126 (index = 4130)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (32)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (32)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (32)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (32)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (32)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_REDUCE (32)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (32)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (32)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_REDUCE (32)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (32)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (32)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (32)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_REDUCE (32)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (32)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (32)
+, BOTTOM_UP_END
+// State S127 (index = 4161)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (69)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (69)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_SHIFT (80)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_SHIFT (81)
+, BOTTOM_UP_END
+// State S128 (index = 4170)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (69)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (69)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_SHIFT (80)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_SHIFT (81)
+, BOTTOM_UP_END
+// State S129 (index = 4179)
+, Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (18)
+, Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (18)
+, Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (18)
+, Lexique_galgasTemplateScanner::kToken__3D__3D_, BOTTOM_UP_REDUCE (18)
+, Lexique_galgasTemplateScanner::kToken__21__3D_, BOTTOM_UP_REDUCE (18)
+, Lexique_galgasTemplateScanner::kToken__3C__3D_, BOTTOM_UP_REDUCE (18)
+, Lexique_galgasTemplateScanner::kToken__3E__3D_, BOTTOM_UP_REDUCE (18)
+, Lexique_galgasTemplateScanner::kToken__3E_, BOTTOM_UP_REDUCE (18)
+, Lexique_galgasTemplateScanner::kToken__3C_, BOTTOM_UP_REDUCE (18)
+, Lexique_galgasTemplateScanner::kToken__3C__3C_, BOTTOM_UP_REDUCE (18)
+, Lexique_galgasTemplateScanner::kToken__3E__3E_, BOTTOM_UP_REDUCE (18)
+, Lexique_galgasTemplateScanner::kToken__2B_, BOTTOM_UP_REDUCE (18)
+, Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_REDUCE (18)
+, Lexique_galgasTemplateScanner::kToken__2A_, BOTTOM_UP_REDUCE (18)
+, Lexique_galgasTemplateScanner::kToken__2F_, BOTTOM_UP_REDUCE (18)
+, Lexique_galgasTemplateScanner::kToken_mod, BOTTOM_UP_REDUCE (18)
+, Lexique_galgasTemplateScanner::kToken__2E_, BOTTOM_UP_REDUCE (18)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (18)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (18)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (18)
+, Lexique_galgasTemplateScanner::kToken_is, BOTTOM_UP_REDUCE (18)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (18)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (18)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (18)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (18)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (18)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (18)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (18)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_REDUCE (18)
+, Lexique_galgasTemplateScanner::kToken_then, BOTTOM_UP_REDUCE (18)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (18)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (18)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_REDUCE (18)
+, Lexique_galgasTemplateScanner::kToken_before, BOTTOM_UP_REDUCE (18)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (18)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (18)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (18)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_REDUCE (18)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (18)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (18)
+, BOTTOM_UP_END
+// State S130 (index = 4260)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (69)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (69)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_SHIFT (80)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_SHIFT (81)
+, BOTTOM_UP_END
+// State S131 (index = 4269)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_SHIFT (166)
+, BOTTOM_UP_END
+// State S132 (index = 4272)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (167)
+, BOTTOM_UP_END
+// State S133 (index = 4275)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (168)
+, BOTTOM_UP_END
+// State S134 (index = 4278)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (169)
+, BOTTOM_UP_END
+// State S135 (index = 4281)
+, Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (63)
+, Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (63)
+, Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (63)
+, Lexique_galgasTemplateScanner::kToken__3D__3D_, BOTTOM_UP_REDUCE (63)
+, Lexique_galgasTemplateScanner::kToken__21__3D_, BOTTOM_UP_REDUCE (63)
+, Lexique_galgasTemplateScanner::kToken__3C__3D_, BOTTOM_UP_REDUCE (63)
+, Lexique_galgasTemplateScanner::kToken__3E__3D_, BOTTOM_UP_REDUCE (63)
+, Lexique_galgasTemplateScanner::kToken__3E_, BOTTOM_UP_REDUCE (63)
+, Lexique_galgasTemplateScanner::kToken__3C_, BOTTOM_UP_REDUCE (63)
+, Lexique_galgasTemplateScanner::kToken__3C__3C_, BOTTOM_UP_REDUCE (63)
+, Lexique_galgasTemplateScanner::kToken__3E__3E_, BOTTOM_UP_REDUCE (63)
+, Lexique_galgasTemplateScanner::kToken__2B_, BOTTOM_UP_REDUCE (63)
+, Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_REDUCE (63)
+, Lexique_galgasTemplateScanner::kToken__2A_, BOTTOM_UP_REDUCE (63)
+, Lexique_galgasTemplateScanner::kToken__2F_, BOTTOM_UP_REDUCE (63)
+, Lexique_galgasTemplateScanner::kToken_mod, BOTTOM_UP_REDUCE (63)
+, Lexique_galgasTemplateScanner::kToken__2E_, BOTTOM_UP_REDUCE (63)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (63)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (63)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (63)
+, Lexique_galgasTemplateScanner::kToken_is, BOTTOM_UP_REDUCE (63)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (63)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (63)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (63)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (63)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (63)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (63)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (63)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_REDUCE (63)
+, Lexique_galgasTemplateScanner::kToken_then, BOTTOM_UP_REDUCE (63)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (63)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (63)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_REDUCE (63)
+, Lexique_galgasTemplateScanner::kToken_before, BOTTOM_UP_REDUCE (63)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (63)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (63)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (63)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_REDUCE (63)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (63)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (63)
+, BOTTOM_UP_END
+// State S136 (index = 4362)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_SHIFT (170)
+, BOTTOM_UP_END
+// State S137 (index = 4365)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (35)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (35)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (35)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (35)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (35)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (35)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (35)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (35)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (35)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (35)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_REDUCE (35)
+, Lexique_galgasTemplateScanner::kToken_then, BOTTOM_UP_REDUCE (35)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (35)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (35)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_REDUCE (35)
+, Lexique_galgasTemplateScanner::kToken_before, BOTTOM_UP_REDUCE (35)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (35)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (35)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (35)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_REDUCE (35)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (35)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (35)
+, BOTTOM_UP_END
+// State S138 (index = 4410)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (36)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (36)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (36)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (36)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (36)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (36)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (36)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (36)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (36)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (36)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_REDUCE (36)
+, Lexique_galgasTemplateScanner::kToken_then, BOTTOM_UP_REDUCE (36)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (36)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (36)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_REDUCE (36)
+, Lexique_galgasTemplateScanner::kToken_before, BOTTOM_UP_REDUCE (36)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (36)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (36)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (36)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_REDUCE (36)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (36)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (36)
+, BOTTOM_UP_END
+// State S139 (index = 4455)
+, Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (38)
+, Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (38)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (38)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (38)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (38)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (38)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (38)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (38)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (38)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (38)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (38)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (38)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_REDUCE (38)
+, Lexique_galgasTemplateScanner::kToken_then, BOTTOM_UP_REDUCE (38)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (38)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (38)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_REDUCE (38)
+, Lexique_galgasTemplateScanner::kToken_before, BOTTOM_UP_REDUCE (38)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (38)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (38)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (38)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_REDUCE (38)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (38)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (38)
+, BOTTOM_UP_END
+// State S140 (index = 4504)
+, Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (47)
+, Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (47)
+, Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (47)
+, Lexique_galgasTemplateScanner::kToken__3D__3D_, BOTTOM_UP_REDUCE (47)
+, Lexique_galgasTemplateScanner::kToken__21__3D_, BOTTOM_UP_REDUCE (47)
+, Lexique_galgasTemplateScanner::kToken__3C__3D_, BOTTOM_UP_REDUCE (47)
+, Lexique_galgasTemplateScanner::kToken__3E__3D_, BOTTOM_UP_REDUCE (47)
+, Lexique_galgasTemplateScanner::kToken__3E_, BOTTOM_UP_REDUCE (47)
+, Lexique_galgasTemplateScanner::kToken__3C_, BOTTOM_UP_REDUCE (47)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (47)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (47)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (47)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (47)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (47)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (47)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (47)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (47)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (47)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (47)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_REDUCE (47)
+, Lexique_galgasTemplateScanner::kToken_then, BOTTOM_UP_REDUCE (47)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (47)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (47)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_REDUCE (47)
+, Lexique_galgasTemplateScanner::kToken_before, BOTTOM_UP_REDUCE (47)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (47)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (47)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (47)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_REDUCE (47)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (47)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (47)
+, BOTTOM_UP_END
+// State S141 (index = 4567)
+, Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (48)
+, Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (48)
+, Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (48)
+, Lexique_galgasTemplateScanner::kToken__3D__3D_, BOTTOM_UP_REDUCE (48)
+, Lexique_galgasTemplateScanner::kToken__21__3D_, BOTTOM_UP_REDUCE (48)
+, Lexique_galgasTemplateScanner::kToken__3C__3D_, BOTTOM_UP_REDUCE (48)
+, Lexique_galgasTemplateScanner::kToken__3E__3D_, BOTTOM_UP_REDUCE (48)
+, Lexique_galgasTemplateScanner::kToken__3E_, BOTTOM_UP_REDUCE (48)
+, Lexique_galgasTemplateScanner::kToken__3C_, BOTTOM_UP_REDUCE (48)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (48)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (48)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (48)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (48)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (48)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (48)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (48)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (48)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (48)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (48)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_REDUCE (48)
+, Lexique_galgasTemplateScanner::kToken_then, BOTTOM_UP_REDUCE (48)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (48)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (48)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_REDUCE (48)
+, Lexique_galgasTemplateScanner::kToken_before, BOTTOM_UP_REDUCE (48)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (48)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (48)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (48)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_REDUCE (48)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (48)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (48)
+, BOTTOM_UP_END
+// State S142 (index = 4630)
+, Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (49)
+, Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (49)
+, Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (49)
+, Lexique_galgasTemplateScanner::kToken__3D__3D_, BOTTOM_UP_REDUCE (49)
+, Lexique_galgasTemplateScanner::kToken__21__3D_, BOTTOM_UP_REDUCE (49)
+, Lexique_galgasTemplateScanner::kToken__3C__3D_, BOTTOM_UP_REDUCE (49)
+, Lexique_galgasTemplateScanner::kToken__3E__3D_, BOTTOM_UP_REDUCE (49)
+, Lexique_galgasTemplateScanner::kToken__3E_, BOTTOM_UP_REDUCE (49)
+, Lexique_galgasTemplateScanner::kToken__3C_, BOTTOM_UP_REDUCE (49)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (49)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (49)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (49)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (49)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (49)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (49)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (49)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (49)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (49)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (49)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_REDUCE (49)
+, Lexique_galgasTemplateScanner::kToken_then, BOTTOM_UP_REDUCE (49)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (49)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (49)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_REDUCE (49)
+, Lexique_galgasTemplateScanner::kToken_before, BOTTOM_UP_REDUCE (49)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (49)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (49)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (49)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_REDUCE (49)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (49)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (49)
+, BOTTOM_UP_END
+// State S143 (index = 4693)
+, Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (50)
+, Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (50)
+, Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (50)
+, Lexique_galgasTemplateScanner::kToken__3D__3D_, BOTTOM_UP_REDUCE (50)
+, Lexique_galgasTemplateScanner::kToken__21__3D_, BOTTOM_UP_REDUCE (50)
+, Lexique_galgasTemplateScanner::kToken__3C__3D_, BOTTOM_UP_REDUCE (50)
+, Lexique_galgasTemplateScanner::kToken__3E__3D_, BOTTOM_UP_REDUCE (50)
+, Lexique_galgasTemplateScanner::kToken__3E_, BOTTOM_UP_REDUCE (50)
+, Lexique_galgasTemplateScanner::kToken__3C_, BOTTOM_UP_REDUCE (50)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (50)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (50)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (50)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (50)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (50)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (50)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (50)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (50)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (50)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (50)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_REDUCE (50)
+, Lexique_galgasTemplateScanner::kToken_then, BOTTOM_UP_REDUCE (50)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (50)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (50)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_REDUCE (50)
+, Lexique_galgasTemplateScanner::kToken_before, BOTTOM_UP_REDUCE (50)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (50)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (50)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (50)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_REDUCE (50)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (50)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (50)
+, BOTTOM_UP_END
+// State S144 (index = 4756)
+, Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (52)
+, Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (52)
+, Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (52)
+, Lexique_galgasTemplateScanner::kToken__3D__3D_, BOTTOM_UP_REDUCE (52)
+, Lexique_galgasTemplateScanner::kToken__21__3D_, BOTTOM_UP_REDUCE (52)
+, Lexique_galgasTemplateScanner::kToken__3C__3D_, BOTTOM_UP_REDUCE (52)
+, Lexique_galgasTemplateScanner::kToken__3E__3D_, BOTTOM_UP_REDUCE (52)
+, Lexique_galgasTemplateScanner::kToken__3E_, BOTTOM_UP_REDUCE (52)
+, Lexique_galgasTemplateScanner::kToken__3C_, BOTTOM_UP_REDUCE (52)
+, Lexique_galgasTemplateScanner::kToken__3C__3C_, BOTTOM_UP_REDUCE (52)
+, Lexique_galgasTemplateScanner::kToken__3E__3E_, BOTTOM_UP_REDUCE (52)
+, Lexique_galgasTemplateScanner::kToken__2B_, BOTTOM_UP_REDUCE (52)
+, Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_REDUCE (52)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (52)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (52)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (52)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (52)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (52)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (52)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (52)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (52)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (52)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (52)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_REDUCE (52)
+, Lexique_galgasTemplateScanner::kToken_then, BOTTOM_UP_REDUCE (52)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (52)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (52)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_REDUCE (52)
+, Lexique_galgasTemplateScanner::kToken_before, BOTTOM_UP_REDUCE (52)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (52)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (52)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (52)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_REDUCE (52)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (52)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (52)
+, BOTTOM_UP_END
+// State S145 (index = 4827)
+, Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (53)
+, Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (53)
+, Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (53)
+, Lexique_galgasTemplateScanner::kToken__3D__3D_, BOTTOM_UP_REDUCE (53)
+, Lexique_galgasTemplateScanner::kToken__21__3D_, BOTTOM_UP_REDUCE (53)
+, Lexique_galgasTemplateScanner::kToken__3C__3D_, BOTTOM_UP_REDUCE (53)
+, Lexique_galgasTemplateScanner::kToken__3E__3D_, BOTTOM_UP_REDUCE (53)
+, Lexique_galgasTemplateScanner::kToken__3E_, BOTTOM_UP_REDUCE (53)
+, Lexique_galgasTemplateScanner::kToken__3C_, BOTTOM_UP_REDUCE (53)
+, Lexique_galgasTemplateScanner::kToken__3C__3C_, BOTTOM_UP_REDUCE (53)
+, Lexique_galgasTemplateScanner::kToken__3E__3E_, BOTTOM_UP_REDUCE (53)
+, Lexique_galgasTemplateScanner::kToken__2B_, BOTTOM_UP_REDUCE (53)
+, Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_REDUCE (53)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (53)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (53)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (53)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (53)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (53)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (53)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (53)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (53)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (53)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (53)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_REDUCE (53)
+, Lexique_galgasTemplateScanner::kToken_then, BOTTOM_UP_REDUCE (53)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (53)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (53)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_REDUCE (53)
+, Lexique_galgasTemplateScanner::kToken_before, BOTTOM_UP_REDUCE (53)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (53)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (53)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (53)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_REDUCE (53)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (53)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (53)
+, BOTTOM_UP_END
+// State S146 (index = 4898)
+, Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (54)
+, Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (54)
+, Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (54)
+, Lexique_galgasTemplateScanner::kToken__3D__3D_, BOTTOM_UP_REDUCE (54)
+, Lexique_galgasTemplateScanner::kToken__21__3D_, BOTTOM_UP_REDUCE (54)
+, Lexique_galgasTemplateScanner::kToken__3C__3D_, BOTTOM_UP_REDUCE (54)
+, Lexique_galgasTemplateScanner::kToken__3E__3D_, BOTTOM_UP_REDUCE (54)
+, Lexique_galgasTemplateScanner::kToken__3E_, BOTTOM_UP_REDUCE (54)
+, Lexique_galgasTemplateScanner::kToken__3C_, BOTTOM_UP_REDUCE (54)
+, Lexique_galgasTemplateScanner::kToken__3C__3C_, BOTTOM_UP_REDUCE (54)
+, Lexique_galgasTemplateScanner::kToken__3E__3E_, BOTTOM_UP_REDUCE (54)
+, Lexique_galgasTemplateScanner::kToken__2B_, BOTTOM_UP_REDUCE (54)
+, Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_REDUCE (54)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (54)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (54)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (54)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (54)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (54)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (54)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (54)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (54)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (54)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (54)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_REDUCE (54)
+, Lexique_galgasTemplateScanner::kToken_then, BOTTOM_UP_REDUCE (54)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (54)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (54)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_REDUCE (54)
+, Lexique_galgasTemplateScanner::kToken_before, BOTTOM_UP_REDUCE (54)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (54)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (54)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (54)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_REDUCE (54)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (54)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (54)
+, BOTTOM_UP_END
+// State S147 (index = 4969)
+, Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (56)
+, Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (56)
+, Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (56)
+, Lexique_galgasTemplateScanner::kToken__3D__3D_, BOTTOM_UP_REDUCE (56)
+, Lexique_galgasTemplateScanner::kToken__21__3D_, BOTTOM_UP_REDUCE (56)
+, Lexique_galgasTemplateScanner::kToken__3C__3D_, BOTTOM_UP_REDUCE (56)
+, Lexique_galgasTemplateScanner::kToken__3E__3D_, BOTTOM_UP_REDUCE (56)
+, Lexique_galgasTemplateScanner::kToken__3E_, BOTTOM_UP_REDUCE (56)
+, Lexique_galgasTemplateScanner::kToken__3C_, BOTTOM_UP_REDUCE (56)
+, Lexique_galgasTemplateScanner::kToken__3C__3C_, BOTTOM_UP_REDUCE (56)
+, Lexique_galgasTemplateScanner::kToken__3E__3E_, BOTTOM_UP_REDUCE (56)
+, Lexique_galgasTemplateScanner::kToken__2B_, BOTTOM_UP_REDUCE (56)
+, Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_REDUCE (56)
+, Lexique_galgasTemplateScanner::kToken__2A_, BOTTOM_UP_REDUCE (56)
+, Lexique_galgasTemplateScanner::kToken__2F_, BOTTOM_UP_REDUCE (56)
+, Lexique_galgasTemplateScanner::kToken_mod, BOTTOM_UP_REDUCE (56)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (56)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (56)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (56)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (56)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (56)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (56)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (56)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (56)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (56)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (56)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_REDUCE (56)
+, Lexique_galgasTemplateScanner::kToken_then, BOTTOM_UP_REDUCE (56)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (56)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (56)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_REDUCE (56)
+, Lexique_galgasTemplateScanner::kToken_before, BOTTOM_UP_REDUCE (56)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (56)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (56)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (56)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_REDUCE (56)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (56)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (56)
+, BOTTOM_UP_END
+// State S148 (index = 5046)
+, Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (19)
+, Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (19)
+, Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (19)
+, Lexique_galgasTemplateScanner::kToken__3D__3D_, BOTTOM_UP_REDUCE (19)
+, Lexique_galgasTemplateScanner::kToken__21__3D_, BOTTOM_UP_REDUCE (19)
+, Lexique_galgasTemplateScanner::kToken__3C__3D_, BOTTOM_UP_REDUCE (19)
+, Lexique_galgasTemplateScanner::kToken__3E__3D_, BOTTOM_UP_REDUCE (19)
+, Lexique_galgasTemplateScanner::kToken__3E_, BOTTOM_UP_REDUCE (19)
+, Lexique_galgasTemplateScanner::kToken__3C_, BOTTOM_UP_REDUCE (19)
+, Lexique_galgasTemplateScanner::kToken__3C__3C_, BOTTOM_UP_REDUCE (19)
+, Lexique_galgasTemplateScanner::kToken__3E__3E_, BOTTOM_UP_REDUCE (19)
+, Lexique_galgasTemplateScanner::kToken__2B_, BOTTOM_UP_REDUCE (19)
+, Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_REDUCE (19)
+, Lexique_galgasTemplateScanner::kToken__2A_, BOTTOM_UP_REDUCE (19)
+, Lexique_galgasTemplateScanner::kToken__2F_, BOTTOM_UP_REDUCE (19)
+, Lexique_galgasTemplateScanner::kToken_mod, BOTTOM_UP_REDUCE (19)
+, Lexique_galgasTemplateScanner::kToken__2E_, BOTTOM_UP_REDUCE (19)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (19)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (19)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (19)
+, Lexique_galgasTemplateScanner::kToken_is, BOTTOM_UP_REDUCE (19)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (19)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (19)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (19)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (19)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (19)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (19)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (19)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_REDUCE (19)
+, Lexique_galgasTemplateScanner::kToken_then, BOTTOM_UP_REDUCE (19)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (19)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (19)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_REDUCE (19)
+, Lexique_galgasTemplateScanner::kToken_before, BOTTOM_UP_REDUCE (19)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (19)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (19)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (19)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_REDUCE (19)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (19)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (19)
+, BOTTOM_UP_END
+// State S149 (index = 5127)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (73)
+, BOTTOM_UP_END
+// State S150 (index = 5130)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (24)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (24)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (24)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (24)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (24)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_REDUCE (24)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (24)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (24)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_REDUCE (24)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (24)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (24)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (24)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_REDUCE (24)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (24)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (24)
+, BOTTOM_UP_END
+// State S151 (index = 5161)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (77)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (77)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (77)
+, BOTTOM_UP_END
+// State S152 (index = 5168)
+, Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_SHIFT (11)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (12)
+, Lexique_galgasTemplateScanner::kToken_not, BOTTOM_UP_SHIFT (13)
+, Lexique_galgasTemplateScanner::kToken__7E_, BOTTOM_UP_SHIFT (14)
+, Lexique_galgasTemplateScanner::kToken__28_, BOTTOM_UP_SHIFT (15)
+, Lexique_galgasTemplateScanner::kToken_true, BOTTOM_UP_SHIFT (16)
+, Lexique_galgasTemplateScanner::kToken_false, BOTTOM_UP_SHIFT (17)
+, Lexique_galgasTemplateScanner::kToken_literalInt, BOTTOM_UP_SHIFT (18)
+, Lexique_galgasTemplateScanner::kToken_double_2E_xxx, BOTTOM_UP_SHIFT (19)
+, Lexique_galgasTemplateScanner::kToken__27_char_27_, BOTTOM_UP_SHIFT (20)
+, Lexique_galgasTemplateScanner::kToken__22_string_22_, BOTTOM_UP_SHIFT (21)
+, Lexique_galgasTemplateScanner::kToken__5B_, BOTTOM_UP_SHIFT (22)
+, BOTTOM_UP_END
+// State S153 (index = 5193)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (78)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_SHIFT (172)
+, BOTTOM_UP_END
+// State S154 (index = 5198)
+, Lexique_galgasTemplateScanner::kToken__2A_, BOTTOM_UP_REDUCE (27)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (27)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (27)
+, Lexique_galgasTemplateScanner::kToken_literalInt, BOTTOM_UP_REDUCE (27)
+, BOTTOM_UP_END
+// State S155 (index = 5207)
+, Lexique_galgasTemplateScanner::kToken__2A_, BOTTOM_UP_SHIFT (118)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (119)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (84)
+, Lexique_galgasTemplateScanner::kToken_literalInt, BOTTOM_UP_SHIFT (120)
+, BOTTOM_UP_END
+// State S156 (index = 5216)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_SHIFT (175)
+, BOTTOM_UP_END
+// State S157 (index = 5219)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_SHIFT (1)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_SHIFT (2)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_SHIFT (3)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_SHIFT (4)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_SHIFT (5)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_SHIFT (6)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (93)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_SHIFT (7)
+, BOTTOM_UP_END
+// State S158 (index = 5236)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (92)
+, BOTTOM_UP_END
+// State S159 (index = 5239)
+, Lexique_galgasTemplateScanner::kToken__28_, BOTTOM_UP_SHIFT (177)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (95)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (95)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (95)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (95)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (95)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_REDUCE (95)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_REDUCE (95)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (95)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (95)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_REDUCE (95)
+, BOTTOM_UP_END
+// State S160 (index = 5262)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (179)
+, BOTTOM_UP_END
+// State S161 (index = 5265)
+, Lexique_galgasTemplateScanner::kToken__28_, BOTTOM_UP_SHIFT (180)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (113)
+, BOTTOM_UP_END
+// State S162 (index = 5270)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_SHIFT (1)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_SHIFT (2)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_SHIFT (3)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_SHIFT (4)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (109)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_SHIFT (5)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_SHIFT (6)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_SHIFT (7)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (109)
+, BOTTOM_UP_END
+// State S163 (index = 5289)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (70)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (70)
+, BOTTOM_UP_END
+// State S164 (index = 5294)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (71)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (71)
+, BOTTOM_UP_END
+// State S165 (index = 5299)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_SHIFT (184)
+, BOTTOM_UP_END
+// State S166 (index = 5302)
+, Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (60)
+, Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (60)
+, Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (60)
+, Lexique_galgasTemplateScanner::kToken__3D__3D_, BOTTOM_UP_REDUCE (60)
+, Lexique_galgasTemplateScanner::kToken__21__3D_, BOTTOM_UP_REDUCE (60)
+, Lexique_galgasTemplateScanner::kToken__3C__3D_, BOTTOM_UP_REDUCE (60)
+, Lexique_galgasTemplateScanner::kToken__3E__3D_, BOTTOM_UP_REDUCE (60)
+, Lexique_galgasTemplateScanner::kToken__3E_, BOTTOM_UP_REDUCE (60)
+, Lexique_galgasTemplateScanner::kToken__3C_, BOTTOM_UP_REDUCE (60)
+, Lexique_galgasTemplateScanner::kToken__3C__3C_, BOTTOM_UP_REDUCE (60)
+, Lexique_galgasTemplateScanner::kToken__3E__3E_, BOTTOM_UP_REDUCE (60)
+, Lexique_galgasTemplateScanner::kToken__2B_, BOTTOM_UP_REDUCE (60)
+, Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_REDUCE (60)
+, Lexique_galgasTemplateScanner::kToken__2A_, BOTTOM_UP_REDUCE (60)
+, Lexique_galgasTemplateScanner::kToken__2F_, BOTTOM_UP_REDUCE (60)
+, Lexique_galgasTemplateScanner::kToken_mod, BOTTOM_UP_REDUCE (60)
+, Lexique_galgasTemplateScanner::kToken__2E_, BOTTOM_UP_REDUCE (60)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (60)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (60)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (60)
+, Lexique_galgasTemplateScanner::kToken_is, BOTTOM_UP_REDUCE (60)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (60)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (60)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (60)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (60)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (60)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (60)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (60)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_REDUCE (60)
+, Lexique_galgasTemplateScanner::kToken_then, BOTTOM_UP_REDUCE (60)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (60)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (60)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_REDUCE (60)
+, Lexique_galgasTemplateScanner::kToken_before, BOTTOM_UP_REDUCE (60)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (60)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (60)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (60)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_REDUCE (60)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (60)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (60)
+, BOTTOM_UP_END
+// State S167 (index = 5383)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (69)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (69)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_SHIFT (80)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_SHIFT (81)
+, BOTTOM_UP_END
+// State S168 (index = 5392)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (64)
+, BOTTOM_UP_END
+// State S169 (index = 5395)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (186)
+, BOTTOM_UP_END
+// State S170 (index = 5398)
+, Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (62)
+, Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (62)
+, Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (62)
+, Lexique_galgasTemplateScanner::kToken__3D__3D_, BOTTOM_UP_REDUCE (62)
+, Lexique_galgasTemplateScanner::kToken__21__3D_, BOTTOM_UP_REDUCE (62)
+, Lexique_galgasTemplateScanner::kToken__3C__3D_, BOTTOM_UP_REDUCE (62)
+, Lexique_galgasTemplateScanner::kToken__3E__3D_, BOTTOM_UP_REDUCE (62)
+, Lexique_galgasTemplateScanner::kToken__3E_, BOTTOM_UP_REDUCE (62)
+, Lexique_galgasTemplateScanner::kToken__3C_, BOTTOM_UP_REDUCE (62)
+, Lexique_galgasTemplateScanner::kToken__3C__3C_, BOTTOM_UP_REDUCE (62)
+, Lexique_galgasTemplateScanner::kToken__3E__3E_, BOTTOM_UP_REDUCE (62)
+, Lexique_galgasTemplateScanner::kToken__2B_, BOTTOM_UP_REDUCE (62)
+, Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_REDUCE (62)
+, Lexique_galgasTemplateScanner::kToken__2A_, BOTTOM_UP_REDUCE (62)
+, Lexique_galgasTemplateScanner::kToken__2F_, BOTTOM_UP_REDUCE (62)
+, Lexique_galgasTemplateScanner::kToken_mod, BOTTOM_UP_REDUCE (62)
+, Lexique_galgasTemplateScanner::kToken__2E_, BOTTOM_UP_REDUCE (62)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (62)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (62)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (62)
+, Lexique_galgasTemplateScanner::kToken_is, BOTTOM_UP_REDUCE (62)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (62)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (62)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (62)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (62)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (62)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (62)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (62)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_REDUCE (62)
+, Lexique_galgasTemplateScanner::kToken_then, BOTTOM_UP_REDUCE (62)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (62)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (62)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_REDUCE (62)
+, Lexique_galgasTemplateScanner::kToken_before, BOTTOM_UP_REDUCE (62)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (62)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (62)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (62)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_REDUCE (62)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (62)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (62)
+, BOTTOM_UP_END
+// State S171 (index = 5479)
+, Lexique_galgasTemplateScanner::kToken_then, BOTTOM_UP_SHIFT (187)
+, BOTTOM_UP_END
+// State S172 (index = 5482)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_SHIFT (1)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_SHIFT (2)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_SHIFT (3)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_SHIFT (4)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (80)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_SHIFT (5)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_SHIFT (6)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_SHIFT (7)
+, BOTTOM_UP_END
+// State S173 (index = 5499)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_SHIFT (190)
+, BOTTOM_UP_END
+// State S174 (index = 5502)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (85)
+, BOTTOM_UP_END
+// State S175 (index = 5505)
+, Lexique_galgasTemplateScanner::kToken_in, BOTTOM_UP_SHIFT (191)
+, BOTTOM_UP_END
+// State S176 (index = 5508)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (94)
+, BOTTOM_UP_END
+// State S177 (index = 5511)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (192)
+, BOTTOM_UP_END
+// State S178 (index = 5514)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_SHIFT (1)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_SHIFT (2)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_SHIFT (3)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_SHIFT (4)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (97)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_SHIFT (5)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_SHIFT (6)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (97)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (97)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_SHIFT (7)
+, BOTTOM_UP_END
+// State S179 (index = 5535)
+, Lexique_galgasTemplateScanner::kToken__28_, BOTTOM_UP_REDUCE (111)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (111)
+, Lexique_galgasTemplateScanner::kToken__2C_, BOTTOM_UP_SHIFT (160)
+, BOTTOM_UP_END
+// State S180 (index = 5542)
+, Lexique_galgasTemplateScanner::kToken__2A_, BOTTOM_UP_SHIFT (196)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (121)
+, Lexique_galgasTemplateScanner::kToken_literalInt, BOTTOM_UP_SHIFT (197)
+, Lexique_galgasTemplateScanner::kToken__40_type, BOTTOM_UP_SHIFT (198)
+, Lexique_galgasTemplateScanner::kToken_unused, BOTTOM_UP_REDUCE (121)
+, BOTTOM_UP_END
+// State S181 (index = 5553)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (33)
+, BOTTOM_UP_END
+// State S182 (index = 5556)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_SHIFT (1)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_SHIFT (2)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_SHIFT (3)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_SHIFT (4)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (109)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_SHIFT (5)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_SHIFT (6)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_SHIFT (7)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (109)
+, BOTTOM_UP_END
+// State S183 (index = 5575)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (107)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_SHIFT (78)
+, BOTTOM_UP_END
+// State S184 (index = 5580)
+, Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (59)
+, Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (59)
+, Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (59)
+, Lexique_galgasTemplateScanner::kToken__3D__3D_, BOTTOM_UP_REDUCE (59)
+, Lexique_galgasTemplateScanner::kToken__21__3D_, BOTTOM_UP_REDUCE (59)
+, Lexique_galgasTemplateScanner::kToken__3C__3D_, BOTTOM_UP_REDUCE (59)
+, Lexique_galgasTemplateScanner::kToken__3E__3D_, BOTTOM_UP_REDUCE (59)
+, Lexique_galgasTemplateScanner::kToken__3E_, BOTTOM_UP_REDUCE (59)
+, Lexique_galgasTemplateScanner::kToken__3C_, BOTTOM_UP_REDUCE (59)
+, Lexique_galgasTemplateScanner::kToken__3C__3C_, BOTTOM_UP_REDUCE (59)
+, Lexique_galgasTemplateScanner::kToken__3E__3E_, BOTTOM_UP_REDUCE (59)
+, Lexique_galgasTemplateScanner::kToken__2B_, BOTTOM_UP_REDUCE (59)
+, Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_REDUCE (59)
+, Lexique_galgasTemplateScanner::kToken__2A_, BOTTOM_UP_REDUCE (59)
+, Lexique_galgasTemplateScanner::kToken__2F_, BOTTOM_UP_REDUCE (59)
+, Lexique_galgasTemplateScanner::kToken_mod, BOTTOM_UP_REDUCE (59)
+, Lexique_galgasTemplateScanner::kToken__2E_, BOTTOM_UP_REDUCE (59)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (59)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (59)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (59)
+, Lexique_galgasTemplateScanner::kToken_is, BOTTOM_UP_REDUCE (59)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (59)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (59)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (59)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (59)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (59)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (59)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (59)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_REDUCE (59)
+, Lexique_galgasTemplateScanner::kToken_then, BOTTOM_UP_REDUCE (59)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (59)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (59)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_REDUCE (59)
+, Lexique_galgasTemplateScanner::kToken_before, BOTTOM_UP_REDUCE (59)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (59)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (59)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (59)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_REDUCE (59)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (59)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (59)
+, BOTTOM_UP_END
+// State S185 (index = 5661)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_SHIFT (203)
+, BOTTOM_UP_END
+// State S186 (index = 5664)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (65)
+, BOTTOM_UP_END
+// State S187 (index = 5667)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_SHIFT (1)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_SHIFT (2)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_SHIFT (3)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_SHIFT (4)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (76)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_SHIFT (5)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (76)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (76)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_SHIFT (6)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_SHIFT (7)
+, BOTTOM_UP_END
+// State S188 (index = 5688)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_SHIFT (1)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_SHIFT (2)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_SHIFT (3)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_SHIFT (4)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (80)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_SHIFT (5)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_SHIFT (6)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_SHIFT (7)
+, BOTTOM_UP_END
+// State S189 (index = 5705)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (79)
+, BOTTOM_UP_END
+// State S190 (index = 5708)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (25)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (25)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (25)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (25)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (25)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_REDUCE (25)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (25)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (25)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_REDUCE (25)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (25)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (25)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (25)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_REDUCE (25)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (25)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (25)
+, BOTTOM_UP_END
+// State S191 (index = 5739)
+, Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_SHIFT (11)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (12)
+, Lexique_galgasTemplateScanner::kToken_not, BOTTOM_UP_SHIFT (13)
+, Lexique_galgasTemplateScanner::kToken__7E_, BOTTOM_UP_SHIFT (14)
+, Lexique_galgasTemplateScanner::kToken__28_, BOTTOM_UP_SHIFT (15)
+, Lexique_galgasTemplateScanner::kToken_true, BOTTOM_UP_SHIFT (16)
+, Lexique_galgasTemplateScanner::kToken_false, BOTTOM_UP_SHIFT (17)
+, Lexique_galgasTemplateScanner::kToken_literalInt, BOTTOM_UP_SHIFT (18)
+, Lexique_galgasTemplateScanner::kToken_double_2E_xxx, BOTTOM_UP_SHIFT (19)
+, Lexique_galgasTemplateScanner::kToken__27_char_27_, BOTTOM_UP_SHIFT (20)
+, Lexique_galgasTemplateScanner::kToken__22_string_22_, BOTTOM_UP_SHIFT (21)
+, Lexique_galgasTemplateScanner::kToken__5B_, BOTTOM_UP_SHIFT (22)
+, BOTTOM_UP_END
+// State S192 (index = 5764)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_SHIFT (207)
+, BOTTOM_UP_END
+// State S193 (index = 5767)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_SHIFT (1)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_SHIFT (2)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_SHIFT (3)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_SHIFT (4)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (97)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_SHIFT (5)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_SHIFT (6)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (97)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (97)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_SHIFT (7)
+, BOTTOM_UP_END
+// State S194 (index = 5788)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (99)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_SHIFT (209)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (99)
+, BOTTOM_UP_END
+// State S195 (index = 5795)
+, Lexique_galgasTemplateScanner::kToken__28_, BOTTOM_UP_REDUCE (112)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (112)
+, BOTTOM_UP_END
+// State S196 (index = 5800)
+, Lexique_galgasTemplateScanner::kToken__2A_, BOTTOM_UP_REDUCE (118)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (118)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (118)
+, Lexique_galgasTemplateScanner::kToken_literalInt, BOTTOM_UP_REDUCE (118)
+, Lexique_galgasTemplateScanner::kToken__40_type, BOTTOM_UP_REDUCE (118)
+, Lexique_galgasTemplateScanner::kToken_unused, BOTTOM_UP_REDUCE (118)
+, BOTTOM_UP_END
+// State S197 (index = 5813)
+, Lexique_galgasTemplateScanner::kToken__2A_, BOTTOM_UP_SHIFT (211)
+, BOTTOM_UP_END
+// State S198 (index = 5816)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (120)
+, Lexique_galgasTemplateScanner::kToken_unused, BOTTOM_UP_REDUCE (120)
+, BOTTOM_UP_END
+// State S199 (index = 5821)
+, Lexique_galgasTemplateScanner::kToken__2A_, BOTTOM_UP_SHIFT (196)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (121)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (115)
+, Lexique_galgasTemplateScanner::kToken_literalInt, BOTTOM_UP_SHIFT (197)
+, Lexique_galgasTemplateScanner::kToken__40_type, BOTTOM_UP_SHIFT (198)
+, Lexique_galgasTemplateScanner::kToken_unused, BOTTOM_UP_REDUCE (121)
+, BOTTOM_UP_END
+// State S200 (index = 5834)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (122)
+, Lexique_galgasTemplateScanner::kToken_unused, BOTTOM_UP_SHIFT (214)
+, BOTTOM_UP_END
+// State S201 (index = 5839)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (110)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (110)
+, BOTTOM_UP_END
+// State S202 (index = 5844)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (108)
+, BOTTOM_UP_END
+// State S203 (index = 5847)
+, Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (61)
+, Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (61)
+, Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (61)
+, Lexique_galgasTemplateScanner::kToken__3D__3D_, BOTTOM_UP_REDUCE (61)
+, Lexique_galgasTemplateScanner::kToken__21__3D_, BOTTOM_UP_REDUCE (61)
+, Lexique_galgasTemplateScanner::kToken__3C__3D_, BOTTOM_UP_REDUCE (61)
+, Lexique_galgasTemplateScanner::kToken__3E__3D_, BOTTOM_UP_REDUCE (61)
+, Lexique_galgasTemplateScanner::kToken__3E_, BOTTOM_UP_REDUCE (61)
+, Lexique_galgasTemplateScanner::kToken__3C_, BOTTOM_UP_REDUCE (61)
+, Lexique_galgasTemplateScanner::kToken__3C__3C_, BOTTOM_UP_REDUCE (61)
+, Lexique_galgasTemplateScanner::kToken__3E__3E_, BOTTOM_UP_REDUCE (61)
+, Lexique_galgasTemplateScanner::kToken__2B_, BOTTOM_UP_REDUCE (61)
+, Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_REDUCE (61)
+, Lexique_galgasTemplateScanner::kToken__2A_, BOTTOM_UP_REDUCE (61)
+, Lexique_galgasTemplateScanner::kToken__2F_, BOTTOM_UP_REDUCE (61)
+, Lexique_galgasTemplateScanner::kToken_mod, BOTTOM_UP_REDUCE (61)
+, Lexique_galgasTemplateScanner::kToken__2E_, BOTTOM_UP_REDUCE (61)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (61)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (61)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (61)
+, Lexique_galgasTemplateScanner::kToken_is, BOTTOM_UP_REDUCE (61)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (61)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (61)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (61)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (61)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (61)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (61)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (61)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_REDUCE (61)
+, Lexique_galgasTemplateScanner::kToken_then, BOTTOM_UP_REDUCE (61)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (61)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (61)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_REDUCE (61)
+, Lexique_galgasTemplateScanner::kToken_before, BOTTOM_UP_REDUCE (61)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (61)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (61)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (61)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_REDUCE (61)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (61)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (61)
+, BOTTOM_UP_END
+// State S204 (index = 5928)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (74)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_SHIFT (152)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (74)
+, BOTTOM_UP_END
+// State S205 (index = 5935)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (81)
+, BOTTOM_UP_END
+// State S206 (index = 5938)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_SHIFT (217)
+, Lexique_galgasTemplateScanner::kToken_before, BOTTOM_UP_REDUCE (86)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (86)
+, BOTTOM_UP_END
+// State S207 (index = 5945)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (96)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (96)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (96)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (96)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (96)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_REDUCE (96)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_REDUCE (96)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (96)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (96)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_REDUCE (96)
+, BOTTOM_UP_END
+// State S208 (index = 5966)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (98)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (98)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (98)
+, BOTTOM_UP_END
+// State S209 (index = 5973)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_SHIFT (1)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_SHIFT (2)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_SHIFT (3)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_SHIFT (4)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (101)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_SHIFT (5)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_SHIFT (6)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (101)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_SHIFT (7)
+, BOTTOM_UP_END
+// State S210 (index = 5992)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (103)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_SHIFT (221)
+, BOTTOM_UP_END
+// State S211 (index = 5997)
+, Lexique_galgasTemplateScanner::kToken__2A_, BOTTOM_UP_REDUCE (117)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (117)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (117)
+, Lexique_galgasTemplateScanner::kToken_literalInt, BOTTOM_UP_REDUCE (117)
+, Lexique_galgasTemplateScanner::kToken__40_type, BOTTOM_UP_REDUCE (117)
+, Lexique_galgasTemplateScanner::kToken_unused, BOTTOM_UP_REDUCE (117)
+, BOTTOM_UP_END
+// State S212 (index = 6010)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_SHIFT (223)
+, BOTTOM_UP_END
+// State S213 (index = 6013)
+, Lexique_galgasTemplateScanner::kToken__2A_, BOTTOM_UP_SHIFT (196)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (121)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (115)
+, Lexique_galgasTemplateScanner::kToken_literalInt, BOTTOM_UP_SHIFT (197)
+, Lexique_galgasTemplateScanner::kToken__40_type, BOTTOM_UP_SHIFT (198)
+, Lexique_galgasTemplateScanner::kToken_unused, BOTTOM_UP_REDUCE (121)
+, BOTTOM_UP_END
+// State S214 (index = 6026)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (123)
+, BOTTOM_UP_END
+// State S215 (index = 6029)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (225)
+, BOTTOM_UP_END
+// State S216 (index = 6032)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (75)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (75)
+, BOTTOM_UP_END
+// State S217 (index = 6037)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (226)
+, BOTTOM_UP_END
+// State S218 (index = 6040)
+, Lexique_galgasTemplateScanner::kToken_before, BOTTOM_UP_REDUCE (30)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (30)
+, BOTTOM_UP_END
+// State S219 (index = 6045)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_SHIFT (1)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_SHIFT (2)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_SHIFT (3)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_SHIFT (4)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (101)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_SHIFT (5)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_SHIFT (6)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (101)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_SHIFT (7)
+, BOTTOM_UP_END
+// State S220 (index = 6064)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (100)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (100)
+, BOTTOM_UP_END
+// State S221 (index = 6069)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_SHIFT (1)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_SHIFT (2)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_SHIFT (3)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_SHIFT (4)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (105)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_SHIFT (5)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_SHIFT (6)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_SHIFT (7)
+, BOTTOM_UP_END
+// State S222 (index = 6086)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_SHIFT (230)
+, BOTTOM_UP_END
+// State S223 (index = 6089)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (114)
+, BOTTOM_UP_END
+// State S224 (index = 6092)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (116)
+, BOTTOM_UP_END
+// State S225 (index = 6095)
+, Lexique_galgasTemplateScanner::kToken__2A_, BOTTOM_UP_REDUCE (119)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (119)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (119)
+, Lexique_galgasTemplateScanner::kToken_literalInt, BOTTOM_UP_REDUCE (119)
+, Lexique_galgasTemplateScanner::kToken__40_type, BOTTOM_UP_REDUCE (119)
+, Lexique_galgasTemplateScanner::kToken_unused, BOTTOM_UP_REDUCE (119)
+, BOTTOM_UP_END
+// State S226 (index = 6108)
+, Lexique_galgasTemplateScanner::kToken_before, BOTTOM_UP_REDUCE (87)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (87)
+, BOTTOM_UP_END
+// State S227 (index = 6113)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (102)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (102)
+, BOTTOM_UP_END
+// State S228 (index = 6118)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_SHIFT (1)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_SHIFT (2)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_SHIFT (3)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_SHIFT (4)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (105)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_SHIFT (5)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_SHIFT (6)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_SHIFT (7)
+, BOTTOM_UP_END
+// State S229 (index = 6135)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (104)
+, BOTTOM_UP_END
+// State S230 (index = 6138)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (31)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (31)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (31)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (31)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (31)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_REDUCE (31)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (31)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (31)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_REDUCE (31)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (31)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (31)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (31)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_REDUCE (31)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (31)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (31)
+, BOTTOM_UP_END
+// State S231 (index = 6169)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (106)
+, BOTTOM_UP_END} ;
+
+static const uint32_t gActionTableIndex_templateGrammar [232] = {
+  0  // S0
+, 17  // S1
+, 42  // S2
+, 73  // S3
+, 104  // S4
+, 129  // S5
+, 154  // S6
+, 161  // S7
+, 186  // S8
+, 203  // S9
+, 206  // S10
+, 209  // S11
+, 234  // S12
+, 317  // S13
+, 342  // S14
+, 367  // S15
+, 392  // S16
+, 473  // S17
+, 554  // S18
+, 635  // S19
+, 716  // S20
+, 797  // S21
+, 880  // S22
+, 913  // S23
+, 944  // S24
+, 993  // S25
+, 1044  // S26
+, 1107  // S27
+, 1178  // S28
+, 1255  // S29
+, 1336  // S30
+, 1339  // S31
+, 1342  // S32
+, 1345  // S33
+, 1348  // S34
+, 1351  // S35
+, 1356  // S36
+, 1359  // S37
+, 1436  // S38
+, 1445  // S39
+, 1522  // S40
+, 1599  // S41
+, 1602  // S42
+, 1685  // S43
+, 1766  // S44
+, 1791  // S45
+, 1794  // S46
+, 1797  // S47
+, 1802  // S48
+, 1805  // S49
+, 1886  // S50
+, 1911  // S51
+, 1936  // S52
+, 1981  // S53
+, 2006  // S54
+, 2055  // S55
+, 2080  // S56
+, 2105  // S57
+, 2130  // S58
+, 2155  // S59
+, 2180  // S60
+, 2205  // S61
+, 2256  // S62
+, 2281  // S63
+, 2306  // S64
+, 2331  // S65
+, 2356  // S66
+, 2419  // S67
+, 2444  // S68
+, 2469  // S69
+, 2494  // S70
+, 2565  // S71
+, 2568  // S72
+, 2575  // S73
+, 2652  // S74
+, 2669  // S75
+, 2690  // S76
+, 2697  // S77
+, 2702  // S78
+, 2705  // S79
+, 2708  // S80
+, 2733  // S81
+, 2758  // S82
+, 2761  // S83
+, 2766  // S84
+, 2847  // S85
+, 2928  // S86
+, 2931  // S87
+, 2940  // S88
+, 2943  // S89
+, 2946  // S90
+, 2949  // S91
+, 2952  // S92
+, 2961  // S93
+, 3010  // S94
+, 3059  // S95
+, 3110  // S96
+, 3161  // S97
+, 3212  // S98
+, 3263  // S99
+, 3314  // S100
+, 3365  // S101
+, 3416  // S102
+, 3487  // S103
+, 3558  // S104
+, 3629  // S105
+, 3700  // S106
+, 3777  // S107
+, 3854  // S108
+, 3931  // S109
+, 4010  // S110
+, 4013  // S111
+, 4016  // S112
+, 4019  // S113
+, 4022  // S114
+, 4039  // S115
+, 4042  // S116
+, 4063  // S117
+, 4070  // S118
+, 4079  // S119
+, 4088  // S120
+, 4091  // S121
+, 4100  // S122
+, 4117  // S123
+, 4120  // S124
+, 4127  // S125
+, 4130  // S126
+, 4161  // S127
+, 4170  // S128
+, 4179  // S129
+, 4260  // S130
+, 4269  // S131
+, 4272  // S132
+, 4275  // S133
+, 4278  // S134
+, 4281  // S135
+, 4362  // S136
+, 4365  // S137
+, 4410  // S138
+, 4455  // S139
+, 4504  // S140
+, 4567  // S141
+, 4630  // S142
+, 4693  // S143
+, 4756  // S144
+, 4827  // S145
+, 4898  // S146
+, 4969  // S147
+, 5046  // S148
+, 5127  // S149
+, 5130  // S150
+, 5161  // S151
+, 5168  // S152
+, 5193  // S153
+, 5198  // S154
+, 5207  // S155
+, 5216  // S156
+, 5219  // S157
+, 5236  // S158
+, 5239  // S159
+, 5262  // S160
+, 5265  // S161
+, 5270  // S162
+, 5289  // S163
+, 5294  // S164
+, 5299  // S165
+, 5302  // S166
+, 5383  // S167
+, 5392  // S168
+, 5395  // S169
+, 5398  // S170
+, 5479  // S171
+, 5482  // S172
+, 5499  // S173
+, 5502  // S174
+, 5505  // S175
+, 5508  // S176
+, 5511  // S177
+, 5514  // S178
+, 5535  // S179
+, 5542  // S180
+, 5553  // S181
+, 5556  // S182
+, 5575  // S183
+, 5580  // S184
+, 5661  // S185
+, 5664  // S186
+, 5667  // S187
+, 5688  // S188
+, 5705  // S189
+, 5708  // S190
+, 5739  // S191
+, 5764  // S192
+, 5767  // S193
+, 5788  // S194
+, 5795  // S195
+, 5800  // S196
+, 5813  // S197
+, 5816  // S198
+, 5821  // S199
+, 5834  // S200
+, 5839  // S201
+, 5844  // S202
+, 5847  // S203
+, 5928  // S204
+, 5935  // S205
+, 5938  // S206
+, 5945  // S207
+, 5966  // S208
+, 5973  // S209
+, 5992  // S210
+, 5997  // S211
+, 6010  // S212
+, 6013  // S213
+, 6026  // S214
+, 6029  // S215
+, 6032  // S216
+, 6037  // S217
+, 6040  // S218
+, 6045  // S219
+, 6064  // S220
+, 6069  // S221
+, 6086  // S222
+, 6089  // S223
+, 6092  // S224
+, 6095  // S225
+, 6108  // S226
+, 6113  // S227
+, 6118  // S228
+, 6135  // S229
+, 6138  // S230
+, 6169  // S231
+} ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//                                  SLR states successors table                                     
+//
+//--------------------------------------------------------------------------------------------------
+
+// Successor tables handle non terminal successors ;
+// an entry is (non_terminal_symbol, n) ; successor is state n.
+
+static const int32_t gSuccessorTable_templateGrammar_0 [7] = {8, 8,
+  9, 9,
+  29, 10, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_1 [15] = {0, 23,
+  1, 24,
+  2, 25,
+  3, 26,
+  4, 27,
+  5, 28,
+  6, 29, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_4 [15] = {0, 30,
+  1, 24,
+  2, 25,
+  3, 26,
+  4, 27,
+  5, 28,
+  6, 29, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_5 [15] = {0, 31,
+  1, 24,
+  2, 25,
+  3, 26,
+  4, 27,
+  5, 28,
+  6, 29, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_6 [3] = {32, 34, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_7 [15] = {0, 35,
+  1, 24,
+  2, 25,
+  3, 26,
+  4, 27,
+  5, 28,
+  6, 29, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_8 [5] = {8, 8,
+  29, 36, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_11 [5] = {5, 37,
+  6, 29, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_13 [5] = {5, 39,
+  6, 29, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_14 [5] = {5, 40,
+  6, 29, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_15 [15] = {0, 41,
+  1, 24,
+  2, 25,
+  3, 26,
+  4, 27,
+  5, 28,
+  6, 29, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_21 [3] = {19, 43, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_22 [17] = {0, 48,
+  1, 24,
+  2, 25,
+  3, 26,
+  4, 27,
+  5, 28,
+  6, 29,
+  20, 49, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_24 [3] = {13, 52, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_25 [3] = {14, 54, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_26 [3] = {15, 61, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_27 [3] = {16, 66, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_28 [3] = {17, 70, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_29 [3] = {18, 73, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_34 [3] = {11, 77, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_35 [3] = {41, 79, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_38 [5] = {7, 82,
+  23, 83, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_42 [3] = {19, 85, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_44 [15] = {0, 86,
+  1, 24,
+  2, 25,
+  3, 26,
+  4, 27,
+  5, 28,
+  6, 29, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_47 [3] = {21, 91, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_50 [13] = {1, 93,
+  2, 25,
+  3, 26,
+  4, 27,
+  5, 28,
+  6, 29, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_51 [13] = {1, 94,
+  2, 25,
+  3, 26,
+  4, 27,
+  5, 28,
+  6, 29, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_53 [11] = {2, 95,
+  3, 26,
+  4, 27,
+  5, 28,
+  6, 29, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_55 [9] = {3, 96,
+  4, 27,
+  5, 28,
+  6, 29, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_56 [9] = {3, 97,
+  4, 27,
+  5, 28,
+  6, 29, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_57 [9] = {3, 98,
+  4, 27,
+  5, 28,
+  6, 29, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_58 [9] = {3, 99,
+  4, 27,
+  5, 28,
+  6, 29, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_59 [9] = {3, 100,
+  4, 27,
+  5, 28,
+  6, 29, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_60 [9] = {3, 101,
+  4, 27,
+  5, 28,
+  6, 29, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_62 [7] = {4, 102,
+  5, 28,
+  6, 29, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_63 [7] = {4, 103,
+  5, 28,
+  6, 29, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_64 [7] = {4, 104,
+  5, 28,
+  6, 29, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_65 [7] = {4, 105,
+  5, 28,
+  6, 29, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_67 [5] = {5, 106,
+  6, 29, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_68 [5] = {5, 107,
+  6, 29, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_69 [5] = {5, 108,
+  6, 29, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_72 [3] = {22, 113, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_74 [5] = {8, 114,
+  24, 115, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_75 [5] = {8, 116,
+  26, 117, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_76 [3] = {10, 121, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_77 [3] = {33, 123, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_78 [3] = {12, 125, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_80 [15] = {0, 127,
+  1, 24,
+  2, 25,
+  3, 26,
+  4, 27,
+  5, 28,
+  6, 29, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_81 [15] = {0, 128,
+  1, 24,
+  2, 25,
+  3, 26,
+  4, 27,
+  5, 28,
+  6, 29, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_87 [5] = {7, 131,
+  23, 83, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_92 [5] = {7, 136,
+  23, 83, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_93 [3] = {13, 137, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_94 [3] = {13, 138, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_95 [3] = {14, 139, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_102 [3] = {16, 140, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_103 [3] = {16, 141, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_104 [3] = {16, 142, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_105 [3] = {16, 143, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_106 [3] = {17, 144, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_107 [3] = {17, 145, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_108 [3] = {17, 146, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_109 [3] = {18, 147, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_114 [5] = {8, 114,
+  24, 149, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_116 [5] = {8, 116,
+  26, 151, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_117 [3] = {25, 153, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_121 [5] = {10, 155,
+  30, 156, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_122 [5] = {8, 157,
+  34, 158, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_124 [3] = {43, 161, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_127 [3] = {23, 163, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_128 [3] = {23, 164, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_130 [5] = {7, 165,
+  23, 83, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_152 [15] = {0, 171,
+  1, 24,
+  2, 25,
+  3, 26,
+  4, 27,
+  5, 28,
+  6, 29, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_153 [3] = {27, 173, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_155 [5] = {10, 155,
+  30, 174, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_157 [5] = {8, 157,
+  34, 176, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_159 [3] = {35, 178, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_161 [3] = {44, 181, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_162 [5] = {8, 182,
+  42, 183, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_167 [5] = {7, 185,
+  23, 83, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_172 [5] = {8, 188,
+  28, 189, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_178 [5] = {8, 193,
+  36, 194, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_179 [3] = {43, 195, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_180 [5] = {46, 199,
+  47, 200, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_182 [5] = {8, 182,
+  42, 201, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_183 [3] = {41, 202, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_187 [5] = {8, 116,
+  26, 204, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_188 [5] = {8, 188,
+  28, 205, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_191 [15] = {0, 206,
+  1, 24,
+  2, 25,
+  3, 26,
+  4, 27,
+  5, 28,
+  6, 29, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_193 [5] = {8, 193,
+  36, 208, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_194 [3] = {37, 210, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_199 [7] = {45, 212,
+  46, 213,
+  47, 200, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_200 [3] = {48, 215, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_204 [3] = {25, 216, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_206 [3] = {31, 218, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_209 [5] = {8, 219,
+  38, 220, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_210 [3] = {39, 222, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_213 [7] = {45, 224,
+  46, 213,
+  47, 200, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_219 [5] = {8, 219,
+  38, 227, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_221 [5] = {8, 228,
+  40, 229, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_228 [5] = {8, 228,
+  40, 231, -1} ;
+
+static const int32_t * gSuccessorTable_templateGrammar [232] = {
+gSuccessorTable_templateGrammar_0, gSuccessorTable_templateGrammar_1, nullptr, nullptr, 
+  gSuccessorTable_templateGrammar_4, gSuccessorTable_templateGrammar_5, gSuccessorTable_templateGrammar_6, gSuccessorTable_templateGrammar_7, 
+  gSuccessorTable_templateGrammar_8, nullptr, nullptr, gSuccessorTable_templateGrammar_11, 
+  nullptr, gSuccessorTable_templateGrammar_13, gSuccessorTable_templateGrammar_14, gSuccessorTable_templateGrammar_15, 
+  nullptr, nullptr, nullptr, nullptr, 
+  nullptr, gSuccessorTable_templateGrammar_21, gSuccessorTable_templateGrammar_22, nullptr, 
+  gSuccessorTable_templateGrammar_24, gSuccessorTable_templateGrammar_25, gSuccessorTable_templateGrammar_26, gSuccessorTable_templateGrammar_27, 
+  gSuccessorTable_templateGrammar_28, gSuccessorTable_templateGrammar_29, nullptr, nullptr, 
+  nullptr, nullptr, gSuccessorTable_templateGrammar_34, gSuccessorTable_templateGrammar_35, 
+  nullptr, nullptr, gSuccessorTable_templateGrammar_38, nullptr, 
+  nullptr, nullptr, gSuccessorTable_templateGrammar_42, nullptr, 
+  gSuccessorTable_templateGrammar_44, nullptr, nullptr, gSuccessorTable_templateGrammar_47, 
+  nullptr, nullptr, gSuccessorTable_templateGrammar_50, gSuccessorTable_templateGrammar_51, 
+  nullptr, gSuccessorTable_templateGrammar_53, nullptr, gSuccessorTable_templateGrammar_55, 
+  gSuccessorTable_templateGrammar_56, gSuccessorTable_templateGrammar_57, gSuccessorTable_templateGrammar_58, gSuccessorTable_templateGrammar_59, 
+  gSuccessorTable_templateGrammar_60, nullptr, gSuccessorTable_templateGrammar_62, gSuccessorTable_templateGrammar_63, 
+  gSuccessorTable_templateGrammar_64, gSuccessorTable_templateGrammar_65, nullptr, gSuccessorTable_templateGrammar_67, 
+  gSuccessorTable_templateGrammar_68, gSuccessorTable_templateGrammar_69, nullptr, nullptr, 
+  gSuccessorTable_templateGrammar_72, nullptr, gSuccessorTable_templateGrammar_74, gSuccessorTable_templateGrammar_75, 
+  gSuccessorTable_templateGrammar_76, gSuccessorTable_templateGrammar_77, gSuccessorTable_templateGrammar_78, nullptr, 
+  gSuccessorTable_templateGrammar_80, gSuccessorTable_templateGrammar_81, nullptr, nullptr, 
+  nullptr, nullptr, nullptr, gSuccessorTable_templateGrammar_87, 
+  nullptr, nullptr, nullptr, nullptr, 
+  gSuccessorTable_templateGrammar_92, gSuccessorTable_templateGrammar_93, gSuccessorTable_templateGrammar_94, gSuccessorTable_templateGrammar_95, 
+  nullptr, nullptr, nullptr, nullptr, 
+  nullptr, nullptr, gSuccessorTable_templateGrammar_102, gSuccessorTable_templateGrammar_103, 
+  gSuccessorTable_templateGrammar_104, gSuccessorTable_templateGrammar_105, gSuccessorTable_templateGrammar_106, gSuccessorTable_templateGrammar_107, 
+  gSuccessorTable_templateGrammar_108, gSuccessorTable_templateGrammar_109, nullptr, nullptr, 
+  nullptr, nullptr, gSuccessorTable_templateGrammar_114, nullptr, 
+  gSuccessorTable_templateGrammar_116, gSuccessorTable_templateGrammar_117, nullptr, nullptr, 
+  nullptr, gSuccessorTable_templateGrammar_121, gSuccessorTable_templateGrammar_122, nullptr, 
+  gSuccessorTable_templateGrammar_124, nullptr, nullptr, gSuccessorTable_templateGrammar_127, 
+  gSuccessorTable_templateGrammar_128, nullptr, gSuccessorTable_templateGrammar_130, nullptr, 
+  nullptr, nullptr, nullptr, nullptr, 
+  nullptr, nullptr, nullptr, nullptr, 
+  nullptr, nullptr, nullptr, nullptr, 
+  nullptr, nullptr, nullptr, nullptr, 
+  nullptr, nullptr, nullptr, nullptr, 
+  gSuccessorTable_templateGrammar_152, gSuccessorTable_templateGrammar_153, nullptr, gSuccessorTable_templateGrammar_155, 
+  nullptr, gSuccessorTable_templateGrammar_157, nullptr, gSuccessorTable_templateGrammar_159, 
+  nullptr, gSuccessorTable_templateGrammar_161, gSuccessorTable_templateGrammar_162, nullptr, 
+  nullptr, nullptr, nullptr, gSuccessorTable_templateGrammar_167, 
+  nullptr, nullptr, nullptr, nullptr, 
+  gSuccessorTable_templateGrammar_172, nullptr, nullptr, nullptr, 
+  nullptr, nullptr, gSuccessorTable_templateGrammar_178, gSuccessorTable_templateGrammar_179, 
+  gSuccessorTable_templateGrammar_180, nullptr, gSuccessorTable_templateGrammar_182, gSuccessorTable_templateGrammar_183, 
+  nullptr, nullptr, nullptr, gSuccessorTable_templateGrammar_187, 
+  gSuccessorTable_templateGrammar_188, nullptr, nullptr, gSuccessorTable_templateGrammar_191, 
+  nullptr, gSuccessorTable_templateGrammar_193, gSuccessorTable_templateGrammar_194, nullptr, 
+  nullptr, nullptr, nullptr, gSuccessorTable_templateGrammar_199, 
+  gSuccessorTable_templateGrammar_200, nullptr, nullptr, nullptr, 
+  gSuccessorTable_templateGrammar_204, nullptr, gSuccessorTable_templateGrammar_206, nullptr, 
+  nullptr, gSuccessorTable_templateGrammar_209, gSuccessorTable_templateGrammar_210, nullptr, 
+  nullptr, gSuccessorTable_templateGrammar_213, nullptr, nullptr, 
+  nullptr, nullptr, nullptr, gSuccessorTable_templateGrammar_219, 
+  nullptr, gSuccessorTable_templateGrammar_221, nullptr, nullptr, 
+  nullptr, nullptr, nullptr, nullptr, 
+  gSuccessorTable_templateGrammar_228, nullptr, nullptr, nullptr} ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//                Production rules infos (left non terminal, size of right string)                  
+//
+//--------------------------------------------------------------------------------------------------
+
+static const int32_t gProductionsTable_templateGrammar [125 * 2] = {
+  0, 2,
+  1, 2,
+  2, 2,
+  3, 2,
+  4, 2,
+  5, 2,
+  5, 2,
+  5, 2,
+  5, 2,
+  6, 1,
+  6, 3,
+  6, 1,
+  6, 1,
+  6, 1,
+  6, 1,
+  6, 1,
+  6, 2,
+  6, 2,
+  6, 4,
+  6, 4,
+  7, 1,
+  8, 2,
+  8, 1,
+  8, 1,
+  8, 5,
+  8, 7,
+  9, 1,
+  10, 2,
+  10, 1,
+  10, 1,
+  11, 7,
+  8, 10,
+  8, 4,
+  12, 3,
+  13, 0,
+  13, 3,
+  13, 3,
+  14, 0,
+  14, 3,
+  15, 0,
+  15, 2,
+  15, 2,
+  15, 2,
+  15, 2,
+  15, 2,
+  15, 2,
+  16, 0,
+  16, 3,
+  16, 3,
+  16, 3,
+  16, 3,
+  17, 0,
+  17, 3,
+  17, 3,
+  17, 3,
+  18, 0,
+  18, 3,
+  19, 0,
+  19, 2,
+  20, 5,
+  20, 4,
+  20, 6,
+  20, 4,
+  20, 3,
+  21, 3,
+  21, 4,
+  22, 1,
+  22, 1,
+  22, 1,
+  23, 0,
+  23, 3,
+  23, 3,
+  24, 0,
+  24, 2,
+  25, 0,
+  25, 5,
+  26, 0,
+  26, 2,
+  27, 0,
+  27, 2,
+  28, 0,
+  28, 2,
+  29, 0,
+  29, 2,
+  30, 0,
+  30, 2,
+  31, 0,
+  31, 2,
+  32, 0,
+  32, 1,
+  32, 1,
+  33, 0,
+  33, 2,
+  34, 0,
+  34, 2,
+  35, 0,
+  35, 3,
+  36, 0,
+  36, 2,
+  37, 0,
+  37, 2,
+  38, 0,
+  38, 2,
+  39, 0,
+  39, 2,
+  40, 0,
+  40, 2,
+  41, 0,
+  41, 5,
+  42, 0,
+  42, 2,
+  43, 0,
+  43, 3,
+  44, 0,
+  44, 4,
+  45, 0,
+  45, 2,
+  46, 2,
+  46, 1,
+  46, 3,
+  47, 1,
+  47, 0,
+  48, 0,
+  48, 1,
+  49, 1
+} ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//                          'expression_tpl' non terminal implementation                            
+//
+//--------------------------------------------------------------------------------------------------
+
+void cGrammar_templateGrammar::nt_expression_5F_tpl_indexing (Lexique_galgasTemplateScanner * inLexique) {
+  if (inLexique->nextProductionIndex () == 0) {
+  rule_templateSyntax_expression_5F_tpl_i0_indexing(inLexique) ;
+  }else{
+    inLexique->internalBottomUpParserError (HERE) ;
+  }
+}
+
+void cGrammar_templateGrammar::nt_expression_5F_tpl_ (GGS_templateExpressionAST &  parameter_1,
+                                Lexique_galgasTemplateScanner * inLexique) {
+  if (inLexique->nextProductionIndex () == 0) {
+  rule_templateSyntax_expression_5F_tpl_i0_(parameter_1, inLexique) ;
+  }else{
+    inLexique->internalBottomUpParserError (HERE) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//                        'relation_term_tpl' non terminal implementation                           
+//
+//--------------------------------------------------------------------------------------------------
+
+void cGrammar_templateGrammar::nt_relation_5F_term_5F_tpl_indexing (Lexique_galgasTemplateScanner * inLexique) {
+  if (inLexique->nextProductionIndex () == 1) {
+  rule_templateSyntax_relation_5F_term_5F_tpl_i1_indexing(inLexique) ;
+  }else{
+    inLexique->internalBottomUpParserError (HERE) ;
+  }
+}
+
+void cGrammar_templateGrammar::nt_relation_5F_term_5F_tpl_ (GGS_templateExpressionAST &  parameter_1,
+                                Lexique_galgasTemplateScanner * inLexique) {
+  if (inLexique->nextProductionIndex () == 1) {
+  rule_templateSyntax_relation_5F_term_5F_tpl_i1_(parameter_1, inLexique) ;
+  }else{
+    inLexique->internalBottomUpParserError (HERE) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//                       'relation_factor_tpl' non terminal implementation                          
+//
+//--------------------------------------------------------------------------------------------------
+
+void cGrammar_templateGrammar::nt_relation_5F_factor_5F_tpl_indexing (Lexique_galgasTemplateScanner * inLexique) {
+  if (inLexique->nextProductionIndex () == 2) {
+  rule_templateSyntax_relation_5F_factor_5F_tpl_i2_indexing(inLexique) ;
+  }else{
+    inLexique->internalBottomUpParserError (HERE) ;
+  }
+}
+
+void cGrammar_templateGrammar::nt_relation_5F_factor_5F_tpl_ (GGS_templateExpressionAST &  parameter_1,
+                                Lexique_galgasTemplateScanner * inLexique) {
+  if (inLexique->nextProductionIndex () == 2) {
+  rule_templateSyntax_relation_5F_factor_5F_tpl_i2_(parameter_1, inLexique) ;
+  }else{
+    inLexique->internalBottomUpParserError (HERE) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//                      'simple_expression_tpl' non terminal implementation                         
+//
+//--------------------------------------------------------------------------------------------------
+
+void cGrammar_templateGrammar::nt_simple_5F_expression_5F_tpl_indexing (Lexique_galgasTemplateScanner * inLexique) {
+  if (inLexique->nextProductionIndex () == 3) {
+  rule_templateSyntax_simple_5F_expression_5F_tpl_i3_indexing(inLexique) ;
+  }else{
+    inLexique->internalBottomUpParserError (HERE) ;
+  }
+}
+
+void cGrammar_templateGrammar::nt_simple_5F_expression_5F_tpl_ (GGS_templateExpressionAST &  parameter_1,
+                                Lexique_galgasTemplateScanner * inLexique) {
+  if (inLexique->nextProductionIndex () == 3) {
+  rule_templateSyntax_simple_5F_expression_5F_tpl_i3_(parameter_1, inLexique) ;
+  }else{
+    inLexique->internalBottomUpParserError (HERE) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//                             'term_tpl' non terminal implementation                               
+//
+//--------------------------------------------------------------------------------------------------
+
+void cGrammar_templateGrammar::nt_term_5F_tpl_indexing (Lexique_galgasTemplateScanner * inLexique) {
+  if (inLexique->nextProductionIndex () == 4) {
+  rule_templateSyntax_term_5F_tpl_i4_indexing(inLexique) ;
+  }else{
+    inLexique->internalBottomUpParserError (HERE) ;
+  }
+}
+
+void cGrammar_templateGrammar::nt_term_5F_tpl_ (GGS_templateExpressionAST &  parameter_1,
+                                Lexique_galgasTemplateScanner * inLexique) {
+  if (inLexique->nextProductionIndex () == 4) {
+  rule_templateSyntax_term_5F_tpl_i4_(parameter_1, inLexique) ;
+  }else{
+    inLexique->internalBottomUpParserError (HERE) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//                            'factor_tpl' non terminal implementation                              
+//
+//--------------------------------------------------------------------------------------------------
+
+void cGrammar_templateGrammar::nt_factor_5F_tpl_indexing (Lexique_galgasTemplateScanner * inLexique) {
+  switch (inLexique->nextProductionIndex ()) {
+  case 5 :
+      rule_templateSyntax_factor_5F_tpl_i5_indexing(inLexique) ;
+    break ;
+  case 6 :
+      rule_templateSyntax_factor_5F_tpl_i6_indexing(inLexique) ;
+    break ;
+  case 7 :
+      rule_templateSyntax_factor_5F_tpl_i7_indexing(inLexique) ;
+    break ;
+  case 8 :
+      rule_templateSyntax_factor_5F_tpl_i8_indexing(inLexique) ;
+    break ;
+  default :
+    inLexique->internalBottomUpParserError (HERE) ;
+    break ;
+  }
+}
+
+void cGrammar_templateGrammar::nt_factor_5F_tpl_ (GGS_templateExpressionAST &  parameter_1,
+                                Lexique_galgasTemplateScanner * inLexique) {
+  switch (inLexique->nextProductionIndex ()) {
+  case 5 :
+      rule_templateSyntax_factor_5F_tpl_i5_(parameter_1, inLexique) ;
+    break ;
+  case 6 :
+      rule_templateSyntax_factor_5F_tpl_i6_(parameter_1, inLexique) ;
+    break ;
+  case 7 :
+      rule_templateSyntax_factor_5F_tpl_i7_(parameter_1, inLexique) ;
+    break ;
+  case 8 :
+      rule_templateSyntax_factor_5F_tpl_i8_(parameter_1, inLexique) ;
+    break ;
+  default :
+    inLexique->internalBottomUpParserError (HERE) ;
+    break ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//                           'primary_tpl' non terminal implementation                              
+//
+//--------------------------------------------------------------------------------------------------
+
+void cGrammar_templateGrammar::nt_primary_5F_tpl_indexing (Lexique_galgasTemplateScanner * inLexique) {
+  switch (inLexique->nextProductionIndex ()) {
+  case 9 :
+      rule_templateSyntax_primary_5F_tpl_i9_indexing(inLexique) ;
+    break ;
+  case 10 :
+      rule_templateSyntax_primary_5F_tpl_i10_indexing(inLexique) ;
+    break ;
+  case 11 :
+      rule_templateSyntax_primary_5F_tpl_i11_indexing(inLexique) ;
+    break ;
+  case 12 :
+      rule_templateSyntax_primary_5F_tpl_i12_indexing(inLexique) ;
+    break ;
+  case 13 :
+      rule_templateSyntax_primary_5F_tpl_i13_indexing(inLexique) ;
+    break ;
+  case 14 :
+      rule_templateSyntax_primary_5F_tpl_i14_indexing(inLexique) ;
+    break ;
+  case 15 :
+      rule_templateSyntax_primary_5F_tpl_i15_indexing(inLexique) ;
+    break ;
+  case 16 :
+      rule_templateSyntax_primary_5F_tpl_i16_indexing(inLexique) ;
+    break ;
+  case 17 :
+      rule_templateSyntax_primary_5F_tpl_i17_indexing(inLexique) ;
+    break ;
+  case 18 :
+      rule_templateSyntax_primary_5F_tpl_i18_indexing(inLexique) ;
+    break ;
+  case 19 :
+      rule_templateSyntax_primary_5F_tpl_i19_indexing(inLexique) ;
+    break ;
+  default :
+    inLexique->internalBottomUpParserError (HERE) ;
+    break ;
+  }
+}
+
+void cGrammar_templateGrammar::nt_primary_5F_tpl_ (GGS_templateExpressionAST &  parameter_1,
+                                Lexique_galgasTemplateScanner * inLexique) {
+  switch (inLexique->nextProductionIndex ()) {
+  case 9 :
+      rule_templateSyntax_primary_5F_tpl_i9_(parameter_1, inLexique) ;
+    break ;
+  case 10 :
+      rule_templateSyntax_primary_5F_tpl_i10_(parameter_1, inLexique) ;
+    break ;
+  case 11 :
+      rule_templateSyntax_primary_5F_tpl_i11_(parameter_1, inLexique) ;
+    break ;
+  case 12 :
+      rule_templateSyntax_primary_5F_tpl_i12_(parameter_1, inLexique) ;
+    break ;
+  case 13 :
+      rule_templateSyntax_primary_5F_tpl_i13_(parameter_1, inLexique) ;
+    break ;
+  case 14 :
+      rule_templateSyntax_primary_5F_tpl_i14_(parameter_1, inLexique) ;
+    break ;
+  case 15 :
+      rule_templateSyntax_primary_5F_tpl_i15_(parameter_1, inLexique) ;
+    break ;
+  case 16 :
+      rule_templateSyntax_primary_5F_tpl_i16_(parameter_1, inLexique) ;
+    break ;
+  case 17 :
+      rule_templateSyntax_primary_5F_tpl_i17_(parameter_1, inLexique) ;
+    break ;
+  case 18 :
+      rule_templateSyntax_primary_5F_tpl_i18_(parameter_1, inLexique) ;
+    break ;
+  case 19 :
+      rule_templateSyntax_primary_5F_tpl_i19_(parameter_1, inLexique) ;
+    break ;
+  default :
+    inLexique->internalBottomUpParserError (HERE) ;
+    break ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//                    'output_expression_list_tpl' non terminal implementation                      
+//
+//--------------------------------------------------------------------------------------------------
+
+void cGrammar_templateGrammar::nt_output_5F_expression_5F_list_5F_tpl_indexing (Lexique_galgasTemplateScanner * inLexique) {
+  if (inLexique->nextProductionIndex () == 20) {
+  rule_templateSyntax_output_5F_expression_5F_list_5F_tpl_i20_indexing(inLexique) ;
+  }else{
+    inLexique->internalBottomUpParserError (HERE) ;
+  }
+}
+
+void cGrammar_templateGrammar::nt_output_5F_expression_5F_list_5F_tpl_ (GGS_templateExpressionListAST &  parameter_1,
+                                Lexique_galgasTemplateScanner * inLexique) {
+  if (inLexique->nextProductionIndex () == 20) {
+  rule_templateSyntax_output_5F_expression_5F_list_5F_tpl_i20_(parameter_1, inLexique) ;
+  }else{
+    inLexique->internalBottomUpParserError (HERE) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//                       'template_instruction' non terminal implementation                         
+//
+//--------------------------------------------------------------------------------------------------
+
+void cGrammar_templateGrammar::nt_template_5F_instruction_indexing (Lexique_galgasTemplateScanner * inLexique) {
+  switch (inLexique->nextProductionIndex ()) {
+  case 21 :
+      rule_templateSyntax_template_5F_instruction_i21_indexing(inLexique) ;
+    break ;
+  case 22 :
+      rule_templateSyntax_template_5F_instruction_i22_indexing(inLexique) ;
+    break ;
+  case 23 :
+      rule_templateSyntax_template_5F_instruction_i23_indexing(inLexique) ;
+    break ;
+  case 24 :
+      rule_templateSyntax_template_5F_instruction_i24_indexing(inLexique) ;
+    break ;
+  case 25 :
+      rule_templateSyntax_template_5F_instruction_i25_indexing(inLexique) ;
+    break ;
+  case 31 :
+      rule_templateSyntax_template_5F_instruction_i31_indexing(inLexique) ;
+    break ;
+  case 32 :
+      rule_templateSyntax_template_5F_instruction_i32_indexing(inLexique) ;
+    break ;
+  default :
+    inLexique->internalBottomUpParserError (HERE) ;
+    break ;
+  }
+}
+
+void cGrammar_templateGrammar::nt_template_5F_instruction_ (GGS_templateInstructionListAST &  parameter_1,
+                                Lexique_galgasTemplateScanner * inLexique) {
+  switch (inLexique->nextProductionIndex ()) {
+  case 21 :
+      rule_templateSyntax_template_5F_instruction_i21_(parameter_1, inLexique) ;
+    break ;
+  case 22 :
+      rule_templateSyntax_template_5F_instruction_i22_(parameter_1, inLexique) ;
+    break ;
+  case 23 :
+      rule_templateSyntax_template_5F_instruction_i23_(parameter_1, inLexique) ;
+    break ;
+  case 24 :
+      rule_templateSyntax_template_5F_instruction_i24_(parameter_1, inLexique) ;
+    break ;
+  case 25 :
+      rule_templateSyntax_template_5F_instruction_i25_(parameter_1, inLexique) ;
+    break ;
+  case 31 :
+      rule_templateSyntax_template_5F_instruction_i31_(parameter_1, inLexique) ;
+    break ;
+  case 32 :
+      rule_templateSyntax_template_5F_instruction_i32_(parameter_1, inLexique) ;
+    break ;
+  default :
+    inLexique->internalBottomUpParserError (HERE) ;
+    break ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//                   'template_parser_start_symbol' non terminal implementation                     
+//
+//--------------------------------------------------------------------------------------------------
+
+void cGrammar_templateGrammar::nt_template_5F_parser_5F_start_5F_symbol_indexing (Lexique_galgasTemplateScanner * inLexique) {
+  if (inLexique->nextProductionIndex () == 26) {
+  rule_templateSyntax_template_5F_parser_5F_start_5F_symbol_i26_indexing(inLexique) ;
+  }else{
+    inLexique->internalBottomUpParserError (HERE) ;
+  }
+}
+
+void cGrammar_templateGrammar::nt_template_5F_parser_5F_start_5F_symbol_ (GGS_templateInstructionListAST &  parameter_1,
+                                Lexique_galgasTemplateScanner * inLexique) {
+  if (inLexique->nextProductionIndex () == 26) {
+  rule_templateSyntax_template_5F_parser_5F_start_5F_symbol_i26_(parameter_1, inLexique) ;
+  }else{
+    inLexique->internalBottomUpParserError (HERE) ;
+  }
+}
+
+void cGrammar_templateGrammar::performIndexing (Compiler * inCompiler,
+             const String & inSourceFilePath) {
+  Lexique_galgasTemplateScanner * scanner = nullptr ;
+  macroMyNew (scanner, Lexique_galgasTemplateScanner (inCompiler, inSourceFilePath COMMA_HERE)) ;
+  scanner->enableIndexing () ;
+  if (scanner->sourceText ().isValid ()) {
+    const bool ok = scanner->performBottomUpParsing (gActionTable_templateGrammar, gNonTerminalNames_templateGrammar,
+                                                     gActionTableIndex_templateGrammar, gSuccessorTable_templateGrammar,
+                                                     gProductionsTable_templateGrammar) ;
+    if (ok) {
+      cGrammar_templateGrammar grammar ;
+      grammar.nt_template_5F_parser_5F_start_5F_symbol_indexing (scanner) ;
+    }
+    scanner->generateIndexFile () ;
+  }
+  macroDetachSharedObject (scanner) ;
+}
+
+void cGrammar_templateGrammar::performOnlyLexicalAnalysis (Compiler * inCompiler,
+             const String & inSourceFilePath) {
+  Lexique_galgasTemplateScanner * scanner = nullptr ;
+  macroMyNew (scanner, Lexique_galgasTemplateScanner (inCompiler, inSourceFilePath COMMA_HERE)) ;
+  if (scanner->sourceText ().isValid ()) {
+    scanner->performLexicalAnalysis () ;
+  }
+  macroDetachSharedObject (scanner) ;
+}
+
+void cGrammar_templateGrammar::performOnlySyntaxAnalysis (Compiler * inCompiler,
+             const String & inSourceFilePath) {
+  Lexique_galgasTemplateScanner * scanner = nullptr ;
+  macroMyNew (scanner, Lexique_galgasTemplateScanner (inCompiler, inSourceFilePath COMMA_HERE)) ;
+  if (scanner->sourceText ().isValid ()) {
+    scanner->performBottomUpParsing (gActionTable_templateGrammar, gNonTerminalNames_templateGrammar,
+                                     gActionTableIndex_templateGrammar, gSuccessorTable_templateGrammar,
+                                     gProductionsTable_templateGrammar) ;
+  }
+  macroDetachSharedObject (scanner) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//                              Grammar start symbol implementation                                 
+//
+//--------------------------------------------------------------------------------------------------
+
+void cGrammar_templateGrammar::_performSourceFileParsing_ (Compiler * inCompiler,
+                                GGS_lstring inFilePath,
+                                GGS_templateInstructionListAST &  parameter_1
+                                COMMA_LOCATION_ARGS) {
+  if (inFilePath.isValid ()) {
+    const GGS_string filePathAsString = inFilePath.readProperty_string () ;
+    String filePath = filePathAsString.stringValue () ;
+    if (! FileManager::isAbsolutePath (filePath)) {
+      filePath = inCompiler->sourceFilePath ().deletingLastPathComponent ().appendingPathComponent (filePath) ;
+    }
+    if (FileManager::fileExistsAtPath (filePath)) {
+      Lexique_galgasTemplateScanner * scanner = nullptr ;
+      macroMyNew (scanner, Lexique_galgasTemplateScanner (inCompiler, filePath COMMA_HERE)) ;
+      if (scanner->sourceText ().isValid ()) {
+        const bool ok = scanner->performBottomUpParsing (gActionTable_templateGrammar, gNonTerminalNames_templateGrammar,
+                                                         gActionTableIndex_templateGrammar, gSuccessorTable_templateGrammar,
+                                                         gProductionsTable_templateGrammar) ;
+        if (ok && ! executionModeIsSyntaxAnalysisOnly ()) {
+          cGrammar_templateGrammar grammar ;
+          grammar.nt_template_5F_parser_5F_start_5F_symbol_ (parameter_1, scanner) ;
+        }
+      }else{
+        String message ;
+        message.appendString ("the '") ;
+        message.appendString (filePath) ;
+        message.appendString ("' file exists, but cannot be read") ;
+        const GGS_location errorLocation (inFilePath.readProperty_location ()) ;
+        inCompiler->semanticErrorAtLocation (errorLocation, message, GenericArray <FixItDescription> () COMMA_THERE) ;
+      }
+      macroDetachSharedObject (scanner) ;
+    }else{
+      String message ;
+      message.appendString ("the '") ;
+      message.appendString (filePath) ;
+      message.appendString ("' file does not exist") ;
+      const GGS_location errorLocation (inFilePath.readProperty_location ()) ;
+      inCompiler->semanticErrorAtLocation (errorLocation, message, GenericArray <FixItDescription> () COMMA_THERE) ;
+    }
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void cGrammar_templateGrammar::_performSourceStringParsing_ (Compiler * inCompiler,
+                                GGS_string inSourceString,
+                                GGS_string inNameString,
+                                GGS_templateInstructionListAST &  parameter_1
+                                COMMA_UNUSED_LOCATION_ARGS) {
+  if (inSourceString.isValid () && inNameString.isValid ()) {
+    const String sourceString = inSourceString.stringValue () ;
+    const String nameString = inNameString.stringValue () ;
+    Lexique_galgasTemplateScanner * scanner = nullptr ;
+    macroMyNew (scanner, Lexique_galgasTemplateScanner (inCompiler, sourceString, nameString COMMA_HERE)) ;
+    if (scanner->sourceText ().isValid ()) {
+      const bool ok = scanner->performBottomUpParsing (gActionTable_templateGrammar, gNonTerminalNames_templateGrammar,
+                                                       gActionTableIndex_templateGrammar, gSuccessorTable_templateGrammar,
+                                                       gProductionsTable_templateGrammar) ;
+      if (ok && ! executionModeIsSyntaxAnalysisOnly ()) {
+        cGrammar_templateGrammar grammar ;
+        grammar.nt_template_5F_parser_5F_start_5F_symbol_ (parameter_1, scanner) ;
+      }
+    }
+    macroDetachSharedObject (scanner) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//                     'for_instruction_element' non terminal implementation                        
+//
+//--------------------------------------------------------------------------------------------------
+
+void cGrammar_templateGrammar::nt_for_5F_instruction_5F_element_indexing (Lexique_galgasTemplateScanner * inLexique) {
+  switch (inLexique->nextProductionIndex ()) {
+  case 27 :
+      rule_templateSyntax_for_5F_instruction_5F_element_i27_indexing(inLexique) ;
+    break ;
+  case 28 :
+      rule_templateSyntax_for_5F_instruction_5F_element_i28_indexing(inLexique) ;
+    break ;
+  case 29 :
+      rule_templateSyntax_for_5F_instruction_5F_element_i29_indexing(inLexique) ;
+    break ;
+  default :
+    inLexique->internalBottomUpParserError (HERE) ;
+    break ;
+  }
+}
+
+void cGrammar_templateGrammar::nt_for_5F_instruction_5F_element_ (GGS_lstringlist &  parameter_1,
+                                Lexique_galgasTemplateScanner * inLexique) {
+  switch (inLexique->nextProductionIndex ()) {
+  case 27 :
+      rule_templateSyntax_for_5F_instruction_5F_element_i27_(parameter_1, inLexique) ;
+    break ;
+  case 28 :
+      rule_templateSyntax_for_5F_instruction_5F_element_i28_(parameter_1, inLexique) ;
+    break ;
+  case 29 :
+      rule_templateSyntax_for_5F_instruction_5F_element_i29_(parameter_1, inLexique) ;
+    break ;
+  default :
+    inLexique->internalBottomUpParserError (HERE) ;
+    break ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//                'for_instruction_enumerated_object' non terminal implementation                   
+//
+//--------------------------------------------------------------------------------------------------
+
+void cGrammar_templateGrammar::nt_for_5F_instruction_5F_enumerated_5F_object_indexing (Lexique_galgasTemplateScanner * inLexique) {
+  if (inLexique->nextProductionIndex () == 30) {
+  rule_templateSyntax_for_5F_instruction_5F_enumerated_5F_object_i30_indexing(inLexique) ;
+  }else{
+    inLexique->internalBottomUpParserError (HERE) ;
+  }
+}
+
+void cGrammar_templateGrammar::nt_for_5F_instruction_5F_enumerated_5F_object_ (GGS_lstringlist &  parameter_1,
+                                GGS_location &  parameter_2,
+                                GGS_templateExpressionAST &  parameter_3,
+                                Lexique_galgasTemplateScanner * inLexique) {
+  if (inLexique->nextProductionIndex () == 30) {
+  rule_templateSyntax_for_5F_instruction_5F_enumerated_5F_object_i30_(parameter_1, parameter_2, parameter_3, inLexique) ;
+  }else{
+    inLexique->internalBottomUpParserError (HERE) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//                           'switch_case' non terminal implementation                              
+//
+//--------------------------------------------------------------------------------------------------
+
+void cGrammar_templateGrammar::nt_switch_5F_case_indexing (Lexique_galgasTemplateScanner * inLexique) {
+  if (inLexique->nextProductionIndex () == 33) {
+  rule_templateSyntax_switch_5F_case_i33_indexing(inLexique) ;
+  }else{
+    inLexique->internalBottomUpParserError (HERE) ;
+  }
+}
+
+void cGrammar_templateGrammar::nt_switch_5F_case_ (GGS__5B_lstring_5D_ &  parameter_1,
+                                GGS_switchExtractedValuesListAST &  parameter_2,
+                                Lexique_galgasTemplateScanner * inLexique) {
+  if (inLexique->nextProductionIndex () == 33) {
+  rule_templateSyntax_switch_5F_case_i33_(parameter_1, parameter_2, inLexique) ;
+  }else{
+    inLexique->internalBottomUpParserError (HERE) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//                     'select_templateSyntax_0' non terminal implementation                        
+//
+//--------------------------------------------------------------------------------------------------
+
+int32_t cGrammar_templateGrammar::select_templateSyntax_0 (Lexique_galgasTemplateScanner * inLexique) {
+// Productions numbers:  34 35 36
+  return inLexique->nextProductionIndex () - 33 ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//                     'select_templateSyntax_1' non terminal implementation                        
+//
+//--------------------------------------------------------------------------------------------------
+
+int32_t cGrammar_templateGrammar::select_templateSyntax_1 (Lexique_galgasTemplateScanner * inLexique) {
+// Productions numbers:  37 38
+  return inLexique->nextProductionIndex () - 36 ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//                     'select_templateSyntax_2' non terminal implementation                        
+//
+//--------------------------------------------------------------------------------------------------
+
+int32_t cGrammar_templateGrammar::select_templateSyntax_2 (Lexique_galgasTemplateScanner * inLexique) {
+// Productions numbers:  39 40 41 42 43 44 45
+  return inLexique->nextProductionIndex () - 38 ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//                     'select_templateSyntax_3' non terminal implementation                        
+//
+//--------------------------------------------------------------------------------------------------
+
+int32_t cGrammar_templateGrammar::select_templateSyntax_3 (Lexique_galgasTemplateScanner * inLexique) {
+// Productions numbers:  46 47 48 49 50
+  return inLexique->nextProductionIndex () - 45 ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//                     'select_templateSyntax_4' non terminal implementation                        
+//
+//--------------------------------------------------------------------------------------------------
+
+int32_t cGrammar_templateGrammar::select_templateSyntax_4 (Lexique_galgasTemplateScanner * inLexique) {
+// Productions numbers:  51 52 53 54
+  return inLexique->nextProductionIndex () - 50 ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//                     'select_templateSyntax_5' non terminal implementation                        
+//
+//--------------------------------------------------------------------------------------------------
+
+int32_t cGrammar_templateGrammar::select_templateSyntax_5 (Lexique_galgasTemplateScanner * inLexique) {
+// Productions numbers:  55 56
+  return inLexique->nextProductionIndex () - 54 ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//                     'select_templateSyntax_6' non terminal implementation                        
+//
+//--------------------------------------------------------------------------------------------------
+
+int32_t cGrammar_templateGrammar::select_templateSyntax_6 (Lexique_galgasTemplateScanner * inLexique) {
+// Productions numbers:  57 58
+  return inLexique->nextProductionIndex () - 56 ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//                     'select_templateSyntax_7' non terminal implementation                        
+//
+//--------------------------------------------------------------------------------------------------
+
+int32_t cGrammar_templateGrammar::select_templateSyntax_7 (Lexique_galgasTemplateScanner * inLexique) {
+// Productions numbers:  59 60 61 62 63
+  return inLexique->nextProductionIndex () - 58 ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//                     'select_templateSyntax_8' non terminal implementation                        
+//
+//--------------------------------------------------------------------------------------------------
+
+int32_t cGrammar_templateGrammar::select_templateSyntax_8 (Lexique_galgasTemplateScanner * inLexique) {
+// Productions numbers:  64 65
+  return inLexique->nextProductionIndex () - 63 ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//                     'select_templateSyntax_9' non terminal implementation                        
+//
+//--------------------------------------------------------------------------------------------------
+
+int32_t cGrammar_templateGrammar::select_templateSyntax_9 (Lexique_galgasTemplateScanner * inLexique) {
+// Productions numbers:  66 67 68
+  return inLexique->nextProductionIndex () - 65 ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//                     'select_templateSyntax_10' non terminal implementation                       
+//
+//--------------------------------------------------------------------------------------------------
+
+int32_t cGrammar_templateGrammar::select_templateSyntax_10 (Lexique_galgasTemplateScanner * inLexique) {
+// Productions numbers:  69 70 71
+  return inLexique->nextProductionIndex () - 68 ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//                     'select_templateSyntax_11' non terminal implementation                       
+//
+//--------------------------------------------------------------------------------------------------
+
+int32_t cGrammar_templateGrammar::select_templateSyntax_11 (Lexique_galgasTemplateScanner * inLexique) {
+// Productions numbers:  72 73
+  return inLexique->nextProductionIndex () - 71 ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//                     'select_templateSyntax_12' non terminal implementation                       
+//
+//--------------------------------------------------------------------------------------------------
+
+int32_t cGrammar_templateGrammar::select_templateSyntax_12 (Lexique_galgasTemplateScanner * inLexique) {
+// Productions numbers:  74 75
+  return inLexique->nextProductionIndex () - 73 ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//                     'select_templateSyntax_13' non terminal implementation                       
+//
+//--------------------------------------------------------------------------------------------------
+
+int32_t cGrammar_templateGrammar::select_templateSyntax_13 (Lexique_galgasTemplateScanner * inLexique) {
+// Productions numbers:  76 77
+  return inLexique->nextProductionIndex () - 75 ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//                     'select_templateSyntax_14' non terminal implementation                       
+//
+//--------------------------------------------------------------------------------------------------
+
+int32_t cGrammar_templateGrammar::select_templateSyntax_14 (Lexique_galgasTemplateScanner * inLexique) {
+// Productions numbers:  78 79
+  return inLexique->nextProductionIndex () - 77 ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//                     'select_templateSyntax_15' non terminal implementation                       
+//
+//--------------------------------------------------------------------------------------------------
+
+int32_t cGrammar_templateGrammar::select_templateSyntax_15 (Lexique_galgasTemplateScanner * inLexique) {
+// Productions numbers:  80 81
+  return inLexique->nextProductionIndex () - 79 ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//                     'select_templateSyntax_16' non terminal implementation                       
+//
+//--------------------------------------------------------------------------------------------------
+
+int32_t cGrammar_templateGrammar::select_templateSyntax_16 (Lexique_galgasTemplateScanner * inLexique) {
+// Productions numbers:  82 83
+  return inLexique->nextProductionIndex () - 81 ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//                     'select_templateSyntax_17' non terminal implementation                       
+//
+//--------------------------------------------------------------------------------------------------
+
+int32_t cGrammar_templateGrammar::select_templateSyntax_17 (Lexique_galgasTemplateScanner * inLexique) {
+// Productions numbers:  84 85
+  return inLexique->nextProductionIndex () - 83 ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//                     'select_templateSyntax_18' non terminal implementation                       
+//
+//--------------------------------------------------------------------------------------------------
+
+int32_t cGrammar_templateGrammar::select_templateSyntax_18 (Lexique_galgasTemplateScanner * inLexique) {
+// Productions numbers:  86 87
+  return inLexique->nextProductionIndex () - 85 ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//                     'select_templateSyntax_19' non terminal implementation                       
+//
+//--------------------------------------------------------------------------------------------------
+
+int32_t cGrammar_templateGrammar::select_templateSyntax_19 (Lexique_galgasTemplateScanner * inLexique) {
+// Productions numbers:  88 89 90
+  return inLexique->nextProductionIndex () - 87 ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//                     'select_templateSyntax_20' non terminal implementation                       
+//
+//--------------------------------------------------------------------------------------------------
+
+int32_t cGrammar_templateGrammar::select_templateSyntax_20 (Lexique_galgasTemplateScanner * inLexique) {
+// Productions numbers:  91 92
+  return inLexique->nextProductionIndex () - 90 ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//                     'select_templateSyntax_21' non terminal implementation                       
+//
+//--------------------------------------------------------------------------------------------------
+
+int32_t cGrammar_templateGrammar::select_templateSyntax_21 (Lexique_galgasTemplateScanner * inLexique) {
+// Productions numbers:  93 94
+  return inLexique->nextProductionIndex () - 92 ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//                     'select_templateSyntax_22' non terminal implementation                       
+//
+//--------------------------------------------------------------------------------------------------
+
+int32_t cGrammar_templateGrammar::select_templateSyntax_22 (Lexique_galgasTemplateScanner * inLexique) {
+// Productions numbers:  95 96
+  return inLexique->nextProductionIndex () - 94 ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//                     'select_templateSyntax_23' non terminal implementation                       
+//
+//--------------------------------------------------------------------------------------------------
+
+int32_t cGrammar_templateGrammar::select_templateSyntax_23 (Lexique_galgasTemplateScanner * inLexique) {
+// Productions numbers:  97 98
+  return inLexique->nextProductionIndex () - 96 ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//                     'select_templateSyntax_24' non terminal implementation                       
+//
+//--------------------------------------------------------------------------------------------------
+
+int32_t cGrammar_templateGrammar::select_templateSyntax_24 (Lexique_galgasTemplateScanner * inLexique) {
+// Productions numbers:  99 100
+  return inLexique->nextProductionIndex () - 98 ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//                     'select_templateSyntax_25' non terminal implementation                       
+//
+//--------------------------------------------------------------------------------------------------
+
+int32_t cGrammar_templateGrammar::select_templateSyntax_25 (Lexique_galgasTemplateScanner * inLexique) {
+// Productions numbers:  101 102
+  return inLexique->nextProductionIndex () - 100 ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//                     'select_templateSyntax_26' non terminal implementation                       
+//
+//--------------------------------------------------------------------------------------------------
+
+int32_t cGrammar_templateGrammar::select_templateSyntax_26 (Lexique_galgasTemplateScanner * inLexique) {
+// Productions numbers:  103 104
+  return inLexique->nextProductionIndex () - 102 ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//                     'select_templateSyntax_27' non terminal implementation                       
+//
+//--------------------------------------------------------------------------------------------------
+
+int32_t cGrammar_templateGrammar::select_templateSyntax_27 (Lexique_galgasTemplateScanner * inLexique) {
+// Productions numbers:  105 106
+  return inLexique->nextProductionIndex () - 104 ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//                     'select_templateSyntax_28' non terminal implementation                       
+//
+//--------------------------------------------------------------------------------------------------
+
+int32_t cGrammar_templateGrammar::select_templateSyntax_28 (Lexique_galgasTemplateScanner * inLexique) {
+// Productions numbers:  107 108
+  return inLexique->nextProductionIndex () - 106 ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//                     'select_templateSyntax_29' non terminal implementation                       
+//
+//--------------------------------------------------------------------------------------------------
+
+int32_t cGrammar_templateGrammar::select_templateSyntax_29 (Lexique_galgasTemplateScanner * inLexique) {
+// Productions numbers:  109 110
+  return inLexique->nextProductionIndex () - 108 ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//                     'select_templateSyntax_30' non terminal implementation                       
+//
+//--------------------------------------------------------------------------------------------------
+
+int32_t cGrammar_templateGrammar::select_templateSyntax_30 (Lexique_galgasTemplateScanner * inLexique) {
+// Productions numbers:  111 112
+  return inLexique->nextProductionIndex () - 110 ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//                     'select_templateSyntax_31' non terminal implementation                       
+//
+//--------------------------------------------------------------------------------------------------
+
+int32_t cGrammar_templateGrammar::select_templateSyntax_31 (Lexique_galgasTemplateScanner * inLexique) {
+// Productions numbers:  113 114
+  return inLexique->nextProductionIndex () - 112 ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//                     'select_templateSyntax_32' non terminal implementation                       
+//
+//--------------------------------------------------------------------------------------------------
+
+int32_t cGrammar_templateGrammar::select_templateSyntax_32 (Lexique_galgasTemplateScanner * inLexique) {
+// Productions numbers:  115 116
+  return inLexique->nextProductionIndex () - 114 ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//                     'select_templateSyntax_33' non terminal implementation                       
+//
+//--------------------------------------------------------------------------------------------------
+
+int32_t cGrammar_templateGrammar::select_templateSyntax_33 (Lexique_galgasTemplateScanner * inLexique) {
+// Productions numbers:  117 118 119
+  return inLexique->nextProductionIndex () - 116 ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//                     'select_templateSyntax_34' non terminal implementation                       
+//
+//--------------------------------------------------------------------------------------------------
+
+int32_t cGrammar_templateGrammar::select_templateSyntax_34 (Lexique_galgasTemplateScanner * inLexique) {
+// Productions numbers:  120 121
+  return inLexique->nextProductionIndex () - 119 ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//                     'select_templateSyntax_35' non terminal implementation                       
+//
+//--------------------------------------------------------------------------------------------------
+
+int32_t cGrammar_templateGrammar::select_templateSyntax_35 (Lexique_galgasTemplateScanner * inLexique) {
+// Productions numbers:  122 123
+  return inLexique->nextProductionIndex () - 121 ;
+}
+
+//--------------------------------------------------------------------------------------------------
 

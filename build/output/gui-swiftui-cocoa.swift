@@ -10,22 +10,22 @@ import UniformTypeIdentifiers
 
 extension UTType {
   nonisolated static let galgas_33_ = UTType (exportedAs: Bundle.main.bundleIdentifier! + ".galgas3")
+  nonisolated static let galgas_34_ = UTType (exportedAs: Bundle.main.bundleIdentifier! + ".galgas4")
   nonisolated static let galgas_34_project = UTType (exportedAs: Bundle.main.bundleIdentifier! + ".galgas4project")
   nonisolated static let galgasTemplate = UTType (exportedAs: Bundle.main.bundleIdentifier! + ".galgastemplate")
-  nonisolated static let ggs = UTType (exportedAs: Bundle.main.bundleIdentifier! + ".ggs")
 }
 
 //--------------------------------------------------------------------------------------------------
 
 extension ProjectDocument {
-  static let readableContentTypes : [UTType] = [.galgas_33_, .galgas_34_project, .galgasTemplate, .ggs]
+  static let readableContentTypes : [UTType] = [.galgas_33_, .galgas_34_, .galgas_34_project, .galgasTemplate]
 }
 
 //--------------------------------------------------------------------------------------------------
 //    Project file extensions
 //--------------------------------------------------------------------------------------------------
 
-let projectFileExtensions = Set (["galgas3", "galgas4project", "galgastemplate", "ggs"])
+let projectFileExtensions = Set (["galgas3", "galgas4", "galgas4project", "galgastemplate"])
 
 //--------------------------------------------------------------------------------------------------
 //   Scanner for a given extension
@@ -36,12 +36,12 @@ let projectFileExtensions = Set (["galgas3", "galgas4project", "galgastemplate",
   let fileExtension = inExtension.lowercased ()
   if fileExtension == "galgas3" {
     result = ScannerFor_galgasScanner3 ()
+  }else if fileExtension == "galgas4" {
+    result = ScannerFor_galgasScanner4 ()
   }else if fileExtension == "galgas4project" {
     result = ScannerFor_galgasScanner4 ()
   }else if fileExtension == "galgastemplate" {
     result = ScannerFor_galgasTemplateScanner ()
-  }else if fileExtension == "ggs" {
-    result = ScannerFor_galgasScanner4 ()
   }
   return result
 }

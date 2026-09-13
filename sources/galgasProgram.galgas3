@@ -96,7 +96,7 @@ grammar galgas3Grammar
 //
 //--------------------------------------------------------------------------------------------------
 
-case . "ggs"
+case . "galgas4"
 message "a GALGAS 4 source file"
 grammar galgas4Grammar ?sourceFilePath: @lstring inSourceFile {
 //--- Search for a project file in parent directory
@@ -205,7 +205,7 @@ private proc compileProject ?let @lstring inProjectSourceFile
     if mValue.pathExtension == "galgas3" then
       let absoluteSourcePath = [mValue absolutePathFromPath !sourcesDir]
       grammar galgas3Grammar (!?declarationAST) in @lstring {!absoluteSourcePath !.nowhere}
-    elsif mValue.pathExtension == "ggs" then
+    elsif mValue.pathExtension == "galgas4" then
       let absoluteSourcePath = [mValue absolutePathFromPath !sourcesDir]
       grammar galgas4Grammar (!?declarationAST) in @lstring {!absoluteSourcePath !.nowhere}
     end
