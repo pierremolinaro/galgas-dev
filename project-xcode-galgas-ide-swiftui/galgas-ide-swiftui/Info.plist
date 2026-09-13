@@ -15,7 +15,7 @@
 			<string>Default</string>
 			<key>LSItemContentTypes</key>
 			<array>
-				<string>$(PRODUCT_BUNDLE_IDENTIFIER).galgas</string>
+				<string>$(PRODUCT_BUNDLE_IDENTIFIER).galgas3</string>
 			</array>
 			<key>NSDocumentClass</key>
 			<string></string>
@@ -86,12 +86,12 @@
 				<string>galgasDocuments</string>
 			</dict>
 			<key>UTTypeIdentifier</key>
-			<string>$(PRODUCT_BUNDLE_IDENTIFIER).galgas</string>
+			<string>$(PRODUCT_BUNDLE_IDENTIFIER).galgas3</string>
 			<key>UTTypeTagSpecification</key>
 			<dict>
 				<key>public.filename-extension</key>
 				<array>
-					<string>galgas</string>
+					<string>galgas3</string>
 				</array>
 			</dict>
 		</dict>

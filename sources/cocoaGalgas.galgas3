@@ -37,7 +37,7 @@ gui cocoa {
   //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   with lexique galgasScanner3 {
-    fileExtension : "galgas"
+    fileExtension : "galgas3"
     blockComment : "//"
     title: "Source GALGAS 3"
     label $before$, ${$

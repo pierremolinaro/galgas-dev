@@ -3796,178 +3796,6 @@ class GGS_stringlist : public AC_GALGAS_root {
 extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_stringlist ;
 
 //--------------------------------------------------------------------------------------------------
-// Phase 1: @lbool struct
-//--------------------------------------------------------------------------------------------------
-
-class GGS_lbool : public AC_GALGAS_root {
-//--------------------------------- Properties
-  public: GGS_bool mProperty_bool ;
-  public: inline GGS_bool readProperty_bool (void) const {
-    return mProperty_bool ;
-  }
-
-  public: GGS_location mProperty_location ;
-  public: inline GGS_location readProperty_location (void) const {
-    return mProperty_location ;
-  }
-
-//--------------------------------- Accessors
-  public: VIRTUAL_IN_DEBUG bool isValid (void) const override ;
-  public: VIRTUAL_IN_DEBUG void drop (void) override ;
-
-//--------------------------------- Default constructor
-  public: GGS_lbool (void) ;
-
-//--------------------------------- Property setters
-  public: inline void setter_setBool (const GGS_bool & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_bool = inValue ;
-  }
-
-  public: inline void setter_setLocation (const GGS_location & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_location = inValue ;
-  }
-
-//--------------------------------- Set initialized properties
-  private: void setInitializedProperties (Compiler * inCompiler) ;
-
-//--------------------------------- Native constructor
-  public: GGS_lbool (const GGS_bool & in_bool,
-                     const GGS_location & in_location) ;
-
-//--------------------------------- Copy constructor
-  public: GGS_lbool (const GGS_lbool & inSource) ;
-
-//--------------------------------- Assignment operator
-  public: GGS_lbool & operator = (const GGS_lbool & inSource) ;
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-  public: static GGS_lbool init_21__21_ (const class GGS_bool & inOperand0,
-                                         const class GGS_location & inOperand1,
-                                         Compiler * inCompiler
-                                         COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
-//--------------------------------- Object extraction
-  public: static GGS_lbool extractObject (const GGS_object & inObject,
-                                          Compiler * inCompiler
-                                          COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Implementation of getter 'description'
-  public: void description (String & ioString,
-                            const int32_t inIndentation) const override ;
-//--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GGS_lbool & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Read subscripts
-
-
-//--------------------------------- Introspection
-  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
- 
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lbool ;
-
-//--------------------------------------------------------------------------------------------------
-// Phase 1: @lchar struct
-//--------------------------------------------------------------------------------------------------
-
-class GGS_lchar : public AC_GALGAS_root {
-//--------------------------------- Properties
-  public: GGS_char mProperty_char ;
-  public: inline GGS_char readProperty_char (void) const {
-    return mProperty_char ;
-  }
-
-  public: GGS_location mProperty_location ;
-  public: inline GGS_location readProperty_location (void) const {
-    return mProperty_location ;
-  }
-
-//--------------------------------- Accessors
-  public: VIRTUAL_IN_DEBUG bool isValid (void) const override ;
-  public: VIRTUAL_IN_DEBUG void drop (void) override ;
-
-//--------------------------------- Default constructor
-  public: GGS_lchar (void) ;
-
-//--------------------------------- Property setters
-  public: inline void setter_setChar (const GGS_char & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_char = inValue ;
-  }
-
-  public: inline void setter_setLocation (const GGS_location & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_location = inValue ;
-  }
-
-//--------------------------------- Set initialized properties
-  private: void setInitializedProperties (Compiler * inCompiler) ;
-
-//--------------------------------- Native constructor
-  public: GGS_lchar (const GGS_char & in_char,
-                     const GGS_location & in_location) ;
-
-//--------------------------------- Copy constructor
-  public: GGS_lchar (const GGS_lchar & inSource) ;
-
-//--------------------------------- Assignment operator
-  public: GGS_lchar & operator = (const GGS_lchar & inSource) ;
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-  public: static GGS_lchar init_21__21_ (const class GGS_char & inOperand0,
-                                         const class GGS_location & inOperand1,
-                                         Compiler * inCompiler
-                                         COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
-//--------------------------------- Object extraction
-  public: static GGS_lchar extractObject (const GGS_object & inObject,
-                                          Compiler * inCompiler
-                                          COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Implementation of getter 'description'
-  public: void description (String & ioString,
-                            const int32_t inIndentation) const override ;
-//--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GGS_lchar & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Read subscripts
-
-
-//--------------------------------- Introspection
-  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
- 
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lchar ;
-
-//--------------------------------------------------------------------------------------------------
 // Phase 1: @_32_stringlist list enumerator
 //--------------------------------------------------------------------------------------------------
 
@@ -4207,6 +4035,178 @@ class GGS__32_stringlist : public AC_GALGAS_root {
 //--------------------------------------------------------------------------------------------------
 
 extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS__32_stringlist ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 1: @lchar struct
+//--------------------------------------------------------------------------------------------------
+
+class GGS_lchar : public AC_GALGAS_root {
+//--------------------------------- Properties
+  public: GGS_char mProperty_char ;
+  public: inline GGS_char readProperty_char (void) const {
+    return mProperty_char ;
+  }
+
+  public: GGS_location mProperty_location ;
+  public: inline GGS_location readProperty_location (void) const {
+    return mProperty_location ;
+  }
+
+//--------------------------------- Accessors
+  public: VIRTUAL_IN_DEBUG bool isValid (void) const override ;
+  public: VIRTUAL_IN_DEBUG void drop (void) override ;
+
+//--------------------------------- Default constructor
+  public: GGS_lchar (void) ;
+
+//--------------------------------- Property setters
+  public: inline void setter_setChar (const GGS_char & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_char = inValue ;
+  }
+
+  public: inline void setter_setLocation (const GGS_location & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_location = inValue ;
+  }
+
+//--------------------------------- Set initialized properties
+  private: void setInitializedProperties (Compiler * inCompiler) ;
+
+//--------------------------------- Native constructor
+  public: GGS_lchar (const GGS_char & in_char,
+                     const GGS_location & in_location) ;
+
+//--------------------------------- Copy constructor
+  public: GGS_lchar (const GGS_lchar & inSource) ;
+
+//--------------------------------- Assignment operator
+  public: GGS_lchar & operator = (const GGS_lchar & inSource) ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GGS_lchar init_21__21_ (const class GGS_char & inOperand0,
+                                         const class GGS_location & inOperand1,
+                                         Compiler * inCompiler
+                                         COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GGS_lchar extractObject (const GGS_object & inObject,
+                                          Compiler * inCompiler
+                                          COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Implementation of getter 'description'
+  public: void description (String & ioString,
+                            const int32_t inIndentation) const override ;
+//--------------------------------- Comparison
+  public: ComparisonResult objectCompare (const GGS_lchar & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subscripts
+
+
+//--------------------------------- Introspection
+  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
+ 
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lchar ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 1: @lbool struct
+//--------------------------------------------------------------------------------------------------
+
+class GGS_lbool : public AC_GALGAS_root {
+//--------------------------------- Properties
+  public: GGS_bool mProperty_bool ;
+  public: inline GGS_bool readProperty_bool (void) const {
+    return mProperty_bool ;
+  }
+
+  public: GGS_location mProperty_location ;
+  public: inline GGS_location readProperty_location (void) const {
+    return mProperty_location ;
+  }
+
+//--------------------------------- Accessors
+  public: VIRTUAL_IN_DEBUG bool isValid (void) const override ;
+  public: VIRTUAL_IN_DEBUG void drop (void) override ;
+
+//--------------------------------- Default constructor
+  public: GGS_lbool (void) ;
+
+//--------------------------------- Property setters
+  public: inline void setter_setBool (const GGS_bool & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_bool = inValue ;
+  }
+
+  public: inline void setter_setLocation (const GGS_location & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_location = inValue ;
+  }
+
+//--------------------------------- Set initialized properties
+  private: void setInitializedProperties (Compiler * inCompiler) ;
+
+//--------------------------------- Native constructor
+  public: GGS_lbool (const GGS_bool & in_bool,
+                     const GGS_location & in_location) ;
+
+//--------------------------------- Copy constructor
+  public: GGS_lbool (const GGS_lbool & inSource) ;
+
+//--------------------------------- Assignment operator
+  public: GGS_lbool & operator = (const GGS_lbool & inSource) ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GGS_lbool init_21__21_ (const class GGS_bool & inOperand0,
+                                         const class GGS_location & inOperand1,
+                                         Compiler * inCompiler
+                                         COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GGS_lbool extractObject (const GGS_object & inObject,
+                                          Compiler * inCompiler
+                                          COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Implementation of getter 'description'
+  public: void description (String & ioString,
+                            const int32_t inIndentation) const override ;
+//--------------------------------- Comparison
+  public: ComparisonResult objectCompare (const GGS_lbool & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subscripts
+
+
+//--------------------------------- Introspection
+  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
+ 
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lbool ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @functionlist list enumerator
