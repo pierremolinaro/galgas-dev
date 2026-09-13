@@ -344,7 +344,7 @@ printProductions (const PureBNFproductionsList & inPureBNFproductions,
       ioProductionRuleDescription.appendObject (description) ;
       title.appendCString (", in file '") ;
       title.appendString (p.sourceFileName ()) ;
-      title.appendCString (".ggs', line ") ;
+      title.appendCString (".galgas', line ") ;
       title.appendSigned (p.lineDefinition ()) ;
       inCppFile.appendCString ("// At index ") ;
       inCppFile.appendSigned (ioProductionIndex) ;

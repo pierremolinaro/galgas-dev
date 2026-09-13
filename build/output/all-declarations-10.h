@@ -1906,13 +1906,13 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_galgasQualifiedFeature
 
 //--------------------------------------------------------------------------------------------------
 //
-//Parser class 'galgas3ProjectSyntax' declaration
+//Parser class 'galgas4ProjectSyntax' declaration
 //
 //--------------------------------------------------------------------------------------------------
 
-class cParser_galgas_33_ProjectSyntax {
+class cParser_galgas_34_ProjectSyntax {
 //--- Virtual destructor
-  public: virtual ~ cParser_galgas_33_ProjectSyntax (void) { }
+  public: virtual ~ cParser_galgas_34_ProjectSyntax (void) { }
 
 //--- Non terminal declarations
   protected: virtual void nt_project_5F_component_5F_start_5F_symbol_ (const class GGS_lstring constinArgument0,
@@ -1931,28 +1931,28 @@ class cParser_galgas_33_ProjectSyntax {
 
 
 //--- Rule declarations
-  protected: void rule_galgas_33_ProjectSyntax_project_5F_header_i0_ (GGS_lbigint & outArgument0,
+  protected: void rule_galgas_34_ProjectSyntax_project_5F_header_i0_ (GGS_lbigint & outArgument0,
                                                                       GGS_lbigint & outArgument1,
                                                                       GGS_lbigint & outArgument2,
                                                                       GGS_lstring & outArgument3,
                                                                       Lexique_galgasScanner_33_ * inLexique) ;
 
-/*  protected: void rule_galgas_33_ProjectSyntax_project_5F_header_i0_parse (Lexique_galgasScanner_33_ * inLexique) ; */
+/*  protected: void rule_galgas_34_ProjectSyntax_project_5F_header_i0_parse (Lexique_galgasScanner_33_ * inLexique) ; */
 
-  protected: void rule_galgas_33_ProjectSyntax_project_5F_header_i0_indexing (Lexique_galgasScanner_33_ * inLexique) ;
+  protected: void rule_galgas_34_ProjectSyntax_project_5F_header_i0_indexing (Lexique_galgasScanner_33_ * inLexique) ;
 
-  protected: void rule_galgas_33_ProjectSyntax_project_5F_component_5F_start_5F_symbol_i1_ (const GGS_lstring constinArgument0,
+  protected: void rule_galgas_34_ProjectSyntax_project_5F_component_5F_start_5F_symbol_i1_ (const GGS_lstring constinArgument0,
                                                                                             GGS_galgas_33_ProjectComponentAST & outArgument1,
                                                                                             Lexique_galgasScanner_33_ * inLexique) ;
 
-/*  protected: void rule_galgas_33_ProjectSyntax_project_5F_component_5F_start_5F_symbol_i1_parse (Lexique_galgasScanner_33_ * inLexique) ; */
+/*  protected: void rule_galgas_34_ProjectSyntax_project_5F_component_5F_start_5F_symbol_i1_parse (Lexique_galgasScanner_33_ * inLexique) ; */
 
-  protected: void rule_galgas_33_ProjectSyntax_project_5F_component_5F_start_5F_symbol_i1_indexing (Lexique_galgasScanner_33_ * inLexique) ;
+  protected: void rule_galgas_34_ProjectSyntax_project_5F_component_5F_start_5F_symbol_i1_indexing (Lexique_galgasScanner_33_ * inLexique) ;
 
 
 
 //--- Select methods
-  protected: virtual int32_t select_galgas_33_ProjectSyntax_0 (Lexique_galgasScanner_33_ *) = 0 ;
+  protected: virtual int32_t select_galgas_34_ProjectSyntax_0 (Lexique_galgasScanner_33_ *) = 0 ;
 
 
 } ;

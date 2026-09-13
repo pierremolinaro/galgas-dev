@@ -65,7 +65,7 @@ before {
 
 //--------------------------------------------------------------------------------------------------
 //
-//          galgas
+//          galgas3
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -86,13 +86,13 @@ grammar galgas3Grammar
     error (inSourceFile : s)
   else
     let projectFilePath = parentDirectory + "/" + [candidateProjectFiles mValueAtIndex !0]
-    parseAndAnalyzeProject (!@{!projectFilePath !inSourceFile.location} !galgas4: false !inSourceFile.string )
+    parseAndAnalyzeProject (!@{!projectFilePath !inSourceFile.location} !inSourceFile.string )
   end
 }
 
 //--------------------------------------------------------------------------------------------------
 //
-//          ggs
+//          galgas4
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -112,7 +112,7 @@ grammar galgas4Grammar ?sourceFilePath: @lstring inSourceFile {
     error (inSourceFile : s)
   else
     let projectFilePath = parentDirectory + "/" + [candidateProjectFiles mValueAtIndex !0]
-    parseAndAnalyzeProject (!@{!projectFilePath !inSourceFile.location} !galgas4: true !inSourceFile.string )
+    parseAndAnalyzeProject (!@{!projectFilePath !inSourceFile.location} !inSourceFile.string )
   end
 }
 
@@ -135,20 +135,11 @@ grammar templateGrammar
 //
 //--------------------------------------------------------------------------------------------------
 
-//case . "galgas3project"
-//message "a GALGAS project source file"
-//grammar galgas3ProjectGrammar
-//?sourceFilePath:@lstring inProjectSourceFile {
-//  parseAndAnalyzeProject (!inProjectSourceFile !galgas4: false !"" )
-//}
-
-//--------------------------------------------------------------------------------------------------
-
 case . "galgas4project"
 message "a GALGAS project source file"
-grammar galgas3ProjectGrammar
+grammar galgas4ProjectGrammar
 ?sourceFilePath: @lstring inProjectSourceFile {
-  parseAndAnalyzeProject (!inProjectSourceFile !galgas4: true !"" )
+  parseAndAnalyzeProject (!inProjectSourceFile !"" )
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -158,14 +149,13 @@ grammar galgas3ProjectGrammar
 //--------------------------------------------------------------------------------------------------
 
 private proc parseAndAnalyzeProject ?let @lstring inProjectSourceFilePath
-                                    ?galgas4: let @bool inGalgas4
                                     ?let @string inSourceToAnalyze {
   if @application.verboseOutput then
     println (!"*** Parsing project files")
   end
-  grammar galgas3ProjectGrammar (!inProjectSourceFilePath ?let @galgas3ProjectComponentAST projectComponentAST) in inProjectSourceFilePath
+  grammar galgas4ProjectGrammar (!inProjectSourceFilePath ?let @galgas3ProjectComponentAST projectComponentAST) in inProjectSourceFilePath
   if [option.mode value] == "" then
-    compileProject (!inProjectSourceFilePath !inSourceToAnalyze !galgas4: inGalgas4 !projectComponentAST)
+    compileProject (!inProjectSourceFilePath !inSourceToAnalyze !projectComponentAST)
   //--- C++ compilation
     if 0 == @uint.errorCount then
       let cppCompilationTarget = [option galgas_cli_options.cppCompile value]
@@ -192,7 +182,6 @@ private proc parseAndAnalyzeProject ?let @lstring inProjectSourceFilePath
 
 private proc compileProject ?let @lstring inProjectSourceFile
                             ?let @string inSourceToAnalyze
-                            ?galgas4: let @bool inGalgas4
                             ?let @galgas3ProjectComponentAST inProjectComponentAST {
   var @galgasDeclarationAST declarationAST = @()
 //--- Parse predefined type definitions
@@ -259,7 +248,6 @@ private proc compileProject ?let @lstring inProjectSourceFile
     compileSemanticDeclarationsGalgas (
       !?usefulnessRootEntities
       !?usefulEntitiesGraph
-      !galgas4: inGalgas4
       !productDirectory
       !inProjectComponentAST.mEndOfSourceFile
       !declarationAST
@@ -269,7 +257,7 @@ private proc compileProject ?let @lstring inProjectSourceFile
     )
   else
     semanticDeclarationSortedListForGeneration = @()
-    semanticContext = @semanticContext {!galgas4: inGalgas4}
+    semanticContext = @semanticContext {}
     typeMap = @()
   end
 //--------------------------------- Compile GUI components

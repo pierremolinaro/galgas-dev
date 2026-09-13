@@ -10677,11 +10677,6 @@ class GGS_semanticContext : public AC_GALGAS_root {
     return mProperty_mSyntaxComponentMapForSemanticAnalysis ;
   }
 
-  public: GGS_bool mProperty_galgas_34_ ;
-  public: inline GGS_bool readProperty_galgas_34_ (void) const {
-    return mProperty_galgas_34_ ;
-  }
-
 //--------------------------------- Accessors
   public: VIRTUAL_IN_DEBUG bool isValid (void) const override ;
   public: VIRTUAL_IN_DEBUG void drop (void) override ;
@@ -10718,10 +10713,6 @@ class GGS_semanticContext : public AC_GALGAS_root {
     mProperty_mSyntaxComponentMapForSemanticAnalysis = inValue ;
   }
 
-  public: inline void setter_setGalgas_34_ (const GGS_bool & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_galgas_34_ = inValue ;
-  }
-
 //--------------------------------- Set initialized properties
   private: void setInitializedProperties (Compiler * inCompiler) ;
 
@@ -10732,8 +10723,7 @@ class GGS_semanticContext : public AC_GALGAS_root {
                                const GGS_grammarMap & in_grammarMap,
                                const GGS_optionComponentMapForSemanticAnalysis & in_mOptionComponentMapForSemanticAnalysis,
                                const GGS_lexiqueComponentMapForSemanticAnalysis & in_mLexiqueComponentMapForSemanticAnalysis,
-                               const GGS_syntaxComponentMap & in_mSyntaxComponentMapForSemanticAnalysis,
-                               const GGS_bool & in_galgas_34_) ;
+                               const GGS_syntaxComponentMap & in_mSyntaxComponentMapForSemanticAnalysis) ;
 
 //--------------------------------- Copy constructor
   public: GGS_semanticContext (const GGS_semanticContext & inSource) ;
@@ -10744,9 +10734,8 @@ class GGS_semanticContext : public AC_GALGAS_root {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GGS_semanticContext init_21_galgas_34_ (const class GGS_bool & inOperand0,
-                                                         Compiler * inCompiler
-                                                         COMMA_LOCATION_ARGS) ;
+  public: static GGS_semanticContext init (Compiler * inCompiler
+                                           COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;

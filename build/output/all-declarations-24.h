@@ -160,21 +160,20 @@ void routine_emitProductionRulesInTexFile_3F__3F__3F__3F__3F_ (const class GGS_s
 
 //--------------------------------------------------------------------------------------------------
 //
-//Routine 'compileSemanticDeclarationsGalgas&&?galgas4???!!!'
+//Routine 'compileSemanticDeclarationsGalgas&&???!!!'
 //
 //--------------------------------------------------------------------------------------------------
 
-void routine_compileSemanticDeclarationsGalgas_26__26__3F_galgas_34__3F__3F__3F__21__21__21_ (class GGS_lstringlist & ioArgument0,
-                                                                                              class GGS_usefulEntitiesGraph & ioArgument1,
-                                                                                              const class GGS_bool constinArgument2,
-                                                                                              const class GGS_string constinArgument3,
-                                                                                              const class GGS_location constinArgument4,
-                                                                                              const class GGS_galgasDeclarationAST constinArgument5,
-                                                                                              class GGS_semanticContext & outArgument6,
-                                                                                              class GGS_unifiedTypeMap & outArgument7,
-                                                                                              class GGS_semanticDeclarationListForGeneration & outArgument8,
-                                                                                              class Compiler * inCompiler
-                                                                                              COMMA_LOCATION_ARGS) ;
+void routine_compileSemanticDeclarationsGalgas_26__26__3F__3F__3F__21__21__21_ (class GGS_lstringlist & ioArgument0,
+                                                                                class GGS_usefulEntitiesGraph & ioArgument1,
+                                                                                const class GGS_string constinArgument2,
+                                                                                const class GGS_location constinArgument3,
+                                                                                const class GGS_galgasDeclarationAST constinArgument4,
+                                                                                class GGS_semanticContext & outArgument5,
+                                                                                class GGS_unifiedTypeMap & outArgument6,
+                                                                                class GGS_semanticDeclarationListForGeneration & outArgument7,
+                                                                                class Compiler * inCompiler
+                                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -209,18 +208,17 @@ void routine_appendPredefinedTypesASTs_26__26_ (class GGS_semanticDeclarationLis
 
 //--------------------------------------------------------------------------------------------------
 //
-//Routine 'buildGalgasSemanticContext???galgas4!!!'
+//Routine 'buildGalgasSemanticContext??!!!'
 //
 //--------------------------------------------------------------------------------------------------
 
-void routine_buildGalgasSemanticContext_3F__3F__3F_galgas_34__21__21__21_ (const class GGS_galgasDeclarationAST constinArgument0,
-                                                                           const class GGS_location constinArgument1,
-                                                                           const class GGS_bool constinArgument2,
-                                                                           class GGS_semanticContext & outArgument3,
-                                                                           class GGS_unifiedTypeMap & outArgument4,
-                                                                           class GGS_semanticDeclarationListAST & outArgument5,
-                                                                           class Compiler * inCompiler
-                                                                           COMMA_LOCATION_ARGS) ;
+void routine_buildGalgasSemanticContext_3F__3F__21__21__21_ (const class GGS_galgasDeclarationAST constinArgument0,
+                                                             const class GGS_location constinArgument1,
+                                                             class GGS_semanticContext & outArgument2,
+                                                             class GGS_unifiedTypeMap & outArgument3,
+                                                             class GGS_semanticDeclarationListAST & outArgument4,
+                                                             class Compiler * inCompiler
+                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -497,28 +495,26 @@ void routine_displayUnicodeLexicalTestFunctions (class Compiler * inCompiler
 
 //--------------------------------------------------------------------------------------------------
 //
-//Routine 'parseAndAnalyzeProject??galgas4?'
+//Routine 'parseAndAnalyzeProject??'
 //
 //--------------------------------------------------------------------------------------------------
 
-void routine_parseAndAnalyzeProject_3F__3F_galgas_34__3F_ (const class GGS_lstring constinArgument0,
-                                                           const class GGS_bool constinArgument1,
-                                                           const class GGS_string constinArgument2,
-                                                           class Compiler * inCompiler
-                                                           COMMA_LOCATION_ARGS) ;
+void routine_parseAndAnalyzeProject_3F__3F_ (const class GGS_lstring constinArgument0,
+                                             const class GGS_string constinArgument1,
+                                             class Compiler * inCompiler
+                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //
-//Routine 'compileProject???galgas4?'
+//Routine 'compileProject???'
 //
 //--------------------------------------------------------------------------------------------------
 
-void routine_compileProject_3F__3F__3F_galgas_34__3F_ (const class GGS_lstring constinArgument0,
-                                                       const class GGS_string constinArgument1,
-                                                       const class GGS_bool constinArgument2,
-                                                       const class GGS_galgas_33_ProjectComponentAST constinArgument3,
-                                                       class Compiler * inCompiler
-                                                       COMMA_LOCATION_ARGS) ;
+void routine_compileProject_3F__3F__3F_ (const class GGS_lstring constinArgument0,
+                                         const class GGS_string constinArgument1,
+                                         const class GGS_galgas_33_ProjectComponentAST constinArgument2,
+                                         class Compiler * inCompiler
+                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //

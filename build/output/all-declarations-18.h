@@ -421,10 +421,10 @@ class GGS_bool callExtensionGetter_isTrueExpression (const cPtr_semanticExpressi
                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
-//  GRAMMAR galgas3ProjectGrammar
+//  GRAMMAR galgas4ProjectGrammar
 //--------------------------------------------------------------------------------------------------
 
-class cGrammar_galgas_33_ProjectGrammar : public cParser_galgas_33_ProjectSyntax {
+class cGrammar_galgas_34_ProjectGrammar : public cParser_galgas_34_ProjectSyntax {
 //------------------------------------- 'project_component_start_symbol' non terminal
 //--- 'parse' label
  /*  public: virtual void nt_project_5F_component_5F_start_5F_symbol_parse (Lexique_galgasScanner_33_ * inCompiler) ; */
@@ -477,7 +477,7 @@ class cGrammar_galgas_33_ProjectGrammar : public cParser_galgas_33_ProjectSyntax
                                               GGS_lstring & outArgument3,
                                               Lexique_galgasScanner_33_ * inCompiler) ;
 
-  public: virtual int32_t select_galgas_33_ProjectSyntax_0 (Lexique_galgasScanner_33_ *) ;
+  public: virtual int32_t select_galgas_34_ProjectSyntax_0 (Lexique_galgasScanner_33_ *) ;
 } ;
 
 //--------------------------------------------------------------------------------------------------

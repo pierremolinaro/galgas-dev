@@ -44,8 +44,8 @@ struct @galgas3ProjectComponentAST {
 
 //--------------------------------------------------------------------------------------------------
 
-indexing grammar galgas3ProjectGrammar "LL1" {
-  syntax galgas3ProjectSyntax
+indexing grammar galgas4ProjectGrammar "LL1" {
+  syntax galgas4ProjectSyntax
 
   <project_component_start_symbol> ?let @lstring inProjectSourceFilePath !@galgas3ProjectComponentAST outComponent
 
@@ -53,7 +53,7 @@ indexing grammar galgas3ProjectGrammar "LL1" {
 
 //--------------------------------------------------------------------------------------------------
 
-syntax galgas3ProjectSyntax (galgasScanner3) {
+syntax galgas4ProjectSyntax (galgasScanner3) {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
