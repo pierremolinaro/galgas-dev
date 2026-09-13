@@ -2,7 +2,7 @@
 #set -x
 GALGAS_TOOL=`dirname $0`/../makefile-unix/galgas-debug &&
 cd `dirname $0`/../makefile-unix && /usr/bin/python3 build.py debug &&
-cd `dirname $0` && $GALGAS_TOOL --generate-many-cpp-files --Werror +testsuite.galgasProject &&
+cd `dirname $0` && $GALGAS_TOOL --generate-many-cpp-files --Werror +testsuite.galgas4project &&
 cd `dirname $0`/makefile-unix && /usr/bin/python3 build.py &&
 echo "*** Running test suite" &&
 cd `dirname $0` && ./makefile-unix/testsuite --no-color > results.txt &&

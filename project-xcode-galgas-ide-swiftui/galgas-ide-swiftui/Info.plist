@@ -31,7 +31,7 @@
 			<string>Default</string>
 			<key>LSItemContentTypes</key>
 			<array>
-				<string>$(PRODUCT_BUNDLE_IDENTIFIER).ggsproject</string>
+				<string>$(PRODUCT_BUNDLE_IDENTIFIER).galgas4project</string>
 			</array>
 			<key>NSDocumentClass</key>
 			<string></string>
@@ -47,8 +47,7 @@
 			<string>Default</string>
 			<key>LSItemContentTypes</key>
 			<array>
-				<string>$(PRODUCT_BUNDLE_IDENTIFIER).</string>
-				<string>galgasTemplate</string>
+				<string>$(PRODUCT_BUNDLE_IDENTIFIER).galgasTemplate</string>
 			</array>
 			<key>NSDocumentClass</key>
 			<string></string>
@@ -64,7 +63,7 @@
 			<string>Default</string>
 			<key>LSItemContentTypes</key>
 			<array>
-				<string>$(PRODUCT_BUNDLE_IDENTIFIER).galgasproject</string>
+				<string>$(PRODUCT_BUNDLE_IDENTIFIER).galgas3project</string>
 			</array>
 			<key>NSDocumentClass</key>
 			<string></string>
@@ -147,12 +146,12 @@
 				<string>galgasDocuments</string>
 			</dict>
 			<key>UTTypeIdentifier</key>
-			<string>$(PRODUCT_BUNDLE_IDENTIFIER).galgasproject</string>
+			<string>$(PRODUCT_BUNDLE_IDENTIFIER).galgas3project</string>
 			<key>UTTypeTagSpecification</key>
 			<dict>
 				<key>public.filename-extension</key>
 				<array>
-					<string>galgasproject</string>
+					<string>galgas3project</string>
 				</array>
 			</dict>
 		</dict>
@@ -191,12 +190,12 @@
 				<string>galgasDocuments</string>
 			</dict>
 			<key>UTTypeIdentifier</key>
-			<string>$(PRODUCT_BUNDLE_IDENTIFIER).ggsproject</string>
+			<string>$(PRODUCT_BUNDLE_IDENTIFIER).galgas4project</string>
 			<key>UTTypeTagSpecification</key>
 			<dict>
 				<key>public.filename-extension</key>
 				<array>
-					<string>ggsProject</string>
+					<string>galgas4project</string>
 				</array>
 			</dict>
 		</dict>

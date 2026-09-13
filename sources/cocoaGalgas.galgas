@@ -28,9 +28,9 @@ gui cocoa {
 
   //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  project "galgasProject" indexing in "build/indexes"
+  project "galgas3project" indexing in "build/indexes"
 
-  project "ggsproject" indexing in "build/indexes"
+  project "galgas4project" indexing in "build/indexes"
 
   //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -39,7 +39,7 @@ gui cocoa {
   //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   with lexique galgasScanner3 {
-    fileExtension : "galgasProject"
+    fileExtension : "galgas3project"
     fileExtension : "galgas"
     blockComment : "//"
     title: "Source GALGAS 3"
@@ -135,7 +135,7 @@ gui cocoa {
   //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   with lexique galgasScanner4 {
-    fileExtension : "ggsproject"
+    fileExtension : "galgas4project"
     fileExtension : "ggs"
     blockComment : "//"
     title: "Source GALGAS 4"

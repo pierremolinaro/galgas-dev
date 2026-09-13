@@ -2,7 +2,7 @@
 //
 //  GALGAS main program definition
 //
-//  Copyright (C) 2007, ..., 2014 Pierre Molinaro.
+//  Copyright (C) 2007, ..., 2026 Pierre Molinaro.
 //
 //  MIT License
 //
@@ -75,7 +75,7 @@ grammar galgas3Grammar
 ?sourceFilePath: @lstring inSourceFile {
 //--- Search for a project file in parent directory
   let parentDirectory = inSourceFile.string.deletingLastPathComponent.deletingLastPathComponent
-  let candidateProjectFiles = [parentDirectory regularFilesWithExtensions !false !@[@("galgasProject")]]
+  let candidateProjectFiles = [parentDirectory regularFilesWithExtensions !false !@[@("galgas4project")]]
   if candidateProjectFiles.count == 0 then
     error (inSourceFile : "no project file in parent directory of source file")
   elsif candidateProjectFiles.count > 1 then
@@ -101,7 +101,7 @@ message "a GALGAS 4 source file"
 grammar galgas4Grammar ?sourceFilePath: @lstring inSourceFile {
 //--- Search for a project file in parent directory
   let parentDirectory = inSourceFile.string.deletingLastPathComponent.deletingLastPathComponent
-  let candidateProjectFiles = [parentDirectory regularFilesWithExtensions !false !@[@("ggsProject")]]
+  let candidateProjectFiles = [parentDirectory regularFilesWithExtensions !false !@[@("galgas4project")]]
   if candidateProjectFiles.count == 0 then
     error (inSourceFile : "no project file in parent directory of source file")
   elsif candidateProjectFiles.count > 1 then
@@ -131,11 +131,11 @@ grammar templateGrammar
 
 //--------------------------------------------------------------------------------------------------
 //
-//          galgasProject
+//          galgas Project
 //
 //--------------------------------------------------------------------------------------------------
 
-case . "galgasProject"
+case . "galgas3project"
 message "a GALGAS project source file"
 grammar galgas3ProjectGrammar
 ?sourceFilePath:@lstring inProjectSourceFile {
@@ -144,7 +144,7 @@ grammar galgas3ProjectGrammar
 
 //--------------------------------------------------------------------------------------------------
 
-case . "ggsproject"
+case . "galgas4project"
 message "a GALGAS project source file"
 grammar galgas3ProjectGrammar
 ?sourceFilePath: @lstring inProjectSourceFile {

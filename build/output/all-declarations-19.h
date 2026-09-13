@@ -9,6 +9,67 @@
 #include "all-declarations-18.h"
 
 //--------------------------------------------------------------------------------------------------
+//  GRAMMAR galgas3ProjectGrammar
+//--------------------------------------------------------------------------------------------------
+
+class cGrammar_galgas_33_ProjectGrammar : public cParser_galgas_33_ProjectSyntax {
+//------------------------------------- 'project_component_start_symbol' non terminal
+//--- 'parse' label
+ /*  public: virtual void nt_project_5F_component_5F_start_5F_symbol_parse (Lexique_galgasScanner_33_ * inCompiler) ; */
+
+//--- indexing
+  public: virtual void nt_project_5F_component_5F_start_5F_symbol_indexing (Lexique_galgasScanner_33_ * inCompiler) ;
+
+//----------- '' label
+  public: virtual void nt_project_5F_component_5F_start_5F_symbol_ (const GGS_lstring inArgument0,
+                                                                    GGS_galgas_33_ProjectComponentAST & outArgument1,
+                                                                    Lexique_galgasScanner_33_ * inCompiler) ;
+
+//--- Start symbol
+  public: static void _performSourceFileParsing_ (Compiler * inCompiler,
+                                                  GGS_lstring inFileName,
+                                                  const GGS_lstring inArgument0,
+                                                  GGS_galgas_33_ProjectComponentAST & outArgument1
+                                                  COMMA_LOCATION_ARGS) ;
+
+  public: static void _performSourceStringParsing_ (Compiler * inCompiler,
+                                                    GGS_string inSourceString,
+                                                    GGS_string inNameString,
+                                                    const GGS_lstring inArgument0,
+                                                    GGS_galgas_33_ProjectComponentAST & outArgument1
+                                                    COMMA_LOCATION_ARGS) ;
+
+//--- Indexing
+  public: static void performIndexing (Compiler * inCompiler,
+                                       const String & inSourceFilePath) ;
+
+//--- Only lexical analysis
+  public: static void performOnlyLexicalAnalysis (Compiler * inCompiler,
+                                                  const String & inSourceFilePath) ;
+
+//--- Only syntax analysis
+  public: static void performOnlySyntaxAnalysis (Compiler * inCompiler,
+                                                 const String & inSourceFilePath) ;
+
+//------------------------------------- 'project_header' non terminal
+//--- 'parse' label
+ /*  public: virtual void nt_project_5F_header_parse (Lexique_galgasScanner_33_ * inCompiler) ; */
+
+//--- indexing
+  public: virtual void nt_project_5F_header_indexing (Lexique_galgasScanner_33_ * inCompiler) ;
+
+//----------- '' label
+  public: virtual void nt_project_5F_header_ (GGS_lbigint & outArgument0,
+                                              GGS_lbigint & outArgument1,
+                                              GGS_lbigint & outArgument2,
+                                              GGS_lstring & outArgument3,
+                                              Lexique_galgasScanner_33_ * inCompiler) ;
+
+  public: virtual int32_t select_galgas_33_ProjectSyntax_0 (Lexique_galgasScanner_33_ *) ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //Extension setter '@localVarManager insertUsedLocalConstant'
 //
@@ -634,251 +695,4 @@ class GGS_XcodeProjectDescriptor : public AC_GALGAS_root {
 //--------------------------------------------------------------------------------------------------
 
 extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_XcodeProjectDescriptor ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension setter '@XcodeProjectDescriptor addTIFF_file'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionSetter_addTIFF_5F_file (class GGS_XcodeProjectDescriptor & ioObject,
-                                      const class GGS_string constin_inFileName,
-                                      class GGS_string & out_outFileRef,
-                                      class Compiler * inCompiler
-                                      COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension setter '@XcodeProjectDescriptor getReferenceKey'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionSetter_getReferenceKey (class GGS_XcodeProjectDescriptor & ioObject,
-                                      class GGS_string & out_outRef,
-                                      class Compiler * inCompiler
-                                      COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension setter '@XcodeProjectDescriptor addInfoPlistFile'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionSetter_addInfoPlistFile (class GGS_XcodeProjectDescriptor & ioObject,
-                                       const class GGS_string constin_inFileName,
-                                       class GGS_string & out_outFileRef,
-                                       class Compiler * inCompiler
-                                       COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension setter '@XcodeProjectDescriptor addXIBFile'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionSetter_addXIBFile (class GGS_XcodeProjectDescriptor & ioObject,
-                                 const class GGS_string constin_inFileName,
-                                 class GGS_string & out_outFileRef,
-                                 class Compiler * inCompiler
-                                 COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension setter '@XcodeProjectDescriptor addFrameworkFile'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionSetter_addFrameworkFile (class GGS_XcodeProjectDescriptor & ioObject,
-                                       const class GGS_string constin_inFileName,
-                                       class GGS_string & out_outFileRef,
-                                       class Compiler * inCompiler
-                                       COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension setter '@XcodeProjectDescriptor addSwiftFile'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionSetter_addSwiftFile (class GGS_XcodeProjectDescriptor & ioObject,
-                                   const class GGS_string constin_inFileName,
-                                   class GGS_string & out_outFileRef,
-                                   class Compiler * inCompiler
-                                   COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension setter '@XcodeProjectDescriptor addMFile'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionSetter_addMFile (class GGS_XcodeProjectDescriptor & ioObject,
-                               const class GGS_string constin_inFileName,
-                               class GGS_string & out_outFileRef,
-                               class Compiler * inCompiler
-                               COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension setter '@XcodeProjectDescriptor addMMFile'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionSetter_addMMFile (class GGS_XcodeProjectDescriptor & ioObject,
-                                const class GGS_string constin_inFileName,
-                                class GGS_string & out_outFileRef,
-                                class Compiler * inCompiler
-                                COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension setter '@XcodeProjectDescriptor addCppFile'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionSetter_addCppFile (class GGS_XcodeProjectDescriptor & ioObject,
-                                 const class GGS_string constin_inFileName,
-                                 class GGS_string & out_outFileRef,
-                                 class Compiler * inCompiler
-                                 COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension setter '@XcodeProjectDescriptor addCFile'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionSetter_addCFile (class GGS_XcodeProjectDescriptor & ioObject,
-                               const class GGS_string constin_inFileName,
-                               class GGS_string & out_outFileRef,
-                               class Compiler * inCompiler
-                               COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension setter '@XcodeProjectDescriptor addHeaderFile'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionSetter_addHeaderFile (class GGS_XcodeProjectDescriptor & ioObject,
-                                    const class GGS_string constin_inFileName,
-                                    class GGS_string & out_outFileRef,
-                                    class Compiler * inCompiler
-                                    COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension setter '@XcodeProjectDescriptor addBuildFile'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionSetter_addBuildFile (class GGS_XcodeProjectDescriptor & ioObject,
-                                   const class GGS_string constin_inFileReference,
-                                   const class GGS_string constin_inFileName,
-                                   class GGS_string & out_outBuildRef,
-                                   class Compiler * inCompiler
-                                   COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension setter '@XcodeProjectDescriptor addToolTarget'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionSetter_addToolTarget (class GGS_XcodeProjectDescriptor & ioObject,
-                                    const class GGS_string constin_inTargetName,
-                                    const class GGS_string constin_inProductFileName,
-                                    const class GGS_stringlist constin_inSourceList,
-                                    const class GGS_stringlist constin_inToolFrameworksFileRefList,
-                                    const class GGS_stringlist constin_inBuildConfigurationSettingList,
-                                    class GGS_string & out_outTargetRef,
-                                    class GGS_string & out_outProductFileRef,
-                                    class Compiler * inCompiler
-                                    COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension setter '@XcodeProjectDescriptor addAppTarget'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionSetter_addAppTarget (class GGS_XcodeProjectDescriptor & ioObject,
-                                   const class GGS_string constin_inTargetName,
-                                   const class GGS_string constin_inProductFileName,
-                                   const class GGS_stringlist constin_inSourceList,
-                                   const class GGS_stringlist constin_inFrameworksFileRefList,
-                                   const class GGS_stringlist constin_inResourceFileBuildRefs,
-                                   const class GGS_stringlist constin_inBuildConfigurationSettingList,
-                                   const class GGS_stringlist constin_inDependentTargetRefList,
-                                   const class GGS__32_stringlist constin_inProductCopyList,
-                                   class GGS_string & out_outProductFileRef,
-                                   class Compiler * inCompiler
-                                   COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension setter '@XcodeProjectDescriptor addGroup'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionSetter_addGroup (class GGS_XcodeProjectDescriptor & ioObject,
-                               const class GGS_string constin_inGroupName,
-                               const class GGS_string constin_inGroupPath,
-                               const class GGS_stringlist constin_inChildrenRefs,
-                               class GGS_string & out_outGroupRef,
-                               class Compiler * inCompiler
-                               COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension setter '@XcodeProjectDescriptor addGroupWithFiles'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionSetter_addGroupWithFiles (class GGS_XcodeProjectDescriptor & ioObject,
-                                        const class GGS_string constin_inGroupName,
-                                        const class GGS_string constin_inGroupPath,
-                                        const class GGS_stringset constin_inFileNames,
-                                        class GGS_stringlist & io_ioCFileBuildRefs,
-                                        class GGS_stringlist & io_ioCppFileBuildRefs,
-                                        class GGS_stringlist & io_ioSwiftFileBuildRefs,
-                                        class GGS_stringlist & io_ioFrameWorkFileBuildRefs,
-                                        class GGS_stringlist & io_ioResourceFileBuildRefs,
-                                        class GGS_string & out_outGroupRef,
-                                        class Compiler * inCompiler
-                                        COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension setter '@XcodeProjectDescriptor addICNS_file'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionSetter_addICNS_5F_file (class GGS_XcodeProjectDescriptor & ioObject,
-                                      const class GGS_string constin_inFileName,
-                                      class GGS_string & out_outFileRef,
-                                      class Compiler * inCompiler
-                                      COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension setter '@XcodeProjectDescriptor placeGroupAsMainGroup'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionSetter_placeGroupAsMainGroup (class GGS_XcodeProjectDescriptor & ioObject,
-                                            const class GGS_string constin_inGroupRef,
-                                            class Compiler * inCompiler
-                                            COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension setter '@XcodeProjectDescriptor addSettingsToDefaultConfiguration'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionSetter_addSettingsToDefaultConfiguration (class GGS_XcodeProjectDescriptor & ioObject,
-                                                        const class GGS_stringlist constin_inSettingList,
-                                                        class Compiler * inCompiler
-                                                        COMMA_LOCATION_ARGS) ;
 

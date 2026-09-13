@@ -43,7 +43,7 @@ inline int32_t TOP_DOWN_NONTERMINAL (const int32_t inSymbol) { return - inSymbol
 inline int32_t TOP_DOWN_END_PRODUCTION (void) { return 0 ; }
 
 //--------------------------------------------------------------------------------------------------
-//                 Bottom Up parsing utilities
+//                 Bottom Up parsing utilities (§)
 //--------------------------------------------------------------------------------------------------
 
 //inline int32_t BOTTOM_UP_SHIFT (const int32_t inSymbol) { return inSymbol + 2 ; }

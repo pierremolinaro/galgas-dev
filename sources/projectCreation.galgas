@@ -31,7 +31,7 @@ filewrapper projectCreationFileWrapper in "+generation-templates/project_creatio
 }{
 }{
 //--- Project
-  template PROJECT_project "+PROJECT.galgasProject.galgasTemplate" ?@string PROJECT_NAME
+  template PROJECT_project "+PROJECT.galgas4project.galgasTemplate" ?@string PROJECT_NAME
   template PROJECT_cocoa "PROJECT-cocoa.galgas.galgasTemplate" ?@string PROJECT_NAME
   template PROJECT_grammar "PROJECT-grammar.galgas.galgasTemplate" ?@string PROJECT_NAME
   template PROJECT_lexique "PROJECT-lexique.galgas.galgasTemplate" ?@string PROJECT_NAME
@@ -45,7 +45,7 @@ filewrapper projectCreationFileWrapper in "+generation-templates/project_creatio
 
 proc performProjectCreation ?let @string inProjectPath {
   let @string projectName = inProjectPath.lastPathComponent
-  [[filewrapper projectCreationFileWrapper.PROJECT_project !projectName] writeToFile !inProjectPath +"/+" +projectName +".galgasProject"]
+  [[filewrapper projectCreationFileWrapper.PROJECT_project !projectName] writeToFile !inProjectPath +"/+" +projectName +".galgas4project"]
 //--- galgas_sources
   let @string galgas_sources_DIR = inProjectPath + "/sources"
   [galgas_sources_DIR makeDirectory]

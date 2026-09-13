@@ -320,8 +320,14 @@ makefile-arm64-linux-on-macosx/galgas
 makefile-arm64-linux-on-macosx/galgas
 makefile-arm64-linux-on-macosx/galgas-debug
 /build/indexes-new
+z-sample_code/dangling_else_solution/makefile-unix/allDanglingElseSolution
+z-sample_code/dangling_else_solution/makefile-unix/allDanglingElseSolution-debug
+z-sample_code/class_sample_language/makefile-unix/classSampleLanguage
+z-sample_code/class_sample_language/makefile-unix/classSampleLanguage-debug
 z-sample_code/LL1_expression/makefile-unix/LL1Expression
 z-sample_code/LL1_expression/makefile-unix/LL1Expression-debug
+z-sample_code/logo/makefile-unix/logo
+z-sample_code/logo/makefile-unix/logo-debug
 z-sample_code/LR1_grammar/makefile-unix/LR1Grammar
 z-sample_code/LR1_grammar/makefile-unix/LR1Grammar-debug
 z-sample_code/SLR_expression/makefile-unix/SLRExpression

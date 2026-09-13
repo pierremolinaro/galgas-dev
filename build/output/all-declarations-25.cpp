@@ -40409,7 +40409,7 @@ const char * gWrapperFileContent_136_libpmFileWrapper =
   "inline int32_t TOP_DOWN_END_PRODUCTION (void) { return 0 ; }\n"
   "\n"
   "//--------------------------------------------------------------------------------------------------\n"
-  "//                 Bottom Up parsing utilities\n"
+  "//                 Bottom Up parsing utilities (§)\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
   "//inline int32_t BOTTOM_UP_SHIFT (const int32_t inSymbol) { return inSymbol + 2 ; }\n"
@@ -40628,7 +40628,7 @@ const cRegularFileWrapper gWrapperFile_136_libpmFileWrapper (
   "Lexique.h",
   "h",
   true, // Text file
- 12159, // Text length
+ 12163, // Text length
   gWrapperFileContent_136_libpmFileWrapper
 ) ;
 
