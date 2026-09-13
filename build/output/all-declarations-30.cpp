@@ -7079,7 +7079,6 @@ static const char * kSourceFileExtensions [] = {
   "galgas",
   "ggs",
   "galgasTemplate",
-  "galgas3project",
   "galgas4project",
   nullptr
 } ;    
@@ -7090,7 +7089,6 @@ static const char * kSourceFileHelpMessages [] = {
   "a GALGAS 3 source file",
   "a GALGAS 4 source file",
   "a GALGAS Template source file",
-  "a GALGAS project source file",
   "a GALGAS project source file",
   nullptr
 } ;    
@@ -7289,21 +7287,6 @@ static void routine_programRule_5F__33_ (const GGS_lstring constinArgument_inPro
                                          Compiler * inCompiler
                                          COMMA_UNUSED_LOCATION_ARGS) {
   {
-  routine_parseAndAnalyzeProject_3F__3F_galgas_34__3F_ (constinArgument_inProjectSourceFile, GGS_bool (false), GGS_string::makeEmptyString (), inCompiler  COMMA_SOURCE_FILE ("galgasProgram.galgas", 142)) ;
-  }
-}
-
-
-//--------------------------------------------------------------------------------------------------
-//
-//Routine 'programRule_4'
-//
-//--------------------------------------------------------------------------------------------------
-
-static void routine_programRule_5F__34_ (const GGS_lstring constinArgument_inProjectSourceFile,
-                                         Compiler * inCompiler
-                                         COMMA_UNUSED_LOCATION_ARGS) {
-  {
   routine_parseAndAnalyzeProject_3F__3F_galgas_34__3F_ (constinArgument_inProjectSourceFile, GGS_bool (true), GGS_string::makeEmptyString (), inCompiler  COMMA_SOURCE_FILE ("galgasProgram.galgas", 151)) ;
   }
 }
@@ -7399,28 +7382,10 @@ int mainForLIBPM (int inArgc, const char * inArgv []) {
             cGrammar_templateGrammar::performOnlyLexicalAnalysis (commonCompiler, sourceFilesArray (i COMMA_HERE)) ;
             break ;
           }
-        }else if (fileExtension == "galgas3project") {
-          switch (executionMode ()) {
-          case kExecutionModeNormal :
-            routine_programRule_5F__33_ (sourceFilePath, commonCompiler COMMA_HERE) ;
-            break ;
-          case kExecutionModeLexicalAnalysisOnly :
-            cGrammar_galgas_33_ProjectGrammar::performOnlyLexicalAnalysis (commonCompiler, sourceFilesArray (i COMMA_HERE)) ;
-            break ;
-          case kExecutionModeSyntaxAnalysisOnly :
-            cGrammar_galgas_33_ProjectGrammar::performOnlySyntaxAnalysis (commonCompiler, sourceFilesArray (i COMMA_HERE)) ;
-            break ;
-          case kExecutionModeIndexing :
-            cGrammar_galgas_33_ProjectGrammar::performIndexing (commonCompiler, sourceFilesArray (i COMMA_HERE)) ;
-            break ;
-          case kExecutionModeLatex :
-            cGrammar_galgas_33_ProjectGrammar::performOnlyLexicalAnalysis (commonCompiler, sourceFilesArray (i COMMA_HERE)) ;
-            break ;
-          }
         }else if (fileExtension == "galgas4project") {
           switch (executionMode ()) {
           case kExecutionModeNormal :
-            routine_programRule_5F__34_ (sourceFilePath, commonCompiler COMMA_HERE) ;
+            routine_programRule_5F__33_ (sourceFilePath, commonCompiler COMMA_HERE) ;
             break ;
           case kExecutionModeLexicalAnalysisOnly :
             cGrammar_galgas_33_ProjectGrammar::performOnlyLexicalAnalysis (commonCompiler, sourceFilesArray (i COMMA_HERE)) ;

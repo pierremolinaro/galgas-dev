@@ -10,7 +10,6 @@ import UniformTypeIdentifiers
 
 extension UTType {
   nonisolated static let galgas = UTType (exportedAs: Bundle.main.bundleIdentifier! + ".galgas")
-  nonisolated static let galgas_33_project = UTType (exportedAs: Bundle.main.bundleIdentifier! + ".galgas3project")
   nonisolated static let galgas_34_project = UTType (exportedAs: Bundle.main.bundleIdentifier! + ".galgas4project")
   nonisolated static let galgasTemplate = UTType (exportedAs: Bundle.main.bundleIdentifier! + ".galgastemplate")
   nonisolated static let ggs = UTType (exportedAs: Bundle.main.bundleIdentifier! + ".ggs")
@@ -19,14 +18,14 @@ extension UTType {
 //--------------------------------------------------------------------------------------------------
 
 extension ProjectDocument {
-  static let readableContentTypes : [UTType] = [.galgas, .galgas_33_project, .galgas_34_project, .galgasTemplate, .ggs]
+  static let readableContentTypes : [UTType] = [.galgas, .galgas_34_project, .galgasTemplate, .ggs]
 }
 
 //--------------------------------------------------------------------------------------------------
 //    Project file extensions
 //--------------------------------------------------------------------------------------------------
 
-let projectFileExtensions = Set (["galgas", "galgas3project", "galgas4project", "galgastemplate", "ggs"])
+let projectFileExtensions = Set (["galgas", "galgas4project", "galgastemplate", "ggs"])
 
 //--------------------------------------------------------------------------------------------------
 //   Scanner for a given extension
@@ -36,8 +35,6 @@ let projectFileExtensions = Set (["galgas", "galgas3project", "galgas4project", 
   var result : AbstractScanner? = nil
   let fileExtension = inExtension.lowercased ()
   if fileExtension == "galgas" {
-    result = ScannerFor_galgasScanner3 ()
-  }else if fileExtension == "galgas3project" {
     result = ScannerFor_galgasScanner3 ()
   }else if fileExtension == "galgas4project" {
     result = ScannerFor_galgasScanner4 ()

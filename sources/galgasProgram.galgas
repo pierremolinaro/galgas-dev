@@ -135,12 +135,12 @@ grammar templateGrammar
 //
 //--------------------------------------------------------------------------------------------------
 
-case . "galgas3project"
-message "a GALGAS project source file"
-grammar galgas3ProjectGrammar
-?sourceFilePath:@lstring inProjectSourceFile {
-  parseAndAnalyzeProject (!inProjectSourceFile !galgas4: false !"" )
-}
+//case . "galgas3project"
+//message "a GALGAS project source file"
+//grammar galgas3ProjectGrammar
+//?sourceFilePath:@lstring inProjectSourceFile {
+//  parseAndAnalyzeProject (!inProjectSourceFile !galgas4: false !"" )
+//}
 
 //--------------------------------------------------------------------------------------------------
 

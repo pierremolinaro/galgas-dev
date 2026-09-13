@@ -56,22 +56,6 @@
 			<key>CFBundleTypeIconSystemGenerated</key>
 			<false/>
 			<key>CFBundleTypeName</key>
-			<string>GALGAS 3 Project File</string>
-			<key>CFBundleTypeRole</key>
-			<string>Editor</string>
-			<key>LSHandlerRank</key>
-			<string>Default</string>
-			<key>LSItemContentTypes</key>
-			<array>
-				<string>$(PRODUCT_BUNDLE_IDENTIFIER).galgas3project</string>
-			</array>
-			<key>NSDocumentClass</key>
-			<string></string>
-		</dict>
-		<dict>
-			<key>CFBundleTypeIconSystemGenerated</key>
-			<false/>
-			<key>CFBundleTypeName</key>
 			<string>GALGAS 4 File</string>
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
@@ -130,28 +114,6 @@
 				<key>public.filename-extension</key>
 				<array>
 					<string>galgasTemplate</string>
-				</array>
-			</dict>
-		</dict>
-		<dict>
-			<key>UTTypeConformsTo</key>
-			<array>
-				<string>public.text</string>
-			</array>
-			<key>UTTypeDescription</key>
-			<string>GALGAS 3 Project</string>
-			<key>UTTypeIcons</key>
-			<dict>
-				<key>UTTypeIconBadgeName</key>
-				<string>galgasDocuments</string>
-			</dict>
-			<key>UTTypeIdentifier</key>
-			<string>$(PRODUCT_BUNDLE_IDENTIFIER).galgas3project</string>
-			<key>UTTypeTagSpecification</key>
-			<dict>
-				<key>public.filename-extension</key>
-				<array>
-					<string>galgas3project</string>
 				</array>
 			</dict>
 		</dict>
