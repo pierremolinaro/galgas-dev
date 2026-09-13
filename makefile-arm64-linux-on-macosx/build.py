@@ -26,6 +26,6 @@ LIBPM_DIRECTORY_PATH = dictionary ["LIBPM_DIRECTORY_PATH"]
 sys.path.append (os.path.abspath (LIBPM_DIRECTORY_PATH + "/python-makefiles"))
 from arm64linux_on_macosx_gcc_tools import buildForArm64LinuxOnMacOSX
 #----------------------------------------------------------------- Build
-buildForArm64LinuxOnMacOSX (dictionary, jsonFilePath, "galgas", "build", goal, maxParallelJobs, maxParallelJobs == 1)
+buildForArm64LinuxOnMacOSX (dictionary, jsonFilePath, "galgas4", "build", goal, maxParallelJobs, maxParallelJobs == 1)
 
 #---------------------------------------------------------------------------------------------------

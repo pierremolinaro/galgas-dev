@@ -309,23 +309,32 @@ build/indexes-new
 
 galgas-3-documentation-latex-sources/temp.galgas.tex
 
-project-codeblocks-linux64/galgas
-project-codeblocks-linux64/galgas-debug
+project-codeblocks-linux64/galgas4
+project-codeblocks-linux64/galgas4-debug
 
-makefile-macosx/arm64/galgas-lto
-makefile-macosx/arm64/galgas-debug
-makefile-macosx/arm64/galgas
+makefile-macosx/arm64/galgas4-lto
+makefile-macosx/arm64/galgas4-debug
+makefile-macosx/arm64/galgas4
 
-makefile-macosx/x86_64/galgas-lto
-makefile-macosx/x86_64/galgas
-makefile-macosx/x86_64/galgas-debug
+makefile-macosx/x86_64/galgas4-lto
+makefile-macosx/x86_64/galgas4
+makefile-macosx/x86_64/galgas4-debug
 
-makefile-macosx/universal/galgas
-makefile-macosx/universal/galgas-debug
-makefile-macosx/universal/galgas-lto
+makefile-macosx/universal/galgas4
+makefile-macosx/universal/galgas4-debug
+makefile-macosx/universal/galgas4-lto
 
-makefile-arm64-linux-on-macosx/galgas
-makefile-arm64-linux-on-macosx/galgas-debug
+makefile-arm64-linux-on-macosx/galgas4
+makefile-arm64-linux-on-macosx/galgas4-debug
+
+makefile-unix/galgas4
+makefile-unix/galgas4-debug
+
+makefile-x86linux32-on-macosx/galgas4
+makefile-x86linux32-on-macosx/galgas4-debug
+
+makefile-x86linux64-on-macosx/galgas4
+makefile-x86linux64-on-macosx/galgas4-debug
 
 z-sample_code/dangling_else_solution/makefile-unix/allDanglingElseSolution
 z-sample_code/dangling_else_solution/makefile-unix/allDanglingElseSolution-debug

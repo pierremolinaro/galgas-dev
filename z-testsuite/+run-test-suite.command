@@ -1,6 +1,6 @@
 #!/bin/sh
 #set -x
-GALGAS_TOOL=`dirname $0`/../makefile-unix/galgas-debug &&
+GALGAS_TOOL=`dirname $0`/../makefile-unix/galgas4-debug &&
 cd `dirname $0`/../makefile-unix && /usr/bin/python3 build.py debug &&
 cd `dirname $0` && $GALGAS_TOOL --generate-many-cpp-files --Werror +testsuite.galgas4project &&
 cd `dirname $0`/makefile-unix && /usr/bin/python3 build.py &&
