@@ -89,7 +89,7 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v3
 
-    - run: ./makefile-unix/build+debug.py && ./makefile-unix/galgas-debug --check-big-int
+    - run: ./makefile-unix/build+debug.py && ./makefile-unix/galgas4-debug --check-big-int
 
   RunDemoMac:
     name: Check big integer on Mac OS
@@ -100,7 +100,7 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v3
 
-    - run: ./makefile-unix/build+debug.py && ./makefile-unix/galgas-debug --check-big-int
+    - run: ./makefile-unix/build+debug.py && ./makefile-unix/galgas4-debug --check-big-int
 
   RunDemoWindows:
     name: Check big integer on Windows
@@ -115,4 +115,4 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v3
 
-    - run: python3 ./makefile-unix/build+debug.py && ./makefile-unix/galgas-debug.exe --no-dialog --check-big-int
+    - run: python3 ./makefile-unix/build+debug.py && ./makefile-unix/galgas4-debug.exe --no-dialog --check-big-int
