@@ -340,7 +340,7 @@ class GGS_BuildFileList_2E_element : public AC_GALGAS_root {
                                                              Compiler * inCompiler
                                                              COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of getter 'description'
+//--------------------------------- Implementation of func 'description'
   public: void description (String & ioString,
                             const int32_t inIndentation) const override ;
 
@@ -487,7 +487,7 @@ class GGS_formalParameterSignature_2E_element : public AC_GALGAS_root {
                                                                         Compiler * inCompiler
                                                                         COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of getter 'description'
+//--------------------------------- Implementation of func 'description'
   public: void description (String & ioString,
                             const int32_t inIndentation) const override ;
 
@@ -523,7 +523,7 @@ void callExtensionMethod_enterParameterInSemanticContext (class cPtr_actualParam
 
 //--------------------------------------------------------------------------------------------------
 //
-//Abstract extension getter '@actualParameterAST isCompatibleWith'
+//Abstract extension func '@actualParameterAST isCompatibleWith'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -697,7 +697,7 @@ class cPtr_outputActualParameterAST : public cPtr_actualParameterAST {
                                                           Compiler * inCompiler) ;
 
 
-//--- Extension getter isCompatibleWith
+//--- Extension func isCompatibleWith
   public: virtual class GGS_bool getter_isCompatibleWith (const class GGS_formalArgumentPassingModeAST inFormalPassingMode,
            const class GGS_string inSelector,
            Compiler * COMMA_LOCATION_ARGS) const override ;
@@ -906,7 +906,7 @@ class cPtr_outputInputActualParameterAST : public cPtr_actualParameterAST {
                                                                Compiler * inCompiler) ;
 
 
-//--- Extension getter isCompatibleWith
+//--- Extension func isCompatibleWith
   public: virtual class GGS_bool getter_isCompatibleWith (const class GGS_formalArgumentPassingModeAST inFormalPassingMode,
            const class GGS_string inSelector,
            Compiler * COMMA_LOCATION_ARGS) const override ;
@@ -1111,7 +1111,7 @@ class cPtr_outputInputJokerParameterAST : public cPtr_actualParameterAST {
                                                           Compiler * inCompiler) ;
 
 
-//--- Extension getter isCompatibleWith
+//--- Extension func isCompatibleWith
   public: virtual class GGS_bool getter_isCompatibleWith (const class GGS_formalArgumentPassingModeAST inFormalPassingMode,
            const class GGS_string inSelector,
            Compiler * COMMA_LOCATION_ARGS) const override ;
@@ -1310,7 +1310,7 @@ class cPtr_outputInputSelfParameterAST : public cPtr_actualParameterAST {
                                                      Compiler * inCompiler) ;
 
 
-//--- Extension getter isCompatibleWith
+//--- Extension func isCompatibleWith
   public: virtual class GGS_bool getter_isCompatibleWith (const class GGS_formalArgumentPassingModeAST inFormalPassingMode,
            const class GGS_string inSelector,
            Compiler * COMMA_LOCATION_ARGS) const override ;
@@ -1515,7 +1515,7 @@ class cPtr_inputActualExistingVariableParameterAST : public cPtr_actualParameter
                                                                          Compiler * inCompiler) ;
 
 
-//--- Extension getter isCompatibleWith
+//--- Extension func isCompatibleWith
   public: virtual class GGS_bool getter_isCompatibleWith (const class GGS_formalArgumentPassingModeAST inFormalPassingMode,
            const class GGS_string inSelector,
            Compiler * COMMA_LOCATION_ARGS) const override ;
@@ -1724,7 +1724,7 @@ class cPtr_inputActualSelfPropertyParameterAST : public cPtr_actualParameterAST 
                                                                      Compiler * inCompiler) ;
 
 
-//--- Extension getter isCompatibleWith
+//--- Extension func isCompatibleWith
   public: virtual class GGS_bool getter_isCompatibleWith (const class GGS_formalArgumentPassingModeAST inFormalPassingMode,
            const class GGS_string inSelector,
            Compiler * COMMA_LOCATION_ARGS) const override ;
@@ -1933,7 +1933,7 @@ class cPtr_inputActualSelfParameterAST : public cPtr_actualParameterAST {
                                                              Compiler * inCompiler) ;
 
 
-//--- Extension getter isCompatibleWith
+//--- Extension func isCompatibleWith
   public: virtual class GGS_bool getter_isCompatibleWith (const class GGS_formalArgumentPassingModeAST inFormalPassingMode,
            const class GGS_string inSelector,
            Compiler * COMMA_LOCATION_ARGS) const override ;
@@ -2146,7 +2146,7 @@ class cPtr_inputActualNewVariableParameterAST : public cPtr_actualParameterAST {
                                                                         Compiler * inCompiler) ;
 
 
-//--- Extension getter isCompatibleWith
+//--- Extension func isCompatibleWith
   public: virtual class GGS_bool getter_isCompatibleWith (const class GGS_formalArgumentPassingModeAST inFormalPassingMode,
            const class GGS_string inSelector,
            Compiler * COMMA_LOCATION_ARGS) const override ;
@@ -2365,7 +2365,7 @@ class cPtr_inputActualNewConstantParameterAST : public cPtr_actualParameterAST {
                                                                             Compiler * inCompiler) ;
 
 
-//--- Extension getter isCompatibleWith
+//--- Extension func isCompatibleWith
   public: virtual class GGS_bool getter_isCompatibleWith (const class GGS_formalArgumentPassingModeAST inFormalPassingMode,
            const class GGS_string inSelector,
            Compiler * COMMA_LOCATION_ARGS) const override ;
@@ -2574,7 +2574,7 @@ class cPtr_inputSingleJokerActualParameterAST : public cPtr_actualParameterAST {
                                                                 Compiler * inCompiler) ;
 
 
-//--- Extension getter isCompatibleWith
+//--- Extension func isCompatibleWith
   public: virtual class GGS_bool getter_isCompatibleWith (const class GGS_formalArgumentPassingModeAST inFormalPassingMode,
            const class GGS_string inSelector,
            Compiler * COMMA_LOCATION_ARGS) const override ;
@@ -2777,7 +2777,7 @@ class cPtr_inputJokerActualParameterAST : public cPtr_actualParameterAST {
                                                           Compiler * inCompiler) ;
 
 
-//--- Extension getter isCompatibleWith
+//--- Extension func isCompatibleWith
   public: virtual class GGS_bool getter_isCompatibleWith (const class GGS_formalArgumentPassingModeAST inFormalPassingMode,
            const class GGS_string inSelector,
            Compiler * COMMA_LOCATION_ARGS) const override ;
@@ -3210,7 +3210,7 @@ class GGS_guiSimpleAttributeListAST_2E_element : public AC_GALGAS_root {
                                                                          Compiler * inCompiler
                                                                          COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of getter 'description'
+//--------------------------------- Implementation of func 'description'
   public: void description (String & ioString,
                             const int32_t inIndentation) const override ;
 
@@ -3565,7 +3565,7 @@ class GGS_guiCompoundAttributeListAST_2E_element : public AC_GALGAS_root {
                                                                            Compiler * inCompiler
                                                                            COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of getter 'description'
+//--------------------------------- Implementation of func 'description'
   public: void description (String & ioString,
                             const int32_t inIndentation) const override ;
 
@@ -3888,7 +3888,7 @@ class GGS_terminalLabelListAST_2E_element : public AC_GALGAS_root {
                                                                     Compiler * inCompiler
                                                                     COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of getter 'description'
+//--------------------------------- Implementation of func 'description'
   public: void description (String & ioString,
                             const int32_t inIndentation) const override ;
 
@@ -4243,7 +4243,7 @@ class GGS_guiLabelListAST_2E_element : public AC_GALGAS_root {
                                                                Compiler * inCompiler
                                                                COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of getter 'description'
+//--------------------------------- Implementation of func 'description'
   public: void description (String & ioString,
                             const int32_t inIndentation) const override ;
 
@@ -4630,7 +4630,7 @@ class GGS_withLexiqueListAST_2E_element : public AC_GALGAS_root {
                                                                   Compiler * inCompiler
                                                                   COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of getter 'description'
+//--------------------------------- Implementation of func 'description'
   public: void description (String & ioString,
                             const int32_t inIndentation) const override ;
 
@@ -5049,7 +5049,7 @@ class GGS_guiCommandLineOptionList_2E_element : public AC_GALGAS_root {
                                                                         Compiler * inCompiler
                                                                         COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of getter 'description'
+//--------------------------------- Implementation of func 'description'
   public: void description (String & ioString,
                             const int32_t inIndentation) const override ;
 
@@ -5349,7 +5349,7 @@ class GGS_extensionMap_2E_element : public AC_GALGAS_root {
                                                             Compiler * inCompiler
                                                             COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of getter 'description'
+//--------------------------------- Implementation of func 'description'
   public: void description (String & ioString,
                             const int32_t inIndentation) const override ;
 
@@ -5749,7 +5749,7 @@ class GGS_textMacroList_2E_element : public AC_GALGAS_root {
                                                              Compiler * inCompiler
                                                              COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of getter 'description'
+//--------------------------------- Implementation of func 'description'
   public: void description (String & ioString,
                             const int32_t inIndentation) const override ;
 
@@ -6232,7 +6232,7 @@ class GGS_importedLexiqueList_2E_element : public AC_GALGAS_root {
                                                                    Compiler * inCompiler
                                                                    COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of getter 'description'
+//--------------------------------- Implementation of func 'description'
   public: void description (String & ioString,
                             const int32_t inIndentation) const override ;
 
@@ -6555,7 +6555,7 @@ class GGS_projectIndexingDescriptorList_2E_element : public AC_GALGAS_root {
                                                                              Compiler * inCompiler
                                                                              COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of getter 'description'
+//--------------------------------- Implementation of func 'description'
   public: void description (String & ioString,
                             const int32_t inIndentation) const override ;
 
@@ -6974,7 +6974,7 @@ class GGS_galgasGUIComponentListAST_2E_element : public AC_GALGAS_root {
                                                                          Compiler * inCompiler
                                                                          COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of getter 'description'
+//--------------------------------- Implementation of func 'description'
   public: void description (String & ioString,
                             const int32_t inIndentation) const override ;
 
@@ -7126,7 +7126,7 @@ class GGS_guiAnalysisContext : public AC_GALGAS_root {
                                                        Compiler * inCompiler
                                                        COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of getter 'description'
+//--------------------------------- Implementation of func 'description'
   public: void description (String & ioString,
                             const int32_t inIndentation) const override ;
 
@@ -7402,7 +7402,7 @@ class GGS_optionComponentMapForGeneration_2E_element : public AC_GALGAS_root {
                                                                                Compiler * inCompiler
                                                                                COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of getter 'description'
+//--------------------------------- Implementation of func 'description'
   public: void description (String & ioString,
                             const int32_t inIndentation) const override ;
 
@@ -7790,7 +7790,7 @@ class cPtr_nonterminalInstructionForGeneration : public cPtr_syntaxInstructionFo
                                                                              Compiler * inCompiler) ;
 
 
-//--- Extension getter compareInstructionSyntaxSignature
+//--- Extension func compareInstructionSyntaxSignature
   public: virtual class GGS_bool getter_compareInstructionSyntaxSignature (const class GGS_semanticInstructionForGeneration inTestedInstruction,
            Compiler * COMMA_LOCATION_ARGS) const override ;
 
@@ -8307,7 +8307,7 @@ class GGS_actualInputParameterListAST_2E_element : public AC_GALGAS_root {
                                                                            Compiler * inCompiler
                                                                            COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of getter 'description'
+//--------------------------------- Implementation of func 'description'
   public: void description (String & ioString,
                             const int32_t inIndentation) const override ;
 
@@ -8961,7 +8961,7 @@ class GGS_terminalCheckAssignementList_2E_element : public AC_GALGAS_root {
                                                                             Compiler * inCompiler
                                                                             COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of getter 'description'
+//--------------------------------- Implementation of func 'description'
   public: void description (String & ioString,
                             const int32_t inIndentation) const override ;
 
@@ -9072,7 +9072,7 @@ class cPtr_terminalCheckInstructionForGeneration : public cPtr_syntaxInstruction
                                                                                        Compiler * inCompiler) ;
 
 
-//--- Extension getter compareInstructionSyntaxSignature
+//--- Extension func compareInstructionSyntaxSignature
   public: virtual class GGS_bool getter_compareInstructionSyntaxSignature (const class GGS_semanticInstructionForGeneration inTestedInstruction,
            Compiler * COMMA_LOCATION_ARGS) const override ;
 
@@ -9722,7 +9722,7 @@ class GGS_listOfSyntaxInstructionList_2E_element : public AC_GALGAS_root {
                                                                            Compiler * inCompiler
                                                                            COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of getter 'description'
+//--------------------------------- Implementation of func 'description'
   public: void description (String & ioString,
                             const int32_t inIndentation) const override ;
 
@@ -10247,7 +10247,7 @@ class GGS_listOfSemanticInstructionListForGeneration_2E_element : public AC_GALG
                                                                                           Compiler * inCompiler
                                                                                           COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of getter 'description'
+//--------------------------------- Implementation of func 'description'
   public: void description (String & ioString,
                             const int32_t inIndentation) const override ;
 
@@ -10346,7 +10346,7 @@ class cPtr_selectInstructionForGeneration : public cPtr_syntaxInstructionForGene
                                                                     Compiler * inCompiler) ;
 
 
-//--- Extension getter compareInstructionSyntaxSignature
+//--- Extension func compareInstructionSyntaxSignature
   public: virtual class GGS_bool getter_compareInstructionSyntaxSignature (const class GGS_semanticInstructionForGeneration inTestedInstruction,
            Compiler * COMMA_LOCATION_ARGS) const override ;
 
@@ -10522,7 +10522,7 @@ class GGS_syntaxInstructionList_2E_element : public AC_GALGAS_root {
                                                                      Compiler * inCompiler
                                                                      COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of getter 'description'
+//--------------------------------- Implementation of func 'description'
   public: void description (String & ioString,
                             const int32_t inIndentation) const override ;
 
@@ -10843,7 +10843,7 @@ class cPtr_repeatInstructionForGeneration : public cPtr_syntaxInstructionForGene
                                                                             Compiler * inCompiler) ;
 
 
-//--- Extension getter compareInstructionSyntaxSignature
+//--- Extension func compareInstructionSyntaxSignature
   public: virtual class GGS_bool getter_compareInstructionSyntaxSignature (const class GGS_semanticInstructionForGeneration inTestedInstruction,
            Compiler * COMMA_LOCATION_ARGS) const override ;
 
@@ -12497,147 +12497,146 @@ class Lexique_galgasScanner_33_ : public Lexique {
   public: static const int32_t kToken_final = 47 ;
   public: static const int32_t kToken_fixit = 48 ;
   public: static const int32_t kToken_func = 49 ;
-  public: static const int32_t kToken_getter = 50 ;
-  public: static const int32_t kToken_grammar = 51 ;
-  public: static const int32_t kToken_graph = 52 ;
-  public: static const int32_t kToken_guard = 53 ;
-  public: static const int32_t kToken_gui = 54 ;
-  public: static const int32_t kToken_if = 55 ;
-  public: static const int32_t kToken_in = 56 ;
-  public: static const int32_t kToken_indexing = 57 ;
-  public: static const int32_t kToken_init = 58 ;
-  public: static const int32_t kToken_insert = 59 ;
-  public: static const int32_t kToken_is = 60 ;
-  public: static const int32_t kToken_json = 61 ;
-  public: static const int32_t kToken_label = 62 ;
-  public: static const int32_t kToken_let = 63 ;
-  public: static const int32_t kToken_lexique = 64 ;
-  public: static const int32_t kToken_list = 65 ;
-  public: static const int32_t kToken_log = 66 ;
-  public: static const int32_t kToken_loop = 67 ;
-  public: static const int32_t kToken_map = 68 ;
-  public: static const int32_t kToken_message = 69 ;
-  public: static const int32_t kToken_method = 70 ;
-  public: static const int32_t kToken_mod = 71 ;
-  public: static const int32_t kToken_mutating = 72 ;
-  public: static const int32_t kToken_nil = 73 ;
-  public: static const int32_t kToken_not = 74 ;
-  public: static const int32_t kToken_on = 75 ;
-  public: static const int32_t kToken_operator = 76 ;
-  public: static const int32_t kToken_option = 77 ;
-  public: static const int32_t kToken_or = 78 ;
-  public: static const int32_t kToken_override = 79 ;
-  public: static const int32_t kToken_parse = 80 ;
-  public: static const int32_t kToken_public = 81 ;
-  public: static const int32_t kToken_protected = 82 ;
-  public: static const int32_t kToken_private = 83 ;
-  public: static const int32_t kToken_proc = 84 ;
-  public: static const int32_t kToken_project = 85 ;
-  public: static const int32_t kToken_remove = 86 ;
-  public: static const int32_t kToken_repeat = 87 ;
-  public: static const int32_t kToken_replace = 88 ;
-  public: static const int32_t kToken_rewind = 89 ;
-  public: static const int32_t kToken_rule = 90 ;
-  public: static const int32_t kToken_search = 91 ;
-  public: static const int32_t kToken_select = 92 ;
-  public: static const int32_t kToken_self = 93 ;
-  public: static const int32_t kToken_send = 94 ;
-  public: static const int32_t kToken_setter = 95 ;
-  public: static const int32_t kToken_sortedlist = 96 ;
-  public: static const int32_t kToken_spoil = 97 ;
-  public: static const int32_t kToken_struct = 98 ;
-  public: static const int32_t kToken_style = 99 ;
-  public: static const int32_t kToken_super = 100 ;
-  public: static const int32_t kToken_switch = 101 ;
-  public: static const int32_t kToken_syntax = 102 ;
-  public: static const int32_t kToken_tag = 103 ;
-  public: static const int32_t kToken_template = 104 ;
-  public: static const int32_t kToken_then = 105 ;
-  public: static const int32_t kToken_true = 106 ;
-  public: static const int32_t kToken_typealias = 107 ;
-  public: static const int32_t kToken_unused = 108 ;
-  public: static const int32_t kToken_var = 109 ;
-  public: static const int32_t kToken_warning = 110 ;
-  public: static const int32_t kToken_weak = 111 ;
-  public: static const int32_t kToken_while = 112 ;
-  public: static const int32_t kToken_with = 113 ;
-  public: static const int32_t kToken__25_applicationBundleBase = 114 ;
-  public: static const int32_t kToken__25_clonable = 115 ;
-  public: static const int32_t kToken__25_codeblocks_2D_linux_33__32_ = 116 ;
-  public: static const int32_t kToken__25_codeblocks_2D_linux_36__34_ = 117 ;
-  public: static const int32_t kToken__25_codeblocks_2D_windows = 118 ;
-  public: static const int32_t kToken__25_comparable = 119 ;
-  public: static const int32_t kToken__25_equatable = 120 ;
-  public: static const int32_t kToken__25_from = 121 ;
-  public: static const int32_t kToken__25_generatedInSeparateFile = 122 ;
-  public: static const int32_t kToken__25_initArgLabel = 123 ;
-  public: static const int32_t kToken__25_libpmAtPath = 124 ;
-  public: static const int32_t kToken__25_MacSwiftApp = 125 ;
-  public: static const int32_t kToken__25_macCodeSign = 126 ;
-  public: static const int32_t kToken__25_makefile_2D_macosx = 127 ;
-  public: static const int32_t kToken__25_makefile_2D_unix = 128 ;
-  public: static const int32_t kToken__25_makefile_2D_x_38__36_linux_33__32__2D_on_2D_macosx = 129 ;
-  public: static const int32_t kToken__25_makefile_2D_x_38__36_linux_36__34__2D_on_2D_macosx = 130 ;
-  public: static const int32_t kToken__25_makefile_2D_arm_36__34__2D_linux_2D_on_2D_macosx = 131 ;
-  public: static const int32_t kToken__25_makefile_2D_win_33__32__2D_on_2D_macosx = 132 ;
-  public: static const int32_t kToken__25_nonAtomicSelection = 133 ;
-  public: static const int32_t kToken__25_once = 134 ;
-  public: static const int32_t kToken__25_preserved = 135 ;
-  public: static const int32_t kToken__25_quietOutputByDefault = 136 ;
-  public: static const int32_t kToken__25_searchSubscript = 137 ;
-  public: static const int32_t kToken__25_templateEndMark = 138 ;
-  public: static const int32_t kToken__25_translate = 139 ;
-  public: static const int32_t kToken__25_usefull = 140 ;
-  public: static const int32_t kToken__2A_ = 141 ;
-  public: static const int32_t kToken__2C_ = 142 ;
-  public: static const int32_t kToken__2B_ = 143 ;
-  public: static const int32_t kToken__26__2B_ = 144 ;
-  public: static const int32_t kToken__26__2D_ = 145 ;
-  public: static const int32_t kToken__26__2A_ = 146 ;
-  public: static const int32_t kToken__26__2F_ = 147 ;
-  public: static const int32_t kToken__3E_ = 148 ;
-  public: static const int32_t kToken__3B_ = 149 ;
-  public: static const int32_t kToken__3A_ = 150 ;
-  public: static const int32_t kToken__3A__3E_ = 151 ;
-  public: static const int32_t kToken__2D_ = 152 ;
-  public: static const int32_t kToken__28_ = 153 ;
-  public: static const int32_t kToken__29_ = 154 ;
-  public: static const int32_t kToken__2D__3E_ = 155 ;
-  public: static const int32_t kToken__3D__3D_ = 156 ;
-  public: static const int32_t kToken__3D_ = 157 ;
-  public: static const int32_t kToken__26__26_ = 158 ;
-  public: static const int32_t kToken__5B_ = 159 ;
-  public: static const int32_t kToken__5D_ = 160 ;
-  public: static const int32_t kToken__2B__2B__3D_ = 161 ;
-  public: static const int32_t kToken__2E_ = 162 ;
-  public: static const int32_t kToken__2E__2E__2E_ = 163 ;
-  public: static const int32_t kToken__2E__2E__3C_ = 164 ;
-  public: static const int32_t kToken__40__7B_ = 165 ;
-  public: static const int32_t kToken__40__28_ = 166 ;
-  public: static const int32_t kToken__40__5B_ = 167 ;
-  public: static const int32_t kToken__2B__3D_ = 168 ;
-  public: static const int32_t kToken__2D__3D_ = 169 ;
-  public: static const int32_t kToken__2A__3D_ = 170 ;
-  public: static const int32_t kToken__2F__3D_ = 171 ;
-  public: static const int32_t kToken__26__3D_ = 172 ;
-  public: static const int32_t kToken__7C__3D_ = 173 ;
-  public: static const int32_t kToken__5E__3D_ = 174 ;
-  public: static const int32_t kToken__2F_ = 175 ;
-  public: static const int32_t kToken__21__3D_ = 176 ;
-  public: static const int32_t kToken__3E__3D_ = 177 ;
-  public: static const int32_t kToken__26_ = 178 ;
-  public: static const int32_t kToken__7B_ = 179 ;
-  public: static const int32_t kToken__7D_ = 180 ;
-  public: static const int32_t kToken__60_ = 181 ;
-  public: static const int32_t kToken__7C__7C_ = 182 ;
-  public: static const int32_t kToken__7C_ = 183 ;
-  public: static const int32_t kToken__5E_ = 184 ;
-  public: static const int32_t kToken__3E__3E_ = 185 ;
-  public: static const int32_t kToken__7E_ = 186 ;
-  public: static const int32_t kToken__3D__3D__3D_ = 187 ;
-  public: static const int32_t kToken__21__3D__3D_ = 188 ;
-  public: static const int32_t kToken__3F__5E_ = 189 ;
-  public: static const int32_t kToken__21__5E_ = 190 ;
+  public: static const int32_t kToken_grammar = 50 ;
+  public: static const int32_t kToken_graph = 51 ;
+  public: static const int32_t kToken_guard = 52 ;
+  public: static const int32_t kToken_gui = 53 ;
+  public: static const int32_t kToken_if = 54 ;
+  public: static const int32_t kToken_in = 55 ;
+  public: static const int32_t kToken_indexing = 56 ;
+  public: static const int32_t kToken_init = 57 ;
+  public: static const int32_t kToken_insert = 58 ;
+  public: static const int32_t kToken_is = 59 ;
+  public: static const int32_t kToken_json = 60 ;
+  public: static const int32_t kToken_label = 61 ;
+  public: static const int32_t kToken_let = 62 ;
+  public: static const int32_t kToken_lexique = 63 ;
+  public: static const int32_t kToken_list = 64 ;
+  public: static const int32_t kToken_log = 65 ;
+  public: static const int32_t kToken_loop = 66 ;
+  public: static const int32_t kToken_map = 67 ;
+  public: static const int32_t kToken_message = 68 ;
+  public: static const int32_t kToken_method = 69 ;
+  public: static const int32_t kToken_mod = 70 ;
+  public: static const int32_t kToken_mutating = 71 ;
+  public: static const int32_t kToken_nil = 72 ;
+  public: static const int32_t kToken_not = 73 ;
+  public: static const int32_t kToken_on = 74 ;
+  public: static const int32_t kToken_operator = 75 ;
+  public: static const int32_t kToken_option = 76 ;
+  public: static const int32_t kToken_or = 77 ;
+  public: static const int32_t kToken_override = 78 ;
+  public: static const int32_t kToken_parse = 79 ;
+  public: static const int32_t kToken_public = 80 ;
+  public: static const int32_t kToken_protected = 81 ;
+  public: static const int32_t kToken_private = 82 ;
+  public: static const int32_t kToken_proc = 83 ;
+  public: static const int32_t kToken_project = 84 ;
+  public: static const int32_t kToken_remove = 85 ;
+  public: static const int32_t kToken_repeat = 86 ;
+  public: static const int32_t kToken_replace = 87 ;
+  public: static const int32_t kToken_rewind = 88 ;
+  public: static const int32_t kToken_rule = 89 ;
+  public: static const int32_t kToken_search = 90 ;
+  public: static const int32_t kToken_select = 91 ;
+  public: static const int32_t kToken_self = 92 ;
+  public: static const int32_t kToken_send = 93 ;
+  public: static const int32_t kToken_setter = 94 ;
+  public: static const int32_t kToken_sortedlist = 95 ;
+  public: static const int32_t kToken_spoil = 96 ;
+  public: static const int32_t kToken_struct = 97 ;
+  public: static const int32_t kToken_style = 98 ;
+  public: static const int32_t kToken_super = 99 ;
+  public: static const int32_t kToken_switch = 100 ;
+  public: static const int32_t kToken_syntax = 101 ;
+  public: static const int32_t kToken_tag = 102 ;
+  public: static const int32_t kToken_template = 103 ;
+  public: static const int32_t kToken_then = 104 ;
+  public: static const int32_t kToken_true = 105 ;
+  public: static const int32_t kToken_typealias = 106 ;
+  public: static const int32_t kToken_unused = 107 ;
+  public: static const int32_t kToken_var = 108 ;
+  public: static const int32_t kToken_warning = 109 ;
+  public: static const int32_t kToken_weak = 110 ;
+  public: static const int32_t kToken_while = 111 ;
+  public: static const int32_t kToken_with = 112 ;
+  public: static const int32_t kToken__25_applicationBundleBase = 113 ;
+  public: static const int32_t kToken__25_clonable = 114 ;
+  public: static const int32_t kToken__25_codeblocks_2D_linux_33__32_ = 115 ;
+  public: static const int32_t kToken__25_codeblocks_2D_linux_36__34_ = 116 ;
+  public: static const int32_t kToken__25_codeblocks_2D_windows = 117 ;
+  public: static const int32_t kToken__25_comparable = 118 ;
+  public: static const int32_t kToken__25_equatable = 119 ;
+  public: static const int32_t kToken__25_from = 120 ;
+  public: static const int32_t kToken__25_generatedInSeparateFile = 121 ;
+  public: static const int32_t kToken__25_initArgLabel = 122 ;
+  public: static const int32_t kToken__25_libpmAtPath = 123 ;
+  public: static const int32_t kToken__25_MacSwiftApp = 124 ;
+  public: static const int32_t kToken__25_macCodeSign = 125 ;
+  public: static const int32_t kToken__25_makefile_2D_macosx = 126 ;
+  public: static const int32_t kToken__25_makefile_2D_unix = 127 ;
+  public: static const int32_t kToken__25_makefile_2D_x_38__36_linux_33__32__2D_on_2D_macosx = 128 ;
+  public: static const int32_t kToken__25_makefile_2D_x_38__36_linux_36__34__2D_on_2D_macosx = 129 ;
+  public: static const int32_t kToken__25_makefile_2D_arm_36__34__2D_linux_2D_on_2D_macosx = 130 ;
+  public: static const int32_t kToken__25_makefile_2D_win_33__32__2D_on_2D_macosx = 131 ;
+  public: static const int32_t kToken__25_nonAtomicSelection = 132 ;
+  public: static const int32_t kToken__25_once = 133 ;
+  public: static const int32_t kToken__25_preserved = 134 ;
+  public: static const int32_t kToken__25_quietOutputByDefault = 135 ;
+  public: static const int32_t kToken__25_searchSubscript = 136 ;
+  public: static const int32_t kToken__25_templateEndMark = 137 ;
+  public: static const int32_t kToken__25_translate = 138 ;
+  public: static const int32_t kToken__25_usefull = 139 ;
+  public: static const int32_t kToken__2A_ = 140 ;
+  public: static const int32_t kToken__2C_ = 141 ;
+  public: static const int32_t kToken__2B_ = 142 ;
+  public: static const int32_t kToken__26__2B_ = 143 ;
+  public: static const int32_t kToken__26__2D_ = 144 ;
+  public: static const int32_t kToken__26__2A_ = 145 ;
+  public: static const int32_t kToken__26__2F_ = 146 ;
+  public: static const int32_t kToken__3E_ = 147 ;
+  public: static const int32_t kToken__3B_ = 148 ;
+  public: static const int32_t kToken__3A_ = 149 ;
+  public: static const int32_t kToken__3A__3E_ = 150 ;
+  public: static const int32_t kToken__2D_ = 151 ;
+  public: static const int32_t kToken__28_ = 152 ;
+  public: static const int32_t kToken__29_ = 153 ;
+  public: static const int32_t kToken__2D__3E_ = 154 ;
+  public: static const int32_t kToken__3D__3D_ = 155 ;
+  public: static const int32_t kToken__3D_ = 156 ;
+  public: static const int32_t kToken__26__26_ = 157 ;
+  public: static const int32_t kToken__5B_ = 158 ;
+  public: static const int32_t kToken__5D_ = 159 ;
+  public: static const int32_t kToken__2B__2B__3D_ = 160 ;
+  public: static const int32_t kToken__2E_ = 161 ;
+  public: static const int32_t kToken__2E__2E__2E_ = 162 ;
+  public: static const int32_t kToken__2E__2E__3C_ = 163 ;
+  public: static const int32_t kToken__40__7B_ = 164 ;
+  public: static const int32_t kToken__40__28_ = 165 ;
+  public: static const int32_t kToken__40__5B_ = 166 ;
+  public: static const int32_t kToken__2B__3D_ = 167 ;
+  public: static const int32_t kToken__2D__3D_ = 168 ;
+  public: static const int32_t kToken__2A__3D_ = 169 ;
+  public: static const int32_t kToken__2F__3D_ = 170 ;
+  public: static const int32_t kToken__26__3D_ = 171 ;
+  public: static const int32_t kToken__7C__3D_ = 172 ;
+  public: static const int32_t kToken__5E__3D_ = 173 ;
+  public: static const int32_t kToken__2F_ = 174 ;
+  public: static const int32_t kToken__21__3D_ = 175 ;
+  public: static const int32_t kToken__3E__3D_ = 176 ;
+  public: static const int32_t kToken__26_ = 177 ;
+  public: static const int32_t kToken__7B_ = 178 ;
+  public: static const int32_t kToken__7D_ = 179 ;
+  public: static const int32_t kToken__60_ = 180 ;
+  public: static const int32_t kToken__7C__7C_ = 181 ;
+  public: static const int32_t kToken__7C_ = 182 ;
+  public: static const int32_t kToken__5E_ = 183 ;
+  public: static const int32_t kToken__3E__3E_ = 184 ;
+  public: static const int32_t kToken__7E_ = 185 ;
+  public: static const int32_t kToken__3D__3D__3D_ = 186 ;
+  public: static const int32_t kToken__21__3D__3D_ = 187 ;
+  public: static const int32_t kToken__3F__5E_ = 188 ;
+  public: static const int32_t kToken__21__5E_ = 189 ;
 
 //--- Key words table 'galgasKeyWordList'
   public: static int32_t search_into_galgasKeyWordList (const String & inSearchedString) ;
@@ -12729,7 +12728,7 @@ public: static const uint32_t kIndexing_indexingNameReference = 51 ;
   protected: virtual String getMessageForTerminal (const int32_t inTerminalSymbol) const override ;
 
 //--- Get terminal count
-  public: virtual int32_t terminalVocabularyCount (void) const override { return 190 ; }
+  public: virtual int32_t terminalVocabularyCount (void) const override { return 189 ; }
 
 //--- Get Token String
   public: virtual String getCurrentTokenString (const cToken * inTokenPtr) const override ;

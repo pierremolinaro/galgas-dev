@@ -23,7 +23,7 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-getter @lexicalTypeEnum cppTypeName -> @string {
+func @lexicalTypeEnum cppTypeName -> @string {
   switch self
     case lexicalType_string : result = "String"
     case lexicalType_char   : result = "utf32"
@@ -38,7 +38,7 @@ getter @lexicalTypeEnum cppTypeName -> @string {
 
 //--------------------------------------------------------------------------------------------------
 
-getter @lexicalTypeEnum appendMethodName -> @string {
+func @lexicalTypeEnum appendMethodName -> @string {
   switch self
     case lexicalType_string : result = "appendStringAsCLiteralStringConstant"
     case lexicalType_char   : result = "appendChar"
@@ -53,7 +53,7 @@ getter @lexicalTypeEnum appendMethodName -> @string {
 
 //--------------------------------------------------------------------------------------------------
 
-getter @lexicalTypeEnum appendArgumentOfMethod -> @string {
+func @lexicalTypeEnum appendArgumentOfMethod -> @string {
   switch self
     case lexicalType_string : result = ""
     case lexicalType_char   : result = ""
@@ -68,7 +68,7 @@ getter @lexicalTypeEnum appendArgumentOfMethod -> @string {
 
 //--------------------------------------------------------------------------------------------------
 
-getter @lexicalTypeEnum initialization -> @string {
+func @lexicalTypeEnum initialization -> @string {
   switch self
     case lexicalType_string : result = ".removeAllKeepingCapacity ()"
     case lexicalType_char   : result = " = utf32 (0)"
@@ -83,7 +83,7 @@ getter @lexicalTypeEnum initialization -> @string {
 
 //--------------------------------------------------------------------------------------------------
 
-getter @lexicalTypeEnum cocoaTypeName -> @string {
+func @lexicalTypeEnum cocoaTypeName -> @string {
   switch self
     case lexicalType_string : result = "NSMutableString *"
     case lexicalType_char   : result = "UInt32"
@@ -98,7 +98,7 @@ getter @lexicalTypeEnum cocoaTypeName -> @string {
 
 //--------------------------------------------------------------------------------------------------
 
-getter @lexicalTypeEnum swiftTypeName -> @string {
+func @lexicalTypeEnum swiftTypeName -> @string {
   switch self
     case lexicalType_string : result = "String"
     case lexicalType_char   : result = "UInt32"
@@ -113,7 +113,7 @@ getter @lexicalTypeEnum swiftTypeName -> @string {
 
 //--------------------------------------------------------------------------------------------------
 
-getter @lexicalTypeEnum needsReferenceInInputOutputInCocoa -> @bool {
+func @lexicalTypeEnum needsReferenceInInputOutputInCocoa -> @bool {
   switch self
     case lexicalType_string : result = false
     case lexicalType_char   : result = true
@@ -128,7 +128,7 @@ getter @lexicalTypeEnum needsReferenceInInputOutputInCocoa -> @bool {
 
 //--------------------------------------------------------------------------------------------------
 
-getter @lexicalTypeEnum cocoaInitializationCode -> @string {
+func @lexicalTypeEnum cocoaInitializationCode -> @string {
   switch self
     case lexicalType_string : result = "[[NSMutableString alloc] init]"
     case lexicalType_char   : result = "0"
@@ -143,7 +143,7 @@ getter @lexicalTypeEnum cocoaInitializationCode -> @string {
 
 //--------------------------------------------------------------------------------------------------
 
-getter @lexicalTypeEnum swiftInitializationCode -> @string {
+func @lexicalTypeEnum swiftInitializationCode -> @string {
   switch self
     case lexicalType_string : result = "\"\""
     case lexicalType_char   : result = "0"
@@ -158,7 +158,7 @@ getter @lexicalTypeEnum swiftInitializationCode -> @string {
 
 //--------------------------------------------------------------------------------------------------
 
-getter @lexicalTypeEnum cocoaResetPrefix -> @string {
+func @lexicalTypeEnum cocoaResetPrefix -> @string {
   switch self
     case lexicalType_string : result = "["
     case lexicalType_char   : result = ""
@@ -173,7 +173,7 @@ getter @lexicalTypeEnum cocoaResetPrefix -> @string {
 
 //--------------------------------------------------------------------------------------------------
 
-getter @lexicalTypeEnum cocoaReset -> @string {
+func @lexicalTypeEnum cocoaReset -> @string {
   switch self
     case lexicalType_string : result = " setString:@\"\"]"
     case lexicalType_char   : result = " = 0"

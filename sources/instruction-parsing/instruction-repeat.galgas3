@@ -255,7 +255,7 @@ override method @repeatInstructionForGeneration appendSyntaxSignature
 //! COMPARE SYNTAX SIGNATURE
 //--------------------------------------------------------------------------------------------------
 
-override getter @repeatInstructionForGeneration compareInstructionSyntaxSignature
+override func @repeatInstructionForGeneration compareInstructionSyntaxSignature
   ?let @semanticInstructionForGeneration inTestedInstruction ->@bool {
   if let si = inTestedInstruction as @repeatInstructionForGeneration then
     result = compareSyntaxSignature (!self.m_repeated_instructionList !si.m_repeated_instructionList !si.mEndOfRepeatedInstructions)

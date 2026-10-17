@@ -69,13 +69,13 @@ gui cocoa {
     label $override$, $method$, $identifier$
     label $method$, $identifier$
 
-    label $abstract$, $getter$, $@type$, $identifier$
-    label $override$,  $getter$, $@type$, $identifier$
-    label $getter$, $@type$, $identifier$
+    label $abstract$, $func$, $@type$, $identifier$
+    label $override$,  $func$, $@type$, $identifier$
+    label $func$, $@type$, $identifier$
 
-    label $abstract$, $getter$, $identifier$
-    label $override$,  $getter$, $identifier$
-    label $getter$, $identifier$
+    label $abstract$, $func$, $identifier$
+    label $override$,  $func$, $identifier$
+    label $func$, $identifier$
 
     label $abstract$, $setter$, $@type$, $identifier$
     label $override$,  $setter$, $@type$, $identifier$

@@ -49,13 +49,13 @@ proc performProjectCreation ?let @string inProjectPath {
 //--- galgas_sources
   let @string galgas_sources_DIR = inProjectPath + "/sources"
   [galgas_sources_DIR makeDirectory]
-  [[filewrapper projectCreationFileWrapper.PROJECT_cocoa !projectName] writeToFile !galgas_sources_DIR +"/" +projectName +"-cocoa.galgas"]
-  [[filewrapper projectCreationFileWrapper.PROJECT_grammar !projectName] writeToFile !galgas_sources_DIR +"/" +projectName +"-grammar.galgas"]
-  [[filewrapper projectCreationFileWrapper.PROJECT_lexique !projectName] writeToFile !galgas_sources_DIR +"/" +projectName +"-lexique.galgas"]
-  [[filewrapper projectCreationFileWrapper.PROJECT_options !projectName] writeToFile !galgas_sources_DIR +"/" +projectName +"-options.galgas"]
+  [[filewrapper projectCreationFileWrapper.PROJECT_cocoa !projectName] writeToFile !galgas_sources_DIR +"/" +projectName +"-cocoa.galgas4"]
+  [[filewrapper projectCreationFileWrapper.PROJECT_grammar !projectName] writeToFile !galgas_sources_DIR +"/" +projectName +"-grammar.galgas4"]
+  [[filewrapper projectCreationFileWrapper.PROJECT_lexique !projectName] writeToFile !galgas_sources_DIR +"/" +projectName +"-lexique.galgas4"]
+  [[filewrapper projectCreationFileWrapper.PROJECT_options !projectName] writeToFile !galgas_sources_DIR +"/" +projectName +"-options.galgas4"]
   [[filewrapper projectCreationFileWrapper.PROJECT_program !projectName] writeToFile !galgas_sources_DIR +"/" +projectName +"-program.galgas"]
-  [[filewrapper projectCreationFileWrapper.PROJECT_semantics !projectName] writeToFile !galgas_sources_DIR +"/" +projectName +"-semantics.galgas"]
-  [[filewrapper projectCreationFileWrapper.PROJECT_syntax !projectName] writeToFile !galgas_sources_DIR +"/" +projectName +"-syntax.galgas"]
+  [[filewrapper projectCreationFileWrapper.PROJECT_semantics !projectName] writeToFile !galgas_sources_DIR +"/" +projectName +"-semantics.galgas4"]
+  [[filewrapper projectCreationFileWrapper.PROJECT_syntax !projectName] writeToFile !galgas_sources_DIR +"/" +projectName +"-syntax.galgas4"]
 //---
    println (!"*** DONE ***")
 }

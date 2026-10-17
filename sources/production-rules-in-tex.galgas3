@@ -543,7 +543,7 @@ override method @repeatInstructionForGrammarAnalysis tikzNodeForSyntaxInstructio
 //! isLinear
 //--------------------------------------------------------------------------------------------------
 
-getter @syntaxInstructionListForGrammarAnalysis displayVertically -> @bool {
+func @syntaxInstructionListForGrammarAnalysis displayVertically -> @bool {
   result = self.count > 4
   for (instruction) in self while result do
     result = instruction.isLinear
@@ -552,24 +552,24 @@ getter @syntaxInstructionListForGrammarAnalysis displayVertically -> @bool {
 
 //--------------------------------------------------------------------------------------------------
 
-abstract getter @abstractSyntaxInstructionForGrammarAnalysis isLinear -> @bool
+abstract func @abstractSyntaxInstructionForGrammarAnalysis isLinear -> @bool
 
 //--------------------------------------------------------------------------------------------------
 
-override getter @nonTerminalInstructionForGrammarAnalysis isLinear -> @bool {
+override func @nonTerminalInstructionForGrammarAnalysis isLinear -> @bool {
   result = true
 }
 
 
 //--------------------------------------------------------------------------------------------------
 
-override getter @selectInstructionForGrammarAnalysis isLinear -> @bool {
+override func @selectInstructionForGrammarAnalysis isLinear -> @bool {
   result = false
 }
 
 //--------------------------------------------------------------------------------------------------
 
-override getter @repeatInstructionForGrammarAnalysis isLinear -> @bool {
+override func @repeatInstructionForGrammarAnalysis isLinear -> @bool {
   result = false
 }
 

@@ -185,16 +185,16 @@ class cPtr_grammarForGeneration : public cPtr_semanticDeclarationWithHeaderForGe
                                                                                                                          Compiler * inCompiler) ;
 
 
-//--- Extension getter getImplementationCppFileName
+//--- Extension func getImplementationCppFileName
   public: virtual class GGS_string getter_getImplementationCppFileName (Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension getter hasCppHeaderFile
+//--- Extension func hasCppHeaderFile
   public: virtual class GGS_bool getter_hasCppHeaderFile (Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension getter headerKind
+//--- Extension func headerKind
   public: virtual class GGS_headerKind getter_headerKind (Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension getter isPredefined
+//--- Extension func isPredefined
   public: virtual class GGS_bool getter_isPredefined (Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension method appendDeclaration1

@@ -37,7 +37,7 @@ proc enterBaseFinalGetterWithoutArgument ?!@getterMap ioGetterMap
     !inHasCompilerArgument
     !returnedTypeIndex
     !@methodQualifier.isBasicFinal
-    !"" // getter name is not obsolete, no replacement getter
+    !"" // func name is not obsolete, no replacement func
   ]
   if inObsoleteGetterName != "" then
     [!?ioGetterMap insertOrReplace
@@ -48,7 +48,7 @@ proc enterBaseFinalGetterWithoutArgument ?!@getterMap ioGetterMap
       !inHasCompilerArgument
       !returnedTypeIndex
       !@methodQualifier.isBasicFinal
-      !inGetterName // getter name is obsolete, replacement getter
+      !inGetterName // func name is obsolete, replacement func
     ]
   end
 }
@@ -70,7 +70,7 @@ proc enterInheritedGetterWithoutArgument ?!@getterMap ioGetterMap
     !inHasCompilerArgument
     !returnedTypeIndex
     !@methodQualifier. isInherited
-    !"" // getter name is not obsolete, no replacement getter
+    !"" // func name is not obsolete, no replacement func
   ]
   if inObsoleteGetterName != "" then
     [!?ioGetterMap insertOrReplace
@@ -109,7 +109,7 @@ proc enterInheritedGetterWithArgument
     !inHasCompilerArgument
     !returnedTypeIndex
     !@methodQualifier. isInherited
-    !"" // getter name is not obsolete, no replacement getter
+    !"" // func name is not obsolete, no replacement func
   ]
 }
 
@@ -136,7 +136,7 @@ proc enterBaseGetterWithArgument
     !inHasCompilerArgument
     !returnedTypeIndex
     !.isBasicFinal
-    !"" // getter name is not obsolete, no replacement getter
+    !"" // func name is not obsolete, no replacement func
   ]
 }
 
@@ -167,7 +167,7 @@ proc enterBaseGetterWithArgument
 //    !inHasCompilerArgument
 //    !returnedTypeIndex
 //    !@methodQualifier.isInherited
-//    !"" // getter name is not obsolete, no replacement getter
+//    !"" // func name is not obsolete, no replacement func
 //  ]
 //}
 
@@ -198,7 +198,7 @@ proc enterBaseGetterWith2Arguments
     !inHasCompilerArgument
     !returnedTypeIndex
     !.isBasicFinal
-    !"" // getter name is not obsolete, no replacement getter
+    !"" // func name is not obsolete, no replacement func
   ]
 }
 
@@ -219,7 +219,7 @@ proc enterBaseGetterWithoutArgument ?!@getterMap ioGetterMap
     !inHasCompilerArgument
     !returnedTypeIndex
     !@methodQualifier. isBasic
-    !"" // getter name is not obsolete, no replacement getter
+    !"" // func name is not obsolete, no replacement func
   ]
   if inObsoleteGetterName != "" then
     [!?ioGetterMap insertOrReplace
@@ -230,7 +230,7 @@ proc enterBaseGetterWithoutArgument ?!@getterMap ioGetterMap
       !inHasCompilerArgument
       !returnedTypeIndex
       !@methodQualifier.isBasicFinal
-      !inGetterName // getter name is obsolete, replacement getter
+      !inGetterName // func name is obsolete, replacement func
     ]
   end
 }
@@ -259,7 +259,7 @@ proc enterBaseGetterWithArgument
     !inHasCompilerArgument
     !returnedTypeIndex
     !@methodQualifier. isBasic
-    !"" // getter name is not obsolete, no replacement getter
+    !"" // func name is not obsolete, no replacement func
   ]
 }
 
@@ -286,7 +286,7 @@ proc enterBaseFinalGetterWithArgument
     !inHasCompilerArgument
     !returnedTypeIndex
     !@methodQualifier. isBasicFinal
-    !"" // getter name is not obsolete, no replacement getter
+    !"" // func name is not obsolete, no replacement func
   ]
 }
 
@@ -319,7 +319,7 @@ proc enterBaseGetterWith2Arguments
     !inHasCompilerArgument
     !returnedTypeIndex
     !@methodQualifier. isBasic
-    !"" // getter name is not obsolete, no replacement getter
+    !"" // func name is not obsolete, no replacement func
   ]
 }
 
@@ -350,7 +350,7 @@ proc enterBaseFinalGetterWith2Arguments
     !inHasCompilerArgument
     !returnedTypeIndex
     !@methodQualifier. isBasicFinal
-    !"" // getter name is not obsolete, no replacement getter
+    !"" // func name is not obsolete, no replacement func
   ]
 }
 
@@ -385,7 +385,7 @@ proc enterBaseFinalGetterWith3Arguments
     !inHasCompilerArgument
     !returnedTypeIndex
     !@methodQualifier. isBasicFinal
-    !"" // getter name is not obsolete, no replacement getter
+    !"" // func name is not obsolete, no replacement func
   ]
 }
 

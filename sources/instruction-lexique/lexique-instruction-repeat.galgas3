@@ -110,11 +110,11 @@ override method @lexicalRepeatInstructionAST checkLexicalInstruction (
   end
 }
 
-//--------------------------------------------------------------------------------------------------
+//----- func ---------------------------------------------------------------------------------------------
 //! COCOA GENERATION
 //--------------------------------------------------------------------------------------------------
 
-//override getter @lexicalRepeatInstructionAST generateObjcCocoaInstructionCode
+//override func @lexicalRepeatInstructionAST generateObjcCocoaInstructionCode
 //                                      ?let @string inScannerClassName
 //                                      ?let @lexiqueAnalysisContext inLexiqueAnalysisContext
 //                                      -> @string outGeneratedCode {
@@ -150,7 +150,7 @@ override method @lexicalRepeatInstructionAST checkLexicalInstruction (
 
 //--------------------------------------------------------------------------------------------------
 
-override getter @lexicalRepeatInstructionAST generateSwiftCocoaInstructionCode
+override func @lexicalRepeatInstructionAST generateSwiftCocoaInstructionCode
   ?let @string inScannerClassName
   ?let @lexiqueAnalysisContext inLexiqueAnalysisContext
   -> @string outGeneratedCode {
@@ -186,13 +186,13 @@ override getter @lexicalRepeatInstructionAST generateSwiftCocoaInstructionCode
 //! C++ CODE GENERATION
 //--------------------------------------------------------------------------------------------------
 
-override getter @lexicalRepeatInstructionAST lexicalInstructionUsesLoopLocalVariable -> @bool {
+override func @lexicalRepeatInstructionAST lexicalInstructionUsesLoopLocalVariable -> @bool {
   result = true
 }
 
 //·································································································
 
-override getter @lexicalRepeatInstructionAST generateLexicalInstructionCode
+override func @lexicalRepeatInstructionAST generateLexicalInstructionCode
   ?let @string inScannerClassName
   ?let @lexiqueAnalysisContext inLexiqueAnalysisContext
   -> @string {

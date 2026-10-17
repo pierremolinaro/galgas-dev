@@ -163,13 +163,13 @@ override method @falseExpressionForGeneration generateExpression
 //
 //--------------------------------------------------------------------------------------------------
 
-getter @semanticExpressionForGeneration isTrueExpression -> @bool {
+func @semanticExpressionForGeneration isTrueExpression -> @bool {
   result = false
 }
 
 //································································································
 
-override getter @trueExpressionForGeneration isTrueExpression -> @bool {
+override func @trueExpressionForGeneration isTrueExpression -> @bool {
   result = true
 }
 

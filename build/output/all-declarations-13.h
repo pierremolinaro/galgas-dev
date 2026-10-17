@@ -202,7 +202,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_procCallInstructionAST
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension getter '@opAssignmentOperator features' (as function)
+//Extension func '@opAssignmentOperator features' (as function)
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -5648,7 +5648,7 @@ class cPtr_lexiqueComponentAST : public cPtr_semanticDeclarationAST {
                                                                                                      Compiler * inCompiler) ;
 
 
-//--- Extension getter keyRepresentation
+//--- Extension func keyRepresentation
   public: virtual class GGS_string getter_keyRepresentation (Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension method enterDeclarationInGraph

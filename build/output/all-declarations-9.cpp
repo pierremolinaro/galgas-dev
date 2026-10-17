@@ -1112,10 +1112,10 @@ GGS_string extensionGetter_initializerSignature (const GGS_actualOutputArgumentL
   GGS_string result_result ; // Returned variable
   result_result = GGS_string ("init") ;
   const GGS_actualOutputArgumentList temp_0 = inObject ;
-  UpEnumerator_actualOutputArgumentList enumerator_1663 (temp_0) ;
-  while (enumerator_1663.hasCurrentObject ()) {
-    result_result.plusAssignOperation(GGS_string ("!").add_operation (enumerator_1663.current (HERE).readProperty_mActualSelector ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("expression-output-expression-list.galgas3", 32)), inCompiler  COMMA_SOURCE_FILE ("expression-output-expression-list.galgas3", 32)) ;
-    enumerator_1663.gotoNextObject () ;
+  UpEnumerator_actualOutputArgumentList enumerator_1661 (temp_0) ;
+  while (enumerator_1661.hasCurrentObject ()) {
+    result_result.plusAssignOperation(GGS_string ("!").add_operation (enumerator_1661.current (HERE).readProperty_mActualSelector ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("expression-output-expression-list.galgas3", 32)), inCompiler  COMMA_SOURCE_FILE ("expression-output-expression-list.galgas3", 32)) ;
+    enumerator_1661.gotoNextObject () ;
   }
 //---
   return result_result ;
@@ -1134,10 +1134,10 @@ GGS_string extensionGetter_subscriptSignature (const GGS_actualOutputArgumentLis
   GGS_string result_result ; // Returned variable
   result_result = GGS_string::makeEmptyString () ;
   const GGS_actualOutputArgumentList temp_0 = inObject ;
-  UpEnumerator_actualOutputArgumentList enumerator_1932 (temp_0) ;
-  while (enumerator_1932.hasCurrentObject ()) {
-    result_result.plusAssignOperation(GGS_string ("\?").add_operation (enumerator_1932.current (HERE).readProperty_mActualSelector ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("expression-output-expression-list.galgas3", 41)), inCompiler  COMMA_SOURCE_FILE ("expression-output-expression-list.galgas3", 41)) ;
-    enumerator_1932.gotoNextObject () ;
+  UpEnumerator_actualOutputArgumentList enumerator_1928 (temp_0) ;
+  while (enumerator_1928.hasCurrentObject ()) {
+    result_result.plusAssignOperation(GGS_string ("\?").add_operation (enumerator_1928.current (HERE).readProperty_mActualSelector ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("expression-output-expression-list.galgas3", 41)), inCompiler  COMMA_SOURCE_FILE ("expression-output-expression-list.galgas3", 41)) ;
+    enumerator_1928.gotoNextObject () ;
   }
 //---
   return result_result ;
@@ -1157,10 +1157,10 @@ void extensionMethod_enterInSemanticContext (const GGS_actualOutputArgumentList 
                                              Compiler * inCompiler
                                              COMMA_UNUSED_LOCATION_ARGS) {
   const GGS_actualOutputArgumentList temp_0 = inObject ;
-  UpEnumerator_actualOutputArgumentList enumerator_2197 (temp_0) ;
-  while (enumerator_2197.hasCurrentObject ()) {
-    callExtensionMethod_enterExpressionInSemanticContext ((cPtr_semanticExpressionAST *) enumerator_2197.current_mExpression (HERE).ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("expression-output-expression-list.galgas3", 49)) ;
-    enumerator_2197.gotoNextObject () ;
+  UpEnumerator_actualOutputArgumentList enumerator_2193 (temp_0) ;
+  while (enumerator_2193.hasCurrentObject ()) {
+    callExtensionMethod_enterExpressionInSemanticContext ((cPtr_semanticExpressionAST *) enumerator_2193.current_mExpression (HERE).ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("expression-output-expression-list.galgas3", 49)) ;
+    enumerator_2193.gotoNextObject () ;
   }
 }
 

@@ -807,7 +807,7 @@ syntax galgas4LexiqueComponentSyntax (galgasScanner4) {
 
 //--------------------------------------------------------------------------------------------------
 
-override getter @lexiqueComponentAST keyRepresentation -> @string {
+override func @lexiqueComponentAST keyRepresentation -> @string {
   result = "lexique " + self.mLexiqueComponentName
 }
 

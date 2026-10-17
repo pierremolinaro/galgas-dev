@@ -5104,7 +5104,7 @@ GGS_semanticBlockInstructionForGeneration_2E_weak GGS_semanticBlockInstructionFo
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension getter '@semanticDeclarationForGeneration appendPrimitiveTypeDeclaration'
+//Extension func '@semanticDeclarationForGeneration appendPrimitiveTypeDeclaration'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -5153,7 +5153,7 @@ void callExtensionMethod_appendPrimitiveTypePreDeclaration (cPtr_semanticDeclara
 
 //--------------------------------------------------------------------------------------------------
 //
-//Abstract extension getter '@semanticDeclarationForGeneration getImplementationCppFileName'
+//Abstract extension func '@semanticDeclarationForGeneration getImplementationCppFileName'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -5169,7 +5169,7 @@ GGS_string callExtensionGetter_getImplementationCppFileName (const cPtr_semantic
 
 //--------------------------------------------------------------------------------------------------
 //
-//Abstract extension getter '@semanticDeclarationForGeneration hasCppHeaderFile'
+//Abstract extension func '@semanticDeclarationForGeneration hasCppHeaderFile'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -5185,7 +5185,7 @@ GGS_bool callExtensionGetter_hasCppHeaderFile (const cPtr_semanticDeclarationFor
 
 //--------------------------------------------------------------------------------------------------
 //
-//Abstract extension getter '@semanticDeclarationForGeneration isPredefined'
+//Abstract extension func '@semanticDeclarationForGeneration isPredefined'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -5201,7 +5201,7 @@ GGS_bool callExtensionGetter_isPredefined (const cPtr_semanticDeclarationForGene
 
 //--------------------------------------------------------------------------------------------------
 //
-//Abstract extension getter '@semanticDeclarationForGeneration headerKind'
+//Abstract extension func '@semanticDeclarationForGeneration headerKind'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -7167,7 +7167,7 @@ void callExtensionMethod_appendDeclaration_32_ (cPtr_semanticDeclarationForGener
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension getter '@semanticDeclarationForGeneration appendTypeGenericImplementation'
+//Extension func '@semanticDeclarationForGeneration appendTypeGenericImplementation'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -9188,7 +9188,7 @@ void GGS_extensionGetterMapForGlobalCheckings::setter_insertKey (GGS_lstring inL
                                                                  Compiler * inCompiler
                                                                  COMMA_LOCATION_ARGS) {
   const GGS_extensionGetterMapForGlobalCheckings_2E_element element (inLKey) ;
-  const char * kInsertErrorMessage = "the '%K' extension getter is already declared in %L" ;
+  const char * kInsertErrorMessage = "the '%K' extension func is already declared in %L" ;
   const char * kShadowErrorMessage = nullptr ;
   performInsert (element, kInsertErrorMessage, kShadowErrorMessage, inCompiler COMMA_THERE) ;
 }

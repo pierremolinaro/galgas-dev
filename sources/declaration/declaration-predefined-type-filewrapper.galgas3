@@ -26,13 +26,13 @@ final class @filewrapperPredefinedTypeAST : @predefinedTypeAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override getter getSupportedOperatorFlags -> @typeFeatures {
+  override func getSupportedOperatorFlags -> @typeFeatures {
     result = .generateDescriptionGetterUtilityMethod
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override getter cppDeclarationString -> @string {
+  override func cppDeclarationString -> @string {
     result = [filewrapper predefinedTypeGenerationTemplate.filewrapper_type]
   }
 

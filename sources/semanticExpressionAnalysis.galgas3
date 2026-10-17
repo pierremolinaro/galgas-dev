@@ -31,10 +31,10 @@ enum @selfMutability %equatable {
   case propertiesAreMutableSelfIsNot
   case selfAndPropertiesAreMutable
   case initializer
-  
+
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  getter propertiesAreMutable -> @bool {
+  func propertiesAreMutable -> @bool {
     switch self
     case none : result = false
     case propertiesAreMutableSelfIsNot, selfAndPropertiesAreMutable, initializer : result = true
@@ -42,8 +42,8 @@ enum @selfMutability %equatable {
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  
-  getter selfIsMutable -> @bool {
+
+  func selfIsMutable -> @bool {
     switch self
     case none, propertiesAreMutableSelfIsNot : result = false
     case selfAndPropertiesAreMutable, initializer : result = true
@@ -191,7 +191,7 @@ proc checkAssignmentTypeWithImplicitGetterCall ?let @unifiedTypeMapEntry inTarge
         ok = targetWeakRef.referenceType.typeName == sourceType.typeName
       end
     end
-  //--- Check for a direct property access or for a conversion getter
+  //--- Check for a direct property access or for a conversion func
     if not ok, let prop = inSourceType.definition.propertyMap @[targetTypeDef.typeName.string] then
       [prop.mAccessControl checkSetAccess !.none !inErrorLocation]
       let conversionExpression = @propertyAccessExpressionForGeneration {
@@ -232,7 +232,7 @@ proc checkAssignmentTypeWithImplicitGetterCall ?let @unifiedTypeMapEntry inTarge
        + " and cannot be assigned from an @" + inSourceType.definition.typeName.string
        + " object; this type have no "
        + targetTypeDef.typeName
-       + " getter without argument that returns a @"
+       + " func without argument that returns a @"
        + targetTypeDef.typeName.string + " object"
       )
     end
@@ -324,7 +324,7 @@ proc checkDiadicOperator ?operatorIsHandled: let @bool inOperandIsHandled
         ok = true
       end
     end
-  //--- Check for a direct property access or for a conversion getter
+  //--- Check for a direct property access or for a conversion func
     if not ok, let prop = rightType.definition.propertyMap @[leftResultType.definition.typeName] then
       [prop.mAccessControl checkSetAccess !.none !inErrorLocation]
       let conversionExpression = @propertyAccessExpressionForGeneration {
@@ -364,7 +364,7 @@ proc checkDiadicOperator ?operatorIsHandled: let @bool inOperandIsHandled
       : "left operand type of '" + inOperatorNameForErrorMessage + "' operator is '@" + leftResultType.definition.typeName.string
       + "', right operand type is '@" + rightType.definition.typeName.string
       + "', it should be either the same, either inherits from left operand type, either have a '"
-      + leftResultType.definition.typeName.string + "' getter without argument that returns a '@" + leftResultType.definition.typeName.string + "' object"
+      + leftResultType.definition.typeName.string + "' func without argument that returns a '@" + leftResultType.definition.typeName.string + "' object"
       )
     end
   end

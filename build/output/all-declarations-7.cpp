@@ -7152,7 +7152,7 @@ GGS_galgasDeclarationAST GGS_galgasDeclarationAST::extractObject (const GGS_obje
 
 //--------------------------------------------------------------------------------------------------
 //
-//Abstract extension getter '@lexicalExpressionAST generateSwiftCocoaConditionCode'
+//Abstract extension func '@lexicalExpressionAST generateSwiftCocoaConditionCode'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -7169,7 +7169,7 @@ GGS_string callExtensionGetter_generateSwiftCocoaConditionCode (const cPtr_lexic
 
 //--------------------------------------------------------------------------------------------------
 //
-//Abstract extension getter '@lexicalRoutineOrFunctionFormalInputArgumentAST generateSwiftCocoaRoutineOrFunctionArgument'
+//Abstract extension func '@lexicalRoutineOrFunctionFormalInputArgumentAST generateSwiftCocoaRoutineOrFunctionArgument'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -7185,7 +7185,7 @@ GGS_string callExtensionGetter_generateSwiftCocoaRoutineOrFunctionArgument (cons
 
 //--------------------------------------------------------------------------------------------------
 //
-//Abstract extension getter '@lexicalSendDefaultActionAST generateSwiftCocoaDefaultSendCode'
+//Abstract extension func '@lexicalSendDefaultActionAST generateSwiftCocoaDefaultSendCode'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -7202,7 +7202,7 @@ GGS_string callExtensionGetter_generateSwiftCocoaDefaultSendCode (const cPtr_lex
 
 //--------------------------------------------------------------------------------------------------
 //
-//Abstract extension getter '@lexicalInstructionAST generateSwiftCocoaInstructionCode'
+//Abstract extension func '@lexicalInstructionAST generateSwiftCocoaInstructionCode'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -7220,7 +7220,7 @@ GGS_string callExtensionGetter_generateSwiftCocoaInstructionCode (const cPtr_lex
 
 //--------------------------------------------------------------------------------------------------
 //
-//Abstract extension getter '@abstractLexicalRuleAST generateSwiftCocoaCode'
+//Abstract extension func '@abstractLexicalRuleAST generateSwiftCocoaCode'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -12536,7 +12536,7 @@ static const TemplateDelimiter galgasTemplateScanner_kTemplateReplacementArray [
 //            Terminal Symbols as end of script in template mark
 //--------------------------------------------------------------------------------------------------
 
-static const bool galgasTemplateScanner_kEndOfScriptInTemplateArray [190] = {
+static const bool galgasTemplateScanner_kEndOfScriptInTemplateArray [189] = {
   false /* identifier */,
   false /* double.xxx */,
   false /* literalInt */,
@@ -12586,7 +12586,6 @@ static const bool galgasTemplateScanner_kEndOfScriptInTemplateArray [190] = {
   false /* final */,
   false /* fixit */,
   false /* func */,
-  false /* getter */,
   false /* grammar */,
   false /* graph */,
   false /* guard */,
@@ -12839,7 +12838,6 @@ GGS_stringlist Lexique_galgasTemplateScanner::symbols (LOCATION_ARGS) {
   result.addAssignOperation (GGS_string ("final") COMMA_HERE) ;
   result.addAssignOperation (GGS_string ("fixit") COMMA_HERE) ;
   result.addAssignOperation (GGS_string ("func") COMMA_HERE) ;
-  result.addAssignOperation (GGS_string ("getter") COMMA_HERE) ;
   result.addAssignOperation (GGS_string ("grammar") COMMA_HERE) ;
   result.addAssignOperation (GGS_string ("graph") COMMA_HERE) ;
   result.addAssignOperation (GGS_string ("guard") COMMA_HERE) ;

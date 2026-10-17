@@ -95,9 +95,9 @@ override method @lexiqueIntrospectionExpressionAST analyzeSemanticExpression
     !self.mLexiqueComponentName
     ?7*
   ]
-//--- Check getter name
+//--- Check func name
   if self.mLexiqueGetterName.string != "symbols" then
-    error (self.mLexiqueGetterName:"unknown getter")
+    error (self.mLexiqueGetterName:"unknown func")
   end
 //---
   outExpression = @lexiqueIntrospectionForGeneration {

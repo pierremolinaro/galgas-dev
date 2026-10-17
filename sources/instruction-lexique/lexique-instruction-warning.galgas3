@@ -72,7 +72,7 @@ override method @lexicalWarningInstructionAST checkLexicalInstruction (
 //! COCOA GENERATION
 //--------------------------------------------------------------------------------------------------
 
-override getter @lexicalWarningInstructionAST generateSwiftCocoaInstructionCode (
+override func @lexicalWarningInstructionAST generateSwiftCocoaInstructionCode (
   ?let @string unused inScannerClassName,
   ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext)
   -> @string outGeneratedCode {
@@ -83,13 +83,13 @@ override getter @lexicalWarningInstructionAST generateSwiftCocoaInstructionCode 
 //! C++ CODE GENERATION
 //--------------------------------------------------------------------------------------------------
 
-override getter @lexicalWarningInstructionAST lexicalInstructionUsesLoopLocalVariable -> @bool {
+override func @lexicalWarningInstructionAST lexicalInstructionUsesLoopLocalVariable -> @bool {
   result = false
 }
 
 //·································································································
 
-override getter @lexicalWarningInstructionAST generateLexicalInstructionCode (
+override func @lexicalWarningInstructionAST generateLexicalInstructionCode (
   ?let @string inScannerClassName,
   ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext)
   -> @string {

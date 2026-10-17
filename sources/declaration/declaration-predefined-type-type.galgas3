@@ -71,13 +71,13 @@ final class @typePredefinedTypeAST : @predefinedTypeAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override getter getSupportedOperatorFlags -> @typeFeatures {
+  override func getSupportedOperatorFlags -> @typeFeatures {
     result = .generateDescriptionGetterUtilityMethod | .equatable
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override getter cppDeclarationString -> @string {
+  override func cppDeclarationString -> @string {
     result = [filewrapper predefinedTypeGenerationTemplate.type_type]
   }
 

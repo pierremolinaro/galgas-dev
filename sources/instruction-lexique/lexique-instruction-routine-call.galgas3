@@ -146,13 +146,13 @@ syntax extension galgas4LexiqueComponentSyntax {
 //! CHECK LEXICAL INSTRUCTION
 //--------------------------------------------------------------------------------------------------
 
-abstract getter @abstractLexicalRoutineActualArgumentAST generateSwiftCocoaRoutineArgument
+abstract func @abstractLexicalRoutineActualArgumentAST generateSwiftCocoaRoutineArgument
   (?let @lexiqueAnalysisContext inLexiqueAnalysisContext)
   -> @string
 
 //--------------------------------------------------------------------------------------------------
 
-override getter @lexicalAttributeInputOutputArgumentAST generateSwiftCocoaRoutineArgument (
+override func @lexicalAttributeInputOutputArgumentAST generateSwiftCocoaRoutineArgument (
   ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext)
   -> @string outGeneratedCode
 {
@@ -161,7 +161,7 @@ override getter @lexicalAttributeInputOutputArgumentAST generateSwiftCocoaRoutin
 
 //--------------------------------------------------------------------------------------------------
 
-override getter @lexicalFormalInputArgumentAST generateSwiftCocoaRoutineArgument
+override func @lexicalFormalInputArgumentAST generateSwiftCocoaRoutineArgument
   (?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext)
   -> @string outGeneratedCode {
   outGeneratedCode = self.mRoutineOrFunctionFormalInputArgument.generateSwiftCocoaRoutineOrFunctionArgument
@@ -264,7 +264,7 @@ override method @lexicalRoutineCallInstructionAST checkLexicalInstruction (
 //! COCOA GENERATION
 //--------------------------------------------------------------------------------------------------
 
-//override getter @lexicalRoutineCallInstructionAST generateObjcCocoaInstructionCode
+//override func @lexicalRoutineCallInstructionAST generateObjcCocoaInstructionCode
 //  ?let @string unused inScannerClassName
 //  ?let @lexiqueAnalysisContext inLexiqueAnalysisContext
 //  -> @string outGeneratedCode {
@@ -277,7 +277,7 @@ override method @lexicalRoutineCallInstructionAST checkLexicalInstruction (
 
 //--------------------------------------------------------------------------------------------------
 
-override getter @lexicalRoutineCallInstructionAST generateSwiftCocoaInstructionCode
+override func @lexicalRoutineCallInstructionAST generateSwiftCocoaInstructionCode
   ?let @string unused inScannerClassName
   ?let @lexiqueAnalysisContext inLexiqueAnalysisContext
   -> @string outGeneratedCode {
@@ -292,32 +292,32 @@ override getter @lexicalRoutineCallInstructionAST generateSwiftCocoaInstructionC
 //! C++ CODE GENERATION
 //--------------------------------------------------------------------------------------------------
 
-abstract getter @abstractLexicalRoutineActualArgumentAST generateRoutineArgument
+abstract func @abstractLexicalRoutineActualArgumentAST generateRoutineArgument
   -> @string
 
 //·································································································
 
-override getter @lexicalAttributeInputOutputArgumentAST generateRoutineArgument
+override func @lexicalAttributeInputOutputArgumentAST generateRoutineArgument
   -> @string {
   result = "token.mLexicalAttribute_" + self.mAttributeName.string.identifierRepresentation
 }
 
 //·································································································
 
-override getter @lexicalFormalInputArgumentAST generateRoutineArgument
+override func @lexicalFormalInputArgumentAST generateRoutineArgument
   -> @string {
   result = self.mRoutineOrFunctionFormalInputArgument.generateRoutineOrFunctionArgument
 }
 
 //·································································································
 
-override getter @lexicalRoutineCallInstructionAST lexicalInstructionUsesLoopLocalVariable -> @bool {
+override func @lexicalRoutineCallInstructionAST lexicalInstructionUsesLoopLocalVariable -> @bool {
   result = false
 }
 
 //·································································································
 
-override getter @lexicalRoutineCallInstructionAST generateLexicalInstructionCode (
+override func @lexicalRoutineCallInstructionAST generateLexicalInstructionCode (
   ?let @string inScannerClassName,
   ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext)
   -> @string {

@@ -29,7 +29,7 @@ syntax extension galgas3ExpressionSyntax {
   //--- Get source identity characteristics
     let startLocation = @location.here
     <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST receiverExpression
-  //--- Get getter name
+  //--- Get func name
     $identifier$ ?let @lstring getterName
   //--- Actual parameters
     <output_expression_list_ggs3> !?ioDeclarations ?let @actualOutputArgumentList expressionList
@@ -87,21 +87,21 @@ final class @getterCallExpressionAST : @semanticExpressionAST {
       ?@semanticExpressionForGeneration receiverExpression
     ]
     let @unifiedTypeMapEntry receiverType = receiverExpression.mResultType
-  //-------------------------------------- Search getter
+  //-------------------------------------- Search func
     if let aGetter = receiverType.definition.getterMap @[self.mGetterName] then
       if aGetter.mGetterNameThatObsoletesInvokationName != "" then
-        error (self.mGetterName : "obsolete getter" fixit
+        error (self.mGetterName : "obsolete func" fixit
           replace aGetter.mGetterNameThatObsoletesInvokationName
         )
       end
       if [receiverType.definition.propertyMap hasKey !self.mGetterName.string]
         && (self.mActualArgumentList.count == 0) then
-        error (self.mExpressionLocation : "use dot notation, instead of getter call")
+        error (self.mExpressionLocation : "use dot notation, instead of func call")
       end
     //--- Analysis arguments
       if self.mActualArgumentList.count != aGetter.mArgumentTypeList.count then
         error (self.mGetterName
-        : "calling the '" + self.mGetterName + "' getter of '@" + receiverType.definition.typeName.string + "' requires "
+        : "calling the '" + self.mGetterName + "' func of '@" + receiverType.definition.typeName.string + "' requires "
         + aGetter.mArgumentTypeList.count + " parameter(s), while this call has "
         + self.mActualArgumentList.count + " parameter(s)" spoil outExpression)
       else
@@ -136,12 +136,12 @@ final class @getterCallExpressionAST : @semanticExpressionAST {
         }
 //        if inAnalysisContext.semanticContext.galgas4 || [option galgas_cli_options.errorOnOldStyleGetterCall value],
         if self.mActualArgumentList.count == 0 then
-          error (self.mExpressionLocation : "getter with no argument, remove parenthesis" fixit remove)
+          error (self.mExpressionLocation : "func with no argument, remove parenthesis" fixit remove)
         end
       end
-  //-------------------------------------- The getter does not exist, it is a property ?
+  //-------------------------------------- The func does not exist, it is a property ?
     elsif self.mActualArgumentList.count == 0, [receiverType.definition.propertyMap hasKey !self.mGetterName] then
-      error (self.mExpressionLocation : "use dot notation, instead of getter call" spoil outExpression)
+      error (self.mExpressionLocation : "use dot notation, instead of func call" spoil outExpression)
   //-------------------------------------- not found, old style search
     else
       var @uint matchingReaderCount = 0
@@ -175,7 +175,7 @@ final class @getterCallExpressionAST : @semanticExpressionAST {
         if matchingReaderCount == 0 then
           error (self.mGetterName
           : "the '@"+ receiverType.definition.typeName.string + "' struct type does not define the '" + self.mGetterName.string
-          + "' getter, and none of its fields defines it"
+          + "' func, and none of its fields defines it"
           spoil getterFormalArgumentTypeList, hasCompilerArgument, returnedType, kind)
         elsif matchingReaderCount > 1 then
           var @string s = ""
@@ -185,13 +185,13 @@ final class @getterCallExpressionAST : @semanticExpressionAST {
           end
           error (self.mGetterName
           : "the '@"+ receiverType.definition.typeName.string + "' struct type does not define the '" + self.mGetterName.string
-          + "' getter, and several of its fields defines it:" + s + " (exactly one field should define it)"
+          + "' func, and several of its fields defines it:" + s + " (exactly one field should define it)"
           spoil getterFormalArgumentTypeList, hasCompilerArgument, returnedType, kind)
         end
       //--- Analysis arguments
         if self.mActualArgumentList.count != getterFormalArgumentTypeList.count then
           error (self.mGetterName
-          : "calling the '" + self.mGetterName + "' getter of '@" + receiverType.definition.typeName.string + "' requires "
+          : "calling the '" + self.mGetterName + "' func of '@" + receiverType.definition.typeName.string + "' requires "
           + getterFormalArgumentTypeList.count.string + " parameter(s), while this call has "
           + self.mActualArgumentList.count.string + " parameter(s)" spoil outExpression)
         else
@@ -215,7 +215,7 @@ final class @getterCallExpressionAST : @semanticExpressionAST {
             constructorEffectiveParameterList += !exp
           end
           if obsoletedByGetter != "" then
-            error (self.mGetterName : "obsolete getter" fixit replace obsoletedByGetter)
+            error (self.mGetterName : "obsolete func" fixit replace obsoletedByGetter)
           end
           outExpression = @getterCallExpressionForGeneration {
             !returnedType
@@ -230,11 +230,11 @@ final class @getterCallExpressionAST : @semanticExpressionAST {
         end
       elsif receiverType.definition.getterMap.count == 0 then
         error (self.mGetterName
-        : "the '@"+ receiverType.definition.typeName.string + "' type does not define any getter"
+        : "the '@"+ receiverType.definition.typeName.string + "' type does not define any func"
         spoil outExpression)
       else
         error (self.mGetterName
-        : "the '@"+ receiverType.definition.typeName.string + "' type does not define the '" + self.mGetterName + "' getter "
+        : "the '@"+ receiverType.definition.typeName.string + "' type does not define the '" + self.mGetterName + "' func "
         spoil outExpression
         fixit replace receiverType.definition.getterMap.keyList)
       end
@@ -305,7 +305,7 @@ final class @getterCallExpressionForGeneration : @semanticExpressionForGeneratio
           searching = false
         end
       end
-      ioInclusionSet ++= "getter-" + baseType.definition.typeName.string.fileNameRepresentation + "-" + self.mGetterName.fileNameRepresentation
+      ioInclusionSet ++= "func-" + baseType.definition.typeName.string.fileNameRepresentation + "-" + self.mGetterName.fileNameRepresentation
       [!?ioUnusedVariableCppNameSet removeKey !receiverCppName]
       if self.mReceiverExpression.mResultType.definition.typeKind.isClassType then
         outCppExpression = "callExtensionGetter_" + self.mGetterName.identifierRepresentation

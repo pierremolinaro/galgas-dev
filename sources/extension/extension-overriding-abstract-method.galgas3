@@ -134,7 +134,7 @@ syntax extension galgas4DeclarationsSyntax {
 //   KEY REPRESENTATION
 //--------------------------------------------------------------------------------------------------
 
-override getter @overridingAbstractExtensionMethodAST keyRepresentation -> @string {
+override func @overridingAbstractExtensionMethodAST keyRepresentation -> @string {
   result = "overriding extension method @" + self.mTypeName + " " + self.mOverridingExtensionMethodName
 }
 
@@ -225,7 +225,7 @@ override method @overridingAbstractExtensionMethodAST semanticAnalysis (
     superType = superType.definition.superType
   end
   if baseTypeName == "" then
-    error (self.mOverridingExtensionMethodName:"this getter is not declared by a super class")
+    error (self.mOverridingExtensionMethodName:"this func is not declared by a super class")
   end
 //--- Analyze formal argument list
   var variableMap = @localVarManager {}

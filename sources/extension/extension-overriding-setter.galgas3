@@ -110,10 +110,10 @@ override method @overridingExtensionSetterAST enterDeclarationInGraph (
 }
 
 //--------------------------------------------------------------------------------------------------
-//   KEY REPRESENTATION
+//   KEY REPRESEN func TATION
 //--------------------------------------------------------------------------------------------------
 
-override getter @overridingExtensionSetterAST keyRepresentation -> @string {
+override func @overridingExtensionSetterAST keyRepresentation -> @string {
   result = "overriding extension setter @" + self.mTypeName + " " + self.mOverridingExtensionSetterName
 }
 
@@ -253,7 +253,7 @@ final class @overridingExtensionSetterForGeneration : @semanticDeclarationWithHe
 
 //································································································
 
-override getter @overridingExtensionSetterForGeneration headerKind ->@headerKind {
+override func @overridingExtensionSetterForGeneration headerKind ->@headerKind {
   result = @headerKind.noHeader
 }
 

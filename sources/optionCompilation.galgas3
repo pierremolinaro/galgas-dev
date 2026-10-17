@@ -372,13 +372,13 @@ final class @optionComponentForGeneration : @semanticDeclarationWithHeaderForGen
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override getter isPredefined -> @bool {
+  override func isPredefined -> @bool {
     result = self.mIsPredefined
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override getter headerKind -> @headerKind {
+  override func headerKind -> @headerKind {
     result = if self.mIsPredefined then .noHeader else .oneHeader end
   }
 

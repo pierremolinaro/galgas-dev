@@ -10324,7 +10324,7 @@ GGS_classTypeForGeneration_2E_weak GGS_classTypeForGeneration_2E_weak::extractOb
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension getter '@predefinedTypeAST typeKind'
+//Extension func '@predefinedTypeAST typeKind'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -10352,7 +10352,7 @@ GGS_typeKindEnum callExtensionGetter_typeKind (const cPtr_predefinedTypeAST * in
 
 //--------------------------------------------------------------------------------------------------
 //
-//Abstract extension getter '@predefinedTypeAST cppDeclarationString'
+//Abstract extension func '@predefinedTypeAST cppDeclarationString'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -10368,7 +10368,7 @@ GGS_string callExtensionGetter_cppDeclarationString (const cPtr_predefinedTypeAS
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension getter '@predefinedTypeAST initializers'
+//Extension func '@predefinedTypeAST initializers'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -10521,7 +10521,7 @@ void callExtensionMethod_getClassMethodMap (cPtr_predefinedTypeAST * inObject,
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension getter '@predefinedTypeAST getSupportedOperatorFlags'
+//Extension func '@predefinedTypeAST getSupportedOperatorFlags'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -10549,7 +10549,7 @@ GGS_typeFeatures callExtensionGetter_getSupportedOperatorFlags (const cPtr_prede
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension getter '@predefinedTypeAST supportsCollectionValue'
+//Extension func '@predefinedTypeAST supportsCollectionValue'
 //
 //--------------------------------------------------------------------------------------------------
 

@@ -82,7 +82,7 @@ class cPtr_programComponentForGeneration : public cPtr_semanticDeclarationWithHe
                                                                                                           Compiler * inCompiler) ;
 
 
-//--- Extension getter headerKind
+//--- Extension func headerKind
   public: virtual class GGS_headerKind getter_headerKind (Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension method appendSpecificImplementation
@@ -289,13 +289,13 @@ class cPtr_binarysetPredefinedTypeAST : public cPtr_predefinedTypeAST {
                                                                     Compiler * inCompiler) ;
 
 
-//--- Extension getter cppDeclarationString
+//--- Extension func cppDeclarationString
   public: virtual class GGS_string getter_cppDeclarationString (Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension getter getSupportedOperatorFlags
+//--- Extension func getSupportedOperatorFlags
   public: virtual class GGS_typeFeatures getter_getSupportedOperatorFlags (Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension getter initializers
+//--- Extension func initializers
   public: virtual class GGS__5B_formalInputParameterListAST_5D_ getter_initializers (Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension method getClassFunctionMap
@@ -419,7 +419,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_binarysetPredefinedTyp
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension getter '@typeNameFormalParameterNameList initializerSignature' (as function)
+//Extension func '@typeNameFormalParameterNameList initializerSignature' (as function)
 //
 //--------------------------------------------------------------------------------------------------
 

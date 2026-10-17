@@ -27,7 +27,7 @@ syntax extension galgas3ExpressionSyntax {
                      !@semanticExpressionAST outExpression {
     <primary_ggs3> !?ioDeclarations ?outExpression
     repeat
-    while 
+    while
       var expressionList = @actualOutputArgumentList ()
       $@[$
       repeat
@@ -79,7 +79,7 @@ syntax extension galgas4ExpressionSyntax {
                 !@semanticExpressionAST outExpression {
     <primary> !?ioDeclarations ?outExpression
     repeat
-    while 
+    while
       $[$
       <non_empty_output_expression_list>
         !?ioDeclarations
@@ -159,7 +159,7 @@ final class @structPropertyAccessExpressionAST : @semanticExpressionAST {
     let propertyMap = expressionType.definition.propertyMap
     if let prop = propertyMap @[self.propertyName] then
       if exprGeneration is @selfInExpressionForGeneration then
-        [!?ioVariableMap searchForReadAccess 
+        [!?ioVariableMap searchForReadAccess
           !@("self." + self.propertyName, self.propertyName)
           ?3*
         ]
@@ -177,7 +177,7 @@ final class @structPropertyAccessExpressionAST : @semanticExpressionAST {
       if let theGetter = getterMap @[self.propertyName] then
         if theGetter.mArgumentTypeList.count != 0 then
           error (self.propertyName
-          : "for being called as a property read, the getter should have no formal argument (has "
+          : "for being called as a property read, the func should have no formal argument (has "
           + theGetter.mArgumentTypeList.count + ")"
           spoil outExpressionGeneration)
         else
@@ -196,13 +196,13 @@ final class @structPropertyAccessExpressionAST : @semanticExpressionAST {
           }
         end
       else
-        var s = "undefined property, undefined getter"
+        var s = "undefined property, undefined func"
         for property in propertyMap do
           s += "\n  -- property: " + property.lkey
         end
         for aGetter in getterMap do
          if aGetter.mArgumentTypeList.count == 0 then
-           s += "\n  -- getter: " + aGetter.lkey
+           s += "\n  -- func: " + aGetter.lkey
          end
         end
         error (self.propertyName : s spoil outExpressionGeneration)
@@ -315,7 +315,7 @@ final class @subscriptReadAccessExpressionAST : @semanticExpressionAST {
           fixit replace s)
         end
         semanticExpressionListForGeneration += !expression
-      end 
+      end
     //--- Generate expression
       outExpression = @subscriptReadAccessExpressionForGeneration (
         aSubscript.valueType,

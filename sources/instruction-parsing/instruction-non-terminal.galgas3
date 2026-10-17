@@ -183,7 +183,7 @@ override method @nonterminalInstructionForGeneration appendSyntaxSignature
 //! COMPARE SYNTAX SIGNATURE
 //--------------------------------------------------------------------------------------------------
 
-override getter @nonterminalInstructionForGeneration compareInstructionSyntaxSignature
+override func @nonterminalInstructionForGeneration compareInstructionSyntaxSignature
   ?let @semanticInstructionForGeneration inTestedInstruction
   ->@bool {
   if let si = inTestedInstruction as @nonterminalInstructionForGeneration then

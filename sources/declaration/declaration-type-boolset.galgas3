@@ -132,7 +132,7 @@ override method @boolsetDeclarationAST enterDeclarationInGraph
 //   KEY REPRESENTATION
 //--------------------------------------------------------------------------------------------------
 
-override getter @boolsetDeclarationAST keyRepresentation -> @string {
+override func @boolsetDeclarationAST keyRepresentation -> @string {
   result = "boolset @" + self.mBoolsetTypeName
 }
 

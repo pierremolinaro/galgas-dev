@@ -3144,8 +3144,8 @@ GGS_string extensionGetter_string (const GGS_typeKindEnum & inObject,
     break ;
   case GGS_typeKindEnum::Enumeration::enum_enumType:
     {
-      GGS_constantIndexMap extractedValue_3859__0 ;
-      temp_0.getAssociatedValuesFor_enumType (extractedValue_3859__0) ;
+      GGS_constantIndexMap extractedValue_3857__0 ;
+      temp_0.getAssociatedValuesFor_enumType (extractedValue_3857__0) ;
       result_result = GGS_string ("enumeration") ;
     }
     break ;
@@ -3211,8 +3211,8 @@ GGS_string extensionGetter_string (const GGS_typeKindEnum & inObject,
     break ;
   case GGS_typeKindEnum::Enumeration::enum_weakReferenceType:
     {
-      GGS_unifiedTypeMapEntry extractedValue_4448__0 ;
-      temp_0.getAssociatedValuesFor_weakReferenceType (extractedValue_4448__0) ;
+      GGS_unifiedTypeMapEntry extractedValue_4446__0 ;
+      temp_0.getAssociatedValuesFor_weakReferenceType (extractedValue_4446__0) ;
       result_result = GGS_string ("weak reference") ;
     }
     break ;
@@ -14550,13 +14550,13 @@ GGS_bool extensionGetter_displayVertically (const GGS_syntaxInstructionListForGr
   const GGS_syntaxInstructionListForGrammarAnalysis temp_0 = inObject ;
   result_result = GGS_bool (ComparisonKind::greaterThan, temp_0.getter_count (SOURCE_FILE ("production-rules-in-tex.galgas3", 547)).objectCompare (GGS_uint (uint32_t (4U)))) ;
   const GGS_syntaxInstructionListForGrammarAnalysis temp_1 = inObject ;
-  UpEnumerator_syntaxInstructionListForGrammarAnalysis enumerator_18970 (temp_1) ;
+  UpEnumerator_syntaxInstructionListForGrammarAnalysis enumerator_18968 (temp_1) ;
   bool bool_2 = result_result.isValidAndTrue () ;
-  if (enumerator_18970.hasCurrentObject () && bool_2) {
-    while (enumerator_18970.hasCurrentObject () && bool_2) {
-      result_result = callExtensionGetter_isLinear ((const cPtr_abstractSyntaxInstructionForGrammarAnalysis *) enumerator_18970.current_mInstruction (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 549)) ;
-      enumerator_18970.gotoNextObject () ;
-      if (enumerator_18970.hasCurrentObject ()) {
+  if (enumerator_18968.hasCurrentObject () && bool_2) {
+    while (enumerator_18968.hasCurrentObject () && bool_2) {
+      result_result = callExtensionGetter_isLinear ((const cPtr_abstractSyntaxInstructionForGrammarAnalysis *) enumerator_18968.current_mInstruction (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 549)) ;
+      enumerator_18968.gotoNextObject () ;
+      if (enumerator_18968.hasCurrentObject ()) {
         bool_2 = result_result.isValidAndTrue () ;
       }
     }
@@ -14570,7 +14570,7 @@ GGS_bool extensionGetter_displayVertically (const GGS_syntaxInstructionListForGr
 
 //--------------------------------------------------------------------------------------------------
 //
-//Abstract extension getter '@abstractSyntaxInstructionForGrammarAnalysis isLinear'
+//Abstract extension func '@abstractSyntaxInstructionForGrammarAnalysis isLinear'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -16616,7 +16616,7 @@ GGS_lexicalRoutineCallInstructionAST_2E_weak GGS_lexicalRoutineCallInstructionAS
 
 //--------------------------------------------------------------------------------------------------
 //
-//Abstract extension getter '@abstractLexicalRoutineActualArgumentAST generateSwiftCocoaRoutineArgument'
+//Abstract extension func '@abstractLexicalRoutineActualArgumentAST generateSwiftCocoaRoutineArgument'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -16652,7 +16652,7 @@ void callExtensionMethod_checkLexicalRoutineCallArgument (cPtr_abstractLexicalRo
 }
 //--------------------------------------------------------------------------------------------------
 //
-//Abstract extension getter '@abstractLexicalRoutineActualArgumentAST generateRoutineArgument'
+//Abstract extension func '@abstractLexicalRoutineActualArgumentAST generateRoutineArgument'
 //
 //--------------------------------------------------------------------------------------------------
 

@@ -146,7 +146,7 @@ final class @extensionMethodAST : @semanticDeclarationAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override getter keyRepresentation -> @string {
+  override func keyRepresentation -> @string {
     result = "extension method @" + self.mTypeName + " " + self.mExtensionMethodName
   }
 
@@ -309,7 +309,7 @@ final class @extensionMethodForGeneration : @semanticDeclarationWithHeaderForGen
 
 //································································································
 
-override getter @extensionMethodForGeneration headerKind ->@headerKind {
+override func @extensionMethodForGeneration headerKind ->@headerKind {
   result = @headerKind.oneHeader
 }
 

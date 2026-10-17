@@ -52,7 +52,7 @@ struct @syntaxExtensions {
 
   //·····························································································
 
-  getter listForKey (?let @string inKey) -> @galgas3SyntaxExtensionListAST {
+  func listForKey (?let @string inKey) -> @galgas3SyntaxExtensionListAST {
     if [self.dictionary hasKey !inKey] then
       [self.dictionary searchKey !inKey ?result]
    else
@@ -84,7 +84,7 @@ enum @formalArgumentPassingModeAST %equatable {
 
 //--------------------------------------------------------------------------------------------------
 
-getter @formalArgumentPassingModeAST string -> @string {
+func @formalArgumentPassingModeAST string -> @string {
   switch self
     case argumentConstantIn : result = "?let"
     case argumentVarIn : result = "?"
@@ -95,7 +95,7 @@ getter @formalArgumentPassingModeAST string -> @string {
 
 //--------------------------------------------------------------------------------------------------
 
-getter @formalArgumentPassingModeAST formalArgumentMessage -> @string {
+func @formalArgumentPassingModeAST formalArgumentMessage -> @string {
   switch self
     case argumentConstantIn : result = "a constant input (?let) formal argument"
     case argumentVarIn : result = "an input (?) formal argument"
@@ -117,7 +117,7 @@ list @formalParameterListAST {
   public let @lstring mFormalArgumentName
   public let @bool mIsUnused
 
-  getter keyRepresentation -> @string {
+  func keyRepresentation -> @string {
     result = "("
       for parameter in self
     do
@@ -151,7 +151,7 @@ list @formalInputParameterListAST {
   public let @bool mIsUnused
   public let @bool mIsConstant
 
-  getter initializerSignature -> @string {
+  func initializerSignature -> @string {
     result = "init"
     for parameter in self do
       result += "!" + parameter.mFormalSelector

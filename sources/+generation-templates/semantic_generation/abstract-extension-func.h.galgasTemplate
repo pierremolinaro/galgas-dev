@@ -1,10 +1,10 @@
 //--------------------------------------------------------------------------------------------------
 //
-//%!"Extension getter '@" + CLASS_NAME + " " + GETTER_NAME + "'"%
+//%!"Abstract extension func '@" + CLASS_NAME + " " + GETTER_NAME + "'"%
 //
 //--------------------------------------------------------------------------------------------------
 
-class GGS_%![RETURN_TYPE identifierRepresentation]% callExtensionGetter_%![GETTER_NAME identifierRepresentation]% (%?^%const cPtr_%![CLASS_NAME identifierRepresentation]% * inObject%
+class GGS_%![RETURN_TYPE identifierRepresentation]% callExtensionGetter_%![GETTER_NAME identifierRepresentation]% (%?^%const class cPtr_%![CLASS_NAME identifierRepresentation]% * inObject%
   for (mFormalSelector mFormalArgumentType mFormalArgumentCppName mFormalArgumentName mIsConstant) in FORMAL_ARGUMENT_LIST do
     %,\n%!^
     if mIsConstant then

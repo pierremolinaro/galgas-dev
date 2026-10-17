@@ -8609,16 +8609,16 @@ GGS_lstringlist extensionGetter_unsolvedEntryList (const GGS_unifiedTypeMap & in
   GGS_lstringlist result_result ; // Returned variable
   result_result = GGS_lstringlist::init (inCompiler COMMA_HERE) ;
   const GGS_unifiedTypeMap temp_0 = inObject ;
-  UpEnumerator_unifiedTypeMap enumerator_1851 (temp_0) ;
-  while (enumerator_1851.hasCurrentObject ()) {
+  UpEnumerator_unifiedTypeMap enumerator_1849 (temp_0) ;
+  while (enumerator_1849.hasCurrentObject ()) {
     GalgasBool test_1 = GalgasBool::boolTrue ;
     if (GalgasBool::boolTrue == test_1) {
-      test_1 = enumerator_1851.current_mElement (HERE).readProperty_mDefinition ().getter_isUnsolved (SOURCE_FILE ("unified-type-map.galgas3", 37)).boolEnum () ;
+      test_1 = enumerator_1849.current_mElement (HERE).readProperty_mDefinition ().getter_isUnsolved (SOURCE_FILE ("unified-type-map.galgas3", 37)).boolEnum () ;
       if (GalgasBool::boolTrue == test_1) {
-        result_result.addAssignOperation (enumerator_1851.current_lkey (HERE)  COMMA_SOURCE_FILE ("unified-type-map.galgas3", 38)) ;
+        result_result.addAssignOperation (enumerator_1849.current_lkey (HERE)  COMMA_SOURCE_FILE ("unified-type-map.galgas3", 38)) ;
       }
     }
-    enumerator_1851.gotoNextObject () ;
+    enumerator_1849.gotoNextObject () ;
   }
 //---
   return result_result ;
@@ -8795,7 +8795,7 @@ GGS_unifiedTypeMapElementClass GGS_unifiedTypeMapElementClass::extractObject (co
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension getter '@unifiedTypeMapElementClass definition'
+//Extension func '@unifiedTypeMapElementClass definition'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -8815,9 +8815,9 @@ GGS_unifiedTypeDefinition cPtr_unifiedTypeMapElementClass::getter_definition (Co
     break ;
   case GGS_typeDefinition::Enumeration::enum_solved:
     {
-      GGS_unifiedTypeDefinition extractedValue_5944_definition_0 ;
-      temp_0.readProperty_mDefinition ().getAssociatedValuesFor_solved (extractedValue_5944_definition_0) ;
-      result_result = extractedValue_5944_definition_0 ;
+      GGS_unifiedTypeDefinition extractedValue_5934_definition_0 ;
+      temp_0.readProperty_mDefinition ().getAssociatedValuesFor_solved (extractedValue_5934_definition_0) ;
+      result_result = extractedValue_5934_definition_0 ;
     }
     break ;
   }

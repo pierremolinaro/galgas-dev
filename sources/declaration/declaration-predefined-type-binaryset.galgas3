@@ -26,13 +26,13 @@ final class @binarysetPredefinedTypeAST : @predefinedTypeAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override getter initializers -> [@formalInputParameterListAST] {
+  override func initializers -> [@formalInputParameterListAST] {
     result = @[@formalInputParameterListAST ()]
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override getter getSupportedOperatorFlags -> @typeFeatures {
+  override func getSupportedOperatorFlags -> @typeFeatures {
     result = .infixAndOperator | .infixOrOperator | .infixXorOperator
       | .prefixTildeOperator | .infixShiftOperator
       | .generateDescriptionGetterUtilityMethod | .equatable
@@ -40,7 +40,7 @@ final class @binarysetPredefinedTypeAST : @predefinedTypeAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override getter cppDeclarationString -> @string {
+  override func cppDeclarationString -> @string {
     result = [filewrapper predefinedTypeGenerationTemplate.binaryset_type]
   }
 

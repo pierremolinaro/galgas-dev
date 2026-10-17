@@ -54,7 +54,7 @@ struct @genericExtensionMethodListMap {
 
   //·····························································································
 
-  getter listForKey ?let @string inKey -> @lstringlist {
+  func listForKey ?let @string inKey -> @lstringlist {
     if [self.dictionary hasKey !inKey] then
       [self.dictionary searchKey !inKey ?result]
    else
@@ -123,7 +123,7 @@ struct @descendantClassListMap {
 
   //·····························································································
 
-  getter listForKey ?let @string inKey -> @unifiedTypeMapEntryList {
+  func listForKey ?let @string inKey -> @unifiedTypeMapEntryList {
     if [self.dictionary hasKey !inKey] then
       [self.dictionary searchKey !inKey ?result]
    else
@@ -165,7 +165,7 @@ map @extensionSetterMapForGlobalCheckings {
 //--------------------------------------------------------------------------------------------------
 
 map @extensionGetterMapForGlobalCheckings {
-  insert insertKey error message "the '%K' extension getter is already declared in %L"
+  insert insertKey error message "the '%K' extension func is already declared in %L"
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -271,9 +271,9 @@ proc checkExtensionGetterDefinitionForClass
           !inUnifiedTypeMap
         )
       else
-        error (inAbstractExtensionGetterName: "an abstract extension getter '" + inAbstractExtensionGetterName + "' is defined for abstract class '@"
+        error (inAbstractExtensionGetterName: "an abstract extension func '" + inAbstractExtensionGetterName + "' is defined for abstract class '@"
         + inClassNameForErrorSignaling
-        + "', but concrete descendant class '@" + descendantClassName + "' does not implement this getter")
+        + "', but concrete descendant class '@" + descendantClassName + "' does not implement this func")
       end
     end
   end
@@ -440,29 +440,29 @@ proc performGalgas3ProjectGlobalCheckings
       end
     end
   //----- Check Extension getters
-  //--- Check that for every abstract extension getter, an overridden extension getter defined in an concrete subclass
-  //--- A given abstract extension getter is defined only once for a class
+  //--- Check that for every abstract extension func, an overridden extension func defined in an concrete subclass
+  //--- A given abstract extension func is defined only once for a class
     for (* mList) in abstractExtensionGetterListMap.dictionary do
       var @extensionGetterMapForGlobalCheckings ExtensionGetterMap = @()
       for (mValue) in mList do
         [!?ExtensionGetterMap insertKey !mValue]
       end
     end
-  //--- A given base extension getter is defined only once for a class
+  //--- A given base extension func is defined only once for a class
     for (* mList) in extensionReaderListMap.dictionary do
       var @extensionGetterMapForGlobalCheckings ExtensionGetterMap = @()
       for (mValue) in mList do
         [!?ExtensionGetterMap insertKey !mValue]
       end
     end
-  //--- A given overriding extension getter is defined only once for a class
+  //--- A given overriding extension func is defined only once for a class
     for (* mList) in overridingExtensionGetterListMap.dictionary do
       var @extensionGetterMapForGlobalCheckings ExtensionGetterMap = @()
       for (mValue) in mList do
         [!?ExtensionGetterMap insertKey !mValue]
       end
     end
-  //--- Check every abstract extension getter is implemented by every inherited concrete type
+  //--- Check every abstract extension func is implemented by every inherited concrete type
     for (key mList) in abstractExtensionGetterListMap.dictionary do
       for (mValue) in mList do
         checkExtensionGetterDefinitionForClass (
@@ -475,7 +475,7 @@ proc performGalgas3ProjectGlobalCheckings
         )
       end
     end
-  //--- Check every abstract extension getter is implemented by every inherited concrete type
+  //--- Check every abstract extension func is implemented by every inherited concrete type
     for (key mList) in overridingAbstractExtensionGetterListMap.dictionary do
       for (mValue) in mList do
         checkExtensionGetterDefinitionForClass (

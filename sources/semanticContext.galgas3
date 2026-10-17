@@ -22,7 +22,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //--------------------------------------------------------------------------------------------------
 
-getter @location sourceFile -> @string {
+func @location sourceFile -> @string {
   if self.isNowhere then
     result = "SOURCE_FILE (\"\", 0)"
   else
@@ -32,7 +32,7 @@ getter @location sourceFile -> @string {
 
 //--------------------------------------------------------------------------------------------------
 
-getter @location commaSourceFile -> @string {
+func @location commaSourceFile -> @string {
   result = " COMMA_" + self.sourceFile
 }
 
@@ -290,7 +290,7 @@ map @extensionGetterMapForType {
   public let @lstring mResultTypeName
   public let @formalInputParameterListAST mInputFormalParameterList
   public let @methodQualifier mQualifier
-  insert insertKey error message "the '%K' getter has been already declared in %L"
+  insert insertKey error message "the '%K' func has been already declared in %L"
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -305,67 +305,67 @@ map @extensionGetterMapForBuildingContext {
 
 //--------------------------------------------------------------------------------------------------
 
-abstract getter @semanticDeclarationAST keyRepresentation -> @string
+abstract func @semanticDeclarationAST keyRepresentation -> @string
 
 //--------------------------------------------------------------------------------------------------
 
-override getter @galgas3GrammarComponentAST keyRepresentation
+override func @galgas3GrammarComponentAST keyRepresentation
   ->@string {
   result = "grammar " + self.mGrammarComponentName
 }
 
 //--------------------------------------------------------------------------------------------------
 
-override getter @galgas3SyntaxComponentAST keyRepresentation
+override func @galgas3SyntaxComponentAST keyRepresentation
   ->@string {
   result = "syntax " + self.mSyntaxComponentName
 }
 
 //--------------------------------------------------------------------------------------------------
 
-override getter @predefinedTypeAST keyRepresentation
+override func @predefinedTypeAST keyRepresentation
   ->@string {
   result = "predefined type @" + self.mPredefinedTypeName
 }
 
 //--------------------------------------------------------------------------------------------------
 
-override getter @sortedListDeclarationAST keyRepresentation
+override func @sortedListDeclarationAST keyRepresentation
   ->@string {
   result = "sorted list @" + self.mSortedListTypeName
 }
 
 //--------------------------------------------------------------------------------------------------
 
-override getter @filewrapperDeclarationAST keyRepresentation
+override func @filewrapperDeclarationAST keyRepresentation
   ->@string {
   result = "filewrapper @" + self.mFilewrapperName
 }
 
 //--------------------------------------------------------------------------------------------------
 
-override getter @optionComponentDeclarationAST keyRepresentation
+override func @optionComponentDeclarationAST keyRepresentation
   ->@string {
   result = "option " + self.mOptionComponentName
 }
 
 //--------------------------------------------------------------------------------------------------
 
-override getter @graphDeclarationAST keyRepresentation
+override func @graphDeclarationAST keyRepresentation
   ->@string {
   result = "graph @" + self.mGraphTypeName
 }
 
 //--------------------------------------------------------------------------------------------------
 
-override getter @onceFunctionDeclarationAST keyRepresentation
+override func @onceFunctionDeclarationAST keyRepresentation
   ->@string {
   result = "once function " + self.mFunctionName
 }
 
 //--------------------------------------------------------------------------------------------------
 
-override getter @externFunctionDeclarationAST keyRepresentation -> @string {
+override func @externFunctionDeclarationAST keyRepresentation -> @string {
   result = "extern function " + self.mFunctionName
 }
 
@@ -420,7 +420,7 @@ proc addExtensions
           !true
           !returnedType
           !.isVirtual
-          !"" // getter name is not obsolete, no replacement getter
+          !"" // func name is not obsolete, no replacement func
         ]
       else
         [!?ioGetterMap insertKey
@@ -431,7 +431,7 @@ proc addExtensions
           !true
           !returnedType
           !qualifier
-          !"" // getter name is not obsolete, no replacement getter
+          !"" // func name is not obsolete, no replacement func
         ]
       end
     end

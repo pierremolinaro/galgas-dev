@@ -110,7 +110,7 @@ syntax extension galgas3DeclarationsSyntax {
 
   rule <externtype_getter_ggs3> ?!@galgasDeclarationAST ioDeclarations
                                 ?!@externTypeGetterList ioExternTypeGetterList {
-    $getter$
+    $func$
     $identifier$ ?let @lstring getterName
     var @typeNameFormalParameterNameList argumentTypeList = @()
     repeat
@@ -306,8 +306,8 @@ list @typeNameFormalParameterNameList {
   public let @lstring mFormalSelector
   public let @lstring mFormalParameterTypeName
   public let @lstring mFormalParameterName
-  
-  getter initializerSignature -> @string {
+
+  func initializerSignature -> @string {
     result = "init"
     for formalArg in self do
       result += "!" + formalArg.mFormalSelector
@@ -371,7 +371,7 @@ final class @externTypeDeclarationAST : @semanticDeclarationAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override getter keyRepresentation ->@string {
+  override func keyRepresentation ->@string {
     result = "extern @" + self.mExternTypeName
   }
 
@@ -422,7 +422,7 @@ final class @externTypeDeclarationAST : @semanticDeclarationAST {
         !true //inHasLexiqueAndLocationArguments
         !returnedTypeEntry
         !@methodQualifier.isBasicFinal
-        !"" // getter name is not obsolete, no replacement getter
+        !"" // func name is not obsolete, no replacement func
       ]
     end
   //--- Modifiers

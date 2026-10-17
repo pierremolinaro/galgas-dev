@@ -75,7 +75,7 @@ proc checkUsefulEntities ?let @usefulEntitiesGraph inUsefulEntitiesGraph
 //--------------------------------------------------------------------------------------------------
 
 func getterNameForUsefulEntitiesGraph ?let @string inTypeName ?let @lstring inGetterName -> @lstring {
-  result = @{!"getter @" + inTypeName + " " + inGetterName !inGetterName.location}
+  result = @{!"func @" + inTypeName + " " + inGetterName !inGetterName.location}
 }
 
 //--------------------------------------------------------------------------------------------------

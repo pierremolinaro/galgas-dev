@@ -76,7 +76,7 @@ override method @lexicalRewindInstructionAST checkLexicalInstruction (
 
 //--------------------------------------------------------------------------------------------------
 
-override getter @lexicalRewindInstructionAST generateSwiftCocoaInstructionCode (
+override func @lexicalRewindInstructionAST generateSwiftCocoaInstructionCode (
   ?let @string inScannerClassName,
   ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext)
   -> @string outGeneratedCode {
@@ -88,13 +88,13 @@ override getter @lexicalRewindInstructionAST generateSwiftCocoaInstructionCode (
 //! C++ CODE GENERATION
 //--------------------------------------------------------------------------------------------------
 
-override getter @lexicalRewindInstructionAST lexicalInstructionUsesLoopLocalVariable -> @bool {
+override func @lexicalRewindInstructionAST lexicalInstructionUsesLoopLocalVariable -> @bool {
   result = false
 }
 
 //·································································································
 
-override getter @lexicalRewindInstructionAST generateLexicalInstructionCode (?let @string unused inScannerClassName,
+override func @lexicalRewindInstructionAST generateLexicalInstructionCode (?let @string unused inScannerClassName,
   ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext)
   -> @string {
   result  = "mCurrentLocation = currentLocationForTag_" + self.mLexicalTagName + " ;\n"

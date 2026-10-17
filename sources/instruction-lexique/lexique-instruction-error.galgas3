@@ -72,7 +72,7 @@ override method @lexicalErrorInstructionAST checkLexicalInstruction (
 //! COCOA GENERATION
 //--------------------------------------------------------------------------------------------------
 
-//override getter @lexicalErrorInstructionAST generateObjcCocoaInstructionCode
+//override func exicalErrorInstructionAST generateObjcCocoaInstructionCode
 //  ?let @string unused inScannerClassName
 //  ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
 //  -> @string outGeneratedCode {
@@ -81,7 +81,7 @@ override method @lexicalErrorInstructionAST checkLexicalInstruction (
 
 //--------------------------------------------------------------------------------------------------
 
-override getter @lexicalErrorInstructionAST generateSwiftCocoaInstructionCode
+override func @lexicalErrorInstructionAST generateSwiftCocoaInstructionCode
   ?let @string unused inScannerClassName
   ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
   -> @string outGeneratedCode {
@@ -92,13 +92,13 @@ override getter @lexicalErrorInstructionAST generateSwiftCocoaInstructionCode
 //! C++ CODE GENERATION
 //--------------------------------------------------------------------------------------------------
 
-override getter @lexicalErrorInstructionAST lexicalInstructionUsesLoopLocalVariable -> @bool {
+override func @lexicalErrorInstructionAST lexicalInstructionUsesLoopLocalVariable -> @bool {
   result = false
 }
 
 //·································································································
 
-override getter @lexicalErrorInstructionAST generateLexicalInstructionCode
+override func @lexicalErrorInstructionAST generateLexicalInstructionCode
   ?let @string inScannerClassName
   ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
   -> @string {

@@ -211,7 +211,7 @@ override method @selectInstructionForGeneration appendSyntaxSignature
 //! COMPARE SYNTAX SIGNATURE
 //--------------------------------------------------------------------------------------------------
 
-override getter @selectInstructionForGeneration compareInstructionSyntaxSignature
+override func @selectInstructionForGeneration compareInstructionSyntaxSignature
   ?let @semanticInstructionForGeneration inTestedInstruction
   ->@bool
 {

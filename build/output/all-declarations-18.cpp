@@ -7349,7 +7349,7 @@ GGS_falseExpressionForGeneration GGS_falseExpressionForGeneration::extractObject
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension getter '@semanticExpressionForGeneration isTrueExpression'
+//Extension func '@semanticExpressionForGeneration isTrueExpression'
 //
 //--------------------------------------------------------------------------------------------------
 

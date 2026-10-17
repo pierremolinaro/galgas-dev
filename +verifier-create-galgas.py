@@ -68,11 +68,11 @@ TEST_DIR_PATH = scriptDir + "/" + TEST_DIR_NAME
 myDeleteDir (TEST_DIR_PATH)
 #--- Build galgas
 runCommand (["/usr/bin/python3", scriptDir + "/makefile-unix/build.py"])
-GALGAS = scriptDir + "/makefile-unix/galgas"
+GALGAS = scriptDir + "/makefile-unix/galgas4"
 #--- Create project
 runCommand ([GALGAS, "--create-project=" + TEST_DIR_PATH])
 #--- galgas compile
-runCommand ([GALGAS, "--output-html-grammar-file", "--Werror", TEST_DIR_PATH + "/+" + TEST_DIR_NAME + ".galgasProject"])
+runCommand ([GALGAS, "--output-html-grammar-file", "--Werror", TEST_DIR_PATH + "/+" + TEST_DIR_NAME + ".galgas4project"])
 #--- XCODE BUILD
 os.chdir (TEST_DIR_PATH + "/xcode-project")
 runCommand (["/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild", "-alltargets"])

@@ -24,7 +24,7 @@ syntax extension galgas3DeclarationsSyntax {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <declaration_ggs3> (?!@galgasDeclarationAST ioDeclarations) {
-    $getter$
+    $func$
     $@type$ ?var typeName indexing typeReferenceExtensionGetter
     repeat
     while
@@ -66,7 +66,7 @@ syntax extension galgas3DeclarationsSyntax {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <method_declaration_ggs3> (?let @lstring inTypeName, ?!@galgasDeclarationAST ioDeclarations) {
-    $getter$
+    $func$
     $identifier$ ?let @lstring getterName indexing extensionGetterDefinition
     let @formalInputParameterListAST formalInputParameterList
     select
@@ -196,8 +196,8 @@ final class @extensionGetterAST : @semanticDeclarationAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override getter keyRepresentation -> @string {
-    result = "extension getter @" + self.mTypeName + " " + self.mExtensionGetterName
+  override func keyRepresentation -> @string {
+    result = "extension func @" + self.mTypeName + " " + self.mExtensionGetterName
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -210,7 +210,7 @@ final class @extensionGetterAST : @semanticDeclarationAST {
         ?!@extensionGetterMapForBuildingContext ioExtensionGetterMapForBuildingContext,
         ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext,
         ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList) {
-    let key = @lstring {!"extension getter @" + self.mTypeName + " " + self.mExtensionGetterName !self.mExtensionGetterName.location}
+    let key = @lstring {!"extension func @" + self.mTypeName + " " + self.mExtensionGetterName !self.mExtensionGetterName.location}
     [!?ioSemanticTypePrecedenceGraph addNode !key !self]
     [!?ioSemanticTypePrecedenceGraph addEdge !from: key !to: @{!"@" + self.mTypeName !self.mTypeName.location}]
   //---
@@ -311,10 +311,10 @@ override method @extensionGetterAST semanticAnalysis (
   )
 //---
   ioSemanticDeclarationListForGeneration +=
-    !infoMessage:"extension getter " + self.mExtensionGetterName
+    !infoMessage:"extension func " + self.mExtensionGetterName
     !@extensionGetterForGeneration {
       !generateHeader: true // Generate Cpp header file
-      !implementationCppFileName: "getter-" + selfType.definition.typeName.string.fileNameRepresentation + "-" + self.mExtensionGetterName.string.fileNameRepresentation
+      !implementationCppFileName: "func-" + selfType.definition.typeName.string.fileNameRepresentation + "-" + self.mExtensionGetterName.string.fileNameRepresentation
       !selfType
       !self.mExtensionGetterName.string
       !implementedAsFunctionNew
@@ -362,7 +362,7 @@ final class @extensionGetterForGeneration : @semanticDeclarationWithHeaderForGen
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override getter headerKind ->@headerKind {
+  override func headerKind ->@headerKind {
     result = .oneHeader
   }
 
@@ -406,7 +406,7 @@ final class @extensionGetterForGeneration : @semanticDeclarationWithHeaderForGen
         !true
         !0
       ]
-      ioInclusionSet ++= "getter-"
+      ioInclusionSet ++= "func-"
         + self.mReceiverType.definition.typeName.string.fileNameRepresentation
         + "-" + self.mExtensionGetterName.fileNameRepresentation
       generateFunction (
@@ -441,7 +441,7 @@ final class @extensionGetterForGeneration : @semanticDeclarationWithHeaderForGen
           searching = false
         end
       end
-      ioInclusionSet ++= "getter-"
+      ioInclusionSet ++= "func-"
         + baseType.definition.typeName.string.fileNameRepresentation
         + "-" + self.mExtensionGetterName.fileNameRepresentation
       generateExtensionGetter (

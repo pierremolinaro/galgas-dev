@@ -34,14 +34,14 @@ list @functionSignature {
   public let @string mFormalArgumentName
   public let @bool isConstant
 
-  getter initializerSignature -> @string {
+  func initializerSignature -> @string {
     result = "init"
     for parameter in self do
       result += "!" + parameter.mFormalSelector
     end
   }
 
-  getter subcriptSignature -> @string {
+  func subcriptSignature -> @string {
     result = ""
     for parameter in self do
       result += "?" + parameter.mFormalSelector
@@ -117,10 +117,10 @@ map @getterMap {
   public let @bool mHasCompilerArgument
   public let @unifiedTypeMapEntry mReturnedType
   public let @methodQualifier mQualifier
-  public let @string mGetterNameThatObsoletesInvokationName // If not empty, this getter is the one actually called
+  public let @string mGetterNameThatObsoletesInvokationName // If not empty, this func is the one actually called
 
-  insert insertKey error message "the '%K' getter is already declared"
-  search searchKey error message "the '%K' getter is not declared"
+  insert insertKey error message "the '%K' func is already declared"
+  search searchKey error message "the '%K' func is not declared"
 
   insert or replace
 }
@@ -207,7 +207,7 @@ list @typedPropertyList {
   public let @bool hasSetter %initArgLabel
   public let @bool hasSelector %initArgLabel
   
-  getter initializerSignature -> @string {
+  func initializerSignature -> @string {
     result = "init"
     for property in self do
       if property.initialization == .none then

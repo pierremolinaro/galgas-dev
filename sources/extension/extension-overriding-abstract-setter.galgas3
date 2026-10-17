@@ -81,7 +81,7 @@ final class @overridingAbstractExtensionSetterAST : @semanticDeclarationAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override getter keyRepresentation -> @string {
+  override func keyRepresentation -> @string {
     result = "overriding extension setter @" + self.mTypeName + " " + self.mOverridingExtensionSetterName
   }
 

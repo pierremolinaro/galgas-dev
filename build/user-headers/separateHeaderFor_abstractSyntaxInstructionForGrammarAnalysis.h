@@ -20,7 +20,7 @@ class cPtr_abstractSyntaxInstructionForGrammarAnalysis : public AbstractStrongPt
                                                                      Compiler * inCompiler) ;
 
 
-//--- Extension getter isLinear
+//--- Extension func isLinear
   public: virtual class GGS_bool getter_isLinear (Compiler * COMMA_LOCATION_ARGS) const = 0 ;
 
 //--- Extension method tikzNodeForSyntaxInstruction

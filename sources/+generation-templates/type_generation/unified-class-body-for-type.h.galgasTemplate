@@ -245,7 +245,7 @@ if [SUPPORTED_OPERATORS contains ![@typeFeatures incDecOperatorNoOVF]] then
   %  public: void decrement_operation_no_overflow (void) ;\n\n%
 end
 if [SUPPORTED_OPERATORS contains ![@typeFeatures generateDescriptionGetterUtilityMethod]] then
-  %//--------------------------------- Implementation of getter 'description'\n%
+  %//--------------------------------- Implementation of func 'description'\n%
   %  public: void description (String & ioString,\n%
   %                            const int32_t inIndentation) const override ;\n%
 end

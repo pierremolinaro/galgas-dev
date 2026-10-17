@@ -358,7 +358,7 @@ enum @opAssignmentOperator {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   
-  getter features -> @typeFeatures {
+  func features -> @typeFeatures {
     switch self
     case orAssign  : result = .orAssignOperatorWithExpression // var |= exp ;
     case xorAssign  : result = .xorAssignOperatorWithExpression // var ^= exp ;
@@ -372,7 +372,7 @@ enum @opAssignmentOperator {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   
-  getter string -> @string {
+  func string -> @string {
     switch self
     case orAssign  : result = "|="
     case xorAssign  : result = "^="
@@ -386,7 +386,7 @@ enum @opAssignmentOperator {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   
-  getter cppFunctionName -> @string {
+  func cppFunctionName -> @string {
     switch self
     case orAssign  : result = "orAssignOperation"
     case xorAssign  : result = "xorAssignOperation"

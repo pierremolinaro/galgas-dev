@@ -502,7 +502,7 @@ class GGS_XcodeProjectDescriptor : public AC_GALGAS_root {
                                                            Compiler * inCompiler
                                                            COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of getter 'description'
+//--------------------------------- Implementation of func 'description'
   public: void description (String & ioString,
                             const int32_t inIndentation) const override ;
 
@@ -972,7 +972,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_terminalInstructionFor
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension getter '@selfMutability propertiesAreMutable' (as function)
+//Extension func '@selfMutability propertiesAreMutable' (as function)
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -1070,10 +1070,10 @@ class cPtr_optionComponentForGeneration : public cPtr_semanticDeclarationWithHea
                                                                                                                          Compiler * inCompiler) ;
 
 
-//--- Extension getter headerKind
+//--- Extension func headerKind
   public: virtual class GGS_headerKind getter_headerKind (Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension getter isPredefined
+//--- Extension func isPredefined
   public: virtual class GGS_bool getter_isPredefined (Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension method appendDeclaration1
@@ -1551,7 +1551,7 @@ class GGS_lstring function_routineMangledName (const class GGS_lstring & constin
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension getter '@routineMap locationForKey' (as function)
+//Extension func '@routineMap locationForKey' (as function)
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -1562,7 +1562,7 @@ class GGS_location extensionGetter_locationForKey (const class GGS_routineMap & 
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension getter '@unifiedTypeMap unsolvedEntryList' (as function)
+//Extension func '@unifiedTypeMap unsolvedEntryList' (as function)
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -1572,7 +1572,7 @@ class GGS_lstringlist extensionGetter_unsolvedEntryList (const class GGS_unified
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension getter '@unifiedTypeMapElementClass definition'
+//Extension func '@unifiedTypeMapElementClass definition'
 //
 //--------------------------------------------------------------------------------------------------
 

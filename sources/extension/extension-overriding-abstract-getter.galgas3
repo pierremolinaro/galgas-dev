@@ -37,7 +37,7 @@ syntax extension galgas3DeclarationsSyntax {
   rule <declaration_ggs3> (?!@galgasDeclarationAST ioDeclarations) {
     $override$
     $abstract$
-    $getter$
+    $func$
     $@type$ ?var typeName indexing typeReferenceOverrideAbstractExtensionGetter
     repeat
     while
@@ -68,7 +68,7 @@ syntax extension galgas3DeclarationsSyntax {
   rule <method_declaration_ggs3> (?let @lstring inTypeName, ?!@galgasDeclarationAST ioDeclarations) {
     $override$
     $abstract$
-    $getter$
+    $func$
     var typeName = inTypeName
     repeat
     while
@@ -157,8 +157,8 @@ syntax extension galgas4DeclarationsSyntax {
 //   KEY REPRESENTATION
 //--------------------------------------------------------------------------------------------------
 
-override getter @overridingAbstractExtensionGetterAST keyRepresentation  -> @string {
-  result = "overriding extension getter @" + self.mTypeName + " " + self.mAbstractExtensionGetterName
+override func @overridingAbstractExtensionGetterAST keyRepresentation  -> @string {
+  result = "overriding extension func @" + self.mTypeName + " " + self.mAbstractExtensionGetterName
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -223,9 +223,9 @@ override method @overridingAbstractExtensionGetterAST semanticAnalysis (
   let returnType = [ioTypeMap typeMapEntryForLKey !self.mAbstractExtensionGetterReturnedTypeName]
 //--- Check type is an abstract class
   if not selfType.definition.typeKind.isClassType then
-    error (self.mAbstractExtensionGetterName: "cannot declare a extension getter: '@" + selfType.definition.typeName.string + "' is not a class")
+    error (self.mAbstractExtensionGetterName: "cannot declare a extension func: '@" + selfType.definition.typeName.string + "' is not a class")
   elsif selfType.definition.isConcrete then
-    error (self.mAbstractExtensionGetterName: "cannot declare an abstract extension getter: '@" + selfType.definition.typeName.string + "' is not an abstract class")
+    error (self.mAbstractExtensionGetterName: "cannot declare an abstract extension func: '@" + selfType.definition.typeName.string + "' is not an abstract class")
   end
 //--- Find base type name
   var @string baseTypeName = ""
@@ -253,7 +253,7 @@ override method @overridingAbstractExtensionGetterAST semanticAnalysis (
     superType = superType.definition.superType
   end
   if baseTypeName == "" then
-    error (self.mAbstractExtensionGetterName:"this getter is not declared by a super class")
+    error (self.mAbstractExtensionGetterName:"this func is not declared by a super class")
   end
 //--- Check Signature
   if baseTypeName != "" then

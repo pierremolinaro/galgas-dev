@@ -26,25 +26,25 @@ final class @stringsetPredefinedTypeAST : @predefinedTypeAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override getter supportsCollectionValue -> @bool {
+  override func supportsCollectionValue -> @bool {
     result = true // Support collection value
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override getter initializers -> [@formalInputParameterListAST] {
+  override func initializers -> [@formalInputParameterListAST] {
     result = @[@formalInputParameterListAST ()]
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override getter cppDeclarationString -> @string {
+  override func cppDeclarationString -> @string {
     result = [filewrapper predefinedTypeGenerationTemplate.stringset_type]
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override getter getSupportedOperatorFlags -> @typeFeatures {
+  override func getSupportedOperatorFlags -> @typeFeatures {
     result = .infixSubOperator
       | .infixAndOperator | .infixOrOperator
       | .generateDescriptionGetterUtilityMethod | .plusAssignOperatorWithExpression

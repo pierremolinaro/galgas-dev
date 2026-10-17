@@ -75,25 +75,25 @@ final class @grammarForGeneration : @semanticDeclarationWithHeaderForGeneration 
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override getter getImplementationCppFileName -> @string {
+  override func getImplementationCppFileName -> @string {
     result = "grammar-" + self.mGrammarName.fileNameRepresentation
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override getter hasCppHeaderFile -> @bool {
+  override func hasCppHeaderFile -> @bool {
     result = false
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override getter headerKind -> @headerKind {
+  override func headerKind -> @headerKind {
     result = @headerKind.oneHeader
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override getter isPredefined -> @bool {
+  override func isPredefined -> @bool {
     result = false
   }
 
@@ -114,25 +114,25 @@ final class @syntaxDeclarationForGeneration : @semanticDeclarationForGeneration 
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override getter getImplementationCppFileName -> @string {
+  override func getImplementationCppFileName -> @string {
     result = "syntax-" + self.mSyntaxComponentName.fileNameRepresentation
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override getter hasCppHeaderFile -> @bool {
+  override func hasCppHeaderFile -> @bool {
     result = false
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override getter headerKind -> @headerKind {
+  override func headerKind -> @headerKind {
     result = .oneHeader
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override getter isPredefined -> @bool {
+  override func isPredefined -> @bool {
     result = false
   }
 
@@ -786,33 +786,33 @@ filewrapper semanticComponentGenerationTemplate in "+generation-templates/semant
     ?@formalInputParameterListForGeneration FORMAL_ARGUMENT_LIST
     ?@string INITIALIZER_IMPLEMENTATION
 
-//----------- Extension getter
-  template abstractExtensionGetterDeclaration "abstract-extension-getter.h.galgasTemplate"
+//----------- Extension func
+  template abstractExtensionGetterDeclaration "abstract-extension-func.h.galgasTemplate"
     ?@string CLASS_NAME
     ?@string GETTER_NAME
     ?@formalInputParameterListForGeneration FORMAL_ARGUMENT_LIST
     ?@unifiedTypeMapEntry RETURN_TYPE
 
-  template abstractExtensionGetterImplementation "abstract-extension-getter.cpp.galgasTemplate"
+  template abstractExtensionGetterImplementation "abstract-extension-func.cpp.galgasTemplate"
     ?@string CLASS_NAME
     ?@string GETTER_NAME
     ?@formalInputParameterListForGeneration FORMAL_ARGUMENT_LIST
     ?@unifiedTypeMapEntry RETURN_TYPE
 
-  template extensionGetterDeclaration "extension-getter.h.galgasTemplate"
+  template extensionGetterDeclaration "extension-func.h.galgasTemplate"
     ?@string CLASS_NAME
     ?@string GETTER_NAME
     ?@formalInputParameterListForGeneration FORMAL_ARGUMENT_LIST
     ?@unifiedTypeMapEntry RETURN_TYPE
 
-  template extensionGetterImplementation "extension-getter.cpp.galgasTemplate"
+  template extensionGetterImplementation "extension-func.cpp.galgasTemplate"
     ?@string CLASS_NAME
     ?@string GETTER_NAME
     ?@formalInputParameterListForGeneration FORMAL_ARGUMENT_LIST
     ?@string GETTER_IMPLEMENTATION
     ?@unifiedTypeMapEntry RETURN_TYPE
 
-  template overridingExtensionGetterImplementation "overriding-extension-getter.cpp.galgasTemplate"
+  template overridingExtensionGetterImplementation "overriding-extension-func.cpp.galgasTemplate"
     ?@string CLASS_NAME
     ?@string GETTER_NAME
     ?@string GETTER_IMPLEMENTATION
@@ -884,14 +884,14 @@ filewrapper semanticComponentGenerationTemplate in "+generation-templates/semant
     ?@string FILEWRAPPER_NAME
     ?@string FILEWRAPPER_IMPLEMENTATION
 
-//--- Extension getter implemented as function
-  template extensionGetterAsFunctionDeclaration "extension-getter-as-function-declaration.h.galgasTemplate"
+//--- Extension func implemented as function
+  template extensionGetterAsFunctionDeclaration "extension-func-as-function-declaration.h.galgasTemplate"
     ?@string TYPE_NAME
     ?@string GETTER_NAME
     ?@formalInputParameterListForGeneration FORMAL_ARGUMENT_LIST
     ?@string RETURN_TYPE_IDENTIFIER
 
-  template extensionGetterAsFunctionImplementation "extension-getter-as-function-implementation.cpp.galgasTemplate"
+  template extensionGetterAsFunctionImplementation "extension-func-as-function-implementation.cpp.galgasTemplate"
     ?@string TYPE_NAME
     ?@string GETTER_NAME
     ?@string FUNCTION_IMPLEMENTATION
@@ -960,7 +960,7 @@ filewrapper semanticComponentGenerationTemplate in "+generation-templates/semant
 //! func
 //--------------------------------------------------------------------------------------------------
 
-override getter @functionPrototypeDeclarationForGeneration headerKind ->@headerKind {
+override func @functionPrototypeDeclarationForGeneration headerKind ->@headerKind {
   result = @headerKind.oneHeader
 }
 
@@ -978,7 +978,7 @@ override method @functionPrototypeDeclarationForGeneration appendDeclaration1
 
 //--------------------------------------------------------------------------------------------------
 
-override getter @onceFunctionDeclarationForGeneration headerKind ->@headerKind {
+override func @onceFunctionDeclarationForGeneration headerKind ->@headerKind {
   result = @headerKind.oneHeader
 }
 
@@ -998,7 +998,7 @@ override method @onceFunctionDeclarationForGeneration appendDeclaration1
 //! Semantic Type
 //--------------------------------------------------------------------------------------------------
 
-override getter @semanticTypeForGeneration appendTypeGenericImplementation -> @string {
+override func @semanticTypeForGeneration appendTypeGenericImplementation -> @string {
   let selfTypeDefinition = self.mSelfTypeEntry.definition
   if selfTypeDefinition.typeKind == .packageType then
     result = ""
@@ -1084,7 +1084,7 @@ final class @lexiqueDeclarationForGeneration : @semanticDeclarationWithHeaderFor
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override getter headerKind ->@headerKind {
+  override func headerKind ->@headerKind {
     result = @headerKind.oneHeader
   }
 
@@ -1139,7 +1139,7 @@ final class @lexiqueDeclarationForGeneration : @semanticDeclarationWithHeaderFor
 //! Program
 //--------------------------------------------------------------------------------------------------
 
-override getter @programComponentForGeneration headerKind ->@headerKind {
+override func @programComponentForGeneration headerKind ->@headerKind {
   result = @headerKind.noHeader
 }
 
@@ -1159,7 +1159,7 @@ override method @programComponentForGeneration appendSpecificImplementation
 
 //--------------------------------------------------------------------------------------------------
 
-override getter @filewrapperDeclarationForGeneration headerKind ->@headerKind {
+override func @filewrapperDeclarationForGeneration headerKind ->@headerKind {
   result = @headerKind.oneHeader
 }
 
@@ -1405,7 +1405,7 @@ final class @primitiveTypeForGeneration : @semanticTypeForGeneration {
 
   //----------------------------------------------------------------------------------------------
 
-  override getter appendPrimitiveTypeDeclaration -> @string {
+  override func appendPrimitiveTypeDeclaration -> @string {
     result = self.mCppDeclarationString
     let selfTypeDefinition = self.mSelfTypeEntry.definition
     if self.isPackage then

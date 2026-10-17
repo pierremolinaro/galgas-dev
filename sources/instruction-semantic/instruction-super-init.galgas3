@@ -119,7 +119,7 @@ final class @superInitInstructionAST : @semanticInstructionAST {
       //--- Mark all super properties are defined
         for superProperty in superTypeDefinition.allTypedPropertyList do
           if superProperty.initialization == .none then
-            [!?ioVariableMap searchForWriteAccess 
+            [!?ioVariableMap searchForWriteAccess
               !@{!"self." + superProperty.name !self.mInstructionLocation}
               ?3*
             ]
@@ -127,7 +127,7 @@ final class @superInitInstructionAST : @semanticInstructionAST {
         end
         [ioVariableMap checkSelfObjectIsFullyInitialized !self.mInstructionLocation]
      //--- Mark super initializer usefull (TODO)
-     
+
      //--- Analyze argument list
         var actualParameterListForGeneration = @semanticExpressionListForGeneration ()
         for formalArg in formalSignature, actualArg in self.mActualParameterList do
@@ -206,12 +206,12 @@ final class @superInitInstructionForGeneration : @semanticInstructionForGenerati
     end
     ioGeneratedCode += self.mSuperTypeName.identifierRepresentation + "_"
     ioGeneratedCode += self.mSuperInitializerSignature.identifierRepresentation
-    ioGeneratedCode += " (" 
+    ioGeneratedCode += " ("
     for (mValue) in getterArgumentCppNameList do
       ioGeneratedCode += mValue + ", "
     end
     [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
-    ioGeneratedCode += compilerCppName () + ") ; \n" 
+    ioGeneratedCode += compilerCppName () + ") ; \n"
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

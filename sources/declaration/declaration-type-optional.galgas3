@@ -24,7 +24,7 @@ final class @optionalTypeDeclarationAST : @semanticDeclarationAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override getter keyRepresentation -> @string {
+  override func keyRepresentation -> @string {
     result = "optional @" + self.optionalTypeName
   }
 

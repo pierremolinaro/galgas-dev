@@ -215,7 +215,7 @@ abstract class @semanticDeclarationForGeneration {
 
 //--------------------------------------------------------------------------------------------------
 
-getter @semanticDeclarationForGeneration appendPrimitiveTypeDeclaration -> @string {
+func @semanticDeclarationForGeneration appendPrimitiveTypeDeclaration -> @string {
   result = ""
 }
 
@@ -226,19 +226,19 @@ method @semanticDeclarationForGeneration appendPrimitiveTypePreDeclaration ?!@st
 
 //--------------------------------------------------------------------------------------------------
 
-abstract getter @semanticDeclarationForGeneration getImplementationCppFileName -> @string
+abstract func @semanticDeclarationForGeneration getImplementationCppFileName -> @string
 
 //--------------------------------------------------------------------------------------------------
 
-abstract getter @semanticDeclarationForGeneration hasCppHeaderFile -> @bool
+abstract func @semanticDeclarationForGeneration hasCppHeaderFile -> @bool
 
 //--------------------------------------------------------------------------------------------------
 
-abstract getter @semanticDeclarationForGeneration isPredefined -> @bool
+abstract func @semanticDeclarationForGeneration isPredefined -> @bool
 
 //--------------------------------------------------------------------------------------------------
 
-abstract getter @semanticDeclarationForGeneration headerKind -> @headerKind
+abstract func @semanticDeclarationForGeneration headerKind -> @headerKind
 
 //--------------------------------------------------------------------------------------------------
 
@@ -259,25 +259,25 @@ abstract class @semanticTypeForGeneration : @semanticDeclarationForGeneration {
 
 //--------------------------------------------------------------------------------------------------
 
-override getter @semanticTypeForGeneration getImplementationCppFileName -> @string {
+override func @semanticTypeForGeneration getImplementationCppFileName -> @string {
   result = self.mSelfTypeEntry.definition.headerFileName
 }
 
 //--------------------------------------------------------------------------------------------------
 
-override getter @semanticTypeForGeneration hasCppHeaderFile -> @bool {
+override func @semanticTypeForGeneration hasCppHeaderFile -> @bool {
   result = true
 }
 
 //--------------------------------------------------------------------------------------------------
 
-override getter @semanticTypeForGeneration isPredefined -> @bool {
+override func @semanticTypeForGeneration isPredefined -> @bool {
   result = self.mSelfTypeEntry.definition.isPredefined
 }
 
 //--------------------------------------------------------------------------------------------------
 
-override getter @semanticTypeForGeneration headerKind -> @headerKind {
+override func @semanticTypeForGeneration headerKind -> @headerKind {
   result = self.mSelfTypeEntry.definition.headerKind
 }
 
@@ -294,25 +294,25 @@ abstract class @semanticDeclarationWithHeaderForGeneration : @semanticDeclaratio
 
 //--------------------------------------------------------------------------------------------------
 
-override getter @semanticDeclarationWithHeaderForGeneration getImplementationCppFileName -> @string {
+override func @semanticDeclarationWithHeaderForGeneration getImplementationCppFileName -> @string {
   result = self.implementationCppFileName
 }
 
 //--------------------------------------------------------------------------------------------------
 
-override getter @semanticDeclarationWithHeaderForGeneration hasCppHeaderFile -> @bool {
+override func @semanticDeclarationWithHeaderForGeneration hasCppHeaderFile -> @bool {
   result = self.generateHeader
 }
 
 //--------------------------------------------------------------------------------------------------
 
-override getter @semanticDeclarationWithHeaderForGeneration headerKind -> @headerKind {
+override func @semanticDeclarationWithHeaderForGeneration headerKind -> @headerKind {
   result = @headerKind.twoHeaders
 }
 
 //--------------------------------------------------------------------------------------------------
 
-override getter @semanticDeclarationWithHeaderForGeneration isPredefined -> @bool {
+override func @semanticDeclarationWithHeaderForGeneration isPredefined -> @bool {
   result = false
 }
 
@@ -477,7 +477,7 @@ method @semanticDeclarationForGeneration appendDeclaration2
 
 //--------------------------------------------------------------------------------------------------
 
-getter @semanticDeclarationForGeneration appendTypeGenericImplementation ->@string outImplementation {
+func @semanticDeclarationForGeneration appendTypeGenericImplementation ->@string outImplementation {
   outImplementation = ""
 }
 

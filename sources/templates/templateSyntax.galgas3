@@ -363,7 +363,7 @@ rule <primary_tpl> !@templateExpressionAST outExpression {
 //
 //                         F A C T O R
 //   description          :   [expression description]
-//   getter call          :   [expression getter !... ]
+//   func call            :   [expression func !... ]
 //   constructor call     :   [@class constructor !... ]
 //   option value         :   [option option_component_name.option_name]
 //   filewrapper template :   [filewrapper fw.template_name !...]
@@ -406,7 +406,7 @@ rule <primary_tpl> !@templateExpressionAST outExpression {
     <output_expression_list_tpl> ?expressionList
     $]$
     outExpression = @templateFileWrapperTemplateCallAST {!filewrapperName !templateName !expressionList}
-  or //-------------------------------- Getter call
+  or //-------------------------------- Func call
     let startLocation = @location.here
     let @templateExpressionAST receiverExpression
     <expression_tpl> ?receiverExpression

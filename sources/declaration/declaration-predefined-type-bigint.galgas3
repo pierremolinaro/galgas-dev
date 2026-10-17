@@ -26,7 +26,7 @@ final class @bigintPredefinedTypeAST : @predefinedTypeAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override getter cppDeclarationString -> @string {
+  override func cppDeclarationString -> @string {
     result = [filewrapper predefinedTypeGenerationTemplate.bigint_type]
   }
 
@@ -308,7 +308,7 @@ final class @bigintPredefinedTypeAST : @predefinedTypeAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override getter getSupportedOperatorFlags -> @typeFeatures {
+  override func getSupportedOperatorFlags -> @typeFeatures {
     result = .generateDescriptionGetterUtilityMethod | .prefixPlusOperator | .prefixMinusOperator |
                .infixAddOperator | .infixSubOperator | .infixMulOperator | .infixDivOperator |
                .infixShiftOperator | .infixModOperator |

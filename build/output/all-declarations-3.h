@@ -58,7 +58,7 @@ class GGS_lexicalInstructionListAST_2E_element : public AC_GALGAS_root {
                                                                          Compiler * inCompiler
                                                                          COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of getter 'description'
+//--------------------------------- Implementation of func 'description'
   public: void description (String & ioString,
                             const int32_t inIndentation) const override ;
 
@@ -151,17 +151,17 @@ class cPtr_lexicalSelectInstructionAST : public cPtr_lexicalInstructionAST {
                                                          Compiler * inCompiler) ;
 
 
-//--- Extension getter generateLexicalInstructionCode
+//--- Extension func generateLexicalInstructionCode
   public: virtual class GGS_string getter_generateLexicalInstructionCode (const class GGS_string inScannerClassName,
            const class GGS_lexiqueAnalysisContext inLexiqueAnalysisContext,
            Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension getter generateSwiftCocoaInstructionCode
+//--- Extension func generateSwiftCocoaInstructionCode
   public: virtual class GGS_string getter_generateSwiftCocoaInstructionCode (const class GGS_string inScannerClassName,
            const class GGS_lexiqueAnalysisContext inLexiqueAnalysisContext,
            Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension getter lexicalInstructionUsesLoopLocalVariable
+//--- Extension func lexicalInstructionUsesLoopLocalVariable
   public: virtual class GGS_bool getter_lexicalInstructionUsesLoopLocalVariable (Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension method checkLexicalInstruction
@@ -341,17 +341,17 @@ class cPtr_lexicalSimpleSendInstructionAST : public cPtr_lexicalInstructionAST {
                                                          Compiler * inCompiler) ;
 
 
-//--- Extension getter generateLexicalInstructionCode
+//--- Extension func generateLexicalInstructionCode
   public: virtual class GGS_string getter_generateLexicalInstructionCode (const class GGS_string inScannerClassName,
            const class GGS_lexiqueAnalysisContext inLexiqueAnalysisContext,
            Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension getter generateSwiftCocoaInstructionCode
+//--- Extension func generateSwiftCocoaInstructionCode
   public: virtual class GGS_string getter_generateSwiftCocoaInstructionCode (const class GGS_string inScannerClassName,
            const class GGS_lexiqueAnalysisContext inLexiqueAnalysisContext,
            Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension getter lexicalInstructionUsesLoopLocalVariable
+//--- Extension func lexicalInstructionUsesLoopLocalVariable
   public: virtual class GGS_bool getter_lexicalInstructionUsesLoopLocalVariable (Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension method checkLexicalInstruction
@@ -525,17 +525,17 @@ class cPtr_lexicalLogInstructionAST : public cPtr_lexicalInstructionAST {
   public: void lexicalLogInstructionAST_init (Compiler * inCompiler) ;
 
 
-//--- Extension getter generateLexicalInstructionCode
+//--- Extension func generateLexicalInstructionCode
   public: virtual class GGS_string getter_generateLexicalInstructionCode (const class GGS_string inScannerClassName,
            const class GGS_lexiqueAnalysisContext inLexiqueAnalysisContext,
            Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension getter generateSwiftCocoaInstructionCode
+//--- Extension func generateSwiftCocoaInstructionCode
   public: virtual class GGS_string getter_generateSwiftCocoaInstructionCode (const class GGS_string inScannerClassName,
            const class GGS_lexiqueAnalysisContext inLexiqueAnalysisContext,
            Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension getter lexicalInstructionUsesLoopLocalVariable
+//--- Extension func lexicalInstructionUsesLoopLocalVariable
   public: virtual class GGS_bool getter_lexicalInstructionUsesLoopLocalVariable (Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension method checkLexicalInstruction
@@ -713,17 +713,17 @@ class cPtr_lexicalRewindInstructionAST : public cPtr_lexicalInstructionAST {
                                                          Compiler * inCompiler) ;
 
 
-//--- Extension getter generateLexicalInstructionCode
+//--- Extension func generateLexicalInstructionCode
   public: virtual class GGS_string getter_generateLexicalInstructionCode (const class GGS_string inScannerClassName,
            const class GGS_lexiqueAnalysisContext inLexiqueAnalysisContext,
            Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension getter generateSwiftCocoaInstructionCode
+//--- Extension func generateSwiftCocoaInstructionCode
   public: virtual class GGS_string getter_generateSwiftCocoaInstructionCode (const class GGS_string inScannerClassName,
            const class GGS_lexiqueAnalysisContext inLexiqueAnalysisContext,
            Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension getter lexicalInstructionUsesLoopLocalVariable
+//--- Extension func lexicalInstructionUsesLoopLocalVariable
   public: virtual class GGS_bool getter_lexicalInstructionUsesLoopLocalVariable (Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension method checkLexicalInstruction
@@ -1137,7 +1137,7 @@ class GGS_lexicalWhileBranchListAST_2E_element : public AC_GALGAS_root {
                                                                          Compiler * inCompiler
                                                                          COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of getter 'description'
+//--------------------------------- Implementation of func 'description'
   public: void description (String & ioString,
                             const int32_t inIndentation) const override ;
 
@@ -1234,17 +1234,17 @@ class cPtr_lexicalRepeatInstructionAST : public cPtr_lexicalInstructionAST {
                                                              Compiler * inCompiler) ;
 
 
-//--- Extension getter generateLexicalInstructionCode
+//--- Extension func generateLexicalInstructionCode
   public: virtual class GGS_string getter_generateLexicalInstructionCode (const class GGS_string inScannerClassName,
            const class GGS_lexiqueAnalysisContext inLexiqueAnalysisContext,
            Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension getter generateSwiftCocoaInstructionCode
+//--- Extension func generateSwiftCocoaInstructionCode
   public: virtual class GGS_string getter_generateSwiftCocoaInstructionCode (const class GGS_string inScannerClassName,
            const class GGS_lexiqueAnalysisContext inLexiqueAnalysisContext,
            Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension getter lexicalInstructionUsesLoopLocalVariable
+//--- Extension func lexicalInstructionUsesLoopLocalVariable
   public: virtual class GGS_bool getter_lexicalInstructionUsesLoopLocalVariable (Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension method checkLexicalInstruction
@@ -1426,17 +1426,17 @@ class cPtr_lexicalDropInstructionAST : public cPtr_lexicalInstructionAST {
                                                    Compiler * inCompiler) ;
 
 
-//--- Extension getter generateLexicalInstructionCode
+//--- Extension func generateLexicalInstructionCode
   public: virtual class GGS_string getter_generateLexicalInstructionCode (const class GGS_string inScannerClassName,
            const class GGS_lexiqueAnalysisContext inLexiqueAnalysisContext,
            Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension getter generateSwiftCocoaInstructionCode
+//--- Extension func generateSwiftCocoaInstructionCode
   public: virtual class GGS_string getter_generateSwiftCocoaInstructionCode (const class GGS_string inScannerClassName,
            const class GGS_lexiqueAnalysisContext inLexiqueAnalysisContext,
            Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension getter lexicalInstructionUsesLoopLocalVariable
+//--- Extension func lexicalInstructionUsesLoopLocalVariable
   public: virtual class GGS_bool getter_lexicalInstructionUsesLoopLocalVariable (Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension method checkLexicalInstruction
@@ -1614,17 +1614,17 @@ class cPtr_lexicalWarningInstructionAST : public cPtr_lexicalInstructionAST {
                                                       Compiler * inCompiler) ;
 
 
-//--- Extension getter generateLexicalInstructionCode
+//--- Extension func generateLexicalInstructionCode
   public: virtual class GGS_string getter_generateLexicalInstructionCode (const class GGS_string inScannerClassName,
            const class GGS_lexiqueAnalysisContext inLexiqueAnalysisContext,
            Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension getter generateSwiftCocoaInstructionCode
+//--- Extension func generateSwiftCocoaInstructionCode
   public: virtual class GGS_string getter_generateSwiftCocoaInstructionCode (const class GGS_string inScannerClassName,
            const class GGS_lexiqueAnalysisContext inLexiqueAnalysisContext,
            Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension getter lexicalInstructionUsesLoopLocalVariable
+//--- Extension func lexicalInstructionUsesLoopLocalVariable
   public: virtual class GGS_bool getter_lexicalInstructionUsesLoopLocalVariable (Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension method checkLexicalInstruction
@@ -1802,17 +1802,17 @@ class cPtr_lexicalErrorInstructionAST : public cPtr_lexicalInstructionAST {
                                                     Compiler * inCompiler) ;
 
 
-//--- Extension getter generateLexicalInstructionCode
+//--- Extension func generateLexicalInstructionCode
   public: virtual class GGS_string getter_generateLexicalInstructionCode (const class GGS_string inScannerClassName,
            const class GGS_lexiqueAnalysisContext inLexiqueAnalysisContext,
            Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension getter generateSwiftCocoaInstructionCode
+//--- Extension func generateSwiftCocoaInstructionCode
   public: virtual class GGS_string getter_generateSwiftCocoaInstructionCode (const class GGS_string inScannerClassName,
            const class GGS_lexiqueAnalysisContext inLexiqueAnalysisContext,
            Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension getter lexicalInstructionUsesLoopLocalVariable
+//--- Extension func lexicalInstructionUsesLoopLocalVariable
   public: virtual class GGS_bool getter_lexicalInstructionUsesLoopLocalVariable (Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension method checkLexicalInstruction
@@ -2207,7 +2207,7 @@ class GGS_headerCompositionMap_2E_element : public AC_GALGAS_root {
                                                                     Compiler * inCompiler
                                                                     COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of getter 'description'
+//--------------------------------- Implementation of func 'description'
   public: void description (String & ioString,
                             const int32_t inIndentation) const override ;
 
@@ -2565,7 +2565,7 @@ class GGS_headerRepartitionMap_2E_element : public AC_GALGAS_root {
                                                                     Compiler * inCompiler
                                                                     COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of getter 'description'
+//--------------------------------- Implementation of func 'description'
   public: void description (String & ioString,
                             const int32_t inIndentation) const override ;
 
@@ -2942,7 +2942,7 @@ class GGS_uselessEntityLocationMap_2E_element : public AC_GALGAS_root {
                                                                         Compiler * inCompiler
                                                                         COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of getter 'description'
+//--------------------------------- Implementation of func 'description'
   public: void description (String & ioString,
                             const int32_t inIndentation) const override ;
 
@@ -3122,7 +3122,7 @@ class cPtr_externProcedureDeclarationAST : public cPtr_semanticDeclarationAST {
                                                                                                                 Compiler * inCompiler) ;
 
 
-//--- Extension getter keyRepresentation
+//--- Extension func keyRepresentation
   public: virtual class GGS_string getter_keyRepresentation (Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension method enterDeclarationInGraph
@@ -3631,7 +3631,7 @@ class GGS_terminalList_2E_element : public AC_GALGAS_root {
                                                             Compiler * inCompiler
                                                             COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of getter 'description'
+//--------------------------------- Implementation of func 'description'
   public: void description (String & ioString,
                             const int32_t inIndentation) const override ;
 
@@ -3726,7 +3726,7 @@ class GGS_lexicalSentValueList_2E_element : public AC_GALGAS_root {
                                                                     Compiler * inCompiler
                                                                     COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of getter 'description'
+//--------------------------------- Implementation of func 'description'
   public: void description (String & ioString,
                             const int32_t inIndentation) const override ;
 
@@ -4057,7 +4057,7 @@ class GGS_lexicalExplicitTokenListMap_2E_element : public AC_GALGAS_root {
                                                                            Compiler * inCompiler
                                                                            COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of getter 'description'
+//--------------------------------- Implementation of func 'description'
   public: void description (String & ioString,
                             const int32_t inIndentation) const override ;
 
@@ -4410,7 +4410,7 @@ class GGS_tokenSortedlist_2E_element : public AC_GALGAS_root {
                                                                Compiler * inCompiler
                                                                COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of getter 'description'
+//--------------------------------- Implementation of func 'description'
   public: void description (String & ioString,
                             const int32_t inIndentation) const override ;
 
@@ -4516,7 +4516,7 @@ class GGS_lexicalExplicitTokenListMapMap_2E_element : public AC_GALGAS_root {
                                                                               Compiler * inCompiler
                                                                               COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of getter 'description'
+//--------------------------------- Implementation of func 'description'
   public: void description (String & ioString,
                             const int32_t inIndentation) const override ;
 
@@ -4688,7 +4688,7 @@ class GGS_lexicalMessageMap_2E_element : public AC_GALGAS_root {
                                                                  Compiler * inCompiler
                                                                  COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of getter 'description'
+//--------------------------------- Implementation of func 'description'
   public: void description (String & ioString,
                             const int32_t inIndentation) const override ;
 
@@ -5120,7 +5120,7 @@ class GGS_lexicalRoutineFormalArgumentList_2E_element : public AC_GALGAS_root {
                                                                                 Compiler * inCompiler
                                                                                 COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of getter 'description'
+//--------------------------------- Implementation of func 'description'
   public: void description (String & ioString,
                             const int32_t inIndentation) const override ;
 
@@ -5226,7 +5226,7 @@ class GGS_lexicalRoutineMap_2E_element : public AC_GALGAS_root {
                                                                  Compiler * inCompiler
                                                                  COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of getter 'description'
+//--------------------------------- Implementation of func 'description'
   public: void description (String & ioString,
                             const int32_t inIndentation) const override ;
 
@@ -5626,7 +5626,7 @@ class GGS_lexicalFunctionFormalArgumentList_2E_element : public AC_GALGAS_root {
                                                                                  Compiler * inCompiler
                                                                                  COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of getter 'description'
+//--------------------------------- Implementation of func 'description'
   public: void description (String & ioString,
                             const int32_t inIndentation) const override ;
 
@@ -5743,7 +5743,7 @@ class GGS_lexicalFunctionMap_2E_element : public AC_GALGAS_root {
                                                                   Compiler * inCompiler
                                                                   COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of getter 'description'
+//--------------------------------- Implementation of func 'description'
   public: void description (String & ioString,
                             const int32_t inIndentation) const override ;
 
@@ -5915,7 +5915,7 @@ class GGS_templateDelimitorList_2E_element : public AC_GALGAS_root {
                                                                      Compiler * inCompiler
                                                                      COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of getter 'description'
+//--------------------------------- Implementation of func 'description'
   public: void description (String & ioString,
                             const int32_t inIndentation) const override ;
 
@@ -6010,7 +6010,7 @@ class GGS_styleMap_2E_element : public AC_GALGAS_root {
                                                         Compiler * inCompiler
                                                         COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of getter 'description'
+//--------------------------------- Implementation of func 'description'
   public: void description (String & ioString,
                             const int32_t inIndentation) const override ;
 
@@ -6343,7 +6343,7 @@ class GGS_lexicalTagMap_2E_element : public AC_GALGAS_root {
                                                              Compiler * inCompiler
                                                              COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of getter 'description'
+//--------------------------------- Implementation of func 'description'
   public: void description (String & ioString,
                             const int32_t inIndentation) const override ;
 
@@ -6504,7 +6504,7 @@ class GGS_terminalMap_2E_element : public AC_GALGAS_root {
                                                            Compiler * inCompiler
                                                            COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of getter 'description'
+//--------------------------------- Implementation of func 'description'
   public: void description (String & ioString,
                             const int32_t inIndentation) const override ;
 
@@ -6665,7 +6665,7 @@ class GGS_lexicalAttributeMap_2E_element : public AC_GALGAS_root {
                                                                    Compiler * inCompiler
                                                                    COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of getter 'description'
+//--------------------------------- Implementation of func 'description'
   public: void description (String & ioString,
                             const int32_t inIndentation) const override ;
 
@@ -7023,7 +7023,7 @@ class GGS_projectQualifiedFeatureMap_2E_element : public AC_GALGAS_root {
                                                                           Compiler * inCompiler
                                                                           COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of getter 'description'
+//--------------------------------- Implementation of func 'description'
   public: void description (String & ioString,
                             const int32_t inIndentation) const override ;
 
@@ -7487,7 +7487,7 @@ class GGS_XCodeGroupList_2E_element : public AC_GALGAS_root {
                                                               Compiler * inCompiler
                                                               COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of getter 'description'
+//--------------------------------- Implementation of func 'description'
   public: void description (String & ioString,
                             const int32_t inIndentation) const override ;
 
@@ -8098,7 +8098,7 @@ class GGS_XCodeToolTargetList_2E_element : public AC_GALGAS_root {
                                                                    Compiler * inCompiler
                                                                    COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of getter 'description'
+//--------------------------------- Implementation of func 'description'
   public: void description (String & ioString,
                             const int32_t inIndentation) const override ;
 
@@ -8805,7 +8805,7 @@ class GGS_XCodeAppTargetList_2E_element : public AC_GALGAS_root {
                                                                   Compiler * inCompiler
                                                                   COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of getter 'description'
+//--------------------------------- Implementation of func 'description'
   public: void description (String & ioString,
                             const int32_t inIndentation) const override ;
 

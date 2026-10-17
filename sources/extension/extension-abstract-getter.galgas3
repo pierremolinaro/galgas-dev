@@ -23,7 +23,7 @@ syntax extension galgas3DeclarationsSyntax {
 
   rule <declaration_ggs3> (?!@galgasDeclarationAST ioDeclarations) {
     $abstract$
-    $getter$
+    $func$
     $@type$ ?var typeName indexing typeReferenceAbstractExtensionGetter
     repeat
     while
@@ -54,7 +54,7 @@ syntax extension galgas3DeclarationsSyntax {
   rule <method_declaration_ggs3> (?let @lstring inTypeName,
                                   ?!@galgasDeclarationAST ioDeclarations) {
     $abstract$
-    $getter$
+    $func$
     var typeName = inTypeName
     repeat
     while
@@ -149,8 +149,8 @@ final class @abstractExtensionGetterAST : @semanticDeclarationAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override getter keyRepresentation -> @string {
-    result = "abstract extension getter @" + self.mTypeName + " "
+  override func keyRepresentation -> @string {
+    result = "abstract extension func @" + self.mTypeName + " "
            + self.mAbstractExtensionGetterName
   }
 
@@ -165,7 +165,7 @@ final class @abstractExtensionGetterAST : @semanticDeclarationAST {
               ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext,
               ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList) {
     let key = @lstring {
-      !"extension getter @" + self.mTypeName + " " + self.mAbstractExtensionGetterName
+      !"extension func @" + self.mTypeName + " " + self.mAbstractExtensionGetterName
       !self.mAbstractExtensionGetterName.location
     }
     [!?ioSemanticTypePrecedenceGraph addNode !key !self]
@@ -221,11 +221,11 @@ final class @abstractExtensionGetterAST : @semanticDeclarationAST {
   //--- Check self type is an abstract class
     if not selfType.definition.typeKind.isClassType then
       error (self.mAbstractExtensionGetterName
-        : "cannot declare an extension getter: '@" + selfType.definition.typeName.string + "' is not a class"
+        : "cannot declare an extension func: '@" + selfType.definition.typeName.string + "' is not a class"
       )
     elsif selfType.definition.isConcrete then
       error (self.mAbstractExtensionGetterName
-        : "cannot declare an abstract extension getter: '@" + selfType.definition.typeName.string + "' is not an abstract class"
+        : "cannot declare an abstract extension func: '@" + selfType.definition.typeName.string + "' is not an abstract class"
       )
     end
   //--- Compute method signature
@@ -240,10 +240,10 @@ final class @abstractExtensionGetterAST : @semanticDeclarationAST {
     end
   //---
     ioSemanticDeclarationListForGeneration +=
-      !infoMessage: "abstract extension getter " + self.mAbstractExtensionGetterName
+      !infoMessage: "abstract extension func " + self.mAbstractExtensionGetterName
       !@abstractExtensionGetterForGeneration {
         !generateHeader: true // Generate Cpp header file
-        !implementationCppFileName: "getter-" + self.mTypeName.string.fileNameRepresentation + "-" + self.mAbstractExtensionGetterName.string.fileNameRepresentation
+        !implementationCppFileName: "func-" + self.mTypeName.string.fileNameRepresentation + "-" + self.mAbstractExtensionGetterName.string.fileNameRepresentation
         !selfType
         !self.mAbstractExtensionGetterName.string
         ![ioTypeMap typeMapEntryForLKey !self.mAbstractExtensionGetterReturnedTypeName]
@@ -286,7 +286,7 @@ final class @abstractExtensionGetterForGeneration : @semanticDeclarationWithHead
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override getter headerKind ->@headerKind {
+  override func headerKind ->@headerKind {
     result = @headerKind.oneHeader
   }
 
@@ -307,7 +307,7 @@ final class @abstractExtensionGetterForGeneration : @semanticDeclarationWithHead
   override method appendSpecificImplementation (?let @unifiedTypeMap unused inTypeMap,
                                                 ?!@stringset ioInclusionSet,
                                                 !@string outImplementation) {
-    ioInclusionSet ++= "getter-"
+    ioInclusionSet ++= "func-"
       + self.mReceiverType.definition.typeName.string.fileNameRepresentation
       + "-" + self.mAbstractExtensionGetterName.fileNameRepresentation
     [self.mResultType addHeaderFileName !?ioInclusionSet]

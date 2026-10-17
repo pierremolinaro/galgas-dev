@@ -129,7 +129,7 @@ syntax extension galgas4DeclarationsSyntax {
 //   ENTER IN GRAPH
 //--------------------------------------------------------------------------------------------------
 
-override getter @listDeclarationAST keyRepresentation
+override func @listDeclarationAST keyRepresentation
   ->@string {
   result = "list @" + self.mListTypeName
 }
@@ -265,7 +265,7 @@ override method @listDeclarationAST enterDeclarationInSemanticContext
       !true
       !mPropertyTypeEntry
       !@methodQualifier.isBasic
-      !"" // getter name is not obsolete, no replacement getter
+      !"" // func name is not obsolete, no replacement func
     ]
   end
 //------------------------ Instance methods

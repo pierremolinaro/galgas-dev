@@ -275,7 +275,7 @@ final class @terminalInstructionForGrammarAnalysis : @abstractSyntaxInstructionF
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override getter isLinear -> @bool {
+  override func isLinear -> @bool {
     result = true
   }
 
@@ -318,7 +318,7 @@ override method @terminalCheckInstructionForGeneration appendSyntaxSignature (
 //! COMPARE SYNTAX SIGNATURE
 //--------------------------------------------------------------------------------------------------
 
-override getter @terminalCheckInstructionForGeneration compareInstructionSyntaxSignature
+override func @terminalCheckInstructionForGeneration compareInstructionSyntaxSignature
       (?let @semanticInstructionForGeneration inTestedInstruction) -> @bool {
   if let si = inTestedInstruction as @terminalCheckInstructionForGeneration then
     result = self.mTerminalName.string == si.mTerminalName.string

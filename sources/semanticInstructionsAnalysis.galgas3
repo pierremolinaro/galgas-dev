@@ -130,7 +130,7 @@ proc analyzeSemanticInstructionListWithoutBranch
 
 //--------------------------------------------------------------------------------------------------
 
-getter @formalArgumentPassingModeAST correspondingEffectiveParameterString -> @string {
+func @formalArgumentPassingModeAST correspondingEffectiveParameterString -> @string {
   switch self
     case argumentConstantIn : result = "!"
     case argumentVarIn : result = "!"
@@ -181,9 +181,9 @@ proc checkExpressionIsBoolean
     if let entry = expressionType.definition.getterMap @["bool"] then
       if entry.mReturnedType != boolType then
         error (inErrorLocation
-        : "the expression type is not @bool, it handles a 'bool' getter, but it does not return a '@bool' value" spoil outExpression)
+        : "the expression type is not @bool, it handles a 'bool' func, but it does not return a '@bool' value" spoil outExpression)
       elsif entry.mArgumentTypeList.count > 0 then
-        error (inErrorLocation: "the expression type is not @bool, it handles a 'bool' getter that requires argument(s)" spoil outExpression)
+        error (inErrorLocation: "the expression type is not @bool, it handles a 'bool' func that requires argument(s)" spoil outExpression)
       else
         outExpression = @getterCallExpressionForGeneration {
           !boolType
@@ -199,11 +199,11 @@ proc checkExpressionIsBoolean
     else
       if expressionType.definition.getterMap.count == 0 then
         error (inErrorLocation
-        : "the expression type is not '@bool', but '@"+ expressionType.definition.typeName.string + "', and this type does not define the 'bool' getter"
+        : "the expression type is not '@bool', but '@"+ expressionType.definition.typeName.string + "', and this type does not define the 'bool' func"
         spoil outExpression)
       else
         error (inErrorLocation
-        : "the expression type is not '@bool', but '@"+ expressionType.definition.typeName.string + "', and this type does not define the 'bool' getter "
+        : "the expression type is not '@bool', but '@"+ expressionType.definition.typeName.string + "', and this type does not define the 'bool' func "
         spoil outExpression
         fixit replace expressionType.definition.getterMap.keyList)
       end

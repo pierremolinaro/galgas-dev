@@ -12273,18 +12273,18 @@ void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_output_
   while (repeatFlag_0) {
     switch (select_galgas_33_ExpressionSyntax_4 (inCompiler)) {
     case 2: {
-      GGS_lstring var_selector_2987 = inCompiler->synthetizedAttribute_tokenString () ;
+      GGS_lstring var_selector_2983 = inCompiler->synthetizedAttribute_tokenString () ;
       inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__21_selector_3A_ COMMA_SOURCE_FILE ("expression-output-expression-list.galgas3", 70)) ;
-      GGS_semanticExpressionAST var_expression_3065 ;
-      nt_expression_5F_ggs_33__ (ioArgument_ioDeclarations, var_expression_3065, inCompiler) ;
-      outArgument_outExpressionList.addAssignOperation (var_selector_2987, var_expression_3065, GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("expression-output-expression-list.galgas3", 72))  COMMA_SOURCE_FILE ("expression-output-expression-list.galgas3", 72)) ;
+      GGS_semanticExpressionAST var_expression_3061 ;
+      nt_expression_5F_ggs_33__ (ioArgument_ioDeclarations, var_expression_3061, inCompiler) ;
+      outArgument_outExpressionList.addAssignOperation (var_selector_2983, var_expression_3061, GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("expression-output-expression-list.galgas3", 72))  COMMA_SOURCE_FILE ("expression-output-expression-list.galgas3", 72)) ;
     } break ;
     case 3: {
       inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__21_ COMMA_SOURCE_FILE ("expression-output-expression-list.galgas3", 74)) ;
-      GGS_lstring var_selector_3162 = GGS_string::makeEmptyString ().getter_here (inCompiler COMMA_SOURCE_FILE ("expression-output-expression-list.galgas3", 75)) ;
-      GGS_semanticExpressionAST var_expression_3250 ;
-      nt_expression_5F_ggs_33__ (ioArgument_ioDeclarations, var_expression_3250, inCompiler) ;
-      outArgument_outExpressionList.addAssignOperation (var_selector_3162, var_expression_3250, GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("expression-output-expression-list.galgas3", 77))  COMMA_SOURCE_FILE ("expression-output-expression-list.galgas3", 77)) ;
+      GGS_lstring var_selector_3158 = GGS_string::makeEmptyString ().getter_here (inCompiler COMMA_SOURCE_FILE ("expression-output-expression-list.galgas3", 75)) ;
+      GGS_semanticExpressionAST var_expression_3246 ;
+      nt_expression_5F_ggs_33__ (ioArgument_ioDeclarations, var_expression_3246, inCompiler) ;
+      outArgument_outExpressionList.addAssignOperation (var_selector_3158, var_expression_3246, GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("expression-output-expression-list.galgas3", 77))  COMMA_SOURCE_FILE ("expression-output-expression-list.galgas3", 77)) ;
     } break ;
     default:
       repeatFlag_0 = false ;
@@ -12329,24 +12329,24 @@ void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_output_
     while (repeatFlag_0) {
       switch (select_galgas_33_ExpressionSyntax_7 (inCompiler)) {
       case 1: {
-        GGS_lstring var_selector_3696 = inCompiler->synthetizedAttribute_tokenString () ;
+        GGS_lstring var_selector_3692 = inCompiler->synthetizedAttribute_tokenString () ;
         inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__21_selector_3A_ COMMA_SOURCE_FILE ("expression-output-expression-list.galgas3", 90)) ;
-        GGS_semanticExpressionAST var_expression_3778 ;
-        nt_expression_5F_ggs_33__ (ioArgument_ioDeclarations, var_expression_3778, inCompiler) ;
-        outArgument_outExpressionList.addAssignOperation (var_selector_3696, var_expression_3778, GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("expression-output-expression-list.galgas3", 92))  COMMA_SOURCE_FILE ("expression-output-expression-list.galgas3", 92)) ;
+        GGS_semanticExpressionAST var_expression_3774 ;
+        nt_expression_5F_ggs_33__ (ioArgument_ioDeclarations, var_expression_3774, inCompiler) ;
+        outArgument_outExpressionList.addAssignOperation (var_selector_3692, var_expression_3774, GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("expression-output-expression-list.galgas3", 92))  COMMA_SOURCE_FILE ("expression-output-expression-list.galgas3", 92)) ;
       } break ;
       case 2: {
         inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__21_ COMMA_SOURCE_FILE ("expression-output-expression-list.galgas3", 94)) ;
-        GGS_lstring var_selector_3888 = GGS_string::makeEmptyString ().getter_here (inCompiler COMMA_SOURCE_FILE ("expression-output-expression-list.galgas3", 95)) ;
-        GGS_semanticExpressionAST var_expression_3980 ;
-        nt_expression_5F_ggs_33__ (ioArgument_ioDeclarations, var_expression_3980, inCompiler) ;
-        outArgument_outExpressionList.addAssignOperation (var_selector_3888, var_expression_3980, GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("expression-output-expression-list.galgas3", 97))  COMMA_SOURCE_FILE ("expression-output-expression-list.galgas3", 97)) ;
+        GGS_lstring var_selector_3884 = GGS_string::makeEmptyString ().getter_here (inCompiler COMMA_SOURCE_FILE ("expression-output-expression-list.galgas3", 95)) ;
+        GGS_semanticExpressionAST var_expression_3976 ;
+        nt_expression_5F_ggs_33__ (ioArgument_ioDeclarations, var_expression_3976, inCompiler) ;
+        outArgument_outExpressionList.addAssignOperation (var_selector_3884, var_expression_3976, GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("expression-output-expression-list.galgas3", 97))  COMMA_SOURCE_FILE ("expression-output-expression-list.galgas3", 97)) ;
       } break ;
       case 3: {
-        GGS_lstring var_selector_4076 = GGS_string::makeEmptyString ().getter_here (inCompiler COMMA_SOURCE_FILE ("expression-output-expression-list.galgas3", 99)) ;
-        GGS_semanticExpressionAST var_expression_4168 ;
-        nt_expression_5F_ggs_33__ (ioArgument_ioDeclarations, var_expression_4168, inCompiler) ;
-        outArgument_outExpressionList.addAssignOperation (var_selector_4076, var_expression_4168, GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("expression-output-expression-list.galgas3", 101))  COMMA_SOURCE_FILE ("expression-output-expression-list.galgas3", 101)) ;
+        GGS_lstring var_selector_4072 = GGS_string::makeEmptyString ().getter_here (inCompiler COMMA_SOURCE_FILE ("expression-output-expression-list.galgas3", 99)) ;
+        GGS_semanticExpressionAST var_expression_4164 ;
+        nt_expression_5F_ggs_33__ (ioArgument_ioDeclarations, var_expression_4164, inCompiler) ;
+        outArgument_outExpressionList.addAssignOperation (var_selector_4072, var_expression_4164, GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("expression-output-expression-list.galgas3", 101))  COMMA_SOURCE_FILE ("expression-output-expression-list.galgas3", 101)) ;
       } break ;
       default:
         break ;
@@ -13246,30 +13246,30 @@ void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_factor_
   while (repeatFlag_0) {
     switch (select_galgas_33_ExpressionSyntax_17 (inCompiler)) {
     case 2: {
-      GGS_actualOutputArgumentList var_expressionList_1649 = GGS_actualOutputArgumentList::init (inCompiler COMMA_HERE) ;
+      GGS_actualOutputArgumentList var_expressionList_1648 = GGS_actualOutputArgumentList::init (inCompiler COMMA_HERE) ;
       inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__40__5B_ COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas3", 32)) ;
       bool repeatFlag_1 = true ;
       while (repeatFlag_1) {
         switch (select_galgas_33_ExpressionSyntax_19 (inCompiler)) {
         case 1: {
-          GGS_lstring var_selector_1762 = inCompiler->synthetizedAttribute_tokenString () ;
+          GGS_lstring var_selector_1761 = inCompiler->synthetizedAttribute_tokenString () ;
           inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__21_selector_3A_ COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas3", 35)) ;
-          GGS_semanticExpressionAST var_expression_1821 ;
-          nt_expression_5F_ggs_33__ (ioArgument_ioDeclarations, var_expression_1821, inCompiler) ;
-          var_expressionList_1649.addAssignOperation (var_selector_1762, var_expression_1821, GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas3", 37))  COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas3", 37)) ;
+          GGS_semanticExpressionAST var_expression_1820 ;
+          nt_expression_5F_ggs_33__ (ioArgument_ioDeclarations, var_expression_1820, inCompiler) ;
+          var_expressionList_1648.addAssignOperation (var_selector_1761, var_expression_1820, GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas3", 37))  COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas3", 37)) ;
         } break ;
         case 2: {
           inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__21_ COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas3", 39)) ;
-          GGS_lstring var_selector_1928 = GGS_string::makeEmptyString ().getter_here (inCompiler COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas3", 40)) ;
-          GGS_semanticExpressionAST var_expression_1997 ;
-          nt_expression_5F_ggs_33__ (ioArgument_ioDeclarations, var_expression_1997, inCompiler) ;
-          var_expressionList_1649.addAssignOperation (var_selector_1928, var_expression_1997, GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas3", 42))  COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas3", 42)) ;
+          GGS_lstring var_selector_1927 = GGS_string::makeEmptyString ().getter_here (inCompiler COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas3", 40)) ;
+          GGS_semanticExpressionAST var_expression_1996 ;
+          nt_expression_5F_ggs_33__ (ioArgument_ioDeclarations, var_expression_1996, inCompiler) ;
+          var_expressionList_1648.addAssignOperation (var_selector_1927, var_expression_1996, GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas3", 42))  COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas3", 42)) ;
         } break ;
         case 3: {
-          GGS_lstring var_selector_2090 = GGS_string::makeEmptyString ().getter_here (inCompiler COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas3", 44)) ;
-          GGS_semanticExpressionAST var_expression_2159 ;
-          nt_expression_5F_ggs_33__ (ioArgument_ioDeclarations, var_expression_2159, inCompiler) ;
-          var_expressionList_1649.addAssignOperation (var_selector_2090, var_expression_2159, GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas3", 46))  COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas3", 46)) ;
+          GGS_lstring var_selector_2089 = GGS_string::makeEmptyString ().getter_here (inCompiler COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas3", 44)) ;
+          GGS_semanticExpressionAST var_expression_2158 ;
+          nt_expression_5F_ggs_33__ (ioArgument_ioDeclarations, var_expression_2158, inCompiler) ;
+          var_expressionList_1648.addAssignOperation (var_selector_2089, var_expression_2158, GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas3", 46))  COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas3", 46)) ;
         } break ;
         default:
           break ;
@@ -13280,14 +13280,14 @@ void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_factor_
           repeatFlag_1 = false ;
         }
       }
-      outArgument_outExpression = GGS_subscriptReadAccessExpressionAST::init_21__21__21_ (outArgument_outExpression, var_expressionList_1649, GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas3", 54)), inCompiler COMMA_HERE) ;
+      outArgument_outExpression = GGS_subscriptReadAccessExpressionAST::init_21__21__21_ (outArgument_outExpression, var_expressionList_1648, GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas3", 54)), inCompiler COMMA_HERE) ;
       inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__5D_ COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas3", 56)) ;
     } break ;
     case 3: {
       inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__2E_ COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas3", 58)) ;
-      GGS_lstring var_structFieldName_2455 = inCompiler->synthetizedAttribute_tokenString () ;
+      GGS_lstring var_structFieldName_2454 = inCompiler->synthetizedAttribute_tokenString () ;
       inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_identifier COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas3", 59)) ;
-      outArgument_outExpression = GGS_structPropertyAccessExpressionAST::init_21__21__21_ (var_structFieldName_2455.readProperty_location (), outArgument_outExpression, var_structFieldName_2455, inCompiler COMMA_HERE) ;
+      outArgument_outExpression = GGS_structPropertyAccessExpressionAST::init_21__21__21_ (var_structFieldName_2454.readProperty_location (), outArgument_outExpression, var_structFieldName_2454, inCompiler COMMA_HERE) ;
     } break ;
     default:
       repeatFlag_0 = false ;
@@ -13758,13 +13758,13 @@ void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary
   GGS_location var_startLocation_1628 = GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("expression-getter-call.galgas3", 30)) ;
   GGS_semanticExpressionAST var_receiverExpression_1726 ;
   nt_expression_5F_ggs_33__ (ioArgument_ioDeclarations, var_receiverExpression_1726, inCompiler) ;
-  GGS_lstring var_getterName_1800 = inCompiler->synthetizedAttribute_tokenString () ;
+  GGS_lstring var_getterName_1798 = inCompiler->synthetizedAttribute_tokenString () ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_identifier COMMA_SOURCE_FILE ("expression-getter-call.galgas3", 33)) ;
-  GGS_actualOutputArgumentList var_expressionList_1919 ;
-  nt_output_5F_expression_5F_list_5F_ggs_33__ (ioArgument_ioDeclarations, var_expressionList_1919, inCompiler) ;
+  GGS_actualOutputArgumentList var_expressionList_1917 ;
+  nt_output_5F_expression_5F_list_5F_ggs_33__ (ioArgument_ioDeclarations, var_expressionList_1917, inCompiler) ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__5D_ COMMA_SOURCE_FILE ("expression-getter-call.galgas3", 36)) ;
-  GGS_location var_endLocation_1950 = GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("expression-getter-call.galgas3", 37)) ;
-  outArgument_outExpression = GGS_getterCallExpressionAST::init_21__21__21__21_ (var_receiverExpression_1726, var_getterName_1800, var_expressionList_1919, var_startLocation_1628.getter_union (var_endLocation_1950, inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas3", 42)), inCompiler COMMA_HERE) ;
+  GGS_location var_endLocation_1948 = GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("expression-getter-call.galgas3", 37)) ;
+  outArgument_outExpression = GGS_getterCallExpressionAST::init_21__21__21__21_ (var_receiverExpression_1726, var_getterName_1798, var_expressionList_1917, var_startLocation_1628.getter_union (var_endLocation_1948, inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas3", 42)), inCompiler COMMA_HERE) ;
 }
 
 //------------------------------------------------------------------------------------------------

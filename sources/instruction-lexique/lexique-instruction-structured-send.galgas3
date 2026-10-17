@@ -117,7 +117,7 @@ override method @lexicalStructuredSendInstructionAST checkLexicalInstruction (
 
 //--------------------------------------------------------------------------------------------------
 
-override getter @lexicalStructuredSendInstructionAST generateSwiftCocoaInstructionCode
+override func @lexicalStructuredSendInstructionAST generateSwiftCocoaInstructionCode
   ?let @string inScannerClassName
   ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
   -> @string outGeneratedCode {
@@ -137,13 +137,13 @@ override getter @lexicalStructuredSendInstructionAST generateSwiftCocoaInstructi
 //! CODE GENERATION
 //--------------------------------------------------------------------------------------------------
 
-override getter @lexicalStructuredSendInstructionAST lexicalInstructionUsesLoopLocalVariable -> @bool {
+override func @lexicalStructuredSendInstructionAST lexicalInstructionUsesLoopLocalVariable -> @bool {
   result = false
 }
 
 //·································································································
 
-override getter @lexicalStructuredSendInstructionAST generateLexicalInstructionCode
+override func @lexicalStructuredSendInstructionAST generateLexicalInstructionCode
   ?let @string inScannerClassName
   ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
   -> @string {

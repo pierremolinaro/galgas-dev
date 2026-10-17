@@ -714,10 +714,10 @@ void extensionMethod_analyzeRoutineArguments (const GGS_actualParameterListAST i
   GalgasBool test_0 = GalgasBool::boolTrue ;
   if (GalgasBool::boolTrue == test_0) {
     const GGS_actualParameterListAST temp_1 = inObject ;
-    test_0 = GGS_bool (ComparisonKind::notEqual, constinArgument_inRoutineSignature.getter_count (SOURCE_FILE ("actual-parameters.galgas3", 38)).objectCompare (temp_1.getter_count (SOURCE_FILE ("actual-parameters.galgas3", 38)))).boolEnum () ;
+    test_0 = GGS_bool (ComparisonKind::notEqual, constinArgument_inRoutineSignature.getter_count (SOURCE_FILE ("actual-parameters.galgas4", 38)).objectCompare (temp_1.getter_count (SOURCE_FILE ("actual-parameters.galgas4", 38)))).boolEnum () ;
     if (GalgasBool::boolTrue == test_0) {
       GGS_string temp_2 ;
-      const GalgasBool test_3 = GGS_bool (ComparisonKind::greaterThan, constinArgument_inRoutineSignature.getter_count (SOURCE_FILE ("actual-parameters.galgas3", 41)).objectCompare (GGS_uint (uint32_t (1U)))).boolEnum () ;
+      const GalgasBool test_3 = GGS_bool (ComparisonKind::greaterThan, constinArgument_inRoutineSignature.getter_count (SOURCE_FILE ("actual-parameters.galgas4", 41)).objectCompare (GGS_uint (uint32_t (1U)))).boolEnum () ;
       if (GalgasBool::boolTrue == test_3) {
         temp_2 = GGS_string ("s") ;
       }else if (GalgasBool::boolFalse == test_3) {
@@ -726,27 +726,27 @@ void extensionMethod_analyzeRoutineArguments (const GGS_actualParameterListAST i
       const GGS_actualParameterListAST temp_4 = inObject ;
       const GGS_actualParameterListAST temp_5 = inObject ;
       GGS_string temp_6 ;
-      const GalgasBool test_7 = GGS_bool (ComparisonKind::greaterThan, temp_5.getter_count (SOURCE_FILE ("actual-parameters.galgas3", 43)).objectCompare (GGS_uint (uint32_t (1U)))).boolEnum () ;
+      const GalgasBool test_7 = GGS_bool (ComparisonKind::greaterThan, temp_5.getter_count (SOURCE_FILE ("actual-parameters.galgas4", 43)).objectCompare (GGS_uint (uint32_t (1U)))).boolEnum () ;
       if (GalgasBool::boolTrue == test_7) {
         temp_6 = GGS_string ("s") ;
       }else if (GalgasBool::boolFalse == test_7) {
         temp_6 = GGS_string::makeEmptyString () ;
       }
       GenericArray <FixItDescription> fixItArray8 ;
-      inCompiler->emitSemanticError (constinArgument_inRoutineName.readProperty_location (), GGS_string ("the ").add_operation (constinArgument_inInvokedEntityName, inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas3", 40)).add_operation (GGS_string (" defines "), inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas3", 40)).add_operation (constinArgument_inRoutineSignature.getter_count (SOURCE_FILE ("actual-parameters.galgas3", 40)).getter_string (SOURCE_FILE ("actual-parameters.galgas3", 40)), inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas3", 40)).add_operation (GGS_string (" formal argument"), inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas3", 40)).add_operation (temp_2, inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas3", 41)).add_operation (GGS_string (" but this invocation names "), inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas3", 41)).add_operation (temp_4.getter_count (SOURCE_FILE ("actual-parameters.galgas3", 43)).getter_string (SOURCE_FILE ("actual-parameters.galgas3", 42)), inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas3", 42)).add_operation (GGS_string (" argument"), inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas3", 43)).add_operation (temp_6, inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas3", 43)), fixItArray8  COMMA_SOURCE_FILE ("actual-parameters.galgas3", 39)) ;
+      inCompiler->emitSemanticError (constinArgument_inRoutineName.readProperty_location (), GGS_string ("the ").add_operation (constinArgument_inInvokedEntityName, inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas4", 40)).add_operation (GGS_string (" defines "), inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas4", 40)).add_operation (constinArgument_inRoutineSignature.getter_count (SOURCE_FILE ("actual-parameters.galgas4", 40)).getter_string (SOURCE_FILE ("actual-parameters.galgas4", 40)), inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas4", 40)).add_operation (GGS_string (" formal argument"), inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas4", 40)).add_operation (temp_2, inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas4", 41)).add_operation (GGS_string (" but this invocation names "), inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas4", 41)).add_operation (temp_4.getter_count (SOURCE_FILE ("actual-parameters.galgas4", 43)).getter_string (SOURCE_FILE ("actual-parameters.galgas4", 42)), inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas4", 42)).add_operation (GGS_string (" argument"), inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas4", 43)).add_operation (temp_6, inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas4", 43)), fixItArray8  COMMA_SOURCE_FILE ("actual-parameters.galgas4", 39)) ;
       outArgument_outActualParameterListForGeneration.drop () ; // Release error dropped variable
     }
   }
   if (GalgasBool::boolFalse == test_0) {
     outArgument_outActualParameterListForGeneration = GGS_actualParameterListForGeneration::init (inCompiler COMMA_HERE) ;
-    GGS_stringset var_exclusiveVariableSet_2819 = GGS_stringset::init (inCompiler COMMA_HERE) ;
+    GGS_stringset var_exclusiveVariableSet_2817 = GGS_stringset::init (inCompiler COMMA_HERE) ;
     const GGS_actualParameterListAST temp_9 = inObject ;
-    UpEnumerator_formalParameterSignature enumerator_2874 (constinArgument_inRoutineSignature) ;
-    UpEnumerator_actualParameterListAST enumerator_2895 (temp_9) ;
-    while (enumerator_2874.hasCurrentObject () && enumerator_2895.hasCurrentObject ()) {
-      callExtensionMethod_checkAgainstFormalArgument ((cPtr_actualParameterAST *) enumerator_2895.current_mActualParameter (HERE).ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, enumerator_2874.current (HERE).readProperty_mFormalSelector (), enumerator_2874.current (HERE).readProperty_mFormalArgumentType (), enumerator_2874.current (HERE).readProperty_mFormalArgumentPassingMode (), ioArgument_ioVariableMap, outArgument_outActualParameterListForGeneration, var_exclusiveVariableSet_2819, ioArgument_ioInstructionListForGeneration, inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas3", 49)) ;
-      enumerator_2874.gotoNextObject () ;
-      enumerator_2895.gotoNextObject () ;
+    UpEnumerator_formalParameterSignature enumerator_2872 (constinArgument_inRoutineSignature) ;
+    UpEnumerator_actualParameterListAST enumerator_2893 (temp_9) ;
+    while (enumerator_2872.hasCurrentObject () && enumerator_2893.hasCurrentObject ()) {
+      callExtensionMethod_checkAgainstFormalArgument ((cPtr_actualParameterAST *) enumerator_2893.current_mActualParameter (HERE).ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, enumerator_2872.current (HERE).readProperty_mFormalSelector (), enumerator_2872.current (HERE).readProperty_mFormalArgumentType (), enumerator_2872.current (HERE).readProperty_mFormalArgumentPassingMode (), ioArgument_ioVariableMap, outArgument_outActualParameterListForGeneration, var_exclusiveVariableSet_2817, ioArgument_ioInstructionListForGeneration, inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas4", 49)) ;
+      enumerator_2872.gotoNextObject () ;
+      enumerator_2893.gotoNextObject () ;
     }
   }
 }
@@ -869,7 +869,7 @@ void callExtensionMethod_enterParameterInSemanticContext (cPtr_actualParameterAS
 }
 //--------------------------------------------------------------------------------------------------
 //
-//Abstract extension getter '@actualParameterAST isCompatibleWith'
+//Abstract extension func '@actualParameterAST isCompatibleWith'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -15715,8 +15715,8 @@ static const char * gLexicalMessage_galgasScanner_33__undefinedAttribute = "unde
 
 String Lexique_galgasScanner_33_::getMessageForTerminal (const int32_t inTerminalIndex) const {
   String result = "<unknown>" ;
-  if ((inTerminalIndex >= 0) && (inTerminalIndex < 191)) {
-    static const char * syntaxErrorMessageArray [191] = {kEndOfSourceLexicalErrorMessage,
+  if ((inTerminalIndex >= 0) && (inTerminalIndex < 190)) {
+    static const char * syntaxErrorMessageArray [190] = {kEndOfSourceLexicalErrorMessage,
         "an identifier",
         "a float number",
         "a literal integer",
@@ -15766,7 +15766,6 @@ String Lexique_galgasScanner_33_::getMessageForTerminal (const int32_t inTermina
         "the 'final' keyword",
         "the 'fixit' keyword",
         "the 'func' keyword",
-        "the 'getter' keyword",
         "the 'grammar' keyword",
         "the 'graph' keyword",
         "the 'guard' keyword",
@@ -16645,16 +16644,6 @@ static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33__gene
   utf32 ('i'),
   utf32 ('l'),
   utf32 ('e'),
-} ;
-
-//--- Unicode string for '$getter$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33__getter = {
-  utf32 ('g'),
-  utf32 ('e'),
-  utf32 ('t'),
-  utf32 ('t'),
-  utf32 ('e'),
-  utf32 ('r'),
 } ;
 
 //--- Unicode string for '$grammar$'
@@ -17713,7 +17702,7 @@ int32_t Lexique_galgasScanner_33_::search_into_galgasDelimitorsList (const Strin
 //             Key words table 'galgasKeyWordList'      
 //--------------------------------------------------------------------------------------------------
 
-static const int32_t ktable_size_galgasScanner_33__galgasKeyWordList = 92 ;
+static const int32_t ktable_size_galgasScanner_33__galgasKeyWordList = 91 ;
 
 static const C_unicode_lexique_table_entry ktable_for_galgasScanner_33__galgasKeyWordList [ktable_size_galgasScanner_33__galgasKeyWordList] = {
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_33__as, Lexique_galgasScanner_33_::kToken_as),
@@ -17771,7 +17760,6 @@ static const C_unicode_lexique_table_entry ktable_for_galgasScanner_33__galgasKe
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_33__while, Lexique_galgasScanner_33_::kToken_while),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_33__before, Lexique_galgasScanner_33_::kToken_before),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_33__extern, Lexique_galgasScanner_33_::kToken_extern),
-  C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_33__getter, Lexique_galgasScanner_33_::kToken_getter),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_33__insert, Lexique_galgasScanner_33_::kToken_insert),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_33__method, Lexique_galgasScanner_33_::kToken_method),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_33__option, Lexique_galgasScanner_33_::kToken_option),
@@ -18098,11 +18086,6 @@ String Lexique_galgasScanner_33_::getCurrentTokenString (const cToken * inTokenP
     case kToken_func:
       s.appendChar (utf32 ('$')) ;
       s.appendCString ("func") ;
-      s.appendChar (utf32 ('$')) ;
-      break ;
-    case kToken_getter:
-      s.appendChar (utf32 ('$')) ;
-      s.appendCString ("getter") ;
       s.appendChar (utf32 ('$')) ;
       break ;
     case kToken_grammar:
@@ -19733,7 +19716,6 @@ GGS_luint Lexique_galgasScanner_33_::synthetizedAttribute_uint_33__32_value (voi
   result.addAssignOperation (GGS_string ("final") COMMA_HERE) ;
   result.addAssignOperation (GGS_string ("fixit") COMMA_HERE) ;
   result.addAssignOperation (GGS_string ("func") COMMA_HERE) ;
-  result.addAssignOperation (GGS_string ("getter") COMMA_HERE) ;
   result.addAssignOperation (GGS_string ("grammar") COMMA_HERE) ;
   result.addAssignOperation (GGS_string ("graph") COMMA_HERE) ;
   result.addAssignOperation (GGS_string ("guard") COMMA_HERE) ;
@@ -20032,7 +20014,6 @@ static void getKeywordsForIdentifier_galgasScanner_33_ (const String & inIdentif
     ioList.appendObject ("while") ;
     ioList.appendObject ("before") ;
     ioList.appendObject ("extern") ;
-    ioList.appendObject ("getter") ;
     ioList.appendObject ("insert") ;
     ioList.appendObject ("method") ;
     ioList.appendObject ("option") ;
@@ -20084,7 +20065,7 @@ __attribute__ ((unused)) (getKeywordLists_galgasScanner_33_, getKeywordsForIdent
 //--------------------------------------------------------------------------------------------------
 
 uint32_t Lexique_galgasScanner_33_::styleIndexForTerminal (const int32_t inTerminalIndex) const {
-  static const uint32_t kTerminalSymbolStyles [191] = {0,
+  static const uint32_t kTerminalSymbolStyles [190] = {0,
     0 /* galgasScanner3_1_identifier */,
     7 /* galgasScanner3_1_double_2E_xxx */,
     6 /* galgasScanner3_1_literalInt */,
@@ -20134,7 +20115,6 @@ uint32_t Lexique_galgasScanner_33_::styleIndexForTerminal (const int32_t inTermi
     1 /* galgasScanner3_1_final */,
     1 /* galgasScanner3_1_fixit */,
     1 /* galgasScanner3_1_func */,
-    1 /* galgasScanner3_1_getter */,
     1 /* galgasScanner3_1_grammar */,
     1 /* galgasScanner3_1_graph */,
     1 /* galgasScanner3_1_guard */,

@@ -542,6 +542,8 @@ void routine_enterClassFunctionWith_33_Arguments_26__26__3F_name_3F_argTypeName_
 //--------------------------------------------------------------------------------------------------
 
 extern const cDirectoryWrapper gWrapperDirectory_0_projectCreationFileWrapper ;
+extern const cDirectoryWrapper gWrapperDirectory_1_projectCreationFileWrapper ;
+extern const cDirectoryWrapper gWrapperDirectory_2_projectCreationFileWrapper ;
 
 //--------------------------------------------------------------------------------------------------
 //

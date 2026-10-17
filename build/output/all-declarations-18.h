@@ -412,7 +412,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_classFuncExpressionFor
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension getter '@semanticExpressionForGeneration isTrueExpression'
+//Extension func '@semanticExpressionForGeneration isTrueExpression'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -559,7 +559,7 @@ class cPtr_functionPrototypeDeclarationForGeneration : public cPtr_semanticDecla
                                                                                                                           Compiler * inCompiler) ;
 
 
-//--- Extension getter headerKind
+//--- Extension func headerKind
   public: virtual class GGS_headerKind getter_headerKind (Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension method appendDeclaration1
@@ -956,7 +956,7 @@ class cPtr_onceFunctionDeclarationForGeneration : public cPtr_semanticDeclaratio
                                                                                                                          Compiler * inCompiler) ;
 
 
-//--- Extension getter headerKind
+//--- Extension func headerKind
   public: virtual class GGS_headerKind getter_headerKind (Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension method appendDeclaration1
@@ -1168,7 +1168,7 @@ class cPtr_filewrapperDeclarationForGeneration : public cPtr_semanticDeclaration
                                                                                                                             Compiler * inCompiler) ;
 
 
-//--- Extension getter headerKind
+//--- Extension func headerKind
   public: virtual class GGS_headerKind getter_headerKind (Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension method appendDeclaration1

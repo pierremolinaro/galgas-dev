@@ -15324,7 +15324,7 @@ void GGS_getterMap::setter_insertKey (GGS_lstring inLKey,
                                       Compiler * inCompiler
                                       COMMA_LOCATION_ARGS) {
   const GGS_getterMap_2E_element element (inLKey, inArgument0, inArgument1, inArgument2, inArgument3, inArgument4, inArgument5, inArgument6) ;
-  const char * kInsertErrorMessage = "the '%K' getter is already declared" ;
+  const char * kInsertErrorMessage = "the '%K' func is already declared" ;
   const char * kShadowErrorMessage = nullptr ;
   performInsert (element, kInsertErrorMessage, kShadowErrorMessage, inCompiler COMMA_THERE) ;
 }
@@ -15348,7 +15348,7 @@ void GGS_getterMap::method_searchKey (GGS_lstring inLKey,
     if (info.isNil ()) {
       GenericUniqueArray <String> nearestKeyArray ;
       findNearestKey (key, nearestKeyArray) ;
-      const char * kSearchErrorMessage = "the '%K' getter is not declared" ;
+      const char * kSearchErrorMessage = "the '%K' func is not declared" ;
       inCompiler->semanticErrorWith_K_message (inLKey, nearestKeyArray, kSearchErrorMessage COMMA_THERE) ;
     }
   }

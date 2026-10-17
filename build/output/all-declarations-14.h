@@ -89,7 +89,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lexiqueComponentAST_2E
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension getter '@lexicalTypeEnum cppTypeName' (as function)
+//Extension func '@lexicalTypeEnum cppTypeName' (as function)
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -224,16 +224,16 @@ class cPtr_semanticDeclarationWithHeaderForGeneration : public cPtr_semanticDecl
                                                                                                                Compiler * inCompiler) ;
 
 
-//--- Extension getter getImplementationCppFileName
+//--- Extension func getImplementationCppFileName
   public: virtual class GGS_string getter_getImplementationCppFileName (Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension getter hasCppHeaderFile
+//--- Extension func hasCppHeaderFile
   public: virtual class GGS_bool getter_hasCppHeaderFile (Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension getter headerKind
+//--- Extension func headerKind
   public: virtual class GGS_headerKind getter_headerKind (Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension getter isPredefined
+//--- Extension func isPredefined
   public: virtual class GGS_bool getter_isPredefined (Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Properties
@@ -429,16 +429,16 @@ class cPtr_syntaxDeclarationForGeneration : public cPtr_semanticDeclarationForGe
                                                                                 Compiler * inCompiler) ;
 
 
-//--- Extension getter getImplementationCppFileName
+//--- Extension func getImplementationCppFileName
   public: virtual class GGS_string getter_getImplementationCppFileName (Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension getter hasCppHeaderFile
+//--- Extension func hasCppHeaderFile
   public: virtual class GGS_bool getter_hasCppHeaderFile (Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension getter headerKind
+//--- Extension func headerKind
   public: virtual class GGS_headerKind getter_headerKind (Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension getter isPredefined
+//--- Extension func isPredefined
   public: virtual class GGS_bool getter_isPredefined (Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension method appendDeclaration1
@@ -654,7 +654,7 @@ class cPtr_lexiqueDeclarationForGeneration : public cPtr_semanticDeclarationWith
                                                                                                                         Compiler * inCompiler) ;
 
 
-//--- Extension getter headerKind
+//--- Extension func headerKind
   public: virtual class GGS_headerKind getter_headerKind (Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension method appendDeclaration1
@@ -864,7 +864,7 @@ class cPtr_primitiveTypeForGeneration : public cPtr_semanticTypeForGeneration {
                                                                          Compiler * inCompiler) ;
 
 
-//--- Extension getter appendPrimitiveTypeDeclaration
+//--- Extension func appendPrimitiveTypeDeclaration
   public: virtual class GGS_string getter_appendPrimitiveTypeDeclaration (Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension method appendPrimitiveTypePreDeclaration
@@ -998,7 +998,7 @@ void callExtensionMethod_analyzeSemanticInstruction (class cPtr_semanticInstruct
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension getter '@formalArgumentPassingModeAST correspondingEffectiveParameterString' (as function)
+//Extension func '@formalArgumentPassingModeAST correspondingEffectiveParameterString' (as function)
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -1104,7 +1104,7 @@ class cPtr_overrideExtensionGetterForGeneration : public cPtr_semanticDeclaratio
                                                                                                                                          Compiler * inCompiler) ;
 
 
-//--- Extension getter headerKind
+//--- Extension func headerKind
   public: virtual class GGS_headerKind getter_headerKind (Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension method appendSpecificImplementation
@@ -1311,7 +1311,7 @@ class cPtr_abstractExtensionSetterForGeneration : public cPtr_semanticDeclaratio
                                                                                                                      Compiler * inCompiler) ;
 
 
-//--- Extension getter headerKind
+//--- Extension func headerKind
   public: virtual class GGS_headerKind getter_headerKind (Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension method appendDeclaration1
@@ -1525,7 +1525,7 @@ class cPtr_extensionSetterForGeneration : public cPtr_semanticDeclarationWithHea
                                                                                                                          Compiler * inCompiler) ;
 
 
-//--- Extension getter headerKind
+//--- Extension func headerKind
   public: virtual class GGS_headerKind getter_headerKind (Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension method appendDeclaration1
@@ -1741,7 +1741,7 @@ class cPtr_extensionInitializerForGeneration : public cPtr_semanticDeclarationWi
                                                                                                                           Compiler * inCompiler) ;
 
 
-//--- Extension getter headerKind
+//--- Extension func headerKind
   public: virtual class GGS_headerKind getter_headerKind (Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension method appendSpecificImplementation
@@ -1954,7 +1954,7 @@ class cPtr_overridingExtensionSetterForGeneration : public cPtr_semanticDeclarat
                                                                                                                                    Compiler * inCompiler) ;
 
 
-//--- Extension getter headerKind
+//--- Extension func headerKind
   public: virtual class GGS_headerKind getter_headerKind (Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension method appendSpecificImplementation
@@ -2161,7 +2161,7 @@ class cPtr_abstractExtensionGetterForGeneration : public cPtr_semanticDeclaratio
                                                                                                                          Compiler * inCompiler) ;
 
 
-//--- Extension getter headerKind
+//--- Extension func headerKind
   public: virtual class GGS_headerKind getter_headerKind (Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension method appendDeclaration1
@@ -2385,7 +2385,7 @@ class cPtr_extensionGetterForGeneration : public cPtr_semanticDeclarationWithHea
                                                                                                                                  Compiler * inCompiler) ;
 
 
-//--- Extension getter headerKind
+//--- Extension func headerKind
   public: virtual class GGS_headerKind getter_headerKind (Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension method appendDeclaration1
@@ -2609,7 +2609,7 @@ class cPtr_overridingExtensionMethodForGeneration : public cPtr_semanticDeclarat
                                                                                                                                    Compiler * inCompiler) ;
 
 
-//--- Extension getter headerKind
+//--- Extension func headerKind
   public: virtual class GGS_headerKind getter_headerKind (Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension method appendSpecificImplementation
@@ -2812,7 +2812,7 @@ class cPtr_abstractExtensionMethodForGeneration : public cPtr_semanticDeclaratio
                                                                                                                      Compiler * inCompiler) ;
 
 
-//--- Extension getter headerKind
+//--- Extension func headerKind
   public: virtual class GGS_headerKind getter_headerKind (Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension method appendDeclaration1
@@ -3026,7 +3026,7 @@ class cPtr_extensionMethodForGeneration : public cPtr_semanticDeclarationWithHea
                                                                                                                          Compiler * inCompiler) ;
 
 
-//--- Extension getter headerKind
+//--- Extension func headerKind
   public: virtual class GGS_headerKind getter_headerKind (Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension method appendDeclaration1
@@ -3284,17 +3284,17 @@ class cPtr_lexicalStructuredSendInstructionAST : public cPtr_lexicalInstructionA
                                                                  Compiler * inCompiler) ;
 
 
-//--- Extension getter generateLexicalInstructionCode
+//--- Extension func generateLexicalInstructionCode
   public: virtual class GGS_string getter_generateLexicalInstructionCode (const class GGS_string inScannerClassName,
            const class GGS_lexiqueAnalysisContext inLexiqueAnalysisContext,
            Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension getter generateSwiftCocoaInstructionCode
+//--- Extension func generateSwiftCocoaInstructionCode
   public: virtual class GGS_string getter_generateSwiftCocoaInstructionCode (const class GGS_string inScannerClassName,
            const class GGS_lexiqueAnalysisContext inLexiqueAnalysisContext,
            Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension getter lexicalInstructionUsesLoopLocalVariable
+//--- Extension func lexicalInstructionUsesLoopLocalVariable
   public: virtual class GGS_bool getter_lexicalInstructionUsesLoopLocalVariable (Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension method checkLexicalInstruction
@@ -3482,7 +3482,7 @@ class cPtr_routinePrototypeDeclarationForGeneration : public cPtr_semanticDeclar
                                                                                                                                        Compiler * inCompiler) ;
 
 
-//--- Extension getter headerKind
+//--- Extension func headerKind
   public: virtual class GGS_headerKind getter_headerKind (Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension method appendDeclaration1

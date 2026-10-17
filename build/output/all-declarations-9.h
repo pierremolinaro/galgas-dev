@@ -504,7 +504,7 @@ class GGS_collectionValueElementListForGeneration_2E_element : public AC_GALGAS_
                                                                                        Compiler * inCompiler
                                                                                        COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of getter 'description'
+//--------------------------------- Implementation of func 'description'
   public: void description (String & ioString,
                             const int32_t inIndentation) const override ;
 
@@ -1087,7 +1087,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_varInExpressionForGene
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension getter '@actualOutputArgumentList initializerSignature' (as function)
+//Extension func '@actualOutputArgumentList initializerSignature' (as function)
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -1097,7 +1097,7 @@ class GGS_string extensionGetter_initializerSignature (const class GGS_actualOut
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension getter '@actualOutputArgumentList subscriptSignature' (as function)
+//Extension func '@actualOutputArgumentList subscriptSignature' (as function)
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -8764,7 +8764,7 @@ class cPtr_trueExpressionForGeneration : public cPtr_semanticExpressionForGenera
                                                          Compiler * inCompiler) ;
 
 
-//--- Extension getter isTrueExpression
+//--- Extension func isTrueExpression
   public: virtual class GGS_bool getter_isTrueExpression (Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension method generateExpression
@@ -11673,7 +11673,7 @@ class GGS_binaryOperator : public AC_GALGAS_root {
 
   public: static class GGS_binaryOperator class_func_subNoOverflow (LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of getter 'description'
+//--------------------------------- Implementation of func 'description'
   public: void description (String & ioString,
                             const int32_t inIndentation) const override ;
 
@@ -15593,7 +15593,7 @@ class GGS_comparison : public AC_GALGAS_root {
 
   public: static class GGS_comparison class_func_sameInstance (LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of getter 'description'
+//--------------------------------- Implementation of func 'description'
   public: void description (String & ioString,
                             const int32_t inIndentation) const override ;
 

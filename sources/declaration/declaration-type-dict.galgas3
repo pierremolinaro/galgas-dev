@@ -28,7 +28,7 @@ final class @dictDeclarationAST : @semanticDeclarationAST {
 
 //--------------------------------------------------------------------------------------------------
 
-override getter @dictDeclarationAST keyRepresentation ->@string {
+override func @dictDeclarationAST keyRepresentation ->@string {
   result = "dict @" + self.mDictTypeName
 }
 
@@ -299,7 +299,7 @@ override method @dictDeclarationAST enterDeclarationInSemanticContext
       !true
       !attributeTypeIndex
       !.isBasic
-      !"" // getter name is not obsolete, no replacement getter
+      !"" // func name is not obsolete, no replacement func
     ]
   end
 //--------- Enter "set...Attribute...forKey" setters, and 'with' accessor

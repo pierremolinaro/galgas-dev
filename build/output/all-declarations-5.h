@@ -64,7 +64,7 @@ class GGS_selfMutability : public AC_GALGAS_root {
 
   public: static class GGS_selfMutability class_func_selfAndPropertiesAreMutable (LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of getter 'description'
+//--------------------------------- Implementation of func 'description'
   public: void description (String & ioString,
                             const int32_t inIndentation) const override ;
 //--------------------------------- Comparison
@@ -99,7 +99,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_selfMutability ;
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension getter '@selfMutability selfIsMutable' (as function)
+//Extension func '@selfMutability selfIsMutable' (as function)
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -168,7 +168,7 @@ class GGS_selfAvailability_2E_available : public AC_GALGAS_root {
                                                                   Compiler * inCompiler
                                                                   COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of getter 'description'
+//--------------------------------- Implementation of func 'description'
   public: void description (String & ioString,
                             const int32_t inIndentation) const override ;
 //--------------------------------- Comparison
@@ -274,7 +274,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_selfAvailability_2E_av
 
 //--------------------------------------------------------------------------------------------------
 //
-//Abstract extension getter '@lexicalExpressionAST generateConditionCode'
+//Abstract extension func '@lexicalExpressionAST generateConditionCode'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -285,7 +285,7 @@ class GGS_string callExtensionGetter_generateConditionCode (const class cPtr_lex
 
 //--------------------------------------------------------------------------------------------------
 //
-//Abstract extension getter '@lexicalRoutineOrFunctionFormalInputArgumentAST generateRoutineOrFunctionArgument'
+//Abstract extension func '@lexicalRoutineOrFunctionFormalInputArgumentAST generateRoutineOrFunctionArgument'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -295,7 +295,7 @@ class GGS_string callExtensionGetter_generateRoutineOrFunctionArgument (const cl
 
 //--------------------------------------------------------------------------------------------------
 //
-//Abstract extension getter '@lexicalSendDefaultActionAST generateDefaultSendCode'
+//Abstract extension func '@lexicalSendDefaultActionAST generateDefaultSendCode'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -306,7 +306,7 @@ class GGS_string callExtensionGetter_generateDefaultSendCode (const class cPtr_l
 
 //--------------------------------------------------------------------------------------------------
 //
-//Abstract extension getter '@lexicalInstructionAST generateLexicalInstructionCode'
+//Abstract extension func '@lexicalInstructionAST generateLexicalInstructionCode'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -318,7 +318,7 @@ class GGS_string callExtensionGetter_generateLexicalInstructionCode (const class
 
 //--------------------------------------------------------------------------------------------------
 //
-//Abstract extension getter '@lexicalInstructionAST lexicalInstructionUsesLoopLocalVariable'
+//Abstract extension func '@lexicalInstructionAST lexicalInstructionUsesLoopLocalVariable'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -328,7 +328,7 @@ class GGS_bool callExtensionGetter_lexicalInstructionUsesLoopLocalVariable (cons
 
 //--------------------------------------------------------------------------------------------------
 //
-//Abstract extension getter '@abstractLexicalRuleAST generateLexicalRuleCode'
+//Abstract extension func '@abstractLexicalRuleAST generateLexicalRuleCode'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -340,7 +340,7 @@ class GGS_string callExtensionGetter_generateLexicalRuleCode (const class cPtr_a
 
 //--------------------------------------------------------------------------------------------------
 //
-//Abstract extension getter '@abstractLexicalRuleAST lexicalRuleUsesLoopLocalVar'
+//Abstract extension func '@abstractLexicalRuleAST lexicalRuleUsesLoopLocalVar'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -616,7 +616,7 @@ class GGS_programListForGeneration_2E_element : public AC_GALGAS_root {
                                                                         Compiler * inCompiler
                                                                         COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of getter 'description'
+//--------------------------------- Implementation of func 'description'
   public: void description (String & ioString,
                             const int32_t inIndentation) const override ;
 
@@ -641,7 +641,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_programListForGenerati
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension getter '@functionSignature initializerSignature' (as function)
+//Extension func '@functionSignature initializerSignature' (as function)
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -651,7 +651,7 @@ class GGS_string extensionGetter_initializerSignature (const class GGS_functionS
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension getter '@functionSignature subcriptSignature' (as function)
+//Extension func '@functionSignature subcriptSignature' (as function)
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -1023,7 +1023,7 @@ class GGS_optionalMethodSignature_2E_element : public AC_GALGAS_root {
                                                                        Compiler * inCompiler
                                                                        COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of getter 'description'
+//--------------------------------- Implementation of func 'description'
   public: void description (String & ioString,
                             const int32_t inIndentation) const override ;
 
@@ -1048,7 +1048,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_optionalMethodSignatur
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension getter '@typedPropertyList initializerSignature' (as function)
+//Extension func '@typedPropertyList initializerSignature' (as function)
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -1106,7 +1106,7 @@ class GGS_propertyInCollectionInitializationAST_2E_some : public AC_GALGAS_root 
                                                                                   Compiler * inCompiler
                                                                                   COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of getter 'description'
+//--------------------------------- Implementation of func 'description'
   public: void description (String & ioString,
                             const int32_t inIndentation) const override ;
 //--------------------------------- Comparison
@@ -1260,7 +1260,7 @@ class GGS_AccessControl_2E_fileprivateAccess : public AC_GALGAS_root {
                                                                        Compiler * inCompiler
                                                                        COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of getter 'description'
+//--------------------------------- Implementation of func 'description'
   public: void description (String & ioString,
                             const int32_t inIndentation) const override ;
 
@@ -1410,7 +1410,7 @@ class GGS_AccessControl_2E_fileprivateSetAccess : public AC_GALGAS_root {
                                                                           Compiler * inCompiler
                                                                           COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of getter 'description'
+//--------------------------------- Implementation of func 'description'
   public: void description (String & ioString,
                             const int32_t inIndentation) const override ;
 
@@ -1560,7 +1560,7 @@ class GGS_AccessControl_2E_privateAccess : public AC_GALGAS_root {
                                                                    Compiler * inCompiler
                                                                    COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of getter 'description'
+//--------------------------------- Implementation of func 'description'
   public: void description (String & ioString,
                             const int32_t inIndentation) const override ;
 
@@ -1710,7 +1710,7 @@ class GGS_AccessControl_2E_privateSetAccess : public AC_GALGAS_root {
                                                                       Compiler * inCompiler
                                                                       COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of getter 'description'
+//--------------------------------- Implementation of func 'description'
   public: void description (String & ioString,
                             const int32_t inIndentation) const override ;
 
@@ -1860,7 +1860,7 @@ class GGS_AccessControl_2E_protectedAccess : public AC_GALGAS_root {
                                                                      Compiler * inCompiler
                                                                      COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of getter 'description'
+//--------------------------------- Implementation of func 'description'
   public: void description (String & ioString,
                             const int32_t inIndentation) const override ;
 
@@ -2010,7 +2010,7 @@ class GGS_AccessControl_2E_protectedSetAccess : public AC_GALGAS_root {
                                                                         Compiler * inCompiler
                                                                         COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of getter 'description'
+//--------------------------------- Implementation of func 'description'
   public: void description (String & ioString,
                             const int32_t inIndentation) const override ;
 
@@ -2412,7 +2412,7 @@ class GGS_associatedValueDescriptorList_2E_element : public AC_GALGAS_root {
                                                                              Compiler * inCompiler
                                                                              COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of getter 'description'
+//--------------------------------- Implementation of func 'description'
   public: void description (String & ioString,
                             const int32_t inIndentation) const override ;
 //--------------------------------- Comparison
@@ -2509,7 +2509,7 @@ class GGS_constantIndexMap_2E_element : public AC_GALGAS_root {
                                                                 Compiler * inCompiler
                                                                 COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of getter 'description'
+//--------------------------------- Implementation of func 'description'
   public: void description (String & ioString,
                             const int32_t inIndentation) const override ;
 //--------------------------------- Comparison
@@ -2666,7 +2666,7 @@ class GGS_optionDefaultValueEnumAST : public AC_GALGAS_root {
 
   public: static class GGS_optionDefaultValueEnumAST class_func_unsignedDefaultValue (LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of getter 'description'
+//--------------------------------- Implementation of func 'description'
   public: void description (String & ioString,
                             const int32_t inIndentation) const override ;
 //--------------------------------- Comparison
@@ -3157,7 +3157,7 @@ class GGS_commandLineOptionListAST_2E_element : public AC_GALGAS_root {
                                                                         Compiler * inCompiler
                                                                         COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of getter 'description'
+//--------------------------------- Implementation of func 'description'
   public: void description (String & ioString,
                             const int32_t inIndentation) const override ;
 
@@ -3252,7 +3252,7 @@ class cPtr_optionComponentDeclarationAST : public cPtr_semanticDeclarationAST {
                                                                            Compiler * inCompiler) ;
 
 
-//--- Extension getter keyRepresentation
+//--- Extension func keyRepresentation
   public: virtual class GGS_string getter_keyRepresentation (Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension method enterDeclarationInGraph
@@ -3685,7 +3685,7 @@ class GGS_commandLineOptionSortedList_2E_element : public AC_GALGAS_root {
                                                                            Compiler * inCompiler
                                                                            COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of getter 'description'
+//--------------------------------- Implementation of func 'description'
   public: void description (String & ioString,
                             const int32_t inIndentation) const override ;
 
@@ -4041,7 +4041,7 @@ class GGS_commandLineOptionMap_2E_element : public AC_GALGAS_root {
                                                                     Compiler * inCompiler
                                                                     COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of getter 'description'
+//--------------------------------- Implementation of func 'description'
   public: void description (String & ioString,
                             const int32_t inIndentation) const override ;
 
@@ -4301,7 +4301,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_abstractLexicalRuleAST
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension getter '@lexicalRuleListAST useLoopLocalVar' (as function)
+//Extension func '@lexicalRuleListAST useLoopLocalVar' (as function)
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -4375,17 +4375,17 @@ class cPtr_lexicalImplicitRuleAST : public cPtr_abstractLexicalRuleAST {
                                                 Compiler * inCompiler) ;
 
 
-//--- Extension getter generateLexicalRuleCode
+//--- Extension func generateLexicalRuleCode
   public: virtual class GGS_string getter_generateLexicalRuleCode (const class GGS_string inScannerClassName,
            const class GGS_lexiqueAnalysisContext inLexiqueAnalysisContext,
            Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension getter generateSwiftCocoaCode
+//--- Extension func generateSwiftCocoaCode
   public: virtual class GGS_string getter_generateSwiftCocoaCode (const class GGS_string inScannerClassName,
            const class GGS_lexiqueAnalysisContext inLexiqueAnalysisContext,
            Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension getter lexicalRuleUsesLoopLocalVar
+//--- Extension func lexicalRuleUsesLoopLocalVar
   public: virtual class GGS_bool getter_lexicalRuleUsesLoopLocalVar (Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension method checkLexicalRule
@@ -4566,17 +4566,17 @@ class cPtr_lexicalExplicitRuleAST : public cPtr_abstractLexicalRuleAST {
                                                     Compiler * inCompiler) ;
 
 
-//--- Extension getter generateLexicalRuleCode
+//--- Extension func generateLexicalRuleCode
   public: virtual class GGS_string getter_generateLexicalRuleCode (const class GGS_string inScannerClassName,
            const class GGS_lexiqueAnalysisContext inLexiqueAnalysisContext,
            Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension getter generateSwiftCocoaCode
+//--- Extension func generateSwiftCocoaCode
   public: virtual class GGS_string getter_generateSwiftCocoaCode (const class GGS_string inScannerClassName,
            const class GGS_lexiqueAnalysisContext inLexiqueAnalysisContext,
            Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension getter lexicalRuleUsesLoopLocalVar
+//--- Extension func lexicalRuleUsesLoopLocalVar
   public: virtual class GGS_bool getter_lexicalRuleUsesLoopLocalVar (Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension method checkLexicalRule
@@ -4750,7 +4750,7 @@ class GGS_sentLexicalAttributeListAST_2E_element : public AC_GALGAS_root {
                                                                            Compiler * inCompiler
                                                                            COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of getter 'description'
+//--------------------------------- Implementation of func 'description'
   public: void description (String & ioString,
                             const int32_t inIndentation) const override ;
 
@@ -4856,7 +4856,7 @@ class GGS_lexicalListEntryListAST_2E_element : public AC_GALGAS_root {
                                                                        Compiler * inCompiler
                                                                        COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of getter 'description'
+//--------------------------------- Implementation of func 'description'
   public: void description (String & ioString,
                             const int32_t inIndentation) const override ;
 
@@ -4949,11 +4949,11 @@ class cPtr_lexicalOrExpressionAST : public cPtr_lexicalExpressionAST {
                                                     Compiler * inCompiler) ;
 
 
-//--- Extension getter generateConditionCode
+//--- Extension func generateConditionCode
   public: virtual class GGS_string getter_generateConditionCode (const class GGS_lexiqueAnalysisContext inLexiqueAnalysisContext,
            Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension getter generateSwiftCocoaConditionCode
+//--- Extension func generateSwiftCocoaConditionCode
   public: virtual class GGS_string getter_generateSwiftCocoaConditionCode (const class GGS_lexiqueAnalysisContext inLexiqueAnalysisContext,
            Compiler * COMMA_LOCATION_ARGS) const override ;
 
@@ -5133,11 +5133,11 @@ class cPtr_lexicalCharacterSetMatchAST : public cPtr_lexicalExpressionAST {
                                                      Compiler * inCompiler) ;
 
 
-//--- Extension getter generateConditionCode
+//--- Extension func generateConditionCode
   public: virtual class GGS_string getter_generateConditionCode (const class GGS_lexiqueAnalysisContext inLexiqueAnalysisContext,
            Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension getter generateSwiftCocoaConditionCode
+//--- Extension func generateSwiftCocoaConditionCode
   public: virtual class GGS_string getter_generateSwiftCocoaConditionCode (const class GGS_lexiqueAnalysisContext inLexiqueAnalysisContext,
            Compiler * COMMA_LOCATION_ARGS) const override ;
 
@@ -5315,11 +5315,11 @@ class cPtr_lexicalCharacterMatchAST : public cPtr_lexicalExpressionAST {
                                                   Compiler * inCompiler) ;
 
 
-//--- Extension getter generateConditionCode
+//--- Extension func generateConditionCode
   public: virtual class GGS_string getter_generateConditionCode (const class GGS_lexiqueAnalysisContext inLexiqueAnalysisContext,
            Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension getter generateSwiftCocoaConditionCode
+//--- Extension func generateSwiftCocoaConditionCode
   public: virtual class GGS_string getter_generateSwiftCocoaConditionCode (const class GGS_lexiqueAnalysisContext inLexiqueAnalysisContext,
            Compiler * COMMA_LOCATION_ARGS) const override ;
 
@@ -5501,11 +5501,11 @@ class cPtr_lexicalCharacterIntervalMatchAST : public cPtr_lexicalExpressionAST {
                                                               Compiler * inCompiler) ;
 
 
-//--- Extension getter generateConditionCode
+//--- Extension func generateConditionCode
   public: virtual class GGS_string getter_generateConditionCode (const class GGS_lexiqueAnalysisContext inLexiqueAnalysisContext,
            Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension getter generateSwiftCocoaConditionCode
+//--- Extension func generateSwiftCocoaConditionCode
   public: virtual class GGS_string getter_generateSwiftCocoaConditionCode (const class GGS_lexiqueAnalysisContext inLexiqueAnalysisContext,
            Compiler * COMMA_LOCATION_ARGS) const override ;
 
@@ -5685,11 +5685,11 @@ class cPtr_lexicalStringMatchAST : public cPtr_lexicalExpressionAST {
                                                Compiler * inCompiler) ;
 
 
-//--- Extension getter generateConditionCode
+//--- Extension func generateConditionCode
   public: virtual class GGS_string getter_generateConditionCode (const class GGS_lexiqueAnalysisContext inLexiqueAnalysisContext,
            Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension getter generateSwiftCocoaConditionCode
+//--- Extension func generateSwiftCocoaConditionCode
   public: virtual class GGS_string getter_generateSwiftCocoaConditionCode (const class GGS_lexiqueAnalysisContext inLexiqueAnalysisContext,
            Compiler * COMMA_LOCATION_ARGS) const override ;
 
@@ -5871,11 +5871,11 @@ class cPtr_lexicalStringNotMatchAST : public cPtr_lexicalExpressionAST {
                                                       Compiler * inCompiler) ;
 
 
-//--- Extension getter generateConditionCode
+//--- Extension func generateConditionCode
   public: virtual class GGS_string getter_generateConditionCode (const class GGS_lexiqueAnalysisContext inLexiqueAnalysisContext,
            Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension getter generateSwiftCocoaConditionCode
+//--- Extension func generateSwiftCocoaConditionCode
   public: virtual class GGS_string getter_generateSwiftCocoaConditionCode (const class GGS_lexiqueAnalysisContext inLexiqueAnalysisContext,
            Compiler * COMMA_LOCATION_ARGS) const override ;
 
@@ -6134,11 +6134,11 @@ class cPtr_lexicalSendTerminalByDefaultAST : public cPtr_lexicalSendDefaultActio
                                                          Compiler * inCompiler) ;
 
 
-//--- Extension getter generateDefaultSendCode
+//--- Extension func generateDefaultSendCode
   public: virtual class GGS_string getter_generateDefaultSendCode (const class GGS_string inScannerClassName,
            Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension getter generateSwiftCocoaDefaultSendCode
+//--- Extension func generateSwiftCocoaDefaultSendCode
   public: virtual class GGS_string getter_generateSwiftCocoaDefaultSendCode (const class GGS_string inScannerClassName,
            Compiler * COMMA_LOCATION_ARGS) const override ;
 
@@ -6316,11 +6316,11 @@ class cPtr_lexicalErrorByDefaultAST : public cPtr_lexicalSendDefaultActionAST {
                                                   Compiler * inCompiler) ;
 
 
-//--- Extension getter generateDefaultSendCode
+//--- Extension func generateDefaultSendCode
   public: virtual class GGS_string getter_generateDefaultSendCode (const class GGS_string inScannerClassName,
            Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension getter generateSwiftCocoaDefaultSendCode
+//--- Extension func generateSwiftCocoaDefaultSendCode
   public: virtual class GGS_string getter_generateSwiftCocoaDefaultSendCode (const class GGS_string inScannerClassName,
            Compiler * COMMA_LOCATION_ARGS) const override ;
 
@@ -6779,7 +6779,7 @@ class GGS_lexicalFunctionCallActualArgumentListAST_2E_element : public AC_GALGAS
                                                                                         Compiler * inCompiler
                                                                                         COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of getter 'description'
+//--------------------------------- Implementation of func 'description'
   public: void description (String & ioString,
                             const int32_t inIndentation) const override ;
 
@@ -6868,10 +6868,10 @@ class cPtr_lexicalAttributeInputArgumentAST : public cPtr_lexicalRoutineOrFuncti
                                                           Compiler * inCompiler) ;
 
 
-//--- Extension getter generateRoutineOrFunctionArgument
+//--- Extension func generateRoutineOrFunctionArgument
   public: virtual class GGS_string getter_generateRoutineOrFunctionArgument (Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension getter generateSwiftCocoaRoutineOrFunctionArgument
+//--- Extension func generateSwiftCocoaRoutineOrFunctionArgument
   public: virtual class GGS_string getter_generateSwiftCocoaRoutineOrFunctionArgument (Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension method checkLexicalFunctionCallArgument
@@ -7054,10 +7054,10 @@ class cPtr_lexicalCharacterInputArgumentAST : public cPtr_lexicalRoutineOrFuncti
                                                           Compiler * inCompiler) ;
 
 
-//--- Extension getter generateRoutineOrFunctionArgument
+//--- Extension func generateRoutineOrFunctionArgument
   public: virtual class GGS_string getter_generateRoutineOrFunctionArgument (Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension getter generateSwiftCocoaRoutineOrFunctionArgument
+//--- Extension func generateSwiftCocoaRoutineOrFunctionArgument
   public: virtual class GGS_string getter_generateSwiftCocoaRoutineOrFunctionArgument (Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension method checkLexicalFunctionCallArgument
@@ -7240,10 +7240,10 @@ class cPtr_lexicalUnsignedInputArgumentAST : public cPtr_lexicalRoutineOrFunctio
                                                          Compiler * inCompiler) ;
 
 
-//--- Extension getter generateRoutineOrFunctionArgument
+//--- Extension func generateRoutineOrFunctionArgument
   public: virtual class GGS_string getter_generateRoutineOrFunctionArgument (Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension getter generateSwiftCocoaRoutineOrFunctionArgument
+//--- Extension func generateSwiftCocoaRoutineOrFunctionArgument
   public: virtual class GGS_string getter_generateSwiftCocoaRoutineOrFunctionArgument (Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension method checkLexicalFunctionCallArgument
@@ -7426,10 +7426,10 @@ class cPtr_lexicalCurrentCharacterInputArgumentAST : public cPtr_lexicalRoutineO
                                                                  Compiler * inCompiler) ;
 
 
-//--- Extension getter generateRoutineOrFunctionArgument
+//--- Extension func generateRoutineOrFunctionArgument
   public: virtual class GGS_string getter_generateRoutineOrFunctionArgument (Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension getter generateSwiftCocoaRoutineOrFunctionArgument
+//--- Extension func generateSwiftCocoaRoutineOrFunctionArgument
   public: virtual class GGS_string getter_generateSwiftCocoaRoutineOrFunctionArgument (Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension method checkLexicalFunctionCallArgument
@@ -7616,10 +7616,10 @@ class cPtr_lexicalFunctionInputArgumentAST : public cPtr_lexicalRoutineOrFunctio
                                                              Compiler * inCompiler) ;
 
 
-//--- Extension getter generateRoutineOrFunctionArgument
+//--- Extension func generateRoutineOrFunctionArgument
   public: virtual class GGS_string getter_generateRoutineOrFunctionArgument (Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension getter generateSwiftCocoaRoutineOrFunctionArgument
+//--- Extension func generateSwiftCocoaRoutineOrFunctionArgument
   public: virtual class GGS_string getter_generateSwiftCocoaRoutineOrFunctionArgument (Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension method checkLexicalFunctionCallArgument
@@ -7740,7 +7740,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lexicalFunctionInputAr
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension getter '@lexicalArgumentModeAST lexicalFormalModeName' (as function)
+//Extension func '@lexicalArgumentModeAST lexicalFormalModeName' (as function)
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -7750,7 +7750,7 @@ class GGS_string extensionGetter_lexicalFormalModeName (const class GGS_lexicalA
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension getter '@lexicalArgumentModeAST cppConstInFormalArgument' (as function)
+//Extension func '@lexicalArgumentModeAST cppConstInFormalArgument' (as function)
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -7760,7 +7760,7 @@ class GGS_string extensionGetter_cppConstInFormalArgument (const class GGS_lexic
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension getter '@lexicalArgumentModeAST cppReferenceInFormalArgument' (as function)
+//Extension func '@lexicalArgumentModeAST cppReferenceInFormalArgument' (as function)
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -7770,7 +7770,7 @@ class GGS_string extensionGetter_cppReferenceInFormalArgument (const class GGS_l
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension getter '@lexicalArgumentModeAST cocoaPointerInFormalArgument' (as function)
+//Extension func '@lexicalArgumentModeAST cocoaPointerInFormalArgument' (as function)
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -8036,7 +8036,7 @@ class GGS_lexicalTypeMap_2E_element : public AC_GALGAS_root {
                                                               Compiler * inCompiler
                                                               COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of getter 'description'
+//--------------------------------- Implementation of func 'description'
   public: void description (String & ioString,
                             const int32_t inIndentation) const override ;
 
@@ -8150,7 +8150,7 @@ void callExtensionMethod_appendSyntaxSignature (class cPtr_semanticInstructionFo
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension getter '@semanticInstructionForGeneration compareInstructionSyntaxSignature'
+//Extension func '@semanticInstructionForGeneration compareInstructionSyntaxSignature'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -8161,7 +8161,7 @@ class GGS_bool callExtensionGetter_compareInstructionSyntaxSignature (const cPtr
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension getter '@location sourceFile' (as function)
+//Extension func '@location sourceFile' (as function)
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -8171,7 +8171,7 @@ class GGS_string extensionGetter_sourceFile (const class GGS_location & inObject
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension getter '@location commaSourceFile' (as function)
+//Extension func '@location commaSourceFile' (as function)
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -8459,7 +8459,7 @@ class GGS_grammarLabelMap_2E_element : public AC_GALGAS_root {
                                                                Compiler * inCompiler
                                                                COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of getter 'description'
+//--------------------------------- Implementation of func 'description'
   public: void description (String & ioString,
                             const int32_t inIndentation) const override ;
 
@@ -8642,7 +8642,7 @@ class GGS_grammarMap_2E_element : public AC_GALGAS_root {
                                                           Compiler * inCompiler
                                                           COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of getter 'description'
+//--------------------------------- Implementation of func 'description'
   public: void description (String & ioString,
                             const int32_t inIndentation) const override ;
 
@@ -8825,7 +8825,7 @@ class GGS_functionMap_2E_element : public AC_GALGAS_root {
                                                            Compiler * inCompiler
                                                            COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of getter 'description'
+//--------------------------------- Implementation of func 'description'
   public: void description (String & ioString,
                             const int32_t inIndentation) const override ;
 
@@ -9258,7 +9258,7 @@ class GGS_wrapperFileMap_2E_element : public AC_GALGAS_root {
                                                               Compiler * inCompiler
                                                               COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of getter 'description'
+//--------------------------------- Implementation of func 'description'
   public: void description (String & ioString,
                             const int32_t inIndentation) const override ;
 
@@ -9666,7 +9666,7 @@ class GGS_wrapperDirectoryMap_2E_element : public AC_GALGAS_root {
                                                                    Compiler * inCompiler
                                                                    COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of getter 'description'
+//--------------------------------- Implementation of func 'description'
   public: void description (String & ioString,
                             const int32_t inIndentation) const override ;
 
@@ -10049,7 +10049,7 @@ class GGS_filewrapperTemplateMap_2E_element : public AC_GALGAS_root {
                                                                       Compiler * inCompiler
                                                                       COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of getter 'description'
+//--------------------------------- Implementation of func 'description'
   public: void description (String & ioString,
                             const int32_t inIndentation) const override ;
 
@@ -10265,7 +10265,7 @@ class GGS_filewrapperMap_2E_element : public AC_GALGAS_root {
                                                               Compiler * inCompiler
                                                               COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of getter 'description'
+//--------------------------------- Implementation of func 'description'
   public: void description (String & ioString,
                             const int32_t inIndentation) const override ;
 

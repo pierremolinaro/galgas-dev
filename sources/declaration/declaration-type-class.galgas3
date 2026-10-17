@@ -197,7 +197,7 @@ final class @classDeclarationAST : @semanticDeclarationAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override getter keyRepresentation -> @string {
+  override func keyRepresentation -> @string {
     result = "class @" + self.mClassTypeName
   }
 
@@ -340,7 +340,7 @@ final class @classDeclarationAST : @semanticDeclarationAST {
       ]
       if [getterMap hasKey !property.name.string] then
         error (property.name
-        : "'" + property.name + "' is the name of a prefefined or a user defined getter")
+        : "'" + property.name + "' is the name of a prefefined or a user defined func")
       end
     end
   //--- Typed attribute list
@@ -751,7 +751,7 @@ func generateClassGetterDeclaration ?let @lstring inGetterName
 //---
   result = ""
   if generateMethodDeclaration then
-    result = "//--- Extension getter " + inGetterName + "\n"
+    result = "//--- Extension func " + inGetterName + "\n"
     result += "  public: virtual class GGS_" + inReturnedType.identifierRepresentation
     result += " getter_" + inGetterName.string.identifierRepresentation + " ("
     var first = true

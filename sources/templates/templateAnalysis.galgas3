@@ -87,9 +87,9 @@ override method @templateGetterCallInExpressionAST templateExpressionAnalysis
   if receiverType.definition.typeKind.isStructType || receiverType.definition.typeKind.isClassType,
      self.mExpressionList.count == 0,
      [receiverType.definition.propertyMap hasKey !self.mGetterName] then
-    error (self.mExpressionLocation : "use dot notation, instead og getter call" spoil outExpression)
+    error (self.mExpressionLocation : "use dot notation, instead of func call" spoil outExpression)
   else
-  //--- Get getter map
+  //--- Get func map
     let @getterMap getterMap = receiverType.definition.getterMap
   //--- Search contructor
     var @functionSignature getterFormalArgumentTypeList
@@ -109,7 +109,7 @@ override method @templateGetterCallInExpressionAST templateExpressionAnalysis
         ?let actualGetterNameString
       ]
       if actualGetterNameString != "" then
-        error (self.mGetterName : "obsolete getter" fixit replace actualGetterName)
+        error (self.mGetterName : "obsolete func" fixit replace actualGetterName)
       end
     else
       var @uint matchingReaderCount = 0
@@ -135,7 +135,7 @@ override method @templateGetterCallInExpressionAST templateExpressionAnalysis
         if matchingReaderCount == 0 then
           error (self.mGetterName
           : "the '@" + receiverTypeName + "' struct type does not define the '" + self.mGetterName.string
-          + "' getter, and none of its fields defines it"
+          + "' func, and none of its fields defines it"
           spoil getterFormalArgumentTypeList, hasCompilerArgument, returnedType, kind)
         elsif matchingReaderCount > 1 then
           var @string s = ""
@@ -145,23 +145,23 @@ override method @templateGetterCallInExpressionAST templateExpressionAnalysis
           end
           error (self.mGetterName
           : "the '@"+ receiverTypeName + "' struct type does not define the '" + self.mGetterName.string
-          + "' getter, and several of its fields defines it:" + s + " (exactly one field should define it)"
+          + "' func, and several of its fields defines it:" + s + " (exactly one field should define it)"
           spoil getterFormalArgumentTypeList, hasCompilerArgument, returnedType, kind)
         end
       elsif getterMap.count == 0 then
         error (self.mGetterName
-        : "the '@"+ receiverTypeName + "' type does not define any getter"
+        : "the '@"+ receiverTypeName + "' type does not define any func"
         spoil getterFormalArgumentTypeList, hasCompilerArgument, returnedType, kind)
       else
         error (self.mGetterName
-        : "the '@"+ receiverTypeName + "' type does not define the '" + self.mGetterName + "' getter"
+        : "the '@"+ receiverTypeName + "' type does not define the '" + self.mGetterName + "' func"
         spoil getterFormalArgumentTypeList, hasCompilerArgument, returnedType, kind
         fixit replace getterMap.keyList)
       end
     end
   //--- Analysis arguments
     if self.mExpressionList.count != getterFormalArgumentTypeList.count then
-      error (self.mGetterName: "calling the '" + self.mGetterName + "' getter of '@" + receiverTypeName + "' requires "
+      error (self.mGetterName: "calling the '" + self.mGetterName + "' func of '@" + receiverTypeName + "' requires "
       + getterFormalArgumentTypeList.count.string + " parameter(s), while this call has "
       + self.mExpressionList.count.string + " parameter(s)" spoil outExpression)
     else
@@ -183,7 +183,7 @@ override method @templateGetterCallInExpressionAST templateExpressionAnalysis
         constructorEffectiveParameterList += !exp
       end
       if actualGetterName != self.mGetterName.string then
-        error (self.mGetterName : "obsolete getter" fixit replace actualGetterName)
+        error (self.mGetterName : "obsolete func" fixit replace actualGetterName)
       end
       outExpression = @getterCallExpressionForGeneration {
         !returnedType

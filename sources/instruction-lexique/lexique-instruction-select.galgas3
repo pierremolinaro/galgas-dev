@@ -125,7 +125,7 @@ override method @lexicalSelectInstructionAST checkLexicalInstruction (
 
 //--------------------------------------------------------------------------------------------------
 
-override getter @lexicalSelectInstructionAST generateSwiftCocoaInstructionCode
+override func @lexicalSelectInstructionAST generateSwiftCocoaInstructionCode
   ?let @string inScannerClassName
   ?let @lexiqueAnalysisContext inLexiqueAnalysisContext
   -> @string outGeneratedCode {
@@ -160,7 +160,7 @@ override getter @lexicalSelectInstructionAST generateSwiftCocoaInstructionCode
 //! C++ CODE GENERATION
 //--------------------------------------------------------------------------------------------------
 
-override getter @lexicalSelectInstructionAST lexicalInstructionUsesLoopLocalVariable -> @bool {
+override func @lexicalSelectInstructionAST lexicalInstructionUsesLoopLocalVariable -> @bool {
   result = false
   for (* selectInstructionList) in self.mLexicalSelectBranchList while not result do
     for (instruction) in selectInstructionList while not result do
@@ -174,7 +174,7 @@ override getter @lexicalSelectInstructionAST lexicalInstructionUsesLoopLocalVari
 
 //·································································································
 
-override getter @lexicalSelectInstructionAST generateLexicalInstructionCode
+override func @lexicalSelectInstructionAST generateLexicalInstructionCode
   ?let @string inScannerClassName
   ?let @lexiqueAnalysisContext inLexiqueAnalysisContext
   -> @string {
