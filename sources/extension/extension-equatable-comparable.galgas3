@@ -85,7 +85,7 @@ proc handleEquatableComparableExtension (?!@equatableExtensionMap ioEquatableExt
     [!?ioEquatableExtensionMap removeKey !inTypeName ?*]
     let currentlyEquatable = [ioFeatures contains !.equatable]
     let currentlyComparable = [ioFeatures contains !.comparable]
-    switch node.mExtension 
+    switch node.mExtension
     case equatable :
       if currentlyComparable then
         error (location : "useless extension, the type is already declared comparable")
@@ -139,7 +139,7 @@ final class @equatableExtensionAST : @semanticDeclarationAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method enterDeclarationInGraph (
+  override proc enterDeclarationInGraph (
           ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph,
           ?!@equatableExtensionMap ioEquatableExtensionMap,
           ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext,
@@ -179,7 +179,7 @@ final class @equatableExtensionAST : @semanticDeclarationAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method enterDeclarationInSemanticContext (
+  override proc enterDeclarationInSemanticContext (
     ?!@equatableExtensionMap unused ioEquatableExtensionMap,
     ?let @extensionInitializerForBuildingContext unused inExtensionInitializerMapForBuildingContext,
     ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext,
@@ -191,7 +191,7 @@ final class @equatableExtensionAST : @semanticDeclarationAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method semanticAnalysis (
+  override proc semanticAnalysis (
                 ?!@lstringlist unused ioUsefulnessRootEntities,
                 ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph,
                 ?let @string unused inProductDirectory,

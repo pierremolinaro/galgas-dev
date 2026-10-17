@@ -94,7 +94,7 @@ final class @methodCallInstructionAST : @semanticInstructionAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method enterInstructionInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
+  override proc enterInstructionInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
     [self.mReceiverExpression enterExpressionInSemanticContext !?ioTypeMap]
     for (mActualParameter) in self.mActualParameterList do
       [mActualParameter enterParameterInSemanticContext !?ioTypeMap]
@@ -103,7 +103,7 @@ final class @methodCallInstructionAST : @semanticInstructionAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method analyzeSemanticInstruction (
+  override proc analyzeSemanticInstruction (
                         ?let @lstring inUsefulnessCallerEntityName,
                         ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
                         ?let @analysisContext inAnalysisContext,
@@ -124,7 +124,7 @@ final class @methodCallInstructionAST : @semanticInstructionAST {
       !?ioVariableMap
       ?let @semanticExpressionForGeneration receiverExpression
     ]
-  //--- Get type method signature
+  //--- Get type proc signature
     [receiverExpression.mResultType.definition.instanceMethodMap searchKey
       !self.mMethodName
       ?let kind
@@ -144,13 +144,13 @@ final class @methodCallInstructionAST : @semanticInstructionAST {
       !inAnalysisContext
       !?ioTypeMap
       !self.mMethodName
-      !invokedEntityNameForErrorSignaling: "'" + self.mMethodName + "' instance method header"
+      !invokedEntityNameForErrorSignaling: "'" + self.mMethodName + "' instance proc header"
       !routineSignature
       !?ioVariableMap
       !?ioInstructionListForGeneration
       ?let @actualParameterListForGeneration actualParameterListForGeneration
     ]
-  //--- Search base type that declares the method
+  //--- Search base type that declares the proc
     var baseType = receiverExpression.mResultType
     var searching = true
     if @uint.errorCount == 0 then
@@ -200,7 +200,7 @@ final class @methodCallInstructionForGeneration : @semanticInstructionForGenerat
 
 //································································································*
 
-override method @methodCallInstructionForGeneration generateInstruction (?!@stringset ioInclusionSet,
+override proc @methodCallInstructionForGeneration generateInstruction (?!@stringset ioInclusionSet,
                                      ?!@uint ioTemporaryVariableIndex,
                                      ?!@stringset ioUnusedVariableCppNameSet,
                                      ?let @bool unused inGenerateSyntaxDirectedTranslationString,
@@ -216,10 +216,10 @@ override method @methodCallInstructionForGeneration generateInstruction (?!@stri
     [mActualParameter generateActualParameter !?ioInclusionSet !?ioTemporaryVariableIndex !?ioGeneratedCode !?jokerParametersToReleaseList !?inputVariableList !?ioUnusedVariableCppNameSet ?let parameterCppName]
     parameterCppNameList += !parameterCppName
   end
-//--- Generate method call
+//--- Generate proc call
   switch self.mKind
   case definedAsExtension :
-    ioInclusionSet ++= "method-" + self.mMethodBaseType.definition.typeName.string.fileNameRepresentation + "-" + self.mMethodName.fileNameRepresentation
+    ioInclusionSet ++= "proc-" + self.mMethodBaseType.definition.typeName.string.fileNameRepresentation + "-" + self.mMethodName.fileNameRepresentation
     if self.mReceiverType.definition.typeKind.isClassType then
       ioGeneratedCode += "callExtensionMethod_" + self.mMethodName.identifierRepresentation
                       + " ((cPtr_" + self.mReceiverExpression.mResultType.identifierRepresentation

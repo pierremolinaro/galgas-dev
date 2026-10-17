@@ -134,7 +134,7 @@ final class @ifInstructionAST : @semanticInstructionAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method enterInstructionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
+  override proc enterInstructionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
     [self.mExpressions enterExpressionListInSemanticContext !?ioTypeMap]
     [self.m_then_instructionList enterInstructionListInSemanticContext !?ioTypeMap]
     [self.m_else_instructionList enterInstructionListInSemanticContext !?ioTypeMap]
@@ -166,7 +166,7 @@ final class @ifInstructionAST : @semanticInstructionAST {
   //
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method analyzeSemanticInstruction ?let @lstring inUsefulnessCallerEntityName
+  override proc analyzeSemanticInstruction ?let @lstring inUsefulnessCallerEntityName
                             ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
                             ?let @analysisContext inAnalysisContext
                             ?!@unifiedTypeMap ioTypeMap
@@ -258,7 +258,7 @@ final class @ifInstructionForGeneration : @semanticInstructionForGeneration {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method generateInstruction ?!@stringset ioInclusionSet
+  override proc generateInstruction ?!@stringset ioInclusionSet
                                       ?!@uint ioTemporaryVariableIndex
                                       ?!@stringset ioUnusedVariableCppNameSet
                                       ?let @bool inGenerateSyntaxDirectedTranslationString

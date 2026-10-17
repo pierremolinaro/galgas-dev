@@ -169,14 +169,14 @@ override func @lexicalFormalInputArgumentAST generateSwiftCocoaRoutineArgument
 
 //--------------------------------------------------------------------------------------------------
 
-abstract method @abstractLexicalRoutineActualArgumentAST checkLexicalRoutineCallArgument (
+abstract proc @abstractLexicalRoutineActualArgumentAST checkLexicalRoutineCallArgument (
   ?!@lexiqueAnalysisContext unused ioLexiqueAnalysisContext,
   ?@lexicalArgumentModeAST unused inLexicalRoutineFormalArgumentMode,
   ?@lexicalTypeEnum unused inLexicalRoutineFormalArgumentType)
 
 //--------------------------------------------------------------------------------------------------
 
-override method @lexicalAttributeInputOutputArgumentAST checkLexicalRoutineCallArgument (
+override proc @lexicalAttributeInputOutputArgumentAST checkLexicalRoutineCallArgument (
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext,
   ?@lexicalArgumentModeAST inLexicalRoutineFormalArgumentMode,
   ?@lexicalTypeEnum inLexicalRoutineFormalArgumentType) {
@@ -202,7 +202,7 @@ override method @lexicalAttributeInputOutputArgumentAST checkLexicalRoutineCallA
 
 //--------------------------------------------------------------------------------------------------
 
-override method @lexicalFormalInputArgumentAST checkLexicalRoutineCallArgument (
+override proc @lexicalFormalInputArgumentAST checkLexicalRoutineCallArgument (
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext,
   ?@lexicalArgumentModeAST inLexicalRoutineFormalArgumentMode,
   ?@lexicalTypeEnum inLexicalRoutineFormalArgumentType) {
@@ -219,7 +219,7 @@ override method @lexicalFormalInputArgumentAST checkLexicalRoutineCallArgument (
 
 //--------------------------------------------------------------------------------------------------
 
-override method @lexicalRoutineCallInstructionAST checkLexicalInstruction (
+override proc @lexicalRoutineCallInstructionAST checkLexicalInstruction (
                          ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext,
                          ?!@lexicalTagMap unused ioTagMap) {
   [ioLexiqueAnalysisContext.mLexicalRoutineMessageMap searchKey

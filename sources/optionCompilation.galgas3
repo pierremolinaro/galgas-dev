@@ -175,7 +175,7 @@ final class @optionComponentDeclarationAST : @semanticDeclarationAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method enterDeclarationInGraph
+  override proc enterDeclarationInGraph
     ?!@semanticTypePrecedenceGraph unused ioSemanticTypePrecedenceGraph
     ?!@equatableExtensionMap unused ioEquatableExtensionMap
     ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext
@@ -189,7 +189,7 @@ final class @optionComponentDeclarationAST : @semanticDeclarationAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method enterDeclarationInSemanticContext
+  override proc enterDeclarationInSemanticContext
     ?!@equatableExtensionMap unused ioEquatableExtensionMap
     ?let @extensionInitializerForBuildingContext unused inExtensionInitializerMapForBuildingContext
     ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext
@@ -281,7 +281,7 @@ final class @optionComponentDeclarationAST : @semanticDeclarationAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method semanticAnalysis
+  override proc semanticAnalysis
     ?!@lstringlist unused ioUsefulnessRootEntities
     ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
     ?let @string unused inProductDirectory
@@ -384,7 +384,7 @@ final class @optionComponentForGeneration : @semanticDeclarationWithHeaderForGen
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method appendDeclaration1 ?!@stringset unused ioInclusionSet
+  override proc appendDeclaration1 ?!@stringset unused ioInclusionSet
                                      !@string outHeader {
     if self.mIsPredefined then
       outHeader = ""
@@ -401,7 +401,7 @@ final class @optionComponentForGeneration : @semanticDeclarationWithHeaderForGen
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method appendSpecificImplementation
+  override proc appendSpecificImplementation
     ?let @unifiedTypeMap unused inTypeMap
     ?!@stringset ioInclusionSet
     !@string outImplementation
@@ -422,7 +422,7 @@ final class @optionComponentForGeneration : @semanticDeclarationWithHeaderForGen
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method appendSpecificFiles
+  override proc appendSpecificFiles
     ?let @string inProductDirectory
     ?!@stringset ioAllProductFileSet
 //    ?!objc: @stringlist ioObjcAppProductFileList

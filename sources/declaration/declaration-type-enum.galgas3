@@ -204,7 +204,7 @@ final class @enumDeclarationAST : @semanticDeclarationAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method addAssociatedElement ?!@galgasDeclarationAST ioDeclarations {
+  override proc addAssociatedElement ?!@galgasDeclarationAST ioDeclarations {
     for constant in self.mConstantList do
       if constant.associatedValueTypeList.count > 0 then
         let associatedTypeName = @lstring (
@@ -245,7 +245,7 @@ final class @enumDeclarationAST : @semanticDeclarationAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method enterDeclarationInGraph
+  override proc enterDeclarationInGraph
         ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
         ?!@equatableExtensionMap unused ioEquatableExtensionMap
         ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext
@@ -284,7 +284,7 @@ final class @enumDeclarationAST : @semanticDeclarationAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method enterDeclarationInSemanticContext
+  override proc enterDeclarationInSemanticContext
         ?!@equatableExtensionMap ioEquatableExtensionMap
         ?let @extensionInitializerForBuildingContext inExtensionInitializerMapForBuildingContext
         ?let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext
@@ -393,7 +393,7 @@ final class @enumDeclarationAST : @semanticDeclarationAST {
       features |= .equatable
     case comparable :
       features |= .comparable | .equatable
-    end  
+    end
     handleEquatableComparableExtension (
       !?ioEquatableExtensionMap
       !self.enumTypeName
@@ -434,7 +434,7 @@ final class @enumDeclarationAST : @semanticDeclarationAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method semanticAnalysis
+  override proc semanticAnalysis
                     ?!@lstringlist ioUsefulnessRootEntities
                     ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
                     ?let @string unused inProductDirectory
@@ -458,7 +458,7 @@ final class @enumDeclarationAST : @semanticDeclarationAST {
         let associatedTypeName = makeEmbeddedTypeName (!outer: self.enumTypeName !inner: constant.name)
         let optionalTypeName = makeOptionalTypeName (!forTypeNamed: associatedTypeName)
         let associatedType = [ioTypeMap typeMapEntryForLKey !@(optionalTypeName, constant.name)]
-        [!?associatedValuesTypes append !associatedType]    
+        [!?associatedValuesTypes append !associatedType]
       end
       constantList += !constant.name.string
       var @associatedValueDescriptorList associatedTypeList = @()
@@ -487,7 +487,7 @@ final class @enumDeclarationAST : @semanticDeclarationAST {
           if not [associatedType.features contains !.comparable] then
             error (associatedValue.typeName : "the @" + associatedValue.typeName + " should be comparable")
           end
-        end  
+        end
       end
       [!?constantMap insertKey !constant.name !constantMap.count !associatedTypeList]
       enumConstantListForGeneration += !constant.name.string !associatedTypeList
@@ -524,7 +524,7 @@ final class @enumTypeForGeneration : @semanticTypeForGeneration {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method appendDeclaration1 ?!@stringset unused ioInclusionSet
+  override proc appendDeclaration1 ?!@stringset unused ioInclusionSet
                                      !@string outHeader {
     var @bool hasAssociatedValues = false
     for constant in self.constantList while not hasAssociatedValues do
@@ -558,7 +558,7 @@ final class @enumTypeForGeneration : @semanticTypeForGeneration {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method appendSpecificImplementation ?let @unifiedTypeMap unused inTypeMap
+  override proc appendSpecificImplementation ?let @unifiedTypeMap unused inTypeMap
                                                 ?!@stringset ioInclusionSet
                                                 !@string outImplementation {
     for type in self.associatedValuesTypes do

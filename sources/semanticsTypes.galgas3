@@ -163,10 +163,10 @@ map @instanceMethodMap {
   public let @location mDeclarationLocation
   public let @bool mHasCompilerArgument
   public let @methodQualifier mQualifier
-  public let @string mErrorMessage // If not empty, calling the method raises an error with this message
-  insert insertKey error message "the '%K' instance method is already declared"
-  search searchKey error message "the '%K' instance method is not declared"
-  search searchInheritedKey error message "as the '%K' method is tagged as 'override', it should be declared in the super class"
+  public let @string mErrorMessage // If not empty, calling the proc raises an error with this message
+  insert insertKey error message "the '%K' instance proc is already declared"
+  search searchKey error message "the '%K' instance proc is not declared"
+  search searchInheritedKey error message "as the '%K' proc is tagged as 'override', it should be declared in the super class"
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -206,7 +206,7 @@ list @typedPropertyList {
   public let @propertyInCollectionInitializationAST initialization
   public let @bool hasSetter %initArgLabel
   public let @bool hasSelector %initArgLabel
-  
+
   func initializerSignature -> @string {
     result = "init"
     for property in self do

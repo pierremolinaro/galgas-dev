@@ -22,7 +22,7 @@ syntax extension galgas3DeclarationsSyntax {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <declaration_ggs3> (?!@galgasDeclarationAST ioDeclarations) {
-    $method$
+    $proc$
     $@type$ ?var typeName indexing typeReferenceExtensionMethod
     repeat
     while
@@ -50,7 +50,7 @@ syntax extension galgas3DeclarationsSyntax {
 
   rule <method_declaration_ggs3> (?let @lstring inTypeName,
                                   ?!@galgasDeclarationAST ioDeclarations) {
-    $method$
+    $proc$
     var typeName = inTypeName
     repeat
     while
@@ -147,12 +147,12 @@ final class @extensionMethodAST : @semanticDeclarationAST {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func keyRepresentation -> @string {
-    result = "extension method @" + self.mTypeName + " " + self.mExtensionMethodName
+    result = "extension proc @" + self.mTypeName + " " + self.mExtensionMethodName
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method enterDeclarationInGraph (
+  override proc enterDeclarationInGraph (
      ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph,
      ?!@equatableExtensionMap unused ioEquatableExtensionMap,
      ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext,
@@ -161,7 +161,7 @@ final class @extensionMethodAST : @semanticDeclarationAST {
      ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext,
      ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList) {
     let key = @lstring {
-      !"extension method @" + self.mTypeName + " " + self.mExtensionMethodName
+      !"extension proc @" + self.mTypeName + " " + self.mExtensionMethodName
       !self.mExtensionMethodName.location
     }
     [!?ioSemanticTypePrecedenceGraph addNode !key !self]
@@ -191,7 +191,7 @@ final class @extensionMethodAST : @semanticDeclarationAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method enterDeclarationInSemanticContext (
+  override proc enterDeclarationInSemanticContext (
     ?!@equatableExtensionMap unused ioEquatableExtensionMap,
     ?let @extensionInitializerForBuildingContext unused inExtensionInitializerMapForBuildingContext,
     ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext,
@@ -203,7 +203,7 @@ final class @extensionMethodAST : @semanticDeclarationAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method semanticAnalysis (?!@lstringlist unused ioUsefulnessRootEntities,
+  override proc semanticAnalysis (?!@lstringlist unused ioUsefulnessRootEntities,
                                     ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
                                     ?let @string unused inProductDirectory,
                                     ?let @semanticContext inSemanticContext,
@@ -256,10 +256,10 @@ final class @extensionMethodAST : @semanticDeclarationAST {
     )
   //---
     ioSemanticDeclarationListForGeneration +=
-      !infoMessage:"extension method " + self.mExtensionMethodName
+      !infoMessage:"extension proc " + self.mExtensionMethodName
       !@extensionMethodForGeneration {
         !generateHeader: true // Generate Cpp header file
-        !implementationCppFileName: "method-" + selfType.definition.typeName.string.fileNameRepresentation + "-" + self.mExtensionMethodName.string.fileNameRepresentation
+        !implementationCppFileName: "proc-" + selfType.definition.typeName.string.fileNameRepresentation + "-" + self.mExtensionMethodName.string.fileNameRepresentation
         !selfType
         !self.mExtensionMethodName.string
         !implementedAsFunction
@@ -277,7 +277,7 @@ final class @extensionMethodAST : @semanticDeclarationAST {
 //   EXTENSION LIST MAP
 //--------------------------------------------------------------------------------------------------
 
-override method @extensionMethodAST buildExtensionListMaps (
+override proc @extensionMethodAST buildExtensionListMaps (
   ?!@genericExtensionMethodListMap unused ioAbstractExtensionSetterListMap,
   ?!@genericExtensionMethodListMap unused ioExtensionSetterListMap,
   ?!@genericExtensionMethodListMap unused ioOverridingExtensionSetterListMap,
@@ -315,7 +315,7 @@ override func @extensionMethodForGeneration headerKind ->@headerKind {
 
 //································································································
 
-override method @extensionMethodForGeneration appendDeclaration1 (?!@stringset unused ioInclusionSet,
+override proc @extensionMethodForGeneration appendDeclaration1 (?!@stringset unused ioInclusionSet,
                                                                   !@string outHeader) {
   if self.mImplementedAsFunction then
     outHeader = [filewrapper semanticComponentGenerationTemplate.extensionMethodAsFunctionDeclaration
@@ -334,7 +334,7 @@ override method @extensionMethodForGeneration appendDeclaration1 (?!@stringset u
 
 //································································································
 
-override method @extensionMethodForGeneration appendSpecificImplementation (?let @unifiedTypeMap unused inTypeMap,
+override proc @extensionMethodForGeneration appendSpecificImplementation (?let @unifiedTypeMap unused inTypeMap,
                                                     ?!@stringset ioInclusionSet,
                                                     !@string outImplementation) {
   if self.mImplementedAsFunction then
@@ -347,7 +347,7 @@ override method @extensionMethodForGeneration appendSpecificImplementation (?let
       !"inObject"
       !0
     ]
-    ioInclusionSet ++= "method-" + self.mReceiverType.definition.typeName.string.fileNameRepresentation + "-" + self.mExtensionMethodName.fileNameRepresentation
+    ioInclusionSet ++= "proc-" + self.mReceiverType.definition.typeName.string.fileNameRepresentation + "-" + self.mExtensionMethodName.fileNameRepresentation
     generateProcedure (
       !static:false
       !"extensionMethod_" + self.mExtensionMethodName.identifierRepresentation
@@ -385,7 +385,7 @@ override method @extensionMethodForGeneration appendSpecificImplementation (?let
       end
     end
     ioInclusionSet ++=
-      "method-" + baseType.definition.typeName.string.fileNameRepresentation
+      "proc-" + baseType.definition.typeName.string.fileNameRepresentation
       + "-" + self.mExtensionMethodName.fileNameRepresentation
     generateExtensionMethodNew (
       !self.mReceiverType

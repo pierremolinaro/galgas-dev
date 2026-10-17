@@ -145,7 +145,7 @@ syntax extension galgas3DeclarationsSyntax {
 
   rule <externtype_method_ggs3> ?!@galgasDeclarationAST ioDeclarations
                                 ?!@externTypeMethodList ioExternTypeMethodList {
-    $method$
+    $proc$
     $identifier$ ?let @lstring methodName
     <formal_parameter_list_ggs34> !?ioDeclarations ?let formalParameterList
     ioExternTypeMethodList += !methodName !formalParameterList !.here
@@ -357,7 +357,7 @@ final class @externTypeDeclarationAST : @semanticDeclarationAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method enterDeclarationInGraph
+  override proc enterDeclarationInGraph
     ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
     ?!@equatableExtensionMap unused ioEquatableExtensionMap
     ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext
@@ -377,7 +377,7 @@ final class @externTypeDeclarationAST : @semanticDeclarationAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method enterDeclarationInSemanticContext
+  override proc enterDeclarationInSemanticContext
     ?!@equatableExtensionMap ioEquatableExtensionMap
     ?let @extensionInitializerForBuildingContext unused inExtensionInitializerMapForBuildingContext
     ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext
@@ -513,7 +513,7 @@ final class @externTypeDeclarationAST : @semanticDeclarationAST {
 //   SEMANTIC ANALYSIS
 //--------------------------------------------------------------------------------------------------
 
-override method @externTypeDeclarationAST semanticAnalysis
+override proc @externTypeDeclarationAST semanticAnalysis
   ?!@lstringlist ioUsefulnessRootEntities
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @string unused inProductDirectory
@@ -560,7 +560,7 @@ final class @externTypeDeclarationForGeneration : @semanticTypeForGeneration {
 
 //--------------------------------------------------------------------------------------------------
 
-override method @externTypeDeclarationForGeneration appendDeclaration1
+override proc @externTypeDeclarationForGeneration appendDeclaration1
   ?!@stringset unused ioInclusionSet
   !@string outHeader {
   let selfTypeDefinition = self.mSelfTypeEntry.definition

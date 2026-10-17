@@ -106,7 +106,7 @@ final class @graphDeclarationAST : @semanticDeclarationAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method enterDeclarationInGraph
+  override proc enterDeclarationInGraph
     ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
     ?!@equatableExtensionMap unused ioEquatableExtensionMap
     ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext
@@ -122,10 +122,10 @@ final class @graphDeclarationAST : @semanticDeclarationAST {
       !to: @("@" + self.mAssociatedListTypeName, self.mAssociatedListTypeName.location)
     ]
   }
-  
+
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method enterDeclarationInSemanticContext
+  override proc enterDeclarationInSemanticContext
     ?!@equatableExtensionMap ioEquatableExtensionMap
     ?let @extensionInitializerForBuildingContext inExtensionInitializerMapForBuildingContext
     ?let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext
@@ -501,7 +501,7 @@ final class @graphDeclarationAST : @semanticDeclarationAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method semanticAnalysis ?!@lstringlist ioUsefulnessRootEntities
+  override proc semanticAnalysis ?!@lstringlist ioUsefulnessRootEntities
                                   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
                                   ?let @string unused inProductDirectory
                                   ?let @semanticContext unused inSemanticContext
@@ -536,7 +536,7 @@ final class @graphDeclarationAST : @semanticDeclarationAST {
       !makeEmbeddedElementTypeLName (!self.mAssociatedListTypeName)
     ]
     if associatedListTypeEntry.definition.typeKind != .listType then
-      error (self.mAssociatedListTypeName 
+      error (self.mAssociatedListTypeName
       : "the '@" + self.mAssociatedListTypeName + "' type should be a list")
     end
   //--- Analyze insert methods
@@ -574,7 +574,7 @@ final class @graphDeclarationForGeneration : @semanticTypeForGeneration {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method appendDeclaration1 ?!@stringset unused ioInclusionSet
+  override proc appendDeclaration1 ?!@stringset unused ioInclusionSet
                                      !@string outHeader {
     let selfTypeDefinition = self.mSelfTypeEntry.definition
     outHeader = [filewrapper typeGenerationTemplate.graphTypeHeader1
@@ -602,7 +602,7 @@ final class @graphDeclarationForGeneration : @semanticTypeForGeneration {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method appendSpecificImplementation ?let @unifiedTypeMap unused inTypeMap
+  override proc appendSpecificImplementation ?let @unifiedTypeMap unused inTypeMap
                                                ?!@stringset ioInclusionSet
                                                !@string outImplementation {
     [self.mSelfTypeEntry addHeaderFileName !?ioInclusionSet]

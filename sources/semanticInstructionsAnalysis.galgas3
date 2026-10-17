@@ -26,7 +26,7 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-abstract method @semanticInstructionAST analyzeSemanticInstruction (
+abstract proc @semanticInstructionAST analyzeSemanticInstruction (
                         ?let @lstring inUsefulnessCallerEntityName,
                         ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
                         ?let @analysisContext inAnalysisContext,
@@ -213,7 +213,7 @@ proc checkExpressionIsBoolean
 
 //--------------------------------------------------------------------------------------------------
 
-abstract method @abstractGrammarInstructionSyntaxDirectedTranslationResult analyzeGrammarInstructionSDT
+abstract proc @abstractGrammarInstructionSyntaxDirectedTranslationResult analyzeGrammarInstructionSDT
   ?let @analysisContext inAnalysisContext
   ?!@unifiedTypeMap ioTypeMap
   ?let @bool inHasTranslateFeature
@@ -223,7 +223,7 @@ abstract method @abstractGrammarInstructionSyntaxDirectedTranslationResult analy
 
 //--------------------------------------------------------------------------------------------------
 
-override method @grammarInstructionSyntaxDirectedTranslationResultNone analyzeGrammarInstructionSDT
+override proc @grammarInstructionSyntaxDirectedTranslationResultNone analyzeGrammarInstructionSDT
   ?let @analysisContext unused inAnalysisContext
                                 ?!@unifiedTypeMap unused ioTypeMap
   ?let @bool unused inHasTranslateFeature
@@ -234,7 +234,7 @@ override method @grammarInstructionSyntaxDirectedTranslationResultNone analyzeGr
 
 //--------------------------------------------------------------------------------------------------
 
-override method @grammarInstructionSyntaxDirectedTranslationDropResult  analyzeGrammarInstructionSDT
+override proc @grammarInstructionSyntaxDirectedTranslationDropResult  analyzeGrammarInstructionSDT
   ?let @analysisContext unused inAnalysisContext
                                 ?!@unifiedTypeMap unused ioTypeMap
   ?let @bool inHasTranslateFeature
@@ -248,7 +248,7 @@ override method @grammarInstructionSyntaxDirectedTranslationDropResult  analyzeG
 
 //--------------------------------------------------------------------------------------------------
 
-override method @grammarInstructionSyntaxDirectedTranslationResultInVar  analyzeGrammarInstructionSDT
+override proc @grammarInstructionSyntaxDirectedTranslationResultInVar  analyzeGrammarInstructionSDT
   ?let @analysisContext inAnalysisContext
                                 ?!@unifiedTypeMap unused ioTypeMap
   ?let @bool inHasTranslateFeature
@@ -270,7 +270,7 @@ override method @grammarInstructionSyntaxDirectedTranslationResultInVar  analyze
 
 //--------------------------------------------------------------------------------------------------
 
-override method @grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar  analyzeGrammarInstructionSDT
+override proc @grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar  analyzeGrammarInstructionSDT
   ?let @analysisContext inAnalysisContext
   ?!@unifiedTypeMap ioTypeMap
   ?let @bool inHasTranslateFeature
@@ -294,7 +294,7 @@ override method @grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar 
 
 //--------------------------------------------------------------------------------------------------
 
-override method @grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst  analyzeGrammarInstructionSDT
+override proc @grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst  analyzeGrammarInstructionSDT
   ?let @analysisContext inAnalysisContext
                                 ?!@unifiedTypeMap ioTypeMap
   ?let @bool inHasTranslateFeature

@@ -4384,7 +4384,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_semanticDeclarationLis
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension method '@semanticDeclarationAST addAssociatedElement'
+//Extension proc '@semanticDeclarationAST addAssociatedElement'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -7200,7 +7200,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_openedOverrideList_2E_
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension method '@currentVarManager checkSelfObjectIsFullyInitialized'
+//Extension proc '@currentVarManager checkSelfObjectIsFullyInitialized'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -7251,7 +7251,7 @@ void extensionSetter_searchForDropAccess (class GGS_currentVarManager & ioObject
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension method '@localVarValuation checkFinalState'
+//Extension proc '@localVarValuation checkFinalState'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -7409,7 +7409,7 @@ void extensionSetter_closeScope (class GGS_currentVarManager & ioObject,
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension method '@scopeLocalVarMap checkFinalStates'
+//Extension proc '@scopeLocalVarMap checkFinalStates'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -7436,7 +7436,7 @@ void extensionSetter_insertKey (class GGS_currentVarManager & ioObject,
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension method '@currentVarManager checkAutomatonStates'
+//Extension proc '@currentVarManager checkAutomatonStates'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -7447,7 +7447,7 @@ void extensionMethod_checkAutomatonStates (const class GGS_currentVarManager inO
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension method '@localVarValuation combineValuationWith'
+//Extension proc '@localVarValuation combineValuationWith'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -8750,7 +8750,7 @@ class GGS_unifiedTypeMapEntry extensionGetter_baseType (const class GGS_unifiedT
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension method '@unifiedTypeMapEntry addHeaderFileName'
+//Extension proc '@unifiedTypeMapEntry addHeaderFileName'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -8761,7 +8761,7 @@ void extensionMethod_addHeaderFileName (const class GGS_unifiedTypeMapEntry inOb
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension method '@unifiedTypeMapEntry addHeaderFileName1'
+//Extension proc '@unifiedTypeMapEntry addHeaderFileName1'
 //
 //--------------------------------------------------------------------------------------------------
 

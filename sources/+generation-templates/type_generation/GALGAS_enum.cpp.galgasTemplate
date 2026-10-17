@@ -58,10 +58,10 @@ for (mConstantName mAssociatedValueTypeList) in CONSTANT_LIST do
       %    outAssociatedValue_%!name%.drop () ;\n%
     end
     %    String s ;\n%
-    %    s.appendCString ("method @%!TYPE_IDENTIFIER%.%!mConstantName% invoked with an invalid enum value") ;\n%
+    %    s.appendCString ("proc @%!TYPE_IDENTIFIER%.%!mConstantName% invoked with an invalid enum value") ;\n%
     %    inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;\n%
     %  }else{\n%
-    %    const auto ptr = (GGS_%![makeEmbeddedTypeName (!outer:TYPE_NAME !inner: mConstantName) identifierRepresentation]% *) mAssociatedValues.associatedValuesPointer () ;\n%    
+    %    const auto ptr = (GGS_%![makeEmbeddedTypeName (!outer:TYPE_NAME !inner: mConstantName) identifierRepresentation]% *) mAssociatedValues.associatedValuesPointer () ;\n%
     for (mType name) in mAssociatedValueTypeList do (idx)
       %    outAssociatedValue_%!name% = ptr->mProperty_%![name identifierRepresentation]% ;\n%
     end

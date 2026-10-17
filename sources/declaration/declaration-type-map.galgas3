@@ -309,7 +309,7 @@ map @insertMethodMap {
 //--------------------------------------------------------------------------------------------------
 
 map @searchMethodMap {
-  insert insertKey error message "the '%K' search method is already declared"
+  insert insertKey error message "the '%K' search proc is already declared"
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -333,7 +333,7 @@ final class @mapDeclarationAST : @semanticDeclarationAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method addAssociatedElement ?!@galgasDeclarationAST ioDeclarations {
+  override proc addAssociatedElement ?!@galgasDeclarationAST ioDeclarations {
     var structAttributeList = @propertyInCollectionListAST ()
     structAttributeList +=
       !mutability: .constantProperty
@@ -366,7 +366,7 @@ final class @mapDeclarationAST : @semanticDeclarationAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method enterDeclarationInGraph
+  override proc enterDeclarationInGraph
     ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
     ?!@equatableExtensionMap unused ioEquatableExtensionMap
     ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext
@@ -383,7 +383,7 @@ final class @mapDeclarationAST : @semanticDeclarationAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method enterDeclarationInSemanticContext
+  override proc enterDeclarationInSemanticContext
     ?!@equatableExtensionMap ioEquatableExtensionMap
     ?let @extensionInitializerForBuildingContext inExtensionInitializerMapForBuildingContext
     ?let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext
@@ -538,7 +538,7 @@ final class @mapDeclarationAST : @semanticDeclarationAST {
   //--- Handle insert setters
     for (mInsertMethodName * *) in self.mInsertSetterList do
       if [setterMap hasKey !mInsertMethodName.string] then
-        error (mInsertMethodName:"the '" + mInsertMethodName + "' insert method is already declared")
+        error (mInsertMethodName:"the '" + mInsertMethodName + "' insert proc is already declared")
       else
         [!?setterMap insertOrReplace
           !mInsertMethodName
@@ -575,7 +575,7 @@ final class @mapDeclarationAST : @semanticDeclarationAST {
       if [setterMap hasKey !entry.mName.string] then
         error (entry.mName
         : "the '" + entry.mName
-                  + "' method is already declared as an insert setter or a remove setter")
+                  + "' proc is already declared as an insert setter or a remove setter")
       else
         [!?setterMap insertOrReplace
           !entry.mName
@@ -739,7 +739,7 @@ final class @mapDeclarationAST : @semanticDeclarationAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method semanticAnalysis
+  override proc semanticAnalysis
     ?!@lstringlist ioUsefulnessRootEntities
     ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
     ?let @string unused inProductDirectory
@@ -867,7 +867,7 @@ final class @mapTypeForGeneration : @semanticTypeForGeneration {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method appendDeclaration1 ?!@stringset unused ioInclusionSet
+  override proc appendDeclaration1 ?!@stringset unused ioInclusionSet
                                       !@string outHeader {
     let selfTypeDefinition = self.mSelfTypeEntry.definition
     outHeader = [filewrapper mapGenerationTemplate.mapTypeHeader1
@@ -901,7 +901,7 @@ final class @mapTypeForGeneration : @semanticTypeForGeneration {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method appendSpecificImplementation ?let @unifiedTypeMap unused inTypeMap
+  override proc appendSpecificImplementation ?let @unifiedTypeMap unused inTypeMap
                                                ?!@stringset ioInclusionSet
                                                !@string outImplementation {
     [self.mElementTypeEntry addHeaderFileName !?ioInclusionSet]

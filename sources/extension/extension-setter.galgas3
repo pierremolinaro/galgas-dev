@@ -162,7 +162,7 @@ override func @extensionSetterAST keyRepresentation -> @string {
 //   DECLARATION GRAPH
 //--------------------------------------------------------------------------------------------------
 
-override method @extensionSetterAST enterDeclarationInGraph (
+override proc @extensionSetterAST enterDeclarationInGraph (
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph,
   ?!@equatableExtensionMap unused ioEquatableExtensionMap,
   ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext,
@@ -201,7 +201,7 @@ override method @extensionSetterAST enterDeclarationInGraph (
 //   SEMANTIC CONTEXT
 //--------------------------------------------------------------------------------------------------
 
-override method @extensionSetterAST enterDeclarationInSemanticContext (
+override proc @extensionSetterAST enterDeclarationInSemanticContext (
   ?!@equatableExtensionMap unused ioEquatableExtensionMap,
   ?let @extensionInitializerForBuildingContext unused inExtensionInitializerMapForBuildingContext,
   ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext,
@@ -215,7 +215,7 @@ override method @extensionSetterAST enterDeclarationInSemanticContext (
 //   SEMANTIC ANALYSIS
 //--------------------------------------------------------------------------------------------------
 
-override method @extensionSetterAST semanticAnalysis (
+override proc @extensionSetterAST semanticAnalysis (
   ?!@lstringlist unused ioUsefulnessRootEntities,
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
   ?let @string unused inProductDirectory,
@@ -280,7 +280,7 @@ override method @extensionSetterAST semanticAnalysis (
 //   EXTENSION LIST MAPS
 //--------------------------------------------------------------------------------------------------
 
-override method @extensionSetterAST buildExtensionListMaps (
+override proc @extensionSetterAST buildExtensionListMaps (
   ?!@genericExtensionMethodListMap unused ioAbstractExtensionSetterListMap,
   ?!@genericExtensionMethodListMap ioExtensionSetterListMap,
   ?!@genericExtensionMethodListMap unused ioOverridingExtensionSetterListMap,
@@ -323,7 +323,7 @@ override func @extensionSetterForGeneration headerKind -> @headerKind {
 
 //································································································
 
-override method @extensionSetterForGeneration appendDeclaration1 (?!@stringset unused ioInclusionSet,
+override proc @extensionSetterForGeneration appendDeclaration1 (?!@stringset unused ioInclusionSet,
                                          !@string outHeader) {
   if self.mImplementedAsFunction then
     outHeader = [filewrapper semanticComponentGenerationTemplate.extensionSetterAsFunctionDeclaration
@@ -342,7 +342,7 @@ override method @extensionSetterForGeneration appendDeclaration1 (?!@stringset u
 
 //································································································
 
-override method @extensionSetterForGeneration appendSpecificImplementation (
+override proc @extensionSetterForGeneration appendSpecificImplementation (
   ?let @unifiedTypeMap unused inTypeMap,
   ?!@stringset ioInclusionSet,
   !@string outImplementation) {

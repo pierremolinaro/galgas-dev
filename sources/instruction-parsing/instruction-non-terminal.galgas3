@@ -86,7 +86,7 @@ final class @nonterminalCallInstruction : @syntaxInstructionAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method transformInstructionForGrammarAnalysis
+  override proc transformInstructionForGrammarAnalysis
                     ?!usedTerminalMap:@terminalSymbolsMapForGrammarAnalysis unused ioActuallyUsedTerminalSymbolMap
                     ?nonTerminalSymbolMap:let @nonTerminalSymbolMapForGrammarAnalysis inNonTerminalSymbolMap
                     ?!addedTerminalIndex:@uint unused ioAddedNonTerminalIndex
@@ -101,7 +101,7 @@ final class @nonterminalCallInstruction : @syntaxInstructionAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method analyzeSyntaxInstruction ?let @lstring inUsefulnessCallerEntityName
+  override proc analyzeSyntaxInstruction ?let @lstring inUsefulnessCallerEntityName
                                            ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
                                            ?let @analysisContext inAnalysisContext
                                            ?!@unifiedTypeMap ioTypeMap
@@ -166,7 +166,7 @@ final class @nonterminalInstructionForGeneration : @syntaxInstructionForGenerati
 //! SYNTAX SIGNATURE
 //--------------------------------------------------------------------------------------------------
 
-override method @nonterminalInstructionForGeneration appendSyntaxSignature
+override proc @nonterminalInstructionForGeneration appendSyntaxSignature
   ?let @string inPosfix
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
 {
@@ -210,7 +210,7 @@ override func @nonterminalInstructionForGeneration compareInstructionSyntaxSigna
 //! CODE GENERATION
 //--------------------------------------------------------------------------------------------------
 
-override method @nonterminalInstructionForGeneration generateInstruction (?!@stringset ioInclusionSet,
+override proc @nonterminalInstructionForGeneration generateInstruction (?!@stringset ioInclusionSet,
                             ?!@uint ioTemporaryVariableIndex,
                             ?!@stringset ioUnusedVariableCppNameSet,
                             ?let @bool inGenerateSyntaxDirectedTranslationString,
@@ -231,7 +231,7 @@ override method @nonterminalInstructionForGeneration generateInstruction (?!@str
     ]
     parameterCppNameList += !parameterCppName
   end
-//--- Generate method call
+//--- Generate proc call
   let sdtResultVarName = "syntaxDirectedTranslationResult_" + self.mInstructionLocation.startLocationIndex
   if inGenerateSyntaxDirectedTranslationString then
     ioGeneratedCode += "String " + sdtResultVarName + " ;\n"

@@ -146,7 +146,7 @@ final class @initializerAST : @semanticDeclarationAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method enterDeclarationInGraph (
+  override proc enterDeclarationInGraph (
           ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph,
           ?!@equatableExtensionMap unused ioEquatableExtensionMap,
           ?!@extensionInitializerForBuildingContext ioExtensionInitializerForBuildingContext,
@@ -174,7 +174,7 @@ final class @initializerAST : @semanticDeclarationAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method enterDeclarationInSemanticContext (
+  override proc enterDeclarationInSemanticContext (
     ?!@equatableExtensionMap unused ioEquatableExtensionMap,
     ?let @extensionInitializerForBuildingContext unused inExtensionInitializerMapForBuildingContext,
     ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext,
@@ -186,7 +186,7 @@ final class @initializerAST : @semanticDeclarationAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method semanticAnalysis (
+  override proc semanticAnalysis (
                 ?!@lstringlist unused ioUsefulnessRootEntities,
                 ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
                 ?let @string unused inProductDirectory,
@@ -347,7 +347,7 @@ final class @extensionInitializerForGeneration : @semanticDeclarationWithHeaderF
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method appendSpecificImplementation (?let @unifiedTypeMap unused inTypeMap,
+  override proc appendSpecificImplementation (?let @unifiedTypeMap unused inTypeMap,
                                                 ?!@stringset ioInclusionSet,
                                                 !@string outImplementation) {
     for formalArg in self.formalParameterList do
@@ -414,7 +414,7 @@ private proc generateInitializer (?let @unifiedTypeMapEntry inReceiverType,
 //--- Generate routine body
   if isStruct then
     outGeneratedCode = "GGS_" + className.identifierRepresentation
-       + " GGS_" + className.identifierRepresentation 
+       + " GGS_" + className.identifierRepresentation
        + "::" + inInitializerName.identifierRepresentation + " ("
     let @uint colRef = outGeneratedCode.currentColumn
   //---
@@ -444,7 +444,7 @@ private proc generateInitializer (?let @unifiedTypeMapEntry inReceiverType,
     outGeneratedCode += "}"
   else // class
     outGeneratedCode = "GGS_" + className.identifierRepresentation
-       + " GGS_" + className.identifierRepresentation 
+       + " GGS_" + className.identifierRepresentation
        + "::" + inInitializerName.identifierRepresentation + " ("
     let @uint colRef = outGeneratedCode.currentColumn
   //---
@@ -465,7 +465,7 @@ private proc generateInitializer (?let @unifiedTypeMapEntry inReceiverType,
     outGeneratedCode += "  cPtr_" + className.identifierRepresentation + " * object = nullptr ;\n"
     outGeneratedCode += "  macroMyNew (object, cPtr_" + className.identifierRepresentation
     outGeneratedCode += " (" + compilerCppName () + " COMMA_THERE)) ;\n"
-    outGeneratedCode += "  object->" + className.identifierRepresentation 
+    outGeneratedCode += "  object->" + className.identifierRepresentation
        + "_" + inInitializerName.identifierRepresentation + " ("
     for formalArg in inFormalArgumentList do
       outGeneratedCode +=  formalArg.mFormalArgumentCppName
@@ -477,7 +477,7 @@ private proc generateInitializer (?let @unifiedTypeMapEntry inReceiverType,
     outGeneratedCode += "  return result ;\n"
     outGeneratedCode += "}\n\n"
     outGeneratedCode += "void cPtr_" + className.identifierRepresentation
-       + "::" + className.identifierRepresentation 
+       + "::" + className.identifierRepresentation
        + "_" + inInitializerName.identifierRepresentation + " ("
     for formalArg in inFormalArgumentList do
       if formalArg.mIsConstant then

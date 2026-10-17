@@ -223,7 +223,7 @@ final class @switchInstructionAST : @semanticInstructionAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method enterInstructionInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
+  override proc enterInstructionInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
     [self.mSwitchExpression enterExpressionInSemanticContext !?ioTypeMap]
     for branch in self.mBranches do
       [branch.mInstructions enterInstructionListInSemanticContext !?ioTypeMap]
@@ -232,7 +232,7 @@ final class @switchInstructionAST : @semanticInstructionAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method analyzeSemanticInstruction (?let @lstring inUsefulnessCallerEntityName,
+  override proc analyzeSemanticInstruction (?let @lstring inUsefulnessCallerEntityName,
                             ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
                             ?let @analysisContext inAnalysisContext,
                             ?!@unifiedTypeMap ioTypeMap,
@@ -403,7 +403,7 @@ final class @switchInstructionForGeneration : @semanticInstructionForGeneration 
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method generateInstruction (?!@stringset ioInclusionSet,
+  override proc generateInstruction (?!@stringset ioInclusionSet,
                                        ?!@uint ioTemporaryVariableIndex,
                                        ?!@stringset ioUnusedVariableCppNameSet,
                                        ?let @bool inGenerateSyntaxDirectedTranslationString,
@@ -418,14 +418,14 @@ final class @switchInstructionForGeneration : @semanticInstructionForGeneration 
     ]
     ioGeneratedCode += "switch (" + switchVar + ".enumValue ()) {\n"
     ioGeneratedCode += "case GGS_"
-    ioGeneratedCode += self.mSwitchExpression.mResultType.identifierRepresentation 
+    ioGeneratedCode += self.mSwitchExpression.mResultType.identifierRepresentation
     ioGeneratedCode += "::Enumeration::invalid:\n"
     ioGeneratedCode += "  break ;\n"
     for branch in self.mBranches do
       for constantName in branch.mSwitchConstantList do
         ioGeneratedCode += "case GGS_"
         ioGeneratedCode += self.mSwitchExpression.mResultType.identifierRepresentation
-        ioGeneratedCode += "::Enumeration::enum_" 
+        ioGeneratedCode += "::Enumeration::enum_"
         ioGeneratedCode += constantName.string.identifierRepresentation
         ioGeneratedCode += ":\n"
       end

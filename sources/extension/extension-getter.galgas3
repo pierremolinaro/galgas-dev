@@ -202,7 +202,7 @@ final class @extensionGetterAST : @semanticDeclarationAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method enterDeclarationInGraph (
+  override proc enterDeclarationInGraph (
         ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph,
         ?!@equatableExtensionMap unused ioEquatableExtensionMap,
         ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext,
@@ -240,7 +240,7 @@ final class @extensionGetterAST : @semanticDeclarationAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method enterDeclarationInSemanticContext (
+  override proc enterDeclarationInSemanticContext (
     ?!@equatableExtensionMap unused ioEquatableExtensionMap,
     ?let @extensionInitializerForBuildingContext unused inExtensionInitializerMapForBuildingContext,
     ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext,
@@ -258,7 +258,7 @@ final class @extensionGetterAST : @semanticDeclarationAST {
 //   SEMANTIC ANALYSIS
 //--------------------------------------------------------------------------------------------------
 
-override method @extensionGetterAST semanticAnalysis (
+override proc @extensionGetterAST semanticAnalysis (
   ?!@lstringlist unused ioUsefulnessRootEntities,
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
   ?let @string unused inProductDirectory,
@@ -330,7 +330,7 @@ override method @extensionGetterAST semanticAnalysis (
 //   EXTENSION LIST MAP
 //--------------------------------------------------------------------------------------------------
 
-override method @extensionGetterAST buildExtensionListMaps (
+override proc @extensionGetterAST buildExtensionListMaps (
   ?!@genericExtensionMethodListMap unused ioAbstractExtensionSetterListMap,
   ?!@genericExtensionMethodListMap unused ioExtensionSetterListMap,
   ?!@genericExtensionMethodListMap unused ioOverridingExtensionSetterListMap,
@@ -368,7 +368,7 @@ final class @extensionGetterForGeneration : @semanticDeclarationWithHeaderForGen
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method appendDeclaration1 (?!@stringset unused ioInclusionSet,
+  override proc appendDeclaration1 (?!@stringset unused ioInclusionSet,
                                       !@string outHeader) {
     if self.mImplementedAsFunction then
       outHeader = [filewrapper semanticComponentGenerationTemplate.extensionGetterAsFunctionDeclaration
@@ -389,7 +389,7 @@ final class @extensionGetterForGeneration : @semanticDeclarationWithHeaderForGen
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method appendSpecificImplementation (?let @unifiedTypeMap unused inTypeMap,
+  override proc appendSpecificImplementation (?let @unifiedTypeMap unused inTypeMap,
                                                 ?!@stringset ioInclusionSet,
                                                 !@string outImplementation) {
     for (* mFormalArgumentType * * *) in self.mExtensionGetterFormalParameterList do

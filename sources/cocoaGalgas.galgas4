@@ -61,13 +61,13 @@ gui cocoa {
 
     label $dict$, $@type$
 
-    label $abstract$, $method$, $@type$, $identifier$
-    label $override$, $method$, $@type$, $identifier$
-    label $method$, $@type$, $identifier$
+    label $abstract$, $proc$, $@type$, $identifier$
+    label $override$, $proc$, $@type$, $identifier$
+    label $proc$, $@type$, $identifier$
 
-    label $abstract$, $method$, $identifier$
-    label $override$, $method$, $identifier$
-    label $method$, $identifier$
+    label $abstract$, $proc$, $identifier$
+    label $override$, $proc$, $identifier$
+    label $proc$, $identifier$
 
     label $abstract$, $func$, $@type$, $identifier$
     label $override$,  $func$, $@type$, $identifier$

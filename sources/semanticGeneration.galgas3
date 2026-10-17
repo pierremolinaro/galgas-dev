@@ -36,7 +36,7 @@ final class @grammarForGeneration : @semanticDeclarationWithHeaderForGeneration 
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method appendDeclaration1 ?!@stringset ioInclusionSet
+  override proc appendDeclaration1 ?!@stringset ioInclusionSet
                                      !@string outHeader {
     for (s) in self.mSyntaxComponents do
       ioInclusionSet ++= "syntax-" + s.string.fileNameRepresentation
@@ -54,7 +54,7 @@ final class @grammarForGeneration : @semanticDeclarationWithHeaderForGeneration 
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method appendSpecificImplementation ?let @unifiedTypeMap inUnifiedTypeMap
+  override proc appendSpecificImplementation ?let @unifiedTypeMap inUnifiedTypeMap
                                                 ?!@stringset ioInclusionSet
                                                 !@string outImplementation {
     ioInclusionSet ++= "grammar-" + self.mGrammarName.fileNameRepresentation
@@ -138,7 +138,7 @@ final class @syntaxDeclarationForGeneration : @semanticDeclarationForGeneration 
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method appendDeclaration1 ?!@stringset ioInclusionSet
+  override proc appendDeclaration1 ?!@stringset ioInclusionSet
                                      !@string outHeader {
     ioInclusionSet ++= "lexique-" + self.mLexiqueName.fileNameRepresentation
     var selectMethodList = @uintlist ()
@@ -161,7 +161,7 @@ final class @syntaxDeclarationForGeneration : @semanticDeclarationForGeneration 
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method appendSpecificImplementation ?let @unifiedTypeMap unused inTypeMap
+  override proc appendSpecificImplementation ?let @unifiedTypeMap unused inTypeMap
                                               ?!@stringset ioInclusionSet
                                               !@string outImplementation {
     ioInclusionSet ++= "syntax-" + self.mSyntaxComponentName.fileNameRepresentation
@@ -670,7 +670,7 @@ proc generateExtensionMethodNew ?let @unifiedTypeMapEntry inReceiverType
       searching = false
     end
   end
-  ioInclusionSet ++= "method-" + baseType.definition.typeName.string.fileNameRepresentation + "-" + inMethodName.fileNameRepresentation
+  ioInclusionSet ++= "proc-" + baseType.definition.typeName.string.fileNameRepresentation + "-" + inMethodName.fileNameRepresentation
   [inReceiverType addHeaderFileName !?ioInclusionSet]
   for (* * mFormalArgumentType * *) in inFormalArgumentList do
     [mFormalArgumentType addHeaderFileName !?ioInclusionSet]
@@ -846,29 +846,29 @@ filewrapper semanticComponentGenerationTemplate in "+generation-templates/semant
     ?@string MODIFIER_IMPLEMENTATION
 
 
-//----------- Extension method
-  template abstractExtensionMethodDeclaration "abstract-extension-method.h.galgasTemplate"
+//----------- Extension proc
+  template abstractExtensionMethodDeclaration "abstract-extension-proc.h.galgasTemplate"
     ?@string CLASS_NAME
     ?@string METHOD_NAME
     ?@formalParameterListForGeneration FORMAL_ARGUMENT_LIST
 
-  template abstractExtensionMethodImplementation "abstract-extension-method.cpp.galgasTemplate"
+  template abstractExtensionMethodImplementation "abstract-extension-proc.cpp.galgasTemplate"
     ?@unifiedTypeMapEntry RECEIVER_TYPE
     ?@string METHOD_NAME
     ?@formalParameterListForGeneration FORMAL_ARGUMENT_LIST
 
-  template extensionMethodDeclaration "extension-method.h.galgasTemplate"
+  template extensionMethodDeclaration "extension-proc.h.galgasTemplate"
     ?@string CLASS_NAME
     ?@string METHOD_NAME
     ?@formalParameterListForGeneration FORMAL_ARGUMENT_LIST
 
-  template extensionMethodImplementation "extension-method.cpp.galgasTemplate"
+  template extensionMethodImplementation "extension-proc.cpp.galgasTemplate"
     ?@string CLASS_NAME
     ?@string METHOD_NAME
     ?@formalParameterListForGeneration FORMAL_ARGUMENT_LIST
     ?@string METHOD_IMPLEMENTATION
 
-  template overridingExtensionMethodImplementation "overriding-extension-method.cpp.galgasTemplate"
+  template overridingExtensionMethodImplementation "overriding-extension-proc.cpp.galgasTemplate"
     ?@string CLASS_NAME
     ?@string METHOD_NAME
     ?@string METHOD_IMPLEMENTATION
@@ -896,13 +896,13 @@ filewrapper semanticComponentGenerationTemplate in "+generation-templates/semant
     ?@string GETTER_NAME
     ?@string FUNCTION_IMPLEMENTATION
 
-//--- Extension method implemented as function
-  template extensionMethodAsFunctionDeclaration "extension-method-as-function.h.galgasTemplate"
+//--- Extension proc implemented as function
+  template extensionMethodAsFunctionDeclaration "extension-proc-as-function.h.galgasTemplate"
     ?@string TYPE_NAME
     ?@string METHOD_NAME
     ?@formalParameterListForGeneration FORMAL_ARGUMENT_LIST
 
-  template extensionMethodAsFunctionImplementation "extension-method-as-function.cpp.galgasTemplate"
+  template extensionMethodAsFunctionImplementation "extension-proc-as-function.cpp.galgasTemplate"
     ?@string TYPE_NAME
     ?@string METHOD_NAME
     ?@string METHOD_IMPLEMENTATION
@@ -966,7 +966,7 @@ override func @functionPrototypeDeclarationForGeneration headerKind ->@headerKin
 
 //--------------------------------------------------------------------------------------------------
 
-override method @functionPrototypeDeclarationForGeneration appendDeclaration1
+override proc @functionPrototypeDeclarationForGeneration appendDeclaration1
   ?!@stringset unused ioInclusionSet
   !@string outHeader {
   outHeader = [filewrapper semanticComponentGenerationTemplate.functionDeclaration
@@ -984,7 +984,7 @@ override func @onceFunctionDeclarationForGeneration headerKind ->@headerKind {
 
 //--------------------------------------------------------------------------------------------------
 
-override method @onceFunctionDeclarationForGeneration appendDeclaration1
+override proc @onceFunctionDeclarationForGeneration appendDeclaration1
   ?!@stringset unused ioInclusionSet
   !@string outHeader {
   outHeader = [filewrapper semanticComponentGenerationTemplate.functionDeclaration
@@ -1015,7 +1015,7 @@ override func @semanticTypeForGeneration appendTypeGenericImplementation -> @str
 //! Sub programs
 //--------------------------------------------------------------------------------------------------
 
-override method @functionImplementationForGeneration appendSpecificImplementation
+override proc @functionImplementationForGeneration appendSpecificImplementation
   ?let @unifiedTypeMap unused inTypeMap
   ?!@stringset ioInclusionSet
   !@string outImplementation {
@@ -1042,7 +1042,7 @@ override method @functionImplementationForGeneration appendSpecificImplementatio
 
 //--------------------------------------------------------------------------------------------------
 
-override method @onceFunctionDeclarationForGeneration appendSpecificImplementation
+override proc @onceFunctionDeclarationForGeneration appendSpecificImplementation
   ?let @unifiedTypeMap unused inTypeMap
   ?!@stringset ioInclusionSet
   !@string outImplementation
@@ -1090,7 +1090,7 @@ final class @lexiqueDeclarationForGeneration : @semanticDeclarationWithHeaderFor
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method appendDeclaration1
+  override proc appendDeclaration1
     ?!@stringset ioInclusionSet
     !@string outHeader {
     outHeader = self.mHeaderContents
@@ -1101,7 +1101,7 @@ final class @lexiqueDeclarationForGeneration : @semanticDeclarationWithHeaderFor
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method appendSpecificImplementation
+  override proc appendSpecificImplementation
     ?let @unifiedTypeMap unused inTypeMap
     ?!@stringset ioInclusionSet
     !@string outHeader {
@@ -1111,7 +1111,7 @@ final class @lexiqueDeclarationForGeneration : @semanticDeclarationWithHeaderFor
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method appendSpecificFiles
+  override proc appendSpecificFiles
     ?let @string inProductDirectory
     ?!@stringset ioAllProductFileSet
     ?!swift: @stringlist ioSwiftAppProductFileList {
@@ -1145,7 +1145,7 @@ override func @programComponentForGeneration headerKind ->@headerKind {
 
 //--------------------------------------------------------------------------------------------------
 
-override method @programComponentForGeneration appendSpecificImplementation
+override proc @programComponentForGeneration appendSpecificImplementation
   ?let @unifiedTypeMap unused inTypeMap
   ?!@stringset ioInclusionSet
   !@string outImplementation {
@@ -1195,7 +1195,7 @@ proc recursivlyEnumerateRegularFile
 
 //--------------------------------------------------------------------------------------------------
 
-override method @filewrapperDeclarationForGeneration appendDeclaration1
+override proc @filewrapperDeclarationForGeneration appendDeclaration1
   ?!@stringset unused ioInclusionSet
   !@string outHeader {
   var regularFileIndexStringList = @stringlist ()
@@ -1339,7 +1339,7 @@ proc generateWrapperContents
 
 //--------------------------------------------------------------------------------------------------
 
-override method @filewrapperDeclarationForGeneration appendSpecificImplementation
+override proc @filewrapperDeclarationForGeneration appendSpecificImplementation
   ?let @unifiedTypeMap unused inTypeMap
   ?!@stringset ioInclusionSet
   !@string outImplementation {
@@ -1399,7 +1399,7 @@ final class @primitiveTypeForGeneration : @semanticTypeForGeneration {
 
   //----------------------------------------------------------------------------------------------
 
-  override method appendPrimitiveTypePreDeclaration ?!@string ioHeader {
+  override proc appendPrimitiveTypePreDeclaration ?!@string ioHeader {
     ioHeader += "class GGS_" + self.mPredefinedTypeName + " ;\n"
   }
 

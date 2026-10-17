@@ -23,7 +23,7 @@ class cPtr_abstractSyntaxInstructionForGrammarAnalysis : public AbstractStrongPt
 //--- Extension func isLinear
   public: virtual class GGS_bool getter_isLinear (Compiler * COMMA_LOCATION_ARGS) const = 0 ;
 
-//--- Extension method tikzNodeForSyntaxInstruction
+//--- Extension proc tikzNodeForSyntaxInstruction
   public: virtual void method_tikzNodeForSyntaxInstruction (class GGS_rowList & arg_ioRowList,
            const class GGS_uint arg_inRow,
            class GGS_uint & arg_ioColumn,

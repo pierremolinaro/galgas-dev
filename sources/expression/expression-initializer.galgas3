@@ -22,7 +22,7 @@
 //--------------------------------------------------------------------------------------------------
 
 syntax extension galgas3ExpressionSyntax {
- 
+
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <primary_ggs3> ?!@galgasDeclarationAST ioDeclarations
@@ -100,10 +100,10 @@ syntax extension galgas4ExpressionSyntax {
       end
     end
   }
-  
+
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <simple_type_followed_by_dot_type> ?let @lstring inTypeName 
+  rule <simple_type_followed_by_dot_type> ?let @lstring inTypeName
                                           ?!@galgasDeclarationAST ioDeclarations
                                           !@semanticExpressionAST outExpression {
   //--- Type name
@@ -121,7 +121,7 @@ syntax extension galgas4ExpressionSyntax {
       end
     end
   }
-  
+
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  Primary beginning with @(
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -139,7 +139,7 @@ syntax extension galgas4ExpressionSyntax {
       !endOfExpression
     }
   }
-  
+
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  Primary beginning with a dot
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -149,7 +149,7 @@ syntax extension galgas4ExpressionSyntax {
     $.$
     <primary_beginning_by_dot> !?ioDeclarations ?outExpression
   }
-  
+
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <primary_beginning_by_type> ?let @lstring inTypeName
@@ -193,7 +193,7 @@ final class @initializerCallAST : @semanticExpressionAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method enterExpressionInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
+  override proc enterExpressionInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
     if self.mTypeName.string != "" then
       [!?ioTypeMap makeEntry !self.mTypeName ?*]
     end
@@ -202,7 +202,7 @@ final class @initializerCallAST : @semanticExpressionAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method analyzeSemanticExpression
+  override proc analyzeSemanticExpression
             ?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName
             ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
             ?inferenceType: let @unifiedTypeMapEntry inType
@@ -340,7 +340,7 @@ final class @initializerCallForGeneration : @semanticExpressionForGeneration {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method generateExpression ?!@string ioGeneratedCode
+  override proc generateExpression ?!@string ioGeneratedCode
                                     ?!@stringset ioInclusionSet
                                     ?!@uint ioTemporaryVariableIndex
                                     ?!@stringset ioUnusedVariableCppNameSet

@@ -39,7 +39,7 @@ final class @sint64PredefinedTypeAST : @predefinedTypeAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method getClassFunctionMap ?!@unifiedTypeMap ioUnifiedTypeMap
+  override proc getClassFunctionMap ?!@unifiedTypeMap ioUnifiedTypeMap
                                       !@classFunctionMap outMap {
     outMap = @()
     enterClassFunctionWithoutArgument (
@@ -60,7 +60,7 @@ final class @sint64PredefinedTypeAST : @predefinedTypeAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method getGetterMap ?!@unifiedTypeMap ioUnifiedTypeMap
+  override proc getGetterMap ?!@unifiedTypeMap ioUnifiedTypeMap
                                !@getterMap outMap {
     commonGetterMapForAllTypes (!?ioUnifiedTypeMap ?outMap)
     enterBaseFinalGetterWithoutArgument (
@@ -138,7 +138,7 @@ final class @sint64PredefinedTypeAST : @predefinedTypeAST {
       !returnedTypeName:"string"
       !hasCompilerArgument:false
     )
-  
+
     enterBaseFinalGetterWithArgument (
       !?outMap
       !?ioUnifiedTypeMap

@@ -448,7 +448,7 @@ private filewrapper xcodeProjectGenerationFilewrapper in "+generation-templates/
 
 //--------------------------------------------------------------------------------------------------
 
-method @XcodeProjectDescriptor generateAtPath
+proc @XcodeProjectDescriptor generateAtPath
   ?xcodeprojPath:let @string inPath
   ?cacheFilePath:let @string inCacheFilePath {
   let contents = [filewrapper xcodeProjectGenerationFilewrapper.xcodeproj

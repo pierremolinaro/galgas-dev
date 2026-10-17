@@ -86,7 +86,7 @@ class cPtr_routineImplementationForGeneration : public cPtr_routinePrototypeDecl
                                                                                                                                          Compiler * inCompiler) ;
 
 
-//--- Extension method appendSpecificImplementation
+//--- Extension proc appendSpecificImplementation
   public: virtual void method_appendSpecificImplementation (const class GGS_unifiedTypeMap arg_inUnifiedTypeMap,
            class GGS_stringset & arg_ioInclusionSet,
            class GGS_string & arg_outImplementation,
@@ -288,7 +288,7 @@ class cPtr_classFuncExpressionForGeneration : public cPtr_semanticExpressionForG
                                                                                   Compiler * inCompiler) ;
 
 
-//--- Extension method generateExpression
+//--- Extension proc generateExpression
   public: virtual void method_generateExpression (class GGS_string & arg_ioGeneratedCode,
            class GGS_stringset & arg_ioInclusionSet,
            class GGS_uint & arg_ioTemporaryVariableIndex,
@@ -562,7 +562,7 @@ class cPtr_functionPrototypeDeclarationForGeneration : public cPtr_semanticDecla
 //--- Extension func headerKind
   public: virtual class GGS_headerKind getter_headerKind (Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension method appendDeclaration1
+//--- Extension proc appendDeclaration1
   public: virtual void method_appendDeclaration_31_ (class GGS_stringset & arg_ioInclusionSet,
            class GGS_string & arg_outHeader,
            Compiler * COMMA_LOCATION_ARGS) override ;
@@ -757,7 +757,7 @@ class cPtr_functionImplementationForGeneration : public cPtr_functionPrototypeDe
                                                                                                                             Compiler * inCompiler) ;
 
 
-//--- Extension method appendSpecificImplementation
+//--- Extension proc appendSpecificImplementation
   public: virtual void method_appendSpecificImplementation (const class GGS_unifiedTypeMap arg_inUnifiedTypeMap,
            class GGS_stringset & arg_ioInclusionSet,
            class GGS_string & arg_outImplementation,
@@ -959,12 +959,12 @@ class cPtr_onceFunctionDeclarationForGeneration : public cPtr_semanticDeclaratio
 //--- Extension func headerKind
   public: virtual class GGS_headerKind getter_headerKind (Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension method appendDeclaration1
+//--- Extension proc appendDeclaration1
   public: virtual void method_appendDeclaration_31_ (class GGS_stringset & arg_ioInclusionSet,
            class GGS_string & arg_outHeader,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method appendSpecificImplementation
+//--- Extension proc appendSpecificImplementation
   public: virtual void method_appendSpecificImplementation (const class GGS_unifiedTypeMap arg_inUnifiedTypeMap,
            class GGS_stringset & arg_ioInclusionSet,
            class GGS_string & arg_outImplementation,
@@ -1171,12 +1171,12 @@ class cPtr_filewrapperDeclarationForGeneration : public cPtr_semanticDeclaration
 //--- Extension func headerKind
   public: virtual class GGS_headerKind getter_headerKind (Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension method appendDeclaration1
+//--- Extension proc appendDeclaration1
   public: virtual void method_appendDeclaration_31_ (class GGS_stringset & arg_ioInclusionSet,
            class GGS_string & arg_outHeader,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method appendSpecificImplementation
+//--- Extension proc appendSpecificImplementation
   public: virtual void method_appendSpecificImplementation (const class GGS_unifiedTypeMap arg_inUnifiedTypeMap,
            class GGS_stringset & arg_ioInclusionSet,
            class GGS_string & arg_outImplementation,

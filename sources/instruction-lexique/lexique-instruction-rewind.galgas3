@@ -67,7 +67,7 @@ syntax extension galgas4LexiqueComponentSyntax {
 //! CHECK LEXICAL INSTRUCTION
 //--------------------------------------------------------------------------------------------------
 
-override method @lexicalRewindInstructionAST checkLexicalInstruction (
+override proc @lexicalRewindInstructionAST checkLexicalInstruction (
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext,
   ?!@lexicalTagMap ioTagMap) {
   [ioTagMap searchKey !self.mLexicalTagName]

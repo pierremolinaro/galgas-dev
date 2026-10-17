@@ -123,14 +123,14 @@ syntax extension galgas4ExpressionSyntax {
 //! SEMANTICS
 //--------------------------------------------------------------------------------------------------
 
-override method @filewrapperObjectInstanciationInExpressionAST enterExpressionInSemanticContext
+override proc @filewrapperObjectInstanciationInExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap unused ioTypeMap
 {
 }
 
 //································································································
 
-override method @filewrapperObjectInstanciationInExpressionAST analyzeSemanticExpression
+override proc @filewrapperObjectInstanciationInExpressionAST analyzeSemanticExpression
   ?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?inferenceType: let @unifiedTypeMapEntry unused inType
@@ -165,7 +165,7 @@ override method @filewrapperObjectInstanciationInExpressionAST analyzeSemanticEx
 
 //--------------------------------------------------------------------------------------------------
 
-override method @filewrapperTemplateInExpressionAST enterExpressionInSemanticContext
+override proc @filewrapperTemplateInExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
 {
   for (* mExpression *) in self.mExpressions do
@@ -175,7 +175,7 @@ override method @filewrapperTemplateInExpressionAST enterExpressionInSemanticCon
 
 //································································································
 
-override method @filewrapperTemplateInExpressionAST analyzeSemanticExpression
+override proc @filewrapperTemplateInExpressionAST analyzeSemanticExpression
   ?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?inferenceType: let @unifiedTypeMapEntry unused inType
@@ -241,14 +241,14 @@ override method @filewrapperTemplateInExpressionAST analyzeSemanticExpression
 
 //--------------------------------------------------------------------------------------------------
 
-override method @filewrapperInExpressionAST enterExpressionInSemanticContext
+override proc @filewrapperInExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap unused ioTypeMap
 {
 }
 
 //································································································
 
-override method @filewrapperInExpressionAST analyzeSemanticExpression
+override proc @filewrapperInExpressionAST analyzeSemanticExpression
   ?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?inferenceType: let @unifiedTypeMapEntry unused inType
@@ -337,7 +337,7 @@ final class @filewrapperInExpressionForGeneration : @semanticExpressionForGenera
 
 //································································································
 
-override method @filewrapperInExpressionForGeneration generateExpression
+override proc @filewrapperInExpressionForGeneration generateExpression
   ?!@string unused ioGeneratedCode
   ?!@stringset ioInclusionSet
   ?!@uint unused ioTemporaryVariableIndex
@@ -357,7 +357,7 @@ final class @filewrapperTemplateInExpressionForGeneration : @semanticExpressionF
 
 //································································································
 
-override method @filewrapperTemplateInExpressionForGeneration generateExpression
+override proc @filewrapperTemplateInExpressionForGeneration generateExpression
   ?!@string ioGeneratedCode
   ?!@stringset ioInclusionSet
   ?!@uint ioTemporaryVariableIndex
@@ -395,7 +395,7 @@ final class @filewrapperStaticPathInExpressionForGeneration : @semanticExpressio
 
 //································································································
 
-override method @filewrapperStaticPathInExpressionForGeneration generateExpression
+override proc @filewrapperStaticPathInExpressionForGeneration generateExpression
   ?!@string unused ioGeneratedCode
   ?!@stringset ioInclusionSet
   ?!@uint unused ioTemporaryVariableIndex

@@ -23,7 +23,7 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-abstract method @templateInstructionForGeneration templateCodeGeneration
+abstract proc @templateInstructionForGeneration templateCodeGeneration
   ?!@string ioGeneratedCode
   ?!@stringset ioInclusionSet
   ?!@uint unused ioTemporaryVariableIndex
@@ -51,7 +51,7 @@ proc templateCodeGenerationForListInstruction ?let @templateInstructionListForGe
 
 //--------------------------------------------------------------------------------------------------
 
-override method @templateInstructionStringForGeneration templateCodeGeneration
+override proc @templateInstructionStringForGeneration templateCodeGeneration
   ?!@string ioGeneratedCode
   ?!@stringset unused  ioInclusionSet
   ?!@uint unused ioTemporaryVariableIndex
@@ -62,7 +62,7 @@ override method @templateInstructionStringForGeneration templateCodeGeneration
 
 //--------------------------------------------------------------------------------------------------
 
-override method @templateInstructionExpressionForGeneration templateCodeGeneration
+override proc @templateInstructionExpressionForGeneration templateCodeGeneration
   ?!@string ioGeneratedCode
   ?!@stringset ioInclusionSet
   ?!@uint ioTemporaryVariableIndex
@@ -75,7 +75,7 @@ override method @templateInstructionExpressionForGeneration templateCodeGenerati
 
 //--------------------------------------------------------------------------------------------------
 
-override method @templateBlockInstructionForGeneration templateCodeGeneration
+override proc @templateBlockInstructionForGeneration templateCodeGeneration
   ?!@string ioGeneratedCode
   ?!@stringset ioInclusionSet
   ?!@uint ioTemporaryVariableIndex
@@ -101,7 +101,7 @@ override method @templateBlockInstructionForGeneration templateCodeGeneration
 
 //--------------------------------------------------------------------------------------------------
 
-override method @templateInstructionGetColumnLocationForGeneration templateCodeGeneration
+override proc @templateInstructionGetColumnLocationForGeneration templateCodeGeneration
   ?!@string ioGeneratedCode
   ?!@stringset unused ioInclusionSet
   ?!@uint unused ioTemporaryVariableIndex
@@ -113,7 +113,7 @@ override method @templateInstructionGetColumnLocationForGeneration templateCodeG
 
 //--------------------------------------------------------------------------------------------------
 
-override method @templateInstructionGotoColumnLocationForGeneration templateCodeGeneration
+override proc @templateInstructionGotoColumnLocationForGeneration templateCodeGeneration
   ?!@string ioGeneratedCode
   ?!@stringset unused ioInclusionSet
   ?!@uint unused ioTemporaryVariableIndex
@@ -125,7 +125,7 @@ override method @templateInstructionGotoColumnLocationForGeneration templateCode
 
 //--------------------------------------------------------------------------------------------------
 
-override method @templateInstructionIfForGeneration templateCodeGeneration
+override proc @templateInstructionIfForGeneration templateCodeGeneration
                                                         ?!@string ioGeneratedCode
                                                         ?!@stringset ioInclusionSet
                                                         ?!@uint ioTemporaryVariableIndex

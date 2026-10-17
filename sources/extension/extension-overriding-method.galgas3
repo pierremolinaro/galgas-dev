@@ -25,7 +25,7 @@ syntax extension galgas3DeclarationsSyntax {
 
   rule <declaration_ggs3> (?!@galgasDeclarationAST ioDeclarations) {
     $override$
-    $method$
+    $proc$
     $@type$ ?var typeName indexing typeReferenceOverrideExtensionMethodDefinition
     repeat
     while
@@ -53,7 +53,7 @@ syntax extension galgas3DeclarationsSyntax {
 
   rule <method_declaration_ggs3> (?let @lstring inTypeName, ?!@galgasDeclarationAST ioDeclarations) {
     $override$
-    $method$
+    $proc$
     var typeName = inTypeName
     repeat
     while
@@ -157,14 +157,14 @@ final class @overridingExtensionMethodAST : @semanticDeclarationAST {
 //--------------------------------------------------------------------------------------------------
 
 override func @overridingExtensionMethodAST keyRepresentation -> @string {
-  result = "overriding extension method @" + self.mTypeName + " " + self.mOverridingExtensionMethodName
+  result = "overriding extension proc @" + self.mTypeName + " " + self.mOverridingExtensionMethodName
 }
 
 //--------------------------------------------------------------------------------------------------
 //   ENTER IN GRAPH
 //--------------------------------------------------------------------------------------------------
 
-override method @overridingExtensionMethodAST enterDeclarationInGraph (
+override proc @overridingExtensionMethodAST enterDeclarationInGraph (
   ?!@semanticTypePrecedenceGraph unused ioSemanticTypePrecedenceGraph,
   ?!@equatableExtensionMap unused ioEquatableExtensionMap,
   ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext,
@@ -200,7 +200,7 @@ override method @overridingExtensionMethodAST enterDeclarationInGraph (
 //   SEMANTIC CONTEXT
 //--------------------------------------------------------------------------------------------------
 
-override method @overridingExtensionMethodAST enterDeclarationInSemanticContext (
+override proc @overridingExtensionMethodAST enterDeclarationInSemanticContext (
   ?!@equatableExtensionMap unused ioEquatableExtensionMap,
   ?let @extensionInitializerForBuildingContext unused inExtensionInitializerMapForBuildingContext,
   ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext,
@@ -214,7 +214,7 @@ override method @overridingExtensionMethodAST enterDeclarationInSemanticContext 
 //   SEMANTIC ANALYSIS
 //--------------------------------------------------------------------------------------------------
 
-override method @overridingExtensionMethodAST semanticAnalysis (
+override proc @overridingExtensionMethodAST semanticAnalysis (
   ?!@lstringlist unused ioUsefulnessRootEntities,
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
   ?let @string unused inProductDirectory,
@@ -231,7 +231,7 @@ override method @overridingExtensionMethodAST semanticAnalysis (
   let @unifiedTypeMapEntry selfType = [ioTypeMap typeMapEntryForLKey !self.mTypeName]
 //--- Check self type is a class
   if not selfType.definition.typeKind.isClassType then
-    error (self.mOverridingExtensionMethodName: "cannot declare a extension method: '@" + selfType.definition.typeName.string + "' is not a class")
+    error (self.mOverridingExtensionMethodName: "cannot declare a extension proc: '@" + selfType.definition.typeName.string + "' is not a class")
   end
 //--- Find base type name
   var @string baseTypeName = ""
@@ -257,7 +257,7 @@ override method @overridingExtensionMethodAST semanticAnalysis (
     superType = superType.definition.superType
   end
   if baseTypeName == "" then
-    error (self.mOverridingExtensionMethodName:"this method is not declared by a super class")
+    error (self.mOverridingExtensionMethodName:"this proc is not declared by a super class")
   end
 //--- Analyze instruction list
   let analysisContext = @analysisContext {
@@ -293,10 +293,10 @@ override method @overridingExtensionMethodAST semanticAnalysis (
   end
 //---
   ioSemanticDeclarationListForGeneration +=
-    !infoMessage: "override extension method " + self.mOverridingExtensionMethodName
+    !infoMessage: "override extension proc " + self.mOverridingExtensionMethodName
     !@overridingExtensionMethodForGeneration {
       !generateHeader: false // Do not generate Cpp header file
-      !implementationCppFileName: "method-" + selfType.definition.typeName.string.fileNameRepresentation + "-" + self.mOverridingExtensionMethodName.string.fileNameRepresentation
+      !implementationCppFileName: "proc-" + selfType.definition.typeName.string.fileNameRepresentation + "-" + self.mOverridingExtensionMethodName.string.fileNameRepresentation
       !selfType
       !baseTypeName
       !self.mOverridingExtensionMethodName.string
@@ -310,7 +310,7 @@ override method @overridingExtensionMethodAST semanticAnalysis (
 //   EXTENSION LIST MAP
 //--------------------------------------------------------------------------------------------------
 
-override method @overridingExtensionMethodAST buildExtensionListMaps (
+override proc @overridingExtensionMethodAST buildExtensionListMaps (
   ?!@genericExtensionMethodListMap unused ioAbstractExtensionSetterListMap,
   ?!@genericExtensionMethodListMap unused ioExtensionSetterListMap,
   ?!@genericExtensionMethodListMap unused ioOverridingExtensionSetterListMap,
@@ -353,7 +353,7 @@ override func @overridingExtensionMethodForGeneration headerKind ->@headerKind {
 
 //································································································
 
-override method @overridingExtensionMethodForGeneration appendSpecificImplementation (
+override proc @overridingExtensionMethodForGeneration appendSpecificImplementation (
                                                             ?let @unifiedTypeMap unused inTypeMap,
                                                             ?!@stringset ioInclusionSet,
                                                             !@string outImplementation) {

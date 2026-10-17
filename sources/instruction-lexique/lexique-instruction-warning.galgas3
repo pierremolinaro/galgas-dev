@@ -62,7 +62,7 @@ syntax extension galgas4LexiqueComponentSyntax {
 //! CHECK LEXICAL INSTRUCTION
 //--------------------------------------------------------------------------------------------------
 
-override method @lexicalWarningInstructionAST checkLexicalInstruction (
+override proc @lexicalWarningInstructionAST checkLexicalInstruction (
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext,
   ?!@lexicalTagMap unused ioTagMap) {
   [!?ioLexiqueAnalysisContext.mLexicalMessageMap setMMessageIsUsedForKey !true !self.mWarningMessageName.string]

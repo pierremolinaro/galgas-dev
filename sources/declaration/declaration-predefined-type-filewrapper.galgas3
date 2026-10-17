@@ -38,7 +38,7 @@ final class @filewrapperPredefinedTypeAST : @predefinedTypeAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method getSetterMap ?!@unifiedTypeMap ioUnifiedTypeMap
+  override proc getSetterMap ?!@unifiedTypeMap ioUnifiedTypeMap
                                !@setterMap outSetterMap {
     outSetterMap = @()
     enterModifierWithInputArgument (
@@ -53,7 +53,7 @@ final class @filewrapperPredefinedTypeAST : @predefinedTypeAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method getGetterMap ?!@unifiedTypeMap ioUnifiedTypeMap
+  override proc getGetterMap ?!@unifiedTypeMap ioUnifiedTypeMap
                                !@getterMap outMap {
     commonGetterMapForAllTypes (!?ioUnifiedTypeMap ?outMap)
     enterBaseFinalGetterWithoutArgument (

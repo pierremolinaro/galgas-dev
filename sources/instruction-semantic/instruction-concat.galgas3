@@ -27,7 +27,7 @@ syntax extension galgas3InstructionsSyntax {
                                     !@semanticInstructionAST outInstruction) {
     <semantic_instruction_beginning_with_identifier> !?ioDeclarations !prefixedBySelf: false ?outInstruction
   }
-  
+
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <semantic_instruction_ggs3> (?!@galgasDeclarationAST ioDeclarations,
@@ -183,7 +183,7 @@ syntax extension galgas4InstructionsSyntax {
                                !@semanticInstructionAST outInstruction) {
     <semantic_instruction_beginning_with_identifier> !?ioDeclarations !prefixedBySelf: false ?outInstruction
   }
-  
+
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <semantic_instruction> (?!@galgasDeclarationAST ioDeclarations,
@@ -357,7 +357,7 @@ enum @opAssignmentOperator {
   case divAssign // /=
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  
+
   func features -> @typeFeatures {
     switch self
     case orAssign  : result = .orAssignOperatorWithExpression // var |= exp ;
@@ -371,7 +371,7 @@ enum @opAssignmentOperator {
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  
+
   func string -> @string {
     switch self
     case orAssign  : result = "|="
@@ -385,7 +385,7 @@ enum @opAssignmentOperator {
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  
+
   func cppFunctionName -> @string {
     switch self
     case orAssign  : result = "orAssignOperation"
@@ -412,14 +412,14 @@ final class @opAssignExpressionInstructionAST : @semanticInstructionAST {
   private let @semanticExpressionAST mExpression
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  
-  override method enterInstructionInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
+
+  override proc enterInstructionInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
     [self.mExpression enterExpressionInSemanticContext !?ioTypeMap]
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method analyzeSemanticInstruction (
+  override proc analyzeSemanticInstruction (
                         ?let @lstring inUsefulnessCallerEntityName,
                         ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
                         ?let @analysisContext inAnalysisContext,
@@ -512,13 +512,13 @@ final class @plusEqualElementsInstructionAST : @semanticInstructionAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method enterInstructionInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
+  override proc enterInstructionInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
     [self.mExpressions enterInSemanticContext !?ioTypeMap]
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method analyzeSemanticInstruction (
+  override proc analyzeSemanticInstruction (
                         ?let @lstring inUsefulnessCallerEntityName,
                         ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
                         ?let @analysisContext inAnalysisContext,
@@ -621,13 +621,13 @@ final class @plusPlusEqualElementInstructionAST : @semanticInstructionAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method enterInstructionInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
+  override proc enterInstructionInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
     [self.mExpression enterExpressionInSemanticContext !?ioTypeMap]
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method analyzeSemanticInstruction (
+  override proc analyzeSemanticInstruction (
                         ?let @lstring inUsefulnessCallerEntityName,
                         ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
                         ?let @analysisContext inAnalysisContext,
@@ -726,7 +726,7 @@ final class @plusEqualnstructionForGeneration : @semanticInstructionForGeneratio
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method generateInstruction (?!@stringset ioInclusionSet,
+  override proc generateInstruction (?!@stringset ioInclusionSet,
     ?!@uint ioTemporaryVariableIndex,
     ?!@stringset ioUnusedVariableCppNameSet,
     ?let @bool unused inGenerateSyntaxDirectedTranslationString,
@@ -781,7 +781,7 @@ final class @opAssignInstructionForGeneration : @semanticInstructionForGeneratio
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method generateInstruction (?!@stringset ioInclusionSet,
+  override proc generateInstruction (?!@stringset ioInclusionSet,
     ?!@uint ioTemporaryVariableIndex,
     ?!@stringset ioUnusedVariableCppNameSet,
     ?let @bool unused inGenerateSyntaxDirectedTranslationString,
@@ -822,7 +822,7 @@ final class @plusPlusAssignInstructionForGeneration : @semanticInstructionForGen
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method generateInstruction (?!@stringset ioInclusionSet,
+  override proc generateInstruction (?!@stringset ioInclusionSet,
     ?!@uint ioTemporaryVariableIndex,
     ?!@stringset ioUnusedVariableCppNameSet,
     ?let @bool unused inGenerateSyntaxDirectedTranslationString,

@@ -87,7 +87,7 @@ final class @overridingAbstractExtensionSetterAST : @semanticDeclarationAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method enterDeclarationInGraph (
+  override proc enterDeclarationInGraph (
     ?!@semanticTypePrecedenceGraph unused ioSemanticTypePrecedenceGraph,
     ?!@equatableExtensionMap unused ioEquatableExtensionMap,
     ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext,
@@ -100,7 +100,7 @@ final class @overridingAbstractExtensionSetterAST : @semanticDeclarationAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method enterDeclarationInSemanticContext (
+  override proc enterDeclarationInSemanticContext (
     ?!@equatableExtensionMap unused ioEquatableExtensionMap,
     ?let @extensionInitializerForBuildingContext unused inExtensionInitializerMapForBuildingContext,
     ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext,
@@ -112,7 +112,7 @@ final class @overridingAbstractExtensionSetterAST : @semanticDeclarationAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method semanticAnalysis (
+  override proc semanticAnalysis (
     ?!@lstringlist unused ioUsefulnessRootEntities,
     ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph,
     ?let @string unused inProductDirectory,
@@ -168,7 +168,7 @@ final class @overridingAbstractExtensionSetterAST : @semanticDeclarationAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method buildExtensionListMaps (
+  override proc buildExtensionListMaps (
     ?!@genericExtensionMethodListMap unused ioAbstractExtensionSetterListMap,
     ?!@genericExtensionMethodListMap unused ioExtensionSetterListMap,
     ?!@genericExtensionMethodListMap unused ioOverridingExtensionSetterListMap,

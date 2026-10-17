@@ -157,7 +157,7 @@ class cPtr_logInstructionForGeneration : public cPtr_semanticInstructionForGener
                                                          Compiler * inCompiler) ;
 
 
-//--- Extension method generateInstruction
+//--- Extension proc generateInstruction
   public: virtual void method_generateInstruction (class GGS_stringset & arg_ioInclusionSet,
            class GGS_uint & arg_ioTemporaryVariableIndex,
            class GGS_stringset & arg_ioUnusedVariableCppNameSet,
@@ -343,7 +343,7 @@ class cPtr_superMethodCallInstructionAST : public cPtr_semanticInstructionAST {
                                                                Compiler * inCompiler) ;
 
 
-//--- Extension method analyzeSemanticInstruction
+//--- Extension proc analyzeSemanticInstruction
   public: virtual void method_analyzeSemanticInstruction (const class GGS_lstring arg_inUsefulnessCallerEntityName,
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_analysisContext arg_inAnalysisContext,
@@ -352,7 +352,7 @@ class cPtr_superMethodCallInstructionAST : public cPtr_semanticInstructionAST {
            class GGS_localVarManager & arg_ioVariableMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method enterInstructionInSemanticContext
+//--- Extension proc enterInstructionInSemanticContext
   public: virtual void method_enterInstructionInSemanticContext (class GGS_unifiedTypeMap & arg_ioTypeMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -531,7 +531,7 @@ class cPtr_syntaxSendInstructionAST : public cPtr_syntaxInstructionAST {
                                                       Compiler * inCompiler) ;
 
 
-//--- Extension method analyzeSyntaxInstruction
+//--- Extension proc analyzeSyntaxInstruction
   public: virtual void method_analyzeSyntaxInstruction (const class GGS_lstring arg_inUsefulnessCallerEntityName,
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_analysisContext arg_inAnalysisContext,
@@ -547,7 +547,7 @@ class cPtr_syntaxSendInstructionAST : public cPtr_syntaxInstructionAST {
            class GGS_uint & arg_ioSelectMethodCount,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method transformInstructionForGrammarAnalysis
+//--- Extension proc transformInstructionForGrammarAnalysis
   public: virtual void method_transformInstructionForGrammarAnalysis (class GGS_terminalSymbolsMapForGrammarAnalysis & arg_ioActuallyUsedTerminalSymbolMap,
            const class GGS_nonTerminalSymbolMapForGrammarAnalysis arg_inNonTerminalSymbolMap,
            class GGS_uint & arg_ioAddedNonTerminalIndex,
@@ -727,7 +727,7 @@ class cPtr_syntaxSendInstructionForGeneration : public cPtr_syntaxInstructionFor
                                                                 Compiler * inCompiler) ;
 
 
-//--- Extension method generateInstruction
+//--- Extension proc generateInstruction
   public: virtual void method_generateInstruction (class GGS_stringset & arg_ioInclusionSet,
            class GGS_uint & arg_ioTemporaryVariableIndex,
            class GGS_stringset & arg_ioUnusedVariableCppNameSet,
@@ -920,7 +920,7 @@ class cPtr_errorInstructionAST : public cPtr_semanticInstructionAST {
                                                              Compiler * inCompiler) ;
 
 
-//--- Extension method analyzeSemanticInstruction
+//--- Extension proc analyzeSemanticInstruction
   public: virtual void method_analyzeSemanticInstruction (const class GGS_lstring arg_inUsefulnessCallerEntityName,
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_analysisContext arg_inAnalysisContext,
@@ -929,7 +929,7 @@ class cPtr_errorInstructionAST : public cPtr_semanticInstructionAST {
            class GGS_localVarManager & arg_ioVariableMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method enterInstructionInSemanticContext
+//--- Extension proc enterInstructionInSemanticContext
   public: virtual void method_enterInstructionInSemanticContext (class GGS_unifiedTypeMap & arg_ioTypeMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -1112,7 +1112,7 @@ class cPtr_selfDivEqualExpressionInstructionAST : public cPtr_semanticInstructio
                                                                   Compiler * inCompiler) ;
 
 
-//--- Extension method analyzeSemanticInstruction
+//--- Extension proc analyzeSemanticInstruction
   public: virtual void method_analyzeSemanticInstruction (const class GGS_lstring arg_inUsefulnessCallerEntityName,
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_analysisContext arg_inAnalysisContext,
@@ -1121,7 +1121,7 @@ class cPtr_selfDivEqualExpressionInstructionAST : public cPtr_semanticInstructio
            class GGS_localVarManager & arg_ioVariableMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method enterInstructionInSemanticContext
+//--- Extension proc enterInstructionInSemanticContext
   public: virtual void method_enterInstructionInSemanticContext (class GGS_unifiedTypeMap & arg_ioTypeMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -1298,7 +1298,7 @@ class cPtr_selfPlusEqualExpressionInstructionAST : public cPtr_semanticInstructi
                                                                    Compiler * inCompiler) ;
 
 
-//--- Extension method analyzeSemanticInstruction
+//--- Extension proc analyzeSemanticInstruction
   public: virtual void method_analyzeSemanticInstruction (const class GGS_lstring arg_inUsefulnessCallerEntityName,
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_analysisContext arg_inAnalysisContext,
@@ -1307,7 +1307,7 @@ class cPtr_selfPlusEqualExpressionInstructionAST : public cPtr_semanticInstructi
            class GGS_localVarManager & arg_ioVariableMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method enterInstructionInSemanticContext
+//--- Extension proc enterInstructionInSemanticContext
   public: virtual void method_enterInstructionInSemanticContext (class GGS_unifiedTypeMap & arg_ioTypeMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -1484,7 +1484,7 @@ class cPtr_selfMinusEqualExpressionInstructionAST : public cPtr_semanticInstruct
                                                                     Compiler * inCompiler) ;
 
 
-//--- Extension method analyzeSemanticInstruction
+//--- Extension proc analyzeSemanticInstruction
   public: virtual void method_analyzeSemanticInstruction (const class GGS_lstring arg_inUsefulnessCallerEntityName,
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_analysisContext arg_inAnalysisContext,
@@ -1493,7 +1493,7 @@ class cPtr_selfMinusEqualExpressionInstructionAST : public cPtr_semanticInstruct
            class GGS_localVarManager & arg_ioVariableMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method enterInstructionInSemanticContext
+//--- Extension proc enterInstructionInSemanticContext
   public: virtual void method_enterInstructionInSemanticContext (class GGS_unifiedTypeMap & arg_ioTypeMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -1670,7 +1670,7 @@ class cPtr_selfMulEqualExpressionInstructionAST : public cPtr_semanticInstructio
                                                                   Compiler * inCompiler) ;
 
 
-//--- Extension method analyzeSemanticInstruction
+//--- Extension proc analyzeSemanticInstruction
   public: virtual void method_analyzeSemanticInstruction (const class GGS_lstring arg_inUsefulnessCallerEntityName,
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_analysisContext arg_inAnalysisContext,
@@ -1679,7 +1679,7 @@ class cPtr_selfMulEqualExpressionInstructionAST : public cPtr_semanticInstructio
            class GGS_localVarManager & arg_ioVariableMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method enterInstructionInSemanticContext
+//--- Extension proc enterInstructionInSemanticContext
   public: virtual void method_enterInstructionInSemanticContext (class GGS_unifiedTypeMap & arg_ioTypeMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -1856,7 +1856,7 @@ class cPtr_selfPlusEqualElementsInstructionAST : public cPtr_semanticInstruction
                                                                  Compiler * inCompiler) ;
 
 
-//--- Extension method analyzeSemanticInstruction
+//--- Extension proc analyzeSemanticInstruction
   public: virtual void method_analyzeSemanticInstruction (const class GGS_lstring arg_inUsefulnessCallerEntityName,
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_analysisContext arg_inAnalysisContext,
@@ -1865,7 +1865,7 @@ class cPtr_selfPlusEqualElementsInstructionAST : public cPtr_semanticInstruction
            class GGS_localVarManager & arg_ioVariableMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method enterInstructionInSemanticContext
+//--- Extension proc enterInstructionInSemanticContext
   public: virtual void method_enterInstructionInSemanticContext (class GGS_unifiedTypeMap & arg_ioTypeMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 

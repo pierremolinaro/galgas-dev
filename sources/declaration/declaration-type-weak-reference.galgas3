@@ -36,7 +36,7 @@ override func @weakReferenceDeclarationAST keyRepresentation -> @string {
 
 //--------------------------------------------------------------------------------------------------
 
-override method @weakReferenceDeclarationAST enterDeclarationInGraph
+override proc @weakReferenceDeclarationAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
   ?!@equatableExtensionMap unused ioEquatableExtensionMap
   ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext
@@ -59,7 +59,7 @@ override method @weakReferenceDeclarationAST enterDeclarationInGraph
 //   SEMANTIC CONTEXT
 //--------------------------------------------------------------------------------------------------
 
-override method @weakReferenceDeclarationAST enterDeclarationInSemanticContext
+override proc @weakReferenceDeclarationAST enterDeclarationInSemanticContext
           ?!@equatableExtensionMap ioEquatableExtensionMap
           ?let @extensionInitializerForBuildingContext inExtensionInitializerMapForBuildingContext
           ?let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext
@@ -164,7 +164,7 @@ override method @weakReferenceDeclarationAST enterDeclarationInSemanticContext
 //   SEMANTIC ANALYSIS
 //--------------------------------------------------------------------------------------------------
 
-override method @weakReferenceDeclarationAST semanticAnalysis
+override proc @weakReferenceDeclarationAST semanticAnalysis
   ?!@lstringlist unused ioUsefulnessRootEntities
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @string unused inProductDirectory
@@ -219,7 +219,7 @@ final class @weakReferenceTypeForGeneration : @semanticTypeForGeneration {
 
 //--------------------------------------------------------------------------------------------------
 
-override method @weakReferenceTypeForGeneration appendDeclaration1 ?!@stringset ioInclusionSet
+override proc @weakReferenceTypeForGeneration appendDeclaration1 ?!@stringset ioInclusionSet
                                                                    !@string outHeader {
   if not self.mSuperClass.isNull then
     [self.mSuperClass addHeaderFileName !?ioInclusionSet]
@@ -260,7 +260,7 @@ override method @weakReferenceTypeForGeneration appendDeclaration1 ?!@stringset 
 
 //--------------------------------------------------------------------------------------------------
 
-override method @weakReferenceTypeForGeneration appendSpecificImplementation
+override proc @weakReferenceTypeForGeneration appendSpecificImplementation
   ?let @unifiedTypeMap unused inTypeMap
   ?!@stringset ioInclusionSet
   !@string outImplementation

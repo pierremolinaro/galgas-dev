@@ -165,7 +165,7 @@ override func @overridingAbstractExtensionGetterAST keyRepresentation  -> @strin
 //   ENTER IN GRAPH
 //--------------------------------------------------------------------------------------------------
 
-override method @overridingAbstractExtensionGetterAST enterDeclarationInGraph (
+override proc @overridingAbstractExtensionGetterAST enterDeclarationInGraph (
       ?!@semanticTypePrecedenceGraph unused ioSemanticTypePrecedenceGraph,
       ?!@equatableExtensionMap unused ioEquatableExtensionMap,
       ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext,
@@ -195,7 +195,7 @@ override method @overridingAbstractExtensionGetterAST enterDeclarationInGraph (
 //   SEMANTIC CONTEXT
 //--------------------------------------------------------------------------------------------------
 
-override method @overridingAbstractExtensionGetterAST enterDeclarationInSemanticContext (
+override proc @overridingAbstractExtensionGetterAST enterDeclarationInSemanticContext (
   ?!@equatableExtensionMap unused ioEquatableExtensionMap,
   ?let @extensionInitializerForBuildingContext unused inExtensionInitializerMapForBuildingContext,
   ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext,
@@ -209,7 +209,7 @@ override method @overridingAbstractExtensionGetterAST enterDeclarationInSemantic
 //   SEMANTIC ANALYSIS
 //--------------------------------------------------------------------------------------------------
 
-override method @overridingAbstractExtensionGetterAST semanticAnalysis (
+override proc @overridingAbstractExtensionGetterAST semanticAnalysis (
   ?!@lstringlist unused ioUsefulnessRootEntities,
   ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph,
   ?let @string unused inProductDirectory,
@@ -281,7 +281,7 @@ override method @overridingAbstractExtensionGetterAST semanticAnalysis (
 //   EXTENSION LIST MAP
 //--------------------------------------------------------------------------------------------------
 
-override method @overridingAbstractExtensionGetterAST buildExtensionListMaps (
+override proc @overridingAbstractExtensionGetterAST buildExtensionListMaps (
   ?!@genericExtensionMethodListMap unused ioAbstractExtensionSetterListMap,
   ?!@genericExtensionMethodListMap unused ioExtensionSetterListMap,
   ?!@genericExtensionMethodListMap unused ioOverridingExtensionSetterListMap,

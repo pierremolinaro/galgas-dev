@@ -22,7 +22,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //--------------------------------------------------------------------------------------------------
 
-override method @outputActualParameterForGeneration generateActualParameter
+override proc @outputActualParameterForGeneration generateActualParameter
   ?!@stringset ioInclusionSet
   ?!@uint ioTemporaryVariableIndex
   ?!@string ioImplementation
@@ -37,7 +37,7 @@ override method @outputActualParameterForGeneration generateActualParameter
 
 //--------------------------------------------------------------------------------------------------
 
-override method @outputInputActualParameterForGeneration generateActualParameter
+override proc @outputInputActualParameterForGeneration generateActualParameter
   ?!@stringset ioInclusionSet
   ?!@uint unused ioTemporaryVariableIndex
   ?!@string unused ioImplementation
@@ -57,7 +57,7 @@ override method @outputInputActualParameterForGeneration generateActualParameter
 
 //--------------------------------------------------------------------------------------------------
 
-override method @inputActualParameterForGeneration generateActualParameter
+override proc @inputActualParameterForGeneration generateActualParameter
   ?!@stringset unused ioInclusionSet
   ?!@uint unused ioTemporaryVariableIndex
   ?!@string unused ioImplementation
@@ -72,7 +72,7 @@ override method @inputActualParameterForGeneration generateActualParameter
 
 //--------------------------------------------------------------------------------------------------
 
-override method @inputJokerParameterForGeneration generateActualParameter
+override proc @inputJokerParameterForGeneration generateActualParameter
   ?!@stringset ioInclusionSet
   ?!@uint unused ioTemporaryVariableIndex
   ?!@string ioImplementation
@@ -89,7 +89,7 @@ override method @inputJokerParameterForGeneration generateActualParameter
 
 //--------------------------------------------------------------------------------------------------
 
-override method @semanticBlockInstructionForGeneration generateInstruction (?!@stringset ioInclusionSet,
+override proc @semanticBlockInstructionForGeneration generateInstruction (?!@stringset ioInclusionSet,
                                      ?!@uint ioTemporaryVariableIndex,
                                      ?!@stringset ioUnusedVariableCppNameSet,
                                      ?let @bool inGenerateSyntaxDirectedTranslationString,
@@ -108,21 +108,21 @@ override method @semanticBlockInstructionForGeneration generateInstruction (?!@s
 
 //--------------------------------------------------------------------------------------------------
 
-override method @outputInputActualParameterForGeneration generatePoisonedVariables
+override proc @outputInputActualParameterForGeneration generatePoisonedVariables
   ?!@string unused ioImplementation
   ?!@stringset unused ioUnusedVariableCppNameSet {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-override method @outputActualParameterForGeneration generatePoisonedVariables
+override proc @outputActualParameterForGeneration generatePoisonedVariables
   ?!@string unused ioImplementation
   ?!@stringset unused ioUnusedVariableCppNameSet {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-override method @inputJokerParameterForGeneration generatePoisonedVariables
+override proc @inputJokerParameterForGeneration generatePoisonedVariables
   ?!@string ioImplementation
   ?!@stringset ioUnusedVariableCppNameSet {
   if self.mPoisonedVarNameList.count > 0 then
@@ -137,7 +137,7 @@ override method @inputJokerParameterForGeneration generatePoisonedVariables
 
 //--------------------------------------------------------------------------------------------------
 
-override method @inputActualParameterForGeneration generatePoisonedVariables
+override proc @inputActualParameterForGeneration generatePoisonedVariables
                         ?!@string ioImplementation
                         ?!@stringset ioUnusedVariableCppNameSet {
   if self.mPoisonedVarNameList.count > 0 then

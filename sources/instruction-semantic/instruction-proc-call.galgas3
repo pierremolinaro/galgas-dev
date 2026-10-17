@@ -70,7 +70,7 @@ final class @procCallInstructionAST : @semanticInstructionAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method enterInstructionInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
+  override proc enterInstructionInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
     for (mActualParameter) in self.mActualParameterList do
       [mActualParameter enterParameterInSemanticContext !?ioTypeMap]
     end
@@ -78,7 +78,7 @@ final class @procCallInstructionAST : @semanticInstructionAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method analyzeSemanticInstruction (?let @lstring inUsefulnessCallerEntityName,
+  override proc analyzeSemanticInstruction (?let @lstring inUsefulnessCallerEntityName,
                                               ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
                                               ?let @analysisContext inAnalysisContext,
                                               ?!@unifiedTypeMap ioTypeMap,
@@ -136,7 +136,7 @@ final class @procCallInstructionForGeneration : @semanticInstructionForGeneratio
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method generateInstruction (?!@stringset ioInclusionSet,
+  override proc generateInstruction (?!@stringset ioInclusionSet,
                                        ?!@uint ioTemporaryVariableIndex,
                                        ?!@stringset ioUnusedVariableCppNameSet,
                                        ?let @bool unused inGenerateSyntaxDirectedTranslationString,
@@ -159,7 +159,7 @@ final class @procCallInstructionForGeneration : @semanticInstructionForGeneratio
       ]
       parameterCppNameList += !parameterCppName
     end
-  //--- Generate method call
+  //--- Generate proc call
     ioGeneratedCode += "routine_" + self.routineMangledName.string.identifierRepresentation + " ("
     for (mValue) in parameterCppNameList do
       ioGeneratedCode += mValue + ", "

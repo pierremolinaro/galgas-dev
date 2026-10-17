@@ -136,7 +136,7 @@ override func @listDeclarationAST keyRepresentation
 
 //--------------------------------------------------------------------------------------------------
 
-override method @listDeclarationAST enterDeclarationInGraph
+override proc @listDeclarationAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
   ?!@equatableExtensionMap unused ioEquatableExtensionMap
   ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext
@@ -155,7 +155,7 @@ override method @listDeclarationAST enterDeclarationInGraph
 //   SEMANTIC ANALYSIS
 //--------------------------------------------------------------------------------------------------
 
-override method @listDeclarationAST enterDeclarationInSemanticContext
+override proc @listDeclarationAST enterDeclarationInSemanticContext
   ?!@equatableExtensionMap ioEquatableExtensionMap
   ?let @extensionInitializerForBuildingContext inExtensionInitializerMapForBuildingContext
   ?let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext
@@ -416,7 +416,7 @@ override method @listDeclarationAST enterDeclarationInSemanticContext
 
 //--------------------------------------------------------------------------------------------------
 
-override method @listDeclarationAST addAssociatedElement
+override proc @listDeclarationAST addAssociatedElement
   ?!@galgasDeclarationAST ioDeclarations {
   var @propertyInCollectionListAST structAttributeList = @()
   for (mutability qualifiedTypeAST mPropertyName * hasSelector initExpression) in self.mPropertyList do
@@ -443,7 +443,7 @@ override method @listDeclarationAST addAssociatedElement
 //   ENTER IN SEMANTIC CONTEXT
 //--------------------------------------------------------------------------------------------------
 
-override method @listDeclarationAST semanticAnalysis
+override proc @listDeclarationAST semanticAnalysis
           ?!@lstringlist ioUsefulnessRootEntities
           ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
           ?let @string unused inProductDirectory
@@ -515,7 +515,7 @@ final class @listTypeForGeneration : @semanticTypeForGeneration {
 
 //--------------------------------------------------------------------------------------------------
 
-override method @listTypeForGeneration appendDeclaration1
+override proc @listTypeForGeneration appendDeclaration1
   ?!@stringset unused ioInclusionSet
   !@string outHeader
 {
@@ -550,7 +550,7 @@ override method @listTypeForGeneration appendDeclaration1
 
 //--------------------------------------------------------------------------------------------------
 
-override method @listTypeForGeneration appendSpecificImplementation
+override proc @listTypeForGeneration appendSpecificImplementation
                                         ?let @unifiedTypeMap unused inTypeMap
                                         ?!@stringset ioInclusionSet
                                         !@string outImplementation {

@@ -5,7 +5,7 @@
 //  Copyright (C) 1994, ..., 2026 Pierre Molinaro.
 //
 //  MIT License
-//                                           
+//
 // Permission is hereby granted, free of charge, to any person obtaining a copy of this software
 // and associated documentation files (the "Software"), to deal in the Software without restriction,
 // including without limitation the rights to use, copy, modify, merge, publish, distribute,
@@ -20,7 +20,7 @@
 // NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
 // DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-//                                           
+//
 //--------------------------------------------------------------------------------------------------
 
 #include "HTMLString.h"
@@ -685,7 +685,7 @@ generate_LL1_grammar_Cpp_file (const GGS_nonTerminalSymbolSortedListForGrammarAn
       ioCppFileContents.appendCString ("}\n\n") ;
       currentAltForNonTerminal.gotoNextObject () ;
     }
-  //--- Generate 'startParsing' method ?
+  //--- Generate 'startParsing' proc ?
     if (nonTerminal.current_mNonTerminalIndex (HERE).uintValue () == inOriginalGrammarStartSymbol) {
       ioCppFileContents.appendCString ("void cGrammar_") ;
       ioCppFileContents.appendString (inTargetFileName.identifierRepresentation ()) ;
@@ -774,7 +774,7 @@ generate_LL1_grammar_Cpp_file (const GGS_nonTerminalSymbolSortedListForGrammarAn
       currentAltForNonTerminal.rewind () ;
       while (currentAltForNonTerminal.hasCurrentObject ()) {
         ioCppFileContents.appendCppTitleComment ("Grammar start symbol implementation") ;
-      //--- Define file parsing static method
+      //--- Define file parsing static proc
         ioCppFileContents.appendCString ("void cGrammar_") ;
         ioCppFileContents.appendString (inTargetFileName.identifierRepresentation ());
         ioCppFileContents.appendCString ("::_performSourceFileParsing_") ;
@@ -893,7 +893,7 @@ generate_LL1_grammar_Cpp_file (const GGS_nonTerminalSymbolSortedListForGrammarAn
                              "    }\n"
                              "  }\n"
                              "}\n\n") ;
-      //--- Define string parsing static method
+      //--- Define string parsing static proc
         ioCppFileContents.appendCppHyphenLineComment () ;
         ioCppFileContents.appendCString ("void cGrammar_") ;
         ioCppFileContents.appendString (inTargetFileName.identifierRepresentation ()) ;

@@ -66,7 +66,7 @@ final class @syntaxSendInstructionAST : @syntaxInstructionAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method transformInstructionForGrammarAnalysis (
+  override proc transformInstructionForGrammarAnalysis (
     ?!usedTerminalMap:@terminalSymbolsMapForGrammarAnalysis unused ioActuallyUsedTerminalSymbolMap,
     ?nonTerminalSymbolMap:let @nonTerminalSymbolMapForGrammarAnalysis unused inNonTerminalSymbolMap,
     ?!addedTerminalIndex:@uint unused ioAddedNonTerminalIndex,
@@ -75,7 +75,7 @@ final class @syntaxSendInstructionAST : @syntaxInstructionAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method analyzeSyntaxInstruction (?let @lstring inUsefulnessCallerEntityName,
+  override proc analyzeSyntaxInstruction (?let @lstring inUsefulnessCallerEntityName,
                                   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
                                   ?let @analysisContext inAnalysisContext,
                                   ?!@unifiedTypeMap ioTypeMap,
@@ -89,7 +89,7 @@ final class @syntaxSendInstructionAST : @syntaxInstructionAST {
                                   ?!@localVarManager ioVariableMap,
                                   ?!@uint unused ioSelectMethodCount) {
     if not inHasTranslateFeature then
-      error (self.mInstructionLocation 
+      error (self.mInstructionLocation
       : "'send' instruction is only allowed when syntax componant has 'translate' feature"
       )
     end
@@ -127,7 +127,7 @@ final class @syntaxSendInstructionForGeneration : @syntaxInstructionForGeneratio
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method generateInstruction (?!@stringset ioInclusionSet,
+  override proc generateInstruction (?!@stringset ioInclusionSet,
                                        ?!@uint ioTemporaryVariableIndex,
                                        ?!@stringset ioUnusedVariableCppNameSet,
                                        ?let @bool unused inGenerateSyntaxDirectedTranslationString,

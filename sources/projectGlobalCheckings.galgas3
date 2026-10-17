@@ -72,7 +72,7 @@ struct @genericExtensionMethodListMap {
 //
 //--------------------------------------------------------------------------------------------------
 
-method @semanticDeclarationAST buildExtensionListMaps
+proc @semanticDeclarationAST buildExtensionListMaps
   ?!@genericExtensionMethodListMap unused ioAbstractExtensionSetterListMap
   ?!@genericExtensionMethodListMap unused ioExtensionSetterListMap
   ?!@genericExtensionMethodListMap unused ioOverridingExtensionSetterListMap
@@ -139,11 +139,11 @@ struct @descendantClassListMap {
 //
 //  E X T E N S I O N    M E T H O D    M A P
 //
-// Used for checking a extension-method is defined once for a type
+// Used for checking a extension-proc is defined once for a type
 //--------------------------------------------------------------------------------------------------
 
 map @extensionMethodMapForGlobalCheckings {
-  insert insertKey error message "the '%K' extension method is already declared in %L"
+  insert insertKey error message "the '%K' extension proc is already declared in %L"
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -161,7 +161,7 @@ map @extensionSetterMapForGlobalCheckings {
 //
 //  E X T E N S I O N    G E T T E R    M A P
 //
-// Used for checking a extension-method is defined once for a type
+// Used for checking a extension-proc is defined once for a type
 //--------------------------------------------------------------------------------------------------
 
 map @extensionGetterMapForGlobalCheckings {
@@ -197,9 +197,9 @@ proc checkextensionSetterDefinitionForClass
           !inUnifiedTypeMap
         )
       else
-        error (inAbstractExtensionSetterName: "an abstract extension method '" + inAbstractExtensionSetterName + "' is defined for abstract class '@"
+        error (inAbstractExtensionSetterName: "an abstract extension proc '" + inAbstractExtensionSetterName + "' is defined for abstract class '@"
         + inClassNameForErrorSignaling
-        + "', but concrete descendant class '@" + descendantClassName + "' does not implement this method")
+        + "', but concrete descendant class '@" + descendantClassName + "' does not implement this proc")
       end
     end
   end
@@ -234,9 +234,9 @@ proc checkExtensionMethodDefinitionForClass
           !inUnifiedTypeMap
         )
       else
-        error (inAbstractExtensionMethodName: "an abstract extension method '" + inAbstractExtensionMethodName + "' is defined for abstract class '@"
+        error (inAbstractExtensionMethodName: "an abstract extension proc '" + inAbstractExtensionMethodName + "' is defined for abstract class '@"
         + inClassNameForErrorSignaling
-        + "', but concrete descendant class '@" + descendantClassName + "' does not implement this method")
+        + "', but concrete descendant class '@" + descendantClassName + "' does not implement this proc")
       end
     end
   end
@@ -300,7 +300,7 @@ proc performGalgas3ProjectGlobalCheckings
        ]
      end
   end
-//--- Build Extension method listmaps
+//--- Build Extension proc listmaps
   var @genericExtensionMethodListMap abstractExtensionMethodListMap = @()
   var @genericExtensionMethodListMap extensionMethodListMap = @()
   var @genericExtensionMethodListMap overridingExtensionMethodListMap = @()
@@ -385,35 +385,35 @@ proc performGalgas3ProjectGlobalCheckings
         )
       end
     end
-  //--- A given abstract extension method is defined only once for a class
+  //--- A given abstract extension proc is defined only once for a class
     for (* mList) in abstractExtensionMethodListMap.dictionary do
       var @extensionMethodMapForGlobalCheckings extensionMethodMap = @()
       for (mValue) in mList do
         [!?extensionMethodMap insertKey !mValue]
       end
     end
-  //--- A given base extension method is defined only once for a class
+  //--- A given base extension proc is defined only once for a class
     for (* mList) in extensionMethodListMap.dictionary do
       var @extensionMethodMapForGlobalCheckings extensionMethodMap = @()
       for (mValue) in mList do
         [!?extensionMethodMap insertKey !mValue]
       end
     end
-  //--- A given overriding extension method is defined only once for a class
+  //--- A given overriding extension proc is defined only once for a class
     for (* mList) in overridingExtensionMethodListMap.dictionary do
       var @extensionMethodMapForGlobalCheckings extensionMethodMap = @()
       for (mValue) in mList do
         [!?extensionMethodMap insertKey !mValue]
       end
     end
-  //--- A given overriding abstract extension method is defined only once for a class
+  //--- A given overriding abstract extension proc is defined only once for a class
     for (* mList) in overridingAbstractExtensionMethodListMap.dictionary do
       var @extensionMethodMapForGlobalCheckings extensionMethodMap = @()
       for (mValue) in mList do
         [!?extensionMethodMap insertKey !mValue]
       end
     end
-  //----- Check that for every abstract extension method, an overridden extension method defined in an concrete subclass
+  //----- Check that for every abstract extension proc, an overridden extension proc defined in an concrete subclass
     for (key mList) in abstractExtensionMethodListMap.dictionary do
       for (mValue) in mList do
         checkExtensionMethodDefinitionForClass (
@@ -426,7 +426,7 @@ proc performGalgas3ProjectGlobalCheckings
         )
       end
     end
-  //----- Check that for every abstract extension method, an overridden extension method defined in an concrete subclass
+  //----- Check that for every abstract extension proc, an overridden extension proc defined in an concrete subclass
     for (key mList) in overridingAbstractExtensionMethodListMap.dictionary do
       for (mValue) in mList do
         checkExtensionMethodDefinitionForClass (

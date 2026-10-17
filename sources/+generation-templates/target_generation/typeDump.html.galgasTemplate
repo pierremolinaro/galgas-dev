@@ -89,7 +89,7 @@ end
     end%
 </td></tr>
 %if not [[element definition].superType isNull] then
-%<tr class="result_line"><td>Superclass</td><td>%!linkForType (![[element definition].superType definition].typeName.string)%</td></tr>% 
+%<tr class="result_line"><td>Superclass</td><td>%!linkForType (![[element definition].superType definition].typeName.string)%</td></tr>%
 end%
 <tr class="result_line"><td>Operators</td>
   <td>
@@ -161,7 +161,7 @@ end%
     end
   %
 </td></tr>
-% 
+%
 if [[element definition].addAssignOperatorArguments count] > 0 then
   %<tr class="result_line"><td>+= !... !...</td><td>%
   for (mFormalSelector mFormalArgumentType mFormalArgumentName *) in [element definition].addAssignOperatorArguments do
@@ -237,7 +237,7 @@ if [[element definition].instanceMethodMap count] > 0 then
     case isVirtualOverriding : %<b>override</b> %
     case isVirtualOverridingAbstract : %<b>abstract override</b> %
     end
-    %<b>method</b> %!lkey.string
+    %<b>proc</b> %!lkey.string
     for (mFormalSelector mFormalArgumentType mFormalArgumentPassingMode mFormalArgumentName) in mParameterList do
       %<br>&nbsp;&nbsp;&nbsp;&nbsp;%
       switch mFormalArgumentPassingMode

@@ -85,7 +85,7 @@ class cPtr_programComponentForGeneration : public cPtr_semanticDeclarationWithHe
 //--- Extension func headerKind
   public: virtual class GGS_headerKind getter_headerKind (Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension method appendSpecificImplementation
+//--- Extension proc appendSpecificImplementation
   public: virtual void method_appendSpecificImplementation (const class GGS_unifiedTypeMap arg_inUnifiedTypeMap,
            class GGS_stringset & arg_ioInclusionSet,
            class GGS_string & arg_outImplementation,
@@ -298,17 +298,17 @@ class cPtr_binarysetPredefinedTypeAST : public cPtr_predefinedTypeAST {
 //--- Extension func initializers
   public: virtual class GGS__5B_formalInputParameterListAST_5D_ getter_initializers (Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension method getClassFunctionMap
+//--- Extension proc getClassFunctionMap
   public: virtual void method_getClassFunctionMap (class GGS_unifiedTypeMap & arg_ioUnifiedTypeMap,
            class GGS_classFunctionMap & arg_outClassFunctionMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method getClassMethodMap
+//--- Extension proc getClassMethodMap
   public: virtual void method_getClassMethodMap (class GGS_unifiedTypeMap & arg_ioUnifiedTypeMap,
            class GGS_classMethodMap & arg_outClassMethodMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method getGetterMap
+//--- Extension proc getGetterMap
   public: virtual void method_getGetterMap (class GGS_unifiedTypeMap & arg_ioUnifiedTypeMap,
            class GGS_getterMap & arg_outGetterMap,
            Compiler * COMMA_LOCATION_ARGS) override ;

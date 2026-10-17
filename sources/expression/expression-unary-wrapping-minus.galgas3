@@ -66,7 +66,7 @@ syntax extension galgas4ExpressionSyntax {
 //! SEMANTICS
 //--------------------------------------------------------------------------------------------------
 
-override method @unaryWrappingMinusExpressionAST enterExpressionInSemanticContext
+override proc @unaryWrappingMinusExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
 {
   [self.mExpression enterExpressionInSemanticContext !?ioTypeMap]
@@ -74,7 +74,7 @@ override method @unaryWrappingMinusExpressionAST enterExpressionInSemanticContex
 
 //································································································
 
-override method @unaryWrappingMinusExpressionAST analyzeSemanticExpression
+override proc @unaryWrappingMinusExpressionAST analyzeSemanticExpression
   ?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?inferenceType: let @unifiedTypeMapEntry unused inType
@@ -117,7 +117,7 @@ final class @unaryWrappingMinusExpressionForGeneration : @semanticExpressionForG
 
 //································································································
 
-override method @unaryWrappingMinusExpressionForGeneration generateExpression
+override proc @unaryWrappingMinusExpressionForGeneration generateExpression
   ?!@string ioGeneratedCode
   ?!@stringset ioInclusionSet
   ?!@uint ioTemporaryVariableIndex

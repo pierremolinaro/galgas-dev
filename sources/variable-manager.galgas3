@@ -412,13 +412,13 @@ struct @currentVarManager {
 //! checkSelfObjectIsFullyInitialized
 //--------------------------------------------------------------------------------------------------
 
-method @localVarManager checkSelfObjectIsFullyInitialized ?let @location inErrorLocation {
+proc @localVarManager checkSelfObjectIsFullyInitialized ?let @location inErrorLocation {
   [self.mCurrentManager checkSelfObjectIsFullyInitialized !inErrorLocation]
 }
 
 //--------------------------------------------------------------------------------------------------
 
-method @currentVarManager checkSelfObjectIsFullyInitialized ?let @location inErrorLocation {
+proc @currentVarManager checkSelfObjectIsFullyInitialized ?let @location inErrorLocation {
   var fullyInitialized = true
   for entry in self.mLocalVarMap while fullyInitialized do
     let keyComponents = [entry.lkey.string componentsSeparatedByString !"."]
@@ -826,7 +826,7 @@ setter @currentVarManager insertKey ?let @lstring inVarName
 //! CHECK FINAL STATE
 //--------------------------------------------------------------------------------------------------
 
-method @localVarValuation checkFinalState ?let @lstring inVarName ?let @localVariableAttributes inAttributes {
+proc @localVarValuation checkFinalState ?let @lstring inVarName ?let @localVariableAttributes inAttributes {
   switch self
   case invalid :
   case declared (usedInOtherBlock) : // The variable has no value
@@ -854,7 +854,7 @@ method @localVarValuation checkFinalState ?let @lstring inVarName ?let @localVar
 
 //--------------------------------------------------------------------------------------------------
 
-method @scopeLocalVarMap checkFinalStates ?let @location unused inErrorLocation {
+proc @scopeLocalVarMap checkFinalStates ?let @location unused inErrorLocation {
   for (varName 3* attributes valuation) in self do
     [valuation checkFinalState !varName !attributes]
   end
@@ -862,13 +862,13 @@ method @scopeLocalVarMap checkFinalStates ?let @location unused inErrorLocation 
 
 //--------------------------------------------------------------------------------------------------
 
-method @localVarManager checkAutomatonStates ?let @location inErrorLocation {
+proc @localVarManager checkAutomatonStates ?let @location inErrorLocation {
   [self.mCurrentManager checkAutomatonStates !inErrorLocation]
 }
 
 //--------------------------------------------------------------------------------------------------
 
-method @currentVarManager checkAutomatonStates ?let @location inErrorLocation {
+proc @currentVarManager checkAutomatonStates ?let @location inErrorLocation {
   [self.mLocalVarMap checkFinalStates !inErrorLocation]
 }
 
@@ -876,7 +876,7 @@ method @currentVarManager checkAutomatonStates ?let @location inErrorLocation {
 //! COMBINE MANAGERS
 //--------------------------------------------------------------------------------------------------
 
-method @localVarValuation combineValuationWith ?let @localVarValuation inOther
+proc @localVarValuation combineValuationWith ?let @localVarValuation inOther
                                                !@localVarValuation outResult
                                                ?!@string unused ioErrorMessage {
   switch self

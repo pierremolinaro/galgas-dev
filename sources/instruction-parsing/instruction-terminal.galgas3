@@ -146,7 +146,7 @@ final class @terminalCheckInstructionAST : @syntaxInstructionAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method transformInstructionForGrammarAnalysis (
+  override proc transformInstructionForGrammarAnalysis (
     ?!usedTerminalMap:@terminalSymbolsMapForGrammarAnalysis ioActuallyUsedTerminalSymbolMap,
     ?nonTerminalSymbolMap:let @nonTerminalSymbolMapForGrammarAnalysis unused inNonTerminalSymbolMap,
     ?!addedTerminalIndex:@uint unused ioAddedNonTerminalIndex,
@@ -167,7 +167,7 @@ final class @terminalCheckInstructionAST : @syntaxInstructionAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method analyzeSyntaxInstruction (
+  override proc analyzeSyntaxInstruction (
     ?let @lstring unused inUsefulnessCallerEntityName,
     ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph,
     ?let @analysisContext inAnalysisContext,
@@ -253,7 +253,7 @@ final class @terminalInstructionForGrammarAnalysis : @abstractSyntaxInstructionF
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method tikzNodeForSyntaxInstruction (?!@rowList ioRowList,
+  override proc tikzNodeForSyntaxInstruction (?!@rowList ioRowList,
                                                 ?fromRow:let @uint inRow,
                                                 ?!column:@uint ioColumn,
                                                 ?!node: @string ioCurrentNode,
@@ -300,7 +300,7 @@ final class @terminalCheckInstructionForGeneration : @syntaxInstructionForGenera
 //! SYNTAX SIGNATURE
 //--------------------------------------------------------------------------------------------------
 
-override method @terminalCheckInstructionForGeneration appendSyntaxSignature (
+override proc @terminalCheckInstructionForGeneration appendSyntaxSignature (
   ?let @string unused inPosfix,
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration) {
   ioInstructionListForGeneration += !@terminalCheckInstructionForGeneration {
@@ -344,7 +344,7 @@ override func @terminalCheckInstructionForGeneration compareInstructionSyntaxSig
 //! CODE GENERATION
 //--------------------------------------------------------------------------------------------------
 
-override method @terminalCheckInstructionForGeneration generateInstruction (?!@stringset unused ioInclusionSet,
+override proc @terminalCheckInstructionForGeneration generateInstruction (?!@stringset unused ioInclusionSet,
                                        ?!@uint unused ioTemporaryVariableIndex,
                                        ?!@stringset ioUnusedVariableCppNameSet,
                                        ?let @bool inGenerateSyntaxDirectedTranslationString,

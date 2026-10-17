@@ -226,7 +226,7 @@ override func @templateLexiqueComponentAST keyRepresentation -> @string {
 
 //--------------------------------------------------------------------------------------------------
 
-override method @templateLexiqueComponentAST enterDeclarationInGraph
+override proc @templateLexiqueComponentAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
   ?!@equatableExtensionMap unused ioEquatableExtensionMap
   ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext
@@ -242,7 +242,7 @@ override method @templateLexiqueComponentAST enterDeclarationInGraph
 
 //--------------------------------------------------------------------------------------------------
 
-override method @templateLexiqueComponentAST enterDeclarationInSemanticContext
+override proc @templateLexiqueComponentAST enterDeclarationInSemanticContext
   ?!@equatableExtensionMap unused ioEquatableExtensionMap
   ?let @extensionInitializerForBuildingContext unused inExtensionInitializerMapForBuildingContext
   ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext
@@ -279,7 +279,7 @@ override method @templateLexiqueComponentAST enterDeclarationInSemanticContext
 
 //--------------------------------------------------------------------------------------------------
 
-override method @templateLexiqueComponentAST semanticAnalysis
+override proc @templateLexiqueComponentAST semanticAnalysis
                                   ?!@lstringlist unused ioUsefulnessRootEntities
                                   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
                                   ?let @string unused inProductDirectory

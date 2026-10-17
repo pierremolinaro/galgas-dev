@@ -204,7 +204,7 @@ syntax extension galgas4InstructionsSyntax {
 //! CONTEXT
 //--------------------------------------------------------------------------------------------------
 
-override method @errorInstructionAST enterInstructionInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
+override proc @errorInstructionAST enterInstructionInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
   [self.mLocationExpression enterExpressionInSemanticContext !?ioTypeMap]
   [self.mMessageExpression enterExpressionInSemanticContext !?ioTypeMap]
   [self.mFixitListAST enterFixItListInSemanticContext !?ioTypeMap]
@@ -212,7 +212,7 @@ override method @errorInstructionAST enterInstructionInSemanticContext (?!@unifi
 
 //--------------------------------------------------------------------------------------------------
 
-method @fixitListAST enterFixItListInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
+proc @fixitListAST enterFixItListInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
   for (element) in self do
     switch element
     case fixItRemove :
@@ -361,7 +361,7 @@ proc analyzeErrorOrWarningInstruction (?let @lstring inUsefulnessCallerEntityNam
 
 //·································································································
 
-override method @errorInstructionAST analyzeSemanticInstruction (
+override proc @errorInstructionAST analyzeSemanticInstruction (
                         ?let @lstring inUsefulnessCallerEntityName,
                         ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
                         ?let @analysisContext inAnalysisContext,
@@ -404,7 +404,7 @@ override method @errorInstructionAST analyzeSemanticInstruction (
 //! GENERATION
 //--------------------------------------------------------------------------------------------------
 
-method @fixitListForGeneration generateFixIt (?!@stringset ioInclusionSet,
+proc @fixitListForGeneration generateFixIt (?!@stringset ioInclusionSet,
   ?!@uint ioTemporaryVariableIndex,
   ?!@stringset ioUnusedVariableCppNameSet,
   ?let @bool unused inGenerateSyntaxDirectedTranslationString,
@@ -460,7 +460,7 @@ final class @errorInstructionForGeneration : @semanticInstructionForGeneration {
 
 //································································································*
 
-override method @errorInstructionForGeneration generateInstruction (?!@stringset ioInclusionSet,
+override proc @errorInstructionForGeneration generateInstruction (?!@stringset ioInclusionSet,
   ?!@uint ioTemporaryVariableIndex,
   ?!@stringset ioUnusedVariableCppNameSet,
   ?let @bool inGenerateSyntaxDirectedTranslationString,

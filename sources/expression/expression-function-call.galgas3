@@ -100,7 +100,7 @@ final class @functionCallExpressionAST : @semanticExpressionAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method enterExpressionInSemanticContext
+  override proc enterExpressionInSemanticContext
     ?!@unifiedTypeMap ioTypeMap
   {
     for expression in self.mExpressionList do
@@ -110,7 +110,7 @@ final class @functionCallExpressionAST : @semanticExpressionAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method analyzeSemanticExpression
+  override proc analyzeSemanticExpression
     ?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName
     ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
     ?inferenceType: let @unifiedTypeMapEntry unused inType
@@ -193,7 +193,7 @@ final class @functionCallExpressionForGeneration : @semanticExpressionForGenerat
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method generateExpression ?!@string ioGeneratedCode
+  override proc generateExpression ?!@string ioGeneratedCode
                                       ?!@stringset ioInclusionSet
                                       ?!@uint ioTemporaryVariableIndex
                                       ?!@stringset ioUnusedVariableCppNameSet

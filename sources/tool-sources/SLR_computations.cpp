@@ -3,9 +3,9 @@
 //     Routines for SLR grammar computations
 //
 //  Copyright (C) 2002, ..., 2023 Pierre Molinaro.
-//                                           
+//
 //  MIT License
-//                                           
+//
 // Permission is hereby granted, free of charge, to any person obtaining a copy of this software
 // and associated documentation files (the "Software"), to deal in the Software without restriction,
 // including without limitation the rights to use, copy, modify, merge, publish, distribute,
@@ -20,7 +20,7 @@
 // NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
 // DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-//                                           
+//
 //--------------------------------------------------------------------------------------------------
 
 #include "HTMLString.h"
@@ -1136,7 +1136,7 @@ generate_SLR_grammar_cpp_file (const PureBNFproductionsList & inProductionRules,
       UpEnumerator_nonterminalSymbolLabelMapForGrammarAnalysis currentAltForNonTerminal (nonTerminal.current_mNonterminalSymbolParametersMap (HERE)) ;
       while (currentAltForNonTerminal.hasCurrentObject ()) {
         ioCppFileContents.appendCppTitleComment ("Grammar start symbol implementation") ;
-      //--- Define file parsing static method
+      //--- Define file parsing static proc
         ioCppFileContents.appendCString ("void cGrammar_") ;
         ioCppFileContents.appendString (inTargetFileName.identifierRepresentation ()) ;
         ioCppFileContents.appendCString ("::_performSourceFileParsing_") ;
@@ -1246,7 +1246,7 @@ generate_SLR_grammar_cpp_file (const PureBNFproductionsList & inProductionRules,
                              "    }\n"
                              "  }\n"
                              "}\n\n") ;
-      //--- Define string parsing static method
+      //--- Define string parsing static proc
         ioCppFileContents.appendCppHyphenLineComment () ;
         ioCppFileContents.appendCString ("void cGrammar_") ;
         ioCppFileContents.appendString (inTargetFileName.identifierRepresentation ()) ;

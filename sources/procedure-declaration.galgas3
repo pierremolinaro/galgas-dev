@@ -169,7 +169,7 @@ final class @procDeclarationAST : @externProcedureDeclarationAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method enterDeclarationInSemanticContext
+  override proc enterDeclarationInSemanticContext
     ?!@equatableExtensionMap unused ioEquatableExtensionMap
     ?let @extensionInitializerForBuildingContext unused inExtensionInitializerMapForBuildingContext
     ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext
@@ -199,7 +199,7 @@ final class @procDeclarationAST : @externProcedureDeclarationAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method semanticAnalysis?!@lstringlist ioUsefulnessRootEntities
+  override proc semanticAnalysis?!@lstringlist ioUsefulnessRootEntities
                                   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
                                   ?let @string unused inProductDirectory
                                   ?let @semanticContext inSemanticContext
@@ -270,7 +270,7 @@ final class @routineImplementationForGeneration : @routinePrototypeDeclarationFo
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method appendSpecificImplementation
+  override proc appendSpecificImplementation
     ?let @unifiedTypeMap unused inTypeMap
     ?!@stringset ioInclusionSet
     !@string outImplementation

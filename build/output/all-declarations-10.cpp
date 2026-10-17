@@ -2422,7 +2422,7 @@ void GGS_AccessControlAST::method_extractFileprivateAccess (GGS_location & outAs
   if (mEnum != Enumeration::enum_fileprivateAccess) {
     outAssociatedValue_declarationLocation.drop () ;
     String s ;
-    s.appendCString ("method @AccessControlAST.fileprivateAccess invoked with an invalid enum value") ;
+    s.appendCString ("proc @AccessControlAST.fileprivateAccess invoked with an invalid enum value") ;
     inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
   }else{
     const auto ptr = (GGS_AccessControlAST_2E_fileprivateAccess *) mAssociatedValues.associatedValuesPointer () ;
@@ -2438,7 +2438,7 @@ void GGS_AccessControlAST::method_extractFileprivateSetAccess (GGS_location & ou
   if (mEnum != Enumeration::enum_fileprivateSetAccess) {
     outAssociatedValue_declarationLocation.drop () ;
     String s ;
-    s.appendCString ("method @AccessControlAST.fileprivateSetAccess invoked with an invalid enum value") ;
+    s.appendCString ("proc @AccessControlAST.fileprivateSetAccess invoked with an invalid enum value") ;
     inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
   }else{
     const auto ptr = (GGS_AccessControlAST_2E_fileprivateSetAccess *) mAssociatedValues.associatedValuesPointer () ;
@@ -2660,7 +2660,7 @@ GGS_AccessControl extensionGetter_accessControl (const GGS_AccessControlAST & in
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension method '@AccessControl checkSetAccess'
+//Extension proc '@AccessControl checkSetAccess'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -2869,7 +2869,7 @@ void extensionMethod_checkSetAccess (const GGS_AccessControl inObject,
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension method '@AccessControl checkGetAccess'
+//Extension proc '@AccessControl checkGetAccess'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -3354,7 +3354,7 @@ GGS_actualParameterForGeneration_2E_weak GGS_actualParameterForGeneration_2E_wea
 
 //--------------------------------------------------------------------------------------------------
 //
-//Abstract extension method '@actualParameterForGeneration generateActualParameter'
+//Abstract extension proc '@actualParameterForGeneration generateActualParameter'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -3370,7 +3370,7 @@ void callExtensionMethod_generateActualParameter (cPtr_actualParameterForGenerat
                                                   COMMA_LOCATION_ARGS) {
 //--- Drop output arguments
   out_outCppName.drop () ;
-//--- Find method
+//--- Find proc
   if (nullptr != inObject) {
     macroValidSharedObject (inObject, cPtr_actualParameterForGeneration) ;
     inObject->method_generateActualParameter (io_ioInclusionSet, io_ioTemporaryVariableIndex, io_ioImplementation, io_ioJokerParametersToReleaseList, io_ioOutputVariableList, io_ioUnusedVariableCppNameSet, out_outCppName, inCompiler COMMA_THERE) ;
@@ -3378,7 +3378,7 @@ void callExtensionMethod_generateActualParameter (cPtr_actualParameterForGenerat
 }
 //--------------------------------------------------------------------------------------------------
 //
-//Abstract extension method '@actualParameterForGeneration generatePoisonedVariables'
+//Abstract extension proc '@actualParameterForGeneration generatePoisonedVariables'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -3388,7 +3388,7 @@ void callExtensionMethod_generatePoisonedVariables (cPtr_actualParameterForGener
                                                     Compiler * inCompiler
                                                     COMMA_LOCATION_ARGS) {
 //--- Drop output arguments
-//--- Find method
+//--- Find proc
   if (nullptr != inObject) {
     macroValidSharedObject (inObject, cPtr_actualParameterForGeneration) ;
     inObject->method_generatePoisonedVariables (io_ioImplementation, io_ioUnusedVariableCppNameSet, inCompiler COMMA_THERE) ;
@@ -3528,10 +3528,10 @@ class CollectionElementPtr_unifiedTypeMapEntryList : public CollectionElementPtr
                                                         COMMA_LOCATION_ARGS) ;
   public: CollectionElementPtr_unifiedTypeMapEntryList (const GGS_unifiedTypeMapEntryList_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
-//--- Virtual method that checks that all attributes are valid
+//--- Virtual proc that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
-//--- Virtual method that returns a copy of current object
+//--- Virtual proc that returns a copy of current object
   public: virtual CollectionElementPtr * copy (void) ;
 } ;
 
@@ -3939,7 +3939,7 @@ void GGS_unifiedTypeMapEntryList::setter_setMEntryAtIndex (GGS_unifiedTypeMapEnt
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_unifiedTypeMapEntry GGS_unifiedTypeMapEntryList::getter_mEntryAtIndex (const GGS_uint & inIndex,
                                                                            Compiler * inCompiler
                                                                            COMMA_LOCATION_ARGS) const {
@@ -4805,7 +4805,7 @@ GGS_inputJokerParameterForGeneration_2E_weak GGS_inputJokerParameterForGeneratio
 
 //--------------------------------------------------------------------------------------------------
 //
-//Abstract extension method '@semanticInstructionForGeneration generateInstruction'
+//Abstract extension proc '@semanticInstructionForGeneration generateInstruction'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -4818,7 +4818,7 @@ void callExtensionMethod_generateInstruction (cPtr_semanticInstructionForGenerat
                                               Compiler * inCompiler
                                               COMMA_LOCATION_ARGS) {
 //--- Drop output arguments
-//--- Find method
+//--- Find proc
   if (nullptr != inObject) {
     macroValidSharedObject (inObject, cPtr_semanticInstructionForGeneration) ;
     inObject->method_generateInstruction (io_ioInclusionSet, io_ioTemporaryVariableIndex, io_ioUnusedVariableCppNameSet, constin_inGenerateSyntaxDirectedTranslationString, io_ioGeneratedCode, inCompiler COMMA_THERE) ;
@@ -5131,7 +5131,7 @@ GGS_string callExtensionGetter_appendPrimitiveTypeDeclaration (const cPtr_semant
 }
 
 //--------------------------------------------------------------------------------------------------
-//Extension method '@semanticDeclarationForGeneration appendPrimitiveTypePreDeclaration'
+//Extension proc '@semanticDeclarationForGeneration appendPrimitiveTypePreDeclaration'
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_semanticDeclarationForGeneration::method_appendPrimitiveTypePreDeclaration (GGS_string & /* ioArgument_ioHeader */,
@@ -5228,10 +5228,10 @@ class CollectionElementPtr_semanticDeclarationListForGeneration : public Collect
                                                                      COMMA_LOCATION_ARGS) ;
   public: CollectionElementPtr_semanticDeclarationListForGeneration (const GGS_semanticDeclarationListForGeneration_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
-//--- Virtual method that checks that all attributes are valid
+//--- Virtual proc that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
-//--- Virtual method that returns a copy of current object
+//--- Virtual proc that returns a copy of current object
   public: virtual CollectionElementPtr * copy (void) ;
 } ;
 
@@ -5664,7 +5664,7 @@ void GGS_semanticDeclarationListForGeneration::setter_setInfoMessageAtIndex (GGS
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_string GGS_semanticDeclarationListForGeneration::getter_infoMessageAtIndex (const GGS_uint & inIndex,
                                                                                 Compiler * inCompiler
                                                                                 COMMA_LOCATION_ARGS) const {
@@ -5703,7 +5703,7 @@ void GGS_semanticDeclarationListForGeneration::setter_setMDeclarationAtIndex (GG
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_semanticDeclarationForGeneration GGS_semanticDeclarationListForGeneration::getter_mDeclarationAtIndex (const GGS_uint & inIndex,
                                                                                                            Compiler * inCompiler
                                                                                                            COMMA_LOCATION_ARGS) const {
@@ -5835,10 +5835,10 @@ class CollectionElementPtr_signatureForGrammarAnalysis : public CollectionElemen
                                                             COMMA_LOCATION_ARGS) ;
   public: CollectionElementPtr_signatureForGrammarAnalysis (const GGS_signatureForGrammarAnalysis_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
-//--- Virtual method that checks that all attributes are valid
+//--- Virtual proc that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
-//--- Virtual method that returns a copy of current object
+//--- Virtual proc that returns a copy of current object
   public: virtual CollectionElementPtr * copy (void) ;
 } ;
 
@@ -6271,7 +6271,7 @@ void GGS_signatureForGrammarAnalysis::setter_setMFormalArgumentPassingModeForGra
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_formalArgumentPassingModeAST GGS_signatureForGrammarAnalysis::getter_mFormalArgumentPassingModeForGrammarAnalysisAtIndex (const GGS_uint & inIndex,
                                                                                                                               Compiler * inCompiler
                                                                                                                               COMMA_LOCATION_ARGS) const {
@@ -6310,7 +6310,7 @@ void GGS_signatureForGrammarAnalysis::setter_setMGalgasTypeNameForGrammarAnalysi
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_lstring GGS_signatureForGrammarAnalysis::getter_mGalgasTypeNameForGrammarAnalysisAtIndex (const GGS_uint & inIndex,
                                                                                               Compiler * inCompiler
                                                                                               COMMA_LOCATION_ARGS) const {
@@ -6443,10 +6443,10 @@ class CollectionElementPtr_filewrapperTemplateListForGeneration : public Collect
                                                                      COMMA_LOCATION_ARGS) ;
   public: CollectionElementPtr_filewrapperTemplateListForGeneration (const GGS_filewrapperTemplateListForGeneration_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
-//--- Virtual method that checks that all attributes are valid
+//--- Virtual proc that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
-//--- Virtual method that returns a copy of current object
+//--- Virtual proc that returns a copy of current object
   public: virtual CollectionElementPtr * copy (void) ;
 } ;
 
@@ -6904,7 +6904,7 @@ void GGS_filewrapperTemplateListForGeneration::setter_setMFilewrapperTemplateNam
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_string GGS_filewrapperTemplateListForGeneration::getter_mFilewrapperTemplateNameAtIndex (const GGS_uint & inIndex,
                                                                                              Compiler * inCompiler
                                                                                              COMMA_LOCATION_ARGS) const {
@@ -6943,7 +6943,7 @@ void GGS_filewrapperTemplateListForGeneration::setter_setMFilewrapperTemplateFor
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_formalInputParameterListForGeneration GGS_filewrapperTemplateListForGeneration::getter_mFilewrapperTemplateFormalInputParametersAtIndex (const GGS_uint & inIndex,
                                                                                                                                              Compiler * inCompiler
                                                                                                                                              COMMA_LOCATION_ARGS) const {
@@ -6982,7 +6982,7 @@ void GGS_filewrapperTemplateListForGeneration::setter_setMTemplateInstructionLis
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_templateInstructionListForGeneration GGS_filewrapperTemplateListForGeneration::getter_mTemplateInstructionListForGenerationAtIndex (const GGS_uint & inIndex,
                                                                                                                                         Compiler * inCompiler
                                                                                                                                         COMMA_LOCATION_ARGS) const {
@@ -7114,7 +7114,7 @@ GGS_filewrapperTemplateListForGeneration GGS_filewrapperTemplateListForGeneratio
 }
 
 //--------------------------------------------------------------------------------------------------
-//Extension method '@semanticDeclarationForGeneration appendDeclaration1'
+//Extension proc '@semanticDeclarationForGeneration appendDeclaration1'
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_semanticDeclarationForGeneration::method_appendDeclaration_31_ (GGS_stringset & /* ioArgument_ioInclusionSet */,
@@ -7139,7 +7139,7 @@ void callExtensionMethod_appendDeclaration_31_ (cPtr_semanticDeclarationForGener
 }
 
 //--------------------------------------------------------------------------------------------------
-//Extension method '@semanticDeclarationForGeneration appendDeclaration2'
+//Extension proc '@semanticDeclarationForGeneration appendDeclaration2'
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_semanticDeclarationForGeneration::method_appendDeclaration_32_ (const GGS_string /* constinArgument_inOutputDirectory */,
@@ -7194,7 +7194,7 @@ GGS_string callExtensionGetter_appendTypeGenericImplementation (const cPtr_seman
 }
 
 //--------------------------------------------------------------------------------------------------
-//Extension method '@semanticDeclarationForGeneration appendSpecificImplementation'
+//Extension proc '@semanticDeclarationForGeneration appendSpecificImplementation'
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_semanticDeclarationForGeneration::method_appendSpecificImplementation (const GGS_unifiedTypeMap /* constinArgument_inUnifiedTypeMap */,
@@ -7221,7 +7221,7 @@ void callExtensionMethod_appendSpecificImplementation (cPtr_semanticDeclarationF
 }
 
 //--------------------------------------------------------------------------------------------------
-//Extension method '@semanticDeclarationForGeneration appendSpecificFiles'
+//Extension proc '@semanticDeclarationForGeneration appendSpecificFiles'
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_semanticDeclarationForGeneration::method_appendSpecificFiles (const GGS_string /* constinArgument_inProductDirectory */,
@@ -7658,7 +7658,7 @@ GGS_lstringlist extensionGetter_listForKey (const GGS_genericExtensionMethodList
 
 
 //--------------------------------------------------------------------------------------------------
-//Extension method '@semanticDeclarationAST buildExtensionListMaps'
+//Extension proc '@semanticDeclarationAST buildExtensionListMaps'
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_semanticDeclarationAST::method_buildExtensionListMaps (GGS_genericExtensionMethodListMap & /* ioArgument_ioAbstractExtensionSetterListMap */,
@@ -8376,7 +8376,7 @@ void GGS_extensionMethodMapForGlobalCheckings::setter_insertKey (GGS_lstring inL
                                                                  Compiler * inCompiler
                                                                  COMMA_LOCATION_ARGS) {
   const GGS_extensionMethodMapForGlobalCheckings_2E_element element (inLKey) ;
-  const char * kInsertErrorMessage = "the '%K' extension method is already declared in %L" ;
+  const char * kInsertErrorMessage = "the '%K' extension proc is already declared in %L" ;
   const char * kShadowErrorMessage = nullptr ;
   performInsert (element, kInsertErrorMessage, kShadowErrorMessage, inCompiler COMMA_THERE) ;
 }
@@ -10442,10 +10442,10 @@ class CollectionElementPtr_ruleLabelImplementationList : public CollectionElemen
                                                             COMMA_LOCATION_ARGS) ;
   public: CollectionElementPtr_ruleLabelImplementationList (const GGS_ruleLabelImplementationList_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
-//--- Virtual method that checks that all attributes are valid
+//--- Virtual proc that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
-//--- Virtual method that returns a copy of current object
+//--- Virtual proc that returns a copy of current object
   public: virtual CollectionElementPtr * copy (void) ;
 } ;
 
@@ -10953,7 +10953,7 @@ void GGS_ruleLabelImplementationList::setter_setMLabelNameAtIndex (GGS_lstring i
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_lstring GGS_ruleLabelImplementationList::getter_mLabelNameAtIndex (const GGS_uint & inIndex,
                                                                        Compiler * inCompiler
                                                                        COMMA_LOCATION_ARGS) const {
@@ -10992,7 +10992,7 @@ void GGS_ruleLabelImplementationList::setter_setMSignatureForGenerationAtIndex (
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_formalParameterListForGeneration GGS_ruleLabelImplementationList::getter_mSignatureForGenerationAtIndex (const GGS_uint & inIndex,
                                                                                                              Compiler * inCompiler
                                                                                                              COMMA_LOCATION_ARGS) const {
@@ -11031,7 +11031,7 @@ void GGS_ruleLabelImplementationList::setter_setMSignatureAtIndex (GGS_formalPar
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_formalParameterSignature GGS_ruleLabelImplementationList::getter_mSignatureAtIndex (const GGS_uint & inIndex,
                                                                                         Compiler * inCompiler
                                                                                         COMMA_LOCATION_ARGS) const {
@@ -11070,7 +11070,7 @@ void GGS_ruleLabelImplementationList::setter_setMEndOfArgumentLocationAtIndex (G
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_location GGS_ruleLabelImplementationList::getter_mEndOfArgumentLocationAtIndex (const GGS_uint & inIndex,
                                                                                     Compiler * inCompiler
                                                                                     COMMA_LOCATION_ARGS) const {
@@ -11109,7 +11109,7 @@ void GGS_ruleLabelImplementationList::setter_setMInstructionListForGenerationAtI
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_semanticInstructionListForGeneration GGS_ruleLabelImplementationList::getter_mInstructionListForGenerationAtIndex (const GGS_uint & inIndex,
                                                                                                                        Compiler * inCompiler
                                                                                                                        COMMA_LOCATION_ARGS) const {
@@ -11266,7 +11266,7 @@ GGS_ruleLabelImplementationList GGS_ruleLabelImplementationList::extractObject (
 
 //--------------------------------------------------------------------------------------------------
 //
-//Abstract extension method '@syntaxInstructionAST analyzeSyntaxInstruction'
+//Abstract extension proc '@syntaxInstructionAST analyzeSyntaxInstruction'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -11287,7 +11287,7 @@ void callExtensionMethod_analyzeSyntaxInstruction (cPtr_syntaxInstructionAST * i
                                                    Compiler * inCompiler
                                                    COMMA_LOCATION_ARGS) {
 //--- Drop output arguments
-//--- Find method
+//--- Find proc
   if (nullptr != inObject) {
     macroValidSharedObject (inObject, cPtr_syntaxInstructionAST) ;
     inObject->method_analyzeSyntaxInstruction (constin_inUsefulnessCallerEntityName, io_ioUsefulEntitiesGraph, constin_inAnalysisContext, io_ioTypeMap, constin_inHasTranslateFeature, constin_inTerminalMap, constin_inLexiqueName, constin_inNonterminalMap, constin_inComponentName, constin_inIndexNameSet, io_ioInstructionListForGeneration, io_ioVariableMap, io_ioSelectMethodCount, inCompiler COMMA_THERE) ;
@@ -11295,7 +11295,7 @@ void callExtensionMethod_analyzeSyntaxInstruction (cPtr_syntaxInstructionAST * i
 }
 //--------------------------------------------------------------------------------------------------
 //
-//Abstract extension method '@abstractInputParameter analyzeInputParameter'
+//Abstract extension proc '@abstractInputParameter analyzeInputParameter'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -11309,7 +11309,7 @@ void callExtensionMethod_analyzeInputParameter (cPtr_abstractInputParameter * in
                                                 Compiler * inCompiler
                                                 COMMA_LOCATION_ARGS) {
 //--- Drop output arguments
-//--- Find method
+//--- Find proc
   if (nullptr != inObject) {
     macroValidSharedObject (inObject, cPtr_abstractInputParameter) ;
     inObject->method_analyzeInputParameter (constin_inAnalysisContext, io_ioTypeMap, constin_inRequiredLexicalType, constin_inLexicalAttributeName, io_ioTerminalCheckAssignementList, io_ioVariableMap, inCompiler COMMA_THERE) ;
@@ -11317,7 +11317,7 @@ void callExtensionMethod_analyzeInputParameter (cPtr_abstractInputParameter * in
 }
 //--------------------------------------------------------------------------------------------------
 //
-//Abstract extension method '@abstractGrammarInstructionSyntaxDirectedTranslationResult analyzeSDT'
+//Abstract extension proc '@abstractGrammarInstructionSyntaxDirectedTranslationResult analyzeSDT'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -11329,7 +11329,7 @@ void callExtensionMethod_analyzeSDT (cPtr_abstractGrammarInstructionSyntaxDirect
                                      Compiler * inCompiler
                                      COMMA_LOCATION_ARGS) {
 //--- Drop output arguments
-//--- Find method
+//--- Find proc
   if (nullptr != inObject) {
     macroValidSharedObject (inObject, cPtr_abstractGrammarInstructionSyntaxDirectedTranslationResult) ;
     inObject->method_analyzeSDT (constin_inAnalysisContext, io_ioTypeMap, constin_inHasTranslateFeature, io_ioVariableMap, inCompiler COMMA_THERE) ;
@@ -11337,7 +11337,7 @@ void callExtensionMethod_analyzeSDT (cPtr_abstractGrammarInstructionSyntaxDirect
 }
 //--------------------------------------------------------------------------------------------------
 //
-//Abstract extension method '@abstractGrammarInstructionSyntaxDirectedTranslationResult generateCode'
+//Abstract extension proc '@abstractGrammarInstructionSyntaxDirectedTranslationResult generateCode'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -11349,7 +11349,7 @@ void callExtensionMethod_generateCode (cPtr_abstractGrammarInstructionSyntaxDire
                                        Compiler * inCompiler
                                        COMMA_LOCATION_ARGS) {
 //--- Drop output arguments
-//--- Find method
+//--- Find proc
   if (nullptr != inObject) {
     macroValidSharedObject (inObject, cPtr_abstractGrammarInstructionSyntaxDirectedTranslationResult) ;
     inObject->method_generateCode (constin_inGenerateSyntaxDirectedTranslationString, constin_inAccessMethodName, io_ioUnusedVariableCppNameSet, io_ioGeneratedCode, inCompiler COMMA_THERE) ;
@@ -12963,10 +12963,10 @@ class CollectionElementPtr_propertyInCollectionListAST : public CollectionElemen
                                                             COMMA_LOCATION_ARGS) ;
   public: CollectionElementPtr_propertyInCollectionListAST (const GGS_propertyInCollectionListAST_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
-//--- Virtual method that checks that all attributes are valid
+//--- Virtual proc that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
-//--- Virtual method that returns a copy of current object
+//--- Virtual proc that returns a copy of current object
   public: virtual CollectionElementPtr * copy (void) ;
 } ;
 
@@ -13499,7 +13499,7 @@ void GGS_propertyInCollectionListAST::setter_setMutabilityAtIndex (GGS_propertyM
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_propertyMutability GGS_propertyInCollectionListAST::getter_mutabilityAtIndex (const GGS_uint & inIndex,
                                                                                   Compiler * inCompiler
                                                                                   COMMA_LOCATION_ARGS) const {
@@ -13538,7 +13538,7 @@ void GGS_propertyInCollectionListAST::setter_setTypeNameAtIndex (GGS_lstring inO
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_lstring GGS_propertyInCollectionListAST::getter_typeNameAtIndex (const GGS_uint & inIndex,
                                                                      Compiler * inCompiler
                                                                      COMMA_LOCATION_ARGS) const {
@@ -13577,7 +13577,7 @@ void GGS_propertyInCollectionListAST::setter_setNameAtIndex (GGS_lstring inOpera
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_lstring GGS_propertyInCollectionListAST::getter_nameAtIndex (const GGS_uint & inIndex,
                                                                  Compiler * inCompiler
                                                                  COMMA_LOCATION_ARGS) const {
@@ -13616,7 +13616,7 @@ void GGS_propertyInCollectionListAST::setter_setAccessControlAtIndex (GGS_Access
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_AccessControlAST GGS_propertyInCollectionListAST::getter_accessControlAtIndex (const GGS_uint & inIndex,
                                                                                    Compiler * inCompiler
                                                                                    COMMA_LOCATION_ARGS) const {
@@ -13655,7 +13655,7 @@ void GGS_propertyInCollectionListAST::setter_setHasSelectorAtIndex (GGS_bool inO
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_bool GGS_propertyInCollectionListAST::getter_hasSelectorAtIndex (const GGS_uint & inIndex,
                                                                      Compiler * inCompiler
                                                                      COMMA_LOCATION_ARGS) const {
@@ -13694,7 +13694,7 @@ void GGS_propertyInCollectionListAST::setter_setInitializationAtIndex (GGS_prope
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_propertyInCollectionInitializationAST GGS_propertyInCollectionListAST::getter_initializationAtIndex (const GGS_uint & inIndex,
                                                                                                          Compiler * inCompiler
                                                                                                          COMMA_LOCATION_ARGS) const {
@@ -16186,7 +16186,7 @@ GGS_propertyMutability GGS_propertyMutability::extractObject (const GGS_object &
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension method '@propertyInCollectionListAST buildPropertyInitializationCode'
+//Extension proc '@propertyInCollectionListAST buildPropertyInitializationCode'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -16203,39 +16203,39 @@ void extensionMethod_buildPropertyInitializationCode (const GGS_propertyInCollec
   outArgument_outUnusedVariableCppNameSet.drop () ; // Release 'out' argument
   outArgument_outInitializationCode.drop () ; // Release 'out' argument
   outArgument_outInitializationCode = GGS_string::makeEmptyString () ;
-  GGS_stringset var_inclusionSet_8707 = GGS_stringset::init (inCompiler COMMA_HERE) ;
-  GGS_uint var_temporaryVariableIndex_8750 = GGS_uint (uint32_t (0U)) ;
+  GGS_stringset var_inclusionSet_8693 = GGS_stringset::init (inCompiler COMMA_HERE) ;
+  GGS_uint var_temporaryVariableIndex_8736 = GGS_uint (uint32_t (0U)) ;
   GGS_stringset temp_0 = GGS_stringset::init (inCompiler COMMA_SOURCE_FILE ("declaration-property.galgas3", 240)) ;
   temp_0.plusPlusAssignOperation (function_compilerCppName (inCompiler COMMA_SOURCE_FILE ("declaration-property.galgas3", 240))  COMMA_SOURCE_FILE ("declaration-property.galgas3", 240)) ;
   outArgument_outUnusedVariableCppNameSet = temp_0 ;
   const GGS_propertyInCollectionListAST temp_1 = inObject ;
-  UpEnumerator_propertyInCollectionListAST enumerator_8888 (temp_1) ;
-  while (enumerator_8888.hasCurrentObject ()) {
-    switch (enumerator_8888.current_initialization (HERE).enumValue ()) {
+  UpEnumerator_propertyInCollectionListAST enumerator_8874 (temp_1) ;
+  while (enumerator_8874.hasCurrentObject ()) {
+    switch (enumerator_8874.current_initialization (HERE).enumValue ()) {
     case GGS_propertyInCollectionInitializationAST::Enumeration::invalid:
       break ;
     case GGS_propertyInCollectionInitializationAST::Enumeration::enum_none:
       break ;
     case GGS_propertyInCollectionInitializationAST::Enumeration::enum_some:
       {
-        GGS_semanticExpressionAST extractedValue_8977_expressionAST_0 ;
-        enumerator_8888.current_initialization (HERE).getAssociatedValuesFor_some (extractedValue_8977_expressionAST_0) ;
-        GGS_localVarManager var_variableMap_9006 = GGS_localVarManager::init (inCompiler COMMA_HERE) ;
-        GGS_analysisContext var_analysisContext_9069 = GGS_analysisContext::init_21__21__21_selfObjectCppName_21_selfAvailability_21_selfObjectCppPrefixForAccessingProperty (constinArgument_inSemanticContext, constinArgument_inPredefinedTypes, GGS_string::makeEmptyString (), GGS_selfAvailability::class_func_none (SOURCE_FILE ("declaration-property.galgas3", 250)), GGS_string::makeEmptyString (), inCompiler COMMA_HERE) ;
-        GGS_unifiedTypeMapEntry var_propertyType_9293 = extensionGetter_typeMapEntryForLKey (ioArgument_ioTypeMap, enumerator_8888.current_typeName (HERE), inCompiler COMMA_SOURCE_FILE ("declaration-property.galgas3", 253)) ;
-        GGS_semanticExpressionForGeneration var_expression_9664 ;
-        callExtensionMethod_analyzeSemanticExpression ((cPtr_semanticExpressionAST *) extractedValue_8977_expressionAST_0.ptr (), constinArgument_inTypeNameForUsefulness, ioArgument_ioUsefulEntitiesGraph, var_propertyType_9293, var_analysisContext_9069, ioArgument_ioTypeMap, var_variableMap_9006, var_expression_9664, inCompiler COMMA_SOURCE_FILE ("declaration-property.galgas3", 254)) ;
+        GGS_semanticExpressionAST extractedValue_8963_expressionAST_0 ;
+        enumerator_8874.current_initialization (HERE).getAssociatedValuesFor_some (extractedValue_8963_expressionAST_0) ;
+        GGS_localVarManager var_variableMap_8992 = GGS_localVarManager::init (inCompiler COMMA_HERE) ;
+        GGS_analysisContext var_analysisContext_9055 = GGS_analysisContext::init_21__21__21_selfObjectCppName_21_selfAvailability_21_selfObjectCppPrefixForAccessingProperty (constinArgument_inSemanticContext, constinArgument_inPredefinedTypes, GGS_string::makeEmptyString (), GGS_selfAvailability::class_func_none (SOURCE_FILE ("declaration-property.galgas3", 250)), GGS_string::makeEmptyString (), inCompiler COMMA_HERE) ;
+        GGS_unifiedTypeMapEntry var_propertyType_9279 = extensionGetter_typeMapEntryForLKey (ioArgument_ioTypeMap, enumerator_8874.current_typeName (HERE), inCompiler COMMA_SOURCE_FILE ("declaration-property.galgas3", 253)) ;
+        GGS_semanticExpressionForGeneration var_expression_9650 ;
+        callExtensionMethod_analyzeSemanticExpression ((cPtr_semanticExpressionAST *) extractedValue_8963_expressionAST_0.ptr (), constinArgument_inTypeNameForUsefulness, ioArgument_ioUsefulEntitiesGraph, var_propertyType_9279, var_analysisContext_9055, ioArgument_ioTypeMap, var_variableMap_8992, var_expression_9650, inCompiler COMMA_SOURCE_FILE ("declaration-property.galgas3", 254)) ;
         {
-        routine_checkAssignmentTypeWithImplicitGetterCall_3F__3F__3F__26_ (var_propertyType_9293, var_expression_9664.readProperty_mResultType (), enumerator_8888.current_name (HERE).readProperty_location (), var_expression_9664, inCompiler  COMMA_SOURCE_FILE ("declaration-property.galgas3", 264)) ;
+        routine_checkAssignmentTypeWithImplicitGetterCall_3F__3F__3F__26_ (var_propertyType_9279, var_expression_9650.readProperty_mResultType (), enumerator_8874.current_name (HERE).readProperty_location (), var_expression_9650, inCompiler  COMMA_SOURCE_FILE ("declaration-property.galgas3", 264)) ;
         }
-        GGS_string var_sourceVar_10097 ;
-        callExtensionMethod_generateExpression ((cPtr_semanticExpressionForGeneration *) var_expression_9664.ptr (), outArgument_outInitializationCode, var_inclusionSet_8707, var_temporaryVariableIndex_8750, outArgument_outUnusedVariableCppNameSet, var_sourceVar_10097, inCompiler COMMA_SOURCE_FILE ("declaration-property.galgas3", 270)) ;
-        outArgument_outInitializationCode.plusAssignOperation(GGS_string ("  mProperty_").add_operation (enumerator_8888.current_name (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("declaration-property.galgas3", 277)), inCompiler COMMA_SOURCE_FILE ("declaration-property.galgas3", 277)), inCompiler  COMMA_SOURCE_FILE ("declaration-property.galgas3", 277)) ;
-        outArgument_outInitializationCode.plusAssignOperation(GGS_string (" = ").add_operation (var_sourceVar_10097, inCompiler COMMA_SOURCE_FILE ("declaration-property.galgas3", 278)).add_operation (GGS_string (" ;\n"), inCompiler COMMA_SOURCE_FILE ("declaration-property.galgas3", 278)), inCompiler  COMMA_SOURCE_FILE ("declaration-property.galgas3", 278)) ;
+        GGS_string var_sourceVar_10083 ;
+        callExtensionMethod_generateExpression ((cPtr_semanticExpressionForGeneration *) var_expression_9650.ptr (), outArgument_outInitializationCode, var_inclusionSet_8693, var_temporaryVariableIndex_8736, outArgument_outUnusedVariableCppNameSet, var_sourceVar_10083, inCompiler COMMA_SOURCE_FILE ("declaration-property.galgas3", 270)) ;
+        outArgument_outInitializationCode.plusAssignOperation(GGS_string ("  mProperty_").add_operation (enumerator_8874.current_name (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("declaration-property.galgas3", 277)), inCompiler COMMA_SOURCE_FILE ("declaration-property.galgas3", 277)), inCompiler  COMMA_SOURCE_FILE ("declaration-property.galgas3", 277)) ;
+        outArgument_outInitializationCode.plusAssignOperation(GGS_string (" = ").add_operation (var_sourceVar_10083, inCompiler COMMA_SOURCE_FILE ("declaration-property.galgas3", 278)).add_operation (GGS_string (" ;\n"), inCompiler COMMA_SOURCE_FILE ("declaration-property.galgas3", 278)), inCompiler  COMMA_SOURCE_FILE ("declaration-property.galgas3", 278)) ;
       }
       break ;
     }
-    enumerator_8888.gotoNextObject () ;
+    enumerator_8874.gotoNextObject () ;
   }
 }
 

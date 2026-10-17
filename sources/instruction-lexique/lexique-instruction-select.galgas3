@@ -107,7 +107,7 @@ syntax extension galgas4LexiqueComponentSyntax {
 //! CHECK LEXICAL INSTRUCTION
 //--------------------------------------------------------------------------------------------------
 
-override method @lexicalSelectInstructionAST checkLexicalInstruction (
+override proc @lexicalSelectInstructionAST checkLexicalInstruction (
                          ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext,
                          ?!@lexicalTagMap ioTagMap)  {
   for (mSelectExpression mSelectInstructionList) in self.mLexicalSelectBranchList do

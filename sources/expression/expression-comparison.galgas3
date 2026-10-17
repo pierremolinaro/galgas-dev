@@ -175,7 +175,7 @@ syntax extension galgas4ExpressionSyntax {
 //! SEMANTICS
 //--------------------------------------------------------------------------------------------------
 
-override method @comparisonExpressionAST enterExpressionInSemanticContext
+override proc @comparisonExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
 {
   [self.mLeftExpression enterExpressionInSemanticContext !?ioTypeMap]
@@ -184,7 +184,7 @@ override method @comparisonExpressionAST enterExpressionInSemanticContext
 
 //································································································
 
-override method @comparisonExpressionAST analyzeSemanticExpression
+override proc @comparisonExpressionAST analyzeSemanticExpression
   ?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?inferenceType: let @unifiedTypeMapEntry inInferenceType
@@ -275,7 +275,7 @@ final class @comparisonExpressionForGeneration : @semanticExpressionForGeneratio
 
 //································································································
 
-override method @comparisonExpressionForGeneration generateExpression
+override proc @comparisonExpressionForGeneration generateExpression
   ?!@string ioGeneratedCode
   ?!@stringset ioInclusionSet
   ?!@uint ioTemporaryVariableIndex

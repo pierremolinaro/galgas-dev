@@ -24,7 +24,7 @@ abstract class @semanticDeclarationAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  abstract method enterDeclarationInGraph (?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph,
+  abstract proc enterDeclarationInGraph (?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph,
                               ?!@equatableExtensionMap ioEquatableExtensionMap,
     ?!@extensionInitializerForBuildingContext ioExtensionInitializerForBuildingContext,
     ?!@extensionMethodMapForBuildingContext ioExtensionMethodMapForBuildingContext,
@@ -34,7 +34,7 @@ abstract class @semanticDeclarationAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  abstract method enterDeclarationInSemanticContext (
+  abstract proc enterDeclarationInSemanticContext (
     ?!@equatableExtensionMap unused ioEquatableExtensionMap,
     ?let @extensionInitializerForBuildingContext unused inExtensionInitializerMapForBuildingContext,
     ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext,
@@ -45,7 +45,7 @@ abstract class @semanticDeclarationAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  abstract method semanticAnalysis (
+  abstract proc semanticAnalysis (
     ?!@lstringlist ioUsefulnessRootEntities,
     ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
     ?let @string inProductDirectory,

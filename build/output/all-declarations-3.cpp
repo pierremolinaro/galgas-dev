@@ -19,10 +19,10 @@ class CollectionElementPtr_lexicalInstructionListAST : public CollectionElementP
                                                           COMMA_LOCATION_ARGS) ;
   public: CollectionElementPtr_lexicalInstructionListAST (const GGS_lexicalInstructionListAST_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
-//--- Virtual method that checks that all attributes are valid
+//--- Virtual proc that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
-//--- Virtual method that returns a copy of current object
+//--- Virtual proc that returns a copy of current object
   public: virtual CollectionElementPtr * copy (void) ;
 } ;
 
@@ -430,7 +430,7 @@ void GGS_lexicalInstructionListAST::setter_setMInstructionAtIndex (GGS_lexicalIn
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_lexicalInstructionAST GGS_lexicalInstructionListAST::getter_mInstructionAtIndex (const GGS_uint & inIndex,
                                                                                      Compiler * inCompiler
                                                                                      COMMA_LOCATION_ARGS) const {
@@ -1169,10 +1169,10 @@ class CollectionElementPtr_lexicalWhileBranchListAST : public CollectionElementP
                                                           COMMA_LOCATION_ARGS) ;
   public: CollectionElementPtr_lexicalWhileBranchListAST (const GGS_lexicalWhileBranchListAST_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
-//--- Virtual method that checks that all attributes are valid
+//--- Virtual proc that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
-//--- Virtual method that returns a copy of current object
+//--- Virtual proc that returns a copy of current object
   public: virtual CollectionElementPtr * copy (void) ;
 } ;
 
@@ -1605,7 +1605,7 @@ void GGS_lexicalWhileBranchListAST::setter_setMWhileExpressionAtIndex (GGS_lexic
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_lexicalExpressionAST GGS_lexicalWhileBranchListAST::getter_mWhileExpressionAtIndex (const GGS_uint & inIndex,
                                                                                         Compiler * inCompiler
                                                                                         COMMA_LOCATION_ARGS) const {
@@ -1644,7 +1644,7 @@ void GGS_lexicalWhileBranchListAST::setter_setMWhileInstructionListAtIndex (GGS_
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_lexicalInstructionListAST GGS_lexicalWhileBranchListAST::getter_mWhileInstructionListAtIndex (const GGS_uint & inIndex,
                                                                                                   Compiler * inCompiler
                                                                                                   COMMA_LOCATION_ARGS) const {
@@ -4124,10 +4124,10 @@ class CollectionElementPtr_terminalList : public CollectionElementPtr {
                                              COMMA_LOCATION_ARGS) ;
   public: CollectionElementPtr_terminalList (const GGS_terminalList_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
-//--- Virtual method that checks that all attributes are valid
+//--- Virtual proc that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
-//--- Virtual method that returns a copy of current object
+//--- Virtual proc that returns a copy of current object
   public: virtual CollectionElementPtr * copy (void) ;
 } ;
 
@@ -4660,7 +4660,7 @@ void GGS_terminalList::setter_setMTerminalNameAtIndex (GGS_lstring inOperand,
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_lstring GGS_terminalList::getter_mTerminalNameAtIndex (const GGS_uint & inIndex,
                                                            Compiler * inCompiler
                                                            COMMA_LOCATION_ARGS) const {
@@ -4699,7 +4699,7 @@ void GGS_terminalList::setter_setMSentAttributeListAtIndex (GGS_lexicalSentValue
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_lexicalSentValueList GGS_terminalList::getter_mSentAttributeListAtIndex (const GGS_uint & inIndex,
                                                                              Compiler * inCompiler
                                                                              COMMA_LOCATION_ARGS) const {
@@ -4738,7 +4738,7 @@ void GGS_terminalList::setter_setMSyntaxErrorMessageAtIndex (GGS_string inOperan
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_string GGS_terminalList::getter_mSyntaxErrorMessageAtIndex (const GGS_uint & inIndex,
                                                                 Compiler * inCompiler
                                                                 COMMA_LOCATION_ARGS) const {
@@ -4777,7 +4777,7 @@ void GGS_terminalList::setter_setIsEndOfTemplateMarkAtIndex (GGS_bool inOperand,
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_bool GGS_terminalList::getter_isEndOfTemplateMarkAtIndex (const GGS_uint & inIndex,
                                                               Compiler * inCompiler
                                                               COMMA_LOCATION_ARGS) const {
@@ -4816,7 +4816,7 @@ void GGS_terminalList::setter_setAtomicSelectionAtIndex (GGS_bool inOperand,
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_bool GGS_terminalList::getter_atomicSelectionAtIndex (const GGS_uint & inIndex,
                                                           Compiler * inCompiler
                                                           COMMA_LOCATION_ARGS) const {
@@ -4855,7 +4855,7 @@ void GGS_terminalList::setter_setMStyleIndexAtIndex (GGS_uint inOperand,
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_uint GGS_terminalList::getter_mStyleIndexAtIndex (const GGS_uint & inIndex,
                                                       Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) const {
@@ -5036,10 +5036,10 @@ class CollectionElementPtr_lexicalSentValueList : public CollectionElementPtr {
                                                      COMMA_LOCATION_ARGS) ;
   public: CollectionElementPtr_lexicalSentValueList (const GGS_lexicalSentValueList_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
-//--- Virtual method that checks that all attributes are valid
+//--- Virtual proc that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
-//--- Virtual method that returns a copy of current object
+//--- Virtual proc that returns a copy of current object
   public: virtual CollectionElementPtr * copy (void) ;
 } ;
 
@@ -5497,7 +5497,7 @@ void GGS_lexicalSentValueList::setter_setMLexicalFormalSelectorAtIndex (GGS_lstr
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_lstring GGS_lexicalSentValueList::getter_mLexicalFormalSelectorAtIndex (const GGS_uint & inIndex,
                                                                             Compiler * inCompiler
                                                                             COMMA_LOCATION_ARGS) const {
@@ -5536,7 +5536,7 @@ void GGS_lexicalSentValueList::setter_setMLexicalAttributeNameAtIndex (GGS_strin
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_string GGS_lexicalSentValueList::getter_mLexicalAttributeNameAtIndex (const GGS_uint & inIndex,
                                                                           Compiler * inCompiler
                                                                           COMMA_LOCATION_ARGS) const {
@@ -5575,7 +5575,7 @@ void GGS_lexicalSentValueList::setter_setMLexicalTypeAtIndex (GGS_lexicalTypeEnu
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_lexicalTypeEnum GGS_lexicalSentValueList::getter_mLexicalTypeAtIndex (const GGS_uint & inIndex,
                                                                           Compiler * inCompiler
                                                                           COMMA_LOCATION_ARGS) const {
@@ -6422,7 +6422,7 @@ void GGS_tokenSortedlist::setter_popSmallest (GGS_uint & outOperand0,
   bool found = false ;
   if (isValid ()) {
     if (count () == 0) {
-      inCompiler->onTheFlyRunTimeError ("'popSmallest' method invoked on an empty list" COMMA_THERE) ;
+      inCompiler->onTheFlyRunTimeError ("'popSmallest' proc invoked on an empty list" COMMA_THERE) ;
     }else{
       outOperand0 = mSharedArray (0 COMMA_HERE).mProperty_mLength ;
       outOperand1 = mSharedArray (0 COMMA_HERE).mProperty_mName ;
@@ -6448,7 +6448,7 @@ void GGS_tokenSortedlist::setter_popGreatest (GGS_uint & outOperand0,
   bool found = false ;
   if (isValid ()) {
     if (count () == 0) {
-      inCompiler->onTheFlyRunTimeError ("'popGreatest' method invoked on an empty list" COMMA_THERE) ;
+      inCompiler->onTheFlyRunTimeError ("'popGreatest' proc invoked on an empty list" COMMA_THERE) ;
     }else{
       outOperand0 = mSharedArray.lastObject (HERE).mProperty_mLength ;
       outOperand1 = mSharedArray.lastObject (HERE).mProperty_mName ;
@@ -6474,7 +6474,7 @@ void GGS_tokenSortedlist::method_smallest (GGS_uint & outOperand0,
   bool found = false ;
   if (isValid ()) {
     if (count () == 0) {
-      inCompiler->onTheFlyRunTimeError ("'smallest' method invoked on an empty list" COMMA_THERE) ;
+      inCompiler->onTheFlyRunTimeError ("'smallest' proc invoked on an empty list" COMMA_THERE) ;
     }else{
       outOperand0 = mSharedArray (0 COMMA_HERE).mProperty_mLength ;
       outOperand1 = mSharedArray (0 COMMA_HERE).mProperty_mName ;
@@ -6499,7 +6499,7 @@ void GGS_tokenSortedlist::method_greatest (GGS_uint & outOperand0,
   bool found = false ;
   if (isValid ()) {
     if (count () == 0) {
-      inCompiler->onTheFlyRunTimeError ("'greatest' method invoked on an empty list" COMMA_THERE) ;
+      inCompiler->onTheFlyRunTimeError ("'greatest' proc invoked on an empty list" COMMA_THERE) ;
     }else{
       outOperand0 = mSharedArray.lastObject (HERE).mProperty_mLength ;
       outOperand1 = mSharedArray.lastObject (HERE).mProperty_mName ;
@@ -7851,10 +7851,10 @@ class CollectionElementPtr_lexicalRoutineFormalArgumentList : public CollectionE
                                                                  COMMA_LOCATION_ARGS) ;
   public: CollectionElementPtr_lexicalRoutineFormalArgumentList (const GGS_lexicalRoutineFormalArgumentList_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
-//--- Virtual method that checks that all attributes are valid
+//--- Virtual proc that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
-//--- Virtual method that returns a copy of current object
+//--- Virtual proc that returns a copy of current object
   public: virtual CollectionElementPtr * copy (void) ;
 } ;
 
@@ -8312,7 +8312,7 @@ void GGS_lexicalRoutineFormalArgumentList::setter_setMLexicalFormalArgumentModeA
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_lexicalArgumentModeAST GGS_lexicalRoutineFormalArgumentList::getter_mLexicalFormalArgumentModeAtIndex (const GGS_uint & inIndex,
                                                                                                            Compiler * inCompiler
                                                                                                            COMMA_LOCATION_ARGS) const {
@@ -8351,7 +8351,7 @@ void GGS_lexicalRoutineFormalArgumentList::setter_setMLexicalFormalArgumentTypeA
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_lexicalTypeEnum GGS_lexicalRoutineFormalArgumentList::getter_mLexicalFormalArgumentTypeAtIndex (const GGS_uint & inIndex,
                                                                                                     Compiler * inCompiler
                                                                                                     COMMA_LOCATION_ARGS) const {
@@ -8390,7 +8390,7 @@ void GGS_lexicalRoutineFormalArgumentList::setter_setMArgumentNameForCommentAtIn
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_string GGS_lexicalRoutineFormalArgumentList::getter_mArgumentNameForCommentAtIndex (const GGS_uint & inIndex,
                                                                                         Compiler * inCompiler
                                                                                         COMMA_LOCATION_ARGS) const {
@@ -9257,10 +9257,10 @@ class CollectionElementPtr_lexicalFunctionFormalArgumentList : public Collection
                                                                   COMMA_LOCATION_ARGS) ;
   public: CollectionElementPtr_lexicalFunctionFormalArgumentList (const GGS_lexicalFunctionFormalArgumentList_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
-//--- Virtual method that checks that all attributes are valid
+//--- Virtual proc that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
-//--- Virtual method that returns a copy of current object
+//--- Virtual proc that returns a copy of current object
   public: virtual CollectionElementPtr * copy (void) ;
 } ;
 
@@ -9693,7 +9693,7 @@ void GGS_lexicalFunctionFormalArgumentList::setter_setMLexicalTypeAtIndex (GGS_l
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_lexicalTypeEnum GGS_lexicalFunctionFormalArgumentList::getter_mLexicalTypeAtIndex (const GGS_uint & inIndex,
                                                                                        Compiler * inCompiler
                                                                                        COMMA_LOCATION_ARGS) const {
@@ -9732,7 +9732,7 @@ void GGS_lexicalFunctionFormalArgumentList::setter_setMArgumentNameForCommentAtI
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_string GGS_lexicalFunctionFormalArgumentList::getter_mArgumentNameForCommentAtIndex (const GGS_uint & inIndex,
                                                                                          Compiler * inCompiler
                                                                                          COMMA_LOCATION_ARGS) const {
@@ -10535,10 +10535,10 @@ class CollectionElementPtr_templateDelimitorList : public CollectionElementPtr {
                                                       COMMA_LOCATION_ARGS) ;
   public: CollectionElementPtr_templateDelimitorList (const GGS_templateDelimitorList_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
-//--- Virtual method that checks that all attributes are valid
+//--- Virtual proc that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
-//--- Virtual method that returns a copy of current object
+//--- Virtual proc that returns a copy of current object
   public: virtual CollectionElementPtr * copy (void) ;
 } ;
 
@@ -10996,7 +10996,7 @@ void GGS_templateDelimitorList::setter_setMStartStringAtIndex (GGS_lstring inOpe
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_lstring GGS_templateDelimitorList::getter_mStartStringAtIndex (const GGS_uint & inIndex,
                                                                    Compiler * inCompiler
                                                                    COMMA_LOCATION_ARGS) const {
@@ -11035,7 +11035,7 @@ void GGS_templateDelimitorList::setter_setMEndStringAtIndex (GGS_lstring inOpera
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_lstring GGS_templateDelimitorList::getter_mEndStringAtIndex (const GGS_uint & inIndex,
                                                                  Compiler * inCompiler
                                                                  COMMA_LOCATION_ARGS) const {
@@ -11074,7 +11074,7 @@ void GGS_templateDelimitorList::setter_setMPreservesStartDelimiterAtIndex (GGS_b
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_bool GGS_templateDelimitorList::getter_mPreservesStartDelimiterAtIndex (const GGS_uint & inIndex,
                                                                             Compiler * inCompiler
                                                                             COMMA_LOCATION_ARGS) const {
@@ -13655,10 +13655,10 @@ class CollectionElementPtr_XCodeGroupList : public CollectionElementPtr {
                                                COMMA_LOCATION_ARGS) ;
   public: CollectionElementPtr_XCodeGroupList (const GGS_XCodeGroupList_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
-//--- Virtual method that checks that all attributes are valid
+//--- Virtual proc that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
-//--- Virtual method that returns a copy of current object
+//--- Virtual proc that returns a copy of current object
   public: virtual CollectionElementPtr * copy (void) ;
 } ;
 
@@ -14141,7 +14141,7 @@ void GGS_XCodeGroupList::setter_setMGroupReferenceAtIndex (GGS_string inOperand,
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_string GGS_XCodeGroupList::getter_mGroupReferenceAtIndex (const GGS_uint & inIndex,
                                                               Compiler * inCompiler
                                                               COMMA_LOCATION_ARGS) const {
@@ -14180,7 +14180,7 @@ void GGS_XCodeGroupList::setter_setMGroupNameAtIndex (GGS_string inOperand,
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_string GGS_XCodeGroupList::getter_mGroupNameAtIndex (const GGS_uint & inIndex,
                                                          Compiler * inCompiler
                                                          COMMA_LOCATION_ARGS) const {
@@ -14219,7 +14219,7 @@ void GGS_XCodeGroupList::setter_setMGroupPathAtIndex (GGS_string inOperand,
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_string GGS_XCodeGroupList::getter_mGroupPathAtIndex (const GGS_uint & inIndex,
                                                          Compiler * inCompiler
                                                          COMMA_LOCATION_ARGS) const {
@@ -14258,7 +14258,7 @@ void GGS_XCodeGroupList::setter_setMChildrenRefsAtIndex (GGS_stringlist inOperan
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_stringlist GGS_XCodeGroupList::getter_mChildrenRefsAtIndex (const GGS_uint & inIndex,
                                                                 Compiler * inCompiler
                                                                 COMMA_LOCATION_ARGS) const {
@@ -14423,10 +14423,10 @@ class CollectionElementPtr_XCodeToolTargetList : public CollectionElementPtr {
                                                     COMMA_LOCATION_ARGS) ;
   public: CollectionElementPtr_XCodeToolTargetList (const GGS_XCodeToolTargetList_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
-//--- Virtual method that checks that all attributes are valid
+//--- Virtual proc that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
-//--- Virtual method that returns a copy of current object
+//--- Virtual proc that returns a copy of current object
   public: virtual CollectionElementPtr * copy (void) ;
 } ;
 
@@ -15084,7 +15084,7 @@ void GGS_XCodeToolTargetList::setter_setMTargetRefAtIndex (GGS_string inOperand,
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_string GGS_XCodeToolTargetList::getter_mTargetRefAtIndex (const GGS_uint & inIndex,
                                                               Compiler * inCompiler
                                                               COMMA_LOCATION_ARGS) const {
@@ -15123,7 +15123,7 @@ void GGS_XCodeToolTargetList::setter_setMTargetNameAtIndex (GGS_string inOperand
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_string GGS_XCodeToolTargetList::getter_mTargetNameAtIndex (const GGS_uint & inIndex,
                                                                Compiler * inCompiler
                                                                COMMA_LOCATION_ARGS) const {
@@ -15162,7 +15162,7 @@ void GGS_XCodeToolTargetList::setter_setMProductFileReferenceAtIndex (GGS_string
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_string GGS_XCodeToolTargetList::getter_mProductFileReferenceAtIndex (const GGS_uint & inIndex,
                                                                          Compiler * inCompiler
                                                                          COMMA_LOCATION_ARGS) const {
@@ -15201,7 +15201,7 @@ void GGS_XCodeToolTargetList::setter_setMProductFileNameAtIndex (GGS_string inOp
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_string GGS_XCodeToolTargetList::getter_mProductFileNameAtIndex (const GGS_uint & inIndex,
                                                                     Compiler * inCompiler
                                                                     COMMA_LOCATION_ARGS) const {
@@ -15240,7 +15240,7 @@ void GGS_XCodeToolTargetList::setter_setMBuildPhaseRefListAtIndex (GGS_stringlis
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_stringlist GGS_XCodeToolTargetList::getter_mBuildPhaseRefListAtIndex (const GGS_uint & inIndex,
                                                                           Compiler * inCompiler
                                                                           COMMA_LOCATION_ARGS) const {
@@ -15279,7 +15279,7 @@ void GGS_XCodeToolTargetList::setter_setMBuildPhaseRefAtIndex (GGS_string inOper
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_string GGS_XCodeToolTargetList::getter_mBuildPhaseRefAtIndex (const GGS_uint & inIndex,
                                                                   Compiler * inCompiler
                                                                   COMMA_LOCATION_ARGS) const {
@@ -15318,7 +15318,7 @@ void GGS_XCodeToolTargetList::setter_setMBuildConfigurationListRefAtIndex (GGS_s
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_string GGS_XCodeToolTargetList::getter_mBuildConfigurationListRefAtIndex (const GGS_uint & inIndex,
                                                                               Compiler * inCompiler
                                                                               COMMA_LOCATION_ARGS) const {
@@ -15357,7 +15357,7 @@ void GGS_XCodeToolTargetList::setter_setMBuildConfigurationSettingListAtIndex (G
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_stringlist GGS_XCodeToolTargetList::getter_mBuildConfigurationSettingListAtIndex (const GGS_uint & inIndex,
                                                                                       Compiler * inCompiler
                                                                                       COMMA_LOCATION_ARGS) const {
@@ -15396,7 +15396,7 @@ void GGS_XCodeToolTargetList::setter_setMBuildConfigurationRefAtIndex (GGS_strin
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_string GGS_XCodeToolTargetList::getter_mBuildConfigurationRefAtIndex (const GGS_uint & inIndex,
                                                                           Compiler * inCompiler
                                                                           COMMA_LOCATION_ARGS) const {
@@ -15435,7 +15435,7 @@ void GGS_XCodeToolTargetList::setter_setMFrameworksFileRefListAtIndex (GGS_strin
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_stringlist GGS_XCodeToolTargetList::getter_mFrameworksFileRefListAtIndex (const GGS_uint & inIndex,
                                                                               Compiler * inCompiler
                                                                               COMMA_LOCATION_ARGS) const {
@@ -15474,7 +15474,7 @@ void GGS_XCodeToolTargetList::setter_setMFrameworkBuildPhaseRefAtIndex (GGS_stri
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_string GGS_XCodeToolTargetList::getter_mFrameworkBuildPhaseRefAtIndex (const GGS_uint & inIndex,
                                                                            Compiler * inCompiler
                                                                            COMMA_LOCATION_ARGS) const {
@@ -15726,10 +15726,10 @@ class CollectionElementPtr_XCodeAppTargetList : public CollectionElementPtr {
                                                    COMMA_LOCATION_ARGS) ;
   public: CollectionElementPtr_XCodeAppTargetList (const GGS_XCodeAppTargetList_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
-//--- Virtual method that checks that all attributes are valid
+//--- Virtual proc that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
-//--- Virtual method that returns a copy of current object
+//--- Virtual proc that returns a copy of current object
   public: virtual CollectionElementPtr * copy (void) ;
 } ;
 
@@ -16462,7 +16462,7 @@ void GGS_XCodeAppTargetList::setter_setMTargetRefAtIndex (GGS_string inOperand,
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_string GGS_XCodeAppTargetList::getter_mTargetRefAtIndex (const GGS_uint & inIndex,
                                                              Compiler * inCompiler
                                                              COMMA_LOCATION_ARGS) const {
@@ -16501,7 +16501,7 @@ void GGS_XCodeAppTargetList::setter_setMTargetNameAtIndex (GGS_string inOperand,
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_string GGS_XCodeAppTargetList::getter_mTargetNameAtIndex (const GGS_uint & inIndex,
                                                               Compiler * inCompiler
                                                               COMMA_LOCATION_ARGS) const {
@@ -16540,7 +16540,7 @@ void GGS_XCodeAppTargetList::setter_setMProductFileReferenceAtIndex (GGS_string 
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_string GGS_XCodeAppTargetList::getter_mProductFileReferenceAtIndex (const GGS_uint & inIndex,
                                                                         Compiler * inCompiler
                                                                         COMMA_LOCATION_ARGS) const {
@@ -16579,7 +16579,7 @@ void GGS_XCodeAppTargetList::setter_setMProductFileNameAtIndex (GGS_string inOpe
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_string GGS_XCodeAppTargetList::getter_mProductFileNameAtIndex (const GGS_uint & inIndex,
                                                                    Compiler * inCompiler
                                                                    COMMA_LOCATION_ARGS) const {
@@ -16618,7 +16618,7 @@ void GGS_XCodeAppTargetList::setter_setMBuildPhaseRefListAtIndex (GGS_stringlist
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_stringlist GGS_XCodeAppTargetList::getter_mBuildPhaseRefListAtIndex (const GGS_uint & inIndex,
                                                                          Compiler * inCompiler
                                                                          COMMA_LOCATION_ARGS) const {
@@ -16657,7 +16657,7 @@ void GGS_XCodeAppTargetList::setter_setMBuildPhaseRefAtIndex (GGS_string inOpera
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_string GGS_XCodeAppTargetList::getter_mBuildPhaseRefAtIndex (const GGS_uint & inIndex,
                                                                  Compiler * inCompiler
                                                                  COMMA_LOCATION_ARGS) const {
@@ -16696,7 +16696,7 @@ void GGS_XCodeAppTargetList::setter_setMBuildConfigurationListRefAtIndex (GGS_st
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_string GGS_XCodeAppTargetList::getter_mBuildConfigurationListRefAtIndex (const GGS_uint & inIndex,
                                                                              Compiler * inCompiler
                                                                              COMMA_LOCATION_ARGS) const {
@@ -16735,7 +16735,7 @@ void GGS_XCodeAppTargetList::setter_setMBuildConfigurationSettingListAtIndex (GG
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_stringlist GGS_XCodeAppTargetList::getter_mBuildConfigurationSettingListAtIndex (const GGS_uint & inIndex,
                                                                                      Compiler * inCompiler
                                                                                      COMMA_LOCATION_ARGS) const {
@@ -16774,7 +16774,7 @@ void GGS_XCodeAppTargetList::setter_setMBuildConfigurationRefAtIndex (GGS_string
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_string GGS_XCodeAppTargetList::getter_mBuildConfigurationRefAtIndex (const GGS_uint & inIndex,
                                                                          Compiler * inCompiler
                                                                          COMMA_LOCATION_ARGS) const {
@@ -16813,7 +16813,7 @@ void GGS_XCodeAppTargetList::setter_setMFrameworksFileRefListAtIndex (GGS_string
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_stringlist GGS_XCodeAppTargetList::getter_mFrameworksFileRefListAtIndex (const GGS_uint & inIndex,
                                                                              Compiler * inCompiler
                                                                              COMMA_LOCATION_ARGS) const {
@@ -16852,7 +16852,7 @@ void GGS_XCodeAppTargetList::setter_setMFrameworkBuildPhaseRefAtIndex (GGS_strin
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_string GGS_XCodeAppTargetList::getter_mFrameworkBuildPhaseRefAtIndex (const GGS_uint & inIndex,
                                                                           Compiler * inCompiler
                                                                           COMMA_LOCATION_ARGS) const {
@@ -16891,7 +16891,7 @@ void GGS_XCodeAppTargetList::setter_setMDependentTargetsAtIndex (GGS__32_stringl
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS__32_stringlist GGS_XCodeAppTargetList::getter_mDependentTargetsAtIndex (const GGS_uint & inIndex,
                                                                             Compiler * inCompiler
                                                                             COMMA_LOCATION_ARGS) const {
@@ -16930,7 +16930,7 @@ void GGS_XCodeAppTargetList::setter_setMResourceBuildRefAtIndex (GGS_string inOp
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_string GGS_XCodeAppTargetList::getter_mResourceBuildRefAtIndex (const GGS_uint & inIndex,
                                                                     Compiler * inCompiler
                                                                     COMMA_LOCATION_ARGS) const {
@@ -16969,7 +16969,7 @@ void GGS_XCodeAppTargetList::setter_setMResourceFileBuildRefsAtIndex (GGS_string
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_stringlist GGS_XCodeAppTargetList::getter_mResourceFileBuildRefsAtIndex (const GGS_uint & inIndex,
                                                                              Compiler * inCompiler
                                                                              COMMA_LOCATION_ARGS) const {

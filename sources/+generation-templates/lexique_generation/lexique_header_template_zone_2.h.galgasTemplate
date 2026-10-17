@@ -72,7 +72,7 @@ class Lexique_%!LEXIQUE_IDENTIFIER% : public Lexique {
   public: static GGS_stringlist symbols (LOCATION_ARGS) ;
 
 //--- Declaring a protected virtual destructor enables the compiler to raise
-//    an error if a direct delete is performed; only the static method
+//    an error if a direct delete is performed; only the static proc
 //    SharedObject::detachPointer may invoke delete.
   #ifndef DO_NOT_GENERATE_CHECKINGS
     protected: virtual ~ Lexique_%!LEXIQUE_IDENTIFIER% (void) { }
@@ -92,7 +92,7 @@ class Lexique_%!LEXIQUE_IDENTIFIER% : public Lexique {
     %\n//--- Key words table '%!mName.string%'\n%
     %  public: static int32_t search_into_%!mName.string% (const String & inSearchedString) ;\n%
   end
-%  
+%
 
 //--- Assign from attribute
 %

@@ -96,7 +96,6 @@ fileprivate let kEndOfScriptInTemplateArray_galgasTemplateScanner : [Bool] = [
   false /* loop */,
   false /* map */,
   false /* message */,
-  false /* method */,
   false /* mod */,
   false /* mutating */,
   false /* nil */,

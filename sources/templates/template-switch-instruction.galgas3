@@ -129,7 +129,7 @@ syntax extension templateSyntax {
 //! ANALYSIS
 //--------------------------------------------------------------------------------------------------
 
-override method @templateInstructionSwitchAST templateInstructionAnalysis
+override proc @templateInstructionSwitchAST templateInstructionAnalysis
                                 ?let @lstring inUsefulnessCallerEntityName
                                 ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
                                 ?let @templateAnalysisContext inAnalysisContext
@@ -254,7 +254,7 @@ final class @templateInstructionSwitchForGeneration : @templateInstructionForGen
 
 //································································································
 
-override method @templateInstructionSwitchForGeneration templateCodeGeneration
+override proc @templateInstructionSwitchForGeneration templateCodeGeneration
   ?!@string ioGeneratedCode
   ?!@stringset ioInclusionSet
   ?!@uint ioTemporaryVariableIndex

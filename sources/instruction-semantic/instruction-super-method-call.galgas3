@@ -93,7 +93,7 @@ final class @superMethodCallInstructionAST : @semanticInstructionAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method enterInstructionInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
+  override proc enterInstructionInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
     for (mActualParameter) in self.mActualParameterList do
       [mActualParameter enterParameterInSemanticContext !?ioTypeMap]
     end
@@ -101,7 +101,7 @@ final class @superMethodCallInstructionAST : @semanticInstructionAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method analyzeSemanticInstruction  (
+  override proc analyzeSemanticInstruction  (
                         ?let @lstring inUsefulnessCallerEntityName,
                         ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
                         ?let @analysisContext inAnalysisContext,
@@ -120,7 +120,7 @@ final class @superMethodCallInstructionAST : @semanticInstructionAST {
     if not selfType.definition.typeKind.isClassType then
       error (self.mMethodName : "self type is not a class")
     end
-  //--- Get type method signature
+  //--- Get type proc signature
     [selfType.definition.instanceMethodMap searchKey
       !self.mMethodName
       ?* // let kind
@@ -140,13 +140,13 @@ final class @superMethodCallInstructionAST : @semanticInstructionAST {
       !inAnalysisContext
       !?ioTypeMap
       !self.mMethodName
-      !invokedEntityNameForErrorSignaling: "'" + self.mMethodName + "' instance method header"
+      !invokedEntityNameForErrorSignaling: "'" + self.mMethodName + "' instance proc header"
       !routineSignature
       !?ioVariableMap
       !?ioInstructionListForGeneration
       ?let @actualParameterListForGeneration actualParameterListForGeneration
     ]
-  //--- Search base type that declares the method
+  //--- Search base type that declares the proc
     var baseType = selfType
     var searching = true
     if @uint.errorCount == 0 then
@@ -191,7 +191,7 @@ final class @superMethodCallInstructionForGeneration : @semanticInstructionForGe
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method generateInstruction (?!@stringset ioInclusionSet,
+  override proc generateInstruction (?!@stringset ioInclusionSet,
                                        ?!@uint ioTemporaryVariableIndex,
                                        ?!@stringset ioUnusedVariableCppNameSet,
                                        ?let @bool unused inGenerateSyntaxDirectedTranslationString,
@@ -204,8 +204,8 @@ final class @superMethodCallInstructionForGeneration : @semanticInstructionForGe
       [mActualParameter generateActualParameter !?ioInclusionSet !?ioTemporaryVariableIndex !?ioGeneratedCode !?jokerParametersToReleaseList !?inputVariableList !?ioUnusedVariableCppNameSet ?let parameterCppName]
       parameterCppNameList += !parameterCppName
     end
-  //--- Generate method call
-    ioInclusionSet ++= "method-" + self.mBaseType.definition.typeName.string.fileNameRepresentation + "-" + self.mMethodName.fileNameRepresentation
+  //--- Generate proc call
+    ioInclusionSet ++= "proc-" + self.mBaseType.definition.typeName.string.fileNameRepresentation + "-" + self.mMethodName.fileNameRepresentation
     ioGeneratedCode += "cPtr_" + self.mBaseType.definition.typeName.string.identifierRepresentation
     ioGeneratedCode += "::method_" + self.mMethodName.identifierRepresentation + " ("
     for (mValue) in parameterCppNameList

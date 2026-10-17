@@ -177,7 +177,7 @@ syntax extension galgas4ExpressionSyntax {
 //! SEMANTICS
 //--------------------------------------------------------------------------------------------------
 
-override method @rightShiftExpressionAST enterExpressionInSemanticContext
+override proc @rightShiftExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
 {
   [self.mLeftExpression enterExpressionInSemanticContext !?ioTypeMap]
@@ -186,7 +186,7 @@ override method @rightShiftExpressionAST enterExpressionInSemanticContext
 
 //································································································
 
-override method @rightShiftExpressionAST analyzeSemanticExpression
+override proc @rightShiftExpressionAST analyzeSemanticExpression
   ?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?inferenceType: let @unifiedTypeMapEntry inInferenceType
@@ -249,7 +249,7 @@ override method @rightShiftExpressionAST analyzeSemanticExpression
 
 //--------------------------------------------------------------------------------------------------
 
-override method @leftShiftExpressionAST enterExpressionInSemanticContext
+override proc @leftShiftExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
 {
   [self.mLeftExpression enterExpressionInSemanticContext !?ioTypeMap]
@@ -258,7 +258,7 @@ override method @leftShiftExpressionAST enterExpressionInSemanticContext
 
 //································································································
 
-override method @leftShiftExpressionAST analyzeSemanticExpression
+override proc @leftShiftExpressionAST analyzeSemanticExpression
   ?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?inferenceType: let @unifiedTypeMapEntry inInferenceType
@@ -321,7 +321,7 @@ override method @leftShiftExpressionAST analyzeSemanticExpression
 
 //--------------------------------------------------------------------------------------------------
 
-override method @addExpressionNoOverflowAST enterExpressionInSemanticContext
+override proc @addExpressionNoOverflowAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
 {
   [self.mLeftExpression enterExpressionInSemanticContext !?ioTypeMap]
@@ -330,7 +330,7 @@ override method @addExpressionNoOverflowAST enterExpressionInSemanticContext
 
 //································································································
 
-override method @addExpressionNoOverflowAST analyzeSemanticExpression
+override proc @addExpressionNoOverflowAST analyzeSemanticExpression
   ?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?inferenceType: let @unifiedTypeMapEntry inInferenceType
@@ -388,7 +388,7 @@ override method @addExpressionNoOverflowAST analyzeSemanticExpression
 
 //--------------------------------------------------------------------------------------------------
 
-override method @addExpressionAST enterExpressionInSemanticContext
+override proc @addExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
 {
   [self.mLeftExpression enterExpressionInSemanticContext !?ioTypeMap]
@@ -397,7 +397,7 @@ override method @addExpressionAST enterExpressionInSemanticContext
 
 //································································································
 
-override method @addExpressionAST analyzeSemanticExpression
+override proc @addExpressionAST analyzeSemanticExpression
   ?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?inferenceType: let @unifiedTypeMapEntry inInferenceType
@@ -454,7 +454,7 @@ override method @addExpressionAST analyzeSemanticExpression
 
 //--------------------------------------------------------------------------------------------------
 
-override method @subExpressionNoOverflowAST enterExpressionInSemanticContext
+override proc @subExpressionNoOverflowAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
 {
   [self.mLeftExpression enterExpressionInSemanticContext !?ioTypeMap]
@@ -463,7 +463,7 @@ override method @subExpressionNoOverflowAST enterExpressionInSemanticContext
 
 //································································································
 
-override method @subExpressionNoOverflowAST analyzeSemanticExpression
+override proc @subExpressionNoOverflowAST analyzeSemanticExpression
   ?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?inferenceType: let @unifiedTypeMapEntry inInferenceType
@@ -521,7 +521,7 @@ override method @subExpressionNoOverflowAST analyzeSemanticExpression
 
 //--------------------------------------------------------------------------------------------------
 
-override method @subExpressionAST enterExpressionInSemanticContext
+override proc @subExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
 {
   [self.mLeftExpression enterExpressionInSemanticContext !?ioTypeMap]
@@ -530,7 +530,7 @@ override method @subExpressionAST enterExpressionInSemanticContext
 
 //································································································
 
-override method @subExpressionAST analyzeSemanticExpression
+override proc @subExpressionAST analyzeSemanticExpression
   ?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?inferenceType: let @unifiedTypeMapEntry inInferenceType
@@ -616,7 +616,7 @@ final class @binaryOperatorExpressionForGeneration : @semanticExpressionForGener
 
 //································································································
 
-override method @binaryOperatorExpressionForGeneration generateExpression
+override proc @binaryOperatorExpressionForGeneration generateExpression
   ?!@string ioGeneratedCode
   ?!@stringset ioInclusionSet
   ?!@uint ioTemporaryVariableIndex

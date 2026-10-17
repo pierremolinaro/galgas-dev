@@ -80,12 +80,12 @@ class cPtr_uint_36__34_PredefinedTypeAST : public cPtr_predefinedTypeAST {
 //--- Extension func getSupportedOperatorFlags
   public: virtual class GGS_typeFeatures getter_getSupportedOperatorFlags (Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension method getClassFunctionMap
+//--- Extension proc getClassFunctionMap
   public: virtual void method_getClassFunctionMap (class GGS_unifiedTypeMap & arg_ioUnifiedTypeMap,
            class GGS_classFunctionMap & arg_outClassFunctionMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method getGetterMap
+//--- Extension proc getGetterMap
   public: virtual void method_getGetterMap (class GGS_unifiedTypeMap & arg_ioUnifiedTypeMap,
            class GGS_getterMap & arg_outGetterMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
@@ -858,11 +858,11 @@ class cPtr_enumDeclarationAST : public cPtr_semanticDeclarationAST {
 //--- Extension func keyRepresentation
   public: virtual class GGS_string getter_keyRepresentation (Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension method addAssociatedElement
+//--- Extension proc addAssociatedElement
   public: virtual void method_addAssociatedElement (class GGS_galgasDeclarationAST & arg_ioDeclarations,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method enterDeclarationInGraph
+//--- Extension proc enterDeclarationInGraph
   public: virtual void method_enterDeclarationInGraph (class GGS_semanticTypePrecedenceGraph & arg_ioSemanticTypePrecedenceGraph,
            class GGS_equatableExtensionMap & arg_ioEquatableExtensionMap,
            class GGS_extensionInitializerForBuildingContext & arg_ioExtensionInitializerForBuildingContext,
@@ -872,7 +872,7 @@ class cPtr_enumDeclarationAST : public cPtr_semanticDeclarationAST {
            class GGS_semanticDeclarationListAST & arg_ioExtensionOverrideDefinitionList,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method enterDeclarationInSemanticContext
+//--- Extension proc enterDeclarationInSemanticContext
   public: virtual void method_enterDeclarationInSemanticContext (class GGS_equatableExtensionMap & arg_ioEquatableExtensionMap,
            const class GGS_extensionInitializerForBuildingContext arg_inExtensionInitializerMapForBuildingContext,
            const class GGS_extensionMethodMapForBuildingContext arg_inExtensionMethodMapForBuildingContext,
@@ -882,7 +882,7 @@ class cPtr_enumDeclarationAST : public cPtr_semanticDeclarationAST {
            class GGS_semanticContext & arg_ioSemanticContext,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method semanticAnalysis
+//--- Extension proc semanticAnalysis
   public: virtual void method_semanticAnalysis (class GGS_lstringlist & arg_ioUsefulnessRootEntities,
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_string arg_inProductDirectory,
@@ -1396,12 +1396,12 @@ class cPtr_enumTypeForGeneration : public cPtr_semanticTypeForGeneration {
                                                        Compiler * inCompiler) ;
 
 
-//--- Extension method appendDeclaration1
+//--- Extension proc appendDeclaration1
   public: virtual void method_appendDeclaration_31_ (class GGS_stringset & arg_ioInclusionSet,
            class GGS_string & arg_outHeader,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method appendSpecificImplementation
+//--- Extension proc appendSpecificImplementation
   public: virtual void method_appendSpecificImplementation (const class GGS_unifiedTypeMap arg_inUnifiedTypeMap,
            class GGS_stringset & arg_ioInclusionSet,
            class GGS_string & arg_outImplementation,
@@ -1916,7 +1916,7 @@ class cPtr_graphDeclarationAST : public cPtr_semanticDeclarationAST {
 //--- Extension func keyRepresentation
   public: virtual class GGS_string getter_keyRepresentation (Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension method enterDeclarationInGraph
+//--- Extension proc enterDeclarationInGraph
   public: virtual void method_enterDeclarationInGraph (class GGS_semanticTypePrecedenceGraph & arg_ioSemanticTypePrecedenceGraph,
            class GGS_equatableExtensionMap & arg_ioEquatableExtensionMap,
            class GGS_extensionInitializerForBuildingContext & arg_ioExtensionInitializerForBuildingContext,
@@ -1926,7 +1926,7 @@ class cPtr_graphDeclarationAST : public cPtr_semanticDeclarationAST {
            class GGS_semanticDeclarationListAST & arg_ioExtensionOverrideDefinitionList,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method enterDeclarationInSemanticContext
+//--- Extension proc enterDeclarationInSemanticContext
   public: virtual void method_enterDeclarationInSemanticContext (class GGS_equatableExtensionMap & arg_ioEquatableExtensionMap,
            const class GGS_extensionInitializerForBuildingContext arg_inExtensionInitializerMapForBuildingContext,
            const class GGS_extensionMethodMapForBuildingContext arg_inExtensionMethodMapForBuildingContext,
@@ -1936,7 +1936,7 @@ class cPtr_graphDeclarationAST : public cPtr_semanticDeclarationAST {
            class GGS_semanticContext & arg_ioSemanticContext,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method semanticAnalysis
+//--- Extension proc semanticAnalysis
   public: virtual void method_semanticAnalysis (class GGS_lstringlist & arg_ioUsefulnessRootEntities,
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_string arg_inProductDirectory,
@@ -2131,12 +2131,12 @@ class cPtr_graphDeclarationForGeneration : public cPtr_semanticTypeForGeneration
                                                                    Compiler * inCompiler) ;
 
 
-//--- Extension method appendDeclaration1
+//--- Extension proc appendDeclaration1
   public: virtual void method_appendDeclaration_31_ (class GGS_stringset & arg_ioInclusionSet,
            class GGS_string & arg_outHeader,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method appendSpecificImplementation
+//--- Extension proc appendSpecificImplementation
   public: virtual void method_appendSpecificImplementation (const class GGS_unifiedTypeMap arg_inUnifiedTypeMap,
            class GGS_stringset & arg_ioInclusionSet,
            class GGS_string & arg_outImplementation,
@@ -2330,11 +2330,11 @@ class cPtr_optionalTypeDeclarationAST : public cPtr_semanticDeclarationAST {
 //--- Extension func keyRepresentation
   public: virtual class GGS_string getter_keyRepresentation (Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension method addAssociatedElement
+//--- Extension proc addAssociatedElement
   public: virtual void method_addAssociatedElement (class GGS_galgasDeclarationAST & arg_ioDeclarations,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method enterDeclarationInGraph
+//--- Extension proc enterDeclarationInGraph
   public: virtual void method_enterDeclarationInGraph (class GGS_semanticTypePrecedenceGraph & arg_ioSemanticTypePrecedenceGraph,
            class GGS_equatableExtensionMap & arg_ioEquatableExtensionMap,
            class GGS_extensionInitializerForBuildingContext & arg_ioExtensionInitializerForBuildingContext,
@@ -2344,7 +2344,7 @@ class cPtr_optionalTypeDeclarationAST : public cPtr_semanticDeclarationAST {
            class GGS_semanticDeclarationListAST & arg_ioExtensionOverrideDefinitionList,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method enterDeclarationInSemanticContext
+//--- Extension proc enterDeclarationInSemanticContext
   public: virtual void method_enterDeclarationInSemanticContext (class GGS_equatableExtensionMap & arg_ioEquatableExtensionMap,
            const class GGS_extensionInitializerForBuildingContext arg_inExtensionInitializerMapForBuildingContext,
            const class GGS_extensionMethodMapForBuildingContext arg_inExtensionMethodMapForBuildingContext,
@@ -2354,7 +2354,7 @@ class cPtr_optionalTypeDeclarationAST : public cPtr_semanticDeclarationAST {
            class GGS_semanticContext & arg_ioSemanticContext,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method semanticAnalysis
+//--- Extension proc semanticAnalysis
   public: virtual void method_semanticAnalysis (class GGS_lstringlist & arg_ioUsefulnessRootEntities,
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_string arg_inProductDirectory,
@@ -2545,12 +2545,12 @@ class cPtr_optionalTypeForGeneration : public cPtr_semanticTypeForGeneration {
                                                            Compiler * inCompiler) ;
 
 
-//--- Extension method appendDeclaration1
+//--- Extension proc appendDeclaration1
   public: virtual void method_appendDeclaration_31_ (class GGS_stringset & arg_ioInclusionSet,
            class GGS_string & arg_outHeader,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method appendSpecificImplementation
+//--- Extension proc appendSpecificImplementation
   public: virtual void method_appendSpecificImplementation (const class GGS_unifiedTypeMap arg_inUnifiedTypeMap,
            class GGS_stringset & arg_ioInclusionSet,
            class GGS_string & arg_outImplementation,
@@ -2735,12 +2735,12 @@ class cPtr_functionPredefinedTypeAST : public cPtr_predefinedTypeAST {
 //--- Extension func getSupportedOperatorFlags
   public: virtual class GGS_typeFeatures getter_getSupportedOperatorFlags (Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension method getClassFunctionMap
+//--- Extension proc getClassFunctionMap
   public: virtual void method_getClassFunctionMap (class GGS_unifiedTypeMap & arg_ioUnifiedTypeMap,
            class GGS_classFunctionMap & arg_outClassFunctionMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method getGetterMap
+//--- Extension proc getGetterMap
   public: virtual void method_getGetterMap (class GGS_unifiedTypeMap & arg_ioUnifiedTypeMap,
            class GGS_getterMap & arg_outGetterMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
@@ -2921,12 +2921,12 @@ class cPtr_sint_36__34_PredefinedTypeAST : public cPtr_predefinedTypeAST {
 //--- Extension func getSupportedOperatorFlags
   public: virtual class GGS_typeFeatures getter_getSupportedOperatorFlags (Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension method getClassFunctionMap
+//--- Extension proc getClassFunctionMap
   public: virtual void method_getClassFunctionMap (class GGS_unifiedTypeMap & arg_ioUnifiedTypeMap,
            class GGS_classFunctionMap & arg_outClassFunctionMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method getGetterMap
+//--- Extension proc getGetterMap
   public: virtual void method_getGetterMap (class GGS_unifiedTypeMap & arg_ioUnifiedTypeMap,
            class GGS_getterMap & arg_outGetterMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
@@ -3107,12 +3107,12 @@ class cPtr_sintPredefinedTypeAST : public cPtr_predefinedTypeAST {
 //--- Extension func getSupportedOperatorFlags
   public: virtual class GGS_typeFeatures getter_getSupportedOperatorFlags (Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension method getClassFunctionMap
+//--- Extension proc getClassFunctionMap
   public: virtual void method_getClassFunctionMap (class GGS_unifiedTypeMap & arg_ioUnifiedTypeMap,
            class GGS_classFunctionMap & arg_outClassFunctionMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method getGetterMap
+//--- Extension proc getGetterMap
   public: virtual void method_getGetterMap (class GGS_unifiedTypeMap & arg_ioUnifiedTypeMap,
            class GGS_getterMap & arg_outGetterMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
@@ -4951,11 +4951,11 @@ class cPtr_mapDeclarationAST : public cPtr_semanticDeclarationAST {
 //--- Extension func keyRepresentation
   public: virtual class GGS_string getter_keyRepresentation (Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension method addAssociatedElement
+//--- Extension proc addAssociatedElement
   public: virtual void method_addAssociatedElement (class GGS_galgasDeclarationAST & arg_ioDeclarations,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method enterDeclarationInGraph
+//--- Extension proc enterDeclarationInGraph
   public: virtual void method_enterDeclarationInGraph (class GGS_semanticTypePrecedenceGraph & arg_ioSemanticTypePrecedenceGraph,
            class GGS_equatableExtensionMap & arg_ioEquatableExtensionMap,
            class GGS_extensionInitializerForBuildingContext & arg_ioExtensionInitializerForBuildingContext,
@@ -4965,7 +4965,7 @@ class cPtr_mapDeclarationAST : public cPtr_semanticDeclarationAST {
            class GGS_semanticDeclarationListAST & arg_ioExtensionOverrideDefinitionList,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method enterDeclarationInSemanticContext
+//--- Extension proc enterDeclarationInSemanticContext
   public: virtual void method_enterDeclarationInSemanticContext (class GGS_equatableExtensionMap & arg_ioEquatableExtensionMap,
            const class GGS_extensionInitializerForBuildingContext arg_inExtensionInitializerMapForBuildingContext,
            const class GGS_extensionMethodMapForBuildingContext arg_inExtensionMethodMapForBuildingContext,
@@ -4975,7 +4975,7 @@ class cPtr_mapDeclarationAST : public cPtr_semanticDeclarationAST {
            class GGS_semanticContext & arg_ioSemanticContext,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method semanticAnalysis
+//--- Extension proc semanticAnalysis
   public: virtual void method_semanticAnalysis (class GGS_lstringlist & arg_ioUsefulnessRootEntities,
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_string arg_inProductDirectory,
@@ -5210,12 +5210,12 @@ class cPtr_mapTypeForGeneration : public cPtr_semanticTypeForGeneration {
                                                                                       Compiler * inCompiler) ;
 
 
-//--- Extension method appendDeclaration1
+//--- Extension proc appendDeclaration1
   public: virtual void method_appendDeclaration_31_ (class GGS_stringset & arg_ioInclusionSet,
            class GGS_string & arg_outHeader,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method appendSpecificImplementation
+//--- Extension proc appendSpecificImplementation
   public: virtual void method_appendSpecificImplementation (const class GGS_unifiedTypeMap arg_inUnifiedTypeMap,
            class GGS_stringset & arg_ioInclusionSet,
            class GGS_string & arg_outImplementation,
@@ -5416,12 +5416,12 @@ class cPtr_charPredefinedTypeAST : public cPtr_predefinedTypeAST {
 //--- Extension func getSupportedOperatorFlags
   public: virtual class GGS_typeFeatures getter_getSupportedOperatorFlags (Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension method getClassFunctionMap
+//--- Extension proc getClassFunctionMap
   public: virtual void method_getClassFunctionMap (class GGS_unifiedTypeMap & arg_ioUnifiedTypeMap,
            class GGS_classFunctionMap & arg_outClassFunctionMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method getGetterMap
+//--- Extension proc getGetterMap
   public: virtual void method_getGetterMap (class GGS_unifiedTypeMap & arg_ioUnifiedTypeMap,
            class GGS_getterMap & arg_outGetterMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
@@ -5602,17 +5602,17 @@ class cPtr_uintPredefinedTypeAST : public cPtr_predefinedTypeAST {
 //--- Extension func getSupportedOperatorFlags
   public: virtual class GGS_typeFeatures getter_getSupportedOperatorFlags (Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension method getClassFunctionMap
+//--- Extension proc getClassFunctionMap
   public: virtual void method_getClassFunctionMap (class GGS_unifiedTypeMap & arg_ioUnifiedTypeMap,
            class GGS_classFunctionMap & arg_outClassFunctionMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method getClassMethodMap
+//--- Extension proc getClassMethodMap
   public: virtual void method_getClassMethodMap (class GGS_unifiedTypeMap & arg_ioUnifiedTypeMap,
            class GGS_classMethodMap & arg_outClassMethodMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method getGetterMap
+//--- Extension proc getGetterMap
   public: virtual void method_getGetterMap (class GGS_unifiedTypeMap & arg_ioUnifiedTypeMap,
            class GGS_getterMap & arg_outGetterMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
@@ -5793,12 +5793,12 @@ class cPtr_filewrapperPredefinedTypeAST : public cPtr_predefinedTypeAST {
 //--- Extension func getSupportedOperatorFlags
   public: virtual class GGS_typeFeatures getter_getSupportedOperatorFlags (Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension method getGetterMap
+//--- Extension proc getGetterMap
   public: virtual void method_getGetterMap (class GGS_unifiedTypeMap & arg_ioUnifiedTypeMap,
            class GGS_getterMap & arg_outGetterMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method getSetterMap
+//--- Extension proc getSetterMap
   public: virtual void method_getSetterMap (class GGS_unifiedTypeMap & arg_ioUnifiedTypeMap,
            class GGS_setterMap & arg_outSetterMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
@@ -5979,7 +5979,7 @@ class cPtr_objectPredefinedTypeAST : public cPtr_predefinedTypeAST {
 //--- Extension func getSupportedOperatorFlags
   public: virtual class GGS_typeFeatures getter_getSupportedOperatorFlags (Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension method getGetterMap
+//--- Extension proc getGetterMap
   public: virtual void method_getGetterMap (class GGS_unifiedTypeMap & arg_ioUnifiedTypeMap,
            class GGS_getterMap & arg_outGetterMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
@@ -6160,12 +6160,12 @@ class cPtr_doublePredefinedTypeAST : public cPtr_predefinedTypeAST {
 //--- Extension func getSupportedOperatorFlags
   public: virtual class GGS_typeFeatures getter_getSupportedOperatorFlags (Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension method getClassFunctionMap
+//--- Extension proc getClassFunctionMap
   public: virtual void method_getClassFunctionMap (class GGS_unifiedTypeMap & arg_ioUnifiedTypeMap,
            class GGS_classFunctionMap & arg_outClassFunctionMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method getGetterMap
+//--- Extension proc getGetterMap
   public: virtual void method_getGetterMap (class GGS_unifiedTypeMap & arg_ioUnifiedTypeMap,
            class GGS_getterMap & arg_outGetterMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
@@ -6353,7 +6353,7 @@ class cPtr_boolsetDeclarationAST : public cPtr_semanticDeclarationAST {
 //--- Extension func keyRepresentation
   public: virtual class GGS_string getter_keyRepresentation (Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension method enterDeclarationInGraph
+//--- Extension proc enterDeclarationInGraph
   public: virtual void method_enterDeclarationInGraph (class GGS_semanticTypePrecedenceGraph & arg_ioSemanticTypePrecedenceGraph,
            class GGS_equatableExtensionMap & arg_ioEquatableExtensionMap,
            class GGS_extensionInitializerForBuildingContext & arg_ioExtensionInitializerForBuildingContext,
@@ -6363,7 +6363,7 @@ class cPtr_boolsetDeclarationAST : public cPtr_semanticDeclarationAST {
            class GGS_semanticDeclarationListAST & arg_ioExtensionOverrideDefinitionList,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method enterDeclarationInSemanticContext
+//--- Extension proc enterDeclarationInSemanticContext
   public: virtual void method_enterDeclarationInSemanticContext (class GGS_equatableExtensionMap & arg_ioEquatableExtensionMap,
            const class GGS_extensionInitializerForBuildingContext arg_inExtensionInitializerMapForBuildingContext,
            const class GGS_extensionMethodMapForBuildingContext arg_inExtensionMethodMapForBuildingContext,
@@ -6373,7 +6373,7 @@ class cPtr_boolsetDeclarationAST : public cPtr_semanticDeclarationAST {
            class GGS_semanticContext & arg_ioSemanticContext,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method semanticAnalysis
+//--- Extension proc semanticAnalysis
   public: virtual void method_semanticAnalysis (class GGS_lstringlist & arg_ioUsefulnessRootEntities,
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_string arg_inProductDirectory,
@@ -6564,12 +6564,12 @@ class cPtr_boolsetTypeForGeneration : public cPtr_semanticTypeForGeneration {
                                                           Compiler * inCompiler) ;
 
 
-//--- Extension method appendDeclaration1
+//--- Extension proc appendDeclaration1
   public: virtual void method_appendDeclaration_31_ (class GGS_stringset & arg_ioInclusionSet,
            class GGS_string & arg_outHeader,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method appendSpecificImplementation
+//--- Extension proc appendSpecificImplementation
   public: virtual void method_appendSpecificImplementation (const class GGS_unifiedTypeMap arg_inUnifiedTypeMap,
            class GGS_stringset & arg_ioInclusionSet,
            class GGS_string & arg_outImplementation,
@@ -6757,12 +6757,12 @@ class cPtr_applicationPredefinedTypeAST : public cPtr_predefinedTypeAST {
 //--- Extension func typeKind
   public: virtual class GGS_typeKindEnum getter_typeKind (Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension method getClassFunctionMap
+//--- Extension proc getClassFunctionMap
   public: virtual void method_getClassFunctionMap (class GGS_unifiedTypeMap & arg_ioUnifiedTypeMap,
            class GGS_classFunctionMap & arg_outClassFunctionMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method getClassMethodMap
+//--- Extension proc getClassMethodMap
   public: virtual void method_getClassMethodMap (class GGS_unifiedTypeMap & arg_ioUnifiedTypeMap,
            class GGS_classMethodMap & arg_outClassMethodMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
@@ -6943,12 +6943,12 @@ class cPtr_boolPredefinedTypeAST : public cPtr_predefinedTypeAST {
 //--- Extension func getSupportedOperatorFlags
   public: virtual class GGS_typeFeatures getter_getSupportedOperatorFlags (Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension method getClassFunctionMap
+//--- Extension proc getClassFunctionMap
   public: virtual void method_getClassFunctionMap (class GGS_unifiedTypeMap & arg_ioUnifiedTypeMap,
            class GGS_classFunctionMap & arg_outClassFunctionMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method getGetterMap
+//--- Extension proc getGetterMap
   public: virtual void method_getGetterMap (class GGS_unifiedTypeMap & arg_ioUnifiedTypeMap,
            class GGS_getterMap & arg_outGetterMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
@@ -7152,7 +7152,7 @@ class cPtr_classDeclarationAST : public cPtr_semanticDeclarationAST {
 //--- Extension func keyRepresentation
   public: virtual class GGS_string getter_keyRepresentation (Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension method enterDeclarationInGraph
+//--- Extension proc enterDeclarationInGraph
   public: virtual void method_enterDeclarationInGraph (class GGS_semanticTypePrecedenceGraph & arg_ioSemanticTypePrecedenceGraph,
            class GGS_equatableExtensionMap & arg_ioEquatableExtensionMap,
            class GGS_extensionInitializerForBuildingContext & arg_ioExtensionInitializerForBuildingContext,
@@ -7162,7 +7162,7 @@ class cPtr_classDeclarationAST : public cPtr_semanticDeclarationAST {
            class GGS_semanticDeclarationListAST & arg_ioExtensionOverrideDefinitionList,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method enterDeclarationInSemanticContext
+//--- Extension proc enterDeclarationInSemanticContext
   public: virtual void method_enterDeclarationInSemanticContext (class GGS_equatableExtensionMap & arg_ioEquatableExtensionMap,
            const class GGS_extensionInitializerForBuildingContext arg_inExtensionInitializerMapForBuildingContext,
            const class GGS_extensionMethodMapForBuildingContext arg_inExtensionMethodMapForBuildingContext,
@@ -7172,7 +7172,7 @@ class cPtr_classDeclarationAST : public cPtr_semanticDeclarationAST {
            class GGS_semanticContext & arg_ioSemanticContext,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method semanticAnalysis
+//--- Extension proc semanticAnalysis
   public: virtual void method_semanticAnalysis (class GGS_lstringlist & arg_ioUsefulnessRootEntities,
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_string arg_inProductDirectory,
@@ -7407,18 +7407,18 @@ class cPtr_classTypeForGeneration : public cPtr_semanticTypeForGeneration {
                                                                                             Compiler * inCompiler) ;
 
 
-//--- Extension method appendDeclaration1
+//--- Extension proc appendDeclaration1
   public: virtual void method_appendDeclaration_31_ (class GGS_stringset & arg_ioInclusionSet,
            class GGS_string & arg_outHeader,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method appendDeclaration2
+//--- Extension proc appendDeclaration2
   public: virtual void method_appendDeclaration_32_ (const class GGS_string arg_inOutputDirectory,
            class GGS_stringset & arg_ioInclusionSet,
            class GGS_string & arg_outHeader,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method appendSpecificImplementation
+//--- Extension proc appendSpecificImplementation
   public: virtual void method_appendSpecificImplementation (const class GGS_unifiedTypeMap arg_inUnifiedTypeMap,
            class GGS_stringset & arg_ioInclusionSet,
            class GGS_string & arg_outImplementation,
@@ -7581,7 +7581,7 @@ class GGS__5B_formalInputParameterListAST_5D_ callExtensionGetter_initializers (
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension method '@predefinedTypeAST getClassFunctionMap'
+//Extension proc '@predefinedTypeAST getClassFunctionMap'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -7593,7 +7593,7 @@ void callExtensionMethod_getClassFunctionMap (class cPtr_predefinedTypeAST * inO
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension method '@predefinedTypeAST getGetterMap'
+//Extension proc '@predefinedTypeAST getGetterMap'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -7605,7 +7605,7 @@ void callExtensionMethod_getGetterMap (class cPtr_predefinedTypeAST * inObject,
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension method '@predefinedTypeAST getSetterMap'
+//Extension proc '@predefinedTypeAST getSetterMap'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -7617,7 +7617,7 @@ void callExtensionMethod_getSetterMap (class cPtr_predefinedTypeAST * inObject,
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension method '@predefinedTypeAST getInstanceMethodMap'
+//Extension proc '@predefinedTypeAST getInstanceMethodMap'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -7629,7 +7629,7 @@ void callExtensionMethod_getInstanceMethodMap (class cPtr_predefinedTypeAST * in
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension method '@predefinedTypeAST getClassMethodMap'
+//Extension proc '@predefinedTypeAST getClassMethodMap'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -7661,7 +7661,7 @@ class GGS_bool callExtensionGetter_supportsCollectionValue (const cPtr_predefine
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension method '@predefinedTypeAST getAddAssignArgumentList'
+//Extension proc '@predefinedTypeAST getAddAssignArgumentList'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -7673,7 +7673,7 @@ void callExtensionMethod_getAddAssignArgumentList (class cPtr_predefinedTypeAST 
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension method '@predefinedTypeAST getEnumerationList'
+//Extension proc '@predefinedTypeAST getEnumerationList'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -7767,11 +7767,11 @@ class cPtr_dictDeclarationAST : public cPtr_semanticDeclarationAST {
 //--- Extension func keyRepresentation
   public: virtual class GGS_string getter_keyRepresentation (Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension method addAssociatedElement
+//--- Extension proc addAssociatedElement
   public: virtual void method_addAssociatedElement (class GGS_galgasDeclarationAST & arg_ioDeclarations,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method enterDeclarationInGraph
+//--- Extension proc enterDeclarationInGraph
   public: virtual void method_enterDeclarationInGraph (class GGS_semanticTypePrecedenceGraph & arg_ioSemanticTypePrecedenceGraph,
            class GGS_equatableExtensionMap & arg_ioEquatableExtensionMap,
            class GGS_extensionInitializerForBuildingContext & arg_ioExtensionInitializerForBuildingContext,
@@ -7781,7 +7781,7 @@ class cPtr_dictDeclarationAST : public cPtr_semanticDeclarationAST {
            class GGS_semanticDeclarationListAST & arg_ioExtensionOverrideDefinitionList,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method enterDeclarationInSemanticContext
+//--- Extension proc enterDeclarationInSemanticContext
   public: virtual void method_enterDeclarationInSemanticContext (class GGS_equatableExtensionMap & arg_ioEquatableExtensionMap,
            const class GGS_extensionInitializerForBuildingContext arg_inExtensionInitializerMapForBuildingContext,
            const class GGS_extensionMethodMapForBuildingContext arg_inExtensionMethodMapForBuildingContext,
@@ -7791,7 +7791,7 @@ class cPtr_dictDeclarationAST : public cPtr_semanticDeclarationAST {
            class GGS_semanticContext & arg_ioSemanticContext,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method semanticAnalysis
+//--- Extension proc semanticAnalysis
   public: virtual void method_semanticAnalysis (class GGS_lstringlist & arg_ioUsefulnessRootEntities,
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_string arg_inProductDirectory,
@@ -7996,12 +7996,12 @@ class cPtr_dictTypeForGeneration : public cPtr_semanticTypeForGeneration {
                                                                    Compiler * inCompiler) ;
 
 
-//--- Extension method appendDeclaration1
+//--- Extension proc appendDeclaration1
   public: virtual void method_appendDeclaration_31_ (class GGS_stringset & arg_ioInclusionSet,
            class GGS_string & arg_outHeader,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method appendSpecificImplementation
+//--- Extension proc appendSpecificImplementation
   public: virtual void method_appendSpecificImplementation (const class GGS_unifiedTypeMap arg_inUnifiedTypeMap,
            class GGS_stringset & arg_ioInclusionSet,
            class GGS_string & arg_outImplementation,
@@ -8195,28 +8195,28 @@ class cPtr_dataPredefinedTypeAST : public cPtr_predefinedTypeAST {
 //--- Extension func initializers
   public: virtual class GGS__5B_formalInputParameterListAST_5D_ getter_initializers (Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension method getClassFunctionMap
+//--- Extension proc getClassFunctionMap
   public: virtual void method_getClassFunctionMap (class GGS_unifiedTypeMap & arg_ioUnifiedTypeMap,
            class GGS_classFunctionMap & arg_outClassFunctionMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method getEnumerationList
+//--- Extension proc getEnumerationList
   public: virtual void method_getEnumerationList (class GGS_unifiedTypeMap & arg_ioUnifiedTypeMap,
            class GGS_enumerationDescriptorList & arg_outEnumerationList,
            class GGS_string & arg_outEnumeratedType,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method getGetterMap
+//--- Extension proc getGetterMap
   public: virtual void method_getGetterMap (class GGS_unifiedTypeMap & arg_ioUnifiedTypeMap,
            class GGS_getterMap & arg_outGetterMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method getInstanceMethodMap
+//--- Extension proc getInstanceMethodMap
   public: virtual void method_getInstanceMethodMap (class GGS_unifiedTypeMap & arg_ioUnifiedTypeMap,
            class GGS_instanceMethodMap & arg_outInstanceMethodMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method getSetterMap
+//--- Extension proc getSetterMap
   public: virtual void method_getSetterMap (class GGS_unifiedTypeMap & arg_ioUnifiedTypeMap,
            class GGS_setterMap & arg_outSetterMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
@@ -8731,11 +8731,11 @@ class cPtr_sortedListDeclarationAST : public cPtr_semanticDeclarationAST {
 //--- Extension func keyRepresentation
   public: virtual class GGS_string getter_keyRepresentation (Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension method addAssociatedElement
+//--- Extension proc addAssociatedElement
   public: virtual void method_addAssociatedElement (class GGS_galgasDeclarationAST & arg_ioDeclarations,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method enterDeclarationInGraph
+//--- Extension proc enterDeclarationInGraph
   public: virtual void method_enterDeclarationInGraph (class GGS_semanticTypePrecedenceGraph & arg_ioSemanticTypePrecedenceGraph,
            class GGS_equatableExtensionMap & arg_ioEquatableExtensionMap,
            class GGS_extensionInitializerForBuildingContext & arg_ioExtensionInitializerForBuildingContext,
@@ -8745,7 +8745,7 @@ class cPtr_sortedListDeclarationAST : public cPtr_semanticDeclarationAST {
            class GGS_semanticDeclarationListAST & arg_ioExtensionOverrideDefinitionList,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method enterDeclarationInSemanticContext
+//--- Extension proc enterDeclarationInSemanticContext
   public: virtual void method_enterDeclarationInSemanticContext (class GGS_equatableExtensionMap & arg_ioEquatableExtensionMap,
            const class GGS_extensionInitializerForBuildingContext arg_inExtensionInitializerMapForBuildingContext,
            const class GGS_extensionMethodMapForBuildingContext arg_inExtensionMethodMapForBuildingContext,
@@ -8755,7 +8755,7 @@ class cPtr_sortedListDeclarationAST : public cPtr_semanticDeclarationAST {
            class GGS_semanticContext & arg_ioSemanticContext,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method semanticAnalysis
+//--- Extension proc semanticAnalysis
   public: virtual void method_semanticAnalysis (class GGS_lstringlist & arg_ioUsefulnessRootEntities,
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_string arg_inProductDirectory,
@@ -9307,12 +9307,12 @@ class cPtr_sortedListTypeForGeneration : public cPtr_semanticTypeForGeneration {
                                                                  Compiler * inCompiler) ;
 
 
-//--- Extension method appendDeclaration1
+//--- Extension proc appendDeclaration1
   public: virtual void method_appendDeclaration_31_ (class GGS_stringset & arg_ioInclusionSet,
            class GGS_string & arg_outHeader,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method appendSpecificImplementation
+//--- Extension proc appendSpecificImplementation
   public: virtual void method_appendSpecificImplementation (const class GGS_unifiedTypeMap arg_inUnifiedTypeMap,
            class GGS_stringset & arg_ioInclusionSet,
            class GGS_string & arg_outImplementation,
@@ -11201,7 +11201,7 @@ class cPtr_externTypeDeclarationAST : public cPtr_semanticDeclarationAST {
 //--- Extension func keyRepresentation
   public: virtual class GGS_string getter_keyRepresentation (Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension method enterDeclarationInGraph
+//--- Extension proc enterDeclarationInGraph
   public: virtual void method_enterDeclarationInGraph (class GGS_semanticTypePrecedenceGraph & arg_ioSemanticTypePrecedenceGraph,
            class GGS_equatableExtensionMap & arg_ioEquatableExtensionMap,
            class GGS_extensionInitializerForBuildingContext & arg_ioExtensionInitializerForBuildingContext,
@@ -11211,7 +11211,7 @@ class cPtr_externTypeDeclarationAST : public cPtr_semanticDeclarationAST {
            class GGS_semanticDeclarationListAST & arg_ioExtensionOverrideDefinitionList,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method enterDeclarationInSemanticContext
+//--- Extension proc enterDeclarationInSemanticContext
   public: virtual void method_enterDeclarationInSemanticContext (class GGS_equatableExtensionMap & arg_ioEquatableExtensionMap,
            const class GGS_extensionInitializerForBuildingContext arg_inExtensionInitializerMapForBuildingContext,
            const class GGS_extensionMethodMapForBuildingContext arg_inExtensionMethodMapForBuildingContext,
@@ -11221,7 +11221,7 @@ class cPtr_externTypeDeclarationAST : public cPtr_semanticDeclarationAST {
            class GGS_semanticContext & arg_ioSemanticContext,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method semanticAnalysis
+//--- Extension proc semanticAnalysis
   public: virtual void method_semanticAnalysis (class GGS_lstringlist & arg_ioUsefulnessRootEntities,
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_string arg_inProductDirectory,
@@ -11424,7 +11424,7 @@ class cPtr_externTypeDeclarationForGeneration : public cPtr_semanticTypeForGener
                                                                         Compiler * inCompiler) ;
 
 
-//--- Extension method appendDeclaration1
+//--- Extension proc appendDeclaration1
   public: virtual void method_appendDeclaration_31_ (class GGS_stringset & arg_ioInclusionSet,
            class GGS_string & arg_outHeader,
            Compiler * COMMA_LOCATION_ARGS) override ;
@@ -11616,28 +11616,28 @@ class cPtr_stringsetPredefinedTypeAST : public cPtr_predefinedTypeAST {
 //--- Extension func supportsCollectionValue
   public: virtual class GGS_bool getter_supportsCollectionValue (Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension method getAddAssignArgumentList
+//--- Extension proc getAddAssignArgumentList
   public: virtual void method_getAddAssignArgumentList (class GGS_unifiedTypeMap & arg_ioUnifiedTypeMap,
            class GGS_functionSignature & arg_outAddAssignArgumentList,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method getClassFunctionMap
+//--- Extension proc getClassFunctionMap
   public: virtual void method_getClassFunctionMap (class GGS_unifiedTypeMap & arg_ioUnifiedTypeMap,
            class GGS_classFunctionMap & arg_outClassFunctionMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method getEnumerationList
+//--- Extension proc getEnumerationList
   public: virtual void method_getEnumerationList (class GGS_unifiedTypeMap & arg_ioUnifiedTypeMap,
            class GGS_enumerationDescriptorList & arg_outEnumerationList,
            class GGS_string & arg_outEnumeratedType,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method getGetterMap
+//--- Extension proc getGetterMap
   public: virtual void method_getGetterMap (class GGS_unifiedTypeMap & arg_ioUnifiedTypeMap,
            class GGS_getterMap & arg_outGetterMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method getSetterMap
+//--- Extension proc getSetterMap
   public: virtual void method_getSetterMap (class GGS_unifiedTypeMap & arg_ioUnifiedTypeMap,
            class GGS_setterMap & arg_outSetterMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
@@ -11796,7 +11796,7 @@ class Lexique_galgasScanner_34_ : public Lexique {
   public: static GGS_stringlist symbols (LOCATION_ARGS) ;
 
 //--- Declaring a protected virtual destructor enables the compiler to raise
-//    an error if a direct delete is performed; only the static method
+//    an error if a direct delete is performed; only the static proc
 //    SharedObject::detachPointer may invoke delete.
   #ifndef DO_NOT_GENERATE_CHECKINGS
     protected: virtual ~ Lexique_galgasScanner_34_ (void) { }
@@ -12007,7 +12007,7 @@ class Lexique_galgasScanner_34_ : public Lexique {
 
 //--- Key words table 'galgasDelimitorsList'
   public: static int32_t search_into_galgasDelimitorsList (const String & inSearchedString) ;
-  
+
 
 //--- Assign from attribute
   public: GGS_lbigint synthetizedAttribute_bigintValue (void) const ;

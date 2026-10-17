@@ -61,14 +61,14 @@ syntax extension galgas4ExpressionSyntax {
 //! SEMANTICS
 //--------------------------------------------------------------------------------------------------
 
-//override method @literalUInt64ExpressionAST enterExpressionInSemanticContext
+//override proc @literalUInt64ExpressionAST enterExpressionInSemanticContext
 //  ?!@unifiedTypeMap unused ioTypeMap
 //{
 //}
 
 //································································································
 
-//override method @literalUInt64ExpressionAST analyzeSemanticExpression
+//override proc @literalUInt64ExpressionAST analyzeSemanticExpression
 //  ?let @lstring unused inUsefulnessCallerEntityName
 //  ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
 //  ?inferenceType: let @unifiedTypeMapEntry unused inType
@@ -85,14 +85,14 @@ syntax extension galgas4ExpressionSyntax {
 
 //--------------------------------------------------------------------------------------------------
 
-//override method @literalSIntExpressionAST enterExpressionInSemanticContext
+//override proc @literalSIntExpressionAST enterExpressionInSemanticContext
 //  ?!@unifiedTypeMap unused ioTypeMap
 //{
 //}
 
 //································································································
 
-//override method @literalSIntExpressionAST analyzeSemanticExpression
+//override proc @literalSIntExpressionAST analyzeSemanticExpression
 //  ?let @lstring unused inUsefulnessCallerEntityName
 //  ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
 //  ?inferenceType: let @unifiedTypeMapEntry unused inType
@@ -105,14 +105,14 @@ syntax extension galgas4ExpressionSyntax {
 
 //--------------------------------------------------------------------------------------------------
 
-//override method @literalSInt64ExpressionAST enterExpressionInSemanticContext
+//override proc @literalSInt64ExpressionAST enterExpressionInSemanticContext
 //  ?!@unifiedTypeMap unused ioTypeMap
 //{
 //}
 
 //································································································
 
-//override method @literalSInt64ExpressionAST analyzeSemanticExpression
+//override proc @literalSInt64ExpressionAST analyzeSemanticExpression
 //  ?let @lstring unused inUsefulnessCallerEntityName
 //  ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
 //  ?inferenceType: let @unifiedTypeMapEntry unused inType
@@ -129,14 +129,14 @@ syntax extension galgas4ExpressionSyntax {
 
 //--------------------------------------------------------------------------------------------------
 
-override method @literalBigIntExpressionAST enterExpressionInSemanticContext
+override proc @literalBigIntExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap unused ioTypeMap
 {
 }
 
 //································································································
 
-override method @literalBigIntExpressionAST analyzeSemanticExpression
+override proc @literalBigIntExpressionAST analyzeSemanticExpression
   ?usefulnessCallerEntityName: let @lstring unused inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
   ?inferenceType: let @unifiedTypeMapEntry unused inType
@@ -162,7 +162,7 @@ final class @literalUIntExpressionForGeneration : @semanticExpressionForGenerati
 
 //································································································
 
-override method @literalUIntExpressionForGeneration generateExpression
+override proc @literalUIntExpressionForGeneration generateExpression
   ?!@string unused ioGeneratedCode
   ?!@stringset unused ioInclusionSet
   ?!@uint unused ioTemporaryVariableIndex
@@ -179,7 +179,7 @@ final class @literalUInt64ExpressionForGeneration : @semanticExpressionForGenera
 
 //································································································
 
-override method @literalUInt64ExpressionForGeneration generateExpression
+override proc @literalUInt64ExpressionForGeneration generateExpression
                                                       ?!@string unused ioGeneratedCode
                                                       ?!@stringset unused ioInclusionSet
                                                       ?!@uint unused ioTemporaryVariableIndex
@@ -196,7 +196,7 @@ final class @literalSIntExpressionForGeneration : @semanticExpressionForGenerati
 
 //································································································
 
-override method @literalSIntExpressionForGeneration generateExpression
+override proc @literalSIntExpressionForGeneration generateExpression
   ?!@string unused ioGeneratedCode
   ?!@stringset unused ioInclusionSet
   ?!@uint unused ioTemporaryVariableIndex
@@ -213,7 +213,7 @@ final class @literalSInt64ExpressionForGeneration : @semanticExpressionForGenera
 
 //································································································
 
-override method @literalSInt64ExpressionForGeneration generateExpression
+override proc @literalSInt64ExpressionForGeneration generateExpression
                                                           ?!@string unused ioGeneratedCode
                                                           ?!@stringset unused ioInclusionSet
                                                           ?!@uint unused ioTemporaryVariableIndex
@@ -230,7 +230,7 @@ final class @literalBigIntExpressionForGeneration : @semanticExpressionForGenera
 
 //································································································
 
-override method @literalBigIntExpressionForGeneration generateExpression
+override proc @literalBigIntExpressionForGeneration generateExpression
                                                           ?!@string unused ioGeneratedCode
                                                           ?!@stringset unused ioInclusionSet
                                                           ?!@uint unused ioTemporaryVariableIndex

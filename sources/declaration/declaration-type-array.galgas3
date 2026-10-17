@@ -70,7 +70,7 @@ final class @arrayTypeDeclarationAST : @semanticDeclarationAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method enterDeclarationInGraph
+  override proc enterDeclarationInGraph
     ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
     ?!@equatableExtensionMap unused ioEquatableExtensionMap
     ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext
@@ -85,7 +85,7 @@ final class @arrayTypeDeclarationAST : @semanticDeclarationAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method enterDeclarationInSemanticContext
+  override proc enterDeclarationInSemanticContext
     ?!@equatableExtensionMap ioEquatableExtensionMap
     ?let @extensionInitializerForBuildingContext inExtensionInitializerMapForBuildingContext
     ?let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext
@@ -262,7 +262,7 @@ final class @arrayTypeDeclarationAST : @semanticDeclarationAST {
       !isFinal: true
       !superType: .null
       !typeKind: .listType
-      !supportCollectionValue: true 
+      !supportCollectionValue: true
       !allTypedPropertyList: @()
       !propertyMap: @()
       !currentTypedPropertyList: @()
@@ -287,12 +287,12 @@ final class @arrayTypeDeclarationAST : @semanticDeclarationAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method addAssociatedElement ?!@galgasDeclarationAST unused ioDeclarations {
+  override proc addAssociatedElement ?!@galgasDeclarationAST unused ioDeclarations {
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method semanticAnalysis
+  override proc semanticAnalysis
     ?!@lstringlist ioUsefulnessRootEntities
     ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
     ?let @string unused inProductDirectory
@@ -344,7 +344,7 @@ final class @arrayTypeForGeneration : @semanticTypeForGeneration {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method appendDeclaration1 ?!@stringset unused ioInclusionSet
+  override proc appendDeclaration1 ?!@stringset unused ioInclusionSet
                                      !@string outHeader {
     let selfTypeDefinition = self.mSelfTypeEntry.definition
     outHeader = [filewrapper arrayTypeGenerationTemplate.arrayTypeHeader1
@@ -373,7 +373,7 @@ final class @arrayTypeForGeneration : @semanticTypeForGeneration {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method appendSpecificImplementation  ?let @unifiedTypeMap unused inTypeMap
+  override proc appendSpecificImplementation  ?let @unifiedTypeMap unused inTypeMap
                                           ?!@stringset ioInclusionSet
                                           !@string outImplementation {
     [self.elementType addHeaderFileName !?ioInclusionSet]

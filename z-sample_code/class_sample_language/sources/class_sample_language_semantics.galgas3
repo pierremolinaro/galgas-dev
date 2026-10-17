@@ -21,30 +21,30 @@ graph @inheritanceGraph (@declarationListAST) {
   insert addNode error message "the '%K' class is already declared"
 }
 
-abstract method @declarationAST buildGraph
+abstract proc @declarationAST buildGraph
   ?!@inheritanceGraph ioGraph
 
-override method @classWithoutSuperClassAST buildGraph
+override proc @classWithoutSuperClassAST buildGraph
   ?!@inheritanceGraph ioGraph {
   [!?ioGraph addNode !self.mClassName !self]
 }
 
-override method @classWithSuperClassAST buildGraph
+override proc @classWithSuperClassAST buildGraph
   ?!@inheritanceGraph ioGraph {
   [!?ioGraph addNode !self.mClassName !self]
   [!?ioGraph addEdge !from: self.mClassName !to: self.mSuperClassName]
 }
 
 
-abstract method @declarationAST generateCode
+abstract proc @declarationAST generateCode
   ?!@string ioCodeToGenerate
 
-override method @classWithoutSuperClassAST generateCode
+override proc @classWithoutSuperClassAST generateCode
   ?!@string ioCodeToGenerate {
   ioCodeToGenerate += "class " + self.mClassName + " { } ;\n"
 }
 
-override method @classWithSuperClassAST generateCode
+override proc @classWithSuperClassAST generateCode
   ?!@string ioCodeToGenerate {
   ioCodeToGenerate += "class " + self.mClassName + " : " + self.mSuperClassName + " { } ;\n"
 }

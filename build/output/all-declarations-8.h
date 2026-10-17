@@ -153,7 +153,7 @@ class cPtr_templateTrueBoolAST : public cPtr_templateExpressionAST {
                                              Compiler * inCompiler) ;
 
 
-//--- Extension method templateExpressionAnalysis
+//--- Extension proc templateExpressionAnalysis
   public: virtual void method_templateExpressionAnalysis (const class GGS_lstring arg_inUsefulnessCallerEntityName,
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_templateAnalysisContext arg_inAnalysisContext,
@@ -331,7 +331,7 @@ class cPtr_templateFalseBoolAST : public cPtr_templateExpressionAST {
                                               Compiler * inCompiler) ;
 
 
-//--- Extension method templateExpressionAnalysis
+//--- Extension proc templateExpressionAnalysis
   public: virtual void method_templateExpressionAnalysis (const class GGS_lstring arg_inUsefulnessCallerEntityName,
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_templateAnalysisContext arg_inAnalysisContext,
@@ -513,7 +513,7 @@ class cPtr_templateLiteralStringExpressionAST : public cPtr_templateExpressionAS
                                                                 Compiler * inCompiler) ;
 
 
-//--- Extension method templateExpressionAnalysis
+//--- Extension proc templateExpressionAnalysis
   public: virtual void method_templateExpressionAnalysis (const class GGS_lstring arg_inUsefulnessCallerEntityName,
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_templateAnalysisContext arg_inAnalysisContext,
@@ -693,7 +693,7 @@ class cPtr_templateLiteralUIntExpressionAST : public cPtr_templateExpressionAST 
                                                           Compiler * inCompiler) ;
 
 
-//--- Extension method templateExpressionAnalysis
+//--- Extension proc templateExpressionAnalysis
   public: virtual void method_templateExpressionAnalysis (const class GGS_lstring arg_inUsefulnessCallerEntityName,
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_templateAnalysisContext arg_inAnalysisContext,
@@ -871,7 +871,7 @@ class cPtr_templateLiteralCharExpressionAST : public cPtr_templateExpressionAST 
                                                           Compiler * inCompiler) ;
 
 
-//--- Extension method templateExpressionAnalysis
+//--- Extension proc templateExpressionAnalysis
   public: virtual void method_templateExpressionAnalysis (const class GGS_lstring arg_inUsefulnessCallerEntityName,
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_templateAnalysisContext arg_inAnalysisContext,
@@ -1049,7 +1049,7 @@ class cPtr_templateLiteralDoubleExpressionAST : public cPtr_templateExpressionAS
                                                             Compiler * inCompiler) ;
 
 
-//--- Extension method templateExpressionAnalysis
+//--- Extension proc templateExpressionAnalysis
   public: virtual void method_templateExpressionAnalysis (const class GGS_lstring arg_inUsefulnessCallerEntityName,
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_templateAnalysisContext arg_inAnalysisContext,
@@ -1235,7 +1235,7 @@ class cPtr_structFieldAccessTemplateExpressionAST : public cPtr_templateExpressi
                                                                         Compiler * inCompiler) ;
 
 
-//--- Extension method templateExpressionAnalysis
+//--- Extension proc templateExpressionAnalysis
   public: virtual void method_templateExpressionAnalysis (const class GGS_lstring arg_inUsefulnessCallerEntityName,
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_templateAnalysisContext arg_inAnalysisContext,
@@ -1421,7 +1421,7 @@ class cPtr_templateNotOperatorAST : public cPtr_templateExpressionAST {
                                                     Compiler * inCompiler) ;
 
 
-//--- Extension method templateExpressionAnalysis
+//--- Extension proc templateExpressionAnalysis
   public: virtual void method_templateExpressionAnalysis (const class GGS_lstring arg_inUsefulnessCallerEntityName,
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_templateAnalysisContext arg_inAnalysisContext,
@@ -1605,7 +1605,7 @@ class cPtr_templateLogicalNegateAST : public cPtr_templateExpressionAST {
                                                       Compiler * inCompiler) ;
 
 
-//--- Extension method templateExpressionAnalysis
+//--- Extension proc templateExpressionAnalysis
   public: virtual void method_templateExpressionAnalysis (const class GGS_lstring arg_inUsefulnessCallerEntityName,
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_templateAnalysisContext arg_inAnalysisContext,
@@ -1793,7 +1793,7 @@ class cPtr_templateOptionAccessAST : public cPtr_templateExpressionAST {
                                                          Compiler * inCompiler) ;
 
 
-//--- Extension method templateExpressionAnalysis
+//--- Extension proc templateExpressionAnalysis
   public: virtual void method_templateExpressionAnalysis (const class GGS_lstring arg_inUsefulnessCallerEntityName,
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_templateAnalysisContext arg_inAnalysisContext,
@@ -2069,7 +2069,7 @@ class cPtr_templateTestDynamicClassAST : public cPtr_templateExpressionAST {
                                                                  Compiler * inCompiler) ;
 
 
-//--- Extension method templateExpressionAnalysis
+//--- Extension proc templateExpressionAnalysis
   public: virtual void method_templateExpressionAnalysis (const class GGS_lstring arg_inUsefulnessCallerEntityName,
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_templateAnalysisContext arg_inAnalysisContext,
@@ -2257,7 +2257,7 @@ class cPtr_templateFunctionCallAST : public cPtr_templateExpressionAST {
                                                      Compiler * inCompiler) ;
 
 
-//--- Extension method templateExpressionAnalysis
+//--- Extension proc templateExpressionAnalysis
   public: virtual void method_templateExpressionAnalysis (const class GGS_lstring arg_inUsefulnessCallerEntityName,
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_templateAnalysisContext arg_inAnalysisContext,
@@ -2437,7 +2437,7 @@ class cPtr_templateVarInExpressionAST : public cPtr_templateExpressionAST {
                                                     Compiler * inCompiler) ;
 
 
-//--- Extension method templateExpressionAnalysis
+//--- Extension proc templateExpressionAnalysis
   public: virtual void method_templateExpressionAnalysis (const class GGS_lstring arg_inUsefulnessCallerEntityName,
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_templateAnalysisContext arg_inAnalysisContext,
@@ -2623,7 +2623,7 @@ class cPtr_templateAddOperationAST : public cPtr_templateExpressionAST {
                                                          Compiler * inCompiler) ;
 
 
-//--- Extension method templateExpressionAnalysis
+//--- Extension proc templateExpressionAnalysis
   public: virtual void method_templateExpressionAnalysis (const class GGS_lstring arg_inUsefulnessCallerEntityName,
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_templateAnalysisContext arg_inAnalysisContext,
@@ -2813,7 +2813,7 @@ class cPtr_templateSubOperationAST : public cPtr_templateExpressionAST {
                                                          Compiler * inCompiler) ;
 
 
-//--- Extension method templateExpressionAnalysis
+//--- Extension proc templateExpressionAnalysis
   public: virtual void method_templateExpressionAnalysis (const class GGS_lstring arg_inUsefulnessCallerEntityName,
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_templateAnalysisContext arg_inAnalysisContext,
@@ -3003,7 +3003,7 @@ class cPtr_templateMultiplyOperationAST : public cPtr_templateExpressionAST {
                                                               Compiler * inCompiler) ;
 
 
-//--- Extension method templateExpressionAnalysis
+//--- Extension proc templateExpressionAnalysis
   public: virtual void method_templateExpressionAnalysis (const class GGS_lstring arg_inUsefulnessCallerEntityName,
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_templateAnalysisContext arg_inAnalysisContext,
@@ -3193,7 +3193,7 @@ class cPtr_templateDivideOperationAST : public cPtr_templateExpressionAST {
                                                             Compiler * inCompiler) ;
 
 
-//--- Extension method templateExpressionAnalysis
+//--- Extension proc templateExpressionAnalysis
   public: virtual void method_templateExpressionAnalysis (const class GGS_lstring arg_inUsefulnessCallerEntityName,
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_templateAnalysisContext arg_inAnalysisContext,
@@ -3383,7 +3383,7 @@ class cPtr_templateModuloOperationAST : public cPtr_templateExpressionAST {
                                                             Compiler * inCompiler) ;
 
 
-//--- Extension method templateExpressionAnalysis
+//--- Extension proc templateExpressionAnalysis
   public: virtual void method_templateExpressionAnalysis (const class GGS_lstring arg_inUsefulnessCallerEntityName,
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_templateAnalysisContext arg_inAnalysisContext,
@@ -3569,7 +3569,7 @@ class cPtr_templateUnaryMinusOperationAST : public cPtr_templateExpressionAST {
                                                             Compiler * inCompiler) ;
 
 
-//--- Extension method templateExpressionAnalysis
+//--- Extension proc templateExpressionAnalysis
   public: virtual void method_templateExpressionAnalysis (const class GGS_lstring arg_inUsefulnessCallerEntityName,
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_templateAnalysisContext arg_inAnalysisContext,
@@ -3757,7 +3757,7 @@ class cPtr_templateEqualTestAST : public cPtr_templateExpressionAST {
                                                       Compiler * inCompiler) ;
 
 
-//--- Extension method templateExpressionAnalysis
+//--- Extension proc templateExpressionAnalysis
   public: virtual void method_templateExpressionAnalysis (const class GGS_lstring arg_inUsefulnessCallerEntityName,
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_templateAnalysisContext arg_inAnalysisContext,
@@ -3947,7 +3947,7 @@ class cPtr_templateNonEqualTestAST : public cPtr_templateExpressionAST {
                                                          Compiler * inCompiler) ;
 
 
-//--- Extension method templateExpressionAnalysis
+//--- Extension proc templateExpressionAnalysis
   public: virtual void method_templateExpressionAnalysis (const class GGS_lstring arg_inUsefulnessCallerEntityName,
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_templateAnalysisContext arg_inAnalysisContext,
@@ -4137,7 +4137,7 @@ class cPtr_templateStrictInfTestAST : public cPtr_templateExpressionAST {
                                                           Compiler * inCompiler) ;
 
 
-//--- Extension method templateExpressionAnalysis
+//--- Extension proc templateExpressionAnalysis
   public: virtual void method_templateExpressionAnalysis (const class GGS_lstring arg_inUsefulnessCallerEntityName,
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_templateAnalysisContext arg_inAnalysisContext,
@@ -4327,7 +4327,7 @@ class cPtr_templateInfOrEqualTestAST : public cPtr_templateExpressionAST {
                                                            Compiler * inCompiler) ;
 
 
-//--- Extension method templateExpressionAnalysis
+//--- Extension proc templateExpressionAnalysis
   public: virtual void method_templateExpressionAnalysis (const class GGS_lstring arg_inUsefulnessCallerEntityName,
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_templateAnalysisContext arg_inAnalysisContext,
@@ -4517,7 +4517,7 @@ class cPtr_templateStrictSupTestAST : public cPtr_templateExpressionAST {
                                                           Compiler * inCompiler) ;
 
 
-//--- Extension method templateExpressionAnalysis
+//--- Extension proc templateExpressionAnalysis
   public: virtual void method_templateExpressionAnalysis (const class GGS_lstring arg_inUsefulnessCallerEntityName,
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_templateAnalysisContext arg_inAnalysisContext,
@@ -4707,7 +4707,7 @@ class cPtr_templateSupOrEqualTestAST : public cPtr_templateExpressionAST {
                                                            Compiler * inCompiler) ;
 
 
-//--- Extension method templateExpressionAnalysis
+//--- Extension proc templateExpressionAnalysis
   public: virtual void method_templateExpressionAnalysis (const class GGS_lstring arg_inUsefulnessCallerEntityName,
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_templateAnalysisContext arg_inAnalysisContext,
@@ -4897,7 +4897,7 @@ class cPtr_templateLeftShiftOperationAST : public cPtr_templateExpressionAST {
                                                                Compiler * inCompiler) ;
 
 
-//--- Extension method templateExpressionAnalysis
+//--- Extension proc templateExpressionAnalysis
   public: virtual void method_templateExpressionAnalysis (const class GGS_lstring arg_inUsefulnessCallerEntityName,
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_templateAnalysisContext arg_inAnalysisContext,
@@ -5087,7 +5087,7 @@ class cPtr_templateRightShiftOperationAST : public cPtr_templateExpressionAST {
                                                                 Compiler * inCompiler) ;
 
 
-//--- Extension method templateExpressionAnalysis
+//--- Extension proc templateExpressionAnalysis
   public: virtual void method_templateExpressionAnalysis (const class GGS_lstring arg_inUsefulnessCallerEntityName,
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_templateAnalysisContext arg_inAnalysisContext,
@@ -5269,7 +5269,7 @@ class cPtr_templateInstructionStringAST : public cPtr_templateInstructionAST {
                                                       Compiler * inCompiler) ;
 
 
-//--- Extension method templateInstructionAnalysis
+//--- Extension proc templateInstructionAnalysis
   public: virtual void method_templateInstructionAnalysis (const class GGS_lstring arg_inUsefulnessCallerEntityName,
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_templateAnalysisContext arg_inAnalysisContext,
@@ -5451,7 +5451,7 @@ class cPtr_templateInstructionExpressionAST : public cPtr_templateInstructionAST
                                                               Compiler * inCompiler) ;
 
 
-//--- Extension method templateInstructionAnalysis
+//--- Extension proc templateInstructionAnalysis
   public: virtual void method_templateInstructionAnalysis (const class GGS_lstring arg_inUsefulnessCallerEntityName,
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_templateAnalysisContext arg_inAnalysisContext,
@@ -5639,7 +5639,7 @@ class cPtr_templateBlockInstructionAST : public cPtr_templateInstructionAST {
                                                              Compiler * inCompiler) ;
 
 
-//--- Extension method templateInstructionAnalysis
+//--- Extension proc templateInstructionAnalysis
   public: virtual void method_templateInstructionAnalysis (const class GGS_lstring arg_inUsefulnessCallerEntityName,
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_templateAnalysisContext arg_inAnalysisContext,
@@ -5817,7 +5817,7 @@ class cPtr_templateInstructionGetColumnLocationAST : public cPtr_templateInstruc
   public: void templateInstructionGetColumnLocationAST_init (Compiler * inCompiler) ;
 
 
-//--- Extension method templateInstructionAnalysis
+//--- Extension proc templateInstructionAnalysis
   public: virtual void method_templateInstructionAnalysis (const class GGS_lstring arg_inUsefulnessCallerEntityName,
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_templateAnalysisContext arg_inAnalysisContext,
@@ -5987,7 +5987,7 @@ class cPtr_templateInstructionGotoColumnLocationAST : public cPtr_templateInstru
   public: void templateInstructionGotoColumnLocationAST_init (Compiler * inCompiler) ;
 
 
-//--- Extension method templateInstructionAnalysis
+//--- Extension proc templateInstructionAnalysis
   public: virtual void method_templateInstructionAnalysis (const class GGS_lstring arg_inUsefulnessCallerEntityName,
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_templateAnalysisContext arg_inAnalysisContext,
@@ -6488,7 +6488,7 @@ class cPtr_templateInstructionIfAST : public cPtr_templateInstructionAST {
                                                       Compiler * inCompiler) ;
 
 
-//--- Extension method templateInstructionAnalysis
+//--- Extension proc templateInstructionAnalysis
   public: virtual void method_templateInstructionAnalysis (const class GGS_lstring arg_inUsefulnessCallerEntityName,
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_templateAnalysisContext arg_inAnalysisContext,
@@ -7080,7 +7080,7 @@ class cPtr_templateGetterCallInExpressionAST : public cPtr_templateExpressionAST
                                                                        Compiler * inCompiler) ;
 
 
-//--- Extension method templateExpressionAnalysis
+//--- Extension proc templateExpressionAnalysis
   public: virtual void method_templateExpressionAnalysis (const class GGS_lstring arg_inUsefulnessCallerEntityName,
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_templateAnalysisContext arg_inAnalysisContext,
@@ -7217,7 +7217,7 @@ class cPtr_templateInstructionForeachAST : public cPtr_templateInstructionAST {
                                                                                        Compiler * inCompiler) ;
 
 
-//--- Extension method templateInstructionAnalysis
+//--- Extension proc templateInstructionAnalysis
   public: virtual void method_templateInstructionAnalysis (const class GGS_lstring arg_inUsefulnessCallerEntityName,
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_templateAnalysisContext arg_inAnalysisContext,
@@ -7356,7 +7356,7 @@ class cPtr_procDeclarationAST : public cPtr_externProcedureDeclarationAST {
                                                                                                              Compiler * inCompiler) ;
 
 
-//--- Extension method enterDeclarationInSemanticContext
+//--- Extension proc enterDeclarationInSemanticContext
   public: virtual void method_enterDeclarationInSemanticContext (class GGS_equatableExtensionMap & arg_ioEquatableExtensionMap,
            const class GGS_extensionInitializerForBuildingContext arg_inExtensionInitializerMapForBuildingContext,
            const class GGS_extensionMethodMapForBuildingContext arg_inExtensionMethodMapForBuildingContext,
@@ -7366,7 +7366,7 @@ class cPtr_procDeclarationAST : public cPtr_externProcedureDeclarationAST {
            class GGS_semanticContext & arg_ioSemanticContext,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method semanticAnalysis
+//--- Extension proc semanticAnalysis
   public: virtual void method_semanticAnalysis (class GGS_lstringlist & arg_ioUsefulnessRootEntities,
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_string arg_inProductDirectory,
@@ -10164,7 +10164,7 @@ class cPtr_classFuncExpressionAST : public cPtr_semanticExpressionAST {
                                                             Compiler * inCompiler) ;
 
 
-//--- Extension method analyzeSemanticExpression
+//--- Extension proc analyzeSemanticExpression
   public: virtual void method_analyzeSemanticExpression (const class GGS_lstring arg_inUsefulnessCallerEntityName,
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_unifiedTypeMapEntry arg_inType,
@@ -10174,7 +10174,7 @@ class cPtr_classFuncExpressionAST : public cPtr_semanticExpressionAST {
            class GGS_semanticExpressionForGeneration & arg_outExpression,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method enterExpressionInSemanticContext
+//--- Extension proc enterExpressionInSemanticContext
   public: virtual void method_enterExpressionInSemanticContext (class GGS_unifiedTypeMap & arg_ioTypeMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 

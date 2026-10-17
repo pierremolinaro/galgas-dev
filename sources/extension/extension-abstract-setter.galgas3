@@ -65,7 +65,7 @@ final class @abstractExtensionSetterAST : @semanticDeclarationAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method enterDeclarationInGraph (
+  override proc enterDeclarationInGraph (
     ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph,
     ?!@equatableExtensionMap unused ioEquatableExtensionMap,
     ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext,
@@ -99,7 +99,7 @@ final class @abstractExtensionSetterAST : @semanticDeclarationAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method enterDeclarationInSemanticContext (
+  override proc enterDeclarationInSemanticContext (
     ?!@equatableExtensionMap unused ioEquatableExtensionMap,
     ?let @extensionInitializerForBuildingContext unused inExtensionInitializerMapForBuildingContext,
     ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext,
@@ -111,7 +111,7 @@ final class @abstractExtensionSetterAST : @semanticDeclarationAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method semanticAnalysis (
+  override proc semanticAnalysis (
     ?!@lstringlist unused ioUsefulnessRootEntities,
     ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph,
     ?let @string unused inProductDirectory,
@@ -151,7 +151,7 @@ final class @abstractExtensionSetterAST : @semanticDeclarationAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method buildExtensionListMaps (
+  override proc buildExtensionListMaps (
     ?!@genericExtensionMethodListMap ioAbstractExtensionSetterListMap,
     ?!@genericExtensionMethodListMap unused ioExtensionSetterListMap,
     ?!@genericExtensionMethodListMap unused ioOverridingExtensionSetterListMap,
@@ -189,7 +189,7 @@ final class @abstractExtensionSetterForGeneration : @semanticDeclarationWithHead
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method appendDeclaration1 (?!@stringset unused ioInclusionSet,
+  override proc appendDeclaration1 (?!@stringset unused ioInclusionSet,
                                       !@string outHeader) {
     outHeader = [filewrapper semanticComponentGenerationTemplate.abstractExtensionSetterDeclaration
       !self.mReceiverType.definition.typeName.string
@@ -200,7 +200,7 @@ final class @abstractExtensionSetterForGeneration : @semanticDeclarationWithHead
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method appendSpecificImplementation (?let @unifiedTypeMap unused inTypeMap,
+  override proc appendSpecificImplementation (?let @unifiedTypeMap unused inTypeMap,
     ?!@stringset ioInclusionSet,
     !@string outImplementation) {
     ioInclusionSet ++= "setter-" + self.mReceiverType.definition.typeName.string.fileNameRepresentation + "-" + self.mAbstractExtensionSetterName.fileNameRepresentation
@@ -214,7 +214,7 @@ final class @abstractExtensionSetterForGeneration : @semanticDeclarationWithHead
       !self.mAbstractExtensionSetterFormalParameterList
     ]
   }
-  
+
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }

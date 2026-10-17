@@ -154,7 +154,7 @@ void GGS_%!TYPE_IDENTIFIER%::setter_popSmallest (%?^
   bool found = false ;
   if (isValid ()) {
     if (count () == 0) {
-      inCompiler->onTheFlyRunTimeError ("'popSmallest' method invoked on an empty list" COMMA_THERE) ;
+      inCompiler->onTheFlyRunTimeError ("'popSmallest' proc invoked on an empty list" COMMA_THERE) ;
     }else{
 %for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in ATTRIBUTE_LIST do (IDX)
     %      outOperand%![IDX string] % = mSharedArray (0 COMMA_HERE).mProperty_%![mPropertyName identifierRepresentation]% ;\n%
@@ -181,7 +181,7 @@ void GGS_%!TYPE_IDENTIFIER%::setter_popGreatest (%?^
   bool found = false ;
   if (isValid ()) {
     if (count () == 0) {
-      inCompiler->onTheFlyRunTimeError ("'popGreatest' method invoked on an empty list" COMMA_THERE) ;
+      inCompiler->onTheFlyRunTimeError ("'popGreatest' proc invoked on an empty list" COMMA_THERE) ;
     }else{
 %for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in ATTRIBUTE_LIST do (IDX)
     %      outOperand%![IDX string] % = mSharedArray.lastObject (HERE).mProperty_%![mPropertyName identifierRepresentation]% ;\n%
@@ -208,7 +208,7 @@ void GGS_%!TYPE_IDENTIFIER%::method_smallest (%?^
   bool found = false ;
   if (isValid ()) {
     if (count () == 0) {
-      inCompiler->onTheFlyRunTimeError ("'smallest' method invoked on an empty list" COMMA_THERE) ;
+      inCompiler->onTheFlyRunTimeError ("'smallest' proc invoked on an empty list" COMMA_THERE) ;
     }else{
 %for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in ATTRIBUTE_LIST do (IDX)
     %      outOperand%![IDX string] % = mSharedArray (0 COMMA_HERE).mProperty_%![mPropertyName identifierRepresentation]% ;\n%
@@ -234,7 +234,7 @@ void GGS_%!TYPE_IDENTIFIER%::method_greatest (%?^
   bool found = false ;
   if (isValid ()) {
     if (count () == 0) {
-      inCompiler->onTheFlyRunTimeError ("'greatest' method invoked on an empty list" COMMA_THERE) ;
+      inCompiler->onTheFlyRunTimeError ("'greatest' proc invoked on an empty list" COMMA_THERE) ;
     }else{
 %for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in ATTRIBUTE_LIST do (IDX)
     %      outOperand%![IDX string] % = mSharedArray.lastObject (HERE).mProperty_%![mPropertyName identifierRepresentation]% ;\n%

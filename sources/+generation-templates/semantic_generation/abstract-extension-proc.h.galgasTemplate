@@ -1,6 +1,6 @@
 //--------------------------------------------------------------------------------------------------
 //
-//%!"Extension method '@" + CLASS_NAME + " " + METHOD_NAME + "'"%
+//%!"Abstract extension proc '@" + CLASS_NAME + " " + METHOD_NAME + "'"%
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -17,6 +17,6 @@ void callExtensionMethod_%![METHOD_NAME identifierRepresentation]% (%?^%class cP
       %class GGS_%![mFormalArgumentType identifierRepresentation]% in_%![mFormalArgumentName identifierRepresentation]
     end
   end
-  %,\n%!^%Compiler * inCompiler%
+  %,\n%!^%class Compiler * inCompiler%
   %\n%!^%COMMA_LOCATION_ARGS) ;
 

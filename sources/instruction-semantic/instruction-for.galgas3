@@ -441,7 +441,7 @@ syntax extension galgas4InstructionsSyntax {
 //! CONTEXT
 //--------------------------------------------------------------------------------------------------
 
-override method @forInstructionAST enterInstructionInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
+override proc @forInstructionAST enterInstructionInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
   [self.mWhileExpression enterExpressionInSemanticContext !?ioTypeMap]
   [self.mBeforeInstructionList enterInstructionListInSemanticContext !?ioTypeMap]
   [self.mBetweenInstructionList enterInstructionListInSemanticContext !?ioTypeMap]
@@ -454,17 +454,17 @@ override method @forInstructionAST enterInstructionInSemanticContext (?!@unified
 
 //································································································*
 
-abstract method @abstractEnumeratedCollectionAST enterInSemanticContext (?!@unifiedTypeMap ioTypeMap)
+abstract proc @abstractEnumeratedCollectionAST enterInSemanticContext (?!@unifiedTypeMap ioTypeMap)
 
 //································································································*
 
-override method @enumeratedCollectionCstListInExpAST enterInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
+override proc @enumeratedCollectionCstListInExpAST enterInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
   [self.mEnumeratedExpression enterExpressionInSemanticContext !?ioTypeMap]
 }
 
 //································································································*
 
-override method @enumeratedCollectionVarInExpAST enterInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
+override proc @enumeratedCollectionVarInExpAST enterInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
   [self.mEnumeratedExpression enterExpressionInSemanticContext !?ioTypeMap]
 }
 
@@ -473,7 +473,7 @@ override method @enumeratedCollectionVarInExpAST enterInSemanticContext (?!@unif
 //! SEMANTICS
 //--------------------------------------------------------------------------------------------------
 
-abstract method @abstractEnumeratedCollectionAST analyzeEnumeration (
+abstract proc @abstractEnumeratedCollectionAST analyzeEnumeration (
   ?let @lstring inUsefulnessCallerEntityName,
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
   ?let @analysisContext inAnalysisContext,
@@ -485,7 +485,7 @@ abstract method @abstractEnumeratedCollectionAST analyzeEnumeration (
 
 //································································································*
 
-override method @enumeratedCollectionCstListInExpAST analyzeEnumeration (
+override proc @enumeratedCollectionCstListInExpAST analyzeEnumeration (
   ?let @lstring inUsefulnessCallerEntityName,
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
   ?let @analysisContext inAnalysisContext,
@@ -557,7 +557,7 @@ override method @enumeratedCollectionCstListInExpAST analyzeEnumeration (
 
 //································································································*
 
-override method @enumeratedCollectionVarInExpAST analyzeEnumeration (?let @lstring inUsefulnessCallerEntityName,
+override proc @enumeratedCollectionVarInExpAST analyzeEnumeration (?let @lstring inUsefulnessCallerEntityName,
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
   ?let @analysisContext inAnalysisContext,
                                 ?!@unifiedTypeMap ioTypeMap,
@@ -594,7 +594,7 @@ override method @enumeratedCollectionVarInExpAST analyzeEnumeration (?let @lstri
 
 //································································································*
 
-override method @forInstructionAST analyzeSemanticInstruction (
+override proc @forInstructionAST analyzeSemanticInstruction (
                         ?let @lstring inUsefulnessCallerEntityName,
                         ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
                         ?let @analysisContext inAnalysisContext,
@@ -773,7 +773,7 @@ final class @forInstructionForGeneration : @semanticInstructionForGeneration {
 //! CODE GENERATION
 //--------------------------------------------------------------------------------------------------
 
-override method @forInstructionForGeneration generateInstruction (?!@stringset ioInclusionSet,
+override proc @forInstructionForGeneration generateInstruction (?!@stringset ioInclusionSet,
   ?!@uint ioTemporaryVariableIndex,
   ?!@stringset ioUnusedVariableCppNameSet,
   ?let @bool inGenerateSyntaxDirectedTranslationString,

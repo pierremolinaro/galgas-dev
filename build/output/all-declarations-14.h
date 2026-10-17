@@ -99,7 +99,7 @@ class GGS_string extensionGetter_cppTypeName (const class GGS_lexicalTypeEnum & 
 
 //--------------------------------------------------------------------------------------------------
 //
-//Abstract extension method '@lexicalSendDefaultActionAST checkLexicalDefaultAction'
+//Abstract extension proc '@lexicalSendDefaultActionAST checkLexicalDefaultAction'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -110,7 +110,7 @@ void callExtensionMethod_checkLexicalDefaultAction (class cPtr_lexicalSendDefaul
 
 //--------------------------------------------------------------------------------------------------
 //
-//Abstract extension method '@lexicalExpressionAST checkLexicalExpression'
+//Abstract extension proc '@lexicalExpressionAST checkLexicalExpression'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -121,7 +121,7 @@ void callExtensionMethod_checkLexicalExpression (class cPtr_lexicalExpressionAST
 
 //--------------------------------------------------------------------------------------------------
 //
-//Abstract extension method '@lexicalRoutineOrFunctionFormalInputArgumentAST checkLexicalFunctionCallArgument'
+//Abstract extension proc '@lexicalRoutineOrFunctionFormalInputArgumentAST checkLexicalFunctionCallArgument'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -133,7 +133,7 @@ void callExtensionMethod_checkLexicalFunctionCallArgument (class cPtr_lexicalRou
 
 //--------------------------------------------------------------------------------------------------
 //
-//Abstract extension method '@lexicalInstructionAST checkLexicalInstruction'
+//Abstract extension proc '@lexicalInstructionAST checkLexicalInstruction'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -145,7 +145,7 @@ void callExtensionMethod_checkLexicalInstruction (class cPtr_lexicalInstructionA
 
 //--------------------------------------------------------------------------------------------------
 //
-//Abstract extension method '@abstractLexicalRuleAST checkLexicalRule'
+//Abstract extension proc '@abstractLexicalRuleAST checkLexicalRule'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -441,12 +441,12 @@ class cPtr_syntaxDeclarationForGeneration : public cPtr_semanticDeclarationForGe
 //--- Extension func isPredefined
   public: virtual class GGS_bool getter_isPredefined (Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension method appendDeclaration1
+//--- Extension proc appendDeclaration1
   public: virtual void method_appendDeclaration_31_ (class GGS_stringset & arg_ioInclusionSet,
            class GGS_string & arg_outHeader,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method appendSpecificImplementation
+//--- Extension proc appendSpecificImplementation
   public: virtual void method_appendSpecificImplementation (const class GGS_unifiedTypeMap arg_inUnifiedTypeMap,
            class GGS_stringset & arg_ioInclusionSet,
            class GGS_string & arg_outImplementation,
@@ -657,18 +657,18 @@ class cPtr_lexiqueDeclarationForGeneration : public cPtr_semanticDeclarationWith
 //--- Extension func headerKind
   public: virtual class GGS_headerKind getter_headerKind (Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension method appendDeclaration1
+//--- Extension proc appendDeclaration1
   public: virtual void method_appendDeclaration_31_ (class GGS_stringset & arg_ioInclusionSet,
            class GGS_string & arg_outHeader,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method appendSpecificFiles
+//--- Extension proc appendSpecificFiles
   public: virtual void method_appendSpecificFiles (const class GGS_string arg_inProductDirectory,
            class GGS_stringset & arg_ioAllProductFileSet,
            class GGS_stringlist & arg_ioSwiftAppProductFileList,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method appendSpecificImplementation
+//--- Extension proc appendSpecificImplementation
   public: virtual void method_appendSpecificImplementation (const class GGS_unifiedTypeMap arg_inUnifiedTypeMap,
            class GGS_stringset & arg_ioInclusionSet,
            class GGS_string & arg_outImplementation,
@@ -867,7 +867,7 @@ class cPtr_primitiveTypeForGeneration : public cPtr_semanticTypeForGeneration {
 //--- Extension func appendPrimitiveTypeDeclaration
   public: virtual class GGS_string getter_appendPrimitiveTypeDeclaration (Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension method appendPrimitiveTypePreDeclaration
+//--- Extension proc appendPrimitiveTypePreDeclaration
   public: virtual void method_appendPrimitiveTypePreDeclaration (class GGS_string & arg_ioHeader,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -982,7 +982,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_primitiveTypeForGenera
 
 //--------------------------------------------------------------------------------------------------
 //
-//Abstract extension method '@semanticInstructionAST analyzeSemanticInstruction'
+//Abstract extension proc '@semanticInstructionAST analyzeSemanticInstruction'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -1107,7 +1107,7 @@ class cPtr_overrideExtensionGetterForGeneration : public cPtr_semanticDeclaratio
 //--- Extension func headerKind
   public: virtual class GGS_headerKind getter_headerKind (Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension method appendSpecificImplementation
+//--- Extension proc appendSpecificImplementation
   public: virtual void method_appendSpecificImplementation (const class GGS_unifiedTypeMap arg_inUnifiedTypeMap,
            class GGS_stringset & arg_ioInclusionSet,
            class GGS_string & arg_outImplementation,
@@ -1314,12 +1314,12 @@ class cPtr_abstractExtensionSetterForGeneration : public cPtr_semanticDeclaratio
 //--- Extension func headerKind
   public: virtual class GGS_headerKind getter_headerKind (Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension method appendDeclaration1
+//--- Extension proc appendDeclaration1
   public: virtual void method_appendDeclaration_31_ (class GGS_stringset & arg_ioInclusionSet,
            class GGS_string & arg_outHeader,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method appendSpecificImplementation
+//--- Extension proc appendSpecificImplementation
   public: virtual void method_appendSpecificImplementation (const class GGS_unifiedTypeMap arg_inUnifiedTypeMap,
            class GGS_stringset & arg_ioInclusionSet,
            class GGS_string & arg_outImplementation,
@@ -1528,12 +1528,12 @@ class cPtr_extensionSetterForGeneration : public cPtr_semanticDeclarationWithHea
 //--- Extension func headerKind
   public: virtual class GGS_headerKind getter_headerKind (Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension method appendDeclaration1
+//--- Extension proc appendDeclaration1
   public: virtual void method_appendDeclaration_31_ (class GGS_stringset & arg_ioInclusionSet,
            class GGS_string & arg_outHeader,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method appendSpecificImplementation
+//--- Extension proc appendSpecificImplementation
   public: virtual void method_appendSpecificImplementation (const class GGS_unifiedTypeMap arg_inUnifiedTypeMap,
            class GGS_stringset & arg_ioInclusionSet,
            class GGS_string & arg_outImplementation,
@@ -1744,7 +1744,7 @@ class cPtr_extensionInitializerForGeneration : public cPtr_semanticDeclarationWi
 //--- Extension func headerKind
   public: virtual class GGS_headerKind getter_headerKind (Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension method appendSpecificImplementation
+//--- Extension proc appendSpecificImplementation
   public: virtual void method_appendSpecificImplementation (const class GGS_unifiedTypeMap arg_inUnifiedTypeMap,
            class GGS_stringset & arg_ioInclusionSet,
            class GGS_string & arg_outImplementation,
@@ -1957,7 +1957,7 @@ class cPtr_overridingExtensionSetterForGeneration : public cPtr_semanticDeclarat
 //--- Extension func headerKind
   public: virtual class GGS_headerKind getter_headerKind (Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension method appendSpecificImplementation
+//--- Extension proc appendSpecificImplementation
   public: virtual void method_appendSpecificImplementation (const class GGS_unifiedTypeMap arg_inUnifiedTypeMap,
            class GGS_stringset & arg_ioInclusionSet,
            class GGS_string & arg_outImplementation,
@@ -2164,12 +2164,12 @@ class cPtr_abstractExtensionGetterForGeneration : public cPtr_semanticDeclaratio
 //--- Extension func headerKind
   public: virtual class GGS_headerKind getter_headerKind (Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension method appendDeclaration1
+//--- Extension proc appendDeclaration1
   public: virtual void method_appendDeclaration_31_ (class GGS_stringset & arg_ioInclusionSet,
            class GGS_string & arg_outHeader,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method appendSpecificImplementation
+//--- Extension proc appendSpecificImplementation
   public: virtual void method_appendSpecificImplementation (const class GGS_unifiedTypeMap arg_inUnifiedTypeMap,
            class GGS_stringset & arg_ioInclusionSet,
            class GGS_string & arg_outImplementation,
@@ -2388,12 +2388,12 @@ class cPtr_extensionGetterForGeneration : public cPtr_semanticDeclarationWithHea
 //--- Extension func headerKind
   public: virtual class GGS_headerKind getter_headerKind (Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension method appendDeclaration1
+//--- Extension proc appendDeclaration1
   public: virtual void method_appendDeclaration_31_ (class GGS_stringset & arg_ioInclusionSet,
            class GGS_string & arg_outHeader,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method appendSpecificImplementation
+//--- Extension proc appendSpecificImplementation
   public: virtual void method_appendSpecificImplementation (const class GGS_unifiedTypeMap arg_inUnifiedTypeMap,
            class GGS_stringset & arg_ioInclusionSet,
            class GGS_string & arg_outImplementation,
@@ -2612,7 +2612,7 @@ class cPtr_overridingExtensionMethodForGeneration : public cPtr_semanticDeclarat
 //--- Extension func headerKind
   public: virtual class GGS_headerKind getter_headerKind (Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension method appendSpecificImplementation
+//--- Extension proc appendSpecificImplementation
   public: virtual void method_appendSpecificImplementation (const class GGS_unifiedTypeMap arg_inUnifiedTypeMap,
            class GGS_stringset & arg_ioInclusionSet,
            class GGS_string & arg_outImplementation,
@@ -2815,12 +2815,12 @@ class cPtr_abstractExtensionMethodForGeneration : public cPtr_semanticDeclaratio
 //--- Extension func headerKind
   public: virtual class GGS_headerKind getter_headerKind (Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension method appendDeclaration1
+//--- Extension proc appendDeclaration1
   public: virtual void method_appendDeclaration_31_ (class GGS_stringset & arg_ioInclusionSet,
            class GGS_string & arg_outHeader,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method appendSpecificImplementation
+//--- Extension proc appendSpecificImplementation
   public: virtual void method_appendSpecificImplementation (const class GGS_unifiedTypeMap arg_inUnifiedTypeMap,
            class GGS_stringset & arg_ioInclusionSet,
            class GGS_string & arg_outImplementation,
@@ -3029,12 +3029,12 @@ class cPtr_extensionMethodForGeneration : public cPtr_semanticDeclarationWithHea
 //--- Extension func headerKind
   public: virtual class GGS_headerKind getter_headerKind (Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension method appendDeclaration1
+//--- Extension proc appendDeclaration1
   public: virtual void method_appendDeclaration_31_ (class GGS_stringset & arg_ioInclusionSet,
            class GGS_string & arg_outHeader,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method appendSpecificImplementation
+//--- Extension proc appendSpecificImplementation
   public: virtual void method_appendSpecificImplementation (const class GGS_unifiedTypeMap arg_inUnifiedTypeMap,
            class GGS_stringset & arg_ioInclusionSet,
            class GGS_string & arg_outImplementation,
@@ -3158,7 +3158,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_extensionMethodForGene
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension method '@productionRuleListForGrammarAnalysis.element displayRuleVertically'
+//Extension proc '@productionRuleListForGrammarAnalysis.element displayRuleVertically'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -3180,7 +3180,7 @@ class GGS_string function_escapeForTex (const class GGS_string & constinArgument
 
 //--------------------------------------------------------------------------------------------------
 //
-//Abstract extension method '@abstractSyntaxInstructionForGrammarAnalysis tikzNodeForSyntaxInstruction'
+//Abstract extension proc '@abstractSyntaxInstructionForGrammarAnalysis tikzNodeForSyntaxInstruction'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -3198,7 +3198,7 @@ void callExtensionMethod_tikzNodeForSyntaxInstruction (class cPtr_abstractSyntax
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension method '@syntaxInstructionListForGrammarAnalysis tikzNodeForSyntaxInstruction'
+//Extension proc '@syntaxInstructionListForGrammarAnalysis tikzNodeForSyntaxInstruction'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -3297,7 +3297,7 @@ class cPtr_lexicalStructuredSendInstructionAST : public cPtr_lexicalInstructionA
 //--- Extension func lexicalInstructionUsesLoopLocalVariable
   public: virtual class GGS_bool getter_lexicalInstructionUsesLoopLocalVariable (Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension method checkLexicalInstruction
+//--- Extension proc checkLexicalInstruction
   public: virtual void method_checkLexicalInstruction (class GGS_lexiqueAnalysisContext & arg_ioLexiqueAnalysisContext,
            class GGS_lexicalTagMap & arg_ioTagMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
@@ -3485,7 +3485,7 @@ class cPtr_routinePrototypeDeclarationForGeneration : public cPtr_semanticDeclar
 //--- Extension func headerKind
   public: virtual class GGS_headerKind getter_headerKind (Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension method appendDeclaration1
+//--- Extension proc appendDeclaration1
   public: virtual void method_appendDeclaration_31_ (class GGS_stringset & arg_ioInclusionSet,
            class GGS_string & arg_outHeader,
            Compiler * COMMA_LOCATION_ARGS) override ;

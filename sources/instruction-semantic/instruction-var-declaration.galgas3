@@ -131,7 +131,7 @@ syntax extension galgas4InstructionsSyntax {
 //! CONTEXT
 //--------------------------------------------------------------------------------------------------
 
-override method @localVariableDeclarationWithAssignmentAST enterInstructionInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
+override proc @localVariableDeclarationWithAssignmentAST enterInstructionInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
   [self.mSourceExpression enterExpressionInSemanticContext !?ioTypeMap]
 }
 
@@ -139,7 +139,7 @@ override method @localVariableDeclarationWithAssignmentAST enterInstructionInSem
 //! SEMANTICS
 //--------------------------------------------------------------------------------------------------
 
-override method @localVariableDeclarationWithAssignmentAST analyzeSemanticInstruction (
+override proc @localVariableDeclarationWithAssignmentAST analyzeSemanticInstruction (
                         ?let @lstring inUsefulnessCallerEntityName,
                         ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
                         ?let @analysisContext inAnalysisContext,
@@ -178,7 +178,7 @@ override method @localVariableDeclarationWithAssignmentAST analyzeSemanticInstru
 //   SEMANTIC CONTEXT
 //--------------------------------------------------------------------------------------------------
 
-override method @localVariableDeclarationNoAssignmentAST enterInstructionInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
+override proc @localVariableDeclarationNoAssignmentAST enterInstructionInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
   [!?ioTypeMap makeEntry !self.mTypeName ?*]
 }
 
@@ -186,7 +186,7 @@ override method @localVariableDeclarationNoAssignmentAST enterInstructionInSeman
 //   SEMANTIC ANALYSIS
 //--------------------------------------------------------------------------------------------------
 
-override method @localVariableDeclarationNoAssignmentAST analyzeSemanticInstruction (
+override proc @localVariableDeclarationNoAssignmentAST analyzeSemanticInstruction (
                         ?let @lstring unused inUsefulnessCallerEntityName,
                         ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph,
                         ?let @analysisContext unused inAnalysisContext,
@@ -219,7 +219,7 @@ final class @localVariableDeclarationForGeneration : @semanticInstructionForGene
 
 //································································································
 
-override method @localVariableDeclarationForGeneration generateInstruction (?!@stringset ioInclusionSet,
+override proc @localVariableDeclarationForGeneration generateInstruction (?!@stringset ioInclusionSet,
   ?!@uint unused ioTemporaryVariableIndex,
   ?!@stringset unused ioUnusedVariableCppNameSet,
   ?let @bool unused inGenerateSyntaxDirectedTranslationString,

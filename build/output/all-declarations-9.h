@@ -82,7 +82,7 @@ class cPtr_collectionValueAST : public cPtr_semanticExpressionAST {
                                                     Compiler * inCompiler) ;
 
 
-//--- Extension method analyzeSemanticExpression
+//--- Extension proc analyzeSemanticExpression
   public: virtual void method_analyzeSemanticExpression (const class GGS_lstring arg_inUsefulnessCallerEntityName,
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_unifiedTypeMapEntry arg_inType,
@@ -92,7 +92,7 @@ class cPtr_collectionValueAST : public cPtr_semanticExpressionAST {
            class GGS_semanticExpressionForGeneration & arg_outExpression,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method enterExpressionInSemanticContext
+//--- Extension proc enterExpressionInSemanticContext
   public: virtual void method_enterExpressionInSemanticContext (class GGS_unifiedTypeMap & arg_ioTypeMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -597,7 +597,7 @@ class cPtr_expressionCollectionForGeneration : public cPtr_semanticExpressionFor
                                                                    Compiler * inCompiler) ;
 
 
-//--- Extension method generateExpression
+//--- Extension proc generateExpression
   public: virtual void method_generateExpression (class GGS_string & arg_ioGeneratedCode,
            class GGS_stringset & arg_ioInclusionSet,
            class GGS_uint & arg_ioTemporaryVariableIndex,
@@ -777,7 +777,7 @@ class cPtr_varInExpressionAST : public cPtr_semanticExpressionAST {
                                             Compiler * inCompiler) ;
 
 
-//--- Extension method analyzeSemanticExpression
+//--- Extension proc analyzeSemanticExpression
   public: virtual void method_analyzeSemanticExpression (const class GGS_lstring arg_inUsefulnessCallerEntityName,
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_unifiedTypeMapEntry arg_inType,
@@ -787,7 +787,7 @@ class cPtr_varInExpressionAST : public cPtr_semanticExpressionAST {
            class GGS_semanticExpressionForGeneration & arg_outExpression,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method enterExpressionInSemanticContext
+//--- Extension proc enterExpressionInSemanticContext
   public: virtual void method_enterExpressionInSemanticContext (class GGS_unifiedTypeMap & arg_ioTypeMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -969,7 +969,7 @@ class cPtr_varInExpressionForGeneration : public cPtr_semanticExpressionForGener
                                                                   Compiler * inCompiler) ;
 
 
-//--- Extension method generateExpression
+//--- Extension proc generateExpression
   public: virtual void method_generateExpression (class GGS_string & arg_ioGeneratedCode,
            class GGS_stringset & arg_ioInclusionSet,
            class GGS_uint & arg_ioTemporaryVariableIndex,
@@ -1107,7 +1107,7 @@ class GGS_string extensionGetter_subscriptSignature (const class GGS_actualOutpu
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension method '@actualOutputArgumentList enterInSemanticContext'
+//Extension proc '@actualOutputArgumentList enterInSemanticContext'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -1190,7 +1190,7 @@ class cPtr_optionExpressionAST : public cPtr_semanticExpressionAST {
                                                      Compiler * inCompiler) ;
 
 
-//--- Extension method analyzeSemanticExpression
+//--- Extension proc analyzeSemanticExpression
   public: virtual void method_analyzeSemanticExpression (const class GGS_lstring arg_inUsefulnessCallerEntityName,
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_unifiedTypeMapEntry arg_inType,
@@ -1200,7 +1200,7 @@ class cPtr_optionExpressionAST : public cPtr_semanticExpressionAST {
            class GGS_semanticExpressionForGeneration & arg_outExpression,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method enterExpressionInSemanticContext
+//--- Extension proc enterExpressionInSemanticContext
   public: virtual void method_enterExpressionInSemanticContext (class GGS_unifiedTypeMap & arg_ioTypeMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -1390,7 +1390,7 @@ class cPtr_optionValueExpressionForGeneration : public cPtr_semanticExpressionFo
                                                                             Compiler * inCompiler) ;
 
 
-//--- Extension method generateExpression
+//--- Extension proc generateExpression
   public: virtual void method_generateExpression (class GGS_string & arg_ioGeneratedCode,
            class GGS_stringset & arg_ioInclusionSet,
            class GGS_uint & arg_ioTemporaryVariableIndex,
@@ -1586,7 +1586,7 @@ class cPtr_optionCharExpressionForGeneration : public cPtr_semanticExpressionFor
                                                                            Compiler * inCompiler) ;
 
 
-//--- Extension method generateExpression
+//--- Extension proc generateExpression
   public: virtual void method_generateExpression (class GGS_string & arg_ioGeneratedCode,
            class GGS_stringset & arg_ioInclusionSet,
            class GGS_uint & arg_ioTemporaryVariableIndex,
@@ -1782,7 +1782,7 @@ class cPtr_optionStringExpressionForGeneration : public cPtr_semanticExpressionF
                                                                              Compiler * inCompiler) ;
 
 
-//--- Extension method generateExpression
+//--- Extension proc generateExpression
   public: virtual void method_generateExpression (class GGS_string & arg_ioGeneratedCode,
            class GGS_stringset & arg_ioInclusionSet,
            class GGS_uint & arg_ioTemporaryVariableIndex,
@@ -1978,7 +1978,7 @@ class cPtr_optionCommentExpressionForGeneration : public cPtr_semanticExpression
                                                                               Compiler * inCompiler) ;
 
 
-//--- Extension method generateExpression
+//--- Extension proc generateExpression
   public: virtual void method_generateExpression (class GGS_string & arg_ioGeneratedCode,
            class GGS_stringset & arg_ioInclusionSet,
            class GGS_uint & arg_ioTemporaryVariableIndex,
@@ -2162,7 +2162,7 @@ class cPtr_literalCharExpressionAST : public cPtr_semanticExpressionAST {
                                                   Compiler * inCompiler) ;
 
 
-//--- Extension method analyzeSemanticExpression
+//--- Extension proc analyzeSemanticExpression
   public: virtual void method_analyzeSemanticExpression (const class GGS_lstring arg_inUsefulnessCallerEntityName,
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_unifiedTypeMapEntry arg_inType,
@@ -2172,7 +2172,7 @@ class cPtr_literalCharExpressionAST : public cPtr_semanticExpressionAST {
            class GGS_semanticExpressionForGeneration & arg_outExpression,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method enterExpressionInSemanticContext
+//--- Extension proc enterExpressionInSemanticContext
   public: virtual void method_enterExpressionInSemanticContext (class GGS_unifiedTypeMap & arg_ioTypeMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -2350,7 +2350,7 @@ class cPtr_literalCharExpressionForGeneration : public cPtr_semanticExpressionFo
                                                                     Compiler * inCompiler) ;
 
 
-//--- Extension method generateExpression
+//--- Extension proc generateExpression
   public: virtual void method_generateExpression (class GGS_string & arg_ioGeneratedCode,
            class GGS_stringset & arg_ioInclusionSet,
            class GGS_uint & arg_ioTemporaryVariableIndex,
@@ -2530,7 +2530,7 @@ class cPtr_literalBigIntExpressionAST : public cPtr_semanticExpressionAST {
                                                     Compiler * inCompiler) ;
 
 
-//--- Extension method analyzeSemanticExpression
+//--- Extension proc analyzeSemanticExpression
   public: virtual void method_analyzeSemanticExpression (const class GGS_lstring arg_inUsefulnessCallerEntityName,
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_unifiedTypeMapEntry arg_inType,
@@ -2540,7 +2540,7 @@ class cPtr_literalBigIntExpressionAST : public cPtr_semanticExpressionAST {
            class GGS_semanticExpressionForGeneration & arg_outExpression,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method enterExpressionInSemanticContext
+//--- Extension proc enterExpressionInSemanticContext
   public: virtual void method_enterExpressionInSemanticContext (class GGS_unifiedTypeMap & arg_ioTypeMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -2718,7 +2718,7 @@ class cPtr_literalUIntExpressionForGeneration : public cPtr_semanticExpressionFo
                                                                     Compiler * inCompiler) ;
 
 
-//--- Extension method generateExpression
+//--- Extension proc generateExpression
   public: virtual void method_generateExpression (class GGS_string & arg_ioGeneratedCode,
            class GGS_stringset & arg_ioInclusionSet,
            class GGS_uint & arg_ioTemporaryVariableIndex,
@@ -2902,7 +2902,7 @@ class cPtr_literalUInt_36__34_ExpressionForGeneration : public cPtr_semanticExpr
                                                                             Compiler * inCompiler) ;
 
 
-//--- Extension method generateExpression
+//--- Extension proc generateExpression
   public: virtual void method_generateExpression (class GGS_string & arg_ioGeneratedCode,
            class GGS_stringset & arg_ioInclusionSet,
            class GGS_uint & arg_ioTemporaryVariableIndex,
@@ -3086,7 +3086,7 @@ class cPtr_literalSIntExpressionForGeneration : public cPtr_semanticExpressionFo
                                                                     Compiler * inCompiler) ;
 
 
-//--- Extension method generateExpression
+//--- Extension proc generateExpression
   public: virtual void method_generateExpression (class GGS_string & arg_ioGeneratedCode,
            class GGS_stringset & arg_ioInclusionSet,
            class GGS_uint & arg_ioTemporaryVariableIndex,
@@ -3270,7 +3270,7 @@ class cPtr_literalSInt_36__34_ExpressionForGeneration : public cPtr_semanticExpr
                                                                             Compiler * inCompiler) ;
 
 
-//--- Extension method generateExpression
+//--- Extension proc generateExpression
   public: virtual void method_generateExpression (class GGS_string & arg_ioGeneratedCode,
            class GGS_stringset & arg_ioInclusionSet,
            class GGS_uint & arg_ioTemporaryVariableIndex,
@@ -3454,7 +3454,7 @@ class cPtr_literalBigIntExpressionForGeneration : public cPtr_semanticExpression
                                                                       Compiler * inCompiler) ;
 
 
-//--- Extension method generateExpression
+//--- Extension proc generateExpression
   public: virtual void method_generateExpression (class GGS_string & arg_ioGeneratedCode,
            class GGS_stringset & arg_ioInclusionSet,
            class GGS_uint & arg_ioTemporaryVariableIndex,
@@ -3638,7 +3638,7 @@ class cPtr_literalStringExpressionAST : public cPtr_semanticExpressionAST {
                                                         Compiler * inCompiler) ;
 
 
-//--- Extension method analyzeSemanticExpression
+//--- Extension proc analyzeSemanticExpression
   public: virtual void method_analyzeSemanticExpression (const class GGS_lstring arg_inUsefulnessCallerEntityName,
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_unifiedTypeMapEntry arg_inType,
@@ -3648,7 +3648,7 @@ class cPtr_literalStringExpressionAST : public cPtr_semanticExpressionAST {
            class GGS_semanticExpressionForGeneration & arg_outExpression,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method enterExpressionInSemanticContext
+//--- Extension proc enterExpressionInSemanticContext
   public: virtual void method_enterExpressionInSemanticContext (class GGS_unifiedTypeMap & arg_ioTypeMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -3828,7 +3828,7 @@ class cPtr_literalStringExpressionForGeneration : public cPtr_semanticExpression
                                                                       Compiler * inCompiler) ;
 
 
-//--- Extension method generateExpression
+//--- Extension proc generateExpression
   public: virtual void method_generateExpression (class GGS_string & arg_ioGeneratedCode,
            class GGS_stringset & arg_ioInclusionSet,
            class GGS_uint & arg_ioTemporaryVariableIndex,
@@ -4012,7 +4012,7 @@ class cPtr_lexiqueIntrospectionExpressionAST : public cPtr_semanticExpressionAST
                                                                Compiler * inCompiler) ;
 
 
-//--- Extension method analyzeSemanticExpression
+//--- Extension proc analyzeSemanticExpression
   public: virtual void method_analyzeSemanticExpression (const class GGS_lstring arg_inUsefulnessCallerEntityName,
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_unifiedTypeMapEntry arg_inType,
@@ -4022,7 +4022,7 @@ class cPtr_lexiqueIntrospectionExpressionAST : public cPtr_semanticExpressionAST
            class GGS_semanticExpressionForGeneration & arg_outExpression,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method enterExpressionInSemanticContext
+//--- Extension proc enterExpressionInSemanticContext
   public: virtual void method_enterExpressionInSemanticContext (class GGS_unifiedTypeMap & arg_ioTypeMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -4206,7 +4206,7 @@ class cPtr_lexiqueIntrospectionForGeneration : public cPtr_semanticExpressionFor
                                                                        Compiler * inCompiler) ;
 
 
-//--- Extension method generateExpression
+//--- Extension proc generateExpression
   public: virtual void method_generateExpression (class GGS_string & arg_ioGeneratedCode,
            class GGS_stringset & arg_ioInclusionSet,
            class GGS_uint & arg_ioTemporaryVariableIndex,
@@ -4392,7 +4392,7 @@ class cPtr_unaryMinusExpressionAST : public cPtr_semanticExpressionAST {
                                                      Compiler * inCompiler) ;
 
 
-//--- Extension method analyzeSemanticExpression
+//--- Extension proc analyzeSemanticExpression
   public: virtual void method_analyzeSemanticExpression (const class GGS_lstring arg_inUsefulnessCallerEntityName,
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_unifiedTypeMapEntry arg_inType,
@@ -4402,7 +4402,7 @@ class cPtr_unaryMinusExpressionAST : public cPtr_semanticExpressionAST {
            class GGS_semanticExpressionForGeneration & arg_outExpression,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method enterExpressionInSemanticContext
+//--- Extension proc enterExpressionInSemanticContext
   public: virtual void method_enterExpressionInSemanticContext (class GGS_unifiedTypeMap & arg_ioTypeMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -4582,7 +4582,7 @@ class cPtr_unaryMinusExpressionForGeneration : public cPtr_semanticExpressionFor
                                                                    Compiler * inCompiler) ;
 
 
-//--- Extension method generateExpression
+//--- Extension proc generateExpression
   public: virtual void method_generateExpression (class GGS_string & arg_ioGeneratedCode,
            class GGS_stringset & arg_ioInclusionSet,
            class GGS_uint & arg_ioTemporaryVariableIndex,
@@ -4766,7 +4766,7 @@ class cPtr_notExpressionAST : public cPtr_semanticExpressionAST {
                                               Compiler * inCompiler) ;
 
 
-//--- Extension method analyzeSemanticExpression
+//--- Extension proc analyzeSemanticExpression
   public: virtual void method_analyzeSemanticExpression (const class GGS_lstring arg_inUsefulnessCallerEntityName,
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_unifiedTypeMapEntry arg_inType,
@@ -4776,7 +4776,7 @@ class cPtr_notExpressionAST : public cPtr_semanticExpressionAST {
            class GGS_semanticExpressionForGeneration & arg_outExpression,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method enterExpressionInSemanticContext
+//--- Extension proc enterExpressionInSemanticContext
   public: virtual void method_enterExpressionInSemanticContext (class GGS_unifiedTypeMap & arg_ioTypeMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -4956,7 +4956,7 @@ class cPtr_notExpressionForGeneration : public cPtr_semanticExpressionForGenerat
                                                             Compiler * inCompiler) ;
 
 
-//--- Extension method generateExpression
+//--- Extension proc generateExpression
   public: virtual void method_generateExpression (class GGS_string & arg_ioGeneratedCode,
            class GGS_stringset & arg_ioInclusionSet,
            class GGS_uint & arg_ioTemporaryVariableIndex,
@@ -5140,7 +5140,7 @@ class cPtr_unaryWrappingMinusExpressionAST : public cPtr_semanticExpressionAST {
                                                              Compiler * inCompiler) ;
 
 
-//--- Extension method analyzeSemanticExpression
+//--- Extension proc analyzeSemanticExpression
   public: virtual void method_analyzeSemanticExpression (const class GGS_lstring arg_inUsefulnessCallerEntityName,
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_unifiedTypeMapEntry arg_inType,
@@ -5150,7 +5150,7 @@ class cPtr_unaryWrappingMinusExpressionAST : public cPtr_semanticExpressionAST {
            class GGS_semanticExpressionForGeneration & arg_outExpression,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method enterExpressionInSemanticContext
+//--- Extension proc enterExpressionInSemanticContext
   public: virtual void method_enterExpressionInSemanticContext (class GGS_unifiedTypeMap & arg_ioTypeMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -5330,7 +5330,7 @@ class cPtr_unaryWrappingMinusExpressionForGeneration : public cPtr_semanticExpre
                                                                            Compiler * inCompiler) ;
 
 
-//--- Extension method generateExpression
+//--- Extension proc generateExpression
   public: virtual void method_generateExpression (class GGS_string & arg_ioGeneratedCode,
            class GGS_stringset & arg_ioInclusionSet,
            class GGS_uint & arg_ioTemporaryVariableIndex,
@@ -5510,7 +5510,7 @@ class cPtr_filewrapperObjectInstanciationInExpressionAST : public cPtr_semanticE
                                                                        Compiler * inCompiler) ;
 
 
-//--- Extension method analyzeSemanticExpression
+//--- Extension proc analyzeSemanticExpression
   public: virtual void method_analyzeSemanticExpression (const class GGS_lstring arg_inUsefulnessCallerEntityName,
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_unifiedTypeMapEntry arg_inType,
@@ -5520,7 +5520,7 @@ class cPtr_filewrapperObjectInstanciationInExpressionAST : public cPtr_semanticE
            class GGS_semanticExpressionForGeneration & arg_outExpression,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method enterExpressionInSemanticContext
+//--- Extension proc enterExpressionInSemanticContext
   public: virtual void method_enterExpressionInSemanticContext (class GGS_unifiedTypeMap & arg_ioTypeMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -5698,7 +5698,7 @@ class cPtr_filewrapperInExpressionAST : public cPtr_semanticExpressionAST {
                                                         Compiler * inCompiler) ;
 
 
-//--- Extension method analyzeSemanticExpression
+//--- Extension proc analyzeSemanticExpression
   public: virtual void method_analyzeSemanticExpression (const class GGS_lstring arg_inUsefulnessCallerEntityName,
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_unifiedTypeMapEntry arg_inType,
@@ -5708,7 +5708,7 @@ class cPtr_filewrapperInExpressionAST : public cPtr_semanticExpressionAST {
            class GGS_semanticExpressionForGeneration & arg_outExpression,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method enterExpressionInSemanticContext
+//--- Extension proc enterExpressionInSemanticContext
   public: virtual void method_enterExpressionInSemanticContext (class GGS_unifiedTypeMap & arg_ioTypeMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -5892,7 +5892,7 @@ class cPtr_filewrapperTemplateInExpressionAST : public cPtr_semanticExpressionAS
                                                                     Compiler * inCompiler) ;
 
 
-//--- Extension method analyzeSemanticExpression
+//--- Extension proc analyzeSemanticExpression
   public: virtual void method_analyzeSemanticExpression (const class GGS_lstring arg_inUsefulnessCallerEntityName,
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_unifiedTypeMapEntry arg_inType,
@@ -5902,7 +5902,7 @@ class cPtr_filewrapperTemplateInExpressionAST : public cPtr_semanticExpressionAS
            class GGS_semanticExpressionForGeneration & arg_outExpression,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method enterExpressionInSemanticContext
+//--- Extension proc enterExpressionInSemanticContext
   public: virtual void method_enterExpressionInSemanticContext (class GGS_unifiedTypeMap & arg_ioTypeMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -6088,7 +6088,7 @@ class cPtr_filewrapperInExpressionForGeneration : public cPtr_semanticExpression
                                                                           Compiler * inCompiler) ;
 
 
-//--- Extension method generateExpression
+//--- Extension proc generateExpression
   public: virtual void method_generateExpression (class GGS_string & arg_ioGeneratedCode,
            class GGS_stringset & arg_ioInclusionSet,
            class GGS_uint & arg_ioTemporaryVariableIndex,
@@ -6282,7 +6282,7 @@ class cPtr_filewrapperTemplateInExpressionForGeneration : public cPtr_semanticEx
                                                                                       Compiler * inCompiler) ;
 
 
-//--- Extension method generateExpression
+//--- Extension proc generateExpression
   public: virtual void method_generateExpression (class GGS_string & arg_ioGeneratedCode,
            class GGS_stringset & arg_ioInclusionSet,
            class GGS_uint & arg_ioTemporaryVariableIndex,
@@ -6478,7 +6478,7 @@ class cPtr_filewrapperStaticPathInExpressionForGeneration : public cPtr_semantic
                                                                                         Compiler * inCompiler) ;
 
 
-//--- Extension method generateExpression
+//--- Extension proc generateExpression
   public: virtual void method_generateExpression (class GGS_string & arg_ioGeneratedCode,
            class GGS_stringset & arg_ioInclusionSet,
            class GGS_uint & arg_ioTemporaryVariableIndex,
@@ -6670,7 +6670,7 @@ class cPtr_initializerCallAST : public cPtr_semanticExpressionAST {
                                                     Compiler * inCompiler) ;
 
 
-//--- Extension method analyzeSemanticExpression
+//--- Extension proc analyzeSemanticExpression
   public: virtual void method_analyzeSemanticExpression (const class GGS_lstring arg_inUsefulnessCallerEntityName,
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_unifiedTypeMapEntry arg_inType,
@@ -6680,7 +6680,7 @@ class cPtr_initializerCallAST : public cPtr_semanticExpressionAST {
            class GGS_semanticExpressionForGeneration & arg_outExpression,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method enterExpressionInSemanticContext
+//--- Extension proc enterExpressionInSemanticContext
   public: virtual void method_enterExpressionInSemanticContext (class GGS_unifiedTypeMap & arg_ioTypeMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -6866,7 +6866,7 @@ class cPtr_initializerCallForGeneration : public cPtr_semanticExpressionForGener
                                                                   Compiler * inCompiler) ;
 
 
-//--- Extension method generateExpression
+//--- Extension proc generateExpression
   public: virtual void method_generateExpression (class GGS_string & arg_ioGeneratedCode,
            class GGS_stringset & arg_ioInclusionSet,
            class GGS_uint & arg_ioTemporaryVariableIndex,
@@ -7048,7 +7048,7 @@ class cPtr_selfInExpressionAST : public cPtr_semanticExpressionAST {
                                              Compiler * inCompiler) ;
 
 
-//--- Extension method analyzeSemanticExpression
+//--- Extension proc analyzeSemanticExpression
   public: virtual void method_analyzeSemanticExpression (const class GGS_lstring arg_inUsefulnessCallerEntityName,
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_unifiedTypeMapEntry arg_inType,
@@ -7058,7 +7058,7 @@ class cPtr_selfInExpressionAST : public cPtr_semanticExpressionAST {
            class GGS_semanticExpressionForGeneration & arg_outExpression,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method enterExpressionInSemanticContext
+//--- Extension proc enterExpressionInSemanticContext
   public: virtual void method_enterExpressionInSemanticContext (class GGS_unifiedTypeMap & arg_ioTypeMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -7236,7 +7236,7 @@ class cPtr_selfInExpressionForGeneration : public cPtr_semanticExpressionForGene
                                                                Compiler * inCompiler) ;
 
 
-//--- Extension method generateExpression
+//--- Extension proc generateExpression
   public: virtual void method_generateExpression (class GGS_string & arg_ioGeneratedCode,
            class GGS_stringset & arg_ioInclusionSet,
            class GGS_uint & arg_ioTemporaryVariableIndex,
@@ -7424,7 +7424,7 @@ class cPtr_multiplicationExpressionAST : public cPtr_semanticExpressionAST {
                                                              Compiler * inCompiler) ;
 
 
-//--- Extension method analyzeSemanticExpression
+//--- Extension proc analyzeSemanticExpression
   public: virtual void method_analyzeSemanticExpression (const class GGS_lstring arg_inUsefulnessCallerEntityName,
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_unifiedTypeMapEntry arg_inType,
@@ -7434,7 +7434,7 @@ class cPtr_multiplicationExpressionAST : public cPtr_semanticExpressionAST {
            class GGS_semanticExpressionForGeneration & arg_outExpression,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method enterExpressionInSemanticContext
+//--- Extension proc enterExpressionInSemanticContext
   public: virtual void method_enterExpressionInSemanticContext (class GGS_unifiedTypeMap & arg_ioTypeMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -7620,7 +7620,7 @@ class cPtr_multiplicationExpressionNoOverflowAST : public cPtr_semanticExpressio
                                                                        Compiler * inCompiler) ;
 
 
-//--- Extension method analyzeSemanticExpression
+//--- Extension proc analyzeSemanticExpression
   public: virtual void method_analyzeSemanticExpression (const class GGS_lstring arg_inUsefulnessCallerEntityName,
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_unifiedTypeMapEntry arg_inType,
@@ -7630,7 +7630,7 @@ class cPtr_multiplicationExpressionNoOverflowAST : public cPtr_semanticExpressio
            class GGS_semanticExpressionForGeneration & arg_outExpression,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method enterExpressionInSemanticContext
+//--- Extension proc enterExpressionInSemanticContext
   public: virtual void method_enterExpressionInSemanticContext (class GGS_unifiedTypeMap & arg_ioTypeMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -7816,7 +7816,7 @@ class cPtr_divisionExpressionAST : public cPtr_semanticExpressionAST {
                                                        Compiler * inCompiler) ;
 
 
-//--- Extension method analyzeSemanticExpression
+//--- Extension proc analyzeSemanticExpression
   public: virtual void method_analyzeSemanticExpression (const class GGS_lstring arg_inUsefulnessCallerEntityName,
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_unifiedTypeMapEntry arg_inType,
@@ -7826,7 +7826,7 @@ class cPtr_divisionExpressionAST : public cPtr_semanticExpressionAST {
            class GGS_semanticExpressionForGeneration & arg_outExpression,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method enterExpressionInSemanticContext
+//--- Extension proc enterExpressionInSemanticContext
   public: virtual void method_enterExpressionInSemanticContext (class GGS_unifiedTypeMap & arg_ioTypeMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -8012,7 +8012,7 @@ class cPtr_divisionExpressionNoOverflowAST : public cPtr_semanticExpressionAST {
                                                                  Compiler * inCompiler) ;
 
 
-//--- Extension method analyzeSemanticExpression
+//--- Extension proc analyzeSemanticExpression
   public: virtual void method_analyzeSemanticExpression (const class GGS_lstring arg_inUsefulnessCallerEntityName,
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_unifiedTypeMapEntry arg_inType,
@@ -8022,7 +8022,7 @@ class cPtr_divisionExpressionNoOverflowAST : public cPtr_semanticExpressionAST {
            class GGS_semanticExpressionForGeneration & arg_outExpression,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method enterExpressionInSemanticContext
+//--- Extension proc enterExpressionInSemanticContext
   public: virtual void method_enterExpressionInSemanticContext (class GGS_unifiedTypeMap & arg_ioTypeMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -8208,7 +8208,7 @@ class cPtr_moduloExpressionAST : public cPtr_semanticExpressionAST {
                                                      Compiler * inCompiler) ;
 
 
-//--- Extension method analyzeSemanticExpression
+//--- Extension proc analyzeSemanticExpression
   public: virtual void method_analyzeSemanticExpression (const class GGS_lstring arg_inUsefulnessCallerEntityName,
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_unifiedTypeMapEntry arg_inType,
@@ -8218,7 +8218,7 @@ class cPtr_moduloExpressionAST : public cPtr_semanticExpressionAST {
            class GGS_semanticExpressionForGeneration & arg_outExpression,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method enterExpressionInSemanticContext
+//--- Extension proc enterExpressionInSemanticContext
   public: virtual void method_enterExpressionInSemanticContext (class GGS_unifiedTypeMap & arg_ioTypeMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -8396,7 +8396,7 @@ class cPtr_trueExpressionAST : public cPtr_semanticExpressionAST {
                                            Compiler * inCompiler) ;
 
 
-//--- Extension method analyzeSemanticExpression
+//--- Extension proc analyzeSemanticExpression
   public: virtual void method_analyzeSemanticExpression (const class GGS_lstring arg_inUsefulnessCallerEntityName,
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_unifiedTypeMapEntry arg_inType,
@@ -8406,7 +8406,7 @@ class cPtr_trueExpressionAST : public cPtr_semanticExpressionAST {
            class GGS_semanticExpressionForGeneration & arg_outExpression,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method enterExpressionInSemanticContext
+//--- Extension proc enterExpressionInSemanticContext
   public: virtual void method_enterExpressionInSemanticContext (class GGS_unifiedTypeMap & arg_ioTypeMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -8580,7 +8580,7 @@ class cPtr_falseExpressionAST : public cPtr_semanticExpressionAST {
                                             Compiler * inCompiler) ;
 
 
-//--- Extension method analyzeSemanticExpression
+//--- Extension proc analyzeSemanticExpression
   public: virtual void method_analyzeSemanticExpression (const class GGS_lstring arg_inUsefulnessCallerEntityName,
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_unifiedTypeMapEntry arg_inType,
@@ -8590,7 +8590,7 @@ class cPtr_falseExpressionAST : public cPtr_semanticExpressionAST {
            class GGS_semanticExpressionForGeneration & arg_outExpression,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method enterExpressionInSemanticContext
+//--- Extension proc enterExpressionInSemanticContext
   public: virtual void method_enterExpressionInSemanticContext (class GGS_unifiedTypeMap & arg_ioTypeMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -8767,7 +8767,7 @@ class cPtr_trueExpressionForGeneration : public cPtr_semanticExpressionForGenera
 //--- Extension func isTrueExpression
   public: virtual class GGS_bool getter_isTrueExpression (Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension method generateExpression
+//--- Extension proc generateExpression
   public: virtual void method_generateExpression (class GGS_string & arg_ioGeneratedCode,
            class GGS_stringset & arg_ioInclusionSet,
            class GGS_uint & arg_ioTemporaryVariableIndex,
@@ -8945,7 +8945,7 @@ class cPtr_falseExpressionForGeneration : public cPtr_semanticExpressionForGener
                                                           Compiler * inCompiler) ;
 
 
-//--- Extension method generateExpression
+//--- Extension proc generateExpression
   public: virtual void method_generateExpression (class GGS_string & arg_ioGeneratedCode,
            class GGS_stringset & arg_ioInclusionSet,
            class GGS_uint & arg_ioTemporaryVariableIndex,
@@ -9127,7 +9127,7 @@ class cPtr_unaryPlusExpressionAST : public cPtr_semanticExpressionAST {
                                                     Compiler * inCompiler) ;
 
 
-//--- Extension method analyzeSemanticExpression
+//--- Extension proc analyzeSemanticExpression
   public: virtual void method_analyzeSemanticExpression (const class GGS_lstring arg_inUsefulnessCallerEntityName,
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_unifiedTypeMapEntry arg_inType,
@@ -9137,7 +9137,7 @@ class cPtr_unaryPlusExpressionAST : public cPtr_semanticExpressionAST {
            class GGS_semanticExpressionForGeneration & arg_outExpression,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method enterExpressionInSemanticContext
+//--- Extension proc enterExpressionInSemanticContext
   public: virtual void method_enterExpressionInSemanticContext (class GGS_unifiedTypeMap & arg_ioTypeMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -9325,7 +9325,7 @@ class cPtr_testDynamicClassInExpressionAST : public cPtr_semanticExpressionAST {
                                                                      Compiler * inCompiler) ;
 
 
-//--- Extension method analyzeSemanticExpression
+//--- Extension proc analyzeSemanticExpression
   public: virtual void method_analyzeSemanticExpression (const class GGS_lstring arg_inUsefulnessCallerEntityName,
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_unifiedTypeMapEntry arg_inType,
@@ -9335,7 +9335,7 @@ class cPtr_testDynamicClassInExpressionAST : public cPtr_semanticExpressionAST {
            class GGS_semanticExpressionForGeneration & arg_outExpression,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method enterExpressionInSemanticContext
+//--- Extension proc enterExpressionInSemanticContext
   public: virtual void method_enterExpressionInSemanticContext (class GGS_unifiedTypeMap & arg_ioTypeMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -9523,7 +9523,7 @@ class cPtr_castInExpressionAST : public cPtr_semanticExpressionAST {
                                                      Compiler * inCompiler) ;
 
 
-//--- Extension method analyzeSemanticExpression
+//--- Extension proc analyzeSemanticExpression
   public: virtual void method_analyzeSemanticExpression (const class GGS_lstring arg_inUsefulnessCallerEntityName,
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_unifiedTypeMapEntry arg_inType,
@@ -9533,7 +9533,7 @@ class cPtr_castInExpressionAST : public cPtr_semanticExpressionAST {
            class GGS_semanticExpressionForGeneration & arg_outExpression,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method enterExpressionInSemanticContext
+//--- Extension proc enterExpressionInSemanticContext
   public: virtual void method_enterExpressionInSemanticContext (class GGS_unifiedTypeMap & arg_ioTypeMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -9723,7 +9723,7 @@ class cPtr_testDynamicClassInExpressionForGeneration : public cPtr_semanticExpre
                                                                                    Compiler * inCompiler) ;
 
 
-//--- Extension method generateExpression
+//--- Extension proc generateExpression
   public: virtual void method_generateExpression (class GGS_string & arg_ioGeneratedCode,
            class GGS_stringset & arg_ioInclusionSet,
            class GGS_uint & arg_ioTemporaryVariableIndex,
@@ -9915,7 +9915,7 @@ class cPtr_extractObjectInExpressionForGeneration : public cPtr_semanticExpressi
                                                                             Compiler * inCompiler) ;
 
 
-//--- Extension method generateExpression
+//--- Extension proc generateExpression
   public: virtual void method_generateExpression (class GGS_string & arg_ioGeneratedCode,
            class GGS_stringset & arg_ioInclusionSet,
            class GGS_uint & arg_ioTemporaryVariableIndex,
@@ -10101,7 +10101,7 @@ class cPtr_bangExpressionAST : public cPtr_semanticExpressionAST {
                                                Compiler * inCompiler) ;
 
 
-//--- Extension method analyzeSemanticExpression
+//--- Extension proc analyzeSemanticExpression
   public: virtual void method_analyzeSemanticExpression (const class GGS_lstring arg_inUsefulnessCallerEntityName,
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_unifiedTypeMapEntry arg_inType,
@@ -10111,7 +10111,7 @@ class cPtr_bangExpressionAST : public cPtr_semanticExpressionAST {
            class GGS_semanticExpressionForGeneration & arg_outExpression,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method enterExpressionInSemanticContext
+//--- Extension proc enterExpressionInSemanticContext
   public: virtual void method_enterExpressionInSemanticContext (class GGS_unifiedTypeMap & arg_ioTypeMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -10295,7 +10295,7 @@ class cPtr_bangExpressionForGeneration : public cPtr_semanticExpressionForGenera
                                                                  Compiler * inCompiler) ;
 
 
-//--- Extension method generateExpression
+//--- Extension proc generateExpression
   public: virtual void method_generateExpression (class GGS_string & arg_ioGeneratedCode,
            class GGS_stringset & arg_ioInclusionSet,
            class GGS_uint & arg_ioTemporaryVariableIndex,
@@ -10485,7 +10485,7 @@ class cPtr_rightShiftExpressionAST : public cPtr_semanticExpressionAST {
                                                          Compiler * inCompiler) ;
 
 
-//--- Extension method analyzeSemanticExpression
+//--- Extension proc analyzeSemanticExpression
   public: virtual void method_analyzeSemanticExpression (const class GGS_lstring arg_inUsefulnessCallerEntityName,
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_unifiedTypeMapEntry arg_inType,
@@ -10495,7 +10495,7 @@ class cPtr_rightShiftExpressionAST : public cPtr_semanticExpressionAST {
            class GGS_semanticExpressionForGeneration & arg_outExpression,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method enterExpressionInSemanticContext
+//--- Extension proc enterExpressionInSemanticContext
   public: virtual void method_enterExpressionInSemanticContext (class GGS_unifiedTypeMap & arg_ioTypeMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -10681,7 +10681,7 @@ class cPtr_leftShiftExpressionAST : public cPtr_semanticExpressionAST {
                                                         Compiler * inCompiler) ;
 
 
-//--- Extension method analyzeSemanticExpression
+//--- Extension proc analyzeSemanticExpression
   public: virtual void method_analyzeSemanticExpression (const class GGS_lstring arg_inUsefulnessCallerEntityName,
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_unifiedTypeMapEntry arg_inType,
@@ -10691,7 +10691,7 @@ class cPtr_leftShiftExpressionAST : public cPtr_semanticExpressionAST {
            class GGS_semanticExpressionForGeneration & arg_outExpression,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method enterExpressionInSemanticContext
+//--- Extension proc enterExpressionInSemanticContext
   public: virtual void method_enterExpressionInSemanticContext (class GGS_unifiedTypeMap & arg_ioTypeMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -10877,7 +10877,7 @@ class cPtr_addExpressionAST : public cPtr_semanticExpressionAST {
                                                   Compiler * inCompiler) ;
 
 
-//--- Extension method analyzeSemanticExpression
+//--- Extension proc analyzeSemanticExpression
   public: virtual void method_analyzeSemanticExpression (const class GGS_lstring arg_inUsefulnessCallerEntityName,
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_unifiedTypeMapEntry arg_inType,
@@ -10887,7 +10887,7 @@ class cPtr_addExpressionAST : public cPtr_semanticExpressionAST {
            class GGS_semanticExpressionForGeneration & arg_outExpression,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method enterExpressionInSemanticContext
+//--- Extension proc enterExpressionInSemanticContext
   public: virtual void method_enterExpressionInSemanticContext (class GGS_unifiedTypeMap & arg_ioTypeMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -11073,7 +11073,7 @@ class cPtr_addExpressionNoOverflowAST : public cPtr_semanticExpressionAST {
                                                             Compiler * inCompiler) ;
 
 
-//--- Extension method analyzeSemanticExpression
+//--- Extension proc analyzeSemanticExpression
   public: virtual void method_analyzeSemanticExpression (const class GGS_lstring arg_inUsefulnessCallerEntityName,
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_unifiedTypeMapEntry arg_inType,
@@ -11083,7 +11083,7 @@ class cPtr_addExpressionNoOverflowAST : public cPtr_semanticExpressionAST {
            class GGS_semanticExpressionForGeneration & arg_outExpression,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method enterExpressionInSemanticContext
+//--- Extension proc enterExpressionInSemanticContext
   public: virtual void method_enterExpressionInSemanticContext (class GGS_unifiedTypeMap & arg_ioTypeMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -11269,7 +11269,7 @@ class cPtr_subExpressionAST : public cPtr_semanticExpressionAST {
                                                   Compiler * inCompiler) ;
 
 
-//--- Extension method analyzeSemanticExpression
+//--- Extension proc analyzeSemanticExpression
   public: virtual void method_analyzeSemanticExpression (const class GGS_lstring arg_inUsefulnessCallerEntityName,
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_unifiedTypeMapEntry arg_inType,
@@ -11279,7 +11279,7 @@ class cPtr_subExpressionAST : public cPtr_semanticExpressionAST {
            class GGS_semanticExpressionForGeneration & arg_outExpression,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method enterExpressionInSemanticContext
+//--- Extension proc enterExpressionInSemanticContext
   public: virtual void method_enterExpressionInSemanticContext (class GGS_unifiedTypeMap & arg_ioTypeMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -11465,7 +11465,7 @@ class cPtr_subExpressionNoOverflowAST : public cPtr_semanticExpressionAST {
                                                             Compiler * inCompiler) ;
 
 
-//--- Extension method analyzeSemanticExpression
+//--- Extension proc analyzeSemanticExpression
   public: virtual void method_analyzeSemanticExpression (const class GGS_lstring arg_inUsefulnessCallerEntityName,
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_unifiedTypeMapEntry arg_inType,
@@ -11475,7 +11475,7 @@ class cPtr_subExpressionNoOverflowAST : public cPtr_semanticExpressionAST {
            class GGS_semanticExpressionForGeneration & arg_outExpression,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method enterExpressionInSemanticContext
+//--- Extension proc enterExpressionInSemanticContext
   public: virtual void method_enterExpressionInSemanticContext (class GGS_unifiedTypeMap & arg_ioTypeMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -11802,7 +11802,7 @@ class cPtr_binaryOperatorExpressionForGeneration : public cPtr_semanticExpressio
                                                                                Compiler * inCompiler) ;
 
 
-//--- Extension method generateExpression
+//--- Extension proc generateExpression
   public: virtual void method_generateExpression (class GGS_string & arg_ioGeneratedCode,
            class GGS_stringset & arg_ioInclusionSet,
            class GGS_uint & arg_ioTemporaryVariableIndex,
@@ -11994,7 +11994,7 @@ class cPtr_orExpressionAST : public cPtr_semanticExpressionAST {
                                                  Compiler * inCompiler) ;
 
 
-//--- Extension method analyzeSemanticExpression
+//--- Extension proc analyzeSemanticExpression
   public: virtual void method_analyzeSemanticExpression (const class GGS_lstring arg_inUsefulnessCallerEntityName,
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_unifiedTypeMapEntry arg_inType,
@@ -12004,7 +12004,7 @@ class cPtr_orExpressionAST : public cPtr_semanticExpressionAST {
            class GGS_semanticExpressionForGeneration & arg_outExpression,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method enterExpressionInSemanticContext
+//--- Extension proc enterExpressionInSemanticContext
   public: virtual void method_enterExpressionInSemanticContext (class GGS_unifiedTypeMap & arg_ioTypeMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -12190,7 +12190,7 @@ class cPtr_orShortExpressionAST : public cPtr_semanticExpressionAST {
                                                       Compiler * inCompiler) ;
 
 
-//--- Extension method analyzeSemanticExpression
+//--- Extension proc analyzeSemanticExpression
   public: virtual void method_analyzeSemanticExpression (const class GGS_lstring arg_inUsefulnessCallerEntityName,
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_unifiedTypeMapEntry arg_inType,
@@ -12200,7 +12200,7 @@ class cPtr_orShortExpressionAST : public cPtr_semanticExpressionAST {
            class GGS_semanticExpressionForGeneration & arg_outExpression,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method enterExpressionInSemanticContext
+//--- Extension proc enterExpressionInSemanticContext
   public: virtual void method_enterExpressionInSemanticContext (class GGS_unifiedTypeMap & arg_ioTypeMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -12386,7 +12386,7 @@ class cPtr_xorExpressionAST : public cPtr_semanticExpressionAST {
                                                   Compiler * inCompiler) ;
 
 
-//--- Extension method analyzeSemanticExpression
+//--- Extension proc analyzeSemanticExpression
   public: virtual void method_analyzeSemanticExpression (const class GGS_lstring arg_inUsefulnessCallerEntityName,
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_unifiedTypeMapEntry arg_inType,
@@ -12396,7 +12396,7 @@ class cPtr_xorExpressionAST : public cPtr_semanticExpressionAST {
            class GGS_semanticExpressionForGeneration & arg_outExpression,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method enterExpressionInSemanticContext
+//--- Extension proc enterExpressionInSemanticContext
   public: virtual void method_enterExpressionInSemanticContext (class GGS_unifiedTypeMap & arg_ioTypeMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -12582,7 +12582,7 @@ class cPtr_closedSliceExpressionAST : public cPtr_semanticExpressionAST {
                                                           Compiler * inCompiler) ;
 
 
-//--- Extension method analyzeSemanticExpression
+//--- Extension proc analyzeSemanticExpression
   public: virtual void method_analyzeSemanticExpression (const class GGS_lstring arg_inUsefulnessCallerEntityName,
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_unifiedTypeMapEntry arg_inType,
@@ -12592,7 +12592,7 @@ class cPtr_closedSliceExpressionAST : public cPtr_semanticExpressionAST {
            class GGS_semanticExpressionForGeneration & arg_outExpression,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method enterExpressionInSemanticContext
+//--- Extension proc enterExpressionInSemanticContext
   public: virtual void method_enterExpressionInSemanticContext (class GGS_unifiedTypeMap & arg_ioTypeMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -12778,7 +12778,7 @@ class cPtr_openedSliceExpressionAST : public cPtr_semanticExpressionAST {
                                                           Compiler * inCompiler) ;
 
 
-//--- Extension method analyzeSemanticExpression
+//--- Extension proc analyzeSemanticExpression
   public: virtual void method_analyzeSemanticExpression (const class GGS_lstring arg_inUsefulnessCallerEntityName,
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_unifiedTypeMapEntry arg_inType,
@@ -12788,7 +12788,7 @@ class cPtr_openedSliceExpressionAST : public cPtr_semanticExpressionAST {
            class GGS_semanticExpressionForGeneration & arg_outExpression,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method enterExpressionInSemanticContext
+//--- Extension proc enterExpressionInSemanticContext
   public: virtual void method_enterExpressionInSemanticContext (class GGS_unifiedTypeMap & arg_ioTypeMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -12974,7 +12974,7 @@ class cPtr_orShortExpressionForGeneration : public cPtr_semanticExpressionForGen
                                                                     Compiler * inCompiler) ;
 
 
-//--- Extension method generateExpression
+//--- Extension proc generateExpression
   public: virtual void method_generateExpression (class GGS_string & arg_ioGeneratedCode,
            class GGS_stringset & arg_ioInclusionSet,
            class GGS_uint & arg_ioTemporaryVariableIndex,
@@ -13164,7 +13164,7 @@ class cPtr_openedSliceExpressionForGeneration : public cPtr_semanticExpressionFo
                                                                         Compiler * inCompiler) ;
 
 
-//--- Extension method generateExpression
+//--- Extension proc generateExpression
   public: virtual void method_generateExpression (class GGS_string & arg_ioGeneratedCode,
            class GGS_stringset & arg_ioInclusionSet,
            class GGS_uint & arg_ioTemporaryVariableIndex,
@@ -13354,7 +13354,7 @@ class cPtr_closedSliceExpressionForGeneration : public cPtr_semanticExpressionFo
                                                                         Compiler * inCompiler) ;
 
 
-//--- Extension method generateExpression
+//--- Extension proc generateExpression
   public: virtual void method_generateExpression (class GGS_string & arg_ioGeneratedCode,
            class GGS_stringset & arg_ioInclusionSet,
            class GGS_uint & arg_ioTemporaryVariableIndex,
@@ -13544,7 +13544,7 @@ class cPtr_structPropertyAccessExpressionAST : public cPtr_semanticExpressionAST
                                                                    Compiler * inCompiler) ;
 
 
-//--- Extension method analyzeSemanticExpression
+//--- Extension proc analyzeSemanticExpression
   public: virtual void method_analyzeSemanticExpression (const class GGS_lstring arg_inUsefulnessCallerEntityName,
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_unifiedTypeMapEntry arg_inType,
@@ -13554,7 +13554,7 @@ class cPtr_structPropertyAccessExpressionAST : public cPtr_semanticExpressionAST
            class GGS_semanticExpressionForGeneration & arg_outExpression,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method enterExpressionInSemanticContext
+//--- Extension proc enterExpressionInSemanticContext
   public: virtual void method_enterExpressionInSemanticContext (class GGS_unifiedTypeMap & arg_ioTypeMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -13740,7 +13740,7 @@ class cPtr_propertyAccessExpressionForGeneration : public cPtr_semanticExpressio
                                                                            Compiler * inCompiler) ;
 
 
-//--- Extension method generateExpression
+//--- Extension proc generateExpression
   public: virtual void method_generateExpression (class GGS_string & arg_ioGeneratedCode,
            class GGS_stringset & arg_ioInclusionSet,
            class GGS_uint & arg_ioTemporaryVariableIndex,
@@ -13930,7 +13930,7 @@ class cPtr_subscriptReadAccessExpressionAST : public cPtr_semanticExpressionAST 
                                                                   Compiler * inCompiler) ;
 
 
-//--- Extension method analyzeSemanticExpression
+//--- Extension proc analyzeSemanticExpression
   public: virtual void method_analyzeSemanticExpression (const class GGS_lstring arg_inUsefulnessCallerEntityName,
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_unifiedTypeMapEntry arg_inType,
@@ -13940,7 +13940,7 @@ class cPtr_subscriptReadAccessExpressionAST : public cPtr_semanticExpressionAST 
            class GGS_semanticExpressionForGeneration & arg_outExpression,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method enterExpressionInSemanticContext
+//--- Extension proc enterExpressionInSemanticContext
   public: virtual void method_enterExpressionInSemanticContext (class GGS_unifiedTypeMap & arg_ioTypeMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -14297,7 +14297,7 @@ class cPtr_subscriptReadAccessExpressionForGeneration : public cPtr_semanticExpr
                                                                                     Compiler * inCompiler) ;
 
 
-//--- Extension method generateExpression
+//--- Extension proc generateExpression
   public: virtual void method_generateExpression (class GGS_string & arg_ioGeneratedCode,
            class GGS_stringset & arg_ioInclusionSet,
            class GGS_uint & arg_ioTemporaryVariableIndex,
@@ -14481,7 +14481,7 @@ class cPtr_literalTypeInExpressionAST : public cPtr_semanticExpressionAST {
                                                     Compiler * inCompiler) ;
 
 
-//--- Extension method analyzeSemanticExpression
+//--- Extension proc analyzeSemanticExpression
   public: virtual void method_analyzeSemanticExpression (const class GGS_lstring arg_inUsefulnessCallerEntityName,
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_unifiedTypeMapEntry arg_inType,
@@ -14491,7 +14491,7 @@ class cPtr_literalTypeInExpressionAST : public cPtr_semanticExpressionAST {
            class GGS_semanticExpressionForGeneration & arg_outExpression,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method enterExpressionInSemanticContext
+//--- Extension proc enterExpressionInSemanticContext
   public: virtual void method_enterExpressionInSemanticContext (class GGS_unifiedTypeMap & arg_ioTypeMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -14669,7 +14669,7 @@ class cPtr_literalTypeInExpressionForGeneration : public cPtr_semanticExpression
                                                                       Compiler * inCompiler) ;
 
 
-//--- Extension method generateExpression
+//--- Extension proc generateExpression
   public: virtual void method_generateExpression (class GGS_string & arg_ioGeneratedCode,
            class GGS_stringset & arg_ioInclusionSet,
            class GGS_uint & arg_ioTemporaryVariableIndex,
@@ -14853,7 +14853,7 @@ class cPtr_tildeExpressionAST : public cPtr_semanticExpressionAST {
                                                 Compiler * inCompiler) ;
 
 
-//--- Extension method analyzeSemanticExpression
+//--- Extension proc analyzeSemanticExpression
   public: virtual void method_analyzeSemanticExpression (const class GGS_lstring arg_inUsefulnessCallerEntityName,
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_unifiedTypeMapEntry arg_inType,
@@ -14863,7 +14863,7 @@ class cPtr_tildeExpressionAST : public cPtr_semanticExpressionAST {
            class GGS_semanticExpressionForGeneration & arg_outExpression,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method enterExpressionInSemanticContext
+//--- Extension proc enterExpressionInSemanticContext
   public: virtual void method_enterExpressionInSemanticContext (class GGS_unifiedTypeMap & arg_ioTypeMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -15043,7 +15043,7 @@ class cPtr_tildeExpressionForGeneration : public cPtr_semanticExpressionForGener
                                                               Compiler * inCompiler) ;
 
 
-//--- Extension method generateExpression
+//--- Extension proc generateExpression
   public: virtual void method_generateExpression (class GGS_string & arg_ioGeneratedCode,
            class GGS_stringset & arg_ioInclusionSet,
            class GGS_uint & arg_ioTemporaryVariableIndex,
@@ -15223,7 +15223,7 @@ class cPtr_literalDoubleExpressionAST : public cPtr_semanticExpressionAST {
                                                     Compiler * inCompiler) ;
 
 
-//--- Extension method analyzeSemanticExpression
+//--- Extension proc analyzeSemanticExpression
   public: virtual void method_analyzeSemanticExpression (const class GGS_lstring arg_inUsefulnessCallerEntityName,
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_unifiedTypeMapEntry arg_inType,
@@ -15233,7 +15233,7 @@ class cPtr_literalDoubleExpressionAST : public cPtr_semanticExpressionAST {
            class GGS_semanticExpressionForGeneration & arg_outExpression,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method enterExpressionInSemanticContext
+//--- Extension proc enterExpressionInSemanticContext
   public: virtual void method_enterExpressionInSemanticContext (class GGS_unifiedTypeMap & arg_ioTypeMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -15411,7 +15411,7 @@ class cPtr_literalDoubleExpressionForGeneration : public cPtr_semanticExpression
                                                                       Compiler * inCompiler) ;
 
 
-//--- Extension method generateExpression
+//--- Extension proc generateExpression
   public: virtual void method_generateExpression (class GGS_string & arg_ioGeneratedCode,
            class GGS_stringset & arg_ioInclusionSet,
            class GGS_uint & arg_ioTemporaryVariableIndex,
@@ -15710,7 +15710,7 @@ class cPtr_comparisonExpressionAST : public cPtr_semanticExpressionAST {
                                                              Compiler * inCompiler) ;
 
 
-//--- Extension method analyzeSemanticExpression
+//--- Extension proc analyzeSemanticExpression
   public: virtual void method_analyzeSemanticExpression (const class GGS_lstring arg_inUsefulnessCallerEntityName,
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_unifiedTypeMapEntry arg_inType,
@@ -15720,7 +15720,7 @@ class cPtr_comparisonExpressionAST : public cPtr_semanticExpressionAST {
            class GGS_semanticExpressionForGeneration & arg_outExpression,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method enterExpressionInSemanticContext
+//--- Extension proc enterExpressionInSemanticContext
   public: virtual void method_enterExpressionInSemanticContext (class GGS_unifiedTypeMap & arg_ioTypeMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -15912,7 +15912,7 @@ class cPtr_comparisonExpressionForGeneration : public cPtr_semanticExpressionFor
                                                                            Compiler * inCompiler) ;
 
 
-//--- Extension method generateExpression
+//--- Extension proc generateExpression
   public: virtual void method_generateExpression (class GGS_string & arg_ioGeneratedCode,
            class GGS_stringset & arg_ioInclusionSet,
            class GGS_uint & arg_ioTemporaryVariableIndex,
@@ -16100,7 +16100,7 @@ class cPtr_functionCallExpressionAST : public cPtr_semanticExpressionAST {
                                                        Compiler * inCompiler) ;
 
 
-//--- Extension method analyzeSemanticExpression
+//--- Extension proc analyzeSemanticExpression
   public: virtual void method_analyzeSemanticExpression (const class GGS_lstring arg_inUsefulnessCallerEntityName,
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_unifiedTypeMapEntry arg_inType,
@@ -16110,7 +16110,7 @@ class cPtr_functionCallExpressionAST : public cPtr_semanticExpressionAST {
            class GGS_semanticExpressionForGeneration & arg_outExpression,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method enterExpressionInSemanticContext
+//--- Extension proc enterExpressionInSemanticContext
   public: virtual void method_enterExpressionInSemanticContext (class GGS_unifiedTypeMap & arg_ioTypeMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -16294,7 +16294,7 @@ class cPtr_functionCallExpressionForGeneration : public cPtr_semanticExpressionF
                                                                          Compiler * inCompiler) ;
 
 
-//--- Extension method generateExpression
+//--- Extension proc generateExpression
   public: virtual void method_generateExpression (class GGS_string & arg_ioGeneratedCode,
            class GGS_stringset & arg_ioInclusionSet,
            class GGS_uint & arg_ioTemporaryVariableIndex,
@@ -16488,7 +16488,7 @@ class cPtr_ifExpressionAST : public cPtr_semanticExpressionAST {
                                                      Compiler * inCompiler) ;
 
 
-//--- Extension method analyzeSemanticExpression
+//--- Extension proc analyzeSemanticExpression
   public: virtual void method_analyzeSemanticExpression (const class GGS_lstring arg_inUsefulnessCallerEntityName,
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_unifiedTypeMapEntry arg_inType,
@@ -16498,7 +16498,7 @@ class cPtr_ifExpressionAST : public cPtr_semanticExpressionAST {
            class GGS_semanticExpressionForGeneration & arg_outExpression,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method enterExpressionInSemanticContext
+//--- Extension proc enterExpressionInSemanticContext
   public: virtual void method_enterExpressionInSemanticContext (class GGS_unifiedTypeMap & arg_ioTypeMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 

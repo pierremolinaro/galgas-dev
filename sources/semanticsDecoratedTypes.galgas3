@@ -65,7 +65,7 @@ abstract class @semanticExpressionForGeneration {
 
 //--------------------------------------------------------------------------------------------------
 
-abstract method @semanticExpressionForGeneration generateExpression
+abstract proc @semanticExpressionForGeneration generateExpression
   ?!@string ioGeneratedCode
   ?!@stringset ioInclusionSet
   ?!@uint ioTemporaryVariableIndex
@@ -126,7 +126,7 @@ abstract class @actualParameterForGeneration {
 
 //--------------------------------------------------------------------------------------------------
 
-abstract method @actualParameterForGeneration generateActualParameter
+abstract proc @actualParameterForGeneration generateActualParameter
   ?!@stringset ioInclusionSet
   ?!@uint ioTemporaryVariableIndex
   ?!@string ioImplementation
@@ -137,7 +137,7 @@ abstract method @actualParameterForGeneration generateActualParameter
 
 //--------------------------------------------------------------------------------------------------
 
-abstract method @actualParameterForGeneration generatePoisonedVariables
+abstract proc @actualParameterForGeneration generatePoisonedVariables
   ?!@string ioImplementation
   ?!@stringset ioUnusedVariableCppNameSet
 
@@ -182,7 +182,7 @@ abstract class @semanticInstructionForGeneration {
 
 //--------------------------------------------------------------------------------------------------
 
-abstract method @semanticInstructionForGeneration generateInstruction
+abstract proc @semanticInstructionForGeneration generateInstruction
   ?!@stringset ioInclusionSet
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
@@ -221,7 +221,7 @@ func @semanticDeclarationForGeneration appendPrimitiveTypeDeclaration -> @string
 
 //--------------------------------------------------------------------------------------------------
 
-method @semanticDeclarationForGeneration appendPrimitiveTypePreDeclaration ?!@string unused ioHeader {
+proc @semanticDeclarationForGeneration appendPrimitiveTypePreDeclaration ?!@string unused ioHeader {
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -454,7 +454,7 @@ final class @programComponentForGeneration : @semanticDeclarationWithHeaderForGe
 //
 //--------------------------------------------------------------------------------------------------
 
-method @semanticDeclarationForGeneration appendDeclaration1
+proc @semanticDeclarationForGeneration appendDeclaration1
   ?!@stringset unused ioInclusionSet
   !@string outHeader
 {
@@ -467,7 +467,7 @@ method @semanticDeclarationForGeneration appendDeclaration1
 //
 //--------------------------------------------------------------------------------------------------
 
-method @semanticDeclarationForGeneration appendDeclaration2
+proc @semanticDeclarationForGeneration appendDeclaration2
   ?let @string unused inOutputDirectory
   ?!@stringset unused ioInclusionSet
   !@string outHeader
@@ -483,7 +483,7 @@ func @semanticDeclarationForGeneration appendTypeGenericImplementation ->@string
 
 //--------------------------------------------------------------------------------------------------
 
-method @semanticDeclarationForGeneration appendSpecificImplementation
+proc @semanticDeclarationForGeneration appendSpecificImplementation
   ?let @unifiedTypeMap unused inUnifiedTypeMap
   ?!@stringset unused  ioInclusionSet
   !@string outImplementation {
@@ -492,10 +492,9 @@ method @semanticDeclarationForGeneration appendSpecificImplementation
 
 //--------------------------------------------------------------------------------------------------
 
-method @semanticDeclarationForGeneration appendSpecificFiles
+proc @semanticDeclarationForGeneration appendSpecificFiles
   ?let @string unused inProductDirectory
   ?!@stringset unused ioAllProductFileSet
-//  ?!objc: @stringlist unused ioObjcAppProductFileList
   ?!swift: @stringlist unused ioSwiftAppProductFileList
 {
 }

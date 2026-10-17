@@ -774,7 +774,7 @@ void extensionSetter_addSettingsToDefaultConfiguration (class GGS_XcodeProjectDe
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension method '@XcodeProjectDescriptor generateAtPath'
+//Extension proc '@XcodeProjectDescriptor generateAtPath'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -1076,18 +1076,18 @@ class cPtr_optionComponentForGeneration : public cPtr_semanticDeclarationWithHea
 //--- Extension func isPredefined
   public: virtual class GGS_bool getter_isPredefined (Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension method appendDeclaration1
+//--- Extension proc appendDeclaration1
   public: virtual void method_appendDeclaration_31_ (class GGS_stringset & arg_ioInclusionSet,
            class GGS_string & arg_outHeader,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method appendSpecificFiles
+//--- Extension proc appendSpecificFiles
   public: virtual void method_appendSpecificFiles (const class GGS_string arg_inProductDirectory,
            class GGS_stringset & arg_ioAllProductFileSet,
            class GGS_stringlist & arg_ioSwiftAppProductFileList,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method appendSpecificImplementation
+//--- Extension proc appendSpecificImplementation
   public: virtual void method_appendSpecificImplementation (const class GGS_unifiedTypeMap arg_inUnifiedTypeMap,
            class GGS_stringset & arg_ioInclusionSet,
            class GGS_string & arg_outImplementation,
@@ -1413,7 +1413,7 @@ void extensionSetter_closeBranch (class GGS_localVarManager & ioObject,
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension method '@localVarManager checkSelfObjectIsFullyInitialized'
+//Extension proc '@localVarManager checkSelfObjectIsFullyInitialized'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -1491,7 +1491,7 @@ void extensionSetter_searchForReadWriteAccess (class GGS_localVarManager & ioObj
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension method '@localVarManager checkAutomatonStates'
+//Extension proc '@localVarManager checkAutomatonStates'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -1525,7 +1525,7 @@ class GGS_string function_routineArgumentFromFormalParameters (const class GGS_f
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension method '@routineMap searchKey'
+//Extension proc '@routineMap searchKey'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -1592,7 +1592,7 @@ class GGS_lstring function_makeOptionalTypeLName (const class GGS_lstring & cons
 
 //--------------------------------------------------------------------------------------------------
 //
-//Abstract extension method '@templateInstructionForGeneration templateCodeGeneration'
+//Abstract extension proc '@templateInstructionForGeneration templateCodeGeneration'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -1778,7 +1778,7 @@ class cPtr_templateInstructionForeachForGeneration : public cPtr_templateInstruc
                                                                                              Compiler * inCompiler) ;
 
 
-//--- Extension method templateCodeGeneration
+//--- Extension proc templateCodeGeneration
   public: virtual void method_templateCodeGeneration (class GGS_string & arg_ioGeneratedCode,
            class GGS_stringset & arg_ioInclusionSet,
            class GGS_uint & arg_ioTemporaryVariableIndex,

@@ -54,7 +54,7 @@ final class @stringsetPredefinedTypeAST : @predefinedTypeAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method getClassFunctionMap ?!@unifiedTypeMap ioUnifiedTypeMap
+  override proc getClassFunctionMap ?!@unifiedTypeMap ioUnifiedTypeMap
                                       !@classFunctionMap outMap {
     outMap = @()
     enterClassFunctionWithoutArgument (
@@ -95,7 +95,7 @@ final class @stringsetPredefinedTypeAST : @predefinedTypeAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method getSetterMap ?!@unifiedTypeMap ioUnifiedTypeMap
+  override proc getSetterMap ?!@unifiedTypeMap ioUnifiedTypeMap
                                !@setterMap outSetterMap {
     [!?ioUnifiedTypeMap makeEntryFromString !"string" ?let stringType]
     outSetterMap = @()
@@ -119,7 +119,7 @@ final class @stringsetPredefinedTypeAST : @predefinedTypeAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method getEnumerationList ?!@unifiedTypeMap ioUnifiedTypeMap
+  override proc getEnumerationList ?!@unifiedTypeMap ioUnifiedTypeMap
                                      !@enumerationDescriptorList outEnumerationList
                                      !@string outEnumeratedType {
     [!?ioUnifiedTypeMap makeEntryFromString !"string" ?let stringTypeIndex]
@@ -130,7 +130,7 @@ final class @stringsetPredefinedTypeAST : @predefinedTypeAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method getAddAssignArgumentList ?!@unifiedTypeMap ioUnifiedTypeMap
+  override proc getAddAssignArgumentList ?!@unifiedTypeMap ioUnifiedTypeMap
                                            !@functionSignature outAddAssignArgumentList {
     [!?ioUnifiedTypeMap makeEntryFromString !"stringset" ?let @unifiedTypeMapEntry stringTypeIndex]
     outAddAssignArgumentList = @[@("".nowhere, stringTypeIndex, "inString", true)]
@@ -138,7 +138,7 @@ final class @stringsetPredefinedTypeAST : @predefinedTypeAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method getGetterMap ?!@unifiedTypeMap ioUnifiedTypeMap
+  override proc getGetterMap ?!@unifiedTypeMap ioUnifiedTypeMap
                                !@getterMap outMap {
     commonGetterMapForAllTypes (!?ioUnifiedTypeMap ?outMap)
     enterBaseFinalGetterWithArgument (

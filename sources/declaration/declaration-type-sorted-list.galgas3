@@ -153,7 +153,7 @@ final class @sortedListDeclarationAST : @semanticDeclarationAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method enterDeclarationInGraph
+  override proc enterDeclarationInGraph
     ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
     ?!@equatableExtensionMap unused ioEquatableExtensionMap
     ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext
@@ -170,7 +170,7 @@ final class @sortedListDeclarationAST : @semanticDeclarationAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method addAssociatedElement
+  override proc addAssociatedElement
     ?!@galgasDeclarationAST ioDeclarations {
     var @propertyInCollectionListAST structAttributeList = @()
     for (mutability qualifiedTypeAST mPropertyName * hasSelector initExpression) in self.mPropertyList do
@@ -194,7 +194,7 @@ final class @sortedListDeclarationAST : @semanticDeclarationAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method enterDeclarationInSemanticContext
+  override proc enterDeclarationInSemanticContext
     ?!@equatableExtensionMap ioEquatableExtensionMap
     ?let @extensionInitializerForBuildingContext inExtensionInitializerMapForBuildingContext
     ?let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext
@@ -345,7 +345,7 @@ final class @sortedListDeclarationAST : @semanticDeclarationAST {
       !unwrappedType: .null
       !readSubscriptMap: @()
       !enumerationDescriptorList: enumerationDescriptor
-      !features: features 
+      !features: features
       !addAssignOperatorArguments: constructorAttributeTypeList
       !generateHeaderInSeparateFile: false // Do not generate header in separate file
       !typeForEnumeratedElement: listElementTypeIndex
@@ -357,7 +357,7 @@ final class @sortedListDeclarationAST : @semanticDeclarationAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method semanticAnalysis
+  override proc semanticAnalysis
     ?!@lstringlist ioUsefulnessRootEntities
     ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
     ?let @string unused inProductDirectory
@@ -451,7 +451,7 @@ final class @sortedListTypeForGeneration : @semanticTypeForGeneration {
 
 //································································································
 
-override method @sortedListTypeForGeneration appendDeclaration1
+override proc @sortedListTypeForGeneration appendDeclaration1
   ?!@stringset unused ioInclusionSet
   !@string outHeader {
   let selfTypeDefinition = self.mSelfTypeEntry.definition
@@ -485,7 +485,7 @@ override method @sortedListTypeForGeneration appendDeclaration1
 
 //································································································
 
-override method @sortedListTypeForGeneration appendSpecificImplementation
+override proc @sortedListTypeForGeneration appendSpecificImplementation
   ?let @unifiedTypeMap unused inTypeMap
   ?!@stringset ioInclusionSet
   !@string outImplementation {

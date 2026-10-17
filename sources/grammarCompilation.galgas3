@@ -78,7 +78,7 @@ proc checkLabelMap
           + "' type, but declaration at "
           + [inNonterminalSymbolLabelMapForGrammarAnalysis locationForKey !mLabelName.string].startLocationString
           + " is declared with '@" + mFormalArgumentTypeName + "' type"
-          )  
+          )
         end
       end
     end
@@ -152,7 +152,7 @@ proc handleNonTerminalDeclarationsFromRuleList
 //                     transformInstructionList
 //--------------------------------------------------------------------------------------------------
 
-abstract method @syntaxInstructionAST transformInstructionForGrammarAnalysis
+abstract proc @syntaxInstructionAST transformInstructionForGrammarAnalysis
   ?!usedTerminalMap:@terminalSymbolsMapForGrammarAnalysis ioActuallyUsedTerminalSymbolMap
   ?nonTerminalSymbolMap:let @nonTerminalSymbolMapForGrammarAnalysis inNonTerminalSymbolMap
   ?!addedTerminalIndex:@uint ioAddedNonTerminalIndex
@@ -160,7 +160,7 @@ abstract method @syntaxInstructionAST transformInstructionForGrammarAnalysis
 
 //--------------------------------------------------------------------------------------------------
 
-override method @semanticInstructionAST transformInstructionForGrammarAnalysis
+override proc @semanticInstructionAST transformInstructionForGrammarAnalysis
   ?!usedTerminalMap:@terminalSymbolsMapForGrammarAnalysis unused ioActuallyUsedTerminalSymbolMap
   ?nonTerminalSymbolMap:let @nonTerminalSymbolMapForGrammarAnalysis unused inNonTerminalSymbolMap
   ?!addedTerminalIndex:@uint unused ioAddedNonTerminalIndex

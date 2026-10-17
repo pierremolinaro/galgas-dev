@@ -25,7 +25,7 @@ list @actualOutputArgumentList {
   public let @location mEndOfExpressionLocation
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  
+
   func initializerSignature -> @string {
     result = "init"
     for effectiveParameter in self do
@@ -34,7 +34,7 @@ list @actualOutputArgumentList {
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  
+
   func subscriptSignature -> @string {
     result = ""
     for effectiveParameter in self do
@@ -44,7 +44,7 @@ list @actualOutputArgumentList {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  method enterInSemanticContext ?!@unifiedTypeMap ioTypeMap {
+  proc enterInSemanticContext ?!@unifiedTypeMap ioTypeMap {
     for (* mExpression *) in self do
       [mExpression enterExpressionInSemanticContext !?ioTypeMap]
     end

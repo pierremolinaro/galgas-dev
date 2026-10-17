@@ -25,7 +25,7 @@ syntax extension galgas3DeclarationsSyntax {
 
   rule <declaration_ggs3> (?!@galgasDeclarationAST ioDeclarations) {
     $abstract$
-    $method$
+    $proc$
     $@type$ ?var typeName indexing typeReferenceAbstractExtensionMethod
     repeat
     while
@@ -47,7 +47,7 @@ syntax extension galgas3DeclarationsSyntax {
 
   rule <method_declaration_ggs3> (?let @lstring inTypeName, ?!@galgasDeclarationAST ioDeclarations) {
     $abstract$
-    $method$
+    $proc$
     var typeName = inTypeName
     repeat
     while
@@ -127,7 +127,7 @@ final class @abstractExtensionMethodAST : @semanticDeclarationAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method enterDeclarationInGraph (
+  override proc enterDeclarationInGraph (
     ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph,
     ?!@equatableExtensionMap unused ioEquatableExtensionMap,
     ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext,
@@ -136,7 +136,7 @@ final class @abstractExtensionMethodAST : @semanticDeclarationAST {
     ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext,
     ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList) {
     let key = @lstring {
-      !"extension method @" + self.mTypeName + " " + self.mAbstractExtensionMethodName
+      !"extension proc @" + self.mTypeName + " " + self.mAbstractExtensionMethodName
       !self.mAbstractExtensionMethodName.location
     }
     [!?ioSemanticTypePrecedenceGraph addNode !key !self]
@@ -167,12 +167,12 @@ final class @abstractExtensionMethodAST : @semanticDeclarationAST {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func keyRepresentation -> @string {
-    result = "abstract extension method @" + self.mTypeName + " " + self.mAbstractExtensionMethodName
+    result = "abstract extension proc @" + self.mTypeName + " " + self.mAbstractExtensionMethodName
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method enterDeclarationInSemanticContext (
+  override proc enterDeclarationInSemanticContext (
     ?!@equatableExtensionMap unused ioEquatableExtensionMap,
     ?let @extensionInitializerForBuildingContext unused inExtensionInitializerMapForBuildingContext,
     ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext,
@@ -184,7 +184,7 @@ final class @abstractExtensionMethodAST : @semanticDeclarationAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method semanticAnalysis (
+  override proc semanticAnalysis (
     ?!@lstringlist unused ioUsefulnessRootEntities,
     ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph,
     ?let @string unused inProductDirectory,
@@ -196,11 +196,11 @@ final class @abstractExtensionMethodAST : @semanticDeclarationAST {
     let @unifiedTypeMapEntry selfType = [ioTypeMap typeMapEntryForLKey !self.mTypeName]
   //--- Check self type is an abstract class
     if not selfType.definition.typeKind.isClassType then
-      error (self.mAbstractExtensionMethodName: "cannot declare a extension method: '@" + selfType.definition.typeName.string + "' is not a class")
+      error (self.mAbstractExtensionMethodName: "cannot declare a extension proc: '@" + selfType.definition.typeName.string + "' is not a class")
     elsif selfType.definition.isConcrete then
-      error (self.mAbstractExtensionMethodName: "cannot declare an abstract extension method: '@" + selfType.definition.typeName.string + "' is not an abstract class")
+      error (self.mAbstractExtensionMethodName: "cannot declare an abstract extension proc: '@" + selfType.definition.typeName.string + "' is not an abstract class")
     end
-  //--- Compute method signature
+  //--- Compute proc signature
     var formalParameterListForGeneration = @formalParameterListForGeneration ()
     for (mFormalSelector mFormalArgumentPassingMode mFormalArgumentTypeName mFormalArgumentName *) in self.mAbstractExtensionMethodFormalParameterList do
       formalParameterListForGeneration +=
@@ -212,10 +212,10 @@ final class @abstractExtensionMethodAST : @semanticDeclarationAST {
     end
   //---
     ioSemanticDeclarationListForGeneration +=
-      !infoMessage: "abstract extension method " + self.mAbstractExtensionMethodName
+      !infoMessage: "abstract extension proc " + self.mAbstractExtensionMethodName
       !@abstractExtensionMethodForGeneration {
         !generateHeader: true // Generate Cpp header file
-        !implementationCppFileName: "method-" + selfType.definition.typeName.string.fileNameRepresentation + "-" + self.mAbstractExtensionMethodName.string.fileNameRepresentation
+        !implementationCppFileName: "proc-" + selfType.definition.typeName.string.fileNameRepresentation + "-" + self.mAbstractExtensionMethodName.string.fileNameRepresentation
         !selfType
         !self.mAbstractExtensionMethodName.string
         !formalParameterListForGeneration
@@ -224,7 +224,7 @@ final class @abstractExtensionMethodAST : @semanticDeclarationAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method buildExtensionListMaps (
+  override proc buildExtensionListMaps (
     ?!@genericExtensionMethodListMap unused ioAbstractExtensionSetterListMap,
     ?!@genericExtensionMethodListMap unused ioExtensionSetterListMap,
     ?!@genericExtensionMethodListMap unused ioOverridingExtensionSetterListMap,
@@ -258,7 +258,7 @@ final class @abstractExtensionMethodForGeneration : @semanticDeclarationWithHead
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method appendDeclaration1 (?!@stringset unused ioInclusionSet,
+  override proc appendDeclaration1 (?!@stringset unused ioInclusionSet,
                                       !@string outHeader) {
     outHeader = [filewrapper semanticComponentGenerationTemplate.abstractExtensionMethodDeclaration
       !self.mReceiverType.definition.typeName.string
@@ -275,10 +275,10 @@ final class @abstractExtensionMethodForGeneration : @semanticDeclarationWithHead
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method appendSpecificImplementation (?let @unifiedTypeMap unused inTypeMap,
+  override proc appendSpecificImplementation (?let @unifiedTypeMap unused inTypeMap,
                                                 ?!@stringset ioInclusionSet,
                                                 !@string outImplementation) {
-    ioInclusionSet ++= "method-"
+    ioInclusionSet ++= "proc-"
          + self.mReceiverType.definition.typeName.string.fileNameRepresentation
          + "-" + self.mAbstractExtensionMethodName.fileNameRepresentation
     [self.mReceiverType addHeaderFileName !?ioInclusionSet]

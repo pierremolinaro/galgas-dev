@@ -208,7 +208,7 @@ syntax extension galgas4DeclarationsSyntax {
 //   ENTER IN GRAPH
 //--------------------------------------------------------------------------------------------------
 
-override method @overridingExtensionGetterAST enterDeclarationInGraph (
+override proc @overridingExtensionGetterAST enterDeclarationInGraph (
   ?!@semanticTypePrecedenceGraph unused ioSemanticTypePrecedenceGraph,
   ?!@equatableExtensionMap unused ioEquatableExtensionMap,
   ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext,
@@ -254,7 +254,7 @@ override func @overridingExtensionGetterAST keyRepresentation -> @string {
 //   SEMANTIC CONTEXT
 //--------------------------------------------------------------------------------------------------
 
-override method @overridingExtensionGetterAST enterDeclarationInSemanticContext (
+override proc @overridingExtensionGetterAST enterDeclarationInSemanticContext (
   ?!@equatableExtensionMap unused ioEquatableExtensionMap,
   ?let @extensionInitializerForBuildingContext unused inExtensionInitializerMapForBuildingContext,
   ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext,
@@ -268,7 +268,7 @@ override method @overridingExtensionGetterAST enterDeclarationInSemanticContext 
 //   SEMANTIC ANALYSIS
 //--------------------------------------------------------------------------------------------------
 
-override method @overridingExtensionGetterAST semanticAnalysis (
+override proc @overridingExtensionGetterAST semanticAnalysis (
   ?!@lstringlist unused ioUsefulnessRootEntities,
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
   ?let @string unused inProductDirectory,
@@ -370,7 +370,7 @@ override method @overridingExtensionGetterAST semanticAnalysis (
 //   EXTENSION LIST MAP
 //--------------------------------------------------------------------------------------------------
 
-override method @overridingExtensionGetterAST buildExtensionListMaps (
+override proc @overridingExtensionGetterAST buildExtensionListMaps (
   ?!@genericExtensionMethodListMap unused ioAbstractExtensionSetterListMap,
   ?!@genericExtensionMethodListMap unused ioExtensionSetterListMap,
   ?!@genericExtensionMethodListMap unused ioOverridingExtensionSetterListMap,
@@ -412,7 +412,7 @@ override func @overrideExtensionGetterForGeneration headerKind ->@headerKind {
 
 //································································································
 
-override method @overrideExtensionGetterForGeneration appendSpecificImplementation (
+override proc @overrideExtensionGetterForGeneration appendSpecificImplementation (
                                                               ?let @unifiedTypeMap unused inTypeMap,
                                                               ?!@stringset ioInclusionSet,
                                                               !@string outImplementation) {

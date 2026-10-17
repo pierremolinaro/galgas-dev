@@ -1054,7 +1054,7 @@ class cPtr_logInstructionAST : public cPtr_semanticInstructionAST {
                                                Compiler * inCompiler) ;
 
 
-//--- Extension method analyzeSemanticInstruction
+//--- Extension proc analyzeSemanticInstruction
   public: virtual void method_analyzeSemanticInstruction (const class GGS_lstring arg_inUsefulnessCallerEntityName,
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_analysisContext arg_inAnalysisContext,
@@ -1063,7 +1063,7 @@ class cPtr_logInstructionAST : public cPtr_semanticInstructionAST {
            class GGS_localVarManager & arg_ioVariableMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method enterInstructionInSemanticContext
+//--- Extension proc enterInstructionInSemanticContext
   public: virtual void method_enterInstructionInSemanticContext (class GGS_unifiedTypeMap & arg_ioTypeMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -1942,7 +1942,7 @@ class GGS_lstring function_makeWeakTypeLName (const class GGS_lstring & constinA
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension method '@AccessControlAST checkCompatibilityWithLet'
+//Extension proc '@AccessControlAST checkCompatibilityWithLet'
 //
 //--------------------------------------------------------------------------------------------------
 

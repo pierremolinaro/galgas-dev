@@ -13158,7 +13158,7 @@ GGS_templateLexiqueComponentAST GGS_templateLexiqueComponentAST::extractObject (
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension method '@AccessControlAST checkCompatibilityWithLet'
+//Extension proc '@AccessControlAST checkCompatibilityWithLet'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -13204,7 +13204,7 @@ void extensionMethod_checkCompatibilityWithLet (const GGS_AccessControlAST inObj
 
 //--------------------------------------------------------------------------------------------------
 //
-//Abstract extension method '@semanticExpressionForGeneration generateExpression'
+//Abstract extension proc '@semanticExpressionForGeneration generateExpression'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -13218,7 +13218,7 @@ void callExtensionMethod_generateExpression (cPtr_semanticExpressionForGeneratio
                                              COMMA_LOCATION_ARGS) {
 //--- Drop output arguments
   out_outCppExpression.drop () ;
-//--- Find method
+//--- Find proc
   if (nullptr != inObject) {
     macroValidSharedObject (inObject, cPtr_semanticExpressionForGeneration) ;
     inObject->method_generateExpression (io_ioGeneratedCode, io_ioInclusionSet, io_ioTemporaryVariableIndex, io_ioUnusedVariableCppNameSet, out_outCppExpression, inCompiler COMMA_THERE) ;

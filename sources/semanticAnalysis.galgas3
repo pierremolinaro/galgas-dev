@@ -31,17 +31,17 @@ proc checkMethodSignatures
   ?let @location inReferenceLocation
 {
   if inTestedSignature.count != inReferenceSignature.count then
-    error (inErrorLocation:"this method declares " + inTestedSignature.count.string
-    + " formal parameter(s), but overriden method declares " + inReferenceSignature.count.string)
-    error (inReferenceLocation:"overriden method is declared here")
+    error (inErrorLocation:"this proc declares " + inTestedSignature.count.string
+    + " formal parameter(s), but overriden proc declares " + inReferenceSignature.count.string)
+    error (inReferenceLocation:"overriden proc is declared here")
   else
     for (ref_mFormalSelector ref_mFormalArgumentType ref_mFormalArgumentPassingMode *) in inReferenceSignature, (mFormalSelector mFormalArgumentPassingMode mFormalArgumentType mFormalArgumentName *) in inTestedSignature do
       if ref_mFormalArgumentPassingMode != mFormalArgumentPassingMode then
         error (mFormalArgumentName : "the '" + mFormalArgumentName + "' formal parameter is declared as "
-        + mFormalArgumentPassingMode.formalArgumentMessage + ", but overriden method declares it as "
+        + mFormalArgumentPassingMode.formalArgumentMessage + ", but overriden proc declares it as "
         + ref_mFormalArgumentPassingMode.formalArgumentMessage
         )
-        error (inReferenceLocation:"overriden method is declared here")
+        error (inReferenceLocation:"overriden proc is declared here")
       end
       if mFormalSelector.string != ref_mFormalSelector.string then
         var @string s
@@ -58,9 +58,9 @@ proc checkMethodSignatures
       end
       if mFormalArgumentType.definition.typeName.string != ref_mFormalArgumentType.definition.typeName.string then
         error (mFormalArgumentName : "the '" + mFormalArgumentName + "' formal parameter has the '@"
-        + mFormalArgumentType.definition.typeName.string + "' type, but overriden method declares with the '@"
+        + mFormalArgumentType.definition.typeName.string + "' type, but overriden proc declares with the '@"
         + ref_mFormalArgumentType.definition.typeName.string + "' type")
-        error (inReferenceLocation:"overriden method is declared here")
+        error (inReferenceLocation:"overriden proc is declared here")
       end
     end
   end
@@ -250,7 +250,7 @@ proc analyzeRoutineBody ?let @lstring inUsefulnessCallerEntityName
 
 //--------------------------------------------------------------------------------------------------
 
-override method @externFunctionDeclarationAST semanticAnalysis
+override proc @externFunctionDeclarationAST semanticAnalysis
   ?!@lstringlist ioUsefulnessRootEntities
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @string unused inProductDirectory
@@ -371,7 +371,7 @@ proc analyzeFunctionBody
 
 //--------------------------------------------------------------------------------------------------
 
-override method @functionDeclarationAST semanticAnalysis
+override proc @functionDeclarationAST semanticAnalysis
   ?!@lstringlist ioUsefulnessRootEntities
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @string unused inProductDirectory
@@ -424,7 +424,7 @@ override method @functionDeclarationAST semanticAnalysis
 
 //--------------------------------------------------------------------------------------------------
 
-override method @onceFunctionDeclarationAST semanticAnalysis
+override proc @onceFunctionDeclarationAST semanticAnalysis
   ?!@lstringlist ioUsefulnessRootEntities
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @string unused inProductDirectory
@@ -480,7 +480,7 @@ override method @onceFunctionDeclarationAST semanticAnalysis
 //
 //--------------------------------------------------------------------------------------------------
 
-override method @filewrapperDeclarationAST semanticAnalysis
+override proc @filewrapperDeclarationAST semanticAnalysis
   ?!@lstringlist unused ioUsefulnessRootEntities
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @string unused inProductDirectory
@@ -575,7 +575,7 @@ override method @filewrapperDeclarationAST semanticAnalysis
 
 //--------------------------------------------------------------------------------------------------
 
-override method @galgas3SyntaxComponentAST semanticAnalysis
+override proc @galgas3SyntaxComponentAST semanticAnalysis
   ?!@lstringlist unused ioUsefulnessRootEntities
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @string unused inProductDirectory
@@ -630,7 +630,7 @@ override method @galgas3SyntaxComponentAST semanticAnalysis
 
 //--------------------------------------------------------------------------------------------------
 
-override method @galgas3GrammarComponentAST semanticAnalysis
+override proc @galgas3GrammarComponentAST semanticAnalysis
                                 ?!@lstringlist unused ioUsefulnessRootEntities
                                 ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
                                 ?let @string inProductDirectory
@@ -995,7 +995,7 @@ proc buildNonterminalDeclarationsMap
 //
 //--------------------------------------------------------------------------------------------------
 
-abstract method @syntaxInstructionAST analyzeSyntaxInstruction
+abstract proc @syntaxInstructionAST analyzeSyntaxInstruction
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
@@ -1012,7 +1012,7 @@ abstract method @syntaxInstructionAST analyzeSyntaxInstruction
 
 //--------------------------------------------------------------------------------------------------
 
-override method @semanticInstructionAST analyzeSyntaxInstruction
+override proc @semanticInstructionAST analyzeSyntaxInstruction
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
@@ -1039,7 +1039,7 @@ override method @semanticInstructionAST analyzeSyntaxInstruction
 
 //--------------------------------------------------------------------------------------------------
 
-abstract method @abstractInputParameter analyzeInputParameter
+abstract proc @abstractInputParameter analyzeInputParameter
   ?let @analysisContext inAnalysisContext
   ?!@unifiedTypeMap ioTypeMap
   ?let @lexicalTypeEnum inRequiredLexicalType
@@ -1049,7 +1049,7 @@ abstract method @abstractInputParameter analyzeInputParameter
 
 //--------------------------------------------------------------------------------------------------
 
-override method @inputParameterAnonymousVariable analyzeInputParameter
+override proc @inputParameterAnonymousVariable analyzeInputParameter
   ?let @analysisContext unused inAnalysisContext
   ?!@unifiedTypeMap unused ioTypeMap
   ?let @lexicalTypeEnum unused inRequiredLexicalType
@@ -1060,7 +1060,7 @@ override method @inputParameterAnonymousVariable analyzeInputParameter
 
 //--------------------------------------------------------------------------------------------------
 
-override method @inputParameterVariable analyzeInputParameter
+override proc @inputParameterVariable analyzeInputParameter
   ?let @analysisContext inAnalysisContext
   ?!@unifiedTypeMap unused ioTypeMap
   ?let @lexicalTypeEnum inRequiredLexicalType
@@ -1092,7 +1092,7 @@ override method @inputParameterVariable analyzeInputParameter
 
 //--------------------------------------------------------------------------------------------------
 
-override method @inputParameterDeclaredVariable analyzeInputParameter
+override proc @inputParameterDeclaredVariable analyzeInputParameter
   ?let @analysisContext inAnalysisContext
   ?!@unifiedTypeMap ioTypeMap
   ?let @lexicalTypeEnum inRequiredLexicalType
@@ -1137,7 +1137,7 @@ override method @inputParameterDeclaredVariable analyzeInputParameter
 
 //--------------------------------------------------------------------------------------------------
 
-override method @inputParameterDeclaredConstant analyzeInputParameter
+override proc @inputParameterDeclaredConstant analyzeInputParameter
   ?let @analysisContext inAnalysisContext
                                 ?!@unifiedTypeMap ioTypeMap
   ?let @lexicalTypeEnum inRequiredLexicalType
@@ -1177,7 +1177,7 @@ override method @inputParameterDeclaredConstant analyzeInputParameter
 
 //--------------------------------------------------------------------------------------------------
 
-abstract method @abstractGrammarInstructionSyntaxDirectedTranslationResult analyzeSDT
+abstract proc @abstractGrammarInstructionSyntaxDirectedTranslationResult analyzeSDT
   ?let @analysisContext inAnalysisContext
   ?!@unifiedTypeMap unused ioTypeMap
   ?let @bool inHasTranslateFeature
@@ -1185,7 +1185,7 @@ abstract method @abstractGrammarInstructionSyntaxDirectedTranslationResult analy
 
 //--------------------------------------------------------------------------------------------------
 
-override method @grammarInstructionSyntaxDirectedTranslationResultNone analyzeSDT
+override proc @grammarInstructionSyntaxDirectedTranslationResultNone analyzeSDT
   ?let @analysisContext unused inAnalysisContext
                                 ?!@unifiedTypeMap unused ioTypeMap
   ?let @bool unused inHasTranslateFeature
@@ -1194,7 +1194,7 @@ override method @grammarInstructionSyntaxDirectedTranslationResultNone analyzeSD
 
 //--------------------------------------------------------------------------------------------------
 
-override method @grammarInstructionSyntaxDirectedTranslationDropResult  analyzeSDT
+override proc @grammarInstructionSyntaxDirectedTranslationDropResult  analyzeSDT
   ?let @analysisContext unused inAnalysisContext
                                 ?!@unifiedTypeMap unused ioTypeMap
   ?let @bool inHasTranslateFeature
@@ -1206,7 +1206,7 @@ override method @grammarInstructionSyntaxDirectedTranslationDropResult  analyzeS
 
 //--------------------------------------------------------------------------------------------------
 
-override method @grammarInstructionSyntaxDirectedTranslationResultInVar  analyzeSDT
+override proc @grammarInstructionSyntaxDirectedTranslationResultInVar  analyzeSDT
   ?let @analysisContext inAnalysisContext
                                 ?!@unifiedTypeMap unused ioTypeMap
   ?let @bool inHasTranslateFeature
@@ -1225,7 +1225,7 @@ override method @grammarInstructionSyntaxDirectedTranslationResultInVar  analyze
 
 //--------------------------------------------------------------------------------------------------
 
-override method @grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar  analyzeSDT
+override proc @grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar  analyzeSDT
   ?let @analysisContext inAnalysisContext
                                 ?!@unifiedTypeMap ioTypeMap
   ?let @bool inHasTranslateFeature
@@ -1252,7 +1252,7 @@ override method @grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar 
 
 //--------------------------------------------------------------------------------------------------
 
-override method @grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst  analyzeSDT
+override proc @grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst  analyzeSDT
   ?let @analysisContext inAnalysisContext
                                 ?!@unifiedTypeMap ioTypeMap
   ?let @bool inHasTranslateFeature
@@ -1273,7 +1273,7 @@ override method @grammarInstructionSyntaxDirectedTranslationResultInDeclaredCons
 
 //--------------------------------------------------------------------------------------------------
 
-abstract method @abstractGrammarInstructionSyntaxDirectedTranslationResult generateCode
+abstract proc @abstractGrammarInstructionSyntaxDirectedTranslationResult generateCode
   ?let @bool inGenerateSyntaxDirectedTranslationString
   ?let @string inAccessMethodName
   ?!@stringset ioUnusedVariableCppNameSet
@@ -1281,7 +1281,7 @@ abstract method @abstractGrammarInstructionSyntaxDirectedTranslationResult gener
 
 //--------------------------------------------------------------------------------------------------
 
-override method @grammarInstructionSyntaxDirectedTranslationResultNone generateCode
+override proc @grammarInstructionSyntaxDirectedTranslationResultNone generateCode
   ?let @bool inGenerateSyntaxDirectedTranslationString
   ?let @string inAccessMethodName
   ?!@stringset ioUnusedVariableCppNameSet
@@ -1294,7 +1294,7 @@ override method @grammarInstructionSyntaxDirectedTranslationResultNone generateC
 
 //--------------------------------------------------------------------------------------------------
 
-override method @grammarInstructionSyntaxDirectedTranslationDropResult  generateCode
+override proc @grammarInstructionSyntaxDirectedTranslationDropResult  generateCode
   ?let @bool unused inGenerateSyntaxDirectedTranslationString
   ?let @string unused inAccessMethodName
   ?!@stringset unused ioUnusedVariableCppNameSet
@@ -1303,7 +1303,7 @@ override method @grammarInstructionSyntaxDirectedTranslationDropResult  generate
 
 //--------------------------------------------------------------------------------------------------
 
-override method @grammarInstructionSyntaxDirectedTranslationResultInVar  generateCode
+override proc @grammarInstructionSyntaxDirectedTranslationResultInVar  generateCode
   ?let @bool unused inGenerateSyntaxDirectedTranslationString
   ?let @string inAccessMethodName
   ?!@stringset unused ioUnusedVariableCppNameSet
@@ -1314,7 +1314,7 @@ override method @grammarInstructionSyntaxDirectedTranslationResultInVar  generat
 
 //--------------------------------------------------------------------------------------------------
 
-override method @grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar  generateCode
+override proc @grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar  generateCode
   ?let @bool unused inGenerateSyntaxDirectedTranslationString
   ?let @string inAccessMethodName
   ?!@stringset unused ioUnusedVariableCppNameSet
@@ -1325,7 +1325,7 @@ override method @grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar 
 
 //--------------------------------------------------------------------------------------------------
 
-override method @grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst  generateCode
+override proc @grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst  generateCode
   ?let @bool unused inGenerateSyntaxDirectedTranslationString
   ?let @string inAccessMethodName
   ?!@stringset unused ioUnusedVariableCppNameSet

@@ -124,7 +124,7 @@ final class @structDeclarationAST : @semanticDeclarationAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method enterDeclarationInGraph
+  override proc enterDeclarationInGraph
     ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
     ?!@equatableExtensionMap unused ioEquatableExtensionMap
     ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext
@@ -149,7 +149,7 @@ final class @structDeclarationAST : @semanticDeclarationAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method enterDeclarationInSemanticContext
+  override proc enterDeclarationInSemanticContext
     ?!@equatableExtensionMap ioEquatableExtensionMap
     ?let @extensionInitializerForBuildingContext inExtensionInitializerMapForBuildingContext
     ?let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext
@@ -221,7 +221,7 @@ final class @structDeclarationAST : @semanticDeclarationAST {
       features |= .equatable
     case comparable :
       features |= .comparable | .equatable
-    end  
+    end
     handleEquatableComparableExtension (
       !?ioEquatableExtensionMap
       !self.structTypeName
@@ -269,7 +269,7 @@ final class @structDeclarationAST : @semanticDeclarationAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method semanticAnalysis
+  override proc semanticAnalysis
               ?!@lstringlist ioUsefulnessRootEntities
               ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
               ?let @string unused inProductDirectory
@@ -342,7 +342,7 @@ final class @structDeclarationAST : @semanticDeclarationAST {
           error (property.name
           : "the structure is not comparable, because '" + property.name + "' is not")
         end
-      end  
+      end
     end
   //--- Build property initialization code
     [self.mStructurePropertyListAST buildPropertyInitializationCode
@@ -402,7 +402,7 @@ final class @structTypeForGeneration : @semanticTypeForGeneration {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method appendDeclaration1 ?!@stringset ioInclusionSet !@string outHeader {
+  override proc appendDeclaration1 ?!@stringset ioInclusionSet !@string outHeader {
     for property in self.mTypedPropertyList do
       [property.typeEntry addHeaderFileName1 !?ioInclusionSet]
     end
@@ -433,7 +433,7 @@ final class @structTypeForGeneration : @semanticTypeForGeneration {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method appendSpecificImplementation
+  override proc appendSpecificImplementation
     ?let @unifiedTypeMap unused inTypeMap
     ?!@stringset ioInclusionSet
     !@string outImplementation

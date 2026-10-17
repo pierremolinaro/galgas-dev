@@ -15,10 +15,10 @@ class CollectionElementPtr_%!TYPE_IDENTIFIER% : public CollectionElementPtr {
 !^%COMMA_LOCATION_ARGS) ;
   public: CollectionElementPtr_%!TYPE_IDENTIFIER% (const GGS_%!ELEMENT_TYPE_IDENTIFIER% & inElement COMMA_LOCATION_ARGS) ;
 
-//--- Virtual method that checks that all attributes are valid
+//--- Virtual proc that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
-//--- Virtual method that returns a copy of current object
+//--- Virtual proc that returns a copy of current object
   public: virtual CollectionElementPtr * copy (void) ;
 } ;
 
@@ -537,7 +537,7 @@ for (propertyTypeEntry propertyName * hasSetter *) in PROPERTY_LIST do (IDX)
 %end
 
 %//--------------------------------------------------------------------------------------------------
-  
+
 GGS_%![propertyTypeEntry identifierRepresentation]% GGS_%!TYPE_IDENTIFIER%::getter_%![propertyName identifierRepresentation]%AtIndex (%?^%const GGS_uint & inIndex,
     %!^%Compiler * inCompiler
     %!^%COMMA_LOCATION_ARGS) const {

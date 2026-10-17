@@ -87,7 +87,7 @@ func setterNameForUsefulEntitiesGraph ?let @string inTypeName ?let @lstring inSe
 //--------------------------------------------------------------------------------------------------
 
 func methodNameForUsefulEntitiesGraph ?let @string inTypeName ?let @lstring inMethodName -> @lstring {
-  result = @{!"method @" + inTypeName + " " + inMethodName !inMethodName.location}
+  result = @{!"proc @" + inTypeName + " " + inMethodName !inMethodName.location}
 }
 
 //--------------------------------------------------------------------------------------------------

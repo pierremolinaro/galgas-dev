@@ -365,7 +365,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_BuildFileList_2E_eleme
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension method '@actualParameterListAST analyzeRoutineArguments'
+//Extension proc '@actualParameterListAST analyzeRoutineArguments'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -385,7 +385,7 @@ void extensionMethod_analyzeRoutineArguments (const class GGS_actualParameterLis
 
 //--------------------------------------------------------------------------------------------------
 //
-//Abstract extension method '@actualParameterAST checkAgainstFormalArgument'
+//Abstract extension proc '@actualParameterAST checkAgainstFormalArgument'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -512,7 +512,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_formalParameterSignatu
 
 //--------------------------------------------------------------------------------------------------
 //
-//Abstract extension method '@actualParameterAST enterParameterInSemanticContext'
+//Abstract extension proc '@actualParameterAST enterParameterInSemanticContext'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -535,7 +535,7 @@ class GGS_bool callExtensionGetter_isCompatibleWith (const class cPtr_actualPara
 
 //--------------------------------------------------------------------------------------------------
 //
-//Abstract extension method '@actualParameterAST enterInActualOutputParameterList'
+//Abstract extension proc '@actualParameterAST enterInActualOutputParameterList'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -702,7 +702,7 @@ class cPtr_outputActualParameterAST : public cPtr_actualParameterAST {
            const class GGS_string inSelector,
            Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension method checkAgainstFormalArgument
+//--- Extension proc checkAgainstFormalArgument
   public: virtual void method_checkAgainstFormalArgument (const class GGS_lstring arg_inUsefulnessCallerEntityName,
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_analysisContext arg_inAnalysisContext,
@@ -716,11 +716,11 @@ class cPtr_outputActualParameterAST : public cPtr_actualParameterAST {
            class GGS_semanticInstructionListForGeneration & arg_ioInstructionListForGeneration,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method enterInActualOutputParameterList
+//--- Extension proc enterInActualOutputParameterList
   public: virtual void method_enterInActualOutputParameterList (class GGS_actualOutputArgumentList & arg_ioActualOutputArgumentList,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method enterParameterInSemanticContext
+//--- Extension proc enterParameterInSemanticContext
   public: virtual void method_enterParameterInSemanticContext (class GGS_unifiedTypeMap & arg_ioTypeMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -911,7 +911,7 @@ class cPtr_outputInputActualParameterAST : public cPtr_actualParameterAST {
            const class GGS_string inSelector,
            Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension method checkAgainstFormalArgument
+//--- Extension proc checkAgainstFormalArgument
   public: virtual void method_checkAgainstFormalArgument (const class GGS_lstring arg_inUsefulnessCallerEntityName,
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_analysisContext arg_inAnalysisContext,
@@ -925,11 +925,11 @@ class cPtr_outputInputActualParameterAST : public cPtr_actualParameterAST {
            class GGS_semanticInstructionListForGeneration & arg_ioInstructionListForGeneration,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method enterInActualOutputParameterList
+//--- Extension proc enterInActualOutputParameterList
   public: virtual void method_enterInActualOutputParameterList (class GGS_actualOutputArgumentList & arg_ioActualOutputArgumentList,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method enterParameterInSemanticContext
+//--- Extension proc enterParameterInSemanticContext
   public: virtual void method_enterParameterInSemanticContext (class GGS_unifiedTypeMap & arg_ioTypeMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -1116,7 +1116,7 @@ class cPtr_outputInputJokerParameterAST : public cPtr_actualParameterAST {
            const class GGS_string inSelector,
            Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension method checkAgainstFormalArgument
+//--- Extension proc checkAgainstFormalArgument
   public: virtual void method_checkAgainstFormalArgument (const class GGS_lstring arg_inUsefulnessCallerEntityName,
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_analysisContext arg_inAnalysisContext,
@@ -1130,11 +1130,11 @@ class cPtr_outputInputJokerParameterAST : public cPtr_actualParameterAST {
            class GGS_semanticInstructionListForGeneration & arg_ioInstructionListForGeneration,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method enterInActualOutputParameterList
+//--- Extension proc enterInActualOutputParameterList
   public: virtual void method_enterInActualOutputParameterList (class GGS_actualOutputArgumentList & arg_ioActualOutputArgumentList,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method enterParameterInSemanticContext
+//--- Extension proc enterParameterInSemanticContext
   public: virtual void method_enterParameterInSemanticContext (class GGS_unifiedTypeMap & arg_ioTypeMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -1315,7 +1315,7 @@ class cPtr_outputInputSelfParameterAST : public cPtr_actualParameterAST {
            const class GGS_string inSelector,
            Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension method checkAgainstFormalArgument
+//--- Extension proc checkAgainstFormalArgument
   public: virtual void method_checkAgainstFormalArgument (const class GGS_lstring arg_inUsefulnessCallerEntityName,
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_analysisContext arg_inAnalysisContext,
@@ -1329,11 +1329,11 @@ class cPtr_outputInputSelfParameterAST : public cPtr_actualParameterAST {
            class GGS_semanticInstructionListForGeneration & arg_ioInstructionListForGeneration,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method enterInActualOutputParameterList
+//--- Extension proc enterInActualOutputParameterList
   public: virtual void method_enterInActualOutputParameterList (class GGS_actualOutputArgumentList & arg_ioActualOutputArgumentList,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method enterParameterInSemanticContext
+//--- Extension proc enterParameterInSemanticContext
   public: virtual void method_enterParameterInSemanticContext (class GGS_unifiedTypeMap & arg_ioTypeMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -1520,7 +1520,7 @@ class cPtr_inputActualExistingVariableParameterAST : public cPtr_actualParameter
            const class GGS_string inSelector,
            Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension method checkAgainstFormalArgument
+//--- Extension proc checkAgainstFormalArgument
   public: virtual void method_checkAgainstFormalArgument (const class GGS_lstring arg_inUsefulnessCallerEntityName,
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_analysisContext arg_inAnalysisContext,
@@ -1534,11 +1534,11 @@ class cPtr_inputActualExistingVariableParameterAST : public cPtr_actualParameter
            class GGS_semanticInstructionListForGeneration & arg_ioInstructionListForGeneration,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method enterInActualOutputParameterList
+//--- Extension proc enterInActualOutputParameterList
   public: virtual void method_enterInActualOutputParameterList (class GGS_actualOutputArgumentList & arg_ioActualOutputArgumentList,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method enterParameterInSemanticContext
+//--- Extension proc enterParameterInSemanticContext
   public: virtual void method_enterParameterInSemanticContext (class GGS_unifiedTypeMap & arg_ioTypeMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -1729,7 +1729,7 @@ class cPtr_inputActualSelfPropertyParameterAST : public cPtr_actualParameterAST 
            const class GGS_string inSelector,
            Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension method checkAgainstFormalArgument
+//--- Extension proc checkAgainstFormalArgument
   public: virtual void method_checkAgainstFormalArgument (const class GGS_lstring arg_inUsefulnessCallerEntityName,
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_analysisContext arg_inAnalysisContext,
@@ -1743,11 +1743,11 @@ class cPtr_inputActualSelfPropertyParameterAST : public cPtr_actualParameterAST 
            class GGS_semanticInstructionListForGeneration & arg_ioInstructionListForGeneration,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method enterInActualOutputParameterList
+//--- Extension proc enterInActualOutputParameterList
   public: virtual void method_enterInActualOutputParameterList (class GGS_actualOutputArgumentList & arg_ioActualOutputArgumentList,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method enterParameterInSemanticContext
+//--- Extension proc enterParameterInSemanticContext
   public: virtual void method_enterParameterInSemanticContext (class GGS_unifiedTypeMap & arg_ioTypeMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -1938,7 +1938,7 @@ class cPtr_inputActualSelfParameterAST : public cPtr_actualParameterAST {
            const class GGS_string inSelector,
            Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension method checkAgainstFormalArgument
+//--- Extension proc checkAgainstFormalArgument
   public: virtual void method_checkAgainstFormalArgument (const class GGS_lstring arg_inUsefulnessCallerEntityName,
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_analysisContext arg_inAnalysisContext,
@@ -1952,11 +1952,11 @@ class cPtr_inputActualSelfParameterAST : public cPtr_actualParameterAST {
            class GGS_semanticInstructionListForGeneration & arg_ioInstructionListForGeneration,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method enterInActualOutputParameterList
+//--- Extension proc enterInActualOutputParameterList
   public: virtual void method_enterInActualOutputParameterList (class GGS_actualOutputArgumentList & arg_ioActualOutputArgumentList,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method enterParameterInSemanticContext
+//--- Extension proc enterParameterInSemanticContext
   public: virtual void method_enterParameterInSemanticContext (class GGS_unifiedTypeMap & arg_ioTypeMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -2151,7 +2151,7 @@ class cPtr_inputActualNewVariableParameterAST : public cPtr_actualParameterAST {
            const class GGS_string inSelector,
            Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension method checkAgainstFormalArgument
+//--- Extension proc checkAgainstFormalArgument
   public: virtual void method_checkAgainstFormalArgument (const class GGS_lstring arg_inUsefulnessCallerEntityName,
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_analysisContext arg_inAnalysisContext,
@@ -2165,11 +2165,11 @@ class cPtr_inputActualNewVariableParameterAST : public cPtr_actualParameterAST {
            class GGS_semanticInstructionListForGeneration & arg_ioInstructionListForGeneration,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method enterInActualOutputParameterList
+//--- Extension proc enterInActualOutputParameterList
   public: virtual void method_enterInActualOutputParameterList (class GGS_actualOutputArgumentList & arg_ioActualOutputArgumentList,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method enterParameterInSemanticContext
+//--- Extension proc enterParameterInSemanticContext
   public: virtual void method_enterParameterInSemanticContext (class GGS_unifiedTypeMap & arg_ioTypeMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -2370,7 +2370,7 @@ class cPtr_inputActualNewConstantParameterAST : public cPtr_actualParameterAST {
            const class GGS_string inSelector,
            Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension method checkAgainstFormalArgument
+//--- Extension proc checkAgainstFormalArgument
   public: virtual void method_checkAgainstFormalArgument (const class GGS_lstring arg_inUsefulnessCallerEntityName,
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_analysisContext arg_inAnalysisContext,
@@ -2384,11 +2384,11 @@ class cPtr_inputActualNewConstantParameterAST : public cPtr_actualParameterAST {
            class GGS_semanticInstructionListForGeneration & arg_ioInstructionListForGeneration,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method enterInActualOutputParameterList
+//--- Extension proc enterInActualOutputParameterList
   public: virtual void method_enterInActualOutputParameterList (class GGS_actualOutputArgumentList & arg_ioActualOutputArgumentList,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method enterParameterInSemanticContext
+//--- Extension proc enterParameterInSemanticContext
   public: virtual void method_enterParameterInSemanticContext (class GGS_unifiedTypeMap & arg_ioTypeMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -2579,7 +2579,7 @@ class cPtr_inputSingleJokerActualParameterAST : public cPtr_actualParameterAST {
            const class GGS_string inSelector,
            Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension method checkAgainstFormalArgument
+//--- Extension proc checkAgainstFormalArgument
   public: virtual void method_checkAgainstFormalArgument (const class GGS_lstring arg_inUsefulnessCallerEntityName,
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_analysisContext arg_inAnalysisContext,
@@ -2593,11 +2593,11 @@ class cPtr_inputSingleJokerActualParameterAST : public cPtr_actualParameterAST {
            class GGS_semanticInstructionListForGeneration & arg_ioInstructionListForGeneration,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method enterInActualOutputParameterList
+//--- Extension proc enterInActualOutputParameterList
   public: virtual void method_enterInActualOutputParameterList (class GGS_actualOutputArgumentList & arg_ioActualOutputArgumentList,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method enterParameterInSemanticContext
+//--- Extension proc enterParameterInSemanticContext
   public: virtual void method_enterParameterInSemanticContext (class GGS_unifiedTypeMap & arg_ioTypeMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -2782,7 +2782,7 @@ class cPtr_inputJokerActualParameterAST : public cPtr_actualParameterAST {
            const class GGS_string inSelector,
            Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension method checkAgainstFormalArgument
+//--- Extension proc checkAgainstFormalArgument
   public: virtual void method_checkAgainstFormalArgument (const class GGS_lstring arg_inUsefulnessCallerEntityName,
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_analysisContext arg_inAnalysisContext,
@@ -2796,11 +2796,11 @@ class cPtr_inputJokerActualParameterAST : public cPtr_actualParameterAST {
            class GGS_semanticInstructionListForGeneration & arg_ioInstructionListForGeneration,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method enterInActualOutputParameterList
+//--- Extension proc enterInActualOutputParameterList
   public: virtual void method_enterInActualOutputParameterList (class GGS_actualOutputArgumentList & arg_ioActualOutputArgumentList,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method enterParameterInSemanticContext
+//--- Extension proc enterParameterInSemanticContext
   public: virtual void method_enterParameterInSemanticContext (class GGS_unifiedTypeMap & arg_ioTypeMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -7578,7 +7578,7 @@ class cPtr_nonterminalCallInstruction : public cPtr_syntaxInstructionAST {
                                                                 Compiler * inCompiler) ;
 
 
-//--- Extension method analyzeSyntaxInstruction
+//--- Extension proc analyzeSyntaxInstruction
   public: virtual void method_analyzeSyntaxInstruction (const class GGS_lstring arg_inUsefulnessCallerEntityName,
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_analysisContext arg_inAnalysisContext,
@@ -7594,7 +7594,7 @@ class cPtr_nonterminalCallInstruction : public cPtr_syntaxInstructionAST {
            class GGS_uint & arg_ioSelectMethodCount,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method transformInstructionForGrammarAnalysis
+//--- Extension proc transformInstructionForGrammarAnalysis
   public: virtual void method_transformInstructionForGrammarAnalysis (class GGS_terminalSymbolsMapForGrammarAnalysis & arg_ioActuallyUsedTerminalSymbolMap,
            const class GGS_nonTerminalSymbolMapForGrammarAnalysis arg_inNonTerminalSymbolMap,
            class GGS_uint & arg_ioAddedNonTerminalIndex,
@@ -7794,12 +7794,12 @@ class cPtr_nonterminalInstructionForGeneration : public cPtr_syntaxInstructionFo
   public: virtual class GGS_bool getter_compareInstructionSyntaxSignature (const class GGS_semanticInstructionForGeneration inTestedInstruction,
            Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension method appendSyntaxSignature
+//--- Extension proc appendSyntaxSignature
   public: virtual void method_appendSyntaxSignature (const class GGS_string arg_inPosfix,
            class GGS_semanticInstructionListForGeneration & arg_ioInstructionListForGeneration,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method generateInstruction
+//--- Extension proc generateInstruction
   public: virtual void method_generateInstruction (class GGS_stringset & arg_ioInclusionSet,
            class GGS_uint & arg_ioTemporaryVariableIndex,
            class GGS_stringset & arg_ioUnusedVariableCppNameSet,
@@ -8219,7 +8219,7 @@ class cPtr_abstractInputParameter : public AbstractStrongPtrClass {
   public: void abstractInputParameter_init (Compiler * inCompiler) ;
 
 
-//--- Extension method analyzeInputParameter
+//--- Extension proc analyzeInputParameter
   public: virtual void method_analyzeInputParameter (const class GGS_analysisContext arg_inAnalysisContext,
            class GGS_unifiedTypeMap & arg_ioTypeMap,
            const class GGS_lexicalTypeEnum arg_inRequiredLexicalType,
@@ -8414,7 +8414,7 @@ class cPtr_terminalCheckInstructionAST : public cPtr_syntaxInstructionAST {
                                                                          Compiler * inCompiler) ;
 
 
-//--- Extension method analyzeSyntaxInstruction
+//--- Extension proc analyzeSyntaxInstruction
   public: virtual void method_analyzeSyntaxInstruction (const class GGS_lstring arg_inUsefulnessCallerEntityName,
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_analysisContext arg_inAnalysisContext,
@@ -8430,7 +8430,7 @@ class cPtr_terminalCheckInstructionAST : public cPtr_syntaxInstructionAST {
            class GGS_uint & arg_ioSelectMethodCount,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method transformInstructionForGrammarAnalysis
+//--- Extension proc transformInstructionForGrammarAnalysis
   public: virtual void method_transformInstructionForGrammarAnalysis (class GGS_terminalSymbolsMapForGrammarAnalysis & arg_ioActuallyUsedTerminalSymbolMap,
            const class GGS_nonTerminalSymbolMapForGrammarAnalysis arg_inNonTerminalSymbolMap,
            class GGS_uint & arg_ioAddedNonTerminalIndex,
@@ -9076,12 +9076,12 @@ class cPtr_terminalCheckInstructionForGeneration : public cPtr_syntaxInstruction
   public: virtual class GGS_bool getter_compareInstructionSyntaxSignature (const class GGS_semanticInstructionForGeneration inTestedInstruction,
            Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension method appendSyntaxSignature
+//--- Extension proc appendSyntaxSignature
   public: virtual void method_appendSyntaxSignature (const class GGS_string arg_inPosfix,
            class GGS_semanticInstructionListForGeneration & arg_ioInstructionListForGeneration,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method generateInstruction
+//--- Extension proc generateInstruction
   public: virtual void method_generateInstruction (class GGS_stringset & arg_ioInclusionSet,
            class GGS_uint & arg_ioTemporaryVariableIndex,
            class GGS_stringset & arg_ioUnusedVariableCppNameSet,
@@ -9817,7 +9817,7 @@ class cPtr_selectInstruction : public cPtr_syntaxInstructionAST {
                                                    Compiler * inCompiler) ;
 
 
-//--- Extension method analyzeSyntaxInstruction
+//--- Extension proc analyzeSyntaxInstruction
   public: virtual void method_analyzeSyntaxInstruction (const class GGS_lstring arg_inUsefulnessCallerEntityName,
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_analysisContext arg_inAnalysisContext,
@@ -9833,7 +9833,7 @@ class cPtr_selectInstruction : public cPtr_syntaxInstructionAST {
            class GGS_uint & arg_ioSelectMethodCount,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method transformInstructionForGrammarAnalysis
+//--- Extension proc transformInstructionForGrammarAnalysis
   public: virtual void method_transformInstructionForGrammarAnalysis (class GGS_terminalSymbolsMapForGrammarAnalysis & arg_ioActuallyUsedTerminalSymbolMap,
            const class GGS_nonTerminalSymbolMapForGrammarAnalysis arg_inNonTerminalSymbolMap,
            class GGS_uint & arg_ioAddedNonTerminalIndex,
@@ -10350,12 +10350,12 @@ class cPtr_selectInstructionForGeneration : public cPtr_syntaxInstructionForGene
   public: virtual class GGS_bool getter_compareInstructionSyntaxSignature (const class GGS_semanticInstructionForGeneration inTestedInstruction,
            Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension method appendSyntaxSignature
+//--- Extension proc appendSyntaxSignature
   public: virtual void method_appendSyntaxSignature (const class GGS_string arg_inPosfix,
            class GGS_semanticInstructionListForGeneration & arg_ioInstructionListForGeneration,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method generateInstruction
+//--- Extension proc generateInstruction
   public: virtual void method_generateInstruction (class GGS_stringset & arg_ioInclusionSet,
            class GGS_uint & arg_ioTemporaryVariableIndex,
            class GGS_stringset & arg_ioUnusedVariableCppNameSet,
@@ -10625,7 +10625,7 @@ class cPtr_repeatInstruction : public cPtr_syntaxInstructionAST {
                                                            Compiler * inCompiler) ;
 
 
-//--- Extension method analyzeSyntaxInstruction
+//--- Extension proc analyzeSyntaxInstruction
   public: virtual void method_analyzeSyntaxInstruction (const class GGS_lstring arg_inUsefulnessCallerEntityName,
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_analysisContext arg_inAnalysisContext,
@@ -10641,7 +10641,7 @@ class cPtr_repeatInstruction : public cPtr_syntaxInstructionAST {
            class GGS_uint & arg_ioSelectMethodCount,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method transformInstructionForGrammarAnalysis
+//--- Extension proc transformInstructionForGrammarAnalysis
   public: virtual void method_transformInstructionForGrammarAnalysis (class GGS_terminalSymbolsMapForGrammarAnalysis & arg_ioActuallyUsedTerminalSymbolMap,
            const class GGS_nonTerminalSymbolMapForGrammarAnalysis arg_inNonTerminalSymbolMap,
            class GGS_uint & arg_ioAddedNonTerminalIndex,
@@ -10847,12 +10847,12 @@ class cPtr_repeatInstructionForGeneration : public cPtr_syntaxInstructionForGene
   public: virtual class GGS_bool getter_compareInstructionSyntaxSignature (const class GGS_semanticInstructionForGeneration inTestedInstruction,
            Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension method appendSyntaxSignature
+//--- Extension proc appendSyntaxSignature
   public: virtual void method_appendSyntaxSignature (const class GGS_string arg_inPosfix,
            class GGS_semanticInstructionListForGeneration & arg_ioInstructionListForGeneration,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method generateInstruction
+//--- Extension proc generateInstruction
   public: virtual void method_generateInstruction (class GGS_stringset & arg_ioInclusionSet,
            class GGS_uint & arg_ioTemporaryVariableIndex,
            class GGS_stringset & arg_ioUnusedVariableCppNameSet,
@@ -10975,7 +10975,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_repeatInstructionForGe
 
 //--------------------------------------------------------------------------------------------------
 //
-//Abstract extension method '@semanticDeclarationAST enterDeclarationInGraph'
+//Abstract extension proc '@semanticDeclarationAST enterDeclarationInGraph'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -12117,7 +12117,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_extensionSetterMapForB
 
 //--------------------------------------------------------------------------------------------------
 //
-//Abstract extension method '@semanticDeclarationAST enterDeclarationInSemanticContext'
+//Abstract extension proc '@semanticDeclarationAST enterDeclarationInSemanticContext'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -12134,7 +12134,7 @@ void callExtensionMethod_enterDeclarationInSemanticContext (class cPtr_semanticD
 
 //--------------------------------------------------------------------------------------------------
 //
-//Abstract extension method '@semanticDeclarationAST semanticAnalysis'
+//Abstract extension proc '@semanticDeclarationAST semanticAnalysis'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -12438,7 +12438,7 @@ class Lexique_galgasScanner_33_ : public Lexique {
   public: static GGS_stringlist symbols (LOCATION_ARGS) ;
 
 //--- Declaring a protected virtual destructor enables the compiler to raise
-//    an error if a direct delete is performed; only the static method
+//    an error if a direct delete is performed; only the static proc
 //    SharedObject::detachPointer may invoke delete.
   #ifndef DO_NOT_GENERATE_CHECKINGS
     protected: virtual ~ Lexique_galgasScanner_33_ (void) { }
@@ -12516,127 +12516,126 @@ class Lexique_galgasScanner_33_ : public Lexique {
   public: static const int32_t kToken_loop = 66 ;
   public: static const int32_t kToken_map = 67 ;
   public: static const int32_t kToken_message = 68 ;
-  public: static const int32_t kToken_method = 69 ;
-  public: static const int32_t kToken_mod = 70 ;
-  public: static const int32_t kToken_mutating = 71 ;
-  public: static const int32_t kToken_nil = 72 ;
-  public: static const int32_t kToken_not = 73 ;
-  public: static const int32_t kToken_on = 74 ;
-  public: static const int32_t kToken_operator = 75 ;
-  public: static const int32_t kToken_option = 76 ;
-  public: static const int32_t kToken_or = 77 ;
-  public: static const int32_t kToken_override = 78 ;
-  public: static const int32_t kToken_parse = 79 ;
-  public: static const int32_t kToken_public = 80 ;
-  public: static const int32_t kToken_protected = 81 ;
-  public: static const int32_t kToken_private = 82 ;
-  public: static const int32_t kToken_proc = 83 ;
-  public: static const int32_t kToken_project = 84 ;
-  public: static const int32_t kToken_remove = 85 ;
-  public: static const int32_t kToken_repeat = 86 ;
-  public: static const int32_t kToken_replace = 87 ;
-  public: static const int32_t kToken_rewind = 88 ;
-  public: static const int32_t kToken_rule = 89 ;
-  public: static const int32_t kToken_search = 90 ;
-  public: static const int32_t kToken_select = 91 ;
-  public: static const int32_t kToken_self = 92 ;
-  public: static const int32_t kToken_send = 93 ;
-  public: static const int32_t kToken_setter = 94 ;
-  public: static const int32_t kToken_sortedlist = 95 ;
-  public: static const int32_t kToken_spoil = 96 ;
-  public: static const int32_t kToken_struct = 97 ;
-  public: static const int32_t kToken_style = 98 ;
-  public: static const int32_t kToken_super = 99 ;
-  public: static const int32_t kToken_switch = 100 ;
-  public: static const int32_t kToken_syntax = 101 ;
-  public: static const int32_t kToken_tag = 102 ;
-  public: static const int32_t kToken_template = 103 ;
-  public: static const int32_t kToken_then = 104 ;
-  public: static const int32_t kToken_true = 105 ;
-  public: static const int32_t kToken_typealias = 106 ;
-  public: static const int32_t kToken_unused = 107 ;
-  public: static const int32_t kToken_var = 108 ;
-  public: static const int32_t kToken_warning = 109 ;
-  public: static const int32_t kToken_weak = 110 ;
-  public: static const int32_t kToken_while = 111 ;
-  public: static const int32_t kToken_with = 112 ;
-  public: static const int32_t kToken__25_applicationBundleBase = 113 ;
-  public: static const int32_t kToken__25_clonable = 114 ;
-  public: static const int32_t kToken__25_codeblocks_2D_linux_33__32_ = 115 ;
-  public: static const int32_t kToken__25_codeblocks_2D_linux_36__34_ = 116 ;
-  public: static const int32_t kToken__25_codeblocks_2D_windows = 117 ;
-  public: static const int32_t kToken__25_comparable = 118 ;
-  public: static const int32_t kToken__25_equatable = 119 ;
-  public: static const int32_t kToken__25_from = 120 ;
-  public: static const int32_t kToken__25_generatedInSeparateFile = 121 ;
-  public: static const int32_t kToken__25_initArgLabel = 122 ;
-  public: static const int32_t kToken__25_libpmAtPath = 123 ;
-  public: static const int32_t kToken__25_MacSwiftApp = 124 ;
-  public: static const int32_t kToken__25_macCodeSign = 125 ;
-  public: static const int32_t kToken__25_makefile_2D_macosx = 126 ;
-  public: static const int32_t kToken__25_makefile_2D_unix = 127 ;
-  public: static const int32_t kToken__25_makefile_2D_x_38__36_linux_33__32__2D_on_2D_macosx = 128 ;
-  public: static const int32_t kToken__25_makefile_2D_x_38__36_linux_36__34__2D_on_2D_macosx = 129 ;
-  public: static const int32_t kToken__25_makefile_2D_arm_36__34__2D_linux_2D_on_2D_macosx = 130 ;
-  public: static const int32_t kToken__25_makefile_2D_win_33__32__2D_on_2D_macosx = 131 ;
-  public: static const int32_t kToken__25_nonAtomicSelection = 132 ;
-  public: static const int32_t kToken__25_once = 133 ;
-  public: static const int32_t kToken__25_preserved = 134 ;
-  public: static const int32_t kToken__25_quietOutputByDefault = 135 ;
-  public: static const int32_t kToken__25_searchSubscript = 136 ;
-  public: static const int32_t kToken__25_templateEndMark = 137 ;
-  public: static const int32_t kToken__25_translate = 138 ;
-  public: static const int32_t kToken__25_usefull = 139 ;
-  public: static const int32_t kToken__2A_ = 140 ;
-  public: static const int32_t kToken__2C_ = 141 ;
-  public: static const int32_t kToken__2B_ = 142 ;
-  public: static const int32_t kToken__26__2B_ = 143 ;
-  public: static const int32_t kToken__26__2D_ = 144 ;
-  public: static const int32_t kToken__26__2A_ = 145 ;
-  public: static const int32_t kToken__26__2F_ = 146 ;
-  public: static const int32_t kToken__3E_ = 147 ;
-  public: static const int32_t kToken__3B_ = 148 ;
-  public: static const int32_t kToken__3A_ = 149 ;
-  public: static const int32_t kToken__3A__3E_ = 150 ;
-  public: static const int32_t kToken__2D_ = 151 ;
-  public: static const int32_t kToken__28_ = 152 ;
-  public: static const int32_t kToken__29_ = 153 ;
-  public: static const int32_t kToken__2D__3E_ = 154 ;
-  public: static const int32_t kToken__3D__3D_ = 155 ;
-  public: static const int32_t kToken__3D_ = 156 ;
-  public: static const int32_t kToken__26__26_ = 157 ;
-  public: static const int32_t kToken__5B_ = 158 ;
-  public: static const int32_t kToken__5D_ = 159 ;
-  public: static const int32_t kToken__2B__2B__3D_ = 160 ;
-  public: static const int32_t kToken__2E_ = 161 ;
-  public: static const int32_t kToken__2E__2E__2E_ = 162 ;
-  public: static const int32_t kToken__2E__2E__3C_ = 163 ;
-  public: static const int32_t kToken__40__7B_ = 164 ;
-  public: static const int32_t kToken__40__28_ = 165 ;
-  public: static const int32_t kToken__40__5B_ = 166 ;
-  public: static const int32_t kToken__2B__3D_ = 167 ;
-  public: static const int32_t kToken__2D__3D_ = 168 ;
-  public: static const int32_t kToken__2A__3D_ = 169 ;
-  public: static const int32_t kToken__2F__3D_ = 170 ;
-  public: static const int32_t kToken__26__3D_ = 171 ;
-  public: static const int32_t kToken__7C__3D_ = 172 ;
-  public: static const int32_t kToken__5E__3D_ = 173 ;
-  public: static const int32_t kToken__2F_ = 174 ;
-  public: static const int32_t kToken__21__3D_ = 175 ;
-  public: static const int32_t kToken__3E__3D_ = 176 ;
-  public: static const int32_t kToken__26_ = 177 ;
-  public: static const int32_t kToken__7B_ = 178 ;
-  public: static const int32_t kToken__7D_ = 179 ;
-  public: static const int32_t kToken__60_ = 180 ;
-  public: static const int32_t kToken__7C__7C_ = 181 ;
-  public: static const int32_t kToken__7C_ = 182 ;
-  public: static const int32_t kToken__5E_ = 183 ;
-  public: static const int32_t kToken__3E__3E_ = 184 ;
-  public: static const int32_t kToken__7E_ = 185 ;
-  public: static const int32_t kToken__3D__3D__3D_ = 186 ;
-  public: static const int32_t kToken__21__3D__3D_ = 187 ;
-  public: static const int32_t kToken__3F__5E_ = 188 ;
-  public: static const int32_t kToken__21__5E_ = 189 ;
+  public: static const int32_t kToken_mod = 69 ;
+  public: static const int32_t kToken_mutating = 70 ;
+  public: static const int32_t kToken_nil = 71 ;
+  public: static const int32_t kToken_not = 72 ;
+  public: static const int32_t kToken_on = 73 ;
+  public: static const int32_t kToken_operator = 74 ;
+  public: static const int32_t kToken_option = 75 ;
+  public: static const int32_t kToken_or = 76 ;
+  public: static const int32_t kToken_override = 77 ;
+  public: static const int32_t kToken_parse = 78 ;
+  public: static const int32_t kToken_public = 79 ;
+  public: static const int32_t kToken_protected = 80 ;
+  public: static const int32_t kToken_private = 81 ;
+  public: static const int32_t kToken_proc = 82 ;
+  public: static const int32_t kToken_project = 83 ;
+  public: static const int32_t kToken_remove = 84 ;
+  public: static const int32_t kToken_repeat = 85 ;
+  public: static const int32_t kToken_replace = 86 ;
+  public: static const int32_t kToken_rewind = 87 ;
+  public: static const int32_t kToken_rule = 88 ;
+  public: static const int32_t kToken_search = 89 ;
+  public: static const int32_t kToken_select = 90 ;
+  public: static const int32_t kToken_self = 91 ;
+  public: static const int32_t kToken_send = 92 ;
+  public: static const int32_t kToken_setter = 93 ;
+  public: static const int32_t kToken_sortedlist = 94 ;
+  public: static const int32_t kToken_spoil = 95 ;
+  public: static const int32_t kToken_struct = 96 ;
+  public: static const int32_t kToken_style = 97 ;
+  public: static const int32_t kToken_super = 98 ;
+  public: static const int32_t kToken_switch = 99 ;
+  public: static const int32_t kToken_syntax = 100 ;
+  public: static const int32_t kToken_tag = 101 ;
+  public: static const int32_t kToken_template = 102 ;
+  public: static const int32_t kToken_then = 103 ;
+  public: static const int32_t kToken_true = 104 ;
+  public: static const int32_t kToken_typealias = 105 ;
+  public: static const int32_t kToken_unused = 106 ;
+  public: static const int32_t kToken_var = 107 ;
+  public: static const int32_t kToken_warning = 108 ;
+  public: static const int32_t kToken_weak = 109 ;
+  public: static const int32_t kToken_while = 110 ;
+  public: static const int32_t kToken_with = 111 ;
+  public: static const int32_t kToken__25_applicationBundleBase = 112 ;
+  public: static const int32_t kToken__25_clonable = 113 ;
+  public: static const int32_t kToken__25_codeblocks_2D_linux_33__32_ = 114 ;
+  public: static const int32_t kToken__25_codeblocks_2D_linux_36__34_ = 115 ;
+  public: static const int32_t kToken__25_codeblocks_2D_windows = 116 ;
+  public: static const int32_t kToken__25_comparable = 117 ;
+  public: static const int32_t kToken__25_equatable = 118 ;
+  public: static const int32_t kToken__25_from = 119 ;
+  public: static const int32_t kToken__25_generatedInSeparateFile = 120 ;
+  public: static const int32_t kToken__25_initArgLabel = 121 ;
+  public: static const int32_t kToken__25_libpmAtPath = 122 ;
+  public: static const int32_t kToken__25_MacSwiftApp = 123 ;
+  public: static const int32_t kToken__25_macCodeSign = 124 ;
+  public: static const int32_t kToken__25_makefile_2D_macosx = 125 ;
+  public: static const int32_t kToken__25_makefile_2D_unix = 126 ;
+  public: static const int32_t kToken__25_makefile_2D_x_38__36_linux_33__32__2D_on_2D_macosx = 127 ;
+  public: static const int32_t kToken__25_makefile_2D_x_38__36_linux_36__34__2D_on_2D_macosx = 128 ;
+  public: static const int32_t kToken__25_makefile_2D_arm_36__34__2D_linux_2D_on_2D_macosx = 129 ;
+  public: static const int32_t kToken__25_makefile_2D_win_33__32__2D_on_2D_macosx = 130 ;
+  public: static const int32_t kToken__25_nonAtomicSelection = 131 ;
+  public: static const int32_t kToken__25_once = 132 ;
+  public: static const int32_t kToken__25_preserved = 133 ;
+  public: static const int32_t kToken__25_quietOutputByDefault = 134 ;
+  public: static const int32_t kToken__25_searchSubscript = 135 ;
+  public: static const int32_t kToken__25_templateEndMark = 136 ;
+  public: static const int32_t kToken__25_translate = 137 ;
+  public: static const int32_t kToken__25_usefull = 138 ;
+  public: static const int32_t kToken__2A_ = 139 ;
+  public: static const int32_t kToken__2C_ = 140 ;
+  public: static const int32_t kToken__2B_ = 141 ;
+  public: static const int32_t kToken__26__2B_ = 142 ;
+  public: static const int32_t kToken__26__2D_ = 143 ;
+  public: static const int32_t kToken__26__2A_ = 144 ;
+  public: static const int32_t kToken__26__2F_ = 145 ;
+  public: static const int32_t kToken__3E_ = 146 ;
+  public: static const int32_t kToken__3B_ = 147 ;
+  public: static const int32_t kToken__3A_ = 148 ;
+  public: static const int32_t kToken__3A__3E_ = 149 ;
+  public: static const int32_t kToken__2D_ = 150 ;
+  public: static const int32_t kToken__28_ = 151 ;
+  public: static const int32_t kToken__29_ = 152 ;
+  public: static const int32_t kToken__2D__3E_ = 153 ;
+  public: static const int32_t kToken__3D__3D_ = 154 ;
+  public: static const int32_t kToken__3D_ = 155 ;
+  public: static const int32_t kToken__26__26_ = 156 ;
+  public: static const int32_t kToken__5B_ = 157 ;
+  public: static const int32_t kToken__5D_ = 158 ;
+  public: static const int32_t kToken__2B__2B__3D_ = 159 ;
+  public: static const int32_t kToken__2E_ = 160 ;
+  public: static const int32_t kToken__2E__2E__2E_ = 161 ;
+  public: static const int32_t kToken__2E__2E__3C_ = 162 ;
+  public: static const int32_t kToken__40__7B_ = 163 ;
+  public: static const int32_t kToken__40__28_ = 164 ;
+  public: static const int32_t kToken__40__5B_ = 165 ;
+  public: static const int32_t kToken__2B__3D_ = 166 ;
+  public: static const int32_t kToken__2D__3D_ = 167 ;
+  public: static const int32_t kToken__2A__3D_ = 168 ;
+  public: static const int32_t kToken__2F__3D_ = 169 ;
+  public: static const int32_t kToken__26__3D_ = 170 ;
+  public: static const int32_t kToken__7C__3D_ = 171 ;
+  public: static const int32_t kToken__5E__3D_ = 172 ;
+  public: static const int32_t kToken__2F_ = 173 ;
+  public: static const int32_t kToken__21__3D_ = 174 ;
+  public: static const int32_t kToken__3E__3D_ = 175 ;
+  public: static const int32_t kToken__26_ = 176 ;
+  public: static const int32_t kToken__7B_ = 177 ;
+  public: static const int32_t kToken__7D_ = 178 ;
+  public: static const int32_t kToken__60_ = 179 ;
+  public: static const int32_t kToken__7C__7C_ = 180 ;
+  public: static const int32_t kToken__7C_ = 181 ;
+  public: static const int32_t kToken__5E_ = 182 ;
+  public: static const int32_t kToken__3E__3E_ = 183 ;
+  public: static const int32_t kToken__7E_ = 184 ;
+  public: static const int32_t kToken__3D__3D__3D_ = 185 ;
+  public: static const int32_t kToken__21__3D__3D_ = 186 ;
+  public: static const int32_t kToken__3F__5E_ = 187 ;
+  public: static const int32_t kToken__21__5E_ = 188 ;
 
 //--- Key words table 'galgasKeyWordList'
   public: static int32_t search_into_galgasKeyWordList (const String & inSearchedString) ;
@@ -12646,7 +12645,7 @@ class Lexique_galgasScanner_33_ : public Lexique {
 
 //--- Key words table 'galgasDelimitorsList'
   public: static int32_t search_into_galgasDelimitorsList (const String & inSearchedString) ;
-  
+
 
 //--- Assign from attribute
   public: GGS_lbigint synthetizedAttribute_bigintValue (void) const ;
@@ -12728,7 +12727,7 @@ public: static const uint32_t kIndexing_indexingNameReference = 51 ;
   protected: virtual String getMessageForTerminal (const int32_t inTerminalSymbol) const override ;
 
 //--- Get terminal count
-  public: virtual int32_t terminalVocabularyCount (void) const override { return 189 ; }
+  public: virtual int32_t terminalVocabularyCount (void) const override { return 188 ; }
 
 //--- Get Token String
   public: virtual String getCurrentTokenString (const cToken * inTokenPtr) const override ;

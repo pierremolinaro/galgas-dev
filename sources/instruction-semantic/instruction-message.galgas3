@@ -66,7 +66,7 @@ syntax extension galgas4InstructionsSyntax {
 //! CONTEXT
 //--------------------------------------------------------------------------------------------------
 
-override method @messageInstructionAST enterInstructionInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
+override proc @messageInstructionAST enterInstructionInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
   [self.mExpression enterExpressionInSemanticContext !?ioTypeMap]
 }
 
@@ -74,7 +74,7 @@ override method @messageInstructionAST enterInstructionInSemanticContext (?!@uni
 //! SEMANTICS
 //--------------------------------------------------------------------------------------------------
 
-override method @messageInstructionAST analyzeSemanticInstruction (
+override proc @messageInstructionAST analyzeSemanticInstruction (
                         ?let @lstring inUsefulnessCallerEntityName,
                         ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
                         ?let @analysisContext inAnalysisContext,
@@ -114,7 +114,7 @@ final class @messageInstructionForGeneration : @semanticInstructionForGeneration
 
 //································································································*
 
-override method @messageInstructionForGeneration generateInstruction (?!@stringset ioInclusionSet,
+override proc @messageInstructionForGeneration generateInstruction (?!@stringset ioInclusionSet,
   ?!@uint ioTemporaryVariableIndex,
   ?!@stringset ioUnusedVariableCppNameSet,
   ?let @bool unused inGenerateSyntaxDirectedTranslationString,
@@ -127,7 +127,7 @@ override method @messageInstructionForGeneration generateInstruction (?!@strings
     !?ioUnusedVariableCppNameSet
     ?let @string messageCppVarName
   ]
-//--- Invoke 'printMessage' method of Compiler
+//--- Invoke 'printMessage' proc of Compiler
   ioGeneratedCode += compilerCppName () + "->printMessage (" + messageCppVarName
   ioGeneratedCode += " " + self.mInstructionLocation.commaSourceFile + ") ;\n"
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]

@@ -167,7 +167,7 @@ syntax extension galgas4InstructionsSyntax {
 //! CONTEXT
 //--------------------------------------------------------------------------------------------------
 
-override method @setterCallInstructionAST enterInstructionInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
+override proc @setterCallInstructionAST enterInstructionInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
   for (mActualParameter) in self.mActualParameterList do
     [mActualParameter enterParameterInSemanticContext !?ioTypeMap]
   end
@@ -175,7 +175,7 @@ override method @setterCallInstructionAST enterInstructionInSemanticContext (?!@
 
 //································································································*
 
-override method @selfSetterCallInstructionAST enterInstructionInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
+override proc @selfSetterCallInstructionAST enterInstructionInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
   for (mActualParameter) in self.mActualParameterList do
     [mActualParameter enterParameterInSemanticContext !?ioTypeMap]
   end
@@ -185,7 +185,7 @@ override method @selfSetterCallInstructionAST enterInstructionInSemanticContext 
 //! SEMANTICS
 //--------------------------------------------------------------------------------------------------
 
-override method @setterCallInstructionAST analyzeSemanticInstruction (
+override proc @setterCallInstructionAST analyzeSemanticInstruction (
                         ?let @lstring inUsefulnessCallerEntityName,
                         ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
                         ?let @analysisContext inAnalysisContext,
@@ -273,7 +273,7 @@ override method @setterCallInstructionAST analyzeSemanticInstruction (
     !?ioInstructionListForGeneration
     ?let @actualParameterListForGeneration actualParameterListForGeneration
   ]
-//--- Search base type that declares the method
+//--- Search base type that declares the proc
   var baseType = castType
   var searching = true
   if @uint.errorCount == 0 then
@@ -307,7 +307,7 @@ override method @setterCallInstructionAST analyzeSemanticInstruction (
 
 //································································································*
 
-override method @selfSetterCallInstructionAST analyzeSemanticInstruction (
+override proc @selfSetterCallInstructionAST analyzeSemanticInstruction (
                         ?let @lstring inUsefulnessCallerEntityName,
                         ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
                         ?let @analysisContext inAnalysisContext,
@@ -381,7 +381,7 @@ final class @selfSetterCallInstructionForGeneration : @semanticInstructionForGen
 
 //································································································*
 
-override method @setterCallInstructionForGeneration generateInstruction (?!@stringset ioInclusionSet,
+override proc @setterCallInstructionForGeneration generateInstruction (?!@stringset ioInclusionSet,
   ?!@uint ioTemporaryVariableIndex,
   ?!@stringset ioUnusedVariableCppNameSet,
   ?let @bool unused inGenerateSyntaxDirectedTranslationString,
@@ -408,7 +408,7 @@ override method @setterCallInstructionForGeneration generateInstruction (?!@stri
     ]
     parameterCppNameList += !parameterCppName
   end
-//--- Generate method call
+//--- Generate proc call
   switch self.mKind
   case definedAsExtension :
     ioInclusionSet ++= "setter-" + self.mMethodBaseType.definition.typeName.string.fileNameRepresentation + "-" + self.mSetterName.string.fileNameRepresentation
@@ -460,7 +460,7 @@ override method @setterCallInstructionForGeneration generateInstruction (?!@stri
 
 //································································································*
 
-override method @selfSetterCallInstructionForGeneration generateInstruction (?!@stringset ioInclusionSet,
+override proc @selfSetterCallInstructionForGeneration generateInstruction (?!@stringset ioInclusionSet,
   ?!@uint ioTemporaryVariableIndex,
   ?!@stringset ioUnusedVariableCppNameSet,
   ?let @bool unused inGenerateSyntaxDirectedTranslationString,

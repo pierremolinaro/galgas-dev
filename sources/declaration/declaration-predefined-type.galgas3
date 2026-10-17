@@ -47,7 +47,7 @@ abstract class @predefinedTypeAST : @semanticDeclarationAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method enterDeclarationInGraph
+  override proc enterDeclarationInGraph
        ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
        ?!@equatableExtensionMap unused ioEquatableExtensionMap
        ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext
@@ -61,7 +61,7 @@ abstract class @predefinedTypeAST : @semanticDeclarationAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method enterDeclarationInSemanticContext
+  override proc enterDeclarationInSemanticContext
         ?!@equatableExtensionMap unused ioEquatableExtensionMap
         ?let @extensionInitializerForBuildingContext inExtensionInitializerMapForBuildingContext
         ?let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext
@@ -99,7 +99,7 @@ abstract class @predefinedTypeAST : @semanticDeclarationAST {
           mFormalArgumentName.string,
           mIsConstant
         )
-      end      
+      end
       [!?initializerMap insertKey !@(initializer.initializerSignature, .nowhere) !formalParameterList]
     end
     addExtensions (
@@ -150,7 +150,7 @@ abstract class @predefinedTypeAST : @semanticDeclarationAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method semanticAnalysis
+  override proc semanticAnalysis
       ?!@lstringlist ioUsefulnessRootEntities
       ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
       ?let @string unused inProductDirectory
@@ -185,35 +185,35 @@ abstract class @predefinedTypeAST : @semanticDeclarationAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  method getClassFunctionMap ?!@unifiedTypeMap unused ioUnifiedTypeMap
+  proc getClassFunctionMap ?!@unifiedTypeMap unused ioUnifiedTypeMap
                              !@classFunctionMap outClassFunctionMap {
     outClassFunctionMap = @()
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  method getGetterMap ?!@unifiedTypeMap unused ioUnifiedTypeMap
+  proc getGetterMap ?!@unifiedTypeMap unused ioUnifiedTypeMap
                       !@getterMap outGetterMap {
     outGetterMap = @()
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  method getSetterMap ?!@unifiedTypeMap unused ioUnifiedTypeMap
+  proc getSetterMap ?!@unifiedTypeMap unused ioUnifiedTypeMap
                       !@setterMap outSetterMap {
     outSetterMap = @()
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  method getInstanceMethodMap ?!@unifiedTypeMap unused ioUnifiedTypeMap
+  proc getInstanceMethodMap ?!@unifiedTypeMap unused ioUnifiedTypeMap
                               !@instanceMethodMap outInstanceMethodMap {
     outInstanceMethodMap = @()
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  method getClassMethodMap  ?!@unifiedTypeMap unused ioUnifiedTypeMap
+  proc getClassMethodMap  ?!@unifiedTypeMap unused ioUnifiedTypeMap
                             !@classMethodMap outClassMethodMap {
     outClassMethodMap = @()
   }
@@ -232,14 +232,14 @@ abstract class @predefinedTypeAST : @semanticDeclarationAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  method getAddAssignArgumentList ?!@unifiedTypeMap unused ioUnifiedTypeMap
+  proc getAddAssignArgumentList ?!@unifiedTypeMap unused ioUnifiedTypeMap
                                   !@functionSignature outAddAssignArgumentList {
     outAddAssignArgumentList = @()
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  method getEnumerationList ?!@unifiedTypeMap unused ioUnifiedTypeMap
+  proc getEnumerationList ?!@unifiedTypeMap unused ioUnifiedTypeMap
                             !@enumerationDescriptorList outEnumerationList
                             !@string outEnumeratedType {
     outEnumerationList = @() // Enumeration is not supported
@@ -368,7 +368,7 @@ private proc appendStructASTForRangeType ?!@semanticDeclarationListAST ioDeclara
 
 //--------------------------------------------------------------------------------------------------
 
-private proc insertInUsefulnessEntities 
+private proc insertInUsefulnessEntities
          ?!@lstringlist ioUsefulnessRootEntities
          ?let @string inTypeName {
   let typeUsefulnessName = typeNameForUsefulEntitiesGraph (!@{!inTypeName !.nowhere})
@@ -377,7 +377,7 @@ private proc insertInUsefulnessEntities
 
 //--------------------------------------------------------------------------------------------------
 
-private proc insertPredefinedType 
+private proc insertPredefinedType
          ?!@semanticDeclarationListAST ioDeclarationListASTs
          ?!@lstringlist ioUsefulnessRootEntities
          ?let @predefinedTypeAST inPredefinedTypeAST {

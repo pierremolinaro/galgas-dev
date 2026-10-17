@@ -110,7 +110,7 @@ proc emitProductionRulesInTexFile
 
 //--------------------------------------------------------------------------------------------------
 
-method @productionRuleListForGrammarAnalysis.@element displayRule
+proc @productionRuleListForGrammarAnalysis.@element displayRule
   ?let @string inSyntaxComponentName
   ?!@string ioGeneratedCode
 {
@@ -164,7 +164,7 @@ method @productionRuleListForGrammarAnalysis.@element displayRule
 
 //--------------------------------------------------------------------------------------------------
 
-method @productionRuleListForGrammarAnalysis.@element displayRuleVertically
+proc @productionRuleListForGrammarAnalysis.@element displayRuleVertically
   ?let @string inSyntaxComponentName
   ?!@string ioGeneratedCode
 {
@@ -226,7 +226,7 @@ method @productionRuleListForGrammarAnalysis.@element displayRuleVertically
 //! tikzNodeForSyntaxInstruction
 //--------------------------------------------------------------------------------------------------
 
-method @syntaxInstructionListForGrammarAnalysis tikzNodeForSyntaxInstruction
+proc @syntaxInstructionListForGrammarAnalysis tikzNodeForSyntaxInstruction
   ?!@rowList ioRowList
   ?fromRow:let @uint inRow
   ?!column:@uint ioColumn
@@ -301,7 +301,7 @@ setter @rowList appendRow
 
 //--------------------------------------------------------------------------------------------------
 
-abstract method @abstractSyntaxInstructionForGrammarAnalysis tikzNodeForSyntaxInstruction
+abstract proc @abstractSyntaxInstructionForGrammarAnalysis tikzNodeForSyntaxInstruction
   ?!@rowList ioRowList
   ?fromRow:let @uint inRow
   ?!column:@uint ioColumn
@@ -313,7 +313,7 @@ abstract method @abstractSyntaxInstructionForGrammarAnalysis tikzNodeForSyntaxIn
 
 //--------------------------------------------------------------------------------------------------
 
-override method @nonTerminalInstructionForGrammarAnalysis tikzNodeForSyntaxInstruction
+override proc @nonTerminalInstructionForGrammarAnalysis tikzNodeForSyntaxInstruction
   ?!@rowList ioRowList
   ?fromRow:let @uint inRow
   ?!column:@uint ioColumn
@@ -339,7 +339,7 @@ override method @nonTerminalInstructionForGrammarAnalysis tikzNodeForSyntaxInstr
 
 //--------------------------------------------------------------------------------------------------
 
-override method @selectInstructionForGrammarAnalysis tikzNodeForSyntaxInstruction
+override proc @selectInstructionForGrammarAnalysis tikzNodeForSyntaxInstruction
   ?!@rowList ioRowList
   ?fromRow:let @uint inRow
   ?!column:@uint ioColumn
@@ -433,7 +433,7 @@ override method @selectInstructionForGrammarAnalysis tikzNodeForSyntaxInstructio
 
 //--------------------------------------------------------------------------------------------------
 
-override method @repeatInstructionForGrammarAnalysis tikzNodeForSyntaxInstruction
+override proc @repeatInstructionForGrammarAnalysis tikzNodeForSyntaxInstruction
   ?!@rowList ioRowList
   ?fromRow:let @uint inRow
   ?!column:@uint ioColumn

@@ -44,7 +44,7 @@ struct @templateAnalysisContext {
 //   E X P R E S S I O N
 //--------------------------------------------------------------------------------------------------
 
-abstract method @templateExpressionAST templateExpressionAnalysis
+abstract proc @templateExpressionAST templateExpressionAnalysis
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @templateAnalysisContext inAnalysisContext
@@ -66,7 +66,7 @@ final class @templateGetterCallInExpressionAST : @templateExpressionAST {
 //   R E A D E R    C A L L    O P E R A N D
 //--------------------------------------------------------------------------------------------------
 
-override method @templateGetterCallInExpressionAST templateExpressionAnalysis
+override proc @templateGetterCallInExpressionAST templateExpressionAnalysis
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @templateAnalysisContext inAnalysisContext
@@ -203,7 +203,7 @@ override method @templateGetterCallInExpressionAST templateExpressionAnalysis
 //   C O N S T R U C T O R
 //--------------------------------------------------------------------------------------------------
 
-override method @templateClassFunctionAST templateExpressionAnalysis
+override proc @templateClassFunctionAST templateExpressionAnalysis
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @templateAnalysisContext inAnalysisContext
@@ -277,7 +277,7 @@ override method @templateClassFunctionAST templateExpressionAnalysis
 //   F I L E W R A P P E R    T E M P L A T E     C A L L
 //--------------------------------------------------------------------------------------------------
 
-override method @templateFileWrapperTemplateCallAST templateExpressionAnalysis
+override proc @templateFileWrapperTemplateCallAST templateExpressionAnalysis
   ?let @lstring unused inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
   ?let @templateAnalysisContext unused inAnalysisContext
@@ -291,7 +291,7 @@ override method @templateFileWrapperTemplateCallAST templateExpressionAnalysis
 //   B O O L E A N    O P E R A T I O N S
 //--------------------------------------------------------------------------------------------------
 
-override method @templateAndOperationAST templateExpressionAnalysis
+override proc @templateAndOperationAST templateExpressionAnalysis
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @templateAnalysisContext inAnalysisContext
@@ -334,7 +334,7 @@ override method @templateAndOperationAST templateExpressionAnalysis
 
 //--------------------------------------------------------------------------------------------------
 
-override method @templateOrOperationAST templateExpressionAnalysis
+override proc @templateOrOperationAST templateExpressionAnalysis
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @templateAnalysisContext inAnalysisContext
@@ -377,7 +377,7 @@ override method @templateOrOperationAST templateExpressionAnalysis
 
 //--------------------------------------------------------------------------------------------------
 
-override method @templateXorOperationAST templateExpressionAnalysis
+override proc @templateXorOperationAST templateExpressionAnalysis
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @templateAnalysisContext inAnalysisContext
@@ -420,7 +420,7 @@ override method @templateXorOperationAST templateExpressionAnalysis
 
 //--------------------------------------------------------------------------------------------------
 
-override method @templateTrueBoolAST templateExpressionAnalysis
+override proc @templateTrueBoolAST templateExpressionAnalysis
   ?let @lstring unused inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
   ?let @templateAnalysisContext inAnalysisContext
@@ -432,7 +432,7 @@ override method @templateTrueBoolAST templateExpressionAnalysis
 
 //--------------------------------------------------------------------------------------------------
 
-override method @templateFalseBoolAST templateExpressionAnalysis
+override proc @templateFalseBoolAST templateExpressionAnalysis
   ?let @lstring unused inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
   ?let @templateAnalysisContext inAnalysisContext
@@ -444,7 +444,7 @@ override method @templateFalseBoolAST templateExpressionAnalysis
 
 //--------------------------------------------------------------------------------------------------
 
-override method @templateLiteralStringExpressionAST templateExpressionAnalysis
+override proc @templateLiteralStringExpressionAST templateExpressionAnalysis
   ?let @lstring unused inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
   ?let @templateAnalysisContext inAnalysisContext
@@ -460,7 +460,7 @@ override method @templateLiteralStringExpressionAST templateExpressionAnalysis
 
 //--------------------------------------------------------------------------------------------------
 
-override method @templateLiteralUIntExpressionAST templateExpressionAnalysis
+override proc @templateLiteralUIntExpressionAST templateExpressionAnalysis
   ?let @lstring unused inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
   ?let @templateAnalysisContext inAnalysisContext
@@ -476,7 +476,7 @@ override method @templateLiteralUIntExpressionAST templateExpressionAnalysis
 
 //--------------------------------------------------------------------------------------------------
 
-override method @templateLiteralCharExpressionAST templateExpressionAnalysis
+override proc @templateLiteralCharExpressionAST templateExpressionAnalysis
   ?let @lstring unused inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
   ?let @templateAnalysisContext inAnalysisContext
@@ -491,7 +491,7 @@ override method @templateLiteralCharExpressionAST templateExpressionAnalysis
 
 //--------------------------------------------------------------------------------------------------
 
-override method @templateLiteralDoubleExpressionAST templateExpressionAnalysis
+override proc @templateLiteralDoubleExpressionAST templateExpressionAnalysis
   ?let @lstring unused inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
   ?let @templateAnalysisContext inAnalysisContext
@@ -506,7 +506,7 @@ override method @templateLiteralDoubleExpressionAST templateExpressionAnalysis
 
 //--------------------------------------------------------------------------------------------------
 
-override method @templateNotOperatorAST templateExpressionAnalysis
+override proc @templateNotOperatorAST templateExpressionAnalysis
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @templateAnalysisContext inAnalysisContext
@@ -539,7 +539,7 @@ override method @templateNotOperatorAST templateExpressionAnalysis
 
 //--------------------------------------------------------------------------------------------------
 
-override method @templateLogicalNegateAST templateExpressionAnalysis
+override proc @templateLogicalNegateAST templateExpressionAnalysis
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @templateAnalysisContext inAnalysisContext
@@ -571,7 +571,7 @@ override method @templateLogicalNegateAST templateExpressionAnalysis
 
 //--------------------------------------------------------------------------------------------------
 
-override method @templateTestDynamicClassAST templateExpressionAnalysis
+override proc @templateTestDynamicClassAST templateExpressionAnalysis
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @templateAnalysisContext inAnalysisContext
@@ -617,7 +617,7 @@ override method @templateTestDynamicClassAST templateExpressionAnalysis
 
 //--------------------------------------------------------------------------------------------------
 
-override method @templateOptionAccessAST templateExpressionAnalysis
+override proc @templateOptionAccessAST templateExpressionAnalysis
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @templateAnalysisContext inAnalysisContext
@@ -706,7 +706,7 @@ override method @templateOptionAccessAST templateExpressionAnalysis
 //   F U N C T I O N    C A L L
 //--------------------------------------------------------------------------------------------------
 
-override method @templateFunctionCallAST templateExpressionAnalysis
+override proc @templateFunctionCallAST templateExpressionAnalysis
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @templateAnalysisContext inAnalysisContext
@@ -765,7 +765,7 @@ override method @templateFunctionCallAST templateExpressionAnalysis
 //   T E M P L A T E    E X T E N S I O N
 //--------------------------------------------------------------------------------------------------
 
-override method @templateExtensionTemplateCallAST templateExpressionAnalysis
+override proc @templateExtensionTemplateCallAST templateExpressionAnalysis
   ?let @lstring unused inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
   ?let @templateAnalysisContext unused inAnalysisContext
@@ -781,7 +781,7 @@ override method @templateExtensionTemplateCallAST templateExpressionAnalysis
 //   S I M P L E    V A R I A B L E
 //--------------------------------------------------------------------------------------------------
 
-override method @templateVarInExpressionAST templateExpressionAnalysis
+override proc @templateVarInExpressionAST templateExpressionAnalysis
   ?let @lstring unused inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
   ?let @templateAnalysisContext inAnalysisContext
@@ -800,7 +800,7 @@ override method @templateVarInExpressionAST templateExpressionAnalysis
 //   A D D I T I O N    O P E R A T I O N
 //--------------------------------------------------------------------------------------------------
 
-override method @templateAddOperationAST templateExpressionAnalysis
+override proc @templateAddOperationAST templateExpressionAnalysis
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @templateAnalysisContext inAnalysisContext
@@ -845,7 +845,7 @@ override method @templateAddOperationAST templateExpressionAnalysis
 //   S U B S T R A C T I O N    O P E R A T I O N
 //--------------------------------------------------------------------------------------------------
 
-override method @templateSubOperationAST templateExpressionAnalysis
+override proc @templateSubOperationAST templateExpressionAnalysis
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @templateAnalysisContext inAnalysisContext
@@ -890,7 +890,7 @@ override method @templateSubOperationAST templateExpressionAnalysis
 //   M U L T I P L I C A T I O N    O P E R A T I O N
 //--------------------------------------------------------------------------------------------------
 
-override method @templateMultiplyOperationAST templateExpressionAnalysis
+override proc @templateMultiplyOperationAST templateExpressionAnalysis
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @templateAnalysisContext inAnalysisContext
@@ -935,7 +935,7 @@ override method @templateMultiplyOperationAST templateExpressionAnalysis
 //   D I V I S I O N    O P E R A T I O N
 //--------------------------------------------------------------------------------------------------
 
-override method @templateDivideOperationAST templateExpressionAnalysis
+override proc @templateDivideOperationAST templateExpressionAnalysis
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @templateAnalysisContext inAnalysisContext
@@ -980,7 +980,7 @@ override method @templateDivideOperationAST templateExpressionAnalysis
 //   M O D U L O    O P E R A T I O N
 //--------------------------------------------------------------------------------------------------
 
-override method @templateModuloOperationAST templateExpressionAnalysis
+override proc @templateModuloOperationAST templateExpressionAnalysis
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @templateAnalysisContext inAnalysisContext
@@ -1025,7 +1025,7 @@ override method @templateModuloOperationAST templateExpressionAnalysis
 //   U N A R Y   -    O P E R A T I O N
 //--------------------------------------------------------------------------------------------------
 
-override method @templateUnaryMinusOperationAST templateExpressionAnalysis
+override proc @templateUnaryMinusOperationAST templateExpressionAnalysis
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @templateAnalysisContext inAnalysisContext
@@ -1059,7 +1059,7 @@ override method @templateUnaryMinusOperationAST templateExpressionAnalysis
 //   S T R U C T    F I E L D    A C C E S S    O P E R A T I O N
 //--------------------------------------------------------------------------------------------------
 
-override method @structFieldAccessTemplateExpressionAST templateExpressionAnalysis
+override proc @structFieldAccessTemplateExpressionAST templateExpressionAnalysis
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @templateAnalysisContext inAnalysisContext
@@ -1095,7 +1095,7 @@ override method @structFieldAccessTemplateExpressionAST templateExpressionAnalys
 //  ==    O P E R A T I O N
 //--------------------------------------------------------------------------------------------------
 
-override method @templateEqualTestAST templateExpressionAnalysis
+override proc @templateEqualTestAST templateExpressionAnalysis
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @templateAnalysisContext inAnalysisContext
@@ -1138,7 +1138,7 @@ override method @templateEqualTestAST templateExpressionAnalysis
 
 //--------------------------------------------------------------------------------------------------
 
-override method @templateNonEqualTestAST templateExpressionAnalysis
+override proc @templateNonEqualTestAST templateExpressionAnalysis
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @templateAnalysisContext inAnalysisContext
@@ -1181,7 +1181,7 @@ override method @templateNonEqualTestAST templateExpressionAnalysis
 
 //--------------------------------------------------------------------------------------------------
 
-override method @templateStrictInfTestAST templateExpressionAnalysis
+override proc @templateStrictInfTestAST templateExpressionAnalysis
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @templateAnalysisContext inAnalysisContext
@@ -1224,7 +1224,7 @@ override method @templateStrictInfTestAST templateExpressionAnalysis
 
 //--------------------------------------------------------------------------------------------------
 
-override method @templateInfOrEqualTestAST templateExpressionAnalysis
+override proc @templateInfOrEqualTestAST templateExpressionAnalysis
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @templateAnalysisContext inAnalysisContext
@@ -1267,7 +1267,7 @@ override method @templateInfOrEqualTestAST templateExpressionAnalysis
 
 //--------------------------------------------------------------------------------------------------
 
-override method @templateStrictSupTestAST templateExpressionAnalysis
+override proc @templateStrictSupTestAST templateExpressionAnalysis
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @templateAnalysisContext inAnalysisContext
@@ -1310,7 +1310,7 @@ override method @templateStrictSupTestAST templateExpressionAnalysis
 
 //--------------------------------------------------------------------------------------------------
 
-override method @templateSupOrEqualTestAST templateExpressionAnalysis
+override proc @templateSupOrEqualTestAST templateExpressionAnalysis
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @templateAnalysisContext inAnalysisContext
@@ -1353,7 +1353,7 @@ override method @templateSupOrEqualTestAST templateExpressionAnalysis
 
 //--------------------------------------------------------------------------------------------------
 
-override method @templateLeftShiftOperationAST templateExpressionAnalysis
+override proc @templateLeftShiftOperationAST templateExpressionAnalysis
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @templateAnalysisContext inAnalysisContext
@@ -1401,7 +1401,7 @@ override method @templateLeftShiftOperationAST templateExpressionAnalysis
 
 //--------------------------------------------------------------------------------------------------
 
-override method @templateRightShiftOperationAST templateExpressionAnalysis
+override proc @templateRightShiftOperationAST templateExpressionAnalysis
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @templateAnalysisContext inAnalysisContext
@@ -1453,7 +1453,7 @@ override method @templateRightShiftOperationAST templateExpressionAnalysis
 //
 //--------------------------------------------------------------------------------------------------
 
-abstract method @templateInstructionAST templateInstructionAnalysis
+abstract proc @templateInstructionAST templateInstructionAnalysis
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @templateAnalysisContext inAnalysisContext
@@ -1483,7 +1483,7 @@ proc templateInstructionListAnalysis
 
 //--------------------------------------------------------------------------------------------------
 
-override method @templateInstructionStringAST templateInstructionAnalysis
+override proc @templateInstructionStringAST templateInstructionAnalysis
   ?let @lstring unused inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
   ?let @templateAnalysisContext unused inAnalysisContext
@@ -1495,7 +1495,7 @@ override method @templateInstructionStringAST templateInstructionAnalysis
 
 //--------------------------------------------------------------------------------------------------
 
-override method @templateInstructionExpressionAST templateInstructionAnalysis
+override proc @templateInstructionExpressionAST templateInstructionAnalysis
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @templateAnalysisContext inAnalysisContext
@@ -1517,7 +1517,7 @@ override method @templateInstructionExpressionAST templateInstructionAnalysis
 
 //--------------------------------------------------------------------------------------------------
 
-override method @templateBlockInstructionAST templateInstructionAnalysis
+override proc @templateBlockInstructionAST templateInstructionAnalysis
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @templateAnalysisContext inAnalysisContext
@@ -1560,7 +1560,7 @@ override method @templateBlockInstructionAST templateInstructionAnalysis
 
 //--------------------------------------------------------------------------------------------------
 
-override method @templateInstructionGetColumnLocationAST templateInstructionAnalysis
+override proc @templateInstructionGetColumnLocationAST templateInstructionAnalysis
   ?let @lstring unused inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
   ?let @templateAnalysisContext unused inAnalysisContext
@@ -1572,7 +1572,7 @@ override method @templateInstructionGetColumnLocationAST templateInstructionAnal
 
 //--------------------------------------------------------------------------------------------------
 
-override method @templateInstructionGotoColumnLocationAST templateInstructionAnalysis
+override proc @templateInstructionGotoColumnLocationAST templateInstructionAnalysis
   ?let @lstring unused inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
   ?let @templateAnalysisContext unused inAnalysisContext
@@ -1585,7 +1585,7 @@ override method @templateInstructionGotoColumnLocationAST templateInstructionAna
 
 //--------------------------------------------------------------------------------------------------
 
-override method @templateInstructionIfAST templateInstructionAnalysis
+override proc @templateInstructionIfAST templateInstructionAnalysis
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @templateAnalysisContext inAnalysisContext

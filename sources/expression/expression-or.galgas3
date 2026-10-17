@@ -157,7 +157,7 @@ syntax extension galgas4ExpressionSyntax {
 //! SEMANTICS
 //--------------------------------------------------------------------------------------------------
 
-override method @orExpressionAST enterExpressionInSemanticContext
+override proc @orExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
 {
   [self.mLeftExpression enterExpressionInSemanticContext !?ioTypeMap]
@@ -166,7 +166,7 @@ override method @orExpressionAST enterExpressionInSemanticContext
 
 //································································································
 
-override method @orExpressionAST analyzeSemanticExpression
+override proc @orExpressionAST analyzeSemanticExpression
   ?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?inferenceType: let @unifiedTypeMapEntry inInferenceType
@@ -213,7 +213,7 @@ override method @orExpressionAST analyzeSemanticExpression
 
 //--------------------------------------------------------------------------------------------------
 
-override method @orShortExpressionAST enterExpressionInSemanticContext
+override proc @orShortExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
 {
   [self.mLeftExpression enterExpressionInSemanticContext !?ioTypeMap]
@@ -222,7 +222,7 @@ override method @orShortExpressionAST enterExpressionInSemanticContext
 
 //································································································
 
-override method @orShortExpressionAST analyzeSemanticExpression
+override proc @orShortExpressionAST analyzeSemanticExpression
   ?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?inferenceType: let @unifiedTypeMapEntry inInferenceType
@@ -268,7 +268,7 @@ override method @orShortExpressionAST analyzeSemanticExpression
 
 //--------------------------------------------------------------------------------------------------
 
-override method @xorExpressionAST enterExpressionInSemanticContext
+override proc @xorExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
 {
   [self.mLeftExpression enterExpressionInSemanticContext !?ioTypeMap]
@@ -277,7 +277,7 @@ override method @xorExpressionAST enterExpressionInSemanticContext
 
 //································································································
 
-override method @xorExpressionAST analyzeSemanticExpression
+override proc @xorExpressionAST analyzeSemanticExpression
   ?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?inferenceType: let @unifiedTypeMapEntry inInferenceType
@@ -325,7 +325,7 @@ override method @xorExpressionAST analyzeSemanticExpression
 
 //--------------------------------------------------------------------------------------------------
 
-override method @closedSliceExpressionAST enterExpressionInSemanticContext
+override proc @closedSliceExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
 {
   [self.mLeftExpression enterExpressionInSemanticContext !?ioTypeMap]
@@ -334,7 +334,7 @@ override method @closedSliceExpressionAST enterExpressionInSemanticContext
 
 //································································································
 
-override method @closedSliceExpressionAST analyzeSemanticExpression
+override proc @closedSliceExpressionAST analyzeSemanticExpression
   ?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?inferenceType: let @unifiedTypeMapEntry unused inInferenceType
@@ -383,7 +383,7 @@ override method @closedSliceExpressionAST analyzeSemanticExpression
 
 //--------------------------------------------------------------------------------------------------
 
-override method @openedSliceExpressionAST enterExpressionInSemanticContext
+override proc @openedSliceExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
 {
   [self.mLeftExpression enterExpressionInSemanticContext !?ioTypeMap]
@@ -392,7 +392,7 @@ override method @openedSliceExpressionAST enterExpressionInSemanticContext
 
 //································································································
 
-override method @openedSliceExpressionAST analyzeSemanticExpression
+override proc @openedSliceExpressionAST analyzeSemanticExpression
                                               ?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName
                                               ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
                                               ?inferenceType: let @unifiedTypeMapEntry unused inInferenceType
@@ -467,7 +467,7 @@ final class @closedSliceExpressionForGeneration : @semanticExpressionForGenerati
 
 //································································································
 
-override method @orShortExpressionForGeneration generateExpression
+override proc @orShortExpressionForGeneration generateExpression
   ?!@string ioGeneratedCode
   ?!@stringset ioInclusionSet
   ?!@uint ioTemporaryVariableIndex
@@ -504,7 +504,7 @@ override method @orShortExpressionForGeneration generateExpression
 
 //································································································
 
-override method @closedSliceExpressionForGeneration generateExpression
+override proc @closedSliceExpressionForGeneration generateExpression
   ?!@string ioGeneratedCode
   ?!@stringset ioInclusionSet
   ?!@uint ioTemporaryVariableIndex
@@ -535,7 +535,7 @@ override method @closedSliceExpressionForGeneration generateExpression
 
 //································································································
 
-override method @openedSliceExpressionForGeneration generateExpression
+override proc @openedSliceExpressionForGeneration generateExpression
   ?!@string ioGeneratedCode
   ?!@stringset ioInclusionSet
   ?!@uint ioTemporaryVariableIndex

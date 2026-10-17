@@ -156,7 +156,7 @@ final class @abstractExtensionGetterAST : @semanticDeclarationAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method enterDeclarationInGraph (
+  override proc enterDeclarationInGraph (
               ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph,
               ?!@equatableExtensionMap unused ioEquatableExtensionMap,
               ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext,
@@ -197,7 +197,7 @@ final class @abstractExtensionGetterAST : @semanticDeclarationAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method enterDeclarationInSemanticContext (
+  override proc enterDeclarationInSemanticContext (
     ?!@equatableExtensionMap unused ioEquatableExtensionMap,
     ?let @extensionInitializerForBuildingContext unused inExtensionInitializerMapForBuildingContext,
     ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext,
@@ -209,7 +209,7 @@ final class @abstractExtensionGetterAST : @semanticDeclarationAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method semanticAnalysis (?!@lstringlist unused ioUsefulnessRootEntities,
+  override proc semanticAnalysis (?!@lstringlist unused ioUsefulnessRootEntities,
     ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph,
     ?let @string unused inProductDirectory,
     ?let @semanticContext unused inSemanticContext,
@@ -228,7 +228,7 @@ final class @abstractExtensionGetterAST : @semanticDeclarationAST {
         : "cannot declare an abstract extension func: '@" + selfType.definition.typeName.string + "' is not an abstract class"
       )
     end
-  //--- Compute method signature
+  //--- Compute proc signature
     var @formalInputParameterListForGeneration formalParameterListForGeneration = @()
     for (mFormalSelector mFormalArgumentTypeName mFormalArgumentName * mIsConstant) in self.mAbstractExtensionGetterFormalInputParameterList do
       formalParameterListForGeneration +=
@@ -253,7 +253,7 @@ final class @abstractExtensionGetterAST : @semanticDeclarationAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method buildExtensionListMaps (
+  override proc buildExtensionListMaps (
     ?!@genericExtensionMethodListMap unused ioAbstractExtensionSetterListMap,
     ?!@genericExtensionMethodListMap unused ioExtensionSetterListMap,
     ?!@genericExtensionMethodListMap unused ioOverridingExtensionSetterListMap,
@@ -292,7 +292,7 @@ final class @abstractExtensionGetterForGeneration : @semanticDeclarationWithHead
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method appendDeclaration1 (?!@stringset unused ioInclusionSet,
+  override proc appendDeclaration1 (?!@stringset unused ioInclusionSet,
                                       !@string outHeader) {
     outHeader = [filewrapper semanticComponentGenerationTemplate.abstractExtensionGetterDeclaration
       !self.mReceiverType.definition.typeName.string
@@ -304,7 +304,7 @@ final class @abstractExtensionGetterForGeneration : @semanticDeclarationWithHead
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method appendSpecificImplementation (?let @unifiedTypeMap unused inTypeMap,
+  override proc appendSpecificImplementation (?let @unifiedTypeMap unused inTypeMap,
                                                 ?!@stringset ioInclusionSet,
                                                 !@string outImplementation) {
     ioInclusionSet ++= "func-"

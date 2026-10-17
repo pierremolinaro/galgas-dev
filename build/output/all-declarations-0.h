@@ -631,7 +631,7 @@ class cPtr_semanticExpressionAST : public AbstractStrongPtrClass {
   public: void semanticExpressionAST_init (Compiler * inCompiler) ;
 
 
-//--- Extension method analyzeSemanticExpression
+//--- Extension proc analyzeSemanticExpression
   public: virtual void method_analyzeSemanticExpression (const class GGS_lstring arg_inUsefulnessCallerEntityName,
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_unifiedTypeMapEntry arg_inType,
@@ -641,7 +641,7 @@ class cPtr_semanticExpressionAST : public AbstractStrongPtrClass {
            class GGS_semanticExpressionForGeneration & arg_outExpression,
            Compiler * COMMA_LOCATION_ARGS) = 0 ;
 
-//--- Extension method enterExpressionInSemanticContext
+//--- Extension proc enterExpressionInSemanticContext
   public: virtual void method_enterExpressionInSemanticContext (class GGS_unifiedTypeMap & arg_ioTypeMap,
            Compiler * COMMA_LOCATION_ARGS) = 0 ;
 
@@ -813,12 +813,12 @@ class cPtr_semanticInstructionForGeneration : public AbstractStrongPtrClass {
   public: virtual class GGS_bool getter_compareInstructionSyntaxSignature (const class GGS_semanticInstructionForGeneration inTestedInstruction,
            Compiler * COMMA_LOCATION_ARGS) const ;
 
-//--- Extension method appendSyntaxSignature
+//--- Extension proc appendSyntaxSignature
   public: virtual void method_appendSyntaxSignature (const class GGS_string arg_inPosfix,
            class GGS_semanticInstructionListForGeneration & arg_ioInstructionListForGeneration,
            Compiler * COMMA_LOCATION_ARGS) ;
 
-//--- Extension method generateInstruction
+//--- Extension proc generateInstruction
   public: virtual void method_generateInstruction (class GGS_stringset & arg_ioInclusionSet,
            class GGS_uint & arg_ioTemporaryVariableIndex,
            class GGS_stringset & arg_ioUnusedVariableCppNameSet,
@@ -1208,7 +1208,7 @@ class cPtr_actualParameterAST : public AbstractStrongPtrClass {
            const class GGS_string inSelector,
            Compiler * COMMA_LOCATION_ARGS) const = 0 ;
 
-//--- Extension method checkAgainstFormalArgument
+//--- Extension proc checkAgainstFormalArgument
   public: virtual void method_checkAgainstFormalArgument (const class GGS_lstring arg_inUsefulnessCallerEntityName,
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_analysisContext arg_inAnalysisContext,
@@ -1222,11 +1222,11 @@ class cPtr_actualParameterAST : public AbstractStrongPtrClass {
            class GGS_semanticInstructionListForGeneration & arg_ioInstructionListForGeneration,
            Compiler * COMMA_LOCATION_ARGS) = 0 ;
 
-//--- Extension method enterInActualOutputParameterList
+//--- Extension proc enterInActualOutputParameterList
   public: virtual void method_enterInActualOutputParameterList (class GGS_actualOutputArgumentList & arg_ioActualOutputArgumentList,
            Compiler * COMMA_LOCATION_ARGS) = 0 ;
 
-//--- Extension method enterParameterInSemanticContext
+//--- Extension proc enterParameterInSemanticContext
   public: virtual void method_enterParameterInSemanticContext (class GGS_unifiedTypeMap & arg_ioTypeMap,
            Compiler * COMMA_LOCATION_ARGS) = 0 ;
 
@@ -1694,7 +1694,7 @@ class cPtr_actualParameterForGeneration : public AbstractStrongPtrClass {
                                                       Compiler * inCompiler) ;
 
 
-//--- Extension method generateActualParameter
+//--- Extension proc generateActualParameter
   public: virtual void method_generateActualParameter (class GGS_stringset & arg_ioInclusionSet,
            class GGS_uint & arg_ioTemporaryVariableIndex,
            class GGS_string & arg_ioImplementation,
@@ -1704,7 +1704,7 @@ class cPtr_actualParameterForGeneration : public AbstractStrongPtrClass {
            class GGS_string & arg_outCppName,
            Compiler * COMMA_LOCATION_ARGS) = 0 ;
 
-//--- Extension method generatePoisonedVariables
+//--- Extension proc generatePoisonedVariables
   public: virtual void method_generatePoisonedVariables (class GGS_string & arg_ioImplementation,
            class GGS_stringset & arg_ioUnusedVariableCppNameSet,
            Compiler * COMMA_LOCATION_ARGS) = 0 ;
@@ -2301,7 +2301,7 @@ class cPtr_superMethodCallInstructionForGeneration : public cPtr_semanticInstruc
                                                                                  Compiler * inCompiler) ;
 
 
-//--- Extension method generateInstruction
+//--- Extension proc generateInstruction
   public: virtual void method_generateInstruction (class GGS_stringset & arg_ioInclusionSet,
            class GGS_uint & arg_ioTemporaryVariableIndex,
            class GGS_stringset & arg_ioUnusedVariableCppNameSet,
@@ -2487,7 +2487,7 @@ class cPtr_syntaxInstructionAST : public AbstractStrongPtrClass {
                                               Compiler * inCompiler) ;
 
 
-//--- Extension method analyzeSyntaxInstruction
+//--- Extension proc analyzeSyntaxInstruction
   public: virtual void method_analyzeSyntaxInstruction (const class GGS_lstring arg_inUsefulnessCallerEntityName,
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_analysisContext arg_inAnalysisContext,
@@ -2503,7 +2503,7 @@ class cPtr_syntaxInstructionAST : public AbstractStrongPtrClass {
            class GGS_uint & arg_ioSelectMethodCount,
            Compiler * COMMA_LOCATION_ARGS) = 0 ;
 
-//--- Extension method transformInstructionForGrammarAnalysis
+//--- Extension proc transformInstructionForGrammarAnalysis
   public: virtual void method_transformInstructionForGrammarAnalysis (class GGS_terminalSymbolsMapForGrammarAnalysis & arg_ioActuallyUsedTerminalSymbolMap,
            const class GGS_nonTerminalSymbolMapForGrammarAnalysis arg_inNonTerminalSymbolMap,
            class GGS_uint & arg_ioAddedNonTerminalIndex,
@@ -3676,7 +3676,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_fixitListAST_2E_elemen
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension method '@fixitListAST enterFixItListInSemanticContext'
+//Extension proc '@fixitListAST enterFixItListInSemanticContext'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -3879,7 +3879,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_unifiedTypeMap ;
 
 //--------------------------------------------------------------------------------------------------
 //
-//Abstract extension method '@semanticExpressionAST enterExpressionInSemanticContext'
+//Abstract extension proc '@semanticExpressionAST enterExpressionInSemanticContext'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -4798,7 +4798,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_fixitListForGeneration
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension method '@fixitListForGeneration generateFixIt'
+//Extension proc '@fixitListForGeneration generateFixIt'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -4831,7 +4831,7 @@ class cPtr_semanticExpressionForGeneration : public AbstractStrongPtrClass {
 //--- Extension func isTrueExpression
   public: virtual class GGS_bool getter_isTrueExpression (Compiler * COMMA_LOCATION_ARGS) const ;
 
-//--- Extension method generateExpression
+//--- Extension proc generateExpression
   public: virtual void method_generateExpression (class GGS_string & arg_ioGeneratedCode,
            class GGS_stringset & arg_ioInclusionSet,
            class GGS_uint & arg_ioTemporaryVariableIndex,
@@ -4865,7 +4865,7 @@ class cPtr_semanticExpressionForGeneration : public AbstractStrongPtrClass {
 
 //--------------------------------------------------------------------------------------------------
 //
-//Abstract extension method '@semanticExpressionForGeneration generateExpression'
+//Abstract extension proc '@semanticExpressionForGeneration generateExpression'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -4960,7 +4960,7 @@ class cPtr_errorInstructionForGeneration : public cPtr_semanticInstructionForGen
                                                                        Compiler * inCompiler) ;
 
 
-//--- Extension method generateInstruction
+//--- Extension proc generateInstruction
   public: virtual void method_generateInstruction (class GGS_stringset & arg_ioInclusionSet,
            class GGS_uint & arg_ioTemporaryVariableIndex,
            class GGS_stringset & arg_ioUnusedVariableCppNameSet,
@@ -5505,7 +5505,7 @@ class cPtr_procCallInstructionForGeneration : public cPtr_semanticInstructionFor
                                                                                 Compiler * inCompiler) ;
 
 
-//--- Extension method generateInstruction
+//--- Extension proc generateInstruction
   public: virtual void method_generateInstruction (class GGS_stringset & arg_ioInclusionSet,
            class GGS_uint & arg_ioTemporaryVariableIndex,
            class GGS_stringset & arg_ioUnusedVariableCppNameSet,
@@ -6118,7 +6118,7 @@ class cPtr_plusEqualnstructionForGeneration : public cPtr_semanticInstructionFor
                                                                               Compiler * inCompiler) ;
 
 
-//--- Extension method generateInstruction
+//--- Extension proc generateInstruction
   public: virtual void method_generateInstruction (class GGS_stringset & arg_ioInclusionSet,
            class GGS_uint & arg_ioTemporaryVariableIndex,
            class GGS_stringset & arg_ioUnusedVariableCppNameSet,
@@ -6330,7 +6330,7 @@ class cPtr_opAssignInstructionForGeneration : public cPtr_semanticInstructionFor
                                                                                   Compiler * inCompiler) ;
 
 
-//--- Extension method generateInstruction
+//--- Extension proc generateInstruction
   public: virtual void method_generateInstruction (class GGS_stringset & arg_ioInclusionSet,
            class GGS_uint & arg_ioTemporaryVariableIndex,
            class GGS_stringset & arg_ioUnusedVariableCppNameSet,
@@ -6540,7 +6540,7 @@ class cPtr_plusPlusAssignInstructionForGeneration : public cPtr_semanticInstruct
                                                                                     Compiler * inCompiler) ;
 
 
-//--- Extension method generateInstruction
+//--- Extension proc generateInstruction
   public: virtual void method_generateInstruction (class GGS_stringset & arg_ioInclusionSet,
            class GGS_uint & arg_ioTemporaryVariableIndex,
            class GGS_stringset & arg_ioUnusedVariableCppNameSet,
@@ -6740,7 +6740,7 @@ class cPtr_warningInstructionForGeneration : public cPtr_semanticInstructionForG
                                                                      Compiler * inCompiler) ;
 
 
-//--- Extension method generateInstruction
+//--- Extension proc generateInstruction
   public: virtual void method_generateInstruction (class GGS_stringset & arg_ioInclusionSet,
            class GGS_uint & arg_ioTemporaryVariableIndex,
            class GGS_stringset & arg_ioUnusedVariableCppNameSet,
@@ -7616,7 +7616,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_CommaSeparatedExpressi
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension method '@CommaSeparatedExpressionList analyzeSemanticExpressionList'
+//Extension proc '@CommaSeparatedExpressionList analyzeSemanticExpressionList'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -8245,23 +8245,6 @@ class GGS_ifTestListForGeneration : public AC_GALGAS_root {
 extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_ifTestListForGeneration ;
 
 //--------------------------------------------------------------------------------------------------
-//
-//Abstract extension method '@semanticExpressionAST analyzeSemanticExpression'
-//
-//--------------------------------------------------------------------------------------------------
-
-void callExtensionMethod_analyzeSemanticExpression (class cPtr_semanticExpressionAST * inObject,
-                                                    const class GGS_lstring constin_inUsefulnessCallerEntityName,
-                                                    class GGS_usefulEntitiesGraph & io_ioUsefulEntitiesGraph,
-                                                    const class GGS_unifiedTypeMapEntry constin_inType,
-                                                    const class GGS_analysisContext constin_inAnalysisContext,
-                                                    class GGS_unifiedTypeMap & io_ioTypeMap,
-                                                    class GGS_localVarManager & io_ioVariableMap,
-                                                    class GGS_semanticExpressionForGeneration & out_outExpression,
-                                                    class Compiler * inCompiler
-                                                    COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
 // Phase 1: @typeKindEnum_2E_weakReferenceType struct
 //--------------------------------------------------------------------------------------------------
 
@@ -8427,6 +8410,23 @@ void routine_checkExpressionIsBoolean_3F__3F__3F__21_ (const class GGS_analysisC
                                                        class GGS_semanticExpressionForGeneration & outArgument3,
                                                        class Compiler * inCompiler
                                                        COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Abstract extension proc '@semanticExpressionAST analyzeSemanticExpression'
+//
+//--------------------------------------------------------------------------------------------------
+
+void callExtensionMethod_analyzeSemanticExpression (class cPtr_semanticExpressionAST * inObject,
+                                                    const class GGS_lstring constin_inUsefulnessCallerEntityName,
+                                                    class GGS_usefulEntitiesGraph & io_ioUsefulEntitiesGraph,
+                                                    const class GGS_unifiedTypeMapEntry constin_inType,
+                                                    const class GGS_analysisContext constin_inAnalysisContext,
+                                                    class GGS_unifiedTypeMap & io_ioTypeMap,
+                                                    class GGS_localVarManager & io_ioVariableMap,
+                                                    class GGS_semanticExpressionForGeneration & out_outExpression,
+                                                    class Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -15722,7 +15722,7 @@ class cPtr_abstractGrammarInstructionSyntaxDirectedTranslationResult : public Ab
   public: void abstractGrammarInstructionSyntaxDirectedTranslationResult_init (Compiler * inCompiler) ;
 
 
-//--- Extension method analyzeGrammarInstructionSDT
+//--- Extension proc analyzeGrammarInstructionSDT
   public: virtual void method_analyzeGrammarInstructionSDT (const class GGS_analysisContext arg_inAnalysisContext,
            class GGS_unifiedTypeMap & arg_ioTypeMap,
            const class GGS_bool arg_inHasTranslateFeature,
@@ -15731,14 +15731,14 @@ class cPtr_abstractGrammarInstructionSyntaxDirectedTranslationResult : public Ab
            class GGS_localVarManager & arg_ioVariableMap,
            Compiler * COMMA_LOCATION_ARGS) = 0 ;
 
-//--- Extension method analyzeSDT
+//--- Extension proc analyzeSDT
   public: virtual void method_analyzeSDT (const class GGS_analysisContext arg_inAnalysisContext,
            class GGS_unifiedTypeMap & arg_ioTypeMap,
            const class GGS_bool arg_inHasTranslateFeature,
            class GGS_localVarManager & arg_ioVariableMap,
            Compiler * COMMA_LOCATION_ARGS) = 0 ;
 
-//--- Extension method generateCode
+//--- Extension proc generateCode
   public: virtual void method_generateCode (const class GGS_bool arg_inGenerateSyntaxDirectedTranslationString,
            const class GGS_string arg_inAccessMethodName,
            class GGS_stringset & arg_ioUnusedVariableCppNameSet,
@@ -15904,7 +15904,7 @@ class cPtr_grammarInstructionSyntaxDirectedTranslationResultNone : public cPtr_a
   public: void grammarInstructionSyntaxDirectedTranslationResultNone_init (Compiler * inCompiler) ;
 
 
-//--- Extension method analyzeGrammarInstructionSDT
+//--- Extension proc analyzeGrammarInstructionSDT
   public: virtual void method_analyzeGrammarInstructionSDT (const class GGS_analysisContext arg_inAnalysisContext,
            class GGS_unifiedTypeMap & arg_ioTypeMap,
            const class GGS_bool arg_inHasTranslateFeature,
@@ -15913,14 +15913,14 @@ class cPtr_grammarInstructionSyntaxDirectedTranslationResultNone : public cPtr_a
            class GGS_localVarManager & arg_ioVariableMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method analyzeSDT
+//--- Extension proc analyzeSDT
   public: virtual void method_analyzeSDT (const class GGS_analysisContext arg_inAnalysisContext,
            class GGS_unifiedTypeMap & arg_ioTypeMap,
            const class GGS_bool arg_inHasTranslateFeature,
            class GGS_localVarManager & arg_ioVariableMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method generateCode
+//--- Extension proc generateCode
   public: virtual void method_generateCode (const class GGS_bool arg_inGenerateSyntaxDirectedTranslationString,
            const class GGS_string arg_inAccessMethodName,
            class GGS_stringset & arg_ioUnusedVariableCppNameSet,
@@ -16093,7 +16093,7 @@ class cPtr_grammarInstructionSyntaxDirectedTranslationDropResult : public cPtr_a
                                                                                Compiler * inCompiler) ;
 
 
-//--- Extension method analyzeGrammarInstructionSDT
+//--- Extension proc analyzeGrammarInstructionSDT
   public: virtual void method_analyzeGrammarInstructionSDT (const class GGS_analysisContext arg_inAnalysisContext,
            class GGS_unifiedTypeMap & arg_ioTypeMap,
            const class GGS_bool arg_inHasTranslateFeature,
@@ -16102,14 +16102,14 @@ class cPtr_grammarInstructionSyntaxDirectedTranslationDropResult : public cPtr_a
            class GGS_localVarManager & arg_ioVariableMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method analyzeSDT
+//--- Extension proc analyzeSDT
   public: virtual void method_analyzeSDT (const class GGS_analysisContext arg_inAnalysisContext,
            class GGS_unifiedTypeMap & arg_ioTypeMap,
            const class GGS_bool arg_inHasTranslateFeature,
            class GGS_localVarManager & arg_ioVariableMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method generateCode
+//--- Extension proc generateCode
   public: virtual void method_generateCode (const class GGS_bool arg_inGenerateSyntaxDirectedTranslationString,
            const class GGS_string arg_inAccessMethodName,
            class GGS_stringset & arg_ioUnusedVariableCppNameSet,
@@ -16286,7 +16286,7 @@ class cPtr_grammarInstructionSyntaxDirectedTranslationResultInVar : public cPtr_
                                                                                 Compiler * inCompiler) ;
 
 
-//--- Extension method analyzeGrammarInstructionSDT
+//--- Extension proc analyzeGrammarInstructionSDT
   public: virtual void method_analyzeGrammarInstructionSDT (const class GGS_analysisContext arg_inAnalysisContext,
            class GGS_unifiedTypeMap & arg_ioTypeMap,
            const class GGS_bool arg_inHasTranslateFeature,
@@ -16295,14 +16295,14 @@ class cPtr_grammarInstructionSyntaxDirectedTranslationResultInVar : public cPtr_
            class GGS_localVarManager & arg_ioVariableMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method analyzeSDT
+//--- Extension proc analyzeSDT
   public: virtual void method_analyzeSDT (const class GGS_analysisContext arg_inAnalysisContext,
            class GGS_unifiedTypeMap & arg_ioTypeMap,
            const class GGS_bool arg_inHasTranslateFeature,
            class GGS_localVarManager & arg_ioVariableMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method generateCode
+//--- Extension proc generateCode
   public: virtual void method_generateCode (const class GGS_bool arg_inGenerateSyntaxDirectedTranslationString,
            const class GGS_string arg_inAccessMethodName,
            class GGS_stringset & arg_ioUnusedVariableCppNameSet,
@@ -16483,7 +16483,7 @@ class cPtr_grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar : publ
                                                                                             Compiler * inCompiler) ;
 
 
-//--- Extension method analyzeGrammarInstructionSDT
+//--- Extension proc analyzeGrammarInstructionSDT
   public: virtual void method_analyzeGrammarInstructionSDT (const class GGS_analysisContext arg_inAnalysisContext,
            class GGS_unifiedTypeMap & arg_ioTypeMap,
            const class GGS_bool arg_inHasTranslateFeature,
@@ -16492,14 +16492,14 @@ class cPtr_grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar : publ
            class GGS_localVarManager & arg_ioVariableMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method analyzeSDT
+//--- Extension proc analyzeSDT
   public: virtual void method_analyzeSDT (const class GGS_analysisContext arg_inAnalysisContext,
            class GGS_unifiedTypeMap & arg_ioTypeMap,
            const class GGS_bool arg_inHasTranslateFeature,
            class GGS_localVarManager & arg_ioVariableMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method generateCode
+//--- Extension proc generateCode
   public: virtual void method_generateCode (const class GGS_bool arg_inGenerateSyntaxDirectedTranslationString,
            const class GGS_string arg_inAccessMethodName,
            class GGS_stringset & arg_ioUnusedVariableCppNameSet,
@@ -16682,7 +16682,7 @@ class cPtr_grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst : pu
                                                                                               Compiler * inCompiler) ;
 
 
-//--- Extension method analyzeGrammarInstructionSDT
+//--- Extension proc analyzeGrammarInstructionSDT
   public: virtual void method_analyzeGrammarInstructionSDT (const class GGS_analysisContext arg_inAnalysisContext,
            class GGS_unifiedTypeMap & arg_ioTypeMap,
            const class GGS_bool arg_inHasTranslateFeature,
@@ -16691,14 +16691,14 @@ class cPtr_grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst : pu
            class GGS_localVarManager & arg_ioVariableMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method analyzeSDT
+//--- Extension proc analyzeSDT
   public: virtual void method_analyzeSDT (const class GGS_analysisContext arg_inAnalysisContext,
            class GGS_unifiedTypeMap & arg_ioTypeMap,
            const class GGS_bool arg_inHasTranslateFeature,
            class GGS_localVarManager & arg_ioVariableMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method generateCode
+//--- Extension proc generateCode
   public: virtual void method_generateCode (const class GGS_bool arg_inGenerateSyntaxDirectedTranslationString,
            const class GGS_string arg_inAccessMethodName,
            class GGS_stringset & arg_ioUnusedVariableCppNameSet,
@@ -16905,7 +16905,7 @@ class cPtr_grammarInstructionWithSourceFileForGeneration : public cPtr_semanticI
                                                                                                    Compiler * inCompiler) ;
 
 
-//--- Extension method generateInstruction
+//--- Extension proc generateInstruction
   public: virtual void method_generateInstruction (class GGS_stringset & arg_ioInclusionSet,
            class GGS_uint & arg_ioTemporaryVariableIndex,
            class GGS_stringset & arg_ioUnusedVariableCppNameSet,
@@ -17129,7 +17129,7 @@ class cPtr_grammarInstructionWithSourceExpressionForGeneration : public cPtr_sem
                                                                                                              Compiler * inCompiler) ;
 
 
-//--- Extension method generateInstruction
+//--- Extension proc generateInstruction
   public: virtual void method_generateInstruction (class GGS_stringset & arg_ioInclusionSet,
            class GGS_uint & arg_ioTemporaryVariableIndex,
            class GGS_stringset & arg_ioUnusedVariableCppNameSet,
@@ -17539,7 +17539,7 @@ class cPtr_semanticInstructionAST : public cPtr_syntaxInstructionAST {
                                                 Compiler * inCompiler) ;
 
 
-//--- Extension method analyzeSemanticInstruction
+//--- Extension proc analyzeSemanticInstruction
   public: virtual void method_analyzeSemanticInstruction (const class GGS_lstring arg_inUsefulnessCallerEntityName,
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_analysisContext arg_inAnalysisContext,
@@ -17548,7 +17548,7 @@ class cPtr_semanticInstructionAST : public cPtr_syntaxInstructionAST {
            class GGS_localVarManager & arg_ioVariableMap,
            Compiler * COMMA_LOCATION_ARGS) = 0 ;
 
-//--- Extension method analyzeSyntaxInstruction
+//--- Extension proc analyzeSyntaxInstruction
   public: virtual void method_analyzeSyntaxInstruction (const class GGS_lstring arg_inUsefulnessCallerEntityName,
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_analysisContext arg_inAnalysisContext,
@@ -17564,11 +17564,11 @@ class cPtr_semanticInstructionAST : public cPtr_syntaxInstructionAST {
            class GGS_uint & arg_ioSelectMethodCount,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method enterInstructionInSemanticContext
+//--- Extension proc enterInstructionInSemanticContext
   public: virtual void method_enterInstructionInSemanticContext (class GGS_unifiedTypeMap & arg_ioTypeMap,
            Compiler * COMMA_LOCATION_ARGS) = 0 ;
 
-//--- Extension method transformInstructionForGrammarAnalysis
+//--- Extension proc transformInstructionForGrammarAnalysis
   public: virtual void method_transformInstructionForGrammarAnalysis (class GGS_terminalSymbolsMapForGrammarAnalysis & arg_ioActuallyUsedTerminalSymbolMap,
            const class GGS_nonTerminalSymbolMapForGrammarAnalysis arg_inNonTerminalSymbolMap,
            class GGS_uint & arg_ioAddedNonTerminalIndex,
@@ -18042,7 +18042,7 @@ class cPtr_loopInstructionWithVariantForGeneration : public cPtr_semanticInstruc
                                                                                  Compiler * inCompiler) ;
 
 
-//--- Extension method generateInstruction
+//--- Extension proc generateInstruction
   public: virtual void method_generateInstruction (class GGS_stringset & arg_ioInclusionSet,
            class GGS_uint & arg_ioTemporaryVariableIndex,
            class GGS_stringset & arg_ioUnusedVariableCppNameSet,
@@ -18335,7 +18335,7 @@ class cPtr_methodCallInstructionForGeneration : public cPtr_semanticInstructionF
                                                                                         Compiler * inCompiler) ;
 
 
-//--- Extension method generateInstruction
+//--- Extension proc generateInstruction
   public: virtual void method_generateInstruction (class GGS_stringset & arg_ioInclusionSet,
            class GGS_uint & arg_ioTemporaryVariableIndex,
            class GGS_stringset & arg_ioUnusedVariableCppNameSet,
@@ -18539,7 +18539,7 @@ class cPtr_ifInstructionForGeneration : public cPtr_semanticInstructionForGenera
                                                                 Compiler * inCompiler) ;
 
 
-//--- Extension method generateInstruction
+//--- Extension proc generateInstruction
   public: virtual void method_generateInstruction (class GGS_stringset & arg_ioInclusionSet,
            class GGS_uint & arg_ioTemporaryVariableIndex,
            class GGS_stringset & arg_ioUnusedVariableCppNameSet,
@@ -20382,7 +20382,7 @@ class cPtr_switchInstructionForGeneration : public cPtr_semanticInstructionForGe
                                                                 Compiler * inCompiler) ;
 
 
-//--- Extension method generateInstruction
+//--- Extension proc generateInstruction
   public: virtual void method_generateInstruction (class GGS_stringset & arg_ioInclusionSet,
            class GGS_uint & arg_ioTemporaryVariableIndex,
            class GGS_stringset & arg_ioUnusedVariableCppNameSet,

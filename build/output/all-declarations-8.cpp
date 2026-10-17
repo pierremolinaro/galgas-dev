@@ -8738,10 +8738,10 @@ class CollectionElementPtr_templateInstructionIfBranchListAST : public Collectio
                                                                    COMMA_LOCATION_ARGS) ;
   public: CollectionElementPtr_templateInstructionIfBranchListAST (const GGS_templateInstructionIfBranchListAST_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
-//--- Virtual method that checks that all attributes are valid
+//--- Virtual proc that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
-//--- Virtual method that returns a copy of current object
+//--- Virtual proc that returns a copy of current object
   public: virtual CollectionElementPtr * copy (void) ;
 } ;
 
@@ -9174,7 +9174,7 @@ void GGS_templateInstructionIfBranchListAST::setter_setMExpressionAtIndex (GGS_t
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_templateExpressionAST GGS_templateInstructionIfBranchListAST::getter_mExpressionAtIndex (const GGS_uint & inIndex,
                                                                                              Compiler * inCompiler
                                                                                              COMMA_LOCATION_ARGS) const {
@@ -9213,7 +9213,7 @@ void GGS_templateInstructionIfBranchListAST::setter_setMInstructionListAtIndex (
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_templateInstructionListAST GGS_templateInstructionIfBranchListAST::getter_mInstructionListAtIndex (const GGS_uint & inIndex,
                                                                                                        Compiler * inCompiler
                                                                                                        COMMA_LOCATION_ARGS) const {
@@ -11383,10 +11383,10 @@ class CollectionElementPtr_productionRuleListForGrammarAnalysis : public Collect
                                                                      COMMA_LOCATION_ARGS) ;
   public: CollectionElementPtr_productionRuleListForGrammarAnalysis (const GGS_productionRuleListForGrammarAnalysis_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
-//--- Virtual method that checks that all attributes are valid
+//--- Virtual proc that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
-//--- Virtual method that returns a copy of current object
+//--- Virtual proc that returns a copy of current object
   public: virtual CollectionElementPtr * copy (void) ;
 } ;
 
@@ -11869,7 +11869,7 @@ void GGS_productionRuleListForGrammarAnalysis::setter_setMLeftNonterminalSymbolA
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_lstring GGS_productionRuleListForGrammarAnalysis::getter_mLeftNonterminalSymbolAtIndex (const GGS_uint & inIndex,
                                                                                             Compiler * inCompiler
                                                                                             COMMA_LOCATION_ARGS) const {
@@ -11908,7 +11908,7 @@ void GGS_productionRuleListForGrammarAnalysis::setter_setMLeftNonterminalSymbolI
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_uint GGS_productionRuleListForGrammarAnalysis::getter_mLeftNonterminalSymbolIndexAtIndex (const GGS_uint & inIndex,
                                                                                               Compiler * inCompiler
                                                                                               COMMA_LOCATION_ARGS) const {
@@ -11947,7 +11947,7 @@ void GGS_productionRuleListForGrammarAnalysis::setter_setMInstructionListAtIndex
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_syntaxInstructionListForGrammarAnalysis GGS_productionRuleListForGrammarAnalysis::getter_mInstructionListAtIndex (const GGS_uint & inIndex,
                                                                                                                       Compiler * inCompiler
                                                                                                                       COMMA_LOCATION_ARGS) const {
@@ -11986,7 +11986,7 @@ void GGS_productionRuleListForGrammarAnalysis::setter_setMProductionIndexAtIndex
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_uint GGS_productionRuleListForGrammarAnalysis::getter_mProductionIndexAtIndex (const GGS_uint & inIndex,
                                                                                    Compiler * inCompiler
                                                                                    COMMA_LOCATION_ARGS) const {
@@ -12697,7 +12697,7 @@ void GGS_nonTerminalSymbolSortedListForGrammarAnalysis::setter_popSmallest (GGS_
   bool found = false ;
   if (isValid ()) {
     if (count () == 0) {
-      inCompiler->onTheFlyRunTimeError ("'popSmallest' method invoked on an empty list" COMMA_THERE) ;
+      inCompiler->onTheFlyRunTimeError ("'popSmallest' proc invoked on an empty list" COMMA_THERE) ;
     }else{
       outOperand0 = mSharedArray (0 COMMA_HERE).mProperty_mNonTerminalSymbol ;
       outOperand1 = mSharedArray (0 COMMA_HERE).mProperty_mNonTerminalIndex ;
@@ -12723,7 +12723,7 @@ void GGS_nonTerminalSymbolSortedListForGrammarAnalysis::setter_popGreatest (GGS_
   bool found = false ;
   if (isValid ()) {
     if (count () == 0) {
-      inCompiler->onTheFlyRunTimeError ("'popGreatest' method invoked on an empty list" COMMA_THERE) ;
+      inCompiler->onTheFlyRunTimeError ("'popGreatest' proc invoked on an empty list" COMMA_THERE) ;
     }else{
       outOperand0 = mSharedArray.lastObject (HERE).mProperty_mNonTerminalSymbol ;
       outOperand1 = mSharedArray.lastObject (HERE).mProperty_mNonTerminalIndex ;
@@ -12749,7 +12749,7 @@ void GGS_nonTerminalSymbolSortedListForGrammarAnalysis::method_smallest (GGS_lst
   bool found = false ;
   if (isValid ()) {
     if (count () == 0) {
-      inCompiler->onTheFlyRunTimeError ("'smallest' method invoked on an empty list" COMMA_THERE) ;
+      inCompiler->onTheFlyRunTimeError ("'smallest' proc invoked on an empty list" COMMA_THERE) ;
     }else{
       outOperand0 = mSharedArray (0 COMMA_HERE).mProperty_mNonTerminalSymbol ;
       outOperand1 = mSharedArray (0 COMMA_HERE).mProperty_mNonTerminalIndex ;
@@ -12774,7 +12774,7 @@ void GGS_nonTerminalSymbolSortedListForGrammarAnalysis::method_greatest (GGS_lst
   bool found = false ;
   if (isValid ()) {
     if (count () == 0) {
-      inCompiler->onTheFlyRunTimeError ("'greatest' method invoked on an empty list" COMMA_THERE) ;
+      inCompiler->onTheFlyRunTimeError ("'greatest' proc invoked on an empty list" COMMA_THERE) ;
     }else{
       outOperand0 = mSharedArray.lastObject (HERE).mProperty_mNonTerminalSymbol ;
       outOperand1 = mSharedArray.lastObject (HERE).mProperty_mNonTerminalIndex ;
@@ -13530,10 +13530,10 @@ class CollectionElementPtr_branchListForGrammarAnalysis : public CollectionEleme
                                                              COMMA_LOCATION_ARGS) ;
   public: CollectionElementPtr_branchListForGrammarAnalysis (const GGS_branchListForGrammarAnalysis_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
-//--- Virtual method that checks that all attributes are valid
+//--- Virtual proc that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
-//--- Virtual method that returns a copy of current object
+//--- Virtual proc that returns a copy of current object
   public: virtual CollectionElementPtr * copy (void) ;
 } ;
 
@@ -13941,7 +13941,7 @@ void GGS_branchListForGrammarAnalysis::setter_setMSyntaxInstructionListAtIndex (
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_syntaxInstructionListForGrammarAnalysis GGS_branchListForGrammarAnalysis::getter_mSyntaxInstructionListAtIndex (const GGS_uint & inIndex,
                                                                                                                     Compiler * inCompiler
                                                                                                                     COMMA_LOCATION_ARGS) const {
@@ -14675,10 +14675,10 @@ class CollectionElementPtr_syntaxComponentListForGrammarAnalysis : public Collec
                                                                       COMMA_LOCATION_ARGS) ;
   public: CollectionElementPtr_syntaxComponentListForGrammarAnalysis (const GGS_syntaxComponentListForGrammarAnalysis_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
-//--- Virtual method that checks that all attributes are valid
+//--- Virtual proc that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
-//--- Virtual method that returns a copy of current object
+//--- Virtual proc that returns a copy of current object
   public: virtual CollectionElementPtr * copy (void) ;
 } ;
 
@@ -15111,7 +15111,7 @@ void GGS_syntaxComponentListForGrammarAnalysis::setter_setMProductionRulesListAt
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_productionRuleListForGrammarAnalysis GGS_syntaxComponentListForGrammarAnalysis::getter_mProductionRulesListAtIndex (const GGS_uint & inIndex,
                                                                                                                         Compiler * inCompiler
                                                                                                                         COMMA_LOCATION_ARGS) const {
@@ -15150,7 +15150,7 @@ void GGS_syntaxComponentListForGrammarAnalysis::setter_setMSyntaxComponentNameAt
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_lstring GGS_syntaxComponentListForGrammarAnalysis::getter_mSyntaxComponentNameAtIndex (const GGS_uint & inIndex,
                                                                                            Compiler * inCompiler
                                                                                            COMMA_LOCATION_ARGS) const {
@@ -16013,10 +16013,10 @@ class CollectionElementPtr_collectionValueElementList : public CollectionElement
                                                            COMMA_LOCATION_ARGS) ;
   public: CollectionElementPtr_collectionValueElementList (const GGS_collectionValueElementList_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
-//--- Virtual method that checks that all attributes are valid
+//--- Virtual proc that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
-//--- Virtual method that returns a copy of current object
+//--- Virtual proc that returns a copy of current object
   public: virtual CollectionElementPtr * copy (void) ;
 } ;
 
@@ -16449,7 +16449,7 @@ void GGS_collectionValueElementList::setter_setMExpressionAtIndex (GGS_semanticE
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_semanticExpressionAST GGS_collectionValueElementList::getter_mExpressionAtIndex (const GGS_uint & inIndex,
                                                                                      Compiler * inCompiler
                                                                                      COMMA_LOCATION_ARGS) const {
@@ -16488,7 +16488,7 @@ void GGS_collectionValueElementList::setter_setLocationAtIndex (GGS_location inO
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_location GGS_collectionValueElementList::getter_locationAtIndex (const GGS_uint & inIndex,
                                                                      Compiler * inCompiler
                                                                      COMMA_LOCATION_ARGS) const {

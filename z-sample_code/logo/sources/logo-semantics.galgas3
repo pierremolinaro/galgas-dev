@@ -22,7 +22,7 @@ abstract class @instruction {
 
 //--------------------------------------------------------------------------------------------------
 
-abstract method @instruction codeDisplay
+abstract proc @instruction codeDisplay
   ?!@bool ioPenDown
   ?!@double unused ioX
   ?!@double unused ioY
@@ -42,7 +42,7 @@ final class @penUp : @instruction {
 
 //--------------------------------------------------------------------------------------------------
 
-override method @penUp codeDisplay
+override proc @penUp codeDisplay
   ?!@bool ioPenDown
   ?!@double unused ioX
   ?!@double unused ioY
@@ -59,7 +59,7 @@ final class @penDown : @instruction {
 
 //--------------------------------------------------------------------------------------------------
 
-override method @penDown codeDisplay
+override proc @penDown codeDisplay
   ?!@bool ioPenDown
   ?!@double unused ioX
   ?!@double unused ioY
@@ -77,7 +77,7 @@ final class @rotate : @instruction {
 
 //--------------------------------------------------------------------------------------------------
 
-override method @rotate codeDisplay
+override proc @rotate codeDisplay
   ?!@bool unused ioPenDown
   ?!@double unused ioX
   ?!@double unused ioY
@@ -95,7 +95,7 @@ final class @forward : @instruction {
 
 //--------------------------------------------------------------------------------------------------
 
-override method @forward codeDisplay
+override proc @forward codeDisplay
   ?!@bool ioPenDown
   ?!@double ioX
   ?!@double ioY

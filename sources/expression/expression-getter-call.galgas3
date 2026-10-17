@@ -57,14 +57,14 @@ final class @getterCallExpressionAST : @semanticExpressionAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method enterExpressionInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
+  override proc enterExpressionInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
     [self.mReceiver enterExpressionInSemanticContext !?ioTypeMap]
     [self.mActualArgumentList enterInSemanticContext !?ioTypeMap]
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method analyzeSemanticExpression
+  override proc analyzeSemanticExpression
                           ?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName
                           ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
                           ?inferenceType: let @unifiedTypeMapEntry unused inType
@@ -259,7 +259,7 @@ final class @getterCallExpressionForGeneration : @semanticExpressionForGeneratio
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method generateExpression
+  override proc generateExpression
     ?!@string ioGeneratedCode
     ?!@stringset ioInclusionSet
     ?!@uint ioTemporaryVariableIndex

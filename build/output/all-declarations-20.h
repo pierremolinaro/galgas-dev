@@ -197,12 +197,12 @@ class cPtr_grammarForGeneration : public cPtr_semanticDeclarationWithHeaderForGe
 //--- Extension func isPredefined
   public: virtual class GGS_bool getter_isPredefined (Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension method appendDeclaration1
+//--- Extension proc appendDeclaration1
   public: virtual void method_appendDeclaration_31_ (class GGS_stringset & arg_ioInclusionSet,
            class GGS_string & arg_outHeader,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method appendSpecificImplementation
+//--- Extension proc appendSpecificImplementation
   public: virtual void method_appendSpecificImplementation (const class GGS_unifiedTypeMap arg_inUnifiedTypeMap,
            class GGS_stringset & arg_ioInclusionSet,
            class GGS_string & arg_outImplementation,
@@ -330,7 +330,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_grammarForGeneration_2
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension method '@productionRuleListForGrammarAnalysis.element displayRule'
+//Extension proc '@productionRuleListForGrammarAnalysis.element displayRule'
 //
 //--------------------------------------------------------------------------------------------------
 

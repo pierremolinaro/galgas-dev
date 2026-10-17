@@ -208,7 +208,7 @@ syntax extension templateSyntax {
 //! ANALYSIS
 //--------------------------------------------------------------------------------------------------
 
-override method @templateInstructionForeachAST templateInstructionAnalysis
+override proc @templateInstructionForeachAST templateInstructionAnalysis
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @templateAnalysisContext inAnalysisContext
@@ -325,7 +325,7 @@ final class @templateInstructionForeachForGeneration : @templateInstructionForGe
 
 //································································································
 
-override method @templateInstructionForeachForGeneration templateCodeGeneration
+override proc @templateInstructionForeachForGeneration templateCodeGeneration
   ?!@string ioGeneratedCode
   ?!@stringset ioInclusionSet
   ?!@uint ioTemporaryVariableIndex

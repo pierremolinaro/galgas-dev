@@ -82,7 +82,7 @@ syntax extension galgas4InstructionsSyntax {
 //! CONTEXT
 //--------------------------------------------------------------------------------------------------
 
-override method @typeMethodCallInstructionAST enterInstructionInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
+override proc @typeMethodCallInstructionAST enterInstructionInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
   for (mActualParameter) in self.mActualParameterList do
     [mActualParameter enterParameterInSemanticContext !?ioTypeMap]
   end
@@ -92,16 +92,16 @@ override method @typeMethodCallInstructionAST enterInstructionInSemanticContext 
 //! SEMANTICS
 //--------------------------------------------------------------------------------------------------
 
-override method @typeMethodCallInstructionAST analyzeSemanticInstruction (
+override proc @typeMethodCallInstructionAST analyzeSemanticInstruction (
                         ?let @lstring inUsefulnessCallerEntityName,
                         ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
                         ?let @analysisContext inAnalysisContext,
                         ?!@unifiedTypeMap ioTypeMap,
                         ?!@semanticInstructionListForGeneration ioInstructionListForGeneration,
                         ?!@localVarManager ioVariableMap) {
-//--- Get type method map for the named type
+//--- Get type proc map for the named type
   let type = [ioTypeMap typeMapEntryForLKey !self.mTypeName]
-//--- Get type method signature
+//--- Get type proc signature
   [type.definition.classMethodMap searchKey !self.mMethodName ?let routineSignature ?let hasCompilerArgument]
 //--- Check effective parameters
   [self.mActualParameterList analyzeRoutineArguments
@@ -137,7 +137,7 @@ final class @typeMethodCallInstructionForGeneration : @semanticInstructionForGen
 
 //································································································*
 
-override method @typeMethodCallInstructionForGeneration generateInstruction (?!@stringset ioInclusionSet,
+override proc @typeMethodCallInstructionForGeneration generateInstruction (?!@stringset ioInclusionSet,
                                     ?!@uint ioTemporaryVariableIndex,
                                     ?!@stringset ioUnusedVariableCppNameSet,
                                     ?let @bool unused inGenerateSyntaxDirectedTranslationString,
@@ -158,7 +158,7 @@ override method @typeMethodCallInstructionForGeneration generateInstruction (?!@
       ?let @string parameterCppName]
     parameterCppNameList += !parameterCppName
   end
-//--- Generate method call
+//--- Generate proc call
   ioGeneratedCode += "GGS_" + self.mTypeName.string.identifierRepresentation
                   + "::class_method_" + self.mMethodName.string.identifierRepresentation + " ("
   for (mValue) in parameterCppNameList

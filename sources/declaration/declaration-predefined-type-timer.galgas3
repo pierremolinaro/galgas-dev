@@ -38,7 +38,7 @@ final class @timerPredefinedTypeAST : @predefinedTypeAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method getSetterMap ?!@unifiedTypeMap unused ioUnifiedTypeMap
+  override proc getSetterMap ?!@unifiedTypeMap unused ioUnifiedTypeMap
                                !@setterMap outSetterMap {
     outSetterMap = @()
     enterModifierWithoutArgument (
@@ -55,7 +55,7 @@ final class @timerPredefinedTypeAST : @predefinedTypeAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method getGetterMap ?!@unifiedTypeMap ioUnifiedTypeMap
+  override proc getGetterMap ?!@unifiedTypeMap ioUnifiedTypeMap
                                !@getterMap outMap {
     commonGetterMapForAllTypes (!?ioUnifiedTypeMap ?outMap)
     enterBaseFinalGetterWithoutArgument (
@@ -83,10 +83,10 @@ final class @timerPredefinedTypeAST : @predefinedTypeAST {
       !hasCompilerArgument:false
     )
   }
-  
+
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method getClassFunctionMap ?!@unifiedTypeMap ioUnifiedTypeMap
+  override proc getClassFunctionMap ?!@unifiedTypeMap ioUnifiedTypeMap
                                       !@classFunctionMap outMap {
     outMap = @()
     enterClassFunctionWithoutArgument (

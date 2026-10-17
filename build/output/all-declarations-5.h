@@ -3255,7 +3255,7 @@ class cPtr_optionComponentDeclarationAST : public cPtr_semanticDeclarationAST {
 //--- Extension func keyRepresentation
   public: virtual class GGS_string getter_keyRepresentation (Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension method enterDeclarationInGraph
+//--- Extension proc enterDeclarationInGraph
   public: virtual void method_enterDeclarationInGraph (class GGS_semanticTypePrecedenceGraph & arg_ioSemanticTypePrecedenceGraph,
            class GGS_equatableExtensionMap & arg_ioEquatableExtensionMap,
            class GGS_extensionInitializerForBuildingContext & arg_ioExtensionInitializerForBuildingContext,
@@ -3265,7 +3265,7 @@ class cPtr_optionComponentDeclarationAST : public cPtr_semanticDeclarationAST {
            class GGS_semanticDeclarationListAST & arg_ioExtensionOverrideDefinitionList,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method enterDeclarationInSemanticContext
+//--- Extension proc enterDeclarationInSemanticContext
   public: virtual void method_enterDeclarationInSemanticContext (class GGS_equatableExtensionMap & arg_ioEquatableExtensionMap,
            const class GGS_extensionInitializerForBuildingContext arg_inExtensionInitializerMapForBuildingContext,
            const class GGS_extensionMethodMapForBuildingContext arg_inExtensionMethodMapForBuildingContext,
@@ -3275,7 +3275,7 @@ class cPtr_optionComponentDeclarationAST : public cPtr_semanticDeclarationAST {
            class GGS_semanticContext & arg_ioSemanticContext,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method semanticAnalysis
+//--- Extension proc semanticAnalysis
   public: virtual void method_semanticAnalysis (class GGS_lstringlist & arg_ioUsefulnessRootEntities,
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_string arg_inProductDirectory,
@@ -4388,7 +4388,7 @@ class cPtr_lexicalImplicitRuleAST : public cPtr_abstractLexicalRuleAST {
 //--- Extension func lexicalRuleUsesLoopLocalVar
   public: virtual class GGS_bool getter_lexicalRuleUsesLoopLocalVar (Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension method checkLexicalRule
+//--- Extension proc checkLexicalRule
   public: virtual void method_checkLexicalRule (class GGS_lexiqueAnalysisContext & arg_ioLexiqueAnalysisContext,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -4579,7 +4579,7 @@ class cPtr_lexicalExplicitRuleAST : public cPtr_abstractLexicalRuleAST {
 //--- Extension func lexicalRuleUsesLoopLocalVar
   public: virtual class GGS_bool getter_lexicalRuleUsesLoopLocalVar (Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension method checkLexicalRule
+//--- Extension proc checkLexicalRule
   public: virtual void method_checkLexicalRule (class GGS_lexiqueAnalysisContext & arg_ioLexiqueAnalysisContext,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -4957,7 +4957,7 @@ class cPtr_lexicalOrExpressionAST : public cPtr_lexicalExpressionAST {
   public: virtual class GGS_string getter_generateSwiftCocoaConditionCode (const class GGS_lexiqueAnalysisContext inLexiqueAnalysisContext,
            Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension method checkLexicalExpression
+//--- Extension proc checkLexicalExpression
   public: virtual void method_checkLexicalExpression (class GGS_lexiqueAnalysisContext & arg_ioLexiqueAnalysisContext,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -5141,7 +5141,7 @@ class cPtr_lexicalCharacterSetMatchAST : public cPtr_lexicalExpressionAST {
   public: virtual class GGS_string getter_generateSwiftCocoaConditionCode (const class GGS_lexiqueAnalysisContext inLexiqueAnalysisContext,
            Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension method checkLexicalExpression
+//--- Extension proc checkLexicalExpression
   public: virtual void method_checkLexicalExpression (class GGS_lexiqueAnalysisContext & arg_ioLexiqueAnalysisContext,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -5323,7 +5323,7 @@ class cPtr_lexicalCharacterMatchAST : public cPtr_lexicalExpressionAST {
   public: virtual class GGS_string getter_generateSwiftCocoaConditionCode (const class GGS_lexiqueAnalysisContext inLexiqueAnalysisContext,
            Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension method checkLexicalExpression
+//--- Extension proc checkLexicalExpression
   public: virtual void method_checkLexicalExpression (class GGS_lexiqueAnalysisContext & arg_ioLexiqueAnalysisContext,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -5509,7 +5509,7 @@ class cPtr_lexicalCharacterIntervalMatchAST : public cPtr_lexicalExpressionAST {
   public: virtual class GGS_string getter_generateSwiftCocoaConditionCode (const class GGS_lexiqueAnalysisContext inLexiqueAnalysisContext,
            Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension method checkLexicalExpression
+//--- Extension proc checkLexicalExpression
   public: virtual void method_checkLexicalExpression (class GGS_lexiqueAnalysisContext & arg_ioLexiqueAnalysisContext,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -5693,7 +5693,7 @@ class cPtr_lexicalStringMatchAST : public cPtr_lexicalExpressionAST {
   public: virtual class GGS_string getter_generateSwiftCocoaConditionCode (const class GGS_lexiqueAnalysisContext inLexiqueAnalysisContext,
            Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension method checkLexicalExpression
+//--- Extension proc checkLexicalExpression
   public: virtual void method_checkLexicalExpression (class GGS_lexiqueAnalysisContext & arg_ioLexiqueAnalysisContext,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -5879,7 +5879,7 @@ class cPtr_lexicalStringNotMatchAST : public cPtr_lexicalExpressionAST {
   public: virtual class GGS_string getter_generateSwiftCocoaConditionCode (const class GGS_lexiqueAnalysisContext inLexiqueAnalysisContext,
            Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension method checkLexicalExpression
+//--- Extension proc checkLexicalExpression
   public: virtual void method_checkLexicalExpression (class GGS_lexiqueAnalysisContext & arg_ioLexiqueAnalysisContext,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -6142,7 +6142,7 @@ class cPtr_lexicalSendTerminalByDefaultAST : public cPtr_lexicalSendDefaultActio
   public: virtual class GGS_string getter_generateSwiftCocoaDefaultSendCode (const class GGS_string inScannerClassName,
            Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension method checkLexicalDefaultAction
+//--- Extension proc checkLexicalDefaultAction
   public: virtual void method_checkLexicalDefaultAction (class GGS_lexiqueAnalysisContext & arg_ioLexiqueAnalysisContext,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -6324,7 +6324,7 @@ class cPtr_lexicalErrorByDefaultAST : public cPtr_lexicalSendDefaultActionAST {
   public: virtual class GGS_string getter_generateSwiftCocoaDefaultSendCode (const class GGS_string inScannerClassName,
            Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension method checkLexicalDefaultAction
+//--- Extension proc checkLexicalDefaultAction
   public: virtual void method_checkLexicalDefaultAction (class GGS_lexiqueAnalysisContext & arg_ioLexiqueAnalysisContext,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -6874,12 +6874,12 @@ class cPtr_lexicalAttributeInputArgumentAST : public cPtr_lexicalRoutineOrFuncti
 //--- Extension func generateSwiftCocoaRoutineOrFunctionArgument
   public: virtual class GGS_string getter_generateSwiftCocoaRoutineOrFunctionArgument (Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension method checkLexicalFunctionCallArgument
+//--- Extension proc checkLexicalFunctionCallArgument
   public: virtual void method_checkLexicalFunctionCallArgument (class GGS_lexiqueAnalysisContext & arg_ioLexiqueAnalysisContext,
            const class GGS_lexicalTypeEnum arg_inLexicalRoutineFormalArgumentType,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method checkLexicalRoutineCallArgument
+//--- Extension proc checkLexicalRoutineCallArgument
   public: virtual void method_checkLexicalRoutineCallArgument (class GGS_lexiqueAnalysisContext & arg_ioLexiqueAnalysisContext,
            const class GGS_lexicalTypeEnum arg_inLexicalRoutineFormalArgumentType,
            Compiler * COMMA_LOCATION_ARGS) override ;
@@ -7060,12 +7060,12 @@ class cPtr_lexicalCharacterInputArgumentAST : public cPtr_lexicalRoutineOrFuncti
 //--- Extension func generateSwiftCocoaRoutineOrFunctionArgument
   public: virtual class GGS_string getter_generateSwiftCocoaRoutineOrFunctionArgument (Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension method checkLexicalFunctionCallArgument
+//--- Extension proc checkLexicalFunctionCallArgument
   public: virtual void method_checkLexicalFunctionCallArgument (class GGS_lexiqueAnalysisContext & arg_ioLexiqueAnalysisContext,
            const class GGS_lexicalTypeEnum arg_inLexicalRoutineFormalArgumentType,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method checkLexicalRoutineCallArgument
+//--- Extension proc checkLexicalRoutineCallArgument
   public: virtual void method_checkLexicalRoutineCallArgument (class GGS_lexiqueAnalysisContext & arg_ioLexiqueAnalysisContext,
            const class GGS_lexicalTypeEnum arg_inLexicalRoutineFormalArgumentType,
            Compiler * COMMA_LOCATION_ARGS) override ;
@@ -7246,12 +7246,12 @@ class cPtr_lexicalUnsignedInputArgumentAST : public cPtr_lexicalRoutineOrFunctio
 //--- Extension func generateSwiftCocoaRoutineOrFunctionArgument
   public: virtual class GGS_string getter_generateSwiftCocoaRoutineOrFunctionArgument (Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension method checkLexicalFunctionCallArgument
+//--- Extension proc checkLexicalFunctionCallArgument
   public: virtual void method_checkLexicalFunctionCallArgument (class GGS_lexiqueAnalysisContext & arg_ioLexiqueAnalysisContext,
            const class GGS_lexicalTypeEnum arg_inLexicalRoutineFormalArgumentType,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method checkLexicalRoutineCallArgument
+//--- Extension proc checkLexicalRoutineCallArgument
   public: virtual void method_checkLexicalRoutineCallArgument (class GGS_lexiqueAnalysisContext & arg_ioLexiqueAnalysisContext,
            const class GGS_lexicalTypeEnum arg_inLexicalRoutineFormalArgumentType,
            Compiler * COMMA_LOCATION_ARGS) override ;
@@ -7432,12 +7432,12 @@ class cPtr_lexicalCurrentCharacterInputArgumentAST : public cPtr_lexicalRoutineO
 //--- Extension func generateSwiftCocoaRoutineOrFunctionArgument
   public: virtual class GGS_string getter_generateSwiftCocoaRoutineOrFunctionArgument (Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension method checkLexicalFunctionCallArgument
+//--- Extension proc checkLexicalFunctionCallArgument
   public: virtual void method_checkLexicalFunctionCallArgument (class GGS_lexiqueAnalysisContext & arg_ioLexiqueAnalysisContext,
            const class GGS_lexicalTypeEnum arg_inLexicalRoutineFormalArgumentType,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method checkLexicalRoutineCallArgument
+//--- Extension proc checkLexicalRoutineCallArgument
   public: virtual void method_checkLexicalRoutineCallArgument (class GGS_lexiqueAnalysisContext & arg_ioLexiqueAnalysisContext,
            const class GGS_lexicalTypeEnum arg_inLexicalRoutineFormalArgumentType,
            Compiler * COMMA_LOCATION_ARGS) override ;
@@ -7622,12 +7622,12 @@ class cPtr_lexicalFunctionInputArgumentAST : public cPtr_lexicalRoutineOrFunctio
 //--- Extension func generateSwiftCocoaRoutineOrFunctionArgument
   public: virtual class GGS_string getter_generateSwiftCocoaRoutineOrFunctionArgument (Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension method checkLexicalFunctionCallArgument
+//--- Extension proc checkLexicalFunctionCallArgument
   public: virtual void method_checkLexicalFunctionCallArgument (class GGS_lexiqueAnalysisContext & arg_ioLexiqueAnalysisContext,
            const class GGS_lexicalTypeEnum arg_inLexicalRoutineFormalArgumentType,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method checkLexicalRoutineCallArgument
+//--- Extension proc checkLexicalRoutineCallArgument
   public: virtual void method_checkLexicalRoutineCallArgument (class GGS_lexiqueAnalysisContext & arg_ioLexiqueAnalysisContext,
            const class GGS_lexicalTypeEnum arg_inLexicalRoutineFormalArgumentType,
            Compiler * COMMA_LOCATION_ARGS) override ;
@@ -8138,7 +8138,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lexicalTypeMap_2E_elem
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension method '@semanticInstructionForGeneration appendSyntaxSignature'
+//Extension proc '@semanticInstructionForGeneration appendSyntaxSignature'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -8181,7 +8181,7 @@ class GGS_string extensionGetter_commaSourceFile (const class GGS_location & inO
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension method '@semanticInstructionListAST enterInstructionListInSemanticContext'
+//Extension proc '@semanticInstructionListAST enterInstructionListInSemanticContext'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -8192,7 +8192,7 @@ void extensionMethod_enterInstructionListInSemanticContext (const class GGS_sema
 
 //--------------------------------------------------------------------------------------------------
 //
-//Abstract extension method '@semanticInstructionAST enterInstructionInSemanticContext'
+//Abstract extension proc '@semanticInstructionAST enterInstructionInSemanticContext'
 //
 //--------------------------------------------------------------------------------------------------
 

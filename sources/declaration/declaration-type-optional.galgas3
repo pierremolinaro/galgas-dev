@@ -30,7 +30,7 @@ final class @optionalTypeDeclarationAST : @semanticDeclarationAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method enterDeclarationInGraph
+  override proc enterDeclarationInGraph
     ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
     ?!@equatableExtensionMap unused ioEquatableExtensionMap
     ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext
@@ -46,7 +46,7 @@ final class @optionalTypeDeclarationAST : @semanticDeclarationAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method enterDeclarationInSemanticContext
+  override proc enterDeclarationInSemanticContext
     ?!@equatableExtensionMap ioEquatableExtensionMap
     ?let @extensionInitializerForBuildingContext inExtensionInitializerMapForBuildingContext
     ?let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext
@@ -112,7 +112,7 @@ final class @optionalTypeDeclarationAST : @semanticDeclarationAST {
       !isFinal: true
       !superType: .null
       !typeKind: .listType
-      !supportCollectionValue: false 
+      !supportCollectionValue: false
       !allTypedPropertyList: @()
       !propertyMap: propertyMap
       !currentTypedPropertyList: @()
@@ -137,12 +137,12 @@ final class @optionalTypeDeclarationAST : @semanticDeclarationAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method addAssociatedElement ?!@galgasDeclarationAST unused ioDeclarations {
+  override proc addAssociatedElement ?!@galgasDeclarationAST unused ioDeclarations {
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method semanticAnalysis
+  override proc semanticAnalysis
     ?!@lstringlist ioUsefulnessRootEntities
     ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
     ?let @string unused inProductDirectory
@@ -183,7 +183,7 @@ final class @optionalTypeForGeneration : @semanticTypeForGeneration {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method appendDeclaration1 ?!@stringset ioInclusionSet
+  override proc appendDeclaration1 ?!@stringset ioInclusionSet
                                      !@string outHeader {
     [self.unwrappedType addHeaderFileName1 !?ioInclusionSet]
     let selfTypeDefinition = self.mSelfTypeEntry.definition
@@ -214,7 +214,7 @@ final class @optionalTypeForGeneration : @semanticTypeForGeneration {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method appendSpecificImplementation  ?let @unifiedTypeMap unused inTypeMap
+  override proc appendSpecificImplementation  ?let @unifiedTypeMap unused inTypeMap
                                           ?!@stringset ioInclusionSet
                                           !@string outImplementation {
     [self.unwrappedType addHeaderFileName !?ioInclusionSet]

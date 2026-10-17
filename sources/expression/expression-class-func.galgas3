@@ -132,7 +132,7 @@ final class @classFuncExpressionAST : @semanticExpressionAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method enterExpressionInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
+  override proc enterExpressionInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
     if self.typeName.string != "" then
       [!?ioTypeMap makeEntry !self.typeName ?*]
     end
@@ -141,7 +141,7 @@ final class @classFuncExpressionAST : @semanticExpressionAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method analyzeSemanticExpression
+  override proc analyzeSemanticExpression
                           ?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName
                           ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
                           ?inferenceType: let @unifiedTypeMapEntry inType
@@ -224,7 +224,7 @@ private proc analyzeConstructorInvocation ?let @lstring inUsefulnessCallerEntity
     else
       if classFunctionMap.count == 0 then
         error (inConstructorName
-        : "the '@"+ outConstructorType.definition.typeName.string 
+        : "the '@"+ outConstructorType.definition.typeName.string
         + "' type does not define any constructor"
         spoil constructorFormalArgumentTypeList, outHasCompilerArgument, outReturnedType)
       else
@@ -288,7 +288,7 @@ final class @classFuncExpressionForGeneration : @semanticExpressionForGeneration
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method generateExpression ?!@string ioGeneratedCode
+  override proc generateExpression ?!@string ioGeneratedCode
                                       ?!@stringset ioInclusionSet
                                       ?!@uint ioTemporaryVariableIndex
                                       ?!@stringset ioUnusedVariableCppNameSet

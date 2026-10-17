@@ -164,7 +164,7 @@ class cPtr_lexicalSelectInstructionAST : public cPtr_lexicalInstructionAST {
 //--- Extension func lexicalInstructionUsesLoopLocalVariable
   public: virtual class GGS_bool getter_lexicalInstructionUsesLoopLocalVariable (Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension method checkLexicalInstruction
+//--- Extension proc checkLexicalInstruction
   public: virtual void method_checkLexicalInstruction (class GGS_lexiqueAnalysisContext & arg_ioLexiqueAnalysisContext,
            class GGS_lexicalTagMap & arg_ioTagMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
@@ -354,7 +354,7 @@ class cPtr_lexicalSimpleSendInstructionAST : public cPtr_lexicalInstructionAST {
 //--- Extension func lexicalInstructionUsesLoopLocalVariable
   public: virtual class GGS_bool getter_lexicalInstructionUsesLoopLocalVariable (Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension method checkLexicalInstruction
+//--- Extension proc checkLexicalInstruction
   public: virtual void method_checkLexicalInstruction (class GGS_lexiqueAnalysisContext & arg_ioLexiqueAnalysisContext,
            class GGS_lexicalTagMap & arg_ioTagMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
@@ -538,7 +538,7 @@ class cPtr_lexicalLogInstructionAST : public cPtr_lexicalInstructionAST {
 //--- Extension func lexicalInstructionUsesLoopLocalVariable
   public: virtual class GGS_bool getter_lexicalInstructionUsesLoopLocalVariable (Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension method checkLexicalInstruction
+//--- Extension proc checkLexicalInstruction
   public: virtual void method_checkLexicalInstruction (class GGS_lexiqueAnalysisContext & arg_ioLexiqueAnalysisContext,
            class GGS_lexicalTagMap & arg_ioTagMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
@@ -726,7 +726,7 @@ class cPtr_lexicalRewindInstructionAST : public cPtr_lexicalInstructionAST {
 //--- Extension func lexicalInstructionUsesLoopLocalVariable
   public: virtual class GGS_bool getter_lexicalInstructionUsesLoopLocalVariable (Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension method checkLexicalInstruction
+//--- Extension proc checkLexicalInstruction
   public: virtual void method_checkLexicalInstruction (class GGS_lexiqueAnalysisContext & arg_ioLexiqueAnalysisContext,
            class GGS_lexicalTagMap & arg_ioTagMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
@@ -1247,7 +1247,7 @@ class cPtr_lexicalRepeatInstructionAST : public cPtr_lexicalInstructionAST {
 //--- Extension func lexicalInstructionUsesLoopLocalVariable
   public: virtual class GGS_bool getter_lexicalInstructionUsesLoopLocalVariable (Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension method checkLexicalInstruction
+//--- Extension proc checkLexicalInstruction
   public: virtual void method_checkLexicalInstruction (class GGS_lexiqueAnalysisContext & arg_ioLexiqueAnalysisContext,
            class GGS_lexicalTagMap & arg_ioTagMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
@@ -1439,7 +1439,7 @@ class cPtr_lexicalDropInstructionAST : public cPtr_lexicalInstructionAST {
 //--- Extension func lexicalInstructionUsesLoopLocalVariable
   public: virtual class GGS_bool getter_lexicalInstructionUsesLoopLocalVariable (Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension method checkLexicalInstruction
+//--- Extension proc checkLexicalInstruction
   public: virtual void method_checkLexicalInstruction (class GGS_lexiqueAnalysisContext & arg_ioLexiqueAnalysisContext,
            class GGS_lexicalTagMap & arg_ioTagMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
@@ -1627,7 +1627,7 @@ class cPtr_lexicalWarningInstructionAST : public cPtr_lexicalInstructionAST {
 //--- Extension func lexicalInstructionUsesLoopLocalVariable
   public: virtual class GGS_bool getter_lexicalInstructionUsesLoopLocalVariable (Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension method checkLexicalInstruction
+//--- Extension proc checkLexicalInstruction
   public: virtual void method_checkLexicalInstruction (class GGS_lexiqueAnalysisContext & arg_ioLexiqueAnalysisContext,
            class GGS_lexicalTagMap & arg_ioTagMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
@@ -1815,7 +1815,7 @@ class cPtr_lexicalErrorInstructionAST : public cPtr_lexicalInstructionAST {
 //--- Extension func lexicalInstructionUsesLoopLocalVariable
   public: virtual class GGS_bool getter_lexicalInstructionUsesLoopLocalVariable (Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension method checkLexicalInstruction
+//--- Extension proc checkLexicalInstruction
   public: virtual void method_checkLexicalInstruction (class GGS_lexiqueAnalysisContext & arg_ioLexiqueAnalysisContext,
            class GGS_lexicalTagMap & arg_ioTagMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
@@ -3125,7 +3125,7 @@ class cPtr_externProcedureDeclarationAST : public cPtr_semanticDeclarationAST {
 //--- Extension func keyRepresentation
   public: virtual class GGS_string getter_keyRepresentation (Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension method enterDeclarationInGraph
+//--- Extension proc enterDeclarationInGraph
   public: virtual void method_enterDeclarationInGraph (class GGS_semanticTypePrecedenceGraph & arg_ioSemanticTypePrecedenceGraph,
            class GGS_equatableExtensionMap & arg_ioEquatableExtensionMap,
            class GGS_extensionInitializerForBuildingContext & arg_ioExtensionInitializerForBuildingContext,
@@ -3135,7 +3135,7 @@ class cPtr_externProcedureDeclarationAST : public cPtr_semanticDeclarationAST {
            class GGS_semanticDeclarationListAST & arg_ioExtensionOverrideDefinitionList,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method enterDeclarationInSemanticContext
+//--- Extension proc enterDeclarationInSemanticContext
   public: virtual void method_enterDeclarationInSemanticContext (class GGS_equatableExtensionMap & arg_ioEquatableExtensionMap,
            const class GGS_extensionInitializerForBuildingContext arg_inExtensionInitializerMapForBuildingContext,
            const class GGS_extensionMethodMapForBuildingContext arg_inExtensionMethodMapForBuildingContext,
@@ -3145,7 +3145,7 @@ class cPtr_externProcedureDeclarationAST : public cPtr_semanticDeclarationAST {
            class GGS_semanticContext & arg_ioSemanticContext,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method semanticAnalysis
+//--- Extension proc semanticAnalysis
   public: virtual void method_semanticAnalysis (class GGS_lstringlist & arg_ioUsefulnessRootEntities,
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_string arg_inProductDirectory,

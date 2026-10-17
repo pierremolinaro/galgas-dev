@@ -161,7 +161,7 @@ list @CommaSeparatedExpressionList {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  method enterExpressionListInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
+  proc enterExpressionListInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
     for (expression) in self do
       switch expression
       case regularExp (exp *) :
@@ -175,7 +175,7 @@ list @CommaSeparatedExpressionList {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  method analyzeSemanticExpressionList (?let @lstring inUsefulnessCallerEntityName,
+  proc analyzeSemanticExpressionList (?let @lstring inUsefulnessCallerEntityName,
                                        ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
                                        ?let @analysisContext inAnalysisContext,
                                        ?!@unifiedTypeMap ioTypeMap,
@@ -398,7 +398,7 @@ list @ifTestListForGeneration {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  
-  method generateInstruction (?!@stringset ioInclusionSet,
+  proc generateInstruction (?!@stringset ioInclusionSet,
                               ?!@uint ioTemporaryVariableIndex,
                               ?!@stringset ioUnusedVariableCppNameSet,
                               ?!@string ioGeneratedCode,

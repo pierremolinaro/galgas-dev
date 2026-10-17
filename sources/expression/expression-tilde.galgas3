@@ -61,14 +61,14 @@ final class @tildeExpressionAST : @semanticExpressionAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method enterExpressionInSemanticContext
+  override proc enterExpressionInSemanticContext
     ?!@unifiedTypeMap ioTypeMap {
     [self.mExpression enterExpressionInSemanticContext !?ioTypeMap]
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method analyzeSemanticExpression
+  override proc analyzeSemanticExpression
     ?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName
     ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
     ?inferenceType: let @unifiedTypeMapEntry inType
@@ -124,7 +124,7 @@ final class @tildeExpressionForGeneration : @semanticExpressionForGeneration {
 
 //································································································
 
-override method @tildeExpressionForGeneration generateExpression
+override proc @tildeExpressionForGeneration generateExpression
   ?!@string ioGeneratedCode
   ?!@stringset ioInclusionSet
   ?!@uint ioTemporaryVariableIndex

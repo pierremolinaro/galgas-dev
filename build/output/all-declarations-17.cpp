@@ -1212,7 +1212,7 @@ GGS_XcodeProjectDescriptor GGS_XcodeProjectDescriptor::extractObject (const GGS_
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension method '@XcodeProjectDescriptor addTIFF_file'
+//Extension proc '@XcodeProjectDescriptor addTIFF_file'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -1231,7 +1231,7 @@ void extensionSetter_addTIFF_5F_file (GGS_XcodeProjectDescriptor & ioObject,
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension method '@XcodeProjectDescriptor addInfoPlistFile'
+//Extension proc '@XcodeProjectDescriptor addInfoPlistFile'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -1250,7 +1250,7 @@ void extensionSetter_addInfoPlistFile (GGS_XcodeProjectDescriptor & ioObject,
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension method '@XcodeProjectDescriptor addXIBFile'
+//Extension proc '@XcodeProjectDescriptor addXIBFile'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -1269,7 +1269,7 @@ void extensionSetter_addXIBFile (GGS_XcodeProjectDescriptor & ioObject,
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension method '@XcodeProjectDescriptor addFrameworkFile'
+//Extension proc '@XcodeProjectDescriptor addFrameworkFile'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -1288,7 +1288,7 @@ void extensionSetter_addFrameworkFile (GGS_XcodeProjectDescriptor & ioObject,
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension method '@XcodeProjectDescriptor addSwiftFile'
+//Extension proc '@XcodeProjectDescriptor addSwiftFile'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -1307,7 +1307,7 @@ void extensionSetter_addSwiftFile (GGS_XcodeProjectDescriptor & ioObject,
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension method '@XcodeProjectDescriptor addMFile'
+//Extension proc '@XcodeProjectDescriptor addMFile'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -1326,7 +1326,7 @@ void extensionSetter_addMFile (GGS_XcodeProjectDescriptor & ioObject,
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension method '@XcodeProjectDescriptor addMMFile'
+//Extension proc '@XcodeProjectDescriptor addMMFile'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -1345,7 +1345,7 @@ void extensionSetter_addMMFile (GGS_XcodeProjectDescriptor & ioObject,
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension method '@XcodeProjectDescriptor addCppFile'
+//Extension proc '@XcodeProjectDescriptor addCppFile'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -1364,7 +1364,7 @@ void extensionSetter_addCppFile (GGS_XcodeProjectDescriptor & ioObject,
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension method '@XcodeProjectDescriptor addCFile'
+//Extension proc '@XcodeProjectDescriptor addCFile'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -1383,7 +1383,7 @@ void extensionSetter_addCFile (GGS_XcodeProjectDescriptor & ioObject,
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension method '@XcodeProjectDescriptor addHeaderFile'
+//Extension proc '@XcodeProjectDescriptor addHeaderFile'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -1402,7 +1402,7 @@ void extensionSetter_addHeaderFile (GGS_XcodeProjectDescriptor & ioObject,
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension method '@XcodeProjectDescriptor addBuildFile'
+//Extension proc '@XcodeProjectDescriptor addBuildFile'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -1422,7 +1422,7 @@ void extensionSetter_addBuildFile (GGS_XcodeProjectDescriptor & ioObject,
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension method '@XcodeProjectDescriptor addToolTarget'
+//Extension proc '@XcodeProjectDescriptor addToolTarget'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -1466,7 +1466,7 @@ void extensionSetter_addToolTarget (GGS_XcodeProjectDescriptor & ioObject,
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension method '@XcodeProjectDescriptor addAppTarget'
+//Extension proc '@XcodeProjectDescriptor addAppTarget'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -1536,7 +1536,7 @@ void extensionSetter_addAppTarget (GGS_XcodeProjectDescriptor & ioObject,
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension method '@XcodeProjectDescriptor addGroup'
+//Extension proc '@XcodeProjectDescriptor addGroup'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -1587,7 +1587,7 @@ void extensionSetter_addGroup (GGS_XcodeProjectDescriptor & ioObject,
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension method '@XcodeProjectDescriptor addGroupWithFiles'
+//Extension proc '@XcodeProjectDescriptor addGroupWithFiles'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -1802,7 +1802,7 @@ void extensionSetter_addGroupWithFiles (GGS_XcodeProjectDescriptor & ioObject,
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension method '@XcodeProjectDescriptor placeGroupAsMainGroup'
+//Extension proc '@XcodeProjectDescriptor placeGroupAsMainGroup'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -1816,7 +1816,7 @@ void extensionSetter_placeGroupAsMainGroup (GGS_XcodeProjectDescriptor & ioObjec
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension method '@XcodeProjectDescriptor addSettingsToDefaultConfiguration'
+//Extension proc '@XcodeProjectDescriptor addSettingsToDefaultConfiguration'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -1830,7 +1830,7 @@ void extensionSetter_addSettingsToDefaultConfiguration (GGS_XcodeProjectDescript
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension method '@XcodeProjectDescriptor getReferenceKey'
+//Extension proc '@XcodeProjectDescriptor getReferenceKey'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -1857,7 +1857,7 @@ void extensionSetter_getReferenceKey (GGS_XcodeProjectDescriptor & ioObject,
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension method '@XcodeProjectDescriptor generateAtPath'
+//Extension proc '@XcodeProjectDescriptor generateAtPath'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -1889,23 +1889,23 @@ void extensionMethod_generateAtPath (const GGS_XcodeProjectDescriptor inObject,
   const GGS_XcodeProjectDescriptor temp_20 = inObject ;
   const GGS_XcodeProjectDescriptor temp_21 = inObject ;
   const GGS_XcodeProjectDescriptor temp_22 = inObject ;
-  GGS_string var_contents_17961 = GGS_string (filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (inCompiler, temp_0.readProperty_mProjectObjectReference (), temp_1.readProperty_mMainGroupReference (), temp_2.readProperty_mGroupList (), temp_3.readProperty_mMainGroupChildrenRefs (), temp_4.readProperty_mToolTargetList (), temp_5.readProperty_mAppTargetList (), temp_6.readProperty_mCFileList (), temp_7.readProperty_mCppFileList (), temp_8.readProperty_m_5F_Swift_5F_FileList (), temp_9.readProperty_m_5F_M_5F_FileList (), temp_10.readProperty_m_5F_MM_5F_FileList (), temp_11.readProperty_mFrameworkFileList (), temp_12.readProperty_mHeaderFileList (), temp_13.readProperty_mInfoPlistFileList (), temp_14.readProperty_mTIFF_5F_fileList (), temp_15.readProperty_mICNS_5F_fileList (), temp_16.readProperty_mXIB_5F_fileList (), temp_17.readProperty_mBuildFileList (), temp_18.readProperty_mDefaultConfigurationRef (), temp_19.readProperty_mDefaultConfigurationSettingList (), temp_20.readProperty_mProjectBuildConfigurationRef (), temp_21.readProperty_mApplicationBundleName (), temp_22.readProperty_mProjectName () COMMA_SOURCE_FILE ("XcodeProjectGeneration.galgas3", 454))) ;
-  GGS_string var_projectCoreFile_18683 = constinArgument_inPath.add_operation (GGS_string ("/project.pbxproj"), inCompiler COMMA_SOURCE_FILE ("XcodeProjectGeneration.galgas3", 479)) ;
+  GGS_string var_contents_17959 = GGS_string (filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (inCompiler, temp_0.readProperty_mProjectObjectReference (), temp_1.readProperty_mMainGroupReference (), temp_2.readProperty_mGroupList (), temp_3.readProperty_mMainGroupChildrenRefs (), temp_4.readProperty_mToolTargetList (), temp_5.readProperty_mAppTargetList (), temp_6.readProperty_mCFileList (), temp_7.readProperty_mCppFileList (), temp_8.readProperty_m_5F_Swift_5F_FileList (), temp_9.readProperty_m_5F_M_5F_FileList (), temp_10.readProperty_m_5F_MM_5F_FileList (), temp_11.readProperty_mFrameworkFileList (), temp_12.readProperty_mHeaderFileList (), temp_13.readProperty_mInfoPlistFileList (), temp_14.readProperty_mTIFF_5F_fileList (), temp_15.readProperty_mICNS_5F_fileList (), temp_16.readProperty_mXIB_5F_fileList (), temp_17.readProperty_mBuildFileList (), temp_18.readProperty_mDefaultConfigurationRef (), temp_19.readProperty_mDefaultConfigurationSettingList (), temp_20.readProperty_mProjectBuildConfigurationRef (), temp_21.readProperty_mApplicationBundleName (), temp_22.readProperty_mProjectName () COMMA_SOURCE_FILE ("XcodeProjectGeneration.galgas3", 454))) ;
+  GGS_string var_projectCoreFile_18681 = constinArgument_inPath.add_operation (GGS_string ("/project.pbxproj"), inCompiler COMMA_SOURCE_FILE ("XcodeProjectGeneration.galgas3", 479)) ;
   GalgasBool test_23 = GalgasBool::boolTrue ;
   if (GalgasBool::boolTrue == test_23) {
-    GGS_bool test_24 = var_projectCoreFile_18683.getter_fileExists (SOURCE_FILE ("XcodeProjectGeneration.galgas3", 480)).operator_not (SOURCE_FILE ("XcodeProjectGeneration.galgas3", 480)) ;
+    GGS_bool test_24 = var_projectCoreFile_18681.getter_fileExists (SOURCE_FILE ("XcodeProjectGeneration.galgas3", 480)).operator_not (SOURCE_FILE ("XcodeProjectGeneration.galgas3", 480)) ;
     if (GalgasBool::boolTrue != test_24.boolEnum ()) {
       test_24 = constinArgument_inCacheFilePath.getter_fileExists (SOURCE_FILE ("XcodeProjectGeneration.galgas3", 480)).operator_not (SOURCE_FILE ("XcodeProjectGeneration.galgas3", 480)) ;
     }
     GGS_bool test_25 = test_24 ;
     if (GalgasBool::boolTrue != test_25.boolEnum ()) {
-      test_25 = GGS_bool (ComparisonKind::notEqual, GGS_string::class_func_stringWithContentsOfFile (constinArgument_inCacheFilePath, inCompiler  COMMA_SOURCE_FILE ("XcodeProjectGeneration.galgas3", 480)).objectCompare (var_contents_17961)) ;
+      test_25 = GGS_bool (ComparisonKind::notEqual, GGS_string::class_func_stringWithContentsOfFile (constinArgument_inCacheFilePath, inCompiler  COMMA_SOURCE_FILE ("XcodeProjectGeneration.galgas3", 480)).objectCompare (var_contents_17959)) ;
     }
     test_23 = test_25.boolEnum () ;
     if (GalgasBool::boolTrue == test_23) {
-      GGS_bool joker_18942 ; // Joker input parameter
-      var_contents_17961.method_writeToFileWhenDifferentContents (constinArgument_inCacheFilePath, joker_18942, inCompiler COMMA_SOURCE_FILE ("XcodeProjectGeneration.galgas3", 481)) ;
-      var_contents_17961.method_makeDirectoryAndWriteToFile (var_projectCoreFile_18683, inCompiler COMMA_SOURCE_FILE ("XcodeProjectGeneration.galgas3", 482)) ;
+      GGS_bool joker_18940 ; // Joker input parameter
+      var_contents_17959.method_writeToFileWhenDifferentContents (constinArgument_inCacheFilePath, joker_18940, inCompiler COMMA_SOURCE_FILE ("XcodeProjectGeneration.galgas3", 481)) ;
+      var_contents_17959.method_makeDirectoryAndWriteToFile (var_projectCoreFile_18681, inCompiler COMMA_SOURCE_FILE ("XcodeProjectGeneration.galgas3", 482)) ;
     }
   }
 }
@@ -7461,7 +7461,7 @@ GGS_lexicalFunctionInputArgumentAST GGS_lexicalFunctionInputArgumentAST::extract
 
 //--------------------------------------------------------------------------------------------------
 //
-//Abstract extension method '@semanticInstructionAST enterInstructionInSemanticContext'
+//Abstract extension proc '@semanticInstructionAST enterInstructionInSemanticContext'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -7470,7 +7470,7 @@ void callExtensionMethod_enterInstructionInSemanticContext (cPtr_semanticInstruc
                                                             Compiler * inCompiler
                                                             COMMA_LOCATION_ARGS) {
 //--- Drop output arguments
-//--- Find method
+//--- Find proc
   if (nullptr != inObject) {
     macroValidSharedObject (inObject, cPtr_semanticInstructionAST) ;
     inObject->method_enterInstructionInSemanticContext (io_ioTypeMap, inCompiler COMMA_THERE) ;
@@ -7874,7 +7874,7 @@ GGS_localVarManager GGS_localVarManager::extractObject (const GGS_object & inObj
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension method '@localVarManager insertInitializedLocalVariable'
+//Extension proc '@localVarManager insertInitializedLocalVariable'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -7901,7 +7901,7 @@ void extensionSetter_insertInitializedLocalVariable (GGS_localVarManager & ioObj
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension method '@localVarManager insertUsedLocalConstant'
+//Extension proc '@localVarManager insertUsedLocalConstant'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -7920,7 +7920,7 @@ void extensionSetter_insertUsedLocalConstant (GGS_localVarManager & ioObject,
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension method '@localVarManager insertInitializedLocalConstant'
+//Extension proc '@localVarManager insertInitializedLocalConstant'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -7939,7 +7939,7 @@ void extensionSetter_insertInitializedLocalConstant (GGS_localVarManager & ioObj
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension method '@localVarManager insertDeclaredLocalConstant'
+//Extension proc '@localVarManager insertDeclaredLocalConstant'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -7958,7 +7958,7 @@ void extensionSetter_insertDeclaredLocalConstant (GGS_localVarManager & ioObject
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension method '@localVarManager insertInputFormalArgumentDeclaredAsUnused'
+//Extension proc '@localVarManager insertInputFormalArgumentDeclaredAsUnused'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -7977,7 +7977,7 @@ void extensionSetter_insertInputFormalArgumentDeclaredAsUnused (GGS_localVarMana
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension method '@localVarManager insertInputFormalArgument'
+//Extension proc '@localVarManager insertInputFormalArgument'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -7996,7 +7996,7 @@ void extensionSetter_insertInputFormalArgument (GGS_localVarManager & ioObject,
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension method '@localVarManager insertConstantInputFormalArgumentDeclaredAsUnused'
+//Extension proc '@localVarManager insertConstantInputFormalArgumentDeclaredAsUnused'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -8015,7 +8015,7 @@ void extensionSetter_insertConstantInputFormalArgumentDeclaredAsUnused (GGS_loca
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension method '@localVarManager insertConstantInputFormalArgument'
+//Extension proc '@localVarManager insertConstantInputFormalArgument'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -8034,7 +8034,7 @@ void extensionSetter_insertConstantInputFormalArgument (GGS_localVarManager & io
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension method '@localVarManager insertOutputFormalArgument'
+//Extension proc '@localVarManager insertOutputFormalArgument'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -8053,7 +8053,7 @@ void extensionSetter_insertOutputFormalArgument (GGS_localVarManager & ioObject,
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension method '@localVarManager insertInputOutputFormalArgumentDeclaredAsUnused'
+//Extension proc '@localVarManager insertInputOutputFormalArgumentDeclaredAsUnused'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -8072,7 +8072,7 @@ void extensionSetter_insertInputOutputFormalArgumentDeclaredAsUnused (GGS_localV
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension method '@localVarManager insertInputOutputFormalArgument'
+//Extension proc '@localVarManager insertInputOutputFormalArgument'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -8091,7 +8091,7 @@ void extensionSetter_insertInputOutputFormalArgument (GGS_localVarManager & ioOb
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension method '@localVarManager insertNonMutableProperty'
+//Extension proc '@localVarManager insertNonMutableProperty'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -8110,7 +8110,7 @@ void extensionSetter_insertNonMutableProperty (GGS_localVarManager & ioObject,
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension method '@localVarManager insertMutableProperty'
+//Extension proc '@localVarManager insertMutableProperty'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -8129,7 +8129,7 @@ void extensionSetter_insertMutableProperty (GGS_localVarManager & ioObject,
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension method '@localVarManager insertInitializerSelfProperty'
+//Extension proc '@localVarManager insertInitializerSelfProperty'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -8158,7 +8158,7 @@ void extensionSetter_insertInitializerSelfProperty (GGS_localVarManager & ioObje
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension method '@localVarManager openOverrideForSelectBlock'
+//Extension proc '@localVarManager openOverrideForSelectBlock'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -8172,7 +8172,7 @@ void extensionSetter_openOverrideForSelectBlock (GGS_localVarManager & ioObject,
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension method '@localVarManager openOverrideForRepeatBlock'
+//Extension proc '@localVarManager openOverrideForRepeatBlock'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -8185,7 +8185,7 @@ void extensionSetter_openOverrideForRepeatBlock (GGS_localVarManager & ioObject,
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension method '@localVarManager closeOverride'
+//Extension proc '@localVarManager closeOverride'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -8225,7 +8225,7 @@ void extensionSetter_closeOverride (GGS_localVarManager & ioObject,
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension method '@localVarManager openBranch'
+//Extension proc '@localVarManager openBranch'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -8240,7 +8240,7 @@ void extensionSetter_openBranch (GGS_localVarManager & ioObject,
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension method '@localVarManager closeBranch'
+//Extension proc '@localVarManager closeBranch'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -8299,7 +8299,7 @@ void extensionSetter_closeBranch (GGS_localVarManager & ioObject,
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension method '@localVarManager checkSelfObjectIsFullyInitialized'
+//Extension proc '@localVarManager checkSelfObjectIsFullyInitialized'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -8314,7 +8314,7 @@ void extensionMethod_checkSelfObjectIsFullyInitialized (const GGS_localVarManage
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension method '@localVarManager neutralAccess'
+//Extension proc '@localVarManager neutralAccess'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -8336,7 +8336,7 @@ void extensionSetter_neutralAccess (GGS_localVarManager & ioObject,
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension method '@localVarManager searchForDropAccess'
+//Extension proc '@localVarManager searchForDropAccess'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -8352,7 +8352,7 @@ void extensionSetter_searchForDropAccess (GGS_localVarManager & ioObject,
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension method '@localVarManager searchForWriteAccess'
+//Extension proc '@localVarManager searchForWriteAccess'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -8374,7 +8374,7 @@ void extensionSetter_searchForWriteAccess (GGS_localVarManager & ioObject,
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension method '@localVarManager searchForReadAccess'
+//Extension proc '@localVarManager searchForReadAccess'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -8396,7 +8396,7 @@ void extensionSetter_searchForReadAccess (GGS_localVarManager & ioObject,
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension method '@localVarManager searchForReadWriteAccess'
+//Extension proc '@localVarManager searchForReadWriteAccess'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -8418,7 +8418,7 @@ void extensionSetter_searchForReadWriteAccess (GGS_localVarManager & ioObject,
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension method '@localVarManager checkAutomatonStates'
+//Extension proc '@localVarManager checkAutomatonStates'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -8433,7 +8433,7 @@ void extensionMethod_checkAutomatonStates (const GGS_localVarManager inObject,
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension method '@routineMap insertKey'
+//Extension proc '@routineMap insertKey'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -8478,7 +8478,7 @@ void extensionSetter_insertKey (GGS_routineMap & ioObject,
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension method '@routineMap searchKey'
+//Extension proc '@routineMap searchKey'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -8496,57 +8496,57 @@ void extensionMethod_searchKey (const GGS_routineMap inObject,
   GalgasBool test_0 = GalgasBool::boolTrue ;
   if (GalgasBool::boolTrue == test_0) {
     const GGS_routineMap temp_1 = inObject ;
-    const GGS_internalRoutineMap_2E_element var_routine_4095 = temp_1.readProperty_mInternalRoutineMap ().readSubscript__3F_ (constinArgument_inRoutineName.readProperty_string (), inCompiler COMMA_HERE).unwrappedValue () ;
+    const GGS_internalRoutineMap_2E_element var_routine_4093 = temp_1.readProperty_mInternalRoutineMap ().readSubscript__3F_ (constinArgument_inRoutineName.readProperty_string (), inCompiler COMMA_HERE).unwrappedValue () ;
     if (!temp_1.readProperty_mInternalRoutineMap ().readSubscript__3F_ (constinArgument_inRoutineName.readProperty_string (), inCompiler COMMA_HERE).isValuated ()) {
       test_0 = GalgasBool::boolFalse ;
     }
     if (GalgasBool::boolTrue == test_0) {
       outArgument_outIsFilePrivate = GGS_bool (false) ;
       outArgument_outRoutineSignature = GGS_formalParameterSignature::init (inCompiler COMMA_HERE) ;
-      UpEnumerator_routineArgumentMap enumerator_4242 (var_routine_4095.readProperty_mArgumentMap ()) ;
-      while (enumerator_4242.hasCurrentObject ()) {
-        outArgument_outIsFilePrivate = enumerator_4242.current (HERE).readProperty_mIsFilePrivate () ;
-        outArgument_outRoutineSignature = enumerator_4242.current (HERE).readProperty_mRoutineSignature () ;
-        enumerator_4242.gotoNextObject () ;
+      UpEnumerator_routineArgumentMap enumerator_4240 (var_routine_4093.readProperty_mArgumentMap ()) ;
+      while (enumerator_4240.hasCurrentObject ()) {
+        outArgument_outIsFilePrivate = enumerator_4240.current (HERE).readProperty_mIsFilePrivate () ;
+        outArgument_outRoutineSignature = enumerator_4240.current (HERE).readProperty_mRoutineSignature () ;
+        enumerator_4240.gotoNextObject () ;
       }
-      GGS_acceptableParameterList var_acceptableParameterList_4405 = GGS_acceptableParameterList::init (inCompiler COMMA_HERE) ;
-      UpEnumerator_routineArgumentMap enumerator_4462 (var_routine_4095.readProperty_mArgumentMap ()) ;
-      while (enumerator_4462.hasCurrentObject ()) {
-        GGS_bool var_accept_4490 = GGS_bool (ComparisonKind::equal, constinArgument_inActualParameterList.getter_count (SOURCE_FILE ("routineMap.galgas3", 106)).objectCompare (enumerator_4462.current (HERE).readProperty_mRoutineSignature ().getter_count (SOURCE_FILE ("routineMap.galgas3", 106)))) ;
-        UpEnumerator_formalParameterSignature enumerator_4597 (enumerator_4462.current (HERE).readProperty_mRoutineSignature ()) ;
-        UpEnumerator_actualParameterListAST enumerator_4617 (constinArgument_inActualParameterList) ;
-        bool bool_2 = var_accept_4490.isValidAndTrue () ;
-        if (enumerator_4597.hasCurrentObject () && enumerator_4617.hasCurrentObject () && bool_2) {
-          while (enumerator_4597.hasCurrentObject () && enumerator_4617.hasCurrentObject () && bool_2) {
-            var_accept_4490 = callExtensionGetter_isCompatibleWith ((const cPtr_actualParameterAST *) enumerator_4617.current_mActualParameter (HERE).ptr (), enumerator_4597.current (HERE).readProperty_mFormalArgumentPassingMode (), enumerator_4597.current (HERE).readProperty_mFormalSelector ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("routineMap.galgas3", 108)) ;
-            enumerator_4597.gotoNextObject () ;
-            enumerator_4617.gotoNextObject () ;
-            if (enumerator_4597.hasCurrentObject () && enumerator_4617.hasCurrentObject ()) {
-              bool_2 = var_accept_4490.isValidAndTrue () ;
+      GGS_acceptableParameterList var_acceptableParameterList_4403 = GGS_acceptableParameterList::init (inCompiler COMMA_HERE) ;
+      UpEnumerator_routineArgumentMap enumerator_4460 (var_routine_4093.readProperty_mArgumentMap ()) ;
+      while (enumerator_4460.hasCurrentObject ()) {
+        GGS_bool var_accept_4488 = GGS_bool (ComparisonKind::equal, constinArgument_inActualParameterList.getter_count (SOURCE_FILE ("routineMap.galgas3", 106)).objectCompare (enumerator_4460.current (HERE).readProperty_mRoutineSignature ().getter_count (SOURCE_FILE ("routineMap.galgas3", 106)))) ;
+        UpEnumerator_formalParameterSignature enumerator_4595 (enumerator_4460.current (HERE).readProperty_mRoutineSignature ()) ;
+        UpEnumerator_actualParameterListAST enumerator_4615 (constinArgument_inActualParameterList) ;
+        bool bool_2 = var_accept_4488.isValidAndTrue () ;
+        if (enumerator_4595.hasCurrentObject () && enumerator_4615.hasCurrentObject () && bool_2) {
+          while (enumerator_4595.hasCurrentObject () && enumerator_4615.hasCurrentObject () && bool_2) {
+            var_accept_4488 = callExtensionGetter_isCompatibleWith ((const cPtr_actualParameterAST *) enumerator_4615.current_mActualParameter (HERE).ptr (), enumerator_4595.current (HERE).readProperty_mFormalArgumentPassingMode (), enumerator_4595.current (HERE).readProperty_mFormalSelector ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("routineMap.galgas3", 108)) ;
+            enumerator_4595.gotoNextObject () ;
+            enumerator_4615.gotoNextObject () ;
+            if (enumerator_4595.hasCurrentObject () && enumerator_4615.hasCurrentObject ()) {
+              bool_2 = var_accept_4488.isValidAndTrue () ;
             }
           }
         }
         GalgasBool test_3 = GalgasBool::boolTrue ;
         if (GalgasBool::boolTrue == test_3) {
-          test_3 = var_accept_4490.boolEnum () ;
+          test_3 = var_accept_4488.boolEnum () ;
           if (GalgasBool::boolTrue == test_3) {
-            var_acceptableParameterList_4405.addAssignOperation (enumerator_4462.current (HERE).readProperty_mRoutineSignature (), enumerator_4462.current (HERE).readProperty_mIsFilePrivate ()  COMMA_SOURCE_FILE ("routineMap.galgas3", 114)) ;
+            var_acceptableParameterList_4403.addAssignOperation (enumerator_4460.current (HERE).readProperty_mRoutineSignature (), enumerator_4460.current (HERE).readProperty_mIsFilePrivate ()  COMMA_SOURCE_FILE ("routineMap.galgas3", 114)) ;
           }
         }
-        enumerator_4462.gotoNextObject () ;
+        enumerator_4460.gotoNextObject () ;
       }
       GalgasBool test_4 = GalgasBool::boolTrue ;
       if (GalgasBool::boolTrue == test_4) {
-        test_4 = GGS_bool (ComparisonKind::equal, var_acceptableParameterList_4405.getter_count (SOURCE_FILE ("routineMap.galgas3", 117)).objectCompare (GGS_uint (uint32_t (1U)))).boolEnum () ;
+        test_4 = GGS_bool (ComparisonKind::equal, var_acceptableParameterList_4403.getter_count (SOURCE_FILE ("routineMap.galgas3", 117)).objectCompare (GGS_uint (uint32_t (1U)))).boolEnum () ;
         if (GalgasBool::boolTrue == test_4) {
-          var_acceptableParameterList_4405.method_first (outArgument_outRoutineSignature, outArgument_outIsFilePrivate, inCompiler COMMA_SOURCE_FILE ("routineMap.galgas3", 118)) ;
+          var_acceptableParameterList_4403.method_first (outArgument_outRoutineSignature, outArgument_outIsFilePrivate, inCompiler COMMA_SOURCE_FILE ("routineMap.galgas3", 118)) ;
           outArgument_outRoutineMangledName = function_routineMangledName (constinArgument_inRoutineName, outArgument_outRoutineSignature, inCompiler COMMA_SOURCE_FILE ("routineMap.galgas3", 119)) ;
         }
       }
       if (GalgasBool::boolFalse == test_4) {
         GalgasBool test_5 = GalgasBool::boolTrue ;
         if (GalgasBool::boolTrue == test_5) {
-          test_5 = GGS_bool (ComparisonKind::equal, var_acceptableParameterList_4405.getter_count (SOURCE_FILE ("routineMap.galgas3", 120)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
+          test_5 = GGS_bool (ComparisonKind::equal, var_acceptableParameterList_4403.getter_count (SOURCE_FILE ("routineMap.galgas3", 120)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
           if (GalgasBool::boolTrue == test_5) {
             GenericArray <FixItDescription> fixItArray6 ;
             inCompiler->emitSemanticError (constinArgument_inRoutineName.readProperty_location (), GGS_string ("cannot find any procedure with compatible formal argument list"), fixItArray6  COMMA_SOURCE_FILE ("routineMap.galgas3", 121)) ;
@@ -8556,14 +8556,14 @@ void extensionMethod_searchKey (const GGS_routineMap inObject,
           }
         }
         if (GalgasBool::boolFalse == test_5) {
-          GGS_string var_s_5454 = GGS_string ("ambiguity, several procedures with compatible formal argument list:") ;
-          UpEnumerator_acceptableParameterList enumerator_5551 (var_acceptableParameterList_4405) ;
-          while (enumerator_5551.hasCurrentObject ()) {
-            var_s_5454.plusAssignOperation(GGS_string ("\n  - ").add_operation (function_routineArgumentFromFormalParameters (enumerator_5551.current (HERE).readProperty_mRoutineSignature (), inCompiler COMMA_SOURCE_FILE ("routineMap.galgas3", 127)), inCompiler COMMA_SOURCE_FILE ("routineMap.galgas3", 127)), inCompiler  COMMA_SOURCE_FILE ("routineMap.galgas3", 127)) ;
-            enumerator_5551.gotoNextObject () ;
+          GGS_string var_s_5452 = GGS_string ("ambiguity, several procedures with compatible formal argument list:") ;
+          UpEnumerator_acceptableParameterList enumerator_5549 (var_acceptableParameterList_4403) ;
+          while (enumerator_5549.hasCurrentObject ()) {
+            var_s_5452.plusAssignOperation(GGS_string ("\n  - ").add_operation (function_routineArgumentFromFormalParameters (enumerator_5549.current (HERE).readProperty_mRoutineSignature (), inCompiler COMMA_SOURCE_FILE ("routineMap.galgas3", 127)), inCompiler COMMA_SOURCE_FILE ("routineMap.galgas3", 127)), inCompiler  COMMA_SOURCE_FILE ("routineMap.galgas3", 127)) ;
+            enumerator_5549.gotoNextObject () ;
           }
           GenericArray <FixItDescription> fixItArray7 ;
-          inCompiler->emitSemanticError (constinArgument_inRoutineName.readProperty_location (), var_s_5454, fixItArray7  COMMA_SOURCE_FILE ("routineMap.galgas3", 129)) ;
+          inCompiler->emitSemanticError (constinArgument_inRoutineName.readProperty_location (), var_s_5452, fixItArray7  COMMA_SOURCE_FILE ("routineMap.galgas3", 129)) ;
           outArgument_outRoutineSignature.drop () ; // Release error dropped variable
           outArgument_outIsFilePrivate.drop () ; // Release error dropped variable
           outArgument_outRoutineMangledName.drop () ; // Release error dropped variable
@@ -8841,7 +8841,7 @@ GGS_unifiedTypeDefinition callExtensionGetter_definition (const cPtr_unifiedType
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension method '@syntaxExtensions insertKey'
+//Extension proc '@syntaxExtensions insertKey'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -11032,7 +11032,7 @@ GGS_galgas_33_GrammarComponentAST GGS_galgas_33_GrammarComponentAST::extractObje
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension method '@galgasDeclarationAST getOptionalTypeName'
+//Extension proc '@galgasDeclarationAST getOptionalTypeName'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -11058,7 +11058,7 @@ void extensionSetter_getOptionalTypeName (GGS_galgasDeclarationAST & ioObject,
 
 //--------------------------------------------------------------------------------------------------
 //
-//Abstract extension method '@templateInstructionForGeneration templateCodeGeneration'
+//Abstract extension proc '@templateInstructionForGeneration templateCodeGeneration'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -11071,7 +11071,7 @@ void callExtensionMethod_templateCodeGeneration (cPtr_templateInstructionForGene
                                                  Compiler * inCompiler
                                                  COMMA_LOCATION_ARGS) {
 //--- Drop output arguments
-//--- Find method
+//--- Find proc
   if (nullptr != inObject) {
     macroValidSharedObject (inObject, cPtr_templateInstructionForGeneration) ;
     inObject->method_templateCodeGeneration (io_ioGeneratedCode, io_ioInclusionSet, io_ioTemporaryVariableIndex, io_ioUnusedVariableCppNameSet, io_ioUseColumnMarker, inCompiler COMMA_THERE) ;

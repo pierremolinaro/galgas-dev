@@ -1129,10 +1129,10 @@ class CollectionElementPtr_enumerationDescriptorList : public CollectionElementP
                                                           COMMA_LOCATION_ARGS) ;
   public: CollectionElementPtr_enumerationDescriptorList (const GGS_enumerationDescriptorList_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
-//--- Virtual method that checks that all attributes are valid
+//--- Virtual proc that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
-//--- Virtual method that returns a copy of current object
+//--- Virtual proc that returns a copy of current object
   public: virtual CollectionElementPtr * copy (void) ;
 } ;
 
@@ -1565,7 +1565,7 @@ void GGS_enumerationDescriptorList::setter_setMEnumeratedTypeAtIndex (GGS_unifie
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_unifiedTypeMapEntry GGS_enumerationDescriptorList::getter_mEnumeratedTypeAtIndex (const GGS_uint & inIndex,
                                                                                       Compiler * inCompiler
                                                                                       COMMA_LOCATION_ARGS) const {
@@ -1604,7 +1604,7 @@ void GGS_enumerationDescriptorList::setter_setMEnumerationNameAtIndex (GGS_strin
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_string GGS_enumerationDescriptorList::getter_mEnumerationNameAtIndex (const GGS_uint & inIndex,
                                                                           Compiler * inCompiler
                                                                           COMMA_LOCATION_ARGS) const {
@@ -2248,10 +2248,10 @@ class CollectionElementPtr_functionSignature : public CollectionElementPtr {
                                                   COMMA_LOCATION_ARGS) ;
   public: CollectionElementPtr_functionSignature (const GGS_functionSignature_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
-//--- Virtual method that checks that all attributes are valid
+//--- Virtual proc that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
-//--- Virtual method that returns a copy of current object
+//--- Virtual proc that returns a copy of current object
   public: virtual CollectionElementPtr * copy (void) ;
 } ;
 
@@ -2734,7 +2734,7 @@ void GGS_functionSignature::setter_setMFormalSelectorAtIndex (GGS_lstring inOper
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_lstring GGS_functionSignature::getter_mFormalSelectorAtIndex (const GGS_uint & inIndex,
                                                                   Compiler * inCompiler
                                                                   COMMA_LOCATION_ARGS) const {
@@ -2773,7 +2773,7 @@ void GGS_functionSignature::setter_setMFormalArgumentTypeAtIndex (GGS_unifiedTyp
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_unifiedTypeMapEntry GGS_functionSignature::getter_mFormalArgumentTypeAtIndex (const GGS_uint & inIndex,
                                                                                   Compiler * inCompiler
                                                                                   COMMA_LOCATION_ARGS) const {
@@ -2812,7 +2812,7 @@ void GGS_functionSignature::setter_setMFormalArgumentNameAtIndex (GGS_string inO
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_string GGS_functionSignature::getter_mFormalArgumentNameAtIndex (const GGS_uint & inIndex,
                                                                      Compiler * inCompiler
                                                                      COMMA_LOCATION_ARGS) const {
@@ -2851,7 +2851,7 @@ void GGS_functionSignature::setter_setIsConstantAtIndex (GGS_bool inOperand,
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_bool GGS_functionSignature::getter_isConstantAtIndex (const GGS_uint & inIndex,
                                                           Compiler * inCompiler
                                                           COMMA_LOCATION_ARGS) const {
@@ -3243,7 +3243,7 @@ GGS_bool extensionGetter_generateCppObjectComparison (const GGS_typeFeatures & i
 
 //--------------------------------------------------------------------------------------------------
 //
-//Abstract extension method '@syntaxInstructionAST transformInstructionForGrammarAnalysis'
+//Abstract extension proc '@syntaxInstructionAST transformInstructionForGrammarAnalysis'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -3255,7 +3255,7 @@ void callExtensionMethod_transformInstructionForGrammarAnalysis (cPtr_syntaxInst
                                                                  Compiler * inCompiler
                                                                  COMMA_LOCATION_ARGS) {
 //--- Drop output arguments
-//--- Find method
+//--- Find proc
   if (nullptr != inObject) {
     macroValidSharedObject (inObject, cPtr_syntaxInstructionAST) ;
     inObject->method_transformInstructionForGrammarAnalysis (io_ioActuallyUsedTerminalSymbolMap, constin_inNonTerminalSymbolMap, io_ioAddedNonTerminalIndex, io_ioSyntaxInstructionList, inCompiler COMMA_THERE) ;
@@ -3822,10 +3822,10 @@ class CollectionElementPtr_nonTerminalToAddList : public CollectionElementPtr {
                                                      COMMA_LOCATION_ARGS) ;
   public: CollectionElementPtr_nonTerminalToAddList (const GGS_nonTerminalToAddList_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
-//--- Virtual method that checks that all attributes are valid
+//--- Virtual proc that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
-//--- Virtual method that returns a copy of current object
+//--- Virtual proc that returns a copy of current object
   public: virtual CollectionElementPtr * copy (void) ;
 } ;
 
@@ -4258,7 +4258,7 @@ void GGS_nonTerminalToAddList::setter_setMSyntaxComponentNameAtIndex (GGS_string
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_string GGS_nonTerminalToAddList::getter_mSyntaxComponentNameAtIndex (const GGS_uint & inIndex,
                                                                          Compiler * inCompiler
                                                                          COMMA_LOCATION_ARGS) const {
@@ -4297,7 +4297,7 @@ void GGS_nonTerminalToAddList::setter_setMNonTerminalToAddCountAtIndex (GGS_uint
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_uint GGS_nonTerminalToAddList::getter_mNonTerminalToAddCountAtIndex (const GGS_uint & inIndex,
                                                                          Compiler * inCompiler
                                                                          COMMA_LOCATION_ARGS) const {
@@ -5015,10 +5015,10 @@ class CollectionElementPtr_ruleDeclarationList : public CollectionElementPtr {
                                                     COMMA_LOCATION_ARGS) ;
   public: CollectionElementPtr_ruleDeclarationList (const GGS_ruleDeclarationList_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
-//--- Virtual method that checks that all attributes are valid
+//--- Virtual proc that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
-//--- Virtual method that returns a copy of current object
+//--- Virtual proc that returns a copy of current object
   public: virtual CollectionElementPtr * copy (void) ;
 } ;
 
@@ -5476,7 +5476,7 @@ void GGS_ruleDeclarationList::setter_setMNonterminalNameAtIndex (GGS_string inOp
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_string GGS_ruleDeclarationList::getter_mNonterminalNameAtIndex (const GGS_uint & inIndex,
                                                                     Compiler * inCompiler
                                                                     COMMA_LOCATION_ARGS) const {
@@ -5515,7 +5515,7 @@ void GGS_ruleDeclarationList::setter_setMRuleIndexAtIndex (GGS_uint inOperand,
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_uint GGS_ruleDeclarationList::getter_mRuleIndexAtIndex (const GGS_uint & inIndex,
                                                             Compiler * inCompiler
                                                             COMMA_LOCATION_ARGS) const {
@@ -5554,7 +5554,7 @@ void GGS_ruleDeclarationList::setter_setMLabelImplementationListAtIndex (GGS_rul
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_ruleLabelImplementationList GGS_ruleDeclarationList::getter_mLabelImplementationListAtIndex (const GGS_uint & inIndex,
                                                                                                  Compiler * inCompiler
                                                                                                  COMMA_LOCATION_ARGS) const {
@@ -6064,10 +6064,10 @@ class CollectionElementPtr_localConstantList : public CollectionElementPtr {
                                                   COMMA_LOCATION_ARGS) ;
   public: CollectionElementPtr_localConstantList (const GGS_localConstantList_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
-//--- Virtual method that checks that all attributes are valid
+//--- Virtual proc that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
-//--- Virtual method that returns a copy of current object
+//--- Virtual proc that returns a copy of current object
   public: virtual CollectionElementPtr * copy (void) ;
 } ;
 
@@ -6550,7 +6550,7 @@ void GGS_localConstantList::setter_setMTypeAtIndex (GGS_unifiedTypeMapEntry inOp
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_unifiedTypeMapEntry GGS_localConstantList::getter_mTypeAtIndex (const GGS_uint & inIndex,
                                                                     Compiler * inCompiler
                                                                     COMMA_LOCATION_ARGS) const {
@@ -6589,7 +6589,7 @@ void GGS_localConstantList::setter_setMNameAtIndex (GGS_lstring inOperand,
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_lstring GGS_localConstantList::getter_mNameAtIndex (const GGS_uint & inIndex,
                                                         Compiler * inCompiler
                                                         COMMA_LOCATION_ARGS) const {
@@ -6628,7 +6628,7 @@ void GGS_localConstantList::setter_setMNoWarningIfUnusedAtIndex (GGS_bool inOper
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_bool GGS_localConstantList::getter_mNoWarningIfUnusedAtIndex (const GGS_uint & inIndex,
                                                                   Compiler * inCompiler
                                                                   COMMA_LOCATION_ARGS) const {
@@ -6667,7 +6667,7 @@ void GGS_localConstantList::setter_setMCppNameAtIndex (GGS_string inOperand,
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_string GGS_localConstantList::getter_mCppNameAtIndex (const GGS_uint & inIndex,
                                                           Compiler * inCompiler
                                                           COMMA_LOCATION_ARGS) const {
@@ -6824,10 +6824,10 @@ class CollectionElementPtr_localInitializedVariableList : public CollectionEleme
                                                              COMMA_LOCATION_ARGS) ;
   public: CollectionElementPtr_localInitializedVariableList (const GGS_localInitializedVariableList_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
-//--- Virtual method that checks that all attributes are valid
+//--- Virtual proc that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
-//--- Virtual method that returns a copy of current object
+//--- Virtual proc that returns a copy of current object
   public: virtual CollectionElementPtr * copy (void) ;
 } ;
 
@@ -7285,7 +7285,7 @@ void GGS_localInitializedVariableList::setter_setMTypeAtIndex (GGS_unifiedTypeMa
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_unifiedTypeMapEntry GGS_localInitializedVariableList::getter_mTypeAtIndex (const GGS_uint & inIndex,
                                                                                Compiler * inCompiler
                                                                                COMMA_LOCATION_ARGS) const {
@@ -7324,7 +7324,7 @@ void GGS_localInitializedVariableList::setter_setMNameAtIndex (GGS_lstring inOpe
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_lstring GGS_localInitializedVariableList::getter_mNameAtIndex (const GGS_uint & inIndex,
                                                                    Compiler * inCompiler
                                                                    COMMA_LOCATION_ARGS) const {
@@ -7363,7 +7363,7 @@ void GGS_localInitializedVariableList::setter_setMCppNameAtIndex (GGS_string inO
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_string GGS_localInitializedVariableList::getter_mCppNameAtIndex (const GGS_uint & inIndex,
                                                                      Compiler * inCompiler
                                                                      COMMA_LOCATION_ARGS) const {
@@ -7644,7 +7644,7 @@ GGS_formalArgumentPassingModeAST GGS_formalArgumentPassingModeAST::extractObject
 
 //--------------------------------------------------------------------------------------------------
 //
-//Abstract extension method '@abstractGrammarInstructionSyntaxDirectedTranslationResult analyzeGrammarInstructionSDT'
+//Abstract extension proc '@abstractGrammarInstructionSyntaxDirectedTranslationResult analyzeGrammarInstructionSDT'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -7658,7 +7658,7 @@ void callExtensionMethod_analyzeGrammarInstructionSDT (cPtr_abstractGrammarInstr
                                                        Compiler * inCompiler
                                                        COMMA_LOCATION_ARGS) {
 //--- Drop output arguments
-//--- Find method
+//--- Find proc
   if (nullptr != inObject) {
     macroValidSharedObject (inObject, cPtr_abstractGrammarInstructionSyntaxDirectedTranslationResult) ;
     inObject->method_analyzeGrammarInstructionSDT (constin_inAnalysisContext, io_ioTypeMap, constin_inHasTranslateFeature, constin_inSyntaxDirectedTranslationResultVarName, io_ioAssignementList, io_ioVariableMap, inCompiler COMMA_THERE) ;
@@ -7680,10 +7680,10 @@ class CollectionElementPtr_formalInputParameterListAST : public CollectionElemen
                                                             COMMA_LOCATION_ARGS) ;
   public: CollectionElementPtr_formalInputParameterListAST (const GGS_formalInputParameterListAST_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
-//--- Virtual method that checks that all attributes are valid
+//--- Virtual proc that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
-//--- Virtual method that returns a copy of current object
+//--- Virtual proc that returns a copy of current object
   public: virtual CollectionElementPtr * copy (void) ;
 } ;
 
@@ -8191,7 +8191,7 @@ void GGS_formalInputParameterListAST::setter_setMFormalSelectorAtIndex (GGS_lstr
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_lstring GGS_formalInputParameterListAST::getter_mFormalSelectorAtIndex (const GGS_uint & inIndex,
                                                                             Compiler * inCompiler
                                                                             COMMA_LOCATION_ARGS) const {
@@ -8230,7 +8230,7 @@ void GGS_formalInputParameterListAST::setter_setMFormalArgumentTypeNameAtIndex (
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_lstring GGS_formalInputParameterListAST::getter_mFormalArgumentTypeNameAtIndex (const GGS_uint & inIndex,
                                                                                     Compiler * inCompiler
                                                                                     COMMA_LOCATION_ARGS) const {
@@ -8269,7 +8269,7 @@ void GGS_formalInputParameterListAST::setter_setMFormalArgumentNameAtIndex (GGS_
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_lstring GGS_formalInputParameterListAST::getter_mFormalArgumentNameAtIndex (const GGS_uint & inIndex,
                                                                                 Compiler * inCompiler
                                                                                 COMMA_LOCATION_ARGS) const {
@@ -8308,7 +8308,7 @@ void GGS_formalInputParameterListAST::setter_setMIsUnusedAtIndex (GGS_bool inOpe
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_bool GGS_formalInputParameterListAST::getter_mIsUnusedAtIndex (const GGS_uint & inIndex,
                                                                    Compiler * inCompiler
                                                                    COMMA_LOCATION_ARGS) const {
@@ -8347,7 +8347,7 @@ void GGS_formalInputParameterListAST::setter_setMIsConstantAtIndex (GGS_bool inO
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_bool GGS_formalInputParameterListAST::getter_mIsConstantAtIndex (const GGS_uint & inIndex,
                                                                      Compiler * inCompiler
                                                                      COMMA_LOCATION_ARGS) const {
@@ -8640,10 +8640,10 @@ class CollectionElementPtr_formalInputParameterListForGeneration : public Collec
                                                                       COMMA_LOCATION_ARGS) ;
   public: CollectionElementPtr_formalInputParameterListForGeneration (const GGS_formalInputParameterListForGeneration_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
-//--- Virtual method that checks that all attributes are valid
+//--- Virtual proc that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
-//--- Virtual method that returns a copy of current object
+//--- Virtual proc that returns a copy of current object
   public: virtual CollectionElementPtr * copy (void) ;
 } ;
 
@@ -9151,7 +9151,7 @@ void GGS_formalInputParameterListForGeneration::setter_setMFormalSelectorAtIndex
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_lstring GGS_formalInputParameterListForGeneration::getter_mFormalSelectorAtIndex (const GGS_uint & inIndex,
                                                                                       Compiler * inCompiler
                                                                                       COMMA_LOCATION_ARGS) const {
@@ -9190,7 +9190,7 @@ void GGS_formalInputParameterListForGeneration::setter_setMFormalArgumentTypeAtI
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_unifiedTypeMapEntry GGS_formalInputParameterListForGeneration::getter_mFormalArgumentTypeAtIndex (const GGS_uint & inIndex,
                                                                                                       Compiler * inCompiler
                                                                                                       COMMA_LOCATION_ARGS) const {
@@ -9229,7 +9229,7 @@ void GGS_formalInputParameterListForGeneration::setter_setMFormalArgumentCppName
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_string GGS_formalInputParameterListForGeneration::getter_mFormalArgumentCppNameAtIndex (const GGS_uint & inIndex,
                                                                                             Compiler * inCompiler
                                                                                             COMMA_LOCATION_ARGS) const {
@@ -9268,7 +9268,7 @@ void GGS_formalInputParameterListForGeneration::setter_setMFormalArgumentNameAtI
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_lstring GGS_formalInputParameterListForGeneration::getter_mFormalArgumentNameAtIndex (const GGS_uint & inIndex,
                                                                                           Compiler * inCompiler
                                                                                           COMMA_LOCATION_ARGS) const {
@@ -9307,7 +9307,7 @@ void GGS_formalInputParameterListForGeneration::setter_setMIsConstantAtIndex (GG
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_bool GGS_formalInputParameterListForGeneration::getter_mIsConstantAtIndex (const GGS_uint & inIndex,
                                                                                Compiler * inCompiler
                                                                                COMMA_LOCATION_ARGS) const {
@@ -9478,10 +9478,10 @@ class CollectionElementPtr_formalParameterListAST : public CollectionElementPtr 
                                                        COMMA_LOCATION_ARGS) ;
   public: CollectionElementPtr_formalParameterListAST (const GGS_formalParameterListAST_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
-//--- Virtual method that checks that all attributes are valid
+//--- Virtual proc that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
-//--- Virtual method that returns a copy of current object
+//--- Virtual proc that returns a copy of current object
   public: virtual CollectionElementPtr * copy (void) ;
 } ;
 
@@ -9989,7 +9989,7 @@ void GGS_formalParameterListAST::setter_setMFormalSelectorAtIndex (GGS_lstring i
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_lstring GGS_formalParameterListAST::getter_mFormalSelectorAtIndex (const GGS_uint & inIndex,
                                                                        Compiler * inCompiler
                                                                        COMMA_LOCATION_ARGS) const {
@@ -10028,7 +10028,7 @@ void GGS_formalParameterListAST::setter_setMFormalArgumentPassingModeAtIndex (GG
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_formalArgumentPassingModeAST GGS_formalParameterListAST::getter_mFormalArgumentPassingModeAtIndex (const GGS_uint & inIndex,
                                                                                                        Compiler * inCompiler
                                                                                                        COMMA_LOCATION_ARGS) const {
@@ -10067,7 +10067,7 @@ void GGS_formalParameterListAST::setter_setMFormalArgumentTypeNameAtIndex (GGS_l
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_lstring GGS_formalParameterListAST::getter_mFormalArgumentTypeNameAtIndex (const GGS_uint & inIndex,
                                                                                Compiler * inCompiler
                                                                                COMMA_LOCATION_ARGS) const {
@@ -10106,7 +10106,7 @@ void GGS_formalParameterListAST::setter_setMFormalArgumentNameAtIndex (GGS_lstri
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_lstring GGS_formalParameterListAST::getter_mFormalArgumentNameAtIndex (const GGS_uint & inIndex,
                                                                            Compiler * inCompiler
                                                                            COMMA_LOCATION_ARGS) const {
@@ -10145,7 +10145,7 @@ void GGS_formalParameterListAST::setter_setMIsUnusedAtIndex (GGS_bool inOperand,
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_bool GGS_formalParameterListAST::getter_mIsUnusedAtIndex (const GGS_uint & inIndex,
                                                               Compiler * inCompiler
                                                               COMMA_LOCATION_ARGS) const {
@@ -10560,10 +10560,10 @@ class CollectionElementPtr_formalParameterListForGeneration : public CollectionE
                                                                  COMMA_LOCATION_ARGS) ;
   public: CollectionElementPtr_formalParameterListForGeneration (const GGS_formalParameterListForGeneration_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
-//--- Virtual method that checks that all attributes are valid
+//--- Virtual proc that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
-//--- Virtual method that returns a copy of current object
+//--- Virtual proc that returns a copy of current object
   public: virtual CollectionElementPtr * copy (void) ;
 } ;
 
@@ -11071,7 +11071,7 @@ void GGS_formalParameterListForGeneration::setter_setMFormalSelectorAtIndex (GGS
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_lstring GGS_formalParameterListForGeneration::getter_mFormalSelectorAtIndex (const GGS_uint & inIndex,
                                                                                  Compiler * inCompiler
                                                                                  COMMA_LOCATION_ARGS) const {
@@ -11110,7 +11110,7 @@ void GGS_formalParameterListForGeneration::setter_setMFormalArgumentPassingModeA
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_formalArgumentPassingModeAST GGS_formalParameterListForGeneration::getter_mFormalArgumentPassingModeAtIndex (const GGS_uint & inIndex,
                                                                                                                  Compiler * inCompiler
                                                                                                                  COMMA_LOCATION_ARGS) const {
@@ -11149,7 +11149,7 @@ void GGS_formalParameterListForGeneration::setter_setMFormalArgumentTypeAtIndex 
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_unifiedTypeMapEntry GGS_formalParameterListForGeneration::getter_mFormalArgumentTypeAtIndex (const GGS_uint & inIndex,
                                                                                                  Compiler * inCompiler
                                                                                                  COMMA_LOCATION_ARGS) const {
@@ -11188,7 +11188,7 @@ void GGS_formalParameterListForGeneration::setter_setMFormalArgumentNameAtIndex 
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_lstring GGS_formalParameterListForGeneration::getter_mFormalArgumentNameAtIndex (const GGS_uint & inIndex,
                                                                                      Compiler * inCompiler
                                                                                      COMMA_LOCATION_ARGS) const {
@@ -11227,7 +11227,7 @@ void GGS_formalParameterListForGeneration::setter_setMFormalArgumentCppNameAtInd
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_string GGS_formalParameterListForGeneration::getter_mFormalArgumentCppNameAtIndex (const GGS_uint & inIndex,
                                                                                        Compiler * inCompiler
                                                                                        COMMA_LOCATION_ARGS) const {
@@ -13323,10 +13323,10 @@ class CollectionElementPtr_syntaxInstructionListForGrammarAnalysis : public Coll
                                                                         COMMA_LOCATION_ARGS) ;
   public: CollectionElementPtr_syntaxInstructionListForGrammarAnalysis (const GGS_syntaxInstructionListForGrammarAnalysis_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
-//--- Virtual method that checks that all attributes are valid
+//--- Virtual proc that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
-//--- Virtual method that returns a copy of current object
+//--- Virtual proc that returns a copy of current object
   public: virtual CollectionElementPtr * copy (void) ;
 } ;
 
@@ -13734,7 +13734,7 @@ void GGS_syntaxInstructionListForGrammarAnalysis::setter_setMInstructionAtIndex 
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_abstractSyntaxInstructionForGrammarAnalysis GGS_syntaxInstructionListForGrammarAnalysis::getter_mInstructionAtIndex (const GGS_uint & inIndex,
                                                                                                                          Compiler * inCompiler
                                                                                                                          COMMA_LOCATION_ARGS) const {
@@ -13853,10 +13853,10 @@ class CollectionElementPtr_rowList : public CollectionElementPtr {
                                         COMMA_LOCATION_ARGS) ;
   public: CollectionElementPtr_rowList (const GGS_rowList_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
-//--- Virtual method that checks that all attributes are valid
+//--- Virtual proc that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
-//--- Virtual method that returns a copy of current object
+//--- Virtual proc that returns a copy of current object
   public: virtual CollectionElementPtr * copy (void) ;
 } ;
 
@@ -14264,7 +14264,7 @@ void GGS_rowList::setter_setColumnsAtIndex (GGS__32_stringlist inOperand,
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS__32_stringlist GGS_rowList::getter_columnsAtIndex (const GGS_uint & inIndex,
                                                        Compiler * inCompiler
                                                        COMMA_LOCATION_ARGS) const {
@@ -14373,7 +14373,7 @@ GGS_rowList GGS_rowList::extractObject (const GGS_object & inObject,
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension method '@rowList appendRow'
+//Extension proc '@rowList appendRow'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -14386,35 +14386,35 @@ void extensionSetter_appendRow (GGS_rowList & ioObject,
                                 COMMA_UNUSED_LOCATION_ARGS) {
   outArgument_outNodeName.drop () ; // Release 'out' argument
   const GGS_rowList temp_0 = ioObject ;
-  GGS_uint var_length_10269 = temp_0.getter_count (SOURCE_FILE ("production-rules-in-tex.galgas3", 281)) ;
+  GGS_uint var_length_10263 = temp_0.getter_count (SOURCE_FILE ("production-rules-in-tex.galgas3", 281)) ;
   GalgasBool test_1 = GalgasBool::boolTrue ;
   if (GalgasBool::boolTrue == test_1) {
-    test_1 = GGS_bool (ComparisonKind::lowerOrEqual, var_length_10269.objectCompare (constinArgument_inRow)).boolEnum () ;
+    test_1 = GGS_bool (ComparisonKind::lowerOrEqual, var_length_10263.objectCompare (constinArgument_inRow)).boolEnum () ;
     if (GalgasBool::boolTrue == test_1) {
-      UpEnumerator_range enumerator_10339 (GGS_range (var_length_10269, constinArgument_inRow.substract_operation (var_length_10269, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 283)).add_operation (GGS_uint (1), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 283)))) ;
-      while (enumerator_10339.hasCurrentObject ()) {
+      UpEnumerator_range enumerator_10333 (GGS_range (var_length_10263, constinArgument_inRow.substract_operation (var_length_10263, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 283)).add_operation (GGS_uint (1), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 283)))) ;
+      while (enumerator_10333.hasCurrentObject ()) {
         ioObject.addAssignOperation (GGS__32_stringlist::init (inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 284)) ;
-        enumerator_10339.gotoNextObject () ;
+        enumerator_10333.gotoNextObject () ;
       }
     }
   }
   const GGS_rowList temp_2 = ioObject ;
-  GGS__32_stringlist var_cols_10401 = temp_2.getter_columnsAtIndex (constinArgument_inRow, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 288)) ;
+  GGS__32_stringlist var_cols_10395 = temp_2.getter_columnsAtIndex (constinArgument_inRow, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 288)) ;
   GalgasBool test_3 = GalgasBool::boolTrue ;
   if (GalgasBool::boolTrue == test_3) {
-    test_3 = GGS_bool (ComparisonKind::lowerOrEqual, var_cols_10401.getter_count (SOURCE_FILE ("production-rules-in-tex.galgas3", 290)).objectCompare (constinArgument_inColumn)).boolEnum () ;
+    test_3 = GGS_bool (ComparisonKind::lowerOrEqual, var_cols_10395.getter_count (SOURCE_FILE ("production-rules-in-tex.galgas3", 290)).objectCompare (constinArgument_inColumn)).boolEnum () ;
     if (GalgasBool::boolTrue == test_3) {
-      UpEnumerator_range enumerator_10527 (GGS_range (var_cols_10401.getter_count (SOURCE_FILE ("production-rules-in-tex.galgas3", 291)), constinArgument_inColumn.substract_operation (var_cols_10401.getter_count (SOURCE_FILE ("production-rules-in-tex.galgas3", 291)), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 291)).add_operation (GGS_uint (1), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 291)))) ;
-      while (enumerator_10527.hasCurrentObject ()) {
-        var_cols_10401.addAssignOperation (GGS_string::makeEmptyString (), GGS_string::makeEmptyString ()  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 292)) ;
-        enumerator_10527.gotoNextObject () ;
+      UpEnumerator_range enumerator_10521 (GGS_range (var_cols_10395.getter_count (SOURCE_FILE ("production-rules-in-tex.galgas3", 291)), constinArgument_inColumn.substract_operation (var_cols_10395.getter_count (SOURCE_FILE ("production-rules-in-tex.galgas3", 291)), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 291)).add_operation (GGS_uint (1), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 291)))) ;
+      while (enumerator_10521.hasCurrentObject ()) {
+        var_cols_10395.addAssignOperation (GGS_string::makeEmptyString (), GGS_string::makeEmptyString ()  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 292)) ;
+        enumerator_10521.gotoNextObject () ;
       }
     }
   }
-  outArgument_outNodeName = GGS_string ("p").add_operation (constinArgument_inRow.getter_string (SOURCE_FILE ("production-rules-in-tex.galgas3", 296)), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 296)).add_operation (GGS_string ("-"), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 296)).add_operation (var_cols_10401.getter_count (SOURCE_FILE ("production-rules-in-tex.galgas3", 296)).getter_string (SOURCE_FILE ("production-rules-in-tex.galgas3", 296)), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 296)) ;
-  var_cols_10401.addAssignOperation (outArgument_outNodeName, constinArgument_inNodeDefinition  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 297)) ;
+  outArgument_outNodeName = GGS_string ("p").add_operation (constinArgument_inRow.getter_string (SOURCE_FILE ("production-rules-in-tex.galgas3", 296)), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 296)).add_operation (GGS_string ("-"), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 296)).add_operation (var_cols_10395.getter_count (SOURCE_FILE ("production-rules-in-tex.galgas3", 296)).getter_string (SOURCE_FILE ("production-rules-in-tex.galgas3", 296)), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 296)) ;
+  var_cols_10395.addAssignOperation (outArgument_outNodeName, constinArgument_inNodeDefinition  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 297)) ;
   {
-  ioObject.setter_setColumnsAtIndex (var_cols_10401, constinArgument_inRow, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 299)) ;
+  ioObject.setter_setColumnsAtIndex (var_cols_10395, constinArgument_inRow, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 299)) ;
   }
 }
 
@@ -14550,13 +14550,13 @@ GGS_bool extensionGetter_displayVertically (const GGS_syntaxInstructionListForGr
   const GGS_syntaxInstructionListForGrammarAnalysis temp_0 = inObject ;
   result_result = GGS_bool (ComparisonKind::greaterThan, temp_0.getter_count (SOURCE_FILE ("production-rules-in-tex.galgas3", 547)).objectCompare (GGS_uint (uint32_t (4U)))) ;
   const GGS_syntaxInstructionListForGrammarAnalysis temp_1 = inObject ;
-  UpEnumerator_syntaxInstructionListForGrammarAnalysis enumerator_18968 (temp_1) ;
+  UpEnumerator_syntaxInstructionListForGrammarAnalysis enumerator_18954 (temp_1) ;
   bool bool_2 = result_result.isValidAndTrue () ;
-  if (enumerator_18968.hasCurrentObject () && bool_2) {
-    while (enumerator_18968.hasCurrentObject () && bool_2) {
-      result_result = callExtensionGetter_isLinear ((const cPtr_abstractSyntaxInstructionForGrammarAnalysis *) enumerator_18968.current_mInstruction (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 549)) ;
-      enumerator_18968.gotoNextObject () ;
-      if (enumerator_18968.hasCurrentObject ()) {
+  if (enumerator_18954.hasCurrentObject () && bool_2) {
+    while (enumerator_18954.hasCurrentObject () && bool_2) {
+      result_result = callExtensionGetter_isLinear ((const cPtr_abstractSyntaxInstructionForGrammarAnalysis *) enumerator_18954.current_mInstruction (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 549)) ;
+      enumerator_18954.gotoNextObject () ;
+      if (enumerator_18954.hasCurrentObject ()) {
         bool_2 = result_result.isValidAndTrue () ;
       }
     }
@@ -14597,10 +14597,10 @@ class CollectionElementPtr_lexicalSendSearchListAST : public CollectionElementPt
                                                          COMMA_LOCATION_ARGS) ;
   public: CollectionElementPtr_lexicalSendSearchListAST (const GGS_lexicalSendSearchListAST_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
-//--- Virtual method that checks that all attributes are valid
+//--- Virtual proc that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
-//--- Virtual method that returns a copy of current object
+//--- Virtual proc that returns a copy of current object
   public: virtual CollectionElementPtr * copy (void) ;
 } ;
 
@@ -15033,7 +15033,7 @@ void GGS_lexicalSendSearchListAST::setter_setMAttributeNameAtIndex (GGS_lstring 
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_lstring GGS_lexicalSendSearchListAST::getter_mAttributeNameAtIndex (const GGS_uint & inIndex,
                                                                         Compiler * inCompiler
                                                                         COMMA_LOCATION_ARGS) const {
@@ -15072,7 +15072,7 @@ void GGS_lexicalSendSearchListAST::setter_setMSearchListNameAtIndex (GGS_lstring
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_lstring GGS_lexicalSendSearchListAST::getter_mSearchListNameAtIndex (const GGS_uint & inIndex,
                                                                          Compiler * inCompiler
                                                                          COMMA_LOCATION_ARGS) const {
@@ -15974,10 +15974,10 @@ class CollectionElementPtr_lexicalRoutineCallActualArgumentListAST : public Coll
                                                                         COMMA_LOCATION_ARGS) ;
   public: CollectionElementPtr_lexicalRoutineCallActualArgumentListAST (const GGS_lexicalRoutineCallActualArgumentListAST_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
-//--- Virtual method that checks that all attributes are valid
+//--- Virtual proc that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
-//--- Virtual method that returns a copy of current object
+//--- Virtual proc that returns a copy of current object
   public: virtual CollectionElementPtr * copy (void) ;
 } ;
 
@@ -16385,7 +16385,7 @@ void GGS_lexicalRoutineCallActualArgumentListAST::setter_setMLexicalRoutineActua
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_abstractLexicalRoutineActualArgumentAST GGS_lexicalRoutineCallActualArgumentListAST::getter_mLexicalRoutineActualArgumentAtIndex (const GGS_uint & inIndex,
                                                                                                                                       Compiler * inCompiler
                                                                                                                                       COMMA_LOCATION_ARGS) const {
@@ -16633,7 +16633,7 @@ GGS_string callExtensionGetter_generateSwiftCocoaRoutineArgument (const cPtr_abs
 
 //--------------------------------------------------------------------------------------------------
 //
-//Abstract extension method '@abstractLexicalRoutineActualArgumentAST checkLexicalRoutineCallArgument'
+//Abstract extension proc '@abstractLexicalRoutineActualArgumentAST checkLexicalRoutineCallArgument'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -16644,7 +16644,7 @@ void callExtensionMethod_checkLexicalRoutineCallArgument (cPtr_abstractLexicalRo
                                                           Compiler * inCompiler
                                                           COMMA_LOCATION_ARGS) {
 //--- Drop output arguments
-//--- Find method
+//--- Find proc
   if (nullptr != inObject) {
     macroValidSharedObject (inObject, cPtr_abstractLexicalRoutineActualArgumentAST) ;
     inObject->method_checkLexicalRoutineCallArgument (io_ioLexiqueAnalysisContext, constin_inLexicalRoutineFormalArgumentMode, constin_inLexicalRoutineFormalArgumentType, inCompiler COMMA_THERE) ;
@@ -16801,10 +16801,10 @@ class CollectionElementPtr_lexicalSelectBranchListAST : public CollectionElement
                                                            COMMA_LOCATION_ARGS) ;
   public: CollectionElementPtr_lexicalSelectBranchListAST (const GGS_lexicalSelectBranchListAST_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
-//--- Virtual method that checks that all attributes are valid
+//--- Virtual proc that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
-//--- Virtual method that returns a copy of current object
+//--- Virtual proc that returns a copy of current object
   public: virtual CollectionElementPtr * copy (void) ;
 } ;
 
@@ -17237,7 +17237,7 @@ void GGS_lexicalSelectBranchListAST::setter_setMSelectExpressionAtIndex (GGS_lex
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_lexicalExpressionAST GGS_lexicalSelectBranchListAST::getter_mSelectExpressionAtIndex (const GGS_uint & inIndex,
                                                                                           Compiler * inCompiler
                                                                                           COMMA_LOCATION_ARGS) const {
@@ -17276,7 +17276,7 @@ void GGS_lexicalSelectBranchListAST::setter_setMSelectInstructionListAtIndex (GG
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_lexicalInstructionListAST GGS_lexicalSelectBranchListAST::getter_mSelectInstructionListAtIndex (const GGS_uint & inIndex,
                                                                                                     Compiler * inCompiler
                                                                                                     COMMA_LOCATION_ARGS) const {
