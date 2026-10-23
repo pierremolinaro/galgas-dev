@@ -73,28 +73,28 @@ struct @analysisContext {
 
 //--------------------------------------------------------------------------------------------------
 
-proc checkAssignmentTypes (?let @unifiedTypeMapEntry inTargetType,
-                          ?let @unifiedTypeMapEntry inSourceType,
-                          ?let @location inErrorLocation ) {
-  var @unifiedTypeMapEntry sourceType = inSourceType
-  var @bool ok = inTargetType == sourceType
-  loop (@uint.max) while (not ok) & (not sourceType.definition.superType.isNull) do
-    sourceType = sourceType.definition.superType
-    ok = inTargetType == sourceType
-  end
-  if not ok, let weakRefType = inTargetType.definition.typeKind.getWeakReferenceType then
-    sourceType = inSourceType
-    ok = weakRefType.referenceType == sourceType
-    loop (@uint.max) while (not ok) & (not sourceType.definition.superType.isNull) do
-      sourceType = sourceType.definition.superType
-      ok = weakRefType.referenceType == sourceType
-    end
-  end
-  if not ok then
-    error (inErrorLocation
-     : "target object type is '@" + inTargetType.definition.typeName.string + "' and cannot be assigned from an '@" + inSourceType.definition.typeName.string + "' object")
-  end
-}
+//proc checkAssignmentTypes (?let @unifiedTypeMapEntry inTargetType,
+//                          ?let @unifiedTypeMapEntry inSourceType,
+//                          ?let @location inErrorLocation ) {
+//  var @unifiedTypeMapEntry sourceType = inSourceType
+//  var @bool ok = inTargetType == sourceType
+//  loop (@uint.max) while (not ok) & (not sourceType.definition.superType.isNull) do
+//    sourceType = sourceType.definition.superType
+//    ok = inTargetType == sourceType
+//  end
+//  if not ok, let weakRefType = inTargetType.definition.typeKind.getWeakReferenceType then
+//    sourceType = inSourceType
+//    ok = weakRefType.referenceType == sourceType
+//    loop (@uint.max) while (not ok) & (not sourceType.definition.superType.isNull) do
+//      sourceType = sourceType.definition.superType
+//      ok = weakRefType.referenceType == sourceType
+//    end
+//  end
+//  if not ok then
+//    error (inErrorLocation
+//     : "target object type is '@" + inTargetType.definition.typeName.string + "' and cannot be assigned from an '@" + inSourceType.definition.typeName.string + "' object")
+//  end
+//}
 
 //--------------------------------------------------------------------------------------------------
 

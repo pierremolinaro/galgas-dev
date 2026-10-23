@@ -4193,10 +4193,10 @@ void cPtr_setterCallInstructionAST::method_enterInstructionInSemanticContext (GG
                                                                               Compiler * inCompiler
                                                                               COMMA_UNUSED_LOCATION_ARGS) {
   const GGS_setterCallInstructionAST temp_0 = this ;
-  UpEnumerator_actualParameterListAST enumerator_6870 (temp_0.readProperty_mActualParameterList ()) ;
-  while (enumerator_6870.hasCurrentObject ()) {
-    callExtensionMethod_enterParameterInSemanticContext ((cPtr_actualParameterAST *) enumerator_6870.current_mActualParameter (HERE).ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 191)) ;
-    enumerator_6870.gotoNextObject () ;
+  UpEnumerator_actualParameterListAST enumerator_5937 (temp_0.readProperty_mActualParameterList ()) ;
+  while (enumerator_5937.hasCurrentObject ()) {
+    callExtensionMethod_enterParameterInSemanticContext ((cPtr_actualParameterAST *) enumerator_5937.current_mActualParameter (HERE).ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 163)) ;
+    enumerator_5937.gotoNextObject () ;
   }
 }
 
@@ -4208,10 +4208,10 @@ void cPtr_selfSetterCallInstructionAST::method_enterInstructionInSemanticContext
                                                                                   Compiler * inCompiler
                                                                                   COMMA_UNUSED_LOCATION_ARGS) {
   const GGS_selfSetterCallInstructionAST temp_0 = this ;
-  UpEnumerator_actualParameterListAST enumerator_7214 (temp_0.readProperty_mActualParameterList ()) ;
-  while (enumerator_7214.hasCurrentObject ()) {
-    callExtensionMethod_enterParameterInSemanticContext ((cPtr_actualParameterAST *) enumerator_7214.current_mActualParameter (HERE).ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 199)) ;
-    enumerator_7214.gotoNextObject () ;
+  UpEnumerator_actualParameterListAST enumerator_6281 (temp_0.readProperty_mActualParameterList ()) ;
+  while (enumerator_6281.hasCurrentObject ()) {
+    callExtensionMethod_enterParameterInSemanticContext ((cPtr_actualParameterAST *) enumerator_6281.current_mActualParameter (HERE).ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 171)) ;
+    enumerator_6281.gotoNextObject () ;
   }
 }
 
@@ -4227,9 +4227,9 @@ void cPtr_setterCallInstructionAST::method_analyzeSemanticInstruction (const GGS
                                                                        GGS_localVarManager & ioArgument_ioVariableMap,
                                                                        Compiler * inCompiler
                                                                        COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_unifiedTypeMapEntry var_receiverType_8065 ;
-  GGS_string var_targetVariableCppName_8092 ;
-  GGS_string var_nameForCheckingFormalParameterUsing_8128 ;
+  GGS_unifiedTypeMapEntry var_receiverType_7132 ;
+  GGS_string var_targetVariableCppName_7159 ;
+  GGS_string var_nameForCheckingFormalParameterUsing_7195 ;
   GalgasBool test_0 = GalgasBool::boolTrue ;
   if (GalgasBool::boolTrue == test_0) {
     const GGS_setterCallInstructionAST temp_1 = this ;
@@ -4237,178 +4237,161 @@ void cPtr_setterCallInstructionAST::method_analyzeSemanticInstruction (const GGS
     if (GalgasBool::boolTrue == test_0) {
       GalgasBool test_2 = GalgasBool::boolTrue ;
       if (GalgasBool::boolTrue == test_2) {
-        const GGS_selfAvailability_2E_available var_selfAvailability_8206 = constinArgument_inAnalysisContext.readProperty_selfAvailability ().getter_getAvailable (SOURCE_FILE ("instruction-setter-call.galgas3", 218)).unwrappedValue () ;
-        if (!constinArgument_inAnalysisContext.readProperty_selfAvailability ().getter_getAvailable (SOURCE_FILE ("instruction-setter-call.galgas3", 218)).isValuated ()) {
+        const GGS_selfAvailability_2E_available var_selfAvailability_7273 = constinArgument_inAnalysisContext.readProperty_selfAvailability ().getter_getAvailable (SOURCE_FILE ("instruction-setter-call.galgas3", 190)).unwrappedValue () ;
+        if (!constinArgument_inAnalysisContext.readProperty_selfAvailability ().getter_getAvailable (SOURCE_FILE ("instruction-setter-call.galgas3", 190)).isValuated ()) {
           test_2 = GalgasBool::boolFalse ;
         }
         if (GalgasBool::boolTrue == test_2) {
           GalgasBool test_3 = GalgasBool::boolTrue ;
           if (GalgasBool::boolTrue == test_3) {
-            test_3 = GGS_bool (ComparisonKind::equal, extensionGetter_definition (var_selfAvailability_8206.readProperty_type (), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 220)).readProperty_typeKind ().objectCompare (GGS_typeKindEnum::class_func_classType (SOURCE_FILE ("instruction-setter-call.galgas3", 220)))).boolEnum () ;
+            test_3 = GGS_bool (ComparisonKind::equal, extensionGetter_definition (var_selfAvailability_7273.readProperty_type (), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 192)).readProperty_typeKind ().objectCompare (GGS_typeKindEnum::class_func_classType (SOURCE_FILE ("instruction-setter-call.galgas3", 192)))).boolEnum () ;
             if (GalgasBool::boolTrue == test_3) {
             }
           }
           if (GalgasBool::boolFalse == test_3) {
             GalgasBool test_4 = GalgasBool::boolTrue ;
             if (GalgasBool::boolTrue == test_4) {
-              test_4 = extensionGetter_selfIsMutable (var_selfAvailability_8206.readProperty_selfMutability (), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 221)).operator_not (SOURCE_FILE ("instruction-setter-call.galgas3", 221)).boolEnum () ;
+              test_4 = extensionGetter_selfIsMutable (var_selfAvailability_7273.readProperty_selfMutability (), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 193)).operator_not (SOURCE_FILE ("instruction-setter-call.galgas3", 193)).boolEnum () ;
               if (GalgasBool::boolTrue == test_4) {
                 const GGS_setterCallInstructionAST temp_5 = this ;
                 GenericArray <FixItDescription> fixItArray6 ;
-                inCompiler->emitSemanticError (temp_5.readProperty_mSetterName ().readProperty_location (), GGS_string ("'self' not mutable in this context"), fixItArray6  COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 222)) ;
+                inCompiler->emitSemanticError (temp_5.readProperty_mSetterName ().readProperty_location (), GGS_string ("'self' not mutable in this context"), fixItArray6  COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 194)) ;
               }
             }
           }
-          GGS_propertyMap var_propertyMap_8569 = extensionGetter_definition (var_selfAvailability_8206.readProperty_type (), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 224)).readProperty_propertyMap () ;
-          GGS_bool var_isConstant_8685 ;
+          GGS_propertyMap var_propertyMap_7636 = extensionGetter_definition (var_selfAvailability_7273.readProperty_type (), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 196)).readProperty_propertyMap () ;
+          GGS_bool var_isConstant_7752 ;
           const GGS_setterCallInstructionAST temp_7 = this ;
-          GGS_AccessControl joker_8677 ; // Joker input parameter
-          var_propertyMap_8569.method_searchKey (temp_7.readProperty_mReceiverName (), joker_8677, var_isConstant_8685, var_receiverType_8065, inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 225)) ;
+          GGS_AccessControl joker_7744 ; // Joker input parameter
+          var_propertyMap_7636.method_searchKey (temp_7.readProperty_mReceiverName (), joker_7744, var_isConstant_7752, var_receiverType_7132, inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 197)) ;
           GalgasBool test_8 = GalgasBool::boolTrue ;
           if (GalgasBool::boolTrue == test_8) {
-            test_8 = var_isConstant_8685.boolEnum () ;
+            test_8 = var_isConstant_7752.boolEnum () ;
             if (GalgasBool::boolTrue == test_8) {
               const GGS_setterCallInstructionAST temp_9 = this ;
               GenericArray <FixItDescription> fixItArray10 ;
-              inCompiler->emitSemanticError (temp_9.readProperty_mReceiverName ().readProperty_location (), GGS_string ("a constant property cannot be modified"), fixItArray10  COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 227)) ;
+              inCompiler->emitSemanticError (temp_9.readProperty_mReceiverName ().readProperty_location (), GGS_string ("a constant property cannot be modified"), fixItArray10  COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 199)) ;
             }
           }
-          var_nameForCheckingFormalParameterUsing_8128 = constinArgument_inAnalysisContext.readProperty_selfObjectCppName () ;
+          var_nameForCheckingFormalParameterUsing_7195 = constinArgument_inAnalysisContext.readProperty_selfObjectCppName () ;
           const GGS_setterCallInstructionAST temp_11 = this ;
-          var_targetVariableCppName_8092 = constinArgument_inAnalysisContext.readProperty_selfObjectCppPrefixForAccessingProperty ().add_operation (GGS_string ("mProperty_"), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 230)).add_operation (temp_11.readProperty_mReceiverName ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("instruction-setter-call.galgas3", 231)), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 231)) ;
+          var_targetVariableCppName_7159 = constinArgument_inAnalysisContext.readProperty_selfObjectCppPrefixForAccessingProperty ().add_operation (GGS_string ("mProperty_"), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 202)).add_operation (temp_11.readProperty_mReceiverName ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("instruction-setter-call.galgas3", 203)), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 203)) ;
         }
       }
       if (GalgasBool::boolFalse == test_2) {
         const GGS_setterCallInstructionAST temp_12 = this ;
         GenericArray <FixItDescription> fixItArray13 ;
-        inCompiler->emitSemanticError (temp_12.readProperty_mSetterName ().readProperty_location (), GGS_string ("'self' not available in this context"), fixItArray13  COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 233)) ;
-        var_receiverType_8065.drop () ; // Release error dropped variable
-        var_targetVariableCppName_8092.drop () ; // Release error dropped variable
-        var_nameForCheckingFormalParameterUsing_8128.drop () ; // Release error dropped variable
+        inCompiler->emitSemanticError (temp_12.readProperty_mSetterName ().readProperty_location (), GGS_string ("'self' not available in this context"), fixItArray13  COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 205)) ;
+        var_receiverType_7132.drop () ; // Release error dropped variable
+        var_targetVariableCppName_7159.drop () ; // Release error dropped variable
+        var_nameForCheckingFormalParameterUsing_7195.drop () ; // Release error dropped variable
       }
     }
   }
   if (GalgasBool::boolFalse == test_0) {
     {
     const GGS_setterCallInstructionAST temp_14 = this ;
-    extensionSetter_searchForReadWriteAccess (ioArgument_ioVariableMap, temp_14.readProperty_mReceiverName (), var_receiverType_8065, var_targetVariableCppName_8092, var_nameForCheckingFormalParameterUsing_8128, inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 238)) ;
+    extensionSetter_searchForReadWriteAccess (ioArgument_ioVariableMap, temp_14.readProperty_mReceiverName (), var_receiverType_7132, var_targetVariableCppName_7159, var_nameForCheckingFormalParameterUsing_7195, inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 210)) ;
     }
   }
-  GGS_bool var_ok_9470 = GGS_bool (true) ;
+  GGS_bool var_ok_8537 = GGS_bool (true) ;
   const GGS_setterCallInstructionAST temp_15 = this ;
-  GGS_location var_errorLocation_9486 = temp_15.readProperty_mReceiverName ().readProperty_location () ;
+  GGS_location var_errorLocation_8553 = temp_15.readProperty_mReceiverName ().readProperty_location () ;
   const GGS_setterCallInstructionAST temp_16 = this ;
-  UpEnumerator_lstringlist enumerator_9537 (temp_16.readProperty_mReceiverStructProperties ()) ;
-  bool bool_17 = var_ok_9470.isValidAndTrue () ;
-  if (enumerator_9537.hasCurrentObject () && bool_17) {
-    while (enumerator_9537.hasCurrentObject () && bool_17) {
-      var_ok_9470 = extensionGetter_definition (var_receiverType_8065, inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 249)).readProperty_typeKind ().getter_isStructType (SOURCE_FILE ("instruction-setter-call.galgas3", 249)) ;
+  UpEnumerator_lstringlist enumerator_8604 (temp_16.readProperty_mReceiverStructProperties ()) ;
+  bool bool_17 = var_ok_8537.isValidAndTrue () ;
+  if (enumerator_8604.hasCurrentObject () && bool_17) {
+    while (enumerator_8604.hasCurrentObject () && bool_17) {
+      var_ok_8537 = extensionGetter_definition (var_receiverType_7132, inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 221)).readProperty_typeKind ().getter_isStructType (SOURCE_FILE ("instruction-setter-call.galgas3", 221)) ;
       GalgasBool test_18 = GalgasBool::boolTrue ;
       if (GalgasBool::boolTrue == test_18) {
-        test_18 = var_ok_9470.operator_not (SOURCE_FILE ("instruction-setter-call.galgas3", 250)).boolEnum () ;
+        test_18 = var_ok_8537.operator_not (SOURCE_FILE ("instruction-setter-call.galgas3", 222)).boolEnum () ;
         if (GalgasBool::boolTrue == test_18) {
           GenericArray <FixItDescription> fixItArray19 ;
-          inCompiler->emitSemanticError (var_errorLocation_9486, GGS_string ("a structure is required for '.' access"), fixItArray19  COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 251)) ;
+          inCompiler->emitSemanticError (var_errorLocation_8553, GGS_string ("a structure is required for '.' access"), fixItArray19  COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 223)) ;
         }
       }
       if (GalgasBool::boolFalse == test_18) {
-        GGS_propertyMap var_propertyMap_9754 = extensionGetter_definition (var_receiverType_8065, inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 253)).readProperty_propertyMap () ;
-        GGS_AccessControl var_accessControl_9845 ;
-        GGS_bool var_isConstant_9864 ;
-        var_propertyMap_9754.method_searchKey (enumerator_9537.current_mValue (HERE), var_accessControl_9845, var_isConstant_9864, var_receiverType_8065, inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 254)) ;
-        extensionMethod_checkSetAccess (var_accessControl_9845, constinArgument_inAnalysisContext.readProperty_selfAvailability (), enumerator_9537.current_mValue (HERE).readProperty_location (), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 255)) ;
-        var_errorLocation_9486 = enumerator_9537.current_mValue (HERE).readProperty_location () ;
+        GGS_propertyMap var_propertyMap_8821 = extensionGetter_definition (var_receiverType_7132, inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 225)).readProperty_propertyMap () ;
+        GGS_AccessControl var_accessControl_8912 ;
+        GGS_bool var_isConstant_8931 ;
+        var_propertyMap_8821.method_searchKey (enumerator_8604.current_mValue (HERE), var_accessControl_8912, var_isConstant_8931, var_receiverType_7132, inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 226)) ;
+        extensionMethod_checkSetAccess (var_accessControl_8912, constinArgument_inAnalysisContext.readProperty_selfAvailability (), enumerator_8604.current_mValue (HERE).readProperty_location (), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 227)) ;
+        var_errorLocation_8553 = enumerator_8604.current_mValue (HERE).readProperty_location () ;
         GalgasBool test_20 = GalgasBool::boolTrue ;
         if (GalgasBool::boolTrue == test_20) {
-          test_20 = var_isConstant_9864.boolEnum () ;
+          test_20 = var_isConstant_8931.boolEnum () ;
           if (GalgasBool::boolTrue == test_20) {
             GenericArray <FixItDescription> fixItArray21 ;
-            inCompiler->emitSemanticError (enumerator_9537.current_mValue (HERE).readProperty_location (), GGS_string ("a constant property cannot be modified"), fixItArray21  COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 258)) ;
+            inCompiler->emitSemanticError (enumerator_8604.current_mValue (HERE).readProperty_location (), GGS_string ("a constant property cannot be modified"), fixItArray21  COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 230)) ;
           }
         }
       }
-      enumerator_9537.gotoNextObject () ;
-      if (enumerator_9537.hasCurrentObject ()) {
-        bool_17 = var_ok_9470.isValidAndTrue () ;
+      enumerator_8604.gotoNextObject () ;
+      if (enumerator_8604.hasCurrentObject ()) {
+        bool_17 = var_ok_8537.isValidAndTrue () ;
       }
     }
   }
-  GGS_unifiedTypeMapEntry var_castType_10175 ;
-  GalgasBool test_22 = GalgasBool::boolTrue ;
-  if (GalgasBool::boolTrue == test_22) {
-    const GGS_setterCallInstructionAST temp_23 = this ;
-    test_22 = GGS_bool (ComparisonKind::notEqual, temp_23.readProperty_mTypeNameForCasting ().readProperty_string ().objectCompare (GGS_string::makeEmptyString ())).boolEnum () ;
-    if (GalgasBool::boolTrue == test_22) {
+  GGS_methodKind var_kind_9302 ;
+  GGS_formalParameterSignature var_routineSignature_9316 ;
+  GGS_bool var_hasCompilerArgument_9342 ;
+  GGS_string var_setterErrorMessage_9378 ;
+  const GGS_setterCallInstructionAST temp_22 = this ;
+  GGS_methodQualifier joker_9366 ; // Joker input parameter
+  extensionGetter_definition (var_receiverType_7132, inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 235)).readProperty_setterMap ().method_searchKey (temp_22.readProperty_mSetterName (), var_kind_9302, var_routineSignature_9316, var_hasCompilerArgument_9342, joker_9366, var_setterErrorMessage_9378, inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 235)) ;
+  GalgasBool test_23 = GalgasBool::boolTrue ;
+  if (GalgasBool::boolTrue == test_23) {
+    test_23 = GGS_bool (ComparisonKind::notEqual, var_setterErrorMessage_9378.objectCompare (GGS_string::makeEmptyString ())).boolEnum () ;
+    if (GalgasBool::boolTrue == test_23) {
       const GGS_setterCallInstructionAST temp_24 = this ;
-      var_castType_10175 = extensionGetter_typeMapEntryForLKey (ioArgument_ioTypeMap, temp_24.readProperty_mTypeNameForCasting (), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 265)) ;
-      {
-      const GGS_setterCallInstructionAST temp_25 = this ;
-      routine_checkAssignmentTypes_3F__3F__3F_ (var_receiverType_8065, var_castType_10175, temp_25.readProperty_mTypeNameForCasting ().readProperty_location (), inCompiler  COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 266)) ;
-      }
+      GenericArray <FixItDescription> fixItArray25 ;
+      inCompiler->emitSemanticError (temp_24.readProperty_mSetterName ().readProperty_location (), var_setterErrorMessage_9378, fixItArray25  COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 244)) ;
     }
   }
-  if (GalgasBool::boolFalse == test_22) {
-    var_castType_10175 = var_receiverType_8065 ;
-  }
-  GGS_methodKind var_kind_10533 ;
-  GGS_formalParameterSignature var_routineSignature_10547 ;
-  GGS_bool var_hasCompilerArgument_10573 ;
-  GGS_string var_setterErrorMessage_10609 ;
+  GGS_actualParameterListForGeneration var_actualParameterListForGeneration_9907 ;
   const GGS_setterCallInstructionAST temp_26 = this ;
-  GGS_methodQualifier joker_10597 ; // Joker input parameter
-  extensionGetter_definition (var_castType_10175, inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 271)).readProperty_setterMap ().method_searchKey (temp_26.readProperty_mSetterName (), var_kind_10533, var_routineSignature_10547, var_hasCompilerArgument_10573, joker_10597, var_setterErrorMessage_10609, inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 271)) ;
-  GalgasBool test_27 = GalgasBool::boolTrue ;
-  if (GalgasBool::boolTrue == test_27) {
-    test_27 = GGS_bool (ComparisonKind::notEqual, var_setterErrorMessage_10609.objectCompare (GGS_string::makeEmptyString ())).boolEnum () ;
-    if (GalgasBool::boolTrue == test_27) {
-      const GGS_setterCallInstructionAST temp_28 = this ;
-      GenericArray <FixItDescription> fixItArray29 ;
-      inCompiler->emitSemanticError (temp_28.readProperty_mSetterName ().readProperty_location (), var_setterErrorMessage_10609, fixItArray29  COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 280)) ;
-    }
-  }
-  GGS_actualParameterListForGeneration var_actualParameterListForGeneration_11138 ;
-  const GGS_setterCallInstructionAST temp_30 = this ;
-  const GGS_setterCallInstructionAST temp_31 = this ;
-  const GGS_setterCallInstructionAST temp_32 = this ;
-  extensionMethod_analyzeRoutineArguments (temp_30.readProperty_mActualParameterList (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, temp_31.readProperty_mSetterName (), GGS_string ("'").add_operation (temp_32.readProperty_mSetterName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 289)).add_operation (GGS_string ("' setter header"), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 289)), var_routineSignature_10547, ioArgument_ioVariableMap, ioArgument_ioInstructionListForGeneration, var_actualParameterListForGeneration_11138, inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 283)) ;
-  GGS_unifiedTypeMapEntry var_baseType_11227 = var_castType_10175 ;
-  GGS_bool var_searching_11253 = GGS_bool (true) ;
-  GalgasBool test_33 = GalgasBool::boolTrue ;
-  if (GalgasBool::boolTrue == test_33) {
-    test_33 = GGS_bool (ComparisonKind::equal, GGS_uint::class_func_errorCount (SOURCE_FILE ("instruction-setter-call.galgas3", 298)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
-    if (GalgasBool::boolTrue == test_33) {
-      if (GGS_uint::class_func_max (SOURCE_FILE ("instruction-setter-call.galgas3", 299)).isValid ()) {
-        uint32_t variant_11306 = GGS_uint::class_func_max (SOURCE_FILE ("instruction-setter-call.galgas3", 299)).uintValue () ;
-        bool loop_11306 = true ;
-        while (loop_11306) {
-          loop_11306 = var_searching_11253.isValid () ;
-          if (loop_11306) {
-            loop_11306 = var_searching_11253.boolValue () ;
+  const GGS_setterCallInstructionAST temp_27 = this ;
+  const GGS_setterCallInstructionAST temp_28 = this ;
+  extensionMethod_analyzeRoutineArguments (temp_26.readProperty_mActualParameterList (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, temp_27.readProperty_mSetterName (), GGS_string ("'").add_operation (temp_28.readProperty_mSetterName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 253)).add_operation (GGS_string ("' setter header"), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 253)), var_routineSignature_9316, ioArgument_ioVariableMap, ioArgument_ioInstructionListForGeneration, var_actualParameterListForGeneration_9907, inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 247)) ;
+  GGS_unifiedTypeMapEntry var_baseType_9996 = var_receiverType_7132 ;
+  GGS_bool var_searching_10026 = GGS_bool (true) ;
+  GalgasBool test_29 = GalgasBool::boolTrue ;
+  if (GalgasBool::boolTrue == test_29) {
+    test_29 = GGS_bool (ComparisonKind::equal, GGS_uint::class_func_errorCount (SOURCE_FILE ("instruction-setter-call.galgas3", 262)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
+    if (GalgasBool::boolTrue == test_29) {
+      if (GGS_uint::class_func_max (SOURCE_FILE ("instruction-setter-call.galgas3", 263)).isValid ()) {
+        uint32_t variant_10079 = GGS_uint::class_func_max (SOURCE_FILE ("instruction-setter-call.galgas3", 263)).uintValue () ;
+        bool loop_10079 = true ;
+        while (loop_10079) {
+          loop_10079 = var_searching_10026.isValid () ;
+          if (loop_10079) {
+            loop_10079 = var_searching_10026.boolValue () ;
           }
-          if (loop_11306 && (0 == variant_11306)) {
-            loop_11306 = false ;
-            inCompiler->loopRunTimeVariantError (SOURCE_FILE ("instruction-setter-call.galgas3", 299)) ;
+          if (loop_10079 && (0 == variant_10079)) {
+            loop_10079 = false ;
+            inCompiler->loopRunTimeVariantError (SOURCE_FILE ("instruction-setter-call.galgas3", 263)) ;
           }
-          if (loop_11306) {
-            variant_11306 -= 1 ;
-            GalgasBool test_34 = GalgasBool::boolTrue ;
-            if (GalgasBool::boolTrue == test_34) {
-              test_34 = extensionGetter_definition (var_baseType_11227, inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 300)).readProperty_superType ().getter_isNull (SOURCE_FILE ("instruction-setter-call.galgas3", 300)).boolEnum () ;
-              if (GalgasBool::boolTrue == test_34) {
-                var_searching_11253 = GGS_bool (false) ;
+          if (loop_10079) {
+            variant_10079 -= 1 ;
+            GalgasBool test_30 = GalgasBool::boolTrue ;
+            if (GalgasBool::boolTrue == test_30) {
+              test_30 = extensionGetter_definition (var_baseType_9996, inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 264)).readProperty_superType ().getter_isNull (SOURCE_FILE ("instruction-setter-call.galgas3", 264)).boolEnum () ;
+              if (GalgasBool::boolTrue == test_30) {
+                var_searching_10026 = GGS_bool (false) ;
               }
             }
-            if (GalgasBool::boolFalse == test_34) {
-              GalgasBool test_35 = GalgasBool::boolTrue ;
-              if (GalgasBool::boolTrue == test_35) {
-                const GGS_setterCallInstructionAST temp_36 = this ;
-                test_35 = extensionGetter_definition (extensionGetter_definition (var_baseType_11227, inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 303)).readProperty_superType (), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 303)).readProperty_setterMap ().getter_hasKey (temp_36.readProperty_mSetterName ().readProperty_string () COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 303)).boolEnum () ;
-                if (GalgasBool::boolTrue == test_35) {
-                  var_baseType_11227 = extensionGetter_definition (var_baseType_11227, inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 304)).readProperty_superType () ;
+            if (GalgasBool::boolFalse == test_30) {
+              GalgasBool test_31 = GalgasBool::boolTrue ;
+              if (GalgasBool::boolTrue == test_31) {
+                const GGS_setterCallInstructionAST temp_32 = this ;
+                test_31 = extensionGetter_definition (extensionGetter_definition (var_baseType_9996, inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 267)).readProperty_superType (), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 267)).readProperty_setterMap ().getter_hasKey (temp_32.readProperty_mSetterName ().readProperty_string () COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 267)).boolEnum () ;
+                if (GalgasBool::boolTrue == test_31) {
+                  var_baseType_9996 = extensionGetter_definition (var_baseType_9996, inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 268)).readProperty_superType () ;
                 }
               }
-              if (GalgasBool::boolFalse == test_35) {
-                var_searching_11253 = GGS_bool (false) ;
+              if (GalgasBool::boolFalse == test_31) {
+                var_searching_10026 = GGS_bool (false) ;
               }
             }
           }
@@ -4416,10 +4399,10 @@ void cPtr_setterCallInstructionAST::method_analyzeSemanticInstruction (const GGS
       }
     }
   }
-  const GGS_setterCallInstructionAST temp_37 = this ;
-  const GGS_setterCallInstructionAST temp_38 = this ;
-  const GGS_setterCallInstructionAST temp_39 = this ;
-  ioArgument_ioInstructionListForGeneration.addAssignOperation (GGS_setterCallInstructionForGeneration::init_21__21__21__21__21__21__21__21__21__21__21_ (temp_37.readProperty_mReceiverName ().readProperty_location (), var_targetVariableCppName_8092, var_nameForCheckingFormalParameterUsing_8128, temp_38.readProperty_mReceiverStructProperties (), var_castType_10175, var_receiverType_8065, temp_39.readProperty_mSetterName (), var_kind_10533, var_actualParameterListForGeneration_11138, var_hasCompilerArgument_10573, var_baseType_11227, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 312)) ;
+  const GGS_setterCallInstructionAST temp_33 = this ;
+  const GGS_setterCallInstructionAST temp_34 = this ;
+  const GGS_setterCallInstructionAST temp_35 = this ;
+  ioArgument_ioInstructionListForGeneration.addAssignOperation (GGS_setterCallInstructionForGeneration::init_21__21__21__21__21__21__21__21__21__21_ (temp_33.readProperty_mReceiverName ().readProperty_location (), var_targetVariableCppName_7159, var_nameForCheckingFormalParameterUsing_7195, temp_34.readProperty_mReceiverStructProperties (), var_receiverType_7132, temp_35.readProperty_mSetterName (), var_kind_9302, var_actualParameterListForGeneration_9907, var_hasCompilerArgument_9342, var_baseType_9996, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 276)) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -4436,42 +4419,42 @@ void cPtr_selfSetterCallInstructionAST::method_analyzeSemanticInstruction (const
                                                                            COMMA_UNUSED_LOCATION_ARGS) {
   GalgasBool test_0 = GalgasBool::boolTrue ;
   if (GalgasBool::boolTrue == test_0) {
-    const GGS_selfAvailability_2E_available var_selfAvailable_12687 = constinArgument_inAnalysisContext.readProperty_selfAvailability ().getter_getAvailable (SOURCE_FILE ("instruction-setter-call.galgas3", 337)).unwrappedValue () ;
-    if (!constinArgument_inAnalysisContext.readProperty_selfAvailability ().getter_getAvailable (SOURCE_FILE ("instruction-setter-call.galgas3", 337)).isValuated ()) {
+    const GGS_selfAvailability_2E_available var_selfAvailable_11446 = constinArgument_inAnalysisContext.readProperty_selfAvailability ().getter_getAvailable (SOURCE_FILE ("instruction-setter-call.galgas3", 300)).unwrappedValue () ;
+    if (!constinArgument_inAnalysisContext.readProperty_selfAvailability ().getter_getAvailable (SOURCE_FILE ("instruction-setter-call.galgas3", 300)).isValuated ()) {
       test_0 = GalgasBool::boolFalse ;
     }
     if (GalgasBool::boolTrue == test_0) {
       GalgasBool test_1 = GalgasBool::boolTrue ;
       if (GalgasBool::boolTrue == test_1) {
-        test_1 = extensionGetter_selfIsMutable (var_selfAvailable_12687.readProperty_selfMutability (), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 338)).operator_not (SOURCE_FILE ("instruction-setter-call.galgas3", 338)).boolEnum () ;
+        test_1 = extensionGetter_selfIsMutable (var_selfAvailable_11446.readProperty_selfMutability (), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 301)).operator_not (SOURCE_FILE ("instruction-setter-call.galgas3", 301)).boolEnum () ;
         if (GalgasBool::boolTrue == test_1) {
           const GGS_selfSetterCallInstructionAST temp_2 = this ;
           GenericArray <FixItDescription> fixItArray3 ;
-          inCompiler->emitSemanticError (temp_2.readProperty_mSetterName ().readProperty_location (), GGS_string ("'self' not mutable in this context"), fixItArray3  COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 339)) ;
+          inCompiler->emitSemanticError (temp_2.readProperty_mSetterName ().readProperty_location (), GGS_string ("'self' not mutable in this context"), fixItArray3  COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 302)) ;
         }
       }
       const GGS_selfSetterCallInstructionAST temp_4 = this ;
-      extensionMethod_checkSelfObjectIsFullyInitialized (ioArgument_ioVariableMap, temp_4.readProperty_mSetterName ().readProperty_location (), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 342)) ;
-      GGS_methodKind var_kind_13142 ;
-      GGS_formalParameterSignature var_routineSignature_13152 ;
-      GGS_bool var_hasCompilerArgument_13174 ;
+      extensionMethod_checkSelfObjectIsFullyInitialized (ioArgument_ioVariableMap, temp_4.readProperty_mSetterName ().readProperty_location (), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 305)) ;
+      GGS_methodKind var_kind_11901 ;
+      GGS_formalParameterSignature var_routineSignature_11911 ;
+      GGS_bool var_hasCompilerArgument_11933 ;
       const GGS_selfSetterCallInstructionAST temp_5 = this ;
-      GGS_methodQualifier joker_13194 ; // Joker input parameter
-      GGS_string joker_13197 ; // Joker input parameter
-      extensionGetter_definition (var_selfAvailable_12687.readProperty_type (), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 344)).readProperty_setterMap ().method_searchKey (temp_5.readProperty_mSetterName (), var_kind_13142, var_routineSignature_13152, var_hasCompilerArgument_13174, joker_13194, joker_13197, inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 344)) ;
-      GGS_actualParameterListForGeneration var_actualParameterListForGeneration_13640 ;
+      GGS_methodQualifier joker_11953 ; // Joker input parameter
+      GGS_string joker_11956 ; // Joker input parameter
+      extensionGetter_definition (var_selfAvailable_11446.readProperty_type (), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 307)).readProperty_setterMap ().method_searchKey (temp_5.readProperty_mSetterName (), var_kind_11901, var_routineSignature_11911, var_hasCompilerArgument_11933, joker_11953, joker_11956, inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 307)) ;
+      GGS_actualParameterListForGeneration var_actualParameterListForGeneration_12399 ;
       const GGS_selfSetterCallInstructionAST temp_6 = this ;
       const GGS_selfSetterCallInstructionAST temp_7 = this ;
       const GGS_selfSetterCallInstructionAST temp_8 = this ;
-      extensionMethod_analyzeRoutineArguments (temp_6.readProperty_mActualParameterList (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, temp_7.readProperty_mSetterName (), GGS_string ("'").add_operation (temp_8.readProperty_mSetterName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 352)).add_operation (GGS_string ("' setter header"), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 352)), var_routineSignature_13152, ioArgument_ioVariableMap, ioArgument_ioInstructionListForGeneration, var_actualParameterListForGeneration_13640, inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 346)) ;
+      extensionMethod_analyzeRoutineArguments (temp_6.readProperty_mActualParameterList (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, temp_7.readProperty_mSetterName (), GGS_string ("'").add_operation (temp_8.readProperty_mSetterName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 315)).add_operation (GGS_string ("' setter header"), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 315)), var_routineSignature_11911, ioArgument_ioVariableMap, ioArgument_ioInstructionListForGeneration, var_actualParameterListForGeneration_12399, inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 309)) ;
       const GGS_selfSetterCallInstructionAST temp_9 = this ;
-      ioArgument_ioInstructionListForGeneration.addAssignOperation (GGS_selfSetterCallInstructionForGeneration::init_21__21__21__21__21__21_ (constinArgument_inAnalysisContext.readProperty_selfObjectCppName (), var_selfAvailable_12687.readProperty_type (), temp_9.readProperty_mSetterName (), var_kind_13142, var_actualParameterListForGeneration_13640, var_hasCompilerArgument_13174, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 359)) ;
+      ioArgument_ioInstructionListForGeneration.addAssignOperation (GGS_selfSetterCallInstructionForGeneration::init_21__21__21__21__21__21_ (constinArgument_inAnalysisContext.readProperty_selfObjectCppName (), var_selfAvailable_11446.readProperty_type (), temp_9.readProperty_mSetterName (), var_kind_11901, var_actualParameterListForGeneration_12399, var_hasCompilerArgument_11933, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 322)) ;
     }
   }
   if (GalgasBool::boolFalse == test_0) {
     const GGS_selfSetterCallInstructionAST temp_10 = this ;
     GenericArray <FixItDescription> fixItArray11 ;
-    inCompiler->emitSemanticError (temp_10.readProperty_mSetterName ().readProperty_location (), GGS_string ("'self' not available in this context"), fixItArray11  COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 368)) ;
+    inCompiler->emitSemanticError (temp_10.readProperty_mSetterName ().readProperty_location (), GGS_string ("'self' not available in this context"), fixItArray11  COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 331)) ;
   }
 }
 
@@ -4486,29 +4469,29 @@ void cPtr_setterCallInstructionForGeneration::method_generateInstruction (GGS_st
                                                                           GGS_string & ioArgument_ioGeneratedCode,
                                                                           Compiler * inCompiler
                                                                           COMMA_UNUSED_LOCATION_ARGS) {
-  ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string ("{\n"), inCompiler  COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 408)) ;
+  ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string ("{\n"), inCompiler  COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 370)) ;
   const GGS_setterCallInstructionForGeneration temp_0 = this ;
-  GGS_string var_receiverCppName_15722 = temp_0.readProperty_mReceiverCppName () ;
+  GGS_string var_receiverCppName_14436 = temp_0.readProperty_mReceiverCppName () ;
   const GGS_setterCallInstructionForGeneration temp_1 = this ;
-  UpEnumerator_lstringlist enumerator_15769 (temp_1.readProperty_mReceiverStructAttributes ()) ;
-  while (enumerator_15769.hasCurrentObject ()) {
-    var_receiverCppName_15722.plusAssignOperation(GGS_string (".mProperty_").add_operation (enumerator_15769.current_mValue (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("instruction-setter-call.galgas3", 411)), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 411)), inCompiler  COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 411)) ;
-    enumerator_15769.gotoNextObject () ;
+  UpEnumerator_lstringlist enumerator_14483 (temp_1.readProperty_mReceiverStructAttributes ()) ;
+  while (enumerator_14483.hasCurrentObject ()) {
+    var_receiverCppName_14436.plusAssignOperation(GGS_string (".mProperty_").add_operation (enumerator_14483.current_mValue (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("instruction-setter-call.galgas3", 373)), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 373)), inCompiler  COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 373)) ;
+    enumerator_14483.gotoNextObject () ;
   }
   {
   const GGS_setterCallInstructionForGeneration temp_2 = this ;
-  ioArgument_ioUnusedVariableCppNameSet.setter_removeKey (temp_2.readProperty_mReceiverBaseName () COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 413)) ;
+  ioArgument_ioUnusedVariableCppNameSet.setter_removeKey (temp_2.readProperty_mReceiverBaseName () COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 375)) ;
   }
-  GGS_stringlist var_parameterCppNameList_16000 = GGS_stringlist::init (inCompiler COMMA_HERE) ;
-  GGS_stringlist var_jokerParametersToReleaseList_16045 = GGS_stringlist::init (inCompiler COMMA_HERE) ;
-  GGS_stringlist var_inputVariableList_16098 = GGS_stringlist::init (inCompiler COMMA_HERE) ;
+  GGS_stringlist var_parameterCppNameList_14714 = GGS_stringlist::init (inCompiler COMMA_HERE) ;
+  GGS_stringlist var_jokerParametersToReleaseList_14759 = GGS_stringlist::init (inCompiler COMMA_HERE) ;
+  GGS_stringlist var_inputVariableList_14812 = GGS_stringlist::init (inCompiler COMMA_HERE) ;
   const GGS_setterCallInstructionForGeneration temp_3 = this ;
-  UpEnumerator_actualParameterListForGeneration enumerator_16129 (temp_3.readProperty_mActualParameterList ()) ;
-  while (enumerator_16129.hasCurrentObject ()) {
-    GGS_string var_parameterCppName_16414 ;
-    callExtensionMethod_generateActualParameter ((cPtr_actualParameterForGeneration *) enumerator_16129.current_mActualParameter (HERE).ptr (), ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioGeneratedCode, var_jokerParametersToReleaseList_16045, var_inputVariableList_16098, ioArgument_ioUnusedVariableCppNameSet, var_parameterCppName_16414, inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 419)) ;
-    var_parameterCppNameList_16000.addAssignOperation (var_parameterCppName_16414  COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 428)) ;
-    enumerator_16129.gotoNextObject () ;
+  UpEnumerator_actualParameterListForGeneration enumerator_14843 (temp_3.readProperty_mActualParameterList ()) ;
+  while (enumerator_14843.hasCurrentObject ()) {
+    GGS_string var_parameterCppName_15128 ;
+    callExtensionMethod_generateActualParameter ((cPtr_actualParameterForGeneration *) enumerator_14843.current_mActualParameter (HERE).ptr (), ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioGeneratedCode, var_jokerParametersToReleaseList_14759, var_inputVariableList_14812, ioArgument_ioUnusedVariableCppNameSet, var_parameterCppName_15128, inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 381)) ;
+    var_parameterCppNameList_14714.addAssignOperation (var_parameterCppName_15128  COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 390)) ;
+    enumerator_14843.gotoNextObject () ;
   }
   const GGS_setterCallInstructionForGeneration temp_4 = this ;
   switch (temp_4.readProperty_mKind ().enumValue ()) {
@@ -4518,108 +4501,88 @@ void cPtr_setterCallInstructionForGeneration::method_generateInstruction (GGS_st
     {
       const GGS_setterCallInstructionForGeneration temp_5 = this ;
       const GGS_setterCallInstructionForGeneration temp_6 = this ;
-      ioArgument_ioInclusionSet.plusPlusAssignOperation (GGS_string ("setter-").add_operation (extensionGetter_definition (temp_5.readProperty_mMethodBaseType (), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 433)).readProperty_typeName ().readProperty_string ().getter_fileNameRepresentation (SOURCE_FILE ("instruction-setter-call.galgas3", 433)), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 433)).add_operation (GGS_string ("-"), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 433)).add_operation (temp_6.readProperty_mSetterName ().readProperty_string ().getter_fileNameRepresentation (SOURCE_FILE ("instruction-setter-call.galgas3", 433)), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 433))  COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 433)) ;
+      ioArgument_ioInclusionSet.plusPlusAssignOperation (GGS_string ("setter-").add_operation (extensionGetter_definition (temp_5.readProperty_mMethodBaseType (), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 395)).readProperty_typeName ().readProperty_string ().getter_fileNameRepresentation (SOURCE_FILE ("instruction-setter-call.galgas3", 395)), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 395)).add_operation (GGS_string ("-"), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 395)).add_operation (temp_6.readProperty_mSetterName ().readProperty_string ().getter_fileNameRepresentation (SOURCE_FILE ("instruction-setter-call.galgas3", 395)), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 395))  COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 395)) ;
       GalgasBool test_7 = GalgasBool::boolTrue ;
       if (GalgasBool::boolTrue == test_7) {
         const GGS_setterCallInstructionForGeneration temp_8 = this ;
-        test_7 = extensionGetter_definition (temp_8.readProperty_mReceiverType (), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 434)).readProperty_typeKind ().getter_isClassType (SOURCE_FILE ("instruction-setter-call.galgas3", 434)).boolEnum () ;
+        test_7 = extensionGetter_definition (temp_8.readProperty_mReceiverType (), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 396)).readProperty_typeKind ().getter_isClassType (SOURCE_FILE ("instruction-setter-call.galgas3", 396)).boolEnum () ;
         if (GalgasBool::boolTrue == test_7) {
           GalgasBool test_9 = GalgasBool::boolTrue ;
           if (GalgasBool::boolTrue == test_9) {
             const GGS_setterCallInstructionForGeneration temp_10 = this ;
-            test_9 = GGS_bool (ComparisonKind::greaterThan, extensionGetter_definition (temp_10.readProperty_mReceiverType (), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 435)).readProperty_allTypedPropertyList ().getter_count (SOURCE_FILE ("instruction-setter-call.galgas3", 435)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
+            test_9 = GGS_bool (ComparisonKind::greaterThan, extensionGetter_definition (temp_10.readProperty_mReceiverType (), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 397)).readProperty_allTypedPropertyList ().getter_count (SOURCE_FILE ("instruction-setter-call.galgas3", 397)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
             if (GalgasBool::boolTrue == test_9) {
-              ioArgument_ioGeneratedCode.plusAssignOperation(var_receiverCppName_15722.add_operation (GGS_string (".insulate ("), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 436)).add_operation (function_compilerCppName (inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 436)), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 436)).add_operation (GGS_string (" COMMA_HERE) ;\n"), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 436)), inCompiler  COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 436)) ;
+              ioArgument_ioGeneratedCode.plusAssignOperation(var_receiverCppName_14436.add_operation (GGS_string (".insulate ("), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 398)).add_operation (function_compilerCppName (inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 398)), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 398)).add_operation (GGS_string (" COMMA_HERE) ;\n"), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 398)), inCompiler  COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 398)) ;
               {
-              ioArgument_ioUnusedVariableCppNameSet.setter_removeKey (function_compilerCppName (inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 437)) COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 437)) ;
+              ioArgument_ioUnusedVariableCppNameSet.setter_removeKey (function_compilerCppName (inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 399)) COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 399)) ;
               }
             }
           }
           const GGS_setterCallInstructionForGeneration temp_11 = this ;
-          GGS_string var_pointerUniqueName_17091 = GGS_string ("ptr_").add_operation (temp_11.readProperty_mInstructionLocation ().getter_startLocationIndex (inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 439)).getter_string (SOURCE_FILE ("instruction-setter-call.galgas3", 439)), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 439)) ;
+          GGS_string var_pointerUniqueName_15767 = GGS_string ("ptr_").add_operation (temp_11.readProperty_mInstructionLocation ().getter_startLocationIndex (inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 401)).getter_string (SOURCE_FILE ("instruction-setter-call.galgas3", 401)), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 401)) ;
           const GGS_setterCallInstructionForGeneration temp_12 = this ;
-          ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string ("cPtr_").add_operation (extensionGetter_identifierRepresentation (temp_12.readProperty_mReceiverType (), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 440)), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 440)).add_operation (GGS_string (" * "), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 440)).add_operation (var_pointerUniqueName_17091, inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 440)), inCompiler  COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 440)) ;
+          ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string ("cPtr_").add_operation (extensionGetter_identifierRepresentation (temp_12.readProperty_mReceiverType (), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 402)), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 402)).add_operation (GGS_string (" * "), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 402)).add_operation (var_pointerUniqueName_15767, inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 402)), inCompiler  COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 402)) ;
           const GGS_setterCallInstructionForGeneration temp_13 = this ;
-          ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string (" = (cPtr_").add_operation (extensionGetter_identifierRepresentation (temp_13.readProperty_mReceiverType (), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 441)), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 441)).add_operation (GGS_string (" *) "), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 441)).add_operation (var_receiverCppName_15722, inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 441)).add_operation (GGS_string (".ptr () ;\n"), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 441)), inCompiler  COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 441)) ;
-          GalgasBool test_14 = GalgasBool::boolTrue ;
-          if (GalgasBool::boolTrue == test_14) {
-            const GGS_setterCallInstructionForGeneration temp_15 = this ;
-            const GGS_setterCallInstructionForGeneration temp_16 = this ;
-            test_14 = GGS_bool (ComparisonKind::notEqual, extensionGetter_definition (temp_15.readProperty_mCastType (), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 442)).readProperty_typeName ().readProperty_string ().objectCompare (extensionGetter_definition (temp_16.readProperty_mReceiverType (), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 442)).readProperty_typeName ().readProperty_string ())).boolEnum () ;
-            if (GalgasBool::boolTrue == test_14) {
-              const GGS_setterCallInstructionForGeneration temp_17 = this ;
-              ioArgument_ioInclusionSet.plusPlusAssignOperation (GGS_string ("class-").add_operation (extensionGetter_definition (temp_17.readProperty_mCastType (), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 443)).readProperty_typeName ().readProperty_string ().getter_fileNameRepresentation (SOURCE_FILE ("instruction-setter-call.galgas3", 443)), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 443))  COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 443)) ;
-              const GGS_setterCallInstructionForGeneration temp_18 = this ;
-              ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string ("if ((nullptr != ").add_operation (var_pointerUniqueName_17091, inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 444)).add_operation (GGS_string (") && (dynamic_cast <cPtr_"), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 444)).add_operation (extensionGetter_identifierRepresentation (temp_18.readProperty_mCastType (), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 445)), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 445)).add_operation (GGS_string (" *> ("), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 445)).add_operation (var_pointerUniqueName_17091, inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 445)).add_operation (GGS_string (") == nullptr)) {\n"), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 446)), inCompiler  COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 444)) ;
-              {
-              ioArgument_ioUnusedVariableCppNameSet.setter_removeKey (function_compilerCppName (inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 447)) COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 447)) ;
-              }
-              const GGS_setterCallInstructionForGeneration temp_19 = this ;
-              const GGS_setterCallInstructionForGeneration temp_20 = this ;
-              ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string ("  ").add_operation (function_compilerCppName (inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 448)), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 448)).add_operation (GGS_string ("->onTheFlyRunTimeError (\"cannot cast to '@"), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 448)).add_operation (extensionGetter_definition (temp_19.readProperty_mCastType (), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 449)).readProperty_typeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 448)).add_operation (GGS_string ("'\""), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 449)).add_operation (extensionGetter_commaSourceFile (temp_20.readProperty_mInstructionLocation (), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 449)), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 449)).add_operation (GGS_string (") ;\n"), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 449)), inCompiler  COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 448)) ;
-              ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string ("  ").add_operation (var_pointerUniqueName_17091, inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 450)).add_operation (GGS_string (" = nullptr ;\n"), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 450)), inCompiler  COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 450)) ;
-              ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string ("}\n"), inCompiler  COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 451)) ;
-            }
-          }
-          const GGS_setterCallInstructionForGeneration temp_21 = this ;
-          const GGS_setterCallInstructionForGeneration temp_22 = this ;
-          ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string ("callExtensionSetter_").add_operation (temp_21.readProperty_mSetterName ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("instruction-setter-call.galgas3", 453)), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 453)).add_operation (GGS_string (" ((cPtr_"), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 453)).add_operation (extensionGetter_identifierRepresentation (temp_22.readProperty_mCastType (), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 454)), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 454)).add_operation (GGS_string (" *) "), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 454)).add_operation (var_pointerUniqueName_17091, inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 454)).add_operation (GGS_string (", "), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 454)), inCompiler  COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 453)) ;
+          ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string (" = (cPtr_").add_operation (extensionGetter_identifierRepresentation (temp_13.readProperty_mReceiverType (), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 403)), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 403)).add_operation (GGS_string (" *) "), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 403)).add_operation (var_receiverCppName_14436, inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 403)).add_operation (GGS_string (".ptr () ;\n"), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 403)), inCompiler  COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 403)) ;
+          const GGS_setterCallInstructionForGeneration temp_14 = this ;
+          const GGS_setterCallInstructionForGeneration temp_15 = this ;
+          ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string ("callExtensionSetter_").add_operation (temp_14.readProperty_mSetterName ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("instruction-setter-call.galgas3", 404)), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 404)).add_operation (GGS_string (" ((cPtr_"), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 404)).add_operation (extensionGetter_identifierRepresentation (temp_15.readProperty_mReceiverType (), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 405)), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 405)).add_operation (GGS_string (" *) "), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 405)).add_operation (var_pointerUniqueName_15767, inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 405)).add_operation (GGS_string (", "), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 405)), inCompiler  COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 404)) ;
         }
       }
       if (GalgasBool::boolFalse == test_7) {
-        const GGS_setterCallInstructionForGeneration temp_23 = this ;
-        ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string ("extensionSetter_").add_operation (temp_23.readProperty_mSetterName ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("instruction-setter-call.galgas3", 456)), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 456)).add_operation (GGS_string (" ("), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 456)).add_operation (var_receiverCppName_15722, inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 456)).add_operation (GGS_string (", "), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 456)), inCompiler  COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 456)) ;
+        const GGS_setterCallInstructionForGeneration temp_16 = this ;
+        ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string ("extensionSetter_").add_operation (temp_16.readProperty_mSetterName ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("instruction-setter-call.galgas3", 407)), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 407)).add_operation (GGS_string (" ("), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 407)).add_operation (var_receiverCppName_14436, inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 407)).add_operation (GGS_string (", "), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 407)), inCompiler  COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 407)) ;
       }
     }
     break ;
   case GGS_methodKind::Enumeration::enum_definedAsMember:
     {
-      const GGS_setterCallInstructionForGeneration temp_24 = this ;
-      extensionMethod_addHeaderFileName (temp_24.readProperty_mReceiverType (), ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 459)) ;
-      const GGS_setterCallInstructionForGeneration temp_25 = this ;
-      ioArgument_ioGeneratedCode.plusAssignOperation(var_receiverCppName_15722.add_operation (GGS_string (".setter_"), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 460)).add_operation (temp_25.readProperty_mSetterName ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("instruction-setter-call.galgas3", 460)), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 460)).add_operation (GGS_string (" ("), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 460)), inCompiler  COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 460)) ;
+      const GGS_setterCallInstructionForGeneration temp_17 = this ;
+      extensionMethod_addHeaderFileName (temp_17.readProperty_mReceiverType (), ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 410)) ;
+      const GGS_setterCallInstructionForGeneration temp_18 = this ;
+      ioArgument_ioGeneratedCode.plusAssignOperation(var_receiverCppName_14436.add_operation (GGS_string (".setter_"), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 411)).add_operation (temp_18.readProperty_mSetterName ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("instruction-setter-call.galgas3", 411)), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 411)).add_operation (GGS_string (" ("), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 411)), inCompiler  COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 411)) ;
     }
     break ;
   }
-  UpEnumerator_stringlist enumerator_18824 (var_parameterCppNameList_16000) ;
-  while (enumerator_18824.hasCurrentObject ()) {
-    ioArgument_ioGeneratedCode.plusAssignOperation(enumerator_18824.current_mValue (HERE), inCompiler  COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 463)) ;
-    enumerator_18824.gotoNextObject () ;
-    if (enumerator_18824.hasCurrentObject ()) {
-      ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string (", "), inCompiler  COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 464)) ;
+  UpEnumerator_stringlist enumerator_16643 (var_parameterCppNameList_14714) ;
+  while (enumerator_16643.hasCurrentObject ()) {
+    ioArgument_ioGeneratedCode.plusAssignOperation(enumerator_16643.current_mValue (HERE), inCompiler  COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 414)) ;
+    enumerator_16643.gotoNextObject () ;
+    if (enumerator_16643.hasCurrentObject ()) {
+      ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string (", "), inCompiler  COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 415)) ;
     }
   }
-  GalgasBool test_26 = GalgasBool::boolTrue ;
-  if (GalgasBool::boolTrue == test_26) {
-    const GGS_setterCallInstructionForGeneration temp_27 = this ;
-    test_26 = temp_27.readProperty_mHasCompilerArgument ().boolEnum () ;
-    if (GalgasBool::boolTrue == test_26) {
-      GalgasBool test_28 = GalgasBool::boolTrue ;
-      if (GalgasBool::boolTrue == test_28) {
-        test_28 = GGS_bool (ComparisonKind::notEqual, var_parameterCppNameList_16000.getter_count (SOURCE_FILE ("instruction-setter-call.galgas3", 467)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
-        if (GalgasBool::boolTrue == test_28) {
-          ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string (", "), inCompiler  COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 468)) ;
+  GalgasBool test_19 = GalgasBool::boolTrue ;
+  if (GalgasBool::boolTrue == test_19) {
+    const GGS_setterCallInstructionForGeneration temp_20 = this ;
+    test_19 = temp_20.readProperty_mHasCompilerArgument ().boolEnum () ;
+    if (GalgasBool::boolTrue == test_19) {
+      GalgasBool test_21 = GalgasBool::boolTrue ;
+      if (GalgasBool::boolTrue == test_21) {
+        test_21 = GGS_bool (ComparisonKind::notEqual, var_parameterCppNameList_14714.getter_count (SOURCE_FILE ("instruction-setter-call.galgas3", 418)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
+        if (GalgasBool::boolTrue == test_21) {
+          ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string (", "), inCompiler  COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 419)) ;
         }
       }
       {
-      ioArgument_ioUnusedVariableCppNameSet.setter_removeKey (function_compilerCppName (inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 470)) COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 470)) ;
+      ioArgument_ioUnusedVariableCppNameSet.setter_removeKey (function_compilerCppName (inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 421)) COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 421)) ;
       }
-      ioArgument_ioGeneratedCode.plusAssignOperation(function_compilerCppName (inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 471)), inCompiler  COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 471)) ;
-      ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string (" COMMA_"), inCompiler  COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 472)) ;
+      ioArgument_ioGeneratedCode.plusAssignOperation(function_compilerCppName (inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 422)), inCompiler  COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 422)) ;
+      ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string (" COMMA_"), inCompiler  COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 423)) ;
     }
   }
-  if (GalgasBool::boolFalse == test_26) {
-    GalgasBool test_29 = GalgasBool::boolTrue ;
-    if (GalgasBool::boolTrue == test_29) {
-      test_29 = GGS_bool (ComparisonKind::notEqual, var_parameterCppNameList_16000.getter_count (SOURCE_FILE ("instruction-setter-call.galgas3", 473)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
-      if (GalgasBool::boolTrue == test_29) {
-        ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string (" COMMA_"), inCompiler  COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 474)) ;
+  if (GalgasBool::boolFalse == test_19) {
+    GalgasBool test_22 = GalgasBool::boolTrue ;
+    if (GalgasBool::boolTrue == test_22) {
+      test_22 = GGS_bool (ComparisonKind::notEqual, var_parameterCppNameList_14714.getter_count (SOURCE_FILE ("instruction-setter-call.galgas3", 424)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
+      if (GalgasBool::boolTrue == test_22) {
+        ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string (" COMMA_"), inCompiler  COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 425)) ;
       }
     }
   }
-  const GGS_setterCallInstructionForGeneration temp_30 = this ;
-  ioArgument_ioGeneratedCode.plusAssignOperation(extensionGetter_sourceFile (temp_30.readProperty_mSetterName ().readProperty_location (), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 476)).add_operation (GGS_string (") ;\n"), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 476)), inCompiler  COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 476)) ;
-  ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string ("}\n"), inCompiler  COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 477)) ;
+  const GGS_setterCallInstructionForGeneration temp_23 = this ;
+  ioArgument_ioGeneratedCode.plusAssignOperation(extensionGetter_sourceFile (temp_23.readProperty_mSetterName ().readProperty_location (), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 427)).add_operation (GGS_string (") ;\n"), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 427)), inCompiler  COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 427)) ;
+  ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string ("}\n"), inCompiler  COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 428)) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -4633,21 +4596,21 @@ void cPtr_selfSetterCallInstructionForGeneration::method_generateInstruction (GG
                                                                               GGS_string & ioArgument_ioGeneratedCode,
                                                                               Compiler * inCompiler
                                                                               COMMA_UNUSED_LOCATION_ARGS) {
-  ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string ("{\n"), inCompiler  COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 487)) ;
+  ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string ("{\n"), inCompiler  COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 438)) ;
   {
   const GGS_selfSetterCallInstructionForGeneration temp_0 = this ;
-  ioArgument_ioUnusedVariableCppNameSet.setter_removeKey (temp_0.readProperty_mSelfCppName () COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 488)) ;
+  ioArgument_ioUnusedVariableCppNameSet.setter_removeKey (temp_0.readProperty_mSelfCppName () COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 439)) ;
   }
-  GGS_stringlist var_parameterCppNameList_19863 = GGS_stringlist::init (inCompiler COMMA_HERE) ;
-  GGS_stringlist var_jokerParametersToReleaseList_19907 = GGS_stringlist::init (inCompiler COMMA_HERE) ;
-  GGS_stringlist var_inputVariableList_19959 = GGS_stringlist::init (inCompiler COMMA_HERE) ;
+  GGS_stringlist var_parameterCppNameList_17682 = GGS_stringlist::init (inCompiler COMMA_HERE) ;
+  GGS_stringlist var_jokerParametersToReleaseList_17726 = GGS_stringlist::init (inCompiler COMMA_HERE) ;
+  GGS_stringlist var_inputVariableList_17778 = GGS_stringlist::init (inCompiler COMMA_HERE) ;
   const GGS_selfSetterCallInstructionForGeneration temp_1 = this ;
-  UpEnumerator_actualParameterListForGeneration enumerator_20001 (temp_1.readProperty_mActualParameterList ()) ;
-  while (enumerator_20001.hasCurrentObject ()) {
-    GGS_string var_parameterCppName_20294 ;
-    callExtensionMethod_generateActualParameter ((cPtr_actualParameterForGeneration *) enumerator_20001.current_mActualParameter (HERE).ptr (), ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioGeneratedCode, var_jokerParametersToReleaseList_19907, var_inputVariableList_19959, ioArgument_ioUnusedVariableCppNameSet, var_parameterCppName_20294, inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 494)) ;
-    var_parameterCppNameList_19863.addAssignOperation (var_parameterCppName_20294  COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 502)) ;
-    enumerator_20001.gotoNextObject () ;
+  UpEnumerator_actualParameterListForGeneration enumerator_17820 (temp_1.readProperty_mActualParameterList ()) ;
+  while (enumerator_17820.hasCurrentObject ()) {
+    GGS_string var_parameterCppName_18113 ;
+    callExtensionMethod_generateActualParameter ((cPtr_actualParameterForGeneration *) enumerator_17820.current_mActualParameter (HERE).ptr (), ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioGeneratedCode, var_jokerParametersToReleaseList_17726, var_inputVariableList_17778, ioArgument_ioUnusedVariableCppNameSet, var_parameterCppName_18113, inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 445)) ;
+    var_parameterCppNameList_17682.addAssignOperation (var_parameterCppName_18113  COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 453)) ;
+    enumerator_17820.gotoNextObject () ;
   }
   const GGS_selfSetterCallInstructionForGeneration temp_2 = this ;
   switch (temp_2.readProperty_mKind ().enumValue ()) {
@@ -4657,21 +4620,21 @@ void cPtr_selfSetterCallInstructionForGeneration::method_generateInstruction (GG
     {
       const GGS_selfSetterCallInstructionForGeneration temp_3 = this ;
       const GGS_selfSetterCallInstructionForGeneration temp_4 = this ;
-      ioArgument_ioInclusionSet.plusPlusAssignOperation (GGS_string ("setter-").add_operation (extensionGetter_definition (temp_3.readProperty_mReceiverType (), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 507)).readProperty_typeName ().readProperty_string ().getter_fileNameRepresentation (SOURCE_FILE ("instruction-setter-call.galgas3", 507)), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 507)).add_operation (GGS_string ("-"), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 507)).add_operation (temp_4.readProperty_mSetterName ().readProperty_string ().getter_fileNameRepresentation (SOURCE_FILE ("instruction-setter-call.galgas3", 507)), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 507))  COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 507)) ;
+      ioArgument_ioInclusionSet.plusPlusAssignOperation (GGS_string ("setter-").add_operation (extensionGetter_definition (temp_3.readProperty_mReceiverType (), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 458)).readProperty_typeName ().readProperty_string ().getter_fileNameRepresentation (SOURCE_FILE ("instruction-setter-call.galgas3", 458)), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 458)).add_operation (GGS_string ("-"), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 458)).add_operation (temp_4.readProperty_mSetterName ().readProperty_string ().getter_fileNameRepresentation (SOURCE_FILE ("instruction-setter-call.galgas3", 458)), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 458))  COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 458)) ;
       GalgasBool test_5 = GalgasBool::boolTrue ;
       if (GalgasBool::boolTrue == test_5) {
         const GGS_selfSetterCallInstructionForGeneration temp_6 = this ;
-        test_5 = extensionGetter_definition (temp_6.readProperty_mReceiverType (), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 508)).readProperty_typeKind ().getter_isClassType (SOURCE_FILE ("instruction-setter-call.galgas3", 508)).boolEnum () ;
+        test_5 = extensionGetter_definition (temp_6.readProperty_mReceiverType (), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 459)).readProperty_typeKind ().getter_isClassType (SOURCE_FILE ("instruction-setter-call.galgas3", 459)).boolEnum () ;
         if (GalgasBool::boolTrue == test_5) {
           const GGS_selfSetterCallInstructionForGeneration temp_7 = this ;
           const GGS_selfSetterCallInstructionForGeneration temp_8 = this ;
-          ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string ("callExtensionSetter_").add_operation (temp_7.readProperty_mSetterName ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("instruction-setter-call.galgas3", 509)), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 509)).add_operation (GGS_string (" ("), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 509)).add_operation (temp_8.readProperty_mSelfCppName (), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 509)).add_operation (GGS_string (", "), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 509)), inCompiler  COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 509)) ;
+          ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string ("callExtensionSetter_").add_operation (temp_7.readProperty_mSetterName ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("instruction-setter-call.galgas3", 460)), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 460)).add_operation (GGS_string (" ("), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 460)).add_operation (temp_8.readProperty_mSelfCppName (), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 460)).add_operation (GGS_string (", "), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 460)), inCompiler  COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 460)) ;
         }
       }
       if (GalgasBool::boolFalse == test_5) {
         const GGS_selfSetterCallInstructionForGeneration temp_9 = this ;
         const GGS_selfSetterCallInstructionForGeneration temp_10 = this ;
-        ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string ("extensionSetter_").add_operation (temp_9.readProperty_mSetterName ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("instruction-setter-call.galgas3", 511)), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 511)).add_operation (GGS_string (" ("), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 511)).add_operation (temp_10.readProperty_mSelfCppName (), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 511)).add_operation (GGS_string (", "), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 511)), inCompiler  COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 511)) ;
+        ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string ("extensionSetter_").add_operation (temp_9.readProperty_mSetterName ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("instruction-setter-call.galgas3", 462)), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 462)).add_operation (GGS_string (" ("), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 462)).add_operation (temp_10.readProperty_mSelfCppName (), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 462)).add_operation (GGS_string (", "), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 462)), inCompiler  COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 462)) ;
       }
     }
     break ;
@@ -4680,27 +4643,27 @@ void cPtr_selfSetterCallInstructionForGeneration::method_generateInstruction (GG
       GalgasBool test_11 = GalgasBool::boolTrue ;
       if (GalgasBool::boolTrue == test_11) {
         const GGS_selfSetterCallInstructionForGeneration temp_12 = this ;
-        test_11 = extensionGetter_definition (temp_12.readProperty_mReceiverType (), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 514)).readProperty_typeKind ().getter_isClassType (SOURCE_FILE ("instruction-setter-call.galgas3", 514)).boolEnum () ;
+        test_11 = extensionGetter_definition (temp_12.readProperty_mReceiverType (), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 465)).readProperty_typeKind ().getter_isClassType (SOURCE_FILE ("instruction-setter-call.galgas3", 465)).boolEnum () ;
         if (GalgasBool::boolTrue == test_11) {
           const GGS_selfSetterCallInstructionForGeneration temp_13 = this ;
           const GGS_selfSetterCallInstructionForGeneration temp_14 = this ;
-          ioArgument_ioGeneratedCode.plusAssignOperation(temp_13.readProperty_mSelfCppName ().add_operation (GGS_string ("->setter_"), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 515)).add_operation (temp_14.readProperty_mSetterName ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("instruction-setter-call.galgas3", 515)), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 515)).add_operation (GGS_string (" ("), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 515)), inCompiler  COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 515)) ;
+          ioArgument_ioGeneratedCode.plusAssignOperation(temp_13.readProperty_mSelfCppName ().add_operation (GGS_string ("->setter_"), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 466)).add_operation (temp_14.readProperty_mSetterName ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("instruction-setter-call.galgas3", 466)), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 466)).add_operation (GGS_string (" ("), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 466)), inCompiler  COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 466)) ;
         }
       }
       if (GalgasBool::boolFalse == test_11) {
         const GGS_selfSetterCallInstructionForGeneration temp_15 = this ;
         const GGS_selfSetterCallInstructionForGeneration temp_16 = this ;
-        ioArgument_ioGeneratedCode.plusAssignOperation(temp_15.readProperty_mSelfCppName ().add_operation (GGS_string (".setter_"), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 517)).add_operation (temp_16.readProperty_mSetterName ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("instruction-setter-call.galgas3", 517)), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 517)).add_operation (GGS_string (" ("), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 517)), inCompiler  COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 517)) ;
+        ioArgument_ioGeneratedCode.plusAssignOperation(temp_15.readProperty_mSelfCppName ().add_operation (GGS_string (".setter_"), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 468)).add_operation (temp_16.readProperty_mSetterName ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("instruction-setter-call.galgas3", 468)), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 468)).add_operation (GGS_string (" ("), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 468)), inCompiler  COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 468)) ;
       }
     }
     break ;
   }
-  UpEnumerator_stringlist enumerator_21287 (var_parameterCppNameList_19863) ;
-  while (enumerator_21287.hasCurrentObject ()) {
-    ioArgument_ioGeneratedCode.plusAssignOperation(enumerator_21287.current_mValue (HERE), inCompiler  COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 521)) ;
-    enumerator_21287.gotoNextObject () ;
-    if (enumerator_21287.hasCurrentObject ()) {
-      ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string (", "), inCompiler  COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 522)) ;
+  UpEnumerator_stringlist enumerator_19106 (var_parameterCppNameList_17682) ;
+  while (enumerator_19106.hasCurrentObject ()) {
+    ioArgument_ioGeneratedCode.plusAssignOperation(enumerator_19106.current_mValue (HERE), inCompiler  COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 472)) ;
+    enumerator_19106.gotoNextObject () ;
+    if (enumerator_19106.hasCurrentObject ()) {
+      ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string (", "), inCompiler  COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 473)) ;
     }
   }
   GalgasBool test_17 = GalgasBool::boolTrue ;
@@ -4710,30 +4673,30 @@ void cPtr_selfSetterCallInstructionForGeneration::method_generateInstruction (GG
     if (GalgasBool::boolTrue == test_17) {
       GalgasBool test_19 = GalgasBool::boolTrue ;
       if (GalgasBool::boolTrue == test_19) {
-        test_19 = GGS_bool (ComparisonKind::notEqual, var_parameterCppNameList_19863.getter_count (SOURCE_FILE ("instruction-setter-call.galgas3", 525)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
+        test_19 = GGS_bool (ComparisonKind::notEqual, var_parameterCppNameList_17682.getter_count (SOURCE_FILE ("instruction-setter-call.galgas3", 476)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
         if (GalgasBool::boolTrue == test_19) {
-          ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string (", "), inCompiler  COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 526)) ;
+          ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string (", "), inCompiler  COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 477)) ;
         }
       }
       {
-      ioArgument_ioUnusedVariableCppNameSet.setter_removeKey (function_compilerCppName (inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 528)) COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 528)) ;
+      ioArgument_ioUnusedVariableCppNameSet.setter_removeKey (function_compilerCppName (inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 479)) COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 479)) ;
       }
-      ioArgument_ioGeneratedCode.plusAssignOperation(function_compilerCppName (inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 529)), inCompiler  COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 529)) ;
-      ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string (" COMMA_"), inCompiler  COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 530)) ;
+      ioArgument_ioGeneratedCode.plusAssignOperation(function_compilerCppName (inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 480)), inCompiler  COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 480)) ;
+      ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string (" COMMA_"), inCompiler  COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 481)) ;
     }
   }
   if (GalgasBool::boolFalse == test_17) {
     GalgasBool test_20 = GalgasBool::boolTrue ;
     if (GalgasBool::boolTrue == test_20) {
-      test_20 = GGS_bool (ComparisonKind::notEqual, var_parameterCppNameList_19863.getter_count (SOURCE_FILE ("instruction-setter-call.galgas3", 531)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
+      test_20 = GGS_bool (ComparisonKind::notEqual, var_parameterCppNameList_17682.getter_count (SOURCE_FILE ("instruction-setter-call.galgas3", 482)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
       if (GalgasBool::boolTrue == test_20) {
-        ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string (" COMMA_"), inCompiler  COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 532)) ;
+        ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string (" COMMA_"), inCompiler  COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 483)) ;
       }
     }
   }
   const GGS_selfSetterCallInstructionForGeneration temp_21 = this ;
-  ioArgument_ioGeneratedCode.plusAssignOperation(extensionGetter_sourceFile (temp_21.readProperty_mSetterName ().readProperty_location (), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 534)).add_operation (GGS_string (") ;\n"), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 534)), inCompiler  COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 534)) ;
-  ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string ("}\n"), inCompiler  COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 535)) ;
+  ioArgument_ioGeneratedCode.plusAssignOperation(extensionGetter_sourceFile (temp_21.readProperty_mSetterName ().readProperty_location (), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 485)).add_operation (GGS_string (") ;\n"), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 485)), inCompiler  COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 485)) ;
+  ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string ("}\n"), inCompiler  COMMA_SOURCE_FILE ("instruction-setter-call.galgas3", 486)) ;
 }
 
 //--------------------------------------------------------------------------------------------------

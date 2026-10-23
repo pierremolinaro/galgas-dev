@@ -8954,18 +8954,17 @@ GGS_semanticInstructionAST () {
 //--- Synthetized initializer ----------------------------------------------------------------------
 
 GGS_setterCallInstructionAST GGS_setterCallInstructionAST::
-init_21__21__21__21__21__21__21_ (const GGS_location & in_mInstructionLocation,
-                                  const GGS_bool & in_mPrefixedBySelf,
-                                  const GGS_lstring & in_mReceiverName,
-                                  const GGS_lstringlist & in_mReceiverStructProperties,
-                                  const GGS_lstring & in_mTypeNameForCasting,
-                                  const GGS_lstring & in_mSetterName,
-                                  const GGS_actualParameterListAST & in_mActualParameterList,
-                                  Compiler * inCompiler
-                                  COMMA_LOCATION_ARGS) {
+init_21__21__21__21__21__21_ (const GGS_location & in_mInstructionLocation,
+                              const GGS_bool & in_mPrefixedBySelf,
+                              const GGS_lstring & in_mReceiverName,
+                              const GGS_lstringlist & in_mReceiverStructProperties,
+                              const GGS_lstring & in_mSetterName,
+                              const GGS_actualParameterListAST & in_mActualParameterList,
+                              Compiler * inCompiler
+                              COMMA_LOCATION_ARGS) {
   cPtr_setterCallInstructionAST * object = nullptr ;
   macroMyNew (object, cPtr_setterCallInstructionAST (inCompiler COMMA_THERE)) ;
-  object->setterCallInstructionAST_init_21__21__21__21__21__21__21_ (in_mInstructionLocation, in_mPrefixedBySelf, in_mReceiverName, in_mReceiverStructProperties, in_mTypeNameForCasting, in_mSetterName, in_mActualParameterList, inCompiler) ;
+  object->setterCallInstructionAST_init_21__21__21__21__21__21_ (in_mInstructionLocation, in_mPrefixedBySelf, in_mReceiverName, in_mReceiverStructProperties, in_mSetterName, in_mActualParameterList, inCompiler) ;
   const GGS_setterCallInstructionAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
@@ -8974,19 +8973,17 @@ init_21__21__21__21__21__21__21_ (const GGS_location & in_mInstructionLocation,
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_setterCallInstructionAST::
-setterCallInstructionAST_init_21__21__21__21__21__21__21_ (const GGS_location & in_mInstructionLocation,
-                                                           const GGS_bool & in_mPrefixedBySelf,
-                                                           const GGS_lstring & in_mReceiverName,
-                                                           const GGS_lstringlist & in_mReceiverStructProperties,
-                                                           const GGS_lstring & in_mTypeNameForCasting,
-                                                           const GGS_lstring & in_mSetterName,
-                                                           const GGS_actualParameterListAST & in_mActualParameterList,
-                                                           Compiler * /* inCompiler */) {
+setterCallInstructionAST_init_21__21__21__21__21__21_ (const GGS_location & in_mInstructionLocation,
+                                                       const GGS_bool & in_mPrefixedBySelf,
+                                                       const GGS_lstring & in_mReceiverName,
+                                                       const GGS_lstringlist & in_mReceiverStructProperties,
+                                                       const GGS_lstring & in_mSetterName,
+                                                       const GGS_actualParameterListAST & in_mActualParameterList,
+                                                       Compiler * /* inCompiler */) {
   mProperty_mInstructionLocation = in_mInstructionLocation ;
   mProperty_mPrefixedBySelf = in_mPrefixedBySelf ;
   mProperty_mReceiverName = in_mReceiverName ;
   mProperty_mReceiverStructProperties = in_mReceiverStructProperties ;
-  mProperty_mTypeNameForCasting = in_mTypeNameForCasting ;
   mProperty_mSetterName = in_mSetterName ;
   mProperty_mActualParameterList = in_mActualParameterList ;
 }
@@ -9035,18 +9032,6 @@ GGS_lstringlist GGS_setterCallInstructionAST::readProperty_mReceiverStructProper
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_lstring GGS_setterCallInstructionAST::readProperty_mTypeNameForCasting (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_lstring () ;
-  }else{
-    cPtr_setterCallInstructionAST * p = (cPtr_setterCallInstructionAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_setterCallInstructionAST) ;
-    return p->mProperty_mTypeNameForCasting ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
 GGS_lstring GGS_setterCallInstructionAST::readProperty_mSetterName (void) const {
   if (nullptr == mObjectPtr) {
     return GGS_lstring () ;
@@ -9078,7 +9063,6 @@ cPtr_semanticInstructionAST (inCompiler COMMA_THERE),
 mProperty_mPrefixedBySelf (),
 mProperty_mReceiverName (),
 mProperty_mReceiverStructProperties (),
-mProperty_mTypeNameForCasting (),
 mProperty_mSetterName (),
 mProperty_mActualParameterList () {
 }
@@ -9089,7 +9073,6 @@ cPtr_setterCallInstructionAST::cPtr_setterCallInstructionAST (const GGS_location
                                                               const GGS_bool & in_mPrefixedBySelf,
                                                               const GGS_lstring & in_mReceiverName,
                                                               const GGS_lstringlist & in_mReceiverStructProperties,
-                                                              const GGS_lstring & in_mTypeNameForCasting,
                                                               const GGS_lstring & in_mSetterName,
                                                               const GGS_actualParameterListAST & in_mActualParameterList,
                                                               Compiler * inCompiler
@@ -9098,14 +9081,12 @@ cPtr_semanticInstructionAST (in_mInstructionLocation, inCompiler COMMA_THERE),
 mProperty_mPrefixedBySelf (),
 mProperty_mReceiverName (),
 mProperty_mReceiverStructProperties (),
-mProperty_mTypeNameForCasting (),
 mProperty_mSetterName (),
 mProperty_mActualParameterList () {
   mProperty_mInstructionLocation = in_mInstructionLocation ;
   mProperty_mPrefixedBySelf = in_mPrefixedBySelf ;
   mProperty_mReceiverName = in_mReceiverName ;
   mProperty_mReceiverStructProperties = in_mReceiverStructProperties ;
-  mProperty_mTypeNameForCasting = in_mTypeNameForCasting ;
   mProperty_mSetterName = in_mSetterName ;
   mProperty_mActualParameterList = in_mActualParameterList ;
 }
@@ -9127,8 +9108,6 @@ void cPtr_setterCallInstructionAST::description (String & ioString,
   ioString.appendCString (", ") ;
   mProperty_mReceiverStructProperties.description (ioString, inIndentation+1) ;
   ioString.appendCString (", ") ;
-  mProperty_mTypeNameForCasting.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
   mProperty_mSetterName.description (ioString, inIndentation+1) ;
   ioString.appendCString (", ") ;
   mProperty_mActualParameterList.description (ioString, inIndentation+1) ;
@@ -9139,7 +9118,7 @@ void cPtr_setterCallInstructionAST::description (String & ioString,
 
 AbstractPtrClass * cPtr_setterCallInstructionAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   AbstractPtrClass * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_setterCallInstructionAST (mProperty_mInstructionLocation, mProperty_mPrefixedBySelf, mProperty_mReceiverName, mProperty_mReceiverStructProperties, mProperty_mTypeNameForCasting, mProperty_mSetterName, mProperty_mActualParameterList, inCompiler COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_setterCallInstructionAST (mProperty_mInstructionLocation, mProperty_mPrefixedBySelf, mProperty_mReceiverName, mProperty_mReceiverStructProperties, mProperty_mSetterName, mProperty_mActualParameterList, inCompiler COMMA_THERE)) ;
   return ptr ;
 }
 
@@ -9152,7 +9131,6 @@ AbstractPtrClass * cPtr_setterCallInstructionAST::duplicate (Compiler * inCompil
     mProperty_mPrefixedBySelf.printNonNullClassInstanceProperties ("mPrefixedBySelf") ;
     mProperty_mReceiverName.printNonNullClassInstanceProperties ("mReceiverName") ;
     mProperty_mReceiverStructProperties.printNonNullClassInstanceProperties ("mReceiverStructProperties") ;
-    mProperty_mTypeNameForCasting.printNonNullClassInstanceProperties ("mTypeNameForCasting") ;
     mProperty_mSetterName.printNonNullClassInstanceProperties ("mSetterName") ;
     mProperty_mActualParameterList.printNonNullClassInstanceProperties ("mActualParameterList") ;
   }
@@ -9656,22 +9634,21 @@ GGS_semanticInstructionForGeneration () {
 //--- Synthetized initializer ----------------------------------------------------------------------
 
 GGS_setterCallInstructionForGeneration GGS_setterCallInstructionForGeneration::
-init_21__21__21__21__21__21__21__21__21__21__21_ (const GGS_location & in_mInstructionLocation,
-                                                  const GGS_string & in_mReceiverCppName,
-                                                  const GGS_string & in_mReceiverBaseName,
-                                                  const GGS_lstringlist & in_mReceiverStructAttributes,
-                                                  const GGS_unifiedTypeMapEntry & in_mCastType,
-                                                  const GGS_unifiedTypeMapEntry & in_mReceiverType,
-                                                  const GGS_lstring & in_mSetterName,
-                                                  const GGS_methodKind & in_mKind,
-                                                  const GGS_actualParameterListForGeneration & in_mActualParameterList,
-                                                  const GGS_bool & in_mHasCompilerArgument,
-                                                  const GGS_unifiedTypeMapEntry & in_mMethodBaseType,
-                                                  Compiler * inCompiler
-                                                  COMMA_LOCATION_ARGS) {
+init_21__21__21__21__21__21__21__21__21__21_ (const GGS_location & in_mInstructionLocation,
+                                              const GGS_string & in_mReceiverCppName,
+                                              const GGS_string & in_mReceiverBaseName,
+                                              const GGS_lstringlist & in_mReceiverStructAttributes,
+                                              const GGS_unifiedTypeMapEntry & in_mReceiverType,
+                                              const GGS_lstring & in_mSetterName,
+                                              const GGS_methodKind & in_mKind,
+                                              const GGS_actualParameterListForGeneration & in_mActualParameterList,
+                                              const GGS_bool & in_mHasCompilerArgument,
+                                              const GGS_unifiedTypeMapEntry & in_mMethodBaseType,
+                                              Compiler * inCompiler
+                                              COMMA_LOCATION_ARGS) {
   cPtr_setterCallInstructionForGeneration * object = nullptr ;
   macroMyNew (object, cPtr_setterCallInstructionForGeneration (inCompiler COMMA_THERE)) ;
-  object->setterCallInstructionForGeneration_init_21__21__21__21__21__21__21__21__21__21__21_ (in_mInstructionLocation, in_mReceiverCppName, in_mReceiverBaseName, in_mReceiverStructAttributes, in_mCastType, in_mReceiverType, in_mSetterName, in_mKind, in_mActualParameterList, in_mHasCompilerArgument, in_mMethodBaseType, inCompiler) ;
+  object->setterCallInstructionForGeneration_init_21__21__21__21__21__21__21__21__21__21_ (in_mInstructionLocation, in_mReceiverCppName, in_mReceiverBaseName, in_mReceiverStructAttributes, in_mReceiverType, in_mSetterName, in_mKind, in_mActualParameterList, in_mHasCompilerArgument, in_mMethodBaseType, inCompiler) ;
   const GGS_setterCallInstructionForGeneration result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
@@ -9680,23 +9657,21 @@ init_21__21__21__21__21__21__21__21__21__21__21_ (const GGS_location & in_mInstr
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_setterCallInstructionForGeneration::
-setterCallInstructionForGeneration_init_21__21__21__21__21__21__21__21__21__21__21_ (const GGS_location & in_mInstructionLocation,
-                                                                                     const GGS_string & in_mReceiverCppName,
-                                                                                     const GGS_string & in_mReceiverBaseName,
-                                                                                     const GGS_lstringlist & in_mReceiverStructAttributes,
-                                                                                     const GGS_unifiedTypeMapEntry & in_mCastType,
-                                                                                     const GGS_unifiedTypeMapEntry & in_mReceiverType,
-                                                                                     const GGS_lstring & in_mSetterName,
-                                                                                     const GGS_methodKind & in_mKind,
-                                                                                     const GGS_actualParameterListForGeneration & in_mActualParameterList,
-                                                                                     const GGS_bool & in_mHasCompilerArgument,
-                                                                                     const GGS_unifiedTypeMapEntry & in_mMethodBaseType,
-                                                                                     Compiler * /* inCompiler */) {
+setterCallInstructionForGeneration_init_21__21__21__21__21__21__21__21__21__21_ (const GGS_location & in_mInstructionLocation,
+                                                                                 const GGS_string & in_mReceiverCppName,
+                                                                                 const GGS_string & in_mReceiverBaseName,
+                                                                                 const GGS_lstringlist & in_mReceiverStructAttributes,
+                                                                                 const GGS_unifiedTypeMapEntry & in_mReceiverType,
+                                                                                 const GGS_lstring & in_mSetterName,
+                                                                                 const GGS_methodKind & in_mKind,
+                                                                                 const GGS_actualParameterListForGeneration & in_mActualParameterList,
+                                                                                 const GGS_bool & in_mHasCompilerArgument,
+                                                                                 const GGS_unifiedTypeMapEntry & in_mMethodBaseType,
+                                                                                 Compiler * /* inCompiler */) {
   mProperty_mInstructionLocation = in_mInstructionLocation ;
   mProperty_mReceiverCppName = in_mReceiverCppName ;
   mProperty_mReceiverBaseName = in_mReceiverBaseName ;
   mProperty_mReceiverStructAttributes = in_mReceiverStructAttributes ;
-  mProperty_mCastType = in_mCastType ;
   mProperty_mReceiverType = in_mReceiverType ;
   mProperty_mSetterName = in_mSetterName ;
   mProperty_mKind = in_mKind ;
@@ -9756,18 +9731,6 @@ GGS_lstringlist GGS_setterCallInstructionForGeneration::readProperty_mReceiverSt
     cPtr_setterCallInstructionForGeneration * p = (cPtr_setterCallInstructionForGeneration *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_setterCallInstructionForGeneration) ;
     return p->mProperty_mReceiverStructAttributes ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_unifiedTypeMapEntry GGS_setterCallInstructionForGeneration::readProperty_mCastType (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_unifiedTypeMapEntry () ;
-  }else{
-    cPtr_setterCallInstructionForGeneration * p = (cPtr_setterCallInstructionForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_setterCallInstructionForGeneration) ;
-    return p->mProperty_mCastType ;
   }
 }
 
@@ -9853,7 +9816,6 @@ mProperty_mInstructionLocation (),
 mProperty_mReceiverCppName (),
 mProperty_mReceiverBaseName (),
 mProperty_mReceiverStructAttributes (),
-mProperty_mCastType (),
 mProperty_mReceiverType (),
 mProperty_mSetterName (),
 mProperty_mKind (),
@@ -9868,7 +9830,6 @@ cPtr_setterCallInstructionForGeneration::cPtr_setterCallInstructionForGeneration
                                                                                   const GGS_string & in_mReceiverCppName,
                                                                                   const GGS_string & in_mReceiverBaseName,
                                                                                   const GGS_lstringlist & in_mReceiverStructAttributes,
-                                                                                  const GGS_unifiedTypeMapEntry & in_mCastType,
                                                                                   const GGS_unifiedTypeMapEntry & in_mReceiverType,
                                                                                   const GGS_lstring & in_mSetterName,
                                                                                   const GGS_methodKind & in_mKind,
@@ -9882,7 +9843,6 @@ mProperty_mInstructionLocation (),
 mProperty_mReceiverCppName (),
 mProperty_mReceiverBaseName (),
 mProperty_mReceiverStructAttributes (),
-mProperty_mCastType (),
 mProperty_mReceiverType (),
 mProperty_mSetterName (),
 mProperty_mKind (),
@@ -9893,7 +9853,6 @@ mProperty_mMethodBaseType () {
   mProperty_mReceiverCppName = in_mReceiverCppName ;
   mProperty_mReceiverBaseName = in_mReceiverBaseName ;
   mProperty_mReceiverStructAttributes = in_mReceiverStructAttributes ;
-  mProperty_mCastType = in_mCastType ;
   mProperty_mReceiverType = in_mReceiverType ;
   mProperty_mSetterName = in_mSetterName ;
   mProperty_mKind = in_mKind ;
@@ -9919,8 +9878,6 @@ void cPtr_setterCallInstructionForGeneration::description (String & ioString,
   ioString.appendCString (", ") ;
   mProperty_mReceiverStructAttributes.description (ioString, inIndentation+1) ;
   ioString.appendCString (", ") ;
-  mProperty_mCastType.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
   mProperty_mReceiverType.description (ioString, inIndentation+1) ;
   ioString.appendCString (", ") ;
   mProperty_mSetterName.description (ioString, inIndentation+1) ;
@@ -9939,7 +9896,7 @@ void cPtr_setterCallInstructionForGeneration::description (String & ioString,
 
 AbstractPtrClass * cPtr_setterCallInstructionForGeneration::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   AbstractPtrClass * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_setterCallInstructionForGeneration (mProperty_mInstructionLocation, mProperty_mReceiverCppName, mProperty_mReceiverBaseName, mProperty_mReceiverStructAttributes, mProperty_mCastType, mProperty_mReceiverType, mProperty_mSetterName, mProperty_mKind, mProperty_mActualParameterList, mProperty_mHasCompilerArgument, mProperty_mMethodBaseType, inCompiler COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_setterCallInstructionForGeneration (mProperty_mInstructionLocation, mProperty_mReceiverCppName, mProperty_mReceiverBaseName, mProperty_mReceiverStructAttributes, mProperty_mReceiverType, mProperty_mSetterName, mProperty_mKind, mProperty_mActualParameterList, mProperty_mHasCompilerArgument, mProperty_mMethodBaseType, inCompiler COMMA_THERE)) ;
   return ptr ;
 }
 
@@ -9953,7 +9910,6 @@ AbstractPtrClass * cPtr_setterCallInstructionForGeneration::duplicate (Compiler 
     mProperty_mReceiverCppName.printNonNullClassInstanceProperties ("mReceiverCppName") ;
     mProperty_mReceiverBaseName.printNonNullClassInstanceProperties ("mReceiverBaseName") ;
     mProperty_mReceiverStructAttributes.printNonNullClassInstanceProperties ("mReceiverStructAttributes") ;
-    mProperty_mCastType.printNonNullClassInstanceProperties ("mCastType") ;
     mProperty_mReceiverType.printNonNullClassInstanceProperties ("mReceiverType") ;
     mProperty_mSetterName.printNonNullClassInstanceProperties ("mSetterName") ;
     mProperty_mKind.printNonNullClassInstanceProperties ("mKind") ;

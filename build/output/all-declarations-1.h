@@ -1994,8 +1994,6 @@ class GGS_setterCallInstructionForGeneration : public GGS_semanticInstructionFor
 
   public: class GGS_lstringlist readProperty_mReceiverStructAttributes (void) const ;
 
-  public: class GGS_unifiedTypeMapEntry readProperty_mCastType (void) const ;
-
   public: class GGS_unifiedTypeMapEntry readProperty_mReceiverType (void) const ;
 
   public: class GGS_lstring readProperty_mSetterName (void) const ;
@@ -2011,19 +2009,18 @@ class GGS_setterCallInstructionForGeneration : public GGS_semanticInstructionFor
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GGS_setterCallInstructionForGeneration init_21__21__21__21__21__21__21__21__21__21__21_ (const class GGS_location & inOperand0,
-                                                                                                          const class GGS_string & inOperand1,
-                                                                                                          const class GGS_string & inOperand2,
-                                                                                                          const class GGS_lstringlist & inOperand3,
-                                                                                                          const class GGS_unifiedTypeMapEntry & inOperand4,
-                                                                                                          const class GGS_unifiedTypeMapEntry & inOperand5,
-                                                                                                          const class GGS_lstring & inOperand6,
-                                                                                                          const class GGS_methodKind & inOperand7,
-                                                                                                          const class GGS_actualParameterListForGeneration & inOperand8,
-                                                                                                          const class GGS_bool & inOperand9,
-                                                                                                          const class GGS_unifiedTypeMapEntry & inOperand10,
-                                                                                                          Compiler * inCompiler
-                                                                                                          COMMA_LOCATION_ARGS) ;
+  public: static GGS_setterCallInstructionForGeneration init_21__21__21__21__21__21__21__21__21__21_ (const class GGS_location & inOperand0,
+                                                                                                      const class GGS_string & inOperand1,
+                                                                                                      const class GGS_string & inOperand2,
+                                                                                                      const class GGS_lstringlist & inOperand3,
+                                                                                                      const class GGS_unifiedTypeMapEntry & inOperand4,
+                                                                                                      const class GGS_lstring & inOperand5,
+                                                                                                      const class GGS_methodKind & inOperand6,
+                                                                                                      const class GGS_actualParameterListForGeneration & inOperand7,
+                                                                                                      const class GGS_bool & inOperand8,
+                                                                                                      const class GGS_unifiedTypeMapEntry & inOperand9,
+                                                                                                      Compiler * inCompiler
+                                                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -2066,18 +2063,17 @@ class cPtr_setterCallInstructionForGeneration : public cPtr_semanticInstructionF
   #endif
 
 //--------------------------------- Initializers
-  public: void setterCallInstructionForGeneration_init_21__21__21__21__21__21__21__21__21__21__21_ (const class GGS_location & inOperand0,
-                                                                                                    const class GGS_string & inOperand1,
-                                                                                                    const class GGS_string & inOperand2,
-                                                                                                    const class GGS_lstringlist & inOperand3,
-                                                                                                    const class GGS_unifiedTypeMapEntry & inOperand4,
-                                                                                                    const class GGS_unifiedTypeMapEntry & inOperand5,
-                                                                                                    const class GGS_lstring & inOperand6,
-                                                                                                    const class GGS_methodKind & inOperand7,
-                                                                                                    const class GGS_actualParameterListForGeneration & inOperand8,
-                                                                                                    const class GGS_bool & inOperand9,
-                                                                                                    const class GGS_unifiedTypeMapEntry & inOperand10,
-                                                                                                    Compiler * inCompiler) ;
+  public: void setterCallInstructionForGeneration_init_21__21__21__21__21__21__21__21__21__21_ (const class GGS_location & inOperand0,
+                                                                                                const class GGS_string & inOperand1,
+                                                                                                const class GGS_string & inOperand2,
+                                                                                                const class GGS_lstringlist & inOperand3,
+                                                                                                const class GGS_unifiedTypeMapEntry & inOperand4,
+                                                                                                const class GGS_lstring & inOperand5,
+                                                                                                const class GGS_methodKind & inOperand6,
+                                                                                                const class GGS_actualParameterListForGeneration & inOperand7,
+                                                                                                const class GGS_bool & inOperand8,
+                                                                                                const class GGS_unifiedTypeMapEntry & inOperand9,
+                                                                                                Compiler * inCompiler) ;
 
 
 //--- Extension proc generateInstruction
@@ -2093,7 +2089,6 @@ class cPtr_setterCallInstructionForGeneration : public cPtr_semanticInstructionF
   public: GGS_string mProperty_mReceiverCppName ;
   public: GGS_string mProperty_mReceiverBaseName ;
   public: GGS_lstringlist mProperty_mReceiverStructAttributes ;
-  public: GGS_unifiedTypeMapEntry mProperty_mCastType ;
   public: GGS_unifiedTypeMapEntry mProperty_mReceiverType ;
   public: GGS_lstring mProperty_mSetterName ;
   public: GGS_methodKind mProperty_mKind ;
@@ -2110,7 +2105,6 @@ class cPtr_setterCallInstructionForGeneration : public cPtr_semanticInstructionF
                                                    const GGS_string & in_mReceiverCppName,
                                                    const GGS_string & in_mReceiverBaseName,
                                                    const GGS_lstringlist & in_mReceiverStructAttributes,
-                                                   const GGS_unifiedTypeMapEntry & in_mCastType,
                                                    const GGS_unifiedTypeMapEntry & in_mReceiverType,
                                                    const GGS_lstring & in_mSetterName,
                                                    const GGS_methodKind & in_mKind,

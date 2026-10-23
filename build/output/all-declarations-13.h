@@ -2804,8 +2804,6 @@ class GGS_setterCallInstructionAST : public GGS_semanticInstructionAST {
 
   public: class GGS_lstringlist readProperty_mReceiverStructProperties (void) const ;
 
-  public: class GGS_lstring readProperty_mTypeNameForCasting (void) const ;
-
   public: class GGS_lstring readProperty_mSetterName (void) const ;
 
   public: class GGS_actualParameterListAST readProperty_mActualParameterList (void) const ;
@@ -2813,15 +2811,14 @@ class GGS_setterCallInstructionAST : public GGS_semanticInstructionAST {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GGS_setterCallInstructionAST init_21__21__21__21__21__21__21_ (const class GGS_location & inOperand0,
-                                                                                const class GGS_bool & inOperand1,
-                                                                                const class GGS_lstring & inOperand2,
-                                                                                const class GGS_lstringlist & inOperand3,
-                                                                                const class GGS_lstring & inOperand4,
-                                                                                const class GGS_lstring & inOperand5,
-                                                                                const class GGS_actualParameterListAST & inOperand6,
-                                                                                Compiler * inCompiler
-                                                                                COMMA_LOCATION_ARGS) ;
+  public: static GGS_setterCallInstructionAST init_21__21__21__21__21__21_ (const class GGS_location & inOperand0,
+                                                                            const class GGS_bool & inOperand1,
+                                                                            const class GGS_lstring & inOperand2,
+                                                                            const class GGS_lstringlist & inOperand3,
+                                                                            const class GGS_lstring & inOperand4,
+                                                                            const class GGS_actualParameterListAST & inOperand5,
+                                                                            Compiler * inCompiler
+                                                                            COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -2864,14 +2861,13 @@ class cPtr_setterCallInstructionAST : public cPtr_semanticInstructionAST {
   #endif
 
 //--------------------------------- Initializers
-  public: void setterCallInstructionAST_init_21__21__21__21__21__21__21_ (const class GGS_location & inOperand0,
-                                                                          const class GGS_bool & inOperand1,
-                                                                          const class GGS_lstring & inOperand2,
-                                                                          const class GGS_lstringlist & inOperand3,
-                                                                          const class GGS_lstring & inOperand4,
-                                                                          const class GGS_lstring & inOperand5,
-                                                                          const class GGS_actualParameterListAST & inOperand6,
-                                                                          Compiler * inCompiler) ;
+  public: void setterCallInstructionAST_init_21__21__21__21__21__21_ (const class GGS_location & inOperand0,
+                                                                      const class GGS_bool & inOperand1,
+                                                                      const class GGS_lstring & inOperand2,
+                                                                      const class GGS_lstringlist & inOperand3,
+                                                                      const class GGS_lstring & inOperand4,
+                                                                      const class GGS_actualParameterListAST & inOperand5,
+                                                                      Compiler * inCompiler) ;
 
 
 //--- Extension proc analyzeSemanticInstruction
@@ -2891,7 +2887,6 @@ class cPtr_setterCallInstructionAST : public cPtr_semanticInstructionAST {
   public: GGS_bool mProperty_mPrefixedBySelf ;
   public: GGS_lstring mProperty_mReceiverName ;
   public: GGS_lstringlist mProperty_mReceiverStructProperties ;
-  public: GGS_lstring mProperty_mTypeNameForCasting ;
   public: GGS_lstring mProperty_mSetterName ;
   public: GGS_actualParameterListAST mProperty_mActualParameterList ;
 
@@ -2904,7 +2899,6 @@ class cPtr_setterCallInstructionAST : public cPtr_semanticInstructionAST {
                                          const GGS_bool & in_mPrefixedBySelf,
                                          const GGS_lstring & in_mReceiverName,
                                          const GGS_lstringlist & in_mReceiverStructProperties,
-                                         const GGS_lstring & in_mTypeNameForCasting,
                                          const GGS_lstring & in_mSetterName,
                                          const GGS_actualParameterListAST & in_mActualParameterList,
                                          Compiler * inCompiler

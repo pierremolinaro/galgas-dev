@@ -23,7 +23,6 @@ final class @setterCallInstructionAST : @semanticInstructionAST {
   private let @bool mPrefixedBySelf
   private let @lstring mReceiverName
   private let @lstringlist mReceiverStructProperties
-  private let @lstring mTypeNameForCasting
   private let @lstring mSetterName
   private let @actualParameterListAST mActualParameterList
 }
@@ -64,13 +63,6 @@ syntax extension galgas3InstructionsSyntax {
       $identifier$ ?let structAttribute
       mReceiverStructAttributes += !structAttribute
     end
-    let @lstring typeNameForCasting
-    select
-      typeNameForCasting = "".nowhere
-    or
-      $as$
-      <type_definition_ggs3> (!?ioDeclarations ?typeNameForCasting)
-    end
     $identifier$ ?let mSetterName // §§
     <actual_parameter_list_ggs3> (!?ioDeclarations ?let @actualParameterListAST actualParameterList)
     $]$
@@ -79,29 +71,10 @@ syntax extension galgas3InstructionsSyntax {
       !prefixedBySelf
       !mReceiverName
       !mReceiverStructAttributes
-      !typeNameForCasting
       !mSetterName
       !actualParameterList
     }
   }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-//  rule <semantic_instruction_ggs3> (?!@galgasDeclarationAST ioDeclarations,
-//                                    !@semanticInstructionAST outInstruction) {
-//    $[$
-//    let instructionLocation = @location.here
-//    $!?$
-//    $self$
-//    $identifier$ ?let mSetterName // §§
-//    <actual_parameter_list_ggs3> (!?ioDeclarations ?let @actualParameterListAST actualParameterList)
-//    $]$
-//    outInstruction = @selfSetterCallInstructionAST {
-//      !instructionLocation
-//      !mSetterName
-//      !actualParameterList
-//    }
-//  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -171,7 +144,6 @@ syntax extension galgas4InstructionsSyntax {
         !prefixedBySelf
         !mReceiverName
         !receiverStructProperties
-        !"".here // typeNameForCasting
         !setterName
         !actualParameterList
       }
@@ -259,16 +231,8 @@ override proc @setterCallInstructionAST analyzeSemanticInstruction (
       end
     end
   end
-//--- Type cast ?
-  let @unifiedTypeMapEntry castType
-  if self.mTypeNameForCasting.string != "" then
-    castType = [ioTypeMap typeMapEntryForLKey !self.mTypeNameForCasting]
-    checkAssignmentTypes (!receiverType !castType !self.mTypeNameForCasting.location)
-  else
-    castType = receiverType
-  end
 //--- Get setter signature
-  [castType.definition.setterMap searchKey
+  [receiverType.definition.setterMap searchKey
     !self.mSetterName
     ?let kind
     ?let routineSignature
@@ -293,7 +257,7 @@ override proc @setterCallInstructionAST analyzeSemanticInstruction (
     ?let @actualParameterListForGeneration actualParameterListForGeneration
   ]
 //--- Search base type that declares the proc
-  var baseType = castType
+  var baseType = receiverType
   var searching = true
   if @uint.errorCount == 0 then
     loop (@uint.max) while searching do
@@ -314,7 +278,6 @@ override proc @setterCallInstructionAST analyzeSemanticInstruction (
     !targetVariableCppName
     !nameForCheckingFormalParameterUsing
     !self.mReceiverStructProperties
-    !castType
     !receiverType
     !self.mSetterName
     !kind
@@ -378,7 +341,6 @@ final class @setterCallInstructionForGeneration : @semanticInstructionForGenerat
   private let @string mReceiverCppName
   private let @string mReceiverBaseName
   private let @lstringlist mReceiverStructAttributes
-  private let @unifiedTypeMapEntry mCastType
   private let @unifiedTypeMapEntry mReceiverType
   private let @lstring mSetterName
   private let @methodKind mKind
@@ -432,26 +394,15 @@ override proc @setterCallInstructionForGeneration generateInstruction (?!@string
   case definedAsExtension :
     ioInclusionSet ++= "setter-" + self.mMethodBaseType.definition.typeName.string.fileNameRepresentation + "-" + self.mSetterName.string.fileNameRepresentation
     if self.mReceiverType.definition.typeKind.isClassType then
-      if (self.mReceiverType.definition.allTypedPropertyList.count > 0) then //  & [mReceiverType mIsConcrete] then
+      if (self.mReceiverType.definition.allTypedPropertyList.count > 0) then
         ioGeneratedCode += receiverCppName + ".insulate (" + compilerCppName () + " COMMA_HERE) ;\n"
         [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
-     end
+      end
       let pointerUniqueName = "ptr_" + self.mInstructionLocation.startLocationIndex
       ioGeneratedCode += "cPtr_" + self.mReceiverType.identifierRepresentation + " * " + pointerUniqueName
       ioGeneratedCode += " = (cPtr_" + self.mReceiverType.identifierRepresentation + " *) " + receiverCppName + ".ptr () ;\n"
-      if self.mCastType.definition.typeName.string != self.mReceiverType.definition.typeName.string then
-        ioInclusionSet ++= "class-" + self.mCastType.definition.typeName.string.fileNameRepresentation
-        ioGeneratedCode += "if ((nullptr != " + pointerUniqueName
-                        + ") && (dynamic_cast <cPtr_" + self.mCastType.identifierRepresentation + " *> ("
-                        + pointerUniqueName + ") == nullptr)) {\n"
-        [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
-        ioGeneratedCode += "  " + compilerCppName () + "->onTheFlyRunTimeError (\"cannot cast to '@"
-                        + self.mCastType.definition.typeName.string + "'\"" + self.mInstructionLocation.commaSourceFile + ") ;\n"
-        ioGeneratedCode += "  " + pointerUniqueName + " = nullptr ;\n"
-        ioGeneratedCode += "}\n"
-      end
       ioGeneratedCode += "callExtensionSetter_" + self.mSetterName.string.identifierRepresentation
-                      +  " ((cPtr_" + self.mCastType.identifierRepresentation + " *) " + pointerUniqueName + ", "
+                      +  " ((cPtr_" + self.mReceiverType.identifierRepresentation + " *) " + pointerUniqueName + ", "
     else
       ioGeneratedCode += "extensionSetter_" + self.mSetterName.string.identifierRepresentation + " (" + receiverCppName + ", "
     end

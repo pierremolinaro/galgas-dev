@@ -149,18 +149,6 @@ void routine_analyzeSemanticInstructionListWithoutBranch_3F__26__3F__26__3F_loca
 
 //--------------------------------------------------------------------------------------------------
 //
-//Routine 'checkAssignmentTypes???'
-//
-//--------------------------------------------------------------------------------------------------
-
-void routine_checkAssignmentTypes_3F__3F__3F_ (const class GGS_unifiedTypeMapEntry constinArgument0,
-                                               const class GGS_unifiedTypeMapEntry constinArgument1,
-                                               const class GGS_location constinArgument2,
-                                               class Compiler * inCompiler
-                                               COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
 //Function 'buildLexicalTypeMap'
 //
 //--------------------------------------------------------------------------------------------------
