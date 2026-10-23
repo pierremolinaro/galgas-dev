@@ -71,120 +71,6 @@ void routine_updateLIBPMatPath_3F_ (const GGS_string constinArgument_inLIBPMPath
 
 //--------------------------------------------------------------------------------------------------
 //
-//                               Bool options                                                    
-//
-//--------------------------------------------------------------------------------------------------
-
-BoolCommandLineOption gOption_galgas_5F_cli_5F_options_checkEntityUsefulness ("galgas_cli_options",
-                                         "checkEntityUsefulness",
-                                         0,
-                                         "check-usefulness",
-                                         "Check Entity Usefulness") ;
-
-BoolCommandLineOption gOption_galgas_5F_cli_5F_options_displayUnicodeLexicalTestFunctions ("galgas_cli_options",
-                                         "displayUnicodeLexicalTestFunctions",
-                                         0,
-                                         "display-lexical-test-functions",
-                                         "Display Unicode Lexical Test Functions") ;
-
-BoolCommandLineOption gOption_galgas_5F_cli_5F_options_emitClassGraph ("galgas_cli_options",
-                                         "emitClassGraph",
-                                         0,
-                                         "emit-class-graph",
-                                         "Emit class graph in dot file") ;
-
-BoolCommandLineOption gOption_galgas_5F_cli_5F_options_emitSyntaxDiagrams ("galgas_cli_options",
-                                         "emitSyntaxDiagrams",
-                                         0,
-                                         "emit-syntax-diagrams",
-                                         "Emit grammar syntax diagrams in TEX files") ;
-
-BoolCommandLineOption gOption_galgas_5F_cli_5F_options_generateManyFiles ("galgas_cli_options",
-                                         "generateManyFiles",
-                                         0,
-                                         "generate-many-cpp-files",
-                                         "Generate many C++ implementation files") ;
-
-BoolCommandLineOption gOption_galgas_5F_cli_5F_options_generateOneHeader ("galgas_cli_options",
-                                         "generateOneHeader",
-                                         0,
-                                         "generate-one-cpp-header",
-                                         "Generate one C++ header file for all declarations") ;
-
-BoolCommandLineOption gOption_galgas_5F_cli_5F_options_outputHTMLgrammarFile ("galgas_cli_options",
-                                         "outputHTMLgrammarFile",
-                                         0,
-                                         "output-html-grammar-file",
-                                         "Output a HTML file for every grammar component") ;
-
-BoolCommandLineOption gOption_galgas_5F_cli_5F_options_outputHTMLTypeListFile ("galgas_cli_options",
-                                         "outputHTMLTypeListFile",
-                                         84,
-                                         "output-html-type-dump-file",
-                                         "Output a HTML file that contains all defined types") ;
-
-BoolCommandLineOption gOption_galgas_5F_cli_5F_options_outputGrammarSwiftDescriptionFile ("galgas_cli_options",
-                                         "outputGrammarSwiftDescriptionFile",
-                                         0,
-                                         "output-swift-description-grammar-file",
-                                         "Output a Swift description file for every grammar component") ;
-
-BoolCommandLineOption gOption_galgas_5F_cli_5F_options_printPredefinedLexicalActions ("galgas_cli_options",
-                                         "printPredefinedLexicalActions",
-                                         0,
-                                         "print-predefined-lexical-actions",
-                                         "Print the list of predefined lexical routines and functions") ;
-
-BoolCommandLineOption gOption_galgas_5F_cli_5F_options_check_5F_big_5F_int ("galgas_cli_options",
-                                         "check_big_int",
-                                         0,
-                                         "check-big-int",
-                                         "Run bit integers checks") ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//                               UInt options                                                    
-//
-//--------------------------------------------------------------------------------------------------
-
-//--------------------------------------------------------------------------------------------------
-//
-//                              String options                                                   
-//
-//--------------------------------------------------------------------------------------------------
-
-StringCommandLineOption gOption_galgas_5F_cli_5F_options_create_5F_project ("galgas_cli_options",
-                                         "create_project",
-                                         0,
-                                         "create-project",
-                                         "Create a new GALGAS Project",
-                                         "") ;
-
-StringCommandLineOption gOption_galgas_5F_cli_5F_options_extractLIBPMOption ("galgas_cli_options",
-                                         "extractLIBPMOption",
-                                         0,
-                                         "extract-libpm",
-                                         "Extract embedded LIBPM at given path",
-                                         "") ;
-
-StringCommandLineOption gOption_galgas_5F_cli_5F_options_cppCompile ("galgas_cli_options",
-                                         "cppCompile",
-                                         0,
-                                         "compile",
-                                         "Perform C++ compilation on 'string' target",
-                                         "") ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//                              String List options                                              
-//
-//--------------------------------------------------------------------------------------------------
-
-//--------------------------------------------------------------------------------------------------
-
-
-//--------------------------------------------------------------------------------------------------
-//
 //Overriding extension func '@templateLexiqueComponentAST keyRepresentation'
 //
 //--------------------------------------------------------------------------------------------------
@@ -8632,6 +8518,91 @@ void cPtr_enumDeclarationAST::method_addAssociatedElement (GGS_galgasDeclaration
       }
     }
     enumerator_6983.gotoNextObject () ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//Overriding extension proc '@enumDeclarationAST enterDeclarationInGraph'
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_enumDeclarationAST::method_enterDeclarationInGraph (GGS_semanticTypePrecedenceGraph & ioArgument_ioSemanticTypePrecedenceGraph,
+                                                              GGS_equatableExtensionMap & /* ioArgument_ioEquatableExtensionMap */,
+                                                              GGS_extensionInitializerForBuildingContext & /* ioArgument_ioExtensionInitializerForBuildingContext */,
+                                                              GGS_extensionMethodMapForBuildingContext & /* ioArgument_ioExtensionMethodMapForBuildingContext */,
+                                                              GGS_extensionGetterMapForBuildingContext & /* ioArgument_ioExtensionGetterMapForBuildingContext */,
+                                                              GGS_extensionSetterMapForBuildingContext & /* ioArgument_ioExtensionSetterMapForBuildingContext */,
+                                                              GGS_semanticDeclarationListAST & /* ioArgument_ioExtensionOverrideDefinitionList */,
+                                                              Compiler * inCompiler
+                                                              COMMA_UNUSED_LOCATION_ARGS) {
+  const GGS_enumDeclarationAST temp_0 = this ;
+  const GGS_enumDeclarationAST temp_1 = this ;
+  GGS_lstring var_key_9003 = GGS_lstring::init_21__21_ (GGS_string ("@").add_operation (temp_0.readProperty_enumTypeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("declaration-type-enum.galgas3", 256)), temp_1.readProperty_enumTypeName ().readProperty_location (), inCompiler COMMA_HERE) ;
+  {
+  const GGS_enumDeclarationAST temp_2 = this ;
+  ioArgument_ioSemanticTypePrecedenceGraph.setter_addNode (var_key_9003, temp_2, inCompiler COMMA_SOURCE_FILE ("declaration-type-enum.galgas3", 257)) ;
+  }
+  GGS_bool var_circularReference_9233 = GGS_bool (true) ;
+  const GGS_enumDeclarationAST temp_3 = this ;
+  UpEnumerator_enumConstantList enumerator_9283 (temp_3.readProperty_mConstantList ()) ;
+  bool bool_4 = var_circularReference_9233.isValidAndTrue () ;
+  if (enumerator_9283.hasCurrentObject () && bool_4) {
+    while (enumerator_9283.hasCurrentObject () && bool_4) {
+      GGS_bool var_namesCurrentType_9334 = GGS_bool (false) ;
+      UpEnumerator__5B_associatedValue_5D_ enumerator_9397 (enumerator_9283.current (HERE).readProperty_associatedValueTypeList ()) ;
+      bool bool_5 = var_namesCurrentType_9334.operator_not (SOURCE_FILE ("declaration-type-enum.galgas3", 262)).isValidAndTrue () ;
+      if (enumerator_9397.hasCurrentObject () && bool_5) {
+        while (enumerator_9397.hasCurrentObject () && bool_5) {
+          GGS_lstring var_propertyKey_9463 = GGS_lstring::init_21__21_ (GGS_string ("@").add_operation (enumerator_9397.current (HERE).readProperty_typeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("declaration-type-enum.galgas3", 263)), enumerator_9397.current (HERE).readProperty_typeName ().readProperty_location (), inCompiler COMMA_HERE) ;
+          GalgasBool test_6 = GalgasBool::boolTrue ;
+          if (GalgasBool::boolTrue == test_6) {
+            test_6 = GGS_bool (ComparisonKind::equal, var_propertyKey_9463.readProperty_string ().objectCompare (var_key_9003.readProperty_string ())).boolEnum () ;
+            if (GalgasBool::boolTrue == test_6) {
+              var_namesCurrentType_9334 = GGS_bool (true) ;
+            }
+          }
+          enumerator_9397.gotoNextObject () ;
+          if (enumerator_9397.hasCurrentObject ()) {
+            bool_5 = var_namesCurrentType_9334.operator_not (SOURCE_FILE ("declaration-type-enum.galgas3", 262)).isValidAndTrue () ;
+          }
+        }
+      }
+      GalgasBool test_7 = GalgasBool::boolTrue ;
+      if (GalgasBool::boolTrue == test_7) {
+        test_7 = var_namesCurrentType_9334.operator_not (SOURCE_FILE ("declaration-type-enum.galgas3", 268)).boolEnum () ;
+        if (GalgasBool::boolTrue == test_7) {
+          var_circularReference_9233 = GGS_bool (false) ;
+        }
+      }
+      enumerator_9283.gotoNextObject () ;
+      if (enumerator_9283.hasCurrentObject ()) {
+        bool_4 = var_circularReference_9233.isValidAndTrue () ;
+      }
+    }
+  }
+  GalgasBool test_8 = GalgasBool::boolTrue ;
+  if (GalgasBool::boolTrue == test_8) {
+    test_8 = var_circularReference_9233.boolEnum () ;
+    if (GalgasBool::boolTrue == test_8) {
+      const GGS_enumDeclarationAST temp_9 = this ;
+      UpEnumerator_enumConstantList enumerator_9864 (temp_9.readProperty_mConstantList ()) ;
+      while (enumerator_9864.hasCurrentObject ()) {
+        UpEnumerator__5B_associatedValue_5D_ enumerator_9921 (enumerator_9864.current (HERE).readProperty_associatedValueTypeList ()) ;
+        while (enumerator_9921.hasCurrentObject ()) {
+          GGS_lstring var_propertyKey_9962 = GGS_lstring::init_21__21_ (GGS_string ("@").add_operation (enumerator_9921.current (HERE).readProperty_typeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("declaration-type-enum.galgas3", 276)), enumerator_9921.current (HERE).readProperty_typeName ().readProperty_location (), inCompiler COMMA_HERE) ;
+          GalgasBool test_10 = GalgasBool::boolTrue ;
+          if (GalgasBool::boolTrue == test_10) {
+            test_10 = GGS_bool (ComparisonKind::notEqual, var_propertyKey_9962.readProperty_string ().objectCompare (var_key_9003.readProperty_string ())).boolEnum () ;
+            if (GalgasBool::boolTrue == test_10) {
+              {
+              ioArgument_ioSemanticTypePrecedenceGraph.setter_addEdge (var_key_9003, var_propertyKey_9962 COMMA_SOURCE_FILE ("declaration-type-enum.galgas3", 278)) ;
+              }
+            }
+          }
+          enumerator_9921.gotoNextObject () ;
+        }
+        enumerator_9864.gotoNextObject () ;
+      }
+    }
   }
 }
 

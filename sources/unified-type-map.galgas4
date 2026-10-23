@@ -27,54 +27,54 @@
 
 map @unifiedTypeMap {
   private var @unifiedTypeMapElementClass mElement
-  insert internalInsertKey error message "the '%K' key is already declared in %L"
+  %insertSetter internalInsertKey %errorMessage "the '%K' key is already declared in %L"
 
   //----------------------------------------------------------------------------------------------
 
-  func unsolvedEntryList -> @lstringlist {
+  func unsolvedEntryList () -> @lstringlist {
     result = @()
-    for (lkey element) in self do
+    for (lkey, element) in self do
       if element.mDefinition.isUnsolved then
-        result += !lkey
+        result ++= @(lkey)
       end
     end
   }
 
   //----------------------------------------------------------------------------------------------
 
-  setter makeEntry ?let @lstring inLKey !@unifiedTypeMapEntry outEntry {
+  mutating proc makeEntry (?let @lstring inLKey, !@unifiedTypeMapEntry outEntry) {
     if inLKey.string == "" then
       outEntry = .null
-    elsif let node = self @[inLKey] then
-      outEntry = .element {!weakElement: node.mElement}
+    elsif let node = self [inLKey] then
+      outEntry = .element (!weakElement: node.mElement)
     else
-      let newElement = @unifiedTypeMapElementClass {!.unsolved}
-      [!?self internalInsertKey !inLKey !newElement]
-      outEntry = .element {!weakElement: newElement}
+      let newElement = @unifiedTypeMapElementClass (.unsolved)
+      !?self.internalInsertKey (inLKey, newElement)
+      outEntry = .element (!weakElement: newElement)
     end
   }
 
   //----------------------------------------------------------------------------------------------
 
-  setter makeEntryFromString ?let @string inKey !@unifiedTypeMapEntry outEntry {
+  mutating proc makeEntryFromString (?let @string inKey, !@unifiedTypeMapEntry outEntry) {
     if inKey == "" then
       outEntry = .null
-    elsif let node = self @[inKey] then
-      outEntry = .element {!weakElement: node.mElement}
+    elsif let node = self [inKey] then
+      outEntry = .element (!weakElement: node.mElement)
     else
-      let newElement = @unifiedTypeMapElementClass {!.unsolved}
-      [!?self internalInsertKey !@{!inKey !.nowhere} !newElement]
-      outEntry = .element {!weakElement: newElement}
+      let newElement = @unifiedTypeMapElementClass (!.unsolved)
+      !?self.internalInsertKey (@(inKey, .nowhere), newElement)
+      outEntry = .element (!weakElement: newElement)
     end
   }
 
   //----------------------------------------------------------------------------------------------
 
-  func typeMapEntryForLKey ?let @lstring inLKey -> @unifiedTypeMapEntry {
+  func typeMapEntryForLKey (?let @lstring inLKey) -> @unifiedTypeMapEntry {
     if inLKey.string == "" then
       result = .null
-    elsif let node = self @[inLKey] then
-      result = .element {!weakElement: node.mElement}
+    elsif let node = self [inLKey] then
+      result = .element (!weakElement: node.mElement)
     else
       error (inLKey : "there is no '@" + inLKey + "' type" spoil result)
     end
@@ -82,11 +82,11 @@ map @unifiedTypeMap {
 
   //----------------------------------------------------------------------------------------------
 
-  func typeMapEntryOrNullForLKey ?let @lstring inLKey -> @unifiedTypeMapEntry {
+  func typeMapEntryOrNullForLKey (?let @lstring inLKey) -> @unifiedTypeMapEntry {
     if inLKey.string == "" then
       result = .null
-    elsif let node = self @[inLKey] then
-      result = .element {!weakElement: node.mElement}
+    elsif let node = self [inLKey] then
+      result = .element (!weakElement: node.mElement)
     else
       result = .null
     end
@@ -94,25 +94,25 @@ map @unifiedTypeMap {
 
   //----------------------------------------------------------------------------------------------
 
-  setter insertType ?let @lstring inTypeName ?let @unifiedTypeDefinition inTypeDefinition {
-    if let node = self @[inTypeName] then
+  mutating proc insertType (?let @lstring inTypeName, ?let @unifiedTypeDefinition inTypeDefinition) {
+    if let node = self [inTypeName] then
       switch node.mElement.mDefinition
       case solved (*) :
         error (inTypeName : "type already defined")
       case unsolved :
         var e = node.mElement
-        e.mDefinition = .solved {!definition: inTypeDefinition}
+        e.mDefinition = .solved (!definition: inTypeDefinition)
       end
     else
-      let newElement = @unifiedTypeMapElementClass {!.solved {!definition: inTypeDefinition}}
-      [!?self internalInsertKey !inTypeName !newElement]
+      let newElement = @unifiedTypeMapElementClass (!.solved (!definition: inTypeDefinition))
+      !?self.internalInsertKey (inTypeName, newElement)
     end
   }
 
   //----------------------------------------------------------------------------------------------
 
-  func typeDefinition ?let @lstring inLKey -> @unifiedTypeDefinition {
-    if let node = self @[inLKey] then
+  func typeDefinition (?let @lstring inLKey) -> @unifiedTypeDefinition {
+    if let node = self [inLKey] then
       switch node.mElement.mDefinition
       case solved (definition) :
         result = definition
@@ -146,7 +146,7 @@ final class @unifiedTypeMapElementClass {
 
   //----------------------------------------------------------------------------------------------
 
-  func definition -> @unifiedTypeDefinition {
+  func definition () -> @unifiedTypeDefinition {
     switch self.mDefinition
     case unsolved :
       error (.nowhere : "unsolved type" spoil result)
@@ -176,7 +176,7 @@ enum @unifiedTypeMapEntry %equatable {
 
   //----------------------------------------------------------------------------------------------
 
-  func definition -> @unifiedTypeDefinition {
+  func definition () -> @unifiedTypeDefinition {
     switch self
     case null :
       error (.nowhere : "null type" spoil result)
@@ -196,28 +196,28 @@ enum @unifiedTypeMapEntry %equatable {
 
   //----------------------------------------------------------------------------------------------
 
-  func identifierRepresentation -> @string {
+  func identifierRepresentation () -> @string {
     result = self.definition.typeName.string.identifierRepresentation
   }
 
   //----------------------------------------------------------------------------------------------
 
-  func typeName -> @string {
+  func typeName () -> @string {
     result = self.definition.typeName.string
   }
 
   //----------------------------------------------------------------------------------------------
 
-  func baseType -> @unifiedTypeMapEntry outBaseType {
-    outBaseType = self
-    loop while not outBaseType.definition.superType.isNull do
-      outBaseType = outBaseType.definition.superType
+  func baseType () -> @unifiedTypeMapEntry {
+    result = self
+    loop while not result.definition.superType.isNull do
+      result = result.definition.superType
     end
   }
 
   //----------------------------------------------------------------------------------------------
 
-  proc addHeaderFileName ?!@stringset ioInclusions {
+  proc addHeaderFileName (?!@stringset ioInclusions) {
     let typeDefinition = self.definition
     if (not typeDefinition.isPredefined) & (typeDefinition.headerKind != .noHeader) then
       ioInclusions ++= typeDefinition.headerFileName
@@ -226,7 +226,7 @@ enum @unifiedTypeMapEntry %equatable {
 
   //----------------------------------------------------------------------------------------------
 
-  proc addHeaderFileName1 ?!@stringset ioInclusions {
+  proc addHeaderFileName1 (?!@stringset ioInclusions) {
     let typeDefinition = self.definition
     if not typeDefinition.isPredefined then
       switch typeDefinition.headerKind

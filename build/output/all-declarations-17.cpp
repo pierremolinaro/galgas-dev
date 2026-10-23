@@ -8609,16 +8609,16 @@ GGS_lstringlist extensionGetter_unsolvedEntryList (const GGS_unifiedTypeMap & in
   GGS_lstringlist result_result ; // Returned variable
   result_result = GGS_lstringlist::init (inCompiler COMMA_HERE) ;
   const GGS_unifiedTypeMap temp_0 = inObject ;
-  UpEnumerator_unifiedTypeMap enumerator_1849 (temp_0) ;
-  while (enumerator_1849.hasCurrentObject ()) {
+  UpEnumerator_unifiedTypeMap enumerator_1860 (temp_0) ;
+  while (enumerator_1860.hasCurrentObject ()) {
     GalgasBool test_1 = GalgasBool::boolTrue ;
     if (GalgasBool::boolTrue == test_1) {
-      test_1 = enumerator_1849.current_mElement (HERE).readProperty_mDefinition ().getter_isUnsolved (SOURCE_FILE ("unified-type-map.galgas3", 37)).boolEnum () ;
+      test_1 = enumerator_1860.current_mElement (HERE).readProperty_mDefinition ().getter_isUnsolved (SOURCE_FILE ("unified-type-map.galgas4", 37)).boolEnum () ;
       if (GalgasBool::boolTrue == test_1) {
-        result_result.addAssignOperation (enumerator_1849.current_lkey (HERE)  COMMA_SOURCE_FILE ("unified-type-map.galgas3", 38)) ;
+        result_result.plusPlusAssignOperation (GGS_lstringlist_2E_element::init_21_ (enumerator_1860.current_lkey (HERE), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("unified-type-map.galgas4", 38)) ;
       }
     }
-    enumerator_1849.gotoNextObject () ;
+    enumerator_1860.gotoNextObject () ;
   }
 //---
   return result_result ;
@@ -8809,15 +8809,15 @@ GGS_unifiedTypeDefinition cPtr_unifiedTypeMapElementClass::getter_definition (Co
   case GGS_typeDefinition::Enumeration::enum_unsolved:
     {
       GenericArray <FixItDescription> fixItArray1 ;
-      inCompiler->emitSemanticError (GGS_location::class_func_nowhere (SOURCE_FILE ("unified-type-map.galgas3", 152)), GGS_string ("unsolved type"), fixItArray1  COMMA_SOURCE_FILE ("unified-type-map.galgas3", 152)) ;
+      inCompiler->emitSemanticError (GGS_location::class_func_nowhere (SOURCE_FILE ("unified-type-map.galgas4", 152)), GGS_string ("unsolved type"), fixItArray1  COMMA_SOURCE_FILE ("unified-type-map.galgas4", 152)) ;
       result_result.drop () ; // Release error dropped variable
     }
     break ;
   case GGS_typeDefinition::Enumeration::enum_solved:
     {
-      GGS_unifiedTypeDefinition extractedValue_5934_definition_0 ;
-      temp_0.readProperty_mDefinition ().getAssociatedValuesFor_solved (extractedValue_5934_definition_0) ;
-      result_result = extractedValue_5934_definition_0 ;
+      GGS_unifiedTypeDefinition extractedValue_5976_definition_0 ;
+      temp_0.readProperty_mDefinition ().getAssociatedValuesFor_solved (extractedValue_5976_definition_0) ;
+      result_result = extractedValue_5976_definition_0 ;
     }
     break ;
   }
