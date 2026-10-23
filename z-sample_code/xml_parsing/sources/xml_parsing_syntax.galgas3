@@ -3,19 +3,19 @@ syntax xml_parsing_syntax (xml_parsing_lexique) {
 //---------------------------------------------------------------------------*
 
 rule <start_symbol>
-  !@xmlNodeList outRootNodes
+  (!@xmlNodeList outRootNodes
   ?let @bool inIncludeComments
   ?let @bool inDoNotCondenseWhiteSpaces
   ?let @bool inPrintDuringParsing
 
-rule <element_list>
-  ?!@xmlNodeList ioNodes
+)rule <element_list>
+  (?!@xmlNodeList ioNodes
   ?let @bool inIncludeComments
   ?let @bool inDoNotCondenseWhiteSpaces
   ?let @bool inPrintDuringParsing
   ?let @string inIndendation
-rule <element>
-  ?!@xmlNodeList ioNodes
+)rule <element>
+  (?!@xmlNodeList ioNodes
   ?let @bool inIncludeComments
   ?let @bool inDoNotCondenseWhiteSpaces
   ?let @bool inPrintDuringParsing
@@ -23,11 +23,11 @@ rule <element>
 
 //---------------------------------------------------------------------------*
 
-rule <start_symbol>
-  !@xmlNodeList outRootNodes
+)rule <start_symbol>
+  (!@xmlNodeList outRootNodes
   ?let @bool inIncludeComments
   ?let @bool inDoNotCondenseWhiteSpaces
-  ?let @bool inPrintDuringParsing {
+  ?let @bool inPrintDuringParsing ) {
   let @string s = @string. retrieveAndResetTemplateString
   if s.count > 0 then
     error (@location.here: "No character is allowed before XML header")
@@ -55,11 +55,11 @@ rule <start_symbol>
 //---------------------------------------------------------------------------*
 
 rule <element_list>
-  ?!@xmlNodeList ioNodes
+  (?!@xmlNodeList ioNodes
   ?let @bool inIncludeComments
   ?let @bool inDoNotCondenseWhiteSpaces
   ?let @bool inPrintDuringParsing
-  ?let @string inIndendation {
+  ?let @string inIndendation ) {
   repeat
   while
     addText (
@@ -80,11 +80,11 @@ rule <element_list>
 //---------------------------------------------------------------------------*
 
 rule <element>
-  ?!@xmlNodeList ioNodes
+  (?!@xmlNodeList ioNodes
   ?let @bool inIncludeComments
   ?let @bool unused inDoNotCondenseWhiteSpaces
   ?let @bool inPrintDuringParsing
-  ?let @string inIndendation {
+  ?let @string inIndendation ) {
   $comment$ ?let @lstring commentString
   if inIncludeComments then
     let node = @xmlNode {
@@ -113,11 +113,11 @@ rule <element>
 //---------------------------------------------------------------------------*
 
 rule <element>
-  ?!@xmlNodeList ioNodes
+  (?!@xmlNodeList ioNodes
   ?let @bool inIncludeComments
   ?let @bool inDoNotCondenseWhiteSpaces
   ?let @bool inPrintDuringParsing
-  ?let @string inIndendation {
+  ?let @string inIndendation ) {
   $<$
   $name$ ?let @lstring name
   var @xmlAttributeMap attributeMap = @()
@@ -190,10 +190,10 @@ rule <element>
 //---------------------------------------------------------------------------*
 
 proc addText
-  ?!@xmlNodeList ioNodes
+  (?!@xmlNodeList ioNodes
   ?let @bool inDoNotCondenseWhiteSpaces
   ?let @bool inPrintDuringParsing
-  ?let @string inIndendation {
+  ?let @string inIndendation ) {
   let @string s = @string. retrieveAndResetTemplateString
   let @string trimmedString = s.trimmingSpaces
   if trimmedString.count > 0 then

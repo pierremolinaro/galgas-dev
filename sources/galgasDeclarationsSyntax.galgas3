@@ -26,7 +26,7 @@ syntax galgas3DeclarationsSyntax (galgasScanner3) {
   //          Start symbol
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <start_symbol_ggs3> ?!@galgasDeclarationAST ioDeclarations {
+  rule <start_symbol_ggs3> (?!@galgasDeclarationAST ioDeclarations ) {
     repeat
     while
       <declaration_ggs3> !?ioDeclarations
@@ -37,20 +37,20 @@ syntax galgas3DeclarationsSyntax (galgasScanner3) {
   //          Rules prototypes
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <formal_parameter_list_ggs34> ?!@galgasDeclarationAST ioDeclarations
-                                    !@formalParameterListAST outFormalParameterList
+  rule <formal_parameter_list_ggs34> (?!@galgasDeclarationAST ioDeclarations
+                                    !@formalParameterListAST outFormalParameterList)
 
-  rule <semantic_instruction_list_ggs3> ?!@galgasDeclarationAST ioDeclarations
-                                        !@semanticInstructionListAST outInstructionsList
+  rule <semantic_instruction_list_ggs3> (?!@galgasDeclarationAST ioDeclarations
+                                        !@semanticInstructionListAST outInstructionsList)
 
-  rule <formal_input_parameter_list_ggs3> ?!@galgasDeclarationAST ioDeclarations
-                                          !@formalInputParameterListAST outFormalInputParameterList
+  rule <formal_input_parameter_list_ggs3> (?!@galgasDeclarationAST ioDeclarations
+                                          !@formalInputParameterListAST outFormalInputParameterList)
 
-  rule <formal_input_parameter_list_ggs34> ?!@galgasDeclarationAST ioDeclarations
-                                           !@formalInputParameterListAST outFormalInputParameterList
+  rule <formal_input_parameter_list_ggs34> (?!@galgasDeclarationAST ioDeclarations
+                                           !@formalInputParameterListAST outFormalInputParameterList)
 
-  rule <expression_ggs3> ?!@galgasDeclarationAST ioDeclarations
-                         !@semanticExpressionAST outExpression
+  rule <expression_ggs3> (?!@galgasDeclarationAST ioDeclarations
+                         !@semanticExpressionAST outExpression)
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //! Filewrapper Declaration
@@ -100,7 +100,7 @@ syntax galgas3DeclarationsSyntax (galgasScanner3) {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <filewrapper_text_files> !@lstringlist outFilewrapperTextFileExtensionList {
+  rule <filewrapper_text_files> (!@lstringlist outFilewrapperTextFileExtensionList ) {
     outFilewrapperTextFileExtensionList = @()
     ${$
     select
@@ -117,7 +117,7 @@ syntax galgas3DeclarationsSyntax (galgasScanner3) {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <filewrapper_binary_files> !@lstringlist outFilewrapperBinaryFileExtensionList {
+  rule <filewrapper_binary_files> (!@lstringlist outFilewrapperBinaryFileExtensionList ) {
     outFilewrapperBinaryFileExtensionList = @()
     ${$
     select
@@ -134,8 +134,8 @@ syntax galgas3DeclarationsSyntax (galgasScanner3) {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <filewrapper_templates> ?!@galgasDeclarationAST ioDeclarations
-                               !@filewrapperTemplateListAST outFilewrapperTemplateList {
+  rule <filewrapper_templates> (?!@galgasDeclarationAST ioDeclarations
+                               !@filewrapperTemplateListAST outFilewrapperTemplateList ) {
     ${$
     outFilewrapperTemplateList = @()
     repeat
@@ -191,7 +191,7 @@ syntax galgas4DeclarationsSyntax (galgasScanner4) {
   //          Start symbol
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <start_symbol> ?!@galgasDeclarationAST ioDeclarations {
+  rule <start_symbol> (?!@galgasDeclarationAST ioDeclarations ) {
     repeat
     while
       <declaration> !?ioDeclarations
@@ -202,26 +202,26 @@ syntax galgas4DeclarationsSyntax (galgasScanner4) {
   //          Rules prototypes
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <formal_parameter_list> ?!@galgasDeclarationAST ioDeclarations
-                               !@formalParameterListAST outFormalParameterList
+  rule <formal_parameter_list> (?!@galgasDeclarationAST ioDeclarations
+                               !@formalParameterListAST outFormalParameterList)
 
-  rule <semantic_instruction_list> ?!@galgasDeclarationAST ioDeclarations
-                                   !@semanticInstructionListAST outInstructionsList
+  rule <semantic_instruction_list> (?!@galgasDeclarationAST ioDeclarations
+                                   !@semanticInstructionListAST outInstructionsList)
 
-  rule <formal_input_parameter_list> ?!@galgasDeclarationAST ioDeclarations
-                                     !@formalInputParameterListAST outFormalInputParameterList
+  rule <formal_input_parameter_list> (?!@galgasDeclarationAST ioDeclarations
+                                     !@formalInputParameterListAST outFormalInputParameterList)
 
-  rule <expression> ?!@galgasDeclarationAST ioDeclarations
-                    !@semanticExpressionAST outExpression
+  rule <expression> (?!@galgasDeclarationAST ioDeclarations
+                    !@semanticExpressionAST outExpression)
 
-  rule <type_definition> ?!@galgasDeclarationAST ioDeclarations
-                         !@lstring outTypeName
+  rule <type_definition> (?!@galgasDeclarationAST ioDeclarations
+                         !@lstring outTypeName)
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //! Filewrapper Declaration
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
+  rule <declaration> (?!@galgasDeclarationAST ioDeclarations ) {
     $filewrapper$
     $identifier$ ?let @lstring mFilewrapperName indexing filewrapperDefinition
     $in$
@@ -242,7 +242,7 @@ syntax galgas4DeclarationsSyntax (galgasScanner4) {
   }
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
+  rule <declaration> (?!@galgasDeclarationAST ioDeclarations ) {
     $private$
     $filewrapper$
     $identifier$ ?let @lstring mFilewrapperName indexing filewrapperDefinition
@@ -265,7 +265,7 @@ syntax galgas4DeclarationsSyntax (galgasScanner4) {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <filewrapper_text_files> !@lstringlist outFilewrapperTextFileExtensionList {
+  rule <filewrapper_text_files> (!@lstringlist outFilewrapperTextFileExtensionList ) {
     outFilewrapperTextFileExtensionList = @()
     ${$
     select
@@ -282,7 +282,7 @@ syntax galgas4DeclarationsSyntax (galgasScanner4) {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <filewrapper_binary_files> !@lstringlist outFilewrapperBinaryFileExtensionList {
+  rule <filewrapper_binary_files> (!@lstringlist outFilewrapperBinaryFileExtensionList ) {
     outFilewrapperBinaryFileExtensionList = @()
     ${$
     select
@@ -299,8 +299,8 @@ syntax galgas4DeclarationsSyntax (galgasScanner4) {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <filewrapper_templates> ?!@galgasDeclarationAST ioDeclarations
-                               !@filewrapperTemplateListAST outFilewrapperTemplateList {
+  rule <filewrapper_templates> (?!@galgasDeclarationAST ioDeclarations
+                               !@filewrapperTemplateListAST outFilewrapperTemplateList ) {
     ${$
     outFilewrapperTemplateList = @()
     repeat

@@ -25,7 +25,7 @@
 //   SEMANTIC ANALYSIS
 //--------------------------------------------------------------------------------------------------
 
-proc lexicalUnicodeTestFunctionAnalysis !@stringset outUnicodeTestFunctions {
+proc lexicalUnicodeTestFunctionAnalysis (!@stringset outUnicodeTestFunctions ) {
 //--- Check for no recursive call
   outUnicodeTestFunctions = @[
    "isUnicodeLetter"

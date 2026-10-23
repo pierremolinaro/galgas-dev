@@ -93,9 +93,9 @@ syntax galgas3GrammarComponentSyntax (galgasScanner3) {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <grammar_start_symbol_label_ggs3> ?!@galgasDeclarationAST ioDeclarations
+  rule <grammar_start_symbol_label_ggs3> (?!@galgasDeclarationAST ioDeclarations
                                          ?let @lstring inLabelName
-                                         ?!@nonTerminalLabelListAST ioLabelList {
+                                         ?!@nonTerminalLabelListAST ioLabelList ) {
     var @stringset argumentNameSet = @()
     var @formalParameterListAST mFormalParameterList = @()
     repeat
@@ -111,9 +111,9 @@ syntax galgas3GrammarComponentSyntax (galgasScanner3) {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <label_formal_parameter_ggs3> ?!@galgasDeclarationAST ioDeclarations
+  rule <label_formal_parameter_ggs3> (?!@galgasDeclarationAST ioDeclarations
                                      !@lstring outArgumentName
-                                     ?!@formalParameterListAST ioStartSymbolLabelFormalParameterList {
+                                     ?!@formalParameterListAST ioStartSymbolLabelFormalParameterList ) {
     let @lstring selector
     select
       $?selector:$ ?selector
@@ -141,9 +141,9 @@ syntax galgas3GrammarComponentSyntax (galgasScanner3) {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <label_formal_parameter_ggs3> ?!@galgasDeclarationAST ioDeclarations
+  rule <label_formal_parameter_ggs3> (?!@galgasDeclarationAST ioDeclarations
                                      !@lstring outArgumentName
-                                     ?!@formalParameterListAST ioStartSymbolLabelFormalParameterList {
+                                     ?!@formalParameterListAST ioStartSymbolLabelFormalParameterList ) {
     let @lstring selector
     select
       $?selector:$ ?selector
@@ -168,9 +168,9 @@ syntax galgas3GrammarComponentSyntax (galgasScanner3) {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <label_formal_parameter_ggs3> ?!@galgasDeclarationAST ioDeclarations
+  rule <label_formal_parameter_ggs3> (?!@galgasDeclarationAST ioDeclarations
                                      !@lstring outArgumentName
-                                     ?!@formalParameterListAST ioStartSymbolLabelFormalParameterList {
+                                     ?!@formalParameterListAST ioStartSymbolLabelFormalParameterList ) {
     let @lstring selector
     select
       $?!selector:$ ?selector
@@ -194,9 +194,9 @@ syntax galgas3GrammarComponentSyntax (galgasScanner3) {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <label_formal_parameter_ggs3> ?!@galgasDeclarationAST ioDeclarations
+  rule <label_formal_parameter_ggs3> (?!@galgasDeclarationAST ioDeclarations
                                      !@lstring outArgumentName
-                                     ?!@formalParameterListAST ioStartSymbolLabelFormalParameterList {
+                                     ?!@formalParameterListAST ioStartSymbolLabelFormalParameterList ) {
     let @lstring selector
     select
       $!selector:$ ?selector
@@ -224,15 +224,15 @@ syntax galgas4GrammarComponentSyntax (galgasScanner4) {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <type_definition> ?!@galgasDeclarationAST ioDeclarations
-                         !@lstring outTypeName
+  rule <type_definition> (?!@galgasDeclarationAST ioDeclarations
+                         !@lstring outTypeName)
 
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   G R A M M A R    C O M P O N E N T
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
+  rule <declaration> (?!@galgasDeclarationAST ioDeclarations ) {
     let @lbool hasIndexing
     select
       hasIndexing = @lbool {!false !@location.here}
@@ -294,9 +294,9 @@ syntax galgas4GrammarComponentSyntax (galgasScanner4) {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <grammar_start_symbol_label> ?!@galgasDeclarationAST ioDeclarations
+  rule <grammar_start_symbol_label> (?!@galgasDeclarationAST ioDeclarations
                                     ?let @lstring inLabelName
-                                    ?!@nonTerminalLabelListAST ioLabelList {
+                                    ?!@nonTerminalLabelListAST ioLabelList ) {
     var @stringset argumentNameSet = @()
     var @formalParameterListAST formalParameterList = @()
     $($
@@ -318,9 +318,9 @@ syntax galgas4GrammarComponentSyntax (galgasScanner4) {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <label_formal_parameter> ?!@galgasDeclarationAST ioDeclarations
+  rule <label_formal_parameter> (?!@galgasDeclarationAST ioDeclarations
                                 !@lstring outArgumentName
-                                ?!@formalParameterListAST ioStartSymbolLabelFormalParameterList {
+                                ?!@formalParameterListAST ioStartSymbolLabelFormalParameterList ) {
     $?selector:$ ?let selector
     $var$
     <type_definition> !?ioDeclarations ?let @lstring mTypeName
@@ -339,9 +339,9 @@ syntax galgas4GrammarComponentSyntax (galgasScanner4) {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <label_formal_parameter> ?!@galgasDeclarationAST ioDeclarations
+  rule <label_formal_parameter> (?!@galgasDeclarationAST ioDeclarations
                                 !@lstring outArgumentName
-                                ?!@formalParameterListAST ioStartSymbolLabelFormalParameterList {
+                                ?!@formalParameterListAST ioStartSymbolLabelFormalParameterList ) {
     $?$
     let selector = "".here
     <type_definition> !?ioDeclarations ?let @lstring mTypeName
@@ -360,9 +360,9 @@ syntax galgas4GrammarComponentSyntax (galgasScanner4) {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <label_formal_parameter> ?!@galgasDeclarationAST ioDeclarations
+  rule <label_formal_parameter> (?!@galgasDeclarationAST ioDeclarations
                                 !@lstring outArgumentName
-                                ?!@formalParameterListAST ioStartSymbolLabelFormalParameterList {
+                                ?!@formalParameterListAST ioStartSymbolLabelFormalParameterList ) {
     $?selector:$ ?let selector
     $let$
     <type_definition> !?ioDeclarations ?let @lstring mTypeName
@@ -381,9 +381,9 @@ syntax galgas4GrammarComponentSyntax (galgasScanner4) {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <label_formal_parameter> ?!@galgasDeclarationAST ioDeclarations
+  rule <label_formal_parameter> (?!@galgasDeclarationAST ioDeclarations
                                 !@lstring outArgumentName
-                                ?!@formalParameterListAST ioStartSymbolLabelFormalParameterList {
+                                ?!@formalParameterListAST ioStartSymbolLabelFormalParameterList ) {
     $?$
     let selector = "".here
     $let$
@@ -403,9 +403,9 @@ syntax galgas4GrammarComponentSyntax (galgasScanner4) {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <label_formal_parameter> ?!@galgasDeclarationAST ioDeclarations
+  rule <label_formal_parameter> (?!@galgasDeclarationAST ioDeclarations
                                 !@lstring outArgumentName
-                                ?!@formalParameterListAST ioStartSymbolLabelFormalParameterList {
+                                ?!@formalParameterListAST ioStartSymbolLabelFormalParameterList ) {
     $?!selector:$ ?let selector
     <type_definition> !?ioDeclarations ?let @lstring mTypeName
     select
@@ -423,9 +423,9 @@ syntax galgas4GrammarComponentSyntax (galgasScanner4) {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <label_formal_parameter> ?!@galgasDeclarationAST ioDeclarations
+  rule <label_formal_parameter> (?!@galgasDeclarationAST ioDeclarations
                                 !@lstring outArgumentName
-                                ?!@formalParameterListAST ioStartSymbolLabelFormalParameterList {
+                                ?!@formalParameterListAST ioStartSymbolLabelFormalParameterList ) {
     $?!$
     let selector = "".here
     <type_definition> !?ioDeclarations ?let @lstring mTypeName
@@ -444,9 +444,9 @@ syntax galgas4GrammarComponentSyntax (galgasScanner4) {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <label_formal_parameter> ?!@galgasDeclarationAST ioDeclarations
+  rule <label_formal_parameter> (?!@galgasDeclarationAST ioDeclarations
                                 !@lstring outArgumentName
-                                ?!@formalParameterListAST ioStartSymbolLabelFormalParameterList {
+                                ?!@formalParameterListAST ioStartSymbolLabelFormalParameterList ) {
     $!selector:$ ?let selector
     <type_definition> !?ioDeclarations ?let @lstring mTypeName
     $identifier$ ?outArgumentName
@@ -460,9 +460,9 @@ syntax galgas4GrammarComponentSyntax (galgasScanner4) {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <label_formal_parameter> ?!@galgasDeclarationAST ioDeclarations
+  rule <label_formal_parameter> (?!@galgasDeclarationAST ioDeclarations
                                 !@lstring outArgumentName
-                                ?!@formalParameterListAST ioStartSymbolLabelFormalParameterList {
+                                ?!@formalParameterListAST ioStartSymbolLabelFormalParameterList ) {
     $!$
     let selector = "".here
     <type_definition> !?ioDeclarations ?let @lstring mTypeName

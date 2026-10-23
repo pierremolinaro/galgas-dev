@@ -98,7 +98,7 @@ syntax extension galgas4InstructionsSyntax {
   //    R O U T I N E    D E C L A R A T I O N
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
+  rule <declaration> (?!@galgasDeclarationAST ioDeclarations ) {
     $proc$
     var isUsefull = false
     repeat
@@ -128,7 +128,7 @@ syntax extension galgas4InstructionsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
+  rule <declaration> (?!@galgasDeclarationAST ioDeclarations ) {
     $private$
     $proc$
     var isUsefull = false
@@ -170,13 +170,13 @@ final class @procDeclarationAST : @externProcedureDeclarationAST {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc enterDeclarationInSemanticContext
-    ?!@equatableExtensionMap unused ioEquatableExtensionMap
+    (?!@equatableExtensionMap unused ioEquatableExtensionMap
     ?let @extensionInitializerForBuildingContext unused inExtensionInitializerMapForBuildingContext
     ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext
     ?let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext
     ?let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext
     ?!@unifiedTypeMap ioTypeMap
-    ?!@semanticContext ioSemanticContext {
+    ?!@semanticContext ioSemanticContext ) {
   //--- Build signature
     var routineSignature = @formalParameterSignature ()
     for argument in self.mFormalArgumentListAST do
@@ -199,13 +199,13 @@ final class @procDeclarationAST : @externProcedureDeclarationAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override proc semanticAnalysis?!@lstringlist ioUsefulnessRootEntities
+  override proc semanticAnalysis(?!@lstringlist ioUsefulnessRootEntities
                                   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
                                   ?let @string unused inProductDirectory
                                   ?let @semanticContext inSemanticContext
                                   ?!@unifiedTypeMap ioTypeMap
                                   ?let @predefinedTypes inPredefinedTypes
-                                  ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration {
+                                  ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration ) {
   //---
     var routineSignature = @formalParameterSignature ()
     for argument in self.mFormalArgumentListAST do
@@ -271,10 +271,10 @@ final class @routineImplementationForGeneration : @routinePrototypeDeclarationFo
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc appendSpecificImplementation
-    ?let @unifiedTypeMap unused inTypeMap
+    (?let @unifiedTypeMap unused inTypeMap
     ?!@stringset ioInclusionSet
     !@string outImplementation
-  {
+  ) {
     if self.generateHeader then
       ioInclusionSet ++= "proc-" + self.routineMangledName.fileNameRepresentation
     end

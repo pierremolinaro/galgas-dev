@@ -44,7 +44,7 @@ syntax galgas3OptionComponentSyntax (galgasScanner3) {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <option_declaration_ggs3> ?!@commandLineOptionListAST ioCommandLineOptionList {
+  rule <option_declaration_ggs3> (?!@commandLineOptionListAST ioCommandLineOptionList ) {
     $@type$ ?let @lstring mOptionTypeName
     $identifier$ ?let @lstring mOptionInternalName
     $:$
@@ -89,7 +89,7 @@ syntax galgas4OptionComponentSyntax (galgasScanner4) {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
+  rule <declaration> (?!@galgasDeclarationAST ioDeclarations ) {
     $option$
     $identifier$ ?let @lstring optionComponentName
     ${$
@@ -108,7 +108,7 @@ syntax galgas4OptionComponentSyntax (galgasScanner4) {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <option_declaration_ggs3> ?!@commandLineOptionListAST ioCommandLineOptionList {
+  rule <option_declaration_ggs3> (?!@commandLineOptionListAST ioCommandLineOptionList ) {
     $@type$ ?let @lstring mOptionTypeName
     $identifier$ ?let @lstring mOptionInternalName
     $:$
@@ -176,28 +176,28 @@ final class @optionComponentDeclarationAST : @semanticDeclarationAST {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc enterDeclarationInGraph
-    ?!@semanticTypePrecedenceGraph unused ioSemanticTypePrecedenceGraph
+    (?!@semanticTypePrecedenceGraph unused ioSemanticTypePrecedenceGraph
     ?!@equatableExtensionMap unused ioEquatableExtensionMap
     ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext
     ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext
     ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
     ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
     ?!@semanticDeclarationListAST ioExtensionOverrideDefinitionList
-  {
+  ) {
     ioExtensionOverrideDefinitionList += !self
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc enterDeclarationInSemanticContext
-    ?!@equatableExtensionMap unused ioEquatableExtensionMap
+    (?!@equatableExtensionMap unused ioEquatableExtensionMap
     ?let @extensionInitializerForBuildingContext unused inExtensionInitializerMapForBuildingContext
     ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext
     ?let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext
     ?let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext
     ?!@unifiedTypeMap unused ioTypeMap
     ?!@semanticContext ioSemanticContext
-  {
+  ) {
     var @commandLineOptionMap boolOptionMap = @()
     var @commandLineOptionMap uintOptionMap = @()
     var @commandLineOptionMap stringOptionMap = @()
@@ -282,14 +282,14 @@ final class @optionComponentDeclarationAST : @semanticDeclarationAST {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc semanticAnalysis
-    ?!@lstringlist unused ioUsefulnessRootEntities
+    (?!@lstringlist unused ioUsefulnessRootEntities
     ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
     ?let @string unused inProductDirectory
     ?let @semanticContext inSemanticContext
                                   ?!@unifiedTypeMap unused ioTypeMap
     ?let @predefinedTypes unused inPredefinedTypes
     ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
-  {
+  ) {
   //--- Useful entities graph
     let nameForUsefulness = optionNameForUsefulEntitiesGraph (!self.mOptionComponentName)
     [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
@@ -384,8 +384,8 @@ final class @optionComponentForGeneration : @semanticDeclarationWithHeaderForGen
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override proc appendDeclaration1 ?!@stringset unused ioInclusionSet
-                                     !@string outHeader {
+  override proc appendDeclaration1 (?!@stringset unused ioInclusionSet
+                                     !@string outHeader ) {
     if self.mIsPredefined then
       outHeader = ""
     else
@@ -402,10 +402,10 @@ final class @optionComponentForGeneration : @semanticDeclarationWithHeaderForGen
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc appendSpecificImplementation
-    ?let @unifiedTypeMap unused inTypeMap
+    (?let @unifiedTypeMap unused inTypeMap
     ?!@stringset ioInclusionSet
     !@string outImplementation
-  {
+  ) {
     if self.mIsPredefined then
       outImplementation = ""
     else
@@ -423,11 +423,11 @@ final class @optionComponentForGeneration : @semanticDeclarationWithHeaderForGen
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc appendSpecificFiles
-    ?let @string inProductDirectory
+    (?let @string inProductDirectory
     ?!@stringset ioAllProductFileSet
 //    ?!objc: @stringlist ioObjcAppProductFileList
     ?!swift: @stringlist ioSwiftAppProductFileList
-  {
+  ) {
   //--- Generate Cocoa header
     if @uint.errorCount == 0 && not self.mIsPredefined then
     //--- Generate Swift Cocoa Implementation

@@ -100,7 +100,7 @@ syntax extension galgas4DeclarationsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
+  rule <declaration> (?!@galgasDeclarationAST ioDeclarations ) {
     $enum$
     $@type$ ?let enumTypeName indexing enumDefinition
     var @structComparison comparison = .none
@@ -204,7 +204,7 @@ final class @enumDeclarationAST : @semanticDeclarationAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override proc addAssociatedElement ?!@galgasDeclarationAST ioDeclarations {
+  override proc addAssociatedElement (?!@galgasDeclarationAST ioDeclarations ) {
     for constant in self.mConstantList do
       if constant.associatedValueTypeList.count > 0 then
         let associatedTypeName = @lstring (
@@ -246,13 +246,13 @@ final class @enumDeclarationAST : @semanticDeclarationAST {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc enterDeclarationInGraph
-        ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
+        (?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
         ?!@equatableExtensionMap unused ioEquatableExtensionMap
         ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext
         ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext
         ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
         ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
-        ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList {
+        ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList ) {
     let key = @lstring {!"@" + self.enumTypeName !self.enumTypeName.location}
     [!?ioSemanticTypePrecedenceGraph addNode !key !self]
   //--- There is a circular reference if all constants names current type in associated values
@@ -285,13 +285,13 @@ final class @enumDeclarationAST : @semanticDeclarationAST {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc enterDeclarationInSemanticContext
-        ?!@equatableExtensionMap ioEquatableExtensionMap
+        (?!@equatableExtensionMap ioEquatableExtensionMap
         ?let @extensionInitializerForBuildingContext inExtensionInitializerMapForBuildingContext
         ?let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext
         ?let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext
         ?let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext
         ?!@unifiedTypeMap ioTypeMap
-        ?!@semanticContext ioSemanticContext {
+        ?!@semanticContext ioSemanticContext ) {
   //---
     var @classFunctionMap classFunctionMap = @()
     var @setterMap setterMap = @()
@@ -435,13 +435,13 @@ final class @enumDeclarationAST : @semanticDeclarationAST {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc semanticAnalysis
-                    ?!@lstringlist ioUsefulnessRootEntities
+                    (?!@lstringlist ioUsefulnessRootEntities
                     ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
                     ?let @string unused inProductDirectory
                     ?let @semanticContext unused inSemanticContext
                     ?!@unifiedTypeMap ioTypeMap
                     ?let @predefinedTypes unused inPredefinedTypes
-                    ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration {
+                    ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration ) {
   //--- Useful entities graph
     let nameForUsefulness = typeNameForUsefulEntitiesGraph (!self.enumTypeName)
     [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
@@ -524,8 +524,8 @@ final class @enumTypeForGeneration : @semanticTypeForGeneration {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override proc appendDeclaration1 ?!@stringset unused ioInclusionSet
-                                     !@string outHeader {
+  override proc appendDeclaration1 (?!@stringset unused ioInclusionSet
+                                     !@string outHeader ) {
     var @bool hasAssociatedValues = false
     for constant in self.constantList while not hasAssociatedValues do
       hasAssociatedValues = constant.associatedValueTypeList.count > 0
@@ -558,9 +558,9 @@ final class @enumTypeForGeneration : @semanticTypeForGeneration {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override proc appendSpecificImplementation ?let @unifiedTypeMap unused inTypeMap
+  override proc appendSpecificImplementation (?let @unifiedTypeMap unused inTypeMap
                                                 ?!@stringset ioInclusionSet
-                                                !@string outImplementation {
+                                                !@string outImplementation ) {
     for type in self.associatedValuesTypes do
       [type addHeaderFileName !?ioInclusionSet]
     end

@@ -26,7 +26,7 @@ filewrapper libpmFileWrapper in "../libpm" {
 
 //--------------------------------------------------------------------------------------------------
 
-proc updateLIBPMatPath ?let @string inLIBPMPath {
+proc updateLIBPMatPath (?let @string inLIBPMPath ) {
   let fw = [filewrapper libpmFileWrapper]
 //--- Create directories
   for (path) in fw.allDirectoryPaths do

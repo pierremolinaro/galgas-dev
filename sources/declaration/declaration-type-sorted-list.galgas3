@@ -59,7 +59,7 @@ syntax extension galgas3DeclarationsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <sortedlist_sort_descriptor> ?!@sortedListSortDescriptorListAST ioSortedListSortDescriptorList {
+  rule <sortedlist_sort_descriptor> (?!@sortedListSortDescriptorListAST ioSortedListSortDescriptorList ) {
     $identifier$ ?let @lstring mSortedAttributeName
     let @bool mAscending
     select
@@ -82,7 +82,7 @@ syntax extension galgas4DeclarationsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
+  rule <declaration> (?!@galgasDeclarationAST ioDeclarations ) {
     $sortedlist$
     $@type$ ?let sortedListTypeName indexing sortedListDefinition, structDefinition ".element"
     let @bool isEquatable
@@ -118,7 +118,7 @@ syntax extension galgas4DeclarationsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <sortedlist_sort_descriptor> ?!@sortedListSortDescriptorListAST ioSortedListSortDescriptorList {
+  rule <sortedlist_sort_descriptor> (?!@sortedListSortDescriptorListAST ioSortedListSortDescriptorList ) {
     $identifier$ ?let @lstring mSortedAttributeName
     let @bool mAscending
     select
@@ -154,13 +154,13 @@ final class @sortedListDeclarationAST : @semanticDeclarationAST {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc enterDeclarationInGraph
-    ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
+    (?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
     ?!@equatableExtensionMap unused ioEquatableExtensionMap
     ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext
     ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext
     ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
     ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
-    ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList {
+    ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList ) {
     let key = @lstring {!"@" + self.mSortedListTypeName !self.mSortedListTypeName.location}
     [!?ioSemanticTypePrecedenceGraph addNode !key !self]
     for (* propertyTypeName 4*) in self.mPropertyList do
@@ -171,7 +171,7 @@ final class @sortedListDeclarationAST : @semanticDeclarationAST {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc addAssociatedElement
-    ?!@galgasDeclarationAST ioDeclarations {
+    (?!@galgasDeclarationAST ioDeclarations ) {
     var @propertyInCollectionListAST structAttributeList = @()
     for (mutability qualifiedTypeAST mPropertyName * hasSelector initExpression) in self.mPropertyList do
       structAttributeList +=
@@ -195,14 +195,14 @@ final class @sortedListDeclarationAST : @semanticDeclarationAST {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc enterDeclarationInSemanticContext
-    ?!@equatableExtensionMap ioEquatableExtensionMap
+    (?!@equatableExtensionMap ioEquatableExtensionMap
     ?let @extensionInitializerForBuildingContext inExtensionInitializerMapForBuildingContext
     ?let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext
     ?let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext
     ?let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext
     ?!@unifiedTypeMap ioTypeMap
     ?!@semanticContext ioSemanticContext
-  {
+  ) {
   //--- Type index
     [!?ioTypeMap makeEntry  !self.mSortedListTypeName ?let listTypeIndex]
   //--- Element type index
@@ -358,14 +358,14 @@ final class @sortedListDeclarationAST : @semanticDeclarationAST {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc semanticAnalysis
-    ?!@lstringlist ioUsefulnessRootEntities
+    (?!@lstringlist ioUsefulnessRootEntities
     ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
     ?let @string unused inProductDirectory
     ?let @semanticContext unused inSemanticContext
                                   ?!@unifiedTypeMap ioTypeMap
     ?let @predefinedTypes unused inPredefinedTypes
     ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
-  {
+  ) {
   //--- Useful entities graph
     let sortedListNameForUsefulness = typeNameForUsefulEntitiesGraph (!self.mSortedListTypeName)
     [!?ioUsefulEntitiesGraph addNode !sortedListNameForUsefulness !sortedListNameForUsefulness]
@@ -452,8 +452,8 @@ final class @sortedListTypeForGeneration : @semanticTypeForGeneration {
 //································································································
 
 override proc @sortedListTypeForGeneration appendDeclaration1
-  ?!@stringset unused ioInclusionSet
-  !@string outHeader {
+  (?!@stringset unused ioInclusionSet
+  !@string outHeader ) {
   let selfTypeDefinition = self.mSelfTypeEntry.definition
   let elementTypeDefinition = self.mListElementTypeIndex.definition
   outHeader = [filewrapper sortedListGenerationTemplate.sortedlistTypeHeader1
@@ -486,9 +486,9 @@ override proc @sortedListTypeForGeneration appendDeclaration1
 //································································································
 
 override proc @sortedListTypeForGeneration appendSpecificImplementation
-  ?let @unifiedTypeMap unused inTypeMap
+  (?let @unifiedTypeMap unused inTypeMap
   ?!@stringset ioInclusionSet
-  !@string outImplementation {
+  !@string outImplementation ) {
   for (t 4*) in self.mTypedAttributeList do
     [t addHeaderFileName !?ioInclusionSet]
   end

@@ -23,8 +23,8 @@ syntax extension galgas3ExpressionSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <factor_ggs3> ?!@galgasDeclarationAST ioDeclarations
-                     !@semanticExpressionAST outExpression {
+  rule <factor_ggs3> (?!@galgasDeclarationAST ioDeclarations
+                     !@semanticExpressionAST outExpression ) {
     <primary_ggs3> !?ioDeclarations ?outExpression
     repeat
     while
@@ -75,8 +75,8 @@ syntax extension galgas4ExpressionSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <factor> ?!@galgasDeclarationAST ioDeclarations
-                !@semanticExpressionAST outExpression {
+  rule <factor> (?!@galgasDeclarationAST ioDeclarations
+                !@semanticExpressionAST outExpression ) {
     <primary> !?ioDeclarations ?outExpression
     repeat
     while
@@ -131,19 +131,19 @@ final class @structPropertyAccessExpressionAST : @semanticExpressionAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override proc enterExpressionInSemanticContext ?!@unifiedTypeMap unused ioTypeMap {
+  override proc enterExpressionInSemanticContext (?!@unifiedTypeMap unused ioTypeMap ) {
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc analyzeSemanticExpression
-                      ?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName
+                      (?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName
                       ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
                       ?inferenceType: let @unifiedTypeMapEntry unused inType
                       ?let @analysisContext inAnalysisContext
                       ?!@unifiedTypeMap ioTypeMap
                       ?!@localVarManager ioVariableMap
-                      !@semanticExpressionForGeneration outExpressionGeneration {
+                      !@semanticExpressionForGeneration outExpressionGeneration ) {
   //--- Expression analysis
     [self.mExpression analyzeSemanticExpression
       !usefulnessCallerEntityName: inUsefulnessCallerEntityName
@@ -222,11 +222,11 @@ final class @propertyAccessExpressionForGeneration : @semanticExpressionForGener
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override proc generateExpression ?!@string ioGeneratedCode
+  override proc generateExpression (?!@string ioGeneratedCode
                                       ?!@stringset ioInclusionSet
                                       ?!@uint ioTemporaryVariableIndex
                                       ?!@stringset ioUnusedVariableCppNameSet
-                                      !@string outCppExpression {
+                                      !@string outCppExpression ) {
     [self.mResultType addHeaderFileName !?ioInclusionSet]
   //--- Operand
     [self.expression generateExpression
@@ -265,13 +265,13 @@ final class @subscriptReadAccessExpressionAST : @semanticExpressionAST {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc analyzeSemanticExpression
-                                  ?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName
+                                  (?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName
                                   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
                                   ?inferenceType: let @unifiedTypeMapEntry unused inType
                                   ?let @analysisContext inAnalysisContext
                                   ?!@unifiedTypeMap ioTypeMap
                                   ?!@localVarManager ioVariableMap
-                                  !@semanticExpressionForGeneration outExpression {
+                                  !@semanticExpressionForGeneration outExpression ) {
   //--- Receiver analysis
     [self.mExpression analyzeSemanticExpression
       !usefulnessCallerEntityName: inUsefulnessCallerEntityName
@@ -342,11 +342,11 @@ final class @subscriptReadAccessExpressionForGeneration : @semanticExpressionFor
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override proc generateExpression ?!@string ioGeneratedCode
+  override proc generateExpression (?!@string ioGeneratedCode
                                       ?!@stringset ioInclusionSet
                                       ?!@uint ioTemporaryVariableIndex
                                       ?!@stringset ioUnusedVariableCppNameSet
-                                      !@string outCppExpression {
+                                      !@string outCppExpression ) {
     [self.mResultType addHeaderFileName !?ioInclusionSet]
   //--- Operand
     [self.expression generateExpression

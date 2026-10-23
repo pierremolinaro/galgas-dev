@@ -26,8 +26,8 @@ syntax extension galgas3DeclarationsSyntax {
   //    PROPERTY IN COLLECTION
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <property_declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations
-                                   ?!@propertyInCollectionListAST ioAttributeInCollectionList {
+  rule <property_declaration_ggs3> (?!@galgasDeclarationAST ioDeclarations
+                                   ?!@propertyInCollectionListAST ioAttributeInCollectionList ) {
     <acces_control> ?let accessControl
     let @propertyMutability mutability
     select
@@ -66,8 +66,8 @@ syntax extension galgas3DeclarationsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <property_declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations
-                                   ?!@propertyInCollectionListAST ioAttributeInCollectionList {
+  rule <property_declaration_ggs3> (?!@galgasDeclarationAST ioDeclarations
+                                   ?!@propertyInCollectionListAST ioAttributeInCollectionList ) {
     <acces_control> ?let accessControl
     $weak$
     select
@@ -134,8 +134,8 @@ syntax extension galgas4DeclarationsSyntax {
   //    PROPERTY DECLARATION
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <property_declaration> ?!@galgasDeclarationAST ioDeclarations
-                              ?!@propertyInCollectionListAST ioAttributeInCollectionList {
+  rule <property_declaration> (?!@galgasDeclarationAST ioDeclarations
+                              ?!@propertyInCollectionListAST ioAttributeInCollectionList ) {
     <acces_control> ?let accessControl
     let @propertyMutability mutability
     select
@@ -173,8 +173,8 @@ syntax extension galgas4DeclarationsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <property_declaration> ?!@galgasDeclarationAST ioDeclarations
-                              ?!@propertyInCollectionListAST ioAttributeInCollectionList {
+  rule <property_declaration> (?!@galgasDeclarationAST ioDeclarations
+                              ?!@propertyInCollectionListAST ioAttributeInCollectionList ) {
     <acces_control> ?let accessControl
     $weak$
     select
@@ -227,13 +227,13 @@ list @propertyInCollectionListAST {
   public let @bool hasSelector %initArgLabel
   public let @propertyInCollectionInitializationAST initialization %initArgLabel
 
-  proc buildPropertyInitializationCode ?let @lstring inTypeNameForUsefulness
+  proc buildPropertyInitializationCode (?let @lstring inTypeNameForUsefulness
                                           ?let @semanticContext inSemanticContext
                                           ?let @predefinedTypes inPredefinedTypes
                                           ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
                                           ?!@unifiedTypeMap ioTypeMap
                                           !@stringset outUnusedVariableCppNameSet
-                                          !@string outInitializationCode {
+                                          !@string outInitializationCode ) {
     outInitializationCode = ""
     var inclusionSet = @stringset ()
     var @uint temporaryVariableIndex = 0

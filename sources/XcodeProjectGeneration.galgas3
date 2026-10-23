@@ -26,9 +26,9 @@ map @projectQualifiedFeatureMap {
 //--------------------------------------------------------------------------------------------------
 
 setter @XcodeProjectDescriptor addICNS_file
-  ?fileName:let @string inFileName
+  (?fileName:let @string inFileName
   !fileRef:@string outFileRef
-{
+) {
   [!?self getReferenceKey ?ref:outFileRef]
   self.mICNS_fileList += !outFileRef !inFileName
 }
@@ -36,8 +36,8 @@ setter @XcodeProjectDescriptor addICNS_file
 //--------------------------------------------------------------------------------------------------
 
 setter @XcodeProjectDescriptor addTIFF_file
-  ?fileName:let @string inFileName
-  !fileRef:@string outFileRef {
+  (?fileName:let @string inFileName
+  !fileRef:@string outFileRef ) {
   [!?self getReferenceKey ?ref:outFileRef]
   self.mTIFF_fileList += !outFileRef !inFileName
 }
@@ -45,8 +45,8 @@ setter @XcodeProjectDescriptor addTIFF_file
 //--------------------------------------------------------------------------------------------------
 
 setter @XcodeProjectDescriptor addInfoPlistFile
-  ?fileName:let @string inFileName
-  !fileRef:@string outFileRef {
+  (?fileName:let @string inFileName
+  !fileRef:@string outFileRef ) {
   [!?self getReferenceKey ?ref:outFileRef]
   self.mInfoPlistFileList += !outFileRef !inFileName
 }
@@ -54,8 +54,8 @@ setter @XcodeProjectDescriptor addInfoPlistFile
 //--------------------------------------------------------------------------------------------------
 
 setter @XcodeProjectDescriptor addXIBFile
-  ?fileName:let @string inFileName
-  !fileRef:@string outFileRef {
+  (?fileName:let @string inFileName
+  !fileRef:@string outFileRef ) {
   [!?self getReferenceKey ?ref:outFileRef]
   self.mXIB_fileList += !outFileRef !inFileName
 }
@@ -63,8 +63,8 @@ setter @XcodeProjectDescriptor addXIBFile
 //--------------------------------------------------------------------------------------------------
 
 setter @XcodeProjectDescriptor addFrameworkFile
-  ?fileName:let @string inFileName
-  !fileRef:@string outFileRef {
+  (?fileName:let @string inFileName
+  !fileRef:@string outFileRef ) {
   [!?self getReferenceKey ?ref:outFileRef]
   self.mFrameworkFileList += !outFileRef !inFileName
 }
@@ -72,8 +72,8 @@ setter @XcodeProjectDescriptor addFrameworkFile
 //--------------------------------------------------------------------------------------------------
 
 setter @XcodeProjectDescriptor addSwiftFile
-  ?fileName:let @string inFileName
-  !fileRef:@string outFileRef {
+  (?fileName:let @string inFileName
+  !fileRef:@string outFileRef ) {
   [!?self getReferenceKey ?ref:outFileRef]
   self.m_Swift_FileList += !outFileRef !inFileName
 }
@@ -81,8 +81,8 @@ setter @XcodeProjectDescriptor addSwiftFile
 //--------------------------------------------------------------------------------------------------
 
 setter @XcodeProjectDescriptor addMFile
-  ?fileName:let @string inFileName
-  !fileRef:@string outFileRef {
+  (?fileName:let @string inFileName
+  !fileRef:@string outFileRef ) {
   [!?self getReferenceKey ?ref:outFileRef]
   self.m_M_FileList += !outFileRef !inFileName
 }
@@ -90,8 +90,8 @@ setter @XcodeProjectDescriptor addMFile
 //--------------------------------------------------------------------------------------------------
 
 setter @XcodeProjectDescriptor addMMFile
-  ?fileName:let @string inFileName
-  !fileRef:@string outFileRef {
+  (?fileName:let @string inFileName
+  !fileRef:@string outFileRef ) {
   [!?self getReferenceKey ?ref:outFileRef]
   self.m_MM_FileList += !outFileRef !inFileName
 }
@@ -99,8 +99,8 @@ setter @XcodeProjectDescriptor addMMFile
 //--------------------------------------------------------------------------------------------------
 
 setter @XcodeProjectDescriptor addCppFile
-  ?fileName:let @string inFileName
-  !fileRef:@string outFileRef {
+  (?fileName:let @string inFileName
+  !fileRef:@string outFileRef ) {
   [!?self getReferenceKey ?ref:outFileRef]
   self.mCppFileList += !outFileRef !inFileName
 }
@@ -108,8 +108,8 @@ setter @XcodeProjectDescriptor addCppFile
 //--------------------------------------------------------------------------------------------------
 
 setter @XcodeProjectDescriptor addCFile
-  ?fileName:let @string inFileName
-  !fileRef:@string outFileRef {
+  (?fileName:let @string inFileName
+  !fileRef:@string outFileRef ) {
   [!?self getReferenceKey ?ref:outFileRef]
   self.mCFileList += !outFileRef !inFileName
 }
@@ -117,8 +117,8 @@ setter @XcodeProjectDescriptor addCFile
 //--------------------------------------------------------------------------------------------------
 
 setter @XcodeProjectDescriptor addHeaderFile
-  ?fileName:let @string inFileName
-  !fileRef:@string outFileRef {
+  (?fileName:let @string inFileName
+  !fileRef:@string outFileRef ) {
   [!?self getReferenceKey ?ref:outFileRef]
   self.mHeaderFileList += !outFileRef !inFileName
 }
@@ -126,9 +126,9 @@ setter @XcodeProjectDescriptor addHeaderFile
 //--------------------------------------------------------------------------------------------------
 
 setter @XcodeProjectDescriptor addBuildFile
-  ?fileRef:let @string inFileReference
+  (?fileRef:let @string inFileReference
   ?fileName:let @string inFileName
-  !buildRef:@string outBuildRef {
+  !buildRef:@string outBuildRef ) {
   [!?self getReferenceKey ?ref:outBuildRef]
   self.mBuildFileList += !inFileReference !inFileName !outBuildRef
 }
@@ -136,13 +136,13 @@ setter @XcodeProjectDescriptor addBuildFile
 //--------------------------------------------------------------------------------------------------
 
 setter @XcodeProjectDescriptor addToolTarget
-  ?targetName:let @string inTargetName
+  (?targetName:let @string inTargetName
   ?productFileName:let @string inProductFileName
   ?sources:let @stringlist inSourceList
   ?frameworkRefs:let @stringlist inToolFrameworksFileRefList
   ?buildConfigurationSettingList:let @stringlist inBuildConfigurationSettingList
   !targetRef:@string outTargetRef
-  !productFileRef:@string outProductFileRef {
+  !productFileRef:@string outProductFileRef ) {
   [!?self getReferenceKey ?ref:outProductFileRef]
   [!?self getReferenceKey ?ref:let buildPhaseRef]
   [!?self getReferenceKey ?ref:outTargetRef]
@@ -166,7 +166,7 @@ setter @XcodeProjectDescriptor addToolTarget
 //--------------------------------------------------------------------------------------------------
 
 setter @XcodeProjectDescriptor addAppTarget
-  ?targetName:let @string inTargetName
+  (?targetName:let @string inTargetName
   ?productFileName:let @string inProductFileName
   ?sources:let @stringlist inSourceList
   ?frameworkFileRefs:let @stringlist inFrameworksFileRefList
@@ -174,7 +174,7 @@ setter @XcodeProjectDescriptor addAppTarget
   ?buildConfigurationSettingList:let @stringlist inBuildConfigurationSettingList
   ?dependantTargetList:let @stringlist inDependentTargetRefList
   ?productCopyList:let @2stringlist inProductCopyList
-  !productFileRef:@string outProductFileRef {
+  !productFileRef:@string outProductFileRef ) {
   [!?self getReferenceKey ?ref:outProductFileRef]
   [!?self getReferenceKey ?ref:let buildPhaseRef]
   [!?self getReferenceKey ?ref:let targetRef]
@@ -212,11 +212,11 @@ setter @XcodeProjectDescriptor addAppTarget
 //--------------------------------------------------------------------------------------------------
 
 setter @XcodeProjectDescriptor addGroup
-  ?groupName:let @string inGroupName
+  (?groupName:let @string inGroupName
   ?groupPath:let @string inGroupPath
   ?childrenRefs:let @stringlist inChildrenRefs
   !groupRef:@string outGroupRef
-{
+) {
   if self.mDefaultConfigurationRef == "" then
     [!?self getReferenceKey ?ref: self.mDefaultConfigurationRef]
   end
@@ -233,7 +233,7 @@ setter @XcodeProjectDescriptor addGroup
 //--------------------------------------------------------------------------------------------------
 
 setter @XcodeProjectDescriptor addGroupWithFiles
-  ?groupName:let @string inGroupName
+  (?groupName:let @string inGroupName
   ?groupPath:let @string inGroupPath
   ?fileNames:let @stringset inFileNames
   ?!cFileRefs:@stringlist ioCFileBuildRefs
@@ -243,7 +243,7 @@ setter @XcodeProjectDescriptor addGroupWithFiles
   ?!swiftFileRefs:@stringlist ioSwiftFileBuildRefs
   ?!frameworkFileRefs:@stringlist ioFrameWorkFileBuildRefs
   ?!resourceFileRefs:@stringlist ioResourceFileBuildRefs
-  !groupRef:@string outGroupRef {
+  !groupRef:@string outGroupRef ) {
   if self.mDefaultConfigurationRef == "" then
     [!?self getReferenceKey ?ref:self.mDefaultConfigurationRef]
   end
@@ -308,14 +308,14 @@ setter @XcodeProjectDescriptor addGroupWithFiles
 //--------------------------------------------------------------------------------------------------
 
 setter @XcodeProjectDescriptor placeGroupAsMainGroup
-  ?groupRef:let @string inGroupRef {
+  (?groupRef:let @string inGroupRef ) {
   self.mMainGroupChildrenRefs += !inGroupRef
 }
 
 //--------------------------------------------------------------------------------------------------
 
 setter @XcodeProjectDescriptor addSettingsToDefaultConfiguration
-  ?settingList:let @stringlist inSettingList {
+  (?settingList:let @stringlist inSettingList ) {
   self.mDefaultConfigurationSettingList += inSettingList
 }
 
@@ -374,7 +374,7 @@ list @BuildFileList {
 //--------------------------------------------------------------------------------------------------
 
 setter @XcodeProjectDescriptor getReferenceKey
-  !ref:@string outRef {
+  (!ref:@string outRef ) {
   if self.mProjectObjectReference == "" then
     self.mProjectObjectReference = [self.mSequenceNumber.string.md5 rightSubString !24]
     self.mSequenceNumber += 1
@@ -449,8 +449,8 @@ private filewrapper xcodeProjectGenerationFilewrapper in "+generation-templates/
 //--------------------------------------------------------------------------------------------------
 
 proc @XcodeProjectDescriptor generateAtPath
-  ?xcodeprojPath:let @string inPath
-  ?cacheFilePath:let @string inCacheFilePath {
+  (?xcodeprojPath:let @string inPath
+  ?cacheFilePath:let @string inCacheFilePath ) {
   let contents = [filewrapper xcodeProjectGenerationFilewrapper.xcodeproj
     !self.mProjectObjectReference
     !self.mMainGroupReference

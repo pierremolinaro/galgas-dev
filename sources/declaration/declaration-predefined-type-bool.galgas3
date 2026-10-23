@@ -39,15 +39,15 @@ final class @boolPredefinedTypeAST : @predefinedTypeAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override proc getClassFunctionMap ?!@unifiedTypeMap unused ioUnifiedTypeMap
-                                      !@classFunctionMap outMap {
+  override proc getClassFunctionMap (?!@unifiedTypeMap unused ioUnifiedTypeMap
+                                      !@classFunctionMap outMap ) {
     outMap = @()
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override proc getGetterMap ?!@unifiedTypeMap ioUnifiedTypeMap
-                               !@getterMap outMap {
+  override proc getGetterMap (?!@unifiedTypeMap ioUnifiedTypeMap
+                               !@getterMap outMap ) {
     commonGetterMapForAllTypes (!?ioUnifiedTypeMap ?outMap)
     enterBaseFinalGetterWithoutArgument (
       !?outMap

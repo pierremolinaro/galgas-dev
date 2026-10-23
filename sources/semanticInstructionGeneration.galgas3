@@ -23,14 +23,14 @@
 //--------------------------------------------------------------------------------------------------
 
 override proc @outputActualParameterForGeneration generateActualParameter
-  ?!@stringset ioInclusionSet
+  (?!@stringset ioInclusionSet
   ?!@uint ioTemporaryVariableIndex
   ?!@string ioImplementation
   ?!@stringlist unused ioJokerParametersToReleaseList
   ?!@stringlist unused ioOutputVariableList
   ?!@stringset ioUnusedVariableCppNameSet
   !@string outCppName
-{
+) {
   [self.mFormalArgumentType addHeaderFileName !?ioInclusionSet]
   [self.mOutputActualParameterExpression generateExpression !?ioImplementation !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?outCppName]
 }
@@ -38,13 +38,13 @@ override proc @outputActualParameterForGeneration generateActualParameter
 //--------------------------------------------------------------------------------------------------
 
 override proc @outputInputActualParameterForGeneration generateActualParameter
-  ?!@stringset ioInclusionSet
+  (?!@stringset ioInclusionSet
   ?!@uint unused ioTemporaryVariableIndex
   ?!@string unused ioImplementation
   ?!@stringlist unused ioJokerParametersToReleaseList
   ?!@stringlist unused ioOutputVariableList
   ?!@stringset ioUnusedVariableCppNameSet
-  !@string outCppName {
+  !@string outCppName ) {
   for (t) in self.mTypeList do
     [t addHeaderFileName !?ioInclusionSet]
   end
@@ -58,13 +58,13 @@ override proc @outputInputActualParameterForGeneration generateActualParameter
 //--------------------------------------------------------------------------------------------------
 
 override proc @inputActualParameterForGeneration generateActualParameter
-  ?!@stringset unused ioInclusionSet
+  (?!@stringset unused ioInclusionSet
   ?!@uint unused ioTemporaryVariableIndex
   ?!@string unused ioImplementation
   ?!@stringlist unused ioJokerParametersToReleaseList
   ?!@stringlist ioOutputVariableList
   ?!@stringset ioUnusedVariableCppNameSet
-  !@string outCppName {
+  !@string outCppName ) {
   outCppName = self.mInputActualCppName
   ioOutputVariableList += !self.mInputActualCppName
   [!?ioUnusedVariableCppNameSet removeKey !outCppName]
@@ -73,13 +73,13 @@ override proc @inputActualParameterForGeneration generateActualParameter
 //--------------------------------------------------------------------------------------------------
 
 override proc @inputJokerParameterForGeneration generateActualParameter
-  ?!@stringset ioInclusionSet
+  (?!@stringset ioInclusionSet
   ?!@uint unused ioTemporaryVariableIndex
   ?!@string ioImplementation
   ?!@stringlist ioJokerParametersToReleaseList
   ?!@stringlist ioOutputVariableList
   ?!@stringset unused ioUnusedVariableCppNameSet
-  !@string outCppName {
+  !@string outCppName ) {
   [self.mFormalArgumentType addHeaderFileName !?ioInclusionSet]
   outCppName = self.mInputActualCppName
   ioImplementation += "GGS_" + self.mFormalArgumentType.identifierRepresentation + " " + outCppName + " ; // Joker input parameter\n"
@@ -109,22 +109,22 @@ override proc @semanticBlockInstructionForGeneration generateInstruction (?!@str
 //--------------------------------------------------------------------------------------------------
 
 override proc @outputInputActualParameterForGeneration generatePoisonedVariables
-  ?!@string unused ioImplementation
-  ?!@stringset unused ioUnusedVariableCppNameSet {
+  (?!@string unused ioImplementation
+  ?!@stringset unused ioUnusedVariableCppNameSet ) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
 override proc @outputActualParameterForGeneration generatePoisonedVariables
-  ?!@string unused ioImplementation
-  ?!@stringset unused ioUnusedVariableCppNameSet {
+  (?!@string unused ioImplementation
+  ?!@stringset unused ioUnusedVariableCppNameSet ) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
 override proc @inputJokerParameterForGeneration generatePoisonedVariables
-  ?!@string ioImplementation
-  ?!@stringset ioUnusedVariableCppNameSet {
+  (?!@string ioImplementation
+  ?!@stringset ioUnusedVariableCppNameSet ) {
   if self.mPoisonedVarNameList.count > 0 then
     ioImplementation += "if (!" + self.mInputActualCppName + ".isValid ()) {\n"
     for (cppVarName nameForCheckingFormalParameterUsing) in self.mPoisonedVarNameList do
@@ -138,8 +138,8 @@ override proc @inputJokerParameterForGeneration generatePoisonedVariables
 //--------------------------------------------------------------------------------------------------
 
 override proc @inputActualParameterForGeneration generatePoisonedVariables
-                        ?!@string ioImplementation
-                        ?!@stringset ioUnusedVariableCppNameSet {
+                        (?!@string ioImplementation
+                        ?!@stringset ioUnusedVariableCppNameSet ) {
   if self.mPoisonedVarNameList.count > 0 then
     ioImplementation += "if (!" + self.mInputActualCppName + ".isValid ()) {\n"
     for (cppVarName nameForCheckingFormalParameterUsing) in self.mPoisonedVarNameList do

@@ -23,8 +23,8 @@ syntax extension galgas3ExpressionSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <primary_ggs3> ?!@galgasDeclarationAST unused ioDeclarations
-                      !@semanticExpressionAST outExpression {
+  rule <primary_ggs3> (?!@galgasDeclarationAST unused ioDeclarations
+                      !@semanticExpressionAST outExpression ) {
     $nil$
     outExpression = @nilExpressionAST {!.here}
   }
@@ -39,8 +39,8 @@ syntax extension galgas4ExpressionSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <primary> ?!@galgasDeclarationAST unused ioDeclarations
-                 !@semanticExpressionAST outExpression {
+  rule <primary> (?!@galgasDeclarationAST unused ioDeclarations
+                 !@semanticExpressionAST outExpression ) {
     $nil$
     outExpression = @nilExpressionAST {!.here}
   }
@@ -56,19 +56,19 @@ final class @nilExpressionAST : @semanticExpressionAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override proc enterExpressionInSemanticContext ?!@unifiedTypeMap unused ioTypeMap {
+  override proc enterExpressionInSemanticContext (?!@unifiedTypeMap unused ioTypeMap ) {
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc analyzeSemanticExpression
-                    ?usefulnessCallerEntityName: let @lstring unused inUsefulnessCallerEntityName
+                    (?usefulnessCallerEntityName: let @lstring unused inUsefulnessCallerEntityName
                     ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
                     ?inferenceType: let @unifiedTypeMapEntry inType
                     ?let @analysisContext unused inAnalysisContext
                     ?!@unifiedTypeMap unused ioTypeMap
                     ?!@localVarManager unused ioVariableMap
-                    !@semanticExpressionForGeneration outExpression {
+                    !@semanticExpressionForGeneration outExpression ) {
     if inType.isNull then
       error (self.mLocation : "cannot infer type" spoil outExpression)
     else
@@ -94,11 +94,11 @@ final class @nilExpressionForGeneration : @semanticExpressionForGeneration {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override proc generateExpression ?!@string unused ioGeneratedCode
+  override proc generateExpression (?!@string unused ioGeneratedCode
                                       ?!@stringset unused ioInclusionSet
                                       ?!@uint unused ioTemporaryVariableIndex
                                       ?!@stringset unused ioUnusedVariableCppNameSet
-                                      !@string outCppExpression {
+                                      !@string outCppExpression ) {
     outCppExpression = "GGS_" + self.mResultType.identifierRepresentation + "::init_nil ()"
   }
 

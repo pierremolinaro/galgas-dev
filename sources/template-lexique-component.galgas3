@@ -63,7 +63,7 @@ syntax extension galgas3LexiqueComponentSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <template_delimitor_ggs3> ?!@templateDelimitorListAST ioTemplateDelimitorList {
+  rule <template_delimitor_ggs3> (?!@templateDelimitorListAST ioTemplateDelimitorList ) {
     $template$
     $"string"$ ?let @lstring startString
     var nonAtomicSelection = false
@@ -101,7 +101,7 @@ syntax extension galgas3LexiqueComponentSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <template_replacement_ggs3> ?!@templateReplacementListAST ioTemplateReplacement {
+  rule <template_replacement_ggs3> (?!@templateReplacementListAST ioTemplateReplacement ) {
     $replace$
     $"string"$ ?let @lstring matchString
     let @lstring replacementString
@@ -129,7 +129,7 @@ syntax extension galgas4LexiqueComponentSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
+  rule <declaration> (?!@galgasDeclarationAST ioDeclarations ) {
     $template$
     $lexique$
   //--- Lexique Component Name
@@ -158,7 +158,7 @@ syntax extension galgas4LexiqueComponentSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <template_delimitor> ?!@templateDelimitorListAST ioTemplateDelimitorList {
+  rule <template_delimitor> (?!@templateDelimitorListAST ioTemplateDelimitorList ) {
     $template$
     $"string"$ ?let @lstring startString
     var nonAtomicSelection = false
@@ -196,7 +196,7 @@ syntax extension galgas4LexiqueComponentSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <template_replacement> ?!@templateReplacementListAST ioTemplateReplacement {
+  rule <template_replacement> (?!@templateReplacementListAST ioTemplateReplacement ) {
     $%templateReplacement$
     $"string"$ ?let @lstring matchString
     let @lstring replacementString
@@ -227,13 +227,13 @@ override func @templateLexiqueComponentAST keyRepresentation -> @string {
 //--------------------------------------------------------------------------------------------------
 
 override proc @templateLexiqueComponentAST enterDeclarationInGraph
-  ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
+  (?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
   ?!@equatableExtensionMap unused ioEquatableExtensionMap
   ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext
   ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext
   ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
   ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
-  ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList {
+  ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList ) {
   let key = @lstring {!"lexique " + self.mLexiqueComponentName !self.mLexiqueComponentName.location}
   [!?ioSemanticTypePrecedenceGraph addNode !key !self]
   let superKey = @lstring {!"lexique " + self.mLexiqueSuperComponentName !self.mLexiqueComponentName.location}
@@ -243,13 +243,13 @@ override proc @templateLexiqueComponentAST enterDeclarationInGraph
 //--------------------------------------------------------------------------------------------------
 
 override proc @templateLexiqueComponentAST enterDeclarationInSemanticContext
-  ?!@equatableExtensionMap unused ioEquatableExtensionMap
+  (?!@equatableExtensionMap unused ioEquatableExtensionMap
   ?let @extensionInitializerForBuildingContext unused inExtensionInitializerMapForBuildingContext
   ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext
   ?let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext
   ?let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext
   ?!@unifiedTypeMap unused ioTypeMap
-  ?!@semanticContext ioSemanticContext {
+  ?!@semanticContext ioSemanticContext ) {
 //-------------------------------------- Get super lexique features
   [ioSemanticContext.mLexiqueComponentMapForSemanticAnalysis searchKey
      !self.mLexiqueSuperComponentName
@@ -280,13 +280,13 @@ override proc @templateLexiqueComponentAST enterDeclarationInSemanticContext
 //--------------------------------------------------------------------------------------------------
 
 override proc @templateLexiqueComponentAST semanticAnalysis
-                                  ?!@lstringlist unused ioUsefulnessRootEntities
+                                  (?!@lstringlist unused ioUsefulnessRootEntities
                                   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
                                   ?let @string unused inProductDirectory
                                   ?let @semanticContext inSemanticContext
                                   ?!@unifiedTypeMap unused ioTypeMap
                                   ?let @predefinedTypes unused inPredefinedTypes
-                                  ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration {
+                                  ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration ) {
 //-------------------------------------- Useful entities graph
   let nameForUsefulness = lexiqueNameForUsefulEntitiesGraph (!self.mLexiqueComponentName)
   [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]

@@ -2,7 +2,7 @@ syntax logo_syntax (logo_lexique) {
 
   //----------------------------------------------------------------------------------------------
   
-  rule <pen_direction> ?!@instructionList il {
+  rule <pen_direction> (?!@instructionList il ) {
     select
       $UP$
       let @instruction ins = @penUp () 
@@ -16,7 +16,7 @@ syntax logo_syntax (logo_lexique) {
 
   //----------------------------------------------------------------------------------------------
 
-  rule <instruction> ?!@routineMap ioTableRoutines ?!@instructionList il {
+  rule <instruction> (?!@routineMap ioTableRoutines ?!@instructionList il ) {
     select
       $FORWARD$
       $integer$ ?let @luint param
@@ -46,7 +46,7 @@ syntax logo_syntax (logo_lexique) {
 
   //----------------------------------------------------------------------------------------------
 
-  rule <instruction_list> ?!@routineMap ioTableRoutines ?!@instructionList il {
+  rule <instruction_list> (?!@routineMap ioTableRoutines ?!@instructionList il ) {
     repeat
     while
       <instruction> !? ioTableRoutines !? il
@@ -55,7 +55,7 @@ syntax logo_syntax (logo_lexique) {
 
   //----------------------------------------------------------------------------------------------
 
-  rule <routine_definition> ?!@routineMap ioTableRoutines {
+  rule <routine_definition> (?!@routineMap ioTableRoutines ) {
     $ROUTINE$
     $identifier$ ?let @lstring routineName indexing routineDefinition
     $BEGIN$
@@ -68,7 +68,7 @@ syntax logo_syntax (logo_lexique) {
 
   //----------------------------------------------------------------------------------------------
 
-  rule <start_symbol> {
+  rule <start_symbol> () {
   //-- Définition des routines
     $PROGRAM$
     var @routineMap tableRoutines = @()

@@ -23,13 +23,13 @@
 //--------------------------------------------------------------------------------------------------
 
 proc enterClassMethodWithInputArgument
-  ?!@classMethodMap ioClassMethodMap
+  (?!@classMethodMap ioClassMethodMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   ?methodName:let @string inClassMethodName
   ?argType:let @string inArgumentTypeName
   ?argName:let @string inArgumentName
   ?compilerArgument:let @bool inHasCompilerArgument
-{
+) {
   [!?ioUnifiedTypeMap makeEntryFromString !inArgumentTypeName ?let argumentTypeIndex]
   var @formalParameterSignature argList = @()
   argList += !"".nowhere !argumentTypeIndex !.argumentConstantIn !inArgumentName
@@ -43,7 +43,7 @@ proc enterClassMethodWithInputArgument
 //--------------------------------------------------------------------------------------------------
 
 proc enterClassMethodWith3InputArguments
-  ?!@classMethodMap ioClassMethodMap
+  (?!@classMethodMap ioClassMethodMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   ?methodName:let @string inClassMethodName
   ?argType1:let @string inArgumentTypeName1
@@ -53,7 +53,7 @@ proc enterClassMethodWith3InputArguments
   ?argType3:let @string inArgumentTypeName3
   ?argName3:let @string inArgumentName3
   ?compilerArgument:let @bool inHasCompilerArgument
-{
+) {
   var @formalParameterSignature argList = @()
 //--- Argument 1
   [!?ioUnifiedTypeMap makeEntryFromString !inArgumentTypeName1 ?let argumentTypeIndex1]
@@ -71,12 +71,12 @@ proc enterClassMethodWith3InputArguments
 //--------------------------------------------------------------------------------------------------
 
 proc enterClassMethodWithStringInputArgument
-  ?!@classMethodMap ioClassMethodMap
+  (?!@classMethodMap ioClassMethodMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   ?classMethod:let @string inClassMethodName
   ?argName:let @string inStringArgumentName
   ?compilerArg:let @bool inHasCompilerArgument
-{
+) {
   [!?ioUnifiedTypeMap makeEntryFromString !"string" ?let argumentTypeIndex]
   var @formalParameterSignature argList = @()
   argList += !"".nowhere !argumentTypeIndex !.argumentConstantIn !inStringArgumentName

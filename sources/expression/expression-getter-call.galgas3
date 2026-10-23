@@ -23,8 +23,8 @@ syntax extension galgas3ExpressionSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <primary_ggs3> ?!@galgasDeclarationAST ioDeclarations
-                      !@semanticExpressionAST outExpression {
+  rule <primary_ggs3> (?!@galgasDeclarationAST ioDeclarations
+                      !@semanticExpressionAST outExpression ) {
     $[$
   //--- Get source identity characteristics
     let startLocation = @location.here
@@ -65,13 +65,13 @@ final class @getterCallExpressionAST : @semanticExpressionAST {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc analyzeSemanticExpression
-                          ?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName
+                          (?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName
                           ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
                           ?inferenceType: let @unifiedTypeMapEntry unused inType
                           ?let @analysisContext inAnalysisContext
                           ?!@unifiedTypeMap ioTypeMap
                           ?!@localVarManager ioVariableMap
-                          !@semanticExpressionForGeneration outExpression {
+                          !@semanticExpressionForGeneration outExpression ) {
   //--- Check self is not inkoed before full initialization
     if self.mReceiver is @selfInExpressionAST then
       [ioVariableMap checkSelfObjectIsFullyInitialized !self.mGetterName.location]
@@ -260,12 +260,12 @@ final class @getterCallExpressionForGeneration : @semanticExpressionForGeneratio
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc generateExpression
-    ?!@string ioGeneratedCode
+    (?!@string ioGeneratedCode
     ?!@stringset ioInclusionSet
     ?!@uint ioTemporaryVariableIndex
     ?!@stringset ioUnusedVariableCppNameSet
     !@string outCppExpression
-  {
+  ) {
   //--- Add return type header
     [self.mResultType addHeaderFileName !?ioInclusionSet]
   //--- Receiver expression

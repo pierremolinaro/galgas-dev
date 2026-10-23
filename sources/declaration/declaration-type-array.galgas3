@@ -23,8 +23,8 @@ syntax extension galgas3DeclarationsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <type_definition_ggs3> ?!@galgasDeclarationAST ioDeclarations
-                              !@lstring outTypeName {
+  rule <type_definition_ggs3> (?!@galgasDeclarationAST ioDeclarations
+                              !@lstring outTypeName ) {
     $[$
     <type_definition_ggs3> !?ioDeclarations ?let elementTypeName
     outTypeName = makeArrayTypeLName (!elementTypeName)
@@ -71,13 +71,13 @@ final class @arrayTypeDeclarationAST : @semanticDeclarationAST {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc enterDeclarationInGraph
-    ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
+    (?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
     ?!@equatableExtensionMap unused ioEquatableExtensionMap
     ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext
     ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext
     ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
     ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
-    ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList {
+    ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList ) {
     let key = @lstring {!"@" + self.arrayTypeName !self.arrayTypeName.location}
     [!?ioSemanticTypePrecedenceGraph addNode !key !self]
     [!?ioSemanticTypePrecedenceGraph noteNode !@lstring {!"@" + self.elementTypeName !self.elementTypeName}]
@@ -86,13 +86,13 @@ final class @arrayTypeDeclarationAST : @semanticDeclarationAST {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc enterDeclarationInSemanticContext
-    ?!@equatableExtensionMap ioEquatableExtensionMap
+    (?!@equatableExtensionMap ioEquatableExtensionMap
     ?let @extensionInitializerForBuildingContext inExtensionInitializerMapForBuildingContext
     ?let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext
     ?let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext
     ?let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext
     ?!@unifiedTypeMap ioTypeMap
-    ?!@semanticContext ioSemanticContext {
+    ?!@semanticContext ioSemanticContext ) {
   //--- uint type index
     [!?ioTypeMap makeEntryFromString !"uint" ?let uintType]
   //--- Element type index
@@ -287,20 +287,20 @@ final class @arrayTypeDeclarationAST : @semanticDeclarationAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override proc addAssociatedElement ?!@galgasDeclarationAST unused ioDeclarations {
+  override proc addAssociatedElement (?!@galgasDeclarationAST unused ioDeclarations ) {
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc semanticAnalysis
-    ?!@lstringlist ioUsefulnessRootEntities
+    (?!@lstringlist ioUsefulnessRootEntities
     ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
     ?let @string unused inProductDirectory
     ?let @semanticContext unused inSemanticContext
                                   ?!@unifiedTypeMap ioTypeMap
     ?let @predefinedTypes unused inPredefinedTypes
     ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
-  {
+  ) {
   //--- Useful entities graph
     let nameForUsefulness = typeNameForUsefulEntitiesGraph (!self.arrayTypeName)
     [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
@@ -344,8 +344,8 @@ final class @arrayTypeForGeneration : @semanticTypeForGeneration {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override proc appendDeclaration1 ?!@stringset unused ioInclusionSet
-                                     !@string outHeader {
+  override proc appendDeclaration1 (?!@stringset unused ioInclusionSet
+                                     !@string outHeader ) {
     let selfTypeDefinition = self.mSelfTypeEntry.definition
     outHeader = [filewrapper arrayTypeGenerationTemplate.arrayTypeHeader1
       !selfTypeDefinition.typeName.string
@@ -373,9 +373,9 @@ final class @arrayTypeForGeneration : @semanticTypeForGeneration {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override proc appendSpecificImplementation  ?let @unifiedTypeMap unused inTypeMap
+  override proc appendSpecificImplementation  (?let @unifiedTypeMap unused inTypeMap
                                           ?!@stringset ioInclusionSet
-                                          !@string outImplementation {
+                                          !@string outImplementation ) {
     [self.elementType addHeaderFileName !?ioInclusionSet]
     [self.mSelfTypeEntry addHeaderFileName !?ioInclusionSet]
     let selfTypeDefinition = self.mSelfTypeEntry.definition

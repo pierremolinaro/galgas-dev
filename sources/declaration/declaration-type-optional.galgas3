@@ -31,13 +31,13 @@ final class @optionalTypeDeclarationAST : @semanticDeclarationAST {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc enterDeclarationInGraph
-    ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
+    (?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
     ?!@equatableExtensionMap unused ioEquatableExtensionMap
     ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext
     ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext
     ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
     ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
-    ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList {
+    ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList ) {
     let selfKey = @lstring {!"@" + self.optionalTypeName !self.optionalTypeName.location}
     [!?ioSemanticTypePrecedenceGraph addNode !selfKey !self]
     let unwrappedKey = @lstring {!"@" + self.unwrappedTypeName !self.unwrappedTypeName.location}
@@ -47,13 +47,13 @@ final class @optionalTypeDeclarationAST : @semanticDeclarationAST {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc enterDeclarationInSemanticContext
-    ?!@equatableExtensionMap ioEquatableExtensionMap
+    (?!@equatableExtensionMap ioEquatableExtensionMap
     ?let @extensionInitializerForBuildingContext inExtensionInitializerMapForBuildingContext
     ?let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext
     ?let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext
     ?let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext
     ?!@unifiedTypeMap ioTypeMap
-    ?!@semanticContext ioSemanticContext {
+    ?!@semanticContext ioSemanticContext ) {
   //--- Getters
     commonGetterMapForAllTypes (!?ioTypeMap ?var @getterMap getterMap)
   //--- Properties
@@ -137,20 +137,20 @@ final class @optionalTypeDeclarationAST : @semanticDeclarationAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override proc addAssociatedElement ?!@galgasDeclarationAST unused ioDeclarations {
+  override proc addAssociatedElement (?!@galgasDeclarationAST unused ioDeclarations ) {
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc semanticAnalysis
-    ?!@lstringlist ioUsefulnessRootEntities
+    (?!@lstringlist ioUsefulnessRootEntities
     ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
     ?let @string unused inProductDirectory
     ?let @semanticContext unused inSemanticContext
                                   ?!@unifiedTypeMap ioTypeMap
     ?let @predefinedTypes unused inPredefinedTypes
     ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
-  {
+  ) {
   //--- Useful entities graph
     let nameForUsefulness = typeNameForUsefulEntitiesGraph (!self.optionalTypeName)
     [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
@@ -183,8 +183,8 @@ final class @optionalTypeForGeneration : @semanticTypeForGeneration {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override proc appendDeclaration1 ?!@stringset ioInclusionSet
-                                     !@string outHeader {
+  override proc appendDeclaration1 (?!@stringset ioInclusionSet
+                                     !@string outHeader ) {
     [self.unwrappedType addHeaderFileName1 !?ioInclusionSet]
     let selfTypeDefinition = self.mSelfTypeEntry.definition
     outHeader = [filewrapper optionalTypeGenerationTemplate.optionalTypeHeader1
@@ -214,9 +214,9 @@ final class @optionalTypeForGeneration : @semanticTypeForGeneration {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override proc appendSpecificImplementation  ?let @unifiedTypeMap unused inTypeMap
+  override proc appendSpecificImplementation  (?let @unifiedTypeMap unused inTypeMap
                                           ?!@stringset ioInclusionSet
-                                          !@string outImplementation {
+                                          !@string outImplementation ) {
     [self.unwrappedType addHeaderFileName !?ioInclusionSet]
     [self.mSelfTypeEntry addHeaderFileName !?ioInclusionSet]
     if not self.weakType.isNull then

@@ -105,7 +105,7 @@ syntax extension galgas4DeclarationsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
+  rule <declaration> (?!@galgasDeclarationAST ioDeclarations ) {
     let @bool isAbstract
     let @bool clonable
     let @bool finalClass
@@ -204,13 +204,13 @@ final class @classDeclarationAST : @semanticDeclarationAST {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc enterDeclarationInGraph
-            ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
+            (?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
             ?!@equatableExtensionMap unused ioEquatableExtensionMap
             ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext
             ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext
             ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
             ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
-            ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList {
+            ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList ) {
     let key = @lstring {!"@" + self.mClassTypeName !self.mClassTypeName.location}
     [!?ioSemanticTypePrecedenceGraph addNode !key !self]
   //--- Add edge from super class
@@ -234,13 +234,13 @@ final class @classDeclarationAST : @semanticDeclarationAST {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc enterDeclarationInSemanticContext
-    ?!@equatableExtensionMap ioEquatableExtensionMap
+    (?!@equatableExtensionMap ioEquatableExtensionMap
     ?let @extensionInitializerForBuildingContext inExtensionInitializerMapForBuildingContext
     ?let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext
     ?let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext
     ?let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext
     ?!@unifiedTypeMap ioTypeMap
-    ?!@semanticContext ioSemanticContext {
+    ?!@semanticContext ioSemanticContext ) {
     var @getterMap getterMap
     var @setterMap setterMap
     var @instanceMethodMap instanceMethodMap
@@ -441,13 +441,13 @@ final class @classDeclarationAST : @semanticDeclarationAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override proc semanticAnalysis ?!@lstringlist ioUsefulnessRootEntities
+  override proc semanticAnalysis (?!@lstringlist ioUsefulnessRootEntities
                 ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
                 ?let @string unused inProductDirectory
                 ?let @semanticContext inSemanticContext
                 ?!@unifiedTypeMap ioTypeMap
                 ?let @predefinedTypes inPredefinedTypes
-                ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration {
+                ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration ) {
   //--- Useful entities graph
     let classTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!self.mClassTypeName)
     [!?ioUsefulEntitiesGraph addNode !classTypeNameForUsefulness !classTypeNameForUsefulness]
@@ -594,8 +594,8 @@ final class @classTypeForGeneration : @semanticTypeForGeneration {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override proc appendDeclaration1 ?!@stringset ioInclusionSet
-                                     !@string outHeader {
+  override proc appendDeclaration1 (?!@stringset ioInclusionSet
+                                     !@string outHeader ) {
     if not self.mSuperClass.isNull then
       [self.mSuperClass addHeaderFileName !?ioInclusionSet]
     end
@@ -628,9 +628,9 @@ final class @classTypeForGeneration : @semanticTypeForGeneration {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override proc appendDeclaration2 ?let @string inOutputDirectory
+  override proc appendDeclaration2 (?let @string inOutputDirectory
                                      ?!@stringset ioInclusionSet
-                                     !@string outHeader {
+                                     !@string outHeader ) {
     for (t 4*) in self.mCurrentTypedAttributeList do
       [t addHeaderFileName !?ioInclusionSet]
     end
@@ -695,9 +695,9 @@ final class @classTypeForGeneration : @semanticTypeForGeneration {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override proc appendSpecificImplementation ?let @unifiedTypeMap unused inTypeMap
+  override proc appendSpecificImplementation (?let @unifiedTypeMap unused inTypeMap
                                                ?!@stringset ioInclusionSet
-                                               !@string outImplementation {
+                                               !@string outImplementation ) {
     [self.mSelfTypeEntry addHeaderFileName !?ioInclusionSet]
     let selfTypeDefinition = self.mSelfTypeEntry.definition
     let at = [self.mAllTypedAttributeList subListWithRange

@@ -31,8 +31,8 @@ syntax extension galgas3ExpressionSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <primary_ggs3> ?!@galgasDeclarationAST unused ioDeclarations
-                      !@semanticExpressionAST outExpression {
+  rule <primary_ggs3> (?!@galgasDeclarationAST unused ioDeclarations
+                      !@semanticExpressionAST outExpression ) {
     $`$
     $@type$ ?let @lstring typeName
     outExpression = @literalTypeInExpressionAST {!typeName}
@@ -48,8 +48,8 @@ syntax extension galgas4ExpressionSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <primary> ?!@galgasDeclarationAST unused ioDeclarations
-                 !@semanticExpressionAST outExpression {
+  rule <primary> (?!@galgasDeclarationAST unused ioDeclarations
+                 !@semanticExpressionAST outExpression ) {
     $`$
     $@type$ ?let @lstring typeName // Cannot use <type_definition> !? ioDeclarations ?let @lstring typeName
     outExpression = @literalTypeInExpressionAST {!typeName}
@@ -64,22 +64,22 @@ syntax extension galgas4ExpressionSyntax {
 //--------------------------------------------------------------------------------------------------
 
 override proc @literalTypeInExpressionAST enterExpressionInSemanticContext
-  ?!@unifiedTypeMap ioTypeMap
-{
+  (?!@unifiedTypeMap ioTypeMap
+) {
   [!?ioTypeMap makeEntry !self.mLiteralTypeName ?*]
 }
 
 //································································································
 
 override proc @literalTypeInExpressionAST analyzeSemanticExpression
-  ?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName
+  (?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?inferenceType: let @unifiedTypeMapEntry unused inType
   ?let @analysisContext unused inAnalysisContext
                                 ?!@unifiedTypeMap ioTypeMap
   ?!@localVarManager unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
-{
+) {
   let usefulnessName = typeNameForUsefulEntitiesGraph (!self.mLiteralTypeName)
   [!?ioUsefulEntitiesGraph addEdge !from: inUsefulnessCallerEntityName !to: usefulnessName]
 //---
@@ -102,12 +102,12 @@ final class @literalTypeInExpressionForGeneration : @semanticExpressionForGenera
 //································································································
 
 override proc @literalTypeInExpressionForGeneration generateExpression
-  ?!@string unused ioGeneratedCode
+  (?!@string unused ioGeneratedCode
   ?!@stringset ioInclusionSet
   ?!@uint unused ioTemporaryVariableIndex
   ?!@stringset unused ioUnusedVariableCppNameSet
   !@string outCppExpression
-{
+) {
   [self.mLiteralType addHeaderFileName !?ioInclusionSet]
   outCppExpression = "GGS_type (& kTypeDescriptor_GALGAS_"
                   + self.mLiteralType.definition.typeName.string.identifierRepresentation + ")"

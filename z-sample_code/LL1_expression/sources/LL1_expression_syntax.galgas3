@@ -1,13 +1,13 @@
 syntax LL1_expression_syntax (LL1_expression_lexique) %translate {
 
-rule <StartSymbol> {
+rule <StartSymbol> () {
   <Expression> ?let @cExpression expressionTree ?let @uint value
   log expressionTree, value
 }
   
 rule <Constant>
-  !@cExpression outExpressionTree
-  !@uint outValue {
+  (!@cExpression outExpressionTree
+  !@uint outValue ) {
   $number$ ?let @luint cst
   send " "
   outExpressionTree = @cConst { !cst}
@@ -15,8 +15,8 @@ rule <Constant>
 }
   
 rule <Expression>
-  !@cExpression outExpressionTree
-  !@uint outValue {
+  (!@cExpression outExpressionTree
+  !@uint outValue ) {
   <Terme> ?outExpressionTree ?outValue
   repeat
   while 
@@ -30,8 +30,8 @@ rule <Expression>
 }
   
 rule <Terme>
-  !@cExpression outExpressionTree
-  !@uint outValue {
+  (!@cExpression outExpressionTree
+  !@uint outValue ) {
   <Facteur> ?outExpressionTree ?outValue
   repeat
   while 
@@ -45,8 +45,8 @@ rule <Terme>
 }
 
 rule <Facteur>
-  !@cExpression outExpressionTree
-  !@uint outValue {
+  (!@cExpression outExpressionTree
+  !@uint outValue ) {
   select
     $($ :> ?* ?*
     <Expression> ?outExpressionTree ?outValue

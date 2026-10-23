@@ -46,8 +46,8 @@ syntax extension galgas3ExpressionSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <primary_ggs3> ?!@galgasDeclarationAST ioDeclarations
-                      !@semanticExpressionAST outExpression {
+  rule <primary_ggs3> (?!@galgasDeclarationAST ioDeclarations
+                      !@semanticExpressionAST outExpression ) {
     $[$
     $filewrapper$
     $identifier$ ?let filewrapperName indexing filewrapperReference
@@ -86,8 +86,8 @@ syntax extension galgas4ExpressionSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <primary> ?!@galgasDeclarationAST ioDeclarations
-                 !@semanticExpressionAST outExpression {
+  rule <primary> (?!@galgasDeclarationAST ioDeclarations
+                 !@semanticExpressionAST outExpression ) {
     $filewrapper$
     $[$
     $identifier$ ?let filewrapperName indexing filewrapperReference
@@ -124,21 +124,21 @@ syntax extension galgas4ExpressionSyntax {
 //--------------------------------------------------------------------------------------------------
 
 override proc @filewrapperObjectInstanciationInExpressionAST enterExpressionInSemanticContext
-  ?!@unifiedTypeMap unused ioTypeMap
-{
+  (?!@unifiedTypeMap unused ioTypeMap
+) {
 }
 
 //································································································
 
 override proc @filewrapperObjectInstanciationInExpressionAST analyzeSemanticExpression
-  ?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName
+  (?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?inferenceType: let @unifiedTypeMapEntry unused inType
   ?let @analysisContext inAnalysisContext
                                 ?!@unifiedTypeMap ioTypeMap
   ?!@localVarManager unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
-{
+) {
   let usefulnessName = filewrapperNameForUsefulEntitiesGraph (!self.mFilewrapperName)
   [!?ioUsefulEntitiesGraph addEdge !from: inUsefulnessCallerEntityName !to: usefulnessName]
 //--- Search for filewrapper name in filewrapper map
@@ -166,8 +166,8 @@ override proc @filewrapperObjectInstanciationInExpressionAST analyzeSemanticExpr
 //--------------------------------------------------------------------------------------------------
 
 override proc @filewrapperTemplateInExpressionAST enterExpressionInSemanticContext
-  ?!@unifiedTypeMap ioTypeMap
-{
+  (?!@unifiedTypeMap ioTypeMap
+) {
   for (* mExpression *) in self.mExpressions do
     [mExpression enterExpressionInSemanticContext !?ioTypeMap]
   end
@@ -176,14 +176,14 @@ override proc @filewrapperTemplateInExpressionAST enterExpressionInSemanticConte
 //································································································
 
 override proc @filewrapperTemplateInExpressionAST analyzeSemanticExpression
-  ?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName
+  (?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?inferenceType: let @unifiedTypeMapEntry unused inType
   ?let @analysisContext inAnalysisContext
                                 ?!@unifiedTypeMap ioTypeMap
   ?!@localVarManager ioVariableMap
   !@semanticExpressionForGeneration outExpression
-{
+) {
   let usefulnessName = filewrapperTemplateNameForUsefulEntitiesGraph (!self.mFilewrapperName !self.mFilewrapperTemplateName)
   [!?ioUsefulEntitiesGraph addEdge !from: inUsefulnessCallerEntityName !to: usefulnessName]
 //---
@@ -242,21 +242,21 @@ override proc @filewrapperTemplateInExpressionAST analyzeSemanticExpression
 //--------------------------------------------------------------------------------------------------
 
 override proc @filewrapperInExpressionAST enterExpressionInSemanticContext
-  ?!@unifiedTypeMap unused ioTypeMap
-{
+  (?!@unifiedTypeMap unused ioTypeMap
+) {
 }
 
 //································································································
 
 override proc @filewrapperInExpressionAST analyzeSemanticExpression
-  ?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName
+  (?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?inferenceType: let @unifiedTypeMapEntry unused inType
   ?let @analysisContext inAnalysisContext
                                 ?!@unifiedTypeMap ioTypeMap
   ?!@localVarManager unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
-{
+) {
   let usefulnessName = filewrapperNameForUsefulEntitiesGraph (!self.mFilewrapperName)
   [!?ioUsefulEntitiesGraph addEdge !from: inUsefulnessCallerEntityName !to: usefulnessName]
 //--- Parse filewrapper path
@@ -338,11 +338,11 @@ final class @filewrapperInExpressionForGeneration : @semanticExpressionForGenera
 //································································································
 
 override proc @filewrapperInExpressionForGeneration generateExpression
-  ?!@string unused ioGeneratedCode
+  (?!@string unused ioGeneratedCode
   ?!@stringset ioInclusionSet
   ?!@uint unused ioTemporaryVariableIndex
   ?!@stringset unused ioUnusedVariableCppNameSet
-  !@string outCppExpression {
+  !@string outCppExpression ) {
   ioInclusionSet ++= "filewrapper-" + self.mFilewrapperName
   outCppExpression = "GGS_filewrapper (gWrapperDirectory_0_" + self.mFilewrapperName.identifierRepresentation + ")"
 }
@@ -358,11 +358,11 @@ final class @filewrapperTemplateInExpressionForGeneration : @semanticExpressionF
 //································································································
 
 override proc @filewrapperTemplateInExpressionForGeneration generateExpression
-  ?!@string ioGeneratedCode
+  (?!@string ioGeneratedCode
   ?!@stringset ioInclusionSet
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
-  !@string outCppExpression {
+  !@string outCppExpression ) {
 //---
   ioInclusionSet ++= "filewrapper-" + self.mFilewrapperName
   var parameterList = @stringlist ()
@@ -396,11 +396,11 @@ final class @filewrapperStaticPathInExpressionForGeneration : @semanticExpressio
 //································································································
 
 override proc @filewrapperStaticPathInExpressionForGeneration generateExpression
-  ?!@string unused ioGeneratedCode
+  (?!@string unused ioGeneratedCode
   ?!@stringset ioInclusionSet
   ?!@uint unused ioTemporaryVariableIndex
   ?!@stringset unused ioUnusedVariableCppNameSet
-  !@string outCppExpression {
+  !@string outCppExpression ) {
 //---
   ioInclusionSet ++= "filewrapper-" + self.mFilewrapperName
   outCppExpression = if self.mIsTextFile then "GGS_string" else "GGS_data" end

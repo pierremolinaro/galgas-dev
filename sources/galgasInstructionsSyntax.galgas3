@@ -26,36 +26,36 @@ syntax galgas3InstructionsSyntax (galgasScanner3) {
   //          Rules prototypes
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <expression_ggs3> ?!@galgasDeclarationAST ioDeclarations
-                         !@semanticExpressionAST outExpression
+  rule <expression_ggs3> (?!@galgasDeclarationAST ioDeclarations
+                         !@semanticExpressionAST outExpression)
 
-  rule <comma_separated_expression_ggs3> ?!@galgasDeclarationAST ioDeclarations
-                                         !@CommaSeparatedExpressionList outExpressionList
+  rule <comma_separated_expression_ggs3> (?!@galgasDeclarationAST ioDeclarations
+                                         !@CommaSeparatedExpressionList outExpressionList)
 
-  rule <formal_parameter_list_ggs34> ?!@galgasDeclarationAST ioDeclarations
-                                    !@formalParameterListAST outFormalParameterList
+  rule <formal_parameter_list_ggs34> (?!@galgasDeclarationAST ioDeclarations
+                                    !@formalParameterListAST outFormalParameterList)
 
-  rule <formal_input_parameter_list_ggs3> ?!@galgasDeclarationAST ioDeclarations
-                                          !@formalInputParameterListAST outFormalInputParameterList
+  rule <formal_input_parameter_list_ggs3> (?!@galgasDeclarationAST ioDeclarations
+                                          !@formalInputParameterListAST outFormalInputParameterList)
 
-  rule <formal_input_parameter_list_ggs34> ?!@galgasDeclarationAST ioDeclarations
-                                           !@formalInputParameterListAST outFormalInputParameterList
+  rule <formal_input_parameter_list_ggs34> (?!@galgasDeclarationAST ioDeclarations
+                                           !@formalInputParameterListAST outFormalInputParameterList)
 
-  rule <type_definition_ggs3> ?!@galgasDeclarationAST ioDeclarations
-                              !@lstring outTypeName
+  rule <type_definition_ggs3> (?!@galgasDeclarationAST ioDeclarations
+                              !@lstring outTypeName)
 
-  rule <output_expression_list_ggs3> ?!@galgasDeclarationAST ioDeclarations
-                                     !@actualOutputArgumentList outExpressionList
+  rule <output_expression_list_ggs3> (?!@galgasDeclarationAST ioDeclarations
+                                     !@actualOutputArgumentList outExpressionList)
 
-  rule <output_expression_list_ggs34> ?!@galgasDeclarationAST ioDeclarations
-                                      !@actualOutputArgumentList outExpressionList
+  rule <output_expression_list_ggs34> (?!@galgasDeclarationAST ioDeclarations
+                                      !@actualOutputArgumentList outExpressionList)
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //    S E M A N T I C    I N S T R U C T I O N    L I S T
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <semantic_instruction_list_ggs3> ?!@galgasDeclarationAST ioDeclarations
-                                        !@semanticInstructionListAST outInstructionsList {
+  rule <semantic_instruction_list_ggs3> (?!@galgasDeclarationAST ioDeclarations
+                                        !@semanticInstructionListAST outInstructionsList ) {
     outInstructionsList = @semanticInstructionListAST ()
     select
     or
@@ -125,11 +125,11 @@ syntax galgas3InstructionsSyntax (galgasScanner3) {
    
    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <function_declaration_ggs3> ?once: let @bool inIsOnce
+  rule <function_declaration_ggs3> (?once: let @bool inIsOnce
                                    ?usefull: let @bool inIsUsefull
                                    ?private: let @bool inPrivate
                                    ?let @lstring inFunctionName
-                                   ?!@galgasDeclarationAST ioDeclarations {
+                                   ?!@galgasDeclarationAST ioDeclarations ) {
     <formal_input_parameter_list_ggs3> !?ioDeclarations ?let formalInputParameterList
     if inIsOnce, (formalInputParameterList.count > 0) then
       error (inFunctionName: "an 'once' function should has no argument")
@@ -174,11 +174,11 @@ syntax galgas3InstructionsSyntax (galgasScanner3) {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <function_declaration_ggs3> ?once: let @bool inIsOnce
+  rule <function_declaration_ggs3> (?once: let @bool inIsOnce
                                    ?usefull: let @bool inIsUsefull
                                    ?private: let @bool inIsPrivate
                                    ?let @lstring inFunctionName
-                                   ?!@galgasDeclarationAST ioDeclarations {
+                                   ?!@galgasDeclarationAST ioDeclarations ) {
     <formal_input_parameter_list_ggs34> !?ioDeclarations ?let formalInputParameterList
     if inIsOnce, (formalInputParameterList.count > 0) then
       error (inFunctionName: "an 'once' function should has no argument")
@@ -274,14 +274,14 @@ syntax galgas3InstructionsSyntax (galgasScanner3) {
   //    M E T H O D    C A L L    I N S T R U C T I O N
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <actual_parameter_list_ggs3> ?!@galgasDeclarationAST ioDeclarations
-                                    !@actualParameterListAST outActualParameterList
+  rule <actual_parameter_list_ggs3> (?!@galgasDeclarationAST ioDeclarations
+                                    !@actualParameterListAST outActualParameterList)
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <syntax_directed_translation_result>
-          ?!@galgasDeclarationAST ioDeclarations
-          !@abstractGrammarInstructionSyntaxDirectedTranslationResult result {
+          (?!@galgasDeclarationAST ioDeclarations
+          !@abstractGrammarInstructionSyntaxDirectedTranslationResult result) {
     $?$
     select
       $*$
@@ -303,8 +303,8 @@ syntax galgas3InstructionsSyntax (galgasScanner3) {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <actual_input_parameter_list_ggs3> ?!@galgasDeclarationAST ioDeclarations
-                                          !@actualInputParameterListAST outActualInputParameterList {
+  rule <actual_input_parameter_list_ggs3> (?!@galgasDeclarationAST ioDeclarations
+                                          !@actualInputParameterListAST outActualInputParameterList ) {
     outActualInputParameterList = @actualInputParameterListAST ()
     repeat
     while
@@ -361,33 +361,33 @@ syntax galgas4InstructionsSyntax (galgasScanner4) {
   //          Rules prototypes
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <expression> ?!@galgasDeclarationAST ioDeclarations
-                    !@semanticExpressionAST outExpression
+  rule <expression> (?!@galgasDeclarationAST ioDeclarations
+                    !@semanticExpressionAST outExpression)
 
-  rule <comma_separated_expression> ?!@galgasDeclarationAST ioDeclarations
-                                    !@CommaSeparatedExpressionList outExpressionList
+  rule <comma_separated_expression> (?!@galgasDeclarationAST ioDeclarations
+                                    !@CommaSeparatedExpressionList outExpressionList)
 
-  rule <formal_parameter_list> ?!@galgasDeclarationAST ioDeclarations
-                               !@formalParameterListAST outFormalParameterList
+  rule <formal_parameter_list> (?!@galgasDeclarationAST ioDeclarations
+                               !@formalParameterListAST outFormalParameterList)
 
-  rule <formal_input_parameter_list> ?!@galgasDeclarationAST ioDeclarations
-                                     !@formalInputParameterListAST outFormalInputParameterList
+  rule <formal_input_parameter_list> (?!@galgasDeclarationAST ioDeclarations
+                                     !@formalInputParameterListAST outFormalInputParameterList)
 
-  rule <type_definition> ?!@galgasDeclarationAST ioDeclarations
-                         !@lstring outTypeName
+  rule <type_definition> (?!@galgasDeclarationAST ioDeclarations
+                         !@lstring outTypeName)
 
-  rule <non_empty_output_expression_list> ?!@galgasDeclarationAST ioDeclarations
-                                          !@actualOutputArgumentList outExpressionList
+  rule <non_empty_output_expression_list> (?!@galgasDeclarationAST ioDeclarations
+                                          !@actualOutputArgumentList outExpressionList)
 
-  rule <output_expression_list> ?!@galgasDeclarationAST ioDeclarations
-                                !@actualOutputArgumentList outExpressionList
+  rule <output_expression_list> (?!@galgasDeclarationAST ioDeclarations
+                                !@actualOutputArgumentList outExpressionList)
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //    S E M A N T I C    I N S T R U C T I O N    L I S T
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <semantic_instruction_list> ?!@galgasDeclarationAST ioDeclarations
-                                   !@semanticInstructionListAST outInstructionsList {
+  rule <semantic_instruction_list> (?!@galgasDeclarationAST ioDeclarations
+                                   !@semanticInstructionListAST outInstructionsList ) {
     outInstructionsList = @semanticInstructionListAST ()
     select
     or
@@ -432,7 +432,7 @@ syntax galgas4InstructionsSyntax (galgasScanner4) {
   //    F U N C T I O N    D E C L A R A T I O N
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
+  rule <declaration> (?!@galgasDeclarationAST ioDeclarations ) {
     $func$
     var isOnce = false
     var isUsefull = false
@@ -495,7 +495,7 @@ syntax galgas4InstructionsSyntax (galgasScanner4) {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
+  rule <declaration> (?!@galgasDeclarationAST ioDeclarations ) {
     $private$
     $func$
     var isOnce = false
@@ -561,7 +561,7 @@ syntax galgas4InstructionsSyntax (galgasScanner4) {
   //    E X T E R N    F U N C T I O N    D E C L A R A T I O N
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
+  rule <declaration> (?!@galgasDeclarationAST ioDeclarations ) {
     $extern$
     $func$
     var isUsefull = false
@@ -590,13 +590,13 @@ syntax galgas4InstructionsSyntax (galgasScanner4) {
   //    M E T H O D    C A L L    I N S T R U C T I O N
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <actual_parameter_list_within_parenthesis> ?!@galgasDeclarationAST ioDeclarations
-                                                  !@actualParameterListAST outActualParameterList
+  rule <actual_parameter_list_within_parenthesis> (?!@galgasDeclarationAST ioDeclarations
+                                                  !@actualParameterListAST outActualParameterList)
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <syntax_directed_translation_result> ?!@galgasDeclarationAST ioDeclarations
-                                            !@abstractGrammarInstructionSyntaxDirectedTranslationResult result {
+  rule <syntax_directed_translation_result> (?!@galgasDeclarationAST ioDeclarations
+                                            !@abstractGrammarInstructionSyntaxDirectedTranslationResult result ) {
     $($
     $?$
     select
@@ -620,8 +620,8 @@ syntax galgas4InstructionsSyntax (galgasScanner4) {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <actual_input_parameter_list> ?!@galgasDeclarationAST ioDeclarations
-                                     !@actualInputParameterListAST outActualInputParameterList {
+  rule <actual_input_parameter_list> (?!@galgasDeclarationAST ioDeclarations
+                                     !@actualInputParameterListAST outActualInputParameterList ) {
     outActualInputParameterList = @actualInputParameterListAST ()
     select
     or

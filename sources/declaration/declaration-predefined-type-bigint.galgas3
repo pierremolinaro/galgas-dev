@@ -33,8 +33,8 @@ final class @bigintPredefinedTypeAST : @predefinedTypeAST {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc getClassFunctionMap
-    ?!@unifiedTypeMap ioUnifiedTypeMap
-    !@classFunctionMap outMap {
+    (?!@unifiedTypeMap ioUnifiedTypeMap
+    !@classFunctionMap outMap ) {
     outMap = @()
     enterClassFunctionWithoutArgument (
       !?outMap
@@ -48,8 +48,8 @@ final class @bigintPredefinedTypeAST : @predefinedTypeAST {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc getInstanceMethodMap
-    ?!@unifiedTypeMap ioUnifiedTypeMap
-    !@instanceMethodMap outInstanceMethodMap {
+    (?!@unifiedTypeMap ioUnifiedTypeMap
+    !@instanceMethodMap outInstanceMethodMap ) {
     outInstanceMethodMap = @()
   //--- divide, floorDivide, ceilDivide
     [!?ioUnifiedTypeMap makeEntryFromString !"bigint" ?let bigIntType]
@@ -71,9 +71,9 @@ final class @bigintPredefinedTypeAST : @predefinedTypeAST {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc getSetterMap
-    ?!@unifiedTypeMap ioUnifiedTypeMap
+    (?!@unifiedTypeMap ioUnifiedTypeMap
     !@setterMap outSetterMap
-  {
+  ) {
     outSetterMap = @()
     enterModifierWith2InputArguments (
       !?outSetterMap
@@ -98,8 +98,8 @@ final class @bigintPredefinedTypeAST : @predefinedTypeAST {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc getGetterMap
-    ?!@unifiedTypeMap ioUnifiedTypeMap
-    !@getterMap outMap {
+    (?!@unifiedTypeMap ioUnifiedTypeMap
+    !@getterMap outMap ) {
     commonGetterMapForAllTypes (!?ioUnifiedTypeMap ?outMap)
     enterBaseFinalGetterWithoutArgument (
       !?outMap

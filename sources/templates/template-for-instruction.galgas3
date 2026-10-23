@@ -48,7 +48,7 @@ syntax extension templateSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <for_instruction_element> ?!@lstringlist ioElementList {
+  rule <for_instruction_element> (?!@lstringlist ioElementList ) {
     $literalInt$ ?let count
     $*$
     var n = count.bigint.uint
@@ -63,14 +63,14 @@ syntax extension templateSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <for_instruction_element> ?!@lstringlist ioElementList {
+  rule <for_instruction_element> (?!@lstringlist ioElementList ) {
     $*$
     ioElementList += !"".nowhere
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <for_instruction_element> ?!@lstringlist ioElementList {
+  rule <for_instruction_element> (?!@lstringlist ioElementList ) {
     $identifier$ ?let constantName
     ioElementList += !constantName
   }
@@ -98,9 +98,9 @@ syntax extension templateSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <for_instruction_enumerated_object> !@lstringlist outEnumeration
+  rule <for_instruction_enumerated_object> (!@lstringlist outEnumeration
                                            !@location outEndOfProperties
-                                           !@templateExpressionAST outExpression {
+                                           !@templateExpressionAST outExpression ) {
     outEnumeration = @lstringlist ()
     $($
     repeat
@@ -123,7 +123,7 @@ syntax extension templateSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <template_instruction> ?!@templateInstructionListAST ioResultingInstructionList {
+  rule <template_instruction> (?!@templateInstructionListAST ioResultingInstructionList ) {
     $for$
     let @bool ascending
     select
@@ -209,12 +209,12 @@ syntax extension templateSyntax {
 //--------------------------------------------------------------------------------------------------
 
 override proc @templateInstructionForeachAST templateInstructionAnalysis
-  ?let @lstring inUsefulnessCallerEntityName
+  (?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @templateAnalysisContext inAnalysisContext
                                 ?!@unifiedTypeMap ioTypeMap
   ?!@templateInstructionListForGeneration ioInstructionList
-{
+) {
 //--- Foreach expression
   [self.mExpression templateExpressionAnalysis
     !inUsefulnessCallerEntityName
@@ -326,11 +326,11 @@ final class @templateInstructionForeachForGeneration : @templateInstructionForGe
 //································································································
 
 override proc @templateInstructionForeachForGeneration templateCodeGeneration
-  ?!@string ioGeneratedCode
+  (?!@string ioGeneratedCode
   ?!@stringset ioInclusionSet
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
-  ?!@bool ioUseColumnMarker {
+  ?!@bool ioUseColumnMarker ) {
 //---
   [self.mExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?let foreachVarCppName]
 //--- Index

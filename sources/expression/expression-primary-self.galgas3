@@ -31,8 +31,8 @@ syntax extension galgas3ExpressionSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <primary_ggs3> ?!@galgasDeclarationAST unused ioDeclarations
-                      !@semanticExpressionAST outExpression {
+  rule <primary_ggs3> (?!@galgasDeclarationAST unused ioDeclarations
+                      !@semanticExpressionAST outExpression ) {
     $self$
     outExpression = @selfInExpressionAST {!@location.here}
   }
@@ -47,8 +47,8 @@ syntax extension galgas4ExpressionSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <primary> ?!@galgasDeclarationAST unused ioDeclarations
-                 !@semanticExpressionAST outExpression {
+  rule <primary> (?!@galgasDeclarationAST unused ioDeclarations
+                 !@semanticExpressionAST outExpression ) {
     $self$
     outExpression = @selfInExpressionAST {!@location.here}
   }
@@ -62,21 +62,21 @@ syntax extension galgas4ExpressionSyntax {
 //--------------------------------------------------------------------------------------------------
 
 override proc @selfInExpressionAST enterExpressionInSemanticContext
-  ?!@unifiedTypeMap unused ioTypeMap
-{
+  (?!@unifiedTypeMap unused ioTypeMap
+) {
 }
 
 //································································································
 
 override proc @selfInExpressionAST analyzeSemanticExpression
-  ?usefulnessCallerEntityName: let @lstring unused inUsefulnessCallerEntityName
+  (?usefulnessCallerEntityName: let @lstring unused inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
   ?inferenceType: let @unifiedTypeMapEntry unused inType
   ?let @analysisContext inAnalysisContext
                                 ?!@unifiedTypeMap unused ioTypeMap
   ?!@localVarManager unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
-{
+) {
   if let selfAvailable = inAnalysisContext.selfAvailability.getAvailable then
     let @string selfCppName = inAnalysisContext.selfObjectCppName
     outExpression = @selfInExpressionForGeneration {!selfAvailable.type !self.mSelfLocation !selfCppName}
@@ -96,11 +96,11 @@ final class @selfInExpressionForGeneration : @semanticExpressionForGeneration {
 //································································································
 
 override proc @selfInExpressionForGeneration generateExpression
-  ?!@string ioGeneratedCode
+  (?!@string ioGeneratedCode
   ?!@stringset unused ioInclusionSet
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
-  !@string outCppExpression {
+  !@string outCppExpression ) {
   outCppExpression = "temp_" + ioTemporaryVariableIndex.string
   ioTemporaryVariableIndex += 1
   ioGeneratedCode += "const GGS_" + self.mResultType.identifierRepresentation + " " + outCppExpression + " = " + self.mSelfCppName + " ;\n"

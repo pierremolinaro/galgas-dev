@@ -23,11 +23,11 @@ abstract class @instruction {
 //--------------------------------------------------------------------------------------------------
 
 abstract proc @instruction codeDisplay
-  ?!@bool ioPenDown
+  (?!@bool ioPenDown
   ?!@double unused ioX
   ?!@double unused ioY
   ?!@double unused ioAngle
-  ?!@string unused SVG
+  ?!@string unused SVG)
 
 //--------------------------------------------------------------------------------------------------
 
@@ -43,12 +43,12 @@ final class @penUp : @instruction {
 //--------------------------------------------------------------------------------------------------
 
 override proc @penUp codeDisplay
-  ?!@bool ioPenDown
+  (?!@bool ioPenDown
   ?!@double unused ioX
   ?!@double unused ioY
   ?!@double unused ioAngle
   ?!@string unused SVG
-{
+) {
   ioPenDown = false
 }
 
@@ -60,12 +60,12 @@ final class @penDown : @instruction {
 //--------------------------------------------------------------------------------------------------
 
 override proc @penDown codeDisplay
-  ?!@bool ioPenDown
+  (?!@bool ioPenDown
   ?!@double unused ioX
   ?!@double unused ioY
   ?!@double unused ioAngle
   ?!@string unused SVG
-{
+) {
   ioPenDown = true
 }
 
@@ -78,12 +78,12 @@ final class @rotate : @instruction {
 //--------------------------------------------------------------------------------------------------
 
 override proc @rotate codeDisplay
-  ?!@bool unused ioPenDown
+  (?!@bool unused ioPenDown
   ?!@double unused ioX
   ?!@double unused ioY
   ?!@double ioAngle
   ?!@string unused SVG
-{
+) {
   ioAngle = ioAngle + self.mAngle.uint.double
 }
 
@@ -96,12 +96,12 @@ final class @forward : @instruction {
 //--------------------------------------------------------------------------------------------------
 
 override proc @forward codeDisplay
-  ?!@bool ioPenDown
+  (?!@bool ioPenDown
   ?!@double ioX
   ?!@double ioY
   ?!@double ioAngle
   ?!@string SVG
-{
+) {
   let @double x = ioX + [self.mLength double] * ioAngle.cosDegree
   let @double y = ioY + [self.mLength double] * ioAngle.sinDegree
   if ioPenDown then

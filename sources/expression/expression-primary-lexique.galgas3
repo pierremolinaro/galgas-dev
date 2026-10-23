@@ -32,8 +32,8 @@ syntax extension galgas3ExpressionSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <primary_ggs3> ?!@galgasDeclarationAST unused ioDeclarations
-                      !@semanticExpressionAST outExpression {
+  rule <primary_ggs3> (?!@galgasDeclarationAST unused ioDeclarations
+                      !@semanticExpressionAST outExpression ) {
     $[$
     $lexique$
     $identifier$ ?let lexiqueName
@@ -53,8 +53,8 @@ syntax extension galgas4ExpressionSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <primary> ?!@galgasDeclarationAST unused ioDeclarations
-                 !@semanticExpressionAST outExpression {
+  rule <primary> (?!@galgasDeclarationAST unused ioDeclarations
+                 !@semanticExpressionAST outExpression ) {
     $lexique$
     $[$
     $identifier$ ?let lexiqueName
@@ -73,21 +73,21 @@ syntax extension galgas4ExpressionSyntax {
 //--------------------------------------------------------------------------------------------------
 
 override proc @lexiqueIntrospectionExpressionAST enterExpressionInSemanticContext
-  ?!@unifiedTypeMap unused ioTypeMap
-{
+  (?!@unifiedTypeMap unused ioTypeMap
+) {
 }
 
 //································································································
 
 override proc @lexiqueIntrospectionExpressionAST analyzeSemanticExpression
-  ?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName
+  (?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?inferenceType: let @unifiedTypeMapEntry unused inType
   ?let @analysisContext inAnalysisContext
                                 ?!@unifiedTypeMap ioTypeMap
   ?!@localVarManager unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
-{
+) {
  let usefulnessName = lexiqueNameForUsefulEntitiesGraph (!self.mLexiqueComponentName)
   [!?ioUsefulEntitiesGraph addEdge !from: inUsefulnessCallerEntityName !to: usefulnessName]
 //--- Check  lexique is declared
@@ -119,11 +119,11 @@ final class @lexiqueIntrospectionForGeneration : @semanticExpressionForGeneratio
 //································································································
 
 override proc @lexiqueIntrospectionForGeneration generateExpression
-  ?!@string unused ioGeneratedCode
+  (?!@string unused ioGeneratedCode
   ?!@stringset ioInclusionSet
   ?!@uint unused ioTemporaryVariableIndex
   ?!@stringset unused ioUnusedVariableCppNameSet
-  !@string outCppExpression {
+  !@string outCppExpression ) {
 //---
   ioInclusionSet ++= "lexique-" + self.mLexiqueComponentName.fileNameRepresentation
   outCppExpression = "Lexique_" + self.mLexiqueComponentName.identifierRepresentation + "::"

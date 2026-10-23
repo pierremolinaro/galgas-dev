@@ -37,14 +37,14 @@ override func @weakReferenceDeclarationAST keyRepresentation -> @string {
 //--------------------------------------------------------------------------------------------------
 
 override proc @weakReferenceDeclarationAST enterDeclarationInGraph
-  ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
+  (?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
   ?!@equatableExtensionMap unused ioEquatableExtensionMap
   ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext
   ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext
   ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
   ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList
-{
+) {
   let key = @lstring {!"@" + self.mWeakReferenceTypeName !self.mWeakReferenceTypeName.location}
   [!?ioSemanticTypePrecedenceGraph addNode !key !self]
   if self.mSuperWeakReferenceTypeName.string != "" then
@@ -60,13 +60,13 @@ override proc @weakReferenceDeclarationAST enterDeclarationInGraph
 //--------------------------------------------------------------------------------------------------
 
 override proc @weakReferenceDeclarationAST enterDeclarationInSemanticContext
-          ?!@equatableExtensionMap ioEquatableExtensionMap
+          (?!@equatableExtensionMap ioEquatableExtensionMap
           ?let @extensionInitializerForBuildingContext inExtensionInitializerMapForBuildingContext
           ?let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext
           ?let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext
           ?let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext
           ?!@unifiedTypeMap ioTypeMap
-          ?!@semanticContext ioSemanticContext {
+          ?!@semanticContext ioSemanticContext ) {
 //--- Handle super class
   let @unifiedTypeMapEntry superClassIndex
   let @bool generateHeaderInSeparateFile
@@ -165,14 +165,14 @@ override proc @weakReferenceDeclarationAST enterDeclarationInSemanticContext
 //--------------------------------------------------------------------------------------------------
 
 override proc @weakReferenceDeclarationAST semanticAnalysis
-  ?!@lstringlist unused ioUsefulnessRootEntities
+  (?!@lstringlist unused ioUsefulnessRootEntities
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @string unused inProductDirectory
   ?let @semanticContext unused inSemanticContext
                                 ?!@unifiedTypeMap ioTypeMap
   ?let @predefinedTypes unused inPredefinedTypes
   ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
-{
+) {
 //--- Useful entities graph
   let weakRefTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!self.mWeakReferenceTypeName)
   [!?ioUsefulEntitiesGraph addNode !weakRefTypeNameForUsefulness !weakRefTypeNameForUsefulness]
@@ -219,8 +219,8 @@ final class @weakReferenceTypeForGeneration : @semanticTypeForGeneration {
 
 //--------------------------------------------------------------------------------------------------
 
-override proc @weakReferenceTypeForGeneration appendDeclaration1 ?!@stringset ioInclusionSet
-                                                                   !@string outHeader {
+override proc @weakReferenceTypeForGeneration appendDeclaration1 (?!@stringset ioInclusionSet
+                                                                   !@string outHeader ) {
   if not self.mSuperClass.isNull then
     [self.mSuperClass addHeaderFileName !?ioInclusionSet]
   end
@@ -261,10 +261,10 @@ override proc @weakReferenceTypeForGeneration appendDeclaration1 ?!@stringset io
 //--------------------------------------------------------------------------------------------------
 
 override proc @weakReferenceTypeForGeneration appendSpecificImplementation
-  ?let @unifiedTypeMap unused inTypeMap
+  (?let @unifiedTypeMap unused inTypeMap
   ?!@stringset ioInclusionSet
   !@string outImplementation
-{
+) {
   [self.mSelfTypeEntry addHeaderFileName !?ioInclusionSet]
   let typeDefinition = self.mSelfTypeEntry.definition
   let @string optionalClassTypeNameRepresentation

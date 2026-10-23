@@ -24,20 +24,20 @@
 //--------------------------------------------------------------------------------------------------
 
 abstract proc @templateInstructionForGeneration templateCodeGeneration
-  ?!@string ioGeneratedCode
+  (?!@string ioGeneratedCode
   ?!@stringset ioInclusionSet
   ?!@uint unused ioTemporaryVariableIndex
   ?!@stringset unused ioUnusedVariableCppNameSet
-  ?!@bool unused ioUseColumnMarker
+  ?!@bool unused ioUseColumnMarker)
 
 //--------------------------------------------------------------------------------------------------
 
-proc templateCodeGenerationForListInstruction ?let @templateInstructionListForGeneration inInstructionList
+proc templateCodeGenerationForListInstruction (?let @templateInstructionListForGeneration inInstructionList
                                               ?!@string ioGeneratedCode
                                               ?!@stringset ioInclusionSet
                                               ?!@uint ioTemporaryVariableIndex
                                               ?!@stringset ioUnusedVariableCppNameSet
-                                              ?!@bool ioUseColumnMarker {
+                                              ?!@bool ioUseColumnMarker ) {
   for (mInstruction) in inInstructionList do
     [mInstruction templateCodeGeneration
       !?ioGeneratedCode
@@ -52,22 +52,22 @@ proc templateCodeGenerationForListInstruction ?let @templateInstructionListForGe
 //--------------------------------------------------------------------------------------------------
 
 override proc @templateInstructionStringForGeneration templateCodeGeneration
-  ?!@string ioGeneratedCode
+  (?!@string ioGeneratedCode
   ?!@stringset unused  ioInclusionSet
   ?!@uint unused ioTemporaryVariableIndex
   ?!@stringset unused ioUnusedVariableCppNameSet
-  ?!@bool unused ioUseColumnMarker {
+  ?!@bool unused ioUseColumnMarker ) {
   ioGeneratedCode += "result.appendString (" + self.mTemplateString.utf8RepresentationEscapingQuestionMark + ") ;\n"
 }
 
 //--------------------------------------------------------------------------------------------------
 
 override proc @templateInstructionExpressionForGeneration templateCodeGeneration
-  ?!@string ioGeneratedCode
+  (?!@string ioGeneratedCode
   ?!@stringset ioInclusionSet
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
-  ?!@bool unused ioUseColumnMarker {
+  ?!@bool unused ioUseColumnMarker ) {
 //--- Expression
   [self.mExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?let cppName]
   ioGeneratedCode += "result.appendString (" + cppName + ".stringValue ()) ;\n"
@@ -76,11 +76,11 @@ override proc @templateInstructionExpressionForGeneration templateCodeGeneration
 //--------------------------------------------------------------------------------------------------
 
 override proc @templateBlockInstructionForGeneration templateCodeGeneration
-  ?!@string ioGeneratedCode
+  (?!@string ioGeneratedCode
   ?!@stringset ioInclusionSet
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
-  ?!@bool ioUseColumnMarker {
+  ?!@bool ioUseColumnMarker ) {
 //--- Expression
   [self.mExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?let indendationVarCppName]
   ioGeneratedCode += "if (" + indendationVarCppName + ".isValid ()) {\n"
@@ -102,11 +102,11 @@ override proc @templateBlockInstructionForGeneration templateCodeGeneration
 //--------------------------------------------------------------------------------------------------
 
 override proc @templateInstructionGetColumnLocationForGeneration templateCodeGeneration
-  ?!@string ioGeneratedCode
+  (?!@string ioGeneratedCode
   ?!@stringset unused ioInclusionSet
   ?!@uint unused ioTemporaryVariableIndex
   ?!@stringset unused ioUnusedVariableCppNameSet
-  ?!@bool ioUseColumnMarker {
+  ?!@bool ioUseColumnMarker ) {
   ioUseColumnMarker = true
   ioGeneratedCode += "columnMarker = result.currentColumn () ;\n"
 }
@@ -114,11 +114,11 @@ override proc @templateInstructionGetColumnLocationForGeneration templateCodeGen
 //--------------------------------------------------------------------------------------------------
 
 override proc @templateInstructionGotoColumnLocationForGeneration templateCodeGeneration
-  ?!@string ioGeneratedCode
+  (?!@string ioGeneratedCode
   ?!@stringset unused ioInclusionSet
   ?!@uint unused ioTemporaryVariableIndex
   ?!@stringset unused ioUnusedVariableCppNameSet
-  ?!@bool ioUseColumnMarker {
+  ?!@bool ioUseColumnMarker ) {
   ioUseColumnMarker = true
   ioGeneratedCode += "result.appendSpacesUntilColumn (columnMarker) ;\n"
 }
@@ -126,11 +126,11 @@ override proc @templateInstructionGotoColumnLocationForGeneration templateCodeGe
 //--------------------------------------------------------------------------------------------------
 
 override proc @templateInstructionIfForGeneration templateCodeGeneration
-                                                        ?!@string ioGeneratedCode
+                                                        (?!@string ioGeneratedCode
                                                         ?!@stringset ioInclusionSet
                                                         ?!@uint ioTemporaryVariableIndex
                                                         ?!@stringset ioUnusedVariableCppNameSet
-                                                        ?!@bool ioUseColumnMarker {
+                                                        ?!@bool ioUseColumnMarker ) {
   for (expression instructionList) in self.mTemplateInstructionIfBranchList do
   //--- IF expression
     [expression generateExpression

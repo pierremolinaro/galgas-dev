@@ -253,7 +253,7 @@ syntax galgas4GuiComponentSyntax (galgasScanner4) {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
+  rule <declaration> (?!@galgasDeclarationAST ioDeclarations ) {
     $gui$
     $identifier$ ?let @lstring mGUIName
     ${$
@@ -288,7 +288,7 @@ syntax galgas4GuiComponentSyntax (galgasScanner4) {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <gui_with_lexique_declaration> ?!@withLexiqueListAST ioWithLexiqueList {
+  rule <gui_with_lexique_declaration> (?!@withLexiqueListAST ioWithLexiqueList ) {
     $with$
     $lexique$
     $identifier$ ?let @lstring lexiqueReference
@@ -357,7 +357,7 @@ syntax galgas4GuiComponentSyntax (galgasScanner4) {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <gui_with_option_declaration> ?!@lstringlist ioImportedOptionList {
+  rule <gui_with_option_declaration> (?!@lstringlist ioImportedOptionList ) {
     $with$
     $option$
     $identifier$ ?let @lstring optionReference
@@ -366,7 +366,7 @@ syntax galgas4GuiComponentSyntax (galgasScanner4) {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <gui_attributes> ?!@guiSimpleAttributeListAST ioSimpleGlobalAttributes {
+  rule <gui_attributes> (?!@guiSimpleAttributeListAST ioSimpleGlobalAttributes ) {
     $identifier$ ?let @lstring mKey
     $:$
     var mValue = @lstring {!"" !.here}
@@ -408,9 +408,9 @@ map @optionComponentMapForGeneration {
 //--------------------------------------------------------------------------------------------------
 
 proc compileAllGuiComponentFromASTGalgas3
-  ?let @galgasGUIComponentListAST inGuiComponentListAST
+  (?let @galgasGUIComponentListAST inGuiComponentListAST
   ?let @semanticContext inSemanticContext
-  !@optionComponentMapForGeneration outOptionComponentMapForGeneration {
+  !@optionComponentMapForGeneration outOptionComponentMapForGeneration ) {
   outOptionComponentMapForGeneration = @()
   for guiAST in inGuiComponentListAST do
     guiComponentSemanticAnalysis (
@@ -423,9 +423,9 @@ proc compileAllGuiComponentFromASTGalgas3
 
 //--------------------------------------------------------------------------------------------------
 
-private proc guiComponentSemanticAnalysis ?let @galgasGUIComponentListAST.@element inGUIComponentAST
+private proc guiComponentSemanticAnalysis (?let @galgasGUIComponentListAST.@element inGUIComponentAST
                                           ?let @semanticContext inSemanticContext
-                                          ?!@optionComponentMapForGeneration ioOptionComponentMapForGeneration {
+                                          ?!@optionComponentMapForGeneration ioOptionComponentMapForGeneration ) {
   if inGUIComponentAST.mGUIComponentName.string != "cocoa" then
     error (inGUIComponentAST.mGUIComponentName : "the gui name should be 'cocoa'")
   end
@@ -550,11 +550,11 @@ private proc guiComponentSemanticAnalysis ?let @galgasGUIComponentListAST.@eleme
 //! CODE GENERATION
 //--------------------------------------------------------------------------------------------------
 
-proc generateAllGuiComponentsGalgas3 ?let @optionComponentMapForGeneration inOptionComponentMapForGeneration
+proc generateAllGuiComponentsGalgas3 (?let @optionComponentMapForGeneration inOptionComponentMapForGeneration
                                       ?let @string inOutputDirectory
                                       ?let @bool inQuietOutputByDefault
 //                                      ?!objc: @stringlist ioObjcAllProductFileList
-                                      ?!swift: @stringlist ioSwiftAllProductFileList {
+                                      ?!swift: @stringlist ioSwiftAllProductFileList ) {
   for (lkey guiComponentContext) in inOptionComponentMapForGeneration do
 //    let swiftFileName = "gui-" + lkey + ".swift"
 //    ioSwiftAllProductFileList += !swiftFileName

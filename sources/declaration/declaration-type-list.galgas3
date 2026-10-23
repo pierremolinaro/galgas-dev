@@ -84,7 +84,7 @@ syntax extension galgas4DeclarationsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
+  rule <declaration> (?!@galgasDeclarationAST ioDeclarations ) {
     $list$
     $@type$ ?let @lstring listTypeName indexing listDefinition, structDefinition ".element"
     var isUsefull = false
@@ -137,13 +137,13 @@ override func @listDeclarationAST keyRepresentation
 //--------------------------------------------------------------------------------------------------
 
 override proc @listDeclarationAST enterDeclarationInGraph
-  ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
+  (?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
   ?!@equatableExtensionMap unused ioEquatableExtensionMap
   ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext
   ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext
   ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
   ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
-  ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList {
+  ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList ) {
   let key = @lstring {!"@" + self.mListTypeName !self.mListTypeName.location}
   [!?ioSemanticTypePrecedenceGraph addNode !key !self]
   for (* propertyTypeName 4*) in self.mPropertyList do
@@ -156,14 +156,14 @@ override proc @listDeclarationAST enterDeclarationInGraph
 //--------------------------------------------------------------------------------------------------
 
 override proc @listDeclarationAST enterDeclarationInSemanticContext
-  ?!@equatableExtensionMap ioEquatableExtensionMap
+  (?!@equatableExtensionMap ioEquatableExtensionMap
   ?let @extensionInitializerForBuildingContext inExtensionInitializerMapForBuildingContext
   ?let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext
   ?let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext
   ?let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext
   ?!@unifiedTypeMap ioTypeMap
   ?!@semanticContext ioSemanticContext
-{
+) {
 //--- Handle attributes
   var @typedPropertyList typedAttributeList = @()
   for (* propertyTypeName mPropertyName unused accessControl hasSelector initExpression) in self.mPropertyList do
@@ -417,7 +417,7 @@ override proc @listDeclarationAST enterDeclarationInSemanticContext
 //--------------------------------------------------------------------------------------------------
 
 override proc @listDeclarationAST addAssociatedElement
-  ?!@galgasDeclarationAST ioDeclarations {
+  (?!@galgasDeclarationAST ioDeclarations ) {
   var @propertyInCollectionListAST structAttributeList = @()
   for (mutability qualifiedTypeAST mPropertyName * hasSelector initExpression) in self.mPropertyList do
     structAttributeList +=
@@ -444,14 +444,14 @@ override proc @listDeclarationAST addAssociatedElement
 //--------------------------------------------------------------------------------------------------
 
 override proc @listDeclarationAST semanticAnalysis
-          ?!@lstringlist ioUsefulnessRootEntities
+          (?!@lstringlist ioUsefulnessRootEntities
           ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
           ?let @string unused inProductDirectory
           ?let @semanticContext unused inSemanticContext
           ?!@unifiedTypeMap ioTypeMap
           ?let @predefinedTypes unused inPredefinedTypes
           ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
-{
+) {
 //--- Useful entities graph
   let nameForUsefulness = typeNameForUsefulEntitiesGraph (!self.mListTypeName)
   [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
@@ -516,9 +516,9 @@ final class @listTypeForGeneration : @semanticTypeForGeneration {
 //--------------------------------------------------------------------------------------------------
 
 override proc @listTypeForGeneration appendDeclaration1
-  ?!@stringset unused ioInclusionSet
+  (?!@stringset unused ioInclusionSet
   !@string outHeader
-{
+) {
   let selfTypeDefinition = self.mSelfTypeEntry.definition
   outHeader = [filewrapper listGenerationTemplate.listTypeHeader1
     !selfTypeDefinition.typeName.string
@@ -551,9 +551,9 @@ override proc @listTypeForGeneration appendDeclaration1
 //--------------------------------------------------------------------------------------------------
 
 override proc @listTypeForGeneration appendSpecificImplementation
-                                        ?let @unifiedTypeMap unused inTypeMap
+                                        (?let @unifiedTypeMap unused inTypeMap
                                         ?!@stringset ioInclusionSet
-                                        !@string outImplementation {
+                                        !@string outImplementation ) {
   for (t 4*) in self.mTypedAttributeList do
     [t addHeaderFileName !?ioInclusionSet]
   end

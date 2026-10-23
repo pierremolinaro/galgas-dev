@@ -21,8 +21,8 @@ syntax extension galgas3ExpressionSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <factor_ggs3> ?!@galgasDeclarationAST ioDeclarations
-                     !@semanticExpressionAST outExpression {
+  rule <factor_ggs3> (?!@galgasDeclarationAST ioDeclarations
+                     !@semanticExpressionAST outExpression ) {
     let operatorLocation = @location.here
     $~$
     <factor_ggs3> !?ioDeclarations ?outExpression
@@ -39,8 +39,8 @@ syntax extension galgas4ExpressionSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <factor> ?!@galgasDeclarationAST ioDeclarations
-                !@semanticExpressionAST outExpression {
+  rule <factor> (?!@galgasDeclarationAST ioDeclarations
+                !@semanticExpressionAST outExpression ) {
     let operatorLocation = @location.here
     $~$
     <factor> !?ioDeclarations ?outExpression
@@ -62,21 +62,21 @@ final class @tildeExpressionAST : @semanticExpressionAST {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc enterExpressionInSemanticContext
-    ?!@unifiedTypeMap ioTypeMap {
+    (?!@unifiedTypeMap ioTypeMap ) {
     [self.mExpression enterExpressionInSemanticContext !?ioTypeMap]
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc analyzeSemanticExpression
-    ?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName
+    (?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName
     ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
     ?inferenceType: let @unifiedTypeMapEntry inType
     ?let @analysisContext inAnalysisContext
                                   ?!@unifiedTypeMap ioTypeMap
     ?!@localVarManager ioVariableMap
     !@semanticExpressionForGeneration outExpression
-  {
+  ) {
   //--- Expression analysis
     [self.mExpression analyzeSemanticExpression
       !usefulnessCallerEntityName: inUsefulnessCallerEntityName
@@ -125,11 +125,11 @@ final class @tildeExpressionForGeneration : @semanticExpressionForGeneration {
 //································································································
 
 override proc @tildeExpressionForGeneration generateExpression
-  ?!@string ioGeneratedCode
+  (?!@string ioGeneratedCode
   ?!@stringset ioInclusionSet
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
-  !@string outCppExpression {
+  !@string outCppExpression ) {
   [self.mExpression.mResultType addHeaderFileName !?ioInclusionSet]
 //--- Operand
   [self.mExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?let operand]

@@ -2,7 +2,7 @@
 
 //-----------------------------------------------------------*
 
-proc listUnicodeCharacterProperties {
+proc listUnicodeCharacterProperties () {
   print (!"---- Unassigned Unicode Characters\n")
   var @uint unicodeValue = 0
   var @uint matchedValue = 0

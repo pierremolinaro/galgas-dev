@@ -377,9 +377,9 @@ map @lexicalAttributeMap {
 //--------------------------------------------------------------------------------------------------
 
 proc buildLexicalAttributeMap
-  ?let @lexicalTypeMap inLexicalTypeMap
+  (?let @lexicalTypeMap inLexicalTypeMap
   ?let @lexicalAttributeListAST inLexicalAttributeList
-  ?!@lexicalAttributeMap ioLexicalAttributeMap {
+  ?!@lexicalAttributeMap ioLexicalAttributeMap ) {
   for (mTypeName mName) in inLexicalAttributeList do
     if [inLexicalTypeMap hasKey !mTypeName.string] then
       [inLexicalTypeMap searchKey !mTypeName ?let @lexicalTypeEnum lexicalType]

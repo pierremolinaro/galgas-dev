@@ -21,8 +21,8 @@ syntax extension galgas3ExpressionSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <primary_ggs3> ?!@galgasDeclarationAST ioDeclarations
-                      !@semanticExpressionAST outExpression {
+  rule <primary_ggs3> (?!@galgasDeclarationAST ioDeclarations
+                      !@semanticExpressionAST outExpression ) {
     <optional_type_ggs3> ?let @lstring typeName
     $@[$
     var @collectionValueElementList expressionList = @()
@@ -49,8 +49,8 @@ syntax extension galgas4ExpressionSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <primary> ?!@galgasDeclarationAST ioDeclarations
-                 !@semanticExpressionAST outExpression {
+  rule <primary> (?!@galgasDeclarationAST ioDeclarations
+                 !@semanticExpressionAST outExpression ) {
     let startLocation = @location.here
     $[$
     var @collectionValueElementList expressionList = @()
@@ -69,9 +69,9 @@ syntax extension galgas4ExpressionSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <primary_beginning_by_type> ?let @lstring inTypeName
+  rule <primary_beginning_by_type> (?let @lstring inTypeName
                                    ?!@galgasDeclarationAST ioDeclarations
-                                   !@semanticExpressionAST outExpression {
+                                   !@semanticExpressionAST outExpression ) {
     $[$
     var @collectionValueElementList expressionList = @()
     select
@@ -116,13 +116,13 @@ final class @collectionValueAST : @semanticExpressionAST {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc analyzeSemanticExpression
-        ?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName
+        (?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName
         ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
         ?inferenceType: let @unifiedTypeMapEntry inType
         ?let @analysisContext inAnalysisContext
         ?!@unifiedTypeMap ioTypeMap
         ?!@localVarManager ioVariableMap
-        !@semanticExpressionForGeneration outExpression {
+        !@semanticExpressionForGeneration outExpression ) {
   //--- Type
     let @unifiedTypeMapEntry targetType
     if self.mTypeName.string == "" then
@@ -200,11 +200,11 @@ final class @expressionCollectionForGeneration : @semanticExpressionForGeneratio
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override proc generateExpression ?!@string ioGeneratedCode
+  override proc generateExpression (?!@string ioGeneratedCode
                                       ?!@stringset ioInclusionSet
                                       ?!@uint ioTemporaryVariableIndex
                                       ?!@stringset ioUnusedVariableCppNameSet
-                                      !@string outCppExpression {
+                                      !@string outCppExpression ) {
   //---
     [self.mResultType addHeaderFileName !?ioInclusionSet]
   //--- Create temporary variable variable

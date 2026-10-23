@@ -23,10 +23,10 @@
 //--------------------------------------------------------------------------------------------------
 
 proc groupSyntaxComponentsGalgas3
-  ?let @galgas3SyntaxComponentListAST inAllSyntaxComponents
+  (?let @galgas3SyntaxComponentListAST inAllSyntaxComponents
   ?let @syntaxExtensions inSyntaxExtensions
   ?!@semanticDeclarationListAST ioDeclarationList
-{
+) {
 //--- Add extensions to syntax list
   var @stringset componentNameSet = @()
   for component in inAllSyntaxComponents do

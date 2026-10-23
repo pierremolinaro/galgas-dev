@@ -63,7 +63,7 @@ syntax extension galgas4DeclarationsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
+  rule <declaration> (?!@galgasDeclarationAST ioDeclarations ) {
     $struct$
     $@type$ ?let @lstring structTypeName indexing structDefinition
     let @structComparison comparison
@@ -125,14 +125,14 @@ final class @structDeclarationAST : @semanticDeclarationAST {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc enterDeclarationInGraph
-    ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
+    (?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
     ?!@equatableExtensionMap unused ioEquatableExtensionMap
     ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext
     ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext
     ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
     ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
     ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList
-  {
+  ) {
     let key = @lstring {!"@" + self.structTypeName !self.structTypeName.location}
     [!?ioSemanticTypePrecedenceGraph addNode !key !self]
     for property in self.mStructurePropertyListAST do
@@ -150,13 +150,13 @@ final class @structDeclarationAST : @semanticDeclarationAST {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc enterDeclarationInSemanticContext
-    ?!@equatableExtensionMap ioEquatableExtensionMap
+    (?!@equatableExtensionMap ioEquatableExtensionMap
     ?let @extensionInitializerForBuildingContext inExtensionInitializerMapForBuildingContext
     ?let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext
     ?let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext
     ?let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext
     ?!@unifiedTypeMap ioTypeMap
-    ?!@semanticContext ioSemanticContext {
+    ?!@semanticContext ioSemanticContext ) {
   //--- Struct type index
     [!?ioTypeMap makeEntry !self.structTypeName ?let structTypeIndex]
   //--- Class functions and property map
@@ -270,13 +270,13 @@ final class @structDeclarationAST : @semanticDeclarationAST {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc semanticAnalysis
-              ?!@lstringlist ioUsefulnessRootEntities
+              (?!@lstringlist ioUsefulnessRootEntities
               ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
               ?let @string unused inProductDirectory
               ?let @semanticContext inSemanticContext
               ?!@unifiedTypeMap ioTypeMap
               ?let @predefinedTypes inPredefinedTypes
-              ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration {
+              ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration ) {
     let structType = [ioTypeMap typeMapEntryForLKey !self.structTypeName]
     let structNameForUsefulness = typeNameForUsefulEntitiesGraph (!self.structTypeName)
   //---
@@ -402,7 +402,7 @@ final class @structTypeForGeneration : @semanticTypeForGeneration {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override proc appendDeclaration1 ?!@stringset ioInclusionSet !@string outHeader {
+  override proc appendDeclaration1 (?!@stringset ioInclusionSet !@string outHeader ) {
     for property in self.mTypedPropertyList do
       [property.typeEntry addHeaderFileName1 !?ioInclusionSet]
     end
@@ -434,10 +434,10 @@ final class @structTypeForGeneration : @semanticTypeForGeneration {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc appendSpecificImplementation
-    ?let @unifiedTypeMap unused inTypeMap
+    (?let @unifiedTypeMap unused inTypeMap
     ?!@stringset ioInclusionSet
     !@string outImplementation
-  {
+  ) {
     [self.mSelfTypeEntry addHeaderFileName !?ioInclusionSet]
     let selfTypeDefinition = self.mSelfTypeEntry.definition
     outImplementation = [filewrapper structureGenerationTemplate.structTypeSpecificImplementation

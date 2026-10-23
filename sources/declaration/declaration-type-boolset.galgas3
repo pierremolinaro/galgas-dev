@@ -65,7 +65,7 @@ syntax extension galgas4DeclarationsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
+  rule <declaration> (?!@galgasDeclarationAST ioDeclarations ) {
     $boolset$
     $@type$ ?let @lstring boolsetTypeName indexing structDefinition
     let @bool isEquatable
@@ -116,14 +116,14 @@ final class @boolsetDeclarationAST : @semanticDeclarationAST {
 //--------------------------------------------------------------------------------------------------
 
 override proc @boolsetDeclarationAST enterDeclarationInGraph
-  ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
+  (?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
   ?!@equatableExtensionMap unused ioEquatableExtensionMap
   ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext
   ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext
   ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
   ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList
-{
+) {
   let key = @lstring {!"@" + self.mBoolsetTypeName !self.mBoolsetTypeName.location}
   [!?ioSemanticTypePrecedenceGraph addNode !key !self]
 }
@@ -141,13 +141,13 @@ override func @boolsetDeclarationAST keyRepresentation -> @string {
 //--------------------------------------------------------------------------------------------------
 
 override proc @boolsetDeclarationAST enterDeclarationInSemanticContext
-  ?!@equatableExtensionMap ioEquatableExtensionMap
+  (?!@equatableExtensionMap ioEquatableExtensionMap
   ?let @extensionInitializerForBuildingContext inExtensionInitializerMapForBuildingContext
   ?let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext
   ?let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext
   ?let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext
   ?!@unifiedTypeMap ioTypeMap
-  ?!@semanticContext ioSemanticContext {
+  ?!@semanticContext ioSemanticContext ) {
 //--- Check unicity of slot names
   var @stringset slotNameSet = @()
   for (slotName) in self.mFlagList do
@@ -257,14 +257,14 @@ override proc @boolsetDeclarationAST enterDeclarationInSemanticContext
 //--------------------------------------------------------------------------------------------------
 
 override proc @boolsetDeclarationAST semanticAnalysis
-  ?!@lstringlist ioUsefulnessRootEntities
+  (?!@lstringlist ioUsefulnessRootEntities
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @string unused inProductDirectory
   ?let @semanticContext unused inSemanticContext
                                 ?!@unifiedTypeMap ioTypeMap
   ?let @predefinedTypes unused inPredefinedTypes
   ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
-{
+) {
 //--- Check flags count
   if self.mFlagList.count > 64 then
     let @location s = [self.mFlagList mValueAtIndex !64]
@@ -325,9 +325,9 @@ filewrapper structGenerationTemplate in "../+generation-templates/type_generatio
 //································································································
 
 override proc @boolsetTypeForGeneration appendDeclaration1
-  ?!@stringset unused ioInclusionSet
+  (?!@stringset unused ioInclusionSet
   !@string outHeader
-{
+) {
   let selfTypeDefinition = self.mSelfTypeEntry.definition
   outHeader = [filewrapper structGenerationTemplate.boolsetTypeHeader1
     !selfTypeDefinition.typeName.string
@@ -356,10 +356,10 @@ override proc @boolsetTypeForGeneration appendDeclaration1
 //································································································
 
 override proc @boolsetTypeForGeneration appendSpecificImplementation
-  ?let @unifiedTypeMap unused inTypeMap
+  (?let @unifiedTypeMap unused inTypeMap
   ?!@stringset ioInclusionSet
   !@string outImplementation
-{
+) {
   [self.mSelfTypeEntry  addHeaderFileName !?ioInclusionSet]
   outImplementation = [filewrapper structGenerationTemplate.boolsetTypeSpecificImplementation
     !self.mSelfTypeEntry.definition.typeName.string

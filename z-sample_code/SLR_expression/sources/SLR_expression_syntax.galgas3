@@ -2,37 +2,37 @@ syntax SLR_expression_syntax (SLR_expression_lexique) {
 
 rule <StartSymbol>
 
-rule <Expression>
-  !@cExpression outExpressionTree
+()rule <Expression>
+  (!@cExpression outExpressionTree
   !@uint outValue
-rule <Terme>
-  !@cExpression outExpressionTree
-  !@uint outValue
-
-rule <Facteur>
-  !@cExpression outExpressionTree
+)rule <Terme>
+  (!@cExpression outExpressionTree
   !@uint outValue
 
-rule <Constant>
-  !@cExpression outExpressionTree
+)rule <Facteur>
+  (!@cExpression outExpressionTree
   !@uint outValue
 
-rule <StartSymbol> {
+)rule <Constant>
+  (!@cExpression outExpressionTree
+  !@uint outValue
+
+)rule <StartSymbol> () {
   <Expression> ?let unused expressionTree ?let value
   log value
 }
   
 rule <Constant>
-  !@cExpression outExpressionTree
-  !@uint outValue {
+  (!@cExpression outExpressionTree
+  !@uint outValue ) {
   $number$ ?let cst
   outExpressionTree = @cConst { !cst}
   outValue = cst.uint
 }
 
 rule <Expression>
-  !@cExpression outExpressionTree
-  !@uint outValue {
+  (!@cExpression outExpressionTree
+  !@uint outValue ) {
   select
     <Terme> ?outExpressionTree ?outValue
   or 
@@ -45,8 +45,8 @@ rule <Expression>
 }
 
 rule <Terme>
-  !@cExpression outExpressionTree
-  !@uint outValue {
+  (!@cExpression outExpressionTree
+  !@uint outValue ) {
   select
     <Facteur> ?outExpressionTree ?outValue
   or 
@@ -59,8 +59,8 @@ rule <Terme>
 }
 
 rule <Facteur>
-  !@cExpression outExpressionTree
-  !@uint outValue {
+  (!@cExpression outExpressionTree
+  !@uint outValue ) {
   select
     $($
     <Expression> ?outExpressionTree ?outValue

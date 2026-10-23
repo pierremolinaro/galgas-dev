@@ -44,7 +44,7 @@ list @actualOutputArgumentList {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  proc enterInSemanticContext ?!@unifiedTypeMap ioTypeMap {
+  proc enterInSemanticContext (?!@unifiedTypeMap ioTypeMap ) {
     for (* mExpression *) in self do
       [mExpression enterExpressionInSemanticContext !?ioTypeMap]
     end
@@ -62,8 +62,8 @@ syntax extension galgas3ExpressionSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <output_expression_list_ggs3> ?!@galgasDeclarationAST ioDeclarations
-                                     !@actualOutputArgumentList outExpressionList {
+  rule <output_expression_list_ggs3> (?!@galgasDeclarationAST ioDeclarations
+                                     !@actualOutputArgumentList outExpressionList ) {
     outExpressionList = @()
     repeat
     while
@@ -80,8 +80,8 @@ syntax extension galgas3ExpressionSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <output_expression_list_ggs34> ?!@galgasDeclarationAST ioDeclarations
-                                      !@actualOutputArgumentList outExpressionList {
+  rule <output_expression_list_ggs34> (?!@galgasDeclarationAST ioDeclarations
+                                      !@actualOutputArgumentList outExpressionList ) {
     outExpressionList = @()
     select
     or
@@ -116,8 +116,8 @@ syntax extension galgas4ExpressionSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <output_expression_list> ?!@galgasDeclarationAST ioDeclarations
-                                !@actualOutputArgumentList outExpressionList {
+  rule <output_expression_list> (?!@galgasDeclarationAST ioDeclarations
+                                !@actualOutputArgumentList outExpressionList ) {
     outExpressionList = @()
     select
       repeat
@@ -141,8 +141,8 @@ syntax extension galgas4ExpressionSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <non_empty_output_expression_list> ?!@galgasDeclarationAST ioDeclarations
-                                          !@actualOutputArgumentList outExpressionList {
+  rule <non_empty_output_expression_list> (?!@galgasDeclarationAST ioDeclarations
+                                          !@actualOutputArgumentList outExpressionList ) {
     outExpressionList = @()
     repeat
       let @lstring selector

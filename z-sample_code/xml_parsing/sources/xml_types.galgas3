@@ -32,9 +32,9 @@ list @xmlNodeList {
 //-----------------------------------------------------------*
 
 proc internal_logXMLNodes
-  ?let @xmlNodeList inNodeList
+  (?let @xmlNodeList inNodeList
   ?let @string inIndentationString
-  ?!@string ioString {
+  ?!@string ioString ) {
   for (node) in  inNodeList do
     ioString += inIndentationString
     switch node.mType
@@ -63,7 +63,7 @@ proc internal_logXMLNodes
 
 //-----------------------------------------------------------*
 
-proc logXMLNodes ?let @xmlNodeList inNodeList {
+proc logXMLNodes (?let @xmlNodeList inNodeList ) {
   var @string s = ""
   internal_logXMLNodes (!inNodeList !"" !?s )
   print (!s)

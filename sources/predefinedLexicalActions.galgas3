@@ -40,7 +40,7 @@ func @lexicalTypeEnum lexicalTypeBaseName -> @string {
 //                         buildLexicalRoutineMap
 //--------------------------------------------------------------------------------------------------
 
-proc buildLexicalRoutineMap !@lexicalRoutineMap outLexicalRoutineMap {
+proc buildLexicalRoutineMap (!@lexicalRoutineMap outLexicalRoutineMap ) {
   outLexicalRoutineMap = @()
 //--- enterHexDigitIntoASCIIcharacter
   var @lexicalRoutineFormalArgumentList lexicalRoutineFormalArgumentList = @()
@@ -503,7 +503,7 @@ proc buildLexicalRoutineMap !@lexicalRoutineMap outLexicalRoutineMap {
 //                         buildLexicalFunctionMap
 //--------------------------------------------------------------------------------------------------
 
-proc buildLexicalFunctionMap !@lexicalFunctionMap outLexicalFunctionMap {
+proc buildLexicalFunctionMap (!@lexicalFunctionMap outLexicalFunctionMap ) {
   outLexicalFunctionMap = @()
 //--- toLower
   var lexicalTypeList = @lexicalFunctionFormalArgumentList ()
@@ -531,7 +531,7 @@ proc buildLexicalFunctionMap !@lexicalFunctionMap outLexicalFunctionMap {
 //                    printPredefinedLexicalActions
 //--------------------------------------------------------------------------------------------------
 
-proc printPredefinedLexicalActions {
+proc printPredefinedLexicalActions () {
 //-------------------------------------- Build lexical routine map
   buildLexicalRoutineMap (?let lexicalRoutineMap)
 //-------------------------------------- Display lexical routines

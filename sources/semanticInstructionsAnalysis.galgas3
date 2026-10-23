@@ -54,7 +54,7 @@ list @localInitializedVariableList {
 //--------------------------------------------------------------------------------------------------
 
 proc analyzeSemanticInstructionList
-  ?let @lstring inUsefulnessCallerEntityName
+  (?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
                                 ?!@unifiedTypeMap ioTypeMap
@@ -65,7 +65,7 @@ proc analyzeSemanticInstructionList
   ?let @location inEndOfBranchLocation
   ?!@localVarManager ioVariableMap
   !@semanticInstructionListForGeneration outInstructionListForGeneration
-{
+) {
 //--- Begin branch
   [!?ioVariableMap openBranch]
 //---
@@ -88,7 +88,7 @@ proc analyzeSemanticInstructionList
 //--------------------------------------------------------------------------------------------------
 
 proc analyzeSemanticInstructionListWithoutBranch
-  ?let @lstring inUsefulnessCallerEntityName
+  (?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
                                 ?!@unifiedTypeMap ioTypeMap
@@ -98,7 +98,7 @@ proc analyzeSemanticInstructionListWithoutBranch
   ?let @semanticInstructionListAST inSemanticInstructionListAST
   ?!@localVarManager ioVariableMap
   !@semanticInstructionListForGeneration outInstructionListForGeneration
-{
+) {
   outInstructionListForGeneration = @()
 //--- Declare local constants
   for (mType mName mNoWarningIfUnused mCppName) in inLocalConstantList do
@@ -142,10 +142,10 @@ func @formalArgumentPassingModeAST correspondingEffectiveParameterString -> @str
 //--------------------------------------------------------------------------------------------------
 
 proc checkExpressionIsBoolean
-  ?let @analysisContext inAnalysisContext
+  (?let @analysisContext inAnalysisContext
   ?let @location inErrorLocation
   ?let @semanticExpressionForGeneration inExpression
-  !@semanticExpressionForGeneration outExpression {
+  !@semanticExpressionForGeneration outExpression ) {
   let expressionType = inExpression.mResultType
 //--- Boolean type
   let boolType = inAnalysisContext.predefinedTypes.mBoolType
@@ -214,33 +214,33 @@ proc checkExpressionIsBoolean
 //--------------------------------------------------------------------------------------------------
 
 abstract proc @abstractGrammarInstructionSyntaxDirectedTranslationResult analyzeGrammarInstructionSDT
-  ?let @analysisContext inAnalysisContext
+  (?let @analysisContext inAnalysisContext
   ?!@unifiedTypeMap ioTypeMap
   ?let @bool inHasTranslateFeature
   ?let @string inSyntaxDirectedTranslationResultVarName
   ?!@stringlist ioAssignementList
-  ?!@localVarManager ioVariableMap
+  ?!@localVarManager ioVariableMap)
 
 //--------------------------------------------------------------------------------------------------
 
 override proc @grammarInstructionSyntaxDirectedTranslationResultNone analyzeGrammarInstructionSDT
-  ?let @analysisContext unused inAnalysisContext
+  (?let @analysisContext unused inAnalysisContext
                                 ?!@unifiedTypeMap unused ioTypeMap
   ?let @bool unused inHasTranslateFeature
   ?let @string unused inSyntaxDirectedTranslationResultVarName
   ?!@stringlist unused ioAssignementList
-  ?!@localVarManager unused ioVariableMap {
+  ?!@localVarManager unused ioVariableMap ) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
 override proc @grammarInstructionSyntaxDirectedTranslationDropResult  analyzeGrammarInstructionSDT
-  ?let @analysisContext unused inAnalysisContext
+  (?let @analysisContext unused inAnalysisContext
                                 ?!@unifiedTypeMap unused ioTypeMap
   ?let @bool inHasTranslateFeature
   ?let @string unused inSyntaxDirectedTranslationResultVarName
   ?!@stringlist unused ioAssignementList
-  ?!@localVarManager unused ioVariableMap {
+  ?!@localVarManager unused ioVariableMap ) {
   if not inHasTranslateFeature then
     error (self.mLocation : "the ':>' construct requires the grammar to be declared with 'translate' feature")
   end
@@ -249,12 +249,12 @@ override proc @grammarInstructionSyntaxDirectedTranslationDropResult  analyzeGra
 //--------------------------------------------------------------------------------------------------
 
 override proc @grammarInstructionSyntaxDirectedTranslationResultInVar  analyzeGrammarInstructionSDT
-  ?let @analysisContext inAnalysisContext
+  (?let @analysisContext inAnalysisContext
                                 ?!@unifiedTypeMap unused ioTypeMap
   ?let @bool inHasTranslateFeature
   ?let @string inSyntaxDirectedTranslationResultVarName
   ?!@stringlist ioAssignementList
-  ?!@localVarManager ioVariableMap {
+  ?!@localVarManager ioVariableMap ) {
   if not inHasTranslateFeature then
     error (self.mActualParameterName : "the ':>' construct requires the grammar to be declared with 'translate' feature")
   end
@@ -271,12 +271,12 @@ override proc @grammarInstructionSyntaxDirectedTranslationResultInVar  analyzeGr
 //--------------------------------------------------------------------------------------------------
 
 override proc @grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar  analyzeGrammarInstructionSDT
-  ?let @analysisContext inAnalysisContext
+  (?let @analysisContext inAnalysisContext
   ?!@unifiedTypeMap ioTypeMap
   ?let @bool inHasTranslateFeature
   ?let @string inSyntaxDirectedTranslationResultVarName
   ?!@stringlist ioAssignementList
-  ?!@localVarManager ioVariableMap {
+  ?!@localVarManager ioVariableMap ) {
   if not inHasTranslateFeature then
     error (self.mActualParameterName : "the ':>' construct requires the grammar to be declared with 'translate' feature")
   end
@@ -295,12 +295,12 @@ override proc @grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar  a
 //--------------------------------------------------------------------------------------------------
 
 override proc @grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst  analyzeGrammarInstructionSDT
-  ?let @analysisContext inAnalysisContext
+  (?let @analysisContext inAnalysisContext
                                 ?!@unifiedTypeMap ioTypeMap
   ?let @bool inHasTranslateFeature
   ?let @string inSyntaxDirectedTranslationResultVarName
   ?!@stringlist ioAssignementList
-  ?!@localVarManager ioVariableMap {
+  ?!@localVarManager ioVariableMap ) {
   if not inHasTranslateFeature then
     error (self.mActualParameterName : "the ':>' construct requires the grammar to be declared with 'translate' feature")
   end

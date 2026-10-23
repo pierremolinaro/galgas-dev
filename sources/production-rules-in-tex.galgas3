@@ -67,12 +67,12 @@ private func escapeForTex (let @string inString) -> @string {
 //--------------------------------------------------------------------------------------------------
 
 proc emitProductionRulesInTexFile
-  ?let @string inProductDirectory
+  (?let @string inProductDirectory
   ?let @string  inGrammarComponentName
   ?let @nonTerminalSymbolMapForGrammarAnalysis inNonTerminalMapForGrammarAnalysis
   ?let @syntaxComponentListForGrammarAnalysis inSyntaxComponentListForGrammarAnalysis
   ?let @lstring inStartSymbol
-{
+) {
 //--------------------------------------------------------- Print an tex file for grammar rule list
   let texDocumentFilePath = inProductDirectory + "/../tex/" + inGrammarComponentName + ".document.tex"
   [texDocumentFilePath.deletingLastPathComponent makeDirectory]
@@ -111,9 +111,9 @@ proc emitProductionRulesInTexFile
 //--------------------------------------------------------------------------------------------------
 
 proc @productionRuleListForGrammarAnalysis.@element displayRule
-  ?let @string inSyntaxComponentName
+  (?let @string inSyntaxComponentName
   ?!@string ioGeneratedCode
-{
+) {
   var @string currentNode = "P0start"
   var @rowList rowArray = @[@(@[@(currentNode, "[firstPoint] ()")])]
   var @string arrows = ""
@@ -165,9 +165,9 @@ proc @productionRuleListForGrammarAnalysis.@element displayRule
 //--------------------------------------------------------------------------------------------------
 
 proc @productionRuleListForGrammarAnalysis.@element displayRuleVertically
-  ?let @string inSyntaxComponentName
+  (?let @string inSyntaxComponentName
   ?!@string ioGeneratedCode
-{
+) {
   var @string currentNode = "P0start"
   var @rowList rowArray = @()
   for * in 1 ..< self.mInstructionList.count do
@@ -227,7 +227,7 @@ proc @productionRuleListForGrammarAnalysis.@element displayRuleVertically
 //--------------------------------------------------------------------------------------------------
 
 proc @syntaxInstructionListForGrammarAnalysis tikzNodeForSyntaxInstruction
-  ?!@rowList ioRowList
+  (?!@rowList ioRowList
   ?fromRow:let @uint inRow
   ?!column:@uint ioColumn
   ?!node: @string ioCurrentNode
@@ -235,7 +235,7 @@ proc @syntaxInstructionListForGrammarAnalysis tikzNodeForSyntaxInstruction
   ?!arrows:@string ioArrows
   ?!@uint ioMaxUsedRowIndex
   ?debug:let @bool inDebug
-{
+) {
   if self.count == 0 then
     [!?ioRowList appendRow
       !nodeDefinition:"[point] ()"
@@ -272,11 +272,11 @@ list @rowList {
 //--------------------------------------------------------------------------------------------------
 
 setter @rowList appendRow
-  ?nodeDefinition:let @string inNodeDefinition
+  (?nodeDefinition:let @string inNodeDefinition
   ?row:let @uint inRow
   ?column:let @uint inColumn
   !nodeName:@string outNodeName
-{
+) {
 //--- Add rows ?
   let length = self.count
   if length <= inRow then
@@ -302,19 +302,19 @@ setter @rowList appendRow
 //--------------------------------------------------------------------------------------------------
 
 abstract proc @abstractSyntaxInstructionForGrammarAnalysis tikzNodeForSyntaxInstruction
-  ?!@rowList ioRowList
+  (?!@rowList ioRowList
   ?fromRow:let @uint inRow
   ?!column:@uint ioColumn
   ?!node: @string ioCurrentNode
   ?!arrowShape: @string ioArrowShape
   ?!arrows:@string ioArrows
   ?!@uint ioMaxUsedRowIndex
-  ?debug:let @bool inDebug
+  ?debug:let @bool inDebug)
 
 //--------------------------------------------------------------------------------------------------
 
 override proc @nonTerminalInstructionForGrammarAnalysis tikzNodeForSyntaxInstruction
-  ?!@rowList ioRowList
+  (?!@rowList ioRowList
   ?fromRow:let @uint inRow
   ?!column:@uint ioColumn
   ?!node: @string ioCurrentNode
@@ -322,7 +322,7 @@ override proc @nonTerminalInstructionForGrammarAnalysis tikzNodeForSyntaxInstruc
   ?!arrows:@string ioArrows
   ?!@uint unused ioMaxUsedRowIndex
   ?debug:let @bool unused inDebug
-{
+) {
   let nodeDefinition = "[nonterminal] {\\nonTerminalSymbol{" + escapeForTex (!self.mNonterminalSymbolName)
     + "}{" + self.mNonterminalSymbolIndex + "}}"
   [!?ioRowList appendRow
@@ -340,7 +340,7 @@ override proc @nonTerminalInstructionForGrammarAnalysis tikzNodeForSyntaxInstruc
 //--------------------------------------------------------------------------------------------------
 
 override proc @selectInstructionForGrammarAnalysis tikzNodeForSyntaxInstruction
-  ?!@rowList ioRowList
+  (?!@rowList ioRowList
   ?fromRow:let @uint inRow
   ?!column:@uint ioColumn
   ?!node: @string ioCurrentNode
@@ -348,7 +348,7 @@ override proc @selectInstructionForGrammarAnalysis tikzNodeForSyntaxInstruction
   ?!arrows:@string ioArrows
   ?!@uint ioMaxUsedRowIndex
   ?debug:let @bool inDebug
-{
+) {
 //--- Trace ?
   if inDebug then
     [!?ioRowList appendRow
@@ -434,7 +434,7 @@ override proc @selectInstructionForGrammarAnalysis tikzNodeForSyntaxInstruction
 //--------------------------------------------------------------------------------------------------
 
 override proc @repeatInstructionForGrammarAnalysis tikzNodeForSyntaxInstruction
-  ?!@rowList ioRowList
+  (?!@rowList ioRowList
   ?fromRow:let @uint inRow
   ?!column:@uint ioColumn
   ?!node: @string ioCurrentNode
@@ -442,7 +442,7 @@ override proc @repeatInstructionForGrammarAnalysis tikzNodeForSyntaxInstruction
   ?!arrows:@string ioArrows
   ?!@uint ioMaxUsedRowIndex
   ?debug:let @bool inDebug
-{
+) {
 //--- Trace ?
   if inDebug then
     [!?ioRowList appendRow
@@ -552,7 +552,7 @@ func @syntaxInstructionListForGrammarAnalysis displayVertically -> @bool {
 
 //--------------------------------------------------------------------------------------------------
 
-abstract func @abstractSyntaxInstructionForGrammarAnalysis isLinear -> @bool
+abstract func @abstractSyntaxInstructionForGrammarAnalysis isLinear () -> @bool
 
 //--------------------------------------------------------------------------------------------------
 

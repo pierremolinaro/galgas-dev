@@ -32,7 +32,7 @@ syntax templateSyntax (galgasTemplateScanner) {
 //--------------------------------------------------------------------------------------------------
 
 rule <expression_tpl>
-  !@templateExpressionAST outExpression {
+  (!@templateExpressionAST outExpression ) {
   <relation_term_tpl> ?outExpression
   repeat
   while
@@ -59,7 +59,7 @@ rule <expression_tpl>
 //--------------------------------------------------------------------------------------------------
 
 rule <relation_term_tpl>
-  !@templateExpressionAST outExpression {
+  (!@templateExpressionAST outExpression ) {
   <relation_factor_tpl> ?outExpression
   repeat
   while
@@ -79,7 +79,7 @@ rule <relation_term_tpl>
 //--------------------------------------------------------------------------------------------------
 
 rule <relation_factor_tpl>
-  !@templateExpressionAST outExpression {
+  (!@templateExpressionAST outExpression ) {
   <simple_expression_tpl> ?outExpression
   select
   or
@@ -133,7 +133,7 @@ rule <relation_factor_tpl>
 //
 //--------------------------------------------------------------------------------------------------
 
-rule <simple_expression_tpl> !@templateExpressionAST outExpression {
+rule <simple_expression_tpl> (!@templateExpressionAST outExpression ) {
   <term_tpl> ?outExpression
   repeat
   while
@@ -174,7 +174,7 @@ rule <simple_expression_tpl> !@templateExpressionAST outExpression {
 //--------------------------------------------------------------------------------------------------
 
 rule <term_tpl>
-  !@templateExpressionAST outExpression {
+  (!@templateExpressionAST outExpression ) {
   <factor_tpl> ?outExpression
   repeat
   while
@@ -207,7 +207,7 @@ rule <term_tpl>
 //
 //--------------------------------------------------------------------------------------------------
 
-rule <factor_tpl> !@templateExpressionAST outExpression {
+rule <factor_tpl> (!@templateExpressionAST outExpression ) {
   <primary_tpl> ?outExpression
   repeat
   while
@@ -227,7 +227,7 @@ rule <factor_tpl> !@templateExpressionAST outExpression {
 //
 //--------------------------------------------------------------------------------------------------
 
-rule <factor_tpl> !@templateExpressionAST outExpression {
+rule <factor_tpl> (!@templateExpressionAST outExpression ) {
   let @location operatorLocation = @location.here
   $-$
   let @templateExpressionAST expression
@@ -241,7 +241,7 @@ rule <factor_tpl> !@templateExpressionAST outExpression {
 //
 //--------------------------------------------------------------------------------------------------
 
-rule <factor_tpl> !@templateExpressionAST outExpression {
+rule <factor_tpl> (!@templateExpressionAST outExpression ) {
   let @location operatorLocation = @location.here
   $not$
   let @templateExpressionAST ifCondition
@@ -256,7 +256,7 @@ rule <factor_tpl> !@templateExpressionAST outExpression {
 //--------------------------------------------------------------------------------------------------
 
 rule <factor_tpl>
-  !@templateExpressionAST outExpression {
+  (!@templateExpressionAST outExpression ) {
   let @location operatorLocation = @location.here
   $~$
   let @templateExpressionAST ifCondition
@@ -270,7 +270,7 @@ rule <factor_tpl>
 //
 //--------------------------------------------------------------------------------------------------
 
-rule <primary_tpl> !@templateExpressionAST outExpression {
+rule <primary_tpl> (!@templateExpressionAST outExpression ) {
   $identifier$ ?let @lstring identifier
   outExpression = @templateVarInExpressionAST {!identifier}
 }
@@ -281,7 +281,7 @@ rule <primary_tpl> !@templateExpressionAST outExpression {
 //
 //--------------------------------------------------------------------------------------------------
 
-rule <primary_tpl> !@templateExpressionAST outExpression {
+rule <primary_tpl> (!@templateExpressionAST outExpression ) {
   $($
   <expression_tpl> ?outExpression
   $)$
@@ -293,7 +293,7 @@ rule <primary_tpl> !@templateExpressionAST outExpression {
 //
 //--------------------------------------------------------------------------------------------------
 
-rule <primary_tpl> !@templateExpressionAST outExpression {
+rule <primary_tpl> (!@templateExpressionAST outExpression ) {
   $true$
   outExpression = @templateTrueBoolAST {!@location.here}
 }
@@ -304,7 +304,7 @@ rule <primary_tpl> !@templateExpressionAST outExpression {
 //
 //--------------------------------------------------------------------------------------------------
 
-rule <primary_tpl> !@templateExpressionAST outExpression {
+rule <primary_tpl> (!@templateExpressionAST outExpression ) {
   $false$
   outExpression = @templateFalseBoolAST {!@location.here}
 }
@@ -315,7 +315,7 @@ rule <primary_tpl> !@templateExpressionAST outExpression {
 //
 //--------------------------------------------------------------------------------------------------
 
-rule <primary_tpl> !@templateExpressionAST outExpression {
+rule <primary_tpl> (!@templateExpressionAST outExpression ) {
   $literalInt$ ?let literalInt
   outExpression = @templateLiteralUIntExpressionAST {!literalInt}
 }
@@ -326,7 +326,7 @@ rule <primary_tpl> !@templateExpressionAST outExpression {
 //
 //--------------------------------------------------------------------------------------------------
 
-rule <primary_tpl> !@templateExpressionAST outExpression {
+rule <primary_tpl> (!@templateExpressionAST outExpression ) {
   let @ldouble literalDouble
   $double.xxx$ ? literalDouble ?*
   outExpression = @templateLiteralDoubleExpressionAST {!literalDouble}
@@ -338,7 +338,7 @@ rule <primary_tpl> !@templateExpressionAST outExpression {
 //
 //--------------------------------------------------------------------------------------------------
 
-rule <primary_tpl> !@templateExpressionAST outExpression {
+rule <primary_tpl> (!@templateExpressionAST outExpression ) {
   $'char'$ ?let @lchar literalChar
   outExpression = @templateLiteralCharExpressionAST {!literalChar}
 }
@@ -349,7 +349,7 @@ rule <primary_tpl> !@templateExpressionAST outExpression {
 //
 //--------------------------------------------------------------------------------------------------
 
-rule <primary_tpl> !@templateExpressionAST outExpression {
+rule <primary_tpl> (!@templateExpressionAST outExpression ) {
   var @stringlist literalStringList = @()
   repeat
     $"string"$ ?let @lstring literalString
@@ -371,7 +371,7 @@ rule <primary_tpl> !@templateExpressionAST outExpression {
 //
 //--------------------------------------------------------------------------------------------------
 
-rule <primary_tpl> !@templateExpressionAST outExpression {
+rule <primary_tpl> (!@templateExpressionAST outExpression ) {
   $[$
   select
   //-------------------------------- Template
@@ -446,7 +446,7 @@ rule <primary_tpl> !@templateExpressionAST outExpression {
 //
 //--------------------------------------------------------------------------------------------------
 
-rule <primary_tpl> !@templateExpressionAST outExpression {
+rule <primary_tpl> (!@templateExpressionAST outExpression ) {
   $identifier$ ?let @lstring functionName
   $($
   <output_expression_list_tpl> ?let @templateExpressionListAST expressionList
@@ -456,7 +456,7 @@ rule <primary_tpl> !@templateExpressionAST outExpression {
 
 //--------------------------------------------------------------------------------------------------
 
-rule <primary_tpl> !@templateExpressionAST outExpression {
+rule <primary_tpl> (!@templateExpressionAST outExpression ) {
   <primary_tpl> ?outExpression
   let @location endOfReceiverExpression = @location.here
   $is$
@@ -486,7 +486,7 @@ rule <primary_tpl> !@templateExpressionAST outExpression {
 //
 //--------------------------------------------------------------------------------------------------
 
-rule <output_expression_list_tpl> !@templateExpressionListAST outExpressionList {
+rule <output_expression_list_tpl> (!@templateExpressionListAST outExpressionList ) {
   outExpressionList = @()
   repeat
   while
@@ -507,7 +507,7 @@ rule <output_expression_list_tpl> !@templateExpressionListAST outExpressionList 
 //
 //--------------------------------------------------------------------------------------------------
 
-rule <template_instruction> ?!@templateInstructionListAST ioResultingInstructionList {
+rule <template_instruction> (?!@templateInstructionListAST ioResultingInstructionList ) {
   $!$
   <expression_tpl> ?let @templateExpressionAST expression
   ioResultingInstructionList += !@templateInstructionExpressionAST {!expression !@location.here}
@@ -515,21 +515,21 @@ rule <template_instruction> ?!@templateInstructionListAST ioResultingInstruction
 
 //--------------------------------------------------------------------------------------------------
 
-rule <template_instruction> ?!@templateInstructionListAST ioResultingInstructionList {
+rule <template_instruction> (?!@templateInstructionListAST ioResultingInstructionList ) {
   $?^$
   ioResultingInstructionList += !@templateInstructionGetColumnLocationAST {}
 }
 
 //--------------------------------------------------------------------------------------------------
 
-rule <template_instruction> ?!@templateInstructionListAST ioResultingInstructionList {
+rule <template_instruction> (?!@templateInstructionListAST ioResultingInstructionList ) {
   $!^$
   ioResultingInstructionList += !@templateInstructionGotoColumnLocationAST {}
 }
 
 //--------------------------------------------------------------------------------------------------
 
-rule <template_instruction> ?!@templateInstructionListAST ioResultingInstructionList {
+rule <template_instruction> (?!@templateInstructionListAST ioResultingInstructionList ) {
   $block$
   <expression_tpl> ?let @templateExpressionAST expression
   $:$
@@ -550,7 +550,7 @@ rule <template_instruction> ?!@templateInstructionListAST ioResultingInstruction
 
 //--------------------------------------------------------------------------------------------------
 
-rule <template_instruction> ?!@templateInstructionListAST ioResultingInstructionList {
+rule <template_instruction> (?!@templateInstructionListAST ioResultingInstructionList ) {
   $if$
   var templateInstructionIfBranchList = @templateInstructionIfBranchListAST ()
   repeat
@@ -586,7 +586,7 @@ rule <template_instruction> ?!@templateInstructionListAST ioResultingInstruction
 
 //--------------------------------------------------------------------------------------------------
 
-rule <template_parser_start_symbol> !@templateInstructionListAST outResultingInstructionList {
+rule <template_parser_start_symbol> (!@templateInstructionListAST outResultingInstructionList ) {
   outResultingInstructionList = @()
   repeat
     enterTemplateString (!?outResultingInstructionList)
@@ -601,7 +601,7 @@ rule <template_parser_start_symbol> !@templateInstructionListAST outResultingIns
 
 //--------------------------------------------------------------------------------------------------
 
-proc enterTemplateString ?!@templateInstructionListAST outResultingInstructionList {
+proc enterTemplateString (?!@templateInstructionListAST outResultingInstructionList ) {
   let @string s = @string.retrieveAndResetTemplateString
   if s.count > 0 then
     outResultingInstructionList += !@templateInstructionStringAST {!s}

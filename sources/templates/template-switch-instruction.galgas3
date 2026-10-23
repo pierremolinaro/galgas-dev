@@ -42,7 +42,7 @@ syntax extension templateSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <template_instruction> ?!@templateInstructionListAST ioResultingInstructionList {
+  rule <template_instruction> (?!@templateInstructionListAST ioResultingInstructionList ) {
     $switch$
   //--- Switch expression
     <expression_tpl> ?let switchExpression
@@ -75,8 +75,8 @@ syntax extension templateSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <switch_case> ![@lstring] outConstantNameList
-                     !@switchExtractedValuesListAST outAssociatedValuesExtraction {
+  rule <switch_case> (![@lstring] outConstantNameList
+                     !@switchExtractedValuesListAST outAssociatedValuesExtraction ) {
     outConstantNameList = @()
     repeat
       $identifier$ ?let @lstring constantName
@@ -130,11 +130,11 @@ syntax extension templateSyntax {
 //--------------------------------------------------------------------------------------------------
 
 override proc @templateInstructionSwitchAST templateInstructionAnalysis
-                                ?let @lstring inUsefulnessCallerEntityName
+                                (?let @lstring inUsefulnessCallerEntityName
                                 ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
                                 ?let @templateAnalysisContext inAnalysisContext
                                 ?!@unifiedTypeMap ioTypeMap
-                                ?!@templateInstructionListForGeneration ioInstructionList {
+                                ?!@templateInstructionListForGeneration ioInstructionList ) {
 //---
   [self.mSwitchExpression templateExpressionAnalysis
     !inUsefulnessCallerEntityName
@@ -255,12 +255,12 @@ final class @templateInstructionSwitchForGeneration : @templateInstructionForGen
 //································································································
 
 override proc @templateInstructionSwitchForGeneration templateCodeGeneration
-  ?!@string ioGeneratedCode
+  (?!@string ioGeneratedCode
   ?!@stringset ioInclusionSet
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
   ?!@bool ioUseColumnMarker
-{
+) {
 //--- Expression
   [self.switchExpression generateExpression
     !?ioGeneratedCode

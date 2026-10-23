@@ -20,14 +20,14 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //--------------------------------------------------------------------------------------------------
 
-proc compileSemanticDeclarationsGalgas ?!@lstringlist ioUsefulnessRootEntities
+proc compileSemanticDeclarationsGalgas (?!@lstringlist ioUsefulnessRootEntities
                             ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
                             ?let @string inProductDirectory
                             ?let @location inEndOfProjectSourceFile
                             ?let @galgasDeclarationAST inSemanticDeclarations
                             !@semanticContext outSemanticContext
                             !@unifiedTypeMap outTypeMap
-                            !@semanticDeclarationListForGeneration outSemanticDeclarationSortedListForGeneration {
+                            !@semanticDeclarationListForGeneration outSemanticDeclarationSortedListForGeneration ) {
   if @application.verboseOutput then
     println (!"*** Building semantic context")
   end
@@ -113,11 +113,11 @@ proc compileSemanticDeclarationsGalgas ?!@lstringlist ioUsefulnessRootEntities
 //
 //--------------------------------------------------------------------------------------------------
 
-private proc buildGalgasSemanticContext ?let @galgasDeclarationAST inDeclarations
+private proc buildGalgasSemanticContext (?let @galgasDeclarationAST inDeclarations
                                         ?let @location inEndOfProjectSourceFile
                                         !@semanticContext outSemanticContext
                                         !@unifiedTypeMap outTypeMap
-                                        !@semanticDeclarationListAST outSortedSemanticDeclarationListAST {
+                                        !@semanticDeclarationListAST outSortedSemanticDeclarationListAST ) {
 //----- Create associated types for lists, maps, ...
   var @galgasDeclarationAST semanticDeclarations = inDeclarations
   for declaration in inDeclarations.mDeclarationList do
@@ -199,7 +199,7 @@ private proc buildGalgasSemanticContext ?let @galgasDeclarationAST inDeclaration
 //--------------------------------------------------------------------------------------------------
 
 proc generateSemanticDeclarationsGalgas3
-  ?let @unifiedTypeMap inUnifiedTypeMap
+  (?let @unifiedTypeMap inUnifiedTypeMap
   ?let @string inProductDirectory
   ?let @semanticDeclarationListForGeneration inSemanticDeclarationSortedListForGeneration
 //  ?!objc: @stringlist ioObjcAppProductFileList
@@ -207,7 +207,7 @@ proc generateSemanticDeclarationsGalgas3
   ?!@stringlist ioToolProductFileList
   ?!@stringlist ioToolHeaderFileList
   ?!@stringset ioAllProductFileSet
-{
+) {
 //--- Generate specific files
   for declaration in inSemanticDeclarationSortedListForGeneration do
     [declaration.mDeclaration appendSpecificFiles
@@ -291,11 +291,11 @@ proc generateSemanticDeclarationsGalgas3
 //--------------------------------------------------------------------------------------------------
 
 private proc generateManyHeaders
-  ?let @string inProductDirectory
+  (?let @string inProductDirectory
   ?let @semanticDeclarationListForGeneration inSemanticDeclarationSortedListForGeneration
   ?!@stringset ioAllProductFileSet
   ?!@stringlist ioToolHeaderFileList
-{
+) {
 //--- Header files
   var @stringlist headerInclusionList1 = @()
   var @stringlist headerInclusionList2 = @()
@@ -410,10 +410,10 @@ private proc generateManyHeaders
 //--------------------------------------------------------------------------------------------------
 
 private proc generateOneBigHeader
-  ?let @string inProductDirectory
+  (?let @string inProductDirectory
   ?let @semanticDeclarationListForGeneration inSemanticDeclarationSortedListForGeneration
   ?!@stringset ioAllProductFileSet
-  ?!@stringlist ioToolHeaderFileList {
+  ?!@stringlist ioToolHeaderFileList ) {
   var headerString = [filewrapper semanticFileGenerationTemplate.semanticFileHeader
     !"all-declarations"
     !@()
@@ -461,11 +461,11 @@ map @headerRepartitionMap {
 //--------------------------------------------------------------------------------------------------
 
 private proc buildHeader
-  ?let @headerCompositionMap inHeaderCompositionMap
+  (?let @headerCompositionMap inHeaderCompositionMap
   ?let @string inHeaderFileName
   ?let @string inDeclarationName
   ?!@headerRepartitionMap ioHeaderRepartitionMap
-  ?!@string ioHeaderString {
+  ?!@string ioHeaderString ) {
 //---
   if not [ioHeaderRepartitionMap hasKey !inDeclarationName] then
     [!?ioHeaderRepartitionMap insertKey !inDeclarationName.nowhere !inHeaderFileName]
@@ -501,12 +501,12 @@ private func %once definitionGroupAmount -> @uint {
 //--------------------------------------------------------------------------------------------------
 
 private proc generateFewImplementationFiles
-  ?let @unifiedTypeMap inUnifiedTypeMap
+  (?let @unifiedTypeMap inUnifiedTypeMap
   ?let @string inProductDirectory
   ?let @semanticDeclarationListForGeneration inSemanticDeclarationSortedListForGeneration
   ?!@stringlist ioToolProductFileList
   ?!@stringset ioAllProductFileSet
-{
+) {
   let useOneHugeHeader = [option galgas_cli_options.generateOneHeader value]
 //------------ all-declarations.cpp
   var n = 0
@@ -566,12 +566,12 @@ private proc generateFewImplementationFiles
 //--------------------------------------------------------------------------------------------------
 
 private proc generateFewImplementationFilesWithFewHeaders
-  ?let @unifiedTypeMap inUnifiedTypeMap
+  (?let @unifiedTypeMap inUnifiedTypeMap
   ?let @string inProductDirectory
   ?let @semanticDeclarationListForGeneration inSemanticDeclarationSortedListForGeneration
   ?!@stringlist ioToolProductFileList
   ?!@stringset ioAllProductFileSet
-  ?!@stringlist ioToolHeaderFileList {
+  ?!@stringlist ioToolHeaderFileList ) {
   var @headerCompositionMap headerCompositionMap = @()
   for declaration in inSemanticDeclarationSortedListForGeneration do
     if not declaration.mDeclaration.isPredefined then
@@ -697,12 +697,12 @@ private proc generateFewImplementationFilesWithFewHeaders
 //--------------------------------------------------------------------------------------------------
 
 private proc generateManyImplementationFiles
-  ?let @unifiedTypeMap inUnifiedTypeMap
+  (?let @unifiedTypeMap inUnifiedTypeMap
   ?let @string inProductDirectory
   ?let @semanticDeclarationListForGeneration inSemanticDeclarationSortedListForGeneration
   ?!@stringlist ioToolProductFileList
   ?!@stringset ioAllProductFileSet
-{
+) {
   let useOneHugeHeader = [option galgas_cli_options.generateOneHeader value]
 //--- Generation
   for declaration in inSemanticDeclarationSortedListForGeneration do

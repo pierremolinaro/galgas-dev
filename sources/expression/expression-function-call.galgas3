@@ -23,8 +23,8 @@ syntax extension galgas3ExpressionSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <primary_ggs3> ?!@galgasDeclarationAST ioDeclarations
-                      !@semanticExpressionAST outExpression {
+  rule <primary_ggs3> (?!@galgasDeclarationAST ioDeclarations
+                      !@semanticExpressionAST outExpression ) {
     $identifier$ ?let @lstring functionName indexing functionCall
     $($
     var @actualOutputArgumentList expressionList = @()
@@ -77,8 +77,8 @@ syntax extension galgas4ExpressionSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <primary> ?!@galgasDeclarationAST ioDeclarations
-                 !@semanticExpressionAST outExpression {
+  rule <primary> (?!@galgasDeclarationAST ioDeclarations
+                 !@semanticExpressionAST outExpression ) {
     $identifier$ ?let @lstring functionName indexing functionCall
     $($
     <output_expression_list> !?ioDeclarations ?let @actualOutputArgumentList expressionList
@@ -101,8 +101,8 @@ final class @functionCallExpressionAST : @semanticExpressionAST {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc enterExpressionInSemanticContext
-    ?!@unifiedTypeMap ioTypeMap
-  {
+    (?!@unifiedTypeMap ioTypeMap
+  ) {
     for expression in self.mExpressionList do
       [expression.mExpression enterExpressionInSemanticContext !?ioTypeMap]
     end
@@ -111,14 +111,14 @@ final class @functionCallExpressionAST : @semanticExpressionAST {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc analyzeSemanticExpression
-    ?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName
+    (?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName
     ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
     ?inferenceType: let @unifiedTypeMapEntry unused inType
     ?let @analysisContext inAnalysisContext
                                   ?!@unifiedTypeMap ioTypeMap
     ?!@localVarManager ioVariableMap
     !@semanticExpressionForGeneration outExpression
-  {
+  ) {
     let usefulnessName = functionNameForUsefulEntitiesGraph (!self.mFunctionName)
     [!?ioUsefulEntitiesGraph addEdge !from: inUsefulnessCallerEntityName !to: usefulnessName]
   //--- Retrieve function features
@@ -193,11 +193,11 @@ final class @functionCallExpressionForGeneration : @semanticExpressionForGenerat
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override proc generateExpression ?!@string ioGeneratedCode
+  override proc generateExpression (?!@string ioGeneratedCode
                                       ?!@stringset ioInclusionSet
                                       ?!@uint ioTemporaryVariableIndex
                                       ?!@stringset ioUnusedVariableCppNameSet
-                                      !@string outCppExpression {
+                                      !@string outCppExpression ) {
   //--- Add return type header
     [self.mResultType addHeaderFileName !?ioInclusionSet]
   //--- Add function header

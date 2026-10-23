@@ -59,8 +59,8 @@ abstract proc @semanticExpressionAST enterExpressionInSemanticContext (?!@unifie
 //--------------------------------------------------------------------------------------------------
 
 proc @semanticInstructionListAST enterInstructionListInSemanticContext
-  ?!@unifiedTypeMap ioTypeMap
-{
+  (?!@unifiedTypeMap ioTypeMap
+) {
   for (mInstruction) in self do
     [mInstruction enterInstructionInSemanticContext !?ioTypeMap]
   end
@@ -376,7 +376,7 @@ override func @externFunctionDeclarationAST keyRepresentation -> @string {
 //--------------------------------------------------------------------------------------------------
 
 proc addExtensions
-     ?let @extensionInitializerForBuildingContext inExtensionInitializerMapForBuildingContext
+     (?let @extensionInitializerForBuildingContext inExtensionInitializerMapForBuildingContext
      ?let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext
      ?let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext
      ?let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext
@@ -388,7 +388,7 @@ proc addExtensions
      ?!@getterMap ioGetterMap
      ?!@setterMap ioSetterMap
      ?!@instanceMethodMap ioInstanceMethodMap
-     ?acceptSetters: let @bool inAcceptSetters {
+     ?acceptSetters: let @bool inAcceptSetters ) {
 //-----------------------  Extension getters
   if [inExtensionGetterMapForBuildingContext hasKey !inTypeName.string] then
     [inExtensionGetterMapForBuildingContext searchKey !inTypeName ?let extensionGetterMapForType]
@@ -545,14 +545,14 @@ map @wrapperExtensionMap {
 //--------------------------------------------------------------------------------------------------
 
 proc recursivelyEnumerateDirectories
-  ?let @string inAbsoluteSourcePath
+  (?let @string inAbsoluteSourcePath
   ?let @string inPathInWrapper
   ?let @wrapperExtensionMap inTextFileExtensionMap
   ?let @wrapperExtensionMap inBinaryFileExtensionMap
   !@wrapperFileMap outWrapperFileMap
   !@wrapperDirectoryMap outWrapperDirectoryMap
   ?!@uint ioWrapperFileIndex
-  ?!@uint ioWrapperDirectoryIndex {
+  ?!@uint ioWrapperDirectoryIndex ) {
   let @uint currentDirectoryIndex = ioWrapperDirectoryIndex
   ioWrapperDirectoryIndex += 1
 //--- Enumerates regular files
@@ -608,14 +608,14 @@ proc recursivelyEnumerateDirectories
 //--------------------------------------------------------------------------------------------------
 
 override proc @filewrapperDeclarationAST enterDeclarationInSemanticContext
-  ?!@equatableExtensionMap unused ioEquatableExtensionMap
+  (?!@equatableExtensionMap unused ioEquatableExtensionMap
   ?let @extensionInitializerForBuildingContext unused inExtensionInitializerMapForBuildingContext
   ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext
   ?let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext
   ?let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext
                                 ?!@unifiedTypeMap ioTypeMap
   ?!@semanticContext ioSemanticContext
-{
+) {
 //--- Templates
   var @filewrapperTemplateMap filewrapperTemplateMap = @()
   for (mFilewrapperTemplateName mFilewrapperTemplatePath mFilewrapperTemplateFormalInputParameters) in self.mFilewrapperTemplateList do
@@ -690,13 +690,13 @@ override proc @filewrapperDeclarationAST enterDeclarationInSemanticContext
 //--------------------------------------------------------------------------------------------------
 
 override proc @externFunctionDeclarationAST enterDeclarationInSemanticContext // Handles also function declaration
-  ?!@equatableExtensionMap unused ioEquatableExtensionMap
+  (?!@equatableExtensionMap unused ioEquatableExtensionMap
   ?let @extensionInitializerForBuildingContext unused inExtensionInitializerMapForBuildingContext
   ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext
   ?let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext
   ?let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext
                                 ?!@unifiedTypeMap ioTypeMap
-  ?!@semanticContext ioSemanticContext {
+  ?!@semanticContext ioSemanticContext ) {
 //--- Build signature
   var functionSignature = @functionSignature ()
   for (mFormalSelector mFormalArgumentTypeName * * isConstant) in self.mFormalArgumentList do
@@ -717,13 +717,13 @@ override proc @externFunctionDeclarationAST enterDeclarationInSemanticContext //
 //--------------------------------------------------------------------------------------------------
 
 override proc @onceFunctionDeclarationAST enterDeclarationInSemanticContext
-  ?!@equatableExtensionMap unused ioEquatableExtensionMap
+  (?!@equatableExtensionMap unused ioEquatableExtensionMap
   ?let @extensionInitializerForBuildingContext unused inExtensionInitializerMapForBuildingContext
   ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext
   ?let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext
   ?let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext
                                 ?!@unifiedTypeMap ioTypeMap
-  ?!@semanticContext ioSemanticContext {
+  ?!@semanticContext ioSemanticContext ) {
 //--- Result type
   [!?ioTypeMap makeEntry  !self.mResultTypeName ?let @unifiedTypeMapEntry resultTypeIndex]
 //--- Enter function in routine map
@@ -733,14 +733,14 @@ override proc @onceFunctionDeclarationAST enterDeclarationInSemanticContext
 //--------------------------------------------------------------------------------------------------
 
 override proc @galgas3SyntaxComponentAST enterDeclarationInSemanticContext
-  ?!@equatableExtensionMap unused ioEquatableExtensionMap
+  (?!@equatableExtensionMap unused ioEquatableExtensionMap
   ?let @extensionInitializerForBuildingContext unused inExtensionInitializerMapForBuildingContext
   ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext
   ?let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext
   ?let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext
                                 ?!@unifiedTypeMap unused ioTypeMap
   ?!@semanticContext ioSemanticContext
-{
+) {
   [!?ioSemanticContext.mSyntaxComponentMapForSemanticAnalysis insertKey
     !self.mSyntaxComponentName
     !self.mLexiqueName
@@ -753,14 +753,14 @@ override proc @galgas3SyntaxComponentAST enterDeclarationInSemanticContext
 //--------------------------------------------------------------------------------------------------
 
 override proc @galgas3GrammarComponentAST enterDeclarationInSemanticContext
-  ?!@equatableExtensionMap unused ioEquatableExtensionMap
+  (?!@equatableExtensionMap unused ioEquatableExtensionMap
   ?let @extensionInitializerForBuildingContext unused inExtensionInitializerMapForBuildingContext
   ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext
   ?let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext
   ?let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext
                                 ?!@unifiedTypeMap ioTypeMap
   ?!@semanticContext ioSemanticContext
-{
+) {
 //--- Analyze start symbol labels
   var @grammarLabelMap grammarLabelMap = @()
   for (mLabelName mFormalArgumentList *) in self.mStartSymbolLabelList do
@@ -805,13 +805,13 @@ graph @semanticTypePrecedenceGraph (@semanticDeclarationListAST) {
 //--------------------------------------------------------------------------------------------------
 
 override proc @galgas3GrammarComponentAST enterDeclarationInGraph
-  ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
+  (?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
   ?!@equatableExtensionMap unused ioEquatableExtensionMap
   ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext
   ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext
   ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
   ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
-  ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList {
+  ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList ) {
   let key = @lstring {!"grammar " + self.mGrammarComponentName !self.mGrammarComponentName.location}
   [!?ioSemanticTypePrecedenceGraph addNode !key !self]
   for (s) in self.mSyntaxComponents do
@@ -822,13 +822,13 @@ override proc @galgas3GrammarComponentAST enterDeclarationInGraph
 //--------------------------------------------------------------------------------------------------
 
 override proc @galgas3SyntaxComponentAST enterDeclarationInGraph
-  ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
+  (?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
   ?!@equatableExtensionMap unused ioEquatableExtensionMap
   ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext
   ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext
   ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
   ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
-  ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList {
+  ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList ) {
   let key = @lstring {!"syntax " + self.mSyntaxComponentName !self.mSyntaxComponentName.location}
   [!?ioSemanticTypePrecedenceGraph addNode !key !self]
   [!?ioSemanticTypePrecedenceGraph addEdge !from: key !to: @{!"lexique " + self.mLexiqueName !self.mLexiqueName.location}]
@@ -847,46 +847,46 @@ override proc @galgas3SyntaxComponentAST enterDeclarationInGraph
 //--------------------------------------------------------------------------------------------------
 
 override proc @externFunctionDeclarationAST enterDeclarationInGraph
-  ?!@semanticTypePrecedenceGraph unused ioSemanticTypePrecedenceGraph
+  (?!@semanticTypePrecedenceGraph unused ioSemanticTypePrecedenceGraph
   ?!@equatableExtensionMap unused ioEquatableExtensionMap
   ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext
   ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext
   ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
   ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
-  ?!@semanticDeclarationListAST ioExtensionOverrideDefinitionList {
+  ?!@semanticDeclarationListAST ioExtensionOverrideDefinitionList ) {
   ioExtensionOverrideDefinitionList += !self
 }
 
 //--------------------------------------------------------------------------------------------------
 
 override proc @onceFunctionDeclarationAST enterDeclarationInGraph
-  ?!@semanticTypePrecedenceGraph unused ioSemanticTypePrecedenceGraph
+  (?!@semanticTypePrecedenceGraph unused ioSemanticTypePrecedenceGraph
   ?!@equatableExtensionMap unused ioEquatableExtensionMap
   ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext
   ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext
   ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
   ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
-  ?!@semanticDeclarationListAST ioExtensionOverrideDefinitionList {
+  ?!@semanticDeclarationListAST ioExtensionOverrideDefinitionList ) {
   ioExtensionOverrideDefinitionList += !self
 }
 
 //--------------------------------------------------------------------------------------------------
 
 override proc @filewrapperDeclarationAST enterDeclarationInGraph
-  ?!@semanticTypePrecedenceGraph unused ioSemanticTypePrecedenceGraph
+  (?!@semanticTypePrecedenceGraph unused ioSemanticTypePrecedenceGraph
   ?!@equatableExtensionMap unused ioEquatableExtensionMap
   ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext
   ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext
   ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
   ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
-  ?!@semanticDeclarationListAST ioExtensionOverrideDefinitionList {
+  ?!@semanticDeclarationListAST ioExtensionOverrideDefinitionList ) {
   ioExtensionOverrideDefinitionList += !self
 }
 
 //--------------------------------------------------------------------------------------------------
 
 proc @semanticDeclarationAST addAssociatedElement
-  ?!@galgasDeclarationAST unused ioDeclarations {
+  (?!@galgasDeclarationAST unused ioDeclarations ) {
 }
 
 //--------------------------------------------------------------------------------------------------

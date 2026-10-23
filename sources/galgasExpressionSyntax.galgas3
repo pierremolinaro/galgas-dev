@@ -26,13 +26,13 @@ syntax galgas3ExpressionSyntax (galgasScanner3) {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <type_definition_ggs3> ?!@galgasDeclarationAST ioDeclarations
-                              !@lstring outTypeName
+  rule <type_definition_ggs3> (?!@galgasDeclarationAST ioDeclarations
+                              !@lstring outTypeName)
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <primary_ggs3> ?!@galgasDeclarationAST ioDeclarations
-                      !@semanticExpressionAST outExpression {
+  rule <primary_ggs3> (?!@galgasDeclarationAST ioDeclarations
+                      !@semanticExpressionAST outExpression ) {
     $($
     <expression_ggs3> !?ioDeclarations ?outExpression
     $)$
@@ -48,21 +48,21 @@ syntax galgas4ExpressionSyntax (galgasScanner4) {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <type_definition> ?!@galgasDeclarationAST ioDeclarations
-                         !@lstring outTypeName
+  rule <type_definition> (?!@galgasDeclarationAST ioDeclarations
+                         !@lstring outTypeName)
 
-  rule <simple_type_definition> ?!@galgasDeclarationAST unused ioDeclarations
-                                !@lstring outTypeName
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  rule <actual_parameter_list_within_parenthesis> ?!@galgasDeclarationAST ioDeclarations
-                                                  !@actualParameterListAST outActualParameterList
+  rule <simple_type_definition> (?!@galgasDeclarationAST unused ioDeclarations
+                                !@lstring outTypeName)
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <primary> ?!@galgasDeclarationAST ioDeclarations
-                 !@semanticExpressionAST outExpression {
+  rule <actual_parameter_list_within_parenthesis> (?!@galgasDeclarationAST ioDeclarations
+                                                  !@actualParameterListAST outActualParameterList)
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  rule <primary> (?!@galgasDeclarationAST ioDeclarations
+                 !@semanticExpressionAST outExpression ) {
     $($
     <expression> !?ioDeclarations ?outExpression
     $)$

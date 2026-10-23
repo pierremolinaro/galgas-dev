@@ -45,7 +45,7 @@ before { //--- Extract LIBPM
 
 //--------------------------------------------------------------------------------------------------
 
-extern proc checkBigInteger
+extern proc checkBigInteger ()
 
 before { //--- Extract LIBPM
   if [option galgas_cli_options.check_big_int value] then
@@ -55,7 +55,7 @@ before { //--- Extract LIBPM
 
 //--------------------------------------------------------------------------------------------------
 
-extern proc displayUnicodeLexicalTestFunctions
+extern proc displayUnicodeLexicalTestFunctions ()
 
 before {
   if [option galgas_cli_options.displayUnicodeLexicalTestFunctions value] then
@@ -148,8 +148,8 @@ grammar galgas4ProjectGrammar
 //
 //--------------------------------------------------------------------------------------------------
 
-private proc parseAndAnalyzeProject ?let @lstring inProjectSourceFilePath
-                                    ?let @string inSourceToAnalyze {
+private proc parseAndAnalyzeProject (?let @lstring inProjectSourceFilePath
+                                    ?let @string inSourceToAnalyze ) {
   if @application.verboseOutput then
     println (!"*** Parsing project files")
   end
@@ -180,9 +180,9 @@ private proc parseAndAnalyzeProject ?let @lstring inProjectSourceFilePath
 
 //--------------------------------------------------------------------------------------------------
 
-private proc compileProject ?let @lstring inProjectSourceFile
+private proc compileProject (?let @lstring inProjectSourceFile
                             ?let @string inSourceToAnalyze
-                            ?let @galgas3ProjectComponentAST inProjectComponentAST {
+                            ?let @galgas3ProjectComponentAST inProjectComponentAST ) {
   var @galgasDeclarationAST declarationAST = @()
 //--- Parse predefined type definitions
   grammar galgas4Grammar (!?declarationAST) on
@@ -352,7 +352,7 @@ private proc compileProject ?let @lstring inProjectSourceFile
 //--------------------------------------------------------------------------------------------------
 
 private proc projectGeneration
-              ?let @unifiedTypeMap inTypeMap
+              (?let @unifiedTypeMap inTypeMap
               ?absoluteBuildDir: let @string inAbsoluteBuildDirectory
               ?buildDirName: let @string inBuildDirectoryName
               ?let @optionComponentMapForGeneration inOptionComponentMapForGeneration
@@ -365,7 +365,7 @@ private proc projectGeneration
               ?let @stringlist inHandCodedSourceToolFileList
               ?let @stringlist inFrameworkToolFileList
               ?let @stringlist inHandCodedLinkAppFileList
-{
+) {
   let appProductFileList = inAppProductFileList
 //--------------------------------- File generation
   if @application.verboseOutput then

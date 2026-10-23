@@ -45,11 +45,11 @@ struct @templateAnalysisContext {
 //--------------------------------------------------------------------------------------------------
 
 abstract proc @templateExpressionAST templateExpressionAnalysis
-  ?let @lstring inUsefulnessCallerEntityName
+  (?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @templateAnalysisContext inAnalysisContext
   ?!@unifiedTypeMap ioTypeMap
-  !@semanticExpressionForGeneration outExpression
+  !@semanticExpressionForGeneration outExpression)
 
 //--------------------------------------------------------------------------------------------------
 //   G E T T E R    C A L L    O P E R A N D
@@ -67,12 +67,12 @@ final class @templateGetterCallInExpressionAST : @templateExpressionAST {
 //--------------------------------------------------------------------------------------------------
 
 override proc @templateGetterCallInExpressionAST templateExpressionAnalysis
-  ?let @lstring inUsefulnessCallerEntityName
+  (?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @templateAnalysisContext inAnalysisContext
   ?!@unifiedTypeMap ioTypeMap
   !@semanticExpressionForGeneration outExpression
-{
+) {
 //--- Expression analysis
   [self.mReceiverExpression templateExpressionAnalysis
     !inUsefulnessCallerEntityName
@@ -204,12 +204,12 @@ override proc @templateGetterCallInExpressionAST templateExpressionAnalysis
 //--------------------------------------------------------------------------------------------------
 
 override proc @templateClassFunctionAST templateExpressionAnalysis
-  ?let @lstring inUsefulnessCallerEntityName
+  (?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @templateAnalysisContext inAnalysisContext
   ?!@unifiedTypeMap ioTypeMap
   !@semanticExpressionForGeneration outExpression
-{
+) {
   let @unifiedTypeMapEntry constructorType = [ioTypeMap typeMapEntryForLKey !self.mTypeName]
 //--- Get class function map from type map
   let @classFunctionMap classFunctionMap = constructorType.definition.classFunctionMap
@@ -278,12 +278,12 @@ override proc @templateClassFunctionAST templateExpressionAnalysis
 //--------------------------------------------------------------------------------------------------
 
 override proc @templateFileWrapperTemplateCallAST templateExpressionAnalysis
-  ?let @lstring unused inUsefulnessCallerEntityName
+  (?let @lstring unused inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
   ?let @templateAnalysisContext unused inAnalysisContext
   ?!@unifiedTypeMap unused ioTypeMap
   !@semanticExpressionForGeneration outExpression
-{
+) {
   error (self.mFileWrapperName:"unhandled @templateFileWrapperTemplateCallAST templateExpressionAnalysis" spoil outExpression)
 }
 
@@ -292,12 +292,12 @@ override proc @templateFileWrapperTemplateCallAST templateExpressionAnalysis
 //--------------------------------------------------------------------------------------------------
 
 override proc @templateAndOperationAST templateExpressionAnalysis
-  ?let @lstring inUsefulnessCallerEntityName
+  (?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @templateAnalysisContext inAnalysisContext
   ?!@unifiedTypeMap ioTypeMap
   !@semanticExpressionForGeneration outExpression
-{
+) {
 //--- Left expression analysis
   [self.mLeftExpression templateExpressionAnalysis
     !inUsefulnessCallerEntityName
@@ -335,12 +335,12 @@ override proc @templateAndOperationAST templateExpressionAnalysis
 //--------------------------------------------------------------------------------------------------
 
 override proc @templateOrOperationAST templateExpressionAnalysis
-  ?let @lstring inUsefulnessCallerEntityName
+  (?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @templateAnalysisContext inAnalysisContext
   ?!@unifiedTypeMap ioTypeMap
   !@semanticExpressionForGeneration outExpression
-{
+) {
 //--- Left expression analysis
   [self.mLeftExpression templateExpressionAnalysis
     !inUsefulnessCallerEntityName
@@ -378,12 +378,12 @@ override proc @templateOrOperationAST templateExpressionAnalysis
 //--------------------------------------------------------------------------------------------------
 
 override proc @templateXorOperationAST templateExpressionAnalysis
-  ?let @lstring inUsefulnessCallerEntityName
+  (?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @templateAnalysisContext inAnalysisContext
   ?!@unifiedTypeMap ioTypeMap
   !@semanticExpressionForGeneration outExpression
-{
+) {
 //--- Left expression analysis
   [self.mLeftExpression templateExpressionAnalysis
     !inUsefulnessCallerEntityName
@@ -421,36 +421,36 @@ override proc @templateXorOperationAST templateExpressionAnalysis
 //--------------------------------------------------------------------------------------------------
 
 override proc @templateTrueBoolAST templateExpressionAnalysis
-  ?let @lstring unused inUsefulnessCallerEntityName
+  (?let @lstring unused inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
   ?let @templateAnalysisContext inAnalysisContext
   ?!@unifiedTypeMap unused ioTypeMap
   !@semanticExpressionForGeneration outExpression
-{
+) {
   outExpression = @trueExpressionForGeneration {!inAnalysisContext.mPredefinedTypes.mBoolType !self.mLocation}
 }
 
 //--------------------------------------------------------------------------------------------------
 
 override proc @templateFalseBoolAST templateExpressionAnalysis
-  ?let @lstring unused inUsefulnessCallerEntityName
+  (?let @lstring unused inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
   ?let @templateAnalysisContext inAnalysisContext
   ?!@unifiedTypeMap unused ioTypeMap
   !@semanticExpressionForGeneration outExpression
-{
+) {
   outExpression = @falseExpressionForGeneration {!inAnalysisContext.mPredefinedTypes.mBoolType !self.mLocation}
 }
 
 //--------------------------------------------------------------------------------------------------
 
 override proc @templateLiteralStringExpressionAST templateExpressionAnalysis
-  ?let @lstring unused inUsefulnessCallerEntityName
+  (?let @lstring unused inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
   ?let @templateAnalysisContext inAnalysisContext
   ?!@unifiedTypeMap unused ioTypeMap
   !@semanticExpressionForGeneration outExpression
-{
+) {
   var @string s = ""
   for (mValue) in self.mLiteralStringList do
     s += mValue
@@ -461,12 +461,12 @@ override proc @templateLiteralStringExpressionAST templateExpressionAnalysis
 //--------------------------------------------------------------------------------------------------
 
 override proc @templateLiteralUIntExpressionAST templateExpressionAnalysis
-  ?let @lstring unused inUsefulnessCallerEntityName
+  (?let @lstring unused inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
   ?let @templateAnalysisContext inAnalysisContext
   ?!@unifiedTypeMap unused ioTypeMap
   !@semanticExpressionForGeneration outExpression
-{
+) {
   outExpression = @literalBigIntExpressionForGeneration {
     !inAnalysisContext.mPredefinedTypes.mBigIntType
     !self.mLiteralInt.location
@@ -477,12 +477,12 @@ override proc @templateLiteralUIntExpressionAST templateExpressionAnalysis
 //--------------------------------------------------------------------------------------------------
 
 override proc @templateLiteralCharExpressionAST templateExpressionAnalysis
-  ?let @lstring unused inUsefulnessCallerEntityName
+  (?let @lstring unused inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
   ?let @templateAnalysisContext inAnalysisContext
   ?!@unifiedTypeMap unused ioTypeMap
   !@semanticExpressionForGeneration outExpression
-{
+) {
   outExpression = @literalCharExpressionForGeneration {
     !inAnalysisContext.mPredefinedTypes.mCharType
     !self.mLiteralChar.location
@@ -492,11 +492,11 @@ override proc @templateLiteralCharExpressionAST templateExpressionAnalysis
 //--------------------------------------------------------------------------------------------------
 
 override proc @templateLiteralDoubleExpressionAST templateExpressionAnalysis
-  ?let @lstring unused inUsefulnessCallerEntityName
+  (?let @lstring unused inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
   ?let @templateAnalysisContext inAnalysisContext
   ?!@unifiedTypeMap unused ioTypeMap
-  !@semanticExpressionForGeneration outExpression {
+  !@semanticExpressionForGeneration outExpression ) {
   outExpression = @literalDoubleExpressionForGeneration {
     !inAnalysisContext.mPredefinedTypes.mDoubleType
     !self.mLiteralDouble.location
@@ -507,12 +507,12 @@ override proc @templateLiteralDoubleExpressionAST templateExpressionAnalysis
 //--------------------------------------------------------------------------------------------------
 
 override proc @templateNotOperatorAST templateExpressionAnalysis
-  ?let @lstring inUsefulnessCallerEntityName
+  (?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @templateAnalysisContext inAnalysisContext
   ?!@unifiedTypeMap ioTypeMap
   !@semanticExpressionForGeneration outExpression
-{
+) {
 //--- Expression analysis
   [self.mExpression templateExpressionAnalysis
     !inUsefulnessCallerEntityName
@@ -540,12 +540,12 @@ override proc @templateNotOperatorAST templateExpressionAnalysis
 //--------------------------------------------------------------------------------------------------
 
 override proc @templateLogicalNegateAST templateExpressionAnalysis
-  ?let @lstring inUsefulnessCallerEntityName
+  (?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @templateAnalysisContext inAnalysisContext
   ?!@unifiedTypeMap ioTypeMap
   !@semanticExpressionForGeneration outExpression
-{
+) {
 //--- Expression analysis
   [self.mExpression templateExpressionAnalysis
     !inUsefulnessCallerEntityName
@@ -572,12 +572,12 @@ override proc @templateLogicalNegateAST templateExpressionAnalysis
 //--------------------------------------------------------------------------------------------------
 
 override proc @templateTestDynamicClassAST templateExpressionAnalysis
-  ?let @lstring inUsefulnessCallerEntityName
+  (?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @templateAnalysisContext inAnalysisContext
                                 ?!@unifiedTypeMap ioTypeMap
   !@semanticExpressionForGeneration outExpression
-{
+) {
 //--- Receiver expression analysis
   [self.mReceiverExpression templateExpressionAnalysis
     !inUsefulnessCallerEntityName
@@ -618,12 +618,12 @@ override proc @templateTestDynamicClassAST templateExpressionAnalysis
 //--------------------------------------------------------------------------------------------------
 
 override proc @templateOptionAccessAST templateExpressionAnalysis
-  ?let @lstring inUsefulnessCallerEntityName
+  (?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @templateAnalysisContext inAnalysisContext
   ?!@unifiedTypeMap unused ioTypeMap
   !@semanticExpressionForGeneration outExpression
-{
+) {
   let usefulnessName = optionNameForUsefulEntitiesGraph (!self.mOptionComponentName)
   [!?ioUsefulEntitiesGraph addEdge !from: inUsefulnessCallerEntityName !to: usefulnessName]
   [inAnalysisContext.mSemanticContext.mOptionComponentMapForSemanticAnalysis searchKey
@@ -707,12 +707,12 @@ override proc @templateOptionAccessAST templateExpressionAnalysis
 //--------------------------------------------------------------------------------------------------
 
 override proc @templateFunctionCallAST templateExpressionAnalysis
-  ?let @lstring inUsefulnessCallerEntityName
+  (?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @templateAnalysisContext inAnalysisContext
   ?!@unifiedTypeMap ioTypeMap
   !@semanticExpressionForGeneration outExpression
-{
+) {
   let usefulnessName = functionNameForUsefulEntitiesGraph (!self.mFunctionName)
   [!?ioUsefulEntitiesGraph addEdge !from: inUsefulnessCallerEntityName !to: usefulnessName]
 //--- Retrieve function features
@@ -766,12 +766,12 @@ override proc @templateFunctionCallAST templateExpressionAnalysis
 //--------------------------------------------------------------------------------------------------
 
 override proc @templateExtensionTemplateCallAST templateExpressionAnalysis
-  ?let @lstring unused inUsefulnessCallerEntityName
+  (?let @lstring unused inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
   ?let @templateAnalysisContext unused inAnalysisContext
   ?!@unifiedTypeMap unused ioTypeMap
   !@semanticExpressionForGeneration outExpression
-{
+) {
   error (self.mTemplateName
   :"INTERNAL ERROR: @templateExtensionTemplateCallAST templateExpressionAnalysis not implemented yet"
   spoil outExpression)
@@ -782,12 +782,12 @@ override proc @templateExtensionTemplateCallAST templateExpressionAnalysis
 //--------------------------------------------------------------------------------------------------
 
 override proc @templateVarInExpressionAST templateExpressionAnalysis
-  ?let @lstring unused inUsefulnessCallerEntityName
+  (?let @lstring unused inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
   ?let @templateAnalysisContext inAnalysisContext
   ?!@unifiedTypeMap unused ioTypeMap
   !@semanticExpressionForGeneration outExpression
-{
+) {
   [inAnalysisContext.mTemplateVariableMap searchKey !self.mVarName ?let type ?let sourceVariableCppName]
   outExpression = @varInExpressionForGeneration {
     !type
@@ -801,12 +801,12 @@ override proc @templateVarInExpressionAST templateExpressionAnalysis
 //--------------------------------------------------------------------------------------------------
 
 override proc @templateAddOperationAST templateExpressionAnalysis
-  ?let @lstring inUsefulnessCallerEntityName
+  (?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @templateAnalysisContext inAnalysisContext
   ?!@unifiedTypeMap ioTypeMap
   !@semanticExpressionForGeneration outExpression
-{
+) {
 //--- Left expression analysis
   [self.mLeftExpression templateExpressionAnalysis
     !inUsefulnessCallerEntityName
@@ -846,12 +846,12 @@ override proc @templateAddOperationAST templateExpressionAnalysis
 //--------------------------------------------------------------------------------------------------
 
 override proc @templateSubOperationAST templateExpressionAnalysis
-  ?let @lstring inUsefulnessCallerEntityName
+  (?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @templateAnalysisContext inAnalysisContext
   ?!@unifiedTypeMap ioTypeMap
   !@semanticExpressionForGeneration outExpression
-{
+) {
 //--- Left expression analysis
   [self.mLeftExpression templateExpressionAnalysis
     !inUsefulnessCallerEntityName
@@ -891,12 +891,12 @@ override proc @templateSubOperationAST templateExpressionAnalysis
 //--------------------------------------------------------------------------------------------------
 
 override proc @templateMultiplyOperationAST templateExpressionAnalysis
-  ?let @lstring inUsefulnessCallerEntityName
+  (?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @templateAnalysisContext inAnalysisContext
   ?!@unifiedTypeMap ioTypeMap
   !@semanticExpressionForGeneration outExpression
-{
+) {
 //--- Left expression analysis
   [self.mLeftExpression templateExpressionAnalysis
     !inUsefulnessCallerEntityName
@@ -936,12 +936,12 @@ override proc @templateMultiplyOperationAST templateExpressionAnalysis
 //--------------------------------------------------------------------------------------------------
 
 override proc @templateDivideOperationAST templateExpressionAnalysis
-  ?let @lstring inUsefulnessCallerEntityName
+  (?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @templateAnalysisContext inAnalysisContext
   ?!@unifiedTypeMap ioTypeMap
   !@semanticExpressionForGeneration outExpression
-{
+) {
 //--- Left expression analysis
   [self.mLeftExpression templateExpressionAnalysis
     !inUsefulnessCallerEntityName
@@ -981,12 +981,12 @@ override proc @templateDivideOperationAST templateExpressionAnalysis
 //--------------------------------------------------------------------------------------------------
 
 override proc @templateModuloOperationAST templateExpressionAnalysis
-  ?let @lstring inUsefulnessCallerEntityName
+  (?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @templateAnalysisContext inAnalysisContext
   ?!@unifiedTypeMap ioTypeMap
   !@semanticExpressionForGeneration outExpression
-{
+) {
 //--- Left expression analysis
   [self.mLeftExpression templateExpressionAnalysis
     !inUsefulnessCallerEntityName
@@ -1026,12 +1026,12 @@ override proc @templateModuloOperationAST templateExpressionAnalysis
 //--------------------------------------------------------------------------------------------------
 
 override proc @templateUnaryMinusOperationAST templateExpressionAnalysis
-  ?let @lstring inUsefulnessCallerEntityName
+  (?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @templateAnalysisContext inAnalysisContext
   ?!@unifiedTypeMap ioTypeMap
   !@semanticExpressionForGeneration outExpression
-{
+) {
 //--- Expression analysis
   [self.mExpression templateExpressionAnalysis
     !inUsefulnessCallerEntityName
@@ -1060,12 +1060,12 @@ override proc @templateUnaryMinusOperationAST templateExpressionAnalysis
 //--------------------------------------------------------------------------------------------------
 
 override proc @structFieldAccessTemplateExpressionAST templateExpressionAnalysis
-  ?let @lstring inUsefulnessCallerEntityName
+  (?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @templateAnalysisContext inAnalysisContext
   ?!@unifiedTypeMap ioTypeMap
   !@semanticExpressionForGeneration outExpression
-{
+) {
 //--- Expression analysis
   [self.mExpression templateExpressionAnalysis
     !inUsefulnessCallerEntityName
@@ -1096,12 +1096,12 @@ override proc @structFieldAccessTemplateExpressionAST templateExpressionAnalysis
 //--------------------------------------------------------------------------------------------------
 
 override proc @templateEqualTestAST templateExpressionAnalysis
-  ?let @lstring inUsefulnessCallerEntityName
+  (?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @templateAnalysisContext inAnalysisContext
   ?!@unifiedTypeMap ioTypeMap
   !@semanticExpressionForGeneration outExpression
-{
+) {
 //--- Left expression analysis
   [self.mLeftExpression templateExpressionAnalysis
     !inUsefulnessCallerEntityName
@@ -1139,12 +1139,12 @@ override proc @templateEqualTestAST templateExpressionAnalysis
 //--------------------------------------------------------------------------------------------------
 
 override proc @templateNonEqualTestAST templateExpressionAnalysis
-  ?let @lstring inUsefulnessCallerEntityName
+  (?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @templateAnalysisContext inAnalysisContext
   ?!@unifiedTypeMap ioTypeMap
   !@semanticExpressionForGeneration outExpression
-{
+) {
 //--- Left expression analysis
   [self.mLeftExpression templateExpressionAnalysis
     !inUsefulnessCallerEntityName
@@ -1182,12 +1182,12 @@ override proc @templateNonEqualTestAST templateExpressionAnalysis
 //--------------------------------------------------------------------------------------------------
 
 override proc @templateStrictInfTestAST templateExpressionAnalysis
-  ?let @lstring inUsefulnessCallerEntityName
+  (?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @templateAnalysisContext inAnalysisContext
   ?!@unifiedTypeMap ioTypeMap
   !@semanticExpressionForGeneration outExpression
-{
+) {
 //--- Left expression analysis
   [self.mLeftExpression templateExpressionAnalysis
     !inUsefulnessCallerEntityName
@@ -1225,12 +1225,12 @@ override proc @templateStrictInfTestAST templateExpressionAnalysis
 //--------------------------------------------------------------------------------------------------
 
 override proc @templateInfOrEqualTestAST templateExpressionAnalysis
-  ?let @lstring inUsefulnessCallerEntityName
+  (?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @templateAnalysisContext inAnalysisContext
   ?!@unifiedTypeMap ioTypeMap
   !@semanticExpressionForGeneration outExpression
-{
+) {
 //--- Left expression analysis
   [self.mLeftExpression templateExpressionAnalysis
     !inUsefulnessCallerEntityName
@@ -1268,12 +1268,12 @@ override proc @templateInfOrEqualTestAST templateExpressionAnalysis
 //--------------------------------------------------------------------------------------------------
 
 override proc @templateStrictSupTestAST templateExpressionAnalysis
-  ?let @lstring inUsefulnessCallerEntityName
+  (?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @templateAnalysisContext inAnalysisContext
   ?!@unifiedTypeMap ioTypeMap
   !@semanticExpressionForGeneration outExpression
-{
+) {
 //--- Left expression analysis
   [self.mLeftExpression templateExpressionAnalysis
     !inUsefulnessCallerEntityName
@@ -1311,12 +1311,12 @@ override proc @templateStrictSupTestAST templateExpressionAnalysis
 //--------------------------------------------------------------------------------------------------
 
 override proc @templateSupOrEqualTestAST templateExpressionAnalysis
-  ?let @lstring inUsefulnessCallerEntityName
+  (?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @templateAnalysisContext inAnalysisContext
   ?!@unifiedTypeMap ioTypeMap
   !@semanticExpressionForGeneration outExpression
-{
+) {
 //--- Left expression analysis
   [self.mLeftExpression templateExpressionAnalysis
     !inUsefulnessCallerEntityName
@@ -1354,12 +1354,12 @@ override proc @templateSupOrEqualTestAST templateExpressionAnalysis
 //--------------------------------------------------------------------------------------------------
 
 override proc @templateLeftShiftOperationAST templateExpressionAnalysis
-  ?let @lstring inUsefulnessCallerEntityName
+  (?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @templateAnalysisContext inAnalysisContext
   ?!@unifiedTypeMap ioTypeMap
   !@semanticExpressionForGeneration outExpression
-{
+) {
 //--- Left expression analysis
   [self.mLeftExpression templateExpressionAnalysis
     !inUsefulnessCallerEntityName
@@ -1402,12 +1402,12 @@ override proc @templateLeftShiftOperationAST templateExpressionAnalysis
 //--------------------------------------------------------------------------------------------------
 
 override proc @templateRightShiftOperationAST templateExpressionAnalysis
-  ?let @lstring inUsefulnessCallerEntityName
+  (?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @templateAnalysisContext inAnalysisContext
   ?!@unifiedTypeMap ioTypeMap
   !@semanticExpressionForGeneration outExpression
-{
+) {
 //--- Left expression analysis
   [self.mLeftExpression templateExpressionAnalysis
     !inUsefulnessCallerEntityName
@@ -1454,22 +1454,22 @@ override proc @templateRightShiftOperationAST templateExpressionAnalysis
 //--------------------------------------------------------------------------------------------------
 
 abstract proc @templateInstructionAST templateInstructionAnalysis
-  ?let @lstring inUsefulnessCallerEntityName
+  (?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @templateAnalysisContext inAnalysisContext
   ?!@unifiedTypeMap ioTypeMap
-  ?!@templateInstructionListForGeneration ioInstructionList
+  ?!@templateInstructionListForGeneration ioInstructionList)
 
 //--------------------------------------------------------------------------------------------------
 
 proc templateInstructionListAnalysis
-  ?let @lstring inUsefulnessCallerEntityName
+  (?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @templateAnalysisContext inAnalysisContext
   ?!@unifiedTypeMap ioTypeMap
   ?let @templateInstructionListAST inInstructionList
   ?!@templateInstructionListForGeneration ioInstructionList
-{
+) {
   for (mInstruction) in inInstructionList do
     [mInstruction templateInstructionAnalysis
       !inUsefulnessCallerEntityName
@@ -1484,24 +1484,24 @@ proc templateInstructionListAnalysis
 //--------------------------------------------------------------------------------------------------
 
 override proc @templateInstructionStringAST templateInstructionAnalysis
-  ?let @lstring unused inUsefulnessCallerEntityName
+  (?let @lstring unused inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
   ?let @templateAnalysisContext unused inAnalysisContext
   ?!@unifiedTypeMap unused ioTypeMap
   ?!@templateInstructionListForGeneration ioInstructionList
-{
+) {
   ioInstructionList += !@templateInstructionStringForGeneration {!self.mTemplateString}
 }
 
 //--------------------------------------------------------------------------------------------------
 
 override proc @templateInstructionExpressionAST templateInstructionAnalysis
-  ?let @lstring inUsefulnessCallerEntityName
+  (?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @templateAnalysisContext inAnalysisContext
   ?!@unifiedTypeMap ioTypeMap
   ?!@templateInstructionListForGeneration ioInstructionList
-{
+) {
   [self.mExpression templateExpressionAnalysis
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
@@ -1518,12 +1518,12 @@ override proc @templateInstructionExpressionAST templateInstructionAnalysis
 //--------------------------------------------------------------------------------------------------
 
 override proc @templateBlockInstructionAST templateInstructionAnalysis
-  ?let @lstring inUsefulnessCallerEntityName
+  (?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @templateAnalysisContext inAnalysisContext
   ?!@unifiedTypeMap ioTypeMap
   ?!@templateInstructionListForGeneration ioInstructionList
-{
+) {
   [self.mExpression templateExpressionAnalysis
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
@@ -1561,24 +1561,24 @@ override proc @templateBlockInstructionAST templateInstructionAnalysis
 //--------------------------------------------------------------------------------------------------
 
 override proc @templateInstructionGetColumnLocationAST templateInstructionAnalysis
-  ?let @lstring unused inUsefulnessCallerEntityName
+  (?let @lstring unused inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
   ?let @templateAnalysisContext unused inAnalysisContext
   ?!@unifiedTypeMap unused ioTypeMap
   ?!@templateInstructionListForGeneration ioInstructionList
-{
+) {
   ioInstructionList += !@templateInstructionGetColumnLocationForGeneration {}
 }
 
 //--------------------------------------------------------------------------------------------------
 
 override proc @templateInstructionGotoColumnLocationAST templateInstructionAnalysis
-  ?let @lstring unused inUsefulnessCallerEntityName
+  (?let @lstring unused inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
   ?let @templateAnalysisContext unused inAnalysisContext
   ?!@unifiedTypeMap unused ioTypeMap
   ?!@templateInstructionListForGeneration ioInstructionList
-{
+) {
   ioInstructionList += !@templateInstructionGotoColumnLocationForGeneration {}
 }
 
@@ -1586,12 +1586,12 @@ override proc @templateInstructionGotoColumnLocationAST templateInstructionAnaly
 //--------------------------------------------------------------------------------------------------
 
 override proc @templateInstructionIfAST templateInstructionAnalysis
-  ?let @lstring inUsefulnessCallerEntityName
+  (?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @templateAnalysisContext inAnalysisContext
   ?!@unifiedTypeMap ioTypeMap
   ?!@templateInstructionListForGeneration ioInstructionList
-{
+) {
   var templateInstructionIfBranchList = @templateInstructionIfBranchListForGeneration ()
   for (mExpression mInstructionList) in self.mTemplateInstructionIfBranchList do
     [mExpression templateExpressionAnalysis

@@ -23,13 +23,13 @@ syntax extension galgas3InstructionsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <expression_or_ggs3> ?!@galgasDeclarationAST ioDeclarations
-                            !@semanticExpressionAST outExpression
+  rule <expression_or_ggs3> (?!@galgasDeclarationAST ioDeclarations,
+                            !@semanticExpressionAST outExpression)
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <if_instruction_core> ?!@galgasDeclarationAST ioDeclarations
-                             !@semanticInstructionAST outInstruction {
+  rule <if_instruction_core> (?!@galgasDeclarationAST ioDeclarations,
+                             !@semanticInstructionAST outInstruction) {
     let instructionLocation = @location.here
     <comma_separated_expression_ggs3> !?ioDeclarations ?let testExpression
     $then$
@@ -58,8 +58,8 @@ syntax extension galgas3InstructionsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <semantic_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
-                                   !@semanticInstructionAST outInstruction {
+  rule <semantic_instruction_ggs3> (?!@galgasDeclarationAST ioDeclarations
+                                   !@semanticInstructionAST outInstruction ) {
     $if$
     <if_instruction_core> !?ioDeclarations ?outInstruction
     $end$
@@ -75,13 +75,13 @@ syntax extension galgas4InstructionsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <expression_or> ?!@galgasDeclarationAST ioDeclarations
-                       !@semanticExpressionAST outExpression
+  rule <expression_or> (?!@galgasDeclarationAST ioDeclarations
+                       !@semanticExpressionAST outExpression)
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <if_instruction_core> ?!@galgasDeclarationAST ioDeclarations
-                             !@semanticInstructionAST outInstruction {
+  rule <if_instruction_core> (?!@galgasDeclarationAST ioDeclarations
+                             !@semanticInstructionAST outInstruction ) {
     let instructionLocation = @location.here
     <comma_separated_expression> !?ioDeclarations ?let testExpression
     $then$
@@ -110,8 +110,8 @@ syntax extension galgas4InstructionsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <semantic_instruction> ?!@galgasDeclarationAST ioDeclarations
-                              !@semanticInstructionAST outInstruction {
+  rule <semantic_instruction> (?!@galgasDeclarationAST ioDeclarations
+                              !@semanticInstructionAST outInstruction ) {
     $if$
     <if_instruction_core> !?ioDeclarations ?outInstruction
     $end$
@@ -134,7 +134,7 @@ final class @ifInstructionAST : @semanticInstructionAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override proc enterInstructionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
+  override proc enterInstructionInSemanticContext (?!@unifiedTypeMap ioTypeMap ) {
     [self.mExpressions enterExpressionListInSemanticContext !?ioTypeMap]
     [self.m_then_instructionList enterInstructionListInSemanticContext !?ioTypeMap]
     [self.m_else_instructionList enterInstructionListInSemanticContext !?ioTypeMap]
@@ -166,12 +166,12 @@ final class @ifInstructionAST : @semanticInstructionAST {
   //
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override proc analyzeSemanticInstruction ?let @lstring inUsefulnessCallerEntityName
+  override proc analyzeSemanticInstruction (?let @lstring inUsefulnessCallerEntityName
                             ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
                             ?let @analysisContext inAnalysisContext
                             ?!@unifiedTypeMap ioTypeMap
                             ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
-                            ?!@localVarManager ioVariableMap {
+                            ?!@localVarManager ioVariableMap ) {
   //--- Test expression
    [self.mExpressions analyzeSemanticExpressionList
      !inUsefulnessCallerEntityName
@@ -258,11 +258,11 @@ final class @ifInstructionForGeneration : @semanticInstructionForGeneration {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override proc generateInstruction ?!@stringset ioInclusionSet
+  override proc generateInstruction (?!@stringset ioInclusionSet
                                       ?!@uint ioTemporaryVariableIndex
                                       ?!@stringset ioUnusedVariableCppNameSet
                                       ?let @bool inGenerateSyntaxDirectedTranslationString
-                                      ?!@string ioGeneratedCode {
+                                      ?!@string ioGeneratedCode ) {
   //--- Generate test expression
     [self.mExpressions generateInstruction
       !?ioInclusionSet

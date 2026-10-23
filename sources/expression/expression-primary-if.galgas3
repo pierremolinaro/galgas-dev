@@ -34,8 +34,8 @@ syntax extension galgas3ExpressionSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <primary_ggs3> ?!@galgasDeclarationAST ioDeclarations
-                      !@semanticExpressionAST outExpression {
+  rule <primary_ggs3> (?!@galgasDeclarationAST ioDeclarations
+                      !@semanticExpressionAST outExpression ) {
     $if$
     <expression_ggs3> !?ioDeclarations ?let ifExpression
     let operatorLocation = @location.here
@@ -62,8 +62,8 @@ syntax extension galgas4ExpressionSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <primary> ?!@galgasDeclarationAST ioDeclarations
-                 !@semanticExpressionAST outExpression {
+  rule <primary> (?!@galgasDeclarationAST ioDeclarations
+                 !@semanticExpressionAST outExpression ) {
     $if$
     <expression> !?ioDeclarations ?let ifExpression
     let operatorLocation = @location.here
@@ -110,8 +110,8 @@ syntax extension galgas4ExpressionSyntax {
 //--------------------------------------------------------------------------------------------------
 
 override proc @ifExpressionAST enterExpressionInSemanticContext
-  ?!@unifiedTypeMap ioTypeMap
-{
+  (?!@unifiedTypeMap ioTypeMap
+) {
   [self.mIfExpression enterExpressionInSemanticContext !?ioTypeMap]
   [self.mThenExpression enterExpressionInSemanticContext !?ioTypeMap]
   [self.mElseExpression enterExpressionInSemanticContext !?ioTypeMap]
@@ -120,14 +120,14 @@ override proc @ifExpressionAST enterExpressionInSemanticContext
 //································································································
 
 override proc @ifExpressionAST analyzeSemanticExpression
-  ?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName
+  (?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?inferenceType: let @unifiedTypeMapEntry inType
   ?let @analysisContext inAnalysisContext
                                 ?!@unifiedTypeMap ioTypeMap
   ?!@localVarManager ioVariableMap
   !@semanticExpressionForGeneration outExpression
-{
+) {
 //--- 'if' expression analysis
   [self.mIfExpression analyzeSemanticExpression
     !usefulnessCallerEntityName: inUsefulnessCallerEntityName
@@ -192,12 +192,12 @@ final class @ifExpressionForGeneration : @semanticExpressionForGeneration {
 //································································································
 
 override proc @ifExpressionForGeneration generateExpression
-  ?!@string ioGeneratedCode
+  (?!@string ioGeneratedCode
   ?!@stringset ioInclusionSet
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
   !@string outCppExpression
-{
+) {
 //--- 'if' expression
   [self.mIfExpression generateExpression
     !?ioGeneratedCode

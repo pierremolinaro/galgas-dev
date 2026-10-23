@@ -47,8 +47,8 @@ syntax extension galgas3ExpressionSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <relation_factor_ggs3> ?!@galgasDeclarationAST ioDeclarations
-                              !@semanticExpressionAST outExpression {
+  rule <relation_factor_ggs3> (?!@galgasDeclarationAST ioDeclarations
+                              !@semanticExpressionAST outExpression ) {
     <simple_expression_ggs3> !?ioDeclarations ? outExpression
     repeat
     while
@@ -112,8 +112,8 @@ syntax extension galgas4ExpressionSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <relation_factor> ?!@galgasDeclarationAST ioDeclarations
-                         !@semanticExpressionAST outExpression {
+  rule <relation_factor> (?!@galgasDeclarationAST ioDeclarations
+                         !@semanticExpressionAST outExpression ) {
     <simple_expression> !?ioDeclarations ?outExpression
     repeat
     while
@@ -176,8 +176,8 @@ syntax extension galgas4ExpressionSyntax {
 //--------------------------------------------------------------------------------------------------
 
 override proc @comparisonExpressionAST enterExpressionInSemanticContext
-  ?!@unifiedTypeMap ioTypeMap
-{
+  (?!@unifiedTypeMap ioTypeMap
+) {
   [self.mLeftExpression enterExpressionInSemanticContext !?ioTypeMap]
   [self.mRightExpression enterExpressionInSemanticContext !?ioTypeMap]
 }
@@ -185,14 +185,14 @@ override proc @comparisonExpressionAST enterExpressionInSemanticContext
 //································································································
 
 override proc @comparisonExpressionAST analyzeSemanticExpression
-  ?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName
+  (?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?inferenceType: let @unifiedTypeMapEntry inInferenceType
   ?let @analysisContext inAnalysisContext
                                 ?!@unifiedTypeMap ioTypeMap
   ?!@localVarManager ioVariableMap
   !@semanticExpressionForGeneration outExpression
-{
+) {
 //--- Left expression analysis
   [self.mLeftExpression analyzeSemanticExpression
     !usefulnessCallerEntityName: inUsefulnessCallerEntityName
@@ -276,12 +276,12 @@ final class @comparisonExpressionForGeneration : @semanticExpressionForGeneratio
 //································································································
 
 override proc @comparisonExpressionForGeneration generateExpression
-  ?!@string ioGeneratedCode
+  (?!@string ioGeneratedCode
   ?!@stringset ioInclusionSet
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
   !@string outCppExpression
-{
+) {
   [self.mLeftExpression.mResultType addHeaderFileName !?ioInclusionSet]
 //--- Left operand
   [self.mLeftExpression  generateExpression

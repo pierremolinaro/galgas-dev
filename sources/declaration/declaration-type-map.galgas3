@@ -76,7 +76,7 @@ syntax extension galgas3DeclarationsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <search_method_declaration> ?!@mapAccessorListAST ioMapSearchMethodListAST {
+  rule <search_method_declaration> (?!@mapAccessorListAST ioMapSearchMethodListAST ) {
     $search$
     $identifier$ ?let @lstring methodName
     $error$ ; $message$
@@ -86,7 +86,7 @@ syntax extension galgas3DeclarationsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <search_subscript_declaration> ?!@mapAccessorListAST ioMapSearchSubscriptListAST {
+  rule <search_subscript_declaration> (?!@mapAccessorListAST ioMapSearchSubscriptListAST ) {
     $%searchSubscript$
     $identifier$ ?let @lstring methodName
     $error$ ; $message$
@@ -96,7 +96,7 @@ syntax extension galgas3DeclarationsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <remove_setter_declaration> ?!@mapAccessorListAST ioMapRemoveMethodListAST {
+  rule <remove_setter_declaration> (?!@mapAccessorListAST ioMapRemoveMethodListAST ) {
     $remove$
     $identifier$ ?let @lstring mMethodName
     $error$
@@ -107,7 +107,7 @@ syntax extension galgas3DeclarationsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <replace_setter_declaration> ?!@mapAccessorListAST ioMapReplaceMethodListAST {
+  rule <replace_setter_declaration> (?!@mapAccessorListAST ioMapReplaceMethodListAST ) {
     $replace$
     $identifier$ ?let @lstring mMethodName
     $error$
@@ -118,7 +118,7 @@ syntax extension galgas3DeclarationsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <insert_or_replace_declaration> ?!@insertOrReplaceDeclarationListAST ioInsertOrReplaceDeclarationListAST {
+  rule <insert_or_replace_declaration> (?!@insertOrReplaceDeclarationListAST ioInsertOrReplaceDeclarationListAST ) {
     $insert$
     $or$
     $replace$
@@ -127,7 +127,7 @@ syntax extension galgas3DeclarationsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <map_insert_setter_declaration> ?!@insertSetterListAST ioMapMethodList {
+  rule <map_insert_setter_declaration> (?!@insertSetterListAST ioMapMethodList ) {
     $insert$
     $identifier$ ?let @lstring mMethodName
     $error$
@@ -156,7 +156,7 @@ syntax extension galgas4DeclarationsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
+  rule <declaration> (?!@galgasDeclarationAST ioDeclarations ) {
     $map$
     $@type$ ?let @lstring mapTypeName indexing mapDefinition, structDefinition ".element"
     let @bool isEquatable
@@ -209,7 +209,7 @@ syntax extension galgas4DeclarationsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <search_method_declaration> ?!@mapAccessorListAST ioMapSearchMethodListAST {
+  rule <search_method_declaration> (?!@mapAccessorListAST ioMapSearchMethodListAST ) {
     $%searchMethod$
     $identifier$ ?let @lstring methodName
     $%errorMessage$
@@ -219,7 +219,7 @@ syntax extension galgas4DeclarationsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <search_subscript_declaration> ?!@mapAccessorListAST ioMapSearchSubscriptListAST {
+  rule <search_subscript_declaration> (?!@mapAccessorListAST ioMapSearchSubscriptListAST ) {
     $%searchSubscript$
     $identifier$ ?let @lstring methodName
     $%errorMessage$
@@ -229,7 +229,7 @@ syntax extension galgas4DeclarationsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <remove_setter_declaration> ?!@mapAccessorListAST ioMapRemoveMethodListAST {
+  rule <remove_setter_declaration> (?!@mapAccessorListAST ioMapRemoveMethodListAST ) {
     $%removeSetter$
     $identifier$ ?let @lstring mMethodName
     $%errorMessage$
@@ -239,7 +239,7 @@ syntax extension galgas4DeclarationsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <replace_setter_declaration> ?!@mapAccessorListAST ioMapReplaceMethodListAST {
+  rule <replace_setter_declaration> (?!@mapAccessorListAST ioMapReplaceMethodListAST ) {
     $%replaceSetter$
     $identifier$ ?let @lstring mMethodName
     $%errorMessage$
@@ -249,14 +249,14 @@ syntax extension galgas4DeclarationsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <insert_or_replace_declaration> ?!@insertOrReplaceDeclarationListAST ioInsertOrReplaceDeclarationListAST {
+  rule <insert_or_replace_declaration> (?!@insertOrReplaceDeclarationListAST ioInsertOrReplaceDeclarationListAST ) {
     $%insertOrReplaceSetter$
     ioInsertOrReplaceDeclarationListAST += !@location.here
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <map_insert_setter_declaration> ?!@insertSetterListAST ioMapMethodList {
+  rule <map_insert_setter_declaration> (?!@insertSetterListAST ioMapMethodList ) {
     $%insertSetter$
     $identifier$ ?let @lstring mMethodName
     $%errorMessage$
@@ -333,7 +333,7 @@ final class @mapDeclarationAST : @semanticDeclarationAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override proc addAssociatedElement ?!@galgasDeclarationAST ioDeclarations {
+  override proc addAssociatedElement (?!@galgasDeclarationAST ioDeclarations ) {
     var structAttributeList = @propertyInCollectionListAST ()
     structAttributeList +=
       !mutability: .constantProperty
@@ -367,13 +367,13 @@ final class @mapDeclarationAST : @semanticDeclarationAST {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc enterDeclarationInGraph
-    ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
+    (?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
     ?!@equatableExtensionMap unused ioEquatableExtensionMap
     ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext
     ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext
     ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
     ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
-    ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList {
+    ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList ) {
     let key = @lstring {!"@" + self.mMapTypeName !self.mMapTypeName.location}
     [!?ioSemanticTypePrecedenceGraph addNode !key !self]
     for (* propertyTypeName 4*) in self.mPropertyList do
@@ -384,14 +384,14 @@ final class @mapDeclarationAST : @semanticDeclarationAST {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc enterDeclarationInSemanticContext
-    ?!@equatableExtensionMap ioEquatableExtensionMap
+    (?!@equatableExtensionMap ioEquatableExtensionMap
     ?let @extensionInitializerForBuildingContext inExtensionInitializerMapForBuildingContext
     ?let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext
     ?let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext
     ?let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext
     ?!@unifiedTypeMap ioTypeMap
     ?!@semanticContext ioSemanticContext
-  {
+  ) {
   //--- string type index
     [!?ioTypeMap makeEntryFromString !"string" ?let stringTypeIndex]
   //--- lstring type index
@@ -740,14 +740,14 @@ final class @mapDeclarationAST : @semanticDeclarationAST {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc semanticAnalysis
-    ?!@lstringlist ioUsefulnessRootEntities
+    (?!@lstringlist ioUsefulnessRootEntities
     ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
     ?let @string unused inProductDirectory
     ?let @semanticContext unused  inSemanticContext
                                   ?!@unifiedTypeMap ioTypeMap
     ?let @predefinedTypes unused inPredefinedTypes
     ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
-  {
+  ) {
   //--- Useful entities graph
     let nameForUsefulness = typeNameForUsefulEntitiesGraph (!self.mMapTypeName)
     [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
@@ -867,8 +867,8 @@ final class @mapTypeForGeneration : @semanticTypeForGeneration {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override proc appendDeclaration1 ?!@stringset unused ioInclusionSet
-                                      !@string outHeader {
+  override proc appendDeclaration1 (?!@stringset unused ioInclusionSet
+                                      !@string outHeader ) {
     let selfTypeDefinition = self.mSelfTypeEntry.definition
     outHeader = [filewrapper mapGenerationTemplate.mapTypeHeader1
       !selfTypeDefinition.typeName.string
@@ -901,9 +901,9 @@ final class @mapTypeForGeneration : @semanticTypeForGeneration {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override proc appendSpecificImplementation ?let @unifiedTypeMap unused inTypeMap
+  override proc appendSpecificImplementation (?let @unifiedTypeMap unused inTypeMap
                                                ?!@stringset ioInclusionSet
-                                               !@string outImplementation {
+                                               !@string outImplementation ) {
     [self.mElementTypeEntry addHeaderFileName !?ioInclusionSet]
     [self.mOptionalElementTypeEntry addHeaderFileName !?ioInclusionSet]
     [self.mSelfTypeEntry  addHeaderFileName !?ioInclusionSet]

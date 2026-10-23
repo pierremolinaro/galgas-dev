@@ -22,30 +22,30 @@ graph @inheritanceGraph (@declarationListAST) {
 }
 
 abstract proc @declarationAST buildGraph
-  ?!@inheritanceGraph ioGraph
+  (?!@inheritanceGraph ioGraph)
 
 override proc @classWithoutSuperClassAST buildGraph
-  ?!@inheritanceGraph ioGraph {
+  (?!@inheritanceGraph ioGraph ) {
   [!?ioGraph addNode !self.mClassName !self]
 }
 
 override proc @classWithSuperClassAST buildGraph
-  ?!@inheritanceGraph ioGraph {
+  (?!@inheritanceGraph ioGraph ) {
   [!?ioGraph addNode !self.mClassName !self]
   [!?ioGraph addEdge !from: self.mClassName !to: self.mSuperClassName]
 }
 
 
 abstract proc @declarationAST generateCode
-  ?!@string ioCodeToGenerate
+  (?!@string ioCodeToGenerate)
 
 override proc @classWithoutSuperClassAST generateCode
-  ?!@string ioCodeToGenerate {
+  (?!@string ioCodeToGenerate ) {
   ioCodeToGenerate += "class " + self.mClassName + " { } ;\n"
 }
 
 override proc @classWithSuperClassAST generateCode
-  ?!@string ioCodeToGenerate {
+  (?!@string ioCodeToGenerate ) {
   ioCodeToGenerate += "class " + self.mClassName + " : " + self.mSuperClassName + " { } ;\n"
 }
 
