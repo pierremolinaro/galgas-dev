@@ -32,7 +32,7 @@ syntax galgas3OptionComponentSyntax (galgasScanner3) {
     var @commandLineOptionListAST options = @()
     repeat
     while
-      <option_declaration_ggs3> !?options
+      <option_declaration_ggs3> (!?options)
     end
     $}$
     ioDeclarations.mDeclarationList += !@optionComponentDeclarationAST {
@@ -96,7 +96,7 @@ syntax galgas4OptionComponentSyntax (galgasScanner4) {
     var @commandLineOptionListAST options = @()
     repeat
     while
-      <option_declaration_ggs3> !?options
+      <option_declaration_ggs3> (!?options)
     end
     $}$
     ioDeclarations.mDeclarationList += !@optionComponentDeclarationAST {

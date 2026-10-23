@@ -45,9 +45,9 @@ syntax extension galgas3DeclarationsSyntax {
       typeName = makeEmbeddedTypeLName (!outer: typeName !inner: t)
     end
     $identifier$ ?let @lstring setterName indexing extensionSetterDefinition
-    <formal_parameter_list_ggs34> !?ioDeclarations ?let formalParameterList
+    <formal_parameter_list_ggs34> (!?ioDeclarations ?let formalParameterList)
     ${$
-    <semantic_instruction_list_ggs3> !?ioDeclarations ?let routineInstructionList
+    <semantic_instruction_list_ggs3> (!?ioDeclarations ?let routineInstructionList)
     let @location endOfSetterLocation = @location.here
     $}$
     ioDeclarations.mDeclarationList += !@extensionSetterAST {
@@ -72,9 +72,9 @@ syntax extension galgas3DeclarationsSyntax {
       $.$
     end
     $identifier$ ?let @lstring setterName indexing extensionSetterDefinition
-    <formal_parameter_list_ggs34> !?ioDeclarations ?let formalParameterList
+    <formal_parameter_list_ggs34> (!?ioDeclarations ?let formalParameterList)
     ${$
-    <semantic_instruction_list_ggs3> !?ioDeclarations ?let @semanticInstructionListAST routineInstructionList
+    <semantic_instruction_list_ggs3> (!?ioDeclarations ?let @semanticInstructionListAST routineInstructionList)
     let @location endOfSetterLocation = @location.here
     $}$
     ioDeclarations.mDeclarationList += !@extensionSetterAST {
@@ -100,18 +100,18 @@ syntax extension galgas4DeclarationsSyntax {
   rule <declaration> (?!@galgasDeclarationAST ioDeclarations) {
     $mutating$
     $proc$
-    <simple_type_definition> !?ioDeclarations ?var @lstring typeName
+    <simple_type_definition> (!?ioDeclarations ?var @lstring typeName)
     $.$
     repeat
     while
-      <simple_type_definition> !?ioDeclarations ?let t
+      <simple_type_definition> (!?ioDeclarations ?let t)
       typeName = makeEmbeddedTypeLName (!outer: typeName !inner: t)
       $.$
     end
     $identifier$ ?let @lstring setterName indexing extensionSetterDefinition
-    <formal_parameter_list> !?ioDeclarations ?let @formalParameterListAST formalParameterList
+    <formal_parameter_list> (!?ioDeclarations ?let @formalParameterListAST formalParameterList)
     ${$
-    <semantic_instruction_list> !?ioDeclarations ?let @semanticInstructionListAST routineInstructionList
+    <semantic_instruction_list> (!?ioDeclarations ?let @semanticInstructionListAST routineInstructionList)
     let @location endOfSetterLocation = @location.here
     $}$
     ioDeclarations.mDeclarationList += !@extensionSetterAST {
@@ -131,9 +131,9 @@ syntax extension galgas4DeclarationsSyntax {
     $mutating$
     $proc$
     $identifier$ ?let @lstring setterName indexing extensionSetterDefinition
-    <formal_parameter_list> !?ioDeclarations ?let @formalParameterListAST formalParameterList
+    <formal_parameter_list> (!?ioDeclarations ?let @formalParameterListAST formalParameterList)
     ${$
-    <semantic_instruction_list> !?ioDeclarations ?let @semanticInstructionListAST routineInstructionList
+    <semantic_instruction_list> (!?ioDeclarations ?let @semanticInstructionListAST routineInstructionList)
     let @location endOfSetterLocation = @location.here
     $}$
     ioDeclarations.mDeclarationList += !@extensionSetterAST {

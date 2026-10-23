@@ -46,7 +46,7 @@ syntax extension galgas3InstructionsSyntax {
     $.$
     $init$
     $($
-    <output_expression_list_ggs34> !?ioDeclarations ?let actualParameterList
+    <output_expression_list_ggs34> (!?ioDeclarations ?let actualParameterList)
     $)$
     outInstruction = @superInitInstructionAST {
       !instructionLocation
@@ -71,7 +71,7 @@ syntax extension galgas4InstructionsSyntax {
     $init$
     let instructionLocation = @location.here
     $($
-    <output_expression_list> !?ioDeclarations ?let actualParameterList
+    <output_expression_list> (!?ioDeclarations ?let actualParameterList)
     $)$
     outInstruction = @superInitInstructionAST {
       !instructionLocation

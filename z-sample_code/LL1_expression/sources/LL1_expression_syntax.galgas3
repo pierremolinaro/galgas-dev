@@ -1,7 +1,7 @@
 syntax LL1_expression_syntax (LL1_expression_lexique) %translate {
 
 rule <StartSymbol> () {
-  <Expression> ?let @cExpression expressionTree ?let @uint value
+  <Expression> (?let @cExpression expressionTree ?let @uint value)
   log expressionTree, value
 }
   
@@ -17,12 +17,12 @@ rule <Constant>
 rule <Expression>
   (!@cExpression outExpressionTree,
   !@uint outValue ) {
-  <Terme> ?outExpressionTree ?outValue
+  <Terme> (?outExpressionTree ?outValue)
   repeat
   while 
     $+$ :> ?let @string sep ?let @string token
     send sep
-    <Terme> ?let @cExpression rightOperand ?let @uint v
+    <Terme> (?let @cExpression rightOperand ?let @uint v)
     send token
     outExpressionTree = @cAdd { ! outExpressionTree !rightOperand}
     outValue = outValue + v
@@ -32,12 +32,12 @@ rule <Expression>
 rule <Terme>
   (!@cExpression outExpressionTree,
   !@uint outValue ) {
-  <Facteur> ?outExpressionTree ?outValue
+  <Facteur> (?outExpressionTree ?outValue)
   repeat
   while 
     $*$ :> ?let @string sep ?let @string token
     send sep
-    <Facteur> ?let @cExpression rightOperand ?let @uint v
+    <Facteur> (?let @cExpression rightOperand ?let @uint v)
     send token
     outExpressionTree = @cMult { ! outExpressionTree !rightOperand}
     outValue = outValue * v
@@ -49,10 +49,10 @@ rule <Facteur>
   !@uint outValue ) {
   select
     $($ :> ?* ?*
-    <Expression> ?outExpressionTree ?outValue
+    <Expression> (?outExpressionTree ?outValue)
     $)$ :> ?* ?*
   or
-    <Constant> ?outExpressionTree ?outValue
+    <Constant> (?outExpressionTree ?outValue)
   end
 }
 

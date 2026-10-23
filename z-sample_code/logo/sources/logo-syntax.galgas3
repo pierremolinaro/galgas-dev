@@ -31,7 +31,7 @@ syntax logo_syntax (logo_lexique) {
       il += !ins
     or
       $PEN$
-      <pen_direction> !? il
+      <pen_direction> (!? il)
       $;$
     or
       $CALL$
@@ -49,7 +49,7 @@ syntax logo_syntax (logo_lexique) {
   rule <instruction_list> (?!@routineMap ioTableRoutines ,?!@instructionList il ) {
     repeat
     while
-      <instruction> !? ioTableRoutines !? il
+      <instruction> (!? ioTableRoutines !? il)
     end
   }
 
@@ -60,7 +60,7 @@ syntax logo_syntax (logo_lexique) {
     $identifier$ ?let @lstring routineName indexing routineDefinition
     $BEGIN$
     var @instructionList il = @()
-    <instruction_list> !? ioTableRoutines !? il
+    <instruction_list> (!? ioTableRoutines !? il)
     $END$
   //--- Insertion dans la table
     [!?ioTableRoutines insertKey !routineName !il]
@@ -75,11 +75,11 @@ syntax logo_syntax (logo_lexique) {
     var @instructionList instructions = @()
     repeat
     while
-      <routine_definition> !? tableRoutines
+      <routine_definition> (!? tableRoutines)
     end
   //--- Programme principal
     $BEGIN$
-    <instruction_list> !? tableRoutines !? instructions
+    <instruction_list> (!? tableRoutines !? instructions)
     $END$
     $.$
   //--- Compute SVG instructions

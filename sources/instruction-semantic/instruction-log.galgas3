@@ -58,7 +58,7 @@ syntax extension galgas3InstructionsSyntax {
       or
         $"string"$ ?let logMessage
         $:$
-        <expression_ggs3> !?ioDeclarations ?let logExpression
+        <expression_ggs3> (!?ioDeclarations ?let logExpression)
         logList += !logMessage !logExpression
       end
     while
@@ -99,7 +99,7 @@ syntax extension galgas4InstructionsSyntax {
       or
         $"string"$ ?let logMessage
         $:$
-        <expression> !?ioDeclarations ?let logExpression
+        <expression> (!?ioDeclarations ?let logExpression)
         logList += !logMessage !logExpression
       end
     while

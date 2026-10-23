@@ -29,7 +29,7 @@ syntax galgas3DeclarationsSyntax (galgasScanner3) {
   rule <start_symbol_ggs3> (?!@galgasDeclarationAST ioDeclarations ) {
     repeat
     while
-      <declaration_ggs3> !?ioDeclarations
+      <declaration_ggs3> (!?ioDeclarations)
     end
   }
 
@@ -61,9 +61,9 @@ syntax galgas3DeclarationsSyntax (galgasScanner3) {
     $identifier$ ?let @lstring mFilewrapperName indexing filewrapperDefinition
     $in$
     $"string"$ ?let @lstring mFilewrapperPath
-    <filewrapper_text_files> ?let filewrapperTextFileExtensionList
-    <filewrapper_binary_files> ?let filewrapperBinaryFileExtensionList
-    <filewrapper_templates> !?ioDeclarations ?let filewrapperTemplateList
+    <filewrapper_text_files> (?let filewrapperTextFileExtensionList)
+    <filewrapper_binary_files> (?let filewrapperBinaryFileExtensionList)
+    <filewrapper_templates> (!?ioDeclarations ?let filewrapperTemplateList)
     ioDeclarations.mDeclarationList += !@filewrapperDeclarationAST {
       !isPredefined: false // Is not predefined
       !false // private
@@ -83,9 +83,9 @@ syntax galgas3DeclarationsSyntax (galgasScanner3) {
     $identifier$ ?let @lstring mFilewrapperName indexing filewrapperDefinition
     $in$
     $"string"$ ?let @lstring mFilewrapperPath
-    <filewrapper_text_files> ?let filewrapperTextFileExtensionList
-    <filewrapper_binary_files> ?let filewrapperBinaryFileExtensionList
-    <filewrapper_templates> !?ioDeclarations ?let filewrapperTemplateList
+    <filewrapper_text_files> (?let filewrapperTextFileExtensionList)
+    <filewrapper_binary_files> (?let filewrapperBinaryFileExtensionList)
+    <filewrapper_templates> (!?ioDeclarations ?let filewrapperTemplateList)
     ioDeclarations.mDeclarationList += !@filewrapperDeclarationAST {
       !isPredefined: false // Is not predefined
       !true // private
@@ -147,7 +147,7 @@ syntax galgas3DeclarationsSyntax (galgasScanner3) {
       repeat
       while
         $?selector:$ ?let selector
-        <type_definition_ggs3> !?ioDeclarations ?let typeName
+        <type_definition_ggs3> (!?ioDeclarations ?let typeName)
         let @bool isUnused
         select
           isUnused = false
@@ -160,7 +160,7 @@ syntax galgas3DeclarationsSyntax (galgasScanner3) {
       while
         $?$
         let selector = "".here
-        <type_definition_ggs3> !?ioDeclarations ?let typeName
+        <type_definition_ggs3> (!?ioDeclarations ?let typeName)
         let @bool isUnused
         select
           isUnused = false
@@ -194,7 +194,7 @@ syntax galgas4DeclarationsSyntax (galgasScanner4) {
   rule <start_symbol> (?!@galgasDeclarationAST ioDeclarations ) {
     repeat
     while
-      <declaration> !?ioDeclarations
+      <declaration> (!?ioDeclarations)
     end
   }
 
@@ -226,9 +226,9 @@ syntax galgas4DeclarationsSyntax (galgasScanner4) {
     $identifier$ ?let @lstring mFilewrapperName indexing filewrapperDefinition
     $in$
     $"string"$ ?let @lstring mFilewrapperPath
-    <filewrapper_text_files> ?let filewrapperTextFileExtensionList
-    <filewrapper_binary_files> ?let filewrapperBinaryFileExtensionList
-    <filewrapper_templates> !?ioDeclarations ?let filewrapperTemplateList
+    <filewrapper_text_files> (?let filewrapperTextFileExtensionList)
+    <filewrapper_binary_files> (?let filewrapperBinaryFileExtensionList)
+    <filewrapper_templates> (!?ioDeclarations ?let filewrapperTemplateList)
     ioDeclarations.mDeclarationList += !@filewrapperDeclarationAST {
       !isPredefined: false // Is not predefined
       !false // private
@@ -248,9 +248,9 @@ syntax galgas4DeclarationsSyntax (galgasScanner4) {
     $identifier$ ?let @lstring mFilewrapperName indexing filewrapperDefinition
     $in$
     $"string"$ ?let @lstring mFilewrapperPath
-    <filewrapper_text_files> ?let filewrapperTextFileExtensionList
-    <filewrapper_binary_files> ?let filewrapperBinaryFileExtensionList
-    <filewrapper_templates> !?ioDeclarations ?let filewrapperTemplateList
+    <filewrapper_text_files> (?let filewrapperTextFileExtensionList)
+    <filewrapper_binary_files> (?let filewrapperBinaryFileExtensionList)
+    <filewrapper_templates> (!?ioDeclarations ?let filewrapperTemplateList)
     ioDeclarations.mDeclarationList += !@filewrapperDeclarationAST {
       !isPredefined: false // Is not predefined
       !true // private
@@ -323,7 +323,7 @@ syntax galgas4DeclarationsSyntax (galgasScanner4) {
           or
             $?selector:$ ?selector
           end
-          <type_definition> !?ioDeclarations ?let typeName
+          <type_definition> (!?ioDeclarations ?let typeName)
           let @bool isUnused
           select
             isUnused = false

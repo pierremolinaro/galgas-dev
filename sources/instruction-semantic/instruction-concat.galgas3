@@ -25,7 +25,7 @@ syntax extension galgas3InstructionsSyntax {
 
   rule <semantic_instruction_ggs3> (?!@galgasDeclarationAST ioDeclarations,
                                     !@semanticInstructionAST outInstruction) {
-    <semantic_instruction_beginning_with_identifier> !?ioDeclarations !prefixedBySelf: false ?outInstruction
+    <semantic_instruction_beginning_with_identifier> (!?ioDeclarations !prefixedBySelf: false ?outInstruction)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -34,7 +34,7 @@ syntax extension galgas3InstructionsSyntax {
                                     !@semanticInstructionAST outInstruction) {
     $self$
     $.$
-    <semantic_instruction_beginning_with_identifier> !?ioDeclarations !prefixedBySelf: true ?outInstruction
+    <semantic_instruction_beginning_with_identifier> (!?ioDeclarations !prefixedBySelf: true ?outInstruction)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -53,7 +53,7 @@ syntax extension galgas3InstructionsSyntax {
     end
     select
       $-=$
-      <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST expression
+      <expression_ggs3> (!?ioDeclarations ?let @semanticExpressionAST expression)
       outInstruction = @opAssignExpressionInstructionAST {
         !instructionLocation
         !inHasSelfPrefix
@@ -64,7 +64,7 @@ syntax extension galgas3InstructionsSyntax {
       }
     or
       $++=$
-      <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST expression
+      <expression_ggs3> (!?ioDeclarations ?let @semanticExpressionAST expression)
       outInstruction = @plusPlusEqualElementInstructionAST {
         !instructionLocation
         !inHasSelfPrefix
@@ -75,7 +75,7 @@ syntax extension galgas3InstructionsSyntax {
     or
       $+=$
       select
-        <non_empty_output_expression_list_ggs3> !?ioDeclarations ?let @actualOutputArgumentList expressionList
+        <non_empty_output_expression_list_ggs3> (!?ioDeclarations ?let @actualOutputArgumentList expressionList)
         outInstruction = @plusEqualElementsInstructionAST {
           !instructionLocation
           !inHasSelfPrefix
@@ -84,7 +84,7 @@ syntax extension galgas3InstructionsSyntax {
           !expressionList
         }
       or
-        <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST expression
+        <expression_ggs3> (!?ioDeclarations ?let @semanticExpressionAST expression)
         outInstruction = @opAssignExpressionInstructionAST {
           !instructionLocation
           !inHasSelfPrefix
@@ -96,7 +96,7 @@ syntax extension galgas3InstructionsSyntax {
       end
     or
       $*=$
-      <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST expression
+      <expression_ggs3> (!?ioDeclarations ?let @semanticExpressionAST expression)
       outInstruction = @opAssignExpressionInstructionAST {
         !instructionLocation
         !inHasSelfPrefix
@@ -107,7 +107,7 @@ syntax extension galgas3InstructionsSyntax {
       }
     or
       $&=$
-      <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST expression
+      <expression_ggs3> (!?ioDeclarations ?let @semanticExpressionAST expression)
       outInstruction = @opAssignExpressionInstructionAST {
         !instructionLocation
         !inHasSelfPrefix
@@ -118,7 +118,7 @@ syntax extension galgas3InstructionsSyntax {
       }
     or
       $|=$
-      <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST expression
+      <expression_ggs3> (!?ioDeclarations ?let @semanticExpressionAST expression)
       outInstruction = @opAssignExpressionInstructionAST {
         !instructionLocation
         !inHasSelfPrefix
@@ -129,7 +129,7 @@ syntax extension galgas3InstructionsSyntax {
       }
     or
       $^=$
-      <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST expression
+      <expression_ggs3> (!?ioDeclarations ?let @semanticExpressionAST expression)
       outInstruction = @opAssignExpressionInstructionAST {
         !instructionLocation
         !inHasSelfPrefix
@@ -140,7 +140,7 @@ syntax extension galgas3InstructionsSyntax {
       }
     or
       $/=$
-      <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST expression
+      <expression_ggs3> (!?ioDeclarations ?let @semanticExpressionAST expression)
       outInstruction = @opAssignExpressionInstructionAST {
         !instructionLocation
         !inHasSelfPrefix
@@ -165,7 +165,7 @@ syntax extension galgas3InstructionsSyntax {
         $!$
         selector = "".here
       end
-      <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST expression
+      <expression_ggs3> (!?ioDeclarations ?let @semanticExpressionAST expression)
       outExpressionList += !selector !expression !@location.here
     while
     end
@@ -181,7 +181,7 @@ syntax extension galgas4InstructionsSyntax {
 
   rule <semantic_instruction> (?!@galgasDeclarationAST ioDeclarations,
                                !@semanticInstructionAST outInstruction) {
-    <semantic_instruction_beginning_with_identifier> !?ioDeclarations !prefixedBySelf: false ?outInstruction
+    <semantic_instruction_beginning_with_identifier> (!?ioDeclarations !prefixedBySelf: false ?outInstruction)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -190,7 +190,7 @@ syntax extension galgas4InstructionsSyntax {
                                !@semanticInstructionAST outInstruction) {
     $self$
     $.$
-    <semantic_instruction_beginning_with_identifier> !?ioDeclarations !prefixedBySelf: true ?outInstruction
+    <semantic_instruction_beginning_with_identifier> (!?ioDeclarations !prefixedBySelf: true ?outInstruction)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -210,7 +210,7 @@ syntax extension galgas4InstructionsSyntax {
   //---
     select
       $-=$
-      <expression> !?ioDeclarations ?let @semanticExpressionAST expression
+      <expression> (!?ioDeclarations ?let @semanticExpressionAST expression)
       outInstruction = @opAssignExpressionInstructionAST {
         !instructionLocation
         !inHasSelfPrefix
@@ -221,7 +221,7 @@ syntax extension galgas4InstructionsSyntax {
       }
     or
       $+=$
-      <expression> !?ioDeclarations ?let @semanticExpressionAST expression
+      <expression> (!?ioDeclarations ?let @semanticExpressionAST expression)
       outInstruction = @opAssignExpressionInstructionAST {
         !instructionLocation
         !inHasSelfPrefix
@@ -232,7 +232,7 @@ syntax extension galgas4InstructionsSyntax {
       }
     or
       $++=$
-      <expression> !?ioDeclarations ?let @semanticExpressionAST expression
+      <expression> (!?ioDeclarations ?let @semanticExpressionAST expression)
       outInstruction = @plusPlusEqualElementInstructionAST {
         !instructionLocation
         !inHasSelfPrefix
@@ -242,7 +242,7 @@ syntax extension galgas4InstructionsSyntax {
       }
     or
       $*=$
-      <expression> !?ioDeclarations ?let @semanticExpressionAST expression
+      <expression> (!?ioDeclarations ?let @semanticExpressionAST expression)
       outInstruction = @opAssignExpressionInstructionAST {
         !instructionLocation
         !inHasSelfPrefix
@@ -253,7 +253,7 @@ syntax extension galgas4InstructionsSyntax {
       }
     or
       $&=$
-      <expression> !?ioDeclarations ?let @semanticExpressionAST expression
+      <expression> (!?ioDeclarations ?let @semanticExpressionAST expression)
       outInstruction = @opAssignExpressionInstructionAST {
         !instructionLocation
         !inHasSelfPrefix
@@ -264,7 +264,7 @@ syntax extension galgas4InstructionsSyntax {
       }
     or
       $|=$
-      <expression> !?ioDeclarations ?let @semanticExpressionAST expression
+      <expression> (!?ioDeclarations ?let @semanticExpressionAST expression)
       outInstruction = @opAssignExpressionInstructionAST {
         !instructionLocation
         !inHasSelfPrefix
@@ -275,7 +275,7 @@ syntax extension galgas4InstructionsSyntax {
       }
     or
       $^=$
-      <expression> !?ioDeclarations ?let @semanticExpressionAST expression
+      <expression> (!?ioDeclarations ?let @semanticExpressionAST expression)
       outInstruction = @opAssignExpressionInstructionAST {
         !instructionLocation
         !inHasSelfPrefix
@@ -286,7 +286,7 @@ syntax extension galgas4InstructionsSyntax {
       }
     or
       $/=$
-      <expression> !?ioDeclarations ?let @semanticExpressionAST expression
+      <expression> (!?ioDeclarations ?let @semanticExpressionAST expression)
       outInstruction = @opAssignExpressionInstructionAST {
         !instructionLocation
         !inHasSelfPrefix
@@ -296,7 +296,7 @@ syntax extension galgas4InstructionsSyntax {
         !expression
       }
     or
-      <actual_parameter_list_within_parenthesis> !?ioDeclarations ?let @actualParameterListAST actualParameterList
+      <actual_parameter_list_within_parenthesis> (!?ioDeclarations ?let @actualParameterListAST actualParameterList)
       if inHasSelfPrefix then
         if propertyList.count == 0 then
           outInstruction = @methodCallInstructionAST {

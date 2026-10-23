@@ -35,7 +35,7 @@ syntax extension galgas3InstructionsSyntax {
                                     !@semanticInstructionAST outInstruction) {
     $message$
     let instructionLocation = @location.here
-    <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST expression
+    <expression_ggs3> (!?ioDeclarations ?let @semanticExpressionAST expression)
     outInstruction = @messageInstructionAST {!instructionLocation !expression}
   }
 

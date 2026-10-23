@@ -49,55 +49,55 @@ syntax extension galgas3ExpressionSyntax {
 
   rule <relation_factor_ggs3> (?!@galgasDeclarationAST ioDeclarations,
                               !@semanticExpressionAST outExpression ) {
-    <simple_expression_ggs3> !?ioDeclarations ? outExpression
+    <simple_expression_ggs3> (!?ioDeclarations ? outExpression)
     repeat
     while
       let operatorLocation = @location.here
       $==$
       let leftOperand = outExpression
-      <simple_expression_ggs3> !?ioDeclarations ?let rightOperand
+      <simple_expression_ggs3> (!?ioDeclarations ?let rightOperand)
       outExpression = @comparisonExpressionAST {!operatorLocation !leftOperand !.equal !rightOperand}
     while
       let operatorLocation = @location.here
       $!=$
       let leftOperand = outExpression
-      <simple_expression_ggs3> !?ioDeclarations ?let rightOperand
+      <simple_expression_ggs3> (!?ioDeclarations ?let rightOperand)
       outExpression = @comparisonExpressionAST {!operatorLocation !leftOperand !.notEqual !rightOperand}
     while
       let operatorLocation = @location.here
       $<=$
       let leftOperand = outExpression
-      <simple_expression_ggs3> !?ioDeclarations ?let rightOperand
+      <simple_expression_ggs3> (!?ioDeclarations ?let rightOperand)
       outExpression = @comparisonExpressionAST {!operatorLocation !leftOperand !.lowerOrEqual !rightOperand}
     while
       let operatorLocation = @location.here
       $>=$
       let leftOperand = outExpression
-      <simple_expression_ggs3> !?ioDeclarations ?let rightOperand
+      <simple_expression_ggs3> (!?ioDeclarations ?let rightOperand)
       outExpression = @comparisonExpressionAST {!operatorLocation !leftOperand !.greaterOrEqual !rightOperand}
     while
       let operatorLocation = @location.here
       $>$
       let leftOperand = outExpression
-      <simple_expression_ggs3> !?ioDeclarations ?let rightOperand
+      <simple_expression_ggs3> (!?ioDeclarations ?let rightOperand)
       outExpression = @comparisonExpressionAST {!operatorLocation !leftOperand !.greaterThan !rightOperand}
     while
       let operatorLocation = @location.here
       $<$
       let leftOperand = outExpression
-      <simple_expression_ggs3> !?ioDeclarations ?let rightOperand
+      <simple_expression_ggs3> (!?ioDeclarations ?let rightOperand)
       outExpression = @comparisonExpressionAST {!operatorLocation !leftOperand !.lowerThan !rightOperand}
     while
       let operatorLocation = @location.here
       $===$
       let leftOperand = outExpression
-      <simple_expression_ggs3> !?ioDeclarations ?let rightOperand
+      <simple_expression_ggs3> (!?ioDeclarations ?let rightOperand)
       outExpression = @comparisonExpressionAST {!operatorLocation !leftOperand !.sameInstance !rightOperand}
     while
       let operatorLocation = @location.here
       $!==$
       let leftOperand = outExpression
-      <simple_expression_ggs3> !?ioDeclarations ?let rightOperand
+      <simple_expression_ggs3> (!?ioDeclarations ?let rightOperand)
       outExpression = @comparisonExpressionAST {!operatorLocation !leftOperand !.differentInstances !rightOperand}
     end
   }
@@ -114,55 +114,55 @@ syntax extension galgas4ExpressionSyntax {
 
   rule <relation_factor> (?!@galgasDeclarationAST ioDeclarations,
                          !@semanticExpressionAST outExpression ) {
-    <simple_expression> !?ioDeclarations ?outExpression
+    <simple_expression> (!?ioDeclarations ?outExpression)
     repeat
     while
       let operatorLocation = @location.here
       $==$
       let leftOperand = outExpression
-      <simple_expression> !?ioDeclarations ?let rightOperand
+      <simple_expression> (!?ioDeclarations ?let rightOperand)
       outExpression = @comparisonExpressionAST {!operatorLocation !leftOperand !.equal !rightOperand}
     while
       let operatorLocation = @location.here
       $!=$
       let leftOperand = outExpression
-      <simple_expression> !?ioDeclarations ?let rightOperand
+      <simple_expression> (!?ioDeclarations ?let rightOperand)
       outExpression = @comparisonExpressionAST {!operatorLocation !leftOperand !.notEqual !rightOperand}
     while
       let operatorLocation = @location.here
       $<=$
       let leftOperand = outExpression
-      <simple_expression> !?ioDeclarations ?let rightOperand
+      <simple_expression> (!?ioDeclarations ?let rightOperand)
       outExpression = @comparisonExpressionAST {!operatorLocation !leftOperand !.lowerOrEqual !rightOperand}
     while
       let operatorLocation = @location.here
       $>=$
       let leftOperand = outExpression
-      <simple_expression> !?ioDeclarations ?let rightOperand
+      <simple_expression> (!?ioDeclarations ?let rightOperand)
       outExpression = @comparisonExpressionAST {!operatorLocation !leftOperand !.greaterOrEqual !rightOperand}
     while
       let operatorLocation = @location.here
       $>$
       let leftOperand = outExpression
-      <simple_expression> !?ioDeclarations ?let rightOperand
+      <simple_expression> (!?ioDeclarations ?let rightOperand)
       outExpression = @comparisonExpressionAST {!operatorLocation !leftOperand !.greaterThan !rightOperand}
     while
       let operatorLocation = @location.here
       $<$
       let leftOperand = outExpression
-      <simple_expression> !?ioDeclarations ?let rightOperand
+      <simple_expression> (!?ioDeclarations ?let rightOperand)
       outExpression = @comparisonExpressionAST {!operatorLocation !leftOperand !.lowerThan !rightOperand}
     while
       let operatorLocation = @location.here
       $===$
       let leftOperand = outExpression
-      <simple_expression> !?ioDeclarations ?let rightOperand
+      <simple_expression> (!?ioDeclarations ?let rightOperand)
       outExpression = @comparisonExpressionAST {!operatorLocation !leftOperand !.sameInstance !rightOperand}
     while
       let operatorLocation = @location.here
       $!==$
       let leftOperand = outExpression
-      <simple_expression> !?ioDeclarations ?let rightOperand
+      <simple_expression> (!?ioDeclarations ?let rightOperand)
       outExpression = @comparisonExpressionAST {!operatorLocation !leftOperand !.differentInstances !rightOperand}
     end
   }

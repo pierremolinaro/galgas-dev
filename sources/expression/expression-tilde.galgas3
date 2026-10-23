@@ -25,7 +25,7 @@ syntax extension galgas3ExpressionSyntax {
                      !@semanticExpressionAST outExpression ) {
     let operatorLocation = @location.here
     $~$
-    <factor_ggs3> !?ioDeclarations ?outExpression
+    <factor_ggs3> (!?ioDeclarations ?outExpression)
     outExpression = @tildeExpressionAST {!operatorLocation !outExpression}
   }
 
@@ -43,7 +43,7 @@ syntax extension galgas4ExpressionSyntax {
                 !@semanticExpressionAST outExpression ) {
     let operatorLocation = @location.here
     $~$
-    <factor> !?ioDeclarations ?outExpression
+    <factor> (!?ioDeclarations ?outExpression)
     outExpression = @tildeExpressionAST {!operatorLocation !outExpression}
   }
 

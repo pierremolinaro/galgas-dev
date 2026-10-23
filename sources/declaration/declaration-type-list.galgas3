@@ -57,9 +57,9 @@ syntax extension galgas3DeclarationsSyntax {
     var @propertyInCollectionListAST propertyList = @()
     repeat
     while
-      <property_declaration_ggs3> !?ioDeclarations !?propertyList
+      <property_declaration_ggs3> (!?ioDeclarations !?propertyList)
     while
-      <method_declaration_ggs3> !listTypeName !?ioDeclarations
+      <method_declaration_ggs3> (!listTypeName !?ioDeclarations)
     end
     if propertyList.count == 0 then
       error (.here : "a list declaration must declare at least one property")
@@ -107,9 +107,9 @@ syntax extension galgas4DeclarationsSyntax {
     var @propertyInCollectionListAST propertyList = @()
     repeat
     while
-      <property_declaration> !?ioDeclarations !?propertyList
+      <property_declaration> (!?ioDeclarations !?propertyList)
     while
-      <method_declaration> !listTypeName !?ioDeclarations
+      <method_declaration> (!listTypeName !?ioDeclarations)
     end
     $}$
     ioDeclarations.mDeclarationList += !@listDeclarationAST {

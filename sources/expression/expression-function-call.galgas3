@@ -30,18 +30,18 @@ syntax extension galgas3ExpressionSyntax {
     var @actualOutputArgumentList expressionList = @()
     select
       let selector = "".here
-      <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST expression
+      <expression_ggs3> (!?ioDeclarations ?let @semanticExpressionAST expression)
       expressionList += !selector !expression !.here
     or
       repeat
       while
         $!selector:$ ?let selector
-        <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST expression
+        <expression_ggs3> (!?ioDeclarations ?let @semanticExpressionAST expression)
         expressionList += !selector !expression !.here
       while
         $!$
         let selector = "".here
-        <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST expression
+        <expression_ggs3> (!?ioDeclarations ?let @semanticExpressionAST expression)
         expressionList += !selector !expression !.here
       end
     end
@@ -50,16 +50,16 @@ syntax extension galgas3ExpressionSyntax {
       $,$
       select
         $!selector:$ ?let selector
-        <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST expression
+        <expression_ggs3> (!?ioDeclarations ?let @semanticExpressionAST expression)
         expressionList += !selector !expression !.here
       or
         $!$
         let selector = "".here
-        <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST expression
+        <expression_ggs3> (!?ioDeclarations ?let @semanticExpressionAST expression)
         expressionList += !selector !expression !.here
       or
         let selector = "".here
-        <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST expression
+        <expression_ggs3> (!?ioDeclarations ?let @semanticExpressionAST expression)
         expressionList += !selector !expression !.here
       end
     end
@@ -81,7 +81,7 @@ syntax extension galgas4ExpressionSyntax {
                  !@semanticExpressionAST outExpression ) {
     $identifier$ ?let @lstring functionName indexing functionCall
     $($
-    <output_expression_list> !?ioDeclarations ?let @actualOutputArgumentList expressionList
+    <output_expression_list> (!?ioDeclarations ?let @actualOutputArgumentList expressionList)
     $)$
     outExpression = @functionCallExpressionAST {!functionName !expressionList}
   }

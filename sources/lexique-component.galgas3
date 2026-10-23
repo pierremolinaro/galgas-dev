@@ -58,25 +58,25 @@ syntax galgas3LexiqueComponentSyntax (galgasScanner3) {
     var @indexingListAST indexingListAST = @()
     repeat
     while
-      <template_delimitor_ggs3> !? templateDelimitorList
+      <template_delimitor_ggs3> (!? templateDelimitorList)
     while
-      <template_replacement_ggs3> !? templateReplacementList
+      <template_replacement_ggs3> (!? templateReplacementList)
     while
-      <lexical_attribute_declaration_ggs3> !? lexicalAttributeList
+      <lexical_attribute_declaration_ggs3> (!? lexicalAttributeList)
     while
-      <style_declaration_ggs3> !? lexicalStyleList
+      <style_declaration_ggs3> (!? lexicalStyleList)
     while
-      <terminal_declaration_ggs3> !? terminalDeclarationList
+      <terminal_declaration_ggs3> (!? terminalDeclarationList)
     while
-      <lexical_list_declaration_ggs3> !? lexicalListDeclarationList
+      <lexical_list_declaration_ggs3> (!? lexicalListDeclarationList)
     while
-      <lexical_explicit_rule_ggs3> !? lexicalRuleList
+      <lexical_explicit_rule_ggs3> (!? lexicalRuleList)
     while
-      <lexical_implicit_rule_ggs3> !? lexicalRuleList
+      <lexical_implicit_rule_ggs3> (!? lexicalRuleList)
     while
-      <lexical_message_declaration_ggs3> !?lexicalMessageDeclarationList
+      <lexical_message_declaration_ggs3> (!?lexicalMessageDeclarationList)
     while
-      <lexical_indexing_declaration_ggs3> !?indexingListAST
+      <lexical_indexing_declaration_ggs3> (!?indexingListAST)
     end
     $}$
     ioDeclarations.mDeclarationList += !@lexiqueComponentAST {
@@ -115,25 +115,25 @@ syntax galgas3LexiqueComponentSyntax (galgasScanner3) {
     var @indexingListAST indexingListAST = @()
     repeat
     while
-      <template_delimitor_ggs3> !? templateDelimitorList
+      <template_delimitor_ggs3> (!? templateDelimitorList)
     while
-      <template_replacement_ggs3> !? templateReplacementList
+      <template_replacement_ggs3> (!? templateReplacementList)
     while
-      <lexical_attribute_declaration_ggs3> !? lexicalAttributeList
+      <lexical_attribute_declaration_ggs3> (!? lexicalAttributeList)
     while
-      <style_declaration_ggs3> !? lexicalStyleList
+      <style_declaration_ggs3> (!? lexicalStyleList)
     while
-      <terminal_declaration_ggs3> !? terminalDeclarationList
+      <terminal_declaration_ggs3> (!? terminalDeclarationList)
     while
-      <lexical_list_declaration_ggs3> !? lexicalListDeclarationList
+      <lexical_list_declaration_ggs3> (!? lexicalListDeclarationList)
     while
-      <lexical_explicit_rule_ggs3> !? lexicalRuleList
+      <lexical_explicit_rule_ggs3> (!? lexicalRuleList)
     while
-      <lexical_implicit_rule_ggs3> !? lexicalRuleList
+      <lexical_implicit_rule_ggs3> (!? lexicalRuleList)
     while
-      <lexical_message_declaration_ggs3> !?lexicalMessageDeclarationList
+      <lexical_message_declaration_ggs3> (!?lexicalMessageDeclarationList)
     while
-      <lexical_indexing_declaration_ggs3> !?indexingListAST
+      <lexical_indexing_declaration_ggs3> (!?indexingListAST)
     end
     $}$
     ioDeclarations.mDeclarationList += !@lexiqueComponentAST {
@@ -186,12 +186,12 @@ syntax galgas3LexiqueComponentSyntax (galgasScanner3) {
 
   rule <lexical_explicit_rule_ggs3> (?!@lexicalRuleListAST ioLexicalExplicitRuleList ) {
     $rule$
-    <lexical_expression> ?let @lexicalExpressionAST lexicalRuleExpression
+    <lexical_expression> (?let @lexicalExpressionAST lexicalRuleExpression)
     ${$
     var @lexicalInstructionListAST instructionList = @()
     repeat
     while
-      <lexical_instruction> !?instructionList
+      <lexical_instruction> (!?instructionList)
     end
     $}$
     ioLexicalExplicitRuleList += !@lexicalExplicitRuleAST {!lexicalRuleExpression !instructionList}
@@ -201,7 +201,7 @@ syntax galgas3LexiqueComponentSyntax (galgasScanner3) {
 
   rule <lexical_instruction> (?!@lexicalInstructionListAST ioInstructionList ) {
     $send$
-    <lexical_send_instruction> ?let @lexicalInstructionAST instruction
+    <lexical_send_instruction> (?let @lexicalInstructionAST instruction)
     ioInstructionList += !instruction
   }
 
@@ -209,12 +209,12 @@ syntax galgas3LexiqueComponentSyntax (galgasScanner3) {
 
   rule <repeat_while_branch> (?!@lexicalWhileBranchListAST ioLexicalWhileBranchList ) {
     $while$
-    <lexical_expression> ?let @lexicalExpressionAST whileExpression
+    <lexical_expression> (?let @lexicalExpressionAST whileExpression)
     $:$
     var @lexicalInstructionListAST whileInstructionList = @()
     repeat
     while
-      <lexical_instruction> !?whileInstructionList
+      <lexical_instruction> (!?whileInstructionList)
     end
     ioLexicalWhileBranchList += !whileExpression !whileInstructionList
   }
@@ -253,7 +253,7 @@ syntax galgas3LexiqueComponentSyntax (galgasScanner3) {
       repeat
       while
         $!$
-        <lexical_output_effective_argument> ?let @lexicalRoutineOrFunctionFormalInputArgumentAST arg
+        <lexical_output_effective_argument> (?let @lexicalRoutineOrFunctionFormalInputArgumentAST arg)
         functionActualArgumentList += !arg
       end
       $)$
@@ -264,17 +264,17 @@ syntax galgas3LexiqueComponentSyntax (galgasScanner3) {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <lexical_expression> (!@lexicalExpressionAST outExpression ) {
-    <lexical_term> ?outExpression
+    <lexical_term> (?outExpression)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <lexical_term> (!@lexicalExpressionAST outExpression ) {
-    <lexical_factor> ?outExpression
+    <lexical_factor> (?outExpression)
     repeat
     while
       $|$
-      <lexical_factor> ?let rightExpression
+      <lexical_factor> (?let rightExpression)
       outExpression = @lexicalOrExpressionAST {!outExpression !rightExpression}
     end
   }
@@ -340,7 +340,7 @@ syntax galgas3LexiqueComponentSyntax (galgasScanner3) {
     ${$
     var entryList = @lexicalListEntryListAST ()
     repeat
-      <lexical_list_entry> !?entryList
+      <lexical_list_entry> (!?entryList)
     while
       $,$
     end
@@ -467,25 +467,25 @@ syntax galgas4LexiqueComponentSyntax (galgasScanner4) {
     var @indexingListAST indexingListAST = @()
     repeat
     while
-      <template_delimitor> !? templateDelimitorList
+      <template_delimitor> (!? templateDelimitorList)
     while
-      <template_replacement> !? templateReplacementList
+      <template_replacement> (!? templateReplacementList)
     while
-      <lexical_attribute_declaration> !? lexicalAttributeList
+      <lexical_attribute_declaration> (!? lexicalAttributeList)
     while
-      <style_declaration> !? lexicalStyleList
+      <style_declaration> (!? lexicalStyleList)
     while
-      <terminal_declaration> !? terminalDeclarationList
+      <terminal_declaration> (!? terminalDeclarationList)
     while
-      <lexical_list_declaration> !? lexicalListDeclarationList
+      <lexical_list_declaration> (!? lexicalListDeclarationList)
     while
-      <lexical_explicit_rule> !? lexicalRuleList
+      <lexical_explicit_rule> (!? lexicalRuleList)
     while
-      <lexical_implicit_rule> !? lexicalRuleList
+      <lexical_implicit_rule> (!? lexicalRuleList)
     while
-      <lexical_message_declaration> !?lexicalMessageDeclarationList
+      <lexical_message_declaration> (!?lexicalMessageDeclarationList)
     while
-      <lexical_indexing_declaration> !?indexingListAST
+      <lexical_indexing_declaration> (!?indexingListAST)
     end
     $}$
     ioDeclarations.mDeclarationList += !@lexiqueComponentAST {
@@ -538,12 +538,12 @@ syntax galgas4LexiqueComponentSyntax (galgasScanner4) {
 
   rule <lexical_explicit_rule> (?!@lexicalRuleListAST ioLexicalExplicitRuleList ) {
     $rule$
-    <lexical_expression> ?let @lexicalExpressionAST lexicalRuleExpression
+    <lexical_expression> (?let @lexicalExpressionAST lexicalRuleExpression)
     ${$
     var @lexicalInstructionListAST instructionList = @()
     repeat
     while
-      <lexical_instruction> !?instructionList
+      <lexical_instruction> (!?instructionList)
     end
     $}$
     ioLexicalExplicitRuleList += !@lexicalExplicitRuleAST {!lexicalRuleExpression !instructionList}
@@ -553,7 +553,7 @@ syntax galgas4LexiqueComponentSyntax (galgasScanner4) {
 
   rule <lexical_instruction> (?!@lexicalInstructionListAST ioInstructionList ) {
     $send$
-    <lexical_send_instruction> ?let @lexicalInstructionAST instruction
+    <lexical_send_instruction> (?let @lexicalInstructionAST instruction)
     ioInstructionList += !instruction
   }
 
@@ -561,12 +561,12 @@ syntax galgas4LexiqueComponentSyntax (galgasScanner4) {
 
   rule <repeat_while_branch> (?!@lexicalWhileBranchListAST ioLexicalWhileBranchList ) {
     $while$
-    <lexical_expression> ?let @lexicalExpressionAST whileExpression
+    <lexical_expression> (?let @lexicalExpressionAST whileExpression)
     $:$
     var @lexicalInstructionListAST whileInstructionList = @()
     repeat
     while
-      <lexical_instruction> !?whileInstructionList
+      <lexical_instruction> (!?whileInstructionList)
     end
     ioLexicalWhileBranchList += !whileExpression !whileInstructionList
   }
@@ -605,7 +605,7 @@ syntax galgas4LexiqueComponentSyntax (galgasScanner4) {
       repeat
       while
         $!$
-        <lexical_output_effective_argument> ?let @lexicalRoutineOrFunctionFormalInputArgumentAST arg
+        <lexical_output_effective_argument> (?let @lexicalRoutineOrFunctionFormalInputArgumentAST arg)
         functionActualArgumentList += !arg
       end
       $)$
@@ -616,17 +616,17 @@ syntax galgas4LexiqueComponentSyntax (galgasScanner4) {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <lexical_expression> (!@lexicalExpressionAST outExpression ) {
-    <lexical_term> ?outExpression
+    <lexical_term> (?outExpression)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <lexical_term> (!@lexicalExpressionAST outExpression ) {
-    <lexical_factor> ?outExpression
+    <lexical_factor> (?outExpression)
     repeat
     while
       $|$
-      <lexical_factor> ?let rightExpression
+      <lexical_factor> (?let rightExpression)
       outExpression = @lexicalOrExpressionAST {!outExpression !rightExpression}
     end
   }
@@ -697,7 +697,7 @@ syntax galgas4LexiqueComponentSyntax (galgasScanner4) {
     ${$
     var entryList = @lexicalListEntryListAST ()
     repeat
-      <lexical_list_entry> !?entryList
+      <lexical_list_entry> (!?entryList)
     while
       $,$
     end

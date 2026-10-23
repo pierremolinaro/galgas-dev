@@ -28,7 +28,7 @@ syntax extension galgas3InstructionsSyntax {
     $self$
     let instructionLocation = @location.here
     $+=$
-    <non_empty_output_expression_list_ggs3> !?ioDeclarations ?let @actualOutputArgumentList expressionList
+    <non_empty_output_expression_list_ggs3> (!?ioDeclarations ?let @actualOutputArgumentList expressionList)
     outInstruction = @selfPlusEqualElementsInstructionAST {
       !instructionLocation
       !expressionList
@@ -42,7 +42,7 @@ syntax extension galgas3InstructionsSyntax {
     $self$
     let instructionLocation = @location.here
     $+=$
-    <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST expression
+    <expression_ggs3> (!?ioDeclarations ?let @semanticExpressionAST expression)
     outInstruction = @selfPlusEqualExpressionInstructionAST {
       !instructionLocation
       !expression
@@ -56,7 +56,7 @@ syntax extension galgas3InstructionsSyntax {
     $self$
     let instructionLocation = @location.here
     $-=$
-    <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST expression
+    <expression_ggs3> (!?ioDeclarations ?let @semanticExpressionAST expression)
     outInstruction = @selfMinusEqualExpressionInstructionAST {
       !instructionLocation
       !expression
@@ -70,7 +70,7 @@ syntax extension galgas3InstructionsSyntax {
     $self$
     let instructionLocation = @location.here
     $*=$
-    <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST expression
+    <expression_ggs3> (!?ioDeclarations ?let @semanticExpressionAST expression)
     outInstruction = @selfMulEqualExpressionInstructionAST {
       !instructionLocation
       !expression
@@ -84,7 +84,7 @@ syntax extension galgas3InstructionsSyntax {
     $self$
     let instructionLocation = @location.here
     $/=$
-    <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST expression
+    <expression_ggs3> (!?ioDeclarations ?let @semanticExpressionAST expression)
     outInstruction = @selfDivEqualExpressionInstructionAST {
       !instructionLocation
       !expression
@@ -106,7 +106,7 @@ syntax extension galgas4InstructionsSyntax {
     $self$
     let instructionLocation = @location.here
     $+=$
-    <expression> !?ioDeclarations ?let @semanticExpressionAST expression
+    <expression> (!?ioDeclarations ?let @semanticExpressionAST expression)
     outInstruction = @selfPlusEqualExpressionInstructionAST {
       !instructionLocation
       !expression
@@ -120,7 +120,7 @@ syntax extension galgas4InstructionsSyntax {
     $self$
     let instructionLocation = @location.here
     $-=$
-    <expression> !?ioDeclarations ?let @semanticExpressionAST expression
+    <expression> (!?ioDeclarations ?let @semanticExpressionAST expression)
     outInstruction = @selfMinusEqualExpressionInstructionAST {
       !instructionLocation
       !expression
@@ -134,7 +134,7 @@ syntax extension galgas4InstructionsSyntax {
     $self$
     let instructionLocation = @location.here
     $*=$
-    <expression> !?ioDeclarations ?let @semanticExpressionAST expression
+    <expression> (!?ioDeclarations ?let @semanticExpressionAST expression)
     outInstruction = @selfMulEqualExpressionInstructionAST {
       !instructionLocation
       !expression
@@ -148,7 +148,7 @@ syntax extension galgas4InstructionsSyntax {
     $self$
     let instructionLocation = @location.here
     $/=$
-    <expression> !?ioDeclarations ?let @semanticExpressionAST expression
+    <expression> (!?ioDeclarations ?let @semanticExpressionAST expression)
     outInstruction = @selfDivEqualExpressionInstructionAST {
       !instructionLocation
       !expression

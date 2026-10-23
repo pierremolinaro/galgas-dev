@@ -43,19 +43,19 @@ syntax extension galgas3ExpressionSyntax {
 
   rule <expression_and_ggs3> (?!@galgasDeclarationAST ioDeclarations,
                              !@semanticExpressionAST outExpression ) {
-    <relation_factor_ggs3> !?ioDeclarations ? outExpression
+    <relation_factor_ggs3> (!?ioDeclarations ? outExpression)
     repeat
     while
       let operatorLocation = @location.here
       $&$
       let leftOperand = outExpression
-      <relation_factor_ggs3> !?ioDeclarations ?let @semanticExpressionAST rightOperand
+      <relation_factor_ggs3> (!?ioDeclarations ?let @semanticExpressionAST rightOperand)
       outExpression = @andExpressionAST {!operatorLocation !leftOperand !rightOperand}
     while
       let operatorLocation = @location.here
       $&&$
       let leftOperand = outExpression
-      <relation_factor_ggs3> !?ioDeclarations ?let @semanticExpressionAST rightOperand
+      <relation_factor_ggs3> (!?ioDeclarations ?let @semanticExpressionAST rightOperand)
       outExpression = @andShortExpressionAST {!operatorLocation !leftOperand !rightOperand}
     end
   }
@@ -72,19 +72,19 @@ syntax extension galgas4ExpressionSyntax {
 
   rule <expression_and> (?!@galgasDeclarationAST ioDeclarations,
                         !@semanticExpressionAST outExpression ) {
-    <relation_factor> !?ioDeclarations ? outExpression
+    <relation_factor> (!?ioDeclarations ? outExpression)
     repeat
     while
       let operatorLocation = @location.here
       $&$
       let leftOperand = outExpression
-      <relation_factor> !?ioDeclarations ?let @semanticExpressionAST rightOperand
+      <relation_factor> (!?ioDeclarations ?let @semanticExpressionAST rightOperand)
       outExpression = @andExpressionAST {!operatorLocation !leftOperand !rightOperand}
     while
       let operatorLocation = @location.here
       $&&$
       let leftOperand = outExpression
-      <relation_factor> !?ioDeclarations ?let @semanticExpressionAST rightOperand
+      <relation_factor> (!?ioDeclarations ?let @semanticExpressionAST rightOperand)
       outExpression = @andShortExpressionAST {!operatorLocation !leftOperand !rightOperand}
     end
   }

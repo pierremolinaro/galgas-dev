@@ -34,7 +34,7 @@ syntax galgas3ExpressionSyntax (galgasScanner3) {
   rule <primary_ggs3> (?!@galgasDeclarationAST ioDeclarations,
                       !@semanticExpressionAST outExpression ) {
     $($
-    <expression_ggs3> !?ioDeclarations ?outExpression
+    <expression_ggs3> (!?ioDeclarations ?outExpression)
     $)$
   }
 
@@ -64,7 +64,7 @@ syntax galgas4ExpressionSyntax (galgasScanner4) {
   rule <primary> (?!@galgasDeclarationAST ioDeclarations,
                  !@semanticExpressionAST outExpression ) {
     $($
-    <expression> !?ioDeclarations ?outExpression
+    <expression> (!?ioDeclarations ?outExpression)
     $)$
   }
 

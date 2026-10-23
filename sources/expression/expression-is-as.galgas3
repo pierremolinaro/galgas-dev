@@ -53,7 +53,7 @@ syntax extension galgas3ExpressionSyntax {
 
   rule <expression_ggs3> (?!@galgasDeclarationAST ioDeclarations,
                          !@semanticExpressionAST outExpression ) {
-    <expression_or_ggs3> !?ioDeclarations ?outExpression
+    <expression_or_ggs3> (!?ioDeclarations ?outExpression)
     select
     or
       let endOfReceiverExpression = @location.here
@@ -102,7 +102,7 @@ syntax extension galgas4ExpressionSyntax {
 
   rule <expression> (?!@galgasDeclarationAST ioDeclarations,
                     !@semanticExpressionAST outExpression ) {
-    <expression_or> !?ioDeclarations ?outExpression
+    <expression_or> (!?ioDeclarations ?outExpression)
     select
     or
       let endOfReceiverExpression = @location.here

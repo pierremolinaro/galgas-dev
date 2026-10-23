@@ -67,37 +67,37 @@ syntax extension galgas3ExpressionSyntax {
 
   rule <term_ggs3> (?!@galgasDeclarationAST ioDeclarations,
                    !@semanticExpressionAST outExpression ) {
-    <factor_ggs3> !?ioDeclarations ?outExpression
+    <factor_ggs3> (!?ioDeclarations ?outExpression)
     repeat
     while
       let operatorLocation = @location.here
       $*$
       let leftOperand = outExpression
-      <factor_ggs3> !?ioDeclarations ?let @semanticExpressionAST rightOperand
+      <factor_ggs3> (!?ioDeclarations ?let @semanticExpressionAST rightOperand)
       outExpression = @multiplicationExpressionAST {!operatorLocation !leftOperand !rightOperand}
     while
       let operatorLocation = @location.here
       $&*$
       let leftOperand = outExpression
-      <factor_ggs3> !?ioDeclarations ?let @semanticExpressionAST rightOperand
+      <factor_ggs3> (!?ioDeclarations ?let @semanticExpressionAST rightOperand)
       outExpression = @multiplicationExpressionNoOverflowAST {!operatorLocation !leftOperand !rightOperand}
     while
       let operatorLocation = @location.here
       $/$
       let leftOperand = outExpression
-      <factor_ggs3> !?ioDeclarations ?let rightOperand
+      <factor_ggs3> (!?ioDeclarations ?let rightOperand)
       outExpression = @divisionExpressionAST {!operatorLocation !leftOperand !rightOperand}
     while
       let operatorLocation = @location.here
       $&/$
       let leftOperand = outExpression
-      <factor_ggs3> !?ioDeclarations ?let rightOperand
+      <factor_ggs3> (!?ioDeclarations ?let rightOperand)
       outExpression = @divisionExpressionNoOverflowAST {!operatorLocation !leftOperand !rightOperand}
     while
       let operatorLocation = @location.here
       $mod$
       let leftOperand = outExpression
-      <factor_ggs3> !?ioDeclarations ?let rightOperand
+      <factor_ggs3> (!?ioDeclarations ?let rightOperand)
       outExpression = @moduloExpressionAST {!operatorLocation !leftOperand !rightOperand}
     end
   }
@@ -114,37 +114,37 @@ syntax extension galgas4ExpressionSyntax {
 
   rule <term> (?!@galgasDeclarationAST ioDeclarations,
               !@semanticExpressionAST outExpression ) {
-    <factor> !?ioDeclarations ?outExpression
+    <factor> (!?ioDeclarations ?outExpression)
     repeat
     while
       let operatorLocation = @location.here
       $*$
       let leftOperand = outExpression
-      <factor> !?ioDeclarations ?let @semanticExpressionAST rightOperand
+      <factor> (!?ioDeclarations ?let @semanticExpressionAST rightOperand)
       outExpression = @multiplicationExpressionAST {!operatorLocation !leftOperand !rightOperand}
     while
       let operatorLocation = @location.here
       $&*$
       let leftOperand = outExpression
-      <factor> !?ioDeclarations ?let @semanticExpressionAST rightOperand
+      <factor> (!?ioDeclarations ?let @semanticExpressionAST rightOperand)
       outExpression = @multiplicationExpressionNoOverflowAST {!operatorLocation !leftOperand !rightOperand}
     while
       let operatorLocation = @location.here
       $/$
       let leftOperand = outExpression
-      <factor> !?ioDeclarations ?let rightOperand
+      <factor> (!?ioDeclarations ?let rightOperand)
       outExpression = @divisionExpressionAST {!operatorLocation !leftOperand !rightOperand}
     while
       let operatorLocation = @location.here
       $&/$
       let leftOperand = outExpression
-      <factor> !?ioDeclarations ?let rightOperand
+      <factor> (!?ioDeclarations ?let rightOperand)
       outExpression = @divisionExpressionNoOverflowAST {!operatorLocation !leftOperand !rightOperand}
     while
       let operatorLocation = @location.here
       $mod$
       let leftOperand = outExpression
-      <factor> !?ioDeclarations ?let rightOperand
+      <factor> (!?ioDeclarations ?let rightOperand)
       outExpression = @moduloExpressionAST {!operatorLocation !leftOperand !rightOperand}
     end
   }

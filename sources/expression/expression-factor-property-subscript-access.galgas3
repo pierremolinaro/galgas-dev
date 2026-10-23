@@ -25,7 +25,7 @@ syntax extension galgas3ExpressionSyntax {
 
   rule <factor_ggs3> (?!@galgasDeclarationAST ioDeclarations,
                      !@semanticExpressionAST outExpression ) {
-    <primary_ggs3> !?ioDeclarations ?outExpression
+    <primary_ggs3> (!?ioDeclarations ?outExpression)
     repeat
     while
       var expressionList = @actualOutputArgumentList ()
@@ -33,16 +33,16 @@ syntax extension galgas3ExpressionSyntax {
       repeat
         select
           $!selector:$ ?let selector
-          <expression_ggs3> !?ioDeclarations ?let expression
+          <expression_ggs3> (!?ioDeclarations ?let expression)
           expressionList += !selector !expression !.here
         or
           $!$
           let selector = "".here
-          <expression_ggs3> !?ioDeclarations ?let expression
+          <expression_ggs3> (!?ioDeclarations ?let expression)
           expressionList += !selector !expression !.here
         or
           let selector = "".here
-          <expression_ggs3> !?ioDeclarations ?let expression
+          <expression_ggs3> (!?ioDeclarations ?let expression)
           expressionList += !selector !expression !.here
         end
       while
@@ -77,13 +77,13 @@ syntax extension galgas4ExpressionSyntax {
 
   rule <factor> (?!@galgasDeclarationAST ioDeclarations,
                 !@semanticExpressionAST outExpression ) {
-    <primary> !?ioDeclarations ?outExpression
+    <primary> (!?ioDeclarations ?outExpression)
     repeat
     while
       $[$
-      <non_empty_output_expression_list>
+      <non_empty_output_expression_list>(
         !?ioDeclarations
-        ?let @actualOutputArgumentList expressionList
+        ?let @actualOutputArgumentList expressionList)
       outExpression = @subscriptReadAccessExpressionAST {
         !outExpression
         !expressionList
@@ -103,7 +103,7 @@ syntax extension galgas4ExpressionSyntax {
         let getterName = structFieldName
         let startLocation = @location.next
         $($
-        <output_expression_list> !?ioDeclarations ?let @actualOutputArgumentList expressionList
+        <output_expression_list> (!?ioDeclarations ?let @actualOutputArgumentList expressionList)
         let endLocation = @location.here
         $)$
         outExpression = @getterCallExpressionAST {

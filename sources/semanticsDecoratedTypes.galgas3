@@ -367,7 +367,7 @@ list @nonTerminalToAddList {
 //
 //--------------------------------------------------------------------------------------------------
 
-class @functionPrototypeDeclarationForGeneration : @semanticDeclarationWithHeaderForGeneration { // §§
+class @functionPrototypeDeclarationForGeneration : @semanticDeclarationWithHeaderForGeneration {
   public let @string mFunctionName
   public let @formalInputParameterListForGeneration mFormalArgumentList
   public let @unifiedTypeMapEntry mReturnType

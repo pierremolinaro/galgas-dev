@@ -171,8 +171,6 @@ class cParser_galgas_33_ParameterArgumentSyntax {
 
   protected: virtual int32_t select_galgas_33_ParameterArgumentSyntax_29 (Lexique_galgasScanner_33_ *) = 0 ;
 
-  protected: virtual int32_t select_galgas_33_ParameterArgumentSyntax_30 (Lexique_galgasScanner_33_ *) = 0 ;
-
 
 } ;
 

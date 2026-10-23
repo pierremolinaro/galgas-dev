@@ -38,12 +38,12 @@ syntax extension galgas3LexiqueComponentSyntax {
     var @lexicalSelectBranchListAST lexicalWhileBranchList = @()
     repeat
       $case$
-      <lexical_expression> ?let @lexicalExpressionAST selectExpression
+      <lexical_expression> (?let @lexicalExpressionAST selectExpression)
       $:$
       var @lexicalInstructionListAST selectInstructionList = @()
       repeat
       while
-        <lexical_instruction> !?selectInstructionList
+        <lexical_instruction> (!?selectInstructionList)
       end
       lexicalWhileBranchList += !selectExpression !selectInstructionList
     while
@@ -52,7 +52,7 @@ syntax extension galgas3LexiqueComponentSyntax {
     var @lexicalInstructionListAST defaultInstructionList = @()
     repeat
     while
-      <lexical_instruction> !?defaultInstructionList
+      <lexical_instruction> (!?defaultInstructionList)
     end
     $end$
     ioInstructionList += !@lexicalSelectInstructionAST {
@@ -76,12 +76,12 @@ syntax extension galgas4LexiqueComponentSyntax {
     var @lexicalSelectBranchListAST lexicalWhileBranchList = @()
     repeat
       $case$
-      <lexical_expression> ?let @lexicalExpressionAST selectExpression
+      <lexical_expression> (?let @lexicalExpressionAST selectExpression)
       $:$
       var @lexicalInstructionListAST selectInstructionList = @()
       repeat
       while
-        <lexical_instruction> !?selectInstructionList
+        <lexical_instruction> (!?selectInstructionList)
       end
       lexicalWhileBranchList += !selectExpression !selectInstructionList
     while
@@ -90,7 +90,7 @@ syntax extension galgas4LexiqueComponentSyntax {
     var @lexicalInstructionListAST defaultInstructionList = @()
     repeat
     while
-      <lexical_instruction> !?defaultInstructionList
+      <lexical_instruction> (!?defaultInstructionList)
     end
     $end$
     ioInstructionList += !@lexicalSelectInstructionAST {

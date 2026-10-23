@@ -45,7 +45,7 @@ syntax extension galgas3InstructionsSyntax {
           end
         end
         $=$
-        <expression_or_ggs3> !?ioDeclarations ?let expression
+        <expression_or_ggs3> (!?ioDeclarations ?let expression)
         let endOfReceiverExpression = @location.here
         select
           outExpressionList += !.letVarExp {
@@ -57,7 +57,7 @@ syntax extension galgas3InstructionsSyntax {
           }
         or
           $as$
-          <type_definition_ggs3> !?ioDeclarations ?let typeName
+          <type_definition_ggs3> (!?ioDeclarations ?let typeName)
           outExpressionList += !.letVarExp {
             !varName: varName
             !isConstant: isConstant
@@ -67,7 +67,7 @@ syntax extension galgas3InstructionsSyntax {
           }
         end
       or
-        <expression_ggs3> !?ioDeclarations ?let expression
+        <expression_ggs3> (!?ioDeclarations ?let expression)
         outExpressionList += !.regularExp {!exp: expression !endOfExp: .here}
       end
     while
@@ -107,7 +107,7 @@ syntax extension galgas4InstructionsSyntax {
           end
         end
         $=$
-        <expression_or> !?ioDeclarations ?let expression
+        <expression_or> (!?ioDeclarations ?let expression)
         let endOfReceiverExpression = @location.here
         select
           outExpressionList += !.letVarExp {
@@ -119,7 +119,7 @@ syntax extension galgas4InstructionsSyntax {
           }
         or
           $as$
-          <type_definition> !?ioDeclarations ?let typeName
+          <type_definition> (!?ioDeclarations ?let typeName)
           outExpressionList += !.letVarExp {
             !varName: varName
             !isConstant: isConstant
@@ -129,7 +129,7 @@ syntax extension galgas4InstructionsSyntax {
           }
         end
       or
-        <expression> !?ioDeclarations ?let expression
+        <expression> (!?ioDeclarations ?let expression)
         outExpressionList += !.regularExp {!exp: expression !endOfExp: .here}
       end
     while

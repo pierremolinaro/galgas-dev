@@ -52,7 +52,7 @@ syntax extension galgas4DeclarationsSyntax {
 
   rule <declaration> (?!@galgasDeclarationAST ioDeclarations) {
     $extension$
-    <simple_type_definition> !?ioDeclarations ?let typeName
+    <simple_type_definition> (!?ioDeclarations ?let typeName)
     $:$
     let @equatableComparableExtension theExtension
     select

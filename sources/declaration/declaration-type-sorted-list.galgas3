@@ -37,13 +37,13 @@ syntax extension galgas3DeclarationsSyntax {
     var @propertyInCollectionListAST attributeList = @()
     repeat
     while
-      <property_declaration_ggs3> !?ioDeclarations !?attributeList
+      <property_declaration_ggs3> (!?ioDeclarations !?attributeList)
     end
     $}$
     ${$
     var @sortedListSortDescriptorListAST sortDescriptorList = @()
     repeat
-      <sortedlist_sort_descriptor> !? sortDescriptorList
+      <sortedlist_sort_descriptor> (!? sortDescriptorList)
     while
       $,$
     end
@@ -96,13 +96,13 @@ syntax extension galgas4DeclarationsSyntax {
     var @propertyInCollectionListAST attributeList = @()
     repeat
     while
-      <property_declaration> !?ioDeclarations !? attributeList
+      <property_declaration> (!?ioDeclarations !? attributeList)
     end
     $}$
     ${$
     var @sortedListSortDescriptorListAST sortDescriptorList = @()
     repeat
-      <sortedlist_sort_descriptor> !? sortDescriptorList
+      <sortedlist_sort_descriptor> (!? sortDescriptorList)
     while
       $,$
     end

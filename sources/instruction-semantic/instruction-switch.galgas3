@@ -27,17 +27,17 @@ syntax extension galgas3InstructionsSyntax {
                                     !@semanticInstructionAST outInstruction) {
     $switch$
     let instructionLocation = @location.here
-    <expression_ggs3> !?ioDeclarations ?let switchExpression
+    <expression_ggs3> (!?ioDeclarations ?let switchExpression)
     let endOfSwitchExpression = @location.here
     var @switchBranchesAST switchBranches = @()
     repeat
       $case$
-      <switch_case>
+      <switch_case>(
         !?ioDeclarations
         ?let [@lstring] constantNameList
-        ?let @switchExtractedValuesListAST associatedValuesExtraction
+        ?let @switchExtractedValuesListAST associatedValuesExtraction)
       $:$
-      <semantic_instruction_list_ggs3> !?ioDeclarations ?let instructions
+      <semantic_instruction_list_ggs3> (!?ioDeclarations ?let instructions)
       switchBranches += !constantNameList !associatedValuesExtraction !instructions !@location.here
     while
     end
@@ -81,7 +81,7 @@ syntax extension galgas3InstructionsSyntax {
          or
           let @lstring typeName
           select
-            <type_definition_ggs3> !?ioDeclarations ?typeName
+            <type_definition_ggs3> (!?ioDeclarations ?typeName)
           or
             typeName = "".here
           end
@@ -115,17 +115,17 @@ syntax extension galgas4InstructionsSyntax {
                                !@semanticInstructionAST outInstruction) {
     $switch$
     let instructionLocation = @location.here
-    <expression> !?ioDeclarations ?let switchExpression
+    <expression> (!?ioDeclarations ?let switchExpression)
     let endOfSwitchExpression = @location.here
     var @switchBranchesAST switchBranches = @()
     repeat
       $case$
-      <switch_case>
+      <switch_case>(
         !?ioDeclarations
         ?let [@lstring] constantNameList
-        ?let @switchExtractedValuesListAST associatedValuesExtraction
+        ?let @switchExtractedValuesListAST associatedValuesExtraction)
       $:$
-      <semantic_instruction_list> !?ioDeclarations ?let instructions
+      <semantic_instruction_list> (!?ioDeclarations ?let instructions)
       switchBranches += !constantNameList !associatedValuesExtraction !instructions !@location.here
     while
     end
@@ -169,7 +169,7 @@ syntax extension galgas4InstructionsSyntax {
          or
           let @lstring typeName
           select
-            <type_definition> !?ioDeclarations ?typeName
+            <type_definition> (!?ioDeclarations ?typeName)
           or
             typeName = "".here
           end

@@ -36,7 +36,7 @@ syntax extension galgas3InstructionsSyntax {
       optionalProperty = attributeName
     end
     $=$
-    <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST mSourceExpression
+    <expression_ggs3> (!?ioDeclarations ?let @semanticExpressionAST mSourceExpression)
     outInstruction = @assignmentInstructionAST {
       !mTargetVariableName.location
       !mTargetVariableName
@@ -61,7 +61,7 @@ syntax extension galgas3InstructionsSyntax {
       optionalProperty = attributeName
     end
     $=$
-    <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST mSourceExpression
+    <expression_ggs3> (!?ioDeclarations ?let @semanticExpressionAST mSourceExpression)
     outInstruction = @selfPropertyAssignmentInstructionAST {
       !mTargetVariableName.location
       !mTargetVariableName
@@ -88,9 +88,9 @@ syntax extension galgas4InstructionsSyntax {
       optionalProperty = "".nowhere
     or
       $[$
-      <non_empty_output_expression_list>
+      <non_empty_output_expression_list>(
          !?ioDeclarations
-         ?let @actualOutputArgumentList unused outExpressionList
+         ?let @actualOutputArgumentList unused outExpressionList)
       $]$
       error (.here : "not handled yet" spoil optionalProperty)
     or
@@ -99,7 +99,7 @@ syntax extension galgas4InstructionsSyntax {
       optionalProperty = attributeName
     end
     $=$
-    <expression> !?ioDeclarations ?let @semanticExpressionAST mSourceExpression
+    <expression> (!?ioDeclarations ?let @semanticExpressionAST mSourceExpression)
     outInstruction = @assignmentInstructionAST {
       !mTargetVariableName.location
       !mTargetVariableName
@@ -120,9 +120,9 @@ syntax extension galgas4InstructionsSyntax {
       optionalProperty = "".nowhere
     or
       $[$
-      <non_empty_output_expression_list>
+      <non_empty_output_expression_list>(
          !?ioDeclarations
-         ?let @actualOutputArgumentList unused outExpressionList
+         ?let @actualOutputArgumentList unused outExpressionList)
       $]$
       error (.here : "not handled yet" spoil optionalProperty)
     or
@@ -131,7 +131,7 @@ syntax extension galgas4InstructionsSyntax {
       optionalProperty = attributeName
     end
     $=$
-    <expression> !?ioDeclarations ?let @semanticExpressionAST mSourceExpression
+    <expression> (!?ioDeclarations ?let @semanticExpressionAST mSourceExpression)
     outInstruction = @selfPropertyAssignmentInstructionAST {
       !mTargetVariableName.location
       !mTargetVariableName

@@ -44,12 +44,12 @@ rule <start_symbol>
   $?>$
 //--- Element list
   outRootNodes = @()
-  <element_list>
+  <element_list>(
     !?outRootNodes
     !inIncludeComments
     !inDoNotCondenseWhiteSpaces
     !inPrintDuringParsing
-    !""
+    !"")
 }
 
 //---------------------------------------------------------------------------*
@@ -68,12 +68,12 @@ rule <element_list>
       !inPrintDuringParsing
       !inIndendation
     )
-    <element>
+    <element>(
       !? ioNodes
       !inIncludeComments
       !inDoNotCondenseWhiteSpaces
       !inPrintDuringParsing
-      !inIndendation
+      !inIndendation)
   end
 }
 
@@ -155,12 +155,12 @@ rule <element>
     $/>$
   or
     $>$
-    <element_list>
+    <element_list>(
       !?nodeList
       !inIncludeComments
       !inDoNotCondenseWhiteSpaces
       !inPrintDuringParsing
-      !inIndendation + " "
+      !inIndendation + " ")
     addText (
       !?nodeList
       !inDoNotCondenseWhiteSpaces

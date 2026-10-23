@@ -75,43 +75,43 @@ syntax extension galgas3ExpressionSyntax {
 
   rule <simple_expression_ggs3> (?!@galgasDeclarationAST ioDeclarations,
                                 !@semanticExpressionAST outExpression ) {
-    <term_ggs3> !?ioDeclarations ? outExpression
+    <term_ggs3> (!?ioDeclarations ? outExpression)
     repeat
     while
       let operatorLocation = @location.here
       $<<$
       let leftOperand = outExpression
-      <term_ggs3> !?ioDeclarations ?let rightOperand
+      <term_ggs3> (!?ioDeclarations ?let rightOperand)
       outExpression = @leftShiftExpressionAST {!operatorLocation !leftOperand !rightOperand}
     while
       let operatorLocation = @location.here
       $>>$
       let leftOperand = outExpression
-      <term_ggs3> !?ioDeclarations ?let rightOperand
+      <term_ggs3> (!?ioDeclarations ?let rightOperand)
       outExpression = @rightShiftExpressionAST {!operatorLocation !leftOperand !rightOperand}
     while
       let operatorLocation = @location.here
       $+$
       let leftOperand = outExpression
-      <term_ggs3> !?ioDeclarations ?let rightOperand
+      <term_ggs3> (!?ioDeclarations ?let rightOperand)
       outExpression = @addExpressionAST {!operatorLocation !leftOperand !rightOperand}
     while
       let operatorLocation = @location.here
       $&+$
       let leftOperand = outExpression
-      <term_ggs3> !?ioDeclarations ?let rightOperand
+      <term_ggs3> (!?ioDeclarations ?let rightOperand)
       outExpression = @addExpressionNoOverflowAST {!operatorLocation !leftOperand !rightOperand}
     while
       let operatorLocation = @location.here
       $-$
       let leftOperand = outExpression
-      <term_ggs3> !?ioDeclarations ?let rightOperand
+      <term_ggs3> (!?ioDeclarations ?let rightOperand)
       outExpression = @subExpressionAST {!operatorLocation !leftOperand !rightOperand}
     while
       let operatorLocation = @location.here
       $&-$
       let leftOperand = outExpression
-      <term_ggs3> !?ioDeclarations ?let rightOperand
+      <term_ggs3> (!?ioDeclarations ?let rightOperand)
       outExpression = @subExpressionNoOverflowAST {!operatorLocation !leftOperand !rightOperand}
     end
   }
@@ -128,43 +128,43 @@ syntax extension galgas4ExpressionSyntax {
 
   rule <simple_expression> (?!@galgasDeclarationAST ioDeclarations,
                            !@semanticExpressionAST outExpression ) {
-    <term> !?ioDeclarations ?outExpression
+    <term> (!?ioDeclarations ?outExpression)
     repeat
     while
       let operatorLocation = @location.here
       $<<$
       let leftOperand = outExpression
-      <term> !?ioDeclarations ?let rightOperand
+      <term> (!?ioDeclarations ?let rightOperand)
       outExpression = @leftShiftExpressionAST {!operatorLocation !leftOperand !rightOperand}
     while
       let operatorLocation = @location.here
       $>>$
       let leftOperand = outExpression
-      <term> !?ioDeclarations ?let rightOperand
+      <term> (!?ioDeclarations ?let rightOperand)
       outExpression = @rightShiftExpressionAST {!operatorLocation !leftOperand !rightOperand}
     while
       let operatorLocation = @location.here
       $+$
       let leftOperand = outExpression
-      <term> !?ioDeclarations ?let rightOperand
+      <term> (!?ioDeclarations ?let rightOperand)
       outExpression = @addExpressionAST {!operatorLocation !leftOperand !rightOperand}
     while
       let operatorLocation = @location.here
       $&+$
       let leftOperand = outExpression
-      <term> !?ioDeclarations ?let rightOperand
+      <term> (!?ioDeclarations ?let rightOperand)
       outExpression = @addExpressionNoOverflowAST {!operatorLocation !leftOperand !rightOperand}
     while
       let operatorLocation = @location.here
       $-$
       let leftOperand = outExpression
-      <term> !?ioDeclarations ?let rightOperand
+      <term> (!?ioDeclarations ?let rightOperand)
       outExpression = @subExpressionAST {!operatorLocation !leftOperand !rightOperand}
     while
       let operatorLocation = @location.here
       $&-$
       let leftOperand = outExpression
-      <term> !?ioDeclarations ?let rightOperand
+      <term> (!?ioDeclarations ?let rightOperand)
       outExpression = @subExpressionNoOverflowAST {!operatorLocation !leftOperand !rightOperand}
     end
   }

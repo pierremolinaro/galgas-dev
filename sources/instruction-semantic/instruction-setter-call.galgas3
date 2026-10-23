@@ -69,10 +69,10 @@ syntax extension galgas3InstructionsSyntax {
       typeNameForCasting = "".nowhere
     or
       $as$
-      <type_definition_ggs3> !?ioDeclarations ?typeNameForCasting
+      <type_definition_ggs3> (!?ioDeclarations ?typeNameForCasting)
     end
     $identifier$ ?let mSetterName
-    <actual_parameter_list_ggs3> !?ioDeclarations ?let @actualParameterListAST actualParameterList
+    <actual_parameter_list_ggs3> (!?ioDeclarations ?let @actualParameterListAST actualParameterList)
     $]$
     outInstruction = @setterCallInstructionAST {
       !instructionLocation
@@ -94,7 +94,7 @@ syntax extension galgas3InstructionsSyntax {
     $!?$
     $self$
     $identifier$ ?let mSetterName
-    <actual_parameter_list_ggs3> !?ioDeclarations ?let @actualParameterListAST actualParameterList
+    <actual_parameter_list_ggs3> (!?ioDeclarations ?let @actualParameterListAST actualParameterList)
     $]$
     outInstruction = @selfSetterCallInstructionAST {
       !instructionLocation
@@ -127,7 +127,7 @@ syntax extension galgas4InstructionsSyntax {
     end
     $identifier$ ?let mReceiverName
     select
-      <actual_parameter_list_within_parenthesis> !?ioDeclarations ?let @actualParameterListAST actualParameterList
+      <actual_parameter_list_within_parenthesis> (!?ioDeclarations ?let @actualParameterListAST actualParameterList)
       if prefixedBySelf then
         outInstruction = @selfSetterCallInstructionAST {
           !instructionLocation
@@ -146,7 +146,7 @@ syntax extension galgas4InstructionsSyntax {
       while
       end
       [!?receiverStructProperties popLast ?let setterName]
-      <actual_parameter_list_within_parenthesis> !?ioDeclarations ?let @actualParameterListAST actualParameterList
+      <actual_parameter_list_within_parenthesis> (!?ioDeclarations ?let @actualParameterListAST actualParameterList)
       outInstruction = @setterCallInstructionAST {
         !instructionLocation
         !prefixedBySelf

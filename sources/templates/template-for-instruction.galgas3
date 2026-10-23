@@ -104,13 +104,13 @@ syntax extension templateSyntax {
     outEnumeration = @lstringlist ()
     $($
     repeat
-      <for_instruction_element> !?outEnumeration
+      <for_instruction_element> (!?outEnumeration)
     while
     end
     outEndOfProperties = @location.here
     $)$
     $in$
-    <expression_tpl> ?outExpression
+    <expression_tpl> (?outExpression)
     select
     or
       $:$
@@ -135,7 +135,7 @@ syntax extension templateSyntax {
       $>$
       ascending = false
     end
-    <for_instruction_enumerated_object> ?let enumeration ?let endOfProperties ?let expression
+    <for_instruction_enumerated_object> (?let enumeration ?let endOfProperties ?let expression)
   //--- before block
     var @templateInstructionListAST beforeInstructionList = @()
     select
@@ -144,7 +144,7 @@ syntax extension templateSyntax {
       repeat
         enterTemplateString (!?beforeInstructionList)
       while
-        <template_instruction> !?beforeInstructionList
+        <template_instruction> (!?beforeInstructionList)
       end
     end
   //--- Do block
@@ -161,7 +161,7 @@ syntax extension templateSyntax {
     repeat
       enterTemplateString (!?doInstructionList)
     while
-      <template_instruction> !?doInstructionList
+      <template_instruction> (!?doInstructionList)
     end
   //--- between block
     var @templateInstructionListAST betweenInstructionList = @()
@@ -171,7 +171,7 @@ syntax extension templateSyntax {
       repeat
         enterTemplateString (!?betweenInstructionList)
       while
-        <template_instruction> !?betweenInstructionList
+        <template_instruction> (!?betweenInstructionList)
       end
     end
   //--- after block
@@ -182,7 +182,7 @@ syntax extension templateSyntax {
       repeat
         enterTemplateString (!?afterInstructionList)
       while
-        <template_instruction> !?beforeInstructionList
+        <template_instruction> (!?beforeInstructionList)
       end
     end
   //---

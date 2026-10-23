@@ -65,7 +65,7 @@ syntax extension galgas3ExpressionSyntax {
         }
       or
         $identifier$ ?let @lstring filewrapperTemplateName
-        <output_expression_list_ggs3> !?ioDeclarations ?let @actualOutputArgumentList expressionList
+        <output_expression_list_ggs3> (!?ioDeclarations ?let @actualOutputArgumentList expressionList)
         outExpression = @filewrapperTemplateInExpressionAST {
           !filewrapperName
           !filewrapperTemplateName
@@ -104,7 +104,7 @@ syntax extension galgas4ExpressionSyntax {
       or
         $identifier$ ?let @lstring filewrapperTemplateName
         $:$
-        <output_expression_list> !?ioDeclarations ?let @actualOutputArgumentList expressionList
+        <output_expression_list> (!?ioDeclarations ?let @actualOutputArgumentList expressionList)
         outExpression = @filewrapperTemplateInExpressionAST {
           !filewrapperName
           !filewrapperTemplateName

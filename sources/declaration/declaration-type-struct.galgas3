@@ -38,9 +38,9 @@ syntax extension galgas3DeclarationsSyntax {
     var @propertyInCollectionListAST propertyList = @()
     repeat
     while
-      <property_declaration_ggs3> !?ioDeclarations !?propertyList
+      <property_declaration_ggs3> (!?ioDeclarations !?propertyList)
     while
-      <method_declaration_ggs3> !structTypeName !?ioDeclarations
+      <method_declaration_ggs3> (!structTypeName !?ioDeclarations)
     end
     $}$
     ioDeclarations.mDeclarationList += !@structDeclarationAST {
@@ -80,9 +80,9 @@ syntax extension galgas4DeclarationsSyntax {
     var @propertyInCollectionListAST propertyList = @()
     repeat
     while
-      <property_declaration> !?ioDeclarations !?propertyList
+      <property_declaration> (!?ioDeclarations !?propertyList)
     while
-      <method_declaration> !structTypeName !?ioDeclarations
+      <method_declaration> (!structTypeName !?ioDeclarations)
     end
     $}$
     ioDeclarations.mDeclarationList += !@structDeclarationAST {

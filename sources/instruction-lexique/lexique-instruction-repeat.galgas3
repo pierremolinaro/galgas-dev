@@ -40,11 +40,11 @@ syntax extension galgas3LexiqueComponentSyntax {
     let location = @location.here
     repeat
     while
-      <lexical_instruction> !?repeatedInstructionList
+      <lexical_instruction> (!?repeatedInstructionList)
     end
     var @lexicalWhileBranchListAST lexicalWhileBranchList = @()
     repeat
-      <repeat_while_branch> !?lexicalWhileBranchList
+      <repeat_while_branch> (!?lexicalWhileBranchList)
     while
     end
     $end$
@@ -71,11 +71,11 @@ syntax extension galgas4LexiqueComponentSyntax {
     var @lexicalInstructionListAST repeatedInstructionList = @()
     repeat
     while
-      <lexical_instruction> !?repeatedInstructionList
+      <lexical_instruction> (!?repeatedInstructionList)
     end
     var @lexicalWhileBranchListAST lexicalWhileBranchList = @()
     repeat
-      <repeat_while_branch> !?lexicalWhileBranchList
+      <repeat_while_branch> (!?lexicalWhileBranchList)
     while
     end
     $end$

@@ -47,9 +47,9 @@ syntax extension galgas3LexiqueComponentSyntax {
     var @templateReplacementListAST templateReplacementList = @()
     repeat
     while
-      <template_delimitor_ggs3> !? templateDelimitorList
+      <template_delimitor_ggs3> (!? templateDelimitorList)
     while
-      <template_replacement_ggs3> !? templateReplacementList
+      <template_replacement_ggs3> (!? templateReplacementList)
     end
     $}$
     ioDeclarations.mDeclarationList += !@templateLexiqueComponentAST {
@@ -142,9 +142,9 @@ syntax extension galgas4LexiqueComponentSyntax {
     var @templateReplacementListAST templateReplacementList = @()
     repeat
     while
-      <template_delimitor> !? templateDelimitorList
+      <template_delimitor> (!? templateDelimitorList)
     while
-      <template_replacement> !? templateReplacementList
+      <template_replacement> (!? templateReplacementList)
     end
     $}$
     ioDeclarations.mDeclarationList += !@templateLexiqueComponentAST {

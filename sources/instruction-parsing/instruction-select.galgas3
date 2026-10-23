@@ -37,11 +37,11 @@ syntax extension galgas3SyntaxComponentSyntax {
     $select$
     let mSelectInstructionLocation = @location.here
     var mSelectBranchList = @listOfSyntaxInstructionList ()
-    <syntax_instruction_list_ggs3> !?ioDeclarations ?let @syntaxInstructionList il
+    <syntax_instruction_list_ggs3> (!?ioDeclarations ?let @syntaxInstructionList il)
     mSelectBranchList += !il !@location.here
     repeat
       $or$
-      <syntax_instruction_list_ggs3> !?ioDeclarations ?let @syntaxInstructionList instructionList
+      <syntax_instruction_list_ggs3> (!?ioDeclarations ?let @syntaxInstructionList instructionList)
       mSelectBranchList += !instructionList !@location.here
     while
     end
@@ -69,11 +69,11 @@ syntax extension galgas4SyntaxComponentSyntax {
     $select$
     let mSelectInstructionLocation = @location.here
     var mSelectBranchList = @listOfSyntaxInstructionList ()
-    <syntax_instruction_list> !?ioDeclarations ?let @syntaxInstructionList il
+    <syntax_instruction_list> (!?ioDeclarations ?let @syntaxInstructionList il)
     mSelectBranchList += !il !@location.here
     repeat
       $or$
-      <syntax_instruction_list> !?ioDeclarations ?let @syntaxInstructionList instructionList
+      <syntax_instruction_list> (!?ioDeclarations ?let @syntaxInstructionList instructionList)
       mSelectBranchList += !instructionList !@location.here
     while
     end

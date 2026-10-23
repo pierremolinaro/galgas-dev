@@ -32,9 +32,9 @@ syntax extension galgas3DeclarationsSyntax {
       $.$
     end
     $init$
-    <formal_input_parameter_list_ggs34> !?ioDeclarations ?let formalParameterList
+    <formal_input_parameter_list_ggs34> (!?ioDeclarations ?let formalParameterList)
     ${$
-    <semantic_instruction_list_ggs3> !?ioDeclarations ?let routineInstructionList
+    <semantic_instruction_list_ggs3> (!?ioDeclarations ?let routineInstructionList)
     $}$
     let endOfMethodLocation = @location.here
     ioDeclarations.mDeclarationList += !@initializerAST {
@@ -51,9 +51,9 @@ syntax extension galgas3DeclarationsSyntax {
   rule <method_declaration_ggs3> (?let @lstring inClassName,
                                   ?!@galgasDeclarationAST ioDeclarations) {
     $init$
-    <formal_input_parameter_list_ggs34> !?ioDeclarations ?let formalParameterList
+    <formal_input_parameter_list_ggs34> (!?ioDeclarations ?let formalParameterList)
     ${$
-    <semantic_instruction_list_ggs3> !?ioDeclarations ?let routineInstructionList
+    <semantic_instruction_list_ggs3> (!?ioDeclarations ?let routineInstructionList)
     $}$
     let endOfMethodLocation = @location.here
     ioDeclarations.mDeclarationList += !@initializerAST {
@@ -77,19 +77,19 @@ syntax extension galgas4DeclarationsSyntax {
 
   rule <declaration> (?!@galgasDeclarationAST ioDeclarations) {
     $extension$
-    <simple_type_definition> !?ioDeclarations ?var typeName
+    <simple_type_definition> (!?ioDeclarations ?var typeName)
     $.$
     repeat
     while
-      <simple_type_definition> !?ioDeclarations ?let t
+      <simple_type_definition> (!?ioDeclarations ?let t)
       typeName = makeEmbeddedTypeLName (!outer: typeName !inner: t)
       $.$
     end
     $init$
     let initLocation = @location.here
-    <formal_input_parameter_list> !?ioDeclarations ?let formalParameterList
+    <formal_input_parameter_list> (!?ioDeclarations ?let formalParameterList)
     ${$
-    <semantic_instruction_list> !?ioDeclarations ?let routineInstructionList
+    <semantic_instruction_list> (!?ioDeclarations ?let routineInstructionList)
     $}$
     let endOfMethodLocation = @location.here
     ioDeclarations.mDeclarationList += !@initializerAST {
@@ -107,9 +107,9 @@ syntax extension galgas4DeclarationsSyntax {
                               ?!@galgasDeclarationAST ioDeclarations) {
     $init$
     let initLocation = @location.here
-    <formal_input_parameter_list> !?ioDeclarations ?let formalParameterList
+    <formal_input_parameter_list> (!?ioDeclarations ?let formalParameterList)
     ${$
-    <semantic_instruction_list> !?ioDeclarations ?let routineInstructionList
+    <semantic_instruction_list> (!?ioDeclarations ?let routineInstructionList)
     $}$
     let endOfMethodLocation = @location.here
     ioDeclarations.mDeclarationList += !@initializerAST {

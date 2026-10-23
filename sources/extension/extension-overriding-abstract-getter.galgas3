@@ -48,12 +48,12 @@ syntax extension galgas3DeclarationsSyntax {
     $identifier$ ?let getterName indexing overrideAbstractExtensionGetterDefinition
     let @formalInputParameterListAST formalInputParameterList
     select
-      <formal_input_parameter_list_ggs3> !?ioDeclarations ?formalInputParameterList
+      <formal_input_parameter_list_ggs3> (!?ioDeclarations ?formalInputParameterList)
     or
-      <formal_input_parameter_list_ggs34> !?ioDeclarations ?formalInputParameterList
+      <formal_input_parameter_list_ggs34> (!?ioDeclarations ?formalInputParameterList)
     end
     $->$
-    <type_definition_ggs3> !?ioDeclarations ?let returnedTypeName
+    <type_definition_ggs3> (!?ioDeclarations ?let returnedTypeName)
     ioDeclarations.mDeclarationList += !@overridingAbstractExtensionGetterAST {
       !isPredefined: false
       !typeName
@@ -79,12 +79,12 @@ syntax extension galgas3DeclarationsSyntax {
     $identifier$ ?let getterName indexing overrideAbstractExtensionGetterDefinition
     let @formalInputParameterListAST formalInputParameterList
     select
-      <formal_input_parameter_list_ggs3> !?ioDeclarations ?formalInputParameterList
+      <formal_input_parameter_list_ggs3> (!?ioDeclarations ?formalInputParameterList)
     or
-      <formal_input_parameter_list_ggs34> !?ioDeclarations ?formalInputParameterList
+      <formal_input_parameter_list_ggs34> (!?ioDeclarations ?formalInputParameterList)
     end
     $->$
-    <type_definition_ggs3> !?ioDeclarations ?let returnedTypeName
+    <type_definition_ggs3> (!?ioDeclarations ?let returnedTypeName)
     ioDeclarations.mDeclarationList += !@overridingAbstractExtensionGetterAST {
       !isPredefined: false
       !typeName
@@ -108,18 +108,18 @@ syntax extension galgas4DeclarationsSyntax {
     $override$
     $abstract$
     $func$
-    <simple_type_definition> !?ioDeclarations ?var typeName
+    <simple_type_definition> (!?ioDeclarations ?var typeName)
     $.$
     repeat
     while
-      <simple_type_definition> !?ioDeclarations ?let t
+      <simple_type_definition> (!?ioDeclarations ?let t)
       typeName = makeEmbeddedTypeLName (!outer: typeName !inner: t)
       $.$
     end
     $identifier$ ?let getterName indexing overrideAbstractExtensionGetterDefinition
-    <formal_input_parameter_list> !?ioDeclarations ?let @formalInputParameterListAST formalInputParameterList
+    <formal_input_parameter_list> (!?ioDeclarations ?let @formalInputParameterListAST formalInputParameterList)
     $->$
-    <type_definition> !?ioDeclarations ?let returnedTypeName
+    <type_definition> (!?ioDeclarations ?let returnedTypeName)
     ioDeclarations.mDeclarationList += !@overridingAbstractExtensionGetterAST {
       !isPredefined: false // Is not predefined
       !typeName
@@ -137,9 +137,9 @@ syntax extension galgas4DeclarationsSyntax {
     $abstract$
     $func$
     $identifier$ ?let getterName indexing overrideAbstractExtensionGetterDefinition
-    <formal_input_parameter_list> !?ioDeclarations ?let @formalInputParameterListAST formalInputParameterList
+    <formal_input_parameter_list> (!?ioDeclarations ?let @formalInputParameterListAST formalInputParameterList)
     $->$
-    <type_definition> !?ioDeclarations ?let returnedTypeName
+    <type_definition> (!?ioDeclarations ?let returnedTypeName)
     ioDeclarations.mDeclarationList += !@overridingAbstractExtensionGetterAST {
       !isPredefined: false
       !inTypeName

@@ -41,7 +41,7 @@ syntax extension galgas3DeclarationsSyntax {
       $identifier$ ?let slotName
       slotList += !slotName
     while
-      <method_declaration_ggs3> !boolsetTypeName !?ioDeclarations
+      <method_declaration_ggs3> (!boolsetTypeName !?ioDeclarations)
     end
     $}$
     if slotList.count == 0 then
@@ -83,7 +83,7 @@ syntax extension galgas4DeclarationsSyntax {
       $identifier$ ?let slotName
       slotList += !slotName
     while
-      <method_declaration> !boolsetTypeName !?ioDeclarations
+      <method_declaration> (!boolsetTypeName !?ioDeclarations)
     end
     $}$
     if slotList.count == 0 then

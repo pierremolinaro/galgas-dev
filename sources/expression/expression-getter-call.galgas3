@@ -28,11 +28,11 @@ syntax extension galgas3ExpressionSyntax {
     $[$
   //--- Get source identity characteristics
     let startLocation = @location.here
-    <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST receiverExpression
+    <expression_ggs3> (!?ioDeclarations ?let @semanticExpressionAST receiverExpression)
   //--- Get func name
     $identifier$ ?let @lstring getterName
   //--- Actual parameters
-    <output_expression_list_ggs3> !?ioDeclarations ?let @actualOutputArgumentList expressionList
+    <output_expression_list_ggs3> (!?ioDeclarations ?let @actualOutputArgumentList expressionList)
     $]$
     let endLocation = @location.here
     outExpression = @getterCallExpressionAST {

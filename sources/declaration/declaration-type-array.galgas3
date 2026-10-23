@@ -26,7 +26,7 @@ syntax extension galgas3DeclarationsSyntax {
   rule <type_definition_ggs3> (?!@galgasDeclarationAST ioDeclarations,
                               !@lstring outTypeName ) {
     $[$
-    <type_definition_ggs3> !?ioDeclarations ?let elementTypeName
+    <type_definition_ggs3> (!?ioDeclarations ?let elementTypeName)
     outTypeName = makeArrayTypeLName (!elementTypeName)
     if not [ioDeclarations.implicitTypeDeclarationSet hasKey !outTypeName.string] then
       ioDeclarations.implicitTypeDeclarationSet ++= outTypeName.string

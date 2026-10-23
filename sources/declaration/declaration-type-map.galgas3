@@ -43,21 +43,21 @@ syntax extension galgas3DeclarationsSyntax {
     var @mapAccessorListAST searchSubscriptListAST = @()
     repeat
     while
-      <property_declaration_ggs3> !?ioDeclarations !? propertyList
+      <property_declaration_ggs3> (!?ioDeclarations !? propertyList)
     while
-      <map_insert_setter_declaration> !? mInsertSetterList
+      <map_insert_setter_declaration> (!? mInsertSetterList)
     while
-      <search_method_declaration> !?mSearchMethodList
+      <search_method_declaration> (!?mSearchMethodList)
     while
-      <search_subscript_declaration> !?searchSubscriptListAST
+      <search_subscript_declaration> (!?searchSubscriptListAST)
     while
-      <remove_setter_declaration> !?mRemoveSetterList
+      <remove_setter_declaration> (!?mRemoveSetterList)
     while
-      <replace_setter_declaration> !?replaceMethodList
+      <replace_setter_declaration> (!?replaceMethodList)
     while
-      <insert_or_replace_declaration> !?insertOrReplaceDeclarationListAST
+      <insert_or_replace_declaration> (!?insertOrReplaceDeclarationListAST)
     while
-      <method_declaration_ggs3> !mapTypeName !?ioDeclarations
+      <method_declaration_ggs3> (!mapTypeName !?ioDeclarations)
     end
     $}$
     ioDeclarations.mDeclarationList += !@mapDeclarationAST {
@@ -176,21 +176,21 @@ syntax extension galgas4DeclarationsSyntax {
     var @mapAccessorListAST searchSubscriptListAST = @()
     repeat
     while
-      <property_declaration> !?ioDeclarations !? propertyList
+      <property_declaration> (!?ioDeclarations !? propertyList)
     while
-      <map_insert_setter_declaration> !? mInsertSetterList
+      <map_insert_setter_declaration> (!? mInsertSetterList)
     while
-      <search_method_declaration> !?mSearchMethodList
+      <search_method_declaration> (!?mSearchMethodList)
     while
-      <search_subscript_declaration> !?searchSubscriptListAST
+      <search_subscript_declaration> (!?searchSubscriptListAST)
     while
-      <remove_setter_declaration> !?mRemoveSetterList
+      <remove_setter_declaration> (!?mRemoveSetterList)
     while
-      <replace_setter_declaration> !?replaceMethodList
+      <replace_setter_declaration> (!?replaceMethodList)
     while
-      <insert_or_replace_declaration> !?insertOrReplaceDeclarationListAST
+      <insert_or_replace_declaration> (!?insertOrReplaceDeclarationListAST)
     while
-      <method_declaration> !mapTypeName !?ioDeclarations
+      <method_declaration> (!mapTypeName !?ioDeclarations)
     end
     $}$
     ioDeclarations.mDeclarationList += !@mapDeclarationAST {

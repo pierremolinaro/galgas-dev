@@ -67,37 +67,37 @@ syntax extension galgas3ExpressionSyntax {
 
   rule <expression_or_ggs3> (?!@galgasDeclarationAST ioDeclarations,
                             !@semanticExpressionAST outExpression ) {
-    <expression_and_ggs3> !?ioDeclarations ? outExpression
+    <expression_and_ggs3> (!?ioDeclarations ? outExpression)
     repeat
     while
       let operatorLocation = @location.here
       $|$
       let leftOperand = outExpression
-      <expression_and_ggs3> !?ioDeclarations ?let rightOperand
+      <expression_and_ggs3> (!?ioDeclarations ?let rightOperand)
       outExpression = @orExpressionAST {!operatorLocation !leftOperand !rightOperand}
     while
       let operatorLocation = @location.here
       $||$
       let leftOperand = outExpression
-      <expression_and_ggs3> !?ioDeclarations ?let rightOperand
+      <expression_and_ggs3> (!?ioDeclarations ?let rightOperand)
       outExpression = @orShortExpressionAST {!operatorLocation !leftOperand !rightOperand}
     while
       let operatorLocation = @location.here
       $^$
       let leftOperand = outExpression
-      <expression_and_ggs3> !?ioDeclarations ?let rightOperand
+      <expression_and_ggs3> (!?ioDeclarations ?let rightOperand)
       outExpression = @xorExpressionAST {!operatorLocation !leftOperand !rightOperand}
     while
       let operatorLocation = @location.here
       $...$
       let leftOperand = outExpression
-      <expression_and_ggs3> !?ioDeclarations ?let rightOperand
+      <expression_and_ggs3> (!?ioDeclarations ?let rightOperand)
       outExpression = @closedSliceExpressionAST {!operatorLocation !leftOperand !rightOperand}
     while
       let operatorLocation = @location.here
       $..<$
       let leftOperand = outExpression
-      <expression_and_ggs3> !?ioDeclarations ?let rightOperand
+      <expression_and_ggs3> (!?ioDeclarations ?let rightOperand)
       outExpression = @openedSliceExpressionAST {!operatorLocation !leftOperand !rightOperand}
     end
   }
@@ -114,37 +114,37 @@ syntax extension galgas4ExpressionSyntax {
 
   rule <expression_or> (?!@galgasDeclarationAST ioDeclarations,
                        !@semanticExpressionAST outExpression ) {
-    <expression_and> !?ioDeclarations ? outExpression
+    <expression_and> (!?ioDeclarations ? outExpression)
     repeat
     while
       let operatorLocation = @location.here
       $|$
       let leftOperand = outExpression
-      <expression_and> !?ioDeclarations ?let rightOperand
+      <expression_and> (!?ioDeclarations ?let rightOperand)
       outExpression = @orExpressionAST {!operatorLocation !leftOperand !rightOperand}
     while
       let operatorLocation = @location.here
       $||$
       let leftOperand = outExpression
-      <expression_and> !?ioDeclarations ?let rightOperand
+      <expression_and> (!?ioDeclarations ?let rightOperand)
       outExpression = @orShortExpressionAST {!operatorLocation !leftOperand !rightOperand}
     while
       let operatorLocation = @location.here
       $^$
       let leftOperand = outExpression
-      <expression_and> !?ioDeclarations ?let rightOperand
+      <expression_and> (!?ioDeclarations ?let rightOperand)
       outExpression = @xorExpressionAST {!operatorLocation !leftOperand !rightOperand}
     while
       let operatorLocation = @location.here
       $...$
       let leftOperand = outExpression
-      <expression_and> !?ioDeclarations ?let rightOperand
+      <expression_and> (!?ioDeclarations ?let rightOperand)
       outExpression = @closedSliceExpressionAST {!operatorLocation !leftOperand !rightOperand}
     while
       let operatorLocation = @location.here
       $..<$
       let leftOperand = outExpression
-      <expression_and> !?ioDeclarations ?let rightOperand
+      <expression_and> (!?ioDeclarations ?let rightOperand)
       outExpression = @openedSliceExpressionAST {!operatorLocation !leftOperand !rightOperand}
     end
   }

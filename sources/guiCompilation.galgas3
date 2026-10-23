@@ -135,11 +135,11 @@ syntax galgas3GuiComponentSyntax (galgasScanner3) {
       $"string"$ ?let indexingPathSuffix
       projectExtensionList += !fileExtension !indexingPathSuffix
     while
-      <gui_attributes> !?simpleGlobalAttributes
+      <gui_attributes> (!?simpleGlobalAttributes)
     while
-      <gui_with_option_declaration> !?importedOptionList
+      <gui_with_option_declaration> (!?importedOptionList)
     while
-      <gui_with_lexique_declaration> !?withLexiqueList
+      <gui_with_lexique_declaration> (!?withLexiqueList)
     end
   //---
     $}$
@@ -270,11 +270,11 @@ syntax galgas4GuiComponentSyntax (galgasScanner4) {
       $"string"$ ?let indexingPathSuffix
       projectExtensionList += !fileExtension !indexingPathSuffix
     while
-      <gui_attributes> !?simpleGlobalAttributes
+      <gui_attributes> (!?simpleGlobalAttributes)
     while
-      <gui_with_option_declaration> !?importedOptionList
+      <gui_with_option_declaration> (!?importedOptionList)
     while
-      <gui_with_lexique_declaration> !?withLexiqueList
+      <gui_with_lexique_declaration> (!?withLexiqueList)
     end
   //---
     $}$

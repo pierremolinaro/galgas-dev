@@ -38,12 +38,12 @@ syntax extension galgas3SyntaxComponentSyntax {
                                  !@syntaxInstructionAST outInstruction ) {
     $repeat$
     let mRepeatInstructionLocation = @location.here
-    <syntax_instruction_list_ggs3> !?ioDeclarations ?let @syntaxInstructionList mRepeatedInstructionList
+    <syntax_instruction_list_ggs3> (!?ioDeclarations ?let @syntaxInstructionList mRepeatedInstructionList)
     let endOf_repeated_instructions = @location.here
     var mRepeatBranchList = @listOfSyntaxInstructionList ()
     repeat
       $while$
-      <syntax_instruction_list_ggs3> !?ioDeclarations ?let @syntaxInstructionList mInstructionList
+      <syntax_instruction_list_ggs3> (!?ioDeclarations ?let @syntaxInstructionList mInstructionList)
       mRepeatBranchList += ! mInstructionList !@location.here
     while
     end
@@ -72,12 +72,12 @@ syntax extension galgas4SyntaxComponentSyntax {
                             !@syntaxInstructionAST outInstruction ) {
     $repeat$
     let mRepeatInstructionLocation = @location.here
-    <syntax_instruction_list>!?ioDeclarations ?let @syntaxInstructionList mRepeatedInstructionList
+    <syntax_instruction_list>(!?ioDeclarations ?let @syntaxInstructionList mRepeatedInstructionList)
     let endOf_repeated_instructions = @location.here
     var mRepeatBranchList = @listOfSyntaxInstructionList ()
     repeat
       $while$
-      <syntax_instruction_list> !?ioDeclarations ?let @syntaxInstructionList mInstructionList
+      <syntax_instruction_list> (!?ioDeclarations ?let @syntaxInstructionList mInstructionList)
       mRepeatBranchList += ! mInstructionList !@location.here
     while
     end

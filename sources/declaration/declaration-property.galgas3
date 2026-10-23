@@ -28,7 +28,7 @@ syntax extension galgas3DeclarationsSyntax {
 
   rule <property_declaration_ggs3> (?!@galgasDeclarationAST ioDeclarations,
                                    ?!@propertyInCollectionListAST ioAttributeInCollectionList ) {
-    <acces_control> ?let accessControl
+    <acces_control> (?let accessControl)
     let @propertyMutability mutability
     select
       $var$
@@ -38,7 +38,7 @@ syntax extension galgas3DeclarationsSyntax {
       [accessControl checkCompatibilityWithLet !.here]
       mutability = .constantProperty
     end
-    <type_definition_ggs3> !?ioDeclarations ?let propertyTypeName
+    <type_definition_ggs3> (!?ioDeclarations ?let propertyTypeName)
     $identifier$ ?let propertyName
     let @bool selectorAttribute
     let @propertyInCollectionInitializationAST initialization
@@ -51,7 +51,7 @@ syntax extension galgas3DeclarationsSyntax {
       selectorAttribute = true
     or
       $=$
-      <expression_ggs3> !?ioDeclarations ?let expression
+      <expression_ggs3> (!?ioDeclarations ?let expression)
       initialization = .some {!expression: expression}
       selectorAttribute = false
     end
@@ -68,7 +68,7 @@ syntax extension galgas3DeclarationsSyntax {
 
   rule <property_declaration_ggs3> (?!@galgasDeclarationAST ioDeclarations,
                                    ?!@propertyInCollectionListAST ioAttributeInCollectionList ) {
-    <acces_control> ?let accessControl
+    <acces_control> (?let accessControl)
     $weak$
     select
       $var$
@@ -76,7 +76,7 @@ syntax extension galgas3DeclarationsSyntax {
       $let$
       error (.here : "a weak property is mutable, and should be declared with 'var'")
     end
-    <type_definition_ggs3> !?ioDeclarations ?let propertyTypeName
+    <type_definition_ggs3> (!?ioDeclarations ?let propertyTypeName)
     $identifier$ ?let propertyName
     let @bool selectorAttribute
     let @propertyInCollectionInitializationAST initialization
@@ -89,7 +89,7 @@ syntax extension galgas3DeclarationsSyntax {
       selectorAttribute = true
     or
       $=$
-      <expression_ggs3> !?ioDeclarations ?let expression
+      <expression_ggs3> (!?ioDeclarations ?let expression)
       initialization = .some {!expression: expression}
       selectorAttribute = false
     end
@@ -136,7 +136,7 @@ syntax extension galgas4DeclarationsSyntax {
 
   rule <property_declaration> (?!@galgasDeclarationAST ioDeclarations,
                               ?!@propertyInCollectionListAST ioAttributeInCollectionList ) {
-    <acces_control> ?let accessControl
+    <acces_control> (?let accessControl)
     let @propertyMutability mutability
     select
       $var$
@@ -146,7 +146,7 @@ syntax extension galgas4DeclarationsSyntax {
       [accessControl checkCompatibilityWithLet !.here]
       mutability = .constantProperty
     end
-    <type_definition> !?ioDeclarations ?let propertyTypeName
+    <type_definition> (!?ioDeclarations ?let propertyTypeName)
     $identifier$ ?let propertyName
     var selectorAttribute = false
     repeat
@@ -159,7 +159,7 @@ syntax extension galgas4DeclarationsSyntax {
       initialization = .none
     or
       $=$
-      <expression> !?ioDeclarations ?let expression
+      <expression> (!?ioDeclarations ?let expression)
       initialization = .some {!expression: expression}
     end
     ioAttributeInCollectionList +=
@@ -175,7 +175,7 @@ syntax extension galgas4DeclarationsSyntax {
 
   rule <property_declaration> (?!@galgasDeclarationAST ioDeclarations,
                               ?!@propertyInCollectionListAST ioAttributeInCollectionList ) {
-    <acces_control> ?let accessControl
+    <acces_control> (?let accessControl)
     $weak$
     select
       $var$
@@ -183,7 +183,7 @@ syntax extension galgas4DeclarationsSyntax {
       $let$
       error (.here : "a weak property is mutable, should be declared with 'var'")
     end
-    <type_definition> !?ioDeclarations ?let propertyTypeName
+    <type_definition> (!?ioDeclarations ?let propertyTypeName)
     $identifier$ ?let propertyName
     var selectorAttribute = false
     repeat
@@ -196,7 +196,7 @@ syntax extension galgas4DeclarationsSyntax {
       initialization = .none
     or
       $=$
-      <expression> !?ioDeclarations ?let expression
+      <expression> (!?ioDeclarations ?let expression)
       initialization = .some {!expression: expression}
     end
     let propertyWeakTypeName = makeWeakTypeLName (!propertyTypeName)

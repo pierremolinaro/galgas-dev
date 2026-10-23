@@ -52,15 +52,15 @@ syntax extension galgas3DeclarationsSyntax {
       equatable = true
     end
     $:$
-    <type_definition_ggs3> !?ioDeclarations ?let keyTypeName
+    <type_definition_ggs3> (!?ioDeclarations ?let keyTypeName)
   //--- Map properties
     ${$
     var propertyList = @propertyInCollectionListAST ()
     repeat
     while
-      <property_declaration_ggs3> !?ioDeclarations !? propertyList
+      <property_declaration_ggs3> (!?ioDeclarations !? propertyList)
     while
-      <method_declaration_ggs3> !mDictTypeName !?ioDeclarations
+      <method_declaration_ggs3> (!mDictTypeName !?ioDeclarations)
     end
     $}$
     ioDeclarations.mDeclarationList += !@dictDeclarationAST {
@@ -94,15 +94,15 @@ syntax extension galgas4DeclarationsSyntax {
       equatable = true
     end
     $:$
-    <type_definition> !?ioDeclarations ?let keyTypeName
+    <type_definition> (!?ioDeclarations ?let keyTypeName)
   //--- Map properties
     ${$
     var propertyList = @propertyInCollectionListAST ()
     repeat
     while
-      <property_declaration> !?ioDeclarations !? propertyList
+      <property_declaration> (!?ioDeclarations !? propertyList)
     while
-      <method_declaration> !mDictTypeName !?ioDeclarations
+      <method_declaration> (!mDictTypeName !?ioDeclarations)
     end
     $}$
     ioDeclarations.mDeclarationList += !@dictDeclarationAST {

@@ -37,12 +37,12 @@ syntax extension galgas3ExpressionSyntax {
   rule <primary_ggs3> (?!@galgasDeclarationAST ioDeclarations,
                       !@semanticExpressionAST outExpression ) {
     $if$
-    <expression_ggs3> !?ioDeclarations ?let ifExpression
+    <expression_ggs3> (!?ioDeclarations ?let ifExpression)
     let operatorLocation = @location.here
     $then$
-    <expression_ggs3> !?ioDeclarations ?let thenExpression
+    <expression_ggs3> (!?ioDeclarations ?let thenExpression)
     $else$
-    <expression_ggs3> !?ioDeclarations ?let elseExpression
+    <expression_ggs3> (!?ioDeclarations ?let elseExpression)
     $end$
     outExpression = @ifExpressionAST {
       !operatorLocation
@@ -65,12 +65,12 @@ syntax extension galgas4ExpressionSyntax {
   rule <primary> (?!@galgasDeclarationAST ioDeclarations,
                  !@semanticExpressionAST outExpression ) {
     $if$
-    <expression> !?ioDeclarations ?let ifExpression
+    <expression> (!?ioDeclarations ?let ifExpression)
     let operatorLocation = @location.here
     $then$
-    <expression> !?ioDeclarations ?let thenExpression
+    <expression> (!?ioDeclarations ?let thenExpression)
     $else$
-    <expression> !?ioDeclarations ?let elseExpression
+    <expression> (!?ioDeclarations ?let elseExpression)
     $end$
     outExpression = @ifExpressionAST {
       !operatorLocation

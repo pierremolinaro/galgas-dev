@@ -1,5 +1,4 @@
 #! /usr/bin/swift
-
 //----------------------------------------------------------------------------------------
 
 import Foundation
@@ -76,6 +75,22 @@ func runHiddenCommand (_ cmd : String, _ args : [String]) -> (String, Int32) {
 
 //----------------------------------------------------------------------------------------
 
+extension String {
+  var containsOnlySpaces : Bool {
+    var s = self
+    while !s.isEmpty {
+      let c = s.removeLast ()
+      if c != " " {
+        return false
+      }
+    }
+    return true
+  }
+
+}
+
+//----------------------------------------------------------------------------------------
+
 protocol Correcteur : AnyObject {
   var préfixeMessageErreur : String { get }
   func corriger (_ lignesDuFichier : inout [String],
@@ -87,8 +102,8 @@ protocol Correcteur : AnyObject {
 
 //----------------------------------------------------------------------------------------
 
-class InsererOuvertureParentheseAvantSelecteurIn : Correcteur {
-  var préfixeMessageErreur : String { "syntax error #1: found the '?' or '?selector:' delimitor, expected:" }
+class InsererVirguleAvantSelecteurInOut : Correcteur {
+  var préfixeMessageErreur : String { "syntax error #1: found the '?!selector:' delimitor, expected:" }
 
   func corriger (_ lignesDuFichier : inout [String],
                  _ ligne : Int,
@@ -100,20 +115,29 @@ class InsererOuvertureParentheseAvantSelecteurIn : Correcteur {
     var préfixe = ligneConcernée
     préfixe.removeLast (ligneConcernée.count - premierCaractère)
     print ("  Préfixe '\(préfixe)'")
-    var suffixe = ligneConcernée
-    suffixe.removeFirst (premierCaractère)
-    print ("  Suffixe '\(suffixe)'")
-    let ligneModifiée = préfixe + "(" + suffixe
-    print ("  ligne modifiée '\(ligneModifiée)'")
-    lignesDuFichier [ligne - 1] = ligneModifiée
+    if préfixe.containsOnlySpaces {
+      var lignePrécédente = lignesDuFichier [ligne - 2]
+      while lignePrécédente.hasSuffix (" ") {
+        lignePrécédente.removeLast ()
+      }
+      lignePrécédente += ","
+      lignesDuFichier [ligne - 2] = lignePrécédente
+    }else{
+      var suffixe = ligneConcernée
+      suffixe.removeFirst (premierCaractère)
+      print ("  Suffixe '\(suffixe)'")
+      let ligneModifiée = préfixe + "," + suffixe
+      print ("  ligne modifiée '\(ligneModifiée)'")
+      lignesDuFichier [ligne - 1] = ligneModifiée
+    }
   }
 
 }
 
 //----------------------------------------------------------------------------------------
 
-class InsererOuvertureParentheseAvantSelecteurInOut : Correcteur {
-  var préfixeMessageErreur : String { "syntax error #1: found the '!?' or '!?selector:' delimitor, expected:" }
+class InsererVirguleAvantDelimiteurOut : Correcteur {
+  var préfixeMessageErreur : String { "syntax error #1: found the '!' delimitor, expected:" }
 
   func corriger (_ lignesDuFichier : inout [String],
                  _ ligne : Int,
@@ -125,20 +149,29 @@ class InsererOuvertureParentheseAvantSelecteurInOut : Correcteur {
     var préfixe = ligneConcernée
     préfixe.removeLast (ligneConcernée.count - premierCaractère)
     print ("  Préfixe '\(préfixe)'")
-    var suffixe = ligneConcernée
-    suffixe.removeFirst (premierCaractère)
-    print ("  Suffixe '\(suffixe)'")
-    let ligneModifiée = préfixe + "(" + suffixe
-    print ("  ligne modifiée '\(ligneModifiée)'")
-    lignesDuFichier [ligne - 1] = ligneModifiée
+    if préfixe.containsOnlySpaces {
+      var lignePrécédente = lignesDuFichier [ligne - 2]
+      while lignePrécédente.hasSuffix (" ") {
+        lignePrécédente.removeLast ()
+      }
+      lignePrécédente += ","
+      lignesDuFichier [ligne - 2] = lignePrécédente
+    }else{
+      var suffixe = ligneConcernée
+      suffixe.removeFirst (premierCaractère)
+      print ("  Suffixe '\(suffixe)'")
+      let ligneModifiée = préfixe + "," + suffixe
+      print ("  ligne modifiée '\(ligneModifiée)'")
+      lignesDuFichier [ligne - 1] = ligneModifiée
+    }
   }
 
 }
 
 //----------------------------------------------------------------------------------------
 
-class InsererOuvertureParentheseAvantSelecteurOut : Correcteur {
-  var préfixeMessageErreur : String { "syntax error #1: found the '!' or '!selector:' delimitor, expected:" }
+class InsererVirguleAvantSelecteurOut : Correcteur {
+  var préfixeMessageErreur : String { "syntax error #1: found the '!selector:' delimitor, expected:" }
 
   func corriger (_ lignesDuFichier : inout [String],
                  _ ligne : Int,
@@ -149,21 +182,29 @@ class InsererOuvertureParentheseAvantSelecteurOut : Correcteur {
     print ("  line concernée '\(ligneConcernée)'")
     var préfixe = ligneConcernée
     préfixe.removeLast (ligneConcernée.count - premierCaractère)
-    print ("  Préfixe '\(préfixe)'")
-    var suffixe = ligneConcernée
-    suffixe.removeFirst (premierCaractère)
-    print ("  Suffixe '\(suffixe)'")
-    let ligneModifiée = préfixe + "(" + suffixe
-    print ("  ligne modifiée '\(ligneModifiée)'")
-    lignesDuFichier [ligne - 1] = ligneModifiée
+    if préfixe.containsOnlySpaces {
+      var lignePrécédente = lignesDuFichier [ligne - 2]
+      while lignePrécédente.hasSuffix (" ") {
+        lignePrécédente.removeLast ()
+      }
+      lignePrécédente += ","
+      lignesDuFichier [ligne - 2] = lignePrécédente
+    }else{
+      var suffixe = ligneConcernée
+      suffixe.removeFirst (premierCaractère)
+      print ("  Suffixe '\(suffixe)'")
+      let ligneModifiée = préfixe + "," + suffixe
+      print ("  ligne modifiée '\(ligneModifiée)'")
+      lignesDuFichier [ligne - 1] = ligneModifiée
+    }
   }
 
 }
 
 //----------------------------------------------------------------------------------------
 
-class InsererOuvertureParentheseAvantIdentificateur : Correcteur {
-  var préfixeMessageErreur : String { "syntax error #1: found an identifier, expected:" }
+class InsererVirguleAvantDelimiteurIn : Correcteur {
+  var préfixeMessageErreur : String { "syntax error #1: found the '?' delimitor, expected:" }
 
   func corriger (_ lignesDuFichier : inout [String],
                  _ ligne : Int,
@@ -175,20 +216,29 @@ class InsererOuvertureParentheseAvantIdentificateur : Correcteur {
     var préfixe = ligneConcernée
     préfixe.removeLast (ligneConcernée.count - premierCaractère)
     print ("  Préfixe '\(préfixe)'")
-    var suffixe = ligneConcernée
-    suffixe.removeFirst (premierCaractère)
-    print ("  Suffixe '\(suffixe)'")
-    let ligneModifiée = préfixe + "(" + suffixe
-    print ("  ligne modifiée '\(ligneModifiée)'")
-    lignesDuFichier [ligne - 1] = ligneModifiée
+    if préfixe.containsOnlySpaces {
+      var lignePrécédente = lignesDuFichier [ligne - 2]
+      while lignePrécédente.hasSuffix (" ") {
+        lignePrécédente.removeLast ()
+      }
+      lignePrécédente += ","
+      lignesDuFichier [ligne - 2] = lignePrécédente
+    }else{
+      var suffixe = ligneConcernée
+      suffixe.removeFirst (premierCaractère)
+      print ("  Suffixe '\(suffixe)'")
+      let ligneModifiée = préfixe + "," + suffixe
+      print ("  ligne modifiée '\(ligneModifiée)'")
+      lignesDuFichier [ligne - 1] = ligneModifiée
+    }
   }
 
 }
 
 //----------------------------------------------------------------------------------------
 
-class InsererOuvertureParentheseAvantChaine : Correcteur {
-  var préfixeMessageErreur : String { "syntax error #1: found a character string constant \"...\", expected:" }
+class InsererVirguleAvantSelecteurIn : Correcteur {
+  var préfixeMessageErreur : String { "syntax error #1: found the '?selector:' delimitor, expected:" }
 
   func corriger (_ lignesDuFichier : inout [String],
                  _ ligne : Int,
@@ -200,44 +250,29 @@ class InsererOuvertureParentheseAvantChaine : Correcteur {
     var préfixe = ligneConcernée
     préfixe.removeLast (ligneConcernée.count - premierCaractère)
     print ("  Préfixe '\(préfixe)'")
-    var suffixe = ligneConcernée
-    suffixe.removeFirst (premierCaractère)
-    print ("  Suffixe '\(suffixe)'")
-    let ligneModifiée = préfixe + "(" + suffixe
-    print ("  ligne modifiée '\(ligneModifiée)'")
-    lignesDuFichier [ligne - 1] = ligneModifiée
-  }
-
-}
-//----------------------------------------------------------------------------------------
-
-class InsererOuvertureParentheseSelf : Correcteur {
-  var préfixeMessageErreur : String { "syntax error #1: found the 'self' keyword, expected:" }
-
-  func corriger (_ lignesDuFichier : inout [String],
-                 _ ligne : Int,
-                 _ premierCaractère : Int,
-                 _ dernierCaractère : Int,
-                 _ firstFixItLine : String) {
-    let ligneConcernée = lignesDuFichier [ligne - 1]
-    print ("  line concernée '\(ligneConcernée)'")
-    var préfixe = ligneConcernée
-    préfixe.removeLast (ligneConcernée.count - premierCaractère)
-    print ("  Préfixe '\(préfixe)'")
-    var suffixe = ligneConcernée
-    suffixe.removeFirst (premierCaractère)
-    print ("  Suffixe '\(suffixe)'")
-    let ligneModifiée = préfixe + "(" + suffixe
-    print ("  ligne modifiée '\(ligneModifiée)'")
-    lignesDuFichier [ligne - 1] = ligneModifiée
+    if préfixe.containsOnlySpaces {
+      var lignePrécédente = lignesDuFichier [ligne - 2]
+      while lignePrécédente.hasSuffix (" ") {
+        lignePrécédente.removeLast ()
+      }
+      lignePrécédente += ","
+      lignesDuFichier [ligne - 2] = lignePrécédente
+    }else{
+      var suffixe = ligneConcernée
+      suffixe.removeFirst (premierCaractère)
+      print ("  Suffixe '\(suffixe)'")
+      let ligneModifiée = préfixe + "," + suffixe
+      print ("  ligne modifiée '\(ligneModifiée)'")
+      lignesDuFichier [ligne - 1] = ligneModifiée
+    }
   }
 
 }
 
 //----------------------------------------------------------------------------------------
 
-class RemplacerFermetureParenthese : Correcteur {
-  var préfixeMessageErreur : String { "syntax error #1: found the ']' delimitor, expected:" }
+class InsererVirguleAvantDelimiteurInOut : Correcteur {
+  var préfixeMessageErreur : String { "syntax error #1: found the '?!' delimitor, expected:" }
 
   func corriger (_ lignesDuFichier : inout [String],
                  _ ligne : Int,
@@ -249,12 +284,21 @@ class RemplacerFermetureParenthese : Correcteur {
     var préfixe = ligneConcernée
     préfixe.removeLast (ligneConcernée.count - premierCaractère)
     print ("  Préfixe '\(préfixe)'")
-    var suffixe = ligneConcernée
-    suffixe.removeFirst (dernierCaractère + 1)
-    print ("  Suffixe '\(suffixe)'")
-    let ligneModifiée = préfixe + ")" + suffixe
-    print ("  ligne modifiée '\(ligneModifiée)'")
-    lignesDuFichier [ligne - 1] = ligneModifiée
+    if préfixe.containsOnlySpaces {
+      var lignePrécédente = lignesDuFichier [ligne - 2]
+      while lignePrécédente.hasSuffix (" ") {
+        lignePrécédente.removeLast ()
+      }
+      lignePrécédente += ","
+      lignesDuFichier [ligne - 2] = lignePrécédente
+    }else{
+      var suffixe = ligneConcernée
+      suffixe.removeFirst (premierCaractère)
+      print ("  Suffixe '\(suffixe)'")
+      let ligneModifiée = préfixe + "," + suffixe
+      print ("  ligne modifiée '\(ligneModifiée)'")
+      lignesDuFichier [ligne - 1] = ligneModifiée
+    }
   }
 
 }
@@ -263,13 +307,12 @@ class RemplacerFermetureParenthese : Correcteur {
 
   func traduire (projetGALGAS inCheminFichierGALGAS : String) -> (Bool, Int) {
     let correcteurs : [Correcteur] = [
-      InsererOuvertureParentheseAvantIdentificateur (),
-      RemplacerFermetureParenthese (),
-      InsererOuvertureParentheseAvantSelecteurIn (),
-      InsererOuvertureParentheseAvantSelecteurInOut (),
-      InsererOuvertureParentheseAvantSelecteurOut (),
-      InsererOuvertureParentheseAvantChaine (),
-      InsererOuvertureParentheseSelf ()
+      InsererVirguleAvantDelimiteurOut (),
+      InsererVirguleAvantDelimiteurIn (),
+      InsererVirguleAvantDelimiteurInOut (),
+      InsererVirguleAvantSelecteurOut (),
+      InsererVirguleAvantSelecteurIn (),
+      InsererVirguleAvantSelecteurInOut (),
     ]
     let débutConstruction = Date ()
   //-------------------- Chemin absolu vers projet galgas
@@ -281,7 +324,7 @@ class RemplacerFermetureParenthese : Correcteur {
     while loop {
       print (String (repeating: "-", count: 79))
       let (s, status) = runHiddenCommand (
-        "/usr/local/bin/galgas",
+        "/usr/local/bin/galgas4",
         ["--no-color", "--max-errors=1", "--max-warnings=1", inCheminFichierGALGAS]
       )
       if status == 0 {
@@ -289,6 +332,7 @@ class RemplacerFermetureParenthese : Correcteur {
         loop = false
         ok = true
       }else if status == 1 {
+        print (CYAN + s + ENDC)
         let lines = s.components (separatedBy: "\n")
         var lineIndex = 0
         var indiceCorrecteur = 0
@@ -347,12 +391,12 @@ class RemplacerFermetureParenthese : Correcteur {
 let fm = FileManager ()
 //-------------------- Get script absolute path
 let scriptDir = URL (fileURLWithPath: CommandLine.arguments [0]).deletingLastPathComponent ().path
-print (BOLD_BLUE + "Inventaire des 'ggsproject' dans \(scriptDir)…" + ENDC)
+print (BOLD_BLUE + "Inventaire des 'galgas4project' dans \(scriptDir)…" + ENDC)
 //--- Énumérer les fichiers galgas
 let directoryEnumerator = fm.enumerator (atPath: scriptDir)
 var galgasProjectFiles = [String] ()
 while let file = directoryEnumerator?.nextObject () as? String {
-  if file.hasSuffix (".ggsproject") || file.hasSuffix (".galgasproject") || file.hasSuffix (".galgasProject") {
+  if file.hasSuffix (".galgas4project") {
     let path = scriptDir.appending("/\(file)")
     galgasProjectFiles.append (path)
     print ("  found \(path)")

@@ -67,7 +67,7 @@ syntax extension galgas3DeclarationsSyntax {
             $weak$
             weakQualifier = true
           end
-          <type_definition_ggs3> !?ioDeclarations ?let associatedValueType
+          <type_definition_ggs3> (!?ioDeclarations ?let associatedValueType)
           $identifier$ ?let associatedValueName
           [!?associatedValueTypeList append !@(weakQualifier, associatedValueType, associatedValueName)]
         while
@@ -76,7 +76,7 @@ syntax extension galgas3DeclarationsSyntax {
       end
       constantList += !constantName !associatedValueTypeList
     while
-      <method_declaration_ggs3> !enumTypeName !?ioDeclarations
+      <method_declaration_ggs3> (!enumTypeName !?ioDeclarations)
     end
     $}$
     if constantList.count == 0 then
@@ -144,7 +144,7 @@ syntax extension galgas4DeclarationsSyntax {
             $weak$
             weakQualifier = true
           end
-          <type_definition> !?ioDeclarations ?let associatedValueType
+          <type_definition> (!?ioDeclarations ?let associatedValueType)
           $identifier$ ?let associatedValueName
           [!?associatedValueTypeList append !@(weakQualifier, associatedValueType, associatedValueName)]
         while
@@ -154,7 +154,7 @@ syntax extension galgas4DeclarationsSyntax {
       end
       constantList += !constantName !associatedValueTypeList
     while
-      <method_declaration> !enumTypeName !?ioDeclarations
+      <method_declaration> (!enumTypeName !?ioDeclarations)
     end
     $}$
     if constantList.count == 0 then
