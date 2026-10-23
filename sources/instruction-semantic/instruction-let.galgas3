@@ -156,7 +156,7 @@ override proc @localConstantDeclarationWithAssignmentAST enterInstructionInSeman
 
 override proc @localVariableOrConstantDeclarationWithAssignmentAST enterInstructionInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
   if self.mOptionalTypeName.string != "" then
-    [!?ioTypeMap makeEntry !self.mOptionalTypeName ?*]
+    !?ioTypeMap.makeEntry (!self.mOptionalTypeName ?*)
   end
   [self.mSourceExpression enterExpressionInSemanticContext !?ioTypeMap]
 }
@@ -175,12 +175,12 @@ override proc @undefinedLocalConstantDeclarationAST analyzeSemanticInstruction (
   let targetType = [ioTypeMap typeMapEntryForLKey !self.mConstantTypeName]
   let targetVariableCppName = "var_" + self.mConstantName.string.identifierRepresentation
                             + "_" + self.mConstantName.location.startLocationIndex
-  [!?ioVariableMap insertDeclaredLocalConstant
-    !self.mConstantName
+  !?ioVariableMap.insertDeclaredLocalConstant
+    (!self.mConstantName
     !targetType
     !targetVariableCppName
     !targetVariableCppName
-  ]
+  )
 //--- Generate instruction
   ioInstructionListForGeneration += !@undefinedLocalConstantDeclarationForGeneration {
     !targetType
@@ -210,12 +210,12 @@ override proc @localConstantDeclarationWithAssignmentAST analyzeSemanticInstruct
 //--- Enter target variable
   let targetVariableCppName = "var_" + self.mVariableName.string.identifierRepresentation
                                      + "_" + self.mVariableName.location.startLocationIndex
-  [!?ioVariableMap insertInitializedLocalConstant
-    !self.mVariableName
+  !?ioVariableMap.insertInitializedLocalConstant
+    (!self.mVariableName
     !expression.mResultType
     !targetVariableCppName
     !targetVariableCppName
-  ]
+  )
 //--- Generate instruction
   ioInstructionListForGeneration += !@localVariableOrConstantDeclarationWithSourceExpressionForGeneration {
     !expression.mResultType
@@ -248,20 +248,20 @@ override proc @localVariableOrConstantDeclarationWithAssignmentAST analyzeSemant
   let targetVariableCppName = "var_" + self.mVariableName.string.identifierRepresentation
                             + "_" + self.mVariableName.location.startLocationIndex
   if self.mIsConstant then
-    [!?ioVariableMap insertInitializedLocalConstant
-      !self.mVariableName
+    !?ioVariableMap.insertInitializedLocalConstant
+      (!self.mVariableName
       !targetType
       !targetVariableCppName
       !targetVariableCppName
-    ]
+    )
   else
-    [!?ioVariableMap insertInitializedLocalVariable
-      !self.mVariableName
+    !?ioVariableMap.insertInitializedLocalVariable
+      (!self.mVariableName
       !warnsIfNotMutated: true
       !targetType
       !targetVariableCppName
       !targetVariableCppName
-    ]
+    )
   end
 //--- Check assignment type compatibility
   checkAssignmentTypeWithImplicitGetterCall (!targetType !expression.mResultType !self.mInstructionLocation !?expression)

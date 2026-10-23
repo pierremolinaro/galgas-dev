@@ -32,7 +32,7 @@ proc generateInstructionList
   ?let @bool inGenerateSyntaxDirectedTranslationString,
   ?!@string ioGeneratedCode
 ) {
-  [!?ioGeneratedCode incIndentation !2]
+  !?ioGeneratedCode.incIndentation (!2)
   for element in inInstructionList do
     [element.mInstruction generateInstruction
       !?ioInclusionSet
@@ -42,7 +42,7 @@ proc generateInstructionList
       !?ioGeneratedCode
     ]
   end
-  [!?ioGeneratedCode decIndentation !2]
+  !?ioGeneratedCode.decIndentation (!2)
 }
 
 //--------------------------------------------------------------------------------------------------

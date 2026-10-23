@@ -74,21 +74,21 @@ final class @abstractExtensionSetterAST : @semanticDeclarationAST {
     ?!@extensionSetterMapForBuildingContext ioExtensionSetterMapForBuildingContext,
     ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList) {
     let key = @lstring {!"extension setter @" + self.mTypeName + " " + self.mAbstractExtensionSetterName !self.mAbstractExtensionSetterName.location}
-    [!?ioSemanticTypePrecedenceGraph addNode !key !self]
-    [!?ioSemanticTypePrecedenceGraph addEdge !from: key !to: @{!"@" + self.mTypeName !self.mTypeName.location}]
+    !?ioSemanticTypePrecedenceGraph.addNode (!key !self)
+    !?ioSemanticTypePrecedenceGraph.addEdge (!from: key !to: @{!"@" + self.mTypeName !self.mTypeName.location})
   //---
     if not [ioExtensionSetterMapForBuildingContext hasKey !self.mTypeName.string] then
-      [!?ioExtensionSetterMapForBuildingContext insertKey
-        !self.mTypeName
+      !?ioExtensionSetterMapForBuildingContext.insertKey
+        (!self.mTypeName
         !@()
-      ]
+      )
     end
     var entry = ioExtensionSetterMapForBuildingContext @[!searchKey: self.mTypeName]
-    [!?entry.mExtensionSetterMapForType insertKey
-      !self.mAbstractExtensionSetterName
+    !?entry.mExtensionSetterMapForType.insertKey
+      (!self.mAbstractExtensionSetterName
       !self.mAbstractExtensionSetterFormalParameterList
-    ]
-    [!?ioExtensionSetterMapForBuildingContext replaceKey !with: entry]
+    )
+    !?ioExtensionSetterMapForBuildingContext.replaceKey (!with: entry)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -165,7 +165,7 @@ final class @abstractExtensionSetterAST : @semanticDeclarationAST {
     ?!@genericExtensionMethodListMap unused ioOverridingExtensionGetterListMap,
     ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionGetterListMap) {
 //    ioAbstractExtensionSetterListMap += !self.mTypeName.string !self.mAbstractExtensionSetterName
-    [!?ioAbstractExtensionSetterListMap insertKey !self.mTypeName.string !self.mAbstractExtensionSetterName]
+    !?ioAbstractExtensionSetterListMap.insertKey (!self.mTypeName.string !self.mAbstractExtensionSetterName)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

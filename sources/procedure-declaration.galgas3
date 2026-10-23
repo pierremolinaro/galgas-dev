@@ -180,7 +180,7 @@ final class @procDeclarationAST : @externProcedureDeclarationAST {
   //--- Build signature
     var routineSignature = @formalParameterSignature ()
     for argument in self.mFormalArgumentListAST do
-      [!?ioTypeMap makeEntry !argument.mFormalArgumentTypeName ?let parameterTypeIndex]
+      !?ioTypeMap.makeEntry (!argument.mFormalArgumentTypeName ?let parameterTypeIndex)
       routineSignature +=
         !argument.mFormalSelector
         !parameterTypeIndex
@@ -190,11 +190,11 @@ final class @procDeclarationAST : @externProcedureDeclarationAST {
   //--- Enter types for instruction list
     [self.mRoutineInstructionList enterInstructionListInSemanticContext !?ioTypeMap]
   //--- Enter routine in routine map
-    [!?ioSemanticContext.routineMap insertKey
-      !self.mRoutineName
+    !?ioSemanticContext.routineMap.insertKey
+      (!self.mRoutineName
       !routineSignature
       !isFilePrivate: self.isFilePrivate
-    ]
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -219,7 +219,7 @@ final class @procDeclarationAST : @externProcedureDeclarationAST {
     let mangledName = routineMangledName (!self.mRoutineName !routineSignature)
   //--- Useful entities graph
     let nameForUsefulness = procedureNameForUsefulEntitiesGraph (!mangledName)
-    [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
+    !?ioUsefulEntitiesGraph.addNode (!nameForUsefulness !nameForUsefulness)
     if self.usefullProcedure then
       ioUsefulnessRootEntities += !nameForUsefulness
     end

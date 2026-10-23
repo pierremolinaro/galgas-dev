@@ -195,12 +195,12 @@ final class @ifInstructionAST : @semanticInstructionAST {
       ?let then_instructionList
     )
     var expressions = self.mExpressions
-    [!?expressions popLast ?*]
+    !?expressions.popLast (?*)
     for (*) in expressions do
-      [!?ioVariableMap closeBranch !self.mEndOf_then_branch]
-      [!?ioVariableMap closeOverride !self.mEndOf_then_branch]
+      !?ioVariableMap.closeBranch (!self.mEndOf_then_branch)
+      !?ioVariableMap.closeOverride (!self.mEndOf_then_branch)
     end
-    [!?ioVariableMap closeBranch !self.mEndOf_then_branch]
+    !?ioVariableMap.closeBranch (!self.mEndOf_then_branch)
   //--- else branch
     analyzeSemanticInstructionList (
       !inUsefulnessCallerEntityName
@@ -215,7 +215,7 @@ final class @ifInstructionAST : @semanticInstructionAST {
       !?ioVariableMap
       ?let else_instructionList
     )
-    [!?ioVariableMap closeOverride !self.mEndOf_if_instruction]
+    !?ioVariableMap.closeOverride (!self.mEndOf_if_instruction)
   //--- Generate instruction
     ioInstructionListForGeneration += !@ifInstructionForGeneration {
       !self.mEndOf_then_branch
@@ -283,7 +283,7 @@ final class @ifInstructionForGeneration : @semanticInstructionForGeneration {
     )
     ioGeneratedCode += "}\n"
     for (*) in self.mExpressions do
-      [!?ioGeneratedCode decIndentation !2]
+      !?ioGeneratedCode.decIndentation (!2)
       ioGeneratedCode += "}\n"
     end
   //--- else branch

@@ -235,9 +235,9 @@ override proc @templateLexiqueComponentAST enterDeclarationInGraph
   ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext,
   ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList ) {
   let key = @lstring {!"lexique " + self.mLexiqueComponentName !self.mLexiqueComponentName.location}
-  [!?ioSemanticTypePrecedenceGraph addNode !key !self]
+  !?ioSemanticTypePrecedenceGraph.addNode (!key !self)
   let superKey = @lstring {!"lexique " + self.mLexiqueSuperComponentName !self.mLexiqueComponentName.location}
-  [!?ioSemanticTypePrecedenceGraph addEdge !from: key !to: superKey]
+  !?ioSemanticTypePrecedenceGraph.addEdge (!from: key !to: superKey)
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -265,8 +265,8 @@ override proc @templateLexiqueComponentAST enterDeclarationInSemanticContext
     error (self.mLexiqueSuperComponentName : "cannot inherit from a template lexique")
   end
 //---
-  [!?ioSemanticContext.mLexiqueComponentMapForSemanticAnalysis insertKey
-     !self.mLexiqueComponentName
+  !?ioSemanticContext.mLexiqueComponentMapForSemanticAnalysis.insertKey
+     (!self.mLexiqueComponentName
      !true
      !terminalMap
      !indexingListAST
@@ -274,7 +274,7 @@ override proc @templateLexiqueComponentAST enterDeclarationInSemanticContext
      !lexicalAttributeListAST
      !lexicalStyleListAST
      !lexicalListDeclarationListAST
-  ]
+  )
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -289,7 +289,7 @@ override proc @templateLexiqueComponentAST semanticAnalysis
                                   ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration ) {
 //-------------------------------------- Useful entities graph
   let nameForUsefulness = lexiqueNameForUsefulEntitiesGraph (!self.mLexiqueComponentName)
-  [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
+  !?ioUsefulEntitiesGraph.addNode (!nameForUsefulness !nameForUsefulness)
 //-------------------------------------- Get super lexique features
   [inSemanticContext.mLexiqueComponentMapForSemanticAnalysis searchKey
      !self.mLexiqueSuperComponentName
@@ -327,7 +327,7 @@ override proc @templateLexiqueComponentAST semanticAnalysis
 //-------------------------------------- Build style map
   var styleIndex = 1
   for (mName mComment) in lexicalStyleListAST do
-    [!?lexiqueAnalysisContext.mStyleMap insertKey !mName !mComment !styleIndex]
+    !?lexiqueAnalysisContext.mStyleMap.insertKey (!mName !mComment !styleIndex)
     styleIndex += 1
   end
 //-------------------------------------- Build lexical attribute map
@@ -348,7 +348,7 @@ override proc @templateLexiqueComponentAST semanticAnalysis
       [lexiqueAnalysisContext.mLexicalAttributeMap searchKey !mAttributeName ?let attributeLexicalType]
       argumentTypeList += !mFormalSelector !mAttributeName.string !attributeLexicalType
     end
-    [!?lexiqueAnalysisContext.mTerminalMap insertKey !mName !argumentTypeList]
+    !?lexiqueAnalysisContext.mTerminalMap.insertKey (!mName !argumentTypeList)
     terminalList +=
       !mName
       !argumentTypeList

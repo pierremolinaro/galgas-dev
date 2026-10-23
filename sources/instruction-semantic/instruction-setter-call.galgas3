@@ -44,7 +44,6 @@ syntax extension galgas3InstructionsSyntax {
 
   rule <semantic_instruction_ggs3> (?!@galgasDeclarationAST ioDeclarations,
                                     !@semanticInstructionAST outInstruction) {
-    $[$
     let instructionLocation = @location.here
     $!?$
     let @bool prefixedBySelf
@@ -56,44 +55,96 @@ syntax extension galgas3InstructionsSyntax {
       prefixedBySelf = true
     end
     $identifier$ ?let mReceiverName
-    var mReceiverStructAttributes = @lstringlist ()
-    repeat
-    while
-      $.$
-      $identifier$ ?let structAttribute
-      mReceiverStructAttributes += !structAttribute
+    select
+      $($
+      <actual_parameter_list_ggs3> (!?ioDeclarations ?let @actualParameterListAST actualParameterList)
+      $)$
+      if prefixedBySelf then
+        outInstruction = @selfSetterCallInstructionAST {
+          !instructionLocation
+          !mReceiverName
+          !actualParameterList
+        }
+      else
+        error (instructionLocation : "invalid setter call" spoil outInstruction)
+      end
+    or
+      var receiverStructProperties = @lstringlist ()
+      repeat
+        $.$
+        $identifier$ ?let structProperty
+        receiverStructProperties += !structProperty
+      while
+      end
+      !?receiverStructProperties.popLast (?let setterName)
+      $($
+      <actual_parameter_list_ggs3> (!?ioDeclarations ?let @actualParameterListAST actualParameterList)
+      $)$
+      outInstruction = @setterCallInstructionAST {
+        !instructionLocation
+        !prefixedBySelf
+        !mReceiverName
+        !receiverStructProperties
+        !setterName
+        !actualParameterList
+      }
     end
-    $identifier$ ?let mSetterName // §§
-    <actual_parameter_list_ggs3> (!?ioDeclarations ?let @actualParameterListAST actualParameterList)
-    $]$
-    outInstruction = @setterCallInstructionAST {
-      !instructionLocation
-      !prefixedBySelf
-      !mReceiverName
-      !mReceiverStructAttributes
-      !mSetterName
-      !actualParameterList
-    }
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <semantic_instruction_ggs3> (?!@galgasDeclarationAST ioDeclarations,
-                                    !@semanticInstructionAST outInstruction) {
-    let instructionLocation = @location.here
-    $!?$
-    $self$
-    $.$
-    $identifier$ ?let mSetterName
-    $($
-    <actual_parameter_list_ggs3> (!?ioDeclarations ?let @actualParameterListAST actualParameterList)
-    $)$
-    outInstruction = @selfSetterCallInstructionAST {
-      !instructionLocation
-      !mSetterName
-      !actualParameterList
-    }
-  }
+//  rule <semantic_instruction_ggs3> (?!@galgasDeclarationAST ioDeclarations,
+//                                    !@semanticInstructionAST outInstruction) {
+//    $[$
+//    let instructionLocation = @location.here
+//    $!?$
+//    let @bool prefixedBySelf
+//    select
+//      prefixedBySelf = false
+//    or
+//      $self$
+//      $.$
+//      prefixedBySelf = true
+//    end
+//    $identifier$ ?let mReceiverName
+//    var mReceiverStructAttributes = @lstringlist ()
+//    repeat
+//    while
+//      $.$
+//      $identifier$ ?let structAttribute
+//      mReceiverStructAttributes += !structAttribute
+//    end
+//    $identifier$ ?let mSetterName // §§
+//    <actual_parameter_list_ggs3> (!?ioDeclarations ?let @actualParameterListAST actualParameterList)
+//    $]$
+//    outInstruction = @setterCallInstructionAST {
+//      !instructionLocation
+//      !prefixedBySelf
+//      !mReceiverName
+//      !mReceiverStructAttributes
+//      !mSetterName
+//      !actualParameterList
+//    }
+//  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+//  rule <semantic_instruction_ggs3> (?!@galgasDeclarationAST ioDeclarations,
+//                                    !@semanticInstructionAST outInstruction) {
+//    let instructionLocation = @location.here
+//    $!?$
+//    $self$
+//    $.$
+//    $identifier$ ?let mSetterName
+//    $($
+//    <actual_parameter_list_ggs3> (!?ioDeclarations ?let @actualParameterListAST actualParameterList)
+//    $)$
+//    outInstruction = @selfSetterCallInstructionAST {
+//      !instructionLocation
+//      !mSetterName
+//      !actualParameterList
+//    }
+//  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -103,7 +154,7 @@ syntax extension galgas3InstructionsSyntax {
 
 syntax extension galgas4InstructionsSyntax {
 
-   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <semantic_instruction> (?!@galgasDeclarationAST ioDeclarations,
                                !@semanticInstructionAST outInstruction) {
@@ -137,7 +188,7 @@ syntax extension galgas4InstructionsSyntax {
         receiverStructProperties += !structProperty
       while
       end
-      [!?receiverStructProperties popLast ?let setterName]
+      !?receiverStructProperties.popLast (?let setterName)
       <actual_parameter_list_with_parenthesis> (!?ioDeclarations ?let @actualParameterListAST actualParameterList)
       outInstruction = @setterCallInstructionAST {
         !instructionLocation
@@ -207,12 +258,12 @@ override proc @setterCallInstructionAST analyzeSemanticInstruction (
       spoil receiverType, targetVariableCppName, nameForCheckingFormalParameterUsing)
     end
   else
-    [!?ioVariableMap searchForReadWriteAccess
-       !self.mReceiverName
+    !?ioVariableMap.searchForReadWriteAccess
+       (!self.mReceiverName
        ?receiverType
        ?targetVariableCppName
        ?nameForCheckingFormalParameterUsing
-    ]
+    )
   end
 //--- Get target variable type
   var ok = true
@@ -372,7 +423,7 @@ override proc @setterCallInstructionForGeneration generateInstruction (?!@string
   for (mValue) in self.mReceiverStructAttributes do
     receiverCppName += ".mProperty_" + mValue.string.identifierRepresentation
   end
-  [!?ioUnusedVariableCppNameSet removeKey !self.mReceiverBaseName]
+  !?ioUnusedVariableCppNameSet.removeKey (!self.mReceiverBaseName)
 //--- Parameters
   var @stringlist parameterCppNameList = @()
   var @stringlist jokerParametersToReleaseList = @()
@@ -396,7 +447,7 @@ override proc @setterCallInstructionForGeneration generateInstruction (?!@string
     if self.mReceiverType.definition.typeKind.isClassType then
       if (self.mReceiverType.definition.allTypedPropertyList.count > 0) then
         ioGeneratedCode += receiverCppName + ".insulate (" + compilerCppName () + " COMMA_HERE) ;\n"
-        [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
+        !?ioUnusedVariableCppNameSet.removeKey (!compilerCppName ())
       end
       let pointerUniqueName = "ptr_" + self.mInstructionLocation.startLocationIndex
       ioGeneratedCode += "cPtr_" + self.mReceiverType.identifierRepresentation + " * " + pointerUniqueName
@@ -418,7 +469,7 @@ override proc @setterCallInstructionForGeneration generateInstruction (?!@string
     if parameterCppNameList.count != 0 then
       ioGeneratedCode +=  ", "
     end
-    [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
+    !?ioUnusedVariableCppNameSet.removeKey (!compilerCppName ())
     ioGeneratedCode +=  compilerCppName ()
     ioGeneratedCode += " COMMA_"
   elsif parameterCppNameList.count != 0 then
@@ -436,7 +487,7 @@ override proc @selfSetterCallInstructionForGeneration generateInstruction (?!@st
   ?let @bool unused inGenerateSyntaxDirectedTranslationString,
   ?!@string ioGeneratedCode) {
   ioGeneratedCode += "{\n"
-  [!?ioUnusedVariableCppNameSet removeKey !self.mSelfCppName]
+  !?ioUnusedVariableCppNameSet.removeKey (!self.mSelfCppName)
 //--- Parameters
   var parameterCppNameList = @stringlist ()
   var jokerParametersToReleaseList = @stringlist ()
@@ -476,7 +527,7 @@ override proc @selfSetterCallInstructionForGeneration generateInstruction (?!@st
     if parameterCppNameList.count != 0 then
       ioGeneratedCode +=  ", "
     end
-    [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
+    !?ioUnusedVariableCppNameSet.removeKey (!compilerCppName ())
     ioGeneratedCode +=  compilerCppName ()
     ioGeneratedCode += " COMMA_"
   elsif parameterCppNameList.count != 0 then

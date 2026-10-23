@@ -195,7 +195,7 @@ final class @initializerCallAST : @semanticExpressionAST {
 
   override proc enterExpressionInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
     if self.mTypeName.string != "" then
-      [!?ioTypeMap makeEntry !self.mTypeName ?*]
+      !?ioTypeMap.makeEntry (!self.mTypeName ?*)
     end
     [self.mExpressions enterInSemanticContext !?ioTypeMap]
   }
@@ -226,7 +226,7 @@ final class @initializerCallAST : @semanticExpressionAST {
     )
   //--- Usefull entity graph
     let typeUsefulnessName = typeNameForUsefulEntitiesGraph (instanciedType.definition.typeName)
-    [!?ioUsefulEntitiesGraph addEdge !from: inUsefulnessCallerEntityName !to: typeUsefulnessName]
+    !?ioUsefulEntitiesGraph.addEdge (!from: inUsefulnessCallerEntityName !to: typeUsefulnessName)
   //---
     outExpression = @initializerCallForGeneration {
       !instanciedType
@@ -274,7 +274,7 @@ private proc analyzeInitializerInvocation (?let @lstring inUsefulnessCallerEntit
         !instanciedTypeDefinition.typeName
         !inInvocationArguments.initializerSignature
       )
-      [!?ioUsefulEntitiesGraph addEdge !from: inUsefulnessCallerEntityName !to: nameForUsefulness]
+      !?ioUsefulEntitiesGraph.addEdge (!from: inUsefulnessCallerEntityName !to: nameForUsefulness)
     //--- Search initializer
       outInitializerName = @{!inInvocationArguments.initializerSignature !inEndOfExpressions}
       let initializerMap = instanciedTypeDefinition.initializerMap
@@ -363,7 +363,7 @@ final class @initializerCallForGeneration : @semanticExpressionForGeneration {
     for (mValue) in parameterList do
       outCppExpression += mValue + ", "
     end
-    [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
+    !?ioUnusedVariableCppNameSet.removeKey (!compilerCppName ())
     outCppExpression += compilerCppName ()
     outCppExpression += " COMMA_HERE)"
   }

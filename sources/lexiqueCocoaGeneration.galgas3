@@ -196,11 +196,11 @@ override func @lexicalExplicitRuleAST generateSwiftCocoaCode
   outGeneratedCode = "if scanningOk && ("
   outGeneratedCode += [self.mLexicalRuleExpression generateSwiftCocoaConditionCode !inLexiqueAnalysisContext]
   outGeneratedCode += ") {\n"
-  [!?outGeneratedCode incIndentation !2]
+  !?outGeneratedCode.incIndentation (!2)
   for (mInstruction) in self.mInstructionList do
     outGeneratedCode += [mInstruction generateSwiftCocoaInstructionCode !inScannerClassName !inLexiqueAnalysisContext]
   end
-  [!?outGeneratedCode decIndentation !2]
+  !?outGeneratedCode.decIndentation (!2)
   outGeneratedCode += "}else "
 }
 

@@ -256,7 +256,7 @@ override proc @lexicalRoutineCallInstructionAST checkLexicalInstruction (
   for (mValue) in self.mErrorMessageList do
     var entry = ioLexiqueAnalysisContext.mLexicalMessageMap @[!searchKey: mValue]
     entry.mMessageIsUsed = true
-    [!?ioLexiqueAnalysisContext.mLexicalMessageMap replaceKey !with: entry]
+    !?ioLexiqueAnalysisContext.mLexicalMessageMap.replaceKey (!with: entry)
   end
 }
 

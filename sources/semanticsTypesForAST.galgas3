@@ -43,7 +43,7 @@ struct @syntaxExtensions {
                     ?let @syntaxRuleListAST inRuleList) {
     if [self.dictionary hasKey !inKey] then
       [self.dictionary searchKey !inKey ?var aList]
-      [!?aList append !inSyntaxComponentName !inNonterminalDeclarationList !inRuleList]
+      !?aList.append (!inSyntaxComponentName !inNonterminalDeclarationList !inRuleList)
       self.dictionary += !inKey !aList
     else
       self.dictionary += !inKey !@[@(inSyntaxComponentName, inNonterminalDeclarationList, inRuleList)]
@@ -426,7 +426,7 @@ struct @galgasDeclarationAST {
   public var @prologueEpilogueList mPrologueDeclarationList = @()
   public var @programRuleList mSourceRuleList = @()
   public var @prologueEpilogueList mEpilogueDeclarationList =  @()
-  
+
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   setter getOptionalTypeName (!@lstring outOptionalTypeName,

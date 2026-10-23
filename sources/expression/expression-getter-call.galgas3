@@ -306,7 +306,7 @@ final class @getterCallExpressionForGeneration : @semanticExpressionForGeneratio
         end
       end
       ioInclusionSet ++= "func-" + baseType.definition.typeName.string.fileNameRepresentation + "-" + self.mGetterName.fileNameRepresentation
-      [!?ioUnusedVariableCppNameSet removeKey !receiverCppName]
+      !?ioUnusedVariableCppNameSet.removeKey (!receiverCppName)
       if self.mReceiverExpression.mResultType.definition.typeKind.isClassType then
         outCppExpression = "callExtensionGetter_" + self.mGetterName.identifierRepresentation
            + " ((const cPtr_" + self.mReceiverExpression.mResultType.identifierRepresentation + " *) " + receiverCppName + ".ptr (), "
@@ -328,11 +328,11 @@ final class @getterCallExpressionForGeneration : @semanticExpressionForGeneratio
     end
     if getterArgumentCppNameList.count == 0 then
       if self.mHasCompilerArgument then
-        [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
+        !?ioUnusedVariableCppNameSet.removeKey (!compilerCppName ())
         outCppExpression += compilerCppName () + " COMMA_"
       end
     elsif self.mHasCompilerArgument then
-      [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
+      !?ioUnusedVariableCppNameSet.removeKey (!compilerCppName ())
       outCppExpression += ", " + compilerCppName () + " COMMA_"
     else
       outCppExpression += " COMMA_"

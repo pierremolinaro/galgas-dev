@@ -32,10 +32,10 @@ func transformLabelMap
     for (* mFormalArgumentPassingMode mFormalArgumentTypeName * *) in mFormalArgumentList do
       formalParametersList += !mFormalArgumentPassingMode !mFormalArgumentTypeName
     end
-    [!?outNonterminalSymbolLabelMapForGrammarAnalysis insertKey
-      !mLabelName
+    !?outNonterminalSymbolLabelMapForGrammarAnalysis.insertKey
+      (!mLabelName
       !formalParametersList
-    ]
+    )
   end
 }
 
@@ -109,11 +109,11 @@ proc handleNonTerminalDeclarations
         !entry.mNonterminalSymbolParametersMap
       )
     else
-      [!?ioNonTerminalMapForGrammarAnalysis insertKey
-        !mNonterminalName
+      !?ioNonTerminalMapForGrammarAnalysis.insertKey
+        (!mNonterminalName
         !ioNonTerminalMapForGrammarAnalysis.count
         !transformLabelMap (!mLabels)
-      ]
+      )
     end
   end
 }
@@ -139,11 +139,11 @@ proc handleNonTerminalDeclarationsFromRuleList
         !entry.mNonterminalSymbolParametersMap
       )
     else
-      [!?ioNonTerminalMapForGrammarAnalysis insertKey
-        !mNonterminalName
+      !?ioNonTerminalMapForGrammarAnalysis.insertKey
+        (!mNonterminalName
         !ioNonTerminalMapForGrammarAnalysis.count
         !transformLabelMap (!nonTerminalLabelListAST)
-      ]
+      )
     end
   end
 }

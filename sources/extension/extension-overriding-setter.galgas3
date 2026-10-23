@@ -145,9 +145,9 @@ override proc @overridingExtensionSetterAST semanticAnalysis (
   ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration) {
 //--- Useful entities graph
   let nameForUsefulness = setterNameForUsefulEntitiesGraph (!self.mTypeName !self.mOverridingExtensionSetterName)
-  [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
+  !?ioUsefulEntitiesGraph.addNode (!nameForUsefulness !nameForUsefulness)
   let typeNameForUsefulness = typeNameForUsefulEntitiesGraph (!self.mTypeName)
-  [!?ioUsefulEntitiesGraph addEdge !from: typeNameForUsefulness !to: nameForUsefulness]
+  !?ioUsefulEntitiesGraph.addEdge (!from: typeNameForUsefulness !to: nameForUsefulness)
 //--- Self type
   let @unifiedTypeMapEntry selfType = [ioTypeMap typeMapEntryForLKey !self.mTypeName]
 //--- Check self type is a class
@@ -232,10 +232,10 @@ override proc @overridingExtensionSetterAST buildExtensionListMaps (
   ?!@genericExtensionMethodListMap unused ioExtensionGetterListMap,
   ?!@genericExtensionMethodListMap unused ioOverridingExtensionGetterListMap,
   ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionGetterListMap) {
-  [!?ioOverridingExtensionSetterListMap insertKey
-    !self.mTypeName.string
+  !?ioOverridingExtensionSetterListMap.insertKey
+    (!self.mTypeName.string
     !self.mOverridingExtensionSetterName
-  ]
+  )
 }
 
 //--------------------------------------------------------------------------------------------------

@@ -181,10 +181,10 @@ final class @overridingAbstractExtensionSetterAST : @semanticDeclarationAST {
     ?!@genericExtensionMethodListMap unused ioExtensionGetterListMap,
     ?!@genericExtensionMethodListMap unused ioOverridingExtensionGetterListMap,
     ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionGetterListMap) {
-    [!? ioOverridingAbstractExtensionSetterListMap insertKey
-      !self.mTypeName.string
+    !? ioOverridingAbstractExtensionSetterListMap.insertKey
+      (!self.mTypeName.string
       !self.mOverridingExtensionSetterName
-    ]
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

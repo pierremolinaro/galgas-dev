@@ -36,7 +36,7 @@ rule <start_symbol>
   $<?$
   $name$ ?* // let @lstring name
   repeat
-  while 
+  while
     $name$ ?* // let @lstring attributeName
     $=$
     $value$ ?* // let @lstring attributeValue
@@ -122,11 +122,11 @@ rule <element>
   $name$ ?let @lstring name
   var @xmlAttributeMap attributeMap = @()
   repeat
-  while 
+  while
     $name$ ?let @lstring attributeName
     $=$
     $value$ ?let @lstring attributeValue
-    [!?attributeMap insertKey !attributeName !attributeValue]
+    !?attributeMap.insertKey (!attributeName !attributeValue)
   end
 
   if inPrintDuringParsing then

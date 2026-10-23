@@ -121,7 +121,7 @@ override proc @lexicalRepeatInstructionAST checkLexicalInstruction (
 //  let loopVarName = "loop" + [self.mLocation endLocationIndex]
 //  outGeneratedCode = "BOOL " + loopVarName + " = YES ;\n"
 //  outGeneratedCode += "do {\n"
-//  [!?outGeneratedCode incIndentation !2]
+//  !?outGeneratedCode incIndentation !2]
 //--- Repeated instruction
 //  for (mInstruction) in self.mRepeatedInstructionList do
 //    outGeneratedCode += [mInstruction generateObjcCocoaInstructionCode !inScannerClassName !inLexiqueAnalysisContext]
@@ -132,18 +132,18 @@ override proc @lexicalRepeatInstructionAST checkLexicalInstruction (
 //    outGeneratedCode += "if (scanningOk && ("
 //    outGeneratedCode += [mWhileExpression generateObjcCocoaConditionCode !inLexiqueAnalysisContext]
 //    outGeneratedCode += ")) {\n"
-//    [!?outGeneratedCode incIndentation !2]
+//    !?outGeneratedCode incIndentation !2]
 //    for (mInstruction) in mWhileInstructionList do
 //      outGeneratedCode += [mInstruction generateObjcCocoaInstructionCode !inScannerClassName !inLexiqueAnalysisContext]
 //    end
-//    [!?outGeneratedCode decIndentation !2]
+//    !?outGeneratedCode decIndentation !2]
 //  between
 //    outGeneratedCode += "}else "
 //  end
 //  outGeneratedCode += "}else{\n"
 //                      "  " + loopVarName + " = NO ;\n"
 //                      "}\n"
-//  [!?outGeneratedCode decIndentation !2]
+//  !?outGeneratedCode decIndentation !2]
 //  outGeneratedCode += "}while (" + loopVarName + " && scanningOk) ;\n"
 //                      "loop = YES ;\n"
 //}
@@ -155,7 +155,7 @@ override func @lexicalRepeatInstructionAST generateSwiftCocoaInstructionCode
   ?let @lexiqueAnalysisContext inLexiqueAnalysisContext
   -> @string outGeneratedCode {
   outGeneratedCode = "while (loop && scanningOk) {\n"
-  [!?outGeneratedCode incIndentation !2]
+  !?outGeneratedCode.incIndentation (!2)
 //--- Repeated instruction
   for (mInstruction) in self.mRepeatedInstructionList do
     outGeneratedCode += [mInstruction generateSwiftCocoaInstructionCode !inScannerClassName !inLexiqueAnalysisContext]
@@ -166,18 +166,18 @@ override func @lexicalRepeatInstructionAST generateSwiftCocoaInstructionCode
     outGeneratedCode += "if scanningOk && ("
     outGeneratedCode += [mWhileExpression generateSwiftCocoaConditionCode !inLexiqueAnalysisContext]
     outGeneratedCode += ") {\n"
-    [!?outGeneratedCode incIndentation !2]
+    !?outGeneratedCode.incIndentation (!2)
     for (mInstruction) in mWhileInstructionList do
       outGeneratedCode += [mInstruction generateSwiftCocoaInstructionCode !inScannerClassName !inLexiqueAnalysisContext]
     end
-    [!?outGeneratedCode decIndentation !2]
+    !?outGeneratedCode.decIndentation (!2)
   between
     outGeneratedCode += "}else "
   end
   outGeneratedCode += "}else{\n"
                       "  loop = false\n"
                       "}\n"
-  [!?outGeneratedCode decIndentation !2]
+  !?outGeneratedCode.decIndentation (!2)
   outGeneratedCode += "}\n"
                       "loop = true\n"
 }
@@ -197,7 +197,7 @@ override func @lexicalRepeatInstructionAST generateLexicalInstructionCode
   ?let @lexiqueAnalysisContext inLexiqueAnalysisContext
   -> @string {
   result = "do {\n"
-  [!?result incIndentation !2]
+  !?result.incIndentation (!2)
 //--- Repeated instruction
   for (mInstruction) in self.mRepeatedInstructionList do
     result += [mInstruction generateLexicalInstructionCode !inScannerClassName !inLexiqueAnalysisContext]
@@ -208,18 +208,18 @@ override func @lexicalRepeatInstructionAST generateLexicalInstructionCode
     result += "if ("
     result += [mWhileExpression generateConditionCode !context:inLexiqueAnalysisContext]
     result += ") {\n"
-    [!?result incIndentation !2]
+    !?result.incIndentation (!2)
     for (mInstruction) in mWhileInstructionList do
       result += [mInstruction generateLexicalInstructionCode !inScannerClassName !inLexiqueAnalysisContext]
     end
-    [!?result decIndentation !2]
+    !?result.decIndentation (!2)
   between
     result += "}else "
   end
   result += "}else{\n"
                       "  loop = false ;\n"
                       "}\n"
-  [!?result decIndentation !2]
+  !?result.decIndentation (!2)
   result += "}while (loop) ;\n"
                       "loop = true ;\n"
 }

@@ -143,7 +143,7 @@ override proc @selectInstruction analyzeSyntaxInstruction
   let @uint choiceIndex = ioSelectMethodCount
   ioSelectMethodCount += 1
 //--- Begin block
-  [!?ioVariableMap openOverrideForSelectBlock]
+  !?ioVariableMap.openOverrideForSelectBlock ()
 //--- 'or' blocks
   var listOfSemanticInstructionListForGeneration = @listOfSemanticInstructionListForGeneration ()
   for (mSyntaxInstructionList mEndOf_instructions) in self.mSelectBranchList do
@@ -167,7 +167,7 @@ override proc @selectInstruction analyzeSyntaxInstruction
     listOfSemanticInstructionListForGeneration += !instructionList !mEndOf_instructions
   end
 //--- End block
-  [!?ioVariableMap closeOverride !self.mEndOf_select_instruction]
+  !?ioVariableMap.closeOverride (!self.mEndOf_select_instruction)
   ioInstructionListForGeneration += !@selectInstructionForGeneration {
     !self.mInstructionLocation
     !inComponentName
@@ -252,7 +252,7 @@ override proc @selectInstructionForGeneration generateInstruction (?!@stringset 
                                        ?!@stringset ioUnusedVariableCppNameSet,
                                        ?let @bool inGenerateSyntaxDirectedTranslationString,
                                        ?!@string ioGeneratedCode) {
-  [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
+  !?ioUnusedVariableCppNameSet.removeKey (!compilerCppName ())
   ioGeneratedCode += "switch (select_" + self.mSyntaxComponentName.identifierRepresentation + "_"
   ioGeneratedCode += self.mChoiceIndex.string + " (" + compilerCppName () + ")) {\n"
   for (mInstructionList *) in self.mListOfSemanticInstructionListForGeneration do(IDX)

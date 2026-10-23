@@ -52,7 +52,7 @@ override proc @outputInputActualParameterForGeneration generateActualParameter
   for (mValue) in self.mStructAttributeList do
     outCppName += ".mProperty_" + mValue.string.identifierRepresentation
   end
-  [!?ioUnusedVariableCppNameSet removeKey !self.mOutputInputVariableCppName]
+  !?ioUnusedVariableCppNameSet.removeKey (!self.mOutputInputVariableCppName)
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -67,7 +67,7 @@ override proc @inputActualParameterForGeneration generateActualParameter
   !@string outCppName ) {
   outCppName = self.mInputActualCppName
   ioOutputVariableList += !self.mInputActualCppName
-  [!?ioUnusedVariableCppNameSet removeKey !outCppName]
+  !?ioUnusedVariableCppNameSet.removeKey (!outCppName)
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -128,7 +128,7 @@ override proc @inputJokerParameterForGeneration generatePoisonedVariables
   if self.mPoisonedVarNameList.count > 0 then
     ioImplementation += "if (!" + self.mInputActualCppName + ".isValid ()) {\n"
     for (cppVarName nameForCheckingFormalParameterUsing) in self.mPoisonedVarNameList do
-      [!?ioUnusedVariableCppNameSet removeKey !nameForCheckingFormalParameterUsing]
+      !?ioUnusedVariableCppNameSet.removeKey (!nameForCheckingFormalParameterUsing)
       ioImplementation += "  " + cppVarName + ".drop () ;\n"
     end
     ioImplementation += "}\n"
@@ -143,7 +143,7 @@ override proc @inputActualParameterForGeneration generatePoisonedVariables
   if self.mPoisonedVarNameList.count > 0 then
     ioImplementation += "if (!" + self.mInputActualCppName + ".isValid ()) {\n"
     for (cppVarName nameForCheckingFormalParameterUsing) in self.mPoisonedVarNameList do
-      [!?ioUnusedVariableCppNameSet removeKey !nameForCheckingFormalParameterUsing]
+      !?ioUnusedVariableCppNameSet.removeKey (!nameForCheckingFormalParameterUsing)
       ioImplementation += "  " + cppVarName + ".drop () ;\n"
     end
     ioImplementation += "}\n"

@@ -27,16 +27,16 @@ proc enterClassFunctionWithoutArgument (?!@classFunctionMap ioClassFunctionMap,
   ?name:let @string inClassFunctionName,
   ?resultTypeName:let @string inReturnedTypeName,
   ?hasLexiqueArg:let @bool inHasLexiqueArgument) {
-  [!?ioUnifiedTypeMap makeEntryFromString
-    !inReturnedTypeName
+  !?ioUnifiedTypeMap.makeEntryFromString
+    (!inReturnedTypeName
     ?let @unifiedTypeMapEntry returnedTypeIndex
-  ]
-  [!?ioClassFunctionMap insertOrReplace
-    !@lstring {!inClassFunctionName !@location.here}
+  )
+  !?ioClassFunctionMap.insertOrReplace
+    (!@lstring {!inClassFunctionName !@location.here}
     !@functionSignature ()
     !inHasLexiqueArgument
     !returnedTypeIndex
-  ]
+  )
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -49,14 +49,14 @@ proc enterClassFunctionWithArgument (
   ?argName:let @string inArgument1Name,
   ?resultTypeName:let @string inReturnedTypeName,
   ?hasLexiqueArg:let @bool inHasLexiqueArgument) {
-  [!?ioUnifiedTypeMap makeEntryFromString !inReturnedTypeName ?let returnedTypeIndex]
-  [!?ioUnifiedTypeMap makeEntryFromString !inArgument1TypeName ?let t]
-  [!?ioClassFunctionMap insertOrReplace
-    !@lstring {!inClassFunctionName !@location.here}
+  !?ioUnifiedTypeMap.makeEntryFromString (!inReturnedTypeName ?let returnedTypeIndex)
+  !?ioUnifiedTypeMap.makeEntryFromString (!inArgument1TypeName ?let t)
+  !?ioClassFunctionMap.insertOrReplace
+    (!@lstring {!inClassFunctionName !@location.here}
     !@functionSignature @[@("".nowhere, t, inArgument1Name, true)]
     !inHasLexiqueArgument
     !returnedTypeIndex
-  ]
+  )
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -70,19 +70,19 @@ proc enterClassFunctionWith2Arguments (?!@classFunctionMap ioClassFunctionMap,
   ?argName2:let @string inArgument2Name,
   ?resultTypeName:let @string inReturnedTypeName,
   ?hasLexiqueArg:let @bool inHasLexiqueArgument) {
-  [!?ioUnifiedTypeMap makeEntryFromString !inReturnedTypeName ?let returnedTypeIndex]
+  !?ioUnifiedTypeMap.makeEntryFromString (!inReturnedTypeName ?let returnedTypeIndex)
   var argumentTypeList = @functionSignature ()
   var @unifiedTypeMapEntry t
-  [!?ioUnifiedTypeMap makeEntryFromString !inArgument1TypeName ?t]
+  !?ioUnifiedTypeMap.makeEntryFromString (!inArgument1TypeName ?t)
   argumentTypeList += !"".nowhere !t !inArgument1Name !true
-  [!?ioUnifiedTypeMap makeEntryFromString !inArgument2TypeName ?t]
+  !?ioUnifiedTypeMap.makeEntryFromString (!inArgument2TypeName ?t)
   argumentTypeList += !"".nowhere !t !inArgument2Name !true
-  [!?ioClassFunctionMap insertOrReplace
-    !@lstring {!inClassFunctionName !@location.here}
+  !?ioClassFunctionMap.insertOrReplace
+    (!@lstring {!inClassFunctionName !@location.here}
     !argumentTypeList
     !inHasLexiqueArgument
     !returnedTypeIndex
-  ]
+  )
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -98,20 +98,20 @@ proc enterClassFunctionWith3Arguments (?!@classFunctionMap ioClassFunctionMap,
   ?argName3:let @string inArgument3Name,
   ?resultTypeName:let @string inReturnedTypeName,
   ?hasLexiqueArg:let @bool inHasLexiqueArgument) {
-  [!?ioUnifiedTypeMap makeEntryFromString !inReturnedTypeName ?let returnedTypeIndex]
-  [!?ioUnifiedTypeMap makeEntryFromString !inArgument1TypeName ?var t]
+  !?ioUnifiedTypeMap.makeEntryFromString (!inReturnedTypeName ?let returnedTypeIndex)
+  !?ioUnifiedTypeMap.makeEntryFromString (!inArgument1TypeName ?var t)
   var @functionSignature argumentTypeList = @()
   argumentTypeList += !"".nowhere !t !inArgument1Name !true
-  [!?ioUnifiedTypeMap makeEntryFromString !inArgument2TypeName ?t]
+  !?ioUnifiedTypeMap.makeEntryFromString (!inArgument2TypeName ?t)
   argumentTypeList += !"".nowhere !t !inArgument2Name !true
-  [!?ioUnifiedTypeMap makeEntryFromString !inArgument3TypeName ?t]
+  !?ioUnifiedTypeMap.makeEntryFromString (!inArgument3TypeName ?t)
   argumentTypeList += !"".nowhere !t !inArgument3Name !true
-  [!?ioClassFunctionMap insertOrReplace
-    !@lstring {!inClassFunctionName !@location.here}
+  !?ioClassFunctionMap.insertOrReplace
+    (!@lstring {!inClassFunctionName !@location.here}
     !argumentTypeList
     !inHasLexiqueArgument
     !returnedTypeIndex
-  ]
+  )
 }
 
 //--------------------------------------------------------------------------------------------------

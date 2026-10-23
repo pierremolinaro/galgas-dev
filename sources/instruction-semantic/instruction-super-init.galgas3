@@ -119,10 +119,10 @@ final class @superInitInstructionAST : @semanticInstructionAST {
       //--- Mark all super properties are defined
         for superProperty in superTypeDefinition.allTypedPropertyList do
           if superProperty.initialization == .none then
-            [!?ioVariableMap searchForWriteAccess
-              !@{!"self." + superProperty.name !self.mInstructionLocation}
+            !?ioVariableMap.searchForWriteAccess
+              (!@{!"self." + superProperty.name !self.mInstructionLocation}
               ?3*
-            ]
+            )
           end
         end
         [ioVariableMap checkSelfObjectIsFullyInitialized !self.mInstructionLocation]
@@ -210,7 +210,7 @@ final class @superInitInstructionForGeneration : @semanticInstructionForGenerati
     for (mValue) in getterArgumentCppNameList do
       ioGeneratedCode += mValue + ", "
     end
-    [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
+    !?ioUnusedVariableCppNameSet.removeKey (!compilerCppName ())
     ioGeneratedCode += compilerCppName () + ") ; \n"
   }
 

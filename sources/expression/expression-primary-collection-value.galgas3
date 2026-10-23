@@ -148,7 +148,7 @@ final class @collectionValueAST : @semanticExpressionAST {
         !targetType.definition.typeName
         !emptyArgumentList.initializerSignature
       )
-      [!?ioUsefulEntitiesGraph addEdge !from: inUsefulnessCallerEntityName !to: nameForUsefulness]
+      !?ioUsefulEntitiesGraph.addEdge (!from: inUsefulnessCallerEntityName !to: nameForUsefulness)
     //---
       let elementType = targetType.definition.typeForEnumeratedElement
       var @collectionValueElementListForGeneration expressionListForGeneration = @()
@@ -178,7 +178,7 @@ final class @collectionValueAST : @semanticExpressionAST {
       }
     //--- Usefull entity graph
       let typeUsefulnessName = typeNameForUsefulEntitiesGraph (targetType.definition.typeName)
-      [!?ioUsefulEntitiesGraph addEdge !from: inUsefulnessCallerEntityName !to: typeUsefulnessName]
+      !?ioUsefulEntitiesGraph.addEdge (!from: inUsefulnessCallerEntityName !to: typeUsefulnessName)
     end
   }
 
@@ -214,7 +214,7 @@ final class @expressionCollectionForGeneration : @semanticExpressionForGeneratio
     ioGeneratedCode += "GGS_" + self.mResultType.identifierRepresentation + " " + outCppExpression
     ioGeneratedCode += " = GGS_" + self.mResultType.identifierRepresentation
     ioGeneratedCode += "::init (" + compilerCppName () + self.mLocation.commaSourceFile + ") ;\n"
-    [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
+    !?ioUnusedVariableCppNameSet.removeKey (!compilerCppName ())
   //--- Add Elements
     for (expression location) in self.expressionList do
       [expression generateExpression

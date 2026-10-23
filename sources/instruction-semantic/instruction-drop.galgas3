@@ -91,7 +91,7 @@ override proc @dropInstructionAST analyzeSemanticInstruction (?let @lstring unus
                                    ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration,
                                    ?!@localVarManager ioVariableMap) {
   for (mValue) in self.mDropList do
-    [!?ioVariableMap searchForDropAccess !mValue]
+    !?ioVariableMap.searchForDropAccess (!mValue)
   end
 }
 

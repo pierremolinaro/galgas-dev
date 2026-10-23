@@ -503,7 +503,7 @@ private proc guiComponentSemanticAnalysis (?let @galgasGUIComponentListAST.@elem
     var @string blockComment = ""
     for (mKey mValue) in simpleAttributes do
       if mKey.string == "fileExtension" then
-        [!?context.mExtensionMap insertKey !mValue !lexiqueFileName.string !idx]
+        !?context.mExtensionMap.insertKey (!mValue !lexiqueFileName.string !idx)
         hasAssociatedExtension = true
       elsif mKey.string == "title" then
         if hasTabViewTitle then
@@ -540,10 +540,10 @@ private proc guiComponentSemanticAnalysis (?let @galgasGUIComponentListAST.@elem
       !lexicalStyleListAST
   end
 //--- Generation
-  [!?ioOptionComponentMapForGeneration insertKey
-    !inGUIComponentAST.mGUIComponentName
+  !?ioOptionComponentMapForGeneration.insertKey
+    (!inGUIComponentAST.mGUIComponentName
     !context
-  ]
+  )
 }
 
 //--------------------------------------------------------------------------------------------------

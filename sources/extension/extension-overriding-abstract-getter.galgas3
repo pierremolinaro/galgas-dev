@@ -176,19 +176,19 @@ override proc @overridingAbstractExtensionGetterAST enterDeclarationInGraph (
   ioExtensionOverrideDefinitionList += !self
 //---
   if not [ioExtensionGetterMapForBuildingContext hasKey !self.mTypeName.string] then
-    [!?ioExtensionGetterMapForBuildingContext insertKey
-      !self.mTypeName
+    !?ioExtensionGetterMapForBuildingContext.insertKey
+      (!self.mTypeName
       !@()
-    ]
+    )
   end
   var entry = ioExtensionGetterMapForBuildingContext @[!searchKey: self.mTypeName]
-  [!?entry.mExtensionGetterMapForType insertKey
-    !self.mAbstractExtensionGetterName
+  !?entry.mExtensionGetterMapForType.insertKey
+    (!self.mAbstractExtensionGetterName
     !self.mAbstractExtensionGetterReturnedTypeName
     !self.mAbstractExtensionGetterFormalInputParameterList
     !.isVirtualOverridingAbstract
-  ]
-  [!?ioExtensionGetterMapForBuildingContext replaceKey !with: entry]
+  )
+  !?ioExtensionGetterMapForBuildingContext.replaceKey (!with: entry)
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -294,10 +294,10 @@ override proc @overridingAbstractExtensionGetterAST buildExtensionListMaps (
   ?!@genericExtensionMethodListMap unused ioExtensionGetterListMap,
   ?!@genericExtensionMethodListMap unused ioOverridingExtensionGetterListMap,
   ?!@genericExtensionMethodListMap ioOverridingAbstractExtensionGetterListMap) {
-  [!? ioOverridingAbstractExtensionGetterListMap insertKey
-    !self.mTypeName.string
+  !? ioOverridingAbstractExtensionGetterListMap.insertKey
+    (!self.mTypeName.string
     !self.mAbstractExtensionGetterName
-  ]
+  )
 }
 
 //--------------------------------------------------------------------------------------------------

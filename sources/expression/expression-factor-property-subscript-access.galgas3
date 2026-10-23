@@ -159,10 +159,10 @@ final class @structPropertyAccessExpressionAST : @semanticExpressionAST {
     let propertyMap = expressionType.definition.propertyMap
     if let prop = propertyMap @[self.propertyName] then
       if exprGeneration is @selfInExpressionForGeneration then
-        [!?ioVariableMap searchForReadAccess
-          !@("self." + self.propertyName, self.propertyName)
+        !?ioVariableMap.searchForReadAccess
+          (!@("self." + self.propertyName, self.propertyName)
           ?3*
-        ]
+        )
       end
       [prop.mAccessControl checkGetAccess !inAnalysisContext.selfAvailability !self.propertyName]
     //--- Generate expression
@@ -366,7 +366,7 @@ final class @subscriptReadAccessExpressionForGeneration : @semanticExpressionFor
         !?ioUnusedVariableCppNameSet
         ?let @string actualArgOperand
       ]
-      [!?subscriptArgumentList append !actualArgOperand]
+      !?subscriptArgumentList.append (!actualArgOperand)
     end
   //--- Generate
     outCppExpression = operand + ".readSubscript_"
@@ -375,7 +375,7 @@ final class @subscriptReadAccessExpressionForGeneration : @semanticExpressionFor
     for operand in subscriptArgumentList do
       outCppExpression += operand + ", "
     end
-    [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
+    !?ioUnusedVariableCppNameSet.removeKey (!compilerCppName ())
     outCppExpression += compilerCppName () + " COMMA_HERE)"
   }
 

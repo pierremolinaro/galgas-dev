@@ -302,7 +302,7 @@ override proc @grammarInFileInstructionAST analyzeSemanticInstruction (
                         ?!@semanticInstructionListForGeneration ioInstructionListForGeneration,
                         ?!@localVarManager ioVariableMap) {
   let usefulnessName = grammarNameForUsefulEntitiesGraph (!self.mGrammarComponentName)
-  [!?ioUsefulEntitiesGraph addEdge !from: inUsefulnessCallerEntityName !to: usefulnessName]
+  !?ioUsefulEntitiesGraph.addEdge (!from: inUsefulnessCallerEntityName !to: usefulnessName)
 //--- Search grammar in grammar map
   [inAnalysisContext.semanticContext.grammarMap searchKey
     !self.mGrammarComponentName
@@ -379,7 +379,7 @@ override proc @grammarInStringInstructionAST analyzeSemanticInstruction (
                         ?!@semanticInstructionListForGeneration ioInstructionListForGeneration,
                         ?!@localVarManager ioVariableMap) {
   let grammarUsefulnessName = grammarNameForUsefulEntitiesGraph (!self.mGrammarComponentName)
-  [!?ioUsefulEntitiesGraph addEdge !from: inUsefulnessCallerEntityName !to: grammarUsefulnessName]
+  !?ioUsefulEntitiesGraph.addEdge (!from: inUsefulnessCallerEntityName !to: grammarUsefulnessName)
 //--- Search grammar in grammar map
   [inAnalysisContext.semanticContext.grammarMap searchKey
     !self.mGrammarComponentName
@@ -527,7 +527,7 @@ override proc @grammarInStringInstructionAST analyzeSemanticInstruction (
       ioGeneratedCode += ", " + mValue
     end
     ioGeneratedCode += " " + self.mInstructionLocation.commaSourceFile + ") ;\n"
-    [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
+    !?ioUnusedVariableCppNameSet.removeKey (!compilerCppName ())
     for s in self.mAssignementList do
       ioGeneratedCode += s.mValue + "\n"
     end
@@ -605,7 +605,7 @@ override proc @grammarInStringInstructionAST analyzeSemanticInstruction (
       ioGeneratedCode += ", " + mValue
     end
     ioGeneratedCode += " " + self.mInstructionLocation.commaSourceFile + ") ;\n"
-    [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
+    !?ioUnusedVariableCppNameSet.removeKey (!compilerCppName ())
     for s in self.mAssignementList do
       ioGeneratedCode += s.mValue + "\n"
     end

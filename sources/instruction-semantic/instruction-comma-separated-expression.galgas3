@@ -147,7 +147,7 @@ syntax extension galgas4InstructionsSyntax {
 
 enum @ifExpressionKind {
   case regularExp (@semanticExpressionAST exp @location endOfExp)
-  case letVarExp (@lstring varName 
+  case letVarExp (@lstring varName
                   @bool isConstant
                   @semanticExpressionAST exp
                   @location endOfExp
@@ -168,7 +168,7 @@ list @CommaSeparatedExpressionList {
         [exp enterExpressionInSemanticContext !?ioTypeMap]
       case letVarExp (2* exp * @lstring typeName) :
         [exp enterExpressionInSemanticContext !?ioTypeMap]
-        [!?ioTypeMap makeEntry !typeName ?*]
+        !?ioTypeMap.makeEntry (!typeName ?*)
       end
     end
   }
@@ -201,8 +201,8 @@ list @CommaSeparatedExpressionList {
           ?let if_expression
         )
         outTestListForGeneration += !.regular {!exp: if_expression}
-        [!?ioVariableMap openOverrideForSelectBlock]
-        [!?ioVariableMap openBranch]
+        !?ioVariableMap.openOverrideForSelectBlock ()
+        !?ioVariableMap.openBranch ()
       case letVarExp (varName isConstant exp * @lstring typeName) :
         [exp analyzeSemanticExpression
           !usefulnessCallerEntityName: inUsefulnessCallerEntityName
@@ -216,28 +216,28 @@ list @CommaSeparatedExpressionList {
         var castType = @unifiedTypeMapEntry.null
         var testType = @unifiedTypeMapEntry.null
       //--- Check this is an optional
-        let unwrappedType = analyzedExpression.mResultType.definition.unwrappedType 
+        let unwrappedType = analyzedExpression.mResultType.definition.unwrappedType
         if not unwrappedType.isNull then
-          [!?ioVariableMap openOverrideForSelectBlock]
-          [!?ioVariableMap openBranch]
+          !?ioVariableMap.openOverrideForSelectBlock ()
+          !?ioVariableMap.openBranch ()
           let targetVariableCppName = "var_" + varName.string.identifierRepresentation
                 + "_" + varName.location.startLocationIndex
           if varName.string != "" then
             if isConstant then
-              [!?ioVariableMap insertInitializedLocalConstant
-                !varName
+              !?ioVariableMap.insertInitializedLocalConstant
+                (!varName
                 !unwrappedType
                 !targetVariableCppName
                 !targetVariableCppName
-              ]
+              )
             else
-              [!?ioVariableMap insertInitializedLocalVariable
-                !varName
+              !?ioVariableMap.insertInitializedLocalVariable
+                (!varName
                 !warnsIfNotMutated: true
                 !unwrappedType
                 !targetVariableCppName
                 !targetVariableCppName
-              ]
+              )
             end
           end
           castType = unwrappedType
@@ -271,26 +271,26 @@ list @CommaSeparatedExpressionList {
               )
             end
           end
-          [!?ioVariableMap openOverrideForSelectBlock]
-          [!?ioVariableMap openBranch]
+          !?ioVariableMap.openOverrideForSelectBlock ()
+          !?ioVariableMap.openBranch ()
           let targetVariableCppName = "var_" + varName.string.identifierRepresentation
                 + "_" + varName.location.startLocationIndex
           if varName.string != "" then
              if isConstant then
-              [!?ioVariableMap insertInitializedLocalConstant
-                !varName
+              !?ioVariableMap.insertInitializedLocalConstant
+                (!varName
                 !castType
                 !targetVariableCppName
                 !targetVariableCppName
-              ]
+              )
             else
-              [!?ioVariableMap insertInitializedLocalVariable
-                !varName
+              !?ioVariableMap.insertInitializedLocalVariable
+                (!varName
                 !warnsIfNotMutated: true
                 !castType
                 !targetVariableCppName
                 !targetVariableCppName
-              ]
+              )
             end
           end
           outTestListForGeneration += !.letVarExp {
@@ -330,26 +330,26 @@ list @CommaSeparatedExpressionList {
             + analyzedExpression.mResultType.definition.typeName.string + "' type"
             )
           end
-          [!?ioVariableMap openOverrideForSelectBlock]
-          [!?ioVariableMap openBranch]
+          !?ioVariableMap.openOverrideForSelectBlock ()
+          !?ioVariableMap.openBranch ()
           let targetVariableCppName = "var_" + varName.string.identifierRepresentation
                 + "_" + varName.location.startLocationIndex
           if varName.string != "" then
            if isConstant then
-              [!?ioVariableMap insertInitializedLocalConstant
-                !varName
+              !?ioVariableMap.insertInitializedLocalConstant
+                (!varName
                 !castType
                 !targetVariableCppName
                 !targetVariableCppName
-              ]
+              )
             else
-              [!?ioVariableMap insertInitializedLocalVariable
-                !varName
+              !?ioVariableMap.insertInitializedLocalVariable
+                (!varName
                 !warnsIfNotMutated: true
                 !castType
                 !targetVariableCppName
                 !targetVariableCppName
-              ]
+              )
             end
           end
           outTestListForGeneration += !.letVarExp {
@@ -397,7 +397,7 @@ list @ifTestListForGeneration {
   private let @ifTestForGeneration mExpression
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
- 
+
   proc generateInstruction (?!@stringset ioInclusionSet,
                               ?!@uint ioTemporaryVariableIndex,
                               ?!@stringset ioUnusedVariableCppNameSet,
@@ -409,7 +409,7 @@ list @ifTestListForGeneration {
     ioGeneratedCode += "GalgasBool " + outTestVar + " = GalgasBool::boolTrue ;\n"
     for (expression) in self do
       ioGeneratedCode += "if (GalgasBool::boolTrue == " + outTestVar + ") {\n"
-      [!?ioGeneratedCode incIndentation !2]
+      !?ioGeneratedCode.incIndentation (!2)
       switch expression
       case regular (exp) :
         [exp generateExpression
@@ -459,7 +459,7 @@ list @ifTestListForGeneration {
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
- 
+
 }
 
 //--------------------------------------------------------------------------------------------------

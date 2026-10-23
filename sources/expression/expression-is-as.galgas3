@@ -330,7 +330,7 @@ override proc @castInExpressionForGeneration generateExpression
   ioGeneratedCode += "GGS_" + self.mTypeName.identifierRepresentation
   + " " + outCppExpression + " ;\n"
   + "if (" + receiverExpression + ".isValid ()) {\n"
-  [!?ioGeneratedCode incIndentation !2]
+  !?ioGeneratedCode.incIndentation (!2)
 //---
   ioGeneratedCode +=
     "if (nullptr != dynamic_cast <const cPtr_"
@@ -339,16 +339,16 @@ override proc @castInExpressionForGeneration generateExpression
   + "  " + outCppExpression + " = (cPtr_" + self.mTypeName.identifierRepresentation + " *) "
   + receiverExpression + ".ptr () ;\n"
   + "}else{\n"
-  [!?ioGeneratedCode incIndentation !2]
+  !?ioGeneratedCode.incIndentation (!2)
   ioGeneratedCode +=
     compilerCppName () + "->castError (\""
   + self.mTypeName.identifierRepresentation
   + "\", " + receiverExpression + ".ptr ()->classDescriptor ()"
   + self.mLocation.commaSourceFile + ") ;\n"
-  [!?ioGeneratedCode decIndentation !2]
-  [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
+  !?ioGeneratedCode.decIndentation (!2)
+  !?ioUnusedVariableCppNameSet.removeKey (!compilerCppName ())
   ioGeneratedCode += "}\n"
-  [!?ioGeneratedCode decIndentation !2]
+  !?ioGeneratedCode.decIndentation (!2)
   ioGeneratedCode += "}\n"
 }
 
@@ -382,7 +382,7 @@ override proc @extractObjectInExpressionForGeneration generateExpression
   + "::extractObject (" + receiverExpression
   + ", " + compilerCppName ()
   + self.mLocation.commaSourceFile + ")"
-  [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
+  !?ioUnusedVariableCppNameSet.removeKey (!compilerCppName ())
 }
 
 //--------------------------------------------------------------------------------------------------

@@ -139,24 +139,24 @@ final class @abstractExtensionMethodAST : @semanticDeclarationAST {
       !"extension proc @" + self.mTypeName + " " + self.mAbstractExtensionMethodName
       !self.mAbstractExtensionMethodName.location
     }
-    [!?ioSemanticTypePrecedenceGraph addNode !key !self]
-    [!?ioSemanticTypePrecedenceGraph addEdge !from: key !to: @{!"@" + self.mTypeName !self.mTypeName.location}]
+    !?ioSemanticTypePrecedenceGraph.addNode (!key !self)
+    !?ioSemanticTypePrecedenceGraph.addEdge (!from: key !to: @{!"@" + self.mTypeName !self.mTypeName.location})
   //---
     if not [ioExtensionMethodMapForBuildingContext hasKey !self.mTypeName.string] then
-      [!?ioExtensionMethodMapForBuildingContext insertKey
-        !self.mTypeName
+      !?ioExtensionMethodMapForBuildingContext.insertKey
+        (!self.mTypeName
         !@()
-      ]
+      )
     end
     var entry = ioExtensionMethodMapForBuildingContext @[!searchKey: self.mTypeName]
-    [!?entry.mExtensionMethodMapForType insertKey
-      !self.mAbstractExtensionMethodName
+    !?entry.mExtensionMethodMapForType.insertKey
+      (!self.mAbstractExtensionMethodName
       !self.mAbstractExtensionMethodFormalParameterList
       !.isVirtualAbstract
-    ]
-    [!?ioExtensionMethodMapForBuildingContext replaceKey !with: entry]
+    )
+    !?ioExtensionMethodMapForBuildingContext.replaceKey (!with: entry)
 //    with %aliasOf ioExtensionMethodMapForBuildingContext [!searchKey: self.mTypeName] do
-//      [!?mExtensionMethodMapForType insertKey
+//      !?mExtensionMethodMapForType insertKey
 //        !self.mAbstractExtensionMethodName
 //        !self.mAbstractExtensionMethodFormalParameterList
 //        !.isVirtualAbstract
@@ -237,10 +237,10 @@ final class @abstractExtensionMethodAST : @semanticDeclarationAST {
     ?!@genericExtensionMethodListMap unused ioExtensionGetterListMap,
     ?!@genericExtensionMethodListMap unused ioOverridingExtensionGetterListMap,
     ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionGetterListMap) {
-    [!?ioAbstractExtensionMethodListMapAST insertKey
-      !self.mTypeName.string
+    !?ioAbstractExtensionMethodListMapAST.insertKey
+      (!self.mTypeName.string
       !self.mAbstractExtensionMethodName
-    ]
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

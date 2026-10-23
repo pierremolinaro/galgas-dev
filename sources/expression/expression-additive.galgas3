@@ -678,7 +678,7 @@ override proc @binaryOperatorExpressionForGeneration generateExpression
   outCppExpression += rightTemporaryOperand
   if hasCompilerOption then
     outCppExpression += ", " + compilerCppName ()
-    [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
+    !?ioUnusedVariableCppNameSet.removeKey (!compilerCppName ())
   end
   outCppExpression += self.mLocation.commaSourceFile + ")"
 }

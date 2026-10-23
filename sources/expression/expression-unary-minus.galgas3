@@ -141,7 +141,7 @@ override proc @unaryMinusExpressionForGeneration generateExpression (?!@string i
   ]
 //--- Generate Comparison
   outCppExpression = operand + ".operator_unary_minus (" + compilerCppName () + self.mLocation.commaSourceFile + ")"
-  [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
+  !?ioUnusedVariableCppNameSet.removeKey (!compilerCppName ())
 }
 
 //--------------------------------------------------------------------------------------------------

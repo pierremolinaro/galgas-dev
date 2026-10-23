@@ -130,7 +130,7 @@ override proc @messageInstructionForGeneration generateInstruction (?!@stringset
 //--- Invoke 'printMessage' proc of Compiler
   ioGeneratedCode += compilerCppName () + "->printMessage (" + messageCppVarName
   ioGeneratedCode += " " + self.mInstructionLocation.commaSourceFile + ") ;\n"
-  [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
+  !?ioUnusedVariableCppNameSet.removeKey (!compilerCppName ())
 }
 
 //--------------------------------------------------------------------------------------------------

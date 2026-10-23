@@ -467,7 +467,7 @@ private proc buildHeader
   ?!@string ioHeaderString ) {
 //---
   if not [ioHeaderRepartitionMap hasKey !inDeclarationName] then
-    [!?ioHeaderRepartitionMap insertKey !inDeclarationName.nowhere !inHeaderFileName]
+    !?ioHeaderRepartitionMap.insertKey (!inDeclarationName.nowhere !inHeaderFileName)
     if [inHeaderCompositionMap hasKey !inDeclarationName] then
       [inHeaderCompositionMap searchKey
         !inDeclarationName.nowhere
@@ -580,18 +580,18 @@ private proc generateFewImplementationFilesWithFewHeaders
       [declaration.mDeclaration appendDeclaration2 !inProductDirectory !?inclusionSet2 ?let @string headerString2]
       if declaration.mDeclaration.headerKind != .noHeader then
         let headerFileName = declaration.mDeclaration.getImplementationCppFileName + if declaration.mDeclaration.headerKind == .twoHeaders then "-1" else "" end
-        [!?headerCompositionMap insertKey
-          !headerFileName.nowhere
+        !?headerCompositionMap.insertKey
+          (!headerFileName.nowhere
           !inclusionSet1
           !headerString1
-        ]
+        )
       end
       if declaration.mDeclaration.headerKind == .twoHeaders then
-        [!?headerCompositionMap insertKey
-          !declaration.mDeclaration.getImplementationCppFileName.nowhere
+        !?headerCompositionMap.insertKey
+          (!declaration.mDeclaration.getImplementationCppFileName.nowhere
           !inclusionSet2 | @stringset @[declaration.mDeclaration.getImplementationCppFileName + "-1"]
           !headerString2
-        ]
+        )
       end
     end
   end

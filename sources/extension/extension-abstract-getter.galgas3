@@ -168,25 +168,25 @@ final class @abstractExtensionGetterAST : @semanticDeclarationAST {
       !"extension func @" + self.mTypeName + " " + self.mAbstractExtensionGetterName
       !self.mAbstractExtensionGetterName.location
     }
-    [!?ioSemanticTypePrecedenceGraph addNode !key !self]
-    [!?ioSemanticTypePrecedenceGraph addEdge !from: key !to: @{!"@" + self.mTypeName !self.mTypeName.location}]
+    !?ioSemanticTypePrecedenceGraph.addNode (!key !self)
+    !?ioSemanticTypePrecedenceGraph.addEdge (!from: key !to: @{!"@" + self.mTypeName !self.mTypeName.location})
   //---
     if not [ioExtensionGetterMapForBuildingContext hasKey !self.mTypeName.string] then
-      [!?ioExtensionGetterMapForBuildingContext insertKey
-        !self.mTypeName
+      !?ioExtensionGetterMapForBuildingContext.insertKey
+        (!self.mTypeName
         !@()
-      ]
+      )
     end
     var entry = ioExtensionGetterMapForBuildingContext @[!searchKey: self.mTypeName]
-    [!?entry.mExtensionGetterMapForType insertKey
-      !self.mAbstractExtensionGetterName
+    !?entry.mExtensionGetterMapForType.insertKey
+      (!self.mAbstractExtensionGetterName
       !self.mAbstractExtensionGetterReturnedTypeName
       !self.mAbstractExtensionGetterFormalInputParameterList
       !.isVirtualAbstract
-    ]
-    [!?ioExtensionGetterMapForBuildingContext replaceKey !with: entry]
+    )
+    !?ioExtensionGetterMapForBuildingContext.replaceKey (!with: entry)
 //   with %aliasOf ioExtensionGetterMapForBuildingContext [!searchKey: self.mTypeName] do
-//      [!?mExtensionGetterMapForType insertKey
+//      !?mExtensionGetterMapForType insertKey
 //        !self.mAbstractExtensionGetterName
 //        !self.mAbstractExtensionGetterReturnedTypeName
 //        !self.mAbstractExtensionGetterFormalInputParameterList
@@ -267,7 +267,7 @@ final class @abstractExtensionGetterAST : @semanticDeclarationAST {
     ?!@genericExtensionMethodListMap unused ioOverridingExtensionGetterListMap,
     ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionGetterListMap) {
   //  ioAbstractExtensionGetterListMap += !self.mTypeName.string !self.mAbstractExtensionGetterName
-    [!?ioAbstractExtensionGetterListMap insertKey !self.mTypeName.string !self.mAbstractExtensionGetterName]
+    !?ioAbstractExtensionGetterListMap.insertKey (!self.mTypeName.string !self.mAbstractExtensionGetterName)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

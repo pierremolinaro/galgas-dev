@@ -104,7 +104,7 @@ override proc @selfInExpressionForGeneration generateExpression
   outCppExpression = "temp_" + ioTemporaryVariableIndex.string
   ioTemporaryVariableIndex += 1
   ioGeneratedCode += "const GGS_" + self.mResultType.identifierRepresentation + " " + outCppExpression + " = " + self.mSelfCppName + " ;\n"
-  [!?ioUnusedVariableCppNameSet removeKey !self.mSelfCppName]
+  !?ioUnusedVariableCppNameSet.removeKey (!self.mSelfCppName)
 }
 
 //--------------------------------------------------------------------------------------------------

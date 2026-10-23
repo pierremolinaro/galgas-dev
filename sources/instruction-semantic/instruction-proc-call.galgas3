@@ -74,7 +74,7 @@ final class @procCallInstructionAST : @semanticInstructionAST {
      ]
   //--- Usefulness
     let usefulnessName = procedureNameForUsefulEntitiesGraph (!routineMangledName)
-    [!?ioUsefulEntitiesGraph addEdge !from: inUsefulnessCallerEntityName !to: usefulnessName]
+    !?ioUsefulEntitiesGraph.addEdge (!from: inUsefulnessCallerEntityName !to: usefulnessName)
   //--- Check internal
     if isFilePrivate then
       let procDeclarationLocation = [inAnalysisContext.semanticContext.routineMap locationForKey !self.mRoutineName.string]
@@ -144,7 +144,7 @@ final class @procCallInstructionForGeneration : @semanticInstructionForGeneratio
     for (mValue) in parameterCppNameList do
       ioGeneratedCode += mValue + ", "
     end
-    [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
+    !?ioUnusedVariableCppNameSet.removeKey (!compilerCppName ())
     ioGeneratedCode += compilerCppName () + " " + self.routineMangledName.location.commaSourceFile + ") ;\n"
     ioGeneratedCode += "}\n"
   //--- Generate poisoned variables

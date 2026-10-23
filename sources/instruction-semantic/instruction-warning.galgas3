@@ -163,7 +163,7 @@ override proc @warningInstructionForGeneration generateInstruction (?!@stringset
     ?let fixItArrayCppName
   ]
 //--- Generate warning instruction
-  [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
+  !?ioUnusedVariableCppNameSet.removeKey (!compilerCppName ())
   ioGeneratedCode += compilerCppName () + "->emitSemanticWarning ("
     + receiverCppVarName + ", "
     + messageCppVarName + ", "

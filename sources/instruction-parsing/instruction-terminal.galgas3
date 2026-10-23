@@ -156,7 +156,7 @@ final class @terminalCheckInstructionAST : @syntaxInstructionAST {
       terminalSymbolIndex = entry.mTerminalIndex
     else
       terminalSymbolIndex = ioActuallyUsedTerminalSymbolMap.count
-      [!?ioActuallyUsedTerminalSymbolMap insertKey !self.mTerminalName !terminalSymbolIndex]
+      !?ioActuallyUsedTerminalSymbolMap.insertKey (!self.mTerminalName !terminalSymbolIndex)
     end
     ioSyntaxInstructionList += !@terminalInstructionForGrammarAnalysis {
       !self.mInstructionLocation
@@ -261,12 +261,12 @@ final class @terminalInstructionForGrammarAnalysis : @abstractSyntaxInstructionF
                                                 ?!arrows:@string ioArrows,
                                                 ?!@uint unused ioMaxUsedRowIndex,
                                                 ?debug:let @bool unused inDebug) {
-    [!?ioRowList appendRow
-      !nodeDefinition:"[terminal] {" + escapeForTex (!self.mTerminalSymbolName) + "}"
+    !?ioRowList.appendRow
+      (!nodeDefinition:"[terminal] {" + escapeForTex (!self.mTerminalSymbolName) + "}"
       !row:inRow
       !column:ioColumn
       ?nodeName:let nodeName
-    ]
+    )
     ioArrows += "  \\draw[->] (" + ioCurrentNode + ") " + ioArrowShape + " (" + nodeName + ") ;\n"
     ioCurrentNode = nodeName
     ioArrowShape = "--"
@@ -380,7 +380,7 @@ override proc @terminalCheckInstructionForGeneration generateInstruction (?!@str
     !?ioGeneratedCode
   ]
 //--- Check terminal symbol
-  [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
+  !?ioUnusedVariableCppNameSet.removeKey (!compilerCppName ())
   ioGeneratedCode += compilerCppName () + "->acceptTerminal (Lexique_"
   ioGeneratedCode += self.mLexiqueIdentifier + "::kToken_" + self.mTerminalName.string.identifierRepresentation
   ioGeneratedCode += self.mInstructionLocation.commaSourceFile + ") ;\n"

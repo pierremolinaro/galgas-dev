@@ -167,7 +167,7 @@ override proc @typeMethodCallInstructionForGeneration generateInstruction (?!@st
     between ioGeneratedCode += ", "
   end
   if self.mHasCompilerArgument then
-    [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
+    !?ioUnusedVariableCppNameSet.removeKey (!compilerCppName ())
     if parameterCppNameList.count > 0 then
       ioGeneratedCode += ", "
     end

@@ -387,7 +387,7 @@ override proc @errorInstructionAST analyzeSemanticInstruction (
 //--- Handle dropped variables
   var builtVariableCppNameList = @stringlist ()
   for (mValue) in self.mBuiltVariableList do
-    [!?ioVariableMap searchForWriteAccess !mValue ?* ?let varCppName ?*]
+    !?ioVariableMap.searchForWriteAccess (!mValue ?* ?let varCppName ?*)
     builtVariableCppNameList += !varCppName
   end
 //--- Generate instruction
@@ -491,7 +491,7 @@ override proc @errorInstructionForGeneration generateInstruction (?!@stringset i
     ?let @string fixItArrayCppName
   ]
 //--- Generate error instruction
-  [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
+  !?ioUnusedVariableCppNameSet.removeKey (!compilerCppName ())
   ioGeneratedCode += compilerCppName () + "->emitSemanticError ("
     + receiverCppVarName + ", "
     + messageCppVarName + ", "
@@ -499,7 +499,7 @@ override proc @errorInstructionForGeneration generateInstruction (?!@stringset i
     + self.mInstructionLocation.commaSourceFile + ") ;\n"
 //--- Release dropped variables
   for (mValue) in self.mBuiltVariableCppNameList do
-    [!?ioUnusedVariableCppNameSet removeKey !mValue]
+    !?ioUnusedVariableCppNameSet.removeKey (!mValue)
     ioGeneratedCode += mValue + ".drop () ; // Release error dropped variable\n"
   end
 }

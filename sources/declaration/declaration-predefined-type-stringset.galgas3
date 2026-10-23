@@ -97,16 +97,16 @@ final class @stringsetPredefinedTypeAST : @predefinedTypeAST {
 
   override proc getSetterMap (?!@unifiedTypeMap ioUnifiedTypeMap,
                                !@setterMap outSetterMap ) {
-    [!?ioUnifiedTypeMap makeEntryFromString !"string" ?let stringType]
+    !?ioUnifiedTypeMap.makeEntryFromString (!"string" ?let stringType)
     outSetterMap = @()
-    [!?outSetterMap insertKey
-      !@lstring {!"removeKey" !@location.here}
+    !?outSetterMap.insertKey
+      (!@lstring {!"removeKey" !@location.here}
       !@methodKind. definedAsMember
       !@formalParameterSignature.listWithValue {!"".nowhere !stringType !.argumentVarIn !"inKey"}
       !false // No Compiler argument
       !@methodQualifier. isBasic
       !""
-    ]
+    )
     enterModifierWithInputArgument (
       !?outSetterMap
       !?ioUnifiedTypeMap
@@ -122,7 +122,7 @@ final class @stringsetPredefinedTypeAST : @predefinedTypeAST {
   override proc getEnumerationList (?!@unifiedTypeMap ioUnifiedTypeMap,
                                      !@enumerationDescriptorList outEnumerationList,
                                      !@string outEnumeratedType ) {
-    [!?ioUnifiedTypeMap makeEntryFromString !"string" ?let stringTypeIndex]
+    !?ioUnifiedTypeMap.makeEntryFromString (!"string" ?let stringTypeIndex)
     outEnumerationList = @()
     outEnumerationList += !stringTypeIndex !"key"
     outEnumeratedType = "string"
@@ -132,7 +132,7 @@ final class @stringsetPredefinedTypeAST : @predefinedTypeAST {
 
   override proc getAddAssignArgumentList (?!@unifiedTypeMap ioUnifiedTypeMap,
                                            !@functionSignature outAddAssignArgumentList ) {
-    [!?ioUnifiedTypeMap makeEntryFromString !"stringset" ?let @unifiedTypeMapEntry stringTypeIndex]
+    !?ioUnifiedTypeMap.makeEntryFromString (!"stringset" ?let @unifiedTypeMapEntry stringTypeIndex)
     outAddAssignArgumentList = @[@("".nowhere, stringTypeIndex, "inString", true)]
   }
 

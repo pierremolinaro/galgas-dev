@@ -212,12 +212,12 @@ final class @superMethodCallInstructionForGeneration : @semanticInstructionForGe
     end
     if parameterCppNameList.count == 0 then
       if self.mHasCompilerArgument then
-        [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
+        !?ioUnusedVariableCppNameSet.removeKey (!compilerCppName ())
         ioGeneratedCode += compilerCppName ()
         ioGeneratedCode += " COMMA_"
       end
     elsif self.mHasCompilerArgument then
-      [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
+      !?ioUnusedVariableCppNameSet.removeKey (!compilerCppName ())
       ioGeneratedCode += ", " + compilerCppName ()
       ioGeneratedCode += " COMMA_"
     else

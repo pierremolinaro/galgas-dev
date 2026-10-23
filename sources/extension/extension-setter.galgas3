@@ -174,23 +174,23 @@ override proc @extensionSetterAST enterDeclarationInGraph (
     !"extension setter @" + self.mTypeName + " " + self.mExtensionSetterName
     !self.mExtensionSetterName.location
   }
-  [!?ioSemanticTypePrecedenceGraph addNode !key !self]
-  [!?ioSemanticTypePrecedenceGraph addEdge !from: key !to: @{!"@" + self.mTypeName !self.mTypeName.location}]
+  !?ioSemanticTypePrecedenceGraph.addNode (!key !self)
+  !?ioSemanticTypePrecedenceGraph.addEdge (!from: key !to: @{!"@" + self.mTypeName !self.mTypeName.location})
 //---
   if not [ioExtensionSetterMapForBuildingContext hasKey !self.mTypeName.string] then
-    [!?ioExtensionSetterMapForBuildingContext insertKey
-      !self.mTypeName
+    !?ioExtensionSetterMapForBuildingContext.insertKey
+      (!self.mTypeName
       !@()
-    ]
+    )
   end
   var entry = ioExtensionSetterMapForBuildingContext @[!searchKey: self.mTypeName]
-  [!?entry.mExtensionSetterMapForType insertKey
-    !self.mExtensionSetterName
+  !?entry.mExtensionSetterMapForType.insertKey
+    (!self.mExtensionSetterName
     !self.mExtensionSetterFormalParameterList
-  ]
-  [!?ioExtensionSetterMapForBuildingContext replaceKey !with: entry]
+  )
+  !?ioExtensionSetterMapForBuildingContext.replaceKey (!with: entry)
 //  with %aliasOf ioExtensionSetterMapForBuildingContext [!searchKey: self.mTypeName] do
-//    [!?mExtensionSetterMapForType insertKey
+//    !?mExtensionSetterMapForType insertKey
 //      !self.mExtensionSetterName
 //      !self.mExtensionSetterFormalParameterList
 //    ]
@@ -225,9 +225,9 @@ override proc @extensionSetterAST semanticAnalysis (
   ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration) {
 //--- Useful entities graph
   let nameForUsefulness = setterNameForUsefulEntitiesGraph (!self.mTypeName !self.mExtensionSetterName)
-  [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
+  !?ioUsefulEntitiesGraph.addNode (!nameForUsefulness !nameForUsefulness)
   let typeNameForUsefulness = typeNameForUsefulEntitiesGraph (!self.mTypeName)
-  [!?ioUsefulEntitiesGraph addEdge !from: typeNameForUsefulness !to: nameForUsefulness]
+  !?ioUsefulEntitiesGraph.addEdge (!from: typeNameForUsefulness !to: nameForUsefulness)
 //--- Self type
   let @unifiedTypeMapEntry selfType = [ioTypeMap typeMapEntryForLKey !self.mTypeName]
   let @string selfObjectName
@@ -296,10 +296,10 @@ override proc @extensionSetterAST buildExtensionListMaps (
 //  ioExtensionSetterListMap +=
 //    !self.mTypeName.string
 //    !self.mExtensionSetterName
-  [!?ioExtensionSetterListMap insertKey
-    !self.mTypeName.string
+  !?ioExtensionSetterListMap.insertKey
+    (!self.mTypeName.string
     !self.mExtensionSetterName
-  ]
+  )
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -351,14 +351,14 @@ override proc @extensionSetterForGeneration appendSpecificImplementation (
   end
   if self.mImplementedAsFunction then
     var extensionSetterFormalParameterList = self.mExtensionSetterFormalParameterList
-    [!?extensionSetterFormalParameterList insertAtIndex
-      !"".nowhere
+    !?extensionSetterFormalParameterList.insertAtIndex
+      (!"".nowhere
       !@formalArgumentPassingModeAST. argumentInOut
       !self.mReceiverType
       !@lstring {!"self" !@location.here}
       !"ioObject"
       !0
-    ]
+    )
     ioInclusionSet ++= "setter-" + self.mReceiverType.definition.typeName.string.fileNameRepresentation + "-" + self.mExtensionSetterName.fileNameRepresentation
     generateProcedure (
       !static:false

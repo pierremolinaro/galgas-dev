@@ -116,11 +116,11 @@ final class @graphDeclarationAST : @semanticDeclarationAST {
     ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList
   ) {
     let key = @lstring ("@" + self.mGraphTypeName, self.mGraphTypeName.location)
-    [!?ioSemanticTypePrecedenceGraph addNode !key !self]
-    [!?ioSemanticTypePrecedenceGraph addEdge
-      !from: key
+    !?ioSemanticTypePrecedenceGraph.addNode (!key !self)
+    !?ioSemanticTypePrecedenceGraph.addEdge
+      (!from: key
       !to: @("@" + self.mAssociatedListTypeName, self.mAssociatedListTypeName.location)
-    ]
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -134,30 +134,30 @@ final class @graphDeclarationAST : @semanticDeclarationAST {
     ?!@unifiedTypeMap ioTypeMap,
     ?!@semanticContext ioSemanticContext ) {
   //--- string type Entry
-    [!?ioTypeMap makeEntryFromString
-      !"string"
+    !?ioTypeMap.makeEntryFromString
+      (!"string"
       ?let @unifiedTypeMapEntry stringTypeEntry
-    ]
+    )
   //--- lstring type Entry
-    [!?ioTypeMap makeEntryFromString
-      !"lstring"
+    !?ioTypeMap.makeEntryFromString
+      (!"lstring"
       ?let @unifiedTypeMapEntry lstringTypeEntry
-    ]
+    )
   //--- Graph type Entry
-    [!?ioTypeMap makeEntry
-      !self.mGraphTypeName
+    !?ioTypeMap.makeEntry
+      (!self.mGraphTypeName
       ?* // let @unifiedTypeMapEntry graphTypeEntry
-    ]
+    )
   //--- Associated list type Entry
-    [!?ioTypeMap makeEntry
-      !self.mAssociatedListTypeName
+    !?ioTypeMap.makeEntry
+      (!self.mAssociatedListTypeName
       ?let @unifiedTypeMapEntry associatedListTypeEntry
-    ]
+    )
   //--- @lstringlist type Entry
-    [!?ioTypeMap makeEntryFromString
-      !"lstringlist"
+    !?ioTypeMap.makeEntryFromString
+      (!"lstringlist"
       ?let @unifiedTypeMapEntry lstringListTypeEntry
-    ]
+    )
   //---
     commonGetterMapForAllTypes (!?ioTypeMap ?var @getterMap getterMap )
     var @setterMap setterMap = @()
@@ -184,24 +184,24 @@ final class @graphDeclarationAST : @semanticDeclarationAST {
       !lstringListTypeEntry
       !.argumentOut
       !"outUnsortedLKeyList"
-    [!?instanceMethodMap insertKey
-      !@("topologicalSort", .here)
+    !?instanceMethodMap.insertKey
+      (!@("topologicalSort", .here)
       !.definedAsMember
       !formalParameterList
       !.here
       !true // Has Compiler Argument
       !.isBasic
       !"" // No error message
-    ]
-    [!?instanceMethodMap insertKey
-      !@("depthFirstTopologicalSort", .here)
+    )
+    !?instanceMethodMap.insertKey
+      (!@("depthFirstTopologicalSort", .here)
       !.definedAsMember
       !formalParameterList
       !.here
       !true // Has Compiler Argument
       !.isBasic
       !"" // No error message
-    ]
+    )
   //--- Methods 'nodesWithNoSuccessor', 'nodesWithNoPredecessor'
     formalParameterList = @()
     formalParameterList +=
@@ -214,33 +214,33 @@ final class @graphDeclarationAST : @semanticDeclarationAST {
       !lstringListTypeEntry
       !.argumentOut
       !"outLKeyList"
-    [!?instanceMethodMap insertKey
-      !@("circularities", .here)
+    !?instanceMethodMap.insertKey
+      (!@("circularities", .here)
       !.definedAsMember
       !formalParameterList
       !.here
       !false // No Compiler Argument
       !.isBasic
       !"" // No error message
-    ]
-    [!?instanceMethodMap insertKey
-      !@("nodesWithNoSuccessor", .here)
+    )
+    !?instanceMethodMap.insertKey
+      (!@("nodesWithNoSuccessor", .here)
       !.definedAsMember
       !formalParameterList
       !.here
       !false // No Compiler Argument
       !.isBasic
       !"" // No error message
-    ]
-    [!?instanceMethodMap insertKey
-      !@("nodesWithNoPredecessor", .here)
+    )
+    !?instanceMethodMap.insertKey
+      (!@("nodesWithNoPredecessor", .here)
       !.definedAsMember
       !formalParameterList
       !.here
       !false // No Compiler Argument
       !.isBasic
       !"" // No error message
-    ]
+    )
   //--- Getter 'nodeList'
     enterBaseFinalGetterWithoutArgument (
       !?getterMap
@@ -381,47 +381,47 @@ final class @graphDeclarationAST : @semanticDeclarationAST {
         !formalArg.mFormalArgumentName
     end
     for (mInsertModifierName *) in self.mInsertModifierList do
-      [!?setterMap insertOrReplace
-        !mInsertModifierName
+      !?setterMap.insertOrReplace
+        (!mInsertModifierName
         !.definedAsMember
         !formalParameterList
         !true // has compiler argument
         !.isBasic
         !"" // No error message
-      ]
+      )
     end
   //--- setter 'removeEdgeToDominators'
-    [!?setterMap insertKey
-      !@("removeEdgesToDominators", .here)
+    !?setterMap.insertKey
+      (!@("removeEdgesToDominators", .here)
       !.definedAsMember
       !@()
       !false // No compiler argument
       !.isInherited
       !"" // No error message
-    ]
+    )
   //--- setter 'removeEdgesToNode'
     formalParameterList = @formalParameterSignature ()
     formalParameterList += !"".nowhere !stringTypeEntry !.argumentVarIn !"inNodeName"
-    [!?setterMap insertKey
-      !@("removeEdgesToNode", .here)
+    !?setterMap.insertKey
+      (!@("removeEdgesToNode", .here)
       !.definedAsMember
       !formalParameterList
       !true // Compiler argument
       !.isInherited
       !"" // No error message
-    ]
+    )
   //--- setter 'addEdge'
     formalParameterList = @formalParameterSignature ()
     formalParameterList += !"from".nowhere !lstringTypeEntry !.argumentVarIn !"inSourceNodeLKey"
     formalParameterList += !"to".nowhere !lstringTypeEntry !.argumentVarIn !"inTargetNodeLKey"
-    [!?setterMap insertKey
-      !"addEdge".here
+    !?setterMap.insertKey
+      (!"addEdge".here
       !.definedAsMember
       !formalParameterList
       !false // No compiler argument
       !.isInherited
       !"" // No error message
-    ]
+    )
   //--- setter 'noteNode'
     formalParameterList = @formalParameterSignature ()
     formalParameterList +=
@@ -429,21 +429,21 @@ final class @graphDeclarationAST : @semanticDeclarationAST {
        !lstringTypeEntry
        !.argumentVarIn
        !"inNodeLKey"
-    [!?setterMap insertKey
-      !@("noteNode", .here)
+    !?setterMap.insertKey
+      (!@("noteNode", .here)
       !.definedAsMember
       !formalParameterList
       !false // No compiler argument
       !.isInherited
       !"" // No error message
-    ]
+    )
   //--- Add initializer without argument
     var @initializerMap initializerMap = @()
     let @functionSignature constructorPropertyTypeList = @()
-    [!?initializerMap insertKey
-      !@(constructorPropertyTypeList.initializerSignature, self.mGraphTypeName)
+    !?initializerMap.insertKey
+      (!@(constructorPropertyTypeList.initializerSignature, self.mGraphTypeName)
       !constructorPropertyTypeList
-    ]
+    )
   //--- Add Extensions
     addExtensions (
       !inExtensionInitializerMapForBuildingContext
@@ -496,7 +496,7 @@ final class @graphDeclarationAST : @semanticDeclarationAST {
       !headerFileName: "graph-" + self.mGraphTypeName.string.fileNameRepresentation
       !headerKind: .oneHeader
     }
-    [!?ioTypeMap insertType !typeDefinition.typeName !typeDefinition]
+    !?ioTypeMap.insertType (!typeDefinition.typeName !typeDefinition)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -511,12 +511,12 @@ final class @graphDeclarationAST : @semanticDeclarationAST {
                     ) {
   //--- Useful entities graph
     let nameForUsefulness = typeNameForUsefulEntitiesGraph (!self.mGraphTypeName)
-    [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
+    !?ioUsefulEntitiesGraph.addNode (!nameForUsefulness !nameForUsefulness)
     if self.isPredefined  then
       ioUsefulnessRootEntities += !nameForUsefulness
     end
     let associatedTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!self.mAssociatedListTypeName)
-    [!?ioUsefulEntitiesGraph addEdge !from: nameForUsefulness !to: associatedTypeNameForUsefulness]
+    !?ioUsefulEntitiesGraph.addEdge (!from: nameForUsefulness !to: associatedTypeNameForUsefulness)
     if self.isPredefined  then
       ioUsefulnessRootEntities += !associatedTypeNameForUsefulness
     end
@@ -525,7 +525,7 @@ final class @graphDeclarationAST : @semanticDeclarationAST {
       !self.mGraphTypeName
       !@formalInputParameterListAST ().initializerSignature
     )
-    [!?ioUsefulEntitiesGraph addNode !initializerNameForUsefulness !initializerNameForUsefulness]
+    !?ioUsefulEntitiesGraph.addNode (!initializerNameForUsefulness !initializerNameForUsefulness)
     if self.isPredefined  then
       ioUsefulnessRootEntities += !initializerNameForUsefulness
     end

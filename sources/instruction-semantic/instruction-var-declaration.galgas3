@@ -158,13 +158,13 @@ override proc @localVariableDeclarationWithAssignmentAST analyzeSemanticInstruct
   ]
 //--- Check target variable
   let targetVariableCppName = "var_" + self.mVariableName.string.identifierRepresentation + "_" + self.mVariableName.location.startLocationIndex
-  [!?ioVariableMap insertInitializedLocalVariable
-    !self.mVariableName
+  !?ioVariableMap.insertInitializedLocalVariable
+    (!self.mVariableName
     !warnsIfNotMutated: true
     !expression.mResultType
     !targetVariableCppName
     !targetVariableCppName
-  ]
+  )
 //--- Generate instruction
   ioInstructionListForGeneration += !@localVariableOrConstantDeclarationWithSourceExpressionForGeneration {
     !expression.mResultType
@@ -179,7 +179,7 @@ override proc @localVariableDeclarationWithAssignmentAST analyzeSemanticInstruct
 //--------------------------------------------------------------------------------------------------
 
 override proc @localVariableDeclarationNoAssignmentAST enterInstructionInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
-  [!?ioTypeMap makeEntry !self.mTypeName ?*]
+  !?ioTypeMap.makeEntry (!self.mTypeName ?*)
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -195,12 +195,12 @@ override proc @localVariableDeclarationNoAssignmentAST analyzeSemanticInstructio
                         ?!@localVarManager ioVariableMap) {//--- Check target variable
   let targetType = [ioTypeMap typeMapEntryForLKey !self.mTypeName]
   let targetVariableCppName = "var_" + self.mVariableName.string.identifierRepresentation + "_" + self.mVariableName.location.startLocationIndex
-  [!?ioVariableMap insertDeclaredLocalVariable
-    !self.mVariableName
+  !?ioVariableMap.insertDeclaredLocalVariable
+    (!self.mVariableName
     !targetType
     !targetVariableCppName
     !targetVariableCppName
-  ]
+  )
 //--- Generate instruction
   ioInstructionListForGeneration += !@localVariableDeclarationForGeneration {
     !targetType

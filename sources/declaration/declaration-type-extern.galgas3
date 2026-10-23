@@ -366,7 +366,7 @@ final class @externTypeDeclarationAST : @semanticDeclarationAST {
     ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext,
     ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList ) {
     let key = @lstring {!"@" + self.mExternTypeName !self.mExternTypeName.location}
-    [!?ioSemanticTypePrecedenceGraph addNode !key !self]
+    !?ioSemanticTypePrecedenceGraph.addNode (!key !self)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -393,29 +393,29 @@ final class @externTypeDeclarationAST : @semanticDeclarationAST {
   //--- Initializers
     var @initializerMap initializerMap = @()
     for initializer in self.externTypeInitializerList do
-//      [!?ioTypeMap makeEntry !initializer.mResultTypeName ?let returnedTypeEntry]
+//      !?ioTypeMap makeEntry !initializer.mResultTypeName ?let returnedTypeEntry]
     //---
       var @functionSignature arguments = @()
       for parameter in initializer.mParameterList do
-        [!?ioTypeMap makeEntry !parameter.mFormalParameterTypeName ?let argumentTypeEntry]
+        !?ioTypeMap.makeEntry (!parameter.mFormalParameterTypeName ?let argumentTypeEntry)
         arguments += !parameter.mFormalSelector !argumentTypeEntry !parameter.mFormalParameterName.string !true
       end
     //---
       let initializerName = @lstring {!initializer.mParameterList.initializerSignature !self.mExternTypeName}
-      [!?initializerMap insertKey !initializerName !arguments]
+      !?initializerMap.insertKey (!initializerName !arguments)
     end
   //--- Getters
     for (mGetterName mResultTypeName mParameterList) in self.mExternTypeGetterList do
-      [!?ioTypeMap makeEntry !mResultTypeName ?let returnedTypeEntry]
+      !?ioTypeMap.makeEntry (!mResultTypeName ?let returnedTypeEntry)
     //---
       var @functionSignature arguments = @()
       for (mFormalSelector mFormalParameterTypeName mFormalParameterName) in mParameterList do
-        [!?ioTypeMap makeEntry !mFormalParameterTypeName ?let argumentTypeEntry]
+        !?ioTypeMap.makeEntry (!mFormalParameterTypeName ?let argumentTypeEntry)
         arguments += !mFormalSelector !argumentTypeEntry !mFormalParameterName.string !true
       end
     //---
-      [!?getterMap insertKey
-        !mGetterName
+      !?getterMap.insertKey
+        (!mGetterName
         !@methodKind.definedAsMember
         !arguments
         !@location.here
@@ -423,48 +423,48 @@ final class @externTypeDeclarationAST : @semanticDeclarationAST {
         !returnedTypeEntry
         !@methodQualifier.isBasicFinal
         !"" // func name is not obsolete, no replacement func
-      ]
+      )
     end
   //--- Modifiers
     for (mSetterName mFormalParameterList) in self.mExternTypeSetterList do
       var @formalParameterSignature routineSignature = @()
       for (mFormalSelector mFormalArgumentPassingMode mFormalArgumentTypeName mFormalArgumentName *) in mFormalParameterList do
-        [!?ioTypeMap makeEntry
-          !mFormalArgumentTypeName
+        !?ioTypeMap.makeEntry
+          (!mFormalArgumentTypeName
           ?let @unifiedTypeMapEntry parameterTypeIndex
-        ]
+        )
         routineSignature += !mFormalSelector !parameterTypeIndex !mFormalArgumentPassingMode !mFormalArgumentName.string
       end
     //---
-      [!?setterMap insertKey
-        !mSetterName
+      !?setterMap.insertKey
+        (!mSetterName
         !@methodKind.definedAsMember
         !routineSignature
         !true //inHasLexiqueAndLocationArguments
         !@methodQualifier.isBasicFinal
         !"" // No Error message
-      ]
+      )
     end
   //--- Methods
     for (mMethodName mFormalParameterList mDeclarationLocation) in self.mExternTypeMethodList do
       var routineSignature = @formalParameterSignature ()
       for (mFormalSelector mFormalArgumentPassingMode mFormalArgumentTypeName mFormalArgumentName *) in mFormalParameterList do
-        [!?ioTypeMap makeEntry
-          !mFormalArgumentTypeName
+        !?ioTypeMap.makeEntry
+          (!mFormalArgumentTypeName
           ?let parameterTypeIndex
-        ]
+        )
         routineSignature += !mFormalSelector !parameterTypeIndex !mFormalArgumentPassingMode !mFormalArgumentName.string
       end
     //---
-      [!?instanceMethodMap insertKey
-        !mMethodName
+      !?instanceMethodMap.insertKey
+        (!mMethodName
         !@methodKind.definedAsMember
         !routineSignature
         !mDeclarationLocation
         !true //inHasLexiqueAndLocationArguments
         !@methodQualifier.isBasicFinal
         !"" // No Error message
-      ]
+      )
     end
     var features = @typeFeatures ()
     handleEquatableComparableExtension (
@@ -502,7 +502,7 @@ final class @externTypeDeclarationAST : @semanticDeclarationAST {
       !headerFileName: "externtype-" + self.mExternTypeName.string.fileNameRepresentation
       !headerKind: .oneHeader
     }
-    [!?ioTypeMap insertType !typeDefinition.typeName !typeDefinition]
+    !?ioTypeMap.insertType (!typeDefinition.typeName !typeDefinition)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -524,7 +524,7 @@ override proc @externTypeDeclarationAST semanticAnalysis
 ) {
 //--- Useful entities graph
   let nameForUsefulness = typeNameForUsefulEntitiesGraph (!self.mExternTypeName)
-  [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
+  !?ioUsefulEntitiesGraph.addNode (!nameForUsefulness !nameForUsefulness)
   if self.isPredefined  then
     ioUsefulnessRootEntities += !nameForUsefulness
   end
@@ -534,8 +534,8 @@ override proc @externTypeDeclarationAST semanticAnalysis
       !self.mExternTypeName
       !initializer.mParameterList.initializerSignature
     )
-    [!?ioUsefulEntitiesGraph addNode !initializerNameForUsefulness !initializerNameForUsefulness]
-    [!?ioUsefulEntitiesGraph addEdge !from: initializerNameForUsefulness !to: nameForUsefulness]
+    !?ioUsefulEntitiesGraph.addNode (!initializerNameForUsefulness !initializerNameForUsefulness)
+    !?ioUsefulEntitiesGraph.addEdge (!from: initializerNameForUsefulness !to: nameForUsefulness)
   end
 //---
   ioSemanticDeclarationListForGeneration +=

@@ -60,7 +60,7 @@ syntax extension galgas3InstructionsSyntax {
     outConstantNameList = @()
     repeat
       $identifier$ ?let @lstring constantName
-      [!?outConstantNameList append !constantName]
+      !?outConstantNameList.append (!constantName)
     while
       $,$
     end
@@ -148,7 +148,7 @@ syntax extension galgas4InstructionsSyntax {
     outConstantNameList = @()
     repeat
       $identifier$ ?let @lstring constantName
-      [!?outConstantNameList append !constantName]
+      !?outConstantNameList.append (!constantName)
     while
       $,$
     end
@@ -253,10 +253,10 @@ final class @switchInstructionAST : @semanticInstructionAST {
     //--- Enum constant map
       var @stringset constantsNamedInSwitchInstruction = @()
     //--- Analyze branches
-      [!?ioVariableMap openOverrideForSelectBlock]
+      !?ioVariableMap.openOverrideForSelectBlock ()
       var @switchBranchesForGeneration switchBranchesForGeneration = @()
       for branch in self.mBranches do
-        [!?ioVariableMap openBranch]
+        !?ioVariableMap.openBranch ()
         var @extractedAssociatedValuesForGeneration extractedAssociatedValuesForGeneration = @()
         for constantName in branch.mSwitchConstantList do
           if [enumType.constantMap hasKey !constantName.string] then
@@ -300,19 +300,19 @@ final class @switchInstructionAST : @semanticInstructionAST {
                   !descriptor.name
                 if associatedValue.mExtractedValueName.string != "" then
                   if associatedValue.mMarkedAsUnused then
-                    [!?ioVariableMap insertUsedLocalConstant
-                      !associatedValue.mExtractedValueName
+                    !?ioVariableMap.insertUsedLocalConstant
+                      (!associatedValue.mExtractedValueName
                       !descriptor.type
                       !cppName
                       !cppName
-                    ]
+                    )
                   else
-                    [!?ioVariableMap insertInitializedLocalConstant
-                      !associatedValue.mExtractedValueName
+                    !?ioVariableMap.insertInitializedLocalConstant
+                      (!associatedValue.mExtractedValueName
                       !descriptor.type
                       !cppName
                       !cppName
-                    ]
+                    )
                   end
                 end
               end
@@ -336,14 +336,14 @@ final class @switchInstructionAST : @semanticInstructionAST {
           !?ioVariableMap
           ?let @semanticInstructionListForGeneration instructionList
         )
-        [!?ioVariableMap closeBranch !branch.mEndOfBranch]
+        !?ioVariableMap.closeBranch (!branch.mEndOfBranch)
         switchBranchesForGeneration +=
           !branch.mSwitchConstantList
           !extractedAssociatedValuesForGeneration
           !branch.mEndOfBranch.startLocationIndex
           !instructionList
       end
-      [!?ioVariableMap closeOverride !self.mEndOf_switch_instruction]
+      !?ioVariableMap.closeOverride (!self.mEndOf_switch_instruction)
     //--- Check all constants have been named
       let forgottenConstants = enumType.constantMap.keySet - constantsNamedInSwitchInstruction
       if forgottenConstants.count > 0 then
@@ -429,7 +429,7 @@ final class @switchInstructionForGeneration : @semanticInstructionForGeneration 
         ioGeneratedCode += constantName.string.identifierRepresentation
         ioGeneratedCode += ":\n"
       end
-      [!?ioGeneratedCode incIndentation !2]
+      !?ioGeneratedCode.incIndentation (!2)
       if branch.mInstructions.count > 0 then
         ioGeneratedCode += "{\n"
         if branch.mExtractedAssociatedValuesForGeneration.count > 0 then
@@ -457,7 +457,7 @@ final class @switchInstructionForGeneration : @semanticInstructionForGeneration 
         ioGeneratedCode += "}\n"
       end
       ioGeneratedCode += "break ;\n"
-      [!?ioGeneratedCode decIndentation !2]
+      !?ioGeneratedCode.decIndentation (!2)
     end
     ioGeneratedCode += "}\n"
   }

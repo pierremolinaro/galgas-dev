@@ -237,7 +237,7 @@ override proc @literalBigIntExpressionForGeneration generateExpression
                                                           ?!@stringset ioUnusedVariableCppNameSet,
                                                           !@string outCppExpression ) {
   outCppExpression = "GGS_bigint (\"" + self.mValue.string + "\", "
-  [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
+  !?ioUnusedVariableCppNameSet.removeKey (!compilerCppName ())
   outCppExpression += compilerCppName ()
   outCppExpression += " " + self.mLocation.commaSourceFile + ")"
 }

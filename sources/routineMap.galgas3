@@ -78,12 +78,12 @@ struct @routineMap {
     if [routineArgumentMap hasKey !routineArguments] then
       error (inRoutineName : "duplicated declaration of the " + inRoutineName + routineArguments + " routine")
     else
-     [!?routineArgumentMap insertKey
-       !@{!routineArguments !inRoutineName.location}
+     !?routineArgumentMap.insertKey
+       (!@{!routineArguments !inRoutineName.location}
        !inRoutineSignature
        !inIsFilePrivate
-     ]
-     [!?self.mInternalRoutineMap insertOrReplace !inRoutineName !routineArgumentMap]
+     )
+     !?self.mInternalRoutineMap.insertOrReplace (!inRoutineName !routineArgumentMap)
     end
   }
 

@@ -159,7 +159,7 @@ override proc @repeatInstruction analyzeSyntaxInstruction
   let @uint choiceIndex = ioSelectMethodCount
   ioSelectMethodCount += 1
 //--- Begin block
-  [!?ioVariableMap openOverrideForRepeatBlock]
+  !?ioVariableMap.openOverrideForRepeatBlock ()
 //--- Repeated instructions
   analyzeSyntaxInstructionList (
     !inUsefulnessCallerEntityName
@@ -201,7 +201,7 @@ override proc @repeatInstruction analyzeSyntaxInstruction
     listOfSemanticInstructionListForGeneration += !instructionList !mEndOf_instructions
   end
 //--- End block
-  [!?ioVariableMap closeOverride !self.mEndOf_repeat_instruction]
+  !?ioVariableMap.closeOverride (!self.mEndOf_repeat_instruction)
 //---
   ioInstructionListForGeneration += !@repeatInstructionForGeneration {
     !self.mInstructionLocation
@@ -306,7 +306,7 @@ override proc @repeatInstructionForGeneration generateInstruction (?!@stringset 
     !inGenerateSyntaxDirectedTranslationString
     !?ioGeneratedCode
   )
-  [!?ioGeneratedCode incIndentation !2]
+  !?ioGeneratedCode.incIndentation (!2)
   if self.mListOfSemanticInstructionListForGeneration.count == 1 then
     ioGeneratedCode += "if (select_" + self.mSyntaxComponentName.identifierRepresentation
     ioGeneratedCode += "_" + self.mChoiceIndex.string + " (" + compilerCppName () + ") == 2) {\n"
@@ -342,7 +342,7 @@ override proc @repeatInstructionForGeneration generateInstruction (?!@stringset 
     ioGeneratedCode += "  break ;\n"
     ioGeneratedCode += "}\n"
   end
-  [!?ioGeneratedCode decIndentation !2]
+  !?ioGeneratedCode.decIndentation (!2)
   ioGeneratedCode += "}\n"
 }
 

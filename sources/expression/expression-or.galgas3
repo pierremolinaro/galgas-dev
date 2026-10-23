@@ -488,7 +488,7 @@ override proc @orShortExpressionForGeneration generateExpression
   ioGeneratedCode += "GGS_bool " + testVar + " = " + leftTemporaryOperand + " ;\n"
   ioGeneratedCode += "if (GalgasBool::boolTrue != " + testVar + ".boolEnum ()) {\n"
 //--- Right operand
-  [!?ioGeneratedCode incIndentation !2]
+  !?ioGeneratedCode.incIndentation (!2)
   [self.mRightExpression generateExpression
     !?ioGeneratedCode
     !?ioInclusionSet
@@ -497,7 +497,7 @@ override proc @orShortExpressionForGeneration generateExpression
     ?let @string rightTemporaryOperand
   ]
   ioGeneratedCode += testVar + " = " + rightTemporaryOperand + " ;\n"
-  [!?ioGeneratedCode decIndentation !2]
+  !?ioGeneratedCode.decIndentation (!2)
   ioGeneratedCode += "}\n"
   outCppExpression = testVar
 }
@@ -560,7 +560,7 @@ override proc @openedSliceExpressionForGeneration generateExpression
     ?let rightTemporaryOperand
   ]
 //--- Generate Comparison
-  [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
+  !?ioUnusedVariableCppNameSet.removeKey (!compilerCppName ())
   outCppExpression =
    "GGS_range (" + leftTemporaryOperand + ", "
    +  rightTemporaryOperand + ".substract_operation (" + leftTemporaryOperand + ", " + compilerCppName ()

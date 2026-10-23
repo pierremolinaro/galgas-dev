@@ -69,12 +69,12 @@ final class @varInExpressionAST : @semanticExpressionAST {
         ?!@unifiedTypeMap unused ioTypeMap,
         ?!@localVarManager ioVariableMap,
         !@semanticExpressionForGeneration outExpression ) {
-    [!?ioVariableMap searchForReadAccess
-      !self.mVarName
+    !?ioVariableMap.searchForReadAccess
+      (!self.mVarName
       ?let @unifiedTypeMapEntry type
       ?let @string sourceVariableCppName
       ?let @string nameForCheckingFormalParameterUsing
-    ]
+    )
     outExpression = @varInExpressionForGeneration {
       !type
       !self.mVarName.location
@@ -105,7 +105,7 @@ final class @varInExpressionForGeneration : @semanticExpressionForGeneration {
                                       !@string outCppExpression ) {
     [self.mResultType addHeaderFileName !?ioInclusionSet]
     outCppExpression = self.mCppVarName
-    [!?ioUnusedVariableCppNameSet removeKey !self.mNameForCheckingFormalParameterUsing]
+    !?ioUnusedVariableCppNameSet.removeKey (!self.mNameForCheckingFormalParameterUsing)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

@@ -140,7 +140,7 @@ override proc @filewrapperObjectInstanciationInExpressionAST analyzeSemanticExpr
   !@semanticExpressionForGeneration outExpression
 ) {
   let usefulnessName = filewrapperNameForUsefulEntitiesGraph (!self.mFilewrapperName)
-  [!?ioUsefulEntitiesGraph addEdge !from: inUsefulnessCallerEntityName !to: usefulnessName]
+  !?ioUsefulEntitiesGraph.addEdge (!from: inUsefulnessCallerEntityName !to: usefulnessName)
 //--- Search for filewrapper name in filewrapper map
   [inAnalysisContext.semanticContext.mFilewrapperMap searchKey
     !self.mFilewrapperName
@@ -185,7 +185,7 @@ override proc @filewrapperTemplateInExpressionAST analyzeSemanticExpression
   !@semanticExpressionForGeneration outExpression
 ) {
   let usefulnessName = filewrapperTemplateNameForUsefulEntitiesGraph (!self.mFilewrapperName !self.mFilewrapperTemplateName)
-  [!?ioUsefulEntitiesGraph addEdge !from: inUsefulnessCallerEntityName !to: usefulnessName]
+  !?ioUsefulEntitiesGraph.addEdge (!from: inUsefulnessCallerEntityName !to: usefulnessName)
 //---
   [inAnalysisContext.semanticContext.mFilewrapperMap searchKey
      !self.mFilewrapperName
@@ -258,7 +258,7 @@ override proc @filewrapperInExpressionAST analyzeSemanticExpression
   !@semanticExpressionForGeneration outExpression
 ) {
   let usefulnessName = filewrapperNameForUsefulEntitiesGraph (!self.mFilewrapperName)
-  [!?ioUsefulEntitiesGraph addEdge !from: inUsefulnessCallerEntityName !to: usefulnessName]
+  !?ioUsefulEntitiesGraph.addEdge (!from: inUsefulnessCallerEntityName !to: usefulnessName)
 //--- Parse filewrapper path
   var @stringlist directoryList
   let @string fileName
@@ -268,7 +268,7 @@ override proc @filewrapperInExpressionAST analyzeSemanticExpression
     error (self.mFilewrapperPath : "the path should not begin with '/'" spoil directoryList, fileName)
   else
     directoryList = [self.mFilewrapperPath componentsSeparatedByString !"/"]
-    [!?directoryList popLast ?fileName]
+    !?directoryList.popLast (?fileName)
   end
 //--- Get filewrapper features
   [inAnalysisContext.semanticContext.mFilewrapperMap searchKey
@@ -291,7 +291,7 @@ override proc @filewrapperInExpressionAST analyzeSemanticExpression
   var @string builtPath = ""
   loop (filewrapperDirectoryMap.count + 1)
   while directoryList.count > 0 do
-    [!?directoryList popFirst ?let directoryName]
+    !?directoryList.popFirst (?let directoryName)
     builtPath += directoryName + "/"
     if [filewrapperDirectoryMap hasKey !directoryName] then
       [filewrapperDirectoryMap searchKey
@@ -381,7 +381,7 @@ override proc @filewrapperTemplateInExpressionForGeneration generateExpression
   for (mValue) in parameterList do
     outCppExpression += ", " + mValue
   end
-  [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
+  !?ioUnusedVariableCppNameSet.removeKey (!compilerCppName ())
   outCppExpression += self.mLocation.commaSourceFile + "))"
 }
 

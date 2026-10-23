@@ -513,12 +513,12 @@ override proc @enumeratedCollectionCstListInExpAST analyzeEnumeration (
     if self.mElementList.count == 0 then
       let currentTypedAttributeList = outEnumerationExpression.mResultType.definition.enumerationDescriptorList
       for (mEnumeratedType mEnumerationName) in currentTypedAttributeList do
-       [!?ioVariableMap insertUsedLocalConstant
-         !@lstring {!mEnumerationName !self.mEndOfEnumerationExpression}
+       !?ioVariableMap.insertUsedLocalConstant
+         (!@lstring {!mEnumerationName !self.mEndOfEnumerationExpression}
          !mEnumeratedType
          !outEnumeratorCppName +".current_" + mEnumerationName.identifierRepresentation + " (HERE)"
          !outEnumeratorCppName +".current_" + mEnumerationName.identifierRepresentation + " (HERE)"
-       ]
+       )
       end
     elsif self.mElementList.count != enumerationDescriptorList.count then
       error (self.mEndOfEnumerationExpression
@@ -602,10 +602,10 @@ override proc @forInstructionAST analyzeSemanticInstruction (
                         ?!@semanticInstructionListForGeneration ioInstructionListForGeneration,
                         ?!@localVarManager ioVariableMap) {
 //--- Begin override for foreach defined constants
-  [!?ioVariableMap openOverrideForSelectBlock]
-  [!?ioVariableMap openBranch]
+  !?ioVariableMap.openOverrideForSelectBlock ()
+  !?ioVariableMap.openBranch ()
 //--- 'before' branch
-  [!?ioVariableMap openOverrideForRepeatBlock]
+  !?ioVariableMap.openOverrideForRepeatBlock ()
   analyzeSemanticInstructionList (
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
@@ -619,9 +619,9 @@ override proc @forInstructionAST analyzeSemanticInstruction (
     !?ioVariableMap
     ?let before_instructionList
   )
-  [!?ioVariableMap closeOverride !self.mEndOf_before_branch]
+  !?ioVariableMap.closeOverride (!self.mEndOf_before_branch)
 //--- 'between' branch
-  [!?ioVariableMap openOverrideForRepeatBlock]
+  !?ioVariableMap.openOverrideForRepeatBlock ()
   analyzeSemanticInstructionList (
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
@@ -635,9 +635,9 @@ override proc @forInstructionAST analyzeSemanticInstruction (
     !?ioVariableMap
     ?let between_instructionList
   )
-  [!?ioVariableMap closeOverride !self.mEndOf_between_branch]
+  !?ioVariableMap.closeOverride (!self.mEndOf_between_branch)
 //--- 'after' branch
-  [!?ioVariableMap openOverrideForRepeatBlock]
+  !?ioVariableMap.openOverrideForRepeatBlock ()
   analyzeSemanticInstructionList (
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
@@ -651,7 +651,7 @@ override proc @forInstructionAST analyzeSemanticInstruction (
     !?ioVariableMap
     ?let @semanticInstructionListForGeneration after_instructionList
   )
-  [!?ioVariableMap closeOverride !self.mEndOf_after_branch]
+  !?ioVariableMap.closeOverride (!self.mEndOf_after_branch)
 //--- Analyze enumerated objects
   var @localConstantList localConstantListForDoBranch = @()
   var @forInstructionEnumeratedObjectListForGeneration enumerationList = @()
@@ -673,16 +673,16 @@ override proc @forInstructionAST analyzeSemanticInstruction (
       !enumeratorCppName
   end
 //--- While expression
-  [!?ioVariableMap openOverrideForRepeatBlock]
-  [!?ioVariableMap openBranch]
+  !?ioVariableMap.openOverrideForRepeatBlock ()
+  !?ioVariableMap.openBranch ()
 //--- Declare local constants
   for localConstant in localConstantListForDoBranch do
-   [!?ioVariableMap insertUsedLocalConstant
-     !localConstant.mName
+   !?ioVariableMap.insertUsedLocalConstant
+     (!localConstant.mName
      !localConstant.mType
      !localConstant.mCppName
      !localConstant.mCppName
-   ]
+   )
   end
 //---
   [self.mWhileExpression analyzeSemanticExpression
@@ -701,10 +701,10 @@ override proc @forInstructionAST analyzeSemanticInstruction (
     ?let @semanticExpressionForGeneration whileExpression
   )
 //---
-  [!?ioVariableMap closeBranch !self.mEndOf_while_expression]
-  [!?ioVariableMap closeOverride !self.mEndOf_while_expression]
+  !?ioVariableMap.closeBranch (!self.mEndOf_while_expression)
+  !?ioVariableMap.closeOverride (!self.mEndOf_while_expression)
 //--- Handle index
-  [!?ioVariableMap openOverrideForRepeatBlock]
+  !?ioVariableMap.openOverrideForRepeatBlock ()
   var @string indexCppName = ""
   if self.mIndexVariableName.string != "" then
     indexCppName = "index_" + self.mInstructionLocation.startLocationIndex
@@ -729,10 +729,10 @@ override proc @forInstructionAST analyzeSemanticInstruction (
     ?let do_instructionList
   )
 //--- End override
-  [!?ioVariableMap closeOverride !self.mEndOf_foreach_instruction]
+  !?ioVariableMap.closeOverride (!self.mEndOf_foreach_instruction)
 //--- End override for foreach defined constants
-  [!?ioVariableMap closeBranch !self.mEndOf_foreach_instruction]
-  [!?ioVariableMap closeOverride !self.mEndOf_foreach_instruction]
+  !?ioVariableMap.closeBranch (!self.mEndOf_foreach_instruction)
+  !?ioVariableMap.closeOverride (!self.mEndOf_foreach_instruction)
 //--- Generate instruction
   ioInstructionListForGeneration += !@forInstructionForGeneration {
     !self.mInstructionLocation
@@ -822,7 +822,7 @@ override proc @forInstructionForGeneration generateInstruction (?!@stringset ioI
       !inGenerateSyntaxDirectedTranslationString
       !?ioGeneratedCode
     )
-    [!?ioGeneratedCode incIndentation !2]
+    !?ioGeneratedCode.incIndentation (!2)
     ioGeneratedCode += "while ("
     for (* * mEnumeratorCppName) in self.mEnumeratedObjectList do
       ioGeneratedCode += mEnumeratorCppName + ".hasCurrentObject () && "
@@ -864,7 +864,7 @@ override proc @forInstructionForGeneration generateInstruction (?!@stringset ioI
     end
   //--- Generate 'between' instruction
     if self.mBetweenInstructionList.count > 0 then
-      [!?ioGeneratedCode incIndentation !2]
+      !?ioGeneratedCode.incIndentation (!2)
       ioGeneratedCode += "if ("
       for (* * mEnumeratorCppName) in self.mEnumeratedObjectList do
         ioGeneratedCode += mEnumeratorCppName + ".hasCurrentObject () && "
@@ -879,12 +879,12 @@ override proc @forInstructionForGeneration generateInstruction (?!@stringset ioI
         !?ioGeneratedCode
       )
       ioGeneratedCode += "}\n"
-      [!?ioGeneratedCode decIndentation !2]
+      !?ioGeneratedCode.decIndentation (!2)
     end
   //--- End of foreach instruction
     ioGeneratedCode += "}\n"
   //--- Generate 'after' instruction
-    [!?ioGeneratedCode decIndentation !2]
+    !?ioGeneratedCode.decIndentation (!2)
     generateInstructionList (
       !?ioInclusionSet
       !self.mAfterInstructionList
@@ -919,7 +919,7 @@ override proc @forInstructionForGeneration generateInstruction (?!@stringset ioI
     end
   //--- Generate 'between' instruction
     if self.mBetweenInstructionList.count > 0 then
-      [!?ioGeneratedCode incIndentation !2]
+      !?ioGeneratedCode.incIndentation (!2)
       ioGeneratedCode += "if ("
       for (* * mEnumeratorCppName) in self.mEnumeratedObjectList
         do ioGeneratedCode += mEnumeratorCppName + ".hasCurrentObject ()"
@@ -935,11 +935,11 @@ override proc @forInstructionForGeneration generateInstruction (?!@stringset ioI
         !?ioGeneratedCode
       )
       ioGeneratedCode += "}\n"
-      [!?ioGeneratedCode decIndentation !2]
+      !?ioGeneratedCode.decIndentation (!2)
     end
   //--- Advance index ?
     if self.mIndexVariableCppName != "" then
-      [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
+      !?ioUnusedVariableCppNameSet.removeKey (!compilerCppName ())
       ioGeneratedCode += "  " + self.mIndexVariableCppName + ".increment_operation (" + compilerCppName ()
       + " " + self.mInstructionLocation.commaSourceFile + ") ;\n"
     end

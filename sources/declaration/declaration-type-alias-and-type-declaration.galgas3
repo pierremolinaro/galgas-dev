@@ -157,8 +157,8 @@ syntax extension galgas3DeclarationsSyntax {
                               !@lstring outTypeName ) {
     <type_definition_ggs3> (!?ioDeclarations ?outTypeName)
     $?$
-    let unwrappedTypeName = outTypeName 
-    [!?ioDeclarations getOptionalTypeName ?outTypeName !forTypeNamed: unwrappedTypeName !isPredefined: false]
+    let unwrappedTypeName = outTypeName
+    !?ioDeclarations.getOptionalTypeName (?outTypeName !forTypeNamed: unwrappedTypeName !isPredefined: false)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -221,8 +221,8 @@ syntax extension galgas4DeclarationsSyntax {
     select
     or
       $?$
-      let unwrappedTypeName = outTypeName 
-      [!?ioDeclarations getOptionalTypeName ?outTypeName !forTypeNamed: unwrappedTypeName !isPredefined: false]
+      let unwrappedTypeName = outTypeName
+      !?ioDeclarations.getOptionalTypeName (?outTypeName !forTypeNamed: unwrappedTypeName !isPredefined: false)
     end
   }
 
@@ -232,7 +232,7 @@ syntax extension galgas4DeclarationsSyntax {
                                 !@lstring outTypeName ) {
     $@type$ ?outTypeName
   }
-  
+
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <simple_type_definition> (?!@galgasDeclarationAST ioDeclarations,
@@ -240,7 +240,7 @@ syntax extension galgas4DeclarationsSyntax {
     $[$
     <type_definition> (!?ioDeclarations ?outTypeName)
     select
-      let elementTypeName = outTypeName 
+      let elementTypeName = outTypeName
       outTypeName = makeArrayTypeLName (!elementTypeName)
       if not [ioDeclarations.implicitTypeDeclarationSet hasKey !outTypeName.string] then
         ioDeclarations.implicitTypeDeclarationSet ++= outTypeName.string

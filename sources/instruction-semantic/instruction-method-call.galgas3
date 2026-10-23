@@ -165,7 +165,7 @@ override proc @methodCallInstructionForGeneration generateInstruction (?!@string
                                      ?!@string ioGeneratedCode) {
 //--- Receiver expression
   [self.mReceiverExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?let @string receiverCppName]
-  [!?ioUnusedVariableCppNameSet removeKey !receiverCppName]
+  !?ioUnusedVariableCppNameSet.removeKey (!receiverCppName)
 //---
   var parameterCppNameList = @stringlist ()
   var jokerParametersToReleaseList = @stringlist ()
@@ -195,12 +195,12 @@ override proc @methodCallInstructionForGeneration generateInstruction (?!@string
   end
   if parameterCppNameList.count == 0 then
     if self.mHasCompilerArgument then
-      [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
+      !?ioUnusedVariableCppNameSet.removeKey (!compilerCppName ())
       ioGeneratedCode += compilerCppName ()
       ioGeneratedCode += " COMMA_"
     end
   elsif self.mHasCompilerArgument then
-    [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
+    !?ioUnusedVariableCppNameSet.removeKey (!compilerCppName ())
     ioGeneratedCode += ", " + compilerCppName ()
     ioGeneratedCode += " COMMA_"
   else

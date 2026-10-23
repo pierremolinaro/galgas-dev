@@ -221,11 +221,11 @@ override func @lexicalExplicitRuleAST generateLexicalRuleCode
   result = "if ("
   result += [self.mLexicalRuleExpression generateConditionCode !context:inLexiqueAnalysisContext]
   result += ") {\n"
-  [!?result incIndentation !2]
+  !?result.incIndentation (!2)
   for (instruction) in self.mInstructionList do
     result += [instruction generateLexicalInstructionCode !inScannerClassName !inLexiqueAnalysisContext]
   end
-  [!?result decIndentation !2]
+  !?result.decIndentation (!2)
   result += "}else "
 }
 

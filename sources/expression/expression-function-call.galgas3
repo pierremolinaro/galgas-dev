@@ -120,7 +120,7 @@ final class @functionCallExpressionAST : @semanticExpressionAST {
     !@semanticExpressionForGeneration outExpression
   ) {
     let usefulnessName = functionNameForUsefulEntitiesGraph (!self.mFunctionName)
-    [!?ioUsefulEntitiesGraph addEdge !from: inUsefulnessCallerEntityName !to: usefulnessName]
+    !?ioUsefulEntitiesGraph.addEdge (!from: inUsefulnessCallerEntityName !to: usefulnessName)
   //--- Retrieve function features
     [inAnalysisContext.semanticContext.mFunctionMap searchKey
       !self.mFunctionName
@@ -212,7 +212,7 @@ final class @functionCallExpressionForGeneration : @semanticExpressionForGenerat
     for (mValue) in parameterList
       do outCppExpression += mValue + ", "
     end
-    [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
+    !?ioUnusedVariableCppNameSet.removeKey (!compilerCppName ())
     outCppExpression += compilerCppName ()
     outCppExpression += self.mLocation.commaSourceFile + ")"
   }

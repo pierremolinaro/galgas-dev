@@ -65,7 +65,7 @@ syntax extension galgas4LexiqueComponentSyntax {
 override proc @lexicalTagInstructionAST checkLexicalInstruction (
   ?!@lexiqueAnalysisContext unused ioLexiqueAnalysisContext,
   ?!@lexicalTagMap ioTagMap) {
-  [!?ioTagMap insertKey !self.mLexicalTagName]
+  !?ioTagMap.insertKey (!self.mLexicalTagName)
 }
 
 //--------------------------------------------------------------------------------------------------

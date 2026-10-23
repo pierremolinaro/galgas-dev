@@ -205,7 +205,7 @@ override proc @lexicalSendTerminalByDefaultAST checkLexicalDefaultAction
 override proc @lexicalErrorByDefaultAST checkLexicalDefaultAction
   (?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
 ) {
-  [!?ioLexiqueAnalysisContext.mLexicalMessageMap setMMessageIsUsedForKey !true !self.mDefaultErrorMessageName.string]
+  !?ioLexiqueAnalysisContext.mLexicalMessageMap.setMMessageIsUsedForKey (!true !self.mDefaultErrorMessageName.string)
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -257,7 +257,7 @@ override proc @lexicalStringMatchAST checkLexicalExpression
 override proc @lexicalStringNotMatchAST checkLexicalExpression
   (?!@lexiqueAnalysisContext ioLexiqueAnalysisContext ) {
   ioLexiqueAnalysisContext.mUnicodeStringToGenerate ++= self.mString.string
-  [!?ioLexiqueAnalysisContext.mLexicalMessageMap setMMessageIsUsedForKey !true !self.mErrorMessage.string]
+  !?ioLexiqueAnalysisContext.mLexicalMessageMap.setMMessageIsUsedForKey (!true !self.mErrorMessage.string)
 }
 
 //--------------------------------------------------------------------------------------------------

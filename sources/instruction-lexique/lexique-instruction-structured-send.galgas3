@@ -109,7 +109,7 @@ override proc @lexicalStructuredSendInstructionAST checkLexicalInstruction (
                          ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext,
                          ?!@lexicalTagMap unused ioTagMap) {
   for (mAttributeName mSearchListName) in self.mLexicalSendSearchList do
-    [!?ioLexiqueAnalysisContext.mLexicalTokenListMap setMShouldBeGeneratedForKey !true !mSearchListName.string]
+    !?ioLexiqueAnalysisContext.mLexicalTokenListMap.setMShouldBeGeneratedForKey (!true !mSearchListName.string)
     [ioLexiqueAnalysisContext.mLexicalAttributeMap searchKey !mAttributeName ?*]
   end
   [self.mLexicalSendDefaultAction checkLexicalDefaultAction !?ioLexiqueAnalysisContext]

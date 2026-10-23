@@ -133,7 +133,7 @@ proc @productionRuleListForGrammarAnalysis.@element displayRule
     ]
   end
 //--- Add a final arrow
-  [!?rowArray appendRow !nodeDefinition:"[lastPoint] ()" !row:0 !column:column ?nodeName:let lastNodeName]
+  !?rowArray.appendRow (!nodeDefinition:"[lastPoint] ()" !row:0 !column:column ?nodeName:let lastNodeName)
   arrows += "  \\draw[->] (" + currentNode + ") -- (" + lastNodeName + ") ;\n"
 //--- Write tex file
   let loc = self.mLeftNonterminalSymbol.location
@@ -193,7 +193,7 @@ proc @productionRuleListForGrammarAnalysis.@element displayRuleVertically
     ]
   end
 //--- Add a final arrow
-  [!?rowArray appendRow !nodeDefinition:"[lastPoint] ()" !row:row !column:2 ?nodeName:let lastNodeName]
+  !?rowArray.appendRow (!nodeDefinition:"[lastPoint] ()" !row:row !column:2 ?nodeName:let lastNodeName)
   arrows += "  \\draw[->] (" + currentNode + ") -- (" + lastNodeName + ") ;\n"
 //--- Write tex file
   let loc = self.mLeftNonterminalSymbol.location
@@ -237,12 +237,12 @@ proc @syntaxInstructionListForGrammarAnalysis tikzNodeForSyntaxInstruction
   ?debug:let @bool inDebug
 ) {
   if self.count == 0 then
-    [!?ioRowList appendRow
-      !nodeDefinition:"[point] ()"
+    !?ioRowList.appendRow
+      (!nodeDefinition:"[point] ()"
       !row:inRow
       !column:ioColumn
       ?nodeName:let nodeName
-    ]
+    )
     ioArrows += "  \\draw (" + ioCurrentNode + ") " + ioArrowShape + " (" + nodeName + ") ;\n"
     ioCurrentNode = nodeName
     ioArrowShape = "--"
@@ -325,12 +325,12 @@ override proc @nonTerminalInstructionForGrammarAnalysis tikzNodeForSyntaxInstruc
 ) {
   let nodeDefinition = "[nonterminal] {\\nonTerminalSymbol{" + escapeForTex (!self.mNonterminalSymbolName)
     + "}{" + self.mNonterminalSymbolIndex + "}}"
-  [!?ioRowList appendRow
-    !nodeDefinition:nodeDefinition
+  !?ioRowList.appendRow
+    (!nodeDefinition:nodeDefinition
     !row:inRow
     !column:ioColumn
     ?nodeName:let nodeName
-  ]
+  )
   ioArrows += "  \\draw[->] (" + ioCurrentNode + ") " + ioArrowShape + " (" + nodeName + ") ;\n"
   ioCurrentNode = nodeName
   ioArrowShape = "--"
@@ -351,23 +351,23 @@ override proc @selectInstructionForGrammarAnalysis tikzNodeForSyntaxInstruction
 ) {
 //--- Trace ?
   if inDebug then
-    [!?ioRowList appendRow
-      !nodeDefinition:"[nonterminal] {SS" + self.mSelectBranchList.count + "}"
+    !?ioRowList.appendRow
+      (!nodeDefinition:"[nonterminal] {SS" + self.mSelectBranchList.count + "}"
       !row:inRow
       !column:ioColumn
       ?nodeName:let markerStartNodeName
-    ]
+    )
     ioArrows += "  \\draw[->] (" + ioCurrentNode + ") " + ioArrowShape + " (" + markerStartNodeName + ") ;\n"
     ioCurrentNode = markerStartNodeName
     ioArrowShape = "--"
     ioColumn += 1
   end
 //--- Enter start point
-  [!?ioRowList appendRow !nodeDefinition:"[point] ()" !row:inRow !column:ioColumn ?nodeName:let startNodeName]
+  !?ioRowList.appendRow (!nodeDefinition:"[point] ()" !row:inRow !column:ioColumn ?nodeName:let startNodeName)
   ioColumn += 1
 //--- Enter branch zero
   var branches = self.mSelectBranchList
-  [!?branches popFirst ?let @syntaxInstructionListForGrammarAnalysis brancheZero]
+  !?branches.popFirst (?let @syntaxInstructionListForGrammarAnalysis brancheZero)
   var branchZeroColumn = ioColumn
   var maxUsedRowIndex = inRow
   [brancheZero tikzNodeForSyntaxInstruction
@@ -408,7 +408,7 @@ override proc @selectInstructionForGrammarAnalysis tikzNodeForSyntaxInstruction
     ioMaxUsedRowIndex = maxUsedRowIndex
   end
 //--- Enter end point
-  [!?ioRowList appendRow !nodeDefinition:"[point] ()" !row:inRow !column:ioColumn ?nodeName:let endNodeName]
+  !?ioRowList.appendRow (!nodeDefinition:"[point] ()" !row:inRow !column:ioColumn ?nodeName:let endNodeName)
   ioColumn += 1
   ioArrowShape = "--"
   ioArrows += "  \\draw (" + ioCurrentNode + ") " + ioArrowShape + " (" + endNodeName + ") ;\n"
@@ -419,12 +419,12 @@ override proc @selectInstructionForGrammarAnalysis tikzNodeForSyntaxInstruction
   end
 //--- Trace ?
   if inDebug then
-    [!?ioRowList appendRow
-      !nodeDefinition:"[nonterminal] {SE" + self.mSelectBranchList.count + "}"
+    !?ioRowList.appendRow
+      (!nodeDefinition:"[nonterminal] {SE" + self.mSelectBranchList.count + "}"
       !row:inRow
       !column:ioColumn
       ?nodeName:let markerEndNodeName
-    ]
+    )
     ioColumn += 1
     ioArrows += "  \\draw[->] (" + ioCurrentNode + ") " + ioArrowShape + " (" + markerEndNodeName + ") ;\n"
     ioCurrentNode = markerEndNodeName
@@ -445,23 +445,23 @@ override proc @repeatInstructionForGrammarAnalysis tikzNodeForSyntaxInstruction
 ) {
 //--- Trace ?
   if inDebug then
-    [!?ioRowList appendRow
-      !nodeDefinition:"[nonterminal] {RS" + self.mRepeatBranchList.count + "}"
+    !?ioRowList.appendRow
+      (!nodeDefinition:"[nonterminal] {RS" + self.mRepeatBranchList.count + "}"
       !row:inRow
       !column:ioColumn
       ?nodeName:let markerStartNodeName
-    ]
+    )
     ioArrows += "  \\draw[->] (" + ioCurrentNode + ") " + ioArrowShape + " (" + markerStartNodeName + ") ;\n"
     ioCurrentNode = markerStartNodeName
     ioArrowShape = "--"
     ioColumn += 1
   end
 //--- Enter return point
-  [!?ioRowList appendRow !nodeDefinition:"[point] ()" !row:inRow !column:ioColumn ?nodeName:let returnNodeName]
+  !?ioRowList.appendRow (!nodeDefinition:"[point] ()" !row:inRow !column:ioColumn ?nodeName:let returnNodeName)
   ioColumn += 1
 //--- Enter branch zero
   var branches = self.mRepeatBranchList
-  [!?branches popFirst ?let @syntaxInstructionListForGrammarAnalysis brancheZero]
+  !?branches.popFirst (?let @syntaxInstructionListForGrammarAnalysis brancheZero)
   var maxUsedRowIndex = inRow
   [brancheZero tikzNodeForSyntaxInstruction
     !?ioRowList
@@ -475,7 +475,7 @@ override proc @repeatInstructionForGrammarAnalysis tikzNodeForSyntaxInstruction
   ]
   var endColumn = ioColumn
 //--- Enter start point
-  [!?ioRowList appendRow !nodeDefinition:"[point] ()" !row:inRow !column:ioColumn ?nodeName:let startNodeName]
+  !?ioRowList.appendRow (!nodeDefinition:"[point] ()" !row:inRow !column:ioColumn ?nodeName:let startNodeName)
   ioColumn += 1
 //--- Enter following branches; particular case: one empty branch
   var oneEmptyBranch = branches.count == 1
@@ -518,7 +518,7 @@ override proc @repeatInstructionForGrammarAnalysis tikzNodeForSyntaxInstruction
   end
   ioMaxUsedRowIndex += 1
 //--- Enter upper return node, and draw back arrow
-  [!?ioRowList appendRow !nodeDefinition:"[point] ()" !row:ioMaxUsedRowIndex !column:ioColumn ?nodeName:let returnUpperNodeName]
+  !?ioRowList.appendRow (!nodeDefinition:"[point] ()" !row:ioMaxUsedRowIndex !column:ioColumn ?nodeName:let returnUpperNodeName)
   ioColumn += 1
   ioArrows += "  \\draw[->] (" + returnUpperNodeName + ") -| (" + returnNodeName + ") ;\n"
 //--- Add ending arrows
@@ -527,12 +527,12 @@ override proc @repeatInstructionForGrammarAnalysis tikzNodeForSyntaxInstruction
   end
 //--- Trace ?
   if inDebug then
-    [!?ioRowList appendRow
-      !nodeDefinition:"[nonterminal] {RE" + self.mRepeatBranchList.count + "}"
+    !?ioRowList.appendRow
+      (!nodeDefinition:"[nonterminal] {RE" + self.mRepeatBranchList.count + "}"
       !row:inRow
       !column:ioColumn
       ?nodeName:let markerEndNodeName
-    ]
+    )
     ioColumn += 1
     ioArrows += "  \\draw[->] (" + ioCurrentNode + ") " + ioArrowShape + " (" + markerEndNodeName + ") ;\n"
     ioCurrentNode = markerEndNodeName

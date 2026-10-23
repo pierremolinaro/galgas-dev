@@ -125,7 +125,7 @@ override proc @boolsetDeclarationAST enterDeclarationInGraph
   ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList
 ) {
   let key = @lstring {!"@" + self.mBoolsetTypeName !self.mBoolsetTypeName.location}
-  [!?ioSemanticTypePrecedenceGraph addNode !key !self]
+  !?ioSemanticTypePrecedenceGraph.addNode (!key !self)
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -157,7 +157,7 @@ override proc @boolsetDeclarationAST enterDeclarationInSemanticContext
     slotNameSet ++= slotName
   end
 //--- boolset type index
-  [!?ioTypeMap makeEntry !self.mBoolsetTypeName ?let boolsetTypeIndex]
+  !?ioTypeMap.makeEntry (!self.mBoolsetTypeName ?let boolsetTypeIndex)
 //--- Getters
   commonGetterMapForAllTypes (!?ioTypeMap ?var @getterMap getterMap)
   enterBaseGetterWithArgument (
@@ -174,16 +174,16 @@ override proc @boolsetDeclarationAST enterDeclarationInSemanticContext
   var @classFunctionMap classFunctionMap = @()
   for (slotName) in self.mFlagList do
     if not [classFunctionMap hasKey !slotName] then
-      [!?classFunctionMap insertKey !slotName !@() !false !boolsetTypeIndex]
+      !?classFunctionMap.insertKey (!slotName !@() !false !boolsetTypeIndex)
     end
   end
 //--- Add initializer without argument
   var @initializerMap initializerMap = @()
   let @functionSignature emptyArgumentList = @()
-  [!?initializerMap insertKey
-    !@{!emptyArgumentList.initializerSignature !self.mBoolsetTypeName}
+  !?initializerMap.insertKey
+    (!@{!emptyArgumentList.initializerSignature !self.mBoolsetTypeName}
     !emptyArgumentList
-  ]
+  )
 //--- Add extensions
   var @setterMap setterMap = @()
   var @instanceMethodMap instanceMethodMap = @()
@@ -248,7 +248,7 @@ override proc @boolsetDeclarationAST enterDeclarationInSemanticContext
     !headerFileName: "boolset-" + self.mBoolsetTypeName.string.fileNameRepresentation
     !headerKind: .oneHeader
   }
-  [!?ioTypeMap insertType !typeDefinition.typeName !typeDefinition]
+  !?ioTypeMap.insertType (!typeDefinition.typeName !typeDefinition)
 }
 
 
@@ -272,7 +272,7 @@ override proc @boolsetDeclarationAST semanticAnalysis
   end
 //--- Useful entities graph
   let boolsetNameForUsefulness = typeNameForUsefulEntitiesGraph (!self.mBoolsetTypeName)
-  [!?ioUsefulEntitiesGraph addNode !boolsetNameForUsefulness !boolsetNameForUsefulness]
+  !?ioUsefulEntitiesGraph.addNode (!boolsetNameForUsefulness !boolsetNameForUsefulness)
   if self.isPredefined  then
     ioUsefulnessRootEntities += !boolsetNameForUsefulness
   end
@@ -281,7 +281,7 @@ override proc @boolsetDeclarationAST semanticAnalysis
     !self.mBoolsetTypeName
     !@formalInputParameterListAST ().initializerSignature
   )
-  [!?ioUsefulEntitiesGraph addNode !initializerNameForUsefulness !initializerNameForUsefulness]
+  !?ioUsefulEntitiesGraph.addNode (!initializerNameForUsefulness !initializerNameForUsefulness)
   if self.isPredefined  then
     ioUsefulnessRootEntities += !initializerNameForUsefulness
   end

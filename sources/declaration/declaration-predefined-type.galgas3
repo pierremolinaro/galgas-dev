@@ -56,7 +56,7 @@ abstract class @predefinedTypeAST : @semanticDeclarationAST {
        ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext,
        ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList ) {
     let key = @lstring {!"@" + self.mPredefinedTypeName !.nowhere}
-    [!?ioSemanticTypePrecedenceGraph addNode !key !self]
+    !?ioSemanticTypePrecedenceGraph.addNode (!key !self)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -80,13 +80,13 @@ abstract class @predefinedTypeAST : @semanticDeclarationAST {
       ?let @enumerationDescriptorList enumerationList
       ?let @string enumeratedTypeName
     ]
-    [!?ioTypeMap makeEntryFromString !self.mPredefinedTypeName ?*]
+    !?ioTypeMap.makeEntryFromString (!self.mPredefinedTypeName ?*)
   //--- Enumeration
     let @unifiedTypeMapEntry enumeratedTypeEntry
     if enumeratedTypeName == "" then
       enumeratedTypeEntry = @unifiedTypeMapEntry.null
     else
-      [!?ioTypeMap makeEntryFromString !enumeratedTypeName ?enumeratedTypeEntry]
+      !?ioTypeMap.makeEntryFromString (!enumeratedTypeName ?enumeratedTypeEntry)
     end
   //--- Add Extensions
     var @initializerMap initializerMap = @()
@@ -100,7 +100,7 @@ abstract class @predefinedTypeAST : @semanticDeclarationAST {
           mIsConstant
         )
       end
-      [!?initializerMap insertKey !@(initializer.initializerSignature, .nowhere) !formalParameterList]
+      !?initializerMap.insertKey (!@(initializer.initializerSignature, .nowhere) !formalParameterList)
     end
     addExtensions (
       !inExtensionInitializerMapForBuildingContext
@@ -145,7 +145,7 @@ abstract class @predefinedTypeAST : @semanticDeclarationAST {
       !headerFileName: "predefined-types"
       !headerKind: .twoHeaders
     }
-    [!?ioTypeMap insertType !typeDefinition.typeName !typeDefinition]
+    !?ioTypeMap.insertType (!typeDefinition.typeName !typeDefinition)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -161,7 +161,7 @@ abstract class @predefinedTypeAST : @semanticDeclarationAST {
    let selfType = [ioTypeMap typeMapEntryForLKey !@{!self.mPredefinedTypeName !.here}]
   //--- Useful entities graph
     let nameForUsefulness = typeNameForUsefulEntitiesGraph (!@{!self.mPredefinedTypeName !.here})
-    [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
+    !?ioUsefulEntitiesGraph.addNode (!nameForUsefulness !nameForUsefulness)
     ioUsefulnessRootEntities += !nameForUsefulness
   //--- Useful entities graph for initializer without any argument
     for initializer in selfType.definition.initializerMap do
@@ -169,7 +169,7 @@ abstract class @predefinedTypeAST : @semanticDeclarationAST {
         !@{!self.mPredefinedTypeName !.here}
         !initializer.mArgumentTypeList.initializerSignature
       )
-      [!?ioUsefulEntitiesGraph addNode !initializerNameForUsefulness !initializerNameForUsefulness]
+      !?ioUsefulEntitiesGraph.addNode (!initializerNameForUsefulness !initializerNameForUsefulness)
       ioUsefulnessRootEntities += !initializerNameForUsefulness
     end
   //---

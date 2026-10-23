@@ -179,7 +179,7 @@ override proc @loopInstructionWithVariantAST analyzeSemanticInstruction (
     )
    end
 //--- Begin override for analyze loop instruction list
-  [!?ioVariableMap openOverrideForRepeatBlock]
+  !?ioVariableMap.openOverrideForRepeatBlock ()
 //--- First branch
   analyzeSemanticInstructionList (
     !inUsefulnessCallerEntityName
@@ -209,7 +209,7 @@ override proc @loopInstructionWithVariantAST analyzeSemanticInstruction (
     ?let second_instructionList
   )
 //--- End override
-  [!?ioVariableMap closeOverride !self.mEndOfLoopInstruction]
+  !?ioVariableMap.closeOverride (!self.mEndOfLoopInstruction)
 //--- Generate instruction
   ioInstructionListForGeneration += ! @loopInstructionWithVariantForGeneration {
     !self.mInstructionLocation
@@ -247,13 +247,13 @@ override proc @loopInstructionWithVariantForGeneration generateInstruction (?!@s
     ?let @string variantCppVarName
   ]
   ioGeneratedCode += "if (" + variantCppVarName + ".isValid ()) {\n"
-  [!?ioGeneratedCode incIndentation !2]
+  !?ioGeneratedCode.incIndentation (!2)
   let @string variantVar = "variant_" + self.mInstructionLocation.startLocationIndex.string
   ioGeneratedCode += "uint32_t " + variantVar + " = " + variantCppVarName + ".uintValue () ;\n"
   let @string loopVar = "loop_" + self.mInstructionLocation.startLocationIndex.string
   ioGeneratedCode += "bool " + loopVar + " = true ;\n"
                   + "while (" + loopVar + ") {\n"
-  [!?ioGeneratedCode incIndentation !2]
+  !?ioGeneratedCode.incIndentation (!2)
   generateInstructionList (
     !?ioInclusionSet
     !self.mFirstInstructions
@@ -267,7 +267,7 @@ override proc @loopInstructionWithVariantForGeneration generateInstruction (?!@s
                    + "if (" + loopVar + ") {\n"
                    + "  " + loopVar + " = " + loopExpressionVar + ".boolValue () ;\n"
                    + "}\n"
-  [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
+  !?ioUnusedVariableCppNameSet.removeKey (!compilerCppName ())
   ioGeneratedCode += "if (" + loopVar + " && (0 == " + variantVar + ")) {\n"
                      "  " + loopVar + " = false ;\n"
                      "  " + compilerCppName () + "->loopRunTimeVariantError (" + self.mInstructionLocation.sourceFile + ") ;\n"
@@ -283,9 +283,9 @@ override proc @loopInstructionWithVariantForGeneration generateInstruction (?!@s
     !?ioGeneratedCode
   )
   ioGeneratedCode += "}\n"
-  [!?ioGeneratedCode decIndentation !2]
+  !?ioGeneratedCode.decIndentation (!2)
   ioGeneratedCode += "}\n"
-  [!?ioGeneratedCode decIndentation !2]
+  !?ioGeneratedCode.decIndentation (!2)
   ioGeneratedCode += "}\n"
 }
 

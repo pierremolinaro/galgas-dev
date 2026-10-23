@@ -424,10 +424,10 @@ private proc projectGeneration
     var @projectQualifiedFeatureMap projectQualifiedFeatureMap = @()
     for feature in inProjectComponentAST.mQualifiedFeatureList do
       if not [ignoredFeatureSet hasKey !feature.featureName.string] then
-        [!?projectQualifiedFeatureMap insertKey
-          !feature.featureName
+        !?projectQualifiedFeatureMap.insertKey
+          (!feature.featureName
           !feature.featureValue
-        ]
+        )
       end
     end
     updateGalgasTargets (

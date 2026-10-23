@@ -279,7 +279,7 @@ proc generateProcedure
 //--- Generate body
   var @uint temporaryVariableIndex = 0
   var routineBody = ""
-  [!?routineBody incIndentation !2]
+  !?routineBody.incIndentation (!2)
   for (mInstruction) in inInstructionList do
     [mInstruction generateInstruction
       !?ioInclusionSet
@@ -289,7 +289,7 @@ proc generateProcedure
       !?routineBody
     ]
   end
-  [!?routineBody decIndentation !2]
+  !?routineBody.decIndentation (!2)
 //--- Generate inclusions
   for (* * mFormalArgumentType * *) in inFormalArgumentList do
     [mFormalArgumentType addHeaderFileName !?ioInclusionSet]
@@ -319,7 +319,7 @@ proc generateProcedure
       outGeneratedCode += mFormalArgumentCppName
     end
     outGeneratedCode += ",\n"
-    [!?outGeneratedCode appendSpacesUntilColumn !colRef]
+    !?outGeneratedCode.appendSpacesUntilColumn (!colRef)
   end
 //--- Syntax directed argument ?
   if inGenerateSyntaxDirectedTranslationString then
@@ -328,7 +328,7 @@ proc generateProcedure
     else
       outGeneratedCode += "String & " + syntaxDirectedTranslationResultVarName () + ",\n"
     end
-    [!?outGeneratedCode appendSpacesUntilColumn !colRef]
+    !?outGeneratedCode.appendSpacesUntilColumn (!colRef)
   end
 //--- Compiler argument
   outGeneratedCode += inCompilerTypeName + " * "
@@ -339,7 +339,7 @@ proc generateProcedure
   end
   if inGenerateLocationArgs then
     outGeneratedCode += "\n"
-    [!?outGeneratedCode appendSpacesUntilColumn !colRef]
+    !?outGeneratedCode.appendSpacesUntilColumn (!colRef)
     outGeneratedCode += "COMMA_UNUSED_LOCATION_ARGS"
   end
   outGeneratedCode += ")"
@@ -394,7 +394,7 @@ proc generateFunction (?let @string inFunctionCppRepresentationName,
 //--- Generate body
   var @uint temporaryVariableIndex = 0
   var @string routineBody = ""
-  [!?routineBody incIndentation !2]
+  !?routineBody.incIndentation (!2)
   for (mInstruction) in inInstructionList do
     [mInstruction generateInstruction
       !?ioInclusionSet
@@ -404,7 +404,7 @@ proc generateFunction (?let @string inFunctionCppRepresentationName,
       !?routineBody
     ]
   end
-  [!?routineBody decIndentation !2]
+  !?routineBody.decIndentation (!2)
 //--- Generate header
   if inIsStatic then
     outGeneratedCode += "static "
@@ -425,7 +425,7 @@ proc generateFunction (?let @string inFunctionCppRepresentationName,
       outGeneratedCode += " " + mFormalArgumentCppName
     end
     outGeneratedCode += ",\n"
-    [!?outGeneratedCode appendSpacesUntilColumn !colRef]
+    !?outGeneratedCode.appendSpacesUntilColumn (!colRef)
   end
 //--- Compiler argument
   outGeneratedCode += inCompilerTypeName + " *"
@@ -435,7 +435,7 @@ proc generateFunction (?let @string inFunctionCppRepresentationName,
     outGeneratedCode += " " + compilerCppName ()
   end
   outGeneratedCode += "\n"
-  [!?outGeneratedCode appendSpacesUntilColumn !colRef]
+  !?outGeneratedCode.appendSpacesUntilColumn (!colRef)
   outGeneratedCode += "COMMA_UNUSED_LOCATION_ARGS)"
   if inIsConst then
     outGeneratedCode += " const"
@@ -476,7 +476,7 @@ proc generateExtensionGetter (?let @string inFunctionCppRepresentationName,
 //--- Generate body
   var @uint temporaryVariableIndex = 0
   var @string routineBody = ""
-  [!?routineBody incIndentation !2]
+  !?routineBody.incIndentation (!2)
   for (mInstruction) in inInstructionList do
     [mInstruction generateInstruction
       !?ioInclusionSet
@@ -486,7 +486,7 @@ proc generateExtensionGetter (?let @string inFunctionCppRepresentationName,
       !?routineBody
     ]
   end
-  [!?routineBody decIndentation !2]
+  !?routineBody.decIndentation (!2)
 //--- Generate header
   outGeneratedCode += "GGS_" + inResultType.identifierRepresentation + " "
   outGeneratedCode += inFunctionCppRepresentationName + " ("
@@ -504,7 +504,7 @@ proc generateExtensionGetter (?let @string inFunctionCppRepresentationName,
       outGeneratedCode += " " + mFormalArgumentCppName
     end
     outGeneratedCode += ",\n"
-    [!?outGeneratedCode appendSpacesUntilColumn !colRef]
+    !?outGeneratedCode.appendSpacesUntilColumn (!colRef)
   end
 //--- Compiler argument
   outGeneratedCode += inCompilerTypeName + " *"
@@ -514,7 +514,7 @@ proc generateExtensionGetter (?let @string inFunctionCppRepresentationName,
     outGeneratedCode += " " + compilerCppName ()
   end
   outGeneratedCode += "\n"
-  [!?outGeneratedCode appendSpacesUntilColumn !colRef]
+  !?outGeneratedCode.appendSpacesUntilColumn (!colRef)
   outGeneratedCode += "COMMA_UNUSED_LOCATION_ARGS) const {\n"
 //--- Declare returned variable
   outGeneratedCode += "  GGS_" + inResultType.identifierRepresentation
@@ -552,7 +552,7 @@ proc generateExtensionSetter
 //--- Generate body
   var @uint temporaryVariableIndex = 0
   var routineBody = ""
-  [!?routineBody incIndentation !2]
+  !?routineBody.incIndentation (!2)
   for (mInstruction) in inInstructionList do
     [mInstruction generateInstruction
       !?ioInclusionSet
@@ -562,7 +562,7 @@ proc generateExtensionSetter
       !?routineBody
     ]
   end
-  [!?routineBody decIndentation !2]
+  !?routineBody.decIndentation (!2)
 //--- Generate header
   outGeneratedCode = "static void extensionSetter_" + inClassName.identifierRepresentation + "_" + inMethodName.identifierRepresentation + " ("
   let @uint colRef = outGeneratedCode.currentColumn
@@ -580,7 +580,7 @@ proc generateExtensionSetter
 //---
   for (* mFormalArgumentPassingMode mFormalArgumentType * mFormalArgumentCppName) in inFormalArgumentList do
     outGeneratedCode += ",\n"
-    [!?outGeneratedCode appendSpacesUntilColumn !colRef]
+    !?outGeneratedCode.appendSpacesUntilColumn (!colRef)
     switch mFormalArgumentPassingMode
     case argumentConstantIn :
       outGeneratedCode += "const GGS_" + mFormalArgumentType.identifierRepresentation + " "
@@ -599,7 +599,7 @@ proc generateExtensionSetter
   end
 //--- Compiler argument
   outGeneratedCode += ",\n"
-  [!?outGeneratedCode appendSpacesUntilColumn !colRef]
+  !?outGeneratedCode.appendSpacesUntilColumn (!colRef)
   outGeneratedCode += "Compiler * "
   if [unusedVariableCppNameSet hasKey !compilerCppName ()] then
     outGeneratedCode += "/* " + compilerCppName () + " */"
@@ -607,7 +607,7 @@ proc generateExtensionSetter
     outGeneratedCode += compilerCppName ()
   end
   outGeneratedCode += "\n"
-  [!?outGeneratedCode appendSpacesUntilColumn !colRef]
+  !?outGeneratedCode.appendSpacesUntilColumn (!colRef)
   outGeneratedCode += "COMMA_UNUSED_LOCATION_ARGS"
   outGeneratedCode += ") {\n"
 //--- Generate routine body
@@ -645,7 +645,7 @@ proc generateExtensionMethodNew (?let @unifiedTypeMapEntry inReceiverType,
 //--- Generate body
   var @uint temporaryVariableIndex = 0
   var @string routineBody = ""
-  [!?routineBody incIndentation !2]
+  !?routineBody.incIndentation (!2)
   for (mInstruction) in inInstructionList do
     [mInstruction generateInstruction
       !?ioInclusionSet
@@ -655,7 +655,7 @@ proc generateExtensionMethodNew (?let @unifiedTypeMapEntry inReceiverType,
       !?routineBody
     ]
   end
-  [!?routineBody decIndentation !2]
+  !?routineBody.decIndentation (!2)
 //--- Generate inclusions
   var @unifiedTypeMapEntry baseType = inReceiverType
   var @bool searching = true
@@ -696,7 +696,7 @@ proc generateExtensionMethodNew (?let @unifiedTypeMapEntry inReceiverType,
       outGeneratedCode += mFormalArgumentCppName
     end
     outGeneratedCode += ",\n"
-    [!?outGeneratedCode appendSpacesUntilColumn !colRef]
+    !?outGeneratedCode.appendSpacesUntilColumn (!colRef)
   end
 //--- Compiler argument
   outGeneratedCode += "Compiler * "
@@ -706,7 +706,7 @@ proc generateExtensionMethodNew (?let @unifiedTypeMapEntry inReceiverType,
     outGeneratedCode += compilerCppName ()
   end
   outGeneratedCode += "\n"
-  [!?outGeneratedCode appendSpacesUntilColumn !colRef]
+  !?outGeneratedCode.appendSpacesUntilColumn (!colRef)
   outGeneratedCode += "COMMA_UNUSED_LOCATION_ARGS"
   outGeneratedCode += ") {\n"
 //--- Generate routine body
@@ -1248,7 +1248,7 @@ proc generateWrapperContents
       ioImplementation += " = "
       if contents.count > 100 then
         var components = [contents componentsSeparatedByString !"\n"]
-        [!?components popLast ?let lastLine]
+        !?components.popLast (?let lastLine)
         for (str) in components
         before
           ioImplementation += "\n  "

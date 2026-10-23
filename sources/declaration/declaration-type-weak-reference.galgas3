@@ -46,12 +46,12 @@ override proc @weakReferenceDeclarationAST enterDeclarationInGraph
   ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList
 ) {
   let key = @lstring {!"@" + self.mWeakReferenceTypeName !self.mWeakReferenceTypeName.location}
-  [!?ioSemanticTypePrecedenceGraph addNode !key !self]
+  !?ioSemanticTypePrecedenceGraph.addNode (!key !self)
   if self.mSuperWeakReferenceTypeName.string != "" then
-    [!?ioSemanticTypePrecedenceGraph addEdge
-      !from: key
+    !?ioSemanticTypePrecedenceGraph.addEdge
+      (!from: key
       !to: @{!"@" + self.mSuperWeakReferenceTypeName !self.mSuperWeakReferenceTypeName.location}
-    ]
+    )
   end
 }
 
@@ -74,23 +74,23 @@ override proc @weakReferenceDeclarationAST enterDeclarationInSemanticContext
     superClassIndex = @unifiedTypeMapEntry.null
     generateHeaderInSeparateFile = self.mGenerateInSeparateFile
   else
-    [!?ioTypeMap makeEntry !self.mSuperWeakReferenceTypeName ?superClassIndex]
+    !?ioTypeMap.makeEntry (!self.mSuperWeakReferenceTypeName ?superClassIndex)
     let superTypeDefinition = [ioTypeMap typeDefinition !self.mSuperWeakReferenceTypeName]
     generateHeaderInSeparateFile = superTypeDefinition.generateHeaderInSeparateFile
   end
 //--- Current class Index
-  [!?ioTypeMap makeEntry
-     !self.mWeakReferenceTypeName
+  !?ioTypeMap.makeEntry
+     (!self.mWeakReferenceTypeName
      ?let @unifiedTypeMapEntry weakReferenceIndex
-  ]
+  )
 //--- Class functions
   var @classFunctionMap classFunctionMap = @()
-  [!?classFunctionMap insertKey
-    !@lstring {!"nil" !self.mWeakReferenceTypeName.location}
+  !?classFunctionMap.insertKey
+    (!@lstring {!"nil" !self.mWeakReferenceTypeName.location}
     !@()
     !false
     !weakReferenceIndex
-  ]
+  )
 //--- Add Extensions
   var @getterMap getterMap = @()
   var @setterMap setterMap = @()
@@ -129,7 +129,7 @@ override proc @weakReferenceDeclarationAST enterDeclarationInSemanticContext
     !acceptComparable: false
   )
 //--- Enter in type map
-  [!?ioTypeMap makeEntry !self.mClassTypeName ?let classIndex]
+  !?ioTypeMap.makeEntry (!self.mClassTypeName ?let classIndex)
   let typeDefinition = @unifiedTypeDefinition {
     !typeName: self.mWeakReferenceTypeName
     !isPredefined: self.isPredefined
@@ -157,7 +157,7 @@ override proc @weakReferenceDeclarationAST enterDeclarationInSemanticContext
     !headerFileName: "weak-reference-" + self.mWeakReferenceTypeName.string.fileNameRepresentation
     !headerKind: .oneHeader
   }
-  [!?ioTypeMap insertType !typeDefinition.typeName !typeDefinition]
+  !?ioTypeMap.insertType (!typeDefinition.typeName !typeDefinition)
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -175,10 +175,10 @@ override proc @weakReferenceDeclarationAST semanticAnalysis
 ) {
 //--- Useful entities graph
   let weakRefTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!self.mWeakReferenceTypeName)
-  [!?ioUsefulEntitiesGraph addNode !weakRefTypeNameForUsefulness !weakRefTypeNameForUsefulness]
+  !?ioUsefulEntitiesGraph.addNode (!weakRefTypeNameForUsefulness !weakRefTypeNameForUsefulness)
   if self.mSuperWeakReferenceTypeName.string != "" then
     let superWeakRefNameForUsefulness = typeNameForUsefulEntitiesGraph (!self.mSuperWeakReferenceTypeName)
-    [!?ioUsefulEntitiesGraph addEdge !from: weakRefTypeNameForUsefulness !to: superWeakRefNameForUsefulness]
+    !?ioUsefulEntitiesGraph.addEdge (!from: weakRefTypeNameForUsefulness !to: superWeakRefNameForUsefulness)
   end
 //----- Self type
   let @unifiedTypeMapEntry selfType = [ioTypeMap typeMapEntryForLKey !self.mWeakReferenceTypeName]

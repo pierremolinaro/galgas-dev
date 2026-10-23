@@ -219,21 +219,21 @@ override proc @overridingExtensionGetterAST enterDeclarationInGraph (
   ioExtensionOverrideDefinitionList += !self
 //---
   if not [ioExtensionGetterMapForBuildingContext hasKey !self.mTypeName.string] then
-    [!?ioExtensionGetterMapForBuildingContext insertKey
-      !self.mTypeName
+    !?ioExtensionGetterMapForBuildingContext.insertKey
+      (!self.mTypeName
       !@()
-    ]
+    )
   end
   var entry = ioExtensionGetterMapForBuildingContext @[!searchKey: self.mTypeName]
-  [!?entry.mExtensionGetterMapForType insertKey
-    !self.mOverridingExtensionGetterName
+  !?entry.mExtensionGetterMapForType.insertKey
+    (!self.mOverridingExtensionGetterName
     !self.mOverridingExtensionGetterReturnedTypeName
     !self.mOverridingExtensionGetterFormalInputParameterList
     !.isVirtualOverriding
-  ]
-  [!?ioExtensionGetterMapForBuildingContext replaceKey !with: entry]
+  )
+  !?ioExtensionGetterMapForBuildingContext.replaceKey (!with: entry)
 //  with %aliasOf ioExtensionGetterMapForBuildingContext [!searchKey: self.mTypeName] do
-//    [!?mExtensionGetterMapForType insertKey
+//    !?mExtensionGetterMapForType insertKey
 //      !self.mOverridingExtensionGetterName
 //      !self.mOverridingExtensionGetterReturnedTypeName
 //      !self.mOverridingExtensionGetterFormalInputParameterList
@@ -278,9 +278,9 @@ override proc @overridingExtensionGetterAST semanticAnalysis (
   ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration) {
 //--- Useful entities graph
   let nameForUsefulness = getterNameForUsefulEntitiesGraph (!self.mTypeName !self.mOverridingExtensionGetterName)
-  [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
+  !?ioUsefulEntitiesGraph.addNode (!nameForUsefulness !nameForUsefulness)
   let typeNameForUsefulness = typeNameForUsefulEntitiesGraph (!self.mTypeName)
-  [!?ioUsefulEntitiesGraph addEdge !from: typeNameForUsefulness !to: nameForUsefulness]
+  !?ioUsefulEntitiesGraph.addEdge (!from: typeNameForUsefulness !to: nameForUsefulness)
 //--- Self type
   let @unifiedTypeMapEntry selfType = [ioTypeMap typeMapEntryForLKey !self.mTypeName]
 //--- Check self type is a class
@@ -383,10 +383,10 @@ override proc @overridingExtensionGetterAST buildExtensionListMaps (
   ?!@genericExtensionMethodListMap unused ioExtensionGetterListMap,
   ?!@genericExtensionMethodListMap ioOverridingExtensionGetterListMap,
   ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionGetterListMap) {
-  [!?ioOverridingExtensionGetterListMap insertKey
-    !self.mTypeName.string
+  !?ioOverridingExtensionGetterListMap.insertKey
+    (!self.mTypeName.string
     !self.mOverridingExtensionGetterName
-  ]
+  )
 }
 
 //--------------------------------------------------------------------------------------------------

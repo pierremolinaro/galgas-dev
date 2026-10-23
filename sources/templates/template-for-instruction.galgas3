@@ -244,7 +244,7 @@ override proc @templateInstructionForeachAST templateInstructionAnalysis
   let cppIndexVarName = "index_" + self.mIndexIdentifier.location.startLocationIndex.string
     + "_" + self.mIndexIdentifier.string.identifierRepresentation
   if self.mIndexIdentifier.string != "" then
-    [!?doVariableMap insertKey !self.mIndexIdentifier !inAnalysisContext.mPredefinedTypes.mUIntType !cppIndexVarName]
+    !?doVariableMap.insertKey (!self.mIndexIdentifier !inAnalysisContext.mPredefinedTypes.mUIntType !cppIndexVarName)
   end
   if self.mEnumeration.count != enumerationDescriptor.count then
     error (self.mEndOfProperties
@@ -254,11 +254,11 @@ override proc @templateInstructionForeachAST templateInstructionAnalysis
     for (enumeratedType enumerationName) in enumerationDescriptor,
         (optionalConstantName) in self.mEnumeration do
       if optionalConstantName.string != "" then // Empty string for joker
-        [!?doVariableMap insertKey
-          !optionalConstantName
+        !?doVariableMap.insertKey
+          (!optionalConstantName
           !enumeratedType
           !enumeratorCppName +".current_" + enumerationName.identifierRepresentation + " (HERE)"
-        ]
+        )
       end
     end
   end
@@ -339,7 +339,7 @@ override proc @templateInstructionForeachForGeneration templateCodeGeneration
   end
 //---
   ioGeneratedCode += "if (" + foreachVarCppName + ".isValid ()) {\n"
-  [!?ioGeneratedCode incIndentation !2]
+  !?ioGeneratedCode.incIndentation (!2)
   ioGeneratedCode += if self.mIsAscending then "Up" else "Down" end
   ioGeneratedCode += "Enumerator_" + self.mExpression.mResultType.identifierRepresentation
   ioGeneratedCode += " " + self.mEnumeratorCppName + " (" + foreachVarCppName + ") ;\n"
@@ -349,7 +349,7 @@ override proc @templateInstructionForeachForGeneration templateCodeGeneration
   end
   if self.mBeforeInstructionList.count > 0 then
     ioGeneratedCode += "if (nonEmpty_" + self.mEnumeratorCppName + ") {\n"
-    [!?ioGeneratedCode incIndentation !2]
+    !?ioGeneratedCode.incIndentation (!2)
     templateCodeGenerationForListInstruction (
       !self.mBeforeInstructionList
       !?ioGeneratedCode
@@ -358,11 +358,11 @@ override proc @templateInstructionForeachForGeneration templateCodeGeneration
       !?ioUnusedVariableCppNameSet
       !?ioUseColumnMarker
     )
-    [!?ioGeneratedCode decIndentation !2]
+    !?ioGeneratedCode.decIndentation (!2)
     ioGeneratedCode += "}\n"
   end
   ioGeneratedCode += "while (" + self.mEnumeratorCppName + ".hasCurrentObject ()) {\n"
-  [!?ioGeneratedCode incIndentation !2]
+  !?ioGeneratedCode.incIndentation (!2)
 //--- Do
   templateCodeGenerationForListInstruction (
     !self.mDoInstructionList
@@ -377,7 +377,7 @@ override proc @templateInstructionForeachForGeneration templateCodeGeneration
 //--- Between
   if self.mBetweenInstructionList.count > 0 then
     ioGeneratedCode += "if (" + self.mEnumeratorCppName + ".hasCurrentObject ()) {\n"
-    [!?ioGeneratedCode incIndentation !2]
+    !?ioGeneratedCode.incIndentation (!2)
     templateCodeGenerationForListInstruction (
       !self.mBetweenInstructionList
       !?ioGeneratedCode
@@ -386,19 +386,19 @@ override proc @templateInstructionForeachForGeneration templateCodeGeneration
       !?ioUnusedVariableCppNameSet
       !?ioUseColumnMarker
     )
-    [!?ioGeneratedCode decIndentation !2]
+    !?ioGeneratedCode.decIndentation (!2)
     ioGeneratedCode += "}\n"
   end
 //--- Index
   if self.mIndexCppName.count > 0 then
     ioGeneratedCode += self.mIndexCppName + ".increment () ;\n"
   end
-  [!?ioGeneratedCode decIndentation !2]
+  !?ioGeneratedCode.decIndentation (!2)
   ioGeneratedCode += "}\n"
 //--- After
   if self.mAfterInstructionList.count > 0 then
     ioGeneratedCode += "if (nonEmpty_" + self.mEnumeratorCppName + ") {\n"
-    [!?ioGeneratedCode incIndentation !2]
+    !?ioGeneratedCode.incIndentation (!2)
     templateCodeGenerationForListInstruction (
       !self.mAfterInstructionList
       !?ioGeneratedCode
@@ -407,11 +407,11 @@ override proc @templateInstructionForeachForGeneration templateCodeGeneration
       !?ioUnusedVariableCppNameSet
       !?ioUseColumnMarker
     )
-    [!?ioGeneratedCode decIndentation !2]
+    !?ioGeneratedCode.decIndentation (!2)
     ioGeneratedCode += "}\n"
   end
 //---
-  [!?ioGeneratedCode decIndentation !2]
+  !?ioGeneratedCode.decIndentation (!2)
   ioGeneratedCode += "}\n"
 }
 

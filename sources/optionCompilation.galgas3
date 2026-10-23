@@ -210,52 +210,52 @@ final class @optionComponentDeclarationAST : @semanticDeclarationAST {
         + "' command line option has been already declared"
         )
       elsif anOption.mOptionTypeName.string == "bool" then
-        [!?boolOptionMap insertKey
-          !anOption.mOptionInternalName
+        !?boolOptionMap.insertKey
+          (!anOption.mOptionInternalName
           !anOption.mOptionInvocationLetter.char
           !anOption.mOptionInvocationString.string
           !anOption.mOptionComment.string
           !"false"
-        ]
+        )
         if anOption.mOptionDefaultValueKind != @optionDefaultValueEnumAST. noDefaultValue then
           error (anOption.mOptionDefaultValue
           :"an @bool option cannot have a default value (default value is always false)"
           )
         end
       elsif anOption.mOptionTypeName.string == "uint" then
-        [!?uintOptionMap insertKey
-          !anOption.mOptionInternalName
+        !?uintOptionMap.insertKey
+          (!anOption.mOptionInternalName
           !anOption.mOptionInvocationLetter.char
           !anOption.mOptionInvocationString.string
           !anOption.mOptionComment.string
           !if anOption.mOptionDefaultValue.string == "" then "0" else anOption.mOptionDefaultValue.string end
-        ]
+        )
         if anOption.mOptionDefaultValueKind == @optionDefaultValueEnumAST. stringDefaultValue then
           error (anOption.mOptionDefaultValue
           :"an @uint option default value cannot be an @string value"
           )
         end
       elsif anOption.mOptionTypeName.string == "string" then
-        [!?stringOptionMap insertKey
-          !anOption.mOptionInternalName
+        !?stringOptionMap.insertKey
+          (!anOption.mOptionInternalName
           !anOption.mOptionInvocationLetter.char
           !anOption.mOptionInvocationString.string
           !anOption.mOptionComment.string
           !anOption.mOptionDefaultValue.string
-        ]
+        )
         if anOption.mOptionDefaultValueKind == @optionDefaultValueEnumAST. unsignedDefaultValue then
           error (anOption.mOptionDefaultValue
           :"an @string option default value cannot be an @uint value"
           )
         end
       elsif anOption.mOptionTypeName.string == "stringlist" then
-        [!?stringListOptionMap insertKey
-          !anOption.mOptionInternalName
+        !?stringListOptionMap.insertKey
+          (!anOption.mOptionInternalName
           !anOption.mOptionInvocationLetter.char
           !anOption.mOptionInvocationString.string
           !anOption.mOptionComment.string
           !anOption.mOptionDefaultValue.string
-        ]
+        )
         if anOption.mOptionDefaultValueKind != .noDefaultValue then
           error (anOption.mOptionDefaultValue
           :"an @stringlist option cannot accept default value"
@@ -269,14 +269,14 @@ final class @optionComponentDeclarationAST : @semanticDeclarationAST {
       optionNameSet ++= anOption.mOptionInternalName.string
     end
   //--- Insert option
-    [!?ioSemanticContext.mOptionComponentMapForSemanticAnalysis insertKey
-      !self.mOptionComponentName
+    !?ioSemanticContext.mOptionComponentMapForSemanticAnalysis.insertKey
+      (!self.mOptionComponentName
       !self.isPredefined
       !boolOptionMap
       !uintOptionMap
       !stringOptionMap
       !stringListOptionMap
-    ]
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -292,7 +292,7 @@ final class @optionComponentDeclarationAST : @semanticDeclarationAST {
   ) {
   //--- Useful entities graph
     let nameForUsefulness = optionNameForUsefulEntitiesGraph (!self.mOptionComponentName)
-    [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
+    !?ioUsefulEntitiesGraph.addNode (!nameForUsefulness !nameForUsefulness)
   //---
     [inSemanticContext.mOptionComponentMapForSemanticAnalysis searchKey
       !self.mOptionComponentName

@@ -822,7 +822,7 @@ override proc @lexiqueComponentAST enterDeclarationInGraph
   ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext,
   ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList ) {
   let key = @lstring {!"lexique " + self.mLexiqueComponentName !self.mLexiqueComponentName.location}
-  [!?ioSemanticTypePrecedenceGraph addNode !key !self]
+  !?ioSemanticTypePrecedenceGraph.addNode (!key !self)
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -851,7 +851,7 @@ override proc @lexiqueComponentAST enterDeclarationInSemanticContext
       [lexicalAttributeMap searchKey !mAttributeName ?let attributeLexicalType]
       argumentTypeList += !mFormalSelector !mAttributeName.string !attributeLexicalType
     end
-    [!?terminalMap insertKey !name !argumentTypeList]
+    !?terminalMap.insertKey (!name !argumentTypeList)
   end
 //---
   for (* * * mSentAttributeList mEntryList) in self.mLexicalListDeclarationListAST do
@@ -861,12 +861,12 @@ override proc @lexiqueComponentAST enterDeclarationInSemanticContext
       argumentTypeList += !mFormalSelector !mAttributeName.string !attributeLexicalType
     end
     for (* mTerminalSpelling 2*) in mEntryList do
-      [!?terminalMap insertKey !mTerminalSpelling !argumentTypeList]
+      !?terminalMap.insertKey (!mTerminalSpelling !argumentTypeList)
     end
   end
 //---
-  [!?ioSemanticContext.mLexiqueComponentMapForSemanticAnalysis insertKey
-     !self.mLexiqueComponentName
+  !?ioSemanticContext.mLexiqueComponentMapForSemanticAnalysis.insertKey
+     (!self.mLexiqueComponentName
      !self.mIsTemplate
      !terminalMap
      !self.mIndexingListAST
@@ -874,7 +874,7 @@ override proc @lexiqueComponentAST enterDeclarationInSemanticContext
      !self.mLexicalAttributeListAST
      !self.mLexicalStyleListAST
      !self.mLexicalListDeclarationListAST
-  ]
+  )
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -889,7 +889,7 @@ override proc @lexiqueComponentAST semanticAnalysis
                                       ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration ) {
 //--- Useful entities graph
   let nameForUsefulness = lexiqueNameForUsefulEntitiesGraph (!self.mLexiqueComponentName)
-  [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
+  !?ioUsefulEntitiesGraph.addNode (!nameForUsefulness !nameForUsefulness)
 //-------------------------------------- Lexical attribute type name map
   let @lexicalTypeMap lexicalTypeMap = buildLexicalTypeMap ()
 //-------------------------------------- Build lexical routine map
@@ -916,7 +916,7 @@ override proc @lexiqueComponentAST semanticAnalysis
 //-------------------------------------- Build style map
   var styleIndex = 1
   for (mName mComment) in self.mLexicalStyleListAST do
-    [!?lexiqueAnalysisContext.mStyleMap insertKey !mName !mComment !styleIndex]
+    !?lexiqueAnalysisContext.mStyleMap.insertKey (!mName !mComment !styleIndex)
     styleIndex += 1
   end
 //-------------------------------------- Build lexical attribute map
@@ -936,7 +936,7 @@ override proc @lexiqueComponentAST semanticAnalysis
       [lexiqueAnalysisContext.mLexicalAttributeMap searchKey !mAttributeName ?let attributeLexicalType]
       argumentTypeList += !mFormalSelector !mAttributeName.string !attributeLexicalType
     end
-    [!?lexiqueAnalysisContext.mTerminalMap insertKey !mName !argumentTypeList]
+    !?lexiqueAnalysisContext.mTerminalMap.insertKey (!mName !argumentTypeList)
     lexiqueAnalysisContext.mTerminalList +=
       !mName
       !argumentTypeList
@@ -966,21 +966,21 @@ override proc @lexiqueComponentAST semanticAnalysis
         !isEndOfTemplateMark: isTemplateEndMark
         !atomicSelection: not nonAtomicSelection
         !terminalStyleIndex
-      [!?lexiqueAnalysisContext.mTerminalMap insertKey !mTerminalSpelling !argumentTypeList]
-      [!?lexicalTokenListMap insertKey
-        !mEntrySpelling
+      !?lexiqueAnalysisContext.mTerminalMap.insertKey (!mTerminalSpelling !argumentTypeList)
+      !?lexicalTokenListMap.insertKey
+        (!mEntrySpelling
         !mTerminalSpelling
         !atomicSelection: nonAtomicSelection
         !isEndOfTemplateMark: isTemplateEndMark
-      ]
+      )
       tokenSortedlist += !mEntrySpelling.string.count !mEntrySpelling.string !mTerminalSpelling.string
       lexiqueAnalysisContext.mUnicodeStringToGenerate ++= mEntrySpelling.string
     end
-    [!?lexiqueAnalysisContext.mLexicalTokenListMap insertKey !mName !lexicalTokenListMap !tokenSortedlist !false]
+    !?lexiqueAnalysisContext.mLexicalTokenListMap.insertKey (!mName !lexicalTokenListMap !tokenSortedlist !false)
   end
 //-------------------------------------- Build Message map
   for (mMessageName mMessageValue) in self.mLexicalMessageDeclarationListAST do
-    [!?lexiqueAnalysisContext.mLexicalMessageMap insertKey !mMessageName !mMessageValue !false]
+    !?lexiqueAnalysisContext.mLexicalMessageMap.insertKey (!mMessageName !mMessageValue !false)
   end
 //-------------------------------------- Check rules
   for (mLexicalRule) in self.mLexicalRuleListAST do

@@ -27,7 +27,7 @@ final class @stringPredefinedTypeAST : @predefinedTypeAST {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc addAssociatedElement (?!@galgasDeclarationAST ioDeclarations ) {
-    [!?ioDeclarations getOptionalTypeName ?* !forTypeNamed: @("bigint", .nowhere) !isPredefined: true]
+    !?ioDeclarations.getOptionalTypeName (?* !forTypeNamed: @("bigint", .nowhere) !isPredefined: true)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -229,18 +229,18 @@ final class @stringPredefinedTypeAST : @predefinedTypeAST {
       !argName:"inDirectoryPath"
       !compilerArg:true
     )
-    [!?ioUnifiedTypeMap makeEntryFromString !"string" ?let @unifiedTypeMapEntry stringType]
-    [!?ioUnifiedTypeMap makeEntryFromString !"bool" ?let @unifiedTypeMapEntry boolType]
+    !?ioUnifiedTypeMap.makeEntryFromString (!"string" ?let @unifiedTypeMapEntry stringType)
+    !?ioUnifiedTypeMap.makeEntryFromString (!"bool" ?let @unifiedTypeMapEntry boolType)
   //--- Generate file
     var @formalParameterSignature argList = @()
     argList += !"".nowhere !stringType !@formalArgumentPassingModeAST. argumentConstantIn !"inStartPath"
     argList += !"".nowhere !stringType !@formalArgumentPassingModeAST. argumentConstantIn !"inFileName"
     argList += !"".nowhere !stringType !@formalArgumentPassingModeAST. argumentConstantIn !"inContents"
-    [!?outClassMethodMap insertOrReplace
-      !@{!"generateFile" !.here}
+    !?outClassMethodMap.insertOrReplace
+      (!@{!"generateFile" !.here}
       !argList
       !true
-    ]
+    )
   //--- Generate file with pattern
     argList = @()
     argList += !"startPath".nowhere !stringType !.argumentConstantIn !"inStartPath"
@@ -252,11 +252,11 @@ final class @stringPredefinedTypeAST : @predefinedTypeAST {
     argList += !"defaultUserZone2".nowhere !stringType !.argumentConstantIn !"inDefaultUserZone2"
     argList += !"generatedZone3".nowhere !stringType !.argumentConstantIn !"inGeneratedZone3"
     argList += !"makeExecutable".nowhere !boolType !.argumentConstantIn !"inMakeExecutable"
-    [!?outClassMethodMap insertOrReplace
-      !@lstring {!"generateFileWithPattern" !@location.here}
+    !?outClassMethodMap.insertOrReplace
+      (!@lstring {!"generateFileWithPattern" !@location.here}
       !argList
       !true
-    ]
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -311,28 +311,28 @@ final class @stringPredefinedTypeAST : @predefinedTypeAST {
     )
   //--- writeToFileWhenDifferentContents, writeToExecutableFileWhenDifferentContents
     var @formalParameterSignature argList = @()
-    [!?ioUnifiedTypeMap makeEntryFromString !"string" ?@unifiedTypeMapEntry t]
+    !?ioUnifiedTypeMap.makeEntryFromString (!"string" ?@unifiedTypeMapEntry t)
     argList += !"".nowhere !t !@formalArgumentPassingModeAST. argumentConstantIn !"inFilePath"
-    [!?ioUnifiedTypeMap makeEntryFromString !"bool" ?t]
+    !?ioUnifiedTypeMap.makeEntryFromString (!"bool" ?t)
     argList += !"".nowhere !t !@formalArgumentPassingModeAST. argumentOut !"outFileModified"
-    [!?outInstanceMethodMap insertKey
-      !@lstring {!"writeToFileWhenDifferentContents" !@location.here}
+    !?outInstanceMethodMap.insertKey
+      (!@lstring {!"writeToFileWhenDifferentContents" !@location.here}
       !@methodKind.definedAsMember
       !argList
       !@location.here
       !true
       !@methodQualifier.isBasic
       !"" // No error message
-    ]
-    [!?outInstanceMethodMap insertKey
-      !@{!"writeToExecutableFileWhenDifferentContents" !.here}
+    )
+    !?outInstanceMethodMap.insertKey
+      (!@{!"writeToExecutableFileWhenDifferentContents" !.here}
       !@methodKind.definedAsMember
       !argList
       !@location.here
       !true
       !@methodQualifier.isBasic
       !"" // No error message
-    ]
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

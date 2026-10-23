@@ -1,11 +1,11 @@
 syntax logo_syntax (logo_lexique) {
 
   //----------------------------------------------------------------------------------------------
-  
+
   rule <pen_direction> (?!@instructionList il ) {
     select
       $UP$
-      let @instruction ins = @penUp () 
+      let @instruction ins = @penUp ()
       il += !ins
     or
       $DOWN$
@@ -63,7 +63,7 @@ syntax logo_syntax (logo_lexique) {
     <instruction_list> (!? ioTableRoutines !? il)
     $END$
   //--- Insertion dans la table
-    [!?ioTableRoutines insertKey !routineName !il]
+    !?ioTableRoutines.insertKey (!routineName !il)
   }
 
   //----------------------------------------------------------------------------------------------
