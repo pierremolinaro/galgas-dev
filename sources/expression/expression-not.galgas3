@@ -32,7 +32,7 @@ syntax extension galgas3ExpressionSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <factor_ggs3> (?!@galgasDeclarationAST ioDeclarations
+  rule <factor_ggs3> (?!@galgasDeclarationAST ioDeclarations,
                      !@semanticExpressionAST outExpression ) {
     let operatorLocation = @location.here
     $not$
@@ -50,7 +50,7 @@ syntax extension galgas4ExpressionSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <factor> (?!@galgasDeclarationAST ioDeclarations
+  rule <factor> (?!@galgasDeclarationAST ioDeclarations,
                 !@semanticExpressionAST outExpression ) {
     let operatorLocation = @location.here
     $not$
@@ -75,12 +75,12 @@ override proc @notExpressionAST enterExpressionInSemanticContext
 //································································································
 
 override proc @notExpressionAST analyzeSemanticExpression
-  (?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName
-  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-  ?inferenceType: let @unifiedTypeMapEntry unused inType
-  ?let @analysisContext inAnalysisContext
-                                ?!@unifiedTypeMap ioTypeMap
-  ?!@localVarManager ioVariableMap
+  (?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName,
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
+  ?inferenceType: let @unifiedTypeMapEntry unused inType,
+  ?let @analysisContext inAnalysisContext,
+                                ?!@unifiedTypeMap ioTypeMap,
+  ?!@localVarManager ioVariableMap,
   !@semanticExpressionForGeneration outExpression ) {
 //--- Expression analysis
   [self.mExpression analyzeSemanticExpression
@@ -123,10 +123,10 @@ final class @notExpressionForGeneration : @semanticExpressionForGeneration {
 //································································································
 
 override proc @notExpressionForGeneration generateExpression
-  (?!@string ioGeneratedCode
-  ?!@stringset ioInclusionSet
-  ?!@uint ioTemporaryVariableIndex
-  ?!@stringset ioUnusedVariableCppNameSet
+  (?!@string ioGeneratedCode,
+  ?!@stringset ioInclusionSet,
+  ?!@uint ioTemporaryVariableIndex,
+  ?!@stringset ioUnusedVariableCppNameSet,
   !@string outCppExpression ) {
   [self.mExpression.mResultType addHeaderFileName !?ioInclusionSet]
 //--- Operand

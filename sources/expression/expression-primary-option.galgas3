@@ -34,7 +34,7 @@ syntax extension galgas3ExpressionSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <primary_ggs3> (?!@galgasDeclarationAST unused ioDeclarations
+  rule <primary_ggs3> (?!@galgasDeclarationAST unused ioDeclarations,
                       !@semanticExpressionAST outExpression ) {
     $[$
     $option$
@@ -48,7 +48,7 @@ syntax extension galgas3ExpressionSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <primary_ggs3> (?!@galgasDeclarationAST unused ioDeclarations
+  rule <primary_ggs3> (?!@galgasDeclarationAST unused ioDeclarations,
                       !@semanticExpressionAST outExpression ) {
     $[$
     $option$
@@ -69,7 +69,7 @@ syntax extension galgas4ExpressionSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <primary> (?!@galgasDeclarationAST unused ioDeclarations
+  rule <primary> (?!@galgasDeclarationAST unused ioDeclarations,
                  !@semanticExpressionAST outExpression ) {
     $option$
     $identifier$ ?let optionComponentName indexing optionComponentReference
@@ -83,7 +83,7 @@ syntax extension galgas4ExpressionSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <primary> (?!@galgasDeclarationAST unused ioDeclarations
+  rule <primary> (?!@galgasDeclarationAST unused ioDeclarations,
                  !@semanticExpressionAST outExpression ) {
     $option$
     $[$
@@ -110,12 +110,12 @@ override proc @optionExpressionAST enterExpressionInSemanticContext
 //································································································
 
 override proc @optionExpressionAST analyzeSemanticExpression
-  (?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName
-  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-  ?inferenceType: let @unifiedTypeMapEntry unused inType
-  ?let @analysisContext inAnalysisContext
-                                ?!@unifiedTypeMap unused ioTypeMap
-  ?!@localVarManager unused ioVariableMap
+  (?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName,
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
+  ?inferenceType: let @unifiedTypeMapEntry unused inType,
+  ?let @analysisContext inAnalysisContext,
+                                ?!@unifiedTypeMap unused ioTypeMap,
+  ?!@localVarManager unused ioVariableMap,
   !@semanticExpressionForGeneration outExpression
 ) {
   let usefulnessName = optionNameForUsefulEntitiesGraph (!self.mOptionComponentName)
@@ -206,10 +206,10 @@ final class @optionValueExpressionForGeneration : @semanticExpressionForGenerati
 //································································································
 
 override proc @optionValueExpressionForGeneration generateExpression
-  (?!@string unused ioGeneratedCode
-  ?!@stringset ioInclusionSet
-  ?!@uint unused ioTemporaryVariableIndex
-  ?!@stringset unused ioUnusedVariableCppNameSet
+  (?!@string unused ioGeneratedCode,
+  ?!@stringset ioInclusionSet,
+  ?!@uint unused ioTemporaryVariableIndex,
+  ?!@stringset unused ioUnusedVariableCppNameSet,
   !@string outCppExpression ) {
   if not self.mOptionComponentIsPredefined then
     ioInclusionSet ++= "option-" + self.mOptionComponentName.fileNameRepresentation
@@ -229,10 +229,10 @@ final class @optionCharExpressionForGeneration : @semanticExpressionForGeneratio
 //································································································
 
 override proc @optionCharExpressionForGeneration generateExpression
-  (?!@string unused ioGeneratedCode
-  ?!@stringset ioInclusionSet
-  ?!@uint unused ioTemporaryVariableIndex
-  ?!@stringset unused ioUnusedVariableCppNameSet
+  (?!@string unused ioGeneratedCode,
+  ?!@stringset ioInclusionSet,
+  ?!@uint unused ioTemporaryVariableIndex,
+  ?!@stringset unused ioUnusedVariableCppNameSet,
   !@string outCppExpression ) {
   if not self.mOptionComponentIsPredefined then
     ioInclusionSet ++= "option-" + self.mOptionComponentName.fileNameRepresentation
@@ -252,10 +252,10 @@ final class @optionStringExpressionForGeneration : @semanticExpressionForGenerat
 //································································································
 
 override proc @optionStringExpressionForGeneration generateExpression
-  (?!@string unused ioGeneratedCode
-  ?!@stringset ioInclusionSet
-  ?!@uint unused ioTemporaryVariableIndex
-  ?!@stringset unused ioUnusedVariableCppNameSet
+  (?!@string unused ioGeneratedCode,
+  ?!@stringset ioInclusionSet,
+  ?!@uint unused ioTemporaryVariableIndex,
+  ?!@stringset unused ioUnusedVariableCppNameSet,
   !@string outCppExpression ) {
   if not self.mOptionComponentIsPredefined then
     ioInclusionSet ++= "option-" + self.mOptionComponentName.fileNameRepresentation
@@ -267,10 +267,10 @@ override proc @optionStringExpressionForGeneration generateExpression
 //--------------------------------------------------------------------------------------------------
 
 override proc @optionCommentExpressionForGeneration generateExpression
-  (?!@string unused ioGeneratedCode
-  ?!@stringset ioInclusionSet
-  ?!@uint unused ioTemporaryVariableIndex
-  ?!@stringset unused ioUnusedVariableCppNameSet
+  (?!@string unused ioGeneratedCode,
+  ?!@stringset ioInclusionSet,
+  ?!@uint unused ioTemporaryVariableIndex,
+  ?!@stringset unused ioUnusedVariableCppNameSet,
   !@string outCppExpression ) {
   if not self.mOptionComponentIsPredefined then
     ioInclusionSet ++= "option-" + self.mOptionComponentName.fileNameRepresentation

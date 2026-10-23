@@ -21,7 +21,7 @@ syntax extension galgas3SyntaxComponentSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <syntax_instruction_ggs3> (?!@galgasDeclarationAST ioDeclarations
+  rule <syntax_instruction_ggs3> (?!@galgasDeclarationAST ioDeclarations,
                                  !@syntaxInstructionAST outInstruction ) {
     $<non_terminal>$ ?let @lstring mNonterminalName indexing ruleReference
     <actual_parameter_list_ggs3> !?ioDeclarations ?let @actualParameterListAST mActualParameterList
@@ -51,7 +51,7 @@ syntax extension galgas4SyntaxComponentSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <syntax_instruction> (?!@galgasDeclarationAST ioDeclarations
+  rule <syntax_instruction> (?!@galgasDeclarationAST ioDeclarations,
                             !@syntaxInstructionAST outInstruction ) {
     $<non_terminal>$ ?let @lstring mNonterminalName indexing ruleReference
     <actual_parameter_list_within_parenthesis> !?ioDeclarations ?let @actualParameterListAST mActualParameterList
@@ -87,9 +87,9 @@ final class @nonterminalCallInstruction : @syntaxInstructionAST {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc transformInstructionForGrammarAnalysis
-                    (?!usedTerminalMap:@terminalSymbolsMapForGrammarAnalysis unused ioActuallyUsedTerminalSymbolMap
-                    ?nonTerminalSymbolMap:let @nonTerminalSymbolMapForGrammarAnalysis inNonTerminalSymbolMap
-                    ?!addedTerminalIndex:@uint unused ioAddedNonTerminalIndex
+                    (?!usedTerminalMap:@terminalSymbolsMapForGrammarAnalysis unused ioActuallyUsedTerminalSymbolMap,
+                    ?nonTerminalSymbolMap:let @nonTerminalSymbolMapForGrammarAnalysis inNonTerminalSymbolMap,
+                    ?!addedTerminalIndex:@uint unused ioAddedNonTerminalIndex,
                     ?!@syntaxInstructionListForGrammarAnalysis ioSyntaxInstructionList ) {
     [inNonTerminalSymbolMap searchKey !self.mNonterminalName ?let nonTerminalSymbolIndex ?*]
     ioSyntaxInstructionList += !@nonTerminalInstructionForGrammarAnalysis {
@@ -101,18 +101,18 @@ final class @nonterminalCallInstruction : @syntaxInstructionAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override proc analyzeSyntaxInstruction (?let @lstring inUsefulnessCallerEntityName
-                                           ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-                                           ?let @analysisContext inAnalysisContext
-                                           ?!@unifiedTypeMap ioTypeMap
-                                            ?let @bool inHasTranslateFeature
-                                            ?let @terminalMap unused inTerminalMap
-                                            ?let @string unused inLexiqueName
-                                            ?let @nonterminalMap inNonterminalMap
-                                            ?let @string unused inComponentName
-                                            ?let @stringset unused inIndexNameSet
-                                            ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
-                                            ?!@localVarManager ioVariableMap
+  override proc analyzeSyntaxInstruction (?let @lstring inUsefulnessCallerEntityName,
+                                           ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
+                                           ?let @analysisContext inAnalysisContext,
+                                           ?!@unifiedTypeMap ioTypeMap,
+                                            ?let @bool inHasTranslateFeature,
+                                            ?let @terminalMap unused inTerminalMap,
+                                            ?let @string unused inLexiqueName,
+                                            ?let @nonterminalMap inNonterminalMap,
+                                            ?let @string unused inComponentName,
+                                            ?let @stringset unused inIndexNameSet,
+                                            ?!@semanticInstructionListForGeneration ioInstructionListForGeneration,
+                                            ?!@localVarManager ioVariableMap,
                                             ?!@uint unused ioSelectMethodCount ) {
     [inNonterminalMap searchKey !self.mNonterminalName ?let @nonterminalLabelMap labelMap]
     let @formalParameterSignature signature
@@ -167,7 +167,7 @@ final class @nonterminalInstructionForGeneration : @syntaxInstructionForGenerati
 //--------------------------------------------------------------------------------------------------
 
 override proc @nonterminalInstructionForGeneration appendSyntaxSignature
-  (?let @string inPosfix
+  (?let @string inPosfix,
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
 ) {
   ioInstructionListForGeneration += !@nonterminalInstructionForGeneration {

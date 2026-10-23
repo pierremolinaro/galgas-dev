@@ -31,7 +31,7 @@ syntax extension galgas3ExpressionSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <primary_ggs3> (?!@galgasDeclarationAST unused ioDeclarations
+  rule <primary_ggs3> (?!@galgasDeclarationAST unused ioDeclarations,
                       !@semanticExpressionAST outExpression ) {
     $`$
     $@type$ ?let @lstring typeName
@@ -48,7 +48,7 @@ syntax extension galgas4ExpressionSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <primary> (?!@galgasDeclarationAST unused ioDeclarations
+  rule <primary> (?!@galgasDeclarationAST unused ioDeclarations,
                  !@semanticExpressionAST outExpression ) {
     $`$
     $@type$ ?let @lstring typeName // Cannot use <type_definition> !? ioDeclarations ?let @lstring typeName
@@ -72,12 +72,12 @@ override proc @literalTypeInExpressionAST enterExpressionInSemanticContext
 //································································································
 
 override proc @literalTypeInExpressionAST analyzeSemanticExpression
-  (?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName
-  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-  ?inferenceType: let @unifiedTypeMapEntry unused inType
-  ?let @analysisContext unused inAnalysisContext
-                                ?!@unifiedTypeMap ioTypeMap
-  ?!@localVarManager unused ioVariableMap
+  (?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName,
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
+  ?inferenceType: let @unifiedTypeMapEntry unused inType,
+  ?let @analysisContext unused inAnalysisContext,
+                                ?!@unifiedTypeMap ioTypeMap,
+  ?!@localVarManager unused ioVariableMap,
   !@semanticExpressionForGeneration outExpression
 ) {
   let usefulnessName = typeNameForUsefulEntitiesGraph (!self.mLiteralTypeName)
@@ -102,10 +102,10 @@ final class @literalTypeInExpressionForGeneration : @semanticExpressionForGenera
 //································································································
 
 override proc @literalTypeInExpressionForGeneration generateExpression
-  (?!@string unused ioGeneratedCode
-  ?!@stringset ioInclusionSet
-  ?!@uint unused ioTemporaryVariableIndex
-  ?!@stringset unused ioUnusedVariableCppNameSet
+  (?!@string unused ioGeneratedCode,
+  ?!@stringset ioInclusionSet,
+  ?!@uint unused ioTemporaryVariableIndex,
+  ?!@stringset unused ioUnusedVariableCppNameSet,
   !@string outCppExpression
 ) {
   [self.mLiteralType addHeaderFileName !?ioInclusionSet]

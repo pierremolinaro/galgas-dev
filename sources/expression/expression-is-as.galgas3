@@ -51,7 +51,7 @@ syntax extension galgas3ExpressionSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <expression_ggs3> (?!@galgasDeclarationAST ioDeclarations
+  rule <expression_ggs3> (?!@galgasDeclarationAST ioDeclarations,
                          !@semanticExpressionAST outExpression ) {
     <expression_or_ggs3> !?ioDeclarations ?outExpression
     select
@@ -100,7 +100,7 @@ syntax extension galgas4ExpressionSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <expression> (?!@galgasDeclarationAST ioDeclarations
+  rule <expression> (?!@galgasDeclarationAST ioDeclarations,
                     !@semanticExpressionAST outExpression ) {
     <expression_or> !?ioDeclarations ?outExpression
     select
@@ -143,12 +143,12 @@ override proc @testDynamicClassInExpressionAST enterExpressionInSemanticContext
 //································································································
 
 override proc @testDynamicClassInExpressionAST analyzeSemanticExpression
-  (?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName
-  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-  ?inferenceType: let @unifiedTypeMapEntry unused inType
-  ?let @analysisContext inAnalysisContext
-                                ?!@unifiedTypeMap ioTypeMap
-  ?!@localVarManager ioVariableMap
+  (?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName,
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
+  ?inferenceType: let @unifiedTypeMapEntry unused inType,
+  ?let @analysisContext inAnalysisContext,
+                                ?!@unifiedTypeMap ioTypeMap,
+  ?!@localVarManager ioVariableMap,
   !@semanticExpressionForGeneration outExpression
 ) {
 //--- Receiver expression analysis
@@ -201,12 +201,12 @@ override proc @castInExpressionAST enterExpressionInSemanticContext
 //--------------------------------------------------------------------------------------------------
 
 override proc @castInExpressionAST analyzeSemanticExpression
-  (?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName
-  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-  ?inferenceType: let @unifiedTypeMapEntry unused inType
-  ?let @analysisContext inAnalysisContext
-                                ?!@unifiedTypeMap ioTypeMap
-  ?!@localVarManager ioVariableMap
+  (?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName,
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
+  ?inferenceType: let @unifiedTypeMapEntry unused inType,
+  ?let @analysisContext inAnalysisContext,
+                                ?!@unifiedTypeMap ioTypeMap,
+  ?!@localVarManager ioVariableMap,
   !@semanticExpressionForGeneration outExpression
 ) {
 //--- Receiver expression analysis
@@ -272,10 +272,10 @@ final class @testDynamicClassInExpressionForGeneration : @semanticExpressionForG
 //································································································
 
 override proc @testDynamicClassInExpressionForGeneration generateExpression
-  (?!@string ioGeneratedCode
-  ?!@stringset ioInclusionSet
-  ?!@uint ioTemporaryVariableIndex
-  ?!@stringset ioUnusedVariableCppNameSet
+  (?!@string ioGeneratedCode,
+  ?!@stringset ioInclusionSet,
+  ?!@uint ioTemporaryVariableIndex,
+  ?!@stringset ioUnusedVariableCppNameSet,
   !@string outCppExpression ) {
   let typeNameRepresentation = self.mCastType.definition.typeName.string.identifierRepresentation
 //--- Receiver expression
@@ -309,10 +309,10 @@ override proc @testDynamicClassInExpressionForGeneration generateExpression
 //--------------------------------------------------------------------------------------------------
 
 override proc @castInExpressionForGeneration generateExpression
-  (?!@string ioGeneratedCode
-  ?!@stringset ioInclusionSet
-  ?!@uint ioTemporaryVariableIndex
-  ?!@stringset ioUnusedVariableCppNameSet
+  (?!@string ioGeneratedCode,
+  ?!@stringset ioInclusionSet,
+  ?!@uint ioTemporaryVariableIndex,
+  ?!@stringset ioUnusedVariableCppNameSet,
   !@string outCppExpression
 ) {
   [self.mCastType addHeaderFileName !?ioInclusionSet]
@@ -362,10 +362,10 @@ final class @extractObjectInExpressionForGeneration : @semanticExpressionForGene
 //································································································
 
 override proc @extractObjectInExpressionForGeneration generateExpression
-  (?!@string ioGeneratedCode
-  ?!@stringset ioInclusionSet
-  ?!@uint ioTemporaryVariableIndex
-  ?!@stringset ioUnusedVariableCppNameSet
+  (?!@string ioGeneratedCode,
+  ?!@stringset ioInclusionSet,
+  ?!@uint ioTemporaryVariableIndex,
+  ?!@stringset ioUnusedVariableCppNameSet,
   !@string outCppExpression ) {
   outCppExpression = "temp_" + ioTemporaryVariableIndex.string
   ioTemporaryVariableIndex += 1

@@ -31,12 +31,12 @@ final class @optionalTypeDeclarationAST : @semanticDeclarationAST {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc enterDeclarationInGraph
-    (?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
-    ?!@equatableExtensionMap unused ioEquatableExtensionMap
-    ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext
-    ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext
-    ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
-    ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
+    (?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph,
+    ?!@equatableExtensionMap unused ioEquatableExtensionMap,
+    ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext,
+    ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext,
+    ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext,
+    ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext,
     ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList ) {
     let selfKey = @lstring {!"@" + self.optionalTypeName !self.optionalTypeName.location}
     [!?ioSemanticTypePrecedenceGraph addNode !selfKey !self]
@@ -47,12 +47,12 @@ final class @optionalTypeDeclarationAST : @semanticDeclarationAST {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc enterDeclarationInSemanticContext
-    (?!@equatableExtensionMap ioEquatableExtensionMap
-    ?let @extensionInitializerForBuildingContext inExtensionInitializerMapForBuildingContext
-    ?let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext
-    ?let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext
-    ?let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext
-    ?!@unifiedTypeMap ioTypeMap
+    (?!@equatableExtensionMap ioEquatableExtensionMap,
+    ?let @extensionInitializerForBuildingContext inExtensionInitializerMapForBuildingContext,
+    ?let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext,
+    ?let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext,
+    ?let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext,
+    ?!@unifiedTypeMap ioTypeMap,
     ?!@semanticContext ioSemanticContext ) {
   //--- Getters
     commonGetterMapForAllTypes (!?ioTypeMap ?var @getterMap getterMap)
@@ -143,12 +143,12 @@ final class @optionalTypeDeclarationAST : @semanticDeclarationAST {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc semanticAnalysis
-    (?!@lstringlist ioUsefulnessRootEntities
-    ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-    ?let @string unused inProductDirectory
-    ?let @semanticContext unused inSemanticContext
-                                  ?!@unifiedTypeMap ioTypeMap
-    ?let @predefinedTypes unused inPredefinedTypes
+    (?!@lstringlist ioUsefulnessRootEntities,
+    ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
+    ?let @string unused inProductDirectory,
+    ?let @semanticContext unused inSemanticContext,
+                                  ?!@unifiedTypeMap ioTypeMap,
+    ?let @predefinedTypes unused inPredefinedTypes,
     ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
   ) {
   //--- Useful entities graph
@@ -183,7 +183,7 @@ final class @optionalTypeForGeneration : @semanticTypeForGeneration {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override proc appendDeclaration1 (?!@stringset ioInclusionSet
+  override proc appendDeclaration1 (?!@stringset ioInclusionSet,
                                      !@string outHeader ) {
     [self.unwrappedType addHeaderFileName1 !?ioInclusionSet]
     let selfTypeDefinition = self.mSelfTypeEntry.definition
@@ -214,8 +214,8 @@ final class @optionalTypeForGeneration : @semanticTypeForGeneration {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override proc appendSpecificImplementation  (?let @unifiedTypeMap unused inTypeMap
-                                          ?!@stringset ioInclusionSet
+  override proc appendSpecificImplementation  (?let @unifiedTypeMap unused inTypeMap,
+                                          ?!@stringset ioInclusionSet,
                                           !@string outImplementation ) {
     [self.unwrappedType addHeaderFileName !?ioInclusionSet]
     [self.mSelfTypeEntry addHeaderFileName !?ioInclusionSet]

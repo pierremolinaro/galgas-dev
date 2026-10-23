@@ -48,12 +48,12 @@ abstract class @predefinedTypeAST : @semanticDeclarationAST {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc enterDeclarationInGraph
-       (?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
-       ?!@equatableExtensionMap unused ioEquatableExtensionMap
-       ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext
-       ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext
-       ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
-       ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
+       (?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph,
+       ?!@equatableExtensionMap unused ioEquatableExtensionMap,
+       ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext,
+       ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext,
+       ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext,
+       ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext,
        ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList ) {
     let key = @lstring {!"@" + self.mPredefinedTypeName !.nowhere}
     [!?ioSemanticTypePrecedenceGraph addNode !key !self]
@@ -62,12 +62,12 @@ abstract class @predefinedTypeAST : @semanticDeclarationAST {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc enterDeclarationInSemanticContext
-        (?!@equatableExtensionMap unused ioEquatableExtensionMap
-        ?let @extensionInitializerForBuildingContext inExtensionInitializerMapForBuildingContext
-        ?let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext
-        ?let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext
-        ?let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext
-        ?!@unifiedTypeMap ioTypeMap
+        (?!@equatableExtensionMap unused ioEquatableExtensionMap,
+        ?let @extensionInitializerForBuildingContext inExtensionInitializerMapForBuildingContext,
+        ?let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext,
+        ?let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext,
+        ?let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext,
+        ?!@unifiedTypeMap ioTypeMap,
         ?!@semanticContext ioSemanticContext ) {
     [self getClassFunctionMap !?ioTypeMap ?let @classFunctionMap constructorMap]
     [self getGetterMap !?ioTypeMap ?var @getterMap getterMap]
@@ -151,12 +151,12 @@ abstract class @predefinedTypeAST : @semanticDeclarationAST {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc semanticAnalysis
-      (?!@lstringlist ioUsefulnessRootEntities
-      ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-      ?let @string unused inProductDirectory
-      ?let @semanticContext unused inSemanticContext
-      ?!@unifiedTypeMap ioTypeMap
-      ?let @predefinedTypes unused inPredefinedTypes
+      (?!@lstringlist ioUsefulnessRootEntities,
+      ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
+      ?let @string unused inProductDirectory,
+      ?let @semanticContext unused inSemanticContext,
+      ?!@unifiedTypeMap ioTypeMap,
+      ?let @predefinedTypes unused inPredefinedTypes,
       ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration ) {
    let selfType = [ioTypeMap typeMapEntryForLKey !@{!self.mPredefinedTypeName !.here}]
   //--- Useful entities graph
@@ -185,35 +185,35 @@ abstract class @predefinedTypeAST : @semanticDeclarationAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  proc getClassFunctionMap (?!@unifiedTypeMap unused ioUnifiedTypeMap
+  proc getClassFunctionMap (?!@unifiedTypeMap unused ioUnifiedTypeMap,
                              !@classFunctionMap outClassFunctionMap ) {
     outClassFunctionMap = @()
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  proc getGetterMap (?!@unifiedTypeMap unused ioUnifiedTypeMap
+  proc getGetterMap (?!@unifiedTypeMap unused ioUnifiedTypeMap,
                       !@getterMap outGetterMap ) {
     outGetterMap = @()
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  proc getSetterMap (?!@unifiedTypeMap unused ioUnifiedTypeMap
+  proc getSetterMap (?!@unifiedTypeMap unused ioUnifiedTypeMap,
                       !@setterMap outSetterMap ) {
     outSetterMap = @()
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  proc getInstanceMethodMap (?!@unifiedTypeMap unused ioUnifiedTypeMap
+  proc getInstanceMethodMap (?!@unifiedTypeMap unused ioUnifiedTypeMap,
                               !@instanceMethodMap outInstanceMethodMap ) {
     outInstanceMethodMap = @()
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  proc getClassMethodMap  (?!@unifiedTypeMap unused ioUnifiedTypeMap
+  proc getClassMethodMap  (?!@unifiedTypeMap unused ioUnifiedTypeMap,
                             !@classMethodMap outClassMethodMap ) {
     outClassMethodMap = @()
   }
@@ -232,15 +232,15 @@ abstract class @predefinedTypeAST : @semanticDeclarationAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  proc getAddAssignArgumentList (?!@unifiedTypeMap unused ioUnifiedTypeMap
+  proc getAddAssignArgumentList (?!@unifiedTypeMap unused ioUnifiedTypeMap,
                                   !@functionSignature outAddAssignArgumentList ) {
     outAddAssignArgumentList = @()
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  proc getEnumerationList (?!@unifiedTypeMap unused ioUnifiedTypeMap
-                            !@enumerationDescriptorList outEnumerationList
+  proc getEnumerationList (?!@unifiedTypeMap unused ioUnifiedTypeMap,
+                            !@enumerationDescriptorList outEnumerationList,
                             !@string outEnumeratedType ) {
     outEnumerationList = @() // Enumeration is not supported
     outEnumeratedType = "" // Enumeration is not supported
@@ -252,8 +252,8 @@ abstract class @predefinedTypeAST : @semanticDeclarationAST {
 
 //--------------------------------------------------------------------------------------------------
 
-private proc appendPredefinedListTypeAST (?!@semanticDeclarationListAST ioDeclarationListASTs
-                                          ?let @string inElementTypeName
+private proc appendPredefinedListTypeAST (?!@semanticDeclarationListAST ioDeclarationListASTs,
+                                          ?let @string inElementTypeName,
                                           ?!@lstringlist ioUsefulnessRootEntities ) {
   var @propertyInCollectionListAST attributeList = @()
   attributeList +=
@@ -275,7 +275,7 @@ private proc appendPredefinedListTypeAST (?!@semanticDeclarationListAST ioDeclar
 
 //--------------------------------------------------------------------------------------------------
 
-private proc appendPredefined2StringListTypeAST (?!@semanticDeclarationListAST ioDeclarationListASTs
+private proc appendPredefined2StringListTypeAST (?!@semanticDeclarationListAST ioDeclarationListASTs,
                                                 ?!@lstringlist ioUsefulnessRootEntities ) {
   var attributeList = @propertyInCollectionListAST ()
   attributeList +=
@@ -305,8 +305,8 @@ private proc appendPredefined2StringListTypeAST (?!@semanticDeclarationListAST i
 
 //--------------------------------------------------------------------------------------------------
 
-private proc appendStructASTForTypeWithLocation (?!@semanticDeclarationListAST ioDeclarationListASTs
-                                                ?let @string inElementTypeName
+private proc appendStructASTForTypeWithLocation (?!@semanticDeclarationListAST ioDeclarationListASTs,
+                                                ?let @string inElementTypeName,
                                                 ?!@lstringlist ioUsefulnessRootEntities ) {
   var attributeList = @propertyInCollectionListAST ()
   attributeList +=
@@ -339,7 +339,7 @@ private proc appendStructASTForTypeWithLocation (?!@semanticDeclarationListAST i
 
 //--------------------------------------------------------------------------------------------------
 
-private proc appendStructASTForRangeType (?!@semanticDeclarationListAST ioDeclarationListASTs
+private proc appendStructASTForRangeType (?!@semanticDeclarationListAST ioDeclarationListASTs,
                                          ?!@lstringlist unused ioUsefulnessRootEntities ) {
   var @propertyInCollectionListAST attributeList = @()
   attributeList +=
@@ -369,7 +369,7 @@ private proc appendStructASTForRangeType (?!@semanticDeclarationListAST ioDeclar
 //--------------------------------------------------------------------------------------------------
 
 private proc insertInUsefulnessEntities
-         (?!@lstringlist ioUsefulnessRootEntities
+         (?!@lstringlist ioUsefulnessRootEntities,
          ?let @string inTypeName ) {
   let typeUsefulnessName = typeNameForUsefulEntitiesGraph (!@{!inTypeName !.nowhere})
   ioUsefulnessRootEntities += !typeUsefulnessName
@@ -378,8 +378,8 @@ private proc insertInUsefulnessEntities
 //--------------------------------------------------------------------------------------------------
 
 private proc insertPredefinedType
-         (?!@semanticDeclarationListAST ioDeclarationListASTs
-         ?!@lstringlist ioUsefulnessRootEntities
+         (?!@semanticDeclarationListAST ioDeclarationListASTs,
+         ?!@lstringlist ioUsefulnessRootEntities,
          ?let @predefinedTypeAST inPredefinedTypeAST ) {
 //--- Declare type
   ioDeclarationListASTs += !inPredefinedTypeAST
@@ -400,7 +400,7 @@ private proc insertPredefinedType
 
 //--------------------------------------------------------------------------------------------------
 
-proc appendPredefinedTypesASTs (?!@semanticDeclarationListAST ioDeclarationListASTs
+proc appendPredefinedTypesASTs (?!@semanticDeclarationListAST ioDeclarationListASTs,
                                ?!@lstringlist ioUsefulnessRootEntities ) {
   insertPredefinedType (
     !?ioDeclarationListASTs

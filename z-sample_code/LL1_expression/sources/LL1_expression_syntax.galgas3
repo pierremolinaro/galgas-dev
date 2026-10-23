@@ -6,7 +6,7 @@ rule <StartSymbol> () {
 }
   
 rule <Constant>
-  (!@cExpression outExpressionTree
+  (!@cExpression outExpressionTree,
   !@uint outValue ) {
   $number$ ?let @luint cst
   send " "
@@ -15,7 +15,7 @@ rule <Constant>
 }
   
 rule <Expression>
-  (!@cExpression outExpressionTree
+  (!@cExpression outExpressionTree,
   !@uint outValue ) {
   <Terme> ?outExpressionTree ?outValue
   repeat
@@ -30,7 +30,7 @@ rule <Expression>
 }
   
 rule <Terme>
-  (!@cExpression outExpressionTree
+  (!@cExpression outExpressionTree,
   !@uint outValue ) {
   <Facteur> ?outExpressionTree ?outValue
   repeat
@@ -45,7 +45,7 @@ rule <Terme>
 }
 
 rule <Facteur>
-  (!@cExpression outExpressionTree
+  (!@cExpression outExpressionTree,
   !@uint outValue ) {
   select
     $($ :> ?* ?*

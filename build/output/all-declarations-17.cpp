@@ -17,7 +17,7 @@ void extensionSetter_placeGroupAsMainGroup (GGS_XcodeProjectDescriptor & ioObjec
                                             const GGS_string constinArgument_inGroupRef,
                                             Compiler * /* inCompiler */
                                             COMMA_UNUSED_LOCATION_ARGS) {
-  ioObject.mProperty_mMainGroupChildrenRefs.addAssignOperation (constinArgument_inGroupRef  COMMA_SOURCE_FILE ("XcodeProjectGeneration.galgas3", 312)) ;
+  ioObject.mProperty_mMainGroupChildrenRefs.addAssignOperation (constinArgument_inGroupRef  COMMA_SOURCE_FILE ("XcodeProjectGeneration.galgas3", 310)) ;
 }
 
 
@@ -31,7 +31,7 @@ void extensionSetter_addSettingsToDefaultConfiguration (GGS_XcodeProjectDescript
                                                         const GGS_stringlist constinArgument_inSettingList,
                                                         Compiler * inCompiler
                                                         COMMA_UNUSED_LOCATION_ARGS) {
-  ioObject.mProperty_mDefaultConfigurationSettingList.plusAssignOperation(constinArgument_inSettingList, inCompiler  COMMA_SOURCE_FILE ("XcodeProjectGeneration.galgas3", 319)) ;
+  ioObject.mProperty_mDefaultConfigurationSettingList.plusAssignOperation(constinArgument_inSettingList, inCompiler  COMMA_SOURCE_FILE ("XcodeProjectGeneration.galgas3", 317)) ;
 }
 
 
@@ -52,13 +52,13 @@ void extensionSetter_getReferenceKey (GGS_XcodeProjectDescriptor & ioObject,
     test_0 = GGS_bool (ComparisonKind::equal, temp_1.readProperty_mProjectObjectReference ().objectCompare (GGS_string::makeEmptyString ())).boolEnum () ;
     if (GalgasBool::boolTrue == test_0) {
       const GGS_XcodeProjectDescriptor temp_2 = ioObject ;
-      ioObject.mProperty_mProjectObjectReference = temp_2.readProperty_mSequenceNumber ().getter_string (SOURCE_FILE ("XcodeProjectGeneration.galgas3", 379)).getter_md_35_ (SOURCE_FILE ("XcodeProjectGeneration.galgas3", 379)).getter_rightSubString (GGS_uint (uint32_t (24U)) COMMA_SOURCE_FILE ("XcodeProjectGeneration.galgas3", 379)) ;
-      ioObject.mProperty_mSequenceNumber.plusAssignOperation(GGS_uint (uint32_t (1U)), inCompiler  COMMA_SOURCE_FILE ("XcodeProjectGeneration.galgas3", 380)) ;
+      ioObject.mProperty_mProjectObjectReference = temp_2.readProperty_mSequenceNumber ().getter_string (SOURCE_FILE ("XcodeProjectGeneration.galgas3", 377)).getter_md_35_ (SOURCE_FILE ("XcodeProjectGeneration.galgas3", 377)).getter_rightSubString (GGS_uint (uint32_t (24U)) COMMA_SOURCE_FILE ("XcodeProjectGeneration.galgas3", 377)) ;
+      ioObject.mProperty_mSequenceNumber.plusAssignOperation(GGS_uint (uint32_t (1U)), inCompiler  COMMA_SOURCE_FILE ("XcodeProjectGeneration.galgas3", 378)) ;
     }
   }
   const GGS_XcodeProjectDescriptor temp_3 = ioObject ;
-  outArgument_outRef = temp_3.readProperty_mSequenceNumber ().getter_string (SOURCE_FILE ("XcodeProjectGeneration.galgas3", 382)).getter_md_35_ (SOURCE_FILE ("XcodeProjectGeneration.galgas3", 382)).getter_rightSubString (GGS_uint (uint32_t (24U)) COMMA_SOURCE_FILE ("XcodeProjectGeneration.galgas3", 382)) ;
-  ioObject.mProperty_mSequenceNumber.plusAssignOperation(GGS_uint (uint32_t (1U)), inCompiler  COMMA_SOURCE_FILE ("XcodeProjectGeneration.galgas3", 383)) ;
+  outArgument_outRef = temp_3.readProperty_mSequenceNumber ().getter_string (SOURCE_FILE ("XcodeProjectGeneration.galgas3", 380)).getter_md_35_ (SOURCE_FILE ("XcodeProjectGeneration.galgas3", 380)).getter_rightSubString (GGS_uint (uint32_t (24U)) COMMA_SOURCE_FILE ("XcodeProjectGeneration.galgas3", 380)) ;
+  ioObject.mProperty_mSequenceNumber.plusAssignOperation(GGS_uint (uint32_t (1U)), inCompiler  COMMA_SOURCE_FILE ("XcodeProjectGeneration.galgas3", 381)) ;
 }
 
 
@@ -96,23 +96,23 @@ void extensionMethod_generateAtPath (const GGS_XcodeProjectDescriptor inObject,
   const GGS_XcodeProjectDescriptor temp_20 = inObject ;
   const GGS_XcodeProjectDescriptor temp_21 = inObject ;
   const GGS_XcodeProjectDescriptor temp_22 = inObject ;
-  GGS_string var_contents_18019 = GGS_string (filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (inCompiler, temp_0.readProperty_mProjectObjectReference (), temp_1.readProperty_mMainGroupReference (), temp_2.readProperty_mGroupList (), temp_3.readProperty_mMainGroupChildrenRefs (), temp_4.readProperty_mToolTargetList (), temp_5.readProperty_mAppTargetList (), temp_6.readProperty_mCFileList (), temp_7.readProperty_mCppFileList (), temp_8.readProperty_m_5F_Swift_5F_FileList (), temp_9.readProperty_m_5F_M_5F_FileList (), temp_10.readProperty_m_5F_MM_5F_FileList (), temp_11.readProperty_mFrameworkFileList (), temp_12.readProperty_mHeaderFileList (), temp_13.readProperty_mInfoPlistFileList (), temp_14.readProperty_mTIFF_5F_fileList (), temp_15.readProperty_mICNS_5F_fileList (), temp_16.readProperty_mXIB_5F_fileList (), temp_17.readProperty_mBuildFileList (), temp_18.readProperty_mDefaultConfigurationRef (), temp_19.readProperty_mDefaultConfigurationSettingList (), temp_20.readProperty_mProjectBuildConfigurationRef (), temp_21.readProperty_mApplicationBundleName (), temp_22.readProperty_mProjectName () COMMA_SOURCE_FILE ("XcodeProjectGeneration.galgas3", 454))) ;
-  GGS_string var_projectCoreFile_18741 = constinArgument_inPath.add_operation (GGS_string ("/project.pbxproj"), inCompiler COMMA_SOURCE_FILE ("XcodeProjectGeneration.galgas3", 479)) ;
+  GGS_string var_contents_17966 = GGS_string (filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (inCompiler, temp_0.readProperty_mProjectObjectReference (), temp_1.readProperty_mMainGroupReference (), temp_2.readProperty_mGroupList (), temp_3.readProperty_mMainGroupChildrenRefs (), temp_4.readProperty_mToolTargetList (), temp_5.readProperty_mAppTargetList (), temp_6.readProperty_mCFileList (), temp_7.readProperty_mCppFileList (), temp_8.readProperty_m_5F_Swift_5F_FileList (), temp_9.readProperty_m_5F_M_5F_FileList (), temp_10.readProperty_m_5F_MM_5F_FileList (), temp_11.readProperty_mFrameworkFileList (), temp_12.readProperty_mHeaderFileList (), temp_13.readProperty_mInfoPlistFileList (), temp_14.readProperty_mTIFF_5F_fileList (), temp_15.readProperty_mICNS_5F_fileList (), temp_16.readProperty_mXIB_5F_fileList (), temp_17.readProperty_mBuildFileList (), temp_18.readProperty_mDefaultConfigurationRef (), temp_19.readProperty_mDefaultConfigurationSettingList (), temp_20.readProperty_mProjectBuildConfigurationRef (), temp_21.readProperty_mApplicationBundleName (), temp_22.readProperty_mProjectName () COMMA_SOURCE_FILE ("XcodeProjectGeneration.galgas3", 452))) ;
+  GGS_string var_projectCoreFile_18688 = constinArgument_inPath.add_operation (GGS_string ("/project.pbxproj"), inCompiler COMMA_SOURCE_FILE ("XcodeProjectGeneration.galgas3", 477)) ;
   GalgasBool test_23 = GalgasBool::boolTrue ;
   if (GalgasBool::boolTrue == test_23) {
-    GGS_bool test_24 = var_projectCoreFile_18741.getter_fileExists (SOURCE_FILE ("XcodeProjectGeneration.galgas3", 480)).operator_not (SOURCE_FILE ("XcodeProjectGeneration.galgas3", 480)) ;
+    GGS_bool test_24 = var_projectCoreFile_18688.getter_fileExists (SOURCE_FILE ("XcodeProjectGeneration.galgas3", 478)).operator_not (SOURCE_FILE ("XcodeProjectGeneration.galgas3", 478)) ;
     if (GalgasBool::boolTrue != test_24.boolEnum ()) {
-      test_24 = constinArgument_inCacheFilePath.getter_fileExists (SOURCE_FILE ("XcodeProjectGeneration.galgas3", 480)).operator_not (SOURCE_FILE ("XcodeProjectGeneration.galgas3", 480)) ;
+      test_24 = constinArgument_inCacheFilePath.getter_fileExists (SOURCE_FILE ("XcodeProjectGeneration.galgas3", 478)).operator_not (SOURCE_FILE ("XcodeProjectGeneration.galgas3", 478)) ;
     }
     GGS_bool test_25 = test_24 ;
     if (GalgasBool::boolTrue != test_25.boolEnum ()) {
-      test_25 = GGS_bool (ComparisonKind::notEqual, GGS_string::class_func_stringWithContentsOfFile (constinArgument_inCacheFilePath, inCompiler  COMMA_SOURCE_FILE ("XcodeProjectGeneration.galgas3", 480)).objectCompare (var_contents_18019)) ;
+      test_25 = GGS_bool (ComparisonKind::notEqual, GGS_string::class_func_stringWithContentsOfFile (constinArgument_inCacheFilePath, inCompiler  COMMA_SOURCE_FILE ("XcodeProjectGeneration.galgas3", 478)).objectCompare (var_contents_17966)) ;
     }
     test_23 = test_25.boolEnum () ;
     if (GalgasBool::boolTrue == test_23) {
-      GGS_bool joker_19000 ; // Joker input parameter
-      var_contents_18019.method_writeToFileWhenDifferentContents (constinArgument_inCacheFilePath, joker_19000, inCompiler COMMA_SOURCE_FILE ("XcodeProjectGeneration.galgas3", 481)) ;
-      var_contents_18019.method_makeDirectoryAndWriteToFile (var_projectCoreFile_18741, inCompiler COMMA_SOURCE_FILE ("XcodeProjectGeneration.galgas3", 482)) ;
+      GGS_bool joker_18947 ; // Joker input parameter
+      var_contents_17966.method_writeToFileWhenDifferentContents (constinArgument_inCacheFilePath, joker_18947, inCompiler COMMA_SOURCE_FILE ("XcodeProjectGeneration.galgas3", 479)) ;
+      var_contents_17966.method_makeDirectoryAndWriteToFile (var_projectCoreFile_18688, inCompiler COMMA_SOURCE_FILE ("XcodeProjectGeneration.galgas3", 480)) ;
     }
   }
 }
@@ -6349,7 +6349,7 @@ void extensionSetter_insertInitializerSelfProperty (GGS_localVarManager & ioObje
                                                     const GGS_bool constinArgument_inInitialized,
                                                     Compiler * inCompiler
                                                     COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_lstring var_varName_12612 = GGS_lstring::init_21__21_ (GGS_string ("self.").add_operation (constinArgument_inPropertyName, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas3", 273)), constinArgument_inErrorLocation, inCompiler COMMA_HERE) ;
+  GGS_lstring var_varName_12660 = GGS_lstring::init_21__21_ (GGS_string ("self.").add_operation (constinArgument_inPropertyName, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas3", 273)), constinArgument_inErrorLocation, inCompiler COMMA_HERE) ;
   {
   GGS_localVarValuation temp_0 ;
   const GalgasBool test_1 = constinArgument_inInitialized.boolEnum () ;
@@ -6358,7 +6358,7 @@ void extensionSetter_insertInitializerSelfProperty (GGS_localVarManager & ioObje
   }else if (GalgasBool::boolFalse == test_1) {
     temp_0 = GGS_localVarValuation::class_func_declared (GGS_bool (false)  COMMA_SOURCE_FILE ("variable-manager.galgas3", 281)) ;
   }
-  extensionSetter_insertKey (ioObject.mProperty_mCurrentManager, var_varName_12612, constinArgument_inType, constinArgument_inCppName, constinArgument_inNameForCheckingFormalParameterUsing, GGS_localVariableAttributes::class_func_rejectDeclaredStateAsFinalState (SOURCE_FILE ("variable-manager.galgas3", 279)).operator_or (GGS_localVariableAttributes::class_func_acceptInitializedStateAsFinalState (SOURCE_FILE ("variable-manager.galgas3", 280)) COMMA_SOURCE_FILE ("variable-manager.galgas3", 279)).operator_or (GGS_localVariableAttributes::class_func_acceptReadStateAsFinalState (SOURCE_FILE ("variable-manager.galgas3", 280)) COMMA_SOURCE_FILE ("variable-manager.galgas3", 280)), temp_0, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas3", 274)) ;
+  extensionSetter_insertKey (ioObject.mProperty_mCurrentManager, var_varName_12660, constinArgument_inType, constinArgument_inCppName, constinArgument_inNameForCheckingFormalParameterUsing, GGS_localVariableAttributes::class_func_rejectDeclaredStateAsFinalState (SOURCE_FILE ("variable-manager.galgas3", 279)).operator_or (GGS_localVariableAttributes::class_func_acceptInitializedStateAsFinalState (SOURCE_FILE ("variable-manager.galgas3", 280)) COMMA_SOURCE_FILE ("variable-manager.galgas3", 279)).operator_or (GGS_localVariableAttributes::class_func_acceptReadStateAsFinalState (SOURCE_FILE ("variable-manager.galgas3", 280)) COMMA_SOURCE_FILE ("variable-manager.galgas3", 280)), temp_0, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas3", 274)) ;
   }
 }
 
@@ -6405,21 +6405,21 @@ void extensionSetter_closeOverride (GGS_localVarManager & ioObject,
     const GGS_localVarManager temp_1 = ioObject ;
     test_0 = GGS_bool (ComparisonKind::greaterThan, temp_1.readProperty_mOverridenManagers ().getter_count (SOURCE_FILE ("variable-manager.galgas3", 302)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
     if (GalgasBool::boolTrue == test_0) {
-      GGS_overrideKind var_savedManager_13867 ;
+      GGS_overrideKind var_savedManager_13915 ;
       {
-      ioObject.mProperty_mOverridenManagers.setter_popLast (var_savedManager_13867, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas3", 303)) ;
+      ioObject.mProperty_mOverridenManagers.setter_popLast (var_savedManager_13915, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas3", 303)) ;
       }
-      switch (var_savedManager_13867.enumValue ()) {
+      switch (var_savedManager_13915.enumValue ()) {
       case GGS_overrideKind::Enumeration::invalid:
         break ;
       case GGS_overrideKind::Enumeration::enum_selectOverrideFirstBranch:
         break ;
       case GGS_overrideKind::Enumeration::enum_selectOverrideNextBranches:
         {
-          GGS_currentVarManager extractedValue_14046_savedManager_0 ;
-          GGS_currentVarManager extractedValue_14078_referenceManager_1 ;
-          var_savedManager_13867.getAssociatedValuesFor_selectOverrideNextBranches (extractedValue_14046_savedManager_0, extractedValue_14078_referenceManager_1) ;
-          ioObject.mProperty_mCurrentManager = extractedValue_14078_referenceManager_1 ;
+          GGS_currentVarManager extractedValue_14094_savedManager_0 ;
+          GGS_currentVarManager extractedValue_14126_referenceManager_1 ;
+          var_savedManager_13915.getAssociatedValuesFor_selectOverrideNextBranches (extractedValue_14094_savedManager_0, extractedValue_14126_referenceManager_1) ;
+          ioObject.mProperty_mCurrentManager = extractedValue_14126_referenceManager_1 ;
         }
         break ;
       case GGS_overrideKind::Enumeration::enum_repeatOverride:
@@ -6463,39 +6463,39 @@ void extensionSetter_closeBranch (GGS_localVarManager & ioObject,
     const GGS_localVarManager temp_1 = ioObject ;
     test_0 = GGS_bool (ComparisonKind::greaterThan, temp_1.readProperty_mOverridenManagers ().getter_count (SOURCE_FILE ("variable-manager.galgas3", 324)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
     if (GalgasBool::boolTrue == test_0) {
-      GGS_overrideKind var_savedManager_14704 ;
+      GGS_overrideKind var_savedManager_14752 ;
       {
-      ioObject.mProperty_mOverridenManagers.setter_popLast (var_savedManager_14704, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas3", 325)) ;
+      ioObject.mProperty_mOverridenManagers.setter_popLast (var_savedManager_14752, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas3", 325)) ;
       }
-      switch (var_savedManager_14704.enumValue ()) {
+      switch (var_savedManager_14752.enumValue ()) {
       case GGS_overrideKind::Enumeration::invalid:
         break ;
       case GGS_overrideKind::Enumeration::enum_selectOverrideFirstBranch:
         {
-          GGS_currentVarManager extractedValue_14797_savedManager_0 ;
-          var_savedManager_14704.getAssociatedValuesFor_selectOverrideFirstBranch (extractedValue_14797_savedManager_0) ;
+          GGS_currentVarManager extractedValue_14845_savedManager_0 ;
+          var_savedManager_14752.getAssociatedValuesFor_selectOverrideFirstBranch (extractedValue_14845_savedManager_0) ;
           const GGS_localVarManager temp_2 = ioObject ;
-          ioObject.mProperty_mOverridenManagers.addAssignOperation (GGS_overrideKind::class_func_selectOverrideNextBranches (extractedValue_14797_savedManager_0, temp_2.readProperty_mCurrentManager ()  COMMA_SOURCE_FILE ("variable-manager.galgas3", 328))  COMMA_SOURCE_FILE ("variable-manager.galgas3", 328)) ;
-          ioObject.mProperty_mCurrentManager = extractedValue_14797_savedManager_0 ;
+          ioObject.mProperty_mOverridenManagers.addAssignOperation (GGS_overrideKind::class_func_selectOverrideNextBranches (extractedValue_14845_savedManager_0, temp_2.readProperty_mCurrentManager ()  COMMA_SOURCE_FILE ("variable-manager.galgas3", 328))  COMMA_SOURCE_FILE ("variable-manager.galgas3", 328)) ;
+          ioObject.mProperty_mCurrentManager = extractedValue_14845_savedManager_0 ;
         }
         break ;
       case GGS_overrideKind::Enumeration::enum_selectOverrideNextBranches:
         {
-          GGS_currentVarManager extractedValue_15043_savedManager_0 ;
-          GGS_currentVarManager extractedValue_15075_referenceManager_1 ;
-          var_savedManager_14704.getAssociatedValuesFor_selectOverrideNextBranches (extractedValue_15043_savedManager_0, extractedValue_15075_referenceManager_1) ;
+          GGS_currentVarManager extractedValue_15091_savedManager_0 ;
+          GGS_currentVarManager extractedValue_15123_referenceManager_1 ;
+          var_savedManager_14752.getAssociatedValuesFor_selectOverrideNextBranches (extractedValue_15091_savedManager_0, extractedValue_15123_referenceManager_1) ;
           const GGS_localVarManager temp_3 = ioObject ;
-          GGS_currentVarManager var_newReferenceManager_15105 = temp_3.readProperty_mCurrentManager () ;
+          GGS_currentVarManager var_newReferenceManager_15153 = temp_3.readProperty_mCurrentManager () ;
           {
-          extensionSetter_combineManagerWith (var_newReferenceManager_15105, extractedValue_15075_referenceManager_1, constinArgument_inEndOfBranchLocation, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas3", 332)) ;
+          extensionSetter_combineManagerWith (var_newReferenceManager_15153, extractedValue_15123_referenceManager_1, constinArgument_inEndOfBranchLocation, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas3", 332)) ;
           }
-          ioObject.mProperty_mOverridenManagers.addAssignOperation (GGS_overrideKind::class_func_selectOverrideNextBranches (extractedValue_15043_savedManager_0, var_newReferenceManager_15105  COMMA_SOURCE_FILE ("variable-manager.galgas3", 333))  COMMA_SOURCE_FILE ("variable-manager.galgas3", 333)) ;
-          ioObject.mProperty_mCurrentManager = extractedValue_15043_savedManager_0 ;
+          ioObject.mProperty_mOverridenManagers.addAssignOperation (GGS_overrideKind::class_func_selectOverrideNextBranches (extractedValue_15091_savedManager_0, var_newReferenceManager_15153  COMMA_SOURCE_FILE ("variable-manager.galgas3", 333))  COMMA_SOURCE_FILE ("variable-manager.galgas3", 333)) ;
+          ioObject.mProperty_mCurrentManager = extractedValue_15091_savedManager_0 ;
         }
         break ;
       case GGS_overrideKind::Enumeration::enum_repeatOverride:
         {
-          ioObject.mProperty_mOverridenManagers.addAssignOperation (var_savedManager_14704  COMMA_SOURCE_FILE ("variable-manager.galgas3", 336)) ;
+          ioObject.mProperty_mOverridenManagers.addAssignOperation (var_savedManager_14752  COMMA_SOURCE_FILE ("variable-manager.galgas3", 336)) ;
         }
         break ;
       }

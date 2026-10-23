@@ -37,12 +37,12 @@ override func @weakReferenceDeclarationAST keyRepresentation -> @string {
 //--------------------------------------------------------------------------------------------------
 
 override proc @weakReferenceDeclarationAST enterDeclarationInGraph
-  (?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
-  ?!@equatableExtensionMap unused ioEquatableExtensionMap
-  ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext
-  ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext
-  ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
-  ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
+  (?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph,
+  ?!@equatableExtensionMap unused ioEquatableExtensionMap,
+  ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext,
+  ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext,
+  ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext,
+  ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext,
   ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList
 ) {
   let key = @lstring {!"@" + self.mWeakReferenceTypeName !self.mWeakReferenceTypeName.location}
@@ -60,12 +60,12 @@ override proc @weakReferenceDeclarationAST enterDeclarationInGraph
 //--------------------------------------------------------------------------------------------------
 
 override proc @weakReferenceDeclarationAST enterDeclarationInSemanticContext
-          (?!@equatableExtensionMap ioEquatableExtensionMap
-          ?let @extensionInitializerForBuildingContext inExtensionInitializerMapForBuildingContext
-          ?let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext
-          ?let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext
-          ?let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext
-          ?!@unifiedTypeMap ioTypeMap
+          (?!@equatableExtensionMap ioEquatableExtensionMap,
+          ?let @extensionInitializerForBuildingContext inExtensionInitializerMapForBuildingContext,
+          ?let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext,
+          ?let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext,
+          ?let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext,
+          ?!@unifiedTypeMap ioTypeMap,
           ?!@semanticContext ioSemanticContext ) {
 //--- Handle super class
   let @unifiedTypeMapEntry superClassIndex
@@ -165,12 +165,12 @@ override proc @weakReferenceDeclarationAST enterDeclarationInSemanticContext
 //--------------------------------------------------------------------------------------------------
 
 override proc @weakReferenceDeclarationAST semanticAnalysis
-  (?!@lstringlist unused ioUsefulnessRootEntities
-  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-  ?let @string unused inProductDirectory
-  ?let @semanticContext unused inSemanticContext
-                                ?!@unifiedTypeMap ioTypeMap
-  ?let @predefinedTypes unused inPredefinedTypes
+  (?!@lstringlist unused ioUsefulnessRootEntities,
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
+  ?let @string unused inProductDirectory,
+  ?let @semanticContext unused inSemanticContext,
+                                ?!@unifiedTypeMap ioTypeMap,
+  ?let @predefinedTypes unused inPredefinedTypes,
   ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
 ) {
 //--- Useful entities graph
@@ -219,7 +219,7 @@ final class @weakReferenceTypeForGeneration : @semanticTypeForGeneration {
 
 //--------------------------------------------------------------------------------------------------
 
-override proc @weakReferenceTypeForGeneration appendDeclaration1 (?!@stringset ioInclusionSet
+override proc @weakReferenceTypeForGeneration appendDeclaration1 (?!@stringset ioInclusionSet,
                                                                    !@string outHeader ) {
   if not self.mSuperClass.isNull then
     [self.mSuperClass addHeaderFileName !?ioInclusionSet]
@@ -261,8 +261,8 @@ override proc @weakReferenceTypeForGeneration appendDeclaration1 (?!@stringset i
 //--------------------------------------------------------------------------------------------------
 
 override proc @weakReferenceTypeForGeneration appendSpecificImplementation
-  (?let @unifiedTypeMap unused inTypeMap
-  ?!@stringset ioInclusionSet
+  (?let @unifiedTypeMap unused inTypeMap,
+  ?!@stringset ioInclusionSet,
   !@string outImplementation
 ) {
   [self.mSelfTypeEntry addHeaderFileName !?ioInclusionSet]

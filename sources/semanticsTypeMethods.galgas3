@@ -23,11 +23,11 @@
 //--------------------------------------------------------------------------------------------------
 
 proc enterClassMethodWithInputArgument
-  (?!@classMethodMap ioClassMethodMap
-  ?!@unifiedTypeMap ioUnifiedTypeMap
-  ?methodName:let @string inClassMethodName
-  ?argType:let @string inArgumentTypeName
-  ?argName:let @string inArgumentName
+  (?!@classMethodMap ioClassMethodMap,
+  ?!@unifiedTypeMap ioUnifiedTypeMap,
+  ?methodName:let @string inClassMethodName,
+  ?argType:let @string inArgumentTypeName,
+  ?argName:let @string inArgumentName,
   ?compilerArgument:let @bool inHasCompilerArgument
 ) {
   [!?ioUnifiedTypeMap makeEntryFromString !inArgumentTypeName ?let argumentTypeIndex]
@@ -43,15 +43,15 @@ proc enterClassMethodWithInputArgument
 //--------------------------------------------------------------------------------------------------
 
 proc enterClassMethodWith3InputArguments
-  (?!@classMethodMap ioClassMethodMap
-  ?!@unifiedTypeMap ioUnifiedTypeMap
-  ?methodName:let @string inClassMethodName
-  ?argType1:let @string inArgumentTypeName1
-  ?argName1:let @string inArgumentName1
-  ?argType2:let @string inArgumentTypeName2
-  ?argName2:let @string inArgumentName2
-  ?argType3:let @string inArgumentTypeName3
-  ?argName3:let @string inArgumentName3
+  (?!@classMethodMap ioClassMethodMap,
+  ?!@unifiedTypeMap ioUnifiedTypeMap,
+  ?methodName:let @string inClassMethodName,
+  ?argType1:let @string inArgumentTypeName1,
+  ?argName1:let @string inArgumentName1,
+  ?argType2:let @string inArgumentTypeName2,
+  ?argName2:let @string inArgumentName2,
+  ?argType3:let @string inArgumentTypeName3,
+  ?argName3:let @string inArgumentName3,
   ?compilerArgument:let @bool inHasCompilerArgument
 ) {
   var @formalParameterSignature argList = @()
@@ -71,10 +71,10 @@ proc enterClassMethodWith3InputArguments
 //--------------------------------------------------------------------------------------------------
 
 proc enterClassMethodWithStringInputArgument
-  (?!@classMethodMap ioClassMethodMap
-  ?!@unifiedTypeMap ioUnifiedTypeMap
-  ?classMethod:let @string inClassMethodName
-  ?argName:let @string inStringArgumentName
+  (?!@classMethodMap ioClassMethodMap,
+  ?!@unifiedTypeMap ioUnifiedTypeMap,
+  ?classMethod:let @string inClassMethodName,
+  ?argName:let @string inStringArgumentName,
   ?compilerArg:let @bool inHasCompilerArgument
 ) {
   [!?ioUnifiedTypeMap makeEntryFromString !"string" ?let argumentTypeIndex]

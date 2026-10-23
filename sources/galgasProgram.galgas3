@@ -148,7 +148,7 @@ grammar galgas4ProjectGrammar
 //
 //--------------------------------------------------------------------------------------------------
 
-private proc parseAndAnalyzeProject (?let @lstring inProjectSourceFilePath
+private proc parseAndAnalyzeProject (?let @lstring inProjectSourceFilePath,
                                     ?let @string inSourceToAnalyze ) {
   if @application.verboseOutput then
     println (!"*** Parsing project files")
@@ -180,8 +180,8 @@ private proc parseAndAnalyzeProject (?let @lstring inProjectSourceFilePath
 
 //--------------------------------------------------------------------------------------------------
 
-private proc compileProject (?let @lstring inProjectSourceFile
-                            ?let @string inSourceToAnalyze
+private proc compileProject (?let @lstring inProjectSourceFile,
+                            ?let @string inSourceToAnalyze,
                             ?let @galgas3ProjectComponentAST inProjectComponentAST ) {
   var @galgasDeclarationAST declarationAST = @()
 //--- Parse predefined type definitions
@@ -352,18 +352,18 @@ private proc compileProject (?let @lstring inProjectSourceFile
 //--------------------------------------------------------------------------------------------------
 
 private proc projectGeneration
-              (?let @unifiedTypeMap inTypeMap
-              ?absoluteBuildDir: let @string inAbsoluteBuildDirectory
-              ?buildDirName: let @string inBuildDirectoryName
-              ?let @optionComponentMapForGeneration inOptionComponentMapForGeneration
-              ?let @stringlist inAppProductFileList
-              ?let @semanticDeclarationListForGeneration inSemanticDeclarationSortedListForGeneration
-              ?let @programRuleList inSourceRuleList
-              ?let @galgas3ProjectComponentAST inProjectComponentAST
-              ?let @string inProjectSourceFile
-              ?let @string inHandCodedSourceDirectory
-              ?let @stringlist inHandCodedSourceToolFileList
-              ?let @stringlist inFrameworkToolFileList
+              (?let @unifiedTypeMap inTypeMap,
+              ?absoluteBuildDir: let @string inAbsoluteBuildDirectory,
+              ?buildDirName: let @string inBuildDirectoryName,
+              ?let @optionComponentMapForGeneration inOptionComponentMapForGeneration,
+              ?let @stringlist inAppProductFileList,
+              ?let @semanticDeclarationListForGeneration inSemanticDeclarationSortedListForGeneration,
+              ?let @programRuleList inSourceRuleList,
+              ?let @galgas3ProjectComponentAST inProjectComponentAST,
+              ?let @string inProjectSourceFile,
+              ?let @string inHandCodedSourceDirectory,
+              ?let @stringlist inHandCodedSourceToolFileList,
+              ?let @stringlist inFrameworkToolFileList,
               ?let @stringlist inHandCodedLinkAppFileList
 ) {
   let appProductFileList = inAppProductFileList

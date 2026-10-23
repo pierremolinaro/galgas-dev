@@ -159,12 +159,12 @@ override proc @dictDeclarationAST addAssociatedElement (?!@galgasDeclarationAST 
 //--------------------------------------------------------------------------------------------------
 
 override proc @dictDeclarationAST enterDeclarationInGraph
-  (?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
-  ?!@equatableExtensionMap unused ioEquatableExtensionMap
-  ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext
-  ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext
-  ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
-  ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
+  (?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph,
+  ?!@equatableExtensionMap unused ioEquatableExtensionMap,
+  ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext,
+  ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext,
+  ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext,
+  ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext,
   ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList
  ) {
   let key = @lstring {!"@" + self.mDictTypeName !self.mDictTypeName.location}
@@ -180,12 +180,12 @@ override proc @dictDeclarationAST enterDeclarationInGraph
 //--------------------------------------------------------------------------------------------------
 
 override proc @dictDeclarationAST enterDeclarationInSemanticContext
-  (?!@equatableExtensionMap ioEquatableExtensionMap
-  ?let @extensionInitializerForBuildingContext inExtensionInitializerMapForBuildingContext
-  ?let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext
-  ?let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext
-  ?let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext
-  ?!@unifiedTypeMap ioTypeMap
+  (?!@equatableExtensionMap ioEquatableExtensionMap,
+  ?let @extensionInitializerForBuildingContext inExtensionInitializerMapForBuildingContext,
+  ?let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext,
+  ?let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext,
+  ?let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext,
+  ?!@unifiedTypeMap ioTypeMap,
   ?!@semanticContext ioSemanticContext ) {
 //--- key type index
   [!?ioTypeMap makeEntryFromString !self.mKeyTypeName ?let keyTypeIndex]
@@ -455,12 +455,12 @@ func %once forbiddenKeysForMapAndDict () -> @stringset {
 //--------------------------------------------------------------------------------------------------
 
 override proc @dictDeclarationAST semanticAnalysis
-                (?!@lstringlist ioUsefulnessRootEntities
-                ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-                ?let @string unused inProductDirectory
-                ?let @semanticContext unused inSemanticContext
-                ?!@unifiedTypeMap ioTypeMap
-                ?let @predefinedTypes unused inPredefinedTypes
+                (?!@lstringlist ioUsefulnessRootEntities,
+                ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
+                ?let @string unused inProductDirectory,
+                ?let @semanticContext unused inSemanticContext,
+                ?!@unifiedTypeMap ioTypeMap,
+                ?let @predefinedTypes unused inPredefinedTypes,
                 ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
 ) {
 //--- Check key is comparable
@@ -544,7 +544,7 @@ final class @dictTypeForGeneration : @semanticTypeForGeneration {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override proc appendDeclaration1 (?!@stringset ioInclusionSet
+  override proc appendDeclaration1 (?!@stringset ioInclusionSet,
                                      !@string outHeader ) {
     [self.mElementTypeEntry addHeaderFileName1 !?ioInclusionSet]
     [self.mOptionalElementTypeEntry addHeaderFileName1 !?ioInclusionSet]
@@ -580,8 +580,8 @@ final class @dictTypeForGeneration : @semanticTypeForGeneration {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc appendSpecificImplementation
-                                          (?let @unifiedTypeMap unused inTypeMap
-                                          ?!@stringset ioInclusionSet
+                                          (?let @unifiedTypeMap unused inTypeMap,
+                                          ?!@stringset ioInclusionSet,
                                           !@string outImplementation ) {
     [self.mSelfTypeEntry addHeaderFileName !?ioInclusionSet]
     let selfTypeDefinition = self.mSelfTypeEntry.definition

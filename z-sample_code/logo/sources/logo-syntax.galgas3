@@ -16,7 +16,7 @@ syntax logo_syntax (logo_lexique) {
 
   //----------------------------------------------------------------------------------------------
 
-  rule <instruction> (?!@routineMap ioTableRoutines ?!@instructionList il ) {
+  rule <instruction> (?!@routineMap ioTableRoutines ,?!@instructionList il ) {
     select
       $FORWARD$
       $integer$ ?let @luint param
@@ -46,7 +46,7 @@ syntax logo_syntax (logo_lexique) {
 
   //----------------------------------------------------------------------------------------------
 
-  rule <instruction_list> (?!@routineMap ioTableRoutines ?!@instructionList il ) {
+  rule <instruction_list> (?!@routineMap ioTableRoutines ,?!@instructionList il ) {
     repeat
     while
       <instruction> !? ioTableRoutines !? il

@@ -408,8 +408,8 @@ map @optionComponentMapForGeneration {
 //--------------------------------------------------------------------------------------------------
 
 proc compileAllGuiComponentFromASTGalgas3
-  (?let @galgasGUIComponentListAST inGuiComponentListAST
-  ?let @semanticContext inSemanticContext
+  (?let @galgasGUIComponentListAST inGuiComponentListAST,
+  ?let @semanticContext inSemanticContext,
   !@optionComponentMapForGeneration outOptionComponentMapForGeneration ) {
   outOptionComponentMapForGeneration = @()
   for guiAST in inGuiComponentListAST do
@@ -423,8 +423,8 @@ proc compileAllGuiComponentFromASTGalgas3
 
 //--------------------------------------------------------------------------------------------------
 
-private proc guiComponentSemanticAnalysis (?let @galgasGUIComponentListAST.@element inGUIComponentAST
-                                          ?let @semanticContext inSemanticContext
+private proc guiComponentSemanticAnalysis (?let @galgasGUIComponentListAST.@element inGUIComponentAST,
+                                          ?let @semanticContext inSemanticContext,
                                           ?!@optionComponentMapForGeneration ioOptionComponentMapForGeneration ) {
   if inGUIComponentAST.mGUIComponentName.string != "cocoa" then
     error (inGUIComponentAST.mGUIComponentName : "the gui name should be 'cocoa'")
@@ -550,29 +550,11 @@ private proc guiComponentSemanticAnalysis (?let @galgasGUIComponentListAST.@elem
 //! CODE GENERATION
 //--------------------------------------------------------------------------------------------------
 
-proc generateAllGuiComponentsGalgas3 (?let @optionComponentMapForGeneration inOptionComponentMapForGeneration
-                                      ?let @string inOutputDirectory
-                                      ?let @bool inQuietOutputByDefault
-//                                      ?!objc: @stringlist ioObjcAllProductFileList
+proc generateAllGuiComponentsGalgas3 (?let @optionComponentMapForGeneration inOptionComponentMapForGeneration,
+                                      ?let @string inOutputDirectory,
+                                      ?let @bool inQuietOutputByDefault,
                                       ?!swift: @stringlist ioSwiftAllProductFileList ) {
   for (lkey guiComponentContext) in inOptionComponentMapForGeneration do
-//    let swiftFileName = "gui-" + lkey + ".swift"
-//    ioSwiftAllProductFileList += !swiftFileName
-//    let @string swift_string = [filewrapper guiGenerationTemplates.swift_gui_implementation
-//      !guiComponentContext
-//      !inQuietOutputByDefault
-//    ]
-//    [@string generateFileWithPattern
-//      !startPath:inOutputDirectory
-//      !fileName: swiftFileName
-//      !lineComment:"//"
-//      !header:"" // Header
-//      !defaultUserZone1:"\n\n" // Defaut user zone1
-//      !generatedZone2: swift_string
-//      !defaultUserZone2:"\n\n" // Defaut user zone2
-//      !generatedZone3:"\n\n" // Zone 3
-//      !makeExecutable:false
-//    ]
     let swiftuiFileName = "gui-swiftui-" + lkey + ".swift"
     ioSwiftAllProductFileList += !swiftuiFileName
     let @string swiftui_string = [filewrapper guiGenerationTemplates.swiftui_gui_implementation
@@ -590,23 +572,6 @@ proc generateAllGuiComponentsGalgas3 (?let @optionComponentMapForGeneration inOp
       !generatedZone3:"\n\n" // Zone 3
       !makeExecutable:false
     ]
-//    let objcFileName = "gui-" + lkey + ".m"
-//    ioObjcAllProductFileList += !objcFileName
-//    let @string objc_string = [filewrapper guiGenerationTemplates.objc_gui_implementation
-//      !guiComponentContext
-//      !inQuietOutputByDefault
-//    ]
-//    [@string generateFileWithPattern
-//      !startPath:inOutputDirectory
-//      !fileName: objcFileName
-//      !lineComment:"//"
-//      !header:"" // Header
-//      !defaultUserZone1:"\n\n" // Defaut user zone1
-//      !generatedZone2: objc_string
-//      !defaultUserZone2:"\n\n" // Defaut user zone2
-//      !generatedZone3:"\n\n" // Zone 3
-//      !makeExecutable:false
-//    ]
   end
 }
 
@@ -617,14 +582,6 @@ proc generateAllGuiComponentsGalgas3 (?let @optionComponentMapForGeneration inOp
 filewrapper guiGenerationTemplates in "+generation-templates/gui_generation" {
 }{
 }{
-//  template objc_gui_implementation "gui-implementation.m.galgasTemplate"
-//    ?@guiAnalysisContext GUI_CONTEXT
-//    ?@bool QUIET_OUTPUT_BY_DEFAULT
-
-//  template swift_gui_implementation "gui-implementation.swift.galgasTemplate"
-//    ?@guiAnalysisContext GUI_CONTEXT
-//    ?@bool QUIET_OUTPUT_BY_DEFAULT
-
   template swiftui_gui_implementation "gui-implementation-swiftui.swift.galgasTemplate"
     ?@guiAnalysisContext GUI_CONTEXT
     ?@bool QUIET_OUTPUT_BY_DEFAULT

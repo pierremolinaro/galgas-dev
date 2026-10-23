@@ -23,7 +23,7 @@ syntax extension galgas3ExpressionSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <primary_ggs3> (?!@galgasDeclarationAST ioDeclarations
+  rule <primary_ggs3> (?!@galgasDeclarationAST ioDeclarations,
                       !@semanticExpressionAST outExpression ) {
     $identifier$ ?let @lstring functionName indexing functionCall
     $($
@@ -77,7 +77,7 @@ syntax extension galgas4ExpressionSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <primary> (?!@galgasDeclarationAST ioDeclarations
+  rule <primary> (?!@galgasDeclarationAST ioDeclarations,
                  !@semanticExpressionAST outExpression ) {
     $identifier$ ?let @lstring functionName indexing functionCall
     $($
@@ -111,12 +111,12 @@ final class @functionCallExpressionAST : @semanticExpressionAST {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc analyzeSemanticExpression
-    (?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName
-    ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-    ?inferenceType: let @unifiedTypeMapEntry unused inType
-    ?let @analysisContext inAnalysisContext
-                                  ?!@unifiedTypeMap ioTypeMap
-    ?!@localVarManager ioVariableMap
+    (?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName,
+    ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
+    ?inferenceType: let @unifiedTypeMapEntry unused inType,
+    ?let @analysisContext inAnalysisContext,
+                                  ?!@unifiedTypeMap ioTypeMap,
+    ?!@localVarManager ioVariableMap,
     !@semanticExpressionForGeneration outExpression
   ) {
     let usefulnessName = functionNameForUsefulEntitiesGraph (!self.mFunctionName)
@@ -193,10 +193,10 @@ final class @functionCallExpressionForGeneration : @semanticExpressionForGenerat
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override proc generateExpression (?!@string ioGeneratedCode
-                                      ?!@stringset ioInclusionSet
-                                      ?!@uint ioTemporaryVariableIndex
-                                      ?!@stringset ioUnusedVariableCppNameSet
+  override proc generateExpression (?!@string ioGeneratedCode,
+                                      ?!@stringset ioInclusionSet,
+                                      ?!@uint ioTemporaryVariableIndex,
+                                      ?!@stringset ioUnusedVariableCppNameSet,
                                       !@string outCppExpression ) {
   //--- Add return type header
     [self.mResultType addHeaderFileName !?ioInclusionSet]

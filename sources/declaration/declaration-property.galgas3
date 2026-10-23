@@ -26,7 +26,7 @@ syntax extension galgas3DeclarationsSyntax {
   //    PROPERTY IN COLLECTION
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <property_declaration_ggs3> (?!@galgasDeclarationAST ioDeclarations
+  rule <property_declaration_ggs3> (?!@galgasDeclarationAST ioDeclarations,
                                    ?!@propertyInCollectionListAST ioAttributeInCollectionList ) {
     <acces_control> ?let accessControl
     let @propertyMutability mutability
@@ -66,7 +66,7 @@ syntax extension galgas3DeclarationsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <property_declaration_ggs3> (?!@galgasDeclarationAST ioDeclarations
+  rule <property_declaration_ggs3> (?!@galgasDeclarationAST ioDeclarations,
                                    ?!@propertyInCollectionListAST ioAttributeInCollectionList ) {
     <acces_control> ?let accessControl
     $weak$
@@ -134,7 +134,7 @@ syntax extension galgas4DeclarationsSyntax {
   //    PROPERTY DECLARATION
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <property_declaration> (?!@galgasDeclarationAST ioDeclarations
+  rule <property_declaration> (?!@galgasDeclarationAST ioDeclarations,
                               ?!@propertyInCollectionListAST ioAttributeInCollectionList ) {
     <acces_control> ?let accessControl
     let @propertyMutability mutability
@@ -173,7 +173,7 @@ syntax extension galgas4DeclarationsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <property_declaration> (?!@galgasDeclarationAST ioDeclarations
+  rule <property_declaration> (?!@galgasDeclarationAST ioDeclarations,
                               ?!@propertyInCollectionListAST ioAttributeInCollectionList ) {
     <acces_control> ?let accessControl
     $weak$
@@ -227,12 +227,12 @@ list @propertyInCollectionListAST {
   public let @bool hasSelector %initArgLabel
   public let @propertyInCollectionInitializationAST initialization %initArgLabel
 
-  proc buildPropertyInitializationCode (?let @lstring inTypeNameForUsefulness
-                                          ?let @semanticContext inSemanticContext
-                                          ?let @predefinedTypes inPredefinedTypes
-                                          ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-                                          ?!@unifiedTypeMap ioTypeMap
-                                          !@stringset outUnusedVariableCppNameSet
+  proc buildPropertyInitializationCode (?let @lstring inTypeNameForUsefulness,
+                                          ?let @semanticContext inSemanticContext,
+                                          ?let @predefinedTypes inPredefinedTypes,
+                                          ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
+                                          ?!@unifiedTypeMap ioTypeMap,
+                                          !@stringset outUnusedVariableCppNameSet,
                                           !@string outInitializationCode ) {
     outInitializationCode = ""
     var inclusionSet = @stringset ()

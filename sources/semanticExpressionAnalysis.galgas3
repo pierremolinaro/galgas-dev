@@ -73,8 +73,8 @@ struct @analysisContext {
 
 //--------------------------------------------------------------------------------------------------
 
-proc checkAssignmentTypes (?let @unifiedTypeMapEntry inTargetType
-                          ?let @unifiedTypeMapEntry inSourceType
+proc checkAssignmentTypes (?let @unifiedTypeMapEntry inTargetType,
+                          ?let @unifiedTypeMapEntry inSourceType,
                           ?let @location inErrorLocation ) {
   var @unifiedTypeMapEntry sourceType = inSourceType
   var @bool ok = inTargetType == sourceType
@@ -98,9 +98,9 @@ proc checkAssignmentTypes (?let @unifiedTypeMapEntry inTargetType
 
 //--------------------------------------------------------------------------------------------------
 
-proc checkAssignmentTypeWithImplicitGetterCall (?let @unifiedTypeMapEntry inTargetType
-                                                ?let @unifiedTypeMapEntry inSourceType
-                                                ?let @location inErrorLocation
+proc checkAssignmentTypeWithImplicitGetterCall (?let @unifiedTypeMapEntry inTargetType,
+                                                ?let @unifiedTypeMapEntry inSourceType,
+                                                ?let @location inErrorLocation,
                                                 ?!@semanticExpressionForGeneration ioExpression ) {
 //--- Target is optional ?
   let targetTypeDef = inTargetType.definition
@@ -241,10 +241,10 @@ proc checkAssignmentTypeWithImplicitGetterCall (?let @unifiedTypeMapEntry inTarg
 
 //--------------------------------------------------------------------------------------------------
 
-proc checkDiadicOperator (?operatorIsHandled: let @bool inOperandIsHandled
-                          ?let @string inOperatorNameForErrorMessage
-                          ?let @location inErrorLocation
-                          ?!@semanticExpressionForGeneration ioLeftExpression
+proc checkDiadicOperator (?operatorIsHandled: let @bool inOperandIsHandled,
+                          ?let @string inOperatorNameForErrorMessage,
+                          ?let @location inErrorLocation,
+                          ?!@semanticExpressionForGeneration ioLeftExpression,
                           ?!@semanticExpressionForGeneration ioRightExpression ) {
   let leftResultType  = ioLeftExpression.mResultType
   let rightResultType = ioRightExpression.mResultType
@@ -408,12 +408,12 @@ struct @predefinedTypes {
 //--------------------------------------------------------------------------------------------------
 
 abstract proc @semanticExpressionAST analyzeSemanticExpression
-  (?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName
-  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-  ?inferenceType: let @unifiedTypeMapEntry inType
-  ?let @analysisContext inAnalysisContext
-  ?!@unifiedTypeMap ioTypeMap
-  ?!@localVarManager ioVariableMap
+  (?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName,
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
+  ?inferenceType: let @unifiedTypeMapEntry inType,
+  ?let @analysisContext inAnalysisContext,
+  ?!@unifiedTypeMap ioTypeMap,
+  ?!@localVarManager ioVariableMap,
   !@semanticExpressionForGeneration outExpression)
 
 //--------------------------------------------------------------------------------------------------

@@ -50,11 +50,11 @@ private filewrapper programFileGenerationTemplate in "+generation-templates/prog
 //--------------------------------------------------------------------------------------------------
 
 proc compileBeforeClauseGalgas3
-  (?!@lstringlist ioUsefulnessRootEntities
-  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-  ?let @analysisContext inAnalysisContext
-                                ?!@unifiedTypeMap ioTypeMap
-  ?let @prologueEpilogueList inPrologueList
+  (?!@lstringlist ioUsefulnessRootEntities,
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
+  ?let @analysisContext inAnalysisContext,
+                                ?!@unifiedTypeMap ioTypeMap,
+  ?let @prologueEpilogueList inPrologueList,
   ?!@programListForGeneration ioDecoratedDeclarationListForGeneration
 ) {
   let usefulnessName = beforeNameForUsefulEntitiesGraph (!.here)
@@ -96,11 +96,11 @@ proc compileBeforeClauseGalgas3
 //--------------------------------------------------------------------------------------------------
 
 private proc compileProgramRulesGalgas3
-  (?!@lstringlist ioUsefulnessRootEntities
-  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-  ?let @analysisContext inAnalysisContext
-                                ?!@unifiedTypeMap ioTypeMap
-  ?let @programRuleList inProgramRules
+  (?!@lstringlist ioUsefulnessRootEntities,
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
+  ?let @analysisContext inAnalysisContext,
+                                ?!@unifiedTypeMap ioTypeMap,
+  ?let @programRuleList inProgramRules,
   ?!@programListForGeneration ioDecoratedDeclarationListForGeneration
 ) {
   var @uint ruleIndex = 0
@@ -142,11 +142,11 @@ private proc compileProgramRulesGalgas3
 //--------------------------------------------------------------------------------------------------
 
 proc compileAfterClauseGalgas3
-  (?!@lstringlist ioUsefulnessRootEntities
-  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-  ?let @analysisContext inAnalysisContext
-                                ?!@unifiedTypeMap ioTypeMap
-  ?let @prologueEpilogueList inEpilogueList
+  (?!@lstringlist ioUsefulnessRootEntities,
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
+  ?let @analysisContext inAnalysisContext,
+                                ?!@unifiedTypeMap ioTypeMap,
+  ?let @prologueEpilogueList inEpilogueList,
   ?!@programListForGeneration ioDecoratedDeclarationListForGeneration
 ) {
   let usefulnessName = afterNameForUsefulEntitiesGraph (!.here)
@@ -186,14 +186,14 @@ proc compileAfterClauseGalgas3
 //--------------------------------------------------------------------------------------------------
 
 proc compileProgramComponentGalgas3
-  (?!@lstringlist ioUsefulnessRootEntities
-  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-  ?let @prologueEpilogueList inPrologueList
-  ?let @programRuleList inProgramRules
-  ?let @prologueEpilogueList inEpilogueList
-  ?let @semanticContext inSemanticContext
-                                ?!@unifiedTypeMap ioTypeMap
-  ?let @string inProjectVersionString
+  (?!@lstringlist ioUsefulnessRootEntities,
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
+  ?let @prologueEpilogueList inPrologueList,
+  ?let @programRuleList inProgramRules,
+  ?let @prologueEpilogueList inEpilogueList,
+  ?let @semanticContext inSemanticContext,
+                                ?!@unifiedTypeMap ioTypeMap,
+  ?let @string inProjectVersionString,
   !@programComponentForGeneration outProgramComponentForGeneration
 ) {
 //--- Analysis context

@@ -84,7 +84,7 @@ syntax extension galgas3DeclarationsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <externtype_constructor_ggs3> (?!@galgasDeclarationAST ioDeclarations
+  rule <externtype_constructor_ggs3> (?!@galgasDeclarationAST ioDeclarations,
                                      ?!@externTypeConstructorList ioExternTypeConstructorList ) {
     $init$
     $($
@@ -108,7 +108,7 @@ syntax extension galgas3DeclarationsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <externtype_getter_ggs3> (?!@galgasDeclarationAST ioDeclarations
+  rule <externtype_getter_ggs3> (?!@galgasDeclarationAST ioDeclarations,
                                 ?!@externTypeGetterList ioExternTypeGetterList ) {
     $func$
     $identifier$ ?let @lstring getterName
@@ -133,7 +133,7 @@ syntax extension galgas3DeclarationsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <externtype_setter_ggs3> (?!@galgasDeclarationAST ioDeclarations
+  rule <externtype_setter_ggs3> (?!@galgasDeclarationAST ioDeclarations,
                                 ?!@externTypeSetterList ioExternTypeSetterList ) {
     $setter$
     $identifier$ ?let @lstring setterName
@@ -143,7 +143,7 @@ syntax extension galgas3DeclarationsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <externtype_method_ggs3> (?!@galgasDeclarationAST ioDeclarations
+  rule <externtype_method_ggs3> (?!@galgasDeclarationAST ioDeclarations,
                                 ?!@externTypeMethodList ioExternTypeMethodList ) {
     $proc$
     $identifier$ ?let @lstring methodName
@@ -222,7 +222,7 @@ syntax extension galgas4DeclarationsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <externtype_constructor> (?!@galgasDeclarationAST ioDeclarations
+  rule <externtype_constructor> (?!@galgasDeclarationAST ioDeclarations,
                                 ?!@externTypeConstructorList ioExternTypeConstructorList ) {
     $init$
     $($
@@ -252,7 +252,7 @@ syntax extension galgas4DeclarationsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <externtype_getter> (?!@galgasDeclarationAST ioDeclarations
+  rule <externtype_getter> (?!@galgasDeclarationAST ioDeclarations,
                            ?!@externTypeGetterList ioExternTypeGetterList ) {
     $func$
     $identifier$ ?let @lstring getterName
@@ -277,7 +277,7 @@ syntax extension galgas4DeclarationsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <externtype_setter> (?!@galgasDeclarationAST ioDeclarations
+  rule <externtype_setter> (?!@galgasDeclarationAST ioDeclarations,
                                 ?!@externTypeSetterList ioExternTypeSetterList ) {
     $mutating$
     $proc$
@@ -288,7 +288,7 @@ syntax extension galgas4DeclarationsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <externtype_method> (?!@galgasDeclarationAST ioDeclarations
+  rule <externtype_method> (?!@galgasDeclarationAST ioDeclarations,
                            ?!@externTypeMethodList ioExternTypeMethodList ) {
     $proc$
     $identifier$ ?let @lstring methodName
@@ -358,12 +358,12 @@ final class @externTypeDeclarationAST : @semanticDeclarationAST {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc enterDeclarationInGraph
-    (?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
-    ?!@equatableExtensionMap unused ioEquatableExtensionMap
-    ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext
-    ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext
-    ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
-    ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
+    (?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph,
+    ?!@equatableExtensionMap unused ioEquatableExtensionMap,
+    ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext,
+    ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext,
+    ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext,
+    ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext,
     ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList ) {
     let key = @lstring {!"@" + self.mExternTypeName !self.mExternTypeName.location}
     [!?ioSemanticTypePrecedenceGraph addNode !key !self]
@@ -378,12 +378,12 @@ final class @externTypeDeclarationAST : @semanticDeclarationAST {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc enterDeclarationInSemanticContext
-    (?!@equatableExtensionMap ioEquatableExtensionMap
-    ?let @extensionInitializerForBuildingContext unused inExtensionInitializerMapForBuildingContext
-    ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext
-    ?let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext
-    ?let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext
-    ?!@unifiedTypeMap ioTypeMap
+    (?!@equatableExtensionMap ioEquatableExtensionMap,
+    ?let @extensionInitializerForBuildingContext unused inExtensionInitializerMapForBuildingContext,
+    ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext,
+    ?let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext,
+    ?let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext,
+    ?!@unifiedTypeMap ioTypeMap,
     ?!@semanticContext unused ioSemanticContext ) {
   //---
     commonGetterMapForAllTypes (!?ioTypeMap ?var @getterMap getterMap )
@@ -514,12 +514,12 @@ final class @externTypeDeclarationAST : @semanticDeclarationAST {
 //--------------------------------------------------------------------------------------------------
 
 override proc @externTypeDeclarationAST semanticAnalysis
-  (?!@lstringlist ioUsefulnessRootEntities
-  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-  ?let @string unused inProductDirectory
-  ?let @semanticContext unused inSemanticContext
-                                ?!@unifiedTypeMap ioTypeMap
-  ?let @predefinedTypes unused inPredefinedTypes
+  (?!@lstringlist ioUsefulnessRootEntities,
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
+  ?let @string unused inProductDirectory,
+  ?let @semanticContext unused inSemanticContext,
+                                ?!@unifiedTypeMap ioTypeMap,
+  ?let @predefinedTypes unused inPredefinedTypes,
   ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
 ) {
 //--- Useful entities graph
@@ -561,7 +561,7 @@ final class @externTypeDeclarationForGeneration : @semanticTypeForGeneration {
 //--------------------------------------------------------------------------------------------------
 
 override proc @externTypeDeclarationForGeneration appendDeclaration1
-  (?!@stringset unused ioInclusionSet
+  (?!@stringset unused ioInclusionSet,
   !@string outHeader ) {
   let selfTypeDefinition = self.mSelfTypeEntry.definition
   outHeader = [filewrapper typeGenerationTemplate.externTypeHeader1

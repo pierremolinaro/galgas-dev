@@ -37,19 +37,19 @@ syntax galgas3DeclarationsSyntax (galgasScanner3) {
   //          Rules prototypes
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <formal_parameter_list_ggs34> (?!@galgasDeclarationAST ioDeclarations
+  rule <formal_parameter_list_ggs34> (?!@galgasDeclarationAST ioDeclarations,
                                     !@formalParameterListAST outFormalParameterList)
 
-  rule <semantic_instruction_list_ggs3> (?!@galgasDeclarationAST ioDeclarations
+  rule <semantic_instruction_list_ggs3> (?!@galgasDeclarationAST ioDeclarations,
                                         !@semanticInstructionListAST outInstructionsList)
 
-  rule <formal_input_parameter_list_ggs3> (?!@galgasDeclarationAST ioDeclarations
+  rule <formal_input_parameter_list_ggs3> (?!@galgasDeclarationAST ioDeclarations,
                                           !@formalInputParameterListAST outFormalInputParameterList)
 
-  rule <formal_input_parameter_list_ggs34> (?!@galgasDeclarationAST ioDeclarations
+  rule <formal_input_parameter_list_ggs34> (?!@galgasDeclarationAST ioDeclarations,
                                            !@formalInputParameterListAST outFormalInputParameterList)
 
-  rule <expression_ggs3> (?!@galgasDeclarationAST ioDeclarations
+  rule <expression_ggs3> (?!@galgasDeclarationAST ioDeclarations,
                          !@semanticExpressionAST outExpression)
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -134,7 +134,7 @@ syntax galgas3DeclarationsSyntax (galgasScanner3) {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <filewrapper_templates> (?!@galgasDeclarationAST ioDeclarations
+  rule <filewrapper_templates> (?!@galgasDeclarationAST ioDeclarations,
                                !@filewrapperTemplateListAST outFilewrapperTemplateList ) {
     ${$
     outFilewrapperTemplateList = @()
@@ -202,19 +202,19 @@ syntax galgas4DeclarationsSyntax (galgasScanner4) {
   //          Rules prototypes
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <formal_parameter_list> (?!@galgasDeclarationAST ioDeclarations
+  rule <formal_parameter_list> (?!@galgasDeclarationAST ioDeclarations,
                                !@formalParameterListAST outFormalParameterList)
 
-  rule <semantic_instruction_list> (?!@galgasDeclarationAST ioDeclarations
+  rule <semantic_instruction_list> (?!@galgasDeclarationAST ioDeclarations,
                                    !@semanticInstructionListAST outInstructionsList)
 
-  rule <formal_input_parameter_list> (?!@galgasDeclarationAST ioDeclarations
+  rule <formal_input_parameter_list> (?!@galgasDeclarationAST ioDeclarations,
                                      !@formalInputParameterListAST outFormalInputParameterList)
 
-  rule <expression> (?!@galgasDeclarationAST ioDeclarations
+  rule <expression> (?!@galgasDeclarationAST ioDeclarations,
                     !@semanticExpressionAST outExpression)
 
-  rule <type_definition> (?!@galgasDeclarationAST ioDeclarations
+  rule <type_definition> (?!@galgasDeclarationAST ioDeclarations,
                          !@lstring outTypeName)
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -299,7 +299,7 @@ syntax galgas4DeclarationsSyntax (galgasScanner4) {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <filewrapper_templates> (?!@galgasDeclarationAST ioDeclarations
+  rule <filewrapper_templates> (?!@galgasDeclarationAST ioDeclarations,
                                !@filewrapperTemplateListAST outFilewrapperTemplateList ) {
     ${$
     outFilewrapperTemplateList = @()

@@ -25,9 +25,9 @@
 //--------------------------------------------------------------------------------------------------
 
 proc checkMethodSignatures
-  (?let @formalParameterListForGeneration inTestedSignature
-  ?let @location inErrorLocation
-  ?let @formalParameterSignature inReferenceSignature
+  (?let @formalParameterListForGeneration inTestedSignature,
+  ?let @location inErrorLocation,
+  ?let @formalParameterSignature inReferenceSignature,
   ?let @location inReferenceLocation
 ) {
   if inTestedSignature.count != inReferenceSignature.count then
@@ -73,11 +73,11 @@ proc checkMethodSignatures
 //--------------------------------------------------------------------------------------------------
 
 proc checkGetterSignatures
-  (?let @formalInputParameterListForGeneration inTestedSignature
-  ?let @unifiedTypeMapEntry inReturnType
-  ?let @location inErrorLocation
-  ?let @functionSignature inReferenceSignature
-  ?let @unifiedTypeMapEntry inInheritedReturnType
+  (?let @formalInputParameterListForGeneration inTestedSignature,
+  ?let @unifiedTypeMapEntry inReturnType,
+  ?let @location inErrorLocation,
+  ?let @functionSignature inReferenceSignature,
+  ?let @unifiedTypeMapEntry inInheritedReturnType,
   ?let @location inReferenceLocation ) {
   if inReturnType.definition.typeName.string != inInheritedReturnType.definition.typeName.string then
     error (inErrorLocation : "the return type is '@"
@@ -117,10 +117,10 @@ map @propertyIndexMap {
 //         M A P
 //--------------------------------------------------------------------------------------------------
 
-proc buildLocalVariableMapAndSignature (?let @semanticContext unused inSemanticContext
-                                       ?!@unifiedTypeMap ioTypeMap
-                                       ?let @formalParameterListAST inRoutineSignatureAST
-                                       ?!@localVarManager ioVariableMap
+proc buildLocalVariableMapAndSignature (?let @semanticContext unused inSemanticContext,
+                                       ?!@unifiedTypeMap ioTypeMap,
+                                       ?let @formalParameterListAST inRoutineSignatureAST,
+                                       ?!@localVarManager ioVariableMap,
                                        !@formalParameterListForGeneration outRoutineSignature ) {
   outRoutineSignature = @formalParameterListForGeneration ()
   for formalArgument in inRoutineSignatureAST do
@@ -197,14 +197,14 @@ proc buildLocalVariableMapAndSignature (?let @semanticContext unused inSemanticC
 
 //--------------------------------------------------------------------------------------------------
 
-proc analyzeRoutineBody (?let @lstring inUsefulnessCallerEntityName
-                        ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-                        ?let @analysisContext inAnalysisContext
-                        ?!@unifiedTypeMap ioTypeMap
-                        ?let @formalParameterListAST inRoutineSignatureAST
-                        ?let @semanticInstructionListAST inInstructionList
-                        ?let @location inEndOfMethodLocation
-                        !@semanticInstructionListForGeneration outSemanticInstructionListForGeneration
+proc analyzeRoutineBody (?let @lstring inUsefulnessCallerEntityName,
+                        ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
+                        ?let @analysisContext inAnalysisContext,
+                        ?!@unifiedTypeMap ioTypeMap,
+                        ?let @formalParameterListAST inRoutineSignatureAST,
+                        ?let @semanticInstructionListAST inInstructionList,
+                        ?let @location inEndOfMethodLocation,
+                        !@semanticInstructionListForGeneration outSemanticInstructionListForGeneration,
                         !@formalParameterListForGeneration outRoutineSignature ) {
   var variableMap = @localVarManager {}
 //--- Enter properties that should be explicitly initialized
@@ -251,12 +251,12 @@ proc analyzeRoutineBody (?let @lstring inUsefulnessCallerEntityName
 //--------------------------------------------------------------------------------------------------
 
 override proc @externFunctionDeclarationAST semanticAnalysis
-  (?!@lstringlist ioUsefulnessRootEntities
-  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-  ?let @string unused inProductDirectory
-  ?let @semanticContext unused inSemanticContext
-                                ?!@unifiedTypeMap ioTypeMap
-  ?let @predefinedTypes unused inPredefinedTypes
+  (?!@lstringlist ioUsefulnessRootEntities,
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
+  ?let @string unused inProductDirectory,
+  ?let @semanticContext unused inSemanticContext,
+                                ?!@unifiedTypeMap ioTypeMap,
+  ?let @predefinedTypes unused inPredefinedTypes,
   ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
 ) {
 //--- Useful entities graph
@@ -289,18 +289,18 @@ override proc @externFunctionDeclarationAST semanticAnalysis
 //--------------------------------------------------------------------------------------------------
 
 proc analyzeFunctionBody
-  (?let @lstring inUsefulnessCallerEntityName
-  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-  ?let @analysisContext inAnalysisContext
-  ?!@unifiedTypeMap ioTypeMap
-  ?let @formalInputParameterListAST inFunctionSignature
-  ?let @semanticInstructionListAST inInstructionList
-  ?let @lstring inReturnVariableName
-  ?let @lstring inResultTypeName
-  ?let @location inEndOfFunctionLocation
-  !@formalInputParameterListForGeneration outSignatureForGeneration
-  !@unifiedTypeMapEntry outReturnedType
-  !@string outResultVariableCppName
+  (?let @lstring inUsefulnessCallerEntityName,
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
+  ?let @analysisContext inAnalysisContext,
+  ?!@unifiedTypeMap ioTypeMap,
+  ?let @formalInputParameterListAST inFunctionSignature,
+  ?let @semanticInstructionListAST inInstructionList,
+  ?let @lstring inReturnVariableName,
+  ?let @lstring inResultTypeName,
+  ?let @location inEndOfFunctionLocation,
+  !@formalInputParameterListForGeneration outSignatureForGeneration,
+  !@unifiedTypeMapEntry outReturnedType,
+  !@string outResultVariableCppName,
   !@semanticInstructionListForGeneration outSemanticInstructionListForGeneration
 ) {
   var variableMap = @localVarManager {}
@@ -372,12 +372,12 @@ proc analyzeFunctionBody
 //--------------------------------------------------------------------------------------------------
 
 override proc @functionDeclarationAST semanticAnalysis
-  (?!@lstringlist ioUsefulnessRootEntities
-  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-  ?let @string unused inProductDirectory
-  ?let @semanticContext inSemanticContext
-                                ?!@unifiedTypeMap ioTypeMap
-  ?let @predefinedTypes inPredefinedTypes
+  (?!@lstringlist ioUsefulnessRootEntities,
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
+  ?let @string unused inProductDirectory,
+  ?let @semanticContext inSemanticContext,
+                                ?!@unifiedTypeMap ioTypeMap,
+  ?let @predefinedTypes inPredefinedTypes,
   ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
 ) {
 //--- Useful entities graph
@@ -425,12 +425,12 @@ override proc @functionDeclarationAST semanticAnalysis
 //--------------------------------------------------------------------------------------------------
 
 override proc @onceFunctionDeclarationAST semanticAnalysis
-  (?!@lstringlist ioUsefulnessRootEntities
-  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-  ?let @string unused inProductDirectory
-  ?let @semanticContext inSemanticContext
-                                ?!@unifiedTypeMap ioTypeMap
-  ?let @predefinedTypes inPredefinedTypes
+  (?!@lstringlist ioUsefulnessRootEntities,
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
+  ?let @string unused inProductDirectory,
+  ?let @semanticContext inSemanticContext,
+                                ?!@unifiedTypeMap ioTypeMap,
+  ?let @predefinedTypes inPredefinedTypes,
   ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
 ) {
 //--- Useful entities graph
@@ -481,12 +481,12 @@ override proc @onceFunctionDeclarationAST semanticAnalysis
 //--------------------------------------------------------------------------------------------------
 
 override proc @filewrapperDeclarationAST semanticAnalysis
-  (?!@lstringlist unused ioUsefulnessRootEntities
-  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-  ?let @string unused inProductDirectory
-  ?let @semanticContext inSemanticContext
-                                ?!@unifiedTypeMap ioTypeMap
-  ?let @predefinedTypes inPredefinedTypes
+  (?!@lstringlist unused ioUsefulnessRootEntities,
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
+  ?let @string unused inProductDirectory,
+  ?let @semanticContext inSemanticContext,
+                                ?!@unifiedTypeMap ioTypeMap,
+  ?let @predefinedTypes inPredefinedTypes,
   ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
 ) {
 //--- Useful entities graph
@@ -576,12 +576,12 @@ override proc @filewrapperDeclarationAST semanticAnalysis
 //--------------------------------------------------------------------------------------------------
 
 override proc @galgas3SyntaxComponentAST semanticAnalysis
-  (?!@lstringlist unused ioUsefulnessRootEntities
-  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-  ?let @string unused inProductDirectory
-  ?let @semanticContext inSemanticContext
-                                ?!@unifiedTypeMap ioTypeMap
-  ?let @predefinedTypes inPredefinedTypes
+  (?!@lstringlist unused ioUsefulnessRootEntities,
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
+  ?let @string unused inProductDirectory,
+  ?let @semanticContext inSemanticContext,
+                                ?!@unifiedTypeMap ioTypeMap,
+  ?let @predefinedTypes inPredefinedTypes,
   ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
 ) {
 //--- Useful entities graph
@@ -631,12 +631,12 @@ override proc @galgas3SyntaxComponentAST semanticAnalysis
 //--------------------------------------------------------------------------------------------------
 
 override proc @galgas3GrammarComponentAST semanticAnalysis
-                                (?!@lstringlist unused ioUsefulnessRootEntities
-                                ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-                                ?let @string inProductDirectory
-                                ?let @semanticContext inSemanticContext
-                                ?!@unifiedTypeMap ioTypeMap
-                                ?let @predefinedTypes unused inPredefinedTypes
+                                (?!@lstringlist unused ioUsefulnessRootEntities,
+                                ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
+                                ?let @string inProductDirectory,
+                                ?let @semanticContext inSemanticContext,
+                                ?!@unifiedTypeMap ioTypeMap,
+                                ?let @predefinedTypes unused inPredefinedTypes,
                                 ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration ) {
   if @application.verboseOutput then
     println (!"*** Analyzing '" + self.mGrammarComponentName + "' grammar")
@@ -921,8 +921,8 @@ filewrapper syntaxFileGenerationTemplate in "+generation-templates/syntax_genera
 //--------------------------------------------------------------------------------------------------
 
 proc enterNonterminalNonTerminalInMapAndCheck
-  (?let @lstring inNonTerminalName
-  ?let @nonterminalLabelMap inNonterminalLabelMap
+  (?let @lstring inNonTerminalName,
+  ?let @nonterminalLabelMap inNonterminalLabelMap,
   ?!@nonterminalMap ioNonterminalDeclarationMap ) {
   if let entry = ioNonterminalDeclarationMap @[inNonTerminalName.string] then
     let @stringset firstDeclarationLabelSet = entry.mLabelMap.keySet
@@ -967,9 +967,9 @@ proc enterNonterminalNonTerminalInMapAndCheck
 //--------------------------------------------------------------------------------------------------
 
 proc buildNonterminalDeclarationsMap
-  (?let @nonterminalDeclarationListAST inNonterminalDeclarationList
-  ?let @semanticContext unused inSemanticContext
-                                ?!@unifiedTypeMap ioTypeMap
+  (?let @nonterminalDeclarationListAST inNonterminalDeclarationList,
+  ?let @semanticContext unused inSemanticContext,
+                                ?!@unifiedTypeMap ioTypeMap,
   !@nonterminalMap outNonterminalDeclarationMap ) {
   outNonterminalDeclarationMap = @nonterminalMap ()
 //--- Nonterminal declaration list
@@ -996,35 +996,35 @@ proc buildNonterminalDeclarationsMap
 //--------------------------------------------------------------------------------------------------
 
 abstract proc @syntaxInstructionAST analyzeSyntaxInstruction
-  (?let @lstring inUsefulnessCallerEntityName
-  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-  ?let @analysisContext inAnalysisContext
-                                ?!@unifiedTypeMap ioTypeMap
-  ?let @bool inHasTranslateFeature
-  ?let @terminalMap inTerminalMap
-  ?let @string inLexiqueName
-  ?let @nonterminalMap inNonterminalMap
-  ?let @string inComponentName
-  ?let @stringset inIndexNameSet
-  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
-  ?!@localVarManager ioVariableMap
+  (?let @lstring inUsefulnessCallerEntityName,
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
+  ?let @analysisContext inAnalysisContext,
+                                ?!@unifiedTypeMap ioTypeMap,
+  ?let @bool inHasTranslateFeature,
+  ?let @terminalMap inTerminalMap,
+  ?let @string inLexiqueName,
+  ?let @nonterminalMap inNonterminalMap,
+  ?let @string inComponentName,
+  ?let @stringset inIndexNameSet,
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration,
+  ?!@localVarManager ioVariableMap,
   ?!@uint ioSelectMethodCount)
 
 //--------------------------------------------------------------------------------------------------
 
 override proc @semanticInstructionAST analyzeSyntaxInstruction
-  (?let @lstring inUsefulnessCallerEntityName
-  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-  ?let @analysisContext inAnalysisContext
-  ?!@unifiedTypeMap ioTypeMap
-  ?let @bool unused inHasTranslateFeature
-  ?let @terminalMap unused inTerminalMap
-  ?let @string unused inLexiqueName
-  ?let @nonterminalMap unused inNonterminalMap
-  ?let @string unused inComponentName
-  ?let @stringset unused inIndexNameSet
-  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
-  ?!@localVarManager ioVariableMap
+  (?let @lstring inUsefulnessCallerEntityName,
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
+  ?let @analysisContext inAnalysisContext,
+  ?!@unifiedTypeMap ioTypeMap,
+  ?let @bool unused inHasTranslateFeature,
+  ?let @terminalMap unused inTerminalMap,
+  ?let @string unused inLexiqueName,
+  ?let @nonterminalMap unused inNonterminalMap,
+  ?let @string unused inComponentName,
+  ?let @stringset unused inIndexNameSet,
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration,
+  ?!@localVarManager ioVariableMap,
   ?!@uint unused ioSelectMethodCount
 ) {
   [self analyzeSemanticInstruction
@@ -1040,32 +1040,32 @@ override proc @semanticInstructionAST analyzeSyntaxInstruction
 //--------------------------------------------------------------------------------------------------
 
 abstract proc @abstractInputParameter analyzeInputParameter
-  (?let @analysisContext inAnalysisContext
-  ?!@unifiedTypeMap ioTypeMap
-  ?let @lexicalTypeEnum inRequiredLexicalType
-  ?let @string inLexicalAttributeName
-  ?!@terminalCheckAssignementList ioTerminalCheckAssignementList
+  (?let @analysisContext inAnalysisContext,
+  ?!@unifiedTypeMap ioTypeMap,
+  ?let @lexicalTypeEnum inRequiredLexicalType,
+  ?let @string inLexicalAttributeName,
+  ?!@terminalCheckAssignementList ioTerminalCheckAssignementList,
   ?!@localVarManager ioVariableMap)
 
 //--------------------------------------------------------------------------------------------------
 
 override proc @inputParameterAnonymousVariable analyzeInputParameter
-  (?let @analysisContext unused inAnalysisContext
-  ?!@unifiedTypeMap unused ioTypeMap
-  ?let @lexicalTypeEnum unused inRequiredLexicalType
-  ?let @string unused inLexicalAttributeName
-  ?!@terminalCheckAssignementList unused ioTerminalCheckAssignementList
+  (?let @analysisContext unused inAnalysisContext,
+  ?!@unifiedTypeMap unused ioTypeMap,
+  ?let @lexicalTypeEnum unused inRequiredLexicalType,
+  ?let @string unused inLexicalAttributeName,
+  ?!@terminalCheckAssignementList unused ioTerminalCheckAssignementList,
   ?!@localVarManager unused ioVariableMap ) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
 override proc @inputParameterVariable analyzeInputParameter
-  (?let @analysisContext inAnalysisContext
-  ?!@unifiedTypeMap unused ioTypeMap
-  ?let @lexicalTypeEnum inRequiredLexicalType
-  ?let @string inLexicalAttributeName
-  ?!@terminalCheckAssignementList ioTerminalCheckAssignementList
+  (?let @analysisContext inAnalysisContext,
+  ?!@unifiedTypeMap unused ioTypeMap,
+  ?let @lexicalTypeEnum inRequiredLexicalType,
+  ?let @string inLexicalAttributeName,
+  ?!@terminalCheckAssignementList ioTerminalCheckAssignementList,
   ?!@localVarManager ioVariableMap ) {
   [!?ioVariableMap searchForWriteAccess !self.mActualParameterName ?let @unifiedTypeMapEntry type ?let @string cppName ?*]
   let @unifiedTypeMapEntry expectedType
@@ -1093,11 +1093,11 @@ override proc @inputParameterVariable analyzeInputParameter
 //--------------------------------------------------------------------------------------------------
 
 override proc @inputParameterDeclaredVariable analyzeInputParameter
-  (?let @analysisContext inAnalysisContext
-  ?!@unifiedTypeMap ioTypeMap
-  ?let @lexicalTypeEnum inRequiredLexicalType
-  ?let @string inLexicalAttributeName
-  ?!@terminalCheckAssignementList ioTerminalCheckAssignementList
+  (?let @analysisContext inAnalysisContext,
+  ?!@unifiedTypeMap ioTypeMap,
+  ?let @lexicalTypeEnum inRequiredLexicalType,
+  ?let @string inLexicalAttributeName,
+  ?!@terminalCheckAssignementList ioTerminalCheckAssignementList,
   ?!@localVarManager ioVariableMap ) {
 //--- Expected type
   let @unifiedTypeMapEntry expectedType
@@ -1138,11 +1138,11 @@ override proc @inputParameterDeclaredVariable analyzeInputParameter
 //--------------------------------------------------------------------------------------------------
 
 override proc @inputParameterDeclaredConstant analyzeInputParameter
-  (?let @analysisContext inAnalysisContext
-                                ?!@unifiedTypeMap ioTypeMap
-  ?let @lexicalTypeEnum inRequiredLexicalType
-  ?let @string inLexicalAttributeName
-  ?!@terminalCheckAssignementList ioTerminalCheckAssignementList
+  (?let @analysisContext inAnalysisContext,
+                                ?!@unifiedTypeMap ioTypeMap,
+  ?let @lexicalTypeEnum inRequiredLexicalType,
+  ?let @string inLexicalAttributeName,
+  ?!@terminalCheckAssignementList ioTerminalCheckAssignementList,
   ?!@localVarManager ioVariableMap ) {
 //--- Expected type
   let @unifiedTypeMapEntry expectedType
@@ -1178,26 +1178,26 @@ override proc @inputParameterDeclaredConstant analyzeInputParameter
 //--------------------------------------------------------------------------------------------------
 
 abstract proc @abstractGrammarInstructionSyntaxDirectedTranslationResult analyzeSDT
-  (?let @analysisContext inAnalysisContext
-  ?!@unifiedTypeMap unused ioTypeMap
-  ?let @bool inHasTranslateFeature
+  (?let @analysisContext inAnalysisContext,
+  ?!@unifiedTypeMap unused ioTypeMap,
+  ?let @bool inHasTranslateFeature,
   ?!@localVarManager ioVariableMap)
 
 //--------------------------------------------------------------------------------------------------
 
 override proc @grammarInstructionSyntaxDirectedTranslationResultNone analyzeSDT
-  (?let @analysisContext unused inAnalysisContext
-                                ?!@unifiedTypeMap unused ioTypeMap
-  ?let @bool unused inHasTranslateFeature
+  (?let @analysisContext unused inAnalysisContext,
+                                ?!@unifiedTypeMap unused ioTypeMap,
+  ?let @bool unused inHasTranslateFeature,
   ?!@localVarManager unused ioVariableMap ) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
 override proc @grammarInstructionSyntaxDirectedTranslationDropResult  analyzeSDT
-  (?let @analysisContext unused inAnalysisContext
-                                ?!@unifiedTypeMap unused ioTypeMap
-  ?let @bool inHasTranslateFeature
+  (?let @analysisContext unused inAnalysisContext,
+                                ?!@unifiedTypeMap unused ioTypeMap,
+  ?let @bool inHasTranslateFeature,
   ?!@localVarManager unused ioVariableMap ) {
   if not inHasTranslateFeature then
     error (self.mLocation : "the ':>' construct requires the syntax component to be declared with 'translate' feature")
@@ -1207,9 +1207,9 @@ override proc @grammarInstructionSyntaxDirectedTranslationDropResult  analyzeSDT
 //--------------------------------------------------------------------------------------------------
 
 override proc @grammarInstructionSyntaxDirectedTranslationResultInVar  analyzeSDT
-  (?let @analysisContext inAnalysisContext
-                                ?!@unifiedTypeMap unused ioTypeMap
-  ?let @bool inHasTranslateFeature
+  (?let @analysisContext inAnalysisContext,
+                                ?!@unifiedTypeMap unused ioTypeMap,
+  ?let @bool inHasTranslateFeature,
   ?!@localVarManager ioVariableMap ) {
   if not inHasTranslateFeature then
     error (self.mActualParameterName : "the ':>' construct requires the syntax component to be declared with 'translate' feature")
@@ -1226,9 +1226,9 @@ override proc @grammarInstructionSyntaxDirectedTranslationResultInVar  analyzeSD
 //--------------------------------------------------------------------------------------------------
 
 override proc @grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar  analyzeSDT
-  (?let @analysisContext inAnalysisContext
-                                ?!@unifiedTypeMap ioTypeMap
-  ?let @bool inHasTranslateFeature
+  (?let @analysisContext inAnalysisContext,
+                                ?!@unifiedTypeMap ioTypeMap,
+  ?let @bool inHasTranslateFeature,
   ?!@localVarManager ioVariableMap ) {
   if not inHasTranslateFeature then
     error (self.mActualParameterName : "the ':>' construct requires the syntax component to be declared with 'translate' feature")
@@ -1253,9 +1253,9 @@ override proc @grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar  a
 //--------------------------------------------------------------------------------------------------
 
 override proc @grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst  analyzeSDT
-  (?let @analysisContext inAnalysisContext
-                                ?!@unifiedTypeMap ioTypeMap
-  ?let @bool inHasTranslateFeature
+  (?let @analysisContext inAnalysisContext,
+                                ?!@unifiedTypeMap ioTypeMap,
+  ?let @bool inHasTranslateFeature,
   ?!@localVarManager ioVariableMap ) {
   if not inHasTranslateFeature then
     error (self.mActualParameterName : "the ':>' construct requires the grammar to be declared with 'translate' feature")
@@ -1274,17 +1274,17 @@ override proc @grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst 
 //--------------------------------------------------------------------------------------------------
 
 abstract proc @abstractGrammarInstructionSyntaxDirectedTranslationResult generateCode
-  (?let @bool inGenerateSyntaxDirectedTranslationString
-  ?let @string inAccessMethodName
-  ?!@stringset ioUnusedVariableCppNameSet
+  (?let @bool inGenerateSyntaxDirectedTranslationString,
+  ?let @string inAccessMethodName,
+  ?!@stringset ioUnusedVariableCppNameSet,
   ?!@string ioGeneratedCode)
 
 //--------------------------------------------------------------------------------------------------
 
 override proc @grammarInstructionSyntaxDirectedTranslationResultNone generateCode
-  (?let @bool inGenerateSyntaxDirectedTranslationString
-  ?let @string inAccessMethodName
-  ?!@stringset ioUnusedVariableCppNameSet
+  (?let @bool inGenerateSyntaxDirectedTranslationString,
+  ?let @string inAccessMethodName,
+  ?!@stringset ioUnusedVariableCppNameSet,
   ?!@string ioGeneratedCode ) {
   if inGenerateSyntaxDirectedTranslationString then
     ioGeneratedCode += syntaxDirectedTranslationResultVarName() + ".appendString (" + inAccessMethodName + ") ;\n"
@@ -1295,18 +1295,18 @@ override proc @grammarInstructionSyntaxDirectedTranslationResultNone generateCod
 //--------------------------------------------------------------------------------------------------
 
 override proc @grammarInstructionSyntaxDirectedTranslationDropResult  generateCode
-  (?let @bool unused inGenerateSyntaxDirectedTranslationString
-  ?let @string unused inAccessMethodName
-  ?!@stringset unused ioUnusedVariableCppNameSet
+  (?let @bool unused inGenerateSyntaxDirectedTranslationString,
+  ?let @string unused inAccessMethodName,
+  ?!@stringset unused ioUnusedVariableCppNameSet,
   ?!@string unused ioGeneratedCode ) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
 override proc @grammarInstructionSyntaxDirectedTranslationResultInVar  generateCode
-  (?let @bool unused inGenerateSyntaxDirectedTranslationString
-  ?let @string inAccessMethodName
-  ?!@stringset unused ioUnusedVariableCppNameSet
+  (?let @bool unused inGenerateSyntaxDirectedTranslationString,
+  ?let @string inAccessMethodName,
+  ?!@stringset unused ioUnusedVariableCppNameSet,
   ?!@string ioGeneratedCode ) {
   let cppName = "var_" + self.mActualParameterName.string.identifierRepresentation + "_" + self.mActualParameterName.location.startLocationIndex
   ioGeneratedCode += cppName + " = GGS_string (" + inAccessMethodName + ") ;\n"
@@ -1315,9 +1315,9 @@ override proc @grammarInstructionSyntaxDirectedTranslationResultInVar  generateC
 //--------------------------------------------------------------------------------------------------
 
 override proc @grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar  generateCode
-  (?let @bool unused inGenerateSyntaxDirectedTranslationString
-  ?let @string inAccessMethodName
-  ?!@stringset unused ioUnusedVariableCppNameSet
+  (?let @bool unused inGenerateSyntaxDirectedTranslationString,
+  ?let @string inAccessMethodName,
+  ?!@stringset unused ioUnusedVariableCppNameSet,
   ?!@string ioGeneratedCode ) {
   let cppName = "var_" + self.mActualParameterName.string.identifierRepresentation + "_" + self.mActualParameterName.location.startLocationIndex
   ioGeneratedCode += "GGS_string " + cppName + " (" + inAccessMethodName + ") ;\n"
@@ -1326,9 +1326,9 @@ override proc @grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar  g
 //--------------------------------------------------------------------------------------------------
 
 override proc @grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst  generateCode
-  (?let @bool unused inGenerateSyntaxDirectedTranslationString
-  ?let @string inAccessMethodName
-  ?!@stringset unused ioUnusedVariableCppNameSet
+  (?let @bool unused inGenerateSyntaxDirectedTranslationString,
+  ?let @string inAccessMethodName,
+  ?!@stringset unused ioUnusedVariableCppNameSet,
   ?!@string ioGeneratedCode ) {
   let cppName = "var_" + self.mActualParameterName.string.identifierRepresentation + "_" + self.mActualParameterName.location.startLocationIndex
   ioGeneratedCode += "const GGS_string " + cppName + " (" + inAccessMethodName + ") ;\n"
@@ -1337,20 +1337,20 @@ override proc @grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst 
 //--------------------------------------------------------------------------------------------------
 
 proc analyzeSyntaxInstructionList
-  (?let @lstring inUsefulnessCallerEntityName
-  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-  ?let @analysisContext inAnalysisContext
-                                ?!@unifiedTypeMap ioTypeMap
-  ?let @bool inHasTranslateFeature
-  ?let @terminalMap inTerminalMap
-  ?let @string inLexiqueName
-  ?let @nonterminalMap inNonterminalMap
-  ?let @string  inComponentName
-  ?let @syntaxInstructionList inSyntaxInstructionListAST
-  ?let @location inEndOfBranchLocation
-  ?let @stringset inIndexNameSet
-  ?!@localVarManager ioVariableMap
-  ?!@uint ioSelectMethodCount
+  (?let @lstring inUsefulnessCallerEntityName,
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
+  ?let @analysisContext inAnalysisContext,
+                                ?!@unifiedTypeMap ioTypeMap,
+  ?let @bool inHasTranslateFeature,
+  ?let @terminalMap inTerminalMap,
+  ?let @string inLexiqueName,
+  ?let @nonterminalMap inNonterminalMap,
+  ?let @string  inComponentName,
+  ?let @syntaxInstructionList inSyntaxInstructionListAST,
+  ?let @location inEndOfBranchLocation,
+  ?let @stringset inIndexNameSet,
+  ?!@localVarManager ioVariableMap,
+  ?!@uint ioSelectMethodCount,
   !@semanticInstructionListForGeneration outInstructionListForGeneration ) {
   outInstructionListForGeneration = @semanticInstructionListForGeneration ()
 //--- Begin branch
@@ -1384,22 +1384,22 @@ proc analyzeSyntaxInstructionList
 //--------------------------------------------------------------------------------------------------
 
 proc semanticAnalysisOfRuleLabel
-  (?let @lstring inUsefulnessCallerEntityName
-  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-  ?let @formalParameterListAST inFormalArguments
-  ?let @syntaxInstructionList inSyntaxInstructionList
-  ?let @analysisContext inAnalysisContext
-                                ?!@unifiedTypeMap ioTypeMap
-  ?let @terminalMap inTerminalMap
-  ?let @bool inHasTranslateFeature
-  ?let @string inLexiqueName
-  ?let @nonterminalMap inNonterminalMap
-  ?let @string inComponentName
-  ?let @location inEndOfInstructionList
-  ?let @stringset inIndexNameSet
-  ?!@uint ioSelectMethodCount
-  !@formalParameterListForGeneration outSignatureForGeneration
-  !@formalParameterSignature outSignature
+  (?let @lstring inUsefulnessCallerEntityName,
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
+  ?let @formalParameterListAST inFormalArguments,
+  ?let @syntaxInstructionList inSyntaxInstructionList,
+  ?let @analysisContext inAnalysisContext,
+                                ?!@unifiedTypeMap ioTypeMap,
+  ?let @terminalMap inTerminalMap,
+  ?let @bool inHasTranslateFeature,
+  ?let @string inLexiqueName,
+  ?let @nonterminalMap inNonterminalMap,
+  ?let @string inComponentName,
+  ?let @location inEndOfInstructionList,
+  ?let @stringset inIndexNameSet,
+  ?!@uint ioSelectMethodCount,
+  !@formalParameterListForGeneration outSignatureForGeneration,
+  !@formalParameterSignature outSignature,
   !@semanticInstructionListForGeneration outInstructionListForGeneration
 ) {
   var variableMap = @localVarManager {}
@@ -1446,19 +1446,19 @@ proc semanticAnalysisOfRuleLabel
 //--------------------------------------------------------------------------------------------------
 
 private proc semanticAnalysisOfSyntaxComponent
-  (?let @lstring inSyntaxComponentUsefulnessName
-  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-  ?let @nonterminalDeclarationListAST inNonterminalDeclarationList
-  ?let @syntaxRuleListAST inRuleList
-  ?let @string inSyntaxComponentName
-  ?let @string inLexiqueName
-  ?let @semanticContext inSemanticContext
-                                ?!@unifiedTypeMap ioTypeMap
-  ?let @predefinedTypes inPredefinedTypes
-  ?let @terminalMap inTerminalMap
-  ?let @stringset inIndexNameSet
-  ?let @bool inHasIndexing
-  ?let @bool inHasTranslateFeature
+  (?let @lstring inSyntaxComponentUsefulnessName,
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
+  ?let @nonterminalDeclarationListAST inNonterminalDeclarationList,
+  ?let @syntaxRuleListAST inRuleList,
+  ?let @string inSyntaxComponentName,
+  ?let @string inLexiqueName,
+  ?let @semanticContext inSemanticContext,
+                                ?!@unifiedTypeMap ioTypeMap,
+  ?let @predefinedTypes inPredefinedTypes,
+  ?let @terminalMap inTerminalMap,
+  ?let @stringset inIndexNameSet,
+  ?let @bool inHasIndexing,
+  ?let @bool inHasTranslateFeature,
   !@syntaxDeclarationForGeneration outSyntaxDeclarationForGeneration
 ) {
 //----------- Build nonterminal map
@@ -1554,7 +1554,7 @@ private proc semanticAnalysisOfSyntaxComponent
 
 //--------------------------------------------------------------------------------------------------
 
-private proc emitClassGraphFile (?let @string inDotDocumentFilePath
+private proc emitClassGraphFile (?let @string inDotDocumentFilePath,
                                 ?let @unifiedTypeMap inTypeMap ) {
   [inDotDocumentFilePath.deletingLastPathComponent makeDirectory]
   var document = "digraph G {\n"

@@ -26,35 +26,35 @@ syntax galgas3InstructionsSyntax (galgasScanner3) {
   //          Rules prototypes
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <expression_ggs3> (?!@galgasDeclarationAST ioDeclarations
+  rule <expression_ggs3> (?!@galgasDeclarationAST ioDeclarations,
                          !@semanticExpressionAST outExpression)
 
-  rule <comma_separated_expression_ggs3> (?!@galgasDeclarationAST ioDeclarations
+  rule <comma_separated_expression_ggs3> (?!@galgasDeclarationAST ioDeclarations,
                                          !@CommaSeparatedExpressionList outExpressionList)
 
-  rule <formal_parameter_list_ggs34> (?!@galgasDeclarationAST ioDeclarations
+  rule <formal_parameter_list_ggs34> (?!@galgasDeclarationAST ioDeclarations,
                                     !@formalParameterListAST outFormalParameterList)
 
-  rule <formal_input_parameter_list_ggs3> (?!@galgasDeclarationAST ioDeclarations
+  rule <formal_input_parameter_list_ggs3> (?!@galgasDeclarationAST ioDeclarations,
                                           !@formalInputParameterListAST outFormalInputParameterList)
 
-  rule <formal_input_parameter_list_ggs34> (?!@galgasDeclarationAST ioDeclarations
+  rule <formal_input_parameter_list_ggs34> (?!@galgasDeclarationAST ioDeclarations,
                                            !@formalInputParameterListAST outFormalInputParameterList)
 
-  rule <type_definition_ggs3> (?!@galgasDeclarationAST ioDeclarations
+  rule <type_definition_ggs3> (?!@galgasDeclarationAST ioDeclarations,
                               !@lstring outTypeName)
 
-  rule <output_expression_list_ggs3> (?!@galgasDeclarationAST ioDeclarations
+  rule <output_expression_list_ggs3> (?!@galgasDeclarationAST ioDeclarations,
                                      !@actualOutputArgumentList outExpressionList)
 
-  rule <output_expression_list_ggs34> (?!@galgasDeclarationAST ioDeclarations
+  rule <output_expression_list_ggs34> (?!@galgasDeclarationAST ioDeclarations,
                                       !@actualOutputArgumentList outExpressionList)
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //    S E M A N T I C    I N S T R U C T I O N    L I S T
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <semantic_instruction_list_ggs3> (?!@galgasDeclarationAST ioDeclarations
+  rule <semantic_instruction_list_ggs3> (?!@galgasDeclarationAST ioDeclarations,
                                         !@semanticInstructionListAST outInstructionsList ) {
     outInstructionsList = @semanticInstructionListAST ()
     select
@@ -125,10 +125,10 @@ syntax galgas3InstructionsSyntax (galgasScanner3) {
    
    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <function_declaration_ggs3> (?once: let @bool inIsOnce
-                                   ?usefull: let @bool inIsUsefull
-                                   ?private: let @bool inPrivate
-                                   ?let @lstring inFunctionName
+  rule <function_declaration_ggs3> (?once: let @bool inIsOnce,
+                                   ?usefull: let @bool inIsUsefull,
+                                   ?private: let @bool inPrivate,
+                                   ?let @lstring inFunctionName,
                                    ?!@galgasDeclarationAST ioDeclarations ) {
     <formal_input_parameter_list_ggs3> !?ioDeclarations ?let formalInputParameterList
     if inIsOnce, (formalInputParameterList.count > 0) then
@@ -174,10 +174,10 @@ syntax galgas3InstructionsSyntax (galgasScanner3) {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <function_declaration_ggs3> (?once: let @bool inIsOnce
-                                   ?usefull: let @bool inIsUsefull
-                                   ?private: let @bool inIsPrivate
-                                   ?let @lstring inFunctionName
+  rule <function_declaration_ggs3> (?once: let @bool inIsOnce,
+                                   ?usefull: let @bool inIsUsefull,
+                                   ?private: let @bool inIsPrivate,
+                                   ?let @lstring inFunctionName,
                                    ?!@galgasDeclarationAST ioDeclarations ) {
     <formal_input_parameter_list_ggs34> !?ioDeclarations ?let formalInputParameterList
     if inIsOnce, (formalInputParameterList.count > 0) then
@@ -274,13 +274,13 @@ syntax galgas3InstructionsSyntax (galgasScanner3) {
   //    M E T H O D    C A L L    I N S T R U C T I O N
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <actual_parameter_list_ggs3> (?!@galgasDeclarationAST ioDeclarations
+  rule <actual_parameter_list_ggs3> (?!@galgasDeclarationAST ioDeclarations,
                                     !@actualParameterListAST outActualParameterList)
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <syntax_directed_translation_result>
-          (?!@galgasDeclarationAST ioDeclarations
+          (?!@galgasDeclarationAST ioDeclarations,
           !@abstractGrammarInstructionSyntaxDirectedTranslationResult result) {
     $?$
     select
@@ -303,7 +303,7 @@ syntax galgas3InstructionsSyntax (galgasScanner3) {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <actual_input_parameter_list_ggs3> (?!@galgasDeclarationAST ioDeclarations
+  rule <actual_input_parameter_list_ggs3> (?!@galgasDeclarationAST ioDeclarations,
                                           !@actualInputParameterListAST outActualInputParameterList ) {
     outActualInputParameterList = @actualInputParameterListAST ()
     repeat
@@ -361,32 +361,32 @@ syntax galgas4InstructionsSyntax (galgasScanner4) {
   //          Rules prototypes
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <expression> (?!@galgasDeclarationAST ioDeclarations
+  rule <expression> (?!@galgasDeclarationAST ioDeclarations,
                     !@semanticExpressionAST outExpression)
 
-  rule <comma_separated_expression> (?!@galgasDeclarationAST ioDeclarations
+  rule <comma_separated_expression> (?!@galgasDeclarationAST ioDeclarations,
                                     !@CommaSeparatedExpressionList outExpressionList)
 
-  rule <formal_parameter_list> (?!@galgasDeclarationAST ioDeclarations
+  rule <formal_parameter_list> (?!@galgasDeclarationAST ioDeclarations,
                                !@formalParameterListAST outFormalParameterList)
 
-  rule <formal_input_parameter_list> (?!@galgasDeclarationAST ioDeclarations
+  rule <formal_input_parameter_list> (?!@galgasDeclarationAST ioDeclarations,
                                      !@formalInputParameterListAST outFormalInputParameterList)
 
-  rule <type_definition> (?!@galgasDeclarationAST ioDeclarations
+  rule <type_definition> (?!@galgasDeclarationAST ioDeclarations,
                          !@lstring outTypeName)
 
-  rule <non_empty_output_expression_list> (?!@galgasDeclarationAST ioDeclarations
+  rule <non_empty_output_expression_list> (?!@galgasDeclarationAST ioDeclarations,
                                           !@actualOutputArgumentList outExpressionList)
 
-  rule <output_expression_list> (?!@galgasDeclarationAST ioDeclarations
+  rule <output_expression_list> (?!@galgasDeclarationAST ioDeclarations,
                                 !@actualOutputArgumentList outExpressionList)
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //    S E M A N T I C    I N S T R U C T I O N    L I S T
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <semantic_instruction_list> (?!@galgasDeclarationAST ioDeclarations
+  rule <semantic_instruction_list> (?!@galgasDeclarationAST ioDeclarations,
                                    !@semanticInstructionListAST outInstructionsList ) {
     outInstructionsList = @semanticInstructionListAST ()
     select
@@ -590,12 +590,12 @@ syntax galgas4InstructionsSyntax (galgasScanner4) {
   //    M E T H O D    C A L L    I N S T R U C T I O N
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <actual_parameter_list_within_parenthesis> (?!@galgasDeclarationAST ioDeclarations
+  rule <actual_parameter_list_within_parenthesis> (?!@galgasDeclarationAST ioDeclarations,
                                                   !@actualParameterListAST outActualParameterList)
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <syntax_directed_translation_result> (?!@galgasDeclarationAST ioDeclarations
+  rule <syntax_directed_translation_result> (?!@galgasDeclarationAST ioDeclarations,
                                             !@abstractGrammarInstructionSyntaxDirectedTranslationResult result ) {
     $($
     $?$
@@ -620,7 +620,7 @@ syntax galgas4InstructionsSyntax (galgasScanner4) {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <actual_input_parameter_list> (?!@galgasDeclarationAST ioDeclarations
+  rule <actual_input_parameter_list> (?!@galgasDeclarationAST ioDeclarations,
                                      !@actualInputParameterListAST outActualInputParameterList ) {
     outActualInputParameterList = @actualInputParameterListAST ()
     select

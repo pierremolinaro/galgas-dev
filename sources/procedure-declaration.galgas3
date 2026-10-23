@@ -170,12 +170,12 @@ final class @procDeclarationAST : @externProcedureDeclarationAST {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc enterDeclarationInSemanticContext
-    (?!@equatableExtensionMap unused ioEquatableExtensionMap
-    ?let @extensionInitializerForBuildingContext unused inExtensionInitializerMapForBuildingContext
-    ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext
-    ?let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext
-    ?let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext
-    ?!@unifiedTypeMap ioTypeMap
+    (?!@equatableExtensionMap unused ioEquatableExtensionMap,
+    ?let @extensionInitializerForBuildingContext unused inExtensionInitializerMapForBuildingContext,
+    ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext,
+    ?let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext,
+    ?let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext,
+    ?!@unifiedTypeMap ioTypeMap,
     ?!@semanticContext ioSemanticContext ) {
   //--- Build signature
     var routineSignature = @formalParameterSignature ()
@@ -199,12 +199,12 @@ final class @procDeclarationAST : @externProcedureDeclarationAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override proc semanticAnalysis(?!@lstringlist ioUsefulnessRootEntities
-                                  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-                                  ?let @string unused inProductDirectory
-                                  ?let @semanticContext inSemanticContext
-                                  ?!@unifiedTypeMap ioTypeMap
-                                  ?let @predefinedTypes inPredefinedTypes
+  override proc semanticAnalysis(?!@lstringlist ioUsefulnessRootEntities,
+                                  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
+                                  ?let @string unused inProductDirectory,
+                                  ?let @semanticContext inSemanticContext,
+                                  ?!@unifiedTypeMap ioTypeMap,
+                                  ?let @predefinedTypes inPredefinedTypes,
                                   ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration ) {
   //---
     var routineSignature = @formalParameterSignature ()
@@ -271,8 +271,8 @@ final class @routineImplementationForGeneration : @routinePrototypeDeclarationFo
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc appendSpecificImplementation
-    (?let @unifiedTypeMap unused inTypeMap
-    ?!@stringset ioInclusionSet
+    (?let @unifiedTypeMap unused inTypeMap,
+    ?!@stringset ioInclusionSet,
     !@string outImplementation
   ) {
     if self.generateHeader then

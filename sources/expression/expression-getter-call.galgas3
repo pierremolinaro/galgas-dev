@@ -23,7 +23,7 @@ syntax extension galgas3ExpressionSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <primary_ggs3> (?!@galgasDeclarationAST ioDeclarations
+  rule <primary_ggs3> (?!@galgasDeclarationAST ioDeclarations,
                       !@semanticExpressionAST outExpression ) {
     $[$
   //--- Get source identity characteristics
@@ -65,12 +65,12 @@ final class @getterCallExpressionAST : @semanticExpressionAST {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc analyzeSemanticExpression
-                          (?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName
-                          ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-                          ?inferenceType: let @unifiedTypeMapEntry unused inType
-                          ?let @analysisContext inAnalysisContext
-                          ?!@unifiedTypeMap ioTypeMap
-                          ?!@localVarManager ioVariableMap
+                          (?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName,
+                          ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
+                          ?inferenceType: let @unifiedTypeMapEntry unused inType,
+                          ?let @analysisContext inAnalysisContext,
+                          ?!@unifiedTypeMap ioTypeMap,
+                          ?!@localVarManager ioVariableMap,
                           !@semanticExpressionForGeneration outExpression ) {
   //--- Check self is not inkoed before full initialization
     if self.mReceiver is @selfInExpressionAST then
@@ -260,10 +260,10 @@ final class @getterCallExpressionForGeneration : @semanticExpressionForGeneratio
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc generateExpression
-    (?!@string ioGeneratedCode
-    ?!@stringset ioInclusionSet
-    ?!@uint ioTemporaryVariableIndex
-    ?!@stringset ioUnusedVariableCppNameSet
+    (?!@string ioGeneratedCode,
+    ?!@stringset ioInclusionSet,
+    ?!@uint ioTemporaryVariableIndex,
+    ?!@stringset ioUnusedVariableCppNameSet,
     !@string outCppExpression
   ) {
   //--- Add return type header

@@ -41,7 +41,7 @@ struct @genericExtensionMethodListMap {
 
   //·····························································································
 
-  setter insertKey  (?let @string inKey
+  setter insertKey  (?let @string inKey,
                     ?let @lstring inValue ) {
     if [self.dictionary hasKey !inKey] then
       [self.dictionary searchKey !inKey ?var aList]
@@ -73,17 +73,17 @@ struct @genericExtensionMethodListMap {
 //--------------------------------------------------------------------------------------------------
 
 proc @semanticDeclarationAST buildExtensionListMaps
-  (?!@genericExtensionMethodListMap unused ioAbstractExtensionSetterListMap
-  ?!@genericExtensionMethodListMap unused ioExtensionSetterListMap
-  ?!@genericExtensionMethodListMap unused ioOverridingExtensionSetterListMap
-  ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionSetterListMap
-  ?!@genericExtensionMethodListMap unused ioAbstractExtensionMethodListMapAST
-  ?!@genericExtensionMethodListMap unused ioExtensionMethodListMap
-  ?!@genericExtensionMethodListMap unused ioOverridingExtensionMethodListMap
-  ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionMethodListMap
-  ?!@genericExtensionMethodListMap unused ioAbstractExtensionGetterListMap
-  ?!@genericExtensionMethodListMap unused ioExtensionGetterListMap
-  ?!@genericExtensionMethodListMap unused ioOverridingExtensionGetterListMap
+  (?!@genericExtensionMethodListMap unused ioAbstractExtensionSetterListMap,
+  ?!@genericExtensionMethodListMap unused ioExtensionSetterListMap,
+  ?!@genericExtensionMethodListMap unused ioOverridingExtensionSetterListMap,
+  ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionSetterListMap,
+  ?!@genericExtensionMethodListMap unused ioAbstractExtensionMethodListMapAST,
+  ?!@genericExtensionMethodListMap unused ioExtensionMethodListMap,
+  ?!@genericExtensionMethodListMap unused ioOverridingExtensionMethodListMap,
+  ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionMethodListMap,
+  ?!@genericExtensionMethodListMap unused ioAbstractExtensionGetterListMap,
+  ?!@genericExtensionMethodListMap unused ioExtensionGetterListMap,
+  ?!@genericExtensionMethodListMap unused ioOverridingExtensionGetterListMap,
   ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionGetterListMap ) {
 }
 
@@ -110,7 +110,7 @@ struct @descendantClassListMap {
 
   //·····························································································
 
-  setter insertKey  (?let @string inKey
+  setter insertKey  (?let @string inKey,
                     ?let @unifiedTypeMapEntry inType ) {
     if [self.dictionary hasKey !inKey] then
       [self.dictionary searchKey !inKey ?var aList]
@@ -171,11 +171,11 @@ map @extensionGetterMapForGlobalCheckings {
 //--------------------------------------------------------------------------------------------------
 
 proc checkextensionSetterDefinitionForClass
-  (?let @string inClassNameForErrorSignaling
-  ?let @string inClassName
-  ?let @lstring inAbstractExtensionSetterName
-  ?let @descendantClassListMap inDescendantClassListMap
-  ?let @genericExtensionMethodListMap inOverridingExtensionMethodListMap
+  (?let @string inClassNameForErrorSignaling,
+  ?let @string inClassName,
+  ?let @lstring inAbstractExtensionSetterName,
+  ?let @descendantClassListMap inDescendantClassListMap,
+  ?let @genericExtensionMethodListMap inOverridingExtensionMethodListMap,
   ?let @unifiedTypeMap inUnifiedTypeMap
 ) {
   let @unifiedTypeMapEntryList descendantClasses = [inDescendantClassListMap listForKey !inClassName]
@@ -208,11 +208,11 @@ proc checkextensionSetterDefinitionForClass
 //--------------------------------------------------------------------------------------------------
 
 proc checkExtensionMethodDefinitionForClass
-  (?let @string inClassNameForErrorSignaling
-  ?let @string inClassName
-  ?let @lstring inAbstractExtensionMethodName
-  ?let @descendantClassListMap inDescendantClassListMap
-  ?let @genericExtensionMethodListMap inOverridingExtensionMethodListMap
+  (?let @string inClassNameForErrorSignaling,
+  ?let @string inClassName,
+  ?let @lstring inAbstractExtensionMethodName,
+  ?let @descendantClassListMap inDescendantClassListMap,
+  ?let @genericExtensionMethodListMap inOverridingExtensionMethodListMap,
   ?let @unifiedTypeMap inUnifiedTypeMap
 ) {
   let @unifiedTypeMapEntryList descendantClasses = [inDescendantClassListMap listForKey !inClassName]
@@ -245,11 +245,11 @@ proc checkExtensionMethodDefinitionForClass
 //--------------------------------------------------------------------------------------------------
 
 proc checkExtensionGetterDefinitionForClass
-  (?let @string inClassNameForErrorSignaling
-  ?let @string inClassName
-  ?let @lstring inAbstractExtensionGetterName
-  ?let @descendantClassListMap inDescendantClassListMap
-  ?let @genericExtensionMethodListMap inOverridingExtensionGetterListMap
+  (?let @string inClassNameForErrorSignaling,
+  ?let @string inClassName,
+  ?let @lstring inAbstractExtensionGetterName,
+  ?let @descendantClassListMap inDescendantClassListMap,
+  ?let @genericExtensionMethodListMap inOverridingExtensionGetterListMap,
   ?let @unifiedTypeMap inUnifiedTypeMap
 ) {
   let @unifiedTypeMapEntryList descendantClasses = [inDescendantClassListMap listForKey !inClassName]
@@ -282,7 +282,7 @@ proc checkExtensionGetterDefinitionForClass
 //--------------------------------------------------------------------------------------------------
 
 proc performGalgas3ProjectGlobalCheckings
-  (?!@unifiedTypeMap ioTypeMap
+  (?!@unifiedTypeMap ioTypeMap,
   ?let @semanticDeclarationListAST inSemanticDeclarationList
 ) {
   if @application.verboseOutput then

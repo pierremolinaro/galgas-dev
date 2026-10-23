@@ -113,7 +113,7 @@ syntax extension galgas3DeclarationsSyntax {
   // SIMPLE ALIAS
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <type_definition_ggs3> (?!@galgasDeclarationAST unused ioDeclarations
+  rule <type_definition_ggs3> (?!@galgasDeclarationAST unused ioDeclarations,
                               !@lstring outTypeName ) {
     $@type$ ?outTypeName
     repeat
@@ -126,7 +126,7 @@ syntax extension galgas3DeclarationsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <type_definition_ggs3> (?!@galgasDeclarationAST ioDeclarations
+  rule <type_definition_ggs3> (?!@galgasDeclarationAST ioDeclarations,
                               !@lstring outTypeName ) {
     $[$
     <type_definition_ggs3> !?ioDeclarations ?outTypeName
@@ -138,7 +138,7 @@ syntax extension galgas3DeclarationsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <type_definition_ggs3> (?!@galgasDeclarationAST ioDeclarations
+  rule <type_definition_ggs3> (?!@galgasDeclarationAST ioDeclarations,
                               !@lstring outTypeName ) {
     <type_definition_ggs3> !?ioDeclarations ?outTypeName
     $<$
@@ -153,7 +153,7 @@ syntax extension galgas3DeclarationsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <type_definition_ggs3> (?!@galgasDeclarationAST ioDeclarations
+  rule <type_definition_ggs3> (?!@galgasDeclarationAST ioDeclarations,
                               !@lstring outTypeName ) {
     <type_definition_ggs3> !?ioDeclarations ?outTypeName
     $?$
@@ -163,7 +163,7 @@ syntax extension galgas3DeclarationsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <type_definition_ggs3> (?!@galgasDeclarationAST ioDeclarations
+  rule <type_definition_ggs3> (?!@galgasDeclarationAST ioDeclarations,
                               !@lstring outTypeName ) {
     $($
     repeat
@@ -199,7 +199,7 @@ syntax extension galgas4DeclarationsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <type_definition> (?!@galgasDeclarationAST ioDeclarations
+  rule <type_definition> (?!@galgasDeclarationAST ioDeclarations,
                          !@lstring outTypeName ) {
     <simple_type_definition> !?ioDeclarations ?outTypeName
     repeat
@@ -228,14 +228,14 @@ syntax extension galgas4DeclarationsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <simple_type_definition> (?!@galgasDeclarationAST unused ioDeclarations
+  rule <simple_type_definition> (?!@galgasDeclarationAST unused ioDeclarations,
                                 !@lstring outTypeName ) {
     $@type$ ?outTypeName
   }
   
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <simple_type_definition> (?!@galgasDeclarationAST ioDeclarations
+  rule <simple_type_definition> (?!@galgasDeclarationAST ioDeclarations,
                                 !@lstring outTypeName ) {
     $[$
     <type_definition> !?ioDeclarations ?outTypeName
@@ -262,7 +262,7 @@ syntax extension galgas4DeclarationsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <simple_type_definition> (?!@galgasDeclarationAST ioDeclarations
+  rule <simple_type_definition> (?!@galgasDeclarationAST ioDeclarations,
                                 !@lstring outTypeName ) {
     $($
     repeat

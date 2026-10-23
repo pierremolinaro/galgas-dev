@@ -32,7 +32,7 @@ syntax extension galgas3ExpressionSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <primary_ggs3> (?!@galgasDeclarationAST unused ioDeclarations
+  rule <primary_ggs3> (?!@galgasDeclarationAST unused ioDeclarations,
                       !@semanticExpressionAST outExpression ) {
     var @stringlist literalStringList = @()
     repeat
@@ -53,7 +53,7 @@ syntax extension galgas4ExpressionSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <primary> (?!@galgasDeclarationAST unused ioDeclarations
+  rule <primary> (?!@galgasDeclarationAST unused ioDeclarations,
                  !@semanticExpressionAST outExpression ) {
     var @stringlist literalStringList = @()
     repeat
@@ -80,12 +80,12 @@ override proc @literalStringExpressionAST enterExpressionInSemanticContext
 //································································································
 
 override proc @literalStringExpressionAST analyzeSemanticExpression
-  (?usefulnessCallerEntityName: let @lstring unused inUsefulnessCallerEntityName
-  ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
-  ?inferenceType: let @unifiedTypeMapEntry unused inType
-  ?let @analysisContext inAnalysisContext
-                                ?!@unifiedTypeMap unused ioTypeMap
-  ?!@localVarManager unused ioVariableMap
+  (?usefulnessCallerEntityName: let @lstring unused inUsefulnessCallerEntityName,
+  ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph,
+  ?inferenceType: let @unifiedTypeMapEntry unused inType,
+  ?let @analysisContext inAnalysisContext,
+                                ?!@unifiedTypeMap unused ioTypeMap,
+  ?!@localVarManager unused ioVariableMap,
   !@semanticExpressionForGeneration outExpression
 ) {
   var @string s = ""
@@ -106,10 +106,10 @@ final class @literalStringExpressionForGeneration : @semanticExpressionForGenera
 //································································································
 
 override proc @literalStringExpressionForGeneration generateExpression
-  (?!@string unused ioGeneratedCode
-  ?!@stringset unused ioInclusionSet
-  ?!@uint unused ioTemporaryVariableIndex
-  ?!@stringset unused ioUnusedVariableCppNameSet
+  (?!@string unused ioGeneratedCode,
+  ?!@stringset unused ioInclusionSet,
+  ?!@uint unused ioTemporaryVariableIndex,
+  ?!@stringset unused ioUnusedVariableCppNameSet,
   !@string outCppExpression ) {
   if self.mString == "" then
     outCppExpression = "GGS_string::makeEmptyString ()"

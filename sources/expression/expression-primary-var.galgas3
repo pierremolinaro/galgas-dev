@@ -21,7 +21,7 @@ syntax extension galgas3ExpressionSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <primary_ggs3> (?!@galgasDeclarationAST unused ioDeclarations
+  rule <primary_ggs3> (?!@galgasDeclarationAST unused ioDeclarations,
                       !@semanticExpressionAST outExpression ) {
     $identifier$ ?let identifier
     outExpression = @varInExpressionAST {!identifier}
@@ -37,7 +37,7 @@ syntax extension galgas4ExpressionSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <primary> (?!@galgasDeclarationAST unused ioDeclarations
+  rule <primary> (?!@galgasDeclarationAST unused ioDeclarations,
                  !@semanticExpressionAST outExpression ) {
     $identifier$ ?let identifier
     outExpression = @varInExpressionAST {!identifier}
@@ -62,12 +62,12 @@ final class @varInExpressionAST : @semanticExpressionAST {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc analyzeSemanticExpression
-        (?usefulnessCallerEntityName: let @lstring unused inUsefulnessCallerEntityName
-        ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
-        ?inferenceType: let @unifiedTypeMapEntry unused inType
-        ?let @analysisContext unused inAnalysisContext
-        ?!@unifiedTypeMap unused ioTypeMap
-        ?!@localVarManager ioVariableMap
+        (?usefulnessCallerEntityName: let @lstring unused inUsefulnessCallerEntityName,
+        ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph,
+        ?inferenceType: let @unifiedTypeMapEntry unused inType,
+        ?let @analysisContext unused inAnalysisContext,
+        ?!@unifiedTypeMap unused ioTypeMap,
+        ?!@localVarManager ioVariableMap,
         !@semanticExpressionForGeneration outExpression ) {
     [!?ioVariableMap searchForReadAccess
       !self.mVarName
@@ -98,10 +98,10 @@ final class @varInExpressionForGeneration : @semanticExpressionForGeneration {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override proc generateExpression (?!@string unused ioGeneratedCode
-                                      ?!@stringset ioInclusionSet
-                                      ?!@uint unused ioTemporaryVariableIndex
-                                      ?!@stringset ioUnusedVariableCppNameSet
+  override proc generateExpression (?!@string unused ioGeneratedCode,
+                                      ?!@stringset ioInclusionSet,
+                                      ?!@uint unused ioTemporaryVariableIndex,
+                                      ?!@stringset ioUnusedVariableCppNameSet,
                                       !@string outCppExpression ) {
     [self.mResultType addHeaderFileName !?ioInclusionSet]
     outCppExpression = self.mCppVarName

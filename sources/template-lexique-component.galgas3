@@ -227,12 +227,12 @@ override func @templateLexiqueComponentAST keyRepresentation -> @string {
 //--------------------------------------------------------------------------------------------------
 
 override proc @templateLexiqueComponentAST enterDeclarationInGraph
-  (?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
-  ?!@equatableExtensionMap unused ioEquatableExtensionMap
-  ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext
-  ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext
-  ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
-  ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
+  (?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph,
+  ?!@equatableExtensionMap unused ioEquatableExtensionMap,
+  ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext,
+  ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext,
+  ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext,
+  ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext,
   ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList ) {
   let key = @lstring {!"lexique " + self.mLexiqueComponentName !self.mLexiqueComponentName.location}
   [!?ioSemanticTypePrecedenceGraph addNode !key !self]
@@ -243,12 +243,12 @@ override proc @templateLexiqueComponentAST enterDeclarationInGraph
 //--------------------------------------------------------------------------------------------------
 
 override proc @templateLexiqueComponentAST enterDeclarationInSemanticContext
-  (?!@equatableExtensionMap unused ioEquatableExtensionMap
-  ?let @extensionInitializerForBuildingContext unused inExtensionInitializerMapForBuildingContext
-  ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext
-  ?let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext
-  ?let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext
-  ?!@unifiedTypeMap unused ioTypeMap
+  (?!@equatableExtensionMap unused ioEquatableExtensionMap,
+  ?let @extensionInitializerForBuildingContext unused inExtensionInitializerMapForBuildingContext,
+  ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext,
+  ?let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext,
+  ?let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext,
+  ?!@unifiedTypeMap unused ioTypeMap,
   ?!@semanticContext ioSemanticContext ) {
 //-------------------------------------- Get super lexique features
   [ioSemanticContext.mLexiqueComponentMapForSemanticAnalysis searchKey
@@ -280,12 +280,12 @@ override proc @templateLexiqueComponentAST enterDeclarationInSemanticContext
 //--------------------------------------------------------------------------------------------------
 
 override proc @templateLexiqueComponentAST semanticAnalysis
-                                  (?!@lstringlist unused ioUsefulnessRootEntities
-                                  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-                                  ?let @string unused inProductDirectory
-                                  ?let @semanticContext inSemanticContext
-                                  ?!@unifiedTypeMap unused ioTypeMap
-                                  ?let @predefinedTypes unused inPredefinedTypes
+                                  (?!@lstringlist unused ioUsefulnessRootEntities,
+                                  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
+                                  ?let @string unused inProductDirectory,
+                                  ?let @semanticContext inSemanticContext,
+                                  ?!@unifiedTypeMap unused ioTypeMap,
+                                  ?let @predefinedTypes unused inPredefinedTypes,
                                   ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration ) {
 //-------------------------------------- Useful entities graph
   let nameForUsefulness = lexiqueNameForUsefulEntitiesGraph (!self.mLexiqueComponentName)

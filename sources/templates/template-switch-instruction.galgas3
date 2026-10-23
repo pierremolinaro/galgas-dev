@@ -75,7 +75,7 @@ syntax extension templateSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <switch_case> (![@lstring] outConstantNameList
+  rule <switch_case> (![@lstring] outConstantNameList,
                      !@switchExtractedValuesListAST outAssociatedValuesExtraction ) {
     outConstantNameList = @()
     repeat
@@ -130,10 +130,10 @@ syntax extension templateSyntax {
 //--------------------------------------------------------------------------------------------------
 
 override proc @templateInstructionSwitchAST templateInstructionAnalysis
-                                (?let @lstring inUsefulnessCallerEntityName
-                                ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-                                ?let @templateAnalysisContext inAnalysisContext
-                                ?!@unifiedTypeMap ioTypeMap
+                                (?let @lstring inUsefulnessCallerEntityName,
+                                ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
+                                ?let @templateAnalysisContext inAnalysisContext,
+                                ?!@unifiedTypeMap ioTypeMap,
                                 ?!@templateInstructionListForGeneration ioInstructionList ) {
 //---
   [self.mSwitchExpression templateExpressionAnalysis
@@ -255,10 +255,10 @@ final class @templateInstructionSwitchForGeneration : @templateInstructionForGen
 //································································································
 
 override proc @templateInstructionSwitchForGeneration templateCodeGeneration
-  (?!@string ioGeneratedCode
-  ?!@stringset ioInclusionSet
-  ?!@uint ioTemporaryVariableIndex
-  ?!@stringset ioUnusedVariableCppNameSet
+  (?!@string ioGeneratedCode,
+  ?!@stringset ioInclusionSet,
+  ?!@uint ioTemporaryVariableIndex,
+  ?!@stringset ioUnusedVariableCppNameSet,
   ?!@bool ioUseColumnMarker
 ) {
 //--- Expression

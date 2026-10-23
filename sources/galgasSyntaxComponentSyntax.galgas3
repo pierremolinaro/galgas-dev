@@ -26,16 +26,16 @@ syntax galgas3SyntaxComponentSyntax (galgasScanner3) {
   //          Rules prototypes
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <expression_ggs3> (?!@galgasDeclarationAST ioDeclarations
+  rule <expression_ggs3> (?!@galgasDeclarationAST ioDeclarations,
                          !@semanticExpressionAST outExpression)
 
   rule <semantic_instruction_ggs3> (?!@galgasDeclarationAST ioDeclarations,
                                     !@semanticInstructionAST outInstruction)
 
-  rule <formal_parameter_list_ggs34> (?!@galgasDeclarationAST ioDeclarations
+  rule <formal_parameter_list_ggs34> (?!@galgasDeclarationAST ioDeclarations,
                                     !@formalParameterListAST outFormalParameterList)
 
-  rule <actual_parameter_list_ggs3> (?!@galgasDeclarationAST ioDeclarations
+  rule <actual_parameter_list_ggs3> (?!@galgasDeclarationAST ioDeclarations,
                                     !@actualParameterListAST outActualParameterList)
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -114,7 +114,7 @@ syntax galgas3SyntaxComponentSyntax (galgasScanner3) {
   //      N O N T E R M I N A L    D E C L A R A T I O N
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <nonterminal_declaration> (?!@galgasDeclarationAST ioDeclarations
+  rule <nonterminal_declaration> (?!@galgasDeclarationAST ioDeclarations,
                                  ?!@nonterminalDeclarationListAST ioNonterminalDeclarationList ) {
     $rule$
     $<non_terminal>$ ?let @lstring mNonterminalName indexing ruleDefinition
@@ -135,8 +135,8 @@ syntax galgas3SyntaxComponentSyntax (galgasScanner3) {
   //      S Y N T A X    R U L E    D E C L A R A T I O N
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <syntax_rule_label> (?!@galgasDeclarationAST ioDeclarations
-                           ?let @lstring inLabelName
+  rule <syntax_rule_label> (?!@galgasDeclarationAST ioDeclarations,
+                           ?let @lstring inLabelName,
                            ?!@syntaxRuleLabelListAST ioLabelList ) {
     <formal_parameter_list_ggs34> !?ioDeclarations ?let formalParameters
     let endOfArguments = @location.here
@@ -153,7 +153,7 @@ syntax galgas3SyntaxComponentSyntax (galgasScanner3) {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <syntax_rule_declaration> (?!@galgasDeclarationAST ioDeclarations ?!@syntaxRuleListAST ioRuleList ) {
+  rule <syntax_rule_declaration> (?!@galgasDeclarationAST ioDeclarations ,?!@syntaxRuleListAST ioRuleList ) {
     $rule$
     $<non_terminal>$ ?let @lstring mNonterminalName indexing ruleDefinition
     var labelName = @lstring {!"" !@location.here}
@@ -173,7 +173,7 @@ syntax galgas3SyntaxComponentSyntax (galgasScanner3) {
   //   S Y N T A X    I N S T R U C T I O N    L I S T
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <syntax_instruction_list_ggs3> (?!@galgasDeclarationAST ioDeclarations
+  rule <syntax_instruction_list_ggs3> (?!@galgasDeclarationAST ioDeclarations,
                                       !@syntaxInstructionList outSyntaxInstructionList ) {
     outSyntaxInstructionList = @()
     select
@@ -203,12 +203,12 @@ syntax galgas3SyntaxComponentSyntax (galgasScanner3) {
   //   T E R M I N A L    C H E C K    I N S T R U C T I O N
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <actual_input_parameter_list_ggs3> (?!@galgasDeclarationAST ioDeclarations
+  rule <actual_input_parameter_list_ggs3> (?!@galgasDeclarationAST ioDeclarations,
                                           !@actualInputParameterListAST outActualInputParameterList)
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <syntax_directed_translation_result> (?!@galgasDeclarationAST ioDeclarations
+  rule <syntax_directed_translation_result> (?!@galgasDeclarationAST ioDeclarations,
                                             !@abstractGrammarInstructionSyntaxDirectedTranslationResult result)
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -223,16 +223,16 @@ syntax galgas4SyntaxComponentSyntax (galgasScanner4) {
   //          Rules prototypes
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <expression> (?!@galgasDeclarationAST ioDeclarations
+  rule <expression> (?!@galgasDeclarationAST ioDeclarations,
                     !@semanticExpressionAST outExpression)
 
-  rule <semantic_instruction> (?!@galgasDeclarationAST ioDeclarations
+  rule <semantic_instruction> (?!@galgasDeclarationAST ioDeclarations,
                               !@semanticInstructionAST outInstruction)
 
-  rule <formal_parameter_list> (?!@galgasDeclarationAST ioDeclarations
+  rule <formal_parameter_list> (?!@galgasDeclarationAST ioDeclarations,
                                !@formalParameterListAST outFormalParameterList)
 
-  rule <actual_parameter_list_within_parenthesis> (?!@galgasDeclarationAST ioDeclarations
+  rule <actual_parameter_list_within_parenthesis> (?!@galgasDeclarationAST ioDeclarations,
                                                   !@actualParameterListAST outActualParameterList)
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -316,7 +316,7 @@ syntax galgas4SyntaxComponentSyntax (galgasScanner4) {
   //      N O N T E R M I N A L    D E C L A R A T I O N
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <nonterminal_declaration> (?!@galgasDeclarationAST ioDeclarations
+  rule <nonterminal_declaration> (?!@galgasDeclarationAST ioDeclarations,
                                  ?!@nonterminalDeclarationListAST ioNonterminalDeclarationList ) {
     $rule$
     $<non_terminal>$ ?let @lstring mNonterminalName indexing ruleDefinition
@@ -337,8 +337,8 @@ syntax galgas4SyntaxComponentSyntax (galgasScanner4) {
   //      S Y N T A X    R U L E    D E C L A R A T I O N
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <syntax_rule_label> (?!@galgasDeclarationAST ioDeclarations
-                           ?let @lstring inLabelName ?!@syntaxRuleLabelListAST ioLabelList ) {
+  rule <syntax_rule_label> (?!@galgasDeclarationAST ioDeclarations,
+                           ?let @lstring inLabelName ,?!@syntaxRuleLabelListAST ioLabelList ) {
     <formal_parameter_list> !?ioDeclarations ?let mFormalParameters
     let endOfArguments = @location.here
     ${$
@@ -354,7 +354,7 @@ syntax galgas4SyntaxComponentSyntax (galgasScanner4) {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <syntax_rule_declaration> (?!@galgasDeclarationAST ioDeclarations
+  rule <syntax_rule_declaration> (?!@galgasDeclarationAST ioDeclarations,
                                  ?!@syntaxRuleListAST ioRuleList ) {
     $rule$
     $<non_terminal>$ ?let @lstring mNonterminalName indexing ruleDefinition
@@ -375,7 +375,7 @@ syntax galgas4SyntaxComponentSyntax (galgasScanner4) {
   //   S Y N T A X    I N S T R U C T I O N    L I S T
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <syntax_instruction_list> (?!@galgasDeclarationAST ioDeclarations
+  rule <syntax_instruction_list> (?!@galgasDeclarationAST ioDeclarations,
                                  !@syntaxInstructionList outSyntaxInstructionList ) {
     outSyntaxInstructionList = @()
     select
@@ -405,12 +405,12 @@ syntax galgas4SyntaxComponentSyntax (galgasScanner4) {
   //   T E R M I N A L    C H E C K    I N S T R U C T I O N
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <actual_input_parameter_list> (?!@galgasDeclarationAST ioDeclarations
+  rule <actual_input_parameter_list> (?!@galgasDeclarationAST ioDeclarations,
                                      !@actualInputParameterListAST outActualInputParameterList)
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <syntax_directed_translation_result> (?!@galgasDeclarationAST ioDeclarations
+  rule <syntax_directed_translation_result> (?!@galgasDeclarationAST ioDeclarations,
                                             !@abstractGrammarInstructionSyntaxDirectedTranslationResult result)
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

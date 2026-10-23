@@ -176,12 +176,12 @@ final class @optionComponentDeclarationAST : @semanticDeclarationAST {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc enterDeclarationInGraph
-    (?!@semanticTypePrecedenceGraph unused ioSemanticTypePrecedenceGraph
-    ?!@equatableExtensionMap unused ioEquatableExtensionMap
-    ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext
-    ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext
-    ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
-    ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
+    (?!@semanticTypePrecedenceGraph unused ioSemanticTypePrecedenceGraph,
+    ?!@equatableExtensionMap unused ioEquatableExtensionMap,
+    ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext,
+    ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext,
+    ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext,
+    ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext,
     ?!@semanticDeclarationListAST ioExtensionOverrideDefinitionList
   ) {
     ioExtensionOverrideDefinitionList += !self
@@ -190,12 +190,12 @@ final class @optionComponentDeclarationAST : @semanticDeclarationAST {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc enterDeclarationInSemanticContext
-    (?!@equatableExtensionMap unused ioEquatableExtensionMap
-    ?let @extensionInitializerForBuildingContext unused inExtensionInitializerMapForBuildingContext
-    ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext
-    ?let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext
-    ?let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext
-    ?!@unifiedTypeMap unused ioTypeMap
+    (?!@equatableExtensionMap unused ioEquatableExtensionMap,
+    ?let @extensionInitializerForBuildingContext unused inExtensionInitializerMapForBuildingContext,
+    ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext,
+    ?let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext,
+    ?let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext,
+    ?!@unifiedTypeMap unused ioTypeMap,
     ?!@semanticContext ioSemanticContext
   ) {
     var @commandLineOptionMap boolOptionMap = @()
@@ -282,12 +282,12 @@ final class @optionComponentDeclarationAST : @semanticDeclarationAST {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc semanticAnalysis
-    (?!@lstringlist unused ioUsefulnessRootEntities
-    ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-    ?let @string unused inProductDirectory
-    ?let @semanticContext inSemanticContext
-                                  ?!@unifiedTypeMap unused ioTypeMap
-    ?let @predefinedTypes unused inPredefinedTypes
+    (?!@lstringlist unused ioUsefulnessRootEntities,
+    ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
+    ?let @string unused inProductDirectory,
+    ?let @semanticContext inSemanticContext,
+                                  ?!@unifiedTypeMap unused ioTypeMap,
+    ?let @predefinedTypes unused inPredefinedTypes,
     ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
   ) {
   //--- Useful entities graph
@@ -384,7 +384,7 @@ final class @optionComponentForGeneration : @semanticDeclarationWithHeaderForGen
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override proc appendDeclaration1 (?!@stringset unused ioInclusionSet
+  override proc appendDeclaration1 (?!@stringset unused ioInclusionSet,
                                      !@string outHeader ) {
     if self.mIsPredefined then
       outHeader = ""
@@ -402,8 +402,8 @@ final class @optionComponentForGeneration : @semanticDeclarationWithHeaderForGen
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc appendSpecificImplementation
-    (?let @unifiedTypeMap unused inTypeMap
-    ?!@stringset ioInclusionSet
+    (?let @unifiedTypeMap unused inTypeMap,
+    ?!@stringset ioInclusionSet,
     !@string outImplementation
   ) {
     if self.mIsPredefined then
@@ -423,9 +423,8 @@ final class @optionComponentForGeneration : @semanticDeclarationWithHeaderForGen
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc appendSpecificFiles
-    (?let @string inProductDirectory
-    ?!@stringset ioAllProductFileSet
-//    ?!objc: @stringlist ioObjcAppProductFileList
+    (?let @string inProductDirectory,
+    ?!@stringset ioAllProductFileSet,
     ?!swift: @stringlist ioSwiftAppProductFileList
   ) {
   //--- Generate Cocoa header

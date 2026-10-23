@@ -32,7 +32,7 @@ syntax extension galgas3SyntaxComponentSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <syntax_instruction_ggs3> (?!@galgasDeclarationAST ioDeclarations
+  rule <syntax_instruction_ggs3> (?!@galgasDeclarationAST ioDeclarations,
                                  !@syntaxInstructionAST outInstruction ) {
     $select$
     let mSelectInstructionLocation = @location.here
@@ -64,7 +64,7 @@ syntax extension galgas4SyntaxComponentSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <syntax_instruction> (?!@galgasDeclarationAST ioDeclarations
+  rule <syntax_instruction> (?!@galgasDeclarationAST ioDeclarations,
                             !@syntaxInstructionAST outInstruction ) {
     $select$
     let mSelectInstructionLocation = @location.here
@@ -95,9 +95,9 @@ syntax extension galgas4SyntaxComponentSyntax {
 //--------------------------------------------------------------------------------------------------
 
 override proc @selectInstruction transformInstructionForGrammarAnalysis
-  (?!usedTerminalMap:@terminalSymbolsMapForGrammarAnalysis ioActuallyUsedTerminalSymbolMap
-  ?nonTerminalSymbolMap:let @nonTerminalSymbolMapForGrammarAnalysis inNonTerminalSymbolMap
-  ?!addedTerminalIndex:@uint ioAddedNonTerminalIndex
+  (?!usedTerminalMap:@terminalSymbolsMapForGrammarAnalysis ioActuallyUsedTerminalSymbolMap,
+  ?nonTerminalSymbolMap:let @nonTerminalSymbolMapForGrammarAnalysis inNonTerminalSymbolMap,
+  ?!addedTerminalIndex:@uint ioAddedNonTerminalIndex,
   ?!@syntaxInstructionListForGrammarAnalysis ioSyntaxInstructionList ) {
   let @uint addedNonTerminalIndex = ioAddedNonTerminalIndex
   ioAddedNonTerminalIndex += 1
@@ -127,18 +127,18 @@ override proc @selectInstruction transformInstructionForGrammarAnalysis
 //--------------------------------------------------------------------------------------------------
 
 override proc @selectInstruction analyzeSyntaxInstruction
-  (?let @lstring inUsefulnessCallerEntityName
-  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-  ?let @analysisContext inAnalysisContext
-                                ?!@unifiedTypeMap ioTypeMap
-  ?let @bool inHasTranslateFeature
-  ?let @terminalMap inTerminalMap
-  ?let @string inLexiqueName
-  ?let @nonterminalMap inNonterminalMap
-  ?let @string  inComponentName
-  ?let @stringset inIndexNameSet
-  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
-  ?!@localVarManager ioVariableMap
+  (?let @lstring inUsefulnessCallerEntityName,
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
+  ?let @analysisContext inAnalysisContext,
+                                ?!@unifiedTypeMap ioTypeMap,
+  ?let @bool inHasTranslateFeature,
+  ?let @terminalMap inTerminalMap,
+  ?let @string inLexiqueName,
+  ?let @nonterminalMap inNonterminalMap,
+  ?let @string  inComponentName,
+  ?let @stringset inIndexNameSet,
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration,
+  ?!@localVarManager ioVariableMap,
   ?!@uint ioSelectMethodCount ) {
   let @uint choiceIndex = ioSelectMethodCount
   ioSelectMethodCount += 1
@@ -191,7 +191,7 @@ final class @selectInstructionForGeneration : @syntaxInstructionForGeneration {
 //--------------------------------------------------------------------------------------------------
 
 override proc @selectInstructionForGeneration appendSyntaxSignature
-  (?let @string inPosfix
+  (?let @string inPosfix,
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration ) {
   var listOfSemanticInstructionListForGeneration = @listOfSemanticInstructionListForGeneration ()
   for (mInstructionList mEndOfInstructionList) in self.mListOfSemanticInstructionListForGeneration do

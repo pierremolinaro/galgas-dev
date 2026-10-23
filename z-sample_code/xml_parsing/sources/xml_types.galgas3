@@ -32,8 +32,8 @@ list @xmlNodeList {
 //-----------------------------------------------------------*
 
 proc internal_logXMLNodes
-  (?let @xmlNodeList inNodeList
-  ?let @string inIndentationString
+  (?let @xmlNodeList inNodeList,
+  ?let @string inIndentationString,
   ?!@string ioString ) {
   for (node) in  inNodeList do
     ioString += inIndentationString

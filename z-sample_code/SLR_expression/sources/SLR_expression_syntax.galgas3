@@ -3,18 +3,18 @@ syntax SLR_expression_syntax (SLR_expression_lexique) {
 rule <StartSymbol>
 
 ()rule <Expression>
-  (!@cExpression outExpressionTree
+  (!@cExpression outExpressionTree,
   !@uint outValue
 )rule <Terme>
-  (!@cExpression outExpressionTree
+  (!@cExpression outExpressionTree,
   !@uint outValue
 
 )rule <Facteur>
-  (!@cExpression outExpressionTree
+  (!@cExpression outExpressionTree,
   !@uint outValue
 
 )rule <Constant>
-  (!@cExpression outExpressionTree
+  (!@cExpression outExpressionTree,
   !@uint outValue
 
 )rule <StartSymbol> () {
@@ -23,7 +23,7 @@ rule <StartSymbol>
 }
   
 rule <Constant>
-  (!@cExpression outExpressionTree
+  (!@cExpression outExpressionTree,
   !@uint outValue ) {
   $number$ ?let cst
   outExpressionTree = @cConst { !cst}
@@ -31,7 +31,7 @@ rule <Constant>
 }
 
 rule <Expression>
-  (!@cExpression outExpressionTree
+  (!@cExpression outExpressionTree,
   !@uint outValue ) {
   select
     <Terme> ?outExpressionTree ?outValue
@@ -45,7 +45,7 @@ rule <Expression>
 }
 
 rule <Terme>
-  (!@cExpression outExpressionTree
+  (!@cExpression outExpressionTree,
   !@uint outValue ) {
   select
     <Facteur> ?outExpressionTree ?outValue
@@ -59,7 +59,7 @@ rule <Terme>
 }
 
 rule <Facteur>
-  (!@cExpression outExpressionTree
+  (!@cExpression outExpressionTree,
   !@uint outValue ) {
   select
     $($

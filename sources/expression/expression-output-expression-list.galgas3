@@ -62,7 +62,7 @@ syntax extension galgas3ExpressionSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <output_expression_list_ggs3> (?!@galgasDeclarationAST ioDeclarations
+  rule <output_expression_list_ggs3> (?!@galgasDeclarationAST ioDeclarations,
                                      !@actualOutputArgumentList outExpressionList ) {
     outExpressionList = @()
     repeat
@@ -80,7 +80,7 @@ syntax extension galgas3ExpressionSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <output_expression_list_ggs34> (?!@galgasDeclarationAST ioDeclarations
+  rule <output_expression_list_ggs34> (?!@galgasDeclarationAST ioDeclarations,
                                       !@actualOutputArgumentList outExpressionList ) {
     outExpressionList = @()
     select
@@ -116,7 +116,7 @@ syntax extension galgas4ExpressionSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <output_expression_list> (?!@galgasDeclarationAST ioDeclarations
+  rule <output_expression_list> (?!@galgasDeclarationAST ioDeclarations,
                                 !@actualOutputArgumentList outExpressionList ) {
     outExpressionList = @()
     select
@@ -141,7 +141,7 @@ syntax extension galgas4ExpressionSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <non_empty_output_expression_list> (?!@galgasDeclarationAST ioDeclarations
+  rule <non_empty_output_expression_list> (?!@galgasDeclarationAST ioDeclarations,
                                           !@actualOutputArgumentList outExpressionList ) {
     outExpressionList = @()
     repeat

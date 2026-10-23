@@ -98,8 +98,8 @@ syntax extension templateSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <for_instruction_enumerated_object> (!@lstringlist outEnumeration
-                                           !@location outEndOfProperties
+  rule <for_instruction_enumerated_object> (!@lstringlist outEnumeration,
+                                           !@location outEndOfProperties,
                                            !@templateExpressionAST outExpression ) {
     outEnumeration = @lstringlist ()
     $($
@@ -209,10 +209,10 @@ syntax extension templateSyntax {
 //--------------------------------------------------------------------------------------------------
 
 override proc @templateInstructionForeachAST templateInstructionAnalysis
-  (?let @lstring inUsefulnessCallerEntityName
-  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-  ?let @templateAnalysisContext inAnalysisContext
-                                ?!@unifiedTypeMap ioTypeMap
+  (?let @lstring inUsefulnessCallerEntityName,
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
+  ?let @templateAnalysisContext inAnalysisContext,
+                                ?!@unifiedTypeMap ioTypeMap,
   ?!@templateInstructionListForGeneration ioInstructionList
 ) {
 //--- Foreach expression
@@ -326,10 +326,10 @@ final class @templateInstructionForeachForGeneration : @templateInstructionForGe
 //································································································
 
 override proc @templateInstructionForeachForGeneration templateCodeGeneration
-  (?!@string ioGeneratedCode
-  ?!@stringset ioInclusionSet
-  ?!@uint ioTemporaryVariableIndex
-  ?!@stringset ioUnusedVariableCppNameSet
+  (?!@string ioGeneratedCode,
+  ?!@stringset ioInclusionSet,
+  ?!@uint ioTemporaryVariableIndex,
+  ?!@stringset ioUnusedVariableCppNameSet,
   ?!@bool ioUseColumnMarker ) {
 //---
   [self.mExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?let foreachVarCppName]
