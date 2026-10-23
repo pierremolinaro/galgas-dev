@@ -200,7 +200,7 @@ private proc generateMakefileMinGWOnMacOSXTarget
     !dir +"/clean.py"
     ?*
   ]
-  [@string deleteFileIfExists !dir + "/makefile"]
+  @string.deleteFileIfExists (!dir + "/makefile")
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -218,7 +218,7 @@ private proc generateMakefileUnixTarget
   [[filewrapper targetGalgas3GenerationFileWrapper.build_verbose_unix] writeToExecutableFileWhenDifferentContents !dir +"/verbose-build.py" ?*]
   [[filewrapper targetGalgas3GenerationFileWrapper.install_unix] writeToExecutableFileWhenDifferentContents !dir +"/install.py" ?*]
   [[filewrapper targetGalgas3GenerationFileWrapper.clean_unix !inProjectName] writeToExecutableFileWhenDifferentContents !dir +"/clean.py" ?*]
-  [@string deleteFileIfExists !dir + "/makefile"]
+  @string.deleteFileIfExists (!dir + "/makefile")
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -235,7 +235,7 @@ private proc generateMakefileMacTarget
   [[filewrapper targetGalgas3GenerationFileWrapper.build_debug_macosx] writeToExecutableFileWhenDifferentContents !dir +"/build+debug.py" ?*]
   [[filewrapper targetGalgas3GenerationFileWrapper.build_verbose_macosx] writeToExecutableFileWhenDifferentContents !dir +"/verbose-build.py" ?*]
   [[filewrapper targetGalgas3GenerationFileWrapper.clean_macosx !inProjectName] writeToExecutableFileWhenDifferentContents !dir +"/clean.py" ?*]
-  [@string deleteFileIfExists !dir + "/makefile"]
+  @string.deleteFileIfExists (!dir + "/makefile")
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -252,7 +252,7 @@ private proc generateMakefileLinux32OnMacOSXTarget
   [[filewrapper targetGalgas3GenerationFileWrapper.build_debug_x86linux32_on_mac] writeToExecutableFileWhenDifferentContents !dir +"/build+debug.py" ?*]
   [[filewrapper targetGalgas3GenerationFileWrapper.build_verbose_x86linux32_on_mac] writeToExecutableFileWhenDifferentContents !dir +"/verbose-build.py" ?*]
   [[filewrapper targetGalgas3GenerationFileWrapper.clean_x86linux32_on_mac !inProjectName] writeToExecutableFileWhenDifferentContents !dir +"/clean.py" ?*]
-  [@string deleteFileIfExists !dir + "/makefile"]
+  @string.deleteFileIfExists (!dir + "/makefile")
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -269,7 +269,7 @@ private proc generateMakefileLinux64OnMacOSXTarget
   [[filewrapper targetGalgas3GenerationFileWrapper.build_debug_x86linux64_on_mac] writeToExecutableFileWhenDifferentContents !dir +"/build+debug.py" ?*]
   [[filewrapper targetGalgas3GenerationFileWrapper.build_verbose_x86linux64_on_mac] writeToExecutableFileWhenDifferentContents !dir +"/verbose-build.py" ?*]
   [[filewrapper targetGalgas3GenerationFileWrapper.clean_x86linux64_on_mac !inProjectName] writeToExecutableFileWhenDifferentContents !dir +"/clean.py" ?*]
-  [@string deleteFileIfExists !dir + "/makefile"]
+  @string.deleteFileIfExists (!dir + "/makefile")
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -285,7 +285,7 @@ private proc generateArm64LinuxMakefileTarget (?let @string inProjectDirectory,
   [[filewrapper targetGalgas3GenerationFileWrapper.build_debug_arm64_linux_on_mac] writeToExecutableFileWhenDifferentContents !dir +"/build+debug.py" ?*]
   [[filewrapper targetGalgas3GenerationFileWrapper.build_verbose_arm64_linux_on_mac] writeToExecutableFileWhenDifferentContents !dir +"/verbose-build.py" ?*]
   [[filewrapper targetGalgas3GenerationFileWrapper.clean_arm64_linux_on_mac !inProjectName] writeToExecutableFileWhenDifferentContents !dir +"/clean.py" ?*]
-  [@string deleteFileIfExists !dir + "/makefile"]
+  @string.deleteFileIfExists (!dir + "/makefile")
 }
 
 //--------------------------------------------------------------------------------------------------

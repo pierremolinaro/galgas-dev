@@ -57,17 +57,17 @@ class cGrammar_galgas_34_Grammar : public cParser_galgas_34_ExpressionSyntax,
                                                 GGS_actualParameterListAST & ioArgument1,
                                                 Lexique_galgasScanner_34_ * inCompiler) ;
 
-//------------------------------------- 'actual_parameter_list_within_parenthesis' non terminal
+//------------------------------------- 'actual_parameter_list_with_parenthesis' non terminal
 //--- 'parse' label
- /*  public: virtual void nt_actual_5F_parameter_5F_list_5F_within_5F_parenthesis_parse (Lexique_galgasScanner_34_ * inCompiler) ; */
+ /*  public: virtual void nt_actual_5F_parameter_5F_list_5F_with_5F_parenthesis_parse (Lexique_galgasScanner_34_ * inCompiler) ; */
 
 //--- indexing
-  public: virtual void nt_actual_5F_parameter_5F_list_5F_within_5F_parenthesis_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
+  public: virtual void nt_actual_5F_parameter_5F_list_5F_with_5F_parenthesis_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
 
 //----------- '' label
-  public: virtual void nt_actual_5F_parameter_5F_list_5F_within_5F_parenthesis_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                                                 GGS_actualParameterListAST & outArgument1,
-                                                                                 Lexique_galgasScanner_34_ * inCompiler) ;
+  public: virtual void nt_actual_5F_parameter_5F_list_5F_with_5F_parenthesis_ (GGS_galgasDeclarationAST & ioArgument0,
+                                                                               GGS_actualParameterListAST & outArgument1,
+                                                                               Lexique_galgasScanner_34_ * inCompiler) ;
 
 //------------------------------------- 'comma_separated_expression' non terminal
 //--- 'parse' label

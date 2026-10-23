@@ -2892,11 +2892,11 @@ class cParser_galgas_34_ExpressionSyntax {
   public: virtual ~ cParser_galgas_34_ExpressionSyntax (void) { }
 
 //--- Non terminal declarations
-  protected: virtual void nt_actual_5F_parameter_5F_list_5F_within_5F_parenthesis_ (class GGS_galgasDeclarationAST & ioArgument0,
-                                                                                    class GGS_actualParameterListAST & outArgument1,
-                                                                                    class Lexique_galgasScanner_34_ * inLexique) = 0 ;
+  protected: virtual void nt_actual_5F_parameter_5F_list_5F_with_5F_parenthesis_ (class GGS_galgasDeclarationAST & ioArgument0,
+                                                                                  class GGS_actualParameterListAST & outArgument1,
+                                                                                  class Lexique_galgasScanner_34_ * inLexique) = 0 ;
 
-  protected: virtual void nt_actual_5F_parameter_5F_list_5F_within_5F_parenthesis_indexing (class Lexique_galgasScanner_34_ * inLexique) = 0 ;
+  protected: virtual void nt_actual_5F_parameter_5F_list_5F_with_5F_parenthesis_indexing (class Lexique_galgasScanner_34_ * inLexique) = 0 ;
 
   protected: virtual void nt_expression_ (class GGS_galgasDeclarationAST & ioArgument0,
                                           class GGS_semanticExpressionAST & outArgument1,

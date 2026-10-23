@@ -1118,7 +1118,7 @@ final class @lexiqueDeclarationForGeneration : @semanticDeclarationWithHeaderFor
   //--- Generate SwiftUI implementation file
     ioAllProductFileSet ++= "lexique-" + self.mLexiqueName.fileNameRepresentation + "-swiftui.swift"
     ioSwiftAppProductFileList += !"lexique-" + self.mLexiqueName.fileNameRepresentation + "-swiftui.swift"
-    [@string generateFileWithPattern
+    @string.generateFileWithPattern (
       !startPath:inProductDirectory
       !fileName:"lexique-" + self.mLexiqueName.fileNameRepresentation + "-swiftui.swift"
       !lineComment:"//"
@@ -1128,7 +1128,7 @@ final class @lexiqueDeclarationForGeneration : @semanticDeclarationWithHeaderFor
       !defaultUserZone2:"\n\n" // Defaut user zone2
       !generatedZone3:"\n\n" // Zone 3
       !makeExecutable:false
-    ]
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -1480,7 +1480,7 @@ proc generatePredefinedTypeFiles
   if @uint.errorCount == 0 then
     ioToolHeaderFileList += !"all-predefined-types.h"
     ioAllProductFileSet ++= "all-predefined-types.h"
-    [@string generateFileWithPattern
+    @string.generateFileWithPattern (
       !startPath:inDirectory
       !fileName:"all-predefined-types.h"
       !lineComment:"//"
@@ -1490,7 +1490,7 @@ proc generatePredefinedTypeFiles
       !defaultUserZone2:"\n\n" // Defaut user zone2
       !generatedZone3:""
       !makeExecutable:false
-    ]
+    )
   end
 //----------------------------------------------------------------- Generate implementation file
   generatedCode = [filewrapper predefinedTypeGenerationTemplate.predefinedTypesImplementation]
@@ -1504,7 +1504,7 @@ proc generatePredefinedTypeFiles
   if @uint.errorCount == 0 then
     ioToolCppFileList += !"all-predefined-types.cpp"
     ioAllProductFileSet ++= "all-predefined-types.cpp"
-    [@string generateFileWithPattern
+    @string.generateFileWithPattern (
       !startPath:inDirectory
       !fileName:"all-predefined-types.cpp"
       !lineComment:"//"
@@ -1514,7 +1514,7 @@ proc generatePredefinedTypeFiles
       !defaultUserZone2:"\n\n" // Defaut user zone2
       !generatedZone3:""
       !makeExecutable:false
-    ]
+    )
   end
 }
 

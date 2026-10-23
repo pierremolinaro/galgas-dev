@@ -316,7 +316,7 @@ private proc compileProject (?let @lstring inProjectSourceFile,
     ]
     [typeDumpString writeToFileWhenDifferentContents !typeDumpFilePath ?*]
   else
-    [@string deleteFileIfExists !typeDumpFilePath]
+    @string.deleteFileIfExists (!typeDumpFilePath)
   end
 //--------------------------------- Perform global checkings
   if (0 == @uint.errorCount) & (inSourceToAnalyze == "") then
@@ -462,7 +462,7 @@ private proc projectGeneration
     end
     let uselessFileSet = allActualFileSet - allProductFileSet
     for (key) in uselessFileSet do
-      [@string deleteFile !productDirectory + "/" + key]
+      @string.deleteFile (!productDirectory + "/" + key)
     end
   end
 }

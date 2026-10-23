@@ -35,12 +35,14 @@ syntax extension galgas3InstructionsSyntax {
 
   rule <semantic_instruction_ggs3> (?!@galgasDeclarationAST ioDeclarations,
                                     !@semanticInstructionAST outInstruction) {
-    $[$
+//    $[$
     let instructionLocation = @location.here
     $@type$ ?let @lstring mTypeName indexing typeReferenceInTypeMethod
-    $identifier$ ?let @lstring mMethodName
+    $.$
+    $identifier$ ?let @lstring mMethodName // §§§
+    $($
     <actual_parameter_list_ggs3> (!?ioDeclarations ?let @actualParameterListAST actualParameterList)
-    $]$
+    $)$
     outInstruction = @typeMethodCallInstructionAST {
       !instructionLocation
       !mTypeName
@@ -65,7 +67,7 @@ syntax extension galgas4InstructionsSyntax {
     $@type$ ?let @lstring mTypeName indexing typeReferenceInTypeMethod
     $.$
     $identifier$ ?let @lstring mMethodName
-    <actual_parameter_list_within_parenthesis> (!?ioDeclarations ?let @actualParameterListAST actualParameterList)
+    <actual_parameter_list_with_parenthesis> (!?ioDeclarations ?let @actualParameterListAST actualParameterList)
     outInstruction = @typeMethodCallInstructionAST {
       !instructionLocation
       !mTypeName

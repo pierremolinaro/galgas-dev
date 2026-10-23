@@ -296,7 +296,7 @@ syntax extension galgas4InstructionsSyntax {
         !expression
       }
     or
-      <actual_parameter_list_within_parenthesis> (!?ioDeclarations ?let @actualParameterListAST actualParameterList)
+      <actual_parameter_list_with_parenthesis> (!?ioDeclarations ?let @actualParameterListAST actualParameterList)
       if inHasSelfPrefix then
         if propertyList.count == 0 then
           outInstruction = @methodCallInstructionAST {

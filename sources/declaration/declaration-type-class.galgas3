@@ -657,7 +657,7 @@ final class @classTypeForGeneration : @semanticTypeForGeneration {
           !self.synthetizedInitializerArgumentList
         ]
         let @string headerFileName = "separateHeaderFor_" + self.mSelfTypeEntry.identifierRepresentation + ".h"
-        [@string generateFileWithPattern
+        @string.generateFileWithPattern (
           !startPath:inOutputDirectory + "/../user-headers"
           !fileName:headerFileName
           !lineComment:"//"
@@ -667,7 +667,7 @@ final class @classTypeForGeneration : @semanticTypeForGeneration {
           !defaultUserZone2:"\n\n" // Defaut user zone2
           !generatedZone3:part2
           !makeExecutable:false
-        ]
+        )
         outHeader = "#include \"" + headerFileName + "\"\n\n"
       else
         outHeader = [filewrapper classGenerationTemplate.referenceClassTypeHeader2part1

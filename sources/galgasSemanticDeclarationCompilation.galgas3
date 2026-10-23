@@ -364,11 +364,11 @@ private proc generateManyHeaders
         headerInclusionList1 += !headerFileName
         ioAllProductFileSet ++= headerFileName + ".h"
         ioToolHeaderFileList += !headerFileName + ".h"
-        [@string generateFile
+        @string.generateFile (
           !inProductDirectory
           !headerFileName + ".h"
           !headerString
-        ]
+        )
       end
     //--- Header 2
       if declaration.mDeclaration.headerKind == @headerKind.twoHeaders then
@@ -384,11 +384,11 @@ private proc generateManyHeaders
         headerInclusionList2 += !declaration.mDeclaration.getImplementationCppFileName
         ioAllProductFileSet ++= declaration.mDeclaration.getImplementationCppFileName + ".h"
         ioToolHeaderFileList += !declaration.mDeclaration.getImplementationCppFileName + ".h"
-        [@string generateFile
+        @string.generateFile (
           !inProductDirectory
           !declaration.mDeclaration.getImplementationCppFileName + ".h"
           !headerString
-        ]
+        )
       end
     end
   end
@@ -399,11 +399,11 @@ private proc generateManyHeaders
   ]
   ioAllProductFileSet ++= "all-declarations.h"
   ioToolHeaderFileList += !"all-declarations.h"
-  [@string generateFile
+  @string.generateFile (
     !inProductDirectory
     !"all-declarations.h"
     !headerString
-  ]
+  )
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -433,11 +433,11 @@ private proc generateOneBigHeader
   end
   ioAllProductFileSet ++= "all-declarations.h"
   ioToolHeaderFileList += !"all-declarations.h"
-  [@string generateFile
+  @string.generateFile (
     !inProductDirectory
     !"all-declarations.h"
     !headerString
-  ]
+  )
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -531,11 +531,11 @@ private proc generateFewImplementationFiles
         let fileName = "all-declarations-" + fileIdx + ".cpp"
         ioToolProductFileList = @stringlist @[@(fileName)] + ioToolProductFileList
         ioAllProductFileSet ++= fileName
-        [@string generateFile
+        @string.generateFile (
           !inProductDirectory
           !fileName
           !header + implementationString
-        ]
+        )
         n = 0
         fileIdx += 1
         implementationString = ""
@@ -554,11 +554,11 @@ private proc generateFewImplementationFiles
     let fileName = "all-declarations-" + fileIdx + ".cpp"
     ioToolProductFileList = @stringlist @[@(fileName)] + ioToolProductFileList
     ioAllProductFileSet ++= fileName
-    [@string generateFile
+    @string.generateFile (
       !inProductDirectory
       !fileName
       !header + implementationString
-    ]
+    )
   end
 }
 
@@ -625,11 +625,11 @@ private proc generateFewImplementationFilesWithFewHeaders
         let fileName = "all-declarations-" + fileIdx + ".cpp"
         ioToolProductFileList = @stringlist @[@(fileName)] + ioToolProductFileList
         ioAllProductFileSet ++= fileName
-        [@string generateFile
+        @string.generateFile (
           !inProductDirectory
           !fileName
           !cppHeader + implementationString
-        ]
+        )
       //---
         ioAllProductFileSet ++= headerFileName + ".h"
         ioToolHeaderFileList += !headerFileName + ".h"
@@ -637,11 +637,11 @@ private proc generateFewImplementationFilesWithFewHeaders
           !headerFileName
           !if fileIdx == 0 then @() else @[@("all-declarations-" + (fileIdx-1))] end
         ]
-        [@string generateFile
+        @string.generateFile (
           !inProductDirectory
           !headerFileName + ".h"
           !startOfHeader + headerString
-        ]
+        )
       //---
         fileIdx += 1
         implementationString = ""
@@ -661,11 +661,11 @@ private proc generateFewImplementationFilesWithFewHeaders
     let fileName = "all-declarations-" + fileIdx + ".cpp"
     ioToolProductFileList = @stringlist @[@(fileName)] + ioToolProductFileList
     ioAllProductFileSet ++= fileName
-    [@string generateFile
+    @string.generateFile (
       !inProductDirectory
       !fileName
       !header + implementationString
-    ]
+    )
   //---
     ioAllProductFileSet ++= headerFileName + ".h"
     ioToolHeaderFileList += !headerFileName + ".h"
@@ -673,11 +673,11 @@ private proc generateFewImplementationFilesWithFewHeaders
       !headerFileName
       !if fileIdx == 0 then @() else @[@("all-declarations-" + (fileIdx-1))] end
     ]
-    [@string generateFile
+    @string.generateFile (
       !inProductDirectory
       !headerFileName + ".h"
       !startOfHeader + headerString
-    ]
+    )
   end
 //--- all declarations header
   ioAllProductFileSet ++= "all-declarations.h"
@@ -686,11 +686,11 @@ private proc generateFewImplementationFilesWithFewHeaders
     !"all-declarations"
     !@[@("all-declarations-" + fileIdx)]
   ]
-  [@string generateFile
+  @string.generateFile (
     !inProductDirectory
     !"all-declarations.h"
     !startOfAllDeclarationsHeader
-  ]
+  )
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -720,11 +720,11 @@ private proc generateManyImplementationFiles
       implementationString += declaration.mDeclaration.appendTypeGenericImplementation
       let fileName = declaration.mDeclaration.getImplementationCppFileName + ".cpp"
       ioAllProductFileSet ++= fileName
-      [@string generateFile
+      @string.generateFile (
         !inProductDirectory
         !fileName
         !header + implementationString
-      ]
+      )
       ioToolProductFileList += !fileName
     end
   end

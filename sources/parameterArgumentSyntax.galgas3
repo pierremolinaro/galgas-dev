@@ -493,8 +493,8 @@ syntax galgas4ParameterArgumentSyntax (galgasScanner4) {
   //  A C T U A L    P A R A M E T E R    L I S T
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <actual_parameter_list_within_parenthesis> (?!@galgasDeclarationAST ioDeclarations,
-                                                  !@actualParameterListAST outActualParameterList ) {
+  rule <actual_parameter_list_with_parenthesis> (?!@galgasDeclarationAST ioDeclarations,
+                                                 !@actualParameterListAST outActualParameterList ) {
     $($
     outActualParameterList = @()
     select

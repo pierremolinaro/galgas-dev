@@ -561,7 +561,7 @@ proc generateAllGuiComponentsGalgas3 (?let @optionComponentMapForGeneration inOp
       !guiComponentContext
       !inQuietOutputByDefault
     ]
-    [@string generateFileWithPattern
+    @string.generateFileWithPattern (
       !startPath:inOutputDirectory
       !fileName: swiftuiFileName
       !lineComment:"//"
@@ -571,7 +571,7 @@ proc generateAllGuiComponentsGalgas3 (?let @optionComponentMapForGeneration inOp
       !defaultUserZone2:"\n\n" // Defaut user zone2
       !generatedZone3:"\n\n" // Zone 3
       !makeExecutable:false
-    ]
+    )
   end
 }
 

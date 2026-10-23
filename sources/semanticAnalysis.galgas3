@@ -746,7 +746,7 @@ override proc @galgas3GrammarComponentAST semanticAnalysis
       !ioTypeMap
     )
   else
-    [@string deleteFileIfExists !dotDocumentFilePath]
+    @string.deleteFileIfExists (!dotDocumentFilePath)
   end
   //--------------------------------------------------------- Header of implementation file
 //  Loop throuht all rules for detecting input arguments: as the generated C++ code uses a copy constructor
@@ -790,7 +790,7 @@ override proc @galgas3GrammarComponentAST semanticAnalysis
     [HTMLFilePath.deletingLastPathComponent makeDirectory]
     [grammarHTMLHelperContents writeToFileWhenDifferentContents !HTMLFilePath ?*]
   else
-    [@string deleteFileIfExists !HTMLFilePath]
+    @string.deleteFileIfExists (!HTMLFilePath)
   end
 //--------------------------------------------------------- Generate Swift description file
   let swiftFilePath = inProductDirectory + "/../helpers/" + self.mGrammarComponentName + ".swift"
@@ -798,7 +798,7 @@ override proc @galgas3GrammarComponentAST semanticAnalysis
     [swiftFilePath.deletingLastPathComponent makeDirectory]
     [swiftGrammarDescription writeToFileWhenDifferentContents !swiftFilePath ?*]
   else
-    [@string deleteFileIfExists !swiftFilePath]
+    @string.deleteFileIfExists (!swiftFilePath)
   end
 
 //---

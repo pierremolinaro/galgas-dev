@@ -59,7 +59,7 @@ proc updateLIBPMatPath (?let @string inLIBPMPath ) {
   end
   let uselessFileSet = allActualFileSet - allNeededFileSet
   for (key) in uselessFileSet do
-    [@string deleteFile !inLIBPMPath + key]
+    @string.deleteFile (!inLIBPMPath + key)
   end
 }
 

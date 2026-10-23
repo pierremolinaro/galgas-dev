@@ -71,7 +71,7 @@ syntax extension galgas4InstructionsSyntax {
     $.$
     $identifier$ ?let methodName
     let instructionLocation = @location.here
-    <actual_parameter_list_within_parenthesis> (!?ioDeclarations ?let @actualParameterListAST actualParameterList)
+    <actual_parameter_list_with_parenthesis> (!?ioDeclarations ?let @actualParameterListAST actualParameterList)
     outInstruction = @superMethodCallInstructionAST {
       !instructionLocation
       !methodName

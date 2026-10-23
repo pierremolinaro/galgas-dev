@@ -25,11 +25,11 @@ class cParser_galgas_34_ParameterArgumentSyntax {
 
   protected: virtual void nt_actual_5F_parameter_indexing (class Lexique_galgasScanner_34_ * inLexique) = 0 ;
 
-  protected: virtual void nt_actual_5F_parameter_5F_list_5F_within_5F_parenthesis_ (class GGS_galgasDeclarationAST & ioArgument0,
-                                                                                    class GGS_actualParameterListAST & outArgument1,
-                                                                                    class Lexique_galgasScanner_34_ * inLexique) = 0 ;
+  protected: virtual void nt_actual_5F_parameter_5F_list_5F_with_5F_parenthesis_ (class GGS_galgasDeclarationAST & ioArgument0,
+                                                                                  class GGS_actualParameterListAST & outArgument1,
+                                                                                  class Lexique_galgasScanner_34_ * inLexique) = 0 ;
 
-  protected: virtual void nt_actual_5F_parameter_5F_list_5F_within_5F_parenthesis_indexing (class Lexique_galgasScanner_34_ * inLexique) = 0 ;
+  protected: virtual void nt_actual_5F_parameter_5F_list_5F_with_5F_parenthesis_indexing (class Lexique_galgasScanner_34_ * inLexique) = 0 ;
 
   protected: virtual void nt_expression_ (class GGS_galgasDeclarationAST & ioArgument0,
                                           class GGS_semanticExpressionAST & outArgument1,
@@ -76,13 +76,13 @@ class cParser_galgas_34_ParameterArgumentSyntax {
 
   protected: void rule_galgas_34_ParameterArgumentSyntax_formal_5F_parameter_5F_list_i0_indexing (Lexique_galgasScanner_34_ * inLexique) ;
 
-  protected: void rule_galgas_34_ParameterArgumentSyntax_actual_5F_parameter_5F_list_5F_within_5F_parenthesis_i1_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                                                                                   GGS_actualParameterListAST & outArgument1,
-                                                                                                                   Lexique_galgasScanner_34_ * inLexique) ;
+  protected: void rule_galgas_34_ParameterArgumentSyntax_actual_5F_parameter_5F_list_5F_with_5F_parenthesis_i1_ (GGS_galgasDeclarationAST & ioArgument0,
+                                                                                                                 GGS_actualParameterListAST & outArgument1,
+                                                                                                                 Lexique_galgasScanner_34_ * inLexique) ;
 
-/*  protected: void rule_galgas_34_ParameterArgumentSyntax_actual_5F_parameter_5F_list_5F_within_5F_parenthesis_i1_parse (Lexique_galgasScanner_34_ * inLexique) ; */
+/*  protected: void rule_galgas_34_ParameterArgumentSyntax_actual_5F_parameter_5F_list_5F_with_5F_parenthesis_i1_parse (Lexique_galgasScanner_34_ * inLexique) ; */
 
-  protected: void rule_galgas_34_ParameterArgumentSyntax_actual_5F_parameter_5F_list_5F_within_5F_parenthesis_i1_indexing (Lexique_galgasScanner_34_ * inLexique) ;
+  protected: void rule_galgas_34_ParameterArgumentSyntax_actual_5F_parameter_5F_list_5F_with_5F_parenthesis_i1_indexing (Lexique_galgasScanner_34_ * inLexique) ;
 
   protected: void rule_galgas_34_ParameterArgumentSyntax_actual_5F_parameter_i2_ (GGS_galgasDeclarationAST & ioArgument0,
                                                                                   GGS_actualParameterListAST & ioArgument1,
@@ -207,11 +207,11 @@ class cParser_galgas_34_InstructionsSyntax {
 
   protected: virtual void nt_actual_5F_input_5F_parameter_5F_list_indexing (class Lexique_galgasScanner_34_ * inLexique) = 0 ;
 
-  protected: virtual void nt_actual_5F_parameter_5F_list_5F_within_5F_parenthesis_ (class GGS_galgasDeclarationAST & ioArgument0,
-                                                                                    class GGS_actualParameterListAST & outArgument1,
-                                                                                    class Lexique_galgasScanner_34_ * inLexique) = 0 ;
+  protected: virtual void nt_actual_5F_parameter_5F_list_5F_with_5F_parenthesis_ (class GGS_galgasDeclarationAST & ioArgument0,
+                                                                                  class GGS_actualParameterListAST & outArgument1,
+                                                                                  class Lexique_galgasScanner_34_ * inLexique) = 0 ;
 
-  protected: virtual void nt_actual_5F_parameter_5F_list_5F_within_5F_parenthesis_indexing (class Lexique_galgasScanner_34_ * inLexique) = 0 ;
+  protected: virtual void nt_actual_5F_parameter_5F_list_5F_with_5F_parenthesis_indexing (class Lexique_galgasScanner_34_ * inLexique) = 0 ;
 
   protected: virtual void nt_comma_5F_separated_5F_expression_ (class GGS_galgasDeclarationAST & ioArgument0,
                                                                 class GGS_CommaSeparatedExpressionList & outArgument1,
@@ -2152,11 +2152,11 @@ class cParser_galgas_34_SyntaxComponentSyntax {
 
   protected: virtual void nt_actual_5F_input_5F_parameter_5F_list_indexing (class Lexique_galgasScanner_34_ * inLexique) = 0 ;
 
-  protected: virtual void nt_actual_5F_parameter_5F_list_5F_within_5F_parenthesis_ (class GGS_galgasDeclarationAST & ioArgument0,
-                                                                                    class GGS_actualParameterListAST & outArgument1,
-                                                                                    class Lexique_galgasScanner_34_ * inLexique) = 0 ;
+  protected: virtual void nt_actual_5F_parameter_5F_list_5F_with_5F_parenthesis_ (class GGS_galgasDeclarationAST & ioArgument0,
+                                                                                  class GGS_actualParameterListAST & outArgument1,
+                                                                                  class Lexique_galgasScanner_34_ * inLexique) = 0 ;
 
-  protected: virtual void nt_actual_5F_parameter_5F_list_5F_within_5F_parenthesis_indexing (class Lexique_galgasScanner_34_ * inLexique) = 0 ;
+  protected: virtual void nt_actual_5F_parameter_5F_list_5F_with_5F_parenthesis_indexing (class Lexique_galgasScanner_34_ * inLexique) = 0 ;
 
   protected: virtual void nt_declaration_ (class GGS_galgasDeclarationAST & ioArgument0,
                                            class Lexique_galgasScanner_34_ * inLexique) = 0 ;

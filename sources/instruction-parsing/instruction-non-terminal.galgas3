@@ -56,7 +56,7 @@ syntax extension galgas4SyntaxComponentSyntax {
   rule <syntax_instruction> (?!@galgasDeclarationAST ioDeclarations,
                             !@syntaxInstructionAST outInstruction ) {
     $<non_terminal>$ ?let @lstring mNonterminalName indexing ruleReference
-    <actual_parameter_list_within_parenthesis> (!?ioDeclarations ?let @actualParameterListAST mActualParameterList)
+    <actual_parameter_list_with_parenthesis> (!?ioDeclarations ?let @actualParameterListAST mActualParameterList)
   //--- Get syntax directed translation result string
     let @abstractGrammarInstructionSyntaxDirectedTranslationResult grammarInstructionSyntaxDirectedTranslationResult
     select

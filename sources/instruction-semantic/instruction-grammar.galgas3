@@ -176,93 +176,6 @@ syntax extension galgas3InstructionsSyntax {
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  // OBSOLETE GRAMMAR INSTRUCTION, NOT COMPATIBLE WITH GALGAS 4
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-//  rule <semantic_instruction_ggs3> (?!@galgasDeclarationAST ioDeclarations,
-//                                    !@semanticInstructionAST outInstruction) { //obsolete
-//    $grammar$
-//    let instructionLocation = @location.here
-//    $identifier$ ?let @lstring grammarComponentName indexing grammarComponentReference
-//    let @lstring labelName
-//    select
-//      labelName = @lstring {!"" !@location.here}
-//    or
-//      $label$
-//      $identifier$ ?labelName
-//    end
-//    <grammar_instruction_core_obsolete> (!?ioDeclarations !instructionLocation !grammarComponentName !labelName ?outInstruction)
-//  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-//  rule <grammar_instruction_core_obsolete> (?!@galgasDeclarationAST ioDeclarations,
-//                                            ?let @location inInstructionLocation,
-//                                            ?let @lstring inGrammarComponentName,
-//                                            ?let @lstring inLabelName,
-//                                            !@semanticInstructionAST outInstruction) {
-//    $in$
-//    <expression_ggs3> (!?ioDeclarations ?let @semanticExpressionAST mSourceExpression)
-//    let endOfSourceExpression = @location.here
-//    <actual_parameter_list_ggs3> (!?ioDeclarations ?let @actualParameterListAST actualParameterList)
-//    
-//  //--- Get syntax directed translation result string
-//    let @abstractGrammarInstructionSyntaxDirectedTranslationResult grammarInstructionSyntaxDirectedTranslationResult
-//    select
-//      grammarInstructionSyntaxDirectedTranslationResult = @grammarInstructionSyntaxDirectedTranslationResultNone {}
-//    or
-//      $:>$
-//      <syntax_directed_translation_result> (!?ioDeclarations ?grammarInstructionSyntaxDirectedTranslationResult)
-//    end
-//    outInstruction = @grammarInFileInstructionAST {
-//      !inInstructionLocation
-//      !inGrammarComponentName
-//      !inLabelName
-//      !mSourceExpression
-//      !endOfSourceExpression
-//      !actualParameterList
-//      !grammarInstructionSyntaxDirectedTranslationResult
-//    }
-//  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-//  rule <grammar_instruction_core_obsolete> (?!@galgasDeclarationAST ioDeclarations,
-//                                            ?let @location inInstructionLocation,
-//                                            ?let @lstring inGrammarComponentName,
-//                                            ?let @lstring inLabelName,
-//                                            !@semanticInstructionAST outInstruction) {
-//    $on$
-//    $($
-//    <expression_ggs3> (!?ioDeclarations ?let @semanticExpressionAST sourceExpression)
-//    let @location endOfSourceExpression = .here
-//    $,$
-//    <expression_ggs3> (!?ioDeclarations ?let @semanticExpressionAST nameExpression)
-//    let @location endOfNameExpression = .here
-//    $)$
-//    <actual_parameter_list_ggs3> (!?ioDeclarations ?let @actualParameterListAST actualParameterList)
-//  //--- Get syntax directed translation result string
-//    let @abstractGrammarInstructionSyntaxDirectedTranslationResult grammarInstructionSyntaxDirectedTranslationResult
-//    select
-//      grammarInstructionSyntaxDirectedTranslationResult = @grammarInstructionSyntaxDirectedTranslationResultNone {}
-//    or
-//      $:>$
-//      <syntax_directed_translation_result> (!?ioDeclarations ?grammarInstructionSyntaxDirectedTranslationResult)
-//    end
-//    outInstruction = @grammarInStringInstructionAST {
-//      !inInstructionLocation
-//      !inGrammarComponentName
-//      !inLabelName
-//      !sourceExpression
-//      !endOfSourceExpression
-//      !nameExpression
-//      !endOfNameExpression
-//      !actualParameterList
-//      !grammarInstructionSyntaxDirectedTranslationResult
-//    }
-//  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -284,7 +197,7 @@ syntax extension galgas4InstructionsSyntax {
       $label$
       $identifier$ ?labelName
     end
-    <actual_parameter_list_within_parenthesis> (!?ioDeclarations ?let @actualParameterListAST actualParameterList)
+    <actual_parameter_list_with_parenthesis> (!?ioDeclarations ?let @actualParameterListAST actualParameterList)
     <grammar_instruction_core> (!?ioDeclarations !instructionLocation !actualParameterList !grammarComponentName !labelName ?outInstruction)
   }
 

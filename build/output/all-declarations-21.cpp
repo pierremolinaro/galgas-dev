@@ -26,7 +26,7 @@
 static const char * gNonTerminalNames_galgas4Grammar [343] = {
   "<type_definition>",// Index 0
   "<simple_type_definition>",// Index 1
-  "<actual_parameter_list_within_parenthesis>",// Index 2
+  "<actual_parameter_list_with_parenthesis>",// Index 2
   "<primary>",// Index 3
   "<primary_beginning_by_dot>",// Index 4
   "<primary_beginning_by_type_dot_name>",// Index 5
@@ -33164,23 +33164,23 @@ void cGrammar_galgas_34_Grammar::nt_simple_5F_type_5F_definition_ (GGS_galgasDec
 
 //--------------------------------------------------------------------------------------------------
 //
-//             'actual_parameter_list_within_parenthesis' non terminal implementation               
+//              'actual_parameter_list_with_parenthesis' non terminal implementation                
 //
 //--------------------------------------------------------------------------------------------------
 
-void cGrammar_galgas_34_Grammar::nt_actual_5F_parameter_5F_list_5F_within_5F_parenthesis_indexing (Lexique_galgasScanner_34_ * inLexique) {
+void cGrammar_galgas_34_Grammar::nt_actual_5F_parameter_5F_list_5F_with_5F_parenthesis_indexing (Lexique_galgasScanner_34_ * inLexique) {
   if (inLexique->nextProductionIndex () == 43) {
-  rule_galgas_34_ParameterArgumentSyntax_actual_5F_parameter_5F_list_5F_within_5F_parenthesis_i1_indexing(inLexique) ;
+  rule_galgas_34_ParameterArgumentSyntax_actual_5F_parameter_5F_list_5F_with_5F_parenthesis_i1_indexing(inLexique) ;
   }else{
     inLexique->internalBottomUpParserError (HERE) ;
   }
 }
 
-void cGrammar_galgas_34_Grammar::nt_actual_5F_parameter_5F_list_5F_within_5F_parenthesis_ (GGS_galgasDeclarationAST &  parameter_1,
+void cGrammar_galgas_34_Grammar::nt_actual_5F_parameter_5F_list_5F_with_5F_parenthesis_ (GGS_galgasDeclarationAST &  parameter_1,
                                 GGS_actualParameterListAST &  parameter_2,
                                 Lexique_galgasScanner_34_ * inLexique) {
   if (inLexique->nextProductionIndex () == 43) {
-  rule_galgas_34_ParameterArgumentSyntax_actual_5F_parameter_5F_list_5F_within_5F_parenthesis_i1_(parameter_1, parameter_2, inLexique) ;
+  rule_galgas_34_ParameterArgumentSyntax_actual_5F_parameter_5F_list_5F_with_5F_parenthesis_i1_(parameter_1, parameter_2, inLexique) ;
   }else{
     inLexique->internalBottomUpParserError (HERE) ;
   }
