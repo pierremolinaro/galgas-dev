@@ -296,7 +296,7 @@ setter @rowList appendRow
   outNodeName = "p" + inRow + "-" + cols.count
   cols += !outNodeName !inNodeDefinition
 //--- Set new row
-  [!?self setColumnsAtIndex !cols !inRow]
+  !?self.setColumnsAtIndex (!cols !inRow)
 }
 
 //--------------------------------------------------------------------------------------------------

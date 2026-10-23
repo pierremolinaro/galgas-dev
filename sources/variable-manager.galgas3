@@ -486,7 +486,7 @@ setter @localVarMapListForLLVM neutralAccess (?let @lstring inVarName,
       outCppName = varDescriptor.mCppName
       outNameForCheckingFormalParameterUsing = varDescriptor.mNameForCheckingFormalParameterUsing
     else
-      [!?self neutralAccess !inVarName !inIndex + 1 ?outType ?outCppName ?outNameForCheckingFormalParameterUsing]
+      !?self.neutralAccess (!inVarName !inIndex + 1 ?outType ?outCppName ?outNameForCheckingFormalParameterUsing)
     end
   end
 }
@@ -578,13 +578,13 @@ setter @localVarMapListForLLVM writeAccessInSubMap (?let @lstring inVarName,
       [!?newValuation writeTransition !inVarName !inOverridenMap: true !varDescriptor.mAttributes]
       if newValuation != varDescriptor.mState then
         [!?localMap setMStateForKey !newValuation !inVarName]
-        [!?self setMMapAtIndex !localMap !inIndex]
+        !?self.setMMapAtIndex (!localMap !inIndex)
       end
       outType = varDescriptor.mType
       outCppName = varDescriptor.mCppName
       outNameForCheckingFormalParameterUsing = varDescriptor.mNameForCheckingFormalParameterUsing
     else
-      [!?self writeAccessInSubMap !inVarName !inIndex + 1 ?outType ?outCppName ?outNameForCheckingFormalParameterUsing]
+      !?self.writeAccessInSubMap (!inVarName !inIndex + 1 ?outType ?outCppName ?outNameForCheckingFormalParameterUsing)
     end
   end
 }
@@ -673,10 +673,10 @@ setter @localVarMapListForLLVM readAccess (?let @lstring inVarName,
       outNameForCheckingFormalParameterUsing = varDescriptor.mNameForCheckingFormalParameterUsing
       if newValuation != varDescriptor.mState then
         [!?localMap setMStateForKey !newValuation !inVarName]
-        [!?self setMMapAtIndex !localMap !inIndex]
+        !?self.setMMapAtIndex (!localMap !inIndex)
       end
     else
-      [!?self readAccess !inVarName !inIndex + 1 ?outType ?outCppName ?outNameForCheckingFormalParameterUsing]
+      !?self.readAccess (!inVarName !inIndex + 1 ?outType ?outCppName ?outNameForCheckingFormalParameterUsing)
     end
   end
 }
@@ -761,13 +761,13 @@ setter @localVarMapListForLLVM readWriteAccess (?let @lstring inVarName,
       [!?newValuation readWriteTransition !inVarName !inOverridenMap: true !varDescriptor.mAttributes]
       if newValuation != varDescriptor.mState then
         [!?localMap setMStateForKey !newValuation !inVarName]
-        [!?self setMMapAtIndex !localMap !inIndex]
+        !?self.setMMapAtIndex (!localMap !inIndex)
       end
       outType = varDescriptor.mType
       outCppName = varDescriptor.mCppName
       outNameForCheckingFormalParameterUsing = varDescriptor.mNameForCheckingFormalParameterUsing
     else
-      [!?self readWriteAccess !inVarName !inIndex + 1 ?outType ?outCppName ?outNameForCheckingFormalParameterUsing]
+      !?self.readWriteAccess (!inVarName !inIndex + 1 ?outType ?outCppName ?outNameForCheckingFormalParameterUsing)
     end
   end
 }
@@ -777,8 +777,8 @@ setter @localVarMapListForLLVM readWriteAccess (?let @lstring inVarName,
 setter @localVarValuation readWriteTransition (?let @lstring inVarName,
                                               ?inOverridenMap: let @bool inOverridenMap,
                                               ?let @localVariableAttributes inAttributes ) {
-  [!?self readTransition !inVarName !inAttributes]
-  [!?self writeTransition !inVarName !inOverridenMap: inOverridenMap !inAttributes]
+  !?self.readTransition (!inVarName !inAttributes)
+  !?self.writeTransition (!inVarName !inOverridenMap: inOverridenMap !inAttributes)
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -934,7 +934,7 @@ setter @scopeLocalVarMap combineMapWith (?otherMap: let @scopeLocalVarMap inOthe
       else
         [valuation combineValuationWith !otherVar.mState ?let newValuation !?ioErrorMessage]
         if newValuation != valuation then
-          [!?self setMStateForKey !newValuation !varName]
+          !?self.setMStateForKey (!newValuation !varName)
         end
       end
     else

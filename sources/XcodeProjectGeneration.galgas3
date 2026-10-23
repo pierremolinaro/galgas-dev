@@ -29,7 +29,7 @@ setter @XcodeProjectDescriptor addICNS_file
   (?fileName:let @string inFileName,
   !fileRef:@string outFileRef
 ) {
-  [!?self getReferenceKey ?ref:outFileRef]
+  !?self.getReferenceKey (?ref:outFileRef)
   self.mICNS_fileList += !outFileRef !inFileName
 }
 
@@ -38,7 +38,7 @@ setter @XcodeProjectDescriptor addICNS_file
 setter @XcodeProjectDescriptor addTIFF_file
   (?fileName:let @string inFileName,
   !fileRef:@string outFileRef ) {
-  [!?self getReferenceKey ?ref:outFileRef]
+  !?self.getReferenceKey (?ref:outFileRef)
   self.mTIFF_fileList += !outFileRef !inFileName
 }
 
@@ -47,7 +47,7 @@ setter @XcodeProjectDescriptor addTIFF_file
 setter @XcodeProjectDescriptor addInfoPlistFile
   (?fileName:let @string inFileName,
   !fileRef:@string outFileRef ) {
-  [!?self getReferenceKey ?ref:outFileRef]
+  !?self.getReferenceKey (?ref:outFileRef)
   self.mInfoPlistFileList += !outFileRef !inFileName
 }
 
@@ -56,7 +56,7 @@ setter @XcodeProjectDescriptor addInfoPlistFile
 setter @XcodeProjectDescriptor addXIBFile
   (?fileName:let @string inFileName,
   !fileRef:@string outFileRef ) {
-  [!?self getReferenceKey ?ref:outFileRef]
+  !?self.getReferenceKey (?ref:outFileRef)
   self.mXIB_fileList += !outFileRef !inFileName
 }
 
@@ -65,7 +65,7 @@ setter @XcodeProjectDescriptor addXIBFile
 setter @XcodeProjectDescriptor addFrameworkFile
   (?fileName:let @string inFileName,
   !fileRef:@string outFileRef ) {
-  [!?self getReferenceKey ?ref:outFileRef]
+  !?self.getReferenceKey (?ref:outFileRef)
   self.mFrameworkFileList += !outFileRef !inFileName
 }
 
@@ -74,7 +74,7 @@ setter @XcodeProjectDescriptor addFrameworkFile
 setter @XcodeProjectDescriptor addSwiftFile
   (?fileName:let @string inFileName,
   !fileRef:@string outFileRef ) {
-  [!?self getReferenceKey ?ref:outFileRef]
+  !?self.getReferenceKey (?ref:outFileRef)
   self.m_Swift_FileList += !outFileRef !inFileName
 }
 
@@ -83,7 +83,7 @@ setter @XcodeProjectDescriptor addSwiftFile
 setter @XcodeProjectDescriptor addMFile
   (?fileName:let @string inFileName,
   !fileRef:@string outFileRef ) {
-  [!?self getReferenceKey ?ref:outFileRef]
+  !?self.getReferenceKey (?ref:outFileRef)
   self.m_M_FileList += !outFileRef !inFileName
 }
 
@@ -92,7 +92,7 @@ setter @XcodeProjectDescriptor addMFile
 setter @XcodeProjectDescriptor addMMFile
   (?fileName:let @string inFileName,
   !fileRef:@string outFileRef ) {
-  [!?self getReferenceKey ?ref:outFileRef]
+  !?self.getReferenceKey (?ref:outFileRef)
   self.m_MM_FileList += !outFileRef !inFileName
 }
 
@@ -101,7 +101,7 @@ setter @XcodeProjectDescriptor addMMFile
 setter @XcodeProjectDescriptor addCppFile
   (?fileName:let @string inFileName,
   !fileRef:@string outFileRef ) {
-  [!?self getReferenceKey ?ref:outFileRef]
+  !?self.getReferenceKey (?ref:outFileRef)
   self.mCppFileList += !outFileRef !inFileName
 }
 
@@ -110,7 +110,7 @@ setter @XcodeProjectDescriptor addCppFile
 setter @XcodeProjectDescriptor addCFile
   (?fileName:let @string inFileName,
   !fileRef:@string outFileRef ) {
-  [!?self getReferenceKey ?ref:outFileRef]
+  !?self.getReferenceKey (?ref:outFileRef)
   self.mCFileList += !outFileRef !inFileName
 }
 
@@ -119,7 +119,7 @@ setter @XcodeProjectDescriptor addCFile
 setter @XcodeProjectDescriptor addHeaderFile
   (?fileName:let @string inFileName,
   !fileRef:@string outFileRef ) {
-  [!?self getReferenceKey ?ref:outFileRef]
+  !?self.getReferenceKey (?ref: outFileRef)
   self.mHeaderFileList += !outFileRef !inFileName
 }
 
@@ -129,7 +129,7 @@ setter @XcodeProjectDescriptor addBuildFile
   (?fileRef:let @string inFileReference,
   ?fileName:let @string inFileName,
   !buildRef:@string outBuildRef ) {
-  [!?self getReferenceKey ?ref:outBuildRef]
+  !?self.getReferenceKey (?ref: outBuildRef)
   self.mBuildFileList += !inFileReference !inFileName !outBuildRef
 }
 
@@ -143,12 +143,12 @@ setter @XcodeProjectDescriptor addToolTarget
   ?buildConfigurationSettingList:let @stringlist inBuildConfigurationSettingList,
   !targetRef:@string outTargetRef,
   !productFileRef:@string outProductFileRef ) {
-  [!?self getReferenceKey ?ref:outProductFileRef]
-  [!?self getReferenceKey ?ref:let buildPhaseRef]
-  [!?self getReferenceKey ?ref:outTargetRef]
-  [!?self getReferenceKey ?ref:let buildConfigurationListRef]
-  [!?self getReferenceKey ?ref:let buildConfigurationRef]
-  [!?self getReferenceKey ?ref:let frameworkBuildRef]
+  !?self.getReferenceKey (?ref: outProductFileRef)
+  !?self.getReferenceKey (?ref: let buildPhaseRef)
+  !?self.getReferenceKey (?ref: outTargetRef)
+  !?self.getReferenceKey (?ref: let buildConfigurationListRef)
+  !?self.getReferenceKey (?ref: let buildConfigurationRef)
+  !?self.getReferenceKey (?ref: let frameworkBuildRef)
   self.mToolTargetList +=
     !outTargetRef
     !inTargetName
@@ -175,21 +175,21 @@ setter @XcodeProjectDescriptor addAppTarget
   ?dependantTargetList:let @stringlist inDependentTargetRefList,
   ?productCopyList:let @2stringlist inProductCopyList,
   !productFileRef:@string outProductFileRef ) {
-  [!?self getReferenceKey ?ref:outProductFileRef]
-  [!?self getReferenceKey ?ref:let buildPhaseRef]
-  [!?self getReferenceKey ?ref:let targetRef]
-  [!?self getReferenceKey ?ref:let buildConfigurationListRef]
-  [!?self getReferenceKey ?ref:let buildConfigurationRef]
-  [!?self getReferenceKey ?ref:let frameworkBuildRef]
-  [!?self getReferenceKey ?ref:let resourceBuildRef]
+  !?self.getReferenceKey (?ref: outProductFileRef)
+  !?self.getReferenceKey (?ref: let buildPhaseRef)
+  !?self.getReferenceKey (?ref: let targetRef)
+  !?self.getReferenceKey (?ref: let buildConfigurationListRef)
+  !?self.getReferenceKey (?ref: let buildConfigurationRef)
+  !?self.getReferenceKey (?ref: let frameworkBuildRef)
+  !?self.getReferenceKey (?ref: let resourceBuildRef)
   var @2stringlist dependentTargets = @()
   for (ref) in inDependentTargetRefList do
-    [!?self getReferenceKey ?ref:let dependencyBuildRef]
+    !?self.getReferenceKey (?ref: let dependencyBuildRef)
     dependentTargets += !dependencyBuildRef !ref
   end
   var @stringlist resourceFileBuildRefs = inResourceFileBuildRefs
   for (ref name) in inProductCopyList do
-    [!?self addBuildFile !fileRef:ref !fileName:name ?buildRef:let @string buildRef]
+    !?self.addBuildFile (!fileRef:ref !fileName:name ?buildRef:let @string buildRef)
     resourceFileBuildRefs += !buildRef
   end
   self.mAppTargetList +=
@@ -218,15 +218,15 @@ setter @XcodeProjectDescriptor addGroup
   !groupRef:@string outGroupRef
 ) {
   if self.mDefaultConfigurationRef == "" then
-    [!?self getReferenceKey ?ref: self.mDefaultConfigurationRef]
+    !?self.getReferenceKey (?ref:  self.mDefaultConfigurationRef)
   end
   if self.mProjectBuildConfigurationRef == "" then
-    [!?self getReferenceKey ?ref:self.mProjectBuildConfigurationRef]
+    !?self.getReferenceKey (?ref: self.mProjectBuildConfigurationRef)
   end
   if self.mMainGroupReference == "" then
-    [!?self getReferenceKey ?ref:self.mMainGroupReference]
+    !?self.getReferenceKey (?ref: self.mMainGroupReference)
   end
-  [!?self getReferenceKey ?ref:outGroupRef]
+  !?self.getReferenceKey (?ref: outGroupRef)
   self.mGroupList += !outGroupRef !inGroupName !inGroupPath !inChildrenRefs
 }
 
@@ -243,57 +243,57 @@ setter @XcodeProjectDescriptor addGroupWithFiles
   ?!resourceFileRefs:@stringlist ioResourceFileBuildRefs,
   !groupRef:@string outGroupRef ) {
   if self.mDefaultConfigurationRef == "" then
-    [!?self getReferenceKey ?ref:self.mDefaultConfigurationRef]
+    !?self.getReferenceKey (?ref: self.mDefaultConfigurationRef)
   end
   if self.mProjectBuildConfigurationRef == "" then
-    [!?self getReferenceKey ?ref:self.mProjectBuildConfigurationRef]
+    !?self.getReferenceKey (?ref: self.mProjectBuildConfigurationRef)
   end
   if self.mMainGroupReference == "" then
-    [!?self getReferenceKey ?ref:self.mMainGroupReference]
+    !?self.getReferenceKey (?ref: self.mMainGroupReference)
   end
-  [!?self getReferenceKey ?ref:outGroupRef]
+  !?self.getReferenceKey (?ref: outGroupRef)
 //---
   var @stringlist childrenRefs = @()
   for (f) in inFileNames do
     if f.pathExtension == "c" then
-      [!?self addCFile !fileName:f ?fileRef:let @string cFileRef]
+      !?self.addCFile (!fileName:f ?fileRef:let @string cFileRef)
       childrenRefs += !cFileRef
-      [!?self addBuildFile !fileRef:cFileRef !fileName:f ?buildRef:let @string buildRef]
+      !?self.addBuildFile (!fileRef:cFileRef !fileName:f ?buildRef:let @string buildRef)
       ioCFileBuildRefs += !buildRef
     elsif f.pathExtension == "cpp" then
-      [!?self addCppFile !fileName:f ?fileRef:let @string cppFileRef]
+      !?self.addCppFile (!fileName:f ?fileRef:let @string cppFileRef)
       childrenRefs += !cppFileRef
-      [!?self addBuildFile !fileRef:cppFileRef !fileName:f ?buildRef:let @string buildRef]
+      !?self.addBuildFile (!fileRef:cppFileRef !fileName:f ?buildRef:let @string buildRef)
       ioCppFileBuildRefs += !buildRef
     elsif f.pathExtension == "h" then
-      [!?self addHeaderFile !fileName:f ?fileRef:let @string headerFileRef]
+      !?self.addHeaderFile (!fileName:f ?fileRef:let @string headerFileRef)
       childrenRefs += !headerFileRef
     elsif f.pathExtension == "framework" then
-      [!?self addFrameworkFile !fileName:f ?fileRef:let @string framework_FileRef]
-      [!?self addBuildFile !fileRef:framework_FileRef !fileName:f ?buildRef:let @string buildRef]
+      !?self.addFrameworkFile (!fileName:f ?fileRef:let @string framework_FileRef)
+      !?self.addBuildFile (!fileRef:framework_FileRef !fileName:f ?buildRef:let @string buildRef)
       childrenRefs += !framework_FileRef
       ioFrameWorkFileBuildRefs += !buildRef
     elsif f.pathExtension == "plist" then
-      [!?self addInfoPlistFile !fileName:f ?fileRef:let @string resource_FileRef]
+      !?self.addInfoPlistFile (!fileName:f ?fileRef:let @string resource_FileRef)
       childrenRefs += !resource_FileRef
     elsif f.pathExtension == "xib" then
-      [!?self addXIBFile !fileName:f ?fileRef:let @string resource_FileRef]
+      !?self.addXIBFile (!fileName:f ?fileRef:let @string resource_FileRef)
       childrenRefs += !resource_FileRef
-      [!?self addBuildFile !fileRef:resource_FileRef !fileName:f ?buildRef:let @string buildRef]
+      !?self.addBuildFile (!fileRef:resource_FileRef !fileName:f ?buildRef:let @string buildRef)
       ioResourceFileBuildRefs += !buildRef
     elsif f.pathExtension == "tiff" then
-      [!?self addTIFF_file !fileName:f ?fileRef:let @string resource_FileRef]
+      !?self.addTIFF_file (!fileName:f ?fileRef:let @string resource_FileRef)
       childrenRefs += !resource_FileRef
-      [!?self addBuildFile !fileRef:resource_FileRef !fileName:f ?buildRef:let @string buildRef]
+      !?self.addBuildFile (!fileRef:resource_FileRef !fileName:f ?buildRef:let @string buildRef)
       ioResourceFileBuildRefs += !buildRef
     elsif f.pathExtension == "icns" then
-      [!?self addICNS_file !fileName:f ?fileRef:let @string resource_FileRef]
+      !?self.addICNS_file (!fileName:f ?fileRef:let @string resource_FileRef)
       childrenRefs += !resource_FileRef
-      [!?self addBuildFile !fileRef:resource_FileRef !fileName:f ?buildRef:let @string buildRef]
+      !?self.addBuildFile (!fileRef:resource_FileRef !fileName:f ?buildRef:let @string buildRef)
       ioResourceFileBuildRefs += !buildRef
     elsif f.pathExtension == "swift" then
-      [!?self addSwiftFile !fileName:f ?fileRef:let @string swiftFileRef]
-      [!?self addBuildFile !fileRef:swiftFileRef !fileName:f ?buildRef:let @string buildRef]
+      !?self.addSwiftFile (!fileName:f ?fileRef:let @string swiftFileRef)
+      !?self.addBuildFile (!fileRef:swiftFileRef !fileName:f ?buildRef:let @string buildRef)
       childrenRefs += !swiftFileRef
       ioSwiftFileBuildRefs += !buildRef
     else

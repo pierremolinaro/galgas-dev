@@ -87,15 +87,34 @@ syntax extension galgas3InstructionsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+//  rule <semantic_instruction_ggs3> (?!@galgasDeclarationAST ioDeclarations,
+//                                    !@semanticInstructionAST outInstruction) {
+//    $[$
+//    let instructionLocation = @location.here
+//    $!?$
+//    $self$
+//    $identifier$ ?let mSetterName // §§
+//    <actual_parameter_list_ggs3> (!?ioDeclarations ?let @actualParameterListAST actualParameterList)
+//    $]$
+//    outInstruction = @selfSetterCallInstructionAST {
+//      !instructionLocation
+//      !mSetterName
+//      !actualParameterList
+//    }
+//  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
   rule <semantic_instruction_ggs3> (?!@galgasDeclarationAST ioDeclarations,
                                     !@semanticInstructionAST outInstruction) {
-    $[$
     let instructionLocation = @location.here
     $!?$
     $self$
-    $identifier$ ?let mSetterName // §§
+    $.$
+    $identifier$ ?let mSetterName
+    $($
     <actual_parameter_list_ggs3> (!?ioDeclarations ?let @actualParameterListAST actualParameterList)
-    $]$
+    $)$
     outInstruction = @selfSetterCallInstructionAST {
       !instructionLocation
       !mSetterName
