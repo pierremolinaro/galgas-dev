@@ -19,16 +19,16 @@
 //   EMBEDDED TYPE NAME UTILITIES
 //--------------------------------------------------------------------------------------------------
 
-func makeEmbeddedTypeLName ?outer: let @lstring inOuterTypeName
-                          ?inner: let @lstring inInnerTypeName -> @lstring {
+func makeEmbeddedTypeLName (?outer: let @lstring inOuterTypeName
+                          ?inner: let @lstring inInnerTypeName ) -> @lstring {
   result = @(makeEmbeddedTypeName (!outer: inOuterTypeName !inner: inInnerTypeName),
                   [inOuterTypeName.location union !inInnerTypeName])
 }
 
 //--------------------------------------------------------------------------------------------------
 
-func makeEmbeddedTypeName ?outer: let @string inOuterTypeName
-                          ?inner: let @string inInnerTypeName -> @string {
+func makeEmbeddedTypeName (?outer: let @string inOuterTypeName
+                          ?inner: let @string inInnerTypeName ) -> @string {
   result = inOuterTypeName + "." + inInnerTypeName
 }
 
@@ -36,13 +36,13 @@ func makeEmbeddedTypeName ?outer: let @string inOuterTypeName
 //   OPTIONAL TYPE NAME UTILITIES
 //--------------------------------------------------------------------------------------------------
 
-func makeOptionalTypeName ?forTypeNamed: let @string inTypeName -> @string {
+func makeOptionalTypeName (?forTypeNamed: let @string inTypeName ) -> @string {
   result = inTypeName + "?"
 }
 
 //--------------------------------------------------------------------------------------------------
 
-func makeOptionalTypeLName ?forTypeNamed: let @lstring inTypeName -> @lstring {
+func makeOptionalTypeLName (?forTypeNamed: let @lstring inTypeName ) -> @lstring {
   result = inTypeName
   result.string += "?"
 }
@@ -51,13 +51,13 @@ func makeOptionalTypeLName ?forTypeNamed: let @lstring inTypeName -> @lstring {
 //   EMBEDDED ELEMENT TYPE NAME UTILITIES
 //--------------------------------------------------------------------------------------------------
 
-func makeEmbeddedElementTypeName ?let @string inTypeName -> @string {
+func makeEmbeddedElementTypeName (?let @string inTypeName ) -> @string {
   result = makeEmbeddedTypeName (!outer: inTypeName !inner: "element")
 }
 
 //--------------------------------------------------------------------------------------------------
 
-func makeEmbeddedElementTypeLName ?let @lstring inTypeName -> @lstring {
+func makeEmbeddedElementTypeLName (?let @lstring inTypeName ) -> @lstring {
   result = @(makeEmbeddedElementTypeName (!inTypeName), inTypeName)
 }
 
@@ -65,13 +65,13 @@ func makeEmbeddedElementTypeLName ?let @lstring inTypeName -> @lstring {
 //   ARRAY TYPE NAME UTILITIES
 //--------------------------------------------------------------------------------------------------
 
-func makeArrayTypeName ?let @string inTypeName -> @string {
+func makeArrayTypeName (?let @string inTypeName ) -> @string {
   result = "[" + inTypeName + "]"
 }
 
 //--------------------------------------------------------------------------------------------------
 
-func makeArrayTypeLName ?let @lstring inTypeName -> @lstring {
+func makeArrayTypeLName (?let @lstring inTypeName ) -> @lstring {
   result = @(makeArrayTypeName (!inTypeName), inTypeName)
 }
 
@@ -79,13 +79,13 @@ func makeArrayTypeLName ?let @lstring inTypeName -> @lstring {
 //   WEAK TYPE NAME UTILITIES
 //--------------------------------------------------------------------------------------------------
 
-func makeWeakTypeName ?let @string inTypeName -> @string {
+func makeWeakTypeName (?let @string inTypeName ) -> @string {
   result = makeEmbeddedTypeName (!outer: inTypeName !inner: "weak")
 }
 
 //--------------------------------------------------------------------------------------------------
 
-func makeWeakTypeLName ?let @lstring inTypeName -> @lstring {
+func makeWeakTypeLName (?let @lstring inTypeName ) -> @lstring {
   result = @(makeWeakTypeName (!inTypeName), inTypeName)
 }
 

@@ -35,8 +35,8 @@ syntax galgas3InstructionsSyntax (galgasScanner3) {
   rule <formal_parameter_list_ggs34> (?!@galgasDeclarationAST ioDeclarations,
                                     !@formalParameterListAST outFormalParameterList)
 
-  rule <formal_input_parameter_list_ggs3> (?!@galgasDeclarationAST ioDeclarations,
-                                          !@formalInputParameterListAST outFormalInputParameterList)
+//  rule <formal_input_parameter_list_ggs3> (?!@galgasDeclarationAST ioDeclarations,
+//                                          !@formalInputParameterListAST outFormalInputParameterList)
 
   rule <formal_input_parameter_list_ggs34> (?!@galgasDeclarationAST ioDeclarations,
                                            !@formalInputParameterListAST outFormalInputParameterList)
@@ -125,52 +125,52 @@ syntax galgas3InstructionsSyntax (galgasScanner3) {
 
    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <function_declaration_ggs3> (?once: let @bool inIsOnce,
-                                   ?usefull: let @bool inIsUsefull,
-                                   ?private: let @bool inPrivate,
-                                   ?let @lstring inFunctionName,
-                                   ?!@galgasDeclarationAST ioDeclarations ) {
-    <formal_input_parameter_list_ggs3> (!?ioDeclarations, ?let formalInputParameterList)
-    if inIsOnce, (formalInputParameterList.count > 0) then
-      error (inFunctionName: "an 'once' function should has no argument")
-    end
-    $->$
-    <type_definition_ggs3> (!?ioDeclarations, ?let @lstring resultTypeName)
-    let @lstring resultVariableName
-    select
-      $identifier$ ?resultVariableName
-    or
-      resultVariableName = @{!"result" !.here}
-    end
-    ${$
-    <semantic_instruction_list_ggs3> (!?ioDeclarations, ?let functionInstructionList)
-    $}$
-    let endOfFunctionInstructionList = @location.here
-    if inIsOnce then
-      ioDeclarations.mDeclarationList += !@onceFunctionDeclarationAST {
-        !isPredefined: false // Is not predefined
-        !inFunctionName
-        !resultTypeName
-        !resultVariableName
-        !functionInstructionList
-        !endOfFunctionInstructionList
-        !inPrivate
-        !inIsUsefull
-      }
-    else
-      ioDeclarations.mDeclarationList += !@functionDeclarationAST {
-        !isPredefined: false // Is not predefined
-        !inFunctionName
-        !formalInputParameterList
-        !resultTypeName
-        !usefullFunc: inIsUsefull
-        !resultVariableName
-        !functionInstructionList
-        !endOfFunctionInstructionList
-        !inPrivate
-      }
-    end
-  }
+//  rule <function_declaration_ggs3> (?once: let @bool inIsOnce,
+//                                   ?usefull: let @bool inIsUsefull,
+//                                   ?private: let @bool inPrivate,
+//                                   ?let @lstring inFunctionName,
+//                                   ?!@galgasDeclarationAST ioDeclarations ) {
+//    <formal_input_parameter_list_ggs3> (!?ioDeclarations, ?let formalInputParameterList)
+//    if inIsOnce, (formalInputParameterList.count > 0) then
+//      error (inFunctionName: "an 'once' function should has no argument")
+//    end
+//    $->$
+//    <type_definition_ggs3> (!?ioDeclarations, ?let @lstring resultTypeName)
+//    let @lstring resultVariableName
+//    select
+//      $identifier$ ?resultVariableName
+//    or
+//      resultVariableName = @{!"result" !.here}
+//    end
+//    ${$
+//    <semantic_instruction_list_ggs3> (!?ioDeclarations, ?let functionInstructionList)
+//    $}$
+//    let endOfFunctionInstructionList = @location.here
+//    if inIsOnce then
+//      ioDeclarations.mDeclarationList += !@onceFunctionDeclarationAST {
+//        !isPredefined: false // Is not predefined
+//        !inFunctionName
+//        !resultTypeName
+//        !resultVariableName
+//        !functionInstructionList
+//        !endOfFunctionInstructionList
+//        !inPrivate
+//        !inIsUsefull
+//      }
+//    else
+//      ioDeclarations.mDeclarationList += !@functionDeclarationAST {
+//        !isPredefined: false // Is not predefined
+//        !inFunctionName
+//        !formalInputParameterList
+//        !resultTypeName
+//        !usefullFunc: inIsUsefull
+//        !resultVariableName
+//        !functionInstructionList
+//        !endOfFunctionInstructionList
+//        !inPrivate
+//      }
+//    end
+//  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

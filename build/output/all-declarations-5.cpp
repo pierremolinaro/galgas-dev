@@ -1355,10 +1355,10 @@ GGS_string extensionGetter_initializerSignature (const GGS_functionSignature & i
   GGS_string result_result ; // Returned variable
   result_result = GGS_string ("init") ;
   const GGS_functionSignature temp_0 = inObject ;
-  UpEnumerator_functionSignature enumerator_1836 (temp_0) ;
-  while (enumerator_1836.hasCurrentObject ()) {
-    result_result.plusAssignOperation(GGS_string ("!").add_operation (enumerator_1836.current (HERE).readProperty_mFormalSelector ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas3", 40)), inCompiler  COMMA_SOURCE_FILE ("semanticsTypes.galgas3", 40)) ;
-    enumerator_1836.gotoNextObject () ;
+  UpEnumerator_functionSignature enumerator_1839 (temp_0) ;
+  while (enumerator_1839.hasCurrentObject ()) {
+    result_result.plusAssignOperation(GGS_string ("!").add_operation (enumerator_1839.current (HERE).readProperty_mFormalSelector ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas3", 40)), inCompiler  COMMA_SOURCE_FILE ("semanticsTypes.galgas3", 40)) ;
+    enumerator_1839.gotoNextObject () ;
   }
 //---
   return result_result ;
@@ -1377,10 +1377,10 @@ GGS_string extensionGetter_subcriptSignature (const GGS_functionSignature & inOb
   GGS_string result_result ; // Returned variable
   result_result = GGS_string::makeEmptyString () ;
   const GGS_functionSignature temp_0 = inObject ;
-  UpEnumerator_functionSignature enumerator_1983 (temp_0) ;
-  while (enumerator_1983.hasCurrentObject ()) {
-    result_result.plusAssignOperation(GGS_string ("\?").add_operation (enumerator_1983.current (HERE).readProperty_mFormalSelector ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas3", 47)), inCompiler  COMMA_SOURCE_FILE ("semanticsTypes.galgas3", 47)) ;
-    enumerator_1983.gotoNextObject () ;
+  UpEnumerator_functionSignature enumerator_1986 (temp_0) ;
+  while (enumerator_1986.hasCurrentObject ()) {
+    result_result.plusAssignOperation(GGS_string ("\?").add_operation (enumerator_1986.current (HERE).readProperty_mFormalSelector ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas3", 47)), inCompiler  COMMA_SOURCE_FILE ("semanticsTypes.galgas3", 47)) ;
+    enumerator_1986.gotoNextObject () ;
   }
 //---
   return result_result ;
@@ -3120,23 +3120,23 @@ GGS_string extensionGetter_initializerSignature (const GGS_typedPropertyList & i
   GGS_string result_result ; // Returned variable
   result_result = GGS_string ("init") ;
   const GGS_typedPropertyList temp_0 = inObject ;
-  UpEnumerator_typedPropertyList enumerator_8255 (temp_0) ;
-  while (enumerator_8255.hasCurrentObject ()) {
+  UpEnumerator_typedPropertyList enumerator_8258 (temp_0) ;
+  while (enumerator_8258.hasCurrentObject ()) {
     GalgasBool test_1 = GalgasBool::boolTrue ;
     if (GalgasBool::boolTrue == test_1) {
-      test_1 = GGS_bool (ComparisonKind::equal, enumerator_8255.current (HERE).readProperty_initialization ().objectCompare (GGS_propertyInCollectionInitializationAST::class_func_none (SOURCE_FILE ("semanticsTypes.galgas3", 213)))).boolEnum () ;
+      test_1 = GGS_bool (ComparisonKind::equal, enumerator_8258.current (HERE).readProperty_initialization ().objectCompare (GGS_propertyInCollectionInitializationAST::class_func_none (SOURCE_FILE ("semanticsTypes.galgas3", 213)))).boolEnum () ;
       if (GalgasBool::boolTrue == test_1) {
         result_result.plusAssignOperation(GGS_string ("!"), inCompiler  COMMA_SOURCE_FILE ("semanticsTypes.galgas3", 214)) ;
         GalgasBool test_2 = GalgasBool::boolTrue ;
         if (GalgasBool::boolTrue == test_2) {
-          test_2 = enumerator_8255.current (HERE).readProperty_hasSelector ().boolEnum () ;
+          test_2 = enumerator_8258.current (HERE).readProperty_hasSelector ().boolEnum () ;
           if (GalgasBool::boolTrue == test_2) {
-            result_result.plusAssignOperation(enumerator_8255.current (HERE).readProperty_name ().readProperty_string (), inCompiler  COMMA_SOURCE_FILE ("semanticsTypes.galgas3", 216)) ;
+            result_result.plusAssignOperation(enumerator_8258.current (HERE).readProperty_name ().readProperty_string (), inCompiler  COMMA_SOURCE_FILE ("semanticsTypes.galgas3", 216)) ;
           }
         }
       }
     }
-    enumerator_8255.gotoNextObject () ;
+    enumerator_8258.gotoNextObject () ;
   }
 //---
   return result_result ;
@@ -13190,10 +13190,10 @@ void extensionMethod_enterInstructionListInSemanticContext (const GGS_semanticIn
                                                             Compiler * inCompiler
                                                             COMMA_UNUSED_LOCATION_ARGS) {
   const GGS_semanticInstructionListAST temp_0 = inObject ;
-  UpEnumerator_semanticInstructionListAST enumerator_2879 (temp_0) ;
-  while (enumerator_2879.hasCurrentObject ()) {
-    callExtensionMethod_enterInstructionInSemanticContext ((cPtr_semanticInstructionAST *) enumerator_2879.current_mInstruction (HERE).ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas3", 65)) ;
-    enumerator_2879.gotoNextObject () ;
+  UpEnumerator_semanticInstructionListAST enumerator_2845 (temp_0) ;
+  while (enumerator_2845.hasCurrentObject ()) {
+    callExtensionMethod_enterInstructionInSemanticContext ((cPtr_semanticInstructionAST *) enumerator_2845.current_mInstruction (HERE).ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas3", 65)) ;
+    enumerator_2845.gotoNextObject () ;
   }
 }
 

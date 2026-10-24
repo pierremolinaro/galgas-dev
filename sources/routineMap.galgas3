@@ -20,8 +20,8 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //--------------------------------------------------------------------------------------------------
 
-func routineMangledName ?let @lstring inRoutineName
-                        ?let @formalParameterSignature inRoutineFormalParameters -> @lstring {
+func routineMangledName (?let @lstring inRoutineName
+                        ?let @formalParameterSignature inRoutineFormalParameters ) -> @lstring {
   var str = inRoutineName.string
   for parameter in inRoutineFormalParameters do
     switch parameter.mFormalArgumentPassingMode
@@ -39,7 +39,7 @@ func routineMangledName ?let @lstring inRoutineName
 
 //--------------------------------------------------------------------------------------------------
 
-private func routineArgumentFromFormalParameters ?let @formalParameterSignature inRoutineFormalParameters -> @string {
+private func routineArgumentFromFormalParameters (?let @formalParameterSignature inRoutineFormalParameters ) -> @string {
   result = "("
   for parameter in inRoutineFormalParameters
   do

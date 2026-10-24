@@ -492,7 +492,7 @@ private proc buildHeader
 
 //--------------------------------------------------------------------------------------------------
 
-private func %once definitionGroupAmount -> @uint {
+private func %once definitionGroupAmount () -> @uint {
   result = 50
 }
 

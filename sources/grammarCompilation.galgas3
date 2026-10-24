@@ -23,16 +23,16 @@
 //--------------------------------------------------------------------------------------------------
 
 func transformLabelMap
-  ?let @nonTerminalLabelListAST inLabels
-  -> @nonterminalSymbolLabelMapForGrammarAnalysis outNonterminalSymbolLabelMapForGrammarAnalysis
+  (?let @nonTerminalLabelListAST inLabels
+  ) -> @nonterminalSymbolLabelMapForGrammarAnalysis
 {
-  outNonterminalSymbolLabelMapForGrammarAnalysis = @()
+  result = @()
   for (mLabelName mFormalArgumentList *) in inLabels do
     var @signatureForGrammarAnalysis formalParametersList = @()
     for (* mFormalArgumentPassingMode mFormalArgumentTypeName * *) in mFormalArgumentList do
       formalParametersList += !mFormalArgumentPassingMode !mFormalArgumentTypeName
     end
-    !?outNonterminalSymbolLabelMapForGrammarAnalysis.insertKey
+    !?result.insertKey
       (!mLabelName,
       !formalParametersList
     )

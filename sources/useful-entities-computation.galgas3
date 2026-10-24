@@ -74,105 +74,105 @@ proc checkUsefulEntities (?let @usefulEntitiesGraph inUsefulEntitiesGraph,
 
 //--------------------------------------------------------------------------------------------------
 
-func getterNameForUsefulEntitiesGraph ?let @string inTypeName ?let @lstring inGetterName -> @lstring {
+func getterNameForUsefulEntitiesGraph (?let @string inTypeName ?let @lstring inGetterName ) -> @lstring {
   result = @{!"func @" + inTypeName + " " + inGetterName !inGetterName.location}
 }
 
 //--------------------------------------------------------------------------------------------------
 
-func setterNameForUsefulEntitiesGraph ?let @string inTypeName ?let @lstring inSetterName -> @lstring {
+func setterNameForUsefulEntitiesGraph (?let @string inTypeName ?let @lstring inSetterName ) -> @lstring {
   result = @{!"setter @" + inTypeName + " " + inSetterName !inSetterName.location}
 }
 
 //--------------------------------------------------------------------------------------------------
 
-func methodNameForUsefulEntitiesGraph ?let @string inTypeName ?let @lstring inMethodName -> @lstring {
+func methodNameForUsefulEntitiesGraph (?let @string inTypeName ?let @lstring inMethodName ) -> @lstring {
   result = @{!"proc @" + inTypeName + " " + inMethodName !inMethodName.location}
 }
 
 //--------------------------------------------------------------------------------------------------
 
-func initializerNameForUsefulEntitiesGraph ?let @lstring inTypeName
-                               ?let @string inParameterSignature -> @lstring {
+func initializerNameForUsefulEntitiesGraph (?let @lstring inTypeName
+                               ?let @string inParameterSignature ) -> @lstring {
   result = @("@" + inTypeName + "." + inParameterSignature, inTypeName.location)
 }
 
 //--------------------------------------------------------------------------------------------------
 
-func equatableNameForUsefulEntitiesGraph ?let @lstring inTypeName -> @lstring {
+func equatableNameForUsefulEntitiesGraph (?let @lstring inTypeName ) -> @lstring {
   result = @("@" + inTypeName + " equatable", inTypeName.location)
 }
 
 //--------------------------------------------------------------------------------------------------
 
-func lexiqueNameForUsefulEntitiesGraph ?let @lstring inLexiqueName -> @lstring {
+func lexiqueNameForUsefulEntitiesGraph (?let @lstring inLexiqueName ) -> @lstring {
   result = @{!"lexique " + inLexiqueName !inLexiqueName.location}
 }
 
 //--------------------------------------------------------------------------------------------------
 
-func grammarNameForUsefulEntitiesGraph ?let @lstring inGrammarName -> @lstring {
+func grammarNameForUsefulEntitiesGraph (?let @lstring inGrammarName ) -> @lstring {
   result = @{!"grammar " + inGrammarName !inGrammarName.location}
 }
 
 //--------------------------------------------------------------------------------------------------
 
-func syntaxNameForUsefulEntitiesGraph ?let @lstring inSyntaxName -> @lstring {
+func syntaxNameForUsefulEntitiesGraph (?let @lstring inSyntaxName ) -> @lstring {
   result = @{!"syntax " + inSyntaxName !inSyntaxName.location}
 }
 
 //--------------------------------------------------------------------------------------------------
 
-func optionNameForUsefulEntitiesGraph ?let @lstring inOptionName -> @lstring {
+func optionNameForUsefulEntitiesGraph (?let @lstring inOptionName ) -> @lstring {
   result = @{!"option " + inOptionName !inOptionName.location}
 }
 
 //--------------------------------------------------------------------------------------------------
 
-func filewrapperNameForUsefulEntitiesGraph ?let @lstring inFilewrapperName -> @lstring {
+func filewrapperNameForUsefulEntitiesGraph (?let @lstring inFilewrapperName ) -> @lstring {
   result = @{!"filewrapper " + inFilewrapperName !inFilewrapperName.location}
 }
 
 //--------------------------------------------------------------------------------------------------
 
-func filewrapperTemplateNameForUsefulEntitiesGraph ?let @lstring inFilewrapperName  ?let @lstring inTemplateName
--> @lstring {
+func filewrapperTemplateNameForUsefulEntitiesGraph (?let @lstring inFilewrapperName  ?let @lstring inTemplateName
+) -> @lstring {
   result = @{!"filewrapper template " + inFilewrapperName + "." + inTemplateName !inTemplateName.location}
 }
 
 //--------------------------------------------------------------------------------------------------
 
-func functionNameForUsefulEntitiesGraph ?let @lstring inFunctionName -> @lstring {
+func functionNameForUsefulEntitiesGraph (?let @lstring inFunctionName ) -> @lstring {
   result = @{!"function " + inFunctionName !inFunctionName.location}
 }
 
 //--------------------------------------------------------------------------------------------------
 
-func procedureNameForUsefulEntitiesGraph ?let @lstring inProcName -> @lstring {
+func procedureNameForUsefulEntitiesGraph (?let @lstring inProcName ) -> @lstring {
   result = @{!"procedure " + inProcName !inProcName.location}
 }
 
 //--------------------------------------------------------------------------------------------------
 
-func typeNameForUsefulEntitiesGraph ?let @lstring inTypeName -> @lstring {
+func typeNameForUsefulEntitiesGraph (?let @lstring inTypeName ) -> @lstring {
   result = @{!"type @" + inTypeName !inTypeName.location}
 }
 
 //--------------------------------------------------------------------------------------------------
 
-func afterNameForUsefulEntitiesGraph ?let @location inLocation -> @lstring {
+func afterNameForUsefulEntitiesGraph (?let @location inLocation ) -> @lstring {
   result = @{!"after" !inLocation}
 }
 
 //--------------------------------------------------------------------------------------------------
 
-func beforeNameForUsefulEntitiesGraph ?let @location inLocation -> @lstring {
+func beforeNameForUsefulEntitiesGraph (?let @location inLocation ) -> @lstring {
   result = @{!"before" !inLocation}
 }
 
 //--------------------------------------------------------------------------------------------------
 
-func rootRuleNameForUsefulEntitiesGraph ?let @lstring inFileExtension -> @lstring {
+func rootRuleNameForUsefulEntitiesGraph (?let @lstring inFileExtension ) -> @lstring {
   result = @{!"rule ." + inFileExtension !inFileExtension}
 }
 

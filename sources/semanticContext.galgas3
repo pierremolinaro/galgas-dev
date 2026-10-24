@@ -38,14 +38,14 @@ func @location.commaSourceFile () -> @string {
 
 //--------------------------------------------------------------------------------------------------
 
-func %once compilerCppName ->@string outCompilerCppName {
-  outCompilerCppName = "inCompiler"
+func %once compilerCppName () ->@string {
+  result = "inCompiler"
 }
 
 //--------------------------------------------------------------------------------------------------
 
-func %once syntaxDirectedTranslationResultVarName ->@string outName {
-  outName = "ioSyntaxDirectedTranslationResult"
+func %once syntaxDirectedTranslationResultVarName () ->@string {
+  result = "ioSyntaxDirectedTranslationResult"
 }
 
 //--------------------------------------------------------------------------------------------------

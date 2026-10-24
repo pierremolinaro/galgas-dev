@@ -101,7 +101,7 @@ syntax extension galgas4DeclarationsSyntax {
 
 //--------------------------------------------------------------------------------------------------
 
-private func %once forbiddenKeysForStruct -> @stringset {
+private func %once forbiddenKeysForStruct () -> @stringset {
   result = @["description", "object", "dynamicType"]
 }
 
