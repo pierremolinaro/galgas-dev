@@ -21,9 +21,9 @@
 
 enum @fixitElementAST {
   case fixItRemove
-  case fixItReplace (@semanticExpressionAST exp @location errorLocation)
-  case fixItInsertAfter (@semanticExpressionAST exp @location errorLocation)
-  case fixItInsertBefore (@semanticExpressionAST exp @location errorLocation)
+  case fixItReplace (@semanticExpressionAST exp, @location errorLocation)
+  case fixItInsertAfter (@semanticExpressionAST exp, @location errorLocation)
+  case fixItInsertBefore (@semanticExpressionAST exp, @location errorLocation)
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -216,11 +216,11 @@ proc @fixitListAST enterFixItListInSemanticContext (?!@unifiedTypeMap ioTypeMap)
   for (element) in self do
     switch element
     case fixItRemove :
-    case fixItReplace (@semanticExpressionAST exp *) :
+    case fixItReplace (@semanticExpressionAST exp, *) :
       exp.enterExpressionInSemanticContext (!?ioTypeMap)
-    case fixItInsertBefore (@semanticExpressionAST exp *) :
+    case fixItInsertBefore (@semanticExpressionAST exp, *) :
       exp.enterExpressionInSemanticContext (!?ioTypeMap)
-    case fixItInsertAfter (@semanticExpressionAST exp *) :
+    case fixItInsertAfter (@semanticExpressionAST exp, *) :
       exp.enterExpressionInSemanticContext (!?ioTypeMap)
     end
   end
@@ -291,7 +291,7 @@ proc analyzeErrorOrWarningInstruction (?let @lstring inUsefulnessCallerEntityNam
     switch element
     case fixItRemove :
       outFixitListForGeneration += !.fixItRemove
-    case fixItReplace (exp errorLocation) :
+    case fixItReplace (exp, errorLocation) :
       exp.analyzeSemanticExpression
         (!usefulnessCallerEntityName: inUsefulnessCallerEntityName,
         !?ioUsefulEntitiesGraph,
@@ -310,7 +310,7 @@ proc analyzeErrorOrWarningInstruction (?let @lstring inUsefulnessCallerEntityNam
         )
       end
       outFixitListForGeneration += !.fixItReplace {!exp:expression}
-    case fixItInsertBefore (exp errorLocation) :
+    case fixItInsertBefore (exp, errorLocation) :
       exp.analyzeSemanticExpression
         (!usefulnessCallerEntityName: inUsefulnessCallerEntityName,
         !?ioUsefulEntitiesGraph,
@@ -329,7 +329,7 @@ proc analyzeErrorOrWarningInstruction (?let @lstring inUsefulnessCallerEntityNam
         )
       end
       outFixitListForGeneration += !.fixItInsertBefore {!exp:expression}
-    case fixItInsertAfter (exp errorLocation) :
+    case fixItInsertAfter (exp, errorLocation) :
       exp.analyzeSemanticExpression
         (!usefulnessCallerEntityName: inUsefulnessCallerEntityName,
         !?ioUsefulEntitiesGraph,

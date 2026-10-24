@@ -97,6 +97,7 @@ syntax extension galgas3InstructionsSyntax {
           outAssociatedValuesExtraction += !typeName !constantName !constantMarkedAsUnused
         end
       while
+        $,$
       end
       $)$
     end

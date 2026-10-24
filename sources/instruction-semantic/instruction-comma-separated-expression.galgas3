@@ -146,11 +146,11 @@ syntax extension galgas4InstructionsSyntax {
 //--------------------------------------------------------------------------------------------------
 
 enum @ifExpressionKind {
-  case regularExp (@semanticExpressionAST exp @location endOfExp)
-  case letVarExp (@lstring varName
-                  @bool isConstant
-                  @semanticExpressionAST exp
-                  @location endOfExp
+  case regularExp (@semanticExpressionAST exp, @location endOfExp)
+  case letVarExp (@lstring varName,
+                  @bool isConstant,
+                  @semanticExpressionAST exp,
+                  @location endOfExp,
                   @lstring typeName)
 }
 
@@ -164,9 +164,9 @@ list @CommaSeparatedExpressionList {
   proc enterExpressionListInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
     for (expression) in self do
       switch expression
-      case regularExp (exp *) :
+      case regularExp (exp, *) :
         exp.enterExpressionInSemanticContext (!?ioTypeMap)
-      case letVarExp (2* exp * @lstring typeName) :
+      case letVarExp (2*, exp, *, @lstring typeName) :
         exp.enterExpressionInSemanticContext (!?ioTypeMap)
         !?ioTypeMap.makeEntry (!typeName, ?*)
       end
@@ -184,7 +184,7 @@ list @CommaSeparatedExpressionList {
     outTestListForGeneration = @()
     for (expression) in self do
       switch expression
-      case regularExp (exp endOfExpression) :
+      case regularExp (exp, endOfExpression) :
         exp.analyzeSemanticExpression
           (!usefulnessCallerEntityName: inUsefulnessCallerEntityName,
           !?ioUsefulEntitiesGraph,
@@ -203,7 +203,7 @@ list @CommaSeparatedExpressionList {
         outTestListForGeneration += !.regular {!exp: if_expression}
         !?ioVariableMap.openOverrideForSelectBlock ()
         !?ioVariableMap.openBranch ()
-      case letVarExp (varName isConstant exp * @lstring typeName) :
+      case letVarExp (varName, isConstant, exp, *, @lstring typeName) :
         exp.analyzeSemanticExpression
           (!usefulnessCallerEntityName: inUsefulnessCallerEntityName,
           !?ioUsefulEntitiesGraph,
@@ -378,13 +378,13 @@ list @CommaSeparatedExpressionList {
 
 enum @ifTestForGeneration {
   case regular (@semanticExpressionForGeneration exp)
-  case letVarExp (@string targetVarCppName
-                  @semanticExpressionForGeneration exp
-                  @unifiedTypeMapEntry targetType
+  case letVarExp (@string targetVarCppName,
+                  @semanticExpressionForGeneration exp,
+                  @unifiedTypeMapEntry targetType,
                   @unifiedTypeMapEntry testType)
-  case optionalExp (@string targetVarCppName
-                    @bool isConstant
-                    @semanticExpressionForGeneration exp
+  case optionalExp (@string targetVarCppName,
+                    @bool isConstant,
+                    @semanticExpressionForGeneration exp,
                     @unifiedTypeMapEntry targetType)
 }
 
@@ -420,7 +420,7 @@ list @ifTestListForGeneration {
           ?let cppVarName
         )
         ioGeneratedCode += outTestVar + " = " + cppVarName + ".boolEnum () ;\n"
-      case letVarExp (targetVarCppName exp targetType testType) :
+      case letVarExp (targetVarCppName, exp, targetType, testType) :
         targetType.addHeaderFileName (!?ioInclusionSet)
         testType.addHeaderFileName (!?ioInclusionSet)
         let targetTypeName = targetType.identifierRepresentation
@@ -437,7 +437,7 @@ list @ifTestListForGeneration {
         ioGeneratedCode += "if (nullptr == " + targetVarCppName + ".ptr ()) {\n"
         ioGeneratedCode += "  " + outTestVar + " = GalgasBool::boolFalse ;\n"
         ioGeneratedCode += "}\n"
-      case optionalExp (targetVarCppName isConstant exp targetType) :
+      case optionalExp (targetVarCppName, isConstant, exp, targetType) :
         let targetTypeName = targetType.identifierRepresentation
         exp.generateExpression
           (!?ioGeneratedCode,

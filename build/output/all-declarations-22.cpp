@@ -887,8 +887,8 @@ void cPtr_superMethodCallInstructionAST::method_analyzeSemanticInstruction (cons
   case GGS_selfAvailability::Enumeration::enum_available:
     {
       GGS_unifiedTypeMapEntry extractedValue_4304_type_0 ;
-      GGS_selfMutability extractedValue_4332_selfMutability_1 ;
-      constinArgument_inAnalysisContext.readProperty_selfAvailability ().getAssociatedValuesFor_available (extractedValue_4304_type_0, extractedValue_4332_selfMutability_1) ;
+      GGS_selfMutability extractedValue_4333_selfMutability_1 ;
+      constinArgument_inAnalysisContext.readProperty_selfAvailability ().getAssociatedValuesFor_available (extractedValue_4304_type_0, extractedValue_4333_selfMutability_1) ;
       var_selfType_4101 = extractedValue_4304_type_0 ;
     }
     break ;
@@ -902,66 +902,66 @@ void cPtr_superMethodCallInstructionAST::method_analyzeSemanticInstruction (cons
       inCompiler->emitSemanticError (temp_3.readProperty_mMethodName ().readProperty_location (), GGS_string ("self type is not a class"), fixItArray4  COMMA_SOURCE_FILE ("instruction-super-method-call.galgas3", 101)) ;
     }
   }
-  GGS_formalParameterSignature var_routineSignature_4683 ;
-  GGS_bool var_hasCompilerArgument_4722 ;
-  GGS_string var_errorMessage_4764 ;
+  GGS_formalParameterSignature var_routineSignature_4684 ;
+  GGS_bool var_hasCompilerArgument_4723 ;
+  GGS_string var_errorMessage_4765 ;
   const GGS_superMethodCallInstructionAST temp_5 = this ;
-  GGS_methodKind joker_4656 ; // Joker input parameter
-  GGS_location joker_4707 ; // Joker input parameter
-  GGS_methodQualifier joker_4749 ; // Joker input parameter
-  extensionGetter_definition (var_selfType_4101, inCompiler COMMA_SOURCE_FILE ("instruction-super-method-call.galgas3", 104)).readProperty_instanceMethodMap ().method_searchKey (temp_5.readProperty_mMethodName (), joker_4656, var_routineSignature_4683, joker_4707, var_hasCompilerArgument_4722, joker_4749, var_errorMessage_4764, inCompiler COMMA_SOURCE_FILE ("instruction-super-method-call.galgas3", 104)) ;
+  GGS_methodKind joker_4657 ; // Joker input parameter
+  GGS_location joker_4708 ; // Joker input parameter
+  GGS_methodQualifier joker_4750 ; // Joker input parameter
+  extensionGetter_definition (var_selfType_4101, inCompiler COMMA_SOURCE_FILE ("instruction-super-method-call.galgas3", 104)).readProperty_instanceMethodMap ().method_searchKey (temp_5.readProperty_mMethodName (), joker_4657, var_routineSignature_4684, joker_4708, var_hasCompilerArgument_4723, joker_4750, var_errorMessage_4765, inCompiler COMMA_SOURCE_FILE ("instruction-super-method-call.galgas3", 104)) ;
   GalgasBool test_6 = GalgasBool::boolTrue ;
   if (GalgasBool::boolTrue == test_6) {
-    test_6 = GGS_bool (ComparisonKind::notEqual, var_errorMessage_4764.objectCompare (GGS_string::makeEmptyString ())).boolEnum () ;
+    test_6 = GGS_bool (ComparisonKind::notEqual, var_errorMessage_4765.objectCompare (GGS_string::makeEmptyString ())).boolEnum () ;
     if (GalgasBool::boolTrue == test_6) {
       const GGS_superMethodCallInstructionAST temp_7 = this ;
       GenericArray <FixItDescription> fixItArray8 ;
-      inCompiler->emitSemanticError (temp_7.readProperty_mMethodName ().readProperty_location (), var_errorMessage_4764, fixItArray8  COMMA_SOURCE_FILE ("instruction-super-method-call.galgas3", 114)) ;
+      inCompiler->emitSemanticError (temp_7.readProperty_mMethodName ().readProperty_location (), var_errorMessage_4765, fixItArray8  COMMA_SOURCE_FILE ("instruction-super-method-call.galgas3", 114)) ;
     }
   }
-  GGS_actualParameterListForGeneration var_actualParameterListForGeneration_5323 ;
+  GGS_actualParameterListForGeneration var_actualParameterListForGeneration_5324 ;
   const GGS_superMethodCallInstructionAST temp_9 = this ;
   const GGS_superMethodCallInstructionAST temp_10 = this ;
   const GGS_superMethodCallInstructionAST temp_11 = this ;
-  extensionMethod_analyzeRoutineArguments (temp_9.readProperty_mActualParameterList (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, temp_10.readProperty_mMethodName (), GGS_string ("'").add_operation (temp_11.readProperty_mMethodName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("instruction-super-method-call.galgas3", 123)).add_operation (GGS_string ("' instance proc header"), inCompiler COMMA_SOURCE_FILE ("instruction-super-method-call.galgas3", 123)), var_routineSignature_4683, ioArgument_ioVariableMap, ioArgument_ioInstructionListForGeneration, var_actualParameterListForGeneration_5323, inCompiler COMMA_SOURCE_FILE ("instruction-super-method-call.galgas3", 117)) ;
-  GGS_unifiedTypeMapEntry var_baseType_5418 = var_selfType_4101 ;
-  GGS_bool var_searching_5446 = GGS_bool (true) ;
+  extensionMethod_analyzeRoutineArguments (temp_9.readProperty_mActualParameterList (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, temp_10.readProperty_mMethodName (), GGS_string ("'").add_operation (temp_11.readProperty_mMethodName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("instruction-super-method-call.galgas3", 123)).add_operation (GGS_string ("' instance proc header"), inCompiler COMMA_SOURCE_FILE ("instruction-super-method-call.galgas3", 123)), var_routineSignature_4684, ioArgument_ioVariableMap, ioArgument_ioInstructionListForGeneration, var_actualParameterListForGeneration_5324, inCompiler COMMA_SOURCE_FILE ("instruction-super-method-call.galgas3", 117)) ;
+  GGS_unifiedTypeMapEntry var_baseType_5419 = var_selfType_4101 ;
+  GGS_bool var_searching_5447 = GGS_bool (true) ;
   GalgasBool test_12 = GalgasBool::boolTrue ;
   if (GalgasBool::boolTrue == test_12) {
     test_12 = GGS_bool (ComparisonKind::equal, GGS_uint::class_func_errorCount (SOURCE_FILE ("instruction-super-method-call.galgas3", 132)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
     if (GalgasBool::boolTrue == test_12) {
       if (GGS_uint::class_func_max (SOURCE_FILE ("instruction-super-method-call.galgas3", 133)).isValid ()) {
-        uint32_t variant_5503 = GGS_uint::class_func_max (SOURCE_FILE ("instruction-super-method-call.galgas3", 133)).uintValue () ;
-        bool loop_5503 = true ;
-        while (loop_5503) {
-          loop_5503 = var_searching_5446.isValid () ;
-          if (loop_5503) {
-            loop_5503 = var_searching_5446.boolValue () ;
+        uint32_t variant_5504 = GGS_uint::class_func_max (SOURCE_FILE ("instruction-super-method-call.galgas3", 133)).uintValue () ;
+        bool loop_5504 = true ;
+        while (loop_5504) {
+          loop_5504 = var_searching_5447.isValid () ;
+          if (loop_5504) {
+            loop_5504 = var_searching_5447.boolValue () ;
           }
-          if (loop_5503 && (0 == variant_5503)) {
-            loop_5503 = false ;
+          if (loop_5504 && (0 == variant_5504)) {
+            loop_5504 = false ;
             inCompiler->loopRunTimeVariantError (SOURCE_FILE ("instruction-super-method-call.galgas3", 133)) ;
           }
-          if (loop_5503) {
-            variant_5503 -= 1 ;
+          if (loop_5504) {
+            variant_5504 -= 1 ;
             GalgasBool test_13 = GalgasBool::boolTrue ;
             if (GalgasBool::boolTrue == test_13) {
-              test_13 = extensionGetter_definition (var_baseType_5418, inCompiler COMMA_SOURCE_FILE ("instruction-super-method-call.galgas3", 134)).readProperty_superType ().getter_isNull (SOURCE_FILE ("instruction-super-method-call.galgas3", 134)).boolEnum () ;
+              test_13 = extensionGetter_definition (var_baseType_5419, inCompiler COMMA_SOURCE_FILE ("instruction-super-method-call.galgas3", 134)).readProperty_superType ().getter_isNull (SOURCE_FILE ("instruction-super-method-call.galgas3", 134)).boolEnum () ;
               if (GalgasBool::boolTrue == test_13) {
-                var_searching_5446 = GGS_bool (false) ;
+                var_searching_5447 = GGS_bool (false) ;
               }
             }
             if (GalgasBool::boolFalse == test_13) {
               GalgasBool test_14 = GalgasBool::boolTrue ;
               if (GalgasBool::boolTrue == test_14) {
                 const GGS_superMethodCallInstructionAST temp_15 = this ;
-                test_14 = extensionGetter_definition (extensionGetter_definition (var_baseType_5418, inCompiler COMMA_SOURCE_FILE ("instruction-super-method-call.galgas3", 137)).readProperty_superType (), inCompiler COMMA_SOURCE_FILE ("instruction-super-method-call.galgas3", 137)).readProperty_instanceMethodMap ().getter_hasKey (temp_15.readProperty_mMethodName ().readProperty_string () COMMA_SOURCE_FILE ("instruction-super-method-call.galgas3", 137)).boolEnum () ;
+                test_14 = extensionGetter_definition (extensionGetter_definition (var_baseType_5419, inCompiler COMMA_SOURCE_FILE ("instruction-super-method-call.galgas3", 137)).readProperty_superType (), inCompiler COMMA_SOURCE_FILE ("instruction-super-method-call.galgas3", 137)).readProperty_instanceMethodMap ().getter_hasKey (temp_15.readProperty_mMethodName ().readProperty_string () COMMA_SOURCE_FILE ("instruction-super-method-call.galgas3", 137)).boolEnum () ;
                 if (GalgasBool::boolTrue == test_14) {
-                  var_baseType_5418 = extensionGetter_definition (var_baseType_5418, inCompiler COMMA_SOURCE_FILE ("instruction-super-method-call.galgas3", 138)).readProperty_superType () ;
+                  var_baseType_5419 = extensionGetter_definition (var_baseType_5419, inCompiler COMMA_SOURCE_FILE ("instruction-super-method-call.galgas3", 138)).readProperty_superType () ;
                 }
               }
               if (GalgasBool::boolFalse == test_14) {
-                var_searching_5446 = GGS_bool (false) ;
+                var_searching_5447 = GGS_bool (false) ;
               }
             }
           }
@@ -971,7 +971,7 @@ void cPtr_superMethodCallInstructionAST::method_analyzeSemanticInstruction (cons
   }
   const GGS_superMethodCallInstructionAST temp_16 = this ;
   const GGS_superMethodCallInstructionAST temp_17 = this ;
-  ioArgument_ioInstructionListForGeneration.addAssignOperation (GGS_superMethodCallInstructionForGeneration::init_21__21__21__21__21_ (temp_16.readProperty_mInstructionLocation (), temp_17.readProperty_mMethodName ().readProperty_string (), var_actualParameterListForGeneration_5323, var_hasCompilerArgument_4722, var_baseType_5418, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("instruction-super-method-call.galgas3", 146)) ;
+  ioArgument_ioInstructionListForGeneration.addAssignOperation (GGS_superMethodCallInstructionForGeneration::init_21__21__21__21__21_ (temp_16.readProperty_mInstructionLocation (), temp_17.readProperty_mMethodName ().readProperty_string (), var_actualParameterListForGeneration_5324, var_hasCompilerArgument_4723, var_baseType_5419, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("instruction-super-method-call.galgas3", 146)) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -985,16 +985,16 @@ void cPtr_superMethodCallInstructionForGeneration::method_generateInstruction (G
                                                                                GGS_string & ioArgument_ioGeneratedCode,
                                                                                Compiler * inCompiler
                                                                                COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_stringlist var_parameterCppNameList_7358 = GGS_stringlist::init (inCompiler COMMA_HERE) ;
-  GGS_stringlist var_jokerParametersToReleaseList_7404 = GGS_stringlist::init (inCompiler COMMA_HERE) ;
-  GGS_stringlist var_inputVariableList_7458 = GGS_stringlist::init (inCompiler COMMA_HERE) ;
+  GGS_stringlist var_parameterCppNameList_7359 = GGS_stringlist::init (inCompiler COMMA_HERE) ;
+  GGS_stringlist var_jokerParametersToReleaseList_7405 = GGS_stringlist::init (inCompiler COMMA_HERE) ;
+  GGS_stringlist var_inputVariableList_7459 = GGS_stringlist::init (inCompiler COMMA_HERE) ;
   const GGS_superMethodCallInstructionForGeneration temp_0 = this ;
-  UpEnumerator_actualParameterListForGeneration enumerator_7502 (temp_0.readProperty_mActualParameterList ()) ;
-  while (enumerator_7502.hasCurrentObject ()) {
-    GGS_string var_parameterCppName_7753 ;
-    callExtensionMethod_generateActualParameter ((cPtr_actualParameterForGeneration *) enumerator_7502.current_mActualParameter (HERE).ptr (), ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioGeneratedCode, var_jokerParametersToReleaseList_7404, var_inputVariableList_7458, ioArgument_ioUnusedVariableCppNameSet, var_parameterCppName_7753, inCompiler COMMA_SOURCE_FILE ("instruction-super-method-call.galgas3", 184)) ;
-    var_parameterCppNameList_7358.addAssignOperation (var_parameterCppName_7753  COMMA_SOURCE_FILE ("instruction-super-method-call.galgas3", 185)) ;
-    enumerator_7502.gotoNextObject () ;
+  UpEnumerator_actualParameterListForGeneration enumerator_7503 (temp_0.readProperty_mActualParameterList ()) ;
+  while (enumerator_7503.hasCurrentObject ()) {
+    GGS_string var_parameterCppName_7754 ;
+    callExtensionMethod_generateActualParameter ((cPtr_actualParameterForGeneration *) enumerator_7503.current_mActualParameter (HERE).ptr (), ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioGeneratedCode, var_jokerParametersToReleaseList_7405, var_inputVariableList_7459, ioArgument_ioUnusedVariableCppNameSet, var_parameterCppName_7754, inCompiler COMMA_SOURCE_FILE ("instruction-super-method-call.galgas3", 184)) ;
+    var_parameterCppNameList_7359.addAssignOperation (var_parameterCppName_7754  COMMA_SOURCE_FILE ("instruction-super-method-call.galgas3", 185)) ;
+    enumerator_7503.gotoNextObject () ;
   }
   const GGS_superMethodCallInstructionForGeneration temp_1 = this ;
   const GGS_superMethodCallInstructionForGeneration temp_2 = this ;
@@ -1003,17 +1003,17 @@ void cPtr_superMethodCallInstructionForGeneration::method_generateInstruction (G
   ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string ("cPtr_").add_operation (extensionGetter_definition (temp_3.readProperty_mBaseType (), inCompiler COMMA_SOURCE_FILE ("instruction-super-method-call.galgas3", 189)).readProperty_typeName ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("instruction-super-method-call.galgas3", 189)), inCompiler COMMA_SOURCE_FILE ("instruction-super-method-call.galgas3", 189)), inCompiler  COMMA_SOURCE_FILE ("instruction-super-method-call.galgas3", 189)) ;
   const GGS_superMethodCallInstructionForGeneration temp_4 = this ;
   ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string ("::method_").add_operation (temp_4.readProperty_mMethodName ().getter_identifierRepresentation (SOURCE_FILE ("instruction-super-method-call.galgas3", 190)), inCompiler COMMA_SOURCE_FILE ("instruction-super-method-call.galgas3", 190)).add_operation (GGS_string (" ("), inCompiler COMMA_SOURCE_FILE ("instruction-super-method-call.galgas3", 190)), inCompiler  COMMA_SOURCE_FILE ("instruction-super-method-call.galgas3", 190)) ;
-  UpEnumerator_stringlist enumerator_8195 (var_parameterCppNameList_7358) ;
-  while (enumerator_8195.hasCurrentObject ()) {
-    ioArgument_ioGeneratedCode.plusAssignOperation(enumerator_8195.current_mValue (HERE), inCompiler  COMMA_SOURCE_FILE ("instruction-super-method-call.galgas3", 192)) ;
-    enumerator_8195.gotoNextObject () ;
-    if (enumerator_8195.hasCurrentObject ()) {
+  UpEnumerator_stringlist enumerator_8196 (var_parameterCppNameList_7359) ;
+  while (enumerator_8196.hasCurrentObject ()) {
+    ioArgument_ioGeneratedCode.plusAssignOperation(enumerator_8196.current_mValue (HERE), inCompiler  COMMA_SOURCE_FILE ("instruction-super-method-call.galgas3", 192)) ;
+    enumerator_8196.gotoNextObject () ;
+    if (enumerator_8196.hasCurrentObject ()) {
       ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string (", "), inCompiler  COMMA_SOURCE_FILE ("instruction-super-method-call.galgas3", 193)) ;
     }
   }
   GalgasBool test_5 = GalgasBool::boolTrue ;
   if (GalgasBool::boolTrue == test_5) {
-    test_5 = GGS_bool (ComparisonKind::equal, var_parameterCppNameList_7358.getter_count (SOURCE_FILE ("instruction-super-method-call.galgas3", 195)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
+    test_5 = GGS_bool (ComparisonKind::equal, var_parameterCppNameList_7359.getter_count (SOURCE_FILE ("instruction-super-method-call.galgas3", 195)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
     if (GalgasBool::boolTrue == test_5) {
       GalgasBool test_6 = GalgasBool::boolTrue ;
       if (GalgasBool::boolTrue == test_6) {
@@ -1049,10 +1049,10 @@ void cPtr_superMethodCallInstructionForGeneration::method_generateInstruction (G
   const GGS_superMethodCallInstructionForGeneration temp_10 = this ;
   ioArgument_ioGeneratedCode.plusAssignOperation(extensionGetter_sourceFile (temp_10.readProperty_mInstructionLocation (), inCompiler COMMA_SOURCE_FILE ("instruction-super-method-call.galgas3", 208)).add_operation (GGS_string (") ;\n"), inCompiler COMMA_SOURCE_FILE ("instruction-super-method-call.galgas3", 208)), inCompiler  COMMA_SOURCE_FILE ("instruction-super-method-call.galgas3", 208)) ;
   const GGS_superMethodCallInstructionForGeneration temp_11 = this ;
-  UpEnumerator_actualParameterListForGeneration enumerator_8915 (temp_11.readProperty_mActualParameterList ()) ;
-  while (enumerator_8915.hasCurrentObject ()) {
-    callExtensionMethod_generatePoisonedVariables ((cPtr_actualParameterForGeneration *) enumerator_8915.current_mActualParameter (HERE).ptr (), ioArgument_ioGeneratedCode, ioArgument_ioUnusedVariableCppNameSet, inCompiler COMMA_SOURCE_FILE ("instruction-super-method-call.galgas3", 211)) ;
-    enumerator_8915.gotoNextObject () ;
+  UpEnumerator_actualParameterListForGeneration enumerator_8916 (temp_11.readProperty_mActualParameterList ()) ;
+  while (enumerator_8916.hasCurrentObject ()) {
+    callExtensionMethod_generatePoisonedVariables ((cPtr_actualParameterForGeneration *) enumerator_8916.current_mActualParameter (HERE).ptr (), ioArgument_ioGeneratedCode, ioArgument_ioUnusedVariableCppNameSet, inCompiler COMMA_SOURCE_FILE ("instruction-super-method-call.galgas3", 211)) ;
+    enumerator_8916.gotoNextObject () ;
   }
 }
 
@@ -1180,9 +1180,9 @@ void routine_analyzeErrorOrWarningInstruction_3F__26__3F__26__3F__3F__3F__3F__3F
   }
   callExtensionMethod_analyzeSemanticExpression ((cPtr_semanticExpressionAST *) constinArgument_inMessageExpression.ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, GGS_unifiedTypeMapEntry::class_func_null (SOURCE_FILE ("instruction-error.galgas3", 282)), constinArgument_inAnalysisContext, ioArgument_ioTypeMap, ioArgument_ioVariableMap, outArgument_outMessageExpression, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas3", 279)) ;
   outArgument_outFixitListForGeneration = GGS_fixitListForGeneration::init (inCompiler COMMA_HERE) ;
-  UpEnumerator_fixitListAST enumerator_10830 (constinArgument_inFixitListAST) ;
-  while (enumerator_10830.hasCurrentObject ()) {
-    switch (enumerator_10830.current_mElement (HERE).enumValue ()) {
+  UpEnumerator_fixitListAST enumerator_10836 (constinArgument_inFixitListAST) ;
+  while (enumerator_10836.hasCurrentObject ()) {
+    switch (enumerator_10836.current_mElement (HERE).enumValue ()) {
     case GGS_fixitElementAST::Enumeration::invalid:
       break ;
     case GGS_fixitElementAST::Enumeration::enum_fixItRemove:
@@ -1192,96 +1192,96 @@ void routine_analyzeErrorOrWarningInstruction_3F__26__3F__26__3F__3F__3F__3F__3F
       break ;
     case GGS_fixitElementAST::Enumeration::enum_fixItReplace:
       {
-        GGS_semanticExpressionAST extractedValue_10974_exp_0 ;
-        GGS_location extractedValue_10978_errorLocation_1 ;
-        enumerator_10830.current_mElement (HERE).getAssociatedValuesFor_fixItReplace (extractedValue_10974_exp_0, extractedValue_10978_errorLocation_1) ;
-        GGS_semanticExpressionForGeneration var_expression_11294 ;
-        callExtensionMethod_analyzeSemanticExpression ((cPtr_semanticExpressionAST *) extractedValue_10974_exp_0.ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext.readProperty_predefinedTypes ().readProperty_mStringListType (), constinArgument_inAnalysisContext, ioArgument_ioTypeMap, ioArgument_ioVariableMap, var_expression_11294, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas3", 295)) ;
+        GGS_semanticExpressionAST extractedValue_10980_exp_0 ;
+        GGS_location extractedValue_10985_errorLocation_1 ;
+        enumerator_10836.current_mElement (HERE).getAssociatedValuesFor_fixItReplace (extractedValue_10980_exp_0, extractedValue_10985_errorLocation_1) ;
+        GGS_semanticExpressionForGeneration var_expression_11301 ;
+        callExtensionMethod_analyzeSemanticExpression ((cPtr_semanticExpressionAST *) extractedValue_10980_exp_0.ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext.readProperty_predefinedTypes ().readProperty_mStringListType (), constinArgument_inAnalysisContext, ioArgument_ioTypeMap, ioArgument_ioVariableMap, var_expression_11301, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas3", 295)) ;
         GalgasBool test_0 = GalgasBool::boolTrue ;
         if (GalgasBool::boolTrue == test_0) {
-          GGS_bool test_1 = GGS_bool (ComparisonKind::notEqual, var_expression_11294.readProperty_mResultType ().objectCompare (constinArgument_inAnalysisContext.readProperty_predefinedTypes ().readProperty_mStringListType ())) ;
+          GGS_bool test_1 = GGS_bool (ComparisonKind::notEqual, var_expression_11301.readProperty_mResultType ().objectCompare (constinArgument_inAnalysisContext.readProperty_predefinedTypes ().readProperty_mStringListType ())) ;
           if (GalgasBool::boolTrue == test_1.boolEnum ()) {
-            test_1 = GGS_bool (ComparisonKind::notEqual, var_expression_11294.readProperty_mResultType ().objectCompare (constinArgument_inAnalysisContext.readProperty_predefinedTypes ().readProperty_mLStringListType ())) ;
+            test_1 = GGS_bool (ComparisonKind::notEqual, var_expression_11301.readProperty_mResultType ().objectCompare (constinArgument_inAnalysisContext.readProperty_predefinedTypes ().readProperty_mLStringListType ())) ;
           }
           GGS_bool test_2 = test_1 ;
           if (GalgasBool::boolTrue == test_2.boolEnum ()) {
-            test_2 = GGS_bool (ComparisonKind::notEqual, var_expression_11294.readProperty_mResultType ().objectCompare (constinArgument_inAnalysisContext.readProperty_predefinedTypes ().readProperty_mStringSetType ())) ;
+            test_2 = GGS_bool (ComparisonKind::notEqual, var_expression_11301.readProperty_mResultType ().objectCompare (constinArgument_inAnalysisContext.readProperty_predefinedTypes ().readProperty_mStringSetType ())) ;
           }
           GGS_bool test_3 = test_2 ;
           if (GalgasBool::boolTrue == test_3.boolEnum ()) {
-            test_3 = GGS_bool (ComparisonKind::notEqual, var_expression_11294.readProperty_mResultType ().objectCompare (constinArgument_inAnalysisContext.readProperty_predefinedTypes ().readProperty_mStringType ())) ;
+            test_3 = GGS_bool (ComparisonKind::notEqual, var_expression_11301.readProperty_mResultType ().objectCompare (constinArgument_inAnalysisContext.readProperty_predefinedTypes ().readProperty_mStringType ())) ;
           }
           test_0 = test_3.boolEnum () ;
           if (GalgasBool::boolTrue == test_0) {
             GenericArray <FixItDescription> fixItArray4 ;
-            inCompiler->emitSemanticError (extractedValue_10978_errorLocation_1, GGS_string ("expression type is @").add_operation (extensionGetter_definition (var_expression_11294.readProperty_mResultType (), inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas3", 308)).readProperty_typeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas3", 308)).add_operation (GGS_string (", it should be an @string, @stringset, @stringlist or @lstringlist"), inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas3", 308)), fixItArray4  COMMA_SOURCE_FILE ("instruction-error.galgas3", 308)) ;
+            inCompiler->emitSemanticError (extractedValue_10985_errorLocation_1, GGS_string ("expression type is @").add_operation (extensionGetter_definition (var_expression_11301.readProperty_mResultType (), inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas3", 308)).readProperty_typeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas3", 308)).add_operation (GGS_string (", it should be an @string, @stringset, @stringlist or @lstringlist"), inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas3", 308)), fixItArray4  COMMA_SOURCE_FILE ("instruction-error.galgas3", 308)) ;
           }
         }
-        outArgument_outFixitListForGeneration.addAssignOperation (GGS_fixitElementForGeneration::class_func_fixItReplace (var_expression_11294  COMMA_SOURCE_FILE ("instruction-error.galgas3", 312))  COMMA_SOURCE_FILE ("instruction-error.galgas3", 312)) ;
+        outArgument_outFixitListForGeneration.addAssignOperation (GGS_fixitElementForGeneration::class_func_fixItReplace (var_expression_11301  COMMA_SOURCE_FILE ("instruction-error.galgas3", 312))  COMMA_SOURCE_FILE ("instruction-error.galgas3", 312)) ;
       }
       break ;
     case GGS_fixitElementAST::Enumeration::enum_fixItInsertBefore:
       {
-        GGS_semanticExpressionAST extractedValue_11967_exp_0 ;
-        GGS_location extractedValue_11971_errorLocation_1 ;
-        enumerator_10830.current_mElement (HERE).getAssociatedValuesFor_fixItInsertBefore (extractedValue_11967_exp_0, extractedValue_11971_errorLocation_1) ;
-        GGS_semanticExpressionForGeneration var_expression_12287 ;
-        callExtensionMethod_analyzeSemanticExpression ((cPtr_semanticExpressionAST *) extractedValue_11967_exp_0.ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext.readProperty_predefinedTypes ().readProperty_mStringListType (), constinArgument_inAnalysisContext, ioArgument_ioTypeMap, ioArgument_ioVariableMap, var_expression_12287, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas3", 314)) ;
+        GGS_semanticExpressionAST extractedValue_11974_exp_0 ;
+        GGS_location extractedValue_11979_errorLocation_1 ;
+        enumerator_10836.current_mElement (HERE).getAssociatedValuesFor_fixItInsertBefore (extractedValue_11974_exp_0, extractedValue_11979_errorLocation_1) ;
+        GGS_semanticExpressionForGeneration var_expression_12295 ;
+        callExtensionMethod_analyzeSemanticExpression ((cPtr_semanticExpressionAST *) extractedValue_11974_exp_0.ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext.readProperty_predefinedTypes ().readProperty_mStringListType (), constinArgument_inAnalysisContext, ioArgument_ioTypeMap, ioArgument_ioVariableMap, var_expression_12295, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas3", 314)) ;
         GalgasBool test_5 = GalgasBool::boolTrue ;
         if (GalgasBool::boolTrue == test_5) {
-          GGS_bool test_6 = GGS_bool (ComparisonKind::notEqual, var_expression_12287.readProperty_mResultType ().objectCompare (constinArgument_inAnalysisContext.readProperty_predefinedTypes ().readProperty_mStringListType ())) ;
+          GGS_bool test_6 = GGS_bool (ComparisonKind::notEqual, var_expression_12295.readProperty_mResultType ().objectCompare (constinArgument_inAnalysisContext.readProperty_predefinedTypes ().readProperty_mStringListType ())) ;
           if (GalgasBool::boolTrue == test_6.boolEnum ()) {
-            test_6 = GGS_bool (ComparisonKind::notEqual, var_expression_12287.readProperty_mResultType ().objectCompare (constinArgument_inAnalysisContext.readProperty_predefinedTypes ().readProperty_mLStringListType ())) ;
+            test_6 = GGS_bool (ComparisonKind::notEqual, var_expression_12295.readProperty_mResultType ().objectCompare (constinArgument_inAnalysisContext.readProperty_predefinedTypes ().readProperty_mLStringListType ())) ;
           }
           GGS_bool test_7 = test_6 ;
           if (GalgasBool::boolTrue == test_7.boolEnum ()) {
-            test_7 = GGS_bool (ComparisonKind::notEqual, var_expression_12287.readProperty_mResultType ().objectCompare (constinArgument_inAnalysisContext.readProperty_predefinedTypes ().readProperty_mStringSetType ())) ;
+            test_7 = GGS_bool (ComparisonKind::notEqual, var_expression_12295.readProperty_mResultType ().objectCompare (constinArgument_inAnalysisContext.readProperty_predefinedTypes ().readProperty_mStringSetType ())) ;
           }
           GGS_bool test_8 = test_7 ;
           if (GalgasBool::boolTrue == test_8.boolEnum ()) {
-            test_8 = GGS_bool (ComparisonKind::notEqual, var_expression_12287.readProperty_mResultType ().objectCompare (constinArgument_inAnalysisContext.readProperty_predefinedTypes ().readProperty_mStringType ())) ;
+            test_8 = GGS_bool (ComparisonKind::notEqual, var_expression_12295.readProperty_mResultType ().objectCompare (constinArgument_inAnalysisContext.readProperty_predefinedTypes ().readProperty_mStringType ())) ;
           }
           test_5 = test_8.boolEnum () ;
           if (GalgasBool::boolTrue == test_5) {
             GenericArray <FixItDescription> fixItArray9 ;
-            inCompiler->emitSemanticError (extractedValue_11971_errorLocation_1, GGS_string ("expression type is @").add_operation (extensionGetter_definition (var_expression_12287.readProperty_mResultType (), inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas3", 327)).readProperty_typeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas3", 327)).add_operation (GGS_string (", it should be an @string, @stringset, @stringlist or @lstringlist"), inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas3", 327)), fixItArray9  COMMA_SOURCE_FILE ("instruction-error.galgas3", 327)) ;
+            inCompiler->emitSemanticError (extractedValue_11979_errorLocation_1, GGS_string ("expression type is @").add_operation (extensionGetter_definition (var_expression_12295.readProperty_mResultType (), inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas3", 327)).readProperty_typeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas3", 327)).add_operation (GGS_string (", it should be an @string, @stringset, @stringlist or @lstringlist"), inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas3", 327)), fixItArray9  COMMA_SOURCE_FILE ("instruction-error.galgas3", 327)) ;
           }
         }
-        outArgument_outFixitListForGeneration.addAssignOperation (GGS_fixitElementForGeneration::class_func_fixItInsertBefore (var_expression_12287  COMMA_SOURCE_FILE ("instruction-error.galgas3", 331))  COMMA_SOURCE_FILE ("instruction-error.galgas3", 331)) ;
+        outArgument_outFixitListForGeneration.addAssignOperation (GGS_fixitElementForGeneration::class_func_fixItInsertBefore (var_expression_12295  COMMA_SOURCE_FILE ("instruction-error.galgas3", 331))  COMMA_SOURCE_FILE ("instruction-error.galgas3", 331)) ;
       }
       break ;
     case GGS_fixitElementAST::Enumeration::enum_fixItInsertAfter:
       {
-        GGS_semanticExpressionAST extractedValue_12964_exp_0 ;
-        GGS_location extractedValue_12968_errorLocation_1 ;
-        enumerator_10830.current_mElement (HERE).getAssociatedValuesFor_fixItInsertAfter (extractedValue_12964_exp_0, extractedValue_12968_errorLocation_1) ;
-        GGS_semanticExpressionForGeneration var_expression_13284 ;
-        callExtensionMethod_analyzeSemanticExpression ((cPtr_semanticExpressionAST *) extractedValue_12964_exp_0.ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext.readProperty_predefinedTypes ().readProperty_mStringListType (), constinArgument_inAnalysisContext, ioArgument_ioTypeMap, ioArgument_ioVariableMap, var_expression_13284, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas3", 333)) ;
+        GGS_semanticExpressionAST extractedValue_12972_exp_0 ;
+        GGS_location extractedValue_12977_errorLocation_1 ;
+        enumerator_10836.current_mElement (HERE).getAssociatedValuesFor_fixItInsertAfter (extractedValue_12972_exp_0, extractedValue_12977_errorLocation_1) ;
+        GGS_semanticExpressionForGeneration var_expression_13293 ;
+        callExtensionMethod_analyzeSemanticExpression ((cPtr_semanticExpressionAST *) extractedValue_12972_exp_0.ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext.readProperty_predefinedTypes ().readProperty_mStringListType (), constinArgument_inAnalysisContext, ioArgument_ioTypeMap, ioArgument_ioVariableMap, var_expression_13293, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas3", 333)) ;
         GalgasBool test_10 = GalgasBool::boolTrue ;
         if (GalgasBool::boolTrue == test_10) {
-          GGS_bool test_11 = GGS_bool (ComparisonKind::notEqual, var_expression_13284.readProperty_mResultType ().objectCompare (constinArgument_inAnalysisContext.readProperty_predefinedTypes ().readProperty_mStringListType ())) ;
+          GGS_bool test_11 = GGS_bool (ComparisonKind::notEqual, var_expression_13293.readProperty_mResultType ().objectCompare (constinArgument_inAnalysisContext.readProperty_predefinedTypes ().readProperty_mStringListType ())) ;
           if (GalgasBool::boolTrue == test_11.boolEnum ()) {
-            test_11 = GGS_bool (ComparisonKind::notEqual, var_expression_13284.readProperty_mResultType ().objectCompare (constinArgument_inAnalysisContext.readProperty_predefinedTypes ().readProperty_mLStringListType ())) ;
+            test_11 = GGS_bool (ComparisonKind::notEqual, var_expression_13293.readProperty_mResultType ().objectCompare (constinArgument_inAnalysisContext.readProperty_predefinedTypes ().readProperty_mLStringListType ())) ;
           }
           GGS_bool test_12 = test_11 ;
           if (GalgasBool::boolTrue == test_12.boolEnum ()) {
-            test_12 = GGS_bool (ComparisonKind::notEqual, var_expression_13284.readProperty_mResultType ().objectCompare (constinArgument_inAnalysisContext.readProperty_predefinedTypes ().readProperty_mStringSetType ())) ;
+            test_12 = GGS_bool (ComparisonKind::notEqual, var_expression_13293.readProperty_mResultType ().objectCompare (constinArgument_inAnalysisContext.readProperty_predefinedTypes ().readProperty_mStringSetType ())) ;
           }
           GGS_bool test_13 = test_12 ;
           if (GalgasBool::boolTrue == test_13.boolEnum ()) {
-            test_13 = GGS_bool (ComparisonKind::notEqual, var_expression_13284.readProperty_mResultType ().objectCompare (constinArgument_inAnalysisContext.readProperty_predefinedTypes ().readProperty_mStringType ())) ;
+            test_13 = GGS_bool (ComparisonKind::notEqual, var_expression_13293.readProperty_mResultType ().objectCompare (constinArgument_inAnalysisContext.readProperty_predefinedTypes ().readProperty_mStringType ())) ;
           }
           test_10 = test_13.boolEnum () ;
           if (GalgasBool::boolTrue == test_10) {
             GenericArray <FixItDescription> fixItArray14 ;
-            inCompiler->emitSemanticError (extractedValue_12968_errorLocation_1, GGS_string ("expression type is @").add_operation (extensionGetter_definition (var_expression_13284.readProperty_mResultType (), inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas3", 346)).readProperty_typeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas3", 346)).add_operation (GGS_string (", it should be an @string, @stringset, @stringlist or @lstringlist"), inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas3", 346)), fixItArray14  COMMA_SOURCE_FILE ("instruction-error.galgas3", 346)) ;
+            inCompiler->emitSemanticError (extractedValue_12977_errorLocation_1, GGS_string ("expression type is @").add_operation (extensionGetter_definition (var_expression_13293.readProperty_mResultType (), inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas3", 346)).readProperty_typeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas3", 346)).add_operation (GGS_string (", it should be an @string, @stringset, @stringlist or @lstringlist"), inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas3", 346)), fixItArray14  COMMA_SOURCE_FILE ("instruction-error.galgas3", 346)) ;
           }
         }
-        outArgument_outFixitListForGeneration.addAssignOperation (GGS_fixitElementForGeneration::class_func_fixItInsertAfter (var_expression_13284  COMMA_SOURCE_FILE ("instruction-error.galgas3", 350))  COMMA_SOURCE_FILE ("instruction-error.galgas3", 350)) ;
+        outArgument_outFixitListForGeneration.addAssignOperation (GGS_fixitElementForGeneration::class_func_fixItInsertAfter (var_expression_13293  COMMA_SOURCE_FILE ("instruction-error.galgas3", 350))  COMMA_SOURCE_FILE ("instruction-error.galgas3", 350)) ;
       }
       break ;
     }
-    enumerator_10830.gotoNextObject () ;
+    enumerator_10836.gotoNextObject () ;
   }
   GalgasBool test_15 = GalgasBool::boolTrue ;
   if (GalgasBool::boolTrue == test_15) {
@@ -1306,31 +1306,31 @@ void cPtr_errorInstructionAST::method_analyzeSemanticInstruction (const GGS_lstr
                                                                   GGS_localVarManager & ioArgument_ioVariableMap,
                                                                   Compiler * inCompiler
                                                                   COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_semanticExpressionForGeneration var_locationExpression_15196 ;
-  GGS_semanticExpressionForGeneration var_messageExpression_15225 ;
-  GGS_fixitListForGeneration var_fixitListForGeneration_15253 ;
+  GGS_semanticExpressionForGeneration var_locationExpression_15205 ;
+  GGS_semanticExpressionForGeneration var_messageExpression_15234 ;
+  GGS_fixitListForGeneration var_fixitListForGeneration_15262 ;
   {
   const GGS_errorInstructionAST temp_0 = this ;
   const GGS_errorInstructionAST temp_1 = this ;
   const GGS_errorInstructionAST temp_2 = this ;
   const GGS_errorInstructionAST temp_3 = this ;
-  routine_analyzeErrorOrWarningInstruction_3F__26__3F__26__3F__3F__3F__3F__3F__26__21__21__21_ (constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, temp_0.readProperty_mLocationExpression (), temp_1.readProperty_mMessageExpression (), temp_2.readProperty_mFixitListAST (), temp_3.readProperty_mInstructionLocation (), GGS_string ("error"), ioArgument_ioVariableMap, var_locationExpression_15196, var_messageExpression_15225, var_fixitListForGeneration_15253, inCompiler  COMMA_SOURCE_FILE ("instruction-error.galgas3", 372)) ;
+  routine_analyzeErrorOrWarningInstruction_3F__26__3F__26__3F__3F__3F__3F__3F__26__21__21__21_ (constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, temp_0.readProperty_mLocationExpression (), temp_1.readProperty_mMessageExpression (), temp_2.readProperty_mFixitListAST (), temp_3.readProperty_mInstructionLocation (), GGS_string ("error"), ioArgument_ioVariableMap, var_locationExpression_15205, var_messageExpression_15234, var_fixitListForGeneration_15262, inCompiler  COMMA_SOURCE_FILE ("instruction-error.galgas3", 372)) ;
   }
-  GGS_stringlist var_builtVariableCppNameList_15317 = GGS_stringlist::init (inCompiler COMMA_HERE) ;
+  GGS_stringlist var_builtVariableCppNameList_15326 = GGS_stringlist::init (inCompiler COMMA_HERE) ;
   const GGS_errorInstructionAST temp_4 = this ;
-  UpEnumerator_lstringlist enumerator_15366 (temp_4.readProperty_mBuiltVariableList ()) ;
-  while (enumerator_15366.hasCurrentObject ()) {
-    GGS_string var_varCppName_15464 ;
+  UpEnumerator_lstringlist enumerator_15375 (temp_4.readProperty_mBuiltVariableList ()) ;
+  while (enumerator_15375.hasCurrentObject ()) {
+    GGS_string var_varCppName_15473 ;
     {
-    GGS_unifiedTypeMapEntry joker_15455 ; // Joker input parameter
-    GGS_string joker_15476 ; // Joker input parameter
-    extensionSetter_searchForWriteAccess (ioArgument_ioVariableMap, enumerator_15366.current_mValue (HERE), joker_15455, var_varCppName_15464, joker_15476, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas3", 390)) ;
+    GGS_unifiedTypeMapEntry joker_15464 ; // Joker input parameter
+    GGS_string joker_15485 ; // Joker input parameter
+    extensionSetter_searchForWriteAccess (ioArgument_ioVariableMap, enumerator_15375.current_mValue (HERE), joker_15464, var_varCppName_15473, joker_15485, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas3", 390)) ;
     }
-    var_builtVariableCppNameList_15317.addAssignOperation (var_varCppName_15464  COMMA_SOURCE_FILE ("instruction-error.galgas3", 391)) ;
-    enumerator_15366.gotoNextObject () ;
+    var_builtVariableCppNameList_15326.addAssignOperation (var_varCppName_15473  COMMA_SOURCE_FILE ("instruction-error.galgas3", 391)) ;
+    enumerator_15375.gotoNextObject () ;
   }
   const GGS_errorInstructionAST temp_5 = this ;
-  ioArgument_ioInstructionListForGeneration.addAssignOperation (GGS_errorInstructionForGeneration::init_21__21__21__21__21_ (temp_5.readProperty_mInstructionLocation (), var_locationExpression_15196, var_messageExpression_15225, var_builtVariableCppNameList_15317, var_fixitListForGeneration_15253, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("instruction-error.galgas3", 394)) ;
+  ioArgument_ioInstructionListForGeneration.addAssignOperation (GGS_errorInstructionForGeneration::init_21__21__21__21__21_ (temp_5.readProperty_mInstructionLocation (), var_locationExpression_15205, var_messageExpression_15234, var_builtVariableCppNameList_15326, var_fixitListForGeneration_15262, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("instruction-error.galgas3", 394)) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -1344,28 +1344,28 @@ void cPtr_errorInstructionForGeneration::method_generateInstruction (GGS_strings
                                                                      GGS_string & ioArgument_ioGeneratedCode,
                                                                      Compiler * inCompiler
                                                                      COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_string var_receiverCppVarName_18905 ;
+  GGS_string var_receiverCppVarName_18914 ;
   const GGS_errorInstructionForGeneration temp_0 = this ;
-  callExtensionMethod_generateExpression ((cPtr_semanticExpressionForGeneration *) temp_0.readProperty_mReceiverExpression ().ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_receiverCppVarName_18905, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas3", 469)) ;
-  GGS_string var_messageCppVarName_19118 ;
+  callExtensionMethod_generateExpression ((cPtr_semanticExpressionForGeneration *) temp_0.readProperty_mReceiverExpression ().ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_receiverCppVarName_18914, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas3", 469)) ;
+  GGS_string var_messageCppVarName_19127 ;
   const GGS_errorInstructionForGeneration temp_1 = this ;
-  callExtensionMethod_generateExpression ((cPtr_semanticExpressionForGeneration *) temp_1.readProperty_mErrorExpression ().ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_messageCppVarName_19118, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas3", 477)) ;
-  GGS_string var_fixItArrayCppName_19381 ;
+  callExtensionMethod_generateExpression ((cPtr_semanticExpressionForGeneration *) temp_1.readProperty_mErrorExpression ().ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_messageCppVarName_19127, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas3", 477)) ;
+  GGS_string var_fixItArrayCppName_19390 ;
   const GGS_errorInstructionForGeneration temp_2 = this ;
-  extensionMethod_generateFixIt (temp_2.readProperty_mFixitListForGeneration (), ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, constinArgument_inGenerateSyntaxDirectedTranslationString, ioArgument_ioGeneratedCode, var_fixItArrayCppName_19381, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas3", 485)) ;
+  extensionMethod_generateFixIt (temp_2.readProperty_mFixitListForGeneration (), ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, constinArgument_inGenerateSyntaxDirectedTranslationString, ioArgument_ioGeneratedCode, var_fixItArrayCppName_19390, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas3", 485)) ;
   {
   ioArgument_ioUnusedVariableCppNameSet.setter_removeKey (function_compilerCppName (inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas3", 494)) COMMA_SOURCE_FILE ("instruction-error.galgas3", 494)) ;
   }
   const GGS_errorInstructionForGeneration temp_3 = this ;
-  ioArgument_ioGeneratedCode.plusAssignOperation(function_compilerCppName (inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas3", 495)).add_operation (GGS_string ("->emitSemanticError ("), inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas3", 495)).add_operation (var_receiverCppVarName_18905, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas3", 495)).add_operation (GGS_string (", "), inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas3", 496)).add_operation (var_messageCppVarName_19118, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas3", 496)).add_operation (GGS_string (", "), inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas3", 497)).add_operation (var_fixItArrayCppName_19381, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas3", 497)).add_operation (GGS_string (" "), inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas3", 498)).add_operation (extensionGetter_commaSourceFile (temp_3.readProperty_mInstructionLocation (), inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas3", 499)), inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas3", 498)).add_operation (GGS_string (") ;\n"), inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas3", 499)), inCompiler  COMMA_SOURCE_FILE ("instruction-error.galgas3", 495)) ;
+  ioArgument_ioGeneratedCode.plusAssignOperation(function_compilerCppName (inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas3", 495)).add_operation (GGS_string ("->emitSemanticError ("), inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas3", 495)).add_operation (var_receiverCppVarName_18914, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas3", 495)).add_operation (GGS_string (", "), inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas3", 496)).add_operation (var_messageCppVarName_19127, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas3", 496)).add_operation (GGS_string (", "), inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas3", 497)).add_operation (var_fixItArrayCppName_19390, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas3", 497)).add_operation (GGS_string (" "), inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas3", 498)).add_operation (extensionGetter_commaSourceFile (temp_3.readProperty_mInstructionLocation (), inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas3", 499)), inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas3", 498)).add_operation (GGS_string (") ;\n"), inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas3", 499)), inCompiler  COMMA_SOURCE_FILE ("instruction-error.galgas3", 495)) ;
   const GGS_errorInstructionForGeneration temp_4 = this ;
-  UpEnumerator_stringlist enumerator_19755 (temp_4.readProperty_mBuiltVariableCppNameList ()) ;
-  while (enumerator_19755.hasCurrentObject ()) {
+  UpEnumerator_stringlist enumerator_19764 (temp_4.readProperty_mBuiltVariableCppNameList ()) ;
+  while (enumerator_19764.hasCurrentObject ()) {
     {
-    ioArgument_ioUnusedVariableCppNameSet.setter_removeKey (enumerator_19755.current_mValue (HERE) COMMA_SOURCE_FILE ("instruction-error.galgas3", 502)) ;
+    ioArgument_ioUnusedVariableCppNameSet.setter_removeKey (enumerator_19764.current_mValue (HERE) COMMA_SOURCE_FILE ("instruction-error.galgas3", 502)) ;
     }
-    ioArgument_ioGeneratedCode.plusAssignOperation(enumerator_19755.current_mValue (HERE).add_operation (GGS_string (".drop () ; // Release error dropped variable\n"), inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas3", 503)), inCompiler  COMMA_SOURCE_FILE ("instruction-error.galgas3", 503)) ;
-    enumerator_19755.gotoNextObject () ;
+    ioArgument_ioGeneratedCode.plusAssignOperation(enumerator_19764.current_mValue (HERE).add_operation (GGS_string (".drop () ; // Release error dropped variable\n"), inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas3", 503)), inCompiler  COMMA_SOURCE_FILE ("instruction-error.galgas3", 503)) ;
+    enumerator_19764.gotoNextObject () ;
   }
 }
 
@@ -3249,12 +3249,12 @@ void cPtr_switchInstructionAST::method_enterInstructionInSemanticContext (GGS_un
                                                                           Compiler * inCompiler
                                                                           COMMA_UNUSED_LOCATION_ARGS) {
   const GGS_switchInstructionAST temp_0 = this ;
-  callExtensionMethod_enterExpressionInSemanticContext ((cPtr_semanticExpressionAST *) temp_0.readProperty_mSwitchExpression ().ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas3", 228)) ;
+  callExtensionMethod_enterExpressionInSemanticContext ((cPtr_semanticExpressionAST *) temp_0.readProperty_mSwitchExpression ().ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas3", 229)) ;
   const GGS_switchInstructionAST temp_1 = this ;
-  UpEnumerator_switchBranchesAST enumerator_8082 (temp_1.readProperty_mBranches ()) ;
-  while (enumerator_8082.hasCurrentObject ()) {
-    extensionMethod_enterInstructionListInSemanticContext (enumerator_8082.current (HERE).readProperty_mInstructions (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas3", 230)) ;
-    enumerator_8082.gotoNextObject () ;
+  UpEnumerator_switchBranchesAST enumerator_8094 (temp_1.readProperty_mBranches ()) ;
+  while (enumerator_8094.hasCurrentObject ()) {
+    extensionMethod_enterInstructionListInSemanticContext (enumerator_8094.current (HERE).readProperty_mInstructions (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas3", 231)) ;
+    enumerator_8094.gotoNextObject () ;
   }
 }
 
@@ -3270,123 +3270,123 @@ void cPtr_switchInstructionAST::method_analyzeSemanticInstruction (const GGS_lst
                                                                    GGS_localVarManager & ioArgument_ioVariableMap,
                                                                    Compiler * inCompiler
                                                                    COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_semanticExpressionForGeneration var_switchExpression_9053 ;
+  GGS_semanticExpressionForGeneration var_switchExpression_9065 ;
   const GGS_switchInstructionAST temp_0 = this ;
-  callExtensionMethod_analyzeSemanticExpression ((cPtr_semanticExpressionAST *) temp_0.readProperty_mSwitchExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, GGS_unifiedTypeMapEntry::class_func_null (SOURCE_FILE ("instruction-switch.galgas3", 246)), constinArgument_inAnalysisContext, ioArgument_ioTypeMap, ioArgument_ioVariableMap, var_switchExpression_9053, inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas3", 243)) ;
+  callExtensionMethod_analyzeSemanticExpression ((cPtr_semanticExpressionAST *) temp_0.readProperty_mSwitchExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, GGS_unifiedTypeMapEntry::class_func_null (SOURCE_FILE ("instruction-switch.galgas3", 247)), constinArgument_inAnalysisContext, ioArgument_ioTypeMap, ioArgument_ioVariableMap, var_switchExpression_9065, inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas3", 244)) ;
   GalgasBool test_1 = GalgasBool::boolTrue ;
   if (GalgasBool::boolTrue == test_1) {
-    const GGS_typeKindEnum_2E_enumType var_enumType_9145 = extensionGetter_definition (var_switchExpression_9053.readProperty_mResultType (), inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas3", 253)).readProperty_typeKind ().getter_getEnumType (SOURCE_FILE ("instruction-switch.galgas3", 253)).unwrappedValue () ;
-    if (!extensionGetter_definition (var_switchExpression_9053.readProperty_mResultType (), inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas3", 253)).readProperty_typeKind ().getter_getEnumType (SOURCE_FILE ("instruction-switch.galgas3", 253)).isValuated ()) {
+    const GGS_typeKindEnum_2E_enumType var_enumType_9157 = extensionGetter_definition (var_switchExpression_9065.readProperty_mResultType (), inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas3", 254)).readProperty_typeKind ().getter_getEnumType (SOURCE_FILE ("instruction-switch.galgas3", 254)).unwrappedValue () ;
+    if (!extensionGetter_definition (var_switchExpression_9065.readProperty_mResultType (), inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas3", 254)).readProperty_typeKind ().getter_getEnumType (SOURCE_FILE ("instruction-switch.galgas3", 254)).isValuated ()) {
       test_1 = GalgasBool::boolFalse ;
     }
     if (GalgasBool::boolTrue == test_1) {
-      GGS_stringset var_constantsNamedInSwitchInstruction_9271 = GGS_stringset::init (inCompiler COMMA_HERE) ;
+      GGS_stringset var_constantsNamedInSwitchInstruction_9283 = GGS_stringset::init (inCompiler COMMA_HERE) ;
       {
-      extensionSetter_openOverrideForSelectBlock (ioArgument_ioVariableMap, inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas3", 257)) ;
+      extensionSetter_openOverrideForSelectBlock (ioArgument_ioVariableMap, inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas3", 258)) ;
       }
-      GGS_switchBranchesForGeneration var_switchBranchesForGeneration_9429 = GGS_switchBranchesForGeneration::init (inCompiler COMMA_HERE) ;
+      GGS_switchBranchesForGeneration var_switchBranchesForGeneration_9441 = GGS_switchBranchesForGeneration::init (inCompiler COMMA_HERE) ;
       const GGS_switchInstructionAST temp_2 = this ;
-      UpEnumerator_switchBranchesAST enumerator_9488 (temp_2.readProperty_mBranches ()) ;
-      while (enumerator_9488.hasCurrentObject ()) {
+      UpEnumerator_switchBranchesAST enumerator_9500 (temp_2.readProperty_mBranches ()) ;
+      while (enumerator_9500.hasCurrentObject ()) {
         {
-        extensionSetter_openBranch (ioArgument_ioVariableMap, inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas3", 260)) ;
+        extensionSetter_openBranch (ioArgument_ioVariableMap, inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas3", 261)) ;
         }
-        GGS_extractedAssociatedValuesForGeneration var_extractedAssociatedValuesForGeneration_9591 = GGS_extractedAssociatedValuesForGeneration::init (inCompiler COMMA_HERE) ;
-        UpEnumerator__5B_lstring_5D_ enumerator_9671 (enumerator_9488.current (HERE).readProperty_mSwitchConstantList ()) ;
-        while (enumerator_9671.hasCurrentObject ()) {
+        GGS_extractedAssociatedValuesForGeneration var_extractedAssociatedValuesForGeneration_9603 = GGS_extractedAssociatedValuesForGeneration::init (inCompiler COMMA_HERE) ;
+        UpEnumerator__5B_lstring_5D_ enumerator_9683 (enumerator_9500.current (HERE).readProperty_mSwitchConstantList ()) ;
+        while (enumerator_9683.hasCurrentObject ()) {
           GalgasBool test_3 = GalgasBool::boolTrue ;
           if (GalgasBool::boolTrue == test_3) {
-            test_3 = var_enumType_9145.readProperty_constantMap ().getter_hasKey (enumerator_9671.current (HERE).readProperty_string () COMMA_SOURCE_FILE ("instruction-switch.galgas3", 263)).boolEnum () ;
+            test_3 = var_enumType_9157.readProperty_constantMap ().getter_hasKey (enumerator_9683.current (HERE).readProperty_string () COMMA_SOURCE_FILE ("instruction-switch.galgas3", 264)).boolEnum () ;
             if (GalgasBool::boolTrue == test_3) {
               GalgasBool test_4 = GalgasBool::boolTrue ;
               if (GalgasBool::boolTrue == test_4) {
-                test_4 = var_constantsNamedInSwitchInstruction_9271.getter_hasKey (enumerator_9671.current (HERE).readProperty_string () COMMA_SOURCE_FILE ("instruction-switch.galgas3", 264)).boolEnum () ;
+                test_4 = var_constantsNamedInSwitchInstruction_9283.getter_hasKey (enumerator_9683.current (HERE).readProperty_string () COMMA_SOURCE_FILE ("instruction-switch.galgas3", 265)).boolEnum () ;
                 if (GalgasBool::boolTrue == test_4) {
                   GenericArray <FixItDescription> fixItArray5 ;
-                  inCompiler->emitSemanticError (enumerator_9671.current (HERE).readProperty_location (), GGS_string ("the '").add_operation (enumerator_9671.current (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas3", 266)).add_operation (GGS_string ("' constant is already named in this switch instruction"), inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas3", 266)), fixItArray5  COMMA_SOURCE_FILE ("instruction-switch.galgas3", 265)) ;
+                  inCompiler->emitSemanticError (enumerator_9683.current (HERE).readProperty_location (), GGS_string ("the '").add_operation (enumerator_9683.current (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas3", 267)).add_operation (GGS_string ("' constant is already named in this switch instruction"), inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas3", 267)), fixItArray5  COMMA_SOURCE_FILE ("instruction-switch.galgas3", 266)) ;
                 }
               }
-              var_constantsNamedInSwitchInstruction_9271.plusPlusAssignOperation (enumerator_9671.current (HERE).readProperty_string ()  COMMA_SOURCE_FILE ("instruction-switch.galgas3", 269)) ;
-              GGS_associatedValueDescriptorList var_associatedTypeList_10148 ;
-              GGS_uint joker_10139 ; // Joker input parameter
-              var_enumType_9145.readProperty_constantMap ().method_searchKey (enumerator_9671.current (HERE), joker_10139, var_associatedTypeList_10148, inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas3", 270)) ;
+              var_constantsNamedInSwitchInstruction_9283.plusPlusAssignOperation (enumerator_9683.current (HERE).readProperty_string ()  COMMA_SOURCE_FILE ("instruction-switch.galgas3", 270)) ;
+              GGS_associatedValueDescriptorList var_associatedTypeList_10160 ;
+              GGS_uint joker_10151 ; // Joker input parameter
+              var_enumType_9157.readProperty_constantMap ().method_searchKey (enumerator_9683.current (HERE), joker_10151, var_associatedTypeList_10160, inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas3", 271)) ;
               GalgasBool test_6 = GalgasBool::boolTrue ;
               if (GalgasBool::boolTrue == test_6) {
-                test_6 = GGS_bool (ComparisonKind::greaterThan, var_associatedTypeList_10148.getter_count (SOURCE_FILE ("instruction-switch.galgas3", 271)).objectCompare (GGS_uint (uint32_t (0U)))).operator_and (GGS_bool (ComparisonKind::equal, enumerator_9488.current (HERE).readProperty_mAssociatedValuesExtraction ().getter_count (SOURCE_FILE ("instruction-switch.galgas3", 271)).objectCompare (GGS_uint (uint32_t (0U)))) COMMA_SOURCE_FILE ("instruction-switch.galgas3", 271)).boolEnum () ;
+                test_6 = GGS_bool (ComparisonKind::greaterThan, var_associatedTypeList_10160.getter_count (SOURCE_FILE ("instruction-switch.galgas3", 272)).objectCompare (GGS_uint (uint32_t (0U)))).operator_and (GGS_bool (ComparisonKind::equal, enumerator_9500.current (HERE).readProperty_mAssociatedValuesExtraction ().getter_count (SOURCE_FILE ("instruction-switch.galgas3", 272)).objectCompare (GGS_uint (uint32_t (0U)))) COMMA_SOURCE_FILE ("instruction-switch.galgas3", 272)).boolEnum () ;
                 if (GalgasBool::boolTrue == test_6) {
                   GenericArray <FixItDescription> fixItArray7 ;
-                  inCompiler->emitSemanticError (enumerator_9671.current (HERE).readProperty_location (), GGS_string ("the associated values of '").add_operation (enumerator_9671.current (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas3", 273)).add_operation (GGS_string ("' constant should be extracted"), inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas3", 273)), fixItArray7  COMMA_SOURCE_FILE ("instruction-switch.galgas3", 272)) ;
+                  inCompiler->emitSemanticError (enumerator_9683.current (HERE).readProperty_location (), GGS_string ("the associated values of '").add_operation (enumerator_9683.current (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas3", 274)).add_operation (GGS_string ("' constant should be extracted"), inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas3", 274)), fixItArray7  COMMA_SOURCE_FILE ("instruction-switch.galgas3", 273)) ;
                 }
               }
               if (GalgasBool::boolFalse == test_6) {
                 GalgasBool test_8 = GalgasBool::boolTrue ;
                 if (GalgasBool::boolTrue == test_8) {
-                  test_8 = GGS_bool (ComparisonKind::equal, var_associatedTypeList_10148.getter_count (SOURCE_FILE ("instruction-switch.galgas3", 275)).objectCompare (GGS_uint (uint32_t (0U)))).operator_and (GGS_bool (ComparisonKind::greaterThan, enumerator_9488.current (HERE).readProperty_mAssociatedValuesExtraction ().getter_count (SOURCE_FILE ("instruction-switch.galgas3", 275)).objectCompare (GGS_uint (uint32_t (0U)))) COMMA_SOURCE_FILE ("instruction-switch.galgas3", 275)).boolEnum () ;
+                  test_8 = GGS_bool (ComparisonKind::equal, var_associatedTypeList_10160.getter_count (SOURCE_FILE ("instruction-switch.galgas3", 276)).objectCompare (GGS_uint (uint32_t (0U)))).operator_and (GGS_bool (ComparisonKind::greaterThan, enumerator_9500.current (HERE).readProperty_mAssociatedValuesExtraction ().getter_count (SOURCE_FILE ("instruction-switch.galgas3", 276)).objectCompare (GGS_uint (uint32_t (0U)))) COMMA_SOURCE_FILE ("instruction-switch.galgas3", 276)).boolEnum () ;
                   if (GalgasBool::boolTrue == test_8) {
                     GenericArray <FixItDescription> fixItArray9 ;
-                    inCompiler->emitSemanticError (enumerator_9671.current (HERE).readProperty_location (), GGS_string ("the '").add_operation (enumerator_9671.current (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas3", 277)).add_operation (GGS_string ("' constant has no associated value"), inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas3", 277)), fixItArray9  COMMA_SOURCE_FILE ("instruction-switch.galgas3", 276)) ;
+                    inCompiler->emitSemanticError (enumerator_9683.current (HERE).readProperty_location (), GGS_string ("the '").add_operation (enumerator_9683.current (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas3", 278)).add_operation (GGS_string ("' constant has no associated value"), inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas3", 278)), fixItArray9  COMMA_SOURCE_FILE ("instruction-switch.galgas3", 277)) ;
                   }
                 }
                 if (GalgasBool::boolFalse == test_8) {
                   GalgasBool test_10 = GalgasBool::boolTrue ;
                   if (GalgasBool::boolTrue == test_10) {
-                    test_10 = GGS_bool (ComparisonKind::notEqual, var_associatedTypeList_10148.getter_count (SOURCE_FILE ("instruction-switch.galgas3", 279)).objectCompare (enumerator_9488.current (HERE).readProperty_mAssociatedValuesExtraction ().getter_count (SOURCE_FILE ("instruction-switch.galgas3", 279)))).boolEnum () ;
+                    test_10 = GGS_bool (ComparisonKind::notEqual, var_associatedTypeList_10160.getter_count (SOURCE_FILE ("instruction-switch.galgas3", 280)).objectCompare (enumerator_9500.current (HERE).readProperty_mAssociatedValuesExtraction ().getter_count (SOURCE_FILE ("instruction-switch.galgas3", 280)))).boolEnum () ;
                     if (GalgasBool::boolTrue == test_10) {
                       GGS_string temp_11 ;
-                      const GalgasBool test_12 = GGS_bool (ComparisonKind::greaterThan, var_associatedTypeList_10148.getter_count (SOURCE_FILE ("instruction-switch.galgas3", 283)).objectCompare (GGS_uint (uint32_t (1U)))).boolEnum () ;
+                      const GalgasBool test_12 = GGS_bool (ComparisonKind::greaterThan, var_associatedTypeList_10160.getter_count (SOURCE_FILE ("instruction-switch.galgas3", 284)).objectCompare (GGS_uint (uint32_t (1U)))).boolEnum () ;
                       if (GalgasBool::boolTrue == test_12) {
                         temp_11 = GGS_string ("s") ;
                       }else if (GalgasBool::boolFalse == test_12) {
                         temp_11 = GGS_string::makeEmptyString () ;
                       }
                       GenericArray <FixItDescription> fixItArray13 ;
-                      inCompiler->emitSemanticError (enumerator_9671.current (HERE).readProperty_location (), GGS_string ("the '").add_operation (enumerator_9671.current (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas3", 281)).add_operation (GGS_string ("' constant requires "), inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas3", 281)).add_operation (var_associatedTypeList_10148.getter_count (SOURCE_FILE ("instruction-switch.galgas3", 281)).getter_string (SOURCE_FILE ("instruction-switch.galgas3", 281)), inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas3", 281)).add_operation (GGS_string ("  associated value"), inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas3", 281)).add_operation (temp_11, inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas3", 282)), fixItArray13  COMMA_SOURCE_FILE ("instruction-switch.galgas3", 280)) ;
+                      inCompiler->emitSemanticError (enumerator_9683.current (HERE).readProperty_location (), GGS_string ("the '").add_operation (enumerator_9683.current (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas3", 282)).add_operation (GGS_string ("' constant requires "), inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas3", 282)).add_operation (var_associatedTypeList_10160.getter_count (SOURCE_FILE ("instruction-switch.galgas3", 282)).getter_string (SOURCE_FILE ("instruction-switch.galgas3", 282)), inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas3", 282)).add_operation (GGS_string ("  associated value"), inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas3", 282)).add_operation (temp_11, inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas3", 283)), fixItArray13  COMMA_SOURCE_FILE ("instruction-switch.galgas3", 281)) ;
                     }
                   }
                   if (GalgasBool::boolFalse == test_10) {
-                    UpEnumerator_associatedValueDescriptorList enumerator_11041 (var_associatedTypeList_10148) ;
-                    UpEnumerator_switchExtractedValuesListAST enumerator_11087 (enumerator_9488.current (HERE).readProperty_mAssociatedValuesExtraction ()) ;
-                    GGS_uint index_11023 (uint32_t (0)) ;
-                    while (enumerator_11041.hasCurrentObject () && enumerator_11087.hasCurrentObject ()) {
+                    UpEnumerator_associatedValueDescriptorList enumerator_11053 (var_associatedTypeList_10160) ;
+                    UpEnumerator_switchExtractedValuesListAST enumerator_11099 (enumerator_9500.current (HERE).readProperty_mAssociatedValuesExtraction ()) ;
+                    GGS_uint index_11035 (uint32_t (0)) ;
+                    while (enumerator_11053.hasCurrentObject () && enumerator_11099.hasCurrentObject ()) {
                       GalgasBool test_14 = GalgasBool::boolTrue ;
                       if (GalgasBool::boolTrue == test_14) {
-                        test_14 = GGS_bool (ComparisonKind::notEqual, enumerator_11087.current (HERE).readProperty_mExtractedValueTypeName ().readProperty_string ().objectCompare (GGS_string::makeEmptyString ())).boolEnum () ;
+                        test_14 = GGS_bool (ComparisonKind::notEqual, enumerator_11099.current (HERE).readProperty_mExtractedValueTypeName ().readProperty_string ().objectCompare (GGS_string::makeEmptyString ())).boolEnum () ;
                         if (GalgasBool::boolTrue == test_14) {
                           GalgasBool test_15 = GalgasBool::boolTrue ;
                           if (GalgasBool::boolTrue == test_15) {
-                            test_15 = GGS_bool (ComparisonKind::notEqual, extensionGetter_definition (enumerator_11041.current (HERE).readProperty_type (), inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas3", 288)).readProperty_typeName ().readProperty_string ().objectCompare (enumerator_11087.current (HERE).readProperty_mExtractedValueTypeName ().readProperty_string ())).boolEnum () ;
+                            test_15 = GGS_bool (ComparisonKind::notEqual, extensionGetter_definition (enumerator_11053.current (HERE).readProperty_type (), inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas3", 289)).readProperty_typeName ().readProperty_string ().objectCompare (enumerator_11099.current (HERE).readProperty_mExtractedValueTypeName ().readProperty_string ())).boolEnum () ;
                             if (GalgasBool::boolTrue == test_15) {
                               GenericArray <FixItDescription> fixItArray16 ;
-                              inCompiler->emitSemanticError (enumerator_11087.current (HERE).readProperty_mExtractedValueTypeName ().readProperty_location (), GGS_string ("the required type is '@").add_operation (extensionGetter_definition (enumerator_11041.current (HERE).readProperty_type (), inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas3", 291)).readProperty_typeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas3", 291)).add_operation (GGS_string ("'"), inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas3", 291)), fixItArray16  COMMA_SOURCE_FILE ("instruction-switch.galgas3", 290)) ;
+                              inCompiler->emitSemanticError (enumerator_11099.current (HERE).readProperty_mExtractedValueTypeName ().readProperty_location (), GGS_string ("the required type is '@").add_operation (extensionGetter_definition (enumerator_11053.current (HERE).readProperty_type (), inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas3", 292)).readProperty_typeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas3", 292)).add_operation (GGS_string ("'"), inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas3", 292)), fixItArray16  COMMA_SOURCE_FILE ("instruction-switch.galgas3", 291)) ;
                             }
                           }
                         }
                       }
-                      GGS_string var_cppName_11616 = GGS_string ("extractedValue_").add_operation (enumerator_11087.current (HERE).readProperty_mExtractedValueName ().readProperty_location ().getter_startLocationIndex (inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas3", 296)).getter_string (SOURCE_FILE ("instruction-switch.galgas3", 295)), inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas3", 295)).add_operation (GGS_string ("_"), inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas3", 296)).add_operation (enumerator_11087.current (HERE).readProperty_mExtractedValueName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas3", 297)).add_operation (GGS_string ("_"), inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas3", 297)).add_operation (index_11023.getter_string (SOURCE_FILE ("instruction-switch.galgas3", 297)), inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas3", 297)) ;
-                      var_extractedAssociatedValuesForGeneration_9591.addAssignOperation (enumerator_11041.current (HERE).readProperty_type (), var_cppName_11616, enumerator_11041.current (HERE).readProperty_name ()  COMMA_SOURCE_FILE ("instruction-switch.galgas3", 298)) ;
+                      GGS_string var_cppName_11628 = GGS_string ("extractedValue_").add_operation (enumerator_11099.current (HERE).readProperty_mExtractedValueName ().readProperty_location ().getter_startLocationIndex (inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas3", 297)).getter_string (SOURCE_FILE ("instruction-switch.galgas3", 296)), inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas3", 296)).add_operation (GGS_string ("_"), inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas3", 297)).add_operation (enumerator_11099.current (HERE).readProperty_mExtractedValueName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas3", 298)).add_operation (GGS_string ("_"), inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas3", 298)).add_operation (index_11035.getter_string (SOURCE_FILE ("instruction-switch.galgas3", 298)), inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas3", 298)) ;
+                      var_extractedAssociatedValuesForGeneration_9603.addAssignOperation (enumerator_11053.current (HERE).readProperty_type (), var_cppName_11628, enumerator_11053.current (HERE).readProperty_name ()  COMMA_SOURCE_FILE ("instruction-switch.galgas3", 299)) ;
                       GalgasBool test_17 = GalgasBool::boolTrue ;
                       if (GalgasBool::boolTrue == test_17) {
-                        test_17 = GGS_bool (ComparisonKind::notEqual, enumerator_11087.current (HERE).readProperty_mExtractedValueName ().readProperty_string ().objectCompare (GGS_string::makeEmptyString ())).boolEnum () ;
+                        test_17 = GGS_bool (ComparisonKind::notEqual, enumerator_11099.current (HERE).readProperty_mExtractedValueName ().readProperty_string ().objectCompare (GGS_string::makeEmptyString ())).boolEnum () ;
                         if (GalgasBool::boolTrue == test_17) {
                           GalgasBool test_18 = GalgasBool::boolTrue ;
                           if (GalgasBool::boolTrue == test_18) {
-                            test_18 = enumerator_11087.current (HERE).readProperty_mMarkedAsUnused ().boolEnum () ;
+                            test_18 = enumerator_11099.current (HERE).readProperty_mMarkedAsUnused ().boolEnum () ;
                             if (GalgasBool::boolTrue == test_18) {
                               {
-                              extensionSetter_insertUsedLocalConstant (ioArgument_ioVariableMap, enumerator_11087.current (HERE).readProperty_mExtractedValueName (), enumerator_11041.current (HERE).readProperty_type (), var_cppName_11616, var_cppName_11616, inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas3", 304)) ;
+                              extensionSetter_insertUsedLocalConstant (ioArgument_ioVariableMap, enumerator_11099.current (HERE).readProperty_mExtractedValueName (), enumerator_11053.current (HERE).readProperty_type (), var_cppName_11628, var_cppName_11628, inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas3", 305)) ;
                               }
                             }
                           }
                           if (GalgasBool::boolFalse == test_18) {
                             {
-                            extensionSetter_insertInitializedLocalConstant (ioArgument_ioVariableMap, enumerator_11087.current (HERE).readProperty_mExtractedValueName (), enumerator_11041.current (HERE).readProperty_type (), var_cppName_11616, var_cppName_11616, inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas3", 311)) ;
+                            extensionSetter_insertInitializedLocalConstant (ioArgument_ioVariableMap, enumerator_11099.current (HERE).readProperty_mExtractedValueName (), enumerator_11053.current (HERE).readProperty_type (), var_cppName_11628, var_cppName_11628, inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas3", 312)) ;
                             }
                           }
                         }
                       }
-                      enumerator_11041.gotoNextObject () ;
-                      enumerator_11087.gotoNextObject () ;
-                      index_11023.increment_operation (inCompiler  COMMA_SOURCE_FILE ("instruction-switch.galgas3", 286)) ;
+                      enumerator_11053.gotoNextObject () ;
+                      enumerator_11099.gotoNextObject () ;
+                      index_11035.increment_operation (inCompiler  COMMA_SOURCE_FILE ("instruction-switch.galgas3", 287)) ;
                     }
                   }
                 }
@@ -3395,47 +3395,47 @@ void cPtr_switchInstructionAST::method_analyzeSemanticInstruction (const GGS_lst
           }
           if (GalgasBool::boolFalse == test_3) {
             GenericArray <FixItDescription> fixItArray19 ;
-            inCompiler->emitSemanticError (enumerator_9671.current (HERE).readProperty_location (), GGS_string ("'").add_operation (enumerator_9671.current (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas3", 323)).add_operation (GGS_string ("' is not a constant of '@"), inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas3", 323)).add_operation (extensionGetter_definition (var_switchExpression_9053.readProperty_mResultType (), inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas3", 324)).readProperty_typeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas3", 323)).add_operation (GGS_string ("' enumeration type"), inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas3", 324)), fixItArray19  COMMA_SOURCE_FILE ("instruction-switch.galgas3", 322)) ;
+            inCompiler->emitSemanticError (enumerator_9683.current (HERE).readProperty_location (), GGS_string ("'").add_operation (enumerator_9683.current (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas3", 324)).add_operation (GGS_string ("' is not a constant of '@"), inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas3", 324)).add_operation (extensionGetter_definition (var_switchExpression_9065.readProperty_mResultType (), inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas3", 325)).readProperty_typeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas3", 324)).add_operation (GGS_string ("' enumeration type"), inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas3", 325)), fixItArray19  COMMA_SOURCE_FILE ("instruction-switch.galgas3", 323)) ;
           }
-          enumerator_9671.gotoNextObject () ;
+          enumerator_9683.gotoNextObject () ;
         }
-        GGS_semanticInstructionListForGeneration var_instructionList_13387 ;
+        GGS_semanticInstructionListForGeneration var_instructionList_13399 ;
         {
-        routine_analyzeSemanticInstructionListWithoutBranch_3F__26__3F__26__3F_localConstantList_3F_localInitializedVariableListWarnsIfNotMutated_3F_localInitializedVariableListNoWarnsIfNotMutated_3F__26__21_ (constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, GGS_localConstantList::init (inCompiler COMMA_HERE), GGS_localInitializedVariableList::init (inCompiler COMMA_HERE), GGS_localInitializedVariableList::init (inCompiler COMMA_HERE), enumerator_9488.current (HERE).readProperty_mInstructions (), ioArgument_ioVariableMap, var_instructionList_13387, inCompiler  COMMA_SOURCE_FILE ("instruction-switch.galgas3", 328)) ;
+        routine_analyzeSemanticInstructionListWithoutBranch_3F__26__3F__26__3F_localConstantList_3F_localInitializedVariableListWarnsIfNotMutated_3F_localInitializedVariableListNoWarnsIfNotMutated_3F__26__21_ (constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, GGS_localConstantList::init (inCompiler COMMA_HERE), GGS_localInitializedVariableList::init (inCompiler COMMA_HERE), GGS_localInitializedVariableList::init (inCompiler COMMA_HERE), enumerator_9500.current (HERE).readProperty_mInstructions (), ioArgument_ioVariableMap, var_instructionList_13399, inCompiler  COMMA_SOURCE_FILE ("instruction-switch.galgas3", 329)) ;
         }
         {
-        extensionSetter_closeBranch (ioArgument_ioVariableMap, enumerator_9488.current (HERE).readProperty_mEndOfBranch (), inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas3", 340)) ;
+        extensionSetter_closeBranch (ioArgument_ioVariableMap, enumerator_9500.current (HERE).readProperty_mEndOfBranch (), inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas3", 341)) ;
         }
-        var_switchBranchesForGeneration_9429.addAssignOperation (enumerator_9488.current (HERE).readProperty_mSwitchConstantList (), var_extractedAssociatedValuesForGeneration_9591, enumerator_9488.current (HERE).readProperty_mEndOfBranch ().getter_startLocationIndex (inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas3", 344)), var_instructionList_13387  COMMA_SOURCE_FILE ("instruction-switch.galgas3", 341)) ;
-        enumerator_9488.gotoNextObject () ;
+        var_switchBranchesForGeneration_9441.addAssignOperation (enumerator_9500.current (HERE).readProperty_mSwitchConstantList (), var_extractedAssociatedValuesForGeneration_9603, enumerator_9500.current (HERE).readProperty_mEndOfBranch ().getter_startLocationIndex (inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas3", 345)), var_instructionList_13399  COMMA_SOURCE_FILE ("instruction-switch.galgas3", 342)) ;
+        enumerator_9500.gotoNextObject () ;
       }
       {
       const GGS_switchInstructionAST temp_20 = this ;
-      extensionSetter_closeOverride (ioArgument_ioVariableMap, temp_20.readProperty_mEndOf_5F_switch_5F_instruction (), inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas3", 347)) ;
+      extensionSetter_closeOverride (ioArgument_ioVariableMap, temp_20.readProperty_mEndOf_5F_switch_5F_instruction (), inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas3", 348)) ;
       }
-      GGS_stringset var_forgottenConstants_13812 = var_enumType_9145.readProperty_constantMap ().getter_keySet (inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas3", 349)).substract_operation (var_constantsNamedInSwitchInstruction_9271, inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas3", 349)) ;
+      GGS_stringset var_forgottenConstants_13824 = var_enumType_9157.readProperty_constantMap ().getter_keySet (inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas3", 350)).substract_operation (var_constantsNamedInSwitchInstruction_9283, inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas3", 350)) ;
       GalgasBool test_21 = GalgasBool::boolTrue ;
       if (GalgasBool::boolTrue == test_21) {
-        test_21 = GGS_bool (ComparisonKind::greaterThan, var_forgottenConstants_13812.getter_count (SOURCE_FILE ("instruction-switch.galgas3", 350)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
+        test_21 = GGS_bool (ComparisonKind::greaterThan, var_forgottenConstants_13824.getter_count (SOURCE_FILE ("instruction-switch.galgas3", 351)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
         if (GalgasBool::boolTrue == test_21) {
-          GGS_string var_s_13960 = GGS_string::makeEmptyString () ;
-          UpEnumerator_stringset enumerator_13980 (var_forgottenConstants_13812) ;
-          while (enumerator_13980.hasCurrentObject ()) {
-            var_s_13960.plusAssignOperation(GGS_string ("\n  - ").add_operation (enumerator_13980.current_key (HERE), inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas3", 353)), inCompiler  COMMA_SOURCE_FILE ("instruction-switch.galgas3", 353)) ;
-            enumerator_13980.gotoNextObject () ;
+          GGS_string var_s_13972 = GGS_string::makeEmptyString () ;
+          UpEnumerator_stringset enumerator_13992 (var_forgottenConstants_13824) ;
+          while (enumerator_13992.hasCurrentObject ()) {
+            var_s_13972.plusAssignOperation(GGS_string ("\n  - ").add_operation (enumerator_13992.current_key (HERE), inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas3", 354)), inCompiler  COMMA_SOURCE_FILE ("instruction-switch.galgas3", 354)) ;
+            enumerator_13992.gotoNextObject () ;
           }
           const GGS_switchInstructionAST temp_22 = this ;
           GenericArray <FixItDescription> fixItArray23 ;
-          inCompiler->emitSemanticError (temp_22.readProperty_mEndOf_5F_switch_5F_instruction (), GGS_string ("the switch instruction should name all enumeration constants; missing constants are:").add_operation (var_s_13960, inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas3", 356)), fixItArray23  COMMA_SOURCE_FILE ("instruction-switch.galgas3", 355)) ;
+          inCompiler->emitSemanticError (temp_22.readProperty_mEndOf_5F_switch_5F_instruction (), GGS_string ("the switch instruction should name all enumeration constants; missing constants are:").add_operation (var_s_13972, inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas3", 357)), fixItArray23  COMMA_SOURCE_FILE ("instruction-switch.galgas3", 356)) ;
         }
       }
-      ioArgument_ioInstructionListForGeneration.addAssignOperation (GGS_switchInstructionForGeneration::init_21__21__21_ (var_switchExpression_9053.readProperty_mResultType (), var_switchExpression_9053, var_switchBranchesForGeneration_9429, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("instruction-switch.galgas3", 360)) ;
+      ioArgument_ioInstructionListForGeneration.addAssignOperation (GGS_switchInstructionForGeneration::init_21__21__21_ (var_switchExpression_9065.readProperty_mResultType (), var_switchExpression_9065, var_switchBranchesForGeneration_9441, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("instruction-switch.galgas3", 361)) ;
     }
   }
   if (GalgasBool::boolFalse == test_1) {
     const GGS_switchInstructionAST temp_24 = this ;
     GenericArray <FixItDescription> fixItArray25 ;
-    inCompiler->emitSemanticError (temp_24.readProperty_mEndOfSwitchExpression (), GGS_string ("the switch expression type should be an instance of an enumeration type (the '@").add_operation (extensionGetter_definition (var_switchExpression_9053.readProperty_mResultType (), inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas3", 368)).readProperty_typeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas3", 367)).add_operation (GGS_string ("' type is not an enumeration type)"), inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas3", 368)), fixItArray25  COMMA_SOURCE_FILE ("instruction-switch.galgas3", 366)) ;
+    inCompiler->emitSemanticError (temp_24.readProperty_mEndOfSwitchExpression (), GGS_string ("the switch expression type should be an instance of an enumeration type (the '@").add_operation (extensionGetter_definition (var_switchExpression_9065.readProperty_mResultType (), inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas3", 369)).readProperty_typeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas3", 368)).add_operation (GGS_string ("' type is not an enumeration type)"), inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas3", 369)), fixItArray25  COMMA_SOURCE_FILE ("instruction-switch.galgas3", 367)) ;
   }
 }
 
@@ -3450,73 +3450,73 @@ void cPtr_switchInstructionForGeneration::method_generateInstruction (GGS_string
                                                                       GGS_string & ioArgument_ioGeneratedCode,
                                                                       Compiler * inCompiler
                                                                       COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_string var_switchVar_16630 ;
+  GGS_string var_switchVar_16642 ;
   const GGS_switchInstructionForGeneration temp_0 = this ;
-  callExtensionMethod_generateExpression ((cPtr_semanticExpressionForGeneration *) temp_0.readProperty_mSwitchExpression ().ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_switchVar_16630, inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas3", 413)) ;
-  ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string ("switch (").add_operation (var_switchVar_16630, inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas3", 420)).add_operation (GGS_string (".enumValue ()) {\n"), inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas3", 420)), inCompiler  COMMA_SOURCE_FILE ("instruction-switch.galgas3", 420)) ;
-  ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string ("case GGS_"), inCompiler  COMMA_SOURCE_FILE ("instruction-switch.galgas3", 421)) ;
+  callExtensionMethod_generateExpression ((cPtr_semanticExpressionForGeneration *) temp_0.readProperty_mSwitchExpression ().ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_switchVar_16642, inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas3", 414)) ;
+  ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string ("switch (").add_operation (var_switchVar_16642, inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas3", 421)).add_operation (GGS_string (".enumValue ()) {\n"), inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas3", 421)), inCompiler  COMMA_SOURCE_FILE ("instruction-switch.galgas3", 421)) ;
+  ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string ("case GGS_"), inCompiler  COMMA_SOURCE_FILE ("instruction-switch.galgas3", 422)) ;
   const GGS_switchInstructionForGeneration temp_1 = this ;
-  ioArgument_ioGeneratedCode.plusAssignOperation(extensionGetter_identifierRepresentation (temp_1.readProperty_mSwitchExpression ().readProperty_mResultType (), inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas3", 422)), inCompiler  COMMA_SOURCE_FILE ("instruction-switch.galgas3", 422)) ;
-  ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string ("::Enumeration::invalid:\n"), inCompiler  COMMA_SOURCE_FILE ("instruction-switch.galgas3", 423)) ;
-  ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string ("  break ;\n"), inCompiler  COMMA_SOURCE_FILE ("instruction-switch.galgas3", 424)) ;
+  ioArgument_ioGeneratedCode.plusAssignOperation(extensionGetter_identifierRepresentation (temp_1.readProperty_mSwitchExpression ().readProperty_mResultType (), inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas3", 423)), inCompiler  COMMA_SOURCE_FILE ("instruction-switch.galgas3", 423)) ;
+  ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string ("::Enumeration::invalid:\n"), inCompiler  COMMA_SOURCE_FILE ("instruction-switch.galgas3", 424)) ;
+  ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string ("  break ;\n"), inCompiler  COMMA_SOURCE_FILE ("instruction-switch.galgas3", 425)) ;
   const GGS_switchInstructionForGeneration temp_2 = this ;
-  UpEnumerator_switchBranchesForGeneration enumerator_16944 (temp_2.readProperty_mBranches ()) ;
-  while (enumerator_16944.hasCurrentObject ()) {
-    UpEnumerator__5B_lstring_5D_ enumerator_16990 (enumerator_16944.current (HERE).readProperty_mSwitchConstantList ()) ;
-    while (enumerator_16990.hasCurrentObject ()) {
-      ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string ("case GGS_"), inCompiler  COMMA_SOURCE_FILE ("instruction-switch.galgas3", 427)) ;
+  UpEnumerator_switchBranchesForGeneration enumerator_16956 (temp_2.readProperty_mBranches ()) ;
+  while (enumerator_16956.hasCurrentObject ()) {
+    UpEnumerator__5B_lstring_5D_ enumerator_17002 (enumerator_16956.current (HERE).readProperty_mSwitchConstantList ()) ;
+    while (enumerator_17002.hasCurrentObject ()) {
+      ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string ("case GGS_"), inCompiler  COMMA_SOURCE_FILE ("instruction-switch.galgas3", 428)) ;
       const GGS_switchInstructionForGeneration temp_3 = this ;
-      ioArgument_ioGeneratedCode.plusAssignOperation(extensionGetter_identifierRepresentation (temp_3.readProperty_mSwitchExpression ().readProperty_mResultType (), inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas3", 428)), inCompiler  COMMA_SOURCE_FILE ("instruction-switch.galgas3", 428)) ;
-      ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string ("::Enumeration::enum_"), inCompiler  COMMA_SOURCE_FILE ("instruction-switch.galgas3", 429)) ;
-      ioArgument_ioGeneratedCode.plusAssignOperation(enumerator_16990.current (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("instruction-switch.galgas3", 430)), inCompiler  COMMA_SOURCE_FILE ("instruction-switch.galgas3", 430)) ;
-      ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string (":\n"), inCompiler  COMMA_SOURCE_FILE ("instruction-switch.galgas3", 431)) ;
-      enumerator_16990.gotoNextObject () ;
+      ioArgument_ioGeneratedCode.plusAssignOperation(extensionGetter_identifierRepresentation (temp_3.readProperty_mSwitchExpression ().readProperty_mResultType (), inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas3", 429)), inCompiler  COMMA_SOURCE_FILE ("instruction-switch.galgas3", 429)) ;
+      ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string ("::Enumeration::enum_"), inCompiler  COMMA_SOURCE_FILE ("instruction-switch.galgas3", 430)) ;
+      ioArgument_ioGeneratedCode.plusAssignOperation(enumerator_17002.current (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("instruction-switch.galgas3", 431)), inCompiler  COMMA_SOURCE_FILE ("instruction-switch.galgas3", 431)) ;
+      ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string (":\n"), inCompiler  COMMA_SOURCE_FILE ("instruction-switch.galgas3", 432)) ;
+      enumerator_17002.gotoNextObject () ;
     }
     {
-    ioArgument_ioGeneratedCode.setter_incIndentation (GGS_uint (uint32_t (2U)), inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas3", 433)) ;
+    ioArgument_ioGeneratedCode.setter_incIndentation (GGS_uint (uint32_t (2U)), inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas3", 434)) ;
     }
     GalgasBool test_4 = GalgasBool::boolTrue ;
     if (GalgasBool::boolTrue == test_4) {
-      test_4 = GGS_bool (ComparisonKind::greaterThan, enumerator_16944.current (HERE).readProperty_mInstructions ().getter_count (SOURCE_FILE ("instruction-switch.galgas3", 434)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
+      test_4 = GGS_bool (ComparisonKind::greaterThan, enumerator_16956.current (HERE).readProperty_mInstructions ().getter_count (SOURCE_FILE ("instruction-switch.galgas3", 435)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
       if (GalgasBool::boolTrue == test_4) {
-        ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string ("{\n"), inCompiler  COMMA_SOURCE_FILE ("instruction-switch.galgas3", 435)) ;
+        ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string ("{\n"), inCompiler  COMMA_SOURCE_FILE ("instruction-switch.galgas3", 436)) ;
         GalgasBool test_5 = GalgasBool::boolTrue ;
         if (GalgasBool::boolTrue == test_5) {
-          test_5 = GGS_bool (ComparisonKind::greaterThan, enumerator_16944.current (HERE).readProperty_mExtractedAssociatedValuesForGeneration ().getter_count (SOURCE_FILE ("instruction-switch.galgas3", 436)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
+          test_5 = GGS_bool (ComparisonKind::greaterThan, enumerator_16956.current (HERE).readProperty_mExtractedAssociatedValuesForGeneration ().getter_count (SOURCE_FILE ("instruction-switch.galgas3", 437)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
           if (GalgasBool::boolTrue == test_5) {
-            UpEnumerator_extractedAssociatedValuesForGeneration enumerator_17539 (enumerator_16944.current (HERE).readProperty_mExtractedAssociatedValuesForGeneration ()) ;
-            while (enumerator_17539.hasCurrentObject ()) {
-              extensionMethod_addHeaderFileName (enumerator_17539.current (HERE).readProperty_mType (), ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas3", 438)) ;
-              ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string ("  GGS_").add_operation (extensionGetter_identifierRepresentation (enumerator_17539.current (HERE).readProperty_mType (), inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas3", 439)), inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas3", 439)), inCompiler  COMMA_SOURCE_FILE ("instruction-switch.galgas3", 439)) ;
-              ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string (" ").add_operation (enumerator_17539.current (HERE).readProperty_mCppName (), inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas3", 440)).add_operation (GGS_string (" ;\n"), inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas3", 440)), inCompiler  COMMA_SOURCE_FILE ("instruction-switch.galgas3", 440)) ;
-              enumerator_17539.gotoNextObject () ;
+            UpEnumerator_extractedAssociatedValuesForGeneration enumerator_17551 (enumerator_16956.current (HERE).readProperty_mExtractedAssociatedValuesForGeneration ()) ;
+            while (enumerator_17551.hasCurrentObject ()) {
+              extensionMethod_addHeaderFileName (enumerator_17551.current (HERE).readProperty_mType (), ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas3", 439)) ;
+              ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string ("  GGS_").add_operation (extensionGetter_identifierRepresentation (enumerator_17551.current (HERE).readProperty_mType (), inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas3", 440)), inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas3", 440)), inCompiler  COMMA_SOURCE_FILE ("instruction-switch.galgas3", 440)) ;
+              ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string (" ").add_operation (enumerator_17551.current (HERE).readProperty_mCppName (), inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas3", 441)).add_operation (GGS_string (" ;\n"), inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas3", 441)), inCompiler  COMMA_SOURCE_FILE ("instruction-switch.galgas3", 441)) ;
+              enumerator_17551.gotoNextObject () ;
             }
-            ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string ("  ").add_operation (var_switchVar_16630, inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas3", 442)).add_operation (GGS_string (".getAssociatedValuesFor_"), inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas3", 442)), inCompiler  COMMA_SOURCE_FILE ("instruction-switch.galgas3", 442)) ;
-            ioArgument_ioGeneratedCode.plusAssignOperation(enumerator_16944.current (HERE).readProperty_mSwitchConstantList ().readSubscript__3F_ (GGS_uint (uint32_t (0U)), inCompiler COMMA_HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("instruction-switch.galgas3", 443)).add_operation (GGS_string (" ("), inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas3", 443)), inCompiler  COMMA_SOURCE_FILE ("instruction-switch.galgas3", 443)) ;
-            UpEnumerator_extractedAssociatedValuesForGeneration enumerator_18042 (enumerator_16944.current (HERE).readProperty_mExtractedAssociatedValuesForGeneration ()) ;
-            while (enumerator_18042.hasCurrentObject ()) {
-              ioArgument_ioGeneratedCode.plusAssignOperation(enumerator_18042.current (HERE).readProperty_mCppName (), inCompiler  COMMA_SOURCE_FILE ("instruction-switch.galgas3", 445)) ;
-              enumerator_18042.gotoNextObject () ;
-              if (enumerator_18042.hasCurrentObject ()) {
-                ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string (", "), inCompiler  COMMA_SOURCE_FILE ("instruction-switch.galgas3", 446)) ;
+            ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string ("  ").add_operation (var_switchVar_16642, inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas3", 443)).add_operation (GGS_string (".getAssociatedValuesFor_"), inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas3", 443)), inCompiler  COMMA_SOURCE_FILE ("instruction-switch.galgas3", 443)) ;
+            ioArgument_ioGeneratedCode.plusAssignOperation(enumerator_16956.current (HERE).readProperty_mSwitchConstantList ().readSubscript__3F_ (GGS_uint (uint32_t (0U)), inCompiler COMMA_HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("instruction-switch.galgas3", 444)).add_operation (GGS_string (" ("), inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas3", 444)), inCompiler  COMMA_SOURCE_FILE ("instruction-switch.galgas3", 444)) ;
+            UpEnumerator_extractedAssociatedValuesForGeneration enumerator_18054 (enumerator_16956.current (HERE).readProperty_mExtractedAssociatedValuesForGeneration ()) ;
+            while (enumerator_18054.hasCurrentObject ()) {
+              ioArgument_ioGeneratedCode.plusAssignOperation(enumerator_18054.current (HERE).readProperty_mCppName (), inCompiler  COMMA_SOURCE_FILE ("instruction-switch.galgas3", 446)) ;
+              enumerator_18054.gotoNextObject () ;
+              if (enumerator_18054.hasCurrentObject ()) {
+                ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string (", "), inCompiler  COMMA_SOURCE_FILE ("instruction-switch.galgas3", 447)) ;
               }
             }
-            ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string (") ;\n"), inCompiler  COMMA_SOURCE_FILE ("instruction-switch.galgas3", 448)) ;
+            ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string (") ;\n"), inCompiler  COMMA_SOURCE_FILE ("instruction-switch.galgas3", 449)) ;
           }
         }
         {
-        routine_generateInstructionList_26__3F__26__26__3F__26_ (ioArgument_ioInclusionSet, enumerator_16944.current (HERE).readProperty_mInstructions (), ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, constinArgument_inGenerateSyntaxDirectedTranslationString, ioArgument_ioGeneratedCode, inCompiler  COMMA_SOURCE_FILE ("instruction-switch.galgas3", 450)) ;
+        routine_generateInstructionList_26__3F__26__26__3F__26_ (ioArgument_ioInclusionSet, enumerator_16956.current (HERE).readProperty_mInstructions (), ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, constinArgument_inGenerateSyntaxDirectedTranslationString, ioArgument_ioGeneratedCode, inCompiler  COMMA_SOURCE_FILE ("instruction-switch.galgas3", 451)) ;
         }
-        ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string ("}\n"), inCompiler  COMMA_SOURCE_FILE ("instruction-switch.galgas3", 458)) ;
+        ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string ("}\n"), inCompiler  COMMA_SOURCE_FILE ("instruction-switch.galgas3", 459)) ;
       }
     }
-    ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string ("break ;\n"), inCompiler  COMMA_SOURCE_FILE ("instruction-switch.galgas3", 460)) ;
+    ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string ("break ;\n"), inCompiler  COMMA_SOURCE_FILE ("instruction-switch.galgas3", 461)) ;
     {
-    ioArgument_ioGeneratedCode.setter_decIndentation (GGS_uint (uint32_t (2U)), inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas3", 461)) ;
+    ioArgument_ioGeneratedCode.setter_decIndentation (GGS_uint (uint32_t (2U)), inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas3", 462)) ;
     }
-    enumerator_16944.gotoNextObject () ;
+    enumerator_16956.gotoNextObject () ;
   }
-  ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string ("}\n"), inCompiler  COMMA_SOURCE_FILE ("instruction-switch.galgas3", 463)) ;
+  ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string ("}\n"), inCompiler  COMMA_SOURCE_FILE ("instruction-switch.galgas3", 464)) ;
 }
 
 //--------------------------------------------------------------------------------------------------

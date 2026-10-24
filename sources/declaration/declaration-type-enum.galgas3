@@ -71,6 +71,7 @@ syntax extension galgas3DeclarationsSyntax {
           $identifier$ (?let associatedValueName)
           !?associatedValueTypeList.append (!@(weakQualifier, associatedValueType, associatedValueName))
         while
+          $,$
         end
         $)$
       end

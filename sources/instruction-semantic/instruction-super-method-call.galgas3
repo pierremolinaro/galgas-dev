@@ -93,7 +93,7 @@ final class @superMethodCallInstructionAST : @semanticInstructionAST {
     switch inAnalysisContext.selfAvailability
     case none :
       error (self.mMethodName : "'super' is not available in this context" spoil selfType)
-    case available (@unifiedTypeMapEntry type @selfMutability unused selfMutability) :
+    case available (@unifiedTypeMapEntry type, @selfMutability unused selfMutability) :
       selfType = type
     end
   //--- Check self type is a class

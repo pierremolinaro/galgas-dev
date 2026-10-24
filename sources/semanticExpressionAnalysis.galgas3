@@ -58,7 +58,7 @@ enum @selfMutability %equatable {
 
 enum @selfAvailability %equatable {
   case none
-  case available (@unifiedTypeMapEntry type @selfMutability selfMutability)
+  case available (@unifiedTypeMapEntry type, @selfMutability selfMutability)
 }
 
 //--------------------------------------------------------------------------------------------------
