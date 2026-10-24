@@ -164,7 +164,7 @@ final class @initializerAST : @semanticDeclarationAST {
         !@()
       )
     end
-    var entry = ioExtensionInitializerForBuildingContext @[!searchKey: self.mTypeName]
+    var entry = ioExtensionInitializerForBuildingContext [!searchKey: self.mTypeName]
     !?entry.mExtensionInitializerMapForType.insertKey
       (!@lstring (!self.mFormalParameterList.initializerSignature, self.mTypeName.location),
       !self.mFormalParameterList

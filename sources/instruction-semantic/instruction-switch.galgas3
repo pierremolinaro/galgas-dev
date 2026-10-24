@@ -441,7 +441,7 @@ final class @switchInstructionForGeneration : @semanticInstructionForGeneration 
             ioGeneratedCode += " " + associatedValue.mCppName + " ;\n"
           end
           ioGeneratedCode += "  " + switchVar + ".getAssociatedValuesFor_"
-          ioGeneratedCode += branch.mSwitchConstantList @[0].string.identifierRepresentation + " ("
+          ioGeneratedCode += branch.mSwitchConstantList [0].string.identifierRepresentation + " ("
           for associatedValue in branch.mExtractedAssociatedValuesForGeneration
             do ioGeneratedCode += associatedValue.mCppName
             between ioGeneratedCode += ", "

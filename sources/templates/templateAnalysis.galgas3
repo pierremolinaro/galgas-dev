@@ -120,7 +120,7 @@ override proc @templateGetterCallInExpressionAST.templateExpressionAnalysis
         kind = @methodKind. definedAsMember
         for (mPropertyTypeEntry mPropertyName 3*) in receiverType.definition.currentTypedPropertyList do
           let @getterMap aMap = mPropertyTypeEntry.definition.getterMap
-          if let entry = aMap @[self.mGetterName.string] then
+          if let entry = aMap [self.mGetterName.string] then
             matchingReaderCount += 1
             getterFormalArgumentTypeList = entry.mArgumentTypeList
             hasCompilerArgument = entry.mHasCompilerArgument
@@ -217,7 +217,7 @@ override proc @templateClassFunctionAST.templateExpressionAnalysis
   let @unifiedTypeMapEntry returnedType
   let @bool hasCompilerArgument
   let @functionSignature classFuncFormalArgumentTypeList
-  if let entry = classFunctionMap @[!self.mClassFunctionName.string] then
+  if let entry = classFunctionMap [!self.mClassFunctionName.string] then
     classFuncFormalArgumentTypeList = entry.mArgumentTypeList
     hasCompilerArgument = entry.mHasCompilerArgument
     returnedType = entry.mReturnedType

@@ -169,7 +169,7 @@ final class @abstractExtensionGetterAST : @semanticDeclarationAST {
         !@()
       )
     end
-    var entry = ioExtensionGetterMapForBuildingContext @[!searchKey: self.mTypeName]
+    var entry = ioExtensionGetterMapForBuildingContext [!searchKey: self.mTypeName]
     !?entry.mExtensionGetterMapForType.insertKey
       (!self.mAbstractExtensionGetterName,
       !self.mAbstractExtensionGetterReturnedTypeName,

@@ -217,7 +217,7 @@ private proc analyzeConstructorInvocation (?let @lstring inUsefulnessCallerEntit
     let @classFunctionMap classFunctionMap = outConstructorType.definition.classFunctionMap
   //--- Search contructor
     let @functionSignature constructorFormalArgumentTypeList
-    if let entry = classFunctionMap @[inConstructorName.string] then
+    if let entry = classFunctionMap [inConstructorName.string] then
       constructorFormalArgumentTypeList = entry.mArgumentTypeList
       outHasCompilerArgument = entry.mHasCompilerArgument
       outReturnedType = entry.mReturnedType

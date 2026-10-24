@@ -6710,50 +6710,50 @@ void extensionMethod_searchKey (const GGS_routineMap inObject,
     if (GalgasBool::boolTrue == test_0) {
       outArgument_outIsFilePrivate = GGS_bool (false) ;
       outArgument_outRoutineSignature = GGS_formalParameterSignature::init (inCompiler COMMA_HERE) ;
-      UpEnumerator_routineArgumentMap enumerator_4258 (var_routine_4111.readProperty_mArgumentMap ()) ;
-      while (enumerator_4258.hasCurrentObject ()) {
-        outArgument_outIsFilePrivate = enumerator_4258.current (HERE).readProperty_mIsFilePrivate () ;
-        outArgument_outRoutineSignature = enumerator_4258.current (HERE).readProperty_mRoutineSignature () ;
-        enumerator_4258.gotoNextObject () ;
+      UpEnumerator_routineArgumentMap enumerator_4257 (var_routine_4111.readProperty_mArgumentMap ()) ;
+      while (enumerator_4257.hasCurrentObject ()) {
+        outArgument_outIsFilePrivate = enumerator_4257.current (HERE).readProperty_mIsFilePrivate () ;
+        outArgument_outRoutineSignature = enumerator_4257.current (HERE).readProperty_mRoutineSignature () ;
+        enumerator_4257.gotoNextObject () ;
       }
-      GGS_acceptableParameterList var_acceptableParameterList_4421 = GGS_acceptableParameterList::init (inCompiler COMMA_HERE) ;
-      UpEnumerator_routineArgumentMap enumerator_4478 (var_routine_4111.readProperty_mArgumentMap ()) ;
-      while (enumerator_4478.hasCurrentObject ()) {
-        GGS_bool var_accept_4506 = GGS_bool (ComparisonKind::equal, constinArgument_inActualParameterList.getter_count (SOURCE_FILE ("routineMap.galgas3", 106)).objectCompare (enumerator_4478.current (HERE).readProperty_mRoutineSignature ().getter_count (SOURCE_FILE ("routineMap.galgas3", 106)))) ;
-        UpEnumerator_formalParameterSignature enumerator_4613 (enumerator_4478.current (HERE).readProperty_mRoutineSignature ()) ;
-        UpEnumerator_actualParameterListAST enumerator_4633 (constinArgument_inActualParameterList) ;
-        bool bool_2 = var_accept_4506.isValidAndTrue () ;
-        if (enumerator_4613.hasCurrentObject () && enumerator_4633.hasCurrentObject () && bool_2) {
-          while (enumerator_4613.hasCurrentObject () && enumerator_4633.hasCurrentObject () && bool_2) {
-            var_accept_4506 = callExtensionGetter_isCompatibleWith ((const cPtr_actualParameterAST *) enumerator_4633.current_mActualParameter (HERE).ptr (), enumerator_4613.current (HERE).readProperty_mFormalArgumentPassingMode (), enumerator_4613.current (HERE).readProperty_mFormalSelector ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("routineMap.galgas3", 108)) ;
-            enumerator_4613.gotoNextObject () ;
-            enumerator_4633.gotoNextObject () ;
-            if (enumerator_4613.hasCurrentObject () && enumerator_4633.hasCurrentObject ()) {
-              bool_2 = var_accept_4506.isValidAndTrue () ;
+      GGS_acceptableParameterList var_acceptableParameterList_4420 = GGS_acceptableParameterList::init (inCompiler COMMA_HERE) ;
+      UpEnumerator_routineArgumentMap enumerator_4477 (var_routine_4111.readProperty_mArgumentMap ()) ;
+      while (enumerator_4477.hasCurrentObject ()) {
+        GGS_bool var_accept_4505 = GGS_bool (ComparisonKind::equal, constinArgument_inActualParameterList.getter_count (SOURCE_FILE ("routineMap.galgas3", 106)).objectCompare (enumerator_4477.current (HERE).readProperty_mRoutineSignature ().getter_count (SOURCE_FILE ("routineMap.galgas3", 106)))) ;
+        UpEnumerator_formalParameterSignature enumerator_4612 (enumerator_4477.current (HERE).readProperty_mRoutineSignature ()) ;
+        UpEnumerator_actualParameterListAST enumerator_4632 (constinArgument_inActualParameterList) ;
+        bool bool_2 = var_accept_4505.isValidAndTrue () ;
+        if (enumerator_4612.hasCurrentObject () && enumerator_4632.hasCurrentObject () && bool_2) {
+          while (enumerator_4612.hasCurrentObject () && enumerator_4632.hasCurrentObject () && bool_2) {
+            var_accept_4505 = callExtensionGetter_isCompatibleWith ((const cPtr_actualParameterAST *) enumerator_4632.current_mActualParameter (HERE).ptr (), enumerator_4612.current (HERE).readProperty_mFormalArgumentPassingMode (), enumerator_4612.current (HERE).readProperty_mFormalSelector ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("routineMap.galgas3", 108)) ;
+            enumerator_4612.gotoNextObject () ;
+            enumerator_4632.gotoNextObject () ;
+            if (enumerator_4612.hasCurrentObject () && enumerator_4632.hasCurrentObject ()) {
+              bool_2 = var_accept_4505.isValidAndTrue () ;
             }
           }
         }
         GalgasBool test_3 = GalgasBool::boolTrue ;
         if (GalgasBool::boolTrue == test_3) {
-          test_3 = var_accept_4506.boolEnum () ;
+          test_3 = var_accept_4505.boolEnum () ;
           if (GalgasBool::boolTrue == test_3) {
-            var_acceptableParameterList_4421.addAssignOperation (enumerator_4478.current (HERE).readProperty_mRoutineSignature (), enumerator_4478.current (HERE).readProperty_mIsFilePrivate ()  COMMA_SOURCE_FILE ("routineMap.galgas3", 114)) ;
+            var_acceptableParameterList_4420.addAssignOperation (enumerator_4477.current (HERE).readProperty_mRoutineSignature (), enumerator_4477.current (HERE).readProperty_mIsFilePrivate ()  COMMA_SOURCE_FILE ("routineMap.galgas3", 114)) ;
           }
         }
-        enumerator_4478.gotoNextObject () ;
+        enumerator_4477.gotoNextObject () ;
       }
       GalgasBool test_4 = GalgasBool::boolTrue ;
       if (GalgasBool::boolTrue == test_4) {
-        test_4 = GGS_bool (ComparisonKind::equal, var_acceptableParameterList_4421.getter_count (SOURCE_FILE ("routineMap.galgas3", 117)).objectCompare (GGS_uint (uint32_t (1U)))).boolEnum () ;
+        test_4 = GGS_bool (ComparisonKind::equal, var_acceptableParameterList_4420.getter_count (SOURCE_FILE ("routineMap.galgas3", 117)).objectCompare (GGS_uint (uint32_t (1U)))).boolEnum () ;
         if (GalgasBool::boolTrue == test_4) {
-          var_acceptableParameterList_4421.method_first (outArgument_outRoutineSignature, outArgument_outIsFilePrivate, inCompiler COMMA_SOURCE_FILE ("routineMap.galgas3", 118)) ;
+          var_acceptableParameterList_4420.method_first (outArgument_outRoutineSignature, outArgument_outIsFilePrivate, inCompiler COMMA_SOURCE_FILE ("routineMap.galgas3", 118)) ;
           outArgument_outRoutineMangledName = function_routineMangledName (constinArgument_inRoutineName, outArgument_outRoutineSignature, inCompiler COMMA_SOURCE_FILE ("routineMap.galgas3", 119)) ;
         }
       }
       if (GalgasBool::boolFalse == test_4) {
         GalgasBool test_5 = GalgasBool::boolTrue ;
         if (GalgasBool::boolTrue == test_5) {
-          test_5 = GGS_bool (ComparisonKind::equal, var_acceptableParameterList_4421.getter_count (SOURCE_FILE ("routineMap.galgas3", 120)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
+          test_5 = GGS_bool (ComparisonKind::equal, var_acceptableParameterList_4420.getter_count (SOURCE_FILE ("routineMap.galgas3", 120)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
           if (GalgasBool::boolTrue == test_5) {
             GenericArray <FixItDescription> fixItArray6 ;
             inCompiler->emitSemanticError (constinArgument_inRoutineName.readProperty_location (), GGS_string ("cannot find any procedure with compatible formal argument list"), fixItArray6  COMMA_SOURCE_FILE ("routineMap.galgas3", 121)) ;
@@ -6763,14 +6763,14 @@ void extensionMethod_searchKey (const GGS_routineMap inObject,
           }
         }
         if (GalgasBool::boolFalse == test_5) {
-          GGS_string var_s_5471 = GGS_string ("ambiguity, several procedures with compatible formal argument list:") ;
-          UpEnumerator_acceptableParameterList enumerator_5568 (var_acceptableParameterList_4421) ;
-          while (enumerator_5568.hasCurrentObject ()) {
-            var_s_5471.plusAssignOperation(GGS_string ("\n  - ").add_operation (function_routineArgumentFromFormalParameters (enumerator_5568.current (HERE).readProperty_mRoutineSignature (), inCompiler COMMA_SOURCE_FILE ("routineMap.galgas3", 127)), inCompiler COMMA_SOURCE_FILE ("routineMap.galgas3", 127)), inCompiler  COMMA_SOURCE_FILE ("routineMap.galgas3", 127)) ;
-            enumerator_5568.gotoNextObject () ;
+          GGS_string var_s_5470 = GGS_string ("ambiguity, several procedures with compatible formal argument list:") ;
+          UpEnumerator_acceptableParameterList enumerator_5567 (var_acceptableParameterList_4420) ;
+          while (enumerator_5567.hasCurrentObject ()) {
+            var_s_5470.plusAssignOperation(GGS_string ("\n  - ").add_operation (function_routineArgumentFromFormalParameters (enumerator_5567.current (HERE).readProperty_mRoutineSignature (), inCompiler COMMA_SOURCE_FILE ("routineMap.galgas3", 127)), inCompiler COMMA_SOURCE_FILE ("routineMap.galgas3", 127)), inCompiler  COMMA_SOURCE_FILE ("routineMap.galgas3", 127)) ;
+            enumerator_5567.gotoNextObject () ;
           }
           GenericArray <FixItDescription> fixItArray7 ;
-          inCompiler->emitSemanticError (constinArgument_inRoutineName.readProperty_location (), var_s_5471, fixItArray7  COMMA_SOURCE_FILE ("routineMap.galgas3", 129)) ;
+          inCompiler->emitSemanticError (constinArgument_inRoutineName.readProperty_location (), var_s_5470, fixItArray7  COMMA_SOURCE_FILE ("routineMap.galgas3", 129)) ;
           outArgument_outRoutineSignature.drop () ; // Release error dropped variable
           outArgument_outIsFilePrivate.drop () ; // Release error dropped variable
           outArgument_outRoutineMangledName.drop () ; // Release error dropped variable

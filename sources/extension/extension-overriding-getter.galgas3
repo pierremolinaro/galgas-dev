@@ -217,7 +217,7 @@ override proc @overridingExtensionGetterAST.enterDeclarationInGraph (
       !@()
     )
   end
-  var entry = ioExtensionGetterMapForBuildingContext @[!searchKey: self.mTypeName]
+  var entry = ioExtensionGetterMapForBuildingContext [!searchKey: self.mTypeName]
   !?entry.mExtensionGetterMapForType.insertKey
     (!self.mOverridingExtensionGetterName,
     !self.mOverridingExtensionGetterReturnedTypeName,

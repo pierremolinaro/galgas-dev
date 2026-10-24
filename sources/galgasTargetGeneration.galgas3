@@ -370,7 +370,7 @@ proc updateGalgasTargets
   end
 //---------------------------------------------------------- macCodeSign
   let @lstring macCodeSign
-  if let entry = inProjectQualifiedFeatureMap @["macCodeSign"] then
+  if let entry = inProjectQualifiedFeatureMap ["macCodeSign"] then
     if entry.mFeatureValue.string == "" then
       error (entry.mFeatureValue:"the %macCodeSign attribute should not be empty" spoil macCodeSign)
     else
@@ -383,7 +383,7 @@ proc updateGalgasTargets
   let MACOSX_DEPLOYMENT_TARGET = "14.6"
 //---------------------------------------------------------- LIBPM path
   let @string libpmPath
-  if let entry = inProjectQualifiedFeatureMap @["libpmAtPath"] then
+  if let entry = inProjectQualifiedFeatureMap ["libpmAtPath"] then
     if entry.mFeatureValue.string == "" then
       error (entry.mFeatureValue:"the libpm path should not be empty" spoil libpmPath)
     else
@@ -538,7 +538,7 @@ proc updateGalgasTargets
     dir.makeDirectory ()
   //--- Info.plist
     let @string applicationBundleBase
-    if let entry = inProjectQualifiedFeatureMap @["applicationBundleBase"] then
+    if let entry = inProjectQualifiedFeatureMap ["applicationBundleBase"] then
       applicationBundleBase = entry.mFeatureValue.string
     else
       applicationBundleBase = "unknown.unknown"

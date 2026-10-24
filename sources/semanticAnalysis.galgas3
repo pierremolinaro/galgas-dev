@@ -922,7 +922,7 @@ proc enterNonterminalNonTerminalInMapAndCheck
   (?let @lstring inNonTerminalName,
   ?let @nonterminalLabelMap inNonterminalLabelMap,
   ?!@nonterminalMap ioNonterminalDeclarationMap ) {
-  if let entry = ioNonterminalDeclarationMap @[inNonTerminalName.string] then
+  if let entry = ioNonterminalDeclarationMap [inNonTerminalName.string] then
     let @stringset firstDeclarationLabelSet = entry.mLabelMap.keySet
     let @stringset reDeclarationLabelSet = inNonterminalLabelMap.keySet
     let @stringset missingLabelSet = firstDeclarationLabelSet - reDeclarationLabelSet

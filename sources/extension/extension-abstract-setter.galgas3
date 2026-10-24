@@ -87,7 +87,7 @@ final class @abstractExtensionSetterAST : @semanticDeclarationAST {
         !@()
       )
     end
-    var entry = ioExtensionSetterMapForBuildingContext @[!searchKey: self.mTypeName]
+    var entry = ioExtensionSetterMapForBuildingContext [!searchKey: self.mTypeName]
     !?entry.mExtensionSetterMapForType.insertKey
       (!self.mAbstractExtensionSetterName,
       !self.mAbstractExtensionSetterFormalParameterList

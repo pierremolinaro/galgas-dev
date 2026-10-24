@@ -148,7 +148,7 @@ final class @abstractExtensionMethodAST : @semanticDeclarationAST {
         !@()
       )
     end
-    var entry = ioExtensionMethodMapForBuildingContext @[!searchKey: self.mTypeName]
+    var entry = ioExtensionMethodMapForBuildingContext [!searchKey: self.mTypeName]
     !?entry.mExtensionMethodMapForType.insertKey
       (!self.mAbstractExtensionMethodName,
       !self.mAbstractExtensionMethodFormalParameterList,

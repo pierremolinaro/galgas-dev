@@ -186,7 +186,7 @@ override proc @extensionSetterAST.enterDeclarationInGraph (
       !@()
     )
   end
-  var entry = ioExtensionSetterMapForBuildingContext @[!searchKey: self.mTypeName]
+  var entry = ioExtensionSetterMapForBuildingContext [!searchKey: self.mTypeName]
   !?entry.mExtensionSetterMapForType.insertKey
     (!self.mExtensionSetterName,
     !self.mExtensionSetterFormalParameterList

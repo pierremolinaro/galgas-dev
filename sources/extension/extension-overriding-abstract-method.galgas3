@@ -159,7 +159,7 @@ override proc @overridingAbstractExtensionMethodAST.enterDeclarationInGraph (
       !@()
     )
   end
-  var entry = ioExtensionMethodMapForBuildingContext @[!searchKey: self.mTypeName]
+  var entry = ioExtensionMethodMapForBuildingContext [!searchKey: self.mTypeName]
   !?entry.mExtensionMethodMapForType.insertKey
     (!self.mOverridingExtensionMethodName,
     ! self.mOverridingExtensionMethodFormalParameterList,
