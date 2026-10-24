@@ -82,9 +82,9 @@ override proc @lexicalErrorInstructionAST checkLexicalInstruction (
 //--------------------------------------------------------------------------------------------------
 
 override func @lexicalErrorInstructionAST generateSwiftCocoaInstructionCode
-  ?let @string unused inScannerClassName
+  (?let @string unused inScannerClassName
   ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
-  -> @string outGeneratedCode {
+  ) -> @string outGeneratedCode {
   outGeneratedCode = "scanningOk = false\n"
 }
 
@@ -92,16 +92,16 @@ override func @lexicalErrorInstructionAST generateSwiftCocoaInstructionCode
 //! C++ CODE GENERATION
 //--------------------------------------------------------------------------------------------------
 
-override func @lexicalErrorInstructionAST lexicalInstructionUsesLoopLocalVariable -> @bool {
+override func @lexicalErrorInstructionAST lexicalInstructionUsesLoopLocalVariable () -> @bool {
   result = false
 }
 
 //·································································································
 
 override func @lexicalErrorInstructionAST generateLexicalInstructionCode
-  ?let @string inScannerClassName
+  (?let @string inScannerClassName
   ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
-  -> @string {
+  ) -> @string {
   result = "lexicalError (gLexicalMessage_" + inScannerClassName + "_" + self.mErrorMessageName + " COMMA_LINE_AND_SOURCE_FILE) ;\n"
 }
 

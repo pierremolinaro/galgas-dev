@@ -307,7 +307,7 @@ list @typeNameFormalParameterNameList {
   public let @lstring mFormalParameterTypeName
   public let @lstring mFormalParameterName
 
-  func initializerSignature -> @string {
+  func initializerSignature () -> @string {
     result = "init"
     for formalArg in self do
       result += "!" + formalArg.mFormalSelector

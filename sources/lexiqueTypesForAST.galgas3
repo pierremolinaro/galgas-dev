@@ -68,7 +68,7 @@ list @lexicalRuleListAST {
 
 //--------------------------------------------------------------------------------------------------
 
-func @lexicalRuleListAST.useLoopLocalVar -> @bool {
+func @lexicalRuleListAST.useLoopLocalVar () -> @bool {
   result = false
   for (lexicalRule) in self while not result do
     result = lexicalRule.lexicalRuleUsesLoopLocalVar
@@ -272,28 +272,28 @@ enum @lexicalArgumentModeAST %equatable {
   case lexicalInputOutputMode
 }
 
-func @lexicalArgumentModeAST.lexicalFormalModeName -> @string {
+func @lexicalArgumentModeAST.lexicalFormalModeName () -> @string {
   switch self
   case lexicalInputMode       : result = "!"
   case lexicalInputOutputMode : result = "?!"
   end
 }
 
-func @lexicalArgumentModeAST.cppConstInFormalArgument -> @string {
+func @lexicalArgumentModeAST.cppConstInFormalArgument () -> @string {
   switch self
   case lexicalInputMode       : result = "const "
   case lexicalInputOutputMode : result = ""
   end
 }
 
-func @lexicalArgumentModeAST.cppReferenceInFormalArgument -> @string {
+func @lexicalArgumentModeAST.cppReferenceInFormalArgument () -> @string {
   switch self
   case lexicalInputMode       : result = ""
   case lexicalInputOutputMode : result = " &"
   end
 }
 
-func @lexicalArgumentModeAST.cocoaPointerInFormalArgument -> @string {
+func @lexicalArgumentModeAST.cocoaPointerInFormalArgument () -> @string {
   switch self
   case lexicalInputMode       : result = ""
   case lexicalInputOutputMode : result = " *"

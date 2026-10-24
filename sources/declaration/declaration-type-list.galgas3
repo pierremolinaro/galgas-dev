@@ -130,7 +130,7 @@ syntax extension galgas4DeclarationsSyntax {
 //--------------------------------------------------------------------------------------------------
 
 override func @listDeclarationAST keyRepresentation
-  ->@string {
+  () ->@string {
   result = "list @" + self.mListTypeName
 }
 

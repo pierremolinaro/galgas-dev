@@ -139,7 +139,7 @@ struct @routineMap {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func locationForKey ?let @string inKey -> @location {
+  func locationForKey (?let @string inKey ) -> @location {
     result = [self.mInternalRoutineMap locationForKey !inKey]
   }
 

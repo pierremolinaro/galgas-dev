@@ -26,7 +26,7 @@ list @actualOutputArgumentList {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func initializerSignature -> @string {
+  func initializerSignature () -> @string {
     result = "init"
     for effectiveParameter in self do
       result += "!" + effectiveParameter.mActualSelector
@@ -35,7 +35,7 @@ list @actualOutputArgumentList {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func subscriptSignature -> @string {
+  func subscriptSignature () -> @string {
     result = ""
     for effectiveParameter in self do
       result += "?" + effectiveParameter.mActualSelector

@@ -882,10 +882,10 @@ void cPtr_externTypeDeclarationAST::method_enterDeclarationInGraph (GGS_semantic
                                                                     COMMA_UNUSED_LOCATION_ARGS) {
   const GGS_externTypeDeclarationAST temp_0 = this ;
   const GGS_externTypeDeclarationAST temp_1 = this ;
-  GGS_lstring var_key_14253 = GGS_lstring::init_21__21_ (GGS_string ("@").add_operation (temp_0.readProperty_mExternTypeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("declaration-type-extern.galgas3", 368)), temp_1.readProperty_mExternTypeName ().readProperty_location (), inCompiler COMMA_HERE) ;
+  GGS_lstring var_key_14256 = GGS_lstring::init_21__21_ (GGS_string ("@").add_operation (temp_0.readProperty_mExternTypeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("declaration-type-extern.galgas3", 368)), temp_1.readProperty_mExternTypeName ().readProperty_location (), inCompiler COMMA_HERE) ;
   {
   const GGS_externTypeDeclarationAST temp_2 = this ;
-  ioArgument_ioSemanticTypePrecedenceGraph.setter_addNode (var_key_14253, temp_2, inCompiler COMMA_SOURCE_FILE ("declaration-type-extern.galgas3", 369)) ;
+  ioArgument_ioSemanticTypePrecedenceGraph.setter_addNode (var_key_14256, temp_2, inCompiler COMMA_SOURCE_FILE ("declaration-type-extern.galgas3", 369)) ;
   }
 }
 
@@ -918,102 +918,102 @@ void cPtr_externTypeDeclarationAST::method_enterDeclarationInSemanticContext (GG
                                                                               GGS_semanticContext & /* ioArgument_ioSemanticContext */,
                                                                               Compiler * inCompiler
                                                                               COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_getterMap var_getterMap_15336 ;
+  GGS_getterMap var_getterMap_15339 ;
   {
-  routine_commonGetterMapForAllTypes_26__21_ (ioArgument_ioTypeMap, var_getterMap_15336, inCompiler  COMMA_SOURCE_FILE ("declaration-type-extern.galgas3", 389)) ;
+  routine_commonGetterMapForAllTypes_26__21_ (ioArgument_ioTypeMap, var_getterMap_15339, inCompiler  COMMA_SOURCE_FILE ("declaration-type-extern.galgas3", 389)) ;
   }
-  GGS_setterMap var_setterMap_15418 = GGS_setterMap::init (inCompiler COMMA_HERE) ;
-  GGS_instanceMethodMap var_instanceMethodMap_15461 = GGS_instanceMethodMap::init (inCompiler COMMA_HERE) ;
-  GGS_initializerMap var_initializerMap_15530 = GGS_initializerMap::init (inCompiler COMMA_HERE) ;
+  GGS_setterMap var_setterMap_15421 = GGS_setterMap::init (inCompiler COMMA_HERE) ;
+  GGS_instanceMethodMap var_instanceMethodMap_15464 = GGS_instanceMethodMap::init (inCompiler COMMA_HERE) ;
+  GGS_initializerMap var_initializerMap_15533 = GGS_initializerMap::init (inCompiler COMMA_HERE) ;
   const GGS_externTypeDeclarationAST temp_0 = this ;
-  UpEnumerator_externTypeConstructorList enumerator_15579 (temp_0.readProperty_externTypeInitializerList ()) ;
-  while (enumerator_15579.hasCurrentObject ()) {
-    GGS_functionSignature var_arguments_15730 = GGS_functionSignature::init (inCompiler COMMA_HERE) ;
-    UpEnumerator_typeNameFormalParameterNameList enumerator_15781 (enumerator_15579.current (HERE).readProperty_mParameterList ()) ;
-    while (enumerator_15781.hasCurrentObject ()) {
-      GGS_unifiedTypeMapEntry var_argumentTypeEntry_15872 ;
+  UpEnumerator_externTypeConstructorList enumerator_15582 (temp_0.readProperty_externTypeInitializerList ()) ;
+  while (enumerator_15582.hasCurrentObject ()) {
+    GGS_functionSignature var_arguments_15733 = GGS_functionSignature::init (inCompiler COMMA_HERE) ;
+    UpEnumerator_typeNameFormalParameterNameList enumerator_15784 (enumerator_15582.current (HERE).readProperty_mParameterList ()) ;
+    while (enumerator_15784.hasCurrentObject ()) {
+      GGS_unifiedTypeMapEntry var_argumentTypeEntry_15875 ;
       {
-      extensionSetter_makeEntry (ioArgument_ioTypeMap, enumerator_15781.current (HERE).readProperty_mFormalParameterTypeName (), var_argumentTypeEntry_15872, inCompiler COMMA_SOURCE_FILE ("declaration-type-extern.galgas3", 400)) ;
+      extensionSetter_makeEntry (ioArgument_ioTypeMap, enumerator_15784.current (HERE).readProperty_mFormalParameterTypeName (), var_argumentTypeEntry_15875, inCompiler COMMA_SOURCE_FILE ("declaration-type-extern.galgas3", 400)) ;
       }
-      var_arguments_15730.addAssignOperation (enumerator_15781.current (HERE).readProperty_mFormalSelector (), var_argumentTypeEntry_15872, enumerator_15781.current (HERE).readProperty_mFormalParameterName ().readProperty_string (), GGS_bool (true)  COMMA_SOURCE_FILE ("declaration-type-extern.galgas3", 401)) ;
-      enumerator_15781.gotoNextObject () ;
+      var_arguments_15733.addAssignOperation (enumerator_15784.current (HERE).readProperty_mFormalSelector (), var_argumentTypeEntry_15875, enumerator_15784.current (HERE).readProperty_mFormalParameterName ().readProperty_string (), GGS_bool (true)  COMMA_SOURCE_FILE ("declaration-type-extern.galgas3", 401)) ;
+      enumerator_15784.gotoNextObject () ;
     }
     const GGS_externTypeDeclarationAST temp_1 = this ;
-    GGS_lstring var_initializerName_16033 = GGS_lstring::init_21__21_ (extensionGetter_initializerSignature (enumerator_15579.current (HERE).readProperty_mParameterList (), inCompiler COMMA_SOURCE_FILE ("declaration-type-extern.galgas3", 404)), temp_1.readProperty_mExternTypeName ().readProperty_location (), inCompiler COMMA_HERE) ;
+    GGS_lstring var_initializerName_16036 = GGS_lstring::init_21__21_ (extensionGetter_initializerSignature (enumerator_15582.current (HERE).readProperty_mParameterList (), inCompiler COMMA_SOURCE_FILE ("declaration-type-extern.galgas3", 404)), temp_1.readProperty_mExternTypeName ().readProperty_location (), inCompiler COMMA_HERE) ;
     {
-    var_initializerMap_15530.setter_insertKey (var_initializerName_16033, var_arguments_15730, inCompiler COMMA_SOURCE_FILE ("declaration-type-extern.galgas3", 405)) ;
+    var_initializerMap_15533.setter_insertKey (var_initializerName_16036, var_arguments_15733, inCompiler COMMA_SOURCE_FILE ("declaration-type-extern.galgas3", 405)) ;
     }
-    enumerator_15579.gotoNextObject () ;
+    enumerator_15582.gotoNextObject () ;
   }
   const GGS_externTypeDeclarationAST temp_2 = this ;
-  UpEnumerator_externTypeGetterList enumerator_16258 (temp_2.readProperty_mExternTypeGetterList ()) ;
-  while (enumerator_16258.hasCurrentObject ()) {
-    GGS_unifiedTypeMapEntry var_returnedTypeEntry_16359 ;
+  UpEnumerator_externTypeGetterList enumerator_16261 (temp_2.readProperty_mExternTypeGetterList ()) ;
+  while (enumerator_16261.hasCurrentObject ()) {
+    GGS_unifiedTypeMapEntry var_returnedTypeEntry_16362 ;
     {
-    extensionSetter_makeEntry (ioArgument_ioTypeMap, enumerator_16258.current_mResultTypeName (HERE), var_returnedTypeEntry_16359, inCompiler COMMA_SOURCE_FILE ("declaration-type-extern.galgas3", 409)) ;
+    extensionSetter_makeEntry (ioArgument_ioTypeMap, enumerator_16261.current_mResultTypeName (HERE), var_returnedTypeEntry_16362, inCompiler COMMA_SOURCE_FILE ("declaration-type-extern.galgas3", 409)) ;
     }
-    GGS_functionSignature var_arguments_16417 = GGS_functionSignature::init (inCompiler COMMA_HERE) ;
-    UpEnumerator_typeNameFormalParameterNameList enumerator_16485 (enumerator_16258.current_mParameterList (HERE)) ;
-    while (enumerator_16485.hasCurrentObject ()) {
-      GGS_unifiedTypeMapEntry var_argumentTypeEntry_16591 ;
+    GGS_functionSignature var_arguments_16420 = GGS_functionSignature::init (inCompiler COMMA_HERE) ;
+    UpEnumerator_typeNameFormalParameterNameList enumerator_16488 (enumerator_16261.current_mParameterList (HERE)) ;
+    while (enumerator_16488.hasCurrentObject ()) {
+      GGS_unifiedTypeMapEntry var_argumentTypeEntry_16594 ;
       {
-      extensionSetter_makeEntry (ioArgument_ioTypeMap, enumerator_16485.current_mFormalParameterTypeName (HERE), var_argumentTypeEntry_16591, inCompiler COMMA_SOURCE_FILE ("declaration-type-extern.galgas3", 413)) ;
+      extensionSetter_makeEntry (ioArgument_ioTypeMap, enumerator_16488.current_mFormalParameterTypeName (HERE), var_argumentTypeEntry_16594, inCompiler COMMA_SOURCE_FILE ("declaration-type-extern.galgas3", 413)) ;
       }
-      var_arguments_16417.addAssignOperation (enumerator_16485.current_mFormalSelector (HERE), var_argumentTypeEntry_16591, enumerator_16485.current_mFormalParameterName (HERE).readProperty_string (), GGS_bool (true)  COMMA_SOURCE_FILE ("declaration-type-extern.galgas3", 414)) ;
-      enumerator_16485.gotoNextObject () ;
+      var_arguments_16420.addAssignOperation (enumerator_16488.current_mFormalSelector (HERE), var_argumentTypeEntry_16594, enumerator_16488.current_mFormalParameterName (HERE).readProperty_string (), GGS_bool (true)  COMMA_SOURCE_FILE ("declaration-type-extern.galgas3", 414)) ;
+      enumerator_16488.gotoNextObject () ;
     }
     {
-    var_getterMap_15336.setter_insertKey (enumerator_16258.current_mGetterName (HERE), GGS_methodKind::class_func_definedAsMember (SOURCE_FILE ("declaration-type-extern.galgas3", 419)), var_arguments_16417, GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("declaration-type-extern.galgas3", 421)), GGS_bool (true), var_returnedTypeEntry_16359, GGS_methodQualifier::class_func_isBasicFinal (SOURCE_FILE ("declaration-type-extern.galgas3", 424)), GGS_string::makeEmptyString (), inCompiler COMMA_SOURCE_FILE ("declaration-type-extern.galgas3", 417)) ;
+    var_getterMap_15339.setter_insertKey (enumerator_16261.current_mGetterName (HERE), GGS_methodKind::class_func_definedAsMember (SOURCE_FILE ("declaration-type-extern.galgas3", 419)), var_arguments_16420, GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("declaration-type-extern.galgas3", 421)), GGS_bool (true), var_returnedTypeEntry_16362, GGS_methodQualifier::class_func_isBasicFinal (SOURCE_FILE ("declaration-type-extern.galgas3", 424)), GGS_string::makeEmptyString (), inCompiler COMMA_SOURCE_FILE ("declaration-type-extern.galgas3", 417)) ;
     }
-    enumerator_16258.gotoNextObject () ;
+    enumerator_16261.gotoNextObject () ;
   }
   const GGS_externTypeDeclarationAST temp_3 = this ;
-  UpEnumerator_externTypeSetterList enumerator_17091 (temp_3.readProperty_mExternTypeSetterList ()) ;
-  while (enumerator_17091.hasCurrentObject ()) {
-    GGS_formalParameterSignature var_routineSignature_17182 = GGS_formalParameterSignature::init (inCompiler COMMA_HERE) ;
-    UpEnumerator_formalParameterListAST enumerator_17303 (enumerator_17091.current_mFormalParameterList (HERE)) ;
-    while (enumerator_17303.hasCurrentObject ()) {
-      GGS_unifiedTypeMapEntry var_parameterTypeIndex_17436 ;
+  UpEnumerator_externTypeSetterList enumerator_17094 (temp_3.readProperty_mExternTypeSetterList ()) ;
+  while (enumerator_17094.hasCurrentObject ()) {
+    GGS_formalParameterSignature var_routineSignature_17185 = GGS_formalParameterSignature::init (inCompiler COMMA_HERE) ;
+    UpEnumerator_formalParameterListAST enumerator_17306 (enumerator_17094.current_mFormalParameterList (HERE)) ;
+    while (enumerator_17306.hasCurrentObject ()) {
+      GGS_unifiedTypeMapEntry var_parameterTypeIndex_17439 ;
       {
-      extensionSetter_makeEntry (ioArgument_ioTypeMap, enumerator_17303.current_mFormalArgumentTypeName (HERE), var_parameterTypeIndex_17436, inCompiler COMMA_SOURCE_FILE ("declaration-type-extern.galgas3", 432)) ;
+      extensionSetter_makeEntry (ioArgument_ioTypeMap, enumerator_17306.current_mFormalArgumentTypeName (HERE), var_parameterTypeIndex_17439, inCompiler COMMA_SOURCE_FILE ("declaration-type-extern.galgas3", 432)) ;
       }
-      var_routineSignature_17182.addAssignOperation (enumerator_17303.current_mFormalSelector (HERE), var_parameterTypeIndex_17436, enumerator_17303.current_mFormalArgumentPassingMode (HERE), enumerator_17303.current_mFormalArgumentName (HERE).readProperty_string ()  COMMA_SOURCE_FILE ("declaration-type-extern.galgas3", 436)) ;
-      enumerator_17303.gotoNextObject () ;
+      var_routineSignature_17185.addAssignOperation (enumerator_17306.current_mFormalSelector (HERE), var_parameterTypeIndex_17439, enumerator_17306.current_mFormalArgumentPassingMode (HERE), enumerator_17306.current_mFormalArgumentName (HERE).readProperty_string ()  COMMA_SOURCE_FILE ("declaration-type-extern.galgas3", 436)) ;
+      enumerator_17306.gotoNextObject () ;
     }
     {
-    var_setterMap_15418.setter_insertKey (enumerator_17091.current_mSetterName (HERE), GGS_methodKind::class_func_definedAsMember (SOURCE_FILE ("declaration-type-extern.galgas3", 441)), var_routineSignature_17182, GGS_bool (true), GGS_methodQualifier::class_func_isBasicFinal (SOURCE_FILE ("declaration-type-extern.galgas3", 444)), GGS_string::makeEmptyString (), inCompiler COMMA_SOURCE_FILE ("declaration-type-extern.galgas3", 439)) ;
+    var_setterMap_15421.setter_insertKey (enumerator_17094.current_mSetterName (HERE), GGS_methodKind::class_func_definedAsMember (SOURCE_FILE ("declaration-type-extern.galgas3", 441)), var_routineSignature_17185, GGS_bool (true), GGS_methodQualifier::class_func_isBasicFinal (SOURCE_FILE ("declaration-type-extern.galgas3", 444)), GGS_string::makeEmptyString (), inCompiler COMMA_SOURCE_FILE ("declaration-type-extern.galgas3", 439)) ;
     }
-    enumerator_17091.gotoNextObject () ;
+    enumerator_17094.gotoNextObject () ;
   }
   const GGS_externTypeDeclarationAST temp_4 = this ;
-  UpEnumerator_externTypeMethodList enumerator_17918 (temp_4.readProperty_mExternTypeMethodList ()) ;
-  while (enumerator_17918.hasCurrentObject ()) {
-    GGS_formalParameterSignature var_routineSignature_17983 = GGS_formalParameterSignature::init (inCompiler COMMA_HERE) ;
-    UpEnumerator_formalParameterListAST enumerator_18129 (enumerator_17918.current_mFormalParameterList (HERE)) ;
-    while (enumerator_18129.hasCurrentObject ()) {
-      GGS_unifiedTypeMapEntry var_parameterTypeIndex_18241 ;
+  UpEnumerator_externTypeMethodList enumerator_17921 (temp_4.readProperty_mExternTypeMethodList ()) ;
+  while (enumerator_17921.hasCurrentObject ()) {
+    GGS_formalParameterSignature var_routineSignature_17986 = GGS_formalParameterSignature::init (inCompiler COMMA_HERE) ;
+    UpEnumerator_formalParameterListAST enumerator_18132 (enumerator_17921.current_mFormalParameterList (HERE)) ;
+    while (enumerator_18132.hasCurrentObject ()) {
+      GGS_unifiedTypeMapEntry var_parameterTypeIndex_18244 ;
       {
-      extensionSetter_makeEntry (ioArgument_ioTypeMap, enumerator_18129.current_mFormalArgumentTypeName (HERE), var_parameterTypeIndex_18241, inCompiler COMMA_SOURCE_FILE ("declaration-type-extern.galgas3", 452)) ;
+      extensionSetter_makeEntry (ioArgument_ioTypeMap, enumerator_18132.current_mFormalArgumentTypeName (HERE), var_parameterTypeIndex_18244, inCompiler COMMA_SOURCE_FILE ("declaration-type-extern.galgas3", 452)) ;
       }
-      var_routineSignature_17983.addAssignOperation (enumerator_18129.current_mFormalSelector (HERE), var_parameterTypeIndex_18241, enumerator_18129.current_mFormalArgumentPassingMode (HERE), enumerator_18129.current_mFormalArgumentName (HERE).readProperty_string ()  COMMA_SOURCE_FILE ("declaration-type-extern.galgas3", 456)) ;
-      enumerator_18129.gotoNextObject () ;
+      var_routineSignature_17986.addAssignOperation (enumerator_18132.current_mFormalSelector (HERE), var_parameterTypeIndex_18244, enumerator_18132.current_mFormalArgumentPassingMode (HERE), enumerator_18132.current_mFormalArgumentName (HERE).readProperty_string ()  COMMA_SOURCE_FILE ("declaration-type-extern.galgas3", 456)) ;
+      enumerator_18132.gotoNextObject () ;
     }
     {
-    var_instanceMethodMap_15461.setter_insertKey (enumerator_17918.current_mMethodName (HERE), GGS_methodKind::class_func_definedAsMember (SOURCE_FILE ("declaration-type-extern.galgas3", 461)), var_routineSignature_17983, enumerator_17918.current_mDeclarationLocation (HERE), GGS_bool (true), GGS_methodQualifier::class_func_isBasicFinal (SOURCE_FILE ("declaration-type-extern.galgas3", 465)), GGS_string::makeEmptyString (), inCompiler COMMA_SOURCE_FILE ("declaration-type-extern.galgas3", 459)) ;
+    var_instanceMethodMap_15464.setter_insertKey (enumerator_17921.current_mMethodName (HERE), GGS_methodKind::class_func_definedAsMember (SOURCE_FILE ("declaration-type-extern.galgas3", 461)), var_routineSignature_17986, enumerator_17921.current_mDeclarationLocation (HERE), GGS_bool (true), GGS_methodQualifier::class_func_isBasicFinal (SOURCE_FILE ("declaration-type-extern.galgas3", 465)), GGS_string::makeEmptyString (), inCompiler COMMA_SOURCE_FILE ("declaration-type-extern.galgas3", 459)) ;
     }
-    enumerator_17918.gotoNextObject () ;
+    enumerator_17921.gotoNextObject () ;
   }
-  GGS_typeFeatures var_features_18712 = GGS_typeFeatures::init (inCompiler COMMA_HERE) ;
+  GGS_typeFeatures var_features_18715 = GGS_typeFeatures::init (inCompiler COMMA_HERE) ;
   {
   const GGS_externTypeDeclarationAST temp_5 = this ;
-  routine_handleEquatableComparableExtension_26__3F__26__3F_acceptEquatable_3F_acceptComparable (ioArgument_ioEquatableExtensionMap, temp_5.readProperty_mExternTypeName (), var_features_18712, GGS_bool (false), GGS_bool (false), inCompiler  COMMA_SOURCE_FILE ("declaration-type-extern.galgas3", 470)) ;
+  routine_handleEquatableComparableExtension_26__3F__26__3F_acceptEquatable_3F_acceptComparable (ioArgument_ioEquatableExtensionMap, temp_5.readProperty_mExternTypeName (), var_features_18715, GGS_bool (false), GGS_bool (false), inCompiler  COMMA_SOURCE_FILE ("declaration-type-extern.galgas3", 470)) ;
   }
   const GGS_externTypeDeclarationAST temp_6 = this ;
   const GGS_externTypeDeclarationAST temp_7 = this ;
   const GGS_externTypeDeclarationAST temp_8 = this ;
-  GGS_unifiedTypeDefinition var_typeDefinition_18968 = GGS_unifiedTypeDefinition::init_21_typeName_21_isPredefined_21_isConcrete_21_isFinal_21_superType_21_typeKind_21_supportCollectionValue_21_allTypedPropertyList_21_propertyMap_21_currentTypedPropertyList_21_initializerMap_21_classFunctionMap_21_getterMap_21_setterMap_21_instanceMethodMap_21_classMethodMap_21_unwrappedType_21_readSubscriptMap_21_enumerationDescriptorList_21_features_21_addAssignOperatorArguments_21_generateHeaderInSeparateFile_21_typeForEnumeratedElement_21_headerFileName_21_headerKind (temp_6.readProperty_mExternTypeName (), temp_7.readProperty_isPredefined (), GGS_bool (true), GGS_bool (true), GGS_unifiedTypeMapEntry::class_func_null (SOURCE_FILE ("declaration-type-extern.galgas3", 483)), GGS_typeKindEnum::class_func_externType (SOURCE_FILE ("declaration-type-extern.galgas3", 484)), GGS_bool (false), GGS_typedPropertyList::init (inCompiler COMMA_HERE), GGS_propertyMap::init (inCompiler COMMA_HERE), GGS_typedPropertyList::init (inCompiler COMMA_HERE), var_initializerMap_15530, GGS_classFunctionMap::init (inCompiler COMMA_HERE), var_getterMap_15336, var_setterMap_15418, var_instanceMethodMap_15461, GGS_classMethodMap::init (inCompiler COMMA_HERE), GGS_unifiedTypeMapEntry::class_func_null (SOURCE_FILE ("declaration-type-extern.galgas3", 495)), GGS_subscriptMap::init (inCompiler COMMA_HERE), GGS_enumerationDescriptorList::init (inCompiler COMMA_HERE), var_features_18712, GGS_functionSignature::init (inCompiler COMMA_HERE), GGS_bool (false), GGS_unifiedTypeMapEntry::class_func_null (SOURCE_FILE ("declaration-type-extern.galgas3", 501)), GGS_string ("externtype-").add_operation (temp_8.readProperty_mExternTypeName ().readProperty_string ().getter_fileNameRepresentation (SOURCE_FILE ("declaration-type-extern.galgas3", 502)), inCompiler COMMA_SOURCE_FILE ("declaration-type-extern.galgas3", 502)), GGS_headerKind::class_func_oneHeader (SOURCE_FILE ("declaration-type-extern.galgas3", 503)), inCompiler COMMA_HERE) ;
+  GGS_unifiedTypeDefinition var_typeDefinition_18971 = GGS_unifiedTypeDefinition::init_21_typeName_21_isPredefined_21_isConcrete_21_isFinal_21_superType_21_typeKind_21_supportCollectionValue_21_allTypedPropertyList_21_propertyMap_21_currentTypedPropertyList_21_initializerMap_21_classFunctionMap_21_getterMap_21_setterMap_21_instanceMethodMap_21_classMethodMap_21_unwrappedType_21_readSubscriptMap_21_enumerationDescriptorList_21_features_21_addAssignOperatorArguments_21_generateHeaderInSeparateFile_21_typeForEnumeratedElement_21_headerFileName_21_headerKind (temp_6.readProperty_mExternTypeName (), temp_7.readProperty_isPredefined (), GGS_bool (true), GGS_bool (true), GGS_unifiedTypeMapEntry::class_func_null (SOURCE_FILE ("declaration-type-extern.galgas3", 483)), GGS_typeKindEnum::class_func_externType (SOURCE_FILE ("declaration-type-extern.galgas3", 484)), GGS_bool (false), GGS_typedPropertyList::init (inCompiler COMMA_HERE), GGS_propertyMap::init (inCompiler COMMA_HERE), GGS_typedPropertyList::init (inCompiler COMMA_HERE), var_initializerMap_15533, GGS_classFunctionMap::init (inCompiler COMMA_HERE), var_getterMap_15339, var_setterMap_15421, var_instanceMethodMap_15464, GGS_classMethodMap::init (inCompiler COMMA_HERE), GGS_unifiedTypeMapEntry::class_func_null (SOURCE_FILE ("declaration-type-extern.galgas3", 495)), GGS_subscriptMap::init (inCompiler COMMA_HERE), GGS_enumerationDescriptorList::init (inCompiler COMMA_HERE), var_features_18715, GGS_functionSignature::init (inCompiler COMMA_HERE), GGS_bool (false), GGS_unifiedTypeMapEntry::class_func_null (SOURCE_FILE ("declaration-type-extern.galgas3", 501)), GGS_string ("externtype-").add_operation (temp_8.readProperty_mExternTypeName ().readProperty_string ().getter_fileNameRepresentation (SOURCE_FILE ("declaration-type-extern.galgas3", 502)), inCompiler COMMA_SOURCE_FILE ("declaration-type-extern.galgas3", 502)), GGS_headerKind::class_func_oneHeader (SOURCE_FILE ("declaration-type-extern.galgas3", 503)), inCompiler COMMA_HERE) ;
   {
-  extensionSetter_insertType (ioArgument_ioTypeMap, var_typeDefinition_18968.readProperty_typeName (), var_typeDefinition_18968, inCompiler COMMA_SOURCE_FILE ("declaration-type-extern.galgas3", 505)) ;
+  extensionSetter_insertType (ioArgument_ioTypeMap, var_typeDefinition_18971.readProperty_typeName (), var_typeDefinition_18971, inCompiler COMMA_SOURCE_FILE ("declaration-type-extern.galgas3", 505)) ;
   }
 }
 
@@ -1031,30 +1031,30 @@ void cPtr_externTypeDeclarationAST::method_semanticAnalysis (GGS_lstringlist & i
                                                              Compiler * inCompiler
                                                              COMMA_UNUSED_LOCATION_ARGS) {
   const GGS_externTypeDeclarationAST temp_0 = this ;
-  GGS_lstring var_nameForUsefulness_20853 = function_typeNameForUsefulEntitiesGraph (temp_0.readProperty_mExternTypeName (), inCompiler COMMA_SOURCE_FILE ("declaration-type-extern.galgas3", 526)) ;
+  GGS_lstring var_nameForUsefulness_20856 = function_typeNameForUsefulEntitiesGraph (temp_0.readProperty_mExternTypeName (), inCompiler COMMA_SOURCE_FILE ("declaration-type-extern.galgas3", 526)) ;
   {
-  ioArgument_ioUsefulEntitiesGraph.setter_addNode (var_nameForUsefulness_20853, var_nameForUsefulness_20853, inCompiler COMMA_SOURCE_FILE ("declaration-type-extern.galgas3", 527)) ;
+  ioArgument_ioUsefulEntitiesGraph.setter_addNode (var_nameForUsefulness_20856, var_nameForUsefulness_20856, inCompiler COMMA_SOURCE_FILE ("declaration-type-extern.galgas3", 527)) ;
   }
   GalgasBool test_1 = GalgasBool::boolTrue ;
   if (GalgasBool::boolTrue == test_1) {
     const GGS_externTypeDeclarationAST temp_2 = this ;
     test_1 = temp_2.readProperty_isPredefined ().boolEnum () ;
     if (GalgasBool::boolTrue == test_1) {
-      ioArgument_ioUsefulnessRootEntities.addAssignOperation (var_nameForUsefulness_20853  COMMA_SOURCE_FILE ("declaration-type-extern.galgas3", 529)) ;
+      ioArgument_ioUsefulnessRootEntities.addAssignOperation (var_nameForUsefulness_20856  COMMA_SOURCE_FILE ("declaration-type-extern.galgas3", 529)) ;
     }
   }
   const GGS_externTypeDeclarationAST temp_3 = this ;
-  UpEnumerator_externTypeConstructorList enumerator_21134 (temp_3.readProperty_externTypeInitializerList ()) ;
-  while (enumerator_21134.hasCurrentObject ()) {
+  UpEnumerator_externTypeConstructorList enumerator_21137 (temp_3.readProperty_externTypeInitializerList ()) ;
+  while (enumerator_21137.hasCurrentObject ()) {
     const GGS_externTypeDeclarationAST temp_4 = this ;
-    GGS_lstring var_initializerNameForUsefulness_21171 = function_initializerNameForUsefulEntitiesGraph (temp_4.readProperty_mExternTypeName (), extensionGetter_initializerSignature (enumerator_21134.current (HERE).readProperty_mParameterList (), inCompiler COMMA_SOURCE_FILE ("declaration-type-extern.galgas3", 535)), inCompiler COMMA_SOURCE_FILE ("declaration-type-extern.galgas3", 533)) ;
+    GGS_lstring var_initializerNameForUsefulness_21174 = function_initializerNameForUsefulEntitiesGraph (temp_4.readProperty_mExternTypeName (), extensionGetter_initializerSignature (enumerator_21137.current (HERE).readProperty_mParameterList (), inCompiler COMMA_SOURCE_FILE ("declaration-type-extern.galgas3", 535)), inCompiler COMMA_SOURCE_FILE ("declaration-type-extern.galgas3", 533)) ;
     {
-    ioArgument_ioUsefulEntitiesGraph.setter_addNode (var_initializerNameForUsefulness_21171, var_initializerNameForUsefulness_21171, inCompiler COMMA_SOURCE_FILE ("declaration-type-extern.galgas3", 537)) ;
+    ioArgument_ioUsefulEntitiesGraph.setter_addNode (var_initializerNameForUsefulness_21174, var_initializerNameForUsefulness_21174, inCompiler COMMA_SOURCE_FILE ("declaration-type-extern.galgas3", 537)) ;
     }
     {
-    ioArgument_ioUsefulEntitiesGraph.setter_addEdge (var_initializerNameForUsefulness_21171, var_nameForUsefulness_20853 COMMA_SOURCE_FILE ("declaration-type-extern.galgas3", 538)) ;
+    ioArgument_ioUsefulEntitiesGraph.setter_addEdge (var_initializerNameForUsefulness_21174, var_nameForUsefulness_20856 COMMA_SOURCE_FILE ("declaration-type-extern.galgas3", 538)) ;
     }
-    enumerator_21134.gotoNextObject () ;
+    enumerator_21137.gotoNextObject () ;
   }
   const GGS_externTypeDeclarationAST temp_5 = this ;
   const GGS_externTypeDeclarationAST temp_6 = this ;
@@ -1073,13 +1073,13 @@ void cPtr_externTypeDeclarationForGeneration::method_appendDeclaration_31_ (GGS_
                                                                             Compiler * inCompiler
                                                                             COMMA_UNUSED_LOCATION_ARGS) {
   const GGS_externTypeDeclarationForGeneration temp_0 = this ;
-  GGS_unifiedTypeDefinition var_selfTypeDefinition_22515 = extensionGetter_definition (temp_0.readProperty_mSelfTypeEntry (), inCompiler COMMA_SOURCE_FILE ("declaration-type-extern.galgas3", 566)) ;
+  GGS_unifiedTypeDefinition var_selfTypeDefinition_22518 = extensionGetter_definition (temp_0.readProperty_mSelfTypeEntry (), inCompiler COMMA_SOURCE_FILE ("declaration-type-extern.galgas3", 566)) ;
   const GGS_externTypeDeclarationForGeneration temp_1 = this ;
   const GGS_externTypeDeclarationForGeneration temp_2 = this ;
   const GGS_externTypeDeclarationForGeneration temp_3 = this ;
-  outArgument_outHeader = GGS_string (filewrapperTemplate_typeGenerationTemplate_externTypeHeader_31_ (inCompiler, var_selfTypeDefinition_22515.readProperty_typeName ().readProperty_string (), extensionGetter_identifierRepresentation (temp_1.readProperty_mSelfTypeEntry (), inCompiler COMMA_SOURCE_FILE ("declaration-type-extern.galgas3", 569)), temp_2.readProperty_mCppPreDeclarationCode (), temp_3.readProperty_mCppClassCode () COMMA_SOURCE_FILE ("declaration-type-extern.galgas3", 567))) ;
+  outArgument_outHeader = GGS_string (filewrapperTemplate_typeGenerationTemplate_externTypeHeader_31_ (inCompiler, var_selfTypeDefinition_22518.readProperty_typeName ().readProperty_string (), extensionGetter_identifierRepresentation (temp_1.readProperty_mSelfTypeEntry (), inCompiler COMMA_SOURCE_FILE ("declaration-type-extern.galgas3", 569)), temp_2.readProperty_mCppPreDeclarationCode (), temp_3.readProperty_mCppClassCode () COMMA_SOURCE_FILE ("declaration-type-extern.galgas3", 567))) ;
   const GGS_externTypeDeclarationForGeneration temp_4 = this ;
-  outArgument_outHeader.plusAssignOperation(GGS_string (filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType (inCompiler, var_selfTypeDefinition_22515.readProperty_typeName ().readProperty_string (), extensionGetter_identifierRepresentation (temp_4.readProperty_mSelfTypeEntry (), inCompiler COMMA_SOURCE_FILE ("declaration-type-extern.galgas3", 575)), var_selfTypeDefinition_22515.readProperty_isConcrete (), var_selfTypeDefinition_22515.readProperty_initializerMap (), var_selfTypeDefinition_22515.readProperty_classFunctionMap (), var_selfTypeDefinition_22515.readProperty_getterMap (), var_selfTypeDefinition_22515.readProperty_setterMap (), var_selfTypeDefinition_22515.readProperty_instanceMethodMap (), var_selfTypeDefinition_22515.readProperty_classMethodMap (), var_selfTypeDefinition_22515.readProperty_readSubscriptMap (), var_selfTypeDefinition_22515.readProperty_enumerationDescriptorList (), var_selfTypeDefinition_22515.readProperty_features (), var_selfTypeDefinition_22515.readProperty_addAssignOperatorArguments (), var_selfTypeDefinition_22515.readProperty_typeForEnumeratedElement (), var_selfTypeDefinition_22515.readProperty_supportCollectionValue () COMMA_SOURCE_FILE ("declaration-type-extern.galgas3", 573))), inCompiler  COMMA_SOURCE_FILE ("declaration-type-extern.galgas3", 573)) ;
+  outArgument_outHeader.plusAssignOperation(GGS_string (filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType (inCompiler, var_selfTypeDefinition_22518.readProperty_typeName ().readProperty_string (), extensionGetter_identifierRepresentation (temp_4.readProperty_mSelfTypeEntry (), inCompiler COMMA_SOURCE_FILE ("declaration-type-extern.galgas3", 575)), var_selfTypeDefinition_22518.readProperty_isConcrete (), var_selfTypeDefinition_22518.readProperty_initializerMap (), var_selfTypeDefinition_22518.readProperty_classFunctionMap (), var_selfTypeDefinition_22518.readProperty_getterMap (), var_selfTypeDefinition_22518.readProperty_setterMap (), var_selfTypeDefinition_22518.readProperty_instanceMethodMap (), var_selfTypeDefinition_22518.readProperty_classMethodMap (), var_selfTypeDefinition_22518.readProperty_readSubscriptMap (), var_selfTypeDefinition_22518.readProperty_enumerationDescriptorList (), var_selfTypeDefinition_22518.readProperty_features (), var_selfTypeDefinition_22518.readProperty_addAssignOperatorArguments (), var_selfTypeDefinition_22518.readProperty_typeForEnumeratedElement (), var_selfTypeDefinition_22518.readProperty_supportCollectionValue () COMMA_SOURCE_FILE ("declaration-type-extern.galgas3", 573))), inCompiler  COMMA_SOURCE_FILE ("declaration-type-extern.galgas3", 573)) ;
 }
 
 //--------------------------------------------------------------------------------------------------

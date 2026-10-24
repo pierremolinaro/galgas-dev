@@ -26,14 +26,14 @@
 //--------------------------------------------------------------------------------------------------
 
 abstract func @lexicalExpressionAST generateConditionCode
-  ?context:let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
-  -> @string
+  (?context:let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
+  ) -> @string
 
 //--------------------------------------------------------------------------------------------------
 
 override func @lexicalOrExpressionAST generateConditionCode
-  ?context:let @lexiqueAnalysisContext inLexiqueAnalysisContext
-  -> @string {
+  (?context:let @lexiqueAnalysisContext inLexiqueAnalysisContext
+  ) -> @string {
   result = [self.mLeftOperand generateConditionCode !context:inLexiqueAnalysisContext]
   result += " || "
   result += [self.mRightOperand generateConditionCode !context:inLexiqueAnalysisContext]
@@ -42,8 +42,8 @@ override func @lexicalOrExpressionAST generateConditionCode
 //--------------------------------------------------------------------------------------------------
 
 override func @lexicalCharacterIntervalMatchAST generateConditionCode
-  ?context:let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
-  -> @string {
+  (?context:let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
+  ) -> @string {
   result = ""
   result = "testForInputUTF32CharRange ("
   result += self.mLowerBound.char.utf32CharConstantRepresentation
@@ -55,8 +55,8 @@ override func @lexicalCharacterIntervalMatchAST generateConditionCode
 //--------------------------------------------------------------------------------------------------
 
 override func @lexicalStringMatchAST generateConditionCode
-  ?context:let @lexiqueAnalysisContext inLexiqueAnalysisContext
-  -> @string {
+  (?context:let @lexiqueAnalysisContext inLexiqueAnalysisContext
+  ) -> @string {
   result = "testForInputUTF32String (kUnicodeString_" + inLexiqueAnalysisContext.mLexiqueName.identifierRepresentation + "_" + self.mString.string.identifierRepresentation
   result += ", true)"
 }
@@ -64,8 +64,8 @@ override func @lexicalStringMatchAST generateConditionCode
 //--------------------------------------------------------------------------------------------------
 
 override func @lexicalStringNotMatchAST generateConditionCode
-  ?context:let @lexiqueAnalysisContext inLexiqueAnalysisContext
-  -> @string {
+  (?context:let @lexiqueAnalysisContext inLexiqueAnalysisContext
+  ) -> @string {
   result = "notTestForInputUTF32String (kUnicodeString_" + inLexiqueAnalysisContext.mLexiqueName.identifierRepresentation + "_"
   result += self.mString.string.identifierRepresentation
   result += ", gLexicalMessage_"
@@ -77,8 +77,8 @@ override func @lexicalStringNotMatchAST generateConditionCode
 //--------------------------------------------------------------------------------------------------
 
 override func @lexicalCharacterMatchAST generateConditionCode
-  ?context:let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
-  -> @string {
+  (?context:let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
+  ) -> @string {
   result = "testForInputUTF32Char ("
   result += self.mCharacter.char.utf32CharConstantRepresentation
   result += ")"
@@ -87,8 +87,8 @@ override func @lexicalCharacterMatchAST generateConditionCode
 //--------------------------------------------------------------------------------------------------
 
 override func @lexicalCharacterSetMatchAST generateConditionCode
-  ?context:let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
-  -> @string {
+  (?context:let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
+  ) -> @string {
   result = "testForChar_" + self.mCharacterSetName.string + " ()"
 }
 
@@ -97,39 +97,39 @@ override func @lexicalCharacterSetMatchAST generateConditionCode
 //--------------------------------------------------------------------------------------------------
 
 abstract func @lexicalRoutineOrFunctionFormalInputArgumentAST generateRoutineOrFunctionArgument
-  -> @string
+  () -> @string
 
 //--------------------------------------------------------------------------------------------------
 
 override func @lexicalAttributeInputArgumentAST generateRoutineOrFunctionArgument
-  -> @string {
+  () -> @string {
   result = "token.mLexicalAttribute_" + self.mAttributeName.string.identifierRepresentation
 }
 
 //--------------------------------------------------------------------------------------------------
 
 override func @lexicalCharacterInputArgumentAST generateRoutineOrFunctionArgument
-  -> @string {
+  () -> @string {
   result = self.mCharacter.char.utf32CharConstantRepresentation
 }
 
 //--------------------------------------------------------------------------------------------------
 
-override func @lexicalUnsignedInputArgumentAST generateRoutineOrFunctionArgument -> @string {
+override func @lexicalUnsignedInputArgumentAST generateRoutineOrFunctionArgument () -> @string {
   result = self.mUnsigned.bigint.string
 }
 
 //--------------------------------------------------------------------------------------------------
 
 override func @lexicalCurrentCharacterInputArgumentAST generateRoutineOrFunctionArgument
-  -> @string {
+  () -> @string {
   result = "previousChar ()"
 }
 
 //--------------------------------------------------------------------------------------------------
 
 override func @lexicalFunctionInputArgumentAST generateRoutineOrFunctionArgument
-  -> @string {
+  () -> @string {
   result = "::scanner_function_" + self.mFunctionName + " (*this"
   for (mLexicalActualInputArgument) in self.mFunctionActualArgumentList do
     result += ", " + mLexicalActualInputArgument.generateRoutineOrFunctionArgument
@@ -142,14 +142,14 @@ override func @lexicalFunctionInputArgumentAST generateRoutineOrFunctionArgument
 //--------------------------------------------------------------------------------------------------
 
 abstract func @lexicalSendDefaultActionAST generateDefaultSendCode
-  ?let @string inScannerClassName
-  -> @string
+  (?let @string inScannerClassName
+  ) -> @string
 
 //--------------------------------------------------------------------------------------------------
 
 override func @lexicalSendTerminalByDefaultAST generateDefaultSendCode
-  ?let @string unused inScannerClassName
-  -> @string
+  (?let @string unused inScannerClassName
+  ) -> @string
 {
   result = "token.mTokenCode = kToken_" + self.mDefaultSentTerminal.string.identifierRepresentation + " ;\n"
 }
@@ -157,8 +157,8 @@ override func @lexicalSendTerminalByDefaultAST generateDefaultSendCode
 //--------------------------------------------------------------------------------------------------
 
 override func @lexicalErrorByDefaultAST generateDefaultSendCode
-  ?let @string inScannerClassName
-  -> @string {
+  (?let @string inScannerClassName
+  ) -> @string {
   result = "lexicalError (gLexicalMessage_" + inScannerClassName + "_" + self.mDefaultErrorMessageName + " COMMA_LINE_AND_SOURCE_FILE) ;\n"
 }
 
@@ -167,33 +167,33 @@ override func @lexicalErrorByDefaultAST generateDefaultSendCode
 //--------------------------------------------------------------------------------------------------
 
 abstract func @lexicalInstructionAST generateLexicalInstructionCode
-  ?let @string inScannerClassName
+  (?let @string inScannerClassName
   ?let @lexiqueAnalysisContext inLexiqueAnalysisContext
-  -> @string
+  ) -> @string
 
 //--------------------------------------------------------------------------------------------------
 
-abstract func @lexicalInstructionAST lexicalInstructionUsesLoopLocalVariable -> @bool
+abstract func @lexicalInstructionAST lexicalInstructionUsesLoopLocalVariable () -> @bool
 
 //--------------------------------------------------------------------------------------------------
 //        L E X I C A L    R U L E    C O D E    G E N E R A T I O N
 //--------------------------------------------------------------------------------------------------
 
 abstract func @abstractLexicalRuleAST generateLexicalRuleCode
-  ?let @string inScannerClassName
+  (?let @string inScannerClassName
   ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
-  -> @string
+  ) -> @string
 
 //--------------------------------------------------------------------------------------------------
 
-abstract func @abstractLexicalRuleAST lexicalRuleUsesLoopLocalVar -> @bool
+abstract func @abstractLexicalRuleAST lexicalRuleUsesLoopLocalVar () -> @bool
 
 //--------------------------------------------------------------------------------------------------
 
 override func @lexicalImplicitRuleAST generateLexicalRuleCode
-  ?let @string inScannerClassName
+  (?let @string inScannerClassName
   ?let @lexiqueAnalysisContext inLexiqueAnalysisContext
-  -> @string {
+  ) -> @string {
   inLexiqueAnalysisContext.mLexicalTokenListMap.searchKey (!self.mListName, ?*, ?let tokenSortedList, ?*)
   result = ""
   for > (* mName mTerminalName) in tokenSortedList do
@@ -208,16 +208,16 @@ override func @lexicalImplicitRuleAST generateLexicalRuleCode
 
 //--------------------------------------------------------------------------------------------------
 
-override func @lexicalImplicitRuleAST lexicalRuleUsesLoopLocalVar -> @bool {
+override func @lexicalImplicitRuleAST lexicalRuleUsesLoopLocalVar () -> @bool {
   result = false
 }
 
 //--------------------------------------------------------------------------------------------------
 
 override func @lexicalExplicitRuleAST generateLexicalRuleCode
-                                              ?let @string inScannerClassName
+                                              (?let @string inScannerClassName
                                               ?let @lexiqueAnalysisContext inLexiqueAnalysisContext
-                                              -> @string {
+                                              ) -> @string {
   result = "if ("
   result += [self.mLexicalRuleExpression generateConditionCode !context:inLexiqueAnalysisContext]
   result += ") {\n"
@@ -231,7 +231,7 @@ override func @lexicalExplicitRuleAST generateLexicalRuleCode
 
 //--------------------------------------------------------------------------------------------------
 
-override func @lexicalExplicitRuleAST lexicalRuleUsesLoopLocalVar -> @bool {
+override func @lexicalExplicitRuleAST lexicalRuleUsesLoopLocalVar () -> @bool {
   result = false
   for (instruction) in self.mInstructionList while not result do
     result = instruction.lexicalInstructionUsesLoopLocalVariable

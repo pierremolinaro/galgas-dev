@@ -113,7 +113,7 @@ override proc @overridingExtensionSetterAST enterDeclarationInGraph (
 //   KEY REPRESEN func TATION
 //--------------------------------------------------------------------------------------------------
 
-override func @overridingExtensionSetterAST keyRepresentation -> @string {
+override func @overridingExtensionSetterAST keyRepresentation () -> @string {
   result = "overriding extension setter @" + self.mTypeName + " " + self.mOverridingExtensionSetterName
 }
 
@@ -253,7 +253,7 @@ final class @overridingExtensionSetterForGeneration : @semanticDeclarationWithHe
 
 //································································································
 
-override func @overridingExtensionSetterForGeneration headerKind ->@headerKind {
+override func @overridingExtensionSetterForGeneration headerKind () ->@headerKind {
   result = @headerKind.noHeader
 }
 

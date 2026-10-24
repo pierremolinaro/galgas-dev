@@ -939,7 +939,7 @@ filewrapper semanticComponentGenerationTemplate in "+generation-templates/semant
 //! func
 //--------------------------------------------------------------------------------------------------
 
-override func @functionPrototypeDeclarationForGeneration headerKind ->@headerKind {
+override func @functionPrototypeDeclarationForGeneration headerKind () ->@headerKind {
   result = @headerKind.oneHeader
 }
 
@@ -957,7 +957,7 @@ override proc @functionPrototypeDeclarationForGeneration appendDeclaration1
 
 //--------------------------------------------------------------------------------------------------
 
-override func @onceFunctionDeclarationForGeneration headerKind ->@headerKind {
+override func @onceFunctionDeclarationForGeneration headerKind () ->@headerKind {
   result = @headerKind.oneHeader
 }
 
@@ -977,7 +977,7 @@ override proc @onceFunctionDeclarationForGeneration appendDeclaration1
 //! Semantic Type
 //--------------------------------------------------------------------------------------------------
 
-override func @semanticTypeForGeneration appendTypeGenericImplementation -> @string {
+override func @semanticTypeForGeneration appendTypeGenericImplementation () -> @string {
   let selfTypeDefinition = self.mSelfTypeEntry.definition
   if selfTypeDefinition.typeKind == .packageType then
     result = ""
@@ -1115,7 +1115,7 @@ final class @lexiqueDeclarationForGeneration : @semanticDeclarationWithHeaderFor
 //! Program
 //--------------------------------------------------------------------------------------------------
 
-override func @programComponentForGeneration headerKind ->@headerKind {
+override func @programComponentForGeneration headerKind () ->@headerKind {
   result = @headerKind.noHeader
 }
 
@@ -1135,7 +1135,7 @@ override proc @programComponentForGeneration appendSpecificImplementation
 
 //--------------------------------------------------------------------------------------------------
 
-override func @filewrapperDeclarationForGeneration headerKind ->@headerKind {
+override func @filewrapperDeclarationForGeneration headerKind () ->@headerKind {
   result = @headerKind.oneHeader
 }
 

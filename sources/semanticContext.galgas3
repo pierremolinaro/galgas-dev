@@ -22,7 +22,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //--------------------------------------------------------------------------------------------------
 
-func @location.sourceFile -> @string {
+func @location.sourceFile () -> @string {
   if self.isNowhere then
     result = "SOURCE_FILE (\"\", 0)"
   else
@@ -32,7 +32,7 @@ func @location.sourceFile -> @string {
 
 //--------------------------------------------------------------------------------------------------
 
-func @location.commaSourceFile -> @string {
+func @location.commaSourceFile () -> @string {
   result = " COMMA_" + self.sourceFile
 }
 
@@ -305,67 +305,67 @@ map @extensionGetterMapForBuildingContext {
 
 //--------------------------------------------------------------------------------------------------
 
-abstract func @semanticDeclarationAST keyRepresentation -> @string
+abstract func @semanticDeclarationAST keyRepresentation () -> @string
 
 //--------------------------------------------------------------------------------------------------
 
 override func @galgas3GrammarComponentAST keyRepresentation
-  ->@string {
+  () ->@string {
   result = "grammar " + self.mGrammarComponentName
 }
 
 //--------------------------------------------------------------------------------------------------
 
 override func @galgas3SyntaxComponentAST keyRepresentation
-  ->@string {
+  () ->@string {
   result = "syntax " + self.mSyntaxComponentName
 }
 
 //--------------------------------------------------------------------------------------------------
 
 override func @predefinedTypeAST keyRepresentation
-  ->@string {
+  () ->@string {
   result = "predefined type @" + self.mPredefinedTypeName
 }
 
 //--------------------------------------------------------------------------------------------------
 
 override func @sortedListDeclarationAST keyRepresentation
-  ->@string {
+  () ->@string {
   result = "sorted list @" + self.mSortedListTypeName
 }
 
 //--------------------------------------------------------------------------------------------------
 
 override func @filewrapperDeclarationAST keyRepresentation
-  ->@string {
+  () ->@string {
   result = "filewrapper @" + self.mFilewrapperName
 }
 
 //--------------------------------------------------------------------------------------------------
 
 override func @optionComponentDeclarationAST keyRepresentation
-  ->@string {
+  () ->@string {
   result = "option " + self.mOptionComponentName
 }
 
 //--------------------------------------------------------------------------------------------------
 
 override func @graphDeclarationAST keyRepresentation
-  ->@string {
+  () ->@string {
   result = "graph @" + self.mGraphTypeName
 }
 
 //--------------------------------------------------------------------------------------------------
 
 override func @onceFunctionDeclarationAST keyRepresentation
-  ->@string {
+  () ->@string {
   result = "once function " + self.mFunctionName
 }
 
 //--------------------------------------------------------------------------------------------------
 
-override func @externFunctionDeclarationAST keyRepresentation -> @string {
+override func @externFunctionDeclarationAST keyRepresentation () -> @string {
   result = "extern function " + self.mFunctionName
 }
 

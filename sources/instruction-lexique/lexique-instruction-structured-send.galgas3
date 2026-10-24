@@ -118,8 +118,8 @@ override proc @lexicalStructuredSendInstructionAST checkLexicalInstruction (
 //--------------------------------------------------------------------------------------------------
 
 override func @lexicalStructuredSendInstructionAST generateSwiftCocoaInstructionCode
-  ?let @string inScannerClassName
-  ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
+  (?let @string inScannerClassName,
+   ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext)
   -> @string outGeneratedCode {
   outGeneratedCode = ""
   for (mAttributeName mSearchListName) in self.mLexicalSendSearchList do
@@ -137,15 +137,15 @@ override func @lexicalStructuredSendInstructionAST generateSwiftCocoaInstruction
 //! CODE GENERATION
 //--------------------------------------------------------------------------------------------------
 
-override func @lexicalStructuredSendInstructionAST lexicalInstructionUsesLoopLocalVariable -> @bool {
+override func @lexicalStructuredSendInstructionAST lexicalInstructionUsesLoopLocalVariable () -> @bool {
   result = false
 }
 
 //·································································································
 
 override func @lexicalStructuredSendInstructionAST generateLexicalInstructionCode
-  ?let @string inScannerClassName
-  ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
+  (?let @string inScannerClassName,
+  ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext)
   -> @string {
   result = ""
   for (mAttributeName mSearchListName) in self.mLexicalSendSearchList do

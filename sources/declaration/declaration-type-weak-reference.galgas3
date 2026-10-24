@@ -30,7 +30,7 @@ final class @weakReferenceDeclarationAST : @semanticDeclarationAST {
 //   ENTER IN GRAPH
 //--------------------------------------------------------------------------------------------------
 
-override func @weakReferenceDeclarationAST keyRepresentation -> @string {
+override func @weakReferenceDeclarationAST keyRepresentation () -> @string {
   result = "weak reference @" + self.mWeakReferenceTypeName
 }
 

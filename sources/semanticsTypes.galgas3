@@ -34,14 +34,14 @@ list @functionSignature {
   public let @string mFormalArgumentName
   public let @bool isConstant
 
-  func initializerSignature -> @string {
+  func initializerSignature () -> @string {
     result = "init"
     for parameter in self do
       result += "!" + parameter.mFormalSelector
     end
   }
 
-  func subcriptSignature -> @string {
+  func subcriptSignature () -> @string {
     result = ""
     for parameter in self do
       result += "?" + parameter.mFormalSelector
@@ -207,7 +207,7 @@ list @typedPropertyList {
   public let @bool hasSetter %initArgLabel
   public let @bool hasSelector %initArgLabel
 
-  func initializerSignature -> @string {
+  func initializerSignature () -> @string {
     result = "init"
     for property in self do
       if property.initialization == .none then

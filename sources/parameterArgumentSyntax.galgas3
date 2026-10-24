@@ -760,7 +760,10 @@ syntax galgas3ParameterArgumentSyntax (galgasScanner3) {
           !isUnused
           !isConstant
       while
+        select // §§
+        or  
         $,$
+        end
       end
     end
     $)$

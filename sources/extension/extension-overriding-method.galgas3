@@ -156,7 +156,7 @@ final class @overridingExtensionMethodAST : @semanticDeclarationAST {
 //   KEY REPRESENTATION
 //--------------------------------------------------------------------------------------------------
 
-override func @overridingExtensionMethodAST keyRepresentation -> @string {
+override func @overridingExtensionMethodAST keyRepresentation () -> @string {
   result = "overriding extension proc @" + self.mTypeName + " " + self.mOverridingExtensionMethodName
 }
 
@@ -347,7 +347,7 @@ final class @overridingExtensionMethodForGeneration : @semanticDeclarationWithHe
 
 //································································································
 
-override func @overridingExtensionMethodForGeneration headerKind ->@headerKind {
+override func @overridingExtensionMethodForGeneration headerKind () ->@headerKind {
   result = @headerKind.noHeader
 }
 

@@ -81,7 +81,7 @@ override func @lexicalTagInstructionAST generateSwiftCocoaInstructionCode (
 //! C++ CODE GENERATION
 //--------------------------------------------------------------------------------------------------
 
-override func @lexicalTagInstructionAST lexicalInstructionUsesLoopLocalVariable -> @bool {
+override func @lexicalTagInstructionAST lexicalInstructionUsesLoopLocalVariable () -> @bool {
   result = false
 }
 

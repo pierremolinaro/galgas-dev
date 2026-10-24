@@ -151,9 +151,9 @@ override proc @lexicalRepeatInstructionAST checkLexicalInstruction (
 //--------------------------------------------------------------------------------------------------
 
 override func @lexicalRepeatInstructionAST generateSwiftCocoaInstructionCode
-  ?let @string inScannerClassName
+  (?let @string inScannerClassName
   ?let @lexiqueAnalysisContext inLexiqueAnalysisContext
-  -> @string outGeneratedCode {
+  ) -> @string outGeneratedCode {
   outGeneratedCode = "while (loop && scanningOk) {\n"
   !?outGeneratedCode.incIndentation (!2)
 //--- Repeated instruction
@@ -186,16 +186,16 @@ override func @lexicalRepeatInstructionAST generateSwiftCocoaInstructionCode
 //! C++ CODE GENERATION
 //--------------------------------------------------------------------------------------------------
 
-override func @lexicalRepeatInstructionAST lexicalInstructionUsesLoopLocalVariable -> @bool {
+override func @lexicalRepeatInstructionAST lexicalInstructionUsesLoopLocalVariable () -> @bool {
   result = true
 }
 
 //·································································································
 
 override func @lexicalRepeatInstructionAST generateLexicalInstructionCode
-  ?let @string inScannerClassName
+  (?let @string inScannerClassName
   ?let @lexiqueAnalysisContext inLexiqueAnalysisContext
-  -> @string {
+  ) -> @string {
   result = "do {\n"
   !?result.incIndentation (!2)
 //--- Repeated instruction

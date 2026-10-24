@@ -47,11 +47,7 @@ syntax extension galgas3DeclarationsSyntax {
     end
     $identifier$ ?let getterName indexing overrideAbstractExtensionGetterDefinition
     let @formalInputParameterListAST formalInputParameterList
-    select
-      <formal_input_parameter_list_ggs3> (!?ioDeclarations, ?formalInputParameterList)
-    or
-      <formal_input_parameter_list_ggs34> (!?ioDeclarations, ?formalInputParameterList)
-    end
+    <formal_input_parameter_list_ggs34> (!?ioDeclarations, ?formalInputParameterList)
     $->$
     <type_definition_ggs3> (!?ioDeclarations, ?let returnedTypeName)
     ioDeclarations.mDeclarationList += !@overridingAbstractExtensionGetterAST {
@@ -78,11 +74,7 @@ syntax extension galgas3DeclarationsSyntax {
     end
     $identifier$ ?let getterName indexing overrideAbstractExtensionGetterDefinition
     let @formalInputParameterListAST formalInputParameterList
-    select
-      <formal_input_parameter_list_ggs3> (!?ioDeclarations, ?formalInputParameterList)
-    or
-      <formal_input_parameter_list_ggs34> (!?ioDeclarations, ?formalInputParameterList)
-    end
+    <formal_input_parameter_list_ggs34> (!?ioDeclarations, ?formalInputParameterList)
     $->$
     <type_definition_ggs3> (!?ioDeclarations, ?let returnedTypeName)
     ioDeclarations.mDeclarationList += !@overridingAbstractExtensionGetterAST {
@@ -157,7 +149,7 @@ syntax extension galgas4DeclarationsSyntax {
 //   KEY REPRESENTATION
 //--------------------------------------------------------------------------------------------------
 
-override func @overridingAbstractExtensionGetterAST keyRepresentation  -> @string {
+override func @overridingAbstractExtensionGetterAST keyRepresentation  () -> @string {
   result = "overriding extension func @" + self.mTypeName + " " + self.mAbstractExtensionGetterName
 }
 

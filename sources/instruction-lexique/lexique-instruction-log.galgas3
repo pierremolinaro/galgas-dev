@@ -69,9 +69,9 @@ override proc @lexicalLogInstructionAST checkLexicalInstruction (
 //--------------------------------------------------------------------------------------------------
 
 override func @lexicalLogInstructionAST generateSwiftCocoaInstructionCode
-  ?let @string unused inScannerClassName
+  (?let @string unused inScannerClassName
   ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
-  -> @string outGeneratedCode {
+  ) -> @string outGeneratedCode {
   outGeneratedCode = "/* lexicalLog (LINE_AND_SOURCE_FILE) */\n"
 }
 
@@ -79,16 +79,16 @@ override func @lexicalLogInstructionAST generateSwiftCocoaInstructionCode
 //! C++ CODE GENERATION
 //--------------------------------------------------------------------------------------------------
 
-override func @lexicalLogInstructionAST lexicalInstructionUsesLoopLocalVariable -> @bool {
+override func @lexicalLogInstructionAST lexicalInstructionUsesLoopLocalVariable () -> @bool {
   result = false
 }
 
 //·································································································
 
 override func @lexicalLogInstructionAST generateLexicalInstructionCode
-  ?let @string unused inScannerClassName
+  (?let @string unused inScannerClassName
   ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
-  -> @string {
+  ) -> @string {
   result = "lexicalLog (LINE_AND_SOURCE_FILE) ;\n"
 }
 

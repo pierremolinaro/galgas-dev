@@ -220,7 +220,7 @@ syntax extension galgas4LexiqueComponentSyntax {
 
 //--------------------------------------------------------------------------------------------------
 
-override func @templateLexiqueComponentAST keyRepresentation -> @string {
+override func @templateLexiqueComponentAST keyRepresentation () -> @string {
   result = "lexique " + self.mLexiqueComponentName
 }
 

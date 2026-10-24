@@ -84,7 +84,7 @@ enum @formalArgumentPassingModeAST %equatable {
 
 //--------------------------------------------------------------------------------------------------
 
-func @formalArgumentPassingModeAST.string -> @string {
+func @formalArgumentPassingModeAST.string () -> @string {
   switch self
     case argumentConstantIn : result = "?let"
     case argumentVarIn : result = "?"
@@ -95,7 +95,7 @@ func @formalArgumentPassingModeAST.string -> @string {
 
 //--------------------------------------------------------------------------------------------------
 
-func @formalArgumentPassingModeAST.formalArgumentMessage -> @string {
+func @formalArgumentPassingModeAST.formalArgumentMessage () -> @string {
   switch self
     case argumentConstantIn : result = "a constant input (?let) formal argument"
     case argumentVarIn : result = "an input (?) formal argument"
@@ -117,7 +117,7 @@ list @formalParameterListAST {
   public let @lstring mFormalArgumentName
   public let @bool mIsUnused
 
-  func keyRepresentation -> @string {
+  func keyRepresentation () -> @string {
     result = "("
       for parameter in self
     do
@@ -151,7 +151,7 @@ list @formalInputParameterListAST {
   public let @bool mIsUnused
   public let @bool mIsConstant
 
-  func initializerSignature -> @string {
+  func initializerSignature () -> @string {
     result = "init"
     for parameter in self do
       result += "!" + parameter.mFormalSelector

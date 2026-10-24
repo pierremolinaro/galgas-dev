@@ -134,7 +134,7 @@ syntax extension galgas4DeclarationsSyntax {
 //   KEY REPRESENTATION
 //--------------------------------------------------------------------------------------------------
 
-override func @overridingAbstractExtensionMethodAST keyRepresentation -> @string {
+override func @overridingAbstractExtensionMethodAST keyRepresentation () -> @string {
   result = "overriding extension proc @" + self.mTypeName + " " + self.mOverridingExtensionMethodName
 }
 

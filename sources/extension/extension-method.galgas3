@@ -309,7 +309,7 @@ final class @extensionMethodForGeneration : @semanticDeclarationWithHeaderForGen
 
 //································································································
 
-override func @extensionMethodForGeneration headerKind ->@headerKind {
+override func @extensionMethodForGeneration headerKind () ->@headerKind {
   result = @headerKind.oneHeader
 }
 

@@ -256,7 +256,7 @@ override proc @repeatInstructionForGeneration appendSyntaxSignature
 //--------------------------------------------------------------------------------------------------
 
 override func @repeatInstructionForGeneration compareInstructionSyntaxSignature
-  ?let @semanticInstructionForGeneration inTestedInstruction ->@bool {
+  (?let @semanticInstructionForGeneration inTestedInstruction ) ->@bool {
   if let si = inTestedInstruction as @repeatInstructionForGeneration then
     result = compareSyntaxSignature (!self.m_repeated_instructionList !si.m_repeated_instructionList !si.mEndOfRepeatedInstructions)
     if result & (self.mListOfSemanticInstructionListForGeneration.count != si.mListOfSemanticInstructionListForGeneration.count) then

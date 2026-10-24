@@ -23,7 +23,7 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-func @lexicalTypeEnum.lexicalTypeBaseName -> @string {
+func @lexicalTypeEnum.lexicalTypeBaseName () -> @string {
   switch self
     case lexicalType_string : result = "string"
     case lexicalType_char   : result = "char"

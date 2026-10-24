@@ -184,8 +184,8 @@ override proc @nonterminalInstructionForGeneration appendSyntaxSignature
 //--------------------------------------------------------------------------------------------------
 
 override func @nonterminalInstructionForGeneration compareInstructionSyntaxSignature
-  ?let @semanticInstructionForGeneration inTestedInstruction
-  ->@bool {
+  (?let @semanticInstructionForGeneration inTestedInstruction
+  ) ->@bool {
   if let si = inTestedInstruction as @nonterminalInstructionForGeneration then
     result = self.mNonterminalName == si.mNonterminalName
     if not result then

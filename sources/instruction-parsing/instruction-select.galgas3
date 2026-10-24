@@ -212,8 +212,8 @@ override proc @selectInstructionForGeneration appendSyntaxSignature
 //--------------------------------------------------------------------------------------------------
 
 override func @selectInstructionForGeneration compareInstructionSyntaxSignature
-  ?let @semanticInstructionForGeneration inTestedInstruction
-  ->@bool
+  (?let @semanticInstructionForGeneration inTestedInstruction
+  ) ->@bool
 {
   if let si = inTestedInstruction as @selectInstructionForGeneration then
     result = true

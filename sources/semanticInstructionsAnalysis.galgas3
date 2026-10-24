@@ -130,7 +130,7 @@ proc analyzeSemanticInstructionListWithoutBranch
 
 //--------------------------------------------------------------------------------------------------
 
-func @formalArgumentPassingModeAST.correspondingEffectiveParameterString -> @string {
+func @formalArgumentPassingModeAST.correspondingEffectiveParameterString () -> @string {
   switch self
     case argumentConstantIn : result = "!"
     case argumentVarIn : result = "!"

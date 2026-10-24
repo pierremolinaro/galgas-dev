@@ -31,17 +31,17 @@ abstract class @predefinedTypeAST : @semanticDeclarationAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func typeKind -> @typeKindEnum {
+  func typeKind () -> @typeKindEnum {
     result = .otherType
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  abstract func cppDeclarationString -> @string
+  abstract func cppDeclarationString () -> @string
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func initializers -> [@formalInputParameterListAST] {
+  func initializers () -> [@formalInputParameterListAST] {
     result = @()
   }
 
@@ -220,13 +220,13 @@ abstract class @predefinedTypeAST : @semanticDeclarationAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func getSupportedOperatorFlags -> @typeFeatures outFlags {
+  func getSupportedOperatorFlags () -> @typeFeatures outFlags {
     outFlags = @()
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func supportsCollectionValue -> @bool {
+  func supportsCollectionValue () -> @bool {
     result = false // Does not support collection value
   }
 

@@ -33,11 +33,7 @@ syntax extension galgas3DeclarationsSyntax {
     end
     $identifier$ ?let getterName indexing abstractExtensionGetterDefinition
     let @formalInputParameterListAST formalInputParameterList
-    select
-      <formal_input_parameter_list_ggs3> (!?ioDeclarations, ?formalInputParameterList)
-    or
-      <formal_input_parameter_list_ggs34> (!?ioDeclarations, ?formalInputParameterList)
-    end
+    <formal_input_parameter_list_ggs34> (!?ioDeclarations, ?formalInputParameterList)
     $->$
     <type_definition_ggs3> (!?ioDeclarations, ?let @lstring returnedTypeName)
     ioDeclarations.mDeclarationList += !@abstractExtensionGetterAST {
@@ -64,11 +60,7 @@ syntax extension galgas3DeclarationsSyntax {
     end
     $identifier$ ?let mGetterName indexing abstractExtensionGetterDefinition
     let @formalInputParameterListAST formalInputParameterList
-    select
-      <formal_input_parameter_list_ggs3> (!?ioDeclarations, ?formalInputParameterList)
-    or
-      <formal_input_parameter_list_ggs34> (!?ioDeclarations, ?formalInputParameterList)
-    end
+    <formal_input_parameter_list_ggs34> (!?ioDeclarations, ?formalInputParameterList)
     $->$
     <type_definition_ggs3> (!?ioDeclarations, ?let @lstring returnedTypeName)
     ioDeclarations.mDeclarationList += !@abstractExtensionGetterAST {

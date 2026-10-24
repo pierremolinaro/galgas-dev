@@ -34,7 +34,7 @@ enum @selfMutability %equatable {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func propertiesAreMutable -> @bool {
+  func propertiesAreMutable () -> @bool {
     switch self
     case none : result = false
     case propertiesAreMutableSelfIsNot, selfAndPropertiesAreMutable, initializer : result = true
@@ -43,7 +43,7 @@ enum @selfMutability %equatable {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func selfIsMutable -> @bool {
+  func selfIsMutable () -> @bool {
     switch self
     case none, propertiesAreMutableSelfIsNot : result = false
     case selfAndPropertiesAreMutable, initializer : result = true

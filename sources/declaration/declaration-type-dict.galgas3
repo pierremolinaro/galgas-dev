@@ -28,7 +28,7 @@ final class @dictDeclarationAST : @semanticDeclarationAST {
 
 //--------------------------------------------------------------------------------------------------
 
-override func @dictDeclarationAST keyRepresentation ->@string {
+override func @dictDeclarationAST keyRepresentation () ->@string {
   result = "dict @" + self.mDictTypeName
 }
 

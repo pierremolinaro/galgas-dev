@@ -86,8 +86,8 @@ protocol Correcteur : AnyObject {
 
 //----------------------------------------------------------------------------------------
 
-class InsererFermetureParentheseAvantAccoladeOuvrante : Correcteur {
-  var préfixeMessageErreur : String { "syntax error #1: found the '{' delimitor, expected:" }
+class InsererFermetureParentheseAvantFlèche : Correcteur {
+  var préfixeMessageErreur : String { "syntax error #1: found the '->' delimitor, expected:" }
 
   func corriger (_ lignesDuFichier : inout [String],
                  _ ligne : Int,
@@ -286,34 +286,8 @@ class InsererOuvertureParentheseAvantSelecteurOut : Correcteur {
 
 //----------------------------------------------------------------------------------------
 
-class InsererFermetureParentheseAvantRule : Correcteur {
-  var préfixeMessageErreur : String { "syntax error #1: found the 'rule' keyword, expected:" }
-
-  func corriger (_ lignesDuFichier : inout [String],
-                 _ ligne : Int,
-                 _ premierCaractère : Int,
-                 _ dernierCaractère : Int,
-                 _ firstFixItLine : String) {
-    let ligneConcernée = lignesDuFichier [ligne - 1]
-    print ("  line concernée '\(ligneConcernée)'")
-    var préfixe = ligneConcernée
-    préfixe.removeLast (ligneConcernée.count - premierCaractère)
-    print ("  Préfixe '\(préfixe)'")
-    var suffixe = ligneConcernée
-    suffixe.removeFirst (premierCaractère)
-    print ("  Suffixe '\(suffixe)'")
-    let ligneModifiée = préfixe + ")" + suffixe
-    print ("  ligne modifiée '\(ligneModifiée)'")
-    lignesDuFichier [ligne - 1] = ligneModifiée
-  }
-
-}
-
-//----------------------------------------------------------------------------------------
-
   func traduire (projetGALGAS inCheminFichierGALGAS : String) -> (Bool, Int) {
     let correcteurs : [Correcteur] = [
-      InsererFermetureParentheseAvantRule (),
       InsererOuvertureParentheseAvantDelimiteurOut (),
       InsererOuvertureParentheseAvantDelimiteurInOut (),
       InsererOuvertureParentheseAvantDelimiteurIn (),
@@ -321,7 +295,7 @@ class InsererFermetureParentheseAvantRule : Correcteur {
       InsererOuvertureParentheseAvantSelecteurInOut (),
       InsererOuvertureParentheseAvantSelecteurOut (),
       InsererOuvertureParentheseAvantFermetureParenthese (),
-      InsererFermetureParentheseAvantAccoladeOuvrante ()
+      InsererFermetureParentheseAvantFlèche (),
     ]
     let débutConstruction = Date ()
   //-------------------- Chemin absolu vers projet galgas

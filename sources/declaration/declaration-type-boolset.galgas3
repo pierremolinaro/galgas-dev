@@ -132,7 +132,7 @@ override proc @boolsetDeclarationAST enterDeclarationInGraph
 //   KEY REPRESENTATION
 //--------------------------------------------------------------------------------------------------
 
-override func @boolsetDeclarationAST keyRepresentation -> @string {
+override func @boolsetDeclarationAST keyRepresentation () -> @string {
   result = "boolset @" + self.mBoolsetTypeName
 }
 

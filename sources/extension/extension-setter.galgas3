@@ -154,7 +154,7 @@ syntax extension galgas4DeclarationsSyntax {
 //   KEY REPRESENTATION
 //--------------------------------------------------------------------------------------------------
 
-override func @extensionSetterAST keyRepresentation -> @string {
+override func @extensionSetterAST keyRepresentation () -> @string {
   result = "extension setter @" + self.mTypeName + " " + self.mExtensionSetterName
 }
 
@@ -317,7 +317,7 @@ final class @extensionSetterForGeneration : @semanticDeclarationWithHeaderForGen
 
 //································································································
 
-override func @extensionSetterForGeneration headerKind -> @headerKind {
+override func @extensionSetterForGeneration headerKind () -> @headerKind {
   result = @headerKind.oneHeader
 }
 
