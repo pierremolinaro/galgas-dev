@@ -100,7 +100,7 @@ final class @stringsetPredefinedTypeAST : @predefinedTypeAST {
     !?ioUnifiedTypeMap.makeEntryFromString (!"string", ?let stringType)
     outSetterMap = @()
     !?outSetterMap.insertKey
-      (!@lstring {!"removeKey" !@location.here},
+      (!@lstring (!"removeKey", @location.here),
       !@methodKind. definedAsMember,
       !@formalParameterSignature.listWithValue {!"".nowhere !stringType !.argumentVarIn !"inKey"},
       !false, // No Compiler argument

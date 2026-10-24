@@ -26,10 +26,10 @@ syntax extension galgas3SyntaxComponentSyntax {
     $send$
     let instructionLocation = @location.here
     <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST sentExpression)
-    outInstruction = @syntaxSendInstructionAST {
-      !instructionLocation
-      !sentExpression
-    }
+    outInstruction = @syntaxSendInstructionAST (
+      !instructionLocation,
+      sentExpression
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -47,10 +47,10 @@ syntax extension galgas4SyntaxComponentSyntax {
     $send$
     let instructionLocation = @location.here
     <expression> (!?ioDeclarations, ?let @semanticExpressionAST sentExpression)
-    outInstruction = @syntaxSendInstructionAST {
-      !instructionLocation
-      !sentExpression
-    }
+    outInstruction = @syntaxSendInstructionAST (
+      !instructionLocation,
+      sentExpression
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -108,10 +108,10 @@ final class @syntaxSendInstructionAST : @syntaxInstructionAST {
       error (self.mInstructionLocation: "'send' expresion should be an @string expression")
     end
   //---
-    ioInstructionListForGeneration += !@syntaxSendInstructionForGeneration {
-      !self.mInstructionLocation
-      !expression
-    }
+    ioInstructionListForGeneration += !@syntaxSendInstructionForGeneration (
+      !self.mInstructionLocation,
+      expression
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

@@ -74,19 +74,19 @@ proc compileBeforeClauseGalgas3
       ?let @semanticInstructionListForGeneration blockSemanticInstructionListForGeneration,
       ?*
     )
-    semanticInstructionListForGeneration += !@semanticBlockInstructionForGeneration {
-      !blockSemanticInstructionListForGeneration}
+    semanticInstructionListForGeneration += !@semanticBlockInstructionForGeneration (
+      !blockSemanticInstructionListForGeneration)
   end
 //---
   ioDecoratedDeclarationListForGeneration +=
-    !@routineImplementationForGeneration {
-      !generateHeader: false
-      !implementationCppFileName: "proc-before"
-      !routineMangledName:"before"
-      !@formalParameterListForGeneration ()
-      !true // Generate static
-      !semanticInstructionListForGeneration
-    }
+    !@routineImplementationForGeneration (
+      !generateHeader: false,
+      !implementationCppFileName: "proc-before",
+      !routineMangledName:"before",
+      @formalParameterListForGeneration (),
+      true, // Generate static
+      semanticInstructionListForGeneration
+    )
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -109,7 +109,7 @@ private proc compileProgramRulesGalgas3
     !?ioUsefulEntitiesGraph.addNode (!usefulnessName, !usefulnessName)
     ioUsefulnessRootEntities += !usefulnessName
     let @formalParameterListAST argumentList = @[
-      @("".nowhere, .argumentConstantIn, @lstring {!"lstring" !@location.here}, mSourceFileVariableName, mSourceFileVariableNameIsUnused)
+      @("".nowhere, .argumentConstantIn, @lstring (!"lstring", @location.here), mSourceFileVariableName, mSourceFileVariableNameIsUnused)
     ]
     analyzeRoutineBody (
       !usefulnessName,
@@ -123,14 +123,14 @@ private proc compileProgramRulesGalgas3
       ?let routineSignature
     )
     ioDecoratedDeclarationListForGeneration +=
-      !@routineImplementationForGeneration {
-        !generateHeader: false
-        !implementationCppFileName: "proc-programrule"
-        !routineMangledName: "programRule_" + ruleIndex.string
-        !routineSignature
-        !true // Generate static
-        !semanticInstructionListForGeneration
-      }
+      !@routineImplementationForGeneration (
+        !generateHeader: false,
+        !implementationCppFileName: "proc-programrule",
+        !routineMangledName: "programRule_" + ruleIndex.string,
+        routineSignature,
+        true, // Generate static
+        semanticInstructionListForGeneration
+      )
     ruleIndex += 1
   end
 }
@@ -166,17 +166,17 @@ proc compileAfterClauseGalgas3
       ?let @semanticInstructionListForGeneration blockSemanticInstructionListForGeneration,
       ?*
     )
-    semanticInstructionListForGeneration += !@semanticBlockInstructionForGeneration {!blockSemanticInstructionListForGeneration}
+    semanticInstructionListForGeneration += !@semanticBlockInstructionForGeneration (!blockSemanticInstructionListForGeneration)
   end
 //---
-  ioDecoratedDeclarationListForGeneration += !@routineImplementationForGeneration {
-    !generateHeader: false
-    !implementationCppFileName: "proc-after"
-    !routineMangledName: "after"
-    !@formalParameterListForGeneration ()
-    !true // Generate static
-    !semanticInstructionListForGeneration
-  }
+  ioDecoratedDeclarationListForGeneration += !@routineImplementationForGeneration (
+    !generateHeader: false,
+    !implementationCppFileName: "proc-after",
+    !routineMangledName: "after",
+    @formalParameterListForGeneration (),
+    true, // Generate static
+    semanticInstructionListForGeneration
+  )
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -197,13 +197,13 @@ proc compileProgramComponentGalgas3
   !@programComponentForGeneration outProgramComponentForGeneration
 ) {
 //--- Analysis context
-  let analysisContext = @analysisContext {
-    !inSemanticContext
-    !buildPredefinedTypes (ioTypeMap)
-    !selfObjectCppName: ""
-    !selfAvailability: .none
+  let analysisContext = @analysisContext (
+    !inSemanticContext,
+    buildPredefinedTypes (ioTypeMap),
+    !selfObjectCppName: "",
+    !selfAvailability: .none,
     !selfObjectCppPrefixForAccessingProperty: ""
-  }
+  )
 //--- Analyse 'before' instructions
   var @programListForGeneration decoratedDeclarationListForGeneration = @()
   compileBeforeClauseGalgas3 (
@@ -253,12 +253,12 @@ proc compileProgramComponentGalgas3
     !inProjectVersionString
   ]
 //---
-  outProgramComponentForGeneration = @programComponentForGeneration {
-    !generateHeader: false
-    !implementationCppFileName: "program"
-    !inclusionSet
-    !cppContents
-  }
+  outProgramComponentForGeneration = @programComponentForGeneration (
+    !generateHeader: false,
+    !implementationCppFileName: "program",
+    inclusionSet,
+    cppContents
+  )
 }
 
 //--------------------------------------------------------------------------------------------------

@@ -134,11 +134,11 @@ syntax extension galgas3InstructionsSyntax {
     $)$
     $in$
     <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST enumeratedExpression)
-    outEnumeratedObject = @enumeratedCollectionCstListInExpAST {
-      !elementList
-      !enumeratedExpression
-      !location
-    }
+    outEnumeratedObject = @enumeratedCollectionCstListInExpAST (
+      !elementList,
+      enumeratedExpression,
+      location
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -160,12 +160,12 @@ syntax extension galgas3InstructionsSyntax {
     end
     $in$
     <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST enumeratedExpression)
-    outEnumeratedObject = @enumeratedCollectionVarInExpAST {
-      !typeName
-      !enumerationVariable
-      !enumeratedExpression
-      !@location.here
-    }
+    outEnumeratedObject = @enumeratedCollectionVarInExpAST (
+      !typeName,
+      enumerationVariable,
+      enumeratedExpression,
+      @location.here
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -190,7 +190,7 @@ syntax extension galgas3InstructionsSyntax {
     end
     let @semanticExpressionAST mWhileExpression
     select
-      mWhileExpression = @trueExpressionAST {!@location.here}
+      mWhileExpression = @trueExpressionAST (!@location.here)
     or
       $while$
       <expression_ggs3> (!?ioDeclarations, ? mWhileExpression)
@@ -207,7 +207,7 @@ syntax extension galgas3InstructionsSyntax {
     $do$
     let @lstring indexVariableName
     select
-      indexVariableName = @lstring {!"" !@location.here}
+      indexVariableName = @lstring (!"", @location.here)
     or
       $($
       $identifier$ (? indexVariableName)
@@ -233,22 +233,22 @@ syntax extension galgas3InstructionsSyntax {
     let endof_after_branch = @location.here
     $end$
     let endof_foreach_instruction = @location.here
-    outInstruction = @forInstructionAST {
-      !instructionLocation
-      !mEnumeratedObjectList
-      !indexVariableName
-      !mWhileExpression
-      !endof_while_expression
-      !mBeforeInstructionList
-      !endof_before_branch
-      !mBetweenInstructionList
-      !endof_between_branch
-      !mDoInstructionList
-      !endof_do_branch
-      !mAfterInstructionList
-      !endof_after_branch
-      !endof_foreach_instruction
-    }
+    outInstruction = @forInstructionAST (
+      !instructionLocation,
+      mEnumeratedObjectList,
+      indexVariableName,
+      mWhileExpression,
+      endof_while_expression,
+      mBeforeInstructionList,
+      endof_before_branch,
+      mBetweenInstructionList,
+      endof_between_branch,
+      mDoInstructionList,
+      endof_do_branch,
+      mAfterInstructionList,
+      endof_after_branch,
+      endof_foreach_instruction
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -316,11 +316,11 @@ syntax extension galgas4InstructionsSyntax {
     $)$
     $in$
     <expression> (!?ioDeclarations, ?let @semanticExpressionAST enumeratedExpression)
-    outEnumeratedObject = @enumeratedCollectionCstListInExpAST {
-      !elementList
-      !enumeratedExpression
-      !location
-    }
+    outEnumeratedObject = @enumeratedCollectionCstListInExpAST (
+      !elementList,
+      enumeratedExpression,
+      location
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -342,12 +342,12 @@ syntax extension galgas4InstructionsSyntax {
     end
     $in$
     <expression> (!?ioDeclarations, ?let @semanticExpressionAST enumeratedExpression)
-    outEnumeratedObject = @enumeratedCollectionVarInExpAST {
-      !typeName
-      !enumerationVariable
-      !enumeratedExpression
-      !@location.here
-    }
+    outEnumeratedObject = @enumeratedCollectionVarInExpAST (
+      !typeName,
+      enumerationVariable,
+      enumeratedExpression,
+      @location.here
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -372,7 +372,7 @@ syntax extension galgas4InstructionsSyntax {
     end
     let @semanticExpressionAST mWhileExpression
     select
-      mWhileExpression = @trueExpressionAST {!@location.here}
+      mWhileExpression = @trueExpressionAST (!@location.here)
     or
       $while$
       <expression> (!?ioDeclarations, ? mWhileExpression)
@@ -389,7 +389,7 @@ syntax extension galgas4InstructionsSyntax {
     $do$
     let @lstring indexVariableName
     select
-      indexVariableName = @lstring {!"" !@location.here}
+      indexVariableName = @lstring (!"", @location.here)
     or
       $($
       $identifier$ (? indexVariableName)
@@ -415,22 +415,22 @@ syntax extension galgas4InstructionsSyntax {
     let endof_after_branch = @location.here
     $end$
     let endof_foreach_instruction = @location.here
-    outInstruction = @forInstructionAST {
-      !instructionLocation
-      !mEnumeratedObjectList
-      !indexVariableName
-      !mWhileExpression
-      !endof_while_expression
-      !mBeforeInstructionList
-      !endof_before_branch
-      !mBetweenInstructionList
-      !endof_between_branch
-      !mDoInstructionList
-      !endof_do_branch
-      !mAfterInstructionList
-      !endof_after_branch
-      !endof_foreach_instruction
-    }
+    outInstruction = @forInstructionAST (
+      !instructionLocation,
+      mEnumeratedObjectList,
+      indexVariableName,
+      mWhileExpression,
+      endof_while_expression,
+      mBeforeInstructionList,
+      endof_before_branch,
+      mBetweenInstructionList,
+      endof_between_branch,
+      mDoInstructionList,
+      endof_do_branch,
+      mAfterInstructionList,
+      endof_after_branch,
+      endof_foreach_instruction
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -514,7 +514,7 @@ override proc @enumeratedCollectionCstListInExpAST.analyzeEnumeration (
       let currentTypedAttributeList = outEnumerationExpression.mResultType.definition.enumerationDescriptorList
       for (mEnumeratedType mEnumerationName) in currentTypedAttributeList do
        !?ioVariableMap.insertUsedLocalConstant
-         (!@lstring {!mEnumerationName !self.mEndOfEnumerationExpression},
+         (!@lstring (!mEnumerationName, self.mEndOfEnumerationExpression),
          !mEnumeratedType,
          !outEnumeratorCppName +".current_" + mEnumerationName.identifierRepresentation + " (HERE)",
          !outEnumeratorCppName +".current_" + mEnumerationName.identifierRepresentation + " (HERE)"
@@ -734,16 +734,16 @@ override proc @forInstructionAST.analyzeSemanticInstruction (
   !?ioVariableMap.closeBranch (!self.mEndOf_foreach_instruction)
   !?ioVariableMap.closeOverride (!self.mEndOf_foreach_instruction)
 //--- Generate instruction
-  ioInstructionListForGeneration += !@forInstructionForGeneration {
-    !self.mInstructionLocation
-    !enumerationList
-    !indexCppName
-    !whileExpression
-    !before_instructionList
-    !between_instructionList
-    !do_instructionList
-    !after_instructionList
-  }
+  ioInstructionListForGeneration += !@forInstructionForGeneration (
+    !self.mInstructionLocation,
+    enumerationList,
+    indexCppName,
+    whileExpression,
+    before_instructionList,
+    between_instructionList,
+    do_instructionList,
+    after_instructionList
+  )
 }
 
 //--------------------------------------------------------------------------------------------------

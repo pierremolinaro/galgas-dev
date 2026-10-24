@@ -48,10 +48,10 @@ syntax extension galgas3InstructionsSyntax {
     $($
     <output_expression_list_ggs34> (!?ioDeclarations, ?let actualParameterList)
     $)$
-    outInstruction = @superInitInstructionAST {
-      !instructionLocation
-      !actualParameterList
-    }
+    outInstruction = @superInitInstructionAST (
+      !instructionLocation,
+      actualParameterList
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -73,10 +73,10 @@ syntax extension galgas4InstructionsSyntax {
     $($
     <output_expression_list> (!?ioDeclarations, ?let actualParameterList)
     $)$
-    outInstruction = @superInitInstructionAST {
-      !instructionLocation
-      !actualParameterList
-    }
+    outInstruction = @superInitInstructionAST (
+      !instructionLocation,
+      actualParameterList
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -114,7 +114,7 @@ final class @superInitInstructionAST : @semanticInstructionAST {
         let superTypeDefinition = superType.bang.definition
       //--- Check super initializer is defined
         let superClassInitializerMap = superTypeDefinition.initializerMap
-        let signature = @lstring {!self.mActualParameterList.initializerSignature !self.mInstructionLocation}
+        let signature = @lstring (!self.mActualParameterList.initializerSignature, self.mInstructionLocation)
         superClassInitializerMap.searchKey (!signature, ?let formalSignature)
       //--- Mark all super properties are defined
         for superProperty in superTypeDefinition.allTypedPropertyList do
@@ -158,12 +158,12 @@ final class @superInitInstructionAST : @semanticInstructionAST {
           actualParameterListForGeneration += !expression
         end
       //--- Generate instructions
-        ioInstructionListForGeneration += !@superInitInstructionForGeneration {
-          !self.mInstructionLocation
-          !formalSignature.initializerSignature
-          !actualParameterListForGeneration
-          !superTypeDefinition.typeName
-        }
+        ioInstructionListForGeneration += !@superInitInstructionForGeneration (
+          !self.mInstructionLocation,
+          formalSignature.initializerSignature,
+          actualParameterListForGeneration,
+          superTypeDefinition.typeName
+        )
      case null :
        error (self.mInstructionLocation : "superinit  is not available, current class has no super class")
      end

@@ -37,10 +37,10 @@ syntax extension galgas3InstructionsSyntax {
     let instructionLocation = @location.here
     $=$
     <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST sourceExpression)
-    outInstruction = @selfAssignmentInstructionAST {
-      !instructionLocation
-      !sourceExpression
-    }
+    outInstruction = @selfAssignmentInstructionAST (
+      !instructionLocation,
+      sourceExpression
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -59,10 +59,10 @@ syntax extension galgas4InstructionsSyntax {
     let instructionLocation = @location.here
     $=$
     <expression> (!?ioDeclarations, ?let @semanticExpressionAST sourceExpression)
-    outInstruction = @selfAssignmentInstructionAST {
-      !instructionLocation
-      !sourceExpression
-    }
+    outInstruction = @selfAssignmentInstructionAST (
+      !instructionLocation,
+      sourceExpression
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -105,15 +105,15 @@ override proc @selfAssignmentInstructionAST.analyzeSemanticInstruction (
   //--- Check assignment type compatibility
     checkAssignmentTypeWithImplicitGetterCall (!selfAvailable.type, !expression.mResultType, !self.mInstructionLocation, !?expression)
   //--- Generate instruction
-    ioInstructionListForGeneration += !@assignmentInstructionForGeneration {
-      !selfAvailable.type
-      !selfAvailable.type
-      !inAnalysisContext.selfObjectCppName
-      !inAnalysisContext.selfObjectCppName
-      !"".nowhere
-      !expression
-      !self.mInstructionLocation
-    }
+    ioInstructionListForGeneration += !@assignmentInstructionForGeneration (
+      !selfAvailable.type,
+      selfAvailable.type,
+      inAnalysisContext.selfObjectCppName,
+      inAnalysisContext.selfObjectCppName,
+      "".nowhere,
+      expression,
+      self.mInstructionLocation
+    )
   else
     error (self.mInstructionLocation : "'self' not available in this context")
   end

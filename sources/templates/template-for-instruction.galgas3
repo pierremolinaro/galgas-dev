@@ -151,7 +151,7 @@ syntax extension templateSyntax {
     $do$
     let @lstring indexIdentifier
     select
-      indexIdentifier = @lstring {!"" !@location.here}
+      indexIdentifier = @lstring (!"", @location.here)
     or
       $($
       $identifier$ (? indexIdentifier)
@@ -187,17 +187,17 @@ syntax extension templateSyntax {
     end
   //---
     $end$
-    ioResultingInstructionList += !@templateInstructionForeachAST {
-      !ascending
-      !expression
-      !enumeration
-      !endOfProperties
-      !beforeInstructionList
-      !doInstructionList
-      !indexIdentifier
-      !betweenInstructionList
-      !afterInstructionList
-    }
+    ioResultingInstructionList += !@templateInstructionForeachAST (
+      !ascending,
+      expression,
+      enumeration,
+      endOfProperties,
+      beforeInstructionList,
+      doInstructionList,
+      indexIdentifier,
+      betweenInstructionList,
+      afterInstructionList
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -262,10 +262,10 @@ override proc @templateInstructionForeachAST.templateInstructionAnalysis
       end
     end
   end
-  let doAnalysisContext = @templateAnalysisContext {
-    !inAnalysisContext.mSemanticContext
-    !inAnalysisContext.mPredefinedTypes
-    !doVariableMap}
+  let doAnalysisContext = @templateAnalysisContext (
+    !inAnalysisContext.mSemanticContext,
+    inAnalysisContext.mPredefinedTypes,
+    doVariableMap)
   var doInstructionList = @templateInstructionListForGeneration ()
   templateInstructionListAnalysis (
     !inUsefulnessCallerEntityName,
@@ -296,16 +296,16 @@ override proc @templateInstructionForeachAST.templateInstructionAnalysis
     !?afterInstructionList
   )
 //---
-  ioInstructionList += !@templateInstructionForeachForGeneration {
-    !self.mIsAscending
-    !expression
-    !enumeratorCppName
-    !beforeInstructionList
-    !doInstructionList
-    !cppIndexVarName
-    !betweenInstructionList
-    !afterInstructionList
-  }
+  ioInstructionList += !@templateInstructionForeachForGeneration (
+    !self.mIsAscending,
+    expression,
+    enumeratorCppName,
+    beforeInstructionList,
+    doInstructionList,
+    cppIndexVarName,
+    betweenInstructionList,
+    afterInstructionList
+  )
 }
 
 //--------------------------------------------------------------------------------------------------

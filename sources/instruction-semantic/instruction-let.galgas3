@@ -54,21 +54,21 @@ syntax extension galgas3InstructionsSyntax {
     <type_definition_ggs3> (!?ioDeclarations, ?let typeName)
     $identifier$ (?let constantName)
     select
-      outInstruction = @undefinedLocalConstantDeclarationAST {
-        !typeName.location
-        !typeName
-        !constantName
-      }
+      outInstruction = @undefinedLocalConstantDeclarationAST (
+        !typeName.location,
+        typeName,
+        constantName
+      )
     or
       $=$
       <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST sourceExpression)
-      outInstruction = @localVariableOrConstantDeclarationWithAssignmentAST {
-        !typeName.location
-        !true // Is Constant
-        !typeName
-        !constantName
-        !sourceExpression
-      }
+      outInstruction = @localVariableOrConstantDeclarationWithAssignmentAST (
+        !typeName.location,
+        true,
+        typeName,
+        constantName,
+        sourceExpression
+      )
     end
   }
 
@@ -80,10 +80,10 @@ syntax extension galgas3InstructionsSyntax {
     $identifier$ (?let variableName)
     $=$
     <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST sourceExpression)
-    outInstruction = @localConstantDeclarationWithAssignmentAST {
-      !variableName.location
-      !variableName
-      !sourceExpression}
+    outInstruction = @localConstantDeclarationWithAssignmentAST (
+      !variableName.location,
+      variableName,
+      sourceExpression)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -102,21 +102,21 @@ syntax extension galgas4InstructionsSyntax {
     <type_definition> (!?ioDeclarations, ?let typeName)
     $identifier$ (?let constantName)
     select
-      outInstruction = @undefinedLocalConstantDeclarationAST {
-        !typeName.location
-        !typeName
-        !constantName
-     }
+      outInstruction = @undefinedLocalConstantDeclarationAST (
+        !typeName.location,
+        typeName,
+        constantName
+     )
     or
       $=$
       <expression> (!?ioDeclarations, ?let @semanticExpressionAST sourceExpression)
-      outInstruction = @localVariableOrConstantDeclarationWithAssignmentAST {
-        !typeName.location
-        !true // Is Constant
-        !typeName
-        !constantName
-        !sourceExpression
-      }
+      outInstruction = @localVariableOrConstantDeclarationWithAssignmentAST (
+        !typeName.location,
+        true, // Is Constant
+        typeName,
+        constantName,
+        sourceExpression
+      )
     end
   }
 
@@ -128,10 +128,10 @@ syntax extension galgas4InstructionsSyntax {
     $identifier$ (?let variableName)
     $=$
     <expression> (!?ioDeclarations, ?let @semanticExpressionAST sourceExpression)
-    outInstruction = @localConstantDeclarationWithAssignmentAST {
-      !variableName.location
-      !variableName
-      !sourceExpression}
+    outInstruction = @localConstantDeclarationWithAssignmentAST (
+      !variableName.location,
+      variableName,
+      sourceExpression)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -182,10 +182,10 @@ override proc @undefinedLocalConstantDeclarationAST.analyzeSemanticInstruction (
     !targetVariableCppName
   )
 //--- Generate instruction
-  ioInstructionListForGeneration += !@undefinedLocalConstantDeclarationForGeneration {
-    !targetType
-    !targetVariableCppName
-  }
+  ioInstructionListForGeneration += !@undefinedLocalConstantDeclarationForGeneration (
+    !targetType,
+    targetVariableCppName
+  )
 }
 
 //·································································································
@@ -217,11 +217,11 @@ override proc @localConstantDeclarationWithAssignmentAST.analyzeSemanticInstruct
     !targetVariableCppName
   )
 //--- Generate instruction
-  ioInstructionListForGeneration += !@localVariableOrConstantDeclarationWithSourceExpressionForGeneration {
-    !expression.mResultType
-    !true
-    !targetVariableCppName
-    !expression}
+  ioInstructionListForGeneration += !@localVariableOrConstantDeclarationWithSourceExpressionForGeneration (
+    !expression.mResultType,
+    true,
+    targetVariableCppName,
+    expression)
 }
 
 //·································································································
@@ -266,12 +266,12 @@ override proc @localVariableOrConstantDeclarationWithAssignmentAST.analyzeSemant
 //--- Check assignment type compatibility
   checkAssignmentTypeWithImplicitGetterCall (!targetType, !expression.mResultType, !self.mInstructionLocation, !?expression)
 //--- Generate instruction
-  ioInstructionListForGeneration += !@localVariableOrConstantDeclarationWithSourceExpressionForGeneration {
-    !targetType
-    !self.mIsConstant
-    !targetVariableCppName
-    !expression
-  }
+  ioInstructionListForGeneration += !@localVariableOrConstantDeclarationWithSourceExpressionForGeneration (
+    !targetType,
+    self.mIsConstant,
+    targetVariableCppName,
+    expression
+  )
 }
 
 //--------------------------------------------------------------------------------------------------

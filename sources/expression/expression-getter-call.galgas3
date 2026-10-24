@@ -35,12 +35,12 @@ syntax extension galgas3ExpressionSyntax {
     <output_expression_list_ggs3> (!?ioDeclarations, ?let @actualOutputArgumentList expressionList)
     $]$
     let endLocation = @location.here
-    outExpression = @getterCallExpressionAST {
-      !receiverExpression
-      !getterName
-      !expressionList
-      ![startLocation union !endLocation]
-    }
+    outExpression = @getterCallExpressionAST (
+      !receiverExpression,
+      getterName,
+      expressionList,
+      [startLocation union !endLocation]
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -124,16 +124,16 @@ final class @getterCallExpressionAST : @semanticExpressionAST {
           checkAssignmentTypeWithImplicitGetterCall (!mFormalArgumentType, !exp.mResultType, !mEndOfExpressionLocation, !?exp)
           constructorEffectiveParameterList += !exp
         end
-        outExpression = @getterCallExpressionForGeneration {
-          !aGetter.mReturnedType
-          !self.mGetterName.location
-          !aGetter.mKind
-          !receiverExpression
-          !@()
-          !if aGetter.mGetterNameThatObsoletesInvokationName == "" then self.mGetterName.string else aGetter.mGetterNameThatObsoletesInvokationName end
-          !constructorEffectiveParameterList
-          !aGetter.mHasCompilerArgument
-        }
+        outExpression = @getterCallExpressionForGeneration (
+          !aGetter.mReturnedType,
+          self.mGetterName.location,
+          aGetter.mKind,
+          receiverExpression,
+          @(),
+          if aGetter.mGetterNameThatObsoletesInvokationName == "" then self.mGetterName.string else aGetter.mGetterNameThatObsoletesInvokationName end,
+          constructorEffectiveParameterList,
+          aGetter.mHasCompilerArgument
+        )
 //        if inAnalysisContext.semanticContext.galgas4 || [option galgas_cli_options.errorOnOldStyleGetterCall value],
         if self.mActualArgumentList.count == 0 then
           error (self.mExpressionLocation : "func with no argument, remove parenthesis" fixit remove)
@@ -161,12 +161,12 @@ final class @getterCallExpressionAST : @semanticExpressionAST {
               getterFormalArgumentTypeList = entry.mArgumentTypeList
               hasCompilerArgument = entry.mHasCompilerArgument
               returnedType = entry.mReturnedType
-              receiverExpression = @propertyAccessExpressionForGeneration {
-                !returnedType
-                !self.mGetterName.location
-                !receiverExpression
-                !propertyName.string
-              }
+              receiverExpression = @propertyAccessExpressionForGeneration (
+                !returnedType,
+                self.mGetterName.location,
+                receiverExpression,
+                propertyName.string
+              )
               kind = entry.mKind
               obsoletedByGetter = entry.mGetterNameThatObsoletesInvokationName
             end
@@ -217,16 +217,16 @@ final class @getterCallExpressionAST : @semanticExpressionAST {
           if obsoletedByGetter != "" then
             error (self.mGetterName : "obsolete func" fixit replace obsoletedByGetter)
           end
-          outExpression = @getterCallExpressionForGeneration {
-            !returnedType
-            !self.mGetterName.location
-            !kind
-            !receiverExpression
-            !fieldList
-            !if obsoletedByGetter == "" then self.mGetterName.string else obsoletedByGetter end
-            !constructorEffectiveParameterList
-            !hasCompilerArgument
-          }
+          outExpression = @getterCallExpressionForGeneration (
+            !returnedType,
+            self.mGetterName.location,
+            kind,
+            receiverExpression,
+            fieldList,
+            if obsoletedByGetter == "" then self.mGetterName.string else obsoletedByGetter end,
+            constructorEffectiveParameterList,
+            hasCompilerArgument
+          )
         end
       elsif receiverType.definition.getterMap.count == 0 then
         error (self.mGetterName

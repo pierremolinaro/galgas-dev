@@ -49,13 +49,13 @@ syntax extension galgas3SyntaxComponentSyntax {
     end
     $end$
     let endOf_repeat_instruction = @location.here
-    outInstruction = @repeatInstruction {
-      !mRepeatInstructionLocation
-      !mRepeatedInstructionList
-      !endOf_repeated_instructions
-      !mRepeatBranchList
-      !endOf_repeat_instruction
-    }
+    outInstruction = @repeatInstruction (
+      !mRepeatInstructionLocation,
+      mRepeatedInstructionList,
+      endOf_repeated_instructions,
+      mRepeatBranchList,
+      endOf_repeat_instruction
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -83,13 +83,13 @@ syntax extension galgas4SyntaxComponentSyntax {
     end
     $end$
     let endOf_repeat_instruction = @location.here
-    outInstruction = @repeatInstruction {
-      !mRepeatInstructionLocation
-      !mRepeatedInstructionList
-      !endOf_repeated_instructions
-      !mRepeatBranchList
-      !endOf_repeat_instruction
-    }
+    outInstruction = @repeatInstruction (
+      !mRepeatInstructionLocation,
+      mRepeatedInstructionList,
+      endOf_repeated_instructions,
+      mRepeatBranchList,
+      endOf_repeat_instruction
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -130,11 +130,11 @@ override proc @repeatInstruction.transformInstructionForGrammarAnalysis
     repeatBranchList += !syntaxInstructionList
   end
 
-  ioSyntaxInstructionList += !@repeatInstructionForGrammarAnalysis {
-    !self.mInstructionLocation
-    !repeatBranchList
-    !addedNonTerminalIndex
-  }
+  ioSyntaxInstructionList += !@repeatInstructionForGrammarAnalysis (
+    !self.mInstructionLocation,
+    repeatBranchList,
+    addedNonTerminalIndex
+  )
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -203,14 +203,14 @@ override proc @repeatInstruction.analyzeSyntaxInstruction
 //--- End block
   !?ioVariableMap.closeOverride (!self.mEndOf_repeat_instruction)
 //---
-  ioInstructionListForGeneration += !@repeatInstructionForGeneration {
-    !self.mInstructionLocation
-    !inComponentName
-    !choiceIndex
-    !repeated_instructionList
-    !self.mEndOf_repeat_instruction
-    !listOfSemanticInstructionListForGeneration
-  }
+  ioInstructionListForGeneration += !@repeatInstructionForGeneration (
+    !self.mInstructionLocation,
+    inComponentName,
+    choiceIndex,
+    repeated_instructionList,
+    self.mEndOf_repeat_instruction,
+    listOfSemanticInstructionListForGeneration
+  )
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -241,14 +241,14 @@ override proc @repeatInstructionForGeneration.appendSyntaxSignature
       !mEndOfInstructionList
   end
 //---
-  ioInstructionListForGeneration += !@repeatInstructionForGeneration {
-    !self.mInstructionLocation
-    !self.mSyntaxComponentName
-    !self.mChoiceIndex
-    !repeated_instructionList
-    !self.mEndOfRepeatedInstructions
-    !listOfSemanticInstructionListForGeneration
-  }
+  ioInstructionListForGeneration += !@repeatInstructionForGeneration (
+    !self.mInstructionLocation,
+    self.mSyntaxComponentName,
+    self.mChoiceIndex,
+    repeated_instructionList,
+    self.mEndOfRepeatedInstructions,
+    listOfSemanticInstructionListForGeneration
+  )
 }
 
 //--------------------------------------------------------------------------------------------------

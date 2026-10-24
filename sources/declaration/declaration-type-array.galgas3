@@ -78,9 +78,9 @@ final class @arrayTypeDeclarationAST : @semanticDeclarationAST {
     ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext,
     ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext,
     ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList ) {
-    let key = @lstring {!"@" + self.arrayTypeName !self.arrayTypeName.location}
+    let key = @lstring (!"@" + self.arrayTypeName, self.arrayTypeName.location)
     !?ioSemanticTypePrecedenceGraph.addNode (!key, !self)
-    !?ioSemanticTypePrecedenceGraph.noteNode (!@lstring {!"@" + self.elementTypeName !self.elementTypeName})
+    !?ioSemanticTypePrecedenceGraph.noteNode (!@lstring (!"@" + self.elementTypeName, self.elementTypeName))
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -149,7 +149,7 @@ final class @arrayTypeDeclarationAST : @semanticDeclarationAST {
   //------------------------ Instance methods
     var @instanceMethodMap instanceMethodMap = @()
     !?instanceMethodMap.insertKey
-      (!@lstring {!"first" !@location.here},
+      (!@lstring (!"first", @location.here),
       !@methodKind.definedAsMember,
       !setterOutputFormalArgumentList,
       !@location.here,
@@ -158,7 +158,7 @@ final class @arrayTypeDeclarationAST : @semanticDeclarationAST {
       !""
     )
     !?instanceMethodMap.insertKey
-      (!@lstring {!"last" !@location.here},
+      (!@lstring (!"last", @location.here),
       !@methodKind.definedAsMember,
       !setterOutputFormalArgumentList,
       !@location.here,
@@ -169,7 +169,7 @@ final class @arrayTypeDeclarationAST : @semanticDeclarationAST {
   //---------------------------------------- Setters
     var @setterMap setterMap = @()
     !?setterMap.insertKey
-      (!@lstring {!"append" !.here},
+      (!@lstring (!"append", .here),
       !.definedAsMember,
       !@[@("".nowhere, elementType, .argumentConstantIn, "inElement")],
       !true,
@@ -177,7 +177,7 @@ final class @arrayTypeDeclarationAST : @semanticDeclarationAST {
       !""
     )
     !?setterMap.insertKey
-      (!@lstring {!"popFirst" !@location.here},
+      (!@lstring (!"popFirst", @location.here),
       !@methodKind.definedAsMember,
       !setterOutputFormalArgumentList,
       !true,
@@ -185,7 +185,7 @@ final class @arrayTypeDeclarationAST : @semanticDeclarationAST {
       !""
     )
     !?setterMap.insertKey
-      (!@lstring {!"popLast" !@location.here},
+      (!@lstring (!"popLast", @location.here),
       !@methodKind.definedAsMember,
       !setterOutputFormalArgumentList,
       !true,
@@ -194,7 +194,7 @@ final class @arrayTypeDeclarationAST : @semanticDeclarationAST {
     )
     setterOutputFormalArgumentList += !"".nowhere !uintType !.argumentConstantIn !"inIndex"
     !?setterMap.insertKey
-      (!@lstring {!"removeAtIndex" !@location.here},
+      (!@lstring (!"removeAtIndex", @location.here),
       !@methodKind.definedAsMember,
       !setterOutputFormalArgumentList,
       !true,
@@ -204,7 +204,7 @@ final class @arrayTypeDeclarationAST : @semanticDeclarationAST {
   //--- mutating proc 'insertAtIndex'
     setterInputFormalArgumentList += !"".nowhere !uintType !.argumentConstantIn !"inInsertionIndex"
     !?setterMap.insertKey
-      (!@lstring {!"insertAtIndex" !@location.here},
+      (!@lstring (!"insertAtIndex", @location.here),
       !@methodKind.definedAsMember,
       !setterInputFormalArgumentList,
       !true,
@@ -255,33 +255,33 @@ final class @arrayTypeDeclarationAST : @semanticDeclarationAST {
       !acceptComparable: false
     )
   //--- Enter in type map
-    let typeDefinition = @unifiedTypeDefinition {
-      !typeName: self.arrayTypeName
-      !isPredefined: self.isPredefined
-      !isConcrete: true // Concrete Type
-      !isFinal: true
-      !superType: .null
-      !typeKind: .listType
-      !supportCollectionValue: true
-      !allTypedPropertyList: @()
-      !propertyMap: @()
-      !currentTypedPropertyList: @()
-      !initializerMap: initializerMap
-      !classFunctionMap: @()
-      !getterMap: getterMap
-      !setterMap: setterMap
-      !instanceMethodMap: instanceMethodMap
-      !classMethodMap: @()
-      !unwrappedType: .null
-      !readSubscriptMap: readSubscriptMap
-      !enumerationDescriptorList: @()
-      !features: features
-      !addAssignOperatorArguments: @()
-      !generateHeaderInSeparateFile: false
-      !typeForEnumeratedElement: elementType
-      !headerFileName: "array-" + self.arrayTypeName.string.fileNameRepresentation
+    let typeDefinition = @unifiedTypeDefinition (
+      !typeName: self.arrayTypeName,
+      !isPredefined: self.isPredefined,
+      !isConcrete: true,
+      !isFinal: true,
+      !superType: .null,
+      !typeKind: .listType,
+      !supportCollectionValue: true,
+      !allTypedPropertyList: @(),
+      !propertyMap: @(),
+      !currentTypedPropertyList: @(),
+      !initializerMap: initializerMap,
+      !classFunctionMap: @(),
+      !getterMap: getterMap,
+      !setterMap: setterMap,
+      !instanceMethodMap: instanceMethodMap,
+      !classMethodMap: @(),
+      !unwrappedType: .null,
+      !readSubscriptMap: readSubscriptMap,
+      !enumerationDescriptorList: @(),
+      !features: features,
+      !addAssignOperatorArguments: @(),
+      !generateHeaderInSeparateFile: false,
+      !typeForEnumeratedElement: elementType,
+      !headerFileName: "array-" + self.arrayTypeName.string.fileNameRepresentation,
       !headerKind: .oneHeader
-    }
+    )
     !?ioTypeMap.insertType (!typeDefinition.typeName, !typeDefinition)
   }
 
@@ -325,10 +325,10 @@ final class @arrayTypeDeclarationAST : @semanticDeclarationAST {
     let selfType = [ioTypeMap typeMapEntryForLKey !self.arrayTypeName]
     ioSemanticDeclarationListForGeneration +=
       !infoMessage: "array type " + self.arrayTypeName
-      !@arrayTypeForGeneration {
-        !selfType
-        ![ioTypeMap typeMapEntryForLKey !self.elementTypeName]
-      }
+      !@arrayTypeForGeneration (
+        !selfType,
+        [ioTypeMap typeMapEntryForLKey !self.elementTypeName]
+      )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

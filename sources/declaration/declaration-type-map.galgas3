@@ -60,18 +60,18 @@ syntax extension galgas3DeclarationsSyntax {
       <method_declaration_ggs3> (!mapTypeName, !?ioDeclarations)
     end
     $}$
-    ioDeclarations.mDeclarationList += !@mapDeclarationAST {
-      !isPredefined: false // Is not predefined
-      !mapTypeName
-      !propertyList
-      !mInsertSetterList
-      !mSearchMethodList
-      !searchSubscriptListAST
-      !mRemoveSetterList
-      !replaceMethodList
-      !insertOrReplaceDeclarationListAST
+    ioDeclarations.mDeclarationList += !@mapDeclarationAST (
+      !isPredefined: false,
+      mapTypeName,
+      propertyList,
+      mInsertSetterList,
+      mSearchMethodList,
+      searchSubscriptListAST,
+      mRemoveSetterList,
+      replaceMethodList,
+      insertOrReplaceDeclarationListAST,
       !equatable: isEquatable
-    }
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -135,7 +135,7 @@ syntax extension galgas3DeclarationsSyntax {
     $"string"$ (?let @lstring mErrorMessage)
     let @lstring mShadowErrorMessage
     select
-      mShadowErrorMessage = @lstring {!"" !@location.here}
+      mShadowErrorMessage = @lstring (!"", @location.here)
     or
       $,$
       $"string"$ (? mShadowErrorMessage)
@@ -193,18 +193,18 @@ syntax extension galgas4DeclarationsSyntax {
       <method_declaration> (!mapTypeName, !?ioDeclarations)
     end
     $}$
-    ioDeclarations.mDeclarationList += !@mapDeclarationAST {
-      !isPredefined: false // Is not predefined
-      !mapTypeName
-      !propertyList
-      !mInsertSetterList
-      !mSearchMethodList
-      !searchSubscriptListAST
-      !mRemoveSetterList
-      !replaceMethodList
-      !insertOrReplaceDeclarationListAST
+    ioDeclarations.mDeclarationList += !@mapDeclarationAST (
+      !isPredefined: false,
+      mapTypeName,
+      propertyList,
+      mInsertSetterList,
+      mSearchMethodList,
+      searchSubscriptListAST,
+      mRemoveSetterList,
+      replaceMethodList,
+      insertOrReplaceDeclarationListAST,
       !equatable: isEquatable
-    }
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -263,7 +263,7 @@ syntax extension galgas4DeclarationsSyntax {
     $"string"$ (?let @lstring mErrorMessage)
     let @lstring mShadowErrorMessage
     select
-      mShadowErrorMessage = @lstring {!"" !@location.here}
+      mShadowErrorMessage = @lstring (!"", @location.here)
     or
       $,$
       $"string"$ (? mShadowErrorMessage)
@@ -352,14 +352,14 @@ final class @mapDeclarationAST : @semanticDeclarationAST {
         !initialization: initExpression
     end
     let elementTypeName = makeEmbeddedElementTypeLName (!self.mMapTypeName)
-    ioDeclarations.mDeclarationList += !@structDeclarationAST {
-      !isPredefined: self.isPredefined
-      !elementTypeName
-      !structAttributeList
-      !enumeratedElementTypeName: ""
-      !comparison: if self.equatable then .equatable else .none end
+    ioDeclarations.mDeclarationList += !@structDeclarationAST (
+      !isPredefined: self.isPredefined,
+      elementTypeName,
+      structAttributeList,
+      !enumeratedElementTypeName: "",
+      !comparison: if self.equatable then .equatable else .none end,
       !isUsefullStruct: true
-    }
+    )
   //--- Add optional element
     !?ioDeclarations.getOptionalTypeName (?*, !forTypeNamed: elementTypeName, !isPredefined: false)
   }
@@ -374,10 +374,10 @@ final class @mapDeclarationAST : @semanticDeclarationAST {
     ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext,
     ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext,
     ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList ) {
-    let key = @lstring {!"@" + self.mMapTypeName !self.mMapTypeName.location}
+    let key = @lstring (!"@" + self.mMapTypeName, self.mMapTypeName.location)
     !?ioSemanticTypePrecedenceGraph.addNode (!key, !self)
     for (* propertyTypeName 4*) in self.mPropertyList do
-      !?ioSemanticTypePrecedenceGraph.noteNode (!@lstring {!"@" + propertyTypeName !propertyTypeName.location})
+      !?ioSemanticTypePrecedenceGraph.noteNode (!@lstring (!"@" + propertyTypeName, propertyTypeName.location))
     end
   }
 
@@ -601,7 +601,7 @@ final class @mapDeclarationAST : @semanticDeclarationAST {
     end
   //--- Enter "attributeForKey" getters
     for property in self.mPropertyList do
-      let accessorName = @lstring {!property.name.string + "ForKey" !property.name.location}
+      let accessorName = @lstring (!property.name.string + "ForKey", property.name.location)
       !?ioTypeMap.makeEntry (!property.typeName, ?let attributeTypeIndex)
       !?getterMap.insertOrReplace
         (!accessorName,
@@ -618,7 +618,7 @@ final class @mapDeclarationAST : @semanticDeclarationAST {
     if self.mInsertOrReplaceDeclarationListAST.count >= 1 then
       self.mInsertOrReplaceDeclarationListAST.first (?let insertOrReplaceLocation)
       !?setterMap.insertOrReplace
-        (!@lstring {!"insertOrReplace" !insertOrReplaceLocation},
+        (!@lstring (!"insertOrReplace", insertOrReplaceLocation),
         !.definedAsMember,
         !insertMethodFormalArgumentList,
         !false,
@@ -628,10 +628,10 @@ final class @mapDeclarationAST : @semanticDeclarationAST {
     end
   //--------- Enter "set...Attribute...forKey" setters, and 'with' accessor
     for property in self.mPropertyList do
-      let accessorName = @lstring {
-        !"set" + property.name.string.capitalizingFirstCharacter + "ForKey"
-        !property.name.location
-      }
+      let accessorName = @lstring (
+        !"set" + property.name.string.capitalizingFirstCharacter + "ForKey",
+        property.name.location
+      )
       !?ioTypeMap.makeEntry
         (!property.typeName,
         ?let @unifiedTypeMapEntry attributeTypeIndex
@@ -707,33 +707,33 @@ final class @mapDeclarationAST : @semanticDeclarationAST {
       )
     end
   //--- Enter in type map
-    let typeDefinition = @unifiedTypeDefinition {
-      !typeName: self.mMapTypeName
-      !isPredefined: self.isPredefined
-      !isConcrete: true
-      !isFinal: true
-      !superType: .null
-      !typeKind: .mapType
-      !supportCollectionValue: false
-      !allTypedPropertyList: @()
-      !propertyMap: @()
-      !currentTypedPropertyList: typedPropertyList
-      !initializerMap: initializerMap
-      !classFunctionMap: classFunctionMap
-      !getterMap: getterMap
-      !setterMap: setterMap
-      !instanceMethodMap: instanceMethodMap
-      !classMethodMap: @()
-      !unwrappedType: .null
-      !readSubscriptMap: readSubscriptMap
-      !enumerationDescriptorList: enumerationDescriptor
-      !features: features
-      !addAssignOperatorArguments: @() // argumentTypeListForAddAssignWithFieldExpressionList
-      !generateHeaderInSeparateFile: false
-      !typeForEnumeratedElement: elementTypeEntry // Type for enumerated element for "for" instruction
-      !headerFileName: "map-" + self.mMapTypeName.string.fileNameRepresentation
+    let typeDefinition = @unifiedTypeDefinition (
+      !typeName: self.mMapTypeName,
+      !isPredefined: self.isPredefined,
+      !isConcrete: true,
+      !isFinal: true,
+      !superType: .null,
+      !typeKind: .mapType,
+      !supportCollectionValue: false,
+      !allTypedPropertyList: @(),
+      !propertyMap: @(),
+      !currentTypedPropertyList: typedPropertyList,
+      !initializerMap: initializerMap,
+      !classFunctionMap: classFunctionMap,
+      !getterMap: getterMap,
+      !setterMap: setterMap,
+      !instanceMethodMap: instanceMethodMap,
+      !classMethodMap: @(),
+      !unwrappedType: .null,
+      !readSubscriptMap: readSubscriptMap,
+      !enumerationDescriptorList: enumerationDescriptor,
+      !features: features,
+      !addAssignOperatorArguments: @(),
+      !generateHeaderInSeparateFile: false,
+      !typeForEnumeratedElement: elementTypeEntry,
+      !headerFileName: "map-" + self.mMapTypeName.string.fileNameRepresentation,
       !headerKind: .oneHeader
-    }
+    )
     !?ioTypeMap.insertType (!typeDefinition.typeName, !typeDefinition)
   }
 
@@ -830,19 +830,19 @@ final class @mapDeclarationAST : @semanticDeclarationAST {
   //--- Enter map declaration
     ioSemanticDeclarationListForGeneration +=
       !infoMessage: "map " + self.mMapTypeName
-      !@mapTypeForGeneration {
-        ![ioTypeMap typeMapEntryForLKey !self.mMapTypeName]
-        !elementTypeEntry
-        !self.mMapTypeName
-        !typedAttributeList
-        !self.mInsertSetterList
-        !self.mSearchMethodList
-        !self.mSearchSubscriptList
-        !self.mRemoveSetterList
-        !self.mReplaceSetterList
-        !hasInsertOrReplaceModifier
-        !optionalElementTypeEntry
-      }
+      !@mapTypeForGeneration (
+        ![ioTypeMap typeMapEntryForLKey !self.mMapTypeName],
+        elementTypeEntry,
+        self.mMapTypeName,
+        typedAttributeList,
+        self.mInsertSetterList,
+        self.mSearchMethodList,
+        self.mSearchSubscriptList,
+        self.mRemoveSetterList,
+        self.mReplaceSetterList,
+        hasInsertOrReplaceModifier,
+        optionalElementTypeEntry
+      )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

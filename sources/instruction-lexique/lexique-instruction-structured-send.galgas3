@@ -48,16 +48,16 @@ syntax extension galgas3LexiqueComponentSyntax {
     let @lexicalSendDefaultActionAST lexicalSendDefaultAction
     select
       $\$terminal\$$ (?let @lstring defaultSentTerminal)
-      lexicalSendDefaultAction = @lexicalSendTerminalByDefaultAST {!defaultSentTerminal}
+      lexicalSendDefaultAction = @lexicalSendTerminalByDefaultAST (!defaultSentTerminal)
     or
       $error$
       $identifier$ (?let @lstring defaultErrorMessageName)
-      lexicalSendDefaultAction = @lexicalErrorByDefaultAST {!defaultErrorMessageName}
+      lexicalSendDefaultAction = @lexicalErrorByDefaultAST (!defaultErrorMessageName)
     end
-    outInstruction = @lexicalStructuredSendInstructionAST {
-      !lexicalSendSearchList
-      !lexicalSendDefaultAction
-    }
+    outInstruction = @lexicalStructuredSendInstructionAST (
+      !lexicalSendSearchList,
+      lexicalSendDefaultAction
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -85,16 +85,16 @@ syntax extension galgas4LexiqueComponentSyntax {
     let @lexicalSendDefaultActionAST lexicalSendDefaultAction
     select
       $\$terminal\$$ (?let @lstring defaultSentTerminal)
-      lexicalSendDefaultAction = @lexicalSendTerminalByDefaultAST {!defaultSentTerminal}
+      lexicalSendDefaultAction = @lexicalSendTerminalByDefaultAST (!defaultSentTerminal)
     or
       $error$
       $identifier$ (?let @lstring defaultErrorMessageName)
-      lexicalSendDefaultAction = @lexicalErrorByDefaultAST {!defaultErrorMessageName}
+      lexicalSendDefaultAction = @lexicalErrorByDefaultAST (!defaultErrorMessageName)
     end
-    outInstruction = @lexicalStructuredSendInstructionAST {
-      !lexicalSendSearchList
-      !lexicalSendDefaultAction
-    }
+    outInstruction = @lexicalStructuredSendInstructionAST (
+      !lexicalSendSearchList,
+      lexicalSendDefaultAction
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

@@ -58,11 +58,11 @@ syntax extension galgas3InstructionsSyntax {
     select
       <actual_parameter_list_ggs3> (!?ioDeclarations, ?let @actualParameterListAST actualParameterList)
       if prefixedBySelf then
-        outInstruction = @selfSetterCallInstructionAST {
-          !instructionLocation
-          !mReceiverName
-          !actualParameterList
-        }
+        outInstruction = @selfSetterCallInstructionAST (
+          !instructionLocation,
+          mReceiverName,
+          actualParameterList
+        )
       else
         error (instructionLocation : "invalid mutating proc call" spoil outInstruction)
       end
@@ -76,14 +76,14 @@ syntax extension galgas3InstructionsSyntax {
       end
       !?receiverStructProperties.popLast (?let setterName)
       <actual_parameter_list_ggs3> (!?ioDeclarations, ?let @actualParameterListAST actualParameterList)
-      outInstruction = @setterCallInstructionAST {
-        !instructionLocation
-        !prefixedBySelf
-        !mReceiverName
-        !receiverStructProperties
-        !setterName
-        !actualParameterList
-      }
+      outInstruction = @setterCallInstructionAST (
+        !instructionLocation,
+        prefixedBySelf,
+        mReceiverName,
+        receiverStructProperties,
+        setterName,
+        actualParameterList
+      )
     end
   }
 
@@ -113,11 +113,11 @@ syntax extension galgas4InstructionsSyntax {
     select
       <actual_parameter_list_with_parenthesis> (!?ioDeclarations, ?let @actualParameterListAST actualParameterList)
       if prefixedBySelf then
-        outInstruction = @selfSetterCallInstructionAST {
-          !instructionLocation
-          !mReceiverName
-          !actualParameterList
-        }
+        outInstruction = @selfSetterCallInstructionAST (
+          !instructionLocation,
+          mReceiverName,
+          actualParameterList
+        )
       else
         error (instructionLocation : "invalid mutating proc call" spoil outInstruction)
       end
@@ -131,14 +131,14 @@ syntax extension galgas4InstructionsSyntax {
       end
       !?receiverStructProperties.popLast (?let setterName)
       <actual_parameter_list_with_parenthesis> (!?ioDeclarations, ?let @actualParameterListAST actualParameterList)
-      outInstruction = @setterCallInstructionAST {
-        !instructionLocation
-        !prefixedBySelf
-        !mReceiverName
-        !receiverStructProperties
-        !setterName
-        !actualParameterList
-      }
+      outInstruction = @setterCallInstructionAST (
+        !instructionLocation,
+        prefixedBySelf,
+        mReceiverName,
+        receiverStructProperties,
+        setterName,
+        actualParameterList
+      )
     end
   }
 
@@ -265,18 +265,18 @@ override proc @setterCallInstructionAST.analyzeSemanticInstruction (
     end
   end
 //--- Generate instructions
-  ioInstructionListForGeneration += !@setterCallInstructionForGeneration {
-    !self.mReceiverName.location
-    !targetVariableCppName
-    !nameForCheckingFormalParameterUsing
-    !self.mReceiverStructProperties
-    !receiverType
-    !self.mSetterName
-    !kind
-    !actualParameterListForGeneration
-    !hasCompilerArgument
-    !baseType
-  }
+  ioInstructionListForGeneration += !@setterCallInstructionForGeneration (
+    !self.mReceiverName.location,
+    targetVariableCppName,
+    nameForCheckingFormalParameterUsing,
+    self.mReceiverStructProperties,
+    receiverType,
+    self.mSetterName,
+    kind,
+    actualParameterListForGeneration,
+    hasCompilerArgument,
+    baseType
+  )
 }
 
 //································································································*
@@ -311,14 +311,14 @@ override proc @selfSetterCallInstructionAST.analyzeSemanticInstruction (
       ?let @actualParameterListForGeneration actualParameterListForGeneration
     )
   //--- Generate instructions
-    ioInstructionListForGeneration += !@selfSetterCallInstructionForGeneration {
-      !inAnalysisContext.selfObjectCppName
-      !selfAvailable.type
-      !self.mSetterName
-      !kind
-      !actualParameterListForGeneration
-      !hasCompilerArgument
-    }
+    ioInstructionListForGeneration += !@selfSetterCallInstructionForGeneration (
+      !inAnalysisContext.selfObjectCppName,
+      selfAvailable.type,
+      self.mSetterName,
+      kind,
+      actualParameterListForGeneration,
+      hasCompilerArgument
+    )
   else
     error (self.mSetterName : "'self' not available in this context")
   end

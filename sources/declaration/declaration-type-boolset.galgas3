@@ -47,12 +47,12 @@ syntax extension galgas3DeclarationsSyntax {
     if slotList.count == 0 then
       error (boolsetTypeName : "a boolset type must define at least one case constant")
     end
-    ioDeclarations.mDeclarationList += !@boolsetDeclarationAST {
-      !isPredefined: false // Is not predefined
-      !boolsetTypeName
-      !slotList
+    ioDeclarations.mDeclarationList += !@boolsetDeclarationAST (
+      !isPredefined: false,
+      boolsetTypeName,
+      slotList,
       !isEquatable: isEquatable
-    }
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -89,12 +89,12 @@ syntax extension galgas4DeclarationsSyntax {
     if slotList.count == 0 then
       error (boolsetTypeName : "a boolset type must define at least one case constant")
     end
-    ioDeclarations.mDeclarationList += !@boolsetDeclarationAST {
-      !isPredefined: false // Is not predefined
-      !boolsetTypeName
-      !slotList
+    ioDeclarations.mDeclarationList += !@boolsetDeclarationAST (
+      !isPredefined: false,
+      boolsetTypeName,
+      slotList,
       !isEquatable: isEquatable
-    }
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -124,7 +124,7 @@ override proc @boolsetDeclarationAST.enterDeclarationInGraph
   ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext,
   ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList
 ) {
-  let key = @lstring {!"@" + self.mBoolsetTypeName !self.mBoolsetTypeName.location}
+  let key = @lstring (!"@" + self.mBoolsetTypeName, self.mBoolsetTypeName.location)
   !?ioSemanticTypePrecedenceGraph.addNode (!key, !self)
 }
 
@@ -221,33 +221,33 @@ override proc @boolsetDeclarationAST.enterDeclarationInSemanticContext
     !acceptComparable: true
   )
 //--- Enter in type map
-  let typeDefinition = @unifiedTypeDefinition {
-    !typeName: self.mBoolsetTypeName
-    !isPredefined: self.isPredefined
-    !isConcrete: true
-    !isFinal: true
-    !superType: .null
-    !typeKind: .boolsetType
-    !supportCollectionValue: false // Does not support collection value
-    !allTypedPropertyList: @()
-    !propertyMap: @()
-    !currentTypedPropertyList: @()
-    !initializerMap: initializerMap
-    !classFunctionMap: classFunctionMap
-    !getterMap: getterMap
-    !setterMap: setterMap
-    !instanceMethodMap: instanceMethodMap
-    !classMethodMap: @()
-    !unwrappedType: .null
-    !readSubscriptMap: @()
-    !enumerationDescriptorList: @()
-    !features: features
-    !addAssignOperatorArguments: @()
-    !generateHeaderInSeparateFile: false // Do not generate header in separate file
-    !typeForEnumeratedElement: .null
-    !headerFileName: "boolset-" + self.mBoolsetTypeName.string.fileNameRepresentation
+  let typeDefinition = @unifiedTypeDefinition (
+    !typeName: self.mBoolsetTypeName,
+    !isPredefined: self.isPredefined,
+    !isConcrete: true,
+    !isFinal: true,
+    !superType: .null,
+    !typeKind: .boolsetType,
+    !supportCollectionValue: false,
+    !allTypedPropertyList: @(),
+    !propertyMap: @(),
+    !currentTypedPropertyList: @(),
+    !initializerMap: initializerMap,
+    !classFunctionMap: classFunctionMap,
+    !getterMap: getterMap,
+    !setterMap: setterMap,
+    !instanceMethodMap: instanceMethodMap,
+    !classMethodMap: @(),
+    !unwrappedType: .null,
+    !readSubscriptMap: @(),
+    !enumerationDescriptorList: @(),
+    !features: features,
+    !addAssignOperatorArguments: @(),
+    !generateHeaderInSeparateFile: false,
+    !typeForEnumeratedElement: .null,
+    !headerFileName: "boolset-" + self.mBoolsetTypeName.string.fileNameRepresentation,
     !headerKind: .oneHeader
-  }
+  )
   !?ioTypeMap.insertType (!typeDefinition.typeName, !typeDefinition)
 }
 
@@ -288,11 +288,11 @@ override proc @boolsetDeclarationAST.semanticAnalysis
 //---
   ioSemanticDeclarationListForGeneration +=
     !infoMessage: "boolset " + self.mBoolsetTypeName
-    !@boolsetTypeForGeneration {
-      ![ioTypeMap typeMapEntryForLKey !self.mBoolsetTypeName]
-      !self.mFlagList
-      !self.isEquatable
-    }
+    !@boolsetTypeForGeneration (
+      ![ioTypeMap typeMapEntryForLKey !self.mBoolsetTypeName],
+      self.mFlagList,
+      self.isEquatable
+    )
 }
 
 //--------------------------------------------------------------------------------------------------

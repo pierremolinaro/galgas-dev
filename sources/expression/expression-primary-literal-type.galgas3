@@ -35,7 +35,7 @@ syntax extension galgas3ExpressionSyntax {
                       !@semanticExpressionAST outExpression ) {
     $`$
     $@type$ (?let @lstring typeName)
-    outExpression = @literalTypeInExpressionAST {!typeName}
+    outExpression = @literalTypeInExpressionAST (!typeName)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -52,7 +52,7 @@ syntax extension galgas4ExpressionSyntax {
                  !@semanticExpressionAST outExpression ) {
     $`$
     $@type$ (?let @lstring typeName) // Cannot use <type_definition> !? ioDeclarations ?let @lstring typeName
-    outExpression = @literalTypeInExpressionAST {!typeName}
+    outExpression = @literalTypeInExpressionAST (!typeName)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -84,11 +84,11 @@ override proc @literalTypeInExpressionAST.analyzeSemanticExpression
   !?ioUsefulEntitiesGraph.addEdge (!from: inUsefulnessCallerEntityName, !to: usefulnessName)
 //---
   let type = [ioTypeMap typeMapEntryForLKey !self.mLiteralTypeName]
-  outExpression = @literalTypeInExpressionForGeneration {
-    ![ioTypeMap typeMapEntryForLKey !@{!"type" !.here}]
-    !self.mLiteralTypeName.location
-    !type
-  }
+  outExpression = @literalTypeInExpressionForGeneration (
+    ![ioTypeMap typeMapEntryForLKey !@{!"type" !.here}],
+    self.mLiteralTypeName.location,
+    type
+  )
 }
 
 //--------------------------------------------------------------------------------------------------

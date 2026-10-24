@@ -40,7 +40,7 @@ syntax extension galgas3ExpressionSyntax {
       literalStringList += !literalString.string
     while
     end
-    outExpression = @literalStringExpressionAST {!@location.here !literalStringList}
+    outExpression = @literalStringExpressionAST (!@location.here, literalStringList)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -61,7 +61,7 @@ syntax extension galgas4ExpressionSyntax {
       literalStringList += !literalString.string
     while
     end
-    outExpression = @literalStringExpressionAST {!@location.here !literalStringList}
+    outExpression = @literalStringExpressionAST (!@location.here, literalStringList)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -92,7 +92,7 @@ override proc @literalStringExpressionAST.analyzeSemanticExpression
   for (mValue) in self.mStringSequence do
     s += mValue
   end
-  outExpression = @literalStringExpressionForGeneration {!inAnalysisContext.predefinedTypes.mStringType !self.mLocation !s}
+  outExpression = @literalStringExpressionForGeneration (!inAnalysisContext.predefinedTypes.mStringType, self.mLocation, s)
 }
 
 //--------------------------------------------------------------------------------------------------

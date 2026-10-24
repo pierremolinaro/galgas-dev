@@ -238,7 +238,7 @@ list @propertyInCollectionListAST {
      switch initExpression
       case none :
       case some (expressionAST) :
-        var variableMap = @localVarManager {}
+        var variableMap = @localVarManager ()
         let @analysisContext analysisContext = @{
           !inSemanticContext
           !inPredefinedTypes

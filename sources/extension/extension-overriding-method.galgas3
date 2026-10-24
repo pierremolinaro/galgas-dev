@@ -40,14 +40,14 @@ syntax extension galgas3DeclarationsSyntax {
     <semantic_instruction_list_ggs3> (!?ioDeclarations, ?let routineInstructionList)
     let endOfMethodLocation = @location.here
     $}$
-    ioDeclarations.mDeclarationList += !@overridingExtensionMethodAST {
-      !isPredefined: false // Is not predefined
-      !typeName
-      !methodName
-      !formalParameterList
-      !routineInstructionList
-      !endOfMethodLocation
-    }
+    ioDeclarations.mDeclarationList += !@overridingExtensionMethodAST (
+      !isPredefined: false,
+      typeName,
+      methodName,
+      formalParameterList,
+      routineInstructionList,
+      endOfMethodLocation
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -68,14 +68,14 @@ syntax extension galgas3DeclarationsSyntax {
     <semantic_instruction_list_ggs3> (!?ioDeclarations, ?let @semanticInstructionListAST routineInstructionList)
     let @location endOfMethodLocation = @location.here
     $}$
-    ioDeclarations.mDeclarationList += !@overridingExtensionMethodAST {
-      !isPredefined: false // Is not predefined
-      !typeName
-      !methodName
-      !formalParameterList
-      !routineInstructionList
-      !endOfMethodLocation
-    }
+    ioDeclarations.mDeclarationList += !@overridingExtensionMethodAST (
+      !isPredefined: false,
+      typeName,
+      methodName,
+      formalParameterList,
+      routineInstructionList,
+      endOfMethodLocation
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -105,14 +105,14 @@ syntax extension galgas4DeclarationsSyntax {
     <semantic_instruction_list> (!?ioDeclarations, ?let @semanticInstructionListAST routineInstructionList)
     let @location endOfMethodLocation = @location.here
     $}$
-    ioDeclarations.mDeclarationList += !@overridingExtensionMethodAST {
-      !isPredefined: false
-      !typeName
-      !methodName
-      !formalParameterList
-      !routineInstructionList
-      !endOfMethodLocation
-    }
+    ioDeclarations.mDeclarationList += !@overridingExtensionMethodAST (
+      !isPredefined: false,
+      typeName,
+      methodName,
+      formalParameterList,
+      routineInstructionList,
+      endOfMethodLocation
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -127,14 +127,14 @@ syntax extension galgas4DeclarationsSyntax {
     <semantic_instruction_list> (!?ioDeclarations, ?let @semanticInstructionListAST routineInstructionList)
     let @location endOfMethodLocation = @location.here
     $}$
-    ioDeclarations.mDeclarationList += !@overridingExtensionMethodAST {
-      !isPredefined: false // Is not predefined
-      !inTypeName
-      !methodName
-      !formalParameterList
-      !routineInstructionList
-      !endOfMethodLocation
-    }
+    ioDeclarations.mDeclarationList += !@overridingExtensionMethodAST (
+      !isPredefined: false,
+      inTypeName,
+      methodName,
+      formalParameterList,
+      routineInstructionList,
+      endOfMethodLocation
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -261,13 +261,13 @@ override proc @overridingExtensionMethodAST.semanticAnalysis (
     error (self.mOverridingExtensionMethodName:"this proc is not declared by a super class")
   end
 //--- Analyze instruction list
-  let analysisContext = @analysisContext {
-    !inSemanticContext
-    !inPredefinedTypes
-    !selfObjectCppName: "this"
-    !selfAvailability: .available {!type: selfType !selfMutability: .propertiesAreMutableSelfIsNot}
+  let analysisContext = @analysisContext (
+    !inSemanticContext,
+    inPredefinedTypes,
+    !selfObjectCppName: "this",
+    !selfAvailability: .available {!type: selfType !selfMutability: .propertiesAreMutableSelfIsNot},
     !selfObjectCppPrefixForAccessingProperty: "this->"
-  }
+  )
 //  let isClass = selfType.definition.typeKind == .classType
 //  if let classType = selfType.definition.typeKind.getClassType then
 //    isclass = classType.isReference
@@ -295,16 +295,16 @@ override proc @overridingExtensionMethodAST.semanticAnalysis (
 //---
   ioSemanticDeclarationListForGeneration +=
     !infoMessage: "override extension proc " + self.mOverridingExtensionMethodName
-    !@overridingExtensionMethodForGeneration {
-      !generateHeader: false // Do not generate Cpp header file
-      !implementationCppFileName: "proc-" + selfType.definition.typeName.string.fileNameRepresentation + "-" + self.mOverridingExtensionMethodName.string.fileNameRepresentation
-      !selfType
-      !baseTypeName
-      !self.mOverridingExtensionMethodName.string
-      !formalParameterListForGeneration
-      !selfType.definition.allTypedPropertyList
-      !semanticInstructionListForGeneration
-    }
+    !@overridingExtensionMethodForGeneration (
+      !generateHeader: false,
+      !implementationCppFileName: "proc-" + selfType.definition.typeName.string.fileNameRepresentation + "-" + self.mOverridingExtensionMethodName.string.fileNameRepresentation,
+      selfType,
+      baseTypeName,
+      self.mOverridingExtensionMethodName.string,
+      formalParameterListForGeneration,
+      selfType.definition.allTypedPropertyList,
+      semanticInstructionListForGeneration
+    )
 }
 
 //--------------------------------------------------------------------------------------------------

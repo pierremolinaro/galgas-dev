@@ -41,12 +41,12 @@ syntax extension galgas3InstructionsSyntax {
     $:$
     <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST mWarningExpression)
     <issue_fixit> (!?ioDeclarations, ?let @fixitListAST fixitListAST)
-    outInstruction = @warningInstructionAST {
-      !instructionLocation
-      !mReceiverExpression
-      !mWarningExpression
-      !fixitListAST
-    }
+    outInstruction = @warningInstructionAST (
+      !instructionLocation,
+      mReceiverExpression,
+      mWarningExpression,
+      fixitListAST
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -67,12 +67,12 @@ syntax extension galgas4InstructionsSyntax {
     $:$
     <expression> (!?ioDeclarations, ?let @semanticExpressionAST mWarningExpression)
     <issue_fixit> (!?ioDeclarations, ?let @fixitListAST fixitListAST)
-    outInstruction = @warningInstructionAST {
-      !instructionLocation
-      !mReceiverExpression
-      !mWarningExpression
-      !fixitListAST
-    }
+    outInstruction = @warningInstructionAST (
+      !instructionLocation,
+      mReceiverExpression,
+      mWarningExpression,
+      fixitListAST
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -117,12 +117,12 @@ override proc @warningInstructionAST.analyzeSemanticInstruction (
     ?let fixitListForGeneration
   )
 //--- Generate instruction
-  ioInstructionListForGeneration += !@warningInstructionForGeneration {
-    !self.mInstructionLocation
-    !locationExpression
-    !messageExpression
-    !fixitListForGeneration
-  }
+  ioInstructionListForGeneration += !@warningInstructionForGeneration (
+    !self.mInstructionLocation,
+    locationExpression,
+    messageExpression,
+    fixitListForGeneration
+  )
 }
 
 //--------------------------------------------------------------------------------------------------

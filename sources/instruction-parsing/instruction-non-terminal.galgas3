@@ -28,17 +28,17 @@ syntax extension galgas3SyntaxComponentSyntax {
   //--- Get syntax directed translation result string
     let @abstractGrammarInstructionSyntaxDirectedTranslationResult grammarInstructionSyntaxDirectedTranslationResult
     select
-      grammarInstructionSyntaxDirectedTranslationResult = @grammarInstructionSyntaxDirectedTranslationResultNone {}
+      grammarInstructionSyntaxDirectedTranslationResult = @grammarInstructionSyntaxDirectedTranslationResultNone ()
     or
       $:>$
       <syntax_directed_translation_result> (!?ioDeclarations, ?grammarInstructionSyntaxDirectedTranslationResult)
     end
-    outInstruction = @nonterminalCallInstruction {
-      !mNonterminalName.location
-      !mNonterminalName
-      !mActualParameterList
-      !grammarInstructionSyntaxDirectedTranslationResult
-    }
+    outInstruction = @nonterminalCallInstruction (
+      !mNonterminalName.location,
+      mNonterminalName,
+      mActualParameterList,
+      grammarInstructionSyntaxDirectedTranslationResult
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -58,17 +58,17 @@ syntax extension galgas4SyntaxComponentSyntax {
   //--- Get syntax directed translation result string
     let @abstractGrammarInstructionSyntaxDirectedTranslationResult grammarInstructionSyntaxDirectedTranslationResult
     select
-      grammarInstructionSyntaxDirectedTranslationResult = @grammarInstructionSyntaxDirectedTranslationResultNone {}
+      grammarInstructionSyntaxDirectedTranslationResult = @grammarInstructionSyntaxDirectedTranslationResultNone ()
     or
       $:>$
       <syntax_directed_translation_result> (!?ioDeclarations, ?grammarInstructionSyntaxDirectedTranslationResult)
     end
-    outInstruction = @nonterminalCallInstruction {
-      !mNonterminalName.location
-      !mNonterminalName
-      !mActualParameterList
-      !grammarInstructionSyntaxDirectedTranslationResult
-    }
+    outInstruction = @nonterminalCallInstruction (
+      !mNonterminalName.location,
+      mNonterminalName,
+      mActualParameterList,
+      grammarInstructionSyntaxDirectedTranslationResult
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -92,11 +92,11 @@ final class @nonterminalCallInstruction : @syntaxInstructionAST {
                     ?!addedTerminalIndex:@uint unused ioAddedNonTerminalIndex,
                     ?!@syntaxInstructionListForGrammarAnalysis ioSyntaxInstructionList ) {
     inNonTerminalSymbolMap.searchKey (!self.mNonterminalName, ?let nonTerminalSymbolIndex, ?*)
-    ioSyntaxInstructionList += !@nonTerminalInstructionForGrammarAnalysis {
-      !self.mInstructionLocation
-      !self.mNonterminalName
-      !nonTerminalSymbolIndex
-    }
+    ioSyntaxInstructionList += !@nonTerminalInstructionForGrammarAnalysis (
+      !self.mInstructionLocation,
+      self.mNonterminalName,
+      nonTerminalSymbolIndex
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -138,13 +138,13 @@ final class @nonterminalCallInstruction : @syntaxInstructionAST {
       !?ioVariableMap
     )
   //--- Generate instructions
-    ioInstructionListForGeneration += !@nonterminalInstructionForGeneration {
-      !self.mInstructionLocation
-      !self.mNonterminalName.string
-      !""
-      !actualParameterListForGeneration
-      !self.mGrammarInstructionSyntaxDirectedTranslationResult
-    }
+    ioInstructionListForGeneration += !@nonterminalInstructionForGeneration (
+      !self.mInstructionLocation,
+      self.mNonterminalName.string,
+      "",
+      actualParameterListForGeneration,
+      self.mGrammarInstructionSyntaxDirectedTranslationResult
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -170,13 +170,13 @@ override proc @nonterminalInstructionForGeneration.appendSyntaxSignature
   (?let @string inPosfix,
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
 ) {
-  ioInstructionListForGeneration += !@nonterminalInstructionForGeneration {
-    !self.mInstructionLocation
-    !self.mNonterminalName
-    !inPosfix
-    !@actualParameterListForGeneration ()
-    !@grammarInstructionSyntaxDirectedTranslationResultNone {}
-  }
+  ioInstructionListForGeneration += !@nonterminalInstructionForGeneration (
+    !self.mInstructionLocation,
+    self.mNonterminalName,
+    inPosfix,
+    @actualParameterListForGeneration (),
+    @grammarInstructionSyntaxDirectedTranslationResultNone ()
+  )
 }
 
 //--------------------------------------------------------------------------------------------------

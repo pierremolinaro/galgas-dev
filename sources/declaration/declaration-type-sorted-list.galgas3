@@ -48,13 +48,13 @@ syntax extension galgas3DeclarationsSyntax {
       $,$
     end
     $}$
-    ioDeclarations.mDeclarationList += !@sortedListDeclarationAST {
-      !isPredefined: false // Is not predefined
-      !sortedListTypeName
-      !attributeList
-      !sortDescriptorList
+    ioDeclarations.mDeclarationList += !@sortedListDeclarationAST (
+      !isPredefined: false,
+      sortedListTypeName,
+      attributeList,
+      sortDescriptorList,
       !equatable: isEquatable
-    }
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -107,13 +107,13 @@ syntax extension galgas4DeclarationsSyntax {
       $,$
     end
     $}$
-    ioDeclarations.mDeclarationList += !@sortedListDeclarationAST {
-      !isPredefined: false // Is not predefined
-      !sortedListTypeName
-      !attributeList
-      !sortDescriptorList
+    ioDeclarations.mDeclarationList += !@sortedListDeclarationAST (
+      !isPredefined: false,
+      sortedListTypeName,
+      attributeList,
+      sortDescriptorList,
       !equatable: isEquatable
-    }
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -161,10 +161,10 @@ final class @sortedListDeclarationAST : @semanticDeclarationAST {
     ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext,
     ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext,
     ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList ) {
-    let key = @lstring {!"@" + self.mSortedListTypeName !self.mSortedListTypeName.location}
+    let key = @lstring (!"@" + self.mSortedListTypeName, self.mSortedListTypeName.location)
     !?ioSemanticTypePrecedenceGraph.addNode (!key, !self)
     for (* propertyTypeName 4*) in self.mPropertyList do
-      !?ioSemanticTypePrecedenceGraph.noteNode (!@lstring {!"@" + propertyTypeName !propertyTypeName.location})
+      !?ioSemanticTypePrecedenceGraph.noteNode (!@lstring (!"@" + propertyTypeName, propertyTypeName.location))
     end
   }
 
@@ -182,14 +182,14 @@ final class @sortedListDeclarationAST : @semanticDeclarationAST {
         !hasSelector: hasSelector
         !initialization: initExpression
     end
-    ioDeclarations.mDeclarationList += !@structDeclarationAST {
-      !isPredefined: self.isPredefined
-      !makeEmbeddedElementTypeLName (!self.mSortedListTypeName)
-      !structAttributeList
-      !enumeratedElementTypeName: ""
-      !comparison: if self.equatable then .equatable else .none end
+    ioDeclarations.mDeclarationList += !@structDeclarationAST (
+      !isPredefined: self.isPredefined,
+      makeEmbeddedElementTypeLName (!self.mSortedListTypeName),
+      structAttributeList,
+      !enumeratedElementTypeName: "",
+      !comparison: if self.equatable then .equatable else .none end,
       !isUsefullStruct: true
-    }
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -228,7 +228,7 @@ final class @sortedListDeclarationAST : @semanticDeclarationAST {
   //--- Class functions
     var @classFunctionMap classFunctionMap = @()
     !?classFunctionMap.insertKey
-      (!@lstring {!"sortedListWithValue" !@location.here},
+      (!@lstring (!"sortedListWithValue", @location.here),
       !constructorAttributeTypeList,
       !false,
       !listTypeIndex
@@ -246,7 +246,7 @@ final class @sortedListDeclarationAST : @semanticDeclarationAST {
   //--- Setters
     var @setterMap setterMap = @()
     !?setterMap.insertOrReplace
-      (!@lstring {!"popGreatest" !@location.here},
+      (!@lstring (!"popGreatest", @location.here),
       !@methodKind.definedAsMember,
       !setterFormalOutputArgumentList,
       !true,
@@ -254,7 +254,7 @@ final class @sortedListDeclarationAST : @semanticDeclarationAST {
       !"" // No error message
     )
     !?setterMap.insertOrReplace
-      (!@lstring {!"popSmallest" !@location.here},
+      (!@lstring (!"popSmallest", @location.here),
       !@methodKind.definedAsMember,
       !setterFormalOutputArgumentList,
       !true,
@@ -262,7 +262,7 @@ final class @sortedListDeclarationAST : @semanticDeclarationAST {
       !"" // No error message
     )
     !?setterMap.insertOrReplace
-      (!@lstring {!"insert" !@location.here},
+      (!@lstring (!"insert", @location.here),
       !@methodKind.definedAsMember,
       !setterFormalInputArgumentList,
       !true,
@@ -272,7 +272,7 @@ final class @sortedListDeclarationAST : @semanticDeclarationAST {
   //--- Instance methods
     var @instanceMethodMap instanceMethodMap = @()
     !?instanceMethodMap.insertKey
-      (!@lstring {!"greatest" !@location.here},
+      (!@lstring (!"greatest", @location.here),
       !@methodKind.definedAsMember,
       !setterFormalOutputArgumentList,
       !@location.here,
@@ -281,7 +281,7 @@ final class @sortedListDeclarationAST : @semanticDeclarationAST {
       !"" // No error message
     )
     !?instanceMethodMap.insertKey
-      (!@lstring {!"smallest" !@location.here},
+      (!@lstring (!"smallest", @location.here),
       !@methodKind.definedAsMember,
       !setterFormalOutputArgumentList,
       !@location.here,
@@ -325,33 +325,33 @@ final class @sortedListDeclarationAST : @semanticDeclarationAST {
       !acceptComparable: false
     )
   //--- Enter in type map
-    let typeDefinition = @unifiedTypeDefinition {
-      !typeName: self.mSortedListTypeName
-      !isPredefined: self.isPredefined
-      !isConcrete: true // Concrete Type
-      !isFinal: true
-      !superType: .null
-      !typeKind: .sortedListType
-      !supportCollectionValue: true // Support collection value
-      !allTypedPropertyList: typedAttributeList
-      !propertyMap: @()
-      !currentTypedPropertyList: @()
-      !initializerMap: initializerMap
-      !classFunctionMap: classFunctionMap
-      !getterMap: getterMap
-      !setterMap: setterMap
-      !instanceMethodMap: instanceMethodMap
-      !classMethodMap: @()
-      !unwrappedType: .null
-      !readSubscriptMap: @()
-      !enumerationDescriptorList: enumerationDescriptor
-      !features: features
-      !addAssignOperatorArguments: constructorAttributeTypeList
-      !generateHeaderInSeparateFile: false // Do not generate header in separate file
-      !typeForEnumeratedElement: listElementTypeIndex
-      !headerFileName: "-sortedlist-" + self.mSortedListTypeName.string.fileNameRepresentation
+    let typeDefinition = @unifiedTypeDefinition (
+      !typeName: self.mSortedListTypeName,
+      !isPredefined: self.isPredefined,
+      !isConcrete: true,
+      !isFinal: true,
+      !superType: .null,
+      !typeKind: .sortedListType,
+      !supportCollectionValue: true,
+      !allTypedPropertyList: typedAttributeList,
+      !propertyMap: @(),
+      !currentTypedPropertyList: @(),
+      !initializerMap: initializerMap,
+      !classFunctionMap: classFunctionMap,
+      !getterMap: getterMap,
+      !setterMap: setterMap,
+      !instanceMethodMap: instanceMethodMap,
+      !classMethodMap: @(),
+      !unwrappedType: .null,
+      !readSubscriptMap: @(),
+      !enumerationDescriptorList: enumerationDescriptor,
+      !features: features,
+      !addAssignOperatorArguments: constructorAttributeTypeList,
+      !generateHeaderInSeparateFile: false,
+      !typeForEnumeratedElement: listElementTypeIndex,
+      !headerFileName: "-sortedlist-" + self.mSortedListTypeName.string.fileNameRepresentation,
       !headerKind: .oneHeader
-    }
+    )
     !?ioTypeMap.insertType (!typeDefinition.typeName, !typeDefinition)
   }
 
@@ -419,12 +419,12 @@ final class @sortedListDeclarationAST : @semanticDeclarationAST {
   //--- Generate type
     ioSemanticDeclarationListForGeneration +=
       !infoMessage: "sorted list " + self.mSortedListTypeName
-      !@sortedListTypeForGeneration {
-        ![ioTypeMap typeMapEntryForLKey !self.mSortedListTypeName]
-        ![ioTypeMap typeMapEntryForLKey !makeEmbeddedElementTypeLName (!self.mSortedListTypeName)]
-        !typedAttributeList
-        !sortDescriptorList
-      }
+      !@sortedListTypeForGeneration (
+        ![ioTypeMap typeMapEntryForLKey !self.mSortedListTypeName],
+        [ioTypeMap typeMapEntryForLKey !makeEmbeddedElementTypeLName (!self.mSortedListTypeName)],
+        typedAttributeList,
+        sortDescriptorList
+      )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

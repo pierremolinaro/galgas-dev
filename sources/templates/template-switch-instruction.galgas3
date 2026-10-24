@@ -66,11 +66,11 @@ syntax extension templateSyntax {
     end
     $end$
   //---
-    ioResultingInstructionList += !@templateInstructionSwitchAST {
-      !switchExpression
-      !endOfSwitchExpression
-      !templateInstructionSwitchBranchList
-    }
+    ioResultingInstructionList += !@templateInstructionSwitchAST (
+      !switchExpression,
+      endOfSwitchExpression,
+      templateInstructionSwitchBranchList
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -222,11 +222,11 @@ override proc @templateInstructionSwitchAST.templateInstructionAnalysis
       : "the switch instruction should name all enumeration constants; missing constants are:" + s)
     end
   //---
-    ioInstructionList += !@templateInstructionSwitchForGeneration {
-      !switchExpression.mResultType
-      !switchExpression
-      !templateInstructionSwitchBranchList
-    }
+    ioInstructionList += !@templateInstructionSwitchForGeneration (
+      !switchExpression.mResultType,
+      switchExpression,
+      templateInstructionSwitchBranchList
+    )
   else
     error (switchExpression.mLocation : "'switch' expression type should be an enumeration (it is a "
        + switchExpression.mResultType.definition.typeKind + " type)")

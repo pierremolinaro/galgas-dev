@@ -65,13 +65,13 @@ syntax extension galgas3DeclarationsSyntax {
       error (.here : "a list declaration must declare at least one property")
     end
     $}$
-    ioDeclarations.mDeclarationList += !@listDeclarationAST {
-      !isPredefined: false
-      !listTypeName
-      !propertyList
-      !usefullList: isUsefull
+    ioDeclarations.mDeclarationList += !@listDeclarationAST (
+      !isPredefined: false,
+      listTypeName,
+      propertyList,
+      !usefullList: isUsefull,
       !equatable: isEquatable
-    }
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -112,13 +112,13 @@ syntax extension galgas4DeclarationsSyntax {
       <method_declaration> (!listTypeName, !?ioDeclarations)
     end
     $}$
-    ioDeclarations.mDeclarationList += !@listDeclarationAST {
-      !isPredefined: false // Is not predefined
-      !listTypeName
-      !propertyList
-      !usefullList: isUsefull
+    ioDeclarations.mDeclarationList += !@listDeclarationAST (
+      !isPredefined: false,
+      listTypeName,
+      propertyList,
+      !usefullList: isUsefull,
       !equatable: isEquatable
-    }
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -144,10 +144,10 @@ override proc @listDeclarationAST.enterDeclarationInGraph
   ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext,
   ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext,
   ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList ) {
-  let key = @lstring {!"@" + self.mListTypeName !self.mListTypeName.location}
+  let key = @lstring (!"@" + self.mListTypeName, self.mListTypeName.location)
   !?ioSemanticTypePrecedenceGraph.addNode (!key, !self)
   for (* propertyTypeName 4*) in self.mPropertyList do
-    !?ioSemanticTypePrecedenceGraph.noteNode (!@lstring {!"@" + propertyTypeName !propertyTypeName.location})
+    !?ioSemanticTypePrecedenceGraph.noteNode (!@lstring (!"@" + propertyTypeName, propertyTypeName.location))
   end
 }
 
@@ -209,7 +209,7 @@ override proc @listDeclarationAST.enterDeclarationInSemanticContext
 //--- Class functions
   var @classFunctionMap classFunctionMap = @()
   !?classFunctionMap.insertKey
-    (!@lstring {!"listWithValue" !@location.here},
+    (!@lstring (!"listWithValue", @location.here),
     !constructorAttributeTypeList,
     !false,
     !listTypeIndex
@@ -258,7 +258,7 @@ override proc @listDeclarationAST.enterDeclarationInSemanticContext
   )
   for (mPropertyTypeEntry mPropertyName 3*) in typedAttributeList do
     !?getterMap.insertOrReplace
-      (!@lstring {!mPropertyName.string + "AtIndex" !mPropertyName.location},
+      (!@lstring (!mPropertyName.string + "AtIndex", mPropertyName.location),
       !@methodKind.definedAsMember,
       !@functionSignature @[@("".nowhere, uintType, "inIndex", true)],
       !@location.here,
@@ -271,7 +271,7 @@ override proc @listDeclarationAST.enterDeclarationInSemanticContext
 //------------------------ Instance methods
   var @instanceMethodMap instanceMethodMap = @()
   !?instanceMethodMap.insertKey
-    (!@lstring {!"first" !@location.here},
+    (!@lstring (!"first", @location.here),
     !@methodKind.definedAsMember,
     !setterOutputFormalArgumentList,
     !@location.here,
@@ -280,7 +280,7 @@ override proc @listDeclarationAST.enterDeclarationInSemanticContext
     !""
   )
   !?instanceMethodMap.insertKey
-    (!@lstring {!"last" !@location.here},
+    (!@lstring (!"last", @location.here),
     !@methodKind.definedAsMember,
     !setterOutputFormalArgumentList,
     !@location.here,
@@ -291,7 +291,7 @@ override proc @listDeclarationAST.enterDeclarationInSemanticContext
 //---------------------------------------- Modifiers
   var @setterMap setterMap = @()
   !?setterMap.insertOrReplace
-    (!@lstring {!"append" !@location.here},
+    (!@lstring (!"append", @location.here),
     !@methodKind.definedAsMember,
     !setterInputFormalArgumentList,
     !true,
@@ -299,7 +299,7 @@ override proc @listDeclarationAST.enterDeclarationInSemanticContext
     !""
   )
   !?setterMap.insertOrReplace
-    (!@lstring {!"popFirst" !@location.here},
+    (!@lstring (!"popFirst", @location.here),
     !@methodKind.definedAsMember,
     !setterOutputFormalArgumentList,
     !true,
@@ -307,7 +307,7 @@ override proc @listDeclarationAST.enterDeclarationInSemanticContext
     !""
   )
   !?setterMap.insertOrReplace
-    (!@lstring {!"popLast" !@location.here},
+    (!@lstring (!"popLast", @location.here),
     !@methodKind.definedAsMember,
     !setterOutputFormalArgumentList,
     !true,
@@ -316,7 +316,7 @@ override proc @listDeclarationAST.enterDeclarationInSemanticContext
   )
   setterOutputFormalArgumentList += !"".nowhere !uintType !.argumentConstantIn !"inIndex"
   !?setterMap.insertOrReplace
-    (!@lstring {!"removeAtIndex" !@location.here},
+    (!@lstring (!"removeAtIndex", @location.here),
     !@methodKind.definedAsMember,
     !setterOutputFormalArgumentList,
     !true,
@@ -329,7 +329,7 @@ override proc @listDeclarationAST.enterDeclarationInSemanticContext
       setterFormalArgumentList += !"".nowhere !mPropertyTypeEntry !.argumentConstantIn !mPropertyName.string
       setterFormalArgumentList += !"".nowhere !uintType !.argumentConstantIn !mPropertyName.string
       !?setterMap.insertOrReplace
-        (!@lstring {!"set" + mPropertyName.string.capitalizingFirstCharacter + "AtIndex" !mPropertyName.location},
+        (!@lstring (!"set" + mPropertyName.string.capitalizingFirstCharacter + "AtIndex", mPropertyName.location),
         !@methodKind.definedAsMember,
         !setterFormalArgumentList,
         !true,
@@ -341,7 +341,7 @@ override proc @listDeclarationAST.enterDeclarationInSemanticContext
 //--- mutating proc 'insertAtIndex'
   setterInputFormalArgumentList += !"".nowhere !uintType !@formalArgumentPassingModeAST.argumentConstantIn !"inInsertionIndex"
   !?setterMap.insertOrReplace
-    (!@lstring {!"insertAtIndex" !@location.here},
+    (!@lstring (!"insertAtIndex", @location.here),
     !@methodKind.definedAsMember,
     !setterInputFormalArgumentList,
     !true,
@@ -384,33 +384,33 @@ override proc @listDeclarationAST.enterDeclarationInSemanticContext
     !acceptComparable: false
   )
 //--- Enter in type map
-  let typeDefinition = @unifiedTypeDefinition {
-    !typeName: self.mListTypeName
-    !isPredefined: self.isPredefined
-    !isConcrete: true // Concrete Type
-    !isFinal: true
-    !superType: .null
-    !typeKind: .listType
-    !supportCollectionValue: true // Support collection value
-    !allTypedPropertyList: typedAttributeList
-    !propertyMap: @()
-    !currentTypedPropertyList: @()
-    !initializerMap: initializerMap
-    !classFunctionMap: classFunctionMap
-    !getterMap: getterMap
-    !setterMap: setterMap
-    !instanceMethodMap: instanceMethodMap
-    !classMethodMap: @()
-    !unwrappedType: .null
-    !readSubscriptMap: @()
-    !enumerationDescriptorList: enumerationDescriptor
-    !features: features
-    !addAssignOperatorArguments: constructorAttributeTypeList
-    !generateHeaderInSeparateFile: false
-    !typeForEnumeratedElement: listElementType
-    !headerFileName: "list-" + self.mListTypeName.string.fileNameRepresentation
+  let typeDefinition = @unifiedTypeDefinition (
+    !typeName: self.mListTypeName,
+    !isPredefined: self.isPredefined,
+    !isConcrete: true,
+    !isFinal: true,
+    !superType: .null,
+    !typeKind: .listType,
+    !supportCollectionValue: true,
+    !allTypedPropertyList: typedAttributeList,
+    !propertyMap: @(),
+    !currentTypedPropertyList: @(),
+    !initializerMap: initializerMap,
+    !classFunctionMap: classFunctionMap,
+    !getterMap: getterMap,
+    !setterMap: setterMap,
+    !instanceMethodMap: instanceMethodMap,
+    !classMethodMap: @(),
+    !unwrappedType: .null,
+    !readSubscriptMap: @(),
+    !enumerationDescriptorList: enumerationDescriptor,
+    !features: features,
+    !addAssignOperatorArguments: constructorAttributeTypeList,
+    !generateHeaderInSeparateFile: false,
+    !typeForEnumeratedElement: listElementType,
+    !headerFileName: "list-" + self.mListTypeName.string.fileNameRepresentation,
     !headerKind: .oneHeader
-  }
+  )
   !?ioTypeMap.insertType (!typeDefinition.typeName, !typeDefinition)
 }
 
@@ -428,14 +428,14 @@ override proc @listDeclarationAST.addAssociatedElement
       !hasSelector: hasSelector
       !initialization: initExpression
   end
-  ioDeclarations.mDeclarationList += !@structDeclarationAST {
-    !isPredefined: self.isPredefined
-    !makeEmbeddedElementTypeLName (!self.mListTypeName)
-    !structAttributeList
-    !enumeratedElementTypeName: ""
-    !comparison: if self.equatable then .equatable else .none end
+  ioDeclarations.mDeclarationList += !@structDeclarationAST (
+    !isPredefined: self.isPredefined,
+    makeEmbeddedElementTypeLName (!self.mListTypeName),
+    structAttributeList,
+    !enumeratedElementTypeName: "",
+    !comparison: if self.equatable then .equatable else .none end,
     !isUsefullStruct: true
-  }
+  )
 }
 
 
@@ -497,11 +497,11 @@ override proc @listDeclarationAST.semanticAnalysis
   let selfType = [ioTypeMap typeMapEntryForLKey !self.mListTypeName]
   ioSemanticDeclarationListForGeneration +=
     !infoMessage: "list type " + self.mListTypeName
-    !@listTypeForGeneration {
-      !selfType
-      ![ioTypeMap typeMapEntryForLKey !makeEmbeddedElementTypeLName (!self.mListTypeName)]
-      !typedAttributeList
-    }
+    !@listTypeForGeneration (
+      !selfType,
+      [ioTypeMap typeMapEntryForLKey !makeEmbeddedElementTypeLName (!self.mListTypeName)],
+      typedAttributeList
+    )
 }
 
 //--------------------------------------------------------------------------------------------------

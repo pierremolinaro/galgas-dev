@@ -37,12 +37,12 @@ syntax extension galgas3InstructionsSyntax {
     end
     $=$
     <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST mSourceExpression)
-    outInstruction = @assignmentInstructionAST {
-      !mTargetVariableName.location
-      !mTargetVariableName
-      !optionalProperty
-      !mSourceExpression
-     }
+    outInstruction = @assignmentInstructionAST (
+      !mTargetVariableName.location,
+      mTargetVariableName,
+      optionalProperty,
+      mSourceExpression
+     )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -62,12 +62,12 @@ syntax extension galgas3InstructionsSyntax {
     end
     $=$
     <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST mSourceExpression)
-    outInstruction = @selfPropertyAssignmentInstructionAST {
-      !mTargetVariableName.location
-      !mTargetVariableName
-      !optionalProperty
-      !mSourceExpression
-    }
+    outInstruction = @selfPropertyAssignmentInstructionAST (
+      !mTargetVariableName.location,
+      mTargetVariableName,
+      optionalProperty,
+      mSourceExpression
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -101,12 +101,12 @@ syntax extension galgas4InstructionsSyntax {
     end
     $=$
     <expression> (!?ioDeclarations, ?let @semanticExpressionAST mSourceExpression)
-    outInstruction = @assignmentInstructionAST {
-      !mTargetVariableName.location
-      !mTargetVariableName
-      !optionalProperty
-      !mSourceExpression
-     }
+    outInstruction = @assignmentInstructionAST (
+      !mTargetVariableName.location,
+      mTargetVariableName,
+      optionalProperty,
+      mSourceExpression
+     )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -134,12 +134,12 @@ syntax extension galgas4InstructionsSyntax {
     end
     $=$
     <expression> (!?ioDeclarations, ?let @semanticExpressionAST mSourceExpression)
-    outInstruction = @selfPropertyAssignmentInstructionAST {
-      !mTargetVariableName.location
-      !mTargetVariableName
-      !optionalProperty
-      !mSourceExpression
-    }
+    outInstruction = @selfPropertyAssignmentInstructionAST (
+      !mTargetVariableName.location,
+      mTargetVariableName,
+      optionalProperty,
+      mSourceExpression
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -222,15 +222,15 @@ final class @assignmentInstructionAST : @semanticInstructionAST {
       )
     end
   //--- Generate instruction
-    ioInstructionListForGeneration += !@assignmentInstructionForGeneration {
-      !receiverType
-      !targetType
-      !targetVariableCppName
-      !nameForCheckingFormalParameterUsing
-      !self.mOptionalProperty
-      !expression
-      !self.mTargetVariableName.location
-    }
+    ioInstructionListForGeneration += !@assignmentInstructionForGeneration (
+      !receiverType,
+      targetType,
+      targetVariableCppName,
+      nameForCheckingFormalParameterUsing,
+      self.mOptionalProperty,
+      expression,
+      self.mTargetVariableName.location
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -298,15 +298,15 @@ final class @selfPropertyAssignmentInstructionAST : @semanticInstructionAST {
     //--- Check assignment type compatibility
       checkAssignmentTypeWithImplicitGetterCall (!targetType, !expression.mResultType, !self.mInstructionLocation, !?expression)
     //--- Generate instruction
-      ioInstructionListForGeneration += !@assignmentInstructionForGeneration {
-        !selfAvailable.type
-        !targetType
-        !targetVariableCppName
-        !inAnalysisContext.selfObjectCppName
-        !self.mOptionalProperty
-        !expression
-        !self.mTargetSelfPropertyName.location
-      }
+      ioInstructionListForGeneration += !@assignmentInstructionForGeneration (
+        !selfAvailable.type,
+        targetType,
+        targetVariableCppName,
+        inAnalysisContext.selfObjectCppName,
+        self.mOptionalProperty,
+        expression,
+        self.mTargetSelfPropertyName.location
+      )
     else
       error (self.mInstructionLocation : "'self' not available in this context")
     end

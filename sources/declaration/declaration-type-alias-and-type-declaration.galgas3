@@ -96,20 +96,6 @@ func makeWeakTypeLName (?let @lstring inTypeName ) -> @lstring {
 syntax extension galgas3DeclarationsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-//  rule <declaration_ggs3> (?!@galgasDeclarationAST ioDeclarations) {
-//    $typealias$
-//    $@type$ ?let aliasTypeName indexing dictionaryDefinition
-//    $=$
-//    <type_definition_ggs3> !?ioDeclarations ?let @lstring definedTypeName
-//    ioDeclarations.mDeclarationList += !@typealiasDeclarationAST {
-//      !isPredefined: false
-//      !aliasTypeName
-//      !definedTypeName
-//    }
-//  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   // SIMPLE ALIAS
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

@@ -37,7 +37,7 @@ syntax extension galgas3ExpressionSyntax {
     let operatorLocation = @location.here
     $-$
     <factor_ggs3> (!?ioDeclarations, ?outExpression)
-    outExpression = @unaryMinusExpressionAST {!operatorLocation !outExpression}
+    outExpression = @unaryMinusExpressionAST (!operatorLocation, outExpression)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -55,7 +55,7 @@ syntax extension galgas4ExpressionSyntax {
     let operatorLocation = @location.here
     $-$
     <factor> (!?ioDeclarations, ? outExpression)
-    outExpression = @unaryMinusExpressionAST {!operatorLocation !outExpression}
+    outExpression = @unaryMinusExpressionAST (!operatorLocation, outExpression)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -96,22 +96,22 @@ override proc @unaryMinusExpressionAST.analyzeSemanticExpression
 //--- Check operator availability
   let @unifiedTypeMapEntry type = expression.mResultType
   if let exp = expression as @literalBigIntExpressionForGeneration then
-    outExpression = @literalBigIntExpressionForGeneration {
-      !exp.mResultType
-      !exp.mLocation
-      !- exp.mValue
-    }
+    outExpression = @literalBigIntExpressionForGeneration (
+      !exp.mResultType,
+      exp.mLocation,
+      - exp.mValue
+    )
   elsif not [type.definition.features contains !.prefixMinusOperator] then
     error (self.mOperatorLocation
     : "operand type is '@" + type.definition.typeName.string + "' and does not support the prefix minus operator"
     spoil outExpression)
   else
   //--- Generate expression
-    outExpression = @unaryMinusExpressionForGeneration {
-      !type
-      !self.mOperatorLocation
-      !expression
-    }
+    outExpression = @unaryMinusExpressionForGeneration (
+      !type,
+      self.mOperatorLocation,
+      expression
+    )
   end
 }
 

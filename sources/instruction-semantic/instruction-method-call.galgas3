@@ -97,16 +97,16 @@ final class @methodCallInstructionAST : @semanticInstructionAST {
       end
     end
   //--- Generate instructions
-    ioInstructionListForGeneration += !@methodCallInstructionForGeneration {
-      !self.mInstructionLocation
-      !receiverExpression.mResultType
-      !receiverExpression
-      !self.mMethodName.string
-      !kind
-      !actualParameterListForGeneration
-      !hasCompilerArgument
-      !baseType
-    }
+    ioInstructionListForGeneration += !@methodCallInstructionForGeneration (
+      !self.mInstructionLocation,
+      receiverExpression.mResultType,
+      receiverExpression,
+      self.mMethodName.string,
+      kind,
+      actualParameterListForGeneration,
+      hasCompilerArgument,
+      baseType
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

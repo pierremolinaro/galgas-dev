@@ -562,7 +562,7 @@ proc recursivelyEnumerateDirectories
     if [inTextFileExtensionMap hasKey !mValue.pathExtension] then
       let @string absoluteFilePath = inAbsoluteSourcePath + "/" + mValue
       !?outWrapperFileMap.insertKey
-        (!@lstring {!mValue !@location.here},
+        (!@lstring (!mValue, @location.here),
         !absoluteFilePath,
         !true, // Text File
         !currentDirectoryIndex,
@@ -572,7 +572,7 @@ proc recursivelyEnumerateDirectories
     elsif [inBinaryFileExtensionMap hasKey !mValue.pathExtension] then
       let @string absoluteFilePath = inAbsoluteSourcePath + "/" + mValue
       !?outWrapperFileMap.insertKey
-        (!@lstring {!mValue !@location.here},
+        (!@lstring (!mValue, @location.here),
         !absoluteFilePath,
         !false, // Binary file
         !currentDirectoryIndex,
@@ -597,7 +597,7 @@ proc recursivelyEnumerateDirectories
       !?ioWrapperDirectoryIndex
     )
     !?outWrapperDirectoryMap.insertKey
-      (!@lstring {!mValue !@location.here},
+      (!@lstring (!mValue, @location.here),
       !internalWrapperFileMap,
       !internalWrapperDirectoryMap,
       !theDirectoryIndex
@@ -812,7 +812,7 @@ override proc @galgas3GrammarComponentAST.enterDeclarationInGraph
   ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext,
   ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext,
   ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList ) {
-  let key = @lstring {!"grammar " + self.mGrammarComponentName !self.mGrammarComponentName.location}
+  let key = @lstring (!"grammar " + self.mGrammarComponentName, self.mGrammarComponentName.location)
   !?ioSemanticTypePrecedenceGraph.addNode (!key, !self)
   for (s) in self.mSyntaxComponents do
     !?ioSemanticTypePrecedenceGraph.addEdge (!from: key, !to: @{!"syntax " + s !s.location})
@@ -829,7 +829,7 @@ override proc @galgas3SyntaxComponentAST.enterDeclarationInGraph
   ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext,
   ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext,
   ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList ) {
-  let key = @lstring {!"syntax " + self.mSyntaxComponentName !self.mSyntaxComponentName.location}
+  let key = @lstring (!"syntax " + self.mSyntaxComponentName, self.mSyntaxComponentName.location)
   !?ioSemanticTypePrecedenceGraph.addNode (!key, !self)
   !?ioSemanticTypePrecedenceGraph.addEdge (!from: key, !to: @{!"lexique " + self.mLexiqueName !self.mLexiqueName.location})
   for (* mLabelList) in self.mRuleList do

@@ -102,8 +102,8 @@ protocol Correcteur : AnyObject {
 
 //----------------------------------------------------------------------------------------
 
-class InsérerVirgule : Correcteur {
-  var suggestionMessageErreur : String { "-  the ',' delimitor" }
+class RemplacerAccoladeOuvranteParParenthèseOuvrante : Correcteur {
+  var suggestionMessageErreur : String { "syntax error #1: found the '{' delimitor, expected:" }
 
   func corriger (_ lignesDuFichier : inout [String],
                  _ ligne : Int,
@@ -114,21 +114,118 @@ class InsérerVirgule : Correcteur {
     var préfixe = ligneConcernée
     préfixe.removeLast (ligneConcernée.count - premierCaractère)
     print ("  Préfixe '\(préfixe)'")
-    if préfixe.containsOnlySpaces {
+    var suffixe = ligneConcernée
+    suffixe.removeFirst (premierCaractère)
+    suffixe.removeFirst () // supprimer "{"
+    print ("  Suffixe '\(suffixe)'")
+    let ligneModifiée = préfixe + "(" + suffixe
+    print ("  ligne modifiée '\(ligneModifiée)'")
+    lignesDuFichier [ligne - 1] = ligneModifiée
+  }
+
+}
+
+//----------------------------------------------------------------------------------------
+
+class RemplacerAccoladeFermanteParParenthèseFermante : Correcteur {
+  var suggestionMessageErreur : String { "syntax error #1: found the '}' delimitor, expected:" }
+
+  func corriger (_ lignesDuFichier : inout [String],
+                 _ ligne : Int,
+                 _ premierCaractère : Int,
+                 _ dernierCaractère : Int) {
+    let ligneConcernée = lignesDuFichier [ligne - 1]
+    print ("  line concernée '\(ligneConcernée)'")
+    var préfixe = ligneConcernée
+    préfixe.removeLast (ligneConcernée.count - premierCaractère)
+    print ("  Préfixe '\(préfixe)'")
+    var suffixe = ligneConcernée
+    suffixe.removeFirst (premierCaractère)
+    suffixe.removeFirst () // supprimer "}"
+    print ("  Suffixe '\(suffixe)'")
+    let ligneModifiée = préfixe + ")" + suffixe
+    print ("  ligne modifiée '\(ligneModifiée)'")
+    lignesDuFichier [ligne - 1] = ligneModifiée
+  }
+
+}
+
+//----------------------------------------------------------------------------------------
+
+class InsérerVirguleAvantOutDelimiteur : Correcteur {
+  var suggestionMessageErreur : String { "syntax error #1: found the '!' delimitor, expected:" }
+
+  func corriger (_ lignesDuFichier : inout [String],
+                 _ ligne : Int,
+                 _ premierCaractère : Int,
+                 _ dernierCaractère : Int) {
+    let ligneConcernée = lignesDuFichier [ligne - 1]
+    print ("  line concernée '\(ligneConcernée)'")
+    var préfixe = ligneConcernée
+    préfixe.removeLast (ligneConcernée.count - premierCaractère)
+    print ("  Préfixe '\(préfixe)'")
+    var temp = préfixe
+    while temp.hasSuffix (" ") {
+      temp.removeLast ()
+    }
+    if temp.isEmpty {
       var lignePrécédente = lignesDuFichier [ligne - 2]
       while lignePrécédente.hasSuffix (" ") {
         lignePrécédente.removeLast ()
       }
       lignePrécédente += ","
       lignesDuFichier [ligne - 2] = lignePrécédente
-    }else{
-      while préfixe.hasSuffix (" ") {
-        préfixe.removeLast ()
-      }
       var suffixe = ligneConcernée
       suffixe.removeFirst (premierCaractère)
+      suffixe.removeFirst () // supprimer "!"
       print ("  Suffixe '\(suffixe)'")
-      let ligneModifiée = préfixe + ", " + suffixe
+      let ligneModifiée = préfixe + suffixe
+      print ("  ligne modifiée '\(ligneModifiée)'")
+      lignesDuFichier [ligne - 1] = ligneModifiée
+   }else{
+      var suffixe = ligneConcernée
+      suffixe.removeFirst (premierCaractère)
+      suffixe.removeFirst () // supprimer "!"
+      print ("  Suffixe '\(suffixe)'")
+      let ligneModifiée = temp + ", " + suffixe
+      print ("  ligne modifiée '\(ligneModifiée)'")
+      lignesDuFichier [ligne - 1] = ligneModifiée
+    }
+  }
+
+}
+
+//----------------------------------------------------------------------------------------
+
+class InsérerVirguleAvantOutSelector : Correcteur {
+  var suggestionMessageErreur : String { "syntax error #1: found the '!selector:' delimitor, expected:" }
+
+  func corriger (_ lignesDuFichier : inout [String],
+                 _ ligne : Int,
+                 _ premierCaractère : Int,
+                 _ dernierCaractère : Int) {
+    let ligneConcernée = lignesDuFichier [ligne - 1]
+    print ("  line concernée '\(ligneConcernée)'")
+    var préfixe = ligneConcernée
+    préfixe.removeLast (ligneConcernée.count - premierCaractère)
+    print ("  Préfixe '\(préfixe)'")
+    var temp = préfixe
+    while temp.hasSuffix (" ") {
+      temp.removeLast ()
+    }
+    if temp.isEmpty {
+      var lignePrécédente = lignesDuFichier [ligne - 2]
+      while lignePrécédente.hasSuffix (" ") {
+        lignePrécédente.removeLast ()
+      }
+      lignePrécédente += ","
+      lignesDuFichier [ligne - 2] = lignePrécédente
+   }else{
+      var suffixe = ligneConcernée
+      suffixe.removeFirst (premierCaractère)
+      suffixe.removeFirst () // supprimer "!"
+      print ("  Suffixe '\(suffixe)'")
+      let ligneModifiée = temp + ", " + suffixe
       print ("  ligne modifiée '\(ligneModifiée)'")
       lignesDuFichier [ligne - 1] = ligneModifiée
     }
@@ -140,7 +237,10 @@ class InsérerVirgule : Correcteur {
 
   func traduire (projetGALGAS inCheminFichierGALGAS : String) -> (Bool, Int) {
     let correcteurs : [Correcteur] = [
-      InsérerVirgule (),
+      RemplacerAccoladeOuvranteParParenthèseOuvrante (),
+      RemplacerAccoladeFermanteParParenthèseFermante (),
+      InsérerVirguleAvantOutDelimiteur (),
+      InsérerVirguleAvantOutSelector (),
     ]
     let débutConstruction = Date ()
   //-------------------- Chemin absolu vers projet galgas

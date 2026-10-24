@@ -36,13 +36,13 @@ syntax extension galgas3DeclarationsSyntax {
     <formal_input_parameter_list_ggs34> (!?ioDeclarations, ?formalInputParameterList)
     $->$
     <type_definition_ggs3> (!?ioDeclarations, ?let @lstring returnedTypeName)
-    ioDeclarations.mDeclarationList += !@abstractExtensionGetterAST {
-      !isPredefined: false // Is not predefined
-      !typeName
-      !getterName
-      !formalInputParameterList
-      !returnedTypeName
-    }
+    ioDeclarations.mDeclarationList += !@abstractExtensionGetterAST (
+      !isPredefined: false,
+      typeName,
+      getterName,
+      formalInputParameterList,
+      returnedTypeName
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -63,13 +63,13 @@ syntax extension galgas3DeclarationsSyntax {
     <formal_input_parameter_list_ggs34> (!?ioDeclarations, ?formalInputParameterList)
     $->$
     <type_definition_ggs3> (!?ioDeclarations, ?let @lstring returnedTypeName)
-    ioDeclarations.mDeclarationList += !@abstractExtensionGetterAST {
-      !isPredefined: false // Is not predefined
-      !typeName
-      !mGetterName
-      !formalInputParameterList
-      !returnedTypeName
-    }
+    ioDeclarations.mDeclarationList += !@abstractExtensionGetterAST (
+      !isPredefined: false,
+      typeName,
+      mGetterName,
+      formalInputParameterList,
+      returnedTypeName
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -97,13 +97,13 @@ syntax extension galgas4DeclarationsSyntax {
     <formal_input_parameter_list> (!?ioDeclarations, ?let @formalInputParameterListAST mFormalInputParameterList)
     $->$
     <type_definition> (!?ioDeclarations, ?let returnedTypeName)
-    ioDeclarations.mDeclarationList += !@abstractExtensionGetterAST {
-      !isPredefined: false // Is not predefined
-      !typeName
-      !mGetterName
-      !mFormalInputParameterList
-      !returnedTypeName
-    }
+    ioDeclarations.mDeclarationList += !@abstractExtensionGetterAST (
+      !isPredefined: false,
+      typeName,
+      mGetterName,
+      mFormalInputParameterList,
+      returnedTypeName
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -116,13 +116,13 @@ syntax extension galgas4DeclarationsSyntax {
     <formal_input_parameter_list> (!?ioDeclarations, ?let @formalInputParameterListAST mFormalInputParameterList)
     $->$
     <type_definition> (!?ioDeclarations, ?let returnedTypeName)
-    ioDeclarations.mDeclarationList += !@abstractExtensionGetterAST {
-      !isPredefined: false // Is not predefined
-      !inTypeName
-      !mGetterName
-      !mFormalInputParameterList
-      !returnedTypeName
-    }
+    ioDeclarations.mDeclarationList += !@abstractExtensionGetterAST (
+      !isPredefined: false,
+      inTypeName,
+      mGetterName,
+      mFormalInputParameterList,
+      returnedTypeName
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -156,10 +156,10 @@ final class @abstractExtensionGetterAST : @semanticDeclarationAST {
               ?!@extensionGetterMapForBuildingContext ioExtensionGetterMapForBuildingContext,
               ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext,
               ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList) {
-    let key = @lstring {
-      !"extension func @" + self.mTypeName + " " + self.mAbstractExtensionGetterName
-      !self.mAbstractExtensionGetterName.location
-    }
+    let key = @lstring (
+      !"extension func @" + self.mTypeName + " " + self.mAbstractExtensionGetterName,
+      self.mAbstractExtensionGetterName.location
+    )
     !?ioSemanticTypePrecedenceGraph.addNode (!key, !self)
     !?ioSemanticTypePrecedenceGraph.addEdge (!from: key, !to: @{!"@" + self.mTypeName !self.mTypeName.location})
   //---
@@ -233,14 +233,14 @@ final class @abstractExtensionGetterAST : @semanticDeclarationAST {
   //---
     ioSemanticDeclarationListForGeneration +=
       !infoMessage: "abstract extension func " + self.mAbstractExtensionGetterName
-      !@abstractExtensionGetterForGeneration {
-        !generateHeader: true // Generate Cpp header file
-        !implementationCppFileName: "func-" + self.mTypeName.string.fileNameRepresentation + "-" + self.mAbstractExtensionGetterName.string.fileNameRepresentation
-        !selfType
-        !self.mAbstractExtensionGetterName.string
-        ![ioTypeMap typeMapEntryForLKey !self.mAbstractExtensionGetterReturnedTypeName]
-        !formalParameterListForGeneration
-      }
+      !@abstractExtensionGetterForGeneration (
+        !generateHeader: true,
+        !implementationCppFileName: "func-" + self.mTypeName.string.fileNameRepresentation + "-" + self.mAbstractExtensionGetterName.string.fileNameRepresentation,
+        selfType,
+        self.mAbstractExtensionGetterName.string,
+        [ioTypeMap typeMapEntryForLKey !self.mAbstractExtensionGetterReturnedTypeName],
+        formalParameterListForGeneration
+      )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

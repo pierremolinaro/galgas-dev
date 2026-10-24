@@ -44,13 +44,13 @@ syntax extension galgas3InstructionsSyntax {
     end
     $end$
     let endOfSwitchInstruction = @location.here
-    outInstruction = @switchInstructionAST {
-      !instructionLocation
-      !switchExpression
-      !endOfSwitchExpression
-      !switchBranches
-      !endOfSwitchInstruction
-    }
+    outInstruction = @switchInstructionAST (
+      !instructionLocation,
+      switchExpression,
+      endOfSwitchExpression,
+      switchBranches,
+      endOfSwitchInstruction
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -133,13 +133,13 @@ syntax extension galgas4InstructionsSyntax {
     end
     $end$
     let endOfSwitchInstruction = @location.here
-    outInstruction = @switchInstructionAST {
-      !instructionLocation
-      !switchExpression
-      !endOfSwitchExpression
-      !switchBranches
-      !endOfSwitchInstruction
-    }
+    outInstruction = @switchInstructionAST (
+      !instructionLocation,
+      switchExpression,
+      endOfSwitchExpression,
+      switchBranches,
+      endOfSwitchInstruction
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -358,11 +358,11 @@ final class @switchInstructionAST : @semanticInstructionAST {
         )
       end
     //--- Generate instruction
-      ioInstructionListForGeneration += !@switchInstructionForGeneration {
-        !switchExpression.mResultType
-        !switchExpression
-        !switchBranchesForGeneration
-      }
+      ioInstructionListForGeneration += !@switchInstructionForGeneration (
+        !switchExpression.mResultType,
+        switchExpression,
+        switchBranchesForGeneration
+      )
     else
       error (self.mEndOfSwitchExpression
       : "the switch expression type should be an instance of an enumeration type (the '@"

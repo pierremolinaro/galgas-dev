@@ -43,14 +43,14 @@ syntax extension galgas3DeclarationsSyntax {
       <method_declaration_ggs3> (!structTypeName, !?ioDeclarations)
     end
     $}$
-    ioDeclarations.mDeclarationList += !@structDeclarationAST {
-      !isPredefined: false // Is not predefined
-      !structTypeName
-      !propertyList
-      !enumeratedElementTypeName: ""
-      !comparison: comparison
+    ioDeclarations.mDeclarationList += !@structDeclarationAST (
+      !isPredefined: false,
+      structTypeName,
+      propertyList,
+      !enumeratedElementTypeName: "",
+      !comparison: comparison,
       !isUsefullStruct: false
-    }
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -85,14 +85,14 @@ syntax extension galgas4DeclarationsSyntax {
       <method_declaration> (!structTypeName, !?ioDeclarations)
     end
     $}$
-    ioDeclarations.mDeclarationList += !@structDeclarationAST {
-      !isPredefined: false // Is not predefined
-      !structTypeName
-      !propertyList
-      !enumeratedElementTypeName: ""
-      !comparison: comparison
+    ioDeclarations.mDeclarationList += !@structDeclarationAST (
+      !isPredefined: false,
+      structTypeName,
+      propertyList,
+      !enumeratedElementTypeName: "",
+      !comparison: comparison,
       !isUsefullStruct: false
-    }
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -133,10 +133,10 @@ final class @structDeclarationAST : @semanticDeclarationAST {
     ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext,
     ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList
   ) {
-    let key = @lstring {!"@" + self.structTypeName !self.structTypeName.location}
+    let key = @lstring (!"@" + self.structTypeName, self.structTypeName.location)
     !?ioSemanticTypePrecedenceGraph.addNode (!key, !self)
     for property in self.mStructurePropertyListAST do
-      let propertyKey = @lstring {!"@" + property.typeName !property.typeName.location}
+      let propertyKey = @lstring (!"@" + property.typeName, property.typeName.location)
       !?ioSemanticTypePrecedenceGraph.addEdge (!from: key, !to: propertyKey)
     end
   }
@@ -237,33 +237,33 @@ final class @structDeclarationAST : @semanticDeclarationAST {
      !?ioTypeMap.makeEntryFromString (!self.enumeratedElementTypeName, ?enumeratedType)
     end
   //--- Enter in type map
-    let typeDefinition = @unifiedTypeDefinition {
-      !typeName: self.structTypeName
-      !isPredefined: self.isPredefined
-      !isConcrete: true
-      !isFinal: true
-      !superType: .null
-      !typeKind: .structType
-      !supportCollectionValue: false
-      !allTypedPropertyList: typedPropertyList
-      !propertyMap: propertyMap
-      !currentTypedPropertyList: typedPropertyList
-      !initializerMap: initializerMap
-      !classFunctionMap: @()
-      !getterMap: getterMap
-      !setterMap: setterMap
-      !instanceMethodMap: instanceMethodMap
-      !classMethodMap: @()
-      !unwrappedType: .null
-      !readSubscriptMap: @()
-      !enumerationDescriptorList: @()
-      !features: features
-      !addAssignOperatorArguments: @()
-      !generateHeaderInSeparateFile: false
-      !typeForEnumeratedElement: enumeratedType // Type for enumerated element for "for" instruction
-      !headerFileName: "struct-" + self.structTypeName.string.fileNameRepresentation
+    let typeDefinition = @unifiedTypeDefinition (
+      !typeName: self.structTypeName,
+      !isPredefined: self.isPredefined,
+      !isConcrete: true,
+      !isFinal: true,
+      !superType: .null,
+      !typeKind: .structType,
+      !supportCollectionValue: false,
+      !allTypedPropertyList: typedPropertyList,
+      !propertyMap: propertyMap,
+      !currentTypedPropertyList: typedPropertyList,
+      !initializerMap: initializerMap,
+      !classFunctionMap: @(),
+      !getterMap: getterMap,
+      !setterMap: setterMap,
+      !instanceMethodMap: instanceMethodMap,
+      !classMethodMap: @(),
+      !unwrappedType: .null,
+      !readSubscriptMap: @(),
+      !enumerationDescriptorList: @(),
+      !features: features,
+      !addAssignOperatorArguments: @(),
+      !generateHeaderInSeparateFile: false,
+      !typeForEnumeratedElement: enumeratedType,
+      !headerFileName: "struct-" + self.structTypeName.string.fileNameRepresentation,
       !headerKind: .oneHeader
-    }
+    )
     !?ioTypeMap.insertType (!typeDefinition.typeName, !typeDefinition)
   }
 
@@ -358,14 +358,14 @@ final class @structDeclarationAST : @semanticDeclarationAST {
     let constructorNeedsCompilerVar = not [unusedVariableCppNameSet hasKey !compilerCppName ()]
     ioSemanticDeclarationListForGeneration +=
       !infoMessage: "struct " + self.structTypeName
-      !@structTypeForGeneration {
-        !structType
-        !typedPropertyList
-        !constructorArgumentList
-        !initializationCode
-        !constructorNeedsCompilerVar
-        ![structType.definition.features contains !.generateSynthetizedInitializer]
-      }
+      !@structTypeForGeneration (
+        !structType,
+        typedPropertyList,
+        constructorArgumentList,
+        initializationCode,
+        constructorNeedsCompilerVar,
+        [structType.definition.features contains !.generateSynthetizedInitializer]
+      )
   //--- Useful entities graph
     !?ioUsefulEntitiesGraph.addNode (!structNameForUsefulness, !structNameForUsefulness)
     if self.isUsefullStruct || self.isPredefined then

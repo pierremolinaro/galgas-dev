@@ -42,7 +42,7 @@ syntax extension galgas3ExpressionSyntax {
     $.$
     $identifier$ (?let optionName)
     $identifier$ (?let getterName)
-    outExpression = @optionExpressionAST {!optionComponentName !optionName !getterName}
+    outExpression = @optionExpressionAST (!optionComponentName, optionName, getterName)
     $]$
   }
 
@@ -55,7 +55,7 @@ syntax extension galgas3ExpressionSyntax {
     $.$
     $identifier$ (?let optionName)
     $identifier$ (?let getterName)
-    outExpression = @optionExpressionAST {!@{!"galgas_builtin_options" !.here} !optionName !getterName}
+    outExpression = @optionExpressionAST (!@{!"galgas_builtin_options" !.here}, optionName, getterName)
     $]$
   }
 
@@ -77,7 +77,7 @@ syntax extension galgas4ExpressionSyntax {
     $identifier$ (?let optionName)
     $.$
     $identifier$ (?let getterName)
-    outExpression = @optionExpressionAST {!optionComponentName !optionName !getterName}
+    outExpression = @optionExpressionAST (!optionComponentName, optionName, getterName)
     $]$
   }
 
@@ -90,7 +90,7 @@ syntax extension galgas4ExpressionSyntax {
     $identifier$ (?let optionName)
     $.$
     $identifier$ (?let getterName)
-    outExpression = @optionExpressionAST {!@{!"galgas_builtin_options" !.here} !optionName !getterName}
+    outExpression = @optionExpressionAST (!@{!"galgas_builtin_options" !.here}, optionName, getterName)
     $]$
   }
 
@@ -145,33 +145,33 @@ override proc @optionExpressionAST.analyzeSemanticExpression
   end
   if found then
     if self.mOptionGetterName.string == "value" then
-      outExpression = @optionValueExpressionForGeneration {
-        !returnedType
-        !self.mOptionComponentName.location
-        !optionComponentIsPredefined
-        !self.mOptionComponentName.string
-        !self.mOptionEntryName.string}
+      outExpression = @optionValueExpressionForGeneration (
+        !returnedType,
+        self.mOptionComponentName.location,
+        optionComponentIsPredefined,
+        self.mOptionComponentName.string,
+        self.mOptionEntryName.string)
     elsif self.mOptionGetterName.string == "char" then
-      outExpression = @optionCharExpressionForGeneration {
-        !inAnalysisContext.predefinedTypes.mCharType
-        !self.mOptionComponentName.location
-        !optionComponentIsPredefined
-        !self.mOptionComponentName.string
-        !self.mOptionEntryName.string}
+      outExpression = @optionCharExpressionForGeneration (
+        !inAnalysisContext.predefinedTypes.mCharType,
+        self.mOptionComponentName.location,
+        optionComponentIsPredefined,
+        self.mOptionComponentName.string,
+        self.mOptionEntryName.string)
     elsif self.mOptionGetterName.string == "string" then
-      outExpression = @optionStringExpressionForGeneration {
-        !inAnalysisContext.predefinedTypes.mStringType
-        !self.mOptionComponentName.location
-        !optionComponentIsPredefined
-        !self.mOptionComponentName.string
-        !self.mOptionEntryName.string}
+      outExpression = @optionStringExpressionForGeneration (
+        !inAnalysisContext.predefinedTypes.mStringType,
+        self.mOptionComponentName.location,
+        optionComponentIsPredefined,
+        self.mOptionComponentName.string,
+        self.mOptionEntryName.string)
     elsif self.mOptionGetterName.string == "comment" then
-      outExpression = @optionCommentExpressionForGeneration {
-        !inAnalysisContext.predefinedTypes.mStringType
-        !self.mOptionComponentName.location
-        !optionComponentIsPredefined
-        !self.mOptionComponentName.string
-        !self.mOptionEntryName.string}
+      outExpression = @optionCommentExpressionForGeneration (
+        !inAnalysisContext.predefinedTypes.mStringType,
+        self.mOptionComponentName.location,
+        optionComponentIsPredefined,
+        self.mOptionComponentName.string,
+        self.mOptionEntryName.string)
     else
       error (self.mOptionGetterName:"only the 'value', 'char', 'string' and 'comment' getters are defined for an option" spoil outExpression)
     end

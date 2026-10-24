@@ -206,7 +206,7 @@ proc analyzeRoutineBody (?let @lstring inUsefulnessCallerEntityName,
                         ?let @location inEndOfMethodLocation,
                         !@semanticInstructionListForGeneration outSemanticInstructionListForGeneration,
                         !@formalParameterListForGeneration outRoutineSignature ) {
-  var variableMap = @localVarManager {}
+  var variableMap = @localVarManager ()
 //--- Enter properties that should be explicitly initialized
   if let selfAvailable = inAnalysisContext.selfAvailability.getAvailable then
     for property in selfAvailable.type.definition.allTypedPropertyList do
@@ -277,13 +277,13 @@ override proc @externFunctionDeclarationAST.semanticAnalysis
   end
   ioSemanticDeclarationListForGeneration +=
     !infoMessage: "extern func " + self.mFunctionName
-    !@functionPrototypeDeclarationForGeneration {
-      !generateHeader: true // Generate Cpp header file
-      !implementationCppFileName: "func-" + self.mFunctionName.string.fileNameRepresentation
-      !self.mFunctionName.string
-      !formalArgumentList
-      ![ioTypeMap typeMapEntryForLKey !self.mResultTypeName]
-   }
+    !@functionPrototypeDeclarationForGeneration (
+      !generateHeader: true,
+      !implementationCppFileName: "func-" + self.mFunctionName.string.fileNameRepresentation,
+      self.mFunctionName.string,
+      formalArgumentList,
+      [ioTypeMap typeMapEntryForLKey !self.mResultTypeName]
+   )
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -303,7 +303,7 @@ proc analyzeFunctionBody
   !@string outResultVariableCppName,
   !@semanticInstructionListForGeneration outSemanticInstructionListForGeneration
 ) {
-  var variableMap = @localVarManager {}
+  var variableMap = @localVarManager ()
 //--- Enter formal parameters
   outSignatureForGeneration = @formalInputParameterListForGeneration ()
   for formalArg in inFunctionSignature do
@@ -387,13 +387,13 @@ override proc @functionDeclarationAST.semanticAnalysis
     ioUsefulnessRootEntities += !nameForUsefulness
   end
 //--- Analyse function body
-  let analysisContext = @analysisContext {
-    !inSemanticContext
-    !inPredefinedTypes
-    !selfObjectCppName: ""
-    !selfAvailability: .none
+  let analysisContext = @analysisContext (
+    !inSemanticContext,
+    inPredefinedTypes,
+    !selfObjectCppName: "",
+    !selfAvailability: .none,
     !selfObjectCppPrefixForAccessingProperty: ""
-  }
+  )
   analyzeFunctionBody (
     !nameForUsefulness,
     !?ioUsefulEntitiesGraph,
@@ -412,14 +412,14 @@ override proc @functionDeclarationAST.semanticAnalysis
 //---
   ioSemanticDeclarationListForGeneration +=
     !infoMessage: "function " + self.mFunctionName
-    !@functionImplementationForGeneration {
-      !generateHeader: true // Generate Cpp header file
-      !implementationCppFileName: "func-" + self.mFunctionName.string.fileNameRepresentation
-      !self.mFunctionName.string
-      !formalInputParameterList
-      !returnType
-      !resultVariableCppName
-      !semanticInstructionListForGeneration}
+    !@functionImplementationForGeneration (
+      !generateHeader: true,
+      !implementationCppFileName: "func-" + self.mFunctionName.string.fileNameRepresentation,
+      self.mFunctionName.string,
+      formalInputParameterList,
+      returnType,
+      resultVariableCppName,
+      semanticInstructionListForGeneration)
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -440,13 +440,13 @@ override proc @onceFunctionDeclarationAST.semanticAnalysis
     ioUsefulnessRootEntities += !nameForUsefulness
   end
 //--- Analyse function body
-  let analysisContext = @analysisContext {
-    !inSemanticContext
-    !inPredefinedTypes
-    !selfObjectCppName: ""
-    !selfAvailability: .none
+  let analysisContext = @analysisContext (
+    !inSemanticContext,
+    inPredefinedTypes,
+    !selfObjectCppName: "",
+    !selfAvailability: .none,
     !selfObjectCppPrefixForAccessingProperty: ""
-  }
+  )
   analyzeFunctionBody (
     !nameForUsefulness,
     !?ioUsefulEntitiesGraph,
@@ -465,13 +465,13 @@ override proc @onceFunctionDeclarationAST.semanticAnalysis
 //---
   ioSemanticDeclarationListForGeneration +=
     !infoMessage: "once function " + self.mFunctionName
-    !@onceFunctionDeclarationForGeneration {
-      !generateHeader: true // Generate Cpp header file
-      !implementationCppFileName: "func-" + self.mFunctionName.string.fileNameRepresentation
-      !self.mFunctionName.string
-      !returnType
-      !resultVariableCppName
-      !semanticInstructionListForGeneration}
+    !@onceFunctionDeclarationForGeneration (
+      !generateHeader: true,
+      !implementationCppFileName: "func-" + self.mFunctionName.string.fileNameRepresentation,
+      self.mFunctionName.string,
+      returnType,
+      resultVariableCppName,
+      semanticInstructionListForGeneration)
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -527,7 +527,7 @@ override proc @filewrapperDeclarationAST.semanticAnalysis
       let absoluteTemplatePath = absoluteSourcePath + "/" + filewrapperTemplate.mFilewrapperTemplatePath
     //--- Parse template
       grammar templateGrammar (?let @templateInstructionListAST resultingInstructionList)
-         in @lstring {!absoluteTemplatePath !filewrapperTemplate.mFilewrapperTemplatePath.location}
+         in @lstring (!absoluteTemplatePath, filewrapperTemplate.mFilewrapperTemplatePath.location)
     //--- Build template variable map
       var @templateVariableMap templateVariableMap = @()
       var @formalInputParameterListForGeneration filewrapperTemplateFormalInputParameters = @()
@@ -539,11 +539,11 @@ override proc @filewrapperDeclarationAST.semanticAnalysis
       end
     //--- Analyze template
       var templateInstructionListForGeneration = @templateInstructionListForGeneration ()
-      let templateAnalysisContext = @templateAnalysisContext {
-        !inSemanticContext
-        !inPredefinedTypes
-        !templateVariableMap
-      }
+      let templateAnalysisContext = @templateAnalysisContext (
+        !inSemanticContext,
+        inPredefinedTypes,
+        templateVariableMap
+      )
       templateInstructionListAnalysis (
         !filewrapperNameForUsefulness,
         !?ioUsefulEntitiesGraph,
@@ -561,15 +561,15 @@ override proc @filewrapperDeclarationAST.semanticAnalysis
   //--- Enter filewrapper in generated list
     ioSemanticDeclarationListForGeneration +=
       !infoMessage: "filewrapper " + self.mFilewrapperName
-      !@filewrapperDeclarationForGeneration {
-        !generateHeader: true // Generate Cpp header file
-        !implementationCppFileName: "filewrapper-" + self.mFilewrapperName
-        !self.mFilewrapperName.string
-        !self.mFilewrapperPath.string
-        !wrapperFileMap
-        !wrapperDirectoryMap
-        !filewrapperTemplateListForGeneration
-     }
+      !@filewrapperDeclarationForGeneration (
+        !generateHeader: true,
+        !implementationCppFileName: "filewrapper-" + self.mFilewrapperName,
+        self.mFilewrapperName.string,
+        self.mFilewrapperPath.string,
+        wrapperFileMap,
+        wrapperDirectoryMap,
+        filewrapperTemplateListForGeneration
+     )
   end
 }
 
@@ -802,18 +802,18 @@ override proc @galgas3GrammarComponentAST.semanticAnalysis
 //---
   ioSemanticDeclarationListForGeneration +=
     !infoMessage: ""
-    !@grammarForGeneration {
-      !generateHeader:  true // has header
-      !implementationCppFileName: "grammar-" + self.mGrammarComponentName.string.fileNameRepresentation
-      !self.mGrammarComponentName.string
-      !lexiqueComponentName.string
-      !nonTerminalMapForGrammarAnalysis
-      !nonTerminalToAddList
-      !self.mSyntaxComponents
-      !self.mStartSymbolName.string
-      !self.mHasTranslateFeature
-      !grammarCppFile
-    }
+    !@grammarForGeneration (
+      !generateHeader: true,
+      !implementationCppFileName: "grammar-" + self.mGrammarComponentName.string.fileNameRepresentation,
+      self.mGrammarComponentName.string,
+      lexiqueComponentName.string,
+      nonTerminalMapForGrammarAnalysis,
+      nonTerminalToAddList,
+      self.mSyntaxComponents,
+      self.mStartSymbolName.string,
+      self.mHasTranslateFeature,
+      grammarCppFile
+    )
 }
 
 
@@ -1400,7 +1400,7 @@ proc semanticAnalysisOfRuleLabel
   !@formalParameterSignature outSignature,
   !@semanticInstructionListForGeneration outInstructionListForGeneration
 ) {
-  var variableMap = @localVarManager {}
+  var variableMap = @localVarManager ()
   buildLocalVariableMapAndSignature (
     !inAnalysisContext.semanticContext,
     !?ioTypeMap,
@@ -1487,13 +1487,13 @@ private proc semanticAnalysisOfSyntaxComponent
       enterNonterminalNonTerminalInMapAndCheck (!mNonterminalName, !nonterminalLabelMap, !?nonterminalMap )
   end
 //--- Analysis context
-  let analysisContext = @analysisContext {
-    !inSemanticContext
-    !inPredefinedTypes
-    !selfObjectCppName: ""
-    !selfAvailability: .none
+  let analysisContext = @analysisContext (
+    !inSemanticContext,
+    inPredefinedTypes,
+    !selfObjectCppName: "",
+    !selfAvailability: .none,
     !selfObjectCppPrefixForAccessingProperty: ""
-  }
+  )
 //--- Rule list
   var @uint selectMethodCount = 0
   var @ruleDeclarationList ruleDeclarationList = @()
@@ -1540,14 +1540,14 @@ private proc semanticAnalysisOfSyntaxComponent
     newRuleIndex += 1
   end
 //---
-  outSyntaxDeclarationForGeneration = @syntaxDeclarationForGeneration {
-    !inSyntaxComponentName
-    !inLexiqueName
-    !nonterminalMap
-    !ruleDeclarationList
-    !selectMethodCount
-    !inHasIndexing
-    !inHasTranslateFeature}
+  outSyntaxDeclarationForGeneration = @syntaxDeclarationForGeneration (
+    !inSyntaxComponentName,
+    inLexiqueName,
+    nonterminalMap,
+    ruleDeclarationList,
+    selectMethodCount,
+    inHasIndexing,
+    inHasTranslateFeature)
 }
 
 //--------------------------------------------------------------------------------------------------

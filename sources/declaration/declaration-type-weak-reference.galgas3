@@ -45,7 +45,7 @@ override proc @weakReferenceDeclarationAST.enterDeclarationInGraph
   ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext,
   ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList
 ) {
-  let key = @lstring {!"@" + self.mWeakReferenceTypeName !self.mWeakReferenceTypeName.location}
+  let key = @lstring (!"@" + self.mWeakReferenceTypeName, self.mWeakReferenceTypeName.location)
   !?ioSemanticTypePrecedenceGraph.addNode (!key, !self)
   if self.mSuperWeakReferenceTypeName.string != "" then
     !?ioSemanticTypePrecedenceGraph.addEdge
@@ -86,7 +86,7 @@ override proc @weakReferenceDeclarationAST.enterDeclarationInSemanticContext
 //--- Class functions
   var @classFunctionMap classFunctionMap = @()
   !?classFunctionMap.insertKey
-    (!@lstring {!"nil" !self.mWeakReferenceTypeName.location},
+    (!@lstring (!"nil", self.mWeakReferenceTypeName.location),
     !@(),
     !false,
     !weakReferenceIndex
@@ -130,33 +130,33 @@ override proc @weakReferenceDeclarationAST.enterDeclarationInSemanticContext
   )
 //--- Enter in type map
   !?ioTypeMap.makeEntry (!self.mClassTypeName, ?let classIndex)
-  let typeDefinition = @unifiedTypeDefinition {
-    !typeName: self.mWeakReferenceTypeName
-    !isPredefined: self.isPredefined
-    !isConcrete: true // Concrete Type
-    !isFinal: true
-    !superType: superClassIndex
-    !typeKind: .weakReferenceType {!referenceType: classIndex}
-    !supportCollectionValue: false
-    !allTypedPropertyList: @()
-    !propertyMap: @()
-    !currentTypedPropertyList: @()
-    !initializerMap: initializerMap
-    !classFunctionMap: classFunctionMap
-    !getterMap: @()
-    !setterMap: @()
-    !instanceMethodMap: @()
-    !classMethodMap: @()
-    !unwrappedType: classIndex
-    !readSubscriptMap: @()
-    !enumerationDescriptorList: @()
-    !features: features
-    !addAssignOperatorArguments: @()
-    !generateHeaderInSeparateFile: generateHeaderInSeparateFile
-    !typeForEnumeratedElement: .null
-    !headerFileName: "weak-reference-" + self.mWeakReferenceTypeName.string.fileNameRepresentation
+  let typeDefinition = @unifiedTypeDefinition (
+    !typeName: self.mWeakReferenceTypeName,
+    !isPredefined: self.isPredefined,
+    !isConcrete: true,
+    !isFinal: true,
+    !superType: superClassIndex,
+    !typeKind: .weakReferenceType {!referenceType: classIndex},
+    !supportCollectionValue: false,
+    !allTypedPropertyList: @(),
+    !propertyMap: @(),
+    !currentTypedPropertyList: @(),
+    !initializerMap: initializerMap,
+    !classFunctionMap: classFunctionMap,
+    !getterMap: @(),
+    !setterMap: @(),
+    !instanceMethodMap: @(),
+    !classMethodMap: @(),
+    !unwrappedType: classIndex,
+    !readSubscriptMap: @(),
+    !enumerationDescriptorList: @(),
+    !features: features,
+    !addAssignOperatorArguments: @(),
+    !generateHeaderInSeparateFile: generateHeaderInSeparateFile,
+    !typeForEnumeratedElement: .null,
+    !headerFileName: "weak-reference-" + self.mWeakReferenceTypeName.string.fileNameRepresentation,
     !headerKind: .oneHeader
-  }
+  )
   !?ioTypeMap.insertType (!typeDefinition.typeName, !typeDefinition)
 }
 
@@ -197,13 +197,13 @@ override proc @weakReferenceDeclarationAST.semanticAnalysis
   ]
   ioSemanticDeclarationListForGeneration +=
     !infoMessage: "weak reference " + self.mWeakReferenceTypeName
-    !@weakReferenceTypeForGeneration {
-      !selfType
-      !referenceClassType
-      !superClassEntry
-      !selfType.definition.generateHeaderInSeparateFile
-      !optionalClassTypeOrNull
-    }
+    !@weakReferenceTypeForGeneration (
+      !selfType,
+      referenceClassType,
+      superClassEntry,
+      selfType.definition.generateHeaderInSeparateFile,
+      optionalClassTypeOrNull
+    )
 }
 
 //--------------------------------------------------------------------------------------------------

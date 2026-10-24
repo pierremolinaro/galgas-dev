@@ -44,16 +44,16 @@ syntax extension galgas3DeclarationsSyntax {
       <externtype_method_ggs3> (!?ioDeclarations, !?externTypeMethodList)
     end
     $}$
-    ioDeclarations.mDeclarationList += !@externTypeDeclarationAST {
-      !isPredefined: false // Is not predefined
-      !externTypeName
-      !cppPredeclarationCode
-      !cppClassCode
-      !externTypeConstructorList
-      !externTypeGetterList
-      !externTypeSetterList
-      !externTypeMethodList
-    }
+    ioDeclarations.mDeclarationList += !@externTypeDeclarationAST (
+      !isPredefined: false,
+      externTypeName,
+      cppPredeclarationCode,
+      cppClassCode,
+      externTypeConstructorList,
+      externTypeGetterList,
+      externTypeSetterList,
+      externTypeMethodList
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -183,16 +183,16 @@ syntax extension galgas4DeclarationsSyntax {
       <externtype_method> (!?ioDeclarations, !?externTypeMethodList)
     end
     $}$
-    ioDeclarations.mDeclarationList += !@externTypeDeclarationAST {
-      !isPredefined: false // Is not predefined
-      !externTypeName
-      !cppPredeclarationCode
-      !cppClassCode
-      !externTypeConstructorList
-      !externTypeGetterList
-      !externTypeSetterList
-      !externTypeMethodList
-    }
+    ioDeclarations.mDeclarationList += !@externTypeDeclarationAST (
+      !isPredefined: false,
+      externTypeName,
+      cppPredeclarationCode,
+      cppClassCode,
+      externTypeConstructorList,
+      externTypeGetterList,
+      externTypeSetterList,
+      externTypeMethodList
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -366,7 +366,7 @@ final class @externTypeDeclarationAST : @semanticDeclarationAST {
     ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext,
     ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext,
     ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList ) {
-    let key = @lstring {!"@" + self.mExternTypeName !self.mExternTypeName.location}
+    let key = @lstring (!"@" + self.mExternTypeName, self.mExternTypeName.location)
     !?ioSemanticTypePrecedenceGraph.addNode (!key, !self)
   }
 
@@ -402,7 +402,7 @@ final class @externTypeDeclarationAST : @semanticDeclarationAST {
         arguments += !parameter.mFormalSelector !argumentTypeEntry !parameter.mFormalParameterName.string !true
       end
     //---
-      let initializerName = @lstring {!initializer.mParameterList.initializerSignature !self.mExternTypeName}
+      let initializerName = @lstring (!initializer.mParameterList.initializerSignature, self.mExternTypeName)
       !?initializerMap.insertKey (!initializerName, !arguments)
     end
   //--- Getters
@@ -476,33 +476,33 @@ final class @externTypeDeclarationAST : @semanticDeclarationAST {
       !acceptComparable: false
     )
   //--- Enter type in type map
-    let typeDefinition = @unifiedTypeDefinition {
-      !typeName: self.mExternTypeName
-      !isPredefined: self.isPredefined
-      !isConcrete: true // Concrete Type
-      !isFinal: true
-      !superType: .null
-      !typeKind: .externType
-      !supportCollectionValue: false // Does not support collection value
-      !allTypedPropertyList: @()
-      !propertyMap: @()
-      !currentTypedPropertyList: @()
-      !initializerMap: initializerMap
-      !classFunctionMap: @()
-      !getterMap: getterMap
-      !setterMap: setterMap
-      !instanceMethodMap: instanceMethodMap
-      !classMethodMap: @()
-      !unwrappedType: .null
-      !readSubscriptMap: @()
-      !enumerationDescriptorList: @()
-      !features: features
-      !addAssignOperatorArguments: @()
-      !generateHeaderInSeparateFile: false // Do not generate header in separate file
-      !typeForEnumeratedElement: .null
-      !headerFileName: "externtype-" + self.mExternTypeName.string.fileNameRepresentation
+    let typeDefinition = @unifiedTypeDefinition (
+      !typeName: self.mExternTypeName,
+      !isPredefined: self.isPredefined,
+      !isConcrete: true,
+      !isFinal: true,
+      !superType: .null,
+      !typeKind: .externType,
+      !supportCollectionValue: false,
+      !allTypedPropertyList: @(),
+      !propertyMap: @(),
+      !currentTypedPropertyList: @(),
+      !initializerMap: initializerMap,
+      !classFunctionMap: @(),
+      !getterMap: getterMap,
+      !setterMap: setterMap,
+      !instanceMethodMap: instanceMethodMap,
+      !classMethodMap: @(),
+      !unwrappedType: .null,
+      !readSubscriptMap: @(),
+      !enumerationDescriptorList: @(),
+      !features: features,
+      !addAssignOperatorArguments: @(),
+      !generateHeaderInSeparateFile: false,
+      !typeForEnumeratedElement: .null,
+      !headerFileName: "externtype-" + self.mExternTypeName.string.fileNameRepresentation,
       !headerKind: .oneHeader
-    }
+    )
     !?ioTypeMap.insertType (!typeDefinition.typeName, !typeDefinition)
   }
 
@@ -541,12 +541,12 @@ override proc @externTypeDeclarationAST.semanticAnalysis
 //---
   ioSemanticDeclarationListForGeneration +=
     !infoMessage: "extern type " + self.mExternTypeName
-    !@externTypeDeclarationForGeneration {
-      ![ioTypeMap typeMapEntryForLKey !self.mExternTypeName]
-      !self.mExternTypeName.string
-      !self.mCppPreDeclarationCode
-      !self.mCppClassCode
-    }
+    !@externTypeDeclarationForGeneration (
+      ![ioTypeMap typeMapEntryForLKey !self.mExternTypeName],
+      self.mExternTypeName.string,
+      self.mCppPreDeclarationCode,
+      self.mCppClassCode
+    )
 }
 
 //--------------------------------------------------------------------------------------------------

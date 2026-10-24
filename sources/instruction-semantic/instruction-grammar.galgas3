@@ -99,7 +99,7 @@ syntax extension galgas3InstructionsSyntax {
     $identifier$ (?let @lstring grammarComponentName) indexing (grammarComponentReference)
     let @lstring labelName
     select
-      labelName = @lstring {!"" !@location.here}
+      labelName = @lstring (!"", @location.here)
     or
       $label$
       $identifier$ (?labelName)
@@ -122,20 +122,20 @@ syntax extension galgas3InstructionsSyntax {
   //--- Get syntax directed translation result string
     let @abstractGrammarInstructionSyntaxDirectedTranslationResult grammarInstructionSyntaxDirectedTranslationResult
     select
-      grammarInstructionSyntaxDirectedTranslationResult = @grammarInstructionSyntaxDirectedTranslationResultNone {}
+      grammarInstructionSyntaxDirectedTranslationResult = @grammarInstructionSyntaxDirectedTranslationResultNone ()
     or
       $:>$
       <syntax_directed_translation_result> (!?ioDeclarations, ?grammarInstructionSyntaxDirectedTranslationResult)
     end
-    outInstruction = @grammarInFileInstructionAST {
-      !inInstructionLocation
-      !inGrammarComponentName
-      !inLabelName
-      !sourceExpression
-      !endOfSourceExpression
-      !actualParameterList
-      !grammarInstructionSyntaxDirectedTranslationResult
-    }
+    outInstruction = @grammarInFileInstructionAST (
+      !inInstructionLocation,
+      inGrammarComponentName,
+      inLabelName,
+      sourceExpression,
+      endOfSourceExpression,
+      actualParameterList,
+      grammarInstructionSyntaxDirectedTranslationResult
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -155,22 +155,22 @@ syntax extension galgas3InstructionsSyntax {
   //--- Get syntax directed translation result string
     let @abstractGrammarInstructionSyntaxDirectedTranslationResult grammarInstructionSyntaxDirectedTranslationResult
     select
-      grammarInstructionSyntaxDirectedTranslationResult = @grammarInstructionSyntaxDirectedTranslationResultNone {}
+      grammarInstructionSyntaxDirectedTranslationResult = @grammarInstructionSyntaxDirectedTranslationResultNone ()
     or
       $:>$
       <syntax_directed_translation_result> (!?ioDeclarations, ?grammarInstructionSyntaxDirectedTranslationResult)
     end
-    outInstruction = @grammarInStringInstructionAST {
-      !inInstructionLocation
-      !inGrammarComponentName
-      !inLabelName
-      !sourceExpression
-      !endOfSourceExpression
-      !nameExpression
-      !endOfNameExpression
-      !actualParameterList
-      !grammarInstructionSyntaxDirectedTranslationResult
-    }
+    outInstruction = @grammarInStringInstructionAST (
+      !inInstructionLocation,
+      inGrammarComponentName,
+      inLabelName,
+      sourceExpression,
+      endOfSourceExpression,
+      nameExpression,
+      endOfNameExpression,
+      actualParameterList,
+      grammarInstructionSyntaxDirectedTranslationResult
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -190,7 +190,7 @@ syntax extension galgas4InstructionsSyntax {
     $identifier$ (?let @lstring grammarComponentName) indexing (grammarComponentReference)
     let @lstring labelName
     select
-      labelName = @lstring {!"" !.here}
+      labelName = @lstring (!"", .here)
     or
       $label$
       $identifier$ (?labelName)
@@ -213,20 +213,20 @@ syntax extension galgas4InstructionsSyntax {
   //--- Get syntax directed translation result string
     let @abstractGrammarInstructionSyntaxDirectedTranslationResult grammarInstructionSyntaxDirectedTranslationResult
     select
-      grammarInstructionSyntaxDirectedTranslationResult = @grammarInstructionSyntaxDirectedTranslationResultNone {}
+      grammarInstructionSyntaxDirectedTranslationResult = @grammarInstructionSyntaxDirectedTranslationResultNone ()
     or
       $:>$
       <syntax_directed_translation_result> (!?ioDeclarations, ?grammarInstructionSyntaxDirectedTranslationResult)
     end
-    outInstruction = @grammarInFileInstructionAST {
-      !inInstructionLocation
-      !inGrammarComponentName
-      !inLabelName
-      !sourceExpression
-      !endOfSourceExpression
-      !actualParameterList
-      !grammarInstructionSyntaxDirectedTranslationResult
-    }
+    outInstruction = @grammarInFileInstructionAST (
+      !inInstructionLocation,
+      inGrammarComponentName,
+      inLabelName,
+      sourceExpression,
+      endOfSourceExpression,
+      actualParameterList,
+      grammarInstructionSyntaxDirectedTranslationResult
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -246,22 +246,22 @@ syntax extension galgas4InstructionsSyntax {
   //--- Get syntax directed translation result string
     let @abstractGrammarInstructionSyntaxDirectedTranslationResult grammarInstructionSyntaxDirectedTranslationResult
     select
-      grammarInstructionSyntaxDirectedTranslationResult = @grammarInstructionSyntaxDirectedTranslationResultNone {}
+      grammarInstructionSyntaxDirectedTranslationResult = @grammarInstructionSyntaxDirectedTranslationResultNone ()
     or
       $:>$
       <syntax_directed_translation_result> (!?ioDeclarations, ?grammarInstructionSyntaxDirectedTranslationResult)
     end
-    outInstruction = @grammarInStringInstructionAST {
-      !inInstructionLocation
-      !inGrammarComponentName
-      !inLabelName
-      !sourceExpression
-      !endOfSourceExpression
-      !nameExpression
-      !endOfNameExpression
-      !actualParameterList
-      !grammarInstructionSyntaxDirectedTranslationResult
-    }
+    outInstruction = @grammarInStringInstructionAST (
+      !inInstructionLocation,
+      inGrammarComponentName,
+      inLabelName,
+      sourceExpression,
+      endOfSourceExpression,
+      nameExpression,
+      endOfNameExpression,
+      actualParameterList,
+      grammarInstructionSyntaxDirectedTranslationResult
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -355,16 +355,16 @@ override proc @grammarInFileInstructionAST.analyzeSemanticInstruction (
     !?ioVariableMap
   )
 //--- Generate instructions
-  ioInstructionListForGeneration += !@grammarInstructionWithSourceFileForGeneration {
-    !self.mInstructionLocation
-    !self.mGrammarComponentName.string
-    !self.mLabelName.string
-    !sourceExpression
-    !actualParameterListForGeneration
-    !hasTranslateFeature
-    !assignementList
-    !syntaxDirectedTranslationResultVarName
-  }
+  ioInstructionListForGeneration += !@grammarInstructionWithSourceFileForGeneration (
+    !self.mInstructionLocation,
+    self.mGrammarComponentName.string,
+    self.mLabelName.string,
+    sourceExpression,
+    actualParameterListForGeneration,
+    hasTranslateFeature,
+    assignementList,
+    syntaxDirectedTranslationResultVarName
+  )
 }
 
 //·································································································
@@ -449,17 +449,17 @@ override proc @grammarInStringInstructionAST.analyzeSemanticInstruction (
     !?ioVariableMap
   )
 //--- Generate instructions
-  ioInstructionListForGeneration += !@grammarInstructionWithSourceExpressionForGeneration {
-    !self.mInstructionLocation
-    !self.mGrammarComponentName.string
-    !self.mLabelName.string
-    !sourceExpression
-    !nameExpression
-    !actualParameterListForGeneration
-    !hasTranslateFeature
-    !assignementList
-    !syntaxDirectedTranslationResultVarName
-  }
+  ioInstructionListForGeneration += !@grammarInstructionWithSourceExpressionForGeneration (
+    !self.mInstructionLocation,
+    self.mGrammarComponentName.string,
+    self.mLabelName.string,
+    sourceExpression,
+    nameExpression,
+    actualParameterListForGeneration,
+    hasTranslateFeature,
+    assignementList,
+    syntaxDirectedTranslationResultVarName
+  )
 }
 
 //--------------------------------------------------------------------------------------------------

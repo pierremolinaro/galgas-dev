@@ -35,12 +35,12 @@ syntax extension galgas3DeclarationsSyntax {
     end
     $identifier$ (?let @lstring methodName) indexing (abstractExtensionMethodDefinition)
     <formal_parameter_list_ggs34> (!?ioDeclarations, ?let formalParameterList)
-    ioDeclarations.mDeclarationList += !@abstractExtensionMethodAST {
-      !isPredefined: false // Is not predefined
-      !typeName
-      !methodName
-      !formalParameterList
-    }
+    ioDeclarations.mDeclarationList += !@abstractExtensionMethodAST (
+      !isPredefined: false,
+      typeName,
+      methodName,
+      formalParameterList
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -57,12 +57,12 @@ syntax extension galgas3DeclarationsSyntax {
     end
     $identifier$ (?let @lstring methodName) indexing (abstractExtensionMethodDefinition)
     <formal_parameter_list_ggs34> (!?ioDeclarations, ?let formalParameterList)
-    ioDeclarations.mDeclarationList += !@abstractExtensionMethodAST {
-      !isPredefined: false // Is not predefined
-      !typeName
-      !methodName
-      !formalParameterList
-    }
+    ioDeclarations.mDeclarationList += !@abstractExtensionMethodAST (
+      !isPredefined: false,
+      typeName,
+      methodName,
+      formalParameterList
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -88,12 +88,12 @@ syntax extension galgas4DeclarationsSyntax {
     end
     $identifier$ (?let @lstring mMethodName) indexing (abstractExtensionMethodDefinition)
     <formal_parameter_list> (!?ioDeclarations, ?let @formalParameterListAST formalParameterList)
-    ioDeclarations.mDeclarationList += !@abstractExtensionMethodAST {
-      !isPredefined: false // Is not predefined
-      !typeName
-      !mMethodName
-      !formalParameterList
-    }
+    ioDeclarations.mDeclarationList += !@abstractExtensionMethodAST (
+      !isPredefined: false,
+      typeName,
+      mMethodName,
+      formalParameterList
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -104,12 +104,12 @@ syntax extension galgas4DeclarationsSyntax {
     $proc$
     $identifier$ (?let @lstring methodName) indexing (abstractExtensionMethodDefinition)
     <formal_parameter_list> (!?ioDeclarations, ?let @formalParameterListAST formalParameterList)
-    ioDeclarations.mDeclarationList += !@abstractExtensionMethodAST {
-      !isPredefined: false // Is not predefined
-      !inTypeName
-      !methodName
-      !formalParameterList
-    }
+    ioDeclarations.mDeclarationList += !@abstractExtensionMethodAST (
+      !isPredefined: false,
+      inTypeName,
+      methodName,
+      formalParameterList
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -135,10 +135,10 @@ final class @abstractExtensionMethodAST : @semanticDeclarationAST {
     ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext,
     ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext,
     ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList) {
-    let key = @lstring {
-      !"extension proc @" + self.mTypeName + " " + self.mAbstractExtensionMethodName
-      !self.mAbstractExtensionMethodName.location
-    }
+    let key = @lstring (
+      !"extension proc @" + self.mTypeName + " " + self.mAbstractExtensionMethodName,
+      self.mAbstractExtensionMethodName.location
+    )
     !?ioSemanticTypePrecedenceGraph.addNode (!key, !self)
     !?ioSemanticTypePrecedenceGraph.addEdge (!from: key, !to: @{!"@" + self.mTypeName !self.mTypeName.location})
   //---
@@ -213,13 +213,13 @@ final class @abstractExtensionMethodAST : @semanticDeclarationAST {
   //---
     ioSemanticDeclarationListForGeneration +=
       !infoMessage: "abstract extension proc " + self.mAbstractExtensionMethodName
-      !@abstractExtensionMethodForGeneration {
-        !generateHeader: true // Generate Cpp header file
-        !implementationCppFileName: "proc-" + selfType.definition.typeName.string.fileNameRepresentation + "-" + self.mAbstractExtensionMethodName.string.fileNameRepresentation
-        !selfType
-        !self.mAbstractExtensionMethodName.string
-        !formalParameterListForGeneration
-      }
+      !@abstractExtensionMethodForGeneration (
+        !generateHeader: true,
+        !implementationCppFileName: "proc-" + selfType.definition.typeName.string.fileNameRepresentation + "-" + self.mAbstractExtensionMethodName.string.fileNameRepresentation,
+        selfType,
+        self.mAbstractExtensionMethodName.string,
+        formalParameterListForGeneration
+      )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

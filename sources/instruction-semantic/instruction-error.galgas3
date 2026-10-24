@@ -107,13 +107,13 @@ syntax extension galgas3InstructionsSyntax {
     end
     <issue_fixit> (!?ioDeclarations, ?let @fixitListAST fixitListAST)
     $)$
-    outInstruction = @errorInstructionAST {
-      !instructionLocation
-      !mReceiverExpression
-      !mErrorExpression
-      !mBuiltVariableList
-      !fixitListAST
-    }
+    outInstruction = @errorInstructionAST (
+      !instructionLocation,
+      mReceiverExpression,
+      mErrorExpression,
+      mBuiltVariableList,
+      fixitListAST
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -187,13 +187,13 @@ syntax extension galgas4InstructionsSyntax {
     end
     <issue_fixit> (!?ioDeclarations, ?let @fixitListAST fixitListAST)
     $)$
-    outInstruction = @errorInstructionAST {
-      !instructionLocation
-      !mReceiverExpression
-      !mErrorExpression
-      !builtVariableList
-      !fixitListAST
-    }
+    outInstruction = @errorInstructionAST (
+      !instructionLocation,
+      mReceiverExpression,
+      mErrorExpression,
+      builtVariableList,
+      fixitListAST
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -391,13 +391,13 @@ override proc @errorInstructionAST.analyzeSemanticInstruction (
     builtVariableCppNameList += !varCppName
   end
 //--- Generate instruction
-  ioInstructionListForGeneration += !@errorInstructionForGeneration {
-    !self.mInstructionLocation
-    !locationExpression
-    !messageExpression
-    !builtVariableCppNameList
-    !fixitListForGeneration
-  }
+  ioInstructionListForGeneration += !@errorInstructionForGeneration (
+    !self.mInstructionLocation,
+    locationExpression,
+    messageExpression,
+    builtVariableCppNameList,
+    fixitListForGeneration
+  )
 }
 
 //--------------------------------------------------------------------------------------------------

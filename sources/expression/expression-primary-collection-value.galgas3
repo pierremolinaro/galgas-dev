@@ -171,11 +171,11 @@ final class @collectionValueAST : @semanticExpressionAST {
         )
         expressionListForGeneration += !expressionForGeneration !location
       end
-      outExpression = @expressionCollectionForGeneration {
-        !targetType
-        !self.mEndOfCollectionValue
-        !expressionListForGeneration
-      }
+      outExpression = @expressionCollectionForGeneration (
+        !targetType,
+        self.mEndOfCollectionValue,
+        expressionListForGeneration
+      )
     //--- Usefull entity graph
       let typeUsefulnessName = typeNameForUsefulEntitiesGraph (targetType.definition.typeName)
       !?ioUsefulEntitiesGraph.addEdge (!from: inUsefulnessCallerEntityName, !to: typeUsefulnessName)

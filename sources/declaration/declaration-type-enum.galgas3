@@ -83,12 +83,12 @@ syntax extension galgas3DeclarationsSyntax {
     if constantList.count == 0 then
       error (enumTypeName : "an enumerated type must define at least one case constant")
     end
-    ioDeclarations.mDeclarationList += !@enumDeclarationAST {
-      !isPredefined: false // Is not predefined
-      !enumTypeName
-      !constantList
+    ioDeclarations.mDeclarationList += !@enumDeclarationAST (
+      !isPredefined: false,
+      enumTypeName,
+      constantList,
       !comparison: comparison
-    }
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -161,12 +161,12 @@ syntax extension galgas4DeclarationsSyntax {
     if constantList.count == 0 then
       error (enumTypeName : "an enumerated type must define at least one case constant")
     end
-    ioDeclarations.mDeclarationList += !@enumDeclarationAST {
-      !isPredefined: false // Is not predefined
-      !enumTypeName
-      !constantList
+    ioDeclarations.mDeclarationList += !@enumDeclarationAST (
+      !isPredefined: false,
+      enumTypeName,
+      constantList,
       !comparison: comparison
-    }
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -254,14 +254,14 @@ final class @enumDeclarationAST : @semanticDeclarationAST {
         ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext,
         ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext,
         ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList ) {
-    let key = @lstring {!"@" + self.enumTypeName !self.enumTypeName.location}
+    let key = @lstring (!"@" + self.enumTypeName, self.enumTypeName.location)
     !?ioSemanticTypePrecedenceGraph.addNode (!key, !self)
   //--- There is a circular reference if all constants names current type in associated values
     var circularReference = true
     for constant in self.mConstantList while circularReference do
       var namesCurrentType = false
       for associatedValue in constant.associatedValueTypeList while not namesCurrentType do
-        let propertyKey = @lstring {!"@" + associatedValue.typeName !associatedValue.typeName}
+        let propertyKey = @lstring (!"@" + associatedValue.typeName, associatedValue.typeName)
         if propertyKey.string == key.string then
           namesCurrentType = true
         end
@@ -274,7 +274,7 @@ final class @enumDeclarationAST : @semanticDeclarationAST {
     if circularReference then
       for constant in self.mConstantList do
         for associatedValue in constant.associatedValueTypeList do
-          let propertyKey = @lstring {!"@" + associatedValue.typeName !associatedValue.typeName}
+          let propertyKey = @lstring (!"@" + associatedValue.typeName, associatedValue.typeName)
           if (propertyKey.string != key.string) then
             !?ioSemanticTypePrecedenceGraph.addEdge (!from: key, !to: propertyKey)
           end
@@ -403,33 +403,33 @@ final class @enumDeclarationAST : @semanticDeclarationAST {
       !acceptComparable: true
     )
   //--- Enter type in type map
-    let typeDefinition = @unifiedTypeDefinition {
-      !typeName: self.enumTypeName
-      !isPredefined: self.isPredefined
-      !isConcrete: true
-      !isFinal: true
-      !superType: .null
-      !typeKind: .enumType {!constantMap: constantMap}
-      !supportCollectionValue: false // Does not support collection value
-      !allTypedPropertyList: @()
-      !propertyMap: @()
-      !currentTypedPropertyList: @()
-      !initializerMap: initializerMap
-      !classFunctionMap: classFunctionMap
-      !getterMap: getterMap
-      !setterMap: setterMap
-      !instanceMethodMap: instanceMethodMap
-      !classMethodMap: @()
-      !unwrappedType: .null
-      !readSubscriptMap: @()
-      !enumerationDescriptorList: @()
-      !features: features
-      !addAssignOperatorArguments: @()
-      !generateHeaderInSeparateFile: false // Do not generate header in separate file
-      !typeForEnumeratedElement: .null
-      !headerFileName: "enum-" + self.enumTypeName.string.fileNameRepresentation
+    let typeDefinition = @unifiedTypeDefinition (
+      !typeName: self.enumTypeName,
+      !isPredefined: self.isPredefined,
+      !isConcrete: true,
+      !isFinal: true,
+      !superType: .null,
+      !typeKind: .enumType {!constantMap: constantMap},
+      !supportCollectionValue: false,
+      !allTypedPropertyList: @(),
+      !propertyMap: @(),
+      !currentTypedPropertyList: @(),
+      !initializerMap: initializerMap,
+      !classFunctionMap: classFunctionMap,
+      !getterMap: getterMap,
+      !setterMap: setterMap,
+      !instanceMethodMap: instanceMethodMap,
+      !classMethodMap: @(),
+      !unwrappedType: .null,
+      !readSubscriptMap: @(),
+      !enumerationDescriptorList: @(),
+      !features: features,
+      !addAssignOperatorArguments: @(),
+      !generateHeaderInSeparateFile: false,
+      !typeForEnumeratedElement: .null,
+      !headerFileName: "enum-" + self.enumTypeName.string.fileNameRepresentation,
       !headerKind: .oneHeader
-    }
+    )
     !?ioTypeMap.insertType (!typeDefinition.typeName, !typeDefinition)
   }
 
@@ -497,11 +497,11 @@ final class @enumDeclarationAST : @semanticDeclarationAST {
     let selfType = [ioTypeMap typeMapEntryForLKey !self.enumTypeName]
     ioSemanticDeclarationListForGeneration +=
       !infoMessage: "enum " + self.enumTypeName
-      !@enumTypeForGeneration {
-        !selfType
-        !enumConstantListForGeneration
-        !associatedValuesTypes
-      }
+      !@enumTypeForGeneration (
+        !selfType,
+        enumConstantListForGeneration,
+        associatedValuesTypes
+      )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

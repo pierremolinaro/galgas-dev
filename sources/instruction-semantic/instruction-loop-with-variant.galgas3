@@ -60,18 +60,18 @@ syntax extension galgas3InstructionsSyntax {
     let endOfSecondInstructions = @location.here
     $end$
     let endOfLoopInstruction = @location.here
-    outInstruction = @loopInstructionWithVariantAST {
-      !instructionLocation
-      !variantExpression
-      !endOfVariantExpression
-      !firstInstructions
-      !endOfFirstInstructions
-      !loopExpression
-      !endOfLoopExpression
-      !secondInstructions
-      !endOfSecondInstructions
-      !endOfLoopInstruction
-    }
+    outInstruction = @loopInstructionWithVariantAST (
+      !instructionLocation,
+      variantExpression,
+      endOfVariantExpression,
+      firstInstructions,
+      endOfFirstInstructions,
+      loopExpression,
+      endOfLoopExpression,
+      secondInstructions,
+      endOfSecondInstructions,
+      endOfLoopInstruction
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -105,18 +105,18 @@ syntax extension galgas4InstructionsSyntax {
     let endOfSecondInstructions = @location.here
     $end$
     let endOfLoopInstruction = @location.here
-    outInstruction = @loopInstructionWithVariantAST {
-      !instructionLocation
-      !variantExpression
-      !endOfVariantExpression
-      !firstInstructions
-      !endOfFirstInstructions
-      !loopExpression
-      !endOfLoopExpression
-      !secondInstructions
-      !endOfSecondInstructions
-      !endOfLoopInstruction
-    }
+    outInstruction = @loopInstructionWithVariantAST (
+      !instructionLocation,
+      variantExpression,
+      endOfVariantExpression,
+      firstInstructions,
+      endOfFirstInstructions,
+      loopExpression,
+      endOfLoopExpression,
+      secondInstructions,
+      endOfSecondInstructions,
+      endOfLoopInstruction
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -211,12 +211,12 @@ override proc @loopInstructionWithVariantAST.analyzeSemanticInstruction (
 //--- End override
   !?ioVariableMap.closeOverride (!self.mEndOfLoopInstruction)
 //--- Generate instruction
-  ioInstructionListForGeneration += ! @loopInstructionWithVariantForGeneration {
-    !self.mInstructionLocation
-    !variantExpression
-    !first_instructionList
-    !loopExpression
-    !second_instructionList}
+  ioInstructionListForGeneration += ! @loopInstructionWithVariantForGeneration (
+    !self.mInstructionLocation,
+    variantExpression,
+    first_instructionList,
+    loopExpression,
+    second_instructionList)
 }
 
 //--------------------------------------------------------------------------------------------------

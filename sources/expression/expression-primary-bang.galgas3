@@ -38,7 +38,7 @@ syntax extension galgas3ExpressionSyntax {
     <primary_ggs3> (!?ioDeclarations, ?outExpression)
     $.$
     $bang$
-    outExpression = @bangExpressionAST {!operatorLocation !outExpression}
+    outExpression = @bangExpressionAST (!operatorLocation, outExpression)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -56,7 +56,7 @@ syntax extension galgas4ExpressionSyntax {
     let operatorLocation = @location.here
     <primary> (!?ioDeclarations, ?outExpression)
     $!$
-    outExpression = @bangExpressionAST {!operatorLocation !outExpression}
+    outExpression = @bangExpressionAST (!operatorLocation, outExpression)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -97,12 +97,12 @@ override proc @bangExpressionAST.analyzeSemanticExpression
 //--- Check operator availability
   let @unifiedTypeMapEntry type = expression.mResultType
   if let weakRef = type.definition.typeKind.getWeakReferenceType then
-    outExpression = @bangExpressionForGeneration {
-      !weakRef.referenceType
-      !self.mOperatorLocation
-      !expression
-      !type.definition.typeName.string
-    }
+    outExpression = @bangExpressionForGeneration (
+      !weakRef.referenceType,
+      self.mOperatorLocation,
+      expression,
+      type.definition.typeName.string
+    )
   else
     error (self.mOperatorLocation
     : "operand type is '@" + type.definition.typeName.string + "' and does not support the 'bang' operator"

@@ -37,7 +37,7 @@ syntax extension galgas3ExpressionSyntax {
     let operatorLocation = @location.here
     $&-$
     <factor_ggs3> (!?ioDeclarations, ?outExpression)
-    outExpression = @unaryWrappingMinusExpressionAST {!operatorLocation !outExpression}
+    outExpression = @unaryWrappingMinusExpressionAST (!operatorLocation, outExpression)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -55,7 +55,7 @@ syntax extension galgas4ExpressionSyntax {
     let operatorLocation = @location.here
     $&-$
     <factor> (!?ioDeclarations, ?outExpression)
-    outExpression = @unaryWrappingMinusExpressionAST {!operatorLocation !outExpression}
+    outExpression = @unaryWrappingMinusExpressionAST (!operatorLocation, outExpression)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -100,10 +100,10 @@ override proc @unaryWrappingMinusExpressionAST.analyzeSemanticExpression
     spoil outExpression)
   else
   //--- Generate expression
-    outExpression = @unaryWrappingMinusExpressionForGeneration {
-      !type
-      !self.mOperatorLocation
-      !expression}
+    outExpression = @unaryWrappingMinusExpressionForGeneration (
+      !type,
+      self.mOperatorLocation,
+      expression)
   end
 }
 

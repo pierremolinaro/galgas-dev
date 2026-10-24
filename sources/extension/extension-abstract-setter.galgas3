@@ -31,12 +31,12 @@ syntax extension galgas3DeclarationsSyntax {
     $.$
     $identifier$ (?let @lstring setterName) indexing (abstractExtensionSetterDefinition)
     <formal_parameter_list_ggs34> (!?ioDeclarations, ?let formalParameterList)
-    ioDeclarations.mDeclarationList += !@abstractExtensionSetterAST {
-      !isPredefined: false // Is not predefined
-      !className
-      !setterName
-      !formalParameterList
-    }
+    ioDeclarations.mDeclarationList += !@abstractExtensionSetterAST (
+      !isPredefined: false,
+      className,
+      setterName,
+      formalParameterList
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -48,12 +48,12 @@ syntax extension galgas3DeclarationsSyntax {
     $.$
     $identifier$ (?let @lstring setterName) indexing (abstractExtensionSetterDefinition)
     <formal_parameter_list_ggs34> (!?ioDeclarations, ?let formalParameterList)
-    ioDeclarations.mDeclarationList += !@abstractExtensionSetterAST {
-      !isPredefined: false // Is not predefined
-      !inClassName
-      !setterName
-      !formalParameterList
-    }
+    ioDeclarations.mDeclarationList += !@abstractExtensionSetterAST (
+      !isPredefined: false,
+      inClassName,
+      setterName,
+      formalParameterList
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -77,7 +77,7 @@ final class @abstractExtensionSetterAST : @semanticDeclarationAST {
     ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext,
     ?!@extensionSetterMapForBuildingContext ioExtensionSetterMapForBuildingContext,
     ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList) {
-    let key = @lstring {!"extension mutating proc @" + self.mTypeName + " " + self.mAbstractExtensionSetterName !self.mAbstractExtensionSetterName.location}
+    let key = @lstring (!"extension mutating proc @" + self.mTypeName + " " + self.mAbstractExtensionSetterName, self.mAbstractExtensionSetterName.location)
     !?ioSemanticTypePrecedenceGraph.addNode (!key, !self)
     !?ioSemanticTypePrecedenceGraph.addEdge (!from: key, !to: @{!"@" + self.mTypeName !self.mTypeName.location})
   //---
@@ -144,13 +144,13 @@ final class @abstractExtensionSetterAST : @semanticDeclarationAST {
   //---
     ioSemanticDeclarationListForGeneration +=
       !infoMessage: " abstract extension mutating proc " + self.mAbstractExtensionSetterName
-      !@abstractExtensionSetterForGeneration {
-        !generateHeader: true // Generate Cpp header file
-        !implementationCppFileName: "mutating proc-" + self.mTypeName.string.fileNameRepresentation + "-" + self.mAbstractExtensionSetterName.string.fileNameRepresentation
-        !selfType
-        !self.mAbstractExtensionSetterName.string
-        !formalParameterListForGeneration
-      }
+      !@abstractExtensionSetterForGeneration (
+        !generateHeader: true,
+        !implementationCppFileName: "mutating proc-" + self.mTypeName.string.fileNameRepresentation + "-" + self.mAbstractExtensionSetterName.string.fileNameRepresentation,
+        selfType,
+        self.mAbstractExtensionSetterName.string,
+        formalParameterListForGeneration
+      )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

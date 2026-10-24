@@ -38,9 +38,9 @@ final class @optionalTypeDeclarationAST : @semanticDeclarationAST {
     ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext,
     ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext,
     ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList ) {
-    let selfKey = @lstring {!"@" + self.optionalTypeName !self.optionalTypeName.location}
+    let selfKey = @lstring (!"@" + self.optionalTypeName, self.optionalTypeName.location)
     !?ioSemanticTypePrecedenceGraph.addNode (!selfKey, !self)
-    let unwrappedKey = @lstring {!"@" + self.unwrappedTypeName !self.unwrappedTypeName.location}
+    let unwrappedKey = @lstring (!"@" + self.unwrappedTypeName, self.unwrappedTypeName.location)
     !?ioSemanticTypePrecedenceGraph.addEdge (!from: selfKey, !to: unwrappedKey)
   }
 
@@ -105,33 +105,33 @@ final class @optionalTypeDeclarationAST : @semanticDeclarationAST {
       !acceptComparable: false
     )
   //--- Enter in type map
-    let typeDefinition = @unifiedTypeDefinition {
-      !typeName: self.optionalTypeName
-      !isPredefined: self.isPredefined
-      !isConcrete: true // Concrete Type
-      !isFinal: true
-      !superType: .null
-      !typeKind: .listType
-      !supportCollectionValue: false
-      !allTypedPropertyList: @()
-      !propertyMap: propertyMap
-      !currentTypedPropertyList: @()
-      !initializerMap: initializerMap
-      !classFunctionMap: @()
-      !getterMap: getterMap
-      !setterMap: setterMap
-      !instanceMethodMap: instanceMethodMap
-      !classMethodMap: @()
-      !unwrappedType: unwrappedType
-      !readSubscriptMap: @()
-      !enumerationDescriptorList: @()
-      !features: features
-      !addAssignOperatorArguments: @()
-      !generateHeaderInSeparateFile: false
-      !typeForEnumeratedElement: .null
-      !headerFileName: "optional-" + self.optionalTypeName.string.fileNameRepresentation
+    let typeDefinition = @unifiedTypeDefinition (
+      !typeName: self.optionalTypeName,
+      !isPredefined: self.isPredefined,
+      !isConcrete: true,
+      !isFinal: true,
+      !superType: .null,
+      !typeKind: .listType,
+      !supportCollectionValue: false,
+      !allTypedPropertyList: @(),
+      !propertyMap: propertyMap,
+      !currentTypedPropertyList: @(),
+      !initializerMap: initializerMap,
+      !classFunctionMap: @(),
+      !getterMap: getterMap,
+      !setterMap: setterMap,
+      !instanceMethodMap: instanceMethodMap,
+      !classMethodMap: @(),
+      !unwrappedType: unwrappedType,
+      !readSubscriptMap: @(),
+      !enumerationDescriptorList: @(),
+      !features: features,
+      !addAssignOperatorArguments: @(),
+      !generateHeaderInSeparateFile: false,
+      !typeForEnumeratedElement: .null,
+      !headerFileName: "optional-" + self.optionalTypeName.string.fileNameRepresentation,
       !headerKind: .oneHeader
-    }
+    )
     !?ioTypeMap.insertType (!typeDefinition.typeName, !typeDefinition)
   }
 

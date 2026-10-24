@@ -32,7 +32,7 @@ proc enterModifierWithInputArgument (?!@setterMap ioSetterMap,
   var @formalParameterSignature argList = @()
   argList += !"".nowhere !argumentTypeIndex !.argumentConstantIn !inInputArgumentName
   !?ioSetterMap.insertOrReplace
-    (!@lstring {!inSetterName !@location.here},
+    (!@lstring (!inSetterName, @location.here),
     !@methodKind. definedAsMember,
     !argList,
     !inHasCompilerArgument,
@@ -57,7 +57,7 @@ proc enterModifierWithOutputAndInputArguments (?!@setterMap ioSetterMap,
   argList += !"".nowhere !outputArgumentTypeIndex !.argumentOut !inOutputArgumentName
   argList += !"".nowhere !inputArgumentTypeIndex !.argumentConstantIn !inInputArgumentName
   !?ioSetterMap.insertOrReplace
-    (!@lstring {!inSetterName !@location.here},
+    (!@lstring (!inSetterName, @location.here),
     !@methodKind.definedAsMember,
     !argList,
     !inHasCompilerArgument,
@@ -82,7 +82,7 @@ proc enterModifierWith2InputArguments (?!@setterMap ioSetterMap,
   !?ioUnifiedTypeMap.makeEntryFromString (!inInputArgument2TypeName, ?argumentTypeIndex)
   argList += !"".nowhere !argumentTypeIndex !.argumentConstantIn !inInputArgument2Name
   !?ioSetterMap.insertOrReplace
-    (!@lstring {!inSetterName !.here},
+    (!@lstring (!inSetterName, .here),
     !@methodKind. definedAsMember,
     !argList,
     !inHasCompilerArgument,
@@ -97,7 +97,7 @@ proc enterModifierWithoutArgument (?!@setterMap ioSetterMap,
                                    ?let @string inSetterName,
                                    ?compilerArg:let @bool inHasCompilerArgument) {
   !?ioSetterMap.insertOrReplace
-    (!@lstring {!inSetterName !@location.here},
+    (!@lstring (!inSetterName, @location.here),
     !@methodKind. definedAsMember,
     !@formalParameterSignature (),
     !inHasCompilerArgument,

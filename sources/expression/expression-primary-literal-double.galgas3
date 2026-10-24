@@ -35,7 +35,7 @@ syntax extension galgas3ExpressionSyntax {
   rule <primary_ggs3> (?!@galgasDeclarationAST unused ioDeclarations,
                       !@semanticExpressionAST outExpression ) {
     $double.xxx$ (?let @ldouble literalDouble, ?*)
-    outExpression = @literalDoubleExpressionAST {!literalDouble}
+    outExpression = @literalDoubleExpressionAST (!literalDouble)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -51,7 +51,7 @@ syntax extension galgas4ExpressionSyntax {
   rule <primary> (?!@galgasDeclarationAST unused ioDeclarations,
                  !@semanticExpressionAST outExpression ) {
     $double.xxx$ (?let @ldouble literalDouble, ?*)
-    outExpression = @literalDoubleExpressionAST {!literalDouble}
+    outExpression = @literalDoubleExpressionAST (!literalDouble)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -78,11 +78,11 @@ override proc @literalDoubleExpressionAST.analyzeSemanticExpression
   ?!@localVarManager unused ioVariableMap,
   !@semanticExpressionForGeneration outExpression
 ) {
-  outExpression = @literalDoubleExpressionForGeneration {
-    !inAnalysisContext.predefinedTypes.mDoubleType
-    !self.mValue.location
-    !self.mValue.double
-  }
+  outExpression = @literalDoubleExpressionForGeneration (
+    !inAnalysisContext.predefinedTypes.mDoubleType,
+    self.mValue.location,
+    self.mValue.double
+  )
 }
 
 

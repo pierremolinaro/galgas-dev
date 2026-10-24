@@ -42,8 +42,8 @@ syntax extension galgas3InstructionsSyntax {
     $identifier$ (?let @lstring mActionName) indexing (routineDefinition)
     <formal_parameter_list_ggs34> (!?ioDeclarations, ?let formalParameterList)
     ioDeclarations.mDeclarationList ++= @(!@externProcedureDeclarationAST (
-      !isPredefined: false, // Is not predefined
-      !isFilePrivate: false, // Is not internal
+      !isPredefined: false,
+      !isFilePrivate: false,
       !mActionName,
       !formalParameterList,
       !usefullProcedure: isUsefull
@@ -77,8 +77,8 @@ syntax extension galgas4InstructionsSyntax {
     $identifier$ (?let @lstring mActionName) indexing (routineDefinition)
     <formal_parameter_list> (!?ioDeclarations, ?let @formalParameterListAST mFormalParameterList)
     ioDeclarations.mDeclarationList ++= @(!@externProcedureDeclarationAST (
-      !isPredefined: false, // Is not predefined
-      !isFilePrivate: false, // Is not internal
+      !isPredefined: false,
+      !isFilePrivate: false,
       !mActionName,
       !mFormalParameterList,
       !usefullProcedure: isUsefull
@@ -184,7 +184,7 @@ class @externProcedureDeclarationAST : @semanticDeclarationAST {
     ioSemanticDeclarationListForGeneration ++= @(
       !infoMessage: "proc " + mangledName,
       !@routinePrototypeDeclarationForGeneration (
-        !generateHeader: true, // Generate Cpp header file
+        !generateHeader: true,
         !implementationCppFileName: "proc-" + mangledName.string.fileNameRepresentation,
         !routineMangledName: mangledName.string, // self.mRoutineName.string
         !formalArgumentList

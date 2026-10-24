@@ -47,12 +47,12 @@ syntax extension galgas3DeclarationsSyntax {
     end
     $identifier$ (?let @lstring methodName) indexing (overrideAbstractExtensionMethodDefinition)
     <formal_parameter_list_ggs34> (!?ioDeclarations, ?let formalParameterList)
-    ioDeclarations.mDeclarationList += !@overridingAbstractExtensionMethodAST {
-      !isPredefined: false // Is not predefined
-      !typeName
-      !methodName
-      !formalParameterList
-    }
+    ioDeclarations.mDeclarationList += !@overridingAbstractExtensionMethodAST (
+      !isPredefined: false,
+      typeName,
+      methodName,
+      formalParameterList
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -63,12 +63,12 @@ syntax extension galgas3DeclarationsSyntax {
     $proc$
     $identifier$ (?let @lstring methodName) indexing (overrideAbstractExtensionMethodDefinition)
     <formal_parameter_list_ggs34> (!?ioDeclarations, ?let formalParameterList)
-    ioDeclarations.mDeclarationList += !@overridingAbstractExtensionMethodAST {
-      !isPredefined: false // Is not predefined
-      !inTypeName
-      !methodName
-      !formalParameterList
-    }
+    ioDeclarations.mDeclarationList += !@overridingAbstractExtensionMethodAST (
+      !isPredefined: false,
+      inTypeName,
+      methodName,
+      formalParameterList
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -95,12 +95,12 @@ syntax extension galgas4DeclarationsSyntax {
     end
     $identifier$ (?let @lstring methodName) indexing (overrideAbstractExtensionMethodDefinition)
     <formal_parameter_list>(!?ioDeclarations, ?let @formalParameterListAST formalParameterList)
-    ioDeclarations.mDeclarationList += !@overridingAbstractExtensionMethodAST {
-      !isPredefined: false // Is not predefined
-      !typeName
-      !methodName
-      !formalParameterList
-    }
+    ioDeclarations.mDeclarationList += !@overridingAbstractExtensionMethodAST (
+      !isPredefined: false,
+      typeName,
+      methodName,
+      formalParameterList
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -119,12 +119,12 @@ syntax extension galgas4DeclarationsSyntax {
     end
     $identifier$ (?let @lstring methodName) indexing (overrideAbstractExtensionMethodDefinition)
     <formal_parameter_list> (!?ioDeclarations, ?let @formalParameterListAST formalParameterList)
-    ioDeclarations.mDeclarationList += !@overridingAbstractExtensionMethodAST {
-      !isPredefined: false // Is not predefined
-      !typeName
-      !methodName
-      !formalParameterList
-    }
+    ioDeclarations.mDeclarationList += !@overridingAbstractExtensionMethodAST (
+      !isPredefined: false,
+      typeName,
+      methodName,
+      formalParameterList
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -229,7 +229,7 @@ override proc @overridingAbstractExtensionMethodAST.semanticAnalysis (
     error (self.mOverridingExtensionMethodName:"this func is not declared by a super class")
   end
 //--- Analyze formal argument list
-  var variableMap = @localVarManager {}
+  var variableMap = @localVarManager ()
   buildLocalVariableMapAndSignature (
     !inSemanticContext,
     !?ioTypeMap,

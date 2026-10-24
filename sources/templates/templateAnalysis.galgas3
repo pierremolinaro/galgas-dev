@@ -185,16 +185,16 @@ override proc @templateGetterCallInExpressionAST.templateExpressionAnalysis
       if actualGetterName != self.mGetterName.string then
         error (self.mGetterName : "obsolete func" fixit replace actualGetterName)
       end
-      outExpression = @getterCallExpressionForGeneration {
-        !returnedType
-        !self.mGetterName.location
-        !kind
-        !receiverExpression
-        !fieldList
-        !actualGetterName
-        !constructorEffectiveParameterList
-        !hasCompilerArgument
-      }
+      outExpression = @getterCallExpressionForGeneration (
+        !returnedType,
+        self.mGetterName.location,
+        kind,
+        receiverExpression,
+        fieldList,
+        actualGetterName,
+        constructorEffectiveParameterList,
+        hasCompilerArgument
+      )
     end
   end
 }
@@ -262,15 +262,15 @@ override proc @templateClassFunctionAST.templateExpressionAnalysis
     end
   end
 //---
-  outExpression = @classFuncExpressionForGeneration {
-    !returnedType
-    !self.mClassFunctionName.location
-    !constructorType
-    !self.mClassFunctionName.string
-    !classFunctionEffectiveParameterList
-    !hasCompilerArgument
-    !requiredTypes
-  }
+  outExpression = @classFuncExpressionForGeneration (
+    !returnedType,
+    self.mClassFunctionName.location,
+    constructorType,
+    self.mClassFunctionName.string,
+    classFunctionEffectiveParameterList,
+    hasCompilerArgument,
+    requiredTypes
+  )
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -323,13 +323,13 @@ override proc @templateAndOperationAST.templateExpressionAnalysis
     !?rightExpression
   )
 //--- Generate expression
-  outExpression = @binaryOperatorExpressionForGeneration {
-    !leftExpression.mResultType
-    !self.mOperatorLocation
-    !leftExpression
-    !.operator_and
-    !rightExpression
-  }
+  outExpression = @binaryOperatorExpressionForGeneration (
+    !leftExpression.mResultType,
+    self.mOperatorLocation,
+    leftExpression,
+    .operator_and,
+    rightExpression
+  )
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -366,13 +366,13 @@ override proc @templateOrOperationAST.templateExpressionAnalysis
     !?rightExpression
   )
 //--- Generate expression
-  outExpression = @binaryOperatorExpressionForGeneration {
-    !leftExpression.mResultType
-    !self.mOperatorLocation
-    !leftExpression
-    !.operator_or
-    !rightExpression
-  }
+  outExpression = @binaryOperatorExpressionForGeneration (
+    !leftExpression.mResultType,
+    self.mOperatorLocation,
+    leftExpression,
+    .operator_or,
+    rightExpression
+  )
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -409,13 +409,13 @@ override proc @templateXorOperationAST.templateExpressionAnalysis
     !?rightExpression
   )
 //--- Generate expression
-  outExpression = @binaryOperatorExpressionForGeneration {
-    !leftExpression.mResultType
-    !self.mOperatorLocation
-    !leftExpression
-    !.operator_xor
-    !rightExpression
-  }
+  outExpression = @binaryOperatorExpressionForGeneration (
+    !leftExpression.mResultType,
+    self.mOperatorLocation,
+    leftExpression,
+    .operator_xor,
+    rightExpression
+  )
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -427,7 +427,7 @@ override proc @templateTrueBoolAST.templateExpressionAnalysis
   ?!@unifiedTypeMap unused ioTypeMap,
   !@semanticExpressionForGeneration outExpression
 ) {
-  outExpression = @trueExpressionForGeneration {!inAnalysisContext.mPredefinedTypes.mBoolType !self.mLocation}
+  outExpression = @trueExpressionForGeneration (!inAnalysisContext.mPredefinedTypes.mBoolType, self.mLocation)
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -439,7 +439,7 @@ override proc @templateFalseBoolAST.templateExpressionAnalysis
   ?!@unifiedTypeMap unused ioTypeMap,
   !@semanticExpressionForGeneration outExpression
 ) {
-  outExpression = @falseExpressionForGeneration {!inAnalysisContext.mPredefinedTypes.mBoolType !self.mLocation}
+  outExpression = @falseExpressionForGeneration (!inAnalysisContext.mPredefinedTypes.mBoolType, self.mLocation)
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -455,7 +455,7 @@ override proc @templateLiteralStringExpressionAST.templateExpressionAnalysis
   for (mValue) in self.mLiteralStringList do
     s += mValue
   end
-  outExpression = @literalStringExpressionForGeneration {!inAnalysisContext.mPredefinedTypes.mStringType !self.mLocation !s}
+  outExpression = @literalStringExpressionForGeneration (!inAnalysisContext.mPredefinedTypes.mStringType, self.mLocation, s)
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -467,11 +467,11 @@ override proc @templateLiteralUIntExpressionAST.templateExpressionAnalysis
   ?!@unifiedTypeMap unused ioTypeMap,
   !@semanticExpressionForGeneration outExpression
 ) {
-  outExpression = @literalBigIntExpressionForGeneration {
-    !inAnalysisContext.mPredefinedTypes.mBigIntType
-    !self.mLiteralInt.location
-    !self.mLiteralInt.bigint
-  }
+  outExpression = @literalBigIntExpressionForGeneration (
+    !inAnalysisContext.mPredefinedTypes.mBigIntType,
+    self.mLiteralInt.location,
+    self.mLiteralInt.bigint
+  )
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -483,10 +483,10 @@ override proc @templateLiteralCharExpressionAST.templateExpressionAnalysis
   ?!@unifiedTypeMap unused ioTypeMap,
   !@semanticExpressionForGeneration outExpression
 ) {
-  outExpression = @literalCharExpressionForGeneration {
-    !inAnalysisContext.mPredefinedTypes.mCharType
-    !self.mLiteralChar.location
-    !self.mLiteralChar.char}
+  outExpression = @literalCharExpressionForGeneration (
+    !inAnalysisContext.mPredefinedTypes.mCharType,
+    self.mLiteralChar.location,
+    self.mLiteralChar.char)
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -497,11 +497,11 @@ override proc @templateLiteralDoubleExpressionAST.templateExpressionAnalysis
   ?let @templateAnalysisContext inAnalysisContext,
   ?!@unifiedTypeMap unused ioTypeMap,
   !@semanticExpressionForGeneration outExpression ) {
-  outExpression = @literalDoubleExpressionForGeneration {
-    !inAnalysisContext.mPredefinedTypes.mDoubleType
-    !self.mLiteralDouble.location
-    !self.mLiteralDouble.double
-  }
+  outExpression = @literalDoubleExpressionForGeneration (
+    !inAnalysisContext.mPredefinedTypes.mDoubleType,
+    self.mLiteralDouble.location,
+    self.mLiteralDouble.double
+  )
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -529,11 +529,11 @@ override proc @templateNotOperatorAST.templateExpressionAnalysis
     spoil outExpression)
   else
   //--- Generate expression
-    outExpression = @notExpressionForGeneration {
-      !type
-      !self.mOperatorLocation
-      !expression
-    }
+    outExpression = @notExpressionForGeneration (
+      !type,
+      self.mOperatorLocation,
+      expression
+    )
   end
 }
 
@@ -562,10 +562,10 @@ override proc @templateLogicalNegateAST.templateExpressionAnalysis
     spoil outExpression)
   else
   //--- Generate expression
-    outExpression = @tildeExpressionForGeneration {
-      !type
-      !self.mOperatorLocation
-      !expression}
+    outExpression = @tildeExpressionForGeneration (
+      !type,
+      self.mOperatorLocation,
+      expression)
   end
 }
 
@@ -607,12 +607,12 @@ override proc @templateTestDynamicClassAST.templateExpressionAnalysis
      +  expression.mResultType.definition.typeName.string + " instance")
   end
 //--- Generate expression
-  outExpression = @testDynamicClassInExpressionForGeneration {
-    !inAnalysisContext.mPredefinedTypes.mBoolType
-    !self.mTypeName.location
-    !expression
-    !self.mTypeComparisonKind
-    !castType}
+  outExpression = @testDynamicClassInExpressionForGeneration (
+    !inAnalysisContext.mPredefinedTypes.mBoolType,
+    self.mTypeName.location,
+    expression,
+    self.mTypeComparisonKind,
+    castType)
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -650,37 +650,37 @@ override proc @templateOptionAccessAST.templateExpressionAnalysis
   end
   if found then
     if self.mGetterName.string == "value" then
-      outExpression = @optionValueExpressionForGeneration {
-        !returnedType
-        !self.mOptionComponentName.location
-        !optionComponentIsPredefined
-        !self.mOptionComponentName.string
-        !self.mOptionName.string
-      }
+      outExpression = @optionValueExpressionForGeneration (
+        !returnedType,
+        self.mOptionComponentName.location,
+        optionComponentIsPredefined,
+        self.mOptionComponentName.string,
+        self.mOptionName.string
+      )
     elsif self.mGetterName.string == "char" then
-      outExpression = @optionCharExpressionForGeneration {
-        !inAnalysisContext.mPredefinedTypes.mCharType
-        !self.mOptionComponentName.location
-        !optionComponentIsPredefined
-        !self.mOptionComponentName.string
-        !self.mOptionName.string
-      }
+      outExpression = @optionCharExpressionForGeneration (
+        !inAnalysisContext.mPredefinedTypes.mCharType,
+        self.mOptionComponentName.location,
+        optionComponentIsPredefined,
+        self.mOptionComponentName.string,
+        self.mOptionName.string
+      )
     elsif self.mGetterName.string == "string" then
-      outExpression = @optionStringExpressionForGeneration {
-        !inAnalysisContext.mPredefinedTypes.mStringType
-        !self.mOptionComponentName.location
-        !optionComponentIsPredefined
-        !self.mOptionComponentName.string
-        !self.mOptionName.string
-      }
+      outExpression = @optionStringExpressionForGeneration (
+        !inAnalysisContext.mPredefinedTypes.mStringType,
+        self.mOptionComponentName.location,
+        optionComponentIsPredefined,
+        self.mOptionComponentName.string,
+        self.mOptionName.string
+      )
     elsif self.mGetterName.string == "comment" then
-      outExpression = @optionCommentExpressionForGeneration {
-        !inAnalysisContext.mPredefinedTypes.mStringType
-        !self.mOptionComponentName.location
-        !optionComponentIsPredefined
-        !self.mOptionComponentName.string
-        !self.mOptionName.string
-      }
+      outExpression = @optionCommentExpressionForGeneration (
+        !inAnalysisContext.mPredefinedTypes.mStringType,
+        self.mOptionComponentName.location,
+        optionComponentIsPredefined,
+        self.mOptionComponentName.string,
+        self.mOptionName.string
+      )
     else
       error (self.mGetterName:"only the 'value', 'char', 'string' and 'comment' getters are defined for an option" spoil outExpression)
     end
@@ -753,11 +753,11 @@ override proc @templateFunctionCallAST.templateExpressionAnalysis
         error (mActualSelector : "the selector should be '" + s + "'" fixit replace s)
       end
     end
-    outExpression = @functionCallExpressionForGeneration {
-      !resultType
-      !self.mFunctionName.location
-      !self.mFunctionName.string
-      !semanticExpressionListForGeneration}
+    outExpression = @functionCallExpressionForGeneration (
+      !resultType,
+      self.mFunctionName.location,
+      self.mFunctionName.string,
+      semanticExpressionListForGeneration)
   end
 }
 
@@ -789,11 +789,11 @@ override proc @templateVarInExpressionAST.templateExpressionAnalysis
   !@semanticExpressionForGeneration outExpression
 ) {
   inAnalysisContext.mTemplateVariableMap.searchKey (!self.mVarName, ?let type, ?let sourceVariableCppName)
-  outExpression = @varInExpressionForGeneration {
-    !type
-    !self.mVarName.location
-    !sourceVariableCppName
-    !sourceVariableCppName}
+  outExpression = @varInExpressionForGeneration (
+    !type,
+    self.mVarName.location,
+    sourceVariableCppName,
+    sourceVariableCppName)
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -832,13 +832,13 @@ override proc @templateAddOperationAST.templateExpressionAnalysis
     !?rightExpression
   )
 //--- Generate expression
-  outExpression = @binaryOperatorExpressionForGeneration {
-    !leftExpression.mResultType
-    !self.mOperatorLocation
-    !leftExpression
-    !.add
-    !rightExpression
-  }
+  outExpression = @binaryOperatorExpressionForGeneration (
+    !leftExpression.mResultType,
+    self.mOperatorLocation,
+    leftExpression,
+    .add,
+    rightExpression
+  )
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -877,13 +877,13 @@ override proc @templateSubOperationAST.templateExpressionAnalysis
     !?rightExpression
   )
 //--- Generate expression
-  outExpression = @binaryOperatorExpressionForGeneration {
-    !leftExpression.mResultType
-    !self.mOperatorLocation
-    !leftExpression
-    !.sub
-    !rightExpression
-  }
+  outExpression = @binaryOperatorExpressionForGeneration (
+    !leftExpression.mResultType,
+    self.mOperatorLocation,
+    leftExpression,
+    .sub,
+    rightExpression
+  )
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -922,13 +922,13 @@ override proc @templateMultiplyOperationAST.templateExpressionAnalysis
     !?rightExpression
   )
 //--- Generate expression
-  outExpression = @binaryOperatorExpressionForGeneration {
-    !leftExpression.mResultType
-    !self.mOperatorLocation
-    !leftExpression
-    !.multiply_operation
-    !rightExpression
-  }
+  outExpression = @binaryOperatorExpressionForGeneration (
+    !leftExpression.mResultType,
+    self.mOperatorLocation,
+    leftExpression,
+    .multiply_operation,
+    rightExpression
+  )
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -967,13 +967,13 @@ override proc @templateDivideOperationAST.templateExpressionAnalysis
     !?rightExpression
   )
 //--- Generate expression
-  outExpression = @binaryOperatorExpressionForGeneration {
-    !leftExpression.mResultType
-    !self.mOperatorLocation
-    !leftExpression
-    !.divide_operation
-    !rightExpression
-  }
+  outExpression = @binaryOperatorExpressionForGeneration (
+    !leftExpression.mResultType,
+    self.mOperatorLocation,
+    leftExpression,
+    .divide_operation,
+    rightExpression
+  )
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -1012,13 +1012,13 @@ override proc @templateModuloOperationAST.templateExpressionAnalysis
     !?rightExpression
   )
 //--- Generate expression
-  outExpression = @binaryOperatorExpressionForGeneration {
-    !leftExpression.mResultType
-    !self.mOperatorLocation
-    !leftExpression
-    !.modulo_operation
-    !rightExpression
-  }
+  outExpression = @binaryOperatorExpressionForGeneration (
+    !leftExpression.mResultType,
+    self.mOperatorLocation,
+    leftExpression,
+    .modulo_operation,
+    rightExpression
+  )
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -1048,10 +1048,10 @@ override proc @templateUnaryMinusOperationAST.templateExpressionAnalysis
     spoil outExpression)
   else
   //--- Generate expression
-    outExpression = @unaryMinusExpressionForGeneration {
-      !type
-      !self.mOperatorLocation
-      !expression}
+    outExpression = @unaryMinusExpressionForGeneration (
+      !type,
+      self.mOperatorLocation,
+      expression)
   end
 }
 
@@ -1083,12 +1083,12 @@ override proc @structFieldAccessTemplateExpressionAST.templateExpressionAnalysis
   propertyMap.searchKey (!self.mStructFieldName, ?let accessControl, ?*, ?type)
   accessControl.checkSetAccess (!.none, !self.mStructFieldName)
 //--- Generate expression
-  outExpression = @propertyAccessExpressionForGeneration {
-    !type
-    !self.mOperatorLocation
-    !expression
-    !self.mStructFieldName.string
-  }
+  outExpression = @propertyAccessExpressionForGeneration (
+    !type,
+    self.mOperatorLocation,
+    expression,
+    self.mStructFieldName.string
+  )
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -1127,13 +1127,13 @@ override proc @templateEqualTestAST.templateExpressionAnalysis
     !?rightExpression
   )
 //--- Generate expression
-  outExpression = @comparisonExpressionForGeneration {
-    !inAnalysisContext.mPredefinedTypes.mBoolType
-    !self.mOperatorLocation
-    !leftExpression
-    !.equal
-    !rightExpression
-  }
+  outExpression = @comparisonExpressionForGeneration (
+    !inAnalysisContext.mPredefinedTypes.mBoolType,
+    self.mOperatorLocation,
+    leftExpression,
+    .equal,
+    rightExpression
+  )
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -1170,13 +1170,13 @@ override proc @templateNonEqualTestAST.templateExpressionAnalysis
     !?rightExpression
   )
 //--- Generate expression
-  outExpression = @comparisonExpressionForGeneration {
-    !inAnalysisContext.mPredefinedTypes.mBoolType
-    !self.mOperatorLocation
-    !leftExpression
-    !.notEqual
-    !rightExpression
-  }
+  outExpression = @comparisonExpressionForGeneration (
+    !inAnalysisContext.mPredefinedTypes.mBoolType,
+    self.mOperatorLocation,
+    leftExpression,
+    .notEqual,
+    rightExpression
+  )
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -1213,13 +1213,13 @@ override proc @templateStrictInfTestAST.templateExpressionAnalysis
     !?rightExpression
   )
 //--- Generate expression
-  outExpression = @comparisonExpressionForGeneration {
-    !inAnalysisContext.mPredefinedTypes.mBoolType
-    !self.mOperatorLocation
-    !leftExpression
-    !.lowerThan
-    !rightExpression
-  }
+  outExpression = @comparisonExpressionForGeneration (
+    !inAnalysisContext.mPredefinedTypes.mBoolType,
+    self.mOperatorLocation,
+    leftExpression,
+    .lowerThan,
+    rightExpression
+  )
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -1256,13 +1256,13 @@ override proc @templateInfOrEqualTestAST.templateExpressionAnalysis
     !?rightExpression
   )
 //--- Generate expression
-  outExpression = @comparisonExpressionForGeneration {
-    !inAnalysisContext.mPredefinedTypes.mBoolType
-    !self.mOperatorLocation
-    !leftExpression
-    !.lowerOrEqual
-    !rightExpression
-  }
+  outExpression = @comparisonExpressionForGeneration (
+    !inAnalysisContext.mPredefinedTypes.mBoolType,
+    self.mOperatorLocation,
+    leftExpression,
+    .lowerOrEqual,
+    rightExpression
+  )
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -1299,13 +1299,13 @@ override proc @templateStrictSupTestAST.templateExpressionAnalysis
     !?rightExpression
   )
 //--- Generate expression
-  outExpression = @comparisonExpressionForGeneration {
-    !inAnalysisContext.mPredefinedTypes.mBoolType
-    !self.mOperatorLocation
-    !leftExpression
-    !.greaterThan
-    !rightExpression
-  }
+  outExpression = @comparisonExpressionForGeneration (
+    !inAnalysisContext.mPredefinedTypes.mBoolType,
+    self.mOperatorLocation,
+    leftExpression,
+    .greaterThan,
+    rightExpression
+  )
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -1342,13 +1342,13 @@ override proc @templateSupOrEqualTestAST.templateExpressionAnalysis
     !?rightExpression
   )
 //--- Generate expression
-  outExpression = @comparisonExpressionForGeneration {
-    !inAnalysisContext.mPredefinedTypes.mBoolType
-    !self.mOperatorLocation
-    !leftExpression
-    !.greaterOrEqual
-    !rightExpression
-  }
+  outExpression = @comparisonExpressionForGeneration (
+    !inAnalysisContext.mPredefinedTypes.mBoolType,
+    self.mOperatorLocation,
+    leftExpression,
+    .greaterOrEqual,
+    rightExpression
+  )
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -1389,13 +1389,13 @@ override proc @templateLeftShiftOperationAST.templateExpressionAnalysis
     spoil outExpression)
   else
   //--- Generate expression
-    outExpression = @binaryOperatorExpressionForGeneration {
-      !leftType
-      !self.mOperatorLocation
-      !leftExpression
-      !.leftShift
-      !rightExpression
-    }
+    outExpression = @binaryOperatorExpressionForGeneration (
+      !leftType,
+      self.mOperatorLocation,
+      leftExpression,
+      .leftShift,
+      rightExpression
+    )
   end
 }
 
@@ -1437,13 +1437,13 @@ override proc @templateRightShiftOperationAST.templateExpressionAnalysis
     spoil outExpression)
   else
   //--- Generate expression
-    outExpression = @binaryOperatorExpressionForGeneration {
-      !leftType
-      !self.mOperatorLocation
-      !leftExpression
-      !.rightShift
-      !rightExpression
-    }
+    outExpression = @binaryOperatorExpressionForGeneration (
+      !leftType,
+      self.mOperatorLocation,
+      leftExpression,
+      .rightShift,
+      rightExpression
+    )
   end
 }
 
@@ -1490,7 +1490,7 @@ override proc @templateInstructionStringAST.templateInstructionAnalysis
   ?!@unifiedTypeMap unused ioTypeMap,
   ?!@templateInstructionListForGeneration ioInstructionList
 ) {
-  ioInstructionList += !@templateInstructionStringForGeneration {!self.mTemplateString}
+  ioInstructionList += !@templateInstructionStringForGeneration (!self.mTemplateString)
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -1512,7 +1512,7 @@ override proc @templateInstructionExpressionAST.templateInstructionAnalysis
   if expression.mResultType.definition.typeName.string != "string" then
     error (self.mLocation:"expression type should be '@string' (it is '@" + expression.mResultType.definition.typeName.string + "')")
   end
-  ioInstructionList += !@templateInstructionExpressionForGeneration {!expression}
+  ioInstructionList += !@templateInstructionExpressionForGeneration (!expression)
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -1532,16 +1532,16 @@ override proc @templateBlockInstructionAST.templateInstructionAnalysis
     ?var expression
   )
   if expression.mResultType.definition.typeName.string == "bigint" then
-    let conversionExpression = @getterCallExpressionForGeneration {
-      !expression.mResultType
-      !expression.mLocation
-      !.definedAsMember
-      !expression
-      !@()
-      !"uint"
-      !@()
-      !true
-    }
+    let conversionExpression = @getterCallExpressionForGeneration (
+      !expression.mResultType,
+      expression.mLocation,
+      .definedAsMember,
+      expression,
+      @(),
+      "uint",
+      @(),
+      true
+    )
     expression = conversionExpression
   elsif expression.mResultType.definition.typeName.string != "uint" then
     error (self.mLocation:"expression type should be '@uint' (it is '@" + expression.mResultType.definition.typeName.string + "')")
@@ -1555,7 +1555,7 @@ override proc @templateBlockInstructionAST.templateInstructionAnalysis
     !self.mBlockInstructionList,
     !?blockInstructionList
   )
-  ioInstructionList += !@templateBlockInstructionForGeneration {!expression !self.mLocation !blockInstructionList}
+  ioInstructionList += !@templateBlockInstructionForGeneration (!expression, self.mLocation, blockInstructionList)
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -1567,7 +1567,7 @@ override proc @templateInstructionGetColumnLocationAST.templateInstructionAnalys
   ?!@unifiedTypeMap unused ioTypeMap,
   ?!@templateInstructionListForGeneration ioInstructionList
 ) {
-  ioInstructionList += !@templateInstructionGetColumnLocationForGeneration {}
+  ioInstructionList += !@templateInstructionGetColumnLocationForGeneration ()
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -1579,7 +1579,7 @@ override proc @templateInstructionGotoColumnLocationAST.templateInstructionAnaly
   ?!@unifiedTypeMap unused ioTypeMap,
   ?!@templateInstructionListForGeneration ioInstructionList
 ) {
-  ioInstructionList += !@templateInstructionGotoColumnLocationForGeneration {}
+  ioInstructionList += !@templateInstructionGotoColumnLocationForGeneration ()
 }
 
 
@@ -1626,9 +1626,9 @@ override proc @templateInstructionIfAST.templateInstructionAnalysis
     !?elseInstructionList
   )
 //---
-  ioInstructionList += !@templateInstructionIfForGeneration {
-    !templateInstructionIfBranchList
-    !elseInstructionList}
+  ioInstructionList += !@templateInstructionIfForGeneration (
+    !templateInstructionIfBranchList,
+    elseInstructionList)
 }
 
 //--------------------------------------------------------------------------------------------------

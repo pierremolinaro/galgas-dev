@@ -52,14 +52,14 @@ syntax extension galgas3DeclarationsSyntax {
     <semantic_instruction_list_ggs3> (!?ioDeclarations, ?let routineInstructionList)
     let @location endOfSetterLocation = @location.here
     $}$
-    ioDeclarations.mDeclarationList += !@extensionSetterAST {
-      !isPredefined: false
-      !typeName
-      !setterName
-      !formalParameterList
-      !routineInstructionList
-      !endOfSetterLocation
-    }
+    ioDeclarations.mDeclarationList += !@extensionSetterAST (
+      !isPredefined: false,
+      typeName,
+      setterName,
+      formalParameterList,
+      routineInstructionList,
+      endOfSetterLocation
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -80,14 +80,14 @@ syntax extension galgas3DeclarationsSyntax {
     <semantic_instruction_list_ggs3> (!?ioDeclarations, ?let @semanticInstructionListAST routineInstructionList)
     let @location endOfSetterLocation = @location.here
     $}$
-    ioDeclarations.mDeclarationList += !@extensionSetterAST {
-      !isPredefined: false
-      !typeName
-      !setterName
-      !formalParameterList
-      !routineInstructionList
-      !endOfSetterLocation
-    }
+    ioDeclarations.mDeclarationList += !@extensionSetterAST (
+      !isPredefined: false,
+      typeName,
+      setterName,
+      formalParameterList,
+      routineInstructionList,
+      endOfSetterLocation
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -117,14 +117,14 @@ syntax extension galgas4DeclarationsSyntax {
     <semantic_instruction_list> (!?ioDeclarations, ?let @semanticInstructionListAST routineInstructionList)
     let @location endOfSetterLocation = @location.here
     $}$
-    ioDeclarations.mDeclarationList += !@extensionSetterAST {
-      !isPredefined: false // Is not predefined
-      !typeName
-      !setterName
-      !formalParameterList
-      !routineInstructionList
-      !endOfSetterLocation
-    }
+    ioDeclarations.mDeclarationList += !@extensionSetterAST (
+      !isPredefined: false,
+      typeName,
+      setterName,
+      formalParameterList,
+      routineInstructionList,
+      endOfSetterLocation
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -139,14 +139,14 @@ syntax extension galgas4DeclarationsSyntax {
     <semantic_instruction_list> (!?ioDeclarations, ?let @semanticInstructionListAST routineInstructionList)
     let @location endOfSetterLocation = @location.here
     $}$
-    ioDeclarations.mDeclarationList += !@extensionSetterAST {
-      !isPredefined: false // Is not predefined
-      !inTypeName
-      !setterName
-      !formalParameterList
-      !routineInstructionList
-      !endOfSetterLocation
-    }
+    ioDeclarations.mDeclarationList += !@extensionSetterAST (
+      !isPredefined: false,
+      inTypeName,
+      setterName,
+      formalParameterList,
+      routineInstructionList,
+      endOfSetterLocation
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -173,10 +173,10 @@ override proc @extensionSetterAST.enterDeclarationInGraph (
   ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext,
   ?!@extensionSetterMapForBuildingContext ioExtensionSetterMapForBuildingContext,
   ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList) {
-  let key = @lstring {
-    !"extension mutating proc @" + self.mTypeName + " " + self.mExtensionSetterName
-    !self.mExtensionSetterName.location
-  }
+  let key = @lstring (
+    !"extension mutating proc @" + self.mTypeName + " " + self.mExtensionSetterName,
+    self.mExtensionSetterName.location
+  )
   !?ioSemanticTypePrecedenceGraph.addNode (!key, !self)
   !?ioSemanticTypePrecedenceGraph.addEdge (!from: key, !to: @{!"@" + self.mTypeName !self.mTypeName.location})
 //---
@@ -247,13 +247,13 @@ override proc @extensionSetterAST.semanticAnalysis (
     implementedAsFunction = true
   end
 //--- Analyze instruction list
-  let analysisContext = @analysisContext {
-    !inSemanticContext
-    !inPredefinedTypes
-    !selfObjectCppName: selfObjectName
-    !selfAvailability: .available {!type: selfType !selfMutability: .selfAndPropertiesAreMutable}
+  let analysisContext = @analysisContext (
+    !inSemanticContext,
+    inPredefinedTypes,
+    !selfObjectCppName: selfObjectName,
+    !selfAvailability: .available {!type: selfType !selfMutability: .selfAndPropertiesAreMutable},
     !selfObjectCppPrefixForAccessingProperty: selfObjectAccessor
-  }
+  )
   analyzeRoutineBody (
     !nameForUsefulness,
     !?ioUsefulEntitiesGraph,
@@ -268,15 +268,15 @@ override proc @extensionSetterAST.semanticAnalysis (
 //---
   ioSemanticDeclarationListForGeneration +=
     !infoMessage:"extension mutating proc " + self.mExtensionSetterName
-    !@extensionSetterForGeneration {
-      !generateHeader: true // Generate Cpp header file
-      !implementationCppFileName: "mutating proc-" + selfType.definition.typeName.string.fileNameRepresentation + "-" + self.mExtensionSetterName.string.fileNameRepresentation
-      !selfType
-      !self.mExtensionSetterName.string
-      !implementedAsFunction
-      !formalParameterListForGeneration
-      !selfType.definition.allTypedPropertyList
-      !semanticInstructionListForGeneration}
+    !@extensionSetterForGeneration (
+      !generateHeader: true,
+      !implementationCppFileName: "mutating proc-" + selfType.definition.typeName.string.fileNameRepresentation + "-" + self.mExtensionSetterName.string.fileNameRepresentation,
+      selfType,
+      self.mExtensionSetterName.string,
+      implementedAsFunction,
+      formalParameterListForGeneration,
+      selfType.definition.allTypedPropertyList,
+      semanticInstructionListForGeneration)
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -358,7 +358,7 @@ override proc @extensionSetterForGeneration.appendSpecificImplementation (
       (!"".nowhere,
       !@formalArgumentPassingModeAST. argumentInOut,
       !self.mReceiverType,
-      !@lstring {!"self" !@location.here},
+      !@lstring (!"self", @location.here),
       !"ioObject",
       !0
     )

@@ -52,13 +52,13 @@ syntax extension galgas3LexiqueComponentSyntax {
       <template_replacement_ggs3> (!? templateReplacementList)
     end
     $}$
-    ioDeclarations.mDeclarationList += !@templateLexiqueComponentAST {
-      !isPredefined: false // Is not predefined
-      !lexiqueComponentName
-      !lexiqueSuperComponentName
-      !templateDelimitorList
-      !templateReplacementList
-    }
+    ioDeclarations.mDeclarationList += !@templateLexiqueComponentAST (
+      !isPredefined: false,
+      lexiqueComponentName,
+      lexiqueSuperComponentName,
+      templateDelimitorList,
+      templateReplacementList
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -114,7 +114,7 @@ syntax extension galgas3LexiqueComponentSyntax {
     or
       $->$
       $"string"$ (?replacementString)
-      replacementFunction = @lstring {!"" !@location.here}
+      replacementFunction = @lstring (!"", @location.here)
     end
     ioTemplateReplacement += !matchString !replacementString !replacementFunction
   }
@@ -147,13 +147,13 @@ syntax extension galgas4LexiqueComponentSyntax {
       <template_replacement> (!? templateReplacementList)
     end
     $}$
-    ioDeclarations.mDeclarationList += !@templateLexiqueComponentAST {
-      !isPredefined: false // Is not predefined
-      !lexiqueComponentName
-      !lexiqueSuperComponentName
-      !templateDelimitorList
-      !templateReplacementList
-    }
+    ioDeclarations.mDeclarationList += !@templateLexiqueComponentAST (
+      !isPredefined: false,
+      lexiqueComponentName,
+      lexiqueSuperComponentName,
+      templateDelimitorList,
+      templateReplacementList
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -209,7 +209,7 @@ syntax extension galgas4LexiqueComponentSyntax {
     or
       $->$
       $"string"$ (?replacementString)
-      replacementFunction = @lstring {!"" !@location.here}
+      replacementFunction = @lstring (!"", @location.here)
     end
     ioTemplateReplacement += !matchString !replacementString !replacementFunction
   }
@@ -234,9 +234,9 @@ override proc @templateLexiqueComponentAST.enterDeclarationInGraph
   ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext,
   ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext,
   ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList ) {
-  let key = @lstring {!"lexique " + self.mLexiqueComponentName !self.mLexiqueComponentName.location}
+  let key = @lstring (!"lexique " + self.mLexiqueComponentName, self.mLexiqueComponentName.location)
   !?ioSemanticTypePrecedenceGraph.addNode (!key, !self)
-  let superKey = @lstring {!"lexique " + self.mLexiqueSuperComponentName !self.mLexiqueComponentName.location}
+  let superKey = @lstring (!"lexique " + self.mLexiqueSuperComponentName, self.mLexiqueComponentName.location)
   !?ioSemanticTypePrecedenceGraph.addEdge (!from: key, !to: superKey)
 }
 
@@ -423,18 +423,15 @@ override proc @templateLexiqueComponentAST.semanticAnalysis
   //---
     ioSemanticDeclarationListForGeneration +=
       !infoMessage: ""
-      !@lexiqueDeclarationForGeneration {
-        !generateHeader: true // has header
-        !implementationCppFileName: "lexique-" + self.mLexiqueComponentName.string.fileNameRepresentation
-        !self.mLexiqueComponentName.string
-        !self.mLexiqueSuperComponentName.string
-        !headerContents
-        !cppContents
-//        !objcCocoaHeader
-//        !objcCocoaImplementation
-//        !swiftCocoaImplementation
-        !swiftuiImplementation
-      }
+      !@lexiqueDeclarationForGeneration (
+        !generateHeader: true,
+        !implementationCppFileName: "lexique-" + self.mLexiqueComponentName.string.fileNameRepresentation,
+        self.mLexiqueComponentName.string,
+        self.mLexiqueSuperComponentName.string,
+        headerContents,
+        cppContents,
+        swiftuiImplementation
+      )
   end
 }
 

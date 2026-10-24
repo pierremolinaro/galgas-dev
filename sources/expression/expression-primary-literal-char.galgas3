@@ -34,7 +34,7 @@ syntax extension galgas3ExpressionSyntax {
   rule <primary_ggs3> (?!@galgasDeclarationAST unused ioDeclarations,
                       !@semanticExpressionAST outExpression ) {
     $'char'$ (?let @lchar literalChar)
-    outExpression = @literalCharExpressionAST {!literalChar}
+    outExpression = @literalCharExpressionAST (!literalChar)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -50,7 +50,7 @@ syntax extension galgas4ExpressionSyntax {
   rule <primary> (?!@galgasDeclarationAST unused ioDeclarations,
                  !@semanticExpressionAST outExpression ) {
     $'char'$ (?let @lchar literalChar)
-    outExpression = @literalCharExpressionAST {!literalChar}
+    outExpression = @literalCharExpressionAST (!literalChar)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -77,11 +77,11 @@ override proc @literalCharExpressionAST.analyzeSemanticExpression
   ?!@localVarManager unused ioVariableMap,
   !@semanticExpressionForGeneration outExpression
 ) {
-  outExpression = @literalCharExpressionForGeneration {
-    !inAnalysisContext.predefinedTypes.mCharType
-    !self.mCharacter.location
-    !self.mCharacter.char
-  }
+  outExpression = @literalCharExpressionForGeneration (
+    !inAnalysisContext.predefinedTypes.mCharType,
+    self.mCharacter.location,
+    self.mCharacter.char
+  )
 }
 
 //--------------------------------------------------------------------------------------------------

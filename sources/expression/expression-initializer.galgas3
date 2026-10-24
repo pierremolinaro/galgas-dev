@@ -31,11 +31,11 @@ syntax extension galgas3ExpressionSyntax {
     <output_expression_list_ggs3> (!?ioDeclarations, ?let expressionList)
     let endOfExpression = @location.here
     $}$
-    outExpression = @initializerCallAST {
-      !"".here
-      !expressionList
-      !endOfExpression
-    }
+    outExpression = @initializerCallAST (
+      !"".here,
+      expressionList,
+      endOfExpression
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -46,11 +46,11 @@ syntax extension galgas3ExpressionSyntax {
    <output_expression_list_ggs34> (!?ioDeclarations, ?let expressionList)
    $)$
     let endOfExpression = @location.here
-    outExpression = @initializerCallAST {
-      !"".here
-      !expressionList
-      !endOfExpression
-    }
+    outExpression = @initializerCallAST (
+      !"".here,
+      expressionList,
+      endOfExpression
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -58,19 +58,19 @@ syntax extension galgas3ExpressionSyntax {
   rule <primary_ggs3> (?!@galgasDeclarationAST ioDeclarations,
                       !@semanticExpressionAST outExpression ) {
     $@type$ (?let typeName) indexing (typeReferenceInConstructor)
-    select // §§
-      ${$
-      <output_expression_list_ggs3> (!?ioDeclarations, ?let expressionList)
-      let endOfExpression = @location.here
-      $}$
-      outExpression = @initializerCallAST (typeName, expressionList, endOfExpression)
-    or
+//    select // §§
+//      ${$
+//      <output_expression_list_ggs3> (!?ioDeclarations, ?let expressionList)
+//      let endOfExpression = @location.here
+//      $}$
+//      outExpression = @initializerCallAST (typeName, expressionList, endOfExpression)
+//    or
       $($
       <output_expression_list_ggs34> (!?ioDeclarations, ?let expressionList)
       $)$
       let endOfExpression = @location.here
       outExpression = @initializerCallAST (typeName, expressionList, endOfExpression)
-    end
+//    end
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -133,11 +133,11 @@ syntax extension galgas4ExpressionSyntax {
     <output_expression_list> (!?ioDeclarations, ?let expressionList)
     let endOfExpression = @location.here
     $)$
-    outExpression = @initializerCallAST {
-      !@("", initLocation)
-      !expressionList
-      !endOfExpression
-    }
+    outExpression = @initializerCallAST (
+      !@("", initLocation),
+      expressionList,
+      endOfExpression
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -159,11 +159,11 @@ syntax extension galgas4ExpressionSyntax {
     <output_expression_list> (!?ioDeclarations, ?let expressionList)
     let endOfExpression = @location.here
     $)$
-    outExpression = @initializerCallAST {
-      !inTypeName
-      !expressionList
-      !endOfExpression
-    }
+    outExpression = @initializerCallAST (
+      !inTypeName,
+      expressionList,
+      endOfExpression
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -173,11 +173,11 @@ syntax extension galgas4ExpressionSyntax {
     $($
     let endOfExpression = @location.here
     $)$
-    outExpression = @initializerCallAST {
-      !@("", endOfExpression)
-      !@()
-      !endOfExpression
-    }
+    outExpression = @initializerCallAST (
+      !@("", endOfExpression),
+      @(),
+      endOfExpression
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -228,12 +228,12 @@ final class @initializerCallAST : @semanticExpressionAST {
     let typeUsefulnessName = typeNameForUsefulEntitiesGraph (instanciedType.definition.typeName)
     !?ioUsefulEntitiesGraph.addEdge (!from: inUsefulnessCallerEntityName, !to: typeUsefulnessName)
   //---
-    outExpression = @initializerCallForGeneration {
-      !instanciedType
-      !self.mEndOfExpressions
-      !initializerName.string
-      !constructorEffectiveParameterList
-    }
+    outExpression = @initializerCallForGeneration (
+      !instanciedType,
+      self.mEndOfExpressions,
+      initializerName.string,
+      constructorEffectiveParameterList
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

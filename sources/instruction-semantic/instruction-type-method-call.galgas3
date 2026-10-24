@@ -40,12 +40,12 @@ syntax extension galgas3InstructionsSyntax {
     $.$
     $identifier$ (?let @lstring mMethodName)
     <actual_parameter_list_ggs3> (!?ioDeclarations, ?let @actualParameterListAST actualParameterList)
-    outInstruction = @typeMethodCallInstructionAST {
-      !instructionLocation
-      !mTypeName
-      !mMethodName
-      !actualParameterList
-    }
+    outInstruction = @typeMethodCallInstructionAST (
+      !instructionLocation,
+      mTypeName,
+      mMethodName,
+      actualParameterList
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -65,12 +65,12 @@ syntax extension galgas4InstructionsSyntax {
     $.$
     $identifier$ (?let @lstring mMethodName)
     <actual_parameter_list_with_parenthesis> (!?ioDeclarations, ?let @actualParameterListAST actualParameterList)
-    outInstruction = @typeMethodCallInstructionAST {
-      !instructionLocation
-      !mTypeName
-      !mMethodName
-      !actualParameterList
-    }
+    outInstruction = @typeMethodCallInstructionAST (
+      !instructionLocation,
+      mTypeName,
+      mMethodName,
+      actualParameterList
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -116,11 +116,11 @@ override proc @typeMethodCallInstructionAST.analyzeSemanticInstruction (
     ?let @actualParameterListForGeneration actualParameterListForGeneration
   )
 //--- Generate instructions
-  ioInstructionListForGeneration += !@typeMethodCallInstructionForGeneration {
-    !self.mTypeName
-    !self.mMethodName
-    !actualParameterListForGeneration
-    !hasCompilerArgument}
+  ioInstructionListForGeneration += !@typeMethodCallInstructionForGeneration (
+    !self.mTypeName,
+    self.mMethodName,
+    actualParameterListForGeneration,
+    hasCompilerArgument)
 }
 
 //--------------------------------------------------------------------------------------------------

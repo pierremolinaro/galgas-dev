@@ -41,12 +41,12 @@ syntax extension galgas3DeclarationsSyntax {
       graphInsertModifierList += !insertName !errorMessage
     end
     $}$
-    ioDeclarations.mDeclarationList += !@graphDeclarationAST {
-      !isPredefined: false // Is not predefined
-      !graphTypeName
-      !associatedListTypeName
-      !graphInsertModifierList
-    }
+    ioDeclarations.mDeclarationList += !@graphDeclarationAST (
+      !isPredefined: false,
+      graphTypeName,
+      associatedListTypeName,
+      graphInsertModifierList
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -76,12 +76,12 @@ syntax extension galgas4DeclarationsSyntax {
       graphInsertModifierList += !insertName !errorMessage
     end
     $}$
-    ioDeclarations.mDeclarationList += !@graphDeclarationAST {
-      !isPredefined: false // Is not predefined
-      !graphTypeName
-      !associatedListTypeName
-      !graphInsertModifierList
-    }
+    ioDeclarations.mDeclarationList += !@graphDeclarationAST (
+      !isPredefined: false,
+      graphTypeName,
+      associatedListTypeName,
+      graphInsertModifierList
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -469,33 +469,33 @@ final class @graphDeclarationAST : @semanticDeclarationAST {
       !acceptComparable: false
     )
   //--- Enter type in type map
-    let typeDefinition = @unifiedTypeDefinition {
-      !typeName: self.mGraphTypeName
-      !isPredefined: self.isPredefined
-      !isConcrete: true // Concrete Type
-      !isFinal: true
-      !superType: .null
-      !typeKind: .graphType
-      !supportCollectionValue: false // Does not support collection value
-      !allTypedPropertyList: @()
-      !propertyMap: @()
-      !currentTypedPropertyList: @()
-      !initializerMap: initializerMap
-      !classFunctionMap: @()
-      !getterMap: getterMap
-      !setterMap: setterMap
-      !instanceMethodMap: instanceMethodMap
-      !classMethodMap: @()
-      !unwrappedType: .null
-      !readSubscriptMap: @()
-      !enumerationDescriptorList: @()
-      !features: features
-      !addAssignOperatorArguments: @()
-      !generateHeaderInSeparateFile: false // Do not generate header in separate file
-      !typeForEnumeratedElement: .null // Type for enumerated element for "for" instruction
-      !headerFileName: "graph-" + self.mGraphTypeName.string.fileNameRepresentation
+    let typeDefinition = @unifiedTypeDefinition (
+      !typeName: self.mGraphTypeName,
+      !isPredefined: self.isPredefined,
+      !isConcrete: true,
+      !isFinal: true,
+      !superType: .null,
+      !typeKind: .graphType,
+      !supportCollectionValue: false,
+      !allTypedPropertyList: @(),
+      !propertyMap: @(),
+      !currentTypedPropertyList: @(),
+      !initializerMap: initializerMap,
+      !classFunctionMap: @(),
+      !getterMap: getterMap,
+      !setterMap: setterMap,
+      !instanceMethodMap: instanceMethodMap,
+      !classMethodMap: @(),
+      !unwrappedType: .null,
+      !readSubscriptMap: @(),
+      !enumerationDescriptorList: @(),
+      !features: features,
+      !addAssignOperatorArguments: @(),
+      !generateHeaderInSeparateFile: false,
+      !typeForEnumeratedElement: .null,
+      !headerFileName: "graph-" + self.mGraphTypeName.string.fileNameRepresentation,
       !headerKind: .oneHeader
-    }
+    )
     !?ioTypeMap.insertType (!typeDefinition.typeName, !typeDefinition)
   }
 
@@ -551,12 +551,12 @@ final class @graphDeclarationAST : @semanticDeclarationAST {
   //---
     ioSemanticDeclarationListForGeneration +=
       !infoMessage: "graph " + self.mGraphTypeName
-      !@graphDeclarationForGeneration {
-        !graphTypeEntry
-        !associatedListTypeEntry
-        !associatedListElementTypeEntry
-        !self.mInsertModifierList
-      }
+      !@graphDeclarationForGeneration (
+        !graphTypeEntry,
+        associatedListTypeEntry,
+        associatedListElementTypeEntry,
+        self.mInsertModifierList
+      )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

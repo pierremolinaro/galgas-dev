@@ -193,10 +193,10 @@ private proc compileProject (?let @lstring inProjectSourceFile,
   for (mValue) in inProjectComponentAST.mProjectSourceList do
     if mValue.pathExtension == "galgas3" then
       let absoluteSourcePath = [mValue absolutePathFromPath !sourcesDir]
-      grammar galgas3Grammar (!?declarationAST) in @lstring {!absoluteSourcePath !.nowhere}
+      grammar galgas3Grammar (!?declarationAST) in @lstring (!absoluteSourcePath, .nowhere)
     elsif mValue.pathExtension == "galgas4" then
       let absoluteSourcePath = [mValue absolutePathFromPath !sourcesDir]
-      grammar galgas4Grammar (!?declarationAST) in @lstring {!absoluteSourcePath !.nowhere}
+      grammar galgas4Grammar (!?declarationAST) in @lstring (!absoluteSourcePath, .nowhere)
     end
   end
 //--------------------------------- Hand coded source files
@@ -257,7 +257,7 @@ private proc compileProject (?let @lstring inProjectSourceFile,
     )
   else
     semanticDeclarationSortedListForGeneration = @()
-    semanticContext = @semanticContext {}
+    semanticContext = @semanticContext ()
     typeMap = @()
   end
 //--------------------------------- Compile GUI components

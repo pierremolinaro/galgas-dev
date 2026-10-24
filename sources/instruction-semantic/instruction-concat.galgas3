@@ -54,143 +54,143 @@ syntax extension galgas3InstructionsSyntax {
     select
       $-=$
       <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST expression)
-      outInstruction = @opAssignExpressionInstructionAST {
-        !instructionLocation
-        !inHasSelfPrefix
-        !receiverName
-        !propertyList
-        !.minusAssign
-        !expression
-      }
+      outInstruction = @opAssignExpressionInstructionAST (
+        !instructionLocation,
+        inHasSelfPrefix,
+        receiverName,
+        propertyList,
+        .minusAssign,
+        expression
+      )
     or
       $++=$
       <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST expression)
-      outInstruction = @plusPlusEqualElementInstructionAST {
-        !instructionLocation
-        !inHasSelfPrefix
-        !receiverName
-        !propertyList
-        !expression
-      }
+      outInstruction = @plusPlusEqualElementInstructionAST (
+        !instructionLocation,
+        inHasSelfPrefix,
+        receiverName,
+        propertyList,
+        expression
+      )
     or
       $+=$
       select
         <non_empty_output_expression_list_ggs3> (!?ioDeclarations, ?let @actualOutputArgumentList expressionList)
-        outInstruction = @plusEqualElementsInstructionAST {
-          !instructionLocation
-          !inHasSelfPrefix
-          !receiverName
-          !propertyList
-          !expressionList
-        }
+        outInstruction = @plusEqualElementsInstructionAST (
+          !instructionLocation,
+          inHasSelfPrefix,
+          receiverName,
+          propertyList,
+          expressionList
+        )
       or
         <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST expression)
-        outInstruction = @opAssignExpressionInstructionAST {
-          !instructionLocation
-          !inHasSelfPrefix
-          !receiverName
-          !propertyList
-          !.plusAssign
-          !expression
-        }
+        outInstruction = @opAssignExpressionInstructionAST (
+          !instructionLocation,
+          inHasSelfPrefix,
+          receiverName,
+          propertyList,
+          .plusAssign,
+          expression
+        )
       end
     or
       $*=$
       <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST expression)
-      outInstruction = @opAssignExpressionInstructionAST {
-        !instructionLocation
-        !inHasSelfPrefix
-        !receiverName
-        !propertyList
-        !.mulAssign
-        !expression
-      }
+      outInstruction = @opAssignExpressionInstructionAST (
+        !instructionLocation,
+        inHasSelfPrefix,
+        receiverName,
+        propertyList,
+        .mulAssign,
+        expression
+      )
     or
       $&=$
       <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST expression)
-      outInstruction = @opAssignExpressionInstructionAST {
-        !instructionLocation
-        !inHasSelfPrefix
-        !receiverName
-        !propertyList
-        !.andAssign
-        !expression
-      }
+      outInstruction = @opAssignExpressionInstructionAST (
+        !instructionLocation,
+        inHasSelfPrefix,
+        receiverName,
+        propertyList,
+        .andAssign,
+        expression
+      )
     or
       $|=$
       <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST expression)
-      outInstruction = @opAssignExpressionInstructionAST {
-        !instructionLocation
-        !inHasSelfPrefix
-        !receiverName
-        !propertyList
-        !.orAssign
-        !expression
-      }
+      outInstruction = @opAssignExpressionInstructionAST (
+        !instructionLocation,
+        inHasSelfPrefix,
+        receiverName,
+        propertyList,
+        .orAssign,
+        expression
+      )
     or
       $^=$
       <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST expression)
-      outInstruction = @opAssignExpressionInstructionAST {
-        !instructionLocation
-        !inHasSelfPrefix
-        !receiverName
-        !propertyList
-        !.xorAssign
-        !expression
-      }
+      outInstruction = @opAssignExpressionInstructionAST (
+        !instructionLocation,
+        inHasSelfPrefix,
+        receiverName,
+        propertyList,
+        .xorAssign,
+        expression
+      )
     or
       $/=$
       <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST expression)
-      outInstruction = @opAssignExpressionInstructionAST {
-        !instructionLocation
-        !inHasSelfPrefix
-        !receiverName
-        !propertyList
-        !.divAssign
-        !expression
-      }
+      outInstruction = @opAssignExpressionInstructionAST (
+        !instructionLocation,
+        inHasSelfPrefix,
+        receiverName,
+        propertyList,
+        .divAssign,
+        expression
+      )
     or
       <actual_parameter_list_ggs3> (!?ioDeclarations, ?let @actualParameterListAST actualParameterList)
       if inHasSelfPrefix then
         if propertyList.count == 0 then
-          outInstruction = @methodCallInstructionAST {
-            !instructionLocation
-            !@selfInExpressionAST {!instructionLocation}
-            !receiverName // Method name
-            !actualParameterList
-          }
+          outInstruction = @methodCallInstructionAST (
+            !instructionLocation,
+            @selfInExpressionAST (!instructionLocation),
+            receiverName,
+            actualParameterList
+          )
         else
           !?propertyList.popLast (?let methodName)
-          var @semanticExpressionAST receiverExpression = @selfInExpressionAST {!@location.here}
-          receiverExpression = @structPropertyAccessExpressionAST {!receiverName.location !receiverExpression !receiverName}
+          var @semanticExpressionAST receiverExpression = @selfInExpressionAST (!@location.here)
+          receiverExpression = @structPropertyAccessExpressionAST (!receiverName.location, receiverExpression, receiverName)
           for (propertyName) in propertyList do
-            receiverExpression = @structPropertyAccessExpressionAST {!propertyName.location !receiverExpression !propertyName}
+            receiverExpression = @structPropertyAccessExpressionAST (!propertyName.location, receiverExpression, propertyName)
           end
-          outInstruction = @methodCallInstructionAST {
-            !instructionLocation
-            !receiverExpression
-            !methodName
-            !actualParameterList
-          }
+          outInstruction = @methodCallInstructionAST (
+            !instructionLocation,
+            receiverExpression,
+            methodName,
+            actualParameterList
+          )
         end
       elsif propertyList.count == 0 then
-        outInstruction = @procCallInstructionAST {
-          !receiverName.location
-          !receiverName // Proc name
-          !actualParameterList
-        }
+        outInstruction = @procCallInstructionAST (
+          !receiverName.location,
+          receiverName,
+          actualParameterList
+        )
       else
         !?propertyList.popLast (?let methodName)
-        var @semanticExpressionAST receiverExpression = @varInExpressionAST {!receiverName}
+        var @semanticExpressionAST receiverExpression = @varInExpressionAST (!receiverName)
         for (propertyName) in propertyList do
-          receiverExpression = @structPropertyAccessExpressionAST {!propertyName.location !receiverExpression !propertyName}
+          receiverExpression = @structPropertyAccessExpressionAST (!propertyName.location, receiverExpression, propertyName)
         end
-        outInstruction = @methodCallInstructionAST {
-          !instructionLocation
-          !receiverExpression
-          !methodName
-          !actualParameterList
-        }
+        outInstruction = @methodCallInstructionAST (
+          !instructionLocation,
+          receiverExpression,
+          methodName,
+          actualParameterList
+        )
       end
     end
   }
@@ -254,132 +254,132 @@ syntax extension galgas4InstructionsSyntax {
     select
       $-=$
       <expression> (!?ioDeclarations, ?let @semanticExpressionAST expression)
-      outInstruction = @opAssignExpressionInstructionAST {
-        !instructionLocation
-        !inHasSelfPrefix
-        !receiverName
-        !propertyList
-        !.minusAssign
-        !expression
-      }
+      outInstruction = @opAssignExpressionInstructionAST (
+        !instructionLocation,
+        inHasSelfPrefix,
+        receiverName,
+        propertyList,
+        .minusAssign,
+        expression
+      )
     or
       $+=$
       <expression> (!?ioDeclarations, ?let @semanticExpressionAST expression)
-      outInstruction = @opAssignExpressionInstructionAST {
-        !instructionLocation
-        !inHasSelfPrefix
-        !receiverName
-        !propertyList
-        !.plusAssign
-        !expression
-      }
+      outInstruction = @opAssignExpressionInstructionAST (
+        !instructionLocation,
+        inHasSelfPrefix,
+        receiverName,
+        propertyList,
+        .plusAssign,
+        expression
+      )
     or
       $++=$
       <expression> (!?ioDeclarations, ?let @semanticExpressionAST expression)
-      outInstruction = @plusPlusEqualElementInstructionAST {
-        !instructionLocation
-        !inHasSelfPrefix
-        !receiverName
-        !propertyList
-        !expression
-      }
+      outInstruction = @plusPlusEqualElementInstructionAST (
+        !instructionLocation,
+        inHasSelfPrefix,
+        receiverName,
+        propertyList,
+        expression
+      )
     or
       $*=$
       <expression> (!?ioDeclarations, ?let @semanticExpressionAST expression)
-      outInstruction = @opAssignExpressionInstructionAST {
-        !instructionLocation
-        !inHasSelfPrefix
-        !receiverName
-        !propertyList
-        !.mulAssign
-        !expression
-      }
+      outInstruction = @opAssignExpressionInstructionAST (
+        !instructionLocation,
+        inHasSelfPrefix,
+        receiverName,
+        propertyList,
+        .mulAssign,
+        expression
+      )
     or
       $&=$
       <expression> (!?ioDeclarations, ?let @semanticExpressionAST expression)
-      outInstruction = @opAssignExpressionInstructionAST {
-        !instructionLocation
-        !inHasSelfPrefix
-        !receiverName
-        !propertyList
-        !.andAssign
-        !expression
-      }
+      outInstruction = @opAssignExpressionInstructionAST (
+        !instructionLocation,
+        inHasSelfPrefix,
+        receiverName,
+        propertyList,
+        .andAssign,
+        expression
+      )
     or
       $|=$
       <expression> (!?ioDeclarations, ?let @semanticExpressionAST expression)
-      outInstruction = @opAssignExpressionInstructionAST {
-        !instructionLocation
-        !inHasSelfPrefix
-        !receiverName
-        !propertyList
-        !.orAssign
-        !expression
-      }
+      outInstruction = @opAssignExpressionInstructionAST (
+        !instructionLocation,
+        inHasSelfPrefix,
+        receiverName,
+        propertyList,
+        .orAssign,
+        expression
+      )
     or
       $^=$
       <expression> (!?ioDeclarations, ?let @semanticExpressionAST expression)
-      outInstruction = @opAssignExpressionInstructionAST {
-        !instructionLocation
-        !inHasSelfPrefix
-        !receiverName
-        !propertyList
-        !.xorAssign
-        !expression
-      }
+      outInstruction = @opAssignExpressionInstructionAST (
+        !instructionLocation,
+        inHasSelfPrefix,
+        receiverName,
+        propertyList,
+        .xorAssign,
+        expression
+      )
     or
       $/=$
       <expression> (!?ioDeclarations, ?let @semanticExpressionAST expression)
-      outInstruction = @opAssignExpressionInstructionAST {
-        !instructionLocation
-        !inHasSelfPrefix
-        !receiverName
-        !propertyList
-        !.divAssign
-        !expression
-      }
+      outInstruction = @opAssignExpressionInstructionAST (
+        !instructionLocation,
+        inHasSelfPrefix,
+        receiverName,
+        propertyList,
+        .divAssign,
+        expression
+      )
     or
       <actual_parameter_list_with_parenthesis> (!?ioDeclarations, ?let @actualParameterListAST actualParameterList)
       if inHasSelfPrefix then
         if propertyList.count == 0 then
-          outInstruction = @methodCallInstructionAST {
-            !instructionLocation
-            !@selfInExpressionAST {!instructionLocation}
-            !receiverName // Method name
-            !actualParameterList
-          }
+          outInstruction = @methodCallInstructionAST (
+            !instructionLocation,
+            @selfInExpressionAST (!instructionLocation),
+            receiverName,
+            actualParameterList
+          )
         else
           !?propertyList.popLast (?let methodName)
-          var @semanticExpressionAST receiverExpression = @selfInExpressionAST {!@location.here}
-          receiverExpression = @structPropertyAccessExpressionAST {!receiverName.location !receiverExpression !receiverName}
+          var @semanticExpressionAST receiverExpression = @selfInExpressionAST (!@location.here)
+          receiverExpression = @structPropertyAccessExpressionAST (!receiverName.location, receiverExpression, receiverName)
           for (propertyName) in propertyList do
-            receiverExpression = @structPropertyAccessExpressionAST {!propertyName.location !receiverExpression !propertyName}
+            receiverExpression = @structPropertyAccessExpressionAST (!propertyName.location, receiverExpression, propertyName)
           end
-          outInstruction = @methodCallInstructionAST {
-            !instructionLocation
-            !receiverExpression
-            !methodName
-            !actualParameterList
-          }
+          outInstruction = @methodCallInstructionAST (
+            !instructionLocation,
+            receiverExpression,
+            methodName,
+            actualParameterList
+          )
         end
       elsif propertyList.count == 0 then
-        outInstruction = @procCallInstructionAST {
-          !receiverName.location
-          !receiverName // Proc name
-          !actualParameterList
-        }
+        outInstruction = @procCallInstructionAST (
+          !receiverName.location,
+          receiverName,
+          actualParameterList
+        )
       else
         !?propertyList.popLast (?let methodName)
-        var @semanticExpressionAST receiverExpression = @varInExpressionAST {!receiverName}
+        var @semanticExpressionAST receiverExpression = @varInExpressionAST (!receiverName)
         for (propertyName) in propertyList do
-          receiverExpression = @structPropertyAccessExpressionAST {!propertyName.location !receiverExpression !propertyName}
+          receiverExpression = @structPropertyAccessExpressionAST (!propertyName.location, receiverExpression, propertyName)
         end
-        outInstruction = @methodCallInstructionAST {
-          !instructionLocation
-          !receiverExpression
-          !methodName
-          !actualParameterList
-        }
+        outInstruction = @methodCallInstructionAST (
+          !instructionLocation,
+          receiverExpression,
+          methodName,
+          actualParameterList
+        )
       end
     end
   }
@@ -530,15 +530,15 @@ final class @opAssignExpressionInstructionAST : @semanticInstructionAST {
   //--- Check assignment type compatibility
     checkAssignmentTypeWithImplicitGetterCall (!targetType, !expression.mResultType, !self.mInstructionLocation, !?expression)
   //--- Generate instruction
-    ioInstructionListForGeneration += !@opAssignInstructionForGeneration {
-      !self.mInstructionLocation
-      !targetType
-      !targetVariableCppName
-      !nameForCheckingFormalParameterUsing
-      !self.mStructAttributeList
-      !expression
-      !self.mOperator.cppFunctionName
-    }
+    ioInstructionListForGeneration += !@opAssignInstructionForGeneration (
+      !self.mInstructionLocation,
+      targetType,
+      targetVariableCppName,
+      nameForCheckingFormalParameterUsing,
+      self.mStructAttributeList,
+      expression,
+      self.mOperator.cppFunctionName
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -640,13 +640,13 @@ final class @plusEqualElementsInstructionAST : @semanticInstructionAST {
         effectiveParameterList += !expression
       end
     //--- Generate instruction
-      ioInstructionListForGeneration += !@plusEqualnstructionForGeneration {
-        !targetVariableCppName
-        !targetType
-        !nameForCheckingFormalParameterUsing
-        !self.mInstructionLocation
-        !self.mStructAttributeList
-        !effectiveParameterList}
+      ioInstructionListForGeneration += !@plusEqualnstructionForGeneration (
+        !targetVariableCppName,
+        targetType,
+        nameForCheckingFormalParameterUsing,
+        self.mInstructionLocation,
+        self.mStructAttributeList,
+        effectiveParameterList)
     end
   }
 
@@ -741,14 +741,14 @@ final class @plusPlusEqualElementInstructionAST : @semanticInstructionAST {
       !?expression
     )
   //--- Generate instruction
-    ioInstructionListForGeneration += !@plusPlusAssignInstructionForGeneration {
-      !self.mInstructionLocation
-      !targetType
-      !targetVariableCppName
-      !nameForCheckingFormalParameterUsing
-      !self.mStructAttributeList
-      !expression
-    }
+    ioInstructionListForGeneration += !@plusPlusAssignInstructionForGeneration (
+      !self.mInstructionLocation,
+      targetType,
+      targetVariableCppName,
+      nameForCheckingFormalParameterUsing,
+      self.mStructAttributeList,
+      expression
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

@@ -33,11 +33,11 @@ syntax extension galgas3DeclarationsSyntax {
       $%comparable$
       theExtension = .comparable
     end
-    ioDeclarations.mDeclarationList += !@equatableExtensionAST {
-      !isPredefined: false
-      !typeName
-      !theExtension
-    }
+    ioDeclarations.mDeclarationList += !@equatableExtensionAST (
+      !isPredefined: false,
+      typeName,
+      theExtension
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -62,11 +62,11 @@ syntax extension galgas4DeclarationsSyntax {
       $%comparable$
       theExtension = .comparable
     end
-    ioDeclarations.mDeclarationList += !@equatableExtensionAST {
-      !isPredefined: false
-      !typeName
-      !theExtension
-    }
+    ioDeclarations.mDeclarationList += !@equatableExtensionAST (
+      !isPredefined: false,
+      typeName,
+      theExtension
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -147,7 +147,7 @@ final class @equatableExtensionAST : @semanticDeclarationAST {
           ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext,
           ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext,
           ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList) {
-    let key = @lstring {!self.keyRepresentation !self.mTypeName.location}
+    let key = @lstring (!self.keyRepresentation, self.mTypeName.location)
     !?ioSemanticTypePrecedenceGraph.addNode (!key, !self)
     !?ioSemanticTypePrecedenceGraph.addEdge (!from: key, !to: @("@" + self.mTypeName, self.mTypeName))
   //---

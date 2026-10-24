@@ -52,25 +52,25 @@ syntax extension galgas3ExpressionSyntax {
     $filewrapper$
     $identifier$ (?let filewrapperName) indexing (filewrapperReference)
     select
-      outExpression = @filewrapperObjectInstanciationInExpressionAST {
+      outExpression = @filewrapperObjectInstanciationInExpressionAST (
         !filewrapperName
-      }
+      )
     or
       $.$
       select
         $"string"$ (?let @lstring filePath)
-        outExpression = @filewrapperInExpressionAST {
-          !filewrapperName
-          !filePath
-        }
+        outExpression = @filewrapperInExpressionAST (
+          !filewrapperName,
+          filePath
+        )
       or
         $identifier$ (?let @lstring filewrapperTemplateName)
         <output_expression_list_ggs3> (!?ioDeclarations, ?let @actualOutputArgumentList expressionList)
-        outExpression = @filewrapperTemplateInExpressionAST {
-          !filewrapperName
-          !filewrapperTemplateName
-          !expressionList
-        }
+        outExpression = @filewrapperTemplateInExpressionAST (
+          !filewrapperName,
+          filewrapperTemplateName,
+          expressionList
+        )
       end
     end
     $]$
@@ -92,24 +92,24 @@ syntax extension galgas4ExpressionSyntax {
     $[$
     $identifier$ (?let filewrapperName) indexing (filewrapperReference)
     select
-      outExpression = @filewrapperObjectInstanciationInExpressionAST {!filewrapperName}
+      outExpression = @filewrapperObjectInstanciationInExpressionAST (!filewrapperName)
     or
       $.$
       select
         $"string"$ (?let @lstring filePath)
-        outExpression = @filewrapperInExpressionAST {
-          !filewrapperName
-          !filePath
-        }
+        outExpression = @filewrapperInExpressionAST (
+          !filewrapperName,
+          filePath
+        )
       or
         $identifier$ (?let @lstring filewrapperTemplateName)
         $:$
         <output_expression_list> (!?ioDeclarations, ?let @actualOutputArgumentList expressionList)
-        outExpression = @filewrapperTemplateInExpressionAST {
-          !filewrapperName
-          !filewrapperTemplateName
-          !expressionList
-        }
+        outExpression = @filewrapperTemplateInExpressionAST (
+          !filewrapperName,
+          filewrapperTemplateName,
+          expressionList
+        )
       end
     end
     $]$
@@ -156,11 +156,11 @@ override proc @filewrapperObjectInstanciationInExpressionAST.analyzeSemanticExpr
     end
   end
 //---
-  outExpression = @filewrapperInExpressionForGeneration {
-    ![ioTypeMap typeMapEntryForLKey !@lstring {!"filewrapper" !self.mFilewrapperName.location}]
-    !self.mFilewrapperName.location
-    !self.mFilewrapperName.string
-    !filewrapperPath.string}
+  outExpression = @filewrapperInExpressionForGeneration (
+    ![ioTypeMap typeMapEntryForLKey !@lstring (!"filewrapper", self.mFilewrapperName.location)],
+    self.mFilewrapperName.location,
+    self.mFilewrapperName.string,
+    filewrapperPath.string)
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -231,12 +231,12 @@ override proc @filewrapperTemplateInExpressionAST.analyzeSemanticExpression
     end
   end
 //---
-  outExpression = @filewrapperTemplateInExpressionForGeneration {
-    !inAnalysisContext.predefinedTypes.mStringType
-    !self.mFilewrapperName.location
-    !self.mFilewrapperName.string
-    !self.mFilewrapperTemplateName.string
-    !effectiveParameterList}
+  outExpression = @filewrapperTemplateInExpressionForGeneration (
+    !inAnalysisContext.predefinedTypes.mStringType,
+    self.mFilewrapperName.location,
+    self.mFilewrapperName.string,
+    self.mFilewrapperTemplateName.string,
+    effectiveParameterList)
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -295,7 +295,7 @@ override proc @filewrapperInExpressionAST.analyzeSemanticExpression
     builtPath += directoryName + "/"
     if [filewrapperDirectoryMap hasKey !directoryName] then
       filewrapperDirectoryMap.searchKey
-        (!@lstring {!directoryName !@location.here},
+        (!@lstring (!directoryName, @location.here),
         ?filewrapperFileMap,
         ?filewrapperDirectoryMap,
         ?*
@@ -308,22 +308,22 @@ override proc @filewrapperInExpressionAST.analyzeSemanticExpression
   let @uint fileIndex
   let @bool isTextFile
   if [filewrapperFileMap hasKey !fileName] then
-    filewrapperFileMap.searchKey (!@lstring {!fileName !@location.here}, ?*, ?isTextFile, ?*, ?fileIndex)
+    filewrapperFileMap.searchKey (!@lstring (!fileName, @location.here), ?*, ?isTextFile, ?*, ?fileIndex)
   else
     error (self.mFilewrapperPath
     : "the '" + fileName + "' file does not exist in the '" + builtPath + "' directory of '" + self.mFilewrapperName + "' filewrapper"
     spoil fileIndex, isTextFile)
   end
 //---
-  outExpression = @filewrapperStaticPathInExpressionForGeneration {
+  outExpression = @filewrapperStaticPathInExpressionForGeneration (
     !if isTextFile
       then inAnalysisContext.predefinedTypes.mStringType
-      else [ioTypeMap typeMapEntryForLKey !@lstring {!"data" !@location.here}]
-     end
-    !self.mFilewrapperName.location
-    !self.mFilewrapperName.string
-    !fileIndex
-    !isTextFile}
+      else [ioTypeMap typeMapEntryForLKey !@lstring (!"data", @location.here)]
+     end,
+    self.mFilewrapperName.location,
+    self.mFilewrapperName.string,
+    fileIndex,
+    isTextFile)
 }
 
 //--------------------------------------------------------------------------------------------------

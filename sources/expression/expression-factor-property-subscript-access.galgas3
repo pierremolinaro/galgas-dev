@@ -48,11 +48,11 @@ syntax extension galgas3ExpressionSyntax {
       while
         $,$
       end
-      outExpression = @subscriptReadAccessExpressionAST {
-        !outExpression
-        !expressionList
-        !.here
-      }
+      outExpression = @subscriptReadAccessExpressionAST (
+        !outExpression,
+        expressionList,
+        .here
+      )
       $]$
     while
       $.$
@@ -84,21 +84,21 @@ syntax extension galgas4ExpressionSyntax {
       <non_empty_output_expression_list>(
         !?ioDeclarations,
         ?let @actualOutputArgumentList expressionList)
-      outExpression = @subscriptReadAccessExpressionAST {
-        !outExpression
-        !expressionList
-        !.here
-      }
+      outExpression = @subscriptReadAccessExpressionAST (
+        !outExpression,
+        expressionList,
+        .here
+      )
       $]$
     while
       $.$
       $identifier$ (?let structFieldName)
       select
-        outExpression = @structPropertyAccessExpressionAST {
-          !structFieldName.location
-          !outExpression
-          !structFieldName
-        }
+        outExpression = @structPropertyAccessExpressionAST (
+          !structFieldName.location,
+          outExpression,
+          structFieldName
+        )
       or //--- Getter call ?
         let getterName = structFieldName
         let startLocation = @location.next
@@ -106,12 +106,12 @@ syntax extension galgas4ExpressionSyntax {
         <output_expression_list> (!?ioDeclarations, ?let @actualOutputArgumentList expressionList)
         let endLocation = @location.here
         $)$
-        outExpression = @getterCallExpressionAST {
-          !outExpression
-          !getterName
-          !expressionList
-          ![startLocation union !endLocation]
-        }
+        outExpression = @getterCallExpressionAST (
+          !outExpression,
+          getterName,
+          expressionList,
+          [startLocation union !endLocation]
+        )
       end
     end
   }
@@ -166,12 +166,12 @@ final class @structPropertyAccessExpressionAST : @semanticExpressionAST {
       end
       prop.mAccessControl.checkGetAccess (!inAnalysisContext.selfAvailability, !self.propertyName)
     //--- Generate expression
-      outExpressionGeneration = @propertyAccessExpressionForGeneration {
-        !prop.mPropertyType
-        !self.operatorLocation
-        !exprGeneration
-        !self.propertyName.string
-      }
+      outExpressionGeneration = @propertyAccessExpressionForGeneration (
+        !prop.mPropertyType,
+        self.operatorLocation,
+        exprGeneration,
+        self.propertyName.string
+      )
     else
       let getterMap = expressionType.definition.getterMap
       if let theGetter = getterMap @[self.propertyName] then
@@ -181,19 +181,19 @@ final class @structPropertyAccessExpressionAST : @semanticExpressionAST {
           + theGetter.mArgumentTypeList.count + ")"
           spoil outExpressionGeneration)
         else
-          outExpressionGeneration = @getterCallExpressionForGeneration {
-            !theGetter.mReturnedType
-            !self.propertyName.location
-            !theGetter.mKind
-            !exprGeneration
-            !@()
-            !if theGetter.mGetterNameThatObsoletesInvokationName == ""
+          outExpressionGeneration = @getterCallExpressionForGeneration (
+            !theGetter.mReturnedType,
+            self.propertyName.location,
+            theGetter.mKind,
+            exprGeneration,
+            @(),
+            if theGetter.mGetterNameThatObsoletesInvokationName == ""
                then self.propertyName.string
                else theGetter.mGetterNameThatObsoletesInvokationName
-             end
-            !@()
-            !theGetter.mHasCompilerArgument
-          }
+             end,
+            @(),
+            theGetter.mHasCompilerArgument
+          )
         end
       else
         var s = "undefined property, undefined func"

@@ -29,10 +29,10 @@ syntax extension galgas3InstructionsSyntax {
     let instructionLocation = @location.here
     $+=$
     <non_empty_output_expression_list_ggs3> (!?ioDeclarations, ?let @actualOutputArgumentList expressionList)
-    outInstruction = @selfPlusEqualElementsInstructionAST {
-      !instructionLocation
-      !expressionList
-    }
+    outInstruction = @selfPlusEqualElementsInstructionAST (
+      !instructionLocation,
+      expressionList
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -43,10 +43,10 @@ syntax extension galgas3InstructionsSyntax {
     let instructionLocation = @location.here
     $+=$
     <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST expression)
-    outInstruction = @selfPlusEqualExpressionInstructionAST {
-      !instructionLocation
-      !expression
-    }
+    outInstruction = @selfPlusEqualExpressionInstructionAST (
+      !instructionLocation,
+      expression
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -57,10 +57,10 @@ syntax extension galgas3InstructionsSyntax {
     let instructionLocation = @location.here
     $-=$
     <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST expression)
-    outInstruction = @selfMinusEqualExpressionInstructionAST {
-      !instructionLocation
-      !expression
-    }
+    outInstruction = @selfMinusEqualExpressionInstructionAST (
+      !instructionLocation,
+      expression
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -71,10 +71,10 @@ syntax extension galgas3InstructionsSyntax {
     let instructionLocation = @location.here
     $*=$
     <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST expression)
-    outInstruction = @selfMulEqualExpressionInstructionAST {
-      !instructionLocation
-      !expression
-    }
+    outInstruction = @selfMulEqualExpressionInstructionAST (
+      !instructionLocation,
+      expression
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -85,10 +85,10 @@ syntax extension galgas3InstructionsSyntax {
     let instructionLocation = @location.here
     $/=$
     <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST expression)
-    outInstruction = @selfDivEqualExpressionInstructionAST {
-      !instructionLocation
-      !expression
-    }
+    outInstruction = @selfDivEqualExpressionInstructionAST (
+      !instructionLocation,
+      expression
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -107,10 +107,10 @@ syntax extension galgas4InstructionsSyntax {
     let instructionLocation = @location.here
     $+=$
     <expression> (!?ioDeclarations, ?let @semanticExpressionAST expression)
-    outInstruction = @selfPlusEqualExpressionInstructionAST {
-      !instructionLocation
-      !expression
-    }
+    outInstruction = @selfPlusEqualExpressionInstructionAST (
+      !instructionLocation,
+      expression
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -121,10 +121,10 @@ syntax extension galgas4InstructionsSyntax {
     let instructionLocation = @location.here
     $-=$
     <expression> (!?ioDeclarations, ?let @semanticExpressionAST expression)
-    outInstruction = @selfMinusEqualExpressionInstructionAST {
-      !instructionLocation
-      !expression
-    }
+    outInstruction = @selfMinusEqualExpressionInstructionAST (
+      !instructionLocation,
+      expression
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -135,10 +135,10 @@ syntax extension galgas4InstructionsSyntax {
     let instructionLocation = @location.here
     $*=$
     <expression> (!?ioDeclarations, ?let @semanticExpressionAST expression)
-    outInstruction = @selfMulEqualExpressionInstructionAST {
-      !instructionLocation
-      !expression
-    }
+    outInstruction = @selfMulEqualExpressionInstructionAST (
+      !instructionLocation,
+      expression
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -149,10 +149,10 @@ syntax extension galgas4InstructionsSyntax {
     let instructionLocation = @location.here
     $/=$
     <expression> (!?ioDeclarations, ?let @semanticExpressionAST expression)
-    outInstruction = @selfDivEqualExpressionInstructionAST {
-      !instructionLocation
-      !expression
-    }
+    outInstruction = @selfDivEqualExpressionInstructionAST (
+      !instructionLocation,
+      expression
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -211,15 +211,15 @@ final class @selfDivEqualExpressionInstructionAST : @semanticInstructionAST {
         !?expression
       )
     //--- Generate instruction
-      ioInstructionListForGeneration += !@opAssignInstructionForGeneration {
-        !self.mInstructionLocation
-        !selfAvailable.type
-        !inAnalysisContext.selfObjectCppName
-        !""
-        !@()
-        !expression
-        !"divAssignOperation"
-      }
+      ioInstructionListForGeneration += !@opAssignInstructionForGeneration (
+        !self.mInstructionLocation,
+        selfAvailable.type,
+        inAnalysisContext.selfObjectCppName,
+        "",
+        @(),
+        expression,
+        "divAssignOperation"
+      )
     else
       error (self.mInstructionLocation : "'self' not available in this context")
     end
@@ -281,15 +281,15 @@ final class @selfPlusEqualExpressionInstructionAST : @semanticInstructionAST {
         !?expression
       )
     //--- Generate instruction
-      ioInstructionListForGeneration += !@opAssignInstructionForGeneration {
-        !self.mInstructionLocation
-        !selfAvailable.type
-        !inAnalysisContext.selfObjectCppName
-        !""
-        !@()
-        !expression
-        !"plusAssignOperation"
-      }
+      ioInstructionListForGeneration += !@opAssignInstructionForGeneration (
+        !self.mInstructionLocation,
+        selfAvailable.type,
+        inAnalysisContext.selfObjectCppName,
+        "",
+        @(),
+        expression,
+        "plusAssignOperation"
+      )
     else
       error (self.mInstructionLocation : "'self' not available in this context")
     end
@@ -351,15 +351,15 @@ final class @selfMinusEqualExpressionInstructionAST : @semanticInstructionAST {
         !?expression
       )
     //--- Generate instruction
-      ioInstructionListForGeneration += !@opAssignInstructionForGeneration {
-        !self.mInstructionLocation
-        !selfAvailable.type
-        !inAnalysisContext.selfObjectCppName
-        !""
-        !@()
-        !expression
-        !"minusAssignOperation"
-      }
+      ioInstructionListForGeneration += !@opAssignInstructionForGeneration (
+        !self.mInstructionLocation,
+        selfAvailable.type,
+        inAnalysisContext.selfObjectCppName,
+        "",
+        @(),
+        expression,
+        "minusAssignOperation"
+      )
     else
       error (self.mInstructionLocation : "'self' not available in this context")
     end
@@ -421,15 +421,15 @@ final class @selfMulEqualExpressionInstructionAST : @semanticInstructionAST {
         !?expression
       )
     //--- Generate instruction
-      ioInstructionListForGeneration += !@opAssignInstructionForGeneration {
-        !self.mInstructionLocation
-        !selfAvailable.type
-        !inAnalysisContext.selfObjectCppName
-        !""
-        !@()
-        !expression
-        !"mulAssignOperation"
-      }
+      ioInstructionListForGeneration += !@opAssignInstructionForGeneration (
+        !self.mInstructionLocation,
+        selfAvailable.type,
+        inAnalysisContext.selfObjectCppName,
+        "",
+        @(),
+        expression,
+        "mulAssignOperation"
+      )
     else
       error (self.mInstructionLocation : "'self' not available in this context")
     end
@@ -509,14 +509,14 @@ final class @selfPlusEqualElementsInstructionAST : @semanticInstructionAST {
           effectiveParameterList += !expression
         end
       //--- Generate instruction
-        ioInstructionListForGeneration += !@plusEqualnstructionForGeneration {
-          !inAnalysisContext.selfObjectCppName
-          !selfAvailable.type
-          !""
-          !self.mInstructionLocation
-          !@()
-          !effectiveParameterList
-        }
+        ioInstructionListForGeneration += !@plusEqualnstructionForGeneration (
+          !inAnalysisContext.selfObjectCppName,
+          selfAvailable.type,
+          "",
+          self.mInstructionLocation,
+          @(),
+          effectiveParameterList
+        )
       end
     else
       error (self.mInstructionLocation : "'self' not available in this context")

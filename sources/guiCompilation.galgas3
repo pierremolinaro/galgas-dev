@@ -203,10 +203,10 @@ syntax galgas3GuiComponentSyntax (galgasScanner3) {
       $identifier$ (?let @lstring key)
       $"string"$ (?let @lstring name)
       $:$
-      var value = @lstring {!"" !@location.here}
+      var value = @lstring (!"", @location.here)
       repeat
         $"string"$ (?let @lstring v)
-        value = @lstring {!value.string + v.string !v.location}
+        value = @lstring (!value.string + v.string, v.location)
       while
       end
       compoundAttributes += !key !name !value
@@ -234,10 +234,10 @@ syntax galgas3GuiComponentSyntax (galgasScanner3) {
   rule <gui_attributes> (?!@guiSimpleAttributeListAST ioSimpleGlobalAttributes) {
     $identifier$ (?let @lstring mKey)
     $:$
-    var mValue = @lstring {!"" !.here}
+    var mValue = @lstring (!"", .here)
     repeat
       $"string"$ (?let @lstring value)
-      mValue = @lstring {!mValue.string + value.string !value.location}
+      mValue = @lstring (!mValue.string + value.string, value.location)
     while
     end
     ioSimpleGlobalAttributes += !mKey !mValue
@@ -338,10 +338,10 @@ syntax galgas4GuiComponentSyntax (galgasScanner4) {
       $identifier$ (?let @lstring key)
       $"string"$ (?let @lstring name)
       $:$
-      var value = @lstring {!"" !@location.here}
+      var value = @lstring (!"", @location.here)
       repeat
         $"string"$ (?let @lstring v)
-        value = @lstring {!value.string + v.string !v.location}
+        value = @lstring (!value.string + v.string, v.location)
       while
       end
       compoundAttributes += !key !name !value
@@ -369,10 +369,10 @@ syntax galgas4GuiComponentSyntax (galgasScanner4) {
   rule <gui_attributes> (?!@guiSimpleAttributeListAST ioSimpleGlobalAttributes ) {
     $identifier$ (?let @lstring mKey)
     $:$
-    var mValue = @lstring {!"" !.here}
+    var mValue = @lstring (!"", .here)
     repeat
       $"string"$ (?let @lstring value)
-      mValue = @lstring {!mValue.string + value.string !value.location}
+      mValue = @lstring (!mValue.string + value.string, value.location)
     while
     end
     ioSimpleGlobalAttributes += !mKey !mValue

@@ -156,7 +156,7 @@ syntax galgas3SyntaxComponentSyntax (galgasScanner3) {
   rule <syntax_rule_declaration> (?!@galgasDeclarationAST ioDeclarations ,?!@syntaxRuleListAST ioRuleList ) {
     $rule$
     $<non_terminal>$ (?let @lstring mNonterminalName) indexing (ruleDefinition)
-    var labelName = @lstring {!"" !@location.here}
+    var labelName = @lstring (!"", @location.here)
     var mLabelList = @syntaxRuleLabelListAST ()
     repeat
       <syntax_rule_label> (!?ioDeclarations, !labelName, !?mLabelList)
@@ -358,7 +358,7 @@ syntax galgas4SyntaxComponentSyntax (galgasScanner4) {
                                  ?!@syntaxRuleListAST ioRuleList ) {
     $rule$
     $<non_terminal>$ (?let @lstring mNonterminalName) indexing (ruleDefinition)
-    var labelName = @lstring {!"" !@location.here}
+    var labelName = @lstring (!"", @location.here)
     var mLabelList = @syntaxRuleLabelListAST ()
     repeat
       <syntax_rule_label> (!?ioDeclarations, !labelName, !?mLabelList)

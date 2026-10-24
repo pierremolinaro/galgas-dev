@@ -30,21 +30,21 @@ syntax extension galgas3SyntaxComponentSyntax {
     let @abstractGrammarInstructionSyntaxDirectedTranslationResult grammarInstructionSyntaxDirectedTranslationPreceedingDelimitor
     let @abstractGrammarInstructionSyntaxDirectedTranslationResult grammarInstructionSyntaxDirectedTranslationPreceedingToken
     select
-      grammarInstructionSyntaxDirectedTranslationPreceedingDelimitor = @grammarInstructionSyntaxDirectedTranslationResultNone {}
-      grammarInstructionSyntaxDirectedTranslationPreceedingToken = @grammarInstructionSyntaxDirectedTranslationResultNone {}
+      grammarInstructionSyntaxDirectedTranslationPreceedingDelimitor = @grammarInstructionSyntaxDirectedTranslationResultNone ()
+      grammarInstructionSyntaxDirectedTranslationPreceedingToken = @grammarInstructionSyntaxDirectedTranslationResultNone ()
     or
       $:>$
       <syntax_directed_translation_result> (!?ioDeclarations, ?grammarInstructionSyntaxDirectedTranslationPreceedingDelimitor)
       <syntax_directed_translation_result> (!?ioDeclarations, ?grammarInstructionSyntaxDirectedTranslationPreceedingToken)
     end
-    outInstruction = @terminalCheckInstructionAST {
-      !terminalName.location
-      !terminalName
-      !actualInputParameterList
-      !indexNameList
-      !grammarInstructionSyntaxDirectedTranslationPreceedingDelimitor
-      !grammarInstructionSyntaxDirectedTranslationPreceedingToken
-    }
+    outInstruction = @terminalCheckInstructionAST (
+      !terminalName.location,
+      terminalName,
+      actualInputParameterList,
+      indexNameList,
+      grammarInstructionSyntaxDirectedTranslationPreceedingDelimitor,
+      grammarInstructionSyntaxDirectedTranslationPreceedingToken
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -90,21 +90,21 @@ syntax extension galgas4SyntaxComponentSyntax {
     let @abstractGrammarInstructionSyntaxDirectedTranslationResult grammarInstructionSyntaxDirectedTranslationPreceedingDelimitor
     let @abstractGrammarInstructionSyntaxDirectedTranslationResult grammarInstructionSyntaxDirectedTranslationPreceedingToken
     select
-      grammarInstructionSyntaxDirectedTranslationPreceedingDelimitor = @grammarInstructionSyntaxDirectedTranslationResultNone {}
-      grammarInstructionSyntaxDirectedTranslationPreceedingToken = @grammarInstructionSyntaxDirectedTranslationResultNone {}
+      grammarInstructionSyntaxDirectedTranslationPreceedingDelimitor = @grammarInstructionSyntaxDirectedTranslationResultNone ()
+      grammarInstructionSyntaxDirectedTranslationPreceedingToken = @grammarInstructionSyntaxDirectedTranslationResultNone ()
     or
       $:>$
       <syntax_directed_translation_result> (!?ioDeclarations, ?grammarInstructionSyntaxDirectedTranslationPreceedingDelimitor)
       <syntax_directed_translation_result> (!?ioDeclarations, ?grammarInstructionSyntaxDirectedTranslationPreceedingToken)
     end
-    outInstruction = @terminalCheckInstructionAST {
-      !terminalName.location
-      !terminalName
-      !actualInputParameterList
-      !indexNameList
-      !grammarInstructionSyntaxDirectedTranslationPreceedingDelimitor
-      !grammarInstructionSyntaxDirectedTranslationPreceedingToken
-    }
+    outInstruction = @terminalCheckInstructionAST (
+      !terminalName.location,
+      terminalName,
+      actualInputParameterList,
+      indexNameList,
+      grammarInstructionSyntaxDirectedTranslationPreceedingDelimitor,
+      grammarInstructionSyntaxDirectedTranslationPreceedingToken
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -160,11 +160,11 @@ final class @terminalCheckInstructionAST : @syntaxInstructionAST {
       terminalSymbolIndex = ioActuallyUsedTerminalSymbolMap.count
       !?ioActuallyUsedTerminalSymbolMap.insertKey (!self.mTerminalName, !terminalSymbolIndex)
     end
-    ioSyntaxInstructionList += !@terminalInstructionForGrammarAnalysis {
-      !self.mInstructionLocation
-      !self.mTerminalName
-      !terminalSymbolIndex
-    }
+    ioSyntaxInstructionList += !@terminalInstructionForGrammarAnalysis (
+      !self.mInstructionLocation,
+      self.mTerminalName,
+      terminalSymbolIndex
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -230,15 +230,15 @@ final class @terminalCheckInstructionAST : @syntaxInstructionAST {
       !?ioVariableMap
     )
   //---
-    ioInstructionListForGeneration += !@terminalCheckInstructionForGeneration {
-      !self.mInstructionLocation
-      !self.mTerminalName
-      !inLexiqueName
-      !terminalCheckAssignementList
-      !self.mIndexingKeyList
-      !self.mGrammarInstructionSyntaxDirectedTranslationPreceedingDelimitor
-      !self.mGrammarInstructionSyntaxDirectedTranslationToken
-    }
+    ioInstructionListForGeneration += !@terminalCheckInstructionForGeneration (
+      !self.mInstructionLocation,
+      self.mTerminalName,
+      inLexiqueName,
+      terminalCheckAssignementList,
+      self.mIndexingKeyList,
+      self.mGrammarInstructionSyntaxDirectedTranslationPreceedingDelimitor,
+      self.mGrammarInstructionSyntaxDirectedTranslationToken
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -305,15 +305,15 @@ final class @terminalCheckInstructionForGeneration : @syntaxInstructionForGenera
 override proc @terminalCheckInstructionForGeneration.appendSyntaxSignature (
   ?let @string unused inPosfix,
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration) {
-  ioInstructionListForGeneration += !@terminalCheckInstructionForGeneration {
-    !self.mInstructionLocation
-    !self.mTerminalName
-    !self.mLexiqueIdentifier
-    !@terminalCheckAssignementList ()
-    !self.mIndexingKeyList
-    !@grammarInstructionSyntaxDirectedTranslationResultNone {}
-    !@grammarInstructionSyntaxDirectedTranslationResultNone {}
-  }
+  ioInstructionListForGeneration += !@terminalCheckInstructionForGeneration (
+    !self.mInstructionLocation,
+    self.mTerminalName,
+    self.mLexiqueIdentifier,
+    @terminalCheckAssignementList (),
+    self.mIndexingKeyList,
+    @grammarInstructionSyntaxDirectedTranslationResultNone (),
+    @grammarInstructionSyntaxDirectedTranslationResultNone ()
+  )
 }
 
 //--------------------------------------------------------------------------------------------------

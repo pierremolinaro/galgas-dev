@@ -44,15 +44,15 @@ syntax extension galgas3InstructionsSyntax {
     <semantic_instruction_list_ggs3> (!?ioDeclarations, ?let @semanticInstructionListAST mRoutineInstructionList)
     $}$
     let endOfInstructionList = @location.here
-    ioDeclarations.mDeclarationList += !@procDeclarationAST {
-      !isPredefined: false // Is not predefined
-      !isFilePrivate: false // private
-      !mRoutineName
-      !formalParameterList
-      !usefullProcedure: isUsefull
-      !mRoutineInstructionList
-      !endOfInstructionList
-    }
+    ioDeclarations.mDeclarationList += !@procDeclarationAST (
+      !isPredefined: false,
+      !isFilePrivate: false,
+      mRoutineName,
+      formalParameterList,
+      !usefullProcedure: isUsefull,
+      mRoutineInstructionList,
+      endOfInstructionList
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -75,15 +75,15 @@ syntax extension galgas3InstructionsSyntax {
     <semantic_instruction_list_ggs3> (!?ioDeclarations, ?let @semanticInstructionListAST mRoutineInstructionList)
     $}$
     let endOfInstructionList = @location.here
-    ioDeclarations.mDeclarationList += !@procDeclarationAST {
-      !isPredefined: false // Is not predefined
-      !isFilePrivate: true // private
-      !mRoutineName
-      !formalParameterList
-      !usefullProcedure: isUsefull
-      !mRoutineInstructionList
-      !endOfInstructionList
-    }
+    ioDeclarations.mDeclarationList += !@procDeclarationAST (
+      !isPredefined: false,
+      !isFilePrivate: true,
+      !mRoutineName,
+      formalParameterList,
+      !usefullProcedure: isUsefull,
+      mRoutineInstructionList,
+      endOfInstructionList
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -115,15 +115,15 @@ syntax extension galgas4InstructionsSyntax {
     <semantic_instruction_list> (!?ioDeclarations, ?let @semanticInstructionListAST mRoutineInstructionList)
     $}$
     let endOfInstructionList = @location.here
-    ioDeclarations.mDeclarationList += !@procDeclarationAST {
-      !isPredefined: false // Is not predefined
-      !isFilePrivate: false
-      !mRoutineName
-      !mFormalParameterList
-      !usefullProcedure: isUsefull
-      !mRoutineInstructionList
-      !endOfInstructionList
-    }
+    ioDeclarations.mDeclarationList += !@procDeclarationAST (
+      !isPredefined: false,
+      !isFilePrivate: false,
+      mRoutineName,
+      mFormalParameterList,
+      !usefullProcedure: isUsefull,
+      mRoutineInstructionList,
+      endOfInstructionList
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -146,15 +146,15 @@ syntax extension galgas4InstructionsSyntax {
     <semantic_instruction_list> (!?ioDeclarations, ?let @semanticInstructionListAST mRoutineInstructionList)
     $}$
     let endOfInstructionList = @location.here
-    ioDeclarations.mDeclarationList += !@procDeclarationAST {
-      !isPredefined: false // Is not predefined
-      !isFilePrivate: true
-      !mRoutineName
-      !mFormalParameterList
-      !usefullProcedure: isUsefull
-      !mRoutineInstructionList
-      !endOfInstructionList
-    }
+    ioDeclarations.mDeclarationList += !@procDeclarationAST (
+      !isPredefined: false,
+      !isFilePrivate: true,
+      mRoutineName,
+      mFormalParameterList,
+      !usefullProcedure: isUsefull,
+      mRoutineInstructionList,
+      endOfInstructionList
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -224,13 +224,13 @@ final class @procDeclarationAST : @externProcedureDeclarationAST {
       ioUsefulnessRootEntities += !nameForUsefulness
     end
   //--- Instruction list
-    let analysisContext = @analysisContext {
-      !inSemanticContext
-      !inPredefinedTypes
-      !selfObjectCppName: ""
-      !selfAvailability: .none
+    let analysisContext = @analysisContext (
+      !inSemanticContext,
+      inPredefinedTypes,
+      !selfObjectCppName: "",
+      !selfAvailability: .none,
       !selfObjectCppPrefixForAccessingProperty: ""
-    }
+    )
     analyzeRoutineBody (
       !nameForUsefulness,
       !?ioUsefulEntitiesGraph,
@@ -244,14 +244,14 @@ final class @procDeclarationAST : @externProcedureDeclarationAST {
     )
     ioSemanticDeclarationListForGeneration +=
       !infoMessage: "proc " + mangledName
-      !@routineImplementationForGeneration {
-        !generateHeader: true // Generate Cpp header file
-        !implementationCppFileName: "proc-" + mangledName.string.fileNameRepresentation
-        !routineMangledName: mangledName.string
-        !formalArgumentList
-        !false // Do not generate static
-        !instructionList
-      }
+      !@routineImplementationForGeneration (
+        !generateHeader: true,
+        !implementationCppFileName: "proc-" + mangledName.string.fileNameRepresentation,
+        !routineMangledName: mangledName.string,
+        formalArgumentList,
+        false,
+        instructionList
+      )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

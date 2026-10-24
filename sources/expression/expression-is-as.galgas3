@@ -72,21 +72,21 @@ syntax extension galgas3ExpressionSyntax {
         kind = .strictlyInherited
       end
       $@type$ (?let typeName)
-      outExpression = @testDynamicClassInExpressionAST {
-        !outExpression
-        !endOfReceiverExpression
-        !kind
-        !typeName
-      }
+      outExpression = @testDynamicClassInExpressionAST (
+        !outExpression,
+        endOfReceiverExpression,
+        kind,
+        typeName
+      )
     or
       let endOfReceiverExpression = @location.here
       $as$
       $@type$ (?let typeName)
-      outExpression = @castInExpressionAST {
-        !outExpression
-        !endOfReceiverExpression
-        !typeName
-      }
+      outExpression = @castInExpressionAST (
+        !outExpression,
+        endOfReceiverExpression,
+        typeName
+      )
     end
   }
 
@@ -108,21 +108,21 @@ syntax extension galgas4ExpressionSyntax {
       let endOfReceiverExpression = @location.here
       $is$
       $@type$ (?let typeName)
-      outExpression = @testDynamicClassInExpressionAST {
-        !outExpression
-        !endOfReceiverExpression
-        !.inherited
-        !typeName
-      }
+      outExpression = @testDynamicClassInExpressionAST (
+        !outExpression,
+        endOfReceiverExpression,
+        .inherited,
+        typeName
+      )
     or
       let endOfReceiverExpression = @location.here
       $as$
       $@type$ (?let typeName)
-      outExpression = @castInExpressionAST {
-        !outExpression
-        !endOfReceiverExpression
-        !typeName
-      }
+      outExpression = @castInExpressionAST (
+        !outExpression,
+        endOfReceiverExpression,
+        typeName
+      )
     end
   }
 
@@ -182,12 +182,12 @@ override proc @testDynamicClassInExpressionAST.analyzeSemanticExpression
      + expression.mResultType.definition.typeName.string + " instance")
   end
 //--- Generate expression
-  outExpression = @testDynamicClassInExpressionForGeneration {
-    !inAnalysisContext.predefinedTypes.mBoolType
-    !self.mTypeName.location
-    !expression
-    !self.mTypeComparisonKind
-    !castType}
+  outExpression = @testDynamicClassInExpressionForGeneration (
+    !inAnalysisContext.predefinedTypes.mBoolType,
+    self.mTypeName.location,
+    expression,
+    self.mTypeComparisonKind,
+    castType)
 }
 
 //································································································
@@ -243,19 +243,19 @@ override proc @castInExpressionAST.analyzeSemanticExpression
   end
 //--- Generate expression
   if expression.mResultType.definition.typeName.string == "object" then
-    outExpression = @extractObjectInExpressionForGeneration {
-      !type
-      !self.mEndOfReceiverExpression
-      !expression
-      !self.mTypeName.string}
+    outExpression = @extractObjectInExpressionForGeneration (
+      !type,
+      self.mEndOfReceiverExpression,
+      expression,
+      self.mTypeName.string)
   else
-    outExpression = @castInExpressionForGeneration {
-      !type
-      !self.mTypeName.location
-      !expression
-      !self.mTypeName.string
-      !type
-    }
+    outExpression = @castInExpressionForGeneration (
+      !type,
+      self.mTypeName.location,
+      expression,
+      self.mTypeName.string,
+      type
+    )
   end
 }
 

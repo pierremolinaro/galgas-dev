@@ -38,12 +38,12 @@ syntax extension galgas3DeclarationsSyntax {
     end
     $identifier$ (?let @lstring setterName) indexing (overrideabstractExtensionSetterDefinition)
     <formal_parameter_list_ggs34> (!?ioDeclarations, ?let formalParameterList)
-    ioDeclarations.mDeclarationList += !@overridingAbstractExtensionSetterAST {
-      !isPredefined: false // Is not predefined
-      !typeName
-      !setterName
-      !formalParameterList
-    }
+    ioDeclarations.mDeclarationList += !@overridingAbstractExtensionSetterAST (
+      !isPredefined: false,
+      typeName,
+      setterName,
+      formalParameterList
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -62,11 +62,11 @@ syntax extension galgas3DeclarationsSyntax {
     end
     $identifier$ (?let @lstring setterName) indexing (overrideabstractExtensionSetterDefinition)
     <formal_parameter_list_ggs34> (!?ioDeclarations, ?let formalParameterList)
-    ioDeclarations.mDeclarationList += !@overridingAbstractExtensionSetterAST {
-      !isPredefined: false
-      !typeName
-      !setterName
-      !formalParameterList}
+    ioDeclarations.mDeclarationList += !@overridingAbstractExtensionSetterAST (
+      !isPredefined: false,
+      typeName,
+      setterName,
+      formalParameterList)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -150,7 +150,7 @@ final class @overridingAbstractExtensionSetterAST : @semanticDeclarationAST {
       error (self.mOverridingExtensionSetterName:"this mutating proc is not declared by a super class")
     end
   //--- Analyze formal argument list
-    var variableMap = @localVarManager {}
+    var variableMap = @localVarManager ()
     buildLocalVariableMapAndSignature (
       !inSemanticContext,
       !?ioTypeMap,

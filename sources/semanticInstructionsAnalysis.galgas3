@@ -154,19 +154,19 @@ proc checkExpressionIsBoolean
   elsif expressionType.definition.typeKind == .structType then
     if [expressionType.definition.propertyMap hasKey !"bool"] then
       expressionType.definition.propertyMap.searchKey
-        (!@lstring {!"bool" !inErrorLocation},
+        (!@lstring (!"bool", inErrorLocation),
         ?let accessControl,
         ?*,
         ?let @unifiedTypeMapEntry attributeType
       )
       accessControl.checkSetAccess (!inAnalysisContext.selfAvailability, !inErrorLocation)
       if attributeType == boolType then
-        outExpression = @propertyAccessExpressionForGeneration {
-          !boolType
-          !inErrorLocation
-          !inExpression
-          !"bool"
-        }
+        outExpression = @propertyAccessExpressionForGeneration (
+          !boolType,
+          inErrorLocation,
+          inExpression,
+          "bool"
+        )
       else
         error (inErrorLocation
         : "the '@"+ expressionType.definition.typeName.string + "' struct type defines an attribute named 'bool', but its type is not '@bool'"
@@ -185,16 +185,16 @@ proc checkExpressionIsBoolean
       elsif entry.mArgumentTypeList.count > 0 then
         error (inErrorLocation: "the expression type is not @bool, it handles a 'bool' func that requires argument(s)" spoil outExpression)
       else
-        outExpression = @getterCallExpressionForGeneration {
-          !boolType
-          !inErrorLocation
-          !entry.mKind
-          !inExpression
-          !@()
-          !"bool"
-          !@()
-          !entry.mHasCompilerArgument
-        }
+        outExpression = @getterCallExpressionForGeneration (
+          !boolType,
+          inErrorLocation,
+          entry.mKind,
+          inExpression,
+          @(),
+          "bool",
+          @(),
+          entry.mHasCompilerArgument
+        )
       end
     else
       if expressionType.definition.getterMap.count == 0 then

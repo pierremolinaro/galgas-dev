@@ -53,14 +53,14 @@ syntax extension galgas3DeclarationsSyntax {
     <semantic_instruction_list_ggs3> (!?ioDeclarations, ?let routineInstructionList)
     let @location endOfSetterLocation = @location.here
     $}$
-    ioDeclarations.mDeclarationList += !@overridingExtensionSetterAST {
-      !isPredefined: false
-      !typeName
-      !setterName
-      !formalParameterList
-      !routineInstructionList
-      !endOfSetterLocation
-    }
+    ioDeclarations.mDeclarationList += !@overridingExtensionSetterAST (
+      !isPredefined: false,
+      typeName,
+      setterName,
+      formalParameterList,
+      routineInstructionList,
+      endOfSetterLocation
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -83,14 +83,14 @@ syntax extension galgas3DeclarationsSyntax {
     <semantic_instruction_list_ggs3> (!?ioDeclarations, ?let @semanticInstructionListAST routineInstructionList)
     let @location endOfSetterLocation = @location.here
     $}$
-    ioDeclarations.mDeclarationList += !@overridingExtensionSetterAST {
-      !isPredefined: false // Is not predefined
-      !typeName
-      !setterName
-      !formalParameterList
-      !routineInstructionList
-      !endOfSetterLocation
-    }
+    ioDeclarations.mDeclarationList += !@overridingExtensionSetterAST (
+      !isPredefined: false,
+      typeName,
+      setterName,
+      formalParameterList,
+      routineInstructionList,
+      endOfSetterLocation
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -176,13 +176,13 @@ override proc @overridingExtensionSetterAST.semanticAnalysis (
     error (self.mOverridingExtensionSetterName:"this mutating proc is not declared by a super class")
   end
 //--- Analyze instruction list
-  let analysisContext = @analysisContext {
-    !inSemanticContext
-    !inPredefinedTypes
-    !selfObjectCppName: "object"
-    !selfAvailability: .available {!type: selfType !selfMutability: .selfAndPropertiesAreMutable}
+  let analysisContext = @analysisContext (
+    !inSemanticContext,
+    inPredefinedTypes,
+    !selfObjectCppName: "object",
+    !selfAvailability: .available {!type: selfType !selfMutability: .selfAndPropertiesAreMutable},
     !selfObjectCppPrefixForAccessingProperty: "object->"
-  }
+  )
   analyzeRoutineBody (
     !nameForUsefulness,
     !?ioUsefulEntitiesGraph,
@@ -206,16 +206,16 @@ override proc @overridingExtensionSetterAST.semanticAnalysis (
 //---
   ioSemanticDeclarationListForGeneration +=
     !infoMessage: " overriding extension mutating proc " + self.mOverridingExtensionSetterName
-    !@overridingExtensionSetterForGeneration {
-      !generateHeader: false // Do not generate Cpp header file
-      !implementationCppFileName: "mutating proc-" + self.mTypeName.string.fileNameRepresentation + "-" + self.mOverridingExtensionSetterName.string.fileNameRepresentation
-      !selfType
-      !baseTypeName
-      !self.mOverridingExtensionSetterName.string
-      !formalParameterListForGeneration
-      !selfType.definition.allTypedPropertyList
-      !semanticInstructionListForGeneration
-    }
+    !@overridingExtensionSetterForGeneration (
+      !generateHeader: false,
+      !implementationCppFileName: "mutating proc-" + self.mTypeName.string.fileNameRepresentation + "-" + self.mOverridingExtensionSetterName.string.fileNameRepresentation,
+      selfType,
+      baseTypeName,
+      self.mOverridingExtensionSetterName.string,
+      formalParameterListForGeneration,
+      selfType.definition.allTypedPropertyList,
+      semanticInstructionListForGeneration
+    )
 }
 
 //--------------------------------------------------------------------------------------------------

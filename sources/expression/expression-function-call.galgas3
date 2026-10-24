@@ -83,7 +83,7 @@ syntax extension galgas4ExpressionSyntax {
     $($
     <output_expression_list> (!?ioDeclarations, ?let @actualOutputArgumentList expressionList)
     $)$
-    outExpression = @functionCallExpressionAST {!functionName !expressionList}
+    outExpression = @functionCallExpressionAST (!functionName, expressionList)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -170,12 +170,12 @@ final class @functionCallExpressionAST : @semanticExpressionAST {
         end
         semanticExpressionListForGeneration += !expression
       end
-      outExpression = @functionCallExpressionForGeneration {
-        !resultType
-        !self.mFunctionName.location
-        !self.mFunctionName.string
-        !semanticExpressionListForGeneration
-      }
+      outExpression = @functionCallExpressionForGeneration (
+        !resultType,
+        self.mFunctionName.location,
+        self.mFunctionName.string,
+        semanticExpressionListForGeneration
+      )
     end
   }
 

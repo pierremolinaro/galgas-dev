@@ -26,7 +26,7 @@ syntax extension galgas3ExpressionSyntax {
     let operatorLocation = @location.here
     $~$
     <factor_ggs3> (!?ioDeclarations, ?outExpression)
-    outExpression = @tildeExpressionAST {!operatorLocation !outExpression}
+    outExpression = @tildeExpressionAST (!operatorLocation, outExpression)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -44,7 +44,7 @@ syntax extension galgas4ExpressionSyntax {
     let operatorLocation = @location.here
     $~$
     <factor> (!?ioDeclarations, ?outExpression)
-    outExpression = @tildeExpressionAST {!operatorLocation !outExpression}
+    outExpression = @tildeExpressionAST (!operatorLocation, outExpression)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -90,11 +90,11 @@ final class @tildeExpressionAST : @semanticExpressionAST {
   //--- Check operator availability
     let @unifiedTypeMapEntry type = expression.mResultType
     if let exp = expression as @literalBigIntExpressionForGeneration then
-      outExpression = @literalBigIntExpressionForGeneration {
-        !exp.mResultType
-        !exp.mLocation
-        !~ exp.mValue
-      }
+      outExpression = @literalBigIntExpressionForGeneration (
+        !exp.mResultType,
+        exp.mLocation,
+        ~ exp.mValue
+      )
     elsif not [type.definition.features contains !.prefixTildeOperator] then
       error (self.mOperatorLocation
       : "operand type is '@" + type.definition.typeName.string
@@ -102,11 +102,11 @@ final class @tildeExpressionAST : @semanticExpressionAST {
       spoil outExpression)
     else
     //--- Generate expression
-      outExpression = @tildeExpressionForGeneration {
-        !type
-        !self.mOperatorLocation
-        !expression
-      }
+      outExpression = @tildeExpressionForGeneration (
+        !type,
+        self.mOperatorLocation,
+        expression
+      )
     end
   }
 

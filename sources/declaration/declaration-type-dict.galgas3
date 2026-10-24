@@ -63,13 +63,13 @@ syntax extension galgas3DeclarationsSyntax {
       <method_declaration_ggs3> (!mDictTypeName, !?ioDeclarations)
     end
     $}$
-    ioDeclarations.mDeclarationList += !@dictDeclarationAST {
-      !isPredefined: false // Is not predefined
-      !mDictTypeName
-      !keyTypeName
-      !propertyList
+    ioDeclarations.mDeclarationList += !@dictDeclarationAST (
+      !isPredefined: false,
+      mDictTypeName,
+      keyTypeName,
+      propertyList,
       !equatable: equatable
-    }
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -105,13 +105,13 @@ syntax extension galgas4DeclarationsSyntax {
       <method_declaration> (!mDictTypeName, !?ioDeclarations)
     end
     $}$
-    ioDeclarations.mDeclarationList += !@dictDeclarationAST {
-      !isPredefined: false // Is not predefined
-      !mDictTypeName
-      !keyTypeName
-      !propertyList
+    ioDeclarations.mDeclarationList += !@dictDeclarationAST (
+      !isPredefined: false,
+      mDictTypeName,
+      keyTypeName,
+      propertyList,
       !equatable: equatable
-    }
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -142,14 +142,14 @@ override proc @dictDeclarationAST.addAssociatedElement (?!@galgasDeclarationAST 
       !initialization: .none
   end
   let elementTypeName = makeEmbeddedElementTypeLName (!self.mDictTypeName)
-  ioDeclarations.mDeclarationList += !@structDeclarationAST {
-    !isPredefined: self.isPredefined
-    !elementTypeName
-    !structAttributeList
-    !enumeratedElementTypeName: ""
-    !comparison: if self.equatable then .equatable else .none end
+  ioDeclarations.mDeclarationList += !@structDeclarationAST (
+    !isPredefined: self.isPredefined,
+    elementTypeName,
+    structAttributeList,
+    !enumeratedElementTypeName: "",
+    !comparison: if self.equatable then .equatable else .none end,
     !isUsefullStruct: true
-  }
+  )
 //--- Add optional element
   !?ioDeclarations.getOptionalTypeName (?*, !forTypeNamed: elementTypeName, !isPredefined: false)
 }
@@ -167,11 +167,11 @@ override proc @dictDeclarationAST.enterDeclarationInGraph
   ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext,
   ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList
  ) {
-  let key = @lstring {!"@" + self.mDictTypeName !self.mDictTypeName.location}
+  let key = @lstring (!"@" + self.mDictTypeName, self.mDictTypeName.location)
   !?ioSemanticTypePrecedenceGraph.addNode (!key, !self)
-  !?ioSemanticTypePrecedenceGraph.noteNode (!@lstring {!"@" + self.mKeyTypeName !self.mKeyTypeName})
+  !?ioSemanticTypePrecedenceGraph.noteNode (!@lstring (!"@" + self.mKeyTypeName, self.mKeyTypeName))
   for (* typeName 4*) in self.mPropertyList do
-    !?ioSemanticTypePrecedenceGraph.noteNode (!@lstring {!"@" + typeName !typeName})
+    !?ioSemanticTypePrecedenceGraph.noteNode (!@lstring (!"@" + typeName, typeName))
   end
 }
 
@@ -289,7 +289,7 @@ override proc @dictDeclarationAST.enterDeclarationInSemanticContext
   )
 //--- Enter "attributeForKey" getters
   for (* typeName mPropertyName 3*) in self.mPropertyList do
-    let accessorName = @lstring {!mPropertyName.string + "ForKey" !mPropertyName.location}
+    let accessorName = @lstring (!mPropertyName.string + "ForKey", mPropertyName.location)
     !?ioTypeMap.makeEntry  (!typeName, ?let attributeTypeIndex)
     !?getterMap.insertOrReplace
       (!accessorName,
@@ -304,10 +304,10 @@ override proc @dictDeclarationAST.enterDeclarationInSemanticContext
   end
 //--------- Enter "set...Attribute...forKey" setters, and 'with' accessor
   for (* typeName mPropertyName 3*) in self.mPropertyList do
-    let accessorName = @lstring {
-      !"set" + mPropertyName.string.capitalizingFirstCharacter + "ForKey"
-      !mPropertyName.location
-    }
+    let accessorName = @lstring (
+      !"set" + mPropertyName.string.capitalizingFirstCharacter + "ForKey",
+      mPropertyName.location
+    )
     !?ioTypeMap.makeEntry
       (!typeName,
       ?let @unifiedTypeMapEntry attributeTypeIndex
@@ -380,33 +380,33 @@ override proc @dictDeclarationAST.enterDeclarationInSemanticContext
     !optionalElementTypeEntry
   )
 //--- Enter in type map
-  let typeDefinition = @unifiedTypeDefinition {
-    !typeName: self.mDictTypeName
-    !isPredefined: self.isPredefined
-    !isConcrete: true // Concrete Type
-    !isFinal: true
-    !superType: .null
-    !typeKind: .mapType
-    !supportCollectionValue: true
-    !allTypedPropertyList: @()
-    !propertyMap: @()
-    !currentTypedPropertyList: typedPropertyList
-    !initializerMap: initializerMap
-    !classFunctionMap: @()
-    !getterMap: getterMap
-    !setterMap: setterMap
-    !instanceMethodMap: instanceMethodMap
-    !classMethodMap: @()
-    !unwrappedType: .null
-    !readSubscriptMap: readSubscriptMap
-    !enumerationDescriptorList: enumerationDescriptor
-    !features: features
-    !addAssignOperatorArguments: argumentTypeListForAddAssignWithFieldExpressionList
-    !generateHeaderInSeparateFile: false // Do not generate header in separate file
-    !typeForEnumeratedElement: elementTypeEntry
-    !headerFileName: "dict-" + self.mDictTypeName.string.fileNameRepresentation
+  let typeDefinition = @unifiedTypeDefinition (
+    !typeName: self.mDictTypeName,
+    !isPredefined: self.isPredefined,
+    !isConcrete: true,
+    !isFinal: true,
+    !superType: .null,
+    !typeKind: .mapType,
+    !supportCollectionValue: true,
+    !allTypedPropertyList: @(),
+    !propertyMap: @(),
+    !currentTypedPropertyList: typedPropertyList,
+    !initializerMap: initializerMap,
+    !classFunctionMap: @(),
+    !getterMap: getterMap,
+    !setterMap: setterMap,
+    !instanceMethodMap: instanceMethodMap,
+    !classMethodMap: @(),
+    !unwrappedType: .null,
+    !readSubscriptMap: readSubscriptMap,
+    !enumerationDescriptorList: enumerationDescriptor,
+    !features: features,
+    !addAssignOperatorArguments: argumentTypeListForAddAssignWithFieldExpressionList,
+    !generateHeaderInSeparateFile: false,
+    !typeForEnumeratedElement: elementTypeEntry,
+    !headerFileName: "dict-" + self.mDictTypeName.string.fileNameRepresentation,
     !headerKind: .oneHeader
-  }
+  )
   !?ioTypeMap.insertType (!typeDefinition.typeName, !typeDefinition)
 }
 
@@ -521,14 +521,14 @@ override proc @dictDeclarationAST.semanticAnalysis
 //--- Enter map declaration
   ioSemanticDeclarationListForGeneration +=
     !infoMessage: "dict " + self.mDictTypeName
-    !@dictTypeForGeneration {
-      ![ioTypeMap typeMapEntryForLKey !self.mDictTypeName]
-      ![ioTypeMap typeMapEntryForLKey !elementTypeName]
-      !self.mDictTypeName
-      !typedAttributeList
-      !self.mKeyTypeName
-      !optionalElementTypeEntry
-    }
+    !@dictTypeForGeneration (
+      ![ioTypeMap typeMapEntryForLKey !self.mDictTypeName],
+      [ioTypeMap typeMapEntryForLKey !elementTypeName],
+      self.mDictTypeName,
+      typedAttributeList,
+      self.mKeyTypeName,
+      optionalElementTypeEntry
+    )
 }
 
 //--------------------------------------------------------------------------------------------------

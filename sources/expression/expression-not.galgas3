@@ -37,7 +37,7 @@ syntax extension galgas3ExpressionSyntax {
     let operatorLocation = @location.here
     $not$
     <factor_ggs3> (!?ioDeclarations, ?outExpression)
-    outExpression = @notExpressionAST {!operatorLocation !outExpression}
+    outExpression = @notExpressionAST (!operatorLocation, outExpression)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -55,7 +55,7 @@ syntax extension galgas4ExpressionSyntax {
     let operatorLocation = @location.here
     $not$
     <factor> (!?ioDeclarations, ?outExpression)
-    outExpression = @notExpressionAST {!operatorLocation !outExpression}
+    outExpression = @notExpressionAST (!operatorLocation, outExpression)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -95,20 +95,20 @@ override proc @notExpressionAST.analyzeSemanticExpression
 //--- Check operator availability
   let @unifiedTypeMapEntry type = expression.mResultType
   if expression is == @trueExpressionForGeneration then
-    outExpression = @falseExpressionForGeneration {!inAnalysisContext.predefinedTypes.mBoolType !self.mOperatorLocation}
+    outExpression = @falseExpressionForGeneration (!inAnalysisContext.predefinedTypes.mBoolType, self.mOperatorLocation)
   elsif expression is == @falseExpressionForGeneration then
-    outExpression = @trueExpressionForGeneration {!inAnalysisContext.predefinedTypes.mBoolType !self.mOperatorLocation}
+    outExpression = @trueExpressionForGeneration (!inAnalysisContext.predefinedTypes.mBoolType, self.mOperatorLocation)
   elsif not [type.definition.features contains !.prefixNotOperator] then
     error (self.mOperatorLocation
     : "operand type is '@" + type.definition.typeName.string + "' and does not support the 'not' operator"
     spoil outExpression)
   else
   //--- Generate expression
-    outExpression = @notExpressionForGeneration {
-      !type
-      !self.mOperatorLocation
-      !expression
-    }
+    outExpression = @notExpressionForGeneration (
+      !type,
+      self.mOperatorLocation,
+      expression
+    )
   end
 }
 

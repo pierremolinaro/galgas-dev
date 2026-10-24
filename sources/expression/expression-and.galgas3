@@ -50,13 +50,13 @@ syntax extension galgas3ExpressionSyntax {
       $&$
       let leftOperand = outExpression
       <relation_factor_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST rightOperand)
-      outExpression = @andExpressionAST {!operatorLocation !leftOperand !rightOperand}
+      outExpression = @andExpressionAST (!operatorLocation, leftOperand, rightOperand)
     while
       let operatorLocation = @location.here
       $&&$
       let leftOperand = outExpression
       <relation_factor_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST rightOperand)
-      outExpression = @andShortExpressionAST {!operatorLocation !leftOperand !rightOperand}
+      outExpression = @andShortExpressionAST (!operatorLocation, leftOperand, rightOperand)
     end
   }
 
@@ -79,13 +79,13 @@ syntax extension galgas4ExpressionSyntax {
       $&$
       let leftOperand = outExpression
       <relation_factor> (!?ioDeclarations, ?let @semanticExpressionAST rightOperand)
-      outExpression = @andExpressionAST {!operatorLocation !leftOperand !rightOperand}
+      outExpression = @andExpressionAST (!operatorLocation, leftOperand, rightOperand)
     while
       let operatorLocation = @location.here
       $&&$
       let leftOperand = outExpression
       <relation_factor> (!?ioDeclarations, ?let @semanticExpressionAST rightOperand)
-      outExpression = @andShortExpressionAST {!operatorLocation !leftOperand !rightOperand}
+      outExpression = @andShortExpressionAST (!operatorLocation, leftOperand, rightOperand)
     end
   }
 
@@ -143,13 +143,13 @@ override proc @andExpressionAST.analyzeSemanticExpression
     !?rightExpression
   )
 //--- Generate expression
-  outExpression = @binaryOperatorExpressionForGeneration {
-    !leftExpression.mResultType
-    !self.mOperatorLocation
-    !leftExpression
-    !.operator_and
-    !rightExpression
-  }
+  outExpression = @binaryOperatorExpressionForGeneration (
+    !leftExpression.mResultType,
+    self.mOperatorLocation,
+    leftExpression,
+    .operator_and,
+    rightExpression
+  )
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -200,11 +200,11 @@ override proc @andShortExpressionAST.analyzeSemanticExpression
     !?rightExpression
   )
 //--- Generate expression
-  outExpression = @andShortExpressionForGeneration {
-    !leftExpression.mResultType
-    !self.mOperatorLocation
-    !leftExpression
-    !rightExpression}
+  outExpression = @andShortExpressionForGeneration (
+    !leftExpression.mResultType,
+    self.mOperatorLocation,
+    leftExpression,
+    rightExpression)
 }
 
 //--------------------------------------------------------------------------------------------------

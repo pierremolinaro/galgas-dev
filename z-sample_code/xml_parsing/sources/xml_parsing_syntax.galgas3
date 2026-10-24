@@ -87,12 +87,12 @@ rule <element>
   ?let @string inIndendation ) {
   $comment$ (?let @lstring commentString)
   if inIncludeComments then
-    let node = @xmlNode {
-      !@xmlNodeType. comment
-      !commentString.string
-      !@()
-      !@()
-    }
+    let node = @xmlNode (
+      !@xmlNodeType. comment,
+      commentString.string,
+      @(),
+      @()
+    )
     ioNodes += !node
   end
   if inPrintDuringParsing then
@@ -174,12 +174,12 @@ rule <element>
     end
     $>$
   end
-  let node = @xmlNode {
-    !@xmlNodeType. element
-    !name.string
-    !attributeMap
-    !nodeList
-  }
+  let node = @xmlNode (
+    !@xmlNodeType. element,
+    name.string,
+    attributeMap,
+    nodeList
+  )
   ioNodes += !node
 }
 
@@ -203,12 +203,12 @@ proc addText
     else
       ls = trimmedString
     end
-    let node = @xmlNode {
-      !@xmlNodeType. text
-      !ls
-      !@()
-      !@()
-    }
+    let node = @xmlNode (
+      !@xmlNodeType. text,
+      ls,
+      @(),
+      @()
+    )
     ioNodes += !node
     if inPrintDuringParsing then
       let @string s = inIndendation + "TEXT " + "'" + ls + "'\n"

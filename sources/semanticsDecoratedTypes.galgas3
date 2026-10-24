@@ -318,7 +318,7 @@ override func @semanticDeclarationWithHeaderForGeneration.isPredefined () -> @bo
 
 //--------------------------------------------------------------------------------------------------
 //
-//   A C T I O N ,    M E T H O D    S I G N A T U R E
+//   A C T I O N,    M E T H O D    S I G N A T U R E
 //
 //--------------------------------------------------------------------------------------------------
 

@@ -38,16 +38,16 @@ syntax extension galgas3InstructionsSyntax {
     let endOfSecondInstructions = @location.here
     $end$
     let endOfLoopInstruction = @location.here
-    outInstruction = @loopInstructionWithoutVariantAST {
-      !instructionLocation
-      !firstInstructions
-      !endOfFirstInstructions
-      !loopExpression
-      !endOfLoopExpression
-      !secondInstructions
-      !endOfSecondInstructions
-      !endOfLoopInstruction
-    }
+    outInstruction = @loopInstructionWithoutVariantAST (
+      !instructionLocation,
+      firstInstructions,
+      endOfFirstInstructions,
+      loopExpression,
+      endOfLoopExpression,
+      secondInstructions,
+      endOfSecondInstructions,
+      endOfLoopInstruction
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -75,16 +75,16 @@ syntax extension galgas4InstructionsSyntax {
     let endOfSecondInstructions = @location.here
     $end$
     let endOfLoopInstruction = @location.here
-    outInstruction = @loopInstructionWithoutVariantAST {
-      !instructionLocation
-      !firstInstructions
-      !endOfFirstInstructions
-      !loopExpression
-      !endOfLoopExpression
-      !secondInstructions
-      !endOfSecondInstructions
-      !endOfLoopInstruction
-    }
+    outInstruction = @loopInstructionWithoutVariantAST (
+      !instructionLocation,
+      firstInstructions,
+      endOfFirstInstructions,
+      loopExpression,
+      endOfLoopExpression,
+      secondInstructions,
+      endOfSecondInstructions,
+      endOfLoopInstruction
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -163,12 +163,12 @@ final class @loopInstructionWithoutVariantAST : @semanticInstructionAST {
   //--- End override
     !?ioVariableMap.closeOverride (!self.mEndOfLoopInstruction)
   //--- Generate instruction
-    ioInstructionListForGeneration += !@loopInstructionWithoutVariantForGeneration {
-      !self.mInstructionLocation
-      !first_instructionList
-      !testListForGeneration
-      !second_instructionList
-    }
+    ioInstructionListForGeneration += !@loopInstructionWithoutVariantForGeneration (
+      !self.mInstructionLocation,
+      first_instructionList,
+      testListForGeneration,
+      second_instructionList
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

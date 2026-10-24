@@ -26,7 +26,7 @@ syntax extension galgas3ExpressionSyntax {
   rule <primary_ggs3> (?!@galgasDeclarationAST unused ioDeclarations,
                       !@semanticExpressionAST outExpression ) {
     $nil$
-    outExpression = @nilExpressionAST {!.here}
+    outExpression = @nilExpressionAST (!.here)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -42,7 +42,7 @@ syntax extension galgas4ExpressionSyntax {
   rule <primary> (?!@galgasDeclarationAST unused ioDeclarations,
                  !@semanticExpressionAST outExpression ) {
     $nil$
-    outExpression = @nilExpressionAST {!.here}
+    outExpression = @nilExpressionAST (!.here)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -77,7 +77,7 @@ final class @nilExpressionAST : @semanticExpressionAST {
         error (self.mLocation : "the inferred type @" + unwrappedType.typeName
          + " is not an optional type" spoil outExpression)
       else
-        outExpression = @nilExpressionForGeneration {!inType !self.mLocation}
+        outExpression = @nilExpressionForGeneration (!inType, self.mLocation)
       end
     end
   }

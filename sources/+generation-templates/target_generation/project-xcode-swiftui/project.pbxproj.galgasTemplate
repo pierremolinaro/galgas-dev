@@ -208,7 +208,7 @@ for (mTargetRef mTargetName mProductFileReference mProductFileName mBuildPhaseRe
       %!mBuildPhaseRef% ,
 %
   if [mFrameworksFileRefList count] > 0 then
-    %      %!mFrameworkBuildPhaseRef% , /* Frameworks */\n%
+    %      %!mFrameworkBuildPhaseRef%, /* Frameworks */\n%
   end
 %    );
     buildRules = (

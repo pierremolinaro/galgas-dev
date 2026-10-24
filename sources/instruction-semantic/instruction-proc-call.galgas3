@@ -71,10 +71,10 @@ final class @procCallInstructionAST : @semanticInstructionAST {
       ?let @actualParameterListForGeneration actualParameterListForGeneration
     )
   //--- Generate instruction
-    ioInstructionListForGeneration += !@procCallInstructionForGeneration {
-      !routineMangledName: routineMangledName // self.mRoutineName
-      !actualParameterListForGeneration
-    }
+    ioInstructionListForGeneration += !@procCallInstructionForGeneration (
+      !routineMangledName: routineMangledName,
+      actualParameterListForGeneration
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

@@ -30,7 +30,7 @@ proc enterBaseFinalGetterWithoutArgument (?!@getterMap ioGetterMap,
                                          ?hasCompilerArgument:let @bool inHasCompilerArgument ) {
   !?ioUnifiedTypeMap.makeEntryFromString (!inReturnedTypeName, ?let returnedTypeIndex)
   !?ioGetterMap.insertOrReplace
-    (!@lstring {!inGetterName !.here},
+    (!@lstring (!inGetterName, .here),
     !@methodKind.definedAsMember,
     !@functionSignature (),
     !@location.here,
@@ -41,7 +41,7 @@ proc enterBaseFinalGetterWithoutArgument (?!@getterMap ioGetterMap,
   )
   if inObsoleteGetterName != "" then
     !?ioGetterMap.insertOrReplace
-      (!@lstring {!inObsoleteGetterName !.here},
+      (!@lstring (!inObsoleteGetterName, .here),
       !@methodKind.definedAsMember,
       !@functionSignature (),
       !@location.here,
@@ -63,7 +63,7 @@ proc enterInheritedGetterWithoutArgument (?!@getterMap ioGetterMap,
                                           ?hasCompilerArgument:let @bool inHasCompilerArgument ) {
   !?ioUnifiedTypeMap.makeEntryFromString (!inReturnedTypeName, ?let returnedTypeIndex)
   !?ioGetterMap.insertOrReplace
-    (!@lstring {!inGetterName !@location.here},
+    (!@lstring (!inGetterName, @location.here),
     !@methodKind.definedAsMember,
     !@functionSignature (),
     !@location.here,
@@ -102,7 +102,7 @@ proc enterInheritedGetterWithArgument
   !?ioUnifiedTypeMap.makeEntryFromString (!inArgument1TypeName, ?let t)
   argList += !"".nowhere !t !inArgument1Name !true
   !?ioGetterMap.insertOrReplace
-    (!@lstring {!inGetterName !@location.here},
+    (!@lstring (!inGetterName, @location.here),
     !@methodKind. definedAsMember,
     !argList,
     !@location.here,
@@ -212,7 +212,7 @@ proc enterBaseGetterWithoutArgument (?!@getterMap ioGetterMap,
                                     ?hasCompilerArgument:let @bool inHasCompilerArgument ) {
   !?ioUnifiedTypeMap.makeEntryFromString (!inReturnedTypeName, ?let returnedTypeIndex)
   !?ioGetterMap.insertOrReplace
-    (!@lstring {!inGetterName !@location.here},
+    (!@lstring (!inGetterName, @location.here),
     !@methodKind.definedAsMember,
     !@functionSignature (),
     !@location.here,
@@ -223,7 +223,7 @@ proc enterBaseGetterWithoutArgument (?!@getterMap ioGetterMap,
   )
   if inObsoleteGetterName != "" then
     !?ioGetterMap.insertOrReplace
-      (!@lstring {!inObsoleteGetterName !.here},
+      (!@lstring (!inObsoleteGetterName, .here),
       !@methodKind.definedAsMember,
       !@functionSignature (),
       !@location.here,
@@ -252,7 +252,7 @@ proc enterBaseGetterWithArgument
   !?ioUnifiedTypeMap.makeEntryFromString (!inArgument1TypeName, ?let t)
   argList += !inArgument1Selector.nowhere !t !inArgument1Name !true
   !?ioGetterMap.insertOrReplace
-    (!@lstring {!inGetterName !@location.here},
+    (!@lstring (!inGetterName, @location.here),
     !@methodKind. definedAsMember,
     !argList,
     !@location.here,
@@ -279,7 +279,7 @@ proc enterBaseFinalGetterWithArgument
   !?ioUnifiedTypeMap.makeEntryFromString (!inArgument1TypeName, ?let t)
   argList += !"".nowhere !t !inArgument1Name !true
   !?ioGetterMap.insertOrReplace
-    (!@lstring {!inGetterName !@location.here},
+    (!@lstring (!inGetterName, @location.here),
     !@methodKind. definedAsMember,
     !argList,
     !@location.here,
@@ -312,7 +312,7 @@ proc enterBaseGetterWith2Arguments
   !?ioUnifiedTypeMap.makeEntryFromString (!inArgument2TypeName, ?t)
   argList += !inArgument2Selector.nowhere !t !inArgument2Name !true
   !?ioGetterMap.insertOrReplace
-    (!@lstring {!inGetterName !@location.here},
+    (!@lstring (!inGetterName, @location.here),
     !@methodKind. definedAsMember,
     !argList,
     !@location.here,
@@ -343,7 +343,7 @@ proc enterBaseFinalGetterWith2Arguments
   !?ioUnifiedTypeMap.makeEntryFromString (!inArgument2TypeName, ?t)
   argList += !"".nowhere !t !inArgument2Name !true
   !?ioGetterMap.insertOrReplace
-    (!@lstring {!inGetterName !@location.here},
+    (!@lstring (!inGetterName, @location.here),
     !@methodKind. definedAsMember,
     !argList,
     !@location.here,
@@ -378,7 +378,7 @@ proc enterBaseFinalGetterWith3Arguments
   !?ioUnifiedTypeMap.makeEntryFromString (!inArgument3TypeName, ?t)
   argList += !"".nowhere !t !inArgument3Name !true
   !?ioGetterMap.insertOrReplace
-    (!@lstring {!inGetterName !@location.here},
+    (!@lstring (!inGetterName, @location.here),
     !@methodKind. definedAsMember,
     !argList,
     !@location.here,

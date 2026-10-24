@@ -46,14 +46,14 @@ syntax extension galgas3InstructionsSyntax {
       <if_instruction_core> (!?ioDeclarations, ?let instruction)
       else_instructionList = @[@(instruction)]
     end
-    outInstruction = @ifInstructionAST {
-      !instructionLocation
-      !testExpression
-      !then_instructionList
-      !endOf_then_branchLocation
-      !else_instructionList
-      !@location.here
-    }
+    outInstruction = @ifInstructionAST (
+      !instructionLocation,
+      testExpression,
+      then_instructionList,
+      endOf_then_branchLocation,
+      else_instructionList,
+      @location.here
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -98,14 +98,14 @@ syntax extension galgas4InstructionsSyntax {
       <if_instruction_core> (!?ioDeclarations, ?let instruction)
       else_instructionList = @[@(instruction)]
     end
-    outInstruction = @ifInstructionAST {
-      !instructionLocation
-      !testExpression
-      !then_instructionList
-      !endOf_then_branchLocation
-      !else_instructionList
-      !.here
-    }
+    outInstruction = @ifInstructionAST (
+      !instructionLocation,
+      testExpression,
+      then_instructionList,
+      endOf_then_branchLocation,
+      else_instructionList,
+      .here
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -217,12 +217,12 @@ final class @ifInstructionAST : @semanticInstructionAST {
     )
     !?ioVariableMap.closeOverride (!self.mEndOf_if_instruction)
   //--- Generate instruction
-    ioInstructionListForGeneration += !@ifInstructionForGeneration {
-      !self.mEndOf_then_branch
-      !testListForGeneration
-      !then_instructionList
-      !else_instructionList
-    }
+    ioInstructionListForGeneration += !@ifInstructionForGeneration (
+      !self.mEndOf_then_branch,
+      testListForGeneration,
+      then_instructionList,
+      else_instructionList
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

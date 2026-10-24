@@ -74,31 +74,31 @@ syntax extension galgas3ExpressionSyntax {
       $|$
       let leftOperand = outExpression
       <expression_and_ggs3> (!?ioDeclarations, ?let rightOperand)
-      outExpression = @orExpressionAST {!operatorLocation !leftOperand !rightOperand}
+      outExpression = @orExpressionAST (!operatorLocation, leftOperand, rightOperand)
     while
       let operatorLocation = @location.here
       $||$
       let leftOperand = outExpression
       <expression_and_ggs3> (!?ioDeclarations, ?let rightOperand)
-      outExpression = @orShortExpressionAST {!operatorLocation !leftOperand !rightOperand}
+      outExpression = @orShortExpressionAST (!operatorLocation, leftOperand, rightOperand)
     while
       let operatorLocation = @location.here
       $^$
       let leftOperand = outExpression
       <expression_and_ggs3> (!?ioDeclarations, ?let rightOperand)
-      outExpression = @xorExpressionAST {!operatorLocation !leftOperand !rightOperand}
+      outExpression = @xorExpressionAST (!operatorLocation, leftOperand, rightOperand)
     while
       let operatorLocation = @location.here
       $...$
       let leftOperand = outExpression
       <expression_and_ggs3> (!?ioDeclarations, ?let rightOperand)
-      outExpression = @closedSliceExpressionAST {!operatorLocation !leftOperand !rightOperand}
+      outExpression = @closedSliceExpressionAST (!operatorLocation, leftOperand, rightOperand)
     while
       let operatorLocation = @location.here
       $..<$
       let leftOperand = outExpression
       <expression_and_ggs3> (!?ioDeclarations, ?let rightOperand)
-      outExpression = @openedSliceExpressionAST {!operatorLocation !leftOperand !rightOperand}
+      outExpression = @openedSliceExpressionAST (!operatorLocation, leftOperand, rightOperand)
     end
   }
 
@@ -121,31 +121,31 @@ syntax extension galgas4ExpressionSyntax {
       $|$
       let leftOperand = outExpression
       <expression_and> (!?ioDeclarations, ?let rightOperand)
-      outExpression = @orExpressionAST {!operatorLocation !leftOperand !rightOperand}
+      outExpression = @orExpressionAST (!operatorLocation, leftOperand, rightOperand)
     while
       let operatorLocation = @location.here
       $||$
       let leftOperand = outExpression
       <expression_and> (!?ioDeclarations, ?let rightOperand)
-      outExpression = @orShortExpressionAST {!operatorLocation !leftOperand !rightOperand}
+      outExpression = @orShortExpressionAST (!operatorLocation, leftOperand, rightOperand)
     while
       let operatorLocation = @location.here
       $^$
       let leftOperand = outExpression
       <expression_and> (!?ioDeclarations, ?let rightOperand)
-      outExpression = @xorExpressionAST {!operatorLocation !leftOperand !rightOperand}
+      outExpression = @xorExpressionAST (!operatorLocation, leftOperand, rightOperand)
     while
       let operatorLocation = @location.here
       $...$
       let leftOperand = outExpression
       <expression_and> (!?ioDeclarations, ?let rightOperand)
-      outExpression = @closedSliceExpressionAST {!operatorLocation !leftOperand !rightOperand}
+      outExpression = @closedSliceExpressionAST (!operatorLocation, leftOperand, rightOperand)
     while
       let operatorLocation = @location.here
       $..<$
       let leftOperand = outExpression
       <expression_and> (!?ioDeclarations, ?let rightOperand)
-      outExpression = @openedSliceExpressionAST {!operatorLocation !leftOperand !rightOperand}
+      outExpression = @openedSliceExpressionAST (!operatorLocation, leftOperand, rightOperand)
     end
   }
 
@@ -202,13 +202,13 @@ override proc @orExpressionAST.analyzeSemanticExpression
     !?leftExpression,
     !?rightExpression
   )
-  outExpression = @binaryOperatorExpressionForGeneration {
-    !leftExpression.mResultType
-    !self.mOperatorLocation
-    !leftExpression
-    !.operator_or
-    !rightExpression
-  }
+  outExpression = @binaryOperatorExpressionForGeneration (
+    !leftExpression.mResultType,
+    self.mOperatorLocation,
+    leftExpression,
+    .operator_or,
+    rightExpression
+  )
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -259,11 +259,11 @@ override proc @orShortExpressionAST.analyzeSemanticExpression
     !?rightExpression
   )
 //--- Generate expression
-  outExpression = @orShortExpressionForGeneration {
-    !leftExpression.mResultType
-    !self.mOperatorLocation
-    !leftExpression
-    !rightExpression}
+  outExpression = @orShortExpressionForGeneration (
+    !leftExpression.mResultType,
+    self.mOperatorLocation,
+    leftExpression,
+    rightExpression)
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -314,13 +314,13 @@ override proc @xorExpressionAST.analyzeSemanticExpression
     !?rightExpression
   )
 //--- Generate expression
-  outExpression = @binaryOperatorExpressionForGeneration {
-    !leftExpression.mResultType
-    !self.mOperatorLocation
-    !leftExpression
-    !.operator_xor
-    !rightExpression
-  }
+  outExpression = @binaryOperatorExpressionForGeneration (
+    !leftExpression.mResultType,
+    self.mOperatorLocation,
+    leftExpression,
+    .operator_xor,
+    rightExpression
+  )
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -373,12 +373,12 @@ override proc @closedSliceExpressionAST.analyzeSemanticExpression
     error (rightExpression.mLocation : "the right expression or '...' operator should an @uint")
   end
 //--- Generate expression
-  outExpression = @closedSliceExpressionForGeneration {
-    ![ioTypeMap typeMapEntryForLKey !@{!"range" !leftExpression.mLocation}]
-    !self.mOperatorLocation
-    !leftExpression
-    !rightExpression
-  }
+  outExpression = @closedSliceExpressionForGeneration (
+    ![ioTypeMap typeMapEntryForLKey !@{!"range" !leftExpression.mLocation}],
+    self.mOperatorLocation,
+    leftExpression,
+    rightExpression
+  )
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -434,12 +434,12 @@ override proc @openedSliceExpressionAST.analyzeSemanticExpression
     !?rightExpression
   )
 //--- Generate expression
-  outExpression = @openedSliceExpressionForGeneration {
-    ![ioTypeMap typeMapEntryForLKey !@{!"range" !leftExpression.mLocation}]
-    !self.mOperatorLocation
-    !leftExpression
-    !rightExpression
-  }
+  outExpression = @openedSliceExpressionForGeneration (
+    ![ioTypeMap typeMapEntryForLKey !@{!"range" !leftExpression.mLocation}],
+    self.mOperatorLocation,
+    leftExpression,
+    rightExpression
+  )
 }
 
 //--------------------------------------------------------------------------------------------------

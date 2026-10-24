@@ -34,7 +34,7 @@ syntax extension galgas3ExpressionSyntax {
   rule <primary_ggs3> (?!@galgasDeclarationAST unused ioDeclarations,
                       !@semanticExpressionAST outExpression ) {
     $literalInt$ (?let @lbigint literalInt)
-    outExpression = @literalBigIntExpressionAST {!literalInt}
+    outExpression = @literalBigIntExpressionAST (!literalInt)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -50,7 +50,7 @@ syntax extension galgas4ExpressionSyntax {
   rule <primary> (?!@galgasDeclarationAST unused ioDeclarations,
                  !@semanticExpressionAST outExpression ) {
     $literalInt$ (?let @lbigint literalInt)
-    outExpression = @literalBigIntExpressionAST {!literalInt}
+    outExpression = @literalBigIntExpressionAST (!literalInt)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -145,11 +145,11 @@ override proc @literalBigIntExpressionAST.analyzeSemanticExpression
   ?!@localVarManager unused ioVariableMap,
   !@semanticExpressionForGeneration outExpression
 ) {
-  outExpression = @literalBigIntExpressionForGeneration {
-    !inAnalysisContext.predefinedTypes.mBigIntType
-    !self.mValue.location
-    !self.mValue.bigint
-  }
+  outExpression = @literalBigIntExpressionForGeneration (
+    !inAnalysisContext.predefinedTypes.mBigIntType,
+    self.mValue.location,
+    self.mValue.bigint
+  )
 }
 
 //--------------------------------------------------------------------------------------------------
