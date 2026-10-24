@@ -47,9 +47,9 @@ syntax extension galgas3ExpressionSyntax {
     select
       expressionList = @()
     or
-      ${$ // §§
-      <output_expression_list_ggs3> (!?ioDeclarations, ?expressionList)
-      $}$
+      $($
+      <output_expression_list_ggs34> (!?ioDeclarations, ?expressionList)
+      $)$
     end
     let endOfExpression = @location.here
     outExpression = @classFuncExpressionAST (

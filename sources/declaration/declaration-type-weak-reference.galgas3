@@ -136,7 +136,7 @@ override proc @weakReferenceDeclarationAST.enterDeclarationInSemanticContext
     !isConcrete: true,
     !isFinal: true,
     !superType: superClassIndex,
-    !typeKind: .weakReferenceType {!referenceType: classIndex},
+    !typeKind: .weakReferenceType (!referenceType: classIndex),
     !supportCollectionValue: false,
     !allTypedPropertyList: @(),
     !propertyMap: @(),

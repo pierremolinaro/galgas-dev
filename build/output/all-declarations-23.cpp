@@ -8607,17 +8607,17 @@ void cPtr_overridingExtensionGetterAST::method_semanticAnalysis (GGS_lstringlist
     }
   }
   GGS_analysisContext var_analysisContext_13050 = GGS_analysisContext::init_21__21__21_selfObjectCppName_21_selfAvailability_21_selfObjectCppPrefixForAccessingProperty (constinArgument_inSemanticContext, constinArgument_inPredefinedTypes, GGS_string ("this"), GGS_selfAvailability::class_func_available (var_selfType_11645, GGS_selfMutability::class_func_propertiesAreMutableSelfIsNot (SOURCE_FILE ("extension-overriding-getter.galgas3", 316))  COMMA_SOURCE_FILE ("extension-overriding-getter.galgas3", 316)), GGS_string ("object."), inCompiler COMMA_HERE) ;
-  GGS_formalInputParameterListForGeneration var_formalParameterListForGeneration_13751 ;
-  GGS_unifiedTypeMapEntry var_returnType_13815 ;
-  GGS_string var_returnVariableCppName_13844 ;
-  GGS_semanticInstructionListForGeneration var_semanticInstructionListForGeneration_13914 ;
+  GGS_formalInputParameterListForGeneration var_formalParameterListForGeneration_13752 ;
+  GGS_unifiedTypeMapEntry var_returnType_13816 ;
+  GGS_string var_returnVariableCppName_13845 ;
+  GGS_semanticInstructionListForGeneration var_semanticInstructionListForGeneration_13915 ;
   {
   const GGS_overridingExtensionGetterAST temp_14 = this ;
   const GGS_overridingExtensionGetterAST temp_15 = this ;
   const GGS_overridingExtensionGetterAST temp_16 = this ;
   const GGS_overridingExtensionGetterAST temp_17 = this ;
   const GGS_overridingExtensionGetterAST temp_18 = this ;
-  routine_analyzeFunctionBody_3F__26__3F__26__3F__3F__3F__3F__3F__21__21__21__21_ (var_nameForUsefulness_11251, ioArgument_ioUsefulEntitiesGraph, var_analysisContext_13050, ioArgument_ioTypeMap, temp_14.readProperty_mOverridingExtensionGetterFormalInputParameterList (), temp_15.readProperty_mOverridingExtensionGetterInstructionList (), temp_16.readProperty_mOverridingExtensionGetterReturnedVariableName (), temp_17.readProperty_mOverridingExtensionGetterReturnedTypeName (), temp_18.readProperty_mEndOfReaderLocation (), var_formalParameterListForGeneration_13751, var_returnType_13815, var_returnVariableCppName_13844, var_semanticInstructionListForGeneration_13914, inCompiler  COMMA_SOURCE_FILE ("extension-overriding-getter.galgas3", 319)) ;
+  routine_analyzeFunctionBody_3F__26__3F__26__3F__3F__3F__3F__3F__21__21__21__21_ (var_nameForUsefulness_11251, ioArgument_ioUsefulEntitiesGraph, var_analysisContext_13050, ioArgument_ioTypeMap, temp_14.readProperty_mOverridingExtensionGetterFormalInputParameterList (), temp_15.readProperty_mOverridingExtensionGetterInstructionList (), temp_16.readProperty_mOverridingExtensionGetterReturnedVariableName (), temp_17.readProperty_mOverridingExtensionGetterReturnedTypeName (), temp_18.readProperty_mEndOfReaderLocation (), var_formalParameterListForGeneration_13752, var_returnType_13816, var_returnVariableCppName_13845, var_semanticInstructionListForGeneration_13915, inCompiler  COMMA_SOURCE_FILE ("extension-overriding-getter.galgas3", 319)) ;
   }
   GalgasBool test_19 = GalgasBool::boolTrue ;
   if (GalgasBool::boolTrue == test_19) {
@@ -8625,7 +8625,7 @@ void cPtr_overridingExtensionGetterAST::method_semanticAnalysis (GGS_lstringlist
     if (GalgasBool::boolTrue == test_19) {
       {
       const GGS_overridingExtensionGetterAST temp_20 = this ;
-      routine_checkGetterSignatures_3F__3F__3F__3F__3F__3F_ (var_formalParameterListForGeneration_13751, var_returnType_13815, temp_20.readProperty_mOverridingExtensionGetterName ().readProperty_location (), var_inheritedSignature_12096, var_inheritedReturnType_12127, var_inheritedDeclarationLocation_12191, inCompiler  COMMA_SOURCE_FILE ("extension-overriding-getter.galgas3", 336)) ;
+      routine_checkGetterSignatures_3F__3F__3F__3F__3F__3F_ (var_formalParameterListForGeneration_13752, var_returnType_13816, temp_20.readProperty_mOverridingExtensionGetterName ().readProperty_location (), var_inheritedSignature_12096, var_inheritedReturnType_12127, var_inheritedDeclarationLocation_12191, inCompiler  COMMA_SOURCE_FILE ("extension-overriding-getter.galgas3", 336)) ;
       }
     }
   }
@@ -8633,7 +8633,7 @@ void cPtr_overridingExtensionGetterAST::method_semanticAnalysis (GGS_lstringlist
   const GGS_overridingExtensionGetterAST temp_22 = this ;
   const GGS_overridingExtensionGetterAST temp_23 = this ;
   const GGS_overridingExtensionGetterAST temp_24 = this ;
-  ioArgument_ioSemanticDeclarationListForGeneration.addAssignOperation (GGS_string ("override extension func ").add_operation (temp_21.readProperty_mOverridingExtensionGetterName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("extension-overriding-getter.galgas3", 347)), GGS_overrideExtensionGetterForGeneration::init_21_generateHeader_21_implementationCppFileName_21__21__21__21__21__21__21__21_ (GGS_bool (false), GGS_string ("func-").add_operation (temp_22.readProperty_mTypeName ().readProperty_string ().getter_fileNameRepresentation (SOURCE_FILE ("extension-overriding-getter.galgas3", 350)), inCompiler COMMA_SOURCE_FILE ("extension-overriding-getter.galgas3", 350)).add_operation (GGS_string ("-"), inCompiler COMMA_SOURCE_FILE ("extension-overriding-getter.galgas3", 350)).add_operation (temp_23.readProperty_mOverridingExtensionGetterName ().readProperty_string ().getter_fileNameRepresentation (SOURCE_FILE ("extension-overriding-getter.galgas3", 350)), inCompiler COMMA_SOURCE_FILE ("extension-overriding-getter.galgas3", 350)), var_selfType_11645, var_baseTypeName_11984, temp_24.readProperty_mOverridingExtensionGetterName ().readProperty_string (), var_returnType_13815, var_returnVariableCppName_13844, var_formalParameterListForGeneration_13751, extensionGetter_definition (var_selfType_11645, inCompiler COMMA_SOURCE_FILE ("extension-overriding-getter.galgas3", 357)).readProperty_allTypedPropertyList (), var_semanticInstructionListForGeneration_13914, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("extension-overriding-getter.galgas3", 346)) ;
+  ioArgument_ioSemanticDeclarationListForGeneration.addAssignOperation (GGS_string ("override extension func ").add_operation (temp_21.readProperty_mOverridingExtensionGetterName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("extension-overriding-getter.galgas3", 347)), GGS_overrideExtensionGetterForGeneration::init_21_generateHeader_21_implementationCppFileName_21__21__21__21__21__21__21__21_ (GGS_bool (false), GGS_string ("func-").add_operation (temp_22.readProperty_mTypeName ().readProperty_string ().getter_fileNameRepresentation (SOURCE_FILE ("extension-overriding-getter.galgas3", 350)), inCompiler COMMA_SOURCE_FILE ("extension-overriding-getter.galgas3", 350)).add_operation (GGS_string ("-"), inCompiler COMMA_SOURCE_FILE ("extension-overriding-getter.galgas3", 350)).add_operation (temp_23.readProperty_mOverridingExtensionGetterName ().readProperty_string ().getter_fileNameRepresentation (SOURCE_FILE ("extension-overriding-getter.galgas3", 350)), inCompiler COMMA_SOURCE_FILE ("extension-overriding-getter.galgas3", 350)), var_selfType_11645, var_baseTypeName_11984, temp_24.readProperty_mOverridingExtensionGetterName ().readProperty_string (), var_returnType_13816, var_returnVariableCppName_13845, var_formalParameterListForGeneration_13752, extensionGetter_definition (var_selfType_11645, inCompiler COMMA_SOURCE_FILE ("extension-overriding-getter.galgas3", 357)).readProperty_allTypedPropertyList (), var_semanticInstructionListForGeneration_13915, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("extension-overriding-getter.galgas3", 346)) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -8687,7 +8687,7 @@ void cPtr_overrideExtensionGetterForGeneration::method_appendSpecificImplementat
                                                                                      COMMA_UNUSED_LOCATION_ARGS) {
   const GGS_overrideExtensionGetterForGeneration temp_0 = this ;
   ioArgument_ioInclusionSet.plusPlusAssignOperation (GGS_string ("class-").add_operation (extensionGetter_definition (temp_0.readProperty_mReceiverType (), inCompiler COMMA_SOURCE_FILE ("extension-overriding-getter.galgas3", 412)).readProperty_typeName ().readProperty_string ().getter_fileNameRepresentation (SOURCE_FILE ("extension-overriding-getter.galgas3", 412)), inCompiler COMMA_SOURCE_FILE ("extension-overriding-getter.galgas3", 412))  COMMA_SOURCE_FILE ("extension-overriding-getter.galgas3", 412)) ;
-  GGS_string var_extensionGetterCode_18222 ;
+  GGS_string var_extensionGetterCode_18223 ;
   {
   const GGS_overrideExtensionGetterForGeneration temp_1 = this ;
   const GGS_overrideExtensionGetterForGeneration temp_2 = this ;
@@ -8695,12 +8695,12 @@ void cPtr_overrideExtensionGetterForGeneration::method_appendSpecificImplementat
   const GGS_overrideExtensionGetterForGeneration temp_4 = this ;
   const GGS_overrideExtensionGetterForGeneration temp_5 = this ;
   const GGS_overrideExtensionGetterForGeneration temp_6 = this ;
-  routine_generateExtensionGetter_3F__26__3F__3F__3F__3F__3F__21_ (GGS_string ("cPtr_").add_operation (extensionGetter_definition (temp_1.readProperty_mReceiverType (), inCompiler COMMA_SOURCE_FILE ("extension-overriding-getter.galgas3", 414)).readProperty_typeName ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("extension-overriding-getter.galgas3", 414)), inCompiler COMMA_SOURCE_FILE ("extension-overriding-getter.galgas3", 414)).add_operation (GGS_string ("::getter_"), inCompiler COMMA_SOURCE_FILE ("extension-overriding-getter.galgas3", 414)).add_operation (temp_2.readProperty_mOverridingExtensionGetterName ().getter_identifierRepresentation (SOURCE_FILE ("extension-overriding-getter.galgas3", 414)), inCompiler COMMA_SOURCE_FILE ("extension-overriding-getter.galgas3", 414)), ioArgument_ioInclusionSet, temp_3.readProperty_mOverridingExtensionGetterFormalParameterList (), temp_4.readProperty_mSemanticInstructionListForGeneration (), GGS_string ("Compiler"), temp_5.readProperty_mResultType (), temp_6.readProperty_mResultVarCppName (), var_extensionGetterCode_18222, inCompiler  COMMA_SOURCE_FILE ("extension-overriding-getter.galgas3", 413)) ;
+  routine_generateExtensionGetter_3F__26__3F__3F__3F__3F__3F__21_ (GGS_string ("cPtr_").add_operation (extensionGetter_definition (temp_1.readProperty_mReceiverType (), inCompiler COMMA_SOURCE_FILE ("extension-overriding-getter.galgas3", 414)).readProperty_typeName ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("extension-overriding-getter.galgas3", 414)), inCompiler COMMA_SOURCE_FILE ("extension-overriding-getter.galgas3", 414)).add_operation (GGS_string ("::getter_"), inCompiler COMMA_SOURCE_FILE ("extension-overriding-getter.galgas3", 414)).add_operation (temp_2.readProperty_mOverridingExtensionGetterName ().getter_identifierRepresentation (SOURCE_FILE ("extension-overriding-getter.galgas3", 414)), inCompiler COMMA_SOURCE_FILE ("extension-overriding-getter.galgas3", 414)), ioArgument_ioInclusionSet, temp_3.readProperty_mOverridingExtensionGetterFormalParameterList (), temp_4.readProperty_mSemanticInstructionListForGeneration (), GGS_string ("Compiler"), temp_5.readProperty_mResultType (), temp_6.readProperty_mResultVarCppName (), var_extensionGetterCode_18223, inCompiler  COMMA_SOURCE_FILE ("extension-overriding-getter.galgas3", 413)) ;
   }
   const GGS_overrideExtensionGetterForGeneration temp_7 = this ;
   const GGS_overrideExtensionGetterForGeneration temp_8 = this ;
   const GGS_overrideExtensionGetterForGeneration temp_9 = this ;
-  outArgument_outImplementation = GGS_string (filewrapperTemplate_semanticComponentGenerationTemplate_overridingExtensionGetterImplementation (inCompiler, extensionGetter_definition (temp_7.readProperty_mReceiverType (), inCompiler COMMA_SOURCE_FILE ("extension-overriding-getter.galgas3", 424)).readProperty_typeName ().readProperty_string (), temp_8.readProperty_mOverridingExtensionGetterName (), var_extensionGetterCode_18222, temp_9.readProperty_mResultType () COMMA_SOURCE_FILE ("extension-overriding-getter.galgas3", 423))) ;
+  outArgument_outImplementation = GGS_string (filewrapperTemplate_semanticComponentGenerationTemplate_overridingExtensionGetterImplementation (inCompiler, extensionGetter_definition (temp_7.readProperty_mReceiverType (), inCompiler COMMA_SOURCE_FILE ("extension-overriding-getter.galgas3", 424)).readProperty_typeName ().readProperty_string (), temp_8.readProperty_mOverridingExtensionGetterName (), var_extensionGetterCode_18223, temp_9.readProperty_mResultType () COMMA_SOURCE_FILE ("extension-overriding-getter.galgas3", 423))) ;
 }
 
 //--------------------------------------------------------------------------------------------------

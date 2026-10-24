@@ -218,7 +218,7 @@ final class @initializerAST : @semanticDeclarationAST {
       !inSemanticContext,
       inPredefinedTypes,
       !selfObjectCppName: selfObjectNameString,
-      !selfAvailability: .available {!type: selfType !selfMutability: .initializer},
+      !selfAvailability: .available (!type: selfType, !selfMutability: .initializer),
       !selfObjectCppPrefixForAccessingProperty: selfObjectAccessorString
     )
     analyzeInitializerBody (

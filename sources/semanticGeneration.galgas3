@@ -1215,7 +1215,7 @@ proc generateWrapperContents
 //--- Generate regular files
   for (lkey mAbsoluteFilePath mIsTextFile * mWrapperFileIndex) in inFilewrapperRegularFileMap do
     if mIsTextFile then
-      let contents = @string.stringWithContentsOfFile {!mAbsoluteFilePath}
+      let contents = @string.stringWithContentsOfFile (!mAbsoluteFilePath)
       ioImplementation += "//--- File '" + inFilewrapperDirectory + "/" + lkey + "'\n\n"
       ioImplementation +=  "const char * gWrapperFileContent_"
       ioImplementation += mWrapperFileIndex.string
@@ -1254,7 +1254,7 @@ proc generateWrapperContents
       ioImplementation += inFilewrapperName.identifierRepresentation
       ioImplementation += "\n) ;\n\n"
     else
-      let @data contents = @data. dataWithContentsOfFile {!mAbsoluteFilePath}
+      let @data contents = @data. dataWithContentsOfFile (!mAbsoluteFilePath)
       ioImplementation += "//--- File '" + inFilewrapperDirectory + "/" + lkey + "'\n\n"
       +  "const uint8_t gWrapperFileContent_"
       + mWrapperFileIndex.string + "_"

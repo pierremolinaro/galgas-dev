@@ -12157,15 +12157,15 @@ void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary
     var_expressionList_2203 = GGS_actualOutputArgumentList::init (inCompiler COMMA_HERE) ;
   } break ;
   case 2: {
-    inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__7B_ COMMA_SOURCE_FILE ("expression-class-func.galgas3", 50)) ;
-    nt_output_5F_expression_5F_list_5F_ggs_33__ (ioArgument_ioDeclarations, var_expressionList_2203, inCompiler) ;
-    inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__7D_ COMMA_SOURCE_FILE ("expression-class-func.galgas3", 52)) ;
+    inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__28_ COMMA_SOURCE_FILE ("expression-class-func.galgas3", 50)) ;
+    nt_output_5F_expression_5F_list_5F_ggs_33__34__ (ioArgument_ioDeclarations, var_expressionList_2203, inCompiler) ;
+    inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__29_ COMMA_SOURCE_FILE ("expression-class-func.galgas3", 52)) ;
   } break ;
   default:
     break ;
   }
-  GGS_location var_endOfExpression_2377 = GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("expression-class-func.galgas3", 54)) ;
-  outArgument_outExpression = GGS_classFuncExpressionAST::init_21__21__21__21_ (var_typeName_2020, var_classFuncName_2129, var_expressionList_2203, var_startOfExpression_2046.getter_union (var_endOfExpression_2377, inCompiler COMMA_SOURCE_FILE ("expression-class-func.galgas3", 59)), inCompiler COMMA_HERE) ;
+  GGS_location var_endOfExpression_2372 = GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("expression-class-func.galgas3", 54)) ;
+  outArgument_outExpression = GGS_classFuncExpressionAST::init_21__21__21__21_ (var_typeName_2020, var_classFuncName_2129, var_expressionList_2203, var_startOfExpression_2046.getter_union (var_endOfExpression_2372, inCompiler COMMA_SOURCE_FILE ("expression-class-func.galgas3", 59)), inCompiler COMMA_HERE) ;
 }
 
 //------------------------------------------------------------------------------------------------
@@ -12178,9 +12178,9 @@ void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary
   case 1: {
   } break ;
   case 2: {
-    inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__7B_ COMMA_SOURCE_FILE ("expression-class-func.galgas3", 50)) ;
-    nt_output_5F_expression_5F_list_5F_ggs_33__indexing (inCompiler) ;
-    inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__7D_ COMMA_SOURCE_FILE ("expression-class-func.galgas3", 52)) ;
+    inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__28_ COMMA_SOURCE_FILE ("expression-class-func.galgas3", 50)) ;
+    nt_output_5F_expression_5F_list_5F_ggs_33__34__indexing (inCompiler) ;
+    inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__29_ COMMA_SOURCE_FILE ("expression-class-func.galgas3", 52)) ;
   } break ;
   default:
     break ;

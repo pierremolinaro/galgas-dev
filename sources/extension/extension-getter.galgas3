@@ -284,7 +284,7 @@ override proc @extensionGetterAST.semanticAnalysis (
     !inSemanticContext,
     inPredefinedTypes,
     !selfObjectCppName: selfObjectNameNew,
-    !selfAvailability: .available {!type: selfType !selfMutability: .none},
+    !selfAvailability: .available (!type: selfType, !selfMutability: .none),
     !selfObjectCppPrefixForAccessingProperty: selfObjectAccessorNew
   )
   analyzeFunctionBody (

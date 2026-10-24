@@ -40,9 +40,9 @@ proc compileSemanticDeclarationsGalgas (?!@lstringlist ioUsefulnessRootEntities,
     options +=
       !"bool".nowhere
       !@(!name.mValue1, .here)
-      !@(!@application.boolOptionInvocationCharacter {!name.mValue0 !name.mValue1}, .nowhere)
-      !@application.boolOptionInvocationString {!name.mValue0 !name.mValue1}.nowhere
-      !@application.boolOptionCommentString {!name.mValue0 !name.mValue1}.nowhere
+      !@(!@application.boolOptionInvocationCharacter (!name.mValue0, name.mValue1), .nowhere)
+      !@application.boolOptionInvocationString (!name.mValue0, name.mValue1).nowhere
+      !@application.boolOptionCommentString (!name.mValue0, name.mValue1).nowhere
       !"".nowhere
       !.noDefaultValue
   end
@@ -50,9 +50,9 @@ proc compileSemanticDeclarationsGalgas (?!@lstringlist ioUsefulnessRootEntities,
     options +=
       !"uint".nowhere
       !@(!name.mValue1, .here)
-      !@lchar (!@application.uintOptionInvocationCharacter {!name.mValue0 !name.mValue1}, .nowhere)
-      !@application.uintOptionInvocationString {!name.mValue0 !name.mValue1}.nowhere
-      !@application.uintOptionCommentString {!name.mValue0 !name.mValue1}.nowhere
+      !@lchar (!@application.uintOptionInvocationCharacter (!name.mValue0, name.mValue1), .nowhere)
+      !@application.uintOptionInvocationString (!name.mValue0, name.mValue1).nowhere
+      !@application.uintOptionCommentString (!name.mValue0, name.mValue1).nowhere
       !"".nowhere
       !.noDefaultValue
   end
@@ -60,9 +60,9 @@ proc compileSemanticDeclarationsGalgas (?!@lstringlist ioUsefulnessRootEntities,
     options +=
       !"string".nowhere
       !@(!name.mValue1, .here)
-      !@lchar (!@application.stringOptionInvocationCharacter {!name.mValue0 !name.mValue1}, .nowhere)
-      !@application.stringOptionInvocationString {!name.mValue0 !name.mValue1}.nowhere
-      !@application.stringOptionCommentString {!name.mValue0 !name.mValue1}.nowhere
+      !@lchar (!@application.stringOptionInvocationCharacter (!name.mValue0, name.mValue1), .nowhere)
+      !@application.stringOptionInvocationString (!name.mValue0, name.mValue1).nowhere
+      !@application.stringOptionCommentString (!name.mValue0, name.mValue1).nowhere
       !"".nowhere
       !.noDefaultValue
   end
@@ -352,12 +352,12 @@ private proc generateManyHeaders
     //--- Header 1
       if declaration.mDeclaration.headerKind != @headerKind.noHeader then
         var headerString = "#pragma once\n"
-        headerString += "//" + @string.stringByRepeatingString {!"-" !118} + "\n\n"
+        headerString += "//" + @string.stringByRepeatingString (!"-", 118) + "\n\n"
         headerString += "#include \"all-predefined-types.h\"\n\n"
-        headerString += "//" + @string.stringByRepeatingString {!"-" !118} + "\n\n"
+        headerString += "//" + @string.stringByRepeatingString (!"-", 118) + "\n\n"
         headerString += headerIncludes1
         headerString += "\n"
-        headerString += "//" + @string.stringByRepeatingString {!"-" !118} + "\n\n"
+        headerString += "//" + @string.stringByRepeatingString (!"-", 118) + "\n\n"
         let headerFileName = declaration.mDeclaration.getImplementationCppFileName
            + if declaration.mDeclaration.headerKind == @headerKind.twoHeaders then "-1" else "" end
         headerInclusionList1 += !headerFileName
@@ -373,12 +373,12 @@ private proc generateManyHeaders
       if declaration.mDeclaration.headerKind == @headerKind.twoHeaders then
         var headerString = "#ifndef " + declaration.mDeclaration.getImplementationCppFileName.identifierRepresentation + "_DEFINED\n"
         headerString += "#define " + declaration.mDeclaration.getImplementationCppFileName.identifierRepresentation + "_DEFINED\n\n"
-        headerString += "//" + @string.stringByRepeatingString {!"-" !118} + "\n\n"
+        headerString += "//" + @string.stringByRepeatingString (!"-", 118) + "\n\n"
         headerString += "#include \"" + declaration.mDeclaration.getImplementationCppFileName + "-1.h\"\n"
-        headerString += "\n//" + @string.stringByRepeatingString {!"-" !118} + "\n\n"
+        headerString += "\n//" + @string.stringByRepeatingString (!"-", 118) + "\n\n"
         headerString += headerIncludes2
         headerString += "\n"
-        headerString += "//" + @string.stringByRepeatingString {!"-" !118} + "\n\n"
+        headerString += "//" + @string.stringByRepeatingString (!"-", 118) + "\n\n"
         headerString += "#endif\n\n"
         headerInclusionList2 += !declaration.mDeclaration.getImplementationCppFileName
         ioAllProductFileSet ++= declaration.mDeclaration.getImplementationCppFileName + ".h"

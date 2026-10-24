@@ -116,7 +116,7 @@ override proc @repeatInstruction.transformInstructionForGrammarAnalysis
     !?addedTerminalIndex:ioAddedNonTerminalIndex,
     !?repeatedInstructionList
   )
-  var repeatBranchList = @branchListForGrammarAnalysis.listWithValue{!repeatedInstructionList}
+  var repeatBranchList = @branchListForGrammarAnalysis.listWithValue(!repeatedInstructionList)
 
   for (mSyntaxInstructionList *) in self.mRepeatBranchList do
     var syntaxInstructionList = @syntaxInstructionListForGrammarAnalysis ()

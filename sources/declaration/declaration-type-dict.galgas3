@@ -190,7 +190,7 @@ override proc @dictDeclarationAST.enterDeclarationInSemanticContext
 //--- key type index
   !?ioTypeMap.makeEntryFromString (!self.mKeyTypeName, ?let keyTypeIndex)
 //--- Enumeration description
-  var enumerationDescriptor = @enumerationDescriptorList.listWithValue {!keyTypeIndex !"key"}
+  var enumerationDescriptor = @enumerationDescriptorList.listWithValue (!keyTypeIndex, "key")
 //---
   commonGetterMapForAllTypes (!?ioTypeMap, ?var @getterMap getterMap )
   var @setterMap setterMap = @()

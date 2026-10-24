@@ -251,7 +251,7 @@ override proc @extensionSetterAST.semanticAnalysis (
     !inSemanticContext,
     inPredefinedTypes,
     !selfObjectCppName: selfObjectName,
-    !selfAvailability: .available {!type: selfType !selfMutability: .selfAndPropertiesAreMutable},
+    !selfAvailability: .available (!type: selfType, !selfMutability: .selfAndPropertiesAreMutable),
     !selfObjectCppPrefixForAccessingProperty: selfObjectAccessor
   )
   analyzeRoutineBody (

@@ -52,7 +52,7 @@ syntax extension galgas3DeclarationsSyntax {
     or
       $=$
       <expression_ggs3> (!?ioDeclarations, ?let expression)
-      initialization = .some {!expression: expression}
+      initialization = .some (!expression: expression)
       selectorAttribute = false
     end
     ioAttributeInCollectionList +=
@@ -90,7 +90,7 @@ syntax extension galgas3DeclarationsSyntax {
     or
       $=$
       <expression_ggs3> (!?ioDeclarations, ?let expression)
-      initialization = .some {!expression: expression}
+      initialization = .some (!expression: expression)
       selectorAttribute = false
     end
     let propertyWeakTypeName = makeWeakTypeLName (!propertyTypeName)
@@ -156,7 +156,7 @@ syntax extension galgas4DeclarationsSyntax {
     or
       $=$
       <expression> (!?ioDeclarations, ?let expression)
-      initialization = .some {!expression: expression}
+      initialization = .some (!expression: expression)
     end
     ioAttributeInCollectionList +=
       !mutability: mutability
@@ -193,7 +193,7 @@ syntax extension galgas4DeclarationsSyntax {
     or
       $=$
       <expression> (!?ioDeclarations, ?let expression)
-      initialization = .some {!expression: expression}
+      initialization = .some (!expression: expression)
     end
     let propertyWeakTypeName = makeWeakTypeLName (!propertyTypeName)
 //    if not [ioDeclarations.implicitTypeDeclarationSet hasKey !propertyWeakTypeName] then

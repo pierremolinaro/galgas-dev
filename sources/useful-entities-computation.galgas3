@@ -51,8 +51,8 @@ proc checkUsefulEntities (?let @usefulEntitiesGraph inUsefulEntitiesGraph,
     else
     //--- No undefined node, compute usefull entities
       let usefullEntityList = [inUsefulEntitiesGraph accessibleNodesFrom !inRootEntities !@()]
-      let usefullEntitySet = @stringset.setWithLStringList {!usefullEntityList}
-      let allEntitySet = @stringset.setWithStringList {!inUsefulEntitiesGraph.keyList}
+      let usefullEntitySet = @stringset.setWithLStringList (!usefullEntityList)
+      let allEntitySet = @stringset.setWithStringList (!inUsefulEntitiesGraph.keyList)
       let unusedEntities = allEntitySet - usefullEntitySet
       var @uselessEntityLocationMap uselessEntityLocationMap = @()
       for (unusedEntity) in unusedEntities do

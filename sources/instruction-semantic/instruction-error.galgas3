@@ -69,17 +69,17 @@ syntax extension galgas3InstructionsSyntax {
         $replace$
         let errorLocation = @location.here
         <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST expression)
-        outFixitListAST += !.fixItReplace {!exp:expression !errorLocation:errorLocation}
+        outFixitListAST += !.fixItReplace (!exp:expression, !errorLocation:errorLocation)
       while
         $insert$ ; $after$
         let errorLocation = @location.here
         <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST expression)
-        outFixitListAST += !.fixItInsertAfter {!exp:expression !errorLocation:errorLocation}
+        outFixitListAST += !.fixItInsertAfter (!exp:expression, !errorLocation:errorLocation)
       while
         $insert$ ; $before$
         let errorLocation = @location.here
         <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST expression)
-        outFixitListAST += !.fixItInsertBefore {!exp:expression !errorLocation:errorLocation}
+        outFixitListAST += !.fixItInsertBefore (!exp:expression, !errorLocation:errorLocation)
       end
     end
   }
@@ -146,17 +146,17 @@ syntax extension galgas4InstructionsSyntax {
           $%replaceBy$
           let errorLocation = @location.here
           <expression> (!?ioDeclarations, ?let @semanticExpressionAST expression)
-          outFixitListAST += !.fixItReplace {!exp:expression !errorLocation:errorLocation}
+          outFixitListAST += !.fixItReplace (!exp:expression, !errorLocation:errorLocation)
         or
           $%insertAfter$
           let errorLocation = @location.here
           <expression> (!?ioDeclarations, ?let @semanticExpressionAST expression)
-          outFixitListAST += !.fixItInsertAfter {!exp:expression !errorLocation:errorLocation}
+          outFixitListAST += !.fixItInsertAfter (!exp:expression, !errorLocation:errorLocation)
         or
           $%insertBefore$
           let errorLocation = @location.here
           <expression> (!?ioDeclarations, ?let @semanticExpressionAST expression)
-          outFixitListAST += !.fixItInsertBefore {!exp:expression !errorLocation:errorLocation}
+          outFixitListAST += !.fixItInsertBefore (!exp:expression, !errorLocation:errorLocation)
         end
       while
         $,$
@@ -309,7 +309,7 @@ proc analyzeErrorOrWarningInstruction (?let @lstring inUsefulnessCallerEntityNam
          + ", it should be an @string, @stringset, @stringlist or @lstringlist"
         )
       end
-      outFixitListForGeneration += !.fixItReplace {!exp:expression}
+      outFixitListForGeneration += !.fixItReplace (!exp:expression)
     case fixItInsertBefore (exp, errorLocation) :
       exp.analyzeSemanticExpression
         (!usefulnessCallerEntityName: inUsefulnessCallerEntityName,
@@ -328,7 +328,7 @@ proc analyzeErrorOrWarningInstruction (?let @lstring inUsefulnessCallerEntityNam
          + ", it should be an @string, @stringset, @stringlist or @lstringlist"
         )
       end
-      outFixitListForGeneration += !.fixItInsertBefore {!exp:expression}
+      outFixitListForGeneration += !.fixItInsertBefore (!exp:expression)
     case fixItInsertAfter (exp, errorLocation) :
       exp.analyzeSemanticExpression
         (!usefulnessCallerEntityName: inUsefulnessCallerEntityName,
@@ -347,7 +347,7 @@ proc analyzeErrorOrWarningInstruction (?let @lstring inUsefulnessCallerEntityNam
          + ", it should be an @string, @stringset, @stringlist or @lstringlist"
         )
       end
-      outFixitListForGeneration += !.fixItInsertAfter {!exp:expression}
+      outFixitListForGeneration += !.fixItInsertAfter (!exp:expression)
     end
   end
 //--- Check message expression type is @string

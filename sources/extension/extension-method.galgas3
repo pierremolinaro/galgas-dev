@@ -236,7 +236,7 @@ final class @extensionMethodAST : @semanticDeclarationAST {
       !inSemanticContext,
       inPredefinedTypes,
       !selfObjectCppName: selfObjectNameString,
-      !selfAvailability: .available {!type: selfType !selfMutability: .propertiesAreMutableSelfIsNot},
+      !selfAvailability: .available (!type: selfType, !selfMutability: .propertiesAreMutableSelfIsNot),
       !selfObjectCppPrefixForAccessingProperty: selfObjectPropertyAccessorString
     )
 //    var isclass = false
