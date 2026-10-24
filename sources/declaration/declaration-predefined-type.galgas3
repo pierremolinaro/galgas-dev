@@ -158,15 +158,15 @@ abstract class @predefinedTypeAST : @semanticDeclarationAST {
       ?!@unifiedTypeMap ioTypeMap,
       ?let @predefinedTypes unused inPredefinedTypes,
       ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration ) {
-   let selfType = [ioTypeMap typeMapEntryForLKey !@{!self.mPredefinedTypeName !.here}]
+   let selfType = [ioTypeMap typeMapEntryForLKey !@(!self.mPredefinedTypeName, .here)]
   //--- Useful entities graph
-    let nameForUsefulness = typeNameForUsefulEntitiesGraph (!@{!self.mPredefinedTypeName !.here})
+    let nameForUsefulness = typeNameForUsefulEntitiesGraph (!@(!self.mPredefinedTypeName, .here))
     !?ioUsefulEntitiesGraph.addNode (!nameForUsefulness, !nameForUsefulness)
     ioUsefulnessRootEntities += !nameForUsefulness
   //--- Useful entities graph for initializer without any argument
     for initializer in selfType.definition.initializerMap do
       let initializerNameForUsefulness = initializerNameForUsefulEntitiesGraph (
-        !@{!self.mPredefinedTypeName !.here}
+        !@(!self.mPredefinedTypeName, .here)
         !initializer.mArgumentTypeList.initializerSignature
       )
       !?ioUsefulEntitiesGraph.addNode (!initializerNameForUsefulness, !initializerNameForUsefulness)
@@ -371,7 +371,7 @@ private proc appendStructASTForRangeType (?!@semanticDeclarationListAST ioDeclar
 private proc insertInUsefulnessEntities
          (?!@lstringlist ioUsefulnessRootEntities,
          ?let @string inTypeName ) {
-  let typeUsefulnessName = typeNameForUsefulEntitiesGraph (!@{!inTypeName !.nowhere})
+  let typeUsefulnessName = typeNameForUsefulEntitiesGraph (!@(!inTypeName, .nowhere))
   ioUsefulnessRootEntities += !typeUsefulnessName
 }
 
@@ -384,14 +384,14 @@ private proc insertPredefinedType
 //--- Declare type
   ioDeclarationListASTs += !inPredefinedTypeAST
   let typeUsefulnessName = typeNameForUsefulEntitiesGraph (
-    !@{!inPredefinedTypeAST.mPredefinedTypeName !.nowhere}
+    !@(!inPredefinedTypeAST.mPredefinedTypeName, .nowhere)
   )
 //--- Mark it as usefull
   ioUsefulnessRootEntities += !typeUsefulnessName
 //--- Mark its initializers as usefull
   for initializer in inPredefinedTypeAST.initializers do
     let initializerNameForUsefulness = initializerNameForUsefulEntitiesGraph (
-      !@{!inPredefinedTypeAST.mPredefinedTypeName !.nowhere}
+      !@(!inPredefinedTypeAST.mPredefinedTypeName, .nowhere)
       !initializer.initializerSignature
     )
     ioUsefulnessRootEntities += !initializerNameForUsefulness

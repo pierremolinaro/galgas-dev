@@ -206,7 +206,7 @@ map @syntaxComponentMap {
 //--------------------------------------------------------------------------------------------------
 
 struct @semanticContext {
-  public var @routineMap routineMap = @{}
+  public var @routineMap routineMap = @()
   public var @functionMap mFunctionMap = @()
   public var @filewrapperMap mFilewrapperMap = @()
   public var @grammarMap grammarMap = @()
@@ -815,7 +815,7 @@ override proc @galgas3GrammarComponentAST.enterDeclarationInGraph
   let key = @lstring (!"grammar " + self.mGrammarComponentName, self.mGrammarComponentName.location)
   !?ioSemanticTypePrecedenceGraph.addNode (!key, !self)
   for (s) in self.mSyntaxComponents do
-    !?ioSemanticTypePrecedenceGraph.addEdge (!from: key, !to: @{!"syntax " + s !s.location})
+    !?ioSemanticTypePrecedenceGraph.addEdge (!from: key, !to: @(!"syntax " + s, s.location))
   end
 }
 
@@ -831,12 +831,12 @@ override proc @galgas3SyntaxComponentAST.enterDeclarationInGraph
   ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList ) {
   let key = @lstring (!"syntax " + self.mSyntaxComponentName, self.mSyntaxComponentName.location)
   !?ioSemanticTypePrecedenceGraph.addNode (!key, !self)
-  !?ioSemanticTypePrecedenceGraph.addEdge (!from: key, !to: @{!"lexique " + self.mLexiqueName !self.mLexiqueName.location})
+  !?ioSemanticTypePrecedenceGraph.addEdge (!from: key, !to: @(!"lexique " + self.mLexiqueName, self.mLexiqueName.location))
   for (* mLabelList) in self.mRuleList do
     for (* mFormalArguments * * *) in mLabelList do
       for (* mFormalArgumentPassingMode mFormalArgumentTypeName * *) in mFormalArguments do
         switch mFormalArgumentPassingMode
-          case argumentVarIn : !?ioSemanticTypePrecedenceGraph.addEdge (!from: key, !to: @{!"@" + mFormalArgumentTypeName !mFormalArgumentTypeName.location})
+          case argumentVarIn : !?ioSemanticTypePrecedenceGraph.addEdge (!from: key, !to: @(!"@" + mFormalArgumentTypeName, mFormalArgumentTypeName.location))
           case argumentOut, argumentInOut, argumentConstantIn :
         end
       end

@@ -210,7 +210,7 @@ final class @structDeclarationAST : @semanticDeclarationAST {
     if initializerMap.count == 0 then
       features |= .generateSynthetizedInitializer
       !?initializerMap.insertKey
-        (!@{!constructorPropertyTypeList.initializerSignature !self.structTypeName},
+        (!@(!constructorPropertyTypeList.initializerSignature, self.structTypeName),
         !constructorPropertyTypeList
       )
     end

@@ -824,30 +824,30 @@ override proc @galgas3GrammarComponentAST.semanticAnalysis
 //--------------------------------------------------------------------------------------------------
 
 func buildPredefinedTypes (?let @unifiedTypeMap inTypeMap) -> @predefinedTypes {
-  result = @{
-    ![inTypeMap typeMapEntryForLKey !@{!"location"   !.here}]
-    ![inTypeMap typeMapEntryForLKey !@{!"bool"       !.here}]
-    ![inTypeMap typeMapEntryForLKey !@{!"char"       !.here}]
-    ![inTypeMap typeMapEntryForLKey !@{!"string"     !.here}]
-    ![inTypeMap typeMapEntryForLKey !@{!"uint"       !.here}]
-    ![inTypeMap typeMapEntryForLKey !@{!"sint"       !.here}]
-    ![inTypeMap typeMapEntryForLKey !@{!"uint64"     !.here}]
-    ![inTypeMap typeMapEntryForLKey !@{!"sint64"     !.here}]
-    ![inTypeMap typeMapEntryForLKey !@{!"double"     !.here}]
-    ![inTypeMap typeMapEntryForLKey !@{!"lbool"      !.here}]
-    ![inTypeMap typeMapEntryForLKey !@{!"lchar"      !.here}]
-    ![inTypeMap typeMapEntryForLKey !@{!"lstring"    !.here}]
-    ![inTypeMap typeMapEntryForLKey !@{!"luint"      !.here}]
-    ![inTypeMap typeMapEntryForLKey !@{!"lsint"      !.here}]
-    ![inTypeMap typeMapEntryForLKey !@{!"luint64"    !.here}]
-    ![inTypeMap typeMapEntryForLKey !@{!"lsint64"    !.here}]
-    ![inTypeMap typeMapEntryForLKey !@{!"ldouble"    !.here}]
-    ![inTypeMap typeMapEntryForLKey !@{!"stringlist" !.here}]
-    ![inTypeMap typeMapEntryForLKey !@{!"lbigint"    !.here}]
-    ![inTypeMap typeMapEntryForLKey !@{!"bigint"     !.here}]
-    ![inTypeMap typeMapEntryForLKey !@{!"stringset"  !.here}]
-    ![inTypeMap typeMapEntryForLKey !@{!"lstringlist"!.here}]
-  }
+  result = @(
+    ![inTypeMap typeMapEntryForLKey !@(!"location", .here)],
+    [inTypeMap typeMapEntryForLKey !@(!"bool", .here)],
+    [inTypeMap typeMapEntryForLKey !@(!"char", .here)],
+    [inTypeMap typeMapEntryForLKey !@(!"string", .here)],
+    [inTypeMap typeMapEntryForLKey !@(!"uint", .here)],
+    [inTypeMap typeMapEntryForLKey !@(!"sint", .here)],
+    [inTypeMap typeMapEntryForLKey !@(!"uint64", .here)],
+    [inTypeMap typeMapEntryForLKey !@(!"sint64", .here)],
+    [inTypeMap typeMapEntryForLKey !@(!"double", .here)],
+    [inTypeMap typeMapEntryForLKey !@(!"lbool", .here)],
+    [inTypeMap typeMapEntryForLKey !@(!"lchar", .here)],
+    [inTypeMap typeMapEntryForLKey !@(!"lstring", .here)],
+    [inTypeMap typeMapEntryForLKey !@(!"luint", .here)],
+    [inTypeMap typeMapEntryForLKey !@(!"lsint", .here)],
+    [inTypeMap typeMapEntryForLKey !@(!"luint64", .here)],
+    [inTypeMap typeMapEntryForLKey !@(!"lsint64", .here)],
+    [inTypeMap typeMapEntryForLKey !@(!"ldouble", .here)],
+    [inTypeMap typeMapEntryForLKey !@(!"stringlist", .here)],
+    [inTypeMap typeMapEntryForLKey !@(!"lbigint", .here)],
+    [inTypeMap typeMapEntryForLKey !@(!"bigint", .here)],
+    [inTypeMap typeMapEntryForLKey !@(!"stringset", .here)],
+    [inTypeMap typeMapEntryForLKey !@(!"lstringlist", .here)]
+  )
 }
 
 //--------------------------------------------------------------------------------------------------

@@ -239,13 +239,13 @@ list @propertyInCollectionListAST {
       case none :
       case some (expressionAST) :
         var variableMap = @localVarManager ()
-        let @analysisContext analysisContext = @{
-          !inSemanticContext
-          !inPredefinedTypes
-          !selfObjectCppName: ""
-          !selfAvailability: .none
+        let @analysisContext analysisContext = @(
+          !inSemanticContext,
+          inPredefinedTypes,
+          !selfObjectCppName: "",
+          !selfAvailability: .none,
           !selfObjectCppPrefixForAccessingProperty: ""
-        }
+        )
         let propertyType = [ioTypeMap typeMapEntryForLKey !propertyTypeName]
         expressionAST.analyzeSemanticExpression
           (!usefulnessCallerEntityName: inTypeNameForUsefulness,

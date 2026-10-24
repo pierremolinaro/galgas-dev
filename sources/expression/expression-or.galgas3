@@ -374,7 +374,7 @@ override proc @closedSliceExpressionAST.analyzeSemanticExpression
   end
 //--- Generate expression
   outExpression = @closedSliceExpressionForGeneration (
-    ![ioTypeMap typeMapEntryForLKey !@{!"range" !leftExpression.mLocation}],
+    ![ioTypeMap typeMapEntryForLKey !@(!"range", leftExpression.mLocation)],
     self.mOperatorLocation,
     leftExpression,
     rightExpression
@@ -435,7 +435,7 @@ override proc @openedSliceExpressionAST.analyzeSemanticExpression
   )
 //--- Generate expression
   outExpression = @openedSliceExpressionForGeneration (
-    ![ioTypeMap typeMapEntryForLKey !@{!"range" !leftExpression.mLocation}],
+    ![ioTypeMap typeMapEntryForLKey !@(!"range", leftExpression.mLocation)],
     self.mOperatorLocation,
     leftExpression,
     rightExpression

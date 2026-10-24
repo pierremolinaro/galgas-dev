@@ -181,7 +181,7 @@ override proc @boolsetDeclarationAST.enterDeclarationInSemanticContext
   var @initializerMap initializerMap = @()
   let @functionSignature emptyArgumentList = @()
   !?initializerMap.insertKey
-    (!@{!emptyArgumentList.initializerSignature !self.mBoolsetTypeName},
+    (!@(!emptyArgumentList.initializerSignature, self.mBoolsetTypeName),
     !emptyArgumentList
   )
 //--- Add extensions

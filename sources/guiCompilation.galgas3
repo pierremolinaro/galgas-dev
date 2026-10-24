@@ -430,7 +430,7 @@ private proc guiComponentSemanticAnalysis (?let @galgasGUIComponentListAST.@elem
     error (inGUIComponentAST.mGUIComponentName : "the gui name should be 'cocoa'")
   end
 //---
-  var @guiAnalysisContext context = @{}
+  var @guiAnalysisContext context = @()
   context.mProjectIndexingDescriptorList = inGUIComponentAST.mProjectIndexingDescriptorList
 //--- Check imported options components
   for (mValue) in inGUIComponentAST.mImportedOptionList do

@@ -86,7 +86,7 @@ grammar galgas3Grammar
     error (inSourceFile : s)
   else
     let projectFilePath = parentDirectory + "/" + [candidateProjectFiles mValueAtIndex !0]
-    parseAndAnalyzeProject (!@{!projectFilePath !inSourceFile.location}, !inSourceFile.string)
+    parseAndAnalyzeProject (!@(!projectFilePath, inSourceFile.location), !inSourceFile.string)
   end
 }
 
@@ -112,7 +112,7 @@ grammar galgas4Grammar ?sourceFilePath: @lstring inSourceFile {
     error (inSourceFile : s)
   else
     let projectFilePath = parentDirectory + "/" + [candidateProjectFiles mValueAtIndex !0]
-    parseAndAnalyzeProject (!@{!projectFilePath !inSourceFile.location}, !inSourceFile.string)
+    parseAndAnalyzeProject (!@(!projectFilePath, inSourceFile.location), !inSourceFile.string)
   end
 }
 

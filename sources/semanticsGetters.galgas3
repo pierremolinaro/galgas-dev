@@ -74,7 +74,7 @@ proc enterInheritedGetterWithoutArgument (?!@getterMap ioGetterMap,
   )
   if inObsoleteGetterName != "" then
     !?ioGetterMap.insertOrReplace
-      (!@{!inObsoleteGetterName !.here},
+      (!@(!inObsoleteGetterName, .here),
       !@methodKind.definedAsMember,
       !@functionSignature (),
       !@location.here,
@@ -129,7 +129,7 @@ proc enterBaseGetterWithArgument
   !?ioUnifiedTypeMap.makeEntryFromString (!inArgument1TypeName, ?let t)
   argList += !"".nowhere !t !inArgument1Name !true
   !?ioGetterMap.insertOrReplace
-    (!@{!inGetterName !.here},
+    (!@(!inGetterName, .here),
     !.definedAsMember,
     !argList,
     !.here,
@@ -191,7 +191,7 @@ proc enterBaseGetterWith2Arguments
   !?ioUnifiedTypeMap.makeEntryFromString (!inArgument2TypeName, ?t)
   argList += !"".nowhere !t !inArgument2Name !true
   !?ioGetterMap.insertOrReplace
-    (!@{!inGetterName !.here},
+    (!@(!inGetterName, .here),
     !.definedAsMember,
     !argList,
     !@location.here,

@@ -261,7 +261,7 @@ override proc @dictDeclarationAST.enterDeclarationInSemanticContext
   end
 //--- Handle insert mutating proc
   !?setterMap.insertOrReplace
-    (!@{!"insert" !self.mDictTypeName.location},
+    (!@(!"insert", self.mDictTypeName.location),
     !@methodKind.definedAsMember,
     !insertSetterFormalArgumentList,
     !true,
@@ -270,7 +270,7 @@ override proc @dictDeclarationAST.enterDeclarationInSemanticContext
   )
 //--- Handle remove mutating proc
   !?setterMap.insertOrReplace
-    (!@{!"removeKey" !self.mDictTypeName.location},
+    (!@(!"removeKey", self.mDictTypeName.location),
     !@methodKind.definedAsMember,
     !removeMethodFormalArgumentList,
     !true,
@@ -279,7 +279,7 @@ override proc @dictDeclarationAST.enterDeclarationInSemanticContext
   )
 //--- Handle search methods (methods if no state, setters if states)
   !?instanceMethodMap.insertKey
-    (!@{!"searchKey" !self.mDictTypeName},
+    (!@(!"searchKey", self.mDictTypeName),
     !@methodKind.definedAsMember,
     !removeMethodFormalArgumentList,
     !self.mDictTypeName.location,
@@ -328,7 +328,7 @@ override proc @dictDeclarationAST.enterDeclarationInSemanticContext
   var @initializerMap initializerMap = @()
   let @functionSignature emptyArgumentList = @()
   !?initializerMap.insertKey
-    (!@{!emptyArgumentList.initializerSignature !self.mDictTypeName},
+    (!@(!emptyArgumentList.initializerSignature, self.mDictTypeName),
     !emptyArgumentList
   )
 //--- Add extensions

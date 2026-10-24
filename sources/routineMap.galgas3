@@ -34,7 +34,7 @@ func routineMangledName (?let @lstring inRoutineName,
     end
     str += parameter.mFormalSelector
   end
-  result = @{!str !inRoutineName.location}
+  result = @(!str, inRoutineName.location)
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -79,7 +79,7 @@ struct @routineMap {
       error (inRoutineName : "duplicated declaration of the " + inRoutineName + routineArguments + " routine")
     else
      !?routineArgumentMap.insertKey
-       (!@{!routineArguments !inRoutineName.location},
+       (!@(!routineArguments, inRoutineName.location),
        !inRoutineSignature,
        !inIsFilePrivate
      )

@@ -57,7 +57,7 @@ syntax extension galgas3DeclarationsSyntax {
     select
       $identifier$ (?resultVariableName)
     or
-      resultVariableName = @{!"result" !.here}
+      resultVariableName = @(!"result", .here)
     end
     ${$
     <semantic_instruction_list_ggs3> (!?ioDeclarations, ?let routineInstructionList)
@@ -96,7 +96,7 @@ syntax extension galgas3DeclarationsSyntax {
     select
       $identifier$ (?resultVariableName)
     or
-      resultVariableName = @{!"result" !.here}
+      resultVariableName = @(!"result", .here)
     end
     ${$
     <semantic_instruction_list_ggs3> (!?ioDeclarations, ?let @semanticInstructionListAST routineInstructionList)
@@ -143,7 +143,7 @@ syntax extension galgas4DeclarationsSyntax {
     select
       $identifier$ (?resultVariableName)
     or
-      resultVariableName = @{!"result" !.here}
+      resultVariableName = @(!"result", .here)
     end
     ${$
     <semantic_instruction_list> (!?ioDeclarations, ?let @semanticInstructionListAST routineInstructionList)
@@ -175,7 +175,7 @@ syntax extension galgas4DeclarationsSyntax {
     select
       $identifier$ (?resultVariableName)
     or
-      resultVariableName = @{!"result" !.here}
+      resultVariableName = @(!"result", .here)
     end
     ${$
     <semantic_instruction_list> (!?ioDeclarations, ?let @semanticInstructionListAST routineInstructionList)

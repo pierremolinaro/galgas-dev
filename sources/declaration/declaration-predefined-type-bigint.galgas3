@@ -58,7 +58,7 @@ final class @bigintPredefinedTypeAST : @predefinedTypeAST {
     argList += !"quotient".nowhere !bigIntType !.argumentOut !"outQuotient"
     argList += !"remainder".nowhere !bigIntType !.argumentOut !"outRemainder"
     !?outInstanceMethodMap.insertKey
-      (!@{!"divideBy" !.here},
+      (!@(!"divideBy", .here),
       !.definedAsMember,
       !argList,
       !.here,

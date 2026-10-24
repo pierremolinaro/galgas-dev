@@ -652,7 +652,7 @@ final class @mapDeclarationAST : @semanticDeclarationAST {
     var @initializerMap initializerMap = @()
     let @functionSignature emptyArgumentList = @()
     !?initializerMap.insertKey
-      (!@{!emptyArgumentList.initializerSignature !self.mMapTypeName},
+      (!@(!emptyArgumentList.initializerSignature, self.mMapTypeName),
       !emptyArgumentList
     )
   //--- Features

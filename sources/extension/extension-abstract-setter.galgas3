@@ -79,7 +79,7 @@ final class @abstractExtensionSetterAST : @semanticDeclarationAST {
     ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList) {
     let key = @lstring (!"extension mutating proc @" + self.mTypeName + " " + self.mAbstractExtensionSetterName, self.mAbstractExtensionSetterName.location)
     !?ioSemanticTypePrecedenceGraph.addNode (!key, !self)
-    !?ioSemanticTypePrecedenceGraph.addEdge (!from: key, !to: @{!"@" + self.mTypeName !self.mTypeName.location})
+    !?ioSemanticTypePrecedenceGraph.addEdge (!from: key, !to: @(!"@" + self.mTypeName, self.mTypeName.location))
   //---
     if not [ioExtensionSetterMapForBuildingContext hasKey !self.mTypeName.string] then
       !?ioExtensionSetterMapForBuildingContext.insertKey

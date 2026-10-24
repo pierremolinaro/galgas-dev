@@ -215,7 +215,7 @@ final class @arrayTypeDeclarationAST : @semanticDeclarationAST {
     var @initializerMap initializerMap = @()
     let @functionSignature emptyArgumentList = @()
     !?initializerMap.insertKey
-      (!@{!emptyArgumentList.initializerSignature !self.arrayTypeName},
+      (!@(!emptyArgumentList.initializerSignature, self.arrayTypeName),
       !emptyArgumentList
     )
   //--- Read subscripts

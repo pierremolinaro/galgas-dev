@@ -293,7 +293,7 @@ final class @sortedListDeclarationAST : @semanticDeclarationAST {
     var @initializerMap initializerMap = @()
     let @functionSignature emptyArgumentList = @()
     !?initializerMap.insertKey
-      (!@{!emptyArgumentList.initializerSignature !self.mSortedListTypeName},
+      (!@(!emptyArgumentList.initializerSignature, self.mSortedListTypeName),
       !emptyArgumentList
     )
   //--- Add extensions

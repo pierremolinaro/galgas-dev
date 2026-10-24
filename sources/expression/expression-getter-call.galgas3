@@ -153,7 +153,7 @@ final class @getterCallExpressionAST : @semanticExpressionAST {
         let @stringlist fieldList = @()
         var obsoletedByGetter = ""
         for (propertyTypeEntry propertyName 3*) in receiverType.definition.currentTypedPropertyList do
-          let propertyType = [ioTypeMap typeMapEntryForLKey !@{!propertyTypeEntry.definition.typeName.string !.here}]
+          let propertyType = [ioTypeMap typeMapEntryForLKey !@(!propertyTypeEntry.definition.typeName.string, .here)]
           let aMap = propertyType.definition.getterMap
           if let entry = aMap @[self.mGetterName.string] then
             if propertyType.definition.typeName.string == propertyName.string then

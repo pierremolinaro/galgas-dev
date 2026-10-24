@@ -178,7 +178,7 @@ override proc @extensionSetterAST.enterDeclarationInGraph (
     self.mExtensionSetterName.location
   )
   !?ioSemanticTypePrecedenceGraph.addNode (!key, !self)
-  !?ioSemanticTypePrecedenceGraph.addEdge (!from: key, !to: @{!"@" + self.mTypeName !self.mTypeName.location})
+  !?ioSemanticTypePrecedenceGraph.addEdge (!from: key, !to: @(!"@" + self.mTypeName, self.mTypeName.location))
 //---
   if not [ioExtensionSetterMapForBuildingContext hasKey !self.mTypeName.string] then
     !?ioExtensionSetterMapForBuildingContext.insertKey

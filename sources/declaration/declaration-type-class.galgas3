@@ -217,7 +217,7 @@ final class @classDeclarationAST : @semanticDeclarationAST {
     if self.mSuperClassName.string != "" then
       !?ioSemanticTypePrecedenceGraph.addEdge
         (!from: key,
-        !to: @{!"@" + self.mSuperClassName !self.mSuperClassName.location}
+        !to: @(!"@" + self.mSuperClassName, self.mSuperClassName.location)
       )
     end
   //--- Add edge from property types, note type if optional type
@@ -373,7 +373,7 @@ final class @classDeclarationAST : @semanticDeclarationAST {
         !"inObject"
         !true
       !?initializerMap.insertKey
-        (!@{!cloneInitializerArgumentList.initializerSignature !self.mClassTypeName},
+        (!@(!cloneInitializerArgumentList.initializerSignature, self.mClassTypeName),
         !cloneInitializerArgumentList
       )
     end
@@ -397,7 +397,7 @@ final class @classDeclarationAST : @semanticDeclarationAST {
     if initializerMap.count == if self.clonable then 1 else 0 end then
       features |= .generateSynthetizedInitializer
       !?initializerMap.insertKey
-        (!@{!synthetizedInitializerArgumentList.initializerSignature !self.mClassTypeName},
+        (!@(!synthetizedInitializerArgumentList.initializerSignature, self.mClassTypeName),
         !synthetizedInitializerArgumentList
       )
     end
@@ -701,7 +701,7 @@ final class @classTypeForGeneration : @semanticTypeForGeneration {
     self.mSelfTypeEntry.addHeaderFileName (!?ioInclusionSet)
     let selfTypeDefinition = self.mSelfTypeEntry.definition
     let at = [self.mAllTypedAttributeList subListWithRange
-      !@{!0 !self.mAllTypedAttributeList.count - self.mCurrentTypedAttributeList.count}
+      !@(!0, self.mAllTypedAttributeList.count - self.mCurrentTypedAttributeList.count)
     ]
       outImplementation = [filewrapper classGenerationTemplate.referenceClassTypeSpecificImplementation
         !selfTypeDefinition.typeName.string

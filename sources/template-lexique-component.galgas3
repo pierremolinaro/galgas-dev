@@ -310,20 +310,20 @@ override proc @templateLexiqueComponentAST.semanticAnalysis
 //-------------------------------------- Unicode test functions
   lexicalUnicodeTestFunctionAnalysis (?let unicodeTestFunctions)
 //--------------------------------------
-  var @lexiqueAnalysisContext lexiqueAnalysisContext = @{
-    !self.mLexiqueComponentName.string
-    !lexicalRoutineMap
-    !lexicalFunctionMap
-    !@lexicalMessageMap ()
-    !@terminalMap ()
-    !@terminalList ()
-    !@lexicalAttributeMap ()
-    !@lexicalExplicitTokenListMapMap ()
-    !@()
-    !@templateDelimitorList ()
-    !@styleMap ()
-    !unicodeTestFunctions
-  }
+  var @lexiqueAnalysisContext lexiqueAnalysisContext = @(
+    !self.mLexiqueComponentName.string,
+    lexicalRoutineMap,
+    lexicalFunctionMap,
+    @lexicalMessageMap (),
+    @terminalMap (),
+    @terminalList (),
+    @lexicalAttributeMap (),
+    @lexicalExplicitTokenListMapMap (),
+    @(),
+    @templateDelimitorList (),
+    @styleMap (),
+    unicodeTestFunctions
+  )
 //-------------------------------------- Build style map
   var styleIndex = 1
   for (mName mComment) in lexicalStyleListAST do

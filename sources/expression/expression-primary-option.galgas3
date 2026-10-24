@@ -55,7 +55,7 @@ syntax extension galgas3ExpressionSyntax {
     $.$
     $identifier$ (?let optionName)
     $identifier$ (?let getterName)
-    outExpression = @optionExpressionAST (!@{!"galgas_builtin_options" !.here}, optionName, getterName)
+    outExpression = @optionExpressionAST (!@(!"galgas_builtin_options", .here), optionName, getterName)
     $]$
   }
 
@@ -90,7 +90,7 @@ syntax extension galgas4ExpressionSyntax {
     $identifier$ (?let optionName)
     $.$
     $identifier$ (?let getterName)
-    outExpression = @optionExpressionAST (!@{!"galgas_builtin_options" !.here}, optionName, getterName)
+    outExpression = @optionExpressionAST (!@(!"galgas_builtin_options", .here), optionName, getterName)
     $]$
   }
 

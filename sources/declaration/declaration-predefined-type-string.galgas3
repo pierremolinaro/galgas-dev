@@ -237,7 +237,7 @@ final class @stringPredefinedTypeAST : @predefinedTypeAST {
     argList += !"".nowhere !stringType !@formalArgumentPassingModeAST. argumentConstantIn !"inFileName"
     argList += !"".nowhere !stringType !@formalArgumentPassingModeAST. argumentConstantIn !"inContents"
     !?outClassMethodMap.insertOrReplace
-      (!@{!"generateFile" !.here},
+      (!@(!"generateFile", .here),
       !argList,
       !true
     )
@@ -325,7 +325,7 @@ final class @stringPredefinedTypeAST : @predefinedTypeAST {
       !"" // No error message
     )
     !?outInstanceMethodMap.insertKey
-      (!@{!"writeToExecutableFileWhenDifferentContents" !.here},
+      (!@(!"writeToExecutableFileWhenDifferentContents", .here),
       !@methodKind.definedAsMember,
       !argList,
       !@location.here,

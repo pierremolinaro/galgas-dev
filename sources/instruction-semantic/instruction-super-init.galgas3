@@ -120,7 +120,7 @@ final class @superInitInstructionAST : @semanticInstructionAST {
         for superProperty in superTypeDefinition.allTypedPropertyList do
           if superProperty.initialization == .none then
             !?ioVariableMap.searchForWriteAccess
-              (!@{!"self." + superProperty.name !self.mInstructionLocation},
+              (!@(!"self." + superProperty.name, self.mInstructionLocation),
               ?3*
             )
           end

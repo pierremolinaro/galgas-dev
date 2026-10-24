@@ -352,7 +352,7 @@ override proc @listDeclarationAST.enterDeclarationInSemanticContext
   var @initializerMap initializerMap = @()
   let @functionSignature emptyArgumentList = @()
   !?initializerMap.insertKey
-    (!@{!emptyArgumentList.initializerSignature !self.mListTypeName},
+    (!@(!emptyArgumentList.initializerSignature, self.mListTypeName),
     !emptyArgumentList
   )
 //--- Add extensions

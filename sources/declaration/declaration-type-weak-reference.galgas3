@@ -50,7 +50,7 @@ override proc @weakReferenceDeclarationAST.enterDeclarationInGraph
   if self.mSuperWeakReferenceTypeName.string != "" then
     !?ioSemanticTypePrecedenceGraph.addEdge
       (!from: key,
-      !to: @{!"@" + self.mSuperWeakReferenceTypeName !self.mSuperWeakReferenceTypeName.location}
+      !to: @(!"@" + self.mSuperWeakReferenceTypeName, self.mSuperWeakReferenceTypeName.location)
     )
   end
 }

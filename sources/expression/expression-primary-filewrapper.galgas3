@@ -64,7 +64,7 @@ syntax extension galgas3ExpressionSyntax {
           filePath
         )
       or
-        $identifier$ (?let @lstring filewrapperTemplateName)
+        $identifier$ (?let @lstring filewrapperTemplateName) // §§
         <output_expression_list_ggs3> (!?ioDeclarations, ?let @actualOutputArgumentList expressionList)
         outExpression = @filewrapperTemplateInExpressionAST (
           !filewrapperName,
