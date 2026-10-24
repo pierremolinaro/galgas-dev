@@ -72,7 +72,7 @@ enum @typeKindEnum %equatable {
 
   //----------------------------------------------------------------------------------------------
 
-  func string -> @string {
+  func string () -> @string {
     switch self
       case classType : result = "class"
       case enumType (*) : result = "enumeration"
@@ -143,8 +143,8 @@ boolset @typeFeatures {
 
   //----------------------------------------------------------------------------------------------
 
-  func generateCppObjectComparison -> @bool {
-    result = [self contains ! .equatable | .referenceEquatable | .comparable]
+  func generateCppObjectComparison () -> @bool {
+    result = self.contains (.equatable | .referenceEquatable | .comparable)
   }
 
   //----------------------------------------------------------------------------------------------
@@ -158,8 +158,8 @@ boolset @typeFeatures {
 map @subscriptMap {
   public let @functionSignature argumentTypeList
   public let @unifiedTypeMapEntry valueType
-  insert insertKey error message "the '%K' subscript has been already defined"
-  search searchKey error message "the '%K' subscript is not declared"
+  %insertSetter insertKey %errorMessage "the '%K' subscript has been already defined"
+  %searchMethod searchKey %errorMessage "the '%K' subscript is not declared"
 }
 
 //--------------------------------------------------------------------------------------------------

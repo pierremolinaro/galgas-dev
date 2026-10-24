@@ -163,7 +163,7 @@ override proc @falseExpressionForGeneration generateExpression
 //
 //--------------------------------------------------------------------------------------------------
 
-func @semanticExpressionForGeneration isTrueExpression -> @bool {
+func @semanticExpressionForGeneration.isTrueExpression -> @bool {
   result = false
 }
 

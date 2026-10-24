@@ -50,7 +50,7 @@ func syntaxSignatureOfInstructionList (
 //
 //--------------------------------------------------------------------------------------------------
 
-func @semanticInstructionForGeneration compareInstructionSyntaxSignature
+func @semanticInstructionForGeneration.compareInstructionSyntaxSignature
   (?let @semanticInstructionForGeneration unused inTestedInstruction)
   ->@bool
 {

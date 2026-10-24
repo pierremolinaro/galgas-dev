@@ -22,7 +22,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //--------------------------------------------------------------------------------------------------
 
-func @location sourceFile -> @string {
+func @location.sourceFile -> @string {
   if self.isNowhere then
     result = "SOURCE_FILE (\"\", 0)"
   else
@@ -32,7 +32,7 @@ func @location sourceFile -> @string {
 
 //--------------------------------------------------------------------------------------------------
 
-func @location commaSourceFile -> @string {
+func @location.commaSourceFile -> @string {
   result = " COMMA_" + self.sourceFile
 }
 

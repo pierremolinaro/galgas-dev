@@ -26,11 +26,12 @@ syntax extension galgas3DeclarationsSyntax {
   rule <declaration_ggs3> (?!@galgasDeclarationAST ioDeclarations) {
     $func$
     $@type$ ?var typeName indexing typeReferenceExtensionGetter
+    $.$
     repeat
     while
-      $.$
       $@type$ ?let t
       typeName = makeEmbeddedTypeLName (!outer: typeName !inner: t)
+      $.$
     end
     $identifier$ ?let @lstring getterName indexing extensionGetterDefinition
     let @formalInputParameterListAST formalInputParameterList

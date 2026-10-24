@@ -215,7 +215,7 @@ abstract class @semanticDeclarationForGeneration {
 
 //--------------------------------------------------------------------------------------------------
 
-func @semanticDeclarationForGeneration appendPrimitiveTypeDeclaration -> @string {
+func @semanticDeclarationForGeneration.appendPrimitiveTypeDeclaration -> @string {
   result = ""
 }
 
@@ -477,7 +477,7 @@ proc @semanticDeclarationForGeneration appendDeclaration2
 
 //--------------------------------------------------------------------------------------------------
 
-func @semanticDeclarationForGeneration appendTypeGenericImplementation ->@string outImplementation {
+func @semanticDeclarationForGeneration.appendTypeGenericImplementation ->@string outImplementation {
   outImplementation = ""
 }
 

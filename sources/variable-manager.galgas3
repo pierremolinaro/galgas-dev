@@ -129,8 +129,8 @@ setter @localVarManager insertInputFormalArgument (?let @lstring inVarName,
                                                   ?let @unifiedTypeMapEntry inType,
                                                   ?let @string inCppName,
                                                   ?let @string inNameForCheckingFormalParameterUsing ) {
-  !?self.mCurrentManager.insertKey
-    (!inVarName,
+  !?self.mCurrentManager.insertKey (
+    !inVarName,
     !inType,
     !inCppName,
     !inNameForCheckingFormalParameterUsing,
