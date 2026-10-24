@@ -23,7 +23,7 @@ syntax extension galgas3SyntaxComponentSyntax {
 
   rule <syntax_instruction_ggs3> (?!@galgasDeclarationAST ioDeclarations,
                                  !@syntaxInstructionAST outInstruction ) {
-    $<non_terminal>$ ?let @lstring mNonterminalName indexing ruleReference
+    $<non_terminal>$ ?let @lstring mNonterminalName indexing (ruleReference)
     <actual_parameter_list_ggs3> (!?ioDeclarations, ?let @actualParameterListAST mActualParameterList)
   //--- Get syntax directed translation result string
     let @abstractGrammarInstructionSyntaxDirectedTranslationResult grammarInstructionSyntaxDirectedTranslationResult
@@ -53,7 +53,7 @@ syntax extension galgas4SyntaxComponentSyntax {
 
   rule <syntax_instruction> (?!@galgasDeclarationAST ioDeclarations,
                             !@syntaxInstructionAST outInstruction ) {
-    $<non_terminal>$ ?let @lstring mNonterminalName indexing ruleReference
+    $<non_terminal>$ ?let @lstring mNonterminalName indexing (ruleReference)
     <actual_parameter_list_with_parenthesis> (!?ioDeclarations, ?let @actualParameterListAST mActualParameterList)
   //--- Get syntax directed translation result string
     let @abstractGrammarInstructionSyntaxDirectedTranslationResult grammarInstructionSyntaxDirectedTranslationResult

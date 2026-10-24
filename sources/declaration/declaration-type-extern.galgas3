@@ -25,7 +25,7 @@ syntax extension galgas3DeclarationsSyntax {
 
   rule <declaration_ggs3> (?!@galgasDeclarationAST ioDeclarations) {
     $extern$
-    $@type$ ?let @lstring externTypeName indexing externTypeDefinition
+    $@type$ ?let @lstring externTypeName indexing (externTypeDefinition)
     <externtype_cpp_predeclaration> (?let cppPredeclarationCode)
     <externtype_cpp_classdeclaration> (?let cppClassCode)
     ${$
@@ -163,7 +163,7 @@ syntax extension galgas4DeclarationsSyntax {
 
   rule <declaration> (?!@galgasDeclarationAST ioDeclarations ) {
     $extern$
-    $@type$ ?let @lstring externTypeName indexing externTypeDefinition
+    $@type$ ?let @lstring externTypeName indexing (externTypeDefinition)
     <externtype_cpp_predeclaration> (?let cppPredeclarationCode)
     <externtype_cpp_classdeclaration> (?let cppClassCode)
     ${$

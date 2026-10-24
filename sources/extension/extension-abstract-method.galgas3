@@ -26,14 +26,14 @@ syntax extension galgas3DeclarationsSyntax {
   rule <declaration_ggs3> (?!@galgasDeclarationAST ioDeclarations) {
     $abstract$
     $proc$
-    $@type$ ?var typeName indexing typeReferenceAbstractExtensionMethod
+    $@type$ ?var typeName indexing (typeReferenceAbstractExtensionMethod)
     repeat
     while
       $.$
       $@type$ ?let t
       typeName = makeEmbeddedTypeLName (!outer: typeName !inner: t)
     end
-    $identifier$ ?let @lstring methodName indexing abstractExtensionMethodDefinition
+    $identifier$ ?let @lstring methodName indexing (abstractExtensionMethodDefinition)
     <formal_parameter_list_ggs34> (!?ioDeclarations, ?let formalParameterList)
     ioDeclarations.mDeclarationList += !@abstractExtensionMethodAST {
       !isPredefined: false // Is not predefined
@@ -55,7 +55,7 @@ syntax extension galgas3DeclarationsSyntax {
       typeName = makeEmbeddedTypeLName (!outer: typeName !inner: t)
       $.$
     end
-    $identifier$ ?let @lstring methodName indexing abstractExtensionMethodDefinition
+    $identifier$ ?let @lstring methodName indexing (abstractExtensionMethodDefinition)
     <formal_parameter_list_ggs34> (!?ioDeclarations, ?let formalParameterList)
     ioDeclarations.mDeclarationList += !@abstractExtensionMethodAST {
       !isPredefined: false // Is not predefined
@@ -86,7 +86,7 @@ syntax extension galgas4DeclarationsSyntax {
       typeName = makeEmbeddedTypeLName (!outer: typeName !inner: t)
       $.$
     end
-    $identifier$ ?let @lstring mMethodName indexing abstractExtensionMethodDefinition
+    $identifier$ ?let @lstring mMethodName indexing (abstractExtensionMethodDefinition)
     <formal_parameter_list> (!?ioDeclarations, ?let @formalParameterListAST formalParameterList)
     ioDeclarations.mDeclarationList += !@abstractExtensionMethodAST {
       !isPredefined: false // Is not predefined
@@ -102,7 +102,7 @@ syntax extension galgas4DeclarationsSyntax {
                              ?!@galgasDeclarationAST ioDeclarations) {
     $abstract$
     $proc$
-    $identifier$ ?let @lstring methodName indexing abstractExtensionMethodDefinition
+    $identifier$ ?let @lstring methodName indexing (abstractExtensionMethodDefinition)
     <formal_parameter_list> (!?ioDeclarations, ?let @formalParameterListAST formalParameterList)
     ioDeclarations.mDeclarationList += !@abstractExtensionMethodAST {
       !isPredefined: false // Is not predefined

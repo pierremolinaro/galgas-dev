@@ -156,7 +156,7 @@ syntax galgas3LexiqueComponentSyntax (galgasScanner3) {
 
   rule <lexical_indexing_declaration_ggs3> (?!@indexingListAST ioIndexingListAST ) {
     $indexing$
-    $identifier$ ?let @lstring indexName indexing indexingNameDefinition
+    $identifier$ ?let @lstring indexName indexing (indexingNameDefinition)
     $:$
     $"string"$ ?let @lstring indexComment
     ioIndexingListAST += !indexName !indexComment
@@ -387,7 +387,7 @@ syntax galgas3LexiqueComponentSyntax (galgasScanner3) {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <terminal_declaration_ggs3> (?!@terminalDeclarationListAST ioTerminalDeclarationList ) {
-    $\$terminal\$$ ?let @lstring name indexing terminalDeclaration
+    $\$terminal\$$ ?let @lstring name indexing (terminalDeclaration)
     var sentAttributeList = @sentLexicalAttributeListAST ()
     repeat
     while
@@ -508,7 +508,7 @@ syntax galgas4LexiqueComponentSyntax (galgasScanner4) {
 
   rule <lexical_indexing_declaration> (?!@indexingListAST ioIndexingListAST ) {
     $indexing$
-    $identifier$ ?let @lstring indexName indexing indexingNameDefinition
+    $identifier$ ?let @lstring indexName indexing (indexingNameDefinition)
     $:$
     $"string"$ ?let @lstring indexComment
     ioIndexingListAST += !indexName !indexComment
@@ -744,7 +744,7 @@ syntax galgas4LexiqueComponentSyntax (galgasScanner4) {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <terminal_declaration> (?!@terminalDeclarationListAST ioTerminalDeclarationList ) {
-    $\$terminal\$$ ?let @lstring name indexing terminalDeclaration
+    $\$terminal\$$ ?let @lstring name indexing (terminalDeclaration)
     var sentAttributeList = @sentLexicalAttributeListAST ()
     repeat
     while

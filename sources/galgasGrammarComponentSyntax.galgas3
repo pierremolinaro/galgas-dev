@@ -40,7 +40,7 @@ syntax galgas3GrammarComponentSyntax (galgasScanner3) {
       $indexing$
     end
     $grammar$
-    $identifier$ ?let @lstring mGrammarName indexing grammarComponentDefinition
+    $identifier$ ?let @lstring mGrammarName indexing (grammarComponentDefinition)
     $"string"$ ?let @lstring mGrammarClass
   //--- Feature translate
     let @bool hasTranslateFeature
@@ -60,7 +60,7 @@ syntax galgas3GrammarComponentSyntax (galgasScanner3) {
     while
     end
   //--- Root symbol
-    $<non_terminal>$ ?let @lstring  mStartSymbol indexing ruleReference
+    $<non_terminal>$ ?let @lstring  mStartSymbol indexing (ruleReference)
     var mLabelList = @nonTerminalLabelListAST ()
     <grammar_start_symbol_label_ggs3> (!?ioDeclarations, !@lstring {!"" !@location.here}, !?mLabelList)
     repeat
@@ -242,7 +242,7 @@ syntax galgas4GrammarComponentSyntax (galgasScanner4) {
       $indexing$
     end
     $grammar$
-    $identifier$ ?let @lstring mGrammarName indexing grammarComponentDefinition
+    $identifier$ ?let @lstring mGrammarName indexing (grammarComponentDefinition)
     $"string"$ ?let @lstring mGrammarClass
   //--- Feature translate
     let @bool hasTranslateFeature
@@ -262,7 +262,7 @@ syntax galgas4GrammarComponentSyntax (galgasScanner4) {
     while
     end
   //--- Root symbol
-    $<non_terminal>$ ?let @lstring startSymbol indexing ruleReference
+    $<non_terminal>$ ?let @lstring startSymbol indexing (ruleReference)
     var mLabelList = @nonTerminalLabelListAST ()
     <grammar_start_symbol_label> (!?ioDeclarations, !@lstring {!"" !@location.here}, !?mLabelList)
     repeat

@@ -38,7 +38,7 @@ syntax extension galgas3ExpressionSyntax {
                       !@semanticExpressionAST outExpression ) {
     $[$
     $option$
-    $identifier$ ?let optionComponentName indexing optionComponentReference
+    $identifier$ ?let optionComponentName indexing (optionComponentReference)
     $.$
     $identifier$ ?let optionName
     $identifier$ ?let getterName
@@ -72,7 +72,7 @@ syntax extension galgas4ExpressionSyntax {
   rule <primary> (?!@galgasDeclarationAST unused ioDeclarations,
                  !@semanticExpressionAST outExpression ) {
     $option$
-    $identifier$ ?let optionComponentName indexing optionComponentReference
+    $identifier$ ?let optionComponentName indexing (optionComponentReference)
     $[$
     $identifier$ ?let optionName
     $.$

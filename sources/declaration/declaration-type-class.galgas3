@@ -48,13 +48,13 @@ syntax extension galgas3DeclarationsSyntax {
       finalClass = false
     end
     $class$
-    $@type$ ?let @lstring className indexing classDefinition
+    $@type$ ?let @lstring className indexing (classDefinition)
     let @lstring superClassName // Empty if no super class
     select
       superClassName = "".nowhere
     or
       $:$
-      $@type$ ? superClassName indexing classReferencedAsSuperClass
+      $@type$ ? superClassName indexing (classReferencedAsSuperClass)
     end
     let @bool generateInSeparateFile
     select
@@ -130,13 +130,13 @@ syntax extension galgas4DeclarationsSyntax {
       finalClass = false
     end
     $class$
-    $@type$ ?let @lstring className indexing classDefinition
+    $@type$ ?let @lstring className indexing (classDefinition)
     let @lstring superClassName // Empty if no super class
     select
       superClassName = "".nowhere
     or
       $:$
-      $@type$ ? superClassName indexing classReferencedAsSuperClass
+      $@type$ ? superClassName indexing (classReferencedAsSuperClass)
     end
     let @bool generateInSeparateFile
     select

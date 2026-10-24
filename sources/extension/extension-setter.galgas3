@@ -37,14 +37,14 @@ syntax extension galgas3DeclarationsSyntax {
 
   rule <declaration_ggs3> (?!@galgasDeclarationAST ioDeclarations) {
     $setter$
-    $@type$ ?var typeName indexing typeReferenceExtensionSetter
+    $@type$ ?var typeName indexing (typeReferenceExtensionSetter)
     repeat
     while
       $.$
       $@type$ ?let t
       typeName = makeEmbeddedTypeLName (!outer: typeName !inner: t)
     end
-    $identifier$ ?let @lstring setterName indexing extensionSetterDefinition
+    $identifier$ ?let @lstring setterName indexing (extensionSetterDefinition)
     <formal_parameter_list_ggs34> (!?ioDeclarations, ?let formalParameterList)
     ${$
     <semantic_instruction_list_ggs3> (!?ioDeclarations, ?let routineInstructionList)
@@ -71,7 +71,7 @@ syntax extension galgas3DeclarationsSyntax {
       typeName = makeEmbeddedTypeLName (!outer: typeName !inner: t)
       $.$
     end
-    $identifier$ ?let @lstring setterName indexing extensionSetterDefinition
+    $identifier$ ?let @lstring setterName indexing (extensionSetterDefinition)
     <formal_parameter_list_ggs34> (!?ioDeclarations, ?let formalParameterList)
     ${$
     <semantic_instruction_list_ggs3> (!?ioDeclarations, ?let @semanticInstructionListAST routineInstructionList)
@@ -108,7 +108,7 @@ syntax extension galgas4DeclarationsSyntax {
       typeName = makeEmbeddedTypeLName (!outer: typeName !inner: t)
       $.$
     end
-    $identifier$ ?let @lstring setterName indexing extensionSetterDefinition
+    $identifier$ ?let @lstring setterName indexing (extensionSetterDefinition)
     <formal_parameter_list> (!?ioDeclarations, ?let @formalParameterListAST formalParameterList)
     ${$
     <semantic_instruction_list> (!?ioDeclarations, ?let @semanticInstructionListAST routineInstructionList)
@@ -130,7 +130,7 @@ syntax extension galgas4DeclarationsSyntax {
                              ?!@galgasDeclarationAST ioDeclarations) {
     $mutating$
     $proc$
-    $identifier$ ?let @lstring setterName indexing extensionSetterDefinition
+    $identifier$ ?let @lstring setterName indexing (extensionSetterDefinition)
     <formal_parameter_list> (!?ioDeclarations, ?let @formalParameterListAST formalParameterList)
     ${$
     <semantic_instruction_list> (!?ioDeclarations, ?let @semanticInstructionListAST routineInstructionList)

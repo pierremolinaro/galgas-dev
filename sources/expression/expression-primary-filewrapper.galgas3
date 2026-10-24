@@ -50,7 +50,7 @@ syntax extension galgas3ExpressionSyntax {
                       !@semanticExpressionAST outExpression ) {
     $[$
     $filewrapper$
-    $identifier$ ?let filewrapperName indexing filewrapperReference
+    $identifier$ ?let filewrapperName indexing (filewrapperReference)
     select
       outExpression = @filewrapperObjectInstanciationInExpressionAST {
         !filewrapperName
@@ -90,7 +90,7 @@ syntax extension galgas4ExpressionSyntax {
                  !@semanticExpressionAST outExpression ) {
     $filewrapper$
     $[$
-    $identifier$ ?let filewrapperName indexing filewrapperReference
+    $identifier$ ?let filewrapperName indexing (filewrapperReference)
     select
       outExpression = @filewrapperObjectInstanciationInExpressionAST {!filewrapperName}
     or

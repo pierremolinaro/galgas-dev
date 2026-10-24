@@ -28,7 +28,7 @@ syntax extension galgas3ExpressionSyntax {
     select
       outTypeName = @{!"" !.here}
     or
-      $@type$ ?outTypeName indexing typeReferenceInConstructor
+      $@type$ ?outTypeName indexing (typeReferenceInConstructor)
     end
   }
 
