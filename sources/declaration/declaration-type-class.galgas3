@@ -197,7 +197,7 @@ final class @classDeclarationAST : @semanticDeclarationAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override func keyRepresentation -> @string {
+  override func keyRepresentation () -> @string {
     result = "class @" + self.mClassTypeName
   }
 

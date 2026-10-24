@@ -26,13 +26,13 @@ final class @timerPredefinedTypeAST : @predefinedTypeAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override func initializers -> [@formalInputParameterListAST] {
+  override func initializers () -> [@formalInputParameterListAST] {
     result = @[@formalInputParameterListAST ()]
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override func getSupportedOperatorFlags -> @typeFeatures {
+  override func getSupportedOperatorFlags () -> @typeFeatures {
     result = .generateDescriptionGetterUtilityMethod
   }
 
@@ -100,7 +100,7 @@ final class @timerPredefinedTypeAST : @predefinedTypeAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override func cppDeclarationString -> @string {
+  override func cppDeclarationString () -> @string {
     result = [filewrapper predefinedTypeGenerationTemplate.timer_type]
   }
 

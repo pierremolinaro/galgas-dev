@@ -88,11 +88,7 @@ syntax extension galgas3DeclarationsSyntax {
     end
     $identifier$ ?let @lstring getterName indexing overrideExtensionGetterDefinition
     let @formalInputParameterListAST formalInputParameterList
-    select // §§
-      <formal_input_parameter_list_ggs3> (!?ioDeclarations, ?formalInputParameterList)
-    or
-      <formal_input_parameter_list_ggs34> (!?ioDeclarations, ?formalInputParameterList)
-    end
+    <formal_input_parameter_list_ggs34> (!?ioDeclarations, ?formalInputParameterList)
     $->$
     <type_definition_ggs3> (!?ioDeclarations, ?let mReturnedTypeName)
     let @lstring resultVariableName

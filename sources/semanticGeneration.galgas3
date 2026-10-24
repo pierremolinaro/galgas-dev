@@ -75,25 +75,25 @@ final class @grammarForGeneration : @semanticDeclarationWithHeaderForGeneration 
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override func getImplementationCppFileName -> @string {
+  override func getImplementationCppFileName () -> @string {
     result = "grammar-" + self.mGrammarName.fileNameRepresentation
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override func hasCppHeaderFile -> @bool {
+  override func hasCppHeaderFile () -> @bool {
     result = false
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override func headerKind -> @headerKind {
+  override func headerKind () -> @headerKind {
     result = @headerKind.oneHeader
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override func isPredefined -> @bool {
+  override func isPredefined () -> @bool {
     result = false
   }
 
@@ -114,25 +114,25 @@ final class @syntaxDeclarationForGeneration : @semanticDeclarationForGeneration 
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override func getImplementationCppFileName -> @string {
+  override func getImplementationCppFileName () -> @string {
     result = "syntax-" + self.mSyntaxComponentName.fileNameRepresentation
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override func hasCppHeaderFile -> @bool {
+  override func hasCppHeaderFile () -> @bool {
     result = false
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override func headerKind -> @headerKind {
+  override func headerKind () -> @headerKind {
     result = .oneHeader
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override func isPredefined -> @bool {
+  override func isPredefined () -> @bool {
     result = false
   }
 
@@ -1060,7 +1060,7 @@ final class @lexiqueDeclarationForGeneration : @semanticDeclarationWithHeaderFor
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override func headerKind ->@headerKind {
+  override func headerKind () ->@headerKind {
     result = @headerKind.oneHeader
   }
 
@@ -1381,7 +1381,7 @@ final class @primitiveTypeForGeneration : @semanticTypeForGeneration {
 
   //----------------------------------------------------------------------------------------------
 
-  override func appendPrimitiveTypeDeclaration -> @string {
+  override func appendPrimitiveTypeDeclaration () -> @string {
     result = self.mCppDeclarationString
     let selfTypeDefinition = self.mSelfTypeEntry.definition
     if self.isPackage then

@@ -146,7 +146,7 @@ final class @extensionMethodAST : @semanticDeclarationAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override func keyRepresentation -> @string {
+  override func keyRepresentation () -> @string {
     result = "extension proc @" + self.mTypeName + " " + self.mExtensionMethodName
   }
 

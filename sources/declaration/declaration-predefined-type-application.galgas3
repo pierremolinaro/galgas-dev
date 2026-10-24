@@ -26,19 +26,19 @@ final class @applicationPredefinedTypeAST : @predefinedTypeAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override func typeKind -> @typeKindEnum {
+  override func typeKind () -> @typeKindEnum {
     result = .packageType
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override func cppDeclarationString -> @string {
+  override func cppDeclarationString () -> @string {
     result = [filewrapper predefinedTypeGenerationTemplate.application_type]
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override func getSupportedOperatorFlags -> @typeFeatures {
+  override func getSupportedOperatorFlags () -> @typeFeatures {
     result = .generateDescriptionGetterUtilityMethod
   }
 

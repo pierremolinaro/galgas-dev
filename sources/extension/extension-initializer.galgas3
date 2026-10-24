@@ -137,7 +137,7 @@ final class @initializerAST : @semanticDeclarationAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override func keyRepresentation -> @string {
+  override func keyRepresentation () -> @string {
     result = initializerNameForUsefulEntitiesGraph (
       self.mTypeName,
       self.mFormalParameterList.initializerSignature
@@ -341,7 +341,7 @@ final class @extensionInitializerForGeneration : @semanticDeclarationWithHeaderF
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override func headerKind -> @headerKind {
+  override func headerKind () -> @headerKind {
     result = .noHeader
   }
 

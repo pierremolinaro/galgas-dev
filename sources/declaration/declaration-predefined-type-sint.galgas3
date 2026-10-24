@@ -26,13 +26,13 @@ final class @sintPredefinedTypeAST : @predefinedTypeAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override func cppDeclarationString -> @string {
+  override func cppDeclarationString () -> @string {
     result = [filewrapper predefinedTypeGenerationTemplate.sint_type]
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override func getSupportedOperatorFlags -> @typeFeatures {
+  override func getSupportedOperatorFlags () -> @typeFeatures {
     result = .infixAddOperator | .infixSubOperator | .infixMulOperator | .infixDivOperator
       | .infixModOperator | .infixShiftOperator | .prefixPlusOperator
       | .prefixMinusOperator | .prefixMinusOperatorNoOVF

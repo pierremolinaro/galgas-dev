@@ -1083,14 +1083,14 @@ final class @stringPredefinedTypeAST : @predefinedTypeAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override func getSupportedOperatorFlags -> @typeFeatures {
+  override func getSupportedOperatorFlags () -> @typeFeatures {
     result = .plusAssignOperatorWithExpression | .infixAddOperator
       | .generateDescriptionGetterUtilityMethod | .comparable | .equatable
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override func cppDeclarationString -> @string {
+  override func cppDeclarationString () -> @string {
     result = [filewrapper predefinedTypeGenerationTemplate.string_type]
   }
 

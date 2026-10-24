@@ -26,7 +26,7 @@ final class @charPredefinedTypeAST : @predefinedTypeAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override func getSupportedOperatorFlags -> @typeFeatures {
+  override func getSupportedOperatorFlags () -> @typeFeatures {
     result = .generateDescriptionGetterUtilityMethod | .comparable | .equatable
   }
 
@@ -237,7 +237,7 @@ final class @charPredefinedTypeAST : @predefinedTypeAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override func cppDeclarationString -> @string {
+  override func cppDeclarationString () -> @string {
     result = [filewrapper predefinedTypeGenerationTemplate.char_type]
   }
 

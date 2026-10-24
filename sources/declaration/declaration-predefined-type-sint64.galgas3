@@ -26,7 +26,7 @@ final class @sint64PredefinedTypeAST : @predefinedTypeAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override func getSupportedOperatorFlags -> @typeFeatures {
+  override func getSupportedOperatorFlags () -> @typeFeatures {
     result = .infixAddOperator | .infixSubOperator | .infixMulOperator | .infixDivOperator
       | .infixModOperator | .infixShiftOperator | .prefixPlusOperator
       | .prefixMinusOperator | .prefixMinusOperatorNoOVF
@@ -171,7 +171,7 @@ final class @sint64PredefinedTypeAST : @predefinedTypeAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override func cppDeclarationString -> @string {
+  override func cppDeclarationString () -> @string {
     result = [filewrapper predefinedTypeGenerationTemplate.sint64_type]
   }
 

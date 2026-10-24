@@ -371,7 +371,7 @@ final class @externTypeDeclarationAST : @semanticDeclarationAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override func keyRepresentation ->@string {
+  override func keyRepresentation () ->@string {
     result = "extern @" + self.mExternTypeName
   }
 

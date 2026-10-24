@@ -93,7 +93,7 @@ final class @abstractExtensionSetterAST : @semanticDeclarationAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override func keyRepresentation -> @string {
+  override func keyRepresentation () -> @string {
     result = "abstract extension setter @" + self.mTypeName + " " + self.mAbstractExtensionSetterName
   }
 
@@ -183,7 +183,7 @@ final class @abstractExtensionSetterForGeneration : @semanticDeclarationWithHead
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override func headerKind ->@headerKind {
+  override func headerKind () ->@headerKind {
     result = @headerKind.oneHeader
   }
 

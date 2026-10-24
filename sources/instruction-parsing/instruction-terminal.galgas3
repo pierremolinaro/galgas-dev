@@ -275,7 +275,7 @@ final class @terminalInstructionForGrammarAnalysis : @abstractSyntaxInstructionF
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override func isLinear -> @bool {
+  override func isLinear () -> @bool {
     result = true
   }
 

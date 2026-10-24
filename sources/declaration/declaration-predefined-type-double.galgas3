@@ -26,7 +26,7 @@ final class @doublePredefinedTypeAST : @predefinedTypeAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override func getSupportedOperatorFlags -> @typeFeatures {
+  override func getSupportedOperatorFlags () -> @typeFeatures {
     result = .infixAddOperator | .infixSubOperator | .infixMulOperator | .infixDivOperator
       | .prefixPlusOperator | .prefixMinusOperator | .infixModOperator | .infixDivOperatorNoOVF
       | .generateDescriptionGetterUtilityMethod | .comparable | .equatable
@@ -209,7 +209,7 @@ final class @doublePredefinedTypeAST : @predefinedTypeAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override func cppDeclarationString -> @string {
+  override func cppDeclarationString () -> @string {
     result = [filewrapper predefinedTypeGenerationTemplate.double_type]
   }
 

@@ -2292,20 +2292,20 @@ GGS_bool cPtr_terminalCheckInstructionForGeneration::getter_compareInstructionSy
   GGS_bool result_result ; // Returned variable
   GalgasBool test_0 = GalgasBool::boolTrue ;
   if (GalgasBool::boolTrue == test_0) {
-    GGS_terminalCheckInstructionForGeneration var_si_14818 (dynamic_cast <const cPtr_terminalCheckInstructionForGeneration *> (constinArgument_inTestedInstruction.ptr ())) ;
-    if (nullptr == var_si_14818.ptr ()) {
+    GGS_terminalCheckInstructionForGeneration var_si_14821 (dynamic_cast <const cPtr_terminalCheckInstructionForGeneration *> (constinArgument_inTestedInstruction.ptr ())) ;
+    if (nullptr == var_si_14821.ptr ()) {
       test_0 = GalgasBool::boolFalse ;
     }
     if (GalgasBool::boolTrue == test_0) {
       const GGS_terminalCheckInstructionForGeneration temp_1 = this ;
-      result_result = GGS_bool (ComparisonKind::equal, temp_1.readProperty_mTerminalName ().readProperty_string ().objectCompare (var_si_14818.readProperty_mTerminalName ().readProperty_string ())) ;
+      result_result = GGS_bool (ComparisonKind::equal, temp_1.readProperty_mTerminalName ().readProperty_string ().objectCompare (var_si_14821.readProperty_mTerminalName ().readProperty_string ())) ;
       GalgasBool test_2 = GalgasBool::boolTrue ;
       if (GalgasBool::boolTrue == test_2) {
         test_2 = result_result.operator_not (SOURCE_FILE ("instruction-terminal.galgas3", 325)).boolEnum () ;
         if (GalgasBool::boolTrue == test_2) {
           const GGS_terminalCheckInstructionForGeneration temp_3 = this ;
           GenericArray <FixItDescription> fixItArray4 ;
-          inCompiler->emitSemanticError (var_si_14818.readProperty_mInstructionLocation (), GGS_string ("syntax signature error; the expected syntax instruction here is the '$").add_operation (temp_3.readProperty_mTerminalName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("instruction-terminal.galgas3", 327)).add_operation (GGS_string ("$' terminal check"), inCompiler COMMA_SOURCE_FILE ("instruction-terminal.galgas3", 327)), fixItArray4  COMMA_SOURCE_FILE ("instruction-terminal.galgas3", 326)) ;
+          inCompiler->emitSemanticError (var_si_14821.readProperty_mInstructionLocation (), GGS_string ("syntax signature error; the expected syntax instruction here is the '$").add_operation (temp_3.readProperty_mTerminalName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("instruction-terminal.galgas3", 327)).add_operation (GGS_string ("$' terminal check"), inCompiler COMMA_SOURCE_FILE ("instruction-terminal.galgas3", 327)), fixItArray4  COMMA_SOURCE_FILE ("instruction-terminal.galgas3", 326)) ;
         }
       }
     }
@@ -2313,14 +2313,14 @@ GGS_bool cPtr_terminalCheckInstructionForGeneration::getter_compareInstructionSy
   if (GalgasBool::boolFalse == test_0) {
     GalgasBool test_5 = GalgasBool::boolTrue ;
     if (GalgasBool::boolTrue == test_5) {
-      GGS_syntaxInstructionForGeneration var_si_15160 (dynamic_cast <const cPtr_syntaxInstructionForGeneration *> (constinArgument_inTestedInstruction.ptr ())) ;
-      if (nullptr == var_si_15160.ptr ()) {
+      GGS_syntaxInstructionForGeneration var_si_15163 (dynamic_cast <const cPtr_syntaxInstructionForGeneration *> (constinArgument_inTestedInstruction.ptr ())) ;
+      if (nullptr == var_si_15163.ptr ()) {
         test_5 = GalgasBool::boolFalse ;
       }
       if (GalgasBool::boolTrue == test_5) {
         const GGS_terminalCheckInstructionForGeneration temp_6 = this ;
         GenericArray <FixItDescription> fixItArray7 ;
-        inCompiler->emitSemanticError (var_si_15160.readProperty_mInstructionLocation (), GGS_string ("syntax signature error; the expected syntax instruction here is the '$").add_operation (temp_6.readProperty_mTerminalName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("instruction-terminal.galgas3", 331)).add_operation (GGS_string ("$' terminal check"), inCompiler COMMA_SOURCE_FILE ("instruction-terminal.galgas3", 331)), fixItArray7  COMMA_SOURCE_FILE ("instruction-terminal.galgas3", 330)) ;
+        inCompiler->emitSemanticError (var_si_15163.readProperty_mInstructionLocation (), GGS_string ("syntax signature error; the expected syntax instruction here is the '$").add_operation (temp_6.readProperty_mTerminalName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("instruction-terminal.galgas3", 331)).add_operation (GGS_string ("$' terminal check"), inCompiler COMMA_SOURCE_FILE ("instruction-terminal.galgas3", 331)), fixItArray7  COMMA_SOURCE_FILE ("instruction-terminal.galgas3", 330)) ;
         result_result = GGS_bool (false) ;
       }
     }
@@ -2357,29 +2357,29 @@ void cPtr_terminalCheckInstructionForGeneration::method_generateInstruction (GGS
                                                                              Compiler * inCompiler
                                                                              COMMA_UNUSED_LOCATION_ARGS) {
   const GGS_terminalCheckInstructionForGeneration temp_0 = this ;
-  UpEnumerator_terminalCheckAssignementList enumerator_16326 (temp_0.readProperty_mTerminalCheckAssignementList ()) ;
-  while (enumerator_16326.hasCurrentObject ()) {
+  UpEnumerator_terminalCheckAssignementList enumerator_16329 (temp_0.readProperty_mTerminalCheckAssignementList ()) ;
+  while (enumerator_16329.hasCurrentObject ()) {
     GalgasBool test_1 = GalgasBool::boolTrue ;
     if (GalgasBool::boolTrue == test_1) {
-      test_1 = GGS_bool (ComparisonKind::notEqual, enumerator_16326.current_mTypeName (HERE).objectCompare (GGS_string::makeEmptyString ())).boolEnum () ;
+      test_1 = GGS_bool (ComparisonKind::notEqual, enumerator_16329.current_mTypeName (HERE).objectCompare (GGS_string::makeEmptyString ())).boolEnum () ;
       if (GalgasBool::boolTrue == test_1) {
-        ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string ("GGS_").add_operation (enumerator_16326.current_mTypeName (HERE).getter_identifierRepresentation (SOURCE_FILE ("instruction-terminal.galgas3", 355)), inCompiler COMMA_SOURCE_FILE ("instruction-terminal.galgas3", 355)).add_operation (GGS_string (" "), inCompiler COMMA_SOURCE_FILE ("instruction-terminal.galgas3", 355)), inCompiler  COMMA_SOURCE_FILE ("instruction-terminal.galgas3", 355)) ;
+        ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string ("GGS_").add_operation (enumerator_16329.current_mTypeName (HERE).getter_identifierRepresentation (SOURCE_FILE ("instruction-terminal.galgas3", 355)), inCompiler COMMA_SOURCE_FILE ("instruction-terminal.galgas3", 355)).add_operation (GGS_string (" "), inCompiler COMMA_SOURCE_FILE ("instruction-terminal.galgas3", 355)), inCompiler  COMMA_SOURCE_FILE ("instruction-terminal.galgas3", 355)) ;
       }
     }
-    ioArgument_ioGeneratedCode.plusAssignOperation(enumerator_16326.current_mTargetVarCppName (HERE).add_operation (GGS_string (" = "), inCompiler COMMA_SOURCE_FILE ("instruction-terminal.galgas3", 358)).add_operation (function_compilerCppName (inCompiler COMMA_SOURCE_FILE ("instruction-terminal.galgas3", 358)), inCompiler COMMA_SOURCE_FILE ("instruction-terminal.galgas3", 358)).add_operation (GGS_string ("->synthetizedAttribute_"), inCompiler COMMA_SOURCE_FILE ("instruction-terminal.galgas3", 358)), inCompiler  COMMA_SOURCE_FILE ("instruction-terminal.galgas3", 358)) ;
-    ioArgument_ioGeneratedCode.plusAssignOperation(enumerator_16326.current_mSourceLexicalAttributeName (HERE).getter_identifierRepresentation (SOURCE_FILE ("instruction-terminal.galgas3", 359)), inCompiler  COMMA_SOURCE_FILE ("instruction-terminal.galgas3", 359)) ;
+    ioArgument_ioGeneratedCode.plusAssignOperation(enumerator_16329.current_mTargetVarCppName (HERE).add_operation (GGS_string (" = "), inCompiler COMMA_SOURCE_FILE ("instruction-terminal.galgas3", 358)).add_operation (function_compilerCppName (inCompiler COMMA_SOURCE_FILE ("instruction-terminal.galgas3", 358)), inCompiler COMMA_SOURCE_FILE ("instruction-terminal.galgas3", 358)).add_operation (GGS_string ("->synthetizedAttribute_"), inCompiler COMMA_SOURCE_FILE ("instruction-terminal.galgas3", 358)), inCompiler  COMMA_SOURCE_FILE ("instruction-terminal.galgas3", 358)) ;
+    ioArgument_ioGeneratedCode.plusAssignOperation(enumerator_16329.current_mSourceLexicalAttributeName (HERE).getter_identifierRepresentation (SOURCE_FILE ("instruction-terminal.galgas3", 359)), inCompiler  COMMA_SOURCE_FILE ("instruction-terminal.galgas3", 359)) ;
     ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string (" () ;\n"), inCompiler  COMMA_SOURCE_FILE ("instruction-terminal.galgas3", 360)) ;
-    enumerator_16326.gotoNextObject () ;
+    enumerator_16329.gotoNextObject () ;
   }
   const GGS_terminalCheckInstructionForGeneration temp_2 = this ;
-  UpEnumerator__32_lstringlist enumerator_16759 (temp_2.readProperty_mIndexingKeyList ()) ;
-  while (enumerator_16759.hasCurrentObject ()) {
+  UpEnumerator__32_lstringlist enumerator_16762 (temp_2.readProperty_mIndexingKeyList ()) ;
+  while (enumerator_16762.hasCurrentObject ()) {
     ioArgument_ioGeneratedCode.plusAssignOperation(function_compilerCppName (inCompiler COMMA_SOURCE_FILE ("instruction-terminal.galgas3", 364)), inCompiler  COMMA_SOURCE_FILE ("instruction-terminal.galgas3", 364)) ;
     const GGS_terminalCheckInstructionForGeneration temp_3 = this ;
     ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string ("->enterIndexing (Lexique_").add_operation (temp_3.readProperty_mLexiqueIdentifier (), inCompiler COMMA_SOURCE_FILE ("instruction-terminal.galgas3", 365)).add_operation (GGS_string ("::kIndexing_"), inCompiler COMMA_SOURCE_FILE ("instruction-terminal.galgas3", 365)), inCompiler  COMMA_SOURCE_FILE ("instruction-terminal.galgas3", 365)) ;
-    ioArgument_ioGeneratedCode.plusAssignOperation(enumerator_16759.current_mValue_30_ (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("instruction-terminal.galgas3", 366)), inCompiler  COMMA_SOURCE_FILE ("instruction-terminal.galgas3", 366)) ;
-    ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string (", ").add_operation (enumerator_16759.current_mValue_31_ (HERE).readProperty_string ().getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("instruction-terminal.galgas3", 367)), inCompiler COMMA_SOURCE_FILE ("instruction-terminal.galgas3", 367)).add_operation (GGS_string (") ;\n"), inCompiler COMMA_SOURCE_FILE ("instruction-terminal.galgas3", 367)), inCompiler  COMMA_SOURCE_FILE ("instruction-terminal.galgas3", 367)) ;
-    enumerator_16759.gotoNextObject () ;
+    ioArgument_ioGeneratedCode.plusAssignOperation(enumerator_16762.current_mValue_30_ (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("instruction-terminal.galgas3", 366)), inCompiler  COMMA_SOURCE_FILE ("instruction-terminal.galgas3", 366)) ;
+    ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string (", ").add_operation (enumerator_16762.current_mValue_31_ (HERE).readProperty_string ().getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("instruction-terminal.galgas3", 367)), inCompiler COMMA_SOURCE_FILE ("instruction-terminal.galgas3", 367)).add_operation (GGS_string (") ;\n"), inCompiler COMMA_SOURCE_FILE ("instruction-terminal.galgas3", 367)), inCompiler  COMMA_SOURCE_FILE ("instruction-terminal.galgas3", 367)) ;
+    enumerator_16762.gotoNextObject () ;
   }
   const GGS_terminalCheckInstructionForGeneration temp_4 = this ;
   callExtensionMethod_generateCode ((cPtr_abstractGrammarInstructionSyntaxDirectedTranslationResult *) temp_4.readProperty_mGrammarInstructionSyntaxDirectedTranslationPreceedingDelimitor ().ptr (), constinArgument_inGenerateSyntaxDirectedTranslationString, GGS_string ("inCompiler->separatorString ()"), ioArgument_ioUnusedVariableCppNameSet, ioArgument_ioGeneratedCode, inCompiler COMMA_SOURCE_FILE ("instruction-terminal.galgas3", 370)) ;

@@ -1843,8 +1843,6 @@ class cParser_galgas_33_DeclarationsSyntax {
 
   protected: virtual int32_t select_galgas_33_DeclarationsSyntax_75 (Lexique_galgasScanner_33_ *) = 0 ;
 
-  protected: virtual int32_t select_galgas_33_DeclarationsSyntax_76 (Lexique_galgasScanner_33_ *) = 0 ;
-
 
 } ;
 

@@ -64,7 +64,7 @@ final class @arrayTypeDeclarationAST : @semanticDeclarationAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override func keyRepresentation->@string {
+  override func keyRepresentation() ->@string {
     result = "array [@" + self.arrayTypeName + "]"
   }
 

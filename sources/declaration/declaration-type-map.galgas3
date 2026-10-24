@@ -327,7 +327,7 @@ final class @mapDeclarationAST : @semanticDeclarationAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override func keyRepresentation ->@string result {
+  override func keyRepresentation () ->@string result {
     result = "map @" + self.mMapTypeName
   }
 

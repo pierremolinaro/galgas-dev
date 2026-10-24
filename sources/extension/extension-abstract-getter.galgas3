@@ -141,7 +141,7 @@ final class @abstractExtensionGetterAST : @semanticDeclarationAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override func keyRepresentation -> @string {
+  override func keyRepresentation () -> @string {
     result = "abstract extension func @" + self.mTypeName + " "
            + self.mAbstractExtensionGetterName
   }
@@ -278,7 +278,7 @@ final class @abstractExtensionGetterForGeneration : @semanticDeclarationWithHead
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override func headerKind ->@headerKind {
+  override func headerKind () ->@headerKind {
     result = @headerKind.oneHeader
   }
 

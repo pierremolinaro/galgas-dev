@@ -26,13 +26,13 @@ final class @uintPredefinedTypeAST : @predefinedTypeAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override func cppDeclarationString -> @string {
+  override func cppDeclarationString () -> @string {
     result = [filewrapper predefinedTypeGenerationTemplate.uint_type]
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override func getSupportedOperatorFlags -> @typeFeatures {
+  override func getSupportedOperatorFlags () -> @typeFeatures {
     result = .infixAddOperator | .infixSubOperator | .infixMulOperator | .infixDivOperator
       | .infixModOperator | .infixShiftOperator | .prefixPlusOperator
       | .infixAndOperator | .infixOrOperator | .infixXorOperator | .prefixTildeOperator
