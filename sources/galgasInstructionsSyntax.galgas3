@@ -122,7 +122,7 @@ syntax galgas3InstructionsSyntax (galgasScanner3) {
     $identifier$ ?let functionName indexing functionDefinition
     <function_declaration_ggs3> (!once: isOnce !usefull: isUsefull !private: false !functionName !?ioDeclarations)
   }
-   
+
    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <function_declaration_ggs3> (?once: let @bool inIsOnce,
@@ -203,7 +203,7 @@ syntax galgas3InstructionsSyntax (galgasScanner3) {
       }
     else
       ioDeclarations.mDeclarationList += !@functionDeclarationAST {
-        !isPredefined: false 
+        !isPredefined: false
         !inFunctionName
         !formalInputParameterList
         !resultTypeName

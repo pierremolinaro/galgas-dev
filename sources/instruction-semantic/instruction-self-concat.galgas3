@@ -169,7 +169,7 @@ final class @selfDivEqualExpressionInstructionAST : @semanticInstructionAST {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc enterInstructionInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
-    [self.mExpression enterExpressionInSemanticContext !?ioTypeMap]
+    self.mExpression.enterExpressionInSemanticContext (!?ioTypeMap)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -194,15 +194,15 @@ final class @selfDivEqualExpressionInstructionAST : @semanticInstructionAST {
         )
       end
     //--- Analyze source expression
-      [self.mExpression analyzeSemanticExpression
-        !usefulnessCallerEntityName: inUsefulnessCallerEntityName
+      self.mExpression.analyzeSemanticExpression
+        (!usefulnessCallerEntityName: inUsefulnessCallerEntityName
         !?ioUsefulEntitiesGraph
         !inferenceType: selfAvailable.type
         !inAnalysisContext
         !?ioTypeMap
         !?ioVariableMap
         ?@semanticExpressionForGeneration expression
-      ]
+      )
     //--- Check assignment type compatibility
       checkAssignmentTypeWithImplicitGetterCall (
         !selfAvailable.type
@@ -239,7 +239,7 @@ final class @selfPlusEqualExpressionInstructionAST : @semanticInstructionAST {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc enterInstructionInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
-    [self.mExpression enterExpressionInSemanticContext !?ioTypeMap]
+    self.mExpression.enterExpressionInSemanticContext (!?ioTypeMap)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -264,15 +264,15 @@ final class @selfPlusEqualExpressionInstructionAST : @semanticInstructionAST {
         )
       end
     //--- Analyze source expression
-      [self.mExpression analyzeSemanticExpression
-        !usefulnessCallerEntityName: inUsefulnessCallerEntityName
+      self.mExpression.analyzeSemanticExpression
+        (!usefulnessCallerEntityName: inUsefulnessCallerEntityName
         !?ioUsefulEntitiesGraph
         !inferenceType: selfAvailable.type
         !inAnalysisContext
         !?ioTypeMap
         !?ioVariableMap
         ?@semanticExpressionForGeneration expression
-      ]
+      )
     //--- Check assignment type compatibility
       checkAssignmentTypeWithImplicitGetterCall (
         !selfAvailable.type
@@ -309,7 +309,7 @@ final class @selfMinusEqualExpressionInstructionAST : @semanticInstructionAST {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc enterInstructionInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
-    [self.mExpression enterExpressionInSemanticContext !?ioTypeMap]
+    self.mExpression.enterExpressionInSemanticContext (!?ioTypeMap)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -334,15 +334,15 @@ final class @selfMinusEqualExpressionInstructionAST : @semanticInstructionAST {
         )
       end
     //--- Analyze source expression
-      [self.mExpression analyzeSemanticExpression
-        !usefulnessCallerEntityName: inUsefulnessCallerEntityName
+      self.mExpression.analyzeSemanticExpression
+        (!usefulnessCallerEntityName: inUsefulnessCallerEntityName
         !?ioUsefulEntitiesGraph
         !inferenceType: selfAvailable.type
         !inAnalysisContext
         !?ioTypeMap
         !?ioVariableMap
         ?@semanticExpressionForGeneration expression
-      ]
+      )
     //--- Check assignment type compatibility
       checkAssignmentTypeWithImplicitGetterCall (
         !selfAvailable.type
@@ -379,7 +379,7 @@ final class @selfMulEqualExpressionInstructionAST : @semanticInstructionAST {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc enterInstructionInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
-    [self.mExpression enterExpressionInSemanticContext !?ioTypeMap]
+    self.mExpression.enterExpressionInSemanticContext (!?ioTypeMap)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -404,15 +404,15 @@ final class @selfMulEqualExpressionInstructionAST : @semanticInstructionAST {
         )
       end
     //--- Analyze source expression
-      [self.mExpression analyzeSemanticExpression
-        !usefulnessCallerEntityName: inUsefulnessCallerEntityName
+      self.mExpression.analyzeSemanticExpression
+        (!usefulnessCallerEntityName: inUsefulnessCallerEntityName
         !?ioUsefulEntitiesGraph
         !inferenceType: selfAvailable.type
         !inAnalysisContext
         !?ioTypeMap
         !?ioVariableMap
         ?@semanticExpressionForGeneration expression
-      ]
+      )
     //--- Check assignment type compatibility
       checkAssignmentTypeWithImplicitGetterCall (
         !selfAvailable.type
@@ -449,7 +449,7 @@ final class @selfPlusEqualElementsInstructionAST : @semanticInstructionAST {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc enterInstructionInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
-    [self.mExpressions enterInSemanticContext !?ioTypeMap]
+    self.mExpressions.enterInSemanticContext (!?ioTypeMap)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -484,15 +484,15 @@ final class @selfPlusEqualElementsInstructionAST : @semanticInstructionAST {
       else
         var effectiveParameterList = @semanticExpressionListForGeneration ()
         for expressionAST in self.mExpressions, addAssignArgument in addAssignOperatorArguments do
-          [expressionAST.mExpression analyzeSemanticExpression
-            !usefulnessCallerEntityName: inUsefulnessCallerEntityName
+          expressionAST.mExpression.analyzeSemanticExpression
+            (!usefulnessCallerEntityName: inUsefulnessCallerEntityName
             !?ioUsefulEntitiesGraph
             !inferenceType: addAssignArgument.mFormalArgumentType
             !inAnalysisContext
             !?ioTypeMap
             !?ioVariableMap
             ?@semanticExpressionForGeneration expression
-          ]
+          )
           if addAssignArgument.mFormalSelector.string != expressionAST.mActualSelector.string then
             let s = "!" + if addAssignArgument.mFormalSelector.string != ""
               then addAssignArgument.mFormalSelector.string + ":"

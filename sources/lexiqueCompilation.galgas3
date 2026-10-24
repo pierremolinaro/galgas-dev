@@ -197,7 +197,7 @@ abstract proc @lexicalSendDefaultActionAST checkLexicalDefaultAction
 
 override proc @lexicalSendTerminalByDefaultAST checkLexicalDefaultAction
   (?!@lexiqueAnalysisContext ioLexiqueAnalysisContext ) {
-  [ioLexiqueAnalysisContext.mTerminalMap searchKey !self.mDefaultSentTerminal ?*]
+  ioLexiqueAnalysisContext.mTerminalMap.searchKey (!self.mDefaultSentTerminal ?*)
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -219,8 +219,8 @@ abstract proc @lexicalExpressionAST checkLexicalExpression
 
 override proc @lexicalOrExpressionAST checkLexicalExpression
   (?!@lexiqueAnalysisContext ioLexiqueAnalysisContext ) {
-  [self.mLeftOperand checkLexicalExpression !? ioLexiqueAnalysisContext]
-  [self.mRightOperand checkLexicalExpression !? ioLexiqueAnalysisContext]
+  self.mLeftOperand.checkLexicalExpression (!? ioLexiqueAnalysisContext)
+  self.mRightOperand.checkLexicalExpression (!? ioLexiqueAnalysisContext)
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -274,10 +274,10 @@ override proc @lexicalAttributeInputArgumentAST checkLexicalFunctionCallArgument
   (?!@lexiqueAnalysisContext ioLexiqueAnalysisContext,
   ?@lexicalTypeEnum inLexicalRoutineFormalArgumentType ) {
 //--- Check attribute definition
-  [ioLexiqueAnalysisContext.mLexicalAttributeMap searchKey
-    !self.mAttributeName
+  ioLexiqueAnalysisContext.mLexicalAttributeMap.searchKey
+    (!self.mAttributeName
     ?let attributeLexicalType
-  ]
+  )
 //--- Type check
   if attributeLexicalType != inLexicalRoutineFormalArgumentType then
     error (self.mAttributeName:"type error, attribute type is @"
@@ -340,13 +340,13 @@ override proc @lexicalFunctionInputArgumentAST checkLexicalFunctionCallArgument
   (?!@lexiqueAnalysisContext ioLexiqueAnalysisContext,
   ?@lexicalTypeEnum inLexicalRoutineFormalArgumentType ) {
 //--- Check attribute definition
-  [ioLexiqueAnalysisContext.mLexicalFunctionMap searchKey
-    !self.mFunctionName
+  ioLexiqueAnalysisContext.mLexicalFunctionMap.searchKey
+    (!self.mFunctionName
     ?let lexicalFormalTypeList
     ?let returnedLexicalFormalType
     ?let replacementFunctionName
     ?*
-  ]
+  )
 //--- Obsolete function ?
   if replacementFunctionName != "" then
     warning self.mFunctionName:"obsolete lexical function, replaced by '" + replacementFunctionName + "'"
@@ -370,10 +370,10 @@ override proc @lexicalFunctionInputArgumentAST checkLexicalFunctionCallArgument
   end
 //--- Check actual argument against formal parameters
   for (mLexicalType *) in lexicalFormalTypeList, (mLexicalActualInputArgument) in self.mFunctionActualArgumentList do
-    [mLexicalActualInputArgument checkLexicalFunctionCallArgument
-      !?ioLexiqueAnalysisContext
+    mLexicalActualInputArgument.checkLexicalFunctionCallArgument
+      (!?ioLexiqueAnalysisContext
       !mLexicalType
-    ]
+    )
   end
 }
 
@@ -391,10 +391,10 @@ override proc @lexicalAttributeInputArgumentAST checkLexicalRoutineCallArgument
   (?!@lexiqueAnalysisContext ioLexiqueAnalysisContext,
   ?@lexicalTypeEnum inLexicalRoutineFormalArgumentType ) {
 //--- Check attribute definition
-  [ioLexiqueAnalysisContext.mLexicalAttributeMap searchKey
-    !self.mAttributeName
+  ioLexiqueAnalysisContext.mLexicalAttributeMap.searchKey
+    (!self.mAttributeName
     ?let attributeLexicalType
-  ]
+  )
 //--- Type check
   if attributeLexicalType != inLexicalRoutineFormalArgumentType then
     error (self.mAttributeName:"type error, attribute type is @"
@@ -457,13 +457,13 @@ override proc @lexicalFunctionInputArgumentAST checkLexicalRoutineCallArgument
   (?!@lexiqueAnalysisContext ioLexiqueAnalysisContext,
   ?@lexicalTypeEnum inLexicalRoutineFormalArgumentType ) {
 //--- Check attribute definition
-  [ioLexiqueAnalysisContext.mLexicalFunctionMap searchKey
-    !self.mFunctionName
+  ioLexiqueAnalysisContext.mLexicalFunctionMap.searchKey
+    (!self.mFunctionName
     ?let lexicalFormalTypeList
     ?let returnedLexicalFormalType
     ?let replacementFunctionName
     ?*
-  ]
+  )
 //--- Obsolete function ?
   if replacementFunctionName != "" then
     warning self.mFunctionName:"obsolete lexical function, replaced by '" + replacementFunctionName + "'"
@@ -487,10 +487,10 @@ override proc @lexicalFunctionInputArgumentAST checkLexicalRoutineCallArgument
   end
 //--- Check actual argument against formal parameters
   for (mLexicalType *) in lexicalFormalTypeList, (mLexicalActualInputArgument) in self.mFunctionActualArgumentList do
-    [mLexicalActualInputArgument checkLexicalFunctionCallArgument
-      !?ioLexiqueAnalysisContext
+    mLexicalActualInputArgument.checkLexicalFunctionCallArgument
+      (!?ioLexiqueAnalysisContext
       !mLexicalType
-    ]
+    )
   end
 }
 
@@ -513,17 +513,17 @@ abstract proc @abstractLexicalRuleAST checkLexicalRule
 
 override proc @lexicalImplicitRuleAST checkLexicalRule
   (?!@lexiqueAnalysisContext ioLexiqueAnalysisContext ) {
-  [ioLexiqueAnalysisContext.mLexicalTokenListMap searchKey !self.mListName ?* ?* ?*]
+  ioLexiqueAnalysisContext.mLexicalTokenListMap.searchKey (!self.mListName ?* ?* ?*)
 }
 
 //--------------------------------------------------------------------------------------------------
 
 override proc @lexicalExplicitRuleAST checkLexicalRule
   (?!@lexiqueAnalysisContext ioLexiqueAnalysisContext ) {
-  [self.mLexicalRuleExpression checkLexicalExpression !?ioLexiqueAnalysisContext]
+  self.mLexicalRuleExpression.checkLexicalExpression (!?ioLexiqueAnalysisContext)
   var @lexicalTagMap tagMap = @()
   for (mInstruction) in self.mInstructionList do
-    [mInstruction checkLexicalInstruction !?ioLexiqueAnalysisContext !?tagMap]
+    mInstruction.checkLexicalInstruction (!?ioLexiqueAnalysisContext !?tagMap)
   end
 }
 

@@ -86,7 +86,7 @@ grammar galgas3Grammar
     error (inSourceFile : s)
   else
     let projectFilePath = parentDirectory + "/" + [candidateProjectFiles mValueAtIndex !0]
-    parseAndAnalyzeProject (!@{!projectFilePath !inSourceFile.location} !inSourceFile.string )
+    parseAndAnalyzeProject (!@{!projectFilePath !inSourceFile.location} !inSourceFile.string)
   end
 }
 
@@ -112,7 +112,7 @@ grammar galgas4Grammar ?sourceFilePath: @lstring inSourceFile {
     error (inSourceFile : s)
   else
     let projectFilePath = parentDirectory + "/" + [candidateProjectFiles mValueAtIndex !0]
-    parseAndAnalyzeProject (!@{!projectFilePath !inSourceFile.location} !inSourceFile.string )
+    parseAndAnalyzeProject (!@{!projectFilePath !inSourceFile.location} !inSourceFile.string)
   end
 }
 
@@ -314,7 +314,7 @@ private proc compileProject (?let @lstring inProjectSourceFile,
       !firstLetterSet
       !tableOfTypeString
     ]
-    [typeDumpString writeToFileWhenDifferentContents !typeDumpFilePath ?*]
+    typeDumpString.writeToFileWhenDifferentContents (!typeDumpFilePath ?*)
   else
     @string.deleteFileIfExists (!typeDumpFilePath)
   end
@@ -374,7 +374,7 @@ private proc projectGeneration
   var @stringset allProductFileSet = @()
 //--------------------------------- Create build/user-headers if does not exist
   let userHeadersDir = inAbsoluteBuildDirectory + "/user-headers"
-  [userHeadersDir makeDirectory]
+  userHeadersDir.makeDirectory ()
 //--------------------------------- %quietOutputByDefault
   let quietOutputByDefault = [@stringset.setWithLStringList {!inProjectComponentAST.mGenerationFeatureList} hasKey !"quietOutputByDefault"]
 //--------------------------------- Generate GUI components

@@ -162,7 +162,7 @@ override proc @overridingExtensionSetterAST semanticAnalysis (
   loop (ioTypeMap.count + 1)
   while (not superType.isNull) & (baseTypeName == "") do
     if [superType.definition.setterMap hasKey !self.mOverridingExtensionSetterName.string] then
-      [superType.definition.setterMap searchKey !self.mOverridingExtensionSetterName ?* ?inheritedSignature ?* ?let qualifier ?*]
+      superType.definition.setterMap.searchKey (!self.mOverridingExtensionSetterName ?* ?inheritedSignature ?* ?let qualifier ?*)
       if qualifier <= @methodQualifier.isBasicFinal then
         baseTypeName = superType.definition.typeName.string
       end
@@ -286,7 +286,7 @@ override proc @overridingExtensionSetterForGeneration appendSpecificImplementati
     end
   end
   ioInclusionSet ++= "setter-" + baseType.definition.typeName.string.fileNameRepresentation+ "-" + self.mExtensionSetterName.fileNameRepresentation
-  [self.mReceiverType addHeaderFileName !?ioInclusionSet]
+  self.mReceiverType.addHeaderFileName (!?ioInclusionSet)
   outImplementation = [filewrapper semanticComponentGenerationTemplate.overridingExtensionSetterImplementation
     !self.mReceiverType.definition.typeName.string
     !self.mExtensionSetterName

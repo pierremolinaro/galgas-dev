@@ -180,8 +180,8 @@ syntax extension galgas4ExpressionSyntax {
 override proc @rightShiftExpressionAST enterExpressionInSemanticContext
   (?!@unifiedTypeMap ioTypeMap
 ) {
-  [self.mLeftExpression enterExpressionInSemanticContext !?ioTypeMap]
-  [self.mRightExpression enterExpressionInSemanticContext !?ioTypeMap]
+  self.mLeftExpression.enterExpressionInSemanticContext (!?ioTypeMap)
+  self.mRightExpression.enterExpressionInSemanticContext (!?ioTypeMap)
 }
 
 //································································································
@@ -196,25 +196,25 @@ override proc @rightShiftExpressionAST analyzeSemanticExpression
   !@semanticExpressionForGeneration outExpression
 ) {
 //--- Left expression analysis
-  [self.mLeftExpression analyzeSemanticExpression
-    !usefulnessCallerEntityName: inUsefulnessCallerEntityName
+  self.mLeftExpression.analyzeSemanticExpression
+    (!usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inferenceType: inInferenceType
     !inAnalysisContext
     !?ioTypeMap
     !?ioVariableMap
     ?let @semanticExpressionForGeneration leftExpression
-  ]
+  )
 //--- Right expression analysis
-  [self.mRightExpression analyzeSemanticExpression
-    !usefulnessCallerEntityName: inUsefulnessCallerEntityName
+  self.mRightExpression.analyzeSemanticExpression
+    (!usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inferenceType: inAnalysisContext.predefinedTypes.mBigIntType
     !inAnalysisContext
     !?ioTypeMap
     !?ioVariableMap
     ?let @semanticExpressionForGeneration rightExpression
-  ]
+  )
 //--- Check operator availability
   let @unifiedTypeMapEntry leftType = leftExpression.mResultType
   if let left = leftExpression as @literalBigIntExpressionForGeneration,
@@ -252,8 +252,8 @@ override proc @rightShiftExpressionAST analyzeSemanticExpression
 override proc @leftShiftExpressionAST enterExpressionInSemanticContext
   (?!@unifiedTypeMap ioTypeMap
 ) {
-  [self.mLeftExpression enterExpressionInSemanticContext !?ioTypeMap]
-  [self.mRightExpression enterExpressionInSemanticContext !?ioTypeMap]
+  self.mLeftExpression.enterExpressionInSemanticContext (!?ioTypeMap)
+  self.mRightExpression.enterExpressionInSemanticContext (!?ioTypeMap)
 }
 
 //································································································
@@ -268,25 +268,25 @@ override proc @leftShiftExpressionAST analyzeSemanticExpression
   !@semanticExpressionForGeneration outExpression
 ) {
 //--- Left expression analysis
-  [self.mLeftExpression analyzeSemanticExpression
-    !usefulnessCallerEntityName: inUsefulnessCallerEntityName
+  self.mLeftExpression.analyzeSemanticExpression
+    (!usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inferenceType: inInferenceType
     !inAnalysisContext
     !?ioTypeMap
     !?ioVariableMap
     ?let @semanticExpressionForGeneration leftExpression
-  ]
+  )
 //--- Right expression analysis
-  [self.mRightExpression analyzeSemanticExpression
-    !usefulnessCallerEntityName: inUsefulnessCallerEntityName
+  self.mRightExpression.analyzeSemanticExpression
+    (!usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inferenceType: inAnalysisContext.predefinedTypes.mBigIntType
     !inAnalysisContext
     !?ioTypeMap
     !?ioVariableMap
     ?let @semanticExpressionForGeneration rightExpression
-  ]
+  )
 //--- Check operator availability
   let @unifiedTypeMapEntry leftType = leftExpression.mResultType
   if let left = leftExpression as @literalBigIntExpressionForGeneration,
@@ -324,8 +324,8 @@ override proc @leftShiftExpressionAST analyzeSemanticExpression
 override proc @addExpressionNoOverflowAST enterExpressionInSemanticContext
   (?!@unifiedTypeMap ioTypeMap
 ) {
-  [self.mLeftExpression enterExpressionInSemanticContext !?ioTypeMap]
-  [self.mRightExpression enterExpressionInSemanticContext !?ioTypeMap]
+  self.mLeftExpression.enterExpressionInSemanticContext (!?ioTypeMap)
+  self.mRightExpression.enterExpressionInSemanticContext (!?ioTypeMap)
 }
 
 //································································································
@@ -340,25 +340,25 @@ override proc @addExpressionNoOverflowAST analyzeSemanticExpression
   !@semanticExpressionForGeneration outExpression
 ) {
 //--- Left expression analysis
-  [self.mLeftExpression analyzeSemanticExpression
-    !usefulnessCallerEntityName: inUsefulnessCallerEntityName
+  self.mLeftExpression.analyzeSemanticExpression
+    (!usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inferenceType: inInferenceType
     !inAnalysisContext
     !?ioTypeMap
     !?ioVariableMap
     ?var @semanticExpressionForGeneration leftExpression
-  ]
+  )
 //--- Right expression analysis
-  [self.mRightExpression analyzeSemanticExpression
-    !usefulnessCallerEntityName: inUsefulnessCallerEntityName
+  self.mRightExpression.analyzeSemanticExpression
+    (!usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inferenceType: leftExpression.mResultType
     !inAnalysisContext
     !?ioTypeMap
     !?ioVariableMap
     ?@semanticExpressionForGeneration rightExpression
-  ]
+  )
 //--- Check operator availability
   checkDiadicOperator (
     !operatorIsHandled: [leftExpression.mResultType.definition.features contains !.infixAddOperatorNoOVF]
@@ -391,8 +391,8 @@ override proc @addExpressionNoOverflowAST analyzeSemanticExpression
 override proc @addExpressionAST enterExpressionInSemanticContext
   (?!@unifiedTypeMap ioTypeMap
 ) {
-  [self.mLeftExpression enterExpressionInSemanticContext !?ioTypeMap]
-  [self.mRightExpression enterExpressionInSemanticContext !?ioTypeMap]
+  self.mLeftExpression.enterExpressionInSemanticContext (!?ioTypeMap)
+  self.mRightExpression.enterExpressionInSemanticContext (!?ioTypeMap)
 }
 
 //································································································
@@ -406,25 +406,25 @@ override proc @addExpressionAST analyzeSemanticExpression
   ?!@localVarManager ioVariableMap,
   !@semanticExpressionForGeneration outExpression ) {
 //--- Left expression analysis
-  [self.mLeftExpression analyzeSemanticExpression
-    !usefulnessCallerEntityName: inUsefulnessCallerEntityName
+  self.mLeftExpression.analyzeSemanticExpression
+    (!usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inferenceType: inInferenceType
     !inAnalysisContext
     !?ioTypeMap
     !?ioVariableMap
     ?var @semanticExpressionForGeneration leftExpression
-  ]
+  )
 //--- Right expression analysis
-  [self.mRightExpression analyzeSemanticExpression
-    !usefulnessCallerEntityName: inUsefulnessCallerEntityName
+  self.mRightExpression.analyzeSemanticExpression
+    (!usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inferenceType: leftExpression.mResultType
     !inAnalysisContext
     !?ioTypeMap
     !?ioVariableMap
     ?@semanticExpressionForGeneration rightExpression
-  ]
+  )
 //--- Check operator availability
   checkDiadicOperator (
     !operatorIsHandled: [leftExpression.mResultType.definition.features contains !.infixAddOperator]
@@ -457,8 +457,8 @@ override proc @addExpressionAST analyzeSemanticExpression
 override proc @subExpressionNoOverflowAST enterExpressionInSemanticContext
   (?!@unifiedTypeMap ioTypeMap
 ) {
-  [self.mLeftExpression enterExpressionInSemanticContext !?ioTypeMap]
-  [self.mRightExpression enterExpressionInSemanticContext !?ioTypeMap]
+  self.mLeftExpression.enterExpressionInSemanticContext (!?ioTypeMap)
+  self.mRightExpression.enterExpressionInSemanticContext (!?ioTypeMap)
 }
 
 //································································································
@@ -473,25 +473,25 @@ override proc @subExpressionNoOverflowAST analyzeSemanticExpression
   !@semanticExpressionForGeneration outExpression
 ) {
 //--- Left expression analysis
-  [self.mLeftExpression analyzeSemanticExpression
-    !usefulnessCallerEntityName: inUsefulnessCallerEntityName
+  self.mLeftExpression.analyzeSemanticExpression
+    (!usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inferenceType: inInferenceType
     !inAnalysisContext
     !?ioTypeMap
     !?ioVariableMap
     ?var @semanticExpressionForGeneration leftExpression
-  ]
+  )
 //--- Right expression analysis
-  [self.mRightExpression analyzeSemanticExpression
-    !usefulnessCallerEntityName: inUsefulnessCallerEntityName
+  self.mRightExpression.analyzeSemanticExpression
+    (!usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inferenceType: leftExpression.mResultType
     !inAnalysisContext
     !?ioTypeMap
     !?ioVariableMap
     ?@semanticExpressionForGeneration rightExpression
-  ]
+  )
 //--- Check operator availability
   checkDiadicOperator (
     !operatorIsHandled: [leftExpression.mResultType.definition.features contains !.infixSubOperatorNoOVF]
@@ -524,8 +524,8 @@ override proc @subExpressionNoOverflowAST analyzeSemanticExpression
 override proc @subExpressionAST enterExpressionInSemanticContext
   (?!@unifiedTypeMap ioTypeMap
 ) {
-  [self.mLeftExpression enterExpressionInSemanticContext !?ioTypeMap]
-  [self.mRightExpression enterExpressionInSemanticContext !?ioTypeMap]
+  self.mLeftExpression.enterExpressionInSemanticContext (!?ioTypeMap)
+  self.mRightExpression.enterExpressionInSemanticContext (!?ioTypeMap)
 }
 
 //································································································
@@ -539,25 +539,25 @@ override proc @subExpressionAST analyzeSemanticExpression
   ?!@localVarManager ioVariableMap,
   !@semanticExpressionForGeneration outExpression ) {
 //--- Left expression analysis
-  [self.mLeftExpression analyzeSemanticExpression
-    !usefulnessCallerEntityName: inUsefulnessCallerEntityName
+  self.mLeftExpression.analyzeSemanticExpression
+    (!usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inferenceType: inInferenceType
     !inAnalysisContext
     !?ioTypeMap
     !?ioVariableMap
     ?var @semanticExpressionForGeneration leftExpression
-  ]
+  )
 //--- Right expression analysis
-  [self.mRightExpression analyzeSemanticExpression
-    !usefulnessCallerEntityName: inUsefulnessCallerEntityName
+  self.mRightExpression.analyzeSemanticExpression
+    (!usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inferenceType: leftExpression.mResultType
     !inAnalysisContext
     !?ioTypeMap
     !?ioVariableMap
     ?@semanticExpressionForGeneration rightExpression
-  ]
+  )
 //--- Check operator availability
   checkDiadicOperator (
     !operatorIsHandled: [leftExpression.mResultType.definition.features contains !.infixSubOperator]
@@ -622,11 +622,11 @@ override proc @binaryOperatorExpressionForGeneration generateExpression
   ?!@uint ioTemporaryVariableIndex,
   ?!@stringset ioUnusedVariableCppNameSet,
   !@string outCppExpression ) {
-  [self.mLeftExpression.mResultType addHeaderFileName !?ioInclusionSet]
+  self.mLeftExpression.mResultType.addHeaderFileName (!?ioInclusionSet)
 //--- Left operand
-  [self.mLeftExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?let leftTemporaryOperand]
+  self.mLeftExpression.generateExpression (!?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?let leftTemporaryOperand)
 //--- Right operand
-  [self.mRightExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?let rightTemporaryOperand]
+  self.mRightExpression.generateExpression (!?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?let rightTemporaryOperand)
 //--- Generate Comparison
   let @string operatorString
   let @bool hasCompilerOption

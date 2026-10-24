@@ -235,17 +235,17 @@ proc analyzeRoutineBody (?let @lstring inUsefulnessCallerEntityName,
 //---  Analyze instruction list
   outSemanticInstructionListForGeneration = @semanticInstructionListForGeneration ()
   for (mInstruction) in inInstructionList do
-    [mInstruction analyzeSemanticInstruction
-      !inUsefulnessCallerEntityName
+    mInstruction.analyzeSemanticInstruction
+      (!inUsefulnessCallerEntityName
       !?ioUsefulEntitiesGraph
       !inAnalysisContext
       !?ioTypeMap
       !?outSemanticInstructionListForGeneration
       !?variableMap
-    ]
+    )
    end
 //---
-  [variableMap checkAutomatonStates !inEndOfMethodLocation]
+  variableMap.checkAutomatonStates (!inEndOfMethodLocation)
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -356,17 +356,17 @@ proc analyzeFunctionBody
 //---  Analyze instruction list
   outSemanticInstructionListForGeneration = @semanticInstructionListForGeneration ()
   for (mInstruction) in inInstructionList do
-    [mInstruction analyzeSemanticInstruction
-      !inUsefulnessCallerEntityName
+    mInstruction.analyzeSemanticInstruction
+      (!inUsefulnessCallerEntityName
       !?ioUsefulEntitiesGraph
       !inAnalysisContext
       !?ioTypeMap
       !?outSemanticInstructionListForGeneration
       !?variableMap
-    ]
+    )
    end
 //---
-  [variableMap checkAutomatonStates !inEndOfFunctionLocation]
+  variableMap.checkAutomatonStates (!inEndOfFunctionLocation)
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -493,14 +493,14 @@ override proc @filewrapperDeclarationAST semanticAnalysis
   let filewrapperNameForUsefulness = filewrapperNameForUsefulEntitiesGraph (!self.mFilewrapperName)
   !?ioUsefulEntitiesGraph.addNode (!filewrapperNameForUsefulness !filewrapperNameForUsefulness)
 //--- Get filewrapper features
-  [inSemanticContext.mFilewrapperMap searchKey
-    !self.mFilewrapperName
+  inSemanticContext.mFilewrapperMap.searchKey
+    (!self.mFilewrapperName
     ?*
     ?*
     ?let @wrapperFileMap wrapperFileMap
     ?let @wrapperDirectoryMap wrapperDirectoryMap
     ?2*
-  ]
+  )
 //--- Build absolute path
   let @string absoluteSourcePath
   if self.mFilewrapperPath.string.firstCharacterOrNul == '/' then
@@ -588,14 +588,14 @@ override proc @galgas3SyntaxComponentAST semanticAnalysis
   let nameForUsefulness = syntaxNameForUsefulEntitiesGraph (!self.mSyntaxComponentName)
   !?ioUsefulEntitiesGraph.addNode (!nameForUsefulness !nameForUsefulness)
 //-------------------------------------- Build terminal map
-  [inSemanticContext.mLexiqueComponentMapForSemanticAnalysis searchKey
-    !self.mLexiqueName
+  inSemanticContext.mLexiqueComponentMapForSemanticAnalysis.searchKey
+    (!self.mLexiqueName
     ?*
     ?let @terminalMap terminalMap
     ?let @indexingListAST indexingListAST
 //    ?let @lstring indexingDirectory
     ?4*
-  ]
+  )
 //-------------------------------------- Build "indexing" set
   var @stringset indexNameSet = @()
   for (mIndexName *) in indexingListAST do
@@ -655,13 +655,13 @@ override proc @galgas3GrammarComponentAST semanticAnalysis
     let syntaxNameForUsefulness = syntaxNameForUsefulEntitiesGraph (!syntaxComponentName)
     !?ioUsefulEntitiesGraph.addEdge (!from: grammarNameForUsefulness !to: syntaxNameForUsefulness)
     let @uint addedNonTerminalCountRef = addedNonTerminalCount
-    [inSemanticContext.mSyntaxComponentMapForSemanticAnalysis searchKey
-      !syntaxComponentName
+    inSemanticContext.mSyntaxComponentMapForSemanticAnalysis.searchKey
+      (!syntaxComponentName
       ?let @lstring lexiqueName
       ?let @nonterminalDeclarationListAST nonterminalDeclarationList
       ?let @syntaxRuleListAST ruleList
       ?let @bool hasTranslateFeature
-    ]
+    )
     let lexiqueNameForUsefulness = lexiqueNameForUsefulEntitiesGraph (!lexiqueName)
     !?ioUsefulEntitiesGraph.addEdge (!from: grammarNameForUsefulness !to: lexiqueNameForUsefulness)
   //--- Check translate feature
@@ -705,11 +705,11 @@ override proc @galgas3GrammarComponentAST semanticAnalysis
   end
 //--------------------------------------------------------- Start symbol
 //--- Search start symbol in non terminal map
-  [nonTerminalMapForGrammarAnalysis searchKey
-    !self.mStartSymbolName
+  nonTerminalMapForGrammarAnalysis.searchKey
+    (!self.mStartSymbolName
     ?let @uint startSymbolIndex
     ?let @nonterminalSymbolLabelMapForGrammarAnalysis startSymbolAltMap
-  ]
+  )
 //--- Check signatures
   checkLabelMap (
     !self.mStartSymbolName.location
@@ -720,7 +720,7 @@ override proc @galgas3GrammarComponentAST semanticAnalysis
 //--------------------------------------------------------- Unused Non Terminal Symbols
   var @unusedNonTerminalSymbolMapForGrammarAnalysis unusedNonTerminalSymbolsForGrammar = @()
   for (mValue) in self.mUnusedNonterminalList do
-    [nonTerminalMapForGrammarAnalysis searchKey !mValue ?let @uint nonterminalIndex ?*]
+    nonTerminalMapForGrammarAnalysis.searchKey (!mValue ?let @uint nonterminalIndex ?*)
     !?unusedNonTerminalSymbolsForGrammar.insertKey (!mValue !nonterminalIndex)
   end
 //--------------------------------------------------------- Non terminal symbols, sorted by index
@@ -758,7 +758,7 @@ override proc @galgas3GrammarComponentAST semanticAnalysis
         switch mFormalArgumentPassingModeForGrammarAnalysis
         case argumentVarIn, argumentConstantIn :
           let t = [ioTypeMap typeMapEntryForLKey !mGalgasTypeNameForGrammarAnalysis]
-          [t addHeaderFileName !?implementationFileHeader]
+          t.addHeaderFileName (!?implementationFileHeader)
         case argumentInOut, argumentOut :
         end
       end
@@ -787,16 +787,16 @@ override proc @galgas3GrammarComponentAST semanticAnalysis
   )
 //--------------------------------------------------------- Generate HTML grammar helper file
   if [option galgas_cli_options.outputHTMLgrammarFile value] then
-    [HTMLFilePath.deletingLastPathComponent makeDirectory]
-    [grammarHTMLHelperContents writeToFileWhenDifferentContents !HTMLFilePath ?*]
+    HTMLFilePath.deletingLastPathComponent.makeDirectory ()
+    grammarHTMLHelperContents.writeToFileWhenDifferentContents (!HTMLFilePath ?*)
   else
     @string.deleteFileIfExists (!HTMLFilePath)
   end
 //--------------------------------------------------------- Generate Swift description file
   let swiftFilePath = inProductDirectory + "/../helpers/" + self.mGrammarComponentName + ".swift"
   if [option galgas_cli_options.outputGrammarSwiftDescriptionFile value] then
-    [swiftFilePath.deletingLastPathComponent makeDirectory]
-    [swiftGrammarDescription writeToFileWhenDifferentContents !swiftFilePath ?*]
+    swiftFilePath.deletingLastPathComponent.makeDirectory ()
+    swiftGrammarDescription.writeToFileWhenDifferentContents (!swiftFilePath ?*)
   else
     @string.deleteFileIfExists (!swiftFilePath)
   end
@@ -1027,14 +1027,14 @@ override proc @semanticInstructionAST analyzeSyntaxInstruction
   ?!@localVarManager ioVariableMap,
   ?!@uint unused ioSelectMethodCount
 ) {
-  [self analyzeSemanticInstruction
-    !inUsefulnessCallerEntityName
+  self.analyzeSemanticInstruction
+    (!inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inAnalysisContext
     !?ioTypeMap
     !?ioInstructionListForGeneration
     !?ioVariableMap
-  ]
+  )
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -1357,8 +1357,8 @@ proc analyzeSyntaxInstructionList
   !?ioVariableMap.openBranch ()
 //--- Instruction list
   for (mInstruction) in inSyntaxInstructionListAST do
-    [mInstruction analyzeSyntaxInstruction
-      !inUsefulnessCallerEntityName
+    mInstruction.analyzeSyntaxInstruction
+      (!inUsefulnessCallerEntityName
       !?ioUsefulEntitiesGraph
       !inAnalysisContext
       !?ioTypeMap
@@ -1371,7 +1371,7 @@ proc analyzeSyntaxInstructionList
       !?outInstructionListForGeneration
       !?ioVariableMap
       !?ioSelectMethodCount
-    ]
+    )
   end
 //--- Branch end
   !?ioVariableMap.closeBranch (!inEndOfBranchLocation)
@@ -1419,8 +1419,8 @@ proc semanticAnalysisOfRuleLabel
   outInstructionListForGeneration = @semanticInstructionListForGeneration ()
 //  var localVariableCppNameList = @stringlist ()
   for (mInstruction) in inSyntaxInstructionList do
-    [mInstruction analyzeSyntaxInstruction
-      !inUsefulnessCallerEntityName
+    mInstruction.analyzeSyntaxInstruction
+      (!inUsefulnessCallerEntityName
       !?ioUsefulEntitiesGraph
       !inAnalysisContext
       !?ioTypeMap
@@ -1433,10 +1433,10 @@ proc semanticAnalysisOfRuleLabel
       !?outInstructionListForGeneration
       !?variableMap
       !?ioSelectMethodCount
-    ]
+    )
   end
 //---
-  [variableMap checkAutomatonStates !inEndOfInstructionList]
+  variableMap.checkAutomatonStates (!inEndOfInstructionList)
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -1504,7 +1504,7 @@ private proc semanticAnalysisOfSyntaxComponent
   //---
     var @ruleLabelImplementationList ruleLabelImplementationList = @()
     var @uint localSelectMethodCount = selectMethodCount
-    [nonterminalMap searchKey !mNonterminalName ?*]
+    nonterminalMap.searchKey (!mNonterminalName ?*)
     for (mLabelName mFormalArguments mEndOfArgumentLocation mSyntaxInstructionList mEndOfInstructionList) in mLabelList do
       localSelectMethodCount = selectMethodCount
       semanticAnalysisOfRuleLabel (
@@ -1534,7 +1534,7 @@ private proc semanticAnalysisOfSyntaxComponent
         !instructionListForGeneration
     end
     selectMethodCount = localSelectMethodCount
-    [nonterminalMap searchKey !mNonterminalName ?*]
+    nonterminalMap.searchKey (!mNonterminalName ?*)
     ruleDeclarationList +=
       !mNonterminalName.string
       !newRuleIndex
@@ -1556,7 +1556,7 @@ private proc semanticAnalysisOfSyntaxComponent
 
 private proc emitClassGraphFile (?let @string inDotDocumentFilePath,
                                 ?let @unifiedTypeMap inTypeMap ) {
-  [inDotDocumentFilePath.deletingLastPathComponent makeDirectory]
+  inDotDocumentFilePath.deletingLastPathComponent.makeDirectory ()
   var document = "digraph G {\n"
   document += "  rankdir=LR ;\n"
   document += "  node [shape=record fontname=helvetica style=rounded] ;\n"
@@ -1579,7 +1579,7 @@ private proc emitClassGraphFile (?let @string inDotDocumentFilePath,
     end
   end
   document += "}\n"
-  [document writeToFileWhenDifferentContents !inDotDocumentFilePath ?*]
+  document.writeToFileWhenDifferentContents (!inDotDocumentFilePath ?*)
 }
 
 //--------------------------------------------------------------------------------------------------

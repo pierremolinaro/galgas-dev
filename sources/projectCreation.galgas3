@@ -45,17 +45,25 @@ filewrapper projectCreationFileWrapper in "+generation-templates/project_creatio
 
 proc performProjectCreation (?let @string inProjectPath ) {
   let @string projectName = inProjectPath.lastPathComponent
-  [[filewrapper projectCreationFileWrapper.PROJECT_project !projectName] writeToFile !inProjectPath +"/+" +projectName +".galgas4project"]
+  let s1 = [filewrapper projectCreationFileWrapper.PROJECT_project !projectName]
+  s1.writeToFile (!inProjectPath +"/+" +projectName +".galgas4project")
 //--- galgas_sources
   let @string galgas_sources_DIR = inProjectPath + "/sources"
-  [galgas_sources_DIR makeDirectory]
-  [[filewrapper projectCreationFileWrapper.PROJECT_cocoa !projectName] writeToFile !galgas_sources_DIR +"/" +projectName +"-cocoa.galgas4"]
-  [[filewrapper projectCreationFileWrapper.PROJECT_grammar !projectName] writeToFile !galgas_sources_DIR +"/" +projectName +"-grammar.galgas4"]
-  [[filewrapper projectCreationFileWrapper.PROJECT_lexique !projectName] writeToFile !galgas_sources_DIR +"/" +projectName +"-lexique.galgas4"]
-  [[filewrapper projectCreationFileWrapper.PROJECT_options !projectName] writeToFile !galgas_sources_DIR +"/" +projectName +"-options.galgas4"]
-  [[filewrapper projectCreationFileWrapper.PROJECT_program !projectName] writeToFile !galgas_sources_DIR +"/" +projectName +"-program.galgas"]
-  [[filewrapper projectCreationFileWrapper.PROJECT_semantics !projectName] writeToFile !galgas_sources_DIR +"/" +projectName +"-semantics.galgas4"]
-  [[filewrapper projectCreationFileWrapper.PROJECT_syntax !projectName] writeToFile !galgas_sources_DIR +"/" +projectName +"-syntax.galgas4"]
+  galgas_sources_DIR.makeDirectory ()
+  let s2 = [filewrapper projectCreationFileWrapper.PROJECT_cocoa !projectName]
+  s2.writeToFile (!galgas_sources_DIR +"/" +projectName +"-cocoa.galgas4")
+  let s3 = [filewrapper projectCreationFileWrapper.PROJECT_grammar !projectName]
+  s3.writeToFile (!galgas_sources_DIR +"/" +projectName +"-grammar.galgas4")
+  let s4 = [filewrapper projectCreationFileWrapper.PROJECT_lexique !projectName]
+  s4.writeToFile (!galgas_sources_DIR +"/" +projectName +"-lexique.galgas4")
+  let s5 = [filewrapper projectCreationFileWrapper.PROJECT_options !projectName]
+  s5.writeToFile (!galgas_sources_DIR +"/" +projectName +"-options.galgas4")
+  let s6 = [filewrapper projectCreationFileWrapper.PROJECT_program !projectName]
+  s6.writeToFile (!galgas_sources_DIR +"/" +projectName +"-program.galgas")
+  let s7 = [filewrapper projectCreationFileWrapper.PROJECT_semantics !projectName]
+  s7.writeToFile (!galgas_sources_DIR +"/" +projectName +"-semantics.galgas4")
+  let s8 = [filewrapper projectCreationFileWrapper.PROJECT_syntax !projectName]
+  s8.writeToFile (!galgas_sources_DIR +"/" +projectName +"-syntax.galgas4")
 //---
    println (!"*** DONE ***")
 }

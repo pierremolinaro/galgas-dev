@@ -296,8 +296,8 @@ override proc @overridingExtensionGetterAST semanticAnalysis (
   loop (ioTypeMap.count + 1)
   while (not superType.isNull) & (baseTypeName == "") do
     if [superType.definition.getterMap hasKey !self.mOverridingExtensionGetterName.string] then
-       [superType.definition.getterMap searchKey
-        !self.mOverridingExtensionGetterName
+       superType.definition.getterMap.searchKey
+        (!self.mOverridingExtensionGetterName
         ?*
         ?inheritedSignature
         ?inheritedDeclarationLocation
@@ -305,7 +305,7 @@ override proc @overridingExtensionGetterAST semanticAnalysis (
         ?inheritedReturnType
         ?let @methodQualifier qualifier
         ?*
-      ]
+      )
       if qualifier <= @methodQualifier.isBasicFinal then
         baseTypeName = superType.definition.typeName.string
       end

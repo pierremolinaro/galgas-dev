@@ -94,15 +94,15 @@ final class @syntaxSendInstructionAST : @syntaxInstructionAST {
       )
     end
   //--- Analyze source expression
-    [self.mExpression analyzeSemanticExpression
-      !usefulnessCallerEntityName: inUsefulnessCallerEntityName
+    self.mExpression.analyzeSemanticExpression
+      (!usefulnessCallerEntityName: inUsefulnessCallerEntityName
       !?ioUsefulEntitiesGraph
       !inferenceType: @unifiedTypeMapEntry.null
       !inAnalysisContext
       !?ioTypeMap
       !?ioVariableMap
       ?let @semanticExpressionForGeneration expression
-    ]
+    )
   //--- Check expression type
     if expression.mResultType != inAnalysisContext.predefinedTypes.mStringType  then
       error (self.mInstructionLocation: "'send' expresion should be an @string expression")
@@ -132,13 +132,13 @@ final class @syntaxSendInstructionForGeneration : @syntaxInstructionForGeneratio
                                        ?!@stringset ioUnusedVariableCppNameSet,
                                        ?let @bool unused inGenerateSyntaxDirectedTranslationString,
                                        ?!@string ioGeneratedCode) {
-    [self.mExpression generateExpression
-      !?ioGeneratedCode
+    self.mExpression.generateExpression
+      (!?ioGeneratedCode
       !?ioInclusionSet
       !?ioTemporaryVariableIndex
       !?ioUnusedVariableCppNameSet
       ?let @string sourceVar
-    ]
+    )
   //---
     !?ioUnusedVariableCppNameSet.removeKey (!syntaxDirectedTranslationResultVarName ())
     ioGeneratedCode += "if (" + sourceVar + ".isValid ()) {\n"

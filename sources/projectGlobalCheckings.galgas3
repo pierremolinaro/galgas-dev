@@ -44,7 +44,7 @@ struct @genericExtensionMethodListMap {
   setter insertKey  (?let @string inKey,
                     ?let @lstring inValue ) {
     if [self.dictionary hasKey !inKey] then
-      [self.dictionary searchKey !inKey ?var aList]
+      self.dictionary.searchKey (!inKey ?var aList)
       !?aList.append (!inValue)
       self.dictionary += !inKey !aList
     else
@@ -56,7 +56,7 @@ struct @genericExtensionMethodListMap {
 
   func listForKey ?let @string inKey -> @lstringlist {
     if [self.dictionary hasKey !inKey] then
-      [self.dictionary searchKey !inKey ?result]
+      self.dictionary.searchKey (!inKey ?result)
    else
       result = @()
     end
@@ -113,7 +113,7 @@ struct @descendantClassListMap {
   setter insertKey  (?let @string inKey,
                     ?let @unifiedTypeMapEntry inType ) {
     if [self.dictionary hasKey !inKey] then
-      [self.dictionary searchKey !inKey ?var aList]
+      self.dictionary.searchKey (!inKey ?var aList)
       !?aList.append (!inType)
       self.dictionary += !inKey !aList
     else
@@ -125,7 +125,7 @@ struct @descendantClassListMap {
 
   func listForKey ?let @string inKey -> @unifiedTypeMapEntryList {
     if [self.dictionary hasKey !inKey] then
-      [self.dictionary searchKey !inKey ?result]
+      self.dictionary.searchKey (!inKey ?result)
    else
       result = @()
     end
@@ -314,8 +314,8 @@ proc performGalgas3ProjectGlobalCheckings
   var @genericExtensionMethodListMap overridingExtensionSetterListMap = @()
   var @genericExtensionMethodListMap overridingAbstractExtensionSetterListMap = @()
   for (mSemanticDeclaration) in inSemanticDeclarationList do
-    [mSemanticDeclaration buildExtensionListMaps
-      !?abstractExtensionSetterListMap
+    mSemanticDeclaration.buildExtensionListMaps
+      (!?abstractExtensionSetterListMap
       !?extensionSetterListMap
       !?overridingExtensionSetterListMap
       !?overridingAbstractExtensionSetterListMap
@@ -327,7 +327,7 @@ proc performGalgas3ProjectGlobalCheckings
       !?extensionReaderListMap
       !?overridingExtensionGetterListMap
       !?overridingAbstractExtensionGetterListMap
-    ]
+    )
   end
 //----- Check Extension
   if @uint.errorCount == 0 then

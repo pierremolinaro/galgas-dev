@@ -135,9 +135,9 @@ final class @ifInstructionAST : @semanticInstructionAST {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc enterInstructionInSemanticContext (?!@unifiedTypeMap ioTypeMap ) {
-    [self.mExpressions enterExpressionListInSemanticContext !?ioTypeMap]
-    [self.m_then_instructionList enterInstructionListInSemanticContext !?ioTypeMap]
-    [self.m_else_instructionList enterInstructionListInSemanticContext !?ioTypeMap]
+    self.mExpressions.enterExpressionListInSemanticContext (!?ioTypeMap)
+    self.m_then_instructionList.enterInstructionListInSemanticContext (!?ioTypeMap)
+    self.m_else_instructionList.enterInstructionListInSemanticContext (!?ioTypeMap)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -173,14 +173,14 @@ final class @ifInstructionAST : @semanticInstructionAST {
                             ?!@semanticInstructionListForGeneration ioInstructionListForGeneration,
                             ?!@localVarManager ioVariableMap ) {
   //--- Test expression
-   [self.mExpressions analyzeSemanticExpressionList
-     !inUsefulnessCallerEntityName
+   self.mExpressions.analyzeSemanticExpressionList
+     (!inUsefulnessCallerEntityName
      !?ioUsefulEntitiesGraph
      !inAnalysisContext
      !?ioTypeMap
      !?ioVariableMap
      ?let @ifTestListForGeneration testListForGeneration
-   ]
+   )
   //--- Then branch
     analyzeSemanticInstructionListWithoutBranch (
       !inUsefulnessCallerEntityName
@@ -264,13 +264,13 @@ final class @ifInstructionForGeneration : @semanticInstructionForGeneration {
                                       ?let @bool inGenerateSyntaxDirectedTranslationString,
                                       ?!@string ioGeneratedCode ) {
   //--- Generate test expression
-    [self.mExpressions generateInstruction
-      !?ioInclusionSet
+    self.mExpressions.generateInstruction
+      (!?ioInclusionSet
       !?ioTemporaryVariableIndex
       !?ioUnusedVariableCppNameSet
       !?ioGeneratedCode
       ?let @string testVar
-    ]
+    )
   //--- Then branch
     ioGeneratedCode += "if (GalgasBool::boolTrue == " + testVar + ") {\n"
     generateInstructionList (

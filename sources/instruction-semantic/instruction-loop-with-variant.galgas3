@@ -128,10 +128,10 @@ syntax extension galgas4InstructionsSyntax {
 //--------------------------------------------------------------------------------------------------
 
 override proc @loopInstructionWithVariantAST enterInstructionInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
-  [self.mVariantExpression enterExpressionInSemanticContext !?ioTypeMap]
-  [self.mLoopExpression enterExpressionInSemanticContext !?ioTypeMap]
-  [self.mFirstInstructions enterInstructionListInSemanticContext !?ioTypeMap]
-  [self.mSecondInstructions enterInstructionListInSemanticContext !?ioTypeMap]
+  self.mVariantExpression.enterExpressionInSemanticContext (!?ioTypeMap)
+  self.mLoopExpression.enterExpressionInSemanticContext (!?ioTypeMap)
+  self.mFirstInstructions.enterInstructionListInSemanticContext (!?ioTypeMap)
+  self.mSecondInstructions.enterInstructionListInSemanticContext (!?ioTypeMap)
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -146,15 +146,15 @@ override proc @loopInstructionWithVariantAST analyzeSemanticInstruction (
                         ?!@semanticInstructionListForGeneration ioInstructionListForGeneration,
                         ?!@localVarManager ioVariableMap) {
 //--- Variant expression
-  [self.mVariantExpression analyzeSemanticExpression
-    !usefulnessCallerEntityName: inUsefulnessCallerEntityName
+  self.mVariantExpression.analyzeSemanticExpression
+    (!usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inferenceType: @unifiedTypeMapEntry.null
     !inAnalysisContext
     !?ioTypeMap
     !?ioVariableMap
     ?var variantExpression
-  ]
+  )
 //--- Check variant expression type is @uint
   checkAssignmentTypeWithImplicitGetterCall (
     !inAnalysisContext.predefinedTypes.mUIntType
@@ -163,15 +163,15 @@ override proc @loopInstructionWithVariantAST analyzeSemanticInstruction (
     !?variantExpression
   )
 //--- Loop expression
-  [self.mLoopExpression analyzeSemanticExpression
-    !usefulnessCallerEntityName: inUsefulnessCallerEntityName
+  self.mLoopExpression.analyzeSemanticExpression
+    (!usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inferenceType: @unifiedTypeMapEntry.null
     !inAnalysisContext
     !?ioTypeMap
     !?ioVariableMap
     ?let loopExpression
-  ]
+  )
 //--- Check loop expression type is @bool
   if loopExpression.mResultType != inAnalysisContext.predefinedTypes.mBoolType then
     error (self.mEndOfLoopExpression
@@ -239,13 +239,13 @@ override proc @loopInstructionWithVariantForGeneration generateInstruction (?!@s
   ?let @bool inGenerateSyntaxDirectedTranslationString,
   ?!@string ioGeneratedCode) {
 //--- Variant expression
-  [self.mVariantExpression generateExpression
-    !?ioGeneratedCode
+  self.mVariantExpression.generateExpression
+    (!?ioGeneratedCode
     !?ioInclusionSet
     !?ioTemporaryVariableIndex
     !?ioUnusedVariableCppNameSet
     ?let @string variantCppVarName
-  ]
+  )
   ioGeneratedCode += "if (" + variantCppVarName + ".isValid ()) {\n"
   !?ioGeneratedCode.incIndentation (!2)
   let @string variantVar = "variant_" + self.mInstructionLocation.startLocationIndex.string
@@ -262,7 +262,7 @@ override proc @loopInstructionWithVariantForGeneration generateInstruction (?!@s
     !inGenerateSyntaxDirectedTranslationString
     !?ioGeneratedCode
   )
-  [self.mLoopExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?let loopExpressionVar]
+  self.mLoopExpression.generateExpression (!?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?let loopExpressionVar)
   ioGeneratedCode += loopVar + " = " + loopExpressionVar + ".isValid () ;\n"
                    + "if (" + loopVar + ") {\n"
                    + "  " + loopVar + " = " + loopExpressionVar + ".boolValue () ;\n"

@@ -434,10 +434,10 @@ private proc guiComponentSemanticAnalysis (?let @galgasGUIComponentListAST.@elem
   context.mProjectIndexingDescriptorList = inGUIComponentAST.mProjectIndexingDescriptorList
 //--- Check imported options components
   for (mValue) in inGUIComponentAST.mImportedOptionList do
-    [inSemanticContext.mOptionComponentMapForSemanticAnalysis searchKey
-      !mValue
+    inSemanticContext.mOptionComponentMapForSemanticAnalysis.searchKey
+      (!mValue
       ?5*
-    ]
+    )
     context.mImportedOptionComponentList += !mValue.string
   end
 //--- Nib and main classes
@@ -463,14 +463,14 @@ private proc guiComponentSemanticAnalysis (?let @galgasGUIComponentListAST.@elem
 //--- 'with lexique' construct analysis
   for (lexiqueFileName labels simpleAttributes compoundAttributes) in inGUIComponentAST.mWithLexiqueList do (idx)
   //--- Check lexique
-    [inSemanticContext.mLexiqueComponentMapForSemanticAnalysis searchKey
-      !lexiqueFileName
+    inSemanticContext.mLexiqueComponentMapForSemanticAnalysis.searchKey
+      (!lexiqueFileName
       ?*
       ?let @terminalMap terminalMap
       ?3*
       ?let lexicalStyleListAST
       ?*
-    ]
+    )
   //--- Build terminal symbol set
     let terminalSymbolSet = terminalMap.keySet
   //--- Check labels

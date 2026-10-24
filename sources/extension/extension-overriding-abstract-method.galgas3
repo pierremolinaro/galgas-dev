@@ -209,15 +209,15 @@ override proc @overridingAbstractExtensionMethodAST semanticAnalysis (
   loop (ioTypeMap.count + 1)
   while (not superType.isNull) & (baseTypeName == "") do
     if [superType.definition.instanceMethodMap hasKey !self.mOverridingExtensionMethodName.string] then
-       [superType.definition.instanceMethodMap searchKey
-        !self.mOverridingExtensionMethodName
+       superType.definition.instanceMethodMap.searchKey
+        (!self.mOverridingExtensionMethodName
         ?*
         ?inheritedSignature
         ?inheritedDeclarationLocation
         ?*
         ?let qualifier
         ?*
-      ]
+      )
       if qualifier <= @methodQualifier.isBasicFinal then
         baseTypeName = superType.definition.typeName.string
       end

@@ -117,14 +117,14 @@ proc analyzeSemanticInstructionListWithoutBranch
   end
 //--- Instruction list
   for (mInstruction) in inSemanticInstructionListAST do
-    [mInstruction analyzeSemanticInstruction
-      !inUsefulnessCallerEntityName
+    mInstruction.analyzeSemanticInstruction
+      (!inUsefulnessCallerEntityName
       !?ioUsefulEntitiesGraph
       !inAnalysisContext
       !?ioTypeMap
       !?outInstructionListForGeneration
       !?ioVariableMap
-    ]
+    )
   end
 }
 
@@ -153,13 +153,13 @@ proc checkExpressionIsBoolean
     outExpression = inExpression
   elsif expressionType.definition.typeKind == .structType then
     if [expressionType.definition.propertyMap hasKey !"bool"] then
-      [expressionType.definition.propertyMap searchKey
-        !@lstring {!"bool" !inErrorLocation}
+      expressionType.definition.propertyMap.searchKey
+        (!@lstring {!"bool" !inErrorLocation}
         ?let accessControl
         ?*
         ?let @unifiedTypeMapEntry attributeType
-      ]
-      [accessControl checkSetAccess !inAnalysisContext.selfAvailability !inErrorLocation]
+      )
+      accessControl.checkSetAccess (!inAnalysisContext.selfAvailability !inErrorLocation)
       if attributeType == boolType then
         outExpression = @propertyAccessExpressionForGeneration {
           !boolType

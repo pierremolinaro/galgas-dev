@@ -107,9 +107,9 @@ final class @loopInstructionWithoutVariantAST : @semanticInstructionAST {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc enterInstructionInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
-    [self.mLoopExpression enterExpressionListInSemanticContext !?ioTypeMap]
-    [self.mFirstInstructions enterInstructionListInSemanticContext !?ioTypeMap]
-    [self.mSecondInstructions enterInstructionListInSemanticContext !?ioTypeMap]
+    self.mLoopExpression.enterExpressionListInSemanticContext (!?ioTypeMap)
+    self.mFirstInstructions.enterInstructionListInSemanticContext (!?ioTypeMap)
+    self.mSecondInstructions.enterInstructionListInSemanticContext (!?ioTypeMap)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -122,14 +122,14 @@ final class @loopInstructionWithoutVariantAST : @semanticInstructionAST {
                         ?!@semanticInstructionListForGeneration ioInstructionListForGeneration,
                         ?!@localVarManager ioVariableMap) {
   //--- Loop expression
-   [self.mLoopExpression analyzeSemanticExpressionList
-     !inUsefulnessCallerEntityName
+   self.mLoopExpression.analyzeSemanticExpressionList
+     (!inUsefulnessCallerEntityName
      !?ioUsefulEntitiesGraph
      !inAnalysisContext
      !?ioTypeMap
      !?ioVariableMap
      ?let @ifTestListForGeneration testListForGeneration
-   ]
+   )
   //--- Begin override for analyze loop instruction list
     !?ioVariableMap.openOverrideForRepeatBlock ()
   //--- First branch
@@ -204,13 +204,13 @@ final class @loopInstructionWithoutVariantForGeneration : @semanticInstructionFo
       !inGenerateSyntaxDirectedTranslationString
       !?ioGeneratedCode
     )
-    [self.mLoopExpression generateInstruction
-      !?ioInclusionSet
+    self.mLoopExpression.generateInstruction
+      (!?ioInclusionSet
       !?ioTemporaryVariableIndex
       !?ioUnusedVariableCppNameSet
       !?ioGeneratedCode
       ?let loopExpressionVar
-    ]
+    )
     ioGeneratedCode += loopVar + " = " + loopExpressionVar + " == GalgasBool::boolTrue ;\n"
 //    ioGeneratedCode += "if (" + loopVar + ") {\n"
 //    ioGeneratedCode += "  " + loopVar + " = " + loopExpressionVar + ".boolValue () ;\n"

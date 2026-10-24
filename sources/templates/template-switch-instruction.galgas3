@@ -136,13 +136,13 @@ override proc @templateInstructionSwitchAST templateInstructionAnalysis
                                 ?!@unifiedTypeMap ioTypeMap,
                                 ?!@templateInstructionListForGeneration ioInstructionList ) {
 //---
-  [self.mSwitchExpression templateExpressionAnalysis
-    !inUsefulnessCallerEntityName
+  self.mSwitchExpression.templateExpressionAnalysis
+    (!inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inAnalysisContext
     !?ioTypeMap
     ?let switchExpression
-  ]
+  )
   if let enumType = switchExpression.mResultType.definition.typeKind.getEnumType then
     var @stringset constantsNamedInSwitchInstruction = @()
   //--- Analyze branches
@@ -157,7 +157,7 @@ override proc @templateInstructionSwitchAST templateInstructionAnalysis
             :"the '" + constantName + "' constant is already named in this switch instruction")
           end
           constantsNamedInSwitchInstruction ++= constantName.string
-          [enumType.constantMap searchKey !constantName ?* ?let @associatedValueDescriptorList associatedTypeList]
+          enumType.constantMap.searchKey (!constantName ?* ?let @associatedValueDescriptorList associatedTypeList)
           if (associatedTypeList.count > 0) & (mAssociatedValuesExtraction.count == 0) then
             error (constantName
               :"the associated values of '" + constantName + "' constant should be extracted")
@@ -262,13 +262,13 @@ override proc @templateInstructionSwitchForGeneration templateCodeGeneration
   ?!@bool ioUseColumnMarker
 ) {
 //--- Expression
-  [self.switchExpression generateExpression
-    !?ioGeneratedCode
+  self.switchExpression.generateExpression
+    (!?ioGeneratedCode
     !?ioInclusionSet
     !?ioTemporaryVariableIndex
     !?ioUnusedVariableCppNameSet
     ?let switchVarCppName
-  ]
+  )
 //---
   ioGeneratedCode += "switch (" + switchVarCppName + ".enumValue ()) {\n"
   ioGeneratedCode += "case GGS_"
@@ -287,7 +287,7 @@ override proc @templateInstructionSwitchForGeneration templateCodeGeneration
     ioGeneratedCode += "{\n"
     if branch.mExtractedAssociatedValuesForGeneration.count > 0 then
       for associatedValue in branch.mExtractedAssociatedValuesForGeneration do
-        [associatedValue.mType addHeaderFileName !?ioInclusionSet]
+        associatedValue.mType.addHeaderFileName (!?ioInclusionSet)
         ioGeneratedCode += "  GGS_" + associatedValue.mType.identifierRepresentation
         ioGeneratedCode += " " + associatedValue.mCppName + " ;\n"
       end

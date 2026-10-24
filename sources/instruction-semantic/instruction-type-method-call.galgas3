@@ -85,7 +85,7 @@ syntax extension galgas4InstructionsSyntax {
 
 override proc @typeMethodCallInstructionAST enterInstructionInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
   for (mActualParameter) in self.mActualParameterList do
-    [mActualParameter enterParameterInSemanticContext !?ioTypeMap]
+    mActualParameter.enterParameterInSemanticContext (!?ioTypeMap)
   end
 }
 
@@ -103,10 +103,10 @@ override proc @typeMethodCallInstructionAST analyzeSemanticInstruction (
 //--- Get type proc map for the named type
   let type = [ioTypeMap typeMapEntryForLKey !self.mTypeName]
 //--- Get type proc signature
-  [type.definition.classMethodMap searchKey !self.mMethodName ?let routineSignature ?let hasCompilerArgument]
+  type.definition.classMethodMap.searchKey (!self.mMethodName ?let routineSignature ?let hasCompilerArgument)
 //--- Check effective parameters
-  [self.mActualParameterList analyzeRoutineArguments
-    !inUsefulnessCallerEntityName
+  self.mActualParameterList.analyzeRoutineArguments
+    (!inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inAnalysisContext
     !?ioTypeMap
@@ -116,7 +116,7 @@ override proc @typeMethodCallInstructionAST analyzeSemanticInstruction (
     !?ioVariableMap
     !?ioInstructionListForGeneration
     ?let @actualParameterListForGeneration actualParameterListForGeneration
-  ]
+  )
 //--- Generate instructions
   ioInstructionListForGeneration += !@typeMethodCallInstructionForGeneration {
     !self.mTypeName
@@ -149,14 +149,14 @@ override proc @typeMethodCallInstructionForGeneration generateInstruction (?!@st
   var jokerParametersToReleaseList = @stringlist ()
   var inputVariableList = @stringlist ()
   for (mActualParameter) in self.mActualParameterList do
-    [mActualParameter generateActualParameter
-      !?ioInclusionSet
+    mActualParameter.generateActualParameter
+      (!?ioInclusionSet
       !?ioTemporaryVariableIndex
       !?ioGeneratedCode
       !?jokerParametersToReleaseList
       !?inputVariableList
       !?ioUnusedVariableCppNameSet
-      ?let @string parameterCppName]
+      ?let @string parameterCppName)
     parameterCppNameList += !parameterCppName
   end
 //--- Generate proc call

@@ -589,15 +589,6 @@ GGS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_de
 
 //--------------------------------------------------------------------------------------------------
 //
-//Filewrapper template 'targetGalgas3GenerationFileWrapper build_release_win32_on_mac'
-//
-//--------------------------------------------------------------------------------------------------
-
-GGS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_release_5F_win_33__32__5F_on_5F_mac (class Compiler * inCompiler
-                                                                                                                   COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
 //Filewrapper template 'targetGalgas3GenerationFileWrapper build_lto_win32_on_mac'
 //
 //--------------------------------------------------------------------------------------------------

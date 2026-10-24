@@ -376,8 +376,8 @@ final class @arrayTypeForGeneration : @semanticTypeForGeneration {
   override proc appendSpecificImplementation  (?let @unifiedTypeMap unused inTypeMap,
                                           ?!@stringset ioInclusionSet,
                                           !@string outImplementation ) {
-    [self.elementType addHeaderFileName !?ioInclusionSet]
-    [self.mSelfTypeEntry addHeaderFileName !?ioInclusionSet]
+    self.elementType.addHeaderFileName (!?ioInclusionSet)
+    self.mSelfTypeEntry.addHeaderFileName (!?ioInclusionSet)
     let selfTypeDefinition = self.mSelfTypeEntry.definition
     outImplementation = [filewrapper arrayTypeGenerationTemplate.arrayTypeSpecificImplementation
       !selfTypeDefinition.typeName.string

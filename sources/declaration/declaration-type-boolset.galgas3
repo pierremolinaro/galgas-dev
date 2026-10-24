@@ -360,7 +360,7 @@ override proc @boolsetTypeForGeneration appendSpecificImplementation
   ?!@stringset ioInclusionSet,
   !@string outImplementation
 ) {
-  [self.mSelfTypeEntry  addHeaderFileName !?ioInclusionSet]
+  self.mSelfTypeEntry.addHeaderFileName (!?ioInclusionSet)
   outImplementation = [filewrapper structGenerationTemplate.boolsetTypeSpecificImplementation
     !self.mSelfTypeEntry.definition.typeName.string
     !self.mSelfTypeEntry.identifierRepresentation

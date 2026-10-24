@@ -12,7 +12,7 @@ grammar class_sample_language_grammar
 //--- Build dependence graph
   var inheritanceGraph = @inheritanceGraph ()
   for (mDeclaration) in  declarationListAST do
-    [mDeclaration buildGraph !?inheritanceGraph]
+    mDeclaration.buildGraph (!?inheritanceGraph)
   end
 //--- Undefined classes ?
   if inheritanceGraph.undefinedNodeCount > 0 then
@@ -21,12 +21,12 @@ grammar class_sample_language_grammar
     end
   else
   //--- Topologic sort
-    [inheritanceGraph topologicalSort
-      ?let @declarationListAST sortedDeclarationListAST
+    inheritanceGraph.topologicalSort
+      (?let @declarationListAST sortedDeclarationListAST
       ?*
       ?*
       ?let @lstringlist circularDefinitionClassNameList
-    ]
+    )
     if circularDefinitionClassNameList.count > 0 then
       for (mValue) in  circularDefinitionClassNameList do
         error (mValue : "the '" + mValue + "' class is involved in a circular definition")
@@ -35,10 +35,10 @@ grammar class_sample_language_grammar
     //--- Generate code
       var @string codeToGenerate = ""
       for (mDeclaration) in  sortedDeclarationListAST do
-        [mDeclaration generateCode !?codeToGenerate]
+        mDeclaration.generateCode (!?codeToGenerate)
       end
       let @string targetFile = [inSourceFile deletingPathExtension] + ".cpp"
-      [codeToGenerate writeToFile !targetFile]
+      codeToGenerate.writeToFile (!targetFile)
     end
   end
 }

@@ -14386,35 +14386,35 @@ void extensionSetter_appendRow (GGS_rowList & ioObject,
                                 COMMA_UNUSED_LOCATION_ARGS) {
   outArgument_outNodeName.drop () ; // Release 'out' argument
   const GGS_rowList temp_0 = ioObject ;
-  GGS_uint var_length_10294 = temp_0.getter_count (SOURCE_FILE ("production-rules-in-tex.galgas3", 281)) ;
+  GGS_uint var_length_10295 = temp_0.getter_count (SOURCE_FILE ("production-rules-in-tex.galgas3", 281)) ;
   GalgasBool test_1 = GalgasBool::boolTrue ;
   if (GalgasBool::boolTrue == test_1) {
-    test_1 = GGS_bool (ComparisonKind::lowerOrEqual, var_length_10294.objectCompare (constinArgument_inRow)).boolEnum () ;
+    test_1 = GGS_bool (ComparisonKind::lowerOrEqual, var_length_10295.objectCompare (constinArgument_inRow)).boolEnum () ;
     if (GalgasBool::boolTrue == test_1) {
-      UpEnumerator_range enumerator_10364 (GGS_range (var_length_10294, constinArgument_inRow.substract_operation (var_length_10294, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 283)).add_operation (GGS_uint (1), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 283)))) ;
-      while (enumerator_10364.hasCurrentObject ()) {
+      UpEnumerator_range enumerator_10365 (GGS_range (var_length_10295, constinArgument_inRow.substract_operation (var_length_10295, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 283)).add_operation (GGS_uint (1), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 283)))) ;
+      while (enumerator_10365.hasCurrentObject ()) {
         ioObject.addAssignOperation (GGS__32_stringlist::init (inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 284)) ;
-        enumerator_10364.gotoNextObject () ;
+        enumerator_10365.gotoNextObject () ;
       }
     }
   }
   const GGS_rowList temp_2 = ioObject ;
-  GGS__32_stringlist var_cols_10426 = temp_2.getter_columnsAtIndex (constinArgument_inRow, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 288)) ;
+  GGS__32_stringlist var_cols_10427 = temp_2.getter_columnsAtIndex (constinArgument_inRow, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 288)) ;
   GalgasBool test_3 = GalgasBool::boolTrue ;
   if (GalgasBool::boolTrue == test_3) {
-    test_3 = GGS_bool (ComparisonKind::lowerOrEqual, var_cols_10426.getter_count (SOURCE_FILE ("production-rules-in-tex.galgas3", 290)).objectCompare (constinArgument_inColumn)).boolEnum () ;
+    test_3 = GGS_bool (ComparisonKind::lowerOrEqual, var_cols_10427.getter_count (SOURCE_FILE ("production-rules-in-tex.galgas3", 290)).objectCompare (constinArgument_inColumn)).boolEnum () ;
     if (GalgasBool::boolTrue == test_3) {
-      UpEnumerator_range enumerator_10552 (GGS_range (var_cols_10426.getter_count (SOURCE_FILE ("production-rules-in-tex.galgas3", 291)), constinArgument_inColumn.substract_operation (var_cols_10426.getter_count (SOURCE_FILE ("production-rules-in-tex.galgas3", 291)), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 291)).add_operation (GGS_uint (1), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 291)))) ;
-      while (enumerator_10552.hasCurrentObject ()) {
-        var_cols_10426.addAssignOperation (GGS_string::makeEmptyString (), GGS_string::makeEmptyString ()  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 292)) ;
-        enumerator_10552.gotoNextObject () ;
+      UpEnumerator_range enumerator_10553 (GGS_range (var_cols_10427.getter_count (SOURCE_FILE ("production-rules-in-tex.galgas3", 291)), constinArgument_inColumn.substract_operation (var_cols_10427.getter_count (SOURCE_FILE ("production-rules-in-tex.galgas3", 291)), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 291)).add_operation (GGS_uint (1), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 291)))) ;
+      while (enumerator_10553.hasCurrentObject ()) {
+        var_cols_10427.addAssignOperation (GGS_string::makeEmptyString (), GGS_string::makeEmptyString ()  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 292)) ;
+        enumerator_10553.gotoNextObject () ;
       }
     }
   }
-  outArgument_outNodeName = GGS_string ("p").add_operation (constinArgument_inRow.getter_string (SOURCE_FILE ("production-rules-in-tex.galgas3", 296)), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 296)).add_operation (GGS_string ("-"), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 296)).add_operation (var_cols_10426.getter_count (SOURCE_FILE ("production-rules-in-tex.galgas3", 296)).getter_string (SOURCE_FILE ("production-rules-in-tex.galgas3", 296)), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 296)) ;
-  var_cols_10426.addAssignOperation (outArgument_outNodeName, constinArgument_inNodeDefinition  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 297)) ;
+  outArgument_outNodeName = GGS_string ("p").add_operation (constinArgument_inRow.getter_string (SOURCE_FILE ("production-rules-in-tex.galgas3", 296)), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 296)).add_operation (GGS_string ("-"), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 296)).add_operation (var_cols_10427.getter_count (SOURCE_FILE ("production-rules-in-tex.galgas3", 296)).getter_string (SOURCE_FILE ("production-rules-in-tex.galgas3", 296)), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 296)) ;
+  var_cols_10427.addAssignOperation (outArgument_outNodeName, constinArgument_inNodeDefinition  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 297)) ;
   {
-  ioObject.setter_setColumnsAtIndex (var_cols_10426, constinArgument_inRow, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 299)) ;
+  ioObject.setter_setColumnsAtIndex (var_cols_10427, constinArgument_inRow, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 299)) ;
   }
 }
 
@@ -14550,13 +14550,13 @@ GGS_bool extensionGetter_displayVertically (const GGS_syntaxInstructionListForGr
   const GGS_syntaxInstructionListForGrammarAnalysis temp_0 = inObject ;
   result_result = GGS_bool (ComparisonKind::greaterThan, temp_0.getter_count (SOURCE_FILE ("production-rules-in-tex.galgas3", 547)).objectCompare (GGS_uint (uint32_t (4U)))) ;
   const GGS_syntaxInstructionListForGrammarAnalysis temp_1 = inObject ;
-  UpEnumerator_syntaxInstructionListForGrammarAnalysis enumerator_19024 (temp_1) ;
+  UpEnumerator_syntaxInstructionListForGrammarAnalysis enumerator_19025 (temp_1) ;
   bool bool_2 = result_result.isValidAndTrue () ;
-  if (enumerator_19024.hasCurrentObject () && bool_2) {
-    while (enumerator_19024.hasCurrentObject () && bool_2) {
-      result_result = callExtensionGetter_isLinear ((const cPtr_abstractSyntaxInstructionForGrammarAnalysis *) enumerator_19024.current_mInstruction (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 549)) ;
-      enumerator_19024.gotoNextObject () ;
-      if (enumerator_19024.hasCurrentObject ()) {
+  if (enumerator_19025.hasCurrentObject () && bool_2) {
+    while (enumerator_19025.hasCurrentObject () && bool_2) {
+      result_result = callExtensionGetter_isLinear ((const cPtr_abstractSyntaxInstructionForGrammarAnalysis *) enumerator_19025.current_mInstruction (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 549)) ;
+      enumerator_19025.gotoNextObject () ;
+      if (enumerator_19025.hasCurrentObject ()) {
         bool_2 = result_result.isValidAndTrue () ;
       }
     }

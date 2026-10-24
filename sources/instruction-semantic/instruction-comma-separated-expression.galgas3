@@ -165,9 +165,9 @@ list @CommaSeparatedExpressionList {
     for (expression) in self do
       switch expression
       case regularExp (exp *) :
-        [exp enterExpressionInSemanticContext !?ioTypeMap]
+        exp.enterExpressionInSemanticContext (!?ioTypeMap)
       case letVarExp (2* exp * @lstring typeName) :
-        [exp enterExpressionInSemanticContext !?ioTypeMap]
+        exp.enterExpressionInSemanticContext (!?ioTypeMap)
         !?ioTypeMap.makeEntry (!typeName ?*)
       end
     end
@@ -185,15 +185,15 @@ list @CommaSeparatedExpressionList {
     for (expression) in self do
       switch expression
       case regularExp (exp endOfExpression) :
-        [exp analyzeSemanticExpression
-          !usefulnessCallerEntityName: inUsefulnessCallerEntityName
+        exp.analyzeSemanticExpression
+          (!usefulnessCallerEntityName: inUsefulnessCallerEntityName
           !?ioUsefulEntitiesGraph
           !inferenceType: .null
           !inAnalysisContext
           !?ioTypeMap
           !?ioVariableMap
           ?let analyzed_if_expression
-        ]
+        )
         checkExpressionIsBoolean (
           !inAnalysisContext
           !endOfExpression
@@ -204,15 +204,15 @@ list @CommaSeparatedExpressionList {
         !?ioVariableMap.openOverrideForSelectBlock ()
         !?ioVariableMap.openBranch ()
       case letVarExp (varName isConstant exp * @lstring typeName) :
-        [exp analyzeSemanticExpression
-          !usefulnessCallerEntityName: inUsefulnessCallerEntityName
+        exp.analyzeSemanticExpression
+          (!usefulnessCallerEntityName: inUsefulnessCallerEntityName
           !?ioUsefulEntitiesGraph
           !inferenceType: .null
           !inAnalysisContext
           !?ioTypeMap
           !?ioVariableMap
           ?let analyzedExpression
-        ]
+        )
         var castType = @unifiedTypeMapEntry.null
         var testType = @unifiedTypeMapEntry.null
       //--- Check this is an optional
@@ -309,7 +309,7 @@ list @CommaSeparatedExpressionList {
           var @unifiedTypeMapEntry t = castType
           var @bool found = t == analyzedExpression.mResultType
           if found then
-            [castType.definition.typeKind extractWeakReferenceType ?referenceType: castType]
+            castType.definition.typeKind.extractWeakReferenceType (?referenceType: castType)
           elsif t == weakRefType.referenceType then
             found = true
           end
@@ -318,7 +318,7 @@ list @CommaSeparatedExpressionList {
             t = t.definition.superType
             if t == analyzedExpression.mResultType then
               found = true
-              [castType.definition.typeKind extractWeakReferenceType ?referenceType: castType]
+              castType.definition.typeKind.extractWeakReferenceType (?referenceType: castType)
             elsif t == weakRefType.referenceType then
               found = true
             end
@@ -412,26 +412,26 @@ list @ifTestListForGeneration {
       !?ioGeneratedCode.incIndentation (!2)
       switch expression
       case regular (exp) :
-        [exp generateExpression
-          !?ioGeneratedCode
+        exp.generateExpression
+          (!?ioGeneratedCode
           !?ioInclusionSet
           !?ioTemporaryVariableIndex
           !?ioUnusedVariableCppNameSet
           ?let cppVarName
-        ]
+        )
         ioGeneratedCode += outTestVar + " = " + cppVarName + ".boolEnum () ;\n"
       case letVarExp (targetVarCppName exp targetType testType) :
-        [targetType addHeaderFileName !?ioInclusionSet]
-        [testType addHeaderFileName !?ioInclusionSet]
+        targetType.addHeaderFileName (!?ioInclusionSet)
+        testType.addHeaderFileName (!?ioInclusionSet)
         let targetTypeName = targetType.identifierRepresentation
         let testTypeName = testType.identifierRepresentation
-        [exp generateExpression
-          !?ioGeneratedCode
+        exp.generateExpression
+          (!?ioGeneratedCode
           !?ioInclusionSet
           !?ioTemporaryVariableIndex
           !?ioUnusedVariableCppNameSet
           ?let cppVarName
-        ]
+        )
         ioGeneratedCode += "GGS_" + targetTypeName + " " + targetVarCppName
         ioGeneratedCode += " (dynamic_cast <const cPtr_" + testTypeName + " *> (" + cppVarName + ".ptr ())) ;\n"
         ioGeneratedCode += "if (nullptr == " + targetVarCppName + ".ptr ()) {\n"
@@ -439,13 +439,13 @@ list @ifTestListForGeneration {
         ioGeneratedCode += "}\n"
       case optionalExp (targetVarCppName isConstant exp targetType) :
         let targetTypeName = targetType.identifierRepresentation
-        [exp generateExpression
-          !?ioGeneratedCode
+        exp.generateExpression
+          (!?ioGeneratedCode
           !?ioInclusionSet
           !?ioTemporaryVariableIndex
           !?ioUnusedVariableCppNameSet
           ?let cppVarName
-        ]
+        )
         if isConstant then
           ioGeneratedCode += "const "
         end

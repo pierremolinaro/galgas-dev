@@ -222,9 +222,9 @@ final class @weakReferenceTypeForGeneration : @semanticTypeForGeneration {
 override proc @weakReferenceTypeForGeneration appendDeclaration1 (?!@stringset ioInclusionSet,
                                                                    !@string outHeader ) {
   if not self.mSuperClass.isNull then
-    [self.mSuperClass addHeaderFileName !?ioInclusionSet]
+    self.mSuperClass.addHeaderFileName (!?ioInclusionSet)
   end
-  [self.mReferenceClassType addHeaderFileName !?ioInclusionSet]
+  self.mReferenceClassType.addHeaderFileName (!?ioInclusionSet)
   let typeDefinition = self.mSelfTypeEntry.definition
   let @string optionalClassTypeNameRepresentation
   switch self.optionalClassTypeOrNull
@@ -265,7 +265,7 @@ override proc @weakReferenceTypeForGeneration appendSpecificImplementation
   ?!@stringset ioInclusionSet,
   !@string outImplementation
 ) {
-  [self.mSelfTypeEntry addHeaderFileName !?ioInclusionSet]
+  self.mSelfTypeEntry.addHeaderFileName (!?ioInclusionSet)
   let typeDefinition = self.mSelfTypeEntry.definition
   let @string optionalClassTypeNameRepresentation
   switch self.optionalClassTypeOrNull
@@ -273,7 +273,7 @@ override proc @weakReferenceTypeForGeneration appendSpecificImplementation
     optionalClassTypeNameRepresentation = ""
   case element (*) :
     optionalClassTypeNameRepresentation = self.optionalClassTypeOrNull.identifierRepresentation
-    [self.optionalClassTypeOrNull addHeaderFileName !?ioInclusionSet]
+    self.optionalClassTypeOrNull.addHeaderFileName (!?ioInclusionSet)
   end
   outImplementation = [filewrapper weakClassGenerationTemplate.weakReferenceClassTypeSpecificImplementation
     !self.mReferenceClassType.identifierRepresentation

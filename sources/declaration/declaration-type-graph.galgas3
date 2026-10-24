@@ -605,9 +605,9 @@ final class @graphDeclarationForGeneration : @semanticTypeForGeneration {
   override proc appendSpecificImplementation (?let @unifiedTypeMap unused inTypeMap,
                                                ?!@stringset ioInclusionSet,
                                                !@string outImplementation ) {
-    [self.mSelfTypeEntry addHeaderFileName !?ioInclusionSet]
-    [self.mAssociatedListTypeEntry addHeaderFileName !?ioInclusionSet]
-    [self.mAssociatedListElementTypeEntry addHeaderFileName !?ioInclusionSet]
+    self.mSelfTypeEntry.addHeaderFileName (!?ioInclusionSet)
+    self.mAssociatedListTypeEntry.addHeaderFileName (!?ioInclusionSet)
+    self.mAssociatedListElementTypeEntry.addHeaderFileName (!?ioInclusionSet)
     outImplementation = [filewrapper typeGenerationTemplate.graphTypeSpecificImplementation
       !self.mSelfTypeEntry
       !self.mSelfTypeEntry.identifierRepresentation

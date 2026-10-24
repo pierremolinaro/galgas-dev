@@ -345,15 +345,15 @@ final class @structDeclarationAST : @semanticDeclarationAST {
       end
     end
   //--- Build property initialization code
-    [self.mStructurePropertyListAST buildPropertyInitializationCode
-      !structNameForUsefulness
+    self.mStructurePropertyListAST.buildPropertyInitializationCode
+      (!structNameForUsefulness
       !inSemanticContext
       !inPredefinedTypes
       !?ioUsefulEntitiesGraph
       !?ioTypeMap
       ?let unusedVariableCppNameSet
       ?let initializationCode
-    ]
+    )
   //---
     let constructorNeedsCompilerVar = not [unusedVariableCppNameSet hasKey !compilerCppName ()]
     ioSemanticDeclarationListForGeneration +=
@@ -404,7 +404,7 @@ final class @structTypeForGeneration : @semanticTypeForGeneration {
 
   override proc appendDeclaration1 (?!@stringset ioInclusionSet ,!@string outHeader ) {
     for property in self.mTypedPropertyList do
-      [property.typeEntry addHeaderFileName1 !?ioInclusionSet]
+      property.typeEntry.addHeaderFileName1 (!?ioInclusionSet)
     end
     let selfTypeDefinition = self.mSelfTypeEntry.definition
     outHeader = [filewrapper structureGenerationTemplate.structTypeHeader1
@@ -438,7 +438,7 @@ final class @structTypeForGeneration : @semanticTypeForGeneration {
     ?!@stringset ioInclusionSet,
     !@string outImplementation
   ) {
-    [self.mSelfTypeEntry addHeaderFileName !?ioInclusionSet]
+    self.mSelfTypeEntry.addHeaderFileName (!?ioInclusionSet)
     let selfTypeDefinition = self.mSelfTypeEntry.definition
     outImplementation = [filewrapper structureGenerationTemplate.structTypeSpecificImplementation
       !selfTypeDefinition.typeName.string

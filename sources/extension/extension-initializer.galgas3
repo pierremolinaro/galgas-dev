@@ -315,17 +315,17 @@ private proc analyzeInitializerBody (?let @lstring inUsefulnessCallerEntityName,
 //---  Analyze instruction list
   outSemanticInstructionListForGeneration = @semanticInstructionListForGeneration ()
   for (mInstruction) in inInstructionList do
-    [mInstruction analyzeSemanticInstruction
-      !inUsefulnessCallerEntityName
+    mInstruction.analyzeSemanticInstruction
+      (!inUsefulnessCallerEntityName
       !?ioUsefulEntitiesGraph
       !inAnalysisContext
       !?ioTypeMap
       !?outSemanticInstructionListForGeneration
       !?variableMap
-    ]
+    )
    end
 //---
-  [variableMap checkAutomatonStates !inEndOfMethodLocation]
+  variableMap.checkAutomatonStates (!inEndOfMethodLocation)
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -351,7 +351,7 @@ final class @extensionInitializerForGeneration : @semanticDeclarationWithHeaderF
                                                 ?!@stringset ioInclusionSet,
                                                 !@string outImplementation) {
     for formalArg in self.formalParameterList do
-      [formalArg.mFormalArgumentType addHeaderFileName !?ioInclusionSet]
+      formalArg.mFormalArgumentType.addHeaderFileName (!?ioInclusionSet)
     end
     generateInitializer (
       !self.mReceiverType
@@ -395,19 +395,19 @@ private proc generateInitializer (?let @unifiedTypeMapEntry inReceiverType,
   var @string routineBody = ""
   !?routineBody.incIndentation (!2)
   for (mInstruction) in inInstructionList do
-    [mInstruction generateInstruction
-      !?ioInclusionSet
+    mInstruction.generateInstruction
+      (!?ioInclusionSet
       !?temporaryVariableIndex
       !?unusedVariableCppNameSet
       !false // inGenerateSyntaxDirectedTranslationString
       !?routineBody
-    ]
+    )
   end
   !?routineBody.decIndentation (!2)
 //--- Generate inclusions
-  [inReceiverType addHeaderFileName !?ioInclusionSet]
+  inReceiverType.addHeaderFileName (!?ioInclusionSet)
   for formalArg in inFormalArgumentList do
-    [formalArg.mFormalArgumentType addHeaderFileName !?ioInclusionSet]
+    formalArg.mFormalArgumentType.addHeaderFileName (!?ioInclusionSet)
   end
 //--- Generate header
   let isStruct = inReceiverType.definition.typeKind == .structType

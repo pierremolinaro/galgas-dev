@@ -413,7 +413,7 @@ struct @currentVarManager {
 //--------------------------------------------------------------------------------------------------
 
 proc @localVarManager checkSelfObjectIsFullyInitialized (?let @location inErrorLocation ) {
-  [self.mCurrentManager checkSelfObjectIsFullyInitialized !inErrorLocation]
+  self.mCurrentManager.checkSelfObjectIsFullyInitialized (!inErrorLocation)
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -503,7 +503,7 @@ setter @localVarManager searchForDropAccess (?let @lstring inVarName ) {
 
 setter @currentVarManager searchForDropAccess (?let @lstring inVarName ) {
   if let varDescriptor = self.mLocalVarMap @[inVarName] then
-    [varDescriptor.mState checkFinalState !inVarName !varDescriptor.mAttributes]
+    varDescriptor.mState.checkFinalState (!inVarName !varDescriptor.mAttributes)
     !?self.mLocalVarMap.removeKey (!inVarName ?5*)
   else
     var found = false
@@ -793,7 +793,7 @@ setter @currentVarManager openScope () {
 //--------------------------------------------------------------------------------------------------
 
 setter @currentVarManager closeScope (?let @location inErrorLocation ) {
-  [self.mLocalVarMap checkFinalStates !inErrorLocation]
+  self.mLocalVarMap.checkFinalStates (!inErrorLocation)
   if self.mSubMaps.count == 0 then
     error (inErrorLocation : "EMPTY SUBMAPS")
   end
@@ -856,20 +856,20 @@ proc @localVarValuation checkFinalState (?let @lstring inVarName ,?let @localVar
 
 proc @scopeLocalVarMap checkFinalStates (?let @location unused inErrorLocation ) {
   for (varName 3* attributes valuation) in self do
-    [valuation checkFinalState !varName !attributes]
+    valuation.checkFinalState (!varName !attributes)
   end
 }
 
 //--------------------------------------------------------------------------------------------------
 
 proc @localVarManager checkAutomatonStates (?let @location inErrorLocation ) {
-  [self.mCurrentManager checkAutomatonStates !inErrorLocation]
+  self.mCurrentManager.checkAutomatonStates (!inErrorLocation)
 }
 
 //--------------------------------------------------------------------------------------------------
 
 proc @currentVarManager checkAutomatonStates (?let @location inErrorLocation ) {
-  [self.mLocalVarMap checkFinalStates !inErrorLocation]
+  self.mLocalVarMap.checkFinalStates (!inErrorLocation)
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -932,7 +932,7 @@ setter @scopeLocalVarMap combineMapWith (?otherMap: let @scopeLocalVarMap inOthe
       if cppName != otherVar.mCppName then
         ioErrorMessage += "\n  - 'internal error type 1 for '" + varName + "' local variable"
       else
-        [valuation combineValuationWith !otherVar.mState ?let newValuation !?ioErrorMessage]
+        valuation.combineValuationWith (!otherVar.mState ?let newValuation !?ioErrorMessage)
         if newValuation != valuation then
           !?self.setMStateForKey (!newValuation !varName)
         end

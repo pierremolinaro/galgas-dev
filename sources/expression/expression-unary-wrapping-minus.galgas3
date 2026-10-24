@@ -69,7 +69,7 @@ syntax extension galgas4ExpressionSyntax {
 override proc @unaryWrappingMinusExpressionAST enterExpressionInSemanticContext
   (?!@unifiedTypeMap ioTypeMap
 ) {
-  [self.mExpression enterExpressionInSemanticContext !?ioTypeMap]
+  self.mExpression.enterExpressionInSemanticContext (!?ioTypeMap)
 }
 
 //································································································
@@ -83,15 +83,15 @@ override proc @unaryWrappingMinusExpressionAST analyzeSemanticExpression
   ?!@localVarManager ioVariableMap,
   !@semanticExpressionForGeneration outExpression ) {
 //--- Expression analysis
-  [self.mExpression analyzeSemanticExpression
-    !usefulnessCallerEntityName: inUsefulnessCallerEntityName
+  self.mExpression.analyzeSemanticExpression
+    (!usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inferenceType: @unifiedTypeMapEntry.null
     !inAnalysisContext
     !?ioTypeMap
     !?ioVariableMap
     ?let expression
-  ]
+  )
 //--- Check operator availability
   let @unifiedTypeMapEntry type = expression.mResultType
   if not [type.definition.features contains !.prefixMinusOperatorNoOVF] then
@@ -123,15 +123,15 @@ override proc @unaryWrappingMinusExpressionForGeneration generateExpression
   ?!@uint ioTemporaryVariableIndex,
   ?!@stringset ioUnusedVariableCppNameSet,
   !@string outCppExpression ) {
-  [self.mExpression.mResultType addHeaderFileName !?ioInclusionSet]
+  self.mExpression.mResultType.addHeaderFileName (!?ioInclusionSet)
 //--- Left operand
-  [self.mExpression generateExpression
-    !?ioGeneratedCode
+  self.mExpression.generateExpression
+    (!?ioGeneratedCode
     !?ioInclusionSet
     !?ioTemporaryVariableIndex
     !?ioUnusedVariableCppNameSet
     ?let @string operand
-  ]
+  )
 //--- Generate Comparison
   outCppExpression = operand + ".operator_unary_minus_no_ovf ()"
 }

@@ -108,7 +108,7 @@ override proc @literalTypeInExpressionForGeneration generateExpression
   ?!@stringset unused ioUnusedVariableCppNameSet,
   !@string outCppExpression
 ) {
-  [self.mLiteralType addHeaderFileName !?ioInclusionSet]
+  self.mLiteralType.addHeaderFileName (!?ioInclusionSet)
   outCppExpression = "GGS_type (& kTypeDescriptor_GALGAS_"
                   + self.mLiteralType.definition.typeName.string.identifierRepresentation + ")"
 }

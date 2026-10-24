@@ -69,7 +69,7 @@ syntax extension galgas4ExpressionSyntax {
 override proc @notExpressionAST enterExpressionInSemanticContext
   (?!@unifiedTypeMap ioTypeMap
 ) {
-  [self.mExpression enterExpressionInSemanticContext !?ioTypeMap]
+  self.mExpression.enterExpressionInSemanticContext (!?ioTypeMap)
 }
 
 //································································································
@@ -83,15 +83,15 @@ override proc @notExpressionAST analyzeSemanticExpression
   ?!@localVarManager ioVariableMap,
   !@semanticExpressionForGeneration outExpression ) {
 //--- Expression analysis
-  [self.mExpression analyzeSemanticExpression
-    !usefulnessCallerEntityName: inUsefulnessCallerEntityName
+  self.mExpression.analyzeSemanticExpression
+    (!usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inferenceType: @unifiedTypeMapEntry.null
     !inAnalysisContext
     !?ioTypeMap
     !?ioVariableMap
     ?let expression
-  ]
+  )
 //--- Check operator availability
   let @unifiedTypeMapEntry type = expression.mResultType
   if expression is == @trueExpressionForGeneration then
@@ -128,9 +128,9 @@ override proc @notExpressionForGeneration generateExpression
   ?!@uint ioTemporaryVariableIndex,
   ?!@stringset ioUnusedVariableCppNameSet,
   !@string outCppExpression ) {
-  [self.mExpression.mResultType addHeaderFileName !?ioInclusionSet]
+  self.mExpression.mResultType.addHeaderFileName (!?ioInclusionSet)
 //--- Operand
-  [self.mExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?let operand]
+  self.mExpression.generateExpression (!?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?let operand)
 //--- Generate
   outCppExpression = operand + ".operator_not (" + self.mLocation.sourceFile + ")"
 }

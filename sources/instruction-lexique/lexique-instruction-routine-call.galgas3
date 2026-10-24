@@ -181,10 +181,10 @@ override proc @lexicalAttributeInputOutputArgumentAST checkLexicalRoutineCallArg
   ?@lexicalArgumentModeAST inLexicalRoutineFormalArgumentMode,
   ?@lexicalTypeEnum inLexicalRoutineFormalArgumentType) {
 //--- Check attribute definition
-  [ioLexiqueAnalysisContext.mLexicalAttributeMap searchKey
-    !self.mAttributeName
+  ioLexiqueAnalysisContext.mLexicalAttributeMap.searchKey
+    (!self.mAttributeName
     ?let attributeLexicalType
-  ]
+  )
 //--- Type check
   if attributeLexicalType != inLexicalRoutineFormalArgumentType then
     error (self.mAttributeName:"type error, attribute type is @"
@@ -207,10 +207,10 @@ override proc @lexicalFormalInputArgumentAST checkLexicalRoutineCallArgument (
   ?@lexicalArgumentModeAST inLexicalRoutineFormalArgumentMode,
   ?@lexicalTypeEnum inLexicalRoutineFormalArgumentType) {
 //--- Check attribute definition
-  [self.mRoutineOrFunctionFormalInputArgument checkLexicalRoutineCallArgument
-    !?ioLexiqueAnalysisContext
+  self.mRoutineOrFunctionFormalInputArgument.checkLexicalRoutineCallArgument
+    (!?ioLexiqueAnalysisContext
     !inLexicalRoutineFormalArgumentType
-  ]
+  )
 //--- Passing mode check
   if inLexicalRoutineFormalArgumentMode != @lexicalArgumentModeAST.lexicalInputMode then
     error (self.mActualPassingModeLocation:"the output/input mode (!?) is required here, not an input mode")
@@ -222,12 +222,12 @@ override proc @lexicalFormalInputArgumentAST checkLexicalRoutineCallArgument (
 override proc @lexicalRoutineCallInstructionAST checkLexicalInstruction (
                          ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext,
                          ?!@lexicalTagMap unused ioTagMap) {
-  [ioLexiqueAnalysisContext.mLexicalRoutineMessageMap searchKey
-    !self.mRoutineName
+  ioLexiqueAnalysisContext.mLexicalRoutineMessageMap.searchKey
+    (!self.mRoutineName
     ?let lexicalRoutineFormalArgumentList
     ?let routineErrorMessageList
     ?*
-  ]
+  )
 //--- Check actual argument count
   if lexicalRoutineFormalArgumentList.count != self.mActualArgumentList.count then
     error (self.mRoutineName : "this lexical routine call names "
@@ -238,11 +238,11 @@ override proc @lexicalRoutineCallInstructionAST checkLexicalInstruction (
   end
 //--- Check actual argument against formal parameters
   for (mLexicalFormalArgumentMode mLexicalFormalArgumentType *) in lexicalRoutineFormalArgumentList, (mLexicalRoutineActualArgument) in self.mActualArgumentList do
-    [mLexicalRoutineActualArgument checkLexicalRoutineCallArgument
-      !?ioLexiqueAnalysisContext
+    mLexicalRoutineActualArgument.checkLexicalRoutineCallArgument
+      (!?ioLexiqueAnalysisContext
       !mLexicalFormalArgumentMode
       !mLexicalFormalArgumentType
-    ]
+    )
   end
 //--- Check error message count
   if routineErrorMessageList.count != self.mErrorMessageList.count then

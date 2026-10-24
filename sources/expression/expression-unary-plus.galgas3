@@ -69,7 +69,7 @@ syntax extension galgas4ExpressionSyntax {
 override proc @unaryPlusExpressionAST enterExpressionInSemanticContext
   (?!@unifiedTypeMap ioTypeMap
 ) {
-  [self.mExpression enterExpressionInSemanticContext !?ioTypeMap]
+  self.mExpression.enterExpressionInSemanticContext (!?ioTypeMap)
 }
 
 //································································································
@@ -83,15 +83,15 @@ override proc @unaryPlusExpressionAST analyzeSemanticExpression
   ?!@localVarManager ioVariableMap,
   !@semanticExpressionForGeneration outExpression ) {
 //--- Expression analysis
-  [self.mExpression analyzeSemanticExpression
-    !usefulnessCallerEntityName: inUsefulnessCallerEntityName
+  self.mExpression.analyzeSemanticExpression
+    (!usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inferenceType: .null
     !inAnalysisContext
     !?ioTypeMap
     !?ioVariableMap
     ?outExpression
-  ]
+  )
 //--- Check operator availability
   let @unifiedTypeMapEntry type = outExpression.mResultType
   if not [type.definition.features contains !.prefixPlusOperator] then

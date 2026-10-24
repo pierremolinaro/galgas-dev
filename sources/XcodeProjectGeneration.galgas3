@@ -476,8 +476,8 @@ proc @XcodeProjectDescriptor generateAtPath
   ]
   let projectCoreFile = inPath + "/project.pbxproj"
   if (not projectCoreFile.fileExists) || (not inCacheFilePath.fileExists) || (@string. stringWithContentsOfFile {!inCacheFilePath} != contents) then
-    [contents writeToFileWhenDifferentContents !inCacheFilePath ?*]
-    [contents makeDirectoryAndWriteToFile !projectCoreFile]
+    contents.writeToFileWhenDifferentContents (!inCacheFilePath ?*)
+    contents.makeDirectoryAndWriteToFile (!projectCoreFile)
   end
 }
 

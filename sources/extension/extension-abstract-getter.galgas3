@@ -310,10 +310,10 @@ final class @abstractExtensionGetterForGeneration : @semanticDeclarationWithHead
     ioInclusionSet ++= "func-"
       + self.mReceiverType.definition.typeName.string.fileNameRepresentation
       + "-" + self.mAbstractExtensionGetterName.fileNameRepresentation
-    [self.mResultType addHeaderFileName !?ioInclusionSet]
-    [self.mReceiverType addHeaderFileName !?ioInclusionSet]
+    self.mResultType.addHeaderFileName (!?ioInclusionSet)
+    self.mReceiverType.addHeaderFileName (!?ioInclusionSet)
     for (* mFormalArgumentType * * *) in self.mAbstractExtensionGetterFormalParameterList do
-      [mFormalArgumentType addHeaderFileName !?ioInclusionSet]
+      mFormalArgumentType.addHeaderFileName (!?ioInclusionSet)
     end
     outImplementation = [filewrapper semanticComponentGenerationTemplate.abstractExtensionGetterImplementation
       !self.mReceiverType.definition.typeName.string

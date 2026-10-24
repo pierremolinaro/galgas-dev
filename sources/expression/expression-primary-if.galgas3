@@ -112,9 +112,9 @@ syntax extension galgas4ExpressionSyntax {
 override proc @ifExpressionAST enterExpressionInSemanticContext
   (?!@unifiedTypeMap ioTypeMap
 ) {
-  [self.mIfExpression enterExpressionInSemanticContext !?ioTypeMap]
-  [self.mThenExpression enterExpressionInSemanticContext !?ioTypeMap]
-  [self.mElseExpression enterExpressionInSemanticContext !?ioTypeMap]
+  self.mIfExpression.enterExpressionInSemanticContext (!?ioTypeMap)
+  self.mThenExpression.enterExpressionInSemanticContext (!?ioTypeMap)
+  self.mElseExpression.enterExpressionInSemanticContext (!?ioTypeMap)
 }
 
 //································································································
@@ -129,35 +129,35 @@ override proc @ifExpressionAST analyzeSemanticExpression
   !@semanticExpressionForGeneration outExpression
 ) {
 //--- 'if' expression analysis
-  [self.mIfExpression analyzeSemanticExpression
-    !usefulnessCallerEntityName: inUsefulnessCallerEntityName
+  self.mIfExpression.analyzeSemanticExpression
+    (!usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inferenceType: inAnalysisContext.predefinedTypes.mBoolType
     !inAnalysisContext
     !?ioTypeMap
     !?ioVariableMap
     ?let @semanticExpressionForGeneration if_expression
-  ]
+  )
 //--- 'then' expression analysis
-  [self.mThenExpression analyzeSemanticExpression
-    !usefulnessCallerEntityName: inUsefulnessCallerEntityName
+  self.mThenExpression.analyzeSemanticExpression
+    (!usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inferenceType: inType
     !inAnalysisContext
     !?ioTypeMap
     !?ioVariableMap
     ?let then_expression
-  ]
+  )
 //--- 'else' expression analysis
-  [self.mElseExpression analyzeSemanticExpression
-    !usefulnessCallerEntityName: inUsefulnessCallerEntityName
+  self.mElseExpression.analyzeSemanticExpression
+    (!usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inferenceType: inType
     !inAnalysisContext
     !?ioTypeMap
     !?ioVariableMap
     ?let else_expression
-  ]
+  )
 //--- Check 'if' expression is boolean
   if if_expression.mResultType.definition.typeName.string != "bool" then
     error (self.mOperatorLocation
@@ -199,13 +199,13 @@ override proc @ifExpressionForGeneration generateExpression
   !@string outCppExpression
 ) {
 //--- 'if' expression
-  [self.mIfExpression generateExpression
-    !?ioGeneratedCode
+  self.mIfExpression.generateExpression
+    (!?ioGeneratedCode
     !?ioInclusionSet
     !?ioTemporaryVariableIndex
     !?ioUnusedVariableCppNameSet
     ?let ifExpression
-  ]
+  )
 //--- Result variable
   outCppExpression = "temp_" + ioTemporaryVariableIndex.string
   ioTemporaryVariableIndex += 1
@@ -216,25 +216,25 @@ override proc @ifExpressionForGeneration generateExpression
   ioGeneratedCode += "if (GalgasBool::boolTrue == " + testVar + ") {\n"
 //--- 'then' expression
   !?ioGeneratedCode.incIndentation (!2)
-  [self.mThenExpression generateExpression
-    !?ioGeneratedCode
+  self.mThenExpression.generateExpression
+    (!?ioGeneratedCode
     !?ioInclusionSet
     !?ioTemporaryVariableIndex
     !?ioUnusedVariableCppNameSet
     ?let thenExpression
-  ]
+  )
   ioGeneratedCode += outCppExpression + " = " + thenExpression + " ;\n"
   !?ioGeneratedCode.decIndentation (!2)
 //--- 'else' expression
   ioGeneratedCode += "}else if (GalgasBool::boolFalse == " + testVar + ") {\n"
   !?ioGeneratedCode.incIndentation (!2)
-  [self.mElseExpression generateExpression
-    !?ioGeneratedCode
+  self.mElseExpression.generateExpression
+    (!?ioGeneratedCode
     !?ioInclusionSet
     !?ioTemporaryVariableIndex
     !?ioUnusedVariableCppNameSet
     ?let elseExpression
-  ]
+  )
   ioGeneratedCode += outCppExpression + " = " + elseExpression + " ;\n"
   !?ioGeneratedCode.decIndentation (!2)
   ioGeneratedCode += "}\n"

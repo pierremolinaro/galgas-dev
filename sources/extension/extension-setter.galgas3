@@ -347,7 +347,7 @@ override proc @extensionSetterForGeneration appendSpecificImplementation (
   ?!@stringset ioInclusionSet,
   !@string outImplementation) {
   for (* * mFormalArgumentType * *) in self.mExtensionSetterFormalParameterList do
-    [mFormalArgumentType addHeaderFileName !?ioInclusionSet]
+    mFormalArgumentType.addHeaderFileName (!?ioInclusionSet)
   end
   if self.mImplementedAsFunction then
     var extensionSetterFormalParameterList = self.mExtensionSetterFormalParameterList
@@ -393,7 +393,7 @@ override proc @extensionSetterForGeneration appendSpecificImplementation (
       end
     end
     ioInclusionSet ++= "setter-" + baseType.definition.typeName.string.fileNameRepresentation + "-" + self.mExtensionSetterName.fileNameRepresentation
-    [baseType addHeaderFileName !?ioInclusionSet]
+    baseType.addHeaderFileName (!?ioInclusionSet)
     generateExtensionSetter (
       !self.mReceiverType.definition.typeName.string
       !""

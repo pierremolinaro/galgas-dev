@@ -100,8 +100,8 @@ syntax extension galgas4ExpressionSyntax {
 override proc @andExpressionAST enterExpressionInSemanticContext
   (?!@unifiedTypeMap ioTypeMap
 ) {
-  [self.mLeftExpression enterExpressionInSemanticContext !?ioTypeMap]
-  [self.mRightExpression enterExpressionInSemanticContext !?ioTypeMap]
+  self.mLeftExpression.enterExpressionInSemanticContext (!?ioTypeMap)
+  self.mRightExpression.enterExpressionInSemanticContext (!?ioTypeMap)
 }
 
 //································································································
@@ -115,25 +115,25 @@ override proc @andExpressionAST analyzeSemanticExpression
   ?!@localVarManager ioVariableMap,
   !@semanticExpressionForGeneration outExpression ) {
 //--- Left expression analysis
-  [self.mLeftExpression analyzeSemanticExpression
-    !usefulnessCallerEntityName: inUsefulnessCallerEntityName
+  self.mLeftExpression.analyzeSemanticExpression
+    (!usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inferenceType: inInferenceType
     !inAnalysisContext
     !?ioTypeMap
     !?ioVariableMap
     ?var @semanticExpressionForGeneration leftExpression
-  ]
+  )
 //--- Right expression analysis
-  [self.mRightExpression analyzeSemanticExpression
-    !usefulnessCallerEntityName: inUsefulnessCallerEntityName
+  self.mRightExpression.analyzeSemanticExpression
+    (!usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inferenceType: leftExpression.mResultType
     !inAnalysisContext
     !?ioTypeMap
     !?ioVariableMap
     ?@semanticExpressionForGeneration rightExpression
-  ]
+  )
 //--- Check operator availability
   checkDiadicOperator (
     !operatorIsHandled: [leftExpression.mResultType.definition.features contains !.infixAndOperator]
@@ -157,8 +157,8 @@ override proc @andExpressionAST analyzeSemanticExpression
 override proc @andShortExpressionAST enterExpressionInSemanticContext
   (?!@unifiedTypeMap ioTypeMap
 ) {
-  [self.mLeftExpression enterExpressionInSemanticContext !?ioTypeMap]
-  [self.mRightExpression enterExpressionInSemanticContext !?ioTypeMap]
+  self.mLeftExpression.enterExpressionInSemanticContext (!?ioTypeMap)
+  self.mRightExpression.enterExpressionInSemanticContext (!?ioTypeMap)
 }
 
 //································································································
@@ -172,25 +172,25 @@ override proc @andShortExpressionAST analyzeSemanticExpression
   ?!@localVarManager ioVariableMap,
   !@semanticExpressionForGeneration outExpression ) {
 //--- Left expression analysis
-  [self.mLeftExpression analyzeSemanticExpression
-    !usefulnessCallerEntityName: inUsefulnessCallerEntityName
+  self.mLeftExpression.analyzeSemanticExpression
+    (!usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inferenceType: inInferenceType
     !inAnalysisContext
     !?ioTypeMap
     !?ioVariableMap
     ?var @semanticExpressionForGeneration leftExpression
-  ]
+  )
 //--- Right expression analysis
-  [self.mRightExpression analyzeSemanticExpression
-    !usefulnessCallerEntityName: inUsefulnessCallerEntityName
+  self.mRightExpression.analyzeSemanticExpression
+    (!usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inferenceType: leftExpression.mResultType
     !inAnalysisContext
     !?ioTypeMap
     !?ioVariableMap
     ?@semanticExpressionForGeneration rightExpression
-  ]
+  )
 //--- Check operator availability
   checkDiadicOperator (
     !operatorIsHandled: [leftExpression.mResultType.definition.features contains !.infixAndOperator]
@@ -224,28 +224,28 @@ override proc @andShortExpressionForGeneration generateExpression
   ?!@uint ioTemporaryVariableIndex,
   ?!@stringset ioUnusedVariableCppNameSet,
   !@string outCppExpression ) {
-  [self.mLeftExpression.mResultType addHeaderFileName !?ioInclusionSet]
+  self.mLeftExpression.mResultType.addHeaderFileName (!?ioInclusionSet)
 //--- Left operand
-  [self.mLeftExpression generateExpression
-    !?ioGeneratedCode
+  self.mLeftExpression.generateExpression
+    (!?ioGeneratedCode
     !?ioInclusionSet
     !?ioTemporaryVariableIndex
     !?ioUnusedVariableCppNameSet
     ?let @string leftTemporaryOperand
-  ]
+  )
 //--- Generate Comparison
   let testVar = "test_" + ioTemporaryVariableIndex.string ; ioTemporaryVariableIndex += 1
   ioGeneratedCode += "GGS_bool " + testVar + " = " + leftTemporaryOperand + " ;\n"
   ioGeneratedCode += "if (GalgasBool::boolTrue == " + testVar + ".boolEnum ()) {\n"
 //--- Right operand
   !?ioGeneratedCode.incIndentation (!2)
-  [self.mRightExpression generateExpression
-    !?ioGeneratedCode
+  self.mRightExpression.generateExpression
+    (!?ioGeneratedCode
     !?ioInclusionSet
     !?ioTemporaryVariableIndex
     !?ioUnusedVariableCppNameSet
     ?let @string rightTemporaryOperand
-  ]
+  )
   ioGeneratedCode += testVar + " = " + rightTemporaryOperand + " ;\n"
   !?ioGeneratedCode.decIndentation (!2)
   ioGeneratedCode += "}\n"

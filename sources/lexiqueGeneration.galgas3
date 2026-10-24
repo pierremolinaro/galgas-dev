@@ -194,7 +194,7 @@ override func @lexicalImplicitRuleAST generateLexicalRuleCode
   ?let @string inScannerClassName
   ?let @lexiqueAnalysisContext inLexiqueAnalysisContext
   -> @string {
-  [inLexiqueAnalysisContext.mLexicalTokenListMap searchKey !self.mListName ?* ?let tokenSortedList ?*]
+  inLexiqueAnalysisContext.mLexicalTokenListMap.searchKey (!self.mListName ?* ?let tokenSortedList ?*)
   result = ""
   for > (* mName mTerminalName) in tokenSortedList do
     result += "if (testForInputUTF32String (kUnicodeString_" + inScannerClassName + "_"

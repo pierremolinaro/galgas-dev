@@ -205,9 +205,9 @@ syntax extension galgas4InstructionsSyntax {
 //--------------------------------------------------------------------------------------------------
 
 override proc @errorInstructionAST enterInstructionInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
-  [self.mLocationExpression enterExpressionInSemanticContext !?ioTypeMap]
-  [self.mMessageExpression enterExpressionInSemanticContext !?ioTypeMap]
-  [self.mFixitListAST enterFixItListInSemanticContext !?ioTypeMap]
+  self.mLocationExpression.enterExpressionInSemanticContext (!?ioTypeMap)
+  self.mMessageExpression.enterExpressionInSemanticContext (!?ioTypeMap)
+  self.mFixitListAST.enterFixItListInSemanticContext (!?ioTypeMap)
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -217,11 +217,11 @@ proc @fixitListAST enterFixItListInSemanticContext (?!@unifiedTypeMap ioTypeMap)
     switch element
     case fixItRemove :
     case fixItReplace (@semanticExpressionAST exp *) :
-      [exp enterExpressionInSemanticContext !?ioTypeMap]
+      exp.enterExpressionInSemanticContext (!?ioTypeMap)
     case fixItInsertBefore (@semanticExpressionAST exp *) :
-      [exp enterExpressionInSemanticContext !?ioTypeMap]
+      exp.enterExpressionInSemanticContext (!?ioTypeMap)
     case fixItInsertAfter (@semanticExpressionAST exp *) :
-      [exp enterExpressionInSemanticContext !?ioTypeMap]
+      exp.enterExpressionInSemanticContext (!?ioTypeMap)
     end
   end
 }
@@ -259,15 +259,15 @@ proc analyzeErrorOrWarningInstruction (?let @lstring inUsefulnessCallerEntityNam
   !@semanticExpressionForGeneration outMessageExpression,
   !@fixitListForGeneration outFixitListForGeneration) {
 //--- Analyze location expression
-  [inLocationExpression analyzeSemanticExpression
-    !usefulnessCallerEntityName: inUsefulnessCallerEntityName
+  inLocationExpression.analyzeSemanticExpression
+    (!usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inferenceType: inAnalysisContext.predefinedTypes.mLocationType
     !inAnalysisContext
     !?ioTypeMap
     !?ioVariableMap
     ?outLocationExpression
-  ]
+  )
 //--- Check type
   checkAssignmentTypeWithImplicitGetterCall (
     !inAnalysisContext.predefinedTypes.mLocationType
@@ -276,15 +276,15 @@ proc analyzeErrorOrWarningInstruction (?let @lstring inUsefulnessCallerEntityNam
     !?outLocationExpression
   )
 //--- Analyze message expression
-  [inMessageExpression analyzeSemanticExpression
-    !usefulnessCallerEntityName: inUsefulnessCallerEntityName
+  inMessageExpression.analyzeSemanticExpression
+    (!usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inferenceType: .null
     !inAnalysisContext
     !?ioTypeMap
     !?ioVariableMap
     ?outMessageExpression
-  ]
+  )
 //--- Analyze fixit expressions
   outFixitListForGeneration = @()
   for (element) in inFixitListAST do
@@ -292,15 +292,15 @@ proc analyzeErrorOrWarningInstruction (?let @lstring inUsefulnessCallerEntityNam
     case fixItRemove :
       outFixitListForGeneration += !.fixItRemove
     case fixItReplace (exp errorLocation) :
-      [exp analyzeSemanticExpression
-        !usefulnessCallerEntityName: inUsefulnessCallerEntityName
+      exp.analyzeSemanticExpression
+        (!usefulnessCallerEntityName: inUsefulnessCallerEntityName
         !?ioUsefulEntitiesGraph
         !inferenceType: inAnalysisContext.predefinedTypes.mStringListType
         !inAnalysisContext
         !?ioTypeMap
         !?ioVariableMap
         ?let expression
-      ]
+      )
       if (expression.mResultType != inAnalysisContext.predefinedTypes.mStringListType)
        && (expression.mResultType != inAnalysisContext.predefinedTypes.mLStringListType)
        && (expression.mResultType != inAnalysisContext.predefinedTypes.mStringSetType)
@@ -311,15 +311,15 @@ proc analyzeErrorOrWarningInstruction (?let @lstring inUsefulnessCallerEntityNam
       end
       outFixitListForGeneration += !.fixItReplace {!exp:expression}
     case fixItInsertBefore (exp errorLocation) :
-      [exp analyzeSemanticExpression
-        !usefulnessCallerEntityName: inUsefulnessCallerEntityName
+      exp.analyzeSemanticExpression
+        (!usefulnessCallerEntityName: inUsefulnessCallerEntityName
         !?ioUsefulEntitiesGraph
         !inferenceType: inAnalysisContext.predefinedTypes.mStringListType
         !inAnalysisContext
         !?ioTypeMap
         !?ioVariableMap
         ?let expression
-      ]
+      )
       if (expression.mResultType != inAnalysisContext.predefinedTypes.mStringListType)
        && (expression.mResultType != inAnalysisContext.predefinedTypes.mLStringListType)
        && (expression.mResultType != inAnalysisContext.predefinedTypes.mStringSetType)
@@ -330,15 +330,15 @@ proc analyzeErrorOrWarningInstruction (?let @lstring inUsefulnessCallerEntityNam
       end
       outFixitListForGeneration += !.fixItInsertBefore {!exp:expression}
     case fixItInsertAfter (exp errorLocation) :
-      [exp analyzeSemanticExpression
-        !usefulnessCallerEntityName: inUsefulnessCallerEntityName
+      exp.analyzeSemanticExpression
+        (!usefulnessCallerEntityName: inUsefulnessCallerEntityName
         !?ioUsefulEntitiesGraph
         !inferenceType: inAnalysisContext.predefinedTypes.mStringListType
         !inAnalysisContext
         !?ioTypeMap
         !?ioVariableMap
         ?let expression
-      ]
+      )
       if (expression.mResultType != inAnalysisContext.predefinedTypes.mStringListType)
        && (expression.mResultType != inAnalysisContext.predefinedTypes.mLStringListType)
        && (expression.mResultType != inAnalysisContext.predefinedTypes.mStringSetType)
@@ -418,31 +418,31 @@ proc @fixitListForGeneration generateFixIt (?!@stringset ioInclusionSet,
     case fixItRemove :
       ioGeneratedCode += outFixItArrayCppName + ".appendObject (FixItDescription (EnumFixItKind::fixItRemove, \"\")) ;\n"
     case fixItReplace (@semanticExpressionForGeneration exp) :
-      [exp generateExpression
-        !?ioGeneratedCode
+      exp.generateExpression
+        (!?ioGeneratedCode
         !?ioInclusionSet
         !?ioTemporaryVariableIndex
         !?ioUnusedVariableCppNameSet
         ?let receiverCppVarName
-      ]
+      )
       ioGeneratedCode += "appendFixItActions (" + outFixItArrayCppName + ", EnumFixItKind::fixItReplace, " + receiverCppVarName + ") ;\n"
     case fixItInsertBefore (@semanticExpressionForGeneration exp) :
-      [exp generateExpression
-        !?ioGeneratedCode
+      exp.generateExpression
+        (!?ioGeneratedCode
         !?ioInclusionSet
         !?ioTemporaryVariableIndex
         !?ioUnusedVariableCppNameSet
         ?let receiverCppVarName
-      ]
+      )
       ioGeneratedCode += "appendFixItActions (" + outFixItArrayCppName + ", EnumFixItKind::fixItInsertBefore, " + receiverCppVarName + ") ;\n"
     case fixItInsertAfter (@semanticExpressionForGeneration exp) :
-      [exp generateExpression
-        !?ioGeneratedCode
+      exp.generateExpression
+        (!?ioGeneratedCode
         !?ioInclusionSet
         !?ioTemporaryVariableIndex
         !?ioUnusedVariableCppNameSet
         ?let receiverCppVarName
-      ]
+      )
       ioGeneratedCode += "appendFixItActions (" + outFixItArrayCppName + ", EnumFixItKind::fixItInsertAfter, " + receiverCppVarName + ") ;\n"
     end
   end
@@ -466,30 +466,30 @@ override proc @errorInstructionForGeneration generateInstruction (?!@stringset i
   ?let @bool inGenerateSyntaxDirectedTranslationString,
   ?!@string ioGeneratedCode) {
 //--- Receiver expression
-  [self.mReceiverExpression generateExpression
-    !?ioGeneratedCode
+  self.mReceiverExpression.generateExpression
+    (!?ioGeneratedCode
     !?ioInclusionSet
     !?ioTemporaryVariableIndex
     !?ioUnusedVariableCppNameSet
     ?let receiverCppVarName
-  ]
+  )
 //--- Receiver expression
-  [self.mErrorExpression generateExpression
-    !?ioGeneratedCode
+  self.mErrorExpression.generateExpression
+    (!?ioGeneratedCode
     !?ioInclusionSet
     !?ioTemporaryVariableIndex
     !?ioUnusedVariableCppNameSet
     ?let messageCppVarName
-  ]
+  )
 //--- Fix It array
-  [self.mFixitListForGeneration generateFixIt
-    !?ioInclusionSet
+  self.mFixitListForGeneration.generateFixIt
+    (!?ioInclusionSet
     !?ioTemporaryVariableIndex
     !?ioUnusedVariableCppNameSet
     !inGenerateSyntaxDirectedTranslationString
     !?ioGeneratedCode
     ?let @string fixItArrayCppName
-  ]
+  )
 //--- Generate error instruction
   !?ioUnusedVariableCppNameSet.removeKey (!compilerCppName ())
   ioGeneratedCode += compilerCppName () + "->emitSemanticError ("

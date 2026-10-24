@@ -46,7 +46,7 @@ list @actualOutputArgumentList {
 
   proc enterInSemanticContext (?!@unifiedTypeMap ioTypeMap ) {
     for (* mExpression *) in self do
-      [mExpression enterExpressionInSemanticContext !?ioTypeMap]
+      mExpression.enterExpressionInSemanticContext (!?ioTypeMap)
     end
   }
 

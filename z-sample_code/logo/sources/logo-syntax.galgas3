@@ -36,7 +36,7 @@ syntax logo_syntax (logo_lexique) {
     or
       $CALL$
       $identifier$ ?let @lstring routineName indexing routineCall
-      [ioTableRoutines searchKey !routineName ?let routineContent]
+      ioTableRoutines.searchKey (!routineName ?let routineContent)
       for i in routineContent do
         il += !i.mInstruction
       end
@@ -89,7 +89,7 @@ syntax logo_syntax (logo_lexique) {
     var @double angle = 0.0 // Angle en degrés
     var @string SVG = ""
     for i in instructions do
-      [i.mInstruction codeDisplay !?pendown !?x !?y !?angle !?SVG]
+      i.mInstruction.codeDisplay (!?pendown !?x !?y !?angle !?SVG)
     end
   //--- Output file
     let @string sourceFilePath = @string.stringWithSourceFilePath
@@ -97,7 +97,7 @@ syntax logo_syntax (logo_lexique) {
       !sourceFilePath.lastPathComponent
       !SVG
     ]
-    [code writeToFile !sourceFilePath.deletingPathExtension + ".svg"]
+    code.writeToFile (!sourceFilePath.deletingPathExtension + ".svg")
   }
 
   //----------------------------------------------------------------------------------------------

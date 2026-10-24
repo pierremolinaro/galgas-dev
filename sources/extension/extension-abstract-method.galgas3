@@ -281,9 +281,9 @@ final class @abstractExtensionMethodForGeneration : @semanticDeclarationWithHead
     ioInclusionSet ++= "proc-"
          + self.mReceiverType.definition.typeName.string.fileNameRepresentation
          + "-" + self.mAbstractExtensionMethodName.fileNameRepresentation
-    [self.mReceiverType addHeaderFileName !?ioInclusionSet]
+    self.mReceiverType.addHeaderFileName (!?ioInclusionSet)
     for (* * mFormalArgumentType * *) in self.mAbstractExtensionMethodFormalParameterList do
-      [mFormalArgumentType addHeaderFileName !?ioInclusionSet]
+      mFormalArgumentType.addHeaderFileName (!?ioInclusionSet)
     end
     outImplementation = [filewrapper semanticComponentGenerationTemplate.abstractExtensionMethodImplementation
       !self.mReceiverType

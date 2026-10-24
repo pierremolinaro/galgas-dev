@@ -70,8 +70,8 @@ syntax extension galgas4LexiqueComponentSyntax {
 override proc @lexicalRewindInstructionAST checkLexicalInstruction (
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext,
   ?!@lexicalTagMap ioTagMap) {
-  [ioTagMap searchKey !self.mLexicalTagName]
-  [ioLexiqueAnalysisContext.mTerminalMap searchKey !self.mTerminalName ?*]
+  ioTagMap.searchKey (!self.mLexicalTagName)
+  ioLexiqueAnalysisContext.mTerminalMap.searchKey (!self.mTerminalName ?*)
 }
 
 //--------------------------------------------------------------------------------------------------

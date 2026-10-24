@@ -406,7 +406,7 @@ final class @sortedListDeclarationAST : @semanticDeclarationAST {
     var @stringset attributesUsedForSorting = @()
     var @sortDescriptorListForGeneration sortDescriptorList = @()
     for (mSortedAttributeName mAscending) in self.mSortDescriptorList do
-      [attributeMap searchKey !mSortedAttributeName ?let @unifiedTypeMapEntry type]
+      attributeMap.searchKey (!mSortedAttributeName ?let @unifiedTypeMapEntry type)
       sortDescriptorList += !type !mSortedAttributeName.string !mAscending
       if [attributesUsedForSorting hasKey !mSortedAttributeName.string] then
         error (mSortedAttributeName : "the '" + mSortedAttributeName + "' is already used for sorting")
@@ -490,10 +490,10 @@ override proc @sortedListTypeForGeneration appendSpecificImplementation
   ?!@stringset ioInclusionSet,
   !@string outImplementation ) {
   for (t 4*) in self.mTypedAttributeList do
-    [t addHeaderFileName !?ioInclusionSet]
+    t.addHeaderFileName (!?ioInclusionSet)
   end
-  [self.mListElementTypeIndex addHeaderFileName !?ioInclusionSet]
-  [self.mSelfTypeEntry addHeaderFileName !?ioInclusionSet]
+  self.mListElementTypeIndex.addHeaderFileName (!?ioInclusionSet)
+  self.mSelfTypeEntry.addHeaderFileName (!?ioInclusionSet)
   let elementTypeDefinition = self.mListElementTypeIndex.definition
   outImplementation = [filewrapper sortedListGenerationTemplate.sortedlistTypeSpecificImplementation
     !self.mSelfTypeEntry.identifierRepresentation

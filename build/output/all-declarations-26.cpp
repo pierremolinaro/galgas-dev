@@ -5650,13 +5650,13 @@ void cPtr_comparisonExpressionForGeneration::method_generateExpression (GGS_stri
                                                                         COMMA_UNUSED_LOCATION_ARGS) {
   const GGS_comparisonExpressionForGeneration temp_0 = this ;
   extensionMethod_addHeaderFileName (temp_0.readProperty_mLeftExpression ().readProperty_mResultType (), ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("expression-comparison.galgas3", 285)) ;
-  GGS_string var_leftTemporaryOperand_11798 ;
+  GGS_string var_leftTemporaryOperand_11797 ;
   const GGS_comparisonExpressionForGeneration temp_1 = this ;
-  callExtensionMethod_generateExpression ((cPtr_semanticExpressionForGeneration *) temp_1.readProperty_mLeftExpression ().ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_leftTemporaryOperand_11798, inCompiler COMMA_SOURCE_FILE ("expression-comparison.galgas3", 287)) ;
-  GGS_string var_rightTemporaryOperand_12004 ;
+  callExtensionMethod_generateExpression ((cPtr_semanticExpressionForGeneration *) temp_1.readProperty_mLeftExpression ().ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_leftTemporaryOperand_11797, inCompiler COMMA_SOURCE_FILE ("expression-comparison.galgas3", 287)) ;
+  GGS_string var_rightTemporaryOperand_12003 ;
   const GGS_comparisonExpressionForGeneration temp_2 = this ;
-  callExtensionMethod_generateExpression ((cPtr_semanticExpressionForGeneration *) temp_2.readProperty_mRightExpression ().ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_rightTemporaryOperand_12004, inCompiler COMMA_SOURCE_FILE ("expression-comparison.galgas3", 295)) ;
-  GGS_string var_operatorName_12064 ;
+  callExtensionMethod_generateExpression ((cPtr_semanticExpressionForGeneration *) temp_2.readProperty_mRightExpression ().ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_rightTemporaryOperand_12003, inCompiler COMMA_SOURCE_FILE ("expression-comparison.galgas3", 295)) ;
+  GGS_string var_operatorName_12063 ;
   const GGS_comparisonExpressionForGeneration temp_3 = this ;
   switch (temp_3.readProperty_mComparison ().enumValue ()) {
   case GGS_comparison::Enumeration::invalid:
@@ -5664,37 +5664,37 @@ void cPtr_comparisonExpressionForGeneration::method_generateExpression (GGS_stri
   case GGS_comparison::Enumeration::enum_equal:
   case GGS_comparison::Enumeration::enum_sameInstance:
     {
-      var_operatorName_12064 = GGS_string ("ComparisonKind::equal") ;
+      var_operatorName_12063 = GGS_string ("ComparisonKind::equal") ;
     }
     break ;
   case GGS_comparison::Enumeration::enum_notEqual:
   case GGS_comparison::Enumeration::enum_differentInstances:
     {
-      var_operatorName_12064 = GGS_string ("ComparisonKind::notEqual") ;
+      var_operatorName_12063 = GGS_string ("ComparisonKind::notEqual") ;
     }
     break ;
   case GGS_comparison::Enumeration::enum_lowerOrEqual:
     {
-      var_operatorName_12064 = GGS_string ("ComparisonKind::lowerOrEqual") ;
+      var_operatorName_12063 = GGS_string ("ComparisonKind::lowerOrEqual") ;
     }
     break ;
   case GGS_comparison::Enumeration::enum_lowerThan:
     {
-      var_operatorName_12064 = GGS_string ("ComparisonKind::lowerThan") ;
+      var_operatorName_12063 = GGS_string ("ComparisonKind::lowerThan") ;
     }
     break ;
   case GGS_comparison::Enumeration::enum_greaterOrEqual:
     {
-      var_operatorName_12064 = GGS_string ("ComparisonKind::greaterOrEqual") ;
+      var_operatorName_12063 = GGS_string ("ComparisonKind::greaterOrEqual") ;
     }
     break ;
   case GGS_comparison::Enumeration::enum_greaterThan:
     {
-      var_operatorName_12064 = GGS_string ("ComparisonKind::greaterThan") ;
+      var_operatorName_12063 = GGS_string ("ComparisonKind::greaterThan") ;
     }
     break ;
   }
-  outArgument_outCppExpression = GGS_string ("GGS_bool (").add_operation (var_operatorName_12064, inCompiler COMMA_SOURCE_FILE ("expression-comparison.galgas3", 313)).add_operation (GGS_string (", "), inCompiler COMMA_SOURCE_FILE ("expression-comparison.galgas3", 313)).add_operation (var_leftTemporaryOperand_11798, inCompiler COMMA_SOURCE_FILE ("expression-comparison.galgas3", 313)).add_operation (GGS_string (".objectCompare ("), inCompiler COMMA_SOURCE_FILE ("expression-comparison.galgas3", 313)).add_operation (var_rightTemporaryOperand_12004, inCompiler COMMA_SOURCE_FILE ("expression-comparison.galgas3", 313)).add_operation (GGS_string ("))"), inCompiler COMMA_SOURCE_FILE ("expression-comparison.galgas3", 313)) ;
+  outArgument_outCppExpression = GGS_string ("GGS_bool (").add_operation (var_operatorName_12063, inCompiler COMMA_SOURCE_FILE ("expression-comparison.galgas3", 313)).add_operation (GGS_string (", "), inCompiler COMMA_SOURCE_FILE ("expression-comparison.galgas3", 313)).add_operation (var_leftTemporaryOperand_11797, inCompiler COMMA_SOURCE_FILE ("expression-comparison.galgas3", 313)).add_operation (GGS_string (".objectCompare ("), inCompiler COMMA_SOURCE_FILE ("expression-comparison.galgas3", 313)).add_operation (var_rightTemporaryOperand_12003, inCompiler COMMA_SOURCE_FILE ("expression-comparison.galgas3", 313)).add_operation (GGS_string ("))"), inCompiler COMMA_SOURCE_FILE ("expression-comparison.galgas3", 313)) ;
 }
 
 //--------------------------------------------------------------------------------------------------

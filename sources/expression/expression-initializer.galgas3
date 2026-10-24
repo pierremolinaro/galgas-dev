@@ -197,7 +197,7 @@ final class @initializerCallAST : @semanticExpressionAST {
     if self.mTypeName.string != "" then
       !?ioTypeMap.makeEntry (!self.mTypeName ?*)
     end
-    [self.mExpressions enterInSemanticContext !?ioTypeMap]
+    self.mExpressions.enterInSemanticContext (!?ioTypeMap)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -280,7 +280,7 @@ private proc analyzeInitializerInvocation (?let @lstring inUsefulnessCallerEntit
       let initializerMap = instanciedTypeDefinition.initializerMap
       let @functionSignature formalSignature
       if [initializerMap hasKey !outInitializerName] then
-        [initializerMap searchKey !outInitializerName ?formalSignature]
+        initializerMap.searchKey (!outInitializerName ?formalSignature)
       else
         var s = "@" + instanciedTypeDefinition.typeName + "init ("
         for formalArg in inInvocationArguments
@@ -301,15 +301,15 @@ private proc analyzeInitializerInvocation (?let @lstring inUsefulnessCallerEntit
       outConstructorEffectiveParameterList = @()
       for effectiveParameter in inInvocationArguments,
           formalArg in formalSignature do
-        [effectiveParameter.mExpression analyzeSemanticExpression
-          !usefulnessCallerEntityName: inUsefulnessCallerEntityName
+        effectiveParameter.mExpression.analyzeSemanticExpression
+          (!usefulnessCallerEntityName: inUsefulnessCallerEntityName
           !?ioUsefulEntitiesGraph
           !inferenceType: formalArg.mFormalArgumentType
           !inAnalysisContext
           !?ioTypeMap
           !?ioVariableMap
           ?@semanticExpressionForGeneration exp
-        ]
+        )
         checkAssignmentTypeWithImplicitGetterCall (
           !formalArg.mFormalArgumentType
           !exp.mResultType
@@ -345,16 +345,16 @@ final class @initializerCallForGeneration : @semanticExpressionForGeneration {
                                     ?!@uint ioTemporaryVariableIndex,
                                     ?!@stringset ioUnusedVariableCppNameSet,
                                     !@string outCppExpression ) {
-    [self.mResultType addHeaderFileName !?ioInclusionSet]
+    self.mResultType.addHeaderFileName (!?ioInclusionSet)
     var @stringlist parameterList = @()
     for (mExpression) in self.mEffectiveParameterList do
-      [mExpression generateExpression
-        !?ioGeneratedCode
+      mExpression.generateExpression
+        (!?ioGeneratedCode
         !?ioInclusionSet
         !?ioTemporaryVariableIndex
         !?ioUnusedVariableCppNameSet
         ?let @string parameter
-      ]
+      )
       parameterList += !parameter
     end
     outCppExpression = "GGS_"  + self.mResultType.identifierRepresentation

@@ -145,15 +145,15 @@ final class @structPropertyAccessExpressionAST : @semanticExpressionAST {
                       ?!@localVarManager ioVariableMap,
                       !@semanticExpressionForGeneration outExpressionGeneration ) {
   //--- Expression analysis
-    [self.mExpression analyzeSemanticExpression
-      !usefulnessCallerEntityName: inUsefulnessCallerEntityName
+    self.mExpression.analyzeSemanticExpression
+      (!usefulnessCallerEntityName: inUsefulnessCallerEntityName
       !?ioUsefulEntitiesGraph
       !inferenceType: .null
       !inAnalysisContext
       !?ioTypeMap
       !?ioVariableMap
       ?let @semanticExpressionForGeneration exprGeneration
-    ]
+    )
   //--- Check field access availability
     let @unifiedTypeMapEntry expressionType = exprGeneration.mResultType
     let propertyMap = expressionType.definition.propertyMap
@@ -164,7 +164,7 @@ final class @structPropertyAccessExpressionAST : @semanticExpressionAST {
           ?3*
         )
       end
-      [prop.mAccessControl checkGetAccess !inAnalysisContext.selfAvailability !self.propertyName]
+      prop.mAccessControl.checkGetAccess (!inAnalysisContext.selfAvailability !self.propertyName)
     //--- Generate expression
       outExpressionGeneration = @propertyAccessExpressionForGeneration {
         !prop.mPropertyType
@@ -227,15 +227,15 @@ final class @propertyAccessExpressionForGeneration : @semanticExpressionForGener
                                       ?!@uint ioTemporaryVariableIndex,
                                       ?!@stringset ioUnusedVariableCppNameSet,
                                       !@string outCppExpression ) {
-    [self.mResultType addHeaderFileName !?ioInclusionSet]
+    self.mResultType.addHeaderFileName (!?ioInclusionSet)
   //--- Operand
-    [self.expression generateExpression
-      !?ioGeneratedCode
+    self.expression.generateExpression
+      (!?ioGeneratedCode
       !?ioInclusionSet
       !?ioTemporaryVariableIndex
       !?ioUnusedVariableCppNameSet
       ?let @string operand
-    ]
+    )
   //--- Generate
     outCppExpression = operand + ".readProperty_"
     outCppExpression += self.structFieldName.identifierRepresentation + " ()"
@@ -258,7 +258,7 @@ final class @subscriptReadAccessExpressionAST : @semanticExpressionAST {
 
   override proc enterExpressionInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
     for expression in self.actualArgumentList do
-      [expression.mExpression enterExpressionInSemanticContext !?ioTypeMap]
+      expression.mExpression.enterExpressionInSemanticContext (!?ioTypeMap)
     end
   }
 
@@ -273,15 +273,15 @@ final class @subscriptReadAccessExpressionAST : @semanticExpressionAST {
                                   ?!@localVarManager ioVariableMap,
                                   !@semanticExpressionForGeneration outExpression ) {
   //--- Receiver analysis
-    [self.mExpression analyzeSemanticExpression
-      !usefulnessCallerEntityName: inUsefulnessCallerEntityName
+    self.mExpression.analyzeSemanticExpression
+      (!usefulnessCallerEntityName: inUsefulnessCallerEntityName
       !?ioUsefulEntitiesGraph
       !inferenceType: .null
       !inAnalysisContext
       !?ioTypeMap
       !?ioVariableMap
       ?let @semanticExpressionForGeneration expression
-    ]
+    )
     let @unifiedTypeMapEntry expressionType = expression.mResultType
   //--- subscript invocation signature
     let invocationSignature = self.actualArgumentList.subscriptSignature
@@ -291,15 +291,15 @@ final class @subscriptReadAccessExpressionAST : @semanticExpressionAST {
     //--- Check effective argument list
       var semanticExpressionListForGeneration = @semanticExpressionListForGeneration ()
       for formalArg in aSubscript.argumentTypeList, actualArg in self.actualArgumentList do
-        [actualArg.mExpression analyzeSemanticExpression
-          !usefulnessCallerEntityName: inUsefulnessCallerEntityName
+        actualArg.mExpression.analyzeSemanticExpression
+          (!usefulnessCallerEntityName: inUsefulnessCallerEntityName
           !?ioUsefulEntitiesGraph
           !inferenceType: formalArg.mFormalArgumentType
           !inAnalysisContext
           !?ioTypeMap
           !?ioVariableMap
           ?@semanticExpressionForGeneration expression
-        ]
+        )
         checkAssignmentTypeWithImplicitGetterCall (
           !formalArg.mFormalArgumentType
           !expression.mResultType
@@ -347,25 +347,25 @@ final class @subscriptReadAccessExpressionForGeneration : @semanticExpressionFor
                                       ?!@uint ioTemporaryVariableIndex,
                                       ?!@stringset ioUnusedVariableCppNameSet,
                                       !@string outCppExpression ) {
-    [self.mResultType addHeaderFileName !?ioInclusionSet]
+    self.mResultType.addHeaderFileName (!?ioInclusionSet)
   //--- Operand
-    [self.expression generateExpression
-      !?ioGeneratedCode
+    self.expression.generateExpression
+      (!?ioGeneratedCode
       !?ioInclusionSet
       !?ioTemporaryVariableIndex
       !?ioUnusedVariableCppNameSet
       ?let @string operand
-    ]
+    )
   //--- subscript arments
     var [@string] subscriptArgumentList = @()
     for actualArg in self.actualExpressionList do
-      [actualArg.mExpression generateExpression
-        !?ioGeneratedCode
+      actualArg.mExpression.generateExpression
+        (!?ioGeneratedCode
         !?ioInclusionSet
         !?ioTemporaryVariableIndex
         !?ioUnusedVariableCppNameSet
         ?let @string actualArgOperand
-      ]
+      )
       !?subscriptArgumentList.append (!actualArgOperand)
     end
   //--- Generate

@@ -237,7 +237,7 @@ proc compileProgramComponentGalgas3
   var beforeAfterRulesString = ""
   for (mDeclaration) in decoratedDeclarationListForGeneration do
     beforeAfterRulesString += mDeclaration.appendTypeGenericImplementation
-    [mDeclaration appendSpecificImplementation !ioTypeMap !?inclusionSet ?let @string code]
+    mDeclaration.appendSpecificImplementation (!ioTypeMap !?inclusionSet ?let @string code)
     beforeAfterRulesString += code
   end
   for (* * * * mReferenceGrammar * *) in inProgramRules do

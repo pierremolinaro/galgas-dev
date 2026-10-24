@@ -506,37 +506,37 @@ GGS_typeFeatures extensionGetter_features (const GGS_opAssignmentOperator & inOb
     break ;
   case GGS_opAssignmentOperator::Enumeration::enum_orAssign:
     {
-      result_result = GGS_typeFeatures::class_func_orAssignOperatorWithExpression (SOURCE_FILE ("instruction-concat.galgas3", 363)) ;
+      result_result = GGS_typeFeatures::class_func_orAssignOperatorWithExpression (SOURCE_FILE ("instruction-concat.galgas3", 408)) ;
     }
     break ;
   case GGS_opAssignmentOperator::Enumeration::enum_xorAssign:
     {
-      result_result = GGS_typeFeatures::class_func_xorAssignOperatorWithExpression (SOURCE_FILE ("instruction-concat.galgas3", 364)) ;
+      result_result = GGS_typeFeatures::class_func_xorAssignOperatorWithExpression (SOURCE_FILE ("instruction-concat.galgas3", 409)) ;
     }
     break ;
   case GGS_opAssignmentOperator::Enumeration::enum_andAssign:
     {
-      result_result = GGS_typeFeatures::class_func_andAssignOperatorWithExpression (SOURCE_FILE ("instruction-concat.galgas3", 365)) ;
+      result_result = GGS_typeFeatures::class_func_andAssignOperatorWithExpression (SOURCE_FILE ("instruction-concat.galgas3", 410)) ;
     }
     break ;
   case GGS_opAssignmentOperator::Enumeration::enum_plusAssign:
     {
-      result_result = GGS_typeFeatures::class_func_plusAssignOperatorWithExpression (SOURCE_FILE ("instruction-concat.galgas3", 366)) ;
+      result_result = GGS_typeFeatures::class_func_plusAssignOperatorWithExpression (SOURCE_FILE ("instruction-concat.galgas3", 411)) ;
     }
     break ;
   case GGS_opAssignmentOperator::Enumeration::enum_minusAssign:
     {
-      result_result = GGS_typeFeatures::class_func_minusAssignOperatorWithExpression (SOURCE_FILE ("instruction-concat.galgas3", 367)) ;
+      result_result = GGS_typeFeatures::class_func_minusAssignOperatorWithExpression (SOURCE_FILE ("instruction-concat.galgas3", 412)) ;
     }
     break ;
   case GGS_opAssignmentOperator::Enumeration::enum_mulAssign:
     {
-      result_result = GGS_typeFeatures::class_func_mulAssignOperatorWithExpression (SOURCE_FILE ("instruction-concat.galgas3", 368)) ;
+      result_result = GGS_typeFeatures::class_func_mulAssignOperatorWithExpression (SOURCE_FILE ("instruction-concat.galgas3", 413)) ;
     }
     break ;
   case GGS_opAssignmentOperator::Enumeration::enum_divAssign:
     {
-      result_result = GGS_typeFeatures::class_func_divAssignOperatorWithExpression (SOURCE_FILE ("instruction-concat.galgas3", 369)) ;
+      result_result = GGS_typeFeatures::class_func_divAssignOperatorWithExpression (SOURCE_FILE ("instruction-concat.galgas3", 414)) ;
     }
     break ;
   }

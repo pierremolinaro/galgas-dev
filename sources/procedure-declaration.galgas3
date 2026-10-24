@@ -188,7 +188,7 @@ final class @procDeclarationAST : @externProcedureDeclarationAST {
         !argument.mFormalArgumentName.string
     end
   //--- Enter types for instruction list
-    [self.mRoutineInstructionList enterInstructionListInSemanticContext !?ioTypeMap]
+    self.mRoutineInstructionList.enterInstructionListInSemanticContext (!?ioTypeMap)
   //--- Enter routine in routine map
     !?ioSemanticContext.routineMap.insertKey
       (!self.mRoutineName

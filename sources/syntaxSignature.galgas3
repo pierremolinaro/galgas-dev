@@ -40,7 +40,7 @@ func syntaxSignatureOfInstructionList (
 {
   result = @()
   for (mInstruction) in inInstructionList do
-    [mInstruction appendSyntaxSignature !inPosfix !?result]
+    mInstruction.appendSyntaxSignature (!inPosfix !?result)
   end
 }
 

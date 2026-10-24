@@ -75,15 +75,15 @@ proc emitProductionRulesInTexFile
 ) {
 //--------------------------------------------------------- Print an tex file for grammar rule list
   let texDocumentFilePath = inProductDirectory + "/../tex/" + inGrammarComponentName + ".document.tex"
-  [texDocumentFilePath.deletingLastPathComponent makeDirectory]
+  texDocumentFilePath.deletingLastPathComponent.makeDirectory ()
   let document = [filewrapper grammarRulesInTexDocumentTemplate.document
     !inGrammarComponentName
     !escapeForTex (!inGrammarComponentName)
   ]
-  [document writeToFileWhenDifferentContents !texDocumentFilePath ?*]
+  document.writeToFileWhenDifferentContents (!texDocumentFilePath ?*)
   let texFilePath = inProductDirectory + "/../tex/" + inGrammarComponentName + ".tex"
   var s = ""
-  [inNonTerminalMapForGrammarAnalysis searchKey !inStartSymbol ?let startSymbolIndex ?*]
+  inNonTerminalMapForGrammarAnalysis.searchKey (!inStartSymbol ?let startSymbolIndex ?*)
   s += "\\startSymbol{" + escapeForTex (!inStartSymbol) + "}{" + startSymbolIndex + "}\n\n"
   s += "\\nonTerminalSummaryStart "
   for nonterminal in inNonTerminalMapForGrammarAnalysis
@@ -97,15 +97,15 @@ proc emitProductionRulesInTexFile
       for productionRule in syntaxComponent.mProductionRulesList do
         if productionRule.mLeftNonterminalSymbol.string == nonterminal.lkey then
           if productionRule.mInstructionList.displayVertically then
-            [productionRule displayRuleVertically !syntaxComponent.mSyntaxComponentName.string !?s]
+            productionRule.displayRuleVertically (!syntaxComponent.mSyntaxComponentName.string !?s)
           else
-            [productionRule displayRule !syntaxComponent.mSyntaxComponentName.string !?s]
+            productionRule.displayRule (!syntaxComponent.mSyntaxComponentName.string !?s)
           end
         end
       end
     end
   end
-  [s writeToFileWhenDifferentContents !texFilePath ?*]
+  s.writeToFileWhenDifferentContents (!texFilePath ?*)
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -121,8 +121,8 @@ proc @productionRuleListForGrammarAnalysis.@element displayRule
   var @uint column = 1
   var @uint unusedMaxUsedRowIndex = 0 // Unused
   for (instruction) in self.mInstructionList do
-    [instruction tikzNodeForSyntaxInstruction
-      !?rowArray
+    instruction.tikzNodeForSyntaxInstruction
+      (!?rowArray
       !fromRow:0
       !?column:column
       !?node:currentNode
@@ -130,7 +130,7 @@ proc @productionRuleListForGrammarAnalysis.@element displayRule
       !?arrows:arrows
       !?unusedMaxUsedRowIndex
       !debug:false
-    ]
+    )
   end
 //--- Add a final arrow
   !?rowArray.appendRow (!nodeDefinition:"[lastPoint] ()" !row:0 !column:column ?nodeName:let lastNodeName)
@@ -181,8 +181,8 @@ proc @productionRuleListForGrammarAnalysis.@element displayRuleVertically
   for (instruction) in self.mInstructionList do
     row -= 1
     var @uint column = 1
-    [instruction tikzNodeForSyntaxInstruction
-      !?rowArray
+    instruction.tikzNodeForSyntaxInstruction
+      (!?rowArray
       !fromRow:row
       !?column:column
       !?node:currentNode
@@ -190,7 +190,7 @@ proc @productionRuleListForGrammarAnalysis.@element displayRuleVertically
       !?arrows:arrows
       !?unusedMaxUsedRowIndex
       !debug:false
-    ]
+    )
   end
 //--- Add a final arrow
   !?rowArray.appendRow (!nodeDefinition:"[lastPoint] ()" !row:row !column:2 ?nodeName:let lastNodeName)
@@ -249,8 +249,8 @@ proc @syntaxInstructionListForGrammarAnalysis tikzNodeForSyntaxInstruction
     ioColumn += 1
   else
     for (instruction) in self do
-      [instruction tikzNodeForSyntaxInstruction
-        !?ioRowList
+      instruction.tikzNodeForSyntaxInstruction
+        (!?ioRowList
         !fromRow:inRow
         !?column:ioColumn
         !?node:ioCurrentNode
@@ -258,7 +258,7 @@ proc @syntaxInstructionListForGrammarAnalysis tikzNodeForSyntaxInstruction
         !?arrows:ioArrows
         !?ioMaxUsedRowIndex
         !debug:inDebug
-      ]
+      )
     end
   end
 }
@@ -370,8 +370,8 @@ override proc @selectInstructionForGrammarAnalysis tikzNodeForSyntaxInstruction
   !?branches.popFirst (?let @syntaxInstructionListForGrammarAnalysis brancheZero)
   var branchZeroColumn = ioColumn
   var maxUsedRowIndex = inRow
-  [brancheZero tikzNodeForSyntaxInstruction
-    !?ioRowList
+  brancheZero.tikzNodeForSyntaxInstruction
+    (!?ioRowList
     !fromRow:inRow
     !?column:branchZeroColumn
     !?node:ioCurrentNode
@@ -379,7 +379,7 @@ override proc @selectInstructionForGrammarAnalysis tikzNodeForSyntaxInstruction
     !?arrows:ioArrows
     !?maxUsedRowIndex
     !debug:inDebug
-  ]
+  )
   var endColumn = branchZeroColumn
 //--- Enter following branches
   var @stringlist endingNodes = @()
@@ -388,8 +388,8 @@ override proc @selectInstructionForGrammarAnalysis tikzNodeForSyntaxInstruction
     var branchColumn = ioColumn
     var currentNode = startNodeName
     var arrowStyle = "|-"
-    [branch.mSyntaxInstructionList tikzNodeForSyntaxInstruction
-      !?ioRowList
+    branch.mSyntaxInstructionList.tikzNodeForSyntaxInstruction
+      (!?ioRowList
       !fromRow:maxUsedRowIndex
       !?column:branchColumn
       !?node:currentNode
@@ -397,7 +397,7 @@ override proc @selectInstructionForGrammarAnalysis tikzNodeForSyntaxInstruction
       !?arrows:ioArrows
       !?maxUsedRowIndex
       !debug:inDebug
-    ]
+    )
     endingNodes += !currentNode
     if endColumn < branchColumn then
       endColumn = branchColumn
@@ -463,8 +463,8 @@ override proc @repeatInstructionForGrammarAnalysis tikzNodeForSyntaxInstruction
   var branches = self.mRepeatBranchList
   !?branches.popFirst (?let @syntaxInstructionListForGrammarAnalysis brancheZero)
   var maxUsedRowIndex = inRow
-  [brancheZero tikzNodeForSyntaxInstruction
-    !?ioRowList
+  brancheZero.tikzNodeForSyntaxInstruction
+    (!?ioRowList
     !fromRow:inRow
     !?column:ioColumn
     !?node:ioCurrentNode
@@ -472,7 +472,7 @@ override proc @repeatInstructionForGrammarAnalysis tikzNodeForSyntaxInstruction
     !?arrows:ioArrows
     !?maxUsedRowIndex
     !debug:inDebug
-  ]
+  )
   var endColumn = ioColumn
 //--- Enter start point
   !?ioRowList.appendRow (!nodeDefinition:"[point] ()" !row:inRow !column:ioColumn ?nodeName:let startNodeName)
@@ -480,7 +480,7 @@ override proc @repeatInstructionForGrammarAnalysis tikzNodeForSyntaxInstruction
 //--- Enter following branches; particular case: one empty branch
   var oneEmptyBranch = branches.count == 1
   if oneEmptyBranch then
-    [branches first ?let firstBranch]
+    branches.first (?let firstBranch)
     oneEmptyBranch = firstBranch.count == 0
   end
 //--- Enter branches
@@ -494,8 +494,8 @@ override proc @repeatInstructionForGrammarAnalysis tikzNodeForSyntaxInstruction
       var branchColumn = ioColumn
       var currentNode = startNodeName
       var arrowStyle = "|-"
-      [branch.mSyntaxInstructionList tikzNodeForSyntaxInstruction
-        !?ioRowList
+      branch.mSyntaxInstructionList.tikzNodeForSyntaxInstruction
+        (!?ioRowList
         !fromRow:nextBranchUsedRowIndex
         !?column:branchColumn
         !?node:currentNode
@@ -503,7 +503,7 @@ override proc @repeatInstructionForGrammarAnalysis tikzNodeForSyntaxInstruction
         !?arrows:ioArrows
         !?nextBranchUsedRowIndex
         !debug:inDebug
-      ]
+      )
       endingNodes += !currentNode
       if endColumn < branchColumn then
         endColumn = branchColumn

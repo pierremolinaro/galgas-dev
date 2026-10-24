@@ -70,7 +70,7 @@ syntax extension galgas4ExpressionSyntax {
 override proc @bangExpressionAST enterExpressionInSemanticContext
   (?!@unifiedTypeMap ioTypeMap
 ) {
-  [self.mExpression enterExpressionInSemanticContext !?ioTypeMap]
+  self.mExpression.enterExpressionInSemanticContext (!?ioTypeMap)
 }
 
 //································································································
@@ -85,15 +85,15 @@ override proc @bangExpressionAST analyzeSemanticExpression
   !@semanticExpressionForGeneration outExpression
 ) {
 //--- Expression analysis
-  [self.mExpression analyzeSemanticExpression
-    !usefulnessCallerEntityName: inUsefulnessCallerEntityName
+  self.mExpression.analyzeSemanticExpression
+    (!usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inferenceType: @unifiedTypeMapEntry.null
     !inAnalysisContext
     !?ioTypeMap
     !?ioVariableMap
     ?let @semanticExpressionForGeneration expression
-  ]
+  )
 //--- Check operator availability
   let @unifiedTypeMapEntry type = expression.mResultType
   if let weakRef = type.definition.typeKind.getWeakReferenceType then
@@ -126,15 +126,15 @@ override proc @bangExpressionForGeneration generateExpression (?!@string ioGener
                                                                 ?!@uint ioTemporaryVariableIndex,
                                                                 ?!@stringset ioUnusedVariableCppNameSet,
                                                                 !@string outCppExpression ) {
-  [self.mExpression.mResultType addHeaderFileName !?ioInclusionSet]
+  self.mExpression.mResultType.addHeaderFileName (!?ioInclusionSet)
 //--- Operand
-  [self.mExpression generateExpression
-    !?ioGeneratedCode
+  self.mExpression.generateExpression
+    (!?ioGeneratedCode
     !?ioInclusionSet
     !?ioTemporaryVariableIndex
     !?ioUnusedVariableCppNameSet
     ?let operand
-  ]
+  )
 //--- Generate
   !?ioUnusedVariableCppNameSet.removeKey (!compilerCppName ())
   outCppExpression = operand + ".bang_" + self.mReceiverTypeName.identifierRepresentation

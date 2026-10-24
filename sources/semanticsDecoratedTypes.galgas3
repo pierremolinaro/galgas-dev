@@ -34,13 +34,13 @@ proc generateInstructionList
 ) {
   !?ioGeneratedCode.incIndentation (!2)
   for element in inInstructionList do
-    [element.mInstruction generateInstruction
-      !?ioInclusionSet
+    element.mInstruction.generateInstruction
+      (!?ioInclusionSet
       !?ioTemporaryVariableIndex
       !?ioUnusedVariableCppNameSet
       !inGenerateSyntaxDirectedTranslationString
       !?ioGeneratedCode
-    ]
+    )
   end
   !?ioGeneratedCode.decIndentation (!2)
 }

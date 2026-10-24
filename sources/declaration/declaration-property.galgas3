@@ -35,7 +35,7 @@ syntax extension galgas3DeclarationsSyntax {
       mutability = .mutableProperty
     or
       $let$
-      [accessControl checkCompatibilityWithLet !.here]
+      accessControl.checkCompatibilityWithLet (!.here)
       mutability = .constantProperty
     end
     <type_definition_ggs3> (!?ioDeclarations ?let propertyTypeName)
@@ -94,10 +94,6 @@ syntax extension galgas3DeclarationsSyntax {
       selectorAttribute = false
     end
     let propertyWeakTypeName = makeWeakTypeLName (!propertyTypeName)
-//    if not [ioDeclarations.implicitTypeDeclarationSet hasKey !propertyWeakTypeName] then
-//      ioDeclarations.implicitTypeDeclarationSet += !propertyWeakTypeName
-//
-//    end
     ioAttributeInCollectionList +=
       !mutability: .weakProperty
       !propertyWeakTypeName
@@ -143,7 +139,7 @@ syntax extension galgas4DeclarationsSyntax {
       mutability = .mutableProperty
     or
       $let$
-      [accessControl checkCompatibilityWithLet !.here]
+      accessControl.checkCompatibilityWithLet (!.here)
       mutability = .constantProperty
     end
     <type_definition> (!?ioDeclarations ?let propertyTypeName)
@@ -251,15 +247,15 @@ list @propertyInCollectionListAST {
           !selfObjectCppPrefixForAccessingProperty: ""
         }
         let propertyType = [ioTypeMap typeMapEntryForLKey !propertyTypeName]
-        [expressionAST analyzeSemanticExpression
-          !usefulnessCallerEntityName: inTypeNameForUsefulness
+        expressionAST.analyzeSemanticExpression
+          (!usefulnessCallerEntityName: inTypeNameForUsefulness
           !?ioUsefulEntitiesGraph
           !inferenceType: propertyType
           !analysisContext
           !?ioTypeMap
           !?variableMap
           ?var @semanticExpressionForGeneration expression
-        ]
+        )
       //--- Check assignment type compatibility
         checkAssignmentTypeWithImplicitGetterCall (
           !propertyType
@@ -267,13 +263,13 @@ list @propertyInCollectionListAST {
           !propertyName.location
           !?expression
         )
-        [expression generateExpression
-          !?outInitializationCode
+        expression.generateExpression
+          (!?outInitializationCode
           !?inclusionSet
           !?temporaryVariableIndex
           !?outUnusedVariableCppNameSet
           ?let sourceVar
-        ]
+        )
         outInitializationCode += "  mProperty_" + propertyName.string.identifierRepresentation
         outInitializationCode += " = " + sourceVar + " ;\n"
       end

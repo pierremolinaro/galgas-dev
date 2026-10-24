@@ -50,7 +50,7 @@ proc checkLabelMap
   var @stringset labelStringSet = @()
   for (mLabelName mFormalArgumentList *) in inLabels do
     labelStringSet ++= mLabelName.string
-    [inNonterminalSymbolLabelMapForGrammarAnalysis searchKey !mLabelName ?let formalParametersList]
+    inNonterminalSymbolLabelMapForGrammarAnalysis.searchKey (!mLabelName ?let formalParametersList)
     if mFormalArgumentList.count != formalParametersList.count then
       error (mLabelName: mFormalArgumentList.count.string
         + " formal parameter"
@@ -176,12 +176,12 @@ proc transformInstructionListForGrammarAnalysis
   ?!addedTerminalIndex:@uint ioAddedNonTerminalIndex,
   ?!@syntaxInstructionListForGrammarAnalysis ioSyntaxInstructionList ) {
   for (mInstruction) in inInstructionList do
-    [mInstruction transformInstructionForGrammarAnalysis
-      !?usedTerminalMap:ioActuallyUsedTerminalSymbolMap
+    mInstruction.transformInstructionForGrammarAnalysis
+      (!?usedTerminalMap:ioActuallyUsedTerminalSymbolMap
       !nonTerminalSymbolMap:inNonTerminalSymbolMap
       !?addedTerminalIndex:ioAddedNonTerminalIndex
       !?ioSyntaxInstructionList
-   ]
+   )
   end
 }
 
@@ -196,10 +196,10 @@ proc buildRuleList
   ?!@uint ioAddedNonTerminalCount ) {
   var productionRulesList = @productionRuleListForGrammarAnalysis ()
   for (mNonterminalName mLabelList) in inRuleList do
-    [inNonTerminalMapForGrammarAnalysis searchKey !mNonterminalName ?let nonTerminalIndex ?*]
+    inNonTerminalMapForGrammarAnalysis.searchKey (!mNonterminalName ?let nonTerminalIndex ?*)
   //--- Retrieve instruction list from first label
     let @syntaxInstructionList parsedSyntaxInstructionList
-    [mLabelList first ?* ?* ?* ?parsedSyntaxInstructionList ?*]
+    mLabelList.first (?* ?* ?* ?parsedSyntaxInstructionList ?*)
   //--- Transform instruction list
     var instructionList = @syntaxInstructionListForGrammarAnalysis ()
     transformInstructionListForGrammarAnalysis (

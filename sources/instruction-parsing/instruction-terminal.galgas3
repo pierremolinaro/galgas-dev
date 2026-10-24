@@ -181,7 +181,7 @@ final class @terminalCheckInstructionAST : @syntaxInstructionAST {
     ?!@semanticInstructionListForGeneration ioInstructionListForGeneration,
     ?!@localVarManager ioVariableMap,
     ?!@uint unused ioSelectMethodCount) {
-    [inTerminalMap searchKey !self.mTerminalName ?let @lexicalSentValueList sentAttributeList]
+    inTerminalMap.searchKey (!self.mTerminalName ?let @lexicalSentValueList sentAttributeList)
   //---
     if self.mActualInputParameterList.count != sentAttributeList.count then
       error (self.mTerminalName
@@ -195,14 +195,14 @@ final class @terminalCheckInstructionAST : @syntaxInstructionAST {
   //---
     var terminalCheckAssignementList = @terminalCheckAssignementList ()
     for (mActualSelector mInputParameter) in self.mActualInputParameterList, (mLexicalFormalSelector mLexicalAttributeName mLexicalType) in sentAttributeList do
-      [mInputParameter analyzeInputParameter
-        !inAnalysisContext
+      mInputParameter.analyzeInputParameter
+        (!inAnalysisContext
         !?ioTypeMap
         !mLexicalType
         !mLexicalAttributeName
         !?terminalCheckAssignementList
         !?ioVariableMap
-      ]
+      )
       if mLexicalFormalSelector.string != mActualSelector.string then
         error (mActualSelector : "the actual selector should be '?" + mLexicalFormalSelector + if mLexicalFormalSelector.string != "" then ":" else "" end + "'")
         warning mLexicalFormalSelector : "the formal selector is declared here"
@@ -215,18 +215,18 @@ final class @terminalCheckInstructionAST : @syntaxInstructionAST {
       end
     end
   //--- Check syntax directed translation destination variable
-    [self.mGrammarInstructionSyntaxDirectedTranslationPreceedingDelimitor analyzeSDT
-      !inAnalysisContext
+    self.mGrammarInstructionSyntaxDirectedTranslationPreceedingDelimitor.analyzeSDT
+      (!inAnalysisContext
       !?ioTypeMap
       !inHasTranslateFeature
       !?ioVariableMap
-    ]
-    [self.mGrammarInstructionSyntaxDirectedTranslationToken analyzeSDT
-      !inAnalysisContext
+    )
+    self.mGrammarInstructionSyntaxDirectedTranslationToken.analyzeSDT
+      (!inAnalysisContext
       !?ioTypeMap
       !inHasTranslateFeature
       !?ioVariableMap
-    ]
+    )
   //---
     ioInstructionListForGeneration += !@terminalCheckInstructionForGeneration {
       !self.mInstructionLocation
@@ -367,18 +367,18 @@ override proc @terminalCheckInstructionForGeneration generateInstruction (?!@str
     ioGeneratedCode += ", " + mValue1.string.utf8RepresentationEscapingQuestionMark + ") ;\n"
   end
 //--- Syntax directed translation
-  [self.mGrammarInstructionSyntaxDirectedTranslationPreceedingDelimitor generateCode
-    !inGenerateSyntaxDirectedTranslationString
+  self.mGrammarInstructionSyntaxDirectedTranslationPreceedingDelimitor.generateCode
+    (!inGenerateSyntaxDirectedTranslationString
     !"inCompiler->separatorString ()"
     !?ioUnusedVariableCppNameSet
     !?ioGeneratedCode
-  ]
-  [self.mGrammarInstructionSyntaxDirectedTranslationToken generateCode
-    !inGenerateSyntaxDirectedTranslationString
+  )
+  self.mGrammarInstructionSyntaxDirectedTranslationToken.generateCode
+    (!inGenerateSyntaxDirectedTranslationString
     !"inCompiler->tokenString ()"
     !?ioUnusedVariableCppNameSet
     !?ioGeneratedCode
-  ]
+  )
 //--- Check terminal symbol
   !?ioUnusedVariableCppNameSet.removeKey (!compilerCppName ())
   ioGeneratedCode += compilerCppName () + "->acceptTerminal (Lexique_"

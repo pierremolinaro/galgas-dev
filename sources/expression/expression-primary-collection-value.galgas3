@@ -109,7 +109,7 @@ final class @collectionValueAST : @semanticExpressionAST {
 
   override proc enterExpressionInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
     for (expression *) in self.mExpressionList do
-      [expression enterExpressionInSemanticContext !?ioTypeMap]
+      expression.enterExpressionInSemanticContext (!?ioTypeMap)
     end
   }
 
@@ -153,15 +153,15 @@ final class @collectionValueAST : @semanticExpressionAST {
       let elementType = targetType.definition.typeForEnumeratedElement
       var @collectionValueElementListForGeneration expressionListForGeneration = @()
       for (expression location) in self.mExpressionList do
-        [expression analyzeSemanticExpression
-          !usefulnessCallerEntityName: inUsefulnessCallerEntityName
+        expression.analyzeSemanticExpression
+          (!usefulnessCallerEntityName: inUsefulnessCallerEntityName
           !?ioUsefulEntitiesGraph
           !inferenceType: elementType
           !inAnalysisContext
           !?ioTypeMap
           !?ioVariableMap
           ?var expressionForGeneration
-        ]
+        )
       //--- Check assignment type compatibility
         checkAssignmentTypeWithImplicitGetterCall (
           !elementType
@@ -206,7 +206,7 @@ final class @expressionCollectionForGeneration : @semanticExpressionForGeneratio
                                       ?!@stringset ioUnusedVariableCppNameSet,
                                       !@string outCppExpression ) {
   //---
-    [self.mResultType addHeaderFileName !?ioInclusionSet]
+    self.mResultType.addHeaderFileName (!?ioInclusionSet)
   //--- Create temporary variable variable
     outCppExpression = "temp_" + ioTemporaryVariableIndex.string
     ioTemporaryVariableIndex += 1
@@ -217,13 +217,13 @@ final class @expressionCollectionForGeneration : @semanticExpressionForGeneratio
     !?ioUnusedVariableCppNameSet.removeKey (!compilerCppName ())
   //--- Add Elements
     for (expression location) in self.expressionList do
-      [expression generateExpression
-        !?ioGeneratedCode
+      expression.generateExpression
+        (!?ioGeneratedCode
         !?ioInclusionSet
         !?ioTemporaryVariableIndex
         !?ioUnusedVariableCppNameSet
         ?let argumentCppName
-      ]
+      )
       ioGeneratedCode += outCppExpression + ".plusPlusAssignOperation ("
       ioGeneratedCode += argumentCppName + " "
       ioGeneratedCode += location.commaSourceFile + ") ;\n"

@@ -193,7 +193,7 @@ proc checkAssignmentTypeWithImplicitGetterCall (?let @unifiedTypeMapEntry inTarg
     end
   //--- Check for a direct property access or for a conversion func
     if not ok, let prop = inSourceType.definition.propertyMap @[targetTypeDef.typeName.string] then
-      [prop.mAccessControl checkSetAccess !.none !inErrorLocation]
+      prop.mAccessControl.checkSetAccess (!.none !inErrorLocation)
       let conversionExpression = @propertyAccessExpressionForGeneration {
         !prop.mPropertyType
         !inErrorLocation
@@ -203,15 +203,15 @@ proc checkAssignmentTypeWithImplicitGetterCall (?let @unifiedTypeMapEntry inTarg
       ioExpression = conversionExpression
       ok = prop.mPropertyType == inTargetType
     elsif (not ok) && [inSourceType.definition.getterMap hasKey !targetTypeDef.typeName.string] then
-      [inSourceType.definition.getterMap searchKey
-        !targetTypeDef.typeName
+      inSourceType.definition.getterMap.searchKey
+        (!targetTypeDef.typeName
         ?let kind
         ?let @functionSignature argumentTypeList
         ?*
         ?let hasCompilerArgument
         ?let returnedType
         ?2*
-      ]
+      )
       ok = (argumentTypeList.count == 0) & (returnedType == inTargetType)
    //--- Add conversion expression
       let conversionExpression = @getterCallExpressionForGeneration {
@@ -326,7 +326,7 @@ proc checkDiadicOperator (?operatorIsHandled: let @bool inOperandIsHandled,
     end
   //--- Check for a direct property access or for a conversion func
     if not ok, let prop = rightType.definition.propertyMap @[leftResultType.definition.typeName] then
-      [prop.mAccessControl checkSetAccess !.none !inErrorLocation]
+      prop.mAccessControl.checkSetAccess (!.none !inErrorLocation)
       let conversionExpression = @propertyAccessExpressionForGeneration {
         !prop.mPropertyType
         !inErrorLocation
@@ -336,15 +336,15 @@ proc checkDiadicOperator (?operatorIsHandled: let @bool inOperandIsHandled,
       ioRightExpression = conversionExpression
       ok = prop.mPropertyType == leftResultType
     elsif (not ok) && [rightType.definition.getterMap hasKey !leftResultType.definition.typeName.string] then
-      [rightType.definition.getterMap searchKey
-        !leftResultType.definition.typeName
+      rightType.definition.getterMap.searchKey
+        (!leftResultType.definition.typeName
         ?let kind
         ?let @functionSignature argumentTypeList
         ?*
         ?let hasCompilerArgument
         ?let returnedType
         ?2*
-      ]
+      )
       ok = (argumentTypeList.count == 0) & (returnedType == leftResultType)
    //--- Add conversion expression
       let conversionExpression = @getterCallExpressionForGeneration {

@@ -251,8 +251,8 @@ override proc @templateLexiqueComponentAST enterDeclarationInSemanticContext
   ?!@unifiedTypeMap unused ioTypeMap,
   ?!@semanticContext ioSemanticContext ) {
 //-------------------------------------- Get super lexique features
-  [ioSemanticContext.mLexiqueComponentMapForSemanticAnalysis searchKey
-     !self.mLexiqueSuperComponentName
+  ioSemanticContext.mLexiqueComponentMapForSemanticAnalysis.searchKey
+     (!self.mLexiqueSuperComponentName
      ?let superLexiqueIsTemplate
      ?let terminalMap
      ?let indexingListAST
@@ -260,7 +260,7 @@ override proc @templateLexiqueComponentAST enterDeclarationInSemanticContext
      ?let lexicalAttributeListAST
      ?let lexicalStyleListAST
      ?let lexicalListDeclarationListAST
-  ]
+  )
   if superLexiqueIsTemplate then
     error (self.mLexiqueSuperComponentName : "cannot inherit from a template lexique")
   end
@@ -291,8 +291,8 @@ override proc @templateLexiqueComponentAST semanticAnalysis
   let nameForUsefulness = lexiqueNameForUsefulEntitiesGraph (!self.mLexiqueComponentName)
   !?ioUsefulEntitiesGraph.addNode (!nameForUsefulness !nameForUsefulness)
 //-------------------------------------- Get super lexique features
-  [inSemanticContext.mLexiqueComponentMapForSemanticAnalysis searchKey
-     !self.mLexiqueSuperComponentName
+  inSemanticContext.mLexiqueComponentMapForSemanticAnalysis.searchKey
+     (!self.mLexiqueSuperComponentName
      ?* //let superLexiqueIsTemplate
      ?* //let terminalMap
      ?* //let indexingDirectory
@@ -300,7 +300,7 @@ override proc @templateLexiqueComponentAST semanticAnalysis
      ?let lexicalAttributeListAST
      ?let lexicalStyleListAST
      ?let lexicalListDeclarationListAST
-  ]
+  )
 //-------------------------------------- Lexical attribute type name map
   let @lexicalTypeMap lexicalTypeMap = buildLexicalTypeMap ()
 //-------------------------------------- Build lexical routine map
@@ -341,11 +341,11 @@ override proc @templateLexiqueComponentAST semanticAnalysis
   for (mName mSentAttributeList mSyntaxErrorMessage mStyle nonAtomicSelection isEndOfTemplateMark) in terminalListAST do
     var @uint terminalStyleIndex = 0
     if mStyle.string.count > 0 then
-      [lexiqueAnalysisContext.mStyleMap searchKey !mStyle ?* ?terminalStyleIndex]
+      lexiqueAnalysisContext.mStyleMap.searchKey (!mStyle ?* ?terminalStyleIndex)
     end
     var argumentTypeList = @lexicalSentValueList ()
     for (mFormalSelector mAttributeName) in mSentAttributeList do
-      [lexiqueAnalysisContext.mLexicalAttributeMap searchKey !mAttributeName ?let attributeLexicalType]
+      lexiqueAnalysisContext.mLexicalAttributeMap.searchKey (!mAttributeName ?let attributeLexicalType)
       argumentTypeList += !mFormalSelector !mAttributeName.string !attributeLexicalType
     end
     !?lexiqueAnalysisContext.mTerminalMap.insertKey (!mName !argumentTypeList)
@@ -360,11 +360,11 @@ override proc @templateLexiqueComponentAST semanticAnalysis
   for (* mStyle mSyntaxErrorMessage mSentAttributeList mEntryList) in lexicalListDeclarationListAST do
     var @uint terminalStyleIndex = 0
     if mStyle.string.count > 0 then
-      [lexiqueAnalysisContext.mStyleMap searchKey !mStyle ?* ?terminalStyleIndex]
+      lexiqueAnalysisContext.mStyleMap.searchKey (!mStyle ?* ?terminalStyleIndex)
     end
     var argumentTypeList = @lexicalSentValueList ()
     for (mFormalSelector mAttributeName) in mSentAttributeList do
-      [lexiqueAnalysisContext.mLexicalAttributeMap searchKey !mAttributeName ?let attributeLexicalType]
+      lexiqueAnalysisContext.mLexicalAttributeMap.searchKey (!mAttributeName ?let attributeLexicalType)
       argumentTypeList += !mFormalSelector !mAttributeName.string !attributeLexicalType
     end
     for (* mTerminalSpelling nonAtomicSelection isTemplateEndMark) in mEntryList do

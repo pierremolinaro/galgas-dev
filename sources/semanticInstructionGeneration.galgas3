@@ -31,8 +31,8 @@ override proc @outputActualParameterForGeneration generateActualParameter
   ?!@stringset ioUnusedVariableCppNameSet,
   !@string outCppName
 ) {
-  [self.mFormalArgumentType addHeaderFileName !?ioInclusionSet]
-  [self.mOutputActualParameterExpression generateExpression !?ioImplementation !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?outCppName]
+  self.mFormalArgumentType.addHeaderFileName (!?ioInclusionSet)
+  self.mOutputActualParameterExpression.generateExpression (!?ioImplementation !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?outCppName)
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -46,7 +46,7 @@ override proc @outputInputActualParameterForGeneration generateActualParameter
   ?!@stringset ioUnusedVariableCppNameSet,
   !@string outCppName ) {
   for (t) in self.mTypeList do
-    [t addHeaderFileName !?ioInclusionSet]
+    t.addHeaderFileName (!?ioInclusionSet)
   end
   outCppName = self.mOutputInputVariableCppName
   for (mValue) in self.mStructAttributeList do
@@ -80,7 +80,7 @@ override proc @inputJokerParameterForGeneration generateActualParameter
   ?!@stringlist ioOutputVariableList,
   ?!@stringset unused ioUnusedVariableCppNameSet,
   !@string outCppName ) {
-  [self.mFormalArgumentType addHeaderFileName !?ioInclusionSet]
+  self.mFormalArgumentType.addHeaderFileName (!?ioInclusionSet)
   outCppName = self.mInputActualCppName
   ioImplementation += "GGS_" + self.mFormalArgumentType.identifierRepresentation + " " + outCppName + " ; // Joker input parameter\n"
   ioJokerParametersToReleaseList += !self.mInputActualCppName

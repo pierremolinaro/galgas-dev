@@ -58,8 +58,8 @@ final class @getterCallExpressionAST : @semanticExpressionAST {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc enterExpressionInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
-    [self.mReceiver enterExpressionInSemanticContext !?ioTypeMap]
-    [self.mActualArgumentList enterInSemanticContext !?ioTypeMap]
+    self.mReceiver.enterExpressionInSemanticContext (!?ioTypeMap)
+    self.mActualArgumentList.enterInSemanticContext (!?ioTypeMap)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -74,18 +74,18 @@ final class @getterCallExpressionAST : @semanticExpressionAST {
                           !@semanticExpressionForGeneration outExpression ) {
   //--- Check self is not inkoed before full initialization
     if self.mReceiver is @selfInExpressionAST then
-      [ioVariableMap checkSelfObjectIsFullyInitialized !self.mGetterName.location]
+      ioVariableMap.checkSelfObjectIsFullyInitialized (!self.mGetterName.location)
     end
   //-------------------------------------- Expression analysis
-    [self.mReceiver analyzeSemanticExpression
-      !usefulnessCallerEntityName: inUsefulnessCallerEntityName
+    self.mReceiver.analyzeSemanticExpression
+      (!usefulnessCallerEntityName: inUsefulnessCallerEntityName
       !?ioUsefulEntitiesGraph
       !inferenceType: @unifiedTypeMapEntry.null
       !inAnalysisContext
       !?ioTypeMap
       !?ioVariableMap
       ?@semanticExpressionForGeneration receiverExpression
-    ]
+    )
     let @unifiedTypeMapEntry receiverType = receiverExpression.mResultType
   //-------------------------------------- Search func
     if let aGetter = receiverType.definition.getterMap @[self.mGetterName] then
@@ -108,15 +108,15 @@ final class @getterCallExpressionAST : @semanticExpressionAST {
         var @semanticExpressionListForGeneration constructorEffectiveParameterList = @()
         for (mActualSelector mExpression mEndOfExpressionLocation) in self.mActualArgumentList,
             (mFormalSelector mFormalArgumentType 2*) in aGetter.mArgumentTypeList do
-          [mExpression analyzeSemanticExpression
-            !usefulnessCallerEntityName: inUsefulnessCallerEntityName
+          mExpression.analyzeSemanticExpression
+            (!usefulnessCallerEntityName: inUsefulnessCallerEntityName
             !?ioUsefulEntitiesGraph
             !inferenceType: mFormalArgumentType
             !inAnalysisContext
             !?ioTypeMap
             !?ioVariableMap
             ?@semanticExpressionForGeneration exp
-          ]
+          )
           if mFormalSelector.string != mActualSelector.string then
             let @string s = "!" + if mFormalSelector.string != "" then mFormalSelector.string + ":" else "" end
             error (mActualSelector : "the selector should be '" + s + "'" fixit replace s)
@@ -198,15 +198,15 @@ final class @getterCallExpressionAST : @semanticExpressionAST {
           var @semanticExpressionListForGeneration constructorEffectiveParameterList = @()
           for (mActualSelector mExpression mEndOfExpressionLocation) in self.mActualArgumentList,
               (mFormalSelector mFormalArgumentType 2*) in getterFormalArgumentTypeList do
-            [mExpression analyzeSemanticExpression
-              !usefulnessCallerEntityName: inUsefulnessCallerEntityName
+            mExpression.analyzeSemanticExpression
+              (!usefulnessCallerEntityName: inUsefulnessCallerEntityName
               !?ioUsefulEntitiesGraph
               !inferenceType: mFormalArgumentType
               !inAnalysisContext
               !?ioTypeMap
               !?ioVariableMap
               ?@semanticExpressionForGeneration exp
-            ]
+            )
             if mFormalSelector.string != mActualSelector.string then
               let @string s = "!" + if mFormalSelector.string != "" then mFormalSelector.string + ":" else "" end
               error (mActualSelector : "the selector should be '" + s + "'" fixit replace s)
@@ -267,32 +267,32 @@ final class @getterCallExpressionForGeneration : @semanticExpressionForGeneratio
     !@string outCppExpression
   ) {
   //--- Add return type header
-    [self.mResultType addHeaderFileName !?ioInclusionSet]
+    self.mResultType.addHeaderFileName (!?ioInclusionSet)
   //--- Receiver expression
-    [self.mReceiverExpression generateExpression
-      !?ioGeneratedCode
+    self.mReceiverExpression.generateExpression
+      (!?ioGeneratedCode
       !?ioInclusionSet
       !?ioTemporaryVariableIndex
       !?ioUnusedVariableCppNameSet
       ?let @string receiverCppName
-    ]
+    )
   //--- Reader operands
     var @stringlist getterArgumentCppNameList = @()
     for (mExpression) in self.mActualArgumentList do
-      [mExpression generateExpression
-        !?ioGeneratedCode
+      mExpression.generateExpression
+        (!?ioGeneratedCode
         !?ioInclusionSet
         !?ioTemporaryVariableIndex
         !?ioUnusedVariableCppNameSet
         ?let argumentCppName
-      ]
+      )
       getterArgumentCppNameList += !argumentCppName
     end
   //--- Generate Reader call
     switch self.mKind
     case definedAsExtension :
       var @unifiedTypeMapEntry baseType = self.mReceiverExpression.mResultType
-     [baseType addHeaderFileName !?ioInclusionSet]
+     baseType.addHeaderFileName (!?ioInclusionSet)
       var @bool searching = true
       loop (@uint.max) while searching do
         if not baseType.definition.superType.isNull then
@@ -311,7 +311,7 @@ final class @getterCallExpressionForGeneration : @semanticExpressionForGeneratio
         outCppExpression = "callExtensionGetter_" + self.mGetterName.identifierRepresentation
            + " ((const cPtr_" + self.mReceiverExpression.mResultType.identifierRepresentation + " *) " + receiverCppName + ".ptr (), "
       else
-        [self.mReceiverExpression.mResultType addHeaderFileName !?ioInclusionSet]
+        self.mReceiverExpression.mResultType.addHeaderFileName (!?ioInclusionSet)
         outCppExpression = "extensionGetter_" + self.mGetterName.identifierRepresentation + " (" + receiverCppName + ", "
       end
     case definedAsMember :
@@ -319,7 +319,7 @@ final class @getterCallExpressionForGeneration : @semanticExpressionForGeneratio
       for (mValue) in self.mFieldList do
         outCppExpression += ".readProperty_" + mValue.identifierRepresentation + " ()"
       end
-      [self.mResultType addHeaderFileName !?ioInclusionSet]
+      self.mResultType.addHeaderFileName (!?ioInclusionSet)
       outCppExpression +=  ".getter_" + self.mGetterName.identifierRepresentation + " ("
     end
     for (mValue) in getterArgumentCppNameList

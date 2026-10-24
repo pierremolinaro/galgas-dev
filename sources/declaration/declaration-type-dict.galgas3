@@ -546,8 +546,8 @@ final class @dictTypeForGeneration : @semanticTypeForGeneration {
 
   override proc appendDeclaration1 (?!@stringset ioInclusionSet,
                                      !@string outHeader ) {
-    [self.mElementTypeEntry addHeaderFileName1 !?ioInclusionSet]
-    [self.mOptionalElementTypeEntry addHeaderFileName1 !?ioInclusionSet]
+    self.mElementTypeEntry.addHeaderFileName1 (!?ioInclusionSet)
+    self.mOptionalElementTypeEntry.addHeaderFileName1 (!?ioInclusionSet)
     let selfTypeDefinition = self.mSelfTypeEntry.definition
     outHeader = [filewrapper dictGenerationTemplate.dictTypeHeader1
       !selfTypeDefinition.typeName.string
@@ -583,7 +583,7 @@ final class @dictTypeForGeneration : @semanticTypeForGeneration {
                                           (?let @unifiedTypeMap unused inTypeMap,
                                           ?!@stringset ioInclusionSet,
                                           !@string outImplementation ) {
-    [self.mSelfTypeEntry addHeaderFileName !?ioInclusionSet]
+    self.mSelfTypeEntry.addHeaderFileName (!?ioInclusionSet)
     let selfTypeDefinition = self.mSelfTypeEntry.definition
     outImplementation = [filewrapper dictGenerationTemplate.dictTypeSpecificImplementation
       !self.mSelfTypeEntry.identifierRepresentation

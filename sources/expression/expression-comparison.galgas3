@@ -178,8 +178,8 @@ syntax extension galgas4ExpressionSyntax {
 override proc @comparisonExpressionAST enterExpressionInSemanticContext
   (?!@unifiedTypeMap ioTypeMap
 ) {
-  [self.mLeftExpression enterExpressionInSemanticContext !?ioTypeMap]
-  [self.mRightExpression enterExpressionInSemanticContext !?ioTypeMap]
+  self.mLeftExpression.enterExpressionInSemanticContext (!?ioTypeMap)
+  self.mRightExpression.enterExpressionInSemanticContext (!?ioTypeMap)
 }
 
 //································································································
@@ -194,25 +194,25 @@ override proc @comparisonExpressionAST analyzeSemanticExpression
   !@semanticExpressionForGeneration outExpression
 ) {
 //--- Left expression analysis
-  [self.mLeftExpression analyzeSemanticExpression
-    !usefulnessCallerEntityName: inUsefulnessCallerEntityName
+  self.mLeftExpression.analyzeSemanticExpression
+    (!usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inferenceType: inInferenceType
     !inAnalysisContext
     !?ioTypeMap
     !?ioVariableMap
     ?var @semanticExpressionForGeneration leftExpression
-  ]
+  )
 //--- Right expression analysis
-  [self.mRightExpression analyzeSemanticExpression
-    !usefulnessCallerEntityName: inUsefulnessCallerEntityName
+  self.mRightExpression.analyzeSemanticExpression
+    (!usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inferenceType: leftExpression.mResultType
     !inAnalysisContext
     !?ioTypeMap
     !?ioVariableMap
     ?var @semanticExpressionForGeneration rightExpression
-  ]
+  )
 //--- Operator name
   let isEquatable = [leftExpression.mResultType.definition.features contains !.equatable]
   let isComparable = [leftExpression.mResultType.definition.features contains !.comparable]
@@ -282,23 +282,23 @@ override proc @comparisonExpressionForGeneration generateExpression
   ?!@stringset ioUnusedVariableCppNameSet,
   !@string outCppExpression
 ) {
-  [self.mLeftExpression.mResultType addHeaderFileName !?ioInclusionSet]
+  self.mLeftExpression.mResultType.addHeaderFileName (!?ioInclusionSet)
 //--- Left operand
-  [self.mLeftExpression  generateExpression
-     !?ioGeneratedCode
+  self.mLeftExpression.generateExpression
+     (!?ioGeneratedCode
      !?ioInclusionSet
      !?ioTemporaryVariableIndex
      !?ioUnusedVariableCppNameSet
      ?let leftTemporaryOperand
-   ]
+   )
 //--- Right operand
-  [self.mRightExpression generateExpression
-    !?ioGeneratedCode
+  self.mRightExpression.generateExpression
+    (!?ioGeneratedCode
     !?ioInclusionSet
     !?ioTemporaryVariableIndex
     !?ioUnusedVariableCppNameSet
     ?let rightTemporaryOperand
-  ]
+  )
 //--- Operator name
   let @string operatorName
   switch self.mComparison

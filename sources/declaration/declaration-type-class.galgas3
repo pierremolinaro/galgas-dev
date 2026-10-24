@@ -526,15 +526,15 @@ final class @classDeclarationAST : @semanticDeclarationAST {
         !hasSelector: property.hasSelector
      end
    end
-   [self.mPropertyList buildPropertyInitializationCode
-      !classTypeNameForUsefulness
+   self.mPropertyList.buildPropertyInitializationCode
+      (!classTypeNameForUsefulness
       !inSemanticContext
       !inPredefinedTypes
       !?ioUsefulEntitiesGraph
       !?ioTypeMap
       ?let unusedVariableCppNameSet
       ?let initializationCode
-    ]
+    )
   //-----
     let constructorNeedsCompilerVar = not [unusedVariableCppNameSet hasKey !compilerCppName ()]
     ioSemanticDeclarationListForGeneration +=
@@ -597,7 +597,7 @@ final class @classTypeForGeneration : @semanticTypeForGeneration {
   override proc appendDeclaration1 (?!@stringset ioInclusionSet,
                                      !@string outHeader ) {
     if not self.mSuperClass.isNull then
-      [self.mSuperClass addHeaderFileName !?ioInclusionSet]
+      self.mSuperClass.addHeaderFileName (!?ioInclusionSet)
     end
     let selfTypeDefinition = self.mSelfTypeEntry.definition
     outHeader = [filewrapper classGenerationTemplate.referenceClassTypeHeader1
@@ -632,7 +632,7 @@ final class @classTypeForGeneration : @semanticTypeForGeneration {
                                      ?!@stringset ioInclusionSet,
                                      !@string outHeader ) {
     for (t 4*) in self.mCurrentTypedAttributeList do
-      [t addHeaderFileName !?ioInclusionSet]
+      t.addHeaderFileName (!?ioInclusionSet)
     end
     let selfTypeDefinition = self.mSelfTypeEntry.definition
       if self.generateHeaderInSeparateFile then
@@ -698,7 +698,7 @@ final class @classTypeForGeneration : @semanticTypeForGeneration {
   override proc appendSpecificImplementation (?let @unifiedTypeMap unused inTypeMap,
                                                ?!@stringset ioInclusionSet,
                                                !@string outImplementation ) {
-    [self.mSelfTypeEntry addHeaderFileName !?ioInclusionSet]
+    self.mSelfTypeEntry.addHeaderFileName (!?ioInclusionSet)
     let selfTypeDefinition = self.mSelfTypeEntry.definition
     let at = [self.mAllTypedAttributeList subListWithRange
       !@{!0 !self.mAllTypedAttributeList.count - self.mCurrentTypedAttributeList.count}

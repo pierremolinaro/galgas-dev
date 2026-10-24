@@ -67,7 +67,7 @@ syntax extension galgas4InstructionsSyntax {
 //--------------------------------------------------------------------------------------------------
 
 override proc @messageInstructionAST enterInstructionInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
-  [self.mExpression enterExpressionInSemanticContext !?ioTypeMap]
+  self.mExpression.enterExpressionInSemanticContext (!?ioTypeMap)
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -82,15 +82,15 @@ override proc @messageInstructionAST analyzeSemanticInstruction (
                         ?!@semanticInstructionListForGeneration ioInstructionListForGeneration,
                         ?!@localVarManager ioVariableMap) {
 //--- Analyze source expression
-  [self.mExpression analyzeSemanticExpression
-    !usefulnessCallerEntityName: inUsefulnessCallerEntityName
+  self.mExpression.analyzeSemanticExpression
+    (!usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inferenceType: @unifiedTypeMapEntry.null
     !inAnalysisContext
     !?ioTypeMap
     !?ioVariableMap
     ?let expression
-  ]
+  )
 //--- Check message type is @string
   if expression.mResultType != inAnalysisContext.predefinedTypes.mStringType then
     error (self.mInstructionLocation
@@ -120,13 +120,13 @@ override proc @messageInstructionForGeneration generateInstruction (?!@stringset
   ?let @bool unused inGenerateSyntaxDirectedTranslationString,
   ?!@string ioGeneratedCode) {
 //--- Message expression
-  [self.mExpression generateExpression
-    !?ioGeneratedCode
+  self.mExpression.generateExpression
+    (!?ioGeneratedCode
     !?ioInclusionSet
     !?ioTemporaryVariableIndex
     !?ioUnusedVariableCppNameSet
     ?let @string messageCppVarName
-  ]
+  )
 //--- Invoke 'printMessage' proc of Compiler
   ioGeneratedCode += compilerCppName () + "->printMessage (" + messageCppVarName
   ioGeneratedCode += " " + self.mInstructionLocation.commaSourceFile + ") ;\n"

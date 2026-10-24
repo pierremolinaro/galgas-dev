@@ -69,17 +69,17 @@ abstract class @predefinedTypeAST : @semanticDeclarationAST {
         ?let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext,
         ?!@unifiedTypeMap ioTypeMap,
         ?!@semanticContext ioSemanticContext ) {
-    [self getClassFunctionMap !?ioTypeMap ?let @classFunctionMap constructorMap]
-    [self getGetterMap !?ioTypeMap ?var @getterMap getterMap]
-    [self getSetterMap !?ioTypeMap ?var @setterMap setterMap]
-    [self getInstanceMethodMap !?ioTypeMap ?var @instanceMethodMap instanceMethodMap]
-    [self getClassMethodMap !?ioTypeMap ?let @classMethodMap classMethodMap]
-    [self getAddAssignArgumentList !?ioTypeMap ?let @functionSignature addAssignArgumentList]
-    [self getEnumerationList
-      !?ioTypeMap
+    self.getClassFunctionMap (!?ioTypeMap ?let @classFunctionMap constructorMap)
+    self.getGetterMap (!?ioTypeMap ?var @getterMap getterMap)
+    self.getSetterMap (!?ioTypeMap ?var @setterMap setterMap)
+    self.getInstanceMethodMap (!?ioTypeMap ?var @instanceMethodMap instanceMethodMap)
+    self.getClassMethodMap (!?ioTypeMap ?let @classMethodMap classMethodMap)
+    self.getAddAssignArgumentList (!?ioTypeMap ?let @functionSignature addAssignArgumentList)
+    self.getEnumerationList
+      (!?ioTypeMap
       ?let @enumerationDescriptorList enumerationList
       ?let @string enumeratedTypeName
-    ]
+    )
     !?ioTypeMap.makeEntryFromString (!self.mPredefinedTypeName ?*)
   //--- Enumeration
     let @unifiedTypeMapEntry enumeratedTypeEntry

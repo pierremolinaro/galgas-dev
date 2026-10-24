@@ -142,12 +142,12 @@ override proc @filewrapperObjectInstanciationInExpressionAST analyzeSemanticExpr
   let usefulnessName = filewrapperNameForUsefulEntitiesGraph (!self.mFilewrapperName)
   !?ioUsefulEntitiesGraph.addEdge (!from: inUsefulnessCallerEntityName !to: usefulnessName)
 //--- Search for filewrapper name in filewrapper map
-  [inAnalysisContext.semanticContext.mFilewrapperMap searchKey
-    !self.mFilewrapperName
+  inAnalysisContext.semanticContext.mFilewrapperMap.searchKey
+    (!self.mFilewrapperName
     ?let @lstring filewrapperPath
     ?4*
     ?let @bool isInternal
-  ]
+  )
 //--- Check internal
   if isInternal then
     let filewrapperDeclarationLocation = [inAnalysisContext.semanticContext.mFilewrapperMap locationForKey !self.mFilewrapperName.string]
@@ -169,7 +169,7 @@ override proc @filewrapperTemplateInExpressionAST enterExpressionInSemanticConte
   (?!@unifiedTypeMap ioTypeMap
 ) {
   for (* mExpression *) in self.mExpressions do
-    [mExpression enterExpressionInSemanticContext !?ioTypeMap]
+    mExpression.enterExpressionInSemanticContext (!?ioTypeMap)
   end
 }
 
@@ -187,12 +187,12 @@ override proc @filewrapperTemplateInExpressionAST analyzeSemanticExpression
   let usefulnessName = filewrapperTemplateNameForUsefulEntitiesGraph (!self.mFilewrapperName !self.mFilewrapperTemplateName)
   !?ioUsefulEntitiesGraph.addEdge (!from: inUsefulnessCallerEntityName !to: usefulnessName)
 //---
-  [inAnalysisContext.semanticContext.mFilewrapperMap searchKey
-     !self.mFilewrapperName
+  inAnalysisContext.semanticContext.mFilewrapperMap.searchKey
+     (!self.mFilewrapperName
      ?4*
      ?let @filewrapperTemplateMap filewrapperTemplateMap
      ?let @bool isInternal
-   ]
+   )
 //--- Check internal
   if isInternal then
     let filewrapperDeclarationLocation = [inAnalysisContext.semanticContext.mFilewrapperMap locationForKey !self.mFilewrapperName.string]
@@ -201,7 +201,7 @@ override proc @filewrapperTemplateInExpressionAST analyzeSemanticExpression
     end
   end
 //---
-  [filewrapperTemplateMap searchKey !self.mFilewrapperTemplateName ?let @functionSignature templateSignature ?*]
+  filewrapperTemplateMap.searchKey (!self.mFilewrapperTemplateName ?let @functionSignature templateSignature ?*)
 //--- Analysis arguments
   var @semanticExpressionListForGeneration effectiveParameterList
   if self.mExpressions.count != templateSignature.count then
@@ -217,15 +217,15 @@ override proc @filewrapperTemplateInExpressionAST analyzeSemanticExpression
         let @string s = "!" + if mFormalSelector.string != "" then mFormalSelector.string + ":" else "" end
         error (mActualSelector : "the selector should be '" + s + "'" fixit replace s)
       end
-      [mExpression analyzeSemanticExpression
-        !usefulnessCallerEntityName: inUsefulnessCallerEntityName
+      mExpression.analyzeSemanticExpression
+        (!usefulnessCallerEntityName: inUsefulnessCallerEntityName
         !?ioUsefulEntitiesGraph
         !inferenceType: mFormalArgumentType
         !inAnalysisContext
         !?ioTypeMap
         !?ioVariableMap
         ?@semanticExpressionForGeneration exp
-      ]
+      )
       checkAssignmentTypeWithImplicitGetterCall (!mFormalArgumentType !exp.mResultType !mEndOfExpressionLocation !?exp)
       effectiveParameterList += !exp
     end
@@ -271,15 +271,15 @@ override proc @filewrapperInExpressionAST analyzeSemanticExpression
     !?directoryList.popLast (?fileName)
   end
 //--- Get filewrapper features
-  [inAnalysisContext.semanticContext.mFilewrapperMap searchKey
-    !self.mFilewrapperName
+  inAnalysisContext.semanticContext.mFilewrapperMap.searchKey
+    (!self.mFilewrapperName
     ?*
     ?*
     ?var @wrapperFileMap filewrapperFileMap
     ?var @wrapperDirectoryMap filewrapperDirectoryMap
     ?*
     ?let @bool isInternal
-  ]
+  )
 //--- Check internal
   if isInternal then
     let filewrapperDeclarationLocation = [inAnalysisContext.semanticContext.mFilewrapperMap locationForKey !self.mFilewrapperName.string]
@@ -294,12 +294,12 @@ override proc @filewrapperInExpressionAST analyzeSemanticExpression
     !?directoryList.popFirst (?let directoryName)
     builtPath += directoryName + "/"
     if [filewrapperDirectoryMap hasKey !directoryName] then
-      [filewrapperDirectoryMap searchKey
-        !@lstring {!directoryName !@location.here}
+      filewrapperDirectoryMap.searchKey
+        (!@lstring {!directoryName !@location.here}
         ?filewrapperFileMap
         ?filewrapperDirectoryMap
         ?*
-      ]
+      )
     else
       error (self.mFilewrapperPath : "the '" + builtPath + "' path does not exists for the '" + self.mFilewrapperName + "' filewrapper" spoil filewrapperFileMap)
       directoryList = @stringlist () // For exiting loop
@@ -308,7 +308,7 @@ override proc @filewrapperInExpressionAST analyzeSemanticExpression
   let @uint fileIndex
   let @bool isTextFile
   if [filewrapperFileMap hasKey !fileName] then
-    [filewrapperFileMap searchKey !@lstring {!fileName !@location.here} ?* ?isTextFile ?* ?fileIndex]
+    filewrapperFileMap.searchKey (!@lstring {!fileName !@location.here} ?* ?isTextFile ?* ?fileIndex)
   else
     error (self.mFilewrapperPath
     : "the '" + fileName + "' file does not exist in the '" + builtPath + "' directory of '" + self.mFilewrapperName + "' filewrapper"
@@ -367,13 +367,13 @@ override proc @filewrapperTemplateInExpressionForGeneration generateExpression
   ioInclusionSet ++= "filewrapper-" + self.mFilewrapperName
   var parameterList = @stringlist ()
   for (mExpression) in self.mActualOutputParameterList do
-    [mExpression generateExpression
-      !?ioGeneratedCode
+    mExpression.generateExpression
+      (!?ioGeneratedCode
       !?ioInclusionSet
       !?ioTemporaryVariableIndex
       !?ioUnusedVariableCppNameSet
       ?let parameter
-    ]
+    )
     parameterList += !parameter
   end
   outCppExpression = "GGS_string (filewrapperTemplate_" + self.mFilewrapperName.identifierRepresentation + "_" + self.mFilewrapperTemplateName.identifierRepresentation

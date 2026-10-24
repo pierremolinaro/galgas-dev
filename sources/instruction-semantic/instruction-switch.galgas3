@@ -32,10 +32,11 @@ syntax extension galgas3InstructionsSyntax {
     var @switchBranchesAST switchBranches = @()
     repeat
       $case$
-      <switch_case>(
+      <switch_case> (
         !?ioDeclarations
         ?let [@lstring] constantNameList
-        ?let @switchExtractedValuesListAST associatedValuesExtraction)
+        ?let @switchExtractedValuesListAST associatedValuesExtraction
+      )
       $:$
       <semantic_instruction_list_ggs3> (!?ioDeclarations ?let instructions)
       switchBranches += !constantNameList !associatedValuesExtraction !instructions !@location.here
@@ -224,9 +225,9 @@ final class @switchInstructionAST : @semanticInstructionAST {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc enterInstructionInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
-    [self.mSwitchExpression enterExpressionInSemanticContext !?ioTypeMap]
+    self.mSwitchExpression.enterExpressionInSemanticContext (!?ioTypeMap)
     for branch in self.mBranches do
-      [branch.mInstructions enterInstructionListInSemanticContext !?ioTypeMap]
+      branch.mInstructions.enterInstructionListInSemanticContext (!?ioTypeMap)
     end
   }
 
@@ -239,15 +240,15 @@ final class @switchInstructionAST : @semanticInstructionAST {
                             ?!@semanticInstructionListForGeneration ioInstructionListForGeneration,
                             ?!@localVarManager ioVariableMap) {
   //--- Analyze switch expression
-    [self.mSwitchExpression analyzeSemanticExpression
-      !usefulnessCallerEntityName: inUsefulnessCallerEntityName
+    self.mSwitchExpression.analyzeSemanticExpression
+      (!usefulnessCallerEntityName: inUsefulnessCallerEntityName
       !?ioUsefulEntitiesGraph
       !inferenceType: @unifiedTypeMapEntry.null
       !inAnalysisContext
       !?ioTypeMap
       !?ioVariableMap
       ?let switchExpression
-    ]
+    )
   //--- Check switch expression type is and enum instance
     if let enumType = switchExpression.mResultType.definition.typeKind.getEnumType then
     //--- Enum constant map
@@ -266,7 +267,7 @@ final class @switchInstructionAST : @semanticInstructionAST {
               )
             end
             constantsNamedInSwitchInstruction ++= constantName.string
-            [enumType.constantMap searchKey !constantName ?* ?let associatedTypeList]
+            enumType.constantMap.searchKey (!constantName ?* ?let associatedTypeList)
             if (associatedTypeList.count > 0) & (branch.mAssociatedValuesExtraction.count == 0) then
               error (constantName
                 :"the associated values of '" + constantName + "' constant should be extracted"
@@ -409,13 +410,13 @@ final class @switchInstructionForGeneration : @semanticInstructionForGeneration 
                                        ?let @bool inGenerateSyntaxDirectedTranslationString,
                                        ?!@string ioGeneratedCode) {
   //--- Switch expression
-    [self.mSwitchExpression generateExpression
-      !?ioGeneratedCode
+    self.mSwitchExpression.generateExpression
+      (!?ioGeneratedCode
       !?ioInclusionSet
       !?ioTemporaryVariableIndex
       !?ioUnusedVariableCppNameSet
       ?let @string switchVar
-    ]
+    )
     ioGeneratedCode += "switch (" + switchVar + ".enumValue ()) {\n"
     ioGeneratedCode += "case GGS_"
     ioGeneratedCode += self.mSwitchExpression.mResultType.identifierRepresentation
@@ -434,7 +435,7 @@ final class @switchInstructionForGeneration : @semanticInstructionForGeneration 
         ioGeneratedCode += "{\n"
         if branch.mExtractedAssociatedValuesForGeneration.count > 0 then
           for associatedValue in branch.mExtractedAssociatedValuesForGeneration do
-            [associatedValue.mType addHeaderFileName !?ioInclusionSet]
+            associatedValue.mType.addHeaderFileName (!?ioInclusionSet)
             ioGeneratedCode += "  GGS_" + associatedValue.mType.identifierRepresentation
             ioGeneratedCode += " " + associatedValue.mCppName + " ;\n"
           end

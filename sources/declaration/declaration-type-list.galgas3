@@ -555,10 +555,10 @@ override proc @listTypeForGeneration appendSpecificImplementation
                                         ?!@stringset ioInclusionSet,
                                         !@string outImplementation ) {
   for (t 4*) in self.mTypedAttributeList do
-    [t addHeaderFileName !?ioInclusionSet]
+    t.addHeaderFileName (!?ioInclusionSet)
   end
-  [self.mListElementTypeIndex addHeaderFileName !?ioInclusionSet]
-  [self.mSelfTypeEntry addHeaderFileName !?ioInclusionSet]
+  self.mListElementTypeIndex.addHeaderFileName (!?ioInclusionSet)
+  self.mSelfTypeEntry.addHeaderFileName (!?ioInclusionSet)
   let selfTypeDefinition = self.mSelfTypeEntry.definition
   outImplementation = [filewrapper listGenerationTemplate.listTypeSpecificImplementation
     !selfTypeDefinition.typeName.string

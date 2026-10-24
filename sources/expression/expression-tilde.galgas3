@@ -63,7 +63,7 @@ final class @tildeExpressionAST : @semanticExpressionAST {
 
   override proc enterExpressionInSemanticContext
     (?!@unifiedTypeMap ioTypeMap ) {
-    [self.mExpression enterExpressionInSemanticContext !?ioTypeMap]
+    self.mExpression.enterExpressionInSemanticContext (!?ioTypeMap)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -78,15 +78,15 @@ final class @tildeExpressionAST : @semanticExpressionAST {
     !@semanticExpressionForGeneration outExpression
   ) {
   //--- Expression analysis
-    [self.mExpression analyzeSemanticExpression
-      !usefulnessCallerEntityName: inUsefulnessCallerEntityName
+    self.mExpression.analyzeSemanticExpression
+      (!usefulnessCallerEntityName: inUsefulnessCallerEntityName
       !?ioUsefulEntitiesGraph
       !inferenceType: inType
       !inAnalysisContext
       !?ioTypeMap
       !?ioVariableMap
       ?let @semanticExpressionForGeneration expression
-    ]
+    )
   //--- Check operator availability
     let @unifiedTypeMapEntry type = expression.mResultType
     if let exp = expression as @literalBigIntExpressionForGeneration then
@@ -130,9 +130,9 @@ override proc @tildeExpressionForGeneration generateExpression
   ?!@uint ioTemporaryVariableIndex,
   ?!@stringset ioUnusedVariableCppNameSet,
   !@string outCppExpression ) {
-  [self.mExpression.mResultType addHeaderFileName !?ioInclusionSet]
+  self.mExpression.mResultType.addHeaderFileName (!?ioInclusionSet)
 //--- Operand
-  [self.mExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?let operand]
+  self.mExpression.generateExpression (!?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?let operand)
 //--- Generate
   outCppExpression = operand + ".operator_tilde (" + self.mLocation.sourceFile + ")"
 }

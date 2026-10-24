@@ -74,7 +74,7 @@ syntax extension galgas4InstructionsSyntax {
 //--------------------------------------------------------------------------------------------------
 
 override proc @selfAssignmentInstructionAST enterInstructionInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
-  [self.mSourceExpression enterExpressionInSemanticContext !?ioTypeMap]
+  self.mSourceExpression.enterExpressionInSemanticContext (!?ioTypeMap)
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -93,15 +93,15 @@ override proc @selfAssignmentInstructionAST analyzeSemanticInstruction (
       error (self.mInstructionLocation : "'self' not mutable in this context")
     end
   //--- Analyze source expression
-    [self.mSourceExpression analyzeSemanticExpression
-      !usefulnessCallerEntityName: inUsefulnessCallerEntityName
+    self.mSourceExpression.analyzeSemanticExpression
+      (!usefulnessCallerEntityName: inUsefulnessCallerEntityName
       !?ioUsefulEntitiesGraph
       !inferenceType: selfAvailable.type
       !inAnalysisContext
       !?ioTypeMap
       !?ioVariableMap
       ?@semanticExpressionForGeneration expression
-    ]
+    )
   //--- Check assignment type compatibility
     checkAssignmentTypeWithImplicitGetterCall (!selfAvailable.type !expression.mResultType !self.mInstructionLocation !?expression)
   //--- Generate instruction

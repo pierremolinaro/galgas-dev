@@ -136,7 +136,7 @@ final class @classFuncExpressionAST : @semanticExpressionAST {
     if self.typeName.string != "" then
       !?ioTypeMap.makeEntry (!self.typeName ?*)
     end
-    [self.expressions enterInSemanticContext !?ioTypeMap]
+    self.expressions.enterInSemanticContext (!?ioTypeMap)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -247,15 +247,15 @@ private proc analyzeConstructorInvocation (?let @lstring inUsefulnessCallerEntit
     for effectiveParameter in inInitializerEffectiveParameterExpressions,
         formalArg in constructorFormalArgumentTypeList do
       !?outRequiredTypes.append (!formalArg.mFormalArgumentType)
-      [effectiveParameter.mExpression analyzeSemanticExpression
-        !usefulnessCallerEntityName: inUsefulnessCallerEntityName
+      effectiveParameter.mExpression.analyzeSemanticExpression
+        (!usefulnessCallerEntityName: inUsefulnessCallerEntityName
         !?ioUsefulEntitiesGraph
         !inferenceType: formalArg.mFormalArgumentType
         !inAnalysisContext
         !?ioTypeMap
         !?ioVariableMap
         ?@semanticExpressionForGeneration exp
-      ]
+      )
       checkAssignmentTypeWithImplicitGetterCall (
         !formalArg.mFormalArgumentType
         !exp.mResultType
@@ -293,19 +293,19 @@ final class @classFuncExpressionForGeneration : @semanticExpressionForGeneration
                                       ?!@uint ioTemporaryVariableIndex,
                                       ?!@stringset ioUnusedVariableCppNameSet,
                                       !@string outCppExpression ) {
-    [self.mResultType addHeaderFileName !?ioInclusionSet]
+    self.mResultType.addHeaderFileName (!?ioInclusionSet)
     for type in self.requiredTypes do
-      [type addHeaderFileName !?ioInclusionSet]
+      type.addHeaderFileName (!?ioInclusionSet)
     end
     var @stringlist parameterList = @()
     for (mExpression) in self.mEffectiveParameterList do
-      [mExpression generateExpression
-        !?ioGeneratedCode
+      mExpression.generateExpression
+        (!?ioGeneratedCode
         !?ioInclusionSet
         !?ioTemporaryVariableIndex
         !?ioUnusedVariableCppNameSet
         ?let @string parameter
-      ]
+      )
       parameterList += !parameter
     end
     outCppExpression =  "GGS_"  + self.classFuncType.identifierRepresentation

@@ -23,18 +23,18 @@ syntax extension galgas3InstructionsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <semantic_instruction_ggs3> (?!@galgasDeclarationAST ioDeclarations,
-                                    !@semanticInstructionAST outInstruction) {
-    $identifier$ ?let mRoutineName indexing routineCall
-    $($
-    <actual_parameter_list_ggs3> (!?ioDeclarations ?let @actualParameterListAST actualParameterList)
-    $)$
-    outInstruction = @procCallInstructionAST {
-      !mRoutineName.location
-      !mRoutineName
-      !actualParameterList
-    }
-  }
+//  rule <semantic_instruction_ggs3> (?!@galgasDeclarationAST ioDeclarations,
+//                                    !@semanticInstructionAST outInstruction) {
+//    $identifier$ ?let mRoutineName indexing routineCall
+//    $($
+//    <actual_parameter_list_ggs3> (!?ioDeclarations ?let @actualParameterListAST actualParameterList)
+//    $)$
+//    outInstruction = @procCallInstructionAST {
+//      !mRoutineName.location
+//      !mRoutineName
+//      !actualParameterList
+//    }
+//  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -52,7 +52,7 @@ final class @procCallInstructionAST : @semanticInstructionAST {
 
   override proc enterInstructionInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
     for (mActualParameter) in self.mActualParameterList do
-      [mActualParameter enterParameterInSemanticContext !?ioTypeMap]
+      mActualParameter.enterParameterInSemanticContext (!?ioTypeMap)
     end
   }
 
@@ -65,13 +65,13 @@ final class @procCallInstructionAST : @semanticInstructionAST {
                                               ?!@semanticInstructionListForGeneration ioInstructionListForGeneration,
                                               ?!@localVarManager ioVariableMap) {
    //--- Get routine signature
-    [inAnalysisContext.semanticContext.routineMap searchKey
-       !self.mRoutineName
+    inAnalysisContext.semanticContext.routineMap.searchKey
+       (!self.mRoutineName
        !actualParameters: self.mActualParameterList
        ?let @formalParameterSignature routineSignature
        ?isFilePrivate: let @bool isFilePrivate
        ?routineMangledName: let routineMangledName
-     ]
+     )
   //--- Usefulness
     let usefulnessName = procedureNameForUsefulEntitiesGraph (!routineMangledName)
     !?ioUsefulEntitiesGraph.addEdge (!from: inUsefulnessCallerEntityName !to: usefulnessName)
@@ -83,8 +83,8 @@ final class @procCallInstructionAST : @semanticInstructionAST {
       end
     end
   //--- Check effective parameters
-    [self.mActualParameterList analyzeRoutineArguments
-      !inUsefulnessCallerEntityName
+    self.mActualParameterList.analyzeRoutineArguments
+      (!inUsefulnessCallerEntityName
       !?ioUsefulEntitiesGraph
       !inAnalysisContext
       !?ioTypeMap
@@ -94,7 +94,7 @@ final class @procCallInstructionAST : @semanticInstructionAST {
       !?ioVariableMap
       !?ioInstructionListForGeneration
       ?let @actualParameterListForGeneration actualParameterListForGeneration
-    ]
+    )
   //--- Generate instruction
     ioInstructionListForGeneration += !@procCallInstructionForGeneration {
       !routineMangledName: routineMangledName // self.mRoutineName
@@ -128,15 +128,15 @@ final class @procCallInstructionForGeneration : @semanticInstructionForGeneratio
     var @stringlist jokerParametersToReleaseList = @()
     var @stringlist inputVariableList = @()
     for (actualParameter) in self.mActualParameterList do
-      [actualParameter generateActualParameter
-        !?ioInclusionSet
+      actualParameter.generateActualParameter
+        (!?ioInclusionSet
         !?ioTemporaryVariableIndex
         !?ioGeneratedCode
         !?jokerParametersToReleaseList
         !?inputVariableList
         !?ioUnusedVariableCppNameSet
         ?let parameterCppName
-      ]
+      )
       parameterCppNameList += !parameterCppName
     end
   //--- Generate proc call
@@ -149,10 +149,10 @@ final class @procCallInstructionForGeneration : @semanticInstructionForGeneratio
     ioGeneratedCode += "}\n"
   //--- Generate poisoned variables
     for (actualParameter) in self.mActualParameterList do
-      [actualParameter generatePoisonedVariables
-        !?ioGeneratedCode
+      actualParameter.generatePoisonedVariables
+        (!?ioGeneratedCode
         !?ioUnusedVariableCppNameSet
-      ]
+      )
     end
   }
 

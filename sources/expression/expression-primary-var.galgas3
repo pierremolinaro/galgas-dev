@@ -103,7 +103,7 @@ final class @varInExpressionForGeneration : @semanticExpressionForGeneration {
                                       ?!@uint unused ioTemporaryVariableIndex,
                                       ?!@stringset ioUnusedVariableCppNameSet,
                                       !@string outCppExpression ) {
-    [self.mResultType addHeaderFileName !?ioInclusionSet]
+    self.mResultType.addHeaderFileName (!?ioInclusionSet)
     outCppExpression = self.mCppVarName
     !?ioUnusedVariableCppNameSet.removeKey (!self.mNameForCheckingFormalParameterUsing)
   }

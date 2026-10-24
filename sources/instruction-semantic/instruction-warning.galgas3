@@ -84,9 +84,9 @@ syntax extension galgas4InstructionsSyntax {
 //--------------------------------------------------------------------------------------------------
 
 override proc @warningInstructionAST enterInstructionInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
-  [self.mLocationExpression enterExpressionInSemanticContext !?ioTypeMap]
-  [self.mMessageExpression enterExpressionInSemanticContext !?ioTypeMap]
-  [self.mFixitListAST enterFixItListInSemanticContext !?ioTypeMap]
+  self.mLocationExpression.enterExpressionInSemanticContext (!?ioTypeMap)
+  self.mMessageExpression.enterExpressionInSemanticContext (!?ioTypeMap)
+  self.mFixitListAST.enterFixItListInSemanticContext (!?ioTypeMap)
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -144,24 +144,24 @@ override proc @warningInstructionForGeneration generateInstruction (?!@stringset
                                      ?let @bool inGenerateSyntaxDirectedTranslationString,
                                      ?!@string ioGeneratedCode) {
 //--- Receiver expression
-  [self.mReceiverExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?let receiverCppVarName]
+  self.mReceiverExpression.generateExpression (!?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?let receiverCppVarName)
 //--- Receiver expression
-  [self.mWarningExpression generateExpression
-    !?ioGeneratedCode
+  self.mWarningExpression.generateExpression
+    (!?ioGeneratedCode
     !?ioInclusionSet
     !?ioTemporaryVariableIndex
     !?ioUnusedVariableCppNameSet
     ?let messageCppVarName
-  ]
+  )
 //--- Fix It array
-  [self.mFixitListForGeneration generateFixIt
-    !?ioInclusionSet
+  self.mFixitListForGeneration.generateFixIt
+    (!?ioInclusionSet
     !?ioTemporaryVariableIndex
     !?ioUnusedVariableCppNameSet
     !inGenerateSyntaxDirectedTranslationString
     !?ioGeneratedCode
     ?let fixItArrayCppName
-  ]
+  )
 //--- Generate warning instruction
   !?ioUnusedVariableCppNameSet.removeKey (!compilerCppName ())
   ioGeneratedCode += compilerCppName () + "->emitSemanticWarning ("

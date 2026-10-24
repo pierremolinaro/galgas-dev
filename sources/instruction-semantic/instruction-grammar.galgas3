@@ -275,18 +275,18 @@ syntax extension galgas4InstructionsSyntax {
 //--------------------------------------------------------------------------------------------------
 
   override proc @grammarInFileInstructionAST enterInstructionInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
-    [self.mSourceExpression enterExpressionInSemanticContext !?ioTypeMap]
+    self.mSourceExpression.enterExpressionInSemanticContext (!?ioTypeMap)
     for (mActualParameter) in self.mActualParameterList do
-      [mActualParameter enterParameterInSemanticContext !?ioTypeMap]
+      mActualParameter.enterParameterInSemanticContext (!?ioTypeMap)
     end
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc @grammarInStringInstructionAST enterInstructionInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
-    [self.mSourceExpression enterExpressionInSemanticContext !?ioTypeMap]
+    self.mSourceExpression.enterExpressionInSemanticContext (!?ioTypeMap)
     for (mActualParameter) in self.mActualParameterList do
-      [mActualParameter enterParameterInSemanticContext !?ioTypeMap]
+      mActualParameter.enterParameterInSemanticContext (!?ioTypeMap)
     end
   }
 
@@ -304,20 +304,20 @@ override proc @grammarInFileInstructionAST analyzeSemanticInstruction (
   let usefulnessName = grammarNameForUsefulEntitiesGraph (!self.mGrammarComponentName)
   !?ioUsefulEntitiesGraph.addEdge (!from: inUsefulnessCallerEntityName !to: usefulnessName)
 //--- Search grammar in grammar map
-  [inAnalysisContext.semanticContext.grammarMap searchKey
-    !self.mGrammarComponentName
+  inAnalysisContext.semanticContext.grammarMap.searchKey
+    (!self.mGrammarComponentName
     ?let @grammarLabelMap grammarLabelMap
     ?*
     ?let @bool hasTranslateFeature
-  ]
+  )
 //--- Search label
-  [grammarLabelMap searchKey
-    !self.mLabelName
+  grammarLabelMap.searchKey
+    (!self.mLabelName
     ?let @formalParameterSignature labelSignature
-  ]
+  )
 //--- Check actual parameters
-  [self.mActualParameterList analyzeRoutineArguments
-    !inUsefulnessCallerEntityName
+  self.mActualParameterList.analyzeRoutineArguments
+    (!inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inAnalysisContext
     !?ioTypeMap
@@ -327,17 +327,17 @@ override proc @grammarInFileInstructionAST analyzeSemanticInstruction (
     !?ioVariableMap
     !?ioInstructionListForGeneration
     ?let @actualParameterListForGeneration actualParameterListForGeneration
-  ]
+  )
 //--- Parse source expression
-  [self.mSourceExpression analyzeSemanticExpression
-    !usefulnessCallerEntityName: inUsefulnessCallerEntityName
+  self.mSourceExpression.analyzeSemanticExpression
+    (!usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inferenceType: @unifiedTypeMapEntry.null
     !inAnalysisContext
     !?ioTypeMap
     !?ioVariableMap
     ?let @semanticExpressionForGeneration sourceExpression
-  ]
+  )
 //--- Check source expression type: @lstring for file, @string for source string itself
   if sourceExpression.mResultType != inAnalysisContext.predefinedTypes.mLStringType then
     error (self.mEndOfSourceExpression
@@ -348,14 +348,14 @@ override proc @grammarInFileInstructionAST analyzeSemanticInstruction (
 //--- Check syntax directed translation result parameter
   let syntaxDirectedTranslationResultVarName = "syntaxDirectedTranslationResult_" + self.mGrammarComponentName.location.startLocationIndex
   var assignementList = @stringlist ()
-  [self.mAbstractGrammarInstructionSyntaxDirectedTranslationResult analyzeGrammarInstructionSDT
-    !inAnalysisContext
+  self.mAbstractGrammarInstructionSyntaxDirectedTranslationResult.analyzeGrammarInstructionSDT
+    (!inAnalysisContext
     !?ioTypeMap
     !hasTranslateFeature
     !syntaxDirectedTranslationResultVarName
     !?assignementList
     !?ioVariableMap
-  ]
+  )
 //--- Generate instructions
   ioInstructionListForGeneration += !@grammarInstructionWithSourceFileForGeneration {
     !self.mInstructionLocation
@@ -381,20 +381,20 @@ override proc @grammarInStringInstructionAST analyzeSemanticInstruction (
   let grammarUsefulnessName = grammarNameForUsefulEntitiesGraph (!self.mGrammarComponentName)
   !?ioUsefulEntitiesGraph.addEdge (!from: inUsefulnessCallerEntityName !to: grammarUsefulnessName)
 //--- Search grammar in grammar map
-  [inAnalysisContext.semanticContext.grammarMap searchKey
-    !self.mGrammarComponentName
+  inAnalysisContext.semanticContext.grammarMap.searchKey
+    (!self.mGrammarComponentName
     ?let @grammarLabelMap grammarLabelMap
     ?*
     ?let @bool hasTranslateFeature
-  ]
+  )
 //--- Search label
-  [grammarLabelMap searchKey
-    !self.mLabelName
+  grammarLabelMap.searchKey
+    (!self.mLabelName
     ?let @formalParameterSignature labelSignature
-  ]
+  )
 //--- Check actual parameters
-  [self.mActualParameterList analyzeRoutineArguments
-    !inUsefulnessCallerEntityName
+  self.mActualParameterList.analyzeRoutineArguments
+    (!inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inAnalysisContext
     !?ioTypeMap
@@ -404,17 +404,17 @@ override proc @grammarInStringInstructionAST analyzeSemanticInstruction (
     !?ioVariableMap
     !?ioInstructionListForGeneration
     ?let @actualParameterListForGeneration actualParameterListForGeneration
-  ]
+  )
 //--- Parse source expression
-  [self.mSourceExpression analyzeSemanticExpression
-    !usefulnessCallerEntityName: inUsefulnessCallerEntityName
+  self.mSourceExpression.analyzeSemanticExpression
+    (!usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inferenceType: @unifiedTypeMapEntry.null
     !inAnalysisContext
     !?ioTypeMap
     !?ioVariableMap
     ?let @semanticExpressionForGeneration sourceExpression
-  ]
+  )
 //--- Check source expression type: @string
   if sourceExpression.mResultType != inAnalysisContext.predefinedTypes.mStringType then
     error (self.mEndOfSourceExpression
@@ -423,15 +423,15 @@ override proc @grammarInStringInstructionAST analyzeSemanticInstruction (
     )
   end
 //--- Parse name expression
-  [self.mNameExpression analyzeSemanticExpression
-    !usefulnessCallerEntityName: inUsefulnessCallerEntityName
+  self.mNameExpression.analyzeSemanticExpression
+    (!usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inferenceType: @unifiedTypeMapEntry.null
     !inAnalysisContext
     !?ioTypeMap
     !?ioVariableMap
     ?let @semanticExpressionForGeneration nameExpression
-  ]
+  )
 //--- Check name expression type: @string
   if nameExpression.mResultType != inAnalysisContext.predefinedTypes.mStringType then
     error (self.mEndOfNameExpression
@@ -442,14 +442,14 @@ override proc @grammarInStringInstructionAST analyzeSemanticInstruction (
 //--- Check syntax directed translation result parameter
   let syntaxDirectedTranslationResultVarName = "syntaxDirectedTranslationResult_" + self.mGrammarComponentName.location.startLocationIndex
   var assignementList = @stringlist ()
-  [self.mAbstractGrammarInstructionSyntaxDirectedTranslationResult analyzeGrammarInstructionSDT
-    !inAnalysisContext
+  self.mAbstractGrammarInstructionSyntaxDirectedTranslationResult.analyzeGrammarInstructionSDT
+    (!inAnalysisContext
     !?ioTypeMap
     !hasTranslateFeature
     !syntaxDirectedTranslationResultVarName
     !?assignementList
     !?ioVariableMap
-  ]
+  )
 //--- Generate instructions
   ioInstructionListForGeneration += !@grammarInstructionWithSourceExpressionForGeneration {
     !self.mInstructionLocation
@@ -488,27 +488,27 @@ override proc @grammarInStringInstructionAST analyzeSemanticInstruction (
     ?!@string ioGeneratedCode) {
     ioInclusionSet ++= "grammar-" + self.mGrammarName.fileNameRepresentation
   //--- Source string
-    [self.mSourceFileExpression generateExpression
-      !?ioGeneratedCode
+    self.mSourceFileExpression.generateExpression
+      (!?ioGeneratedCode
       !?ioInclusionSet
       !?ioTemporaryVariableIndex
       !?ioUnusedVariableCppNameSet
       ?let @string sourceVar
-    ]
+    )
   //--- Parameters
     var parameterCppNameList = @stringlist ()
     var jokerParametersToReleaseList = @stringlist ()
     var inputVariableList = @stringlist ()
     for (mActualParameter) in self.mActualParameterList do
-      [mActualParameter generateActualParameter
-        !?ioInclusionSet
+      mActualParameter.generateActualParameter
+        (!?ioInclusionSet
         !?ioTemporaryVariableIndex
         !?ioGeneratedCode
         !?jokerParametersToReleaseList
         !?inputVariableList
         !?ioUnusedVariableCppNameSet
         ?let @string parameterCppName
-      ]
+      )
       parameterCppNameList += !parameterCppName
       if mActualParameter is @inputActualParameterForGeneration then
         ioGeneratedCode += parameterCppName + ".drop () ;\n"
@@ -558,35 +558,35 @@ override proc @grammarInStringInstructionAST analyzeSemanticInstruction (
     ?!@string ioGeneratedCode) {
     ioInclusionSet ++= "grammar-" + self.mGrammarName.fileNameRepresentation
   //--- Source string
-    [self.mSourceStringExpression generateExpression
-      !?ioGeneratedCode
+    self.mSourceStringExpression.generateExpression
+      (!?ioGeneratedCode
       !?ioInclusionSet
       !?ioTemporaryVariableIndex
       !?ioUnusedVariableCppNameSet
       ?let @string sourceVar
-    ]
+    )
   //--- Name string
-    [self.mNameStringExpression generateExpression
-      !?ioGeneratedCode
+    self.mNameStringExpression.generateExpression
+      (!?ioGeneratedCode
       !?ioInclusionSet
       !?ioTemporaryVariableIndex
       !?ioUnusedVariableCppNameSet
       ?let @string nameVar
-    ]
+    )
   //--- Parameters
     var parameterCppNameList = @stringlist ()
     var jokerParametersToReleaseList = @stringlist ()
     var inputVariableList = @stringlist ()
     for (mActualParameter) in self.mActualParameterList do
-      [mActualParameter generateActualParameter
-         !?ioInclusionSet
+      mActualParameter.generateActualParameter
+         (!?ioInclusionSet
          !?ioTemporaryVariableIndex
          !?ioGeneratedCode
          !?jokerParametersToReleaseList
          !?inputVariableList
          !?ioUnusedVariableCppNameSet
          ?let @string parameterCppName
-      ]
+      )
       parameterCppNameList += !parameterCppName
       if mActualParameter is @inputActualParameterForGeneration then
         ioGeneratedCode += parameterCppName + ".drop () ;\n"

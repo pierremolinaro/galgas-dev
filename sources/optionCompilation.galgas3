@@ -294,14 +294,14 @@ final class @optionComponentDeclarationAST : @semanticDeclarationAST {
     let nameForUsefulness = optionNameForUsefulEntitiesGraph (!self.mOptionComponentName)
     !?ioUsefulEntitiesGraph.addNode (!nameForUsefulness !nameForUsefulness)
   //---
-    [inSemanticContext.mOptionComponentMapForSemanticAnalysis searchKey
-      !self.mOptionComponentName
+    inSemanticContext.mOptionComponentMapForSemanticAnalysis.searchKey
+      (!self.mOptionComponentName
       ?let @bool optionIsPredefined
       ?let @commandLineOptionMap boolOptionMap
       ?let @commandLineOptionMap uintOptionMap
       ?let @commandLineOptionMap stringOptionMap
       ?let @commandLineOptionMap stringListOptionMap
-    ]
+    )
   //--- Sort options
     var @commandLineOptionSortedList boolOptionSortedList = @()
     for anOption in boolOptionMap do

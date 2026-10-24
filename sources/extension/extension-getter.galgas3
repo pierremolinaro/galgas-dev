@@ -393,9 +393,9 @@ final class @extensionGetterForGeneration : @semanticDeclarationWithHeaderForGen
                                                 ?!@stringset ioInclusionSet,
                                                 !@string outImplementation) {
     for (* mFormalArgumentType * * *) in self.mExtensionGetterFormalParameterList do
-      [mFormalArgumentType addHeaderFileName !?ioInclusionSet]
+      mFormalArgumentType.addHeaderFileName (!?ioInclusionSet)
     end
-    [self.mResultType addHeaderFileName !?ioInclusionSet]
+    self.mResultType.addHeaderFileName (!?ioInclusionSet)
     var extensionReaderFormalParameterList = self.mExtensionGetterFormalParameterList
     if self.mImplementedAsFunction then
       !?extensionReaderFormalParameterList.insertAtIndex
@@ -427,7 +427,7 @@ final class @extensionGetterForGeneration : @semanticDeclarationWithHeaderForGen
         !code
       ]
     else
-      [self.mReceiverType addHeaderFileName !?ioInclusionSet]
+      self.mReceiverType.addHeaderFileName (!?ioInclusionSet)
       var @unifiedTypeMapEntry baseType = self.mReceiverType
       var @bool searching = true
       loop (@uint.max) while searching do

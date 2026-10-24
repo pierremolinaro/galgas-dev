@@ -88,9 +88,10 @@ syntax extension galgas4InstructionsSyntax {
       optionalProperty = "".nowhere
     or
       $[$
-      <non_empty_output_expression_list>(
-         !?ioDeclarations
-         ?let @actualOutputArgumentList unused outExpressionList)
+      <non_empty_output_expression_list> (
+        !?ioDeclarations
+        ?let @actualOutputArgumentList unused outExpressionList
+      )
       $]$
       error (.here : "not handled yet" spoil optionalProperty)
     or
@@ -120,9 +121,10 @@ syntax extension galgas4InstructionsSyntax {
       optionalProperty = "".nowhere
     or
       $[$
-      <non_empty_output_expression_list>(
+      <non_empty_output_expression_list> (
          !?ioDeclarations
-         ?let @actualOutputArgumentList unused outExpressionList)
+         ?let @actualOutputArgumentList unused outExpressionList
+      )
       $]$
       error (.here : "not handled yet" spoil optionalProperty)
     or
@@ -156,7 +158,7 @@ final class @assignmentInstructionAST : @semanticInstructionAST {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc enterInstructionInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
-    [self.mSourceExpression enterExpressionInSemanticContext !?ioTypeMap]
+    self.mSourceExpression.enterExpressionInSemanticContext (!?ioTypeMap)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -178,22 +180,22 @@ final class @assignmentInstructionAST : @semanticInstructionAST {
     var targetType = receiverType
     if self.mOptionalProperty.string != "" then
       let propertyMap = targetType.definition.propertyMap
-      [propertyMap searchKey !self.mOptionalProperty ?let accessControl ?let isConstant ?targetType]
-      [accessControl checkSetAccess !inAnalysisContext.selfAvailability !self.mOptionalProperty]
+      propertyMap.searchKey (!self.mOptionalProperty ?let accessControl ?let isConstant ?targetType)
+      accessControl.checkSetAccess (!inAnalysisContext.selfAvailability !self.mOptionalProperty)
       if isConstant then
         error (self.mOptionalProperty : "a constant property cannot be modified")
       end
     end
   //--- Analyze source expression
-    [self.mSourceExpression analyzeSemanticExpression
-      !usefulnessCallerEntityName: inUsefulnessCallerEntityName
+    self.mSourceExpression.analyzeSemanticExpression
+      (!usefulnessCallerEntityName: inUsefulnessCallerEntityName
       !?ioUsefulEntitiesGraph
       !inferenceType: targetType
       !inAnalysisContext
       !?ioTypeMap
       !?ioVariableMap
       ?@semanticExpressionForGeneration expression
-    ]
+    )
   //--- Check assignment type compatibility
     checkAssignmentTypeWithImplicitGetterCall (
       !targetType
@@ -247,7 +249,7 @@ final class @selfPropertyAssignmentInstructionAST : @semanticInstructionAST {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc enterInstructionInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
-    [self.mSourceExpression enterExpressionInSemanticContext !?ioTypeMap]
+    self.mSourceExpression.enterExpressionInSemanticContext (!?ioTypeMap)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -264,7 +266,7 @@ final class @selfPropertyAssignmentInstructionAST : @semanticInstructionAST {
         error (self.mInstructionLocation : "'self' property not mutable in this context")
       end
       let propertyMap = selfAvailable.type.definition.propertyMap
-      [propertyMap searchKey !self.mTargetSelfPropertyName ?* ?let isConstant ?var targetType]
+      propertyMap.searchKey (!self.mTargetSelfPropertyName ?* ?let isConstant ?var targetType)
       if isConstant & not selfAvailable.selfMutability.isInitializer then
         error (self.mTargetSelfPropertyName : "a constant property cannot be modified")
       end
@@ -273,22 +275,22 @@ final class @selfPropertyAssignmentInstructionAST : @semanticInstructionAST {
     //--- Get target variable type
       if self.mOptionalProperty.string != "" then
         let propertyMap = targetType.definition.propertyMap
-        [propertyMap searchKey !self.mOptionalProperty ?let accessControl ?let isConstant ?targetType]
-        [accessControl checkSetAccess !inAnalysisContext.selfAvailability !self.mOptionalProperty.location]
+        propertyMap.searchKey (!self.mOptionalProperty ?let accessControl ?let isConstant ?targetType)
+        accessControl.checkSetAccess (!inAnalysisContext.selfAvailability !self.mOptionalProperty.location)
         if isConstant then
           error (self.mOptionalProperty : "a constant property cannot be modified")
         end
       end
     //--- Analyze source expression
-      [self.mSourceExpression analyzeSemanticExpression
-        !usefulnessCallerEntityName: inUsefulnessCallerEntityName
+      self.mSourceExpression.analyzeSemanticExpression
+        (!usefulnessCallerEntityName: inUsefulnessCallerEntityName
         !?ioUsefulEntitiesGraph
         !inferenceType: targetType
         !inAnalysisContext
         !?ioTypeMap
         !?ioVariableMap
         ?@semanticExpressionForGeneration expression
-      ]
+      )
     //---
       !?ioVariableMap.searchForWriteAccess
         (!@{!"self." + self.mTargetSelfPropertyName !self.mTargetSelfPropertyName} ?3*
@@ -334,16 +336,16 @@ class @assignmentInstructionForGeneration : @semanticInstructionForGeneration {
                                        ?!@stringset ioUnusedVariableCppNameSet,
                                        ?let @bool unused inGenerateSyntaxDirectedTranslationString,
                                        ?!@string ioGeneratedCode) {
-    [self.mSourceExpression generateExpression
-      !?ioGeneratedCode
+    self.mSourceExpression.generateExpression
+      (!?ioGeneratedCode
       !?ioInclusionSet
       !?ioTemporaryVariableIndex
       !?ioUnusedVariableCppNameSet
       ?let sourceVar
-    ]
+    )
     !?ioUnusedVariableCppNameSet.removeKey (!self.mNameForCheckingFormalParameterUsing)
   //---
-    [self.mTargetType addHeaderFileName !?ioInclusionSet]
+    self.mTargetType.addHeaderFileName (!?ioInclusionSet)
     if self.mOptionalProperty == "" then
       ioGeneratedCode += self.mTargetCppName + " = " + sourceVar + " ;\n"
     elsif self.mReceiverType.definition.typeKind.isClassType then

@@ -93,7 +93,7 @@ final class @nonterminalCallInstruction : @syntaxInstructionAST {
                     ?nonTerminalSymbolMap:let @nonTerminalSymbolMapForGrammarAnalysis inNonTerminalSymbolMap,
                     ?!addedTerminalIndex:@uint unused ioAddedNonTerminalIndex,
                     ?!@syntaxInstructionListForGrammarAnalysis ioSyntaxInstructionList ) {
-    [inNonTerminalSymbolMap searchKey !self.mNonterminalName ?let nonTerminalSymbolIndex ?*]
+    inNonTerminalSymbolMap.searchKey (!self.mNonterminalName ?let nonTerminalSymbolIndex ?*)
     ioSyntaxInstructionList += !@nonTerminalInstructionForGrammarAnalysis {
       !self.mInstructionLocation
       !self.mNonterminalName
@@ -116,12 +116,12 @@ final class @nonterminalCallInstruction : @syntaxInstructionAST {
                                             ?!@semanticInstructionListForGeneration ioInstructionListForGeneration,
                                             ?!@localVarManager ioVariableMap,
                                             ?!@uint unused ioSelectMethodCount ) {
-    [inNonterminalMap searchKey !self.mNonterminalName ?let @nonterminalLabelMap labelMap]
+    inNonterminalMap.searchKey (!self.mNonterminalName ?let @nonterminalLabelMap labelMap)
     let @formalParameterSignature signature
-    [labelMap searchKey !"".nowhere ?* ?signature ?*]
+    labelMap.searchKey (!"".nowhere ?* ?signature ?*)
   //--- call arguments
-    [self.mActualParameterList analyzeRoutineArguments
-      !inUsefulnessCallerEntityName
+    self.mActualParameterList.analyzeRoutineArguments
+      (!inUsefulnessCallerEntityName
       !?ioUsefulEntitiesGraph
       !inAnalysisContext
       !?ioTypeMap
@@ -131,14 +131,14 @@ final class @nonterminalCallInstruction : @syntaxInstructionAST {
       !?ioVariableMap
       !?ioInstructionListForGeneration
       ?let @actualParameterListForGeneration actualParameterListForGeneration
-    ]
+    )
   //--- Check syntax directed translation destination variable
-    [self.mGrammarInstructionSyntaxDirectedTranslationResult analyzeSDT
-      !inAnalysisContext
+    self.mGrammarInstructionSyntaxDirectedTranslationResult.analyzeSDT
+      (!inAnalysisContext
       !?ioTypeMap
       !inHasTranslateFeature
       !?ioVariableMap
-    ]
+    )
   //--- Generate instructions
     ioInstructionListForGeneration += !@nonterminalInstructionForGeneration {
       !self.mInstructionLocation
@@ -222,15 +222,15 @@ override proc @nonterminalInstructionForGeneration generateInstruction (?!@strin
   var jokerParametersToReleaseList = @stringlist ()
   var inputVariableList = @stringlist ()
   for (mActualParameter) in self.mActualParameterList do
-    [mActualParameter generateActualParameter
-      !?ioInclusionSet
+    mActualParameter.generateActualParameter
+      (!?ioInclusionSet
       !?ioTemporaryVariableIndex
       !?ioGeneratedCode
       !?jokerParametersToReleaseList
       !?inputVariableList
       !?ioUnusedVariableCppNameSet
       ?let @string parameterCppName
-    ]
+    )
     parameterCppNameList += !parameterCppName
   end
 //--- Generate proc call
@@ -247,12 +247,12 @@ override proc @nonterminalInstructionForGeneration generateInstruction (?!@strin
   end
   !?ioUnusedVariableCppNameSet.removeKey (!compilerCppName ())
   ioGeneratedCode +=  compilerCppName () + ") ;\n"
-  [self.mGrammarInstructionSyntaxDirectedTranslationResult generateCode
-    !inGenerateSyntaxDirectedTranslationString
+  self.mGrammarInstructionSyntaxDirectedTranslationResult.generateCode
+    (!inGenerateSyntaxDirectedTranslationString
     !sdtResultVarName
     !?ioUnusedVariableCppNameSet
     !?ioGeneratedCode
-  ]
+  )
 //--- Release temporary variables
   for (mValue) in jokerParametersToReleaseList do
     ioGeneratedCode += mValue + ".drop () ; // Release temporary input variables (joker in source)\n"

@@ -562,13 +562,13 @@ final class @enumTypeForGeneration : @semanticTypeForGeneration {
                                                 ?!@stringset ioInclusionSet,
                                                 !@string outImplementation ) {
     for type in self.associatedValuesTypes do
-      [type addHeaderFileName !?ioInclusionSet]
+      type.addHeaderFileName (!?ioInclusionSet)
     end
     var @bool hasAssociatedValues = false
     for constant in self.constantList while not hasAssociatedValues do
       hasAssociatedValues = constant.associatedValueTypeList.count > 0
     end
-    [self.mSelfTypeEntry addHeaderFileName !?ioInclusionSet]
+    self.mSelfTypeEntry.addHeaderFileName (!?ioInclusionSet)
     let selfTypeDefinition = self.mSelfTypeEntry.definition
     outImplementation = [filewrapper enumGenerationTemplate.enumTypeSpecificImplementation
       !selfTypeDefinition.typeName.string

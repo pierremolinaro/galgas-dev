@@ -93,7 +93,7 @@ final class @superMethodCallInstructionAST : @semanticInstructionAST {
 
   override proc enterInstructionInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
     for (mActualParameter) in self.mActualParameterList do
-      [mActualParameter enterParameterInSemanticContext !?ioTypeMap]
+      mActualParameter.enterParameterInSemanticContext (!?ioTypeMap)
     end
   }
 
@@ -119,21 +119,21 @@ final class @superMethodCallInstructionAST : @semanticInstructionAST {
       error (self.mMethodName : "self type is not a class")
     end
   //--- Get type proc signature
-    [selfType.definition.instanceMethodMap searchKey
-      !self.mMethodName
+    selfType.definition.instanceMethodMap.searchKey
+      (!self.mMethodName
       ?* // let kind
       ?let routineSignature
       ?*
       ?let hasCompilerArgument
       ?*
       ?let errorMessage
-    ]
+    )
     if errorMessage != "" then
       error (self.mMethodName : errorMessage)
     end
   //--- Check effective parameters
-    [self.mActualParameterList analyzeRoutineArguments
-      !inUsefulnessCallerEntityName
+    self.mActualParameterList.analyzeRoutineArguments
+      (!inUsefulnessCallerEntityName
       !?ioUsefulEntitiesGraph
       !inAnalysisContext
       !?ioTypeMap
@@ -143,7 +143,7 @@ final class @superMethodCallInstructionAST : @semanticInstructionAST {
       !?ioVariableMap
       !?ioInstructionListForGeneration
       ?let @actualParameterListForGeneration actualParameterListForGeneration
-    ]
+    )
   //--- Search base type that declares the proc
     var baseType = selfType
     var searching = true
@@ -199,7 +199,7 @@ final class @superMethodCallInstructionForGeneration : @semanticInstructionForGe
     var jokerParametersToReleaseList = @stringlist ()
     var inputVariableList = @stringlist ()
     for (mActualParameter) in self.mActualParameterList do
-      [mActualParameter generateActualParameter !?ioInclusionSet !?ioTemporaryVariableIndex !?ioGeneratedCode !?jokerParametersToReleaseList !?inputVariableList !?ioUnusedVariableCppNameSet ?let parameterCppName]
+      mActualParameter.generateActualParameter (!?ioInclusionSet !?ioTemporaryVariableIndex !?ioGeneratedCode !?jokerParametersToReleaseList !?inputVariableList !?ioUnusedVariableCppNameSet ?let parameterCppName)
       parameterCppNameList += !parameterCppName
     end
   //--- Generate proc call
@@ -226,10 +226,10 @@ final class @superMethodCallInstructionForGeneration : @semanticInstructionForGe
     ioGeneratedCode += self.mInstructionLocation.sourceFile + ") ;\n"
   //--- Generate poisoned variables
     for (actualParameter) in self.mActualParameterList do
-      [actualParameter generatePoisonedVariables
-        !?ioGeneratedCode
+      actualParameter.generatePoisonedVariables
+        (!?ioGeneratedCode
         !?ioUnusedVariableCppNameSet
-      ]
+      )
     end
   }
 

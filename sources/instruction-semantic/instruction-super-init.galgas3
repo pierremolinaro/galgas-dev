@@ -92,7 +92,7 @@ final class @superInitInstructionAST : @semanticInstructionAST {
 
   override proc enterInstructionInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
     for expression in self.mActualParameterList do
-      [expression.mExpression enterExpressionInSemanticContext !?ioTypeMap]
+      expression.mExpression.enterExpressionInSemanticContext (!?ioTypeMap)
     end
   }
 
@@ -115,7 +115,7 @@ final class @superInitInstructionAST : @semanticInstructionAST {
       //--- Check super initializer is defined
         let superClassInitializerMap = superTypeDefinition.initializerMap
         let signature = @lstring {!self.mActualParameterList.initializerSignature !self.mInstructionLocation}
-        [superClassInitializerMap searchKey !signature ?let formalSignature]
+        superClassInitializerMap.searchKey (!signature ?let formalSignature)
       //--- Mark all super properties are defined
         for superProperty in superTypeDefinition.allTypedPropertyList do
           if superProperty.initialization == .none then
@@ -125,21 +125,21 @@ final class @superInitInstructionAST : @semanticInstructionAST {
             )
           end
         end
-        [ioVariableMap checkSelfObjectIsFullyInitialized !self.mInstructionLocation]
+        ioVariableMap.checkSelfObjectIsFullyInitialized (!self.mInstructionLocation)
      //--- Mark super initializer usefull (TODO)
 
      //--- Analyze argument list
         var actualParameterListForGeneration = @semanticExpressionListForGeneration ()
         for formalArg in formalSignature, actualArg in self.mActualParameterList do
-          [actualArg.mExpression analyzeSemanticExpression
-            !usefulnessCallerEntityName: inUsefulnessCallerEntityName
+          actualArg.mExpression.analyzeSemanticExpression
+            (!usefulnessCallerEntityName: inUsefulnessCallerEntityName
             !?ioUsefulEntitiesGraph
             !inferenceType: formalArg.mFormalArgumentType
             !inAnalysisContext
             !?ioTypeMap
             !?ioVariableMap
             ?@semanticExpressionForGeneration expression
-          ]
+          )
           checkAssignmentTypeWithImplicitGetterCall (
             !formalArg.mFormalArgumentType
             !expression.mResultType
@@ -195,13 +195,13 @@ final class @superInitInstructionForGeneration : @semanticInstructionForGenerati
                                        ?!@string ioGeneratedCode) {
     var @stringlist getterArgumentCppNameList = @()
     for (mExpression) in self.mActualParameterList do
-      [mExpression generateExpression
-        !?ioGeneratedCode
+      mExpression.generateExpression
+        (!?ioGeneratedCode
         !?ioInclusionSet
         !?ioTemporaryVariableIndex
         !?ioUnusedVariableCppNameSet
         ?let argumentCppName
-      ]
+      )
       getterArgumentCppNameList += !argumentCppName
     end
     ioGeneratedCode += self.mSuperTypeName.identifierRepresentation + "_"

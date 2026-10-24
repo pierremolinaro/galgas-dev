@@ -69,7 +69,7 @@ syntax extension galgas4ExpressionSyntax {
 override proc @unaryMinusExpressionAST enterExpressionInSemanticContext
   (?!@unifiedTypeMap ioTypeMap
 ) {
-  [self.mExpression enterExpressionInSemanticContext !?ioTypeMap]
+  self.mExpression.enterExpressionInSemanticContext (!?ioTypeMap)
 }
 
 //································································································
@@ -84,15 +84,15 @@ override proc @unaryMinusExpressionAST analyzeSemanticExpression
   !@semanticExpressionForGeneration outExpression
 ) {
 //--- Expression analysis
-  [self.mExpression analyzeSemanticExpression
-    !usefulnessCallerEntityName: inUsefulnessCallerEntityName
+  self.mExpression.analyzeSemanticExpression
+    (!usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inferenceType: @unifiedTypeMapEntry.null
     !inAnalysisContext
     !?ioTypeMap
     !?ioVariableMap
     ?let @semanticExpressionForGeneration expression
-  ]
+  )
 //--- Check operator availability
   let @unifiedTypeMapEntry type = expression.mResultType
   if let exp = expression as @literalBigIntExpressionForGeneration then
@@ -130,15 +130,15 @@ override proc @unaryMinusExpressionForGeneration generateExpression (?!@string i
                                                                       ?!@uint ioTemporaryVariableIndex,
                                                                       ?!@stringset ioUnusedVariableCppNameSet,
                                                                       !@string outCppExpression ) {
-  [self.mExpression.mResultType addHeaderFileName !?ioInclusionSet]
+  self.mExpression.mResultType.addHeaderFileName (!?ioInclusionSet)
 //--- Operand
-  [self.mExpression generateExpression
-    !?ioGeneratedCode
+  self.mExpression.generateExpression
+    (!?ioGeneratedCode
     !?ioInclusionSet
     !?ioTemporaryVariableIndex
     !?ioUnusedVariableCppNameSet
     ?let operand
-  ]
+  )
 //--- Generate Comparison
   outCppExpression = operand + ".operator_unary_minus (" + compilerCppName () + self.mLocation.commaSourceFile + ")"
   !?ioUnusedVariableCppNameSet.removeKey (!compilerCppName ())

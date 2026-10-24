@@ -39,13 +39,13 @@ proc templateCodeGenerationForListInstruction (?let @templateInstructionListForG
                                               ?!@stringset ioUnusedVariableCppNameSet,
                                               ?!@bool ioUseColumnMarker ) {
   for (mInstruction) in inInstructionList do
-    [mInstruction templateCodeGeneration
-      !?ioGeneratedCode
+    mInstruction.templateCodeGeneration
+      (!?ioGeneratedCode
       !?ioInclusionSet
       !?ioTemporaryVariableIndex
       !?ioUnusedVariableCppNameSet
       !?ioUseColumnMarker
-    ]
+    )
   end
 }
 
@@ -69,7 +69,7 @@ override proc @templateInstructionExpressionForGeneration templateCodeGeneration
   ?!@stringset ioUnusedVariableCppNameSet,
   ?!@bool unused ioUseColumnMarker ) {
 //--- Expression
-  [self.mExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?let cppName]
+  self.mExpression.generateExpression (!?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?let cppName)
   ioGeneratedCode += "result.appendString (" + cppName + ".stringValue ()) ;\n"
 }
 
@@ -82,7 +82,7 @@ override proc @templateBlockInstructionForGeneration templateCodeGeneration
   ?!@stringset ioUnusedVariableCppNameSet,
   ?!@bool ioUseColumnMarker ) {
 //--- Expression
-  [self.mExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?let indendationVarCppName]
+  self.mExpression.generateExpression (!?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?let indendationVarCppName)
   ioGeneratedCode += "if (" + indendationVarCppName + ".isValid ()) {\n"
   ioGeneratedCode += "  result.incIndentation (int32_t (" + indendationVarCppName + ".uintValue ())) ;\n"
   ioGeneratedCode += "}\n"
@@ -133,13 +133,13 @@ override proc @templateInstructionIfForGeneration templateCodeGeneration
                                                         ?!@bool ioUseColumnMarker ) {
   for (expression instructionList) in self.mTemplateInstructionIfBranchList do
   //--- IF expression
-    [expression generateExpression
-      !?ioGeneratedCode
+    expression.generateExpression
+      (!?ioGeneratedCode
       !?ioInclusionSet
       !?ioTemporaryVariableIndex
       !?ioUnusedVariableCppNameSet
       ?let ifVarCppName
-    ]
+    )
     let testVar = "test_" + ioTemporaryVariableIndex.string
     ioTemporaryVariableIndex += 1
     ioGeneratedCode += "const GalgasBool " + testVar + " = " + ifVarCppName + ".boolEnum () ;\n"
