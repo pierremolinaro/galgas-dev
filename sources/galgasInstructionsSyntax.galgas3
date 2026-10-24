@@ -60,7 +60,7 @@ syntax galgas3InstructionsSyntax (galgasScanner3) {
     select
     or
       repeat
-        <semantic_instruction_ggs3> (!?ioDeclarations ?let @semanticInstructionAST instruction)
+        <semantic_instruction_ggs3> (!?ioDeclarations, ?let @semanticInstructionAST instruction)
         outInstructionsList += !instruction
       while
         select
@@ -78,12 +78,12 @@ syntax galgas3InstructionsSyntax (galgasScanner3) {
     or
       $guard$
       let instructionLocation = @location.here
-      <comma_separated_expression_ggs3> (!?ioDeclarations ?let testExpression)
+      <comma_separated_expression_ggs3> (!?ioDeclarations, ?let testExpression)
       $else$
-      <semantic_instruction_list_ggs3> (!?ioDeclarations ?let else_instructionList)
+      <semantic_instruction_list_ggs3> (!?ioDeclarations, ?let else_instructionList)
       let endOf_else_branch = @location.here
       $end$
-      <semantic_instruction_list_ggs3> (!?ioDeclarations ?let then_instructionList)
+      <semantic_instruction_list_ggs3> (!?ioDeclarations, ?let then_instructionList)
       let endOf_then_branch = @location.here
       let instruction = @ifInstructionAST (
         instructionLocation,
@@ -120,7 +120,7 @@ syntax galgas3InstructionsSyntax (galgasScanner3) {
       isUsefull = true
     end
     $identifier$ ?let functionName indexing functionDefinition
-    <function_declaration_ggs3> (!once: isOnce !usefull: isUsefull !private: false !functionName !?ioDeclarations)
+    <function_declaration_ggs3> (!once: isOnce, !usefull: isUsefull, !private: false, !functionName, !?ioDeclarations)
   }
 
    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -130,12 +130,12 @@ syntax galgas3InstructionsSyntax (galgasScanner3) {
                                    ?private: let @bool inPrivate,
                                    ?let @lstring inFunctionName,
                                    ?!@galgasDeclarationAST ioDeclarations ) {
-    <formal_input_parameter_list_ggs3> (!?ioDeclarations ?let formalInputParameterList)
+    <formal_input_parameter_list_ggs3> (!?ioDeclarations, ?let formalInputParameterList)
     if inIsOnce, (formalInputParameterList.count > 0) then
       error (inFunctionName: "an 'once' function should has no argument")
     end
     $->$
-    <type_definition_ggs3> (!?ioDeclarations ?let @lstring resultTypeName)
+    <type_definition_ggs3> (!?ioDeclarations, ?let @lstring resultTypeName)
     let @lstring resultVariableName
     select
       $identifier$ ?resultVariableName
@@ -143,7 +143,7 @@ syntax galgas3InstructionsSyntax (galgasScanner3) {
       resultVariableName = @{!"result" !.here}
     end
     ${$
-    <semantic_instruction_list_ggs3> (!?ioDeclarations ?let functionInstructionList)
+    <semantic_instruction_list_ggs3> (!?ioDeclarations, ?let functionInstructionList)
     $}$
     let endOfFunctionInstructionList = @location.here
     if inIsOnce then
@@ -179,15 +179,15 @@ syntax galgas3InstructionsSyntax (galgasScanner3) {
                                    ?private: let @bool inIsPrivate,
                                    ?let @lstring inFunctionName,
                                    ?!@galgasDeclarationAST ioDeclarations ) {
-    <formal_input_parameter_list_ggs34> (!?ioDeclarations ?let formalInputParameterList)
+    <formal_input_parameter_list_ggs34> (!?ioDeclarations, ?let formalInputParameterList)
     if inIsOnce, (formalInputParameterList.count > 0) then
       error (inFunctionName: "an 'once' function should has no argument")
     end
     $->$
-    <type_definition_ggs3> (!?ioDeclarations ?let @lstring resultTypeName)
+    <type_definition_ggs3> (!?ioDeclarations, ?let @lstring resultTypeName)
     let resultVariableName = @lstring {!"result" !.here}
     ${$
-    <semantic_instruction_list_ggs3> (!?ioDeclarations ?let functionInstructionList)
+    <semantic_instruction_list_ggs3> (!?ioDeclarations, ?let functionInstructionList)
     $}$
     let endOfFunctionInstructionList = @location.here
     if inIsOnce then
@@ -238,7 +238,7 @@ syntax galgas3InstructionsSyntax (galgasScanner3) {
       isUsefull = true
     end
     $identifier$ ?let functionName indexing functionDefinition
-    <function_declaration_ggs3> (!once: isOnce !usefull: isUsefull !private: true !functionName !?ioDeclarations)
+    <function_declaration_ggs3> (!once: isOnce, !usefull: isUsefull, !private: true, !functionName, !?ioDeclarations)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -258,9 +258,9 @@ syntax galgas3InstructionsSyntax (galgasScanner3) {
       isUsefull = true
     end
     $identifier$ ?let mActionName indexing functionDefinition
-    <formal_input_parameter_list_ggs34> (!?ioDeclarations ?let formalInputParameterList)
+    <formal_input_parameter_list_ggs34> (!?ioDeclarations, ?let formalInputParameterList)
     $->$
-    <type_definition_ggs3> (!?ioDeclarations ?let @lstring resultTypeName)
+    <type_definition_ggs3> (!?ioDeclarations, ?let @lstring resultTypeName)
     ioDeclarations.mDeclarationList += !@externFunctionDeclarationAST {
       !isPredefined: false // Is not predefined
       !mActionName
@@ -275,7 +275,7 @@ syntax galgas3InstructionsSyntax (galgasScanner3) {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <actual_parameter_list_ggs3> (?!@galgasDeclarationAST ioDeclarations,
-                                    !@actualParameterListAST outActualParameterList)
+                                     !@actualParameterListAST outActualParameterList)
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -287,12 +287,12 @@ syntax galgas3InstructionsSyntax (galgasScanner3) {
       $*$
       result = @grammarInstructionSyntaxDirectedTranslationDropResult {!@location.here}
     or
-      <type_definition_ggs3> (!?ioDeclarations ?let @lstring actualParameterTypeName)
+      <type_definition_ggs3> (!?ioDeclarations, ?let @lstring actualParameterTypeName)
       $identifier$ ?let actualParameterName
       result = @grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar {!actualParameterTypeName !actualParameterName}
     or
       $let$
-      <type_definition_ggs3> (!?ioDeclarations ?let @lstring actualParameterTypeName)
+      <type_definition_ggs3> (!?ioDeclarations, ?let @lstring actualParameterTypeName)
       $identifier$ ?let actualParameterName
       result = @grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst {!actualParameterTypeName !actualParameterName}
     or
@@ -324,7 +324,7 @@ syntax galgas3InstructionsSyntax (galgasScanner3) {
         select
           actualParameterTypeName = "".nowhere
         or
-         <type_definition_ggs3> (!?ioDeclarations ?actualParameterTypeName)
+         <type_definition_ggs3> (!?ioDeclarations, ?actualParameterTypeName)
         end
         $identifier$ ?let actualParameterName
         outActualInputParameterList +=
@@ -336,7 +336,7 @@ syntax galgas3InstructionsSyntax (galgasScanner3) {
         select
           actualParameterTypeName = "".nowhere
         or
-          <type_definition_ggs3> (!?ioDeclarations ?actualParameterTypeName)
+          <type_definition_ggs3> (!?ioDeclarations, ?actualParameterTypeName)
         end
         $identifier$ ?let actualParameterName
         outActualInputParameterList +=
@@ -392,7 +392,7 @@ syntax galgas4InstructionsSyntax (galgasScanner4) {
     select
     or
       repeat
-        <semantic_instruction> (!?ioDeclarations ?let @semanticInstructionAST instruction)
+        <semantic_instruction> (!?ioDeclarations, ?let @semanticInstructionAST instruction)
         outInstructionsList += !instruction
       while
         select
@@ -409,12 +409,12 @@ syntax galgas4InstructionsSyntax (galgasScanner4) {
     or
       $guard$
       let instructionLocation = @location.here
-      <comma_separated_expression> (!?ioDeclarations ?let testExpression)
+      <comma_separated_expression> (!?ioDeclarations, ?let testExpression)
       $else$
-      <semantic_instruction_list> (!?ioDeclarations ?let else_instructionList)
+      <semantic_instruction_list> (!?ioDeclarations, ?let else_instructionList)
       let endOf_else_branch = @location.here
       $end$
-      <semantic_instruction_list> (!?ioDeclarations ?let then_instructionList)
+      <semantic_instruction_list> (!?ioDeclarations, ?let then_instructionList)
       let endOf_then_branch = @location.here
       let instruction = @ifInstructionAST (
         instructionLocation,
@@ -451,12 +451,12 @@ syntax galgas4InstructionsSyntax (galgasScanner4) {
       isUsefull = true
     end
     $identifier$ ?let functionName indexing functionDefinition
-    <formal_input_parameter_list> (!?ioDeclarations ?let @formalInputParameterListAST formalInputParameterList)
+    <formal_input_parameter_list> (!?ioDeclarations, ?let @formalInputParameterListAST formalInputParameterList)
     if isOnce, (formalInputParameterList.count > 0) then
       error (functionName: "an 'once' function should has no argument")
     end
     $->$
-    <type_definition> (!?ioDeclarations ?let resultTypeName)
+    <type_definition> (!?ioDeclarations, ?let resultTypeName)
     let @lstring resultVariableName
     select
       $identifier$ ?resultVariableName
@@ -464,7 +464,7 @@ syntax galgas4InstructionsSyntax (galgasScanner4) {
       resultVariableName = @{!"result" !.here}
     end
     ${$
-    <semantic_instruction_list> (!?ioDeclarations ?let @semanticInstructionListAST functionInstructionList)
+    <semantic_instruction_list> (!?ioDeclarations, ?let @semanticInstructionListAST functionInstructionList)
     $}$
     let endOfFunctionInstructionList = @location.here
     if isOnce then
@@ -515,12 +515,12 @@ syntax galgas4InstructionsSyntax (galgasScanner4) {
       isUsefull = true
     end
     $identifier$ ?let functionName indexing functionDefinition
-    <formal_input_parameter_list> (!?ioDeclarations ?let @formalInputParameterListAST formalInputParameterList)
+    <formal_input_parameter_list> (!?ioDeclarations, ?let @formalInputParameterListAST formalInputParameterList)
     if isOnce, (formalInputParameterList.count > 0) then
       error (functionName: "an 'once' function should has no argument")
     end
     $->$
-    <type_definition> (!?ioDeclarations ?let resultTypeName)
+    <type_definition> (!?ioDeclarations, ?let resultTypeName)
     let @lstring resultVariableName
     select
       $identifier$ ?resultVariableName
@@ -528,7 +528,7 @@ syntax galgas4InstructionsSyntax (galgasScanner4) {
       resultVariableName = @{!"result" !.here}
     end
     ${$
-    <semantic_instruction_list> (!?ioDeclarations ?let @semanticInstructionListAST functionInstructionList)
+    <semantic_instruction_list> (!?ioDeclarations, ?let @semanticInstructionListAST functionInstructionList)
     $}$
     let endOfFunctionInstructionList = @location.here
     if isOnce then
@@ -574,9 +574,9 @@ syntax galgas4InstructionsSyntax (galgasScanner4) {
       isUsefull = true
     end
     $identifier$ ?let mActionName indexing functionDefinition
-    <formal_input_parameter_list> (!?ioDeclarations ?let @formalInputParameterListAST formalInputParameterList)
+    <formal_input_parameter_list> (!?ioDeclarations, ?let @formalInputParameterListAST formalInputParameterList)
     $->$
-    <type_definition> (!?ioDeclarations ?let resultTypeName)
+    <type_definition> (!?ioDeclarations, ?let resultTypeName)
     ioDeclarations.mDeclarationList += !@externFunctionDeclarationAST {
       !isPredefined: false // Is not predefined
       !mActionName
@@ -603,12 +603,12 @@ syntax galgas4InstructionsSyntax (galgasScanner4) {
       $*$
       result = @grammarInstructionSyntaxDirectedTranslationDropResult {!@location.here}
     or
-      <type_definition> (!?ioDeclarations ?let @lstring actualParameterTypeName)
+      <type_definition> (!?ioDeclarations, ?let @lstring actualParameterTypeName)
       $identifier$ ?let actualParameterName
       result = @grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar {!actualParameterTypeName !actualParameterName}
     or
       $let$
-      <type_definition> (!?ioDeclarations ?let @lstring actualParameterTypeName)
+      <type_definition> (!?ioDeclarations, ?let @lstring actualParameterTypeName)
       $identifier$ ?let actualParameterName
       result = @grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst {!actualParameterTypeName !actualParameterName}
     or
@@ -643,7 +643,7 @@ syntax galgas4InstructionsSyntax (galgasScanner4) {
           select
             actualParameterTypeName = "".nowhere
           or
-           <type_definition> (!?ioDeclarations ?actualParameterTypeName)
+           <type_definition> (!?ioDeclarations, ?actualParameterTypeName)
           end
           $identifier$ ?let actualParameterName
           outActualInputParameterList +=
@@ -657,7 +657,7 @@ syntax galgas4InstructionsSyntax (galgasScanner4) {
           select
             actualParameterTypeName = "".nowhere
           or
-           <type_definition> (!?ioDeclarations ?actualParameterTypeName)
+           <type_definition> (!?ioDeclarations, ?actualParameterTypeName)
           end
           $identifier$ ?let actualParameterName
           outActualInputParameterList +=
@@ -670,7 +670,7 @@ syntax galgas4InstructionsSyntax (galgasScanner4) {
           select
             actualParameterTypeName = "".nowhere
           or
-            <type_definition> (!?ioDeclarations ?actualParameterTypeName)
+            <type_definition> (!?ioDeclarations, ?actualParameterTypeName)
           end
           $identifier$ ?let actualParameterName
           outActualInputParameterList +=
@@ -684,7 +684,7 @@ syntax galgas4InstructionsSyntax (galgasScanner4) {
           select
             actualParameterTypeName = "".nowhere
           or
-            <type_definition> (!?ioDeclarations ?actualParameterTypeName)
+            <type_definition> (!?ioDeclarations, ?actualParameterTypeName)
           end
           $identifier$ ?let actualParameterName
           outActualInputParameterList +=

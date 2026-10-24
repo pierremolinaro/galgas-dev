@@ -235,9 +235,9 @@ override proc @templateLexiqueComponentAST enterDeclarationInGraph
   ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext,
   ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList ) {
   let key = @lstring {!"lexique " + self.mLexiqueComponentName !self.mLexiqueComponentName.location}
-  !?ioSemanticTypePrecedenceGraph.addNode (!key !self)
+  !?ioSemanticTypePrecedenceGraph.addNode (!key, !self)
   let superKey = @lstring {!"lexique " + self.mLexiqueSuperComponentName !self.mLexiqueComponentName.location}
-  !?ioSemanticTypePrecedenceGraph.addEdge (!from: key !to: superKey)
+  !?ioSemanticTypePrecedenceGraph.addEdge (!from: key, !to: superKey)
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -252,13 +252,13 @@ override proc @templateLexiqueComponentAST enterDeclarationInSemanticContext
   ?!@semanticContext ioSemanticContext ) {
 //-------------------------------------- Get super lexique features
   ioSemanticContext.mLexiqueComponentMapForSemanticAnalysis.searchKey
-     (!self.mLexiqueSuperComponentName
-     ?let superLexiqueIsTemplate
-     ?let terminalMap
-     ?let indexingListAST
-     ?let terminalListAST
-     ?let lexicalAttributeListAST
-     ?let lexicalStyleListAST
+     (!self.mLexiqueSuperComponentName,
+     ?let superLexiqueIsTemplate,
+     ?let terminalMap,
+     ?let indexingListAST,
+     ?let terminalListAST,
+     ?let lexicalAttributeListAST,
+     ?let lexicalStyleListAST,
      ?let lexicalListDeclarationListAST
   )
   if superLexiqueIsTemplate then
@@ -266,13 +266,13 @@ override proc @templateLexiqueComponentAST enterDeclarationInSemanticContext
   end
 //---
   !?ioSemanticContext.mLexiqueComponentMapForSemanticAnalysis.insertKey
-     (!self.mLexiqueComponentName
-     !true
-     !terminalMap
-     !indexingListAST
-     !terminalListAST
-     !lexicalAttributeListAST
-     !lexicalStyleListAST
+     (!self.mLexiqueComponentName,
+     !true,
+     !terminalMap,
+     !indexingListAST,
+     !terminalListAST,
+     !lexicalAttributeListAST,
+     !lexicalStyleListAST,
      !lexicalListDeclarationListAST
   )
 }
@@ -289,16 +289,16 @@ override proc @templateLexiqueComponentAST semanticAnalysis
                                   ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration ) {
 //-------------------------------------- Useful entities graph
   let nameForUsefulness = lexiqueNameForUsefulEntitiesGraph (!self.mLexiqueComponentName)
-  !?ioUsefulEntitiesGraph.addNode (!nameForUsefulness !nameForUsefulness)
+  !?ioUsefulEntitiesGraph.addNode (!nameForUsefulness, !nameForUsefulness)
 //-------------------------------------- Get super lexique features
   inSemanticContext.mLexiqueComponentMapForSemanticAnalysis.searchKey
-     (!self.mLexiqueSuperComponentName
-     ?* //let superLexiqueIsTemplate
-     ?* //let terminalMap
-     ?* //let indexingDirectory
-     ?let terminalListAST
-     ?let lexicalAttributeListAST
-     ?let lexicalStyleListAST
+     (!self.mLexiqueSuperComponentName,
+     ?*, //let superLexiqueIsTemplate
+     ?*, //let terminalMap
+     ?*, //let indexingDirectory
+     ?let terminalListAST,
+     ?let lexicalAttributeListAST,
+     ?let lexicalStyleListAST,
      ?let lexicalListDeclarationListAST
   )
 //-------------------------------------- Lexical attribute type name map
@@ -327,13 +327,13 @@ override proc @templateLexiqueComponentAST semanticAnalysis
 //-------------------------------------- Build style map
   var styleIndex = 1
   for (mName mComment) in lexicalStyleListAST do
-    !?lexiqueAnalysisContext.mStyleMap.insertKey (!mName !mComment !styleIndex)
+    !?lexiqueAnalysisContext.mStyleMap.insertKey (!mName, !mComment, !styleIndex)
     styleIndex += 1
   end
 //-------------------------------------- Build lexical attribute map
   buildLexicalAttributeMap (
-   !lexicalTypeMap
-   !lexicalAttributeListAST
+   !lexicalTypeMap,
+   !lexicalAttributeListAST,
    !?lexiqueAnalysisContext.mLexicalAttributeMap
   )
 //-------------------------------------- Build terminal map
@@ -341,14 +341,14 @@ override proc @templateLexiqueComponentAST semanticAnalysis
   for (mName mSentAttributeList mSyntaxErrorMessage mStyle nonAtomicSelection isEndOfTemplateMark) in terminalListAST do
     var @uint terminalStyleIndex = 0
     if mStyle.string.count > 0 then
-      lexiqueAnalysisContext.mStyleMap.searchKey (!mStyle ?* ?terminalStyleIndex)
+      lexiqueAnalysisContext.mStyleMap.searchKey (!mStyle, ?*, ?terminalStyleIndex)
     end
     var argumentTypeList = @lexicalSentValueList ()
     for (mFormalSelector mAttributeName) in mSentAttributeList do
-      lexiqueAnalysisContext.mLexicalAttributeMap.searchKey (!mAttributeName ?let attributeLexicalType)
+      lexiqueAnalysisContext.mLexicalAttributeMap.searchKey (!mAttributeName, ?let attributeLexicalType)
       argumentTypeList += !mFormalSelector !mAttributeName.string !attributeLexicalType
     end
-    !?lexiqueAnalysisContext.mTerminalMap.insertKey (!mName !argumentTypeList)
+    !?lexiqueAnalysisContext.mTerminalMap.insertKey (!mName, !argumentTypeList)
     terminalList +=
       !mName
       !argumentTypeList
@@ -360,11 +360,11 @@ override proc @templateLexiqueComponentAST semanticAnalysis
   for (* mStyle mSyntaxErrorMessage mSentAttributeList mEntryList) in lexicalListDeclarationListAST do
     var @uint terminalStyleIndex = 0
     if mStyle.string.count > 0 then
-      lexiqueAnalysisContext.mStyleMap.searchKey (!mStyle ?* ?terminalStyleIndex)
+      lexiqueAnalysisContext.mStyleMap.searchKey (!mStyle, ?*, ?terminalStyleIndex)
     end
     var argumentTypeList = @lexicalSentValueList ()
     for (mFormalSelector mAttributeName) in mSentAttributeList do
-      lexiqueAnalysisContext.mLexicalAttributeMap.searchKey (!mAttributeName ?let attributeLexicalType)
+      lexiqueAnalysisContext.mLexicalAttributeMap.searchKey (!mAttributeName, ?let attributeLexicalType)
       argumentTypeList += !mFormalSelector !mAttributeName.string !attributeLexicalType
     end
     for (* mTerminalSpelling nonAtomicSelection isTemplateEndMark) in mEntryList do

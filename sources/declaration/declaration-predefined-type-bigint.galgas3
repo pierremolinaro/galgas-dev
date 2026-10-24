@@ -37,10 +37,10 @@ final class @bigintPredefinedTypeAST : @predefinedTypeAST {
     !@classFunctionMap outMap ) {
     outMap = @()
     enterClassFunctionWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !name:"zero"
-      !resultTypeName:"bigint"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !name:"zero",
+      !resultTypeName:"bigint",
       !hasLexiqueArg:false
     )
   }
@@ -52,18 +52,18 @@ final class @bigintPredefinedTypeAST : @predefinedTypeAST {
     !@instanceMethodMap outInstanceMethodMap ) {
     outInstanceMethodMap = @()
   //--- divide, floorDivide, ceilDivide
-    !?ioUnifiedTypeMap.makeEntryFromString (!"bigint" ?let bigIntType)
+    !?ioUnifiedTypeMap.makeEntryFromString (!"bigint", ?let bigIntType)
     var @formalParameterSignature argList = @()
     argList += !"".nowhere !bigIntType !.argumentConstantIn !"inDivisor"
     argList += !"quotient".nowhere !bigIntType !.argumentOut !"outQuotient"
     argList += !"remainder".nowhere !bigIntType !.argumentOut !"outRemainder"
     !?outInstanceMethodMap.insertKey
-      (!@{!"divideBy" !.here}
-      !.definedAsMember
-      !argList
-      !.here
-      !true
-      !.isBasic
+      (!@{!"divideBy" !.here},
+      !.definedAsMember,
+      !argList,
+      !.here,
+      !true,
+      !.isBasic,
       !"" // No error message
     )
   }
@@ -76,21 +76,21 @@ final class @bigintPredefinedTypeAST : @predefinedTypeAST {
   ) {
     outSetterMap = @()
     enterModifierWith2InputArguments (
-      !?outSetterMap
-      !?ioUnifiedTypeMap
-      !arg1TypeName:"bool"
-      !arg1Name:"inBit"
-      !arg2TypeName:"uint"
-      !arg2Name:"inIndex"
-      !setterName:"setBitAtIndex"
+      !?outSetterMap,
+      !?ioUnifiedTypeMap,
+      !arg1TypeName:"bool",
+      !arg1Name:"inBit",
+      !arg2TypeName:"uint",
+      !arg2Name:"inIndex",
+      !setterName:"setBitAtIndex",
       !compilerArg:false
     )
     enterModifierWithInputArgument (
-      !?outSetterMap
-      !?ioUnifiedTypeMap
-      !argTypeName:"uint"
-      !argName:"inIndex"
-      !setterName:"complementBitAtIndex"
+      !?outSetterMap,
+      !?ioUnifiedTypeMap,
+      !argTypeName:"uint",
+      !argName:"inIndex",
+      !setterName:"complementBitAtIndex",
       !compilerArg:false
     )
   }
@@ -100,208 +100,208 @@ final class @bigintPredefinedTypeAST : @predefinedTypeAST {
   override proc getGetterMap
     (?!@unifiedTypeMap ioUnifiedTypeMap,
     !@getterMap outMap ) {
-    commonGetterMapForAllTypes (!?ioUnifiedTypeMap ?outMap)
+    commonGetterMapForAllTypes (!?ioUnifiedTypeMap, ?outMap)
     enterBaseFinalGetterWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName:"fitsInUInt"
-      !obsoleteName: ""
-      !returnedTypeName:"bool"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName:"fitsInUInt",
+      !obsoleteName: "",
+      !returnedTypeName:"bool",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName:"fitsInSInt"
-      !obsoleteName: ""
-      !returnedTypeName:"bool"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName:"fitsInSInt",
+      !obsoleteName: "",
+      !returnedTypeName:"bool",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName:"fitsInUInt64"
-      !obsoleteName: ""
-      !returnedTypeName:"bool"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName:"fitsInUInt64",
+      !obsoleteName: "",
+      !returnedTypeName:"bool",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName:"fitsInSInt64"
-      !obsoleteName: ""
-      !returnedTypeName:"bool"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName:"fitsInSInt64",
+      !obsoleteName: "",
+      !returnedTypeName:"bool",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName:"string"
-      !obsoleteName: ""
-      !returnedTypeName:"string"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName:"string",
+      !obsoleteName: "",
+      !returnedTypeName:"string",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWithArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName:"spacedString"
-      !"uint" !"inSeparation"
-      !returnedTypeName:"string"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName:"spacedString",
+      !"uint", !"inSeparation",
+      !returnedTypeName:"string",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName:"hexString"
-      !obsoleteName: ""
-      !returnedTypeName:"string"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName:"hexString",
+      !obsoleteName: "",
+      !returnedTypeName:"string",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWith2Arguments (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName:"hexStringSeparatedBy"
-      !"char"
-      !"inSeparator"
-      !"uint"
-      !"inGroupCount"
-      !returnedTypeName:"string"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName:"hexStringSeparatedBy",
+      !"char",
+      !"inSeparator",
+      !"uint",
+      !"inGroupCount",
+      !returnedTypeName:"string",
       !hasCompilerArgument:true
     )
     enterBaseFinalGetterWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName:"xString"
-      !obsoleteName: ""
-      !returnedTypeName:"string"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName:"xString",
+      !obsoleteName: "",
+      !returnedTypeName:"string",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName:"bitCountForSignedRepresentation"
-      !obsoleteName: ""
-      !returnedTypeName:"uint"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName:"bitCountForSignedRepresentation",
+      !obsoleteName: "",
+      !returnedTypeName:"uint",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName:"bitCountForUnsignedRepresentation"
-      !obsoleteName: ""
-      !returnedTypeName:"uint"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName:"bitCountForUnsignedRepresentation",
+      !obsoleteName: "",
+      !returnedTypeName:"uint",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName:"uint"
-      !obsoleteName: ""
-      !returnedTypeName:"uint"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName:"uint",
+      !obsoleteName: "",
+      !returnedTypeName:"uint",
       !hasCompilerArgument:true
     )
     enterBaseFinalGetterWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName:"sint"
-      !obsoleteName: ""
-      !returnedTypeName:"sint"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName:"sint",
+      !obsoleteName: "",
+      !returnedTypeName:"sint",
       !hasCompilerArgument:true
     )
     enterBaseFinalGetterWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName:"uint64"
-      !obsoleteName: ""
-      !returnedTypeName:"uint64"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName:"uint64",
+      !obsoleteName: "",
+      !returnedTypeName:"uint64",
       !hasCompilerArgument:true
     )
     enterBaseFinalGetterWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName:"sint64"
-      !obsoleteName: ""
-      !returnedTypeName:"sint64"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName:"sint64",
+      !obsoleteName: "",
+      !returnedTypeName:"sint64",
       !hasCompilerArgument:true
     )
     enterBaseFinalGetterWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName:"abs"
-      !obsoleteName: ""
-      !returnedTypeName:"bigint"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName:"abs",
+      !obsoleteName: "",
+      !returnedTypeName:"bigint",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWithArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName:"bitAtIndex"
-      !"uint" !"inBitIndex"
-      !returnedTypeName:"bool"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName:"bitAtIndex",
+      !"uint", !"inBitIndex",
+      !returnedTypeName:"bool",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName:"isZero"
-      !obsoleteName: ""
-      !returnedTypeName:"bool"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName:"isZero",
+      !obsoleteName: "",
+      !returnedTypeName:"bool",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName:"sign"
-      !obsoleteName: ""
-      !returnedTypeName:"sint"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName:"sign",
+      !obsoleteName: "",
+      !returnedTypeName:"sint",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName:"extract8ForUnsignedRepresentation"
-      !obsoleteName: ""
-      !returnedTypeName:"uintlist"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName:"extract8ForUnsignedRepresentation",
+      !obsoleteName: "",
+      !returnedTypeName:"uintlist",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName:"extract8ForSignedRepresentation"
-      !obsoleteName: ""
-      !returnedTypeName:"uintlist"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName:"extract8ForSignedRepresentation",
+      !obsoleteName: "",
+      !returnedTypeName:"uintlist",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName:"extract32ForUnsignedRepresentation"
-      !obsoleteName: ""
-      !returnedTypeName:"uintlist"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName:"extract32ForUnsignedRepresentation",
+      !obsoleteName: "",
+      !returnedTypeName:"uintlist",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName:"extract32ForSignedRepresentation"
-      !obsoleteName: ""
-      !returnedTypeName:"uintlist"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName:"extract32ForSignedRepresentation",
+      !obsoleteName: "",
+      !returnedTypeName:"uintlist",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName:"extract64ForUnsignedRepresentation"
-      !obsoleteName: ""
-      !returnedTypeName:"uint64list"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName:"extract64ForUnsignedRepresentation",
+      !obsoleteName: "",
+      !returnedTypeName:"uint64list",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName:"extract64ForSignedRepresentation"
-      !obsoleteName: ""
-      !returnedTypeName:"uint64list"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName:"extract64ForSignedRepresentation",
+      !obsoleteName: "",
+      !returnedTypeName:"uint64list",
       !hasCompilerArgument:false
     )
   }

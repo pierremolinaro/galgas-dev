@@ -70,7 +70,7 @@ struct @routineMap {
                     ?isFilePrivate: let @bool inIsFilePrivate) {
     var @routineArgumentMap routineArgumentMap
     if [self.mInternalRoutineMap hasKey !inRoutineName] then
-      self.mInternalRoutineMap.searchKey (!inRoutineName ?routineArgumentMap)
+      self.mInternalRoutineMap.searchKey (!inRoutineName, ?routineArgumentMap)
     else
       routineArgumentMap = @()
     end
@@ -79,11 +79,11 @@ struct @routineMap {
       error (inRoutineName : "duplicated declaration of the " + inRoutineName + routineArguments + " routine")
     else
      !?routineArgumentMap.insertKey
-       (!@{!routineArguments !inRoutineName.location}
-       !inRoutineSignature
+       (!@{!routineArguments !inRoutineName.location},
+       !inRoutineSignature,
        !inIsFilePrivate
      )
-     !?self.mInternalRoutineMap.insertOrReplace (!inRoutineName !routineArgumentMap)
+     !?self.mInternalRoutineMap.insertOrReplace (!inRoutineName, !routineArgumentMap)
     end
   }
 
@@ -115,7 +115,7 @@ struct @routineMap {
         end
       end
       if acceptableParameterList.count == 1 then
-        acceptableParameterList.first (?outRoutineSignature ?outIsFilePrivate)
+        acceptableParameterList.first (?outRoutineSignature, ?outIsFilePrivate)
         outRoutineMangledName = routineMangledName (!inRoutineName !outRoutineSignature)
       elsif acceptableParameterList.count == 0 then
         error (inRoutineName

@@ -26,12 +26,12 @@ proc enterInstanceMethodWithoutArgument (?!@instanceMethodMap ioInstanceMethodMa
   ?methodName:let @string inInstanceMethodName,
   ?let @bool inHasCompilerArgument) {
   !?ioInstanceMethodMap.insertKey
-    (!inInstanceMethodName.nowhere
-    !@methodKind.definedAsMember
-    !@()
-    !.nowhere
-    !inHasCompilerArgument
-    !@methodQualifier. isBasic
+    (!inInstanceMethodName.nowhere,
+    !@methodKind.definedAsMember,
+    !@(),
+    !.nowhere,
+    !inHasCompilerArgument,
+    !@methodQualifier. isBasic,
     !"" // No error message
   )
 }
@@ -44,16 +44,16 @@ proc enterInstanceMethodWithInputArgument (?!@instanceMethodMap ioInstanceMethod
                                            ?inputArgName:let @string inInputArgumentName,
                                            ?methodName:let @string inInstanceMethodName,
                                            ?let @bool inHasCompilerArgument) {
-  !?ioUnifiedTypeMap.makeEntryFromString (!inInputArgumentTypeName ?let argumentTypeIndex)
+  !?ioUnifiedTypeMap.makeEntryFromString (!inInputArgumentTypeName, ?let argumentTypeIndex)
   var @formalParameterSignature argList = @()
   argList += !"".nowhere !argumentTypeIndex !@formalArgumentPassingModeAST. argumentConstantIn !inInputArgumentName
   !?ioInstanceMethodMap.insertKey
-    (!inInstanceMethodName.nowhere
-    !@methodKind. definedAsMember
-    !argList
-    !.nowhere
-    !inHasCompilerArgument
-    !@methodQualifier. isBasic
+    (!inInstanceMethodName.nowhere,
+    !@methodKind. definedAsMember,
+    !argList,
+    !.nowhere,
+    !inHasCompilerArgument,
+    !@methodQualifier. isBasic,
     !"" // No error message
   )
 }

@@ -48,61 +48,61 @@ final class @boolPredefinedTypeAST : @predefinedTypeAST {
 
   override proc getGetterMap (?!@unifiedTypeMap ioUnifiedTypeMap,
                                !@getterMap outMap ) {
-    commonGetterMapForAllTypes (!?ioUnifiedTypeMap ?outMap)
+    commonGetterMapForAllTypes (!?ioUnifiedTypeMap, ?outMap)
     enterBaseFinalGetterWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName:"cString"
-      !obsoleteName: ""
-      !returnedTypeName:"string"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName:"cString",
+      !obsoleteName: "",
+      !returnedTypeName:"string",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName:"ocString"
-      !obsoleteName: ""
-      !returnedTypeName:"string"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName:"ocString",
+      !obsoleteName: "",
+      !returnedTypeName:"string",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName:"uint"
-      !obsoleteName: ""
-      !returnedTypeName:"uint"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName:"uint",
+      !obsoleteName: "",
+      !returnedTypeName:"uint",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName:"sint"
-      !obsoleteName: ""
-      !returnedTypeName:"sint"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName:"sint",
+      !obsoleteName: "",
+      !returnedTypeName:"sint",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName:"uint64"
-      !obsoleteName: ""
-      !returnedTypeName:"uint64"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName:"uint64",
+      !obsoleteName: "",
+      !returnedTypeName:"uint64",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName:"sint64"
-      !obsoleteName: ""
-      !returnedTypeName:"sint64"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName:"sint64",
+      !obsoleteName: "",
+      !returnedTypeName:"sint64",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName:"bigint"
-      !obsoleteName: ""
-      !returnedTypeName:"bigint"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName:"bigint",
+      !obsoleteName: "",
+      !returnedTypeName:"bigint",
       !hasCompilerArgument:false
     )
   }

@@ -45,7 +45,7 @@ syntax extension galgas3InstructionsSyntax {
           end
         end
         $=$
-        <expression_or_ggs3> (!?ioDeclarations ?let expression)
+        <expression_or_ggs3> (!?ioDeclarations, ?let expression)
         let endOfReceiverExpression = @location.here
         select
           outExpressionList += !.letVarExp {
@@ -57,7 +57,7 @@ syntax extension galgas3InstructionsSyntax {
           }
         or
           $as$
-          <type_definition_ggs3> (!?ioDeclarations ?let typeName)
+          <type_definition_ggs3> (!?ioDeclarations, ?let typeName)
           outExpressionList += !.letVarExp {
             !varName: varName
             !isConstant: isConstant
@@ -67,7 +67,7 @@ syntax extension galgas3InstructionsSyntax {
           }
         end
       or
-        <expression_ggs3> (!?ioDeclarations ?let expression)
+        <expression_ggs3> (!?ioDeclarations, ?let expression)
         outExpressionList += !.regularExp {!exp: expression !endOfExp: .here}
       end
     while
@@ -107,7 +107,7 @@ syntax extension galgas4InstructionsSyntax {
           end
         end
         $=$
-        <expression_or> (!?ioDeclarations ?let expression)
+        <expression_or> (!?ioDeclarations, ?let expression)
         let endOfReceiverExpression = @location.here
         select
           outExpressionList += !.letVarExp {
@@ -119,7 +119,7 @@ syntax extension galgas4InstructionsSyntax {
           }
         or
           $as$
-          <type_definition> (!?ioDeclarations ?let typeName)
+          <type_definition> (!?ioDeclarations, ?let typeName)
           outExpressionList += !.letVarExp {
             !varName: varName
             !isConstant: isConstant
@@ -129,7 +129,7 @@ syntax extension galgas4InstructionsSyntax {
           }
         end
       or
-        <expression> (!?ioDeclarations ?let expression)
+        <expression> (!?ioDeclarations, ?let expression)
         outExpressionList += !.regularExp {!exp: expression !endOfExp: .here}
       end
     while
@@ -168,7 +168,7 @@ list @CommaSeparatedExpressionList {
         exp.enterExpressionInSemanticContext (!?ioTypeMap)
       case letVarExp (2* exp * @lstring typeName) :
         exp.enterExpressionInSemanticContext (!?ioTypeMap)
-        !?ioTypeMap.makeEntry (!typeName ?*)
+        !?ioTypeMap.makeEntry (!typeName, ?*)
       end
     end
   }
@@ -186,18 +186,18 @@ list @CommaSeparatedExpressionList {
       switch expression
       case regularExp (exp endOfExpression) :
         exp.analyzeSemanticExpression
-          (!usefulnessCallerEntityName: inUsefulnessCallerEntityName
-          !?ioUsefulEntitiesGraph
-          !inferenceType: .null
-          !inAnalysisContext
-          !?ioTypeMap
-          !?ioVariableMap
+          (!usefulnessCallerEntityName: inUsefulnessCallerEntityName,
+          !?ioUsefulEntitiesGraph,
+          !inferenceType: .null,
+          !inAnalysisContext,
+          !?ioTypeMap,
+          !?ioVariableMap,
           ?let analyzed_if_expression
         )
         checkExpressionIsBoolean (
-          !inAnalysisContext
-          !endOfExpression
-          !analyzed_if_expression
+          !inAnalysisContext,
+          !endOfExpression,
+          !analyzed_if_expression,
           ?let if_expression
         )
         outTestListForGeneration += !.regular {!exp: if_expression}
@@ -205,12 +205,12 @@ list @CommaSeparatedExpressionList {
         !?ioVariableMap.openBranch ()
       case letVarExp (varName isConstant exp * @lstring typeName) :
         exp.analyzeSemanticExpression
-          (!usefulnessCallerEntityName: inUsefulnessCallerEntityName
-          !?ioUsefulEntitiesGraph
-          !inferenceType: .null
-          !inAnalysisContext
-          !?ioTypeMap
-          !?ioVariableMap
+          (!usefulnessCallerEntityName: inUsefulnessCallerEntityName,
+          !?ioUsefulEntitiesGraph,
+          !inferenceType: .null,
+          !inAnalysisContext,
+          !?ioTypeMap,
+          !?ioVariableMap,
           ?let analyzedExpression
         )
         var castType = @unifiedTypeMapEntry.null
@@ -225,17 +225,17 @@ list @CommaSeparatedExpressionList {
           if varName.string != "" then
             if isConstant then
               !?ioVariableMap.insertInitializedLocalConstant
-                (!varName
-                !unwrappedType
-                !targetVariableCppName
+                (!varName,
+                !unwrappedType,
+                !targetVariableCppName,
                 !targetVariableCppName
               )
             else
               !?ioVariableMap.insertInitializedLocalVariable
-                (!varName
-                !warnsIfNotMutated: true
-                !unwrappedType
-                !targetVariableCppName
+                (!varName,
+                !warnsIfNotMutated: true,
+                !unwrappedType,
+                !targetVariableCppName,
                 !targetVariableCppName
               )
             end
@@ -278,17 +278,17 @@ list @CommaSeparatedExpressionList {
           if varName.string != "" then
              if isConstant then
               !?ioVariableMap.insertInitializedLocalConstant
-                (!varName
-                !castType
-                !targetVariableCppName
+                (!varName,
+                !castType,
+                !targetVariableCppName,
                 !targetVariableCppName
               )
             else
               !?ioVariableMap.insertInitializedLocalVariable
-                (!varName
-                !warnsIfNotMutated: true
-                !castType
-                !targetVariableCppName
+                (!varName,
+                !warnsIfNotMutated: true,
+                !castType,
+                !targetVariableCppName,
                 !targetVariableCppName
               )
             end
@@ -337,17 +337,17 @@ list @CommaSeparatedExpressionList {
           if varName.string != "" then
            if isConstant then
               !?ioVariableMap.insertInitializedLocalConstant
-                (!varName
-                !castType
-                !targetVariableCppName
+                (!varName,
+                !castType,
+                !targetVariableCppName,
                 !targetVariableCppName
               )
             else
               !?ioVariableMap.insertInitializedLocalVariable
-                (!varName
-                !warnsIfNotMutated: true
-                !castType
-                !targetVariableCppName
+                (!varName,
+                !warnsIfNotMutated: true,
+                !castType,
+                !targetVariableCppName,
                 !targetVariableCppName
               )
             end
@@ -413,10 +413,10 @@ list @ifTestListForGeneration {
       switch expression
       case regular (exp) :
         exp.generateExpression
-          (!?ioGeneratedCode
-          !?ioInclusionSet
-          !?ioTemporaryVariableIndex
-          !?ioUnusedVariableCppNameSet
+          (!?ioGeneratedCode,
+          !?ioInclusionSet,
+          !?ioTemporaryVariableIndex,
+          !?ioUnusedVariableCppNameSet,
           ?let cppVarName
         )
         ioGeneratedCode += outTestVar + " = " + cppVarName + ".boolEnum () ;\n"
@@ -426,10 +426,10 @@ list @ifTestListForGeneration {
         let targetTypeName = targetType.identifierRepresentation
         let testTypeName = testType.identifierRepresentation
         exp.generateExpression
-          (!?ioGeneratedCode
-          !?ioInclusionSet
-          !?ioTemporaryVariableIndex
-          !?ioUnusedVariableCppNameSet
+          (!?ioGeneratedCode,
+          !?ioInclusionSet,
+          !?ioTemporaryVariableIndex,
+          !?ioUnusedVariableCppNameSet,
           ?let cppVarName
         )
         ioGeneratedCode += "GGS_" + targetTypeName + " " + targetVarCppName
@@ -440,10 +440,10 @@ list @ifTestListForGeneration {
       case optionalExp (targetVarCppName isConstant exp targetType) :
         let targetTypeName = targetType.identifierRepresentation
         exp.generateExpression
-          (!?ioGeneratedCode
-          !?ioInclusionSet
-          !?ioTemporaryVariableIndex
-          !?ioUnusedVariableCppNameSet
+          (!?ioGeneratedCode,
+          !?ioInclusionSet,
+          !?ioTemporaryVariableIndex,
+          !?ioUnusedVariableCppNameSet,
           ?let cppVarName
         )
         if isConstant then

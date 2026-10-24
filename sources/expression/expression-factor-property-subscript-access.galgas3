@@ -25,7 +25,7 @@ syntax extension galgas3ExpressionSyntax {
 
   rule <factor_ggs3> (?!@galgasDeclarationAST ioDeclarations,
                      !@semanticExpressionAST outExpression ) {
-    <primary_ggs3> (!?ioDeclarations ?outExpression)
+    <primary_ggs3> (!?ioDeclarations, ?outExpression)
     repeat
     while
       var expressionList = @actualOutputArgumentList ()
@@ -33,16 +33,16 @@ syntax extension galgas3ExpressionSyntax {
       repeat
         select
           $!selector:$ ?let selector
-          <expression_ggs3> (!?ioDeclarations ?let expression)
+          <expression_ggs3> (!?ioDeclarations, ?let expression)
           expressionList += !selector !expression !.here
         or
           $!$
           let selector = "".here
-          <expression_ggs3> (!?ioDeclarations ?let expression)
+          <expression_ggs3> (!?ioDeclarations, ?let expression)
           expressionList += !selector !expression !.here
         or
           let selector = "".here
-          <expression_ggs3> (!?ioDeclarations ?let expression)
+          <expression_ggs3> (!?ioDeclarations, ?let expression)
           expressionList += !selector !expression !.here
         end
       while
@@ -77,12 +77,12 @@ syntax extension galgas4ExpressionSyntax {
 
   rule <factor> (?!@galgasDeclarationAST ioDeclarations,
                 !@semanticExpressionAST outExpression ) {
-    <primary> (!?ioDeclarations ?outExpression)
+    <primary> (!?ioDeclarations, ?outExpression)
     repeat
     while
       $[$
       <non_empty_output_expression_list>(
-        !?ioDeclarations
+        !?ioDeclarations,
         ?let @actualOutputArgumentList expressionList)
       outExpression = @subscriptReadAccessExpressionAST {
         !outExpression
@@ -103,7 +103,7 @@ syntax extension galgas4ExpressionSyntax {
         let getterName = structFieldName
         let startLocation = @location.next
         $($
-        <output_expression_list> (!?ioDeclarations ?let @actualOutputArgumentList expressionList)
+        <output_expression_list> (!?ioDeclarations, ?let @actualOutputArgumentList expressionList)
         let endLocation = @location.here
         $)$
         outExpression = @getterCallExpressionAST {
@@ -146,12 +146,12 @@ final class @structPropertyAccessExpressionAST : @semanticExpressionAST {
                       !@semanticExpressionForGeneration outExpressionGeneration ) {
   //--- Expression analysis
     self.mExpression.analyzeSemanticExpression
-      (!usefulnessCallerEntityName: inUsefulnessCallerEntityName
-      !?ioUsefulEntitiesGraph
-      !inferenceType: .null
-      !inAnalysisContext
-      !?ioTypeMap
-      !?ioVariableMap
+      (!usefulnessCallerEntityName: inUsefulnessCallerEntityName,
+      !?ioUsefulEntitiesGraph,
+      !inferenceType: .null,
+      !inAnalysisContext,
+      !?ioTypeMap,
+      !?ioVariableMap,
       ?let @semanticExpressionForGeneration exprGeneration
     )
   //--- Check field access availability
@@ -160,11 +160,11 @@ final class @structPropertyAccessExpressionAST : @semanticExpressionAST {
     if let prop = propertyMap @[self.propertyName] then
       if exprGeneration is @selfInExpressionForGeneration then
         !?ioVariableMap.searchForReadAccess
-          (!@("self." + self.propertyName, self.propertyName)
+          (!@("self." + self.propertyName, self.propertyName),
           ?3*
         )
       end
-      prop.mAccessControl.checkGetAccess (!inAnalysisContext.selfAvailability !self.propertyName)
+      prop.mAccessControl.checkGetAccess (!inAnalysisContext.selfAvailability, !self.propertyName)
     //--- Generate expression
       outExpressionGeneration = @propertyAccessExpressionForGeneration {
         !prop.mPropertyType
@@ -230,10 +230,10 @@ final class @propertyAccessExpressionForGeneration : @semanticExpressionForGener
     self.mResultType.addHeaderFileName (!?ioInclusionSet)
   //--- Operand
     self.expression.generateExpression
-      (!?ioGeneratedCode
-      !?ioInclusionSet
-      !?ioTemporaryVariableIndex
-      !?ioUnusedVariableCppNameSet
+      (!?ioGeneratedCode,
+      !?ioInclusionSet,
+      !?ioTemporaryVariableIndex,
+      !?ioUnusedVariableCppNameSet,
       ?let @string operand
     )
   //--- Generate
@@ -274,12 +274,12 @@ final class @subscriptReadAccessExpressionAST : @semanticExpressionAST {
                                   !@semanticExpressionForGeneration outExpression ) {
   //--- Receiver analysis
     self.mExpression.analyzeSemanticExpression
-      (!usefulnessCallerEntityName: inUsefulnessCallerEntityName
-      !?ioUsefulEntitiesGraph
-      !inferenceType: .null
-      !inAnalysisContext
-      !?ioTypeMap
-      !?ioVariableMap
+      (!usefulnessCallerEntityName: inUsefulnessCallerEntityName,
+      !?ioUsefulEntitiesGraph,
+      !inferenceType: .null,
+      !inAnalysisContext,
+      !?ioTypeMap,
+      !?ioVariableMap,
       ?let @semanticExpressionForGeneration expression
     )
     let @unifiedTypeMapEntry expressionType = expression.mResultType
@@ -292,18 +292,18 @@ final class @subscriptReadAccessExpressionAST : @semanticExpressionAST {
       var semanticExpressionListForGeneration = @semanticExpressionListForGeneration ()
       for formalArg in aSubscript.argumentTypeList, actualArg in self.actualArgumentList do
         actualArg.mExpression.analyzeSemanticExpression
-          (!usefulnessCallerEntityName: inUsefulnessCallerEntityName
-          !?ioUsefulEntitiesGraph
-          !inferenceType: formalArg.mFormalArgumentType
-          !inAnalysisContext
-          !?ioTypeMap
-          !?ioVariableMap
+          (!usefulnessCallerEntityName: inUsefulnessCallerEntityName,
+          !?ioUsefulEntitiesGraph,
+          !inferenceType: formalArg.mFormalArgumentType,
+          !inAnalysisContext,
+          !?ioTypeMap,
+          !?ioVariableMap,
           ?@semanticExpressionForGeneration expression
         )
         checkAssignmentTypeWithImplicitGetterCall (
-          !formalArg.mFormalArgumentType
-          !expression.mResultType
-          !actualArg.mEndOfExpressionLocation
+          !formalArg.mFormalArgumentType,
+          !expression.mResultType,
+          !actualArg.mEndOfExpressionLocation,
           !?expression
         )
         if formalArg.mFormalSelector.string != actualArg.mActualSelector.string then
@@ -350,20 +350,20 @@ final class @subscriptReadAccessExpressionForGeneration : @semanticExpressionFor
     self.mResultType.addHeaderFileName (!?ioInclusionSet)
   //--- Operand
     self.expression.generateExpression
-      (!?ioGeneratedCode
-      !?ioInclusionSet
-      !?ioTemporaryVariableIndex
-      !?ioUnusedVariableCppNameSet
+      (!?ioGeneratedCode,
+      !?ioInclusionSet,
+      !?ioTemporaryVariableIndex,
+      !?ioUnusedVariableCppNameSet,
       ?let @string operand
     )
   //--- subscript arments
     var [@string] subscriptArgumentList = @()
     for actualArg in self.actualExpressionList do
       actualArg.mExpression.generateExpression
-        (!?ioGeneratedCode
-        !?ioInclusionSet
-        !?ioTemporaryVariableIndex
-        !?ioUnusedVariableCppNameSet
+        (!?ioGeneratedCode,
+        !?ioInclusionSet,
+        !?ioTemporaryVariableIndex,
+        !?ioUnusedVariableCppNameSet,
         ?let @string actualArgOperand
       )
       !?subscriptArgumentList.append (!actualArgOperand)

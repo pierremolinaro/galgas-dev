@@ -41,7 +41,7 @@ syntax extension galgas3DeclarationsSyntax {
       $identifier$ ?let slotName
       slotList += !slotName
     while
-      <method_declaration_ggs3> (!boolsetTypeName !?ioDeclarations)
+      <method_declaration_ggs3> (!boolsetTypeName, !?ioDeclarations)
     end
     $}$
     if slotList.count == 0 then
@@ -83,7 +83,7 @@ syntax extension galgas4DeclarationsSyntax {
       $identifier$ ?let slotName
       slotList += !slotName
     while
-      <method_declaration> (!boolsetTypeName !?ioDeclarations)
+      <method_declaration> (!boolsetTypeName, !?ioDeclarations)
     end
     $}$
     if slotList.count == 0 then
@@ -125,7 +125,7 @@ override proc @boolsetDeclarationAST enterDeclarationInGraph
   ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList
 ) {
   let key = @lstring {!"@" + self.mBoolsetTypeName !self.mBoolsetTypeName.location}
-  !?ioSemanticTypePrecedenceGraph.addNode (!key !self)
+  !?ioSemanticTypePrecedenceGraph.addNode (!key, !self)
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -157,49 +157,49 @@ override proc @boolsetDeclarationAST enterDeclarationInSemanticContext
     slotNameSet ++= slotName
   end
 //--- boolset type index
-  !?ioTypeMap.makeEntry (!self.mBoolsetTypeName ?let boolsetTypeIndex)
+  !?ioTypeMap.makeEntry (!self.mBoolsetTypeName, ?let boolsetTypeIndex)
 //--- Getters
-  commonGetterMapForAllTypes (!?ioTypeMap ?var @getterMap getterMap)
+  commonGetterMapForAllTypes (!?ioTypeMap, ?var @getterMap getterMap)
   enterBaseGetterWithArgument (
-    !?getterMap
-    !?ioTypeMap
-    !getterName: "contains"
-    !argSelector: ""
-    !argType: self.mBoolsetTypeName
-    !argName: "inOperand"
-    !returnedTypeName: "bool"
+    !?getterMap,
+    !?ioTypeMap,
+    !getterName: "contains",
+    !argSelector: "",
+    !argType: self.mBoolsetTypeName,
+    !argName: "inOperand",
+    !returnedTypeName: "bool",
     !hasCompilerArgument: false
   )
 //--- class functions
   var @classFunctionMap classFunctionMap = @()
   for (slotName) in self.mFlagList do
     if not [classFunctionMap hasKey !slotName] then
-      !?classFunctionMap.insertKey (!slotName !@() !false !boolsetTypeIndex)
+      !?classFunctionMap.insertKey (!slotName, !@(), !false, !boolsetTypeIndex)
     end
   end
 //--- Add initializer without argument
   var @initializerMap initializerMap = @()
   let @functionSignature emptyArgumentList = @()
   !?initializerMap.insertKey
-    (!@{!emptyArgumentList.initializerSignature !self.mBoolsetTypeName}
+    (!@{!emptyArgumentList.initializerSignature !self.mBoolsetTypeName},
     !emptyArgumentList
   )
 //--- Add extensions
   var @setterMap setterMap = @()
   var @instanceMethodMap instanceMethodMap = @()
   addExtensions (
-    !inExtensionInitializerMapForBuildingContext
-    !inExtensionMethodMapForBuildingContext
-    !inExtensionGetterMapForBuildingContext
-    !inExtensionSetterMapForBuildingContext
-    !?ioSemanticContext
-    !?ioTypeMap
-    !self.mBoolsetTypeName
-    !isClass: false
-    !?initializerMap
-    !?getterMap
-    !?setterMap
-    !?instanceMethodMap
+    !inExtensionInitializerMapForBuildingContext,
+    !inExtensionMethodMapForBuildingContext,
+    !inExtensionGetterMapForBuildingContext,
+    !inExtensionSetterMapForBuildingContext,
+    !?ioSemanticContext,
+    !?ioTypeMap,
+    !self.mBoolsetTypeName,
+    !isClass: false,
+    !?initializerMap,
+    !?getterMap,
+    !?setterMap,
+    !?instanceMethodMap,
     !acceptSetters: true
   )
 //--- Operators
@@ -214,10 +214,10 @@ override proc @boolsetDeclarationAST enterDeclarationInSemanticContext
     features |= .equatable
   end
   handleEquatableComparableExtension (
-    !?ioEquatableExtensionMap
-    !self.mBoolsetTypeName
-    !?features
-    !acceptEquatable: true
+    !?ioEquatableExtensionMap,
+    !self.mBoolsetTypeName,
+    !?features,
+    !acceptEquatable: true,
     !acceptComparable: true
   )
 //--- Enter in type map
@@ -248,7 +248,7 @@ override proc @boolsetDeclarationAST enterDeclarationInSemanticContext
     !headerFileName: "boolset-" + self.mBoolsetTypeName.string.fileNameRepresentation
     !headerKind: .oneHeader
   }
-  !?ioTypeMap.insertType (!typeDefinition.typeName !typeDefinition)
+  !?ioTypeMap.insertType (!typeDefinition.typeName, !typeDefinition)
 }
 
 
@@ -272,7 +272,7 @@ override proc @boolsetDeclarationAST semanticAnalysis
   end
 //--- Useful entities graph
   let boolsetNameForUsefulness = typeNameForUsefulEntitiesGraph (!self.mBoolsetTypeName)
-  !?ioUsefulEntitiesGraph.addNode (!boolsetNameForUsefulness !boolsetNameForUsefulness)
+  !?ioUsefulEntitiesGraph.addNode (!boolsetNameForUsefulness, !boolsetNameForUsefulness)
   if self.isPredefined  then
     ioUsefulnessRootEntities += !boolsetNameForUsefulness
   end
@@ -281,7 +281,7 @@ override proc @boolsetDeclarationAST semanticAnalysis
     !self.mBoolsetTypeName
     !@formalInputParameterListAST ().initializerSignature
   )
-  !?ioUsefulEntitiesGraph.addNode (!initializerNameForUsefulness !initializerNameForUsefulness)
+  !?ioUsefulEntitiesGraph.addNode (!initializerNameForUsefulness, !initializerNameForUsefulness)
   if self.isPredefined  then
     ioUsefulnessRootEntities += !initializerNameForUsefulness
   end

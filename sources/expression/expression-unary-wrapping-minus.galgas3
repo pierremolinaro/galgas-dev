@@ -36,7 +36,7 @@ syntax extension galgas3ExpressionSyntax {
                      !@semanticExpressionAST outExpression ) {
     let operatorLocation = @location.here
     $&-$
-    <factor_ggs3> (!?ioDeclarations ?outExpression)
+    <factor_ggs3> (!?ioDeclarations, ?outExpression)
     outExpression = @unaryWrappingMinusExpressionAST {!operatorLocation !outExpression}
   }
 
@@ -54,7 +54,7 @@ syntax extension galgas4ExpressionSyntax {
                 !@semanticExpressionAST outExpression ) {
     let operatorLocation = @location.here
     $&-$
-    <factor> (!?ioDeclarations ?outExpression)
+    <factor> (!?ioDeclarations, ?outExpression)
     outExpression = @unaryWrappingMinusExpressionAST {!operatorLocation !outExpression}
   }
 
@@ -84,12 +84,12 @@ override proc @unaryWrappingMinusExpressionAST analyzeSemanticExpression
   !@semanticExpressionForGeneration outExpression ) {
 //--- Expression analysis
   self.mExpression.analyzeSemanticExpression
-    (!usefulnessCallerEntityName: inUsefulnessCallerEntityName
-    !?ioUsefulEntitiesGraph
-    !inferenceType: @unifiedTypeMapEntry.null
-    !inAnalysisContext
-    !?ioTypeMap
-    !?ioVariableMap
+    (!usefulnessCallerEntityName: inUsefulnessCallerEntityName,
+    !?ioUsefulEntitiesGraph,
+    !inferenceType: @unifiedTypeMapEntry.null,
+    !inAnalysisContext,
+    !?ioTypeMap,
+    !?ioVariableMap,
     ?let expression
   )
 //--- Check operator availability
@@ -126,10 +126,10 @@ override proc @unaryWrappingMinusExpressionForGeneration generateExpression
   self.mExpression.mResultType.addHeaderFileName (!?ioInclusionSet)
 //--- Left operand
   self.mExpression.generateExpression
-    (!?ioGeneratedCode
-    !?ioInclusionSet
-    !?ioTemporaryVariableIndex
-    !?ioUnusedVariableCppNameSet
+    (!?ioGeneratedCode,
+    !?ioInclusionSet,
+    !?ioTemporaryVariableIndex,
+    !?ioUnusedVariableCppNameSet,
     ?let @string operand
   )
 //--- Generate Comparison

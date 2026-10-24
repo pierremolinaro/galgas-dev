@@ -56,9 +56,7 @@ syntax extension galgas3InstructionsSyntax {
     end
     $identifier$ ?let mReceiverName
     select
-      $($
-      <actual_parameter_list_ggs3> (!?ioDeclarations ?let @actualParameterListAST actualParameterList)
-      $)$
+      <actual_parameter_list_ggs3> (!?ioDeclarations, ?let @actualParameterListAST actualParameterList)
       if prefixedBySelf then
         outInstruction = @selfSetterCallInstructionAST {
           !instructionLocation
@@ -77,9 +75,7 @@ syntax extension galgas3InstructionsSyntax {
       while
       end
       !?receiverStructProperties.popLast (?let setterName)
-      $($
-      <actual_parameter_list_ggs3> (!?ioDeclarations ?let @actualParameterListAST actualParameterList)
-      $)$
+      <actual_parameter_list_ggs3> (!?ioDeclarations, ?let @actualParameterListAST actualParameterList)
       outInstruction = @setterCallInstructionAST {
         !instructionLocation
         !prefixedBySelf
@@ -115,7 +111,7 @@ syntax extension galgas4InstructionsSyntax {
     end
     $identifier$ ?let mReceiverName
     select
-      <actual_parameter_list_with_parenthesis> (!?ioDeclarations ?let @actualParameterListAST actualParameterList)
+      <actual_parameter_list_with_parenthesis> (!?ioDeclarations, ?let @actualParameterListAST actualParameterList)
       if prefixedBySelf then
         outInstruction = @selfSetterCallInstructionAST {
           !instructionLocation
@@ -134,7 +130,7 @@ syntax extension galgas4InstructionsSyntax {
       while
       end
       !?receiverStructProperties.popLast (?let setterName)
-      <actual_parameter_list_with_parenthesis> (!?ioDeclarations ?let @actualParameterListAST actualParameterList)
+      <actual_parameter_list_with_parenthesis> (!?ioDeclarations, ?let @actualParameterListAST actualParameterList)
       outInstruction = @setterCallInstructionAST {
         !instructionLocation
         !prefixedBySelf
@@ -190,7 +186,7 @@ override proc @setterCallInstructionAST analyzeSemanticInstruction (
         error (self.mSetterName : "'self' not mutable in this context")
       end
       let propertyMap = selfAvailability.type.definition.propertyMap
-      propertyMap.searchKey (!self.mReceiverName ?* ?let isConstant ?receiverType)
+      propertyMap.searchKey (!self.mReceiverName, ?*, ?let isConstant, ?receiverType)
       if isConstant then
         error (self.mReceiverName: "a constant property cannot be modified")
       end
@@ -204,9 +200,9 @@ override proc @setterCallInstructionAST analyzeSemanticInstruction (
     end
   else
     !?ioVariableMap.searchForReadWriteAccess
-       (!self.mReceiverName
-       ?receiverType
-       ?targetVariableCppName
+       (!self.mReceiverName,
+       ?receiverType,
+       ?targetVariableCppName,
        ?nameForCheckingFormalParameterUsing
     )
   end
@@ -219,8 +215,8 @@ override proc @setterCallInstructionAST analyzeSemanticInstruction (
       error (errorLocation : "a structure is required for '.' access")
     else
       let propertyMap = receiverType.definition.propertyMap
-      propertyMap.searchKey (!value ?let accessControl ?let isConstant ?receiverType)
-      accessControl.checkSetAccess (!inAnalysisContext.selfAvailability !value.location)
+      propertyMap.searchKey (!value, ?let accessControl, ?let isConstant, ?receiverType)
+      accessControl.checkSetAccess (!inAnalysisContext.selfAvailability, !value.location)
       errorLocation = value.location
       if isConstant then
         error (value : "a constant property cannot be modified")
@@ -229,11 +225,11 @@ override proc @setterCallInstructionAST analyzeSemanticInstruction (
   end
 //--- Get setter signature
   receiverType.definition.setterMap.searchKey
-    (!self.mSetterName
-    ?let kind
-    ?let routineSignature
-    ?let hasCompilerArgument
-    ?*
+    (!self.mSetterName,
+    ?let kind,
+    ?let routineSignature,
+    ?let hasCompilerArgument,
+    ?*,
     ?let setterErrorMessage
   )
   if setterErrorMessage != "" then
@@ -241,15 +237,15 @@ override proc @setterCallInstructionAST analyzeSemanticInstruction (
   end
 //--- Check effective parameters
   self.mActualParameterList.analyzeRoutineArguments
-    (!inUsefulnessCallerEntityName
-    !?ioUsefulEntitiesGraph
-    !inAnalysisContext
-    !?ioTypeMap
-    !self.mSetterName
-    !invokedEntityNameForErrorSignaling: "'" + self.mSetterName + "' setter header"
-    !routineSignature
-    !?ioVariableMap
-    !?ioInstructionListForGeneration
+    (!inUsefulnessCallerEntityName,
+    !?ioUsefulEntitiesGraph,
+    !inAnalysisContext,
+    !?ioTypeMap,
+    !self.mSetterName,
+    !invokedEntityNameForErrorSignaling: "'" + self.mSetterName + "' setter header",
+    !routineSignature,
+    !?ioVariableMap,
+    !?ioInstructionListForGeneration,
     ?let @actualParameterListForGeneration actualParameterListForGeneration
   )
 //--- Search base type that declares the proc
@@ -300,18 +296,18 @@ override proc @selfSetterCallInstructionAST analyzeSemanticInstruction (
   //--- Check self is not invoked before full initialization
     ioVariableMap.checkSelfObjectIsFullyInitialized (!self.mSetterName.location)
   //--- Get setter signature
-    selfAvailable.type.definition.setterMap.searchKey (!self.mSetterName ?let kind ?let routineSignature ?let hasCompilerArgument ?* ?*)
+    selfAvailable.type.definition.setterMap.searchKey (!self.mSetterName, ?let kind, ?let routineSignature, ?let hasCompilerArgument, ?*, ?*)
   //--- Check effective parameters
     self.mActualParameterList.analyzeRoutineArguments
-      (!inUsefulnessCallerEntityName
-      !?ioUsefulEntitiesGraph
-      !inAnalysisContext
-      !?ioTypeMap
-      !self.mSetterName
-      !invokedEntityNameForErrorSignaling: "'" + self.mSetterName + "' setter header"
-      !routineSignature
-      !?ioVariableMap
-      !?ioInstructionListForGeneration
+      (!inUsefulnessCallerEntityName,
+      !?ioUsefulEntitiesGraph,
+      !inAnalysisContext,
+      !?ioTypeMap,
+      !self.mSetterName,
+      !invokedEntityNameForErrorSignaling: "'" + self.mSetterName + "' setter header",
+      !routineSignature,
+      !?ioVariableMap,
+      !?ioInstructionListForGeneration,
       ?let @actualParameterListForGeneration actualParameterListForGeneration
     )
   //--- Generate instructions
@@ -375,12 +371,12 @@ override proc @setterCallInstructionForGeneration generateInstruction (?!@string
   var @stringlist inputVariableList = @()
   for (mActualParameter) in self.mActualParameterList do
     mActualParameter.generateActualParameter
-      (!?ioInclusionSet
-      !?ioTemporaryVariableIndex
-      !?ioGeneratedCode
-      !?jokerParametersToReleaseList
-      !?inputVariableList
-      !?ioUnusedVariableCppNameSet
+      (!?ioInclusionSet,
+      !?ioTemporaryVariableIndex,
+      !?ioGeneratedCode,
+      !?jokerParametersToReleaseList,
+      !?inputVariableList,
+      !?ioUnusedVariableCppNameSet,
       ?let parameterCppName
     )
     parameterCppNameList += !parameterCppName
@@ -439,12 +435,12 @@ override proc @selfSetterCallInstructionForGeneration generateInstruction (?!@st
   var inputVariableList = @stringlist ()
   for (mActualParameter) in self.mActualParameterList do
     mActualParameter.generateActualParameter
-      (!?ioInclusionSet
-      !?ioTemporaryVariableIndex
-      !?ioGeneratedCode
-      !?jokerParametersToReleaseList
-      !?inputVariableList
-      !?ioUnusedVariableCppNameSet
+      (!?ioInclusionSet,
+      !?ioTemporaryVariableIndex,
+      !?ioGeneratedCode,
+      !?jokerParametersToReleaseList,
+      !?inputVariableList,
+      !?ioUnusedVariableCppNameSet,
       ?let @string parameterCppName)
     parameterCppNameList += !parameterCppName
   end

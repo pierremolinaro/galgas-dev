@@ -179,60 +179,39 @@ final class @syntaxDeclarationForGeneration : @semanticDeclarationForGeneration 
           + "_i" + mRuleIndex.string + "_" + mLabelName.string.identifierRepresentation
         outImplementation += "//------------------------------------------------------------------------------------------------\n\n"
         generateProcedure (
-          !static:false
-          !ruleName
-          !?ioInclusionSet
-          !mSignatureForGeneration
-          !mInstructionListForGeneration
-          !false
-          !lexiqueCppName
-          !false // Do not generate location Argument
-          !false // Do not generate 'resetTemplateString'
-          !self.mHasTranslateFeature
+          !static:false,
+          !ruleName,
+          !?ioInclusionSet,
+          !mSignatureForGeneration,
+          !mInstructionListForGeneration,
+          !false,
+          !lexiqueCppName,
+          !false, // Do not generate location Argument
+          !false, // Do not generate 'resetTemplateString'
+          !self.mHasTranslateFeature,
           ?let @string code
         )
         outImplementation += code
       end
-    //--- Generate "parse" label
-//      [mLabelImplementationList first ?* ?* ?* ?* ?let parseInstructionList]
-//      let @string parseRuleName = "cParser_" + self.mSyntaxComponentName.identifierRepresentation
-//      + "::rule_" + self.mSyntaxComponentName.identifierRepresentation + "_"
-//      + mNonterminalName.identifierRepresentation
-//      + "_i" + mRuleIndex.string + "_parse"
-//      outImplementation += "//------------------------------------------------------------------------------------------------\n\n"
-//      generateProcedure (
-//        !static:false
-//        !parseRuleName
-//        !?ioInclusionSet
-//        !@formalParameterListForGeneration ()
-//        !syntaxSignatureOfInstructionList (!"parse" !parseInstructionList)
-//        !false
-//        !lexiqueCppName
-//        !false // Do not generate location Argument
-//        !true // Generate 'resetTemplateString'
-//        !self.mHasTranslateFeature
-//        ?let @string parseCode
-//      )
-//      outImplementation += parseCode
     //--- Generate indexing code
       if self.mHasIndexing then
-        mLabelImplementationList.first (?* ?* ?* ?* ?let instructionList)
+        mLabelImplementationList.first (?*, ?*, ?*, ?*, ?let instructionList)
         let @string ruleName = "cParser_" + self.mSyntaxComponentName.identifierRepresentation
         + "::rule_" + self.mSyntaxComponentName.identifierRepresentation + "_"
         + mNonterminalName.identifierRepresentation
         + "_i" + mRuleIndex.string + "_indexing"
         outImplementation += "//------------------------------------------------------------------------------------------------\n\n"
         generateProcedure (
-          !static:false
-          !ruleName
-          !?ioInclusionSet
-          !@formalParameterListForGeneration ()
-          !syntaxSignatureOfInstructionList (!"indexing" !instructionList)
-          !false
-          !lexiqueCppName
-          !false // Do not generate location Argument
-          !false // Do not generate 'resetTemplateString'
-          !false // Do not generate syntaxDirectedTranslationString argument
+          !static:false,
+          !ruleName,
+          !?ioInclusionSet,
+          !@formalParameterListForGeneration (),
+          !syntaxSignatureOfInstructionList (!"indexing" !instructionList),
+          !false,
+          !lexiqueCppName,
+          !false, // Do not generate location Argument
+          !false, // Do not generate 'resetTemplateString'
+          !false, // Do not generate syntaxDirectedTranslationString argument
           ?let @string code
         )
         outImplementation += code
@@ -282,10 +261,10 @@ proc generateProcedure
   !?routineBody.incIndentation (!2)
   for (mInstruction) in inInstructionList do
     mInstruction.generateInstruction
-      (!?ioInclusionSet
-      !?temporaryVariableIndex
-      !?unusedVariableCppNameSet
-      !inGenerateSyntaxDirectedTranslationString
+      (!?ioInclusionSet,
+      !?temporaryVariableIndex,
+      !?unusedVariableCppNameSet,
+      !inGenerateSyntaxDirectedTranslationString,
       !?routineBody
     )
   end
@@ -397,10 +376,10 @@ proc generateFunction (?let @string inFunctionCppRepresentationName,
   !?routineBody.incIndentation (!2)
   for (mInstruction) in inInstructionList do
     mInstruction.generateInstruction
-      (!?ioInclusionSet
-      !?temporaryVariableIndex
-      !?unusedVariableCppNameSet
-      !false // inGenerateSyntaxDirectedTranslationString
+      (!?ioInclusionSet,
+      !?temporaryVariableIndex,
+      !?unusedVariableCppNameSet,
+      !false, // inGenerateSyntaxDirectedTranslationString
       !?routineBody
     )
   end
@@ -479,10 +458,10 @@ proc generateExtensionGetter (?let @string inFunctionCppRepresentationName,
   !?routineBody.incIndentation (!2)
   for (mInstruction) in inInstructionList do
     mInstruction.generateInstruction
-      (!?ioInclusionSet
-      !?temporaryVariableIndex
-      !?unusedVariableCppNameSet
-      !false // inGenerateSyntaxDirectedTranslationString
+      (!?ioInclusionSet,
+      !?temporaryVariableIndex,
+      !?unusedVariableCppNameSet,
+      !false, // inGenerateSyntaxDirectedTranslationString
       !?routineBody
     )
   end
@@ -555,10 +534,10 @@ proc generateExtensionSetter
   !?routineBody.incIndentation (!2)
   for (mInstruction) in inInstructionList do
     mInstruction.generateInstruction
-      (!?ioInclusionSet
-      !?temporaryVariableIndex
-      !?unusedVariableCppNameSet
-      !false // inGenerateSyntaxDirectedTranslationString
+      (!?ioInclusionSet,
+      !?temporaryVariableIndex,
+      !?unusedVariableCppNameSet,
+      !false, // inGenerateSyntaxDirectedTranslationString
       !?routineBody
     )
   end
@@ -648,10 +627,10 @@ proc generateExtensionMethodNew (?let @unifiedTypeMapEntry inReceiverType,
   !?routineBody.incIndentation (!2)
   for (mInstruction) in inInstructionList do
     mInstruction.generateInstruction
-      (!?ioInclusionSet
-      !?temporaryVariableIndex
-      !?unusedVariableCppNameSet
-      !false // inGenerateSyntaxDirectedTranslationString
+      (!?ioInclusionSet,
+      !?temporaryVariableIndex,
+      !?unusedVariableCppNameSet,
+      !false, // inGenerateSyntaxDirectedTranslationString
       !?routineBody
     )
   end
@@ -1021,15 +1000,15 @@ override proc @functionImplementationForGeneration appendSpecificImplementation
   !@string outImplementation ) {
   ioInclusionSet ++= "func-" + self.mFunctionName.fileNameRepresentation
   generateFunction (
-    !"function_" + self.mFunctionName.identifierRepresentation
-    !?ioInclusionSet
-    !self.mFormalArgumentList
-    !self.mFunctionInstructionList
-    !"Compiler"
-    !self.mReturnType
-    !self.mResultVariableCppName
-    !static: false // is not static
-    !const: false
+    !"function_" + self.mFunctionName.identifierRepresentation,
+    !?ioInclusionSet,
+    !self.mFormalArgumentList,
+    !self.mFunctionInstructionList,
+    !"Compiler",
+    !self.mReturnType,
+    !self.mResultVariableCppName,
+    !static: false,
+    !const: false,
     ?let @string code
   )
   outImplementation = [filewrapper semanticComponentGenerationTemplate.functionImplementation
@@ -1049,15 +1028,15 @@ override proc @onceFunctionDeclarationForGeneration appendSpecificImplementation
 ) {
   ioInclusionSet ++= "func-" + self.mFunctionName.fileNameRepresentation
   generateFunction (
-    !"onceFunction_" + self.mFunctionName.identifierRepresentation
-    !?ioInclusionSet
-    !@formalInputParameterListForGeneration ()
-    !self.mFunctionInstructionList
-    !"Compiler"
-    !self.mReturnType
-    !self.mResultVariableCppName
-    !static: true // is static
-    !const: false
+    !"onceFunction_" + self.mFunctionName.identifierRepresentation,
+    !?ioInclusionSet,
+    !@formalInputParameterListForGeneration (),
+    !self.mFunctionInstructionList,
+    !"Compiler",
+    !self.mReturnType,
+    !self.mResultVariableCppName,
+    !static: true,
+    !const: false,
     ?let @string code
   )
   outImplementation = [filewrapper semanticComponentGenerationTemplate.onceFunctionImplementation
@@ -1077,9 +1056,6 @@ final class @lexiqueDeclarationForGeneration : @semanticDeclarationWithHeaderFor
   public let @string mSuperLexiqueName
   public let @string mHeaderContents
   public let @string mCppContents
-//  public let @string mObjcCocoaHeader
-//  public let @string mObjcCocoaImplementation
-//  public let @string mSwiftCocoaImplementation
   public let @string mSwiftUIImplementation
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -1119,14 +1095,14 @@ final class @lexiqueDeclarationForGeneration : @semanticDeclarationWithHeaderFor
     ioAllProductFileSet ++= "lexique-" + self.mLexiqueName.fileNameRepresentation + "-swiftui.swift"
     ioSwiftAppProductFileList += !"lexique-" + self.mLexiqueName.fileNameRepresentation + "-swiftui.swift"
     @string.generateFileWithPattern (
-      !startPath:inProductDirectory
-      !fileName:"lexique-" + self.mLexiqueName.fileNameRepresentation + "-swiftui.swift"
-      !lineComment:"//"
-      !header:"" // Header
-      !defaultUserZone1:"\n\n" // Defaut user zone1
-      !generatedZone2:self.mSwiftUIImplementation
-      !defaultUserZone2:"\n\n" // Defaut user zone2
-      !generatedZone3:"\n\n" // Zone 3
+      !startPath:inProductDirectory,
+      !fileName:"lexique-" + self.mLexiqueName.fileNameRepresentation + "-swiftui.swift",
+      !lineComment:"//",
+      !header:"",
+      !defaultUserZone1:"\n\n",
+      !generatedZone2:self.mSwiftUIImplementation,
+      !defaultUserZone2:"\n\n",
+      !generatedZone3:"\n\n",
       !makeExecutable:false
     )
   }
@@ -1183,11 +1159,11 @@ proc recursivlyEnumerateRegularFile
   end
   for (* mRegularFileMap mDirectoryMap *) in inFilewrapperDirectoryMap do
     recursivlyEnumerateRegularFile (
-      !mRegularFileMap
-      !mDirectoryMap
-      !?ioRegularFileIndexStringList
-      !?ioDirectoryIndexStringList
-      !?ioRegularTextContentIndexStringList
+      !mRegularFileMap,
+      !mDirectoryMap,
+      !?ioRegularFileIndexStringList,
+      !?ioDirectoryIndexStringList,
+      !?ioRegularTextContentIndexStringList,
       !?ioRegularBinaryContentIndexStringList
     )
   end
@@ -1203,11 +1179,11 @@ override proc @filewrapperDeclarationForGeneration appendDeclaration1
   var regularTextContentIndexStringList = @stringlist ()
   var directoryIndexStringList = @stringlist ()
   recursivlyEnumerateRegularFile (
-    !self.mFilewrapperFileMap
-    !self.mFilewrapperDirectoryMap
-    !?regularFileIndexStringList
-    !?directoryIndexStringList
-    !?regularTextContentIndexStringList
+    !self.mFilewrapperFileMap,
+    !self.mFilewrapperDirectoryMap,
+    !?regularFileIndexStringList,
+    !?directoryIndexStringList,
+    !?regularTextContentIndexStringList,
     !?regularBinaryContentIndexStringList
   )
   outHeader = [filewrapper semanticComponentGenerationTemplate.filewrapperDeclaration
@@ -1297,11 +1273,11 @@ proc generateWrapperContents
 //--- Generate sub-directories
   for (lkey mRegularFileMap mDirectoryMap mWrapperDirectoryIndex) in inFilewrapperDirectoryMap do
     generateWrapperContents (
-      !inFilewrapperName
-      !lkey.string
-      !mWrapperDirectoryIndex
-      !mRegularFileMap
-      !mDirectoryMap
+      !inFilewrapperName,
+      !lkey.string,
+      !mWrapperDirectoryIndex,
+      !mRegularFileMap,
+      !mDirectoryMap,
       !?ioImplementation
     )
   end
@@ -1346,11 +1322,11 @@ override proc @filewrapperDeclarationForGeneration appendSpecificImplementation
   ioInclusionSet ++= "filewrapper-" + self.mFilewrapperName
   var @string filewrapperImplementation = ""
   generateWrapperContents (
-    !self.mFilewrapperName
-    !""
-    !0
-    !self.mFilewrapperFileMap
-    !self.mFilewrapperDirectoryMap
+    !self.mFilewrapperName,
+    !"",
+    !0,
+    !self.mFilewrapperFileMap,
+    !self.mFilewrapperDirectoryMap,
     !?filewrapperImplementation
   )
   outImplementation = [filewrapper semanticComponentGenerationTemplate.filewrapperImplementation
@@ -1369,11 +1345,11 @@ override proc @filewrapperDeclarationForGeneration appendSpecificImplementation
     end
     var @bool useColumnMarker = false
     templateCodeGenerationForListInstruction (
-      !mTemplateInstructionListForGeneration
-      !?generatedCodeForInstructionList
-      !?ioInclusionSet
-      !?temporaryVariableIndex
-      !?unusedVariableCppNameSet
+      !mTemplateInstructionListForGeneration,
+      !?generatedCodeForInstructionList,
+      !?ioInclusionSet,
+      !?temporaryVariableIndex,
+      !?unusedVariableCppNameSet,
       !?useColumnMarker
     )
   //---
@@ -1466,14 +1442,14 @@ proc generatePredefinedTypeFiles
   end
   for (* mDeclaration) in inSemanticDeclarationListForGeneration do
     if mDeclaration.isPredefined then
-      mDeclaration.appendDeclaration1 (!? %from @() ?let @string code)
+      mDeclaration.appendDeclaration1 (!? %from @(), ?let @string code)
       generatedCode += code
     end
   end
   generatedCode += [filewrapper predefinedTypeGenerationTemplate.predefinedTypeSeparation]
   for (* mDeclaration) in inSemanticDeclarationListForGeneration do
     if mDeclaration.isPredefined then
-      mDeclaration.appendDeclaration2 (!inDirectory !? %from @() ?let @string headerString2)
+      mDeclaration.appendDeclaration2 (!inDirectory, !? %from @(), ?let @string headerString2)
       generatedCode += headerString2
     end
   end
@@ -1481,14 +1457,14 @@ proc generatePredefinedTypeFiles
     ioToolHeaderFileList += !"all-predefined-types.h"
     ioAllProductFileSet ++= "all-predefined-types.h"
     @string.generateFileWithPattern (
-      !startPath:inDirectory
-      !fileName:"all-predefined-types.h"
-      !lineComment:"//"
-      !header:"" // Header
-      !defaultUserZone1:"\n\n" // Defaut user zone1
-      !generatedZone2:generatedCode
-      !defaultUserZone2:"\n\n" // Defaut user zone2
-      !generatedZone3:""
+      !startPath:inDirectory,
+      !fileName:"all-predefined-types.h",
+      !lineComment:"//",
+      !header:"",
+      !defaultUserZone1:"\n\n",
+      !generatedZone2:generatedCode,
+      !defaultUserZone2:"\n\n",
+      !generatedZone3:"",
       !makeExecutable:false
     )
   end
@@ -1497,7 +1473,7 @@ proc generatePredefinedTypeFiles
   for (* mDeclaration) in inSemanticDeclarationListForGeneration do
     if mDeclaration.isPredefined then
       generatedCode += mDeclaration.appendTypeGenericImplementation
-      mDeclaration.appendSpecificImplementation (! @() !? %from @() ?let @string code)
+      mDeclaration.appendSpecificImplementation (! @(), !? %from @(), ?let @string code)
       generatedCode += code
     end
   end
@@ -1505,14 +1481,14 @@ proc generatePredefinedTypeFiles
     ioToolCppFileList += !"all-predefined-types.cpp"
     ioAllProductFileSet ++= "all-predefined-types.cpp"
     @string.generateFileWithPattern (
-      !startPath:inDirectory
-      !fileName:"all-predefined-types.cpp"
-      !lineComment:"//"
-      !header:"" // Header
-      !defaultUserZone1:"\n\n" // Defaut user zone1
-      !generatedZone2:generatedCode
-      !defaultUserZone2:"\n\n" // Defaut user zone2
-      !generatedZone3:""
+      !startPath:inDirectory,
+      !fileName:"all-predefined-types.cpp",
+      !lineComment:"//",
+      !header:"",
+      !defaultUserZone1:"\n\n",
+      !generatedZone2:generatedCode,
+      !defaultUserZone2:"\n\n",
+      !generatedZone3:"",
       !makeExecutable:false
     )
   end

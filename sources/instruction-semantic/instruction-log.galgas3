@@ -58,7 +58,7 @@ syntax extension galgas3InstructionsSyntax {
       or
         $"string"$ ?let logMessage
         $:$
-        <expression_ggs3> (!?ioDeclarations ?let logExpression)
+        <expression_ggs3> (!?ioDeclarations, ?let logExpression)
         logList += !logMessage !logExpression
       end
     while
@@ -99,7 +99,7 @@ syntax extension galgas4InstructionsSyntax {
       or
         $"string"$ ?let logMessage
         $:$
-        <expression> (!?ioDeclarations ?let logExpression)
+        <expression> (!?ioDeclarations, ?let logExpression)
         logList += !logMessage !logExpression
       end
     while
@@ -139,12 +139,12 @@ override proc @logInstructionAST analyzeSemanticInstruction (
   for (mLogMessage mLogExpression) in self.mLogList do
   //--- Analyze source expression
     mLogExpression.analyzeSemanticExpression
-      (!usefulnessCallerEntityName: inUsefulnessCallerEntityName
-      !?ioUsefulEntitiesGraph
-      !inferenceType: @unifiedTypeMapEntry.null
-      !inAnalysisContext
-      !?ioTypeMap
-      !?ioVariableMap
+      (!usefulnessCallerEntityName: inUsefulnessCallerEntityName,
+      !?ioUsefulEntitiesGraph,
+      !inferenceType: @unifiedTypeMapEntry.null,
+      !inAnalysisContext,
+      !?ioTypeMap,
+      !?ioVariableMap,
       ?let expression
     )
   //--- Generate instruction
@@ -172,10 +172,10 @@ override proc @logInstructionForGeneration generateInstruction (?!@stringset ioI
                             ?let @bool unused inGenerateSyntaxDirectedTranslationString,
                             ?!@string ioGeneratedCode) {
   self.mLogExpression.generateExpression
-    (!?ioGeneratedCode
-    !?ioInclusionSet
-    !?ioTemporaryVariableIndex
-    !?ioUnusedVariableCppNameSet
+    (!?ioGeneratedCode,
+    !?ioInclusionSet,
+    !?ioTemporaryVariableIndex,
+    !?ioUnusedVariableCppNameSet,
     ?let @string logVar
   )
   ioGeneratedCode += logVar + ".log (" + self.mLogMessage.string.utf8RepresentationEscapingQuestionMark

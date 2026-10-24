@@ -68,12 +68,12 @@ syntax extension galgas3ExpressionSyntax {
     repeat
     while
       $!selector:$ ?let selector
-      <expression_ggs3> (!?ioDeclarations ?let @semanticExpressionAST expression)
+      <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST expression)
       outExpressionList += !selector !expression !.here
     while
       $!$
       let selector = "".here
-      <expression_ggs3> (!?ioDeclarations ?let @semanticExpressionAST expression)
+      <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST expression)
       outExpressionList += !selector !expression !.here
     end
   }
@@ -88,16 +88,16 @@ syntax extension galgas3ExpressionSyntax {
       repeat
         select
           $!selector:$ ?let selector
-          <expression_ggs3> (!?ioDeclarations ?let @semanticExpressionAST expression)
+          <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST expression)
           outExpressionList += !selector !expression !.here
         or
           $!$
           let selector = "".here
-          <expression_ggs3> (!?ioDeclarations ?let @semanticExpressionAST expression)
+          <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST expression)
           outExpressionList += !selector !expression !.here
         or
           let selector = "".here
-          <expression_ggs3> (!?ioDeclarations ?let @semanticExpressionAST expression)
+          <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST expression)
           outExpressionList += !selector !expression !.here
         end
       while
@@ -130,7 +130,7 @@ syntax extension galgas4ExpressionSyntax {
         or
           selector = "".here
         end
-        <expression> (!?ioDeclarations ?let @semanticExpressionAST expression)
+        <expression> (!?ioDeclarations, ?let @semanticExpressionAST expression)
         outExpressionList += !selector !expression !.here
       while
         $,$
@@ -154,7 +154,7 @@ syntax extension galgas4ExpressionSyntax {
       or
         selector = "".here
       end
-      <expression> (!?ioDeclarations ?let @semanticExpressionAST expression)
+      <expression> (!?ioDeclarations, ?let @semanticExpressionAST expression)
       outExpressionList += !selector !expression !.here
     while
       $,$

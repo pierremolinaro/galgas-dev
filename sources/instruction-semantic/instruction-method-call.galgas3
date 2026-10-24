@@ -16,34 +16,6 @@
 // DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //--------------------------------------------------------------------------------------------------
-//! SYNTAX
-//--------------------------------------------------------------------------------------------------
-
-syntax extension galgas3InstructionsSyntax {
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-//  rule <semantic_instruction_ggs3> (?!@galgasDeclarationAST ioDeclarations,
-//                                    !@semanticInstructionAST outInstruction) {
-//    $[$
-//    let instructionLocation = @location.here
-//    <expression_ggs3> (!?ioDeclarations ?let @semanticExpressionAST mReceiverExpression)
-//    $identifier$ ?let mMethodName // §§
-//    <actual_parameter_list_ggs3> (!?ioDeclarations ?let @actualParameterListAST actualParameterList)
-//    $]$
-//    outInstruction = @methodCallInstructionAST {
-//      !instructionLocation
-//      !mReceiverExpression
-//      !mMethodName
-//      !actualParameterList
-//    }
-//  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-}
-
-//--------------------------------------------------------------------------------------------------
 
 final class @methodCallInstructionAST : @semanticInstructionAST {
   private let @semanticExpressionAST mReceiverExpression
@@ -74,22 +46,22 @@ final class @methodCallInstructionAST : @semanticInstructionAST {
     end
   //--- Analyze receiver expression
     self.mReceiverExpression.analyzeSemanticExpression
-      (!usefulnessCallerEntityName: inUsefulnessCallerEntityName
-      !?ioUsefulEntitiesGraph
-      !inferenceType: .null
-      !inAnalysisContext
-      !?ioTypeMap
-      !?ioVariableMap
+      (!usefulnessCallerEntityName: inUsefulnessCallerEntityName,
+      !?ioUsefulEntitiesGraph,
+      !inferenceType: .null,
+      !inAnalysisContext,
+      !?ioTypeMap,
+      !?ioVariableMap,
       ?let @semanticExpressionForGeneration receiverExpression
     )
   //--- Get type proc signature
     receiverExpression.mResultType.definition.instanceMethodMap.searchKey
-      (!self.mMethodName
-      ?let kind
-      ?let routineSignature
-      ?*
-      ?let hasCompilerArgument
-      ?*
+      (!self.mMethodName,
+      ?let kind,
+      ?let routineSignature,
+      ?*,
+      ?let hasCompilerArgument,
+      ?*,
       ?let errorMessage
     )
     if errorMessage != "" then
@@ -97,15 +69,15 @@ final class @methodCallInstructionAST : @semanticInstructionAST {
     end
   //--- Check effective parameters
     self.mActualParameterList.analyzeRoutineArguments
-      (!inUsefulnessCallerEntityName
-      !?ioUsefulEntitiesGraph
-      !inAnalysisContext
-      !?ioTypeMap
-      !self.mMethodName
-      !invokedEntityNameForErrorSignaling: "'" + self.mMethodName + "' instance proc header"
-      !routineSignature
-      !?ioVariableMap
-      !?ioInstructionListForGeneration
+      (!inUsefulnessCallerEntityName,
+      !?ioUsefulEntitiesGraph,
+      !inAnalysisContext,
+      !?ioTypeMap,
+      !self.mMethodName,
+      !invokedEntityNameForErrorSignaling: "'" + self.mMethodName + "' instance proc header",
+      !routineSignature,
+      !?ioVariableMap,
+      !?ioInstructionListForGeneration,
       ?let @actualParameterListForGeneration actualParameterListForGeneration
     )
   //--- Search base type that declares the proc
@@ -164,14 +136,14 @@ override proc @methodCallInstructionForGeneration generateInstruction (?!@string
                                      ?let @bool unused inGenerateSyntaxDirectedTranslationString,
                                      ?!@string ioGeneratedCode) {
 //--- Receiver expression
-  self.mReceiverExpression.generateExpression (!?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?let @string receiverCppName)
+  self.mReceiverExpression.generateExpression (!?ioGeneratedCode, !?ioInclusionSet, !?ioTemporaryVariableIndex, !?ioUnusedVariableCppNameSet, ?let @string receiverCppName)
   !?ioUnusedVariableCppNameSet.removeKey (!receiverCppName)
 //---
   var parameterCppNameList = @stringlist ()
   var jokerParametersToReleaseList = @stringlist ()
   var inputVariableList = @stringlist ()
   for (mActualParameter) in self.mActualParameterList do
-    mActualParameter.generateActualParameter (!?ioInclusionSet !?ioTemporaryVariableIndex !?ioGeneratedCode !?jokerParametersToReleaseList !?inputVariableList !?ioUnusedVariableCppNameSet ?let parameterCppName)
+    mActualParameter.generateActualParameter (!?ioInclusionSet, !?ioTemporaryVariableIndex, !?ioGeneratedCode, !?jokerParametersToReleaseList, !?inputVariableList, !?ioUnusedVariableCppNameSet, ?let parameterCppName)
     parameterCppNameList += !parameterCppName
   end
 //--- Generate proc call
@@ -210,7 +182,7 @@ override proc @methodCallInstructionForGeneration generateInstruction (?!@string
 //--- Generate poisoned variables
   for (actualParameter) in self.mActualParameterList do
     actualParameter.generatePoisonedVariables
-      (!?ioGeneratedCode
+      (!?ioGeneratedCode,
       !?ioUnusedVariableCppNameSet
     )
   end

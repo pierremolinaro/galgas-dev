@@ -114,12 +114,12 @@ override proc @lexicalSelectInstructionAST checkLexicalInstruction (
     mSelectExpression.checkLexicalExpression (!?ioLexiqueAnalysisContext)
     var tagMap = @lexicalTagMap.mapWithMapToOverride{!ioTagMap}
     for (mInstruction) in mSelectInstructionList do
-      mInstruction.checkLexicalInstruction (!?ioLexiqueAnalysisContext !?tagMap)
+      mInstruction.checkLexicalInstruction (!?ioLexiqueAnalysisContext, !?tagMap)
     end
   end
   var tagMap = @lexicalTagMap.mapWithMapToOverride{!ioTagMap}
   for (mInstruction) in self.mDefaultInstructionList do
-    mInstruction.checkLexicalInstruction (!?ioLexiqueAnalysisContext !?tagMap)
+    mInstruction.checkLexicalInstruction (!?ioLexiqueAnalysisContext, !?tagMap)
   end
 }
 

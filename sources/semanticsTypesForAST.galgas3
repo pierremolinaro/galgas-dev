@@ -42,8 +42,8 @@ struct @syntaxExtensions {
                     ?let @nonterminalDeclarationListAST inNonterminalDeclarationList,
                     ?let @syntaxRuleListAST inRuleList) {
     if [self.dictionary hasKey !inKey] then
-      self.dictionary.searchKey (!inKey ?var aList)
-      !?aList.append (!inSyntaxComponentName !inNonterminalDeclarationList !inRuleList)
+      self.dictionary.searchKey (!inKey, ?var aList)
+      !?aList.append (!inSyntaxComponentName, !inNonterminalDeclarationList, !inRuleList)
       self.dictionary += !inKey !aList
     else
       self.dictionary += !inKey !@[@(inSyntaxComponentName, inNonterminalDeclarationList, inRuleList)]
@@ -54,7 +54,7 @@ struct @syntaxExtensions {
 
   func listForKey (?let @string inKey) -> @galgas3SyntaxExtensionListAST {
     if [self.dictionary hasKey !inKey] then
-      self.dictionary.searchKey (!inKey ?result)
+      self.dictionary.searchKey (!inKey, ?result)
    else
       result = @()
     end

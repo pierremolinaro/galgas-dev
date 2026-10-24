@@ -36,19 +36,19 @@ final class @dataPredefinedTypeAST : @predefinedTypeAST {
                                        !@classFunctionMap outMap) {
     outMap = @()
     enterClassFunctionWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !name:"emptyData"
-      !resultTypeName:"data"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !name:"emptyData",
+      !resultTypeName:"data",
       !hasLexiqueArg:false
     )
     enterClassFunctionWithArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !name:"dataWithContentsOfFile"
-      !argTypeName:"string"
-      !argName:"inFilePath"
-      !resultTypeName:"data"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !name:"dataWithContentsOfFile",
+      !argTypeName:"string",
+      !argName:"inFilePath",
+      !resultTypeName:"data",
       !hasLexiqueArg:true
     )
   }
@@ -64,7 +64,7 @@ final class @dataPredefinedTypeAST : @predefinedTypeAST {
   override proc getEnumerationList (?!@unifiedTypeMap ioUnifiedTypeMap,
                                       !@enumerationDescriptorList outEnumerationList,
                                       !@string outEnumeratedType) {
-    !?ioUnifiedTypeMap.makeEntryFromString (!"uint" ?let uintTypeIndex)
+    !?ioUnifiedTypeMap.makeEntryFromString (!"uint", ?let uintTypeIndex)
     outEnumerationList = @()
     outEnumerationList += !uintTypeIndex !"data"
     outEnumeratedType = "uint"
@@ -76,33 +76,33 @@ final class @dataPredefinedTypeAST : @predefinedTypeAST {
                                         !@instanceMethodMap outInstanceMethodMap) {
     outInstanceMethodMap = @()
     enterInstanceMethodWithInputArgument (
-      !?outInstanceMethodMap
-      !?ioUnifiedTypeMap
-      !inputArgTypeName: "string"
-      !inputArgName: "inFilePath"
-      !methodName: "writeToFile"
+      !?outInstanceMethodMap,
+      !?ioUnifiedTypeMap,
+      !inputArgTypeName: "string",
+      !inputArgName: "inFilePath",
+      !methodName: "writeToFile",
       !true
     )
     enterInstanceMethodWithInputArgument (
-      !?outInstanceMethodMap
-      !?ioUnifiedTypeMap
-      !inputArgTypeName: "string"
-      !inputArgName: "inFilePath"
-      !methodName: "writeToExecutableFile"
+      !?outInstanceMethodMap,
+      !?ioUnifiedTypeMap,
+      !inputArgTypeName: "string",
+      !inputArgName: "inFilePath",
+      !methodName: "writeToExecutableFile",
       !true
     )
     var @formalParameterSignature argList = @()
-    !?ioUnifiedTypeMap.makeEntryFromString (!"string" ?@unifiedTypeMapEntry t)
+    !?ioUnifiedTypeMap.makeEntryFromString (!"string", ?@unifiedTypeMapEntry t)
     argList += !"".nowhere !t !@formalArgumentPassingModeAST. argumentConstantIn !"inFilePath"
-    !?ioUnifiedTypeMap.makeEntryFromString (!"bool" ?t)
+    !?ioUnifiedTypeMap.makeEntryFromString (!"bool", ?t)
     argList += !"".nowhere !t !@formalArgumentPassingModeAST. argumentOut !"outFileModified"
     !?outInstanceMethodMap.insertKey
-      (!@lstring {!"writeToFileWhenDifferentContents" !@location.here}
-      !@methodKind. definedAsMember
-      !argList
-      !@location.here
-      !true
-      !@methodQualifier. isBasic
+      (!@lstring {!"writeToFileWhenDifferentContents" !@location.here},
+      !@methodKind. definedAsMember,
+      !argList,
+      !@location.here,
+      !true,
+      !@methodQualifier. isBasic,
       !"" // No error message
     )
   }
@@ -111,21 +111,21 @@ final class @dataPredefinedTypeAST : @predefinedTypeAST {
 
   override proc getGetterMap (?!@unifiedTypeMap ioUnifiedTypeMap,
                                 !@getterMap outMap) {
-    commonGetterMapForAllTypes (!?ioUnifiedTypeMap ?outMap)
+    commonGetterMapForAllTypes (!?ioUnifiedTypeMap, ?outMap)
     enterBaseFinalGetterWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName:"count"
-      !obsoleteName: ""
-      !returnedTypeName:"uint"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName:"count",
+      !obsoleteName: "",
+      !returnedTypeName:"uint",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName:"cStringRepresentation"
-      !obsoleteName: ""
-      !returnedTypeName:"string"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName:"cStringRepresentation",
+      !obsoleteName: "",
+      !returnedTypeName:"string",
       !hasCompilerArgument:false
     )
   }
@@ -136,59 +136,59 @@ final class @dataPredefinedTypeAST : @predefinedTypeAST {
                                 !@setterMap outSetterMap) {
     outSetterMap = @()
     enterModifierWithInputArgument (
-      !?outSetterMap
-      !?ioUnifiedTypeMap
-      !argTypeName: "uint"
-      !argName: "inValue"
-      !setterName: "appendByte"
+      !?outSetterMap,
+      !?ioUnifiedTypeMap,
+      !argTypeName: "uint",
+      !argName: "inValue",
+      !setterName: "appendByte",
       !compilerArg:true
     )
     enterModifierWithInputArgument (
-      !?outSetterMap
-      !?ioUnifiedTypeMap
-      !argTypeName: "uint"
-      !argName: "inValue"
-      !setterName: "appendShortBE"
+      !?outSetterMap,
+      !?ioUnifiedTypeMap,
+      !argTypeName: "uint",
+      !argName: "inValue",
+      !setterName: "appendShortBE",
       !compilerArg:true
     )
     enterModifierWithInputArgument (
-      !?outSetterMap
-      !?ioUnifiedTypeMap
-      !argTypeName: "uint"
-      !argName: "inValue"
-      !setterName: "appendShortLE"
+      !?outSetterMap,
+      !?ioUnifiedTypeMap,
+      !argTypeName: "uint",
+      !argName: "inValue",
+      !setterName: "appendShortLE",
       !compilerArg:true
     )
     enterModifierWithInputArgument (
-      !?outSetterMap
-      !?ioUnifiedTypeMap
-      !argTypeName: "uint"
-      !argName: "inValue"
-      !setterName: "appendUIntBE"
+      !?outSetterMap,
+      !?ioUnifiedTypeMap,
+      !argTypeName: "uint",
+      !argName: "inValue",
+      !setterName: "appendUIntBE",
       !compilerArg:false
     )
     enterModifierWithInputArgument (
-      !?outSetterMap
-      !?ioUnifiedTypeMap
-      !argTypeName: "uint"
-      !argName: "inValue"
-      !setterName: "appendUIntLE"
+      !?outSetterMap,
+      !?ioUnifiedTypeMap,
+      !argTypeName: "uint",
+      !argName: "inValue",
+      !setterName: "appendUIntLE",
       !compilerArg: false
     )
     enterModifierWithInputArgument (
-      !?outSetterMap
-      !?ioUnifiedTypeMap
-      !argTypeName: "string"
-      !argName: "inValue"
-      !setterName: "appendUTF8String"
+      !?outSetterMap,
+      !?ioUnifiedTypeMap,
+      !argTypeName: "string",
+      !argName: "inValue",
+      !setterName: "appendUTF8String",
       !compilerArg: false
     )
     enterModifierWithInputArgument (
-      !?outSetterMap
-      !?ioUnifiedTypeMap
-      !argTypeName: "data"
-      !argName: "inValue"
-      !setterName: "appendData"
+      !?outSetterMap,
+      !?ioUnifiedTypeMap,
+      !argTypeName: "data",
+      !argName: "inValue",
+      !setterName: "appendData",
       !compilerArg: false
     )
   }

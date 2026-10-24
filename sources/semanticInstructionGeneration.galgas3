@@ -32,7 +32,7 @@ override proc @outputActualParameterForGeneration generateActualParameter
   !@string outCppName
 ) {
   self.mFormalArgumentType.addHeaderFileName (!?ioInclusionSet)
-  self.mOutputActualParameterExpression.generateExpression (!?ioImplementation !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?outCppName)
+  self.mOutputActualParameterExpression.generateExpression (!?ioImplementation, !?ioInclusionSet, !?ioTemporaryVariableIndex, !?ioUnusedVariableCppNameSet, ?outCppName)
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -96,11 +96,11 @@ override proc @semanticBlockInstructionForGeneration generateInstruction (?!@str
                                      ?!@string ioGeneratedCode) {
   ioGeneratedCode += "{\n"
   generateInstructionList (
-    !?ioInclusionSet
-    !self.mInstructionList
-    !?ioTemporaryVariableIndex
-    !?ioUnusedVariableCppNameSet
-    !inGenerateSyntaxDirectedTranslationString
+    !?ioInclusionSet,
+    !self.mInstructionList,
+    !?ioTemporaryVariableIndex,
+    !?ioUnusedVariableCppNameSet,
+    !inGenerateSyntaxDirectedTranslationString,
     !?ioGeneratedCode
   )
   ioGeneratedCode += "}\n"

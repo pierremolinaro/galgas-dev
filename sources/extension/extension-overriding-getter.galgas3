@@ -50,12 +50,12 @@ syntax extension galgas3DeclarationsSyntax {
     $identifier$ ?let @lstring getterName indexing overrideExtensionGetterDefinition
     let @formalInputParameterListAST formalInputParameterList
     select
-      <formal_input_parameter_list_ggs3> (!?ioDeclarations ?formalInputParameterList)
+      <formal_input_parameter_list_ggs3> (!?ioDeclarations, ?formalInputParameterList)
     or
-      <formal_input_parameter_list_ggs34> (!?ioDeclarations ?formalInputParameterList)
+      <formal_input_parameter_list_ggs34> (!?ioDeclarations, ?formalInputParameterList)
     end
     $->$
-    <type_definition_ggs3> (!?ioDeclarations ?let mReturnedTypeName)
+    <type_definition_ggs3> (!?ioDeclarations, ?let mReturnedTypeName)
     let @lstring resultVariableName
     select
       $identifier$ ?resultVariableName
@@ -63,7 +63,7 @@ syntax extension galgas3DeclarationsSyntax {
       resultVariableName = @{!"result" !.here}
     end
     ${$
-    <semantic_instruction_list_ggs3> (!?ioDeclarations ?let routineInstructionList)
+    <semantic_instruction_list_ggs3> (!?ioDeclarations, ?let routineInstructionList)
     let @location endOfInstructionList = @location.here
     $}$
     ioDeclarations.mDeclarationList += !@overridingExtensionGetterAST {
@@ -93,12 +93,12 @@ syntax extension galgas3DeclarationsSyntax {
     $identifier$ ?let @lstring getterName indexing overrideExtensionGetterDefinition
     let @formalInputParameterListAST formalInputParameterList
     select
-      <formal_input_parameter_list_ggs3> (!?ioDeclarations ?formalInputParameterList)
+      <formal_input_parameter_list_ggs3> (!?ioDeclarations, ?formalInputParameterList)
     or
-      <formal_input_parameter_list_ggs34> (!?ioDeclarations ?formalInputParameterList)
+      <formal_input_parameter_list_ggs34> (!?ioDeclarations, ?formalInputParameterList)
     end
     $->$
-    <type_definition_ggs3> (!?ioDeclarations ?let mReturnedTypeName)
+    <type_definition_ggs3> (!?ioDeclarations, ?let mReturnedTypeName)
     let @lstring resultVariableName
     select
       $identifier$ ?resultVariableName
@@ -106,7 +106,7 @@ syntax extension galgas3DeclarationsSyntax {
       resultVariableName = @{!"result" !.here}
     end
     ${$
-    <semantic_instruction_list_ggs3> (!?ioDeclarations ?let @semanticInstructionListAST routineInstructionList)
+    <semantic_instruction_list_ggs3> (!?ioDeclarations, ?let @semanticInstructionListAST routineInstructionList)
     let @location endOfInstructionList = @location.here
     $}$
     ioDeclarations.mDeclarationList += !@overridingExtensionGetterAST {
@@ -134,18 +134,18 @@ syntax extension galgas4DeclarationsSyntax {
   rule <declaration> (?!@galgasDeclarationAST ioDeclarations) {
     $override$
     $func$
-    <simple_type_definition> (!?ioDeclarations ?var typeName)
+    <simple_type_definition> (!?ioDeclarations, ?var typeName)
     $.$
     repeat
     while
-      <simple_type_definition> (!?ioDeclarations ?let t)
+      <simple_type_definition> (!?ioDeclarations, ?let t)
       typeName = makeEmbeddedTypeLName (!outer: typeName !inner: t)
       $.$
     end
     $identifier$ ?let @lstring getterName indexing overrideExtensionGetterDefinition
-    <formal_input_parameter_list> (!?ioDeclarations ?let formalInputParameterList)
+    <formal_input_parameter_list> (!?ioDeclarations, ?let formalInputParameterList)
     $->$
-    <type_definition> (!?ioDeclarations ?let returnedTypeName)
+    <type_definition> (!?ioDeclarations, ?let returnedTypeName)
     let @lstring resultVariableName
     select
       $identifier$ ?resultVariableName
@@ -153,7 +153,7 @@ syntax extension galgas4DeclarationsSyntax {
       resultVariableName = @{!"result" !.here}
     end
     ${$
-    <semantic_instruction_list> (!?ioDeclarations ?let @semanticInstructionListAST routineInstructionList)
+    <semantic_instruction_list> (!?ioDeclarations, ?let @semanticInstructionListAST routineInstructionList)
     let @location endOfInstructionList = .here
     $}$
     ioDeclarations.mDeclarationList += !@overridingExtensionGetterAST {
@@ -175,9 +175,9 @@ syntax extension galgas4DeclarationsSyntax {
     $override$
     $func$
     $identifier$ ?let @lstring getterName indexing overrideExtensionGetterDefinition
-    <formal_input_parameter_list> (!?ioDeclarations ?let formalInputParameterList)
+    <formal_input_parameter_list> (!?ioDeclarations, ?let formalInputParameterList)
     $->$
-    <type_definition> (!?ioDeclarations ?let returnedTypeName)
+    <type_definition> (!?ioDeclarations, ?let returnedTypeName)
     let @lstring resultVariableName
     select
       $identifier$ ?resultVariableName
@@ -185,7 +185,7 @@ syntax extension galgas4DeclarationsSyntax {
       resultVariableName = @{!"result" !.here}
     end
     ${$
-    <semantic_instruction_list> (!?ioDeclarations ?let @semanticInstructionListAST routineInstructionList)
+    <semantic_instruction_list> (!?ioDeclarations, ?let @semanticInstructionListAST routineInstructionList)
     let @location endOfInstructionList = .here
     $}$
     ioDeclarations.mDeclarationList += !@overridingExtensionGetterAST {
@@ -220,15 +220,15 @@ override proc @overridingExtensionGetterAST enterDeclarationInGraph (
 //---
   if not [ioExtensionGetterMapForBuildingContext hasKey !self.mTypeName.string] then
     !?ioExtensionGetterMapForBuildingContext.insertKey
-      (!self.mTypeName
+      (!self.mTypeName,
       !@()
     )
   end
   var entry = ioExtensionGetterMapForBuildingContext @[!searchKey: self.mTypeName]
   !?entry.mExtensionGetterMapForType.insertKey
-    (!self.mOverridingExtensionGetterName
-    !self.mOverridingExtensionGetterReturnedTypeName
-    !self.mOverridingExtensionGetterFormalInputParameterList
+    (!self.mOverridingExtensionGetterName,
+    !self.mOverridingExtensionGetterReturnedTypeName,
+    !self.mOverridingExtensionGetterFormalInputParameterList,
     !.isVirtualOverriding
   )
   !?ioExtensionGetterMapForBuildingContext.replaceKey (!with: entry)
@@ -278,9 +278,9 @@ override proc @overridingExtensionGetterAST semanticAnalysis (
   ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration) {
 //--- Useful entities graph
   let nameForUsefulness = getterNameForUsefulEntitiesGraph (!self.mTypeName !self.mOverridingExtensionGetterName)
-  !?ioUsefulEntitiesGraph.addNode (!nameForUsefulness !nameForUsefulness)
+  !?ioUsefulEntitiesGraph.addNode (!nameForUsefulness, !nameForUsefulness)
   let typeNameForUsefulness = typeNameForUsefulEntitiesGraph (!self.mTypeName)
-  !?ioUsefulEntitiesGraph.addEdge (!from: typeNameForUsefulness !to: nameForUsefulness)
+  !?ioUsefulEntitiesGraph.addEdge (!from: typeNameForUsefulness, !to: nameForUsefulness)
 //--- Self type
   let @unifiedTypeMapEntry selfType = [ioTypeMap typeMapEntryForLKey !self.mTypeName]
 //--- Check self type is a class
@@ -297,13 +297,13 @@ override proc @overridingExtensionGetterAST semanticAnalysis (
   while (not superType.isNull) & (baseTypeName == "") do
     if [superType.definition.getterMap hasKey !self.mOverridingExtensionGetterName.string] then
        superType.definition.getterMap.searchKey
-        (!self.mOverridingExtensionGetterName
-        ?*
-        ?inheritedSignature
-        ?inheritedDeclarationLocation
-        ?*
-        ?inheritedReturnType
-        ?let @methodQualifier qualifier
+        (!self.mOverridingExtensionGetterName,
+        ?*,
+        ?inheritedSignature,
+        ?inheritedDeclarationLocation,
+        ?*,
+        ?inheritedReturnType,
+        ?let @methodQualifier qualifier,
         ?*
       )
       if qualifier <= @methodQualifier.isBasicFinal then
@@ -324,28 +324,28 @@ override proc @overridingExtensionGetterAST semanticAnalysis (
     !selfObjectCppPrefixForAccessingProperty: "object."
   }
   analyzeFunctionBody (
-    !nameForUsefulness
-    !?ioUsefulEntitiesGraph
-    !analysisContext
-    !?ioTypeMap
-    ! self.mOverridingExtensionGetterFormalInputParameterList
-    !self.mOverridingExtensionGetterInstructionList
-    !self.mOverridingExtensionGetterReturnedVariableName
-    !self.mOverridingExtensionGetterReturnedTypeName
-    !self.mEndOfReaderLocation
-    ?let @formalInputParameterListForGeneration formalParameterListForGeneration
-    ?let @unifiedTypeMapEntry returnType
-    ?let @string returnVariableCppName
+    !nameForUsefulness,
+    !?ioUsefulEntitiesGraph,
+    !analysisContext,
+    !?ioTypeMap,
+    ! self.mOverridingExtensionGetterFormalInputParameterList,
+    !self.mOverridingExtensionGetterInstructionList,
+    !self.mOverridingExtensionGetterReturnedVariableName,
+    !self.mOverridingExtensionGetterReturnedTypeName,
+    !self.mEndOfReaderLocation,
+    ?let @formalInputParameterListForGeneration formalParameterListForGeneration,
+    ?let @unifiedTypeMapEntry returnType,
+    ?let @string returnVariableCppName,
     ?let @semanticInstructionListForGeneration semanticInstructionListForGeneration
   )
 //--- Check Signature
   if baseTypeName != "" then
     checkGetterSignatures (
-      !formalParameterListForGeneration
-      !returnType
-      !self.mOverridingExtensionGetterName.location
-      !inheritedSignature
-      !inheritedReturnType
+      !formalParameterListForGeneration,
+      !returnType,
+      !self.mOverridingExtensionGetterName.location,
+      !inheritedSignature,
+      !inheritedReturnType,
       !inheritedDeclarationLocation
     )
   end
@@ -384,7 +384,7 @@ override proc @overridingExtensionGetterAST buildExtensionListMaps (
   ?!@genericExtensionMethodListMap ioOverridingExtensionGetterListMap,
   ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionGetterListMap) {
   !?ioOverridingExtensionGetterListMap.insertKey
-    (!self.mTypeName.string
+    (!self.mTypeName.string,
     !self.mOverridingExtensionGetterName
   )
 }
@@ -418,13 +418,13 @@ override proc @overrideExtensionGetterForGeneration appendSpecificImplementation
                                                               !@string outImplementation) {
   ioInclusionSet ++= "class-" + self.mReceiverType.definition.typeName.string.fileNameRepresentation
   generateExtensionGetter (
-    !"cPtr_" + self.mReceiverType.definition.typeName.string.identifierRepresentation + "::getter_" + self.mOverridingExtensionGetterName.identifierRepresentation
-    !?ioInclusionSet
-    !self.mOverridingExtensionGetterFormalParameterList
-    !self.mSemanticInstructionListForGeneration
-    !"Compiler"
-    !self.mResultType
-    !self.mResultVarCppName
+    !"cPtr_" + self.mReceiverType.definition.typeName.string.identifierRepresentation + "::getter_" + self.mOverridingExtensionGetterName.identifierRepresentation,
+    !?ioInclusionSet,
+    !self.mOverridingExtensionGetterFormalParameterList,
+    !self.mSemanticInstructionListForGeneration,
+    !"Compiler",
+    !self.mResultType,
+    !self.mResultVarCppName,
     ?let @string extensionGetterCode
   )
   outImplementation = [filewrapper semanticComponentGenerationTemplate.overridingExtensionGetterImplementation

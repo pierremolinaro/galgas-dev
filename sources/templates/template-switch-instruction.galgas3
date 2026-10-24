@@ -53,7 +53,7 @@ syntax extension templateSyntax {
     while
       $case$
       <switch_case>(
-        ?let [@lstring] constantNameList
+        ?let [@lstring] constantNameList,
         ?let @switchExtractedValuesListAST associatedValuesExtraction)
       $:$
       var @templateInstructionListAST instructionList = @()
@@ -137,10 +137,10 @@ override proc @templateInstructionSwitchAST templateInstructionAnalysis
                                 ?!@templateInstructionListForGeneration ioInstructionList ) {
 //---
   self.mSwitchExpression.templateExpressionAnalysis
-    (!inUsefulnessCallerEntityName
-    !?ioUsefulEntitiesGraph
-    !inAnalysisContext
-    !?ioTypeMap
+    (!inUsefulnessCallerEntityName,
+    !?ioUsefulEntitiesGraph,
+    !inAnalysisContext,
+    !?ioTypeMap,
     ?let switchExpression
   )
   if let enumType = switchExpression.mResultType.definition.typeKind.getEnumType then
@@ -157,7 +157,7 @@ override proc @templateInstructionSwitchAST templateInstructionAnalysis
             :"the '" + constantName + "' constant is already named in this switch instruction")
           end
           constantsNamedInSwitchInstruction ++= constantName.string
-          enumType.constantMap.searchKey (!constantName ?* ?let @associatedValueDescriptorList associatedTypeList)
+          enumType.constantMap.searchKey (!constantName, ?*, ?let @associatedValueDescriptorList associatedTypeList)
           if (associatedTypeList.count > 0) & (mAssociatedValuesExtraction.count == 0) then
             error (constantName
               :"the associated values of '" + constantName + "' constant should be extracted")
@@ -183,8 +183,8 @@ override proc @templateInstructionSwitchAST templateInstructionAnalysis
                 !descriptor.name
               if mExtractedValueName.string != "" then
                 !?analysisContext.mTemplateVariableMap.insertKey
-                  (!mExtractedValueName
-                  !descriptor.type
+                  (!mExtractedValueName,
+                  !descriptor.type,
                   !cppName
                 )
               end
@@ -198,11 +198,11 @@ override proc @templateInstructionSwitchAST templateInstructionAnalysis
       end
       var @templateInstructionListForGeneration instructionList = @()
       templateInstructionListAnalysis (
-        !inUsefulnessCallerEntityName
-        !?ioUsefulEntitiesGraph
-        !analysisContext
-        !?ioTypeMap
-        !mInstructionList
+        !inUsefulnessCallerEntityName,
+        !?ioUsefulEntitiesGraph,
+        !analysisContext,
+        !?ioTypeMap,
+        !mInstructionList,
         !?instructionList
       )
       templateInstructionSwitchBranchList +=
@@ -263,10 +263,10 @@ override proc @templateInstructionSwitchForGeneration templateCodeGeneration
 ) {
 //--- Expression
   self.switchExpression.generateExpression
-    (!?ioGeneratedCode
-    !?ioInclusionSet
-    !?ioTemporaryVariableIndex
-    !?ioUnusedVariableCppNameSet
+    (!?ioGeneratedCode,
+    !?ioInclusionSet,
+    !?ioTemporaryVariableIndex,
+    !?ioUnusedVariableCppNameSet,
     ?let switchVarCppName
   )
 //---
@@ -302,11 +302,11 @@ override proc @templateInstructionSwitchForGeneration templateCodeGeneration
     if branch.mInstructionList.count > 0 then
       !?ioGeneratedCode.incIndentation (!2)
       templateCodeGenerationForListInstruction (
-        !branch.mInstructionList
-        !?ioGeneratedCode
-        !?ioInclusionSet
-        !?ioTemporaryVariableIndex
-        !?ioUnusedVariableCppNameSet
+        !branch.mInstructionList,
+        !?ioGeneratedCode,
+        !?ioInclusionSet,
+        !?ioTemporaryVariableIndex,
+        !?ioUnusedVariableCppNameSet,
         !?ioUseColumnMarker
       )
       !?ioGeneratedCode.decIndentation (!2)

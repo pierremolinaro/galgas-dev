@@ -67,37 +67,37 @@ syntax extension galgas3ExpressionSyntax {
 
   rule <expression_or_ggs3> (?!@galgasDeclarationAST ioDeclarations,
                             !@semanticExpressionAST outExpression ) {
-    <expression_and_ggs3> (!?ioDeclarations ? outExpression)
+    <expression_and_ggs3> (!?ioDeclarations, ? outExpression)
     repeat
     while
       let operatorLocation = @location.here
       $|$
       let leftOperand = outExpression
-      <expression_and_ggs3> (!?ioDeclarations ?let rightOperand)
+      <expression_and_ggs3> (!?ioDeclarations, ?let rightOperand)
       outExpression = @orExpressionAST {!operatorLocation !leftOperand !rightOperand}
     while
       let operatorLocation = @location.here
       $||$
       let leftOperand = outExpression
-      <expression_and_ggs3> (!?ioDeclarations ?let rightOperand)
+      <expression_and_ggs3> (!?ioDeclarations, ?let rightOperand)
       outExpression = @orShortExpressionAST {!operatorLocation !leftOperand !rightOperand}
     while
       let operatorLocation = @location.here
       $^$
       let leftOperand = outExpression
-      <expression_and_ggs3> (!?ioDeclarations ?let rightOperand)
+      <expression_and_ggs3> (!?ioDeclarations, ?let rightOperand)
       outExpression = @xorExpressionAST {!operatorLocation !leftOperand !rightOperand}
     while
       let operatorLocation = @location.here
       $...$
       let leftOperand = outExpression
-      <expression_and_ggs3> (!?ioDeclarations ?let rightOperand)
+      <expression_and_ggs3> (!?ioDeclarations, ?let rightOperand)
       outExpression = @closedSliceExpressionAST {!operatorLocation !leftOperand !rightOperand}
     while
       let operatorLocation = @location.here
       $..<$
       let leftOperand = outExpression
-      <expression_and_ggs3> (!?ioDeclarations ?let rightOperand)
+      <expression_and_ggs3> (!?ioDeclarations, ?let rightOperand)
       outExpression = @openedSliceExpressionAST {!operatorLocation !leftOperand !rightOperand}
     end
   }
@@ -114,37 +114,37 @@ syntax extension galgas4ExpressionSyntax {
 
   rule <expression_or> (?!@galgasDeclarationAST ioDeclarations,
                        !@semanticExpressionAST outExpression ) {
-    <expression_and> (!?ioDeclarations ? outExpression)
+    <expression_and> (!?ioDeclarations, ? outExpression)
     repeat
     while
       let operatorLocation = @location.here
       $|$
       let leftOperand = outExpression
-      <expression_and> (!?ioDeclarations ?let rightOperand)
+      <expression_and> (!?ioDeclarations, ?let rightOperand)
       outExpression = @orExpressionAST {!operatorLocation !leftOperand !rightOperand}
     while
       let operatorLocation = @location.here
       $||$
       let leftOperand = outExpression
-      <expression_and> (!?ioDeclarations ?let rightOperand)
+      <expression_and> (!?ioDeclarations, ?let rightOperand)
       outExpression = @orShortExpressionAST {!operatorLocation !leftOperand !rightOperand}
     while
       let operatorLocation = @location.here
       $^$
       let leftOperand = outExpression
-      <expression_and> (!?ioDeclarations ?let rightOperand)
+      <expression_and> (!?ioDeclarations, ?let rightOperand)
       outExpression = @xorExpressionAST {!operatorLocation !leftOperand !rightOperand}
     while
       let operatorLocation = @location.here
       $...$
       let leftOperand = outExpression
-      <expression_and> (!?ioDeclarations ?let rightOperand)
+      <expression_and> (!?ioDeclarations, ?let rightOperand)
       outExpression = @closedSliceExpressionAST {!operatorLocation !leftOperand !rightOperand}
     while
       let operatorLocation = @location.here
       $..<$
       let leftOperand = outExpression
-      <expression_and> (!?ioDeclarations ?let rightOperand)
+      <expression_and> (!?ioDeclarations, ?let rightOperand)
       outExpression = @openedSliceExpressionAST {!operatorLocation !leftOperand !rightOperand}
     end
   }
@@ -176,30 +176,30 @@ override proc @orExpressionAST analyzeSemanticExpression
   !@semanticExpressionForGeneration outExpression ) {
 //--- Left expression analysis
   self.mLeftExpression.analyzeSemanticExpression
-    (!usefulnessCallerEntityName: inUsefulnessCallerEntityName
-    !?ioUsefulEntitiesGraph
-    !inferenceType:  inInferenceType
-    !inAnalysisContext
-    !?ioTypeMap
-    !?ioVariableMap
+    (!usefulnessCallerEntityName: inUsefulnessCallerEntityName,
+    !?ioUsefulEntitiesGraph,
+    !inferenceType:  inInferenceType,
+    !inAnalysisContext,
+    !?ioTypeMap,
+    !?ioVariableMap,
     ?var @semanticExpressionForGeneration leftExpression
   )
 //--- Right expression analysis
   self.mRightExpression.analyzeSemanticExpression
-    (!usefulnessCallerEntityName: inUsefulnessCallerEntityName
-    !?ioUsefulEntitiesGraph
-    !inferenceType:  leftExpression.mResultType
-    !inAnalysisContext
-    !?ioTypeMap
-    !?ioVariableMap
+    (!usefulnessCallerEntityName: inUsefulnessCallerEntityName,
+    !?ioUsefulEntitiesGraph,
+    !inferenceType:  leftExpression.mResultType,
+    !inAnalysisContext,
+    !?ioTypeMap,
+    !?ioVariableMap,
     ?@semanticExpressionForGeneration rightExpression
   )
 //--- Check operator availability
   checkDiadicOperator (
-    !operatorIsHandled: [leftExpression.mResultType.definition.features contains !.infixOrOperator]
-    !"|"
-    !self.mOperatorLocation
-    !?leftExpression
+    !operatorIsHandled: [leftExpression.mResultType.definition.features contains !.infixOrOperator],
+    !"|",
+    !self.mOperatorLocation,
+    !?leftExpression,
     !?rightExpression
   )
   outExpression = @binaryOperatorExpressionForGeneration {
@@ -232,30 +232,30 @@ override proc @orShortExpressionAST analyzeSemanticExpression
   !@semanticExpressionForGeneration outExpression ) {
 //--- Left expression analysis
   self.mLeftExpression.analyzeSemanticExpression
-    (!usefulnessCallerEntityName: inUsefulnessCallerEntityName
-    !?ioUsefulEntitiesGraph
-    !inferenceType:  inInferenceType
-    !inAnalysisContext
-    !?ioTypeMap
-    !?ioVariableMap
+    (!usefulnessCallerEntityName: inUsefulnessCallerEntityName,
+    !?ioUsefulEntitiesGraph,
+    !inferenceType:  inInferenceType,
+    !inAnalysisContext,
+    !?ioTypeMap,
+    !?ioVariableMap,
     ?var @semanticExpressionForGeneration leftExpression
   )
 //--- Right expression analysis
   self.mRightExpression.analyzeSemanticExpression
-    (!usefulnessCallerEntityName: inUsefulnessCallerEntityName
-    !?ioUsefulEntitiesGraph
-    !inferenceType:  leftExpression.mResultType
-    !inAnalysisContext
-    !?ioTypeMap
-    !?ioVariableMap
+    (!usefulnessCallerEntityName: inUsefulnessCallerEntityName,
+    !?ioUsefulEntitiesGraph,
+    !inferenceType:  leftExpression.mResultType,
+    !inAnalysisContext,
+    !?ioTypeMap,
+    !?ioVariableMap,
     ?@semanticExpressionForGeneration rightExpression
   )
 //--- Check operator availability
   checkDiadicOperator (
-    !operatorIsHandled: [leftExpression.mResultType.definition.features contains !.infixOrOperator]
-    !"|"
-    !self.mOperatorLocation
-    !?leftExpression
+    !operatorIsHandled: [leftExpression.mResultType.definition.features contains !.infixOrOperator],
+    !"|",
+    !self.mOperatorLocation,
+    !?leftExpression,
     !?rightExpression
   )
 //--- Generate expression
@@ -287,30 +287,30 @@ override proc @xorExpressionAST analyzeSemanticExpression
   !@semanticExpressionForGeneration outExpression ) {
 //--- Left expression analysis
   self.mLeftExpression.analyzeSemanticExpression
-    (!usefulnessCallerEntityName: inUsefulnessCallerEntityName
-    !?ioUsefulEntitiesGraph
-    !inferenceType:  inInferenceType
-    !inAnalysisContext
-    !?ioTypeMap
-    !?ioVariableMap
+    (!usefulnessCallerEntityName: inUsefulnessCallerEntityName,
+    !?ioUsefulEntitiesGraph,
+    !inferenceType:  inInferenceType,
+    !inAnalysisContext,
+    !?ioTypeMap,
+    !?ioVariableMap,
     ?var @semanticExpressionForGeneration leftExpression
   )
 //--- Right expression analysis
   self.mRightExpression.analyzeSemanticExpression
-    (!usefulnessCallerEntityName: inUsefulnessCallerEntityName
-    !?ioUsefulEntitiesGraph
-    !inferenceType:  leftExpression.mResultType
-    !inAnalysisContext
-    !?ioTypeMap
-    !?ioVariableMap
+    (!usefulnessCallerEntityName: inUsefulnessCallerEntityName,
+    !?ioUsefulEntitiesGraph,
+    !inferenceType:  leftExpression.mResultType,
+    !inAnalysisContext,
+    !?ioTypeMap,
+    !?ioVariableMap,
     ?@semanticExpressionForGeneration rightExpression
   )
 //--- Check operator availability
   checkDiadicOperator (
-    !operatorIsHandled: [leftExpression.mResultType.definition.features contains !.infixXorOperator]
-    !"^"
-    !self.mOperatorLocation
-    !?leftExpression
+    !operatorIsHandled: [leftExpression.mResultType.definition.features contains !.infixXorOperator],
+    !"^",
+    !self.mOperatorLocation,
+    !?leftExpression,
     !?rightExpression
   )
 //--- Generate expression
@@ -345,22 +345,22 @@ override proc @closedSliceExpressionAST analyzeSemanticExpression
 ) {
 //--- Left expression analysis
   self.mLeftExpression.analyzeSemanticExpression
-    (!usefulnessCallerEntityName: inUsefulnessCallerEntityName
-    !?ioUsefulEntitiesGraph
-    !inferenceType:  inAnalysisContext.predefinedTypes.mUIntType
-    !inAnalysisContext
-    !?ioTypeMap
-    !?ioVariableMap
+    (!usefulnessCallerEntityName: inUsefulnessCallerEntityName,
+    !?ioUsefulEntitiesGraph,
+    !inferenceType:  inAnalysisContext.predefinedTypes.mUIntType,
+    !inAnalysisContext,
+    !?ioTypeMap,
+    !?ioVariableMap,
     ?let @semanticExpressionForGeneration leftExpression
   )
 //--- Right expression analysis
   self.mRightExpression.analyzeSemanticExpression
-    (!usefulnessCallerEntityName: inUsefulnessCallerEntityName
-    !?ioUsefulEntitiesGraph
-    !inferenceType:  inAnalysisContext.predefinedTypes.mUIntType
-    !inAnalysisContext
-    !?ioTypeMap
-    !?ioVariableMap
+    (!usefulnessCallerEntityName: inUsefulnessCallerEntityName,
+    !?ioUsefulEntitiesGraph,
+    !inferenceType:  inAnalysisContext.predefinedTypes.mUIntType,
+    !inAnalysisContext,
+    !?ioTypeMap,
+    !?ioVariableMap,
     ?let @semanticExpressionForGeneration rightExpression
   )
 //--- Check operator availability
@@ -402,35 +402,35 @@ override proc @openedSliceExpressionAST analyzeSemanticExpression
                                               !@semanticExpressionForGeneration outExpression ) {
 //--- Left expression analysis
   self.mLeftExpression.analyzeSemanticExpression
-    (!usefulnessCallerEntityName: inUsefulnessCallerEntityName
-    !?ioUsefulEntitiesGraph
-    !inferenceType:  inAnalysisContext.predefinedTypes.mUIntType
-    !inAnalysisContext
-    !?ioTypeMap
-    !?ioVariableMap
+    (!usefulnessCallerEntityName: inUsefulnessCallerEntityName,
+    !?ioUsefulEntitiesGraph,
+    !inferenceType:  inAnalysisContext.predefinedTypes.mUIntType,
+    !inAnalysisContext,
+    !?ioTypeMap,
+    !?ioVariableMap,
     ?var @semanticExpressionForGeneration leftExpression
   )
 //--- Right expression analysis
   self.mRightExpression.analyzeSemanticExpression
-    (!usefulnessCallerEntityName: inUsefulnessCallerEntityName
-    !?ioUsefulEntitiesGraph
-    !inferenceType:  inAnalysisContext.predefinedTypes.mUIntType
-    !inAnalysisContext
-    !?ioTypeMap
-    !?ioVariableMap
+    (!usefulnessCallerEntityName: inUsefulnessCallerEntityName,
+    !?ioUsefulEntitiesGraph,
+    !inferenceType:  inAnalysisContext.predefinedTypes.mUIntType,
+    !inAnalysisContext,
+    !?ioTypeMap,
+    !?ioVariableMap,
     ?var @semanticExpressionForGeneration rightExpression
   )
 //--- Check operator availability
   checkAssignmentTypeWithImplicitGetterCall (
-    !inAnalysisContext.predefinedTypes.mUIntType
-    !leftExpression.mResultType
-    !leftExpression.mLocation
+    !inAnalysisContext.predefinedTypes.mUIntType,
+    !leftExpression.mResultType,
+    !leftExpression.mLocation,
     !?leftExpression
   )
   checkAssignmentTypeWithImplicitGetterCall (
-    !inAnalysisContext.predefinedTypes.mUIntType
-    !rightExpression.mResultType
-    !rightExpression.mLocation
+    !inAnalysisContext.predefinedTypes.mUIntType,
+    !rightExpression.mResultType,
+    !rightExpression.mLocation,
     !?rightExpression
   )
 //--- Generate expression
@@ -476,10 +476,10 @@ override proc @orShortExpressionForGeneration generateExpression
   self.mLeftExpression.mResultType.addHeaderFileName (!?ioInclusionSet)
 //--- Left operand
   self.mLeftExpression.generateExpression
-    (!?ioGeneratedCode
-    !?ioInclusionSet
-    !?ioTemporaryVariableIndex
-    !?ioUnusedVariableCppNameSet
+    (!?ioGeneratedCode,
+    !?ioInclusionSet,
+    !?ioTemporaryVariableIndex,
+    !?ioUnusedVariableCppNameSet,
     ?let @string leftTemporaryOperand
   )
 //--- Generate Comparison
@@ -490,10 +490,10 @@ override proc @orShortExpressionForGeneration generateExpression
 //--- Right operand
   !?ioGeneratedCode.incIndentation (!2)
   self.mRightExpression.generateExpression
-    (!?ioGeneratedCode
-    !?ioInclusionSet
-    !?ioTemporaryVariableIndex
-    !?ioUnusedVariableCppNameSet
+    (!?ioGeneratedCode,
+    !?ioInclusionSet,
+    !?ioTemporaryVariableIndex,
+    !?ioUnusedVariableCppNameSet,
     ?let @string rightTemporaryOperand
   )
   ioGeneratedCode += testVar + " = " + rightTemporaryOperand + " ;\n"
@@ -513,18 +513,18 @@ override proc @closedSliceExpressionForGeneration generateExpression
   self.mLeftExpression.mResultType.addHeaderFileName (!?ioInclusionSet)
 //--- Left operand
   self.mLeftExpression.generateExpression
-    (!?ioGeneratedCode
-    !?ioInclusionSet
-    !?ioTemporaryVariableIndex
-    !?ioUnusedVariableCppNameSet
+    (!?ioGeneratedCode,
+    !?ioInclusionSet,
+    !?ioTemporaryVariableIndex,
+    !?ioUnusedVariableCppNameSet,
     ?let leftTemporaryOperand
   )
 //--- Right operand
   self.mRightExpression.generateExpression
-    (!?ioGeneratedCode
-    !?ioInclusionSet
-    !?ioTemporaryVariableIndex
-    !?ioUnusedVariableCppNameSet
+    (!?ioGeneratedCode,
+    !?ioInclusionSet,
+    !?ioTemporaryVariableIndex,
+    !?ioUnusedVariableCppNameSet,
     ?let rightTemporaryOperand
   )
 //--- Generate Comparison
@@ -545,18 +545,18 @@ override proc @openedSliceExpressionForGeneration generateExpression
   self.mLeftExpression.mResultType.addHeaderFileName (!?ioInclusionSet)
 //--- Left operand
   self.mLeftExpression.generateExpression
-    (!?ioGeneratedCode
-    !?ioInclusionSet
-    !?ioTemporaryVariableIndex
-    !?ioUnusedVariableCppNameSet
+    (!?ioGeneratedCode,
+    !?ioInclusionSet,
+    !?ioTemporaryVariableIndex,
+    !?ioUnusedVariableCppNameSet,
     ?let leftTemporaryOperand
   )
 //--- Right operand
   self.mRightExpression.generateExpression
-    (!?ioGeneratedCode
-    !?ioInclusionSet
-    !?ioTemporaryVariableIndex
-    !?ioUnusedVariableCppNameSet
+    (!?ioGeneratedCode,
+    !?ioInclusionSet,
+    !?ioTemporaryVariableIndex,
+    !?ioUnusedVariableCppNameSet,
     ?let rightTemporaryOperand
   )
 //--- Generate Comparison

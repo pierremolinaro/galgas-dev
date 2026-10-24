@@ -28,11 +28,11 @@ syntax extension galgas3ExpressionSyntax {
     $[$
   //--- Get source identity characteristics
     let startLocation = @location.here
-    <expression_ggs3> (!?ioDeclarations ?let @semanticExpressionAST receiverExpression)
+    <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST receiverExpression)
   //--- Get func name
     $identifier$ ?let @lstring getterName
   //--- Actual parameters
-    <output_expression_list_ggs3> (!?ioDeclarations ?let @actualOutputArgumentList expressionList)
+    <output_expression_list_ggs3> (!?ioDeclarations, ?let @actualOutputArgumentList expressionList)
     $]$
     let endLocation = @location.here
     outExpression = @getterCallExpressionAST {
@@ -78,12 +78,12 @@ final class @getterCallExpressionAST : @semanticExpressionAST {
     end
   //-------------------------------------- Expression analysis
     self.mReceiver.analyzeSemanticExpression
-      (!usefulnessCallerEntityName: inUsefulnessCallerEntityName
-      !?ioUsefulEntitiesGraph
-      !inferenceType: @unifiedTypeMapEntry.null
-      !inAnalysisContext
-      !?ioTypeMap
-      !?ioVariableMap
+      (!usefulnessCallerEntityName: inUsefulnessCallerEntityName,
+      !?ioUsefulEntitiesGraph,
+      !inferenceType: @unifiedTypeMapEntry.null,
+      !inAnalysisContext,
+      !?ioTypeMap,
+      !?ioVariableMap,
       ?@semanticExpressionForGeneration receiverExpression
     )
     let @unifiedTypeMapEntry receiverType = receiverExpression.mResultType
@@ -109,19 +109,19 @@ final class @getterCallExpressionAST : @semanticExpressionAST {
         for (mActualSelector mExpression mEndOfExpressionLocation) in self.mActualArgumentList,
             (mFormalSelector mFormalArgumentType 2*) in aGetter.mArgumentTypeList do
           mExpression.analyzeSemanticExpression
-            (!usefulnessCallerEntityName: inUsefulnessCallerEntityName
-            !?ioUsefulEntitiesGraph
-            !inferenceType: mFormalArgumentType
-            !inAnalysisContext
-            !?ioTypeMap
-            !?ioVariableMap
+            (!usefulnessCallerEntityName: inUsefulnessCallerEntityName,
+            !?ioUsefulEntitiesGraph,
+            !inferenceType: mFormalArgumentType,
+            !inAnalysisContext,
+            !?ioTypeMap,
+            !?ioVariableMap,
             ?@semanticExpressionForGeneration exp
           )
           if mFormalSelector.string != mActualSelector.string then
             let @string s = "!" + if mFormalSelector.string != "" then mFormalSelector.string + ":" else "" end
             error (mActualSelector : "the selector should be '" + s + "'" fixit replace s)
           end
-          checkAssignmentTypeWithImplicitGetterCall (!mFormalArgumentType !exp.mResultType !mEndOfExpressionLocation !?exp)
+          checkAssignmentTypeWithImplicitGetterCall (!mFormalArgumentType, !exp.mResultType, !mEndOfExpressionLocation, !?exp)
           constructorEffectiveParameterList += !exp
         end
         outExpression = @getterCallExpressionForGeneration {
@@ -199,19 +199,19 @@ final class @getterCallExpressionAST : @semanticExpressionAST {
           for (mActualSelector mExpression mEndOfExpressionLocation) in self.mActualArgumentList,
               (mFormalSelector mFormalArgumentType 2*) in getterFormalArgumentTypeList do
             mExpression.analyzeSemanticExpression
-              (!usefulnessCallerEntityName: inUsefulnessCallerEntityName
-              !?ioUsefulEntitiesGraph
-              !inferenceType: mFormalArgumentType
-              !inAnalysisContext
-              !?ioTypeMap
-              !?ioVariableMap
+              (!usefulnessCallerEntityName: inUsefulnessCallerEntityName,
+              !?ioUsefulEntitiesGraph,
+              !inferenceType: mFormalArgumentType,
+              !inAnalysisContext,
+              !?ioTypeMap,
+              !?ioVariableMap,
               ?@semanticExpressionForGeneration exp
             )
             if mFormalSelector.string != mActualSelector.string then
               let @string s = "!" + if mFormalSelector.string != "" then mFormalSelector.string + ":" else "" end
               error (mActualSelector : "the selector should be '" + s + "'" fixit replace s)
             end
-            checkAssignmentTypeWithImplicitGetterCall (!mFormalArgumentType !exp.mResultType !mEndOfExpressionLocation !?exp)
+            checkAssignmentTypeWithImplicitGetterCall (!mFormalArgumentType, !exp.mResultType, !mEndOfExpressionLocation, !?exp)
             constructorEffectiveParameterList += !exp
           end
           if obsoletedByGetter != "" then
@@ -270,20 +270,20 @@ final class @getterCallExpressionForGeneration : @semanticExpressionForGeneratio
     self.mResultType.addHeaderFileName (!?ioInclusionSet)
   //--- Receiver expression
     self.mReceiverExpression.generateExpression
-      (!?ioGeneratedCode
-      !?ioInclusionSet
-      !?ioTemporaryVariableIndex
-      !?ioUnusedVariableCppNameSet
+      (!?ioGeneratedCode,
+      !?ioInclusionSet,
+      !?ioTemporaryVariableIndex,
+      !?ioUnusedVariableCppNameSet,
       ?let @string receiverCppName
     )
   //--- Reader operands
     var @stringlist getterArgumentCppNameList = @()
     for (mExpression) in self.mActualArgumentList do
       mExpression.generateExpression
-        (!?ioGeneratedCode
-        !?ioInclusionSet
-        !?ioTemporaryVariableIndex
-        !?ioUnusedVariableCppNameSet
+        (!?ioGeneratedCode,
+        !?ioInclusionSet,
+        !?ioTemporaryVariableIndex,
+        !?ioUnusedVariableCppNameSet,
         ?let argumentCppName
       )
       getterArgumentCppNameList += !argumentCppName

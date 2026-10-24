@@ -37,10 +37,10 @@ syntax extension galgas3InstructionsSyntax {
                                     !@semanticInstructionAST outInstruction) {
     $warning$
     let instructionLocation = @location.here
-    <expression_ggs3> (!?ioDeclarations ?let @semanticExpressionAST mReceiverExpression)
+    <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST mReceiverExpression)
     $:$
-    <expression_ggs3> (!?ioDeclarations ?let @semanticExpressionAST mWarningExpression)
-    <issue_fixit> (!?ioDeclarations ?let @fixitListAST fixitListAST)
+    <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST mWarningExpression)
+    <issue_fixit> (!?ioDeclarations, ?let @fixitListAST fixitListAST)
     outInstruction = @warningInstructionAST {
       !instructionLocation
       !mReceiverExpression
@@ -63,10 +63,10 @@ syntax extension galgas4InstructionsSyntax {
                                !@semanticInstructionAST outInstruction) {
     $warning$
     let instructionLocation = @location.here
-    <expression> (!?ioDeclarations ?let @semanticExpressionAST mReceiverExpression)
+    <expression> (!?ioDeclarations, ?let @semanticExpressionAST mReceiverExpression)
     $:$
-    <expression> (!?ioDeclarations ?let @semanticExpressionAST mWarningExpression)
-    <issue_fixit> (!?ioDeclarations ?let @fixitListAST fixitListAST)
+    <expression> (!?ioDeclarations, ?let @semanticExpressionAST mWarningExpression)
+    <issue_fixit> (!?ioDeclarations, ?let @fixitListAST fixitListAST)
     outInstruction = @warningInstructionAST {
       !instructionLocation
       !mReceiverExpression
@@ -102,18 +102,18 @@ override proc @warningInstructionAST analyzeSemanticInstruction (
                         ?!@localVarManager ioVariableMap) {
 //---
   analyzeErrorOrWarningInstruction (
-    !inUsefulnessCallerEntityName
-    !?ioUsefulEntitiesGraph
-    !inAnalysisContext
-    !?ioTypeMap
-    !self.mLocationExpression
-    !self.mMessageExpression
-    !self.mFixitListAST
-    !self.mInstructionLocation
-    !"warning"
-    !?ioVariableMap
-    ?let locationExpression
-    ?let messageExpression
+    !inUsefulnessCallerEntityName,
+    !?ioUsefulEntitiesGraph,
+    !inAnalysisContext,
+    !?ioTypeMap,
+    !self.mLocationExpression,
+    !self.mMessageExpression,
+    !self.mFixitListAST,
+    !self.mInstructionLocation,
+    !"warning",
+    !?ioVariableMap,
+    ?let locationExpression,
+    ?let messageExpression,
     ?let fixitListForGeneration
   )
 //--- Generate instruction
@@ -144,22 +144,22 @@ override proc @warningInstructionForGeneration generateInstruction (?!@stringset
                                      ?let @bool inGenerateSyntaxDirectedTranslationString,
                                      ?!@string ioGeneratedCode) {
 //--- Receiver expression
-  self.mReceiverExpression.generateExpression (!?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?let receiverCppVarName)
+  self.mReceiverExpression.generateExpression (!?ioGeneratedCode, !?ioInclusionSet, !?ioTemporaryVariableIndex, !?ioUnusedVariableCppNameSet, ?let receiverCppVarName)
 //--- Receiver expression
   self.mWarningExpression.generateExpression
-    (!?ioGeneratedCode
-    !?ioInclusionSet
-    !?ioTemporaryVariableIndex
-    !?ioUnusedVariableCppNameSet
+    (!?ioGeneratedCode,
+    !?ioInclusionSet,
+    !?ioTemporaryVariableIndex,
+    !?ioUnusedVariableCppNameSet,
     ?let messageCppVarName
   )
 //--- Fix It array
   self.mFixitListForGeneration.generateFixIt
-    (!?ioInclusionSet
-    !?ioTemporaryVariableIndex
-    !?ioUnusedVariableCppNameSet
-    !inGenerateSyntaxDirectedTranslationString
-    !?ioGeneratedCode
+    (!?ioInclusionSet,
+    !?ioTemporaryVariableIndex,
+    !?ioUnusedVariableCppNameSet,
+    !inGenerateSyntaxDirectedTranslationString,
+    !?ioGeneratedCode,
     ?let fixItArrayCppName
   )
 //--- Generate warning instruction

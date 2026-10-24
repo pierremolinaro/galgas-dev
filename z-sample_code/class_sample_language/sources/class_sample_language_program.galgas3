@@ -22,9 +22,9 @@ grammar class_sample_language_grammar
   else
   //--- Topologic sort
     inheritanceGraph.topologicalSort
-      (?let @declarationListAST sortedDeclarationListAST
-      ?*
-      ?*
+      (?let @declarationListAST sortedDeclarationListAST,
+      ?*,
+      ?*,
       ?let @lstringlist circularDefinitionClassNameList
     )
     if circularDefinitionClassNameList.count > 0 then

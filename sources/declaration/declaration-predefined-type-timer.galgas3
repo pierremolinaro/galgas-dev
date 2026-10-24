@@ -42,13 +42,13 @@ final class @timerPredefinedTypeAST : @predefinedTypeAST {
                                !@setterMap outSetterMap ) {
     outSetterMap = @()
     enterModifierWithoutArgument (
-      !?outSetterMap
-      !"stop"
+      !?outSetterMap,
+      !"stop",
       !compilerArg:false
     )
     enterModifierWithoutArgument (
-      !?outSetterMap
-      !"resume"
+      !?outSetterMap,
+      !"resume",
       !compilerArg:false
     )
   }
@@ -57,29 +57,29 @@ final class @timerPredefinedTypeAST : @predefinedTypeAST {
 
   override proc getGetterMap (?!@unifiedTypeMap ioUnifiedTypeMap,
                                !@getterMap outMap ) {
-    commonGetterMapForAllTypes (!?ioUnifiedTypeMap ?outMap)
+    commonGetterMapForAllTypes (!?ioUnifiedTypeMap, ?outMap)
     enterBaseFinalGetterWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName:"msFromStart"
-      !obsoleteName: ""
-      !returnedTypeName:"uint"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName:"msFromStart",
+      !obsoleteName: "",
+      !returnedTypeName:"uint",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName:"string"
-      !obsoleteName: ""
-      !returnedTypeName:"string"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName:"string",
+      !obsoleteName: "",
+      !returnedTypeName:"string",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName:"isRunning"
-      !obsoleteName: ""
-      !returnedTypeName:"bool"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName:"isRunning",
+      !obsoleteName: "",
+      !returnedTypeName:"bool",
       !hasCompilerArgument:false
     )
   }
@@ -90,10 +90,10 @@ final class @timerPredefinedTypeAST : @predefinedTypeAST {
                                       !@classFunctionMap outMap ) {
     outMap = @()
     enterClassFunctionWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !name:"start"
-      !resultTypeName:"timer"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !name:"start",
+      !resultTypeName:"timer",
       !hasLexiqueArg:false
     )
   }

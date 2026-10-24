@@ -75,10 +75,10 @@ override proc @templateGetterCallInExpressionAST templateExpressionAnalysis
 ) {
 //--- Expression analysis
   self.mReceiverExpression.templateExpressionAnalysis
-    (!inUsefulnessCallerEntityName
-    !?ioUsefulEntitiesGraph
-    !inAnalysisContext
-    !?ioTypeMap
+    (!inUsefulnessCallerEntityName,
+    !?ioUsefulEntitiesGraph,
+    !inAnalysisContext,
+    !?ioTypeMap,
     ?let receiverExpression
   )
   let @unifiedTypeMapEntry receiverType = receiverExpression.mResultType
@@ -99,13 +99,13 @@ override proc @templateGetterCallInExpressionAST templateExpressionAnalysis
     var fieldList = @stringlist ()
     var actualGetterName = self.mGetterName.string
     if [getterMap hasKey !self.mGetterName.string] then
-      getterMap.searchKey (!self.mGetterName
-        ?kind
-        ?getterFormalArgumentTypeList
-        ?*
-        ?hasCompilerArgument
-        ?returnedType
-        ?*
+      getterMap.searchKey (!self.mGetterName,
+        ?kind,
+        ?getterFormalArgumentTypeList,
+        ?*,
+        ?hasCompilerArgument,
+        ?returnedType,
+        ?*,
         ?let actualGetterNameString
       )
       if actualGetterNameString != "" then
@@ -173,13 +173,13 @@ override proc @templateGetterCallInExpressionAST templateExpressionAnalysis
           error (mActualSelector : "the selector should be '" + s + "'" fixit replace s)
         end
         mExpression.templateExpressionAnalysis
-          (!inUsefulnessCallerEntityName
-          !?ioUsefulEntitiesGraph
-          !inAnalysisContext
-          !?ioTypeMap
+          (!inUsefulnessCallerEntityName,
+          !?ioUsefulEntitiesGraph,
+          !inAnalysisContext,
+          !?ioTypeMap,
           ?@semanticExpressionForGeneration exp
         )
-        checkAssignmentTypeWithImplicitGetterCall (!mFormalArgumentType !exp.mResultType !mEndOfExpressionLocation !?exp)
+        checkAssignmentTypeWithImplicitGetterCall (!mFormalArgumentType, !exp.mResultType, !mEndOfExpressionLocation, !?exp)
         constructorEffectiveParameterList += !exp
       end
       if actualGetterName != self.mGetterName.string then
@@ -251,13 +251,13 @@ override proc @templateClassFunctionAST templateExpressionAnalysis
         error (mActualSelector : "the selector should be '" + s + "'" fixit replace s)
       end
       mExpression.templateExpressionAnalysis
-        (!inUsefulnessCallerEntityName
-        !?ioUsefulEntitiesGraph
-        !inAnalysisContext
-        !?ioTypeMap
+        (!inUsefulnessCallerEntityName,
+        !?ioUsefulEntitiesGraph,
+        !inAnalysisContext,
+        !?ioTypeMap,
         ?@semanticExpressionForGeneration exp
       )
-      checkAssignmentTypeWithImplicitGetterCall (!mFormalArgumentType !exp.mResultType !mEndOfExpressionLocation !?exp)
+      checkAssignmentTypeWithImplicitGetterCall (!mFormalArgumentType, !exp.mResultType, !mEndOfExpressionLocation, !?exp)
       classFunctionEffectiveParameterList += !exp
     end
   end
@@ -300,26 +300,26 @@ override proc @templateAndOperationAST templateExpressionAnalysis
 ) {
 //--- Left expression analysis
   self.mLeftExpression.templateExpressionAnalysis
-    (!inUsefulnessCallerEntityName
-    !?ioUsefulEntitiesGraph
-    !inAnalysisContext
-    !?ioTypeMap
+    (!inUsefulnessCallerEntityName,
+    !?ioUsefulEntitiesGraph,
+    !inAnalysisContext,
+    !?ioTypeMap,
     ?var @semanticExpressionForGeneration leftExpression
   )
 //--- Right expression analysis
   self.mRightExpression.templateExpressionAnalysis
-    (!inUsefulnessCallerEntityName
-    !?ioUsefulEntitiesGraph
-    !inAnalysisContext
-    !?ioTypeMap
+    (!inUsefulnessCallerEntityName,
+    !?ioUsefulEntitiesGraph,
+    !inAnalysisContext,
+    !?ioTypeMap,
     ?@semanticExpressionForGeneration rightExpression
    )
 //--- Check operator availability
   checkDiadicOperator (
-    !operatorIsHandled: [leftExpression.mResultType.definition.features contains !.infixAndOperator]
-    !"&"
-    !self.mOperatorLocation
-    !?leftExpression
+    !operatorIsHandled: [leftExpression.mResultType.definition.features contains !.infixAndOperator],
+    !"&",
+    !self.mOperatorLocation,
+    !?leftExpression,
     !?rightExpression
   )
 //--- Generate expression
@@ -343,26 +343,26 @@ override proc @templateOrOperationAST templateExpressionAnalysis
 ) {
 //--- Left expression analysis
   self.mLeftExpression.templateExpressionAnalysis
-    (!inUsefulnessCallerEntityName
-    !?ioUsefulEntitiesGraph
-    !inAnalysisContext
-    !?ioTypeMap
+    (!inUsefulnessCallerEntityName,
+    !?ioUsefulEntitiesGraph,
+    !inAnalysisContext,
+    !?ioTypeMap,
     ?var @semanticExpressionForGeneration leftExpression
   )
 //--- Right expression analysis
   self.mRightExpression.templateExpressionAnalysis
-    (!inUsefulnessCallerEntityName
-    !?ioUsefulEntitiesGraph
-    !inAnalysisContext
-    !?ioTypeMap
+    (!inUsefulnessCallerEntityName,
+    !?ioUsefulEntitiesGraph,
+    !inAnalysisContext,
+    !?ioTypeMap,
     ?@semanticExpressionForGeneration rightExpression
    )
 //--- Check operator availability
   checkDiadicOperator (
-    !operatorIsHandled: [leftExpression.mResultType.definition.features contains !.infixOrOperator]
-    !"|"
-    !self.mOperatorLocation
-    !?leftExpression
+    !operatorIsHandled: [leftExpression.mResultType.definition.features contains !.infixOrOperator],
+    !"|",
+    !self.mOperatorLocation,
+    !?leftExpression,
     !?rightExpression
   )
 //--- Generate expression
@@ -386,26 +386,26 @@ override proc @templateXorOperationAST templateExpressionAnalysis
 ) {
 //--- Left expression analysis
   self.mLeftExpression.templateExpressionAnalysis
-    (!inUsefulnessCallerEntityName
-    !?ioUsefulEntitiesGraph
-    !inAnalysisContext
-    !?ioTypeMap
+    (!inUsefulnessCallerEntityName,
+    !?ioUsefulEntitiesGraph,
+    !inAnalysisContext,
+    !?ioTypeMap,
     ?var @semanticExpressionForGeneration leftExpression
   )
 //--- Right expression analysis
   self.mRightExpression.templateExpressionAnalysis
-    (!inUsefulnessCallerEntityName
-    !?ioUsefulEntitiesGraph
-    !inAnalysisContext
-    !?ioTypeMap
+    (!inUsefulnessCallerEntityName,
+    !?ioUsefulEntitiesGraph,
+    !inAnalysisContext,
+    !?ioTypeMap,
     ?@semanticExpressionForGeneration rightExpression
    )
 //--- Check operator availability
   checkDiadicOperator (
-    !operatorIsHandled: [leftExpression.mResultType.definition.features contains !.infixXorOperator]
-    !"^"
-    !self.mOperatorLocation
-    !?leftExpression
+    !operatorIsHandled: [leftExpression.mResultType.definition.features contains !.infixXorOperator],
+    !"^",
+    !self.mOperatorLocation,
+    !?leftExpression,
     !?rightExpression
   )
 //--- Generate expression
@@ -515,10 +515,10 @@ override proc @templateNotOperatorAST templateExpressionAnalysis
 ) {
 //--- Expression analysis
   self.mExpression.templateExpressionAnalysis
-    (!inUsefulnessCallerEntityName
-    !?ioUsefulEntitiesGraph
-    !inAnalysisContext
-    !?ioTypeMap
+    (!inUsefulnessCallerEntityName,
+    !?ioUsefulEntitiesGraph,
+    !inAnalysisContext,
+    !?ioTypeMap,
     ?let expression
   )
 //--- Check operator availability
@@ -548,10 +548,10 @@ override proc @templateLogicalNegateAST templateExpressionAnalysis
 ) {
 //--- Expression analysis
   self.mExpression.templateExpressionAnalysis
-    (!inUsefulnessCallerEntityName
-    !?ioUsefulEntitiesGraph
-    !inAnalysisContext
-    !?ioTypeMap
+    (!inUsefulnessCallerEntityName,
+    !?ioUsefulEntitiesGraph,
+    !inAnalysisContext,
+    !?ioTypeMap,
     ?let expression
   )
 //--- Check operator availability
@@ -580,10 +580,10 @@ override proc @templateTestDynamicClassAST templateExpressionAnalysis
 ) {
 //--- Receiver expression analysis
   self.mReceiverExpression.templateExpressionAnalysis
-    (!inUsefulnessCallerEntityName
-    !?ioUsefulEntitiesGraph
-    !inAnalysisContext
-    !?ioTypeMap
+    (!inUsefulnessCallerEntityName,
+    !?ioUsefulEntitiesGraph,
+    !inAnalysisContext,
+    !?ioTypeMap,
     ?let expression
   )
 //--- Get type information
@@ -625,13 +625,13 @@ override proc @templateOptionAccessAST templateExpressionAnalysis
   !@semanticExpressionForGeneration outExpression
 ) {
   let usefulnessName = optionNameForUsefulEntitiesGraph (!self.mOptionComponentName)
-  !?ioUsefulEntitiesGraph.addEdge (!from: inUsefulnessCallerEntityName !to: usefulnessName)
+  !?ioUsefulEntitiesGraph.addEdge (!from: inUsefulnessCallerEntityName, !to: usefulnessName)
   inAnalysisContext.mSemanticContext.mOptionComponentMapForSemanticAnalysis.searchKey
-    (!self.mOptionComponentName
-    ?let @bool optionComponentIsPredefined
-    ?let @commandLineOptionMap boolOptionMap
-    ?let @commandLineOptionMap uintOptionMap
-    ?let @commandLineOptionMap stringOptionMap
+    (!self.mOptionComponentName,
+    ?let @bool optionComponentIsPredefined,
+    ?let @commandLineOptionMap boolOptionMap,
+    ?let @commandLineOptionMap uintOptionMap,
+    ?let @commandLineOptionMap stringOptionMap,
     ?let @commandLineOptionMap stringListOptionMap
   )
   var found = [boolOptionMap hasKey !self.mOptionName.string]
@@ -714,12 +714,12 @@ override proc @templateFunctionCallAST templateExpressionAnalysis
   !@semanticExpressionForGeneration outExpression
 ) {
   let usefulnessName = functionNameForUsefulEntitiesGraph (!self.mFunctionName)
-  !?ioUsefulEntitiesGraph.addEdge (!from: inUsefulnessCallerEntityName !to: usefulnessName)
+  !?ioUsefulEntitiesGraph.addEdge (!from: inUsefulnessCallerEntityName, !to: usefulnessName)
 //--- Retrieve function features
   inAnalysisContext.mSemanticContext.mFunctionMap.searchKey
-    (!self.mFunctionName
-    ?let @functionSignature functionSignature
-    ?let @unifiedTypeMapEntry resultType
+    (!self.mFunctionName,
+    ?let @functionSignature functionSignature,
+    ?let @unifiedTypeMapEntry resultType,
     ?let @bool isInternal
   )
 //--- Check internal
@@ -740,13 +740,13 @@ override proc @templateFunctionCallAST templateExpressionAnalysis
     var semanticExpressionListForGeneration = @semanticExpressionListForGeneration ()
     for (mFormalSelector mFormalArgumentType 2*) in functionSignature, (mActualSelector mExpression mEndOfExpressionLocation) in self.mExpressionList do
       mExpression.templateExpressionAnalysis
-        (!inUsefulnessCallerEntityName
-        !?ioUsefulEntitiesGraph
-        !inAnalysisContext
-        !?ioTypeMap
+        (!inUsefulnessCallerEntityName,
+        !?ioUsefulEntitiesGraph,
+        !inAnalysisContext,
+        !?ioTypeMap,
         ?@semanticExpressionForGeneration expression
       )
-      checkAssignmentTypeWithImplicitGetterCall (!mFormalArgumentType !expression.mResultType !mEndOfExpressionLocation !?expression)
+      checkAssignmentTypeWithImplicitGetterCall (!mFormalArgumentType, !expression.mResultType, !mEndOfExpressionLocation, !?expression)
       semanticExpressionListForGeneration += !expression
       if mFormalSelector.string != mActualSelector.string then
         let @string s = "!" + if mFormalSelector.string != "" then mFormalSelector.string + ":" else "" end
@@ -788,7 +788,7 @@ override proc @templateVarInExpressionAST templateExpressionAnalysis
   ?!@unifiedTypeMap unused ioTypeMap,
   !@semanticExpressionForGeneration outExpression
 ) {
-  inAnalysisContext.mTemplateVariableMap.searchKey (!self.mVarName ?let type ?let sourceVariableCppName)
+  inAnalysisContext.mTemplateVariableMap.searchKey (!self.mVarName, ?let type, ?let sourceVariableCppName)
   outExpression = @varInExpressionForGeneration {
     !type
     !self.mVarName.location
@@ -809,26 +809,26 @@ override proc @templateAddOperationAST templateExpressionAnalysis
 ) {
 //--- Left expression analysis
   self.mLeftExpression.templateExpressionAnalysis
-    (!inUsefulnessCallerEntityName
-    !?ioUsefulEntitiesGraph
-    !inAnalysisContext
-    !?ioTypeMap
+    (!inUsefulnessCallerEntityName,
+    !?ioUsefulEntitiesGraph,
+    !inAnalysisContext,
+    !?ioTypeMap,
     ?var @semanticExpressionForGeneration leftExpression
   )
 //--- Right expression analysis
   self.mRightExpression.templateExpressionAnalysis
-    (!inUsefulnessCallerEntityName
-    !?ioUsefulEntitiesGraph
-    !inAnalysisContext
-    !?ioTypeMap
+    (!inUsefulnessCallerEntityName,
+    !?ioUsefulEntitiesGraph,
+    !inAnalysisContext,
+    !?ioTypeMap,
     ?@semanticExpressionForGeneration rightExpression
    )
 //--- Check operator availability
   checkDiadicOperator (
-    !operatorIsHandled: [leftExpression.mResultType.definition.features contains !.infixAddOperator]
-    !"+"
-    !self.mOperatorLocation
-    !?leftExpression
+    !operatorIsHandled: [leftExpression.mResultType.definition.features contains !.infixAddOperator],
+    !"+",
+    !self.mOperatorLocation,
+    !?leftExpression,
     !?rightExpression
   )
 //--- Generate expression
@@ -854,26 +854,26 @@ override proc @templateSubOperationAST templateExpressionAnalysis
 ) {
 //--- Left expression analysis
   self.mLeftExpression.templateExpressionAnalysis
-    (!inUsefulnessCallerEntityName
-    !?ioUsefulEntitiesGraph
-    !inAnalysisContext
-    !?ioTypeMap
+    (!inUsefulnessCallerEntityName,
+    !?ioUsefulEntitiesGraph,
+    !inAnalysisContext,
+    !?ioTypeMap,
     ?var @semanticExpressionForGeneration leftExpression
   )
 //--- Right expression analysis
   self.mRightExpression.templateExpressionAnalysis
-    (!inUsefulnessCallerEntityName
-    !?ioUsefulEntitiesGraph
-    !inAnalysisContext
-    !?ioTypeMap
+    (!inUsefulnessCallerEntityName,
+    !?ioUsefulEntitiesGraph,
+    !inAnalysisContext,
+    !?ioTypeMap,
     ?@semanticExpressionForGeneration rightExpression
    )
 //--- Check operator availability
   checkDiadicOperator (
-    !operatorIsHandled: [leftExpression.mResultType.definition.features contains !.infixSubOperator]
-    !"-"
-    !self.mOperatorLocation
-    !?leftExpression
+    !operatorIsHandled: [leftExpression.mResultType.definition.features contains !.infixSubOperator],
+    !"-",
+    !self.mOperatorLocation,
+    !?leftExpression,
     !?rightExpression
   )
 //--- Generate expression
@@ -899,26 +899,26 @@ override proc @templateMultiplyOperationAST templateExpressionAnalysis
 ) {
 //--- Left expression analysis
   self.mLeftExpression.templateExpressionAnalysis
-    (!inUsefulnessCallerEntityName
-    !?ioUsefulEntitiesGraph
-    !inAnalysisContext
-    !?ioTypeMap
+    (!inUsefulnessCallerEntityName,
+    !?ioUsefulEntitiesGraph,
+    !inAnalysisContext,
+    !?ioTypeMap,
     ?var @semanticExpressionForGeneration leftExpression
   )
 //--- Right expression analysis
   self.mRightExpression.templateExpressionAnalysis
-    (!inUsefulnessCallerEntityName
-    !?ioUsefulEntitiesGraph
-    !inAnalysisContext
-    !?ioTypeMap
+    (!inUsefulnessCallerEntityName,
+    !?ioUsefulEntitiesGraph,
+    !inAnalysisContext,
+    !?ioTypeMap,
     ?@semanticExpressionForGeneration rightExpression
    )
 //--- Check operator availability
   checkDiadicOperator (
-    !operatorIsHandled: [leftExpression.mResultType.definition.features contains !.infixMulOperator]
-    !"*"
-    !self.mOperatorLocation
-    !?leftExpression
+    !operatorIsHandled: [leftExpression.mResultType.definition.features contains !.infixMulOperator],
+    !"*",
+    !self.mOperatorLocation,
+    !?leftExpression,
     !?rightExpression
   )
 //--- Generate expression
@@ -944,26 +944,26 @@ override proc @templateDivideOperationAST templateExpressionAnalysis
 ) {
 //--- Left expression analysis
   self.mLeftExpression.templateExpressionAnalysis
-    (!inUsefulnessCallerEntityName
-    !?ioUsefulEntitiesGraph
-    !inAnalysisContext
-    !?ioTypeMap
+    (!inUsefulnessCallerEntityName,
+    !?ioUsefulEntitiesGraph,
+    !inAnalysisContext,
+    !?ioTypeMap,
     ?var @semanticExpressionForGeneration leftExpression
   )
 //--- Right expression analysis
   self.mRightExpression.templateExpressionAnalysis
-    (!inUsefulnessCallerEntityName
-    !?ioUsefulEntitiesGraph
-    !inAnalysisContext
-    !?ioTypeMap
+    (!inUsefulnessCallerEntityName,
+    !?ioUsefulEntitiesGraph,
+    !inAnalysisContext,
+    !?ioTypeMap,
     ?@semanticExpressionForGeneration rightExpression
    )
 //--- Check operator availability
   checkDiadicOperator (
-    !operatorIsHandled: [leftExpression.mResultType.definition.features contains !.infixDivOperator]
-    !"/"
-    !self.mOperatorLocation
-    !?leftExpression
+    !operatorIsHandled: [leftExpression.mResultType.definition.features contains !.infixDivOperator],
+    !"/",
+    !self.mOperatorLocation,
+    !?leftExpression,
     !?rightExpression
   )
 //--- Generate expression
@@ -989,26 +989,26 @@ override proc @templateModuloOperationAST templateExpressionAnalysis
 ) {
 //--- Left expression analysis
   self.mLeftExpression.templateExpressionAnalysis
-    (!inUsefulnessCallerEntityName
-    !?ioUsefulEntitiesGraph
-    !inAnalysisContext
-    !?ioTypeMap
+    (!inUsefulnessCallerEntityName,
+    !?ioUsefulEntitiesGraph,
+    !inAnalysisContext,
+    !?ioTypeMap,
     ?var @semanticExpressionForGeneration leftExpression
   )
 //--- Right expression analysis
   self.mRightExpression.templateExpressionAnalysis
-    (!inUsefulnessCallerEntityName
-    !?ioUsefulEntitiesGraph
-    !inAnalysisContext
-    !?ioTypeMap
+    (!inUsefulnessCallerEntityName,
+    !?ioUsefulEntitiesGraph,
+    !inAnalysisContext,
+    !?ioTypeMap,
     ?@semanticExpressionForGeneration rightExpression
    )
 //--- Check operator availability
   checkDiadicOperator (
-    !operatorIsHandled: [leftExpression.mResultType.definition.features contains !.infixModOperator]
-    !"mod"
-    !self.mOperatorLocation
-    !?leftExpression
+    !operatorIsHandled: [leftExpression.mResultType.definition.features contains !.infixModOperator],
+    !"mod",
+    !self.mOperatorLocation,
+    !?leftExpression,
     !?rightExpression
   )
 //--- Generate expression
@@ -1034,10 +1034,10 @@ override proc @templateUnaryMinusOperationAST templateExpressionAnalysis
 ) {
 //--- Expression analysis
   self.mExpression.templateExpressionAnalysis
-    (!inUsefulnessCallerEntityName
-    !?ioUsefulEntitiesGraph
-    !inAnalysisContext
-    !?ioTypeMap
+    (!inUsefulnessCallerEntityName,
+    !?ioUsefulEntitiesGraph,
+    !inAnalysisContext,
+    !?ioTypeMap,
     ?let expression
   )
 //--- Check operator availability
@@ -1068,10 +1068,10 @@ override proc @structFieldAccessTemplateExpressionAST templateExpressionAnalysis
 ) {
 //--- Expression analysis
   self.mExpression.templateExpressionAnalysis
-    (!inUsefulnessCallerEntityName
-    !?ioUsefulEntitiesGraph
-    !inAnalysisContext
-    !?ioTypeMap
+    (!inUsefulnessCallerEntityName,
+    !?ioUsefulEntitiesGraph,
+    !inAnalysisContext,
+    !?ioTypeMap,
     ?let @semanticExpressionForGeneration expression
   )
 //--- Check field access availability
@@ -1080,8 +1080,8 @@ override proc @structFieldAccessTemplateExpressionAST templateExpressionAnalysis
     error (self.mStructFieldName:"the '.' operator requires the receiver to be a struct ou a class")
   end
   let propertyMap = type.definition.propertyMap
-  propertyMap.searchKey (!self.mStructFieldName ?let accessControl ?* ?type)
-  accessControl.checkSetAccess (!.none !self.mStructFieldName)
+  propertyMap.searchKey (!self.mStructFieldName, ?let accessControl, ?*, ?type)
+  accessControl.checkSetAccess (!.none, !self.mStructFieldName)
 //--- Generate expression
   outExpression = @propertyAccessExpressionForGeneration {
     !type
@@ -1104,26 +1104,26 @@ override proc @templateEqualTestAST templateExpressionAnalysis
 ) {
 //--- Left expression analysis
   self.mLeftExpression.templateExpressionAnalysis
-    (!inUsefulnessCallerEntityName
-    !?ioUsefulEntitiesGraph
-    !inAnalysisContext
-    !?ioTypeMap
+    (!inUsefulnessCallerEntityName,
+    !?ioUsefulEntitiesGraph,
+    !inAnalysisContext,
+    !?ioTypeMap,
     ?var @semanticExpressionForGeneration leftExpression
   )
 //--- Right expression analysis
   self.mRightExpression.templateExpressionAnalysis
-    (!inUsefulnessCallerEntityName
-    !?ioUsefulEntitiesGraph
-    !inAnalysisContext
-    !?ioTypeMap
+    (!inUsefulnessCallerEntityName,
+    !?ioUsefulEntitiesGraph,
+    !inAnalysisContext,
+    !?ioTypeMap,
     ?var @semanticExpressionForGeneration rightExpression
    )
 //--- Check operator availability
   checkDiadicOperator (
-    !operatorIsHandled: [leftExpression.mResultType.definition.features contains !.equatable] | [leftExpression.mResultType.definition.features contains !.comparable]
-    !"=="
-    !self.mOperatorLocation
-    !?leftExpression
+    !operatorIsHandled: [leftExpression.mResultType.definition.features contains !.equatable] | [leftExpression.mResultType.definition.features contains !.comparable],
+    !"==",
+    !self.mOperatorLocation,
+    !?leftExpression,
     !?rightExpression
   )
 //--- Generate expression
@@ -1147,26 +1147,26 @@ override proc @templateNonEqualTestAST templateExpressionAnalysis
 ) {
 //--- Left expression analysis
   self.mLeftExpression.templateExpressionAnalysis
-    (!inUsefulnessCallerEntityName
-    !?ioUsefulEntitiesGraph
-    !inAnalysisContext
-    !?ioTypeMap
+    (!inUsefulnessCallerEntityName,
+    !?ioUsefulEntitiesGraph,
+    !inAnalysisContext,
+    !?ioTypeMap,
     ?var @semanticExpressionForGeneration leftExpression
   )
 //--- Right expression analysis
   self.mRightExpression.templateExpressionAnalysis
-    (!inUsefulnessCallerEntityName
-    !?ioUsefulEntitiesGraph
-    !inAnalysisContext
-    !?ioTypeMap
+    (!inUsefulnessCallerEntityName,
+    !?ioUsefulEntitiesGraph,
+    !inAnalysisContext,
+    !?ioTypeMap,
     ?var @semanticExpressionForGeneration rightExpression
    )
 //--- Check operator availability
   checkDiadicOperator (
-    !operatorIsHandled: [leftExpression.mResultType.definition.features contains !.equatable] | [leftExpression.mResultType.definition.features contains !.comparable]
-    !"!="
-    !self.mOperatorLocation
-    !?leftExpression
+    !operatorIsHandled: [leftExpression.mResultType.definition.features contains !.equatable] | [leftExpression.mResultType.definition.features contains !.comparable],
+    !"!=",
+    !self.mOperatorLocation,
+    !?leftExpression,
     !?rightExpression
   )
 //--- Generate expression
@@ -1190,26 +1190,26 @@ override proc @templateStrictInfTestAST templateExpressionAnalysis
 ) {
 //--- Left expression analysis
   self.mLeftExpression.templateExpressionAnalysis
-    (!inUsefulnessCallerEntityName
-    !?ioUsefulEntitiesGraph
-    !inAnalysisContext
-    !?ioTypeMap
+    (!inUsefulnessCallerEntityName,
+    !?ioUsefulEntitiesGraph,
+    !inAnalysisContext,
+    !?ioTypeMap,
     ?var @semanticExpressionForGeneration leftExpression
   )
 //--- Right expression analysis
   self.mRightExpression.templateExpressionAnalysis
-    (!inUsefulnessCallerEntityName
-    !?ioUsefulEntitiesGraph
-    !inAnalysisContext
-    !?ioTypeMap
+    (!inUsefulnessCallerEntityName,
+    !?ioUsefulEntitiesGraph,
+    !inAnalysisContext,
+    !?ioTypeMap,
     ?var @semanticExpressionForGeneration rightExpression
    )
 //--- Check operator availability
   checkDiadicOperator (
-    !operatorIsHandled: [leftExpression.mResultType.definition.features contains !.comparable]
-    !"<"
-    !self.mOperatorLocation
-    !?leftExpression
+    !operatorIsHandled: [leftExpression.mResultType.definition.features contains !.comparable],
+    !"<",
+    !self.mOperatorLocation,
+    !?leftExpression,
     !?rightExpression
   )
 //--- Generate expression
@@ -1233,26 +1233,26 @@ override proc @templateInfOrEqualTestAST templateExpressionAnalysis
 ) {
 //--- Left expression analysis
   self.mLeftExpression.templateExpressionAnalysis
-    (!inUsefulnessCallerEntityName
-    !?ioUsefulEntitiesGraph
-    !inAnalysisContext
-    !?ioTypeMap
+    (!inUsefulnessCallerEntityName,
+    !?ioUsefulEntitiesGraph,
+    !inAnalysisContext,
+    !?ioTypeMap,
     ?var @semanticExpressionForGeneration leftExpression
   )
 //--- Right expression analysis
   self.mRightExpression.templateExpressionAnalysis
-    (!inUsefulnessCallerEntityName
-    !?ioUsefulEntitiesGraph
-    !inAnalysisContext
-    !?ioTypeMap
+    (!inUsefulnessCallerEntityName,
+    !?ioUsefulEntitiesGraph,
+    !inAnalysisContext,
+    !?ioTypeMap,
     ?var @semanticExpressionForGeneration rightExpression
    )
 //--- Check operator availability
   checkDiadicOperator (
-    !operatorIsHandled: [leftExpression.mResultType.definition.features contains !.comparable]
-    !"<="
-    !self.mOperatorLocation
-    !?leftExpression
+    !operatorIsHandled: [leftExpression.mResultType.definition.features contains !.comparable],
+    !"<=",
+    !self.mOperatorLocation,
+    !?leftExpression,
     !?rightExpression
   )
 //--- Generate expression
@@ -1276,26 +1276,26 @@ override proc @templateStrictSupTestAST templateExpressionAnalysis
 ) {
 //--- Left expression analysis
   self.mLeftExpression.templateExpressionAnalysis
-    (!inUsefulnessCallerEntityName
-    !?ioUsefulEntitiesGraph
-    !inAnalysisContext
-    !?ioTypeMap
+    (!inUsefulnessCallerEntityName,
+    !?ioUsefulEntitiesGraph,
+    !inAnalysisContext,
+    !?ioTypeMap,
     ?var @semanticExpressionForGeneration leftExpression
   )
 //--- Right expression analysis
   self.mRightExpression.templateExpressionAnalysis
-    (!inUsefulnessCallerEntityName
-    !?ioUsefulEntitiesGraph
-    !inAnalysisContext
-    !?ioTypeMap
+    (!inUsefulnessCallerEntityName,
+    !?ioUsefulEntitiesGraph,
+    !inAnalysisContext,
+    !?ioTypeMap,
     ?var @semanticExpressionForGeneration rightExpression
    )
 //--- Check operator availability
   checkDiadicOperator (
-    !operatorIsHandled: [leftExpression.mResultType.definition.features contains !.comparable]
-    !">"
-    !self.mOperatorLocation
-    !?leftExpression
+    !operatorIsHandled: [leftExpression.mResultType.definition.features contains !.comparable],
+    !">",
+    !self.mOperatorLocation,
+    !?leftExpression,
     !?rightExpression
   )
 //--- Generate expression
@@ -1319,26 +1319,26 @@ override proc @templateSupOrEqualTestAST templateExpressionAnalysis
 ) {
 //--- Left expression analysis
   self.mLeftExpression.templateExpressionAnalysis
-    (!inUsefulnessCallerEntityName
-    !?ioUsefulEntitiesGraph
-    !inAnalysisContext
-    !?ioTypeMap
+    (!inUsefulnessCallerEntityName,
+    !?ioUsefulEntitiesGraph,
+    !inAnalysisContext,
+    !?ioTypeMap,
     ?var @semanticExpressionForGeneration leftExpression
   )
 //--- Right expression analysis
   self.mRightExpression.templateExpressionAnalysis
-    (!inUsefulnessCallerEntityName
-    !?ioUsefulEntitiesGraph
-    !inAnalysisContext
-    !?ioTypeMap
+    (!inUsefulnessCallerEntityName,
+    !?ioUsefulEntitiesGraph,
+    !inAnalysisContext,
+    !?ioTypeMap,
     ?var @semanticExpressionForGeneration rightExpression
    )
 //--- Check operator availability
   checkDiadicOperator (
-    !operatorIsHandled: [leftExpression.mResultType.definition.features contains !.comparable]
-    !">="
-    !self.mOperatorLocation
-    !?leftExpression
+    !operatorIsHandled: [leftExpression.mResultType.definition.features contains !.comparable],
+    !">=",
+    !self.mOperatorLocation,
+    !?leftExpression,
     !?rightExpression
   )
 //--- Generate expression
@@ -1362,18 +1362,18 @@ override proc @templateLeftShiftOperationAST templateExpressionAnalysis
 ) {
 //--- Left expression analysis
   self.mLeftExpression.templateExpressionAnalysis
-    (!inUsefulnessCallerEntityName
-    !?ioUsefulEntitiesGraph
-    !inAnalysisContext
-    !?ioTypeMap
+    (!inUsefulnessCallerEntityName,
+    !?ioUsefulEntitiesGraph,
+    !inAnalysisContext,
+    !?ioTypeMap,
     ?let @semanticExpressionForGeneration leftExpression
   )
 //--- Right expression analysis
   self.mRightExpression.templateExpressionAnalysis
-    (!inUsefulnessCallerEntityName
-    !?ioUsefulEntitiesGraph
-    !inAnalysisContext
-    !?ioTypeMap
+    (!inUsefulnessCallerEntityName,
+    !?ioUsefulEntitiesGraph,
+    !inAnalysisContext,
+    !?ioTypeMap,
     ?let @semanticExpressionForGeneration rightExpression
    )
 //--- Check operator availability
@@ -1410,18 +1410,18 @@ override proc @templateRightShiftOperationAST templateExpressionAnalysis
 ) {
 //--- Left expression analysis
   self.mLeftExpression.templateExpressionAnalysis
-    (!inUsefulnessCallerEntityName
-    !?ioUsefulEntitiesGraph
-    !inAnalysisContext
-    !?ioTypeMap
+    (!inUsefulnessCallerEntityName,
+    !?ioUsefulEntitiesGraph,
+    !inAnalysisContext,
+    !?ioTypeMap,
     ?let @semanticExpressionForGeneration leftExpression
   )
 //--- Right expression analysis
   self.mRightExpression.templateExpressionAnalysis
-    (!inUsefulnessCallerEntityName
-    !?ioUsefulEntitiesGraph
-    !inAnalysisContext
-    !?ioTypeMap
+    (!inUsefulnessCallerEntityName,
+    !?ioUsefulEntitiesGraph,
+    !inAnalysisContext,
+    !?ioTypeMap,
     ?let @semanticExpressionForGeneration rightExpression
    )
 //--- Check operator availability
@@ -1472,10 +1472,10 @@ proc templateInstructionListAnalysis
 ) {
   for (mInstruction) in inInstructionList do
     mInstruction.templateInstructionAnalysis
-      (!inUsefulnessCallerEntityName
-      !?ioUsefulEntitiesGraph
-      !inAnalysisContext
-      !?ioTypeMap
+      (!inUsefulnessCallerEntityName,
+      !?ioUsefulEntitiesGraph,
+      !inAnalysisContext,
+      !?ioTypeMap,
       !?ioInstructionList
     )
   end
@@ -1503,10 +1503,10 @@ override proc @templateInstructionExpressionAST templateInstructionAnalysis
   ?!@templateInstructionListForGeneration ioInstructionList
 ) {
   self.mExpression.templateExpressionAnalysis
-    (!inUsefulnessCallerEntityName
-    !?ioUsefulEntitiesGraph
-    !inAnalysisContext
-    !?ioTypeMap
+    (!inUsefulnessCallerEntityName,
+    !?ioUsefulEntitiesGraph,
+    !inAnalysisContext,
+    !?ioTypeMap,
     ?let expression
   )
   if expression.mResultType.definition.typeName.string != "string" then
@@ -1525,10 +1525,10 @@ override proc @templateBlockInstructionAST templateInstructionAnalysis
   ?!@templateInstructionListForGeneration ioInstructionList
 ) {
   self.mExpression.templateExpressionAnalysis
-    (!inUsefulnessCallerEntityName
-    !?ioUsefulEntitiesGraph
-    !inAnalysisContext
-    !?ioTypeMap
+    (!inUsefulnessCallerEntityName,
+    !?ioUsefulEntitiesGraph,
+    !inAnalysisContext,
+    !?ioTypeMap,
     ?var expression
   )
   if expression.mResultType.definition.typeName.string == "bigint" then
@@ -1548,11 +1548,11 @@ override proc @templateBlockInstructionAST templateInstructionAnalysis
   end
   var blockInstructionList = @templateInstructionListForGeneration ()
   templateInstructionListAnalysis (
-    !inUsefulnessCallerEntityName
-    !?ioUsefulEntitiesGraph
-    !inAnalysisContext
-    !?ioTypeMap
-    !self.mBlockInstructionList
+    !inUsefulnessCallerEntityName,
+    !?ioUsefulEntitiesGraph,
+    !inAnalysisContext,
+    !?ioTypeMap,
+    !self.mBlockInstructionList,
     !?blockInstructionList
   )
   ioInstructionList += !@templateBlockInstructionForGeneration {!expression !self.mLocation !blockInstructionList}
@@ -1595,10 +1595,10 @@ override proc @templateInstructionIfAST templateInstructionAnalysis
   var templateInstructionIfBranchList = @templateInstructionIfBranchListForGeneration ()
   for (mExpression mInstructionList) in self.mTemplateInstructionIfBranchList do
     mExpression.templateExpressionAnalysis
-      (!inUsefulnessCallerEntityName
-      !?ioUsefulEntitiesGraph
-      !inAnalysisContext
-      !?ioTypeMap
+      (!inUsefulnessCallerEntityName,
+      !?ioUsefulEntitiesGraph,
+      !inAnalysisContext,
+      !?ioTypeMap,
       ?let expression
     )
     if expression.mResultType.definition.typeName.string != "bool" then
@@ -1606,11 +1606,11 @@ override proc @templateInstructionIfAST templateInstructionAnalysis
     end
     var instructionList = @templateInstructionListForGeneration ()
     templateInstructionListAnalysis (
-      !inUsefulnessCallerEntityName
-      !?ioUsefulEntitiesGraph
-      !inAnalysisContext
-      !?ioTypeMap
-      !mInstructionList
+      !inUsefulnessCallerEntityName,
+      !?ioUsefulEntitiesGraph,
+      !inAnalysisContext,
+      !?ioTypeMap,
+      !mInstructionList,
       !?instructionList
     )
     templateInstructionIfBranchList += !expression !instructionList
@@ -1618,11 +1618,11 @@ override proc @templateInstructionIfAST templateInstructionAnalysis
 //---
   var elseInstructionList = @templateInstructionListForGeneration ()
   templateInstructionListAnalysis (
-    !inUsefulnessCallerEntityName
-    !?ioUsefulEntitiesGraph
-    !inAnalysisContext
-    !?ioTypeMap
-    !self.mElseInstructionList
+    !inUsefulnessCallerEntityName,
+    !?ioUsefulEntitiesGraph,
+    !inAnalysisContext,
+    !?ioTypeMap,
+    !self.mElseInstructionList,
     !?elseInstructionList
   )
 //---

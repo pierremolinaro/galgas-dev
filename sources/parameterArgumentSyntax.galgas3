@@ -78,7 +78,7 @@ syntax galgas3ParameterArgumentSyntax (galgasScanner3) {
           end
           formalParameterPassingMode = .argumentOut
         end
-        <type_definition_ggs3> (!?ioDeclarations ?let @lstring formalParameterTypeName)
+        <type_definition_ggs3> (!?ioDeclarations, ?let @lstring formalParameterTypeName)
         let @bool isUnused
         select
           isUnused = false
@@ -98,178 +98,577 @@ syntax galgas3ParameterArgumentSyntax (galgasScanner3) {
       end
     end
     $)$
-
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  A C T U A L    P A R A M E T E R    L I S T
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+//  rule <actual_parameter_list_ggs3> (?!@galgasDeclarationAST ioDeclarations,
+//                                    !@actualParameterListAST outActualParameterList ) {
+//    outActualParameterList = @()
+//    $($
+//    repeat
+//    while
+//      let @lstring selector
+//      select
+//        $!selector:$ ?selector
+//      or
+//        $!$
+//        selector = "".here
+//      end
+//      <expression_ggs3> (!?ioDeclarations ?let @semanticExpressionAST e)
+//      let @location endOfExpressionLocation = @location.here
+//      outActualParameterList += !@outputActualParameterAST {
+//        !selector
+//        !e
+//        !endOfExpressionLocation
+//      }
+//    while
+//      let @lstring selector
+//      select
+//        $?selector:$ ?selector
+//      or
+//        $?$
+//        selector = "".here
+//      end
+//      select
+//        $*$
+//        <poisoned_var_list_ggs3> (?let poisonedVarNameList)
+//        outActualParameterList += !@inputSingleJokerActualParameterAST {!selector !poisonedVarNameList}
+//      or
+//        $literalInt$ ?let count
+//        $*$
+//        var n = count.bigint.uint
+//        if selector.string != "" then
+//          error (selector : "the selector should be '?'" fixit replace "?")
+//        end
+//       if n == 0 then
+//          error (count: "the count value should be > 0")
+//        else
+//          loop (n)
+//          while n > 0 do
+//            outActualParameterList += !@inputJokerActualParameterAST {!selector.location !n}
+//            n -= 1
+//          end
+//        end
+//      end
+//    while
+//      let @lstring selector
+//      select
+//        $!?selector:$ ?selector
+//      or
+//        $!?$
+//        selector = "".here
+//      end
+//      select
+//        $self$
+//        outActualParameterList += !@outputInputSelfParameterAST {!selector}
+//      or
+//        $identifier$ ?let outputInputActualParameterName
+//        var structAttributeList = @lstringlist ()
+//        repeat
+//        while
+//          $.$
+//          $identifier$ ?let structAttributeName
+//          structAttributeList += !structAttributeName
+//        end
+//        outActualParameterList += !@outputInputActualParameterAST {
+//          !selector
+//          !outputInputActualParameterName
+//          !structAttributeList
+//        }
+//      or
+//        $%from$
+//        <expression_ggs3> (!?ioDeclarations ?let initializerCall)
+//        outActualParameterList += !@outputInputJokerParameterAST (selector, initializerCall)
+//      end
+//    while 
+//      let @lstring selector
+//      select
+//        $?selector:$ ?selector
+//      or
+//        $?$
+//        selector = "".here
+//      end
+//      select // input parameter, self.property
+//        $self$
+//        $.$
+//        $identifier$ ?let inputActualParameterName
+//        <poisoned_var_list_ggs3> (?let poisonedVarNameList)
+//        outActualParameterList += !@inputActualSelfPropertyParameterAST {
+//          !selector
+//          !inputActualParameterName
+//          !poisonedVarNameList
+//        }
+//      or // input parameter, self
+//        $self$
+//        <poisoned_var_list_ggs3> (?let poisonedVarNameList)
+//        outActualParameterList += !@inputActualSelfParameterAST {
+//          !selector
+//          !.here
+//          !poisonedVarNameList
+//        }
+//      or  // input parameter, new variable
+//        $var$
+//        let @lstring declarationTypeName
+//        select
+//          declarationTypeName = "".nowhere
+//        or
+//          <type_definition_ggs3> (!?ioDeclarations ?declarationTypeName)
+//        end
+//        $identifier$ ?let inputActualParameterName
+//        <poisoned_var_list_ggs3> (?let poisonedVarNameList)
+//        outActualParameterList += !@inputActualNewVariableParameterAST {
+//          !selector
+//          !declarationTypeName
+//          !inputActualParameterName
+//          !poisonedVarNameList
+//        }
+//      or  // input parameter, new variable, explicit type
+//        <type_definition_ggs3> (!?ioDeclarations ?let @lstring declarationTypeName)
+//        $identifier$ ?let inputActualParameterName
+//        <poisoned_var_list_ggs3> (?let poisonedVarNameList)
+//        outActualParameterList += !@inputActualNewVariableParameterAST {
+//          !selector
+//          !declarationTypeName
+//          !inputActualParameterName
+//          !poisonedVarNameList
+//        }
+//      or // input parameter, new constant
+//        $let$
+//        let @lstring declarationTypeName
+//        select
+//          declarationTypeName = "".nowhere
+//        or
+//          <type_definition_ggs3> (!?ioDeclarations ?declarationTypeName)
+//        end
+//        let @bool markedAsUnused
+//        select
+//          markedAsUnused = false
+//        or
+//          $unused$
+//          markedAsUnused = true
+//        end
+//        $identifier$ ?let inputActualParameterName
+//        <poisoned_var_list_ggs3> (?let poisonedVarNameList)
+//        outActualParameterList += !@inputActualNewConstantParameterAST {
+//          !selector
+//          !declarationTypeName
+//          !inputActualParameterName
+//          !markedAsUnused
+//          !poisonedVarNameList
+//        }
+//      or // input parameter, existing variable
+//        $identifier$ ?let inputActualParameterName
+//        <poisoned_var_list_ggs3> (?let poisonedVarNameList)
+//        outActualParameterList += !@inputActualExistingVariableParameterAST {
+//          !selector
+//          !inputActualParameterName
+//          !poisonedVarNameList
+//        }
+//      end
+//    end
+//    $)$
+//  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+//  rule <actual_parameter_list_ggs3> (?!@galgasDeclarationAST ioDeclarations,
+//                                    !@actualParameterListAST outActualParameterList ) {
+//    outActualParameterList = @()
+//    $($
+//    repeat
+//      select // Output
+//        let @lstring selector
+//        select
+//          $!selector:$ ?selector
+//        or
+//          $!$
+//          selector = "".here
+//        end
+//        <expression_ggs3> (!?ioDeclarations ?let @semanticExpressionAST e)
+//        let @location endOfExpressionLocation = @location.here
+//        outActualParameterList += !@outputActualParameterAST {
+//          !selector
+//          !e
+//          !endOfExpressionLocation
+//        }
+//      or // Input
+//        let @lstring selector
+//        select
+//          $?selector:$ ?selector
+//        or
+//          $?$
+//          selector = "".here
+//        end
+//        select
+//          $*$
+//          <poisoned_var_list_ggs3> (?let poisonedVarNameList)
+//          outActualParameterList += !@inputSingleJokerActualParameterAST {!selector !poisonedVarNameList}
+//        or
+//          $literalInt$ ?let count
+//          $*$
+//          var n = count.bigint.uint
+//          if selector.string != "" then
+//            error (selector : "the selector should be '?'" fixit replace "?")
+//          end
+//         if n == 0 then
+//            error (count: "the count value should be > 0")
+//          else
+//            loop (n)
+//            while n > 0 do
+//              outActualParameterList += !@inputJokerActualParameterAST {!selector.location !n}
+//              n -= 1
+//            end
+//          end
+//        end
+//      or // Output/Input
+//        let @lstring selector
+//        select
+//          $!?selector:$ ?selector
+//        or
+//          $!?$
+//          selector = "".here
+//        end
+//        select
+//          $self$
+//          outActualParameterList += !@outputInputSelfParameterAST {!selector}
+//        or
+//          $identifier$ ?let outputInputActualParameterName
+//          var structAttributeList = @lstringlist ()
+//          repeat
+//          while
+//            $.$
+//            $identifier$ ?let structAttributeName
+//            structAttributeList += !structAttributeName
+//          end
+//          outActualParameterList += !@outputInputActualParameterAST {
+//            !selector
+//            !outputInputActualParameterName
+//            !structAttributeList
+//          }
+//        or
+//          $%from$
+//          <expression_ggs3> (!?ioDeclarations ?let initializerCall)
+//          outActualParameterList += !@outputInputJokerParameterAST (selector, initializerCall)
+//        end
+//      or // Input, self
+//        let @lstring selector
+//        select
+//          $?selector:$ ?selector
+//        or
+//          $?$
+//          selector = "".here
+//        end
+//        select // input parameter, self.property
+//          $self$
+//          $.$
+//          $identifier$ ?let inputActualParameterName
+//          <poisoned_var_list_ggs3> (?let poisonedVarNameList)
+//          outActualParameterList += !@inputActualSelfPropertyParameterAST {
+//            !selector
+//            !inputActualParameterName
+//            !poisonedVarNameList
+//          }
+//        or // input parameter, self
+//          $self$
+//          <poisoned_var_list_ggs3> (?let poisonedVarNameList)
+//          outActualParameterList += !@inputActualSelfParameterAST {
+//            !selector
+//            !.here
+//            !poisonedVarNameList
+//          }
+//        or  // input parameter, new variable
+//          $var$
+//          let @lstring declarationTypeName
+//          select
+//            declarationTypeName = "".nowhere
+//          or
+//            <type_definition_ggs3> (!?ioDeclarations ?declarationTypeName)
+//          end
+//          $identifier$ ?let inputActualParameterName
+//          <poisoned_var_list_ggs3> (?let poisonedVarNameList)
+//          outActualParameterList += !@inputActualNewVariableParameterAST {
+//            !selector
+//            !declarationTypeName
+//            !inputActualParameterName
+//            !poisonedVarNameList
+//          }
+//        or  // input parameter, new variable, explicit type
+//          <type_definition_ggs3> (!?ioDeclarations ?let @lstring declarationTypeName)
+//          $identifier$ ?let inputActualParameterName
+//          <poisoned_var_list_ggs3> (?let poisonedVarNameList)
+//          outActualParameterList += !@inputActualNewVariableParameterAST {
+//            !selector
+//            !declarationTypeName
+//            !inputActualParameterName
+//            !poisonedVarNameList
+//          }
+//        or // input parameter, new constant
+//          $let$
+//          let @lstring declarationTypeName
+//          select
+//            declarationTypeName = "".nowhere
+//          or
+//            <type_definition_ggs3> (!?ioDeclarations ?declarationTypeName)
+//          end
+//          let @bool markedAsUnused
+//          select
+//            markedAsUnused = false
+//          or
+//            $unused$
+//            markedAsUnused = true
+//          end
+//          $identifier$ ?let inputActualParameterName
+//          <poisoned_var_list_ggs3> (?let poisonedVarNameList)
+//          outActualParameterList += !@inputActualNewConstantParameterAST {
+//            !selector
+//            !declarationTypeName
+//            !inputActualParameterName
+//            !markedAsUnused
+//            !poisonedVarNameList
+//          }
+//        or // input parameter, existing variable
+//          $identifier$ ?let inputActualParameterName
+//          <poisoned_var_list_ggs3> (?let poisonedVarNameList)
+//          outActualParameterList += !@inputActualExistingVariableParameterAST {
+//            !selector
+//            !inputActualParameterName
+//            !poisonedVarNameList
+//          }
+//        end
+////      end
+//    while
+//      $,$
+//    end
+//    $)$
+//  }
+//
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //  A C T U A L    P A R A M E T E R    L I S T
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
   rule <actual_parameter_list_ggs3> (?!@galgasDeclarationAST ioDeclarations,
                                     !@actualParameterListAST outActualParameterList ) {
+    $($
     outActualParameterList = @()
-    repeat
-    while
-      let @lstring selector
-      select
-        $!selector:$ ?selector
-      or
-        $!$
-        selector = "".here
-      end
-      <expression_ggs3> (!?ioDeclarations ?let @semanticExpressionAST e)
-      let @location endOfExpressionLocation = @location.here
-      outActualParameterList += !@outputActualParameterAST {
-        !selector
-        !e
-        !endOfExpressionLocation
-      }
-    while
-      let @lstring selector
-      select
-        $?selector:$ ?selector
-      or
-        $?$
-        selector = "".here
-      end
-      select
-        $*$
-        <poisoned_var_list_ggs3> (?let poisonedVarNameList)
-        outActualParameterList += !@inputSingleJokerActualParameterAST {!selector !poisonedVarNameList}
-      or
-        $literalInt$ ?let count
-        $*$
-        var n = count.bigint.uint
-        if selector.string != "" then
-          error (selector : "the selector should be '?'" fixit replace "?")
-        end
-       if n == 0 then
-          error (count: "the count value should be > 0")
-        else
-          loop (n)
-          while n > 0 do
-            outActualParameterList += !@inputJokerActualParameterAST {!selector.location !n}
-            n -= 1
-          end
-        end
-      end
-    while
-      let @lstring selector
-      select
-        $!?selector:$ ?selector
-      or
-        $!?$
-        selector = "".here
-      end
-      select
-        $self$
-        outActualParameterList += !@outputInputSelfParameterAST {!selector}
-      or
-        $identifier$ ?let outputInputActualParameterName
-        var structAttributeList = @lstringlist ()
-        repeat
-        while
-          $.$
-          $identifier$ ?let structAttributeName
-          structAttributeList += !structAttributeName
-        end
-        outActualParameterList += !@outputInputActualParameterAST {
-          !selector
-          !outputInputActualParameterName
-          !structAttributeList
-        }
-      or
-        $%from$
-        <expression_ggs3> (!?ioDeclarations ?let initializerCall)
-        outActualParameterList += !@outputInputJokerParameterAST (selector, initializerCall)
-      end
-    while 
-      let @lstring selector
-      select
-        $?selector:$ ?selector
-      or
-        $?$
-        selector = "".here
-      end
-      select // input parameter, self.property
-        $self$
-        $.$
-        $identifier$ ?let inputActualParameterName
-        <poisoned_var_list_ggs3> (?let poisonedVarNameList)
-        outActualParameterList += !@inputActualSelfPropertyParameterAST {
-          !selector
-          !inputActualParameterName
-          !poisonedVarNameList
-        }
-      or // input parameter, self
-        $self$
-        <poisoned_var_list_ggs3> (?let poisonedVarNameList)
-        outActualParameterList += !@inputActualSelfParameterAST {
-          !selector
-          !.here
-          !poisonedVarNameList
-        }
-      or  // input parameter, new variable
-        $var$
-        let @lstring declarationTypeName
-        select
-          declarationTypeName = "".nowhere
-        or
-          <type_definition_ggs3> (!?ioDeclarations ?declarationTypeName)
-        end
-        $identifier$ ?let inputActualParameterName
-        <poisoned_var_list_ggs3> (?let poisonedVarNameList)
-        outActualParameterList += !@inputActualNewVariableParameterAST {
-          !selector
-          !declarationTypeName
-          !inputActualParameterName
-          !poisonedVarNameList
-        }
-      or  // input parameter, new variable, explicit type
-        <type_definition_ggs3> (!?ioDeclarations ?let @lstring declarationTypeName)
-        $identifier$ ?let inputActualParameterName
-        <poisoned_var_list_ggs3> (?let poisonedVarNameList)
-        outActualParameterList += !@inputActualNewVariableParameterAST {
-          !selector
-          !declarationTypeName
-          !inputActualParameterName
-          !poisonedVarNameList
-        }
-      or // input parameter, new constant
-        $let$
-        let @lstring declarationTypeName
-        select
-          declarationTypeName = "".nowhere
-        or
-          <type_definition_ggs3> (!?ioDeclarations ?declarationTypeName)
-        end
-        let @bool markedAsUnused
-        select
-          markedAsUnused = false
-        or
-          $unused$
-          markedAsUnused = true
-        end
-        $identifier$ ?let inputActualParameterName
-        <poisoned_var_list_ggs3> (?let poisonedVarNameList)
-        outActualParameterList += !@inputActualNewConstantParameterAST {
-          !selector
-          !declarationTypeName
-          !inputActualParameterName
-          !markedAsUnused
-          !poisonedVarNameList
-        }
-      or // input parameter, existing variable
-        $identifier$ ?let inputActualParameterName
-        <poisoned_var_list_ggs3> (?let poisonedVarNameList)
-        outActualParameterList += !@inputActualExistingVariableParameterAST {
-          !selector
-          !inputActualParameterName
-          !poisonedVarNameList
-        }
+    select
+    or
+      repeat
+         <actual_parameter_ggs3> (!?ioDeclarations, !?outActualParameterList)
+       while
+         $,$
       end
     end
+    $)$
   }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  // Actual input argument
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  rule <actual_parameter_ggs3> (?!@galgasDeclarationAST ioDeclarations,
+                          ?!@actualParameterListAST ioActualParameterList) {
+    let @lstring selector
+    select
+      $?selector:$ ?selector
+    or
+      $?$
+      selector = "".here
+    end
+    select
+      $*$
+      <poisoned_var_list_ggs3> (?let poisonedVarNameList)
+      ioActualParameterList += !@inputSingleJokerActualParameterAST {!selector !poisonedVarNameList}
+    or
+      $literalInt$ ?let count
+      $*$
+      var n = count.bigint.uint
+      if selector.string != "" then
+        error (selector : "the selector should be '?'" fixit replace "?")
+      end
+      if n == 0 then
+        error (count: "the count value should be > 0")
+      else
+        loop (n)
+        while n > 0 do
+          ioActualParameterList += !@inputJokerActualParameterAST {!selector.location !n}
+          n -= 1
+        end
+      end
+    or
+      $identifier$ ?let inputActualParameterName
+      <poisoned_var_list_ggs3> (?let poisonedVarNameList)
+      ioActualParameterList += !@inputActualExistingVariableParameterAST {
+        !selector
+        !inputActualParameterName
+        !poisonedVarNameList
+      }
+    or // input parameter, self.property
+      $self$
+      $.$
+      $identifier$ ?let inputActualParameterName
+      <poisoned_var_list_ggs3> (?let poisonedVarNameList)
+      ioActualParameterList += !@inputActualSelfPropertyParameterAST {
+        !selector
+        !inputActualParameterName
+        !poisonedVarNameList
+      }
+    or // input parameter, self
+      $self$
+      <poisoned_var_list_ggs3> (?let poisonedVarNameList)
+      ioActualParameterList += !@inputActualSelfParameterAST {
+        !selector
+        !.here
+        !poisonedVarNameList
+      }
+    or // input parameter, new variable
+      $var$
+      let @lstring declarationTypeName
+      select
+        declarationTypeName = "".nowhere
+      or
+        <type_definition_ggs3> (!?ioDeclarations, ?declarationTypeName)
+      end
+      $identifier$ ?let inputActualParameterName
+      <poisoned_var_list_ggs3> (?let poisonedVarNameList)
+      ioActualParameterList += !@inputActualNewVariableParameterAST {
+        !selector
+        !declarationTypeName
+        !inputActualParameterName
+        !poisonedVarNameList
+      }
+    or // input parameter, new variable, explicit type
+      <type_definition_ggs3> (!?ioDeclarations, ?let declarationTypeName)
+      $identifier$ ?let inputActualParameterName
+      <poisoned_var_list_ggs3> (?let poisonedVarNameList)
+      ioActualParameterList += !@inputActualNewVariableParameterAST {
+        !selector
+        !declarationTypeName
+        !inputActualParameterName
+        !poisonedVarNameList
+      }
+    or // input parameter, new constant
+      $let$
+      let @lstring declarationTypeName
+      select
+        declarationTypeName = "".nowhere
+      or
+        <type_definition_ggs3> (!?ioDeclarations, ?declarationTypeName)
+      end
+      let @bool markedAsUnused
+      select
+        markedAsUnused = false
+      or
+        $unused$
+        markedAsUnused = true
+      end
+      $identifier$ ?let inputActualParameterName
+      <poisoned_var_list_ggs3> (?let poisonedVarNameList)
+      ioActualParameterList += !@inputActualNewConstantParameterAST {
+        !selector
+        !declarationTypeName
+        !inputActualParameterName
+        !markedAsUnused
+        !poisonedVarNameList
+      }
+    end
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  // Actual output / input argument
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  rule <actual_parameter_ggs3> (?!@galgasDeclarationAST ioDeclarations,
+                          ?!@actualParameterListAST ioActualParameterList ) {
+    let @lstring selector
+    select
+      $!?selector:$ ?selector
+    or
+      $!?$
+      selector = "".here
+    end
+    select
+      $identifier$ ?let outputInputActualParameterName
+      var structAttributeList = @lstringlist ()
+      repeat
+      while
+        $.$
+        $identifier$ ?let structAttributeName
+        structAttributeList += !structAttributeName
+      end
+      ioActualParameterList += !@outputInputActualParameterAST {
+        !selector
+        !outputInputActualParameterName
+        !structAttributeList
+      }
+    or
+      $%from$
+      <expression_ggs3> (!?ioDeclarations, ?let initializerCall)
+      ioActualParameterList += !@outputInputJokerParameterAST (selector, initializerCall)
+    or
+      $self$
+      ioActualParameterList += !@outputInputSelfParameterAST {!selector}
+    end
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  // Actual output argument
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  rule <actual_parameter_ggs3> (?!@galgasDeclarationAST ioDeclarations,
+                          ?!@actualParameterListAST ioActualParameterList ) {
+    let @lstring selector
+    select
+      $!selector:$ ?selector
+    or
+      $!$
+      selector = "".here
+    end
+    <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST e)
+    let @location endOfExpressionLocation = @location.here
+    ioActualParameterList += !@outputActualParameterAST {
+      !selector
+      !e
+      !endOfExpressionLocation
+    }
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  rule <actual_parameter_ggs3> (?!@galgasDeclarationAST ioDeclarations,
+                          ?!@actualParameterListAST ioActualParameterList ) {
+    let selector = "".here
+    <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST e)
+    let @location endOfExpressionLocation = @location.here
+    ioActualParameterList += !@outputActualParameterAST {
+      !selector
+      !e
+      !endOfExpressionLocation
+    }
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+//  rule <poisoned_var_list> (!@lstringlist outPoisonedVarNameList ) {
+//    outPoisonedVarNameList = @()
+//  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+//  rule <poisoned_var_list> (!@lstringlist outPoisonedVarNameList ) {
+//    outPoisonedVarNameList = @()
+//    $spoil$
+//    $($
+//    repeat
+//       $identifier$ ?let varName
+//       outPoisonedVarNameList += !varName
+//    while
+//      $,$
+//    end
+//    $)$
+//  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  F O R M A L    I N P U T    P A R A M E T E R S
@@ -297,7 +696,7 @@ syntax galgas3ParameterArgumentSyntax (galgasScanner3) {
         $let$
         isConstant = true
       end
-      <type_definition_ggs3> (!?ioDeclarations ?let formalParameterTypeName)
+      <type_definition_ggs3> (!?ioDeclarations, ?let formalParameterTypeName)
       let @bool isUnused
       select
         isUnused = false
@@ -320,7 +719,7 @@ syntax galgas3ParameterArgumentSyntax (galgasScanner3) {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <formal_input_parameter_list_ggs34> (?!@galgasDeclarationAST ioDeclarations,
-                                     !@formalInputParameterListAST outFormalInputParameterList ) {
+                                            !@formalInputParameterListAST outFormalInputParameterList ) {
     outFormalInputParameterList = @()
     $($
     select
@@ -345,7 +744,7 @@ syntax galgas3ParameterArgumentSyntax (galgasScanner3) {
           $let$
           isConstant = true
         end
-        <type_definition_ggs3> (!?ioDeclarations ?let formalParameterTypeName)
+        <type_definition_ggs3> (!?ioDeclarations, ?let formalParameterTypeName)
         let @bool isUnused
         select
           isUnused = false
@@ -378,12 +777,14 @@ syntax galgas3ParameterArgumentSyntax (galgasScanner3) {
   rule <poisoned_var_list_ggs3> (!@lstringlist outPoisonedVarNameList ) {
     outPoisonedVarNameList = @()
     $spoil$
+    $($
     repeat
        $identifier$ ?let varName
        outPoisonedVarNameList += !varName
     while
       $,$
     end
+    $)$
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -467,7 +868,7 @@ syntax galgas4ParameterArgumentSyntax (galgasScanner4) {
           selector = "".here
           formalParameterPassingMode = .argumentOut
         end
-        <type_definition> (!?ioDeclarations ?let formalParameterTypeName)
+        <type_definition> (!?ioDeclarations, ?let formalParameterTypeName)
         let @bool isUnused
         select
           isUnused = false
@@ -500,7 +901,7 @@ syntax galgas4ParameterArgumentSyntax (galgasScanner4) {
     select
     or
       repeat
-         <actual_parameter> (!?ioDeclarations !?outActualParameterList)
+         <actual_parameter> (!?ioDeclarations, !?outActualParameterList)
        while
          $,$
       end
@@ -573,7 +974,7 @@ syntax galgas4ParameterArgumentSyntax (galgasScanner4) {
       select
         declarationTypeName = "".nowhere
       or
-        <type_definition> (!?ioDeclarations ?declarationTypeName)
+        <type_definition> (!?ioDeclarations, ?declarationTypeName)
       end
       $identifier$ ?let inputActualParameterName
       <poisoned_var_list> (?let poisonedVarNameList)
@@ -584,7 +985,7 @@ syntax galgas4ParameterArgumentSyntax (galgasScanner4) {
         !poisonedVarNameList
       }
     or // input parameter, new variable, explicit type
-      <type_definition> (!?ioDeclarations ?let declarationTypeName)
+      <type_definition> (!?ioDeclarations, ?let declarationTypeName)
       $identifier$ ?let inputActualParameterName
       <poisoned_var_list> (?let poisonedVarNameList)
       ioActualParameterList += !@inputActualNewVariableParameterAST {
@@ -599,7 +1000,7 @@ syntax galgas4ParameterArgumentSyntax (galgasScanner4) {
       select
         declarationTypeName = "".nowhere
       or
-        <type_definition> (!?ioDeclarations ?declarationTypeName)
+        <type_definition> (!?ioDeclarations, ?declarationTypeName)
       end
       let @bool markedAsUnused
       select
@@ -649,7 +1050,7 @@ syntax galgas4ParameterArgumentSyntax (galgasScanner4) {
       }
     or
       $%from$
-      <expression> (!?ioDeclarations ?let initializerCall)
+      <expression> (!?ioDeclarations, ?let initializerCall)
       ioActualParameterList += !@outputInputJokerParameterAST (selector, initializerCall)
     or
       $self$
@@ -670,7 +1071,7 @@ syntax galgas4ParameterArgumentSyntax (galgasScanner4) {
       $!$
       selector = "".here
     end
-    <expression> (!?ioDeclarations ?let @semanticExpressionAST e)
+    <expression> (!?ioDeclarations, ?let @semanticExpressionAST e)
     let @location endOfExpressionLocation = @location.here
     ioActualParameterList += !@outputActualParameterAST {
       !selector
@@ -684,7 +1085,7 @@ syntax galgas4ParameterArgumentSyntax (galgasScanner4) {
   rule <actual_parameter> (?!@galgasDeclarationAST ioDeclarations,
                           ?!@actualParameterListAST ioActualParameterList ) {
     let selector = "".here
-    <expression> (!?ioDeclarations ?let @semanticExpressionAST e)
+    <expression> (!?ioDeclarations, ?let @semanticExpressionAST e)
     let @location endOfExpressionLocation = @location.here
     ioActualParameterList += !@outputActualParameterAST {
       !selector
@@ -723,7 +1124,7 @@ syntax galgas4ParameterArgumentSyntax (galgasScanner4) {
         or
           isConstant = true
         end
-        <type_definition> (!?ioDeclarations ?let formalParameterTypeName)
+        <type_definition> (!?ioDeclarations, ?let formalParameterTypeName)
         let @bool isUnused
         select
           isUnused = false

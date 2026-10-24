@@ -30,12 +30,12 @@ proc enterClassMethodWithInputArgument
   ?argName:let @string inArgumentName,
   ?compilerArgument:let @bool inHasCompilerArgument
 ) {
-  !?ioUnifiedTypeMap.makeEntryFromString (!inArgumentTypeName ?let argumentTypeIndex)
+  !?ioUnifiedTypeMap.makeEntryFromString (!inArgumentTypeName, ?let argumentTypeIndex)
   var @formalParameterSignature argList = @()
   argList += !"".nowhere !argumentTypeIndex !.argumentConstantIn !inArgumentName
   !?ioClassMethodMap.insertOrReplace
-    (!@{!inClassMethodName !.here}
-    !argList
+    (!@{!inClassMethodName !.here},
+    !argList,
     !inHasCompilerArgument
   )
 }
@@ -56,16 +56,16 @@ proc enterClassMethodWith3InputArguments
 ) {
   var @formalParameterSignature argList = @()
 //--- Argument 1
-  !?ioUnifiedTypeMap.makeEntryFromString (!inArgumentTypeName1 ?let argumentTypeIndex1)
+  !?ioUnifiedTypeMap.makeEntryFromString (!inArgumentTypeName1, ?let argumentTypeIndex1)
   argList += !"".nowhere !argumentTypeIndex1 !.argumentConstantIn !inArgumentName1
 //--- Argument 2
-  !?ioUnifiedTypeMap.makeEntryFromString (!inArgumentTypeName2 ?let argumentTypeIndex2)
+  !?ioUnifiedTypeMap.makeEntryFromString (!inArgumentTypeName2, ?let argumentTypeIndex2)
   argList += !"".nowhere !argumentTypeIndex2 !.argumentConstantIn !inArgumentName2
 //--- Argument 3
-  !?ioUnifiedTypeMap.makeEntryFromString (!inArgumentTypeName3 ?let argumentTypeIndex3)
+  !?ioUnifiedTypeMap.makeEntryFromString (!inArgumentTypeName3, ?let argumentTypeIndex3)
   argList += !"".nowhere !argumentTypeIndex3 !.argumentConstantIn !inArgumentName3
 //---
-  !?ioClassMethodMap.insertOrReplace (!@{!inClassMethodName !.here} !argList !inHasCompilerArgument)
+  !?ioClassMethodMap.insertOrReplace (!@{!inClassMethodName !.here}, !argList, !inHasCompilerArgument)
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -77,12 +77,12 @@ proc enterClassMethodWithStringInputArgument
   ?argName:let @string inStringArgumentName,
   ?compilerArg:let @bool inHasCompilerArgument
 ) {
-  !?ioUnifiedTypeMap.makeEntryFromString (!"string" ?let argumentTypeIndex)
+  !?ioUnifiedTypeMap.makeEntryFromString (!"string", ?let argumentTypeIndex)
   var @formalParameterSignature argList = @()
   argList += !"".nowhere !argumentTypeIndex !.argumentConstantIn !inStringArgumentName
   !?ioClassMethodMap.insertOrReplace
-    (!@{!inClassMethodName !.here}
-    !argList
+    (!@{!inClassMethodName !.here},
+    !argList,
     !inHasCompilerArgument
   )
 }

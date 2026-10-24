@@ -44,7 +44,7 @@ syntax extension galgas3InstructionsSyntax {
     $var$
     $identifier$ ?let variableName
     $=$
-    <expression_ggs3> (!?ioDeclarations ?let @semanticExpressionAST sourceExpression)
+    <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST sourceExpression)
     outInstruction = @localVariableDeclarationWithAssignmentAST {
       !variableName.location
       !variableName
@@ -57,7 +57,7 @@ syntax extension galgas3InstructionsSyntax {
   rule <semantic_instruction_ggs3> (?!@galgasDeclarationAST ioDeclarations,
                                     !@semanticInstructionAST outInstruction) {
     $var$
-    <type_definition_ggs3> (!?ioDeclarations ?let typeName)
+    <type_definition_ggs3> (!?ioDeclarations, ?let typeName)
     $identifier$ ?let variableName
     select
       outInstruction = @localVariableDeclarationNoAssignmentAST {
@@ -67,7 +67,7 @@ syntax extension galgas3InstructionsSyntax {
       }
     or
       $=$
-      <expression_ggs3> (!?ioDeclarations ?let @semanticExpressionAST sourceExpression)
+      <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST sourceExpression)
       outInstruction = @localVariableOrConstantDeclarationWithAssignmentAST {
         !typeName.location
         !false
@@ -93,7 +93,7 @@ syntax extension galgas4InstructionsSyntax {
     $var$
     $identifier$ ?let variableName
     $=$
-    <expression> (!?ioDeclarations ?let @semanticExpressionAST sourceExpression)
+    <expression> (!?ioDeclarations, ?let @semanticExpressionAST sourceExpression)
     outInstruction = @localVariableDeclarationWithAssignmentAST {
       !variableName.location
       !variableName
@@ -106,13 +106,13 @@ syntax extension galgas4InstructionsSyntax {
   rule <semantic_instruction> (?!@galgasDeclarationAST ioDeclarations,
                                !@semanticInstructionAST outInstruction) {
     $var$
-    <type_definition> (!?ioDeclarations ?let typeName)
+    <type_definition> (!?ioDeclarations, ?let typeName)
     $identifier$ ?let variableName
     select
       outInstruction = @localVariableDeclarationNoAssignmentAST {!typeName.location !typeName !variableName}
     or
       $=$
-      <expression> (!?ioDeclarations ?let @semanticExpressionAST sourceExpression)
+      <expression> (!?ioDeclarations, ?let @semanticExpressionAST sourceExpression)
       outInstruction = @localVariableOrConstantDeclarationWithAssignmentAST {
         !typeName.location
         !false
@@ -148,21 +148,21 @@ override proc @localVariableDeclarationWithAssignmentAST analyzeSemanticInstruct
                         ?!@localVarManager ioVariableMap) {
 //--- Analyze source expression
   self.mSourceExpression.analyzeSemanticExpression
-    (!usefulnessCallerEntityName: inUsefulnessCallerEntityName
-    !?ioUsefulEntitiesGraph
-    !inferenceType: @unifiedTypeMapEntry.null
-    !inAnalysisContext
-    !?ioTypeMap
-    !?ioVariableMap
+    (!usefulnessCallerEntityName: inUsefulnessCallerEntityName,
+    !?ioUsefulEntitiesGraph,
+    !inferenceType: @unifiedTypeMapEntry.null,
+    !inAnalysisContext,
+    !?ioTypeMap,
+    !?ioVariableMap,
     ?let @semanticExpressionForGeneration expression
   )
 //--- Check target variable
   let targetVariableCppName = "var_" + self.mVariableName.string.identifierRepresentation + "_" + self.mVariableName.location.startLocationIndex
   !?ioVariableMap.insertInitializedLocalVariable
-    (!self.mVariableName
-    !warnsIfNotMutated: true
-    !expression.mResultType
-    !targetVariableCppName
+    (!self.mVariableName,
+    !warnsIfNotMutated: true,
+    !expression.mResultType,
+    !targetVariableCppName,
     !targetVariableCppName
   )
 //--- Generate instruction
@@ -179,7 +179,7 @@ override proc @localVariableDeclarationWithAssignmentAST analyzeSemanticInstruct
 //--------------------------------------------------------------------------------------------------
 
 override proc @localVariableDeclarationNoAssignmentAST enterInstructionInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
-  !?ioTypeMap.makeEntry (!self.mTypeName ?*)
+  !?ioTypeMap.makeEntry (!self.mTypeName, ?*)
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -196,9 +196,9 @@ override proc @localVariableDeclarationNoAssignmentAST analyzeSemanticInstructio
   let targetType = [ioTypeMap typeMapEntryForLKey !self.mTypeName]
   let targetVariableCppName = "var_" + self.mVariableName.string.identifierRepresentation + "_" + self.mVariableName.location.startLocationIndex
   !?ioVariableMap.insertDeclaredLocalVariable
-    (!self.mVariableName
-    !targetType
-    !targetVariableCppName
+    (!self.mVariableName,
+    !targetType,
+    !targetVariableCppName,
     !targetVariableCppName
   )
 //--- Generate instruction

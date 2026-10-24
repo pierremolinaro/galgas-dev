@@ -129,9 +129,9 @@ syntax extension galgas3DeclarationsSyntax {
   rule <type_definition_ggs3> (?!@galgasDeclarationAST ioDeclarations,
                               !@lstring outTypeName ) {
     $[$
-    <type_definition_ggs3> (!?ioDeclarations ?outTypeName)
+    <type_definition_ggs3> (!?ioDeclarations, ?outTypeName)
     $:$
-    <type_definition_ggs3> (!?ioDeclarations ?*)
+    <type_definition_ggs3> (!?ioDeclarations, ?*)
     error (.here : "Not handled yet")
     $]$
   }
@@ -140,10 +140,10 @@ syntax extension galgas3DeclarationsSyntax {
 
   rule <type_definition_ggs3> (?!@galgasDeclarationAST ioDeclarations,
                               !@lstring outTypeName ) {
-    <type_definition_ggs3> (!?ioDeclarations ?outTypeName)
+    <type_definition_ggs3> (!?ioDeclarations, ?outTypeName)
     $<$
     repeat
-      <type_definition_ggs3> (!?ioDeclarations ?let t)
+      <type_definition_ggs3> (!?ioDeclarations, ?let t)
       error (t : "not handled yet")
     while
       $,$
@@ -155,10 +155,10 @@ syntax extension galgas3DeclarationsSyntax {
 
   rule <type_definition_ggs3> (?!@galgasDeclarationAST ioDeclarations,
                               !@lstring outTypeName ) {
-    <type_definition_ggs3> (!?ioDeclarations ?outTypeName)
+    <type_definition_ggs3> (!?ioDeclarations, ?outTypeName)
     $?$
     let unwrappedTypeName = outTypeName
-    !?ioDeclarations.getOptionalTypeName (?outTypeName !forTypeNamed: unwrappedTypeName !isPredefined: false)
+    !?ioDeclarations.getOptionalTypeName (?outTypeName, !forTypeNamed: unwrappedTypeName, !isPredefined: false)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -167,7 +167,7 @@ syntax extension galgas3DeclarationsSyntax {
                               !@lstring outTypeName ) {
     $($
     repeat
-      <type_definition_ggs3> (!?ioDeclarations ?outTypeName)
+      <type_definition_ggs3> (!?ioDeclarations, ?outTypeName)
     while
       $,$
     end
@@ -201,16 +201,16 @@ syntax extension galgas4DeclarationsSyntax {
 
   rule <type_definition> (?!@galgasDeclarationAST ioDeclarations,
                          !@lstring outTypeName ) {
-    <simple_type_definition> (!?ioDeclarations ?outTypeName)
+    <simple_type_definition> (!?ioDeclarations, ?outTypeName)
     repeat
     while
       $.$
-      <simple_type_definition> (!?ioDeclarations ?let typeName)
+      <simple_type_definition> (!?ioDeclarations, ?let typeName)
       outTypeName = makeEmbeddedTypeLName (!outer: outTypeName !inner: typeName)
     while
       $<$
       repeat
-        <type_definition> (!?ioDeclarations ?let t)
+        <type_definition> (!?ioDeclarations, ?let t)
         error (t : "not handled yet")
       while
         $,$
@@ -222,7 +222,7 @@ syntax extension galgas4DeclarationsSyntax {
     or
       $?$
       let unwrappedTypeName = outTypeName
-      !?ioDeclarations.getOptionalTypeName (?outTypeName !forTypeNamed: unwrappedTypeName !isPredefined: false)
+      !?ioDeclarations.getOptionalTypeName (?outTypeName, !forTypeNamed: unwrappedTypeName, !isPredefined: false)
     end
   }
 
@@ -238,7 +238,7 @@ syntax extension galgas4DeclarationsSyntax {
   rule <simple_type_definition> (?!@galgasDeclarationAST ioDeclarations,
                                 !@lstring outTypeName ) {
     $[$
-    <type_definition> (!?ioDeclarations ?outTypeName)
+    <type_definition> (!?ioDeclarations, ?outTypeName)
     select
       let elementTypeName = outTypeName
       outTypeName = makeArrayTypeLName (!elementTypeName)
@@ -254,7 +254,7 @@ syntax extension galgas4DeclarationsSyntax {
       end
     or
       $:$
-      <type_definition> (!?ioDeclarations ?*)
+      <type_definition> (!?ioDeclarations, ?*)
       error (.here : "Not handled yet")
       end
     $]$
@@ -266,7 +266,7 @@ syntax extension galgas4DeclarationsSyntax {
                                 !@lstring outTypeName ) {
     $($
     repeat
-      <type_definition> (!?ioDeclarations ?outTypeName)
+      <type_definition> (!?ioDeclarations, ?outTypeName)
     while
       $,$
     end

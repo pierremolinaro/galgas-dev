@@ -18,7 +18,7 @@ rule <StartSymbol>
   !@uint outValue
 
 )rule <StartSymbol> () {
-  <Expression> (?let unused expressionTree ?let value)
+  <Expression> (?let unused expressionTree, ?let value)
   log value
 }
   
@@ -34,11 +34,11 @@ rule <Expression>
   (!@cExpression outExpressionTree,
   !@uint outValue ) {
   select
-    <Terme> (?outExpressionTree ?outValue)
+    <Terme> (?outExpressionTree, ?outValue)
   or 
-    <Expression> (?outExpressionTree ?outValue)
+    <Expression> (?outExpressionTree, ?outValue)
     $+$
-    <Terme> (?let rightOperand ?let v)
+    <Terme> (?let rightOperand, ?let v)
     outExpressionTree = @cAdd { ! outExpressionTree !rightOperand}
     outValue = outValue + v
   end
@@ -48,11 +48,11 @@ rule <Terme>
   (!@cExpression outExpressionTree,
   !@uint outValue ) {
   select
-    <Facteur> (?outExpressionTree ?outValue)
+    <Facteur> (?outExpressionTree, ?outValue)
   or 
-    <Terme> (?outExpressionTree ?outValue)
+    <Terme> (?outExpressionTree, ?outValue)
     $*$
-    <Facteur> (?let rightOperand ?let v)
+    <Facteur> (?let rightOperand, ?let v)
     outExpressionTree = @cAdd { ! outExpressionTree !rightOperand}
     outValue = outValue * v
   end
@@ -63,10 +63,10 @@ rule <Facteur>
   !@uint outValue ) {
   select
     $($
-    <Expression> (?outExpressionTree ?outValue)
+    <Expression> (?outExpressionTree, ?outValue)
     $)$
   or
-    <Constant> (?outExpressionTree ?outValue)
+    <Constant> (?outExpressionTree, ?outValue)
   end
 }
 

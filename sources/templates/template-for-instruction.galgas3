@@ -135,7 +135,7 @@ syntax extension templateSyntax {
       $>$
       ascending = false
     end
-    <for_instruction_enumerated_object> (?let enumeration ?let endOfProperties ?let expression)
+    <for_instruction_enumerated_object> (?let enumeration, ?let endOfProperties, ?let expression)
   //--- before block
     var @templateInstructionListAST beforeInstructionList = @()
     select
@@ -217,10 +217,10 @@ override proc @templateInstructionForeachAST templateInstructionAnalysis
 ) {
 //--- Foreach expression
   self.mExpression.templateExpressionAnalysis
-    (!inUsefulnessCallerEntityName
-    !?ioUsefulEntitiesGraph
-    !inAnalysisContext
-    !?ioTypeMap
+    (!inUsefulnessCallerEntityName,
+    !?ioUsefulEntitiesGraph,
+    !inAnalysisContext,
+    !?ioTypeMap,
     ?let expression
   )
 //--- Check expression is enumerable (empty List if cannot be enumerated)
@@ -231,11 +231,11 @@ override proc @templateInstructionForeachAST templateInstructionAnalysis
 //--- Before instructions
   var beforeInstructionList = @templateInstructionListForGeneration ()
   templateInstructionListAnalysis (
-    !inUsefulnessCallerEntityName
-    !?ioUsefulEntitiesGraph
-    !inAnalysisContext
-    !?ioTypeMap
-    !self.mBeforeInstructionList
+    !inUsefulnessCallerEntityName,
+    !?ioUsefulEntitiesGraph,
+    !inAnalysisContext,
+    !?ioTypeMap,
+    !self.mBeforeInstructionList,
     !?beforeInstructionList
   )
 //--- Do instructions
@@ -244,7 +244,7 @@ override proc @templateInstructionForeachAST templateInstructionAnalysis
   let cppIndexVarName = "index_" + self.mIndexIdentifier.location.startLocationIndex.string
     + "_" + self.mIndexIdentifier.string.identifierRepresentation
   if self.mIndexIdentifier.string != "" then
-    !?doVariableMap.insertKey (!self.mIndexIdentifier !inAnalysisContext.mPredefinedTypes.mUIntType !cppIndexVarName)
+    !?doVariableMap.insertKey (!self.mIndexIdentifier, !inAnalysisContext.mPredefinedTypes.mUIntType, !cppIndexVarName)
   end
   if self.mEnumeration.count != enumerationDescriptor.count then
     error (self.mEndOfProperties
@@ -255,8 +255,8 @@ override proc @templateInstructionForeachAST templateInstructionAnalysis
         (optionalConstantName) in self.mEnumeration do
       if optionalConstantName.string != "" then // Empty string for joker
         !?doVariableMap.insertKey
-          (!optionalConstantName
-          !enumeratedType
+          (!optionalConstantName,
+          !enumeratedType,
           !enumeratorCppName +".current_" + enumerationName.identifierRepresentation + " (HERE)"
         )
       end
@@ -268,31 +268,31 @@ override proc @templateInstructionForeachAST templateInstructionAnalysis
     !doVariableMap}
   var doInstructionList = @templateInstructionListForGeneration ()
   templateInstructionListAnalysis (
-    !inUsefulnessCallerEntityName
-    !?ioUsefulEntitiesGraph
-    !doAnalysisContext
-    !?ioTypeMap
-    !self.mDoInstructionList
+    !inUsefulnessCallerEntityName,
+    !?ioUsefulEntitiesGraph,
+    !doAnalysisContext,
+    !?ioTypeMap,
+    !self.mDoInstructionList,
     !?doInstructionList
   )
 //--- Between instructions
   var betweenInstructionList = @templateInstructionListForGeneration ()
   templateInstructionListAnalysis (
-    !inUsefulnessCallerEntityName
-    !?ioUsefulEntitiesGraph
-    !inAnalysisContext
-    !?ioTypeMap
-    !self.mBetweenInstructionList
+    !inUsefulnessCallerEntityName,
+    !?ioUsefulEntitiesGraph,
+    !inAnalysisContext,
+    !?ioTypeMap,
+    !self.mBetweenInstructionList,
     !?betweenInstructionList
   )
 //--- After instructions
   var afterInstructionList = @templateInstructionListForGeneration ()
   templateInstructionListAnalysis (
-    !inUsefulnessCallerEntityName
-    !?ioUsefulEntitiesGraph
-    !inAnalysisContext
-    !?ioTypeMap
-    !self.mAfterInstructionList
+    !inUsefulnessCallerEntityName,
+    !?ioUsefulEntitiesGraph,
+    !inAnalysisContext,
+    !?ioTypeMap,
+    !self.mAfterInstructionList,
     !?afterInstructionList
   )
 //---
@@ -332,7 +332,7 @@ override proc @templateInstructionForeachForGeneration templateCodeGeneration
   ?!@stringset ioUnusedVariableCppNameSet,
   ?!@bool ioUseColumnMarker ) {
 //---
-  self.mExpression.generateExpression (!?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?let foreachVarCppName)
+  self.mExpression.generateExpression (!?ioGeneratedCode, !?ioInclusionSet, !?ioTemporaryVariableIndex, !?ioUnusedVariableCppNameSet, ?let foreachVarCppName)
 //--- Index
   if self.mIndexCppName.count > 0 then
     ioGeneratedCode += "GGS_uint " + self.mIndexCppName + " (0) ;\n"
@@ -351,11 +351,11 @@ override proc @templateInstructionForeachForGeneration templateCodeGeneration
     ioGeneratedCode += "if (nonEmpty_" + self.mEnumeratorCppName + ") {\n"
     !?ioGeneratedCode.incIndentation (!2)
     templateCodeGenerationForListInstruction (
-      !self.mBeforeInstructionList
-      !?ioGeneratedCode
-      !?ioInclusionSet
-      !?ioTemporaryVariableIndex
-      !?ioUnusedVariableCppNameSet
+      !self.mBeforeInstructionList,
+      !?ioGeneratedCode,
+      !?ioInclusionSet,
+      !?ioTemporaryVariableIndex,
+      !?ioUnusedVariableCppNameSet,
       !?ioUseColumnMarker
     )
     !?ioGeneratedCode.decIndentation (!2)
@@ -365,11 +365,11 @@ override proc @templateInstructionForeachForGeneration templateCodeGeneration
   !?ioGeneratedCode.incIndentation (!2)
 //--- Do
   templateCodeGenerationForListInstruction (
-    !self.mDoInstructionList
-    !?ioGeneratedCode
-    !?ioInclusionSet
-    !?ioTemporaryVariableIndex
-    !?ioUnusedVariableCppNameSet
+    !self.mDoInstructionList,
+    !?ioGeneratedCode,
+    !?ioInclusionSet,
+    !?ioTemporaryVariableIndex,
+    !?ioUnusedVariableCppNameSet,
     !?ioUseColumnMarker
   )
 //--- Advance
@@ -379,11 +379,11 @@ override proc @templateInstructionForeachForGeneration templateCodeGeneration
     ioGeneratedCode += "if (" + self.mEnumeratorCppName + ".hasCurrentObject ()) {\n"
     !?ioGeneratedCode.incIndentation (!2)
     templateCodeGenerationForListInstruction (
-      !self.mBetweenInstructionList
-      !?ioGeneratedCode
-      !?ioInclusionSet
-      !?ioTemporaryVariableIndex
-      !?ioUnusedVariableCppNameSet
+      !self.mBetweenInstructionList,
+      !?ioGeneratedCode,
+      !?ioInclusionSet,
+      !?ioTemporaryVariableIndex,
+      !?ioUnusedVariableCppNameSet,
       !?ioUseColumnMarker
     )
     !?ioGeneratedCode.decIndentation (!2)
@@ -400,11 +400,11 @@ override proc @templateInstructionForeachForGeneration templateCodeGeneration
     ioGeneratedCode += "if (nonEmpty_" + self.mEnumeratorCppName + ") {\n"
     !?ioGeneratedCode.incIndentation (!2)
     templateCodeGenerationForListInstruction (
-      !self.mAfterInstructionList
-      !?ioGeneratedCode
-      !?ioInclusionSet
-      !?ioTemporaryVariableIndex
-      !?ioUnusedVariableCppNameSet
+      !self.mAfterInstructionList,
+      !?ioGeneratedCode,
+      !?ioInclusionSet,
+      !?ioTemporaryVariableIndex,
+      !?ioUnusedVariableCppNameSet,
       !?ioUseColumnMarker
     )
     !?ioGeneratedCode.decIndentation (!2)

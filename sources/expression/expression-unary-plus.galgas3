@@ -36,7 +36,7 @@ syntax extension galgas3ExpressionSyntax {
                      !@semanticExpressionAST outExpression ) {
     let operatorLocation = @location.here
     $+$
-    <factor_ggs3> (!?ioDeclarations ?outExpression)
+    <factor_ggs3> (!?ioDeclarations, ?outExpression)
     outExpression = @unaryPlusExpressionAST {!operatorLocation !outExpression}
   }
 
@@ -54,7 +54,7 @@ syntax extension galgas4ExpressionSyntax {
                 !@semanticExpressionAST outExpression ) {
     let operatorLocation = @location.here
     $+$
-    <factor> (!?ioDeclarations ? outExpression)
+    <factor> (!?ioDeclarations, ? outExpression)
     outExpression = @unaryPlusExpressionAST {!operatorLocation !outExpression}
   }
 
@@ -84,12 +84,12 @@ override proc @unaryPlusExpressionAST analyzeSemanticExpression
   !@semanticExpressionForGeneration outExpression ) {
 //--- Expression analysis
   self.mExpression.analyzeSemanticExpression
-    (!usefulnessCallerEntityName: inUsefulnessCallerEntityName
-    !?ioUsefulEntitiesGraph
-    !inferenceType: .null
-    !inAnalysisContext
-    !?ioTypeMap
-    !?ioVariableMap
+    (!usefulnessCallerEntityName: inUsefulnessCallerEntityName,
+    !?ioUsefulEntitiesGraph,
+    !inferenceType: .null,
+    !inAnalysisContext,
+    !?ioTypeMap,
+    !?ioVariableMap,
     ?outExpression
   )
 //--- Check operator availability

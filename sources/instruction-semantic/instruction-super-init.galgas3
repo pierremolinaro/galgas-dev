@@ -46,7 +46,7 @@ syntax extension galgas3InstructionsSyntax {
     $.$
     $init$
     $($
-    <output_expression_list_ggs34> (!?ioDeclarations ?let actualParameterList)
+    <output_expression_list_ggs34> (!?ioDeclarations, ?let actualParameterList)
     $)$
     outInstruction = @superInitInstructionAST {
       !instructionLocation
@@ -71,7 +71,7 @@ syntax extension galgas4InstructionsSyntax {
     $init$
     let instructionLocation = @location.here
     $($
-    <output_expression_list> (!?ioDeclarations ?let actualParameterList)
+    <output_expression_list> (!?ioDeclarations, ?let actualParameterList)
     $)$
     outInstruction = @superInitInstructionAST {
       !instructionLocation
@@ -115,12 +115,12 @@ final class @superInitInstructionAST : @semanticInstructionAST {
       //--- Check super initializer is defined
         let superClassInitializerMap = superTypeDefinition.initializerMap
         let signature = @lstring {!self.mActualParameterList.initializerSignature !self.mInstructionLocation}
-        superClassInitializerMap.searchKey (!signature ?let formalSignature)
+        superClassInitializerMap.searchKey (!signature, ?let formalSignature)
       //--- Mark all super properties are defined
         for superProperty in superTypeDefinition.allTypedPropertyList do
           if superProperty.initialization == .none then
             !?ioVariableMap.searchForWriteAccess
-              (!@{!"self." + superProperty.name !self.mInstructionLocation}
+              (!@{!"self." + superProperty.name !self.mInstructionLocation},
               ?3*
             )
           end
@@ -132,18 +132,18 @@ final class @superInitInstructionAST : @semanticInstructionAST {
         var actualParameterListForGeneration = @semanticExpressionListForGeneration ()
         for formalArg in formalSignature, actualArg in self.mActualParameterList do
           actualArg.mExpression.analyzeSemanticExpression
-            (!usefulnessCallerEntityName: inUsefulnessCallerEntityName
-            !?ioUsefulEntitiesGraph
-            !inferenceType: formalArg.mFormalArgumentType
-            !inAnalysisContext
-            !?ioTypeMap
-            !?ioVariableMap
+            (!usefulnessCallerEntityName: inUsefulnessCallerEntityName,
+            !?ioUsefulEntitiesGraph,
+            !inferenceType: formalArg.mFormalArgumentType,
+            !inAnalysisContext,
+            !?ioTypeMap,
+            !?ioVariableMap,
             ?@semanticExpressionForGeneration expression
           )
           checkAssignmentTypeWithImplicitGetterCall (
-            !formalArg.mFormalArgumentType
-            !expression.mResultType
-            !actualArg.mEndOfExpressionLocation
+            !formalArg.mFormalArgumentType,
+            !expression.mResultType,
+            !actualArg.mEndOfExpressionLocation,
             !?expression
           )
           if formalArg.mFormalSelector.string != actualArg.mActualSelector.string then
@@ -196,10 +196,10 @@ final class @superInitInstructionForGeneration : @semanticInstructionForGenerati
     var @stringlist getterArgumentCppNameList = @()
     for (mExpression) in self.mActualParameterList do
       mExpression.generateExpression
-        (!?ioGeneratedCode
-        !?ioInclusionSet
-        !?ioTemporaryVariableIndex
-        !?ioUnusedVariableCppNameSet
+        (!?ioGeneratedCode,
+        !?ioInclusionSet,
+        !?ioTemporaryVariableIndex,
+        !?ioUnusedVariableCppNameSet,
         ?let argumentCppName
       )
       getterArgumentCppNameList += !argumentCppName

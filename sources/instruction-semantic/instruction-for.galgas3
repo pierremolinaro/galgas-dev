@@ -102,7 +102,7 @@ syntax extension galgas3InstructionsSyntax {
     select
       typeName = "".nowhere
     or
-      <type_definition_ggs3> (!?ioDeclarations ?typeName)
+      <type_definition_ggs3> (!?ioDeclarations, ?typeName)
     end
     select
       $*$
@@ -127,13 +127,13 @@ syntax extension galgas3InstructionsSyntax {
     $($
     var elementList = @forInstructionEnumeratedObjectElementListAST ()
     repeat
-      <for_instruction_element> (!?ioDeclarations !?elementList)
+      <for_instruction_element> (!?ioDeclarations, !?elementList)
     while
     end
     let location = @location.here
     $)$
     $in$
-    <expression_ggs3> (!?ioDeclarations ?let @semanticExpressionAST enumeratedExpression)
+    <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST enumeratedExpression)
     outEnumeratedObject = @enumeratedCollectionCstListInExpAST {
       !elementList
       !enumeratedExpression
@@ -149,7 +149,7 @@ syntax extension galgas3InstructionsSyntax {
     select
       typeName = "".nowhere
     or
-      <type_definition_ggs3> (!?ioDeclarations ?typeName)
+      <type_definition_ggs3> (!?ioDeclarations, ?typeName)
     end
     let @lstring enumerationVariable
     select
@@ -159,7 +159,7 @@ syntax extension galgas3InstructionsSyntax {
       $identifier$ ?enumerationVariable
     end
     $in$
-    <expression_ggs3> (!?ioDeclarations ?let @semanticExpressionAST enumeratedExpression)
+    <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST enumeratedExpression)
     outEnumeratedObject = @enumeratedCollectionVarInExpAST {
       !typeName
       !enumerationVariable
@@ -183,7 +183,7 @@ syntax extension galgas3InstructionsSyntax {
         $>$
         ascending = false
       end
-      <for_instruction_enumerated_object> (!?ioDeclarations ?let @abstractEnumeratedCollectionAST enumeratedObject)
+      <for_instruction_enumerated_object> (!?ioDeclarations, ?let @abstractEnumeratedCollectionAST enumeratedObject)
       mEnumeratedObjectList += !ascending !enumeratedObject
     while
       $,$
@@ -193,7 +193,7 @@ syntax extension galgas3InstructionsSyntax {
       mWhileExpression = @trueExpressionAST {!@location.here}
     or
       $while$
-      <expression_ggs3> (!?ioDeclarations ? mWhileExpression)
+      <expression_ggs3> (!?ioDeclarations, ? mWhileExpression)
     end
     let endof_while_expression = @location.here
     let @semanticInstructionListAST mBeforeInstructionList
@@ -201,7 +201,7 @@ syntax extension galgas3InstructionsSyntax {
       mBeforeInstructionList = @semanticInstructionListAST ()
     or
       $before$
-      <semantic_instruction_list_ggs3> (!?ioDeclarations ?mBeforeInstructionList)
+      <semantic_instruction_list_ggs3> (!?ioDeclarations, ?mBeforeInstructionList)
     end
     let endof_before_branch = @location.here
     $do$
@@ -213,14 +213,14 @@ syntax extension galgas3InstructionsSyntax {
       $identifier$ ? indexVariableName
       $)$
     end
-    <semantic_instruction_list_ggs3> (!?ioDeclarations ?let mDoInstructionList)
+    <semantic_instruction_list_ggs3> (!?ioDeclarations, ?let mDoInstructionList)
     let endof_do_branch = @location.here
     let @semanticInstructionListAST mBetweenInstructionList
     select
       mBetweenInstructionList = @semanticInstructionListAST ()
     or
       $between$
-      <semantic_instruction_list_ggs3> (!?ioDeclarations ?mBetweenInstructionList)
+      <semantic_instruction_list_ggs3> (!?ioDeclarations, ?mBetweenInstructionList)
     end
     let endof_between_branch = @location.here
     let @semanticInstructionListAST mAfterInstructionList
@@ -228,7 +228,7 @@ syntax extension galgas3InstructionsSyntax {
       mAfterInstructionList = @semanticInstructionListAST ()
     or
       $after$
-      <semantic_instruction_list_ggs3> (!?ioDeclarations ?mAfterInstructionList)
+      <semantic_instruction_list_ggs3> (!?ioDeclarations, ?mAfterInstructionList)
     end
     let endof_after_branch = @location.here
     $end$
@@ -283,7 +283,7 @@ syntax extension galgas4InstructionsSyntax {
     select
       typeName = "".nowhere
     or
-      <type_definition> (!?ioDeclarations ?typeName)
+      <type_definition> (!?ioDeclarations, ?typeName)
     end
     select
       $*$
@@ -308,14 +308,14 @@ syntax extension galgas4InstructionsSyntax {
     $($
     var elementList = @forInstructionEnumeratedObjectElementListAST ()
     repeat
-      <for_instruction_element> (!?ioDeclarations !?elementList)
+      <for_instruction_element> (!?ioDeclarations, !?elementList)
     while
       $,$
     end
     let location = @location.here
     $)$
     $in$
-    <expression> (!?ioDeclarations ?let @semanticExpressionAST enumeratedExpression)
+    <expression> (!?ioDeclarations, ?let @semanticExpressionAST enumeratedExpression)
     outEnumeratedObject = @enumeratedCollectionCstListInExpAST {
       !elementList
       !enumeratedExpression
@@ -331,7 +331,7 @@ syntax extension galgas4InstructionsSyntax {
     select
       typeName = "".nowhere
     or
-      <type_definition> (!?ioDeclarations ?typeName)
+      <type_definition> (!?ioDeclarations, ?typeName)
     end
     let @lstring enumerationVariable
     select
@@ -341,7 +341,7 @@ syntax extension galgas4InstructionsSyntax {
       $identifier$ ?enumerationVariable
     end
     $in$
-    <expression> (!?ioDeclarations ?let @semanticExpressionAST enumeratedExpression)
+    <expression> (!?ioDeclarations, ?let @semanticExpressionAST enumeratedExpression)
     outEnumeratedObject = @enumeratedCollectionVarInExpAST {
       !typeName
       !enumerationVariable
@@ -365,7 +365,7 @@ syntax extension galgas4InstructionsSyntax {
         $>$
         ascending = false
       end
-      <for_instruction_enumerated_object> (!?ioDeclarations ?let @abstractEnumeratedCollectionAST enumeratedObject)
+      <for_instruction_enumerated_object> (!?ioDeclarations, ?let @abstractEnumeratedCollectionAST enumeratedObject)
       mEnumeratedObjectList += !ascending !enumeratedObject
     while
       $,$
@@ -375,7 +375,7 @@ syntax extension galgas4InstructionsSyntax {
       mWhileExpression = @trueExpressionAST {!@location.here}
     or
       $while$
-      <expression> (!?ioDeclarations ? mWhileExpression)
+      <expression> (!?ioDeclarations, ? mWhileExpression)
     end
     let endof_while_expression = @location.here
     let @semanticInstructionListAST mBeforeInstructionList
@@ -383,7 +383,7 @@ syntax extension galgas4InstructionsSyntax {
       mBeforeInstructionList = @semanticInstructionListAST ()
     or
       $before$
-      <semantic_instruction_list> (!?ioDeclarations ? mBeforeInstructionList)
+      <semantic_instruction_list> (!?ioDeclarations, ? mBeforeInstructionList)
     end
     let endof_before_branch = @location.here
     $do$
@@ -395,14 +395,14 @@ syntax extension galgas4InstructionsSyntax {
       $identifier$ ? indexVariableName
       $)$
     end
-    <semantic_instruction_list> (!?ioDeclarations ?let mDoInstructionList)
+    <semantic_instruction_list> (!?ioDeclarations, ?let mDoInstructionList)
     let endof_do_branch = @location.here
     let @semanticInstructionListAST mBetweenInstructionList
     select
       mBetweenInstructionList = @semanticInstructionListAST ()
     or
       $between$
-      <semantic_instruction_list> (!?ioDeclarations ? mBetweenInstructionList)
+      <semantic_instruction_list> (!?ioDeclarations, ? mBetweenInstructionList)
     end
     let endof_between_branch = @location.here
     let @semanticInstructionListAST mAfterInstructionList
@@ -410,7 +410,7 @@ syntax extension galgas4InstructionsSyntax {
       mAfterInstructionList = @semanticInstructionListAST ()
     or
       $after$
-      <semantic_instruction_list> (!?ioDeclarations ? mAfterInstructionList)
+      <semantic_instruction_list> (!?ioDeclarations, ? mAfterInstructionList)
     end
     let endof_after_branch = @location.here
     $end$
@@ -495,12 +495,12 @@ override proc @enumeratedCollectionCstListInExpAST analyzeEnumeration (
   !@string outEnumeratorCppName,
   !@semanticExpressionForGeneration outEnumerationExpression) {
   self.mEnumeratedExpression.analyzeSemanticExpression
-    (!usefulnessCallerEntityName: inUsefulnessCallerEntityName
-    !?ioUsefulEntitiesGraph
-    !inferenceType: @unifiedTypeMapEntry.null
-    !inAnalysisContext
-    !?ioTypeMap
-    !?ioVariableMap
+    (!usefulnessCallerEntityName: inUsefulnessCallerEntityName,
+    !?ioUsefulEntitiesGraph,
+    !inferenceType: @unifiedTypeMapEntry.null,
+    !inAnalysisContext,
+    !?ioTypeMap,
+    !?ioVariableMap,
     ?outEnumerationExpression
   )
 //--- Check object can be enumerated
@@ -514,9 +514,9 @@ override proc @enumeratedCollectionCstListInExpAST analyzeEnumeration (
       let currentTypedAttributeList = outEnumerationExpression.mResultType.definition.enumerationDescriptorList
       for (mEnumeratedType mEnumerationName) in currentTypedAttributeList do
        !?ioVariableMap.insertUsedLocalConstant
-         (!@lstring {!mEnumerationName !self.mEndOfEnumerationExpression}
-         !mEnumeratedType
-         !outEnumeratorCppName +".current_" + mEnumerationName.identifierRepresentation + " (HERE)"
+         (!@lstring {!mEnumerationName !self.mEndOfEnumerationExpression},
+         !mEnumeratedType,
+         !outEnumeratorCppName +".current_" + mEnumerationName.identifierRepresentation + " (HERE)",
          !outEnumeratorCppName +".current_" + mEnumerationName.identifierRepresentation + " (HERE)"
        )
       end
@@ -566,12 +566,12 @@ override proc @enumeratedCollectionVarInExpAST analyzeEnumeration (?let @lstring
   !@string outEnumeratorCppName,
   !@semanticExpressionForGeneration outEnumerationExpression) {
   self.mEnumeratedExpression.analyzeSemanticExpression
-    (!usefulnessCallerEntityName: inUsefulnessCallerEntityName
-    !?ioUsefulEntitiesGraph
-    !inferenceType: @unifiedTypeMapEntry.null
-    !inAnalysisContext
-    !?ioTypeMap
-    !?ioVariableMap
+    (!usefulnessCallerEntityName: inUsefulnessCallerEntityName,
+    !?ioUsefulEntitiesGraph,
+    !inferenceType: @unifiedTypeMapEntry.null,
+    !inAnalysisContext,
+    !?ioTypeMap,
+    !?ioVariableMap,
     ?outEnumerationExpression
   )
 //--- Check object can be enumerated
@@ -607,48 +607,48 @@ override proc @forInstructionAST analyzeSemanticInstruction (
 //--- 'before' branch
   !?ioVariableMap.openOverrideForRepeatBlock ()
   analyzeSemanticInstructionList (
-    !inUsefulnessCallerEntityName
-    !?ioUsefulEntitiesGraph
-    !inAnalysisContext
-    !?ioTypeMap
-    !localConstantList: @()
-    !localInitializedVariableListWarnsIfNotMutated: @()
-    !localInitializedVariableListNoWarnsIfNotMutated: @()
-    !self.mBeforeInstructionList
-    !self.mEndOf_before_branch
-    !?ioVariableMap
+    !inUsefulnessCallerEntityName,
+    !?ioUsefulEntitiesGraph,
+    !inAnalysisContext,
+    !?ioTypeMap,
+    !localConstantList: @(),
+    !localInitializedVariableListWarnsIfNotMutated: @(),
+    !localInitializedVariableListNoWarnsIfNotMutated: @(),
+    !self.mBeforeInstructionList,
+    !self.mEndOf_before_branch,
+    !?ioVariableMap,
     ?let before_instructionList
   )
   !?ioVariableMap.closeOverride (!self.mEndOf_before_branch)
 //--- 'between' branch
   !?ioVariableMap.openOverrideForRepeatBlock ()
   analyzeSemanticInstructionList (
-    !inUsefulnessCallerEntityName
-    !?ioUsefulEntitiesGraph
-    !inAnalysisContext
-    !?ioTypeMap
-    !localConstantList: @()
-    !localInitializedVariableListWarnsIfNotMutated: @()
-    !localInitializedVariableListNoWarnsIfNotMutated: @()
-    !self.mBetweenInstructionList
-    !self.mEndOf_between_branch
-    !?ioVariableMap
+    !inUsefulnessCallerEntityName,
+    !?ioUsefulEntitiesGraph,
+    !inAnalysisContext,
+    !?ioTypeMap,
+    !localConstantList: @(),
+    !localInitializedVariableListWarnsIfNotMutated: @(),
+    !localInitializedVariableListNoWarnsIfNotMutated: @(),
+    !self.mBetweenInstructionList,
+    !self.mEndOf_between_branch,
+    !?ioVariableMap,
     ?let between_instructionList
   )
   !?ioVariableMap.closeOverride (!self.mEndOf_between_branch)
 //--- 'after' branch
   !?ioVariableMap.openOverrideForRepeatBlock ()
   analyzeSemanticInstructionList (
-    !inUsefulnessCallerEntityName
-    !?ioUsefulEntitiesGraph
-    !inAnalysisContext
-    !?ioTypeMap
-    !localConstantList: @()
-    !localInitializedVariableListWarnsIfNotMutated: @()
-    !localInitializedVariableListNoWarnsIfNotMutated: @()
-    !self.mAfterInstructionList
-    !self.mEndOf_after_branch
-    !?ioVariableMap
+    !inUsefulnessCallerEntityName,
+    !?ioUsefulEntitiesGraph,
+    !inAnalysisContext,
+    !?ioTypeMap,
+    !localConstantList: @(),
+    !localInitializedVariableListWarnsIfNotMutated: @(),
+    !localInitializedVariableListNoWarnsIfNotMutated: @(),
+    !self.mAfterInstructionList,
+    !self.mEndOf_after_branch,
+    !?ioVariableMap,
     ?let @semanticInstructionListForGeneration after_instructionList
   )
   !?ioVariableMap.closeOverride (!self.mEndOf_after_branch)
@@ -657,13 +657,13 @@ override proc @forInstructionAST analyzeSemanticInstruction (
   var @forInstructionEnumeratedObjectListForGeneration enumerationList = @()
   for (mAscending mEnumeratedCollection) in self.mEnumeratedObjectList do
     mEnumeratedCollection.analyzeEnumeration
-      (!inUsefulnessCallerEntityName
-      !?ioUsefulEntitiesGraph
-      !inAnalysisContext
-      !?ioTypeMap
-      !?ioVariableMap
-      !?localConstantListForDoBranch
-      ?let @string enumeratorCppName
+      (!inUsefulnessCallerEntityName,
+      !?ioUsefulEntitiesGraph,
+      !inAnalysisContext,
+      !?ioTypeMap,
+      !?ioVariableMap,
+      !?localConstantListForDoBranch,
+      ?let @string enumeratorCppName,
       ?let @semanticExpressionForGeneration enumerationExpression
     )
   //---
@@ -678,26 +678,26 @@ override proc @forInstructionAST analyzeSemanticInstruction (
 //--- Declare local constants
   for localConstant in localConstantListForDoBranch do
    !?ioVariableMap.insertUsedLocalConstant
-     (!localConstant.mName
-     !localConstant.mType
-     !localConstant.mCppName
+     (!localConstant.mName,
+     !localConstant.mType,
+     !localConstant.mCppName,
      !localConstant.mCppName
    )
   end
 //---
   self.mWhileExpression.analyzeSemanticExpression
-    (!usefulnessCallerEntityName: inUsefulnessCallerEntityName
-    !?ioUsefulEntitiesGraph
-    !inferenceType: @unifiedTypeMapEntry.null
-    !inAnalysisContext
-    !?ioTypeMap
-    !?ioVariableMap
+    (!usefulnessCallerEntityName: inUsefulnessCallerEntityName,
+    !?ioUsefulEntitiesGraph,
+    !inferenceType: @unifiedTypeMapEntry.null,
+    !inAnalysisContext,
+    !?ioTypeMap,
+    !?ioVariableMap,
     ?let @semanticExpressionForGeneration uncheckedWhileExpression
   )
   checkExpressionIsBoolean (
-    !inAnalysisContext
-    !self.mEndOf_while_expression
-    !uncheckedWhileExpression
+    !inAnalysisContext,
+    !self.mEndOf_while_expression,
+    !uncheckedWhileExpression,
     ?let @semanticExpressionForGeneration whileExpression
   )
 //---
@@ -716,16 +716,16 @@ override proc @forInstructionAST analyzeSemanticInstruction (
   end
 //--- 'do' branch
   analyzeSemanticInstructionList (
-    !inUsefulnessCallerEntityName
-    !?ioUsefulEntitiesGraph
-    !inAnalysisContext
-    !?ioTypeMap
-    !localConstantList: localConstantListForDoBranch // indexDeclaration
-    !localInitializedVariableListWarnsIfNotMutated: @()
-    !localInitializedVariableListNoWarnsIfNotMutated: @()
-    !self.mDoInstructionList
-    !self.mEndOf_do_branch
-    !?ioVariableMap
+    !inUsefulnessCallerEntityName,
+    !?ioUsefulEntitiesGraph,
+    !inAnalysisContext,
+    !?ioTypeMap,
+    !localConstantList: localConstantListForDoBranch, // indexDeclaration
+    !localInitializedVariableListWarnsIfNotMutated: @(),
+    !localInitializedVariableListNoWarnsIfNotMutated: @(),
+    !self.mDoInstructionList,
+    !self.mEndOf_do_branch,
+    !?ioVariableMap,
     ?let do_instructionList
   )
 //--- End override
@@ -781,10 +781,10 @@ override proc @forInstructionForGeneration generateInstruction (?!@stringset ioI
   var @stringlist enumerationVarCppNameList = @()
   for (* mEnumeratedExpression *) in self.mEnumeratedObjectList do
     mEnumeratedExpression.generateExpression
-      (!?ioGeneratedCode
-      !?ioInclusionSet
-      !?ioTemporaryVariableIndex
-      !?ioUnusedVariableCppNameSet
+      (!?ioGeneratedCode,
+      !?ioInclusionSet,
+      !?ioTemporaryVariableIndex,
+      !?ioUnusedVariableCppNameSet,
       ?let enumerationVar
     )
     enumerationVarCppNameList += !enumerationVar
@@ -806,7 +806,7 @@ override proc @forInstructionForGeneration generateInstruction (?!@stringset ioI
     if whileExpressionIsAllwaysTrue then
       ioGeneratedCode += "const bool " + boolVarCppName + " = true ;\n"
     else
-      self.mWhileExpression.generateExpression (!?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?let whileVar)
+      self.mWhileExpression.generateExpression (!?ioGeneratedCode, !?ioInclusionSet, !?ioTemporaryVariableIndex, !?ioUnusedVariableCppNameSet, ?let whileVar)
       ioGeneratedCode += "bool " + boolVarCppName + " = " + whileVar + ".isValidAndTrue () ;\n"
     end
     ioGeneratedCode += "if ("
@@ -815,11 +815,11 @@ override proc @forInstructionForGeneration generateInstruction (?!@stringset ioI
     end
     ioGeneratedCode += boolVarCppName + ") {\n"
     generateInstructionList (
-      !?ioInclusionSet
-      !self.mBeforeInstructionList
-      !?ioTemporaryVariableIndex
-      !?ioUnusedVariableCppNameSet
-      !inGenerateSyntaxDirectedTranslationString
+      !?ioInclusionSet,
+      !self.mBeforeInstructionList,
+      !?ioTemporaryVariableIndex,
+      !?ioUnusedVariableCppNameSet,
+      !inGenerateSyntaxDirectedTranslationString,
       !?ioGeneratedCode
     )
     !?ioGeneratedCode.incIndentation (!2)
@@ -830,11 +830,11 @@ override proc @forInstructionForGeneration generateInstruction (?!@stringset ioI
     ioGeneratedCode += boolVarCppName + ") {\n"
   //--- Generate 'do' instruction
     generateInstructionList (
-      !?ioInclusionSet
-      !self.mDoInstructionList
-      !?ioTemporaryVariableIndex
-      !?ioUnusedVariableCppNameSet
-      !inGenerateSyntaxDirectedTranslationString
+      !?ioInclusionSet,
+      !self.mDoInstructionList,
+      !?ioTemporaryVariableIndex,
+      !?ioUnusedVariableCppNameSet,
+      !inGenerateSyntaxDirectedTranslationString,
       !?ioGeneratedCode
     )
   //--- Goto next object
@@ -853,10 +853,10 @@ override proc @forInstructionForGeneration generateInstruction (?!@stringset ioI
       end
       ioGeneratedCode += ") {\n"
       self.mWhileExpression.generateExpression
-        (!?ioGeneratedCode
-        !?ioInclusionSet
-        !?ioTemporaryVariableIndex
-        !?ioUnusedVariableCppNameSet
+        (!?ioGeneratedCode,
+        !?ioInclusionSet,
+        !?ioTemporaryVariableIndex,
+        !?ioUnusedVariableCppNameSet,
         ?let whileVar
       )
       ioGeneratedCode += "    " + boolVarCppName + " = " + whileVar + ".isValidAndTrue () ;\n"
@@ -871,11 +871,11 @@ override proc @forInstructionForGeneration generateInstruction (?!@stringset ioI
       end
       ioGeneratedCode += boolVarCppName + ") {\n"
       generateInstructionList (
-        !?ioInclusionSet
-        !self.mBetweenInstructionList
-        !?ioTemporaryVariableIndex
-        !?ioUnusedVariableCppNameSet
-        !inGenerateSyntaxDirectedTranslationString
+        !?ioInclusionSet,
+        !self.mBetweenInstructionList,
+        !?ioTemporaryVariableIndex,
+        !?ioUnusedVariableCppNameSet,
+        !inGenerateSyntaxDirectedTranslationString,
         !?ioGeneratedCode
       )
       ioGeneratedCode += "}\n"
@@ -886,11 +886,11 @@ override proc @forInstructionForGeneration generateInstruction (?!@stringset ioI
   //--- Generate 'after' instruction
     !?ioGeneratedCode.decIndentation (!2)
     generateInstructionList (
-      !?ioInclusionSet
-      !self.mAfterInstructionList
-      !?ioTemporaryVariableIndex
-      !?ioUnusedVariableCppNameSet
-      !inGenerateSyntaxDirectedTranslationString
+      !?ioInclusionSet,
+      !self.mAfterInstructionList,
+      !?ioTemporaryVariableIndex,
+      !?ioUnusedVariableCppNameSet,
+      !inGenerateSyntaxDirectedTranslationString,
       !?ioGeneratedCode
     )
     ioGeneratedCode += "}\n"
@@ -906,11 +906,11 @@ override proc @forInstructionForGeneration generateInstruction (?!@stringset ioI
     ioGeneratedCode += ") {\n"
   //--- Generate 'do' instruction
     generateInstructionList (
-      !?ioInclusionSet
-      !self.mDoInstructionList
-      !?ioTemporaryVariableIndex
-      !?ioUnusedVariableCppNameSet
-      !inGenerateSyntaxDirectedTranslationString
+      !?ioInclusionSet,
+      !self.mDoInstructionList,
+      !?ioTemporaryVariableIndex,
+      !?ioUnusedVariableCppNameSet,
+      !inGenerateSyntaxDirectedTranslationString,
       !?ioGeneratedCode
     )
   //--- Advance
@@ -927,11 +927,11 @@ override proc @forInstructionForGeneration generateInstruction (?!@stringset ioI
       end
       ioGeneratedCode += ") {\n"
       generateInstructionList (
-        !?ioInclusionSet
-        !self.mBetweenInstructionList
-        !?ioTemporaryVariableIndex
-        !?ioUnusedVariableCppNameSet
-        !inGenerateSyntaxDirectedTranslationString
+        !?ioInclusionSet,
+        !self.mBetweenInstructionList,
+        !?ioTemporaryVariableIndex,
+        !?ioUnusedVariableCppNameSet,
+        !inGenerateSyntaxDirectedTranslationString,
         !?ioGeneratedCode
       )
       ioGeneratedCode += "}\n"

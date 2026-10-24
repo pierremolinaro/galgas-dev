@@ -354,14 +354,14 @@ map @lexicalTypeMap {
 
 func %once buildLexicalTypeMap () -> @lexicalTypeMap {
   result = @()
-  !?result.insertKey (!@lstring {!"string" !@location.here} !.lexicalType_string)
-  !?result.insertKey (!@lstring {!"char"   !@location.here} !.lexicalType_char)
-  !?result.insertKey (!@lstring {!"uint"   !@location.here} !.lexicalType_uint)
-  !?result.insertKey (!@lstring {!"uint64" !@location.here} !.lexicalType_uint64)
-  !?result.insertKey (!@lstring {!"sint"   !@location.here} !.lexicalType_sint)
-  !?result.insertKey (!@lstring {!"sint64" !@location.here} !.lexicalType_sint64)
-  !?result.insertKey (!@lstring {!"double" !@location.here} !.lexicalType_double)
-  !?result.insertKey (!@lstring {!"bigint" !@location.here} !.lexicalType_bigint)
+  !?result.insertKey (!@lstring {!"string" !@location.here}, !.lexicalType_string)
+  !?result.insertKey (!@lstring {!"char"   !@location.here}, !.lexicalType_char)
+  !?result.insertKey (!@lstring {!"uint"   !@location.here}, !.lexicalType_uint)
+  !?result.insertKey (!@lstring {!"uint64" !@location.here}, !.lexicalType_uint64)
+  !?result.insertKey (!@lstring {!"sint"   !@location.here}, !.lexicalType_sint)
+  !?result.insertKey (!@lstring {!"sint64" !@location.here}, !.lexicalType_sint64)
+  !?result.insertKey (!@lstring {!"double" !@location.here}, !.lexicalType_double)
+  !?result.insertKey (!@lstring {!"bigint" !@location.here}, !.lexicalType_bigint)
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -382,8 +382,8 @@ proc buildLexicalAttributeMap
   ?!@lexicalAttributeMap ioLexicalAttributeMap ) {
   for (mTypeName mName) in inLexicalAttributeList do
     if [inLexicalTypeMap hasKey !mTypeName.string] then
-      inLexicalTypeMap.searchKey (!mTypeName ?let @lexicalTypeEnum lexicalType)
-      !?ioLexicalAttributeMap.insertKey (!mName !lexicalType)
+      inLexicalTypeMap.searchKey (!mTypeName, ?let @lexicalTypeEnum lexicalType)
+      !?ioLexicalAttributeMap.insertKey (!mName, !lexicalType)
     else
       var @string m = ""
       m += "the @" + mTypeName + " type is not a valid lexical attribute type; are allowed:"

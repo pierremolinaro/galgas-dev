@@ -28,7 +28,7 @@ syntax extension galgas3InstructionsSyntax {
     $self$
     let instructionLocation = @location.here
     $+=$
-    <non_empty_output_expression_list_ggs3> (!?ioDeclarations ?let @actualOutputArgumentList expressionList)
+    <non_empty_output_expression_list_ggs3> (!?ioDeclarations, ?let @actualOutputArgumentList expressionList)
     outInstruction = @selfPlusEqualElementsInstructionAST {
       !instructionLocation
       !expressionList
@@ -42,7 +42,7 @@ syntax extension galgas3InstructionsSyntax {
     $self$
     let instructionLocation = @location.here
     $+=$
-    <expression_ggs3> (!?ioDeclarations ?let @semanticExpressionAST expression)
+    <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST expression)
     outInstruction = @selfPlusEqualExpressionInstructionAST {
       !instructionLocation
       !expression
@@ -56,7 +56,7 @@ syntax extension galgas3InstructionsSyntax {
     $self$
     let instructionLocation = @location.here
     $-=$
-    <expression_ggs3> (!?ioDeclarations ?let @semanticExpressionAST expression)
+    <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST expression)
     outInstruction = @selfMinusEqualExpressionInstructionAST {
       !instructionLocation
       !expression
@@ -70,7 +70,7 @@ syntax extension galgas3InstructionsSyntax {
     $self$
     let instructionLocation = @location.here
     $*=$
-    <expression_ggs3> (!?ioDeclarations ?let @semanticExpressionAST expression)
+    <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST expression)
     outInstruction = @selfMulEqualExpressionInstructionAST {
       !instructionLocation
       !expression
@@ -84,7 +84,7 @@ syntax extension galgas3InstructionsSyntax {
     $self$
     let instructionLocation = @location.here
     $/=$
-    <expression_ggs3> (!?ioDeclarations ?let @semanticExpressionAST expression)
+    <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST expression)
     outInstruction = @selfDivEqualExpressionInstructionAST {
       !instructionLocation
       !expression
@@ -106,7 +106,7 @@ syntax extension galgas4InstructionsSyntax {
     $self$
     let instructionLocation = @location.here
     $+=$
-    <expression> (!?ioDeclarations ?let @semanticExpressionAST expression)
+    <expression> (!?ioDeclarations, ?let @semanticExpressionAST expression)
     outInstruction = @selfPlusEqualExpressionInstructionAST {
       !instructionLocation
       !expression
@@ -120,7 +120,7 @@ syntax extension galgas4InstructionsSyntax {
     $self$
     let instructionLocation = @location.here
     $-=$
-    <expression> (!?ioDeclarations ?let @semanticExpressionAST expression)
+    <expression> (!?ioDeclarations, ?let @semanticExpressionAST expression)
     outInstruction = @selfMinusEqualExpressionInstructionAST {
       !instructionLocation
       !expression
@@ -134,7 +134,7 @@ syntax extension galgas4InstructionsSyntax {
     $self$
     let instructionLocation = @location.here
     $*=$
-    <expression> (!?ioDeclarations ?let @semanticExpressionAST expression)
+    <expression> (!?ioDeclarations, ?let @semanticExpressionAST expression)
     outInstruction = @selfMulEqualExpressionInstructionAST {
       !instructionLocation
       !expression
@@ -148,7 +148,7 @@ syntax extension galgas4InstructionsSyntax {
     $self$
     let instructionLocation = @location.here
     $/=$
-    <expression> (!?ioDeclarations ?let @semanticExpressionAST expression)
+    <expression> (!?ioDeclarations, ?let @semanticExpressionAST expression)
     outInstruction = @selfDivEqualExpressionInstructionAST {
       !instructionLocation
       !expression
@@ -195,19 +195,19 @@ final class @selfDivEqualExpressionInstructionAST : @semanticInstructionAST {
       end
     //--- Analyze source expression
       self.mExpression.analyzeSemanticExpression
-        (!usefulnessCallerEntityName: inUsefulnessCallerEntityName
-        !?ioUsefulEntitiesGraph
-        !inferenceType: selfAvailable.type
-        !inAnalysisContext
-        !?ioTypeMap
-        !?ioVariableMap
+        (!usefulnessCallerEntityName: inUsefulnessCallerEntityName,
+        !?ioUsefulEntitiesGraph,
+        !inferenceType: selfAvailable.type,
+        !inAnalysisContext,
+        !?ioTypeMap,
+        !?ioVariableMap,
         ?@semanticExpressionForGeneration expression
       )
     //--- Check assignment type compatibility
       checkAssignmentTypeWithImplicitGetterCall (
-        !selfAvailable.type
-        !expression.mResultType
-        !self.mInstructionLocation
+        !selfAvailable.type,
+        !expression.mResultType,
+        !self.mInstructionLocation,
         !?expression
       )
     //--- Generate instruction
@@ -265,19 +265,19 @@ final class @selfPlusEqualExpressionInstructionAST : @semanticInstructionAST {
       end
     //--- Analyze source expression
       self.mExpression.analyzeSemanticExpression
-        (!usefulnessCallerEntityName: inUsefulnessCallerEntityName
-        !?ioUsefulEntitiesGraph
-        !inferenceType: selfAvailable.type
-        !inAnalysisContext
-        !?ioTypeMap
-        !?ioVariableMap
+        (!usefulnessCallerEntityName: inUsefulnessCallerEntityName,
+        !?ioUsefulEntitiesGraph,
+        !inferenceType: selfAvailable.type,
+        !inAnalysisContext,
+        !?ioTypeMap,
+        !?ioVariableMap,
         ?@semanticExpressionForGeneration expression
       )
     //--- Check assignment type compatibility
       checkAssignmentTypeWithImplicitGetterCall (
-        !selfAvailable.type
-        !expression.mResultType
-        !self.mInstructionLocation
+        !selfAvailable.type,
+        !expression.mResultType,
+        !self.mInstructionLocation,
         !?expression
       )
     //--- Generate instruction
@@ -335,19 +335,19 @@ final class @selfMinusEqualExpressionInstructionAST : @semanticInstructionAST {
       end
     //--- Analyze source expression
       self.mExpression.analyzeSemanticExpression
-        (!usefulnessCallerEntityName: inUsefulnessCallerEntityName
-        !?ioUsefulEntitiesGraph
-        !inferenceType: selfAvailable.type
-        !inAnalysisContext
-        !?ioTypeMap
-        !?ioVariableMap
+        (!usefulnessCallerEntityName: inUsefulnessCallerEntityName,
+        !?ioUsefulEntitiesGraph,
+        !inferenceType: selfAvailable.type,
+        !inAnalysisContext,
+        !?ioTypeMap,
+        !?ioVariableMap,
         ?@semanticExpressionForGeneration expression
       )
     //--- Check assignment type compatibility
       checkAssignmentTypeWithImplicitGetterCall (
-        !selfAvailable.type
-        !expression.mResultType
-        !self.mInstructionLocation
+        !selfAvailable.type,
+        !expression.mResultType,
+        !self.mInstructionLocation,
         !?expression
       )
     //--- Generate instruction
@@ -405,19 +405,19 @@ final class @selfMulEqualExpressionInstructionAST : @semanticInstructionAST {
       end
     //--- Analyze source expression
       self.mExpression.analyzeSemanticExpression
-        (!usefulnessCallerEntityName: inUsefulnessCallerEntityName
-        !?ioUsefulEntitiesGraph
-        !inferenceType: selfAvailable.type
-        !inAnalysisContext
-        !?ioTypeMap
-        !?ioVariableMap
+        (!usefulnessCallerEntityName: inUsefulnessCallerEntityName,
+        !?ioUsefulEntitiesGraph,
+        !inferenceType: selfAvailable.type,
+        !inAnalysisContext,
+        !?ioTypeMap,
+        !?ioVariableMap,
         ?@semanticExpressionForGeneration expression
       )
     //--- Check assignment type compatibility
       checkAssignmentTypeWithImplicitGetterCall (
-        !selfAvailable.type
-        !expression.mResultType
-        !self.mInstructionLocation
+        !selfAvailable.type,
+        !expression.mResultType,
+        !self.mInstructionLocation,
         !?expression
       )
     //--- Generate instruction
@@ -485,12 +485,12 @@ final class @selfPlusEqualElementsInstructionAST : @semanticInstructionAST {
         var effectiveParameterList = @semanticExpressionListForGeneration ()
         for expressionAST in self.mExpressions, addAssignArgument in addAssignOperatorArguments do
           expressionAST.mExpression.analyzeSemanticExpression
-            (!usefulnessCallerEntityName: inUsefulnessCallerEntityName
-            !?ioUsefulEntitiesGraph
-            !inferenceType: addAssignArgument.mFormalArgumentType
-            !inAnalysisContext
-            !?ioTypeMap
-            !?ioVariableMap
+            (!usefulnessCallerEntityName: inUsefulnessCallerEntityName,
+            !?ioUsefulEntitiesGraph,
+            !inferenceType: addAssignArgument.mFormalArgumentType,
+            !inAnalysisContext,
+            !?ioTypeMap,
+            !?ioVariableMap,
             ?@semanticExpressionForGeneration expression
           )
           if addAssignArgument.mFormalSelector.string != expressionAST.mActualSelector.string then
@@ -501,9 +501,9 @@ final class @selfPlusEqualElementsInstructionAST : @semanticInstructionAST {
             error (expressionAST.mActualSelector : "the selector should be '" + s + "'" fixit replace s)
           end
           checkAssignmentTypeWithImplicitGetterCall (
-            !addAssignArgument.mFormalArgumentType
-            !expression.mResultType
-            !expressionAST.mEndOfExpressionLocation
+            !addAssignArgument.mFormalArgumentType,
+            !expression.mResultType,
+            !expressionAST.mEndOfExpressionLocation,
             !?expression
           )
           effectiveParameterList += !expression

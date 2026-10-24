@@ -30,10 +30,10 @@ final class @typePredefinedTypeAST : @predefinedTypeAST {
                                       !@classFunctionMap outMap ) {
     outMap = @()
     enterClassFunctionWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !name:"typeList"
-      !resultTypeName:"typelist"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !name:"typeList",
+      !resultTypeName:"typelist",
       !hasLexiqueArg:false
     )
   }
@@ -42,29 +42,29 @@ final class @typePredefinedTypeAST : @predefinedTypeAST {
 
   override proc getGetterMap (?!@unifiedTypeMap ioUnifiedTypeMap,
                                !@getterMap outMap ) {
-    commonGetterMapForAllTypes (!?ioUnifiedTypeMap ?outMap)
+    commonGetterMapForAllTypes (!?ioUnifiedTypeMap, ?outMap)
     enterBaseFinalGetterWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName:"name"
-      !obsoleteName: ""
-      !returnedTypeName:"string"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName:"name",
+      !obsoleteName: "",
+      !returnedTypeName:"string",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName:"hasSuperclass"
-      !obsoleteName: ""
-      !returnedTypeName:"bool"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName:"hasSuperclass",
+      !obsoleteName: "",
+      !returnedTypeName:"bool",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName:"superclass"
-      !obsoleteName: ""
-      !returnedTypeName:"type"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName:"superclass",
+      !obsoleteName: "",
+      !returnedTypeName:"type",
       !hasCompilerArgument:true
     )
   }

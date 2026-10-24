@@ -48,12 +48,12 @@ syntax extension galgas3DeclarationsSyntax {
     $identifier$ ?let getterName indexing overrideAbstractExtensionGetterDefinition
     let @formalInputParameterListAST formalInputParameterList
     select
-      <formal_input_parameter_list_ggs3> (!?ioDeclarations ?formalInputParameterList)
+      <formal_input_parameter_list_ggs3> (!?ioDeclarations, ?formalInputParameterList)
     or
-      <formal_input_parameter_list_ggs34> (!?ioDeclarations ?formalInputParameterList)
+      <formal_input_parameter_list_ggs34> (!?ioDeclarations, ?formalInputParameterList)
     end
     $->$
-    <type_definition_ggs3> (!?ioDeclarations ?let returnedTypeName)
+    <type_definition_ggs3> (!?ioDeclarations, ?let returnedTypeName)
     ioDeclarations.mDeclarationList += !@overridingAbstractExtensionGetterAST {
       !isPredefined: false
       !typeName
@@ -79,12 +79,12 @@ syntax extension galgas3DeclarationsSyntax {
     $identifier$ ?let getterName indexing overrideAbstractExtensionGetterDefinition
     let @formalInputParameterListAST formalInputParameterList
     select
-      <formal_input_parameter_list_ggs3> (!?ioDeclarations ?formalInputParameterList)
+      <formal_input_parameter_list_ggs3> (!?ioDeclarations, ?formalInputParameterList)
     or
-      <formal_input_parameter_list_ggs34> (!?ioDeclarations ?formalInputParameterList)
+      <formal_input_parameter_list_ggs34> (!?ioDeclarations, ?formalInputParameterList)
     end
     $->$
-    <type_definition_ggs3> (!?ioDeclarations ?let returnedTypeName)
+    <type_definition_ggs3> (!?ioDeclarations, ?let returnedTypeName)
     ioDeclarations.mDeclarationList += !@overridingAbstractExtensionGetterAST {
       !isPredefined: false
       !typeName
@@ -108,18 +108,18 @@ syntax extension galgas4DeclarationsSyntax {
     $override$
     $abstract$
     $func$
-    <simple_type_definition> (!?ioDeclarations ?var typeName)
+    <simple_type_definition> (!?ioDeclarations, ?var typeName)
     $.$
     repeat
     while
-      <simple_type_definition> (!?ioDeclarations ?let t)
+      <simple_type_definition> (!?ioDeclarations, ?let t)
       typeName = makeEmbeddedTypeLName (!outer: typeName !inner: t)
       $.$
     end
     $identifier$ ?let getterName indexing overrideAbstractExtensionGetterDefinition
-    <formal_input_parameter_list> (!?ioDeclarations ?let @formalInputParameterListAST formalInputParameterList)
+    <formal_input_parameter_list> (!?ioDeclarations, ?let @formalInputParameterListAST formalInputParameterList)
     $->$
-    <type_definition> (!?ioDeclarations ?let returnedTypeName)
+    <type_definition> (!?ioDeclarations, ?let returnedTypeName)
     ioDeclarations.mDeclarationList += !@overridingAbstractExtensionGetterAST {
       !isPredefined: false // Is not predefined
       !typeName
@@ -137,9 +137,9 @@ syntax extension galgas4DeclarationsSyntax {
     $abstract$
     $func$
     $identifier$ ?let getterName indexing overrideAbstractExtensionGetterDefinition
-    <formal_input_parameter_list> (!?ioDeclarations ?let @formalInputParameterListAST formalInputParameterList)
+    <formal_input_parameter_list> (!?ioDeclarations, ?let @formalInputParameterListAST formalInputParameterList)
     $->$
-    <type_definition> (!?ioDeclarations ?let returnedTypeName)
+    <type_definition> (!?ioDeclarations, ?let returnedTypeName)
     ioDeclarations.mDeclarationList += !@overridingAbstractExtensionGetterAST {
       !isPredefined: false
       !inTypeName
@@ -177,15 +177,15 @@ override proc @overridingAbstractExtensionGetterAST enterDeclarationInGraph (
 //---
   if not [ioExtensionGetterMapForBuildingContext hasKey !self.mTypeName.string] then
     !?ioExtensionGetterMapForBuildingContext.insertKey
-      (!self.mTypeName
+      (!self.mTypeName,
       !@()
     )
   end
   var entry = ioExtensionGetterMapForBuildingContext @[!searchKey: self.mTypeName]
   !?entry.mExtensionGetterMapForType.insertKey
-    (!self.mAbstractExtensionGetterName
-    !self.mAbstractExtensionGetterReturnedTypeName
-    !self.mAbstractExtensionGetterFormalInputParameterList
+    (!self.mAbstractExtensionGetterName,
+    !self.mAbstractExtensionGetterReturnedTypeName,
+    !self.mAbstractExtensionGetterFormalInputParameterList,
     !.isVirtualOverridingAbstract
   )
   !?ioExtensionGetterMapForBuildingContext.replaceKey (!with: entry)
@@ -237,13 +237,13 @@ override proc @overridingAbstractExtensionGetterAST semanticAnalysis (
   while (not superType.isNull) & (baseTypeName == "") do
     if [superType.definition.getterMap hasKey !self.mAbstractExtensionGetterName.string] then
        superType.definition.getterMap.searchKey
-        (!self.mAbstractExtensionGetterName
-        ?*
-        ?inheritedSignature
-        ?inheritedDeclarationLocation
-        ?*
-        ?inheritedReturnType
-        ?let qualifier
+        (!self.mAbstractExtensionGetterName,
+        ?*,
+        ?inheritedSignature,
+        ?inheritedDeclarationLocation,
+        ?*,
+        ?inheritedReturnType,
+        ?let qualifier,
         ?*
       )
       if qualifier <= @methodQualifier. isBasicFinal then
@@ -267,11 +267,11 @@ override proc @overridingAbstractExtensionGetterAST semanticAnalysis (
         !mIsConstant
     end
     checkGetterSignatures (
-      !formalParameterListForGeneration
-      !returnType
-      !self.mAbstractExtensionGetterName.location
-      !inheritedSignature
-      !inheritedReturnType
+      !formalParameterListForGeneration,
+      !returnType,
+      !self.mAbstractExtensionGetterName.location,
+      !inheritedSignature,
+      !inheritedReturnType,
       !inheritedDeclarationLocation
     )
   end
@@ -295,7 +295,7 @@ override proc @overridingAbstractExtensionGetterAST buildExtensionListMaps (
   ?!@genericExtensionMethodListMap unused ioOverridingExtensionGetterListMap,
   ?!@genericExtensionMethodListMap ioOverridingAbstractExtensionGetterListMap) {
   !? ioOverridingAbstractExtensionGetterListMap.insertKey
-    (!self.mTypeName.string
+    (!self.mTypeName.string,
     !self.mAbstractExtensionGetterName
   )
 }

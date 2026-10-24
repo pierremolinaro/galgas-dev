@@ -39,9 +39,7 @@ syntax extension galgas3InstructionsSyntax {
     $@type$ ?let @lstring mTypeName indexing typeReferenceInTypeMethod
     $.$
     $identifier$ ?let @lstring mMethodName
-    $($
-    <actual_parameter_list_ggs3> (!?ioDeclarations ?let @actualParameterListAST actualParameterList)
-    $)$
+    <actual_parameter_list_ggs3> (!?ioDeclarations, ?let @actualParameterListAST actualParameterList)
     outInstruction = @typeMethodCallInstructionAST {
       !instructionLocation
       !mTypeName
@@ -66,7 +64,7 @@ syntax extension galgas4InstructionsSyntax {
     $@type$ ?let @lstring mTypeName indexing typeReferenceInTypeMethod
     $.$
     $identifier$ ?let @lstring mMethodName
-    <actual_parameter_list_with_parenthesis> (!?ioDeclarations ?let @actualParameterListAST actualParameterList)
+    <actual_parameter_list_with_parenthesis> (!?ioDeclarations, ?let @actualParameterListAST actualParameterList)
     outInstruction = @typeMethodCallInstructionAST {
       !instructionLocation
       !mTypeName
@@ -103,18 +101,18 @@ override proc @typeMethodCallInstructionAST analyzeSemanticInstruction (
 //--- Get type proc map for the named type
   let type = [ioTypeMap typeMapEntryForLKey !self.mTypeName]
 //--- Get type proc signature
-  type.definition.classMethodMap.searchKey (!self.mMethodName ?let routineSignature ?let hasCompilerArgument)
+  type.definition.classMethodMap.searchKey (!self.mMethodName, ?let routineSignature, ?let hasCompilerArgument)
 //--- Check effective parameters
   self.mActualParameterList.analyzeRoutineArguments
-    (!inUsefulnessCallerEntityName
-    !?ioUsefulEntitiesGraph
-    !inAnalysisContext
-    !?ioTypeMap
-    !self.mMethodName
-    !invokedEntityNameForErrorSignaling: "'" + self.mMethodName + "' type proc header"
-    !routineSignature
-    !?ioVariableMap
-    !?ioInstructionListForGeneration
+    (!inUsefulnessCallerEntityName,
+    !?ioUsefulEntitiesGraph,
+    !inAnalysisContext,
+    !?ioTypeMap,
+    !self.mMethodName,
+    !invokedEntityNameForErrorSignaling: "'" + self.mMethodName + "' type proc header",
+    !routineSignature,
+    !?ioVariableMap,
+    !?ioInstructionListForGeneration,
     ?let @actualParameterListForGeneration actualParameterListForGeneration
   )
 //--- Generate instructions
@@ -150,12 +148,12 @@ override proc @typeMethodCallInstructionForGeneration generateInstruction (?!@st
   var inputVariableList = @stringlist ()
   for (mActualParameter) in self.mActualParameterList do
     mActualParameter.generateActualParameter
-      (!?ioInclusionSet
-      !?ioTemporaryVariableIndex
-      !?ioGeneratedCode
-      !?jokerParametersToReleaseList
-      !?inputVariableList
-      !?ioUnusedVariableCppNameSet
+      (!?ioInclusionSet,
+      !?ioTemporaryVariableIndex,
+      !?ioGeneratedCode,
+      !?jokerParametersToReleaseList,
+      !?inputVariableList,
+      !?ioUnusedVariableCppNameSet,
       ?let @string parameterCppName)
     parameterCppNameList += !parameterCppName
   end

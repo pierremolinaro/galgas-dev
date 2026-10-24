@@ -45,9 +45,9 @@ syntax extension galgas3DeclarationsSyntax {
       typeName = makeEmbeddedTypeLName (!outer: typeName !inner: t)
     end
     $identifier$ ?let @lstring setterName indexing extensionSetterDefinition
-    <formal_parameter_list_ggs34> (!?ioDeclarations ?let formalParameterList)
+    <formal_parameter_list_ggs34> (!?ioDeclarations, ?let formalParameterList)
     ${$
-    <semantic_instruction_list_ggs3> (!?ioDeclarations ?let routineInstructionList)
+    <semantic_instruction_list_ggs3> (!?ioDeclarations, ?let routineInstructionList)
     let @location endOfSetterLocation = @location.here
     $}$
     ioDeclarations.mDeclarationList += !@extensionSetterAST {
@@ -72,9 +72,9 @@ syntax extension galgas3DeclarationsSyntax {
       $.$
     end
     $identifier$ ?let @lstring setterName indexing extensionSetterDefinition
-    <formal_parameter_list_ggs34> (!?ioDeclarations ?let formalParameterList)
+    <formal_parameter_list_ggs34> (!?ioDeclarations, ?let formalParameterList)
     ${$
-    <semantic_instruction_list_ggs3> (!?ioDeclarations ?let @semanticInstructionListAST routineInstructionList)
+    <semantic_instruction_list_ggs3> (!?ioDeclarations, ?let @semanticInstructionListAST routineInstructionList)
     let @location endOfSetterLocation = @location.here
     $}$
     ioDeclarations.mDeclarationList += !@extensionSetterAST {
@@ -100,18 +100,18 @@ syntax extension galgas4DeclarationsSyntax {
   rule <declaration> (?!@galgasDeclarationAST ioDeclarations) {
     $mutating$
     $proc$
-    <simple_type_definition> (!?ioDeclarations ?var @lstring typeName)
+    <simple_type_definition> (!?ioDeclarations, ?var @lstring typeName)
     $.$
     repeat
     while
-      <simple_type_definition> (!?ioDeclarations ?let t)
+      <simple_type_definition> (!?ioDeclarations, ?let t)
       typeName = makeEmbeddedTypeLName (!outer: typeName !inner: t)
       $.$
     end
     $identifier$ ?let @lstring setterName indexing extensionSetterDefinition
-    <formal_parameter_list> (!?ioDeclarations ?let @formalParameterListAST formalParameterList)
+    <formal_parameter_list> (!?ioDeclarations, ?let @formalParameterListAST formalParameterList)
     ${$
-    <semantic_instruction_list> (!?ioDeclarations ?let @semanticInstructionListAST routineInstructionList)
+    <semantic_instruction_list> (!?ioDeclarations, ?let @semanticInstructionListAST routineInstructionList)
     let @location endOfSetterLocation = @location.here
     $}$
     ioDeclarations.mDeclarationList += !@extensionSetterAST {
@@ -131,9 +131,9 @@ syntax extension galgas4DeclarationsSyntax {
     $mutating$
     $proc$
     $identifier$ ?let @lstring setterName indexing extensionSetterDefinition
-    <formal_parameter_list> (!?ioDeclarations ?let @formalParameterListAST formalParameterList)
+    <formal_parameter_list> (!?ioDeclarations, ?let @formalParameterListAST formalParameterList)
     ${$
-    <semantic_instruction_list> (!?ioDeclarations ?let @semanticInstructionListAST routineInstructionList)
+    <semantic_instruction_list> (!?ioDeclarations, ?let @semanticInstructionListAST routineInstructionList)
     let @location endOfSetterLocation = @location.here
     $}$
     ioDeclarations.mDeclarationList += !@extensionSetterAST {
@@ -174,18 +174,18 @@ override proc @extensionSetterAST enterDeclarationInGraph (
     !"extension setter @" + self.mTypeName + " " + self.mExtensionSetterName
     !self.mExtensionSetterName.location
   }
-  !?ioSemanticTypePrecedenceGraph.addNode (!key !self)
-  !?ioSemanticTypePrecedenceGraph.addEdge (!from: key !to: @{!"@" + self.mTypeName !self.mTypeName.location})
+  !?ioSemanticTypePrecedenceGraph.addNode (!key, !self)
+  !?ioSemanticTypePrecedenceGraph.addEdge (!from: key, !to: @{!"@" + self.mTypeName !self.mTypeName.location})
 //---
   if not [ioExtensionSetterMapForBuildingContext hasKey !self.mTypeName.string] then
     !?ioExtensionSetterMapForBuildingContext.insertKey
-      (!self.mTypeName
+      (!self.mTypeName,
       !@()
     )
   end
   var entry = ioExtensionSetterMapForBuildingContext @[!searchKey: self.mTypeName]
   !?entry.mExtensionSetterMapForType.insertKey
-    (!self.mExtensionSetterName
+    (!self.mExtensionSetterName,
     !self.mExtensionSetterFormalParameterList
   )
   !?ioExtensionSetterMapForBuildingContext.replaceKey (!with: entry)
@@ -225,9 +225,9 @@ override proc @extensionSetterAST semanticAnalysis (
   ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration) {
 //--- Useful entities graph
   let nameForUsefulness = setterNameForUsefulEntitiesGraph (!self.mTypeName !self.mExtensionSetterName)
-  !?ioUsefulEntitiesGraph.addNode (!nameForUsefulness !nameForUsefulness)
+  !?ioUsefulEntitiesGraph.addNode (!nameForUsefulness, !nameForUsefulness)
   let typeNameForUsefulness = typeNameForUsefulEntitiesGraph (!self.mTypeName)
-  !?ioUsefulEntitiesGraph.addEdge (!from: typeNameForUsefulness !to: nameForUsefulness)
+  !?ioUsefulEntitiesGraph.addEdge (!from: typeNameForUsefulness, !to: nameForUsefulness)
 //--- Self type
   let @unifiedTypeMapEntry selfType = [ioTypeMap typeMapEntryForLKey !self.mTypeName]
   let @string selfObjectName
@@ -252,14 +252,14 @@ override proc @extensionSetterAST semanticAnalysis (
     !selfObjectCppPrefixForAccessingProperty: selfObjectAccessor
   }
   analyzeRoutineBody (
-    !nameForUsefulness
-    !?ioUsefulEntitiesGraph
-    !analysisContext
-    !?ioTypeMap
-    !self.mExtensionSetterFormalParameterList
-    !self.mExtensionSetterInstructionList
-    !self.mEndOfSetterDeclarationLocation
-    ?let semanticInstructionListForGeneration
+    !nameForUsefulness,
+    !?ioUsefulEntitiesGraph,
+    !analysisContext,
+    !?ioTypeMap,
+    !self.mExtensionSetterFormalParameterList,
+    !self.mExtensionSetterInstructionList,
+    !self.mEndOfSetterDeclarationLocation,
+    ?let semanticInstructionListForGeneration,
     ?let formalParameterListForGeneration
   )
 //---
@@ -297,7 +297,7 @@ override proc @extensionSetterAST buildExtensionListMaps (
 //    !self.mTypeName.string
 //    !self.mExtensionSetterName
   !?ioExtensionSetterListMap.insertKey
-    (!self.mTypeName.string
+    (!self.mTypeName.string,
     !self.mExtensionSetterName
   )
 }
@@ -352,25 +352,25 @@ override proc @extensionSetterForGeneration appendSpecificImplementation (
   if self.mImplementedAsFunction then
     var extensionSetterFormalParameterList = self.mExtensionSetterFormalParameterList
     !?extensionSetterFormalParameterList.insertAtIndex
-      (!"".nowhere
-      !@formalArgumentPassingModeAST. argumentInOut
-      !self.mReceiverType
-      !@lstring {!"self" !@location.here}
-      !"ioObject"
+      (!"".nowhere,
+      !@formalArgumentPassingModeAST. argumentInOut,
+      !self.mReceiverType,
+      !@lstring {!"self" !@location.here},
+      !"ioObject",
       !0
     )
     ioInclusionSet ++= "setter-" + self.mReceiverType.definition.typeName.string.fileNameRepresentation + "-" + self.mExtensionSetterName.fileNameRepresentation
     generateProcedure (
-      !static:false
-      !"extensionSetter_" + self.mExtensionSetterName.identifierRepresentation
-      !?ioInclusionSet
-      !extensionSetterFormalParameterList
-      !self.mSemanticInstructionListForGeneration
-      !false // is not const
-      !"Compiler"
-      !true // Generate location Argument
-      !false // Do not generate 'resetTemplateString'
-      !false // Do not generate syntaxDirectedTranslationString argument
+      !static:false,
+      !"extensionSetter_" + self.mExtensionSetterName.identifierRepresentation,
+      !?ioInclusionSet,
+      !extensionSetterFormalParameterList,
+      !self.mSemanticInstructionListForGeneration,
+      !false, // is not const
+      !"Compiler",
+      !true, // Generate location Argument
+      !false, // Do not generate 'resetTemplateString'
+      !false, // Do not generate syntaxDirectedTranslationString argument
       ?let @string code
     )
     outImplementation = [filewrapper semanticComponentGenerationTemplate.extensionMethodAsFunctionImplementation
@@ -395,12 +395,12 @@ override proc @extensionSetterForGeneration appendSpecificImplementation (
     ioInclusionSet ++= "setter-" + baseType.definition.typeName.string.fileNameRepresentation + "-" + self.mExtensionSetterName.fileNameRepresentation
     baseType.addHeaderFileName (!?ioInclusionSet)
     generateExtensionSetter (
-      !self.mReceiverType.definition.typeName.string
-      !""
-      !self.mExtensionSetterName
-      !?ioInclusionSet
-      !self.mExtensionSetterFormalParameterList
-      !self.mSemanticInstructionListForGeneration
+      !self.mReceiverType.definition.typeName.string,
+      !"",
+      !self.mExtensionSetterName,
+      !?ioInclusionSet,
+      !self.mExtensionSetterFormalParameterList,
+      !self.mSemanticInstructionListForGeneration,
       ?let @string setterImplementation
     )
     outImplementation = [filewrapper semanticComponentGenerationTemplate.extensionsetterImplementation

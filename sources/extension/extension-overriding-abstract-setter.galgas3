@@ -35,7 +35,7 @@ syntax extension galgas3DeclarationsSyntax {
       typeName = makeEmbeddedTypeLName (!outer: typeName !inner: t)
     end
     $identifier$ ?let @lstring setterName indexing overrideabstractExtensionSetterDefinition
-    <formal_parameter_list_ggs34> (!?ioDeclarations ?let formalParameterList)
+    <formal_parameter_list_ggs34> (!?ioDeclarations, ?let formalParameterList)
     ioDeclarations.mDeclarationList += !@overridingAbstractExtensionSetterAST {
       !isPredefined: false // Is not predefined
       !typeName
@@ -58,7 +58,7 @@ syntax extension galgas3DeclarationsSyntax {
       $.$
     end
     $identifier$ ?let @lstring setterName indexing overrideabstractExtensionSetterDefinition
-    <formal_parameter_list_ggs34> (!?ioDeclarations ?let formalParameterList)
+    <formal_parameter_list_ggs34> (!?ioDeclarations, ?let formalParameterList)
     ioDeclarations.mDeclarationList += !@overridingAbstractExtensionSetterAST {
       !isPredefined: false
       !typeName
@@ -136,7 +136,7 @@ final class @overridingAbstractExtensionSetterAST : @semanticDeclarationAST {
     loop (ioTypeMap.count + 1)
     while (not superType.isNull) & (baseTypeName == "") do
       if [superType.definition.setterMap hasKey !self.mOverridingExtensionSetterName.string] then
-        superType.definition.setterMap.searchKey (!self.mOverridingExtensionSetterName ?* ?inheritedSignature ?* ?let qualifier ?*)
+        superType.definition.setterMap.searchKey (!self.mOverridingExtensionSetterName, ?*, ?inheritedSignature, ?*, ?let qualifier, ?*)
         if qualifier <= @methodQualifier.isBasicFinal then
           baseTypeName = superType.definition.typeName.string
         end
@@ -149,18 +149,18 @@ final class @overridingAbstractExtensionSetterAST : @semanticDeclarationAST {
   //--- Analyze formal argument list
     var variableMap = @localVarManager {}
     buildLocalVariableMapAndSignature (
-      !inSemanticContext
-      !?ioTypeMap
-      !self.mOverridingExtensionSetterFormalParameterList
-      !?variableMap
+      !inSemanticContext,
+      !?ioTypeMap,
+      !self.mOverridingExtensionSetterFormalParameterList,
+      !?variableMap,
       ?let formalParameterListForGeneration
     )
   //--- Check Signature
     if baseTypeName != "" then
       checkMethodSignatures (
-        !formalParameterListForGeneration
-        !self.mOverridingExtensionSetterName.location
-        !inheritedSignature
+        !formalParameterListForGeneration,
+        !self.mOverridingExtensionSetterName.location,
+        !inheritedSignature,
         !inheritedDeclarationLocation
       )
     end
@@ -182,7 +182,7 @@ final class @overridingAbstractExtensionSetterAST : @semanticDeclarationAST {
     ?!@genericExtensionMethodListMap unused ioOverridingExtensionGetterListMap,
     ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionGetterListMap) {
     !? ioOverridingAbstractExtensionSetterListMap.insertKey
-      (!self.mTypeName.string
+      (!self.mTypeName.string,
       !self.mOverridingExtensionSetterName
     )
   }

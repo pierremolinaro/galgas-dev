@@ -42,11 +42,11 @@ final class @filewrapperPredefinedTypeAST : @predefinedTypeAST {
                                !@setterMap outSetterMap ) {
     outSetterMap = @()
     enterModifierWithInputArgument (
-      !?outSetterMap
-      !?ioUnifiedTypeMap
-      !argTypeName:"string"
-      !argName:"inDirectoryPath"
-      !setterName:"setCurrentDirectory"
+      !?outSetterMap,
+      !?ioUnifiedTypeMap,
+      !argTypeName:"string",
+      !argName:"inDirectoryPath",
+      !setterName:"setCurrentDirectory",
       !compilerArg:true
     )
   }
@@ -55,100 +55,100 @@ final class @filewrapperPredefinedTypeAST : @predefinedTypeAST {
 
   override proc getGetterMap (?!@unifiedTypeMap ioUnifiedTypeMap,
                                !@getterMap outMap ) {
-    commonGetterMapForAllTypes (!?ioUnifiedTypeMap ?outMap)
+    commonGetterMapForAllTypes (!?ioUnifiedTypeMap, ?outMap)
     enterBaseFinalGetterWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName:"allTextFilePaths"
-      !obsoleteName: ""
-      !returnedTypeName:"stringlist"
-      !hasCompilerArgument:false
-    )
-    enterBaseFinalGetterWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName:"allBinaryFilePaths"
-      !obsoleteName: ""
-      !returnedTypeName:"stringlist"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName:"allTextFilePaths",
+      !obsoleteName: "",
+      !returnedTypeName:"stringlist",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName:"allDirectoryPaths"
-      !obsoleteName: ""
-      !returnedTypeName:"stringlist"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName:"allBinaryFilePaths",
+      !obsoleteName: "",
+      !returnedTypeName:"stringlist",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName:"currentDirectory"
-      !obsoleteName: ""
-      !returnedTypeName:"string"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName:"allDirectoryPaths",
+      !obsoleteName: "",
+      !returnedTypeName:"stringlist",
+      !hasCompilerArgument:false
+    )
+    enterBaseFinalGetterWithoutArgument (
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName:"currentDirectory",
+      !obsoleteName: "",
+      !returnedTypeName:"string",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWithArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName:"allFilePathsWithExtension" !"string" !"inExtension"
-      !returnedTypeName:"stringlist"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName:"allFilePathsWithExtension", !"string", !"inExtension",
+      !returnedTypeName:"stringlist",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWithArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName:"directoryExistsAtPath" !"string" !"inPath"
-      !returnedTypeName:"bool"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName:"directoryExistsAtPath", !"string", !"inPath",
+      !returnedTypeName:"bool",
       !hasCompilerArgument:true
     )
     enterBaseFinalGetterWithArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName:"fileExistsAtPath" !"string" !"inPath"
-      !returnedTypeName:"bool"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName:"fileExistsAtPath", !"string", !"inPath",
+      !returnedTypeName:"bool",
       !hasCompilerArgument:true
     )
     enterBaseFinalGetterWithArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName:"textFileContentsAtPath" !"string" !"inPath"
-      !returnedTypeName:"string"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName:"textFileContentsAtPath", !"string", !"inPath",
+      !returnedTypeName:"string",
       !hasCompilerArgument:true
     )
     enterBaseFinalGetterWithArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName:"binaryFileContentsAtPath" !"string" !"inPath"
-      !returnedTypeName:"data"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName:"binaryFileContentsAtPath", !"string", !"inPath",
+      !returnedTypeName:"data",
       !hasCompilerArgument:true
     )
     enterBaseFinalGetterWithArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName:"absolutePathForPath" !"string" !"inPath"
-      !returnedTypeName:"string"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName:"absolutePathForPath", !"string", !"inPath",
+      !returnedTypeName:"string",
       !hasCompilerArgument:true
     )
     enterBaseFinalGetterWithArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName:"directoriesAtPath" !"string" !"inPath"
-      !returnedTypeName:"stringlist"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName:"directoriesAtPath", !"string", !"inPath",
+      !returnedTypeName:"stringlist",
       !hasCompilerArgument:true
     )
     enterBaseFinalGetterWithArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName:"binaryFilesAtPath" !"string" !"inPath"
-      !returnedTypeName:"stringlist"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName:"binaryFilesAtPath", !"string", !"inPath",
+      !returnedTypeName:"stringlist",
       !hasCompilerArgument:true
     )
     enterBaseFinalGetterWithArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName:"textFilesAtPath" !"string" !"inPath"
-      !returnedTypeName:"stringlist"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName:"textFilesAtPath", !"string", !"inPath",
+      !returnedTypeName:"stringlist",
       !hasCompilerArgument: true
     )
   }

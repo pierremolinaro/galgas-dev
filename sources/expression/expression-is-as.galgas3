@@ -53,7 +53,7 @@ syntax extension galgas3ExpressionSyntax {
 
   rule <expression_ggs3> (?!@galgasDeclarationAST ioDeclarations,
                          !@semanticExpressionAST outExpression ) {
-    <expression_or_ggs3> (!?ioDeclarations ?outExpression)
+    <expression_or_ggs3> (!?ioDeclarations, ?outExpression)
     select
     or
       let endOfReceiverExpression = @location.here
@@ -102,7 +102,7 @@ syntax extension galgas4ExpressionSyntax {
 
   rule <expression> (?!@galgasDeclarationAST ioDeclarations,
                     !@semanticExpressionAST outExpression ) {
-    <expression_or> (!?ioDeclarations ?outExpression)
+    <expression_or> (!?ioDeclarations, ?outExpression)
     select
     or
       let endOfReceiverExpression = @location.here
@@ -153,12 +153,12 @@ override proc @testDynamicClassInExpressionAST analyzeSemanticExpression
 ) {
 //--- Receiver expression analysis
   self.mReceiverExpression.analyzeSemanticExpression
-    (!usefulnessCallerEntityName: inUsefulnessCallerEntityName
-    !?ioUsefulEntitiesGraph
-    !inferenceType: @unifiedTypeMapEntry.null
-    !inAnalysisContext
-    !?ioTypeMap
-    !?ioVariableMap
+    (!usefulnessCallerEntityName: inUsefulnessCallerEntityName,
+    !?ioUsefulEntitiesGraph,
+    !inferenceType: @unifiedTypeMapEntry.null,
+    !inAnalysisContext,
+    !?ioTypeMap,
+    !?ioVariableMap,
     ?let expression
   )
 //--- Get type information
@@ -211,12 +211,12 @@ override proc @castInExpressionAST analyzeSemanticExpression
 ) {
 //--- Receiver expression analysis
   self.mReceiverExpression.analyzeSemanticExpression
-    (!usefulnessCallerEntityName: inUsefulnessCallerEntityName
-    !?ioUsefulEntitiesGraph
-    !inferenceType: @unifiedTypeMapEntry.null
-    !inAnalysisContext
-    !?ioTypeMap
-    !?ioVariableMap
+    (!usefulnessCallerEntityName: inUsefulnessCallerEntityName,
+    !?ioUsefulEntitiesGraph,
+    !inferenceType: @unifiedTypeMapEntry.null,
+    !inAnalysisContext,
+    !?ioTypeMap,
+    !?ioVariableMap,
     ?let @semanticExpressionForGeneration expression
    )
 //--- Get type information
@@ -280,10 +280,10 @@ override proc @testDynamicClassInExpressionForGeneration generateExpression
   let typeNameRepresentation = self.mCastType.definition.typeName.string.identifierRepresentation
 //--- Receiver expression
   self.mReceiverExpression.generateExpression
-    (!?ioGeneratedCode
-    !?ioInclusionSet
-    !?ioTemporaryVariableIndex
-    !?ioUnusedVariableCppNameSet
+    (!?ioGeneratedCode,
+    !?ioInclusionSet,
+    !?ioTemporaryVariableIndex,
+    !?ioUnusedVariableCppNameSet,
     ?let @string receiverExpression
   )
 //--- Generated test
@@ -320,10 +320,10 @@ override proc @castInExpressionForGeneration generateExpression
   ioTemporaryVariableIndex += 1
 //--- Receiver expression
   self.mReceiverExpression.generateExpression
-    (!?ioGeneratedCode
-    !?ioInclusionSet
-    !?ioTemporaryVariableIndex
-    !?ioUnusedVariableCppNameSet
+    (!?ioGeneratedCode,
+    !?ioInclusionSet,
+    !?ioTemporaryVariableIndex,
+    !?ioUnusedVariableCppNameSet,
     ?let @string receiverExpression
   )
 //---
@@ -371,10 +371,10 @@ override proc @extractObjectInExpressionForGeneration generateExpression
   ioTemporaryVariableIndex += 1
 //--- Receiver expression
   self.mReceiverExpression.generateExpression
-    (!?ioGeneratedCode
-    !?ioInclusionSet
-    !?ioTemporaryVariableIndex
-    !?ioUnusedVariableCppNameSet
+    (!?ioGeneratedCode,
+    !?ioInclusionSet,
+    !?ioTemporaryVariableIndex,
+    !?ioUnusedVariableCppNameSet,
     ?let @string receiverExpression
   )
 //--- Generate code

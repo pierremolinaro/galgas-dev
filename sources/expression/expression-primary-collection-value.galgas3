@@ -29,7 +29,7 @@ syntax extension galgas3ExpressionSyntax {
     select
     or
       repeat
-        <expression_ggs3> (!?ioDeclarations ?let @semanticExpressionAST expression)
+        <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST expression)
         expressionList += !expression !.here
       while
         $,$
@@ -57,7 +57,7 @@ syntax extension galgas4ExpressionSyntax {
     select
     or
       repeat
-        <expression> (!?ioDeclarations ?let @semanticExpressionAST expression)
+        <expression> (!?ioDeclarations, ?let @semanticExpressionAST expression)
         expressionList += !expression !.here
       while
         $,$
@@ -77,7 +77,7 @@ syntax extension galgas4ExpressionSyntax {
     select
     or
       repeat
-        <expression> (!?ioDeclarations ?let @semanticExpressionAST expression)
+        <expression> (!?ioDeclarations, ?let @semanticExpressionAST expression)
         expressionList += !expression !.here
       while
         $,$
@@ -148,25 +148,25 @@ final class @collectionValueAST : @semanticExpressionAST {
         !targetType.definition.typeName
         !emptyArgumentList.initializerSignature
       )
-      !?ioUsefulEntitiesGraph.addEdge (!from: inUsefulnessCallerEntityName !to: nameForUsefulness)
+      !?ioUsefulEntitiesGraph.addEdge (!from: inUsefulnessCallerEntityName, !to: nameForUsefulness)
     //---
       let elementType = targetType.definition.typeForEnumeratedElement
       var @collectionValueElementListForGeneration expressionListForGeneration = @()
       for (expression location) in self.mExpressionList do
         expression.analyzeSemanticExpression
-          (!usefulnessCallerEntityName: inUsefulnessCallerEntityName
-          !?ioUsefulEntitiesGraph
-          !inferenceType: elementType
-          !inAnalysisContext
-          !?ioTypeMap
-          !?ioVariableMap
+          (!usefulnessCallerEntityName: inUsefulnessCallerEntityName,
+          !?ioUsefulEntitiesGraph,
+          !inferenceType: elementType,
+          !inAnalysisContext,
+          !?ioTypeMap,
+          !?ioVariableMap,
           ?var expressionForGeneration
         )
       //--- Check assignment type compatibility
         checkAssignmentTypeWithImplicitGetterCall (
-          !elementType
-          !expressionForGeneration.mResultType
-          !location
+          !elementType,
+          !expressionForGeneration.mResultType,
+          !location,
           !?expressionForGeneration
         )
         expressionListForGeneration += !expressionForGeneration !location
@@ -178,7 +178,7 @@ final class @collectionValueAST : @semanticExpressionAST {
       }
     //--- Usefull entity graph
       let typeUsefulnessName = typeNameForUsefulEntitiesGraph (targetType.definition.typeName)
-      !?ioUsefulEntitiesGraph.addEdge (!from: inUsefulnessCallerEntityName !to: typeUsefulnessName)
+      !?ioUsefulEntitiesGraph.addEdge (!from: inUsefulnessCallerEntityName, !to: typeUsefulnessName)
     end
   }
 
@@ -218,10 +218,10 @@ final class @expressionCollectionForGeneration : @semanticExpressionForGeneratio
   //--- Add Elements
     for (expression location) in self.expressionList do
       expression.generateExpression
-        (!?ioGeneratedCode
-        !?ioInclusionSet
-        !?ioTemporaryVariableIndex
-        !?ioUnusedVariableCppNameSet
+        (!?ioGeneratedCode,
+        !?ioInclusionSet,
+        !?ioTemporaryVariableIndex,
+        !?ioUnusedVariableCppNameSet,
         ?let argumentCppName
       )
       ioGeneratedCode += outCppExpression + ".plusPlusAssignOperation ("

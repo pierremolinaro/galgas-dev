@@ -38,148 +38,148 @@ final class @doublePredefinedTypeAST : @predefinedTypeAST {
 
   override proc getGetterMap (?!@unifiedTypeMap ioUnifiedTypeMap,
                                !@getterMap outMap ) {
-    commonGetterMapForAllTypes (!?ioUnifiedTypeMap ?outMap)
+    commonGetterMapForAllTypes (!?ioUnifiedTypeMap, ?outMap)
     enterBaseFinalGetterWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName:"string"
-      !obsoleteName: ""
-      !returnedTypeName:"string"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName:"string",
+      !obsoleteName: "",
+      !returnedTypeName:"string",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName:"uint"
-      !obsoleteName: ""
-      !returnedTypeName:"uint"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName:"uint",
+      !obsoleteName: "",
+      !returnedTypeName:"uint",
       !hasCompilerArgument:true
     )
     enterBaseFinalGetterWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName:"sint"
-      !obsoleteName: ""
-      !returnedTypeName:"sint"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName:"sint",
+      !obsoleteName: "",
+      !returnedTypeName:"sint",
       !hasCompilerArgument:true
     )
     enterBaseFinalGetterWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName:"uint64"
-      !obsoleteName: ""
-      !returnedTypeName:"uint64"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName:"uint64",
+      !obsoleteName: "",
+      !returnedTypeName:"uint64",
       !hasCompilerArgument:true
     )
     enterBaseFinalGetterWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName:"sint64"
-      !obsoleteName: ""
-      !returnedTypeName:"sint64"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName:"sint64",
+      !obsoleteName: "",
+      !returnedTypeName:"sint64",
       !hasCompilerArgument:true
     )
     enterBaseFinalGetterWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName:"cos"
-      !obsoleteName: ""
-      !returnedTypeName:"double"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName:"cos",
+      !obsoleteName: "",
+      !returnedTypeName:"double",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName:"sin"
-      !obsoleteName: ""
-      !returnedTypeName:"double"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName:"sin",
+      !obsoleteName: "",
+      !returnedTypeName:"double",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName:"tan"
-      !obsoleteName: ""
-      !returnedTypeName:"double"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName:"tan",
+      !obsoleteName: "",
+      !returnedTypeName:"double",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName:"log10"
-      !obsoleteName: ""
-      !returnedTypeName:"double"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName:"log10",
+      !obsoleteName: "",
+      !returnedTypeName:"double",
       !hasCompilerArgument:true
     )
     enterBaseFinalGetterWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName:"log2"
-      !obsoleteName: ""
-      !returnedTypeName:"double"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName:"log2",
+      !obsoleteName: "",
+      !returnedTypeName:"double",
       !hasCompilerArgument:true
     )
     enterBaseFinalGetterWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName:"logn"
-      !obsoleteName: ""
-      !returnedTypeName:"double"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName:"logn",
+      !obsoleteName: "",
+      !returnedTypeName:"double",
       !hasCompilerArgument:true
     )
     enterBaseFinalGetterWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName:"exp"
-      !obsoleteName: ""
-      !returnedTypeName:"double"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName:"exp",
+      !obsoleteName: "",
+      !returnedTypeName:"double",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName:"cosDegree"
-      !obsoleteName: ""
-      !returnedTypeName:"double"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName:"cosDegree",
+      !obsoleteName: "",
+      !returnedTypeName:"double",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName:"sinDegree"
-      !obsoleteName: ""
-      !returnedTypeName:"double"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName:"sinDegree",
+      !obsoleteName: "",
+      !returnedTypeName:"double",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName:"tanDegree"
-      !obsoleteName: ""
-      !returnedTypeName:"double"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName:"tanDegree",
+      !obsoleteName: "",
+      !returnedTypeName:"double",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName:"sqrt"
-      !obsoleteName: ""
-      !returnedTypeName:"double"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName:"sqrt",
+      !obsoleteName: "",
+      !returnedTypeName:"double",
       !hasCompilerArgument:true
     )
     enterBaseFinalGetterWithArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName:"power" !"double" !"inExponant"
-      !returnedTypeName:"double"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName:"power", !"double", !"inExponant",
+      !returnedTypeName:"double",
       !hasCompilerArgument:true
     )
     enterBaseFinalGetterWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName:"binaryImage"
-      !obsoleteName: ""
-      !returnedTypeName:"uint64"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName:"binaryImage",
+      !obsoleteName: "",
+      !returnedTypeName:"uint64",
       !hasCompilerArgument:false
     )
   }
@@ -190,19 +190,19 @@ final class @doublePredefinedTypeAST : @predefinedTypeAST {
                                       !@classFunctionMap outMap ) {
     outMap = @()
     enterClassFunctionWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !name:"pi"
-      !resultTypeName:"double"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !name:"pi",
+      !resultTypeName:"double",
       !hasLexiqueArg:false
     )
     enterClassFunctionWithArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !name:"doubleWithBinaryImage"
-      !argTypeName:"uint64"
-      !argName:"inBinaryImage"
-      !resultTypeName:"double"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !name:"doubleWithBinaryImage",
+      !argTypeName:"uint64",
+      !argName:"inBinaryImage",
+      !resultTypeName:"double",
       !hasLexiqueArg:false
     )
   }

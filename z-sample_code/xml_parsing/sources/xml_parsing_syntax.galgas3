@@ -45,10 +45,10 @@ rule <start_symbol>
 //--- Element list
   outRootNodes = @()
   <element_list>(
-    !?outRootNodes
-    !inIncludeComments
-    !inDoNotCondenseWhiteSpaces
-    !inPrintDuringParsing
+    !?outRootNodes,
+    !inIncludeComments,
+    !inDoNotCondenseWhiteSpaces,
+    !inPrintDuringParsing,
     !"")
 }
 
@@ -63,16 +63,16 @@ rule <element_list>
   repeat
   while
     addText (
-      !?ioNodes
-      !inDoNotCondenseWhiteSpaces
-      !inPrintDuringParsing
+      !?ioNodes,
+      !inDoNotCondenseWhiteSpaces,
+      !inPrintDuringParsing,
       !inIndendation
     )
     <element>(
-      !? ioNodes
-      !inIncludeComments
-      !inDoNotCondenseWhiteSpaces
-      !inPrintDuringParsing
+      !? ioNodes,
+      !inIncludeComments,
+      !inDoNotCondenseWhiteSpaces,
+      !inPrintDuringParsing,
       !inIndendation)
   end
 }
@@ -126,7 +126,7 @@ rule <element>
     $name$ ?let @lstring attributeName
     $=$
     $value$ ?let @lstring attributeValue
-    !?attributeMap.insertKey (!attributeName !attributeValue)
+    !?attributeMap.insertKey (!attributeName, !attributeValue)
   end
 
   if inPrintDuringParsing then
@@ -156,15 +156,15 @@ rule <element>
   or
     $>$
     <element_list>(
-      !?nodeList
-      !inIncludeComments
-      !inDoNotCondenseWhiteSpaces
-      !inPrintDuringParsing
+      !?nodeList,
+      !inIncludeComments,
+      !inDoNotCondenseWhiteSpaces,
+      !inPrintDuringParsing,
       !inIndendation + " ")
     addText (
-      !?nodeList
-      !inDoNotCondenseWhiteSpaces
-      !inPrintDuringParsing
+      !?nodeList,
+      !inDoNotCondenseWhiteSpaces,
+      !inPrintDuringParsing,
       !inIndendation
     )
     $</$

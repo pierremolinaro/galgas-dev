@@ -67,37 +67,37 @@ syntax extension galgas3ExpressionSyntax {
 
   rule <term_ggs3> (?!@galgasDeclarationAST ioDeclarations,
                    !@semanticExpressionAST outExpression ) {
-    <factor_ggs3> (!?ioDeclarations ?outExpression)
+    <factor_ggs3> (!?ioDeclarations, ?outExpression)
     repeat
     while
       let operatorLocation = @location.here
       $*$
       let leftOperand = outExpression
-      <factor_ggs3> (!?ioDeclarations ?let @semanticExpressionAST rightOperand)
+      <factor_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST rightOperand)
       outExpression = @multiplicationExpressionAST {!operatorLocation !leftOperand !rightOperand}
     while
       let operatorLocation = @location.here
       $&*$
       let leftOperand = outExpression
-      <factor_ggs3> (!?ioDeclarations ?let @semanticExpressionAST rightOperand)
+      <factor_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST rightOperand)
       outExpression = @multiplicationExpressionNoOverflowAST {!operatorLocation !leftOperand !rightOperand}
     while
       let operatorLocation = @location.here
       $/$
       let leftOperand = outExpression
-      <factor_ggs3> (!?ioDeclarations ?let rightOperand)
+      <factor_ggs3> (!?ioDeclarations, ?let rightOperand)
       outExpression = @divisionExpressionAST {!operatorLocation !leftOperand !rightOperand}
     while
       let operatorLocation = @location.here
       $&/$
       let leftOperand = outExpression
-      <factor_ggs3> (!?ioDeclarations ?let rightOperand)
+      <factor_ggs3> (!?ioDeclarations, ?let rightOperand)
       outExpression = @divisionExpressionNoOverflowAST {!operatorLocation !leftOperand !rightOperand}
     while
       let operatorLocation = @location.here
       $mod$
       let leftOperand = outExpression
-      <factor_ggs3> (!?ioDeclarations ?let rightOperand)
+      <factor_ggs3> (!?ioDeclarations, ?let rightOperand)
       outExpression = @moduloExpressionAST {!operatorLocation !leftOperand !rightOperand}
     end
   }
@@ -114,37 +114,37 @@ syntax extension galgas4ExpressionSyntax {
 
   rule <term> (?!@galgasDeclarationAST ioDeclarations,
               !@semanticExpressionAST outExpression ) {
-    <factor> (!?ioDeclarations ?outExpression)
+    <factor> (!?ioDeclarations, ?outExpression)
     repeat
     while
       let operatorLocation = @location.here
       $*$
       let leftOperand = outExpression
-      <factor> (!?ioDeclarations ?let @semanticExpressionAST rightOperand)
+      <factor> (!?ioDeclarations, ?let @semanticExpressionAST rightOperand)
       outExpression = @multiplicationExpressionAST {!operatorLocation !leftOperand !rightOperand}
     while
       let operatorLocation = @location.here
       $&*$
       let leftOperand = outExpression
-      <factor> (!?ioDeclarations ?let @semanticExpressionAST rightOperand)
+      <factor> (!?ioDeclarations, ?let @semanticExpressionAST rightOperand)
       outExpression = @multiplicationExpressionNoOverflowAST {!operatorLocation !leftOperand !rightOperand}
     while
       let operatorLocation = @location.here
       $/$
       let leftOperand = outExpression
-      <factor> (!?ioDeclarations ?let rightOperand)
+      <factor> (!?ioDeclarations, ?let rightOperand)
       outExpression = @divisionExpressionAST {!operatorLocation !leftOperand !rightOperand}
     while
       let operatorLocation = @location.here
       $&/$
       let leftOperand = outExpression
-      <factor> (!?ioDeclarations ?let rightOperand)
+      <factor> (!?ioDeclarations, ?let rightOperand)
       outExpression = @divisionExpressionNoOverflowAST {!operatorLocation !leftOperand !rightOperand}
     while
       let operatorLocation = @location.here
       $mod$
       let leftOperand = outExpression
-      <factor> (!?ioDeclarations ?let rightOperand)
+      <factor> (!?ioDeclarations, ?let rightOperand)
       outExpression = @moduloExpressionAST {!operatorLocation !leftOperand !rightOperand}
     end
   }
@@ -176,30 +176,30 @@ override proc @multiplicationExpressionNoOverflowAST analyzeSemanticExpression
   !@semanticExpressionForGeneration outExpression ) {
 //--- Left expression analysis
   self.mLeftExpression.analyzeSemanticExpression
-    (!usefulnessCallerEntityName: inUsefulnessCallerEntityName
-    !?ioUsefulEntitiesGraph
-    !inferenceType: inInferenceType
-    !inAnalysisContext
-    !?ioTypeMap
-    !?ioVariableMap
+    (!usefulnessCallerEntityName: inUsefulnessCallerEntityName,
+    !?ioUsefulEntitiesGraph,
+    !inferenceType: inInferenceType,
+    !inAnalysisContext,
+    !?ioTypeMap,
+    !?ioVariableMap,
     ?var @semanticExpressionForGeneration leftExpression
   )
 //--- Right expression analysis
   self.mRightExpression.analyzeSemanticExpression
-    (!usefulnessCallerEntityName: inUsefulnessCallerEntityName
-    !?ioUsefulEntitiesGraph
-    !inferenceType: leftExpression.mResultType
-    !inAnalysisContext
-    !?ioTypeMap
-    !?ioVariableMap
+    (!usefulnessCallerEntityName: inUsefulnessCallerEntityName,
+    !?ioUsefulEntitiesGraph,
+    !inferenceType: leftExpression.mResultType,
+    !inAnalysisContext,
+    !?ioTypeMap,
+    !?ioVariableMap,
     ?@semanticExpressionForGeneration rightExpression
   )
 //--- Check operator availability
   checkDiadicOperator (
-    !operatorIsHandled: [leftExpression.mResultType.definition.features contains ! .infixMulOperatorNoOVF]
-    !"&*"
-    !self.mOperatorLocation
-    !?leftExpression
+    !operatorIsHandled: [leftExpression.mResultType.definition.features contains ! .infixMulOperatorNoOVF],
+    !"&*",
+    !self.mOperatorLocation,
+    !?leftExpression,
     !?rightExpression
   )
 //--- Generate expression
@@ -234,30 +234,30 @@ override proc @multiplicationExpressionAST analyzeSemanticExpression
   !@semanticExpressionForGeneration outExpression ) {
 //--- Left expression analysis
   self.mLeftExpression.analyzeSemanticExpression
-    (!usefulnessCallerEntityName: inUsefulnessCallerEntityName
-    !?ioUsefulEntitiesGraph
-    !inferenceType: inInferenceType
-    !inAnalysisContext
-    !?ioTypeMap
-    !?ioVariableMap
+    (!usefulnessCallerEntityName: inUsefulnessCallerEntityName,
+    !?ioUsefulEntitiesGraph,
+    !inferenceType: inInferenceType,
+    !inAnalysisContext,
+    !?ioTypeMap,
+    !?ioVariableMap,
     ?var @semanticExpressionForGeneration leftExpression
   )
 //--- Right expression analysis
   self.mRightExpression.analyzeSemanticExpression
-    (!usefulnessCallerEntityName: inUsefulnessCallerEntityName
-    !?ioUsefulEntitiesGraph
-    !inferenceType: leftExpression.mResultType
-    !inAnalysisContext
-    !?ioTypeMap
-    !?ioVariableMap
+    (!usefulnessCallerEntityName: inUsefulnessCallerEntityName,
+    !?ioUsefulEntitiesGraph,
+    !inferenceType: leftExpression.mResultType,
+    !inAnalysisContext,
+    !?ioTypeMap,
+    !?ioVariableMap,
     ?@semanticExpressionForGeneration rightExpression
   )
 //--- Check operator availability
   checkDiadicOperator (
-    !operatorIsHandled: [leftExpression.mResultType.definition.features contains !.infixMulOperator]
-    !"*"
-    !self.mOperatorLocation
-    !?leftExpression
+    !operatorIsHandled: [leftExpression.mResultType.definition.features contains !.infixMulOperator],
+    !"*",
+    !self.mOperatorLocation,
+    !?leftExpression,
     !?rightExpression
   )
 //--- Generate expression
@@ -291,30 +291,30 @@ override proc @divisionExpressionNoOverflowAST analyzeSemanticExpression
   !@semanticExpressionForGeneration outExpression ) {
 //--- Left expression analysis
   self.mLeftExpression.analyzeSemanticExpression
-    (!usefulnessCallerEntityName: inUsefulnessCallerEntityName
-    !?ioUsefulEntitiesGraph
-    !inferenceType: inInferenceType
-    !inAnalysisContext
-    !?ioTypeMap
-    !?ioVariableMap
+    (!usefulnessCallerEntityName: inUsefulnessCallerEntityName,
+    !?ioUsefulEntitiesGraph,
+    !inferenceType: inInferenceType,
+    !inAnalysisContext,
+    !?ioTypeMap,
+    !?ioVariableMap,
     ?var @semanticExpressionForGeneration leftExpression
   )
 //--- Right expression analysis
   self.mRightExpression.analyzeSemanticExpression
-    (!usefulnessCallerEntityName: inUsefulnessCallerEntityName
-    !?ioUsefulEntitiesGraph
-    !inferenceType: leftExpression.mResultType
-    !inAnalysisContext
-    !?ioTypeMap
-    !?ioVariableMap
+    (!usefulnessCallerEntityName: inUsefulnessCallerEntityName,
+    !?ioUsefulEntitiesGraph,
+    !inferenceType: leftExpression.mResultType,
+    !inAnalysisContext,
+    !?ioTypeMap,
+    !?ioVariableMap,
     ?@semanticExpressionForGeneration rightExpression
   )
 //--- Check operator availability
   checkDiadicOperator (
-    !operatorIsHandled: [leftExpression.mResultType.definition.features contains !.infixDivOperatorNoOVF]
-    !"&/"
-    !self.mOperatorLocation
-    !?leftExpression
+    !operatorIsHandled: [leftExpression.mResultType.definition.features contains !.infixDivOperatorNoOVF],
+    !"&/",
+    !self.mOperatorLocation,
+    !?leftExpression,
     !?rightExpression
   )
 //--- Generate expression
@@ -348,30 +348,30 @@ override proc @divisionExpressionAST analyzeSemanticExpression
   !@semanticExpressionForGeneration outExpression ) {
 //--- Left expression analysis
   self.mLeftExpression.analyzeSemanticExpression
-    (!usefulnessCallerEntityName: inUsefulnessCallerEntityName
-    !?ioUsefulEntitiesGraph
-    !inferenceType: inInferenceType
-    !inAnalysisContext
-    !?ioTypeMap
-    !?ioVariableMap
+    (!usefulnessCallerEntityName: inUsefulnessCallerEntityName,
+    !?ioUsefulEntitiesGraph,
+    !inferenceType: inInferenceType,
+    !inAnalysisContext,
+    !?ioTypeMap,
+    !?ioVariableMap,
     ?var @semanticExpressionForGeneration leftExpression
   )
 //--- Right expression analysis
   self.mRightExpression.analyzeSemanticExpression
-    (!usefulnessCallerEntityName: inUsefulnessCallerEntityName
-    !?ioUsefulEntitiesGraph
-    !inferenceType: leftExpression.mResultType
-    !inAnalysisContext
-    !?ioTypeMap
-    !?ioVariableMap
+    (!usefulnessCallerEntityName: inUsefulnessCallerEntityName,
+    !?ioUsefulEntitiesGraph,
+    !inferenceType: leftExpression.mResultType,
+    !inAnalysisContext,
+    !?ioTypeMap,
+    !?ioVariableMap,
     ?@semanticExpressionForGeneration rightExpression
   )
 //--- Check operator availability
   checkDiadicOperator (
-    !operatorIsHandled: [leftExpression.mResultType.definition.features contains !.infixDivOperator]
-    !"/"
-    !self.mOperatorLocation
-    !?leftExpression
+    !operatorIsHandled: [leftExpression.mResultType.definition.features contains !.infixDivOperator],
+    !"/",
+    !self.mOperatorLocation,
+    !?leftExpression,
     !?rightExpression
   )
 //--- Generate expression
@@ -405,30 +405,30 @@ override proc @moduloExpressionAST analyzeSemanticExpression
   !@semanticExpressionForGeneration outExpression ) {
 //--- Left expression analysis
   self.mLeftExpression.analyzeSemanticExpression
-    (!usefulnessCallerEntityName: inUsefulnessCallerEntityName
-    !?ioUsefulEntitiesGraph
-    !inferenceType: inInferenceType
-    !inAnalysisContext
-    !?ioTypeMap
-    !?ioVariableMap
+    (!usefulnessCallerEntityName: inUsefulnessCallerEntityName,
+    !?ioUsefulEntitiesGraph,
+    !inferenceType: inInferenceType,
+    !inAnalysisContext,
+    !?ioTypeMap,
+    !?ioVariableMap,
     ?var @semanticExpressionForGeneration leftExpression
   )
 //--- Right expression analysis
   self.mRightExpression.analyzeSemanticExpression
-    (!usefulnessCallerEntityName: inUsefulnessCallerEntityName
-    !?ioUsefulEntitiesGraph
-    !inferenceType: leftExpression.mResultType
-    !inAnalysisContext
-    !?ioTypeMap
-    !?ioVariableMap
+    (!usefulnessCallerEntityName: inUsefulnessCallerEntityName,
+    !?ioUsefulEntitiesGraph,
+    !inferenceType: leftExpression.mResultType,
+    !inAnalysisContext,
+    !?ioTypeMap,
+    !?ioVariableMap,
     ?@semanticExpressionForGeneration rightExpression
   )
 //--- Check operator availability
   checkDiadicOperator (
-    !operatorIsHandled: [leftExpression.mResultType.definition.features contains !.infixModOperator]
-    !"mod"
-    !self.mOperatorLocation
-    !?leftExpression
+    !operatorIsHandled: [leftExpression.mResultType.definition.features contains !.infixModOperator],
+    !"mod",
+    !self.mOperatorLocation,
+    !?leftExpression,
     !?rightExpression
   )
 //--- Generate expression

@@ -58,20 +58,20 @@ proc compileBeforeClauseGalgas3
   ?!@programListForGeneration ioDecoratedDeclarationListForGeneration
 ) {
   let usefulnessName = beforeNameForUsefulEntitiesGraph (!.here)
-  !?ioUsefulEntitiesGraph.addNode (!usefulnessName !usefulnessName)
+  !?ioUsefulEntitiesGraph.addNode (!usefulnessName, !usefulnessName)
   ioUsefulnessRootEntities += !usefulnessName
 //--- Compile 'before' routines
   var semanticInstructionListForGeneration = @semanticInstructionListForGeneration ()
   for (mInstructionList mEndOfInstructionList) in inPrologueList do
     analyzeRoutineBody (
-      !usefulnessName
-      !?ioUsefulEntitiesGraph
-      !inAnalysisContext
-      !?ioTypeMap
-      !@formalParameterListAST () // Routine signature : no argument
-      !mInstructionList
-      !mEndOfInstructionList
-      ?let @semanticInstructionListForGeneration blockSemanticInstructionListForGeneration
+      !usefulnessName,
+      !?ioUsefulEntitiesGraph,
+      !inAnalysisContext,
+      !?ioTypeMap,
+      !@formalParameterListAST (), // Routine signature : no argument
+      !mInstructionList,
+      !mEndOfInstructionList,
+      ?let @semanticInstructionListForGeneration blockSemanticInstructionListForGeneration,
       ?*
     )
     semanticInstructionListForGeneration += !@semanticBlockInstructionForGeneration {
@@ -80,7 +80,7 @@ proc compileBeforeClauseGalgas3
 //---
   ioDecoratedDeclarationListForGeneration +=
     !@routineImplementationForGeneration {
-      !generateHeader: false // Has no header
+      !generateHeader: false
       !implementationCppFileName: "proc-before"
       !routineMangledName:"before"
       !@formalParameterListForGeneration ()
@@ -106,25 +106,25 @@ private proc compileProgramRulesGalgas3
   var @uint ruleIndex = 0
   for (mSourceFileExtension * mSourceFileVariableName mSourceFileVariableNameIsUnused * mInstructionList mEndOfInstructionList) in inProgramRules do
     let usefulnessName = rootRuleNameForUsefulEntitiesGraph (!mSourceFileExtension)
-    !?ioUsefulEntitiesGraph.addNode (!usefulnessName !usefulnessName)
+    !?ioUsefulEntitiesGraph.addNode (!usefulnessName, !usefulnessName)
     ioUsefulnessRootEntities += !usefulnessName
     let @formalParameterListAST argumentList = @[
       @("".nowhere, .argumentConstantIn, @lstring {!"lstring" !@location.here}, mSourceFileVariableName, mSourceFileVariableNameIsUnused)
     ]
     analyzeRoutineBody (
-      !usefulnessName
-      !?ioUsefulEntitiesGraph
-      !inAnalysisContext
-      !?ioTypeMap
-      !argumentList
-      !mInstructionList
-      !mEndOfInstructionList
-      ?let semanticInstructionListForGeneration
+      !usefulnessName,
+      !?ioUsefulEntitiesGraph,
+      !inAnalysisContext,
+      !?ioTypeMap,
+      !argumentList,
+      !mInstructionList,
+      !mEndOfInstructionList,
+      ?let semanticInstructionListForGeneration,
       ?let routineSignature
     )
     ioDecoratedDeclarationListForGeneration +=
       !@routineImplementationForGeneration {
-        !generateHeader: false // Has no header
+        !generateHeader: false
         !implementationCppFileName: "proc-programrule"
         !routineMangledName: "programRule_" + ruleIndex.string
         !routineSignature
@@ -150,27 +150,27 @@ proc compileAfterClauseGalgas3
   ?!@programListForGeneration ioDecoratedDeclarationListForGeneration
 ) {
   let usefulnessName = afterNameForUsefulEntitiesGraph (!.here)
-  !?ioUsefulEntitiesGraph.addNode (!usefulnessName !usefulnessName)
+  !?ioUsefulEntitiesGraph.addNode (!usefulnessName, !usefulnessName)
   ioUsefulnessRootEntities += !usefulnessName
 //--- Compile 'after' routines
   var @semanticInstructionListForGeneration semanticInstructionListForGeneration = @()
   for (mInstructionList mEndOfInstructionList) in inEpilogueList do
     analyzeRoutineBody (
-      !usefulnessName
-      !?ioUsefulEntitiesGraph
-      !inAnalysisContext
-      !?ioTypeMap
-      !@formalParameterListAST () // Routine signature : no argument
-      !mInstructionList
-      !mEndOfInstructionList
-      ?let @semanticInstructionListForGeneration blockSemanticInstructionListForGeneration
+      !usefulnessName,
+      !?ioUsefulEntitiesGraph,
+      !inAnalysisContext,
+      !?ioTypeMap,
+      !@formalParameterListAST (), // Routine signature : no argument
+      !mInstructionList,
+      !mEndOfInstructionList,
+      ?let @semanticInstructionListForGeneration blockSemanticInstructionListForGeneration,
       ?*
     )
     semanticInstructionListForGeneration += !@semanticBlockInstructionForGeneration {!blockSemanticInstructionListForGeneration}
   end
 //---
   ioDecoratedDeclarationListForGeneration += !@routineImplementationForGeneration {
-    !generateHeader: false // Has no header
+    !generateHeader: false
     !implementationCppFileName: "proc-after"
     !routineMangledName: "after"
     !@formalParameterListForGeneration ()
@@ -207,29 +207,29 @@ proc compileProgramComponentGalgas3
 //--- Analyse 'before' instructions
   var @programListForGeneration decoratedDeclarationListForGeneration = @()
   compileBeforeClauseGalgas3 (
-    !?ioUsefulnessRootEntities
-    !?ioUsefulEntitiesGraph
-    !analysisContext
-     !?ioTypeMap
-    !inPrologueList
+    !?ioUsefulnessRootEntities,
+    !?ioUsefulEntitiesGraph,
+    !analysisContext,
+     !?ioTypeMap,
+    !inPrologueList,
     !?decoratedDeclarationListForGeneration
   )
 //--- Analyse 'after' instructions
   compileAfterClauseGalgas3 (
-    !?ioUsefulnessRootEntities
-    !?ioUsefulEntitiesGraph
-    !analysisContext
-    !?ioTypeMap
-    !inEpilogueList
+    !?ioUsefulnessRootEntities,
+    !?ioUsefulEntitiesGraph,
+    !analysisContext,
+    !?ioTypeMap,
+    !inEpilogueList,
     !?decoratedDeclarationListForGeneration
   )
 //--- Analyse program rules
   compileProgramRulesGalgas3 (
-    !?ioUsefulnessRootEntities
-    !?ioUsefulEntitiesGraph
-    !analysisContext
-    !?ioTypeMap
-    !inProgramRules
+    !?ioUsefulnessRootEntities,
+    !?ioUsefulEntitiesGraph,
+    !analysisContext,
+    !?ioTypeMap,
+    !inProgramRules,
     !?decoratedDeclarationListForGeneration
   )
 //----------- Build Implementation File
@@ -237,7 +237,7 @@ proc compileProgramComponentGalgas3
   var beforeAfterRulesString = ""
   for (mDeclaration) in decoratedDeclarationListForGeneration do
     beforeAfterRulesString += mDeclaration.appendTypeGenericImplementation
-    mDeclaration.appendSpecificImplementation (!ioTypeMap !?inclusionSet ?let @string code)
+    mDeclaration.appendSpecificImplementation (!ioTypeMap, !?inclusionSet, ?let @string code)
     beforeAfterRulesString += code
   end
   for (* * * * mReferenceGrammar * *) in inProgramRules do
@@ -254,7 +254,7 @@ proc compileProgramComponentGalgas3
   ]
 //---
   outProgramComponentForGeneration = @programComponentForGeneration {
-    !generateHeader: false // No header
+    !generateHeader: false
     !implementationCppFileName: "program"
     !inclusionSet
     !cppContents

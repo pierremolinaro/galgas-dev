@@ -24,7 +24,7 @@ syntax extension galgas3SyntaxComponentSyntax {
   rule <syntax_instruction_ggs3> (?!@galgasDeclarationAST ioDeclarations,
                                   !@syntaxInstructionAST outInstruction) {
     $\$terminal\$$ ?let @lstring terminalName indexing terminalReference
-    <actual_input_parameter_list_ggs3> (!?ioDeclarations ?let @actualInputParameterListAST actualInputParameterList)
+    <actual_input_parameter_list_ggs3> (!?ioDeclarations, ?let @actualInputParameterListAST actualInputParameterList)
     <terminal_instruction_indexing> (?let indexNameList)
   //--- Get syntax directed translation result string
     let @abstractGrammarInstructionSyntaxDirectedTranslationResult grammarInstructionSyntaxDirectedTranslationPreceedingDelimitor
@@ -34,8 +34,8 @@ syntax extension galgas3SyntaxComponentSyntax {
       grammarInstructionSyntaxDirectedTranslationPreceedingToken = @grammarInstructionSyntaxDirectedTranslationResultNone {}
     or
       $:>$
-      <syntax_directed_translation_result> (!?ioDeclarations ?grammarInstructionSyntaxDirectedTranslationPreceedingDelimitor)
-      <syntax_directed_translation_result> (!?ioDeclarations ?grammarInstructionSyntaxDirectedTranslationPreceedingToken)
+      <syntax_directed_translation_result> (!?ioDeclarations, ?grammarInstructionSyntaxDirectedTranslationPreceedingDelimitor)
+      <syntax_directed_translation_result> (!?ioDeclarations, ?grammarInstructionSyntaxDirectedTranslationPreceedingToken)
     end
     outInstruction = @terminalCheckInstructionAST {
       !terminalName.location
@@ -82,7 +82,7 @@ syntax extension galgas4SyntaxComponentSyntax {
   rule <syntax_instruction> (?!@galgasDeclarationAST ioDeclarations,
                              !@syntaxInstructionAST outInstruction) {
     $\$terminal\$$ ?let @lstring terminalName indexing terminalReference
-    <actual_input_parameter_list> (!?ioDeclarations ?let actualInputParameterList)
+    <actual_input_parameter_list> (!?ioDeclarations, ?let actualInputParameterList)
     <terminal_instruction_indexing> (?let indexNameList)
   //--- Get syntax directed translation result string
     let @abstractGrammarInstructionSyntaxDirectedTranslationResult grammarInstructionSyntaxDirectedTranslationPreceedingDelimitor
@@ -92,8 +92,8 @@ syntax extension galgas4SyntaxComponentSyntax {
       grammarInstructionSyntaxDirectedTranslationPreceedingToken = @grammarInstructionSyntaxDirectedTranslationResultNone {}
     or
       $:>$
-      <syntax_directed_translation_result> (!?ioDeclarations ?grammarInstructionSyntaxDirectedTranslationPreceedingDelimitor)
-      <syntax_directed_translation_result> (!?ioDeclarations ?grammarInstructionSyntaxDirectedTranslationPreceedingToken)
+      <syntax_directed_translation_result> (!?ioDeclarations, ?grammarInstructionSyntaxDirectedTranslationPreceedingDelimitor)
+      <syntax_directed_translation_result> (!?ioDeclarations, ?grammarInstructionSyntaxDirectedTranslationPreceedingToken)
     end
     outInstruction = @terminalCheckInstructionAST {
       !terminalName.location
@@ -156,7 +156,7 @@ final class @terminalCheckInstructionAST : @syntaxInstructionAST {
       terminalSymbolIndex = entry.mTerminalIndex
     else
       terminalSymbolIndex = ioActuallyUsedTerminalSymbolMap.count
-      !?ioActuallyUsedTerminalSymbolMap.insertKey (!self.mTerminalName !terminalSymbolIndex)
+      !?ioActuallyUsedTerminalSymbolMap.insertKey (!self.mTerminalName, !terminalSymbolIndex)
     end
     ioSyntaxInstructionList += !@terminalInstructionForGrammarAnalysis {
       !self.mInstructionLocation
@@ -181,7 +181,7 @@ final class @terminalCheckInstructionAST : @syntaxInstructionAST {
     ?!@semanticInstructionListForGeneration ioInstructionListForGeneration,
     ?!@localVarManager ioVariableMap,
     ?!@uint unused ioSelectMethodCount) {
-    inTerminalMap.searchKey (!self.mTerminalName ?let @lexicalSentValueList sentAttributeList)
+    inTerminalMap.searchKey (!self.mTerminalName, ?let @lexicalSentValueList sentAttributeList)
   //---
     if self.mActualInputParameterList.count != sentAttributeList.count then
       error (self.mTerminalName
@@ -196,11 +196,11 @@ final class @terminalCheckInstructionAST : @syntaxInstructionAST {
     var terminalCheckAssignementList = @terminalCheckAssignementList ()
     for (mActualSelector mInputParameter) in self.mActualInputParameterList, (mLexicalFormalSelector mLexicalAttributeName mLexicalType) in sentAttributeList do
       mInputParameter.analyzeInputParameter
-        (!inAnalysisContext
-        !?ioTypeMap
-        !mLexicalType
-        !mLexicalAttributeName
-        !?terminalCheckAssignementList
+        (!inAnalysisContext,
+        !?ioTypeMap,
+        !mLexicalType,
+        !mLexicalAttributeName,
+        !?terminalCheckAssignementList,
         !?ioVariableMap
       )
       if mLexicalFormalSelector.string != mActualSelector.string then
@@ -216,15 +216,15 @@ final class @terminalCheckInstructionAST : @syntaxInstructionAST {
     end
   //--- Check syntax directed translation destination variable
     self.mGrammarInstructionSyntaxDirectedTranslationPreceedingDelimitor.analyzeSDT
-      (!inAnalysisContext
-      !?ioTypeMap
-      !inHasTranslateFeature
+      (!inAnalysisContext,
+      !?ioTypeMap,
+      !inHasTranslateFeature,
       !?ioVariableMap
     )
     self.mGrammarInstructionSyntaxDirectedTranslationToken.analyzeSDT
-      (!inAnalysisContext
-      !?ioTypeMap
-      !inHasTranslateFeature
+      (!inAnalysisContext,
+      !?ioTypeMap,
+      !inHasTranslateFeature,
       !?ioVariableMap
     )
   //---
@@ -262,9 +262,9 @@ final class @terminalInstructionForGrammarAnalysis : @abstractSyntaxInstructionF
                                                 ?!@uint unused ioMaxUsedRowIndex,
                                                 ?debug:let @bool unused inDebug) {
     !?ioRowList.appendRow
-      (!nodeDefinition:"[terminal] {" + escapeForTex (!self.mTerminalSymbolName) + "}"
-      !row:inRow
-      !column:ioColumn
+      (!nodeDefinition:"[terminal] {" + escapeForTex (!self.mTerminalSymbolName) + "}",
+      !row:inRow,
+      !column:ioColumn,
       ?nodeName:let nodeName
     )
     ioArrows += "  \\draw[->] (" + ioCurrentNode + ") " + ioArrowShape + " (" + nodeName + ") ;\n"
@@ -368,15 +368,15 @@ override proc @terminalCheckInstructionForGeneration generateInstruction (?!@str
   end
 //--- Syntax directed translation
   self.mGrammarInstructionSyntaxDirectedTranslationPreceedingDelimitor.generateCode
-    (!inGenerateSyntaxDirectedTranslationString
-    !"inCompiler->separatorString ()"
-    !?ioUnusedVariableCppNameSet
+    (!inGenerateSyntaxDirectedTranslationString,
+    !"inCompiler->separatorString ()",
+    !?ioUnusedVariableCppNameSet,
     !?ioGeneratedCode
   )
   self.mGrammarInstructionSyntaxDirectedTranslationToken.generateCode
-    (!inGenerateSyntaxDirectedTranslationString
-    !"inCompiler->tokenString ()"
-    !?ioUnusedVariableCppNameSet
+    (!inGenerateSyntaxDirectedTranslationString,
+    !"inCompiler->tokenString ()",
+    !?ioUnusedVariableCppNameSet,
     !?ioGeneratedCode
   )
 //--- Check terminal symbol

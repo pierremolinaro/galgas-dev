@@ -124,7 +124,7 @@ private proc generateGalgasCodeBlocksWindowsTarget
     !verboseOption:inVerboseOption
     !buildDirName: inBuildDirectoryName
   ]
-  s.writeToFileWhenDifferentContents (!dir + "/" + inProjectName + ".cbp" ?*)
+  s.writeToFileWhenDifferentContents (!dir + "/" + inProjectName + ".cbp", ?*)
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -152,7 +152,7 @@ private proc generateGalgasCodeBlocksLinuxI686Target
     !verboseOption:inVerboseOption
     !buildDirName: inBuildDirectoryName
   ]
-  s.writeToFileWhenDifferentContents (!dir + "/" + inProjectName + ".cbp" ?*)
+  s.writeToFileWhenDifferentContents (!dir + "/" + inProjectName + ".cbp", ?*)
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -180,7 +180,7 @@ private proc generateGalgasCodeBlocksLinuxX86_64Target
     !verboseOption:inVerboseOption
     !buildDirName: inBuildDirectoryName
   ]
-  s.writeToFileWhenDifferentContents (!dir + "/" + inProjectName + ".cbp" ?*)
+  s.writeToFileWhenDifferentContents (!dir + "/" + inProjectName + ".cbp", ?*)
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -192,16 +192,16 @@ private proc generateMakefileMinGWOnMacOSXTarget
   let @string dir = inProjectDirectory + "/makefile-win32-on-macosx"
   dir.makeDirectory ()
   let s1 = [filewrapper targetGalgas3GenerationFileWrapper.build_win32_on_mac !inProjectName !inBuildDirectoryName]
-  s1.writeToExecutableFileWhenDifferentContents (!dir + "/build.py" ?*)
+  s1.writeToExecutableFileWhenDifferentContents (!dir + "/build.py", ?*)
   let s2 = [filewrapper targetGalgas3GenerationFileWrapper.build_lto_win32_on_mac]
-  s2.writeToExecutableFileWhenDifferentContents (!dir +"/build+lto.py" ?*)
+  s2.writeToExecutableFileWhenDifferentContents (!dir +"/build+lto.py", ?*)
   let s3 = [filewrapper targetGalgas3GenerationFileWrapper.build_debug_win32_on_mac]
-  s3.writeToExecutableFileWhenDifferentContents (!dir +"/build+debug.py" ?*)
+  s3.writeToExecutableFileWhenDifferentContents (!dir +"/build+debug.py", ?*)
   let s4 = [filewrapper targetGalgas3GenerationFileWrapper.build_verbose_win32_on_mac]
-  s4.writeToExecutableFileWhenDifferentContents (!dir +"/verbose-build.py" ?*)
+  s4.writeToExecutableFileWhenDifferentContents (!dir +"/verbose-build.py", ?*)
   let s5 = [filewrapper targetGalgas3GenerationFileWrapper.clean_win32_on_mac !inProjectName]
   s5.writeToExecutableFileWhenDifferentContents (
-    !dir +"/clean.py"
+    !dir +"/clean.py",
     ?*
   )
   @string.deleteFileIfExists (!dir + "/makefile")
@@ -216,19 +216,19 @@ private proc generateMakefileUnixTarget
   let @string dir = inProjectDirectory + "/makefile-unix"
   dir.makeDirectory ()
   let s1 = [filewrapper targetGalgas3GenerationFileWrapper.build_unix !inProjectName !inBuildDirectoryName]
-  s1.writeToExecutableFileWhenDifferentContents (!dir +"/build.py" ?*)
+  s1.writeToExecutableFileWhenDifferentContents (!dir +"/build.py", ?*)
   let s2 = [filewrapper targetGalgas3GenerationFileWrapper.build_release_unix]
-  s2.writeToExecutableFileWhenDifferentContents (!dir +"/build+release.py" ?*)
+  s2.writeToExecutableFileWhenDifferentContents (!dir +"/build+release.py", ?*)
   let s3 = [filewrapper targetGalgas3GenerationFileWrapper.build_lto_unix]
-  s3.writeToExecutableFileWhenDifferentContents (!dir +"/build+lto.py" ?*)
+  s3.writeToExecutableFileWhenDifferentContents (!dir +"/build+lto.py", ?*)
   let s4 = [filewrapper targetGalgas3GenerationFileWrapper.build_debug_unix]
-  s4.writeToExecutableFileWhenDifferentContents (!dir +"/build+debug.py" ?*)
+  s4.writeToExecutableFileWhenDifferentContents (!dir +"/build+debug.py", ?*)
   let s5 = [filewrapper targetGalgas3GenerationFileWrapper.build_verbose_unix]
-  s5.writeToExecutableFileWhenDifferentContents (!dir +"/verbose-build.py" ?*)
+  s5.writeToExecutableFileWhenDifferentContents (!dir +"/verbose-build.py", ?*)
   let s6 = [filewrapper targetGalgas3GenerationFileWrapper.install_unix]
-  s6.writeToExecutableFileWhenDifferentContents (!dir +"/install.py" ?*)
+  s6.writeToExecutableFileWhenDifferentContents (!dir +"/install.py", ?*)
   let s7 = [filewrapper targetGalgas3GenerationFileWrapper.clean_unix !inProjectName]
-  s7.writeToExecutableFileWhenDifferentContents (!dir +"/clean.py" ?*)
+  s7.writeToExecutableFileWhenDifferentContents (!dir +"/clean.py", ?*)
   @string.deleteFileIfExists (!dir + "/makefile")
 }
 
@@ -241,17 +241,17 @@ private proc generateMakefileMacTarget
   let @string dir = inProjectDirectory + "/makefile-macosx"
   dir.makeDirectory ()
   let s1 = [filewrapper targetGalgas3GenerationFileWrapper.build_macosx !inProjectName !inBuildDirectoryName]
-  s1.writeToExecutableFileWhenDifferentContents (!dir +"/build.py" ?*)
+  s1.writeToExecutableFileWhenDifferentContents (!dir +"/build.py", ?*)
   let s2 = [filewrapper targetGalgas3GenerationFileWrapper.build_release_macosx]
-  s2.writeToExecutableFileWhenDifferentContents (!dir +"/build+release.py" ?*)
+  s2.writeToExecutableFileWhenDifferentContents (!dir +"/build+release.py", ?*)
   let s3 = [filewrapper targetGalgas3GenerationFileWrapper.build_lto_macosx]
-  s3.writeToExecutableFileWhenDifferentContents (!dir +"/build+lto.py" ?*)
+  s3.writeToExecutableFileWhenDifferentContents (!dir +"/build+lto.py", ?*)
   let s4 = [filewrapper targetGalgas3GenerationFileWrapper.build_debug_macosx]
-  s4.writeToExecutableFileWhenDifferentContents (!dir +"/build+debug.py" ?*)
+  s4.writeToExecutableFileWhenDifferentContents (!dir +"/build+debug.py", ?*)
   let s5 = [filewrapper targetGalgas3GenerationFileWrapper.build_verbose_macosx]
-  s5.writeToExecutableFileWhenDifferentContents (!dir +"/verbose-build.py" ?*)
+  s5.writeToExecutableFileWhenDifferentContents (!dir +"/verbose-build.py", ?*)
   let s6 = [filewrapper targetGalgas3GenerationFileWrapper.clean_macosx !inProjectName]
-  s6.writeToExecutableFileWhenDifferentContents (!dir +"/clean.py" ?*)
+  s6.writeToExecutableFileWhenDifferentContents (!dir +"/clean.py", ?*)
   @string.deleteFileIfExists (!dir + "/makefile")
 }
 
@@ -264,17 +264,17 @@ private proc generateMakefileLinux32OnMacOSXTarget
   let @string dir = inProjectDirectory + "/makefile-x86linux32-on-macosx"
   dir.makeDirectory ()
   let s1 = [filewrapper targetGalgas3GenerationFileWrapper.build_x86linux32_on_mac !inProjectName !inBuildDirectoryName]
-  s1.writeToExecutableFileWhenDifferentContents (!dir +"/build.py" ?*)
+  s1.writeToExecutableFileWhenDifferentContents (!dir +"/build.py", ?*)
   let s2 = [filewrapper targetGalgas3GenerationFileWrapper.build_release_x86linux32_on_mac]
-  s2.writeToExecutableFileWhenDifferentContents (!dir +"/build+release.py" ?*)
+  s2.writeToExecutableFileWhenDifferentContents (!dir +"/build+release.py", ?*)
   let s3 = [filewrapper targetGalgas3GenerationFileWrapper.build_lto_x86linux32_on_mac]
-  s3.writeToExecutableFileWhenDifferentContents (!dir +"/build+lto.py" ?*)
+  s3.writeToExecutableFileWhenDifferentContents (!dir +"/build+lto.py", ?*)
   let s4 = [filewrapper targetGalgas3GenerationFileWrapper.build_debug_x86linux32_on_mac]
-  s4.writeToExecutableFileWhenDifferentContents (!dir +"/build+debug.py" ?*)
+  s4.writeToExecutableFileWhenDifferentContents (!dir +"/build+debug.py", ?*)
   let s5 = [filewrapper targetGalgas3GenerationFileWrapper.build_verbose_x86linux32_on_mac]
-  s5.writeToExecutableFileWhenDifferentContents (!dir +"/verbose-build.py" ?*)
+  s5.writeToExecutableFileWhenDifferentContents (!dir +"/verbose-build.py", ?*)
   let s6 = [filewrapper targetGalgas3GenerationFileWrapper.clean_x86linux32_on_mac !inProjectName]
-  s6.writeToExecutableFileWhenDifferentContents (!dir +"/clean.py" ?*)
+  s6.writeToExecutableFileWhenDifferentContents (!dir +"/clean.py", ?*)
   @string.deleteFileIfExists (!dir + "/makefile")
 }
 
@@ -287,17 +287,17 @@ private proc generateMakefileLinux64OnMacOSXTarget
   let @string dir = inProjectDirectory + "/makefile-x86linux64-on-macosx"
   dir.makeDirectory ()
   let s1 = [filewrapper targetGalgas3GenerationFileWrapper.build_x86linux64_on_mac !inProjectName !inBuildDirectoryName]
-  s1.writeToExecutableFileWhenDifferentContents (!dir +"/build.py" ?*)
+  s1.writeToExecutableFileWhenDifferentContents (!dir +"/build.py", ?*)
   let s2 = [filewrapper targetGalgas3GenerationFileWrapper.build_release_x86linux64_on_mac]
-  s2.writeToExecutableFileWhenDifferentContents (!dir +"/build+release.py" ?*)
+  s2.writeToExecutableFileWhenDifferentContents (!dir +"/build+release.py", ?*)
   let s3 = [filewrapper targetGalgas3GenerationFileWrapper.build_lto_x86linux64_on_mac]
-  s3.writeToExecutableFileWhenDifferentContents (!dir +"/build+lto.py" ?*)
+  s3.writeToExecutableFileWhenDifferentContents (!dir +"/build+lto.py", ?*)
   let s4 = [filewrapper targetGalgas3GenerationFileWrapper.build_debug_x86linux64_on_mac]
-  s4.writeToExecutableFileWhenDifferentContents (!dir +"/build+debug.py" ?*)
+  s4.writeToExecutableFileWhenDifferentContents (!dir +"/build+debug.py", ?*)
   let s5 = [filewrapper targetGalgas3GenerationFileWrapper.build_verbose_x86linux64_on_mac]
-  s5.writeToExecutableFileWhenDifferentContents (!dir +"/verbose-build.py" ?*)
+  s5.writeToExecutableFileWhenDifferentContents (!dir +"/verbose-build.py", ?*)
   let s6 = [filewrapper targetGalgas3GenerationFileWrapper.clean_x86linux64_on_mac !inProjectName]
-  s6.writeToExecutableFileWhenDifferentContents (!dir +"/clean.py" ?*)
+  s6.writeToExecutableFileWhenDifferentContents (!dir +"/clean.py", ?*)
   @string.deleteFileIfExists (!dir + "/makefile")
 }
 
@@ -309,17 +309,17 @@ private proc generateArm64LinuxMakefileTarget (?let @string inProjectDirectory,
   let @string dir = inProjectDirectory + "/makefile-arm64-linux-on-macosx"
   dir.makeDirectory ()
   let s1 = [filewrapper targetGalgas3GenerationFileWrapper.build_arm64_linux_on_mac !inProjectName !inBuildDirectoryName]
-  s1.writeToExecutableFileWhenDifferentContents (!dir +"/build.py" ?*)
+  s1.writeToExecutableFileWhenDifferentContents (!dir +"/build.py", ?*)
   let s2 = [filewrapper targetGalgas3GenerationFileWrapper.build_release_arm64_linux_on_mac]
-  s2.writeToExecutableFileWhenDifferentContents (!dir +"/build+release.py" ?*)
+  s2.writeToExecutableFileWhenDifferentContents (!dir +"/build+release.py", ?*)
   let s3 = [filewrapper targetGalgas3GenerationFileWrapper.build_lto_arm64_linux_on_mac]
-  s3.writeToExecutableFileWhenDifferentContents (!dir +"/build+lto.py" ?*)
+  s3.writeToExecutableFileWhenDifferentContents (!dir +"/build+lto.py", ?*)
   let s4 = [filewrapper targetGalgas3GenerationFileWrapper.build_debug_arm64_linux_on_mac]
-  s4.writeToExecutableFileWhenDifferentContents (!dir +"/build+debug.py" ?*)
+  s4.writeToExecutableFileWhenDifferentContents (!dir +"/build+debug.py", ?*)
   let s5 = [filewrapper targetGalgas3GenerationFileWrapper.build_verbose_arm64_linux_on_mac]
-  s5.writeToExecutableFileWhenDifferentContents (!dir +"/verbose-build.py" ?*)
+  s5.writeToExecutableFileWhenDifferentContents (!dir +"/verbose-build.py", ?*)
   let s6 = [filewrapper targetGalgas3GenerationFileWrapper.clean_arm64_linux_on_mac !inProjectName]
-  s6.writeToExecutableFileWhenDifferentContents (!dir +"/clean.py" ?*)
+  s6.writeToExecutableFileWhenDifferentContents (!dir +"/clean.py", ?*)
   @string.deleteFileIfExists (!dir + "/makefile")
 }
 
@@ -357,7 +357,7 @@ proc updateGalgasTargets
 //--- Update project header
   let s1 = [filewrapper targetGalgas3GenerationFileWrapper.project_header !inProjectVersionString]
   s1.writeToFileWhenDifferentContents
-    (!inAbsoluteBuildDirectory + "/output/project_header.h"
+    (!inAbsoluteBuildDirectory + "/output/project_header.h",
     ?*
   )
   ioAllProductFileSet ++= "project_header.h"
@@ -444,56 +444,56 @@ proc updateGalgasTargets
   end
 //--- Generation
   if [generationFeatures hasKey !"makefile-macosx"] then
-    generateMakefileMacTarget (!projectDirectory !buildDirName: inBuildDirectoryName !inTargetName )
+    generateMakefileMacTarget (!projectDirectory, !buildDirName: inBuildDirectoryName, !inTargetName )
   end
   if [generationFeatures hasKey !"makefile-unix"] then
-    generateMakefileUnixTarget (!projectDirectory !buildDirName: inBuildDirectoryName !inTargetName )
+    generateMakefileUnixTarget (!projectDirectory, !buildDirName: inBuildDirectoryName, !inTargetName )
   end
   if [generationFeatures hasKey !"makefile-x86linux32-on-macosx"] then
-    generateMakefileLinux32OnMacOSXTarget (!projectDirectory !buildDirName: inBuildDirectoryName !inTargetName )
+    generateMakefileLinux32OnMacOSXTarget (!projectDirectory, !buildDirName: inBuildDirectoryName, !inTargetName )
   end
   if [generationFeatures hasKey !"makefile-x86linux64-on-macosx"] then
-    generateMakefileLinux64OnMacOSXTarget (!projectDirectory !buildDirName: inBuildDirectoryName !inTargetName )
+    generateMakefileLinux64OnMacOSXTarget (!projectDirectory, !buildDirName: inBuildDirectoryName, !inTargetName )
   end
   if [generationFeatures hasKey !"makefile-arm64-linux-on-macosx"] then
-    generateArm64LinuxMakefileTarget (!projectDirectory !buildDirName: inBuildDirectoryName !inTargetName )
+    generateArm64LinuxMakefileTarget (!projectDirectory, !buildDirName: inBuildDirectoryName, !inTargetName )
   end
   if [generationFeatures hasKey !"makefile-win32-on-macosx"] then
-    generateMakefileMinGWOnMacOSXTarget (!projectDirectory !buildDirName: inBuildDirectoryName !inTargetName )
+    generateMakefileMinGWOnMacOSXTarget (!projectDirectory, !buildDirName: inBuildDirectoryName, !inTargetName )
   end
   if [generationFeatures hasKey !"codeblocks-windows"] then
     generateGalgasCodeBlocksWindowsTarget (
-      !projectDirectory
-      !buildDirName: inBuildDirectoryName
-      !inTargetName
-      !inToolCppFileList
-      !libpmPath: libpmPath
-      !inHandCodedSourceToolFileList
-      !inHandCodedSourceDirectory
+      !projectDirectory,
+      !buildDirName: inBuildDirectoryName,
+      !inTargetName,
+      !inToolCppFileList,
+      !libpmPath: libpmPath,
+      !inHandCodedSourceToolFileList,
+      !inHandCodedSourceDirectory,
       !inQuietOutputByDefault
     )
   end
   if [generationFeatures hasKey !"codeblocks-linux32"] then
     generateGalgasCodeBlocksLinuxI686Target (
-      !projectDirectory
-      !buildDirName: inBuildDirectoryName
-      !inTargetName
-      !inToolCppFileList
-      !libpmPath
-      !inHandCodedSourceToolFileList
-      !inHandCodedSourceDirectory
+      !projectDirectory,
+      !buildDirName: inBuildDirectoryName,
+      !inTargetName,
+      !inToolCppFileList,
+      !libpmPath,
+      !inHandCodedSourceToolFileList,
+      !inHandCodedSourceDirectory,
       !inQuietOutputByDefault
     )
   end
   if [generationFeatures hasKey !"codeblocks-linux64"] then
     generateGalgasCodeBlocksLinuxX86_64Target (
-      !projectDirectory
-      !buildDirName: inBuildDirectoryName
-      !inTargetName
-      !inToolCppFileList
-      !libpmPath
-      !inHandCodedSourceToolFileList
-      !inHandCodedSourceDirectory
+      !projectDirectory,
+      !buildDirName: inBuildDirectoryName,
+      !inTargetName,
+      !inToolCppFileList,
+      !libpmPath,
+      !inHandCodedSourceToolFileList,
+      !inHandCodedSourceDirectory,
       !inQuietOutputByDefault
     )
   end
@@ -528,7 +528,7 @@ proc updateGalgasTargets
     !inBuildDirectoryName
   ]
   let jsonFileListPath = inAbsoluteBuildDirectory + "/output/file-list.json"
-  jsonFileListContents.writeToFileWhenDifferentContents (!jsonFileListPath ?*)
+  jsonFileListContents.writeToFileWhenDifferentContents (!jsonFileListPath, ?*)
   ioAllProductFileSet ++= "file-list.json"
 //--------------------- update Xcode project
   switch xcodeProject
@@ -551,7 +551,7 @@ proc updateGalgasTargets
       !MACOSX_DEPLOYMENT_TARGET
       !"$(PRODUCT_MODULE_NAME).ProjectDocument"
     ]
-    InfoPlistContents.writeToFileWhenDifferentContents (!dir +"/Info.plist" ?*)
+    InfoPlistContents.writeToFileWhenDifferentContents (!dir +"/Info.plist", ?*)
   //--- Build.command
     if not (dir + "/build.command").fileExists then
       let s = [filewrapper targetGalgas3GenerationFileWrapper.makefile_build_xcode]
@@ -561,7 +561,7 @@ proc updateGalgasTargets
     let d = dir + "/Base.lproj" ; d.makeDirectory ()
     let InfoPlist_strings_path = dir + "/Base.lproj/InfoPlist.strings"
     let s2 = [filewrapper targetGalgas3GenerationFileWrapper.makefile_info_plist_strings !inTargetName]
-    s2.writeToFileWhenDifferentContents (!InfoPlist_strings_path ?*)
+    s2.writeToFileWhenDifferentContents (!InfoPlist_strings_path, ?*)
     let Credits_rtf_path = dir + "/Base.lproj/Credits.rtf"
     if not Credits_rtf_path.fileExists then
       let s = [filewrapper targetGalgas3GenerationFileWrapper."project-xcode-swiftui/Base.lproj/Credits.rtf"]
@@ -670,14 +670,14 @@ proc updateGalgasTargets
     var @stringlist appFrameworksFileRefList = @()
     if inHandCodedLinkAppFileList.count > 0 then
       !?xcodeProject.addGroupWithFiles
-        (!groupName: "Frameworks (App)"
-        !groupPath: "/System/Library/Frameworks"
-        !fileNames: .setWithStringList {!inHandCodedLinkAppFileList}
-        !?cFileRefs: %from @()
-        !?cppFileRefs: %from @()
-        !?swiftFileRefs: %from @()
-        !?frameworkFileRefs: appFrameworksFileRefList
-        !?resourceFileRefs: %from @()
+        (!groupName: "Frameworks (App)",
+        !groupPath: "/System/Library/Frameworks",
+        !fileNames: .setWithStringList {!inHandCodedLinkAppFileList},
+        !?cFileRefs: %from @(),
+        !?cppFileRefs: %from @(),
+        !?swiftFileRefs: %from @(),
+        !?frameworkFileRefs: appFrameworksFileRefList,
+        !?resourceFileRefs: %from @(),
         ?groupRef: let @string frameworkGroupRef
       )
       !?xcodeProject.placeGroupAsMainGroup (!groupRef:frameworkGroupRef)
@@ -691,14 +691,14 @@ proc updateGalgasTargets
   //--- Add "Hand coded sources (Tool)" group
     if inHandCodedSourceToolFileList.count > 0 then
       !?xcodeProject.addGroupWithFiles
-        (!groupName:"Hand Coded Sources (Tool)"
-        !groupPath:"../sources/tool-sources/"
-        !fileNames:@stringset.setWithStringList {!inHandCodedSourceToolFileList}
-        !?cFileRefs:buildCFileRefListForTool
-        !?cppFileRefs:buildCppFileRefListForTool
-        !?swiftFileRefs: swift_FileRefList
-        !?frameworkFileRefs:frameworksFileRefList
-        !?resourceFileRefs:resourceFileBuildRefs
+        (!groupName:"Hand Coded Sources (Tool)",
+        !groupPath:"../sources/tool-sources/",
+        !fileNames:@stringset.setWithStringList {!inHandCodedSourceToolFileList},
+        !?cFileRefs:buildCFileRefListForTool,
+        !?cppFileRefs:buildCppFileRefListForTool,
+        !?swiftFileRefs: swift_FileRefList,
+        !?frameworkFileRefs:frameworksFileRefList,
+        !?resourceFileRefs:resourceFileBuildRefs,
         ?groupRef:let @string groupRef
       )
       !?xcodeProject.placeGroupAsMainGroup (!groupRef:groupRef)
@@ -707,14 +707,14 @@ proc updateGalgasTargets
     var @stringlist toolFrameworksFileRefList = @()
     if inFrameworkToolFileList.count > 0 then
       !?xcodeProject.addGroupWithFiles
-        (!groupName:"Frameworks (Tool)"
-        !groupPath:"/System/Library/Frameworks"
-        !fileNames:@stringset.setWithStringList {!inFrameworkToolFileList}
-        !?cFileRefs: %from @()
-        !?cppFileRefs: %from @()
-        !?swiftFileRefs: %from @()
-        !?frameworkFileRefs:toolFrameworksFileRefList
-        !?resourceFileRefs: %from @()
+        (!groupName:"Frameworks (Tool)",
+        !groupPath:"/System/Library/Frameworks",
+        !fileNames:@stringset.setWithStringList {!inFrameworkToolFileList},
+        !?cFileRefs: %from @(),
+        !?cppFileRefs: %from @(),
+        !?swiftFileRefs: %from @(),
+        !?frameworkFileRefs:toolFrameworksFileRefList,
+        !?resourceFileRefs: %from @(),
         ?groupRef:let @string frameworkGroupRef
       )
       !?xcodeProject.placeGroupAsMainGroup (!groupRef:frameworkGroupRef)
@@ -723,22 +723,22 @@ proc updateGalgasTargets
     var outputGroupFileList = inToolCppFileList + inToolHeaderFileList + inAppProductFileList
     outputGroupFileList += inSwiftAppProductFileList
     !?xcodeProject.addGroupWithFiles
-      (!groupName:"Generated by GALGAS"
-      !groupPath:"../" + inBuildDirectoryName + "/output"
-      !fileNames: .setWithStringList {!outputGroupFileList}
-      !?cFileRefs:buildCFileRefListForTool
-      !?cppFileRefs:buildCppFileRefListForTool
-      !?swiftFileRefs: swift_FileRefList
-      !?frameworkFileRefs:frameworksFileRefList
-      !?resourceFileRefs:resourceFileBuildRefs
+      (!groupName:"Generated by GALGAS",
+      !groupPath:"../" + inBuildDirectoryName + "/output",
+      !fileNames: .setWithStringList {!outputGroupFileList},
+      !?cFileRefs:buildCFileRefListForTool,
+      !?cppFileRefs:buildCppFileRefListForTool,
+      !?swiftFileRefs: swift_FileRefList,
+      !?frameworkFileRefs:frameworksFileRefList,
+      !?resourceFileRefs:resourceFileBuildRefs,
       ?groupRef:var @string groupRef
     )
     !?xcodeProject.placeGroupAsMainGroup (!groupRef:groupRef)
     var @stringlist libpmReferenceGroupList = @()
   //--- Add "BDD" group
     !?xcodeProject.addGroupWithFiles
-      (!groupName:"Binary Decision Diagrams"
-      !groupPath:"bdd"
+      (!groupName:"Binary Decision Diagrams",
+      !groupPath:"bdd",
       !fileNames: @[
         "BinaryDecisionDiagramRelationConfiguration.cpp",
         "BinaryDecisionDiagramRelationConfiguration.h",
@@ -749,19 +749,19 @@ proc updateGalgasTargets
         "BinaryDecisionDiagram-node.h",
         "BinaryDecisionDiagram.cpp",
         "BinaryDecisionDiagram.h"
-      ]
-      !?cFileRefs:buildCFileRefListForTool
-      !?cppFileRefs:buildCppFileRefListForTool
-      !?swiftFileRefs: swift_FileRefList
-      !?frameworkFileRefs:frameworksFileRefList
-      !?resourceFileRefs:resourceFileBuildRefs
+      ],
+      !?cFileRefs:buildCFileRefListForTool,
+      !?cppFileRefs:buildCppFileRefListForTool,
+      !?swiftFileRefs: swift_FileRefList,
+      !?frameworkFileRefs:frameworksFileRefList,
+      !?resourceFileRefs:resourceFileBuildRefs,
       ?groupRef:groupRef
     )
     libpmReferenceGroupList += !groupRef
   //--- Add "Big Integers" group
     !?xcodeProject.addGroupWithFiles
-      (!groupName:"Big Integers"
-      !groupPath:"big-integers"
+      (!groupName:"Big Integers",
+      !groupPath:"big-integers",
       !fileNames: @[
         "BigSigned-add.cpp",
         "BigSigned-bit.cpp",
@@ -800,19 +800,19 @@ proc updateGalgasTargets
         "chunk-U32.h",
         "chunk-U64.h",
         "chunk-U8.h"
-      ]
-      !?cFileRefs:buildCFileRefListForTool
-      !?cppFileRefs:buildCppFileRefListForTool
-      !?swiftFileRefs: swift_FileRefList
-      !?frameworkFileRefs:frameworksFileRefList
-      !?resourceFileRefs:resourceFileBuildRefs
+      ],
+      !?cFileRefs:buildCFileRefListForTool,
+      !?cppFileRefs:buildCppFileRefListForTool,
+      !?swiftFileRefs: swift_FileRefList,
+      !?frameworkFileRefs:frameworksFileRefList,
+      !?resourceFileRefs:resourceFileBuildRefs,
       ?groupRef:groupRef
     )
     libpmReferenceGroupList += !groupRef
  //--- Add "SwiftUI app" group
     !?xcodeProject.addGroupWithFiles
-      (!groupName:"Swift App"
-      !groupPath:"swiftui-app"
+      (!groupName:"Swift App",
+      !groupPath:"swiftui-app",
       !fileNames: @[
         "AbstractScanner.swift",
         "AllocationDebugView.swift",
@@ -855,36 +855,36 @@ proc updateGalgasTargets
         "TextSyntaxColoringView.swift",
         "UInt64+displayString.swift",
         "UserInterfaceSetting.swift"
-      ]
-      !?cFileRefs:buildCFileRefListForTool
-      !?cppFileRefs:buildCppFileRefListForTool
-      !?swiftFileRefs: swift_FileRefList
-      !?frameworkFileRefs:frameworksFileRefList
-      !?resourceFileRefs:resourceFileBuildRefs
+      ],
+      !?cFileRefs:buildCFileRefListForTool,
+      !?cppFileRefs:buildCppFileRefListForTool,
+      !?swiftFileRefs: swift_FileRefList,
+      !?frameworkFileRefs:frameworksFileRefList,
+      !?resourceFileRefs:resourceFileBuildRefs,
       ?groupRef:groupRef
     )
     libpmReferenceGroupList += !groupRef
   //--- Add "collection" group
     !?xcodeProject.addGroupWithFiles
-      (!groupName:"Generic Arraies"
-      !groupPath:"generic-arraies"
+      (!groupName:"Generic Arraies",
+      !groupPath:"generic-arraies",
       !fileNames: @[
         "GenericArray.h",
         "GenericUniqueArray.h",
         "GenericUniqueMatrix.h"
-      ]
-      !?cFileRefs:buildCFileRefListForTool
-      !?cppFileRefs:buildCppFileRefListForTool
-      !?swiftFileRefs: swift_FileRefList
-      !?frameworkFileRefs:frameworksFileRefList
-      !?resourceFileRefs:resourceFileBuildRefs
+      ],
+      !?cFileRefs:buildCFileRefListForTool,
+      !?cppFileRefs:buildCppFileRefListForTool,
+      !?swiftFileRefs: swift_FileRefList,
+      !?frameworkFileRefs:frameworksFileRefList,
+      !?resourceFileRefs:resourceFileBuildRefs,
       ?groupRef:groupRef
     )
     libpmReferenceGroupList += !groupRef
   //--- Add "Command line Interface" group
     !?xcodeProject.addGroupWithFiles
-      (!groupName:"Command line Interface"
-      !groupPath:"command_line_interface"
+      (!groupName:"Command line Interface",
+      !groupPath:"command_line_interface",
       !fileNames: @[
         "F_mainForLIBPM.cpp",
         "F_mainForLIBPM.h",
@@ -902,19 +902,19 @@ proc updateGalgasTargets
         "StringCommandLineOption.h",
         "StringListCommandLineOption.cpp",
         "StringListCommandLineOption.h"
-      ]
-      !?cFileRefs:buildCFileRefListForTool
-      !?cppFileRefs:buildCppFileRefListForTool
-      !?swiftFileRefs: swift_FileRefList
-      !?frameworkFileRefs:frameworksFileRefList
-      !?resourceFileRefs:resourceFileBuildRefs
+      ],
+      !?cFileRefs:buildCFileRefListForTool,
+      !?cppFileRefs:buildCppFileRefListForTool,
+      !?swiftFileRefs: swift_FileRefList,
+      !?frameworkFileRefs:frameworksFileRefList,
+      !?resourceFileRefs:resourceFileBuildRefs,
       ?groupRef:groupRef
     )
     libpmReferenceGroupList += !groupRef
   //--- Add "File" group
     !?xcodeProject.addGroupWithFiles
-      (!groupName:"File"
-      !groupPath:"files"
+      (!groupName:"File",
+      !groupPath:"files",
       !fileNames: @[
         "FileManager.cpp",
         "FileManager.h",
@@ -926,19 +926,19 @@ proc updateGalgasTargets
         "TextFileWrite.h",
         "HTMLFileWrite.cpp",
         "HTMLFileWrite.h"
-      ]
-      !?cFileRefs:buildCFileRefListForTool
-      !?cppFileRefs:buildCppFileRefListForTool
-      !?swiftFileRefs: swift_FileRefList
-      !?frameworkFileRefs:frameworksFileRefList
-      !?resourceFileRefs:resourceFileBuildRefs
+      ],
+      !?cFileRefs:buildCFileRefListForTool,
+      !?cppFileRefs:buildCppFileRefListForTool,
+      !?swiftFileRefs: swift_FileRefList,
+      !?frameworkFileRefs:frameworksFileRefList,
+      !?resourceFileRefs:resourceFileBuildRefs,
       ?groupRef:groupRef
     )
     libpmReferenceGroupList += !groupRef
   //--- Add "Galgas 2" group
     !?xcodeProject.addGroupWithFiles
-      (!groupName:"Galgas"
-      !groupPath:"galgas"
+      (!groupName:"Galgas",
+      !groupPath:"galgas",
       !fileNames: @[
         "AC_GALGAS_reference_class.cpp",
         "AC_GALGAS_reference_class.h",
@@ -1031,19 +1031,19 @@ proc updateGalgasTargets
         "SharedGenericPtrWithValueSemantics.h",
         "SharedObject.cpp",
         "SharedObject.h"
-      ]
-      !?cFileRefs:buildCFileRefListForTool
-      !?cppFileRefs:buildCppFileRefListForTool
-      !?swiftFileRefs: swift_FileRefList
-      !?frameworkFileRefs:frameworksFileRefList
-      !?resourceFileRefs:resourceFileBuildRefs
+      ],
+      !?cFileRefs:buildCFileRefListForTool,
+      !?cppFileRefs:buildCppFileRefListForTool,
+      !?swiftFileRefs: swift_FileRefList,
+      !?frameworkFileRefs:frameworksFileRefList,
+      !?resourceFileRefs:resourceFileBuildRefs,
       ?groupRef:groupRef
     )
     libpmReferenceGroupList += !groupRef
   //--- Add "Streams" group
     !?xcodeProject.addGroupWithFiles
-      (!groupName:"Streams"
-      !groupPath:"streams"
+      (!groupName:"Streams",
+      !groupPath:"streams",
       !fileNames: @[
         "AbstractOutputStream.cpp",
         "AbstractOutputStream.h",
@@ -1051,19 +1051,19 @@ proc updateGalgasTargets
         "ConsoleOut.h",
         "ColoredConsole.cpp",
         "ColoredConsole.h"
-      ]
-      !?cFileRefs:buildCFileRefListForTool
-      !?cppFileRefs:buildCppFileRefListForTool
-      !?swiftFileRefs: swift_FileRefList
-      !?frameworkFileRefs:frameworksFileRefList
-      !?resourceFileRefs:resourceFileBuildRefs
+      ],
+      !?cFileRefs:buildCFileRefListForTool,
+      !?cppFileRefs:buildCppFileRefListForTool,
+      !?swiftFileRefs: swift_FileRefList,
+      !?frameworkFileRefs:frameworksFileRefList,
+      !?resourceFileRefs:resourceFileBuildRefs,
       ?groupRef:groupRef
     )
     libpmReferenceGroupList += !groupRef
   //--- Add "String" group
     !?xcodeProject.addGroupWithFiles
-      (!groupName:"Strings"
-      !groupPath:"strings"
+      (!groupName:"Strings",
+      !groupPath:"strings",
       !fileNames: @[
         "String-class-getters.cpp",
         "String-class.cpp",
@@ -1074,37 +1074,37 @@ proc updateGalgasTargets
         "utf32.h",
         "print.cpp",
         "print.h"
-      ]
-      !?cFileRefs:buildCFileRefListForTool
-      !?cppFileRefs:buildCppFileRefListForTool
-      !?swiftFileRefs: swift_FileRefList
-      !?frameworkFileRefs:frameworksFileRefList
-      !?resourceFileRefs:resourceFileBuildRefs
+      ],
+      !?cFileRefs:buildCFileRefListForTool,
+      !?cppFileRefs:buildCppFileRefListForTool,
+      !?swiftFileRefs: swift_FileRefList,
+      !?frameworkFileRefs:frameworksFileRefList,
+      !?resourceFileRefs:resourceFileBuildRefs,
       ?groupRef:groupRef
     )
     libpmReferenceGroupList += !groupRef
   //--- Add "Time" group
     !?xcodeProject.addGroupWithFiles
-      (!groupName:"Time"
-      !groupPath:"time"
+      (!groupName:"Time",
+      !groupPath:"time",
       !fileNames: @[
         "DateTime.cpp",
         "DateTime.h",
         "Timer.cpp",
         "Timer.h"
-      ]
-      !?cFileRefs:buildCFileRefListForTool
-      !?cppFileRefs:buildCppFileRefListForTool
-      !?swiftFileRefs: swift_FileRefList
-      !?frameworkFileRefs:frameworksFileRefList
-      !?resourceFileRefs:resourceFileBuildRefs
+      ],
+      !?cFileRefs:buildCFileRefListForTool,
+      !?cppFileRefs:buildCppFileRefListForTool,
+      !?swiftFileRefs: swift_FileRefList,
+      !?frameworkFileRefs:frameworksFileRefList,
+      !?resourceFileRefs:resourceFileBuildRefs,
       ?groupRef:groupRef
     )
     libpmReferenceGroupList += !groupRef
   //--- Add "Utilities" group
     !?xcodeProject.addGroupWithFiles
-      (!groupName:"Utilities"
-      !groupPath:"utilities"
+      (!groupName:"Utilities",
+      !groupPath:"utilities",
       !fileNames: @[
         "basic-allocation.cpp",
         "basic-allocation.h",
@@ -1136,57 +1136,57 @@ proc updateGalgasTargets
         "TF_Swap.h",
         "galgas-random.cpp",
         "galgas-random.h"
-      ]
-      !?cFileRefs:buildCFileRefListForTool
-      !?cppFileRefs:buildCppFileRefListForTool
-      !?swiftFileRefs: swift_FileRefList
-      !?frameworkFileRefs:frameworksFileRefList
-      !?resourceFileRefs:resourceFileBuildRefs
+      ],
+      !?cFileRefs:buildCFileRefListForTool,
+      !?cppFileRefs:buildCppFileRefListForTool,
+      !?swiftFileRefs: swift_FileRefList,
+      !?frameworkFileRefs:frameworksFileRefList,
+      !?resourceFileRefs:resourceFileBuildRefs,
       ?groupRef:groupRef
     )
     libpmReferenceGroupList += !groupRef
   //--- Add "LIBPM" group
-    !?xcodeProject.addGroup (!groupName:"libpm" !groupPath:"../" + inBuildDirectoryName + "/libpm" !childrenRefs:libpmReferenceGroupList ?groupRef:let @string libpmGroupRef)
+    !?xcodeProject.addGroup (!groupName:"libpm", !groupPath:"../" + inBuildDirectoryName + "/libpm", !childrenRefs:libpmReferenceGroupList, ?groupRef:let @string libpmGroupRef)
     !?xcodeProject.placeGroupAsMainGroup (!groupRef:libpmGroupRef)
   //--- Add "Resources" group
     !?xcodeProject.addGroupWithFiles
-      (!groupName:"Resources"
-      !groupPath:"."
-      !fileNames: @["Info.plist"]
-      !?cFileRefs:buildCFileRefListForTool
-      !?cppFileRefs:buildCppFileRefListForTool
-      !?swiftFileRefs: swift_FileRefList
-      !?frameworkFileRefs:frameworksFileRefList
-      !?resourceFileRefs:resourceFileBuildRefs
+      (!groupName:"Resources",
+      !groupPath:".",
+      !fileNames: @["Info.plist"],
+      !?cFileRefs:buildCFileRefListForTool,
+      !?cppFileRefs:buildCppFileRefListForTool,
+      !?swiftFileRefs: swift_FileRefList,
+      !?frameworkFileRefs:frameworksFileRefList,
+      !?resourceFileRefs:resourceFileBuildRefs,
       ?groupRef:let @string resourcesGroupRef
     )
     !?xcodeProject.placeGroupAsMainGroup (!groupRef:resourcesGroupRef)
   //--- Add "User Resources" group
     !?xcodeProject.addGroupWithFiles
-      (!groupName: "User Resources"
-      !groupPath: "userResources"
-      !fileNames: .setWithStringList {!resourceFiles}
-      !?cFileRefs: buildCFileRefListForTool
-      !?cppFileRefs: buildCppFileRefListForTool
-      !?swiftFileRefs: swift_FileRefList
-      !?frameworkFileRefs: frameworksFileRefList
-      !?resourceFileRefs: resourceFileBuildRefs
+      (!groupName: "User Resources",
+      !groupPath: "userResources",
+      !fileNames: .setWithStringList {!resourceFiles},
+      !?cFileRefs: buildCFileRefListForTool,
+      !?cppFileRefs: buildCppFileRefListForTool,
+      !?swiftFileRefs: swift_FileRefList,
+      !?frameworkFileRefs: frameworksFileRefList,
+      !?resourceFileRefs: resourceFileBuildRefs,
       ?groupRef:let @string userResourcesGroupRef
     )
     !?xcodeProject.placeGroupAsMainGroup (!groupRef:userResourcesGroupRef)
   //--- Add "Frameworks for App" group
     !?xcodeProject.addGroupWithFiles
-      (!groupName:"Frameworks for App"
-      !groupPath:"/System/Library/Frameworks"
+      (!groupName:"Frameworks for App",
+      !groupPath:"/System/Library/Frameworks",
       !fileNames: @[
         "AppKit.framework",
         "Cocoa.framework"
-      ]
-      !?cFileRefs: buildCFileRefListForTool
-      !?cppFileRefs: buildCppFileRefListForTool
-      !?swiftFileRefs: swift_FileRefList
-      !?frameworkFileRefs: frameworksFileRefList
-      !?resourceFileRefs: resourceFileBuildRefs
+      ],
+      !?cFileRefs: buildCFileRefListForTool,
+      !?cppFileRefs: buildCppFileRefListForTool,
+      !?swiftFileRefs: swift_FileRefList,
+      !?frameworkFileRefs: frameworksFileRefList,
+      !?resourceFileRefs: resourceFileBuildRefs,
       ?groupRef:let @string frameworkGroupRef
     )
     !?xcodeProject.placeGroupAsMainGroup (!groupRef:frameworkGroupRef)
@@ -1217,12 +1217,12 @@ proc updateGalgasTargets
       @("PRODUCT_BUNDLE_IDENTIFIER = \"" + applicationBundleBase + "." + inTargetName + ".tool\"")
     ] + codeSigningSettingList
     !?xcodeProject.addToolTarget
-      (!targetName:inTargetName + " tool"
-      !productFileName:inTargetName
-      !sources:buildCFileRefListForTool + buildCppFileRefListForTool // + mm_FileRefList
-      !frameworkRefs:toolFrameworksFileRefList
-      !buildConfigurationSettingList: settingList
-      ?targetRef:let releaseTargetRef
+      (!targetName:inTargetName + " tool",
+      !productFileName:inTargetName,
+      !sources:buildCFileRefListForTool + buildCppFileRefListForTool,
+      !frameworkRefs:toolFrameworksFileRefList,
+      !buildConfigurationSettingList: settingList,
+      ?targetRef:let releaseTargetRef,
       ?productFileRef:let releaseProductFileRef
     )
   //--- Add Mach O debug target
@@ -1234,12 +1234,12 @@ proc updateGalgasTargets
       @("PRODUCT_BUNDLE_IDENTIFIER = \"" + applicationBundleBase + "." + inTargetName + ".tooldebug\"")
     ] + codeSigningSettingList
     !?xcodeProject.addToolTarget
-      (!targetName:inTargetName + " tool debug"
-      !productFileName:inTargetName+"-debug"
-      !sources:buildCFileRefListForTool + buildCppFileRefListForTool // + mm_FileRefList
-      !frameworkRefs:toolFrameworksFileRefList
-      !buildConfigurationSettingList: settingList
-      ?targetRef:let debugTargetRef
+      (!targetName:inTargetName + " tool debug",
+      !productFileName:inTargetName+"-debug",
+      !sources:buildCFileRefListForTool + buildCppFileRefListForTool,
+      !frameworkRefs:toolFrameworksFileRefList,
+      !buildConfigurationSettingList: settingList,
+      ?targetRef:let debugTargetRef,
       ?productFileRef:let debugProductFileRef
     )
   //--- Add Cocoa target
@@ -1248,19 +1248,19 @@ proc updateGalgasTargets
       @(!"GCC_PREPROCESSOR_DEFINITIONS = ()")
     ] + codeSigningSettingList
     !?xcodeProject.addAppTarget
-      (!targetName: inTargetName + " IDE"
-      !productFileName: inTargetName.capitalizingFirstCharacter + " IDE"
-      !sources: swift_FileRefList
-      !frameworkFileRefs: frameworksFileRefList + appFrameworksFileRefList
-      !resourceFileRefs: resourceFileBuildRefs // + resource_handCodedResourceFileRefForAppList
-      !buildConfigurationSettingList: cocoaConfigurationSettingList
-      !dependantTargetList: @[@(releaseTargetRef), @(debugTargetRef)]
-      !productCopyList: @[@(releaseProductFileRef, inTargetName), @(debugProductFileRef, inTargetName + "-debug")]
+      (!targetName: inTargetName + " IDE",
+      !productFileName: inTargetName.capitalizingFirstCharacter + " IDE",
+      !sources: swift_FileRefList,
+      !frameworkFileRefs: frameworksFileRefList + appFrameworksFileRefList,
+      !resourceFileRefs: resourceFileBuildRefs,
+      !buildConfigurationSettingList: cocoaConfigurationSettingList,
+      !dependantTargetList: @[@(releaseTargetRef), @(debugTargetRef)],
+      !productCopyList: @[@(releaseProductFileRef, inTargetName), @(debugProductFileRef, inTargetName + "-debug")],
       ?productFileRef:*
     )
   //--- Generate project
     xcodeProject.generateAtPath
-      (!xcodeprojPath: dir + "/" + inTargetName + ".xcodeproj"
+      (!xcodeprojPath: dir + "/" + inTargetName + ".xcodeproj",
       !cacheFilePath: newIntermediateFilePath
     )
   end

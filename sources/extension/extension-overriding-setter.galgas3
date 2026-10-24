@@ -46,9 +46,9 @@ syntax extension galgas3DeclarationsSyntax {
       typeName = makeEmbeddedTypeLName (!outer: typeName !inner: t)
     end
     $identifier$ ?let @lstring setterName indexing overrideExtensionSetterDefinition
-    <formal_parameter_list_ggs34> (!?ioDeclarations ?let formalParameterList)
+    <formal_parameter_list_ggs34> (!?ioDeclarations, ?let formalParameterList)
     ${$
-    <semantic_instruction_list_ggs3> (!?ioDeclarations ?let routineInstructionList)
+    <semantic_instruction_list_ggs3> (!?ioDeclarations, ?let routineInstructionList)
     let @location endOfSetterLocation = @location.here
     $}$
     ioDeclarations.mDeclarationList += !@overridingExtensionSetterAST {
@@ -75,9 +75,9 @@ syntax extension galgas3DeclarationsSyntax {
       $.$
     end
     $identifier$ ?let @lstring setterName indexing overrideExtensionSetterDefinition
-    <formal_parameter_list_ggs34> (!?ioDeclarations ?let formalParameterList)
+    <formal_parameter_list_ggs34> (!?ioDeclarations, ?let formalParameterList)
     ${$
-    <semantic_instruction_list_ggs3> (!?ioDeclarations ?let @semanticInstructionListAST routineInstructionList)
+    <semantic_instruction_list_ggs3> (!?ioDeclarations, ?let @semanticInstructionListAST routineInstructionList)
     let @location endOfSetterLocation = @location.here
     $}$
     ioDeclarations.mDeclarationList += !@overridingExtensionSetterAST {
@@ -145,9 +145,9 @@ override proc @overridingExtensionSetterAST semanticAnalysis (
   ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration) {
 //--- Useful entities graph
   let nameForUsefulness = setterNameForUsefulEntitiesGraph (!self.mTypeName !self.mOverridingExtensionSetterName)
-  !?ioUsefulEntitiesGraph.addNode (!nameForUsefulness !nameForUsefulness)
+  !?ioUsefulEntitiesGraph.addNode (!nameForUsefulness, !nameForUsefulness)
   let typeNameForUsefulness = typeNameForUsefulEntitiesGraph (!self.mTypeName)
-  !?ioUsefulEntitiesGraph.addEdge (!from: typeNameForUsefulness !to: nameForUsefulness)
+  !?ioUsefulEntitiesGraph.addEdge (!from: typeNameForUsefulness, !to: nameForUsefulness)
 //--- Self type
   let @unifiedTypeMapEntry selfType = [ioTypeMap typeMapEntryForLKey !self.mTypeName]
 //--- Check self type is a class
@@ -162,7 +162,7 @@ override proc @overridingExtensionSetterAST semanticAnalysis (
   loop (ioTypeMap.count + 1)
   while (not superType.isNull) & (baseTypeName == "") do
     if [superType.definition.setterMap hasKey !self.mOverridingExtensionSetterName.string] then
-      superType.definition.setterMap.searchKey (!self.mOverridingExtensionSetterName ?* ?inheritedSignature ?* ?let qualifier ?*)
+      superType.definition.setterMap.searchKey (!self.mOverridingExtensionSetterName, ?*, ?inheritedSignature, ?*, ?let qualifier, ?*)
       if qualifier <= @methodQualifier.isBasicFinal then
         baseTypeName = superType.definition.typeName.string
       end
@@ -181,22 +181,22 @@ override proc @overridingExtensionSetterAST semanticAnalysis (
     !selfObjectCppPrefixForAccessingProperty: "object->"
   }
   analyzeRoutineBody (
-    !nameForUsefulness
-    !?ioUsefulEntitiesGraph
-    !analysisContext
-    !?ioTypeMap
-    !self.mOverridingExtensionSetterFormalParameterList
-    !self.mOverridingExtensionSetterInstructionList
-    !self.mEndOfSetterDeclarationLocation
-    ?let semanticInstructionListForGeneration
+    !nameForUsefulness,
+    !?ioUsefulEntitiesGraph,
+    !analysisContext,
+    !?ioTypeMap,
+    !self.mOverridingExtensionSetterFormalParameterList,
+    !self.mOverridingExtensionSetterInstructionList,
+    !self.mEndOfSetterDeclarationLocation,
+    ?let semanticInstructionListForGeneration,
     ?let formalParameterListForGeneration
   )
 //--- Check Signature
   if baseTypeName != "" then
     checkMethodSignatures (
-      !formalParameterListForGeneration
-      !self.mOverridingExtensionSetterName.location
-      !inheritedSignature
+      !formalParameterListForGeneration,
+      !self.mOverridingExtensionSetterName.location,
+      !inheritedSignature,
       !inheritedDeclarationLocation
     )
   end
@@ -233,7 +233,7 @@ override proc @overridingExtensionSetterAST buildExtensionListMaps (
   ?!@genericExtensionMethodListMap unused ioOverridingExtensionGetterListMap,
   ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionGetterListMap) {
   !?ioOverridingExtensionSetterListMap.insertKey
-    (!self.mTypeName.string
+    (!self.mTypeName.string,
     !self.mOverridingExtensionSetterName
   )
 }
@@ -264,12 +264,12 @@ override proc @overridingExtensionSetterForGeneration appendSpecificImplementati
                       ?!@stringset ioInclusionSet,
                       !@string outImplementation) {
   generateExtensionSetter (
-    !self.mReceiverType.definition.typeName.string
-    !self.mBaseTypeName
-    !self.mExtensionSetterName
-    !?ioInclusionSet
-    !self.mExtensionSetterFormalParameterList
-    !self.mSemanticInstructionListForGeneration
+    !self.mReceiverType.definition.typeName.string,
+    !self.mBaseTypeName,
+    !self.mExtensionSetterName,
+    !?ioInclusionSet,
+    !self.mExtensionSetterFormalParameterList,
+    !self.mSemanticInstructionListForGeneration,
     ?let @string methodImplementation
   )
   var @unifiedTypeMapEntry baseType = self.mReceiverType

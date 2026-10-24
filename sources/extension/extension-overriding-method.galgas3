@@ -34,9 +34,9 @@ syntax extension galgas3DeclarationsSyntax {
       typeName = makeEmbeddedTypeLName (!outer: typeName !inner: t)
     end
     $identifier$ ?let @lstring methodName indexing overrideExtensionMethodDefinition
-    <formal_parameter_list_ggs34> (!?ioDeclarations ?let formalParameterList)
+    <formal_parameter_list_ggs34> (!?ioDeclarations, ?let formalParameterList)
     ${$
-    <semantic_instruction_list_ggs3> (!?ioDeclarations ?let routineInstructionList)
+    <semantic_instruction_list_ggs3> (!?ioDeclarations, ?let routineInstructionList)
     let endOfMethodLocation = @location.here
     $}$
     ioDeclarations.mDeclarationList += !@overridingExtensionMethodAST {
@@ -62,9 +62,9 @@ syntax extension galgas3DeclarationsSyntax {
       $.$
     end
     $identifier$ ?let @lstring methodName indexing overrideExtensionMethodDefinition
-    <formal_parameter_list_ggs34> (!?ioDeclarations ?let formalParameterList)
+    <formal_parameter_list_ggs34> (!?ioDeclarations, ?let formalParameterList)
     ${$
-    <semantic_instruction_list_ggs3> (!?ioDeclarations ?let @semanticInstructionListAST routineInstructionList)
+    <semantic_instruction_list_ggs3> (!?ioDeclarations, ?let @semanticInstructionListAST routineInstructionList)
     let @location endOfMethodLocation = @location.here
     $}$
     ioDeclarations.mDeclarationList += !@overridingExtensionMethodAST {
@@ -90,18 +90,18 @@ syntax extension galgas4DeclarationsSyntax {
   rule <declaration> (?!@galgasDeclarationAST ioDeclarations) {
     $override$
     $proc$
-    <simple_type_definition> (!?ioDeclarations ?var typeName)
+    <simple_type_definition> (!?ioDeclarations, ?var typeName)
     $.$
     repeat
     while
-      <simple_type_definition> (!?ioDeclarations ?let t)
+      <simple_type_definition> (!?ioDeclarations, ?let t)
       typeName = makeEmbeddedTypeLName (!outer: typeName !inner: t)
       $.$
     end
     $identifier$ ?let @lstring methodName indexing overrideExtensionMethodDefinition
-    <formal_parameter_list> (!?ioDeclarations ?let @formalParameterListAST formalParameterList)
+    <formal_parameter_list> (!?ioDeclarations, ?let @formalParameterListAST formalParameterList)
     ${$
-    <semantic_instruction_list> (!?ioDeclarations ?let @semanticInstructionListAST routineInstructionList)
+    <semantic_instruction_list> (!?ioDeclarations, ?let @semanticInstructionListAST routineInstructionList)
     let @location endOfMethodLocation = @location.here
     $}$
     ioDeclarations.mDeclarationList += !@overridingExtensionMethodAST {
@@ -121,9 +121,9 @@ syntax extension galgas4DeclarationsSyntax {
     $override$
     $proc$
     $identifier$ ?let @lstring methodName indexing overrideExtensionMethodDefinition
-    <formal_parameter_list> (!?ioDeclarations ?let @formalParameterListAST formalParameterList)
+    <formal_parameter_list> (!?ioDeclarations, ?let @formalParameterListAST formalParameterList)
     ${$
-    <semantic_instruction_list> (!?ioDeclarations ?let @semanticInstructionListAST routineInstructionList)
+    <semantic_instruction_list> (!?ioDeclarations, ?let @semanticInstructionListAST routineInstructionList)
     let @location endOfMethodLocation = @location.here
     $}$
     ioDeclarations.mDeclarationList += !@overridingExtensionMethodAST {
@@ -176,14 +176,14 @@ override proc @overridingExtensionMethodAST enterDeclarationInGraph (
 //---
   if not [ioExtensionMethodMapForBuildingContext hasKey !self.mTypeName.string] then
     !?ioExtensionMethodMapForBuildingContext.insertKey
-      (! self.mTypeName
+      (! self.mTypeName,
       !@()
     )
   end
   var entry = ioExtensionMethodMapForBuildingContext @[!searchKey: self.mTypeName]
   !?entry.mExtensionMethodMapForType.insertKey
-    (!self.mOverridingExtensionMethodName
-    ! self.mOverridingExtensionMethodFormalParameterList
+    (!self.mOverridingExtensionMethodName,
+    ! self.mOverridingExtensionMethodFormalParameterList,
     !.isVirtualOverriding
   )
   !?ioExtensionMethodMapForBuildingContext.replaceKey (!with: entry)
@@ -224,9 +224,9 @@ override proc @overridingExtensionMethodAST semanticAnalysis (
   ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration) {
 //--- Useful entities graph
   let nameForUsefulness = methodNameForUsefulEntitiesGraph (!self.mTypeName !self.mOverridingExtensionMethodName)
-  !?ioUsefulEntitiesGraph.addNode (!nameForUsefulness !nameForUsefulness)
+  !?ioUsefulEntitiesGraph.addNode (!nameForUsefulness, !nameForUsefulness)
   let typeNameForUsefulness = typeNameForUsefulEntitiesGraph (!self.mTypeName)
-  !?ioUsefulEntitiesGraph.addEdge (!from: typeNameForUsefulness !to: nameForUsefulness)
+  !?ioUsefulEntitiesGraph.addEdge (!from: typeNameForUsefulness, !to: nameForUsefulness)
 //--- Self type
   let @unifiedTypeMapEntry selfType = [ioTypeMap typeMapEntryForLKey !self.mTypeName]
 //--- Check self type is a class
@@ -242,12 +242,12 @@ override proc @overridingExtensionMethodAST semanticAnalysis (
   while (not superType.isNull) & (baseTypeName == "") do
     if [superType.definition.instanceMethodMap hasKey !self.mOverridingExtensionMethodName.string] then
       superType.definition.instanceMethodMap.searchKey
-        (!self.mOverridingExtensionMethodName
-        ?*
-        ?inheritedSignature
-        ?inheritedDeclarationLocation
-        ?*
-        ?let qualifier
+        (!self.mOverridingExtensionMethodName,
+        ?*,
+        ?inheritedSignature,
+        ?inheritedDeclarationLocation,
+        ?*,
+        ?let qualifier,
         ?*
       )
       if qualifier <= @methodQualifier.isBasicFinal then
@@ -272,22 +272,22 @@ override proc @overridingExtensionMethodAST semanticAnalysis (
 //    isclass = classType.isReference
 //  end
   analyzeRoutineBody (
-    !nameForUsefulness
-    !?ioUsefulEntitiesGraph
-    !analysisContext
-    !?ioTypeMap
-    !self.mOverridingExtensionMethodFormalParameterList
-    !self.mOverridingExtensionMethodInstructionList
-    !self.mEndOfMethodLocation
-    ?let semanticInstructionListForGeneration
+    !nameForUsefulness,
+    !?ioUsefulEntitiesGraph,
+    !analysisContext,
+    !?ioTypeMap,
+    !self.mOverridingExtensionMethodFormalParameterList,
+    !self.mOverridingExtensionMethodInstructionList,
+    !self.mEndOfMethodLocation,
+    ?let semanticInstructionListForGeneration,
     ?let formalParameterListForGeneration
   )
 //--- Check Signature
   if baseTypeName != "" then
     checkMethodSignatures (
-      !formalParameterListForGeneration
-      !self.mOverridingExtensionMethodName.location
-      !inheritedSignature
+      !formalParameterListForGeneration,
+      !self.mOverridingExtensionMethodName.location,
+      !inheritedSignature,
       !inheritedDeclarationLocation
     )
   end
@@ -327,7 +327,7 @@ override proc @overridingExtensionMethodAST buildExtensionListMaps (
 //    !self.mTypeName.string
 //    !self.mOverridingExtensionMethodName
   !?ioOverridingExtensionMethodListMap.insertKey
-    (!self.mTypeName.string
+    (!self.mTypeName.string,
     !self.mOverridingExtensionMethodName
   )
 }
@@ -358,11 +358,11 @@ override proc @overridingExtensionMethodForGeneration appendSpecificImplementati
                                                             ?!@stringset ioInclusionSet,
                                                             !@string outImplementation) {
   generateExtensionMethodNew (
-    !self.mReceiverType
-    !?ioInclusionSet
-    !self.mExtensionMethodName
-    !self.mExtensionMethodFormalParameterList
-    !self.mSemanticInstructionListForGeneration
+    !self.mReceiverType,
+    !?ioInclusionSet,
+    !self.mExtensionMethodName,
+    !self.mExtensionMethodFormalParameterList,
+    !self.mSemanticInstructionListForGeneration,
     ?let @string methodImplementation
   )
   outImplementation = [filewrapper semanticComponentGenerationTemplate.overridingExtensionMethodImplementation

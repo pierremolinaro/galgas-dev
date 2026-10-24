@@ -51,7 +51,7 @@ syntax extension galgas3InstructionsSyntax {
   rule <semantic_instruction_ggs3> (?!@galgasDeclarationAST ioDeclarations,
                                     !@semanticInstructionAST outInstruction) {
     $let$
-    <type_definition_ggs3> (!?ioDeclarations ?let typeName)
+    <type_definition_ggs3> (!?ioDeclarations, ?let typeName)
     $identifier$ ?let constantName
     select
       outInstruction = @undefinedLocalConstantDeclarationAST {
@@ -61,7 +61,7 @@ syntax extension galgas3InstructionsSyntax {
       }
     or
       $=$
-      <expression_ggs3> (!?ioDeclarations ?let @semanticExpressionAST sourceExpression)
+      <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST sourceExpression)
       outInstruction = @localVariableOrConstantDeclarationWithAssignmentAST {
         !typeName.location
         !true // Is Constant
@@ -79,7 +79,7 @@ syntax extension galgas3InstructionsSyntax {
     $let$
     $identifier$ ?let variableName
     $=$
-    <expression_ggs3> (!?ioDeclarations ?let @semanticExpressionAST sourceExpression)
+    <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST sourceExpression)
     outInstruction = @localConstantDeclarationWithAssignmentAST {
       !variableName.location
       !variableName
@@ -99,7 +99,7 @@ syntax extension galgas4InstructionsSyntax {
   rule <semantic_instruction> (?!@galgasDeclarationAST ioDeclarations,
                                !@semanticInstructionAST outInstruction) {
     $let$
-    <type_definition> (!?ioDeclarations ?let typeName)
+    <type_definition> (!?ioDeclarations, ?let typeName)
     $identifier$ ?let constantName
     select
       outInstruction = @undefinedLocalConstantDeclarationAST {
@@ -109,7 +109,7 @@ syntax extension galgas4InstructionsSyntax {
      }
     or
       $=$
-      <expression> (!?ioDeclarations ?let @semanticExpressionAST sourceExpression)
+      <expression> (!?ioDeclarations, ?let @semanticExpressionAST sourceExpression)
       outInstruction = @localVariableOrConstantDeclarationWithAssignmentAST {
         !typeName.location
         !true // Is Constant
@@ -127,7 +127,7 @@ syntax extension galgas4InstructionsSyntax {
     $let$
     $identifier$ ?let variableName
     $=$
-    <expression> (!?ioDeclarations ?let @semanticExpressionAST sourceExpression)
+    <expression> (!?ioDeclarations, ?let @semanticExpressionAST sourceExpression)
     outInstruction = @localConstantDeclarationWithAssignmentAST {
       !variableName.location
       !variableName
@@ -156,7 +156,7 @@ override proc @localConstantDeclarationWithAssignmentAST enterInstructionInSeman
 
 override proc @localVariableOrConstantDeclarationWithAssignmentAST enterInstructionInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
   if self.mOptionalTypeName.string != "" then
-    !?ioTypeMap.makeEntry (!self.mOptionalTypeName ?*)
+    !?ioTypeMap.makeEntry (!self.mOptionalTypeName, ?*)
   end
   self.mSourceExpression.enterExpressionInSemanticContext (!?ioTypeMap)
 }
@@ -176,9 +176,9 @@ override proc @undefinedLocalConstantDeclarationAST analyzeSemanticInstruction (
   let targetVariableCppName = "var_" + self.mConstantName.string.identifierRepresentation
                             + "_" + self.mConstantName.location.startLocationIndex
   !?ioVariableMap.insertDeclaredLocalConstant
-    (!self.mConstantName
-    !targetType
-    !targetVariableCppName
+    (!self.mConstantName,
+    !targetType,
+    !targetVariableCppName,
     !targetVariableCppName
   )
 //--- Generate instruction
@@ -199,21 +199,21 @@ override proc @localConstantDeclarationWithAssignmentAST analyzeSemanticInstruct
                         ?!@localVarManager ioVariableMap) {
 //--- Analyze source expression
   self.mSourceExpression.analyzeSemanticExpression
-    (!usefulnessCallerEntityName: inUsefulnessCallerEntityName
-    !?ioUsefulEntitiesGraph
-    !inferenceType: .null
-    !inAnalysisContext
-    !?ioTypeMap
-    !?ioVariableMap
+    (!usefulnessCallerEntityName: inUsefulnessCallerEntityName,
+    !?ioUsefulEntitiesGraph,
+    !inferenceType: .null,
+    !inAnalysisContext,
+    !?ioTypeMap,
+    !?ioVariableMap,
     ?let @semanticExpressionForGeneration expression
   )
 //--- Enter target variable
   let targetVariableCppName = "var_" + self.mVariableName.string.identifierRepresentation
                                      + "_" + self.mVariableName.location.startLocationIndex
   !?ioVariableMap.insertInitializedLocalConstant
-    (!self.mVariableName
-    !expression.mResultType
-    !targetVariableCppName
+    (!self.mVariableName,
+    !expression.mResultType,
+    !targetVariableCppName,
     !targetVariableCppName
   )
 //--- Generate instruction
@@ -236,12 +236,12 @@ override proc @localVariableOrConstantDeclarationWithAssignmentAST analyzeSemant
   let targetType = [ioTypeMap typeMapEntryForLKey !self.mOptionalTypeName]
 //--- Analyze source expression
   self.mSourceExpression.analyzeSemanticExpression
-    (!usefulnessCallerEntityName: inUsefulnessCallerEntityName
-    !?ioUsefulEntitiesGraph
-    !inferenceType: targetType
-    !inAnalysisContext
-    !?ioTypeMap
-    !?ioVariableMap
+    (!usefulnessCallerEntityName: inUsefulnessCallerEntityName,
+    !?ioUsefulEntitiesGraph,
+    !inferenceType: targetType,
+    !inAnalysisContext,
+    !?ioTypeMap,
+    !?ioVariableMap,
     ?@semanticExpressionForGeneration expression
   )
 //--- Check target variable
@@ -249,22 +249,22 @@ override proc @localVariableOrConstantDeclarationWithAssignmentAST analyzeSemant
                             + "_" + self.mVariableName.location.startLocationIndex
   if self.mIsConstant then
     !?ioVariableMap.insertInitializedLocalConstant
-      (!self.mVariableName
-      !targetType
-      !targetVariableCppName
+      (!self.mVariableName,
+      !targetType,
+      !targetVariableCppName,
       !targetVariableCppName
     )
   else
     !?ioVariableMap.insertInitializedLocalVariable
-      (!self.mVariableName
-      !warnsIfNotMutated: true
-      !targetType
-      !targetVariableCppName
+      (!self.mVariableName,
+      !warnsIfNotMutated: true,
+      !targetType,
+      !targetVariableCppName,
       !targetVariableCppName
     )
   end
 //--- Check assignment type compatibility
-  checkAssignmentTypeWithImplicitGetterCall (!targetType !expression.mResultType !self.mInstructionLocation !?expression)
+  checkAssignmentTypeWithImplicitGetterCall (!targetType, !expression.mResultType, !self.mInstructionLocation, !?expression)
 //--- Generate instruction
   ioInstructionListForGeneration += !@localVariableOrConstantDeclarationWithSourceExpressionForGeneration {
     !targetType
@@ -314,10 +314,10 @@ override proc @localVariableOrConstantDeclarationWithSourceExpressionForGenerati
                                 ?!@string ioGeneratedCode) {
   self.mTargetType.addHeaderFileName (!?ioInclusionSet)
   self.mSourceExpression.generateExpression
-     (!?ioGeneratedCode
-     !?ioInclusionSet
-     !?ioTemporaryVariableIndex
-     !?ioUnusedVariableCppNameSet
+     (!?ioGeneratedCode,
+     !?ioInclusionSet,
+     !?ioTemporaryVariableIndex,
+     !?ioUnusedVariableCppNameSet,
      ?let @string sourceVar
   )
   ioGeneratedCode += "GGS_" + self.mTargetType.identifierRepresentation + " " + self.mCppVariableName + " = " + sourceVar + " ;\n"

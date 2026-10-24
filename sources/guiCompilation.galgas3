@@ -414,8 +414,8 @@ proc compileAllGuiComponentFromASTGalgas3
   outOptionComponentMapForGeneration = @()
   for guiAST in inGuiComponentListAST do
     guiComponentSemanticAnalysis (
-      !guiAST
-      !inSemanticContext
+      !guiAST,
+      !inSemanticContext,
       !?outOptionComponentMapForGeneration
     )
   end
@@ -435,7 +435,7 @@ private proc guiComponentSemanticAnalysis (?let @galgasGUIComponentListAST.@elem
 //--- Check imported options components
   for (mValue) in inGUIComponentAST.mImportedOptionList do
     inSemanticContext.mOptionComponentMapForSemanticAnalysis.searchKey
-      (!mValue
+      (!mValue,
       ?5*
     )
     context.mImportedOptionComponentList += !mValue.string
@@ -464,11 +464,11 @@ private proc guiComponentSemanticAnalysis (?let @galgasGUIComponentListAST.@elem
   for (lexiqueFileName labels simpleAttributes compoundAttributes) in inGUIComponentAST.mWithLexiqueList do (idx)
   //--- Check lexique
     inSemanticContext.mLexiqueComponentMapForSemanticAnalysis.searchKey
-      (!lexiqueFileName
-      ?*
-      ?let @terminalMap terminalMap
-      ?3*
-      ?let lexicalStyleListAST
+      (!lexiqueFileName,
+      ?*,
+      ?let @terminalMap terminalMap,
+      ?3*,
+      ?let lexicalStyleListAST,
       ?*
     )
   //--- Build terminal symbol set
@@ -503,7 +503,7 @@ private proc guiComponentSemanticAnalysis (?let @galgasGUIComponentListAST.@elem
     var @string blockComment = ""
     for (mKey mValue) in simpleAttributes do
       if mKey.string == "fileExtension" then
-        !?context.mExtensionMap.insertKey (!mValue !lexiqueFileName.string !idx)
+        !?context.mExtensionMap.insertKey (!mValue, !lexiqueFileName.string, !idx)
         hasAssociatedExtension = true
       elsif mKey.string == "title" then
         if hasTabViewTitle then
@@ -541,7 +541,7 @@ private proc guiComponentSemanticAnalysis (?let @galgasGUIComponentListAST.@elem
   end
 //--- Generation
   !?ioOptionComponentMapForGeneration.insertKey
-    (!inGUIComponentAST.mGUIComponentName
+    (!inGUIComponentAST.mGUIComponentName,
     !context
   )
 }
@@ -562,14 +562,14 @@ proc generateAllGuiComponentsGalgas3 (?let @optionComponentMapForGeneration inOp
       !inQuietOutputByDefault
     ]
     @string.generateFileWithPattern (
-      !startPath:inOutputDirectory
-      !fileName: swiftuiFileName
-      !lineComment:"//"
-      !header:"" // Header
-      !defaultUserZone1:"\n\n" // Defaut user zone1
-      !generatedZone2: swiftui_string
-      !defaultUserZone2:"\n\n" // Defaut user zone2
-      !generatedZone3:"\n\n" // Zone 3
+      !startPath:inOutputDirectory,
+      !fileName: swiftuiFileName,
+      !lineComment:"//",
+      !header:"",
+      !defaultUserZone1:"\n\n",
+      !generatedZone2: swiftui_string,
+      !defaultUserZone2:"\n\n",
+      !generatedZone3:"\n\n",
       !makeExecutable:false
     )
   end

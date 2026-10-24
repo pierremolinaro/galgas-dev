@@ -337,13 +337,13 @@ void extensionSetter_insertKey (GGS_genericExtensionMethodListMap & ioObject,
     const GGS_genericExtensionMethodListMap temp_1 = ioObject ;
     test_0 = temp_1.readProperty_dictionary ().getter_hasKey (constinArgument_inKey COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas3", 46)).boolEnum () ;
     if (GalgasBool::boolTrue == test_0) {
-      GGS_lstringlist var_aList_2256 ;
+      GGS_lstringlist var_aList_2257 ;
       const GGS_genericExtensionMethodListMap temp_2 = ioObject ;
-      temp_2.readProperty_dictionary ().method_searchKey (constinArgument_inKey, var_aList_2256, inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas3", 47)) ;
+      temp_2.readProperty_dictionary ().method_searchKey (constinArgument_inKey, var_aList_2257, inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas3", 47)) ;
       {
-      var_aList_2256.setter_append (constinArgument_inValue, inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas3", 48)) ;
+      var_aList_2257.setter_append (constinArgument_inValue, inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas3", 48)) ;
       }
-      ioObject.mProperty_dictionary.addAssignOperation (constinArgument_inKey, var_aList_2256, inCompiler  COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas3", 49)) ;
+      ioObject.mProperty_dictionary.addAssignOperation (constinArgument_inKey, var_aList_2257, inCompiler  COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas3", 49)) ;
     }
   }
   if (GalgasBool::boolFalse == test_0) {
@@ -370,13 +370,13 @@ void extensionSetter_insertKey (GGS_descendantClassListMap & ioObject,
     const GGS_descendantClassListMap temp_1 = ioObject ;
     test_0 = temp_1.readProperty_dictionary ().getter_hasKey (constinArgument_inKey COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas3", 115)).boolEnum () ;
     if (GalgasBool::boolTrue == test_0) {
-      GGS_unifiedTypeMapEntryList var_aList_5086 ;
+      GGS_unifiedTypeMapEntryList var_aList_5089 ;
       const GGS_descendantClassListMap temp_2 = ioObject ;
-      temp_2.readProperty_dictionary ().method_searchKey (constinArgument_inKey, var_aList_5086, inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas3", 116)) ;
+      temp_2.readProperty_dictionary ().method_searchKey (constinArgument_inKey, var_aList_5089, inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas3", 116)) ;
       {
-      var_aList_5086.setter_append (constinArgument_inType, inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas3", 117)) ;
+      var_aList_5089.setter_append (constinArgument_inType, inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas3", 117)) ;
       }
-      ioObject.mProperty_dictionary.addAssignOperation (constinArgument_inKey, var_aList_5086, inCompiler  COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas3", 118)) ;
+      ioObject.mProperty_dictionary.addAssignOperation (constinArgument_inKey, var_aList_5089, inCompiler  COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas3", 118)) ;
     }
   }
   if (GalgasBool::boolFalse == test_0) {
@@ -4263,10 +4263,10 @@ GGS_string extensionGetter_initializerSignature (const GGS_typeNameFormalParamet
   GGS_string result_result ; // Returned variable
   result_result = GGS_string ("init") ;
   const GGS_typeNameFormalParameterNameList temp_0 = inObject ;
-  UpEnumerator_typeNameFormalParameterNameList enumerator_11942 (temp_0) ;
-  while (enumerator_11942.hasCurrentObject ()) {
-    result_result.plusAssignOperation(GGS_string ("!").add_operation (enumerator_11942.current (HERE).readProperty_mFormalSelector ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("declaration-type-extern.galgas3", 313)), inCompiler  COMMA_SOURCE_FILE ("declaration-type-extern.galgas3", 313)) ;
-    enumerator_11942.gotoNextObject () ;
+  UpEnumerator_typeNameFormalParameterNameList enumerator_11964 (temp_0) ;
+  while (enumerator_11964.hasCurrentObject ()) {
+    result_result.plusAssignOperation(GGS_string ("!").add_operation (enumerator_11964.current (HERE).readProperty_mFormalSelector ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("declaration-type-extern.galgas3", 313)), inCompiler  COMMA_SOURCE_FILE ("declaration-type-extern.galgas3", 313)) ;
+    enumerator_11964.gotoNextObject () ;
   }
 //---
   return result_result ;

@@ -43,19 +43,19 @@ syntax extension galgas3ExpressionSyntax {
 
   rule <expression_and_ggs3> (?!@galgasDeclarationAST ioDeclarations,
                              !@semanticExpressionAST outExpression ) {
-    <relation_factor_ggs3> (!?ioDeclarations ? outExpression)
+    <relation_factor_ggs3> (!?ioDeclarations, ? outExpression)
     repeat
     while
       let operatorLocation = @location.here
       $&$
       let leftOperand = outExpression
-      <relation_factor_ggs3> (!?ioDeclarations ?let @semanticExpressionAST rightOperand)
+      <relation_factor_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST rightOperand)
       outExpression = @andExpressionAST {!operatorLocation !leftOperand !rightOperand}
     while
       let operatorLocation = @location.here
       $&&$
       let leftOperand = outExpression
-      <relation_factor_ggs3> (!?ioDeclarations ?let @semanticExpressionAST rightOperand)
+      <relation_factor_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST rightOperand)
       outExpression = @andShortExpressionAST {!operatorLocation !leftOperand !rightOperand}
     end
   }
@@ -72,19 +72,19 @@ syntax extension galgas4ExpressionSyntax {
 
   rule <expression_and> (?!@galgasDeclarationAST ioDeclarations,
                         !@semanticExpressionAST outExpression ) {
-    <relation_factor> (!?ioDeclarations ? outExpression)
+    <relation_factor> (!?ioDeclarations, ? outExpression)
     repeat
     while
       let operatorLocation = @location.here
       $&$
       let leftOperand = outExpression
-      <relation_factor> (!?ioDeclarations ?let @semanticExpressionAST rightOperand)
+      <relation_factor> (!?ioDeclarations, ?let @semanticExpressionAST rightOperand)
       outExpression = @andExpressionAST {!operatorLocation !leftOperand !rightOperand}
     while
       let operatorLocation = @location.here
       $&&$
       let leftOperand = outExpression
-      <relation_factor> (!?ioDeclarations ?let @semanticExpressionAST rightOperand)
+      <relation_factor> (!?ioDeclarations, ?let @semanticExpressionAST rightOperand)
       outExpression = @andShortExpressionAST {!operatorLocation !leftOperand !rightOperand}
     end
   }
@@ -116,30 +116,30 @@ override proc @andExpressionAST analyzeSemanticExpression
   !@semanticExpressionForGeneration outExpression ) {
 //--- Left expression analysis
   self.mLeftExpression.analyzeSemanticExpression
-    (!usefulnessCallerEntityName: inUsefulnessCallerEntityName
-    !?ioUsefulEntitiesGraph
-    !inferenceType: inInferenceType
-    !inAnalysisContext
-    !?ioTypeMap
-    !?ioVariableMap
+    (!usefulnessCallerEntityName: inUsefulnessCallerEntityName,
+    !?ioUsefulEntitiesGraph,
+    !inferenceType: inInferenceType,
+    !inAnalysisContext,
+    !?ioTypeMap,
+    !?ioVariableMap,
     ?var @semanticExpressionForGeneration leftExpression
   )
 //--- Right expression analysis
   self.mRightExpression.analyzeSemanticExpression
-    (!usefulnessCallerEntityName: inUsefulnessCallerEntityName
-    !?ioUsefulEntitiesGraph
-    !inferenceType: leftExpression.mResultType
-    !inAnalysisContext
-    !?ioTypeMap
-    !?ioVariableMap
+    (!usefulnessCallerEntityName: inUsefulnessCallerEntityName,
+    !?ioUsefulEntitiesGraph,
+    !inferenceType: leftExpression.mResultType,
+    !inAnalysisContext,
+    !?ioTypeMap,
+    !?ioVariableMap,
     ?@semanticExpressionForGeneration rightExpression
   )
 //--- Check operator availability
   checkDiadicOperator (
-    !operatorIsHandled: [leftExpression.mResultType.definition.features contains !.infixAndOperator]
-    !"&"
-    !self.mOperatorLocation
-    !?leftExpression
+    !operatorIsHandled: [leftExpression.mResultType.definition.features contains !.infixAndOperator],
+    !"&",
+    !self.mOperatorLocation,
+    !?leftExpression,
     !?rightExpression
   )
 //--- Generate expression
@@ -173,30 +173,30 @@ override proc @andShortExpressionAST analyzeSemanticExpression
   !@semanticExpressionForGeneration outExpression ) {
 //--- Left expression analysis
   self.mLeftExpression.analyzeSemanticExpression
-    (!usefulnessCallerEntityName: inUsefulnessCallerEntityName
-    !?ioUsefulEntitiesGraph
-    !inferenceType: inInferenceType
-    !inAnalysisContext
-    !?ioTypeMap
-    !?ioVariableMap
+    (!usefulnessCallerEntityName: inUsefulnessCallerEntityName,
+    !?ioUsefulEntitiesGraph,
+    !inferenceType: inInferenceType,
+    !inAnalysisContext,
+    !?ioTypeMap,
+    !?ioVariableMap,
     ?var @semanticExpressionForGeneration leftExpression
   )
 //--- Right expression analysis
   self.mRightExpression.analyzeSemanticExpression
-    (!usefulnessCallerEntityName: inUsefulnessCallerEntityName
-    !?ioUsefulEntitiesGraph
-    !inferenceType: leftExpression.mResultType
-    !inAnalysisContext
-    !?ioTypeMap
-    !?ioVariableMap
+    (!usefulnessCallerEntityName: inUsefulnessCallerEntityName,
+    !?ioUsefulEntitiesGraph,
+    !inferenceType: leftExpression.mResultType,
+    !inAnalysisContext,
+    !?ioTypeMap,
+    !?ioVariableMap,
     ?@semanticExpressionForGeneration rightExpression
   )
 //--- Check operator availability
   checkDiadicOperator (
-    !operatorIsHandled: [leftExpression.mResultType.definition.features contains !.infixAndOperator]
-    !"&"
-    !self.mOperatorLocation
-    !?leftExpression
+    !operatorIsHandled: [leftExpression.mResultType.definition.features contains !.infixAndOperator],
+    !"&",
+    !self.mOperatorLocation,
+    !?leftExpression,
     !?rightExpression
   )
 //--- Generate expression
@@ -227,10 +227,10 @@ override proc @andShortExpressionForGeneration generateExpression
   self.mLeftExpression.mResultType.addHeaderFileName (!?ioInclusionSet)
 //--- Left operand
   self.mLeftExpression.generateExpression
-    (!?ioGeneratedCode
-    !?ioInclusionSet
-    !?ioTemporaryVariableIndex
-    !?ioUnusedVariableCppNameSet
+    (!?ioGeneratedCode,
+    !?ioInclusionSet,
+    !?ioTemporaryVariableIndex,
+    !?ioUnusedVariableCppNameSet,
     ?let @string leftTemporaryOperand
   )
 //--- Generate Comparison
@@ -240,10 +240,10 @@ override proc @andShortExpressionForGeneration generateExpression
 //--- Right operand
   !?ioGeneratedCode.incIndentation (!2)
   self.mRightExpression.generateExpression
-    (!?ioGeneratedCode
-    !?ioInclusionSet
-    !?ioTemporaryVariableIndex
-    !?ioUnusedVariableCppNameSet
+    (!?ioGeneratedCode,
+    !?ioInclusionSet,
+    !?ioTemporaryVariableIndex,
+    !?ioUnusedVariableCppNameSet,
     ?let @string rightTemporaryOperand
   )
   ioGeneratedCode += testVar + " = " + rightTemporaryOperand + " ;\n"

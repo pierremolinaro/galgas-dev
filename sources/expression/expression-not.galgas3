@@ -36,7 +36,7 @@ syntax extension galgas3ExpressionSyntax {
                      !@semanticExpressionAST outExpression ) {
     let operatorLocation = @location.here
     $not$
-    <factor_ggs3> (!?ioDeclarations ?outExpression)
+    <factor_ggs3> (!?ioDeclarations, ?outExpression)
     outExpression = @notExpressionAST {!operatorLocation !outExpression}
   }
 
@@ -54,7 +54,7 @@ syntax extension galgas4ExpressionSyntax {
                 !@semanticExpressionAST outExpression ) {
     let operatorLocation = @location.here
     $not$
-    <factor> (!?ioDeclarations ?outExpression)
+    <factor> (!?ioDeclarations, ?outExpression)
     outExpression = @notExpressionAST {!operatorLocation !outExpression}
   }
 
@@ -84,12 +84,12 @@ override proc @notExpressionAST analyzeSemanticExpression
   !@semanticExpressionForGeneration outExpression ) {
 //--- Expression analysis
   self.mExpression.analyzeSemanticExpression
-    (!usefulnessCallerEntityName: inUsefulnessCallerEntityName
-    !?ioUsefulEntitiesGraph
-    !inferenceType: @unifiedTypeMapEntry.null
-    !inAnalysisContext
-    !?ioTypeMap
-    !?ioVariableMap
+    (!usefulnessCallerEntityName: inUsefulnessCallerEntityName,
+    !?ioUsefulEntitiesGraph,
+    !inferenceType: @unifiedTypeMapEntry.null,
+    !inAnalysisContext,
+    !?ioTypeMap,
+    !?ioVariableMap,
     ?let expression
   )
 //--- Check operator availability
@@ -130,7 +130,7 @@ override proc @notExpressionForGeneration generateExpression
   !@string outCppExpression ) {
   self.mExpression.mResultType.addHeaderFileName (!?ioInclusionSet)
 //--- Operand
-  self.mExpression.generateExpression (!?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?let operand)
+  self.mExpression.generateExpression (!?ioGeneratedCode, !?ioInclusionSet, !?ioTemporaryVariableIndex, !?ioUnusedVariableCppNameSet, ?let operand)
 //--- Generate
   outCppExpression = operand + ".operator_not (" + self.mLocation.sourceFile + ")"
 }

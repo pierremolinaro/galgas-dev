@@ -25,7 +25,7 @@ syntax extension galgas3SyntaxComponentSyntax {
                                   !@syntaxInstructionAST outInstruction) {
     $send$
     let instructionLocation = @location.here
-    <expression_ggs3> (!?ioDeclarations ?let @semanticExpressionAST sentExpression)
+    <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST sentExpression)
     outInstruction = @syntaxSendInstructionAST {
       !instructionLocation
       !sentExpression
@@ -46,7 +46,7 @@ syntax extension galgas4SyntaxComponentSyntax {
                              !@syntaxInstructionAST outInstruction) {
     $send$
     let instructionLocation = @location.here
-    <expression> (!?ioDeclarations ?let @semanticExpressionAST sentExpression)
+    <expression> (!?ioDeclarations, ?let @semanticExpressionAST sentExpression)
     outInstruction = @syntaxSendInstructionAST {
       !instructionLocation
       !sentExpression
@@ -95,12 +95,12 @@ final class @syntaxSendInstructionAST : @syntaxInstructionAST {
     end
   //--- Analyze source expression
     self.mExpression.analyzeSemanticExpression
-      (!usefulnessCallerEntityName: inUsefulnessCallerEntityName
-      !?ioUsefulEntitiesGraph
-      !inferenceType: @unifiedTypeMapEntry.null
-      !inAnalysisContext
-      !?ioTypeMap
-      !?ioVariableMap
+      (!usefulnessCallerEntityName: inUsefulnessCallerEntityName,
+      !?ioUsefulEntitiesGraph,
+      !inferenceType: @unifiedTypeMapEntry.null,
+      !inAnalysisContext,
+      !?ioTypeMap,
+      !?ioVariableMap,
       ?let @semanticExpressionForGeneration expression
     )
   //--- Check expression type
@@ -133,10 +133,10 @@ final class @syntaxSendInstructionForGeneration : @syntaxInstructionForGeneratio
                                        ?let @bool unused inGenerateSyntaxDirectedTranslationString,
                                        ?!@string ioGeneratedCode) {
     self.mExpression.generateExpression
-      (!?ioGeneratedCode
-      !?ioInclusionSet
-      !?ioTemporaryVariableIndex
-      !?ioUnusedVariableCppNameSet
+      (!?ioGeneratedCode,
+      !?ioInclusionSet,
+      !?ioTemporaryVariableIndex,
+      !?ioUnusedVariableCppNameSet,
       ?let @string sourceVar
     )
   //---

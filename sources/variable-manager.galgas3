@@ -29,11 +29,11 @@ setter @localVarManager insertDeclaredLocalVariable (?let @lstring inVarName,
                                                     ?let @string inCppName,
                                                     ?let @string inNameForCheckingFormalParameterUsing ) {
   !?self.mCurrentManager.insertKey
-    (!inVarName
-    !inType
-    !inCppName
-    !inNameForCheckingFormalParameterUsing
-    ! @()
+    (!inVarName,
+    !inType,
+    !inCppName,
+    !inNameForCheckingFormalParameterUsing,
+    ! @(),
     !.declared {!usedInSubscope: false}
   )
 }
@@ -46,11 +46,11 @@ setter @localVarManager insertInitializedLocalVariable (?let @lstring inVarName,
                                                        ?let @string inCppName,
                                                        ?let @string inNameForCheckingFormalParameterUsing ) {
   !?self.mCurrentManager.insertKey
-    (!inVarName
-    !inType
-    !inCppName
-    !inNameForCheckingFormalParameterUsing
-    !if inWarnsIfNotMutated then @() else .acceptInitializedStateAsFinalState | .acceptReadStateAsFinalState end
+    (!inVarName,
+    !inType,
+    !inCppName,
+    !inNameForCheckingFormalParameterUsing,
+    !if inWarnsIfNotMutated then @() else .acceptInitializedStateAsFinalState | .acceptReadStateAsFinalState end,
     !.initialized
   )
 }
@@ -64,11 +64,11 @@ setter @localVarManager insertUsedLocalConstant (?let @lstring inVarName,
                                                 ?let @string inCppName,
                                                 ?let @string inNameForCheckingFormalParameterUsing ) {
   !?self.mCurrentManager.insertKey
-    (!inVarName
-    !inType
-    !inCppName
-    !inNameForCheckingFormalParameterUsing
-    !.rejectWriteInInitializedAndReadStates | .acceptReadStateAsFinalState
+    (!inVarName,
+    !inType,
+    !inCppName,
+    !inNameForCheckingFormalParameterUsing,
+    !.rejectWriteInInitializedAndReadStates | .acceptReadStateAsFinalState,
     !.read
   )
 }
@@ -80,11 +80,11 @@ setter @localVarManager insertInitializedLocalConstant (?let @lstring inVarName,
                                                        ?let @string inCppName,
                                                        ?let @string inNameForCheckingFormalParameterUsing ) {
   !?self.mCurrentManager.insertKey
-    (!inVarName
-    !inType
-    !inCppName
-    !inNameForCheckingFormalParameterUsing
-    !.rejectWriteInInitializedAndReadStates | .acceptReadStateAsFinalState
+    (!inVarName,
+    !inType,
+    !inCppName,
+    !inNameForCheckingFormalParameterUsing,
+    !.rejectWriteInInitializedAndReadStates | .acceptReadStateAsFinalState,
     !.initialized
   )
 }
@@ -96,11 +96,11 @@ setter @localVarManager insertDeclaredLocalConstant (?let @lstring inVarName,
                                                     ?let @string inCppName,
                                                     ?let @string inNameForCheckingFormalParameterUsing ) {
   !?self.mCurrentManager.insertKey
-    (!inVarName
-    !inType
-    !inCppName
-    !inNameForCheckingFormalParameterUsing
-    !.rejectWriteInInitializedAndReadStates | .acceptReadStateAsFinalState
+    (!inVarName,
+    !inType,
+    !inCppName,
+    !inNameForCheckingFormalParameterUsing,
+    !.rejectWriteInInitializedAndReadStates | .acceptReadStateAsFinalState,
     !.declared {!usedInSubscope: false}
   )
 }
@@ -114,11 +114,11 @@ setter @localVarManager insertInputFormalArgumentDeclaredAsUnused (?let @lstring
                                                                   ?let @string inCppName,
                                                                   ?let @string inNameForCheckingFormalParameterUsing ) {
   !?self.mCurrentManager.insertKey
-    (!inVarName
-    !inType
-    !inCppName
-    !inNameForCheckingFormalParameterUsing
-    !.acceptInitializedStateAsFinalState | .acceptReadStateAsFinalState | .warnsOnAnyAcces
+    (!inVarName,
+    !inType,
+    !inCppName,
+    !inNameForCheckingFormalParameterUsing,
+    !.acceptInitializedStateAsFinalState | .acceptReadStateAsFinalState | .warnsOnAnyAcces,
     !.initialized
   )
 }
@@ -130,11 +130,11 @@ setter @localVarManager insertInputFormalArgument (?let @lstring inVarName,
                                                   ?let @string inCppName,
                                                   ?let @string inNameForCheckingFormalParameterUsing ) {
   !?self.mCurrentManager.insertKey
-    (!inVarName
-    !inType
-    !inCppName
-    !inNameForCheckingFormalParameterUsing
-    !.acceptReadStateAsFinalState | .suggestDeclareUnusedParameterAsUnused
+    (!inVarName,
+    !inType,
+    !inCppName,
+    !inNameForCheckingFormalParameterUsing,
+    !.acceptReadStateAsFinalState | .suggestDeclareUnusedParameterAsUnused,
     !.initialized
   )
 }
@@ -146,11 +146,11 @@ setter @localVarManager insertConstantInputFormalArgumentDeclaredAsUnused (?let 
                                                                           ?let @string inCppName,
                                                                           ?let @string inNameForCheckingFormalParameterUsing ) {
   !?self.mCurrentManager.insertKey
-    (!inVarName
-    !inType
-    !inCppName
-    !inNameForCheckingFormalParameterUsing
-    !.rejectWriteInInitializedAndReadStates | .acceptInitializedStateAsFinalState | .acceptReadStateAsFinalState | .warnsOnAnyAcces
+    (!inVarName,
+    !inType,
+    !inCppName,
+    !inNameForCheckingFormalParameterUsing,
+    !.rejectWriteInInitializedAndReadStates | .acceptInitializedStateAsFinalState | .acceptReadStateAsFinalState | .warnsOnAnyAcces,
     !.initialized
   )
 }
@@ -162,11 +162,11 @@ setter @localVarManager insertConstantInputFormalArgument (?let @lstring inVarNa
                                                           ?let @string inCppName,
                                                           ?let @string inNameForCheckingFormalParameterUsing ) {
   !?self.mCurrentManager.insertKey
-    (!inVarName
-    !inType
-    !inCppName
-    !inNameForCheckingFormalParameterUsing
-    !.rejectWriteInInitializedAndReadStates | .acceptReadStateAsFinalState | .suggestDeclareUnusedParameterAsUnused
+    (!inVarName,
+    !inType,
+    !inCppName,
+    !inNameForCheckingFormalParameterUsing,
+    !.rejectWriteInInitializedAndReadStates | .acceptReadStateAsFinalState | .suggestDeclareUnusedParameterAsUnused,
     !.initialized
   )
 }
@@ -180,11 +180,11 @@ setter @localVarManager insertOutputFormalArgument (?let @lstring inVarName,
                                                    ?let @string inCppName,
                                                    ?let @string inNameForCheckingFormalParameterUsing ) {
   !?self.mCurrentManager.insertKey
-    (!inVarName
-    !inType
-    !inCppName
-    !inNameForCheckingFormalParameterUsing
-    !.rejectDeclaredStateAsFinalState | .acceptInitializedStateAsFinalState | .acceptReadStateAsFinalState
+    (!inVarName,
+    !inType,
+    !inCppName,
+    !inNameForCheckingFormalParameterUsing,
+    !.rejectDeclaredStateAsFinalState | .acceptInitializedStateAsFinalState | .acceptReadStateAsFinalState,
     !.declared {!usedInSubscope: false}
   )
 }
@@ -198,11 +198,11 @@ setter @localVarManager insertInputOutputFormalArgumentDeclaredAsUnused (?let @l
                                                                         ?let @string inCppName,
                                                                         ?let @string inNameForCheckingFormalParameterUsing ) {
   !?self.mCurrentManager.insertKey
-    (!inVarName
-    !inType
-    !inCppName
-    !inNameForCheckingFormalParameterUsing
-    !.acceptInitializedStateAsFinalState | .warnsOnAnyAcces
+    (!inVarName,
+    !inType,
+    !inCppName,
+    !inNameForCheckingFormalParameterUsing,
+    !.acceptInitializedStateAsFinalState | .warnsOnAnyAcces,
     !.initialized
   )
 }
@@ -214,12 +214,12 @@ setter @localVarManager insertInputOutputFormalArgument (?let @lstring inVarName
                                                         ?let @string inCppName,
                                                         ?let @string inNameForCheckingFormalParameterUsing ) {
   !?self.mCurrentManager.insertKey
-    (!inVarName
-    !inType
-    !inCppName
-    !inNameForCheckingFormalParameterUsing
+    (!inVarName,
+    !inType,
+    !inCppName,
+    !inNameForCheckingFormalParameterUsing,
     !.acceptInitializedStateAsFinalState | .acceptReadStateAsFinalState
-       | .suggestDeclareUnusedParameterAsUnused
+       | .suggestDeclareUnusedParameterAsUnused,
     !.initialized
   )
 }
@@ -233,12 +233,12 @@ setter @localVarManager insertNonMutableProperty (?let @lstring inVarName,
                                                  ?let @string inCppName,
                                                  ?let @string inNameForCheckingFormalParameterUsing ) {
   !?self.mCurrentManager.insertKey
-    (!inVarName
-    !inType
-    !inCppName
-    !inNameForCheckingFormalParameterUsing
+    (!inVarName,
+    !inType,
+    !inCppName,
+    !inNameForCheckingFormalParameterUsing,
     !.rejectWriteInInitializedAndReadStates
-          | .acceptInitializedStateAsFinalState | .acceptReadStateAsFinalState
+          | .acceptInitializedStateAsFinalState | .acceptReadStateAsFinalState,
     !.initialized
   )
 }
@@ -250,11 +250,11 @@ setter @localVarManager insertMutableProperty (?let @lstring inVarName,
                                               ?let @string inCppName,
                                               ?let @string inNameForCheckingFormalParameterUsing ) {
   !?self.mCurrentManager.insertKey
-    (!inVarName
-    !inType
-    !inCppName
-    !inNameForCheckingFormalParameterUsing
-    !.acceptInitializedStateAsFinalState | .acceptReadStateAsFinalState
+    (!inVarName,
+    !inType,
+    !inCppName,
+    !inNameForCheckingFormalParameterUsing,
+    !.acceptInitializedStateAsFinalState | .acceptReadStateAsFinalState,
     !.initialized
   )
 }
@@ -272,12 +272,12 @@ setter @localVarManager insertInitializerSelfProperty
                               ?initialized: let @bool inInitialized ) {
   let varName = @lstring {!"self." + inPropertyName !inErrorLocation}
   !?self.mCurrentManager.insertKey
-    (!varName
-    !inType
-    !inCppName
-    !inNameForCheckingFormalParameterUsing
+    (!varName,
+    !inType,
+    !inCppName,
+    !inNameForCheckingFormalParameterUsing,
     !.rejectDeclaredStateAsFinalState
-      | .acceptInitializedStateAsFinalState | .acceptReadStateAsFinalState
+      | .acceptInitializedStateAsFinalState | .acceptReadStateAsFinalState,
     !if inInitialized then .initialized else .declared {!usedInSubscope: false} end
   )
 }
@@ -329,7 +329,7 @@ setter @localVarManager closeBranch (?let @location inEndOfBranchLocation ) {
       self.mCurrentManager = savedManager
     case selectOverrideNextBranches (@currentVarManager savedManager @currentVarManager referenceManager) :
       var newReferenceManager = self.mCurrentManager
-      !?newReferenceManager.combineManagerWith (!otherManager: referenceManager !errorLocation: inEndOfBranchLocation)
+      !?newReferenceManager.combineManagerWith (!otherManager: referenceManager, !errorLocation: inEndOfBranchLocation)
       self.mOverridenManagers += !.selectOverrideNextBranches {!savedManager: savedManager !referenceManager: newReferenceManager}
       self.mCurrentManager = savedManager
     case repeatOverride :
@@ -440,9 +440,9 @@ setter @localVarManager neutralAccess (?let @lstring inVarName,
                                       !@string outCppName,
                                       !@string outNameForCheckingFormalParameterUsing ) {
   !?self.mCurrentManager.neutralAccess
-    (!inVarName
-    ?outType
-    ?outCppName
+    (!inVarName,
+    ?outType,
+    ?outCppName,
     ?outNameForCheckingFormalParameterUsing
   )
 }
@@ -460,10 +460,10 @@ setter @currentVarManager neutralAccess (?let @lstring inVarName,
     outNameForCheckingFormalParameterUsing = varDescriptor.mNameForCheckingFormalParameterUsing
   else
     !?self.mSubMaps.neutralAccess
-      (!inVarName
-      !0
-      ?outType
-      ?outCppName
+      (!inVarName,
+      !0,
+      ?outType,
+      ?outCppName,
       ?outNameForCheckingFormalParameterUsing
     )
   end
@@ -486,7 +486,7 @@ setter @localVarMapListForLLVM neutralAccess (?let @lstring inVarName,
       outCppName = varDescriptor.mCppName
       outNameForCheckingFormalParameterUsing = varDescriptor.mNameForCheckingFormalParameterUsing
     else
-      !?self.neutralAccess (!inVarName !inIndex + 1 ?outType ?outCppName ?outNameForCheckingFormalParameterUsing)
+      !?self.neutralAccess (!inVarName, !inIndex + 1, ?outType, ?outCppName, ?outNameForCheckingFormalParameterUsing)
     end
   end
 }
@@ -503,8 +503,8 @@ setter @localVarManager searchForDropAccess (?let @lstring inVarName ) {
 
 setter @currentVarManager searchForDropAccess (?let @lstring inVarName ) {
   if let varDescriptor = self.mLocalVarMap @[inVarName] then
-    varDescriptor.mState.checkFinalState (!inVarName !varDescriptor.mAttributes)
-    !?self.mLocalVarMap.removeKey (!inVarName ?5*)
+    varDescriptor.mState.checkFinalState (!inVarName, !varDescriptor.mAttributes)
+    !?self.mLocalVarMap.removeKey (!inVarName, ?5*)
   else
     var found = false
     for (subMap) in self.mSubMaps while not found do
@@ -527,9 +527,9 @@ setter @localVarManager searchForWriteAccess (?let @lstring inVarName,
                                              !@string outCppName,
                                              !@string outNameForCheckingFormalParameterUsing ) {
   !?self.mCurrentManager.searchForWriteAccess
-    (!inVarName
-    ?outType
-    ?outCppName
+    (!inVarName,
+    ?outType,
+    ?outCppName,
     ?outNameForCheckingFormalParameterUsing
   )
 }
@@ -549,15 +549,15 @@ setter @currentVarManager searchForWriteAccess (?let @lstring inVarName,
 //            ?let attributes
 //            ?let valuation] then
     var newValuation = varDescriptor.mState
-    !?newValuation.writeTransition (!inVarName !inOverridenMap: false !varDescriptor.mAttributes)
+    !?newValuation.writeTransition (!inVarName, !inOverridenMap: false, !varDescriptor.mAttributes)
     if newValuation != varDescriptor.mState then
-      !?self.mLocalVarMap.setMStateForKey (!newValuation !inVarName)
+      !?self.mLocalVarMap.setMStateForKey (!newValuation, !inVarName)
     end
     outType = varDescriptor.mType
     outCppName = varDescriptor.mCppName
     outNameForCheckingFormalParameterUsing = varDescriptor.mNameForCheckingFormalParameterUsing
   else
-    !?self.mSubMaps.writeAccessInSubMap (!inVarName !0 ?outType ?outCppName ?outNameForCheckingFormalParameterUsing)
+    !?self.mSubMaps.writeAccessInSubMap (!inVarName, !0, ?outType, ?outCppName, ?outNameForCheckingFormalParameterUsing)
   end
 }
 
@@ -575,16 +575,16 @@ setter @localVarMapListForLLVM writeAccessInSubMap (?let @lstring inVarName,
     var localMap = [self mMapAtIndex !inIndex]
     if let varDescriptor = localMap @[inVarName] then
       var newValuation = varDescriptor.mState
-      !?newValuation.writeTransition (!inVarName !inOverridenMap: true !varDescriptor.mAttributes)
+      !?newValuation.writeTransition (!inVarName, !inOverridenMap: true, !varDescriptor.mAttributes)
       if newValuation != varDescriptor.mState then
-        !?localMap.setMStateForKey (!newValuation !inVarName)
-        !?self.setMMapAtIndex (!localMap !inIndex)
+        !?localMap.setMStateForKey (!newValuation, !inVarName)
+        !?self.setMMapAtIndex (!localMap, !inIndex)
       end
       outType = varDescriptor.mType
       outCppName = varDescriptor.mCppName
       outNameForCheckingFormalParameterUsing = varDescriptor.mNameForCheckingFormalParameterUsing
     else
-      !?self.writeAccessInSubMap (!inVarName !inIndex + 1 ?outType ?outCppName ?outNameForCheckingFormalParameterUsing)
+      !?self.writeAccessInSubMap (!inVarName, !inIndex + 1, ?outType, ?outCppName, ?outNameForCheckingFormalParameterUsing)
     end
   end
 }
@@ -630,7 +630,7 @@ setter @localVarManager searchForReadAccess (?let @lstring inVarName,
                                             !@unifiedTypeMapEntry outType,
                                             !@string outCppName,
                                             !@string outNameForCheckingFormalParameterUsing ) {
-  !?self.mCurrentManager.searchForReadAccess (!inVarName ?outType ?outCppName ?outNameForCheckingFormalParameterUsing)
+  !?self.mCurrentManager.searchForReadAccess (!inVarName, ?outType, ?outCppName, ?outNameForCheckingFormalParameterUsing)
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -641,15 +641,15 @@ setter @currentVarManager searchForReadAccess (?let @lstring inVarName,
                                               !@string outNameForCheckingFormalParameterUsing ) {
   if let varDescriptor = self.mLocalVarMap @[inVarName] then
     var newValuation = varDescriptor.mState
-    !?newValuation.readTransition (!inVarName !varDescriptor.mAttributes)
+    !?newValuation.readTransition (!inVarName, !varDescriptor.mAttributes)
     outType = varDescriptor.mType
     outCppName = varDescriptor.mCppName
     outNameForCheckingFormalParameterUsing = varDescriptor.mNameForCheckingFormalParameterUsing
     if newValuation != varDescriptor.mState then
-      !?self.mLocalVarMap.setMStateForKey (!newValuation !inVarName)
+      !?self.mLocalVarMap.setMStateForKey (!newValuation, !inVarName)
     end
   else
-    !?self.mSubMaps.readAccess (!inVarName !0 ?outType ?outCppName ?outNameForCheckingFormalParameterUsing)
+    !?self.mSubMaps.readAccess (!inVarName, !0, ?outType, ?outCppName, ?outNameForCheckingFormalParameterUsing)
   end
 }
 
@@ -667,16 +667,16 @@ setter @localVarMapListForLLVM readAccess (?let @lstring inVarName,
     var localMap = [self mMapAtIndex !inIndex]
     if let varDescriptor = localMap @[inVarName] then
       var newValuation = varDescriptor.mState
-      !?newValuation.readTransition (!inVarName !varDescriptor.mAttributes)
+      !?newValuation.readTransition (!inVarName, !varDescriptor.mAttributes)
       outType = varDescriptor.mType
       outCppName = varDescriptor.mCppName
       outNameForCheckingFormalParameterUsing = varDescriptor.mNameForCheckingFormalParameterUsing
       if newValuation != varDescriptor.mState then
-        !?localMap.setMStateForKey (!newValuation !inVarName)
-        !?self.setMMapAtIndex (!localMap !inIndex)
+        !?localMap.setMStateForKey (!newValuation, !inVarName)
+        !?self.setMMapAtIndex (!localMap, !inIndex)
       end
     else
-      !?self.readAccess (!inVarName !inIndex + 1 ?outType ?outCppName ?outNameForCheckingFormalParameterUsing)
+      !?self.readAccess (!inVarName, !inIndex + 1, ?outType, ?outCppName, ?outNameForCheckingFormalParameterUsing)
     end
   end
 }
@@ -714,7 +714,7 @@ setter @localVarManager searchForReadWriteAccess (?let @lstring inVarName,
                                                  !@unifiedTypeMapEntry outType,
                                                  !@string outCppName,
                                                  !@string outNameForCheckingFormalParameterUsing ) {
-  !?self.mCurrentManager.searchForReadWriteAccess (!inVarName ?outType ?outCppName ?outNameForCheckingFormalParameterUsing)
+  !?self.mCurrentManager.searchForReadWriteAccess (!inVarName, ?outType, ?outCppName, ?outNameForCheckingFormalParameterUsing)
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -732,15 +732,15 @@ setter @currentVarManager searchForReadWriteAccess (?let @lstring inVarName,
 //           ?let inAttributes
 //           ?let valuation] then
     var newValuation = varDescriptor.mState
-    !?newValuation.readWriteTransition (!inVarName !inOverridenMap: false !varDescriptor.mAttributes)
+    !?newValuation.readWriteTransition (!inVarName, !inOverridenMap: false, !varDescriptor.mAttributes)
     if newValuation != varDescriptor.mState then
-      !?self.mLocalVarMap.setMStateForKey (!newValuation !inVarName)
+      !?self.mLocalVarMap.setMStateForKey (!newValuation, !inVarName)
     end
     outType = varDescriptor.mType
     outCppName = varDescriptor.mCppName
     outNameForCheckingFormalParameterUsing = varDescriptor.mNameForCheckingFormalParameterUsing
   else
-    !?self.mSubMaps.readWriteAccess (!inVarName !0 ?outType ?outCppName ?outNameForCheckingFormalParameterUsing)
+    !?self.mSubMaps.readWriteAccess (!inVarName, !0, ?outType, ?outCppName, ?outNameForCheckingFormalParameterUsing)
   end
 }
 
@@ -758,16 +758,16 @@ setter @localVarMapListForLLVM readWriteAccess (?let @lstring inVarName,
     var localMap = [self mMapAtIndex !inIndex]
     if let varDescriptor = localMap @[inVarName] then
       var newValuation = varDescriptor.mState
-      !?newValuation.readWriteTransition (!inVarName !inOverridenMap: true !varDescriptor.mAttributes)
+      !?newValuation.readWriteTransition (!inVarName, !inOverridenMap: true, !varDescriptor.mAttributes)
       if newValuation != varDescriptor.mState then
-        !?localMap.setMStateForKey (!newValuation !inVarName)
-        !?self.setMMapAtIndex (!localMap !inIndex)
+        !?localMap.setMStateForKey (!newValuation, !inVarName)
+        !?self.setMMapAtIndex (!localMap, !inIndex)
       end
       outType = varDescriptor.mType
       outCppName = varDescriptor.mCppName
       outNameForCheckingFormalParameterUsing = varDescriptor.mNameForCheckingFormalParameterUsing
     else
-      !?self.readWriteAccess (!inVarName !inIndex + 1 ?outType ?outCppName ?outNameForCheckingFormalParameterUsing)
+      !?self.readWriteAccess (!inVarName, !inIndex + 1, ?outType, ?outCppName, ?outNameForCheckingFormalParameterUsing)
     end
   end
 }
@@ -777,8 +777,8 @@ setter @localVarMapListForLLVM readWriteAccess (?let @lstring inVarName,
 setter @localVarValuation readWriteTransition (?let @lstring inVarName,
                                               ?inOverridenMap: let @bool inOverridenMap,
                                               ?let @localVariableAttributes inAttributes ) {
-  !?self.readTransition (!inVarName !inAttributes)
-  !?self.writeTransition (!inVarName !inOverridenMap: inOverridenMap !inAttributes)
+  !?self.readTransition (!inVarName, !inAttributes)
+  !?self.writeTransition (!inVarName, !inOverridenMap: inOverridenMap, !inAttributes)
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -786,7 +786,7 @@ setter @localVarValuation readWriteTransition (?let @lstring inVarName,
 //--------------------------------------------------------------------------------------------------
 
 setter @currentVarManager openScope () {
-  !?self.mSubMaps.insertAtIndex (!self.mLocalVarMap !0)
+  !?self.mSubMaps.insertAtIndex (!self.mLocalVarMap, !0)
   self.mLocalVarMap = @()
 }
 
@@ -813,11 +813,11 @@ setter @currentVarManager insertKey (?let @lstring inVarName,
                                     ?let @localVariableAttributes inAttributes,
                                     ?let @localVarValuation inState ) {
   !?self.mLocalVarMap.insertKey
-    (!inVarName
-    !inType
-    !inCppName
-    !inNameForCheckingFormalParameterUsing
-    !inAttributes
+    (!inVarName,
+    !inType,
+    !inCppName,
+    !inNameForCheckingFormalParameterUsing,
+    !inAttributes,
     !inState
   )
 }
@@ -856,7 +856,7 @@ proc @localVarValuation checkFinalState (?let @lstring inVarName ,?let @localVar
 
 proc @scopeLocalVarMap checkFinalStates (?let @location unused inErrorLocation ) {
   for (varName 3* attributes valuation) in self do
-    valuation.checkFinalState (!varName !attributes)
+    valuation.checkFinalState (!varName, !attributes)
   end
 }
 
@@ -932,9 +932,9 @@ setter @scopeLocalVarMap combineMapWith (?otherMap: let @scopeLocalVarMap inOthe
       if cppName != otherVar.mCppName then
         ioErrorMessage += "\n  - 'internal error type 1 for '" + varName + "' local variable"
       else
-        valuation.combineValuationWith (!otherVar.mState ?let newValuation !?ioErrorMessage)
+        valuation.combineValuationWith (!otherVar.mState, ?let newValuation, !?ioErrorMessage)
         if newValuation != valuation then
-          !?self.setMStateForKey (!newValuation !varName)
+          !?self.setMStateForKey (!newValuation, !varName)
         end
       end
     else
@@ -955,7 +955,7 @@ setter @currentVarManager combineManagerWith (?otherManager: let @currentVarMana
                                              ?errorLocation: let @location inErrorLocation ) {
   var s = ""
   !?self.mLocalVarMap.combineMapWith
-    (!otherMap: inOtherManager.mLocalVarMap
+    (!otherMap: inOtherManager.mLocalVarMap,
     !?s
   )
   if self.mSubMaps.count != inOtherManager.mSubMaps.count then
@@ -965,7 +965,7 @@ setter @currentVarManager combineManagerWith (?otherManager: let @currentVarMana
     for (subMap) in self.mSubMaps, (otherSubMap) in inOtherManager.mSubMaps do
       var mutableSubMap = subMap
      !?mutableSubMap.combineMapWith
-       (!otherMap: otherSubMap
+       (!otherMap: otherSubMap,
        !?s
      )
      newSubMapList += !mutableSubMap

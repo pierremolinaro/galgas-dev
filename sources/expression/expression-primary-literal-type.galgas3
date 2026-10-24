@@ -66,7 +66,7 @@ syntax extension galgas4ExpressionSyntax {
 override proc @literalTypeInExpressionAST enterExpressionInSemanticContext
   (?!@unifiedTypeMap ioTypeMap
 ) {
-  !?ioTypeMap.makeEntry (!self.mLiteralTypeName ?*)
+  !?ioTypeMap.makeEntry (!self.mLiteralTypeName, ?*)
 }
 
 //································································································
@@ -81,7 +81,7 @@ override proc @literalTypeInExpressionAST analyzeSemanticExpression
   !@semanticExpressionForGeneration outExpression
 ) {
   let usefulnessName = typeNameForUsefulEntitiesGraph (!self.mLiteralTypeName)
-  !?ioUsefulEntitiesGraph.addEdge (!from: inUsefulnessCallerEntityName !to: usefulnessName)
+  !?ioUsefulEntitiesGraph.addEdge (!from: inUsefulnessCallerEntityName, !to: usefulnessName)
 //---
   let type = [ioTypeMap typeMapEntryForLKey !self.mLiteralTypeName]
   outExpression = @literalTypeInExpressionForGeneration {

@@ -27,14 +27,14 @@ syntax extension galgas3InstructionsSyntax {
                                     !@semanticInstructionAST outInstruction) {
     $loop$
     let instructionLocation = @location.here
-    <semantic_instruction_list_ggs3> (!?ioDeclarations ?let @semanticInstructionListAST firstInstructions)
+    <semantic_instruction_list_ggs3> (!?ioDeclarations, ?let @semanticInstructionListAST firstInstructions)
   //---
     let endOfFirstInstructions = @location.here
     $while$
-    <comma_separated_expression_ggs3> (!?ioDeclarations ?let loopExpression)
+    <comma_separated_expression_ggs3> (!?ioDeclarations, ?let loopExpression)
     let endOfLoopExpression = @location.here
     $do$
-    <semantic_instruction_list_ggs3> (!?ioDeclarations ?let @semanticInstructionListAST secondInstructions)
+    <semantic_instruction_list_ggs3> (!?ioDeclarations, ?let @semanticInstructionListAST secondInstructions)
     let endOfSecondInstructions = @location.here
     $end$
     let endOfLoopInstruction = @location.here
@@ -64,14 +64,14 @@ syntax extension galgas4InstructionsSyntax {
                                !@semanticInstructionAST outInstruction) {
     $loop$
     let instructionLocation = @location.here
-    <semantic_instruction_list> (!?ioDeclarations ?let @semanticInstructionListAST firstInstructions)
+    <semantic_instruction_list> (!?ioDeclarations, ?let @semanticInstructionListAST firstInstructions)
   //---
     let endOfFirstInstructions = @location.here
     $while$
-    <comma_separated_expression> (!?ioDeclarations ?let loopExpression)
+    <comma_separated_expression> (!?ioDeclarations, ?let loopExpression)
     let endOfLoopExpression = @location.here
     $do$
-    <semantic_instruction_list> (!?ioDeclarations ?let @semanticInstructionListAST secondInstructions)
+    <semantic_instruction_list> (!?ioDeclarations, ?let @semanticInstructionListAST secondInstructions)
     let endOfSecondInstructions = @location.here
     $end$
     let endOfLoopInstruction = @location.here
@@ -123,41 +123,41 @@ final class @loopInstructionWithoutVariantAST : @semanticInstructionAST {
                         ?!@localVarManager ioVariableMap) {
   //--- Loop expression
    self.mLoopExpression.analyzeSemanticExpressionList
-     (!inUsefulnessCallerEntityName
-     !?ioUsefulEntitiesGraph
-     !inAnalysisContext
-     !?ioTypeMap
-     !?ioVariableMap
+     (!inUsefulnessCallerEntityName,
+     !?ioUsefulEntitiesGraph,
+     !inAnalysisContext,
+     !?ioTypeMap,
+     !?ioVariableMap,
      ?let @ifTestListForGeneration testListForGeneration
    )
   //--- Begin override for analyze loop instruction list
     !?ioVariableMap.openOverrideForRepeatBlock ()
   //--- First branch
     analyzeSemanticInstructionList (
-      !inUsefulnessCallerEntityName
-      !?ioUsefulEntitiesGraph
-      !inAnalysisContext
-      !?ioTypeMap
-      !localConstantList: @()
-      !localInitializedVariableListWarnsIfNotMutated: @()
-      !localInitializedVariableListNoWarnsIfNotMutated: @()
-      !self.mFirstInstructions
-      !self.mEndOfFirstInstructions
-      !?ioVariableMap
+      !inUsefulnessCallerEntityName,
+      !?ioUsefulEntitiesGraph,
+      !inAnalysisContext,
+      !?ioTypeMap,
+      !localConstantList: @(),
+      !localInitializedVariableListWarnsIfNotMutated: @(),
+      !localInitializedVariableListNoWarnsIfNotMutated: @(),
+      !self.mFirstInstructions,
+      !self.mEndOfFirstInstructions,
+      !?ioVariableMap,
       ?let first_instructionList
     )
   //--- Second branch
     analyzeSemanticInstructionList (
-      !inUsefulnessCallerEntityName
-      !?ioUsefulEntitiesGraph
-      !inAnalysisContext
-      !?ioTypeMap
-      !localConstantList: @()
-      !localInitializedVariableListWarnsIfNotMutated: @()
-      !localInitializedVariableListNoWarnsIfNotMutated: @()
-      !self.mSecondInstructions
-      !self.mEndOfSecondInstructions
-      !?ioVariableMap
+      !inUsefulnessCallerEntityName,
+      !?ioUsefulEntitiesGraph,
+      !inAnalysisContext,
+      !?ioTypeMap,
+      !localConstantList: @(),
+      !localInitializedVariableListWarnsIfNotMutated: @(),
+      !localInitializedVariableListNoWarnsIfNotMutated: @(),
+      !self.mSecondInstructions,
+      !self.mEndOfSecondInstructions,
+      !?ioVariableMap,
       ?let second_instructionList
     )
   //--- End override
@@ -197,18 +197,18 @@ final class @loopInstructionWithoutVariantForGeneration : @semanticInstructionFo
     ioGeneratedCode += "while (" + loopVar + ") {\n"
     !?ioGeneratedCode.incIndentation (!2)
     generateInstructionList (
-      !?ioInclusionSet
-      !self.mFirstInstructions
-      !?ioTemporaryVariableIndex
-      !?ioUnusedVariableCppNameSet
-      !inGenerateSyntaxDirectedTranslationString
+      !?ioInclusionSet,
+      !self.mFirstInstructions,
+      !?ioTemporaryVariableIndex,
+      !?ioUnusedVariableCppNameSet,
+      !inGenerateSyntaxDirectedTranslationString,
       !?ioGeneratedCode
     )
     self.mLoopExpression.generateInstruction
-      (!?ioInclusionSet
-      !?ioTemporaryVariableIndex
-      !?ioUnusedVariableCppNameSet
-      !?ioGeneratedCode
+      (!?ioInclusionSet,
+      !?ioTemporaryVariableIndex,
+      !?ioUnusedVariableCppNameSet,
+      !?ioGeneratedCode,
       ?let loopExpressionVar
     )
     ioGeneratedCode += loopVar + " = " + loopExpressionVar + " == GalgasBool::boolTrue ;\n"
@@ -217,11 +217,11 @@ final class @loopInstructionWithoutVariantForGeneration : @semanticInstructionFo
 //    ioGeneratedCode += "}\n"
     ioGeneratedCode += "if (" + loopVar + ") {\n"
     generateInstructionList (
-      !?ioInclusionSet
-      !self.mSecondInstructions
-      !?ioTemporaryVariableIndex
-      !?ioUnusedVariableCppNameSet
-      !inGenerateSyntaxDirectedTranslationString
+      !?ioInclusionSet,
+      !self.mSecondInstructions,
+      !?ioTemporaryVariableIndex,
+      !?ioUnusedVariableCppNameSet,
+      !inGenerateSyntaxDirectedTranslationString,
       !?ioGeneratedCode
     )
     var first = true

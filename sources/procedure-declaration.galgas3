@@ -39,9 +39,9 @@ syntax extension galgas3InstructionsSyntax {
       isUsefull = true
     end
     $identifier$ ?let mRoutineName indexing routineDefinition
-    <formal_parameter_list_ggs34> (!?ioDeclarations ?let formalParameterList)
+    <formal_parameter_list_ggs34> (!?ioDeclarations, ?let formalParameterList)
     ${$
-    <semantic_instruction_list_ggs3> (!?ioDeclarations ?let @semanticInstructionListAST mRoutineInstructionList)
+    <semantic_instruction_list_ggs3> (!?ioDeclarations, ?let @semanticInstructionListAST mRoutineInstructionList)
     $}$
     let endOfInstructionList = @location.here
     ioDeclarations.mDeclarationList += !@procDeclarationAST {
@@ -70,9 +70,9 @@ syntax extension galgas3InstructionsSyntax {
       isUsefull = true
     end
     $identifier$ ?let mRoutineName indexing routineDefinition
-    <formal_parameter_list_ggs34> (!?ioDeclarations ?let formalParameterList)
+    <formal_parameter_list_ggs34> (!?ioDeclarations, ?let formalParameterList)
     ${$
-    <semantic_instruction_list_ggs3> (!?ioDeclarations ?let @semanticInstructionListAST mRoutineInstructionList)
+    <semantic_instruction_list_ggs3> (!?ioDeclarations, ?let @semanticInstructionListAST mRoutineInstructionList)
     $}$
     let endOfInstructionList = @location.here
     ioDeclarations.mDeclarationList += !@procDeclarationAST {
@@ -110,9 +110,9 @@ syntax extension galgas4InstructionsSyntax {
       isUsefull = true
     end
     $identifier$ ?let mRoutineName indexing routineDefinition
-    <formal_parameter_list> (!?ioDeclarations ?let @formalParameterListAST mFormalParameterList)
+    <formal_parameter_list> (!?ioDeclarations, ?let @formalParameterListAST mFormalParameterList)
     ${$
-    <semantic_instruction_list> (!?ioDeclarations ?let @semanticInstructionListAST mRoutineInstructionList)
+    <semantic_instruction_list> (!?ioDeclarations, ?let @semanticInstructionListAST mRoutineInstructionList)
     $}$
     let endOfInstructionList = @location.here
     ioDeclarations.mDeclarationList += !@procDeclarationAST {
@@ -141,9 +141,9 @@ syntax extension galgas4InstructionsSyntax {
       isUsefull = true
     end
     $identifier$ ?let mRoutineName indexing routineDefinition
-    <formal_parameter_list> (!?ioDeclarations ?let @formalParameterListAST mFormalParameterList)
+    <formal_parameter_list> (!?ioDeclarations, ?let @formalParameterListAST mFormalParameterList)
     ${$
-    <semantic_instruction_list> (!?ioDeclarations ?let @semanticInstructionListAST mRoutineInstructionList)
+    <semantic_instruction_list> (!?ioDeclarations, ?let @semanticInstructionListAST mRoutineInstructionList)
     $}$
     let endOfInstructionList = @location.here
     ioDeclarations.mDeclarationList += !@procDeclarationAST {
@@ -180,7 +180,7 @@ final class @procDeclarationAST : @externProcedureDeclarationAST {
   //--- Build signature
     var routineSignature = @formalParameterSignature ()
     for argument in self.mFormalArgumentListAST do
-      !?ioTypeMap.makeEntry (!argument.mFormalArgumentTypeName ?let parameterTypeIndex)
+      !?ioTypeMap.makeEntry (!argument.mFormalArgumentTypeName, ?let parameterTypeIndex)
       routineSignature +=
         !argument.mFormalSelector
         !parameterTypeIndex
@@ -191,8 +191,8 @@ final class @procDeclarationAST : @externProcedureDeclarationAST {
     self.mRoutineInstructionList.enterInstructionListInSemanticContext (!?ioTypeMap)
   //--- Enter routine in routine map
     !?ioSemanticContext.routineMap.insertKey
-      (!self.mRoutineName
-      !routineSignature
+      (!self.mRoutineName,
+      !routineSignature,
       !isFilePrivate: self.isFilePrivate
     )
   }
@@ -219,7 +219,7 @@ final class @procDeclarationAST : @externProcedureDeclarationAST {
     let mangledName = routineMangledName (!self.mRoutineName !routineSignature)
   //--- Useful entities graph
     let nameForUsefulness = procedureNameForUsefulEntitiesGraph (!mangledName)
-    !?ioUsefulEntitiesGraph.addNode (!nameForUsefulness !nameForUsefulness)
+    !?ioUsefulEntitiesGraph.addNode (!nameForUsefulness, !nameForUsefulness)
     if self.usefullProcedure then
       ioUsefulnessRootEntities += !nameForUsefulness
     end
@@ -232,14 +232,14 @@ final class @procDeclarationAST : @externProcedureDeclarationAST {
       !selfObjectCppPrefixForAccessingProperty: ""
     }
     analyzeRoutineBody (
-      !nameForUsefulness
-      !?ioUsefulEntitiesGraph
-      !analysisContext
-      !?ioTypeMap
-      !self.mFormalArgumentListAST
-      !self.mRoutineInstructionList
-      !self.mEndOfRoutineInstructionList
-      ?let instructionList
+      !nameForUsefulness,
+      !?ioUsefulEntitiesGraph,
+      !analysisContext,
+      !?ioTypeMap,
+      !self.mFormalArgumentListAST,
+      !self.mRoutineInstructionList,
+      !self.mEndOfRoutineInstructionList,
+      ?let instructionList,
       ?let formalArgumentList
     )
     ioSemanticDeclarationListForGeneration +=
@@ -279,16 +279,16 @@ final class @routineImplementationForGeneration : @routinePrototypeDeclarationFo
       ioInclusionSet ++= "proc-" + self.routineMangledName.fileNameRepresentation
     end
     generateProcedure (
-      !static: self.mGenerateStatic
-      !"routine_" + self.routineMangledName.identifierRepresentation
-      !?ioInclusionSet
-      !self.mFormalArgumentList
-      !self.mRoutineInstructionList
-      !false // Do not generate 'const' qualifier
-      !"Compiler"
-      !true // Generate location Argument
-      !false // Do not generate 'resetTemplateString'
-      !false // Do not generate syntaxDirectedTranslationString argument
+      !static: self.mGenerateStatic,
+      !"routine_" + self.routineMangledName.identifierRepresentation,
+      !?ioInclusionSet,
+      !self.mFormalArgumentList,
+      !self.mRoutineInstructionList,
+      !false, // Do not generate 'const' qualifier
+      !"Compiler",
+      !true, // Generate location Argument
+      !false, // Do not generate 'resetTemplateString'
+      !false, // Do not generate syntaxDirectedTranslationString argument
       ?let @string code
     )
     outImplementation = [filewrapper semanticComponentGenerationTemplate.routineImplementation

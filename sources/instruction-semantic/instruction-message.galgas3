@@ -35,7 +35,7 @@ syntax extension galgas3InstructionsSyntax {
                                     !@semanticInstructionAST outInstruction) {
     $message$
     let instructionLocation = @location.here
-    <expression_ggs3> (!?ioDeclarations ?let @semanticExpressionAST expression)
+    <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST expression)
     outInstruction = @messageInstructionAST {!instructionLocation !expression}
   }
 
@@ -83,12 +83,12 @@ override proc @messageInstructionAST analyzeSemanticInstruction (
                         ?!@localVarManager ioVariableMap) {
 //--- Analyze source expression
   self.mExpression.analyzeSemanticExpression
-    (!usefulnessCallerEntityName: inUsefulnessCallerEntityName
-    !?ioUsefulEntitiesGraph
-    !inferenceType: @unifiedTypeMapEntry.null
-    !inAnalysisContext
-    !?ioTypeMap
-    !?ioVariableMap
+    (!usefulnessCallerEntityName: inUsefulnessCallerEntityName,
+    !?ioUsefulEntitiesGraph,
+    !inferenceType: @unifiedTypeMapEntry.null,
+    !inAnalysisContext,
+    !?ioTypeMap,
+    !?ioVariableMap,
     ?let expression
   )
 //--- Check message type is @string
@@ -121,10 +121,10 @@ override proc @messageInstructionForGeneration generateInstruction (?!@stringset
   ?!@string ioGeneratedCode) {
 //--- Message expression
   self.mExpression.generateExpression
-    (!?ioGeneratedCode
-    !?ioInclusionSet
-    !?ioTemporaryVariableIndex
-    !?ioUnusedVariableCppNameSet
+    (!?ioGeneratedCode,
+    !?ioInclusionSet,
+    !?ioTemporaryVariableIndex,
+    !?ioUnusedVariableCppNameSet,
     ?let @string messageCppVarName
   )
 //--- Invoke 'printMessage' proc of Compiler

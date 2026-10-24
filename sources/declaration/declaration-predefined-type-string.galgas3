@@ -27,7 +27,7 @@ final class @stringPredefinedTypeAST : @predefinedTypeAST {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc addAssociatedElement (?!@galgasDeclarationAST ioDeclarations ) {
-    !?ioDeclarations.getOptionalTypeName (?* !forTypeNamed: @("bigint", .nowhere) !isPredefined: true)
+    !?ioDeclarations.getOptionalTypeName (?*, !forTypeNamed: @("bigint", .nowhere), !isPredefined: true)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -36,162 +36,162 @@ final class @stringPredefinedTypeAST : @predefinedTypeAST {
                                       !@classFunctionMap outMap ) {
     outMap = @()
     enterClassFunctionWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !name:"homeDirectory"
-      !resultTypeName:"string"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !name:"homeDirectory",
+      !resultTypeName:"string",
       !hasLexiqueArg:false
     )
     enterClassFunctionWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !name:"newWithStdIn"
-      !resultTypeName:"string"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !name:"newWithStdIn",
+      !resultTypeName:"string",
       !hasLexiqueArg:false
     )
     enterClassFunctionWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !name:"retrieveAndResetTemplateString"
-      !resultTypeName:"string"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !name:"retrieveAndResetTemplateString",
+      !resultTypeName:"string",
       !hasLexiqueArg:true
     )
     enterClassFunctionWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !name:"separatorString"
-      !resultTypeName:"string"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !name:"separatorString",
+      !resultTypeName:"string",
       !hasLexiqueArg:true
     )
     enterClassFunctionWithArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !name:"stringWithSymbolicLinkContents"
-      !argTypeName:"string"
-      !argName:"inPath"
-      !resultTypeName:"string"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !name:"stringWithSymbolicLinkContents",
+      !argTypeName:"string",
+      !argName:"inPath",
+      !resultTypeName:"string",
       !hasLexiqueArg:true
     )
     enterClassFunctionWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !name:"stringWithSourceFilePath"
-      !resultTypeName:"string"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !name:"stringWithSourceFilePath",
+      !resultTypeName:"string",
       !hasLexiqueArg:true
     )
     enterClassFunctionWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !name:"stringWithCurrentDirectory"
-      !resultTypeName:"string"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !name:"stringWithCurrentDirectory",
+      !resultTypeName:"string",
       !hasLexiqueArg:false
     )
     enterClassFunctionWithArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !name:"stringWithContentsOfFile"
-      !argTypeName:"string"
-      !argName:"inFilePath"
-      !resultTypeName:"string"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !name:"stringWithContentsOfFile",
+      !argTypeName:"string",
+      !argName:"inFilePath",
+      !resultTypeName:"string",
       !hasLexiqueArg:true
     )
     enterClassFunctionWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !name:"stringWithCurrentDateTime"
-      !resultTypeName:"string"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !name:"stringWithCurrentDateTime",
+      !resultTypeName:"string",
       !hasLexiqueArg:false
     )
     enterClassFunctionWithArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !name:"stringWithEnvironmentVariable"
-      !argTypeName:"string"
-      !argName:"inVariableName"
-      !resultTypeName:"string"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !name:"stringWithEnvironmentVariable",
+      !argTypeName:"string",
+      !argName:"inVariableName",
+      !resultTypeName:"string",
       !hasLexiqueArg:true
     )
     enterClassFunctionWithArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !name:"stringWithEnvironmentVariableOrEmpty"
-      !argTypeName:"string"
-      !argName:"inVariableName"
-      !resultTypeName:"string"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !name:"stringWithEnvironmentVariableOrEmpty",
+      !argTypeName:"string",
+      !argName:"inVariableName",
+      !resultTypeName:"string",
       !hasLexiqueArg:false
     )
     enterClassFunctionWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !name:"CppLineComment"
-      !resultTypeName:"string"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !name:"CppLineComment",
+      !resultTypeName:"string",
       !hasLexiqueArg:false
     )
     enterClassFunctionWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !name:"CppSpaceComment"
-      !resultTypeName:"string"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !name:"CppSpaceComment",
+      !resultTypeName:"string",
       !hasLexiqueArg:false
     )
     enterClassFunctionWithArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !name:"CppTitleComment"
-      !argTypeName:"string"
-      !argName:"inString"
-      !resultTypeName:"string"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !name:"CppTitleComment",
+      !argTypeName:"string",
+      !argName:"inString",
+      !resultTypeName:"string",
       !hasLexiqueArg:false
     )
     enterClassFunctionWithArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !name:"CppString"
-      !argTypeName:"string"
-      !argName:"inString"
-      !resultTypeName:"string"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !name:"CppString",
+      !argTypeName:"string",
+      !argName:"inString",
+      !resultTypeName:"string",
       !hasLexiqueArg:false
     )
     enterClassFunctionWithArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !name:"CppChar"
-      !argTypeName:"char"
-      !argName:"inChar"
-      !resultTypeName:"string"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !name:"CppChar",
+      !argTypeName:"char",
+      !argName:"inChar",
+      !resultTypeName:"string",
       !hasLexiqueArg:false
     )
     enterClassFunctionWith2Arguments (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !name:"componentsJoinedByString"
-      !argTypeName1:"stringlist"
-      !argName1:"inComponents"
-      !argTypeName2:"string"
-      !argName2:"inSeparator"
-      !resultTypeName:"string"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !name:"componentsJoinedByString",
+      !argTypeName1:"stringlist",
+      !argName1:"inComponents",
+      !argTypeName2:"string",
+      !argName2:"inSeparator",
+      !resultTypeName:"string",
       !hasLexiqueArg:false
     )
     enterClassFunctionWith2Arguments (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !name:"stringByRepeatingString"
-      !argTypeName1:"string"
-      !argName1:"inString"
-      !argTypeName2:"uint"
-      !argName2:"inCount"
-      !resultTypeName:"string"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !name:"stringByRepeatingString",
+      !argTypeName1:"string",
+      !argName1:"inString",
+      !argTypeName2:"uint",
+      !argName2:"inCount",
+      !resultTypeName:"string",
       !hasLexiqueArg:false
     )
     enterClassFunctionWith2Arguments (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !name:"stringWithSequenceOfCharacters"
-      !argTypeName1:"char"
-      !argName1:"inChar"
-      !argTypeName2:"uint"
-      !argName2:"inCount"
-      !resultTypeName:"string"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !name:"stringWithSequenceOfCharacters",
+      !argTypeName1:"char",
+      !argName1:"inChar",
+      !argTypeName2:"uint",
+      !argName2:"inCount",
+      !resultTypeName:"string",
       !hasLexiqueArg:false
     )
   }
@@ -202,43 +202,43 @@ final class @stringPredefinedTypeAST : @predefinedTypeAST {
                                     !@classMethodMap outClassMethodMap ) {
     outClassMethodMap = @()
     enterClassMethodWithStringInputArgument (
-      !?outClassMethodMap
-      !?ioUnifiedTypeMap
-      !classMethod:"deleteFile"
-      !argName:"inFilePath"
+      !?outClassMethodMap,
+      !?ioUnifiedTypeMap,
+      !classMethod:"deleteFile",
+      !argName:"inFilePath",
       !compilerArg:true
     )
     enterClassMethodWithStringInputArgument (
-      !?outClassMethodMap
-      !?ioUnifiedTypeMap
-      !classMethod:"deleteFileIfExists"
-      !argName:"inFilePath"
+      !?outClassMethodMap,
+      !?ioUnifiedTypeMap,
+      !classMethod:"deleteFileIfExists",
+      !argName:"inFilePath",
       !compilerArg:true
     )
     enterClassMethodWithStringInputArgument (
-      !?outClassMethodMap
-      !?ioUnifiedTypeMap
-      !classMethod:"removeEmptyDirectory"
-      !argName:"inDirectoryPath"
+      !?outClassMethodMap,
+      !?ioUnifiedTypeMap,
+      !classMethod:"removeEmptyDirectory",
+      !argName:"inDirectoryPath",
       !compilerArg:true
     )
     enterClassMethodWithStringInputArgument (
-      !?outClassMethodMap
-      !?ioUnifiedTypeMap
-      !classMethod:"removeDirectoryRecursively"
-      !argName:"inDirectoryPath"
+      !?outClassMethodMap,
+      !?ioUnifiedTypeMap,
+      !classMethod:"removeDirectoryRecursively",
+      !argName:"inDirectoryPath",
       !compilerArg:true
     )
-    !?ioUnifiedTypeMap.makeEntryFromString (!"string" ?let @unifiedTypeMapEntry stringType)
-    !?ioUnifiedTypeMap.makeEntryFromString (!"bool" ?let @unifiedTypeMapEntry boolType)
+    !?ioUnifiedTypeMap.makeEntryFromString (!"string", ?let @unifiedTypeMapEntry stringType)
+    !?ioUnifiedTypeMap.makeEntryFromString (!"bool", ?let @unifiedTypeMapEntry boolType)
   //--- Generate file
     var @formalParameterSignature argList = @()
     argList += !"".nowhere !stringType !@formalArgumentPassingModeAST. argumentConstantIn !"inStartPath"
     argList += !"".nowhere !stringType !@formalArgumentPassingModeAST. argumentConstantIn !"inFileName"
     argList += !"".nowhere !stringType !@formalArgumentPassingModeAST. argumentConstantIn !"inContents"
     !?outClassMethodMap.insertOrReplace
-      (!@{!"generateFile" !.here}
-      !argList
+      (!@{!"generateFile" !.here},
+      !argList,
       !true
     )
   //--- Generate file with pattern
@@ -253,8 +253,8 @@ final class @stringPredefinedTypeAST : @predefinedTypeAST {
     argList += !"generatedZone3".nowhere !stringType !.argumentConstantIn !"inGeneratedZone3"
     argList += !"makeExecutable".nowhere !boolType !.argumentConstantIn !"inMakeExecutable"
     !?outClassMethodMap.insertOrReplace
-      (!@lstring {!"generateFileWithPattern" !@location.here}
-      !argList
+      (!@lstring {!"generateFileWithPattern" !@location.here},
+      !argList,
       !true
     )
   }
@@ -265,72 +265,72 @@ final class @stringPredefinedTypeAST : @predefinedTypeAST {
                                        !@instanceMethodMap outInstanceMethodMap ) {
     outInstanceMethodMap = @()
     enterInstanceMethodWithInputArgument (
-      !?outInstanceMethodMap
-      !?ioUnifiedTypeMap
-      !inputArgTypeName:"string"
-      !inputArgName:"inFilePath"
-      !methodName:"writeToFile"
+      !?outInstanceMethodMap,
+      !?ioUnifiedTypeMap,
+      !inputArgTypeName:"string",
+      !inputArgName:"inFilePath",
+      !methodName:"writeToFile",
       !true
     )
     enterInstanceMethodWithInputArgument (
-      !?outInstanceMethodMap
-      !?ioUnifiedTypeMap
-      !inputArgTypeName:"string"
-      !inputArgName:"inFilePath"
-      !methodName:"writeToExecutableFile"
+      !?outInstanceMethodMap,
+      !?ioUnifiedTypeMap,
+      !inputArgTypeName:"string",
+      !inputArgName:"inFilePath",
+      !methodName:"writeToExecutableFile",
       !true
     )
     enterInstanceMethodWithInputArgument (
-      !?outInstanceMethodMap
-      !?ioUnifiedTypeMap
-      !inputArgTypeName:"string"
-      !inputArgName:"inFilePath"
-      !methodName:"makeDirectoryAndWriteToFile"
+      !?outInstanceMethodMap,
+      !?ioUnifiedTypeMap,
+      !inputArgTypeName:"string",
+      !inputArgName:"inFilePath",
+      !methodName:"makeDirectoryAndWriteToFile",
       !true
     )
     enterInstanceMethodWithInputArgument (
-      !?outInstanceMethodMap
-      !?ioUnifiedTypeMap
-      !inputArgTypeName:"string"
-      !inputArgName:"inFilePath"
-      !methodName:"makeDirectoryAndWriteToExecutableFile"
+      !?outInstanceMethodMap,
+      !?ioUnifiedTypeMap,
+      !inputArgTypeName:"string",
+      !inputArgName:"inFilePath",
+      !methodName:"makeDirectoryAndWriteToExecutableFile",
       !true
     )
     enterInstanceMethodWithInputArgument (
-      !?outInstanceMethodMap
-      !?ioUnifiedTypeMap
-      !inputArgTypeName:"string"
-      !inputArgName:"inFilePath"
-      !methodName:"makeSymbolicLinkWithPath"
+      !?outInstanceMethodMap,
+      !?ioUnifiedTypeMap,
+      !inputArgTypeName:"string",
+      !inputArgName:"inFilePath",
+      !methodName:"makeSymbolicLinkWithPath",
       !true
     )
     enterInstanceMethodWithoutArgument (
-      !?outInstanceMethodMap
-      !methodName:"makeDirectory"
+      !?outInstanceMethodMap,
+      !methodName:"makeDirectory",
       !true
     )
   //--- writeToFileWhenDifferentContents, writeToExecutableFileWhenDifferentContents
     var @formalParameterSignature argList = @()
-    !?ioUnifiedTypeMap.makeEntryFromString (!"string" ?@unifiedTypeMapEntry t)
+    !?ioUnifiedTypeMap.makeEntryFromString (!"string", ?@unifiedTypeMapEntry t)
     argList += !"".nowhere !t !@formalArgumentPassingModeAST. argumentConstantIn !"inFilePath"
-    !?ioUnifiedTypeMap.makeEntryFromString (!"bool" ?t)
+    !?ioUnifiedTypeMap.makeEntryFromString (!"bool", ?t)
     argList += !"".nowhere !t !@formalArgumentPassingModeAST. argumentOut !"outFileModified"
     !?outInstanceMethodMap.insertKey
-      (!@lstring {!"writeToFileWhenDifferentContents" !@location.here}
-      !@methodKind.definedAsMember
-      !argList
-      !@location.here
-      !true
-      !@methodQualifier.isBasic
+      (!@lstring {!"writeToFileWhenDifferentContents" !@location.here},
+      !@methodKind.definedAsMember,
+      !argList,
+      !@location.here,
+      !true,
+      !@methodQualifier.isBasic,
       !"" // No error message
     )
     !?outInstanceMethodMap.insertKey
-      (!@{!"writeToExecutableFileWhenDifferentContents" !.here}
-      !@methodKind.definedAsMember
-      !argList
-      !@location.here
-      !true
-      !@methodQualifier.isBasic
+      (!@{!"writeToExecutableFileWhenDifferentContents" !.here},
+      !@methodKind.definedAsMember,
+      !argList,
+      !@location.here,
+      !true,
+      !@methodQualifier.isBasic,
       !"" // No error message
     )
   }
@@ -341,65 +341,65 @@ final class @stringPredefinedTypeAST : @predefinedTypeAST {
                                !@setterMap outSetterMap ) {
     outSetterMap = @()
     enterModifierWithInputArgument (
-      !?outSetterMap
-      !?ioUnifiedTypeMap
-      !argTypeName:"uint"
-      !argName:"inCapacity"
-      !setterName:"setCapacity"
+      !?outSetterMap,
+      !?ioUnifiedTypeMap,
+      !argTypeName:"uint",
+      !argName:"inCapacity",
+      !setterName:"setCapacity",
       !compilerArg:true
     )
     enterModifierWithInputArgument (
-      !?outSetterMap
-      !?ioUnifiedTypeMap
-      !argTypeName:"uint"
-      !argName:"inAmount"
-      !setterName:"incIndentation"
+      !?outSetterMap,
+      !?ioUnifiedTypeMap,
+      !argTypeName:"uint",
+      !argName:"inAmount",
+      !setterName:"incIndentation",
       !compilerArg:true
     )
     enterModifierWithInputArgument (
-      !?outSetterMap
-      !?ioUnifiedTypeMap
-      !argTypeName:"uint"
-      !argName:"inAmount"
-      !setterName:"decIndentation"
+      !?outSetterMap,
+      !?ioUnifiedTypeMap,
+      !argTypeName:"uint",
+      !argName:"inAmount",
+      !setterName:"decIndentation",
       !compilerArg:true
     )
     enterModifierWithInputArgument (
-      !?outSetterMap
-      !?ioUnifiedTypeMap
-      !argTypeName:"uint"
-      !argName:"inColumnIndex"
-      !setterName:"appendSpacesUntilColumn"
+      !?outSetterMap,
+      !?ioUnifiedTypeMap,
+      !argTypeName:"uint",
+      !argName:"inColumnIndex",
+      !setterName:"appendSpacesUntilColumn",
       !compilerArg:true
     )
     enterModifierWith2InputArguments (
-      !?outSetterMap
-      !?ioUnifiedTypeMap
-      !arg1TypeName:"char"
-      !arg1Name:"inChar"
-      !arg2TypeName:"uint"
-      !arg2Name:"inIndex"
-      !setterName:"setCharacterAtIndex"
+      !?outSetterMap,
+      !?ioUnifiedTypeMap,
+      !arg1TypeName:"char",
+      !arg1Name:"inChar",
+      !arg2TypeName:"uint",
+      !arg2Name:"inIndex",
+      !setterName:"setCharacterAtIndex",
       !compilerArg:true
     )
     enterModifierWith2InputArguments (
-      !?outSetterMap
-      !?ioUnifiedTypeMap
-      !arg1TypeName:"char"
-      !arg1Name:"inChar"
-      !arg2TypeName:"uint"
-      !arg2Name:"inIndex"
-      !setterName:"insertCharacterAtIndex"
+      !?outSetterMap,
+      !?ioUnifiedTypeMap,
+      !arg1TypeName:"char",
+      !arg1Name:"inChar",
+      !arg2TypeName:"uint",
+      !arg2Name:"inIndex",
+      !setterName:"insertCharacterAtIndex",
       !compilerArg:true
     )
     enterModifierWithOutputAndInputArguments (
-      !?outSetterMap
-      !?ioUnifiedTypeMap
-      !outputArgTypeName:"char"
-      !outputArgName:"outChar"
-      !inputArgTypeName:"uint"
-      !inputArgName:"inIndex"
-      !setterName:"removeCharacterAtIndex"
+      !?outSetterMap,
+      !?ioUnifiedTypeMap,
+      !outputArgTypeName:"char",
+      !outputArgName:"outChar",
+      !inputArgTypeName:"uint",
+      !inputArgName:"inIndex",
+      !setterName:"removeCharacterAtIndex",
       !compilerArg:true
     )
   }
@@ -408,675 +408,675 @@ final class @stringPredefinedTypeAST : @predefinedTypeAST {
 
   override proc getGetterMap (?!@unifiedTypeMap ioUnifiedTypeMap,
                                !@getterMap outMap ) {
-    commonGetterMapForAllTypes (!?ioUnifiedTypeMap ?outMap)
+    commonGetterMapForAllTypes (!?ioUnifiedTypeMap, ?outMap)
     enterBaseGetterWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName: "lastCharacter"
-      !obsoleteName: ""
-      !returnedTypeName: "char"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName: "lastCharacter",
+      !obsoleteName: "",
+      !returnedTypeName: "char",
       !hasCompilerArgument: true
     )
     enterBaseGetterWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName: "removingFirst"
-      !obsoleteName: ""
-      !returnedTypeName: "string"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName: "removingFirst",
+      !obsoleteName: "",
+      !returnedTypeName: "string",
       !hasCompilerArgument: true
     )
     enterBaseGetterWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName: "nowhere"
-      !obsoleteName: ""
-      !returnedTypeName:"lstring"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName: "nowhere",
+      !obsoleteName: "",
+      !returnedTypeName:"lstring",
       !hasCompilerArgument:false
     )
     enterBaseGetterWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName: "here"
-      !obsoleteName: ""
-      !returnedTypeName:"lstring"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName: "here",
+      !obsoleteName: "",
+      !returnedTypeName:"lstring",
       !hasCompilerArgument:true
     )
     enterBaseGetterWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName: "doesEnvironmentVariableExist"
-      !obsoleteName: ""
-      !returnedTypeName:"bool"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName: "doesEnvironmentVariableExist",
+      !obsoleteName: "",
+      !returnedTypeName:"bool",
       !hasCompilerArgument:false
     )
     enterBaseGetterWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName: "count"
-      !obsoleteName: ""
-      !returnedTypeName:"uint"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName: "count",
+      !obsoleteName: "",
+      !returnedTypeName:"uint",
       !hasCompilerArgument: false
     )
     enterBaseGetterWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName: "range"
-      !obsoleteName: ""
-      !returnedTypeName:"range"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName: "range",
+      !obsoleteName: "",
+      !returnedTypeName:"range",
       !hasCompilerArgument:false
     )
     enterBaseGetterWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName: "utf8RepresentationWithUnicodeEscaping"
-      !obsoleteName: ""
-      !returnedTypeName:"string"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName: "utf8RepresentationWithUnicodeEscaping",
+      !obsoleteName: "",
+      !returnedTypeName:"string",
       !hasCompilerArgument:false
     )
     enterBaseGetterWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName: "assemblerRepresentation"
-      !obsoleteName: ""
-      !returnedTypeName:"string"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName: "assemblerRepresentation",
+      !obsoleteName: "",
+      !returnedTypeName:"string",
       !hasCompilerArgument:false
     )
     enterBaseGetterWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName: "fileNameRepresentation"
-      !obsoleteName: ""
-      !returnedTypeName:"string"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName: "fileNameRepresentation",
+      !obsoleteName: "",
+      !returnedTypeName:"string",
       !hasCompilerArgument:false
     )
     enterBaseGetterWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName: "nameRepresentation"
-      !obsoleteName: ""
-      !returnedTypeName:"string"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName: "nameRepresentation",
+      !obsoleteName: "",
+      !returnedTypeName:"string",
       !hasCompilerArgument:false
     )
     enterBaseGetterWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName: "cStringRepresentation"
-      !obsoleteName: ""
-      !returnedTypeName:"string"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName: "cStringRepresentation",
+      !obsoleteName: "",
+      !returnedTypeName:"string",
       !hasCompilerArgument:false
     )
     enterBaseGetterWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName: "identifierRepresentation"
-      !obsoleteName: ""
-      !returnedTypeName:"string"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName: "identifierRepresentation",
+      !obsoleteName: "",
+      !returnedTypeName:"string",
       !hasCompilerArgument:false
     )
     enterBaseGetterWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName: "decodedStringFromRepresentation"
-      !obsoleteName: ""
-      !returnedTypeName:"string"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName: "decodedStringFromRepresentation",
+      !obsoleteName: "",
+      !returnedTypeName:"string",
       !hasCompilerArgument:true
     )
     enterBaseGetterWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName: "HTMLRepresentation"
-      !obsoleteName: ""
-      !returnedTypeName:"string"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName: "HTMLRepresentation",
+      !obsoleteName: "",
+      !returnedTypeName:"string",
       !hasCompilerArgument:false
     )
     enterBaseGetterWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName: "utf8RepresentationEscapingQuestionMark"
-      !obsoleteName: ""
-      !returnedTypeName: "string"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName: "utf8RepresentationEscapingQuestionMark",
+      !obsoleteName: "",
+      !returnedTypeName: "string",
       !hasCompilerArgument:false
     )
     enterBaseGetterWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName: "utf8Representation"
-      !obsoleteName: ""
-      !returnedTypeName: "string"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName: "utf8Representation",
+      !obsoleteName: "",
+      !returnedTypeName: "string",
       !hasCompilerArgument:false
     )
     enterBaseGetterWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName: "utf8RepresentationWithoutDelimiters"
-      !obsoleteName: ""
-      !returnedTypeName:"string"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName: "utf8RepresentationWithoutDelimiters",
+      !obsoleteName: "",
+      !returnedTypeName:"string",
       !hasCompilerArgument:false
     )
     enterBaseGetterWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName: "utf8Length"
-      !obsoleteName: ""
-      !returnedTypeName:"uint"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName: "utf8Length",
+      !obsoleteName: "",
+      !returnedTypeName:"uint",
       !hasCompilerArgument:false
     )
     enterBaseGetterWithArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName: "utf32Representation"
-      !argSelector: "withZeroTerminator"
-      !argType: "bool"
-      !argName: "inAppendZeroTerminator"
-      !returnedTypeName:"string"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName: "utf32Representation",
+      !argSelector: "withZeroTerminator",
+      !argType: "bool",
+      !argName: "inAppendZeroTerminator",
+      !returnedTypeName:"string",
       !hasCompilerArgument:false
     )
     enterBaseGetterWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName: "trimmingSpaces"
-      !obsoleteName: ""
-      !returnedTypeName:"string"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName: "trimmingSpaces",
+      !obsoleteName: "",
+      !returnedTypeName:"string",
       !hasCompilerArgument:false
     )
     enterBaseGetterWithArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName: "hasPrefix"
-      !argSelector: ""
-      !argType: "string" !argName: "inPrefix"
-      !returnedTypeName: "bool"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName: "hasPrefix",
+      !argSelector: "",
+      !argType: "string", !argName: "inPrefix",
+      !returnedTypeName: "bool",
       !hasCompilerArgument: false
     )
     enterBaseGetterWithArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName: "hasSuffix"
-      !argSelector: ""
-      !argType: "string" !argName: "inSuffix"
-      !returnedTypeName: "bool"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName: "hasSuffix",
+      !argSelector: "",
+      !argType: "string", !argName: "inSuffix",
+      !returnedTypeName: "bool",
       !hasCompilerArgument: false
     )
     enterBaseGetterWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName: "md5"
-      !obsoleteName: ""
-      !returnedTypeName: "string"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName: "md5",
+      !obsoleteName: "",
+      !returnedTypeName: "string",
       !hasCompilerArgument: false
     )
     enterBaseGetterWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName: "sha256"
-      !obsoleteName: ""
-      !returnedTypeName: "string"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName: "sha256",
+      !obsoleteName: "",
+      !returnedTypeName: "string",
       !hasCompilerArgument: false
     )
     enterBaseGetterWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName: "decimalUnsignedNumber"
-      !obsoleteName: ""
-      !returnedTypeName:"uint"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName: "decimalUnsignedNumber",
+      !obsoleteName: "",
+      !returnedTypeName:"uint",
       !hasCompilerArgument:true
     )
     enterBaseGetterWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName: "isDecimalUnsignedNumber"
-      !obsoleteName: ""
-      !returnedTypeName:"bool"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName: "isDecimalUnsignedNumber",
+      !obsoleteName: "",
+      !returnedTypeName:"bool",
       !hasCompilerArgument:false
     )
     enterBaseGetterWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName: "decimalUnsigned64Number"
-      !obsoleteName: ""
-      !returnedTypeName: "uint64"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName: "decimalUnsigned64Number",
+      !obsoleteName: "",
+      !returnedTypeName: "uint64",
       !hasCompilerArgument:true
     )
     enterBaseGetterWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName: "isDecimalUnsigned64Number"
-      !obsoleteName: ""
-      !returnedTypeName: "bool"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName: "isDecimalUnsigned64Number",
+      !obsoleteName: "",
+      !returnedTypeName: "bool",
       !hasCompilerArgument:false
     )
     enterBaseGetterWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName: "decimalSignedNumber"
-      !obsoleteName: ""
-      !returnedTypeName: "sint"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName: "decimalSignedNumber",
+      !obsoleteName: "",
+      !returnedTypeName: "sint",
       !hasCompilerArgument:true
     )
     enterBaseGetterWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName: "isDecimalSignedNumber"
-      !obsoleteName: ""
-      !returnedTypeName: "bool"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName: "isDecimalSignedNumber",
+      !obsoleteName: "",
+      !returnedTypeName: "bool",
       !hasCompilerArgument:false
     )
     enterBaseGetterWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName: "decimalSigned64Number"
-      !obsoleteName: ""
-      !returnedTypeName: "sint64"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName: "decimalSigned64Number",
+      !obsoleteName: "",
+      !returnedTypeName: "sint64",
       !hasCompilerArgument:true
     )
     enterBaseGetterWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName: "isDecimalSigned64Number"
-      !obsoleteName: ""
-      !returnedTypeName: "bool"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName: "isDecimalSigned64Number",
+      !obsoleteName: "",
+      !returnedTypeName: "bool",
       !hasCompilerArgument:false
     )
     enterBaseGetterWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName: "decimalSignedBigInt"
-      !obsoleteName: ""
-      !returnedTypeName: "bigint"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName: "decimalSignedBigInt",
+      !obsoleteName: "",
+      !returnedTypeName: "bigint",
       !hasCompilerArgument: true
     )
     enterBaseGetterWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName: "bigint"
-      !obsoleteName: ""
-      !returnedTypeName: "bigint?"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName: "bigint",
+      !obsoleteName: "",
+      !returnedTypeName: "bigint?",
       !hasCompilerArgument: false
     )
     enterBaseGetterWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName: "isDecimalSignedBigInt"
-      !obsoleteName: ""
-      !returnedTypeName: "bool"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName: "isDecimalSignedBigInt",
+      !obsoleteName: "",
+      !returnedTypeName: "bool",
       !hasCompilerArgument:false
     )
     enterBaseGetterWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName: "isDoubleNumber"
-      !obsoleteName: ""
-      !returnedTypeName: "bool"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName: "isDoubleNumber",
+      !obsoleteName: "",
+      !returnedTypeName: "bool",
       !hasCompilerArgument:false
     )
     enterBaseGetterWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName: "doubleNumber"
-      !obsoleteName: ""
-      !returnedTypeName: "double"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName: "doubleNumber",
+      !obsoleteName: "",
+      !returnedTypeName: "double",
       !hasCompilerArgument:true
     )
     enterBaseGetterWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName: "capacity"
-      !obsoleteName: ""
-      !returnedTypeName: "uint"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName: "capacity",
+      !obsoleteName: "",
+      !returnedTypeName: "uint",
       !hasCompilerArgument:false
     )
     enterBaseGetterWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName: "isSymbolicLink"
-      !obsoleteName: ""
-      !returnedTypeName: "bool"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName: "isSymbolicLink",
+      !obsoleteName: "",
+      !returnedTypeName: "bool",
       !hasCompilerArgument:false
     )
     enterBaseGetterWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName: "fileExists"
-      !obsoleteName: ""
-      !returnedTypeName: "bool"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName: "fileExists",
+      !obsoleteName: "",
+      !returnedTypeName: "bool",
       !hasCompilerArgument:false
     )
     enterBaseGetterWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName: "directoryExists"
-      !obsoleteName: ""
-      !returnedTypeName: "bool"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName: "directoryExists",
+      !obsoleteName: "",
+      !returnedTypeName: "bool",
       !hasCompilerArgument:false
     )
     enterBaseGetterWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName: "pathExtension"
-      !obsoleteName: ""
-      !returnedTypeName:"string"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName: "pathExtension",
+      !obsoleteName: "",
+      !returnedTypeName:"string",
       !hasCompilerArgument:false
     )
     enterBaseGetterWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName: "nativePathWithUnixPath"
-      !obsoleteName: ""
-      !returnedTypeName:"string"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName: "nativePathWithUnixPath",
+      !obsoleteName: "",
+      !returnedTypeName:"string",
       !hasCompilerArgument:false
     )
     enterBaseGetterWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName: "unixPathWithNativePath"
-      !obsoleteName: ""
-      !returnedTypeName:"string"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName: "unixPathWithNativePath",
+      !obsoleteName: "",
+      !returnedTypeName:"string",
       !hasCompilerArgument:false
     )
     enterBaseGetterWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName: "lastPathComponent"
-      !obsoleteName: ""
-      !returnedTypeName:"string"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName: "lastPathComponent",
+      !obsoleteName: "",
+      !returnedTypeName:"string",
       !hasCompilerArgument:false
     )
     enterBaseGetterWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName: "deletingPathExtension"
-      !obsoleteName: ""
-      !returnedTypeName:"string"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName: "deletingPathExtension",
+      !obsoleteName: "",
+      !returnedTypeName:"string",
       !hasCompilerArgument:false
     )
     enterBaseGetterWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName: "capitalizingFirstCharacter"
-      !obsoleteName: ""
-      !returnedTypeName:"string"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName: "capitalizingFirstCharacter",
+      !obsoleteName: "",
+      !returnedTypeName:"string",
       !hasCompilerArgument:false
     )
     enterBaseGetterWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName: "firstCharacterOrNul"
-      !obsoleteName: ""
-      !returnedTypeName:"char"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName: "firstCharacterOrNul",
+      !obsoleteName: "",
+      !returnedTypeName:"char",
       !hasCompilerArgument:false
     )
     enterBaseGetterWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName: "deletingLastPathComponent"
-      !obsoleteName: ""
-      !returnedTypeName:"string"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName: "deletingLastPathComponent",
+      !obsoleteName: "",
+      !returnedTypeName:"string",
       !hasCompilerArgument:false
     )
     enterBaseGetterWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName: "standardizedPath"
-      !obsoleteName: ""
-      !returnedTypeName:"string"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName: "standardizedPath",
+      !obsoleteName: "",
+      !returnedTypeName:"string",
       !hasCompilerArgument:false
     )
     enterBaseGetterWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName: "lowercased"
-      !obsoleteName: ""
-      !returnedTypeName:"string"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName: "lowercased",
+      !obsoleteName: "",
+      !returnedTypeName:"string",
       !hasCompilerArgument:false
     )
     enterBaseGetterWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName: "uppercased"
-      !obsoleteName: ""
-      !returnedTypeName:"string"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName: "uppercased",
+      !obsoleteName: "",
+      !returnedTypeName:"string",
       !hasCompilerArgument:false
     )
     enterBaseGetterWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName: "reversed"
-      !obsoleteName: ""
-      !returnedTypeName:"string"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName: "reversed",
+      !obsoleteName: "",
+      !returnedTypeName:"string",
       !hasCompilerArgument:false
     )
     enterBaseGetterWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName: "currentColumn"
-      !obsoleteName: ""
-      !returnedTypeName:"uint"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName: "currentColumn",
+      !obsoleteName: "",
+      !returnedTypeName:"uint",
       !hasCompilerArgument:false
     )
     enterBaseGetterWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName: "system"
-      !obsoleteName: ""
-      !returnedTypeName:"sint"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName: "system",
+      !obsoleteName: "",
+      !returnedTypeName:"sint",
       !hasCompilerArgument:false
     )
     enterBaseGetterWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName: "popen"
-      !obsoleteName: ""
-      !returnedTypeName:"string"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName: "popen",
+      !obsoleteName: "",
+      !returnedTypeName:"string",
       !hasCompilerArgument:true
     )
     enterBaseGetterWithArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName: "utf8RepresentationEnclosedWithin"
-      !argSelector: ""
-      !argType: "char" !argName: "inCharacter"
-      !returnedTypeName: "string"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName: "utf8RepresentationEnclosedWithin",
+      !argSelector: "",
+      !argType: "char", !argName: "inCharacter",
+      !returnedTypeName: "string",
       !hasCompilerArgument: false
     )
     enterBaseGetterWithArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName: "commandWithArguments"
-      !argSelector: ""
-      !argType: "stringlist" !argName: "inArguments"
-      !returnedTypeName: "sint"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName: "commandWithArguments",
+      !argSelector: "",
+      !argType: "stringlist", !argName: "inArguments",
+      !returnedTypeName: "sint",
       !hasCompilerArgument: true
     )
     enterBaseGetterWithArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName: "hiddenCommandWithArguments"
-      !argSelector: ""
-      !argType: "stringlist" !argName: "inArguments"
-      !returnedTypeName: "string"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName: "hiddenCommandWithArguments",
+      !argSelector: "",
+      !argType: "stringlist", !argName: "inArguments",
+      !returnedTypeName: "string",
       !hasCompilerArgument: true
     )
     enterBaseGetterWithArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName: "characterAtIndex"
-      !argSelector: ""
-      !argType: "uint" !argName: "inIndex"
-      !returnedTypeName:"char"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName: "characterAtIndex",
+      !argSelector: "",
+      !argType: "uint", !argName: "inIndex",
+      !returnedTypeName:"char",
       !hasCompilerArgument:true
     )
     enterBaseGetterWithArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName: "containsCharacter"
-      !argSelector: ""
-      !argType: "char" !argName: "inCharacter"
-      !returnedTypeName:"bool"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName: "containsCharacter",
+      !argSelector: "",
+      !argType: "char", !argName: "inCharacter",
+      !returnedTypeName:"bool",
       !hasCompilerArgument:false
     )
     enterBaseGetterWith2Arguments (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName: "containsCharacterInRange"
-      !arg1Selector: ""
-      !arg1TypeName: "char"
-      !arg1Name: "inFirstCharacter"
-      !arg2Selector: ""
-      !arg2TypeName: "char"
-      !arg2Name: "inLastCharacter"
-      !returnedTypeName:"bool"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName: "containsCharacterInRange",
+      !arg1Selector: "",
+      !arg1TypeName: "char",
+      !arg1Name: "inFirstCharacter",
+      !arg2Selector: "",
+      !arg2TypeName: "char",
+      !arg2Name: "inLastCharacter",
+      !returnedTypeName:"bool",
       !hasCompilerArgument:false
    )
     enterBaseGetterWithArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName: "removingCharacterAtIndex"
-      !argSelector: ""
-      !argType: "uint" !argName: "inIndex"
-      !returnedTypeName:"string"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName: "removingCharacterAtIndex",
+      !argSelector: "",
+      !argType: "uint", !argName: "inIndex",
+      !returnedTypeName:"string",
       !hasCompilerArgument:true
     )
     enterBaseGetterWithArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName: "subStringFromIndex"
-      !argSelector: ""
-      !argType: "uint" !argName: "inIndex"
-      !returnedTypeName:"string"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName: "subStringFromIndex",
+      !argSelector: "",
+      !argType: "uint", !argName: "inIndex",
+      !returnedTypeName:"string",
       !hasCompilerArgument:false
     )
     enterBaseGetterWithArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName: "rightSubString"
-      !argSelector: ""
-      !argType: "uint" !argName: "inLength"
-      !returnedTypeName:"string"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName: "rightSubString",
+      !argSelector: "",
+      !argType: "uint", !argName: "inLength",
+      !returnedTypeName:"string",
       !hasCompilerArgument:false
     )
     enterBaseGetterWithArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName: "leftSubString"
-      !argSelector: ""
-      !argType: "uint" !argName: "inLength"
-      !returnedTypeName:"string"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName: "leftSubString",
+      !argSelector: "",
+      !argType: "uint", !argName: "inLength",
+      !returnedTypeName:"string",
       !hasCompilerArgument:false
     )
     enterBaseGetterWith2Arguments (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName: "subString"
-      !arg1Selector: "" !arg1TypeName: "uint" !arg1Name: "inStart"
-      !arg2Selector: "" !arg2TypeName: "uint" !arg2Name: "inLength"
-      !returnedTypeName:"string"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName: "subString",
+      !arg1Selector: "", !arg1TypeName: "uint", !arg1Name: "inStart",
+      !arg2Selector: "", !arg2TypeName: "uint", !arg2Name: "inLength",
+      !returnedTypeName:"string",
       !hasCompilerArgument:false
     )
     enterBaseGetterWithArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName: "absolutePathFromPath"
-      !argSelector: ""
-      !argType: "string" !argName: "inPath"
-      !returnedTypeName:"string"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName: "absolutePathFromPath",
+      !argSelector: "",
+      !argType: "string", !argName: "inPath",
+      !returnedTypeName:"string",
       !hasCompilerArgument:false
     )
     enterBaseGetterWithArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName: "relativePathFromPath"
-      !argSelector: "" !argType: "string" !argName: "inPath"
-      !returnedTypeName:"string"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName: "relativePathFromPath",
+      !argSelector: "", !argType: "string", !argName: "inPath",
+      !returnedTypeName:"string",
       !hasCompilerArgument:false
     )
     enterBaseGetterWithArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName: "componentsSeparatedByString"
-      !argSelector: "" !argType: "string" !argName: "inSeparator"
-      !returnedTypeName:"stringlist"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName: "componentsSeparatedByString",
+      !argSelector: "", !argType: "string", !argName: "inSeparator",
+      !returnedTypeName:"stringlist",
       !hasCompilerArgument:false
     )
     enterBaseGetterWith2Arguments (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName: "leftPadding"
-      !arg1Selector: "" !arg1TypeName: "uint" !arg1Name: "inPaddedStringLength"
-      !arg2Selector: "" !arg2TypeName: "char" !arg2Name: "inPaddingChar"
-      !returnedTypeName:"string"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName: "leftPadding",
+      !arg1Selector: "", !arg1TypeName: "uint", !arg1Name: "inPaddedStringLength",
+      !arg2Selector: "", !arg2TypeName: "char", !arg2Name: "inPaddingChar",
+      !returnedTypeName:"string",
       !hasCompilerArgument:false
     )
     enterBaseGetterWith2Arguments (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName: "rightPadding"
-      !arg1Selector: "" !arg1TypeName: "uint" !arg1Name: "inPaddedStringLength"
-      !arg2Selector: "" !arg2TypeName: "char" !arg2Name: "inPaddingChar"
-      !returnedTypeName:"string"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName: "rightPadding",
+      !arg1Selector: "", !arg1TypeName: "uint", !arg1Name: "inPaddedStringLength",
+      !arg2Selector: "", !arg2TypeName: "char", !arg2Name: "inPaddingChar",
+      !returnedTypeName:"string",
       !hasCompilerArgument:false
     )
     enterBaseGetterWith2Arguments (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName: "leftAndRightPadding"
-      !arg1Selector: "" !arg1TypeName: "uint" !arg1Name: "inPaddedStringLength"
-      !arg2Selector: "" !arg2TypeName: "char" !arg2Name: "inPaddingChar"
-      !returnedTypeName:"string"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName: "leftAndRightPadding",
+      !arg1Selector: "", !arg1TypeName: "uint", !arg1Name: "inPaddedStringLength",
+      !arg2Selector: "", !arg2TypeName: "char", !arg2Name: "inPaddingChar",
+      !returnedTypeName:"string",
       !hasCompilerArgument:false
     )
     enterBaseGetterWith2Arguments (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName: "replacing"
-      !arg1Selector: "" !arg1TypeName: "string" !arg1Name: "inSearchedString"
-      !arg2Selector: "by" !arg2TypeName: "string" !arg2Name: "inReplacementString"
-      !returnedTypeName:"string"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName: "replacing",
+      !arg1Selector: "", !arg1TypeName: "string", !arg1Name: "inSearchedString",
+      !arg2Selector: "by", !arg2TypeName: "string", !arg2Name: "inReplacementString",
+      !returnedTypeName:"string",
       !hasCompilerArgument:true
     )
     enterBaseGetterWithArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName: "regularFiles"
-      !argSelector: ""
-      !argType: "bool"
-      !argName: "inRecursiveSearch"
-      !returnedTypeName:"stringlist"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName: "regularFiles",
+      !argSelector: "",
+      !argType: "bool",
+      !argName: "inRecursiveSearch",
+      !returnedTypeName:"stringlist",
       !hasCompilerArgument:false
     )
     enterBaseGetterWithArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName: "hiddenFiles"
-      !argSelector: ""
-      !argType: "bool" !argName: "inRecursiveSearch"
-      !returnedTypeName:"stringlist"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName: "hiddenFiles",
+      !argSelector: "",
+      !argType: "bool", !argName: "inRecursiveSearch",
+      !returnedTypeName:"stringlist",
       !hasCompilerArgument:false
     )
     enterBaseGetterWithArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName: "directories"
-      !argSelector: ""
-      !argType: "bool" !argName: "inRecursiveSearch"
-      !returnedTypeName:"stringlist"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName: "directories",
+      !argSelector: "",
+      !argType: "bool", !argName: "inRecursiveSearch",
+      !returnedTypeName:"stringlist",
       !hasCompilerArgument:false
     )
     enterBaseGetterWith2Arguments (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName: "directoriesWithExtensions"
-      !arg1Selector: "" !arg1TypeName: "bool" !arg1Name: "inRecursiveSearch"
-      !arg2Selector: "" !arg2TypeName: "stringlist" !arg2Name: "inExtensionList"
-      !returnedTypeName:"stringlist"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName: "directoriesWithExtensions",
+      !arg1Selector: "", !arg1TypeName: "bool", !arg1Name: "inRecursiveSearch",
+      !arg2Selector: "", !arg2TypeName: "stringlist", !arg2Name: "inExtensionList",
+      !returnedTypeName:"stringlist",
       !hasCompilerArgument:false
     )
     enterBaseGetterWith2Arguments (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName: "regularFilesWithExtensions"
-      !arg1Selector: "" !arg1TypeName: "bool" !arg1Name: "inRecursiveSearch"
-      !arg2Selector: "" !arg2TypeName: "stringlist" !arg2Name: "inExtensionList"
-      !returnedTypeName:"stringlist"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName: "regularFilesWithExtensions",
+      !arg1Selector: "", !arg1TypeName: "bool", !arg1Name: "inRecursiveSearch",
+      !arg2Selector: "", !arg2TypeName: "stringlist", !arg2Name: "inExtensionList",
+      !returnedTypeName:"stringlist",
       !hasCompilerArgument:false
     )
   }

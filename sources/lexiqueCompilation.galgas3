@@ -197,7 +197,7 @@ abstract proc @lexicalSendDefaultActionAST checkLexicalDefaultAction
 
 override proc @lexicalSendTerminalByDefaultAST checkLexicalDefaultAction
   (?!@lexiqueAnalysisContext ioLexiqueAnalysisContext ) {
-  ioLexiqueAnalysisContext.mTerminalMap.searchKey (!self.mDefaultSentTerminal ?*)
+  ioLexiqueAnalysisContext.mTerminalMap.searchKey (!self.mDefaultSentTerminal, ?*)
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -205,7 +205,7 @@ override proc @lexicalSendTerminalByDefaultAST checkLexicalDefaultAction
 override proc @lexicalErrorByDefaultAST checkLexicalDefaultAction
   (?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
 ) {
-  !?ioLexiqueAnalysisContext.mLexicalMessageMap.setMMessageIsUsedForKey (!true !self.mDefaultErrorMessageName.string)
+  !?ioLexiqueAnalysisContext.mLexicalMessageMap.setMMessageIsUsedForKey (!true, !self.mDefaultErrorMessageName.string)
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -257,7 +257,7 @@ override proc @lexicalStringMatchAST checkLexicalExpression
 override proc @lexicalStringNotMatchAST checkLexicalExpression
   (?!@lexiqueAnalysisContext ioLexiqueAnalysisContext ) {
   ioLexiqueAnalysisContext.mUnicodeStringToGenerate ++= self.mString.string
-  !?ioLexiqueAnalysisContext.mLexicalMessageMap.setMMessageIsUsedForKey (!true !self.mErrorMessage.string)
+  !?ioLexiqueAnalysisContext.mLexicalMessageMap.setMMessageIsUsedForKey (!true, !self.mErrorMessage.string)
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -275,7 +275,7 @@ override proc @lexicalAttributeInputArgumentAST checkLexicalFunctionCallArgument
   ?@lexicalTypeEnum inLexicalRoutineFormalArgumentType ) {
 //--- Check attribute definition
   ioLexiqueAnalysisContext.mLexicalAttributeMap.searchKey
-    (!self.mAttributeName
+    (!self.mAttributeName,
     ?let attributeLexicalType
   )
 //--- Type check
@@ -341,10 +341,10 @@ override proc @lexicalFunctionInputArgumentAST checkLexicalFunctionCallArgument
   ?@lexicalTypeEnum inLexicalRoutineFormalArgumentType ) {
 //--- Check attribute definition
   ioLexiqueAnalysisContext.mLexicalFunctionMap.searchKey
-    (!self.mFunctionName
-    ?let lexicalFormalTypeList
-    ?let returnedLexicalFormalType
-    ?let replacementFunctionName
+    (!self.mFunctionName,
+    ?let lexicalFormalTypeList,
+    ?let returnedLexicalFormalType,
+    ?let replacementFunctionName,
     ?*
   )
 //--- Obsolete function ?
@@ -371,7 +371,7 @@ override proc @lexicalFunctionInputArgumentAST checkLexicalFunctionCallArgument
 //--- Check actual argument against formal parameters
   for (mLexicalType *) in lexicalFormalTypeList, (mLexicalActualInputArgument) in self.mFunctionActualArgumentList do
     mLexicalActualInputArgument.checkLexicalFunctionCallArgument
-      (!?ioLexiqueAnalysisContext
+      (!?ioLexiqueAnalysisContext,
       !mLexicalType
     )
   end
@@ -392,7 +392,7 @@ override proc @lexicalAttributeInputArgumentAST checkLexicalRoutineCallArgument
   ?@lexicalTypeEnum inLexicalRoutineFormalArgumentType ) {
 //--- Check attribute definition
   ioLexiqueAnalysisContext.mLexicalAttributeMap.searchKey
-    (!self.mAttributeName
+    (!self.mAttributeName,
     ?let attributeLexicalType
   )
 //--- Type check
@@ -458,10 +458,10 @@ override proc @lexicalFunctionInputArgumentAST checkLexicalRoutineCallArgument
   ?@lexicalTypeEnum inLexicalRoutineFormalArgumentType ) {
 //--- Check attribute definition
   ioLexiqueAnalysisContext.mLexicalFunctionMap.searchKey
-    (!self.mFunctionName
-    ?let lexicalFormalTypeList
-    ?let returnedLexicalFormalType
-    ?let replacementFunctionName
+    (!self.mFunctionName,
+    ?let lexicalFormalTypeList,
+    ?let returnedLexicalFormalType,
+    ?let replacementFunctionName,
     ?*
   )
 //--- Obsolete function ?
@@ -488,7 +488,7 @@ override proc @lexicalFunctionInputArgumentAST checkLexicalRoutineCallArgument
 //--- Check actual argument against formal parameters
   for (mLexicalType *) in lexicalFormalTypeList, (mLexicalActualInputArgument) in self.mFunctionActualArgumentList do
     mLexicalActualInputArgument.checkLexicalFunctionCallArgument
-      (!?ioLexiqueAnalysisContext
+      (!?ioLexiqueAnalysisContext,
       !mLexicalType
     )
   end
@@ -513,7 +513,7 @@ abstract proc @abstractLexicalRuleAST checkLexicalRule
 
 override proc @lexicalImplicitRuleAST checkLexicalRule
   (?!@lexiqueAnalysisContext ioLexiqueAnalysisContext ) {
-  ioLexiqueAnalysisContext.mLexicalTokenListMap.searchKey (!self.mListName ?* ?* ?*)
+  ioLexiqueAnalysisContext.mLexicalTokenListMap.searchKey (!self.mListName, ?*, ?*, ?*)
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -523,7 +523,7 @@ override proc @lexicalExplicitRuleAST checkLexicalRule
   self.mLexicalRuleExpression.checkLexicalExpression (!?ioLexiqueAnalysisContext)
   var @lexicalTagMap tagMap = @()
   for (mInstruction) in self.mInstructionList do
-    mInstruction.checkLexicalInstruction (!?ioLexiqueAnalysisContext !?tagMap)
+    mInstruction.checkLexicalInstruction (!?ioLexiqueAnalysisContext, !?tagMap)
   end
 }
 

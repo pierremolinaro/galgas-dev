@@ -36,7 +36,7 @@ syntax logo_syntax (logo_lexique) {
     or
       $CALL$
       $identifier$ ?let @lstring routineName indexing routineCall
-      ioTableRoutines.searchKey (!routineName ?let routineContent)
+      ioTableRoutines.searchKey (!routineName, ?let routineContent)
       for i in routineContent do
         il += !i.mInstruction
       end
@@ -49,7 +49,7 @@ syntax logo_syntax (logo_lexique) {
   rule <instruction_list> (?!@routineMap ioTableRoutines ,?!@instructionList il ) {
     repeat
     while
-      <instruction> (!? ioTableRoutines !? il)
+      <instruction> (!? ioTableRoutines, !? il)
     end
   }
 
@@ -60,10 +60,10 @@ syntax logo_syntax (logo_lexique) {
     $identifier$ ?let @lstring routineName indexing routineDefinition
     $BEGIN$
     var @instructionList il = @()
-    <instruction_list> (!? ioTableRoutines !? il)
+    <instruction_list> (!? ioTableRoutines, !? il)
     $END$
   //--- Insertion dans la table
-    !?ioTableRoutines.insertKey (!routineName !il)
+    !?ioTableRoutines.insertKey (!routineName, !il)
   }
 
   //----------------------------------------------------------------------------------------------
@@ -79,7 +79,7 @@ syntax logo_syntax (logo_lexique) {
     end
   //--- Programme principal
     $BEGIN$
-    <instruction_list> (!? tableRoutines !? instructions)
+    <instruction_list> (!? tableRoutines, !? instructions)
     $END$
     $.$
   //--- Compute SVG instructions
@@ -89,7 +89,7 @@ syntax logo_syntax (logo_lexique) {
     var @double angle = 0.0 // Angle en degrés
     var @string SVG = ""
     for i in instructions do
-      i.mInstruction.codeDisplay (!?pendown !?x !?y !?angle !?SVG)
+      i.mInstruction.codeDisplay (!?pendown, !?x, !?y, !?angle, !?SVG)
     end
   //--- Output file
     let @string sourceFilePath = @string.stringWithSourceFilePath

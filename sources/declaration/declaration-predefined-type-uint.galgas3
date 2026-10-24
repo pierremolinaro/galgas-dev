@@ -48,49 +48,49 @@ final class @uintPredefinedTypeAST : @predefinedTypeAST {
                                       !@classFunctionMap outMap ) {
     outMap = @()
     enterClassFunctionWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !name:"compilationMode"
-      !resultTypeName:"uint"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !name:"compilationMode",
+      !resultTypeName:"uint",
       !hasLexiqueArg:false
     )
     enterClassFunctionWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !name:"random"
-      !resultTypeName:"uint"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !name:"random",
+      !resultTypeName:"uint",
       !hasLexiqueArg:false
     )
     enterClassFunctionWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !name:"max"
-      !resultTypeName:"uint"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !name:"max",
+      !resultTypeName:"uint",
       !hasLexiqueArg:false
     )
     enterClassFunctionWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !name:"errorCount"
-      !resultTypeName:"uint"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !name:"errorCount",
+      !resultTypeName:"uint",
       !hasLexiqueArg:false
     )
     enterClassFunctionWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !name:"warningCount"
-      !resultTypeName:"uint"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !name:"warningCount",
+      !resultTypeName:"uint",
       !hasLexiqueArg:false
     )
     enterClassFunctionWith2Arguments (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !name:"valueWithMask"
-      !argTypeName1:"uint"
-      !argName1:"inLowerIndex"
-      !argTypeName2:"uint"
-      !argName2:"inUpperIndex"
-      !resultTypeName:"uint"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !name:"valueWithMask",
+      !argTypeName1:"uint",
+      !argName1:"inLowerIndex",
+      !argTypeName2:"uint",
+      !argName2:"inUpperIndex",
+      !resultTypeName:"uint",
       !hasLexiqueArg:true
     )
   }
@@ -99,156 +99,156 @@ final class @uintPredefinedTypeAST : @predefinedTypeAST {
 
   override proc getGetterMap (?!@unifiedTypeMap ioUnifiedTypeMap,
                                !@getterMap outMap ) {
-    commonGetterMapForAllTypes (!?ioUnifiedTypeMap ?outMap)
+    commonGetterMapForAllTypes (!?ioUnifiedTypeMap, ?outMap)
     enterBaseFinalGetterWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName:"double"
-      !obsoleteName: ""
-      !returnedTypeName:"double"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName:"double",
+      !obsoleteName: "",
+      !returnedTypeName:"double",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName:"sint"
-      !obsoleteName: ""
-      !returnedTypeName:"sint"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName:"sint",
+      !obsoleteName: "",
+      !returnedTypeName:"sint",
       !hasCompilerArgument:true
     )
     enterBaseFinalGetterWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName:"sint64"
-      !obsoleteName: ""
-      !returnedTypeName:"sint64"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName:"sint64",
+      !obsoleteName: "",
+      !returnedTypeName:"sint64",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName:"bigint"
-      !obsoleteName: ""
-      !returnedTypeName:"bigint"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName:"bigint",
+      !obsoleteName: "",
+      !returnedTypeName:"bigint",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName:"uint64"
-      !obsoleteName: ""
-      !returnedTypeName:"uint64"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName:"uint64",
+      !obsoleteName: "",
+      !returnedTypeName:"uint64",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName:"lsbIndex"
-      !obsoleteName: ""
-      !returnedTypeName:"uint"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName:"lsbIndex",
+      !obsoleteName: "",
+      !returnedTypeName:"uint",
       !hasCompilerArgument:true
     )
     enterBaseFinalGetterWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName:"significantBitCount"
-      !obsoleteName: ""
-      !returnedTypeName:"uint"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName:"significantBitCount",
+      !obsoleteName: "",
+      !returnedTypeName:"uint",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName:"oneBitCount"
-      !obsoleteName: ""
-      !returnedTypeName:"uint"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName:"oneBitCount",
+      !obsoleteName: "",
+      !returnedTypeName:"uint",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName:"string"
-      !obsoleteName: ""
-      !returnedTypeName:"string"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName:"string",
+      !obsoleteName: "",
+      !returnedTypeName:"string",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName:"alphaString"
-      !obsoleteName: ""
-      !returnedTypeName:"string"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName:"alphaString",
+      !obsoleteName: "",
+      !returnedTypeName:"string",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName:"hexString"
-      !obsoleteName: ""
-      !returnedTypeName:"string"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName:"hexString",
+      !obsoleteName: "",
+      !returnedTypeName:"string",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWith2Arguments (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName:"hexStringSeparatedBy"
-      !"char"
-      !"inSeparator"
-      !"uint"
-      !"inGroupCount"
-      !returnedTypeName:"string"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName:"hexStringSeparatedBy",
+      !"char",
+      !"inSeparator",
+      !"uint",
+      !"inGroupCount",
+      !returnedTypeName:"string",
       !hasCompilerArgument:true
     )
     enterBaseFinalGetterWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName:"xString"
-      !obsoleteName: ""
-      !returnedTypeName:"string"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName:"xString",
+      !obsoleteName: "",
+      !returnedTypeName:"string",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName:"isUnicodeValueAssigned"
-      !obsoleteName: ""
-      !returnedTypeName:"bool"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName:"isUnicodeValueAssigned",
+      !obsoleteName: "",
+      !returnedTypeName:"bool",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWithArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName:"isInRange" !"range" !"inRange"
-      !returnedTypeName:"bool"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName:"isInRange", !"range", !"inRange",
+      !returnedTypeName:"bool",
       !hasCompilerArgument:false
     )
 
     enterBaseFinalGetterWithArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName:"canAdd" !"uint" !"inOperand"
-      !returnedTypeName:"bool"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName:"canAdd", !"uint", !"inOperand",
+      !returnedTypeName:"bool",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWithArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName:"canSubstract" !"uint" !"inOperand"
-      !returnedTypeName:"bool"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName:"canSubstract", !"uint", !"inOperand",
+      !returnedTypeName:"bool",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWithArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName:"canMultiply" !"uint" !"inOperand"
-      !returnedTypeName:"bool"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName:"canMultiply", !"uint", !"inOperand",
+      !returnedTypeName:"bool",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWithArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName:"canDivide" !"uint" !"inOperand"
-      !returnedTypeName:"bool"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName:"canDivide", !"uint", !"inOperand",
+      !returnedTypeName:"bool",
       !hasCompilerArgument:false
     )
   }
@@ -259,11 +259,11 @@ final class @uintPredefinedTypeAST : @predefinedTypeAST {
                                     !@classMethodMap outClassMethodMap ) {
     outClassMethodMap = @()
     enterClassMethodWithInputArgument (
-      !?outClassMethodMap
-      !?ioUnifiedTypeMap
-      !methodName:"setRandomSeed"
-      !argType:"uint"
-      !argName:"inSeed"
+      !?outClassMethodMap,
+      !?ioUnifiedTypeMap,
+      !methodName:"setRandomSeed",
+      !argType:"uint",
+      !argName:"inSeed",
       !compilerArgument:false
     )
   }

@@ -13,9 +13,9 @@ case . "XMLParsing"
 message "an XML text file with the .XMLParsing extension"
 ?sourceFilePath:@lstring inSourceFile {
   grammar xml_parsing_grammar (
-    ?let rootNodes
-    !true // Include comments
-    !false // Condense White spaces
+    ?let rootNodes,
+    !true, // Include comments
+    !false, // Condense White spaces
     !true
   ) in inSourceFile
   log rootNodes

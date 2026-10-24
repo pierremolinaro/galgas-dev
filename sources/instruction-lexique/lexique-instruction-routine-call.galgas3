@@ -182,7 +182,7 @@ override proc @lexicalAttributeInputOutputArgumentAST checkLexicalRoutineCallArg
   ?@lexicalTypeEnum inLexicalRoutineFormalArgumentType) {
 //--- Check attribute definition
   ioLexiqueAnalysisContext.mLexicalAttributeMap.searchKey
-    (!self.mAttributeName
+    (!self.mAttributeName,
     ?let attributeLexicalType
   )
 //--- Type check
@@ -208,7 +208,7 @@ override proc @lexicalFormalInputArgumentAST checkLexicalRoutineCallArgument (
   ?@lexicalTypeEnum inLexicalRoutineFormalArgumentType) {
 //--- Check attribute definition
   self.mRoutineOrFunctionFormalInputArgument.checkLexicalRoutineCallArgument
-    (!?ioLexiqueAnalysisContext
+    (!?ioLexiqueAnalysisContext,
     !inLexicalRoutineFormalArgumentType
   )
 //--- Passing mode check
@@ -223,9 +223,9 @@ override proc @lexicalRoutineCallInstructionAST checkLexicalInstruction (
                          ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext,
                          ?!@lexicalTagMap unused ioTagMap) {
   ioLexiqueAnalysisContext.mLexicalRoutineMessageMap.searchKey
-    (!self.mRoutineName
-    ?let lexicalRoutineFormalArgumentList
-    ?let routineErrorMessageList
+    (!self.mRoutineName,
+    ?let lexicalRoutineFormalArgumentList,
+    ?let routineErrorMessageList,
     ?*
   )
 //--- Check actual argument count
@@ -239,8 +239,8 @@ override proc @lexicalRoutineCallInstructionAST checkLexicalInstruction (
 //--- Check actual argument against formal parameters
   for (mLexicalFormalArgumentMode mLexicalFormalArgumentType *) in lexicalRoutineFormalArgumentList, (mLexicalRoutineActualArgument) in self.mActualArgumentList do
     mLexicalRoutineActualArgument.checkLexicalRoutineCallArgument
-      (!?ioLexiqueAnalysisContext
-      !mLexicalFormalArgumentMode
+      (!?ioLexiqueAnalysisContext,
+      !mLexicalFormalArgumentMode,
       !mLexicalFormalArgumentType
     )
   end

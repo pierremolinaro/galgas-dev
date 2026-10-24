@@ -26,13 +26,13 @@ abstract proc @declarationAST buildGraph
 
 override proc @classWithoutSuperClassAST buildGraph
   (?!@inheritanceGraph ioGraph ) {
-  !?ioGraph.addNode (!self.mClassName !self)
+  !?ioGraph.addNode (!self.mClassName, !self)
 }
 
 override proc @classWithSuperClassAST buildGraph
   (?!@inheritanceGraph ioGraph ) {
-  !?ioGraph.addNode (!self.mClassName !self)
-  !?ioGraph.addEdge (!from: self.mClassName !to: self.mSuperClassName)
+  !?ioGraph.addNode (!self.mClassName, !self)
+  !?ioGraph.addEdge (!from: self.mClassName, !to: self.mSuperClassName)
 }
 
 

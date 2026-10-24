@@ -58,37 +58,37 @@ final class @stringsetPredefinedTypeAST : @predefinedTypeAST {
                                       !@classFunctionMap outMap ) {
     outMap = @()
     enterClassFunctionWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !name:"emptySet"
-      !resultTypeName:"stringset"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !name:"emptySet",
+      !resultTypeName:"stringset",
       !hasLexiqueArg:false
     )
     enterClassFunctionWithArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !name:"setWithString"
-      !argTypeName:"string"
-      !argName:"inString"
-      !resultTypeName:"stringset"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !name:"setWithString",
+      !argTypeName:"string",
+      !argName:"inString",
+      !resultTypeName:"stringset",
       !hasLexiqueArg:false
     )
     enterClassFunctionWithArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !name:"setWithStringList"
-      !argTypeName:"stringlist"
-      !argName:"inStringList"
-      !resultTypeName:"stringset"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !name:"setWithStringList",
+      !argTypeName:"stringlist",
+      !argName:"inStringList",
+      !resultTypeName:"stringset",
       !hasLexiqueArg:false
     )
     enterClassFunctionWithArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !name:"setWithLStringList"
-      !argTypeName:"lstringlist"
-      !argName:"inLStringList"
-      !resultTypeName:"stringset"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !name:"setWithLStringList",
+      !argTypeName:"lstringlist",
+      !argName:"inLStringList",
+      !resultTypeName:"stringset",
       !hasLexiqueArg:false
     )
   }
@@ -97,22 +97,22 @@ final class @stringsetPredefinedTypeAST : @predefinedTypeAST {
 
   override proc getSetterMap (?!@unifiedTypeMap ioUnifiedTypeMap,
                                !@setterMap outSetterMap ) {
-    !?ioUnifiedTypeMap.makeEntryFromString (!"string" ?let stringType)
+    !?ioUnifiedTypeMap.makeEntryFromString (!"string", ?let stringType)
     outSetterMap = @()
     !?outSetterMap.insertKey
-      (!@lstring {!"removeKey" !@location.here}
-      !@methodKind. definedAsMember
-      !@formalParameterSignature.listWithValue {!"".nowhere !stringType !.argumentVarIn !"inKey"}
-      !false // No Compiler argument
-      !@methodQualifier. isBasic
+      (!@lstring {!"removeKey" !@location.here},
+      !@methodKind. definedAsMember,
+      !@formalParameterSignature.listWithValue {!"".nowhere !stringType !.argumentVarIn !"inKey"},
+      !false, // No Compiler argument
+      !@methodQualifier. isBasic,
       !""
     )
     enterModifierWithInputArgument (
-      !?outSetterMap
-      !?ioUnifiedTypeMap
-      !argTypeName: "string"
-      !argName: "inValue"
-      !setterName: "insert"
+      !?outSetterMap,
+      !?ioUnifiedTypeMap,
+      !argTypeName: "string",
+      !argName: "inValue",
+      !setterName: "insert",
       !compilerArg: true
     )
   }
@@ -122,7 +122,7 @@ final class @stringsetPredefinedTypeAST : @predefinedTypeAST {
   override proc getEnumerationList (?!@unifiedTypeMap ioUnifiedTypeMap,
                                      !@enumerationDescriptorList outEnumerationList,
                                      !@string outEnumeratedType ) {
-    !?ioUnifiedTypeMap.makeEntryFromString (!"string" ?let stringTypeIndex)
+    !?ioUnifiedTypeMap.makeEntryFromString (!"string", ?let stringTypeIndex)
     outEnumerationList = @()
     outEnumerationList += !stringTypeIndex !"key"
     outEnumeratedType = "string"
@@ -132,7 +132,7 @@ final class @stringsetPredefinedTypeAST : @predefinedTypeAST {
 
   override proc getAddAssignArgumentList (?!@unifiedTypeMap ioUnifiedTypeMap,
                                            !@functionSignature outAddAssignArgumentList ) {
-    !?ioUnifiedTypeMap.makeEntryFromString (!"stringset" ?let @unifiedTypeMapEntry stringTypeIndex)
+    !?ioUnifiedTypeMap.makeEntryFromString (!"stringset", ?let @unifiedTypeMapEntry stringTypeIndex)
     outAddAssignArgumentList = @[@("".nowhere, stringTypeIndex, "inString", true)]
   }
 
@@ -140,36 +140,36 @@ final class @stringsetPredefinedTypeAST : @predefinedTypeAST {
 
   override proc getGetterMap (?!@unifiedTypeMap ioUnifiedTypeMap,
                                !@getterMap outMap ) {
-    commonGetterMapForAllTypes (!?ioUnifiedTypeMap ?outMap)
+    commonGetterMapForAllTypes (!?ioUnifiedTypeMap, ?outMap)
     enterBaseFinalGetterWithArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName:"hasKey" !"string" !"inString"
-      !returnedTypeName:"bool"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName:"hasKey", !"string", !"inString",
+      !returnedTypeName:"bool",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName:"count"
-      !obsoleteName: ""
-      !returnedTypeName:"uint"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName:"count",
+      !obsoleteName: "",
+      !returnedTypeName:"uint",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName:"anyString"
-      !obsoleteName: ""
-      !returnedTypeName:"string"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName:"anyString",
+      !obsoleteName: "",
+      !returnedTypeName:"string",
       !hasCompilerArgument:true
     )
     enterBaseFinalGetterWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName:"stringList"
-      !obsoleteName: ""
-      !returnedTypeName:"stringlist"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName:"stringList",
+      !obsoleteName: "",
+      !returnedTypeName:"stringlist",
       !hasCompilerArgument:false
     )
   }

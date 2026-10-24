@@ -35,10 +35,10 @@ proc generateInstructionList
   !?ioGeneratedCode.incIndentation (!2)
   for element in inInstructionList do
     element.mInstruction.generateInstruction
-      (!?ioInclusionSet
-      !?ioTemporaryVariableIndex
-      !?ioUnusedVariableCppNameSet
-      !inGenerateSyntaxDirectedTranslationString
+      (!?ioInclusionSet,
+      !?ioTemporaryVariableIndex,
+      !?ioUnusedVariableCppNameSet,
+      !inGenerateSyntaxDirectedTranslationString,
       !?ioGeneratedCode
     )
   end

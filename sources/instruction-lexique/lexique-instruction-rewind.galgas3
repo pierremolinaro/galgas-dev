@@ -71,7 +71,7 @@ override proc @lexicalRewindInstructionAST checkLexicalInstruction (
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext,
   ?!@lexicalTagMap ioTagMap) {
   ioTagMap.searchKey (!self.mLexicalTagName)
-  ioLexiqueAnalysisContext.mTerminalMap.searchKey (!self.mTerminalName ?*)
+  ioLexiqueAnalysisContext.mTerminalMap.searchKey (!self.mTerminalName, ?*)
 }
 
 //--------------------------------------------------------------------------------------------------

@@ -70,15 +70,15 @@ proc analyzeSemanticInstructionList
   !?ioVariableMap.openBranch ()
 //---
   analyzeSemanticInstructionListWithoutBranch (
-    !inUsefulnessCallerEntityName
-    !?ioUsefulEntitiesGraph
-    !inAnalysisContext
-    !?ioTypeMap
-    !localConstantList: inLocalConstantList
-    !localInitializedVariableListWarnsIfNotMutated: inLocalInitializedVariableList
-    !localInitializedVariableListNoWarnsIfNotMutated: inLocalInitializedVariableListNoWarns
-    !inSemanticInstructionListAST
-    !?ioVariableMap
+    !inUsefulnessCallerEntityName,
+    !?ioUsefulEntitiesGraph,
+    !inAnalysisContext,
+    !?ioTypeMap,
+    !localConstantList: inLocalConstantList,
+    !localInitializedVariableListWarnsIfNotMutated: inLocalInitializedVariableList,
+    !localInitializedVariableListNoWarnsIfNotMutated: inLocalInitializedVariableListNoWarns,
+    !inSemanticInstructionListAST,
+    !?ioVariableMap,
     ?outInstructionListForGeneration
   )
 //--- Branch end
@@ -103,26 +103,26 @@ proc analyzeSemanticInstructionListWithoutBranch
 //--- Declare local constants
   for (mType mName mNoWarningIfUnused mCppName) in inLocalConstantList do
     if mNoWarningIfUnused then
-      !?ioVariableMap.insertUsedLocalConstant (!mName !mType !mCppName !mCppName)
+      !?ioVariableMap.insertUsedLocalConstant (!mName, !mType, !mCppName, !mCppName)
     else
-      !?ioVariableMap.insertInitializedLocalConstant (!mName !mType !mCppName !mCppName)
+      !?ioVariableMap.insertInitializedLocalConstant (!mName, !mType, !mCppName, !mCppName)
     end
   end
 //--- Declare local variables
   for (mType mName mCppName) in inLocalInitializedVariableList do
-    !?ioVariableMap.insertInitializedLocalVariable (!mName !warnsIfNotMutated: true !mType !mCppName !mCppName)
+    !?ioVariableMap.insertInitializedLocalVariable (!mName, !warnsIfNotMutated: true, !mType, !mCppName, !mCppName)
   end
   for (mType mName mCppName) in inLocalInitializedVariableListNoWarns do
-    !?ioVariableMap.insertInitializedLocalVariable (!mName !warnsIfNotMutated: false !mType !mCppName !mCppName)
+    !?ioVariableMap.insertInitializedLocalVariable (!mName, !warnsIfNotMutated: false, !mType, !mCppName, !mCppName)
   end
 //--- Instruction list
   for (mInstruction) in inSemanticInstructionListAST do
     mInstruction.analyzeSemanticInstruction
-      (!inUsefulnessCallerEntityName
-      !?ioUsefulEntitiesGraph
-      !inAnalysisContext
-      !?ioTypeMap
-      !?outInstructionListForGeneration
+      (!inUsefulnessCallerEntityName,
+      !?ioUsefulEntitiesGraph,
+      !inAnalysisContext,
+      !?ioTypeMap,
+      !?outInstructionListForGeneration,
       !?ioVariableMap
     )
   end
@@ -154,12 +154,12 @@ proc checkExpressionIsBoolean
   elsif expressionType.definition.typeKind == .structType then
     if [expressionType.definition.propertyMap hasKey !"bool"] then
       expressionType.definition.propertyMap.searchKey
-        (!@lstring {!"bool" !inErrorLocation}
-        ?let accessControl
-        ?*
+        (!@lstring {!"bool" !inErrorLocation},
+        ?let accessControl,
+        ?*,
         ?let @unifiedTypeMapEntry attributeType
       )
-      accessControl.checkSetAccess (!inAnalysisContext.selfAvailability !inErrorLocation)
+      accessControl.checkSetAccess (!inAnalysisContext.selfAvailability, !inErrorLocation)
       if attributeType == boolType then
         outExpression = @propertyAccessExpressionForGeneration {
           !boolType
@@ -258,7 +258,7 @@ override proc @grammarInstructionSyntaxDirectedTranslationResultInVar  analyzeGr
   if not inHasTranslateFeature then
     error (self.mActualParameterName : "the ':>' construct requires the grammar to be declared with 'translate' feature")
   end
-  !?ioVariableMap.searchForWriteAccess (!self.mActualParameterName ?let @unifiedTypeMapEntry type ?let @string cppName ?*)
+  !?ioVariableMap.searchForWriteAccess (!self.mActualParameterName, ?let @unifiedTypeMapEntry type, ?let @string cppName, ?*)
   let expectedType = inAnalysisContext.predefinedTypes.mStringType
   if expectedType != type then
     error (self.mActualParameterName
@@ -282,7 +282,7 @@ override proc @grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar  a
   end
   let cppName = "var_" + self.mActualParameterName.string.identifierRepresentation + "_" + self.mActualParameterName.location.startLocationIndex
   let type = [ioTypeMap typeMapEntryForLKey !self.mActualParameterTypeName]
-  !?ioVariableMap.insertInitializedLocalVariable (!self.mActualParameterName !warnsIfNotMutated: true !type !cppName !cppName)
+  !?ioVariableMap.insertInitializedLocalVariable (!self.mActualParameterName, !warnsIfNotMutated: true, !type, !cppName, !cppName)
   let expectedType = inAnalysisContext.predefinedTypes.mStringType
   if expectedType != type then
     error (self.mActualParameterName
@@ -306,7 +306,7 @@ override proc @grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst 
   end
   let cppName = "var_" + self.mActualParameterName.string.identifierRepresentation + "_" + self.mActualParameterName.location.startLocationIndex
   let type = [ioTypeMap typeMapEntryForLKey !self.mActualParameterTypeName]
-  !?ioVariableMap.insertInitializedLocalConstant (!self.mActualParameterName !type !cppName !cppName)
+  !?ioVariableMap.insertInitializedLocalConstant (!self.mActualParameterName, !type, !cppName, !cppName)
   let expectedType = inAnalysisContext.predefinedTypes.mStringType
   if expectedType != type then
     error (self.mActualParameterName

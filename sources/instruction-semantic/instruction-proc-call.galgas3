@@ -16,31 +16,6 @@
 // DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //--------------------------------------------------------------------------------------------------
-//! SYNTAX
-//--------------------------------------------------------------------------------------------------
-
-syntax extension galgas3InstructionsSyntax {
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-//  rule <semantic_instruction_ggs3> (?!@galgasDeclarationAST ioDeclarations,
-//                                    !@semanticInstructionAST outInstruction) {
-//    $identifier$ ?let mRoutineName indexing routineCall
-//    $($
-//    <actual_parameter_list_ggs3> (!?ioDeclarations ?let @actualParameterListAST actualParameterList)
-//    $)$
-//    outInstruction = @procCallInstructionAST {
-//      !mRoutineName.location
-//      !mRoutineName
-//      !actualParameterList
-//    }
-//  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-}
-
-//--------------------------------------------------------------------------------------------------
 //! Class
 //--------------------------------------------------------------------------------------------------
 
@@ -66,15 +41,15 @@ final class @procCallInstructionAST : @semanticInstructionAST {
                                               ?!@localVarManager ioVariableMap) {
    //--- Get routine signature
     inAnalysisContext.semanticContext.routineMap.searchKey
-       (!self.mRoutineName
-       !actualParameters: self.mActualParameterList
-       ?let @formalParameterSignature routineSignature
-       ?isFilePrivate: let @bool isFilePrivate
+       (!self.mRoutineName,
+       !actualParameters: self.mActualParameterList,
+       ?let @formalParameterSignature routineSignature,
+       ?isFilePrivate: let @bool isFilePrivate,
        ?routineMangledName: let routineMangledName
      )
   //--- Usefulness
     let usefulnessName = procedureNameForUsefulEntitiesGraph (!routineMangledName)
-    !?ioUsefulEntitiesGraph.addEdge (!from: inUsefulnessCallerEntityName !to: usefulnessName)
+    !?ioUsefulEntitiesGraph.addEdge (!from: inUsefulnessCallerEntityName, !to: usefulnessName)
   //--- Check internal
     if isFilePrivate then
       let procDeclarationLocation = [inAnalysisContext.semanticContext.routineMap locationForKey !self.mRoutineName.string]
@@ -84,15 +59,15 @@ final class @procCallInstructionAST : @semanticInstructionAST {
     end
   //--- Check effective parameters
     self.mActualParameterList.analyzeRoutineArguments
-      (!inUsefulnessCallerEntityName
-      !?ioUsefulEntitiesGraph
-      !inAnalysisContext
-      !?ioTypeMap
-      !self.mRoutineName
-      !invokedEntityNameForErrorSignaling: "'" + routineMangledName + "' routine header"
-      !routineSignature
-      !?ioVariableMap
-      !?ioInstructionListForGeneration
+      (!inUsefulnessCallerEntityName,
+      !?ioUsefulEntitiesGraph,
+      !inAnalysisContext,
+      !?ioTypeMap,
+      !self.mRoutineName,
+      !invokedEntityNameForErrorSignaling: "'" + routineMangledName + "' routine header",
+      !routineSignature,
+      !?ioVariableMap,
+      !?ioInstructionListForGeneration,
       ?let @actualParameterListForGeneration actualParameterListForGeneration
     )
   //--- Generate instruction
@@ -129,12 +104,12 @@ final class @procCallInstructionForGeneration : @semanticInstructionForGeneratio
     var @stringlist inputVariableList = @()
     for (actualParameter) in self.mActualParameterList do
       actualParameter.generateActualParameter
-        (!?ioInclusionSet
-        !?ioTemporaryVariableIndex
-        !?ioGeneratedCode
-        !?jokerParametersToReleaseList
-        !?inputVariableList
-        !?ioUnusedVariableCppNameSet
+        (!?ioInclusionSet,
+        !?ioTemporaryVariableIndex,
+        !?ioGeneratedCode,
+        !?jokerParametersToReleaseList,
+        !?inputVariableList,
+        !?ioUnusedVariableCppNameSet,
         ?let parameterCppName
       )
       parameterCppNameList += !parameterCppName
@@ -150,7 +125,7 @@ final class @procCallInstructionForGeneration : @semanticInstructionForGeneratio
   //--- Generate poisoned variables
     for (actualParameter) in self.mActualParameterList do
       actualParameter.generatePoisonedVariables
-        (!?ioGeneratedCode
+        (!?ioGeneratedCode,
         !?ioUnusedVariableCppNameSet
       )
     end

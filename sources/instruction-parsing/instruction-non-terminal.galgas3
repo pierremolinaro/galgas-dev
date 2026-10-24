@@ -24,16 +24,14 @@ syntax extension galgas3SyntaxComponentSyntax {
   rule <syntax_instruction_ggs3> (?!@galgasDeclarationAST ioDeclarations,
                                  !@syntaxInstructionAST outInstruction ) {
     $<non_terminal>$ ?let @lstring mNonterminalName indexing ruleReference
-    $($
-    <actual_parameter_list_ggs3> (!?ioDeclarations ?let @actualParameterListAST mActualParameterList)
-    $)$
+    <actual_parameter_list_ggs3> (!?ioDeclarations, ?let @actualParameterListAST mActualParameterList)
   //--- Get syntax directed translation result string
     let @abstractGrammarInstructionSyntaxDirectedTranslationResult grammarInstructionSyntaxDirectedTranslationResult
     select
       grammarInstructionSyntaxDirectedTranslationResult = @grammarInstructionSyntaxDirectedTranslationResultNone {}
     or
       $:>$
-      <syntax_directed_translation_result> (!?ioDeclarations ?grammarInstructionSyntaxDirectedTranslationResult)
+      <syntax_directed_translation_result> (!?ioDeclarations, ?grammarInstructionSyntaxDirectedTranslationResult)
     end
     outInstruction = @nonterminalCallInstruction {
       !mNonterminalName.location
@@ -56,14 +54,14 @@ syntax extension galgas4SyntaxComponentSyntax {
   rule <syntax_instruction> (?!@galgasDeclarationAST ioDeclarations,
                             !@syntaxInstructionAST outInstruction ) {
     $<non_terminal>$ ?let @lstring mNonterminalName indexing ruleReference
-    <actual_parameter_list_with_parenthesis> (!?ioDeclarations ?let @actualParameterListAST mActualParameterList)
+    <actual_parameter_list_with_parenthesis> (!?ioDeclarations, ?let @actualParameterListAST mActualParameterList)
   //--- Get syntax directed translation result string
     let @abstractGrammarInstructionSyntaxDirectedTranslationResult grammarInstructionSyntaxDirectedTranslationResult
     select
       grammarInstructionSyntaxDirectedTranslationResult = @grammarInstructionSyntaxDirectedTranslationResultNone {}
     or
       $:>$
-      <syntax_directed_translation_result> (!?ioDeclarations ?grammarInstructionSyntaxDirectedTranslationResult)
+      <syntax_directed_translation_result> (!?ioDeclarations, ?grammarInstructionSyntaxDirectedTranslationResult)
     end
     outInstruction = @nonterminalCallInstruction {
       !mNonterminalName.location
@@ -93,7 +91,7 @@ final class @nonterminalCallInstruction : @syntaxInstructionAST {
                     ?nonTerminalSymbolMap:let @nonTerminalSymbolMapForGrammarAnalysis inNonTerminalSymbolMap,
                     ?!addedTerminalIndex:@uint unused ioAddedNonTerminalIndex,
                     ?!@syntaxInstructionListForGrammarAnalysis ioSyntaxInstructionList ) {
-    inNonTerminalSymbolMap.searchKey (!self.mNonterminalName ?let nonTerminalSymbolIndex ?*)
+    inNonTerminalSymbolMap.searchKey (!self.mNonterminalName, ?let nonTerminalSymbolIndex, ?*)
     ioSyntaxInstructionList += !@nonTerminalInstructionForGrammarAnalysis {
       !self.mInstructionLocation
       !self.mNonterminalName
@@ -116,27 +114,27 @@ final class @nonterminalCallInstruction : @syntaxInstructionAST {
                                             ?!@semanticInstructionListForGeneration ioInstructionListForGeneration,
                                             ?!@localVarManager ioVariableMap,
                                             ?!@uint unused ioSelectMethodCount ) {
-    inNonterminalMap.searchKey (!self.mNonterminalName ?let @nonterminalLabelMap labelMap)
+    inNonterminalMap.searchKey (!self.mNonterminalName, ?let @nonterminalLabelMap labelMap)
     let @formalParameterSignature signature
-    labelMap.searchKey (!"".nowhere ?* ?signature ?*)
+    labelMap.searchKey (!"".nowhere, ?*, ?signature, ?*)
   //--- call arguments
     self.mActualParameterList.analyzeRoutineArguments
-      (!inUsefulnessCallerEntityName
-      !?ioUsefulEntitiesGraph
-      !inAnalysisContext
-      !?ioTypeMap
-      !self.mNonterminalName
-      !invokedEntityNameForErrorSignaling: "'<" + self.mNonterminalName + ">' nonterminal declaration"
-      !signature
-      !?ioVariableMap
-      !?ioInstructionListForGeneration
+      (!inUsefulnessCallerEntityName,
+      !?ioUsefulEntitiesGraph,
+      !inAnalysisContext,
+      !?ioTypeMap,
+      !self.mNonterminalName,
+      !invokedEntityNameForErrorSignaling: "'<" + self.mNonterminalName + ">' nonterminal declaration",
+      !signature,
+      !?ioVariableMap,
+      !?ioInstructionListForGeneration,
       ?let @actualParameterListForGeneration actualParameterListForGeneration
     )
   //--- Check syntax directed translation destination variable
     self.mGrammarInstructionSyntaxDirectedTranslationResult.analyzeSDT
-      (!inAnalysisContext
-      !?ioTypeMap
-      !inHasTranslateFeature
+      (!inAnalysisContext,
+      !?ioTypeMap,
+      !inHasTranslateFeature,
       !?ioVariableMap
     )
   //--- Generate instructions
@@ -223,12 +221,12 @@ override proc @nonterminalInstructionForGeneration generateInstruction (?!@strin
   var inputVariableList = @stringlist ()
   for (mActualParameter) in self.mActualParameterList do
     mActualParameter.generateActualParameter
-      (!?ioInclusionSet
-      !?ioTemporaryVariableIndex
-      !?ioGeneratedCode
-      !?jokerParametersToReleaseList
-      !?inputVariableList
-      !?ioUnusedVariableCppNameSet
+      (!?ioInclusionSet,
+      !?ioTemporaryVariableIndex,
+      !?ioGeneratedCode,
+      !?jokerParametersToReleaseList,
+      !?inputVariableList,
+      !?ioUnusedVariableCppNameSet,
       ?let @string parameterCppName
     )
     parameterCppNameList += !parameterCppName
@@ -248,9 +246,9 @@ override proc @nonterminalInstructionForGeneration generateInstruction (?!@strin
   !?ioUnusedVariableCppNameSet.removeKey (!compilerCppName ())
   ioGeneratedCode +=  compilerCppName () + ") ;\n"
   self.mGrammarInstructionSyntaxDirectedTranslationResult.generateCode
-    (!inGenerateSyntaxDirectedTranslationString
-    !sdtResultVarName
-    !?ioUnusedVariableCppNameSet
+    (!inGenerateSyntaxDirectedTranslationString,
+    !sdtResultVarName,
+    !?ioUnusedVariableCppNameSet,
     !?ioGeneratedCode
   )
 //--- Release temporary variables

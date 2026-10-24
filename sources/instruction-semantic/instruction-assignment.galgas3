@@ -36,7 +36,7 @@ syntax extension galgas3InstructionsSyntax {
       optionalProperty = attributeName
     end
     $=$
-    <expression_ggs3> (!?ioDeclarations ?let @semanticExpressionAST mSourceExpression)
+    <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST mSourceExpression)
     outInstruction = @assignmentInstructionAST {
       !mTargetVariableName.location
       !mTargetVariableName
@@ -61,7 +61,7 @@ syntax extension galgas3InstructionsSyntax {
       optionalProperty = attributeName
     end
     $=$
-    <expression_ggs3> (!?ioDeclarations ?let @semanticExpressionAST mSourceExpression)
+    <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST mSourceExpression)
     outInstruction = @selfPropertyAssignmentInstructionAST {
       !mTargetVariableName.location
       !mTargetVariableName
@@ -89,7 +89,7 @@ syntax extension galgas4InstructionsSyntax {
     or
       $[$
       <non_empty_output_expression_list> (
-        !?ioDeclarations
+        !?ioDeclarations,
         ?let @actualOutputArgumentList unused outExpressionList
       )
       $]$
@@ -100,7 +100,7 @@ syntax extension galgas4InstructionsSyntax {
       optionalProperty = attributeName
     end
     $=$
-    <expression> (!?ioDeclarations ?let @semanticExpressionAST mSourceExpression)
+    <expression> (!?ioDeclarations, ?let @semanticExpressionAST mSourceExpression)
     outInstruction = @assignmentInstructionAST {
       !mTargetVariableName.location
       !mTargetVariableName
@@ -122,7 +122,7 @@ syntax extension galgas4InstructionsSyntax {
     or
       $[$
       <non_empty_output_expression_list> (
-         !?ioDeclarations
+         !?ioDeclarations,
          ?let @actualOutputArgumentList unused outExpressionList
       )
       $]$
@@ -133,7 +133,7 @@ syntax extension galgas4InstructionsSyntax {
       optionalProperty = attributeName
     end
     $=$
-    <expression> (!?ioDeclarations ?let @semanticExpressionAST mSourceExpression)
+    <expression> (!?ioDeclarations, ?let @semanticExpressionAST mSourceExpression)
     outInstruction = @selfPropertyAssignmentInstructionAST {
       !mTargetVariableName.location
       !mTargetVariableName
@@ -172,35 +172,35 @@ final class @assignmentInstructionAST : @semanticInstructionAST {
                         ?!@localVarManager ioVariableMap) {
   //--- Get target variable type
     !?ioVariableMap.neutralAccess
-      (!self.mTargetVariableName
-      ?let receiverType
-      ?*
+      (!self.mTargetVariableName,
+      ?let receiverType,
+      ?*,
       ?*
     )
     var targetType = receiverType
     if self.mOptionalProperty.string != "" then
       let propertyMap = targetType.definition.propertyMap
-      propertyMap.searchKey (!self.mOptionalProperty ?let accessControl ?let isConstant ?targetType)
-      accessControl.checkSetAccess (!inAnalysisContext.selfAvailability !self.mOptionalProperty)
+      propertyMap.searchKey (!self.mOptionalProperty, ?let accessControl, ?let isConstant, ?targetType)
+      accessControl.checkSetAccess (!inAnalysisContext.selfAvailability, !self.mOptionalProperty)
       if isConstant then
         error (self.mOptionalProperty : "a constant property cannot be modified")
       end
     end
   //--- Analyze source expression
     self.mSourceExpression.analyzeSemanticExpression
-      (!usefulnessCallerEntityName: inUsefulnessCallerEntityName
-      !?ioUsefulEntitiesGraph
-      !inferenceType: targetType
-      !inAnalysisContext
-      !?ioTypeMap
-      !?ioVariableMap
+      (!usefulnessCallerEntityName: inUsefulnessCallerEntityName,
+      !?ioUsefulEntitiesGraph,
+      !inferenceType: targetType,
+      !inAnalysisContext,
+      !?ioTypeMap,
+      !?ioVariableMap,
       ?@semanticExpressionForGeneration expression
     )
   //--- Check assignment type compatibility
     checkAssignmentTypeWithImplicitGetterCall (
-      !targetType
-      !expression.mResultType
-      !self.mInstructionLocation
+      !targetType,
+      !expression.mResultType,
+      !self.mInstructionLocation,
       !?expression
     )
   //--- Get target variable
@@ -208,16 +208,16 @@ final class @assignmentInstructionAST : @semanticInstructionAST {
     let @string nameForCheckingFormalParameterUsing
     if self.mOptionalProperty.string == "" then
       !?ioVariableMap.searchForWriteAccess
-        (!self.mTargetVariableName
-        ?*
-        ?targetVariableCppName
+        (!self.mTargetVariableName,
+        ?*,
+        ?targetVariableCppName,
         ?nameForCheckingFormalParameterUsing
       )
     else
       !?ioVariableMap.searchForReadWriteAccess
-        (!self.mTargetVariableName
-        ?*
-        ?targetVariableCppName
+        (!self.mTargetVariableName,
+        ?*,
+        ?targetVariableCppName,
         ?nameForCheckingFormalParameterUsing
       )
     end
@@ -266,7 +266,7 @@ final class @selfPropertyAssignmentInstructionAST : @semanticInstructionAST {
         error (self.mInstructionLocation : "'self' property not mutable in this context")
       end
       let propertyMap = selfAvailable.type.definition.propertyMap
-      propertyMap.searchKey (!self.mTargetSelfPropertyName ?* ?let isConstant ?var targetType)
+      propertyMap.searchKey (!self.mTargetSelfPropertyName, ?*, ?let isConstant, ?var targetType)
       if isConstant & not selfAvailable.selfMutability.isInitializer then
         error (self.mTargetSelfPropertyName : "a constant property cannot be modified")
       end
@@ -275,28 +275,28 @@ final class @selfPropertyAssignmentInstructionAST : @semanticInstructionAST {
     //--- Get target variable type
       if self.mOptionalProperty.string != "" then
         let propertyMap = targetType.definition.propertyMap
-        propertyMap.searchKey (!self.mOptionalProperty ?let accessControl ?let isConstant ?targetType)
-        accessControl.checkSetAccess (!inAnalysisContext.selfAvailability !self.mOptionalProperty.location)
+        propertyMap.searchKey (!self.mOptionalProperty, ?let accessControl, ?let isConstant, ?targetType)
+        accessControl.checkSetAccess (!inAnalysisContext.selfAvailability, !self.mOptionalProperty.location)
         if isConstant then
           error (self.mOptionalProperty : "a constant property cannot be modified")
         end
       end
     //--- Analyze source expression
       self.mSourceExpression.analyzeSemanticExpression
-        (!usefulnessCallerEntityName: inUsefulnessCallerEntityName
-        !?ioUsefulEntitiesGraph
-        !inferenceType: targetType
-        !inAnalysisContext
-        !?ioTypeMap
-        !?ioVariableMap
+        (!usefulnessCallerEntityName: inUsefulnessCallerEntityName,
+        !?ioUsefulEntitiesGraph,
+        !inferenceType: targetType,
+        !inAnalysisContext,
+        !?ioTypeMap,
+        !?ioVariableMap,
         ?@semanticExpressionForGeneration expression
       )
     //---
       !?ioVariableMap.searchForWriteAccess
-        (!@{!"self." + self.mTargetSelfPropertyName !self.mTargetSelfPropertyName} ?3*
+        (!@{!"self." + self.mTargetSelfPropertyName !self.mTargetSelfPropertyName}, ?3*
       )
     //--- Check assignment type compatibility
-      checkAssignmentTypeWithImplicitGetterCall (!targetType !expression.mResultType !self.mInstructionLocation !?expression)
+      checkAssignmentTypeWithImplicitGetterCall (!targetType, !expression.mResultType, !self.mInstructionLocation, !?expression)
     //--- Generate instruction
       ioInstructionListForGeneration += !@assignmentInstructionForGeneration {
         !selfAvailable.type
@@ -337,10 +337,10 @@ class @assignmentInstructionForGeneration : @semanticInstructionForGeneration {
                                        ?let @bool unused inGenerateSyntaxDirectedTranslationString,
                                        ?!@string ioGeneratedCode) {
     self.mSourceExpression.generateExpression
-      (!?ioGeneratedCode
-      !?ioInclusionSet
-      !?ioTemporaryVariableIndex
-      !?ioUnusedVariableCppNameSet
+      (!?ioGeneratedCode,
+      !?ioInclusionSet,
+      !?ioTemporaryVariableIndex,
+      !?ioUnusedVariableCppNameSet,
       ?let sourceVar
     )
     !?ioUnusedVariableCppNameSet.removeKey (!self.mNameForCheckingFormalParameterUsing)

@@ -70,9 +70,9 @@ final class @varInExpressionAST : @semanticExpressionAST {
         ?!@localVarManager ioVariableMap,
         !@semanticExpressionForGeneration outExpression ) {
     !?ioVariableMap.searchForReadAccess
-      (!self.mVarName
-      ?let @unifiedTypeMapEntry type
-      ?let @string sourceVariableCppName
+      (!self.mVarName,
+      ?let @unifiedTypeMapEntry type,
+      ?let @string sourceVariableCppName,
       ?let @string nameForCheckingFormalParameterUsing
     )
     outExpression = @varInExpressionForGeneration {

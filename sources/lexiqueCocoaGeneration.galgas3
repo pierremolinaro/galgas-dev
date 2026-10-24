@@ -176,7 +176,7 @@ override func @lexicalImplicitRuleAST generateSwiftCocoaCode
   ?let @string inScannerClassName
   ?let @lexiqueAnalysisContext inLexiqueAnalysisContext
   -> @string outGeneratedCode {
-  inLexiqueAnalysisContext.mLexicalTokenListMap.searchKey (!self.mListName ?* ?let tokenSortedList ?*)
+  inLexiqueAnalysisContext.mLexicalTokenListMap.searchKey (!self.mListName, ?*, ?let tokenSortedList, ?*)
   outGeneratedCode = ""
   for > (* mName mTerminalName) in tokenSortedList do
     outGeneratedCode += "if scanningOk && self.testForInputString ("

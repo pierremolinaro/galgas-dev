@@ -27,18 +27,18 @@ syntax extension galgas3InstructionsSyntax {
                                     !@semanticInstructionAST outInstruction) {
     $switch$
     let instructionLocation = @location.here
-    <expression_ggs3> (!?ioDeclarations ?let switchExpression)
+    <expression_ggs3> (!?ioDeclarations, ?let switchExpression)
     let endOfSwitchExpression = @location.here
     var @switchBranchesAST switchBranches = @()
     repeat
       $case$
       <switch_case> (
-        !?ioDeclarations
-        ?let [@lstring] constantNameList
+        !?ioDeclarations,
+        ?let [@lstring] constantNameList,
         ?let @switchExtractedValuesListAST associatedValuesExtraction
       )
       $:$
-      <semantic_instruction_list_ggs3> (!?ioDeclarations ?let instructions)
+      <semantic_instruction_list_ggs3> (!?ioDeclarations, ?let instructions)
       switchBranches += !constantNameList !associatedValuesExtraction !instructions !@location.here
     while
     end
@@ -82,7 +82,7 @@ syntax extension galgas3InstructionsSyntax {
          or
           let @lstring typeName
           select
-            <type_definition_ggs3> (!?ioDeclarations ?typeName)
+            <type_definition_ggs3> (!?ioDeclarations, ?typeName)
           or
             typeName = "".here
           end
@@ -116,17 +116,17 @@ syntax extension galgas4InstructionsSyntax {
                                !@semanticInstructionAST outInstruction) {
     $switch$
     let instructionLocation = @location.here
-    <expression> (!?ioDeclarations ?let switchExpression)
+    <expression> (!?ioDeclarations, ?let switchExpression)
     let endOfSwitchExpression = @location.here
     var @switchBranchesAST switchBranches = @()
     repeat
       $case$
       <switch_case>(
-        !?ioDeclarations
-        ?let [@lstring] constantNameList
+        !?ioDeclarations,
+        ?let [@lstring] constantNameList,
         ?let @switchExtractedValuesListAST associatedValuesExtraction)
       $:$
-      <semantic_instruction_list> (!?ioDeclarations ?let instructions)
+      <semantic_instruction_list> (!?ioDeclarations, ?let instructions)
       switchBranches += !constantNameList !associatedValuesExtraction !instructions !@location.here
     while
     end
@@ -170,7 +170,7 @@ syntax extension galgas4InstructionsSyntax {
          or
           let @lstring typeName
           select
-            <type_definition> (!?ioDeclarations ?typeName)
+            <type_definition> (!?ioDeclarations, ?typeName)
           or
             typeName = "".here
           end
@@ -241,12 +241,12 @@ final class @switchInstructionAST : @semanticInstructionAST {
                             ?!@localVarManager ioVariableMap) {
   //--- Analyze switch expression
     self.mSwitchExpression.analyzeSemanticExpression
-      (!usefulnessCallerEntityName: inUsefulnessCallerEntityName
-      !?ioUsefulEntitiesGraph
-      !inferenceType: @unifiedTypeMapEntry.null
-      !inAnalysisContext
-      !?ioTypeMap
-      !?ioVariableMap
+      (!usefulnessCallerEntityName: inUsefulnessCallerEntityName,
+      !?ioUsefulEntitiesGraph,
+      !inferenceType: @unifiedTypeMapEntry.null,
+      !inAnalysisContext,
+      !?ioTypeMap,
+      !?ioVariableMap,
       ?let switchExpression
     )
   //--- Check switch expression type is and enum instance
@@ -267,7 +267,7 @@ final class @switchInstructionAST : @semanticInstructionAST {
               )
             end
             constantsNamedInSwitchInstruction ++= constantName.string
-            enumType.constantMap.searchKey (!constantName ?* ?let associatedTypeList)
+            enumType.constantMap.searchKey (!constantName, ?*, ?let associatedTypeList)
             if (associatedTypeList.count > 0) & (branch.mAssociatedValuesExtraction.count == 0) then
               error (constantName
                 :"the associated values of '" + constantName + "' constant should be extracted"
@@ -302,16 +302,16 @@ final class @switchInstructionAST : @semanticInstructionAST {
                 if associatedValue.mExtractedValueName.string != "" then
                   if associatedValue.mMarkedAsUnused then
                     !?ioVariableMap.insertUsedLocalConstant
-                      (!associatedValue.mExtractedValueName
-                      !descriptor.type
-                      !cppName
+                      (!associatedValue.mExtractedValueName,
+                      !descriptor.type,
+                      !cppName,
                       !cppName
                     )
                   else
                     !?ioVariableMap.insertInitializedLocalConstant
-                      (!associatedValue.mExtractedValueName
-                      !descriptor.type
-                      !cppName
+                      (!associatedValue.mExtractedValueName,
+                      !descriptor.type,
+                      !cppName,
                       !cppName
                     )
                   end
@@ -326,15 +326,15 @@ final class @switchInstructionAST : @semanticInstructionAST {
           end
         end
         analyzeSemanticInstructionListWithoutBranch (
-          !inUsefulnessCallerEntityName
-          !?ioUsefulEntitiesGraph
-          !inAnalysisContext
-          !?ioTypeMap
-          !localConstantList: @()
-          !localInitializedVariableListWarnsIfNotMutated: @()
-          !localInitializedVariableListNoWarnsIfNotMutated: @()
-          !branch.mInstructions
-          !?ioVariableMap
+          !inUsefulnessCallerEntityName,
+          !?ioUsefulEntitiesGraph,
+          !inAnalysisContext,
+          !?ioTypeMap,
+          !localConstantList: @(),
+          !localInitializedVariableListWarnsIfNotMutated: @(),
+          !localInitializedVariableListNoWarnsIfNotMutated: @(),
+          !branch.mInstructions,
+          !?ioVariableMap,
           ?let @semanticInstructionListForGeneration instructionList
         )
         !?ioVariableMap.closeBranch (!branch.mEndOfBranch)
@@ -411,10 +411,10 @@ final class @switchInstructionForGeneration : @semanticInstructionForGeneration 
                                        ?!@string ioGeneratedCode) {
   //--- Switch expression
     self.mSwitchExpression.generateExpression
-      (!?ioGeneratedCode
-      !?ioInclusionSet
-      !?ioTemporaryVariableIndex
-      !?ioUnusedVariableCppNameSet
+      (!?ioGeneratedCode,
+      !?ioInclusionSet,
+      !?ioTemporaryVariableIndex,
+      !?ioUnusedVariableCppNameSet,
       ?let @string switchVar
     )
     ioGeneratedCode += "switch (" + switchVar + ".enumValue ()) {\n"
@@ -448,11 +448,11 @@ final class @switchInstructionForGeneration : @semanticInstructionForGeneration 
           ioGeneratedCode += ") ;\n"
         end
         generateInstructionList (
-          !?ioInclusionSet
-          !branch.mInstructions
-          !?ioTemporaryVariableIndex
-          !?ioUnusedVariableCppNameSet
-          !inGenerateSyntaxDirectedTranslationString
+          !?ioInclusionSet,
+          !branch.mInstructions,
+          !?ioTemporaryVariableIndex,
+          !?ioUnusedVariableCppNameSet,
+          !inGenerateSyntaxDirectedTranslationString,
           !?ioGeneratedCode
         )
         ioGeneratedCode += "}\n"

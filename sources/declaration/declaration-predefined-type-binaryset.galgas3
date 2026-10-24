@@ -50,191 +50,191 @@ final class @binarysetPredefinedTypeAST : @predefinedTypeAST {
                                       !@classFunctionMap outMap ) {
     outMap = @()
     enterClassFunctionWithArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !name:"binarySetWithBit"
-      !argTypeName:"uint"
-      !argName:"inBitIndex"
-      !resultTypeName:"binaryset"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !name:"binarySetWithBit",
+      !argTypeName:"uint",
+      !argName:"inBitIndex",
+      !resultTypeName:"binaryset",
       !hasLexiqueArg:true
     )
     enterClassFunctionWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !name:"emptyBinarySet"
-      !resultTypeName:"binaryset"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !name:"emptyBinarySet",
+      !resultTypeName:"binaryset",
       !hasLexiqueArg:false
     )
     enterClassFunctionWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !name:"fullBinarySet"
-      !resultTypeName:"binaryset"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !name:"fullBinarySet",
+      !resultTypeName:"binaryset",
       !hasLexiqueArg:false
     )
     enterClassFunctionWithArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !name:"binarySetWithPredicateString"
-      !argTypeName:"string"
-      !argName:"inPredicateString"
-      !resultTypeName:"binaryset"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !name:"binarySetWithPredicateString",
+      !argTypeName:"string",
+      !argName:"inPredicateString",
+      !resultTypeName:"binaryset",
       !hasLexiqueArg:true
     )
     enterClassFunctionWith3Arguments (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !name:"binarySetWithNotEqualComparison"
-      !argTypeName1:"uint"
-      !argName1:"inLeftFirstIndex"
-      !argTypeName2:"uint"
-      !argName2:"inBitCount"
-      !argTypeName3:"uint"
-      !argName3:"inRightFirstIndex"
-      !resultTypeName:"binaryset"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !name:"binarySetWithNotEqualComparison",
+      !argTypeName1:"uint",
+      !argName1:"inLeftFirstIndex",
+      !argTypeName2:"uint",
+      !argName2:"inBitCount",
+      !argTypeName3:"uint",
+      !argName3:"inRightFirstIndex",
+      !resultTypeName:"binaryset",
       !hasLexiqueArg:true
     )
     enterClassFunctionWith3Arguments (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !name:"binarySetWithEqualComparison"
-      !argTypeName1:"uint"
-      !argName1:"inLeftFirstIndex"
-      !argTypeName2:"uint"
-      !argName2:"inBitCount"
-      !argTypeName3:"uint"
-      !argName3:"inRightFirstIndex"
-      !resultTypeName:"binaryset"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !name:"binarySetWithEqualComparison",
+      !argTypeName1:"uint",
+      !argName1:"inLeftFirstIndex",
+      !argTypeName2:"uint",
+      !argName2:"inBitCount",
+      !argTypeName3:"uint",
+      !argName3:"inRightFirstIndex",
+      !resultTypeName:"binaryset",
       !hasLexiqueArg:true
     )
     enterClassFunctionWith3Arguments (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !name:"binarySetWithStrictLowerComparison"
-      !argTypeName1:"uint"
-      !argName1:"inLeftFirstIndex"
-      !argTypeName2:"uint"
-      !argName2:"inBitCount"
-      !argTypeName3:"uint"
-      !argName3:"inRightFirstIndex"
-      !resultTypeName:"binaryset"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !name:"binarySetWithStrictLowerComparison",
+      !argTypeName1:"uint",
+      !argName1:"inLeftFirstIndex",
+      !argTypeName2:"uint",
+      !argName2:"inBitCount",
+      !argTypeName3:"uint",
+      !argName3:"inRightFirstIndex",
+      !resultTypeName:"binaryset",
       !hasLexiqueArg:true
     )
     enterClassFunctionWith3Arguments (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !name:"binarySetWithStrictGreaterComparison"
-      !argTypeName1:"uint"
-      !argName1:"inLeftFirstIndex"
-      !argTypeName2:"uint"
-      !argName2:"inBitCount"
-      !argTypeName3:"uint"
-      !argName3:"inRightFirstIndex"
-      !resultTypeName:"binaryset"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !name:"binarySetWithStrictGreaterComparison",
+      !argTypeName1:"uint",
+      !argName1:"inLeftFirstIndex",
+      !argTypeName2:"uint",
+      !argName2:"inBitCount",
+      !argTypeName3:"uint",
+      !argName3:"inRightFirstIndex",
+      !resultTypeName:"binaryset",
       !hasLexiqueArg:true
     )
     enterClassFunctionWith3Arguments (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !name:"binarySetWithLowerOrEqualComparison"
-      !argTypeName1:"uint"
-      !argName1:"inLeftFirstIndex"
-      !argTypeName2:"uint"
-      !argName2:"inBitCount"
-      !argTypeName3:"uint"
-      !argName3:"inRightFirstIndex"
-      !resultTypeName:"binaryset"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !name:"binarySetWithLowerOrEqualComparison",
+      !argTypeName1:"uint",
+      !argName1:"inLeftFirstIndex",
+      !argTypeName2:"uint",
+      !argName2:"inBitCount",
+      !argTypeName3:"uint",
+      !argName3:"inRightFirstIndex",
+      !resultTypeName:"binaryset",
       !hasLexiqueArg:true
     )
     enterClassFunctionWith3Arguments (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !name:"binarySetWithGreaterOrEqualComparison"
-      !argTypeName1:"uint"
-      !argName1:"inLeftFirstIndex"
-      !argTypeName2:"uint"
-      !argName2:"inBitCount"
-      !argTypeName3:"uint"
-      !argName3:"inRightFirstIndex"
-      !resultTypeName:"binaryset"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !name:"binarySetWithGreaterOrEqualComparison",
+      !argTypeName1:"uint",
+      !argName1:"inLeftFirstIndex",
+      !argTypeName2:"uint",
+      !argName2:"inBitCount",
+      !argTypeName3:"uint",
+      !argName3:"inRightFirstIndex",
+      !resultTypeName:"binaryset",
       !hasLexiqueArg:true
     )
     enterClassFunctionWith3Arguments (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !name:"binarySetWithEqualToConstant"
-      !argTypeName1:"uint"
-      !argName1:"inBitIndex"
-      !argTypeName2:"uint"
-      !argName2:"inBitCount"
-      !argTypeName3:"uint64"
-      !argName3:"inConstant"
-      !resultTypeName:"binaryset"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !name:"binarySetWithEqualToConstant",
+      !argTypeName1:"uint",
+      !argName1:"inBitIndex",
+      !argTypeName2:"uint",
+      !argName2:"inBitCount",
+      !argTypeName3:"uint64",
+      !argName3:"inConstant",
+      !resultTypeName:"binaryset",
       !hasLexiqueArg:true
     )
     enterClassFunctionWith3Arguments (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !name:"binarySetWithNotEqualToConstant"
-      !argTypeName1:"uint"
-      !argName1:"inBitIndex"
-      !argTypeName2:"uint"
-      !argName2:"inBitCount"
-      !argTypeName3:"uint64"
-      !argName3:"inConstant"
-      !resultTypeName:"binaryset"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !name:"binarySetWithNotEqualToConstant",
+      !argTypeName1:"uint",
+      !argName1:"inBitIndex",
+      !argTypeName2:"uint",
+      !argName2:"inBitCount",
+      !argTypeName3:"uint64",
+      !argName3:"inConstant",
+      !resultTypeName:"binaryset",
       !hasLexiqueArg:true
     )
     enterClassFunctionWith3Arguments (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !name:"binarySetWithStrictLowerThanConstant"
-      !argTypeName1:"uint"
-      !argName1:"inBitIndex"
-      !argTypeName2:"uint"
-      !argName2:"inBitCount"
-      !argTypeName3:"uint64"
-      !argName3:"inConstant"
-      !resultTypeName:"binaryset"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !name:"binarySetWithStrictLowerThanConstant",
+      !argTypeName1:"uint",
+      !argName1:"inBitIndex",
+      !argTypeName2:"uint",
+      !argName2:"inBitCount",
+      !argTypeName3:"uint64",
+      !argName3:"inConstant",
+      !resultTypeName:"binaryset",
       !hasLexiqueArg:true
     )
     enterClassFunctionWith3Arguments (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !name:"binarySetWithStrictGreaterThanConstant"
-      !argTypeName1:"uint"
-      !argName1:"inBitIndex"
-      !argTypeName2:"uint"
-      !argName2:"inBitCount"
-      !argTypeName3:"uint64"
-      !argName3:"inConstant"
-      !resultTypeName:"binaryset"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !name:"binarySetWithStrictGreaterThanConstant",
+      !argTypeName1:"uint",
+      !argName1:"inBitIndex",
+      !argTypeName2:"uint",
+      !argName2:"inBitCount",
+      !argTypeName3:"uint64",
+      !argName3:"inConstant",
+      !resultTypeName:"binaryset",
       !hasLexiqueArg:true
     )
     enterClassFunctionWith3Arguments (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !name:"binarySetWithLowerOrEqualToConstant"
-      !argTypeName1:"uint"
-      !argName1:"inBitIndex"
-      !argTypeName2:"uint"
-      !argName2:"inBitCount"
-      !argTypeName3:"uint64"
-      !argName3:"inConstant"
-      !resultTypeName:"binaryset"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !name:"binarySetWithLowerOrEqualToConstant",
+      !argTypeName1:"uint",
+      !argName1:"inBitIndex",
+      !argTypeName2:"uint",
+      !argName2:"inBitCount",
+      !argTypeName3:"uint64",
+      !argName3:"inConstant",
+      !resultTypeName:"binaryset",
       !hasLexiqueArg:true
     )
     enterClassFunctionWith3Arguments (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !name:"binarySetWithGreaterOrEqualToConstant"
-      !argTypeName1:"uint"
-      !argName1:"inBitIndex"
-      !argTypeName2:"uint"
-      !argName2:"inBitCount"
-      !argTypeName3:"uint64"
-      !argName3:"inConstant"
-      !resultTypeName:"binaryset"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !name:"binarySetWithGreaterOrEqualToConstant",
+      !argTypeName1:"uint",
+      !argName1:"inBitIndex",
+      !argTypeName2:"uint",
+      !argName2:"inBitCount",
+      !argTypeName3:"uint64",
+      !argName3:"inConstant",
+      !resultTypeName:"binaryset",
       !hasLexiqueArg:true
     )
   }
@@ -243,303 +243,303 @@ final class @binarysetPredefinedTypeAST : @predefinedTypeAST {
 
   override proc getGetterMap (?!@unifiedTypeMap ioUnifiedTypeMap,
                                !@getterMap outMap ) {
-    commonGetterMapForAllTypes (!?ioUnifiedTypeMap ?outMap)
+    commonGetterMapForAllTypes (!?ioUnifiedTypeMap, ?outMap)
     enterBaseFinalGetterWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName:"isFull"
-      !obsoleteName: ""
-      !returnedTypeName:"bool"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName:"isFull",
+      !obsoleteName: "",
+      !returnedTypeName:"bool",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName:"nodeCount"
-      !obsoleteName: ""
-      !returnedTypeName:"uint64"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName:"nodeCount",
+      !obsoleteName: "",
+      !returnedTypeName:"uint64",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName:"isEmpty"
-      !obsoleteName: ""
-      !returnedTypeName:"bool"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName:"isEmpty",
+      !obsoleteName: "",
+      !returnedTypeName:"bool",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName:"significantVariableCount"
-      !obsoleteName: ""
-      !returnedTypeName:"uint"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName:"significantVariableCount",
+      !obsoleteName: "",
+      !returnedTypeName:"uint",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWith2Arguments (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName:"ITE"
-      !"binaryset" !"inTHENoperand"
-      !"binaryset" !"inELSEoperand"
-      !returnedTypeName:"binaryset"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName:"ITE",
+      !"binaryset", !"inTHENoperand",
+      !"binaryset", !"inELSEoperand",
+      !returnedTypeName:"binaryset",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWith2Arguments (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName:"print"
-      !"stringlist" !"inVariableList"
-      !"uintlist" !"inBDDCount"
-      !returnedTypeName:"string"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName:"print",
+      !"stringlist", !"inVariableList",
+      !"uintlist", !"inBDDCount",
+      !returnedTypeName:"string",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName:"graphvizDump"
-      !obsoleteName: ""
-      !returnedTypeName:"string"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName:"graphvizDump",
+      !obsoleteName: "",
+      !returnedTypeName:"string",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWithArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName:"graphviz"
-      !"stringlist" !"inBitNameList"
-      !returnedTypeName:"string"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName:"graphviz",
+      !"stringlist", !"inBitNameList",
+      !returnedTypeName:"string",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWithArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName:"transformedBy"
-      !"uintlist" !"inTransformationArray"
-      !returnedTypeName:"binaryset"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName:"transformedBy",
+      !"uintlist", !"inTransformationArray",
+      !returnedTypeName:"binaryset",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWithArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName:"forAllOnBitIndex"
-      !"uint" !"inBitIndex"
-      !returnedTypeName:"binaryset"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName:"forAllOnBitIndex",
+      !"uint", !"inBitIndex",
+      !returnedTypeName:"binaryset",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWithArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName:"forAllOnBitIndexAndBeyond" !"uint" !"inBitIndex"
-      !returnedTypeName:"binaryset"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName:"forAllOnBitIndexAndBeyond", !"uint", !"inBitIndex",
+      !returnedTypeName:"binaryset",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWithArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName:"existOnBitIndex" !"uint" !"inBitIndex"
-      !returnedTypeName:"binaryset"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName:"existOnBitIndex", !"uint", !"inBitIndex",
+      !returnedTypeName:"binaryset",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWithArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName:"existOnBitIndexAndBeyond" !"uint" !"inBitIndex"
-      !returnedTypeName:"binaryset"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName:"existOnBitIndexAndBeyond", !"uint", !"inBitIndex",
+      !returnedTypeName:"binaryset",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWithArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName:"valueCount"
-      !"uint"
-      !"inBitCount"
-      !returnedTypeName:"uint64"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName:"valueCount",
+      !"uint",
+      !"inBitCount",
+      !returnedTypeName:"uint64",
       !hasCompilerArgument:true
     )
    enterBaseFinalGetterWithArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName:"bigValueCount"
-      !"uint"
-      !"inBitCount"
-      !returnedTypeName:"bigint"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName:"bigValueCount",
+      !"uint",
+      !"inBitCount",
+      !returnedTypeName:"bigint",
       !hasCompilerArgument:true
     )
     enterBaseFinalGetterWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName:"compressedValueCount"
-      !obsoleteName: ""
-      !returnedTypeName:"uint64"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName:"compressedValueCount",
+      !obsoleteName: "",
+      !returnedTypeName:"uint64",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWithArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName:"uint64ValueList" !"uint" !"inBitCount"
-      !returnedTypeName:"uint64list"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName:"uint64ValueList", !"uint", !"inBitCount",
+      !returnedTypeName:"uint64list",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWithArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName:"stringValueList" !"uint" !"inBitCount"
-      !returnedTypeName:"stringlist"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName:"stringValueList", !"uint", !"inBitCount",
+      !returnedTypeName:"stringlist",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWith2Arguments (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName:"stringValueListWithNameList" !"uint" !"inBitCount" !"stringlist" !"inNameList"
-      !returnedTypeName:"stringlist"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName:"stringValueListWithNameList", !"uint", !"inBitCount", !"stringlist", !"inNameList",
+      !returnedTypeName:"stringlist",
       !hasCompilerArgument:true
     )
     enterBaseFinalGetterWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName:"predicateStringValue"
-      !obsoleteName: ""
-      !returnedTypeName:"string"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName:"predicateStringValue",
+      !obsoleteName: "",
+      !returnedTypeName:"string",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWithArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName:"compressedStringValueList" !"uint" !"inBitCount"
-      !returnedTypeName:"stringlist"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName:"compressedStringValueList", !"uint", !"inBitCount",
+      !returnedTypeName:"stringlist",
       !hasCompilerArgument:true
     )
     enterBaseFinalGetterWith2Arguments (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName:"swap10" !"uint" !"inBitCount1" !"uint" !"inBitCount2"
-      !returnedTypeName:"binaryset"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName:"swap10", !"uint", !"inBitCount1", !"uint", !"inBitCount2",
+      !returnedTypeName:"binaryset",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWith3Arguments (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !"swap021" !"uint" !"inBitCount1" !"uint" !"inBitCount2" !"uint" !"inBitCount3"
-      !returnedTypeName:"binaryset"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !"swap021", !"uint", !"inBitCount1", !"uint", !"inBitCount2", !"uint", !"inBitCount3",
+      !returnedTypeName:"binaryset",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWith3Arguments (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !"swap102" !"uint" !"inBitCount1" !"uint" !"inBitCount2" !"uint" !"inBitCount3"
-      !returnedTypeName:"binaryset"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !"swap102", !"uint", !"inBitCount1", !"uint", !"inBitCount2", !"uint", !"inBitCount3",
+      !returnedTypeName:"binaryset",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWith3Arguments (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !"swap120" !"uint" !"inBitCount1" !"uint" !"inBitCount2" !"uint" !"inBitCount3"
-      !returnedTypeName:"binaryset"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !"swap120", !"uint", !"inBitCount1", !"uint", !"inBitCount2", !"uint", !"inBitCount3",
+      !returnedTypeName:"binaryset",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWith3Arguments (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !"swap201" !"uint" !"inBitCount1" !"uint" !"inBitCount2" !"uint" !"inBitCount3"
-      !returnedTypeName:"binaryset"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !"swap201", !"uint", !"inBitCount1", !"uint", !"inBitCount2", !"uint", !"inBitCount3",
+      !returnedTypeName:"binaryset",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWith3Arguments (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !"swap210" !"uint" !"inBitCount1" !"uint" !"inBitCount2" !"uint" !"inBitCount3"
-      !returnedTypeName:"binaryset"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !"swap210", !"uint", !"inBitCount1", !"uint", !"inBitCount2", !"uint", !"inBitCount3",
+      !returnedTypeName:"binaryset",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWithArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName:"transposedBy" !"uintlist" !"inTransposeVector"
-      !returnedTypeName:"binaryset"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName:"transposedBy", !"uintlist", !"inTransposeVector",
+      !returnedTypeName:"binaryset",
       !hasCompilerArgument:true
     )
     enterBaseFinalGetterWithArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName:"transitiveClosure" !"uint" !"inBitCount"
-      !returnedTypeName:"binaryset"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName:"transitiveClosure", !"uint", !"inBitCount",
+      !returnedTypeName:"binaryset",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWith2Arguments (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName:"accessibleStates" !"binaryset" !"inInitialStateSet" !"uint" !"inBitCount"
-      !returnedTypeName:"binaryset"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName:"accessibleStates", !"binaryset", !"inInitialStateSet", !"uint", !"inBitCount",
+      !returnedTypeName:"binaryset",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWithArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName:"implies" !"binaryset" !"inOperand"
-      !returnedTypeName:"binaryset"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName:"implies", !"binaryset", !"inOperand",
+      !returnedTypeName:"binaryset",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWithArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName:"equalTo" !"binaryset" !"inOperand"
-      !returnedTypeName:"binaryset"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName:"equalTo", !"binaryset", !"inOperand",
+      !returnedTypeName:"binaryset",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWithArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName:"notEqualTo" !"binaryset" !"inOperand"
-      !returnedTypeName:"binaryset"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName:"notEqualTo", !"binaryset", !"inOperand",
+      !returnedTypeName:"binaryset",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWithArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName:"lowerOrEqualTo" !"binaryset" !"inOperand"
-      !returnedTypeName:"binaryset"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName:"lowerOrEqualTo", !"binaryset", !"inOperand",
+      !returnedTypeName:"binaryset",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWithArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName:"greaterOrEqualTo" !"binaryset" !"inOperand"
-      !returnedTypeName:"binaryset"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName:"greaterOrEqualTo", !"binaryset", !"inOperand",
+      !returnedTypeName:"binaryset",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWithArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName:"strictGreaterThan" !"binaryset" !"inOperand"
-      !returnedTypeName:"binaryset"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName:"strictGreaterThan", !"binaryset", !"inOperand",
+      !returnedTypeName:"binaryset",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWithArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName:"strictLowerThan" !"binaryset" !"inOperand"
-      !returnedTypeName:"binaryset"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName:"strictLowerThan", !"binaryset", !"inOperand",
+      !returnedTypeName:"binaryset",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWith2Arguments (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName:"binarySetByTranslatingFromIndex" !"uint" !"inFirstIndexToTranslate" !"uint" !"inTranslation"
-      !returnedTypeName:"binaryset"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName:"binarySetByTranslatingFromIndex", !"uint", !"inFirstIndexToTranslate", !"uint", !"inTranslation",
+      !returnedTypeName:"binaryset",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWith3Arguments (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !"containsValue" !"uint64" !"inValue" !"uint" !"inFirstBit" !"uint" !"inBitCount"
-      !returnedTypeName:"bool"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !"containsValue", !"uint64", !"inValue", !"uint", !"inFirstBit", !"uint", !"inBitCount",
+      !returnedTypeName:"bool",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWith2Arguments (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !getterName:"existsOnBitRange" !"uint" !"inFirstBit" !"uint" !"inBitCount"
-      !returnedTypeName:"binaryset"
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !getterName:"existsOnBitRange", !"uint", !"inFirstBit", !"uint", !"inBitCount",
+      !returnedTypeName:"binaryset",
       !hasCompilerArgument:false
     )
   }
@@ -550,19 +550,19 @@ final class @binarysetPredefinedTypeAST : @predefinedTypeAST {
                                     !@classMethodMap outClassMethodMap ) {
     outClassMethodMap = @()
     enterClassMethodWithInputArgument (
-      !?outClassMethodMap
-      !?ioUnifiedTypeMap
-      !methodName:"setNodeTableSize"
-      !argType:"uint"
-      !argName:"inTableSize"
+      !?outClassMethodMap,
+      !?ioUnifiedTypeMap,
+      !methodName:"setNodeTableSize",
+      !argType:"uint",
+      !argName:"inTableSize",
       !compilerArgument:false
     )
     enterClassMethodWithInputArgument (
-      !?outClassMethodMap
-      !?ioUnifiedTypeMap
-      !methodName:"setAndTableSize"
-      !argType:"uint"
-      !argName:"inTableSize"
+      !?outClassMethodMap,
+      !?ioUnifiedTypeMap,
+      !methodName:"setAndTableSize",
+      !argType:"uint",
+      !argName:"inTableSize",
       !compilerArgument:false
     )
   }

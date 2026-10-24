@@ -52,15 +52,15 @@ syntax extension galgas3DeclarationsSyntax {
       equatable = true
     end
     $:$
-    <type_definition_ggs3> (!?ioDeclarations ?let keyTypeName)
+    <type_definition_ggs3> (!?ioDeclarations, ?let keyTypeName)
   //--- Map properties
     ${$
     var propertyList = @propertyInCollectionListAST ()
     repeat
     while
-      <property_declaration_ggs3> (!?ioDeclarations !? propertyList)
+      <property_declaration_ggs3> (!?ioDeclarations, !? propertyList)
     while
-      <method_declaration_ggs3> (!mDictTypeName !?ioDeclarations)
+      <method_declaration_ggs3> (!mDictTypeName, !?ioDeclarations)
     end
     $}$
     ioDeclarations.mDeclarationList += !@dictDeclarationAST {
@@ -94,15 +94,15 @@ syntax extension galgas4DeclarationsSyntax {
       equatable = true
     end
     $:$
-    <type_definition> (!?ioDeclarations ?let keyTypeName)
+    <type_definition> (!?ioDeclarations, ?let keyTypeName)
   //--- Map properties
     ${$
     var propertyList = @propertyInCollectionListAST ()
     repeat
     while
-      <property_declaration> (!?ioDeclarations !? propertyList)
+      <property_declaration> (!?ioDeclarations, !? propertyList)
     while
-      <method_declaration> (!mDictTypeName !?ioDeclarations)
+      <method_declaration> (!mDictTypeName, !?ioDeclarations)
     end
     $}$
     ioDeclarations.mDeclarationList += !@dictDeclarationAST {
@@ -151,7 +151,7 @@ override proc @dictDeclarationAST addAssociatedElement (?!@galgasDeclarationAST 
     !isUsefullStruct: true
   }
 //--- Add optional element
-  !?ioDeclarations.getOptionalTypeName (?* !forTypeNamed: elementTypeName !isPredefined: false)
+  !?ioDeclarations.getOptionalTypeName (?*, !forTypeNamed: elementTypeName, !isPredefined: false)
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -168,7 +168,7 @@ override proc @dictDeclarationAST enterDeclarationInGraph
   ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList
  ) {
   let key = @lstring {!"@" + self.mDictTypeName !self.mDictTypeName.location}
-  !?ioSemanticTypePrecedenceGraph.addNode (!key !self)
+  !?ioSemanticTypePrecedenceGraph.addNode (!key, !self)
   !?ioSemanticTypePrecedenceGraph.noteNode (!@lstring {!"@" + self.mKeyTypeName !self.mKeyTypeName})
   for (* typeName 4*) in self.mPropertyList do
     !?ioSemanticTypePrecedenceGraph.noteNode (!@lstring {!"@" + typeName !typeName})
@@ -188,28 +188,28 @@ override proc @dictDeclarationAST enterDeclarationInSemanticContext
   ?!@unifiedTypeMap ioTypeMap,
   ?!@semanticContext ioSemanticContext ) {
 //--- key type index
-  !?ioTypeMap.makeEntryFromString (!self.mKeyTypeName ?let keyTypeIndex)
+  !?ioTypeMap.makeEntryFromString (!self.mKeyTypeName, ?let keyTypeIndex)
 //--- Enumeration description
   var enumerationDescriptor = @enumerationDescriptorList.listWithValue {!keyTypeIndex !"key"}
 //---
-  commonGetterMapForAllTypes (!?ioTypeMap ?var @getterMap getterMap )
+  commonGetterMapForAllTypes (!?ioTypeMap, ?var @getterMap getterMap )
   var @setterMap setterMap = @()
   var @instanceMethodMap instanceMethodMap = @()
 //--- Getters
   enterBaseGetterWithArgument (
-    !?getterMap
-    !?ioTypeMap
-    !getterName: "hasKey"
-    !argSelector: ""!argType: self.mKeyTypeName.string !argName: "inKey"
-    !returnedTypeName:"bool"
+    !?getterMap,
+    !?ioTypeMap,
+    !getterName: "hasKey",
+    !argSelector: "", !argType: self.mKeyTypeName.string, !argName: "inKey",
+    !returnedTypeName:"bool",
     !hasCompilerArgument:false
   )
   enterBaseGetterWithoutArgument (
-    !?getterMap
-    !?ioTypeMap
-    !getterName:"count"
-    !obsoleteName: ""
-    !returnedTypeName:"uint"
+    !?getterMap,
+    !?ioTypeMap,
+    !getterName:"count",
+    !obsoleteName: "",
+    !returnedTypeName:"uint",
     !hasCompilerArgument:false
   )
 //--- Handle properties
@@ -236,7 +236,7 @@ override proc @dictDeclarationAST enterDeclarationInSemanticContext
     !"inKey"
   var typesToIncludeInHeaderCompilation = @unifiedTypeMapEntryList ()
   for (* typeName mPropertyName 2* initExpression) in self.mPropertyList do
-    !?ioTypeMap.makeEntry (!typeName ?let attributeTypeIndex)
+    !?ioTypeMap.makeEntry (!typeName, ?let attributeTypeIndex)
     let hasSetter = true
     let hasSelector = false
     argumentTypeListForAddAssignWithFieldExpressionList += !"".nowhere !attributeTypeIndex !mPropertyName.string !true
@@ -261,44 +261,44 @@ override proc @dictDeclarationAST enterDeclarationInSemanticContext
   end
 //--- Handle insert setter
   !?setterMap.insertOrReplace
-    (!@{!"insert" !self.mDictTypeName.location}
-    !@methodKind.definedAsMember
-    !insertSetterFormalArgumentList
-    !true
-    !@methodQualifier.isBasic
+    (!@{!"insert" !self.mDictTypeName.location},
+    !@methodKind.definedAsMember,
+    !insertSetterFormalArgumentList,
+    !true,
+    !@methodQualifier.isBasic,
     !""
   )
 //--- Handle remove setter
   !?setterMap.insertOrReplace
-    (!@{!"removeKey" !self.mDictTypeName.location}
-    !@methodKind.definedAsMember
-    !removeMethodFormalArgumentList
-    !true
-    !@methodQualifier.isBasic
+    (!@{!"removeKey" !self.mDictTypeName.location},
+    !@methodKind.definedAsMember,
+    !removeMethodFormalArgumentList,
+    !true,
+    !@methodQualifier.isBasic,
     !""
   )
 //--- Handle search methods (methods if no state, setters if states)
   !?instanceMethodMap.insertKey
-    (!@{!"searchKey" !self.mDictTypeName}
-    !@methodKind.definedAsMember
-    !removeMethodFormalArgumentList
-    !self.mDictTypeName.location
-    !true
-    !@methodQualifier.isBasic
+    (!@{!"searchKey" !self.mDictTypeName},
+    !@methodKind.definedAsMember,
+    !removeMethodFormalArgumentList,
+    !self.mDictTypeName.location,
+    !true,
+    !@methodQualifier.isBasic,
     !"" // No error message
   )
 //--- Enter "attributeForKey" getters
   for (* typeName mPropertyName 3*) in self.mPropertyList do
     let accessorName = @lstring {!mPropertyName.string + "ForKey" !mPropertyName.location}
-    !?ioTypeMap.makeEntry  (!typeName ?let attributeTypeIndex)
+    !?ioTypeMap.makeEntry  (!typeName, ?let attributeTypeIndex)
     !?getterMap.insertOrReplace
-      (!accessorName
-      !.definedAsMember
-      !@functionSignature @[@("".nowhere, keyTypeIndex, "inKey", true)]
-      !.here
-      !true
-      !attributeTypeIndex
-      !.isBasic
+      (!accessorName,
+      !.definedAsMember,
+      !@functionSignature @[@("".nowhere, keyTypeIndex, "inKey", true)],
+      !.here,
+      !true,
+      !attributeTypeIndex,
+      !.isBasic,
       !"" // func name is not obsolete, no replacement func
     )
   end
@@ -309,18 +309,18 @@ override proc @dictDeclarationAST enterDeclarationInSemanticContext
       !mPropertyName.location
     }
     !?ioTypeMap.makeEntry
-      (!typeName
+      (!typeName,
       ?let @unifiedTypeMapEntry attributeTypeIndex
     )
     var accessorFormalArgumentList = @formalParameterSignature ()
     accessorFormalArgumentList += !"".nowhere !attributeTypeIndex !.argumentConstantIn !mPropertyName.string
     accessorFormalArgumentList += !"".nowhere !keyTypeIndex !.argumentConstantIn !"key"
     !?setterMap.insertOrReplace
-      (!accessorName
-      !@methodKind.definedAsMember
-      !accessorFormalArgumentList
-      !true
-      !@methodQualifier.isBasic
+      (!accessorName,
+      !@methodKind.definedAsMember,
+      !accessorFormalArgumentList,
+      !true,
+      !@methodQualifier.isBasic,
       !"" // No error message
     )
   end
@@ -328,29 +328,29 @@ override proc @dictDeclarationAST enterDeclarationInSemanticContext
   var @initializerMap initializerMap = @()
   let @functionSignature emptyArgumentList = @()
   !?initializerMap.insertKey
-    (!@{!emptyArgumentList.initializerSignature !self.mDictTypeName}
+    (!@{!emptyArgumentList.initializerSignature !self.mDictTypeName},
     !emptyArgumentList
   )
 //--- Add extensions
   addExtensions (
-    !inExtensionInitializerMapForBuildingContext
-    !inExtensionMethodMapForBuildingContext
-    !inExtensionGetterMapForBuildingContext
-    !inExtensionSetterMapForBuildingContext
-    !?ioSemanticContext
-    !?ioTypeMap
-    !self.mDictTypeName
-    !isClass: false
-    !?initializerMap
-    !?getterMap
-    !?setterMap
-    !?instanceMethodMap
+    !inExtensionInitializerMapForBuildingContext,
+    !inExtensionMethodMapForBuildingContext,
+    !inExtensionGetterMapForBuildingContext,
+    !inExtensionSetterMapForBuildingContext,
+    !?ioSemanticContext,
+    !?ioTypeMap,
+    !self.mDictTypeName,
+    !isClass: false,
+    !?initializerMap,
+    !?getterMap,
+    !?setterMap,
+    !?instanceMethodMap,
     !acceptSetters: true
   )
 //--- Element type index
   let elementTypeName = makeEmbeddedElementTypeLName (!self.mDictTypeName)
   !?ioTypeMap.makeEntry
-    (!elementTypeName
+    (!elementTypeName,
     ?let @unifiedTypeMapEntry elementTypeEntry
   )
 //--- Features
@@ -359,24 +359,24 @@ override proc @dictDeclarationAST enterDeclarationInSemanticContext
     features |= .equatable
   end
   handleEquatableComparableExtension (
-    !?ioEquatableExtensionMap
-    !self.mDictTypeName
-    !?features
-    !acceptEquatable: true
+    !?ioEquatableExtensionMap,
+    !self.mDictTypeName,
+    !?features,
+    !acceptEquatable: true,
     !acceptComparable: false
   )
 //--- Optional Element type index
   let optionalElementTypeName = makeOptionalTypeLName (!forTypeNamed: elementTypeName)
   !?ioTypeMap.makeEntry
-    (!optionalElementTypeName
+    (!optionalElementTypeName,
     ?let @unifiedTypeMapEntry optionalElementTypeEntry
   )
 //--- Read subscripts
   var @subscriptMap readSubscriptMap = @()
   let @functionSignature argumentTypeList = @[@("".nowhere, keyTypeIndex, "inKey", true)]
   !?readSubscriptMap.insertKey
-    (!@(argumentTypeList.subcriptSignature, .nowhere)
-    !argumentTypeList
+    (!@(argumentTypeList.subcriptSignature, .nowhere),
+    !argumentTypeList,
     !optionalElementTypeEntry
   )
 //--- Enter in type map
@@ -407,7 +407,7 @@ override proc @dictDeclarationAST enterDeclarationInSemanticContext
     !headerFileName: "dict-" + self.mDictTypeName.string.fileNameRepresentation
     !headerKind: .oneHeader
   }
-  !?ioTypeMap.insertType (!typeDefinition.typeName !typeDefinition)
+  !?ioTypeMap.insertType (!typeDefinition.typeName, !typeDefinition)
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -470,14 +470,14 @@ override proc @dictDeclarationAST semanticAnalysis
   end
 //--- Useful entities graph
   let nameForUsefulness = typeNameForUsefulEntitiesGraph (!self.mDictTypeName)
-  !?ioUsefulEntitiesGraph.addNode (!nameForUsefulness !nameForUsefulness)
+  !?ioUsefulEntitiesGraph.addNode (!nameForUsefulness, !nameForUsefulness)
   if self.isPredefined then
     ioUsefulnessRootEntities += !nameForUsefulness
   end
   let elementTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (
     !makeEmbeddedElementTypeLName (!self.mDictTypeName)
   )
-  !?ioUsefulEntitiesGraph.addEdge (!from: nameForUsefulness !to: elementTypeNameForUsefulness)
+  !?ioUsefulEntitiesGraph.addEdge (!from: nameForUsefulness, !to: elementTypeNameForUsefulness)
   if self.isPredefined then
     ioUsefulnessRootEntities += !elementTypeNameForUsefulness
   end
@@ -486,7 +486,7 @@ override proc @dictDeclarationAST semanticAnalysis
     !self.mDictTypeName
     !@formalInputParameterListAST ().initializerSignature
   )
-  !?ioUsefulEntitiesGraph.addNode (!initializerNameForUsefulness !initializerNameForUsefulness)
+  !?ioUsefulEntitiesGraph.addNode (!initializerNameForUsefulness, !initializerNameForUsefulness)
   if self.isPredefined then
     ioUsefulnessRootEntities += !initializerNameForUsefulness
   end
@@ -495,7 +495,7 @@ override proc @dictDeclarationAST semanticAnalysis
   var @propertyIndexMap attributeMap = @()
   for (* typeName mPropertyName * hasSelector initExpression) in self.mPropertyList do
     let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!typeName)
-    !?ioUsefulEntitiesGraph.addEdge (!from: nameForUsefulness !to: propertyTypeNameForUsefulness)
+    !?ioUsefulEntitiesGraph.addEdge (!from: nameForUsefulness, !to: propertyTypeNameForUsefulness)
     let @unifiedTypeMapEntry t = [ioTypeMap typeMapEntryForLKey !typeName]
     let hasSetter = true
     typedAttributeList +=
@@ -512,7 +512,7 @@ override proc @dictDeclarationAST semanticAnalysis
       m += "; theses names are reserved"
       error (mPropertyName: m)
     end
-    !?attributeMap.insertKey (!mPropertyName !t)
+    !?attributeMap.insertKey (!mPropertyName, !t)
   end
 //--- Optional Element type index
   let elementTypeName = makeEmbeddedElementTypeLName (!self.mDictTypeName)

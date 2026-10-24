@@ -52,7 +52,7 @@ syntax extension galgas4DeclarationsSyntax {
 
   rule <declaration> (?!@galgasDeclarationAST ioDeclarations) {
     $extension$
-    <simple_type_definition> (!?ioDeclarations ?let typeName)
+    <simple_type_definition> (!?ioDeclarations, ?let typeName)
     $:$
     let @equatableComparableExtension theExtension
     select
@@ -82,7 +82,7 @@ proc handleEquatableComparableExtension (?!@equatableExtensionMap ioEquatableExt
                                          ?acceptComparable: let @bool inAcceptComparable) {
   if let node = ioEquatableExtensionMap @[inTypeName] then
     let location = [ioEquatableExtensionMap locationForKey !inTypeName]
-    !?ioEquatableExtensionMap.removeKey (!inTypeName ?*)
+    !?ioEquatableExtensionMap.removeKey (!inTypeName, ?*)
     let currentlyEquatable = [ioFeatures contains !.equatable]
     let currentlyComparable = [ioFeatures contains !.comparable]
     switch node.mExtension
@@ -148,8 +148,8 @@ final class @equatableExtensionAST : @semanticDeclarationAST {
           ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext,
           ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList) {
     let key = @lstring {!self.keyRepresentation !self.mTypeName.location}
-    !?ioSemanticTypePrecedenceGraph.addNode (!key !self)
-    !?ioSemanticTypePrecedenceGraph.addEdge (!from: key !to: @("@" + self.mTypeName, self.mTypeName))
+    !?ioSemanticTypePrecedenceGraph.addNode (!key, !self)
+    !?ioSemanticTypePrecedenceGraph.addEdge (!from: key, !to: @("@" + self.mTypeName, self.mTypeName))
   //---
     if let node = ioEquatableExtensionMap @[self.mTypeName] then
       switch self.mExtension
@@ -173,7 +173,7 @@ final class @equatableExtensionAST : @semanticDeclarationAST {
         end
       end
     else
-      !?ioEquatableExtensionMap.insertKey (!self.mTypeName !self.mExtension)
+      !?ioEquatableExtensionMap.insertKey (!self.mTypeName, !self.mExtension)
     end
   }
 

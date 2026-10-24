@@ -37,11 +37,11 @@ syntax extension galgas3SyntaxComponentSyntax {
     $select$
     let mSelectInstructionLocation = @location.here
     var mSelectBranchList = @listOfSyntaxInstructionList ()
-    <syntax_instruction_list_ggs3> (!?ioDeclarations ?let @syntaxInstructionList il)
+    <syntax_instruction_list_ggs3> (!?ioDeclarations, ?let @syntaxInstructionList il)
     mSelectBranchList += !il !@location.here
     repeat
       $or$
-      <syntax_instruction_list_ggs3> (!?ioDeclarations ?let @syntaxInstructionList instructionList)
+      <syntax_instruction_list_ggs3> (!?ioDeclarations, ?let @syntaxInstructionList instructionList)
       mSelectBranchList += !instructionList !@location.here
     while
     end
@@ -69,11 +69,11 @@ syntax extension galgas4SyntaxComponentSyntax {
     $select$
     let mSelectInstructionLocation = @location.here
     var mSelectBranchList = @listOfSyntaxInstructionList ()
-    <syntax_instruction_list> (!?ioDeclarations ?let @syntaxInstructionList il)
+    <syntax_instruction_list> (!?ioDeclarations, ?let @syntaxInstructionList il)
     mSelectBranchList += !il !@location.here
     repeat
       $or$
-      <syntax_instruction_list> (!?ioDeclarations ?let @syntaxInstructionList instructionList)
+      <syntax_instruction_list> (!?ioDeclarations, ?let @syntaxInstructionList instructionList)
       mSelectBranchList += !instructionList !@location.here
     while
     end
@@ -106,10 +106,10 @@ override proc @selectInstruction transformInstructionForGrammarAnalysis
   for (mSyntaxInstructionList *) in self.mSelectBranchList do
     var syntaxInstructionList = @syntaxInstructionListForGrammarAnalysis ()
     transformInstructionListForGrammarAnalysis (
-      !mSyntaxInstructionList
-      !?usedTerminalMap:ioActuallyUsedTerminalSymbolMap
-      !nonTerminalSymbolMap:inNonTerminalSymbolMap
-      !?addedTerminalIndex:ioAddedNonTerminalIndex
+      !mSyntaxInstructionList,
+      !?usedTerminalMap:ioActuallyUsedTerminalSymbolMap,
+      !nonTerminalSymbolMap:inNonTerminalSymbolMap,
+      !?addedTerminalIndex:ioAddedNonTerminalIndex,
       !?syntaxInstructionList
     )
     selectBranchList += !syntaxInstructionList
@@ -148,20 +148,20 @@ override proc @selectInstruction analyzeSyntaxInstruction
   var listOfSemanticInstructionListForGeneration = @listOfSemanticInstructionListForGeneration ()
   for (mSyntaxInstructionList mEndOf_instructions) in self.mSelectBranchList do
     analyzeSyntaxInstructionList (
-      !inUsefulnessCallerEntityName
-      !?ioUsefulEntitiesGraph
-      !inAnalysisContext
-      !?ioTypeMap
-      !inHasTranslateFeature
-      !inTerminalMap
-      !inLexiqueName
-      !inNonterminalMap
-      !inComponentName
-      !mSyntaxInstructionList
-      !mEndOf_instructions
-      !inIndexNameSet
-      !?ioVariableMap
-      !?ioSelectMethodCount
+      !inUsefulnessCallerEntityName,
+      !?ioUsefulEntitiesGraph,
+      !inAnalysisContext,
+      !?ioTypeMap,
+      !inHasTranslateFeature,
+      !inTerminalMap,
+      !inLexiqueName,
+      !inNonterminalMap,
+      !inComponentName,
+      !mSyntaxInstructionList,
+      !mEndOf_instructions,
+      !inIndexNameSet,
+      !?ioVariableMap,
+      !?ioSelectMethodCount,
       ?let instructionList
     )
     listOfSemanticInstructionListForGeneration += !instructionList !mEndOf_instructions
@@ -258,11 +258,11 @@ override proc @selectInstructionForGeneration generateInstruction (?!@stringset 
   for (mInstructionList *) in self.mListOfSemanticInstructionListForGeneration do(IDX)
     ioGeneratedCode += "case " + (IDX + 1).string + ": {\n"
     generateInstructionList (
-      !?ioInclusionSet
-      !mInstructionList
-      !?ioTemporaryVariableIndex
-      !?ioUnusedVariableCppNameSet
-      !inGenerateSyntaxDirectedTranslationString
+      !?ioInclusionSet,
+      !mInstructionList,
+      !?ioTemporaryVariableIndex,
+      !?ioUnusedVariableCppNameSet,
+      !inGenerateSyntaxDirectedTranslationString,
       !?ioGeneratedCode
     )
     ioGeneratedCode += "} break ;\n"

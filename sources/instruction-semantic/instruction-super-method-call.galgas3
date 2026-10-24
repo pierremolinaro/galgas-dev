@@ -23,31 +23,13 @@ syntax extension galgas3InstructionsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-//  rule <semantic_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
-//                                   !@semanticInstructionAST outInstruction {
-//    $[$
-//    let instructionLocation = @location.here
-//    $super$
-//    $init$
-//    <output_expression_list_ggs3> !?ioDeclarations ?let actualParameterList
-//    $]$
-//    outInstruction = @superMethodCallInstructionAST {
-//      !instructionLocation
-//      !actualParameterList
-//    }
-//  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
   rule <semantic_instruction_ggs3> (?!@galgasDeclarationAST ioDeclarations,
                                     !@semanticInstructionAST outInstruction) {
     $super$
     let instructionLocation = @location.here
     $.$
     $identifier$ ?let methodName
-    $($
-    <actual_parameter_list_ggs3> (!?ioDeclarations ?let @actualParameterListAST actualParameterList)
-    $)$
+    <actual_parameter_list_ggs3> (!?ioDeclarations, ?let @actualParameterListAST actualParameterList)
     outInstruction = @superMethodCallInstructionAST {
       !instructionLocation
       !methodName
@@ -71,7 +53,7 @@ syntax extension galgas4InstructionsSyntax {
     $.$
     $identifier$ ?let methodName
     let instructionLocation = @location.here
-    <actual_parameter_list_with_parenthesis> (!?ioDeclarations ?let @actualParameterListAST actualParameterList)
+    <actual_parameter_list_with_parenthesis> (!?ioDeclarations, ?let @actualParameterListAST actualParameterList)
     outInstruction = @superMethodCallInstructionAST {
       !instructionLocation
       !methodName
@@ -120,12 +102,12 @@ final class @superMethodCallInstructionAST : @semanticInstructionAST {
     end
   //--- Get type proc signature
     selfType.definition.instanceMethodMap.searchKey
-      (!self.mMethodName
-      ?* // let kind
-      ?let routineSignature
-      ?*
-      ?let hasCompilerArgument
-      ?*
+      (!self.mMethodName,
+      ?*, // let kind
+      ?let routineSignature,
+      ?*,
+      ?let hasCompilerArgument,
+      ?*,
       ?let errorMessage
     )
     if errorMessage != "" then
@@ -133,15 +115,15 @@ final class @superMethodCallInstructionAST : @semanticInstructionAST {
     end
   //--- Check effective parameters
     self.mActualParameterList.analyzeRoutineArguments
-      (!inUsefulnessCallerEntityName
-      !?ioUsefulEntitiesGraph
-      !inAnalysisContext
-      !?ioTypeMap
-      !self.mMethodName
-      !invokedEntityNameForErrorSignaling: "'" + self.mMethodName + "' instance proc header"
-      !routineSignature
-      !?ioVariableMap
-      !?ioInstructionListForGeneration
+      (!inUsefulnessCallerEntityName,
+      !?ioUsefulEntitiesGraph,
+      !inAnalysisContext,
+      !?ioTypeMap,
+      !self.mMethodName,
+      !invokedEntityNameForErrorSignaling: "'" + self.mMethodName + "' instance proc header",
+      !routineSignature,
+      !?ioVariableMap,
+      !?ioInstructionListForGeneration,
       ?let @actualParameterListForGeneration actualParameterListForGeneration
     )
   //--- Search base type that declares the proc
@@ -199,7 +181,7 @@ final class @superMethodCallInstructionForGeneration : @semanticInstructionForGe
     var jokerParametersToReleaseList = @stringlist ()
     var inputVariableList = @stringlist ()
     for (mActualParameter) in self.mActualParameterList do
-      mActualParameter.generateActualParameter (!?ioInclusionSet !?ioTemporaryVariableIndex !?ioGeneratedCode !?jokerParametersToReleaseList !?inputVariableList !?ioUnusedVariableCppNameSet ?let parameterCppName)
+      mActualParameter.generateActualParameter (!?ioInclusionSet, !?ioTemporaryVariableIndex, !?ioGeneratedCode, !?jokerParametersToReleaseList, !?inputVariableList, !?ioUnusedVariableCppNameSet, ?let parameterCppName)
       parameterCppNameList += !parameterCppName
     end
   //--- Generate proc call
@@ -227,7 +209,7 @@ final class @superMethodCallInstructionForGeneration : @semanticInstructionForGe
   //--- Generate poisoned variables
     for (actualParameter) in self.mActualParameterList do
       actualParameter.generatePoisonedVariables
-        (!?ioGeneratedCode
+        (!?ioGeneratedCode,
         !?ioUnusedVariableCppNameSet
       )
     end

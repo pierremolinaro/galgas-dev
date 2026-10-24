@@ -31,19 +31,19 @@ syntax extension galgas3InstructionsSyntax {
   rule <if_instruction_core> (?!@galgasDeclarationAST ioDeclarations,
                              !@semanticInstructionAST outInstruction) {
     let instructionLocation = @location.here
-    <comma_separated_expression_ggs3> (!?ioDeclarations ?let testExpression)
+    <comma_separated_expression_ggs3> (!?ioDeclarations, ?let testExpression)
     $then$
-    <semantic_instruction_list_ggs3> (!?ioDeclarations ?let then_instructionList)
+    <semantic_instruction_list_ggs3> (!?ioDeclarations, ?let then_instructionList)
     let endOf_then_branchLocation = @location.here
     let @semanticInstructionListAST else_instructionList
     select
       else_instructionList = @semanticInstructionListAST ()
     or
       $else$
-      <semantic_instruction_list_ggs3> (!?ioDeclarations ?else_instructionList)
+      <semantic_instruction_list_ggs3> (!?ioDeclarations, ?else_instructionList)
     or
       $elsif$
-      <if_instruction_core> (!?ioDeclarations ?let instruction)
+      <if_instruction_core> (!?ioDeclarations, ?let instruction)
       else_instructionList = @[@(instruction)]
     end
     outInstruction = @ifInstructionAST {
@@ -61,7 +61,7 @@ syntax extension galgas3InstructionsSyntax {
   rule <semantic_instruction_ggs3> (?!@galgasDeclarationAST ioDeclarations,
                                    !@semanticInstructionAST outInstruction ) {
     $if$
-    <if_instruction_core> (!?ioDeclarations ?outInstruction)
+    <if_instruction_core> (!?ioDeclarations, ?outInstruction)
     $end$
   }
 
@@ -83,19 +83,19 @@ syntax extension galgas4InstructionsSyntax {
   rule <if_instruction_core> (?!@galgasDeclarationAST ioDeclarations,
                              !@semanticInstructionAST outInstruction ) {
     let instructionLocation = @location.here
-    <comma_separated_expression> (!?ioDeclarations ?let testExpression)
+    <comma_separated_expression> (!?ioDeclarations, ?let testExpression)
     $then$
-    <semantic_instruction_list> (!?ioDeclarations ?let then_instructionList)
+    <semantic_instruction_list> (!?ioDeclarations, ?let then_instructionList)
     let endOf_then_branchLocation = @location.here
     let @semanticInstructionListAST else_instructionList
     select
       else_instructionList = @()
     or
       $else$
-      <semantic_instruction_list> (!?ioDeclarations ?else_instructionList)
+      <semantic_instruction_list> (!?ioDeclarations, ?else_instructionList)
     or
       $elsif$
-      <if_instruction_core> (!?ioDeclarations ?let instruction)
+      <if_instruction_core> (!?ioDeclarations, ?let instruction)
       else_instructionList = @[@(instruction)]
     end
     outInstruction = @ifInstructionAST {
@@ -113,7 +113,7 @@ syntax extension galgas4InstructionsSyntax {
   rule <semantic_instruction> (?!@galgasDeclarationAST ioDeclarations,
                               !@semanticInstructionAST outInstruction ) {
     $if$
-    <if_instruction_core> (!?ioDeclarations ?outInstruction)
+    <if_instruction_core> (!?ioDeclarations, ?outInstruction)
     $end$
   }
 
@@ -174,24 +174,24 @@ final class @ifInstructionAST : @semanticInstructionAST {
                             ?!@localVarManager ioVariableMap ) {
   //--- Test expression
    self.mExpressions.analyzeSemanticExpressionList
-     (!inUsefulnessCallerEntityName
-     !?ioUsefulEntitiesGraph
-     !inAnalysisContext
-     !?ioTypeMap
-     !?ioVariableMap
+     (!inUsefulnessCallerEntityName,
+     !?ioUsefulEntitiesGraph,
+     !inAnalysisContext,
+     !?ioTypeMap,
+     !?ioVariableMap,
      ?let @ifTestListForGeneration testListForGeneration
    )
   //--- Then branch
     analyzeSemanticInstructionListWithoutBranch (
-      !inUsefulnessCallerEntityName
-      !?ioUsefulEntitiesGraph
-      !inAnalysisContext
-      !?ioTypeMap
-      !localConstantList: @()
-      !localInitializedVariableListWarnsIfNotMutated: @()
-      !localInitializedVariableListNoWarnsIfNotMutated: @()
-      !self.m_then_instructionList
-      !?ioVariableMap
+      !inUsefulnessCallerEntityName,
+      !?ioUsefulEntitiesGraph,
+      !inAnalysisContext,
+      !?ioTypeMap,
+      !localConstantList: @(),
+      !localInitializedVariableListWarnsIfNotMutated: @(),
+      !localInitializedVariableListNoWarnsIfNotMutated: @(),
+      !self.m_then_instructionList,
+      !?ioVariableMap,
       ?let then_instructionList
     )
     var expressions = self.mExpressions
@@ -203,16 +203,16 @@ final class @ifInstructionAST : @semanticInstructionAST {
     !?ioVariableMap.closeBranch (!self.mEndOf_then_branch)
   //--- else branch
     analyzeSemanticInstructionList (
-      !inUsefulnessCallerEntityName
-      !?ioUsefulEntitiesGraph
-      !inAnalysisContext
-      !?ioTypeMap
-      !localConstantList: @()
-      !localInitializedVariableListWarnsIfNotMutated: @()
-      !localInitializedVariableListNoWarnsIfNotMutated: @()
-      !self.m_else_instructionList
-      !self.mEndOf_if_instruction
-      !?ioVariableMap
+      !inUsefulnessCallerEntityName,
+      !?ioUsefulEntitiesGraph,
+      !inAnalysisContext,
+      !?ioTypeMap,
+      !localConstantList: @(),
+      !localInitializedVariableListWarnsIfNotMutated: @(),
+      !localInitializedVariableListNoWarnsIfNotMutated: @(),
+      !self.m_else_instructionList,
+      !self.mEndOf_if_instruction,
+      !?ioVariableMap,
       ?let else_instructionList
     )
     !?ioVariableMap.closeOverride (!self.mEndOf_if_instruction)
@@ -265,20 +265,20 @@ final class @ifInstructionForGeneration : @semanticInstructionForGeneration {
                                       ?!@string ioGeneratedCode ) {
   //--- Generate test expression
     self.mExpressions.generateInstruction
-      (!?ioInclusionSet
-      !?ioTemporaryVariableIndex
-      !?ioUnusedVariableCppNameSet
-      !?ioGeneratedCode
+      (!?ioInclusionSet,
+      !?ioTemporaryVariableIndex,
+      !?ioUnusedVariableCppNameSet,
+      !?ioGeneratedCode,
       ?let @string testVar
     )
   //--- Then branch
     ioGeneratedCode += "if (GalgasBool::boolTrue == " + testVar + ") {\n"
     generateInstructionList (
-      !?ioInclusionSet
-      !self.m_then_instructionList
-      !?ioTemporaryVariableIndex
-      !?ioUnusedVariableCppNameSet
-      !inGenerateSyntaxDirectedTranslationString
+      !?ioInclusionSet,
+      !self.m_then_instructionList,
+      !?ioTemporaryVariableIndex,
+      !?ioUnusedVariableCppNameSet,
+      !inGenerateSyntaxDirectedTranslationString,
       !?ioGeneratedCode
     )
     ioGeneratedCode += "}\n"
@@ -290,11 +290,11 @@ final class @ifInstructionForGeneration : @semanticInstructionForGeneration {
     if self.m_else_instructionList.count > 0 then
       ioGeneratedCode += "if (GalgasBool::boolFalse == " + testVar + ") {\n"
       generateInstructionList (
-        !?ioInclusionSet
-        !self.m_else_instructionList
-        !?ioTemporaryVariableIndex
-        !?ioUnusedVariableCppNameSet
-        !inGenerateSyntaxDirectedTranslationString
+        !?ioInclusionSet,
+        !self.m_else_instructionList,
+        !?ioTemporaryVariableIndex,
+        !?ioUnusedVariableCppNameSet,
+        !inGenerateSyntaxDirectedTranslationString,
         !?ioGeneratedCode
       )
       ioGeneratedCode += "}\n"

@@ -40,10 +40,10 @@ proc templateCodeGenerationForListInstruction (?let @templateInstructionListForG
                                               ?!@bool ioUseColumnMarker ) {
   for (mInstruction) in inInstructionList do
     mInstruction.templateCodeGeneration
-      (!?ioGeneratedCode
-      !?ioInclusionSet
-      !?ioTemporaryVariableIndex
-      !?ioUnusedVariableCppNameSet
+      (!?ioGeneratedCode,
+      !?ioInclusionSet,
+      !?ioTemporaryVariableIndex,
+      !?ioUnusedVariableCppNameSet,
       !?ioUseColumnMarker
     )
   end
@@ -69,7 +69,7 @@ override proc @templateInstructionExpressionForGeneration templateCodeGeneration
   ?!@stringset ioUnusedVariableCppNameSet,
   ?!@bool unused ioUseColumnMarker ) {
 //--- Expression
-  self.mExpression.generateExpression (!?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?let cppName)
+  self.mExpression.generateExpression (!?ioGeneratedCode, !?ioInclusionSet, !?ioTemporaryVariableIndex, !?ioUnusedVariableCppNameSet, ?let cppName)
   ioGeneratedCode += "result.appendString (" + cppName + ".stringValue ()) ;\n"
 }
 
@@ -82,16 +82,16 @@ override proc @templateBlockInstructionForGeneration templateCodeGeneration
   ?!@stringset ioUnusedVariableCppNameSet,
   ?!@bool ioUseColumnMarker ) {
 //--- Expression
-  self.mExpression.generateExpression (!?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?let indendationVarCppName)
+  self.mExpression.generateExpression (!?ioGeneratedCode, !?ioInclusionSet, !?ioTemporaryVariableIndex, !?ioUnusedVariableCppNameSet, ?let indendationVarCppName)
   ioGeneratedCode += "if (" + indendationVarCppName + ".isValid ()) {\n"
   ioGeneratedCode += "  result.incIndentation (int32_t (" + indendationVarCppName + ".uintValue ())) ;\n"
   ioGeneratedCode += "}\n"
   templateCodeGenerationForListInstruction (
-    !self.mBlockInstructionList
-    !?ioGeneratedCode
-    !?ioInclusionSet
-    !?ioTemporaryVariableIndex
-    !?ioUnusedVariableCppNameSet
+    !self.mBlockInstructionList,
+    !?ioGeneratedCode,
+    !?ioInclusionSet,
+    !?ioTemporaryVariableIndex,
+    !?ioUnusedVariableCppNameSet,
     !?ioUseColumnMarker
   )
   ioGeneratedCode += "if (" + indendationVarCppName + ".isValid ()) {\n"
@@ -134,10 +134,10 @@ override proc @templateInstructionIfForGeneration templateCodeGeneration
   for (expression instructionList) in self.mTemplateInstructionIfBranchList do
   //--- IF expression
     expression.generateExpression
-      (!?ioGeneratedCode
-      !?ioInclusionSet
-      !?ioTemporaryVariableIndex
-      !?ioUnusedVariableCppNameSet
+      (!?ioGeneratedCode,
+      !?ioInclusionSet,
+      !?ioTemporaryVariableIndex,
+      !?ioUnusedVariableCppNameSet,
       ?let ifVarCppName
     )
     let testVar = "test_" + ioTemporaryVariableIndex.string
@@ -147,11 +147,11 @@ override proc @templateInstructionIfForGeneration templateCodeGeneration
     ioGeneratedCode += "case GalgasBool::boolTrue : {\n"
     !?ioGeneratedCode.incIndentation (!2)
     templateCodeGenerationForListInstruction (
-      !instructionList
-      !?ioGeneratedCode
-      !?ioInclusionSet
-      !?ioTemporaryVariableIndex
-      !?ioUnusedVariableCppNameSet
+      !instructionList,
+      !?ioGeneratedCode,
+      !?ioInclusionSet,
+      !?ioTemporaryVariableIndex,
+      !?ioUnusedVariableCppNameSet,
       !?ioUseColumnMarker
     )
     ioGeneratedCode += "} break ;\n"
@@ -161,11 +161,11 @@ override proc @templateInstructionIfForGeneration templateCodeGeneration
   end
 //--- else instructions
   templateCodeGenerationForListInstruction (
-    !self.mElseInstructionList
-    !?ioGeneratedCode
-    !?ioInclusionSet
-    !?ioTemporaryVariableIndex
-    !?ioUnusedVariableCppNameSet
+    !self.mElseInstructionList,
+    !?ioGeneratedCode,
+    !?ioInclusionSet,
+    !?ioTemporaryVariableIndex,
+    !?ioUnusedVariableCppNameSet,
     !?ioUseColumnMarker
   )
   for (* *) in self.mTemplateInstructionIfBranchList do

@@ -44,7 +44,7 @@ struct @genericExtensionMethodListMap {
   setter insertKey  (?let @string inKey,
                     ?let @lstring inValue ) {
     if [self.dictionary hasKey !inKey] then
-      self.dictionary.searchKey (!inKey ?var aList)
+      self.dictionary.searchKey (!inKey, ?var aList)
       !?aList.append (!inValue)
       self.dictionary += !inKey !aList
     else
@@ -56,7 +56,7 @@ struct @genericExtensionMethodListMap {
 
   func listForKey ?let @string inKey -> @lstringlist {
     if [self.dictionary hasKey !inKey] then
-      self.dictionary.searchKey (!inKey ?result)
+      self.dictionary.searchKey (!inKey, ?result)
    else
       result = @()
     end
@@ -113,7 +113,7 @@ struct @descendantClassListMap {
   setter insertKey  (?let @string inKey,
                     ?let @unifiedTypeMapEntry inType ) {
     if [self.dictionary hasKey !inKey] then
-      self.dictionary.searchKey (!inKey ?var aList)
+      self.dictionary.searchKey (!inKey, ?var aList)
       !?aList.append (!inType)
       self.dictionary += !inKey !aList
     else
@@ -125,7 +125,7 @@ struct @descendantClassListMap {
 
   func listForKey ?let @string inKey -> @unifiedTypeMapEntryList {
     if [self.dictionary hasKey !inKey] then
-      self.dictionary.searchKey (!inKey ?result)
+      self.dictionary.searchKey (!inKey, ?result)
    else
       result = @()
     end
@@ -189,11 +189,11 @@ proc checkextensionSetterDefinitionForClass
     if not found then
       if not mType.definition.isConcrete then
         checkextensionSetterDefinitionForClass (
-          !inClassNameForErrorSignaling
-          !descendantClassName.string
-          !inAbstractExtensionSetterName
-          !inDescendantClassListMap
-          !inOverridingExtensionMethodListMap
+          !inClassNameForErrorSignaling,
+          !descendantClassName.string,
+          !inAbstractExtensionSetterName,
+          !inDescendantClassListMap,
+          !inOverridingExtensionMethodListMap,
           !inUnifiedTypeMap
         )
       else
@@ -226,11 +226,11 @@ proc checkExtensionMethodDefinitionForClass
     if not found then
       if not mType.definition.isConcrete then
         checkExtensionMethodDefinitionForClass (
-          !inClassNameForErrorSignaling
-          !descendantClassName.string
-          !inAbstractExtensionMethodName
-          !inDescendantClassListMap
-          !inOverridingExtensionMethodListMap
+          !inClassNameForErrorSignaling,
+          !descendantClassName.string,
+          !inAbstractExtensionMethodName,
+          !inDescendantClassListMap,
+          !inOverridingExtensionMethodListMap,
           !inUnifiedTypeMap
         )
       else
@@ -263,11 +263,11 @@ proc checkExtensionGetterDefinitionForClass
     if not found then
       if not mType.definition.isConcrete then
         checkExtensionGetterDefinitionForClass (
-          !inClassNameForErrorSignaling
-          !descendantClassName.string
-          !inAbstractExtensionGetterName
-          !inDescendantClassListMap
-          !inOverridingExtensionGetterListMap
+          !inClassNameForErrorSignaling,
+          !descendantClassName.string,
+          !inAbstractExtensionGetterName,
+          !inDescendantClassListMap,
+          !inOverridingExtensionGetterListMap,
           !inUnifiedTypeMap
         )
       else
@@ -295,7 +295,7 @@ proc performGalgas3ProjectGlobalCheckings
      let superType = element.definition.superType
      if not superType.isNull then
        !?descendantClassListMap.insertKey
-         (!superType.definition.typeName.string
+         (!superType.definition.typeName.string,
          ![ioTypeMap typeMapEntryForLKey !lkey]
        )
      end
@@ -315,17 +315,17 @@ proc performGalgas3ProjectGlobalCheckings
   var @genericExtensionMethodListMap overridingAbstractExtensionSetterListMap = @()
   for (mSemanticDeclaration) in inSemanticDeclarationList do
     mSemanticDeclaration.buildExtensionListMaps
-      (!?abstractExtensionSetterListMap
-      !?extensionSetterListMap
-      !?overridingExtensionSetterListMap
-      !?overridingAbstractExtensionSetterListMap
-      !?abstractExtensionMethodListMap
-      !?extensionMethodListMap
-      !?overridingExtensionMethodListMap
-      !?overridingAbstractExtensionMethodListMap
-      !?abstractExtensionGetterListMap
-      !?extensionReaderListMap
-      !?overridingExtensionGetterListMap
+      (!?abstractExtensionSetterListMap,
+      !?extensionSetterListMap,
+      !?overridingExtensionSetterListMap,
+      !?overridingAbstractExtensionSetterListMap,
+      !?abstractExtensionMethodListMap,
+      !?extensionMethodListMap,
+      !?overridingExtensionMethodListMap,
+      !?overridingAbstractExtensionMethodListMap,
+      !?abstractExtensionGetterListMap,
+      !?extensionReaderListMap,
+      !?overridingExtensionGetterListMap,
       !?overridingAbstractExtensionGetterListMap
     )
   end
@@ -363,11 +363,11 @@ proc performGalgas3ProjectGlobalCheckings
     for (key mList) in abstractExtensionSetterListMap.dictionary do
       for (mValue) in mList do
         checkextensionSetterDefinitionForClass (
-          !key
-          !key
-          !mValue
-          !descendantClassListMap
-          !overridingExtensionSetterListMap
+          !key,
+          !key,
+          !mValue,
+          !descendantClassListMap,
+          !overridingExtensionSetterListMap,
           !ioTypeMap
         )
       end
@@ -376,11 +376,11 @@ proc performGalgas3ProjectGlobalCheckings
     for (key mList) in overridingAbstractExtensionSetterListMap.dictionary do
       for (mValue) in mList do
         checkextensionSetterDefinitionForClass (
-          !key
-          !key
-          !mValue
-          !descendantClassListMap
-          !overridingExtensionSetterListMap
+          !key,
+          !key,
+          !mValue,
+          !descendantClassListMap,
+          !overridingExtensionSetterListMap,
           !ioTypeMap
         )
       end
@@ -417,11 +417,11 @@ proc performGalgas3ProjectGlobalCheckings
     for (key mList) in abstractExtensionMethodListMap.dictionary do
       for (mValue) in mList do
         checkExtensionMethodDefinitionForClass (
-          !key
-          !key
-          !mValue
-          !descendantClassListMap
-          !overridingExtensionMethodListMap
+          !key,
+          !key,
+          !mValue,
+          !descendantClassListMap,
+          !overridingExtensionMethodListMap,
           !ioTypeMap
         )
       end
@@ -430,11 +430,11 @@ proc performGalgas3ProjectGlobalCheckings
     for (key mList) in overridingAbstractExtensionMethodListMap.dictionary do
       for (mValue) in mList do
         checkExtensionMethodDefinitionForClass (
-          !key
-          !key
-          !mValue
-          !descendantClassListMap
-          !overridingExtensionMethodListMap
+          !key,
+          !key,
+          !mValue,
+          !descendantClassListMap,
+          !overridingExtensionMethodListMap,
           !ioTypeMap
         )
       end
@@ -466,11 +466,11 @@ proc performGalgas3ProjectGlobalCheckings
     for (key mList) in abstractExtensionGetterListMap.dictionary do
       for (mValue) in mList do
         checkExtensionGetterDefinitionForClass (
-          !key
-          !key
-          !mValue
-          !descendantClassListMap
-          !overridingExtensionGetterListMap
+          !key,
+          !key,
+          !mValue,
+          !descendantClassListMap,
+          !overridingExtensionGetterListMap,
           !ioTypeMap
         )
       end
@@ -479,11 +479,11 @@ proc performGalgas3ProjectGlobalCheckings
     for (key mList) in overridingAbstractExtensionGetterListMap.dictionary do
       for (mValue) in mList do
         checkExtensionGetterDefinitionForClass (
-          !key
-          !key
-          !mValue
-          !descendantClassListMap
-          !overridingExtensionGetterListMap
+          !key,
+          !key,
+          !mValue,
+          !descendantClassListMap,
+          !overridingExtensionGetterListMap,
           !ioTypeMap
         )
       end
