@@ -71,7 +71,7 @@ syntax extension galgas3ExpressionSyntax {
         $>$
         kind = .strictlyInherited
       end
-      $@type$ ?let typeName
+      $@type$ (?let typeName)
       outExpression = @testDynamicClassInExpressionAST {
         !outExpression
         !endOfReceiverExpression
@@ -81,7 +81,7 @@ syntax extension galgas3ExpressionSyntax {
     or
       let endOfReceiverExpression = @location.here
       $as$
-      $@type$ ?let typeName
+      $@type$ (?let typeName)
       outExpression = @castInExpressionAST {
         !outExpression
         !endOfReceiverExpression
@@ -107,7 +107,7 @@ syntax extension galgas4ExpressionSyntax {
     or
       let endOfReceiverExpression = @location.here
       $is$
-      $@type$ ?let typeName
+      $@type$ (?let typeName)
       outExpression = @testDynamicClassInExpressionAST {
         !outExpression
         !endOfReceiverExpression
@@ -117,7 +117,7 @@ syntax extension galgas4ExpressionSyntax {
     or
       let endOfReceiverExpression = @location.here
       $as$
-      $@type$ ?let typeName
+      $@type$ (?let typeName)
       outExpression = @castInExpressionAST {
         !outExpression
         !endOfReceiverExpression

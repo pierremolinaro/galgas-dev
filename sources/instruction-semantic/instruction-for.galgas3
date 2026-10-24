@@ -82,7 +82,7 @@ syntax extension galgas3InstructionsSyntax {
 
   rule <for_instruction_element> (?!@galgasDeclarationAST unused ioDeclarations,
                                   ?!@forInstructionEnumeratedObjectElementListAST ioElementList) {
-    $literalInt$ ?let count
+    $literalInt$ (?let count)
     $*$
     var n = count.bigint.uint
     if n == 0 then
@@ -115,7 +115,7 @@ syntax extension galgas3InstructionsSyntax {
         $unused$
         isUnused = true
       end
-      $identifier$ ?let @lstring constantName
+      $identifier$ (?let @lstring constantName)
       ioElementList += !typeName !isUnused !constantName
     end
   }
@@ -156,7 +156,7 @@ syntax extension galgas3InstructionsSyntax {
       $*$
       enumerationVariable = "".here
     or
-      $identifier$ ?enumerationVariable
+      $identifier$ (?enumerationVariable)
     end
     $in$
     <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST enumeratedExpression)
@@ -210,7 +210,7 @@ syntax extension galgas3InstructionsSyntax {
       indexVariableName = @lstring {!"" !@location.here}
     or
       $($
-      $identifier$ ? indexVariableName
+      $identifier$ (? indexVariableName)
       $)$
     end
     <semantic_instruction_list_ggs3> (!?ioDeclarations, ?let mDoInstructionList)
@@ -263,7 +263,7 @@ syntax extension galgas4InstructionsSyntax {
 
   rule <for_instruction_element> (?!@galgasDeclarationAST unused ioDeclarations,
                                   ?!@forInstructionEnumeratedObjectElementListAST ioElementList) {
-    $literalInt$ ?let count
+    $literalInt$ (?let count)
     $*$
     var n = count.bigint.uint
     if n == 0 then
@@ -296,7 +296,7 @@ syntax extension galgas4InstructionsSyntax {
         $unused$
         isUnused = true
       end
-      $identifier$ ?let @lstring constantName
+      $identifier$ (?let @lstring constantName)
       ioElementList += !typeName !isUnused !constantName
     end
   }
@@ -338,7 +338,7 @@ syntax extension galgas4InstructionsSyntax {
       $*$
       enumerationVariable = "".here
     or
-      $identifier$ ?enumerationVariable
+      $identifier$ (?enumerationVariable)
     end
     $in$
     <expression> (!?ioDeclarations, ?let @semanticExpressionAST enumeratedExpression)
@@ -392,7 +392,7 @@ syntax extension galgas4InstructionsSyntax {
       indexVariableName = @lstring {!"" !@location.here}
     or
       $($
-      $identifier$ ? indexVariableName
+      $identifier$ (? indexVariableName)
       $)$
     end
     <semantic_instruction_list> (!?ioDeclarations, ?let mDoInstructionList)

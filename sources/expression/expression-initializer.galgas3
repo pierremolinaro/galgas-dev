@@ -57,7 +57,7 @@ syntax extension galgas3ExpressionSyntax {
 
   rule <primary_ggs3> (?!@galgasDeclarationAST ioDeclarations,
                       !@semanticExpressionAST outExpression ) {
-    $@type$ ?let typeName indexing (typeReferenceInConstructor)
+    $@type$ (?let typeName )indexing (typeReferenceInConstructor)
     select
       ${$
       <output_expression_list_ggs3> (!?ioDeclarations, ?let expressionList)
@@ -93,7 +93,7 @@ syntax extension galgas4ExpressionSyntax {
     or
       $.$
       select
-        $identifier$ ?let @lstring classFuncName
+        $identifier$ (?let @lstring classFuncName)
         <primary_beginning_by_type_dot_name> (!typeName, !classFuncName, !?ioDeclarations, ?outExpression)
       or
         <simple_type_followed_by_dot_type> (!typeName, !?ioDeclarations, ?outExpression)
@@ -114,7 +114,7 @@ syntax extension galgas4ExpressionSyntax {
     or
       $.$
       select
-        $identifier$ ?let @lstring classFuncName
+        $identifier$ (?let @lstring classFuncName)
         <primary_beginning_by_type_dot_name> (!typeName, !classFuncName, !?ioDeclarations, ?outExpression)
       or
         <simple_type_followed_by_dot_type> (!typeName, !?ioDeclarations, ?outExpression)

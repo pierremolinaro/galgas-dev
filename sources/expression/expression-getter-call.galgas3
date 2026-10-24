@@ -30,7 +30,7 @@ syntax extension galgas3ExpressionSyntax {
     let startLocation = @location.here
     <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST receiverExpression)
   //--- Get func name
-    $identifier$ ?let @lstring getterName
+    $identifier$ (?let @lstring getterName)
   //--- Actual parameters
     <output_expression_list_ggs3> (!?ioDeclarations, ?let @actualOutputArgumentList expressionList)
     $]$

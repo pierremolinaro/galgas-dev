@@ -212,7 +212,7 @@ rule <factor_tpl> (!@templateExpressionAST outExpression ) {
   repeat
   while
     $.$
-    $identifier$ ?let @lstring structFieldName
+    $identifier$ (?let @lstring structFieldName)
     outExpression = @structFieldAccessTemplateExpressionAST {
       !structFieldName.location
       !outExpression
@@ -271,7 +271,7 @@ rule <factor_tpl>
 //--------------------------------------------------------------------------------------------------
 
 rule <primary_tpl> (!@templateExpressionAST outExpression ) {
-  $identifier$ ?let @lstring identifier
+  $identifier$ (?let @lstring identifier)
   outExpression = @templateVarInExpressionAST {!identifier}
 }
 
@@ -316,7 +316,7 @@ rule <primary_tpl> (!@templateExpressionAST outExpression ) {
 //--------------------------------------------------------------------------------------------------
 
 rule <primary_tpl> (!@templateExpressionAST outExpression ) {
-  $literalInt$ ?let literalInt
+  $literalInt$ (?let literalInt)
   outExpression = @templateLiteralUIntExpressionAST {!literalInt}
 }
 
@@ -328,7 +328,7 @@ rule <primary_tpl> (!@templateExpressionAST outExpression ) {
 
 rule <primary_tpl> (!@templateExpressionAST outExpression ) {
   let @ldouble literalDouble
-  $double.xxx$ ? literalDouble ?*
+  $double.xxx$ (? literalDouble, ?*)
   outExpression = @templateLiteralDoubleExpressionAST {!literalDouble}
 }
 
@@ -339,7 +339,7 @@ rule <primary_tpl> (!@templateExpressionAST outExpression ) {
 //--------------------------------------------------------------------------------------------------
 
 rule <primary_tpl> (!@templateExpressionAST outExpression ) {
-  $'char'$ ?let @lchar literalChar
+  $'char'$ (?let @lchar literalChar)
   outExpression = @templateLiteralCharExpressionAST {!literalChar}
 }
 
@@ -352,7 +352,7 @@ rule <primary_tpl> (!@templateExpressionAST outExpression ) {
 rule <primary_tpl> (!@templateExpressionAST outExpression ) {
   var @stringlist literalStringList = @()
   repeat
-    $"string"$ ?let @lstring literalString
+    $"string"$ (?let @lstring literalString)
     literalStringList += !literalString.string
   while
   end
@@ -378,7 +378,7 @@ rule <primary_tpl> (!@templateExpressionAST outExpression ) {
     $template$
     let @templateExpressionAST receiverExpression
     <expression_tpl> (?receiverExpression)
-    $identifier$ ?let @lstring templateName
+    $identifier$ (?let @lstring templateName)
     let @templateExpressionListAST expressionList
     <output_expression_list_tpl> (?expressionList)
     outExpression = @templateExtensionTemplateCallAST {
@@ -388,8 +388,8 @@ rule <primary_tpl> (!@templateExpressionAST outExpression ) {
     }
     $]$
   or //----------- Constructor call
-    $@type$ ?let @lstring typeName
-    $identifier$ ?let @lstring constructorName
+    $@type$ (?let @lstring typeName)
+    $identifier$ (?let @lstring constructorName)
     <output_expression_list_tpl> (?let @templateExpressionListAST expressionList)
     outExpression = @templateClassFunctionAST {
       !typeName
@@ -399,9 +399,9 @@ rule <primary_tpl> (!@templateExpressionAST outExpression ) {
     $]$
   or //-------------------------------- Filewrapper
     $filewrapper$
-    $identifier$ ?let @lstring filewrapperName
+    $identifier$ (?let @lstring filewrapperName)
     $.$
-    $identifier$ ?let @lstring templateName
+    $identifier$ (?let @lstring templateName)
     let @templateExpressionListAST expressionList
     <output_expression_list_tpl> (?expressionList)
     $]$
@@ -410,7 +410,7 @@ rule <primary_tpl> (!@templateExpressionAST outExpression ) {
     let startLocation = @location.here
     let @templateExpressionAST receiverExpression
     <expression_tpl> (?receiverExpression)
-    $identifier$ ?let @lstring getterName
+    $identifier$ (?let @lstring getterName)
     let @templateExpressionListAST expressionList
     <output_expression_list_tpl> (?expressionList)
     $]$
@@ -425,14 +425,14 @@ rule <primary_tpl> (!@templateExpressionAST outExpression ) {
     $option$
     select
       $.$
-      $identifier$ ?let @lstring optionName
-      $identifier$ ?let @lstring getterName
+      $identifier$ (?let @lstring optionName)
+      $identifier$ (?let @lstring getterName)
       outExpression = @templateOptionAccessAST {!@lstring {!"galgas_builtin_options" !@location.here} !optionName !getterName}
     or
-      $identifier$ ?let @lstring optionComponentName
+      $identifier$ (?let @lstring optionComponentName)
       $.$
-      $identifier$ ?let @lstring optionName
-      $identifier$ ?let @lstring getterName
+      $identifier$ (?let @lstring optionName)
+      $identifier$ (?let @lstring getterName)
       outExpression = @templateOptionAccessAST {!optionComponentName !optionName !getterName}
     end
     $]$
@@ -447,7 +447,7 @@ rule <primary_tpl> (!@templateExpressionAST outExpression ) {
 //--------------------------------------------------------------------------------------------------
 
 rule <primary_tpl> (!@templateExpressionAST outExpression ) {
-  $identifier$ ?let @lstring functionName
+  $identifier$ (?let @lstring functionName)
   $($
   <output_expression_list_tpl> (?let @templateExpressionListAST expressionList)
   $)$
@@ -471,7 +471,7 @@ rule <primary_tpl> (!@templateExpressionAST outExpression ) {
     $>$
     kind = .strictlyInherited
   end
-  $@type$ ?let @lstring typeName
+  $@type$ (?let @lstring typeName)
   outExpression = @templateTestDynamicClassAST {
     !outExpression
     !endOfReceiverExpression
@@ -490,7 +490,7 @@ rule <output_expression_list_tpl> (!@templateExpressionListAST outExpressionList
   outExpressionList = @()
   repeat
   while
-    $!selector:$ ?let selector
+    $!selector:$ (?let selector)
     <expression_tpl> (?let @templateExpressionAST expression)
     outExpressionList += !selector !expression !@location.here
   while

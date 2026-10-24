@@ -23,7 +23,7 @@ syntax extension galgas3SyntaxComponentSyntax {
 
   rule <syntax_instruction_ggs3> (?!@galgasDeclarationAST ioDeclarations,
                                   !@syntaxInstructionAST outInstruction) {
-    $\$terminal\$$ ?let @lstring terminalName indexing (terminalReference)
+    $\$terminal\$$ (?let @lstring terminalName )indexing (terminalReference)
     <actual_input_parameter_list_ggs3> (!?ioDeclarations, ?let @actualInputParameterListAST actualInputParameterList)
     <terminal_instruction_indexing> (?let indexNameList)
   //--- Get syntax directed translation result string
@@ -56,12 +56,12 @@ syntax extension galgas3SyntaxComponentSyntax {
       $indexing$
       $($
       repeat
-        $identifier$ ?let @lstring indexName indexing (indexingNameReference)
+        $identifier$ (?let @lstring indexName )indexing (indexingNameReference)
         let @lstring postfixName
         select
           postfixName = "".nowhere
         or
-          $"string"$ ?postfixName
+          $"string"$ (?postfixName)
         end
         outIndexNameList += !indexName !postfixName
       while
@@ -83,7 +83,7 @@ syntax extension galgas4SyntaxComponentSyntax {
 
   rule <syntax_instruction> (?!@galgasDeclarationAST ioDeclarations,
                              !@syntaxInstructionAST outInstruction) {
-    $\$terminal\$$ ?let @lstring terminalName indexing (terminalReference)
+    $\$terminal\$$ (?let @lstring terminalName )indexing (terminalReference)
     <actual_input_parameter_list> (!?ioDeclarations, ?let actualInputParameterList)
     <terminal_instruction_indexing> (?let indexNameList)
   //--- Get syntax directed translation result string
@@ -116,12 +116,12 @@ syntax extension galgas4SyntaxComponentSyntax {
       $indexing$
       $($
       repeat
-        $identifier$ ?let @lstring indexName indexing (indexingNameReference)
+        $identifier$ (?let @lstring indexName )indexing (indexingNameReference)
         let @lstring postfixName
         select
           postfixName = "".nowhere
         or
-          $"string"$ ?postfixName
+          $"string"$ (?postfixName)
         end
         outIndexNameList += !indexName !postfixName
       while

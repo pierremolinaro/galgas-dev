@@ -66,25 +66,25 @@ syntax galgas3ProgramDeclarations (galgasScanner3) {
   rule <declaration_ggs3> (?!@galgasDeclarationAST ioDeclarations) {
     $case$
     $.$
-    $"string"$ ?let @lstring mSourceFileExtension
+    $"string"$ (?let @lstring mSourceFileExtension)
     $message$
-    $"string"$ ?let @lstring mSourceFileHelp
+    $"string"$ (?let @lstring mSourceFileHelp)
   //--- Reference grammar
     let @lstring referenceGrammar
     select
       referenceGrammar = "".nowhere
     or
       $grammar$
-      $identifier$ ?referenceGrammar
+      $identifier$ (?referenceGrammar)
     end
   //--- Source file
-    $?selector:$ ?let selector
+    $?selector:$ (?let selector)
     if selector.string != "sourceFilePath" then
       error (selector : "the selector should be '?sourceFilePath:'" fixit replace "?sourceFilePath:")
     end
     select
     or
-      $@type$ ?let typeName
+      $@type$ (?let typeName)
       if typeName.string != "lstring" then
         error (typeName : "the only type allowed here is '@lstring'")
       end
@@ -96,7 +96,7 @@ syntax galgas3ProgramDeclarations (galgasScanner3) {
       $unused$
       isUnused = true
     end
-    $identifier$ ?let @lstring mSourceFileVariableName
+    $identifier$ (?let @lstring mSourceFileVariableName)
   //---
     ${$
     <semantic_instruction_list_ggs3> (!?ioDeclarations, ?let @semanticInstructionListAST mInstructionList)
@@ -162,25 +162,25 @@ syntax galgas4ProgramDeclarations (galgasScanner4) {
   rule <declaration> (?!@galgasDeclarationAST ioDeclarations) {
     $case$
     $.$
-    $"string"$ ?let @lstring mSourceFileExtension
+    $"string"$ (?let @lstring mSourceFileExtension)
     $%errorMessage$
-    $"string"$ ?let @lstring mSourceFileHelp
+    $"string"$ (?let @lstring mSourceFileHelp)
   //--- Reference grammar
     let @lstring referenceGrammar
     select
       referenceGrammar = "".nowhere
     or
       $grammar$
-      $identifier$ ?referenceGrammar
+      $identifier$ (?referenceGrammar)
     end
   //--- Source file
-    $?selector:$ ?let selector
+    $?selector:$ (?let selector)
     if selector.string != "sourceFilePath" then
       error (selector : "the selector should be '?sourceFilePath:'" fixit replace "?sourceFilePath:")
     end
     select
     or
-      $@type$ ?let typeName
+      $@type$ (?let typeName)
       if typeName.string != "lstring" then
         error (typeName : "the only type allowed here is '@lstring'")
       end
@@ -192,7 +192,7 @@ syntax galgas4ProgramDeclarations (galgasScanner4) {
       $unused$
       isUnused = true
     end
-    $identifier$ ?let @lstring mSourceFileVariableName
+    $identifier$ (?let @lstring mSourceFileVariableName)
   //---
     ${$
     <semantic_instruction_list> (!?ioDeclarations, ?let @semanticInstructionListAST mInstructionList)

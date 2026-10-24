@@ -38,7 +38,7 @@ syntax extension galgas3InstructionsSyntax {
       end
       isUsefull = true
     end
-    $identifier$ ?let mRoutineName indexing (routineDefinition)
+    $identifier$ (?let mRoutineName )indexing (routineDefinition)
     <formal_parameter_list_ggs34> (!?ioDeclarations, ?let formalParameterList)
     ${$
     <semantic_instruction_list_ggs3> (!?ioDeclarations, ?let @semanticInstructionListAST mRoutineInstructionList)
@@ -69,7 +69,7 @@ syntax extension galgas3InstructionsSyntax {
       end
       isUsefull = true
     end
-    $identifier$ ?let mRoutineName indexing (routineDefinition)
+    $identifier$ (?let mRoutineName )indexing (routineDefinition)
     <formal_parameter_list_ggs34> (!?ioDeclarations, ?let formalParameterList)
     ${$
     <semantic_instruction_list_ggs3> (!?ioDeclarations, ?let @semanticInstructionListAST mRoutineInstructionList)
@@ -109,7 +109,7 @@ syntax extension galgas4InstructionsSyntax {
       end
       isUsefull = true
     end
-    $identifier$ ?let mRoutineName indexing (routineDefinition)
+    $identifier$ (?let mRoutineName )indexing (routineDefinition)
     <formal_parameter_list> (!?ioDeclarations, ?let @formalParameterListAST mFormalParameterList)
     ${$
     <semantic_instruction_list> (!?ioDeclarations, ?let @semanticInstructionListAST mRoutineInstructionList)
@@ -140,7 +140,7 @@ syntax extension galgas4InstructionsSyntax {
       end
       isUsefull = true
     end
-    $identifier$ ?let mRoutineName indexing (routineDefinition)
+    $identifier$ (?let mRoutineName )indexing (routineDefinition)
     <formal_parameter_list> (!?ioDeclarations, ?let @formalParameterListAST mFormalParameterList)
     ${$
     <semantic_instruction_list> (!?ioDeclarations, ?let @semanticInstructionListAST mRoutineInstructionList)

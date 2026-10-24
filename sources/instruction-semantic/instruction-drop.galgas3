@@ -37,7 +37,7 @@ syntax extension galgas3InstructionsSyntax {
     let instructionLocation = @location.here
     var @lstringlist dropList = @()
     repeat
-      $identifier$ ?let variableName
+      $identifier$ (?let variableName)
       dropList += !variableName
     while
       $,$
@@ -61,7 +61,7 @@ syntax extension galgas4InstructionsSyntax {
     let instructionLocation = @location.here
     var @lstringlist dropList = @()
     repeat
-      $identifier$ ?let variableName
+      $identifier$ (?let variableName)
       dropList += !variableName
     while
       $,$

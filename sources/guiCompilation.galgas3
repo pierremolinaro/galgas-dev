@@ -120,7 +120,7 @@ syntax galgas3GuiComponentSyntax (galgasScanner3) {
 
   rule <declaration_ggs3> (?!@galgasDeclarationAST ioDeclarations) {
     $gui$
-    $identifier$ ?let @lstring mGUIName
+    $identifier$ (?let @lstring mGUIName)
     ${$
     var @lstringlist importedOptionList = @()
     var @guiSimpleAttributeListAST simpleGlobalAttributes = @()
@@ -129,10 +129,10 @@ syntax galgas3GuiComponentSyntax (galgasScanner3) {
     repeat
     while
       $project$
-      $"string"$ ?let fileExtension
+      $"string"$ (?let fileExtension)
       $indexing$
       $in$
-      $"string"$ ?let indexingPathSuffix
+      $"string"$ (?let indexingPathSuffix)
       projectExtensionList += !fileExtension !indexingPathSuffix
     while
       <gui_attributes> (!?simpleGlobalAttributes)
@@ -156,7 +156,7 @@ syntax galgas3GuiComponentSyntax (galgasScanner3) {
   rule <gui_with_lexique_declaration> (?!@withLexiqueListAST ioWithLexiqueList) {
     $with$
     $lexique$
-    $identifier$ ?let @lstring lexiqueReference
+    $identifier$ (?let @lstring lexiqueReference)
     var @guiLabelListAST labels = @()
     var @guiSimpleAttributeListAST simpleAttributes = @()
     var @guiCompoundAttributeListAST compoundAttributes = @()
@@ -173,7 +173,7 @@ syntax galgas3GuiComponentSyntax (galgasScanner3) {
       end
       var @terminalLabelListAST terminalList = @()
       repeat
-        $\$terminal\$$ ?let  @lstring terminal
+        $\$terminal\$$ (?let  @lstring terminal)
         let @uint displayFlags
         select
           displayFlags = 0 // Default
@@ -182,12 +182,12 @@ syntax galgas3GuiComponentSyntax (galgasScanner3) {
           displayFlags = 0xFFFF // Do not diplay
         or
           $($
-          $literalInt$ ?let leadingStrip
+          $literalInt$ (?let leadingStrip)
           if leadingStrip.bigint >= 15 then
             error (leadingStrip:"leading strip should be < 15")
           end
           $,$
-          $literalInt$ ?let endingStrip
+          $literalInt$ (?let endingStrip)
           if endingStrip.bigint >= 15 then
             error (endingStrip:"tail strip should be < 15")
           end
@@ -200,20 +200,20 @@ syntax galgas3GuiComponentSyntax (galgasScanner3) {
       end
       labels += !displayStyle !terminalList !@location.here
     while
-      $identifier$ ?let @lstring key
-      $"string"$ ?let @lstring name
+      $identifier$ (?let @lstring key)
+      $"string"$ (?let @lstring name)
       $:$
       var value = @lstring {!"" !@location.here}
       repeat
-        $"string"$ ?let @lstring v
+        $"string"$ (?let @lstring v)
         value = @lstring {!value.string + v.string !v.location}
       while
       end
       compoundAttributes += !key !name !value
     while
-      $identifier$ ?let @lstring name
+      $identifier$ (?let @lstring name)
       $:$
-      $"string"$ ?let @lstring value
+      $"string"$ (?let @lstring value)
       simpleAttributes += !name !value
     end
     $}$
@@ -225,18 +225,18 @@ syntax galgas3GuiComponentSyntax (galgasScanner3) {
   rule <gui_with_option_declaration> (?!@lstringlist ioImportedOptionList) {
     $with$
     $option$
-    $identifier$ ?let @lstring optionReference
+    $identifier$ (?let @lstring optionReference)
     ioImportedOptionList += !optionReference
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <gui_attributes> (?!@guiSimpleAttributeListAST ioSimpleGlobalAttributes) {
-    $identifier$ ?let @lstring mKey
+    $identifier$ (?let @lstring mKey)
     $:$
     var mValue = @lstring {!"" !.here}
     repeat
-      $"string"$ ?let @lstring value
+      $"string"$ (?let @lstring value)
       mValue = @lstring {!mValue.string + value.string !value.location}
     while
     end
@@ -255,7 +255,7 @@ syntax galgas4GuiComponentSyntax (galgasScanner4) {
 
   rule <declaration> (?!@galgasDeclarationAST ioDeclarations ) {
     $gui$
-    $identifier$ ?let @lstring mGUIName
+    $identifier$ (?let @lstring mGUIName)
     ${$
     var @lstringlist importedOptionList = @()
     var @guiSimpleAttributeListAST simpleGlobalAttributes = @()
@@ -264,10 +264,10 @@ syntax galgas4GuiComponentSyntax (galgasScanner4) {
     repeat
     while
       $project$
-      $"string"$ ?let fileExtension
+      $"string"$ (?let fileExtension)
       $indexing$
       $in$
-      $"string"$ ?let indexingPathSuffix
+      $"string"$ (?let indexingPathSuffix)
       projectExtensionList += !fileExtension !indexingPathSuffix
     while
       <gui_attributes> (!?simpleGlobalAttributes)
@@ -291,7 +291,7 @@ syntax galgas4GuiComponentSyntax (galgasScanner4) {
   rule <gui_with_lexique_declaration> (?!@withLexiqueListAST ioWithLexiqueList ) {
     $with$
     $lexique$
-    $identifier$ ?let @lstring lexiqueReference
+    $identifier$ (?let @lstring lexiqueReference)
     var @guiLabelListAST labels = @()
     var @guiSimpleAttributeListAST simpleAttributes = @()
     var @guiCompoundAttributeListAST compoundAttributes = @()
@@ -308,7 +308,7 @@ syntax galgas4GuiComponentSyntax (galgasScanner4) {
       end
       var @terminalLabelListAST terminalList = @()
       repeat
-        $\$terminal\$$ ?let  @lstring terminal
+        $\$terminal\$$ (?let  @lstring terminal)
         let @uint displayFlags
         select
           displayFlags = 0 // Default
@@ -317,12 +317,12 @@ syntax galgas4GuiComponentSyntax (galgasScanner4) {
           displayFlags = 0xFFFF // Do not diplay
         or
           $($
-          $literalInt$ ?let leadingStrip
+          $literalInt$ (?let leadingStrip)
           if leadingStrip.bigint >= 15 then
             error (leadingStrip:"leading strip should be < 15")
           end
           $,$
-          $literalInt$ ?let endingStrip
+          $literalInt$ (?let endingStrip)
           if endingStrip.bigint >= 15 then
             error (endingStrip:"tail strip should be < 15")
           end
@@ -335,20 +335,20 @@ syntax galgas4GuiComponentSyntax (galgasScanner4) {
       end
       labels += !displayStyle !terminalList !@location.here
     while
-      $identifier$ ?let @lstring key
-      $"string"$ ?let @lstring name
+      $identifier$ (?let @lstring key)
+      $"string"$ (?let @lstring name)
       $:$
       var value = @lstring {!"" !@location.here}
       repeat
-        $"string"$ ?let @lstring v
+        $"string"$ (?let @lstring v)
         value = @lstring {!value.string + v.string !v.location}
       while
       end
       compoundAttributes += !key !name !value
     while
-      $identifier$ ?let @lstring name
+      $identifier$ (?let @lstring name)
       $:$
-      $"string"$ ?let @lstring value
+      $"string"$ (?let @lstring value)
       simpleAttributes += !name !value
     end
     $}$
@@ -360,18 +360,18 @@ syntax galgas4GuiComponentSyntax (galgasScanner4) {
   rule <gui_with_option_declaration> (?!@lstringlist ioImportedOptionList ) {
     $with$
     $option$
-    $identifier$ ?let @lstring optionReference
+    $identifier$ (?let @lstring optionReference)
     ioImportedOptionList += !optionReference
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <gui_attributes> (?!@guiSimpleAttributeListAST ioSimpleGlobalAttributes ) {
-    $identifier$ ?let @lstring mKey
+    $identifier$ (?let @lstring mKey)
     $:$
     var mValue = @lstring {!"" !.here}
     repeat
-      $"string"$ ?let @lstring value
+      $"string"$ (?let @lstring value)
       mValue = @lstring {!mValue.string + value.string !value.location}
     while
     end

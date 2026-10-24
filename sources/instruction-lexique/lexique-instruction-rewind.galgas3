@@ -35,9 +35,9 @@ syntax extension galgas3LexiqueComponentSyntax {
 
   rule <lexical_instruction> (?!@lexicalInstructionListAST ioInstructionList) {
     $rewind$
-    $identifier$ ?let tagName
+    $identifier$ (?let tagName)
     $send$
-    $\$terminal\$$ ?let terminalName
+    $\$terminal\$$ (?let terminalName)
     ioInstructionList += !@lexicalRewindInstructionAST {!tagName !terminalName}
   }
 
@@ -53,9 +53,9 @@ syntax extension galgas4LexiqueComponentSyntax {
 
   rule <lexical_instruction> (?!@lexicalInstructionListAST ioInstructionList) {
     $rewind$
-    $identifier$ ?let tagName
+    $identifier$ (?let tagName)
     $send$
-    $\$terminal\$$ ?let terminalName
+    $\$terminal\$$ (?let terminalName)
     ioInstructionList += !@lexicalRewindInstructionAST {!tagName !terminalName}
   }
 

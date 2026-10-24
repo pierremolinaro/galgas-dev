@@ -42,7 +42,7 @@ syntax extension galgas3InstructionsSyntax {
   rule <semantic_instruction_ggs3> (?!@galgasDeclarationAST ioDeclarations,
                                     !@semanticInstructionAST outInstruction) {
     $var$
-    $identifier$ ?let variableName
+    $identifier$ (?let variableName)
     $=$
     <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST sourceExpression)
     outInstruction = @localVariableDeclarationWithAssignmentAST {
@@ -58,7 +58,7 @@ syntax extension galgas3InstructionsSyntax {
                                     !@semanticInstructionAST outInstruction) {
     $var$
     <type_definition_ggs3> (!?ioDeclarations, ?let typeName)
-    $identifier$ ?let variableName
+    $identifier$ (?let variableName)
     select
       outInstruction = @localVariableDeclarationNoAssignmentAST {
         !typeName.location
@@ -91,7 +91,7 @@ syntax extension galgas4InstructionsSyntax {
   rule <semantic_instruction> (?!@galgasDeclarationAST ioDeclarations,
                                !@semanticInstructionAST outInstruction) {
     $var$
-    $identifier$ ?let variableName
+    $identifier$ (?let variableName)
     $=$
     <expression> (!?ioDeclarations, ?let @semanticExpressionAST sourceExpression)
     outInstruction = @localVariableDeclarationWithAssignmentAST {
@@ -107,7 +107,7 @@ syntax extension galgas4InstructionsSyntax {
                                !@semanticInstructionAST outInstruction) {
     $var$
     <type_definition> (!?ioDeclarations, ?let typeName)
-    $identifier$ ?let variableName
+    $identifier$ (?let variableName)
     select
       outInstruction = @localVariableDeclarationNoAssignmentAST {!typeName.location !typeName !variableName}
     or

@@ -67,7 +67,7 @@ syntax extension galgas3ExpressionSyntax {
     outExpressionList = @()
     repeat
     while
-      $!selector:$ ?let selector
+      $!selector:$ (?let selector)
       <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST expression)
       outExpressionList += !selector !expression !.here
     while
@@ -87,7 +87,7 @@ syntax extension galgas3ExpressionSyntax {
     or
       repeat
         select
-          $!selector:$ ?let selector
+          $!selector:$ (?let selector)
           <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST expression)
           outExpressionList += !selector !expression !.here
         or
@@ -123,7 +123,7 @@ syntax extension galgas4ExpressionSyntax {
       repeat
         let @lstring selector
         select
-          $!selector:$ ?selector
+          $!selector:$ (?selector)
         or
           $!$
           selector = "".here
@@ -147,7 +147,7 @@ syntax extension galgas4ExpressionSyntax {
     repeat
       let @lstring selector
       select
-        $!selector:$ ?selector
+        $!selector:$ (?selector)
       or
         $!$
         selector = "".here

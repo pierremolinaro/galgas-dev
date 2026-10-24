@@ -79,7 +79,7 @@ syntax extension templateSyntax {
                      !@switchExtractedValuesListAST outAssociatedValuesExtraction ) {
     outConstantNameList = @()
     repeat
-      $identifier$ ?let @lstring constantName
+      $identifier$ (?let @lstring constantName)
       !?outConstantNameList.append (!constantName)
     while
       $,$
@@ -90,7 +90,7 @@ syntax extension templateSyntax {
       $($
       repeat
         select
-          $literalInt$ ?let n
+          $literalInt$ (?let n)
           $*$
           for * in 0 ..< n.bigint do
             outAssociatedValuesExtraction += !"".here !"".here !false
@@ -101,7 +101,7 @@ syntax extension templateSyntax {
          or
           let @lstring typeName
           select
-            $@type$ ?typeName
+            $@type$ (?typeName)
           or
             typeName = "".here
           end
@@ -112,7 +112,7 @@ syntax extension templateSyntax {
             $unused$
             constantMarkedAsUnused = true
           end
-          $identifier$ ?let @lstring constantName
+          $identifier$ (?let @lstring constantName)
           outAssociatedValuesExtraction += !typeName !constantName !constantMarkedAsUnused
         end
       while

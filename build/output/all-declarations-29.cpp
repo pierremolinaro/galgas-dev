@@ -20,93 +20,93 @@ void cPtr_sortedListDeclarationAST::method_enterDeclarationInSemanticContext (GG
                                                                               GGS_semanticContext & ioArgument_ioSemanticContext,
                                                                               Compiler * inCompiler
                                                                               COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_unifiedTypeMapEntry var_listTypeIndex_7977 ;
+  GGS_unifiedTypeMapEntry var_listTypeIndex_7985 ;
   {
   const GGS_sortedListDeclarationAST temp_0 = this ;
-  extensionSetter_makeEntry (ioArgument_ioTypeMap, temp_0.readProperty_mSortedListTypeName (), var_listTypeIndex_7977, inCompiler COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 207)) ;
+  extensionSetter_makeEntry (ioArgument_ioTypeMap, temp_0.readProperty_mSortedListTypeName (), var_listTypeIndex_7985, inCompiler COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 207)) ;
   }
-  GGS_unifiedTypeMapEntry var_listElementTypeIndex_8143 ;
+  GGS_unifiedTypeMapEntry var_listElementTypeIndex_8151 ;
   {
   const GGS_sortedListDeclarationAST temp_1 = this ;
-  extensionSetter_makeEntry (ioArgument_ioTypeMap, function_makeEmbeddedElementTypeLName (temp_1.readProperty_mSortedListTypeName (), inCompiler COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 210)), var_listElementTypeIndex_8143, inCompiler COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 209)) ;
+  extensionSetter_makeEntry (ioArgument_ioTypeMap, function_makeEmbeddedElementTypeLName (temp_1.readProperty_mSortedListTypeName (), inCompiler COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 210)), var_listElementTypeIndex_8151, inCompiler COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 209)) ;
   }
-  GGS_enumerationDescriptorList var_enumerationDescriptor_8237 = GGS_enumerationDescriptorList::init (inCompiler COMMA_HERE) ;
-  GGS_functionSignature var_constructorAttributeTypeList_8292 = GGS_functionSignature::init (inCompiler COMMA_HERE) ;
-  GGS_formalParameterSignature var_setterFormalOutputArgumentList_8361 = GGS_formalParameterSignature::init (inCompiler COMMA_HERE) ;
-  GGS_formalParameterSignature var_setterFormalInputArgumentList_8432 = GGS_formalParameterSignature::init (inCompiler COMMA_HERE) ;
-  GGS_typedPropertyList var_typedAttributeList_8495 = GGS_typedPropertyList::init (inCompiler COMMA_HERE) ;
+  GGS_enumerationDescriptorList var_enumerationDescriptor_8245 = GGS_enumerationDescriptorList::init (inCompiler COMMA_HERE) ;
+  GGS_functionSignature var_constructorAttributeTypeList_8300 = GGS_functionSignature::init (inCompiler COMMA_HERE) ;
+  GGS_formalParameterSignature var_setterFormalOutputArgumentList_8369 = GGS_formalParameterSignature::init (inCompiler COMMA_HERE) ;
+  GGS_formalParameterSignature var_setterFormalInputArgumentList_8440 = GGS_formalParameterSignature::init (inCompiler COMMA_HERE) ;
+  GGS_typedPropertyList var_typedAttributeList_8503 = GGS_typedPropertyList::init (inCompiler COMMA_HERE) ;
   const GGS_sortedListDeclarationAST temp_2 = this ;
-  UpEnumerator_propertyInCollectionListAST enumerator_8565 (temp_2.readProperty_mPropertyList ()) ;
-  while (enumerator_8565.hasCurrentObject ()) {
-    GGS_unifiedTypeMapEntry var_attributeTypeIndex_8659 ;
+  UpEnumerator_propertyInCollectionListAST enumerator_8573 (temp_2.readProperty_mPropertyList ()) ;
+  while (enumerator_8573.hasCurrentObject ()) {
+    GGS_unifiedTypeMapEntry var_attributeTypeIndex_8667 ;
     {
-    extensionSetter_makeEntry (ioArgument_ioTypeMap, enumerator_8565.current_typeName (HERE), var_attributeTypeIndex_8659, inCompiler COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 220)) ;
+    extensionSetter_makeEntry (ioArgument_ioTypeMap, enumerator_8573.current_typeName (HERE), var_attributeTypeIndex_8667, inCompiler COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 220)) ;
     }
-    GGS_bool var_hasSelector_8689 = GGS_bool (false) ;
-    var_typedAttributeList_8495.addAssignOperation (var_attributeTypeIndex_8659, enumerator_8565.current_name (HERE), enumerator_8565.current_initialization (HERE), GGS_bool (true), var_hasSelector_8689  COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 222)) ;
-    var_enumerationDescriptor_8237.addAssignOperation (var_attributeTypeIndex_8659, enumerator_8565.current_name (HERE).readProperty_string ()  COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 223)) ;
-    var_constructorAttributeTypeList_8292.addAssignOperation (GGS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("declaration-type-sorted-list.galgas3", 224)), var_attributeTypeIndex_8659, enumerator_8565.current_name (HERE).readProperty_string (), GGS_bool (true)  COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 224)) ;
-    var_setterFormalOutputArgumentList_8361.addAssignOperation (GGS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("declaration-type-sorted-list.galgas3", 225)), var_attributeTypeIndex_8659, GGS_formalArgumentPassingModeAST::class_func_argumentOut (SOURCE_FILE ("declaration-type-sorted-list.galgas3", 225)), enumerator_8565.current_name (HERE).readProperty_string ()  COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 225)) ;
-    var_setterFormalInputArgumentList_8432.addAssignOperation (GGS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("declaration-type-sorted-list.galgas3", 226)), var_attributeTypeIndex_8659, GGS_formalArgumentPassingModeAST::class_func_argumentVarIn (SOURCE_FILE ("declaration-type-sorted-list.galgas3", 226)), enumerator_8565.current_name (HERE).readProperty_string ()  COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 226)) ;
-    enumerator_8565.gotoNextObject () ;
+    GGS_bool var_hasSelector_8697 = GGS_bool (false) ;
+    var_typedAttributeList_8503.addAssignOperation (var_attributeTypeIndex_8667, enumerator_8573.current_name (HERE), enumerator_8573.current_initialization (HERE), GGS_bool (true), var_hasSelector_8697  COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 222)) ;
+    var_enumerationDescriptor_8245.addAssignOperation (var_attributeTypeIndex_8667, enumerator_8573.current_name (HERE).readProperty_string ()  COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 223)) ;
+    var_constructorAttributeTypeList_8300.addAssignOperation (GGS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("declaration-type-sorted-list.galgas3", 224)), var_attributeTypeIndex_8667, enumerator_8573.current_name (HERE).readProperty_string (), GGS_bool (true)  COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 224)) ;
+    var_setterFormalOutputArgumentList_8369.addAssignOperation (GGS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("declaration-type-sorted-list.galgas3", 225)), var_attributeTypeIndex_8667, GGS_formalArgumentPassingModeAST::class_func_argumentOut (SOURCE_FILE ("declaration-type-sorted-list.galgas3", 225)), enumerator_8573.current_name (HERE).readProperty_string ()  COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 225)) ;
+    var_setterFormalInputArgumentList_8440.addAssignOperation (GGS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("declaration-type-sorted-list.galgas3", 226)), var_attributeTypeIndex_8667, GGS_formalArgumentPassingModeAST::class_func_argumentVarIn (SOURCE_FILE ("declaration-type-sorted-list.galgas3", 226)), enumerator_8573.current_name (HERE).readProperty_string ()  COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 226)) ;
+    enumerator_8573.gotoNextObject () ;
   }
-  GGS_classFunctionMap var_classFunctionMap_9277 = GGS_classFunctionMap::init (inCompiler COMMA_HERE) ;
+  GGS_classFunctionMap var_classFunctionMap_9285 = GGS_classFunctionMap::init (inCompiler COMMA_HERE) ;
   {
-  var_classFunctionMap_9277.setter_insertKey (GGS_lstring::init_21__21_ (GGS_string ("sortedListWithValue"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 231)), inCompiler COMMA_HERE), var_constructorAttributeTypeList_8292, GGS_bool (false), var_listTypeIndex_7977, inCompiler COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 230)) ;
+  var_classFunctionMap_9285.setter_insertKey (GGS_lstring::init_21__21_ (GGS_string ("sortedListWithValue"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 231)), inCompiler COMMA_HERE), var_constructorAttributeTypeList_8300, GGS_bool (false), var_listTypeIndex_7985, inCompiler COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 230)) ;
   }
-  GGS_getterMap var_getterMap_9547 ;
+  GGS_getterMap var_getterMap_9555 ;
   {
-  routine_commonGetterMapForAllTypes_26__21_ (ioArgument_ioTypeMap, var_getterMap_9547, inCompiler  COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 237)) ;
-  }
-  {
-  routine_enterBaseGetterWithoutArgument_26__26__3F_getterName_3F_obsoleteName_3F_returnedTypeName_3F_hasCompilerArgument (var_getterMap_9547, ioArgument_ioTypeMap, GGS_string ("count"), GGS_string::makeEmptyString (), GGS_string ("uint"), GGS_bool (false), inCompiler  COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 238)) ;
-  }
-  GGS_setterMap var_setterMap_9792 = GGS_setterMap::init (inCompiler COMMA_HERE) ;
-  {
-  var_setterMap_9792.setter_insertOrReplace (GGS_lstring::init_21__21_ (GGS_string ("popGreatest"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 249)), inCompiler COMMA_HERE), GGS_methodKind::class_func_definedAsMember (SOURCE_FILE ("declaration-type-sorted-list.galgas3", 250)), var_setterFormalOutputArgumentList_8361, GGS_bool (true), GGS_methodQualifier::class_func_isBasic (SOURCE_FILE ("declaration-type-sorted-list.galgas3", 253)), GGS_string::makeEmptyString () COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 248)) ;
+  routine_commonGetterMapForAllTypes_26__21_ (ioArgument_ioTypeMap, var_getterMap_9555, inCompiler  COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 237)) ;
   }
   {
-  var_setterMap_9792.setter_insertOrReplace (GGS_lstring::init_21__21_ (GGS_string ("popSmallest"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 257)), inCompiler COMMA_HERE), GGS_methodKind::class_func_definedAsMember (SOURCE_FILE ("declaration-type-sorted-list.galgas3", 258)), var_setterFormalOutputArgumentList_8361, GGS_bool (true), GGS_methodQualifier::class_func_isBasic (SOURCE_FILE ("declaration-type-sorted-list.galgas3", 261)), GGS_string::makeEmptyString () COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 256)) ;
+  routine_enterBaseGetterWithoutArgument_26__26__3F_getterName_3F_obsoleteName_3F_returnedTypeName_3F_hasCompilerArgument (var_getterMap_9555, ioArgument_ioTypeMap, GGS_string ("count"), GGS_string::makeEmptyString (), GGS_string ("uint"), GGS_bool (false), inCompiler  COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 238)) ;
+  }
+  GGS_setterMap var_setterMap_9800 = GGS_setterMap::init (inCompiler COMMA_HERE) ;
+  {
+  var_setterMap_9800.setter_insertOrReplace (GGS_lstring::init_21__21_ (GGS_string ("popGreatest"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 249)), inCompiler COMMA_HERE), GGS_methodKind::class_func_definedAsMember (SOURCE_FILE ("declaration-type-sorted-list.galgas3", 250)), var_setterFormalOutputArgumentList_8369, GGS_bool (true), GGS_methodQualifier::class_func_isBasic (SOURCE_FILE ("declaration-type-sorted-list.galgas3", 253)), GGS_string::makeEmptyString () COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 248)) ;
   }
   {
-  var_setterMap_9792.setter_insertOrReplace (GGS_lstring::init_21__21_ (GGS_string ("insert"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 265)), inCompiler COMMA_HERE), GGS_methodKind::class_func_definedAsMember (SOURCE_FILE ("declaration-type-sorted-list.galgas3", 266)), var_setterFormalInputArgumentList_8432, GGS_bool (true), GGS_methodQualifier::class_func_isBasic (SOURCE_FILE ("declaration-type-sorted-list.galgas3", 269)), GGS_string::makeEmptyString () COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 264)) ;
-  }
-  GGS_instanceMethodMap var_instanceMethodMap_10574 = GGS_instanceMethodMap::init (inCompiler COMMA_HERE) ;
-  {
-  var_instanceMethodMap_10574.setter_insertKey (GGS_lstring::init_21__21_ (GGS_string ("greatest"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 275)), inCompiler COMMA_HERE), GGS_methodKind::class_func_definedAsMember (SOURCE_FILE ("declaration-type-sorted-list.galgas3", 276)), var_setterFormalOutputArgumentList_8361, GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 278)), GGS_bool (true), GGS_methodQualifier::class_func_isBasic (SOURCE_FILE ("declaration-type-sorted-list.galgas3", 280)), GGS_string::makeEmptyString (), inCompiler COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 274)) ;
+  var_setterMap_9800.setter_insertOrReplace (GGS_lstring::init_21__21_ (GGS_string ("popSmallest"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 257)), inCompiler COMMA_HERE), GGS_methodKind::class_func_definedAsMember (SOURCE_FILE ("declaration-type-sorted-list.galgas3", 258)), var_setterFormalOutputArgumentList_8369, GGS_bool (true), GGS_methodQualifier::class_func_isBasic (SOURCE_FILE ("declaration-type-sorted-list.galgas3", 261)), GGS_string::makeEmptyString () COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 256)) ;
   }
   {
-  var_instanceMethodMap_10574.setter_insertKey (GGS_lstring::init_21__21_ (GGS_string ("smallest"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 284)), inCompiler COMMA_HERE), GGS_methodKind::class_func_definedAsMember (SOURCE_FILE ("declaration-type-sorted-list.galgas3", 285)), var_setterFormalOutputArgumentList_8361, GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 287)), GGS_bool (true), GGS_methodQualifier::class_func_isBasic (SOURCE_FILE ("declaration-type-sorted-list.galgas3", 289)), GGS_string::makeEmptyString (), inCompiler COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 283)) ;
+  var_setterMap_9800.setter_insertOrReplace (GGS_lstring::init_21__21_ (GGS_string ("insert"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 265)), inCompiler COMMA_HERE), GGS_methodKind::class_func_definedAsMember (SOURCE_FILE ("declaration-type-sorted-list.galgas3", 266)), var_setterFormalInputArgumentList_8440, GGS_bool (true), GGS_methodQualifier::class_func_isBasic (SOURCE_FILE ("declaration-type-sorted-list.galgas3", 269)), GGS_string::makeEmptyString () COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 264)) ;
   }
-  GGS_initializerMap var_initializerMap_11187 = GGS_initializerMap::init (inCompiler COMMA_HERE) ;
-  GGS_functionSignature var_emptyArgumentList_11235 = GGS_functionSignature::init (inCompiler COMMA_HERE) ;
+  GGS_instanceMethodMap var_instanceMethodMap_10582 = GGS_instanceMethodMap::init (inCompiler COMMA_HERE) ;
+  {
+  var_instanceMethodMap_10582.setter_insertKey (GGS_lstring::init_21__21_ (GGS_string ("greatest"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 275)), inCompiler COMMA_HERE), GGS_methodKind::class_func_definedAsMember (SOURCE_FILE ("declaration-type-sorted-list.galgas3", 276)), var_setterFormalOutputArgumentList_8369, GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 278)), GGS_bool (true), GGS_methodQualifier::class_func_isBasic (SOURCE_FILE ("declaration-type-sorted-list.galgas3", 280)), GGS_string::makeEmptyString (), inCompiler COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 274)) ;
+  }
+  {
+  var_instanceMethodMap_10582.setter_insertKey (GGS_lstring::init_21__21_ (GGS_string ("smallest"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 284)), inCompiler COMMA_HERE), GGS_methodKind::class_func_definedAsMember (SOURCE_FILE ("declaration-type-sorted-list.galgas3", 285)), var_setterFormalOutputArgumentList_8369, GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 287)), GGS_bool (true), GGS_methodQualifier::class_func_isBasic (SOURCE_FILE ("declaration-type-sorted-list.galgas3", 289)), GGS_string::makeEmptyString (), inCompiler COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 283)) ;
+  }
+  GGS_initializerMap var_initializerMap_11195 = GGS_initializerMap::init (inCompiler COMMA_HERE) ;
+  GGS_functionSignature var_emptyArgumentList_11243 = GGS_functionSignature::init (inCompiler COMMA_HERE) ;
   {
   const GGS_sortedListDeclarationAST temp_3 = this ;
-  var_initializerMap_11187.setter_insertKey (GGS_lstring::init_21__21_ (extensionGetter_initializerSignature (var_emptyArgumentList_11235, inCompiler COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 296)), temp_3.readProperty_mSortedListTypeName ().readProperty_location (), inCompiler COMMA_HERE), var_emptyArgumentList_11235, inCompiler COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 295)) ;
+  var_initializerMap_11195.setter_insertKey (GGS_lstring::init_21__21_ (extensionGetter_initializerSignature (var_emptyArgumentList_11243, inCompiler COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 296)), temp_3.readProperty_mSortedListTypeName ().readProperty_location (), inCompiler COMMA_HERE), var_emptyArgumentList_11243, inCompiler COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 295)) ;
   }
   {
   const GGS_sortedListDeclarationAST temp_4 = this ;
-  routine_addExtensions_3F__3F__3F__3F__26__26__3F__3F_isClass_26__26__26__26__3F_acceptSetters (constinArgument_inExtensionInitializerMapForBuildingContext, constinArgument_inExtensionMethodMapForBuildingContext, constinArgument_inExtensionGetterMapForBuildingContext, constinArgument_inExtensionSetterMapForBuildingContext, ioArgument_ioSemanticContext, ioArgument_ioTypeMap, temp_4.readProperty_mSortedListTypeName (), GGS_bool (false), var_initializerMap_11187, var_getterMap_9547, var_setterMap_9792, var_instanceMethodMap_10574, GGS_bool (true), inCompiler  COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 300)) ;
+  routine_addExtensions_3F__3F__3F__3F__26__26__3F__3F_isClass_26__26__26__26__3F_acceptSetters (constinArgument_inExtensionInitializerMapForBuildingContext, constinArgument_inExtensionMethodMapForBuildingContext, constinArgument_inExtensionGetterMapForBuildingContext, constinArgument_inExtensionSetterMapForBuildingContext, ioArgument_ioSemanticContext, ioArgument_ioTypeMap, temp_4.readProperty_mSortedListTypeName (), GGS_bool (false), var_initializerMap_11195, var_getterMap_9555, var_setterMap_9800, var_instanceMethodMap_10582, GGS_bool (true), inCompiler  COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 300)) ;
   }
-  GGS_typeFeatures var_features_11884 = GGS_typeFeatures::class_func_plusAssignOperatorWithExpression (SOURCE_FILE ("declaration-type-sorted-list.galgas3", 316)) ;
+  GGS_typeFeatures var_features_11892 = GGS_typeFeatures::class_func_plusAssignOperatorWithExpression (SOURCE_FILE ("declaration-type-sorted-list.galgas3", 316)) ;
   GalgasBool test_5 = GalgasBool::boolTrue ;
   if (GalgasBool::boolTrue == test_5) {
     const GGS_sortedListDeclarationAST temp_6 = this ;
     test_5 = temp_6.readProperty_equatable ().boolEnum () ;
     if (GalgasBool::boolTrue == test_5) {
-      var_features_11884.orAssignOperation(GGS_typeFeatures::class_func_equatable (SOURCE_FILE ("declaration-type-sorted-list.galgas3", 318)), inCompiler  COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 318)) ;
+      var_features_11892.orAssignOperation(GGS_typeFeatures::class_func_equatable (SOURCE_FILE ("declaration-type-sorted-list.galgas3", 318)), inCompiler  COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 318)) ;
     }
   }
   {
   const GGS_sortedListDeclarationAST temp_7 = this ;
-  routine_handleEquatableComparableExtension_26__3F__26__3F_acceptEquatable_3F_acceptComparable (ioArgument_ioEquatableExtensionMap, temp_7.readProperty_mSortedListTypeName (), var_features_11884, GGS_bool (true), GGS_bool (false), inCompiler  COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 320)) ;
+  routine_handleEquatableComparableExtension_26__3F__26__3F_acceptEquatable_3F_acceptComparable (ioArgument_ioEquatableExtensionMap, temp_7.readProperty_mSortedListTypeName (), var_features_11892, GGS_bool (true), GGS_bool (false), inCompiler  COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 320)) ;
   }
   const GGS_sortedListDeclarationAST temp_8 = this ;
   const GGS_sortedListDeclarationAST temp_9 = this ;
   const GGS_sortedListDeclarationAST temp_10 = this ;
-  GGS_unifiedTypeDefinition var_typeDefinition_12232 = GGS_unifiedTypeDefinition::init_21_typeName_21_isPredefined_21_isConcrete_21_isFinal_21_superType_21_typeKind_21_supportCollectionValue_21_allTypedPropertyList_21_propertyMap_21_currentTypedPropertyList_21_initializerMap_21_classFunctionMap_21_getterMap_21_setterMap_21_instanceMethodMap_21_classMethodMap_21_unwrappedType_21_readSubscriptMap_21_enumerationDescriptorList_21_features_21_addAssignOperatorArguments_21_generateHeaderInSeparateFile_21_typeForEnumeratedElement_21_headerFileName_21_headerKind (temp_8.readProperty_mSortedListTypeName (), temp_9.readProperty_isPredefined (), GGS_bool (true), GGS_bool (true), GGS_unifiedTypeMapEntry::class_func_null (SOURCE_FILE ("declaration-type-sorted-list.galgas3", 333)), GGS_typeKindEnum::class_func_sortedListType (SOURCE_FILE ("declaration-type-sorted-list.galgas3", 334)), GGS_bool (true), var_typedAttributeList_8495, GGS_propertyMap::init (inCompiler COMMA_HERE), GGS_typedPropertyList::init (inCompiler COMMA_HERE), var_initializerMap_11187, var_classFunctionMap_9277, var_getterMap_9547, var_setterMap_9792, var_instanceMethodMap_10574, GGS_classMethodMap::init (inCompiler COMMA_HERE), GGS_unifiedTypeMapEntry::class_func_null (SOURCE_FILE ("declaration-type-sorted-list.galgas3", 345)), GGS_subscriptMap::init (inCompiler COMMA_HERE), var_enumerationDescriptor_8237, var_features_11884, var_constructorAttributeTypeList_8292, GGS_bool (false), var_listElementTypeIndex_8143, GGS_string ("-sortedlist-").add_operation (temp_10.readProperty_mSortedListTypeName ().readProperty_string ().getter_fileNameRepresentation (SOURCE_FILE ("declaration-type-sorted-list.galgas3", 352)), inCompiler COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 352)), GGS_headerKind::class_func_oneHeader (SOURCE_FILE ("declaration-type-sorted-list.galgas3", 353)), inCompiler COMMA_HERE) ;
+  GGS_unifiedTypeDefinition var_typeDefinition_12240 = GGS_unifiedTypeDefinition::init_21_typeName_21_isPredefined_21_isConcrete_21_isFinal_21_superType_21_typeKind_21_supportCollectionValue_21_allTypedPropertyList_21_propertyMap_21_currentTypedPropertyList_21_initializerMap_21_classFunctionMap_21_getterMap_21_setterMap_21_instanceMethodMap_21_classMethodMap_21_unwrappedType_21_readSubscriptMap_21_enumerationDescriptorList_21_features_21_addAssignOperatorArguments_21_generateHeaderInSeparateFile_21_typeForEnumeratedElement_21_headerFileName_21_headerKind (temp_8.readProperty_mSortedListTypeName (), temp_9.readProperty_isPredefined (), GGS_bool (true), GGS_bool (true), GGS_unifiedTypeMapEntry::class_func_null (SOURCE_FILE ("declaration-type-sorted-list.galgas3", 333)), GGS_typeKindEnum::class_func_sortedListType (SOURCE_FILE ("declaration-type-sorted-list.galgas3", 334)), GGS_bool (true), var_typedAttributeList_8503, GGS_propertyMap::init (inCompiler COMMA_HERE), GGS_typedPropertyList::init (inCompiler COMMA_HERE), var_initializerMap_11195, var_classFunctionMap_9285, var_getterMap_9555, var_setterMap_9800, var_instanceMethodMap_10582, GGS_classMethodMap::init (inCompiler COMMA_HERE), GGS_unifiedTypeMapEntry::class_func_null (SOURCE_FILE ("declaration-type-sorted-list.galgas3", 345)), GGS_subscriptMap::init (inCompiler COMMA_HERE), var_enumerationDescriptor_8245, var_features_11892, var_constructorAttributeTypeList_8300, GGS_bool (false), var_listElementTypeIndex_8151, GGS_string ("-sortedlist-").add_operation (temp_10.readProperty_mSortedListTypeName ().readProperty_string ().getter_fileNameRepresentation (SOURCE_FILE ("declaration-type-sorted-list.galgas3", 352)), inCompiler COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 352)), GGS_headerKind::class_func_oneHeader (SOURCE_FILE ("declaration-type-sorted-list.galgas3", 353)), inCompiler COMMA_HERE) ;
   {
-  extensionSetter_insertType (ioArgument_ioTypeMap, var_typeDefinition_12232.readProperty_typeName (), var_typeDefinition_12232, inCompiler COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 355)) ;
+  extensionSetter_insertType (ioArgument_ioTypeMap, var_typeDefinition_12240.readProperty_typeName (), var_typeDefinition_12240, inCompiler COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 355)) ;
   }
 }
 
@@ -124,87 +124,87 @@ void cPtr_sortedListDeclarationAST::method_semanticAnalysis (GGS_lstringlist & i
                                                              Compiler * inCompiler
                                                              COMMA_UNUSED_LOCATION_ARGS) {
   const GGS_sortedListDeclarationAST temp_0 = this ;
-  GGS_lstring var_sortedListNameForUsefulness_13973 = function_typeNameForUsefulEntitiesGraph (temp_0.readProperty_mSortedListTypeName (), inCompiler COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 370)) ;
+  GGS_lstring var_sortedListNameForUsefulness_13981 = function_typeNameForUsefulEntitiesGraph (temp_0.readProperty_mSortedListTypeName (), inCompiler COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 370)) ;
   {
-  ioArgument_ioUsefulEntitiesGraph.setter_addNode (var_sortedListNameForUsefulness_13973, var_sortedListNameForUsefulness_13973, inCompiler COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 371)) ;
+  ioArgument_ioUsefulEntitiesGraph.setter_addNode (var_sortedListNameForUsefulness_13981, var_sortedListNameForUsefulness_13981, inCompiler COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 371)) ;
   }
   const GGS_sortedListDeclarationAST temp_1 = this ;
-  GGS_lstring var_elementTypeNameForUsefulness_14167 = function_typeNameForUsefulEntitiesGraph (function_makeEmbeddedElementTypeLName (temp_1.readProperty_mSortedListTypeName (), inCompiler COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 373)), inCompiler COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 372)) ;
+  GGS_lstring var_elementTypeNameForUsefulness_14175 = function_typeNameForUsefulEntitiesGraph (function_makeEmbeddedElementTypeLName (temp_1.readProperty_mSortedListTypeName (), inCompiler COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 373)), inCompiler COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 372)) ;
   {
-  ioArgument_ioUsefulEntitiesGraph.setter_addEdge (var_sortedListNameForUsefulness_13973, var_elementTypeNameForUsefulness_14167 COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 375)) ;
+  ioArgument_ioUsefulEntitiesGraph.setter_addEdge (var_sortedListNameForUsefulness_13981, var_elementTypeNameForUsefulness_14175 COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 375)) ;
   }
   GalgasBool test_2 = GalgasBool::boolTrue ;
   if (GalgasBool::boolTrue == test_2) {
     const GGS_sortedListDeclarationAST temp_3 = this ;
     test_2 = temp_3.readProperty_isPredefined ().boolEnum () ;
     if (GalgasBool::boolTrue == test_2) {
-      ioArgument_ioUsefulnessRootEntities.addAssignOperation (var_sortedListNameForUsefulness_13973  COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 377)) ;
+      ioArgument_ioUsefulnessRootEntities.addAssignOperation (var_sortedListNameForUsefulness_13981  COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 377)) ;
     }
   }
   const GGS_sortedListDeclarationAST temp_4 = this ;
-  GGS_lstring var_initializerNameForUsefulness_14585 = function_initializerNameForUsefulEntitiesGraph (temp_4.readProperty_mSortedListTypeName (), extensionGetter_initializerSignature (GGS_formalInputParameterListAST::init (inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 382)), inCompiler COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 380)) ;
+  GGS_lstring var_initializerNameForUsefulness_14593 = function_initializerNameForUsefulEntitiesGraph (temp_4.readProperty_mSortedListTypeName (), extensionGetter_initializerSignature (GGS_formalInputParameterListAST::init (inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 382)), inCompiler COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 380)) ;
   {
-  ioArgument_ioUsefulEntitiesGraph.setter_addNode (var_initializerNameForUsefulness_14585, var_initializerNameForUsefulness_14585, inCompiler COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 384)) ;
+  ioArgument_ioUsefulEntitiesGraph.setter_addNode (var_initializerNameForUsefulness_14593, var_initializerNameForUsefulness_14593, inCompiler COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 384)) ;
   }
   {
-  ioArgument_ioUsefulEntitiesGraph.setter_addEdge (var_initializerNameForUsefulness_14585, var_sortedListNameForUsefulness_13973 COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 385)) ;
+  ioArgument_ioUsefulEntitiesGraph.setter_addEdge (var_initializerNameForUsefulness_14593, var_sortedListNameForUsefulness_13981 COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 385)) ;
   }
   GalgasBool test_5 = GalgasBool::boolTrue ;
   if (GalgasBool::boolTrue == test_5) {
     const GGS_sortedListDeclarationAST temp_6 = this ;
     test_5 = temp_6.readProperty_isPredefined ().boolEnum () ;
     if (GalgasBool::boolTrue == test_5) {
-      ioArgument_ioUsefulnessRootEntities.addAssignOperation (var_initializerNameForUsefulness_14585  COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 387)) ;
+      ioArgument_ioUsefulnessRootEntities.addAssignOperation (var_initializerNameForUsefulness_14593  COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 387)) ;
     }
   }
-  GGS_typedPropertyList var_typedAttributeList_15089 = GGS_typedPropertyList::init (inCompiler COMMA_HERE) ;
-  GGS_propertyIndexMap var_attributeMap_15158 = GGS_propertyIndexMap::init (inCompiler COMMA_HERE) ;
+  GGS_typedPropertyList var_typedAttributeList_15097 = GGS_typedPropertyList::init (inCompiler COMMA_HERE) ;
+  GGS_propertyIndexMap var_attributeMap_15166 = GGS_propertyIndexMap::init (inCompiler COMMA_HERE) ;
   const GGS_sortedListDeclarationAST temp_7 = this ;
-  UpEnumerator_propertyInCollectionListAST enumerator_15222 (temp_7.readProperty_mPropertyList ()) ;
-  while (enumerator_15222.hasCurrentObject ()) {
-    GGS_lstring var_propertyTypeNameForUsefulness_15273 = function_typeNameForUsefulEntitiesGraph (enumerator_15222.current_typeName (HERE), inCompiler COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 393)) ;
+  UpEnumerator_propertyInCollectionListAST enumerator_15230 (temp_7.readProperty_mPropertyList ()) ;
+  while (enumerator_15230.hasCurrentObject ()) {
+    GGS_lstring var_propertyTypeNameForUsefulness_15281 = function_typeNameForUsefulEntitiesGraph (enumerator_15230.current_typeName (HERE), inCompiler COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 393)) ;
     {
-    ioArgument_ioUsefulEntitiesGraph.setter_addEdge (var_sortedListNameForUsefulness_13973, var_propertyTypeNameForUsefulness_15273 COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 394)) ;
+    ioArgument_ioUsefulEntitiesGraph.setter_addEdge (var_sortedListNameForUsefulness_13981, var_propertyTypeNameForUsefulness_15281 COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 394)) ;
     }
-    GGS_unifiedTypeMapEntry var_t_15477 = extensionGetter_typeMapEntryForLKey (ioArgument_ioTypeMap, enumerator_15222.current_typeName (HERE), inCompiler COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 395)) ;
-    GGS_bool var_hasSelector_15541 = GGS_bool (true) ;
-    var_typedAttributeList_15089.addAssignOperation (var_t_15477, enumerator_15222.current_name (HERE), enumerator_15222.current_initialization (HERE), GGS_bool (true), var_hasSelector_15541  COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 397)) ;
+    GGS_unifiedTypeMapEntry var_t_15485 = extensionGetter_typeMapEntryForLKey (ioArgument_ioTypeMap, enumerator_15230.current_typeName (HERE), inCompiler COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 395)) ;
+    GGS_bool var_hasSelector_15549 = GGS_bool (true) ;
+    var_typedAttributeList_15097.addAssignOperation (var_t_15485, enumerator_15230.current_name (HERE), enumerator_15230.current_initialization (HERE), GGS_bool (true), var_hasSelector_15549  COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 397)) ;
     {
-    var_attributeMap_15158.setter_insertKey (enumerator_15222.current_name (HERE), var_t_15477, inCompiler COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 403)) ;
+    var_attributeMap_15166.setter_insertKey (enumerator_15230.current_name (HERE), var_t_15485, inCompiler COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 403)) ;
     }
-    enumerator_15222.gotoNextObject () ;
+    enumerator_15230.gotoNextObject () ;
   }
-  GGS_stringset var_attributesUsedForSorting_15808 = GGS_stringset::init (inCompiler COMMA_HERE) ;
-  GGS_sortDescriptorListForGeneration var_sortDescriptorList_15880 = GGS_sortDescriptorListForGeneration::init (inCompiler COMMA_HERE) ;
+  GGS_stringset var_attributesUsedForSorting_15816 = GGS_stringset::init (inCompiler COMMA_HERE) ;
+  GGS_sortDescriptorListForGeneration var_sortDescriptorList_15888 = GGS_sortDescriptorListForGeneration::init (inCompiler COMMA_HERE) ;
   const GGS_sortedListDeclarationAST temp_8 = this ;
-  UpEnumerator_sortedListSortDescriptorListAST enumerator_15935 (temp_8.readProperty_mSortDescriptorList ()) ;
-  while (enumerator_15935.hasCurrentObject ()) {
-    GGS_unifiedTypeMapEntry var_type_16057 ;
-    var_attributeMap_15158.method_searchKey (enumerator_15935.current_mSortedAttributeName (HERE), var_type_16057, inCompiler COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 409)) ;
-    var_sortDescriptorList_15880.addAssignOperation (var_type_16057, enumerator_15935.current_mSortedAttributeName (HERE).readProperty_string (), enumerator_15935.current_mAscending (HERE)  COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 410)) ;
+  UpEnumerator_sortedListSortDescriptorListAST enumerator_15943 (temp_8.readProperty_mSortDescriptorList ()) ;
+  while (enumerator_15943.hasCurrentObject ()) {
+    GGS_unifiedTypeMapEntry var_type_16065 ;
+    var_attributeMap_15166.method_searchKey (enumerator_15943.current_mSortedAttributeName (HERE), var_type_16065, inCompiler COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 409)) ;
+    var_sortDescriptorList_15888.addAssignOperation (var_type_16065, enumerator_15943.current_mSortedAttributeName (HERE).readProperty_string (), enumerator_15943.current_mAscending (HERE)  COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 410)) ;
     GalgasBool test_9 = GalgasBool::boolTrue ;
     if (GalgasBool::boolTrue == test_9) {
-      test_9 = var_attributesUsedForSorting_15808.getter_hasKey (enumerator_15935.current_mSortedAttributeName (HERE).readProperty_string () COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 411)).boolEnum () ;
+      test_9 = var_attributesUsedForSorting_15816.getter_hasKey (enumerator_15943.current_mSortedAttributeName (HERE).readProperty_string () COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 411)).boolEnum () ;
       if (GalgasBool::boolTrue == test_9) {
         GenericArray <FixItDescription> fixItArray10 ;
-        inCompiler->emitSemanticError (enumerator_15935.current_mSortedAttributeName (HERE).readProperty_location (), GGS_string ("the '").add_operation (enumerator_15935.current_mSortedAttributeName (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 412)).add_operation (GGS_string ("' is already used for sorting"), inCompiler COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 412)), fixItArray10  COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 412)) ;
+        inCompiler->emitSemanticError (enumerator_15943.current_mSortedAttributeName (HERE).readProperty_location (), GGS_string ("the '").add_operation (enumerator_15943.current_mSortedAttributeName (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 412)).add_operation (GGS_string ("' is already used for sorting"), inCompiler COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 412)), fixItArray10  COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 412)) ;
       }
     }
-    var_attributesUsedForSorting_15808.plusPlusAssignOperation (enumerator_15935.current_mSortedAttributeName (HERE).readProperty_string ()  COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 414)) ;
+    var_attributesUsedForSorting_15816.plusPlusAssignOperation (enumerator_15943.current_mSortedAttributeName (HERE).readProperty_string ()  COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 414)) ;
     GalgasBool test_11 = GalgasBool::boolTrue ;
     if (GalgasBool::boolTrue == test_11) {
-      test_11 = extensionGetter_definition (var_type_16057, inCompiler COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 415)).readProperty_features ().getter_contains (GGS_typeFeatures::class_func_comparable (SOURCE_FILE ("declaration-type-sorted-list.galgas3", 415)) COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 415)).operator_not (SOURCE_FILE ("declaration-type-sorted-list.galgas3", 415)).boolEnum () ;
+      test_11 = extensionGetter_definition (var_type_16065, inCompiler COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 415)).readProperty_features ().getter_contains (GGS_typeFeatures::class_func_comparable (SOURCE_FILE ("declaration-type-sorted-list.galgas3", 415)) COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 415)).operator_not (SOURCE_FILE ("declaration-type-sorted-list.galgas3", 415)).boolEnum () ;
       if (GalgasBool::boolTrue == test_11) {
         GenericArray <FixItDescription> fixItArray12 ;
-        inCompiler->emitSemanticError (enumerator_15935.current_mSortedAttributeName (HERE).readProperty_location (), GGS_string ("the @").add_operation (extensionGetter_definition (var_type_16057, inCompiler COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 416)).readProperty_typeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 416)).add_operation (GGS_string (" type is not comparable"), inCompiler COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 416)), fixItArray12  COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 416)) ;
+        inCompiler->emitSemanticError (enumerator_15943.current_mSortedAttributeName (HERE).readProperty_location (), GGS_string ("the @").add_operation (extensionGetter_definition (var_type_16065, inCompiler COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 416)).readProperty_typeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 416)).add_operation (GGS_string (" type is not comparable"), inCompiler COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 416)), fixItArray12  COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 416)) ;
       }
     }
-    enumerator_15935.gotoNextObject () ;
+    enumerator_15943.gotoNextObject () ;
   }
   const GGS_sortedListDeclarationAST temp_13 = this ;
   const GGS_sortedListDeclarationAST temp_14 = this ;
   const GGS_sortedListDeclarationAST temp_15 = this ;
-  ioArgument_ioSemanticDeclarationListForGeneration.addAssignOperation (GGS_string ("sorted list ").add_operation (temp_13.readProperty_mSortedListTypeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 421)), GGS_sortedListTypeForGeneration::init_21__21__21__21_ (extensionGetter_typeMapEntryForLKey (ioArgument_ioTypeMap, temp_14.readProperty_mSortedListTypeName (), inCompiler COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 423)), extensionGetter_typeMapEntryForLKey (ioArgument_ioTypeMap, function_makeEmbeddedElementTypeLName (temp_15.readProperty_mSortedListTypeName (), inCompiler COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 424)), inCompiler COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 424)), var_typedAttributeList_15089, var_sortDescriptorList_15880, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 420)) ;
+  ioArgument_ioSemanticDeclarationListForGeneration.addAssignOperation (GGS_string ("sorted list ").add_operation (temp_13.readProperty_mSortedListTypeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 421)), GGS_sortedListTypeForGeneration::init_21__21__21__21_ (extensionGetter_typeMapEntryForLKey (ioArgument_ioTypeMap, temp_14.readProperty_mSortedListTypeName (), inCompiler COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 423)), extensionGetter_typeMapEntryForLKey (ioArgument_ioTypeMap, function_makeEmbeddedElementTypeLName (temp_15.readProperty_mSortedListTypeName (), inCompiler COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 424)), inCompiler COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 424)), var_typedAttributeList_15097, var_sortDescriptorList_15888, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 420)) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -216,14 +216,14 @@ void cPtr_sortedListTypeForGeneration::method_appendDeclaration_31_ (GGS_strings
                                                                      Compiler * inCompiler
                                                                      COMMA_UNUSED_LOCATION_ARGS) {
   const GGS_sortedListTypeForGeneration temp_0 = this ;
-  GGS_unifiedTypeDefinition var_selfTypeDefinition_18063 = extensionGetter_definition (temp_0.readProperty_mSelfTypeEntry (), inCompiler COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 457)) ;
+  GGS_unifiedTypeDefinition var_selfTypeDefinition_18071 = extensionGetter_definition (temp_0.readProperty_mSelfTypeEntry (), inCompiler COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 457)) ;
   const GGS_sortedListTypeForGeneration temp_1 = this ;
-  GGS_unifiedTypeDefinition var_elementTypeDefinition_18121 = extensionGetter_definition (temp_1.readProperty_mListElementTypeIndex (), inCompiler COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 458)) ;
+  GGS_unifiedTypeDefinition var_elementTypeDefinition_18129 = extensionGetter_definition (temp_1.readProperty_mListElementTypeIndex (), inCompiler COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 458)) ;
   const GGS_sortedListTypeForGeneration temp_2 = this ;
   const GGS_sortedListTypeForGeneration temp_3 = this ;
-  outArgument_outHeader = GGS_string (filewrapperTemplate_sortedListGenerationTemplate_sortedlistTypeHeader_31_ (inCompiler, var_selfTypeDefinition_18063.readProperty_typeName ().readProperty_string (), extensionGetter_identifierRepresentation (temp_2.readProperty_mSelfTypeEntry (), inCompiler COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 461)), temp_3.readProperty_mTypedAttributeList (), var_selfTypeDefinition_18063.readProperty_enumerationDescriptorList (), var_selfTypeDefinition_18063.readProperty_typeForEnumeratedElement (), var_elementTypeDefinition_18121.readProperty_typeName ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("declaration-type-sorted-list.galgas3", 465)) COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 459))) ;
+  outArgument_outHeader = GGS_string (filewrapperTemplate_sortedListGenerationTemplate_sortedlistTypeHeader_31_ (inCompiler, var_selfTypeDefinition_18071.readProperty_typeName ().readProperty_string (), extensionGetter_identifierRepresentation (temp_2.readProperty_mSelfTypeEntry (), inCompiler COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 461)), temp_3.readProperty_mTypedAttributeList (), var_selfTypeDefinition_18071.readProperty_enumerationDescriptorList (), var_selfTypeDefinition_18071.readProperty_typeForEnumeratedElement (), var_elementTypeDefinition_18129.readProperty_typeName ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("declaration-type-sorted-list.galgas3", 465)) COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 459))) ;
   const GGS_sortedListTypeForGeneration temp_4 = this ;
-  outArgument_outHeader.plusAssignOperation(GGS_string (filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType (inCompiler, var_selfTypeDefinition_18063.readProperty_typeName ().readProperty_string (), extensionGetter_identifierRepresentation (temp_4.readProperty_mSelfTypeEntry (), inCompiler COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 469)), var_selfTypeDefinition_18063.readProperty_isConcrete (), var_selfTypeDefinition_18063.readProperty_initializerMap (), var_selfTypeDefinition_18063.readProperty_classFunctionMap (), var_selfTypeDefinition_18063.readProperty_getterMap (), var_selfTypeDefinition_18063.readProperty_setterMap (), var_selfTypeDefinition_18063.readProperty_instanceMethodMap (), var_selfTypeDefinition_18063.readProperty_classMethodMap (), var_selfTypeDefinition_18063.readProperty_readSubscriptMap (), var_selfTypeDefinition_18063.readProperty_enumerationDescriptorList (), var_selfTypeDefinition_18063.readProperty_features (), var_selfTypeDefinition_18063.readProperty_addAssignOperatorArguments (), var_selfTypeDefinition_18063.readProperty_typeForEnumeratedElement (), var_selfTypeDefinition_18063.readProperty_supportCollectionValue () COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 467))), inCompiler  COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 467)) ;
+  outArgument_outHeader.plusAssignOperation(GGS_string (filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType (inCompiler, var_selfTypeDefinition_18071.readProperty_typeName ().readProperty_string (), extensionGetter_identifierRepresentation (temp_4.readProperty_mSelfTypeEntry (), inCompiler COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 469)), var_selfTypeDefinition_18071.readProperty_isConcrete (), var_selfTypeDefinition_18071.readProperty_initializerMap (), var_selfTypeDefinition_18071.readProperty_classFunctionMap (), var_selfTypeDefinition_18071.readProperty_getterMap (), var_selfTypeDefinition_18071.readProperty_setterMap (), var_selfTypeDefinition_18071.readProperty_instanceMethodMap (), var_selfTypeDefinition_18071.readProperty_classMethodMap (), var_selfTypeDefinition_18071.readProperty_readSubscriptMap (), var_selfTypeDefinition_18071.readProperty_enumerationDescriptorList (), var_selfTypeDefinition_18071.readProperty_features (), var_selfTypeDefinition_18071.readProperty_addAssignOperatorArguments (), var_selfTypeDefinition_18071.readProperty_typeForEnumeratedElement (), var_selfTypeDefinition_18071.readProperty_supportCollectionValue () COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 467))), inCompiler  COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 467)) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -236,21 +236,21 @@ void cPtr_sortedListTypeForGeneration::method_appendSpecificImplementation (cons
                                                                             Compiler * inCompiler
                                                                             COMMA_UNUSED_LOCATION_ARGS) {
   const GGS_sortedListTypeForGeneration temp_0 = this ;
-  UpEnumerator_typedPropertyList enumerator_19548 (temp_0.readProperty_mTypedAttributeList ()) ;
-  while (enumerator_19548.hasCurrentObject ()) {
-    extensionMethod_addHeaderFileName (enumerator_19548.current_typeEntry (HERE), ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 493)) ;
-    enumerator_19548.gotoNextObject () ;
+  UpEnumerator_typedPropertyList enumerator_19556 (temp_0.readProperty_mTypedAttributeList ()) ;
+  while (enumerator_19556.hasCurrentObject ()) {
+    extensionMethod_addHeaderFileName (enumerator_19556.current_typeEntry (HERE), ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 493)) ;
+    enumerator_19556.gotoNextObject () ;
   }
   const GGS_sortedListTypeForGeneration temp_1 = this ;
   extensionMethod_addHeaderFileName (temp_1.readProperty_mListElementTypeIndex (), ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 495)) ;
   const GGS_sortedListTypeForGeneration temp_2 = this ;
   extensionMethod_addHeaderFileName (temp_2.readProperty_mSelfTypeEntry (), ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 496)) ;
   const GGS_sortedListTypeForGeneration temp_3 = this ;
-  GGS_unifiedTypeDefinition var_elementTypeDefinition_19762 = extensionGetter_definition (temp_3.readProperty_mListElementTypeIndex (), inCompiler COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 497)) ;
+  GGS_unifiedTypeDefinition var_elementTypeDefinition_19770 = extensionGetter_definition (temp_3.readProperty_mListElementTypeIndex (), inCompiler COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 497)) ;
   const GGS_sortedListTypeForGeneration temp_4 = this ;
   const GGS_sortedListTypeForGeneration temp_5 = this ;
   const GGS_sortedListTypeForGeneration temp_6 = this ;
-  outArgument_outImplementation = GGS_string (filewrapperTemplate_sortedListGenerationTemplate_sortedlistTypeSpecificImplementation (inCompiler, extensionGetter_identifierRepresentation (temp_4.readProperty_mSelfTypeEntry (), inCompiler COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 499)), temp_5.readProperty_mTypedAttributeList (), temp_6.readProperty_mSortDescriptorList (), var_elementTypeDefinition_19762.readProperty_typeName ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("declaration-type-sorted-list.galgas3", 502)), extensionGetter_generateCppObjectComparison (var_elementTypeDefinition_19762.readProperty_features (), inCompiler COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 503)) COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 498))) ;
+  outArgument_outImplementation = GGS_string (filewrapperTemplate_sortedListGenerationTemplate_sortedlistTypeSpecificImplementation (inCompiler, extensionGetter_identifierRepresentation (temp_4.readProperty_mSelfTypeEntry (), inCompiler COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 499)), temp_5.readProperty_mTypedAttributeList (), temp_6.readProperty_mSortDescriptorList (), var_elementTypeDefinition_19770.readProperty_typeName ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("declaration-type-sorted-list.galgas3", 502)), extensionGetter_generateCppObjectComparison (var_elementTypeDefinition_19770.readProperty_features (), inCompiler COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 503)) COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 498))) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -882,10 +882,10 @@ void cPtr_externTypeDeclarationAST::method_enterDeclarationInGraph (GGS_semantic
                                                                     COMMA_UNUSED_LOCATION_ARGS) {
   const GGS_externTypeDeclarationAST temp_0 = this ;
   const GGS_externTypeDeclarationAST temp_1 = this ;
-  GGS_lstring var_key_14260 = GGS_lstring::init_21__21_ (GGS_string ("@").add_operation (temp_0.readProperty_mExternTypeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("declaration-type-extern.galgas3", 368)), temp_1.readProperty_mExternTypeName ().readProperty_location (), inCompiler COMMA_HERE) ;
+  GGS_lstring var_key_14308 = GGS_lstring::init_21__21_ (GGS_string ("@").add_operation (temp_0.readProperty_mExternTypeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("declaration-type-extern.galgas3", 368)), temp_1.readProperty_mExternTypeName ().readProperty_location (), inCompiler COMMA_HERE) ;
   {
   const GGS_externTypeDeclarationAST temp_2 = this ;
-  ioArgument_ioSemanticTypePrecedenceGraph.setter_addNode (var_key_14260, temp_2, inCompiler COMMA_SOURCE_FILE ("declaration-type-extern.galgas3", 369)) ;
+  ioArgument_ioSemanticTypePrecedenceGraph.setter_addNode (var_key_14308, temp_2, inCompiler COMMA_SOURCE_FILE ("declaration-type-extern.galgas3", 369)) ;
   }
 }
 
@@ -918,102 +918,102 @@ void cPtr_externTypeDeclarationAST::method_enterDeclarationInSemanticContext (GG
                                                                               GGS_semanticContext & /* ioArgument_ioSemanticContext */,
                                                                               Compiler * inCompiler
                                                                               COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_getterMap var_getterMap_15346 ;
+  GGS_getterMap var_getterMap_15394 ;
   {
-  routine_commonGetterMapForAllTypes_26__21_ (ioArgument_ioTypeMap, var_getterMap_15346, inCompiler  COMMA_SOURCE_FILE ("declaration-type-extern.galgas3", 389)) ;
+  routine_commonGetterMapForAllTypes_26__21_ (ioArgument_ioTypeMap, var_getterMap_15394, inCompiler  COMMA_SOURCE_FILE ("declaration-type-extern.galgas3", 389)) ;
   }
-  GGS_setterMap var_setterMap_15428 = GGS_setterMap::init (inCompiler COMMA_HERE) ;
-  GGS_instanceMethodMap var_instanceMethodMap_15471 = GGS_instanceMethodMap::init (inCompiler COMMA_HERE) ;
-  GGS_initializerMap var_initializerMap_15540 = GGS_initializerMap::init (inCompiler COMMA_HERE) ;
+  GGS_setterMap var_setterMap_15476 = GGS_setterMap::init (inCompiler COMMA_HERE) ;
+  GGS_instanceMethodMap var_instanceMethodMap_15519 = GGS_instanceMethodMap::init (inCompiler COMMA_HERE) ;
+  GGS_initializerMap var_initializerMap_15588 = GGS_initializerMap::init (inCompiler COMMA_HERE) ;
   const GGS_externTypeDeclarationAST temp_0 = this ;
-  UpEnumerator_externTypeConstructorList enumerator_15589 (temp_0.readProperty_externTypeInitializerList ()) ;
-  while (enumerator_15589.hasCurrentObject ()) {
-    GGS_functionSignature var_arguments_15740 = GGS_functionSignature::init (inCompiler COMMA_HERE) ;
-    UpEnumerator_typeNameFormalParameterNameList enumerator_15791 (enumerator_15589.current (HERE).readProperty_mParameterList ()) ;
-    while (enumerator_15791.hasCurrentObject ()) {
-      GGS_unifiedTypeMapEntry var_argumentTypeEntry_15882 ;
+  UpEnumerator_externTypeConstructorList enumerator_15637 (temp_0.readProperty_externTypeInitializerList ()) ;
+  while (enumerator_15637.hasCurrentObject ()) {
+    GGS_functionSignature var_arguments_15788 = GGS_functionSignature::init (inCompiler COMMA_HERE) ;
+    UpEnumerator_typeNameFormalParameterNameList enumerator_15839 (enumerator_15637.current (HERE).readProperty_mParameterList ()) ;
+    while (enumerator_15839.hasCurrentObject ()) {
+      GGS_unifiedTypeMapEntry var_argumentTypeEntry_15930 ;
       {
-      extensionSetter_makeEntry (ioArgument_ioTypeMap, enumerator_15791.current (HERE).readProperty_mFormalParameterTypeName (), var_argumentTypeEntry_15882, inCompiler COMMA_SOURCE_FILE ("declaration-type-extern.galgas3", 400)) ;
+      extensionSetter_makeEntry (ioArgument_ioTypeMap, enumerator_15839.current (HERE).readProperty_mFormalParameterTypeName (), var_argumentTypeEntry_15930, inCompiler COMMA_SOURCE_FILE ("declaration-type-extern.galgas3", 400)) ;
       }
-      var_arguments_15740.addAssignOperation (enumerator_15791.current (HERE).readProperty_mFormalSelector (), var_argumentTypeEntry_15882, enumerator_15791.current (HERE).readProperty_mFormalParameterName ().readProperty_string (), GGS_bool (true)  COMMA_SOURCE_FILE ("declaration-type-extern.galgas3", 401)) ;
-      enumerator_15791.gotoNextObject () ;
+      var_arguments_15788.addAssignOperation (enumerator_15839.current (HERE).readProperty_mFormalSelector (), var_argumentTypeEntry_15930, enumerator_15839.current (HERE).readProperty_mFormalParameterName ().readProperty_string (), GGS_bool (true)  COMMA_SOURCE_FILE ("declaration-type-extern.galgas3", 401)) ;
+      enumerator_15839.gotoNextObject () ;
     }
     const GGS_externTypeDeclarationAST temp_1 = this ;
-    GGS_lstring var_initializerName_16043 = GGS_lstring::init_21__21_ (extensionGetter_initializerSignature (enumerator_15589.current (HERE).readProperty_mParameterList (), inCompiler COMMA_SOURCE_FILE ("declaration-type-extern.galgas3", 404)), temp_1.readProperty_mExternTypeName ().readProperty_location (), inCompiler COMMA_HERE) ;
+    GGS_lstring var_initializerName_16091 = GGS_lstring::init_21__21_ (extensionGetter_initializerSignature (enumerator_15637.current (HERE).readProperty_mParameterList (), inCompiler COMMA_SOURCE_FILE ("declaration-type-extern.galgas3", 404)), temp_1.readProperty_mExternTypeName ().readProperty_location (), inCompiler COMMA_HERE) ;
     {
-    var_initializerMap_15540.setter_insertKey (var_initializerName_16043, var_arguments_15740, inCompiler COMMA_SOURCE_FILE ("declaration-type-extern.galgas3", 405)) ;
+    var_initializerMap_15588.setter_insertKey (var_initializerName_16091, var_arguments_15788, inCompiler COMMA_SOURCE_FILE ("declaration-type-extern.galgas3", 405)) ;
     }
-    enumerator_15589.gotoNextObject () ;
+    enumerator_15637.gotoNextObject () ;
   }
   const GGS_externTypeDeclarationAST temp_2 = this ;
-  UpEnumerator_externTypeGetterList enumerator_16268 (temp_2.readProperty_mExternTypeGetterList ()) ;
-  while (enumerator_16268.hasCurrentObject ()) {
-    GGS_unifiedTypeMapEntry var_returnedTypeEntry_16369 ;
+  UpEnumerator_externTypeGetterList enumerator_16316 (temp_2.readProperty_mExternTypeGetterList ()) ;
+  while (enumerator_16316.hasCurrentObject ()) {
+    GGS_unifiedTypeMapEntry var_returnedTypeEntry_16417 ;
     {
-    extensionSetter_makeEntry (ioArgument_ioTypeMap, enumerator_16268.current_mResultTypeName (HERE), var_returnedTypeEntry_16369, inCompiler COMMA_SOURCE_FILE ("declaration-type-extern.galgas3", 409)) ;
+    extensionSetter_makeEntry (ioArgument_ioTypeMap, enumerator_16316.current_mResultTypeName (HERE), var_returnedTypeEntry_16417, inCompiler COMMA_SOURCE_FILE ("declaration-type-extern.galgas3", 409)) ;
     }
-    GGS_functionSignature var_arguments_16427 = GGS_functionSignature::init (inCompiler COMMA_HERE) ;
-    UpEnumerator_typeNameFormalParameterNameList enumerator_16495 (enumerator_16268.current_mParameterList (HERE)) ;
-    while (enumerator_16495.hasCurrentObject ()) {
-      GGS_unifiedTypeMapEntry var_argumentTypeEntry_16601 ;
+    GGS_functionSignature var_arguments_16475 = GGS_functionSignature::init (inCompiler COMMA_HERE) ;
+    UpEnumerator_typeNameFormalParameterNameList enumerator_16543 (enumerator_16316.current_mParameterList (HERE)) ;
+    while (enumerator_16543.hasCurrentObject ()) {
+      GGS_unifiedTypeMapEntry var_argumentTypeEntry_16649 ;
       {
-      extensionSetter_makeEntry (ioArgument_ioTypeMap, enumerator_16495.current_mFormalParameterTypeName (HERE), var_argumentTypeEntry_16601, inCompiler COMMA_SOURCE_FILE ("declaration-type-extern.galgas3", 413)) ;
+      extensionSetter_makeEntry (ioArgument_ioTypeMap, enumerator_16543.current_mFormalParameterTypeName (HERE), var_argumentTypeEntry_16649, inCompiler COMMA_SOURCE_FILE ("declaration-type-extern.galgas3", 413)) ;
       }
-      var_arguments_16427.addAssignOperation (enumerator_16495.current_mFormalSelector (HERE), var_argumentTypeEntry_16601, enumerator_16495.current_mFormalParameterName (HERE).readProperty_string (), GGS_bool (true)  COMMA_SOURCE_FILE ("declaration-type-extern.galgas3", 414)) ;
-      enumerator_16495.gotoNextObject () ;
+      var_arguments_16475.addAssignOperation (enumerator_16543.current_mFormalSelector (HERE), var_argumentTypeEntry_16649, enumerator_16543.current_mFormalParameterName (HERE).readProperty_string (), GGS_bool (true)  COMMA_SOURCE_FILE ("declaration-type-extern.galgas3", 414)) ;
+      enumerator_16543.gotoNextObject () ;
     }
     {
-    var_getterMap_15346.setter_insertKey (enumerator_16268.current_mGetterName (HERE), GGS_methodKind::class_func_definedAsMember (SOURCE_FILE ("declaration-type-extern.galgas3", 419)), var_arguments_16427, GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("declaration-type-extern.galgas3", 421)), GGS_bool (true), var_returnedTypeEntry_16369, GGS_methodQualifier::class_func_isBasicFinal (SOURCE_FILE ("declaration-type-extern.galgas3", 424)), GGS_string::makeEmptyString (), inCompiler COMMA_SOURCE_FILE ("declaration-type-extern.galgas3", 417)) ;
+    var_getterMap_15394.setter_insertKey (enumerator_16316.current_mGetterName (HERE), GGS_methodKind::class_func_definedAsMember (SOURCE_FILE ("declaration-type-extern.galgas3", 419)), var_arguments_16475, GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("declaration-type-extern.galgas3", 421)), GGS_bool (true), var_returnedTypeEntry_16417, GGS_methodQualifier::class_func_isBasicFinal (SOURCE_FILE ("declaration-type-extern.galgas3", 424)), GGS_string::makeEmptyString (), inCompiler COMMA_SOURCE_FILE ("declaration-type-extern.galgas3", 417)) ;
     }
-    enumerator_16268.gotoNextObject () ;
+    enumerator_16316.gotoNextObject () ;
   }
   const GGS_externTypeDeclarationAST temp_3 = this ;
-  UpEnumerator_externTypeSetterList enumerator_17101 (temp_3.readProperty_mExternTypeSetterList ()) ;
-  while (enumerator_17101.hasCurrentObject ()) {
-    GGS_formalParameterSignature var_routineSignature_17192 = GGS_formalParameterSignature::init (inCompiler COMMA_HERE) ;
-    UpEnumerator_formalParameterListAST enumerator_17313 (enumerator_17101.current_mFormalParameterList (HERE)) ;
-    while (enumerator_17313.hasCurrentObject ()) {
-      GGS_unifiedTypeMapEntry var_parameterTypeIndex_17446 ;
+  UpEnumerator_externTypeSetterList enumerator_17149 (temp_3.readProperty_mExternTypeSetterList ()) ;
+  while (enumerator_17149.hasCurrentObject ()) {
+    GGS_formalParameterSignature var_routineSignature_17240 = GGS_formalParameterSignature::init (inCompiler COMMA_HERE) ;
+    UpEnumerator_formalParameterListAST enumerator_17361 (enumerator_17149.current_mFormalParameterList (HERE)) ;
+    while (enumerator_17361.hasCurrentObject ()) {
+      GGS_unifiedTypeMapEntry var_parameterTypeIndex_17494 ;
       {
-      extensionSetter_makeEntry (ioArgument_ioTypeMap, enumerator_17313.current_mFormalArgumentTypeName (HERE), var_parameterTypeIndex_17446, inCompiler COMMA_SOURCE_FILE ("declaration-type-extern.galgas3", 432)) ;
+      extensionSetter_makeEntry (ioArgument_ioTypeMap, enumerator_17361.current_mFormalArgumentTypeName (HERE), var_parameterTypeIndex_17494, inCompiler COMMA_SOURCE_FILE ("declaration-type-extern.galgas3", 432)) ;
       }
-      var_routineSignature_17192.addAssignOperation (enumerator_17313.current_mFormalSelector (HERE), var_parameterTypeIndex_17446, enumerator_17313.current_mFormalArgumentPassingMode (HERE), enumerator_17313.current_mFormalArgumentName (HERE).readProperty_string ()  COMMA_SOURCE_FILE ("declaration-type-extern.galgas3", 436)) ;
-      enumerator_17313.gotoNextObject () ;
+      var_routineSignature_17240.addAssignOperation (enumerator_17361.current_mFormalSelector (HERE), var_parameterTypeIndex_17494, enumerator_17361.current_mFormalArgumentPassingMode (HERE), enumerator_17361.current_mFormalArgumentName (HERE).readProperty_string ()  COMMA_SOURCE_FILE ("declaration-type-extern.galgas3", 436)) ;
+      enumerator_17361.gotoNextObject () ;
     }
     {
-    var_setterMap_15428.setter_insertKey (enumerator_17101.current_mSetterName (HERE), GGS_methodKind::class_func_definedAsMember (SOURCE_FILE ("declaration-type-extern.galgas3", 441)), var_routineSignature_17192, GGS_bool (true), GGS_methodQualifier::class_func_isBasicFinal (SOURCE_FILE ("declaration-type-extern.galgas3", 444)), GGS_string::makeEmptyString (), inCompiler COMMA_SOURCE_FILE ("declaration-type-extern.galgas3", 439)) ;
+    var_setterMap_15476.setter_insertKey (enumerator_17149.current_mSetterName (HERE), GGS_methodKind::class_func_definedAsMember (SOURCE_FILE ("declaration-type-extern.galgas3", 441)), var_routineSignature_17240, GGS_bool (true), GGS_methodQualifier::class_func_isBasicFinal (SOURCE_FILE ("declaration-type-extern.galgas3", 444)), GGS_string::makeEmptyString (), inCompiler COMMA_SOURCE_FILE ("declaration-type-extern.galgas3", 439)) ;
     }
-    enumerator_17101.gotoNextObject () ;
+    enumerator_17149.gotoNextObject () ;
   }
   const GGS_externTypeDeclarationAST temp_4 = this ;
-  UpEnumerator_externTypeMethodList enumerator_17928 (temp_4.readProperty_mExternTypeMethodList ()) ;
-  while (enumerator_17928.hasCurrentObject ()) {
-    GGS_formalParameterSignature var_routineSignature_17993 = GGS_formalParameterSignature::init (inCompiler COMMA_HERE) ;
-    UpEnumerator_formalParameterListAST enumerator_18139 (enumerator_17928.current_mFormalParameterList (HERE)) ;
-    while (enumerator_18139.hasCurrentObject ()) {
-      GGS_unifiedTypeMapEntry var_parameterTypeIndex_18251 ;
+  UpEnumerator_externTypeMethodList enumerator_17976 (temp_4.readProperty_mExternTypeMethodList ()) ;
+  while (enumerator_17976.hasCurrentObject ()) {
+    GGS_formalParameterSignature var_routineSignature_18041 = GGS_formalParameterSignature::init (inCompiler COMMA_HERE) ;
+    UpEnumerator_formalParameterListAST enumerator_18187 (enumerator_17976.current_mFormalParameterList (HERE)) ;
+    while (enumerator_18187.hasCurrentObject ()) {
+      GGS_unifiedTypeMapEntry var_parameterTypeIndex_18299 ;
       {
-      extensionSetter_makeEntry (ioArgument_ioTypeMap, enumerator_18139.current_mFormalArgumentTypeName (HERE), var_parameterTypeIndex_18251, inCompiler COMMA_SOURCE_FILE ("declaration-type-extern.galgas3", 452)) ;
+      extensionSetter_makeEntry (ioArgument_ioTypeMap, enumerator_18187.current_mFormalArgumentTypeName (HERE), var_parameterTypeIndex_18299, inCompiler COMMA_SOURCE_FILE ("declaration-type-extern.galgas3", 452)) ;
       }
-      var_routineSignature_17993.addAssignOperation (enumerator_18139.current_mFormalSelector (HERE), var_parameterTypeIndex_18251, enumerator_18139.current_mFormalArgumentPassingMode (HERE), enumerator_18139.current_mFormalArgumentName (HERE).readProperty_string ()  COMMA_SOURCE_FILE ("declaration-type-extern.galgas3", 456)) ;
-      enumerator_18139.gotoNextObject () ;
+      var_routineSignature_18041.addAssignOperation (enumerator_18187.current_mFormalSelector (HERE), var_parameterTypeIndex_18299, enumerator_18187.current_mFormalArgumentPassingMode (HERE), enumerator_18187.current_mFormalArgumentName (HERE).readProperty_string ()  COMMA_SOURCE_FILE ("declaration-type-extern.galgas3", 456)) ;
+      enumerator_18187.gotoNextObject () ;
     }
     {
-    var_instanceMethodMap_15471.setter_insertKey (enumerator_17928.current_mMethodName (HERE), GGS_methodKind::class_func_definedAsMember (SOURCE_FILE ("declaration-type-extern.galgas3", 461)), var_routineSignature_17993, enumerator_17928.current_mDeclarationLocation (HERE), GGS_bool (true), GGS_methodQualifier::class_func_isBasicFinal (SOURCE_FILE ("declaration-type-extern.galgas3", 465)), GGS_string::makeEmptyString (), inCompiler COMMA_SOURCE_FILE ("declaration-type-extern.galgas3", 459)) ;
+    var_instanceMethodMap_15519.setter_insertKey (enumerator_17976.current_mMethodName (HERE), GGS_methodKind::class_func_definedAsMember (SOURCE_FILE ("declaration-type-extern.galgas3", 461)), var_routineSignature_18041, enumerator_17976.current_mDeclarationLocation (HERE), GGS_bool (true), GGS_methodQualifier::class_func_isBasicFinal (SOURCE_FILE ("declaration-type-extern.galgas3", 465)), GGS_string::makeEmptyString (), inCompiler COMMA_SOURCE_FILE ("declaration-type-extern.galgas3", 459)) ;
     }
-    enumerator_17928.gotoNextObject () ;
+    enumerator_17976.gotoNextObject () ;
   }
-  GGS_typeFeatures var_features_18722 = GGS_typeFeatures::init (inCompiler COMMA_HERE) ;
+  GGS_typeFeatures var_features_18770 = GGS_typeFeatures::init (inCompiler COMMA_HERE) ;
   {
   const GGS_externTypeDeclarationAST temp_5 = this ;
-  routine_handleEquatableComparableExtension_26__3F__26__3F_acceptEquatable_3F_acceptComparable (ioArgument_ioEquatableExtensionMap, temp_5.readProperty_mExternTypeName (), var_features_18722, GGS_bool (false), GGS_bool (false), inCompiler  COMMA_SOURCE_FILE ("declaration-type-extern.galgas3", 470)) ;
+  routine_handleEquatableComparableExtension_26__3F__26__3F_acceptEquatable_3F_acceptComparable (ioArgument_ioEquatableExtensionMap, temp_5.readProperty_mExternTypeName (), var_features_18770, GGS_bool (false), GGS_bool (false), inCompiler  COMMA_SOURCE_FILE ("declaration-type-extern.galgas3", 470)) ;
   }
   const GGS_externTypeDeclarationAST temp_6 = this ;
   const GGS_externTypeDeclarationAST temp_7 = this ;
   const GGS_externTypeDeclarationAST temp_8 = this ;
-  GGS_unifiedTypeDefinition var_typeDefinition_18978 = GGS_unifiedTypeDefinition::init_21_typeName_21_isPredefined_21_isConcrete_21_isFinal_21_superType_21_typeKind_21_supportCollectionValue_21_allTypedPropertyList_21_propertyMap_21_currentTypedPropertyList_21_initializerMap_21_classFunctionMap_21_getterMap_21_setterMap_21_instanceMethodMap_21_classMethodMap_21_unwrappedType_21_readSubscriptMap_21_enumerationDescriptorList_21_features_21_addAssignOperatorArguments_21_generateHeaderInSeparateFile_21_typeForEnumeratedElement_21_headerFileName_21_headerKind (temp_6.readProperty_mExternTypeName (), temp_7.readProperty_isPredefined (), GGS_bool (true), GGS_bool (true), GGS_unifiedTypeMapEntry::class_func_null (SOURCE_FILE ("declaration-type-extern.galgas3", 483)), GGS_typeKindEnum::class_func_externType (SOURCE_FILE ("declaration-type-extern.galgas3", 484)), GGS_bool (false), GGS_typedPropertyList::init (inCompiler COMMA_HERE), GGS_propertyMap::init (inCompiler COMMA_HERE), GGS_typedPropertyList::init (inCompiler COMMA_HERE), var_initializerMap_15540, GGS_classFunctionMap::init (inCompiler COMMA_HERE), var_getterMap_15346, var_setterMap_15428, var_instanceMethodMap_15471, GGS_classMethodMap::init (inCompiler COMMA_HERE), GGS_unifiedTypeMapEntry::class_func_null (SOURCE_FILE ("declaration-type-extern.galgas3", 495)), GGS_subscriptMap::init (inCompiler COMMA_HERE), GGS_enumerationDescriptorList::init (inCompiler COMMA_HERE), var_features_18722, GGS_functionSignature::init (inCompiler COMMA_HERE), GGS_bool (false), GGS_unifiedTypeMapEntry::class_func_null (SOURCE_FILE ("declaration-type-extern.galgas3", 501)), GGS_string ("externtype-").add_operation (temp_8.readProperty_mExternTypeName ().readProperty_string ().getter_fileNameRepresentation (SOURCE_FILE ("declaration-type-extern.galgas3", 502)), inCompiler COMMA_SOURCE_FILE ("declaration-type-extern.galgas3", 502)), GGS_headerKind::class_func_oneHeader (SOURCE_FILE ("declaration-type-extern.galgas3", 503)), inCompiler COMMA_HERE) ;
+  GGS_unifiedTypeDefinition var_typeDefinition_19026 = GGS_unifiedTypeDefinition::init_21_typeName_21_isPredefined_21_isConcrete_21_isFinal_21_superType_21_typeKind_21_supportCollectionValue_21_allTypedPropertyList_21_propertyMap_21_currentTypedPropertyList_21_initializerMap_21_classFunctionMap_21_getterMap_21_setterMap_21_instanceMethodMap_21_classMethodMap_21_unwrappedType_21_readSubscriptMap_21_enumerationDescriptorList_21_features_21_addAssignOperatorArguments_21_generateHeaderInSeparateFile_21_typeForEnumeratedElement_21_headerFileName_21_headerKind (temp_6.readProperty_mExternTypeName (), temp_7.readProperty_isPredefined (), GGS_bool (true), GGS_bool (true), GGS_unifiedTypeMapEntry::class_func_null (SOURCE_FILE ("declaration-type-extern.galgas3", 483)), GGS_typeKindEnum::class_func_externType (SOURCE_FILE ("declaration-type-extern.galgas3", 484)), GGS_bool (false), GGS_typedPropertyList::init (inCompiler COMMA_HERE), GGS_propertyMap::init (inCompiler COMMA_HERE), GGS_typedPropertyList::init (inCompiler COMMA_HERE), var_initializerMap_15588, GGS_classFunctionMap::init (inCompiler COMMA_HERE), var_getterMap_15394, var_setterMap_15476, var_instanceMethodMap_15519, GGS_classMethodMap::init (inCompiler COMMA_HERE), GGS_unifiedTypeMapEntry::class_func_null (SOURCE_FILE ("declaration-type-extern.galgas3", 495)), GGS_subscriptMap::init (inCompiler COMMA_HERE), GGS_enumerationDescriptorList::init (inCompiler COMMA_HERE), var_features_18770, GGS_functionSignature::init (inCompiler COMMA_HERE), GGS_bool (false), GGS_unifiedTypeMapEntry::class_func_null (SOURCE_FILE ("declaration-type-extern.galgas3", 501)), GGS_string ("externtype-").add_operation (temp_8.readProperty_mExternTypeName ().readProperty_string ().getter_fileNameRepresentation (SOURCE_FILE ("declaration-type-extern.galgas3", 502)), inCompiler COMMA_SOURCE_FILE ("declaration-type-extern.galgas3", 502)), GGS_headerKind::class_func_oneHeader (SOURCE_FILE ("declaration-type-extern.galgas3", 503)), inCompiler COMMA_HERE) ;
   {
-  extensionSetter_insertType (ioArgument_ioTypeMap, var_typeDefinition_18978.readProperty_typeName (), var_typeDefinition_18978, inCompiler COMMA_SOURCE_FILE ("declaration-type-extern.galgas3", 505)) ;
+  extensionSetter_insertType (ioArgument_ioTypeMap, var_typeDefinition_19026.readProperty_typeName (), var_typeDefinition_19026, inCompiler COMMA_SOURCE_FILE ("declaration-type-extern.galgas3", 505)) ;
   }
 }
 
@@ -1031,30 +1031,30 @@ void cPtr_externTypeDeclarationAST::method_semanticAnalysis (GGS_lstringlist & i
                                                              Compiler * inCompiler
                                                              COMMA_UNUSED_LOCATION_ARGS) {
   const GGS_externTypeDeclarationAST temp_0 = this ;
-  GGS_lstring var_nameForUsefulness_20863 = function_typeNameForUsefulEntitiesGraph (temp_0.readProperty_mExternTypeName (), inCompiler COMMA_SOURCE_FILE ("declaration-type-extern.galgas3", 526)) ;
+  GGS_lstring var_nameForUsefulness_20911 = function_typeNameForUsefulEntitiesGraph (temp_0.readProperty_mExternTypeName (), inCompiler COMMA_SOURCE_FILE ("declaration-type-extern.galgas3", 526)) ;
   {
-  ioArgument_ioUsefulEntitiesGraph.setter_addNode (var_nameForUsefulness_20863, var_nameForUsefulness_20863, inCompiler COMMA_SOURCE_FILE ("declaration-type-extern.galgas3", 527)) ;
+  ioArgument_ioUsefulEntitiesGraph.setter_addNode (var_nameForUsefulness_20911, var_nameForUsefulness_20911, inCompiler COMMA_SOURCE_FILE ("declaration-type-extern.galgas3", 527)) ;
   }
   GalgasBool test_1 = GalgasBool::boolTrue ;
   if (GalgasBool::boolTrue == test_1) {
     const GGS_externTypeDeclarationAST temp_2 = this ;
     test_1 = temp_2.readProperty_isPredefined ().boolEnum () ;
     if (GalgasBool::boolTrue == test_1) {
-      ioArgument_ioUsefulnessRootEntities.addAssignOperation (var_nameForUsefulness_20863  COMMA_SOURCE_FILE ("declaration-type-extern.galgas3", 529)) ;
+      ioArgument_ioUsefulnessRootEntities.addAssignOperation (var_nameForUsefulness_20911  COMMA_SOURCE_FILE ("declaration-type-extern.galgas3", 529)) ;
     }
   }
   const GGS_externTypeDeclarationAST temp_3 = this ;
-  UpEnumerator_externTypeConstructorList enumerator_21144 (temp_3.readProperty_externTypeInitializerList ()) ;
-  while (enumerator_21144.hasCurrentObject ()) {
+  UpEnumerator_externTypeConstructorList enumerator_21192 (temp_3.readProperty_externTypeInitializerList ()) ;
+  while (enumerator_21192.hasCurrentObject ()) {
     const GGS_externTypeDeclarationAST temp_4 = this ;
-    GGS_lstring var_initializerNameForUsefulness_21181 = function_initializerNameForUsefulEntitiesGraph (temp_4.readProperty_mExternTypeName (), extensionGetter_initializerSignature (enumerator_21144.current (HERE).readProperty_mParameterList (), inCompiler COMMA_SOURCE_FILE ("declaration-type-extern.galgas3", 535)), inCompiler COMMA_SOURCE_FILE ("declaration-type-extern.galgas3", 533)) ;
+    GGS_lstring var_initializerNameForUsefulness_21229 = function_initializerNameForUsefulEntitiesGraph (temp_4.readProperty_mExternTypeName (), extensionGetter_initializerSignature (enumerator_21192.current (HERE).readProperty_mParameterList (), inCompiler COMMA_SOURCE_FILE ("declaration-type-extern.galgas3", 535)), inCompiler COMMA_SOURCE_FILE ("declaration-type-extern.galgas3", 533)) ;
     {
-    ioArgument_ioUsefulEntitiesGraph.setter_addNode (var_initializerNameForUsefulness_21181, var_initializerNameForUsefulness_21181, inCompiler COMMA_SOURCE_FILE ("declaration-type-extern.galgas3", 537)) ;
+    ioArgument_ioUsefulEntitiesGraph.setter_addNode (var_initializerNameForUsefulness_21229, var_initializerNameForUsefulness_21229, inCompiler COMMA_SOURCE_FILE ("declaration-type-extern.galgas3", 537)) ;
     }
     {
-    ioArgument_ioUsefulEntitiesGraph.setter_addEdge (var_initializerNameForUsefulness_21181, var_nameForUsefulness_20863 COMMA_SOURCE_FILE ("declaration-type-extern.galgas3", 538)) ;
+    ioArgument_ioUsefulEntitiesGraph.setter_addEdge (var_initializerNameForUsefulness_21229, var_nameForUsefulness_20911 COMMA_SOURCE_FILE ("declaration-type-extern.galgas3", 538)) ;
     }
-    enumerator_21144.gotoNextObject () ;
+    enumerator_21192.gotoNextObject () ;
   }
   const GGS_externTypeDeclarationAST temp_5 = this ;
   const GGS_externTypeDeclarationAST temp_6 = this ;
@@ -1073,13 +1073,13 @@ void cPtr_externTypeDeclarationForGeneration::method_appendDeclaration_31_ (GGS_
                                                                             Compiler * inCompiler
                                                                             COMMA_UNUSED_LOCATION_ARGS) {
   const GGS_externTypeDeclarationForGeneration temp_0 = this ;
-  GGS_unifiedTypeDefinition var_selfTypeDefinition_22525 = extensionGetter_definition (temp_0.readProperty_mSelfTypeEntry (), inCompiler COMMA_SOURCE_FILE ("declaration-type-extern.galgas3", 566)) ;
+  GGS_unifiedTypeDefinition var_selfTypeDefinition_22573 = extensionGetter_definition (temp_0.readProperty_mSelfTypeEntry (), inCompiler COMMA_SOURCE_FILE ("declaration-type-extern.galgas3", 566)) ;
   const GGS_externTypeDeclarationForGeneration temp_1 = this ;
   const GGS_externTypeDeclarationForGeneration temp_2 = this ;
   const GGS_externTypeDeclarationForGeneration temp_3 = this ;
-  outArgument_outHeader = GGS_string (filewrapperTemplate_typeGenerationTemplate_externTypeHeader_31_ (inCompiler, var_selfTypeDefinition_22525.readProperty_typeName ().readProperty_string (), extensionGetter_identifierRepresentation (temp_1.readProperty_mSelfTypeEntry (), inCompiler COMMA_SOURCE_FILE ("declaration-type-extern.galgas3", 569)), temp_2.readProperty_mCppPreDeclarationCode (), temp_3.readProperty_mCppClassCode () COMMA_SOURCE_FILE ("declaration-type-extern.galgas3", 567))) ;
+  outArgument_outHeader = GGS_string (filewrapperTemplate_typeGenerationTemplate_externTypeHeader_31_ (inCompiler, var_selfTypeDefinition_22573.readProperty_typeName ().readProperty_string (), extensionGetter_identifierRepresentation (temp_1.readProperty_mSelfTypeEntry (), inCompiler COMMA_SOURCE_FILE ("declaration-type-extern.galgas3", 569)), temp_2.readProperty_mCppPreDeclarationCode (), temp_3.readProperty_mCppClassCode () COMMA_SOURCE_FILE ("declaration-type-extern.galgas3", 567))) ;
   const GGS_externTypeDeclarationForGeneration temp_4 = this ;
-  outArgument_outHeader.plusAssignOperation(GGS_string (filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType (inCompiler, var_selfTypeDefinition_22525.readProperty_typeName ().readProperty_string (), extensionGetter_identifierRepresentation (temp_4.readProperty_mSelfTypeEntry (), inCompiler COMMA_SOURCE_FILE ("declaration-type-extern.galgas3", 575)), var_selfTypeDefinition_22525.readProperty_isConcrete (), var_selfTypeDefinition_22525.readProperty_initializerMap (), var_selfTypeDefinition_22525.readProperty_classFunctionMap (), var_selfTypeDefinition_22525.readProperty_getterMap (), var_selfTypeDefinition_22525.readProperty_setterMap (), var_selfTypeDefinition_22525.readProperty_instanceMethodMap (), var_selfTypeDefinition_22525.readProperty_classMethodMap (), var_selfTypeDefinition_22525.readProperty_readSubscriptMap (), var_selfTypeDefinition_22525.readProperty_enumerationDescriptorList (), var_selfTypeDefinition_22525.readProperty_features (), var_selfTypeDefinition_22525.readProperty_addAssignOperatorArguments (), var_selfTypeDefinition_22525.readProperty_typeForEnumeratedElement (), var_selfTypeDefinition_22525.readProperty_supportCollectionValue () COMMA_SOURCE_FILE ("declaration-type-extern.galgas3", 573))), inCompiler  COMMA_SOURCE_FILE ("declaration-type-extern.galgas3", 573)) ;
+  outArgument_outHeader.plusAssignOperation(GGS_string (filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType (inCompiler, var_selfTypeDefinition_22573.readProperty_typeName ().readProperty_string (), extensionGetter_identifierRepresentation (temp_4.readProperty_mSelfTypeEntry (), inCompiler COMMA_SOURCE_FILE ("declaration-type-extern.galgas3", 575)), var_selfTypeDefinition_22573.readProperty_isConcrete (), var_selfTypeDefinition_22573.readProperty_initializerMap (), var_selfTypeDefinition_22573.readProperty_classFunctionMap (), var_selfTypeDefinition_22573.readProperty_getterMap (), var_selfTypeDefinition_22573.readProperty_setterMap (), var_selfTypeDefinition_22573.readProperty_instanceMethodMap (), var_selfTypeDefinition_22573.readProperty_classMethodMap (), var_selfTypeDefinition_22573.readProperty_readSubscriptMap (), var_selfTypeDefinition_22573.readProperty_enumerationDescriptorList (), var_selfTypeDefinition_22573.readProperty_features (), var_selfTypeDefinition_22573.readProperty_addAssignOperatorArguments (), var_selfTypeDefinition_22573.readProperty_typeForEnumeratedElement (), var_selfTypeDefinition_22573.readProperty_supportCollectionValue () COMMA_SOURCE_FILE ("declaration-type-extern.galgas3", 573))), inCompiler  COMMA_SOURCE_FILE ("declaration-type-extern.galgas3", 573)) ;
 }
 
 //--------------------------------------------------------------------------------------------------

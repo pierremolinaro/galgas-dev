@@ -38,9 +38,9 @@ syntax extension galgas3LexiqueComponentSyntax {
     $template$
     $lexique$
   //--- Lexique Component Name
-    $identifier$ ?let @lstring lexiqueComponentName
+    $identifier$ (?let @lstring lexiqueComponentName)
     $:$
-    $identifier$ ?let @lstring lexiqueSuperComponentName
+    $identifier$ (?let @lstring lexiqueSuperComponentName)
   //--- Parse lexique body
     ${$
     var @templateDelimitorListAST templateDelimitorList = @()
@@ -65,7 +65,7 @@ syntax extension galgas3LexiqueComponentSyntax {
 
   rule <template_delimitor_ggs3> (?!@templateDelimitorListAST ioTemplateDelimitorList ) {
     $template$
-    $"string"$ ?let @lstring startString
+    $"string"$ (?let @lstring startString)
     var nonAtomicSelection = false
     var templateEndMark = false
     var preserved = false
@@ -90,7 +90,7 @@ syntax extension galgas3LexiqueComponentSyntax {
       preserved = true
     end
     $...$
-    $"string"$ ?let @lstring endString
+    $"string"$ (?let @lstring endString)
     ioTemplateDelimitorList +=
       !startString
       !nonAtomicSelection: nonAtomicSelection
@@ -103,17 +103,17 @@ syntax extension galgas3LexiqueComponentSyntax {
 
   rule <template_replacement_ggs3> (?!@templateReplacementListAST ioTemplateReplacement ) {
     $replace$
-    $"string"$ ?let @lstring matchString
+    $"string"$ (?let @lstring matchString)
     let @lstring replacementString
     let @lstring replacementFunction
     select
       $...$
-      $"string"$ ?replacementString
+      $"string"$ (?replacementString)
       $:$
-      $identifier$ ?replacementFunction
+      $identifier$ (?replacementFunction)
     or
       $->$
-      $"string"$ ?replacementString
+      $"string"$ (?replacementString)
       replacementFunction = @lstring {!"" !@location.here}
     end
     ioTemplateReplacement += !matchString !replacementString !replacementFunction
@@ -133,9 +133,9 @@ syntax extension galgas4LexiqueComponentSyntax {
     $template$
     $lexique$
   //--- Lexique Component Name
-    $identifier$ ?let @lstring lexiqueComponentName
+    $identifier$ (?let @lstring lexiqueComponentName)
     $:$
-    $identifier$ ?let @lstring lexiqueSuperComponentName
+    $identifier$ (?let @lstring lexiqueSuperComponentName)
   //--- Parse lexique body
     ${$
     var @templateDelimitorListAST templateDelimitorList = @()
@@ -160,7 +160,7 @@ syntax extension galgas4LexiqueComponentSyntax {
 
   rule <template_delimitor> (?!@templateDelimitorListAST ioTemplateDelimitorList ) {
     $template$
-    $"string"$ ?let @lstring startString
+    $"string"$ (?let @lstring startString)
     var nonAtomicSelection = false
     var templateEndMark = false
     var preserved = false
@@ -185,7 +185,7 @@ syntax extension galgas4LexiqueComponentSyntax {
       preserved = true
     end
     $...$
-    $"string"$ ?let @lstring endString
+    $"string"$ (?let @lstring endString)
     ioTemplateDelimitorList +=
       !startString
       !nonAtomicSelection: nonAtomicSelection
@@ -198,17 +198,17 @@ syntax extension galgas4LexiqueComponentSyntax {
 
   rule <template_replacement> (?!@templateReplacementListAST ioTemplateReplacement ) {
     $%templateReplacement$
-    $"string"$ ?let @lstring matchString
+    $"string"$ (?let @lstring matchString)
     let @lstring replacementString
     let @lstring replacementFunction
     select
       $...$
-      $"string"$ ?replacementString
+      $"string"$ (?replacementString)
       $:$
-      $identifier$ ?replacementFunction
+      $identifier$ (?replacementFunction)
     or
       $->$
-      $"string"$ ?replacementString
+      $"string"$ (?replacementString)
       replacementFunction = @lstring {!"" !@location.here}
     end
     ioTemplateReplacement += !matchString !replacementString !replacementFunction

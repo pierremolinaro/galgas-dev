@@ -44,7 +44,7 @@ syntax galgas3LexiqueComponentSyntax (galgasScanner3) {
   rule <declaration_ggs3> (?!@galgasDeclarationAST ioDeclarations) {
     $lexique$
   //--- Lexique Component Name
-    $identifier$ ?let @lstring lexiqueComponentName
+    $identifier$ (?let @lstring lexiqueComponentName)
     ${$
   //--- Parse lexique body
     var @templateDelimitorListAST templateDelimitorList = @()
@@ -101,7 +101,7 @@ syntax galgas3LexiqueComponentSyntax (galgasScanner3) {
     $template$
     $lexique$
   //--- Lexique Component Name
-    $identifier$ ?let @lstring lexiqueComponentName
+    $identifier$ (?let @lstring lexiqueComponentName)
     ${$
   //--- Parse lexique body
     var @templateDelimitorListAST templateDelimitorList = @()
@@ -156,9 +156,9 @@ syntax galgas3LexiqueComponentSyntax (galgasScanner3) {
 
   rule <lexical_indexing_declaration_ggs3> (?!@indexingListAST ioIndexingListAST ) {
     $indexing$
-    $identifier$ ?let @lstring indexName indexing (indexingNameDefinition)
+    $identifier$ (?let @lstring indexName )indexing (indexingNameDefinition)
     $:$
-    $"string"$ ?let @lstring indexComment
+    $"string"$ (?let @lstring indexComment)
     ioIndexingListAST += !indexName !indexComment
   }
 
@@ -167,9 +167,9 @@ syntax galgas3LexiqueComponentSyntax (galgasScanner3) {
   rule <lexical_message_declaration_ggs3>
     (?!@lexicalMessageDeclarationListAST ioLexicalMessageDeclarationList ) {
     $message$
-    $identifier$ ?let @lstring messageName
+    $identifier$ (?let @lstring messageName)
     $:$
-    $"string"$ ?let @lstring messageValue
+    $"string"$ (?let @lstring messageValue)
     ioLexicalMessageDeclarationList += !messageName !messageValue
   }
 
@@ -178,7 +178,7 @@ syntax galgas3LexiqueComponentSyntax (galgasScanner3) {
   rule <lexical_implicit_rule_ggs3> (?!@lexicalRuleListAST ioLexicalImplicitRuleList ) {
     $rule$
     $list$
-    $identifier$ ?let @lstring listName
+    $identifier$ (?let @lstring listName)
     ioLexicalImplicitRuleList += !@lexicalImplicitRuleAST {!listName}
   }
 
@@ -222,14 +222,14 @@ syntax galgas3LexiqueComponentSyntax (galgasScanner3) {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <lexical_output_effective_argument> (!@lexicalRoutineOrFunctionFormalInputArgumentAST outEffectiveArgument ) {
-    $'char'$ ?let @lchar character
+    $'char'$ (?let @lchar character)
     outEffectiveArgument = @lexicalCharacterInputArgumentAST {!character}
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <lexical_output_effective_argument> (!@lexicalRoutineOrFunctionFormalInputArgumentAST outEffectiveArgument ) {
-    $literalInt$ ?let unsignedValue
+    $literalInt$ (?let unsignedValue)
     outEffectiveArgument = @lexicalUnsignedInputArgumentAST {!unsignedValue}
   }
 
@@ -244,7 +244,7 @@ syntax galgas3LexiqueComponentSyntax (galgasScanner3) {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <lexical_output_effective_argument> (!@lexicalRoutineOrFunctionFormalInputArgumentAST outEffectiveArgument ) {
-    $identifier$ ?let idf
+    $identifier$ (?let idf)
     select
       outEffectiveArgument = @lexicalAttributeInputArgumentAST {!idf}
     or
@@ -282,7 +282,7 @@ syntax galgas3LexiqueComponentSyntax (galgasScanner3) {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <lexical_factor>(!@lexicalExpressionAST outExpression ) {
-    $"string"$ ?let string
+    $"string"$ (?let string)
     outExpression = @lexicalStringMatchAST {!string}
   }
 
@@ -290,21 +290,21 @@ syntax galgas3LexiqueComponentSyntax (galgasScanner3) {
 
   rule <lexical_factor> (!@lexicalExpressionAST outExpression ) {
     $~$
-    $"string"$ ?let string
+    $"string"$ (?let string)
     $error$
-    $identifier$ ?let errorMessage
+    $identifier$ (?let errorMessage)
     outExpression = @lexicalStringNotMatchAST {!string !errorMessage}
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <lexical_factor> (!@lexicalExpressionAST outExpression ) {
-    $'char'$ ?let @lchar character
+    $'char'$ (?let @lchar character)
     select
       outExpression = @lexicalCharacterMatchAST {!character}
     or
       $->$
-      $'char'$ ?let @lchar upperBound
+      $'char'$ (?let @lchar upperBound)
       outExpression = @lexicalCharacterIntervalMatchAST {!character !upperBound}
     end
   }
@@ -312,7 +312,7 @@ syntax galgas3LexiqueComponentSyntax (galgasScanner3) {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <lexical_factor> (!@lexicalExpressionAST outExpression ) {
-    $identifier$ ?let @lstring characterSet
+    $identifier$ (?let @lstring characterSet)
     outExpression = @lexicalCharacterSetMatchAST {!characterSet}
   }
 
@@ -320,23 +320,23 @@ syntax galgas3LexiqueComponentSyntax (galgasScanner3) {
 
   rule <lexical_list_declaration_ggs3> (?!@lexicalListDeclarationListAST ioLexicalListDeclarationList ) {
     $list$
-    $identifier$ ?let name
+    $identifier$ (?let name)
     var @sentLexicalAttributeListAST sentAttributeList = @()
     repeat
     while
-      $!selector:$ ?let selector
-      $identifier$ ?let sentAttribute
+      $!selector:$ (?let selector)
+      $identifier$ (?let sentAttribute)
       sentAttributeList += !selector !sentAttribute
     end
     let @lstring theStyle // Empty string if no style
     select
       $style$
-      $identifier$ ? theStyle
+      $identifier$ (? theStyle)
     or
       theStyle = @lstring {!"" !@location.here}
     end
     $error$ ; $message$
-    $"string"$ ?let @lstring errorMessage
+    $"string"$ (?let @lstring errorMessage)
     ${$
     var entryList = @lexicalListEntryListAST ()
     repeat
@@ -351,7 +351,7 @@ syntax galgas3LexiqueComponentSyntax (galgasScanner3) {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <lexical_list_entry> (?!@lexicalListEntryListAST ioLexicalListEntryList ) {
-    $"string"$ ?let @lstring entrySpelling
+    $"string"$ (?let @lstring entrySpelling)
     var isTemplateEndMark = false
     var nonAtomicSelection = false
     repeat
@@ -365,7 +365,7 @@ syntax galgas3LexiqueComponentSyntax (galgasScanner3) {
     let @lstring terminalSpelling
     select
       $->$
-      $\$terminal\$$ ? terminalSpelling
+      $\$terminal\$$ (? terminalSpelling)
     or
       terminalSpelling = entrySpelling
     end
@@ -379,21 +379,21 @@ syntax galgas3LexiqueComponentSyntax (galgasScanner3) {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <lexical_attribute_declaration_ggs3> (?!@lexicalAttributeListAST ioLexicalAttributeList ) {
-    $@type$ ?let @lstring typeName
-    $identifier$ ?let @lstring name
+    $@type$ (?let @lstring typeName)
+    $identifier$ (?let @lstring name)
     ioLexicalAttributeList += !typeName !name
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <terminal_declaration_ggs3> (?!@terminalDeclarationListAST ioTerminalDeclarationList ) {
-    $\$terminal\$$ ?let @lstring name indexing (terminalDeclaration)
+    $\$terminal\$$ (?let @lstring name )indexing (terminalDeclaration)
     var sentAttributeList = @sentLexicalAttributeListAST ()
     repeat
     while
       $!$
       let selector = "".here
-      $identifier$ ?let sentAttribute
+      $identifier$ (?let sentAttribute)
       sentAttributeList += !selector !sentAttribute
     end
     var @lstring theStyle = "".nowhere // Empty string if no style
@@ -405,7 +405,7 @@ syntax galgas3LexiqueComponentSyntax (galgasScanner3) {
       if theStyle.string != "" then
         error (@location.here : "duplicated style reference")
       end
-      $identifier$ ? theStyle
+      $identifier$ (? theStyle)
     while
       $%nonAtomicSelection$
       nonAtomicSelection = true
@@ -414,7 +414,7 @@ syntax galgas3LexiqueComponentSyntax (galgasScanner3) {
       templateEndMark = true
     end
     $error$ ; $message$
-    $"string"$ ?let @lstring errorMessage
+    $"string"$ (?let @lstring errorMessage)
     ioTerminalDeclarationList +=
       !name
       !sentAttributeList
@@ -428,7 +428,7 @@ syntax galgas3LexiqueComponentSyntax (galgasScanner3) {
 
   rule <style_declaration_ggs3> (?!@lexicalStyleListAST ioLexicalStyleList ) {
     $style$
-    $identifier$ ?let @lstring styleIdentifier
+    $identifier$ (?let @lstring styleIdentifier)
     if [styleIdentifier.string containsCharacter !'_'] then
       error (styleIdentifier : "for compatibility with latex formatting, a style name should not contain '_' character")
     end
@@ -436,7 +436,7 @@ syntax galgas3LexiqueComponentSyntax (galgasScanner3) {
       error (styleIdentifier : "for compatibility with latex formatting, a style name should not contain any digit")
     end
     $->$
-    $"string"$ ?let @lstring comment
+    $"string"$ (?let @lstring comment)
     ioLexicalStyleList += !styleIdentifier !comment
   }
 
@@ -453,7 +453,7 @@ syntax galgas4LexiqueComponentSyntax (galgasScanner4) {
   rule <declaration> (?!@galgasDeclarationAST ioDeclarations ) {
     $lexique$
   //--- Lexique Component Name
-    $identifier$ ?let @lstring lexiqueComponentName
+    $identifier$ (?let @lstring lexiqueComponentName)
     ${$
   //--- Parse lexique body
     var @templateDelimitorListAST templateDelimitorList = @()
@@ -508,9 +508,9 @@ syntax galgas4LexiqueComponentSyntax (galgasScanner4) {
 
   rule <lexical_indexing_declaration> (?!@indexingListAST ioIndexingListAST ) {
     $indexing$
-    $identifier$ ?let @lstring indexName indexing (indexingNameDefinition)
+    $identifier$ (?let @lstring indexName )indexing (indexingNameDefinition)
     $:$
-    $"string"$ ?let @lstring indexComment
+    $"string"$ (?let @lstring indexComment)
     ioIndexingListAST += !indexName !indexComment
   }
 
@@ -519,9 +519,9 @@ syntax galgas4LexiqueComponentSyntax (galgasScanner4) {
   rule <lexical_message_declaration>
     (?!@lexicalMessageDeclarationListAST ioLexicalMessageDeclarationList ) {
     $%errorMessage$
-    $identifier$ ?let @lstring messageName
+    $identifier$ (?let @lstring messageName)
     $:$
-    $"string"$ ?let @lstring messageValue
+    $"string"$ (?let @lstring messageValue)
     ioLexicalMessageDeclarationList += !messageName !messageValue
   }
 
@@ -530,7 +530,7 @@ syntax galgas4LexiqueComponentSyntax (galgasScanner4) {
   rule <lexical_implicit_rule> (?!@lexicalRuleListAST ioLexicalImplicitRuleList ) {
     $rule$
     $list$
-    $identifier$ ?let @lstring listName
+    $identifier$ (?let @lstring listName)
     ioLexicalImplicitRuleList += !@lexicalImplicitRuleAST {!listName}
   }
 
@@ -574,14 +574,14 @@ syntax galgas4LexiqueComponentSyntax (galgasScanner4) {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <lexical_output_effective_argument> (!@lexicalRoutineOrFunctionFormalInputArgumentAST outEffectiveArgument ) {
-    $'char'$ ?let @lchar character
+    $'char'$ (?let @lchar character)
     outEffectiveArgument = @lexicalCharacterInputArgumentAST {!character}
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <lexical_output_effective_argument> (!@lexicalRoutineOrFunctionFormalInputArgumentAST outEffectiveArgument ) {
-    $literalInt$ ?let unsignedValue
+    $literalInt$ (?let unsignedValue)
     outEffectiveArgument = @lexicalUnsignedInputArgumentAST {!unsignedValue}
   }
 
@@ -596,7 +596,7 @@ syntax galgas4LexiqueComponentSyntax (galgasScanner4) {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <lexical_output_effective_argument> (!@lexicalRoutineOrFunctionFormalInputArgumentAST outEffectiveArgument ) {
-    $identifier$ ?let idf
+    $identifier$ (?let idf)
     select
       outEffectiveArgument = @lexicalAttributeInputArgumentAST {!idf}
     or
@@ -634,7 +634,7 @@ syntax galgas4LexiqueComponentSyntax (galgasScanner4) {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <lexical_factor>(!@lexicalExpressionAST outExpression ) {
-    $"string"$ ?let string
+    $"string"$ (?let string)
     outExpression = @lexicalStringMatchAST {!string}
   }
 
@@ -642,21 +642,21 @@ syntax galgas4LexiqueComponentSyntax (galgasScanner4) {
 
   rule <lexical_factor> (!@lexicalExpressionAST outExpression ) {
     $~$
-    $"string"$ ?let string
+    $"string"$ (?let string)
     $error$
-    $identifier$ ?let errorMessage
+    $identifier$ (?let errorMessage)
     outExpression = @lexicalStringNotMatchAST {!string !errorMessage}
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <lexical_factor> (!@lexicalExpressionAST outExpression ) {
-    $'char'$ ?let @lchar character
+    $'char'$ (?let @lchar character)
     select
       outExpression = @lexicalCharacterMatchAST {!character}
     or
       $->$
-      $'char'$ ?let @lchar upperBound
+      $'char'$ (?let @lchar upperBound)
       outExpression = @lexicalCharacterIntervalMatchAST {!character !upperBound}
     end
   }
@@ -664,7 +664,7 @@ syntax galgas4LexiqueComponentSyntax (galgasScanner4) {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <lexical_factor> (!@lexicalExpressionAST outExpression ) {
-    $identifier$ ?let @lstring characterSet
+    $identifier$ (?let @lstring characterSet)
     outExpression = @lexicalCharacterSetMatchAST {!characterSet}
   }
 
@@ -672,28 +672,28 @@ syntax galgas4LexiqueComponentSyntax (galgasScanner4) {
 
   rule <lexical_list_declaration> (?!@lexicalListDeclarationListAST ioLexicalListDeclarationList ) {
     $list$
-    $identifier$ ?let name
+    $identifier$ (?let name)
     var @sentLexicalAttributeListAST sentAttributeList = @()
     repeat
     while
-      $!selector:$ ?let selector
-      $identifier$ ?let sentAttribute
+      $!selector:$ (?let selector)
+      $identifier$ (?let sentAttribute)
       sentAttributeList += !selector !sentAttribute
     while
       $!$
       let selector = "".here
-      $identifier$ ?let sentAttribute
+      $identifier$ (?let sentAttribute)
       sentAttributeList += !selector !sentAttribute
     end
     let @lstring theStyle // Empty string if no style
     select
       $style$
-      $identifier$ ? theStyle
+      $identifier$ (? theStyle)
     or
       theStyle = @lstring {!"" !@location.here}
     end
     $%errorMessage$
-    $"string"$ ?let @lstring errorMessage
+    $"string"$ (?let @lstring errorMessage)
     ${$
     var entryList = @lexicalListEntryListAST ()
     repeat
@@ -708,7 +708,7 @@ syntax galgas4LexiqueComponentSyntax (galgasScanner4) {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <lexical_list_entry> (?!@lexicalListEntryListAST ioLexicalListEntryList ) {
-    $"string"$ ?let @lstring entrySpelling
+    $"string"$ (?let @lstring entrySpelling)
     var isTemplateEndMark = false
     var nonAtomicSelection = false
     repeat
@@ -722,7 +722,7 @@ syntax galgas4LexiqueComponentSyntax (galgasScanner4) {
     let @lstring terminalSpelling
     select
       $->$
-      $\$terminal\$$ ? terminalSpelling
+      $\$terminal\$$ (? terminalSpelling)
     or
       terminalSpelling = entrySpelling
     end
@@ -736,25 +736,25 @@ syntax galgas4LexiqueComponentSyntax (galgasScanner4) {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <lexical_attribute_declaration> (?!@lexicalAttributeListAST ioLexicalAttributeList ) {
-    $@type$ ?let @lstring typeName
-    $identifier$ ?let @lstring name
+    $@type$ (?let @lstring typeName)
+    $identifier$ (?let @lstring name)
     ioLexicalAttributeList += !typeName !name
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <terminal_declaration> (?!@terminalDeclarationListAST ioTerminalDeclarationList ) {
-    $\$terminal\$$ ?let @lstring name indexing (terminalDeclaration)
+    $\$terminal\$$ (?let @lstring name )indexing (terminalDeclaration)
     var sentAttributeList = @sentLexicalAttributeListAST ()
     repeat
     while
-      $!selector:$ ?let selector
-      $identifier$ ?let sentAttribute
+      $!selector:$ (?let selector)
+      $identifier$ (?let sentAttribute)
       sentAttributeList += !selector !sentAttribute
     while
       $!$
       let selector = "".here
-      $identifier$ ?let sentAttribute
+      $identifier$ (?let sentAttribute)
       sentAttributeList += !selector !sentAttribute
     end
     var @lstring theStyle = "".nowhere // Empty string if no style
@@ -766,7 +766,7 @@ syntax galgas4LexiqueComponentSyntax (galgasScanner4) {
       if theStyle.string != "" then
         error (@location.here : "duplicated style reference")
       end
-      $identifier$ ? theStyle
+      $identifier$ (? theStyle)
     while
       $%nonAtomicSelection$
       nonAtomicSelection = true
@@ -775,7 +775,7 @@ syntax galgas4LexiqueComponentSyntax (galgasScanner4) {
       templateEndMark = true
     end
     $%errorMessage$
-    $"string"$ ?let @lstring errorMessage
+    $"string"$ (?let @lstring errorMessage)
     ioTerminalDeclarationList +=
       !name
       !sentAttributeList
@@ -789,7 +789,7 @@ syntax galgas4LexiqueComponentSyntax (galgasScanner4) {
 
   rule <style_declaration> (?!@lexicalStyleListAST ioLexicalStyleList ) {
     $style$
-    $identifier$ ?let @lstring styleIdentifier
+    $identifier$ (?let @lstring styleIdentifier)
     if [styleIdentifier.string containsCharacter !'_'] then
       error (styleIdentifier : "for compatibility with latex formatting, a style name should not contain '_' character")
     end
@@ -797,7 +797,7 @@ syntax galgas4LexiqueComponentSyntax (galgasScanner4) {
       error (styleIdentifier : "for compatibility with latex formatting, a style name should not contain any digit")
     end
     $->$
-    $"string"$ ?let @lstring comment
+    $"string"$ (?let @lstring comment)
     ioLexicalStyleList += !styleIdentifier !comment
   }
 

@@ -23,7 +23,7 @@ syntax extension galgas3DeclarationsSyntax {
 
   rule <declaration_ggs3> (?!@galgasDeclarationAST ioDeclarations) {
     $extension$
-    $@type$ ?let @lstring typeName indexing (typeReferenceExtensionMethod)
+    $@type$ (?let @lstring typeName )indexing (typeReferenceExtensionMethod)
     $:$
     let @equatableComparableExtension theExtension
     select

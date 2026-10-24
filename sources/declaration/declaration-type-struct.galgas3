@@ -23,7 +23,7 @@ syntax extension galgas3DeclarationsSyntax {
 
   rule <declaration_ggs3> (?!@galgasDeclarationAST ioDeclarations) {
     $struct$
-    $@type$ ?let @lstring structTypeName indexing (structDefinition)
+    $@type$ (?let @lstring structTypeName )indexing (structDefinition)
     let @structComparison comparison
     select
       comparison = .none
@@ -65,7 +65,7 @@ syntax extension galgas4DeclarationsSyntax {
 
   rule <declaration> (?!@galgasDeclarationAST ioDeclarations ) {
     $struct$
-    $@type$ ?let @lstring structTypeName indexing (structDefinition)
+    $@type$ (?let @lstring structTypeName )indexing (structDefinition)
     let @structComparison comparison
     select
       comparison = .none

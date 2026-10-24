@@ -33,7 +33,7 @@ syntax extension galgas3ExpressionSyntax {
 
   rule <primary_ggs3> (?!@galgasDeclarationAST unused ioDeclarations,
                       !@semanticExpressionAST outExpression ) {
-    $literalInt$ ?let @lbigint literalInt
+    $literalInt$ (?let @lbigint literalInt)
     outExpression = @literalBigIntExpressionAST {!literalInt}
   }
 
@@ -49,7 +49,7 @@ syntax extension galgas4ExpressionSyntax {
 
   rule <primary> (?!@galgasDeclarationAST unused ioDeclarations,
                  !@semanticExpressionAST outExpression ) {
-    $literalInt$ ?let @lbigint literalInt
+    $literalInt$ (?let @lbigint literalInt)
     outExpression = @literalBigIntExpressionAST {!literalInt}
   }
 

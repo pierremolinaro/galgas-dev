@@ -38,10 +38,10 @@ syntax extension galgas3ExpressionSyntax {
                       !@semanticExpressionAST outExpression ) {
     $[$
     $option$
-    $identifier$ ?let optionComponentName indexing (optionComponentReference)
+    $identifier$ (?let optionComponentName )indexing (optionComponentReference)
     $.$
-    $identifier$ ?let optionName
-    $identifier$ ?let getterName
+    $identifier$ (?let optionName)
+    $identifier$ (?let getterName)
     outExpression = @optionExpressionAST {!optionComponentName !optionName !getterName}
     $]$
   }
@@ -53,8 +53,8 @@ syntax extension galgas3ExpressionSyntax {
     $[$
     $option$
     $.$
-    $identifier$ ?let optionName
-    $identifier$ ?let getterName
+    $identifier$ (?let optionName)
+    $identifier$ (?let getterName)
     outExpression = @optionExpressionAST {!@{!"galgas_builtin_options" !.here} !optionName !getterName}
     $]$
   }
@@ -72,11 +72,11 @@ syntax extension galgas4ExpressionSyntax {
   rule <primary> (?!@galgasDeclarationAST unused ioDeclarations,
                  !@semanticExpressionAST outExpression ) {
     $option$
-    $identifier$ ?let optionComponentName indexing (optionComponentReference)
+    $identifier$ (?let optionComponentName )indexing (optionComponentReference)
     $[$
-    $identifier$ ?let optionName
+    $identifier$ (?let optionName)
     $.$
-    $identifier$ ?let getterName
+    $identifier$ (?let getterName)
     outExpression = @optionExpressionAST {!optionComponentName !optionName !getterName}
     $]$
   }
@@ -87,9 +87,9 @@ syntax extension galgas4ExpressionSyntax {
                  !@semanticExpressionAST outExpression ) {
     $option$
     $[$
-    $identifier$ ?let optionName
+    $identifier$ (?let optionName)
     $.$
-    $identifier$ ?let getterName
+    $identifier$ (?let getterName)
     outExpression = @optionExpressionAST {!@{!"galgas_builtin_options" !.here} !optionName !getterName}
     $]$
   }

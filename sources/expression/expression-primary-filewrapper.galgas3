@@ -50,7 +50,7 @@ syntax extension galgas3ExpressionSyntax {
                       !@semanticExpressionAST outExpression ) {
     $[$
     $filewrapper$
-    $identifier$ ?let filewrapperName indexing (filewrapperReference)
+    $identifier$ (?let filewrapperName )indexing (filewrapperReference)
     select
       outExpression = @filewrapperObjectInstanciationInExpressionAST {
         !filewrapperName
@@ -58,13 +58,13 @@ syntax extension galgas3ExpressionSyntax {
     or
       $.$
       select
-        $"string"$ ?let @lstring filePath
+        $"string"$ (?let @lstring filePath)
         outExpression = @filewrapperInExpressionAST {
           !filewrapperName
           !filePath
         }
       or
-        $identifier$ ?let @lstring filewrapperTemplateName
+        $identifier$ (?let @lstring filewrapperTemplateName)
         <output_expression_list_ggs3> (!?ioDeclarations, ?let @actualOutputArgumentList expressionList)
         outExpression = @filewrapperTemplateInExpressionAST {
           !filewrapperName
@@ -90,19 +90,19 @@ syntax extension galgas4ExpressionSyntax {
                  !@semanticExpressionAST outExpression ) {
     $filewrapper$
     $[$
-    $identifier$ ?let filewrapperName indexing (filewrapperReference)
+    $identifier$ (?let filewrapperName )indexing (filewrapperReference)
     select
       outExpression = @filewrapperObjectInstanciationInExpressionAST {!filewrapperName}
     or
       $.$
       select
-        $"string"$ ?let @lstring filePath
+        $"string"$ (?let @lstring filePath)
         outExpression = @filewrapperInExpressionAST {
           !filewrapperName
           !filePath
         }
       or
-        $identifier$ ?let @lstring filewrapperTemplateName
+        $identifier$ (?let @lstring filewrapperTemplateName)
         $:$
         <output_expression_list> (!?ioDeclarations, ?let @actualOutputArgumentList expressionList)
         outExpression = @filewrapperTemplateInExpressionAST {

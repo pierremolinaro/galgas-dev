@@ -8,7 +8,7 @@ rule <StartSymbol> () {
 rule <Constant>
   (!@cExpression outExpressionTree,
   !@uint outValue ) {
-  $number$ ?let @luint cst
+  $number$ (?let @luint cst)
   send " "
   outExpressionTree = @cConst { !cst}
   outValue = cst.uint

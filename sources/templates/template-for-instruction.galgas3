@@ -49,7 +49,7 @@ syntax extension templateSyntax {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <for_instruction_element> (?!@lstringlist ioElementList ) {
-    $literalInt$ ?let count
+    $literalInt$ (?let count)
     $*$
     var n = count.bigint.uint
     if n == 0 then
@@ -71,7 +71,7 @@ syntax extension templateSyntax {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <for_instruction_element> (?!@lstringlist ioElementList ) {
-    $identifier$ ?let constantName
+    $identifier$ (?let constantName)
     ioElementList += !constantName
   }
 
@@ -115,7 +115,7 @@ syntax extension templateSyntax {
     or
       $:$
       let startLocation = @location.here
-      $identifier$ ?let @lstring prefixString
+      $identifier$ (?let @lstring prefixString)
       error ([prefixString.location union !startLocation]
       : "useless prefix" fixit replace "")
     end
@@ -154,7 +154,7 @@ syntax extension templateSyntax {
       indexIdentifier = @lstring {!"" !@location.here}
     or
       $($
-      $identifier$ ? indexIdentifier
+      $identifier$ (? indexIdentifier)
       $)$
     end
     var @templateInstructionListAST doInstructionList = @()

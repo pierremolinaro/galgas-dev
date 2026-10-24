@@ -25,7 +25,7 @@ syntax extension galgas3DeclarationsSyntax {
 
   rule <declaration_ggs3> (?!@galgasDeclarationAST ioDeclarations) {
     $boolset$
-    $@type$ ?let @lstring boolsetTypeName indexing (structDefinition)
+    $@type$ (?let @lstring boolsetTypeName )indexing (structDefinition)
     let @bool isEquatable
     select
       isEquatable = false
@@ -38,7 +38,7 @@ syntax extension galgas3DeclarationsSyntax {
     repeat
     while
       $case$
-      $identifier$ ?let slotName
+      $identifier$ (?let slotName)
       slotList += !slotName
     while
       <method_declaration_ggs3> (!boolsetTypeName, !?ioDeclarations)
@@ -67,7 +67,7 @@ syntax extension galgas4DeclarationsSyntax {
 
   rule <declaration> (?!@galgasDeclarationAST ioDeclarations ) {
     $boolset$
-    $@type$ ?let @lstring boolsetTypeName indexing (structDefinition)
+    $@type$ (?let @lstring boolsetTypeName )indexing (structDefinition)
     let @bool isEquatable
     select
       isEquatable = false
@@ -80,7 +80,7 @@ syntax extension galgas4DeclarationsSyntax {
     repeat
     while
       $case$
-      $identifier$ ?let slotName
+      $identifier$ (?let slotName)
       slotList += !slotName
     while
       <method_declaration> (!boolsetTypeName, !?ioDeclarations)

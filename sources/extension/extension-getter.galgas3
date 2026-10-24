@@ -25,22 +25,22 @@ syntax extension galgas3DeclarationsSyntax {
 
   rule <declaration_ggs3> (?!@galgasDeclarationAST ioDeclarations) {
     $func$
-    $@type$ ?var typeName indexing (typeReferenceExtensionGetter)
+    $@type$ (?var typeName )indexing (typeReferenceExtensionGetter)
     $.$
     repeat
     while
-      $@type$ ?let t
+      $@type$ (?let t)
       typeName = makeEmbeddedTypeLName (!outer: typeName !inner: t)
       $.$
     end
-    $identifier$ ?let @lstring getterName indexing (extensionGetterDefinition)
+    $identifier$ (?let @lstring getterName )indexing (extensionGetterDefinition)
     let @formalInputParameterListAST formalInputParameterList
     <formal_input_parameter_list_ggs34> (!?ioDeclarations, ?formalInputParameterList)
     $->$
     <type_definition_ggs3> (!?ioDeclarations, ?let mReturnedTypeName)
     let @lstring resultVariableName
     select
-      $identifier$ ?resultVariableName
+      $identifier$ (?resultVariableName)
     or
       resultVariableName = @{!"result" !.here}
     end
@@ -64,14 +64,14 @@ syntax extension galgas3DeclarationsSyntax {
 
   rule <method_declaration_ggs3> (?let @lstring inTypeName, ?!@galgasDeclarationAST ioDeclarations) {
     $func$
-    $identifier$ ?let @lstring getterName indexing (extensionGetterDefinition)
+    $identifier$ (?let @lstring getterName )indexing (extensionGetterDefinition)
     let @formalInputParameterListAST formalInputParameterList
     <formal_input_parameter_list_ggs34> (!?ioDeclarations, ?formalInputParameterList)
     $->$
     <type_definition_ggs3> (!?ioDeclarations, ?let mReturnedTypeName)
     let @lstring resultVariableName
     select
-      $identifier$ ?resultVariableName
+      $identifier$ (?resultVariableName)
     or
       resultVariableName = @{!"result" !.here}
     end
@@ -111,13 +111,13 @@ syntax extension galgas4DeclarationsSyntax {
       typeName = makeEmbeddedTypeLName (!outer: typeName !inner: t)
       $.$
     end
-    $identifier$ ?let @lstring getterName indexing (extensionGetterDefinition)
+    $identifier$ (?let @lstring getterName )indexing (extensionGetterDefinition)
     <formal_input_parameter_list> (!?ioDeclarations, ?let formalInputParameterList)
     $->$
     <type_definition> (!?ioDeclarations, ?let returnedTypeName)
     let @lstring resultVariableName
     select
-      $identifier$ ?resultVariableName
+      $identifier$ (?resultVariableName)
     or
       resultVariableName = @{!"result" !.here}
     end
@@ -149,7 +149,7 @@ syntax extension galgas4DeclarationsSyntax {
       typeName = makeEmbeddedTypeLName (!outer: typeName !inner: t)
       $.$
     end
-    $identifier$ ?let @lstring getterName indexing (extensionGetterDefinition)
+    $identifier$ (?let @lstring getterName )indexing (extensionGetterDefinition)
     <formal_input_parameter_list> (!?ioDeclarations, ?let formalInputParameterList)
     $->$
     <type_definition> (!?ioDeclarations, ?let returnedTypeName)

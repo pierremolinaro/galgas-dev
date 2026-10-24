@@ -27,7 +27,7 @@ syntax galgas3OptionComponentSyntax (galgasScanner3) {
 
   rule <declaration_ggs3> (?!@galgasDeclarationAST ioDeclarations) {
     $option$
-    $identifier$ ?let @lstring optionComponentName
+    $identifier$ (?let @lstring optionComponentName)
     ${$
     var @commandLineOptionListAST options = @()
     repeat
@@ -45,14 +45,14 @@ syntax galgas3OptionComponentSyntax (galgasScanner3) {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <option_declaration_ggs3> (?!@commandLineOptionListAST ioCommandLineOptionList ) {
-    $@type$ ?let @lstring mOptionTypeName
-    $identifier$ ?let @lstring mOptionInternalName
+    $@type$ (?let @lstring mOptionTypeName)
+    $identifier$ (?let @lstring mOptionInternalName)
     $:$
-    $'char'$ ?let @lchar mOptionInvocationLetter
+    $'char'$ (?let @lchar mOptionInvocationLetter)
     $,$
-    $"string"$ ?let @lstring mOptionInvocationString
+    $"string"$ (?let @lstring mOptionInvocationString)
     $->$
-    $"string"$ ?let @lstring mOptionComment
+    $"string"$ (?let @lstring mOptionComment)
     var defaultValue = @lstring {!"" !@location.here}
     let @optionDefaultValueEnumAST optionDefaultValueKind
     select
@@ -60,10 +60,10 @@ syntax galgas3OptionComponentSyntax (galgasScanner3) {
     or
       $default$
       select
-        $"string"$ ? defaultValue
+        $"string"$ (? defaultValue)
         optionDefaultValueKind = .stringDefaultValue
       or
-        $literalInt$ ?let v
+        $literalInt$ (?let v)
         defaultValue = @{!v.bigint.string !v.location}
         optionDefaultValueKind = .unsignedDefaultValue
       end
@@ -91,7 +91,7 @@ syntax galgas4OptionComponentSyntax (galgasScanner4) {
 
   rule <declaration> (?!@galgasDeclarationAST ioDeclarations ) {
     $option$
-    $identifier$ ?let @lstring optionComponentName
+    $identifier$ (?let @lstring optionComponentName)
     ${$
     var @commandLineOptionListAST options = @()
     repeat
@@ -109,14 +109,14 @@ syntax galgas4OptionComponentSyntax (galgasScanner4) {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <option_declaration_ggs3> (?!@commandLineOptionListAST ioCommandLineOptionList ) {
-    $@type$ ?let @lstring mOptionTypeName
-    $identifier$ ?let @lstring mOptionInternalName
+    $@type$ (?let @lstring mOptionTypeName)
+    $identifier$ (?let @lstring mOptionInternalName)
     $:$
-    $'char'$ ?let @lchar mOptionInvocationLetter
+    $'char'$ (?let @lchar mOptionInvocationLetter)
     $,$
-    $"string"$ ?let @lstring mOptionInvocationString
+    $"string"$ (?let @lstring mOptionInvocationString)
     $->$
-    $"string"$ ?let @lstring mOptionComment
+    $"string"$ (?let @lstring mOptionComment)
     var defaultValue = @lstring {!"" !@location.here}
     let @optionDefaultValueEnumAST optionDefaultValueKind
     select
@@ -124,10 +124,10 @@ syntax galgas4OptionComponentSyntax (galgasScanner4) {
     or
       $default$
       select
-        $"string"$ ? defaultValue
+        $"string"$ (? defaultValue)
         optionDefaultValueKind = @optionDefaultValueEnumAST. stringDefaultValue
       or
-        $literalInt$ ?let v
+        $literalInt$ (?let v)
         defaultValue = @lstring {!v.bigint.string !v.location}
         optionDefaultValueKind = @optionDefaultValueEnumAST. unsignedDefaultValue
       end

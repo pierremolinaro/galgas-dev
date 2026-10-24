@@ -54,7 +54,7 @@ syntax extension galgas3InstructionsSyntax {
       $.$
       prefixedBySelf = true
     end
-    $identifier$ ?let mReceiverName
+    $identifier$ (?let mReceiverName)
     select
       <actual_parameter_list_ggs3> (!?ioDeclarations, ?let @actualParameterListAST actualParameterList)
       if prefixedBySelf then
@@ -70,7 +70,7 @@ syntax extension galgas3InstructionsSyntax {
       var receiverStructProperties = @lstringlist ()
       repeat
         $.$
-        $identifier$ ?let structProperty
+        $identifier$ (?let structProperty)
         receiverStructProperties += !structProperty
       while
       end
@@ -109,7 +109,7 @@ syntax extension galgas4InstructionsSyntax {
       $.$
       prefixedBySelf = true
     end
-    $identifier$ ?let mReceiverName
+    $identifier$ (?let mReceiverName)
     select
       <actual_parameter_list_with_parenthesis> (!?ioDeclarations, ?let @actualParameterListAST actualParameterList)
       if prefixedBySelf then
@@ -125,7 +125,7 @@ syntax extension galgas4InstructionsSyntax {
       var receiverStructProperties = @lstringlist ()
       repeat
         $.$
-        $identifier$ ?let structProperty
+        $identifier$ (?let structProperty)
         receiverStructProperties += !structProperty
       while
       end

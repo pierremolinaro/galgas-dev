@@ -25,7 +25,7 @@ rule <StartSymbol>
 rule <Constant>
   (!@cExpression outExpressionTree,
   !@uint outValue ) {
-  $number$ ?let cst
+  $number$ (?let cst)
   outExpressionTree = @cConst { !cst}
   outValue = cst.uint
 }

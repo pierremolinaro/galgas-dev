@@ -32,13 +32,13 @@ syntax extension galgas3InstructionsSyntax {
         let @bool isConstant
         select
           $var$
-          $identifier$ ?varName
+          $identifier$ (?varName)
           isConstant = false
         or
           $let$
           isConstant = true
           select
-            $identifier$ ?varName
+            $identifier$ (?varName)
            or
              $*$
              varName = "".here
@@ -94,13 +94,13 @@ syntax extension galgas4InstructionsSyntax {
         let @bool isConstant
         select
           $var$
-          $identifier$ ?varName
+          $identifier$ (?varName)
           isConstant = false
         or
           $let$
           isConstant = true
           select
-            $identifier$ ?varName
+            $identifier$ (?varName)
            or
              $*$
              varName = "".here

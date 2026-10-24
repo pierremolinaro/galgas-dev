@@ -25,7 +25,7 @@ syntax extension galgas3DeclarationsSyntax {
 
   rule <declaration_ggs3> (?!@galgasDeclarationAST ioDeclarations) {
     $graph$
-    $@type$ ?let @lstring graphTypeName indexing (graphDefinition)
+    $@type$ (?let @lstring graphTypeName )indexing (graphDefinition)
     $($
     <type_definition_ggs3> (!?ioDeclarations, ?let associatedListTypeName)
     $)$
@@ -34,10 +34,10 @@ syntax extension galgas3DeclarationsSyntax {
     repeat
     while
       $insert$
-      $identifier$ ?let @lstring insertName
+      $identifier$ (?let @lstring insertName)
       $error$
       $message$
-      $"string"$ ?let @lstring errorMessage
+      $"string"$ (?let @lstring errorMessage)
       graphInsertModifierList += !insertName !errorMessage
     end
     $}$
@@ -61,7 +61,7 @@ syntax extension galgas4DeclarationsSyntax {
 
   rule <declaration> (?!@galgasDeclarationAST ioDeclarations ) {
     $graph$
-    $@type$ ?let @lstring graphTypeName indexing (graphDefinition)
+    $@type$ (?let @lstring graphTypeName )indexing (graphDefinition)
     $($
     <type_definition> (!?ioDeclarations, ?let associatedListTypeName)
     $)$
@@ -70,9 +70,9 @@ syntax extension galgas4DeclarationsSyntax {
     repeat
     while
       $%insertSetter$
-      $identifier$ ?let @lstring insertName
+      $identifier$ (?let @lstring insertName)
       $%errorMessage$
-      $"string"$ ?let @lstring errorMessage
+      $"string"$ (?let @lstring errorMessage)
       graphInsertModifierList += !insertName !errorMessage
     end
     $}$

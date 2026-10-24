@@ -37,9 +37,9 @@ syntax extension galgas3LexiqueComponentSyntax {
     var @lexicalSendSearchListAST lexicalSendSearchList = @()
     $search$
     repeat
-      $identifier$ ?let @lstring attributeName
+      $identifier$ (?let @lstring attributeName)
       $in$
-      $identifier$ ?let @lstring searchListName
+      $identifier$ (?let @lstring searchListName)
       lexicalSendSearchList += !attributeName !searchListName
       $default$
     while
@@ -47,11 +47,11 @@ syntax extension galgas3LexiqueComponentSyntax {
     end
     let @lexicalSendDefaultActionAST lexicalSendDefaultAction
     select
-      $\$terminal\$$ ?let @lstring defaultSentTerminal
+      $\$terminal\$$ (?let @lstring defaultSentTerminal)
       lexicalSendDefaultAction = @lexicalSendTerminalByDefaultAST {!defaultSentTerminal}
     or
       $error$
-      $identifier$ ?let @lstring defaultErrorMessageName
+      $identifier$ (?let @lstring defaultErrorMessageName)
       lexicalSendDefaultAction = @lexicalErrorByDefaultAST {!defaultErrorMessageName}
     end
     outInstruction = @lexicalStructuredSendInstructionAST {
@@ -74,9 +74,9 @@ syntax extension galgas4LexiqueComponentSyntax {
     var @lexicalSendSearchListAST lexicalSendSearchList = @()
     $%searchString$
     repeat
-      $identifier$ ?let @lstring attributeName
+      $identifier$ (?let @lstring attributeName)
       $in$
-      $identifier$ ?let @lstring searchListName
+      $identifier$ (?let @lstring searchListName)
       lexicalSendSearchList += !attributeName !searchListName
       $default$
     while
@@ -84,11 +84,11 @@ syntax extension galgas4LexiqueComponentSyntax {
     end
     let @lexicalSendDefaultActionAST lexicalSendDefaultAction
     select
-      $\$terminal\$$ ?let @lstring defaultSentTerminal
+      $\$terminal\$$ (?let @lstring defaultSentTerminal)
       lexicalSendDefaultAction = @lexicalSendTerminalByDefaultAST {!defaultSentTerminal}
     or
       $error$
-      $identifier$ ?let @lstring defaultErrorMessageName
+      $identifier$ (?let @lstring defaultErrorMessageName)
       lexicalSendDefaultAction = @lexicalErrorByDefaultAST {!defaultErrorMessageName}
     end
     outInstruction = @lexicalStructuredSendInstructionAST {

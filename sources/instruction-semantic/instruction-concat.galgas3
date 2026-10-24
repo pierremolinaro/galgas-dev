@@ -42,13 +42,13 @@ syntax extension galgas3InstructionsSyntax {
   rule <semantic_instruction_beginning_with_identifier> (?!@galgasDeclarationAST ioDeclarations,
                                                          ?prefixedBySelf: let @bool inHasSelfPrefix,
                                                          !@semanticInstructionAST outInstruction) {
-    $identifier$ ?let @lstring receiverName
+    $identifier$ (?let @lstring receiverName)
     let instructionLocation = @location.here
     var @lstringlist propertyList = @()
     repeat
     while
       $.$
-      $identifier$ ?let attributeName
+      $identifier$ (?let attributeName)
       propertyList += !attributeName
     end
     select
@@ -203,7 +203,7 @@ syntax extension galgas3InstructionsSyntax {
     repeat
       let @lstring selector
       select
-        $!selector:$ ?selector
+        $!selector:$ (?selector)
       or
         $!$
         selector = "".here
@@ -241,13 +241,13 @@ syntax extension galgas4InstructionsSyntax {
   rule <semantic_instruction_beginning_with_identifier> (?!@galgasDeclarationAST ioDeclarations,
                                                          ?prefixedBySelf: let @bool inHasSelfPrefix,
                                                          !@semanticInstructionAST outInstruction) {
-    $identifier$ ?let @lstring receiverName
+    $identifier$ (?let @lstring receiverName)
     let instructionLocation = @location.here
     var @lstringlist propertyList = @()
     repeat
     while
       $.$
-      $identifier$ ?let attributeName
+      $identifier$ (?let attributeName)
       propertyList += !attributeName
     end
   //---

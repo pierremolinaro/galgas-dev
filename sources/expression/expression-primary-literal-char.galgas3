@@ -33,7 +33,7 @@ syntax extension galgas3ExpressionSyntax {
 
   rule <primary_ggs3> (?!@galgasDeclarationAST unused ioDeclarations,
                       !@semanticExpressionAST outExpression ) {
-    $'char'$ ?let @lchar literalChar
+    $'char'$ (?let @lchar literalChar)
     outExpression = @literalCharExpressionAST {!literalChar}
   }
 
@@ -49,7 +49,7 @@ syntax extension galgas4ExpressionSyntax {
 
   rule <primary> (?!@galgasDeclarationAST unused ioDeclarations,
                  !@semanticExpressionAST outExpression ) {
-    $'char'$ ?let @lchar literalChar
+    $'char'$ (?let @lchar literalChar)
     outExpression = @literalCharExpressionAST {!literalChar}
   }
 

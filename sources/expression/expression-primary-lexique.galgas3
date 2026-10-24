@@ -36,9 +36,9 @@ syntax extension galgas3ExpressionSyntax {
                       !@semanticExpressionAST outExpression ) {
     $[$
     $lexique$
-    $identifier$ ?let lexiqueName
+    $identifier$ (?let lexiqueName)
     $:$
-    $identifier$ ?let getterName
+    $identifier$ (?let getterName)
     outExpression = @lexiqueIntrospectionExpressionAST {!lexiqueName !getterName}
     $]$
   }
@@ -57,9 +57,9 @@ syntax extension galgas4ExpressionSyntax {
                  !@semanticExpressionAST outExpression ) {
     $lexique$
     $[$
-    $identifier$ ?let lexiqueName
+    $identifier$ (?let lexiqueName)
     $:$
-    $identifier$ ?let getterName
+    $identifier$ (?let getterName)
     outExpression = @lexiqueIntrospectionExpressionAST {!lexiqueName !getterName}
     $]$
   }

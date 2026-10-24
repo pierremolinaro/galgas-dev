@@ -28,7 +28,7 @@ syntax extension galgas3InstructionsSyntax {
     $super$
     let instructionLocation = @location.here
     $.$
-    $identifier$ ?let methodName
+    $identifier$ (?let methodName)
     <actual_parameter_list_ggs3> (!?ioDeclarations, ?let @actualParameterListAST actualParameterList)
     outInstruction = @superMethodCallInstructionAST {
       !instructionLocation
@@ -51,7 +51,7 @@ syntax extension galgas4InstructionsSyntax {
                                !@semanticInstructionAST outInstruction) {
     $super$
     $.$
-    $identifier$ ?let methodName
+    $identifier$ (?let methodName)
     let instructionLocation = @location.here
     <actual_parameter_list_with_parenthesis> (!?ioDeclarations, ?let @actualParameterListAST actualParameterList)
     outInstruction = @superMethodCallInstructionAST {

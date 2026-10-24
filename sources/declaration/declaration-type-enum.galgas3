@@ -25,7 +25,7 @@ syntax extension galgas3DeclarationsSyntax {
 
   rule <declaration_ggs3> (?!@galgasDeclarationAST ioDeclarations) {
     $enum$
-    $@type$ ?let enumTypeName indexing (enumDefinition)
+    $@type$ (?let enumTypeName )indexing (enumDefinition)
     var @structComparison comparison = .none
     repeat
     while
@@ -54,7 +54,7 @@ syntax extension galgas3DeclarationsSyntax {
     repeat
     while
       $case$
-      $identifier$ ?let constantName
+      $identifier$ (?let constantName)
       var [@associatedValue] associatedValueTypeList = @()
       select
       or
@@ -68,7 +68,7 @@ syntax extension galgas3DeclarationsSyntax {
             weakQualifier = true
           end
           <type_definition_ggs3> (!?ioDeclarations, ?let associatedValueType)
-          $identifier$ ?let associatedValueName
+          $identifier$ (?let associatedValueName)
           !?associatedValueTypeList.append (!@(weakQualifier, associatedValueType, associatedValueName))
         while
         end
@@ -102,7 +102,7 @@ syntax extension galgas4DeclarationsSyntax {
 
   rule <declaration> (?!@galgasDeclarationAST ioDeclarations ) {
     $enum$
-    $@type$ ?let enumTypeName indexing (enumDefinition)
+    $@type$ (?let enumTypeName )indexing (enumDefinition)
     var @structComparison comparison = .none
     repeat
     while
@@ -131,7 +131,7 @@ syntax extension galgas4DeclarationsSyntax {
     repeat
     while
       $case$
-      $identifier$ ?let constantName
+      $identifier$ (?let constantName)
       var [@associatedValue] associatedValueTypeList = @()
       select
       or
@@ -145,7 +145,7 @@ syntax extension galgas4DeclarationsSyntax {
             weakQualifier = true
           end
           <type_definition> (!?ioDeclarations, ?let associatedValueType)
-          $identifier$ ?let associatedValueName
+          $identifier$ (?let associatedValueName)
           !?associatedValueTypeList.append (!@(weakQualifier, associatedValueType, associatedValueName))
         while
           $,$

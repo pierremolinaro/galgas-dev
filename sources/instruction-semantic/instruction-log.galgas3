@@ -46,17 +46,17 @@ syntax extension galgas3InstructionsSyntax {
     var @logListAST logList = @()
     repeat
       select
-        $identifier$ ?let loggedVariableName
+        $identifier$ (?let loggedVariableName)
         logList += !loggedVariableName !@varInExpressionAST {!loggedVariableName}
       or
         $self$
         $.$
-        $identifier$ ?let propertyName
+        $identifier$ (?let propertyName)
         logList +=
          !propertyName
          !@structPropertyAccessExpressionAST {!propertyName.location !@selfInExpressionAST {!propertyName.location} !propertyName}
       or
-        $"string"$ ?let logMessage
+        $"string"$ (?let logMessage)
         $:$
         <expression_ggs3> (!?ioDeclarations, ?let logExpression)
         logList += !logMessage !logExpression
@@ -87,17 +87,17 @@ syntax extension galgas4InstructionsSyntax {
     var @logListAST logList = @()
     repeat
       select
-        $identifier$ ?let loggedVariableName
+        $identifier$ (?let loggedVariableName)
         logList += !loggedVariableName !@varInExpressionAST {!loggedVariableName}
       or
         $self$
         $.$
-        $identifier$ ?let propertyName
+        $identifier$ (?let propertyName)
         logList +=
          !propertyName
          !@structPropertyAccessExpressionAST {!propertyName.location !@selfInExpressionAST {!propertyName.location} !propertyName}
       or
-        $"string"$ ?let logMessage
+        $"string"$ (?let logMessage)
         $:$
         <expression> (!?ioDeclarations, ?let logExpression)
         logList += !logMessage !logExpression

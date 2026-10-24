@@ -19,13 +19,13 @@ syntax logo_syntax (logo_lexique) {
   rule <instruction> (?!@routineMap ioTableRoutines ,?!@instructionList il ) {
     select
       $FORWARD$
-      $integer$ ?let @luint param
+      $integer$ (?let @luint param)
       let @instruction ins = @forward {!param}
       il += !ins
       $;$
     or
       $ROTATE$
-      $integer$ ?let @luint param
+      $integer$ (?let @luint param)
       $;$
       let @instruction ins = @rotate {!param}
       il += !ins
@@ -35,7 +35,7 @@ syntax logo_syntax (logo_lexique) {
       $;$
     or
       $CALL$
-      $identifier$ ?let @lstring routineName indexing (routineCall)
+      $identifier$ (?let @lstring routineName )indexing (routineCall)
       ioTableRoutines.searchKey (!routineName, ?let routineContent)
       for i in routineContent do
         il += !i.mInstruction
@@ -57,7 +57,7 @@ syntax logo_syntax (logo_lexique) {
 
   rule <routine_definition> (?!@routineMap ioTableRoutines ) {
     $ROUTINE$
-    $identifier$ ?let @lstring routineName indexing (routineDefinition)
+    $identifier$ (?let @lstring routineName )indexing (routineDefinition)
     $BEGIN$
     var @instructionList il = @()
     <instruction_list> (!? ioTableRoutines, !? il)

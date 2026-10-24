@@ -26,13 +26,13 @@ syntax extension galgas3InstructionsSyntax {
 
   rule <semantic_instruction_ggs3> (?!@galgasDeclarationAST ioDeclarations,
                                     !@semanticInstructionAST outInstruction) {
-    $identifier$ ?let mTargetVariableName
+    $identifier$ (?let mTargetVariableName)
     let @lstring optionalProperty
     select
       optionalProperty = "".nowhere
     or
       $.$
-      $identifier$ ?let attributeName
+      $identifier$ (?let attributeName)
       optionalProperty = attributeName
     end
     $=$
@@ -51,13 +51,13 @@ syntax extension galgas3InstructionsSyntax {
                                     !@semanticInstructionAST outInstruction) {
     $self$
     $.$
-    $identifier$ ?let mTargetVariableName
+    $identifier$ (?let mTargetVariableName)
     let @lstring optionalProperty
     select
       optionalProperty = "".nowhere
     or
       $.$
-      $identifier$ ?let attributeName
+      $identifier$ (?let attributeName)
       optionalProperty = attributeName
     end
     $=$
@@ -82,7 +82,7 @@ syntax extension galgas4InstructionsSyntax {
 
   rule <semantic_instruction> (?!@galgasDeclarationAST ioDeclarations,
                                !@semanticInstructionAST outInstruction) {
-    $identifier$ ?let mTargetVariableName
+    $identifier$ (?let mTargetVariableName)
     let @lstring optionalProperty
     select
       optionalProperty = "".nowhere
@@ -96,7 +96,7 @@ syntax extension galgas4InstructionsSyntax {
       error (.here : "not handled yet" spoil optionalProperty)
     or
       $.$
-      $identifier$ ?let attributeName
+      $identifier$ (?let attributeName)
       optionalProperty = attributeName
     end
     $=$
@@ -115,7 +115,7 @@ syntax extension galgas4InstructionsSyntax {
                                !@semanticInstructionAST outInstruction) {
     $self$
     $.$
-    $identifier$ ?let mTargetVariableName
+    $identifier$ (?let mTargetVariableName)
     let @lstring optionalProperty
     select
       optionalProperty = "".nowhere
@@ -129,7 +129,7 @@ syntax extension galgas4InstructionsSyntax {
       error (.here : "not handled yet" spoil optionalProperty)
     or
       $.$
-      $identifier$ ?let attributeName
+      $identifier$ (?let attributeName)
       optionalProperty = attributeName
     end
     $=$

@@ -28,7 +28,7 @@ syntax extension galgas3ExpressionSyntax {
     select
       outTypeName = @{!"" !.here}
     or
-      $@type$ ?outTypeName indexing (typeReferenceInConstructor)
+      $@type$ (?outTypeName )indexing (typeReferenceInConstructor)
     end
   }
 
@@ -41,7 +41,7 @@ syntax extension galgas3ExpressionSyntax {
     $.$
     let startOfExpression = @location.here
   //--- Constructor name
-    $identifier$ ?let classFuncName
+    $identifier$ (?let classFuncName)
   //--- Actual arguments
     let @actualOutputArgumentList expressionList
     select
@@ -73,7 +73,7 @@ syntax extension galgas4ExpressionSyntax {
   rule <primary_beginning_by_dot> (?!@galgasDeclarationAST ioDeclarations,
                                   !@semanticExpressionAST outExpression ) {
   //--- Initializer name
-    $identifier$ ?let @lstring classFuncName
+    $identifier$ (?let @lstring classFuncName)
   //--- Actual arguments
     let startOfExpression = @location.here
     let @actualOutputArgumentList expressionList

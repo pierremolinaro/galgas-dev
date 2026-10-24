@@ -59,7 +59,7 @@ syntax extension galgas3LexiqueComponentSyntax {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <lexical_instruction> (?!@lexicalInstructionListAST ioInstructionList) {
-    $identifier$ ?let @lstring actionName
+    $identifier$ (?let @lstring actionName)
     var @lexicalRoutineCallActualArgumentListAST actualArgumentList = @()
     $($
     repeat
@@ -71,7 +71,7 @@ syntax extension galgas3LexiqueComponentSyntax {
     while
       $!?$
       let passingModeLocation = @location.here
-      $identifier$ ?let @lstring attributeName
+      $identifier$ (?let @lstring attributeName)
       let arg = @lexicalAttributeInputOutputArgumentAST {!passingModeLocation !attributeName}
       actualArgumentList += !arg
     end
@@ -80,7 +80,7 @@ syntax extension galgas3LexiqueComponentSyntax {
     or
       $error$
       repeat
-        $identifier$ ?let @lstring errorMessageName
+        $identifier$ (?let @lstring errorMessageName)
         errorMessageList += !errorMessageName
       while
         $,$
@@ -104,7 +104,7 @@ syntax extension galgas4LexiqueComponentSyntax {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <lexical_instruction> (?!@lexicalInstructionListAST ioInstructionList) {
-    $identifier$ ?let @lstring actionName
+    $identifier$ (?let @lstring actionName)
     var @lexicalRoutineCallActualArgumentListAST actualArgumentList = @()
     $($
     repeat
@@ -116,7 +116,7 @@ syntax extension galgas4LexiqueComponentSyntax {
     while
       $!?$
       let passingModeLocation = @location.here
-      $identifier$ ?let @lstring attributeName
+      $identifier$ (?let @lstring attributeName)
       let arg = @lexicalAttributeInputOutputArgumentAST {!passingModeLocation !attributeName}
       actualArgumentList += !arg
     end
@@ -125,7 +125,7 @@ syntax extension galgas4LexiqueComponentSyntax {
     or
       $error$
       repeat
-        $identifier$ ?let @lstring errorMessageName
+        $identifier$ (?let @lstring errorMessageName)
         errorMessageList += !errorMessageName
       while
         $,$

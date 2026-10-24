@@ -25,7 +25,7 @@ syntax extension galgas3DeclarationsSyntax {
 
   rule <declaration_ggs3> (?!@galgasDeclarationAST ioDeclarations) {
     $extern$
-    $@type$ ?let @lstring externTypeName indexing (externTypeDefinition)
+    $@type$ (?let @lstring externTypeName )indexing (externTypeDefinition)
     <externtype_cpp_predeclaration> (?let cppPredeclarationCode)
     <externtype_cpp_classdeclaration> (?let cppClassCode)
     ${$
@@ -63,7 +63,7 @@ syntax extension galgas3DeclarationsSyntax {
     outCppPredeclarationCode = ""
     repeat
     while
-      $"string"$ ?let @lstring cppPredeclarationCodeElement
+      $"string"$ (?let @lstring cppPredeclarationCodeElement)
       outCppPredeclarationCode += cppPredeclarationCodeElement.string
     end
     $}$
@@ -76,7 +76,7 @@ syntax extension galgas3DeclarationsSyntax {
     outCppClassCode = ""
     repeat
     while
-      $"string"$ ?let @lstring cppPredeclarationCodeElement
+      $"string"$ (?let @lstring cppPredeclarationCodeElement)
       outCppClassCode += cppPredeclarationCodeElement.string
     end
     $}$
@@ -91,15 +91,15 @@ syntax extension galgas3DeclarationsSyntax {
     var @typeNameFormalParameterNameList argumentTypeList = @()
     repeat
     while
-      $?selector:$ ?let selector
+      $?selector:$ (?let selector)
       <type_definition_ggs3> (!?ioDeclarations, ?let argumentTypeName)
-      $identifier$ ?let @lstring argumentName
+      $identifier$ (?let @lstring argumentName)
       argumentTypeList += !selector !argumentTypeName !argumentName
     while
       $?$
       let selector = "".here
       <type_definition_ggs3> (!?ioDeclarations, ?let argumentTypeName)
-      $identifier$ ?let @lstring argumentName
+      $identifier$ (?let @lstring argumentName)
       argumentTypeList += !selector !argumentTypeName !argumentName
     end
     $)$
@@ -111,19 +111,19 @@ syntax extension galgas3DeclarationsSyntax {
   rule <externtype_getter_ggs3> (?!@galgasDeclarationAST ioDeclarations,
                                 ?!@externTypeGetterList ioExternTypeGetterList ) {
     $func$
-    $identifier$ ?let @lstring getterName
+    $identifier$ (?let @lstring getterName)
     var @typeNameFormalParameterNameList argumentTypeList = @()
     repeat
     while
-      $?selector:$ ?let selector
+      $?selector:$ (?let selector)
       <type_definition_ggs3> (!?ioDeclarations, ?let argumentTypeName)
-      $identifier$ ?let @lstring argumentName
+      $identifier$ (?let @lstring argumentName)
       argumentTypeList += !selector !argumentTypeName !argumentName
     while
       $?$
       let selector = "".here
       <type_definition_ggs3> (!?ioDeclarations, ?let argumentTypeName)
-      $identifier$ ?let @lstring argumentName
+      $identifier$ (?let @lstring argumentName)
       argumentTypeList += !selector !argumentTypeName !argumentName
     end
     $->$
@@ -136,7 +136,7 @@ syntax extension galgas3DeclarationsSyntax {
   rule <externtype_setter_ggs3> (?!@galgasDeclarationAST ioDeclarations,
                                 ?!@externTypeSetterList ioExternTypeSetterList ) {
     $setter$
-    $identifier$ ?let @lstring setterName
+    $identifier$ (?let @lstring setterName)
     <formal_parameter_list_ggs34> (!?ioDeclarations, ?let formalParameterList)
     ioExternTypeSetterList += !setterName !formalParameterList
   }
@@ -146,7 +146,7 @@ syntax extension galgas3DeclarationsSyntax {
   rule <externtype_method_ggs3> (?!@galgasDeclarationAST ioDeclarations,
                                 ?!@externTypeMethodList ioExternTypeMethodList ) {
     $proc$
-    $identifier$ ?let @lstring methodName
+    $identifier$ (?let @lstring methodName)
     <formal_parameter_list_ggs34> (!?ioDeclarations, ?let formalParameterList)
     ioExternTypeMethodList += !methodName !formalParameterList !.here
   }
@@ -163,7 +163,7 @@ syntax extension galgas4DeclarationsSyntax {
 
   rule <declaration> (?!@galgasDeclarationAST ioDeclarations ) {
     $extern$
-    $@type$ ?let @lstring externTypeName indexing (externTypeDefinition)
+    $@type$ (?let @lstring externTypeName )indexing (externTypeDefinition)
     <externtype_cpp_predeclaration> (?let cppPredeclarationCode)
     <externtype_cpp_classdeclaration> (?let cppClassCode)
     ${$
@@ -201,7 +201,7 @@ syntax extension galgas4DeclarationsSyntax {
     outCppPredeclarationCode = ""
     repeat
     while
-      $"string"$ ?let @lstring cppPredeclarationCodeElement
+      $"string"$ (?let @lstring cppPredeclarationCodeElement)
       outCppPredeclarationCode += cppPredeclarationCodeElement.string
     end
     $}$
@@ -214,7 +214,7 @@ syntax extension galgas4DeclarationsSyntax {
     outCppClassCode = ""
     repeat
     while
-      $"string"$ ?let @lstring cppPredeclarationCodeElement
+      $"string"$ (?let @lstring cppPredeclarationCodeElement)
       outCppClassCode += cppPredeclarationCodeElement.string
     end
     $}$
@@ -231,15 +231,15 @@ syntax extension galgas4DeclarationsSyntax {
     or
       repeat
         select
-          $?selector:$ ?let selector
+          $?selector:$ (?let selector)
           <type_definition> (!?ioDeclarations, ?let argumentTypeName)
-          $identifier$ ?let argumentName
+          $identifier$ (?let argumentName)
           argumentTypeList += !selector !argumentTypeName !argumentName
         or
           $?$
           let selector = "".here
           <type_definition> (!?ioDeclarations, ?let argumentTypeName)
-          $identifier$ ?let argumentName
+          $identifier$ (?let argumentName)
           argumentTypeList += !selector !argumentTypeName !argumentName
         end
       while
@@ -255,19 +255,19 @@ syntax extension galgas4DeclarationsSyntax {
   rule <externtype_getter> (?!@galgasDeclarationAST ioDeclarations,
                            ?!@externTypeGetterList ioExternTypeGetterList ) {
     $func$
-    $identifier$ ?let @lstring getterName
+    $identifier$ (?let @lstring getterName)
     var @typeNameFormalParameterNameList argumentTypeList = @()
     repeat
     while
-      $?selector:$ ?let selector
+      $?selector:$ (?let selector)
       <type_definition> (!?ioDeclarations, ?let argumentTypeName)
-      $identifier$ ?let @lstring argumentName
+      $identifier$ (?let @lstring argumentName)
       argumentTypeList += !selector !argumentTypeName !argumentName
     while
       $?$
       let selector = "".here
       <type_definition> (!?ioDeclarations, ?let argumentTypeName)
-      $identifier$ ?let @lstring argumentName
+      $identifier$ (?let @lstring argumentName)
       argumentTypeList += !selector !argumentTypeName !argumentName
     end
     $->$
@@ -281,7 +281,7 @@ syntax extension galgas4DeclarationsSyntax {
                                 ?!@externTypeSetterList ioExternTypeSetterList ) {
     $mutating$
     $proc$
-    $identifier$ ?let @lstring setterName
+    $identifier$ (?let @lstring setterName)
     <formal_parameter_list> (!?ioDeclarations, ?let @formalParameterListAST formalParameterList)
     ioExternTypeSetterList += !setterName !formalParameterList
   }
@@ -291,7 +291,7 @@ syntax extension galgas4DeclarationsSyntax {
   rule <externtype_method> (?!@galgasDeclarationAST ioDeclarations,
                            ?!@externTypeMethodList ioExternTypeMethodList ) {
     $proc$
-    $identifier$ ?let @lstring methodName
+    $identifier$ (?let @lstring methodName)
     <formal_parameter_list> (!?ioDeclarations, ?let @formalParameterListAST formalParameterList)
     ioExternTypeMethodList += !methodName !formalParameterList !.here
   }
