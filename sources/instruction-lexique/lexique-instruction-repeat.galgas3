@@ -151,7 +151,7 @@ override proc @lexicalRepeatInstructionAST checkLexicalInstruction (
 //--------------------------------------------------------------------------------------------------
 
 override func @lexicalRepeatInstructionAST generateSwiftCocoaInstructionCode
-  (?let @string inScannerClassName
+  (?let @string inScannerClassName,
   ?let @lexiqueAnalysisContext inLexiqueAnalysisContext
   ) -> @string outGeneratedCode {
   outGeneratedCode = "while (loop && scanningOk) {\n"
@@ -193,7 +193,7 @@ override func @lexicalRepeatInstructionAST lexicalInstructionUsesLoopLocalVariab
 //·································································································
 
 override func @lexicalRepeatInstructionAST generateLexicalInstructionCode
-  (?let @string inScannerClassName
+  (?let @string inScannerClassName,
   ?let @lexiqueAnalysisContext inLexiqueAnalysisContext
   ) -> @string {
   result = "do {\n"

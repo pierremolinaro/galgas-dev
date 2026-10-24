@@ -20,7 +20,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //--------------------------------------------------------------------------------------------------
 
-func routineMangledName (?let @lstring inRoutineName
+func routineMangledName (?let @lstring inRoutineName,
                         ?let @formalParameterSignature inRoutineFormalParameters ) -> @lstring {
   var str = inRoutineName.string
   for parameter in inRoutineFormalParameters do

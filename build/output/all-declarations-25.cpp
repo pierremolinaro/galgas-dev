@@ -4282,21 +4282,21 @@ GGS_string cPtr_lexicalImplicitRuleAST::getter_generateLexicalRuleCode (const GG
                                                                         Compiler * inCompiler
                                                                         COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_string result_result ; // Returned variable
-  GGS_tokenSortedlist var_tokenSortedList_9010 ;
+  GGS_tokenSortedlist var_tokenSortedList_9013 ;
   const GGS_lexicalImplicitRuleAST temp_0 = this ;
-  GGS_lexicalExplicitTokenListMap joker_9001 ; // Joker input parameter
-  GGS_bool joker_9027 ; // Joker input parameter
-  constinArgument_inLexiqueAnalysisContext.readProperty_mLexicalTokenListMap ().method_searchKey (temp_0.readProperty_mListName (), joker_9001, var_tokenSortedList_9010, joker_9027, inCompiler COMMA_SOURCE_FILE ("lexiqueGeneration.galgas3", 197)) ;
+  GGS_lexicalExplicitTokenListMap joker_9004 ; // Joker input parameter
+  GGS_bool joker_9030 ; // Joker input parameter
+  constinArgument_inLexiqueAnalysisContext.readProperty_mLexicalTokenListMap ().method_searchKey (temp_0.readProperty_mListName (), joker_9004, var_tokenSortedList_9013, joker_9030, inCompiler COMMA_SOURCE_FILE ("lexiqueGeneration.galgas3", 197)) ;
   result_result = GGS_string::makeEmptyString () ;
-  DownEnumerator_tokenSortedlist enumerator_9062 (var_tokenSortedList_9010) ;
-  while (enumerator_9062.hasCurrentObject ()) {
+  DownEnumerator_tokenSortedlist enumerator_9065 (var_tokenSortedList_9013) ;
+  while (enumerator_9065.hasCurrentObject ()) {
     result_result.plusAssignOperation(GGS_string ("if (testForInputUTF32String (kUnicodeString_").add_operation (constinArgument_inScannerClassName, inCompiler COMMA_SOURCE_FILE ("lexiqueGeneration.galgas3", 200)).add_operation (GGS_string ("_"), inCompiler COMMA_SOURCE_FILE ("lexiqueGeneration.galgas3", 200)), inCompiler  COMMA_SOURCE_FILE ("lexiqueGeneration.galgas3", 200)) ;
-    result_result.plusAssignOperation(enumerator_9062.current_mName (HERE).getter_identifierRepresentation (SOURCE_FILE ("lexiqueGeneration.galgas3", 201)), inCompiler  COMMA_SOURCE_FILE ("lexiqueGeneration.galgas3", 201)) ;
+    result_result.plusAssignOperation(enumerator_9065.current_mName (HERE).getter_identifierRepresentation (SOURCE_FILE ("lexiqueGeneration.galgas3", 201)), inCompiler  COMMA_SOURCE_FILE ("lexiqueGeneration.galgas3", 201)) ;
     result_result.plusAssignOperation(GGS_string (", true)) {\n"), inCompiler  COMMA_SOURCE_FILE ("lexiqueGeneration.galgas3", 202)) ;
-    result_result.plusAssignOperation(GGS_string ("  token.mTokenCode = kToken_").add_operation (enumerator_9062.current_mTerminalName (HERE).getter_identifierRepresentation (SOURCE_FILE ("lexiqueGeneration.galgas3", 203)), inCompiler COMMA_SOURCE_FILE ("lexiqueGeneration.galgas3", 203)).add_operation (GGS_string (" ;\n"), inCompiler COMMA_SOURCE_FILE ("lexiqueGeneration.galgas3", 203)), inCompiler  COMMA_SOURCE_FILE ("lexiqueGeneration.galgas3", 203)) ;
+    result_result.plusAssignOperation(GGS_string ("  token.mTokenCode = kToken_").add_operation (enumerator_9065.current_mTerminalName (HERE).getter_identifierRepresentation (SOURCE_FILE ("lexiqueGeneration.galgas3", 203)), inCompiler COMMA_SOURCE_FILE ("lexiqueGeneration.galgas3", 203)).add_operation (GGS_string (" ;\n"), inCompiler COMMA_SOURCE_FILE ("lexiqueGeneration.galgas3", 203)), inCompiler  COMMA_SOURCE_FILE ("lexiqueGeneration.galgas3", 203)) ;
     result_result.plusAssignOperation(GGS_string ("  enterToken (token) ;\n"), inCompiler  COMMA_SOURCE_FILE ("lexiqueGeneration.galgas3", 204)) ;
     result_result.plusAssignOperation(GGS_string ("}else "), inCompiler  COMMA_SOURCE_FILE ("lexiqueGeneration.galgas3", 205)) ;
-    enumerator_9062.gotoNextObject () ;
+    enumerator_9065.gotoNextObject () ;
   }
 //---
   return result_result ;
@@ -4337,10 +4337,10 @@ GGS_string cPtr_lexicalExplicitRuleAST::getter_generateLexicalRuleCode (const GG
   result_result.setter_incIndentation (GGS_uint (uint32_t (2U)), inCompiler COMMA_SOURCE_FILE ("lexiqueGeneration.galgas3", 224)) ;
   }
   const GGS_lexicalExplicitRuleAST temp_1 = this ;
-  UpEnumerator_lexicalInstructionListAST enumerator_10209 (temp_1.readProperty_mInstructionList ()) ;
-  while (enumerator_10209.hasCurrentObject ()) {
-    result_result.plusAssignOperation(callExtensionGetter_generateLexicalInstructionCode ((const cPtr_lexicalInstructionAST *) enumerator_10209.current_mInstruction (HERE).ptr (), constinArgument_inScannerClassName, constinArgument_inLexiqueAnalysisContext, inCompiler COMMA_SOURCE_FILE ("lexiqueGeneration.galgas3", 226)), inCompiler  COMMA_SOURCE_FILE ("lexiqueGeneration.galgas3", 226)) ;
-    enumerator_10209.gotoNextObject () ;
+  UpEnumerator_lexicalInstructionListAST enumerator_10213 (temp_1.readProperty_mInstructionList ()) ;
+  while (enumerator_10213.hasCurrentObject ()) {
+    result_result.plusAssignOperation(callExtensionGetter_generateLexicalInstructionCode ((const cPtr_lexicalInstructionAST *) enumerator_10213.current_mInstruction (HERE).ptr (), constinArgument_inScannerClassName, constinArgument_inLexiqueAnalysisContext, inCompiler COMMA_SOURCE_FILE ("lexiqueGeneration.galgas3", 226)), inCompiler  COMMA_SOURCE_FILE ("lexiqueGeneration.galgas3", 226)) ;
+    enumerator_10213.gotoNextObject () ;
   }
   {
   result_result.setter_decIndentation (GGS_uint (uint32_t (2U)), inCompiler COMMA_SOURCE_FILE ("lexiqueGeneration.galgas3", 228)) ;
@@ -4362,13 +4362,13 @@ GGS_bool cPtr_lexicalExplicitRuleAST::getter_lexicalRuleUsesLoopLocalVar (Compil
   GGS_bool result_result ; // Returned variable
   result_result = GGS_bool (false) ;
   const GGS_lexicalExplicitRuleAST temp_0 = this ;
-  UpEnumerator_lexicalInstructionListAST enumerator_10622 (temp_0.readProperty_mInstructionList ()) ;
+  UpEnumerator_lexicalInstructionListAST enumerator_10626 (temp_0.readProperty_mInstructionList ()) ;
   bool bool_1 = result_result.operator_not (SOURCE_FILE ("lexiqueGeneration.galgas3", 236)).isValidAndTrue () ;
-  if (enumerator_10622.hasCurrentObject () && bool_1) {
-    while (enumerator_10622.hasCurrentObject () && bool_1) {
-      result_result = callExtensionGetter_lexicalInstructionUsesLoopLocalVariable ((const cPtr_lexicalInstructionAST *) enumerator_10622.current_mInstruction (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("lexiqueGeneration.galgas3", 237)) ;
-      enumerator_10622.gotoNextObject () ;
-      if (enumerator_10622.hasCurrentObject ()) {
+  if (enumerator_10626.hasCurrentObject () && bool_1) {
+    while (enumerator_10626.hasCurrentObject () && bool_1) {
+      result_result = callExtensionGetter_lexicalInstructionUsesLoopLocalVariable ((const cPtr_lexicalInstructionAST *) enumerator_10626.current_mInstruction (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("lexiqueGeneration.galgas3", 237)) ;
+      enumerator_10626.gotoNextObject () ;
+      if (enumerator_10626.hasCurrentObject ()) {
         bool_1 = result_result.operator_not (SOURCE_FILE ("lexiqueGeneration.galgas3", 236)).isValidAndTrue () ;
       }
     }
@@ -7422,33 +7422,33 @@ GGS_lstring function_routineMangledName (const GGS_lstring & constinArgument_inR
                                          Compiler * inCompiler
                                          COMMA_UNUSED_LOCATION_ARGS) {
   GGS_lstring result_result ; // Returned variable
-  GGS_string var_str_1473 = constinArgument_inRoutineName.readProperty_string () ;
-  UpEnumerator_formalParameterSignature enumerator_1519 (constinArgument_inRoutineFormalParameters) ;
-  while (enumerator_1519.hasCurrentObject ()) {
-    switch (enumerator_1519.current (HERE).readProperty_mFormalArgumentPassingMode ().enumValue ()) {
+  GGS_string var_str_1474 = constinArgument_inRoutineName.readProperty_string () ;
+  UpEnumerator_formalParameterSignature enumerator_1520 (constinArgument_inRoutineFormalParameters) ;
+  while (enumerator_1520.hasCurrentObject ()) {
+    switch (enumerator_1520.current (HERE).readProperty_mFormalArgumentPassingMode ().enumValue ()) {
     case GGS_formalArgumentPassingModeAST::Enumeration::invalid:
       break ;
     case GGS_formalArgumentPassingModeAST::Enumeration::enum_argumentConstantIn:
     case GGS_formalArgumentPassingModeAST::Enumeration::enum_argumentVarIn:
       {
-        var_str_1473.plusAssignOperation(GGS_string ("\?"), inCompiler  COMMA_SOURCE_FILE ("routineMap.galgas3", 29)) ;
+        var_str_1474.plusAssignOperation(GGS_string ("\?"), inCompiler  COMMA_SOURCE_FILE ("routineMap.galgas3", 29)) ;
       }
       break ;
     case GGS_formalArgumentPassingModeAST::Enumeration::enum_argumentInOut:
       {
-        var_str_1473.plusAssignOperation(GGS_string ("&"), inCompiler  COMMA_SOURCE_FILE ("routineMap.galgas3", 31)) ;
+        var_str_1474.plusAssignOperation(GGS_string ("&"), inCompiler  COMMA_SOURCE_FILE ("routineMap.galgas3", 31)) ;
       }
       break ;
     case GGS_formalArgumentPassingModeAST::Enumeration::enum_argumentOut:
       {
-        var_str_1473.plusAssignOperation(GGS_string ("!"), inCompiler  COMMA_SOURCE_FILE ("routineMap.galgas3", 33)) ;
+        var_str_1474.plusAssignOperation(GGS_string ("!"), inCompiler  COMMA_SOURCE_FILE ("routineMap.galgas3", 33)) ;
       }
       break ;
     }
-    var_str_1473.plusAssignOperation(enumerator_1519.current (HERE).readProperty_mFormalSelector ().readProperty_string (), inCompiler  COMMA_SOURCE_FILE ("routineMap.galgas3", 35)) ;
-    enumerator_1519.gotoNextObject () ;
+    var_str_1474.plusAssignOperation(enumerator_1520.current (HERE).readProperty_mFormalSelector ().readProperty_string (), inCompiler  COMMA_SOURCE_FILE ("routineMap.galgas3", 35)) ;
+    enumerator_1520.gotoNextObject () ;
   }
-  result_result = GGS_lstring::init_21__21_ (var_str_1473, constinArgument_inRoutineName.readProperty_location (), inCompiler COMMA_HERE) ;
+  result_result = GGS_lstring::init_21__21_ (var_str_1474, constinArgument_inRoutineName.readProperty_location (), inCompiler COMMA_HERE) ;
 //---
   return result_result ;
 }
@@ -7501,9 +7501,9 @@ GGS_string function_routineArgumentFromFormalParameters (const GGS_formalParamet
                                                          COMMA_UNUSED_LOCATION_ARGS) {
   GGS_string result_result ; // Returned variable
   result_result = GGS_string ("(") ;
-  UpEnumerator_formalParameterSignature enumerator_2092 (constinArgument_inRoutineFormalParameters) ;
-  while (enumerator_2092.hasCurrentObject ()) {
-    switch (enumerator_2092.current (HERE).readProperty_mFormalArgumentPassingMode ().enumValue ()) {
+  UpEnumerator_formalParameterSignature enumerator_2093 (constinArgument_inRoutineFormalParameters) ;
+  while (enumerator_2093.hasCurrentObject ()) {
+    switch (enumerator_2093.current (HERE).readProperty_mFormalArgumentPassingMode ().enumValue ()) {
     case GGS_formalArgumentPassingModeAST::Enumeration::invalid:
       break ;
     case GGS_formalArgumentPassingModeAST::Enumeration::enum_argumentConstantIn:
@@ -7523,9 +7523,9 @@ GGS_string function_routineArgumentFromFormalParameters (const GGS_formalParamet
       }
       break ;
     }
-    result_result.plusAssignOperation(enumerator_2092.current (HERE).readProperty_mFormalSelector ().readProperty_string ().add_operation (GGS_string (":"), inCompiler COMMA_SOURCE_FILE ("routineMap.galgas3", 54)), inCompiler  COMMA_SOURCE_FILE ("routineMap.galgas3", 54)) ;
-    enumerator_2092.gotoNextObject () ;
-    if (enumerator_2092.hasCurrentObject ()) {
+    result_result.plusAssignOperation(enumerator_2093.current (HERE).readProperty_mFormalSelector ().readProperty_string ().add_operation (GGS_string (":"), inCompiler COMMA_SOURCE_FILE ("routineMap.galgas3", 54)), inCompiler  COMMA_SOURCE_FILE ("routineMap.galgas3", 54)) ;
+    enumerator_2093.gotoNextObject () ;
+    if (enumerator_2093.hasCurrentObject ()) {
       result_result.plusAssignOperation(GGS_string (","), inCompiler  COMMA_SOURCE_FILE ("routineMap.galgas3", 56)) ;
     }
   }
@@ -7831,20 +7831,20 @@ GGS_string cPtr_lexicalImplicitRuleAST::getter_generateSwiftCocoaCode (const GGS
                                                                        Compiler * inCompiler
                                                                        COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_string result_outGeneratedCode ; // Returned variable
-  GGS_tokenSortedlist var_tokenSortedList_8262 ;
+  GGS_tokenSortedlist var_tokenSortedList_8265 ;
   const GGS_lexicalImplicitRuleAST temp_0 = this ;
-  GGS_lexicalExplicitTokenListMap joker_8253 ; // Joker input parameter
-  GGS_bool joker_8279 ; // Joker input parameter
-  constinArgument_inLexiqueAnalysisContext.readProperty_mLexicalTokenListMap ().method_searchKey (temp_0.readProperty_mListName (), joker_8253, var_tokenSortedList_8262, joker_8279, inCompiler COMMA_SOURCE_FILE ("lexiqueCocoaGeneration.galgas3", 179)) ;
+  GGS_lexicalExplicitTokenListMap joker_8256 ; // Joker input parameter
+  GGS_bool joker_8282 ; // Joker input parameter
+  constinArgument_inLexiqueAnalysisContext.readProperty_mLexicalTokenListMap ().method_searchKey (temp_0.readProperty_mListName (), joker_8256, var_tokenSortedList_8265, joker_8282, inCompiler COMMA_SOURCE_FILE ("lexiqueCocoaGeneration.galgas3", 179)) ;
   result_outGeneratedCode = GGS_string::makeEmptyString () ;
-  DownEnumerator_tokenSortedlist enumerator_8324 (var_tokenSortedList_8262) ;
-  while (enumerator_8324.hasCurrentObject ()) {
+  DownEnumerator_tokenSortedlist enumerator_8327 (var_tokenSortedList_8265) ;
+  while (enumerator_8327.hasCurrentObject ()) {
     result_outGeneratedCode.plusAssignOperation(GGS_string ("if scanningOk && self.testForInputString ("), inCompiler  COMMA_SOURCE_FILE ("lexiqueCocoaGeneration.galgas3", 182)) ;
-    result_outGeneratedCode.plusAssignOperation(enumerator_8324.current_mName (HERE).getter_utf_38_Representation (SOURCE_FILE ("lexiqueCocoaGeneration.galgas3", 183)), inCompiler  COMMA_SOURCE_FILE ("lexiqueCocoaGeneration.galgas3", 183)) ;
+    result_outGeneratedCode.plusAssignOperation(enumerator_8327.current_mName (HERE).getter_utf_38_Representation (SOURCE_FILE ("lexiqueCocoaGeneration.galgas3", 183)), inCompiler  COMMA_SOURCE_FILE ("lexiqueCocoaGeneration.galgas3", 183)) ;
     result_outGeneratedCode.plusAssignOperation(GGS_string (", advance: true) {\n"), inCompiler  COMMA_SOURCE_FILE ("lexiqueCocoaGeneration.galgas3", 184)) ;
-    result_outGeneratedCode.plusAssignOperation(GGS_string ("  tokenCode = ").add_operation (constinArgument_inScannerClassName, inCompiler COMMA_SOURCE_FILE ("lexiqueCocoaGeneration.galgas3", 185)).add_operation (GGS_string ("_1_"), inCompiler COMMA_SOURCE_FILE ("lexiqueCocoaGeneration.galgas3", 185)).add_operation (enumerator_8324.current_mTerminalName (HERE).getter_identifierRepresentation (SOURCE_FILE ("lexiqueCocoaGeneration.galgas3", 185)), inCompiler COMMA_SOURCE_FILE ("lexiqueCocoaGeneration.galgas3", 185)).add_operation (GGS_string ("\n"), inCompiler COMMA_SOURCE_FILE ("lexiqueCocoaGeneration.galgas3", 185)), inCompiler  COMMA_SOURCE_FILE ("lexiqueCocoaGeneration.galgas3", 185)) ;
+    result_outGeneratedCode.plusAssignOperation(GGS_string ("  tokenCode = ").add_operation (constinArgument_inScannerClassName, inCompiler COMMA_SOURCE_FILE ("lexiqueCocoaGeneration.galgas3", 185)).add_operation (GGS_string ("_1_"), inCompiler COMMA_SOURCE_FILE ("lexiqueCocoaGeneration.galgas3", 185)).add_operation (enumerator_8327.current_mTerminalName (HERE).getter_identifierRepresentation (SOURCE_FILE ("lexiqueCocoaGeneration.galgas3", 185)), inCompiler COMMA_SOURCE_FILE ("lexiqueCocoaGeneration.galgas3", 185)).add_operation (GGS_string ("\n"), inCompiler COMMA_SOURCE_FILE ("lexiqueCocoaGeneration.galgas3", 185)), inCompiler  COMMA_SOURCE_FILE ("lexiqueCocoaGeneration.galgas3", 185)) ;
     result_outGeneratedCode.plusAssignOperation(GGS_string ("}else "), inCompiler  COMMA_SOURCE_FILE ("lexiqueCocoaGeneration.galgas3", 186)) ;
-    enumerator_8324.gotoNextObject () ;
+    enumerator_8327.gotoNextObject () ;
   }
 //---
   return result_outGeneratedCode ;
@@ -7870,10 +7870,10 @@ GGS_string cPtr_lexicalExplicitRuleAST::getter_generateSwiftCocoaCode (const GGS
   result_outGeneratedCode.setter_incIndentation (GGS_uint (uint32_t (2U)), inCompiler COMMA_SOURCE_FILE ("lexiqueCocoaGeneration.galgas3", 199)) ;
   }
   const GGS_lexicalExplicitRuleAST temp_1 = this ;
-  UpEnumerator_lexicalInstructionListAST enumerator_9204 (temp_1.readProperty_mInstructionList ()) ;
-  while (enumerator_9204.hasCurrentObject ()) {
-    result_outGeneratedCode.plusAssignOperation(callExtensionGetter_generateSwiftCocoaInstructionCode ((const cPtr_lexicalInstructionAST *) enumerator_9204.current_mInstruction (HERE).ptr (), constinArgument_inScannerClassName, constinArgument_inLexiqueAnalysisContext, inCompiler COMMA_SOURCE_FILE ("lexiqueCocoaGeneration.galgas3", 201)), inCompiler  COMMA_SOURCE_FILE ("lexiqueCocoaGeneration.galgas3", 201)) ;
-    enumerator_9204.gotoNextObject () ;
+  UpEnumerator_lexicalInstructionListAST enumerator_9208 (temp_1.readProperty_mInstructionList ()) ;
+  while (enumerator_9208.hasCurrentObject ()) {
+    result_outGeneratedCode.plusAssignOperation(callExtensionGetter_generateSwiftCocoaInstructionCode ((const cPtr_lexicalInstructionAST *) enumerator_9208.current_mInstruction (HERE).ptr (), constinArgument_inScannerClassName, constinArgument_inLexiqueAnalysisContext, inCompiler COMMA_SOURCE_FILE ("lexiqueCocoaGeneration.galgas3", 201)), inCompiler  COMMA_SOURCE_FILE ("lexiqueCocoaGeneration.galgas3", 201)) ;
+    enumerator_9208.gotoNextObject () ;
   }
   {
   result_outGeneratedCode.setter_decIndentation (GGS_uint (uint32_t (2U)), inCompiler COMMA_SOURCE_FILE ("lexiqueCocoaGeneration.galgas3", 203)) ;

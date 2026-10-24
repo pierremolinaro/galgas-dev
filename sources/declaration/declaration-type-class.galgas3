@@ -727,10 +727,10 @@ final class @classTypeForGeneration : @semanticTypeForGeneration {
 
 //--------------------------------------------------------------------------------------------------
 
-func generateClassGetterDeclaration (?let @lstring inGetterName
-                                    ?let @functionSignature inArgumentTypeList
-                                    ?let @bool inHasCompilerArgument
-                                    ?let @unifiedTypeMapEntry inReturnedType
+func generateClassGetterDeclaration (?let @lstring inGetterName,
+                                    ?let @functionSignature inArgumentTypeList,
+                                    ?let @bool inHasCompilerArgument,
+                                    ?let @unifiedTypeMapEntry inReturnedType,
                                     ?let @methodQualifier inQualifier ) -> @string {
   var generateMethodDeclaration = true
   var suffix = ""
@@ -779,9 +779,9 @@ func generateClassGetterDeclaration (?let @lstring inGetterName
 
 //--------------------------------------------------------------------------------------------------
 
-func generateClassInstanceMethodDeclaration (?let @lstring inMethodName
-                                            ?let @formalParameterSignature inArgumentTypeList
-                                            ?let @bool inHasCompilerArgument
+func generateClassInstanceMethodDeclaration (?let @lstring inMethodName,
+                                            ?let @formalParameterSignature inArgumentTypeList,
+                                            ?let @bool inHasCompilerArgument,
                                             ?let @methodQualifier inQualifier ) -> @string {
   var generateMethodDeclaration = true
   var suffix = ""

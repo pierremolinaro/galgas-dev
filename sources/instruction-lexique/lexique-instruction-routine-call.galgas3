@@ -278,7 +278,7 @@ override proc @lexicalRoutineCallInstructionAST checkLexicalInstruction (
 //--------------------------------------------------------------------------------------------------
 
 override func @lexicalRoutineCallInstructionAST generateSwiftCocoaInstructionCode
-  (?let @string unused inScannerClassName
+  (?let @string unused inScannerClassName,
    ?let @lexiqueAnalysisContext inLexiqueAnalysisContext)
   -> @string outGeneratedCode {
   outGeneratedCode = "scanner_cocoa_routine_" + self.mRoutineName + " (&scanningOk"

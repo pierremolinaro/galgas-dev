@@ -19,7 +19,7 @@
 //   EMBEDDED TYPE NAME UTILITIES
 //--------------------------------------------------------------------------------------------------
 
-func makeEmbeddedTypeLName (?outer: let @lstring inOuterTypeName
+func makeEmbeddedTypeLName (?outer: let @lstring inOuterTypeName,
                           ?inner: let @lstring inInnerTypeName ) -> @lstring {
   result = @(makeEmbeddedTypeName (!outer: inOuterTypeName !inner: inInnerTypeName),
                   [inOuterTypeName.location union !inInnerTypeName])
@@ -27,7 +27,7 @@ func makeEmbeddedTypeLName (?outer: let @lstring inOuterTypeName
 
 //--------------------------------------------------------------------------------------------------
 
-func makeEmbeddedTypeName (?outer: let @string inOuterTypeName
+func makeEmbeddedTypeName (?outer: let @string inOuterTypeName,
                           ?inner: let @string inInnerTypeName ) -> @string {
   result = inOuterTypeName + "." + inInnerTypeName
 }

@@ -157,7 +157,7 @@ override func @lexicalErrorByDefaultAST generateSwiftCocoaDefaultSendCode
 //--------------------------------------------------------------------------------------------------
 
 abstract func @lexicalInstructionAST generateSwiftCocoaInstructionCode
-  (?let @string inScannerClassName
+  (?let @string inScannerClassName,
   ?let @lexiqueAnalysisContext inLexiqueAnalysisContext
   ) -> @string
 
@@ -166,14 +166,14 @@ abstract func @lexicalInstructionAST generateSwiftCocoaInstructionCode
 //--------------------------------------------------------------------------------------------------
 
 abstract func @abstractLexicalRuleAST generateSwiftCocoaCode
-  (?let @string inScannerClassName
+  (?let @string inScannerClassName,
   ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
   ) -> @string
 
 //--------------------------------------------------------------------------------------------------
 
 override func @lexicalImplicitRuleAST generateSwiftCocoaCode
-  (?let @string inScannerClassName
+  (?let @string inScannerClassName,
   ?let @lexiqueAnalysisContext inLexiqueAnalysisContext
   ) -> @string outGeneratedCode {
   inLexiqueAnalysisContext.mLexicalTokenListMap.searchKey (!self.mListName, ?*, ?let tokenSortedList, ?*)
@@ -190,7 +190,7 @@ override func @lexicalImplicitRuleAST generateSwiftCocoaCode
 //--------------------------------------------------------------------------------------------------
 
 override func @lexicalExplicitRuleAST generateSwiftCocoaCode
-  (?let @string inScannerClassName
+  (?let @string inScannerClassName,
   ?let @lexiqueAnalysisContext inLexiqueAnalysisContext
   ) -> @string outGeneratedCode {
   outGeneratedCode = "if scanningOk && ("

@@ -71,7 +71,7 @@ override proc @lexicalDropInstructionAST checkLexicalInstruction (
 //--------------------------------------------------------------------------------------------------
 
 override func @lexicalDropInstructionAST generateSwiftCocoaInstructionCode
-  (?let @string inScannerClassName
+  (?let @string inScannerClassName,
   ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
   ) -> @string outGeneratedCode {
   outGeneratedCode = "tokenCode = " + inScannerClassName + "_1_" + self.mTerminalName.string.identifierRepresentation + "\n"
@@ -88,7 +88,7 @@ override func @lexicalDropInstructionAST lexicalInstructionUsesLoopLocalVariable
 //·································································································
 
 override func @lexicalDropInstructionAST generateLexicalInstructionCode
-  (?let @string unused inScannerClassName
+  (?let @string unused inScannerClassName,
   ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
   ) -> @string
 {

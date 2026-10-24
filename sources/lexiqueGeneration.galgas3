@@ -167,7 +167,7 @@ override func @lexicalErrorByDefaultAST generateDefaultSendCode
 //--------------------------------------------------------------------------------------------------
 
 abstract func @lexicalInstructionAST generateLexicalInstructionCode
-  (?let @string inScannerClassName
+  (?let @string inScannerClassName,
   ?let @lexiqueAnalysisContext inLexiqueAnalysisContext
   ) -> @string
 
@@ -180,7 +180,7 @@ abstract func @lexicalInstructionAST lexicalInstructionUsesLoopLocalVariable () 
 //--------------------------------------------------------------------------------------------------
 
 abstract func @abstractLexicalRuleAST generateLexicalRuleCode
-  (?let @string inScannerClassName
+  (?let @string inScannerClassName,
   ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
   ) -> @string
 
@@ -191,7 +191,7 @@ abstract func @abstractLexicalRuleAST lexicalRuleUsesLoopLocalVar () -> @bool
 //--------------------------------------------------------------------------------------------------
 
 override func @lexicalImplicitRuleAST generateLexicalRuleCode
-  (?let @string inScannerClassName
+  (?let @string inScannerClassName,
   ?let @lexiqueAnalysisContext inLexiqueAnalysisContext
   ) -> @string {
   inLexiqueAnalysisContext.mLexicalTokenListMap.searchKey (!self.mListName, ?*, ?let tokenSortedList, ?*)
@@ -215,7 +215,7 @@ override func @lexicalImplicitRuleAST lexicalRuleUsesLoopLocalVar () -> @bool {
 //--------------------------------------------------------------------------------------------------
 
 override func @lexicalExplicitRuleAST generateLexicalRuleCode
-                                              (?let @string inScannerClassName
+                                              (?let @string inScannerClassName,
                                               ?let @lexiqueAnalysisContext inLexiqueAnalysisContext
                                               ) -> @string {
   result = "if ("

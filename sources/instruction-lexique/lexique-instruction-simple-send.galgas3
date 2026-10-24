@@ -69,7 +69,7 @@ override proc @lexicalSimpleSendInstructionAST checkLexicalInstruction (
 //--------------------------------------------------------------------------------------------------
 
 override func @lexicalSimpleSendInstructionAST generateSwiftCocoaInstructionCode
-  (?let @string inScannerClassName
+  (?let @string inScannerClassName,
   ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
   ) -> @string outGeneratedCode {
   outGeneratedCode = "tokenCode = " + inScannerClassName + "_1_" + self.mSentTerminal.string.identifierRepresentation + "\n"
@@ -86,7 +86,7 @@ override func @lexicalSimpleSendInstructionAST lexicalInstructionUsesLoopLocalVa
 //·································································································
 
 override func @lexicalSimpleSendInstructionAST generateLexicalInstructionCode
-  (?let @string unused inScannerClassName
+  (?let @string unused inScannerClassName,
   ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
   ) -> @string
 {
