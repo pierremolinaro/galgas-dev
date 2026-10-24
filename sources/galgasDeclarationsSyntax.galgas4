@@ -58,44 +58,45 @@ syntax galgas3DeclarationsSyntax (galgasScanner3) {
 
   rule <declaration_ggs3> (?!@galgasDeclarationAST ioDeclarations) {
     $filewrapper$
-    $identifier$ ?let @lstring mFilewrapperName indexing filewrapperDefinition
+    $identifier$ (?let @lstring mFilewrapperName) indexing (filewrapperDefinition)
     $in$
-    $"string"$ ?let @lstring mFilewrapperPath
+    $"string"$ (?let @lstring mFilewrapperPath)
     <filewrapper_text_files> (?let filewrapperTextFileExtensionList)
     <filewrapper_binary_files> (?let filewrapperBinaryFileExtensionList)
     <filewrapper_templates> (!?ioDeclarations, ?let filewrapperTemplateList)
-    ioDeclarations.mDeclarationList += !@filewrapperDeclarationAST {
-      !isPredefined: false // Is not predefined
-      !false // private
-      !@string.stringWithSourceFilePath
-      !mFilewrapperName
-      !mFilewrapperPath
-      !filewrapperTextFileExtensionList
-      !filewrapperBinaryFileExtensionList
+    ioDeclarations.mDeclarationList ++= @(@filewrapperDeclarationAST (
+      !isPredefined: false, // Is not predefined
+      !false, // private
+      !@string.stringWithSourceFilePath,
+      !mFilewrapperName,
+      !mFilewrapperPath,
+      !filewrapperTextFileExtensionList,
+      !filewrapperBinaryFileExtensionList,
       !filewrapperTemplateList
-    }
+    ))
   }
+
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <declaration_ggs3> (?!@galgasDeclarationAST ioDeclarations) {
     $private$
     $filewrapper$
-    $identifier$ ?let @lstring mFilewrapperName indexing filewrapperDefinition
+    $identifier$ (?let @lstring mFilewrapperName) indexing (filewrapperDefinition)
     $in$
-    $"string"$ ?let @lstring mFilewrapperPath
+    $"string"$ (?let @lstring mFilewrapperPath)
     <filewrapper_text_files> (?let filewrapperTextFileExtensionList)
     <filewrapper_binary_files> (?let filewrapperBinaryFileExtensionList)
     <filewrapper_templates> (!?ioDeclarations, ?let filewrapperTemplateList)
-    ioDeclarations.mDeclarationList += !@filewrapperDeclarationAST {
-      !isPredefined: false // Is not predefined
-      !true // private
-      !@string.stringWithSourceFilePath
-      !mFilewrapperName
-      !mFilewrapperPath
-      !filewrapperTextFileExtensionList
-      !filewrapperBinaryFileExtensionList
+    ioDeclarations.mDeclarationList ++= @(@filewrapperDeclarationAST (
+      !isPredefined: false, // Is not predefined
+      !true, // private
+      !@string.stringWithSourceFilePath,
+      !mFilewrapperName,
+      !mFilewrapperPath,
+      !filewrapperTextFileExtensionList,
+      !filewrapperBinaryFileExtensionList,
       !filewrapperTemplateList
-    }
+    ))
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -106,8 +107,8 @@ syntax galgas3DeclarationsSyntax (galgasScanner3) {
     select
     or
       repeat
-        $"string"$ ?let @lstring pathExtension
-        outFilewrapperTextFileExtensionList += !pathExtension
+        $"string"$ (?let @lstring pathExtension)
+        outFilewrapperTextFileExtensionList ++= @(pathExtension)
       while
         $,$
       end
@@ -123,8 +124,8 @@ syntax galgas3DeclarationsSyntax (galgasScanner3) {
     select
     or
       repeat
-        $"string"$ ?let @lstring pathExtension
-        outFilewrapperBinaryFileExtensionList += !pathExtension
+        $"string"$ (?let @lstring pathExtension)
+        outFilewrapperBinaryFileExtensionList ++= @(pathExtension)
       while
         $,$
       end
@@ -141,12 +142,12 @@ syntax galgas3DeclarationsSyntax (galgasScanner3) {
     repeat
     while
       $template$
-      $identifier$ ?let mFilewrapperTemplateName
-      $"string"$ ?let mFilewrapperTemplatePath
+      $identifier$ (?let mFilewrapperTemplateName)
+      $"string"$ (?let mFilewrapperTemplatePath)
       var @formalTemplateInputParameterListAST filewrapperTemplateFormalInputParameters = @()
       repeat
       while
-        $?selector:$ ?let selector
+        $?selector:$ (?let selector)
         <type_definition_ggs3> (!?ioDeclarations, ?let typeName)
         let @bool isUnused
         select
@@ -155,8 +156,8 @@ syntax galgas3DeclarationsSyntax (galgasScanner3) {
           $unused$
           isUnused = true
         end
-        $identifier$ ?let argumentName
-        filewrapperTemplateFormalInputParameters += !selector !typeName !argumentName !isUnused
+        $identifier$ (?let argumentName)
+        filewrapperTemplateFormalInputParameters ++= @(selector, typeName, argumentName, isUnused)
       while
         $?$
         let selector = "".here
@@ -168,13 +169,14 @@ syntax galgas3DeclarationsSyntax (galgasScanner3) {
           $unused$
           isUnused = true
         end
-        $identifier$ ?let argumentName
-        filewrapperTemplateFormalInputParameters += !selector !typeName !argumentName !isUnused
+        $identifier$ (?let argumentName)
+        filewrapperTemplateFormalInputParameters ++= @(selector, typeName, argumentName, isUnused)
       end
-      outFilewrapperTemplateList +=
-        !mFilewrapperTemplateName
-        !mFilewrapperTemplatePath
+      outFilewrapperTemplateList ++= @(
+        !mFilewrapperTemplateName,
+        !mFilewrapperTemplatePath,
         !filewrapperTemplateFormalInputParameters
+      )
     end
     $}$
   }
@@ -223,44 +225,45 @@ syntax galgas4DeclarationsSyntax (galgasScanner4) {
 
   rule <declaration> (?!@galgasDeclarationAST ioDeclarations ) {
     $filewrapper$
-    $identifier$ ?let @lstring mFilewrapperName indexing filewrapperDefinition
+    $identifier$ (?let @lstring mFilewrapperName) indexing (filewrapperDefinition)
     $in$
-    $"string"$ ?let @lstring mFilewrapperPath
+    $"string"$ (?let @lstring mFilewrapperPath)
     <filewrapper_text_files> (?let filewrapperTextFileExtensionList)
     <filewrapper_binary_files> (?let filewrapperBinaryFileExtensionList)
     <filewrapper_templates> (!?ioDeclarations, ?let filewrapperTemplateList)
-    ioDeclarations.mDeclarationList += !@filewrapperDeclarationAST {
-      !isPredefined: false // Is not predefined
-      !false // private
-      !@string.stringWithSourceFilePath
-      !mFilewrapperName
-      !mFilewrapperPath
-      !filewrapperTextFileExtensionList
-      !filewrapperBinaryFileExtensionList
+    ioDeclarations.mDeclarationList ++= @(@filewrapperDeclarationAST (
+      !isPredefined: false, // Is not predefined
+      !false, // private
+      !@string.stringWithSourceFilePath,
+      !mFilewrapperName,
+      !mFilewrapperPath,
+      !filewrapperTextFileExtensionList,
+      !filewrapperBinaryFileExtensionList,
       !filewrapperTemplateList
-    }
+    ))
   }
+
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <declaration> (?!@galgasDeclarationAST ioDeclarations ) {
     $private$
     $filewrapper$
-    $identifier$ ?let @lstring mFilewrapperName indexing filewrapperDefinition
+    $identifier$ (?let @lstring mFilewrapperName) indexing (filewrapperDefinition)
     $in$
-    $"string"$ ?let @lstring mFilewrapperPath
+    $"string"$ (?let @lstring mFilewrapperPath)
     <filewrapper_text_files> (?let filewrapperTextFileExtensionList)
     <filewrapper_binary_files> (?let filewrapperBinaryFileExtensionList)
     <filewrapper_templates> (!?ioDeclarations, ?let filewrapperTemplateList)
-    ioDeclarations.mDeclarationList += !@filewrapperDeclarationAST {
-      !isPredefined: false // Is not predefined
-      !true // private
-      !@string.stringWithSourceFilePath
-      !mFilewrapperName
-      !mFilewrapperPath
-      !filewrapperTextFileExtensionList
-      !filewrapperBinaryFileExtensionList
+    ioDeclarations.mDeclarationList ++= @(@filewrapperDeclarationAST (
+      !isPredefined: false, // Is not predefined
+      !true, // private
+      !@string.stringWithSourceFilePath,
+      !mFilewrapperName,
+      !mFilewrapperPath,
+      !filewrapperTextFileExtensionList,
+      !filewrapperBinaryFileExtensionList,
       !filewrapperTemplateList
-    }
+    ))
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -271,8 +274,8 @@ syntax galgas4DeclarationsSyntax (galgasScanner4) {
     select
     or
       repeat
-        $"string"$ ?let @lstring pathExtension
-        outFilewrapperTextFileExtensionList += !pathExtension
+        $"string"$ (?let @lstring pathExtension)
+        outFilewrapperTextFileExtensionList ++= @(pathExtension)
       while
         $,$
       end
@@ -288,8 +291,8 @@ syntax galgas4DeclarationsSyntax (galgasScanner4) {
     select
     or
       repeat
-        $"string"$ ?let @lstring pathExtension
-        outFilewrapperBinaryFileExtensionList += !pathExtension
+        $"string"$ (?let @lstring pathExtension)
+        outFilewrapperBinaryFileExtensionList ++= @(pathExtension)
       while
         $,$
       end
@@ -306,9 +309,9 @@ syntax galgas4DeclarationsSyntax (galgasScanner4) {
     repeat
     while
       $template$
-      $identifier$ ?let mFilewrapperTemplateName
+      $identifier$ (?let mFilewrapperTemplateName)
       $:$
-      $"string"$ ?let mFilewrapperTemplatePath
+      $"string"$ (?let mFilewrapperTemplatePath)
       var @formalTemplateInputParameterListAST filewrapperTemplateFormalInputParameters = @()
       $($
       select
@@ -321,7 +324,7 @@ syntax galgas4DeclarationsSyntax (galgasScanner4) {
             $?$
             selector = "".nowhere
           or
-            $?selector:$ ?selector
+            $?selector:$ (?selector)
           end
           <type_definition> (!?ioDeclarations, ?let typeName)
           let @bool isUnused
@@ -331,17 +334,18 @@ syntax galgas4DeclarationsSyntax (galgasScanner4) {
             $unused$
             isUnused = true
           end
-          $identifier$ ?let argumentName
-          filewrapperTemplateFormalInputParameters += !selector !typeName !argumentName !isUnused
+          $identifier$ (?let argumentName)
+          filewrapperTemplateFormalInputParameters ++= @(selector, typeName, argumentName, isUnused)
         while
           $,$
         end
       end
       $)$
-      outFilewrapperTemplateList +=
-        !mFilewrapperTemplateName
-        !mFilewrapperTemplatePath
+      outFilewrapperTemplateList ++= @(
+        !mFilewrapperTemplateName,
+        !mFilewrapperTemplatePath,
         !filewrapperTemplateFormalInputParameters
+      )
     end
     $}$
   }
