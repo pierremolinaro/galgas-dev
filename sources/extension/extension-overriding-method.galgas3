@@ -27,11 +27,12 @@ syntax extension galgas3DeclarationsSyntax {
     $override$
     $proc$
     $@type$ (?var typeName )indexing (typeReferenceOverrideExtensionMethodDefinition)
+    $.$
     repeat
     while
-      $.$
       $@type$ (?let t)
       typeName = makeEmbeddedTypeLName (!outer: typeName !inner: t)
+      $.$
     end
     $identifier$ (?let @lstring methodName )indexing (overrideExtensionMethodDefinition)
     <formal_parameter_list_ggs34> (!?ioDeclarations, ?let formalParameterList)
@@ -156,7 +157,7 @@ final class @overridingExtensionMethodAST : @semanticDeclarationAST {
 //   KEY REPRESENTATION
 //--------------------------------------------------------------------------------------------------
 
-override func @overridingExtensionMethodAST keyRepresentation () -> @string {
+override func @overridingExtensionMethodAST.keyRepresentation () -> @string {
   result = "overriding extension proc @" + self.mTypeName + " " + self.mOverridingExtensionMethodName
 }
 
@@ -164,7 +165,7 @@ override func @overridingExtensionMethodAST keyRepresentation () -> @string {
 //   ENTER IN GRAPH
 //--------------------------------------------------------------------------------------------------
 
-override proc @overridingExtensionMethodAST enterDeclarationInGraph (
+override proc @overridingExtensionMethodAST.enterDeclarationInGraph (
   ?!@semanticTypePrecedenceGraph unused ioSemanticTypePrecedenceGraph,
   ?!@equatableExtensionMap unused ioEquatableExtensionMap,
   ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext,
@@ -200,7 +201,7 @@ override proc @overridingExtensionMethodAST enterDeclarationInGraph (
 //   SEMANTIC CONTEXT
 //--------------------------------------------------------------------------------------------------
 
-override proc @overridingExtensionMethodAST enterDeclarationInSemanticContext (
+override proc @overridingExtensionMethodAST.enterDeclarationInSemanticContext (
   ?!@equatableExtensionMap unused ioEquatableExtensionMap,
   ?let @extensionInitializerForBuildingContext unused inExtensionInitializerMapForBuildingContext,
   ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext,
@@ -214,7 +215,7 @@ override proc @overridingExtensionMethodAST enterDeclarationInSemanticContext (
 //   SEMANTIC ANALYSIS
 //--------------------------------------------------------------------------------------------------
 
-override proc @overridingExtensionMethodAST semanticAnalysis (
+override proc @overridingExtensionMethodAST.semanticAnalysis (
   ?!@lstringlist unused ioUsefulnessRootEntities,
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
   ?let @string unused inProductDirectory,
@@ -310,7 +311,7 @@ override proc @overridingExtensionMethodAST semanticAnalysis (
 //   EXTENSION LIST MAP
 //--------------------------------------------------------------------------------------------------
 
-override proc @overridingExtensionMethodAST buildExtensionListMaps (
+override proc @overridingExtensionMethodAST.buildExtensionListMaps (
   ?!@genericExtensionMethodListMap unused ioAbstractExtensionSetterListMap,
   ?!@genericExtensionMethodListMap unused ioExtensionSetterListMap,
   ?!@genericExtensionMethodListMap unused ioOverridingExtensionSetterListMap,
@@ -347,13 +348,13 @@ final class @overridingExtensionMethodForGeneration : @semanticDeclarationWithHe
 
 //································································································
 
-override func @overridingExtensionMethodForGeneration headerKind () ->@headerKind {
+override func @overridingExtensionMethodForGeneration.headerKind () ->@headerKind {
   result = @headerKind.noHeader
 }
 
 //································································································
 
-override proc @overridingExtensionMethodForGeneration appendSpecificImplementation (
+override proc @overridingExtensionMethodForGeneration.appendSpecificImplementation (
                                                             ?let @unifiedTypeMap unused inTypeMap,
                                                             ?!@stringset ioInclusionSet,
                                                             !@string outImplementation) {

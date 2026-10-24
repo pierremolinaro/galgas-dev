@@ -115,7 +115,7 @@ final class @boolsetDeclarationAST : @semanticDeclarationAST {
 //   ENTER IN GRAPH
 //--------------------------------------------------------------------------------------------------
 
-override proc @boolsetDeclarationAST enterDeclarationInGraph
+override proc @boolsetDeclarationAST.enterDeclarationInGraph
   (?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph,
   ?!@equatableExtensionMap unused ioEquatableExtensionMap,
   ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext,
@@ -132,7 +132,7 @@ override proc @boolsetDeclarationAST enterDeclarationInGraph
 //   KEY REPRESENTATION
 //--------------------------------------------------------------------------------------------------
 
-override func @boolsetDeclarationAST keyRepresentation () -> @string {
+override func @boolsetDeclarationAST.keyRepresentation () -> @string {
   result = "boolset @" + self.mBoolsetTypeName
 }
 
@@ -140,7 +140,7 @@ override func @boolsetDeclarationAST keyRepresentation () -> @string {
 //   SEMANTIC CONTEXT
 //--------------------------------------------------------------------------------------------------
 
-override proc @boolsetDeclarationAST enterDeclarationInSemanticContext
+override proc @boolsetDeclarationAST.enterDeclarationInSemanticContext
   (?!@equatableExtensionMap ioEquatableExtensionMap,
   ?let @extensionInitializerForBuildingContext inExtensionInitializerMapForBuildingContext,
   ?let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext,
@@ -256,7 +256,7 @@ override proc @boolsetDeclarationAST enterDeclarationInSemanticContext
 //   SEMANTIC ANALYSIS
 //--------------------------------------------------------------------------------------------------
 
-override proc @boolsetDeclarationAST semanticAnalysis
+override proc @boolsetDeclarationAST.semanticAnalysis
   (?!@lstringlist ioUsefulnessRootEntities,
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
   ?let @string unused inProductDirectory,
@@ -324,7 +324,7 @@ filewrapper structGenerationTemplate in "../+generation-templates/type_generatio
 
 //································································································
 
-override proc @boolsetTypeForGeneration appendDeclaration1
+override proc @boolsetTypeForGeneration.appendDeclaration1
   (?!@stringset unused ioInclusionSet,
   !@string outHeader
 ) {
@@ -355,7 +355,7 @@ override proc @boolsetTypeForGeneration appendDeclaration1
 
 //································································································
 
-override proc @boolsetTypeForGeneration appendSpecificImplementation
+override proc @boolsetTypeForGeneration.appendSpecificImplementation
   (?let @unifiedTypeMap unused inTypeMap,
   ?!@stringset ioInclusionSet,
   !@string outImplementation

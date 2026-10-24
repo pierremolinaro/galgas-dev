@@ -142,19 +142,19 @@ syntax extension galgas4InstructionsSyntax {
 //! CONTEXT
 //--------------------------------------------------------------------------------------------------
 
-override proc @undefinedLocalConstantDeclarationAST enterInstructionInSemanticContext (?!@unifiedTypeMap unused ioTypeMap) {
+override proc @undefinedLocalConstantDeclarationAST.enterInstructionInSemanticContext (?!@unifiedTypeMap unused ioTypeMap) {
 }
 
 //·································································································
 
 
-override proc @localConstantDeclarationWithAssignmentAST enterInstructionInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
+override proc @localConstantDeclarationWithAssignmentAST.enterInstructionInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
   self.mSourceExpression.enterExpressionInSemanticContext (!?ioTypeMap)
 }
 
 //·································································································
 
-override proc @localVariableOrConstantDeclarationWithAssignmentAST enterInstructionInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
+override proc @localVariableOrConstantDeclarationWithAssignmentAST.enterInstructionInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
   if self.mOptionalTypeName.string != "" then
     !?ioTypeMap.makeEntry (!self.mOptionalTypeName, ?*)
   end
@@ -165,7 +165,7 @@ override proc @localVariableOrConstantDeclarationWithAssignmentAST enterInstruct
 //! SEMANTICS
 //--------------------------------------------------------------------------------------------------
 
-override proc @undefinedLocalConstantDeclarationAST analyzeSemanticInstruction (
+override proc @undefinedLocalConstantDeclarationAST.analyzeSemanticInstruction (
                         ?let @lstring unused inUsefulnessCallerEntityName,
                         ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph,
                         ?let @analysisContext unused inAnalysisContext,
@@ -190,7 +190,7 @@ override proc @undefinedLocalConstantDeclarationAST analyzeSemanticInstruction (
 
 //·································································································
 
-override proc @localConstantDeclarationWithAssignmentAST analyzeSemanticInstruction (
+override proc @localConstantDeclarationWithAssignmentAST.analyzeSemanticInstruction (
                         ?let @lstring inUsefulnessCallerEntityName,
                         ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
                         ?let @analysisContext inAnalysisContext,
@@ -226,7 +226,7 @@ override proc @localConstantDeclarationWithAssignmentAST analyzeSemanticInstruct
 
 //·································································································
 
-override proc @localVariableOrConstantDeclarationWithAssignmentAST analyzeSemanticInstruction (
+override proc @localVariableOrConstantDeclarationWithAssignmentAST.analyzeSemanticInstruction (
                         ?let @lstring inUsefulnessCallerEntityName,
                         ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
                         ?let @analysisContext inAnalysisContext,
@@ -294,7 +294,7 @@ final class @localVariableOrConstantDeclarationWithSourceExpressionForGeneration
 
 //·································································································
 
-override proc @undefinedLocalConstantDeclarationForGeneration generateInstruction (
+override proc @undefinedLocalConstantDeclarationForGeneration.generateInstruction (
   ?!@stringset ioInclusionSet,
   ?!@uint unused ioTemporaryVariableIndex,
   ?!@stringset unused ioUnusedVariableCppNameSet,
@@ -306,7 +306,7 @@ override proc @undefinedLocalConstantDeclarationForGeneration generateInstructio
 
 //·································································································
 
-override proc @localVariableOrConstantDeclarationWithSourceExpressionForGeneration generateInstruction (
+override proc @localVariableOrConstantDeclarationWithSourceExpressionForGeneration.generateInstruction (
                                 ?!@stringset ioInclusionSet,
     								   ?!@uint ioTemporaryVariableIndex,
                        			?!@stringset ioUnusedVariableCppNameSet,

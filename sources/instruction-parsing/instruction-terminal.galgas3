@@ -302,7 +302,7 @@ final class @terminalCheckInstructionForGeneration : @syntaxInstructionForGenera
 //! SYNTAX SIGNATURE
 //--------------------------------------------------------------------------------------------------
 
-override proc @terminalCheckInstructionForGeneration appendSyntaxSignature (
+override proc @terminalCheckInstructionForGeneration.appendSyntaxSignature (
   ?let @string unused inPosfix,
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration) {
   ioInstructionListForGeneration += !@terminalCheckInstructionForGeneration {
@@ -320,7 +320,7 @@ override proc @terminalCheckInstructionForGeneration appendSyntaxSignature (
 //! COMPARE SYNTAX SIGNATURE
 //--------------------------------------------------------------------------------------------------
 
-override func @terminalCheckInstructionForGeneration compareInstructionSyntaxSignature
+override func @terminalCheckInstructionForGeneration.compareInstructionSyntaxSignature
       (?let @semanticInstructionForGeneration inTestedInstruction) -> @bool {
   if let si = inTestedInstruction as @terminalCheckInstructionForGeneration then
     result = self.mTerminalName.string == si.mTerminalName.string
@@ -346,7 +346,7 @@ override func @terminalCheckInstructionForGeneration compareInstructionSyntaxSig
 //! CODE GENERATION
 //--------------------------------------------------------------------------------------------------
 
-override proc @terminalCheckInstructionForGeneration generateInstruction (?!@stringset unused ioInclusionSet,
+override proc @terminalCheckInstructionForGeneration.generateInstruction (?!@stringset unused ioInclusionSet,
                                        ?!@uint unused ioTemporaryVariableIndex,
                                        ?!@stringset ioUnusedVariableCppNameSet,
                                        ?let @bool inGenerateSyntaxDirectedTranslationString,

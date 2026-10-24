@@ -441,7 +441,7 @@ syntax extension galgas4InstructionsSyntax {
 //! CONTEXT
 //--------------------------------------------------------------------------------------------------
 
-override proc @forInstructionAST enterInstructionInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
+override proc @forInstructionAST.enterInstructionInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
   self.mWhileExpression.enterExpressionInSemanticContext (!?ioTypeMap)
   self.mBeforeInstructionList.enterInstructionListInSemanticContext (!?ioTypeMap)
   self.mBetweenInstructionList.enterInstructionListInSemanticContext (!?ioTypeMap)
@@ -458,13 +458,13 @@ abstract proc @abstractEnumeratedCollectionAST enterInSemanticContext (?!@unifie
 
 //································································································*
 
-override proc @enumeratedCollectionCstListInExpAST enterInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
+override proc @enumeratedCollectionCstListInExpAST.enterInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
   self.mEnumeratedExpression.enterExpressionInSemanticContext (!?ioTypeMap)
 }
 
 //································································································*
 
-override proc @enumeratedCollectionVarInExpAST enterInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
+override proc @enumeratedCollectionVarInExpAST.enterInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
   self.mEnumeratedExpression.enterExpressionInSemanticContext (!?ioTypeMap)
 }
 
@@ -485,7 +485,7 @@ abstract proc @abstractEnumeratedCollectionAST analyzeEnumeration (
 
 //································································································*
 
-override proc @enumeratedCollectionCstListInExpAST analyzeEnumeration (
+override proc @enumeratedCollectionCstListInExpAST.analyzeEnumeration (
   ?let @lstring inUsefulnessCallerEntityName,
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
   ?let @analysisContext inAnalysisContext,
@@ -557,7 +557,7 @@ override proc @enumeratedCollectionCstListInExpAST analyzeEnumeration (
 
 //································································································*
 
-override proc @enumeratedCollectionVarInExpAST analyzeEnumeration (?let @lstring inUsefulnessCallerEntityName,
+override proc @enumeratedCollectionVarInExpAST.analyzeEnumeration (?let @lstring inUsefulnessCallerEntityName,
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
   ?let @analysisContext inAnalysisContext,
                                 ?!@unifiedTypeMap ioTypeMap,
@@ -594,7 +594,7 @@ override proc @enumeratedCollectionVarInExpAST analyzeEnumeration (?let @lstring
 
 //································································································*
 
-override proc @forInstructionAST analyzeSemanticInstruction (
+override proc @forInstructionAST.analyzeSemanticInstruction (
                         ?let @lstring inUsefulnessCallerEntityName,
                         ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
                         ?let @analysisContext inAnalysisContext,
@@ -773,7 +773,7 @@ final class @forInstructionForGeneration : @semanticInstructionForGeneration {
 //! CODE GENERATION
 //--------------------------------------------------------------------------------------------------
 
-override proc @forInstructionForGeneration generateInstruction (?!@stringset ioInclusionSet,
+override proc @forInstructionForGeneration.generateInstruction (?!@stringset ioInclusionSet,
   ?!@uint ioTemporaryVariableIndex,
   ?!@stringset ioUnusedVariableCppNameSet,
   ?let @bool inGenerateSyntaxDirectedTranslationString,

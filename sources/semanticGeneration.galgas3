@@ -939,13 +939,13 @@ filewrapper semanticComponentGenerationTemplate in "+generation-templates/semant
 //! func
 //--------------------------------------------------------------------------------------------------
 
-override func @functionPrototypeDeclarationForGeneration headerKind () ->@headerKind {
+override func @functionPrototypeDeclarationForGeneration.headerKind () ->@headerKind {
   result = @headerKind.oneHeader
 }
 
 //--------------------------------------------------------------------------------------------------
 
-override proc @functionPrototypeDeclarationForGeneration appendDeclaration1
+override proc @functionPrototypeDeclarationForGeneration.appendDeclaration1
   (?!@stringset unused ioInclusionSet,
   !@string outHeader ) {
   outHeader = [filewrapper semanticComponentGenerationTemplate.functionDeclaration
@@ -957,13 +957,13 @@ override proc @functionPrototypeDeclarationForGeneration appendDeclaration1
 
 //--------------------------------------------------------------------------------------------------
 
-override func @onceFunctionDeclarationForGeneration headerKind () ->@headerKind {
+override func @onceFunctionDeclarationForGeneration.headerKind () ->@headerKind {
   result = @headerKind.oneHeader
 }
 
 //--------------------------------------------------------------------------------------------------
 
-override proc @onceFunctionDeclarationForGeneration appendDeclaration1
+override proc @onceFunctionDeclarationForGeneration.appendDeclaration1
   (?!@stringset unused ioInclusionSet,
   !@string outHeader ) {
   outHeader = [filewrapper semanticComponentGenerationTemplate.functionDeclaration
@@ -977,7 +977,7 @@ override proc @onceFunctionDeclarationForGeneration appendDeclaration1
 //! Semantic Type
 //--------------------------------------------------------------------------------------------------
 
-override func @semanticTypeForGeneration appendTypeGenericImplementation () -> @string {
+override func @semanticTypeForGeneration.appendTypeGenericImplementation () -> @string {
   let selfTypeDefinition = self.mSelfTypeEntry.definition
   if selfTypeDefinition.typeKind == .packageType then
     result = ""
@@ -994,7 +994,7 @@ override func @semanticTypeForGeneration appendTypeGenericImplementation () -> @
 //! Sub programs
 //--------------------------------------------------------------------------------------------------
 
-override proc @functionImplementationForGeneration appendSpecificImplementation
+override proc @functionImplementationForGeneration.appendSpecificImplementation
   (?let @unifiedTypeMap unused inTypeMap,
   ?!@stringset ioInclusionSet,
   !@string outImplementation ) {
@@ -1021,7 +1021,7 @@ override proc @functionImplementationForGeneration appendSpecificImplementation
 
 //--------------------------------------------------------------------------------------------------
 
-override proc @onceFunctionDeclarationForGeneration appendSpecificImplementation
+override proc @onceFunctionDeclarationForGeneration.appendSpecificImplementation
   (?let @unifiedTypeMap unused inTypeMap,
   ?!@stringset ioInclusionSet,
   !@string outImplementation
@@ -1115,13 +1115,13 @@ final class @lexiqueDeclarationForGeneration : @semanticDeclarationWithHeaderFor
 //! Program
 //--------------------------------------------------------------------------------------------------
 
-override func @programComponentForGeneration headerKind () ->@headerKind {
+override func @programComponentForGeneration.headerKind () ->@headerKind {
   result = @headerKind.noHeader
 }
 
 //--------------------------------------------------------------------------------------------------
 
-override proc @programComponentForGeneration appendSpecificImplementation
+override proc @programComponentForGeneration.appendSpecificImplementation
   (?let @unifiedTypeMap unused inTypeMap,
   ?!@stringset ioInclusionSet,
   !@string outImplementation ) {
@@ -1135,7 +1135,7 @@ override proc @programComponentForGeneration appendSpecificImplementation
 
 //--------------------------------------------------------------------------------------------------
 
-override func @filewrapperDeclarationForGeneration headerKind () ->@headerKind {
+override func @filewrapperDeclarationForGeneration.headerKind () ->@headerKind {
   result = @headerKind.oneHeader
 }
 
@@ -1171,7 +1171,7 @@ proc recursivlyEnumerateRegularFile
 
 //--------------------------------------------------------------------------------------------------
 
-override proc @filewrapperDeclarationForGeneration appendDeclaration1
+override proc @filewrapperDeclarationForGeneration.appendDeclaration1
   (?!@stringset unused ioInclusionSet,
   !@string outHeader ) {
   var regularFileIndexStringList = @stringlist ()
@@ -1315,7 +1315,7 @@ proc generateWrapperContents
 
 //--------------------------------------------------------------------------------------------------
 
-override proc @filewrapperDeclarationForGeneration appendSpecificImplementation
+override proc @filewrapperDeclarationForGeneration.appendSpecificImplementation
   (?let @unifiedTypeMap unused inTypeMap,
   ?!@stringset ioInclusionSet,
   !@string outImplementation ) {

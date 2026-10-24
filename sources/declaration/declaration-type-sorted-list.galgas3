@@ -451,7 +451,7 @@ final class @sortedListTypeForGeneration : @semanticTypeForGeneration {
 
 //································································································
 
-override proc @sortedListTypeForGeneration appendDeclaration1
+override proc @sortedListTypeForGeneration.appendDeclaration1
   (?!@stringset unused ioInclusionSet,
   !@string outHeader ) {
   let selfTypeDefinition = self.mSelfTypeEntry.definition
@@ -485,7 +485,7 @@ override proc @sortedListTypeForGeneration appendDeclaration1
 
 //································································································
 
-override proc @sortedListTypeForGeneration appendSpecificImplementation
+override proc @sortedListTypeForGeneration.appendSpecificImplementation
   (?let @unifiedTypeMap unused inTypeMap,
   ?!@stringset ioInclusionSet,
   !@string outImplementation ) {

@@ -30,13 +30,13 @@ final class @weakReferenceDeclarationAST : @semanticDeclarationAST {
 //   ENTER IN GRAPH
 //--------------------------------------------------------------------------------------------------
 
-override func @weakReferenceDeclarationAST keyRepresentation () -> @string {
+override func @weakReferenceDeclarationAST.keyRepresentation () -> @string {
   result = "weak reference @" + self.mWeakReferenceTypeName
 }
 
 //--------------------------------------------------------------------------------------------------
 
-override proc @weakReferenceDeclarationAST enterDeclarationInGraph
+override proc @weakReferenceDeclarationAST.enterDeclarationInGraph
   (?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph,
   ?!@equatableExtensionMap unused ioEquatableExtensionMap,
   ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext,
@@ -59,7 +59,7 @@ override proc @weakReferenceDeclarationAST enterDeclarationInGraph
 //   SEMANTIC CONTEXT
 //--------------------------------------------------------------------------------------------------
 
-override proc @weakReferenceDeclarationAST enterDeclarationInSemanticContext
+override proc @weakReferenceDeclarationAST.enterDeclarationInSemanticContext
           (?!@equatableExtensionMap ioEquatableExtensionMap,
           ?let @extensionInitializerForBuildingContext inExtensionInitializerMapForBuildingContext,
           ?let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext,
@@ -164,7 +164,7 @@ override proc @weakReferenceDeclarationAST enterDeclarationInSemanticContext
 //   SEMANTIC ANALYSIS
 //--------------------------------------------------------------------------------------------------
 
-override proc @weakReferenceDeclarationAST semanticAnalysis
+override proc @weakReferenceDeclarationAST.semanticAnalysis
   (?!@lstringlist unused ioUsefulnessRootEntities,
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
   ?let @string unused inProductDirectory,
@@ -219,7 +219,7 @@ final class @weakReferenceTypeForGeneration : @semanticTypeForGeneration {
 
 //--------------------------------------------------------------------------------------------------
 
-override proc @weakReferenceTypeForGeneration appendDeclaration1 (?!@stringset ioInclusionSet,
+override proc @weakReferenceTypeForGeneration.appendDeclaration1 (?!@stringset ioInclusionSet,
                                                                    !@string outHeader ) {
   if not self.mSuperClass.isNull then
     self.mSuperClass.addHeaderFileName (!?ioInclusionSet)
@@ -260,7 +260,7 @@ override proc @weakReferenceTypeForGeneration appendDeclaration1 (?!@stringset i
 
 //--------------------------------------------------------------------------------------------------
 
-override proc @weakReferenceTypeForGeneration appendSpecificImplementation
+override proc @weakReferenceTypeForGeneration.appendSpecificImplementation
   (?let @unifiedTypeMap unused inTypeMap,
   ?!@stringset ioInclusionSet,
   !@string outImplementation

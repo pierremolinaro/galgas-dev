@@ -67,7 +67,7 @@ syntax extension galgas4LexiqueComponentSyntax {
 //! CHECK LEXICAL INSTRUCTION
 //--------------------------------------------------------------------------------------------------
 
-override proc @lexicalRewindInstructionAST checkLexicalInstruction (
+override proc @lexicalRewindInstructionAST.checkLexicalInstruction (
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext,
   ?!@lexicalTagMap ioTagMap) {
   ioTagMap.searchKey (!self.mLexicalTagName)
@@ -76,7 +76,7 @@ override proc @lexicalRewindInstructionAST checkLexicalInstruction (
 
 //--------------------------------------------------------------------------------------------------
 
-override func @lexicalRewindInstructionAST generateSwiftCocoaInstructionCode (
+override func @lexicalRewindInstructionAST.generateSwiftCocoaInstructionCode (
   ?let @string inScannerClassName,
   ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext)
   -> @string outGeneratedCode {
@@ -88,13 +88,13 @@ override func @lexicalRewindInstructionAST generateSwiftCocoaInstructionCode (
 //! C++ CODE GENERATION
 //--------------------------------------------------------------------------------------------------
 
-override func @lexicalRewindInstructionAST lexicalInstructionUsesLoopLocalVariable () -> @bool {
+override func @lexicalRewindInstructionAST.lexicalInstructionUsesLoopLocalVariable () -> @bool {
   result = false
 }
 
 //·································································································
 
-override func @lexicalRewindInstructionAST generateLexicalInstructionCode (?let @string unused inScannerClassName,
+override func @lexicalRewindInstructionAST.generateLexicalInstructionCode (?let @string unused inScannerClassName,
   ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext)
   -> @string {
   result  = "mCurrentLocation = currentLocationForTag_" + self.mLexicalTagName + " ;\n"

@@ -152,7 +152,7 @@ abstract func @abstractLexicalRoutineActualArgumentAST generateSwiftCocoaRoutine
 
 //--------------------------------------------------------------------------------------------------
 
-override func @lexicalAttributeInputOutputArgumentAST generateSwiftCocoaRoutineArgument (
+override func @lexicalAttributeInputOutputArgumentAST.generateSwiftCocoaRoutineArgument (
   ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext)
   -> @string outGeneratedCode
 {
@@ -161,7 +161,7 @@ override func @lexicalAttributeInputOutputArgumentAST generateSwiftCocoaRoutineA
 
 //--------------------------------------------------------------------------------------------------
 
-override func @lexicalFormalInputArgumentAST generateSwiftCocoaRoutineArgument
+override func @lexicalFormalInputArgumentAST.generateSwiftCocoaRoutineArgument
   (?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext)
   -> @string outGeneratedCode {
   outGeneratedCode = self.mRoutineOrFunctionFormalInputArgument.generateSwiftCocoaRoutineOrFunctionArgument
@@ -176,7 +176,7 @@ abstract proc @abstractLexicalRoutineActualArgumentAST checkLexicalRoutineCallAr
 
 //--------------------------------------------------------------------------------------------------
 
-override proc @lexicalAttributeInputOutputArgumentAST checkLexicalRoutineCallArgument (
+override proc @lexicalAttributeInputOutputArgumentAST.checkLexicalRoutineCallArgument (
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext,
   ?@lexicalArgumentModeAST inLexicalRoutineFormalArgumentMode,
   ?@lexicalTypeEnum inLexicalRoutineFormalArgumentType) {
@@ -202,7 +202,7 @@ override proc @lexicalAttributeInputOutputArgumentAST checkLexicalRoutineCallArg
 
 //--------------------------------------------------------------------------------------------------
 
-override proc @lexicalFormalInputArgumentAST checkLexicalRoutineCallArgument (
+override proc @lexicalFormalInputArgumentAST.checkLexicalRoutineCallArgument (
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext,
   ?@lexicalArgumentModeAST inLexicalRoutineFormalArgumentMode,
   ?@lexicalTypeEnum inLexicalRoutineFormalArgumentType) {
@@ -219,7 +219,7 @@ override proc @lexicalFormalInputArgumentAST checkLexicalRoutineCallArgument (
 
 //--------------------------------------------------------------------------------------------------
 
-override proc @lexicalRoutineCallInstructionAST checkLexicalInstruction (
+override proc @lexicalRoutineCallInstructionAST.checkLexicalInstruction (
                          ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext,
                          ?!@lexicalTagMap unused ioTagMap) {
   ioLexiqueAnalysisContext.mLexicalRoutineMessageMap.searchKey
@@ -277,7 +277,7 @@ override proc @lexicalRoutineCallInstructionAST checkLexicalInstruction (
 
 //--------------------------------------------------------------------------------------------------
 
-override func @lexicalRoutineCallInstructionAST generateSwiftCocoaInstructionCode
+override func @lexicalRoutineCallInstructionAST.generateSwiftCocoaInstructionCode
   (?let @string unused inScannerClassName,
    ?let @lexiqueAnalysisContext inLexiqueAnalysisContext)
   -> @string outGeneratedCode {
@@ -297,27 +297,27 @@ abstract func @abstractLexicalRoutineActualArgumentAST generateRoutineArgument (
 
 //·································································································
 
-override func @lexicalAttributeInputOutputArgumentAST generateRoutineArgument
+override func @lexicalAttributeInputOutputArgumentAST.generateRoutineArgument
   () -> @string {
   result = "token.mLexicalAttribute_" + self.mAttributeName.string.identifierRepresentation
 }
 
 //·································································································
 
-override func @lexicalFormalInputArgumentAST generateRoutineArgument
+override func @lexicalFormalInputArgumentAST.generateRoutineArgument
   () -> @string {
   result = self.mRoutineOrFunctionFormalInputArgument.generateRoutineOrFunctionArgument
 }
 
 //·································································································
 
-override func @lexicalRoutineCallInstructionAST lexicalInstructionUsesLoopLocalVariable () -> @bool {
+override func @lexicalRoutineCallInstructionAST.lexicalInstructionUsesLoopLocalVariable () -> @bool {
   result = false
 }
 
 //·································································································
 
-override func @lexicalRoutineCallInstructionAST generateLexicalInstructionCode (
+override func @lexicalRoutineCallInstructionAST.generateLexicalInstructionCode (
   ?let @string inScannerClassName,
   ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext)
   -> @string {

@@ -60,7 +60,7 @@ syntax extension galgas4LexiqueComponentSyntax {
 //! CHECK LEXICAL INSTRUCTION
 //--------------------------------------------------------------------------------------------------
 
-override proc @lexicalSimpleSendInstructionAST checkLexicalInstruction (
+override proc @lexicalSimpleSendInstructionAST.checkLexicalInstruction (
                          ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext,
                          ?!@lexicalTagMap unused ioTagMap)  {
   ioLexiqueAnalysisContext.mTerminalMap.searchKey (!self.mSentTerminal, ?*)
@@ -68,7 +68,7 @@ override proc @lexicalSimpleSendInstructionAST checkLexicalInstruction (
 
 //--------------------------------------------------------------------------------------------------
 
-override func @lexicalSimpleSendInstructionAST generateSwiftCocoaInstructionCode
+override func @lexicalSimpleSendInstructionAST.generateSwiftCocoaInstructionCode
   (?let @string inScannerClassName,
   ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
   ) -> @string outGeneratedCode {
@@ -79,13 +79,13 @@ override func @lexicalSimpleSendInstructionAST generateSwiftCocoaInstructionCode
 //! C++ CODE GENERATION
 //--------------------------------------------------------------------------------------------------
 
-override func @lexicalSimpleSendInstructionAST lexicalInstructionUsesLoopLocalVariable () -> @bool {
+override func @lexicalSimpleSendInstructionAST.lexicalInstructionUsesLoopLocalVariable () -> @bool {
   result = false
 }
 
 //·································································································
 
-override func @lexicalSimpleSendInstructionAST generateLexicalInstructionCode
+override func @lexicalSimpleSendInstructionAST.generateLexicalInstructionCode
   (?let @string unused inScannerClassName,
   ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
   ) -> @string

@@ -271,7 +271,7 @@ list @rowList {
 
 //--------------------------------------------------------------------------------------------------
 
-mutating proc @rowList appendRow
+mutating proc @rowList.appendRow
   (?nodeDefinition:let @string inNodeDefinition,
   ?row:let @uint inRow,
   ?column:let @uint inColumn,
@@ -313,7 +313,7 @@ abstract proc @abstractSyntaxInstructionForGrammarAnalysis tikzNodeForSyntaxInst
 
 //--------------------------------------------------------------------------------------------------
 
-override proc @nonTerminalInstructionForGrammarAnalysis tikzNodeForSyntaxInstruction
+override proc @nonTerminalInstructionForGrammarAnalysis.tikzNodeForSyntaxInstruction
   (?!@rowList ioRowList,
   ?fromRow:let @uint inRow,
   ?!column:@uint ioColumn,
@@ -339,7 +339,7 @@ override proc @nonTerminalInstructionForGrammarAnalysis tikzNodeForSyntaxInstruc
 
 //--------------------------------------------------------------------------------------------------
 
-override proc @selectInstructionForGrammarAnalysis tikzNodeForSyntaxInstruction
+override proc @selectInstructionForGrammarAnalysis.tikzNodeForSyntaxInstruction
   (?!@rowList ioRowList,
   ?fromRow:let @uint inRow,
   ?!column:@uint ioColumn,
@@ -433,7 +433,7 @@ override proc @selectInstructionForGrammarAnalysis tikzNodeForSyntaxInstruction
 
 //--------------------------------------------------------------------------------------------------
 
-override proc @repeatInstructionForGrammarAnalysis tikzNodeForSyntaxInstruction
+override proc @repeatInstructionForGrammarAnalysis.tikzNodeForSyntaxInstruction
   (?!@rowList ioRowList,
   ?fromRow:let @uint inRow,
   ?!column:@uint ioColumn,
@@ -556,20 +556,20 @@ abstract func @abstractSyntaxInstructionForGrammarAnalysis isLinear () -> @bool
 
 //--------------------------------------------------------------------------------------------------
 
-override func @nonTerminalInstructionForGrammarAnalysis isLinear () -> @bool {
+override func @nonTerminalInstructionForGrammarAnalysis.isLinear () -> @bool {
   result = true
 }
 
 
 //--------------------------------------------------------------------------------------------------
 
-override func @selectInstructionForGrammarAnalysis isLinear () -> @bool {
+override func @selectInstructionForGrammarAnalysis.isLinear () -> @bool {
   result = false
 }
 
 //--------------------------------------------------------------------------------------------------
 
-override func @repeatInstructionForGrammarAnalysis isLinear () -> @bool {
+override func @repeatInstructionForGrammarAnalysis.isLinear () -> @bool {
   result = false
 }
 

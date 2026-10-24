@@ -124,7 +124,7 @@ final class @tildeExpressionForGeneration : @semanticExpressionForGeneration {
 
 //································································································
 
-override proc @tildeExpressionForGeneration generateExpression
+override proc @tildeExpressionForGeneration.generateExpression
   (?!@string ioGeneratedCode,
   ?!@stringset ioInclusionSet,
   ?!@uint ioTemporaryVariableIndex,

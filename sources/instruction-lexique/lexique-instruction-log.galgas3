@@ -59,7 +59,7 @@ syntax extension galgas4LexiqueComponentSyntax {
 //! CHECK LEXICAL INSTRUCTION
 //--------------------------------------------------------------------------------------------------
 
-override proc @lexicalLogInstructionAST checkLexicalInstruction (
+override proc @lexicalLogInstructionAST.checkLexicalInstruction (
                          ?!@lexiqueAnalysisContext unused ioLexiqueAnalysisContext,
                          ?!@lexicalTagMap unused ioTagMap) {
 }
@@ -68,7 +68,7 @@ override proc @lexicalLogInstructionAST checkLexicalInstruction (
 //! COCOA GENERATION
 //--------------------------------------------------------------------------------------------------
 
-override func @lexicalLogInstructionAST generateSwiftCocoaInstructionCode
+override func @lexicalLogInstructionAST.generateSwiftCocoaInstructionCode
   (?let @string unused inScannerClassName,
   ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
   ) -> @string outGeneratedCode {
@@ -79,13 +79,13 @@ override func @lexicalLogInstructionAST generateSwiftCocoaInstructionCode
 //! C++ CODE GENERATION
 //--------------------------------------------------------------------------------------------------
 
-override func @lexicalLogInstructionAST lexicalInstructionUsesLoopLocalVariable () -> @bool {
+override func @lexicalLogInstructionAST.lexicalInstructionUsesLoopLocalVariable () -> @bool {
   result = false
 }
 
 //·································································································
 
-override func @lexicalLogInstructionAST generateLexicalInstructionCode
+override func @lexicalLogInstructionAST.generateLexicalInstructionCode
   (?let @string unused inScannerClassName,
   ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
   ) -> @string {

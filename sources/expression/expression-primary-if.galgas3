@@ -109,7 +109,7 @@ syntax extension galgas4ExpressionSyntax {
 //! SEMANTICS
 //--------------------------------------------------------------------------------------------------
 
-override proc @ifExpressionAST enterExpressionInSemanticContext
+override proc @ifExpressionAST.enterExpressionInSemanticContext
   (?!@unifiedTypeMap ioTypeMap
 ) {
   self.mIfExpression.enterExpressionInSemanticContext (!?ioTypeMap)
@@ -119,7 +119,7 @@ override proc @ifExpressionAST enterExpressionInSemanticContext
 
 //································································································
 
-override proc @ifExpressionAST analyzeSemanticExpression
+override proc @ifExpressionAST.analyzeSemanticExpression
   (?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName,
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
   ?inferenceType: let @unifiedTypeMapEntry inType,
@@ -191,7 +191,7 @@ final class @ifExpressionForGeneration : @semanticExpressionForGeneration {
 
 //································································································
 
-override proc @ifExpressionForGeneration generateExpression
+override proc @ifExpressionForGeneration.generateExpression
   (?!@string ioGeneratedCode,
   ?!@stringset ioInclusionSet,
   ?!@uint ioTemporaryVariableIndex,

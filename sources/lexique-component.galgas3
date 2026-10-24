@@ -807,13 +807,13 @@ syntax galgas4LexiqueComponentSyntax (galgasScanner4) {
 
 //--------------------------------------------------------------------------------------------------
 
-override func @lexiqueComponentAST keyRepresentation () -> @string {
+override func @lexiqueComponentAST.keyRepresentation () -> @string {
   result = "lexique " + self.mLexiqueComponentName
 }
 
 //--------------------------------------------------------------------------------------------------
 
-override proc @lexiqueComponentAST enterDeclarationInGraph
+override proc @lexiqueComponentAST.enterDeclarationInGraph
   (?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph,
   ?!@equatableExtensionMap unused ioEquatableExtensionMap,
   ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext,
@@ -827,7 +827,7 @@ override proc @lexiqueComponentAST enterDeclarationInGraph
 
 //--------------------------------------------------------------------------------------------------
 
-override proc @lexiqueComponentAST enterDeclarationInSemanticContext
+override proc @lexiqueComponentAST.enterDeclarationInSemanticContext
   (?!@equatableExtensionMap unused ioEquatableExtensionMap,
   ?let @extensionInitializerForBuildingContext unused inExtensionInitializerMapForBuildingContext,
   ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext,
@@ -879,7 +879,7 @@ override proc @lexiqueComponentAST enterDeclarationInSemanticContext
 
 //--------------------------------------------------------------------------------------------------
 
-override proc @lexiqueComponentAST semanticAnalysis
+override proc @lexiqueComponentAST.semanticAnalysis
                                       (?!@lstringlist unused ioUsefulnessRootEntities,
                                       ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
                                       ?let @string unused inProductDirectory,

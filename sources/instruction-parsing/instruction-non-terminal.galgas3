@@ -166,7 +166,7 @@ final class @nonterminalInstructionForGeneration : @syntaxInstructionForGenerati
 //! SYNTAX SIGNATURE
 //--------------------------------------------------------------------------------------------------
 
-override proc @nonterminalInstructionForGeneration appendSyntaxSignature
+override proc @nonterminalInstructionForGeneration.appendSyntaxSignature
   (?let @string inPosfix,
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
 ) {
@@ -183,7 +183,7 @@ override proc @nonterminalInstructionForGeneration appendSyntaxSignature
 //! COMPARE SYNTAX SIGNATURE
 //--------------------------------------------------------------------------------------------------
 
-override func @nonterminalInstructionForGeneration compareInstructionSyntaxSignature
+override func @nonterminalInstructionForGeneration.compareInstructionSyntaxSignature
   (?let @semanticInstructionForGeneration inTestedInstruction
   ) ->@bool {
   if let si = inTestedInstruction as @nonterminalInstructionForGeneration then
@@ -210,7 +210,7 @@ override func @nonterminalInstructionForGeneration compareInstructionSyntaxSigna
 //! CODE GENERATION
 //--------------------------------------------------------------------------------------------------
 
-override proc @nonterminalInstructionForGeneration generateInstruction (?!@stringset ioInclusionSet,
+override proc @nonterminalInstructionForGeneration.generateInstruction (?!@stringset ioInclusionSet,
                             ?!@uint ioTemporaryVariableIndex,
                             ?!@stringset ioUnusedVariableCppNameSet,
                             ?let @bool inGenerateSyntaxDirectedTranslationString,

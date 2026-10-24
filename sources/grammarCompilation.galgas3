@@ -160,7 +160,7 @@ abstract proc @syntaxInstructionAST transformInstructionForGrammarAnalysis
 
 //--------------------------------------------------------------------------------------------------
 
-override proc @semanticInstructionAST transformInstructionForGrammarAnalysis
+override proc @semanticInstructionAST.transformInstructionForGrammarAnalysis
   (?!usedTerminalMap:@terminalSymbolsMapForGrammarAnalysis unused ioActuallyUsedTerminalSymbolMap,
   ?nonTerminalSymbolMap:let @nonTerminalSymbolMapForGrammarAnalysis unused inNonTerminalSymbolMap,
   ?!addedTerminalIndex:@uint unused ioAddedNonTerminalIndex,

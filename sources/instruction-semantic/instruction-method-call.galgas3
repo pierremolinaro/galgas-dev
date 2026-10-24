@@ -130,7 +130,7 @@ final class @methodCallInstructionForGeneration : @semanticInstructionForGenerat
 
 //································································································*
 
-override proc @methodCallInstructionForGeneration generateInstruction (?!@stringset ioInclusionSet,
+override proc @methodCallInstructionForGeneration.generateInstruction (?!@stringset ioInclusionSet,
                                      ?!@uint ioTemporaryVariableIndex,
                                      ?!@stringset ioUnusedVariableCppNameSet,
                                      ?let @bool unused inGenerateSyntaxDirectedTranslationString,

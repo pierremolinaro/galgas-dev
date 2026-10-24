@@ -127,7 +127,7 @@ syntax extension galgas4InstructionsSyntax {
 //! CONTEXT
 //--------------------------------------------------------------------------------------------------
 
-override proc @loopInstructionWithVariantAST enterInstructionInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
+override proc @loopInstructionWithVariantAST.enterInstructionInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
   self.mVariantExpression.enterExpressionInSemanticContext (!?ioTypeMap)
   self.mLoopExpression.enterExpressionInSemanticContext (!?ioTypeMap)
   self.mFirstInstructions.enterInstructionListInSemanticContext (!?ioTypeMap)
@@ -138,7 +138,7 @@ override proc @loopInstructionWithVariantAST enterInstructionInSemanticContext (
 //! SEMANTICS
 //--------------------------------------------------------------------------------------------------
 
-override proc @loopInstructionWithVariantAST analyzeSemanticInstruction (
+override proc @loopInstructionWithVariantAST.analyzeSemanticInstruction (
                         ?let @lstring inUsefulnessCallerEntityName,
                         ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
                         ?let @analysisContext inAnalysisContext,
@@ -233,7 +233,7 @@ final class @loopInstructionWithVariantForGeneration : @semanticInstructionForGe
 
 //·································································································
 
-override proc @loopInstructionWithVariantForGeneration generateInstruction (?!@stringset ioInclusionSet,
+override proc @loopInstructionWithVariantForGeneration.generateInstruction (?!@stringset ioInclusionSet,
   ?!@uint ioTemporaryVariableIndex,
   ?!@stringset ioUnusedVariableCppNameSet,
   ?let @bool inGenerateSyntaxDirectedTranslationString,

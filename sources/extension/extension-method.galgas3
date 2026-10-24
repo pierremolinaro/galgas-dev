@@ -277,7 +277,7 @@ final class @extensionMethodAST : @semanticDeclarationAST {
 //   EXTENSION LIST MAP
 //--------------------------------------------------------------------------------------------------
 
-override proc @extensionMethodAST buildExtensionListMaps (
+override proc @extensionMethodAST.buildExtensionListMaps (
   ?!@genericExtensionMethodListMap unused ioAbstractExtensionSetterListMap,
   ?!@genericExtensionMethodListMap unused ioExtensionSetterListMap,
   ?!@genericExtensionMethodListMap unused ioOverridingExtensionSetterListMap,
@@ -309,13 +309,13 @@ final class @extensionMethodForGeneration : @semanticDeclarationWithHeaderForGen
 
 //································································································
 
-override func @extensionMethodForGeneration headerKind () ->@headerKind {
+override func @extensionMethodForGeneration.headerKind () ->@headerKind {
   result = @headerKind.oneHeader
 }
 
 //································································································
 
-override proc @extensionMethodForGeneration appendDeclaration1 (?!@stringset unused ioInclusionSet,
+override proc @extensionMethodForGeneration.appendDeclaration1 (?!@stringset unused ioInclusionSet,
                                                                   !@string outHeader) {
   if self.mImplementedAsFunction then
     outHeader = [filewrapper semanticComponentGenerationTemplate.extensionMethodAsFunctionDeclaration
@@ -334,7 +334,7 @@ override proc @extensionMethodForGeneration appendDeclaration1 (?!@stringset unu
 
 //································································································
 
-override proc @extensionMethodForGeneration appendSpecificImplementation (?let @unifiedTypeMap unused inTypeMap,
+override proc @extensionMethodForGeneration.appendSpecificImplementation (?let @unifiedTypeMap unused inTypeMap,
                                                     ?!@stringset ioInclusionSet,
                                                     !@string outImplementation) {
   if self.mImplementedAsFunction then

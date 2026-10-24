@@ -73,7 +73,7 @@ syntax extension galgas4InstructionsSyntax {
 //! CONTEXT
 //--------------------------------------------------------------------------------------------------
 
-override proc @selfAssignmentInstructionAST enterInstructionInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
+override proc @selfAssignmentInstructionAST.enterInstructionInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
   self.mSourceExpression.enterExpressionInSemanticContext (!?ioTypeMap)
 }
 
@@ -81,7 +81,7 @@ override proc @selfAssignmentInstructionAST enterInstructionInSemanticContext (?
 //! SEMANTICS
 //--------------------------------------------------------------------------------------------------
 
-override proc @selfAssignmentInstructionAST analyzeSemanticInstruction (
+override proc @selfAssignmentInstructionAST.analyzeSemanticInstruction (
                         ?let @lstring inUsefulnessCallerEntityName,
                         ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
                         ?let @analysisContext inAnalysisContext,

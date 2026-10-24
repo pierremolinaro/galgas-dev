@@ -100,7 +100,7 @@ syntax extension galgas4SyntaxComponentSyntax {
 //! TRANSFORM
 //--------------------------------------------------------------------------------------------------
 
-override proc @repeatInstruction transformInstructionForGrammarAnalysis
+override proc @repeatInstruction.transformInstructionForGrammarAnalysis
   (?!usedTerminalMap:@terminalSymbolsMapForGrammarAnalysis ioActuallyUsedTerminalSymbolMap,
   ?nonTerminalSymbolMap:let @nonTerminalSymbolMapForGrammarAnalysis inNonTerminalSymbolMap,
   ?!addedTerminalIndex:@uint ioAddedNonTerminalIndex,
@@ -141,7 +141,7 @@ override proc @repeatInstruction transformInstructionForGrammarAnalysis
 //! SEMANTICS
 //--------------------------------------------------------------------------------------------------
 
-override proc @repeatInstruction analyzeSyntaxInstruction
+override proc @repeatInstruction.analyzeSyntaxInstruction
   (?let @lstring inUsefulnessCallerEntityName,
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
   ?let @analysisContext inAnalysisContext,
@@ -229,7 +229,7 @@ final class @repeatInstructionForGeneration : @syntaxInstructionForGeneration {
 //! SYNTAX SIGNATURE
 //--------------------------------------------------------------------------------------------------
 
-override proc @repeatInstructionForGeneration appendSyntaxSignature
+override proc @repeatInstructionForGeneration.appendSyntaxSignature
   (?let @string inPosfix,
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
 ) {
@@ -255,7 +255,7 @@ override proc @repeatInstructionForGeneration appendSyntaxSignature
 //! COMPARE SYNTAX SIGNATURE
 //--------------------------------------------------------------------------------------------------
 
-override func @repeatInstructionForGeneration compareInstructionSyntaxSignature
+override func @repeatInstructionForGeneration.compareInstructionSyntaxSignature
   (?let @semanticInstructionForGeneration inTestedInstruction ) ->@bool {
   if let si = inTestedInstruction as @repeatInstructionForGeneration then
     result = compareSyntaxSignature (!self.m_repeated_instructionList !si.m_repeated_instructionList !si.mEndOfRepeatedInstructions)
@@ -289,7 +289,7 @@ override func @repeatInstructionForGeneration compareInstructionSyntaxSignature
 //! CODE GENERATION
 //--------------------------------------------------------------------------------------------------
 
-override proc @repeatInstructionForGeneration generateInstruction (?!@stringset ioInclusionSet,
+override proc @repeatInstructionForGeneration.generateInstruction (?!@stringset ioInclusionSet,
                             ?!@uint ioTemporaryVariableIndex,
                             ?!@stringset ioUnusedVariableCppNameSet,
                             ?let @bool inGenerateSyntaxDirectedTranslationString,

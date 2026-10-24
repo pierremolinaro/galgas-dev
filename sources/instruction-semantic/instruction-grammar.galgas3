@@ -272,7 +272,7 @@ syntax extension galgas4InstructionsSyntax {
 //! CONTEXT
 //--------------------------------------------------------------------------------------------------
 
-  override proc @grammarInFileInstructionAST enterInstructionInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
+  override proc @grammarInFileInstructionAST.enterInstructionInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
     self.mSourceExpression.enterExpressionInSemanticContext (!?ioTypeMap)
     for (mActualParameter) in self.mActualParameterList do
       mActualParameter.enterParameterInSemanticContext (!?ioTypeMap)
@@ -281,7 +281,7 @@ syntax extension galgas4InstructionsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override proc @grammarInStringInstructionAST enterInstructionInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
+  override proc @grammarInStringInstructionAST.enterInstructionInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
     self.mSourceExpression.enterExpressionInSemanticContext (!?ioTypeMap)
     for (mActualParameter) in self.mActualParameterList do
       mActualParameter.enterParameterInSemanticContext (!?ioTypeMap)
@@ -292,7 +292,7 @@ syntax extension galgas4InstructionsSyntax {
 //! SEMANTICS
 //--------------------------------------------------------------------------------------------------
 
-override proc @grammarInFileInstructionAST analyzeSemanticInstruction (
+override proc @grammarInFileInstructionAST.analyzeSemanticInstruction (
                         ?let @lstring inUsefulnessCallerEntityName,
                         ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
                         ?let @analysisContext inAnalysisContext,
@@ -369,7 +369,7 @@ override proc @grammarInFileInstructionAST analyzeSemanticInstruction (
 
 //·································································································
 
-override proc @grammarInStringInstructionAST analyzeSemanticInstruction (
+override proc @grammarInStringInstructionAST.analyzeSemanticInstruction (
                         ?let @lstring inUsefulnessCallerEntityName,
                         ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
                         ?let @analysisContext inAnalysisContext,
@@ -479,7 +479,7 @@ override proc @grammarInStringInstructionAST analyzeSemanticInstruction (
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override proc @grammarInstructionWithSourceFileForGeneration generateInstruction (?!@stringset ioInclusionSet,
+  override proc @grammarInstructionWithSourceFileForGeneration.generateInstruction (?!@stringset ioInclusionSet,
     ?!@uint ioTemporaryVariableIndex,
     ?!@stringset ioUnusedVariableCppNameSet,
     ?let @bool unused inGenerateSyntaxDirectedTranslationString,
@@ -549,7 +549,7 @@ override proc @grammarInStringInstructionAST analyzeSemanticInstruction (
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override proc @grammarInstructionWithSourceExpressionForGeneration generateInstruction (?!@stringset ioInclusionSet,
+  override proc @grammarInstructionWithSourceExpressionForGeneration.generateInstruction (?!@stringset ioInclusionSet,
     ?!@uint ioTemporaryVariableIndex,
     ?!@stringset ioUnusedVariableCppNameSet,
     ?let @bool unused inGenerateSyntaxDirectedTranslationString,

@@ -150,7 +150,7 @@ syntax extension galgas4InstructionsSyntax {
 //! CONTEXT
 //--------------------------------------------------------------------------------------------------
 
-override proc @setterCallInstructionAST enterInstructionInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
+override proc @setterCallInstructionAST.enterInstructionInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
   for (mActualParameter) in self.mActualParameterList do
     mActualParameter.enterParameterInSemanticContext (!?ioTypeMap)
   end
@@ -158,7 +158,7 @@ override proc @setterCallInstructionAST enterInstructionInSemanticContext (?!@un
 
 //································································································*
 
-override proc @selfSetterCallInstructionAST enterInstructionInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
+override proc @selfSetterCallInstructionAST.enterInstructionInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
   for (mActualParameter) in self.mActualParameterList do
     mActualParameter.enterParameterInSemanticContext (!?ioTypeMap)
   end
@@ -168,7 +168,7 @@ override proc @selfSetterCallInstructionAST enterInstructionInSemanticContext (?
 //! SEMANTICS
 //--------------------------------------------------------------------------------------------------
 
-override proc @setterCallInstructionAST analyzeSemanticInstruction (
+override proc @setterCallInstructionAST.analyzeSemanticInstruction (
                         ?let @lstring inUsefulnessCallerEntityName,
                         ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
                         ?let @analysisContext inAnalysisContext,
@@ -281,7 +281,7 @@ override proc @setterCallInstructionAST analyzeSemanticInstruction (
 
 //································································································*
 
-override proc @selfSetterCallInstructionAST analyzeSemanticInstruction (
+override proc @selfSetterCallInstructionAST.analyzeSemanticInstruction (
                         ?let @lstring inUsefulnessCallerEntityName,
                         ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
                         ?let @analysisContext inAnalysisContext,
@@ -354,7 +354,7 @@ final class @selfSetterCallInstructionForGeneration : @semanticInstructionForGen
 
 //································································································*
 
-override proc @setterCallInstructionForGeneration generateInstruction (?!@stringset ioInclusionSet,
+override proc @setterCallInstructionForGeneration.generateInstruction (?!@stringset ioInclusionSet,
   ?!@uint ioTemporaryVariableIndex,
   ?!@stringset ioUnusedVariableCppNameSet,
   ?let @bool unused inGenerateSyntaxDirectedTranslationString,
@@ -422,7 +422,7 @@ override proc @setterCallInstructionForGeneration generateInstruction (?!@string
 
 //································································································*
 
-override proc @selfSetterCallInstructionForGeneration generateInstruction (?!@stringset ioInclusionSet,
+override proc @selfSetterCallInstructionForGeneration.generateInstruction (?!@stringset ioInclusionSet,
   ?!@uint ioTemporaryVariableIndex,
   ?!@stringset ioUnusedVariableCppNameSet,
   ?let @bool unused inGenerateSyntaxDirectedTranslationString,

@@ -97,7 +97,7 @@ syntax extension galgas4ExpressionSyntax {
 //! SEMANTICS
 //--------------------------------------------------------------------------------------------------
 
-override proc @andExpressionAST enterExpressionInSemanticContext
+override proc @andExpressionAST.enterExpressionInSemanticContext
   (?!@unifiedTypeMap ioTypeMap
 ) {
   self.mLeftExpression.enterExpressionInSemanticContext (!?ioTypeMap)
@@ -106,7 +106,7 @@ override proc @andExpressionAST enterExpressionInSemanticContext
 
 //································································································
 
-override proc @andExpressionAST analyzeSemanticExpression
+override proc @andExpressionAST.analyzeSemanticExpression
   (?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName,
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
   ?inferenceType: let @unifiedTypeMapEntry inInferenceType,
@@ -154,7 +154,7 @@ override proc @andExpressionAST analyzeSemanticExpression
 
 //--------------------------------------------------------------------------------------------------
 
-override proc @andShortExpressionAST enterExpressionInSemanticContext
+override proc @andShortExpressionAST.enterExpressionInSemanticContext
   (?!@unifiedTypeMap ioTypeMap
 ) {
   self.mLeftExpression.enterExpressionInSemanticContext (!?ioTypeMap)
@@ -163,7 +163,7 @@ override proc @andShortExpressionAST enterExpressionInSemanticContext
 
 //································································································
 
-override proc @andShortExpressionAST analyzeSemanticExpression
+override proc @andShortExpressionAST.analyzeSemanticExpression
   (?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName,
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
   ?inferenceType: let @unifiedTypeMapEntry inInferenceType,
@@ -218,7 +218,7 @@ final class @andShortExpressionForGeneration : @semanticExpressionForGeneration 
 
 //································································································
 
-override proc @andShortExpressionForGeneration generateExpression
+override proc @andShortExpressionForGeneration.generateExpression
   (?!@string ioGeneratedCode,
   ?!@stringset ioInclusionSet,
   ?!@uint ioTemporaryVariableIndex,

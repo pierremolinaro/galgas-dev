@@ -72,14 +72,14 @@ syntax extension galgas4ExpressionSyntax {
 //! SEMANTICS
 //--------------------------------------------------------------------------------------------------
 
-override proc @lexiqueIntrospectionExpressionAST enterExpressionInSemanticContext
+override proc @lexiqueIntrospectionExpressionAST.enterExpressionInSemanticContext
   (?!@unifiedTypeMap unused ioTypeMap
 ) {
 }
 
 //································································································
 
-override proc @lexiqueIntrospectionExpressionAST analyzeSemanticExpression
+override proc @lexiqueIntrospectionExpressionAST.analyzeSemanticExpression
   (?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName,
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
   ?inferenceType: let @unifiedTypeMapEntry unused inType,
@@ -118,7 +118,7 @@ final class @lexiqueIntrospectionForGeneration : @semanticExpressionForGeneratio
 
 //································································································
 
-override proc @lexiqueIntrospectionForGeneration generateExpression
+override proc @lexiqueIntrospectionForGeneration.generateExpression
   (?!@string unused ioGeneratedCode,
   ?!@stringset ioInclusionSet,
   ?!@uint unused ioTemporaryVariableIndex,

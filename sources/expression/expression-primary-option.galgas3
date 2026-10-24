@@ -102,14 +102,14 @@ syntax extension galgas4ExpressionSyntax {
 //! SEMANTICS
 //--------------------------------------------------------------------------------------------------
 
-override proc @optionExpressionAST enterExpressionInSemanticContext
+override proc @optionExpressionAST.enterExpressionInSemanticContext
   (?!@unifiedTypeMap unused ioTypeMap
 ) {
 }
 
 //································································································
 
-override proc @optionExpressionAST analyzeSemanticExpression
+override proc @optionExpressionAST.analyzeSemanticExpression
   (?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName,
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
   ?inferenceType: let @unifiedTypeMapEntry unused inType,
@@ -205,7 +205,7 @@ final class @optionValueExpressionForGeneration : @semanticExpressionForGenerati
 
 //································································································
 
-override proc @optionValueExpressionForGeneration generateExpression
+override proc @optionValueExpressionForGeneration.generateExpression
   (?!@string unused ioGeneratedCode,
   ?!@stringset ioInclusionSet,
   ?!@uint unused ioTemporaryVariableIndex,
@@ -228,7 +228,7 @@ final class @optionCharExpressionForGeneration : @semanticExpressionForGeneratio
 
 //································································································
 
-override proc @optionCharExpressionForGeneration generateExpression
+override proc @optionCharExpressionForGeneration.generateExpression
   (?!@string unused ioGeneratedCode,
   ?!@stringset ioInclusionSet,
   ?!@uint unused ioTemporaryVariableIndex,
@@ -251,7 +251,7 @@ final class @optionStringExpressionForGeneration : @semanticExpressionForGenerat
 
 //································································································
 
-override proc @optionStringExpressionForGeneration generateExpression
+override proc @optionStringExpressionForGeneration.generateExpression
   (?!@string unused ioGeneratedCode,
   ?!@stringset ioInclusionSet,
   ?!@uint unused ioTemporaryVariableIndex,
@@ -266,7 +266,7 @@ override proc @optionStringExpressionForGeneration generateExpression
 
 //--------------------------------------------------------------------------------------------------
 
-override proc @optionCommentExpressionForGeneration generateExpression
+override proc @optionCommentExpressionForGeneration.generateExpression
   (?!@string unused ioGeneratedCode,
   ?!@stringset ioInclusionSet,
   ?!@uint unused ioTemporaryVariableIndex,

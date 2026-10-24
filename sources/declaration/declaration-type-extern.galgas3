@@ -514,7 +514,7 @@ final class @externTypeDeclarationAST : @semanticDeclarationAST {
 //   SEMANTIC ANALYSIS
 //--------------------------------------------------------------------------------------------------
 
-override proc @externTypeDeclarationAST semanticAnalysis
+override proc @externTypeDeclarationAST.semanticAnalysis
   (?!@lstringlist ioUsefulnessRootEntities,
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
   ?let @string unused inProductDirectory,
@@ -561,7 +561,7 @@ final class @externTypeDeclarationForGeneration : @semanticTypeForGeneration {
 
 //--------------------------------------------------------------------------------------------------
 
-override proc @externTypeDeclarationForGeneration appendDeclaration1
+override proc @externTypeDeclarationForGeneration.appendDeclaration1
   (?!@stringset unused ioInclusionSet,
   !@string outHeader ) {
   let selfTypeDefinition = self.mSelfTypeEntry.definition

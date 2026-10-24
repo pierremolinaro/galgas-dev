@@ -94,7 +94,7 @@ syntax extension galgas4SyntaxComponentSyntax {
 //! TRANSFORM
 //--------------------------------------------------------------------------------------------------
 
-override proc @selectInstruction transformInstructionForGrammarAnalysis
+override proc @selectInstruction.transformInstructionForGrammarAnalysis
   (?!usedTerminalMap:@terminalSymbolsMapForGrammarAnalysis ioActuallyUsedTerminalSymbolMap,
   ?nonTerminalSymbolMap:let @nonTerminalSymbolMapForGrammarAnalysis inNonTerminalSymbolMap,
   ?!addedTerminalIndex:@uint ioAddedNonTerminalIndex,
@@ -126,7 +126,7 @@ override proc @selectInstruction transformInstructionForGrammarAnalysis
 //! SEMANTICS
 //--------------------------------------------------------------------------------------------------
 
-override proc @selectInstruction analyzeSyntaxInstruction
+override proc @selectInstruction.analyzeSyntaxInstruction
   (?let @lstring inUsefulnessCallerEntityName,
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
   ?let @analysisContext inAnalysisContext,
@@ -190,7 +190,7 @@ final class @selectInstructionForGeneration : @syntaxInstructionForGeneration {
 //! SYNTAX SIGNATURE
 //--------------------------------------------------------------------------------------------------
 
-override proc @selectInstructionForGeneration appendSyntaxSignature
+override proc @selectInstructionForGeneration.appendSyntaxSignature
   (?let @string inPosfix,
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration ) {
   var listOfSemanticInstructionListForGeneration = @listOfSemanticInstructionListForGeneration ()
@@ -211,7 +211,7 @@ override proc @selectInstructionForGeneration appendSyntaxSignature
 //! COMPARE SYNTAX SIGNATURE
 //--------------------------------------------------------------------------------------------------
 
-override func @selectInstructionForGeneration compareInstructionSyntaxSignature
+override func @selectInstructionForGeneration.compareInstructionSyntaxSignature
   (?let @semanticInstructionForGeneration inTestedInstruction
   ) ->@bool
 {
@@ -247,7 +247,7 @@ override func @selectInstructionForGeneration compareInstructionSyntaxSignature
 //! CODE GENERATION
 //--------------------------------------------------------------------------------------------------
 
-override proc @selectInstructionForGeneration generateInstruction (?!@stringset ioInclusionSet,
+override proc @selectInstructionForGeneration.generateInstruction (?!@stringset ioInclusionSet,
                                        ?!@uint ioTemporaryVariableIndex,
                                        ?!@stringset ioUnusedVariableCppNameSet,
                                        ?let @bool inGenerateSyntaxDirectedTranslationString,

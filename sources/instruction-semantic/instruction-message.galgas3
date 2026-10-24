@@ -66,7 +66,7 @@ syntax extension galgas4InstructionsSyntax {
 //! CONTEXT
 //--------------------------------------------------------------------------------------------------
 
-override proc @messageInstructionAST enterInstructionInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
+override proc @messageInstructionAST.enterInstructionInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
   self.mExpression.enterExpressionInSemanticContext (!?ioTypeMap)
 }
 
@@ -74,7 +74,7 @@ override proc @messageInstructionAST enterInstructionInSemanticContext (?!@unifi
 //! SEMANTICS
 //--------------------------------------------------------------------------------------------------
 
-override proc @messageInstructionAST analyzeSemanticInstruction (
+override proc @messageInstructionAST.analyzeSemanticInstruction (
                         ?let @lstring inUsefulnessCallerEntityName,
                         ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
                         ?let @analysisContext inAnalysisContext,
@@ -114,7 +114,7 @@ final class @messageInstructionForGeneration : @semanticInstructionForGeneration
 
 //································································································*
 
-override proc @messageInstructionForGeneration generateInstruction (?!@stringset ioInclusionSet,
+override proc @messageInstructionForGeneration.generateInstruction (?!@stringset ioInclusionSet,
   ?!@uint ioTemporaryVariableIndex,
   ?!@stringset ioUnusedVariableCppNameSet,
   ?let @bool unused inGenerateSyntaxDirectedTranslationString,

@@ -39,11 +39,12 @@ syntax extension galgas3DeclarationsSyntax {
     $abstract$
     $func$
     $@type$ (?var typeName )indexing (typeReferenceOverrideAbstractExtensionGetter)
+    $.$
     repeat
     while
-      $.$
       $@type$ (?let t)
       typeName = makeEmbeddedTypeLName (!outer: typeName !inner: t)
+      $.$
     end
     $identifier$ (?let getterName )indexing (overrideAbstractExtensionGetterDefinition)
     let @formalInputParameterListAST formalInputParameterList
@@ -149,7 +150,7 @@ syntax extension galgas4DeclarationsSyntax {
 //   KEY REPRESENTATION
 //--------------------------------------------------------------------------------------------------
 
-override func @overridingAbstractExtensionGetterAST keyRepresentation  () -> @string {
+override func @overridingAbstractExtensionGetterAST.keyRepresentation  () -> @string {
   result = "overriding extension func @" + self.mTypeName + " " + self.mAbstractExtensionGetterName
 }
 
@@ -157,7 +158,7 @@ override func @overridingAbstractExtensionGetterAST keyRepresentation  () -> @st
 //   ENTER IN GRAPH
 //--------------------------------------------------------------------------------------------------
 
-override proc @overridingAbstractExtensionGetterAST enterDeclarationInGraph (
+override proc @overridingAbstractExtensionGetterAST.enterDeclarationInGraph (
       ?!@semanticTypePrecedenceGraph unused ioSemanticTypePrecedenceGraph,
       ?!@equatableExtensionMap unused ioEquatableExtensionMap,
       ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext,
@@ -187,7 +188,7 @@ override proc @overridingAbstractExtensionGetterAST enterDeclarationInGraph (
 //   SEMANTIC CONTEXT
 //--------------------------------------------------------------------------------------------------
 
-override proc @overridingAbstractExtensionGetterAST enterDeclarationInSemanticContext (
+override proc @overridingAbstractExtensionGetterAST.enterDeclarationInSemanticContext (
   ?!@equatableExtensionMap unused ioEquatableExtensionMap,
   ?let @extensionInitializerForBuildingContext unused inExtensionInitializerMapForBuildingContext,
   ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext,
@@ -201,7 +202,7 @@ override proc @overridingAbstractExtensionGetterAST enterDeclarationInSemanticCo
 //   SEMANTIC ANALYSIS
 //--------------------------------------------------------------------------------------------------
 
-override proc @overridingAbstractExtensionGetterAST semanticAnalysis (
+override proc @overridingAbstractExtensionGetterAST.semanticAnalysis (
   ?!@lstringlist unused ioUsefulnessRootEntities,
   ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph,
   ?let @string unused inProductDirectory,
@@ -273,7 +274,7 @@ override proc @overridingAbstractExtensionGetterAST semanticAnalysis (
 //   EXTENSION LIST MAP
 //--------------------------------------------------------------------------------------------------
 
-override proc @overridingAbstractExtensionGetterAST buildExtensionListMaps (
+override proc @overridingAbstractExtensionGetterAST.buildExtensionListMaps (
   ?!@genericExtensionMethodListMap unused ioAbstractExtensionSetterListMap,
   ?!@genericExtensionMethodListMap unused ioExtensionSetterListMap,
   ?!@genericExtensionMethodListMap unused ioOverridingExtensionSetterListMap,

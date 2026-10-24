@@ -195,14 +195,14 @@ abstract proc @lexicalSendDefaultActionAST checkLexicalDefaultAction
 
 //--------------------------------------------------------------------------------------------------
 
-override proc @lexicalSendTerminalByDefaultAST checkLexicalDefaultAction
+override proc @lexicalSendTerminalByDefaultAST.checkLexicalDefaultAction
   (?!@lexiqueAnalysisContext ioLexiqueAnalysisContext ) {
   ioLexiqueAnalysisContext.mTerminalMap.searchKey (!self.mDefaultSentTerminal, ?*)
 }
 
 //--------------------------------------------------------------------------------------------------
 
-override proc @lexicalErrorByDefaultAST checkLexicalDefaultAction
+override proc @lexicalErrorByDefaultAST.checkLexicalDefaultAction
   (?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
 ) {
   !?ioLexiqueAnalysisContext.mLexicalMessageMap.setMMessageIsUsedForKey (!true, !self.mDefaultErrorMessageName.string)
@@ -217,7 +217,7 @@ abstract proc @lexicalExpressionAST checkLexicalExpression
 
 //--------------------------------------------------------------------------------------------------
 
-override proc @lexicalOrExpressionAST checkLexicalExpression
+override proc @lexicalOrExpressionAST.checkLexicalExpression
   (?!@lexiqueAnalysisContext ioLexiqueAnalysisContext ) {
   self.mLeftOperand.checkLexicalExpression (!? ioLexiqueAnalysisContext)
   self.mRightOperand.checkLexicalExpression (!? ioLexiqueAnalysisContext)
@@ -225,13 +225,13 @@ override proc @lexicalOrExpressionAST checkLexicalExpression
 
 //--------------------------------------------------------------------------------------------------
 
-override proc @lexicalCharacterMatchAST checkLexicalExpression
+override proc @lexicalCharacterMatchAST.checkLexicalExpression
   (?!@lexiqueAnalysisContext unused ioLexiqueAnalysisContext ) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-override proc @lexicalCharacterSetMatchAST checkLexicalExpression
+override proc @lexicalCharacterSetMatchAST.checkLexicalExpression
   (?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
 ) {
   if not [ioLexiqueAnalysisContext.mUnicodeTestFunctions hasKey !self.mCharacterSetName.string] then
@@ -241,20 +241,20 @@ override proc @lexicalCharacterSetMatchAST checkLexicalExpression
 
 //--------------------------------------------------------------------------------------------------
 
-override proc @lexicalCharacterIntervalMatchAST checkLexicalExpression
+override proc @lexicalCharacterIntervalMatchAST.checkLexicalExpression
   (?!@lexiqueAnalysisContext unused ioLexiqueAnalysisContext ) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-override proc @lexicalStringMatchAST checkLexicalExpression
+override proc @lexicalStringMatchAST.checkLexicalExpression
   (?!@lexiqueAnalysisContext ioLexiqueAnalysisContext ) {
   ioLexiqueAnalysisContext.mUnicodeStringToGenerate ++= self.mString.string
 }
 
 //--------------------------------------------------------------------------------------------------
 
-override proc @lexicalStringNotMatchAST checkLexicalExpression
+override proc @lexicalStringNotMatchAST.checkLexicalExpression
   (?!@lexiqueAnalysisContext ioLexiqueAnalysisContext ) {
   ioLexiqueAnalysisContext.mUnicodeStringToGenerate ++= self.mString.string
   !?ioLexiqueAnalysisContext.mLexicalMessageMap.setMMessageIsUsedForKey (!true, !self.mErrorMessage.string)
@@ -270,7 +270,7 @@ abstract proc @lexicalRoutineOrFunctionFormalInputArgumentAST checkLexicalFuncti
 
 //--------------------------------------------------------------------------------------------------
 
-override proc @lexicalAttributeInputArgumentAST checkLexicalFunctionCallArgument
+override proc @lexicalAttributeInputArgumentAST.checkLexicalFunctionCallArgument
   (?!@lexiqueAnalysisContext ioLexiqueAnalysisContext,
   ?@lexicalTypeEnum inLexicalRoutineFormalArgumentType ) {
 //--- Check attribute definition
@@ -291,7 +291,7 @@ override proc @lexicalAttributeInputArgumentAST checkLexicalFunctionCallArgument
 
 //--------------------------------------------------------------------------------------------------
 
-override proc @lexicalCharacterInputArgumentAST checkLexicalFunctionCallArgument
+override proc @lexicalCharacterInputArgumentAST.checkLexicalFunctionCallArgument
   (?!@lexiqueAnalysisContext unused ioLexiqueAnalysisContext,
   ?@lexicalTypeEnum inLexicalRoutineFormalArgumentType ) {
 //--- Type check
@@ -306,7 +306,7 @@ override proc @lexicalCharacterInputArgumentAST checkLexicalFunctionCallArgument
 
 //--------------------------------------------------------------------------------------------------
 
-override proc @lexicalUnsignedInputArgumentAST checkLexicalFunctionCallArgument
+override proc @lexicalUnsignedInputArgumentAST.checkLexicalFunctionCallArgument
   (?!@lexiqueAnalysisContext unused ioLexiqueAnalysisContext,
   ?@lexicalTypeEnum inLexicalRoutineFormalArgumentType ) {
 //--- Type check
@@ -321,7 +321,7 @@ override proc @lexicalUnsignedInputArgumentAST checkLexicalFunctionCallArgument
 
 //--------------------------------------------------------------------------------------------------
 
-override proc @lexicalCurrentCharacterInputArgumentAST checkLexicalFunctionCallArgument
+override proc @lexicalCurrentCharacterInputArgumentAST.checkLexicalFunctionCallArgument
   (?!@lexiqueAnalysisContext unused ioLexiqueAnalysisContext,
   ?@lexicalTypeEnum inLexicalRoutineFormalArgumentType ) {
 //--- Type check
@@ -336,7 +336,7 @@ override proc @lexicalCurrentCharacterInputArgumentAST checkLexicalFunctionCallA
 
 //--------------------------------------------------------------------------------------------------
 
-override proc @lexicalFunctionInputArgumentAST checkLexicalFunctionCallArgument
+override proc @lexicalFunctionInputArgumentAST.checkLexicalFunctionCallArgument
   (?!@lexiqueAnalysisContext ioLexiqueAnalysisContext,
   ?@lexicalTypeEnum inLexicalRoutineFormalArgumentType ) {
 //--- Check attribute definition
@@ -387,7 +387,7 @@ abstract proc @lexicalRoutineOrFunctionFormalInputArgumentAST checkLexicalRoutin
 
 //--------------------------------------------------------------------------------------------------
 
-override proc @lexicalAttributeInputArgumentAST checkLexicalRoutineCallArgument
+override proc @lexicalAttributeInputArgumentAST.checkLexicalRoutineCallArgument
   (?!@lexiqueAnalysisContext ioLexiqueAnalysisContext,
   ?@lexicalTypeEnum inLexicalRoutineFormalArgumentType ) {
 //--- Check attribute definition
@@ -408,7 +408,7 @@ override proc @lexicalAttributeInputArgumentAST checkLexicalRoutineCallArgument
 
 //--------------------------------------------------------------------------------------------------
 
-override proc @lexicalCharacterInputArgumentAST checkLexicalRoutineCallArgument
+override proc @lexicalCharacterInputArgumentAST.checkLexicalRoutineCallArgument
   (?!@lexiqueAnalysisContext unused ioLexiqueAnalysisContext,
   ?@lexicalTypeEnum inLexicalRoutineFormalArgumentType ) {
 //--- Type check
@@ -423,7 +423,7 @@ override proc @lexicalCharacterInputArgumentAST checkLexicalRoutineCallArgument
 
 //--------------------------------------------------------------------------------------------------
 
-override proc @lexicalUnsignedInputArgumentAST checkLexicalRoutineCallArgument
+override proc @lexicalUnsignedInputArgumentAST.checkLexicalRoutineCallArgument
   (?!@lexiqueAnalysisContext unused ioLexiqueAnalysisContext,
   ?@lexicalTypeEnum inLexicalRoutineFormalArgumentType ) {
 //--- Type check
@@ -438,7 +438,7 @@ override proc @lexicalUnsignedInputArgumentAST checkLexicalRoutineCallArgument
 
 //--------------------------------------------------------------------------------------------------
 
-override proc @lexicalCurrentCharacterInputArgumentAST checkLexicalRoutineCallArgument
+override proc @lexicalCurrentCharacterInputArgumentAST.checkLexicalRoutineCallArgument
   (?!@lexiqueAnalysisContext unused ioLexiqueAnalysisContext,
   ?@lexicalTypeEnum inLexicalRoutineFormalArgumentType ) {
 //--- Type check
@@ -453,7 +453,7 @@ override proc @lexicalCurrentCharacterInputArgumentAST checkLexicalRoutineCallAr
 
 //--------------------------------------------------------------------------------------------------
 
-override proc @lexicalFunctionInputArgumentAST checkLexicalRoutineCallArgument
+override proc @lexicalFunctionInputArgumentAST.checkLexicalRoutineCallArgument
   (?!@lexiqueAnalysisContext ioLexiqueAnalysisContext,
   ?@lexicalTypeEnum inLexicalRoutineFormalArgumentType ) {
 //--- Check attribute definition
@@ -511,14 +511,14 @@ abstract proc @abstractLexicalRuleAST checkLexicalRule
 
 //--------------------------------------------------------------------------------------------------
 
-override proc @lexicalImplicitRuleAST checkLexicalRule
+override proc @lexicalImplicitRuleAST.checkLexicalRule
   (?!@lexiqueAnalysisContext ioLexiqueAnalysisContext ) {
   ioLexiqueAnalysisContext.mLexicalTokenListMap.searchKey (!self.mListName, ?*, ?*, ?*)
 }
 
 //--------------------------------------------------------------------------------------------------
 
-override proc @lexicalExplicitRuleAST checkLexicalRule
+override proc @lexicalExplicitRuleAST.checkLexicalRule
   (?!@lexiqueAnalysisContext ioLexiqueAnalysisContext ) {
   self.mLexicalRuleExpression.checkLexicalExpression (!?ioLexiqueAnalysisContext)
   var @lexicalTagMap tagMap = @()

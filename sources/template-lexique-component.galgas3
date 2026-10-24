@@ -220,13 +220,13 @@ syntax extension galgas4LexiqueComponentSyntax {
 
 //--------------------------------------------------------------------------------------------------
 
-override func @templateLexiqueComponentAST keyRepresentation () -> @string {
+override func @templateLexiqueComponentAST.keyRepresentation () -> @string {
   result = "lexique " + self.mLexiqueComponentName
 }
 
 //--------------------------------------------------------------------------------------------------
 
-override proc @templateLexiqueComponentAST enterDeclarationInGraph
+override proc @templateLexiqueComponentAST.enterDeclarationInGraph
   (?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph,
   ?!@equatableExtensionMap unused ioEquatableExtensionMap,
   ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext,
@@ -242,7 +242,7 @@ override proc @templateLexiqueComponentAST enterDeclarationInGraph
 
 //--------------------------------------------------------------------------------------------------
 
-override proc @templateLexiqueComponentAST enterDeclarationInSemanticContext
+override proc @templateLexiqueComponentAST.enterDeclarationInSemanticContext
   (?!@equatableExtensionMap unused ioEquatableExtensionMap,
   ?let @extensionInitializerForBuildingContext unused inExtensionInitializerMapForBuildingContext,
   ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext,
@@ -279,7 +279,7 @@ override proc @templateLexiqueComponentAST enterDeclarationInSemanticContext
 
 //--------------------------------------------------------------------------------------------------
 
-override proc @templateLexiqueComponentAST semanticAnalysis
+override proc @templateLexiqueComponentAST.semanticAnalysis
                                   (?!@lstringlist unused ioUsefulnessRootEntities,
                                   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
                                   ?let @string unused inProductDirectory,

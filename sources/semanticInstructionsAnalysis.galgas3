@@ -223,7 +223,7 @@ abstract proc @abstractGrammarInstructionSyntaxDirectedTranslationResult analyze
 
 //--------------------------------------------------------------------------------------------------
 
-override proc @grammarInstructionSyntaxDirectedTranslationResultNone analyzeGrammarInstructionSDT
+override proc @grammarInstructionSyntaxDirectedTranslationResultNone.analyzeGrammarInstructionSDT
   (?let @analysisContext unused inAnalysisContext,
                                 ?!@unifiedTypeMap unused ioTypeMap,
   ?let @bool unused inHasTranslateFeature,
@@ -234,7 +234,7 @@ override proc @grammarInstructionSyntaxDirectedTranslationResultNone analyzeGram
 
 //--------------------------------------------------------------------------------------------------
 
-override proc @grammarInstructionSyntaxDirectedTranslationDropResult  analyzeGrammarInstructionSDT
+override proc @grammarInstructionSyntaxDirectedTranslationDropResult.analyzeGrammarInstructionSDT
   (?let @analysisContext unused inAnalysisContext,
                                 ?!@unifiedTypeMap unused ioTypeMap,
   ?let @bool inHasTranslateFeature,
@@ -248,7 +248,7 @@ override proc @grammarInstructionSyntaxDirectedTranslationDropResult  analyzeGra
 
 //--------------------------------------------------------------------------------------------------
 
-override proc @grammarInstructionSyntaxDirectedTranslationResultInVar  analyzeGrammarInstructionSDT
+override proc @grammarInstructionSyntaxDirectedTranslationResultInVar.analyzeGrammarInstructionSDT
   (?let @analysisContext inAnalysisContext,
                                 ?!@unifiedTypeMap unused ioTypeMap,
   ?let @bool inHasTranslateFeature,
@@ -270,7 +270,7 @@ override proc @grammarInstructionSyntaxDirectedTranslationResultInVar  analyzeGr
 
 //--------------------------------------------------------------------------------------------------
 
-override proc @grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar  analyzeGrammarInstructionSDT
+override proc @grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar.analyzeGrammarInstructionSDT
   (?let @analysisContext inAnalysisContext,
   ?!@unifiedTypeMap ioTypeMap,
   ?let @bool inHasTranslateFeature,
@@ -294,7 +294,7 @@ override proc @grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar  a
 
 //--------------------------------------------------------------------------------------------------
 
-override proc @grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst  analyzeGrammarInstructionSDT
+override proc @grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst.analyzeGrammarInstructionSDT
   (?let @analysisContext inAnalysisContext,
                                 ?!@unifiedTypeMap ioTypeMap,
   ?let @bool inHasTranslateFeature,

@@ -309,63 +309,63 @@ abstract func @semanticDeclarationAST keyRepresentation () -> @string
 
 //--------------------------------------------------------------------------------------------------
 
-override func @galgas3GrammarComponentAST keyRepresentation
+override func @galgas3GrammarComponentAST.keyRepresentation
   () ->@string {
   result = "grammar " + self.mGrammarComponentName
 }
 
 //--------------------------------------------------------------------------------------------------
 
-override func @galgas3SyntaxComponentAST keyRepresentation
+override func @galgas3SyntaxComponentAST.keyRepresentation
   () ->@string {
   result = "syntax " + self.mSyntaxComponentName
 }
 
 //--------------------------------------------------------------------------------------------------
 
-override func @predefinedTypeAST keyRepresentation
+override func @predefinedTypeAST.keyRepresentation
   () ->@string {
   result = "predefined type @" + self.mPredefinedTypeName
 }
 
 //--------------------------------------------------------------------------------------------------
 
-override func @sortedListDeclarationAST keyRepresentation
+override func @sortedListDeclarationAST.keyRepresentation
   () ->@string {
   result = "sorted list @" + self.mSortedListTypeName
 }
 
 //--------------------------------------------------------------------------------------------------
 
-override func @filewrapperDeclarationAST keyRepresentation
+override func @filewrapperDeclarationAST.keyRepresentation
   () ->@string {
   result = "filewrapper @" + self.mFilewrapperName
 }
 
 //--------------------------------------------------------------------------------------------------
 
-override func @optionComponentDeclarationAST keyRepresentation
+override func @optionComponentDeclarationAST.keyRepresentation
   () ->@string {
   result = "option " + self.mOptionComponentName
 }
 
 //--------------------------------------------------------------------------------------------------
 
-override func @graphDeclarationAST keyRepresentation
+override func @graphDeclarationAST.keyRepresentation
   () ->@string {
   result = "graph @" + self.mGraphTypeName
 }
 
 //--------------------------------------------------------------------------------------------------
 
-override func @onceFunctionDeclarationAST keyRepresentation
+override func @onceFunctionDeclarationAST.keyRepresentation
   () ->@string {
   result = "once function " + self.mFunctionName
 }
 
 //--------------------------------------------------------------------------------------------------
 
-override func @externFunctionDeclarationAST keyRepresentation () -> @string {
+override func @externFunctionDeclarationAST.keyRepresentation () -> @string {
   result = "extern function " + self.mFunctionName
 }
 
@@ -607,7 +607,7 @@ proc recursivelyEnumerateDirectories
 
 //--------------------------------------------------------------------------------------------------
 
-override proc @filewrapperDeclarationAST enterDeclarationInSemanticContext
+override proc @filewrapperDeclarationAST.enterDeclarationInSemanticContext
   (?!@equatableExtensionMap unused ioEquatableExtensionMap,
   ?let @extensionInitializerForBuildingContext unused inExtensionInitializerMapForBuildingContext,
   ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext,
@@ -689,7 +689,7 @@ override proc @filewrapperDeclarationAST enterDeclarationInSemanticContext
 
 //--------------------------------------------------------------------------------------------------
 
-override proc @externFunctionDeclarationAST enterDeclarationInSemanticContext // Handles also function declaration
+override proc @externFunctionDeclarationAST.enterDeclarationInSemanticContext // Handles also function declaration
   (?!@equatableExtensionMap unused ioEquatableExtensionMap,
   ?let @extensionInitializerForBuildingContext unused inExtensionInitializerMapForBuildingContext,
   ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext,
@@ -716,7 +716,7 @@ override proc @externFunctionDeclarationAST enterDeclarationInSemanticContext //
 
 //--------------------------------------------------------------------------------------------------
 
-override proc @onceFunctionDeclarationAST enterDeclarationInSemanticContext
+override proc @onceFunctionDeclarationAST.enterDeclarationInSemanticContext
   (?!@equatableExtensionMap unused ioEquatableExtensionMap,
   ?let @extensionInitializerForBuildingContext unused inExtensionInitializerMapForBuildingContext,
   ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext,
@@ -732,7 +732,7 @@ override proc @onceFunctionDeclarationAST enterDeclarationInSemanticContext
 
 //--------------------------------------------------------------------------------------------------
 
-override proc @galgas3SyntaxComponentAST enterDeclarationInSemanticContext
+override proc @galgas3SyntaxComponentAST.enterDeclarationInSemanticContext
   (?!@equatableExtensionMap unused ioEquatableExtensionMap,
   ?let @extensionInitializerForBuildingContext unused inExtensionInitializerMapForBuildingContext,
   ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext,
@@ -752,7 +752,7 @@ override proc @galgas3SyntaxComponentAST enterDeclarationInSemanticContext
 
 //--------------------------------------------------------------------------------------------------
 
-override proc @galgas3GrammarComponentAST enterDeclarationInSemanticContext
+override proc @galgas3GrammarComponentAST.enterDeclarationInSemanticContext
   (?!@equatableExtensionMap unused ioEquatableExtensionMap,
   ?let @extensionInitializerForBuildingContext unused inExtensionInitializerMapForBuildingContext,
   ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext,
@@ -804,7 +804,7 @@ graph @semanticTypePrecedenceGraph (@semanticDeclarationListAST) {
 
 //--------------------------------------------------------------------------------------------------
 
-override proc @galgas3GrammarComponentAST enterDeclarationInGraph
+override proc @galgas3GrammarComponentAST.enterDeclarationInGraph
   (?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph,
   ?!@equatableExtensionMap unused ioEquatableExtensionMap,
   ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext,
@@ -821,7 +821,7 @@ override proc @galgas3GrammarComponentAST enterDeclarationInGraph
 
 //--------------------------------------------------------------------------------------------------
 
-override proc @galgas3SyntaxComponentAST enterDeclarationInGraph
+override proc @galgas3SyntaxComponentAST.enterDeclarationInGraph
   (?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph,
   ?!@equatableExtensionMap unused ioEquatableExtensionMap,
   ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext,
@@ -846,7 +846,7 @@ override proc @galgas3SyntaxComponentAST enterDeclarationInGraph
 
 //--------------------------------------------------------------------------------------------------
 
-override proc @externFunctionDeclarationAST enterDeclarationInGraph
+override proc @externFunctionDeclarationAST.enterDeclarationInGraph
   (?!@semanticTypePrecedenceGraph unused ioSemanticTypePrecedenceGraph,
   ?!@equatableExtensionMap unused ioEquatableExtensionMap,
   ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext,
@@ -859,7 +859,7 @@ override proc @externFunctionDeclarationAST enterDeclarationInGraph
 
 //--------------------------------------------------------------------------------------------------
 
-override proc @onceFunctionDeclarationAST enterDeclarationInGraph
+override proc @onceFunctionDeclarationAST.enterDeclarationInGraph
   (?!@semanticTypePrecedenceGraph unused ioSemanticTypePrecedenceGraph,
   ?!@equatableExtensionMap unused ioEquatableExtensionMap,
   ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext,
@@ -872,7 +872,7 @@ override proc @onceFunctionDeclarationAST enterDeclarationInGraph
 
 //--------------------------------------------------------------------------------------------------
 
-override proc @filewrapperDeclarationAST enterDeclarationInGraph
+override proc @filewrapperDeclarationAST.enterDeclarationInGraph
   (?!@semanticTypePrecedenceGraph unused ioSemanticTypePrecedenceGraph,
   ?!@equatableExtensionMap unused ioEquatableExtensionMap,
   ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext,

@@ -25,7 +25,7 @@ map @projectQualifiedFeatureMap {
 
 //--------------------------------------------------------------------------------------------------
 
-mutating proc @XcodeProjectDescriptor addICNS_file
+mutating proc @XcodeProjectDescriptor.addICNS_file
   (?fileName:let @string inFileName,
   !fileRef:@string outFileRef
 ) {
@@ -35,7 +35,7 @@ mutating proc @XcodeProjectDescriptor addICNS_file
 
 //--------------------------------------------------------------------------------------------------
 
-mutating proc @XcodeProjectDescriptor addTIFF_file
+mutating proc @XcodeProjectDescriptor.addTIFF_file
   (?fileName:let @string inFileName,
   !fileRef:@string outFileRef ) {
   !?self.getReferenceKey (?ref:outFileRef)
@@ -44,7 +44,7 @@ mutating proc @XcodeProjectDescriptor addTIFF_file
 
 //--------------------------------------------------------------------------------------------------
 
-mutating proc @XcodeProjectDescriptor addInfoPlistFile
+mutating proc @XcodeProjectDescriptor.addInfoPlistFile
   (?fileName:let @string inFileName,
   !fileRef:@string outFileRef ) {
   !?self.getReferenceKey (?ref:outFileRef)
@@ -53,7 +53,7 @@ mutating proc @XcodeProjectDescriptor addInfoPlistFile
 
 //--------------------------------------------------------------------------------------------------
 
-mutating proc @XcodeProjectDescriptor addXIBFile
+mutating proc @XcodeProjectDescriptor.addXIBFile
   (?fileName:let @string inFileName,
   !fileRef:@string outFileRef ) {
   !?self.getReferenceKey (?ref:outFileRef)
@@ -62,7 +62,7 @@ mutating proc @XcodeProjectDescriptor addXIBFile
 
 //--------------------------------------------------------------------------------------------------
 
-mutating proc @XcodeProjectDescriptor addFrameworkFile
+mutating proc @XcodeProjectDescriptor.addFrameworkFile
   (?fileName:let @string inFileName,
   !fileRef:@string outFileRef ) {
   !?self.getReferenceKey (?ref:outFileRef)
@@ -71,7 +71,7 @@ mutating proc @XcodeProjectDescriptor addFrameworkFile
 
 //--------------------------------------------------------------------------------------------------
 
-mutating proc @XcodeProjectDescriptor addSwiftFile
+mutating proc @XcodeProjectDescriptor.addSwiftFile
   (?fileName:let @string inFileName,
   !fileRef:@string outFileRef ) {
   !?self.getReferenceKey (?ref:outFileRef)
@@ -80,7 +80,7 @@ mutating proc @XcodeProjectDescriptor addSwiftFile
 
 //--------------------------------------------------------------------------------------------------
 
-mutating proc @XcodeProjectDescriptor addMFile
+mutating proc @XcodeProjectDescriptor.addMFile
   (?fileName:let @string inFileName,
   !fileRef:@string outFileRef ) {
   !?self.getReferenceKey (?ref:outFileRef)
@@ -89,7 +89,7 @@ mutating proc @XcodeProjectDescriptor addMFile
 
 //--------------------------------------------------------------------------------------------------
 
-mutating proc @XcodeProjectDescriptor addMMFile
+mutating proc @XcodeProjectDescriptor.addMMFile
   (?fileName:let @string inFileName,
   !fileRef:@string outFileRef ) {
   !?self.getReferenceKey (?ref:outFileRef)
@@ -98,7 +98,7 @@ mutating proc @XcodeProjectDescriptor addMMFile
 
 //--------------------------------------------------------------------------------------------------
 
-mutating proc @XcodeProjectDescriptor addCppFile
+mutating proc @XcodeProjectDescriptor.addCppFile
   (?fileName:let @string inFileName,
   !fileRef:@string outFileRef ) {
   !?self.getReferenceKey (?ref:outFileRef)
@@ -107,7 +107,7 @@ mutating proc @XcodeProjectDescriptor addCppFile
 
 //--------------------------------------------------------------------------------------------------
 
-mutating proc @XcodeProjectDescriptor addCFile
+mutating proc @XcodeProjectDescriptor.addCFile
   (?fileName:let @string inFileName,
   !fileRef:@string outFileRef ) {
   !?self.getReferenceKey (?ref:outFileRef)
@@ -116,7 +116,7 @@ mutating proc @XcodeProjectDescriptor addCFile
 
 //--------------------------------------------------------------------------------------------------
 
-mutating proc @XcodeProjectDescriptor addHeaderFile
+mutating proc @XcodeProjectDescriptor.addHeaderFile
   (?fileName:let @string inFileName,
   !fileRef:@string outFileRef ) {
   !?self.getReferenceKey (?ref: outFileRef)
@@ -125,7 +125,7 @@ mutating proc @XcodeProjectDescriptor addHeaderFile
 
 //--------------------------------------------------------------------------------------------------
 
-mutating proc @XcodeProjectDescriptor addBuildFile
+mutating proc @XcodeProjectDescriptor.addBuildFile
   (?fileRef:let @string inFileReference,
   ?fileName:let @string inFileName,
   !buildRef:@string outBuildRef ) {
@@ -135,7 +135,7 @@ mutating proc @XcodeProjectDescriptor addBuildFile
 
 //--------------------------------------------------------------------------------------------------
 
-mutating proc @XcodeProjectDescriptor addToolTarget
+mutating proc @XcodeProjectDescriptor.addToolTarget
   (?targetName:let @string inTargetName,
   ?productFileName:let @string inProductFileName,
   ?sources:let @stringlist inSourceList,
@@ -165,7 +165,7 @@ mutating proc @XcodeProjectDescriptor addToolTarget
 
 //--------------------------------------------------------------------------------------------------
 
-mutating proc @XcodeProjectDescriptor addAppTarget
+mutating proc @XcodeProjectDescriptor.addAppTarget
   (?targetName:let @string inTargetName,
   ?productFileName:let @string inProductFileName,
   ?sources:let @stringlist inSourceList,
@@ -211,7 +211,7 @@ mutating proc @XcodeProjectDescriptor addAppTarget
 
 //--------------------------------------------------------------------------------------------------
 
-mutating proc @XcodeProjectDescriptor addGroup
+mutating proc @XcodeProjectDescriptor.addGroup
   (?groupName:let @string inGroupName,
   ?groupPath:let @string inGroupPath,
   ?childrenRefs:let @stringlist inChildrenRefs,
@@ -232,7 +232,7 @@ mutating proc @XcodeProjectDescriptor addGroup
 
 //--------------------------------------------------------------------------------------------------
 
-mutating proc @XcodeProjectDescriptor addGroupWithFiles
+mutating proc @XcodeProjectDescriptor.addGroupWithFiles
   (?groupName:let @string inGroupName,
   ?groupPath:let @string inGroupPath,
   ?fileNames:let @stringset inFileNames,
@@ -305,14 +305,14 @@ mutating proc @XcodeProjectDescriptor addGroupWithFiles
 
 //--------------------------------------------------------------------------------------------------
 
-mutating proc @XcodeProjectDescriptor placeGroupAsMainGroup
+mutating proc @XcodeProjectDescriptor.placeGroupAsMainGroup
   (?groupRef:let @string inGroupRef ) {
   self.mMainGroupChildrenRefs += !inGroupRef
 }
 
 //--------------------------------------------------------------------------------------------------
 
-mutating proc @XcodeProjectDescriptor addSettingsToDefaultConfiguration
+mutating proc @XcodeProjectDescriptor.addSettingsToDefaultConfiguration
   (?settingList:let @stringlist inSettingList ) {
   self.mDefaultConfigurationSettingList += inSettingList
 }
@@ -371,7 +371,7 @@ list @BuildFileList {
 
 //--------------------------------------------------------------------------------------------------
 
-mutating proc @XcodeProjectDescriptor getReferenceKey
+mutating proc @XcodeProjectDescriptor.getReferenceKey
   (!ref:@string outRef ) {
   if self.mProjectObjectReference == "" then
     self.mProjectObjectReference = [self.mSequenceNumber.string.md5 rightSubString !24]

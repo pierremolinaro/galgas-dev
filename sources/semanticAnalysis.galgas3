@@ -250,7 +250,7 @@ proc analyzeRoutineBody (?let @lstring inUsefulnessCallerEntityName,
 
 //--------------------------------------------------------------------------------------------------
 
-override proc @externFunctionDeclarationAST semanticAnalysis
+override proc @externFunctionDeclarationAST.semanticAnalysis
   (?!@lstringlist ioUsefulnessRootEntities,
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
   ?let @string unused inProductDirectory,
@@ -371,7 +371,7 @@ proc analyzeFunctionBody
 
 //--------------------------------------------------------------------------------------------------
 
-override proc @functionDeclarationAST semanticAnalysis
+override proc @functionDeclarationAST.semanticAnalysis
   (?!@lstringlist ioUsefulnessRootEntities,
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
   ?let @string unused inProductDirectory,
@@ -424,7 +424,7 @@ override proc @functionDeclarationAST semanticAnalysis
 
 //--------------------------------------------------------------------------------------------------
 
-override proc @onceFunctionDeclarationAST semanticAnalysis
+override proc @onceFunctionDeclarationAST.semanticAnalysis
   (?!@lstringlist ioUsefulnessRootEntities,
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
   ?let @string unused inProductDirectory,
@@ -480,7 +480,7 @@ override proc @onceFunctionDeclarationAST semanticAnalysis
 //
 //--------------------------------------------------------------------------------------------------
 
-override proc @filewrapperDeclarationAST semanticAnalysis
+override proc @filewrapperDeclarationAST.semanticAnalysis
   (?!@lstringlist unused ioUsefulnessRootEntities,
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
   ?let @string unused inProductDirectory,
@@ -575,7 +575,7 @@ override proc @filewrapperDeclarationAST semanticAnalysis
 
 //--------------------------------------------------------------------------------------------------
 
-override proc @galgas3SyntaxComponentAST semanticAnalysis
+override proc @galgas3SyntaxComponentAST.semanticAnalysis
   (?!@lstringlist unused ioUsefulnessRootEntities,
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
   ?let @string unused inProductDirectory,
@@ -628,7 +628,7 @@ override proc @galgas3SyntaxComponentAST semanticAnalysis
 
 //--------------------------------------------------------------------------------------------------
 
-override proc @galgas3GrammarComponentAST semanticAnalysis
+override proc @galgas3GrammarComponentAST.semanticAnalysis
                                 (?!@lstringlist unused ioUsefulnessRootEntities,
                                 ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
                                 ?let @string inProductDirectory,
@@ -1010,7 +1010,7 @@ abstract proc @syntaxInstructionAST analyzeSyntaxInstruction
 
 //--------------------------------------------------------------------------------------------------
 
-override proc @semanticInstructionAST analyzeSyntaxInstruction
+override proc @semanticInstructionAST.analyzeSyntaxInstruction
   (?let @lstring inUsefulnessCallerEntityName,
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
   ?let @analysisContext inAnalysisContext,
@@ -1047,7 +1047,7 @@ abstract proc @abstractInputParameter analyzeInputParameter
 
 //--------------------------------------------------------------------------------------------------
 
-override proc @inputParameterAnonymousVariable analyzeInputParameter
+override proc @inputParameterAnonymousVariable.analyzeInputParameter
   (?let @analysisContext unused inAnalysisContext,
   ?!@unifiedTypeMap unused ioTypeMap,
   ?let @lexicalTypeEnum unused inRequiredLexicalType,
@@ -1058,7 +1058,7 @@ override proc @inputParameterAnonymousVariable analyzeInputParameter
 
 //--------------------------------------------------------------------------------------------------
 
-override proc @inputParameterVariable analyzeInputParameter
+override proc @inputParameterVariable.analyzeInputParameter
   (?let @analysisContext inAnalysisContext,
   ?!@unifiedTypeMap unused ioTypeMap,
   ?let @lexicalTypeEnum inRequiredLexicalType,
@@ -1090,7 +1090,7 @@ override proc @inputParameterVariable analyzeInputParameter
 
 //--------------------------------------------------------------------------------------------------
 
-override proc @inputParameterDeclaredVariable analyzeInputParameter
+override proc @inputParameterDeclaredVariable.analyzeInputParameter
   (?let @analysisContext inAnalysisContext,
   ?!@unifiedTypeMap ioTypeMap,
   ?let @lexicalTypeEnum inRequiredLexicalType,
@@ -1135,7 +1135,7 @@ override proc @inputParameterDeclaredVariable analyzeInputParameter
 
 //--------------------------------------------------------------------------------------------------
 
-override proc @inputParameterDeclaredConstant analyzeInputParameter
+override proc @inputParameterDeclaredConstant.analyzeInputParameter
   (?let @analysisContext inAnalysisContext,
                                 ?!@unifiedTypeMap ioTypeMap,
   ?let @lexicalTypeEnum inRequiredLexicalType,
@@ -1183,7 +1183,7 @@ abstract proc @abstractGrammarInstructionSyntaxDirectedTranslationResult analyze
 
 //--------------------------------------------------------------------------------------------------
 
-override proc @grammarInstructionSyntaxDirectedTranslationResultNone analyzeSDT
+override proc @grammarInstructionSyntaxDirectedTranslationResultNone.analyzeSDT
   (?let @analysisContext unused inAnalysisContext,
                                 ?!@unifiedTypeMap unused ioTypeMap,
   ?let @bool unused inHasTranslateFeature,
@@ -1192,7 +1192,7 @@ override proc @grammarInstructionSyntaxDirectedTranslationResultNone analyzeSDT
 
 //--------------------------------------------------------------------------------------------------
 
-override proc @grammarInstructionSyntaxDirectedTranslationDropResult  analyzeSDT
+override proc @grammarInstructionSyntaxDirectedTranslationDropResult.analyzeSDT
   (?let @analysisContext unused inAnalysisContext,
                                 ?!@unifiedTypeMap unused ioTypeMap,
   ?let @bool inHasTranslateFeature,
@@ -1204,7 +1204,7 @@ override proc @grammarInstructionSyntaxDirectedTranslationDropResult  analyzeSDT
 
 //--------------------------------------------------------------------------------------------------
 
-override proc @grammarInstructionSyntaxDirectedTranslationResultInVar  analyzeSDT
+override proc @grammarInstructionSyntaxDirectedTranslationResultInVar.analyzeSDT
   (?let @analysisContext inAnalysisContext,
                                 ?!@unifiedTypeMap unused ioTypeMap,
   ?let @bool inHasTranslateFeature,
@@ -1223,7 +1223,7 @@ override proc @grammarInstructionSyntaxDirectedTranslationResultInVar  analyzeSD
 
 //--------------------------------------------------------------------------------------------------
 
-override proc @grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar  analyzeSDT
+override proc @grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar.analyzeSDT
   (?let @analysisContext inAnalysisContext,
                                 ?!@unifiedTypeMap ioTypeMap,
   ?let @bool inHasTranslateFeature,
@@ -1250,7 +1250,7 @@ override proc @grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar  a
 
 //--------------------------------------------------------------------------------------------------
 
-override proc @grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst  analyzeSDT
+override proc @grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst.analyzeSDT
   (?let @analysisContext inAnalysisContext,
                                 ?!@unifiedTypeMap ioTypeMap,
   ?let @bool inHasTranslateFeature,
@@ -1279,7 +1279,7 @@ abstract proc @abstractGrammarInstructionSyntaxDirectedTranslationResult generat
 
 //--------------------------------------------------------------------------------------------------
 
-override proc @grammarInstructionSyntaxDirectedTranslationResultNone generateCode
+override proc @grammarInstructionSyntaxDirectedTranslationResultNone.generateCode
   (?let @bool inGenerateSyntaxDirectedTranslationString,
   ?let @string inAccessMethodName,
   ?!@stringset ioUnusedVariableCppNameSet,
@@ -1292,7 +1292,7 @@ override proc @grammarInstructionSyntaxDirectedTranslationResultNone generateCod
 
 //--------------------------------------------------------------------------------------------------
 
-override proc @grammarInstructionSyntaxDirectedTranslationDropResult  generateCode
+override proc @grammarInstructionSyntaxDirectedTranslationDropResult.generateCode
   (?let @bool unused inGenerateSyntaxDirectedTranslationString,
   ?let @string unused inAccessMethodName,
   ?!@stringset unused ioUnusedVariableCppNameSet,
@@ -1301,7 +1301,7 @@ override proc @grammarInstructionSyntaxDirectedTranslationDropResult  generateCo
 
 //--------------------------------------------------------------------------------------------------
 
-override proc @grammarInstructionSyntaxDirectedTranslationResultInVar  generateCode
+override proc @grammarInstructionSyntaxDirectedTranslationResultInVar.generateCode
   (?let @bool unused inGenerateSyntaxDirectedTranslationString,
   ?let @string inAccessMethodName,
   ?!@stringset unused ioUnusedVariableCppNameSet,
@@ -1312,7 +1312,7 @@ override proc @grammarInstructionSyntaxDirectedTranslationResultInVar  generateC
 
 //--------------------------------------------------------------------------------------------------
 
-override proc @grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar  generateCode
+override proc @grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar.generateCode
   (?let @bool unused inGenerateSyntaxDirectedTranslationString,
   ?let @string inAccessMethodName,
   ?!@stringset unused ioUnusedVariableCppNameSet,
@@ -1323,7 +1323,7 @@ override proc @grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar  g
 
 //--------------------------------------------------------------------------------------------------
 
-override proc @grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst  generateCode
+override proc @grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst.generateCode
   (?let @bool unused inGenerateSyntaxDirectedTranslationString,
   ?let @string inAccessMethodName,
   ?!@stringset unused ioUnusedVariableCppNameSet,

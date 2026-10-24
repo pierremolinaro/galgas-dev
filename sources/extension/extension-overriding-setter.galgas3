@@ -40,11 +40,12 @@ syntax extension galgas3DeclarationsSyntax {
     $mutating$
     $proc$
     $@type$ (?var typeName )indexing (typeReferenceOverrideExtensionSetterDefinition)
+    $.$
     repeat
     while
-      $.$
       $@type$ (?let t)
       typeName = makeEmbeddedTypeLName (!outer: typeName !inner: t)
+      $.$
     end
     $identifier$ (?let @lstring setterName )indexing (overrideExtensionSetterDefinition)
     <formal_parameter_list_ggs34> (!?ioDeclarations, ?let formalParameterList)
@@ -100,7 +101,7 @@ syntax extension galgas3DeclarationsSyntax {
 //   ENTER IN GRAPH
 //--------------------------------------------------------------------------------------------------
 
-override proc @overridingExtensionSetterAST enterDeclarationInGraph (
+override proc @overridingExtensionSetterAST.enterDeclarationInGraph (
   ?!@semanticTypePrecedenceGraph unused ioSemanticTypePrecedenceGraph,
   ?!@equatableExtensionMap unused ioEquatableExtensionMap,
   ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext,
@@ -115,7 +116,7 @@ override proc @overridingExtensionSetterAST enterDeclarationInGraph (
 //   KEY REPRESEN func TATION
 //--------------------------------------------------------------------------------------------------
 
-override func @overridingExtensionSetterAST keyRepresentation () -> @string {
+override func @overridingExtensionSetterAST.keyRepresentation () -> @string {
   result = "overriding extension mutating proc @" + self.mTypeName + " " + self.mOverridingExtensionSetterName
 }
 
@@ -123,7 +124,7 @@ override func @overridingExtensionSetterAST keyRepresentation () -> @string {
 //   SEMANTIC CONTEXT
 //--------------------------------------------------------------------------------------------------
 
-override proc @overridingExtensionSetterAST enterDeclarationInSemanticContext (
+override proc @overridingExtensionSetterAST.enterDeclarationInSemanticContext (
   ?!@equatableExtensionMap unused ioEquatableExtensionMap,
   ?let @extensionInitializerForBuildingContext unused inExtensionInitializerMapForBuildingContext,
   ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext,
@@ -137,7 +138,7 @@ override proc @overridingExtensionSetterAST enterDeclarationInSemanticContext (
 //   SEMANTIC ANALYSIS
 //--------------------------------------------------------------------------------------------------
 
-override proc @overridingExtensionSetterAST semanticAnalysis (
+override proc @overridingExtensionSetterAST.semanticAnalysis (
   ?!@lstringlist unused ioUsefulnessRootEntities,
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
   ?let @string unused inProductDirectory,
@@ -221,7 +222,7 @@ override proc @overridingExtensionSetterAST semanticAnalysis (
 //   EXTENSION LIST MAP
 //--------------------------------------------------------------------------------------------------
 
-override proc @overridingExtensionSetterAST buildExtensionListMaps (
+override proc @overridingExtensionSetterAST.buildExtensionListMaps (
   ?!@genericExtensionMethodListMap unused ioAbstractExtensionSetterListMap,
   ?!@genericExtensionMethodListMap unused ioExtensionSetterListMap,
   ?!@genericExtensionMethodListMap ioOverridingExtensionSetterListMap,
@@ -255,13 +256,13 @@ final class @overridingExtensionSetterForGeneration : @semanticDeclarationWithHe
 
 //································································································
 
-override func @overridingExtensionSetterForGeneration headerKind () ->@headerKind {
+override func @overridingExtensionSetterForGeneration.headerKind () ->@headerKind {
   result = @headerKind.noHeader
 }
 
 //································································································
 
-override proc @overridingExtensionSetterForGeneration appendSpecificImplementation (
+override proc @overridingExtensionSetterForGeneration.appendSpecificImplementation (
                       ?let @unifiedTypeMap unused inTypeMap,
                       ?!@stringset ioInclusionSet,
                       !@string outImplementation) {
