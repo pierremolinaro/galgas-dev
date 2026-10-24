@@ -37,7 +37,7 @@ syntax extension galgas3DeclarationsSyntax {
     $override$
     $abstract$
     $proc$
-    $@type$ (?var typeName )indexing (typeReferenceOverrideAbstractExtensionMethod)
+    $@type$ (?var typeName) indexing (typeReferenceOverrideAbstractExtensionMethod)
      $.$
     repeat
     while
@@ -45,7 +45,7 @@ syntax extension galgas3DeclarationsSyntax {
       typeName = makeEmbeddedTypeLName (!outer: typeName !inner: t)
       $.$
     end
-    $identifier$ (?let @lstring methodName )indexing (overrideAbstractExtensionMethodDefinition)
+    $identifier$ (?let @lstring methodName) indexing (overrideAbstractExtensionMethodDefinition)
     <formal_parameter_list_ggs34> (!?ioDeclarations, ?let formalParameterList)
     ioDeclarations.mDeclarationList += !@overridingAbstractExtensionMethodAST {
       !isPredefined: false // Is not predefined
@@ -61,7 +61,7 @@ syntax extension galgas3DeclarationsSyntax {
     $override$
     $abstract$
     $proc$
-    $identifier$ (?let @lstring methodName )indexing (overrideAbstractExtensionMethodDefinition)
+    $identifier$ (?let @lstring methodName) indexing (overrideAbstractExtensionMethodDefinition)
     <formal_parameter_list_ggs34> (!?ioDeclarations, ?let formalParameterList)
     ioDeclarations.mDeclarationList += !@overridingAbstractExtensionMethodAST {
       !isPredefined: false // Is not predefined
@@ -93,7 +93,7 @@ syntax extension galgas4DeclarationsSyntax {
       typeName = makeEmbeddedTypeLName (!outer: typeName !inner: t)
       $.$
     end
-    $identifier$ (?let @lstring methodName )indexing (overrideAbstractExtensionMethodDefinition)
+    $identifier$ (?let @lstring methodName) indexing (overrideAbstractExtensionMethodDefinition)
     <formal_parameter_list>(!?ioDeclarations, ?let @formalParameterListAST formalParameterList)
     ioDeclarations.mDeclarationList += !@overridingAbstractExtensionMethodAST {
       !isPredefined: false // Is not predefined
@@ -117,7 +117,7 @@ syntax extension galgas4DeclarationsSyntax {
       typeName = makeEmbeddedTypeLName (!outer: typeName !inner: t)
       $.$
     end
-    $identifier$ (?let @lstring methodName )indexing (overrideAbstractExtensionMethodDefinition)
+    $identifier$ (?let @lstring methodName) indexing (overrideAbstractExtensionMethodDefinition)
     <formal_parameter_list> (!?ioDeclarations, ?let @formalParameterListAST formalParameterList)
     ioDeclarations.mDeclarationList += !@overridingAbstractExtensionMethodAST {
       !isPredefined: false // Is not predefined

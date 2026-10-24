@@ -39,7 +39,7 @@ syntax extension galgas3DeclarationsSyntax {
     $override$
     $mutating$
     $proc$
-    $@type$ (?var typeName )indexing (typeReferenceOverrideExtensionSetterDefinition)
+    $@type$ (?var typeName) indexing (typeReferenceOverrideExtensionSetterDefinition)
     $.$
     repeat
     while
@@ -47,7 +47,7 @@ syntax extension galgas3DeclarationsSyntax {
       typeName = makeEmbeddedTypeLName (!outer: typeName !inner: t)
       $.$
     end
-    $identifier$ (?let @lstring setterName )indexing (overrideExtensionSetterDefinition)
+    $identifier$ (?let @lstring setterName) indexing (overrideExtensionSetterDefinition)
     <formal_parameter_list_ggs34> (!?ioDeclarations, ?let formalParameterList)
     ${$
     <semantic_instruction_list_ggs3> (!?ioDeclarations, ?let routineInstructionList)
@@ -77,7 +77,7 @@ syntax extension galgas3DeclarationsSyntax {
       typeName = makeEmbeddedTypeLName (!outer: typeName !inner: t)
       $.$
     end
-    $identifier$ (?let @lstring setterName )indexing (overrideExtensionSetterDefinition)
+    $identifier$ (?let @lstring setterName) indexing (overrideExtensionSetterDefinition)
     <formal_parameter_list_ggs34> (!?ioDeclarations, ?let formalParameterList)
     ${$
     <semantic_instruction_list_ggs3> (!?ioDeclarations, ?let @semanticInstructionListAST routineInstructionList)

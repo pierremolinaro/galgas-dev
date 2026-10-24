@@ -25,7 +25,7 @@ syntax extension galgas3ExpressionSyntax {
 
   rule <primary_ggs3> (?!@galgasDeclarationAST ioDeclarations,
                       !@semanticExpressionAST outExpression ) {
-    $identifier$ (?let @lstring functionName )indexing (functionCall)
+    $identifier$ (?let @lstring functionName) indexing (functionCall)
     $($
     var @actualOutputArgumentList expressionList = @()
     select
@@ -79,7 +79,7 @@ syntax extension galgas4ExpressionSyntax {
 
   rule <primary> (?!@galgasDeclarationAST ioDeclarations,
                  !@semanticExpressionAST outExpression ) {
-    $identifier$ (?let @lstring functionName )indexing (functionCall)
+    $identifier$ (?let @lstring functionName) indexing (functionCall)
     $($
     <output_expression_list> (!?ioDeclarations, ?let @actualOutputArgumentList expressionList)
     $)$

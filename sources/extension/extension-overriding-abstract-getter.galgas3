@@ -38,7 +38,7 @@ syntax extension galgas3DeclarationsSyntax {
     $override$
     $abstract$
     $func$
-    $@type$ (?var typeName )indexing (typeReferenceOverrideAbstractExtensionGetter)
+    $@type$ (?var typeName) indexing (typeReferenceOverrideAbstractExtensionGetter)
     $.$
     repeat
     while
@@ -46,7 +46,7 @@ syntax extension galgas3DeclarationsSyntax {
       typeName = makeEmbeddedTypeLName (!outer: typeName !inner: t)
       $.$
     end
-    $identifier$ (?let getterName )indexing (overrideAbstractExtensionGetterDefinition)
+    $identifier$ (?let getterName) indexing (overrideAbstractExtensionGetterDefinition)
     let @formalInputParameterListAST formalInputParameterList
     <formal_input_parameter_list_ggs34> (!?ioDeclarations, ?formalInputParameterList)
     $->$
@@ -73,7 +73,7 @@ syntax extension galgas3DeclarationsSyntax {
       typeName = makeEmbeddedTypeLName (!outer: typeName !inner: t)
       $.$
     end
-    $identifier$ (?let getterName )indexing (overrideAbstractExtensionGetterDefinition)
+    $identifier$ (?let getterName) indexing (overrideAbstractExtensionGetterDefinition)
     let @formalInputParameterListAST formalInputParameterList
     <formal_input_parameter_list_ggs34> (!?ioDeclarations, ?formalInputParameterList)
     $->$
@@ -109,7 +109,7 @@ syntax extension galgas4DeclarationsSyntax {
       typeName = makeEmbeddedTypeLName (!outer: typeName !inner: t)
       $.$
     end
-    $identifier$ (?let getterName )indexing (overrideAbstractExtensionGetterDefinition)
+    $identifier$ (?let getterName) indexing (overrideAbstractExtensionGetterDefinition)
     <formal_input_parameter_list> (!?ioDeclarations, ?let @formalInputParameterListAST formalInputParameterList)
     $->$
     <type_definition> (!?ioDeclarations, ?let returnedTypeName)
@@ -129,7 +129,7 @@ syntax extension galgas4DeclarationsSyntax {
     $override$
     $abstract$
     $func$
-    $identifier$ (?let getterName )indexing (overrideAbstractExtensionGetterDefinition)
+    $identifier$ (?let getterName) indexing (overrideAbstractExtensionGetterDefinition)
     <formal_input_parameter_list> (!?ioDeclarations, ?let @formalInputParameterListAST formalInputParameterList)
     $->$
     <type_definition> (!?ioDeclarations, ?let returnedTypeName)

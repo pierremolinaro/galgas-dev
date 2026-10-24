@@ -119,58 +119,9 @@ syntax galgas3InstructionsSyntax (galgasScanner3) {
       end
       isUsefull = true
     end
-    $identifier$ (?let functionName )indexing (functionDefinition)
+    $identifier$ (?let functionName) indexing (functionDefinition)
     <function_declaration_ggs3> (!once: isOnce, !usefull: isUsefull, !private: false, !functionName, !?ioDeclarations)
   }
-
-   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-//  rule <function_declaration_ggs3> (?once: let @bool inIsOnce,
-//                                   ?usefull: let @bool inIsUsefull,
-//                                   ?private: let @bool inPrivate,
-//                                   ?let @lstring inFunctionName,
-//                                   ?!@galgasDeclarationAST ioDeclarations ) {
-//    <formal_input_parameter_list_ggs3> (!?ioDeclarations, ?let formalInputParameterList)
-//    if inIsOnce, (formalInputParameterList.count > 0) then
-//      error (inFunctionName: "an 'once' function should has no argument")
-//    end
-//    $->$
-//    <type_definition_ggs3> (!?ioDeclarations, ?let @lstring resultTypeName)
-//    let @lstring resultVariableName
-//    select
-//      $identifier$ ?resultVariableName
-//    or
-//      resultVariableName = @{!"result" !.here}
-//    end
-//    ${$
-//    <semantic_instruction_list_ggs3> (!?ioDeclarations, ?let functionInstructionList)
-//    $}$
-//    let endOfFunctionInstructionList = @location.here
-//    if inIsOnce then
-//      ioDeclarations.mDeclarationList += !@onceFunctionDeclarationAST {
-//        !isPredefined: false // Is not predefined
-//        !inFunctionName
-//        !resultTypeName
-//        !resultVariableName
-//        !functionInstructionList
-//        !endOfFunctionInstructionList
-//        !inPrivate
-//        !inIsUsefull
-//      }
-//    else
-//      ioDeclarations.mDeclarationList += !@functionDeclarationAST {
-//        !isPredefined: false // Is not predefined
-//        !inFunctionName
-//        !formalInputParameterList
-//        !resultTypeName
-//        !usefullFunc: inIsUsefull
-//        !resultVariableName
-//        !functionInstructionList
-//        !endOfFunctionInstructionList
-//        !inPrivate
-//      }
-//    end
-//  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -237,7 +188,7 @@ syntax galgas3InstructionsSyntax (galgasScanner3) {
       end
       isUsefull = true
     end
-    $identifier$ (?let functionName )indexing (functionDefinition)
+    $identifier$ (?let functionName) indexing (functionDefinition)
     <function_declaration_ggs3> (!once: isOnce, !usefull: isUsefull, !private: true, !functionName, !?ioDeclarations)
   }
 
@@ -257,7 +208,7 @@ syntax galgas3InstructionsSyntax (galgasScanner3) {
       end
       isUsefull = true
     end
-    $identifier$ (?let mActionName )indexing (functionDefinition)
+    $identifier$ (?let mActionName) indexing (functionDefinition)
     <formal_input_parameter_list_ggs34> (!?ioDeclarations, ?let formalInputParameterList)
     $->$
     <type_definition_ggs3> (!?ioDeclarations, ?let @lstring resultTypeName)
@@ -456,7 +407,7 @@ syntax galgas4InstructionsSyntax (galgasScanner4) {
       end
       isUsefull = true
     end
-    $identifier$ (?let functionName )indexing (functionDefinition)
+    $identifier$ (?let functionName) indexing (functionDefinition)
     <formal_input_parameter_list> (!?ioDeclarations, ?let @formalInputParameterListAST formalInputParameterList)
     if isOnce, (formalInputParameterList.count > 0) then
       error (functionName: "an 'once' function should has no argument")
@@ -520,7 +471,7 @@ syntax galgas4InstructionsSyntax (galgasScanner4) {
       end
       isUsefull = true
     end
-    $identifier$ (?let functionName )indexing (functionDefinition)
+    $identifier$ (?let functionName) indexing (functionDefinition)
     <formal_input_parameter_list> (!?ioDeclarations, ?let @formalInputParameterListAST formalInputParameterList)
     if isOnce, (formalInputParameterList.count > 0) then
       error (functionName: "an 'once' function should has no argument")
@@ -579,7 +530,7 @@ syntax galgas4InstructionsSyntax (galgasScanner4) {
       end
       isUsefull = true
     end
-    $identifier$ (?let mActionName )indexing (functionDefinition)
+    $identifier$ (?let mActionName) indexing (functionDefinition)
     <formal_input_parameter_list> (!?ioDeclarations, ?let @formalInputParameterListAST formalInputParameterList)
     $->$
     <type_definition> (!?ioDeclarations, ?let resultTypeName)

@@ -28,7 +28,7 @@ syntax extension galgas3DeclarationsSyntax {
     $abstract$
     $mutating$
     $proc$
-    $@type$ (?var typeName )indexing (typeReferenceOverrideAbstractExtensionSetter)
+    $@type$ (?var typeName) indexing (typeReferenceOverrideAbstractExtensionSetter)
     $.$
     repeat
     while
@@ -36,7 +36,7 @@ syntax extension galgas3DeclarationsSyntax {
       typeName = makeEmbeddedTypeLName (!outer: typeName !inner: t)
       $.$
     end
-    $identifier$ (?let @lstring setterName )indexing (overrideabstractExtensionSetterDefinition)
+    $identifier$ (?let @lstring setterName) indexing (overrideabstractExtensionSetterDefinition)
     <formal_parameter_list_ggs34> (!?ioDeclarations, ?let formalParameterList)
     ioDeclarations.mDeclarationList += !@overridingAbstractExtensionSetterAST {
       !isPredefined: false // Is not predefined
@@ -60,7 +60,7 @@ syntax extension galgas3DeclarationsSyntax {
       typeName = makeEmbeddedTypeLName (!outer: typeName !inner: t)
       $.$
     end
-    $identifier$ (?let @lstring setterName )indexing (overrideabstractExtensionSetterDefinition)
+    $identifier$ (?let @lstring setterName) indexing (overrideabstractExtensionSetterDefinition)
     <formal_parameter_list_ggs34> (!?ioDeclarations, ?let formalParameterList)
     ioDeclarations.mDeclarationList += !@overridingAbstractExtensionSetterAST {
       !isPredefined: false

@@ -40,7 +40,7 @@ syntax extension galgas3DeclarationsSyntax {
   rule <declaration_ggs3> (?!@galgasDeclarationAST ioDeclarations) {
     $override$
     $func$
-    $@type$ (?var typeName )indexing (typeReferenceOverrideExtensionGetter)
+    $@type$ (?var typeName) indexing (typeReferenceOverrideExtensionGetter)
     $.$
     repeat
     while
@@ -48,7 +48,7 @@ syntax extension galgas3DeclarationsSyntax {
       typeName = makeEmbeddedTypeLName (!outer: typeName !inner: t)
       $.$
     end
-    $identifier$ (?let @lstring getterName )indexing (overrideExtensionGetterDefinition)
+    $identifier$ (?let @lstring getterName) indexing (overrideExtensionGetterDefinition)
     let @formalInputParameterListAST formalInputParameterList
     <formal_input_parameter_list_ggs34> (!?ioDeclarations, ?formalInputParameterList)
     $->$
@@ -87,7 +87,7 @@ syntax extension galgas3DeclarationsSyntax {
       typeName = makeEmbeddedTypeLName (!outer: typeName !inner: t)
       $.$
     end
-    $identifier$ (?let @lstring getterName )indexing (overrideExtensionGetterDefinition)
+    $identifier$ (?let @lstring getterName) indexing (overrideExtensionGetterDefinition)
     let @formalInputParameterListAST formalInputParameterList
     <formal_input_parameter_list_ggs34> (!?ioDeclarations, ?formalInputParameterList)
     $->$
@@ -135,7 +135,7 @@ syntax extension galgas4DeclarationsSyntax {
       typeName = makeEmbeddedTypeLName (!outer: typeName !inner: t)
       $.$
     end
-    $identifier$ (?let @lstring getterName )indexing (overrideExtensionGetterDefinition)
+    $identifier$ (?let @lstring getterName) indexing (overrideExtensionGetterDefinition)
     <formal_input_parameter_list> (!?ioDeclarations, ?let formalInputParameterList)
     $->$
     <type_definition> (!?ioDeclarations, ?let returnedTypeName)
@@ -167,7 +167,7 @@ syntax extension galgas4DeclarationsSyntax {
                              ?!@galgasDeclarationAST ioDeclarations) {
     $override$
     $func$
-    $identifier$ (?let @lstring getterName )indexing (overrideExtensionGetterDefinition)
+    $identifier$ (?let @lstring getterName) indexing (overrideExtensionGetterDefinition)
     <formal_input_parameter_list> (!?ioDeclarations, ?let formalInputParameterList)
     $->$
     <type_definition> (!?ioDeclarations, ?let returnedTypeName)
