@@ -201,7 +201,7 @@ final class @arrayTypeDeclarationAST : @semanticDeclarationAST {
       !@methodQualifier.isBasic,
       !""
     )
-  //--- setter 'insertAtIndex'
+  //--- mutating proc 'insertAtIndex'
     setterInputFormalArgumentList += !"".nowhere !uintType !.argumentConstantIn !"inInsertionIndex"
     !?setterMap.insertKey
       (!@lstring {!"insertAtIndex" !@location.here},

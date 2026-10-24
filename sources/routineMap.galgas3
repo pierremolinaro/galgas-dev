@@ -65,7 +65,7 @@ struct @routineMap {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  setter insertKey (?let @lstring inRoutineName,
+  mutating proc insertKey (?let @lstring inRoutineName,
                     ?let @formalParameterSignature inRoutineSignature,
                     ?isFilePrivate: let @bool inIsFilePrivate) {
     var @routineArgumentMap routineArgumentMap

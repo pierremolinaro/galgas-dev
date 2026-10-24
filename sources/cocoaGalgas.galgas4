@@ -77,13 +77,13 @@ gui cocoa {
     label $override$,  $func$, $identifier$
     label $func$, $identifier$
 
-    label $abstract$, $setter$, $@type$, $identifier$
-    label $override$,  $setter$, $@type$, $identifier$
-    label $setter$, $@type$, $identifier$
+    label $abstract$, $mutating$, $proc$, $@type$, $identifier$
+    label $override$, $mutating$, $proc$, $@type$, $identifier$
+    label $mutating$, $proc$, $@type$, $identifier$
 
-    label $abstract$, $setter$, $identifier$
-    label $override$,  $setter$, $identifier$
-    label $setter$, $identifier$
+    label $abstract$, $mutating$, $proc$, $identifier$
+    label $override$,  $mutating$, $proc$, $identifier$
+    label $mutating$, $proc$, $identifier$
 
     label $syntax$, $extension$, $identifier$
 

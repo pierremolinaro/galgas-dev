@@ -247,33 +247,39 @@ let gPopUpData_galgasScanner3 : [[UInt16]] = [
   ],
   [0, // Leading character count to strip
     galgasScanner3_1_abstract, 0,
-    galgasScanner3_1_setter, 0,
+    galgasScanner3_1_mutating, 0,
+    galgasScanner3_1_proc, 0,
     galgasScanner3_1__40_type, 0,
     galgasScanner3_1_identifier, 0
   ],
   [0, // Leading character count to strip
     galgasScanner3_1_override, 0,
-    galgasScanner3_1_setter, 0,
+    galgasScanner3_1_mutating, 0,
+    galgasScanner3_1_proc, 0,
     galgasScanner3_1__40_type, 0,
     galgasScanner3_1_identifier, 0
   ],
   [0, // Leading character count to strip
-    galgasScanner3_1_setter, 0,
+    galgasScanner3_1_mutating, 0,
+    galgasScanner3_1_proc, 0,
     galgasScanner3_1__40_type, 0,
     galgasScanner3_1_identifier, 0
   ],
   [0, // Leading character count to strip
     galgasScanner3_1_abstract, 0,
-    galgasScanner3_1_setter, 0,
+    galgasScanner3_1_mutating, 0,
+    galgasScanner3_1_proc, 0,
     galgasScanner3_1_identifier, 0
   ],
   [0, // Leading character count to strip
     galgasScanner3_1_override, 0,
-    galgasScanner3_1_setter, 0,
+    galgasScanner3_1_mutating, 0,
+    galgasScanner3_1_proc, 0,
     galgasScanner3_1_identifier, 0
   ],
   [0, // Leading character count to strip
-    galgasScanner3_1_setter, 0,
+    galgasScanner3_1_mutating, 0,
+    galgasScanner3_1_proc, 0,
     galgasScanner3_1_identifier, 0
   ],
   [0, // Leading character count to strip

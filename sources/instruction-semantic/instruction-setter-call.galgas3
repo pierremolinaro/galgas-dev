@@ -64,7 +64,7 @@ syntax extension galgas3InstructionsSyntax {
           !actualParameterList
         }
       else
-        error (instructionLocation : "invalid setter call" spoil outInstruction)
+        error (instructionLocation : "invalid mutating proc call" spoil outInstruction)
       end
     or
       var receiverStructProperties = @lstringlist ()
@@ -119,7 +119,7 @@ syntax extension galgas4InstructionsSyntax {
           !actualParameterList
         }
       else
-        error (instructionLocation : "invalid setter call" spoil outInstruction)
+        error (instructionLocation : "invalid mutating proc call" spoil outInstruction)
       end
     or
       var receiverStructProperties = @lstringlist ()
@@ -223,7 +223,7 @@ override proc @setterCallInstructionAST analyzeSemanticInstruction (
       end
     end
   end
-//--- Get setter signature
+//--- Get mutating proc signature
   receiverType.definition.setterMap.searchKey
     (!self.mSetterName,
     ?let kind,
@@ -242,7 +242,7 @@ override proc @setterCallInstructionAST analyzeSemanticInstruction (
     !inAnalysisContext,
     !?ioTypeMap,
     !self.mSetterName,
-    !invokedEntityNameForErrorSignaling: "'" + self.mSetterName + "' setter header",
+    !invokedEntityNameForErrorSignaling: "'" + self.mSetterName + "' mutating proc header",
     !routineSignature,
     !?ioVariableMap,
     !?ioInstructionListForGeneration,
@@ -295,7 +295,7 @@ override proc @selfSetterCallInstructionAST analyzeSemanticInstruction (
     end
   //--- Check self is not invoked before full initialization
     ioVariableMap.checkSelfObjectIsFullyInitialized (!self.mSetterName.location)
-  //--- Get setter signature
+  //--- Get mutating proc signature
     selfAvailable.type.definition.setterMap.searchKey (!self.mSetterName, ?let kind, ?let routineSignature, ?let hasCompilerArgument, ?*, ?*)
   //--- Check effective parameters
     self.mActualParameterList.analyzeRoutineArguments
@@ -304,7 +304,7 @@ override proc @selfSetterCallInstructionAST analyzeSemanticInstruction (
       !inAnalysisContext,
       !?ioTypeMap,
       !self.mSetterName,
-      !invokedEntityNameForErrorSignaling: "'" + self.mSetterName + "' setter header",
+      !invokedEntityNameForErrorSignaling: "'" + self.mSetterName + "' mutating proc header",
       !routineSignature,
       !?ioVariableMap,
       !?ioInstructionListForGeneration,
@@ -384,7 +384,7 @@ override proc @setterCallInstructionForGeneration generateInstruction (?!@string
 //--- Generate proc call
   switch self.mKind
   case definedAsExtension :
-    ioInclusionSet ++= "setter-" + self.mMethodBaseType.definition.typeName.string.fileNameRepresentation + "-" + self.mSetterName.string.fileNameRepresentation
+    ioInclusionSet ++= "mutating proc-" + self.mMethodBaseType.definition.typeName.string.fileNameRepresentation + "-" + self.mSetterName.string.fileNameRepresentation
     if self.mReceiverType.definition.typeKind.isClassType then
       if (self.mReceiverType.definition.allTypedPropertyList.count > 0) then
         ioGeneratedCode += receiverCppName + ".insulate (" + compilerCppName () + " COMMA_HERE) ;\n"
@@ -444,10 +444,10 @@ override proc @selfSetterCallInstructionForGeneration generateInstruction (?!@st
       ?let @string parameterCppName)
     parameterCppNameList += !parameterCppName
   end
-//--- Generate setter call
+//--- Generate mutating proc call
   switch self.mKind
   case definedAsExtension :
-    ioInclusionSet ++= "setter-" + self.mReceiverType.definition.typeName.string.fileNameRepresentation + "-" + self.mSetterName.string.fileNameRepresentation
+    ioInclusionSet ++= "mutating proc-" + self.mReceiverType.definition.typeName.string.fileNameRepresentation + "-" + self.mSetterName.string.fileNameRepresentation
     if self.mReceiverType.definition.typeKind.isClassType then
       ioGeneratedCode += "callExtensionSetter_" + self.mSetterName.string.identifierRepresentation + " (" + self.mSelfCppName + ", "
     else

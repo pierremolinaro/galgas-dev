@@ -16077,7 +16077,7 @@ void GGS_setterMap::setter_insertKey (GGS_lstring inLKey,
                                       Compiler * inCompiler
                                       COMMA_LOCATION_ARGS) {
   const GGS_setterMap_2E_element element (inLKey, inArgument0, inArgument1, inArgument2, inArgument3, inArgument4) ;
-  const char * kInsertErrorMessage = "the '%K' setter is already declared" ;
+  const char * kInsertErrorMessage = "the '%K' mutating proc is already declared" ;
   const char * kShadowErrorMessage = nullptr ;
   performInsert (element, kInsertErrorMessage, kShadowErrorMessage, inCompiler COMMA_THERE) ;
 }
@@ -16099,7 +16099,7 @@ void GGS_setterMap::method_searchKey (GGS_lstring inLKey,
     if (info.isNil ()) {
       GenericUniqueArray <String> nearestKeyArray ;
       findNearestKey (key, nearestKeyArray) ;
-      const char * kSearchErrorMessage = "the '%K' setter is not declared" ;
+      const char * kSearchErrorMessage = "the '%K' mutating proc is not declared" ;
       inCompiler->semanticErrorWith_K_message (inLKey, nearestKeyArray, kSearchErrorMessage COMMA_THERE) ;
     }
   }

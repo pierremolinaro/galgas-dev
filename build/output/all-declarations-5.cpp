@@ -3120,23 +3120,23 @@ GGS_string extensionGetter_initializerSignature (const GGS_typedPropertyList & i
   GGS_string result_result ; // Returned variable
   result_result = GGS_string ("init") ;
   const GGS_typedPropertyList temp_0 = inObject ;
-  UpEnumerator_typedPropertyList enumerator_8258 (temp_0) ;
-  while (enumerator_8258.hasCurrentObject ()) {
+  UpEnumerator_typedPropertyList enumerator_8279 (temp_0) ;
+  while (enumerator_8279.hasCurrentObject ()) {
     GalgasBool test_1 = GalgasBool::boolTrue ;
     if (GalgasBool::boolTrue == test_1) {
-      test_1 = GGS_bool (ComparisonKind::equal, enumerator_8258.current (HERE).readProperty_initialization ().objectCompare (GGS_propertyInCollectionInitializationAST::class_func_none (SOURCE_FILE ("semanticsTypes.galgas3", 213)))).boolEnum () ;
+      test_1 = GGS_bool (ComparisonKind::equal, enumerator_8279.current (HERE).readProperty_initialization ().objectCompare (GGS_propertyInCollectionInitializationAST::class_func_none (SOURCE_FILE ("semanticsTypes.galgas3", 213)))).boolEnum () ;
       if (GalgasBool::boolTrue == test_1) {
         result_result.plusAssignOperation(GGS_string ("!"), inCompiler  COMMA_SOURCE_FILE ("semanticsTypes.galgas3", 214)) ;
         GalgasBool test_2 = GalgasBool::boolTrue ;
         if (GalgasBool::boolTrue == test_2) {
-          test_2 = enumerator_8258.current (HERE).readProperty_hasSelector ().boolEnum () ;
+          test_2 = enumerator_8279.current (HERE).readProperty_hasSelector ().boolEnum () ;
           if (GalgasBool::boolTrue == test_2) {
-            result_result.plusAssignOperation(enumerator_8258.current (HERE).readProperty_name ().readProperty_string (), inCompiler  COMMA_SOURCE_FILE ("semanticsTypes.galgas3", 216)) ;
+            result_result.plusAssignOperation(enumerator_8279.current (HERE).readProperty_name ().readProperty_string (), inCompiler  COMMA_SOURCE_FILE ("semanticsTypes.galgas3", 216)) ;
           }
         }
       }
     }
-    enumerator_8258.gotoNextObject () ;
+    enumerator_8279.gotoNextObject () ;
   }
 //---
   return result_result ;

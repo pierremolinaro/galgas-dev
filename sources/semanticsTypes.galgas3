@@ -145,10 +145,10 @@ map @setterMap {
   public let @formalParameterSignature mParameterList
   public let @bool mHasCompilerArgument
   public let @methodQualifier mQualifier
-  public let @string mErrorMessage // If not empty, calling the setter raises an error ith this message
+  public let @string mErrorMessage // If not empty, calling the mutating proc raises an error ith this message
   insert or replace
-  insert insertKey error message "the '%K' setter is already declared"
-  search searchKey error message "the '%K' setter is not declared"
+  insert insertKey error message "the '%K' mutating proc is already declared"
+  search searchKey error message "the '%K' mutating proc is not declared"
 }
 
 //--------------------------------------------------------------------------------------------------

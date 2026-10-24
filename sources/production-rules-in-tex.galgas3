@@ -271,7 +271,7 @@ list @rowList {
 
 //--------------------------------------------------------------------------------------------------
 
-setter @rowList appendRow
+mutating proc @rowList appendRow
   (?nodeDefinition:let @string inNodeDefinition,
   ?row:let @uint inRow,
   ?column:let @uint inColumn,

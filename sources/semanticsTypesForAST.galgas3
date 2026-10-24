@@ -37,7 +37,7 @@ struct @syntaxExtensions {
 
   //·····························································································
 
-  setter insertKey (?let @string inKey,
+  mutating proc insertKey (?let @string inKey,
                     ?let @lstring inSyntaxComponentName,
                     ?let @nonterminalDeclarationListAST inNonterminalDeclarationList,
                     ?let @syntaxRuleListAST inRuleList) {
@@ -429,7 +429,7 @@ struct @galgasDeclarationAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  setter getOptionalTypeName (!@lstring outOptionalTypeName,
+  mutating proc getOptionalTypeName (!@lstring outOptionalTypeName,
                               ?forTypeNamed: @lstring inTypeName,
                               ?isPredefined: let @bool inPredefined) {
     outOptionalTypeName = makeOptionalTypeLName (!forTypeNamed: inTypeName)

@@ -120,7 +120,6 @@ fileprivate let kEndOfScriptInTemplateArray_galgasTemplateScanner : [Bool] = [
   false /* select */,
   false /* self */,
   false /* send */,
-  false /* setter */,
   false /* sortedlist */,
   false /* spoil */,
   false /* struct */,

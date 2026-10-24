@@ -10035,7 +10035,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_rowList_2E_element ;
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension setter '@rowList appendRow'
+//Extension mutating proc '@rowList appendRow'
 //
 //--------------------------------------------------------------------------------------------------
 

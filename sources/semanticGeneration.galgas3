@@ -797,7 +797,7 @@ filewrapper semanticComponentGenerationTemplate in "+generation-templates/semant
     ?@string GETTER_IMPLEMENTATION
     ?@unifiedTypeMapEntry RETURN_TYPE
 
-//----------- Extension setter
+//----------- Extension mutating proc
   template abstractExtensionSetterDeclaration "abstract-extension-setter.h.galgasTemplate"
     ?@string CLASS_NAME
     ?@string MODIFIER_NAME
@@ -887,7 +887,7 @@ filewrapper semanticComponentGenerationTemplate in "+generation-templates/semant
     ?@string METHOD_IMPLEMENTATION
 
 
-//--- Extension setter implemented as function
+//--- Extension mutating proc implemented as function
   template extensionSetterAsFunctionDeclaration "extension-setter-as-function.h.galgasTemplate"
     ?@string TYPE_NAME
     ?@string MODIFIER_NAME

@@ -7211,7 +7211,7 @@ void extensionMethod_checkSelfObjectIsFullyInitialized (const class GGS_currentV
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension setter '@currentVarManager neutralAccess'
+//Extension mutating proc '@currentVarManager neutralAccess'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -7225,7 +7225,7 @@ void extensionSetter_neutralAccess (class GGS_currentVarManager & ioObject,
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension setter '@localVarMapListForLLVM neutralAccess'
+//Extension mutating proc '@localVarMapListForLLVM neutralAccess'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -7240,7 +7240,7 @@ void extensionSetter_neutralAccess (class GGS_localVarMapListForLLVM & ioObject,
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension setter '@currentVarManager searchForDropAccess'
+//Extension mutating proc '@currentVarManager searchForDropAccess'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -7263,7 +7263,7 @@ void extensionMethod_checkFinalState (const class GGS_localVarValuation inObject
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension setter '@currentVarManager searchForWriteAccess'
+//Extension mutating proc '@currentVarManager searchForWriteAccess'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -7277,7 +7277,7 @@ void extensionSetter_searchForWriteAccess (class GGS_currentVarManager & ioObjec
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension setter '@localVarMapListForLLVM writeAccessInSubMap'
+//Extension mutating proc '@localVarMapListForLLVM writeAccessInSubMap'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -7292,7 +7292,7 @@ void extensionSetter_writeAccessInSubMap (class GGS_localVarMapListForLLVM & ioO
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension setter '@localVarValuation writeTransition'
+//Extension mutating proc '@localVarValuation writeTransition'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -7305,7 +7305,7 @@ void extensionSetter_writeTransition (class GGS_localVarValuation & ioObject,
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension setter '@currentVarManager searchForReadAccess'
+//Extension mutating proc '@currentVarManager searchForReadAccess'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -7319,7 +7319,7 @@ void extensionSetter_searchForReadAccess (class GGS_currentVarManager & ioObject
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension setter '@localVarMapListForLLVM readAccess'
+//Extension mutating proc '@localVarMapListForLLVM readAccess'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -7334,7 +7334,7 @@ void extensionSetter_readAccess (class GGS_localVarMapListForLLVM & ioObject,
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension setter '@localVarValuation readTransition'
+//Extension mutating proc '@localVarValuation readTransition'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -7346,7 +7346,7 @@ void extensionSetter_readTransition (class GGS_localVarValuation & ioObject,
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension setter '@currentVarManager searchForReadWriteAccess'
+//Extension mutating proc '@currentVarManager searchForReadWriteAccess'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -7360,7 +7360,7 @@ void extensionSetter_searchForReadWriteAccess (class GGS_currentVarManager & ioO
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension setter '@localVarMapListForLLVM readWriteAccess'
+//Extension mutating proc '@localVarMapListForLLVM readWriteAccess'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -7375,7 +7375,7 @@ void extensionSetter_readWriteAccess (class GGS_localVarMapListForLLVM & ioObjec
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension setter '@localVarValuation readWriteTransition'
+//Extension mutating proc '@localVarValuation readWriteTransition'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -7388,7 +7388,7 @@ void extensionSetter_readWriteTransition (class GGS_localVarValuation & ioObject
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension setter '@currentVarManager openScope'
+//Extension mutating proc '@currentVarManager openScope'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -7398,7 +7398,7 @@ void extensionSetter_openScope (class GGS_currentVarManager & ioObject,
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension setter '@currentVarManager closeScope'
+//Extension mutating proc '@currentVarManager closeScope'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -7420,7 +7420,7 @@ void extensionMethod_checkFinalStates (const class GGS_scopeLocalVarMap inObject
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension setter '@currentVarManager insertKey'
+//Extension mutating proc '@currentVarManager insertKey'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -7460,7 +7460,7 @@ void extensionMethod_combineValuationWith (const class GGS_localVarValuation inO
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension setter '@scopeLocalVarMap combineMapWith'
+//Extension mutating proc '@scopeLocalVarMap combineMapWith'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -7472,7 +7472,7 @@ void extensionSetter_combineMapWith (class GGS_scopeLocalVarMap & ioObject,
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension setter '@currentVarManager combineManagerWith'
+//Extension mutating proc '@currentVarManager combineManagerWith'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -8512,7 +8512,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_unifiedTypeMap_2E_elem
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension setter '@unifiedTypeMap makeEntry'
+//Extension mutating proc '@unifiedTypeMap makeEntry'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -8524,7 +8524,7 @@ void extensionSetter_makeEntry (class GGS_unifiedTypeMap & ioObject,
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension setter '@unifiedTypeMap makeEntryFromString'
+//Extension mutating proc '@unifiedTypeMap makeEntryFromString'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -8547,7 +8547,7 @@ class GGS_unifiedTypeMapEntry extensionGetter_typeMapEntryOrNullForLKey (const c
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension setter '@unifiedTypeMap insertType'
+//Extension mutating proc '@unifiedTypeMap insertType'
 //
 //--------------------------------------------------------------------------------------------------
 

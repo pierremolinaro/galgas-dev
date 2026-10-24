@@ -303,7 +303,7 @@ list @insertOrReplaceDeclarationListAST {
 //--------------------------------------------------------------------------------------------------
 
 map @insertMethodMap {
-  insert insertKey error message "the '%K' insert setter is already declared"
+  insert insertKey error message "the '%K' insert mutating proc is already declared"
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -575,7 +575,7 @@ final class @mapDeclarationAST : @semanticDeclarationAST {
       if [setterMap hasKey !entry.mName.string] then
         error (entry.mName
         : "the '" + entry.mName
-                  + "' proc is already declared as an insert setter or a remove setter")
+                  + "' proc is already declared as an insert mutating proc or a remove mutating proc")
       else
         !?setterMap.insertOrReplace
           (!entry.mName,
@@ -614,7 +614,7 @@ final class @mapDeclarationAST : @semanticDeclarationAST {
         !"" // func name is not obsolete, no replacement func
       )
     end
-  //--------- Handle "insertOrReplace" setter
+  //--------- Handle "insertOrReplace" mutating proc
     if self.mInsertOrReplaceDeclarationListAST.count >= 1 then
       self.mInsertOrReplaceDeclarationListAST.first (?let insertOrReplaceLocation)
       !?setterMap.insertOrReplace
@@ -810,17 +810,17 @@ final class @mapDeclarationAST : @semanticDeclarationAST {
       !?insertMethodMap.insertKey (!mSetterName)
       check_K_escapeCharacters (!mErrorMessage )
     end
-  //--- Warn for duplicated declarations or 'insertOrReplace' setter
+  //--- Warn for duplicated declarations or 'insertOrReplace' mutating proc
     for (mInsertOrReplaceDeclarationLocation) in self.mInsertOrReplaceDeclarationListAST do(IDX)
       if IDX > 0 then
-        warning mInsertOrReplaceDeclarationLocation: "the 'insertOrReplace' setter is already declared"
+        warning mInsertOrReplaceDeclarationLocation: "the 'insertOrReplace' mutating proc is already declared"
       end
     end
     let @bool hasInsertOrReplaceModifier = self.mInsertOrReplaceDeclarationListAST.count > 0
     if hasInsertOrReplaceModifier & [insertMethodMap hasKey !"insertOrReplace"] then
       self.mInsertOrReplaceDeclarationListAST.first (?let insertOrReplaceDeclarationLocation)
       error (insertOrReplaceDeclarationLocation
-      : "the insertOrReplace' setter cannot be declared : an insert setter or a remove setter has been declared with this name")
+      : "the insertOrReplace' mutating proc cannot be declared : an insert mutating proc or a remove mutating proc has been declared with this name")
     end
   //--- Optional Element type index
     let elementTypeName = makeEmbeddedElementTypeLName (!self.mMapTypeName)

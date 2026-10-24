@@ -10,7 +10,7 @@
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension setter '@XcodeProjectDescriptor placeGroupAsMainGroup'
+//Extension mutating proc '@XcodeProjectDescriptor placeGroupAsMainGroup'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -21,7 +21,7 @@ void extensionSetter_placeGroupAsMainGroup (class GGS_XcodeProjectDescriptor & i
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension setter '@XcodeProjectDescriptor addSettingsToDefaultConfiguration'
+//Extension mutating proc '@XcodeProjectDescriptor addSettingsToDefaultConfiguration'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -469,7 +469,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_optionComponentForGene
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension setter '@localVarManager insertUsedLocalConstant'
+//Extension mutating proc '@localVarManager insertUsedLocalConstant'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -483,7 +483,7 @@ void extensionSetter_insertUsedLocalConstant (class GGS_localVarManager & ioObje
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension setter '@localVarManager insertDeclaredLocalConstant'
+//Extension mutating proc '@localVarManager insertDeclaredLocalConstant'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -497,7 +497,7 @@ void extensionSetter_insertDeclaredLocalConstant (class GGS_localVarManager & io
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension setter '@localVarManager insertInputFormalArgumentDeclaredAsUnused'
+//Extension mutating proc '@localVarManager insertInputFormalArgumentDeclaredAsUnused'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -511,7 +511,7 @@ void extensionSetter_insertInputFormalArgumentDeclaredAsUnused (class GGS_localV
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension setter '@localVarManager insertInputFormalArgument'
+//Extension mutating proc '@localVarManager insertInputFormalArgument'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -525,7 +525,7 @@ void extensionSetter_insertInputFormalArgument (class GGS_localVarManager & ioOb
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension setter '@localVarManager insertConstantInputFormalArgumentDeclaredAsUnused'
+//Extension mutating proc '@localVarManager insertConstantInputFormalArgumentDeclaredAsUnused'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -539,7 +539,7 @@ void extensionSetter_insertConstantInputFormalArgumentDeclaredAsUnused (class GG
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension setter '@localVarManager insertConstantInputFormalArgument'
+//Extension mutating proc '@localVarManager insertConstantInputFormalArgument'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -553,7 +553,7 @@ void extensionSetter_insertConstantInputFormalArgument (class GGS_localVarManage
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension setter '@localVarManager insertOutputFormalArgument'
+//Extension mutating proc '@localVarManager insertOutputFormalArgument'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -567,7 +567,7 @@ void extensionSetter_insertOutputFormalArgument (class GGS_localVarManager & ioO
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension setter '@localVarManager insertInputOutputFormalArgumentDeclaredAsUnused'
+//Extension mutating proc '@localVarManager insertInputOutputFormalArgumentDeclaredAsUnused'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -581,7 +581,7 @@ void extensionSetter_insertInputOutputFormalArgumentDeclaredAsUnused (class GGS_
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension setter '@localVarManager insertInputOutputFormalArgument'
+//Extension mutating proc '@localVarManager insertInputOutputFormalArgument'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -595,7 +595,7 @@ void extensionSetter_insertInputOutputFormalArgument (class GGS_localVarManager 
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension setter '@localVarManager insertNonMutableProperty'
+//Extension mutating proc '@localVarManager insertNonMutableProperty'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -609,7 +609,7 @@ void extensionSetter_insertNonMutableProperty (class GGS_localVarManager & ioObj
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension setter '@localVarManager insertMutableProperty'
+//Extension mutating proc '@localVarManager insertMutableProperty'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -623,7 +623,7 @@ void extensionSetter_insertMutableProperty (class GGS_localVarManager & ioObject
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension setter '@localVarManager insertInitializerSelfProperty'
+//Extension mutating proc '@localVarManager insertInitializerSelfProperty'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -639,7 +639,7 @@ void extensionSetter_insertInitializerSelfProperty (class GGS_localVarManager & 
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension setter '@localVarManager openOverrideForRepeatBlock'
+//Extension mutating proc '@localVarManager openOverrideForRepeatBlock'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -649,7 +649,7 @@ void extensionSetter_openOverrideForRepeatBlock (class GGS_localVarManager & ioO
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension setter '@localVarManager closeOverride'
+//Extension mutating proc '@localVarManager closeOverride'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -660,7 +660,7 @@ void extensionSetter_closeOverride (class GGS_localVarManager & ioObject,
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension setter '@localVarManager closeBranch'
+//Extension mutating proc '@localVarManager closeBranch'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -682,7 +682,7 @@ void extensionMethod_checkSelfObjectIsFullyInitialized (const class GGS_localVar
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension setter '@localVarManager neutralAccess'
+//Extension mutating proc '@localVarManager neutralAccess'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -696,7 +696,7 @@ void extensionSetter_neutralAccess (class GGS_localVarManager & ioObject,
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension setter '@localVarManager searchForDropAccess'
+//Extension mutating proc '@localVarManager searchForDropAccess'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -707,7 +707,7 @@ void extensionSetter_searchForDropAccess (class GGS_localVarManager & ioObject,
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension setter '@localVarManager searchForWriteAccess'
+//Extension mutating proc '@localVarManager searchForWriteAccess'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -721,7 +721,7 @@ void extensionSetter_searchForWriteAccess (class GGS_localVarManager & ioObject,
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension setter '@localVarManager searchForReadAccess'
+//Extension mutating proc '@localVarManager searchForReadAccess'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -735,7 +735,7 @@ void extensionSetter_searchForReadAccess (class GGS_localVarManager & ioObject,
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension setter '@localVarManager searchForReadWriteAccess'
+//Extension mutating proc '@localVarManager searchForReadWriteAccess'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -760,7 +760,7 @@ void extensionMethod_checkAutomatonStates (const class GGS_localVarManager inObj
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension setter '@routineMap insertKey'
+//Extension mutating proc '@routineMap insertKey'
 //
 //--------------------------------------------------------------------------------------------------
 

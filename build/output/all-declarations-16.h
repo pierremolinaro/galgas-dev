@@ -2878,7 +2878,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_XcodeProjectDescriptor
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension setter '@XcodeProjectDescriptor addTIFF_file'
+//Extension mutating proc '@XcodeProjectDescriptor addTIFF_file'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -2890,7 +2890,7 @@ void extensionSetter_addTIFF_5F_file (class GGS_XcodeProjectDescriptor & ioObjec
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension setter '@XcodeProjectDescriptor getReferenceKey'
+//Extension mutating proc '@XcodeProjectDescriptor getReferenceKey'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -2901,7 +2901,7 @@ void extensionSetter_getReferenceKey (class GGS_XcodeProjectDescriptor & ioObjec
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension setter '@XcodeProjectDescriptor addInfoPlistFile'
+//Extension mutating proc '@XcodeProjectDescriptor addInfoPlistFile'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -2913,7 +2913,7 @@ void extensionSetter_addInfoPlistFile (class GGS_XcodeProjectDescriptor & ioObje
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension setter '@XcodeProjectDescriptor addXIBFile'
+//Extension mutating proc '@XcodeProjectDescriptor addXIBFile'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -2925,7 +2925,7 @@ void extensionSetter_addXIBFile (class GGS_XcodeProjectDescriptor & ioObject,
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension setter '@XcodeProjectDescriptor addFrameworkFile'
+//Extension mutating proc '@XcodeProjectDescriptor addFrameworkFile'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -2937,7 +2937,7 @@ void extensionSetter_addFrameworkFile (class GGS_XcodeProjectDescriptor & ioObje
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension setter '@XcodeProjectDescriptor addSwiftFile'
+//Extension mutating proc '@XcodeProjectDescriptor addSwiftFile'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -2949,7 +2949,7 @@ void extensionSetter_addSwiftFile (class GGS_XcodeProjectDescriptor & ioObject,
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension setter '@XcodeProjectDescriptor addMFile'
+//Extension mutating proc '@XcodeProjectDescriptor addMFile'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -2961,7 +2961,7 @@ void extensionSetter_addMFile (class GGS_XcodeProjectDescriptor & ioObject,
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension setter '@XcodeProjectDescriptor addMMFile'
+//Extension mutating proc '@XcodeProjectDescriptor addMMFile'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -2973,7 +2973,7 @@ void extensionSetter_addMMFile (class GGS_XcodeProjectDescriptor & ioObject,
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension setter '@XcodeProjectDescriptor addCppFile'
+//Extension mutating proc '@XcodeProjectDescriptor addCppFile'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -2985,7 +2985,7 @@ void extensionSetter_addCppFile (class GGS_XcodeProjectDescriptor & ioObject,
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension setter '@XcodeProjectDescriptor addCFile'
+//Extension mutating proc '@XcodeProjectDescriptor addCFile'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -2997,7 +2997,7 @@ void extensionSetter_addCFile (class GGS_XcodeProjectDescriptor & ioObject,
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension setter '@XcodeProjectDescriptor addHeaderFile'
+//Extension mutating proc '@XcodeProjectDescriptor addHeaderFile'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -3009,7 +3009,7 @@ void extensionSetter_addHeaderFile (class GGS_XcodeProjectDescriptor & ioObject,
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension setter '@XcodeProjectDescriptor addBuildFile'
+//Extension mutating proc '@XcodeProjectDescriptor addBuildFile'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -3022,7 +3022,7 @@ void extensionSetter_addBuildFile (class GGS_XcodeProjectDescriptor & ioObject,
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension setter '@XcodeProjectDescriptor addToolTarget'
+//Extension mutating proc '@XcodeProjectDescriptor addToolTarget'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -3039,7 +3039,7 @@ void extensionSetter_addToolTarget (class GGS_XcodeProjectDescriptor & ioObject,
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension setter '@XcodeProjectDescriptor addAppTarget'
+//Extension mutating proc '@XcodeProjectDescriptor addAppTarget'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -3058,7 +3058,7 @@ void extensionSetter_addAppTarget (class GGS_XcodeProjectDescriptor & ioObject,
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension setter '@XcodeProjectDescriptor addGroup'
+//Extension mutating proc '@XcodeProjectDescriptor addGroup'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -3072,7 +3072,7 @@ void extensionSetter_addGroup (class GGS_XcodeProjectDescriptor & ioObject,
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension setter '@XcodeProjectDescriptor addGroupWithFiles'
+//Extension mutating proc '@XcodeProjectDescriptor addGroupWithFiles'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -3091,7 +3091,7 @@ void extensionSetter_addGroupWithFiles (class GGS_XcodeProjectDescriptor & ioObj
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension setter '@XcodeProjectDescriptor addICNS_file'
+//Extension mutating proc '@XcodeProjectDescriptor addICNS_file'
 //
 //--------------------------------------------------------------------------------------------------
 

@@ -259,7 +259,7 @@ override proc @dictDeclarationAST enterDeclarationInSemanticContext
       !attributeTypeIndex
       !mPropertyName.string
   end
-//--- Handle insert setter
+//--- Handle insert mutating proc
   !?setterMap.insertOrReplace
     (!@{!"insert" !self.mDictTypeName.location},
     !@methodKind.definedAsMember,
@@ -268,7 +268,7 @@ override proc @dictDeclarationAST enterDeclarationInSemanticContext
     !@methodQualifier.isBasic,
     !""
   )
-//--- Handle remove setter
+//--- Handle remove mutating proc
   !?setterMap.insertOrReplace
     (!@{!"removeKey" !self.mDictTypeName.location},
     !@methodKind.definedAsMember,

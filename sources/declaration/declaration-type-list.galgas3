@@ -338,7 +338,7 @@ override proc @listDeclarationAST enterDeclarationInSemanticContext
       )
     end
   end
-//--- setter 'insertAtIndex'
+//--- mutating proc 'insertAtIndex'
   setterInputFormalArgumentList += !"".nowhere !uintType !@formalArgumentPassingModeAST.argumentConstantIn !"inInsertionIndex"
   !?setterMap.insertOrReplace
     (!@lstring {!"insertAtIndex" !@location.here},

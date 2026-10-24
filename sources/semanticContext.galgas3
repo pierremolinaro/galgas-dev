@@ -267,7 +267,7 @@ map @extensionMethodMapForBuildingContext {
 
 map @extensionSetterMapForType {
   public let @formalParameterListAST mFormalParameterList
-  insert insertKey error message "the '%K' setter has been already declared in %L"
+  insert insertKey error message "the '%K' mutating proc has been already declared in %L"
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -505,7 +505,7 @@ proc addExtensions
         !"" // No Error message
       )
       if not inAcceptSetters then
-        error (lkey : "a class does not accept any setter; use proc instead")
+        error (lkey : "a class does not accept any mutating proc; use proc instead")
       end
     end
   end

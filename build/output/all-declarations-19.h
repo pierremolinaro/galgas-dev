@@ -201,7 +201,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_programComponentForGen
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension setter '@genericExtensionMethodListMap insertKey'
+//Extension mutating proc '@genericExtensionMethodListMap insertKey'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -213,7 +213,7 @@ void extensionSetter_insertKey (class GGS_genericExtensionMethodListMap & ioObje
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension setter '@descendantClassListMap insertKey'
+//Extension mutating proc '@descendantClassListMap insertKey'
 //
 //--------------------------------------------------------------------------------------------------
 

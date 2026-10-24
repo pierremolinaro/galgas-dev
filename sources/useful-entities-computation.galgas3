@@ -81,7 +81,7 @@ func getterNameForUsefulEntitiesGraph (?let @string inTypeName, ?let @lstring in
 //--------------------------------------------------------------------------------------------------
 
 func setterNameForUsefulEntitiesGraph (?let @string inTypeName, ?let @lstring inSetterName ) -> @lstring {
-  result = @{!"setter @" + inTypeName + " " + inSetterName !inSetterName.location}
+  result = @{!"mutatingproc  @" + inTypeName + " " + inSetterName !inSetterName.location}
 }
 
 //--------------------------------------------------------------------------------------------------

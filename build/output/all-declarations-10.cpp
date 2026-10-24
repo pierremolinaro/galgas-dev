@@ -8782,7 +8782,7 @@ void GGS_extensionSetterMapForGlobalCheckings::setter_insertKey (GGS_lstring inL
                                                                  Compiler * inCompiler
                                                                  COMMA_LOCATION_ARGS) {
   const GGS_extensionSetterMapForGlobalCheckings_2E_element element (inLKey) ;
-  const char * kInsertErrorMessage = "the '%K' extension setter is already declared in %L" ;
+  const char * kInsertErrorMessage = "the '%K' extension mutating proc is already declared in %L" ;
   const char * kShadowErrorMessage = nullptr ;
   performInsert (element, kInsertErrorMessage, kShadowErrorMessage, inCompiler COMMA_THERE) ;
 }

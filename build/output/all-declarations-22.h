@@ -10,7 +10,7 @@
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension setter '@localVarManager insertDeclaredLocalVariable'
+//Extension mutating proc '@localVarManager insertDeclaredLocalVariable'
 //
 //--------------------------------------------------------------------------------------------------
 

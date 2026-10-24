@@ -25,7 +25,8 @@ syntax extension galgas3DeclarationsSyntax {
 
   rule <declaration_ggs3> (?!@galgasDeclarationAST ioDeclarations) {
     $abstract$
-    $setter$
+    $mutating$
+    $proc$
     $@type$ (?let @lstring className )indexing (typeReferenceAbstractExtensionSetter)
     $identifier$ (?let @lstring setterName )indexing (abstractExtensionSetterDefinition)
     <formal_parameter_list_ggs34> (!?ioDeclarations, ?let formalParameterList)
@@ -41,7 +42,8 @@ syntax extension galgas3DeclarationsSyntax {
 
   rule <method_declaration_ggs3> (?let @lstring inClassName, ?!@galgasDeclarationAST ioDeclarations) {
     $abstract$
-    $setter$
+    $mutating$
+    $proc$
     $identifier$ (?let @lstring setterName )indexing (abstractExtensionSetterDefinition)
     <formal_parameter_list_ggs34> (!?ioDeclarations, ?let formalParameterList)
     ioDeclarations.mDeclarationList += !@abstractExtensionSetterAST {
@@ -73,7 +75,7 @@ final class @abstractExtensionSetterAST : @semanticDeclarationAST {
     ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext,
     ?!@extensionSetterMapForBuildingContext ioExtensionSetterMapForBuildingContext,
     ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList) {
-    let key = @lstring {!"extension setter @" + self.mTypeName + " " + self.mAbstractExtensionSetterName !self.mAbstractExtensionSetterName.location}
+    let key = @lstring {!"extension mutating proc @" + self.mTypeName + " " + self.mAbstractExtensionSetterName !self.mAbstractExtensionSetterName.location}
     !?ioSemanticTypePrecedenceGraph.addNode (!key, !self)
     !?ioSemanticTypePrecedenceGraph.addEdge (!from: key, !to: @{!"@" + self.mTypeName !self.mTypeName.location})
   //---
@@ -94,7 +96,7 @@ final class @abstractExtensionSetterAST : @semanticDeclarationAST {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func keyRepresentation () -> @string {
-    result = "abstract extension setter @" + self.mTypeName + " " + self.mAbstractExtensionSetterName
+    result = "abstract extension mutating proc @" + self.mTypeName + " " + self.mAbstractExtensionSetterName
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -123,11 +125,11 @@ final class @abstractExtensionSetterAST : @semanticDeclarationAST {
     let @unifiedTypeMapEntry selfType = [ioTypeMap typeMapEntryForLKey !self.mTypeName]
   //--- Check self type is an abstract class
     if not selfType.definition.typeKind.isClassType then
-      error (self.mAbstractExtensionSetterName: "cannot declare a extension setter: '@" + selfType.definition.typeName.string + "' is not a class")
+      error (self.mAbstractExtensionSetterName: "cannot declare a extension mutating proc: '@" + selfType.definition.typeName.string + "' is not a class")
     elsif selfType.definition.isConcrete then
-      error (self.mAbstractExtensionSetterName: "cannot declare an abstract extension setter: '@" + selfType.definition.typeName.string + "' is not an abstract class")
+      error (self.mAbstractExtensionSetterName: "cannot declare an abstract extension mutating proc: '@" + selfType.definition.typeName.string + "' is not an abstract class")
     end
-  //--- Compute setter signature
+  //--- Compute mutating proc signature
     var formalParameterListForGeneration = @formalParameterListForGeneration ()
     for (mFormalSelector mFormalArgumentPassingMode mFormalArgumentTypeName mFormalArgumentName *) in self.mAbstractExtensionSetterFormalParameterList do
       formalParameterListForGeneration +=
@@ -139,10 +141,10 @@ final class @abstractExtensionSetterAST : @semanticDeclarationAST {
     end
   //---
     ioSemanticDeclarationListForGeneration +=
-      !infoMessage: " abstract extension setter " + self.mAbstractExtensionSetterName
+      !infoMessage: " abstract extension mutating proc " + self.mAbstractExtensionSetterName
       !@abstractExtensionSetterForGeneration {
         !generateHeader: true // Generate Cpp header file
-        !implementationCppFileName: "setter-" + self.mTypeName.string.fileNameRepresentation + "-" + self.mAbstractExtensionSetterName.string.fileNameRepresentation
+        !implementationCppFileName: "mutating proc-" + self.mTypeName.string.fileNameRepresentation + "-" + self.mAbstractExtensionSetterName.string.fileNameRepresentation
         !selfType
         !self.mAbstractExtensionSetterName.string
         !formalParameterListForGeneration
@@ -203,7 +205,7 @@ final class @abstractExtensionSetterForGeneration : @semanticDeclarationWithHead
   override proc appendSpecificImplementation (?let @unifiedTypeMap unused inTypeMap,
     ?!@stringset ioInclusionSet,
     !@string outImplementation) {
-    ioInclusionSet ++= "setter-" + self.mReceiverType.definition.typeName.string.fileNameRepresentation + "-" + self.mAbstractExtensionSetterName.fileNameRepresentation
+    ioInclusionSet ++= "mutating proc-" + self.mReceiverType.definition.typeName.string.fileNameRepresentation + "-" + self.mAbstractExtensionSetterName.fileNameRepresentation
     self.mReceiverType.addHeaderFileName (!?ioInclusionSet)
     for (* * mFormalArgumentType * *) in self.mAbstractExtensionSetterFormalParameterList do
       mFormalArgumentType.addHeaderFileName (!?ioInclusionSet)

@@ -1832,18 +1832,7 @@ class GGS_lstring function_makeWeakTypeLName (const class GGS_lstring & constinA
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension proc '@AccessControlAST checkCompatibilityWithLet'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionMethod_checkCompatibilityWithLet (const class GGS_AccessControlAST inObject,
-                                                const class GGS_location constin_inLocation,
-                                                class Compiler * inCompiler
-                                                COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension setter '@galgasDeclarationAST getOptionalTypeName'
+//Extension mutating proc '@galgasDeclarationAST getOptionalTypeName'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -1853,6 +1842,17 @@ void extensionSetter_getOptionalTypeName (class GGS_galgasDeclarationAST & ioObj
                                           const class GGS_bool constin_inPredefined,
                                           class Compiler * inCompiler
                                           COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Extension proc '@AccessControlAST checkCompatibilityWithLet'
+//
+//--------------------------------------------------------------------------------------------------
+
+void extensionMethod_checkCompatibilityWithLet (const class GGS_AccessControlAST inObject,
+                                                const class GGS_location constin_inLocation,
+                                                class Compiler * inCompiler
+                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -2639,7 +2639,7 @@ class cParser_galgas_33_SyntaxComponentSyntax {
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension setter '@syntaxExtensions insertKey'
+//Extension mutating proc '@syntaxExtensions insertKey'
 //
 //--------------------------------------------------------------------------------------------------
 

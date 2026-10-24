@@ -24,7 +24,7 @@
 //! LOCAL VARIABLE
 //--------------------------------------------------------------------------------------------------
 
-setter @localVarManager insertDeclaredLocalVariable (?let @lstring inVarName,
+mutating proc @localVarManager.insertDeclaredLocalVariable (?let @lstring inVarName,
                                                     ?let @unifiedTypeMapEntry inType,
                                                     ?let @string inCppName,
                                                     ?let @string inNameForCheckingFormalParameterUsing ) {
@@ -34,13 +34,13 @@ setter @localVarManager insertDeclaredLocalVariable (?let @lstring inVarName,
     !inCppName,
     !inNameForCheckingFormalParameterUsing,
     ! @(),
-    !.declared {!usedInSubscope: false}
+    !.declared (!usedInSubscope: false)
   )
 }
 
 //--------------------------------------------------------------------------------------------------
 
-setter @localVarManager insertInitializedLocalVariable (?let @lstring inVarName,
+mutating proc @localVarManager.insertInitializedLocalVariable (?let @lstring inVarName,
                                                        ?warnsIfNotMutated: let @bool inWarnsIfNotMutated,
                                                        ?let @unifiedTypeMapEntry inType,
                                                        ?let @string inCppName,
@@ -59,7 +59,7 @@ setter @localVarManager insertInitializedLocalVariable (?let @lstring inVarName,
 //! LOCAL CONSTANT
 //--------------------------------------------------------------------------------------------------
 
-setter @localVarManager insertUsedLocalConstant (?let @lstring inVarName,
+mutating proc @localVarManager.insertUsedLocalConstant (?let @lstring inVarName,
                                                 ?let @unifiedTypeMapEntry inType,
                                                 ?let @string inCppName,
                                                 ?let @string inNameForCheckingFormalParameterUsing ) {
@@ -75,7 +75,7 @@ setter @localVarManager insertUsedLocalConstant (?let @lstring inVarName,
 
 //--------------------------------------------------------------------------------------------------
 
-setter @localVarManager insertInitializedLocalConstant (?let @lstring inVarName,
+mutating proc @localVarManager.insertInitializedLocalConstant (?let @lstring inVarName,
                                                        ?let @unifiedTypeMapEntry inType,
                                                        ?let @string inCppName,
                                                        ?let @string inNameForCheckingFormalParameterUsing ) {
@@ -91,7 +91,7 @@ setter @localVarManager insertInitializedLocalConstant (?let @lstring inVarName,
 
 //--------------------------------------------------------------------------------------------------
 
-setter @localVarManager insertDeclaredLocalConstant (?let @lstring inVarName,
+mutating proc @localVarManager.insertDeclaredLocalConstant (?let @lstring inVarName,
                                                     ?let @unifiedTypeMapEntry inType,
                                                     ?let @string inCppName,
                                                     ?let @string inNameForCheckingFormalParameterUsing ) {
@@ -101,7 +101,7 @@ setter @localVarManager insertDeclaredLocalConstant (?let @lstring inVarName,
     !inCppName,
     !inNameForCheckingFormalParameterUsing,
     !.rejectWriteInInitializedAndReadStates | .acceptReadStateAsFinalState,
-    !.declared {!usedInSubscope: false}
+    !.declared (!usedInSubscope: false)
   )
 }
 
@@ -109,7 +109,7 @@ setter @localVarManager insertDeclaredLocalConstant (?let @lstring inVarName,
 //! INPUT FORMAL ARGUMENT
 //--------------------------------------------------------------------------------------------------
 
-setter @localVarManager insertInputFormalArgumentDeclaredAsUnused (?let @lstring inVarName,
+mutating proc @localVarManager.insertInputFormalArgumentDeclaredAsUnused (?let @lstring inVarName,
                                                                   ?let @unifiedTypeMapEntry inType,
                                                                   ?let @string inCppName,
                                                                   ?let @string inNameForCheckingFormalParameterUsing ) {
@@ -125,7 +125,7 @@ setter @localVarManager insertInputFormalArgumentDeclaredAsUnused (?let @lstring
 
 //--------------------------------------------------------------------------------------------------
 
-setter @localVarManager insertInputFormalArgument (?let @lstring inVarName,
+mutating proc @localVarManager.insertInputFormalArgument (?let @lstring inVarName,
                                                   ?let @unifiedTypeMapEntry inType,
                                                   ?let @string inCppName,
                                                   ?let @string inNameForCheckingFormalParameterUsing ) {
@@ -141,7 +141,7 @@ setter @localVarManager insertInputFormalArgument (?let @lstring inVarName,
 
 //--------------------------------------------------------------------------------------------------
 
-setter @localVarManager insertConstantInputFormalArgumentDeclaredAsUnused (?let @lstring inVarName,
+mutating proc @localVarManager.insertConstantInputFormalArgumentDeclaredAsUnused (?let @lstring inVarName,
                                                                           ?let @unifiedTypeMapEntry inType,
                                                                           ?let @string inCppName,
                                                                           ?let @string inNameForCheckingFormalParameterUsing ) {
@@ -157,7 +157,7 @@ setter @localVarManager insertConstantInputFormalArgumentDeclaredAsUnused (?let 
 
 //--------------------------------------------------------------------------------------------------
 
-setter @localVarManager insertConstantInputFormalArgument (?let @lstring inVarName,
+mutating proc @localVarManager.insertConstantInputFormalArgument (?let @lstring inVarName,
                                                           ?let @unifiedTypeMapEntry inType,
                                                           ?let @string inCppName,
                                                           ?let @string inNameForCheckingFormalParameterUsing ) {
@@ -175,7 +175,7 @@ setter @localVarManager insertConstantInputFormalArgument (?let @lstring inVarNa
 //! OUTPUT FORMAL ARGUMENT
 //--------------------------------------------------------------------------------------------------
 
-setter @localVarManager insertOutputFormalArgument (?let @lstring inVarName,
+mutating proc @localVarManager.insertOutputFormalArgument (?let @lstring inVarName,
                                                    ?let @unifiedTypeMapEntry inType,
                                                    ?let @string inCppName,
                                                    ?let @string inNameForCheckingFormalParameterUsing ) {
@@ -185,7 +185,7 @@ setter @localVarManager insertOutputFormalArgument (?let @lstring inVarName,
     !inCppName,
     !inNameForCheckingFormalParameterUsing,
     !.rejectDeclaredStateAsFinalState | .acceptInitializedStateAsFinalState | .acceptReadStateAsFinalState,
-    !.declared {!usedInSubscope: false}
+    !.declared (!usedInSubscope: false)
   )
 }
 
@@ -193,7 +193,7 @@ setter @localVarManager insertOutputFormalArgument (?let @lstring inVarName,
 //! INPUT OUTPUT FORMAL ARGUMENT
 //--------------------------------------------------------------------------------------------------
 
-setter @localVarManager insertInputOutputFormalArgumentDeclaredAsUnused (?let @lstring inVarName,
+mutating proc @localVarManager.insertInputOutputFormalArgumentDeclaredAsUnused (?let @lstring inVarName,
                                                                         ?let @unifiedTypeMapEntry inType,
                                                                         ?let @string inCppName,
                                                                         ?let @string inNameForCheckingFormalParameterUsing ) {
@@ -209,7 +209,7 @@ setter @localVarManager insertInputOutputFormalArgumentDeclaredAsUnused (?let @l
 
 //--------------------------------------------------------------------------------------------------
 
-setter @localVarManager insertInputOutputFormalArgument (?let @lstring inVarName,
+mutating proc @localVarManager.insertInputOutputFormalArgument (?let @lstring inVarName,
                                                         ?let @unifiedTypeMapEntry inType,
                                                         ?let @string inCppName,
                                                         ?let @string inNameForCheckingFormalParameterUsing ) {
@@ -228,7 +228,7 @@ setter @localVarManager insertInputOutputFormalArgument (?let @lstring inVarName
 //! PROPERTY
 //--------------------------------------------------------------------------------------------------
 
-setter @localVarManager insertNonMutableProperty (?let @lstring inVarName,
+mutating proc @localVarManager.insertNonMutableProperty (?let @lstring inVarName,
                                                  ?let @unifiedTypeMapEntry inType,
                                                  ?let @string inCppName,
                                                  ?let @string inNameForCheckingFormalParameterUsing ) {
@@ -245,7 +245,7 @@ setter @localVarManager insertNonMutableProperty (?let @lstring inVarName,
 
 //--------------------------------------------------------------------------------------------------
 
-setter @localVarManager insertMutableProperty (?let @lstring inVarName,
+mutating proc @localVarManager.insertMutableProperty (?let @lstring inVarName,
                                               ?let @unifiedTypeMapEntry inType,
                                               ?let @string inCppName,
                                               ?let @string inNameForCheckingFormalParameterUsing ) {
@@ -263,14 +263,14 @@ setter @localVarManager insertMutableProperty (?let @lstring inVarName,
 //! PROPERTY IN INITIALIZER
 //--------------------------------------------------------------------------------------------------
 
-setter @localVarManager insertInitializerSelfProperty
+mutating proc @localVarManager.insertInitializerSelfProperty
                               (?let @string inPropertyName,
                               ?let @location inErrorLocation,
                               ?let @unifiedTypeMapEntry inType,
                               ?let @string inCppName,
                               ?let @string inNameForCheckingFormalParameterUsing,
                               ?initialized: let @bool inInitialized ) {
-  let varName = @lstring {!"self." + inPropertyName !inErrorLocation}
+  let varName = @lstring ("self." + inPropertyName, inErrorLocation)
   !?self.mCurrentManager.insertKey
     (!varName,
     !inType,
@@ -278,7 +278,7 @@ setter @localVarManager insertInitializerSelfProperty
     !inNameForCheckingFormalParameterUsing,
     !.rejectDeclaredStateAsFinalState
       | .acceptInitializedStateAsFinalState | .acceptReadStateAsFinalState,
-    !if inInitialized then .initialized else .declared {!usedInSubscope: false} end
+    !if inInitialized then .initialized else .declared (!usedInSubscope: false) end
   )
 }
 
@@ -286,24 +286,24 @@ setter @localVarManager insertInitializerSelfProperty
 //! OVERRIDES AND BRANCHES
 //--------------------------------------------------------------------------------------------------
 
-setter @localVarManager openOverrideForSelectBlock () {
-  self.mOverridenManagers += !.selectOverrideFirstBranch {!savedManager: self.mCurrentManager}
+mutating proc @localVarManager.openOverrideForSelectBlock () {
+  self.mOverridenManagers ++= @(.selectOverrideFirstBranch (!savedManager: self.mCurrentManager))
 }
 
 //--------------------------------------------------------------------------------------------------
 
-setter @localVarManager openOverrideForRepeatBlock () {
-  self.mOverridenManagers += !.repeatOverride
+mutating proc @localVarManager.openOverrideForRepeatBlock () {
+  self.mOverridenManagers ++= @(.repeatOverride)
 }
 
 //--------------------------------------------------------------------------------------------------
 
-setter @localVarManager closeOverride (?let @location unused inEndOfBranchLocation ) {
+mutating proc @localVarManager.closeOverride (?let @location unused inEndOfBranchLocation ) {
   if self.mOverridenManagers.count > 0 then
     !?self.mOverridenManagers.popLast (?let savedManager)
     switch savedManager
     case selectOverrideFirstBranch (@currentVarManager unused savedManager) :
-    case selectOverrideNextBranches (@currentVarManager unused savedManager @currentVarManager referenceManager) :
+    case selectOverrideNextBranches (@currentVarManager unused savedManager, @currentVarManager referenceManager) :
       self.mCurrentManager = referenceManager
     case repeatOverride :
     end
@@ -312,28 +312,28 @@ setter @localVarManager closeOverride (?let @location unused inEndOfBranchLocati
 
 //--------------------------------------------------------------------------------------------------
 
-setter @localVarManager openBranch () {
+mutating proc @localVarManager.openBranch () {
   !?self.mCurrentManager.openScope ()
 }
 
 //--------------------------------------------------------------------------------------------------
 
-setter @localVarManager closeBranch (?let @location inEndOfBranchLocation ) {
+mutating proc @localVarManager.closeBranch (?let @location inEndOfBranchLocation ) {
   !?self.mCurrentManager.closeScope (!inEndOfBranchLocation)
 //---
   if self.mOverridenManagers.count > 0 then
     !?self.mOverridenManagers.popLast (?let savedManager)
     switch savedManager
     case selectOverrideFirstBranch (@currentVarManager savedManager) :
-      self.mOverridenManagers += !.selectOverrideNextBranches {!savedManager: savedManager !referenceManager: self.mCurrentManager}
+      self.mOverridenManagers ++= @(.selectOverrideNextBranches (!savedManager: savedManager, !referenceManager: self.mCurrentManager))
       self.mCurrentManager = savedManager
-    case selectOverrideNextBranches (@currentVarManager savedManager @currentVarManager referenceManager) :
+    case selectOverrideNextBranches (@currentVarManager savedManager, @currentVarManager referenceManager) :
       var newReferenceManager = self.mCurrentManager
       !?newReferenceManager.combineManagerWith (!otherManager: referenceManager, !errorLocation: inEndOfBranchLocation)
-      self.mOverridenManagers += !.selectOverrideNextBranches {!savedManager: savedManager !referenceManager: newReferenceManager}
+      self.mOverridenManagers ++= @(.selectOverrideNextBranches (!savedManager: savedManager, !referenceManager: newReferenceManager))
       self.mCurrentManager = savedManager
     case repeatOverride :
-      self.mOverridenManagers += !savedManager
+      self.mOverridenManagers ++= @(savedManager)
     end
   end
 }
@@ -369,9 +369,9 @@ map @scopeLocalVarMap {
   private var @string mNameForCheckingFormalParameterUsing
   private var @localVariableAttributes mAttributes
   private var @localVarValuation mState
-  insert insertKey error message "the '%K' local variable is already declared"
-  search searchKey error message "there is no '%K' local variable"
-  remove removeKey error message "there is no '%K' local variable"
+  %insertSetter insertKey %errorMessage "the '%K' local variable is already declared"
+  %searchMethod searchKey %errorMessage "there is no '%K' local variable"
+  %removeSetter removeKey %errorMessage "there is no '%K' local variable"
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -384,7 +384,7 @@ list @localVarMapListForLLVM {
 
 enum @overrideKind {
   case selectOverrideFirstBranch (@currentVarManager savedManager)
-  case selectOverrideNextBranches (@currentVarManager savedManager @currentVarManager referenceManager)
+  case selectOverrideNextBranches (@currentVarManager savedManager, @currentVarManager referenceManager)
   case repeatOverride
 }
 
@@ -397,7 +397,7 @@ list @openedOverrideList {
 //--------------------------------------------------------------------------------------------------
 
 struct @localVarManager {
-  private var @currentVarManager mCurrentManager = @{}
+  private var @currentVarManager mCurrentManager = @()
   private var @openedOverrideList mOverridenManagers = @()
 }
 
@@ -412,17 +412,17 @@ struct @currentVarManager {
 //! checkSelfObjectIsFullyInitialized
 //--------------------------------------------------------------------------------------------------
 
-proc @localVarManager checkSelfObjectIsFullyInitialized (?let @location inErrorLocation ) {
+proc @localVarManager.checkSelfObjectIsFullyInitialized (?let @location inErrorLocation ) {
   self.mCurrentManager.checkSelfObjectIsFullyInitialized (!inErrorLocation)
 }
 
 //--------------------------------------------------------------------------------------------------
 
-proc @currentVarManager checkSelfObjectIsFullyInitialized (?let @location inErrorLocation ) {
+proc @currentVarManager.checkSelfObjectIsFullyInitialized (?let @location inErrorLocation ) {
   var fullyInitialized = true
   for entry in self.mLocalVarMap while fullyInitialized do
-    let keyComponents = [entry.lkey.string componentsSeparatedByString !"."]
-    if (keyComponents.count == 2) && ([keyComponents mValueAtIndex !0] == "self") then
+    let keyComponents = entry.lkey.string.componentsSeparatedByString (".")
+    if (keyComponents.count == 2) && (keyComponents.mValueAtIndex (0) == "self") then
       fullyInitialized = not entry.mState.isDeclared
     end
   end
@@ -435,7 +435,7 @@ proc @currentVarManager checkSelfObjectIsFullyInitialized (?let @location inErro
 //! NEUTRAL ACCESS
 //--------------------------------------------------------------------------------------------------
 
-setter @localVarManager neutralAccess (?let @lstring inVarName,
+mutating proc @localVarManager.neutralAccess (?let @lstring inVarName,
                                       !@unifiedTypeMapEntry outType,
                                       !@string outCppName,
                                       !@string outNameForCheckingFormalParameterUsing ) {
@@ -449,11 +449,11 @@ setter @localVarManager neutralAccess (?let @lstring inVarName,
 
 //--------------------------------------------------------------------------------------------------
 
-setter @currentVarManager neutralAccess (?let @lstring inVarName,
+mutating proc @currentVarManager.neutralAccess (?let @lstring inVarName,
                                         !@unifiedTypeMapEntry outType,
                                         !@string outCppName,
                                         !@string outNameForCheckingFormalParameterUsing ) {
-  if let varDescriptor = self.mLocalVarMap @[inVarName] then
+  if let varDescriptor = self.mLocalVarMap [inVarName] then
 //  if let [self.mLocalVarMap searchKey !inVarName ?let type ?let cppName ?let nameForCheckingFormalParameterUsing ?2*] then
     outType = varDescriptor.mType
     outCppName = varDescriptor.mCppName
@@ -471,7 +471,7 @@ setter @currentVarManager neutralAccess (?let @lstring inVarName,
 
 //--------------------------------------------------------------------------------------------------
 
-setter @localVarMapListForLLVM neutralAccess (?let @lstring inVarName,
+mutating proc @localVarMapListForLLVM.neutralAccess (?let @lstring inVarName,
                                              ?let @uint inIndex,
                                              !@unifiedTypeMapEntry outType,
                                              !@string outCppName,
@@ -480,8 +480,8 @@ setter @localVarMapListForLLVM neutralAccess (?let @lstring inVarName,
     error (inVarName : "'" + inVarName + "' variable is not declared"
     spoil outType, outCppName, outNameForCheckingFormalParameterUsing)
   else
-    let localMap = [self mMapAtIndex !inIndex]
-    if let varDescriptor = localMap @[inVarName] then
+    let localMap = self.mMapAtIndex (inIndex)
+    if let varDescriptor = localMap [inVarName] then
       outType = varDescriptor.mType
       outCppName = varDescriptor.mCppName
       outNameForCheckingFormalParameterUsing = varDescriptor.mNameForCheckingFormalParameterUsing
@@ -495,20 +495,20 @@ setter @localVarMapListForLLVM neutralAccess (?let @lstring inVarName,
 //! DROP ACCESS
 //--------------------------------------------------------------------------------------------------
 
-setter @localVarManager searchForDropAccess (?let @lstring inVarName ) {
+mutating proc @localVarManager.searchForDropAccess (?let @lstring inVarName ) {
   !?self.mCurrentManager.searchForDropAccess (!inVarName)
 }
 
 //--------------------------------------------------------------------------------------------------
 
-setter @currentVarManager searchForDropAccess (?let @lstring inVarName ) {
-  if let varDescriptor = self.mLocalVarMap @[inVarName] then
+mutating proc @currentVarManager.searchForDropAccess (?let @lstring inVarName ) {
+  if let varDescriptor = self.mLocalVarMap [inVarName] then
     varDescriptor.mState.checkFinalState (!inVarName, !varDescriptor.mAttributes)
     !?self.mLocalVarMap.removeKey (!inVarName, ?5*)
   else
     var found = false
     for (subMap) in self.mSubMaps while not found do
-      found = [subMap hasKey !inVarName.string]
+      found = subMap.hasKey (inVarName.string)
     end
     if found then
       error (inVarName : "variable '" + inVarName + "' is not declared in current scope, but in an overrided scope")
@@ -522,7 +522,7 @@ setter @currentVarManager searchForDropAccess (?let @lstring inVarName ) {
 //! WRITE ACCESS
 //--------------------------------------------------------------------------------------------------
 
-setter @localVarManager searchForWriteAccess (?let @lstring inVarName,
+mutating proc @localVarManager.searchForWriteAccess (?let @lstring inVarName,
                                              !@unifiedTypeMapEntry outType,
                                              !@string outCppName,
                                              !@string outNameForCheckingFormalParameterUsing ) {
@@ -536,18 +536,11 @@ setter @localVarManager searchForWriteAccess (?let @lstring inVarName,
 
 //--------------------------------------------------------------------------------------------------
 
-setter @currentVarManager searchForWriteAccess (?let @lstring inVarName,
+mutating proc @currentVarManager.searchForWriteAccess (?let @lstring inVarName,
                                                !@unifiedTypeMapEntry outType,
                                                !@string outCppName,
                                                !@string outNameForCheckingFormalParameterUsing ) {
-  if let varDescriptor = self.mLocalVarMap @[inVarName] then
-//  if let [self.mLocalVarMap searchKey
-//            !inVarName
-//            ?let type
-//            ?let cppName
-//            ?let nameForCheckingFormalParameterUsing
-//            ?let attributes
-//            ?let valuation] then
+  if let varDescriptor = self.mLocalVarMap [inVarName] then
     var newValuation = varDescriptor.mState
     !?newValuation.writeTransition (!inVarName, !inOverridenMap: false, !varDescriptor.mAttributes)
     if newValuation != varDescriptor.mState then
@@ -563,7 +556,7 @@ setter @currentVarManager searchForWriteAccess (?let @lstring inVarName,
 
 //--------------------------------------------------------------------------------------------------
 
-setter @localVarMapListForLLVM writeAccessInSubMap (?let @lstring inVarName,
+mutating proc @localVarMapListForLLVM.writeAccessInSubMap (?let @lstring inVarName,
                                                    ?let @uint inIndex,
                                                    !@unifiedTypeMapEntry outType,
                                                    !@string outCppName,
@@ -572,8 +565,8 @@ setter @localVarMapListForLLVM writeAccessInSubMap (?let @lstring inVarName,
     error (inVarName : "'" + inVarName + "' variable is not declared"
     spoil outType, outCppName, outNameForCheckingFormalParameterUsing)
   else
-    var localMap = [self mMapAtIndex !inIndex]
-    if let varDescriptor = localMap @[inVarName] then
+    var localMap = self.mMapAtIndex (inIndex)
+    if let varDescriptor = localMap [inVarName] then
       var newValuation = varDescriptor.mState
       !?newValuation.writeTransition (!inVarName, !inOverridenMap: true, !varDescriptor.mAttributes)
       if newValuation != varDescriptor.mState then
@@ -591,7 +584,7 @@ setter @localVarMapListForLLVM writeAccessInSubMap (?let @lstring inVarName,
 
 //--------------------------------------------------------------------------------------------------
 
-setter @localVarValuation writeTransition (?let @lstring inVarName,
+mutating proc @localVarValuation.writeTransition (?let @lstring inVarName,
                                           ?inOverridenMap: let @bool inOverridenMap,
                                           ?let @localVariableAttributes inAttributes ) {
   switch self
@@ -599,19 +592,19 @@ setter @localVarValuation writeTransition (?let @lstring inVarName,
   case declared (*) : // The variable has no value
     self = .initialized
   case initialized : // The variable has been written once
-    if [inAttributes contains !.warnsOnAnyAcces] then
+    if inAttributes.contains (.warnsOnAnyAcces) then
       warning inVarName : "formal parameter has been declared as unused"
     end
-    if [inAttributes contains !.rejectWriteInInitializedAndReadStates] then
+    if inAttributes.contains (.rejectWriteInInitializedAndReadStates) then
       error (inVarName : "constant '" + inVarName + "' cannot be mutated")
       self = .invalid
-    elsif not [inAttributes contains !.acceptInitializedStateAsFinalState] && not inOverridenMap then
+    elsif not inAttributes.contains (.acceptInitializedStateAsFinalState) && not inOverridenMap then
       warning inVarName : "variable '" + inVarName + "' was written to, but never read"
     else
       self = .mutated
     end
   case read : // The variable has been written, and read
-    if [inAttributes contains !.rejectWriteInInitializedAndReadStates] then
+    if inAttributes.contains (.rejectWriteInInitializedAndReadStates) then
       error (inVarName : "constant '" + inVarName + "' cannot be mutated")
       self = .invalid
     else
@@ -626,7 +619,7 @@ setter @localVarValuation writeTransition (?let @lstring inVarName,
 //! READ ACCESS
 //--------------------------------------------------------------------------------------------------
 
-setter @localVarManager searchForReadAccess (?let @lstring inVarName,
+mutating proc @localVarManager.searchForReadAccess (?let @lstring inVarName,
                                             !@unifiedTypeMapEntry outType,
                                             !@string outCppName,
                                             !@string outNameForCheckingFormalParameterUsing ) {
@@ -635,11 +628,11 @@ setter @localVarManager searchForReadAccess (?let @lstring inVarName,
 
 //--------------------------------------------------------------------------------------------------
 
-setter @currentVarManager searchForReadAccess (?let @lstring inVarName,
+mutating proc @currentVarManager.searchForReadAccess (?let @lstring inVarName,
                                               !@unifiedTypeMapEntry outType,
                                               !@string outCppName,
                                               !@string outNameForCheckingFormalParameterUsing ) {
-  if let varDescriptor = self.mLocalVarMap @[inVarName] then
+  if let varDescriptor = self.mLocalVarMap [inVarName] then
     var newValuation = varDescriptor.mState
     !?newValuation.readTransition (!inVarName, !varDescriptor.mAttributes)
     outType = varDescriptor.mType
@@ -655,7 +648,7 @@ setter @currentVarManager searchForReadAccess (?let @lstring inVarName,
 
 //--------------------------------------------------------------------------------------------------
 
-setter @localVarMapListForLLVM readAccess (?let @lstring inVarName,
+mutating proc @localVarMapListForLLVM.readAccess (?let @lstring inVarName,
                                           ?let @uint inIndex,
                                           !@unifiedTypeMapEntry outType,
                                           !@string outCppName,
@@ -664,8 +657,8 @@ setter @localVarMapListForLLVM readAccess (?let @lstring inVarName,
     error (inVarName : "'" + inVarName + "' variable is not declared"
     spoil outType, outCppName, outNameForCheckingFormalParameterUsing)
   else
-    var localMap = [self mMapAtIndex !inIndex]
-    if let varDescriptor = localMap @[inVarName] then
+    var localMap = self.mMapAtIndex (inIndex)
+    if let varDescriptor = localMap [inVarName] then
       var newValuation = varDescriptor.mState
       !?newValuation.readTransition (!inVarName, !varDescriptor.mAttributes)
       outType = varDescriptor.mType
@@ -683,7 +676,7 @@ setter @localVarMapListForLLVM readAccess (?let @lstring inVarName,
 
 //--------------------------------------------------------------------------------------------------
 
-setter @localVarValuation readTransition (?let @lstring inVarName,
+mutating proc @localVarValuation.readTransition (?let @lstring inVarName,
                                          ?let @localVariableAttributes inAttributes ) {
   switch self
   case invalid :
@@ -692,15 +685,15 @@ setter @localVarValuation readTransition (?let @lstring inVarName,
     self = .invalid
   case initialized: // The variable has been written once
     self = .read
-    if [inAttributes contains !.warnsOnAnyAcces] then
+    if inAttributes.contains (.warnsOnAnyAcces) then
       warning inVarName : "formal parameter has been declared as unused"
     end
   case read : // The variable has been written, and read
-    if [inAttributes contains !.warnsOnAnyAcces] then
+    if inAttributes.contains (.warnsOnAnyAcces) then
       warning inVarName : "formal parameter has been declared as unused"
     end
   case mutated : // The variable has been rewritten
-    if [inAttributes contains !.warnsOnAnyAcces] then
+    if inAttributes.contains (.warnsOnAnyAcces) then
       warning inVarName : "formal parameter has been declared as unused"
     end
   end
@@ -710,7 +703,7 @@ setter @localVarValuation readTransition (?let @lstring inVarName,
 //! READ WRITE ACCESS
 //--------------------------------------------------------------------------------------------------
 
-setter @localVarManager searchForReadWriteAccess (?let @lstring inVarName,
+mutating proc @localVarManager.searchForReadWriteAccess (?let @lstring inVarName,
                                                  !@unifiedTypeMapEntry outType,
                                                  !@string outCppName,
                                                  !@string outNameForCheckingFormalParameterUsing ) {
@@ -719,11 +712,11 @@ setter @localVarManager searchForReadWriteAccess (?let @lstring inVarName,
 
 //--------------------------------------------------------------------------------------------------
 
-setter @currentVarManager searchForReadWriteAccess (?let @lstring inVarName,
+mutating proc @currentVarManager.searchForReadWriteAccess (?let @lstring inVarName,
                                                    !@unifiedTypeMapEntry outType,
                                                    !@string outCppName,
                                                    !@string outNameForCheckingFormalParameterUsing ) {
-  if let varDescriptor = self.mLocalVarMap @[inVarName] then
+  if let varDescriptor = self.mLocalVarMap [inVarName] then
 //  if let [self.mLocalVarMap searchKey
 //           !inVarName
 //           ?let type
@@ -746,7 +739,7 @@ setter @currentVarManager searchForReadWriteAccess (?let @lstring inVarName,
 
 //--------------------------------------------------------------------------------------------------
 
-setter @localVarMapListForLLVM readWriteAccess (?let @lstring inVarName,
+mutating proc @localVarMapListForLLVM.readWriteAccess (?let @lstring inVarName,
                                                ?let @uint inIndex,
                                                !@unifiedTypeMapEntry outType,
                                                !@string outCppName,
@@ -755,8 +748,8 @@ setter @localVarMapListForLLVM readWriteAccess (?let @lstring inVarName,
     error (inVarName : "'" + inVarName + "' variable is not declared"
     spoil outType, outCppName, outNameForCheckingFormalParameterUsing)
   else
-    var localMap = [self mMapAtIndex !inIndex]
-    if let varDescriptor = localMap @[inVarName] then
+    var localMap = self.mMapAtIndex (inIndex)
+    if let varDescriptor = localMap [inVarName] then
       var newValuation = varDescriptor.mState
       !?newValuation.readWriteTransition (!inVarName, !inOverridenMap: true, !varDescriptor.mAttributes)
       if newValuation != varDescriptor.mState then
@@ -774,7 +767,7 @@ setter @localVarMapListForLLVM readWriteAccess (?let @lstring inVarName,
 
 //--------------------------------------------------------------------------------------------------
 
-setter @localVarValuation readWriteTransition (?let @lstring inVarName,
+mutating proc @localVarValuation.readWriteTransition (?let @lstring inVarName,
                                               ?inOverridenMap: let @bool inOverridenMap,
                                               ?let @localVariableAttributes inAttributes ) {
   !?self.readTransition (!inVarName, !inAttributes)
@@ -785,14 +778,14 @@ setter @localVarValuation readWriteTransition (?let @lstring inVarName,
 //! SCOPE
 //--------------------------------------------------------------------------------------------------
 
-setter @currentVarManager openScope () {
+mutating proc @currentVarManager.openScope () {
   !?self.mSubMaps.insertAtIndex (!self.mLocalVarMap, !0)
   self.mLocalVarMap = @()
 }
 
 //--------------------------------------------------------------------------------------------------
 
-setter @currentVarManager closeScope (?let @location inErrorLocation ) {
+mutating proc @currentVarManager.closeScope (?let @location inErrorLocation ) {
   self.mLocalVarMap.checkFinalStates (!inErrorLocation)
   if self.mSubMaps.count == 0 then
     error (inErrorLocation : "EMPTY SUBMAPS")
@@ -806,7 +799,7 @@ setter @currentVarManager closeScope (?let @location inErrorLocation ) {
 //! INSERT KEY
 //--------------------------------------------------------------------------------------------------
 
-setter @currentVarManager insertKey (?let @lstring inVarName,
+mutating proc @currentVarManager.insertKey (?let @lstring inVarName,
                                     ?let @unifiedTypeMapEntry inType,
                                     ?let @string inCppName,
                                     ?let @string inNameForCheckingFormalParameterUsing,
@@ -826,11 +819,11 @@ setter @currentVarManager insertKey (?let @lstring inVarName,
 //! CHECK FINAL STATE
 //--------------------------------------------------------------------------------------------------
 
-proc @localVarValuation checkFinalState (?let @lstring inVarName ,?let @localVariableAttributes inAttributes ) {
+proc @localVarValuation.checkFinalState (?let @lstring inVarName ,?let @localVariableAttributes inAttributes ) {
   switch self
   case invalid :
   case declared (usedInOtherBlock) : // The variable has no value
-    if [inAttributes contains !.rejectDeclaredStateAsFinalState] then
+    if inAttributes.contains (.rejectDeclaredStateAsFinalState) then
       error (inVarName : "variable '" + inVarName + "' should be initialized")
     elsif usedInOtherBlock then
       warning inVarName : "variable '" + inVarName + "' is only used  in sub scope; consider moving it"
@@ -838,13 +831,13 @@ proc @localVarValuation checkFinalState (?let @lstring inVarName ,?let @localVar
       warning inVarName : "variable '" + inVarName + "' was never used; consider removing it"
     end
   case initialized : // The variable has been written once
-    if [inAttributes contains !.suggestDeclareUnusedParameterAsUnused] then
+    if inAttributes.contains (.suggestDeclareUnusedParameterAsUnused) then
       warning inVarName : "parameter '" + inVarName + "' was never read; consider declaring it as unused"
-    elsif not [inAttributes contains !.acceptInitializedStateAsFinalState] then
+    elsif not inAttributes.contains (.acceptInitializedStateAsFinalState) then
       warning inVarName : "variable '" + inVarName + "' was never read; consider removing it"
     end
   case read :
-    if not [inAttributes contains !.acceptReadStateAsFinalState] then
+    if not inAttributes.contains (.acceptReadStateAsFinalState) then
       warning inVarName : "variable '" + inVarName + "' was never mutated; consider declaring it as 'let'"
     end
   case mutated :
@@ -854,21 +847,21 @@ proc @localVarValuation checkFinalState (?let @lstring inVarName ,?let @localVar
 
 //--------------------------------------------------------------------------------------------------
 
-proc @scopeLocalVarMap checkFinalStates (?let @location unused inErrorLocation ) {
-  for (varName 3* attributes valuation) in self do
-    valuation.checkFinalState (!varName, !attributes)
+proc @scopeLocalVarMap.checkFinalStates (?let @location unused inErrorLocation ) {
+  for entry in self do
+    entry.mState.checkFinalState (!entry.lkey, !entry.mAttributes)
   end
 }
 
 //--------------------------------------------------------------------------------------------------
 
-proc @localVarManager checkAutomatonStates (?let @location inErrorLocation ) {
+proc @localVarManager.checkAutomatonStates (?let @location inErrorLocation ) {
   self.mCurrentManager.checkAutomatonStates (!inErrorLocation)
 }
 
 //--------------------------------------------------------------------------------------------------
 
-proc @currentVarManager checkAutomatonStates (?let @location inErrorLocation ) {
+proc @currentVarManager.checkAutomatonStates (?let @location inErrorLocation ) {
   self.mLocalVarMap.checkFinalStates (!inErrorLocation)
 }
 
@@ -876,7 +869,7 @@ proc @currentVarManager checkAutomatonStates (?let @location inErrorLocation ) {
 //! COMBINE MANAGERS
 //--------------------------------------------------------------------------------------------------
 
-proc @localVarValuation combineValuationWith (?let @localVarValuation inOther,
+proc @localVarValuation.combineValuationWith (?let @localVarValuation inOther,
                                                !@localVarValuation outResult,
                                                ?!@string unused ioErrorMessage ) {
   switch self
@@ -887,16 +880,16 @@ proc @localVarValuation combineValuationWith (?let @localVarValuation inOther,
     case invalid :
       outResult = inOther
     case declared (otherUsedInSubscope) :
-      outResult = .declared {!usedInSubscope: usedInSubscope | otherUsedInSubscope}
+      outResult = .declared (!usedInSubscope: usedInSubscope | otherUsedInSubscope)
     case initialized, read, mutated :
-      outResult = .declared {!usedInSubscope: true}
+      outResult = .declared (!usedInSubscope: true)
     end
   case initialized :
     switch inOther
     case invalid :
       outResult = inOther
     case declared (otherUsedInSubscope) :
-      outResult = .declared {!usedInSubscope: otherUsedInSubscope}
+      outResult = .declared (!usedInSubscope: otherUsedInSubscope)
     case initialized, read, mutated :
       outResult = inOther
     end
@@ -905,7 +898,7 @@ proc @localVarValuation combineValuationWith (?let @localVarValuation inOther,
     case invalid :
       outResult = inOther
     case declared (*) :
-      outResult = .declared {!usedInSubscope: true}
+      outResult = .declared (!usedInSubscope: true)
     case initialized :
       outResult = self
     case read, mutated :
@@ -916,7 +909,7 @@ proc @localVarValuation combineValuationWith (?let @localVarValuation inOther,
     case invalid :
       outResult = inOther
     case declared (*) :
-      outResult = .declared {!usedInSubscope: true}
+      outResult = .declared (!usedInSubscope: true)
     case initialized, read, mutated :
       outResult = self
     end
@@ -925,33 +918,33 @@ proc @localVarValuation combineValuationWith (?let @localVarValuation inOther,
 
 //--------------------------------------------------------------------------------------------------
 
-setter @scopeLocalVarMap combineMapWith (?otherMap: let @scopeLocalVarMap inOtherMap,
+mutating proc @scopeLocalVarMap.combineMapWith (?otherMap: let @scopeLocalVarMap inOtherMap,
                                         ?!@string ioErrorMessage ) {
-  for (varName * cppName * * valuation) in self do
-    if let otherVar = inOtherMap @[varName] then
-      if cppName != otherVar.mCppName then
-        ioErrorMessage += "\n  - 'internal error type 1 for '" + varName + "' local variable"
+  for entry in self do // (varName * cppName * * valuation) in self do
+    if let otherVar = inOtherMap [entry.lkey] then
+      if entry.mCppName != otherVar.mCppName then
+        ioErrorMessage += "\n  - 'internal error type 1 for '" + entry.lkey + "' local variable"
       else
-        valuation.combineValuationWith (!otherVar.mState, ?let newValuation, !?ioErrorMessage)
-        if newValuation != valuation then
-          !?self.setMStateForKey (!newValuation, !varName)
+        entry.mState.combineValuationWith (!otherVar.mState, ?let newValuation, !?ioErrorMessage)
+        if newValuation != entry.mState then
+          !?self.setMStateForKey (!newValuation, !entry.lkey)
         end
       end
     else
-      ioErrorMessage += "\n  - 'internal error type 2 for '" + varName + "' local variable"
+      ioErrorMessage += "\n  - 'internal error type 2 for '" + entry.lkey + "' local variable"
     end
   end
 
-  for (varName 5*) in inOtherMap do
-    if not [self hasKey !varName] then
-      ioErrorMessage += "\n  - 'internal error type 3 for '" + varName + "' local variable"
+  for entry in inOtherMap do // (varName 5*) in inOtherMap do
+    if not self.hasKey (entry.lkey) then
+      ioErrorMessage += "\n  - 'internal error type 3 for '" + entry.lkey + "' local variable"
     end
   end
 }
 
 //--------------------------------------------------------------------------------------------------
 
-setter @currentVarManager combineManagerWith (?otherManager: let @currentVarManager inOtherManager,
+mutating proc @currentVarManager.combineManagerWith (?otherManager: let @currentVarManager inOtherManager,
                                              ?errorLocation: let @location inErrorLocation ) {
   var s = ""
   !?self.mLocalVarMap.combineMapWith
@@ -968,7 +961,7 @@ setter @currentVarManager combineManagerWith (?otherManager: let @currentVarMana
        (!otherMap: otherSubMap,
        !?s
      )
-     newSubMapList += !mutableSubMap
+     newSubMapList ++= @(mutableSubMap)
     end
     self.mSubMaps = newSubMapList
   end

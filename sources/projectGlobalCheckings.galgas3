@@ -41,7 +41,7 @@ struct @genericExtensionMethodListMap {
 
   //·····························································································
 
-  setter insertKey  (?let @string inKey,
+  mutating proc insertKey  (?let @string inKey,
                     ?let @lstring inValue ) {
     if [self.dictionary hasKey !inKey] then
       self.dictionary.searchKey (!inKey, ?var aList)
@@ -110,7 +110,7 @@ struct @descendantClassListMap {
 
   //·····························································································
 
-  setter insertKey  (?let @string inKey,
+  mutating proc insertKey  (?let @string inKey,
                     ?let @unifiedTypeMapEntry inType ) {
     if [self.dictionary hasKey !inKey] then
       self.dictionary.searchKey (!inKey, ?var aList)
@@ -150,11 +150,11 @@ map @extensionMethodMapForGlobalCheckings {
 //
 //  E X T E N S I O N    S E T T E R    M A P
 //
-// Used for checking a extension-setter is defined once for a type
+// Used for checking a extension mutating proc is defined once for a type
 //--------------------------------------------------------------------------------------------------
 
 map @extensionSetterMapForGlobalCheckings {
-  insert insertKey error message "the '%K' extension setter is already declared in %L"
+  insert insertKey error message "the '%K' extension mutating proc is already declared in %L"
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -331,35 +331,35 @@ proc performGalgas3ProjectGlobalCheckings
   end
 //----- Check Extension
   if @uint.errorCount == 0 then
-  //--- A given abstract extension setter is defined only once for a class
+  //--- A given abstract extension mutating proc is defined only once for a class
     for (* mList) in abstractExtensionSetterListMap.dictionary do
       var @extensionSetterMapForGlobalCheckings extensionSetterMap = @()
       for (mValue) in mList do
         !?extensionSetterMap.insertKey (!mValue)
       end
     end
-  //--- A given base extension setter is defined only once for a class
+  //--- A given base extension mutating proc is defined only once for a class
     for (* mList) in extensionSetterListMap.dictionary do
       var @extensionSetterMapForGlobalCheckings extensionSetterMap = @()
       for (mValue) in mList do
         !?extensionSetterMap.insertKey (!mValue)
       end
     end
-  //--- A given overriding extension setter is defined only once for a class
+  //--- A given overriding extension mutating proc is defined only once for a class
     for (* mList) in overridingExtensionSetterListMap.dictionary do
       var @extensionSetterMapForGlobalCheckings extensionSetterMap = @()
       for (mValue) in mList do
         !?extensionSetterMap.insertKey (!mValue)
       end
     end
-  //--- A given overriding abstract extension setter is defined only once for a class
+  //--- A given overriding abstract extension mutating proc is defined only once for a class
     for (* mList) in overridingAbstractExtensionMethodListMap.dictionary do
       var @extensionSetterMapForGlobalCheckings extensionSetterMap = @()
       for (mValue) in mList do
         !?extensionSetterMap.insertKey (!mValue)
       end
     end
-  //----- Check that for every abstract extension setter, an overridden extension setter defined in an concrete subclass
+  //----- Check that for every abstract extension mutating proc, an overridden extension mutating proc defined in an concrete subclass
     for (key mList) in abstractExtensionSetterListMap.dictionary do
       for (mValue) in mList do
         checkextensionSetterDefinitionForClass (
@@ -372,7 +372,7 @@ proc performGalgas3ProjectGlobalCheckings
         )
       end
     end
-  //----- Check that for every overriding abstract extension setter, an overridden extension setter defined in an concrete subclass
+  //----- Check that for every overriding abstract extension mutating proc, an overridden extension mutating proc defined in an concrete subclass
     for (key mList) in overridingAbstractExtensionSetterListMap.dictionary do
       for (mValue) in mList do
         checkextensionSetterDefinitionForClass (

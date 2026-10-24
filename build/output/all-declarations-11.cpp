@@ -6584,7 +6584,7 @@ void GGS_insertMethodMap::setter_insertKey (GGS_lstring inLKey,
                                             Compiler * inCompiler
                                             COMMA_LOCATION_ARGS) {
   const GGS_insertMethodMap_2E_element element (inLKey) ;
-  const char * kInsertErrorMessage = "the '%K' insert setter is already declared" ;
+  const char * kInsertErrorMessage = "the '%K' insert mutating proc is already declared" ;
   const char * kShadowErrorMessage = nullptr ;
   performInsert (element, kInsertErrorMessage, kShadowErrorMessage, inCompiler COMMA_THERE) ;
 }
