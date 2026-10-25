@@ -101,7 +101,7 @@ override proc @unaryMinusExpressionAST.analyzeSemanticExpression
       exp.mLocation,
       - exp.mValue
     )
-  elsif not [type.definition.features§contains (!.prefixMinusOperator) then
+  elsif not type.definition.features.contains (!.prefixMinusOperator) then
     error (self.mOperatorLocation
     : "operand type is '@" + type.definition.typeName.string + "' and does not support the prefix minus operator"
     spoil outExpression)

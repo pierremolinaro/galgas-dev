@@ -33,7 +33,7 @@ proc groupSyntaxComponentsGalgas3
     componentNameSet ++= component.mSyntaxComponentName.string
     var nonterminalDeclarationList = component.mNonterminalDeclarationList
     var ruleList = component.mRuleList
-    for (* mNonterminalDeclarationList mRuleList) in [inSyntaxExtensions§listForKey (!component.mSyntaxComponentName.string) do
+    for (* mNonterminalDeclarationList mRuleList) in inSyntaxExtensions.listForKey (!component.mSyntaxComponentName.string) do
       nonterminalDeclarationList += mNonterminalDeclarationList
       ruleList += mRuleList
     end
@@ -47,7 +47,7 @@ proc groupSyntaxComponentsGalgas3
   end
 //--- Check all extensions are handled
   for (key theLists) in inSyntaxExtensions.dictionary do
-    if not [componentNameSet§hasKey (!key) then
+    if not componentNameSet.hasKey (!key) then
       for (mSyntaxComponentName * *) in theLists do
         error (mSyntaxComponentName : "there is no '" + mSyntaxComponentName +"' syntax component")
       end

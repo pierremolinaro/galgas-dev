@@ -86,7 +86,7 @@ override proc @templateGetterCallInExpressionAST.templateExpressionAnalysis
   //-------------------------------------- Property ?
   if receiverType.definition.typeKind.isStructType || receiverType.definition.typeKind.isClassType,
      self.mExpressionList.count == 0,
-     [receiverType.definition.propertyMap§hasKey (!self.mGetterName) then
+     receiverType.definition.propertyMap.hasKey (!self.mGetterName) then
     error (self.mExpressionLocation : "use dot notation, instead of func call" spoil outExpression)
   else
   //--- Get func map
@@ -98,7 +98,7 @@ override proc @templateGetterCallInExpressionAST.templateExpressionAnalysis
     var @unifiedTypeMapEntry returnedType
     var fieldList = @stringlist ()
     var actualGetterName = self.mGetterName.string
-    if [getterMap§hasKey (!self.mGetterName.string) then
+    if getterMap.hasKey (!self.mGetterName.string) then
       getterMap.searchKey (!self.mGetterName,
         ?kind,
         ?getterFormalArgumentTypeList,
@@ -210,7 +210,7 @@ override proc @templateClassFunctionAST.templateExpressionAnalysis
   ?!@unifiedTypeMap ioTypeMap,
   !@semanticExpressionForGeneration outExpression
 ) {
-  let @unifiedTypeMapEntry constructorType = [ioTypeMap§typeMapEntryForLKey (!self.mTypeName)
+  let @unifiedTypeMapEntry constructorType = ioTypeMap.typeMapEntryForLKey (!self.mTypeName)
 //--- Get class function map from type map
   let @classFunctionMap classFunctionMap = constructorType.definition.classFunctionMap
 //--- Search class function
@@ -316,7 +316,7 @@ override proc @templateAndOperationAST.templateExpressionAnalysis
    )
 //--- Check operator availability
   checkDiadicOperator (
-    !operatorIsHandled: [leftExpression.mResultType.definition.features§contains (!.infixAndOperator),
+    !operatorIsHandled: leftExpression.mResultType.definition.features.contains (!.infixAndOperator),
     !"&",
     !self.mOperatorLocation,
     !?leftExpression,
@@ -359,7 +359,7 @@ override proc @templateOrOperationAST.templateExpressionAnalysis
    )
 //--- Check operator availability
   checkDiadicOperator (
-    !operatorIsHandled: [leftExpression.mResultType.definition.features§contains (!.infixOrOperator),
+    !operatorIsHandled: leftExpression.mResultType.definition.features.contains (!.infixOrOperator),
     !"|",
     !self.mOperatorLocation,
     !?leftExpression,
@@ -402,7 +402,7 @@ override proc @templateXorOperationAST.templateExpressionAnalysis
    )
 //--- Check operator availability
   checkDiadicOperator (
-    !operatorIsHandled: [leftExpression.mResultType.definition.features§contains (!.infixXorOperator),
+    !operatorIsHandled: leftExpression.mResultType.definition.features.contains (!.infixXorOperator),
     !"^",
     !self.mOperatorLocation,
     !?leftExpression,
@@ -523,7 +523,7 @@ override proc @templateNotOperatorAST.templateExpressionAnalysis
   )
 //--- Check operator availability
   let @unifiedTypeMapEntry type = expression.mResultType
-  if not [type.definition.features§contains (!.prefixNotOperator) then
+  if not type.definition.features.contains (!.prefixNotOperator) then
     error (self.mOperatorLocation
     : "operand type is '@" + type.definition.typeName.string + "' and does not support the 'not' operator"
     spoil outExpression)
@@ -556,7 +556,7 @@ override proc @templateLogicalNegateAST.templateExpressionAnalysis
   )
 //--- Check operator availability
   let @unifiedTypeMapEntry type = expression.mResultType
-  if not [type.definition.features§contains (!.prefixTildeOperator) then
+  if not type.definition.features.contains (!.prefixTildeOperator) then
     error (self.mOperatorLocation
     : "operand type is '@" + type.definition.typeName.string + "' and does not support the '~' operator"
     spoil outExpression)
@@ -587,7 +587,7 @@ override proc @templateTestDynamicClassAST.templateExpressionAnalysis
     ?let expression
   )
 //--- Get type information
-   let castType = [ioTypeMap§typeMapEntryForLKey (!self.mTypeName)
+   let castType = ioTypeMap.typeMapEntryForLKey (!self.mTypeName)
 //--- This type is either a class
   if expression.mResultType.definition.typeKind.isClassType then
   //--- Check expression type is a descendant of named type
@@ -634,18 +634,18 @@ override proc @templateOptionAccessAST.templateExpressionAnalysis
     ?let @commandLineOptionMap stringOptionMap,
     ?let @commandLineOptionMap stringListOptionMap
   )
-  var found = [boolOptionMap§hasKey (!self.mOptionName.string)
+  var found = boolOptionMap.hasKey (!self.mOptionName.string)
   var @unifiedTypeMapEntry returnedType = inAnalysisContext.mPredefinedTypes.mBoolType
   if not found then
-    found = [uintOptionMap§hasKey (!self.mOptionName.string)
+    found = uintOptionMap.hasKey (!self.mOptionName.string)
     returnedType = inAnalysisContext.mPredefinedTypes.mUIntType
   end
   if not found then
-    found = [stringOptionMap§hasKey (!self.mOptionName.string)
+    found = stringOptionMap.hasKey (!self.mOptionName.string)
     returnedType = inAnalysisContext.mPredefinedTypes.mStringType
   end
   if not found then
-    found = [stringListOptionMap§hasKey (!self.mOptionName.string)
+    found = stringListOptionMap.hasKey (!self.mOptionName.string)
     returnedType = inAnalysisContext.mPredefinedTypes.mStringListType
   end
   if found then
@@ -724,7 +724,7 @@ override proc @templateFunctionCallAST.templateExpressionAnalysis
   )
 //--- Check internal
   if isInternal then
-    let procDeclarationLocation = [inAnalysisContext.mSemanticContext.mFunctionMap§locationForKey (!self.mFunctionName.string)
+    let procDeclarationLocation = inAnalysisContext.mSemanticContext.mFunctionMap.locationForKey (!self.mFunctionName.string)
     if self.mFunctionName.location.file != procDeclarationLocation.file then
       error (self.mFunctionName : "this proc is internal to '" + procDeclarationLocation.file + "' file")
     end
@@ -825,7 +825,7 @@ override proc @templateAddOperationAST.templateExpressionAnalysis
    )
 //--- Check operator availability
   checkDiadicOperator (
-    !operatorIsHandled: [leftExpression.mResultType.definition.features§contains (!.infixAddOperator),
+    !operatorIsHandled: leftExpression.mResultType.definition.features.contains (!.infixAddOperator),
     !"+",
     !self.mOperatorLocation,
     !?leftExpression,
@@ -870,7 +870,7 @@ override proc @templateSubOperationAST.templateExpressionAnalysis
    )
 //--- Check operator availability
   checkDiadicOperator (
-    !operatorIsHandled: [leftExpression.mResultType.definition.features§contains (!.infixSubOperator),
+    !operatorIsHandled: leftExpression.mResultType.definition.features.contains (!.infixSubOperator),
     !"-",
     !self.mOperatorLocation,
     !?leftExpression,
@@ -915,7 +915,7 @@ override proc @templateMultiplyOperationAST.templateExpressionAnalysis
    )
 //--- Check operator availability
   checkDiadicOperator (
-    !operatorIsHandled: [leftExpression.mResultType.definition.features§contains (!.infixMulOperator),
+    !operatorIsHandled: leftExpression.mResultType.definition.features.contains (!.infixMulOperator),
     !"*",
     !self.mOperatorLocation,
     !?leftExpression,
@@ -960,7 +960,7 @@ override proc @templateDivideOperationAST.templateExpressionAnalysis
    )
 //--- Check operator availability
   checkDiadicOperator (
-    !operatorIsHandled: [leftExpression.mResultType.definition.features§contains (!.infixDivOperator),
+    !operatorIsHandled: leftExpression.mResultType.definition.features.contains (!.infixDivOperator),
     !"/",
     !self.mOperatorLocation,
     !?leftExpression,
@@ -1005,7 +1005,7 @@ override proc @templateModuloOperationAST.templateExpressionAnalysis
    )
 //--- Check operator availability
   checkDiadicOperator (
-    !operatorIsHandled: [leftExpression.mResultType.definition.features§contains (!.infixModOperator),
+    !operatorIsHandled: leftExpression.mResultType.definition.features.contains (!.infixModOperator),
     !"mod",
     !self.mOperatorLocation,
     !?leftExpression,
@@ -1042,7 +1042,7 @@ override proc @templateUnaryMinusOperationAST.templateExpressionAnalysis
   )
 //--- Check operator availability
   let @unifiedTypeMapEntry type = expression.mResultType
-  if not [type.definition.features§contains (!.prefixMinusOperator) then
+  if not type.definition.features.contains (!.prefixMinusOperator) then
     error (self.mOperatorLocation
     : "operand type is '@" + type.definition.typeName.string + "' and does not support the prefix minus operator"
     spoil outExpression)
@@ -1120,7 +1120,7 @@ override proc @templateEqualTestAST.templateExpressionAnalysis
    )
 //--- Check operator availability
   checkDiadicOperator (
-    !operatorIsHandled: [leftExpression.mResultType.definition.features§contains (!.equatable) | [leftExpression.mResultType.definition.features§contains (!.comparable),
+    !operatorIsHandled: leftExpression.mResultType.definition.features.contains (!.equatable) | leftExpression.mResultType.definition.features.contains (!.comparable),
     !"==",
     !self.mOperatorLocation,
     !?leftExpression,
@@ -1163,7 +1163,7 @@ override proc @templateNonEqualTestAST.templateExpressionAnalysis
    )
 //--- Check operator availability
   checkDiadicOperator (
-    !operatorIsHandled: [leftExpression.mResultType.definition.features§contains (!.equatable) | [leftExpression.mResultType.definition.features§contains (!.comparable),
+    !operatorIsHandled: leftExpression.mResultType.definition.features.contains (!.equatable) | leftExpression.mResultType.definition.features.contains (!.comparable),
     !"!=",
     !self.mOperatorLocation,
     !?leftExpression,
@@ -1206,7 +1206,7 @@ override proc @templateStrictInfTestAST.templateExpressionAnalysis
    )
 //--- Check operator availability
   checkDiadicOperator (
-    !operatorIsHandled: [leftExpression.mResultType.definition.features§contains (!.comparable),
+    !operatorIsHandled: leftExpression.mResultType.definition.features.contains (!.comparable),
     !"<",
     !self.mOperatorLocation,
     !?leftExpression,
@@ -1249,7 +1249,7 @@ override proc @templateInfOrEqualTestAST.templateExpressionAnalysis
    )
 //--- Check operator availability
   checkDiadicOperator (
-    !operatorIsHandled: [leftExpression.mResultType.definition.features§contains (!.comparable),
+    !operatorIsHandled: leftExpression.mResultType.definition.features.contains (!.comparable),
     !"<=",
     !self.mOperatorLocation,
     !?leftExpression,
@@ -1292,7 +1292,7 @@ override proc @templateStrictSupTestAST.templateExpressionAnalysis
    )
 //--- Check operator availability
   checkDiadicOperator (
-    !operatorIsHandled: [leftExpression.mResultType.definition.features§contains (!.comparable),
+    !operatorIsHandled: leftExpression.mResultType.definition.features.contains (!.comparable),
     !">",
     !self.mOperatorLocation,
     !?leftExpression,
@@ -1335,7 +1335,7 @@ override proc @templateSupOrEqualTestAST.templateExpressionAnalysis
    )
 //--- Check operator availability
   checkDiadicOperator (
-    !operatorIsHandled: [leftExpression.mResultType.definition.features§contains (!.comparable),
+    !operatorIsHandled: leftExpression.mResultType.definition.features.contains (!.comparable),
     !">=",
     !self.mOperatorLocation,
     !?leftExpression,
@@ -1379,7 +1379,7 @@ override proc @templateLeftShiftOperationAST.templateExpressionAnalysis
 //--- Check operator availability
   let @unifiedTypeMapEntry leftType = leftExpression.mResultType
   let @unifiedTypeMapEntry rightType = rightExpression.mResultType
-  if not [leftType.definition.features§contains (!.infixShiftOperator) then
+  if not leftType.definition.features.contains (!.infixShiftOperator) then
     error (self.mOperatorLocation
     : "left operand type is '@" + leftType.definition.typeName.string + "' and does not support a shift operator"
     spoil outExpression)
@@ -1427,7 +1427,7 @@ override proc @templateRightShiftOperationAST.templateExpressionAnalysis
 //--- Check operator availability
   let @unifiedTypeMapEntry leftType = leftExpression.mResultType
   let @unifiedTypeMapEntry rightType = rightExpression.mResultType
-  if not [leftType.definition.features§contains (!.infixShiftOperator) then
+  if not leftType.definition.features.contains (!.infixShiftOperator) then
     error (self.mOperatorLocation
     : "left operand type is '@" + leftType.definition.typeName.string + "' and does not support a shift operator"
     spoil outExpression)

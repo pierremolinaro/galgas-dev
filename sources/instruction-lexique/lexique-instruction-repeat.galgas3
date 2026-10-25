@@ -158,17 +158,17 @@ override func @lexicalRepeatInstructionAST.generateSwiftCocoaInstructionCode
   !?outGeneratedCode.incIndentation (!2)
 //--- Repeated instruction
   for (mInstruction) in self.mRepeatedInstructionList do
-    outGeneratedCode += [mInstruction§generateSwiftCocoaInstructionCode (!inScannerClassName, !inLexiqueAnalysisContext)
+    outGeneratedCode += mInstruction.generateSwiftCocoaInstructionCode (!inScannerClassName, !inLexiqueAnalysisContext)
   end
 //---
   for (mWhileExpression mWhileInstructionList) in self.mLexicalWhileBranchList
   do
     outGeneratedCode += "if scanningOk && ("
-    outGeneratedCode += [mWhileExpression§generateSwiftCocoaConditionCode (!inLexiqueAnalysisContext)
+    outGeneratedCode += mWhileExpression.generateSwiftCocoaConditionCode (!inLexiqueAnalysisContext)
     outGeneratedCode += ") {\n"
     !?outGeneratedCode.incIndentation (!2)
     for (mInstruction) in mWhileInstructionList do
-      outGeneratedCode += [mInstruction§generateSwiftCocoaInstructionCode (!inScannerClassName, !inLexiqueAnalysisContext)
+      outGeneratedCode += mInstruction.generateSwiftCocoaInstructionCode (!inScannerClassName, !inLexiqueAnalysisContext)
     end
     !?outGeneratedCode.decIndentation (!2)
   between
@@ -200,17 +200,17 @@ override func @lexicalRepeatInstructionAST.generateLexicalInstructionCode
   !?result.incIndentation (!2)
 //--- Repeated instruction
   for (mInstruction) in self.mRepeatedInstructionList do
-    result += [mInstruction§generateLexicalInstructionCode (!inScannerClassName, !inLexiqueAnalysisContext)
+    result += mInstruction.generateLexicalInstructionCode (!inScannerClassName, !inLexiqueAnalysisContext)
   end
 //---
   for (mWhileExpression mWhileInstructionList) in self.mLexicalWhileBranchList
   do
     result += "if ("
-    result += [mWhileExpression§generateConditionCode (!context:inLexiqueAnalysisContext)
+    result += mWhileExpression.generateConditionCode (!context:inLexiqueAnalysisContext)
     result += ") {\n"
     !?result.incIndentation (!2)
     for (mInstruction) in mWhileInstructionList do
-      result += [mInstruction§generateLexicalInstructionCode (!inScannerClassName, !inLexiqueAnalysisContext)
+      result += mInstruction.generateLexicalInstructionCode (!inScannerClassName, !inLexiqueAnalysisContext)
     end
     !?result.decIndentation (!2)
   between

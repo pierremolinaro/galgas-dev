@@ -458,7 +458,7 @@ final class @enumDeclarationAST : @semanticDeclarationAST {
       if constant.associatedValueTypeList.count > 0 then
         let associatedTypeName = makeEmbeddedTypeName (!outer: self.enumTypeName !inner: constant.name)
         let optionalTypeName = makeOptionalTypeName (!forTypeNamed: associatedTypeName)
-        let associatedType = [ioTypeMap§typeMapEntryForLKey (!@(optionalTypeName, constant.name))
+        let associatedType = ioTypeMap.typeMapEntryForLKey (!@(optionalTypeName, constant.name))
         !?associatedValuesTypes.append (!associatedType)
       end
       constantList += !constant.name.string
@@ -467,9 +467,9 @@ final class @enumDeclarationAST : @semanticDeclarationAST {
       for associatedValue in constant.associatedValueTypeList do
         let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!associatedValue.typeName)
         !?ioUsefulEntitiesGraph.addEdge (!from: nameForUsefulness, !to: propertyTypeNameForUsefulness)
-        let associatedTypeEntry = [ioTypeMap§typeMapEntryForLKey (!associatedValue.typeName)
+        let associatedTypeEntry = ioTypeMap.typeMapEntryForLKey (!associatedValue.typeName)
         associatedTypeList += !associatedTypeEntry !associatedValue.valueName
-        if [associatedValueNameSet§hasKey (!associatedValue.valueName.string) then
+        if associatedValueNameSet.hasKey (!associatedValue.valueName.string) then
           error (associatedValue.valueName : "duplicated name")
         end
         associatedValueNameSet ++= associatedValue.valueName.string
@@ -478,14 +478,14 @@ final class @enumDeclarationAST : @semanticDeclarationAST {
         case none :
         case equatable :
           let associatedType = associatedTypeEntry.definition
-          if (not [associatedType.features§contains (!.comparable))
-            & not [associatedType.features§contains (!.equatable)
-            & not [associatedType.features§contains (!.referenceEquatable) then
+          if (not associatedType.features.contains (!.comparable))
+            & not associatedType.features.contains (!.equatable)
+            & not associatedType.features.contains (!.referenceEquatable) then
             error (associatedValue.typeName : "the @" + associatedValue.typeName + " should be equatable")
           end
         case comparable :
           let associatedType = associatedTypeEntry.definition
-          if not [associatedType.features§contains (!.comparable) then
+          if not associatedType.features.contains (!.comparable) then
             error (associatedValue.typeName : "the @" + associatedValue.typeName + " should be comparable")
           end
         end
@@ -494,7 +494,7 @@ final class @enumDeclarationAST : @semanticDeclarationAST {
       enumConstantListForGeneration += !constant.name.string !associatedTypeList
     end
   //---
-    let selfType = [ioTypeMap§typeMapEntryForLKey (!self.enumTypeName)
+    let selfType = ioTypeMap.typeMapEntryForLKey (!self.enumTypeName)
     ioSemanticDeclarationListForGeneration +=
       !infoMessage: "enum " + self.enumTypeName
       !@enumTypeForGeneration (

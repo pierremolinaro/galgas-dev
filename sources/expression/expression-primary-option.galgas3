@@ -129,18 +129,18 @@ override proc @optionExpressionAST.analyzeSemanticExpression
     ?let @commandLineOptionMap stringOptionMap,
     ?let @commandLineOptionMap stringListOptionMap
   )
-  var @bool found = [boolOptionMap§hasKey (!self.mOptionEntryName.string)
+  var @bool found = boolOptionMap.hasKey (!self.mOptionEntryName.string)
   var @unifiedTypeMapEntry returnedType = inAnalysisContext.predefinedTypes.mBoolType
   if not found then
-    found = [uintOptionMap§hasKey (!self.mOptionEntryName.string)
+    found = uintOptionMap.hasKey (!self.mOptionEntryName.string)
     returnedType = inAnalysisContext.predefinedTypes.mUIntType
   end
   if not found then
-    found = [stringOptionMap§hasKey (!self.mOptionEntryName.string)
+    found = stringOptionMap.hasKey (!self.mOptionEntryName.string)
     returnedType = inAnalysisContext.predefinedTypes.mStringType
   end
   if not found then
-    found = [stringListOptionMap§hasKey (!self.mOptionEntryName.string)
+    found = stringListOptionMap.hasKey (!self.mOptionEntryName.string)
     returnedType = inAnalysisContext.predefinedTypes.mStringListType
   end
   if found then

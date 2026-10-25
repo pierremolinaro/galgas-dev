@@ -16515,9 +16515,9 @@ GGS_string extensionGetter_keyRepresentation (const GGS_formalParameterListAST &
   GGS_string result_result ; // Returned variable
   result_result = GGS_string ("(") ;
   const GGS_formalParameterListAST temp_0 = inObject ;
-  UpEnumerator_formalParameterListAST enumerator_4925 (temp_0) ;
-  while (enumerator_4925.hasCurrentObject ()) {
-    switch (enumerator_4925.current (HERE).readProperty_mFormalArgumentPassingMode ().enumValue ()) {
+  UpEnumerator_formalParameterListAST enumerator_4923 (temp_0) ;
+  while (enumerator_4923.hasCurrentObject ()) {
+    switch (enumerator_4923.current (HERE).readProperty_mFormalArgumentPassingMode ().enumValue ()) {
     case GGS_formalArgumentPassingModeAST::Enumeration::invalid:
       break ;
     case GGS_formalArgumentPassingModeAST::Enumeration::enum_argumentConstantIn:
@@ -16537,9 +16537,9 @@ GGS_string extensionGetter_keyRepresentation (const GGS_formalParameterListAST &
       }
       break ;
     }
-    result_result.plusAssignOperation(enumerator_4925.current (HERE).readProperty_mFormalSelector ().readProperty_string (), inCompiler  COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas3", 132)) ;
-    enumerator_4925.gotoNextObject () ;
-    if (enumerator_4925.hasCurrentObject ()) {
+    result_result.plusAssignOperation(enumerator_4923.current (HERE).readProperty_mFormalSelector ().readProperty_string (), inCompiler  COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas3", 132)) ;
+    enumerator_4923.gotoNextObject () ;
+    if (enumerator_4923.hasCurrentObject ()) {
       result_result.plusAssignOperation(GGS_string (", "), inCompiler  COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas3", 134)) ;
     }
   }
@@ -16561,10 +16561,10 @@ GGS_string extensionGetter_initializerSignature (const GGS_formalInputParameterL
   GGS_string result_result ; // Returned variable
   result_result = GGS_string ("init") ;
   const GGS_formalInputParameterListAST temp_0 = inObject ;
-  UpEnumerator_formalInputParameterListAST enumerator_5847 (temp_0) ;
-  while (enumerator_5847.hasCurrentObject ()) {
-    result_result.plusAssignOperation(GGS_string ("!").add_operation (enumerator_5847.current (HERE).readProperty_mFormalSelector ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas3", 157)), inCompiler  COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas3", 157)) ;
-    enumerator_5847.gotoNextObject () ;
+  UpEnumerator_formalInputParameterListAST enumerator_5845 (temp_0) ;
+  while (enumerator_5845.hasCurrentObject ()) {
+    result_result.plusAssignOperation(GGS_string ("!").add_operation (enumerator_5845.current (HERE).readProperty_mFormalSelector ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas3", 157)), inCompiler  COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas3", 157)) ;
+    enumerator_5845.gotoNextObject () ;
   }
 //---
   return result_result ;

@@ -152,7 +152,7 @@ proc checkExpressionIsBoolean
   if expressionType == boolType then
     outExpression = inExpression
   elsif expressionType.definition.typeKind == .structType then
-    if [expressionType.definition.propertyMap§hasKey (!"bool") then
+    if expressionType.definition.propertyMap.hasKey (!"bool") then
       expressionType.definition.propertyMap.searchKey
         (!@lstring (!"bool", inErrorLocation),
         ?let accessControl,
@@ -281,7 +281,7 @@ override proc @grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar.an
     error (self.mActualParameterName : "the ':>' construct requires the grammar to be declared with 'translate' feature")
   end
   let cppName = "var_" + self.mActualParameterName.string.identifierRepresentation + "_" + self.mActualParameterName.location.startLocationIndex
-  let type = [ioTypeMap§typeMapEntryForLKey (!self.mActualParameterTypeName)
+  let type = ioTypeMap.typeMapEntryForLKey (!self.mActualParameterTypeName)
   !?ioVariableMap.insertInitializedLocalVariable (!self.mActualParameterName, !warnsIfNotMutated: true, !type, !cppName, !cppName)
   let expectedType = inAnalysisContext.predefinedTypes.mStringType
   if expectedType != type then
@@ -305,7 +305,7 @@ override proc @grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst.
     error (self.mActualParameterName : "the ':>' construct requires the grammar to be declared with 'translate' feature")
   end
   let cppName = "var_" + self.mActualParameterName.string.identifierRepresentation + "_" + self.mActualParameterName.location.startLocationIndex
-  let type = [ioTypeMap§typeMapEntryForLKey (!self.mActualParameterTypeName)
+  let type = ioTypeMap.typeMapEntryForLKey (!self.mActualParameterTypeName)
   !?ioVariableMap.insertInitializedLocalConstant (!self.mActualParameterName, !type, !cppName, !cppName)
   let expectedType = inAnalysisContext.predefinedTypes.mStringType
   if expectedType != type then

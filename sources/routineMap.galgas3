@@ -69,13 +69,13 @@ struct @routineMap {
                     ?let @formalParameterSignature inRoutineSignature,
                     ?isFilePrivate: let @bool inIsFilePrivate) {
     var @routineArgumentMap routineArgumentMap
-    if [self.mInternalRoutineMap§hasKey (!inRoutineName) then
+    if self.mInternalRoutineMap.hasKey (!inRoutineName) then
       self.mInternalRoutineMap.searchKey (!inRoutineName, ?routineArgumentMap)
     else
       routineArgumentMap = @()
     end
     let routineArguments = routineArgumentFromFormalParameters (!inRoutineSignature)
-    if [routineArgumentMap§hasKey (!routineArguments) then
+    if routineArgumentMap.hasKey (!routineArguments) then
       error (inRoutineName : "duplicated declaration of the " + inRoutineName + routineArguments + " routine")
     else
      !?routineArgumentMap.insertKey
@@ -105,7 +105,7 @@ struct @routineMap {
       for entry in routine.mArgumentMap do
         var accept = inActualParameterList.count == entry.mRoutineSignature.count
         for formalParameter in entry.mRoutineSignature, (actualParameter) in inActualParameterList while accept do
-          accept = [actualParameter§isCompatibleWith (
+          accept = actualParameter.isCompatibleWith (
             !formalParameter.mFormalArgumentPassingMode,
             !formalParameter.mFormalSelector
           )
@@ -140,7 +140,7 @@ struct @routineMap {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func locationForKey (?let @string inKey ) -> @location {
-    result = [self.mInternalRoutineMap§locationForKey (!inKey)
+    result = self.mInternalRoutineMap.locationForKey (!inKey)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

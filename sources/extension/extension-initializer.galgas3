@@ -158,7 +158,7 @@ final class @initializerAST : @semanticDeclarationAST {
     !?ioSemanticTypePrecedenceGraph.addNode (!key, !self)
     !?ioSemanticTypePrecedenceGraph.addEdge (!from: key, !to: @("@" + self.mTypeName, self.mTypeName))
   //---
-    if not [ioExtensionInitializerForBuildingContext§hasKey (!self.mTypeName.string) then
+    if not ioExtensionInitializerForBuildingContext.hasKey (!self.mTypeName.string) then
       !?ioExtensionInitializerForBuildingContext.insertKey
         (!self.mTypeName,
         !@()
@@ -201,7 +201,7 @@ final class @initializerAST : @semanticDeclarationAST {
     )
     !?ioUsefulEntitiesGraph.addNode (!nameForUsefulness, !nameForUsefulness)
   //--- Self type
-    let @unifiedTypeMapEntry selfType = [ioTypeMap§typeMapEntryForLKey (!self.mTypeName)
+    let @unifiedTypeMapEntry selfType = ioTypeMap.typeMapEntryForLKey (!self.mTypeName)
     let @string selfObjectNameString
     let @string selfObjectAccessorString
   //--- Check self type is a class
@@ -283,7 +283,7 @@ private proc analyzeInitializerBody (?let @lstring inUsefulnessCallerEntityName,
 //--- Enter formal parameters
   outSignatureForGeneration = @formalInputParameterListForGeneration ()
   for formalArg in inFormalArgumentListAST do
-    let parameterType = [ioTypeMap§typeMapEntryForLKey (!formalArg.mFormalArgumentTypeName)
+    let parameterType = ioTypeMap.typeMapEntryForLKey (!formalArg.mFormalArgumentTypeName)
     if formalArg.mIsConstant then
       let @string cppName = "constinArgument_" + formalArg.mFormalArgumentName.string.identifierRepresentation
       outSignatureForGeneration +=
@@ -424,7 +424,7 @@ private proc generateInitializer (?let @unifiedTypeMapEntry inReceiverType,
       else
         outGeneratedCode += "GGS_" + formalArg.mFormalArgumentType.identifierRepresentation + " "
       end
-      if [unusedVariableCppNameSet§hasKey (!formalArg.mFormalArgumentCppName) then
+      if unusedVariableCppNameSet.hasKey (!formalArg.mFormalArgumentCppName) then
         outGeneratedCode += "/* " + formalArg.mFormalArgumentCppName + " */"
       else
         outGeneratedCode +=  formalArg.mFormalArgumentCppName
@@ -484,7 +484,7 @@ private proc generateInitializer (?let @unifiedTypeMapEntry inReceiverType,
         outGeneratedCode += "const "
       end
       outGeneratedCode += "GGS_" + formalArg.mFormalArgumentType.identifierRepresentation + " & "
-      if [unusedVariableCppNameSet§hasKey (!formalArg.mFormalArgumentCppName) then
+      if unusedVariableCppNameSet.hasKey (!formalArg.mFormalArgumentCppName) then
         outGeneratedCode += "/* " + formalArg.mFormalArgumentCppName + " */"
       else
         outGeneratedCode +=  formalArg.mFormalArgumentCppName
@@ -494,7 +494,7 @@ private proc generateInitializer (?let @unifiedTypeMapEntry inReceiverType,
     end
   //--- Compiler argument
     outGeneratedCode += "Compiler * "
-    if [unusedVariableCppNameSet§hasKey (!compilerCppName ()) then
+    if unusedVariableCppNameSet.hasKey (!compilerCppName ()) then
       outGeneratedCode += "/* " + compilerCppName () + " */"
     else
       outGeneratedCode += compilerCppName ()

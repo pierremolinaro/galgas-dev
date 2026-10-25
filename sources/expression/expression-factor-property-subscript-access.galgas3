@@ -126,7 +126,7 @@ syntax extension galgas4ExpressionSyntax {
           outExpression,
           getterName,
           expressionList,
-          [startLocation§union (!endLocation)
+          startLocation.union (!endLocation)
         )
       end
     end

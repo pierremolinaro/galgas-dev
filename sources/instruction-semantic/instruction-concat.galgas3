@@ -511,7 +511,7 @@ final class @opAssignExpressionInstructionAST : @semanticInstructionAST {
       end
     end
   //--- Check target variable type support 'X= exp' operator
-    if not [targetType.definition.features§contains (!self.mOperator.features) then
+    if not targetType.definition.features.contains (!self.mOperator.features) then
       error (self.mInstructionLocation
       :"the target object has the '@" + targetType.definition.typeName.string
       + "' type, but this type does not support the '" + self.mOperator.string + "' operator"
@@ -800,7 +800,7 @@ final class @plusEqualnstructionForGeneration : @semanticInstructionForGeneratio
       do ioGeneratedCode += mValue
       between ioGeneratedCode += ", "
     end
-    if [self.mTargetType.definition.features§contains (!.plusEqualOperatorWithFieldListNeedsCompilerArg) then
+    if self.mTargetType.definition.features.contains (!.plusEqualOperatorWithFieldListNeedsCompilerArg) then
       ioGeneratedCode  += ", " + compilerCppName ()
       !?ioUnusedVariableCppNameSet.removeKey (!compilerCppName ())
     end

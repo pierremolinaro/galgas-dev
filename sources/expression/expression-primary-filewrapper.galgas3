@@ -150,14 +150,14 @@ override proc @filewrapperObjectInstanciationInExpressionAST.analyzeSemanticExpr
   )
 //--- Check internal
   if isInternal then
-    let filewrapperDeclarationLocation = [inAnalysisContext.semanticContext.mFilewrapperMap§locationForKey (!self.mFilewrapperName.string)
+    let filewrapperDeclarationLocation = inAnalysisContext.semanticContext.mFilewrapperMap.locationForKey (!self.mFilewrapperName.string)
     if self.mFilewrapperName.location.file != filewrapperDeclarationLocation.file then
       error (self.mFilewrapperName : "this filewrapper is internal to '" + filewrapperDeclarationLocation.file + "' file")
     end
   end
 //---
   outExpression = @filewrapperInExpressionForGeneration (
-    ![ioTypeMap§typeMapEntryForLKey (!@lstring (!"filewrapper", self.mFilewrapperName.location)),
+    !ioTypeMap.typeMapEntryForLKey (!@lstring (!"filewrapper", self.mFilewrapperName.location)),
     self.mFilewrapperName.location,
     self.mFilewrapperName.string,
     filewrapperPath.string)
@@ -195,7 +195,7 @@ override proc @filewrapperTemplateInExpressionAST.analyzeSemanticExpression
    )
 //--- Check internal
   if isInternal then
-    let filewrapperDeclarationLocation = [inAnalysisContext.semanticContext.mFilewrapperMap§locationForKey (!self.mFilewrapperName.string)
+    let filewrapperDeclarationLocation = inAnalysisContext.semanticContext.mFilewrapperMap.locationForKey (!self.mFilewrapperName.string)
     if self.mFilewrapperName.location.file != filewrapperDeclarationLocation.file then
       error (self.mFilewrapperName : "this filewrapper is internal to '" + filewrapperDeclarationLocation.file + "' file")
     end
@@ -262,12 +262,12 @@ override proc @filewrapperInExpressionAST.analyzeSemanticExpression
 //--- Parse filewrapper path
   var @stringlist directoryList
   let @string fileName
-  if [self.mFilewrapperPath§count() == 0 then
+  if self.mFilewrapperPath.count() == 0 then
     error (self.mFilewrapperPath : "path is empty" spoil directoryList, fileName)
   elsif self.mFilewrapperPath.string.firstCharacterOrNul == '/' then
     error (self.mFilewrapperPath : "the path should not begin with '/'" spoil directoryList, fileName)
   else
-    directoryList = [self.mFilewrapperPath§componentsSeparatedByString (!"/")
+    directoryList = self.mFilewrapperPath.componentsSeparatedByString (!"/")
     !?directoryList.popLast (?fileName)
   end
 //--- Get filewrapper features
@@ -282,7 +282,7 @@ override proc @filewrapperInExpressionAST.analyzeSemanticExpression
   )
 //--- Check internal
   if isInternal then
-    let filewrapperDeclarationLocation = [inAnalysisContext.semanticContext.mFilewrapperMap§locationForKey (!self.mFilewrapperName.string)
+    let filewrapperDeclarationLocation = inAnalysisContext.semanticContext.mFilewrapperMap.locationForKey (!self.mFilewrapperName.string)
     if self.mFilewrapperName.location.file != filewrapperDeclarationLocation.file then
       error (self.mFilewrapperName : "this filewrapper is internal to '" + filewrapperDeclarationLocation.file + "' file")
     end
@@ -293,7 +293,7 @@ override proc @filewrapperInExpressionAST.analyzeSemanticExpression
   while directoryList.count > 0 do
     !?directoryList.popFirst (?let directoryName)
     builtPath += directoryName + "/"
-    if [filewrapperDirectoryMap§hasKey (!directoryName) then
+    if filewrapperDirectoryMap.hasKey (!directoryName) then
       filewrapperDirectoryMap.searchKey
         (!@lstring (!directoryName, @location.here),
         ?filewrapperFileMap,
@@ -307,7 +307,7 @@ override proc @filewrapperInExpressionAST.analyzeSemanticExpression
   end
   let @uint fileIndex
   let @bool isTextFile
-  if [filewrapperFileMap§hasKey (!fileName) then
+  if filewrapperFileMap.hasKey (!fileName) then
     filewrapperFileMap.searchKey (!@lstring (!fileName, @location.here), ?*, ?isTextFile, ?*, ?fileIndex)
   else
     error (self.mFilewrapperPath
@@ -318,7 +318,7 @@ override proc @filewrapperInExpressionAST.analyzeSemanticExpression
   outExpression = @filewrapperStaticPathInExpressionForGeneration (
     !if isTextFile
       then inAnalysisContext.predefinedTypes.mStringType
-      else [ioTypeMap§typeMapEntryForLKey (!@lstring (!"data", @location.here))
+      else ioTypeMap.typeMapEntryForLKey (!@lstring (!"data", @location.here))
      end,
     self.mFilewrapperName.location,
     self.mFilewrapperName.string,

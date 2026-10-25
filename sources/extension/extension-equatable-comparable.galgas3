@@ -81,10 +81,10 @@ proc handleEquatableComparableExtension (?!@equatableExtensionMap ioEquatableExt
                                          ?acceptEquatable: let @bool inAcceptEquatable,
                                          ?acceptComparable: let @bool inAcceptComparable) {
   if let node = ioEquatableExtensionMap [inTypeName] then
-    let location = [ioEquatableExtensionMap§locationForKey (!inTypeName)
+    let location = ioEquatableExtensionMap.locationForKey (!inTypeName)
     !?ioEquatableExtensionMap.removeKey (!inTypeName, ?*)
-    let currentlyEquatable = [ioFeatures§contains (!.equatable)
-    let currentlyComparable = [ioFeatures§contains (!.comparable)
+    let currentlyEquatable = ioFeatures.contains (!.equatable)
+    let currentlyComparable = ioFeatures.contains (!.comparable)
     switch node.mExtension
     case equatable :
       if currentlyComparable then
@@ -157,19 +157,19 @@ final class @equatableExtensionAST : @semanticDeclarationAST {
         switch node.mExtension
         case equatable :
           error (self.mTypeName : "this type is already equatable")
-          error ([ioEquatableExtensionMap§locationForKey (!self.mTypeName) : "equatable extension declaration is here")
+          error (ioEquatableExtensionMap.locationForKey (!self.mTypeName) : "equatable extension declaration is here")
         case comparable :
           error (self.mTypeName : "useless declaration, this type is already comparable")
-          error ([ioEquatableExtensionMap§locationForKey (!self.mTypeName) : "comparable extension declaration is here")
+          error (ioEquatableExtensionMap.locationForKey (!self.mTypeName) : "comparable extension declaration is here")
         end
       case comparable :
         switch node.mExtension
         case equatable :
-          error ([ioEquatableExtensionMap§locationForKey (!self.mTypeName) : "useless declaration, this type is already comparable")
+          error (ioEquatableExtensionMap.locationForKey (!self.mTypeName) : "useless declaration, this type is already comparable")
           error (self.mTypeName  : "comparable extension declaration is here")
         case comparable :
           error (self.mTypeName : "this type is already comparable")
-          error ([ioEquatableExtensionMap§locationForKey (!self.mTypeName) : "comparable extension declaration is here")
+          error (ioEquatableExtensionMap.locationForKey (!self.mTypeName) : "comparable extension declaration is here")
         end
       end
     else

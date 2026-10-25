@@ -151,7 +151,7 @@ override proc @boolsetDeclarationAST.enterDeclarationInSemanticContext
 //--- Check unicity of slot names
   var @stringset slotNameSet = @()
   for (slotName) in self.mFlagList do
-    if [slotNameSet§hasKey (!slotName) then
+    if slotNameSet.hasKey (!slotName) then
       error (slotName : "duplicated slot name")
     end
     slotNameSet ++= slotName
@@ -173,7 +173,7 @@ override proc @boolsetDeclarationAST.enterDeclarationInSemanticContext
 //--- class functions
   var @classFunctionMap classFunctionMap = @()
   for (slotName) in self.mFlagList do
-    if not [classFunctionMap§hasKey (!slotName) then
+    if not classFunctionMap.hasKey (!slotName) then
       !?classFunctionMap.insertKey (!slotName, !@(), !false, !boolsetTypeIndex)
     end
   end
@@ -267,7 +267,7 @@ override proc @boolsetDeclarationAST.semanticAnalysis
 ) {
 //--- Check flags count
   if self.mFlagList.count > 64 then
-    let @location s = [self.mFlagList§mValueAtIndex (!64)
+    let @location s = self.mFlagList.mValueAtIndex (!64)
     error (s : "max flags count is 64 (here: " + self.mFlagList.count + ")")
   end
 //--- Useful entities graph
@@ -289,7 +289,7 @@ override proc @boolsetDeclarationAST.semanticAnalysis
   ioSemanticDeclarationListForGeneration +=
     !infoMessage: "boolset " + self.mBoolsetTypeName
     !@boolsetTypeForGeneration (
-      ![ioTypeMap§typeMapEntryForLKey (!self.mBoolsetTypeName),
+      !ioTypeMap.typeMapEntryForLKey (!self.mBoolsetTypeName),
       self.mFlagList,
       self.isEquatable
     )

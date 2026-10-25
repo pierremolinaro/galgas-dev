@@ -124,7 +124,7 @@ final class @overridingAbstractExtensionSetterAST : @semanticDeclarationAST {
     ?let @predefinedTypes unused inPredefinedTypes,
     ?!@semanticDeclarationListForGeneration unused ioSemanticDeclarationListForGeneration) {
   //--- Self type
-    let @unifiedTypeMapEntry selfType = [ioTypeMap§typeMapEntryForLKey (!self.mTypeName)
+    let @unifiedTypeMapEntry selfType = ioTypeMap.typeMapEntryForLKey (!self.mTypeName)
   //--- Check type is an abstract class
     if not selfType.definition.typeKind.isClassType then
       error (self.mOverridingExtensionSetterName: "cannot declare a extension mutating proc: '@" + selfType.definition.typeName.string + "' is not a class")
@@ -138,7 +138,7 @@ final class @overridingAbstractExtensionSetterAST : @semanticDeclarationAST {
     let inheritedDeclarationLocation = @location.here
     loop (ioTypeMap.count + 1)
     while (not superType.isNull) & (baseTypeName == "") do
-      if [superType.definition.setterMap§hasKey (!self.mOverridingExtensionSetterName.string) then
+      if superType.definition.setterMap.hasKey (!self.mOverridingExtensionSetterName.string) then
         superType.definition.setterMap.searchKey (!self.mOverridingExtensionSetterName, ?*, ?inheritedSignature, ?*, ?let qualifier, ?*)
         if qualifier <= @methodQualifier.isBasicFinal then
           baseTypeName = superType.definition.typeName.string
