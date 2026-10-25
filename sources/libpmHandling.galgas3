@@ -36,7 +36,7 @@ proc updateLIBPMatPath (?let @string inLIBPMPath ) {
 //--- Update text files
   var @stringset allNeededFileSet = @()
   for (path) in fw.allTextFilePaths do
-    let contents = [fw textFileContentsAtPath !path]
+    let contents = [fw textFileContentsAtPath (!path)]
     let actualFilePath = inLIBPMPath + path
     if actualFilePath.pathExtension == "py" then
       contents.writeToExecutableFileWhenDifferentContents (!actualFilePath, ?*)
@@ -47,14 +47,14 @@ proc updateLIBPMatPath (?let @string inLIBPMPath ) {
   end
 //--- Update binary files
   for (value) in fw.allBinaryFilePaths do
-    let contents = [fw binaryFileContentsAtPath !value]
+    let contents = [fw binaryFileContentsAtPath (!value)]
     let actualFilePath = inLIBPMPath + value
     contents.writeToFileWhenDifferentContents (!actualFilePath, ?*)
     allNeededFileSet ++= value
   end
 //--- Remove useless files
   var @stringset allActualFileSet = @()
-  for (value) in [inLIBPMPath regularFiles !true] do
+  for (value) in [inLIBPMPath regularFiles (!true)] do
     allActualFileSet ++= "/" + value
   end
   let uselessFileSet = allActualFileSet - allNeededFileSet

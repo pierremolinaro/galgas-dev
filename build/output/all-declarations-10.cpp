@@ -16223,15 +16223,15 @@ void extensionMethod_buildPropertyInitializationCode (const GGS_propertyInCollec
         GGS_localVarManager var_variableMap_8878 = GGS_localVarManager::init (inCompiler COMMA_HERE) ;
         GGS_analysisContext var_analysisContext_8941 = GGS_analysisContext::init_21__21__21_selfObjectCppName_21_selfAvailability_21_selfObjectCppPrefixForAccessingProperty (constinArgument_inSemanticContext, constinArgument_inPredefinedTypes, GGS_string::makeEmptyString (), GGS_selfAvailability::class_func_none (SOURCE_FILE ("declaration-property.galgas3", 246)), GGS_string::makeEmptyString (), inCompiler COMMA_HERE) ;
         GGS_unifiedTypeMapEntry var_propertyType_9168 = extensionGetter_typeMapEntryForLKey (ioArgument_ioTypeMap, enumerator_8760.current_typeName (HERE), inCompiler COMMA_SOURCE_FILE ("declaration-property.galgas3", 249)) ;
-        GGS_semanticExpressionForGeneration var_expression_9545 ;
-        callExtensionMethod_analyzeSemanticExpression ((cPtr_semanticExpressionAST *) extractedValue_8849_expressionAST_0.ptr (), constinArgument_inTypeNameForUsefulness, ioArgument_ioUsefulEntitiesGraph, var_propertyType_9168, var_analysisContext_8941, ioArgument_ioTypeMap, var_variableMap_8878, var_expression_9545, inCompiler COMMA_SOURCE_FILE ("declaration-property.galgas3", 250)) ;
+        GGS_semanticExpressionForGeneration var_expression_9547 ;
+        callExtensionMethod_analyzeSemanticExpression ((cPtr_semanticExpressionAST *) extractedValue_8849_expressionAST_0.ptr (), constinArgument_inTypeNameForUsefulness, ioArgument_ioUsefulEntitiesGraph, var_propertyType_9168, var_analysisContext_8941, ioArgument_ioTypeMap, var_variableMap_8878, var_expression_9547, inCompiler COMMA_SOURCE_FILE ("declaration-property.galgas3", 250)) ;
         {
-        routine_checkAssignmentTypeWithImplicitGetterCall_3F__3F__3F__26_ (var_propertyType_9168, var_expression_9545.readProperty_mResultType (), enumerator_8760.current_name (HERE).readProperty_location (), var_expression_9545, inCompiler  COMMA_SOURCE_FILE ("declaration-property.galgas3", 260)) ;
+        routine_checkAssignmentTypeWithImplicitGetterCall_3F__3F__3F__26_ (var_propertyType_9168, var_expression_9547.readProperty_mResultType (), enumerator_8760.current_name (HERE).readProperty_location (), var_expression_9547, inCompiler  COMMA_SOURCE_FILE ("declaration-property.galgas3", 260)) ;
         }
-        GGS_string var_sourceVar_9985 ;
-        callExtensionMethod_generateExpression ((cPtr_semanticExpressionForGeneration *) var_expression_9545.ptr (), outArgument_outInitializationCode, var_inclusionSet_8579, var_temporaryVariableIndex_8622, outArgument_outUnusedVariableCppNameSet, var_sourceVar_9985, inCompiler COMMA_SOURCE_FILE ("declaration-property.galgas3", 266)) ;
+        GGS_string var_sourceVar_9987 ;
+        callExtensionMethod_generateExpression ((cPtr_semanticExpressionForGeneration *) var_expression_9547.ptr (), outArgument_outInitializationCode, var_inclusionSet_8579, var_temporaryVariableIndex_8622, outArgument_outUnusedVariableCppNameSet, var_sourceVar_9987, inCompiler COMMA_SOURCE_FILE ("declaration-property.galgas3", 266)) ;
         outArgument_outInitializationCode.plusAssignOperation(GGS_string ("  mProperty_").add_operation (enumerator_8760.current_name (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("declaration-property.galgas3", 273)), inCompiler COMMA_SOURCE_FILE ("declaration-property.galgas3", 273)), inCompiler  COMMA_SOURCE_FILE ("declaration-property.galgas3", 273)) ;
-        outArgument_outInitializationCode.plusAssignOperation(GGS_string (" = ").add_operation (var_sourceVar_9985, inCompiler COMMA_SOURCE_FILE ("declaration-property.galgas3", 274)).add_operation (GGS_string (" ;\n"), inCompiler COMMA_SOURCE_FILE ("declaration-property.galgas3", 274)), inCompiler  COMMA_SOURCE_FILE ("declaration-property.galgas3", 274)) ;
+        outArgument_outInitializationCode.plusAssignOperation(GGS_string (" = ").add_operation (var_sourceVar_9987, inCompiler COMMA_SOURCE_FILE ("declaration-property.galgas3", 274)).add_operation (GGS_string (" ;\n"), inCompiler COMMA_SOURCE_FILE ("declaration-property.galgas3", 274)), inCompiler  COMMA_SOURCE_FILE ("declaration-property.galgas3", 274)) ;
       }
       break ;
     }

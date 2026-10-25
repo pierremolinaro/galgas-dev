@@ -207,7 +207,7 @@ final class @extensionGetterAST : @semanticDeclarationAST {
     !?ioSemanticTypePrecedenceGraph.addNode (!key, !self)
     !?ioSemanticTypePrecedenceGraph.addEdge (!from: key, !to: @(!"@" + self.mTypeName, self.mTypeName.location))
   //---
-    if not [ioExtensionGetterMapForBuildingContext hasKey !self.mTypeName.string] then
+    if not [ioExtensionGetterMapForBuildingContext hasKey (!self.mTypeName.string)] then
       !?ioExtensionGetterMapForBuildingContext.insertKey
         (!self.mTypeName,
         !@()
@@ -265,7 +265,7 @@ override proc @extensionGetterAST.semanticAnalysis (
   let typeNameForUsefulness = typeNameForUsefulEntitiesGraph (!self.mTypeName)
   !?ioUsefulEntitiesGraph.addEdge (!from: typeNameForUsefulness, !to: nameForUsefulness)
 //--- Self type
-  let @unifiedTypeMapEntry selfType = [ioTypeMap typeMapEntryForLKey !self.mTypeName]
+  let @unifiedTypeMapEntry selfType = [ioTypeMap typeMapEntryForLKey (!self.mTypeName)]
 //--- Check self type is a class (new)
   let @string selfObjectNameNew
   let @string selfObjectAccessorNew
@@ -425,7 +425,7 @@ final class @extensionGetterForGeneration : @semanticDeclarationWithHeaderForGen
       var @bool searching = true
       loop (@uint.max) while searching do
         if not baseType.definition.superType.isNull then
-          if [baseType.definition.superType.definition.getterMap hasKey !self.mExtensionGetterName] then
+          if [baseType.definition.superType.definition.getterMap hasKey (!self.mExtensionGetterName)] then
             baseType = baseType.definition.superType
           else
             searching = false

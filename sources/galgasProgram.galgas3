@@ -75,7 +75,7 @@ grammar galgas3Grammar
 ?sourceFilePath: @lstring inSourceFile {
 //--- Search for a project file in parent directory
   let parentDirectory = inSourceFile.string.deletingLastPathComponent.deletingLastPathComponent
-  let candidateProjectFiles = [parentDirectory regularFilesWithExtensions !false !@[@("galgas4project")]]
+  let candidateProjectFiles = [parentDirectory regularFilesWithExtensions (!false !@[@("galgas4project")])]
   if candidateProjectFiles.count == 0 then
     error (inSourceFile : "no project file in parent directory of source file")
   elsif candidateProjectFiles.count > 1 then
@@ -85,7 +85,7 @@ grammar galgas3Grammar
     end
     error (inSourceFile : s)
   else
-    let projectFilePath = parentDirectory + "/" + [candidateProjectFiles mValueAtIndex !0]
+    let projectFilePath = parentDirectory + "/" + [candidateProjectFiles mValueAtIndex (!0)]
     parseAndAnalyzeProject (!@(!projectFilePath, inSourceFile.location), !inSourceFile.string)
   end
 }
@@ -101,7 +101,7 @@ message "a GALGAS 4 source file"
 grammar galgas4Grammar ?sourceFilePath: @lstring inSourceFile {
 //--- Search for a project file in parent directory
   let parentDirectory = inSourceFile.string.deletingLastPathComponent.deletingLastPathComponent
-  let candidateProjectFiles = [parentDirectory regularFilesWithExtensions !false !@[@("galgas4project")]]
+  let candidateProjectFiles = [parentDirectory regularFilesWithExtensions (!false !@[@("galgas4project")])]
   if candidateProjectFiles.count == 0 then
     error (inSourceFile : "no project file in parent directory of source file")
   elsif candidateProjectFiles.count > 1 then
@@ -111,7 +111,7 @@ grammar galgas4Grammar ?sourceFilePath: @lstring inSourceFile {
     end
     error (inSourceFile : s)
   else
-    let projectFilePath = parentDirectory + "/" + [candidateProjectFiles mValueAtIndex !0]
+    let projectFilePath = parentDirectory + "/" + [candidateProjectFiles mValueAtIndex (!0)]
     parseAndAnalyzeProject (!@(!projectFilePath, inSourceFile.location), !inSourceFile.string)
   end
 }
@@ -186,16 +186,16 @@ private proc compileProject (?let @lstring inProjectSourceFile,
   var @galgasDeclarationAST declarationAST = @()
 //--- Parse predefined type definitions
   grammar galgas4Grammar (!?declarationAST) on
-  [[filewrapper typeGenerationTemplate] textFileContentsAtPath !"galgas-predefined-entities.txt"]
+  [[filewrapper typeGenerationTemplate] textFileContentsAtPath (!"galgas-predefined-entities.txt")]
   : "GALGAS predefined types"
  //--- Parse source file
   let sourcesDir = inProjectSourceFile.string.deletingLastPathComponent + "/sources"
   for (mValue) in inProjectComponentAST.mProjectSourceList do
     if mValue.pathExtension == "galgas3" then
-      let absoluteSourcePath = [mValue absolutePathFromPath !sourcesDir]
+      let absoluteSourcePath = [mValue absolutePathFromPath (!sourcesDir)]
       grammar galgas3Grammar (!?declarationAST) in @lstring (!absoluteSourcePath, .nowhere)
     elsif mValue.pathExtension == "galgas4" then
-      let absoluteSourcePath = [mValue absolutePathFromPath !sourcesDir]
+      let absoluteSourcePath = [mValue absolutePathFromPath (!sourcesDir)]
       grammar galgas4Grammar (!?declarationAST) in @lstring (!absoluteSourcePath, .nowhere)
     end
   end
@@ -296,13 +296,13 @@ private proc compileProject (?let @lstring inProjectSourceFile,
   if [option galgas_cli_options.outputHTMLTypeListFile value] then
     var @stringset firstLetterSet = @()
     for (lkey *) in typeMap do
-      firstLetterSet ++= [lkey.string characterAtIndex!0].string
+      firstLetterSet ++= [lkey.string characterAtIndex(!0)].string
     end
     var @string tableOfTypeString = ""
     var @char currentFirstLetter = ' '
     for (type_lkey *) in typeMap do
-      if currentFirstLetter != [type_lkey.string characterAtIndex !0] then
-        currentFirstLetter = [type_lkey.string characterAtIndex !0]
+      if currentFirstLetter != [type_lkey.string characterAtIndex (!0)] then
+        currentFirstLetter = [type_lkey.string characterAtIndex (!0)]
         tableOfTypeString += "<br><a name=\"" + currentFirstLetter.uint
         tableOfTypeString += "\"><b>" + currentFirstLetter + "</b></a><br>"
       end
@@ -376,7 +376,7 @@ private proc projectGeneration
   let userHeadersDir = inAbsoluteBuildDirectory + "/user-headers"
   userHeadersDir.makeDirectory ()
 //--------------------------------- %quietOutputByDefault
-  let quietOutputByDefault = [@stringset.setWithLStringList (!inProjectComponentAST.mGenerationFeatureList) hasKey !"quietOutputByDefault"]
+  let quietOutputByDefault = [@stringset.setWithLStringList (!inProjectComponentAST.mGenerationFeatureList) hasKey (!"quietOutputByDefault")]
 //--------------------------------- Generate GUI components
   let productDirectory = inAbsoluteBuildDirectory + "/output"
   var @stringlist swiftAppProductFileList = @()
@@ -423,7 +423,7 @@ private proc projectGeneration
     ignoredFeatureSet ++= "tool-link"
     var @projectQualifiedFeatureMap projectQualifiedFeatureMap = @()
     for feature in inProjectComponentAST.mQualifiedFeatureList do
-      if not [ignoredFeatureSet hasKey !feature.featureName.string] then
+      if not [ignoredFeatureSet hasKey (!feature.featureName.string)] then
         !?projectQualifiedFeatureMap.insertKey
           (!feature.featureName,
           !feature.featureValue
@@ -457,7 +457,7 @@ private proc projectGeneration
 //--------------------------------- Remove useless files
   if 0 == @uint.errorCount then
     var @stringset allActualFileSet = @() // .setWithStringList {!objcAppProductFileList + swiftAppProductFileList}
-    for (mValue) in [productDirectory regularFiles !false] do
+    for (mValue) in [productDirectory regularFiles (!false)] do
       allActualFileSet ++= mValue
     end
     let uselessFileSet = allActualFileSet - allProductFileSet

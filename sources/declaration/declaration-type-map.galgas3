@@ -537,7 +537,7 @@ final class @mapDeclarationAST : @semanticDeclarationAST {
     end
   //--- Handle insert setters
     for (mInsertMethodName * *) in self.mInsertSetterList do
-      if [setterMap hasKey !mInsertMethodName.string] then
+      if [setterMap hasKey (!mInsertMethodName.string)] then
         error (mInsertMethodName:"the '" + mInsertMethodName + "' insert proc is already declared")
       else
         !?setterMap.insertOrReplace
@@ -572,7 +572,7 @@ final class @mapDeclarationAST : @semanticDeclarationAST {
     end
   //--- Handle remove setters
     for entry in self.mRemoveSetterList do
-      if [setterMap hasKey !entry.mName.string] then
+      if [setterMap hasKey (!entry.mName.string)] then
         error (entry.mName
         : "the '" + entry.mName
                   + "' proc is already declared as an insert mutating proc or a remove mutating proc")
@@ -774,7 +774,7 @@ final class @mapDeclarationAST : @semanticDeclarationAST {
     for (* propertyTypeName mPropertyName 2* initExpression) in self.mPropertyList do
       let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!propertyTypeName)
       !?ioUsefulEntitiesGraph.addEdge (!from: nameForUsefulness, !to: propertyTypeNameForUsefulness)
-      let @unifiedTypeMapEntry t = [ioTypeMap typeMapEntryForLKey !propertyTypeName]
+      let @unifiedTypeMapEntry t = [ioTypeMap typeMapEntryForLKey (!propertyTypeName)]
       let hasSelector = false
       typedAttributeList +=
         !t
@@ -782,7 +782,7 @@ final class @mapDeclarationAST : @semanticDeclarationAST {
         !initExpression
         !hasSetter: true
         !hasSelector: hasSelector
-      if [forbiddenKeysForMapAndDict () hasKey !mPropertyName.string] then
+      if [forbiddenKeysForMapAndDict () hasKey (!mPropertyName.string)] then
         var @string m = "a property cannot be named:"
         for s in forbiddenKeysForMapAndDict () do
           m+= " " + s
@@ -817,21 +817,21 @@ final class @mapDeclarationAST : @semanticDeclarationAST {
       end
     end
     let @bool hasInsertOrReplaceModifier = self.mInsertOrReplaceDeclarationListAST.count > 0
-    if hasInsertOrReplaceModifier & [insertMethodMap hasKey !"insertOrReplace"] then
+    if hasInsertOrReplaceModifier & [insertMethodMap hasKey (!"insertOrReplace")] then
       self.mInsertOrReplaceDeclarationListAST.first (?let insertOrReplaceDeclarationLocation)
       error (insertOrReplaceDeclarationLocation
       : "the insertOrReplace' mutating proc cannot be declared : an insert mutating proc or a remove mutating proc has been declared with this name")
     end
   //--- Optional Element type index
     let elementTypeName = makeEmbeddedElementTypeLName (!self.mMapTypeName)
-    let elementTypeEntry = [ioTypeMap typeMapEntryForLKey !elementTypeName]
+    let elementTypeEntry = [ioTypeMap typeMapEntryForLKey (!elementTypeName)]
     let optionalElementTypeName = makeOptionalTypeLName (!forTypeNamed: elementTypeName)
-    let optionalElementTypeEntry = [ioTypeMap typeMapEntryForLKey !optionalElementTypeName]
+    let optionalElementTypeEntry = [ioTypeMap typeMapEntryForLKey (!optionalElementTypeName)]
   //--- Enter map declaration
     ioSemanticDeclarationListForGeneration +=
       !infoMessage: "map " + self.mMapTypeName
       !@mapTypeForGeneration (
-        ![ioTypeMap typeMapEntryForLKey !self.mMapTypeName],
+        ![ioTypeMap typeMapEntryForLKey (!self.mMapTypeName)],
         elementTypeEntry,
         self.mMapTypeName,
         typedAttributeList,

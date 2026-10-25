@@ -88,7 +88,7 @@ final class @methodCallInstructionAST : @semanticInstructionAST {
         if baseType.definition.superType.isNull then
           searching = false
         else
-          if [baseType.definition.superType.definition.instanceMethodMap hasKey !self.mMethodName.string] then
+          if [baseType.definition.superType.definition.instanceMethodMap hasKey (!self.mMethodName.string)] then
             baseType = baseType.definition.superType
           else
             searching = false

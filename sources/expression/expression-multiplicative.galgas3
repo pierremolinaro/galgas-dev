@@ -196,7 +196,7 @@ override proc @multiplicationExpressionNoOverflowAST.analyzeSemanticExpression
   )
 //--- Check operator availability
   checkDiadicOperator (
-    !operatorIsHandled: [leftExpression.mResultType.definition.features contains ! .infixMulOperatorNoOVF],
+    !operatorIsHandled: [leftExpression.mResultType.definition.features contains (! .infixMulOperatorNoOVF)],
     !"&*",
     !self.mOperatorLocation,
     !?leftExpression,
@@ -254,7 +254,7 @@ override proc @multiplicationExpressionAST.analyzeSemanticExpression
   )
 //--- Check operator availability
   checkDiadicOperator (
-    !operatorIsHandled: [leftExpression.mResultType.definition.features contains !.infixMulOperator],
+    !operatorIsHandled: [leftExpression.mResultType.definition.features contains (!.infixMulOperator)],
     !"*",
     !self.mOperatorLocation,
     !?leftExpression,
@@ -311,7 +311,7 @@ override proc @divisionExpressionNoOverflowAST.analyzeSemanticExpression
   )
 //--- Check operator availability
   checkDiadicOperator (
-    !operatorIsHandled: [leftExpression.mResultType.definition.features contains !.infixDivOperatorNoOVF],
+    !operatorIsHandled: [leftExpression.mResultType.definition.features contains (!.infixDivOperatorNoOVF)],
     !"&/",
     !self.mOperatorLocation,
     !?leftExpression,
@@ -368,7 +368,7 @@ override proc @divisionExpressionAST.analyzeSemanticExpression
   )
 //--- Check operator availability
   checkDiadicOperator (
-    !operatorIsHandled: [leftExpression.mResultType.definition.features contains !.infixDivOperator],
+    !operatorIsHandled: [leftExpression.mResultType.definition.features contains (!.infixDivOperator)],
     !"/",
     !self.mOperatorLocation,
     !?leftExpression,
@@ -425,7 +425,7 @@ override proc @moduloExpressionAST.analyzeSemanticExpression
   )
 //--- Check operator availability
   checkDiadicOperator (
-    !operatorIsHandled: [leftExpression.mResultType.definition.features contains !.infixModOperator],
+    !operatorIsHandled: [leftExpression.mResultType.definition.features contains (!.infixModOperator)],
     !"mod",
     !self.mOperatorLocation,
     !?leftExpression,

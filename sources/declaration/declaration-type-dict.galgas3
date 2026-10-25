@@ -415,12 +415,12 @@ override proc @dictDeclarationAST.enterDeclarationInSemanticContext
 //--------------------------------------------------------------------------------------------------
 
 proc check_K_escapeCharacters (?let @lstring inString ) {  //--- Check escape sequences : only %K or %%
-  for components in [inString.string componentsSeparatedByString !"%%"] do
-    var @stringlist explodedArray = [components.mValue componentsSeparatedByString !"%"]
+  for components in [inString.string componentsSeparatedByString (!"%%")] do
+    var @stringlist explodedArray = [components.mValue componentsSeparatedByString (!"%")]
     !?explodedArray.popFirst (?*)
     for (mValue) in explodedArray do
       if mValue.count > 0 then
-        let @char c = [mValue characterAtIndex !0]
+        let @char c = [mValue characterAtIndex (!0)]
         if c != 'K' then
           error (inString: "only '%K' and '%%' escape sequences are allowed in this error message ")
         end
@@ -432,12 +432,12 @@ proc check_K_escapeCharacters (?let @lstring inString ) {  //--- Check escape se
 //--------------------------------------------------------------------------------------------------
 
 proc check_K_L_escapeCharacters (?let @lstring inString ) {  //--- Check escape sequences : only %K, %L or %%
-  for components in [inString.string componentsSeparatedByString !"%%"] do
-    var @stringlist explodedArray = [components.mValue componentsSeparatedByString !"%"]
+  for components in [inString.string componentsSeparatedByString (!"%%")] do
+    var @stringlist explodedArray = [components.mValue componentsSeparatedByString (!"%")]
     !?explodedArray.popFirst (?*)
     for (mValue) in explodedArray do
       if mValue.count > 0 then
-        let @char c = [mValue characterAtIndex !0]
+        let @char c = [mValue characterAtIndex (!0)]
         if (c != 'K') & (c != 'L') then
           error (inString: "only '%K', '%L' and '%%' escape sequences are allowed in this error message ")
         end
@@ -464,8 +464,8 @@ override proc @dictDeclarationAST.semanticAnalysis
                 ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
 ) {
 //--- Check key is comparable
-  let keyType = [ioTypeMap typeMapEntryForLKey !self.mKeyTypeName]
-  if not [keyType.definition.features contains !.comparable] then
+  let keyType = [ioTypeMap typeMapEntryForLKey (!self.mKeyTypeName)]
+  if not [keyType.definition.features contains (!.comparable)] then
     error (self.mKeyTypeName : "the @" + self.mKeyTypeName + " type is not comparable")
   end
 //--- Useful entities graph
@@ -496,7 +496,7 @@ override proc @dictDeclarationAST.semanticAnalysis
   for (* typeName mPropertyName * hasSelector initExpression) in self.mPropertyList do
     let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!typeName)
     !?ioUsefulEntitiesGraph.addEdge (!from: nameForUsefulness, !to: propertyTypeNameForUsefulness)
-    let @unifiedTypeMapEntry t = [ioTypeMap typeMapEntryForLKey !typeName]
+    let @unifiedTypeMapEntry t = [ioTypeMap typeMapEntryForLKey (!typeName)]
     let hasSetter = true
     typedAttributeList +=
       !t
@@ -504,7 +504,7 @@ override proc @dictDeclarationAST.semanticAnalysis
       !initExpression
       !hasSetter: hasSetter
       !hasSelector: hasSelector
-    if [forbiddenKeysForMapAndDict () hasKey !mPropertyName.string] then
+    if [forbiddenKeysForMapAndDict () hasKey (!mPropertyName.string)] then
       var @string m = "a property cannot be named:"
       for s in forbiddenKeysForMapAndDict () do
         m+= " " + s
@@ -517,13 +517,13 @@ override proc @dictDeclarationAST.semanticAnalysis
 //--- Optional Element type index
   let elementTypeName = makeEmbeddedElementTypeLName (!self.mDictTypeName)
   let optionalElementTypeName = makeOptionalTypeLName (!forTypeNamed: elementTypeName)
-  let optionalElementTypeEntry = [ioTypeMap typeMapEntryForLKey !optionalElementTypeName]
+  let optionalElementTypeEntry = [ioTypeMap typeMapEntryForLKey (!optionalElementTypeName)]
 //--- Enter map declaration
   ioSemanticDeclarationListForGeneration +=
     !infoMessage: "dict " + self.mDictTypeName
     !@dictTypeForGeneration (
-      ![ioTypeMap typeMapEntryForLKey !self.mDictTypeName],
-      [ioTypeMap typeMapEntryForLKey !elementTypeName],
+      ![ioTypeMap typeMapEntryForLKey (!self.mDictTypeName)],
+      [ioTypeMap typeMapEntryForLKey (!elementTypeName)],
       self.mDictTypeName,
       typedAttributeList,
       self.mKeyTypeName,

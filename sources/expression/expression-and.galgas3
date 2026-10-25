@@ -136,7 +136,7 @@ override proc @andExpressionAST.analyzeSemanticExpression
   )
 //--- Check operator availability
   checkDiadicOperator (
-    !operatorIsHandled: [leftExpression.mResultType.definition.features contains !.infixAndOperator],
+    !operatorIsHandled: [leftExpression.mResultType.definition.features contains (!.infixAndOperator)],
     !"&",
     !self.mOperatorLocation,
     !?leftExpression,
@@ -193,7 +193,7 @@ override proc @andShortExpressionAST.analyzeSemanticExpression
   )
 //--- Check operator availability
   checkDiadicOperator (
-    !operatorIsHandled: [leftExpression.mResultType.definition.features contains !.infixAndOperator],
+    !operatorIsHandled: [leftExpression.mResultType.definition.features contains (!.infixAndOperator)],
     !"&",
     !self.mOperatorLocation,
     !?leftExpression,

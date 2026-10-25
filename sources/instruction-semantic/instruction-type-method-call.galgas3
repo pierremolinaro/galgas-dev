@@ -99,7 +99,7 @@ override proc @typeMethodCallInstructionAST.analyzeSemanticInstruction (
                         ?!@semanticInstructionListForGeneration ioInstructionListForGeneration,
                         ?!@localVarManager ioVariableMap) {
 //--- Get type proc map for the named type
-  let type = [ioTypeMap typeMapEntryForLKey !self.mTypeName]
+  let type = [ioTypeMap typeMapEntryForLKey (!self.mTypeName)]
 //--- Get type proc signature
   type.definition.classMethodMap.searchKey (!self.mMethodName, ?let routineSignature, ?let hasCompilerArgument)
 //--- Check effective parameters

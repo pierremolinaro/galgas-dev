@@ -116,7 +116,7 @@ syntax extension templateSyntax {
       $:$
       let startLocation = @location.here
       $identifier$ (?let @lstring prefixString)
-      error ([prefixString.location union !startLocation]
+      error ([prefixString.location union (!startLocation)]
       : "useless prefix" fixit replace "")
     end
   }

@@ -152,7 +152,7 @@ override proc @overridingExtensionSetterAST.semanticAnalysis (
   let typeNameForUsefulness = typeNameForUsefulEntitiesGraph (!self.mTypeName)
   !?ioUsefulEntitiesGraph.addEdge (!from: typeNameForUsefulness, !to: nameForUsefulness)
 //--- Self type
-  let @unifiedTypeMapEntry selfType = [ioTypeMap typeMapEntryForLKey !self.mTypeName]
+  let @unifiedTypeMapEntry selfType = [ioTypeMap typeMapEntryForLKey (!self.mTypeName)]
 //--- Check self type is a class
   if not selfType.definition.typeKind.isClassType then
     error (self.mOverridingExtensionSetterName: "cannot declare a extension mutating proc: '@" + selfType.definition.typeName.string + "' is not a class")
@@ -164,7 +164,7 @@ override proc @overridingExtensionSetterAST.semanticAnalysis (
   let @location inheritedDeclarationLocation = @location.here
   loop (ioTypeMap.count + 1)
   while (not superType.isNull) & (baseTypeName == "") do
-    if [superType.definition.setterMap hasKey !self.mOverridingExtensionSetterName.string] then
+    if [superType.definition.setterMap hasKey (!self.mOverridingExtensionSetterName.string)] then
       superType.definition.setterMap.searchKey (!self.mOverridingExtensionSetterName, ?*, ?inheritedSignature, ?*, ?let qualifier, ?*)
       if qualifier <= @methodQualifier.isBasicFinal then
         baseTypeName = superType.definition.typeName.string
@@ -279,7 +279,7 @@ override proc @overridingExtensionSetterForGeneration.appendSpecificImplementati
   var @bool searching = true
   loop (@uint. max) while searching do
     if not baseType.definition.superType.isNull then
-      if [baseType.definition.superType.definition.setterMap hasKey !self.mExtensionSetterName] then
+      if [baseType.definition.superType.definition.setterMap hasKey (!self.mExtensionSetterName)] then
         baseType = baseType.definition.superType
       else
         searching = false

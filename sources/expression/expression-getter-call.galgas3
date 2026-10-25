@@ -31,15 +31,17 @@ syntax extension galgas3ExpressionSyntax {
     <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST receiverExpression)
   //--- Get func name
     $identifier$ (?let @lstring getterName)
-  //--- Actual parameters
+  //--- Actual parameters §§
+    $($
     <output_expression_list_ggs3> (!?ioDeclarations, ?let @actualOutputArgumentList expressionList)
+    $)$
     $]$
     let endLocation = @location.here
     outExpression = @getterCallExpressionAST (
       !receiverExpression,
       getterName,
       expressionList,
-      [startLocation union !endLocation]
+      [startLocation union (!endLocation)]
     )
   }
 
@@ -94,7 +96,7 @@ final class @getterCallExpressionAST : @semanticExpressionAST {
           replace aGetter.mGetterNameThatObsoletesInvokationName
         )
       end
-      if [receiverType.definition.propertyMap hasKey !self.mGetterName.string]
+      if [receiverType.definition.propertyMap hasKey (!self.mGetterName.string)]
         && (self.mActualArgumentList.count == 0) then
         error (self.mExpressionLocation : "use dot notation, instead of func call")
       end
@@ -140,7 +142,7 @@ final class @getterCallExpressionAST : @semanticExpressionAST {
         end
       end
   //-------------------------------------- The func does not exist, it is a property ?
-    elsif self.mActualArgumentList.count == 0, [receiverType.definition.propertyMap hasKey !self.mGetterName] then
+    elsif self.mActualArgumentList.count == 0, [receiverType.definition.propertyMap hasKey (!self.mGetterName)] then
       error (self.mExpressionLocation : "use dot notation, instead of func call" spoil outExpression)
   //-------------------------------------- not found, old style search
     else
@@ -153,7 +155,7 @@ final class @getterCallExpressionAST : @semanticExpressionAST {
         let @stringlist fieldList = @()
         var obsoletedByGetter = ""
         for (propertyTypeEntry propertyName 3*) in receiverType.definition.currentTypedPropertyList do
-          let propertyType = [ioTypeMap typeMapEntryForLKey !@(!propertyTypeEntry.definition.typeName.string, .here)]
+          let propertyType = [ioTypeMap typeMapEntryForLKey (!@(!propertyTypeEntry.definition.typeName.string, .here))]
           let aMap = propertyType.definition.getterMap
           if let entry = aMap [self.mGetterName.string] then
             if propertyType.definition.typeName.string == propertyName.string then
@@ -296,7 +298,7 @@ final class @getterCallExpressionForGeneration : @semanticExpressionForGeneratio
       var @bool searching = true
       loop (@uint.max) while searching do
         if not baseType.definition.superType.isNull then
-          if [baseType.definition.superType.definition.getterMap hasKey !self.mGetterName] then
+          if [baseType.definition.superType.definition.getterMap hasKey (!self.mGetterName)] then
             baseType = baseType.definition.superType
           else
             searching = false

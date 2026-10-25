@@ -101,7 +101,7 @@ syntax galgas3GrammarComponentSyntax (galgasScanner3) {
     repeat
     while
       <label_formal_parameter_ggs3> (!?ioDeclarations, ?let argumentName, !?mFormalParameterList)
-      if [argumentNameSet hasKey !argumentName.string] then
+      if [argumentNameSet hasKey (!argumentName.string)] then
         error (argumentName: "there is already an argument named '" + argumentName + "'")
       end
       argumentNameSet ++= argumentName.string
@@ -305,7 +305,7 @@ syntax galgas4GrammarComponentSyntax (galgasScanner4) {
     or
       repeat
         <label_formal_parameter> (!?ioDeclarations, ?let argumentName, !?formalParameterList)
-        if [argumentNameSet hasKey !argumentName.string] then
+        if [argumentNameSet hasKey (!argumentName.string)] then
           error (argumentName: "there is already an argument named '" + argumentName + "'")
         end
         argumentNameSet ++= argumentName.string

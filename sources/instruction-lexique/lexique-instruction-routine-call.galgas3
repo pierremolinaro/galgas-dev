@@ -283,7 +283,7 @@ override func @lexicalRoutineCallInstructionAST.generateSwiftCocoaInstructionCod
   -> @string outGeneratedCode {
   outGeneratedCode = "scanner_cocoa_routine_" + self.mRoutineName + " (&scanningOk"
   for (mLexicalRoutineActualArgument) in self.mActualArgumentList do
-    outGeneratedCode += ", " + [mLexicalRoutineActualArgument generateSwiftCocoaRoutineArgument !inLexiqueAnalysisContext]
+    outGeneratedCode += ", " + [mLexicalRoutineActualArgument generateSwiftCocoaRoutineArgument (!inLexiqueAnalysisContext)]
   end
   outGeneratedCode += ")\n"
 }

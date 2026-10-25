@@ -167,7 +167,7 @@ final class @extensionMethodAST : @semanticDeclarationAST {
     !?ioSemanticTypePrecedenceGraph.addNode (!key, !self)
     !?ioSemanticTypePrecedenceGraph.addEdge (!from: key, !to: @(!"@" + self.mTypeName, self.mTypeName.location))
   //---
-    if not [ioExtensionMethodMapForBuildingContext hasKey !self.mTypeName.string] then
+    if not [ioExtensionMethodMapForBuildingContext hasKey (!self.mTypeName.string)] then
       !?ioExtensionMethodMapForBuildingContext.insertKey
         (! self.mTypeName,
         !@()
@@ -216,7 +216,7 @@ final class @extensionMethodAST : @semanticDeclarationAST {
     let typeNameForUsefulness = typeNameForUsefulEntitiesGraph (! self.mTypeName)
     !?ioUsefulEntitiesGraph.addEdge (!from: typeNameForUsefulness, !to: nameForUsefulness)
   //--- Self type
-    let @unifiedTypeMapEntry selfType = [ioTypeMap typeMapEntryForLKey ! self.mTypeName]
+    let @unifiedTypeMapEntry selfType = [ioTypeMap typeMapEntryForLKey (! self.mTypeName)]
     let @string selfObjectNameString
     let @string selfObjectPropertyAccessorString
     let @bool implementedAsFunction
@@ -375,7 +375,7 @@ override proc @extensionMethodForGeneration.appendSpecificImplementation (?let @
     var @bool searching = true
     loop (@uint.max) while searching do
       if not baseType.definition.superType.isNull then
-        if [baseType.definition.superType.definition.instanceMethodMap hasKey !self.mExtensionMethodName] then
+        if [baseType.definition.superType.definition.instanceMethodMap hasKey (!self.mExtensionMethodName)] then
           baseType = baseType.definition.superType
         else
           searching = false

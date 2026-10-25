@@ -56,7 +56,7 @@ proc checkLabelMap
         + " formal parameter"
         + if mFormalArgumentList.count > 1 then "s" else "" end
         + " declared here, but declaration at "
-        + [inNonterminalSymbolLabelMapForGrammarAnalysis locationForKey !mLabelName.string].startLocationString
+        + [inNonterminalSymbolLabelMapForGrammarAnalysis locationForKey (!mLabelName.string)].startLocationString
         + " names " + formalParametersList.count.string + " parameter"
         + if formalParametersList.count > 1 then "s" else "" end
       )
@@ -67,7 +67,7 @@ proc checkLabelMap
             " this formal parameter is declared with '"
           + mFormalArgumentPassingModeForGrammarAnalysis
           + "' passing mode, but declaration at "
-          + [inNonterminalSymbolLabelMapForGrammarAnalysis locationForKey !mLabelName.string].startLocationString
+          + [inNonterminalSymbolLabelMapForGrammarAnalysis locationForKey (!mLabelName.string)].startLocationString
           + " is declared with '" + mFormalArgumentPassingMode + "' passing mode"
           )
         end
@@ -76,7 +76,7 @@ proc checkLabelMap
             " this formal parameter is declared of '@"
           + mGalgasTypeNameForGrammarAnalysis
           + "' type, but declaration at "
-          + [inNonterminalSymbolLabelMapForGrammarAnalysis locationForKey !mLabelName.string].startLocationString
+          + [inNonterminalSymbolLabelMapForGrammarAnalysis locationForKey (!mLabelName.string)].startLocationString
           + " is declared with '@" + mFormalArgumentTypeName + "' type"
           )
         end
@@ -85,7 +85,7 @@ proc checkLabelMap
   end
 //---
   for (lkey *) in inNonterminalSymbolLabelMapForGrammarAnalysis do
-    if not [labelStringSet hasKey !lkey.string] then
+    if not [labelStringSet hasKey (!lkey.string)] then
       error (inNonTerminalLocation :
         "this non terminal does not declare the '" + lkey + "' label, but declaration at "
           + inOriginalNonTerminalLocation.startLocationString
@@ -105,7 +105,7 @@ proc handleNonTerminalDeclarations
       checkLabelMap (
         !mNonterminalName.location,
         !mLabels,
-        ![ioNonTerminalMapForGrammarAnalysis locationForKey !mNonterminalName.string],
+        ![ioNonTerminalMapForGrammarAnalysis locationForKey (!mNonterminalName.string)],
         !entry.mNonterminalSymbolParametersMap
       )
     else
@@ -135,7 +135,7 @@ proc handleNonTerminalDeclarationsFromRuleList
       checkLabelMap (
         !mNonterminalName.location,
         !nonTerminalLabelListAST,
-        ![ioNonTerminalMapForGrammarAnalysis locationForKey !mNonterminalName.string],
+        ![ioNonTerminalMapForGrammarAnalysis locationForKey (!mNonterminalName.string)],
         !entry.mNonterminalSymbolParametersMap
       )
     else

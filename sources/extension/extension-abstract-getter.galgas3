@@ -163,7 +163,7 @@ final class @abstractExtensionGetterAST : @semanticDeclarationAST {
     !?ioSemanticTypePrecedenceGraph.addNode (!key, !self)
     !?ioSemanticTypePrecedenceGraph.addEdge (!from: key, !to: @(!"@" + self.mTypeName, self.mTypeName.location))
   //---
-    if not [ioExtensionGetterMapForBuildingContext hasKey !self.mTypeName.string] then
+    if not [ioExtensionGetterMapForBuildingContext hasKey (!self.mTypeName.string)] then
       !?ioExtensionGetterMapForBuildingContext.insertKey
         (!self.mTypeName,
         !@()
@@ -209,7 +209,7 @@ final class @abstractExtensionGetterAST : @semanticDeclarationAST {
     ?let @predefinedTypes unused inPredefinedTypes,
     ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration) {
   //--- Self type
-    let @unifiedTypeMapEntry selfType = [ioTypeMap typeMapEntryForLKey !self.mTypeName]
+    let @unifiedTypeMapEntry selfType = [ioTypeMap typeMapEntryForLKey (!self.mTypeName)]
   //--- Check self type is an abstract class
     if not selfType.definition.typeKind.isClassType then
       error (self.mAbstractExtensionGetterName
@@ -225,7 +225,7 @@ final class @abstractExtensionGetterAST : @semanticDeclarationAST {
     for (mFormalSelector mFormalArgumentTypeName mFormalArgumentName * mIsConstant) in self.mAbstractExtensionGetterFormalInputParameterList do
       formalParameterListForGeneration +=
         !mFormalSelector
-        ![ioTypeMap typeMapEntryForLKey !mFormalArgumentTypeName]
+        ![ioTypeMap typeMapEntryForLKey (!mFormalArgumentTypeName)]
         !mFormalArgumentName.string
         !mFormalArgumentName
         !mIsConstant
@@ -238,7 +238,7 @@ final class @abstractExtensionGetterAST : @semanticDeclarationAST {
         !implementationCppFileName: "func-" + self.mTypeName.string.fileNameRepresentation + "-" + self.mAbstractExtensionGetterName.string.fileNameRepresentation,
         selfType,
         self.mAbstractExtensionGetterName.string,
-        [ioTypeMap typeMapEntryForLKey !self.mAbstractExtensionGetterReturnedTypeName],
+        [ioTypeMap typeMapEntryForLKey (!self.mAbstractExtensionGetterReturnedTypeName)],
         formalParameterListForGeneration
       )
   }

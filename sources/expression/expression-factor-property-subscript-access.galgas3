@@ -57,11 +57,26 @@ syntax extension galgas3ExpressionSyntax {
     while
       $.$
       $identifier$ (?let structFieldName)
-      outExpression = @structPropertyAccessExpressionAST (
-        structFieldName.location,
-        outExpression,
-        structFieldName
-      )
+      select
+        outExpression = @structPropertyAccessExpressionAST (
+          structFieldName.location,
+          outExpression,
+          structFieldName
+        )
+      or //--- Getter call ?
+        let getterName = structFieldName
+        let startLocation = @location.next
+        $($
+        <output_expression_list_ggs34> (!?ioDeclarations, ?let @actualOutputArgumentList expressionList)
+        let endLocation = @location.here
+        $)$
+        outExpression = @getterCallExpressionAST (
+          outExpression,
+          getterName,
+          expressionList,
+          startLocation.union (endLocation)
+        )
+      end
     end
   }
 
@@ -81,9 +96,10 @@ syntax extension galgas4ExpressionSyntax {
     repeat
     while
       $[$
-      <non_empty_output_expression_list>(
+      <non_empty_output_expression_list> (
         !?ioDeclarations,
-        ?let @actualOutputArgumentList expressionList)
+        ?let @actualOutputArgumentList expressionList
+      )
       outExpression = @subscriptReadAccessExpressionAST (
         !outExpression,
         expressionList,
@@ -95,7 +111,7 @@ syntax extension galgas4ExpressionSyntax {
       $identifier$ (?let structFieldName)
       select
         outExpression = @structPropertyAccessExpressionAST (
-          !structFieldName.location,
+          structFieldName.location,
           outExpression,
           structFieldName
         )
@@ -107,10 +123,10 @@ syntax extension galgas4ExpressionSyntax {
         let endLocation = @location.here
         $)$
         outExpression = @getterCallExpressionAST (
-          !outExpression,
+          outExpression,
           getterName,
           expressionList,
-          [startLocation union !endLocation]
+          [startLocation union (!endLocation)]
         )
       end
     end
