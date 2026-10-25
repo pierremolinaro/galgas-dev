@@ -22,18 +22,8 @@
 final class @testDynamicClassInExpressionAST : @semanticExpressionAST {
   private let @semanticExpressionAST mReceiverExpression
   private let @location mEndOfReceiverExpression
-  private let @dynamicTypeComparisonKind mTypeComparisonKind
   private let @lstring mTypeName
 }
-
-//································································································
-
-enum @dynamicTypeComparisonKind {
-  case equal  // ==
-  case inherited  // >=
-  case strictlyInherited // >
-}
-
 
 //································································································
 
@@ -58,24 +48,10 @@ syntax extension galgas3ExpressionSyntax {
     or
       let endOfReceiverExpression = @location.here
       $is$
-      let @dynamicTypeComparisonKind kind
-      select
-        $==$
-        kind = .equal
-      or
-        $>=$
-        kind = .inherited
-      or
-        kind = .inherited
-      or
-        $>$
-        kind = .strictlyInherited
-      end
       $@type$ (?let typeName)
       outExpression = @testDynamicClassInExpressionAST (
         !outExpression,
         endOfReceiverExpression,
-        kind,
         typeName
       )
     or
@@ -109,9 +85,8 @@ syntax extension galgas4ExpressionSyntax {
       $is$
       $@type$ (?let typeName)
       outExpression = @testDynamicClassInExpressionAST (
-        !outExpression,
+        outExpression,
         endOfReceiverExpression,
-        .inherited,
         typeName
       )
     or
@@ -119,7 +94,7 @@ syntax extension galgas4ExpressionSyntax {
       $as$
       $@type$ (?let typeName)
       outExpression = @castInExpressionAST (
-        !outExpression,
+        outExpression,
         endOfReceiverExpression,
         typeName
       )
@@ -186,8 +161,8 @@ override proc @testDynamicClassInExpressionAST.analyzeSemanticExpression
     !inAnalysisContext.predefinedTypes.mBoolType,
     self.mTypeName.location,
     expression,
-    self.mTypeComparisonKind,
-    castType)
+    castType
+  )
 }
 
 //································································································
@@ -265,7 +240,6 @@ override proc @castInExpressionAST.analyzeSemanticExpression
 
 final class @testDynamicClassInExpressionForGeneration : @semanticExpressionForGeneration {
   private let @semanticExpressionForGeneration mReceiverExpression
-  private let @dynamicTypeComparisonKind mTypeComparisonKind
   private let @unifiedTypeMapEntry mCastType
 }
 
@@ -288,22 +262,9 @@ override proc @testDynamicClassInExpressionForGeneration.generateExpression
   )
 //--- Generated test
   self.mCastType.addHeaderFileName (!?ioInclusionSet)
-  switch self.mTypeComparisonKind
-  case equal :
-    outCppExpression = "GGS_bool (" + receiverExpression
-      + ".dynamicTypeDescriptor () == & kTypeDescriptor_GALGAS_"
-      + typeNameRepresentation + ")"
-  case inherited :
-    outCppExpression = "GGS_bool (nullptr != dynamic_cast <const cPtr_"
-    + typeNameRepresentation
-    + " *> (" + receiverExpression + ".ptr ()))"
-  case strictlyInherited :
-    outCppExpression = "GGS_bool ((" + receiverExpression
-      + ".dynamicTypeDescriptor () != & kTypeDescriptor_GALGAS_"
-      + typeNameRepresentation + ") && (nullptr != dynamic_cast <const cPtr_"
-    + typeNameRepresentation
-    + " *> (" + receiverExpression + ".ptr ())))"
-  end
+  outCppExpression = "GGS_bool (nullptr != dynamic_cast <const cPtr_"
+  + typeNameRepresentation
+  + " *> (" + receiverExpression + ".ptr ()))"
 }
 
 //--------------------------------------------------------------------------------------------------

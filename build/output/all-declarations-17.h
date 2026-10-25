@@ -1485,8 +1485,6 @@ class cGrammar_templateGrammar : public cParser_templateSyntax {
   public: virtual int32_t select_templateSyntax_33 (Lexique_galgasTemplateScanner *) ;
 
   public: virtual int32_t select_templateSyntax_34 (Lexique_galgasTemplateScanner *) ;
-
-  public: virtual int32_t select_templateSyntax_35 (Lexique_galgasTemplateScanner *) ;
 } ;
 
 //--------------------------------------------------------------------------------------------------

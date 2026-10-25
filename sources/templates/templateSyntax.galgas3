@@ -460,22 +460,10 @@ rule <primary_tpl> (!@templateExpressionAST outExpression ) {
   <primary_tpl> (?outExpression)
   let @location endOfReceiverExpression = @location.here
   $is$
-  let @dynamicTypeComparisonKind kind
-  select
-    $==$
-    kind = .equal
-  or
-    $>=$
-    kind = .inherited
-  or
-    $>$
-    kind = .strictlyInherited
-  end
   $@type$ (?let @lstring typeName)
   outExpression = @templateTestDynamicClassAST (
     !outExpression,
     endOfReceiverExpression,
-    kind,
     typeName
   )
 }

@@ -611,8 +611,8 @@ override proc @templateTestDynamicClassAST.templateExpressionAnalysis
     !inAnalysisContext.mPredefinedTypes.mBoolType,
     self.mTypeName.location,
     expression,
-    self.mTypeComparisonKind,
-    castType)
+    castType
+  )
 }
 
 //--------------------------------------------------------------------------------------------------

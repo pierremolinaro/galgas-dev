@@ -178,7 +178,6 @@ final class @templateOptionAccessAST : @templateExpressionAST {
 final class @templateTestDynamicClassAST : @templateExpressionAST {
   private let @templateExpressionAST mReceiverExpression
   private let @location mEndOfReceiverExpression
-  private let @dynamicTypeComparisonKind mTypeComparisonKind
   private let @lstring mTypeName
 }
 

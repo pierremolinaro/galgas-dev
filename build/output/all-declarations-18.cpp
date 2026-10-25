@@ -7596,15 +7596,14 @@ GGS_semanticExpressionAST () {
 //--- Synthetized initializer ----------------------------------------------------------------------
 
 GGS_testDynamicClassInExpressionAST GGS_testDynamicClassInExpressionAST::
-init_21__21__21__21_ (const GGS_semanticExpressionAST & in_mReceiverExpression,
-                      const GGS_location & in_mEndOfReceiverExpression,
-                      const GGS_dynamicTypeComparisonKind & in_mTypeComparisonKind,
-                      const GGS_lstring & in_mTypeName,
-                      Compiler * inCompiler
-                      COMMA_LOCATION_ARGS) {
+init_21__21__21_ (const GGS_semanticExpressionAST & in_mReceiverExpression,
+                  const GGS_location & in_mEndOfReceiverExpression,
+                  const GGS_lstring & in_mTypeName,
+                  Compiler * inCompiler
+                  COMMA_LOCATION_ARGS) {
   cPtr_testDynamicClassInExpressionAST * object = nullptr ;
   macroMyNew (object, cPtr_testDynamicClassInExpressionAST (inCompiler COMMA_THERE)) ;
-  object->testDynamicClassInExpressionAST_init_21__21__21__21_ (in_mReceiverExpression, in_mEndOfReceiverExpression, in_mTypeComparisonKind, in_mTypeName, inCompiler) ;
+  object->testDynamicClassInExpressionAST_init_21__21__21_ (in_mReceiverExpression, in_mEndOfReceiverExpression, in_mTypeName, inCompiler) ;
   const GGS_testDynamicClassInExpressionAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
@@ -7613,14 +7612,12 @@ init_21__21__21__21_ (const GGS_semanticExpressionAST & in_mReceiverExpression,
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_testDynamicClassInExpressionAST::
-testDynamicClassInExpressionAST_init_21__21__21__21_ (const GGS_semanticExpressionAST & in_mReceiverExpression,
-                                                      const GGS_location & in_mEndOfReceiverExpression,
-                                                      const GGS_dynamicTypeComparisonKind & in_mTypeComparisonKind,
-                                                      const GGS_lstring & in_mTypeName,
-                                                      Compiler * /* inCompiler */) {
+testDynamicClassInExpressionAST_init_21__21__21_ (const GGS_semanticExpressionAST & in_mReceiverExpression,
+                                                  const GGS_location & in_mEndOfReceiverExpression,
+                                                  const GGS_lstring & in_mTypeName,
+                                                  Compiler * /* inCompiler */) {
   mProperty_mReceiverExpression = in_mReceiverExpression ;
   mProperty_mEndOfReceiverExpression = in_mEndOfReceiverExpression ;
-  mProperty_mTypeComparisonKind = in_mTypeComparisonKind ;
   mProperty_mTypeName = in_mTypeName ;
 }
 
@@ -7656,18 +7653,6 @@ GGS_location GGS_testDynamicClassInExpressionAST::readProperty_mEndOfReceiverExp
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_dynamicTypeComparisonKind GGS_testDynamicClassInExpressionAST::readProperty_mTypeComparisonKind (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_dynamicTypeComparisonKind () ;
-  }else{
-    cPtr_testDynamicClassInExpressionAST * p = (cPtr_testDynamicClassInExpressionAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_testDynamicClassInExpressionAST) ;
-    return p->mProperty_mTypeComparisonKind ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
 GGS_lstring GGS_testDynamicClassInExpressionAST::readProperty_mTypeName (void) const {
   if (nullptr == mObjectPtr) {
     return GGS_lstring () ;
@@ -7686,7 +7671,6 @@ cPtr_testDynamicClassInExpressionAST::cPtr_testDynamicClassInExpressionAST (Comp
 cPtr_semanticExpressionAST (inCompiler COMMA_THERE),
 mProperty_mReceiverExpression (),
 mProperty_mEndOfReceiverExpression (),
-mProperty_mTypeComparisonKind (),
 mProperty_mTypeName () {
 }
 
@@ -7694,18 +7678,15 @@ mProperty_mTypeName () {
 
 cPtr_testDynamicClassInExpressionAST::cPtr_testDynamicClassInExpressionAST (const GGS_semanticExpressionAST & in_mReceiverExpression,
                                                                             const GGS_location & in_mEndOfReceiverExpression,
-                                                                            const GGS_dynamicTypeComparisonKind & in_mTypeComparisonKind,
                                                                             const GGS_lstring & in_mTypeName,
                                                                             Compiler * inCompiler
                                                                             COMMA_LOCATION_ARGS) :
 cPtr_semanticExpressionAST (inCompiler COMMA_THERE),
 mProperty_mReceiverExpression (),
 mProperty_mEndOfReceiverExpression (),
-mProperty_mTypeComparisonKind (),
 mProperty_mTypeName () {
   mProperty_mReceiverExpression = in_mReceiverExpression ;
   mProperty_mEndOfReceiverExpression = in_mEndOfReceiverExpression ;
-  mProperty_mTypeComparisonKind = in_mTypeComparisonKind ;
   mProperty_mTypeName = in_mTypeName ;
 }
 
@@ -7722,8 +7703,6 @@ void cPtr_testDynamicClassInExpressionAST::description (String & ioString,
   ioString.appendCString (", ") ;
   mProperty_mEndOfReceiverExpression.description (ioString, inIndentation+1) ;
   ioString.appendCString (", ") ;
-  mProperty_mTypeComparisonKind.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
   mProperty_mTypeName.description (ioString, inIndentation+1) ;
   ioString.appendCString ("]") ;
 }
@@ -7732,7 +7711,7 @@ void cPtr_testDynamicClassInExpressionAST::description (String & ioString,
 
 AbstractPtrClass * cPtr_testDynamicClassInExpressionAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   AbstractPtrClass * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_testDynamicClassInExpressionAST (mProperty_mReceiverExpression, mProperty_mEndOfReceiverExpression, mProperty_mTypeComparisonKind, mProperty_mTypeName, inCompiler COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_testDynamicClassInExpressionAST (mProperty_mReceiverExpression, mProperty_mEndOfReceiverExpression, mProperty_mTypeName, inCompiler COMMA_THERE)) ;
   return ptr ;
 }
 
@@ -7744,7 +7723,6 @@ AbstractPtrClass * cPtr_testDynamicClassInExpressionAST::duplicate (Compiler * i
     cPtr_semanticExpressionAST::printNonNullClassInstanceProperties () ;
     mProperty_mReceiverExpression.printNonNullClassInstanceProperties ("mReceiverExpression") ;
     mProperty_mEndOfReceiverExpression.printNonNullClassInstanceProperties ("mEndOfReceiverExpression") ;
-    mProperty_mTypeComparisonKind.printNonNullClassInstanceProperties ("mTypeComparisonKind") ;
     mProperty_mTypeName.printNonNullClassInstanceProperties ("mTypeName") ;
   }
 #endif
@@ -8018,16 +7996,15 @@ GGS_semanticExpressionForGeneration () {
 //--- Synthetized initializer ----------------------------------------------------------------------
 
 GGS_testDynamicClassInExpressionForGeneration GGS_testDynamicClassInExpressionForGeneration::
-init_21__21__21__21__21_ (const GGS_unifiedTypeMapEntry & in_mResultType,
-                          const GGS_location & in_mLocation,
-                          const GGS_semanticExpressionForGeneration & in_mReceiverExpression,
-                          const GGS_dynamicTypeComparisonKind & in_mTypeComparisonKind,
-                          const GGS_unifiedTypeMapEntry & in_mCastType,
-                          Compiler * inCompiler
-                          COMMA_LOCATION_ARGS) {
+init_21__21__21__21_ (const GGS_unifiedTypeMapEntry & in_mResultType,
+                      const GGS_location & in_mLocation,
+                      const GGS_semanticExpressionForGeneration & in_mReceiverExpression,
+                      const GGS_unifiedTypeMapEntry & in_mCastType,
+                      Compiler * inCompiler
+                      COMMA_LOCATION_ARGS) {
   cPtr_testDynamicClassInExpressionForGeneration * object = nullptr ;
   macroMyNew (object, cPtr_testDynamicClassInExpressionForGeneration (inCompiler COMMA_THERE)) ;
-  object->testDynamicClassInExpressionForGeneration_init_21__21__21__21__21_ (in_mResultType, in_mLocation, in_mReceiverExpression, in_mTypeComparisonKind, in_mCastType, inCompiler) ;
+  object->testDynamicClassInExpressionForGeneration_init_21__21__21__21_ (in_mResultType, in_mLocation, in_mReceiverExpression, in_mCastType, inCompiler) ;
   const GGS_testDynamicClassInExpressionForGeneration result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
@@ -8036,16 +8013,14 @@ init_21__21__21__21__21_ (const GGS_unifiedTypeMapEntry & in_mResultType,
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_testDynamicClassInExpressionForGeneration::
-testDynamicClassInExpressionForGeneration_init_21__21__21__21__21_ (const GGS_unifiedTypeMapEntry & in_mResultType,
-                                                                    const GGS_location & in_mLocation,
-                                                                    const GGS_semanticExpressionForGeneration & in_mReceiverExpression,
-                                                                    const GGS_dynamicTypeComparisonKind & in_mTypeComparisonKind,
-                                                                    const GGS_unifiedTypeMapEntry & in_mCastType,
-                                                                    Compiler * /* inCompiler */) {
+testDynamicClassInExpressionForGeneration_init_21__21__21__21_ (const GGS_unifiedTypeMapEntry & in_mResultType,
+                                                                const GGS_location & in_mLocation,
+                                                                const GGS_semanticExpressionForGeneration & in_mReceiverExpression,
+                                                                const GGS_unifiedTypeMapEntry & in_mCastType,
+                                                                Compiler * /* inCompiler */) {
   mProperty_mResultType = in_mResultType ;
   mProperty_mLocation = in_mLocation ;
   mProperty_mReceiverExpression = in_mReceiverExpression ;
-  mProperty_mTypeComparisonKind = in_mTypeComparisonKind ;
   mProperty_mCastType = in_mCastType ;
 }
 
@@ -8069,18 +8044,6 @@ GGS_semanticExpressionForGeneration GGS_testDynamicClassInExpressionForGeneratio
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_dynamicTypeComparisonKind GGS_testDynamicClassInExpressionForGeneration::readProperty_mTypeComparisonKind (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_dynamicTypeComparisonKind () ;
-  }else{
-    cPtr_testDynamicClassInExpressionForGeneration * p = (cPtr_testDynamicClassInExpressionForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_testDynamicClassInExpressionForGeneration) ;
-    return p->mProperty_mTypeComparisonKind ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
 GGS_unifiedTypeMapEntry GGS_testDynamicClassInExpressionForGeneration::readProperty_mCastType (void) const {
   if (nullptr == mObjectPtr) {
     return GGS_unifiedTypeMapEntry () ;
@@ -8098,7 +8061,6 @@ GGS_unifiedTypeMapEntry GGS_testDynamicClassInExpressionForGeneration::readPrope
 cPtr_testDynamicClassInExpressionForGeneration::cPtr_testDynamicClassInExpressionForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) :
 cPtr_semanticExpressionForGeneration (inCompiler COMMA_THERE),
 mProperty_mReceiverExpression (),
-mProperty_mTypeComparisonKind (),
 mProperty_mCastType () {
 }
 
@@ -8107,18 +8069,15 @@ mProperty_mCastType () {
 cPtr_testDynamicClassInExpressionForGeneration::cPtr_testDynamicClassInExpressionForGeneration (const GGS_unifiedTypeMapEntry & in_mResultType,
                                                                                                 const GGS_location & in_mLocation,
                                                                                                 const GGS_semanticExpressionForGeneration & in_mReceiverExpression,
-                                                                                                const GGS_dynamicTypeComparisonKind & in_mTypeComparisonKind,
                                                                                                 const GGS_unifiedTypeMapEntry & in_mCastType,
                                                                                                 Compiler * inCompiler
                                                                                                 COMMA_LOCATION_ARGS) :
 cPtr_semanticExpressionForGeneration (in_mResultType, in_mLocation, inCompiler COMMA_THERE),
 mProperty_mReceiverExpression (),
-mProperty_mTypeComparisonKind (),
 mProperty_mCastType () {
   mProperty_mResultType = in_mResultType ;
   mProperty_mLocation = in_mLocation ;
   mProperty_mReceiverExpression = in_mReceiverExpression ;
-  mProperty_mTypeComparisonKind = in_mTypeComparisonKind ;
   mProperty_mCastType = in_mCastType ;
 }
 
@@ -8137,8 +8096,6 @@ void cPtr_testDynamicClassInExpressionForGeneration::description (String & ioStr
   ioString.appendCString (", ") ;
   mProperty_mReceiverExpression.description (ioString, inIndentation+1) ;
   ioString.appendCString (", ") ;
-  mProperty_mTypeComparisonKind.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
   mProperty_mCastType.description (ioString, inIndentation+1) ;
   ioString.appendCString ("]") ;
 }
@@ -8147,7 +8104,7 @@ void cPtr_testDynamicClassInExpressionForGeneration::description (String & ioStr
 
 AbstractPtrClass * cPtr_testDynamicClassInExpressionForGeneration::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   AbstractPtrClass * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_testDynamicClassInExpressionForGeneration (mProperty_mResultType, mProperty_mLocation, mProperty_mReceiverExpression, mProperty_mTypeComparisonKind, mProperty_mCastType, inCompiler COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_testDynamicClassInExpressionForGeneration (mProperty_mResultType, mProperty_mLocation, mProperty_mReceiverExpression, mProperty_mCastType, inCompiler COMMA_THERE)) ;
   return ptr ;
 }
 
@@ -8158,7 +8115,6 @@ AbstractPtrClass * cPtr_testDynamicClassInExpressionForGeneration::duplicate (Co
   void cPtr_testDynamicClassInExpressionForGeneration::printNonNullClassInstanceProperties (void) const {
     cPtr_semanticExpressionForGeneration::printNonNullClassInstanceProperties () ;
     mProperty_mReceiverExpression.printNonNullClassInstanceProperties ("mReceiverExpression") ;
-    mProperty_mTypeComparisonKind.printNonNullClassInstanceProperties ("mTypeComparisonKind") ;
     mProperty_mCastType.printNonNullClassInstanceProperties ("mCastType") ;
   }
 #endif

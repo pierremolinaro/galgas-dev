@@ -4028,8 +4028,6 @@ class cParser_galgas_33_ExpressionSyntax {
 
   protected: virtual int32_t select_galgas_33_ExpressionSyntax_23 (Lexique_galgasScanner_33_ *) = 0 ;
 
-  protected: virtual int32_t select_galgas_33_ExpressionSyntax_24 (Lexique_galgasScanner_33_ *) = 0 ;
-
 
 } ;
 

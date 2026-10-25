@@ -1910,88 +1910,6 @@ class GGS_templateOptionAccessAST_2E_weak : public GGS_templateExpressionAST_2E_
 extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_templateOptionAccessAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//   enum dynamicTypeComparisonKind
-//--------------------------------------------------------------------------------------------------
-
-class GGS_dynamicTypeComparisonKind : public AC_GALGAS_root {
-//--------------------------------- Default constructor
-  public: GGS_dynamicTypeComparisonKind (void) ;
-
-//--------------------------------- Enumeration
-  public: enum class Enumeration {
-    invalid,
-    enum_equal,
-    enum_inherited,
-    enum_strictlyInherited
-  } ;
-  
-//--------------------------------- Private properties
-  private: Enumeration mEnum ;
-
-//--------------------------------- Associated value extraction
-
-//--------------------------------- Accessors
-  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override {
-    return Enumeration::invalid != mEnum ;
-  }
-
-  public: VIRTUAL_IN_DEBUG inline void drop (void) override {
-    mEnum = Enumeration::invalid ;
-  }
-
-  public: inline Enumeration enumValue (void) const {
-    return mEnum ;
-  }
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
-//--------------------------------- Object extraction
-  public: static GGS_dynamicTypeComparisonKind extractObject (const GGS_object & inObject,
-                                                              Compiler * inCompiler
-                                                              COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS class functions
-  public: static class GGS_dynamicTypeComparisonKind class_func_equal (LOCATION_ARGS) ;
-
-  public: static class GGS_dynamicTypeComparisonKind class_func_inherited (LOCATION_ARGS) ;
-
-  public: static class GGS_dynamicTypeComparisonKind class_func_strictlyInherited (LOCATION_ARGS) ;
-
-//--------------------------------- Implementation of func 'description'
-  public: void description (String & ioString,
-                            const int32_t inIndentation) const override ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-  public: class GGS_bool getter_isEqual (LOCATION_ARGS) const ;
-
-  public: class GGS_bool getter_isInherited (LOCATION_ARGS) const ;
-
-  public: class GGS_bool getter_isStrictlyInherited (LOCATION_ARGS) const ;
-
-
-//--------------------------------- Read subscripts
-
-
-//--------------------------------- Introspection
-  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
- 
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_dynamicTypeComparisonKind ;
-
-//--------------------------------------------------------------------------------------------------
 // Phase 1: @templateTestDynamicClassAST reference class
 //--------------------------------------------------------------------------------------------------
 
@@ -2007,19 +1925,16 @@ class GGS_templateTestDynamicClassAST : public GGS_templateExpressionAST {
 
   public: class GGS_location readProperty_mEndOfReceiverExpression (void) const ;
 
-  public: class GGS_dynamicTypeComparisonKind readProperty_mTypeComparisonKind (void) const ;
-
   public: class GGS_lstring readProperty_mTypeName (void) const ;
 
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GGS_templateTestDynamicClassAST init_21__21__21__21_ (const class GGS_templateExpressionAST & inOperand0,
-                                                                       const class GGS_location & inOperand1,
-                                                                       const class GGS_dynamicTypeComparisonKind & inOperand2,
-                                                                       const class GGS_lstring & inOperand3,
-                                                                       Compiler * inCompiler
-                                                                       COMMA_LOCATION_ARGS) ;
+  public: static GGS_templateTestDynamicClassAST init_21__21__21_ (const class GGS_templateExpressionAST & inOperand0,
+                                                                   const class GGS_location & inOperand1,
+                                                                   const class GGS_lstring & inOperand2,
+                                                                   Compiler * inCompiler
+                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -2062,11 +1977,10 @@ class cPtr_templateTestDynamicClassAST : public cPtr_templateExpressionAST {
   #endif
 
 //--------------------------------- Initializers
-  public: void templateTestDynamicClassAST_init_21__21__21__21_ (const class GGS_templateExpressionAST & inOperand0,
-                                                                 const class GGS_location & inOperand1,
-                                                                 const class GGS_dynamicTypeComparisonKind & inOperand2,
-                                                                 const class GGS_lstring & inOperand3,
-                                                                 Compiler * inCompiler) ;
+  public: void templateTestDynamicClassAST_init_21__21__21_ (const class GGS_templateExpressionAST & inOperand0,
+                                                             const class GGS_location & inOperand1,
+                                                             const class GGS_lstring & inOperand2,
+                                                             Compiler * inCompiler) ;
 
 
 //--- Extension proc templateExpressionAnalysis
@@ -2080,7 +1994,6 @@ class cPtr_templateTestDynamicClassAST : public cPtr_templateExpressionAST {
 //--- Properties
   public: GGS_templateExpressionAST mProperty_mReceiverExpression ;
   public: GGS_location mProperty_mEndOfReceiverExpression ;
-  public: GGS_dynamicTypeComparisonKind mProperty_mTypeComparisonKind ;
   public: GGS_lstring mProperty_mTypeName ;
 
 
@@ -2090,7 +2003,6 @@ class cPtr_templateTestDynamicClassAST : public cPtr_templateExpressionAST {
 //--- Constructor
   public: cPtr_templateTestDynamicClassAST (const GGS_templateExpressionAST & in_mReceiverExpression,
                                             const GGS_location & in_mEndOfReceiverExpression,
-                                            const GGS_dynamicTypeComparisonKind & in_mTypeComparisonKind,
                                             const GGS_lstring & in_mTypeName,
                                             Compiler * inCompiler
                                             COMMA_LOCATION_ARGS) ;
@@ -6996,8 +6908,6 @@ class cParser_templateSyntax {
   protected: virtual int32_t select_templateSyntax_33 (Lexique_galgasTemplateScanner *) = 0 ;
 
   protected: virtual int32_t select_templateSyntax_34 (Lexique_galgasTemplateScanner *) = 0 ;
-
-  protected: virtual int32_t select_templateSyntax_35 (Lexique_galgasTemplateScanner *) = 0 ;
 
 
 } ;

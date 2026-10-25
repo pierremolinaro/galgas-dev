@@ -9643,19 +9643,16 @@ class GGS_testDynamicClassInExpressionAST : public GGS_semanticExpressionAST {
 
   public: class GGS_location readProperty_mEndOfReceiverExpression (void) const ;
 
-  public: class GGS_dynamicTypeComparisonKind readProperty_mTypeComparisonKind (void) const ;
-
   public: class GGS_lstring readProperty_mTypeName (void) const ;
 
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GGS_testDynamicClassInExpressionAST init_21__21__21__21_ (const class GGS_semanticExpressionAST & inOperand0,
-                                                                           const class GGS_location & inOperand1,
-                                                                           const class GGS_dynamicTypeComparisonKind & inOperand2,
-                                                                           const class GGS_lstring & inOperand3,
-                                                                           Compiler * inCompiler
-                                                                           COMMA_LOCATION_ARGS) ;
+  public: static GGS_testDynamicClassInExpressionAST init_21__21__21_ (const class GGS_semanticExpressionAST & inOperand0,
+                                                                       const class GGS_location & inOperand1,
+                                                                       const class GGS_lstring & inOperand2,
+                                                                       Compiler * inCompiler
+                                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -9698,11 +9695,10 @@ class cPtr_testDynamicClassInExpressionAST : public cPtr_semanticExpressionAST {
   #endif
 
 //--------------------------------- Initializers
-  public: void testDynamicClassInExpressionAST_init_21__21__21__21_ (const class GGS_semanticExpressionAST & inOperand0,
-                                                                     const class GGS_location & inOperand1,
-                                                                     const class GGS_dynamicTypeComparisonKind & inOperand2,
-                                                                     const class GGS_lstring & inOperand3,
-                                                                     Compiler * inCompiler) ;
+  public: void testDynamicClassInExpressionAST_init_21__21__21_ (const class GGS_semanticExpressionAST & inOperand0,
+                                                                 const class GGS_location & inOperand1,
+                                                                 const class GGS_lstring & inOperand2,
+                                                                 Compiler * inCompiler) ;
 
 
 //--- Extension proc analyzeSemanticExpression
@@ -9722,7 +9718,6 @@ class cPtr_testDynamicClassInExpressionAST : public cPtr_semanticExpressionAST {
 //--- Properties
   public: GGS_semanticExpressionAST mProperty_mReceiverExpression ;
   public: GGS_location mProperty_mEndOfReceiverExpression ;
-  public: GGS_dynamicTypeComparisonKind mProperty_mTypeComparisonKind ;
   public: GGS_lstring mProperty_mTypeName ;
 
 
@@ -9732,7 +9727,6 @@ class cPtr_testDynamicClassInExpressionAST : public cPtr_semanticExpressionAST {
 //--- Constructor
   public: cPtr_testDynamicClassInExpressionAST (const GGS_semanticExpressionAST & in_mReceiverExpression,
                                                 const GGS_location & in_mEndOfReceiverExpression,
-                                                const GGS_dynamicTypeComparisonKind & in_mTypeComparisonKind,
                                                 const GGS_lstring & in_mTypeName,
                                                 Compiler * inCompiler
                                                 COMMA_LOCATION_ARGS) ;
@@ -10039,20 +10033,17 @@ class GGS_testDynamicClassInExpressionForGeneration : public GGS_semanticExpress
 //--------------------------------- Property access
   public: class GGS_semanticExpressionForGeneration readProperty_mReceiverExpression (void) const ;
 
-  public: class GGS_dynamicTypeComparisonKind readProperty_mTypeComparisonKind (void) const ;
-
   public: class GGS_unifiedTypeMapEntry readProperty_mCastType (void) const ;
 
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GGS_testDynamicClassInExpressionForGeneration init_21__21__21__21__21_ (const class GGS_unifiedTypeMapEntry & inOperand0,
-                                                                                         const class GGS_location & inOperand1,
-                                                                                         const class GGS_semanticExpressionForGeneration & inOperand2,
-                                                                                         const class GGS_dynamicTypeComparisonKind & inOperand3,
-                                                                                         const class GGS_unifiedTypeMapEntry & inOperand4,
-                                                                                         Compiler * inCompiler
-                                                                                         COMMA_LOCATION_ARGS) ;
+  public: static GGS_testDynamicClassInExpressionForGeneration init_21__21__21__21_ (const class GGS_unifiedTypeMapEntry & inOperand0,
+                                                                                     const class GGS_location & inOperand1,
+                                                                                     const class GGS_semanticExpressionForGeneration & inOperand2,
+                                                                                     const class GGS_unifiedTypeMapEntry & inOperand3,
+                                                                                     Compiler * inCompiler
+                                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -10095,12 +10086,11 @@ class cPtr_testDynamicClassInExpressionForGeneration : public cPtr_semanticExpre
   #endif
 
 //--------------------------------- Initializers
-  public: void testDynamicClassInExpressionForGeneration_init_21__21__21__21__21_ (const class GGS_unifiedTypeMapEntry & inOperand0,
-                                                                                   const class GGS_location & inOperand1,
-                                                                                   const class GGS_semanticExpressionForGeneration & inOperand2,
-                                                                                   const class GGS_dynamicTypeComparisonKind & inOperand3,
-                                                                                   const class GGS_unifiedTypeMapEntry & inOperand4,
-                                                                                   Compiler * inCompiler) ;
+  public: void testDynamicClassInExpressionForGeneration_init_21__21__21__21_ (const class GGS_unifiedTypeMapEntry & inOperand0,
+                                                                               const class GGS_location & inOperand1,
+                                                                               const class GGS_semanticExpressionForGeneration & inOperand2,
+                                                                               const class GGS_unifiedTypeMapEntry & inOperand3,
+                                                                               Compiler * inCompiler) ;
 
 
 //--- Extension proc generateExpression
@@ -10113,7 +10103,6 @@ class cPtr_testDynamicClassInExpressionForGeneration : public cPtr_semanticExpre
 
 //--- Properties
   public: GGS_semanticExpressionForGeneration mProperty_mReceiverExpression ;
-  public: GGS_dynamicTypeComparisonKind mProperty_mTypeComparisonKind ;
   public: GGS_unifiedTypeMapEntry mProperty_mCastType ;
 
 
@@ -10124,7 +10113,6 @@ class cPtr_testDynamicClassInExpressionForGeneration : public cPtr_semanticExpre
   public: cPtr_testDynamicClassInExpressionForGeneration (const GGS_unifiedTypeMapEntry & in_mResultType,
                                                           const GGS_location & in_mLocation,
                                                           const GGS_semanticExpressionForGeneration & in_mReceiverExpression,
-                                                          const GGS_dynamicTypeComparisonKind & in_mTypeComparisonKind,
                                                           const GGS_unifiedTypeMapEntry & in_mCastType,
                                                           Compiler * inCompiler
                                                           COMMA_LOCATION_ARGS) ;
