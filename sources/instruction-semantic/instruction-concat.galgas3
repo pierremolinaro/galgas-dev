@@ -74,51 +74,15 @@ syntax extension galgas3InstructionsSyntax {
       )
     or
       $+=$
-      select
-        $§$
-        $($
- //       <non_empty_output_expression_list_ggs3> (!?ioDeclarations, ?let @actualOutputArgumentList expressionList)
-        var @actualOutputArgumentList expressionList = @()
-        select
-        or
-          repeat
-            select
-              $!selector:$ (?let selector)
-              <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST expression)
-              expressionList ++= @(selector, expression, .here)
-            or
-              $!$
-              let selector = "".here
-              <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST expression)
-              expressionList ++= @(selector, expression, .here)
-            or
-              let selector = "".here
-              <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST expression)
-              expressionList ++= @(selector, expression, .here)
-            end
-          while
-            $,$
-          end 
-        end 
-        $)$
-        outInstruction = @plusEqualElementsInstructionAST (
-          !instructionLocation,
-          inHasSelfPrefix,
-          receiverName,
-          propertyList,
-          expressionList
-        )
-      or
-        <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST expression)
-        outInstruction = @opAssignExpressionInstructionAST (
-          !instructionLocation,
-          inHasSelfPrefix,
-          receiverName,
-          propertyList,
-          .plusAssign,
-          expression
-        )
-      end
+      <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST expression)
+      outInstruction = @opAssignExpressionInstructionAST (
+        !instructionLocation,
+        inHasSelfPrefix,
+        receiverName,
+        propertyList,
+        .plusAssign,
+        expression
+      )
     or
       $*=$
       <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST expression)
@@ -564,115 +528,6 @@ final class @opAssignExpressionInstructionAST : @semanticInstructionAST {
       expression,
       self.mOperator.cppFunctionName
     ))
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-}
-
-//--------------------------------------------------------------------------------------------------
-
-final class @plusEqualElementsInstructionAST : @semanticInstructionAST {
-  private let @bool mPrefixedBySelf
-  private let @lstring mReceiverName
-  private let @lstringlist mStructAttributeList
-  private let @actualOutputArgumentList mExpressions
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  override proc enterInstructionInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
-    self.mExpressions.enterInSemanticContext (!?ioTypeMap)
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  override proc analyzeSemanticInstruction (
-                        ?let @lstring inUsefulnessCallerEntityName,
-                        ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
-                        ?let @analysisContext inAnalysisContext,
-                        ?!@unifiedTypeMap ioTypeMap,
-                        ?!@semanticInstructionListForGeneration ioInstructionListForGeneration,
-                        ?!@localVarManager ioVariableMap) {
-  //--- Check target variable, or self.property
-    var @unifiedTypeMapEntry targetType
-    let @string targetVariableCppName
-    let @string nameForCheckingFormalParameterUsing
-    if self.mPrefixedBySelf then
-      if let selfAvailable = inAnalysisContext.selfAvailability.getAvailable then
-        let propertyMap = selfAvailable.type.definition.propertyMap
-        propertyMap.searchKey (!self.mReceiverName, ?*, ?let isConstant, ?targetType)
-        nameForCheckingFormalParameterUsing = inAnalysisContext.selfObjectCppName
-        targetVariableCppName = inAnalysisContext.selfObjectCppPrefixForAccessingProperty
-          + "mProperty_"+ self.mReceiverName.string.identifierRepresentation
-        if isConstant then
-          error (self.mReceiverName : "a constant property cannot be modified")
-        end
-        if not selfAvailable.selfMutability.propertiesAreMutable then
-          error (self.mReceiverName : "the property cannot be mutated in this context")
-        end
-      else
-        error (self.mInstructionLocation : "'self' not available in this context"
-        spoil targetType, targetVariableCppName, nameForCheckingFormalParameterUsing)
-      end
-    else
-      !?ioVariableMap.searchForReadWriteAccess
-        (!self.mReceiverName,
-        ?targetType,
-        ?targetVariableCppName,
-        ?nameForCheckingFormalParameterUsing
-      )
-    end
-  //--- Check target variable
-    for (value) in self.mStructAttributeList do
-      let propertyMap = targetType.definition.propertyMap
-      propertyMap.searchKey (!value, ?let accessControl, ?let isConstant, ?targetType)
-      accessControl.checkSetAccess (!inAnalysisContext.selfAvailability, !value)
-       if isConstant then
-        error (value : "a constant property cannot be modified")
-      end
-    end
-  //--- Check target variable type support '+=' operator
-    let addAssignOperatorArguments= targetType.definition.addAssignOperatorArguments // Empty list if += operator is not supported
-    if addAssignOperatorArguments.count == 0 then
-      error (self.mInstructionLocation
-      :"the target object has the '@" + targetType.definition.typeName.string
-      + "' type, but this type does not support the '+=' operator"
-      )
-  //--- Analyze source expressions
-    elsif self.mExpressions.count != addAssignOperatorArguments.count then
-      error (self.mInstructionLocation
-      : "calling the '+=' operator on an '@" + targetType.definition.typeName.string + "' object requires "
-      + addAssignOperatorArguments.count.string + " parameter(s), while this invocation has "
-      + self.mExpressions.count.string + " parameter(s)"
-      )
-    else
-      var @semanticExpressionListForGeneration effectiveParameterList = @()
-      for (mActualSelector mExpression mEndOfExpressionLocation) in self.mExpressions, (mFormalSelector mFormalArgumentType 2*) in addAssignOperatorArguments do
-        mExpression.analyzeSemanticExpression
-          (!usefulnessCallerEntityName: inUsefulnessCallerEntityName,
-          !?ioUsefulEntitiesGraph,
-          !inferenceType: mFormalArgumentType,
-          !inAnalysisContext,
-          !?ioTypeMap,
-          !?ioVariableMap,
-          ?@semanticExpressionForGeneration expression
-        )
-        if mFormalSelector.string != mActualSelector.string then
-          let @string s = "!" + if mFormalSelector.string != "" then mFormalSelector.string + ":" else "" end
-          error (mActualSelector : "the selector should be '" + s + "'" fixit replace s)
-        end
-        checkAssignmentTypeWithImplicitGetterCall (!mFormalArgumentType, !expression.mResultType, !mEndOfExpressionLocation, !?expression)
-        effectiveParameterList ++= @(!expression)
-      end
-    //--- Generate instruction
-      ioInstructionListForGeneration ++= @(!@plusEqualnstructionForGeneration (
-        !targetVariableCppName,
-        targetType,
-        nameForCheckingFormalParameterUsing,
-        self.mInstructionLocation,
-        self.mStructAttributeList,
-        effectiveParameterList))
-    end
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

@@ -12603,39 +12603,37 @@ class Lexique_galgasScanner_33_ : public Lexique {
   public: static const int32_t kToken__3D__3D_ = 153 ;
   public: static const int32_t kToken__3D_ = 154 ;
   public: static const int32_t kToken__26__26_ = 155 ;
-  public: static const int32_t kToken__A7_ = 156 ;
-  public: static const int32_t kToken__2B__3D__A7__28_ = 157 ;
-  public: static const int32_t kToken__5B_ = 158 ;
-  public: static const int32_t kToken__5D_ = 159 ;
-  public: static const int32_t kToken__2B__2B__3D_ = 160 ;
-  public: static const int32_t kToken__2E_ = 161 ;
-  public: static const int32_t kToken__2E__2E__2E_ = 162 ;
-  public: static const int32_t kToken__2E__2E__3C_ = 163 ;
-  public: static const int32_t kToken__40__28_ = 164 ;
-  public: static const int32_t kToken__40__5B_ = 165 ;
-  public: static const int32_t kToken__2B__3D_ = 166 ;
-  public: static const int32_t kToken__2D__3D_ = 167 ;
-  public: static const int32_t kToken__2A__3D_ = 168 ;
-  public: static const int32_t kToken__2F__3D_ = 169 ;
-  public: static const int32_t kToken__26__3D_ = 170 ;
-  public: static const int32_t kToken__7C__3D_ = 171 ;
-  public: static const int32_t kToken__5E__3D_ = 172 ;
-  public: static const int32_t kToken__2F_ = 173 ;
-  public: static const int32_t kToken__21__3D_ = 174 ;
-  public: static const int32_t kToken__3E__3D_ = 175 ;
-  public: static const int32_t kToken__26_ = 176 ;
-  public: static const int32_t kToken__7B_ = 177 ;
-  public: static const int32_t kToken__7D_ = 178 ;
-  public: static const int32_t kToken__60_ = 179 ;
-  public: static const int32_t kToken__7C__7C_ = 180 ;
-  public: static const int32_t kToken__7C_ = 181 ;
-  public: static const int32_t kToken__5E_ = 182 ;
-  public: static const int32_t kToken__3E__3E_ = 183 ;
-  public: static const int32_t kToken__7E_ = 184 ;
-  public: static const int32_t kToken__3D__3D__3D_ = 185 ;
-  public: static const int32_t kToken__21__3D__3D_ = 186 ;
-  public: static const int32_t kToken__3F__5E_ = 187 ;
-  public: static const int32_t kToken__21__5E_ = 188 ;
+  public: static const int32_t kToken__5B_ = 156 ;
+  public: static const int32_t kToken__5D_ = 157 ;
+  public: static const int32_t kToken__2B__2B__3D_ = 158 ;
+  public: static const int32_t kToken__2E_ = 159 ;
+  public: static const int32_t kToken__2E__2E__2E_ = 160 ;
+  public: static const int32_t kToken__2E__2E__3C_ = 161 ;
+  public: static const int32_t kToken__40__28_ = 162 ;
+  public: static const int32_t kToken__40__5B_ = 163 ;
+  public: static const int32_t kToken__2B__3D_ = 164 ;
+  public: static const int32_t kToken__2D__3D_ = 165 ;
+  public: static const int32_t kToken__2A__3D_ = 166 ;
+  public: static const int32_t kToken__2F__3D_ = 167 ;
+  public: static const int32_t kToken__26__3D_ = 168 ;
+  public: static const int32_t kToken__7C__3D_ = 169 ;
+  public: static const int32_t kToken__5E__3D_ = 170 ;
+  public: static const int32_t kToken__2F_ = 171 ;
+  public: static const int32_t kToken__21__3D_ = 172 ;
+  public: static const int32_t kToken__3E__3D_ = 173 ;
+  public: static const int32_t kToken__26_ = 174 ;
+  public: static const int32_t kToken__7B_ = 175 ;
+  public: static const int32_t kToken__7D_ = 176 ;
+  public: static const int32_t kToken__60_ = 177 ;
+  public: static const int32_t kToken__7C__7C_ = 178 ;
+  public: static const int32_t kToken__7C_ = 179 ;
+  public: static const int32_t kToken__5E_ = 180 ;
+  public: static const int32_t kToken__3E__3E_ = 181 ;
+  public: static const int32_t kToken__7E_ = 182 ;
+  public: static const int32_t kToken__3D__3D__3D_ = 183 ;
+  public: static const int32_t kToken__21__3D__3D_ = 184 ;
+  public: static const int32_t kToken__3F__5E_ = 185 ;
+  public: static const int32_t kToken__21__5E_ = 186 ;
 
 //--- Key words table 'galgasKeyWordList'
   public: static int32_t search_into_galgasKeyWordList (const String & inSearchedString) ;
@@ -12727,7 +12725,7 @@ public: static const uint32_t kIndexing_indexingNameReference = 51 ;
   protected: virtual String getMessageForTerminal (const int32_t inTerminalSymbol) const override ;
 
 //--- Get terminal count
-  public: virtual int32_t terminalVocabularyCount (void) const override { return 188 ; }
+  public: virtual int32_t terminalVocabularyCount (void) const override { return 186 ; }
 
 //--- Get Token String
   public: virtual String getCurrentTokenString (const cToken * inTokenPtr) const override ;

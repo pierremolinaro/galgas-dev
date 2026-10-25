@@ -23,14 +23,14 @@
 //--------------------------------------------------------------------------------------------------
 
 before { //--- Generate project
-  let creationProjectName = [option galgas_cli_options.create_project value]
+  let creationProjectName = option galgas_cli_options [create_project.value]
   projectCreation (!creationProjectName)
 }
 
 //--------------------------------------------------------------------------------------------------
 
 before { //--- Print predefined lexical action
-  if [option galgas_cli_options.printPredefinedLexicalActions value] then
+  if option galgas_cli_options [printPredefinedLexicalActions.value] then
     printPredefinedLexicalActions ()
   end
 }
@@ -38,8 +38,8 @@ before { //--- Print predefined lexical action
 //--------------------------------------------------------------------------------------------------
 
 before { //--- Extract LIBPM
-  if [option galgas_cli_options.extractLIBPMOption value] != "" then
-    updateLIBPMatPath (![option galgas_cli_options.extractLIBPMOption value] )
+  if option galgas_cli_options [extractLIBPMOption.value] != "" then
+    updateLIBPMatPath (!option galgas_cli_options [extractLIBPMOption.value] )
   end
 }
 
@@ -48,7 +48,7 @@ before { //--- Extract LIBPM
 extern proc checkBigInteger ()
 
 before { //--- Extract LIBPM
-  if [option galgas_cli_options.check_big_int value] then
+  if option galgas_cli_options [check_big_int.value] then
     checkBigInteger ()
   end
 }
@@ -58,7 +58,7 @@ before { //--- Extract LIBPM
 extern proc displayUnicodeLexicalTestFunctions ()
 
 before {
-  if [option galgas_cli_options.displayUnicodeLexicalTestFunctions value] then
+  if option galgas_cli_options [displayUnicodeLexicalTestFunctions.value] then
     displayUnicodeLexicalTestFunctions ()
   end
 }
@@ -70,12 +70,12 @@ before {
 //--------------------------------------------------------------------------------------------------
 
 case . "galgas3"
-message "a GALGAS 3 source file"
+%errorMessage "a GALGAS 3 source file"
 grammar galgas3Grammar
 ?sourceFilePath: @lstring inSourceFile {
 //--- Search for a project file in parent directory
   let parentDirectory = inSourceFile.string.deletingLastPathComponent.deletingLastPathComponent
-  let candidateProjectFiles = parentDirectory.regularFilesWithExtensions (!false, !@[@("galgas4project")])
+  let candidateProjectFiles = parentDirectory.regularFilesWithExtensions (!false, ![@("galgas4project")])
   if candidateProjectFiles.count == 0 then
     error (inSourceFile : "no project file in parent directory of source file")
   elsif candidateProjectFiles.count > 1 then
@@ -97,11 +97,11 @@ grammar galgas3Grammar
 //--------------------------------------------------------------------------------------------------
 
 case . "galgas4"
-message "a GALGAS 4 source file"
+%errorMessage "a GALGAS 4 source file"
 grammar galgas4Grammar ?sourceFilePath: @lstring inSourceFile {
 //--- Search for a project file in parent directory
   let parentDirectory = inSourceFile.string.deletingLastPathComponent.deletingLastPathComponent
-  let candidateProjectFiles = parentDirectory.regularFilesWithExtensions (!false, !@[@("galgas4project")])
+  let candidateProjectFiles = parentDirectory.regularFilesWithExtensions (!false, ![@("galgas4project")])
   if candidateProjectFiles.count == 0 then
     error (inSourceFile : "no project file in parent directory of source file")
   elsif candidateProjectFiles.count > 1 then
@@ -123,7 +123,7 @@ grammar galgas4Grammar ?sourceFilePath: @lstring inSourceFile {
 //--------------------------------------------------------------------------------------------------
 
 case . "galgasTemplate"
-message "a GALGAS Template source file"
+%errorMessage "a GALGAS Template source file"
 grammar templateGrammar
 ?sourceFilePath:@lstring inSourceFile {
   grammar templateGrammar (?*) in inSourceFile
@@ -136,7 +136,7 @@ grammar templateGrammar
 //--------------------------------------------------------------------------------------------------
 
 case . "galgas4project"
-message "a GALGAS project source file"
+%errorMessage "a GALGAS project source file"
 grammar galgas4ProjectGrammar
 ?sourceFilePath: @lstring inProjectSourceFile {
   parseAndAnalyzeProject (!inProjectSourceFile, !"" )
@@ -154,11 +154,11 @@ private proc parseAndAnalyzeProject (?let @lstring inProjectSourceFilePath,
     println (!"*** Parsing project files")
   end
   grammar galgas4ProjectGrammar (!inProjectSourceFilePath, ?let @galgas3ProjectComponentAST projectComponentAST) in inProjectSourceFilePath
-  if [option.mode value] == "" then
+  if option [mode.value] == "" then
     compileProject (!inProjectSourceFilePath, !inSourceToAnalyze, !projectComponentAST)
   //--- C++ compilation
     if 0 == @uint.errorCount then
-      let cppCompilationTarget = [option galgas_cli_options.cppCompile value]
+      let cppCompilationTarget = option galgas_cli_options [cppCompile.value]
       if cppCompilationTarget != "" then
         if @application.verboseOutput then
           println (!"*** Perform C++ compilation")
@@ -186,7 +186,7 @@ private proc compileProject (?let @lstring inProjectSourceFile,
   var @galgasDeclarationAST declarationAST = @()
 //--- Parse predefined type definitions
   grammar galgas4Grammar (!?declarationAST) on
-  [filewrapper typeGenerationTemplate].textFileContentsAtPath (!"galgas-predefined-entities.txt")
+  filewrapper [typeGenerationTemplate].textFileContentsAtPath ("galgas-predefined-entities.txt")
   : "GALGAS predefined types"
  //--- Parse source file
   let sourcesDir = inProjectSourceFile.string.deletingLastPathComponent + "/sources"
@@ -201,7 +201,6 @@ private proc compileProject (?let @lstring inProjectSourceFile,
   end
 //--------------------------------- Hand coded source files
   var @stringlist handCodedLinkToolFileList = @()
-//  var @stringlist handCodedSourceAppFileList = @()
   let @stringlist handCodedSourceToolFileList = inProjectComponentAST.mToolCppSourceList
   var @stringlist frameworkToolFileList = @()
   var @stringset handCodedSourceDirectorySet = @()
@@ -293,26 +292,26 @@ private proc compileProject (?let @lstring inProjectSourceFile,
   checkUsefulEntities (!usefulEntitiesGraph, !usefulnessRootEntities, !productDirectory)
 //----------------------------------- Build an HTML file that contains all declared types
   let typeDumpFilePath = productDirectory + "/../helpers/" + inProjectSourceFile.string.lastPathComponent + ".html"
-  if [option galgas_cli_options.outputHTMLTypeListFile value] then
+  if option galgas_cli_options [outputHTMLTypeListFile.value] then
     var @stringset firstLetterSet = @()
-    for (lkey *) in typeMap do
-      firstLetterSet ++= lkey.string.characterAtIndex(!0).string
+    for entry in typeMap do
+      firstLetterSet ++= entry.lkey.string.characterAtIndex(!0).string
     end
     var @string tableOfTypeString = ""
     var @char currentFirstLetter = ' '
-    for (type_lkey *) in typeMap do
-      if currentFirstLetter != type_lkey.string.characterAtIndex (!0) then
-        currentFirstLetter = type_lkey.string.characterAtIndex (!0)
+    for entry in typeMap do
+      if currentFirstLetter != entry.lkey.string.characterAtIndex (!0) then
+        currentFirstLetter = entry.lkey.string.characterAtIndex (!0)
         tableOfTypeString += "<br><a name=\"" + currentFirstLetter.uint
         tableOfTypeString += "\"><b>" + currentFirstLetter + "</b></a><br>"
       end
-      tableOfTypeString += linkForType (!type_lkey.string) + "<br>"
+      tableOfTypeString += linkForType (!entry.lkey.string) + "<br>"
     end
-    let typeDumpString = [filewrapper typeDumpGenerationTemplate.typeDump
-      !inProjectSourceFile.string.lastPathComponent
-      !typeMap
-      !firstLetterSet
-      !tableOfTypeString
+    let typeDumpString = filewrapper [typeDumpGenerationTemplate.typeDump :
+      inProjectSourceFile.string.lastPathComponent,
+      typeMap,
+      firstLetterSet,
+      tableOfTypeString
     ]
     typeDumpString.writeToFileWhenDifferentContents (!typeDumpFilePath, ?*)
   else
@@ -413,8 +412,8 @@ private proc projectGeneration
 //  message "*** update targets\n" ;
   if 0 == @uint.errorCount then
     var @stringset handledExtensionSet = @()
-    for (mSourceFileExtension * * * * * *) in inSourceRuleList do
-      handledExtensionSet ++= mSourceFileExtension.string
+    for aRule in inSourceRuleList do
+      handledExtensionSet ++= aRule.mSourceFileExtension.string
     end
   //--- Build qualified feature map
     var @stringset ignoredFeatureSet = @()
@@ -476,11 +475,12 @@ private proc projectGeneration
 filewrapper typeDumpGenerationTemplate in "+generation-templates/target_generation" {
 }{
 }{
-  template typeDump "typeDump.html.galgasTemplate"
-    ?@string PROJECT_NAME
-    ?@unifiedTypeMap UNIFIED_TYPE_MAP
-    ?@stringset FIRST_LETTER_SET
+  template typeDump : "typeDump.html.galgasTemplate" (
+    ?@string PROJECT_NAME,
+    ?@unifiedTypeMap UNIFIED_TYPE_MAP,
+    ?@stringset FIRST_LETTER_SET,
     ?@string TABLE_OF_TYPES_STRING
+  )
 }
 
 //--------------------------------------------------------------------------------------------------

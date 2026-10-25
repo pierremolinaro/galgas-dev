@@ -27,7 +27,7 @@ syntax galgas3SyntaxComponentSyntax (galgasScanner3) {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <expression_ggs3> (?!@galgasDeclarationAST ioDeclarations,
-                         !@semanticExpressionAST outExpression)
+                          !@semanticExpressionAST outExpression)
 
   rule <semantic_instruction_ggs3> (?!@galgasDeclarationAST ioDeclarations,
                                     !@semanticInstructionAST outInstruction)

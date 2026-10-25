@@ -80,7 +80,7 @@ syntax galgas3ProgramDeclarations (galgasScanner3) {
   //--- Source file
     $?selector:$ (?let selector)
     if selector.string != "sourceFilePath" then
-      error (selector : "the selector should be '?sourceFilePath:'" fixit replace "?sourceFilePath:")
+      error (selector : "the selector should be '?sourceFilePath:'" fixit %replaceBy "?sourceFilePath:")
     end
     select
     or
@@ -176,7 +176,7 @@ syntax galgas4ProgramDeclarations (galgasScanner4) {
   //--- Source file
     $?selector:$ (?let selector)
     if selector.string != "sourceFilePath" then
-      error (selector : "the selector should be '?sourceFilePath:'" fixit replace "?sourceFilePath:")
+      error (selector : "the selector should be '?sourceFilePath:'" fixit %replaceBy "?sourceFilePath:")
     end
     select
     or
